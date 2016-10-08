@@ -68,25 +68,25 @@ public class HeapSort {
      *            index of last child
      */
     private void heapSubtree(int rootIndex, int lastChild) {
-        int leftIndex = rootIndex * 2 + 1; // calculate index of left children
+        int leftIndex = rootIndex * 2 + 1; 
         int rightIndex = rootIndex * 2 + 2;
         boolean hasLeftChild = leftIndex <= lastChild;
         boolean hasRightChild = rightIndex <= lastChild;
         int root = this.heap[rootIndex];
         if (hasRightChild) {
-            int left = this.heap[leftIndex]; // get left child
-            int right = this.heap[rightIndex]; // get right child
+            int left = this.heap[leftIndex]; 
+            int right = this.heap[rightIndex]; 
             if (left < right && left < root) {
-                this.swap(leftIndex, rootIndex); //swap left with root
+                this.swap(leftIndex, rootIndex); 
                 this.heapSubtree(leftIndex, lastChild);
             } else if (right < root) {
-                this.swap(rightIndex, rootIndex); //swap right with root
+                this.swap(rightIndex, rootIndex);
                 this.heapSubtree(rightIndex, lastChild);
             }
         } else if (hasLeftChild) { // if no right, but has left
             int left = this.heap[leftIndex];
             if (left < root) {
-                this.swap(leftIndex, rootIndex); //swap left and root
+                this.swap(leftIndex, rootIndex);
                 this.heapSubtree(leftIndex, lastChild);
             }
         }
@@ -99,8 +99,8 @@ public class HeapSort {
      *            index of root of heap
      */
     private void makeMinHeap(int root) {
-        int leftIndex = root * 2 + 1; // calculate index of left child
-        int rightIndex = root * 2 + 2; // calculate index of left child
+        int leftIndex = root * 2 + 1; 
+        int rightIndex = root * 2 + 2; 
         boolean hasLeftChild = leftIndex < this.heap.length;
         boolean hasRightChild = rightIndex < this.heap.length;
         if (hasRightChild) { //if has left and right
