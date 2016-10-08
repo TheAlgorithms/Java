@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Heap Sort Algorithm.
+ * Heap Sort Algorithm. Implements MinHeap
  *
  */
 public class HeapSort {
