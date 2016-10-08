@@ -70,10 +70,8 @@ public class HeapSort {
     private void heapSubtree(int rootIndex, int lastChild) {
         int leftIndex = rootIndex * 2 + 1; 
         int rightIndex = rootIndex * 2 + 2;
-        boolean hasLeftChild = leftIndex <= lastChild;
-        boolean hasRightChild = rightIndex <= lastChild;
         int root = this.heap[rootIndex];
-        if (hasRightChild) {
+        if (rightIndex <= lastChild) { // if has right and left children
             int left = this.heap[leftIndex]; 
             int right = this.heap[rightIndex]; 
             if (left < right && left < root) {
@@ -83,7 +81,7 @@ public class HeapSort {
                 this.swap(rightIndex, rootIndex);
                 this.heapSubtree(rightIndex, lastChild);
             }
-        } else if (hasLeftChild) { // if no right, but has left
+        } else if (leftIndex <= lastChild) { // if no right child, but has left child
             int left = this.heap[leftIndex];
             if (left < root) {
                 this.swap(leftIndex, rootIndex);
