@@ -22,10 +22,10 @@ class PriorityQueue{
 		else{
 			int j = nItems;
 			while(j > 0 && queueArray[j-1] > value){
-				queueArray[j] = queueArray[j-1];
+				queueArray[j] = queueArray[j-1]; //Shifts every element up to make room for insertion
 				j--;
 			}
-			queueArray[j] = value;
+			queueArray[j] = value; //Once the correct position is found the value is inserted
 		}
 		nItems++;
 	}
