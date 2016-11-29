@@ -50,7 +50,7 @@ class Link{
 }
 
 //Example
-public class LinkedLists{
+public class SinglyLinkedList{
 	public static void main(String args[]){
 		LinkedList myList = new LinkedList();
 
