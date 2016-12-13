@@ -87,6 +87,7 @@ public class MinHeap implements Heap {
 
     @Override
     public void deleteElement(int elementIndex) {
+		if (isempty(maxHeap)) throw new EmptyHeapException("Attempt to delete an element from an empty heap");
         if ((elementIndex > minHeap.size()) && (elementIndex <= 0)) throw new IndexOutOfBoundsException("Index out of heap range");
         // The last element in heap replaces the one to be deleted
         minHeap.set(elementIndex - 1, getElement(minHeap.size()));
