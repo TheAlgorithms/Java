@@ -8,6 +8,8 @@ package heaps;
  * indicate how the tree shall be built. For instance, for a min-heap, the key of a node shall
  * be greater than or equal to its parent's and lower than or equal to its children's (the opposite rule applies to a
  * max-heap).</p>
+ * <p>All heap-related operations (inserting or deleting an element, extracting the min or max) are performed in
+ * O(log n) time.</p>
  * @author Nicolas Renard
  * 
  * 
