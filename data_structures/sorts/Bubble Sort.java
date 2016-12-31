@@ -1,6 +1,8 @@
+package sorts;
+
 import java.util.Scanner;
 
-class SelectionSort
+class BubbleSort
 {
 	public static void main(String[] args) 
 	{
@@ -17,17 +19,15 @@ class SelectionSort
 		//Sorting
 		for(int i=0; i<6; i++)
 		{
-			int min=i;
-			for(int j=i+1; j<6; j++)
+			for(int j=0; j<5; j++)
 			{
-				if(array[j]<array[min])
+				if(array[j]>array[j+1])
 				{
-					min=j;
+					int temp=array[j];
+					array[j]=array[j+1];
+					array[j+1]=temp;
 				}
 			}
-			int temp=array[i];
-			array[i]=array[min];
-			array[min]=temp;
 		}
 
 		//Output
