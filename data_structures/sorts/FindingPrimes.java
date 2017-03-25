@@ -1,3 +1,5 @@
+package sorts;
+
 /*
  * The Sieve of Eratosthenes is an algorithm used to find prime numbers, up to a given value.
  * Illustration: https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif

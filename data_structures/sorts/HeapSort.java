@@ -1,3 +1,5 @@
+package sorts;
+
 import java.util.Scanner;
 
 /**
