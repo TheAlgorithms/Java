@@ -2,22 +2,24 @@ import java.util.Scanner;
 
 class BubbleSort
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-		int array[]=new int[6];
+		int n;
+		int array[]=new int[n];
 		Scanner input=new Scanner(System.in);
-
+    System.out.println("Enter length of array:");
+		n=sc.nextInt();
 		//Input
-		System.out.println("Enter any 6 Numbers for Unsorted Array : ");
-		for(int i=0; i<6; i++)
+		System.out.println("Enter any n Numbers for Unsorted Array : ");
+		for(int i=0; i<n; i++)
 		{
 			array[i]=input.nextInt();
 		}
 
 		//Sorting
-		for(int i=0; i<6; i++)
+		for(int i=0; i<n; i++)
 		{
-			for(int j=0; j<5; j++)
+			for(int j=0; j<n-1-i; j++)
 			{
 				if(array[j]>array[j+1])
 				{
@@ -29,7 +31,7 @@ class BubbleSort
 		}
 
 		//Output
-		for(int i=0; i<6; i++)
+		for(int i=0; i<n; i++)
 		{
 			System.out.print(array[i]+"\t");
 		}
