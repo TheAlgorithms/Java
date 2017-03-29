@@ -1,4 +1,6 @@
-import java.util.Scanner;
+package array;
+
+import array.security.ProjectAlgorithmsScanner;
 
 class BinarySearch
 {
@@ -27,18 +29,16 @@ class BinarySearch
 
 	public static void main(String[] args) 
 	{
-		Scanner input=new Scanner(System.in);
 		int array[]=new int[10]	;
 		int key;
 
 		//Input 
 		System.out.println("Enter an array of 10 numbers : ");
-		for (int i=0; i<10 ;i++ ) 
-		{
-			array[i]=input.nextInt();	
+		for (int i=0; i < 10; i++) {
+			array[i] = ProjectAlgorithmsScanner.getInteger();
 		}
 		System.out.println("Enter the number to be searched : ");
-		key=input.nextInt();
+		key = ProjectAlgorithmsScanner.getInteger();
 
 		int index=BS(array, key, 0, 9);
 		if (index!=-1) 
@@ -50,4 +50,5 @@ class BinarySearch
 			System.out.println("Not found");
 		}
 	}
+
 }

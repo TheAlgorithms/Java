@@ -1,11 +1,13 @@
-#import java.util.*;
-class Decimal_Octal
+package array;
+
+import array.security.ProjectAlgorithmsScanner;
+
+class DecimalToOctal
 {
-  public static void main()
+  public static void main(String args[])
   {
-    Scanner sc=new Scanner(System.in);
     int n,k,d,s=0,c=0;
-    n=sc.nextInt();
+    n = ProjectAlgorithmsScanner.getInteger();
     k=n;
     while(k!=0)
     {
