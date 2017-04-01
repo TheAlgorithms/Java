@@ -15,15 +15,15 @@ class BubbleSort
 		}
 
 		//Sorting
-		for(int i=0; i<6; i++)
+		for(int i=0; i<5; i++)
 		{
-			for(int j=0; j<5; j++)
+			for(int j=i+1; j<6; j++)
 			{
-				if(array[j]>array[j+1])
+				if(array[j]>array[i])
 				{
 					int temp=array[j];
-					array[j]=array[j+1];
-					array[j+1]=temp;
+					array[j]=array[i];
+					array[i]=temp;
 				}
 			}
 		}
