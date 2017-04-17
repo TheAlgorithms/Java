@@ -1,10 +1,23 @@
 import java.util.Scanner;
 
+/**
+ * Implements a Binary Search in Java
+ *
+ * @author unknown
+ */
 class BinarySearch
 {
+	/**
+	 * This method implements the Binary Search
+	 *
+	 * @param array The array to make the binary search
+	 * @param key The number you are looking for
+	 * @param lb The lower bound
+	 * @param up The  upper bound
+	 * @return the location of the key
+	 **/
 	public static int BS(int array[], int key, int lb, int ub)
-	{
-		if (lb>ub) 
+	{		if (lb>ub) 
 		{
 			return -1;
 		}
@@ -24,6 +37,14 @@ class BinarySearch
 			return mid;
 		}
 	}
+
+	
+	/**
+	 * This is the main method of Binary Search
+	 *
+	 * @author Unknown
+	 * @param args Command line parameters
+	 */
 
 	public static void main(String[] args) 
 	{
