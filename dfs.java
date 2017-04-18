@@ -1,8 +1,21 @@
 import java.util.*;
 
-public class App{
+/**
+ * Implementation of a Depth First Search
+ * 
+ * @author Unknown
+ *
+ */
+
+public class dfs{
 	
-	
+	/**
+	 * Implementation in code of a DFS
+	 * 
+	 * @param a structure to be DFS'ed
+	 * @param vertices The vertices
+	 * @param source The source
+	 */
 	public static void dfs(byte [][] a,int vertices,int source){            //passing adjacency matrix and no of vertices
 		byte []b=new byte[vertices];               //flag container containing status of each vertices
 		Arrays.fill(b,(byte)-1);                  //status initialization
@@ -27,6 +40,11 @@ public class App{
 		
 	}
 	
+	/**
+	 * The main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String args[]){
 		Scanner in=new Scanner(System.in);
 		int vertices=in.nextInt(),source=in.nextInt();

@@ -1,7 +1,20 @@
 import java.util.*;
 
-public class App{
+/**
+ * Implementation of a Breadth First Search
+ * 
+ * @author Unknown
+ *
+ */
+public class bfs{
 	
+	/**
+	 * The BFS implemented in code to use. 
+	 * 
+	 * @param a Structure to perform the search on
+	 * @param vertices The vertices to use
+	 * @param source The Source
+	 */
 	public static void bfs(byte [][] a,int vertices,int source){  //passing adjacency matrix and no of vertices
 		byte []b=new byte[vertices];    //flag container containing status of each vertices
 		Arrays.fill(b,(byte)-1);   //status initialization
@@ -10,7 +23,7 @@ public class App{
 				  0  =  waiting
 				  1  =  processed       */
 				
-		Queue <Integer> st=new LinkedList<>();     //operational stack
+		Queue <Integer> st=new Queue<>();     //operational stack
 		st.add(source);                                                 //assigning source
 		while(!st.isEmpty()){
 			b[st.peek()]=(byte)0;                                   //assigning waiting status
@@ -26,6 +39,11 @@ public class App{
 	}
 	
 	
+	/**
+	 * The main method 
+	 * 
+	 * @param args Command line arguments
+	 */
 		public static void main(String args[]){
 		Scanner in=new Scanner(System.in);
 		int vertices=in.nextInt(),source=in.nextInt();

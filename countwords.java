@@ -1,6 +1,19 @@
 import java.util.Scanner;
+
+/**
+ * You enter a string into this program, and it will return how
+ * many words were in that particular string
+ * 
+ * @author Unknown
+ *
+ */
 class CountTheWords
 {
+	/**
+	 * The main method
+	 * 
+	 * @param args Command line arguments
+	 */
     public static void main(String args[])
     {
         System.out.println("Enter the string");

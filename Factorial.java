@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * This program will print out the factorial of any non-negative
+ * number that you input into it.
+ * 
+ * @author Unknown
+ *
+ */
 public class Factorial{
 
+	/**
+	 * The main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
 		//Prompt user to enter integer
@@ -20,7 +32,12 @@ public class Factorial{
 		}	
 	}
 
-	//Factorial method
+	/**
+	 * Recursive Factorial Method
+	 * 
+	 * @param n The number to factorial
+	 * @return The factorial of the number
+	 */
 	public static long factorial(int n){
 
 		if (n==0){

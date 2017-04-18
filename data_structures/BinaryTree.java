@@ -1,11 +1,35 @@
-//A binary tree is a data structure in which an element has two successors(children)
-//The left child is usually smaller than the parent, and the right child is usually bigger
+/**
+ * This entire class is used to build a Binary Tree data structure.
+ * There is the Node Class and the Tree Class, both explained below.
+ * 
+ * @author Unknown
+ *
+ */
+
+
+/**
+ * This class implements the nodes that will go on the Binary Tree.
+ * They consist of the data in them, the node to the left, the node
+ * to the right, and the parent from which they came from.
+ * 
+ * @author Unknown
+ *
+ */
 class Node{
+	/** Data for the node */
 	public int data;
+	/** The Node to the left of this one */
 	public Node left;
+	/** The Node to the right of this one */
 	public Node right;
+	/** The parent of this node */
 	public Node parent;
 
+	/**
+	 * Constructor of Node
+	 * 
+	 * @param value Value to put in the node
+	 */
 	public Node(int value){
 		data = value;
 		left = null;
@@ -14,13 +38,33 @@ class Node{
 	}
 }
 
+
+/**
+ * A binary tree is a data structure in which an element
+ * has two successors(children). The left child is usually
+ * smaller than the parent, and the right child is usually
+ * bigger.
+ * 
+ * @author Unknown
+ *
+ */
 class Tree{
+	/** The root of the Binary Tree */
 	private Node root;
 
+	/**
+	 * Constructor
+	 */
 	public Tree(){
 		root = null;
 	}
-	//Returns the node if it finds it, otherwise returns the parent
+	
+	/**
+	 * Method to find a Node with a certain value
+	 * 
+	 * @param key Value being looked for
+	 * @return The node if it finds it, otherwise returns the parent
+	 */
 	public Node find(int key){
 		Node current = root;
 		Node last = root;
@@ -37,7 +81,11 @@ class Tree{
 		return last;
 	}
 
-	//Inserts the given value
+	/**
+	 * Inserts certain value into the Binary Tree
+	 * 
+	 * @param value Value to be inserted
+	 */
 	public void put(int value){
 		Node newNode = new Node(value);
 		if(root == null)
@@ -60,7 +108,12 @@ class Tree{
 		}
 	}
 
-	//Deletes the given value
+	/**
+	 * Deletes a given value from the Binary Tree
+	 * 
+	 * @param value Value to be deleted
+	 * @return If the value was deleted
+	 */
 	public boolean remove(int value){
 		//temp is the node to be deleted
 		Node temp = find(value);
@@ -84,34 +137,34 @@ class Tree{
 
 		//Two children
 		else if(temp.left != null && temp.right != null){
-			Node succesor = findSuccesor(temp);
+			Node successor = findSuccessor(temp);
 
 			//The left tree of temp is made the left tree of the successor
-			succesor.left = temp.left;
-			succesor.left.parent = succesor;
+			successor.left = temp.left;
+			successor.left.parent = successor;
 
 			//If the successor has a right child, the child's grandparent is it's new parent
-			if(succesor.right != null && succesor.parent != temp){
-				succesor.right.parent = succesor.parent;
-				succesor.parent.left = succesor.right;
-				succesor.right = temp.right;
-				succesor.right.parent = succesor;
+			if(successor.right != null && successor.parent != temp){
+				successor.right.parent = successor.parent;
+				successor.parent.left = successor.right;
+				successor.right = temp.right;
+				successor.right.parent = successor;
 			}
 			if(temp == root){
-				succesor.parent = null;
-				root = succesor;
+				successor.parent = null;
+				root = successor;
 				return true;
 			}
 
 			//If you're not deleting the root
 			else{
-				succesor.parent = temp.parent;
+				successor.parent = temp.parent;
 
 				//This if/else assigns the new node to be either the left or right child of the parent
 				if(temp.parent.data < temp.data)
-					temp.parent.right = succesor;
+					temp.parent.right = successor;
 				else
-					temp.parent.left = succesor;
+					temp.parent.left = successor;
 				return true;
 			}
 		}
@@ -148,8 +201,14 @@ class Tree{
 		}
 	}
 
-	//Move right once and go left down the tree as far as you can
-	public Node findSuccesor(Node n){
+	/**
+	 * This method finds the Successor to the Node given.
+	 * Move right once and go left down the tree as far as you can
+	 * 
+	 * @param n Node that you want to find the Successor of
+	 * @return The Successor of the node
+	 */
+	public Node findSuccessor(Node n){
 		if(n.right == null)
 			return n;
 		Node current = n.right;
@@ -161,11 +220,20 @@ class Tree{
 		return parent;
 	}
 
+	/**
+	 * Returns the root of the Binary Tree
+	 * 
+	 * @return the root of the Binary Tree
+	 */
 	public Node getRoot(){
 			return root;
 	}
 
-	//Prints leftChild - root - rightChild
+	/**
+	 * Prints leftChild - root - rightChild
+	 * 
+	 * @param localRoot The local root of the binary tree
+	 */
 	public void inOrder(Node localRoot){
 		if(localRoot != null){
 			inOrder(localRoot.left);
@@ -173,7 +241,12 @@ class Tree{
 			inOrder(localRoot.right);
 		}
 	}
-	//Prints root - leftChild - rightChild
+	
+	/**
+	 * Prints root - leftChild - rightChild
+	 * 
+	 * @param localRoot The local root of the binary tree
+	 */
 	public void preOrder(Node localRoot){
 		if(localRoot != null){
 			System.out.print(localRoot.data + " ");
@@ -181,7 +254,12 @@ class Tree{
 			preOrder(localRoot.right);
 		}
 	}
-	//Prints rightChild - leftChild - root
+	
+	/**
+	 * Prints rightChild - leftChild - root
+	 * 
+	 * @param localRoot The local root of the binary tree
+	 */
 	public void postOrder(Node localRoot){
 		if(localRoot != null){
 			postOrder(localRoot.left);

@@ -1,7 +1,10 @@
 import java.util.Scanner;
 
 public class LinearSearch{
-	//Main method
+	/**
+	 * The main method
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args){
 
 		Scanner input = new Scanner(System.in);
@@ -27,7 +30,13 @@ public class LinearSearch{
 
 	}
 
-	//Linear search method
+	/**
+	 * Linear search method
+	 * 
+	 * @param list List to be searched
+	 * @param key Key being searched for
+	 * @return Location of the key
+	 */
 	public static int linearsearch(int[] list, int key){
 
 		for (int i = 0; i< list.length; i++){
@@ -37,7 +46,11 @@ public class LinearSearch{
 				
 		} return -1;	
 	}
-	//Helper method
+	/**
+	 * Helper Method
+	 * 
+	 * @param a array to be printed
+	 */
 	public static void printarray(int[] a){
 		System.out.print("The array is: ");
 		for( int d: a){

@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * Implementation of QuickSort
+ * 
+ * @author Unknown
+ *
+ */
+
 public class Quicksort{
 
+	/**
+	 * The main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
 		int[] array;
@@ -28,7 +40,13 @@ public class Quicksort{
 		System.out.println();
 	}
 	
-	//Quicksort Method
+	/**
+	 * QuickSort method
+	 * 
+	 * @param ar Array to perform QuickSort
+	 * @param start Start of the array
+	 * @param end End of the array
+	 */
 	public static void quicksort(int[] ar, int start, int end){
 		int[] array;
 		
@@ -54,7 +72,13 @@ public class Quicksort{
 		}
 	}
 
-	//Helper methods
+	/**
+	 * Helper Method 1 - Swaps elements of an array
+	 * 
+	 * @param ar Array to be used
+	 * @param index1 Index 1 to be switched with Index 2
+	 * @param index2 Index 2 to be switched with Index 1
+	 */
 	public static void swap(int[] ar, int index1, int index2){
 
 		int temp = ar[index1];
@@ -62,6 +86,11 @@ public class Quicksort{
 		ar[index2] = temp;
 	}
 
+	/**
+	 * Helper Method 2 - Prints the elements of an array
+	 * 
+	 * @param array Array to be printed
+	 */
 	public static void printarray(int[] array){
 
 		for (int data : array){
