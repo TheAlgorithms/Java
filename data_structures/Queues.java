@@ -1,16 +1,31 @@
-/*
+/**
+ * This implements Queues by using the class Queue.
+ * 
  * A queue data structure functions the same as a real world queue.
  * The elements that are added first are the first to be removed.
- * New elements are added to the back/rear of the queue. 
+ * New elements are added to the back/rear of the queue.
+ * 
+ * @author Unknown
+ *
  */
 class Queue{
+	/** Max size of the queue */
 	private int maxSize;
+	/** The array representing the queue */
 	private int[] queueArray;
+	/** Front of the queue */
 	private int front;
+	/** Rear of the queue */
 	private int rear;
+	/** How many items are in the queue */
 	private int nItems;
 	
-	public Queue(int size){ //Constructor
+	/**
+	 * Constructor
+	 * 
+	 * @param size Size of the new queue
+	 */
+	public Queue(int size){
 		maxSize = size;
 		queueArray = new int[size];
 		front = 0;
@@ -18,7 +33,13 @@ class Queue{
 		nItems = 0;
 	}
 	
-	public boolean insert(int x){ //Inserts an element at the rear of the queue
+	/**
+	 * Inserts an element at the rear of the queue
+	 * 
+	 * @param x element to be added
+	 * @return True if the element was added successfully
+	 */
+	public boolean insert(int x){
 		if(isFull())
 			return false;
 		if(rear == maxSize-1) //If the back of the queue is the end of the array wrap around to the front
@@ -29,6 +50,11 @@ class Queue{
 		return true;
 	}
 	
+	/**
+	 * Remove an element from the front of the queue
+	 * 
+	 * @return the new front of the queue
+	 */
 	public int remove(){ //Remove an element from the front of the queue
 		if(isEmpty()){
 			System.out.println("Queue is empty");
@@ -42,28 +68,64 @@ class Queue{
 		return temp;
 	}
 	
-	public int peekFront(){ //Checks what's at the front of the queue
+	/**
+	 * Checks what's at the front of the queue
+	 * 
+	 * @return element at the front of the queue
+	 */
+	public int peekFront(){
 		return queueArray[front];
 	}
 	
-	public int peekRear(){ //Checks what's at the rear of the queue
+	/**
+	 * Checks what's at the rear of the queue
+	 * 
+	 * @return element at the rear of the queue
+	 */
+	public int peekRear(){
 		return queueArray[rear];
 	}
 	
-	public boolean isEmpty(){ //Returns true is the queue is empty
+	/**
+	 * Returns true if the queue is empty
+	 * 
+	 * @return true if the queue is empty
+	 */
+	public boolean isEmpty(){
 		return(nItems == 0);
 	}
 	
-	public boolean isFull(){ //Returns true is the queue is full
+	/**
+	 * Returns true if the queue is full
+	 * 
+	 * @return true if the queue is full
+	 */
+	public boolean isFull(){
 		return(nItems == maxSize);
 	}
 	
-	public int getSize(){ //Returns the number of elements in the queue
+	/**
+	 * Returns the number of elements in the queue
+	 * 
+	 * @return number of elements in the queue
+	 */
+	public int getSize(){
 		return nItems;
 	}
 }
-//Example
+
+/**
+ * This class is the example for the Queue class
+ * 
+ * @author Unknown
+ *
+ */
 public class Queues{
+	/**
+	 * Main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String args[]){
 		Queue myQueue = new Queue(4);
 		myQueue.insert(10);

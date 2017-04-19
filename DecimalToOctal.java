@@ -1,7 +1,19 @@
-#import java.util.*;
+import java.util.Scanner;
+
+/**
+ * This class converts Decimal numbers to Octal Numbers
+ * 
+ * @author Unknown
+ *
+ */
 class Decimal_Octal
 {
-  public static void main()
+	/**
+	 * Main Method
+	 * 
+	 * @param args Command line Arguments
+	 */
+  public static void main(String[] args)
   {
     Scanner sc=new Scanner(System.in);
     int n,k,d,s=0,c=0;

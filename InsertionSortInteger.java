@@ -1,4 +1,3 @@
-package sorts;
 /**
  * This is my implementation of an insertion sort.
  * 
@@ -9,7 +8,7 @@ package sorts;
  * @author Kody C. Kendall
  *
  */
-public class InsertionSort {
+public class InsertionSortInteger {
 
 	
 	public int[] insertionIntArraySort(int[] initialArray){

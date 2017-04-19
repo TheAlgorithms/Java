@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * This class implements Selection Sort
+ * 
+ * @author Unknown
+ *
+ */
+
 class SelectionSort
 {
+	/**
+	 * Main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args) 
 	{
 		int array[]=new int[6];

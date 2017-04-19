@@ -1,18 +1,22 @@
 import java.util.Scanner;
 
 /**
- * Merge Sort
+ * This class implements MergeSort
+ * @author Unknown
  *
  */
 public class MergeSort {
+	/** Array for mergeSort*/
     private int[] array;
+    /** Temp Merge Array*/
     private int[] tempMergArr;
+    /** Length of the array*/
     private int length;
 
     /**
-     * Sorts {@code inputArr} with merge sort algorithm.
-     *
-     * @param inputArr
+     * Sorts inputArr with merge sort algorithm
+     * 
+     * @param inputArr Array to be sorted
      */
     public final void sort(int inputArr[]) {
         this.array = inputArr;
@@ -22,12 +26,10 @@ public class MergeSort {
     }
 
     /**
-     * Partitions Array into recursively smaller pieces.
+     * Partitions Array into recursively smaller pieces
      *
-     * @param lowerIndex
-     *            lower bound to include in the first partition
-     * @param higherIndex
-     *            upper bound to include in the third partition
+     * @param lowerIndex lower bound to include in the first partition
+     * @param higherIndex upper bound to include in the third partition
      */
     private void mergeSort(int lowerIndex, int higherIndex) {
         if (lowerIndex < higherIndex) {
@@ -42,11 +44,11 @@ public class MergeSort {
     }
 
     /**
-     * Merges partitions.
+     * Merges partitions
      *
-     * @param lowerIndex
-     * @param middle
-     * @param higherIndex
+     * @param lowerIndex The lower index
+     * @param middle The middle index
+     * @param higherIndex The higher index
      */
     private void mergeParts(int lowerIndex, int middle, int higherIndex) {
         for (int i = lowerIndex; i <= higherIndex; i++) {
@@ -74,7 +76,7 @@ public class MergeSort {
     }
 
     /**
-     * Gets input to sort.
+     * Gets input to sort
      *
      * @return unsorted array of integers to sort
      */
@@ -91,9 +93,9 @@ public class MergeSort {
     }
 
     /**
-     * Main Method.
+     * Main Method
      *
-     * @param args
+     * @param args Command line arguments
      */
     public static void main(String args[]) {
         int[] inputArr = getInput();

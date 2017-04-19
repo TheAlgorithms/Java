@@ -1,19 +1,38 @@
-/*
- * A linked list is similar to an array, it holds values. However, links in a linked list do not have indexes.
- * With a linked list you do not need to predetermine it's size as it grows and shrinks as it is edited.
- * This is an example of a double ended, doubly linked list.
- * Each link references the next link and the previous one.
-*/
-class LinkedList{
-	private Link head; //Head refers to the front of the list
-	private Link tail; //Tail refers to the back of the list
+/**
+ * This class implements a DoublyLinkedList. This is done using the classes
+ * LinkedList and Link.
+ * 
+ * A linked list is simplar to an array, it holds values. However,
+ * links in a linked list do not have indees. With a linked list
+ * you do not need to predetermine it's size as it grows and shrinks
+ * as it is edited. This is an example of a double ended, doubly
+ * linked list. Each link references the next link and the previous
+ * one.
+ * 
+ * @author Unknown
+ *
+ */
 
-	public LinkedList(){
+class DoublyLinkedList{
+	/** Head refers to the front of the list */
+	private Link head;
+	/** Tail refers to the back of the list */
+	private Link tail;
+
+	/**
+	 * Constructor
+	 */
+	public DoublyLinkedList(){
 		head = null;
 		tail = null;
 	}
 
-	public void insertHead(int x){ //Insert an element at the head
+	/**
+	 * Insert an element at the head
+	 * 
+	 * @param x Element to be inserted
+	 */
+	public void insertHead(int x){
 		Link newLink = new Link(x); //Create a new link with a value attached to it
 		if(isEmpty()) //Set the first element added to be the tail
 			tail = newLink;
@@ -23,6 +42,11 @@ class LinkedList{
 		head = newLink; // newLink(head) <--> oldhead
 	}
 
+	/**
+	 * Insert an element at the tail
+	 * 
+	 * @param x Element to be inserted
+	 */
 	public void insertTail(int x){
 		Link newLink = new Link(x);
 		newLink.next = null; // currentTail(tail)     newlink -->
@@ -31,7 +55,12 @@ class LinkedList{
 		tail = newLink; // oldTail <--> newLink(tail) -->
 	}
 
-	public Link deleteHead(){ //Delete the element at the head
+	/**
+	 * Delete the element at the head
+	 * 
+	 * @return The new head
+	 */
+	public Link deleteHead(){
 		Link temp = head;
 		head = head.next; // oldHead <--> 2ndElement(head)
 		head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
@@ -40,6 +69,11 @@ class LinkedList{
 		return temp;
 	}
 
+	/**
+	 * Delete the element at the tail
+	 * 
+	 * @return The new tail
+	 */
 	public Link deleteTail(){
 		Link temp = tail;
 		tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
@@ -47,6 +81,12 @@ class LinkedList{
 		return temp;
 	}
 
+	/**
+	 * Delete the element from somewhere in the list
+	 * 
+	 * @param x element to be deleted
+	 * @return  Link deleted
+	 */
 	public Link delete(int x){
 		Link current = head;
 
@@ -66,6 +106,11 @@ class LinkedList{
 		return current;
 	}
 
+	/**
+	 * Inserts element and reorders
+	 * 
+	 * @param x Element to be added
+	 */
 	public void insertOrdered(int x){
 		Link newLink = new Link(x);
 		Link current = head;
@@ -86,10 +131,18 @@ class LinkedList{
 		}
 	}
 
-	public boolean isEmpty(){ //Returns true if list is empty
+	/**
+	 * Returns true if list is empty
+	 * 
+	 * @return true if list is empty
+	 */
+	public boolean isEmpty(){
 		return(head == null);
 	}
 
+	/**
+	 * Prints contents of the list
+	 */
 	public void display(){ //Prints contents of the list
 		Link current = head;
 		while(current!=null){
@@ -100,24 +153,44 @@ class LinkedList{
 	}
 }
 
+/**
+ * This class is used to implement the nodes of the
+ * linked list.
+ * 
+ * @author Unknown
+ *
+ */
 class Link{
+	/** Value of node */
 	public int value;
-	public Link next; //This points to the link in front of the new link
-	public Link previous; //This points to the link behind the new link
+	/** This points to the link in front of the new link */
+	public Link next;
+	/** This points to the link behind the new link */
+	public Link previous;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param value Value of node
+	 */
 	public Link(int value){
 		this.value = value;
 	}
 
+	/**
+	 * Displays the node
+	 */
 	public void displayLink(){
 		System.out.print(value+" ");
 	}
-}
 
-//Example
-public class DoublyLinkedList{
+	/**
+	 * Main Method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String args[]){
-		LinkedList myList = new LinkedList();
+		DoublyLinkedList myList = new DoublyLinkedList();
 
 		myList.insertHead(13);
 		myList.insertHead(7);

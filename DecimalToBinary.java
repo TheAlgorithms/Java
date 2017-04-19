@@ -1,6 +1,18 @@
-#import java.util.*;
-class Decimal_Binary
+import java.util.Scanner;
+
+/**
+ * This class converts a Decimal number to a Binary number
+ * 
+ * @author Unknown
+ *
+ */
+class DecimalToBinary
 {
+	/**
+	 * Main Method
+	 * 
+	 * @param args Command Line Arguments
+	 */
   public static void main(String args[])
   {
     Scanner sc=new Scanner(System.in);

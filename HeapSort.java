@@ -1,24 +1,22 @@
 import java.util.Scanner;
 
 /**
- * Heap Sort Algorithm. Implements MinHeap
+ * Heap Sort Algorithm
+ * Implements MinHeap
+ * 
+ * @author Unknown
  *
  */
 public class HeapSort {
-    /**
-     * array to store heap.
-     */
+    /** Array to store heap */
     private int[] heap;
-    /**
-     * size of heap.
-     */
+    /** The size of the heap */
     private int size;
 
     /**
-     * Constructor.
-     *
-     * @param heap
-     *            array of unordered integers
+     * Constructor
+     * 
+     * @param heap array of unordered integers
      */
     public HeapSort(int[] heap) {
         this.setHeap(heap);
@@ -26,32 +24,28 @@ public class HeapSort {
     }
 
     /**
-     * Sets this.size with {@code length).
-     *
-     * @param length
-     *            integer length of heap
+     * Setter for variable size
+     *  
+     * @param length new size
      */
     private void setSize(int length) {
         this.size = length;
     }
 
     /**
-     * Sets Heap with {@code heap}.
-     *
-     * @param heap
-     *            array of unordered elements
+     * Setter for variable heap
+     * 
+     * @param heap array of unordered elements
      */
     private void setHeap(int[] heap) {
         this.heap = heap;
     }
 
     /**
-     * Swaps index of {@code first} with {@code second}.
-     *
-     * @param first
-     *            index to swap {@code second} with
-     * @param second
-     *            index to swap {@code first} with
+     * Swaps index of first with second
+     * 
+     * @param first First index to switch
+     * @param second Second index to switch
      */
     private void swap(int first, int second) {
         int temp = this.heap[first];
@@ -60,12 +54,10 @@ public class HeapSort {
     }
 
     /**
-     * Heapifies subtree from {@code top} as root to {@code last} as last child.
-     *
-     * @param rootIndex
-     *            index of root
-     * @param lastChild
-     *            index of last child
+     * Heapifies subtree from top as root to last as last child
+     * 
+     * @param rootIndex index of root
+     * @param lastChild index of last child
      */
     private void heapSubtree(int rootIndex, int lastChild) {
         int leftIndex = rootIndex * 2 + 1; 
@@ -91,10 +83,9 @@ public class HeapSort {
     }
 
     /**
-     * Makes heap with {@code root} as root.
-     *
-     * @param root
-     *            index of root of heap
+     * Makes heap with root as root
+     * 
+     * @param root index of root of heap
      */
     private void makeMinHeap(int root) {
         int leftIndex = root * 2 + 1; 
@@ -111,9 +102,9 @@ public class HeapSort {
     }
 
     /**
-     * Gets the root of this.heap.
+     * Gets the root of heap
      *
-     * @return root of this.heap
+     * @return root of heap
      */
     private int getRoot() {
         this.swap(0, this.size - 1);
@@ -123,9 +114,9 @@ public class HeapSort {
     }
 
     /**
-     * Sorts this.heap with heap sort; displays ordered elements to console.
-     *
-     * @return {@code sorted} array of sorted elements
+     * Sorts heap with heap sort; displays ordered elements to console.
+     * 
+     * @return sorted array of sorted elements
      */
     public final int[] sort() {
         this.makeMinHeap(0); // make min heap using index 0 as root.
@@ -140,7 +131,7 @@ public class HeapSort {
     }
 
     /**
-     * Gets input to sort.
+     * Gets input to sort
      *
      * @return unsorted array of integers to sort
      */
@@ -157,10 +148,9 @@ public class HeapSort {
     }
 
     /**
-     * Prints elements in heap.
+     * Prints elements in heap
      *
-     * @param heap
-     *            array representing heap
+     * @param heap array representing heap
      */
     public static void printData(int[] heap) {
         System.out.println("Sorted Elements:");
@@ -170,10 +160,9 @@ public class HeapSort {
     }
 
     /**
-     * Main method.
+     * Main method
      *
-     * @param args
-     *            the command line arguments
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         int[] heap = getInput();

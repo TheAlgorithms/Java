@@ -1,21 +1,40 @@
-/*
+/**
+ * This class implements a PriorityQueue.
+ * 
  * A priority queue adds elements into positions based on their priority.
  * So the most important elements are placed at the front/on the top.
  * In this example I give numbers that are bigger, a higher priority.
- * Queues in theory have no fixed size but when using an array implementation it does.
+ * Queues in theory have no fixed size but when using an array
+ * implementation it does.
+ * 
+ * @author Unknown
+ *
  */
 class PriorityQueue{
+	/** The max size of the queue */
 	private int maxSize;
+	/** The array for the queue */
 	private int[] queueArray;
+	/** How many items are in the queue */
 	private int nItems;
 
-	public PriorityQueue(int size){ //Constructor
+	/**
+	 * Constructor
+	 * 
+	 * @param size Size of the queue
+	 */
+	public PriorityQueue(int size){
 		maxSize = size;
 		queueArray = new int[size];
 		nItems = 0;
 	}
 
-	public void insert(int value){ //Inserts an element in it's appropriate place
+	/**
+	 * Inserts an element in it's appropriate place
+	 * 
+	 * @param value Value to be inserted
+	 */
+	public void insert(int value){
 		if(nItems == 0){
 			queueArray[0] = value;
 		}
@@ -30,28 +49,64 @@ class PriorityQueue{
 		nItems++;
 	}
 
-	public int remove(){ //Remove the element from the front of the queue
+	/**
+	 * Remove the element from the front of the queue
+	 * 
+	 * @return The element removed
+	 */
+	public int remove(){
 		return queueArray[--nItems];
 	}
 
-	public int peek(){ //Checks what's at the front of the queue
+	/**
+	 * Checks what's at the front of the queue
+	 * 
+	 * @return element at the front of the queue
+	 */
+	public int peek(){
 		return queueArray[nItems-1];
 	}
 
-	public boolean isEmpty(){ //Returns true is the queue is empty
+	/**
+	 * Returns true if the queue is empty
+	 * 
+	 * @return true if the queue is empty
+	 */
+	public boolean isEmpty(){
 		return(nItems == 0);
 	}
 
-	public boolean isFull(){ //Returns true is the queue is full
+	/**
+	 * Returns true if the queue is full
+	 * 
+	 * @return true if the queue is full
+	 */
+	public boolean isFull(){
 		return(nItems == maxSize);
 	}
 
-	public int getSize(){ //Returns the number of elements in the queue
+	/**
+	 * Returns the number of elements in the queue
+	 * 
+	 * @return number of elements in the queue
+	 */
+	public int getSize(){
 		return nItems;
 	}
 }
-//Example
+
+/**
+ * This class implements the PriorityQueue class above.
+ * 
+ * @author Unknown
+ *
+ */
 public class PriorityQueues{
+	/**
+	 * Main method
+	 * 
+	 * @param args Command Line Arguments
+	 */
 	public static void main(String args[]){
 		PriorityQueue myQueue = new PriorityQueue(4);
 		myQueue.insert(10);

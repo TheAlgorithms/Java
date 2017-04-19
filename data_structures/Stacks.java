@@ -1,62 +1,131 @@
-/*
- *A stack is exactly what it sounds like. An element gets added to top of the stack and only the element on the top may be removed.
- *This is an example of an array implementation of a Stack. So an element can only be added/removed from the end of the array.
- *In theory stacks have no fixed size, but with an array implementation it does.
-*/
+import java.util.ArrayList;
+
+/**
+ * This class implements a Stack using two different implementations.
+ * Stack is used with a regular array and Stack2 uses an ArrayList.
+ * 
+ * A stack is exactly what it sounds like. An element gets added to the top of
+ * the stack and only the element on the top may be removed. This is an example
+ * of an array implementation of a Stack. So an element can only be added/removed
+ * from the end of the array. In theory stack have no fixed size, but with an
+ * array implementation it does.
+ * 
+ * @author Unknown
+ *
+ */
 class Stack{
+	/** The max size of the Stack */
 	private int maxSize;
+	/** The array representation of the Stack */
 	private int[] stackArray;
+	/** The top of the stack */
 	private int top;
 
-	public Stack(int size){ //Constructor
+	/**
+	 * Constructor
+	 * 
+	 * @param size Size of the Stack
+	 */
+	public Stack(int size){
 		maxSize = size;
 		stackArray = new int[maxSize];
 		top = -1;
 	}
 
-	public void push(int value){ //Adds an element to the top of the stack
+	/**
+	 * Adds an element to the top of the stack
+	 * 
+	 * @param value The element added
+	 */
+	public void push(int value){
 		top++;
 		stackArray[top] = value;
 	}
 
-	public int pop(){ //Removes the top element of the stack and returns the value you've removed
+	/**
+	 * Removes the top element of the stack and returns the value you've removed
+	 * 
+	 * @return value popped off the Stack
+	 */
+	public int pop(){
 		return stackArray[top--];
 	}
 
-	public int peek(){ //Returns the element at the top of the stack
+	/**
+	 * Returns the element at the top of the stack
+	 * 
+	 * @return element at the top of the stack
+	 */
+	public int peek(){
 		return stackArray[top];
 	}
 
-	public boolean isEmpty(){ //Returns true if the stack is empty
+	/**
+	 * Returns true if the stack is empty
+	 * 
+	 * @return true if the stack is empty
+	 */
+	public boolean isEmpty(){
 		return(top == -1);
 	}
 
-	public boolean isFull(){ //Returns true if the stack is full
+	/**
+	 * Returns true if the stack is full
+	 * 
+	 * @return true if the stack is full
+	 */
+	public boolean isFull(){
 		return(top+1 == maxSize);
 	}
+	
+	/**
+	 * Deletes everything in the Stack
+	 * 
+	 * Doesn't delete elements in the array
+	 * but if you call push method after calling
+	 * makeEmpty it will overwrite previous
+	 * values
+	 */
 	public void makeEmpty(){ //Doesn't delete elements in the array but if you call
 		top = -1;			 //push method after calling makeEmpty it will overwrite previous values
 	}
 }
 
-
-/* This is ArrayList Implementation of stack , Where size is not
- 	a problem we can extend the stack as much as we want*/ 
+/**
+ * This is an ArrayList Implementation of stack, Where size is not
+ * a problem we can extend the stack as much as we want.
+ * 
+ * @author Unknown
+ *
+ */
 class Stack2{
-		
-		
+		/** ArrayList representation of the stack */
 		ArrayList<Integer> stackList;
 		
-		Stack2(){ //constructor
+		/**
+		 * Constructor
+		 */
+		Stack2(){
 			stackList=new ArrayList<>();
 		}
 		
-		
-		void push(int value){ //adds value to the end of list which is the top for stack
+		/**
+		 * Adds value to the end of list which
+		 * is the top for stack
+		 * 
+		 * @param value value to be added
+		 */
+		void push(int value){
 			stackList.add(value);
 		}
 		
-		int pop(){ //pops last element of list which is indeed the top for Stack 
+		/**
+		 * Pops last element of list which is indeed
+		 * the top for Stack
+		 * 
+		 * @return Element popped
+		 */
+		int pop(){
 			
 			if(!isEmpty()){ // checks for an empty Stack
 				
@@ -71,7 +140,12 @@ class Stack2{
 			
 		}
 		
-		boolean isEmpty(){ //checks for empty Stack
+		/**
+		 * Checks for empty Stack
+		 * 
+		 * @return true if stack is empty
+		 */
+		boolean isEmpty(){
 			if(stackList.isEmpty())
 				return true;
 			
@@ -79,13 +153,28 @@ class Stack2{
 			
 		}
 		
-		int peek(){ //top element of stack
+		/**
+		 * Top element of stack
+		 * 
+		 * @return top element of stack
+		 */
+		int peek(){
 			return stackList.get(stackList.size()-1);
 		}
 	}
 
-//Example
+/**
+ * This class implements the Stack and Stack2 created above
+ * 
+ * @author Unknown
+ *
+ */
 public class Stacks{
+	/**
+	 * Main method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String args[]){
 			Stack myStack = new Stack(4); //Declare a stack of maximum size 4
  		//Populate the stack

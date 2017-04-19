@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * This class implements BubbleSort
+ * 
+ * @author Unknown
+ *
+ */
+
 class BubbleSort
 {
+	/**
+	 * Main Method
+	 * 
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args) 
 	{
 		int array[]=new int[6];
