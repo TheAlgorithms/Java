@@ -70,5 +70,6 @@ class BinarySearch
 		{
 			System.out.println("Not found");
 		}
+		input.close();
 	}
 }

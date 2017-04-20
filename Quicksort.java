@@ -38,6 +38,8 @@ public class Quicksort{
 		System.out.println("The sorted array is: ");
 		printarray(array);
 		System.out.println();
+		
+		input.close();
 	}
 	
 	/**

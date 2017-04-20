@@ -88,7 +88,6 @@ public class MaxHeap implements Heap {
 			try {
 				throw new EmptyHeapException("Attempt to delete an element from an empty heap");
 			} catch (EmptyHeapException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         if ((elementIndex > maxHeap.size()) && (elementIndex <= 0)) throw new IndexOutOfBoundsException("Index out of heap range");

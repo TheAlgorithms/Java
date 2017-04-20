@@ -29,7 +29,8 @@ public class Factorial{
 			//Output of factorial for any non-negative number
 			System.out.println("The factorial of "+number+" will yield: "+factorial(number));
 		}
-		}	
+		}
+		input.close();
 	}
 
 	/**

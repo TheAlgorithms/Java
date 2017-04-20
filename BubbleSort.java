@@ -45,6 +45,6 @@ class BubbleSort
 		{
 			System.out.print(array[i]+"\t");
 		}
-
+		input.close();
 	}
 }

@@ -16,7 +16,7 @@ public class dfs{
 	 * @param vertices The vertices
 	 * @param source The source
 	 */
-	public static void dfs(byte [][] a,int vertices,int source){            //passing adjacency matrix and no of vertices
+	public static void dfsImplement(byte [][] a,int vertices,int source){            //passing adjacency matrix and no of vertices
 		byte []b=new byte[vertices];               //flag container containing status of each vertices
 		Arrays.fill(b,(byte)-1);                  //status initialization
 		/*       code   status 
@@ -25,7 +25,7 @@ public class dfs{
 		           1  =  processed       */
 		
 		
-		Stack <Integer> st=new Stack<>();         //operational stack
+		Stack st=new Stack(vertices);         //operational stack
 		st.push(source);                          //assigning source
 		while(!st.isEmpty()){
 			b[st.peek()]=(byte)0;                 //assigning waiting status
@@ -57,5 +57,7 @@ public class dfs{
 				a[i][in.nextInt()]=1;      //taking adjacency entries by assigning 1
 			}
 		}
-		bfs(a,vertices,source);         //function call
-	}}
+		dfsImplement(a,vertices,source);         //function call
+		in.close();
+	}
+}

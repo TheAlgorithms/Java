@@ -18,7 +18,7 @@ class ReverseString
 	 */
 	static String reverseString(String str)
 	{
-		String reverse=" ";
+		String reverse="";
 		if(str.length()==1)
 		{
 			return str;
@@ -42,6 +42,7 @@ class ReverseString
 		System.out.println("Enter the string");
 		String srr=br.readLine();
 		System.out.println("Reverse="+reverseString(srr));
+		br.close();
 	}
 }
 		

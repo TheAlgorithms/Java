@@ -15,7 +15,7 @@ public class bfs{
 	 * @param vertices The vertices to use
 	 * @param source The Source
 	 */
-	public static void bfs(byte [][] a,int vertices,int source){  //passing adjacency matrix and no of vertices
+	public static void bfsImplement(byte [][] a,int vertices,int source){  //passing adjacency matrix and no of vertices
 		byte []b=new byte[vertices];    //flag container containing status of each vertices
 		Arrays.fill(b,(byte)-1);   //status initialization
 		/*       code   status 
@@ -23,17 +23,17 @@ public class bfs{
 				  0  =  waiting
 				  1  =  processed       */
 				
-		Queue <Integer> st=new Queue<>();     //operational stack
-		st.add(source);                                                 //assigning source
+		Stack st = new Stack(vertices);     //operational stack
+		st.push(source);                                                 //assigning source
 		while(!st.isEmpty()){
 			b[st.peek()]=(byte)0;                                   //assigning waiting status
-			System.out.println(st.element());
-			int pop=st.element();
+			System.out.println(st.peek());
+			int pop=st.peek();
 			b[pop]=(byte)1;               //assigning processed status
-			st.remove();                  //removing head of the queue 
+			st.pop();                  //removing head of the queue 
 			for(int i=0;i<vertices;i++){
 				if(a[pop][i]!=0 && b[i]!=(byte)0 && b[i]!=(byte)1 ){
-					st.add(i);
+					st.push(i);
 					b[i]=(byte)0;                        //assigning waiting status
 				}}}
 	}
@@ -56,5 +56,7 @@ public class bfs{
 				a[i][in.nextInt()]=1;      //taking adjacency entries by assigning 1
 			}
 		}
-		bfs(a,vertices,source);         //function call
-	}}
+		bfsImplement(a,vertices,source);         //function call
+		in.close();
+	}
+}
