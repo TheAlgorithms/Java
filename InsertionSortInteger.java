@@ -11,6 +11,12 @@
 public class InsertionSortInteger {
 
 	
+	/**
+	 * This method implements insertion sort by integer
+	 * 
+	 * @param initialArray array to be sorted
+	 * @return sorted array
+	 */
 	public int[] insertionIntArraySort(int[] initialArray){
 		
 		int[] sortedArray = new int[initialArray.length];

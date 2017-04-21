@@ -28,5 +28,6 @@ class CountTheWords
             }
         }
         System.out.println("Number of words in the string = "+count);
+        sc.close();
     }
 }

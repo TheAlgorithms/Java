@@ -27,7 +27,8 @@ public class LinearSearch{
 		//Output array and index of target element, if found
 		printarray(myArray);
 		System.out.printf("The integer %d is found in index %d\n", key, linearsearch(myArray, key));
-
+		
+		input.close();
 	}
 
 	/**

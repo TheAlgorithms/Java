@@ -47,6 +47,7 @@ class SelectionSort
 		{
 			System.out.print(array[i]+"\t");
 		}
-
+		
+		input.close();
 	}
 }

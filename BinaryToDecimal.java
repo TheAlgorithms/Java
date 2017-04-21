@@ -18,6 +18,7 @@ class BinaryToDecimal
   {
     Scanner sc=new Scanner(System.in);
     int n,k,d,s=0,c=0;
+    System.out.print("Binary number: ");
     n=sc.nextInt();
     k=n;
     while(k!=0)
@@ -26,7 +27,7 @@ class BinaryToDecimal
       s+=d*(int)Math.pow(2,c++);
       k/=10;
     }
-    System.out.println("Binary number:"+n);
     System.out.println("Decimal equivalent:"+s);
+    sc.close();
   }
 }

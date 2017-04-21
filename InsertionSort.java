@@ -44,6 +44,6 @@ class InsertionSort
 		{
 			System.out.print(array[i]+"\t");
 		}
-
+		input.close();
 	}
 }
