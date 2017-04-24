@@ -1,7 +1,6 @@
 public static void main(String[] args) throws IOException {
-	  Reader in=new Reader();
-	  int t1=in.nextInt();
-      
+	  Scanner in =new Scanner(System.in);
+	
 	int n=in.nextInt();             //n = Number of nodes or vertices
         int m=in.nextInt();             //m = Number of Edges
         long w[][]=new long [n+1][n+1]; //Adjacency Matrix  
