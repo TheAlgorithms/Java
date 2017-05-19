@@ -16,8 +16,12 @@ class BubbleSort
 	 */
 	public static void main(String[] args) 
 	{
-		int array[]=new int[6];
+		int size = 6;
+		int array[]=new int[size];
+		boolean swap;
+		int last = size - 1;
 		Scanner input=new Scanner(System.in);
+		
 
 		//Input
 		System.out.println("Enter any 6 Numbers for Unsorted Array : ");
@@ -27,18 +31,22 @@ class BubbleSort
 		}
 
 		//Sorting
-		for(int i=0; i<5; i++)
-		{
-			for(int j=i+1; j<6; j++)
-			{
-				if(array[j]>array[i])
-				{
-					int temp=array[j];
-					array[j]=array[i];
-					array[i]=temp;
-				}
-			}
-		}
+		do
+     		{
+          		swap = false;
+          		for (int count = 0; count < last; count++)
+          		{
+               			if (array[count] > array[count + 1])
+               			{
+                    			int temp = array[count];
+                    			array[count] = array[count + 1];
+                    			array[count + 1] = temp;
+                    			swap = true;
+               			}
+          		}
+			
+          		last--;
+     		} while (swap);
 
 		//Output
 		for(int i=0; i<6; i++)
