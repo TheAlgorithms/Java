@@ -29,7 +29,15 @@ public class BinaryToOctal {
 	 * @return The octal number
 	 */
 	public static int convertBinaryToOctal(int b) {
-		
+		int o = 0, r=0, j =1 ;
+		while(b!=0)
+		{
+			r = b % 10;
+        		o = o + r * j;
+       			j = j * 2;
+        		b = b / 10;
+		}
+		return o;
 	}
 
 }
