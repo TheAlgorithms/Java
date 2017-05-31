@@ -1,10 +1,11 @@
+package factorial;
 import java.util.Scanner;
 
 /**
  * This program will print out the factorial of any non-negative
  * number that you input into it.
  * 
- * @author Unknown
+ * @author Marcus
  *
  */
 public class Factorial{
@@ -15,24 +16,27 @@ public class Factorial{
 	 * @param args Command line arguments
 	 */
 	public static void main(String[] args){
-		Scanner input = new Scanner(System.in);
-		//Prompt user to enter integer
-		System.out.print("Enter a non-negative integer: ");
-		
-		//Proceed with factorial calculation only if inputted number is not negative
-		if(input.hasNextInt()){
-			int number = input.nextInt();
-			if (number < 0){
-				System.out.print("Cannot execute. Please enter a non-negative integer: ");
-				number = input.nextInt();
-		} else {
-			//Output of factorial for any non-negative number
-			System.out.println("The factorial of "+number+" will yield: "+factorial(number));
-		}
-		}
-		input.close();
-	}
-
+	  Scanner input = new Scanner(System.in);
+          System.out.print("Enter a non-negative integer: ");
+          
+       //If user does not enter an Integer, we want program to fail gracefully, letting the user know why it terminated   
+          try{
+            int number = input.nextInt();
+            
+       //We keep prompting the user until they enter a positive number 
+            while(number < 0){
+              System.out.println("Your input must be non-negative. Please enter a positive number: ");
+              number = input.nextInt();
+            }
+       //Display the result
+ 	   System.out.println("The factorial of " + number + " will yield: " + factorial(number));  
+           
+          }catch(Exception e){
+            System.out.println("Error: You did not enter an integer. Program has terminated.");
+          }
+          input.close();
+        }
+        
 	/**
 	 * Recursive Factorial Method
 	 * 
@@ -40,14 +44,7 @@ public class Factorial{
 	 * @return The factorial of the number
 	 */
 	public static long factorial(int n){
-
-		if (n==0){
-			return 1;
-		} else if (n==1){
-			return 1;
-		} else {
-			return n * factorial(n-1);
-		}
-
+          if(n == 0 || n == 1) return 1;
+          return n * factorial(n - 1);
 	}
 }
