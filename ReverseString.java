@@ -16,19 +16,17 @@ class ReverseString
 	 * @param str String to be reversed
 	 * @return Reversed string
 	 */
-	static String reverseString(String str)
-	{
-		String reverse="";
-		if(str.length()==1)
-		{
-			return str;
-		}
-		else
-		{
-			reverse=reverse+str.charAt(str.length()-1)+reverseString(str.substring(0,str.length()-1));
-			return reverse;
-		}
-	}
+	public static String reverse(String str){
+          if(str.isEmpty() || str == null) return str;
+          
+          char arr[] = str.toCharArray();
+          for(int i = 0, j = str.length() - 1; i < j; i++, j--){
+            char temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+          }
+          return new String(arr);
+        }
 	
 	/**
 	 * Main Method
