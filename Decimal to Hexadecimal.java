@@ -17,6 +17,7 @@ class Decimal_Hexadecimal
                 s+=String.valueOf(d);
             else
                 s+=a[d-10];
+            k/=16;
         }
         for(i=s.length()-1;i>=0;i--)
             System.out.print(s.charAt(i));

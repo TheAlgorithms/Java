@@ -4,18 +4,17 @@ class BubbleSort
 {
 	public static void main(String[] args)
 	{
-		int n;
-		int array[]=new int[n];
 		Scanner input=new Scanner(System.in);
-    System.out.println("Enter length of array:");
-		n=sc.nextInt();
+		int n;
+		System.out.println("Enter length of array:");
 		//Input
+		n=sc.nextInt();
+		int array[]=new int[n];
 		System.out.println("Enter any n Numbers for Unsorted Array : ");
 		for(int i=0; i<n; i++)
 		{
 			array[i]=input.nextInt();
 		}
-
 		//Sorting
 		for(int i=0; i<n; i++)
 		{
