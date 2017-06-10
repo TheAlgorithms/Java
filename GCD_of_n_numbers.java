@@ -1,10 +1,7 @@
 import java.util.*;
-class GCD
-{
-  public static void main(String args[])throws Exception
-  {
-    try
-    {
+class GCD {
+  public static void main(String args[])throws Exception{
+    try  {
        Scanner sc=new Scanner(System.in);
        int n,i,j,gcd=1;
        System.out.println("Enter value of n:");
@@ -15,17 +12,11 @@ class GCD
         a[i]=sc.nextInt();
        gcd=a[0];
        j=1;
-       while(j<n)
-       {
+       while(j<n){
          if(a[j]%gcd==0)
           j++;
         else
-         gcd=a[j]%gcd;
-       }
-       System.out.println("GCD of entered "+ n + " numbers=" + gcd);
-    }
+         gcd=a[j]%gcd;}
+       System.out.println("GCD of entered "+ n + " numbers=" + gcd);}
     catch(Exception e){
-      return;
-    }
-  }
-}
+      return;  } } }
