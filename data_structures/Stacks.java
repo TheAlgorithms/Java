@@ -38,8 +38,12 @@ class Stack{
 	 * @param value The element added
 	 */
 	public void push(int value){
-		top++;
-		stackArray[top] = value;
+		if(!isFull()){ //Checks for a full stack
+			top++;
+			stackArray[top] = value;
+		}else{
+			System.out.prinln("The stack is full, can't insert value");	
+		}
 	}
 
 	/**
@@ -48,7 +52,12 @@ class Stack{
 	 * @return value popped off the Stack
 	 */
 	public int pop(){
-		return stackArray[top--];
+		if(!isEmpty()){ //Checks for an empty stack
+			return stackArray[top--];
+		}else{
+			System.out.println("The stack is already empty");
+			return -1;
+		}
 	}
 
 	/**
@@ -57,7 +66,12 @@ class Stack{
 	 * @return element at the top of the stack
 	 */
 	public int peek(){
-		return stackArray[top];
+		if(!isEmpty()){ //Checks for an empty stack
+			return stackArray[top];
+		}else{
+			System.out.println("The stack is empty, cant peek");
+			return -1;
+		}
 	}
 
 	/**
