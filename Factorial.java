@@ -1,5 +1,5 @@
 import javax.swing.JOptionPane;
-public class Fatorial {
+public class Factorial {
 
 	public static long factorial(long n){
           return n > 0 ? n*factorial(n-1) : 1;
