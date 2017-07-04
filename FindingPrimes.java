@@ -1,12 +1,5 @@
-/**
- * The Sieve of Eratosthenes is an algorithm use to find prime numbers,
- * up to a given value.
- * Illustration: https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif
- * (This illustration is also in the github repository)
- * 
- * @author Unknown
- *
- */
+import java.util.Scanner;
+
 public class FindingPrimes{
 	/**
 	 * The Main method
@@ -14,7 +7,10 @@ public class FindingPrimes{
 	 * @param args Command line arguments
 	 */
 	public static void main(String args[]){
-		SOE(20); //Example: Finds all the primes up to 20
+		Scanner entry = new Scanner(System.in);
+		System.out.println("Up to wich number do you want to see the primes?:");
+		int n = entry.nextInt();
+		SOE(n); //Example: Finds all the primes up to 20
 	}
 
 	/**
