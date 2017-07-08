@@ -44,8 +44,12 @@ public class Factorial{
 	 * @return The factorial of the number
 	 */
 	public static BigInteger factorial(int n){
-          if(n == 0 || n == 1) return 1;
-          return n * factorial(n - 1);
+          BigInteger f = new BigInteger("1");
+          
+          for(int i = 2; i<=n; ++i) {
+              f = f.multiply(BigInteger.valueOf(i));
+          }
+          return f;
 	}
 
 }
