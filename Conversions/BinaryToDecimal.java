@@ -17,17 +17,17 @@ class BinaryToDecimal
   public static void main(String args[])
   {
     Scanner sc=new Scanner(System.in);
-    int n,k,d,s=0,c=0;
+    int binary,binary_copy,d,decimal=0,c=0;
     System.out.print("Binary number: ");
-    n=sc.nextInt();
-    k=n;
-    while(k!=0)
+    binary=sc.nextInt();
+    binary_copy=binary;
+    while(binary_copy!=0)
     {
-      d=k%10;
-      s+=d*(int)Math.pow(2,c++);
-      k/=10;
+      d=binary_copy%10;
+      decimal+=d*(int)Math.pow(2,c++);
+      binary_copy/=10;
     }
-    System.out.println("Decimal equivalent:"+s);
+    System.out.println("Decimal equivalent:"+decimal);
     sc.close();
   }
 }
