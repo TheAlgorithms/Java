@@ -60,7 +60,7 @@ class SinglyLinkedList{
 	public void display(){
 		Node current = head;
 		while(current!=null){
-			System.out.print(current.getValue() +" ")
+			System.out.print(current.getValue() +" ");
 			current = current.next;
 		}
 		System.out.println();
