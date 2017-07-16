@@ -107,8 +107,8 @@ class Node{
 	 * 
 	 * @param valuein Value to be put in the node
 	 */
-	public Node(int valuein){
-		value = valuein;
+	public Node(int value){
+		value = value;
 	}
 	
 	/**
