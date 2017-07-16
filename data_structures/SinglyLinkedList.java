@@ -63,6 +63,7 @@ class SinglyLinkedList{
 			System.out.print(current.getValue() +" ")
 			current = current.next;
 		}
+		System.out.println();
 	}
 	
 	/**
