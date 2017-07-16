@@ -1,9 +1,9 @@
 /**
  * This class implements a SinglyLinked List. This is done
- * using SinglyLinkedList class and a LinkForLinkedList Class.
+ * using SinglyLinkedList class and a Node Class.
  * 
- * A linked list is implar to an array, it hold values.
- * However, links in a linked list do not have indexes. With
+ * A linked list or Node is implar to an array, it hold values.
+ * However, nodes in a linked list do not have indexes. With
  * a linked list you do not need to predetermine it's size as
  * it gorws and shrinks as it is edited. This is an example of
  * a singly linked list. Elements can only be added/removed
@@ -14,7 +14,7 @@
  */
 class SinglyLinkedList{
 	/**Head refered to the front of the list */
-	private LinkForLinkedList head;
+	private Node head;
 
 	/**
 	 * Constructor of SinglyLinkedList
@@ -29,7 +29,7 @@ class SinglyLinkedList{
 	 * @param x Element to be added
 	 */
 	public void insertHead(int x){
-		LinkForLinkedList newLink = new LinkForLinkedList(x); //Create a new link with a value attached to it
+		Node newLink = new Node(x); //Create a new link with a value attached to it
 		newLink.next = head; 		//Set the new link to point to the current head
 		head = newLink; 			//Now set the new link to be the head
 	}
@@ -39,8 +39,8 @@ class SinglyLinkedList{
 	 * 
 	 * @return The element deleted
 	 */
-	public LinkForLinkedList deleteHead(){
-		LinkForLinkedList temp = head;
+	public Node deleteHead(){
+		Node temp = head;
 		head = head.next; //Make the second element in the list the new head, the Java garbage collector will later remove the old head
 		return temp;
 	}
@@ -58,9 +58,9 @@ class SinglyLinkedList{
 	 * Prints contents of the list
 	 */
 	public void display(){
-		LinkForLinkedList current = head;
+		Node current = head;
 		while(current!=null){
-			current.displayLink();
+			System.out.print(current.getValue() +" ");
 			current = current.next;
 		}
 		System.out.println();
@@ -96,26 +96,26 @@ class SinglyLinkedList{
  * @author Unknown
  *
  */
-class LinkForLinkedList{
+class Node{
 	/** The value of the node */
 	public int value;
 	/** Point to the next node */
-	public LinkForLinkedList next; //This is what the link will point to
+	public Node next; //This is what the link will point to
 
 	/**
 	 * Constructor
 	 * 
 	 * @param valuein Value to be put in the node
 	 */
-	public LinkForLinkedList(int valuein){
+	public Node(int valuein){
 		value = valuein;
 	}
-
+	
 	/**
-	 * Prints out the value of the node
+	 * Returns the value of the node
 	 */
-	public void displayLink(){
-		System.out.print(value+" ");
+	public int getValue(){
+		return value;
 	}
 
 }
