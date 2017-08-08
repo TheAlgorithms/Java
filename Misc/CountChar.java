@@ -17,9 +17,7 @@ public class CountChar {
 
         System.out.println("There are " + CountCharacters(str) + " characters.");
     }
-
-
-
+	
     /**
      * @param str: String to count the characters
      *
@@ -30,12 +28,15 @@ public class CountChar {
 
     	int count = 0;
 
-    	if(str.isEmpty() || str == null)
-    		return -1;
+    	if(str == "" || str == null) //Exceptions
+		{ 
+			return 0; 
+		}
 
-        for(int i = 0; i < str.length(); i++)
-        	if(!Character.isWhitespace(str.charAt(i)))
+        for(int i = 0; i < str.length(); i++) {
+        	if(!Character.isWhitespace(str.charAt(i))) {
         		count++;
+			}}
 
         return count;
      }
