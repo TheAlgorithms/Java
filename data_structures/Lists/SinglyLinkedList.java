@@ -34,6 +34,36 @@ class SinglyLinkedList{
 		head = newNode; 			//Now set the new link to be the head
 	}
 
+
+	/**
+     * Inserts a new node at a specified position
+     * @param head     head node of the linked list
+     * @param data     data to be stored in a new node
+     * @param position position at which a new node is to be inserted
+     * @return  reference of the head of the linked list
+     */
+
+    Node InsertNth(Node head, int data, int position) {
+        
+        Node newNode = new Node();
+        newNode.data = data;
+        
+        if (position == 0) {
+            newNode.next = head;
+            return newNode;
+        }
+
+        Node current = head;
+
+        while (--position > 0) {
+            current = current.next;
+        }
+        
+        newNode.next = current.next;
+        current.next = newNode;
+        return head;
+    }
+    
 	/**
 	 * This method deletes an element at the head
 	 * 
