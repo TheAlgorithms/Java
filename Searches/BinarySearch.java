@@ -1,68 +1,71 @@
 import java.util.Scanner;
 
 /**
- * Implements a Binary Search in Java
  *
- * @author unknown
+ * @author Varun Upadhyay (https://github.com/varunu28)
+ *
  */
+
 class BinarySearch
 {
-	/**
-	 * This method implements the Binary Search
-	 *
-	 * @param array The array to make the binary search
-	 * @param key The number you are looking for
-	 * @param lb The lower bound
-	 * @param up The  upper bound
-	 * @return the location of the key
-	 **/
-	public static int BS(int array[], int key, int lb, int ub)
-	{	
-		if ( lb > ub) 		
-			return -1;
-		
-		int mid = (lb + ub) / 2;
+    /**
+     * This method implements the Generic Binary Search
+     *
+     * @param array The array to make the binary search
+     * @param key The number you are looking for
+     * @param lb The lower bound
+     * @param ub The  upper bound
+     * @return the location of the key
+     **/
 
-		if (key < array[mid]) 		
-			return (BS(array, key, lb, mid-1));
-		
-		if (key > array[mid]) 		
-			return (BS(array, key, mid + 1, ub));
-		
-		return mid;	
-	}
+    public static <T extends Comparable<T>> int BS(T array[], T key, int lb, int ub)
+    {
+        if ( lb > ub)
+            return -1;
 
-	
-	/**
-	 * This is the main method of Binary Search
-	 *
-	 * @author Unknown
-	 * @param args Command line parameters
-	 */
+        int mid = (ub+lb)/2;
+        int comp = key.compareTo(array[mid]);
 
-	public static void main(String[] args) 
-	{
-		Scanner input=new Scanner(System.in);
-		int array[]=new int[10]	;
-		int key;
+        if (comp < 0)
+            return (BS(array, key, lb, mid-1));
 
-		//Input 
-		System.out.println("Enter an array of 10 numbers : ");
-		
-		for (int i = 0; i < 10 ; i++ ) 		
-			array[i] = input.nextInt();	
-		
-		System.out.println("Enter the number to be searched : ");
+        if (comp > 0)
+            return (BS(array, key, mid + 1, ub));
 
-		key = input.nextInt();
+        return mid;
+    }
 
-		int index=BS(array, key, 0, 9);
+    // Driver Program
+    public static void main(String[] args)
+    {
+        Scanner input=new Scanner(System.in);
 
-		if (index != -1) 	
-			System.out.println("Number found at index number : " + index);		
-		else		
-			System.out.println("Not found");
-		
-		input.close();
-	}
+        // For INTEGER Input
+        Integer[] array = new Integer[10];
+        int key = 5;
+
+        for (int i = 0; i < 10 ; i++ )
+            array[i] = i+1;
+
+        int index = BS(array, key, 0, 9);
+
+        if (index != -1)
+            System.out.println("Number " +  key + " found at index number : " + index);
+        else
+            System.out.println("Not found");
+
+
+        // For STRING Input
+        String[] array1 = {"a", "b", "c", "d", "e"};
+        String key1 = "d";
+
+        int index1 = BS(array1, key1, 0, array1.length-1);
+
+        if (index1 != -1)
+            System.out.println("String " + key1 + " found at index number : " + index1);
+        else
+            System.out.println("Not found");
+
+        input.close();
+    }
 }
