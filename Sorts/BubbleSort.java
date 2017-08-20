@@ -9,7 +9,7 @@ class BubbleSort
     /**
      * This method implements the Generic Bubble Sort
      *
-     * @param array The array to make the binary search
+     * @param array The array to be sorted
      * @param last The count of total number of elements in array
      * Sorts the array in increasing order
      **/
