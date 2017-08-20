@@ -1,49 +1,63 @@
-import java.util.Scanner;
-
 /**
- * This class implements Insertion Sort
- * 
- * @author Unknown
+ *
+ * @author Varun Upadhyay (https://github.com/varunu28)
  *
  */
-class InsertionSort
-{
-	/**
-	 * Main Method
-	 * 
-	 * @param args Command line arguments
-	 */
-	public static void main(String[] args) 
-	{
-		int array[]=new int[6];
-		Scanner input=new Scanner(System.in);
 
-		//Input
-		System.out.println("Enter any 6 Numbers for Unsorted Array : ");
-		for(int i=0; i<6; i++)
-		{
-			array[i]=input.nextInt();
-		}
+class InsertionSort {
 
-		//Sorting
-		for(int i=0; i<6; i++)
-		{
-			int temp=array[i];
-			int j=i-1;
-			while(j>=0 && temp<array[j] )
-			{
-				array[j+1]=array[j];
-				j--;
-			}
+    /**
+     * This method implements the Generic Insertion Sort
+     *
+     * @param array The array to make the binary search
+     * @param last The count of total number of elements in array
+     * Sorts the array in increasing order
+     **/
 
-			array[j+1]=temp;
-		}
+    public static <T extends Comparable<T>> void IS(T array[], int last) {
+        T key;
+        for (int j=1;j<last;j++) {
+            
+            // Picking up the key(Card)
+            key = array[j];
+            int i = j-1;
+            while (i>=0 && key.compareTo(array[i]) < 0) {
+                array[i+1] = array[i];
+                i--;
+            }
+            // Placing the key (Card) at its correct position in the sorted subarray
+            array[i+1] = key;
+        }
+    }
 
-		//Output
-		for(int i=0; i<6; i++)
-		{
-			System.out.print(array[i]+"\t");
-		}
-		input.close();
-	}
+    // Driver Program
+    public static void main(String[] args) {
+        // Integer Input
+        int[] arr1 = {4,23,6,78,1,54,231,9,12};
+        int last = arr1.length;
+        Integer[] array = new Integer[arr1.length];
+        for (int i=0;i<arr1.length;i++) {
+            array[i] = arr1[i];
+        }
+
+        IS(array, last);
+
+        // Output => 1 4 6 9 12 23 54 78 231
+        for (int i=0;i<array.length;i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+
+        // String Input
+        String[] array1 = {"c", "a", "e", "b","d"};
+        last = array1.length;
+
+        IS(array1, last);
+
+        //Output => a	b	c	d	e
+        for(int i=0; i<last; i++)
+        {
+            System.out.print(array1[i]+"\t");
+        }
+    }
 }
