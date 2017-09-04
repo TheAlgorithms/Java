@@ -18,7 +18,8 @@ public class Fibonacci {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        System.out.println(fib(n)); // Returns 8 for n = 6
+        System.out.println(fibMemo(n)); // Returns 8 for n = 6
+        System.out.println(fibBotUp(n)); // Returns 8 for n = 6
     }
 
     /**
@@ -28,7 +29,7 @@ public class Fibonacci {
      * Outputs the nth fibonacci number
      **/
 
-    public static int fib(int n) {
+    public static int fibMemo(int n) {
         if (map.containsKey(n)) {
             return map.get(n);
         }
@@ -44,6 +45,31 @@ public class Fibonacci {
         }
 
         return f;
+    }
+
+    /**
+     * This method finds the nth fibonacci number using bottom up
+     *
+     * @param n The input n for which we have to determine the fibonacci number
+     * Outputs the nth fibonacci number
+     **/
+
+    public static int fibBotUp(int n) {
+
+        Map<Integer,Integer> fib = new HashMap<Integer,Integer>();
+
+        for (int i=1;i<n+1;i++) {
+            int f = 1;
+            if (i<=2) {
+                f = 1;
+            }
+            else {
+                f = fib.get(i-1) + fib.get(i-2);
+            }
+            fib.put(i, f);
+        }
+
+        return fib.get(n);
     }
 }
 
