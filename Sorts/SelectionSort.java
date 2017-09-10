@@ -1,53 +1,73 @@
-import java.util.Scanner;
-
 /**
- * This class implements Selection Sort
- * 
- * @author Unknown
+ *
+ * @author Varun Upadhyay (https://github.com/varunu28)
  *
  */
 
-class SelectionSort
-{
-	/**
-	 * Main method
-	 * 
-	 * @param args Command line arguments
-	 */
-	public static void main(String[] args) 
-	{
-		int array[]=new int[6];
-		Scanner input=new Scanner(System.in);
+public class SelectionSort {
 
-		//Input
-		System.out.println("Enter any 6 Numbers for Unsorted Array : ");
-		for(int i=0; i<6; i++)
-		{
-			array[i]=input.nextInt();
-		}
+    /**
+     * This method implements the Generic Selection Sort
+     *
+     * @param arr The array to be sorted
+     * @param n The count of total number of elements in array
+     * Sorts the array in increasing order
+     **/
 
-		//Sorting
-		for(int i=0; i<6; i++)
-		{
-			int min=i;
-			for(int j=i+1; j<6; j++)
-			{
-				if(array[j]<array[min])
-				{
-					min=j;
-				}
-			}
-			int temp=array[i];
-			array[i]=array[min];
-			array[min]=temp;
-		}
+    public static <T extends Comparable<T>> void SS(T[] arr, int n) {
 
-		//Output
-		for(int i=0; i<6; i++)
-		{
-			System.out.print(array[i]+"\t");
-		}
-		
-		input.close();
-	}
+        for (int i=0;i<n-1;i++) {
+
+            // Initial index of min
+            int min = i;
+
+            for (int j=i+1;j<n;j++) {
+                if (arr[j].compareTo(arr[min]) < 0) {
+                    min = j;
+                }
+            }
+
+            // Swapping if index of min is changed
+            if (min != i) {
+                T temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
+    }
+
+    // Driver Program
+    public static void main(String[] args) {
+
+        // Integer Input
+        int[] arr1 = {4,23,6,78,1,54,231,9,12};
+        int n = arr1.length;
+
+        Integer[] array = new Integer[n];
+        for (int i=0;i<n;i++) {
+            array[i] = arr1[i];
+        }
+
+        SS(array, n);
+
+        // Output => 1	  4	 6	9	12	23	54	78	231
+        for(int i=0; i<n; i++)
+        {
+            System.out.print(array[i]+"\t");
+        }
+
+        System.out.println();
+
+        // String Input
+        String[] array1 = {"c", "a", "e", "b","d"};
+        n = array1.length;
+
+        SS(array1, n);
+
+        //Output => a	b	 c  d	e
+        for(int i=0; i<n; i++)
+        {
+            System.out.print(array1[i]+"\t");
+        }
+    }
 }
