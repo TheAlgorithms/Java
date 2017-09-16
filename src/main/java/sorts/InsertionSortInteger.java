@@ -1,3 +1,5 @@
+package sorts;
+
 /**
  * This is my implementation of an insertion sort.
  * 
@@ -10,7 +12,6 @@
  */
 public class InsertionSortInteger {
 
-	
 	/**
 	 * This method implements insertion sort by integer
 	 * 
@@ -18,24 +19,17 @@ public class InsertionSortInteger {
 	 * @return sorted array
 	 */
 	public int[] insertionIntArraySort(int[] initialArray){
-		
 		int[] sortedArray = new int[initialArray.length];
-		
 		//Marking first element as sorted. 
 		sortedArray[0] = initialArray[0];
-				
 		//For each element in the initialArray
-		for (int index = 1; index < initialArray.length; index++){	
-			
+		for (int index = 1; index < initialArray.length; index++){
 			//Finding the last index that was sorted
 			int lastSortedIndex = index;
-			
 			//Extracting the next element to be compared w/ other sorted elements from initial array
 			int extractedElement = initialArray[index];
-			
 			//Compare the values of the sorted index to the current extractedElement
 			for (lastSortedIndex = index; lastSortedIndex > 0; lastSortedIndex--){
-				
 				//If our extracted element is smaller than element to the right, switch them. 
 				if (sortedArray[lastSortedIndex-1] > extractedElement){
 					//move the element to the left of extractedElement to the right in sortedArray
@@ -49,13 +43,8 @@ public class InsertionSortInteger {
 					//Terminating loop since element is in the right spot. 
 					break;  
 				}
-				
 			}
-			
 		}
-		
 		return sortedArray;
-		
 	}
-
 }

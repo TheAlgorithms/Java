@@ -2,7 +2,7 @@ package datastructures.stacks;
 
 import org.junit.Test;
 
-public class NodeStackTest {
+public class NodeStackArrayTest {
     @Test
     public void test() {
         NodeStack<Integer> Stack = new NodeStack<>();

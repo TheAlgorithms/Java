@@ -1,29 +1,4 @@
-/**
- *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
- */
-
-// Driver Program
-public class TreeTraversal {
-    public static void main(String[] args) {
-        Node tree = new Node(5);
-        tree.insert(3);
-        tree.insert(7);
-
-        // Prints 3 5 7
-        tree.printInOrder();
-        System.out.println();
-
-        // Prints 5 3 7
-        tree.printPreOrder();
-        System.out.println();
-
-        // Prints 3 7 5
-        tree.printPostOrder();
-        System.out.println();
-    }
-}
+package datastructures.trees;
 
 /**
  * The Node class which initializes a Node of a tree
@@ -32,28 +7,25 @@ public class TreeTraversal {
  * printPreOrder: ROOT -> LEFT -> RIGHT
  * printPostOrder: LEFT -> RIGHT -> ROOT
  */
-class Node {
-    Node left, right;
-    int data;
+public class TreeTraversal {
+    private TreeTraversal left, right;
+    private int data;
 
-    public Node(int data) {
+    public TreeTraversal(int data) {
         this.data = data;
     }
 
-    public void insert (int value) {
+    public void insert(int value) {
         if (value < data) {
             if (left == null) {
-                left = new Node(value);
-            }
-            else {
+                left = new TreeTraversal(value);
+            } else {
                 left.insert(value);
             }
-        }
-        else {
+        } else {
             if (right == null) {
-                right = new Node(value);
-            }
-            else {
+                right = new TreeTraversal(value);
+            } else {
                 right.insert(value);
             }
         }

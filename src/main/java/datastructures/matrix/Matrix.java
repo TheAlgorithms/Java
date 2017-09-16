@@ -1,44 +1,13 @@
+package datastructures.matrix;
+
 /**
-* Matrix data-type.
+* matrix data-type.
 *
 * @author Kyler Smith, 2017
 */
 
 
 public class Matrix {
-
-	public static void main(String[] args) {
-
-		int[][] data1 = new int[0][0];
-        int[][] data2 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        int[][] data3 = {{1, 4, 7}, {2, 5, 8}, {3, 6, 9}};
-
-        Matrix m1 = new Matrix(data1);
-        Matrix m2 = new Matrix(data2);
-        Matrix m3 = new Matrix(data3);
-
-        System.out.println("m1 --> Rows: " + m1.getRows() + " Columns: " + m1.getColumns());
-        System.out.println("m2 --> Rows: " + m2.getRows() + " Columns: " + m2.getColumns());
-        System.out.println("m3 --> Rows: " + m3.getRows() + " Columns: " + m3.getColumns());
-
-        //check for reference issues
-        System.out.println("m2 -->\n" + m2);
-        data2[1][1] = 101;
-        System.out.println("m2 -->\n" + m2);
-
-        //test equals
-        System.out.println("m2==null: " + m2.equals(null));             //false
-        System.out.println("m3==\"MATRIX\": " + m2.equals("MATRIX"));   //false
-        System.out.println("m2==m1: " + m2.equals(m1));                 //false
-        System.out.println("m2==m2: " + m2.equals(m2));                 //true
-        System.out.println("m2==m3: " + m2.equals(m3));                 //false
-
-        //test operations (valid)
-        System.out.println("2 * m2:\n" + m2.scale(2));
-        System.out.println("m2 + m3:\n" + m2.plus(m3));
-        System.out.println("m2 - m3:\n" + m2.minus(m3));
-	}
-
 
     /**
      *  Data needs to be a deep copy as not to change the original state.
@@ -78,7 +47,7 @@ public class Matrix {
     }
 
     /**
-    * Returns the number of rows in the Matrix
+    * Returns the number of rows in the matrix
     *
     * @return rows
     */
@@ -90,7 +59,7 @@ public class Matrix {
     }
 
     /**
-    * Returns the number of rows in the Matrix
+    * Returns the number of rows in the matrix
     *
     * @return columns
     */
@@ -108,40 +77,33 @@ public class Matrix {
 	* @return A new matrix scaled by the scalar value
 	*/
     public Matrix scale(int scalar) {
-
     	int[][] newData = new int[this.data.length][this.data[0].length];
-
 		for (int i = 0; i < this.getRows(); ++i)
 			for(int j = 0; j < this.getColumns(); ++j)
 				newData[i][j] = this.data[i][j] * scalar;
-
 		return new Matrix(newData);
     }
 
     /**
     * Adds this matrix to another matrix.
     *
-    * @param other : Matrix to be added
+    * @param other : matrix to be added
     * @return addend
     */
     public Matrix plus(Matrix other) throws RuntimeException {
-
     	int[][] newData = new int[this.data.length][this.data[0].length];
-
     	if(this.getRows() != other.getRows() || this.getColumns() != other.getColumns())
 			throw new RuntimeException("Not the same size matrix.");
-
     	for (int i = 0; i < this.getRows(); ++i)
 			for(int j = 0; j < this.getColumns(); ++j)
 				newData[i][j] = this.data[i][j] + other.getElement(i, j);
-
         return new Matrix(newData);
     }
 
     /**
     * Subtracts this matrix from another matrix.
     *
-    * @param other : Matrix to be subtracted
+    * @param other : matrix to be subtracted
     * @return difference
     */
     public Matrix minus(Matrix other) throws RuntimeException {
@@ -169,14 +131,14 @@ public class Matrix {
     }
 
     /**
-    * Returns the Matrix as a String in the following format
+    * Returns the matrix as a String in the following format
     *
     * [ a b c ] ...
     * [ x y z ] ...
     * [ i j k ] ...
     *    ...
     *
-    * @return Matrix as String
+    * @return matrix as String
 	* TODO: Work formatting for different digit sizes
     */
     public String toString() {

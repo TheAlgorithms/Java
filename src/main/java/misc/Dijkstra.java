@@ -1,13 +1,13 @@
-package misc;/*
-@author  : Mayank K Jha
-
-*/
-
+package misc;
 
 import java.io.IOException;
 import java.util.*;
 
-public class Dijkshtra {
+
+/**
+ * @author : Mayank K Jha
+ */
+public class Dijkstra {
 
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
@@ -66,6 +66,5 @@ public class Dijkshtra {
                 System.out.print("-1" + " ");
             }    //Printing -1 if there is no path b/w given pair of edges
         }
-
     }
 }

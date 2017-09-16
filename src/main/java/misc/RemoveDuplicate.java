@@ -1,42 +1,30 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+package misc;
 
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
- *
  */
-
-public class removeDuplicateFromString {
-    public static void main (String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String inp_str = br.readLine();
-
-        System.out.println("Actual string is: " + inp_str);
-        System.out.println("String after removing duplicates: " + removeDuplicate(inp_str));
-
-        br.close();
-    }
+public class RemoveDuplicate {
 
     /**
      * This method produces a string after removing all the duplicate characters from input string and returns it
      * Example: Input String - "aabbbccccddddd"
-     *          Output String - "abcd"
-     * @param s String from which duplicate characters have to be removed
+     * Output String - "abcd"
+     *
+     * @param string String from which duplicate characters have to be removed
      * @return string with only unique characters
      */
 
-    public static String removeDuplicate(String s) {
-        if(s.isEmpty() || s == null) {
-            return s;
+    public static String removeDuplicate(String string) {
+        if (string == null || string.isEmpty()) {
+            return string;
         }
 
         StringBuilder sb = new StringBuilder("");
-        int n = s.length();
+        int n = string.length();
 
         for (int i = 0; i < n; i++) {
-            if (sb.toString().indexOf(s.charAt(i)) == -1) {
-                sb.append(String.valueOf(s.charAt(i)));
+            if (sb.toString().indexOf(string.charAt(i)) == -1) {
+                sb.append(String.valueOf(string.charAt(i)));
             }
         }
 

@@ -1,7 +1,5 @@
 package dynamicprogramming;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,16 +9,7 @@ import java.util.Map;
 
 public class Fibonacci {
 
-    public static Map<Integer, Integer> map = new HashMap<>();
-
-    public static void main(String[] args) throws Exception {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-
-        System.out.println(fibMemo(n)); // Returns 8 for n = 6
-        System.out.println(fibBotUp(n)); // Returns 8 for n = 6
-    }
+    private final static Map<Integer, Integer> map = new HashMap<>();
 
     /**
      * This method finds the nth fibonacci number using memoization technique
@@ -28,7 +17,6 @@ public class Fibonacci {
      * @param n The input n for which we have to determine the fibonacci number
      *          Outputs the nth fibonacci number
      **/
-
     public static int fibMemo(int n) {
         if (map.containsKey(n)) {
             return map.get(n);
@@ -49,11 +37,8 @@ public class Fibonacci {
      * @param n The input n for which we have to determine the fibonacci number
      *          Outputs the nth fibonacci number
      **/
-
     public static int fibBotUp(int n) {
-
         Map<Integer, Integer> fib = new HashMap<>();
-
         for (int i = 1; i < n + 1; i++) {
             int f = 1;
             if (i <= 2) {
@@ -63,7 +48,6 @@ public class Fibonacci {
             }
             fib.put(i, f);
         }
-
         return fib.get(n);
     }
 }
