@@ -1,7 +1,7 @@
 
 /**
  * This class implements the Graph data structure
- * using the classes Graph and Graphs.
+ * using the classes Graph and graphs.
  * 
  * @author Zachary Jones
  *

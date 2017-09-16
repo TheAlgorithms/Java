@@ -4,7 +4,7 @@
  * A priority queue adds elements into positions based on their priority.
  * So the most important elements are placed at the front/on the top.
  * In this example I give numbers that are bigger, a higher priority.
- * Queues in theory have no fixed size but when using an array
+ * queues in theory have no fixed size but when using an array
  * implementation it does.
  * 
  * @author Unknown

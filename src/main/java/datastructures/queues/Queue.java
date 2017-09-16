@@ -1,5 +1,5 @@
 /**
- * This implements Queues by using the class Queue.
+ * This implements queues by using the class Queue.
  * 
  * A queue data structure functions the same as a real world queue.
  * The elements that are added first are the first to be removed.
