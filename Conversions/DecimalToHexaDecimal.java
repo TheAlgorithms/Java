@@ -24,10 +24,10 @@ class Test {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-      System.out.println("Write your Number to convert into HexaDecimal: ")
+      System.out.println("Write your Number to convert into HexaDecimal: ");
      int dec = 305445566;
      String hex = Integer.toHexString(dec);
-     String hex = decToHex(dec);
+     hex = decToHex(dec);
      System.out.println(hex);       
   }
 }
