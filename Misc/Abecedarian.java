@@ -10,12 +10,8 @@ class Abecedarian{
 
             if(s.charAt(i)<=s.charAt(i + 1)){} //Need to check if each letter for the whole word is less than the one before it
 
-            else{
-                System.out.println("That is not abecedarian");
-                return false;
+            else{return false;}
             }
-
         }
-        System.out.println("Wow, that number is abecedarian");
         return true;
-    }
+}
