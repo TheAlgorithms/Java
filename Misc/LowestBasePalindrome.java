@@ -46,7 +46,7 @@ public class LowestBasePalindrome {
 		String digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		
 		while (!foundBase) {
-			// Try from bases 2 to num (any number n in base n is 1)
+			// Try from bases 2 to num-1
 			for (base=2; base<num2; base++) {
 				newNum="";
 				while(num>0) {
