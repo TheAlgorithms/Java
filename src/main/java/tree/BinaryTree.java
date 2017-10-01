@@ -1,3 +1,4 @@
+package tree;
 /**
 * This entire class is used to build a Binary Tree data structure.
 * There is the Node Class and the Tree Class, both explained below.
@@ -6,7 +7,20 @@
 *
 */
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
 
+/**
+ * A binary tree is a data structure in which an element
+ * has two successors(children). The left child is usually
+ * smaller than the parent, and the right child is usually
+ * bigger.
+ *
+ * @author Unknown
+ *
+ */
+public class BinaryTree{
 /**
 * This class implements the nodes that will go on the Binary Tree.
 * They consist of the data in them, the node to the left, the node
@@ -36,26 +50,21 @@ class Node{
 		right = null;
 		parent = null;
 	}
+
+	@Override
+	public String toString() {
+		return "{" + data + "}";
+	}
+
 }
 
-
-/**
-* A binary tree is a data structure in which an element
-* has two successors(children). The left child is usually
-* smaller than the parent, and the right child is usually
-* bigger.
-*
-* @author Unknown
-*
-*/
-class Tree{
 	/** The root of the Binary Tree */
 	private Node root;
 
 	/**
 	* Constructor
 	*/
-	public Tree(){
+	public BinaryTree(){
 		root = null;
 	}
 
@@ -80,6 +89,27 @@ class Tree{
 	}
 
 	/**
+	 * @param key value
+	 * @return parent node for insertion
+	 */
+	private Node findParentForInsertion(int key) {
+		Node current = root;
+		Node last = root;
+		while (current != null) {
+			last = current;
+			if (key < current.data) {
+				current = current.left;
+			} else if (key > current.data) {
+				current = current.right;
+			} else {
+				//If you find the value return it
+				return current;
+			}
+		}
+		return last;
+	}
+
+	/**
 	* Inserts certain value into the Binary Tree
 	*
 	* @param value Value to be inserted
@@ -90,7 +120,7 @@ class Tree{
 		root = newNode;
 		else{
 			//This will return the soon to be parent of the value you're inserting
-			Node parent = find(value);
+			Node parent = findParentForInsertion(value);
 
 			//This if/else assigns the new node to be either the left or right child of the parent
 			if(value < parent.data){
@@ -227,42 +257,51 @@ class Tree{
 				return root;
 			}
 
-			/**
-			* Prints leftChild - root - rightChild
-			*
-			* @param localRoot The local root of the binary tree
-			*/
-			public void inOrder(Node localRoot){
-				if(localRoot != null){
-					inOrder(localRoot.left);
-					System.out.print(localRoot.data + " ");
-					inOrder(localRoot.right);
-				}
-			}
+	/**
+	 * @return result of tree traversal
+	 */
+	public List<Node> traverse(BiConsumer<Node, List<Node>> traverser) {
+		List<Node> result = new ArrayList<>();
+		traverser.accept(getRoot(), result);
+		return result;
+	}
 
-			/**
-			* Prints root - leftChild - rightChild
-			*
-			* @param localRoot The local root of the binary tree
-			*/
-			public void preOrder(Node localRoot){
-				if(localRoot != null){
-					System.out.print(localRoot.data + " ");
-					preOrder(localRoot.left);
-					preOrder(localRoot.right);
-				}
-			}
-
-			/**
-			* Prints rightChild - leftChild - root
-			*
-			* @param localRoot The local root of the binary tree
-			*/
-			public void postOrder(Node localRoot){
-				if(localRoot != null){
-					postOrder(localRoot.left);
-					postOrder(localRoot.right);
-					System.out.print(localRoot.data + " ");
-				}
-			}
+	/**
+	 * Traverses leftChild - root - rightChild
+	 *
+	 * @param localRoot The local root of the binary tree
+	 */
+	public static void inOrder(Node localRoot, List<Node> result){
+		if(localRoot != null){
+			inOrder(localRoot.left, result);
+			result.add(localRoot);
+			inOrder(localRoot.right, result);
 		}
+	}
+
+	/**
+	 * Traverses root - leftChild - rightChild
+	 *
+	 * @param localRoot The local root of the binary tree
+	 */
+	public static void preOrder(Node localRoot, List<Node> result){
+		if(localRoot != null){
+			result.add(localRoot);
+			preOrder(localRoot.left, result);
+			preOrder(localRoot.right, result);
+		}
+	}
+
+	/**
+	 * Traverses rightChild - leftChild - root
+	 *
+	 * @param localRoot The local root of the binary tree
+	 */
+	public static void postOrder(Node localRoot, List<Node> result){
+		if(localRoot != null){
+			postOrder(localRoot.left, result);
+			postOrder(localRoot.right, result);
+			result.add(localRoot);
+		}
+	}
+}
