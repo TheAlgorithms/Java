@@ -1,4 +1,4 @@
-package stacks_and_queues;
+/* Program to reverse a Stack using Recursion*/
 
 
 import java.util.Stack;
@@ -38,7 +38,7 @@ public class ReverseStackUsingRecursion {
 
     //Function Used to reverse Stack Using Recursion
     private static void reverseUsingRecursion(Stack<Integer> stack) {
-        if(stack.isEmpty())
+        if(stack.isEmpty()) // If stack is empty then return
         {
             return;
         }
@@ -60,7 +60,7 @@ public class ReverseStackUsingRecursion {
             int temp = stack.peek(); /* All the items are stored in call stack until we reach end*/
             stack.pop();
 
-            insertAtEnd(temptop);
+            insertAtEnd(temptop); //Recursive call
 
             stack.push(temp);
         }
