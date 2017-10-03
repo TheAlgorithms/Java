@@ -10,6 +10,10 @@ public class TreeTraversal {
         Node tree = new Node(5);
         tree.insert(3);
         tree.insert(7);
+        tree.insert(2);
+        tree.insert(4);
+        tree.insert(6);
+        tree.insert(8);
 
         // Prints 3 5 7
         tree.printInOrder();
@@ -22,6 +26,43 @@ public class TreeTraversal {
         // Prints 3 7 5
         tree.printPostOrder();
         System.out.println();
+
+        // After reversing, it prints 7 5 3
+        reverseTree(tree);
+        tree.printInOrder();
+    }
+
+    /**
+     * Method for reversing the tree.
+     * It takes and swaps hole trees left and right side.
+     * Example:
+     *
+     *       6
+     *     /   \
+     *    3     4
+     *   / \   / \
+     *  7   3 8   1
+     *
+     * After reverse:
+     *
+     *      6
+     *    /   \
+     *   4     3
+     *  / \   / \
+     * 1   8 3   7
+     *
+     *
+    */
+    public static void reverseTree(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        reverseTree(root.left);
+        reverseTree(root.right);
+        Node tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
     }
 }
 
