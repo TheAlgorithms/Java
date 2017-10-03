@@ -74,18 +74,16 @@ public class BinaryTree {
      */
     public Node find(int key) {
         Node current = root;
-        Node last = root;
         while (current != null) {
-            last = current;
-            if (key < current.data)
+            if (key < current.data) {
                 current = current.left;
-            else if (key > current.data)
+            } else if (key > current.data) {
                 current = current.right;
-                //If you find the value return it
-            else
+            } else {    // If you find the value return it
                 return current;
+            }
         }
-        return last;
+        return null;
     }
 
     /**
@@ -165,6 +163,7 @@ public class BinaryTree {
             //If you're not deleting the root
             else {
                 successor.parent = temp.parent;
+
                 //This if/else assigns the new node to be either the left or right child of the parent
                 if (temp.parent.data < temp.data)
                     temp.parent.right = successor;
@@ -181,7 +180,9 @@ public class BinaryTree {
                     root = temp.right;
                     return true;
                 }
+
                 temp.right.parent = temp.parent;
+
                 //Assigns temp to left or right child
                 if (temp.data < temp.parent.data)
                     temp.parent.left = temp.right;
@@ -195,7 +196,9 @@ public class BinaryTree {
                     root = temp.left;
                     return true;
                 }
+
                 temp.left.parent = temp.parent;
+
                 //Assigns temp to left or right side
                 if (temp.data < temp.parent.data)
                     temp.parent.left = temp.left;
