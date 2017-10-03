@@ -1,8 +1,6 @@
-package com.manmeet;
-
 import java.util.Scanner;
 
-public class TowerOfHanoi
+class TowerOfHanoi
 {
     public static void shift(int n, String startPole, String intermediatePole, String endPole)
     {
@@ -10,6 +8,8 @@ public class TowerOfHanoi
         {
             return;
         }
+      
+      
         // Shift function is called in recursion for swapping the n-1 disc from the startPole to the intermediatePole
         shift(n - 1, startPole, endPole, intermediatePole);
         System.out.println("\nMove \"" + n + "\" from " + startPole + " --> " + endPole); // Result Printing
