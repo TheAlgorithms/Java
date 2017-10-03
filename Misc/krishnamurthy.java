@@ -1,7 +1,7 @@
 import java.util.Scanner;
 class krishnamurthy
 {
- int fact(int n)
+ private static int fact(int n)
  {
      int i,p=1;
      for(i=n;i>=1;i--)

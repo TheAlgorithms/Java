@@ -26,8 +26,8 @@ public class removeDuplicateFromString {
      * @return string with only unique characters
      */
 
-    public static String removeDuplicate(String s) {
-        if(s.isEmpty() || s == null) {
+    private static String removeDuplicate(String s) {
+        if(s.isEmpty() || s.equals(null)) {
             return s;
         }
 
