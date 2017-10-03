@@ -40,7 +40,7 @@ public class Fibonacci {
             f = 1;
         }
         else {
-            f = fib(n-1) + fib(n-2);
+            f = fibMemo(n-1) + fibMemo(n-2);
             map.put(n,f);
         }
 

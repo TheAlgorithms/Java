@@ -23,7 +23,7 @@ class BinarySearch
         if ( lb > ub)
             return -1;
 
-        int mid = (ub+lb)/2;
+        int mid = (ub+lb) >>> 1;
         int comp = key.compareTo(array[mid]);
 
         if (comp < 0)

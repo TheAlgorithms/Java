@@ -1,5 +1,3 @@
-package com.manmeet;
-
 import java.util.Scanner;
 
 public class TowerOfHanoi
