@@ -20,7 +20,7 @@ public class HashMap<K, V> {
     }
 
     private int size = 0;
-    private LinkedList<HmNodes> buckets[];
+    private LinkedList<HmNodes>[] buckets;
 
     public HashMap() {
         //initially create bucket of any size

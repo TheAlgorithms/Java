@@ -6,10 +6,9 @@ import java.util.Map;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-
 public class Fibonacci {
 
-    private final static Map<Integer, Integer> map = new HashMap<>();
+    public static Map<Integer, Integer> map = new HashMap<>();
 
     /**
      * This method finds the nth fibonacci number using memoization technique
@@ -51,4 +50,3 @@ public class Fibonacci {
         return fib.get(n);
     }
 }
-
