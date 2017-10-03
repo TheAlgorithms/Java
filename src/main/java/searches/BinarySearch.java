@@ -4,6 +4,7 @@ package searches;
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
 class BinarySearch {
+
     /**
      * This method implements the Generic Binary Search
      *
@@ -16,7 +17,7 @@ class BinarySearch {
     public static <T extends Comparable<T>> int BS(T array[], T key, int lb, int ub) {
         if (lb > ub)
             return -1;
-        int mid = (ub + lb) / 2;
+        int mid = (ub + lb) >>> 1;
         int comp = key.compareTo(array[mid]);
         if (comp < 0)
             return (BS(array, key, lb, mid - 1));
