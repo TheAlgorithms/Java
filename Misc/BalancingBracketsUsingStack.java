@@ -4,8 +4,8 @@ public class BalancedParan
 {
 	static class stack
 	{
-		int top=-1;
-		char items[] = new char[100];
+		int top=-1; //top refers to the top most value of the stack
+		char items[] = new char[100]; //Stack array
 
 		void push(char x)
 		{
@@ -65,7 +65,6 @@ public class BalancedParan
 		check matching parenthesis */
 	for(int i=0;i<exp.length;i++)
 	{
-
 		/*If the exp[i] is a starting
 			parenthesis then push it*/
 		if (exp[i] == '{' || exp[i] == '(' || exp[i] == '[')
@@ -116,9 +115,9 @@ public class BalancedParan
 
         char[] exp = brackets.toCharArray();
 		if (areParenthesisBalanced(exp))
-			System.out.println("Balanced ");
+			System.out.println("Balanced "); // If the Brackets are balanced
 		else
-			System.out.println("Not Balanced ");
+			System.out.println("Not Balanced "); // If the Brackets are unbalanced
 	}
 
 }
