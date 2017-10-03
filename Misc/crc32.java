@@ -20,7 +20,6 @@ public class crc32 {
             else
                 crc32 = (crc32 << 1);
         }
-        crc32 = crc32 ^ 0;
         crc32 = Integer.reverse(crc32);                   //result reflect
         return crc32 ^ 0xFFFFFFFF;                        //final xor value
     }
