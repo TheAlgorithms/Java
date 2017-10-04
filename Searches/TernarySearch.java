@@ -57,7 +57,7 @@ public class TernarySearch{
         System.out.println("Enter number of elements in the array");
         int n = s.nextInt();
         int arr[] = new int[n];
-        System.out.println("Enter the elements of the array");
+        System.out.println("Enter the elements of the Sorted array");
         for (int i= 0; i < n; i++){
             arr[i] = s.nextInt();
         }
@@ -68,7 +68,7 @@ public class TernarySearch{
             System.out.println(" The element is not present in the array.");
         }
         else {
-            System.out.println("The element is present at the position" + ans);
+            System.out.println("The element is present at the position " + (ans+1));
         }
     }
 }
