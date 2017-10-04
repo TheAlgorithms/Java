@@ -48,14 +48,14 @@ class Node{
 * @author Unknown
 *
 */
-class Tree{
+class BinaryTree{
 	/** The root of the Binary Tree */
 	private Node root;
 
 	/**
 	* Constructor
 	*/
-	public Tree(){
+	public BinaryTree(){
 		root = null;
 	}
 

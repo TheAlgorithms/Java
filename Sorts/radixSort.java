@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
  
-class Radix {
+class radixSort {
  
     
     static int getMax(int arr[], int n)

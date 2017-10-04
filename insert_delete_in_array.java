@@ -1,5 +1,5 @@
 import java.util.*;
-public class Array {
+public class insert_delete_in_array {
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in); // Input statement

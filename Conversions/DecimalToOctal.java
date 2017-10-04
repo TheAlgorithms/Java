@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Unknown
  *
  */
-class Decimal_Octal
+class DecimalToOctal
 {
 	/**
 	 * Main Method
