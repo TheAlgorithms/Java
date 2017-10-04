@@ -42,7 +42,7 @@ class Stack{
 			top++;
 			stackArray[top] = value;
 		}else{
-			System.out.println("The stack is full, can't insert value");
+			resize(maxSize*2);
 		}
 	}
 
@@ -54,7 +54,12 @@ class Stack{
 	public int pop(){
 		if(!isEmpty()){ //Checks for an empty stack
 			return stackArray[top--];
-		}else{
+		}
+
+		if(top < maxSize/4){
+			resize(maxSize/2);
+		}
+		else{
 			System.out.println("The stack is already empty");
 			return -1;
 		}
@@ -72,6 +77,16 @@ class Stack{
 			System.out.println("The stack is empty, cant peek");
 			return -1;
 		}
+	}
+
+	private void resize(int newSize){
+		private int[] transferArray = new int[newSize];
+
+		for(int i = 0; i < stackArray.length(); i++){
+			transferArray[i] = stackArray[i];
+			stackArray = transferArray;
+		}
+		maxSize = newSize;
 	}
 
 	/**
