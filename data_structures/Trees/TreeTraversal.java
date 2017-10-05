@@ -1,10 +1,10 @@
 import java.util.LinkedList;
 
 /**
- *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
- */
+*
+* @author Varun Upadhyay (https://github.com/varunu28)
+*
+*/
 
 // Driver Program
 public class TreeTraversal {
@@ -17,18 +17,19 @@ public class TreeTraversal {
         tree.insert(6);
         tree.insert(8);
 
+        // Prints 5 3 2 4 7 6 8
         System.out.println("Pre order traversal:");
         tree.printPreOrder();
         System.out.println();
-
+        // Prints 2 3 4 5 6 7 8
         System.out.println("In order traversal:");
         tree.printInOrder();
         System.out.println();
-
+        // Prints 2 4 3 6 8 7 5
         System.out.println("Post order traversal:");
         tree.printPostOrder();
         System.out.println();
-
+        // Prints 5 3 7 2 4 6 8
         System.out.println("Level order traversal:");
         tree.printLevelOrder();
         System.out.println();
@@ -36,12 +37,13 @@ public class TreeTraversal {
 }
 
 /**
- * The Node class which initializes a Node of a tree
- * Consists of all 3 traversal methods: printInOrder, printPostOrder & printPreOrder
- * printInOrder: LEFT -> ROOT -> RIGHT
- * printPreOrder: ROOT -> LEFT -> RIGHT
- * printPostOrder: LEFT -> RIGHT -> ROOT
- */
+* The Node class which initializes a Node of a tree
+* Consists of all 3 traversal methods: printInOrder, printPostOrder & printPreOrder
+* printInOrder: LEFT -> ROOT -> RIGHT
+* printPreOrder: ROOT -> LEFT -> RIGHT
+* printPostOrder: LEFT -> RIGHT -> ROOT
+* printLevelOrder: Prints by level (starting at root), from left to right.
+*/
 class Node {
     Node left, right;
     int data;
@@ -99,18 +101,23 @@ class Node {
         System.out.print(data + " ");
     }
 
+    /**
+    * O(n) time algorithm.
+    * Uses O(n) space to store nodes in a queue to aid in traversal.
+    */
     public void printLevelOrder() {
-  		LinkedList<Node> queue = new LinkedList<>();
-  		queue.add(this);
-  		while (queue.size() > 0) {
-  			Node head = queue.remove();
-  			System.out.print(head.data + " ");
-  			if (head.left != null) {
-  				queue.add(head.left);
-  			}
-  			if (head.right != null) {
-  				queue.add(head.right);
-  			}
-  		}
-  	}
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(this);
+        while (queue.size() > 0) {
+            Node head = queue.remove();
+            System.out.print(head.data + " ");
+            // Add children of recently-printed node to queue, if they exist.
+            if (head.left != null) {
+                queue.add(head.left);
+            }
+            if (head.right != null) {
+                queue.add(head.right);
+            }
+        }
+    }
 }
