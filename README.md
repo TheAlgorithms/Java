@@ -1,4 +1,4 @@
-# The Algorithms - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Python.svg)](https://travis-ci.org/TheAlgorithms/Python)
+# The Algorithms - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Java.svg)](https://travis-ci.org/TheAlgorithms/Java)
 
 ### All algorithms implemented in Java (for education)
 
@@ -47,7 +47,17 @@ __Properties__
 
 ###### View the algorithm in [action][merge-toptal]
 
+### Quick
+![alt text][quick-image]
 
+From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.
+
+__Properties__
+* Worst case performance	O(n^2)
+* Best case performance	O(n log n) or O(n) with three-way partition
+* Average case performance	O(n^2)
+
+###### View the algorithm in [action][quick-toptal]
 
 ### Selection
 ![alt text][selection-image]
@@ -61,6 +71,50 @@ __Properties__
 
 ###### View the algorithm in [action][selection-toptal]
 
+### Shell
+![alt text][shell-image]
+
+From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
+
+__Properties__
+* Worst case performance O(nlog2 2n)
+* Best case performance O(n log n)
+* Average case performance depends on gap sequence
+
+###### View the algorithm in [action][shell-toptal]
+
+### Time-Compexity Graphs
+
+Comparing the complexity of sorting algorithms (Bubble Sort, Insertion Sort, Selection Sort)
+
+[Complexity Graphs](https://github.com/prateekiiest/Python/blob/master/sorts/sortinggraphs.png)
+
+----------------------------------------------------------------------------------
+
+## Search Algorithms
+
+### Linear
+![alt text][linear-image]
+
+From [Wikipedia][linear-wiki]: linear search or sequential search is a method for finding a target value within a list. It sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched.
+  Linear search runs in at worst linear time and makes at most n comparisons, where n is the length of the list.
+
+__Properties__
+* Worst case performance	O(n)
+* Best case performance	O(1)
+* Average case performance	O(n)
+* Worst case space complexity	O(1) iterative
+
+### Binary
+![alt text][binary-image]
+
+From [Wikipedia][binary-wiki]: Binary search, also known as half-interval search or logarithmic search, is a search algorithm that finds the position of a target value within a sorted array. It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+
+__Properties__
+* Worst case performance	O(log n)
+* Best case performance	O(1)
+* Average case performance	O(log n)
+* Worst case space complexity	O(1) 
 
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
@@ -94,4 +148,3 @@ __Properties__
 [binary-image]: https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_search_into_array.png
 
 
-[caesar]: https://upload.wikimedia.org/wikipedia/commons/4/4a/Caesar_cipher_left_shift_of_3.svg
