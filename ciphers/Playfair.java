@@ -1,8 +1,10 @@
 package ciphers;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Playfair Cipher : https://en.wikipedia.org/wiki/Playfair_cipher
@@ -16,17 +18,37 @@ public class Playfair {
 
 	public static void main(String[] args) {
 		
-		String coded;
+		Scanner sc = new Scanner(System.in);
 		
-		coded = Playfair.encode("secret message", "keyword");
-		Playfair.decode(coded, "keyword");
+		String key = prompt("Enter an encryption key", sc, 6);
+		String text = prompt("Enter the message: ", sc, 1);
+		String jti = prompt("Replace J with I?", sc, 1);
+		
+		boolean changeJtoI = jti.equalsIgnoreCase("y");
+		generateTable(key, changeJtoI);
+		
+		 String enc = encode(prepareText(text, changeJtoI));
+		 
+	     System.out.printf("%nEncoded message: %n%s%n", enc);
+	     System.out.printf("%nDecoded message: %n%s%n", decode(enc));
 		
 	}
 	
 	// Variables
 	private static String alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
+	private static char[][] charTable;
+	private static Point[] positions;
 	
-	private static String generateTable(String key)
+	private static String prompt(String promptText, Scanner sc, int minLen) {
+        String s;
+        do {
+            System.out.print(promptText);
+            s = sc.nextLine().trim();
+        } while (s.length() < minLen);
+        return s;
+    }
+	
+	private static void generateTable(String key, boolean changeJtoI)
 	{
 		// Generate a 5x5 table (25 letters)
 		// Example: key = keyword
@@ -41,194 +63,113 @@ public class Playfair {
 		//		+-------------------+
 		//		| t | u | v | x | z |
 		//		+---+---+---+---+---+
+		
+		charTable = new char[5][5];
+        positions = new Point[26];
+ 
+        String s = prepareText(key + "ABCDEFGHIJKLMNOPQRSTUVWXYZ", changeJtoI);
+ 
+        int len = s.length();
+        for (int i = 0, k = 0; i < len; i++) {
+            char c = s.charAt(i);
+            if (positions[c - 'A'] == null) {
+                charTable[k / 5][k % 5] = c;
+                positions[c - 'A'] = new Point(k % 5, k / 5);
+                k++;
+            }
+        }
+	}
+	
+	private static String prepareText(String s, boolean changeJtoI) {
+        s = s.toUpperCase().replaceAll("[^A-Z]", "");
+        return changeJtoI ? s.replace("J", "I") : s.replace("Q", "");
+    }
+	
+	private static String encode(String s) {
+        StringBuilder sb = new StringBuilder(s);
+ 
+        for (int i = 0; i < sb.length(); i += 2) {
+ 
+            if (i == sb.length() - 1)
+                sb.append(sb.length() % 2 == 1 ? 'X' : "");
+ 
+            else if (sb.charAt(i) == sb.charAt(i + 1))
+                sb.insert(i + 1, 'X');
+        }
+        
+        System.out.println(sb.toString());
+        
+        return codec(sb, 1);
+    }
+ 
+    private static String decode(String s) {
+        
+    	String plaintext;
+    	
+    	plaintext = codec(new StringBuilder(s), 4);
+    	plaintext = removeX(plaintext);
+    	
+    	return plaintext;
+    }
+ 
+    private static String codec(StringBuilder text, int direction) {
+        int len = text.length();
+        for (int i = 0; i < len; i += 2) {
+            char a = text.charAt(i);
+            char b = text.charAt(i + 1);
+ 
+            int row1 = positions[a - 'A'].y;
+            int row2 = positions[b - 'A'].y;
+            int col1 = positions[a - 'A'].x;
+            int col2 = positions[b - 'A'].x;
+ 
+            if (row1 == row2) {
+                col1 = (col1 + direction) % 5;
+                col2 = (col2 + direction) % 5;
+ 
+            } else if (col1 == col2) {
+                row1 = (row1 + direction) % 5;
+                row2 = (row2 + direction) % 5;
+ 
+            } else {
+                int tmp = col1;
+                col1 = col2;
+                col2 = tmp;
+            }
+ 
+            text.setCharAt(i, charTable[row1][col1]);
+            text.setCharAt(i + 1, charTable[row2][col2]);
+        }
+        return text.toString();
+    }
+    
+    private static String removeX(String s){
+    	
+    	StringBuilder stringWithoutX = new StringBuilder();
+    	
+    	for(int i = 0; i < s.length(); i++)
+    	{
+    		if(s.charAt(i) == 'X')
+    		{
+    			// Check if last letter is X
+    			if(i == s.length() -1)
+    			{
+    				break;
+    			}
+    			
+    			// Check if is sandwiched with same letters
+    			if(s.charAt(i-1) == s.charAt(i+1))
+    			{
+    				continue;
+    			} else {
+    				stringWithoutX.append(s.charAt(i)); // Otherwise append to string
+    			}
+    		} else {
+    			stringWithoutX.append(s.charAt(i));
+    		}
+    	}
+    	
+    	return stringWithoutX.toString().toUpperCase();
+    }
 
-		
-		
-		StringBuilder table = new StringBuilder();
-		String currentCharAsString; 
-		
-		// Copy key chars into the table if they are in the alphabet, ignore duplicates
-		for(int i = 0; i < key.length(); i++){
-			
-			currentCharAsString = String.valueOf(key.charAt(i));
-			
-			// If letter (Char) is in alphabet && NOT already in the table
-			if(alphabet.contains(currentCharAsString.toUpperCase()) && 
-					!table.toString().contains(currentCharAsString.toUpperCase()))
-			{
-				table.append(currentCharAsString.toUpperCase());
-			}
-		}
-		
-		// Fill the reset of the table in with remaining alphabet characters
-		for(int i = 0; i < alphabet.length(); i++)
-		{
-			currentCharAsString = String.valueOf(alphabet.charAt(i));
-			
-			if(!table.toString().contains(currentCharAsString))
-			{
-				table.append(currentCharAsString);
-			}
-		}
-		
-		return table.toString();
-	}
-	
-	private static List<String> chunker(String seq, int size)
-	{
-		
-		List<String> chunks = new ArrayList<String>();
-		
-		// Remove spaces in seq
-		String noSpacesSeq = seq.replaceAll("\\s+", "");
-		
-		// Break string message into bigrams, if there's one remaining add one random letter at the end
-		for(int i = 0; i < noSpacesSeq.length(); i++)
-		{
-			if(i % 2 != 0)
-			{
-				chunks.add(noSpacesSeq.substring(i -1, i+1));
-			} else if(i == noSpacesSeq.length() -1 && i % 2 == 0) // if last char, and even number 
-			{
-				// generate a random number from 0-24
-				// I've went with random letter, but it is not necessary
-				// You could assign your fav letters here without doing random
-				Random rand = new Random();
-				int randomLetter = rand.nextInt(24);
-				
-				chunks.add(noSpacesSeq.substring(i) + String.valueOf(alphabet.charAt(randomLetter)));
-			}
-		}
-		
-		return chunks;
-	}
-	
-	private static String cleanPlaintext(String dirty)
-	{
-		StringBuilder clean = new StringBuilder();
-		boolean isLastPairSameLetters = false;
-		
-		// Prepare the plaintext to UpperCase and replace second repeated letters with X's
-		for(int i = 0; i < dirty.length() -1; i++)
-		{
-			
-			clean.append(dirty.charAt(i));
-			
-			if(dirty.charAt(i) == dirty.charAt(i +1))
-			{
-				if(dirty.length() -2 == i)
-				{
-					isLastPairSameLetters = true;
-				}
-				
-				clean.append('X');
-				i++;
-			} 
-		}
-		
-		// Add the last letter, unless the last letter is a repeat
-		if(!isLastPairSameLetters)
-		{
-			clean.append(dirty.charAt(dirty.length() -1));
-		}
-		
-		return clean.toString().toUpperCase();
-	}
-	
-	public static String encode(String plaintext, String key)
-	{
-		List<String> chunks = new ArrayList<String>();
-		String table;
-		
-		table = generateTable(key);
-		plaintext = cleanPlaintext(plaintext);
-		chunks = chunker(plaintext, 2);
-		StringBuilder ciphertext = new StringBuilder();
-		DivMod divmod1 = new DivMod();
-		DivMod divmod2 = new DivMod();
-		
-		for(int i = 0; i < chunks.size(); i++)
-		{
-			divmod1.divmod(table.indexOf(chunks.get(i).charAt(0)), 5);
-			divmod2.divmod(table.indexOf(chunks.get(i).charAt(1)), 5);
-			
-			if(divmod1.getRow() == divmod2.getRow())
-			{
-				ciphertext.append(table.charAt(divmod1.getRow()*5 +(divmod1.getCol() +1) % 5));
-				ciphertext.append(table.charAt(divmod2.getRow()*5 +(divmod2.getCol() +1) % 5));
-			} else if(divmod1.getCol() == divmod2.getCol()){
-				
-				ciphertext.append(table.charAt(((divmod1.getRow()+1)%5)*5+divmod1.getCol()));
-				ciphertext.append(table.charAt(((divmod2.getRow()+1)%5)*5+divmod2.getCol()));
-			} else{
-				
-				ciphertext.append(table.charAt(divmod1.getRow()*5+divmod2.getCol()));
-				ciphertext.append(table.charAt(divmod2.getRow()*5+divmod1.getCol()));
-			}
-			
-		}
-		
-		System.out.println(ciphertext.toString());
-		
-		return ciphertext.toString();
-	}
-	
-	public static String decode(String ciphertext, String key)
-	{
-		List<String> chunks = new ArrayList<String>();
-		String table;
-		
-		table = generateTable(key);
-		chunks = chunker(ciphertext, 2);
-		StringBuilder plaintext = new StringBuilder();
-		DivMod divmod1 = new DivMod();
-		DivMod divmod2 = new DivMod();
-		
-		for(int i = 0; i < chunks.size(); i++)
-		{
-			divmod1.divmod(table.indexOf(chunks.get(i).charAt(0)), 5);
-			divmod2.divmod(table.indexOf(chunks.get(i).charAt(1)), 5);
-			
-			if(divmod1.getRow() == divmod2.getRow())
-			{
-				plaintext.append(table.charAt(divmod1.getRow()*5 +(divmod1.getCol() -1) % 5));
-				plaintext.append(table.charAt(divmod2.getRow()*5 +(divmod2.getCol() -1) % 5));
-			} else if(divmod1.getCol() == divmod2.getCol()){
-				
-				plaintext.append(table.charAt(((divmod1.getRow()-1)%5)*5+divmod1.getCol()));
-				plaintext.append(table.charAt(((divmod2.getRow()-1)%5)*5+divmod2.getCol()));
-			} else{
-				
-				plaintext.append(table.charAt(divmod1.getRow()*5+divmod2.getCol()));
-				plaintext.append(table.charAt(divmod2.getRow()*5+divmod1.getCol()));
-			}
-			
-		}
-		
-		System.out.println(plaintext.toString());
-		
-		return plaintext.toString();
-	}
-
-}
-
-// Helper class for easier divmod operations simultaneous
-class DivMod {
-	
-	private int row;
-	private int col;
-	
-	public void divmod(int input1, int input2)
-	{
-		row = input1 / input2;
-		col = input1 % input2;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public int getCol() {
-		return col;
-	}
 }
