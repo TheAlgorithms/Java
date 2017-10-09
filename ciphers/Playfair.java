@@ -1,9 +1,6 @@
 package ciphers;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -34,11 +31,16 @@ public class Playfair {
 		
 	}
 	
-	// Variables
-	private static String alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
 	private static char[][] charTable;
 	private static Point[] positions;
 	
+	/**
+	 * Helper function to handle prompt messages to the console, and scanner input.
+	 * @param promptText The text output to the console
+	 * @param sc The input to be verified
+	 * @param minLen Input minimum length
+	 * @return s
+	 */
 	private static String prompt(String promptText, Scanner sc, int minLen) {
         String s;
         do {
@@ -48,6 +50,11 @@ public class Playfair {
         return s;
     }
 	
+	/**
+	 * Generates a table of 5 by 5, and it also generates the positions of all letters in the two dimensional array
+	 * @param key The keyword inserted into the table
+	 * @param changeJtoI Change J to I option input
+	 */
 	private static void generateTable(String key, boolean changeJtoI)
 	{
 		// Generate a 5x5 table (25 letters)
@@ -80,11 +87,22 @@ public class Playfair {
         }
 	}
 	
+	/**
+	 * Prepares the Text by uppercasing, and replacing j to i.
+	 * @param s Plaintext 
+	 * @param changeJtoI Change J to I option input 
+	 * @return s
+	 */
 	private static String prepareText(String s, boolean changeJtoI) {
         s = s.toUpperCase().replaceAll("[^A-Z]", "");
         return changeJtoI ? s.replace("J", "I") : s.replace("Q", "");
     }
 	
+	/**
+	 * Encodes plain text. If there's a duplicated letter it adds an X after the first letter.
+	 * @param s
+	 * @return an encoded String
+	 */
 	private static String encode(String s) {
         StringBuilder sb = new StringBuilder(s);
  
@@ -102,6 +120,11 @@ public class Playfair {
         return codec(sb, 1);
     }
  
+	/**
+	 * Decodes a cipher, and removes extra X letters.
+	 * @param s
+	 * @return plaintext
+	 */
     private static String decode(String s) {
         
     	String plaintext;
@@ -112,6 +135,14 @@ public class Playfair {
     	return plaintext;
     }
  
+    /**
+     * The more important method where the encoding and decoding happens.
+     * The method uses the positions, and two dimensional array to calculate the enc/dec based on the 
+     * three rules of playfair cipher.
+     * @param text
+     * @param direction
+     * @return finished string either encoded or decoded.
+     */
     private static String codec(StringBuilder text, int direction) {
         int len = text.length();
         for (int i = 0; i < len; i += 2) {
@@ -143,6 +174,11 @@ public class Playfair {
         return text.toString();
     }
     
+    /**
+     * A helper method to remove X letters that were added during the encoding process.
+     * @param s
+     * @return A string without the X letters
+     */
     private static String removeX(String s){
     	
     	StringBuilder stringWithoutX = new StringBuilder();
