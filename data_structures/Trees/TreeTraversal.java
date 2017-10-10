@@ -3,6 +3,7 @@
  * @author Varun Upadhyay (https://github.com/varunu28)
  *
  */
+import java.util.LinkedList;
 
 // Driver Program
 public class TreeTraversal {
@@ -10,17 +11,24 @@ public class TreeTraversal {
         Node tree = new Node(5);
         tree.insert(3);
         tree.insert(7);
+        tree.insert(1);
+        tree.insert(9);
 
-        // Prints 3 5 7
+        // Prints 1 3 5 7 9
         tree.printInOrder();
         System.out.println();
 
-        // Prints 5 3 7
+        // Prints 5 3 1 7 9
         tree.printPreOrder();
         System.out.println();
 
-        // Prints 3 7 5
+        // Prints 1 3 9 7 5
         tree.printPostOrder();
+        System.out.println();
+
+        // Add a couple more nodes for print level test
+        // Print 5 3 7 1 9
+        tree.printLevelOrder();
         System.out.println();
     }
 }
@@ -31,6 +39,7 @@ public class TreeTraversal {
  * printInOrder: LEFT -> ROOT -> RIGHT
  * printPreOrder: ROOT -> LEFT -> RIGHT
  * printPostOrder: LEFT -> RIGHT -> ROOT
+ * printLevelOrder: ROOT -> ROOT's CHILDREN -> ROOT's CHILDREN's CHILDREN -> etc
  */
 class Node {
     Node left, right;
@@ -87,6 +96,21 @@ class Node {
             right.printPostOrder();
         }
         System.out.print(data + " ");
+    }
+
+    public void printLevelOrder() {
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(this);
+        while(!queue.isEmpty()) {
+            Node n = queue.poll();
+            System.out.print(n.data + " ");
+            if (n.left != null) {
+                queue.add(n.left);
+            }
+            if (n.right != null) {
+                queue.add(n.right);
+            }
+        }
     }
 }
 
