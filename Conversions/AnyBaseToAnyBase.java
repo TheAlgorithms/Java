@@ -1,28 +1,48 @@
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Class for converting from any base to any other base, though it's unclear how digits greater than
- * 36 would be represented in bases >36.
+ * Class for converting from "any" base to "any" other base, when "any" means from 2-36.
+ * Works by going from base 1 to decimal to base 2. Includes auxiliary method for 
+ * determining whether a number is valid for a given base.
  * 
  * @author Michael Rolland
- * @version 2017.09.29
+ * @version 2017.10.10
  *
  */
 public class AnyBaseToAnyBase {
 	
+	// Smallest and largest base you want to accept as valid input
+	static final int MINIMUM_BASE = 2;
+	static final int MAXIMUM_BASE = 36;
+	
 	// Driver
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.print("Enter number: ");
-		String n = in.nextLine();
+		String n;
 		int b1=0,b2=0;
 		while (true) {
 			try {
-				System.out.print("Enter beginning base: ");
+				System.out.print("Enter number: ");
+				n = in.next();
+				System.out.print("Enter beginning base (between "+MINIMUM_BASE+" and "+MAXIMUM_BASE+"): ");
 				b1 = in.nextInt();
-				System.out.print("Enter end base: ");
+				if (b1 > MAXIMUM_BASE || b1 < MINIMUM_BASE) {
+					System.out.println("Invalid base!");
+					continue;
+				}
+				if (!validForBase(n, b1)) {
+					System.out.println("The number is invalid for this base!");
+					continue;
+				}
+				System.out.print("Enter end base (between "+MINIMUM_BASE+" and "+MAXIMUM_BASE+"): ");
 				b2 = in.nextInt();
+				if (b2 > MAXIMUM_BASE || b2 < MINIMUM_BASE) {
+					System.out.println("Invalid base!");
+					continue;
+				}
 				break;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid input.");
@@ -30,6 +50,29 @@ public class AnyBaseToAnyBase {
 			}
 		}
 		System.out.println(base2base(n, b1, b2));
+	}
+	
+	/**
+	 * Checks if a number (as a String) is valid for a given base.
+	 */
+	public static boolean validForBase(String n, int base) {
+		char[] validDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+				'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+				'W', 'X', 'Y', 'Z'};
+		// digitsForBase contains all the valid digits for the base given
+		char[] digitsForBase = Arrays.copyOfRange(validDigits, 0, base);
+		
+		// Convert character array into set for convenience of contains() method
+		HashSet<Character> digitsList = new HashSet();
+		for (int i=0; i<digitsForBase.length; i++)
+			digitsList.add(digitsForBase[i]);
+		
+		// Check that every digit in n is within the list of valid digits for that base.
+		for (char c : n.toCharArray()) 
+			if (!digitsList.contains(c))
+				return false;
+		
+		return true;
 	}
 	
 	/**
