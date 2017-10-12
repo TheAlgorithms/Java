@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class TowerOfHanoi
+class TowerOfHanoiUsingRecursion
 {
     public static void shift(int n, String startPole, String intermediatePole, String endPole)
     {

@@ -1,5 +1,5 @@
 
-class Test
+class interpolationSearch
 {
 	// Array of items on which search will
 	// be conducted.

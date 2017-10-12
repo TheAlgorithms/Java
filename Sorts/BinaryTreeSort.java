@@ -1,5 +1,5 @@
 import java.util.Arrays;
-public class TreeSort {
+public class BinaryTreeSort {
 	
 	public Node root;
 
