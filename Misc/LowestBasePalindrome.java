@@ -37,7 +37,7 @@ public class LowestBasePalindrome {
 	 * @param num A number in base 10.
 	 * @return The lowest base in which num is a palindrome.
 	 */
-	public static int lowestBasePalindrome(int num) {
+	private static int lowestBasePalindrome(int num) {
 		int base, num2=num;
 		int digit;
 		char digitC;
@@ -68,10 +68,10 @@ public class LowestBasePalindrome {
 					// in the current base.
 					if (digit>=digits.length()) {
 						digitC=(char)(digit);
-						newNum+=digitC;
+						newNum += digitC;
 						continue;
 					}
-					newNum+=digits.charAt(digit);
+					newNum += digits.charAt(digit);
 				}
 				// Num is assigned back its original value for the next iteration.
 				num=num2;
@@ -80,7 +80,7 @@ public class LowestBasePalindrome {
 				// If the number is read the same as its reverse, then it is a palindrome.
 				// The current base is returned.
 				if (reverse.equals(newNum)) {
-					foundBase=true;
+					foundBase = true;
 					return base;
 				}
 			}
