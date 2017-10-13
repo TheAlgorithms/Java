@@ -12,9 +12,9 @@ class CountingSortIntegers {
      * @param array The array to be sorted 
      * @param last The count of total number of elements in array
      * Sorts the array in increasing order
-     * It sorted only integer arrays especially positive integers
+     * It sorts only integer arrays especially positive integers
      * It uses array elements as indexes in the frequency array
-     * Can accept only array elements within the range [0:10^8]
+     * It can accept only array elements within the range [0:10^8]
      **/
 
     public static void CSI(int array[], int last) {
