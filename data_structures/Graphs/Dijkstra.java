@@ -21,8 +21,12 @@ public class Dijkstra {
 	
 	public void print(int dist[]) {
 		System.out.print("\nVertex  Distance\n");
-		for(int i = 0; i < V; i++)
-			System.out.println(i+"\t"+dist[i]);
+		for(int i = 0; i < V; i++){
+			if(dist[i] != Integer.MAX_VALUE)
+				System.out.println(i+"\t"+dist[i]);
+			else
+				System.out.println(i+"\tINF");
+		}
 	}
 	
 	public int minDistance(int mdist[], boolean vset[], int V){

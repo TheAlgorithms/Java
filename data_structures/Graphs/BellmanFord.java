@@ -26,8 +26,12 @@ public class BellmanFord {
 	
 	public void print(int dist[]) {
 		System.out.print("\nVertex  Distance\n");
-		for(int i = 0; i < V; i++)
-			System.out.println(i+"\t"+dist[i]);
+		for(int i = 0; i < V; i++){
+			if(dist[i] != Integer.MAX_VALUE)
+				System.out.println(i+"\t"+dist[i]);
+			else
+				System.out.println(i+"\tINF");
+		}
 	}
 	
 	
@@ -53,6 +57,18 @@ public class BellmanFord {
 					mdist[v] = mdist[u] + w;
 				
 			}
+
+		for(int j=0; j<this.graph.size(); j++) {
+				edge e = graph.get(j);
+				int u = e.src;
+				int v = e.dst;
+				int w = e.weight;
+				
+				if(mdist[u]!=Integer.MAX_VALUE && mdist[u]+w<mdist[v]){
+					System.out.println("Negative Cycle found. No solution found");
+					return
+				}					
+		}
 
 		this.print(mdist);
 	}
