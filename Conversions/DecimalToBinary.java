@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 /**
-	* This class converts a Decimal number to a Binary number
-	* 
-	* @author Spandamn (https://github.com/Spandamn)
-	*
+ * This class converts a Decimal number to a Binary number
+ * 
+ * @author Spandamn (https://github.com/Spandamn)
+ *
  */
 class DecimalToBinary
 {
