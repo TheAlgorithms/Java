@@ -5,41 +5,36 @@
  */
 import java.util.LinkedList;
 
-// Driver Program
-public class TreeTraversal {
+public class FindHeightOfTree {
+
+    // Driver Program
     public static void main(String[] args) {
         Node tree = new Node(5);
         tree.insert(3);
         tree.insert(7);
         tree.insert(1);
-        tree.insert(9);
+        tree.insert(-1);
+        tree.insert(29);
+        tree.insert(93);
+        tree.insert(6);
+        tree.insert(0);
+        tree.insert(-5);
+        tree.insert(-6);
+        tree.insert(-8);
+        tree.insert(-1);
 
-        // Prints 1 3 5 7 9
-        tree.printInOrder();
-        System.out.println();
-
-        // Prints 5 3 1 7 9
-        tree.printPreOrder();
-        System.out.println();
-
-        // Prints 1 3 9 7 5
-        tree.printPostOrder();
-        System.out.println();
-
-        // Add a couple more nodes for print level test
-        // Print 5 3 7 1 9
+        // A level order representation of the tree
         tree.printLevelOrder();
         System.out.println();
+
+        System.out.println("Height of the tree is: " + tree.findHeight());
     }
 }
 
 /**
  * The Node class which initializes a Node of a tree
- * Consists of all 3 traversal methods: printInOrder, printPostOrder & printPreOrder
- * printInOrder: LEFT -> ROOT -> RIGHT
- * printPreOrder: ROOT -> LEFT -> RIGHT
- * printPostOrder: LEFT -> RIGHT -> ROOT
  * printLevelOrder: ROOT -> ROOT's CHILDREN -> ROOT's CHILDREN's CHILDREN -> etc
+ * findHeight: Returns the height of the tree i.e. the number of links between root and farthest leaf
  */
 class Node {
     Node left, right;
@@ -68,36 +63,6 @@ class Node {
         }
     }
 
-    public void printInOrder() {
-        if (left != null) {
-            left.printInOrder();
-        }
-        System.out.print(data + " ");
-        if (right != null) {
-            right.printInOrder();
-        }
-    }
-
-    public void printPreOrder() {
-        System.out.print(data + " ");
-        if (left != null) {
-            left.printPreOrder();
-        }
-        if (right != null) {
-            right.printPreOrder();
-        }
-    }
-
-    public void printPostOrder() {
-        if (left != null) {
-            left.printPostOrder();
-        }
-        if (right != null) {
-            right.printPostOrder();
-        }
-        System.out.print(data + " ");
-    }
-
     public void printLevelOrder() {
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(this);
@@ -110,6 +75,25 @@ class Node {
             if (n.right != null) {
                 queue.add(n.right);
             }
+        }
+    }
+
+    public int findHeight() {
+        return findHeight(this);
+    }
+
+    private int findHeight(Node root) {
+        if (root.left == null && root.right == null) {
+            return 0;
+        }
+        else if (root.left != null && root.right != null) {
+            return 1 + Math.max(findHeight(root.left), findHeight(root.right));
+        }
+        else if (root.left == null && root.right != null) {
+            return 1 + findHeight(root.right);
+        }
+        else {
+            return 1 + findHeight(root.left);
         }
     }
 }
