@@ -1,3 +1,5 @@
+// Finding Lowest Common Multiple of Two Integers
+
 public class LCM {
 	
 	public static int lcm(int a, int b) {
