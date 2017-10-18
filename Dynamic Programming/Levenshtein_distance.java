@@ -7,7 +7,7 @@
  */
 
 public class Levenshtein_distance{
-	private int minimum(int a, int b, int c){
+	private static int minimum(int a, int b, int c){
 		if(a < b && a < c){
 			return a;
 		}else if(b < a && b < c){
@@ -16,7 +16,7 @@ public class Levenshtein_distance{
 			return c;
 		}
 	}
-	public int calculate_distance(String a, String b){
+	private static int calculate_distance(String a, String b){
 		len_a = a.length() + 1;
 		len_b = b.length() + 1;
 		int [][] distance_mat = new int[len_a][len_b];
