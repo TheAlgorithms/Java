@@ -5,7 +5,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
  
-class MST
+class PrimMST
 {
     // Number of vertices in the graph
     private static final int V=5;
