@@ -14,7 +14,7 @@ class BubbleSort
      * Sorts the array in increasing order
      **/
 
-    public static <T extends Comparable<T>> void BS(T array[], int last) {
+    public static <T extends Comparable<T>> void BS(T[] array, int last) {
         //Sorting
         boolean swap;
         do
