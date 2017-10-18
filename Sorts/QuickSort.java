@@ -1,25 +1,23 @@
+package Sorts;
+
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
- *
  */
 
 class QuickSort {
 
     /**
-     * This method implements the Generic Quick Sort
+     * This method implements the Generic Quick Sort. Sorts the array in increasing order.
      *
      * @param array The array to be sorted
      * @param start The first index of an array
-     * @param end The last index of an array
-     * Sorts the array in increasing order
+     * @param end   The last index of an array
      **/
-
-    public static <T extends Comparable<T>> void QS(T array[], int start, int end) {
+    public static <T extends Comparable<T>> void quickSort(T array[], int start, int end) {
         if (start < end) {
-            int PIndex = partition(array, start, end);
-            QS(array, start, PIndex - 1);
-            QS(array, PIndex + 1, end);
+            int partitionIndex = partition(array, start, end);
+            quickSort(array, start, partitionIndex - 1);
+            quickSort(array, partitionIndex + 1, end);
         }
     }
 
@@ -28,30 +26,28 @@ class QuickSort {
      *
      * @param array The array to be sorted
      * @param start The first index of an array
-     * @param end The last index of an array
-     * Finds the partition index of an array
+     * @param end   The last index of an array
      **/
 
     public static <T extends Comparable<T>> int partition(T array[], int start, int end) {
         T pivot = array[end];
-        int PIndex = start;
-        for (int i=start;i<end;i++) {
+        int partitionIndex = start;
+        for (int i = start; i < end; i++) {
             if (array[i].compareTo(pivot) <= 0) {
-                swap(array, i, PIndex);
-                PIndex++;
+                swap(array, i, partitionIndex);
+                partitionIndex++;
             }
         }
-        swap(array, PIndex, end);
-        return PIndex;
+        swap(array, partitionIndex, end);
+        return partitionIndex;
     }
 
     /**
      * This method swaps two elements of an array
      *
-     * @param array The array to be sorted
+     * @param array   The array to be sorted
      * @param initial The first element
-     * @param fin The second element
-     * Swaps initial and fin element
+     * @param fin     The second element
      **/
 
     public static <T extends Comparable<T>> void swap(T[] array, int initial, int fin) {
@@ -64,29 +60,24 @@ class QuickSort {
     public static void main(String[] args) {
 
         // For integer input
-        int[] arr = {3,4,1,32,0,2,44,111,5};
-        Integer[] array = new Integer[arr.length];
-        for (int i=0;i<arr.length;i++) {
-            array[i] = arr[i];
-        }
+        Integer[] array = {3, 4, 1, 32, 0, 2, 44, 111, 5};
 
-        QS(array, 0, arr.length-1);
+        quickSort(array, 0, array.length - 1);
 
         //Output => 0 1 2 3 4 5 32 44 111
-        for (int i=0;i<array.length;i++) {
-            System.out.print(array[i] + " ");
+        for (int num : array) {
+            System.out.print(num + " ");
         }
         System.out.println();
 
         // String Input
-        String[] array1 = {"c", "a", "e", "b","d"};
+        String[] stringArray = {"c", "a", "e", "b", "d"};
 
-        QS(array1, 0,array1.length-1);
+        quickSort(stringArray, 0, stringArray.length - 1);
 
-        //Output => a	b	c	d	e
-        for(int i=0; i<array1.length; i++)
-        {
-            System.out.print(array1[i]+"\t");
+        //Output => a  b  c  d  e
+        for (String str : stringArray) {
+            System.out.print(str + "\t");
         }
     }
 }
