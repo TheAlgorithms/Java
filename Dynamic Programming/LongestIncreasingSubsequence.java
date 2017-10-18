@@ -31,7 +31,7 @@ public class LongestIncreasingSubsequence {
         return r;
     }
 
-    public static int LIS(int[] array) {
+    private static int LIS(int[] array) {
         int N = array.length;
         if (N == 0)
             return 0;
