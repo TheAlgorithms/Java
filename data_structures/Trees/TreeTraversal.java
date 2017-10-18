@@ -1,46 +1,50 @@
-/**
- *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
- */
 import java.util.LinkedList;
+
+/**
+*
+* @author Varun Upadhyay (https://github.com/varunu28)
+*
+*/
+
 
 // Driver Program
 public class TreeTraversal {
     public static void main(String[] args) {
         Node tree = new Node(5);
         tree.insert(3);
+        tree.insert(2);
         tree.insert(7);
-        tree.insert(1);
-        tree.insert(9);
+        tree.insert(4);
+        tree.insert(6);
+        tree.insert(8);
 
-        // Prints 1 3 5 7 9
-        tree.printInOrder();
-        System.out.println();
-
-        // Prints 5 3 1 7 9
+        // Prints 5 3 2 4 7 6 8
+        System.out.println("Pre order traversal:");
         tree.printPreOrder();
         System.out.println();
-
-        // Prints 1 3 9 7 5
+        // Prints 2 3 4 5 6 7 8
+        System.out.println("In order traversal:");
+        tree.printInOrder();
+        System.out.println();
+        // Prints 2 4 3 6 8 7 5
+        System.out.println("Post order traversal:");
         tree.printPostOrder();
         System.out.println();
-
-        // Add a couple more nodes for print level test
-        // Print 5 3 7 1 9
+        // Prints 5 3 7 2 4 6 8
+        System.out.println("Level order traversal:");
         tree.printLevelOrder();
         System.out.println();
     }
 }
 
 /**
- * The Node class which initializes a Node of a tree
- * Consists of all 3 traversal methods: printInOrder, printPostOrder & printPreOrder
- * printInOrder: LEFT -> ROOT -> RIGHT
- * printPreOrder: ROOT -> LEFT -> RIGHT
- * printPostOrder: LEFT -> RIGHT -> ROOT
- * printLevelOrder: ROOT -> ROOT's CHILDREN -> ROOT's CHILDREN's CHILDREN -> etc
- */
+* The Node class which initializes a Node of a tree
+* Consists of all 3 traversal methods: printInOrder, printPostOrder & printPreOrder
+* printInOrder: LEFT -> ROOT -> RIGHT
+* printPreOrder: ROOT -> LEFT -> RIGHT
+* printPostOrder: LEFT -> RIGHT -> ROOT
+* printLevelOrder: Prints by level (starting at root), from left to right.
+*/
 class Node {
     Node left, right;
     int data;
@@ -98,19 +102,23 @@ class Node {
         System.out.print(data + " ");
     }
 
+    /**
+    * O(n) time algorithm.
+    * Uses O(n) space to store nodes in a queue to aid in traversal.
+    */
     public void printLevelOrder() {
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(this);
-        while(!queue.isEmpty()) {
-            Node n = queue.poll();
-            System.out.print(n.data + " ");
-            if (n.left != null) {
-                queue.add(n.left);
+        while (queue.size() > 0) {
+            Node head = queue.remove();
+            System.out.print(head.data + " ");
+            // Add children of recently-printed node to queue, if they exist.
+            if (head.left != null) {
+                queue.add(head.left);
             }
-            if (n.right != null) {
-                queue.add(n.right);
+            if (head.right != null) {
+                queue.add(head.right);
             }
         }
     }
 }
-
