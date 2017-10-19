@@ -6,7 +6,7 @@
 
 public class BubbleSort {
 	
-	public static void main(String[] args) {
+	public BubbleSort {
 		Integer[] input = {113,523,1,2,5,3,9,123521,1246313,123912,320,0};
 		int len = input.length;
 		Integer[] output = new Integer[len];
