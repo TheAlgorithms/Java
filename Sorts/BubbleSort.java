@@ -20,10 +20,10 @@ class BubbleSort
         do
         {
             swap = false;
-            for (int count = 0; count < last-1; count++)
+            for (int count = 0; count < last-1; count++)     // iterate through element
             {
-                int comp = array[count].compareTo(array[count + 1]);
-                if (comp > 0)
+                int comp = array[count].compareTo(array[count + 1]);        //compare elements
+                if (comp > 0)                                               //swap
                 {
                     T temp = array[count];
                     array[count] = array[count + 1];
@@ -32,7 +32,7 @@ class BubbleSort
                 }
             }
             last--;
-        } while (swap);
+        } while (swap);                 // till swap is required
     }
 
     // Driver Program
