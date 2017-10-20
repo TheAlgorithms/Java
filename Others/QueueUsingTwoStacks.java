@@ -15,7 +15,7 @@ import java.util.Stack;
  * @author sahilb2
  *
  */
-class QueueUsingTwoStacks {
+class QueueWithStack {
 
     // Stack to keep track of elements inserted into the queue
     private Stack inStack;
@@ -25,7 +25,7 @@ class QueueUsingTwoStacks {
     /**
 	 * Constructor
 	 */
-    public QueueUsingTwoStacks() {
+    public QueueWithStack() {
         this.inStack = new Stack();
         this.outStack = new Stack();
     }
@@ -64,4 +64,60 @@ class QueueUsingTwoStacks {
         return (this.inStack.isEmpty() && this.outStack.isEmpty());
     }
 
+}
+
+/**
+ * This class is the example for the Queue class
+ *
+ * @author sahilb2
+ *
+ */
+public class QueueUsingTwoStacks {
+
+    /**
+     * Main method
+     *
+     * @param args Command line arguments
+     */
+    public static void main(String args[]){
+        QueueWithStack myQueue = new QueueWithStack();
+        myQueue.insert(1);
+        // instack: [(top) 1]
+        // outStack: []
+        myQueue.insert(2);
+        // instack: [(top) 2, 1]
+        // outStack: []
+        myQueue.insert(3);
+        // instack: [(top) 3, 2, 1]
+        // outStack: []
+        myQueue.insert(4);
+        // instack: [(top) 4, 3, 2, 1]
+        // outStack: []
+
+        System.out.println(myQueue.isEmpty()); //Will print false
+
+        System.out.println(myQueue.remove()); //Will print 1
+        // instack: []
+        // outStack: [(top) 2, 3, 4]
+
+        myQueue.insert(5);
+        // instack: [(top) 5]
+        // outStack: [(top) 2, 3, 4]
+
+        myQueue.remove();
+        // instack: [(top) 5]
+        // outStack: [(top) 3, 4]
+        myQueue.remove();
+        // instack: [(top) 5]
+        // outStack: [(top) 4]
+        myQueue.remove();
+        // instack: [(top) 5]
+        // outStack: []
+        myQueue.remove();
+        // instack: []
+        // outStack: []
+
+        System.out.println(myQueue.isEmpty()); //Will print true
+
+    }
 }
