@@ -36,7 +36,7 @@ public class DijkstraAlgorithms {
 		}
 		
 		if(data.size() < 2){
-			System.out.println("No t enough data");
+			System.out.println("Not enough data");
 			return;
 		}
 		
@@ -97,7 +97,11 @@ public class DijkstraAlgorithms {
 			}
 		}		
 		
-		System.out.println("[Distance: " + pathMap.get(end) + "][Path: " + traceMap.get(end) + "]");
+		if(!pathMap.containsKey(end)){
+			System.out.println("No path from start edge to end edge.");
+		} else {
+			System.out.println("[Distance: " + pathMap.get(end) + "][Path: " + traceMap.get(end) + "]");
+		}
 	}
 	
 	
