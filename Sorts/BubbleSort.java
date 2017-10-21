@@ -1,8 +1,4 @@
-/**
- *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
- */
+import java.util.*;
 
 class BubbleSort
 {
