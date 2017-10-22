@@ -14,7 +14,7 @@ From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sor
 
 __Properties__
 * Worst case performance	O(n^2)
-* Best case performance	O(n)
+* Best case performance         O(n)
 * Average case performance	O(n^2)
 
 ###### View the algorithm in [action][bubble-toptal]
