@@ -17,7 +17,7 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.ArrayList;
 
-class nested_brackets {
+class BalancedBrackets {
 
     static boolean is_balanced(char[] S) {
         Stack<Character> stack = new Stack<>();
@@ -26,7 +26,6 @@ class nested_brackets {
             if (S[i] == '(' || S[i] == '{' || S[i] == '[') {
                 stack.push(S[i]);
             } else if (stack.size() > 0) {
-//                pair = (stack.lastElement() + S[i]);
                 if (!pair.equals("[]") && !pair.equals("()") && !pair.equals("{}")) {
                     return false;
                 }
