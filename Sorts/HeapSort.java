@@ -1,31 +1,36 @@
+package Sorts;
+
 import java.util.Scanner;
 
 /**
  * Heap Sort Algorithm
  * Implements MinHeap
- * 
- * @author Unknown
  *
+ * @author Unknown
  */
 public class HeapSort {
-    /** Array to store heap */
+    /**
+     * Array to store heap
+     */
     private int[] heap;
-    /** The size of the heap */
+    /**
+     * The size of the heap
+     */
     private int size;
 
     /**
      * Constructor
-     * 
+     *
      * @param heap array of unordered integers
      */
     public HeapSort(int[] heap) {
-        this.setHeap(heap);
-        this.setSize(heap.length);
+        this.heap = heap;
+        this.size = heap.length;
     }
 
     /**
      * Setter for variable size
-     *  
+     *
      * @param length new size
      */
     private void setSize(int length) {
@@ -34,7 +39,7 @@ public class HeapSort {
 
     /**
      * Setter for variable heap
-     * 
+     *
      * @param heap array of unordered elements
      */
     private void setHeap(int[] heap) {
@@ -43,8 +48,8 @@ public class HeapSort {
 
     /**
      * Swaps index of first with second
-     * 
-     * @param first First index to switch
+     *
+     * @param first  First index to switch
      * @param second Second index to switch
      */
     private void swap(int first, int second) {
@@ -55,19 +60,19 @@ public class HeapSort {
 
     /**
      * Heapifies subtree from top as root to last as last child
-     * 
+     *
      * @param rootIndex index of root
      * @param lastChild index of last child
      */
     private void heapSubtree(int rootIndex, int lastChild) {
-        int leftIndex = rootIndex * 2 + 1; 
+        int leftIndex = rootIndex * 2 + 1;
         int rightIndex = rootIndex * 2 + 2;
         int root = this.heap[rootIndex];
         if (rightIndex <= lastChild) { // if has right and left children
-            int left = this.heap[leftIndex]; 
-            int right = this.heap[rightIndex]; 
+            int left = this.heap[leftIndex];
+            int right = this.heap[rightIndex];
             if (left < right && left < root) {
-                this.swap(leftIndex, rootIndex); 
+                this.swap(leftIndex, rootIndex);
                 this.heapSubtree(leftIndex, lastChild);
             } else if (right < root) {
                 this.swap(rightIndex, rootIndex);
@@ -84,12 +89,12 @@ public class HeapSort {
 
     /**
      * Makes heap with root as root
-     * 
+     *
      * @param root index of root of heap
      */
     private void makeMinHeap(int root) {
-        int leftIndex = root * 2 + 1; 
-        int rightIndex = root * 2 + 2; 
+        int leftIndex = root * 2 + 1;
+        int rightIndex = root * 2 + 2;
         boolean hasLeftChild = leftIndex < this.heap.length;
         boolean hasRightChild = rightIndex < this.heap.length;
         if (hasRightChild) { //if has left and right
@@ -115,7 +120,7 @@ public class HeapSort {
 
     /**
      * Sorts heap with heap sort; displays ordered elements to console.
-     * 
+     *
      * @return sorted array of sorted elements
      */
     public final int[] sort() {
@@ -154,8 +159,8 @@ public class HeapSort {
      */
     public static void printData(int[] heap) {
         System.out.println("Sorted Elements:");
-        for (int i = 0; i < heap.length; i++) {
-            System.out.print(" " + heap[i] + " ");
+        for (int num : heap) {
+            System.out.print(" " + num + " ");
         }
     }
 
@@ -165,9 +170,9 @@ public class HeapSort {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int[] heap = getInput();
-        HeapSort data = new HeapSort(heap);
-        int[] sorted = data.sort();
+        int[] data = getInput();
+        HeapSort heapSort = new HeapSort(data);
+        int[] sorted = heapSort.sort();
         printData(sorted);
     }
 
