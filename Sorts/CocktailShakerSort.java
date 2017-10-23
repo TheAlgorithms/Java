@@ -1,4 +1,3 @@
-package Sorts;
 
 /**
  *
@@ -18,10 +17,12 @@ class CocktailShakerSort {
 	 **/
 
 	public static <T extends Comparable<T>> void CS(T array[], int last) {
+		
 		// Sorting
 		boolean swap;
 		do {
 			swap = false;
+			
 			//front
 			for (int count = 0; count <= last - 2; count++) {
 				int comp = array[count].compareTo(array[count + 1]);
@@ -32,10 +33,12 @@ class CocktailShakerSort {
 					swap = true;
 				}
 			}
-			if (!swap) { //break if no swap occurred
+			//break if no swap occurred
+			if (!swap) {
 				break;
 			}
 			swap = false;
+			
 			//back
 			for (int count = last - 2; count >= 0; count--) {
 				int comp = array[count].compareTo(array[count + 1]);
@@ -47,7 +50,8 @@ class CocktailShakerSort {
 				}
 			}
 			last--;
-		} while (swap); //end
+		//end
+		} while (swap);
 	}
 
 	// Driver Program
