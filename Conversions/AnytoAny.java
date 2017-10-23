@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
-//sn ,sb,db ---> ()dn
+//given a source number , source base, destination base, this code can give you the destination number.
+//sn ,sb,db ---> ()dn  .   this is what we have to do    .
 public class anytoany {
 
 	public static void main(String[] args) {
