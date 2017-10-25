@@ -1,5 +1,3 @@
-package Others;
-
 import java.util.Scanner;
 
 /**
