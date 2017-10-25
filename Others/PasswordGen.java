@@ -5,13 +5,19 @@ import java.util.ArrayList;
 
 /*
     Creates a random password from ASCII letters
+    Given password length bounds
     
     author: AKS1996
-	date: 2017-10-22
+    date: 2017-10-25
 */
 
 class PasswordGen {
     public static void main(String args[]){
+	String password = generatePassword(8,16);
+	System.out.print("Password: " + password);
+    }
+	
+    static String generatePassword(int min_length, int max_length){
         Random random = new Random();
 
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -27,9 +33,6 @@ class PasswordGen {
 
         // Inbuilt method to randomly shuffle a elements of a list
         Collections.shuffle(letters);
-
-        int min_length = 8;
-        int max_length = 16;
         String password = "";
 
         // Note that size of the password is also random
@@ -37,6 +40,6 @@ class PasswordGen {
             password += letters.get(random.nextInt(letters.size()));
         }
 
-        System.out.print("Password: " + password);
+        return password;
     }
 }
