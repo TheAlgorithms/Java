@@ -3,7 +3,7 @@
 
 public class GCD{
 
-public static int gcd(int a, int b) {
+        public static int gcd(int a, int b) {
 
         int r = a % b;
         while (r != 0) {
@@ -12,13 +12,16 @@ public static int gcd(int a, int b) {
         }
         return b;
     }
-}
+	public static int gcd(int[] number) {
+		  int result = number[0];
+		  for(int i = 1; i < number.length; i++) 
+		          result = gcd(result, number[i]);
+		  
+		  return result;
+	}
 
-//Increase the number of calculations.
-//Use functoin from above as recursive.
-public static int gcd(int[] number) {
-    int result = number[0];
-    for(int i = 1; i < number.length; i++) 
-            result = gcd(result, number[i]);
-    return result;
+	public static void main(String[] args) {
+		int[] myIntArray = {4,16,32};
+                System.out.println(gcd(myIntArray));
+    }
 }
