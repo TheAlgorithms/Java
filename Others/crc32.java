@@ -1,6 +1,10 @@
 import java.util.BitSet;
 
-//Generates a crc32 checksum for a given string or byte array
+/**
+ * Generates a crc32 checksum for a given string or byte array
+ *
+ * @author Unknown
+ */
 public class crc32 {
     
     public static void main(String[] args) {

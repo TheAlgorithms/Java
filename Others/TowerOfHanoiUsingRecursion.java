@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 class TowerOfHanoi
 {
     public static void shift(int n, String startPole, String intermediatePole, String endPole)

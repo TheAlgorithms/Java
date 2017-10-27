@@ -27,7 +27,7 @@ public class OctalToBinary {
 	 * @param o The octal number
 	 * @return The binary number
 	 */
-	public static int convertOctalToBinary(int o) {
+	public static int convertOctalToBinary(int o) { //TODO: Closing braces error, figure out the intent here.
 		Scanner scan;
 		int num;
 	

@@ -1,8 +1,8 @@
-import java.lang.StringBuilder;
-import java.util.*;
-import java.util.Scanner;
-import javax.swing.*;
-
+/**
+ *  [Functionality undefined by author]
+ *
+ *  @author Unknown
+ */
 public class HexaToBin {
  
     private final int LONG_BITS = 8;
@@ -28,7 +28,7 @@ public class HexaToBin {
         //Testing Numbers:
         String[] hexNums = {"1", "A1", "ef", "BA", "AA", "BB",
             "19", "01", "02", "03", "04"};
-        Convert objConvert = new Convert();
+        Convert objConvert = new Convert(); //TODO: Errors out, Convert not recognised - fix.
 
         for (String num : hexNums) {
             objConvert.convert(num);

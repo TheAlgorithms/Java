@@ -2,11 +2,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
+ * Takes in a given string and retuurns that string where any duplicate occurrence of a given letter after the first is excluded
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
-
 public class removeDuplicateFromString {
     public static void main (String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

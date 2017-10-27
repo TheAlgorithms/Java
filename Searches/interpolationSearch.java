@@ -1,4 +1,8 @@
-
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 class Test
 {
 	// Array of items on which search will

@@ -1,10 +1,8 @@
-
 /**
+ *  Runs a cocktail shaker sort over a given array.
  *
- * @author Mateus Bizzo (https://github.com/MattBizzo)
- *
+ * @author <a href="https://github.com/MattBizzo8">Mateus Bizzo</a>
  */
-
 class CocktailShakerSort {
 	/**
 	 * This method implements the Generic Cocktail Shaker Sort

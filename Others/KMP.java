@@ -1,11 +1,12 @@
-
-/*
-Implementation of Knuth–Morris–Pratt algorithm
-Usage: 
-final String T = "AAAAABAAABA";
-final String P = "AAAA";
-KMPmatcher(T, P);
-*/
+/**
+ * Implementation of Knuth–Morris–Pratt algorithm
+ * Usage:
+ * final String T = "AAAAABAAABA";
+ * final String P = "AAAA";
+ * KMPmatcher(T, P);
+ *
+ * @author Unknown
+ */
 public class KMP {
 
     // find the starting index in string T[] that matches the search word P[]

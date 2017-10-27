@@ -1,4 +1,4 @@
-/***
+/**
  * A pseudorandom number generator.
  * 
  * @author Tobias Carryer

@@ -1,3 +1,8 @@
+/**
+ * Checks to see if a given word is a palindrome (ie. Same forwards as backwards)
+ *
+ * @author Unknown
+ */
 class Palindrome {
 	
 	public String reverseString(String x){ //*helper method

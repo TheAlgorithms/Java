@@ -1,6 +1,8 @@
-//Oskar Enmalm 29/9/17
-//An Abecadrian is a word where each letter is in alphabetical order
-    
+/**
+ * An Abecadrian is a word where each letter is in alphabetical order
+ *
+ * @author Oskar Enmalm, 29/9/17
+ */
 class Abecedarian{
 
     public static boolean isAbecedarian(String s){

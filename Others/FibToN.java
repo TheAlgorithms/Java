@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 public class FibToN {
 
 	public static void main(String[] args) {

@@ -13,7 +13,6 @@ import java.util.Stack;
  * New elements are added to the back/rear of the queue.
  *
  * @author sahilb2
- *
  */
 class QueueWithStack {
 
@@ -70,7 +69,6 @@ class QueueWithStack {
  * This class is the example for the Queue class
  *
  * @author sahilb2
- *
  */
 public class QueueUsingTwoStacks {
 

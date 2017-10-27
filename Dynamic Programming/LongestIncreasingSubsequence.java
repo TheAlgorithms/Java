@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 /**
+ *[Functionality undefined by author]
  *
- * @author Afrizal Fikri (https://github.com/icalF)
- *
+ * @author <a href="https://github.com/icalF">Afrizal Fikri</a>
  */
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) throws Exception {

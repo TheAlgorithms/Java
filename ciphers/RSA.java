@@ -1,10 +1,10 @@
-package ciphers;
-
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
 /**
- * Created by Nguyen Duy Tiep on 23-Oct-17.
+ * [Functionality undefined by author]
+ *
+ * @author Nguyen Duy Tiep, 23-Oct-17
  */
 public class RSA {
     private BigInteger modulus, privateKey, publicKey;

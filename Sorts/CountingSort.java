@@ -3,11 +3,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
+ * Runs a counting sort over a given array.
  *
- * @author Youssef Ali (https://github.com/youssefAli11997)
- *
+ * @author <a href="https://github.com/youssefAli11997">Youssef Ali</a>
  */
-
 class CountingSort {
 
     /**

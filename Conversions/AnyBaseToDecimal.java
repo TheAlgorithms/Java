@@ -2,9 +2,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
+ * [Functionality undefined by author]
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
 
 // Driver program

@@ -5,7 +5,6 @@ import java.util.Scanner;
  * Implements MinHeap
  * 
  * @author Unknown
- *
  */
 public class HeapSort {
     /** Array to store heap */

@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 public class TernarySearch{
 
     /**

@@ -1,8 +1,10 @@
-/* Program to reverse a Stack using Recursion*/
-
-
 import java.util.Stack;
 
+/**
+ * Reverses a given stack using recursion
+ *
+ * @author Unknown
+ */
 public class ReverseStackUsingRecursion {
 
     //Stack

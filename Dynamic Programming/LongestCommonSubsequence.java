@@ -1,3 +1,8 @@
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 class LongestCommonSubsequence {
 
 	public static String getLCS(String str1, String str2) {

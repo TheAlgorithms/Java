@@ -1,5 +1,6 @@
 ﻿/**
  * Columnar Transposition Cipher Encryption and Decryption.
+ *
  * @author <a href="https://github.com/freitzzz">freitzzz</a>
  */
 public class ColumnarTranspositionCipher {

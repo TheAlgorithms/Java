@@ -1,7 +1,7 @@
 /**
+ * Runs an insertion sort over a given array.
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
 
 class InsertionSort {

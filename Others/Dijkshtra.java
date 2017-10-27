@@ -1,14 +1,13 @@
-/*
-@author  : Mayank K Jha
-
-*/
-
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Mayank K. Jha
+ */
 public class Solution {
 
 public static void main(String[] args) throws IOException {

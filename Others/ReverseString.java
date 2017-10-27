@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
  * This method produces a reversed version of a string
  * 
  * @author Unknown
- *
  */
 class ReverseString
 {

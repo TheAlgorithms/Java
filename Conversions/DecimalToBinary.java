@@ -6,6 +6,7 @@ import java.util.Scanner;
  * @author Unknown
  *
  */
+// Driver Program
 class DecimalToBinary
 {
 	/**

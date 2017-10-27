@@ -1,4 +1,10 @@
 import java.util.*;
+
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 public class Array {
 
 	public static void main(String[] args) {
