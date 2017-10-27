@@ -1,8 +1,11 @@
-// A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
-//adjacency matrix representation of the graph
-
 import java.lang.*;
- 
+
+/**
+ * A A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
+ * adjacency matrix representation of the graph
+ *
+ * @author Unknown
+ */
 class PrimMST
 {
     // Number of vertices in the graph

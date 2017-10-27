@@ -1,7 +1,7 @@
 /**
+ * [Functionality undefined by author]
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
 public class SieveOfEratosthenes {
 

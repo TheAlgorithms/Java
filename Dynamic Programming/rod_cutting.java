@@ -1,7 +1,8 @@
-/*  A Dynamic Programming solution for Rod cutting problem
-    Returns the best obtainable price for a rod of
-	length n and price[] as prices of different pieces */
-
+/**
+ * A Dynamic Programming solution for Rod cutting problem
+ *
+ * @author Unknown
+ */
 public class RodCutting {
 	
 	private static int cutRod(int price[],int n)
@@ -21,7 +22,10 @@ public class RodCutting {
 		return val[n];
 	}
 
-	//main function to test
+	/**
+	 * Runs the test, and prints out 'the best obtainable price for a rod of length n and price[] as prices of different pieces'
+	 * @param args
+	 */
 	public static void main(String args[])
 	{
 		int arr[] = new int[] {2, 5, 13, 19, 20};

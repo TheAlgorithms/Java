@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
 
-// Driver Program
 public class DecimalToAnyBase {
     public static void main (String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

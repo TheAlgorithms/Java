@@ -1,13 +1,11 @@
 import java.util.Scanner;
 
-
 /**
- * @author Kyler Smith, 2017
- *
  * Implementation of a character count.
  * (Slow, could be improved upon, effectively O(n).
- * */
-
+ *
+ * @author Kyler Smith, 2017
+*/
 public class CountChar {
 
     public static void main(String[] args) {

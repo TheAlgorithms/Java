@@ -1,6 +1,7 @@
-//Oskar Enmalm 3/10/17
-//This is Euclid's algorithm which is used to find the greatest common denominator
-
+/**
+ * This is Euclid's algorithm which is used to find the greatest common denominator
+ * @author Oskar Enmalm 3/10/17
+ */
 public class GCD{
 
 public static int gcd(int a, int b) {

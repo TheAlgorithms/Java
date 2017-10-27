@@ -1,21 +1,22 @@
-/*
-This program will return all the subsequences of the input string in a string array;
-Sample Input:
-abc
-Sample Output:
-"" ( Empty String )
-c
-b
-bc
-a
-ac
-ab
-abc
-
- */
-
 import java.util.Scanner;
 
+/**
+ * This program will return all the subsequences of the input string ina  string array
+ *
+ * Sample Input:
+ * abc
+ * Sample Output:
+ * "" ( Empty String )
+ * c
+ * b
+ * bc
+ * a
+ * ac
+ * ab
+ * abc
+ *
+ * @author Unknown
+ */
 public class ReturnSubsequence {
     /*
     Main function will accept the given string and implement return subsequences function

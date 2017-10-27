@@ -1,5 +1,8 @@
-// A Dynamic Programming based solution for 0-1 Knapsack problem
-
+/**
+ * A Dynamic Programming based solution for 0-1 Knapsack problem
+ *
+ * @author Unknown
+ */
 public class Knapsack
 {
     

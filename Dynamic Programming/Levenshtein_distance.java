@@ -1,11 +1,8 @@
 /**
- *
- * @author Kshitij VERMA (github.com/kv19971)
  * LEVENSHTEIN DISTANCE dyamic programming implementation to show the difference between two strings (https://en.wikipedia.org/wiki/Levenshtein_distance)
  *
- *
+ * @author <a href="https://github.com/kv19971">Kshitij VERMA</a>
  */
-
 public class Levenshtein_distance{
 	private static int minimum(int a, int b, int c){
 		if(a < b && a < c){

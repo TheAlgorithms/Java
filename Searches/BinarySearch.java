@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
 /**
+ * Implements a generic binary search over a given array, with a key value being searched for.
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
-
 class BinarySearch
 {
     /**

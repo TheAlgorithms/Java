@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 public class FloydTriangle {
     public static void main(String[] args) {
           Scanner sc = new Scanner(System.in);

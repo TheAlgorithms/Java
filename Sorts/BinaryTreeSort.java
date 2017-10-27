@@ -1,5 +1,11 @@
 import java.util.Arrays;
-public class TreeSort {
+
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
+public class TreeSort { //TODO: Resolve node import issue.
 	
 	public Node root;
 

@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * [Functionality undefined by author]
  *
- * @author Varun Upadhyay (https://github.com/varunu28)
- *
+ * @author <a href="https://github.com/varunu28">Varun Upadhyay</a>
  */
-
 public class Fibonacci {
 
     private static Map<Integer,Integer> map = new HashMap<Integer,Integer>();

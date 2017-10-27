@@ -1,8 +1,13 @@
 import java.util.*;
 
+/**
+ * Evaluates a given postfix expression.
+ *
+ * @author Unknown
+ */
 public class Postfix {
     public static void main(String[] args) {
-         Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
         String post = scanner.nextLine();   // Takes input with spaces in between eg. "1 21 +"
         System.out.println(postfixEvaluate(post));
     }

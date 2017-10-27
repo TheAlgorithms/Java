@@ -1,3 +1,8 @@
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ */
 public class Node {
 	 public Object anElement;
 	 public Node less;

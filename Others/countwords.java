@@ -5,7 +5,6 @@ import java.util.Scanner;
  * many words were in that particular string
  * 
  * @author Marcus
- *
  */
   class CountTheWords{
 

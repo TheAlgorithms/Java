@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.lang.StringBuilder;
 
+/**
+ * [Functionality undefined by author]
+ *
+ * @author Unknown
+ *
+ */
 class AdjacencyListGraph<E extends Comparable<E>> {
 	
     ArrayList<Vertex> verticies;
@@ -90,7 +96,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
     }
 
     /**
-     * this gives a list of verticies in the graph and their adjacencies
+     * this gives a list of vertices in the graph and their adjacencies
      * 
      * @return returns a string describing this graph
      */

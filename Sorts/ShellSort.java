@@ -1,6 +1,6 @@
-package Sorts;
-
 /**
+ * Runs a shell sort on a given array
+ *
  * @author dpunosevac
  */
 public class ShellSort {
