@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+    	String text = "";
+    	System.out.println("Enter Your number : ");
+        Scanner scan = new Scanner(System.in);
+        if(scan.nextInt() % 2 == 0) {
+        	text += "Even Number";
+        }
+        else{
+        	text += "Odd Number";
+        }
+        System.out.println("Your number is" + text);
+    }
+}
