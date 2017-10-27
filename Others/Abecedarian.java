@@ -12,6 +12,6 @@ class Abecedarian{
 
             else{return false;}
             }
-        }
         return true;
+        }
 }
