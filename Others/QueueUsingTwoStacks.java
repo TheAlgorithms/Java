@@ -56,6 +56,21 @@ class QueueWithStack {
     }
 
     /**
+     * Peek at the element from the front of the queue
+     *
+     * @return the new front of the queue
+     */
+    public Object peek() {
+        if(this.outStack.isEmpty()) {
+            // Move all elements from inStack to outStack (preserving the order)
+            while(!this.inStack.isEmpty()) {
+                this.outStack.push( this.inStack.pop() );
+            }
+        }
+        return this.outStack.peek();
+    }
+
+    /**
      * Returns true if the queue is empty
      *
      * @return true if the queue is empty
@@ -101,18 +116,24 @@ public class QueueUsingTwoStacks {
         // outStack: [(top) 2, 3, 4]
 
         myQueue.insert(5);
+        System.out.println(myQueue.peek()); //Will print 2
         // instack: [(top) 5]
         // outStack: [(top) 2, 3, 4]
 
         myQueue.remove();
+        System.out.println(myQueue.peek()); //Will print 3
         // instack: [(top) 5]
         // outStack: [(top) 3, 4]
         myQueue.remove();
+        System.out.println(myQueue.peek()); //Will print 4
         // instack: [(top) 5]
         // outStack: [(top) 4]
         myQueue.remove();
         // instack: [(top) 5]
         // outStack: []
+        System.out.println(myQueue.peek()); //Will print 5
+        // instack: []
+        // outStack: [(top) 5]
         myQueue.remove();
         // instack: []
         // outStack: []
