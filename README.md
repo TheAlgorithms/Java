@@ -116,6 +116,14 @@ __Properties__
 * Average case performance	O(log n)
 * Worst case space complexity	O(1) 
 
+From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
+
+__Properties__
+* Worst case performance O(nlog2 2n)
+* Best case performance O(n log n)
+* Average case performance depends on gap sequence
+
+###### View the algorithm in [action][shell-toptal]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
