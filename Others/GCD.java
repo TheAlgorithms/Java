@@ -13,3 +13,12 @@ public static int gcd(int a, int b) {
         return b;
     }
 }
+
+//Increase the number of calculations.
+//Use functoin from above as recursive.
+public static int gcd(int[] number) {
+    int result = number[0];
+    for(int i = 1; i < number.length; i++) 
+            result = gcd(result, number[i]);
+    return result;
+}
