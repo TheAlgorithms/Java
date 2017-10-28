@@ -12,7 +12,7 @@ import java.util.Stack;
  * The elements that are added first are the first to be removed.
  * New elements are added to the back/rear of the queue.
  *
- * @author sahilb2
+ * @author sahilb2 (https://www.github.com/sahilb2)
  *
  */
 class QueueWithStack {
@@ -58,9 +58,9 @@ class QueueWithStack {
     /**
      * Peek at the element from the front of the queue
      *
-     * @return the new front of the queue
+     * @return the front element of the queue
      */
-    public Object peek() {
+    public Object peekFront() {
         if(this.outStack.isEmpty()) {
             // Move all elements from inStack to outStack (preserving the order)
             while(!this.inStack.isEmpty()) {
@@ -68,6 +68,15 @@ class QueueWithStack {
             }
         }
         return this.outStack.peek();
+    }
+
+    /**
+     * Peek at the element from the back of the queue
+     *
+     * @return the back element of the queue
+     */
+    public Object peekBack() {
+        return this.inStack.peek();
     }
 
     /**
@@ -84,7 +93,7 @@ class QueueWithStack {
 /**
  * This class is the example for the Queue class
  *
- * @author sahilb2
+ * @author sahilb2 (https://www.github.com/sahilb2)
  *
  */
 public class QueueUsingTwoStacks {
@@ -97,41 +106,46 @@ public class QueueUsingTwoStacks {
     public static void main(String args[]){
         QueueWithStack myQueue = new QueueWithStack();
         myQueue.insert(1);
+        System.out.println(myQueue.peekBack()); //Will print 1
         // instack: [(top) 1]
         // outStack: []
         myQueue.insert(2);
+        System.out.println(myQueue.peekBack()); //Will print 2
         // instack: [(top) 2, 1]
         // outStack: []
         myQueue.insert(3);
+        System.out.println(myQueue.peekBack()); //Will print 3
         // instack: [(top) 3, 2, 1]
         // outStack: []
         myQueue.insert(4);
+        System.out.println(myQueue.peekBack()); //Will print 4
         // instack: [(top) 4, 3, 2, 1]
         // outStack: []
 
         System.out.println(myQueue.isEmpty()); //Will print false
 
         System.out.println(myQueue.remove()); //Will print 1
+        System.out.println(myQueue.peekBack()); //Will print NULL
         // instack: []
         // outStack: [(top) 2, 3, 4]
 
         myQueue.insert(5);
-        System.out.println(myQueue.peek()); //Will print 2
+        System.out.println(myQueue.peekFront()); //Will print 2
         // instack: [(top) 5]
         // outStack: [(top) 2, 3, 4]
 
         myQueue.remove();
-        System.out.println(myQueue.peek()); //Will print 3
+        System.out.println(myQueue.peekFront()); //Will print 3
         // instack: [(top) 5]
         // outStack: [(top) 3, 4]
         myQueue.remove();
-        System.out.println(myQueue.peek()); //Will print 4
+        System.out.println(myQueue.peekFront()); //Will print 4
         // instack: [(top) 5]
         // outStack: [(top) 4]
         myQueue.remove();
         // instack: [(top) 5]
         // outStack: []
-        System.out.println(myQueue.peek()); //Will print 5
+        System.out.println(myQueue.peekFront()); //Will print 5
         // instack: []
         // outStack: [(top) 5]
         myQueue.remove();
