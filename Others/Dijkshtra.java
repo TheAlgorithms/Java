@@ -4,6 +4,11 @@
 */
 
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
+
 public class Solution {
 
 public static void main(String[] args) throws IOException {
@@ -30,7 +35,7 @@ public static void main(String[] args) throws IOException {
 	
 	//Implementing Dijkshtra's Algorithm 
 	
-         Stack <Integer> t=new Stack<Integer>();
+         Stack<Integer> t=new Stack<Integer>();
           int src=in.nextInt();
         for(int i=1;i<=n;i++){
         	if(i!=src){t.push(i);}}

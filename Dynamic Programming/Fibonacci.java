@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Fibonacci {
 
-    public static Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    private static Map<Integer,Integer> map = new HashMap<Integer,Integer>();
 
     public static void main(String[] args) throws Exception {
 
@@ -29,7 +29,7 @@ public class Fibonacci {
      * Outputs the nth fibonacci number
      **/
 
-    public static int fibMemo(int n) {
+    private static int fibMemo(int n) {
         if (map.containsKey(n)) {
             return map.get(n);
         }
@@ -54,7 +54,7 @@ public class Fibonacci {
      * Outputs the nth fibonacci number
      **/
 
-    public static int fibBotUp(int n) {
+    private static int fibBotUp(int n) {
 
         Map<Integer,Integer> fib = new HashMap<Integer,Integer>();
 
