@@ -39,7 +39,7 @@ class ReverseString
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the string");
 		String srr=br.readLine();
-		System.out.println("Reverse="+reverseString(srr));
+		System.out.println("Reverse="+reverse(srr));
 		br.close();
 	}
 }
