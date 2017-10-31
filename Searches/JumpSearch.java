@@ -1,4 +1,5 @@
 // Java program to implement Jump Search.
+import java.io.Scanner;
 public class JumpSearch
 {
     public static int jumpSearch(int[] arr, int x)
@@ -41,9 +42,15 @@ public class JumpSearch
     // Driver program to test function
     public static void main(String [ ] args)
     {
-        int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610};
-        int x = 55;
- 
+        //int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610};
+        //int x = 55;
+        int array[] = new int[10];
+        Scanner scan = new Scanner(System.in);
+        for(int i=0; i < 10; i++) {
+            array[i] = scan.nextInt();
+        }
+        int position_number = 
+        
         // Find the index of 'x' using Jump Search
         int index = jumpSearch(arr, x);
  
