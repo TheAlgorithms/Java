@@ -45,11 +45,16 @@ public class JumpSearch
         //int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610};
         //int x = 55;
         int array[] = new int[10];
+        int position = 0;
         Scanner scan = new Scanner(System.in);
         for(int i=0; i < 10; i++) {
             array[i] = scan.nextInt();
         }
-        int position_number = 
+        System.out.println("Enter the position at where you need to find the number");
+        for(int j=0; j < array.length(); j++) {
+            position = scan.nextInt();
+        }
+        System.out.println("Element at position:" + position + "is, " + jumpSearch(array, position));
         
         // Find the index of 'x' using Jump Search
         int index = jumpSearch(arr, x);
