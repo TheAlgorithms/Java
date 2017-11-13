@@ -58,10 +58,10 @@ public class Deap {
 		int i = 2;// maxindex
 		int max = deap[i];// Remove min value
 		while (2 * i + 1 < n) {
-			if (deap[2 * i + 1] > deap[2 * i + 2]) {// 왼쪽 자식이 더 클 때
+			if (deap[2 * i + 1] > deap[2 * i + 2]) {// left child is bigger than right child
 				deap[i] = deap[2 * i + 1];
 				i = 2 * i + 1;
-			} else {// 오른쪽 자식이 더 클 때
+			} else {// left right is bigger than left child
 				deap[i] = deap[2 * i + 2];
 				i = 2 * i + 2;
 			}
