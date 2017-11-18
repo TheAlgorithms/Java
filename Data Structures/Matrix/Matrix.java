@@ -37,6 +37,7 @@ public class Matrix {
         System.out.println("2 * m2:\n" + m2.scale(2));
         System.out.println("m2 + m3:\n" + m2.plus(m3));
         System.out.println("m2 - m3:\n" + m2.minus(m3));
+        System.out.println("m2 * m3: \n"+m2.multiply(m3));
 	}
 
 
@@ -157,6 +158,32 @@ public class Matrix {
 
         return new Matrix(newData);
     }
+    
+    /**
+     * Multiplies this matrix with another matrix.
+     *
+     * @param other : Matrix to be multiplied with
+     * @return product
+     */
+     public Matrix multiply(Matrix other) throws RuntimeException {
+
+     	int[][] newData = new int[this.data.length][other.getColumns()];
+
+     	if(this.getColumns() !=other.getRows())
+ 			throw new RuntimeException("The two matrices cannot be multiplied.");
+     	int sum;
+     	for (int i = 0; i < this.getRows(); ++i)
+ 			for(int j = 0; j < other.getColumns(); ++j){
+ 				sum = 0;
+ 				for(int k=0;k<this.getColumns();++k){
+ 					sum += this.data[i][k] * other.getElement(k, j);
+ 				}
+ 				newData[i][j] = sum; 
+ 			}
+ 				
+
+         return new Matrix(newData);
+     }
 
     /**
     * Checks if the matrix passed is equal to this matrix
