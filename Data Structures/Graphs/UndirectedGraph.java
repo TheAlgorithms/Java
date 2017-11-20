@@ -1,5 +1,3 @@
-package temp;
-
 import java.util.ArrayList;
 
 class UndirecteAdjacencydGraph<E extends Comparable<E>>{
