@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-class UndirecteAdjacencydGraph<E extends Comparable<E>>{
+class UndirecteAdjacencyGraph<E extends Comparable<E>>{
 	ArrayList<Vertex> verticies;
 
-    public UndirecteAdjacencydGraph() {
+    public UndirecteAdjacencyGraph() {
         verticies = new ArrayList<>();
     }
     
@@ -138,7 +138,7 @@ class UndirecteAdjacencydGraph<E extends Comparable<E>>{
 }
 public class UndirectedGraph{
 	public static void main(String[] args) {
-		UndirecteAdjacencydGraph<Character> dg = new UndirecteAdjacencydGraph<Character>();
+		UndirecteAdjacencyGraph<Character> dg = new UndirecteAdjacencyGraph<Character>();
 		
 		dg.addEdge('A', 'B');
 		dg.addEdge('B', 'E');
