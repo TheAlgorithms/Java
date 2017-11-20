@@ -79,7 +79,7 @@ class AdjacencyMatrixGraph {
 	}
 
 	/**
-     * this method adds an edge to the graph between two specified
+     * This method adds an edge to the graph between two specified
      * verticies 
      *
      * @param from the data of the vertex the edge is from
