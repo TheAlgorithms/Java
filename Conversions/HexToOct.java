@@ -4,7 +4,8 @@ Author - Tanmay Joshi*/
 import java.util.Scanner;
 
 public class HexToOct
-{
+{ 
+	//Function that takes the Hexadecimal number as input and returns the decimal form. 
     public static int hex2decimal(String s)
     {
              String str = "0123456789ABCDEF";
@@ -17,7 +18,8 @@ public class HexToOct
                  val = 16*val + n;
              }
              return val;
-    }
+    } 
+	// Main function that gets the hex input from user and converts it into octal.
     public static void main(String args[])
     {
         String hexadecnum;
@@ -39,7 +41,7 @@ public class HexToOct
             octnum[i++] = decnum%8;
             decnum = decnum/8;
         }
-		
+	//Print the octal form of the number.	
         System.out.print("Equivalent Octal Number is :\n");
         for(j=i-1; j>0; j--)
         {
