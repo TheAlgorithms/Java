@@ -1,12 +1,20 @@
-/* Java Program - Convert Hexadecimal to Octal 
-Author - Tanmay Joshi*/
-		
+/**
+ + * Converts any Hexadecimal Number to Octal 
+ + * 
+ + * @author Tanmay Joshi
+ + *
+ + */
 import java.util.Scanner;
 
 public class HexToOct
 { 
-	/*Function that takes the Hexadecimal number as input and returns the decimal form. 
-	 The input is recieved as a string and the return type is int*/
+	/**
+ +	 * This method converts a Hexadecimal number to
+ +	 * a decimal number
+ +	 * 
+ +	 * @param The Hexadecimal Number
+ +	 * @return The Decimal number
+ +	 */ 
     public static int hex2decimal(String s)
     {
              String str = "0123456789ABCDEF";  
@@ -20,12 +28,34 @@ public class HexToOct
              }
              return val;
     } 
+	
+	/**
+ +	 * This method converts a Decimal number to
+ +	 * a octal number
+ +	 * 
+ +	 * @param The Decimal Number
+ +	 * @return The Octal number
+ +	 */ 
+	public static int decimal2octal(int q)
+	{
+		int now;
+		int i=1;
+		int octnum=0;
+		while(q>0)
+		{
+			now=q%8;
+			octnum=(now*(int)(Math.pow(10,i)))+octnum;
+			q/=8;
+			i++;
+		}
+		octnum/=10;
+		return octnum;
+	}
 	// Main method that gets the hex input from user and converts it into octal.
     public static void main(String args[])
     {
         String hexadecnum;
-        int decnum, i=1, j;
-        int octnum[] = new int[100];       //Array to store the octal from of the hex number.
+        int decnum,octalnum;
         Scanner scan = new Scanner(System.in);
 		
         System.out.print("Enter Hexadecimal Number : ");
@@ -34,19 +64,11 @@ public class HexToOct
         // first convert hexadecimal to decimal
         
         decnum = hex2decimal(hexadecnum);       //Pass the string to the hex2decimal function and get the decimal form in variable decnum
-        
+		
         // convert decimal to octal
+        octalnum=decimal2octal(decnum);
+	System.out.println("Number in octal: "+octalnum);
+ 
         
-        while(decnum != 0)
-        {
-            octnum[i++] = decnum%8;
-            decnum = decnum/8;
-        }
-	//Print the octal form of the number.	
-        System.out.print("Equivalent Octal Number is :\n");
-        for(j=i-1; j>0; j--)
-        {
-            System.out.print(octnum[j]);
-        }
     }
 }
