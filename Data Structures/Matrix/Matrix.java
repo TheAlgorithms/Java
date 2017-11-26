@@ -1,5 +1,3 @@
-package practice;
-
 /**
  * Matrix data-type.
  *
