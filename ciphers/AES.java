@@ -242,26 +242,38 @@ public class AES {
 				new BigInteger("0"), new BigInteger("0"), new BigInteger("0"), new BigInteger("0"), new BigInteger("0"),
 				new BigInteger("0"), new BigInteger("0"), };
 
+		// initialize rcon iteration
+		int rconCounter = 1;
+
 		for (int i = 1; i < 11; i++) {
 
 			// get the previous 32 bits the key
 			BigInteger t = roundKeys[i - 1].remainder(new BigInteger("100000000", 16));
+			
+			// split previous key into 8-bit segments
+			BigInteger[] prevKey = {
+					roundKeys[i - 1].remainder(new BigInteger("100000000", 16)),
+					roundKeys[i - 1].remainder(new BigInteger("10000000000000000", 16)).divide(new BigInteger("100000000", 16)),
+					roundKeys[i - 1].remainder(new BigInteger("1000000000000000000000000", 16)).divide(new BigInteger("10000000000000000", 16)),
+					roundKeys[i - 1].divide(new BigInteger("1000000000000000000000000", 16)),
+			};
 
-			// initialize rcon iteration
-			int rconCounter = 1;
-
-			// schedule core
+			// run schedule core
 			t = scheduleCore(t, rconCounter);
 			rconCounter += 1;
-			BigInteger t1 = t.multiply(new BigInteger("100000000", 16));
-			BigInteger t2 = t.multiply(new BigInteger("10000000000000000", 16));
-			BigInteger t3 = t.multiply(new BigInteger("1000000000000000000000000", 16));
-			t = t.add(t1).add(t2).add(t3);
+			
+			// Calculate partial round key
+			BigInteger t0 = t.xor(prevKey[3]);
+			BigInteger t1 = t0.xor(prevKey[2]);
+			BigInteger t2 = t1.xor(prevKey[1]);
+			BigInteger t3 = t2.xor(prevKey[0]);
+			
+			// Join round key segments
+			t2 = t2.multiply(new BigInteger("100000000", 16));
+			t1 = t1.multiply(new BigInteger("10000000000000000", 16));
+			t0 = t0.multiply(new BigInteger("1000000000000000000000000", 16));			
+			roundKeys[i] = t0.add(t1).add(t2).add(t3);
 
-			BigInteger xorMask = roundKeys[i - 1].divide(new BigInteger("100000000", 16));
-			xorMask = xorMask.multiply(new BigInteger("100000000", 16));
-			t = t.xor(xorMask);
-			roundKeys[i] = t;
 
 		}
 		return roundKeys;
@@ -511,11 +523,13 @@ public class AES {
 	public static void main(String[] args) {
 
 		boolean encrypt = false;
-		BigInteger key = new BigInteger("f0f1f2f3f4f5f6f708090a0b0c0d0e0f", 16);
+		BigInteger key = new BigInteger("0", 16);
 		BigInteger plaintext = new BigInteger("0", 16);
 		BigInteger ciphertext = new BigInteger("adcfc0ed15292419cb796167bc02b669", 16);
 		BigInteger output;
 
+		System.out.println(keyExpansion(key)[2].xor(new BigInteger("9b9898c9f9fbfbaa9b9898c9f9fbfbaa",16)).toString(16));
+		
 		if (encrypt) {
 			output = encrypt(plaintext, key);
 		} else {
