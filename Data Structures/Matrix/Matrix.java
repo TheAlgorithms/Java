@@ -121,10 +121,10 @@ public class Matrix {
     }
     
     /**
-	* Returns this matrix scaled by a factor. That is, computes sA where s is a
+	* Returns this matrix divided by a factor. That is, computes sA where s is a
 	* constant and A is a matrix (this object).
 	*
-	* @param scalar : value to scale by
+	* @param scalar : value to divide by
 	* @return A new matrix scaled by the scalar value
 	*/
     public Matrix divide(int scalar) {
