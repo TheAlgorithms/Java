@@ -35,6 +35,7 @@ public class Matrix {
 
         //test operations (valid)
         System.out.println("2 * m2:\n" + m2.scale(2));
+        System.out.println("m2 / 2:\n" + m2.divide(2));
         System.out.println("m2 + m3:\n" + m2.plus(m3));
         System.out.println("m2 - m3:\n" + m2.minus(m3));
         System.out.println("m2 * m3: \n"+m2.multiply(m3));
@@ -115,6 +116,24 @@ public class Matrix {
 		for (int i = 0; i < this.getRows(); ++i)
 			for(int j = 0; j < this.getColumns(); ++j)
 				newData[i][j] = this.data[i][j] * scalar;
+
+		return new Matrix(newData);
+    }
+    
+    /**
+	* Returns this matrix scaled by a factor. That is, computes sA where s is a
+	* constant and A is a matrix (this object).
+	*
+	* @param scalar : value to scale by
+	* @return A new matrix scaled by the scalar value
+	*/
+    public Matrix divide(int scalar) {
+
+    	int[][] newData = new int[this.data.length][this.data[0].length];
+
+		for (int i = 0; i < this.getRows(); ++i)
+			for(int j = 0; j < this.getColumns(); ++j)
+				newData[i][j] = this.data[i][j] / scalar;
 
 		return new Matrix(newData);
     }
