@@ -1,6 +1,7 @@
 package ciphers;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 /* This class is build to demonstrate the 
  * apllication of the AES-algorithm on
@@ -521,23 +522,33 @@ public class AES {
 	}
 
 	public static void main(String[] args) {
-
-		boolean encrypt = false;
-		BigInteger key = new BigInteger("0", 16);
-		BigInteger plaintext = new BigInteger("0", 16);
-		BigInteger ciphertext = new BigInteger("adcfc0ed15292419cb796167bc02b669", 16);
-		BigInteger output;
-
-		System.out.println(keyExpansion(key)[2].xor(new BigInteger("9b9898c9f9fbfbaa9b9898c9f9fbfbaa",16)).toString(16));
 		
-		if (encrypt) {
-			output = encrypt(plaintext, key);
-		} else {
-			output = decrypt(ciphertext, key);
+		Scanner input = new Scanner(System.in);
+
+		System.out.println("Do you want to (e)ncrypt or (d)ecrypt a message?");
+		char choice = input.nextLine().charAt(0);
+		String in;
+		if(choice == 'E' || choice=='e'){
+			System.out.println("Choose a plaintext block (128-Bit Integer in base 16):\n");
+			in = input.nextLine();
+			BigInteger plaintext = new BigInteger(in, 16);
+			System.out.println("Choose a Key (128-Bit Integer in base 16):\n");
+			in = input.nextLine();
+			BigInteger key = new BigInteger(in, 16);
+			
+			System.out.println("The encrypted message is: \n" + encrypt(plaintext,key).toString(16));
+		}
+		if(choice =='D' || choice =='d'){
+			System.out.println("Enter your ciphertext block (128-Bit Integer in base 16):\n");
+			in = input.nextLine();
+			BigInteger ciphertext = new BigInteger(in, 16);
+			System.out.println("Choose a Key (128-Bit Integer in base 16):\n");
+			in = input.nextLine();
+			BigInteger key = new BigInteger(in, 16);
+			System.out.println("The deciphered message is:\n" + decrypt(ciphertext,key).toString(16));
 		}
 
-		System.out.println(output.toString(16));
-
+		input.close();
 	}
 
 }
