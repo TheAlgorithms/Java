@@ -6,7 +6,7 @@
  *
  */
 
-public class Levenshtein_distance{
+public class LevenshteinDistance{
 	private static int minimum(int a, int b, int c){
 		if(a < b && a < c){
 			return a;

@@ -6,7 +6,7 @@ import java.util.*;
  * @author Unknown
  *
  */
-public class bfs{
+public class BFS{
 
 	/**
 	 * The BFS implemented in code to use.

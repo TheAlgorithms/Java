@@ -7,7 +7,7 @@ import java.util.*;
  *
  */
 
-public class dfs{
+public class DFS{
 	
 	/**
 	 * Implementation in code of a DFS
