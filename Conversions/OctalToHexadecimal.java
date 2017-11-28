@@ -1,5 +1,5 @@
 /**
- + + * Converts any Hexadecimal Number to Octal 
+ + + * Converts any Octal Number to HexaDecimal 
  + + * 
  + + * @author Tanmay Joshi
  + + *
