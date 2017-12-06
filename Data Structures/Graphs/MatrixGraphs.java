@@ -80,7 +80,7 @@ class AdjacencyMatrixGraph {
 
 	/**
      * This method adds an edge to the graph between two specified
-     * verticies 
+     * vertices 
      *
      * @param from the data of the vertex the edge is from
      * @param to the data of the vertex the edge is going to
@@ -101,7 +101,7 @@ class AdjacencyMatrixGraph {
 
 	 /**
      * this method removes an edge from the graph between two specified
-     * verticies 
+     * vertices 
      *
      * @param from the data of the vertex the edge is from
      * @param to the data of the vertex the edge is going to
