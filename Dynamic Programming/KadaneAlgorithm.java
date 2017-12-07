@@ -14,10 +14,10 @@ public class KadaneAlgorithm {
 	/**
 	* This method implements Kadane's Algorithm
 	* 
-    * @param arr The input array
+        * @param arr The input array
 	* @return The maximum contiguous subarray sum of the array
-    * 
-    */
+        * 
+        */
 	static int largestContiguousSum(int arr[]){
 		int i,len=arr.length,cursum=0,maxsum=Integer.MIN_VALUE;
 		if(len==0)	//empty array
