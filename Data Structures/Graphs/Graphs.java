@@ -3,37 +3,37 @@ import java.lang.StringBuilder;
 
 class AdjacencyListGraph<E extends Comparable<E>> {
 	
-    ArrayList<Vertex> verticies;
+    ArrayList<Vertex> vertices;
 
     public AdjacencyListGraph() {
-        verticies = new ArrayList<>();
+        vertices = new ArrayList<>();
     }
 
     private class Vertex {
         E data;
-        ArrayList<Vertex> adjacentVerticies;
+        ArrayList<Vertex> adjacentVertices;
 
         public Vertex(E data) {
-            adjacentVerticies = new ArrayList<>();
+            adjacentVertices = new ArrayList<>();
             this.data = data;
         }
 
         public boolean addAdjacentVertex(Vertex to) {
-            for (Vertex v: adjacentVerticies) {
+            for (Vertex v: adjacentVertices) {
                 if (v.data.compareTo(to.data) == 0) {
                     return false; // the edge already exists
                 }
             }
-            return adjacentVerticies.add(to); // this will return true;
+            return adjacentVertices.add(to); // this will return true;
         }
 
         public boolean removeAdjacentVertex(E to) {
             // use indexes here so it is possible to 
             // remove easily without implementing 
             // equals method that ArrayList.remove(Object o) uses
-            for (int i = 0; i < adjacentVerticies.size(); i++) {
-                if (adjacentVerticies.get(i).data.compareTo(to) == 0) {
-                    adjacentVerticies.remove(i);
+            for (int i = 0; i < adjacentVertices.size(); i++) {
+                if (adjacentVertices.get(i).data.compareTo(to) == 0) {
+                    adjacentVertices.remove(i);
                     return true;
                 }
             }
@@ -43,7 +43,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
     /**
      * this method removes an edge from the graph between two specified
-     * verticies
+     * vertices
      *
      * @param from the data of the vertex the edge is from
      * @param to the data of the vertex the edge is going to
@@ -51,7 +51,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
      */
     public boolean removeEdge(E from, E to) {
         Vertex fromV = null;
-        for (Vertex v: verticies) {
+        for (Vertex v: vertices) {
             if (from.compareTo(v.data) == 0) {
                 fromV = v;
                 break;
@@ -62,7 +62,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
     }
     /**
      * this method adds an edge to the graph between two specified
-     * verticies 
+     * vertices 
      *
      * @param from the data of the vertex the edge is from
      * @param to the data of the vertex the edge is going to
@@ -70,7 +70,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
      */
     public boolean addEdge(E from, E to) {
         Vertex fromV = null, toV = null;
-        for (Vertex v: verticies) {
+        for (Vertex v: vertices) {
             if (from.compareTo(v.data) == 0) { // see if from vertex already exists
                 fromV = v;
             } else if (to.compareTo(v.data) == 0) { // see if to vertex already exists
@@ -80,28 +80,28 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         }
         if (fromV == null) {
             fromV = new Vertex(from);
-            verticies.add(fromV);
+            vertices.add(fromV);
         }
         if (toV == null) {
             toV = new Vertex(to);
-            verticies.add(toV);
+            vertices.add(toV);
         }
         return fromV.addAdjacentVertex(toV);
     }
 
     /**
-     * this gives a list of verticies in the graph and their adjacencies
+     * this gives a list of vertices in the graph and their adjacencies
      * 
      * @return returns a string describing this graph
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Vertex v: verticies) {
+        for (Vertex v: vertices) {
             sb.append("Vertex: ");
             sb.append(v.data);
             sb.append("\n");
             sb.append("Adjacent verticies: ");
-            for (Vertex v2: v.adjacentVerticies) {
+            for (Vertex v2: v.adjacentVertices) {
                 sb.append(v2.data);
                 sb.append(" ");
             }
