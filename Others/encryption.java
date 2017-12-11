@@ -9,6 +9,7 @@ public class encryption {
 		//Digit, capital letter, and small letter are allowed for input.
 		//the characters are rotated, for example, A is followd by Z.
 		//Encryption and decryption should be implemented together.
+		
 		String temp;
 		System.out.println("Let's go encryption");
 		Scanner aScanner = new Scanner(System.in);
