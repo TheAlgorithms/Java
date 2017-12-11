@@ -5,10 +5,12 @@ public class encryption {
 	static char[] secret = new char[20]; 
 	static int[] change = new int[20];
 	public static void main(String[] args) {
+		
 		//conditions
 		//Digit, capital letter, and small letter are allowed for input.
 		//the characters are rotated, for example, A is followd by Z.
 		//Encryption and decryption should be implemented together.
+		
 		String temp;
 		System.out.println("Let's go encryption");
 		Scanner aScanner = new Scanner(System.in);
