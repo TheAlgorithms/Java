@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class RootPrecision {
 
     public static void main(String[] args) {
 	//take input    

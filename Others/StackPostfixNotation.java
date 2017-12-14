@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Postfix {
+public class StackPostfixNotation {
     public static void main(String[] args) {
          Scanner scanner = new Scanner(System.in);
         String post = scanner.nextLine();   // Takes input with spaces in between eg. "1 21 +"
