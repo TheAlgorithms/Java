@@ -9,12 +9,12 @@ class Node
     }
 }
  
-class BinaryTree
+public class LevelOrderTraversal
 {
     // Root of the Binary Tree
     Node root;
  
-    public BinaryTree()
+    public LevelOrderTraversal()
     {
         root = null;
     }
@@ -65,7 +65,7 @@ class BinaryTree
     /* Driver program to test above functions */
     public static void main(String args[])
     {
-       BinaryTree tree = new BinaryTree();
+       LevelOrderTraversal tree = new LevelOrderTraversal();
        tree.root= new Node(1);
        tree.root.left= new Node(2);
        tree.root.right= new Node(3);

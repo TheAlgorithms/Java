@@ -78,7 +78,7 @@ class Tree
 }
  
 // Driver class to test above methods
-public class Main
+public class PrintTopViewofTree
 {
     public static void main(String[] args)
     {
