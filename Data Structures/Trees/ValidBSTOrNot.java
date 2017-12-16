@@ -10,7 +10,7 @@ class Node
     }
 }
  
-public class BinaryTree
+public class ValidBSTOrNot
 {
     //Root of the Binary Tree
     Node root;
@@ -47,7 +47,7 @@ public class BinaryTree
     /* Driver program to test above functions */
     public static void main(String args[])
     {
-        BinaryTree tree = new BinaryTree();
+        ValidBSTOrNot tree = new ValidBSTOrNot();
         tree.root = new Node(4);
         tree.root.left = new Node(2);
         tree.root.right = new Node(5);
