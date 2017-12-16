@@ -121,5 +121,13 @@ public class TestCSVFile {
 		// test successful
 	}
 	
+	@Test
+	public void testSet() {
+//		CSVFile testObj = new CSVFile("testData4.csv",',');
+//		testObj.set(6, 2, "80");
+//		testObj.updateFile();
+		// test succesfull
+	}
+	
 
 }
