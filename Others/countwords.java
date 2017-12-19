@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Marcus
  *
  */
-  class CountTheWords{
+  public class countwords{
 
 	public static void main(String[] args){
 	  Scanner input = new Scanner(System.in);
