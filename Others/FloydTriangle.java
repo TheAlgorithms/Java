@@ -6,7 +6,7 @@ class FloydTriangle {
           Scanner sc = new Scanner(System.in);
           System.out.println("Enter the number of rows which you want in your Floyd Triangle: ");
           int r = sc.nextInt(), n = 0;
-
+          sc.close();
           for(int i=0; i < r; i++) {
               for(int j=0; j <= i; j++) {
                   System.out.print(++n + " ");

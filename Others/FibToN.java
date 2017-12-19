@@ -9,7 +9,7 @@ public class FibToN {
 		// print fibonacci sequence less than N
 		int first = 0, second = 1;
 		//first fibo and second fibonacci are 0 and 1 respectively
-		
+		scn.close();
 		while(first <= N){
 			//print first fibo 0 then add second fibo into it while updating second as well
 			
