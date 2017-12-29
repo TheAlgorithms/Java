@@ -4,7 +4,7 @@ import java.util.Scanner;
  * 
  * @author Nishita Aggarwal
  *
- * Brian Kernighan’s Algorithm
+ * Brian Kernighanâ€™s Algorithm
  * algorithm to count the number of set bits in a given number
  * Subtraction of 1 from a number toggles all the bits (from
  * right to left) till the rightmost set bit(including the
@@ -24,10 +24,10 @@ import java.util.Scanner;
 public class BrianKernighanAlgorithm {
 	
 	/**
-     * @param num: number in which we count the set bits
-     * 
-     * @return int: Number of set bits
-     * */
+         * @param num: number in which we count the set bits
+         * 
+         * @return int: Number of set bits
+         * */
 	static int countSetBits(int num)
 	{
 		int cnt = 0;
