@@ -14,7 +14,7 @@ class Node {
 }
  
 /* Class to print Level Order Traversal */
-class BinaryTree {
+public class LevelOrderTraversalQueue {
  
     Node root;
  
@@ -49,7 +49,7 @@ class BinaryTree {
     {
         /* creating a binary tree and entering 
          the nodes */
-        BinaryTree tree_level = new BinaryTree();
+    	LevelOrderTraversalQueue tree_level = new LevelOrderTraversalQueue();
         tree_level.root = new Node(1);
         tree_level.root.left = new Node(2);
         tree_level.root.right = new Node(3);

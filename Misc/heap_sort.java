@@ -1,4 +1,4 @@
-public class HeapSort
+public class heap_sort
 {
     public void sort(int arr[])
     {
@@ -64,7 +64,7 @@ public class HeapSort
         int arr[] = {12, 11, 13, 5, 6, 7};
         int n = arr.length;
  
-        HeapSort ob = new HeapSort();
+        heap_sort ob = new heap_sort();
         ob.sort(arr);
  
         System.out.println("Sorted array is");

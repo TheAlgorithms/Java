@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Solution {
+public class Dijkshtra {
 
 public static void main(String[] args) throws IOException {
 	  Scanner in =new Scanner(System.in);
