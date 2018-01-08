@@ -3,28 +3,28 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class genericheap<T> {
+public class genericheap<T> { // create a generic heap class <T> , where T can be of any type.
 
 	private ArrayList<T> data = new ArrayList<>();
 	private Comparator<T> ctor;
 
-	public genericheap(Comparator<T> ctor) {
+	public genericheap(Comparator<T> ctor) { // constructor to initialize the generic comparator 
 		this.ctor=ctor;
 	}	
 
-	public int size() {
+	public int size() { // returns the size of the arraylist data
 		return data.size();
 	}
 
-	public boolean isEmpty() {
+	public boolean isEmpty() { // checks whether the list is empty or not :: return true or false for the same
 		return data.isEmpty();
 	}
 
-	public void display() {
+	public void display() { //displays the list
 		System.out.println(this.data);
 	}
 
-	public void add(T integer) {
+	public void add(T integer) { // in this function we have added the <t> type object into the arraylist and called upheapify 
 		data.add(integer);
 		upheapify(data.size() - 1);
 	}
@@ -53,7 +53,7 @@ public class genericheap<T> {
 		}
 	}
 
-	private void swap(int ci, int pi) {
+	private void swap(int ci, int pi) { // swap function  written like this because of the generic property
 		T ith = data.get(ci);
 		T jth=data.get(pi);
 		data.set(ci, jth);
