@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class HEncoder {
 
-	public HashMap<Character, String> encoder = new HashMap<>();
-	public HashMap<String, Character> decoder = new HashMap<>();
+	public HashMap<Character, String> encoder = new HashMap<>(); // in order to encode
+	public HashMap<String, Character> decoder = new HashMap<>(); // in order to decode
 
 	private static class Node {
 
@@ -81,6 +81,7 @@ public class HEncoder {
 
 	}
 
+	// compression work done here
 	public String compress(String str) {
 		String rv = "";
 		for (int i = 0; i < str.length(); ++i) {
@@ -88,7 +89,9 @@ public class HEncoder {
 		}
 		return rv;
 	}
+	
 
+	//in order to decompress
 	public String decompress(String str) {
 		String s = "";
 		String code = "";
