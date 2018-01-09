@@ -221,4 +221,20 @@ public class Matrix {
 
         return str;
     }
+	
+	/**
+    * Returns transposed matrix of this matrix.
+    *
+    * @return transposed Matrix. 
+    */
+	public Matrix transpose() {
+		
+		int[][] newData = new int[this.data[0].length][this.data.length];
+
+		for (int i = 0; i < this.getColumns(); ++i)
+			for(int j = 0; j < this.getRows(); ++j)
+				newData[i][j] = this.data[j][i];
+
+		return new Matrix(newData);
+	}		
 }
