@@ -24,7 +24,7 @@ public class CountChar {
      * @return int: Number of characters in the passed string
      * */
 
-    public static int CountCharacters(String str) {
+    private static int CountCharacters(String str) {
 
     	int count = 0;
 
