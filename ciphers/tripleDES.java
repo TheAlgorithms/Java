@@ -41,7 +41,7 @@ public class tripleDES
    }
   
    public static String decrypt(byte[] toDecrypt, String key) throws Exception {
-      // create a binary key from the argument key (seed)
+      try{// create a binary key from the argument key (seed)
       SecureRandom sr = new SecureRandom(key.getBytes());
       KeyGenerator kg = KeyGenerator.getInstance("DESede");
       kg.init(sr);
@@ -53,5 +53,16 @@ public class tripleDES
       byte[] decrypted = cipher.doFinal(toDecrypt);
   
       return new String(decrypted);
+      }
+      catch (javax.crypto.NoSuchPaddingException e) { System.out.println("No Such Padding"); }
+      catch (java.security.NoSuchAlgorithmException e) { System.out.println("No Such Algorithm"); }
+      catch (java.security.InvalidKeyException e) { System.out.println("Invalid Key"); }
+        catch (BadPaddingException e) { System.out.println("Invalid Key");}
+        catch (IllegalBlockSizeException e) { System.out.println("Invalid Key");}
+        
+      catch(RuntimeException e){
+      e.printStackTrace();    
+      }
+     return null; 
    }
 }
