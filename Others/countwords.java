@@ -18,7 +18,7 @@ import java.util.Scanner;
 	  input.close();
         } 
 
-        public static int wordCount(String s){
+        private static int wordCount(String s){
           if(s.isEmpty() || s == null) return -1;
           return s.trim().split("[\\s]+").length;
         }
