@@ -19,7 +19,7 @@ import java.util.Scanner;
         } 
 
         private static int wordCount(String s){
-          if(s.isEmpty() || s == null) return -1;
+          if(s.isEmpty() || s == null) return 0;
           return s.trim().split("[\\s]+").length;
         }
         
