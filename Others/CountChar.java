@@ -14,7 +14,7 @@ public class CountChar {
   	  	Scanner input = new Scanner(System.in);
   	  	System.out.print("Enter your text: ");
       	String str = input.nextLine();
-
+        input.close();
         System.out.println("There are " + CountCharacters(str) + " characters.");
     }
 	
@@ -24,7 +24,7 @@ public class CountChar {
      * @return int: Number of characters in the passed string
      * */
 
-    public static int CountCharacters(String str) {
+    private static int CountCharacters(String str) {
 
     	int count = 0;
 
