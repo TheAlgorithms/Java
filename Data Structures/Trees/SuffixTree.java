@@ -1,5 +1,4 @@
 /**
- * Authors : Shaked Delarea and Linor Hazan
  * Implementation of the Suffix Tree, tested with the string "senseses$"
  * */
 
