@@ -1,7 +1,7 @@
 # The Algorithms - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Python.svg)](https://travis-ci.org/TheAlgorithms/Python)
 
 ### All algorithms implemented in java
-Tthms implemented in Java (for education)
+All Algorithms implemented in Java (for education)
  hese are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
 
 ## Sort Algorithms
