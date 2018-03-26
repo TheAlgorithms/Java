@@ -14,7 +14,7 @@
  */
 
 class DoublyLinkedList{
-	/** Head refers to the front of the list */
+	/** Head refers to the front of the list * */
 	private Link head;
 	/** Tail refers to the back of the list */
 	private Link tail;
