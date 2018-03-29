@@ -15,11 +15,13 @@ class QuickSort {
      * Sorts the array in increasing order
      **/
 
-    public static <T extends Comparable<T>> void QS(T array[], int start, int end) {
-        if (start < end) {
-            int PIndex = partition(array, start, end);
-            QS(array, start, PIndex - 1);
-            QS(array, PIndex + 1, end);
+    public static <T extends Comparable<T>> void QS(List<T> list, int left, int right) {
+        if (left>=right) { return }
+        else
+        {
+            int pivot = partition(array, left,right);
+            QS(list, left, pivot- 1);
+            QS(list, pivot + 1, right);
         }
     }
 
@@ -32,17 +34,32 @@ class QuickSort {
      * Finds the partition index of an array
      **/
 
-    public static <T extends Comparable<T>> int partition(T array[], int start, int end) {
-        T pivot = array[end];
-        int PIndex = start;
-        for (int i=start;i<end;i++) {
-            if (array[i].compareTo(pivot) <= 0) {
-                swap(array, i, PIndex);
-                PIndex++;
+    public static <T extends Comparable<T>> int partition(List<T> list, int left, int right) {
+        int mid=(left+right)/2;
+        T pivot=list.get(mid);
+        swap(list,mid,right);
+        while(left<right)
+        {
+            while(left<right && pivot.compareTo(list.get(left))>=0)
+            {
+                ++left;
+            }
+            if(left<right)
+            {
+                swap(list,left,right);
+                --right;
+            }
+            while(left<right && list.get(right).compareTo(pivot)>=0)
+            {
+                --right;
+            }
+            if(left<right)
+            {
+                swap(list,left,right);
+                ++left;
             }
         }
-        swap(array, PIndex, end);
-        return PIndex;
+        return left;
     }
 
     /**
@@ -54,39 +71,36 @@ class QuickSort {
      * Swaps initial and fin element
      **/
 
-    public static <T extends Comparable<T>> void swap(T[] array, int initial, int fin) {
-        T temp = array[initial];
-        array[initial] = array[fin];
-        array[fin] = temp;
+    public static <T extends Comparable<T>> void swap(List<E> list, int initial, int fin) {
+        E temp= list.get(initial);
+        list.set(initial,list.get(fin));
+        list.set(fin,temp);
     }
 
     // Driver Program
     public static void main(String[] args) {
 
         // For integer input
-        int[] arr = {3,4,1,32,0,2,44,111,5};
-        Integer[] array = new Integer[arr.length];
-        for (int i=0;i<arr.length;i++) {
-            array[i] = arr[i];
-        }
+        ArrayList<Integer> array = new ArrayList<Integer>(9);
+         array = {3,4,1,32,0,2,44,111,5};
 
-        QS(array, 0, arr.length-1);
+        QS(array, 0, array.size()-1);
 
         //Output => 0 1 2 3 4 5 32 44 111
-        for (int i=0;i<array.length;i++) {
-            System.out.print(array[i] + " ");
+        for (int i=0;i<array.size();i++) {
+            System.out.print(array.get(i) + " ");
         }
         System.out.println();
 
-        // String Input
-        String[] array1 = {"c", "a", "e", "b","d"};
+        ArrayList<String> array1=new ArrayList<String>(5);
+        array1 = {"c", "a", "e", "b","d"};
 
-        QS(array1, 0,array1.length-1);
+        QS(array1, 0,array1.size()-1);
 
         //Output => a	b	c	d	e
-        for(int i=0; i<array1.length; i++)
+        for(int i=0; i<array1.size(); i++)
         {
-            System.out.print(array1[i]+"\t");
+            System.out.print(array1.get(i)+"\t");
         }
     }
 }
