@@ -40,9 +40,9 @@ __Properties__
 From [Wikipedia][merge-wiki]: In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
 
 __Properties__
-* Worst case performance    O(n log n)
-* Best case performance    O(n)
-* Average case performance    O(n)
+* Worst case performance    O(n log n) (typical)
+* Best case performance    O(n log n)
+* Average case performance    O(n log n)
 
 
 ###### View the algorithm in [action][merge-toptal]
