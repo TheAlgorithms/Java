@@ -7,7 +7,7 @@
  **/
 import java.util.Scanner;
 
-public class OctalToHexadecimal{
+public class OctalToHexadecimal {
 	
   /**
  + +	 * This method converts a Octal number to
@@ -55,9 +55,9 @@ public static void main ( String args[]) {
      Scanner input = new Scanner(System.in);
      System.out.print("Enter the Octal number: ");
      String oct  = input.next();                     //Take octal number as input from user in a string
-	 int decimal = OctToDec(oct);                    //Pass the octal number to function and get converted deciaml form
-	 String hex = DecimalToHex(decimal);             //Pass the decimla number to function and get converted Hex form of the number
-	 System.out.println("The Hexadecimal equivalant is: "+hex);
+     int decimal = OctToDec(oct);                    //Pass the octal number to function and get converted deciaml form
+     String hex = DecimalToHex(decimal);             //Pass the decimla number to function and get converted Hex form of the number
+     System.out.println("The Hexadecimal equivalant is: "+hex);
  }
 }
 
