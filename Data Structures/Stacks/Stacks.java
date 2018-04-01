@@ -43,6 +43,7 @@ class Stack{
 			stackArray[top] = value;
 		}else{
 			resize(maxSize*2);
+                        push(value);// don't forget push after resizing
 		}
 	}
 
@@ -58,6 +59,7 @@ class Stack{
 
 		if(top < maxSize/4){
 			resize(maxSize/2);
+			return pop();// don't forget pop after resizing
 		}
 		else{
 			System.out.println("The stack is already empty");
@@ -80,9 +82,11 @@ class Stack{
 	}
 
 	private void resize(int newSize){
-		private int[] transferArray = new int[newSize];
+		//private int[] transferArray = new int[newSize]; we can't put modifires here !
+                int[] transferArray = new int[newSize];
 
-		for(int i = 0; i < stackArray.length(); i++){
+		//for(int i = 0; i < stackArray.length(); i++){ the length isn't a method .
+                for(int i = 0; i < stackArray.length; i++){
 			transferArray[i] = stackArray[i];
 			stackArray = transferArray;
 		}
