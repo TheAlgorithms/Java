@@ -1,3 +1,5 @@
+package Conversions;
+
 import java.util.Scanner;
 
 /**

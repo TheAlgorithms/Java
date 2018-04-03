@@ -1,3 +1,4 @@
+package Conversions;
 
 class DecimalToHexaDecimal {
 	private static final int sizeOfIntInHalfBytes = 8;
