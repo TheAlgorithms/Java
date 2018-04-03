@@ -73,6 +73,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
@@ -97,37 +99,7 @@ public class CSVFile {
 	 * @purpose loads the CSV-file and fills the inner table with the data
 	 */
 	public CSVFile(String path, char seperator) {
-		table = new ArrayList<ArrayList<String>>();
-		trackList = new ArrayList<Integer>();
-		pathCSVFile = path;
-		this.seperator = seperator;
-		String row = null;
-		File file = new File(path);
-		ArrayList<String> colums = new ArrayList<String>();
-		if (!file.canRead() || !file.isFile()) {
-			System.out.println("unable to open file");
-			System.exit(1);
-		}
-		BufferedReader in = null;
-		try {
-			in = new BufferedReader(new FileReader(path));
-			while ((row = in.readLine()) != null) {
-				// uses the compile method to compile the row
-				// in its columns.
-				table.add(compile(row, seperator));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
+		this(new File(path),seperator);
 	}
 	
 	
@@ -141,32 +113,17 @@ public class CSVFile {
 		trackList = new ArrayList<Integer>();
 		pathCSVFile = file.getPath();
 		this.seperator = seperator;
-		String row = null;
 		ArrayList<String> colums = new ArrayList<String>();
 		if (!file.canRead() || !file.isFile()) {
 			System.out.println("unable to open file");
 			System.exit(1);
 		}
-		BufferedReader in = null;
-		try {
-			in = new BufferedReader(new FileReader(file));
-			while ((row = in.readLine()) != null) {
-				// uses the compile method to compile the row
-				// in its columns.
-				table.add(compile(row, seperator));
-			}
+
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(file.getAbsolutePath()))) {
+			br.lines().forEach(line -> table.add(compile(line, seperator)));
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		}
-
 	}
 	
 	
@@ -275,14 +232,14 @@ public class CSVFile {
 		return columns;
 	}
 
-	
+	private static Pattern PATTERN_PUNCTUATION = Pattern.compile("\\p{Punct}");
 	/**
 	 * 
 	 * @param ch
 	 * @returns true if ch is punctuation character otherwise false.
 	 */
 	public static boolean isPunctuation(char ch) {
-		return Pattern.matches("\\p{Punct}", "" + ch);
+		return PATTERN_PUNCTUATION.matcher("" + ch).matches();
 	}
 
 	
@@ -489,18 +446,16 @@ public class CSVFile {
 	 * @returns true if a row contains 'key' otherwise false.
 	 */
 	public boolean contains(String key) {
-		boolean ans = false;
 		key = key.trim();
 		for (int i = 0; i < table.size(); i++) {
 			for (String item : table.get(i)) {
 				item = item.trim();
 				if (item.equals(key)) {
-					ans = true;
-					break;
+					return true;
 				}
 			}
 		}
-		return ans;
+		return false;
 	}
 	
 	
