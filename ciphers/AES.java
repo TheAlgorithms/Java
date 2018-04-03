@@ -4,10 +4,8 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
- *
  * This class is build to demonstrate the application of the AES-algorithm on a
  * single 128-Bit block of data.
- *
  * @see khalil2535
  */
 public class AES {
