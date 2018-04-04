@@ -1,3 +1,7 @@
+package Sorts;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Varun Upadhyay (https://github.com/varunu28)
@@ -16,7 +20,7 @@ class QuickSort {
      **/
 
     public static <T extends Comparable<T>> void QS(List<T> list, int left, int right) {
-        if (left>=right) { return }
+        if (left>=right) { return; }
         else
         {
             int pivot = partition(array, left,right);

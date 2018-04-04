@@ -1,3 +1,5 @@
+package Searches;
+
 import java.util.Scanner;
 
 public class TernarySearch{

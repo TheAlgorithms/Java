@@ -1,3 +1,5 @@
+package Others;
+
 //Oskar Enmalm 29/9/17
 //An Abecadrian is a word where each letter is in alphabetical order
     
