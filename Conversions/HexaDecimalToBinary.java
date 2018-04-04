@@ -1,10 +1,5 @@
 package Conversions;
 
-import java.lang.StringBuilder;
-import java.util.*;
-import java.util.Scanner;
-import javax.swing.*;
-
 public class HexaDecimalToBinary {
  
     private final int LONG_BITS = 8;

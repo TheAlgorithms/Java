@@ -1,6 +1,9 @@
 package Conversions;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Scanner;
+
+//import java.util.*;
 /**
  * Converts any Binary Number to a Hexadecimal Number
  * 

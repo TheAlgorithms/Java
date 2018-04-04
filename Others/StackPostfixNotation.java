@@ -1,6 +1,9 @@
 package Others;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
+
+//import java.util.*;
 
 public class StackPostfixNotation {
     public static void main(String[] args) {
