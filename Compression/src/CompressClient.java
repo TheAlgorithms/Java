@@ -1,7 +1,7 @@
 package Compression.src;
 
 
-public class compressclient {
+public class CompressClient {
 
 	public static void main(String[] args) {
 
