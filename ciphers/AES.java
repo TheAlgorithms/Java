@@ -201,7 +201,8 @@ public class AES {
         String rBytes = t.toString(16);
 
         // Add zero padding
-        while (rBytes.length() < 8) {
+        int rBytesLength = rBytes.length();
+		while (rBytesLength < 8) {
             rBytes = "0" + rBytes;
         }
 
@@ -224,9 +225,10 @@ public class AES {
             }
 
             currentByteBits = Integer.toHexString(currentByte);
-
+            
             // Add zero padding
-            while (currentByteBits.length() < 2) {
+            int currentByteBitsLength = currentByteBits.length();
+            while (currentByteBitsLength < 2) {
                 currentByteBits = '0' + currentByteBits;
             }
 
@@ -299,7 +301,8 @@ public class AES {
         String blockBits = block.toString(2);
 
         // Append leading 0 for full "128-bit" string
-        while (blockBits.length() < 128) {
+        int blockBitsLength = blockBits.length();
+        while (blockBitsLength < 128) {
             blockBits = '0' + blockBits;
         }
 
@@ -326,7 +329,8 @@ public class AES {
             String cellBits = Integer.toBinaryString(cells[i]);
 
             // Append leading 0 for full "8-bit" strings
-            while (cellBits.length() < 8) {
+            int cellBitsLength = cellBits.length();
+            while (cellBitsLength < 8) {
                 cellBits = '0' + cellBits;
             }
 
