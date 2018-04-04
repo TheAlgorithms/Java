@@ -250,9 +250,10 @@ public class AES {
      * @return array of 10 + 1 round keys
      */
     public static BigInteger[] keyExpansion(BigInteger initialKey) {
-        BigInteger[] roundKeys = {initialKey, new BigInteger("0"), new BigInteger("0"), new BigInteger("0"),
-            new BigInteger("0"), new BigInteger("0"), new BigInteger("0"), new BigInteger("0"), new BigInteger("0"),
-            new BigInteger("0"), new BigInteger("0"),};
+        BigInteger[] roundKeys = {initialKey, new BigInteger("0"),
+        		new BigInteger("0"), new BigInteger("0"), new BigInteger("0"),
+        		new BigInteger("0"), new BigInteger("0"), new BigInteger("0"), 
+        		new BigInteger("0"), new BigInteger("0"), new BigInteger("0"),};
 
         // initialize rcon iteration
         int rconCounter = 1;
