@@ -1,24 +1,27 @@
-import java.util.*;
+package Others;
+
+import java.util.Scanner;
+
 public class InsertDeleteInArray {
 
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in); // Input statement
+		Scanner input = new Scanner(System.in); // Input statement
 		System.out.println("Enter the size of the array");
-		int size = s.nextInt();
+		int size = input.nextInt();
 		int a[] = new int[size];
 		int i;
 		
 		// To enter the initial elements
 		for(i=0;i<size;i++){
 			System.out.println("Enter the element");
-			a[i] = s.nextInt();
+			a[i] = input.nextInt();
 		}
 		
 		// To insert a new element(we are creating a new array)
 		System.out.println("Enter the index at which the element should be inserted");
-		int insert_pos = s.nextInt();
+		int insert_pos = input.nextInt();
 		System.out.println("Enter the element to be inserted");
-		int ins = s.nextInt();
+		int ins = input.nextInt();
 		int size2 = size + 1;
 		int b[] =new int[size2];
 		for(i=0;i<size2;i++){
@@ -36,7 +39,7 @@ public class InsertDeleteInArray {
 		
 		// To delete an element given the index
 		System.out.println("Enter the index at which element is to be deleted");
-	    int del_pos = s.nextInt();
+	    int del_pos = input.nextInt();
 	    for(i=del_pos;i<size2-1;i++){
 	    	b[i] = b[i+1];
 	    }

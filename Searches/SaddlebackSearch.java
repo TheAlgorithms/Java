@@ -1,4 +1,8 @@
-import java.util.*;
+package Searches;
+
+import java.util.Scanner;
+
+//import java.util.*;
 
 /**
  * Program to perform Saddleback Search

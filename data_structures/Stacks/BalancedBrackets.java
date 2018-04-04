@@ -1,3 +1,5 @@
+package Stacks;
+
 /*
 
 The nested brackets problem is a problem that determines if a sequence of
@@ -15,7 +17,6 @@ returns true if S is nested and false otherwise.
 */
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.ArrayList;
 
 class BalancedBrackets {
 

@@ -1,5 +1,7 @@
-import java.util.*;
-import java.lang.*;
+package Sorts;
+
+//import java.util.*;
+//import java.lang.*;
  
 class Sorting
 {

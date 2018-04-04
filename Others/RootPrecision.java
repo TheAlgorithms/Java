@@ -1,8 +1,12 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+package Others;
+
+import java.util.Scanner;
+
+//import java.io.*;
+//import java.util.*;
+//import java.text.*;
+//import java.math.*;
+//import java.util.regex.*;
 
 public class RootPrecision {
 

@@ -1,3 +1,4 @@
+package Others;
 
 /*
 Implementation of Knuth–Morris–Pratt algorithm
