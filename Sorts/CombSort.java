@@ -48,7 +48,7 @@ public class CombSort{
 
        cS(array);
 
-       // Output => 1	 4	 6	9	12	23	54	78	231
+       // Output => 1 4 6 9 12  23  54  78  231
        for(int i=0; i<array.length; i++){
          System.out.print(array[i]+"\t");
        }
