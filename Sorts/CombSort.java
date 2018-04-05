@@ -3,17 +3,15 @@
 class CombSort
 {
     // To find gap between elements
-    int getNextGap(int gap)
+    static int getNextGap(int gap)
     {
         // Shrink gap by Shrink factor
         gap = (gap*10)/13;
-        if (gap < 1)
-            return 1;
-        return gap;
+        gap = (gap < 1) ? 1: gap;
     }
  
     // Function to sort arr[] using Comb Sort
-    void sort(int arr[])
+    static void sort(int arr[])
     {
         int n = arr.length;
  
@@ -24,7 +22,7 @@ class CombSort
         boolean swapped = true;
  
         // Keep running while gap is more than 1 and last iteration caused a swap
-        while (gap != 1 || swapped == true)
+        while (gap != 1 || swapped)
         {
             // Find next gap
             gap = getNextGap(gap);
@@ -57,8 +55,8 @@ class CombSort
         ob.sort(arr);
  
         System.out.println("sorted array");
-        for (int i=0; i<arr.length; ++i)
+        for (int i=0; i<arr.length; ++i) {
             System.out.print(arr[i] + " ");
- 
+        } 
     }
 }
