@@ -13,12 +13,12 @@ public final class IterativeBinarySearch {
     /**
      * This method implements an iterative version of binary search algorithm
      * 
-     * @param a sorted array
-     * @param the key to search in array
+     * @param array a sorted array
+     * @param key the key to search in array
      * 
      * @return the index of key in the array or -1 if not found
      */
-    public static <T extends Comparable<T>> int BS(T[] array, T key) {
+    public static <T extends Comparable<T>> int binarySearch(T[] array, T key) {
         int l, r, k, cmp;
 
         l = 0;
@@ -45,15 +45,15 @@ public final class IterativeBinarySearch {
         Random rand = new Random();
         int base = rand.nextInt(1000);
 
-        Integer[] array = new Integer[0xFFFF];
+        Integer[] array = new Integer[65535];
         for (int i = 0; i < array.length; i++) {
             array[i] = base + (i + 1);
         }
 
-        Arrays.sort(array); //if needed
-        Integer key = base + rand.nextInt(array.length);
+        //Arrays.sort(array); //if needed
+        Integer key = base + rand.nextInt(array.length * 2); //can generate keys that aren't in array
 
-        System.out.println(BS(array, key));
+        System.out.println(binarySearch(array, key));
         System.out.println(Arrays.binarySearch(array, key));
     }
 }
