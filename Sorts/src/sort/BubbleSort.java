@@ -1,7 +1,6 @@
 package sort;
 
-import static sort.SortUtils.print;
-import static sort.SortUtils.swap;
+import static sort.SortUtils.*;
 
 /**
  *
@@ -27,10 +26,8 @@ class BubbleSort implements SortAlgorithm{
         do {
             swap = false;
             for (int count = 0; count < last-1; count++) {
-                int comp = array[count].compareTo(array[count + 1]);
-                if (comp > 0) {
-                    swap(array, count, count + 1);
-                    swap = true;
+                if (less(array[count], array[count + 1])) {
+                    swap = swap(array, count, count + 1);
                 }
             }
             last--;
@@ -42,7 +39,7 @@ class BubbleSort implements SortAlgorithm{
     public static void main(String[] args) {
 
         // Integer Input
-        Integer[] integers = {4,23,6,78,1,54,231,9,12};
+        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(integers);
 

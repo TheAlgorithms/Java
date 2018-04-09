@@ -18,10 +18,11 @@ final class SortUtils {
      * @param idx index of the first element
      * @param idy index of the second element
      */
-    static <T> void swap(T[] array, int idx, int idy){
+    static <T> boolean swap(T[] array, int idx, int idy){
         T swap = array[idx];
         array[idx] = array[idy];
         array[idy] = swap;
+        return true;
     }
 
 
