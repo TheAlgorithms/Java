@@ -20,7 +20,7 @@ public class TopKWords {
 
                 fis = new FileInputStream(fileName);  // open the file
                 int in = 0;
-                String s = new String();  // init a empty word
+                String s = "";  // init a empty word
                 in = fis.read();  // read one character
 
                 while (-1 != in) {
@@ -74,7 +74,7 @@ public class TopKWords {
         while (k > list.size()) {
             System.out.println("Retype a number, your number is too large");
             input = new Scanner(System.in);
-            k = new Integer(input.nextLine());
+            k = input.nextInt();
         }
         for (int i = 0; i < k; i++) {
             System.out.println(list.get(list.size() - i - 1));
