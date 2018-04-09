@@ -1,6 +1,6 @@
-package Sorts;
+package sort;
 
-import static Sorts.SortUtils.*;
+import static sort.SortUtils.*;
 
 
 /**

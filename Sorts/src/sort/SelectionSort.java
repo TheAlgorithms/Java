@@ -1,10 +1,13 @@
-package Sorts;
+package sort;
 
-import static Sorts.SortUtils.*;
+import static sort.SortUtils.*;
 
 /**
  *
  * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Podshivalov Nikita (https://github.com/nikitap492)
+ *
+ * @see SortAlgorithm
  *
  */
 

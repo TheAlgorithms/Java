@@ -1,4 +1,4 @@
-package Sorts;
+package sort;
 
 /**
  *  The common interface of most algorithms
