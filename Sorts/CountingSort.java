@@ -14,7 +14,6 @@ import static java.util.stream.Collectors.toMap;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  *
  */
-
 class CountingSort {
 
     /**
@@ -25,7 +24,7 @@ class CountingSort {
      * Sorts the list in increasing order
      * The method uses list elements as keys in the frequency map
      **/
-    public static <T extends Comparable<T>> List<T> CS(List<T> list) {
+    public static <T extends Comparable<T>> List<T> countingSort(List<T> list) {
 
         Map<T, Integer> frequency = new TreeMap<>();
         // The final output array
@@ -36,8 +35,9 @@ class CountingSort {
 
         // Filling the sortedArray
         for(Map.Entry<T, Integer> element : frequency.entrySet()) {
-            for(int j=0; j<element.getValue(); j++)
+            for(int j=0; j<element.getValue(); j++){
                 sortedArray.add(element.getKey());
+            }
         }
 
         return sortedArray;
@@ -46,12 +46,12 @@ class CountingSort {
 
     /**
      * Stream Counting Sort
-     * The same as method {@link CountingSort#CS(List)} but this method uses stream API
+     * The same as method {@link CountingSort#countingSort(List)} but this method uses stream API
      *
      * @param list The list to be sorted
      *
      **/
-    public static <T extends Comparable<T>> List<T> streamCS(List<T> list) {
+    public static <T extends Comparable<T>> List<T> streamCountingSort(List<T> list) {
         return  list.stream()
                 .collect(toMap(k -> k, v -> 1, (v1, v2) -> v1 + v2, TreeMap::new))
                 .entrySet()
@@ -70,9 +70,9 @@ class CountingSort {
 
         // Output => 1 1 4 6 9 9 12 23 23 54 78 231
         System.out.println("After Sorting:");
-        printList(CS(unsortedInts));
+        printList(countingSort(unsortedInts));
         System.out.println("After Sorting By Streams:");
-        printList(streamCS(unsortedInts));
+        printList(streamCountingSort(unsortedInts));
 
         System.out.println("\n------------------------------\n");
 
@@ -84,10 +84,10 @@ class CountingSort {
 
         //Output => a a b c c d e f g
         System.out.println("After Sorting:");
-        printList(CS(unsortedStrings));
+        printList(countingSort(unsortedStrings));
 
         System.out.println("After Sorting By Streams:");
-        printList(streamCS(unsortedStrings));
+        printList(streamCountingSort(unsortedStrings));
 
     }
 
