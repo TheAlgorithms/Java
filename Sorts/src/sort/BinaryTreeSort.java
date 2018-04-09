@@ -3,8 +3,14 @@ package sort;
 import static sort.SortUtils.less;
 import static sort.SortUtils.print;
 
-
-public class BinaryTreeSort{
+/**
+ *
+ * @author Podshivalov Nikita (https://github.com/nikitap492)
+ *
+ * @see SortAlgorithm
+ *
+ */
+public class BinaryTreeSort implements SortAlgorithm{
 
 	interface TreeVisitor<T extends Comparable<T>>  {
 		void visit(Node<T> node);
@@ -58,7 +64,8 @@ public class BinaryTreeSort{
 	}
 
 
-	private <T extends Comparable<T>> T[] sort(T[] array) {
+	@Override
+	public  <T extends Comparable<T>> T[] sort(T[] array) {
 
 		Node<T> root = new Node<>(array[0]);
 		for (int i = 1; i < array.length; i++) {
@@ -68,7 +75,6 @@ public class BinaryTreeSort{
 		root.traverse(new SortVisitor<>(array));
 
 		return array;
-
 	}
 
 
