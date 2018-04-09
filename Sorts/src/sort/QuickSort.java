@@ -7,6 +7,9 @@ import static sort.SortUtils.*;
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  *
+ *
+ * @see SortAlgorithm
+ *
  */
 class QuickSort implements SortAlgorithm {
 

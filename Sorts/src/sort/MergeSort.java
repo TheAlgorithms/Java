@@ -1,13 +1,37 @@
+package sort;
+
+import static sort.SortUtils.print;
+
 /**
+ * This method implements the Generic Merge Sort
+ *
  *
  * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Podshivalov Nikita (https://github.com/nikitap492)
+ *
+ *
+ * @see SortAlgorithm
  *
  */
 
-class MergeSort {
+class MergeSort implements SortAlgorithm {
+
 
     /**
      * This method implements the Generic Merge Sort
+     * @param unsorted the array which should be sorted
+     * @param <T> Comparable class
+     * @return sorted array
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        T[] tmp = (T[]) new Comparable[unsorted.length];
+        doSort(unsorted, tmp, 0, unsorted.length - 1);
+        return unsorted;
+    }
+
+    /**
      *
      * @param arr The array to be sorted
      * @param temp The copy of the actual array
@@ -15,12 +39,11 @@ class MergeSort {
      * @param right The last index of the array
      * Recursively sorts the array in increasing order
      **/
-
-    public static <T extends Comparable<T>> void MS(T[] arr, T[] temp, int left, int right) {
+    private  static <T extends Comparable<T>> void doSort(T[] arr, T[] temp, int left, int right) {
         if (left < right) {
             int mid = left + (right - left) / 2;
-            MS(arr, temp, left, mid);
-            MS(arr,  temp,mid + 1, right);
+            doSort(arr, temp, left, mid);
+            doSort(arr,  temp,mid + 1, right);
             merge(arr, temp, left, mid, right);
         }
 
@@ -37,16 +60,15 @@ class MergeSort {
      * merges two parts of an array in increasing order
      **/
 
-    public static <T extends Comparable<T>> void merge(T[] arr, T[] temp, int left, int mid, int right) {
-        for (int i=left;i<=right;i++) {
-            temp[i] = arr[i];
-        }
+    private static <T extends Comparable<T>> void merge(T[] arr, T[] temp, int left, int mid, int right) {
+        System.arraycopy(arr, left, temp, left, right - left + 1);
+
 
         int i= left;
         int j = mid + 1;
         int k = left;
 
-        while (i<=mid && j<=right) {
+        while (i <= mid && j <= right) {
             if (temp[i].compareTo(temp[j]) <= 0) {
                 arr[k] = temp[i];
                 i++;
@@ -69,32 +91,17 @@ class MergeSort {
     public static void main(String[] args) {
 
         // Integer Input
-        int[] arr = {4,23,6,78,1,54,231,9,12};
-        Integer[] array = new Integer[arr.length];
-        for (int i=0;i<array.length;i++) {
-            array[i] = arr[i];
-        }
-
-        // Copy of actual array
-        Integer[] temp = new Integer[arr.length];
-
-        MS(array, temp, 0, arr.length-1);
+        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        MergeSort mergeSort = new MergeSort();
+        mergeSort.sort(arr);
 
         // Output => 1	   4  	 6	9	12	23	54	78	231
-        for (int i=0;i<arr.length;i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
+        print(arr);
 
-        // String Input
-        String[] array1 = {"c", "a", "e", "b","d"};
-        String[] temp1 = new String[array1.length];
-        MS(array1, temp1, 0, array1.length-1);
-
+        // String Inpu
+        String[] stringArray = {"c", "a", "e", "b","d"};
+        mergeSort.sort(stringArray);
         //Output => a	b	c	d	e
-        for(int i=0; i<array1.length; i++)
-        {
-            System.out.print(array1[i]+"\t");
-        }
+        print(stringArray);
     }
 }
