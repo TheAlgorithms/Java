@@ -1,0 +1,44 @@
+import java.util.Arrays;
+
+/**
+ *  This Program implements a generic Binary Search algorithm recursively
+ *
+ * @author Mani Shah
+ * @version 1.0
+ **/
+class RecursiveBinary
+{
+	public static void main(String[] args)
+	{
+		String[] array = {"f", "c", "g", "z"};
+		Arrays.sort(array);
+		int searchResult = recursiveBinary(array, "f", 0, array.length - 1);
+		if(searchResult>0)
+			System.out.printf("Found at: [%d]",searchResult);
+		else
+			System.out.println("Target is not the array");
+	}
+	/**
+	 * This method uses recursions to perform binary search
+	 * Rather than, say, a while loop
+	 * Since this is of Generic Type, it can be used to other data types.
+	 *
+	 * @param target-The value to be searched through the array
+	 * @param min-The current minimum of the range
+	 * @param high-The current maximum of the range
+	 * @return int-Returns index of the target value
+	 */
+	private static <T extends Comparable<T>> int recursiveBinary(T[] array, T target, int min, int high)
+	{
+		int midIndex = (min + high) >>> 1;
+		if (min > high)
+			return -1;
+		else if (array[midIndex].compareTo(target)<0)
+			return recursiveBinary(array, target, midIndex+1, high);
+		else if (array[midIndex].compareTo(target)>0)
+			return recursiveBinary(array, target, min, midIndex-1);
+		else if (array[midIndex] == target)
+			return midIndex;
+		return -1;
+	}
+}
