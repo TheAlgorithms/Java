@@ -10,7 +10,7 @@ import static sort.SortUtils.print;
  * @see SortAlgorithm
  *
  */
-public class BinaryTreeSort implements SortAlgorithm{
+public class BinaryTreeSort implements SortAlgorithm {
 
 	interface TreeVisitor<T extends Comparable<T>>  {
 		void visit(Node<T> node);

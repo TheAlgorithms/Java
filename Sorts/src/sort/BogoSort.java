@@ -12,7 +12,7 @@ import static sort.SortUtils.*;
  * @see SortAlgorithm
  *
  */
-public class BogoSort implements SortAlgorithm{
+public class BogoSort implements SortAlgorithm {
 
     private static final Random random = new Random();
 

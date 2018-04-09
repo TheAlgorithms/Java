@@ -10,7 +10,7 @@ import static sort.SortUtils.*;
  * @see SortAlgorithm
  */
 
-class BubbleSort implements SortAlgorithm{
+class BubbleSort implements SortAlgorithm {
     /**
      * This method implements the Generic Bubble Sort
      *
