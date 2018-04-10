@@ -56,6 +56,20 @@ final class SortUtils {
      * @param toPrint - the array  which should be printed
      */
     static void print(Object[] toPrint){
-       print(Arrays.asList(toPrint));
+        System.out.println(Arrays.toString(toPrint));
+    }
+
+
+
+    /**
+     * Swaps all position from {@param left} to @{@param right} for {@param array}
+     * @param array is an array
+     * @param left is a left flip border of the array
+     * @param right is a right flip border of the array
+     */
+    static <T extends Comparable<T>> void flip(T[] array, int left, int right) {
+        while (left <= right) {
+            swap(array, left++ , right--);
+        }
     }
 }

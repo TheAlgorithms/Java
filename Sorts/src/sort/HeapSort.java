@@ -9,8 +9,8 @@ import static sort.SortUtils.*;
 /**
  * Heap Sort Algorithm
  * Implements MinHeap
- * 
- * @author Unknown
+ *
+ * @author Podshivalov Nikita (https://github.com/nikitap492)
  *
  */
 public class HeapSort implements SortAlgorithm {
