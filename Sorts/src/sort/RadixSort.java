@@ -1,18 +1,19 @@
-import java.util.*;
+package sort;
+
+import java.util.Arrays;
  
-class Radix {
+class RadixSort {
  
     
-    static int getMax(int arr[], int n)
-    {
+    private static int getMax(int arr[], int n) {
         int mx = arr[0];
         for (int i = 1; i < n; i++)
             if (arr[i] > mx)
                 mx = arr[i];
         return mx;
     }
- 
-    static void countSort(int arr[], int n, int exp)
+
+    private static void countSort(int arr[], int n, int exp)
     {
         int output[] = new int[n];
         int i;
@@ -35,8 +36,7 @@ class Radix {
             arr[i] = output[i];
     }
  
-    static void radixsort(int arr[], int n)
-    {
+    private static void radixsort(int arr[], int n) {
 
         int m = getMax(arr, n);
  
