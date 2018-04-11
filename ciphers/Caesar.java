@@ -34,12 +34,12 @@ public class Caesar {
 //            int current = message.charAt(i); //using char to shift characters because ascii is in-order latin alphabet
             char current = message.charAt(i); // Java law : char + int = char
 
-            if (current >= 'A' && current <= 'Z') {
+            if (IsCapitalLatinLetter(current)) {
 
                 current += shift;
                 encoded += (char) (current > 'Z' ? current - 26 : current); // 26 = number of latin letters
 
-            } else if (current >= 'a' && current <= 'z') {
+            } else if (IsSmallLatinLetter(current)) {
 
                 current += shift;
                 encoded += (char) (current > 'z' ? current - 26 : current); // 26 = number of latin letters
