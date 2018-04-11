@@ -69,12 +69,12 @@ public class Caesar {
         final int length = encryptedMessage.length();
         for (int i = 0; i < length; i++) {
             char current = encryptedMessage.charAt(i);
-            if (current >= 'A' && current <= 'Z') {
+            if (IsCapitalLatinLetter(current)) {
 
                 current -= shift;
                 decoded += (char) (current < 'A' ? current + 26 : current);// 26 = number of latin letters
 
-            } else if (current >= 'a' && current <= 'z') {
+            } else if (IsSmallLatinLetter(current)) {
 
                 current -= shift;
                 decoded += (char) (current < 'a' ? current + 26 : current);// 26 = number of latin letters
@@ -84,6 +84,24 @@ public class Caesar {
             }
         }
         return decoded;
+    }
+
+    /**
+     *
+     * @param c
+     * @return true if character is capital Latin letter or false for others
+     */
+    private static boolean IsCapitalLatinLetter(char c) {
+        return c >= 'A' && c <= 'Z';
+    }
+
+    /**
+     *
+     * @param c
+     * @return true if character is small Latin letter or false for others
+     */
+    private static boolean IsSmallLatinLetter(char c) {
+        return c >= 'a' && c <= 'z';
     }
 
     /**
@@ -99,11 +117,14 @@ public class Caesar {
         int shift = input.nextInt() % 26;
         System.out.println("(E)ncode or (D)ecode ?");
         char choice = input.next().charAt(0);
-        if (choice == 'E' || choice == 'e') {
-            System.out.println("ENCODED MESSAGE IS \n" + encode(message, shift)); //send our function to handle
-        }
-        if (choice == 'D' || choice == 'd') {
-            System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
+        switch (choice) {
+            case 'E':
+            case 'e':
+                System.out.println("ENCODED MESSAGE IS \n" + encode(message, shift)); //send our function to handle
+                break;
+            case 'D':
+            case 'd':
+                System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
         }
     }
 
