@@ -1,7 +1,10 @@
 package search;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
+
+import static java.lang.String.format;
 
 /**
  *
@@ -70,8 +73,8 @@ class BinarySearch implements SearchAlgorithm {
 
         //just generate data
         Random r = new Random();
-        int size = 200;
-        int maxElement = 100;
+        int size = 100;
+        int maxElement = 100000;
         Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
 
 
@@ -83,5 +86,9 @@ class BinarySearch implements SearchAlgorithm {
 
         System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
                 , shouldBeFound, integers[atIndex], atIndex, size));
+
+
+        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
+        System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
     }
 }

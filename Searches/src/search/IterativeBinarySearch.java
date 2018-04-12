@@ -2,6 +2,9 @@ package search;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Stream;
+
+import static java.lang.String.format;
 
 /**
  * Binary search is one of the most popular algorithms
@@ -37,9 +40,9 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
         int l, r, k, cmp;
 
         l = 0;
-        r = array.length;
+        r = array.length - 1;
 
-        while (l < r) {
+        while (l <= r) {
             k = (l + r) / 2;
             cmp = key.compareTo(array[k]);
 
@@ -57,18 +60,23 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
 
     //Only a main method for test purpose
     public static void main(String[] args) {
-        Random rand = new Random();
-        int base = rand.nextInt(1000);
+        Random r = new Random();
+        int size = 100;
+        int maxElement = 100000;
+        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
 
-        Integer[] array = new Integer[65535];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = base + (i + 1);
-        }
 
-        //Arrays.sort(array); //if needed
-        Integer key = base + rand.nextInt(array.length * 2); //can generate keys that aren't in array
+        //the element that should be found
+        Integer shouldBeFound = integers[r.nextInt(size - 1)];
 
-        System.out.println(new IterativeBinarySearch().find(array, key));
-        System.out.println(Arrays.binarySearch(array, key));
+        IterativeBinarySearch search = new IterativeBinarySearch();
+        int atIndex = search.find(integers, shouldBeFound);
+
+        System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
+                , shouldBeFound, integers[atIndex], atIndex, size));
+
+
+        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
+        System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
     }
 }
