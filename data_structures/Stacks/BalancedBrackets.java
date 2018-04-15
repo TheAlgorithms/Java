@@ -1,59 +1,89 @@
-/*
+package data_structures.Stacks;
 
-The nested brackets problem is a problem that determines if a sequence of
-brackets are properly nested.  A sequence of brackets s is considered properly nested
-if any of the following conditions are true:
-	- s is empty
-	- s has the form (U) or [U] or {U} where U is a properly nested string
-	- s has the form VW where V and W are properly nested strings
-For example, the string "()()[()]" is properly nested but "[(()]" is not.
-The function called is_balanced takes as input a string S which is a sequence of brackets and
-returns true if S is nested and false otherwise.
-
-	author: akshay sharma
-	date: 2017-10-17
-*/
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.ArrayList;
 
+/**
+ *
+ * The nested brackets problem is a problem that determines if a sequence of
+ * brackets are properly nested. A sequence of brackets s is considered properly
+ * nested if any of the following conditions are true: - s is empty - s has the
+ * form (U) or [U] or {U} where U is a properly nested string - s has the form
+ * VW where V and W are properly nested strings For example, the string
+ * "()()[()]" is properly nested but "[(()]" is not. The function called
+ * is_balanced takes as input a string S which is a sequence of brackets and
+ * returns true if S is nested and false otherwise.
+ *
+ * @author akshay sharma
+ * @date: 2017-10-17
+ * @author <a href="https://github.com/khalil2535">khalil2535<a>
+ *
+ */
 class BalancedBrackets {
 
-    static boolean is_balanced(char[] S) {
-        Stack<Character> stack = new Stack<>();
-        String pair = "";
-        for (int i = 0; i < S.length; ++i) {
-            if (S[i] == '(' || S[i] == '{' || S[i] == '[') {
-                stack.push(S[i]);
-            } else if (stack.size() > 0) {
-                if (!pair.equals("[]") && !pair.equals("()") && !pair.equals("{}")) {
-                    return false;
-                }
-            } else {
-                return false;
+    /**
+     *
+     * @param s
+     * @return
+     */
+    static boolean is_balanced(String s) {
+        Stack<Character> bracketsStack = new Stack<>();
+        char[] text = s.toCharArray();
+        for (char x : text) {
+            switch (x) {
+                case '{':
+                case '<':
+                case '(':
+                case '[':
+                    bracketsStack.push(x);
+                    break;
+                case '}':
+                    if (bracketsStack.peek() == '{') {
+                        bracketsStack.pop();
+                        break;
+                    } else {
+                        return false;
+                    }
+                case '>':
+                    if (bracketsStack.peek() == '<') {
+                        bracketsStack.pop();
+                        break;
+                    } else {
+                        return false;
+                    }
+                case ')':
+                    if (bracketsStack.peek() == '(') {
+                        bracketsStack.pop();
+                        break;
+                    } else {
+                        return false;
+                    }
+                case ']':
+                    if (bracketsStack.peek() == '[') {
+                        bracketsStack.pop();
+                        break;
+                    } else {
+                        return false;
+                    }
             }
         }
-
-        return stack.isEmpty();
+        return bracketsStack.empty();
     }
 
-    static void print(Object a) {
-        System.out.println(a);
-    }
-
+    /**
+     *
+     * @param args
+     * @TODO remove main method and Test using JUnit or other methodology
+     */
     public static void main(String args[]) {
-        try {
-            Scanner in = new Scanner(System.in);
-            print("Enter sequence of brackets: ");
-            String S = in.nextLine();
-            if (is_balanced(S.toCharArray())) {
-                print(S + " is balanced");
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.println("Enter sequence of brackets: ");
+            String s = in.nextLine();
+            if (is_balanced(s)) {
+                System.out.println(s + " is balanced");
             } else {
-                print(S + " ain't balanced");
+                System.out.println(s + " ain't balanced");
             }
-            in.close();
-        } catch (Exception e) {
-            e.toString();
         }
     }
 }
