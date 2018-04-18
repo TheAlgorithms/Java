@@ -1,3 +1,5 @@
+package numerical.convertions;
+
 import java.lang.StringBuilder;
 import java.util.*;
 import java.util.Scanner;

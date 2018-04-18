@@ -1,3 +1,5 @@
+package numerical.convertions;
+
 import java.util.*;
 /**
  * Converts any Binary Number to a Hexadecimal Number

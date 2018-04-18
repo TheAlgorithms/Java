@@ -1,3 +1,5 @@
+package numerical.convertions;
+
 
 class DecimalToHexaDecimal {
 	private static final int sizeOfIntInHalfBytes = 8;
