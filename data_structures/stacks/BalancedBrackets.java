@@ -1,4 +1,4 @@
-package data_structures.Stacks;
+package data_structures.stacks;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -23,8 +23,8 @@ class BalancedBrackets {
 
     /**
      *
-     * @param s
-     * @return
+     * @param s String that contain brackets
+     * @return true if the brackets is balanced or false if not.
      */
     static boolean is_balanced(String s) {
         Stack<Character> bracketsStack = new Stack<>();
@@ -73,7 +73,8 @@ class BalancedBrackets {
     /**
      *
      * @param args
-     * @TODO remove main method and Test using JUnit or other methodology
+     * @deprecated TODO remove main method and Test using JUnit or other
+     * methodology
      */
     public static void main(String args[]) {
         try (Scanner in = new Scanner(System.in)) {
