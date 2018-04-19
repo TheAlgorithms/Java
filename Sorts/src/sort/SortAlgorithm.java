@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *  The common interface of most algorithms
+ *  The common interface of most sorting algorithms
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  *
