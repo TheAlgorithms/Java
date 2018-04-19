@@ -62,7 +62,10 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         Random r = new Random();
         int size = 100;
         int maxElement = 100000;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
+        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement))
+                .limit(size)
+                .sorted()
+                .toArray(Integer[]::new);
 
 
         //the element that should be found
