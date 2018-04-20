@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 public class CircleLinkedList<E>{
      private static class Node<E>{
          Node<E> next;

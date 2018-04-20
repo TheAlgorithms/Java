@@ -1,3 +1,5 @@
+package DataStructures.Queues;
+
 import java.util.ArrayList;
 
 public class GenericArrayListQueue<T> {

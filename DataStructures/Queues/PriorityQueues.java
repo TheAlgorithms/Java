@@ -1,3 +1,5 @@
+package DataStructures.Queues;
+
 /**
  * This class implements a PriorityQueue.
  * 

@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 /**
  * This class implements a DoublyLinkedList. This is done using the classes
  * LinkedList and Link.

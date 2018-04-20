@@ -1,4 +1,6 @@
-class Node
+package DataStructures.Trees;
+
+ class Node
 {
     int data;
     Node left, right;

@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
