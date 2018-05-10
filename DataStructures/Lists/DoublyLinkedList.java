@@ -34,7 +34,7 @@ class DoublyLinkedList{
 	 * 
 	 * @param x Element to be inserted
 	 */
-	public void insertHead(int x){
+	public void insertHead(int x) {
 		Link newLink = new Link(x); //Create a new link with a value attached to it
 		if(isEmpty()) //Set the first element added to be the tail
 			tail = newLink;
@@ -152,6 +152,27 @@ class DoublyLinkedList{
 			current = current.next;
 		}
 		System.out.println();
+	}
+	
+	// ADDED size, getHead, getTail for testing purposes.
+	
+	public int size() {
+		int count = 0;
+		Link current = head;
+		while(current!=null){
+			count++;
+			current = current.next;
+		}
+		
+		return count;
+	}
+	
+	public Link getHead() {
+		return head;
+	}
+	
+	public Link getTail() {
+		return tail;
 	}
 }
 
