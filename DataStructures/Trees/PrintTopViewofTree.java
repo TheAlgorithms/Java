@@ -1,4 +1,4 @@
-// Java program to print top view of Binary tree
+package DataStructures.Trees;// Java program to print top view of Binary tree
 import java.util.*;
  
 // Class for a tree node

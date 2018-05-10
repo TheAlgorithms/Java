@@ -1,4 +1,4 @@
-/**
+package DataStructures.Trees; /**
  *
  * @author Varun Upadhyay (https://github.com/varunu28)
  *

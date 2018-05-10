@@ -1,3 +1,5 @@
+package DataStructures.Matrix;
+
 /**
 * Matrix data-type.
 *

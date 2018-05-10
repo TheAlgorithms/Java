@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
@@ -33,35 +35,49 @@ class SinglyLinkedList{
 		newNode.next = head; 		//Set the new link to point to the current head
 		head = newNode; 			//Now set the new link to be the head
 	}
-
+	
+	/**
+	 * Finds the size of the list by looping from head until tail.
+	 * @return the size of the list.
+	 */
+	public int getSize() {
+		int size = 0;
+		if (head == null) {
+			return 0;
+		}
+		else if (head.next == null) {
+			return 1;
+		}
+		else {
+			Node realHead = head;
+			size++;
+			while (head.next != null) {
+				size++;
+				head = head.next;
+			}
+			head = realHead;
+			return size;
+		}
+	}
 
 	/**
      * Inserts a new node at a specified position
-     * @param head     head node of the linked list
      * @param data     data to be stored in a new node
      * @param position position at which a new node is to be inserted
-     * @return  reference of the head of the linked list
-     */
+    **/
 
-    Node InsertNth(Node head, int data, int position) {
-        
-        Node newNode = new Node();
-        newNode.data = data;
-        
-        if (position == 0) {
-            newNode.next = head;
-            return newNode;
+    public void insertAtNth(int data, int position) {
+        if(position > this.getSize()) {
+        	throw new IndexOutOfBoundsException();
         }
-
-        Node current = head;
-
-        while (--position > 0) {
-            current = current.next;
+        else {
+        	Node tempHead = this.head;
+        	for (int i = 0; i < position; i++) {
+        		head = head.next;
+        	}
+        	head.next = new Node(data);
+        	head = tempHead;
         }
-        
-        newNode.next = current.next;
-        current.next = newNode;
-        return head;
     }
     
 	/**
@@ -87,13 +103,14 @@ class SinglyLinkedList{
 	/**
 	 * Prints contents of the list
 	 */
-	public void display(){
+	public String display(){
+		String ret="";
 		Node current = head;
 		while(current!=null){
-			System.out.print(current.getValue()+" ");
+			ret +=current.getValue()+" ";
 			current = current.next;
 		}
-		System.out.println();
+		return ret;
 	}
 	
 	/**
@@ -128,7 +145,7 @@ class SinglyLinkedList{
  */
 class Node{
 	/** The value of the node */
-	public int value;
+	public int data;
 	/** Point to the next node */
 	public Node next; //This is what the link will point to
 
@@ -138,14 +155,14 @@ class Node{
 	 * @param valuein Value to be put in the node
 	 */
 	public Node(int valuein){
-		value = valuein;
+		data = valuein;
 	}
 
 	/**
 	 * Returns value of the node
 	 */
 	public int getValue(){
-		return value;
+		return data;
 	}
 
 }

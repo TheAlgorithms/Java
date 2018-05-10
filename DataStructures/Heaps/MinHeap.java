@@ -1,7 +1,7 @@
 /**
  * 
  */
-package heaps;
+package DataStructures.Heaps;
 
 import java.util.ArrayList;
 import java.util.List;

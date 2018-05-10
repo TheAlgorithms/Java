@@ -1,4 +1,4 @@
-/**
+package DataStructures.Trees; /**
 * This entire class is used to build a Binary Tree data structure.
 * There is the Node Class and the Tree Class, both explained below.
 *
@@ -15,6 +15,7 @@
 * @author Unknown
 *
 */
+
 class Node{
 	/** Data for the node */
 	public int data;

@@ -1,4 +1,8 @@
-package heaps;
+package DataStructures.Heaps;
+
+import DataStructures.Heaps.EmptyHeapException;
+import DataStructures.Heaps.Heap;
+import DataStructures.Heaps.HeapElement;
 
 import java.util.ArrayList;
 import java.util.List;
