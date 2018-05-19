@@ -7,15 +7,16 @@ public class CircleLinkedList<E>{
             this.next = next;
         }
     }
+
     //For better O.O design this should be private allows for better black box design
     private int size;
     //this will point to dummy node;
     private Node<E> head;
+    private Node<E> tail;
     //constructer for class.. here we will make a dummy node for circly linked list implementation with reduced error catching as our list will never be empty;
     public CircleLinkedList(){
-        //creation of the dummy node
-        head = new Node<E>(null,head);
-        size = 0;
+        head = new Node<>(null, head);
+        tail = head;
     }
     // getter for the size... needed because size is private.
     public int getSize(){ return size;}
@@ -25,9 +26,13 @@ public class CircleLinkedList<E>{
             // we do not want to add null elements to the list.
             throw new NullPointerException("Cannot add null element to the list");
         }
-        //head.next points to the last element;
-        head.next = new Node<E>(value,head);
-        size++;}
+
+        //add new node at the end of the list and update tail node to point to new node
+        tail.next = new Node(value, head);
+        tail = tail.next;
+        size++;
+    }
+
     public E remove(int pos){
         if(pos>size || pos< 0){
             //catching errors
