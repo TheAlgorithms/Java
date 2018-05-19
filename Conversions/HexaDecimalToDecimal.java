@@ -11,8 +11,7 @@ public class HexaDecimalToDecimal {
         int val = 0;
         for (int i = 0; i < hex.length(); i++)
         {
-            char c = hex.charAt(i);
-            int d = digits.indexOf(c);
+            int d = digits.indexOf(hex.charAt(i));
             val = 16*val + d;
         }
         return val;
