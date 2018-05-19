@@ -85,6 +85,12 @@ class MergeSort implements SortAlgorithm {
             i++;
             k++;
         }
+
+	while (j <= right) {
+	    arr[k] = temp[j];
+	    j++;
+	    k++;
+	}
     }
 
     // Driver program
