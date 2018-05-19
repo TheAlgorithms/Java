@@ -34,7 +34,7 @@ public class CircleLinkedList<E>{
     }
 
     public E remove(int pos){
-        if(pos>size || pos< 0){
+        if(pos>=size || pos< 0){
             //catching errors
             throw new IndexOutOfBoundsException("position cannot be greater than size or negative");
         }
@@ -45,13 +45,15 @@ public class CircleLinkedList<E>{
             iterator = iterator.next;
             before = before.next;
         }
-        E saved = iterator.value;
-        // assigning the next referance to the the element following the element we want to remove... the last element will be assigned to the head.
+        E removedValue = iterator.value;
+        // assigning the next reference to the the element following the element we want to remove... the last element will be assigned to the head.
         before.next = iterator.next;
         // scrubbing
         iterator.next = null;
         iterator.value = null;
+        size--;
 
-        return saved;
+        return removedValue;
     }
+
 }
