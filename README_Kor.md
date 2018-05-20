@@ -1,43 +1,47 @@
-# The Algorithms - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Java.svg)](https://travis-ci.org/TheAlgorithms/Java)
+# 알고리즘 - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Java.svg)](https://travis-ci.org/TheAlgorithms/Java)
 
-### All algorithms implemented in Java (for education)
+### Java에서 사용되는 모든 알고리즘 (교육용)
 
-These are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
-이 모든 것은 오직 설명을 위한 것입니다.
-## Sort Algorithms
+이 모든 것은 오직 설명을 위한 것입니다. Java 표준 라이브러리에는 성능상 훨씬 우수한 여러 종류의 구현들이 존재합니다.
+
+## 정렬 알고리즘
 
 
-### Bubble
+### 버블 정렬 
 ![alt text][bubble-image]
 
-From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.
-
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
-
-###### View the algorithm in [action][bubble-toptal]
+From [Wikipedia][bubble-wiki]: 버블 정렬(싱크 정렬)은 인접한 것들끼리 비교하여 잘못된 순서인 경우 값을 서로 교환하여 저장하는 과정을 반복해 나가는 간단한 정렬 알고리즘입니다. 
 
 
+__속성__
+* 최악의 경우    O(n^2)
+* 최선의 경우    O(n)
+* 평균적인 경우    O(n^2)
 
-### Insertion
+###### 더 자세히 보고 싶다면? [action][bubble-toptal]
+
+
+
+### 삽입 정렬
 ![alt text][insertion-image]
 
-From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.
-
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
-
-###### View the algorithm in [action][insertion-toptal]
+From [Wikipedia][insertion-wiki]: 삽입 정렬은 한 번에 한 항목씩 최종 정렬 된 배열 (또는 목록)을 작성해주는 간단한 정렬 알고리즘입니다. quicksort, heaport 또는 병합 정렬과 같은 고급 알고리즘보다 크기가 큰 목록을 다룰 때 훨씬 효율이 떨어집니다.
 
 
-### Merge
+__속성__
+* 최악의 경우    O(n^2)
+* 최선의 경우    O(n)
+* 평균적인 경우    O(n^2)
+
+###### 더 자세히 보고 싶다면? [action][insertion-toptal]
+
+
+### 병합 정렬
 ![alt text][merge-image]
 
-From [Wikipedia][merge-wiki]: In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
+From [Wikipedia][merge-wiki]: 컴퓨터 공학에서 병합 정렬 (Merge sort 대신, 흔히 mergesort로 적기도 합니다.)은 효율적이고 범용이며 비교 기반 정렬 알고리즘입니다. 대부분의 구현은 안정적인 정렬을 생성하는 데, 구현시 정렬된 출력에서 동일한 요소의 입력 순서가 보존되는 것을 의미합니다. 1945년 존 폰 노이만(John von Neumann)이 발명했습니다.
+
+In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
 
 __Properties__
 * Worst case performance    O(n log n) (typical)
