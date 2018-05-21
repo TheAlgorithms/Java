@@ -86,10 +86,10 @@ class Stack{
                 int[] transferArray = new int[newSize];
 
 		//for(int i = 0; i < stackArray.length(); i++){ the length isn't a method .
-                for(int i = 0; i < stackArray.length; i++){
+                for(int i = 0; i < top+1; i++){
 			transferArray[i] = stackArray[i];
-			stackArray = transferArray;
 		}
+		stackArray = transferArray;
 		maxSize = newSize;
 	}
 
