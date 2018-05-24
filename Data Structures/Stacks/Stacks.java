@@ -54,14 +54,13 @@ class Stack{
      */
     public int pop(){
         if(!isEmpty()){ //Checks for an empty stack
+            if(top < maxSize/4){
+                resize(maxSize/2);
+                return pop();// don't forget pop after resizing
+            }
             int data = stackArray[top];
             stackArray[top--] = 0;
             return data;
-        }
-
-        if(top < maxSize/4){
-            resize(maxSize/2);
-            return pop();// don't forget pop after resizing
         }
         else{
             System.out.println("The stack is already empty");
@@ -98,7 +97,7 @@ class Stack{
                 transferArray[i] = stackArray[i];
             }
         }
-        stackArray = transferArray;
+	stackArray = transferArray;
         maxSize = newSize;
     }
 
