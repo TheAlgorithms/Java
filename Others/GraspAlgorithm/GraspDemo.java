@@ -226,18 +226,16 @@ public class GraspDemo {
 //================================================ convertArrayToList   =====================================
 	
 	/*
-	 * oysistika paizw etsi giati h xrhsh ths listas me bohthaei na vriskw tis 
-	 * synolikes apostaseis 
-	 * wste na brw thn kalyterh lysh
-	 * 
+	 * I basically play so why using the list helps me 
+	 * find the total distance to find the best solution
 	 */
 	
 	public static List<Node> convertArrayToList(int[] array){
 		
 		List<Node> l = new ArrayList<Node>();
 		/*
-		 * dinw thn lista poy einai adeia arxika gia na moy balei mesa to node poy antistoixei se dyo 
-		 * theseis toy arxikoy pinaka 
+		 * I give the list that is originally empty to place in the node corresponding 
+		 * to two locations in the original table
 		 */
 		addNodeToList(l,0,1);
 		for(int i =1; i < array.length - 1; i++){
@@ -298,7 +296,7 @@ public class GraspDemo {
 			listNeighbour.add(convertArrayToList(neighbor.get(i)));
 		}
 		/*
-		 * vriskoyme th diadromh me thn mikroterh apostash poy yparxei sth listneighbor
+		 * we find the route with the minimum distance that it is in the list neighbour
 		 */
 		double mindist = pathDistance(listNeighbour.get(0));
 		int minpos = 0;
