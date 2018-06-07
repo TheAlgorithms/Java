@@ -56,8 +56,7 @@ class LinkedListStack {
             head = n;
         }
         else {
-            Node temp = head;
-            n.next = temp;
+            n.next = head;
             head = n;
         }
         size++;
