@@ -19,19 +19,19 @@ public class TreeTraversal {
         tree.insert(8);
 
         // Prints 5 3 2 4 7 6 8
-        System.out.println("Pre order traversal:");
+        System.out.println("Preorder traversal:");
         tree.printPreOrder();
         System.out.println();
         // Prints 2 3 4 5 6 7 8
-        System.out.println("In order traversal:");
+        System.out.println("Inorder traversal:");
         tree.printInOrder();
         System.out.println();
         // Prints 2 4 3 6 8 7 5
-        System.out.println("Post order traversal:");
+        System.out.println("Postorder traversal:");
         tree.printPostOrder();
         System.out.println();
         // Prints 5 3 7 2 4 6 8
-        System.out.println("Level order traversal:");
+        System.out.println("Levelorder traversal:");
         tree.printLevelOrder();
         System.out.println();
     }
