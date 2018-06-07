@@ -18,39 +18,36 @@ class CocktailShakerSort implements SortAlgorithm {
 	 * Sorts the array in increasing order
 	 **/
 
-	@Override
-	public <T extends Comparable<T>> T[] sort(T[] array){
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
 
-		int last = array.length;
-		
-		// Sorting
-		boolean swap;
-		do {
-			swap = false;
-			
-			//front
-			for (int count = 0; count <= last - 2; count++) {
-				if (less(array[count + 1], array[count])) {
-					swap = swap(array, count, count + 1);
-				}
-			}
-			//break if no swap occurred
-			if (!swap) {
-				break;
-			}
-			swap = false;
-			
-			//back
-			for (int count = last - 2; count >= 0; count--) {
-				if (less(array[count + 1], array[count])) {
-					swap = swap(array, count, count + 1);
-				}
-			}
-			last--;
-		//end
-		} while (swap);
-		return array;
-	}
+        int length = array.length;
+        int left = 0;
+        int right = length - 1;
+        int swappedLeft, swappedRight;
+        while (left < right) {
+            // front
+            swappedRight = 0;
+            for (int i = left; i < right; i++) {
+                if (less(array[i + 1], array[i])) {
+                    swap(array, i, i + 1);
+                    swappedRight = i;
+                }
+            }
+            // back
+            right = swappedRight;
+            swappedLeft = length - 1;
+            for (int j = right; j > left; j--) {
+                if (less(array[j], array[j - 1])) {
+                    swap(array, j - 1, j);
+                    swappedLeft = j;
+                }
+            }
+            left = swappedLeft;
+        }
+        return array;
+
+    }
 
 	// Driver Program
 	public static void main(String[] args) {
