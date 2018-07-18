@@ -5,7 +5,8 @@ import java.util.Scanner;
  * 
  * @author Unknown
  *
- */
+ */cxvxc
+ vxcvxcvxc
 class BinaryToDecimal
 {
 	
