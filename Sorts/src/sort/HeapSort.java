@@ -13,6 +13,7 @@ import static sort.SortUtils.*;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  *
  */
+//堆排序
 public class HeapSort implements SortAlgorithm {
 
 
@@ -64,7 +65,12 @@ public class HeapSort implements SortAlgorithm {
          *
          * @param root index of root of heap
          */
+		//very good
         private void makeMinHeap(int root) {
+			
+			//result
+			Boolean result = false;
+			
             int leftIndex = root * 2 + 1;
             int rightIndex = root * 2 + 2;
             boolean hasLeftChild = leftIndex < heap.length;

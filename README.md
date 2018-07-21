@@ -6,7 +6,7 @@ These are for demonstration purposes only. There are many implementations of sor
 
 ## Sort Algorithms
 
-
+## 冒泡排序算法 ##
 ### Bubble
 ![alt text][bubble-image]
 
