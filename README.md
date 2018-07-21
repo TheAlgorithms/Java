@@ -1,8 +1,18 @@
 # The Algorithms - Java [![Build Status](https://travis-ci.org/TheAlgorithms/Java.svg)](https://travis-ci.org/TheAlgorithms/Java)
 
-### All algorithms implemented in Java (for education)
-
-These are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
+### All algorithms implemented in java
+All Algorithms implemented in Java (for education)
+ hese are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
+ 
+ ## GraspAlgorithm 
+                   has two phases: 
+                                   1) semi-advantageous phase
+                                   2) improvement phase 
+ Also this Algorithm can help us in a variety of problems such as travel salesman problem .
+ 
+                                  
+ 
+ 
 
 ## Sort Algorithms
 
