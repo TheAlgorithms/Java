@@ -29,9 +29,7 @@ public class CoinChange {
 
         for (int coin : coins) {
             for (int i=coin; i<amount+1; i++) {
-                if (i>=coin) {
                     combinations[i] += combinations[i-coin];
-                }
             }
             // Uncomment the below line to see the state of combinations for each coin
             // printAmount(combinations);
