@@ -84,6 +84,17 @@ __Properties__
 
 ###### View the algorithm in [action][shell-toptal]
 
+### Bucket sort
+![alt text][bucket-image]
+
+From [Wikipedia][bucket-wiki]: Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm. It is a distribution sort, a generalization of pigeonhole sort, and is a cousin of radix sort in the most-to-least significant digit flavor. Bucket sort can be implemented with comparisons and therefore can also be considered a comparison sort algorithm. The computational complexity estimates involve the number of buckets.
+
+__Properties__
+* Worst case performance    O(n^2)
+* Best case performance    O(n + k)
+* Average case performance    O(n + k)
+
+
 ### Time-Compexity Graphs
 
 Comparing the complexity of sorting algorithms (Bubble Sort, Insertion Sort, Selection Sort)
@@ -149,6 +160,9 @@ __Properties__
 [shell-toptal]: https://www.toptal.com/developers/sorting-algorithms/shell-sort
 [shell-wiki]: https://en.wikipedia.org/wiki/Shellsort
 [shell-image]: https://upload.wikimedia.org/wikipedia/commons/d/d8/Sorting_shellsort_anim.gif "Shell Sort"
+
+[bucket-image]: https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Bucket_sort_1.svg/311px-Bucket_sort_1.svg.png "Bucket Sort"
+[bucket-wiki]: https://en.wikipedia.org/wiki/Bucket_sort
 
 [linear-wiki]: https://en.wikipedia.org/wiki/Linear_search
 [linear-image]: http://www.tutorialspoint.com/data_structures_algorithms/images/linear_search.gif
