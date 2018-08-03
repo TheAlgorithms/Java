@@ -12,6 +12,7 @@ import java.util.Map;
 public class Fibonacci {
 
     private static Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    private static int fib_b = 0; //for fibShift
 
     public static void main(String[] args) throws Exception {
 
@@ -20,6 +21,7 @@ public class Fibonacci {
 
         System.out.println(fibMemo(n)); // Returns 8 for n = 6
         System.out.println(fibBotUp(n)); // Returns 8 for n = 6
+        System.out.println(fibShift(n)); // Returns 8 for n = 6
     }
 
     /**
@@ -71,5 +73,51 @@ public class Fibonacci {
 
         return fib.get(n);
     }
-}
 
+    /**
+     * This method finds the nth fibonacci number using Shifting property
+     * f(b+a) = f(b) * f(a+1) + f(b-1) * f(a)
+     * stores f(a) and f(b) for each recursion
+     *
+     * running time = O(log(N))
+     *
+     *@author Bram Lim (https://github.com/Darkdra771)
+     * @param n The input n for which we have to determine the fibonacci number
+     * Outputs the nth fibonacci number
+     **/
+
+     private static int fibShift(int n){
+      //let b = a + 1  if n is odd such that
+      //f(b+a) = f(b) * f(b) + f(a) * f(a)
+      //let a = b if n is even such that
+      //f(b+a) = f(a) * f(a+1) + [f(a+1) - f(a)] * f(a)
+
+        //base cases
+        if( n == 1){
+          fib_b = 1;
+          return 1;
+        }
+        else if ( n == 2){
+          fib_b = 2;
+          return 1;
+        }
+        else{
+          int a = (int)Math.floor((double)n/2.0);
+
+          int fib_a = fibShift(a); //this will also sets fib_b
+          int b = fib_b;
+
+          if( n % 2 == 0){ //n is even
+           fib_b = fib_b * fib_b + fib_a * fib_a;
+           return fib_a * b + (b - fib_a) * fib_a;
+          }
+          else{ //n is odd
+           fib_b = fib_b * (fib_a + fib_b) + fib_a *  fib_b;
+           return b * b + fib_a * fib_a;
+         }
+       }
+
+     }
+
+
+}
