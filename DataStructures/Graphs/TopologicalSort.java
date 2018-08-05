@@ -11,7 +11,7 @@ class TopologicalSort
         V = v;
         adj = new ArrayList[v];
         for (int i=0; i<v; ++i)
-            adj[i] = new ArrayList();
+            adj[i] = new ArrayList<>();
     }
     // Function to add an edge into the graph
     /**
@@ -26,7 +26,7 @@ class TopologicalSort
     private void topologicalSortUtil(int v, boolean visited[], Stack stack)
     {       
         visited[v] = true;// Marking the current node as visited.
-        Integer i;  
+        int i=0;  
         Iterator<Integer> itr = adj[v].iterator();// Recur for all the vertices adjacent to current vertex
         while (itr.hasNext())
         {
@@ -72,7 +72,7 @@ class TopologicalSort
         visited[i] = true;
         recStack[i] = true;
         List<Integer> children = adj[i];         
-        for (Integer c: children)
+        for (int c: children)
             if (isCyclicUtil(c, visited, recStack))
                 return true;                
         recStack[i] = false;//Clear the vertex from current recursion stack
@@ -101,6 +101,6 @@ class TopologicalSort
         g.addEdge(4, 1);
         g.addEdge(2, 3);
         g.addEdge(3, 1);
-        g.topologicalSort();
+        g.topologicalSort();//The output is 5 4 2 3 1 0, which is a valid topological sort of the graph
     }
 }
