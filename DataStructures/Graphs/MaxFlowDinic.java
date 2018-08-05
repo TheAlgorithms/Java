@@ -3,31 +3,13 @@ class MaxFlowDinic
 {
     private int V,level[];
     private ArrayList<Edge> adj[];
-    class Edge
-    {
-        double flow,cap;
-        int index,v;
-        /**
-         * @param a end vertex
-         * @param b current flow
-         * @param c capacity of edge
-         * @param d index of reverse edge for easy lookup
-        */
-        Edge(int a,double b,double c,int d)
-        {
-            v=a;
-            flow=b;
-            cap=c;
-            index=d;
-        }
-    }    
     MaxFlowDinic(int v)
     {
         V = v;
         adj = new ArrayList[v];
         for (int i=0; i<v; ++i)
-            adj[i] = new ArrayList();
-        level=new int[V];
+            adj[i] = new ArrayList<>();
+        level = new int[V];
     }
     /**
      * @param u Start vertex
@@ -36,8 +18,8 @@ class MaxFlowDinic
     */
     void addEdge(int u, int v, double C)
     {
-        Edge a=new Edge(v, 0, C, adj[v].size());// Forward edge : 0 flow and C capacity       
-        Edge b=new Edge(u, 0, 0, adj[u].size());// Back edge : 0 flow and 0 capacity
+        Edge a = new Edge(v, 0, C, adj[v].size());// Forward edge : 0 flow and C capacity       
+        Edge b = new Edge(u, 0, 0, adj[u].size());// Back edge : 0 flow and 0 capacity
         adj[u].add(a);
         adj[v].add(b); // reverse edge
     }
@@ -45,7 +27,7 @@ class MaxFlowDinic
      * @param s=Source vertex
      * @param t=Sink Vertex
      */
-    private boolean BFS(int s,int t)
+    private boolean bfs(int s,int t)
     {
         for (int i = 0 ; i < V ; i++)
             level[i] = -1;
@@ -115,11 +97,12 @@ class MaxFlowDinic
     {
         // Corner case
         if (s == t)
+        {
             return -1;
+        }
         double total = 0;  // Initialize result
-        // Augment the flow while there is path
-        // from source to sink
-        while (BFS(s, t))
+        // Augment the flow while there is path from source to sink
+        while (bfs(s, t))
         {
             // store how many edges are visited
             // from V { 0 to V }
@@ -137,14 +120,13 @@ class MaxFlowDinic
     }
     public static void main(String args[])
     {
-        MaxFlowDinic obj=new MaxFlowDinic(0);//Dummy object to access the non-static methods
-        obj.go();
-        
+        MaxFlowDinic obj = new MaxFlowDinic(0);//Dummy object to access the non-static methods
+        obj.go();//The expected output is 23.0
     }
     private void go()
     {
-        MaxFlowDinic g=new MaxFlowDinic(6);
-        //Sample example. In order to use this class, user should create an object, populte the graph via addEdge() method and cal the DinicMaxFlow() method on it
+        MaxFlowDinic g = new MaxFlowDinic(6);
+        //Sample example. In order to use this class, user should create an object, populte the graph via addEdge() method and call the DinicMaxFlow() method on it
         g.addEdge(0, 1, 16 );
         g.addEdge(0, 2, 13 );
         g.addEdge(1, 2, 10 );
@@ -155,6 +137,24 @@ class MaxFlowDinic
         g.addEdge(3, 5, 20 );
         g.addEdge(4, 3, 7 );
         g.addEdge(4, 5, 4);
-        System.out.println( "Maximum flow is: "+g.DinicMaxflow(0, 5));    
+        System.out.println(" Maximum flow is: "+g.DinicMaxflow(0, 5));    
     }
 }
+class Edge
+{
+    double flow,cap;
+    int index,v;
+     /**
+         * @param a end vertex
+         * @param b current flow
+         * @param c capacity of edge
+         * @param d index of reverse edge for easy lookup
+     */
+   Edge(int a,double b,double c,int d)
+   {
+         v = a;
+         flow = b;
+         cap = c;
+         index = d;
+    }
+}    
