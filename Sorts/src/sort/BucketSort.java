@@ -41,7 +41,7 @@ public class BucketSort{
 
   // Main method
   public static void main(String[] args) {
-    // Integer Input
+    // Double Input
     List<Double> unsortedDoubleValues = Stream
         .of(4.2, 23.1, 6.4, 78.2, 1.5, 54.2, 23.4, 1.7, 9.2, 231.9, 9.3, 12.1).collect(toList());
     BucketSort bucketSort = new BucketSort();
