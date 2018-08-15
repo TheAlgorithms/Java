@@ -1,18 +1,9 @@
-package DynamicProgramming;
-
 import java.util.Scanner;
 
 public class MaximumSizeSquareSubMatrixWithAll1s {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner s = new Scanner(System.in);
-		int n = s.nextInt();
-		int m = s.nextInt();
-		int[][] arr = new int[n][m];
-		for(int i=0;i<n;i++)
-			for(int j=0;j<m;j++)
-				arr[i][j] = s.nextInt();
+	public static int func(int n, int m, int[][] arr)
+	{
 		int[][] dp = new int[n][m];
 		for(int i=0;i<n;i++)
 			for(int j=0;j<m;j++)
@@ -29,6 +20,20 @@ public class MaximumSizeSquareSubMatrixWithAll1s {
 			for(int j=0;j<m;j++)
 				if(maxval<dp[i][j])
 					maxval = dp[i][j];
+		return maxval;
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int m = s.nextInt();
+		int[][] arr = new int[n][m];
+		for(int i=0;i<n;i++)
+			for(int j=0;j<m;j++)
+				arr[i][j] = s.nextInt();
+		int maxval = func(n,m,arr);
 		System.out.println(maxval);
 	}
 
