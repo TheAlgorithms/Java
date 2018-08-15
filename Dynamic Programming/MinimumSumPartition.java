@@ -55,6 +55,5 @@ public class MinimumSumPartition {
 	        int[] arr = {1, 6, 11, 5};
 	        int diff = func(n,arr);
 		System.out.println(diff);
-	    }
 	}
 }
