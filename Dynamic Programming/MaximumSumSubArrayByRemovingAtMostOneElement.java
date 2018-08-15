@@ -67,7 +67,6 @@ public class MaximumSumSubArrayByRemovingAtMostOneElement {
 		int[] arr = {2, 1, 1, -3, 5};
 		int maxsum = func(n,arr);
 		System.out.println(maxsum);
-		}
 	}
 
 }
