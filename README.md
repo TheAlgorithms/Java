@@ -5,7 +5,8 @@ Make it a working Java project with full fledged test cases for each algorithm a
 
 ## Contribution Guidelines
  - If you add an algorithm then you have to add a test along with it. In absence of a test the PR would not be approved
- - Follow the correct coding guidelines. Refer [DecimalToAnyBase.java](https://github.com/TheAlgorithms/Java/blob/Development/src/main/com/java/conversions/DecimalToAnyBase.java) for algorithm and [DecimalToAnyBaseTest.java](https://github.com/TheAlgorithms/Java/blob/Development/src/test/com/java/conversions/DecimalToAnyBaseTest.java) for the test coding standards.
+ - Follow the correct coding guidelines with proper description for the methods. Refer [DecimalToAnyBase.java](https://github.com/TheAlgorithms/Java/blob/Development/src/main/com/java/conversions/DecimalToAnyBase.java) for algorithm and [DecimalToAnyBaseTest.java](https://github.com/TheAlgorithms/Java/blob/Development/src/test/com/java/conversions/DecimalToAnyBaseTest.java) for the test coding standards.
+ - Do not add a main method as we just need the actual algorithm in a method for the class which we are going to test in the test cases
  - Please do not add a signature inside the code. The commit history is sufficient enough to determine who has added the code to the repo.
  - Make sure the algorithm which is getting added comes under a certain domain of Algorithms. Please don't create a package with name such as Misc, Others etc. 
  - While making a PR make sure you are commiting the Java files only and not any project specific files. If you feel that your IDE is generating some extra files then either don't add them to git or add the extensions to ```.gitignore```
