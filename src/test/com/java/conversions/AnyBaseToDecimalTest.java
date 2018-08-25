@@ -33,7 +33,7 @@ public class AnyBaseToDecimalTest {
     Assert.assertEquals("16", anyBaseToDecimal.convertToDecimal("10", 16));
     Assert.assertEquals("17", anyBaseToDecimal.convertToDecimal("11", 16));
     Assert.assertEquals("100", anyBaseToDecimal.convertToDecimal("64", 16));
-    Assert.assertEquals("225", anyBaseToDecimal.convertToDecimal("e1", 16));
+    Assert.assertEquals("225", anyBaseToDecimal.convertToDecimal("E1", 16));
     Assert.assertEquals("1024", anyBaseToDecimal.convertToDecimal("400", 16));
   }
 }
