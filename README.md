@@ -16,6 +16,7 @@ Make it a working Java project with full fledged test cases for each algorithm a
 - Fork to [Java Repo](https://github.com/TheAlgorithms/Java)
 - Open the forked repo on your local machine 
 - Switch to ```Development``` branch by using the command ```git checkout Development```
+- Add the JAR for JUnit to your build path. Here is a link for the [JUnit JAR](http://www.java2s.com/Code/Jar/j/Downloadjunit410jar.htm)
 - Make the changes on your local machine
 - Push the changes to the forked repository
 - Raise a PR against the Development branch
