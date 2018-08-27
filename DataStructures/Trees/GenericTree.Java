@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class treeclass {
+public class GenericTree {
 	private class Node {
 		int data;
 		ArrayList<Node> child = new ArrayList<>();
@@ -22,7 +22,7 @@ public class treeclass {
 	I have done this, while calling from main one have to give minimum parameters.
 
 	*/
-	public treeclass() {     //Constructor
+	public GenericTree() {     //Constructor
 		Scanner scn = new Scanner(System.in);
 		root = create_treeG(null, 0, scn);
 	}
