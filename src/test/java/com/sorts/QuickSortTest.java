@@ -1,9 +1,9 @@
-package src.test.com.java.sorts;
+package src.test.java.com.sorts;
 
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.com.java.sorts.QuickSort;
+import src.main.java.com.sorts.QuickSort;
 
 import java.util.Arrays;
 

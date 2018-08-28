@@ -1,11 +1,11 @@
-package src.main.com.java.sorts;
+package src.main.java.com.sorts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static src.main.com.java.sorts.SortUtils.less;
-import static src.main.com.java.sorts.SortUtils.swap;
+import static src.main.java.com.sorts.SortUtils.less;
+import static src.main.java.com.sorts.SortUtils.swap;
 
 public class HeapSort {
 

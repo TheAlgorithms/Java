@@ -1,6 +1,6 @@
-package test.com.java.conversions;
+package src.test.java.com.conversions;
 
-import main.com.java.conversions.DecimalToAnyBase;
+import src.main.java.com.conversions.DecimalToAnyBase;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

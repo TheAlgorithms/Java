@@ -1,7 +1,4 @@
-package src.main.com.java.sorts;
-
-import static src.main.com.java.sorts.SortUtils.less;
-import static src.main.com.java.sorts.SortUtils.swap;
+package src.main.java.com.sorts;
 
 public class BubbleSort {
   /**
@@ -17,8 +14,8 @@ public class BubbleSort {
     do {
       swap = false;
       for (int count = 0; count < last - 1; count++) {
-        if (less(array[count + 1], array[count])) {
-          swap = swap(array, count, count + 1);
+        if (SortUtils.less(array[count + 1], array[count])) {
+          swap = SortUtils.swap(array, count, count + 1);
         }
       }
       last--;
