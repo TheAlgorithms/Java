@@ -38,7 +38,7 @@ public class LevelOrderTraversal
         else
         {
             /**
-             * return the larger one;
+             * Return the height of larger subtree
              */
             return Math.max(height(root.left),height(root.right)) + 1;
         }
