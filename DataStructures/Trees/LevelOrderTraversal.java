@@ -37,14 +37,10 @@ public class LevelOrderTraversal
            return 0;
         else
         {
-            /* compute  height of each subtree */
-            int lheight = height(root.left);
-            int rheight = height(root.right);
-             
-            /* use the larger one */
-            if (lheight > rheight)
-                return(lheight+1);
-            else return(rheight+1); 
+            /**
+             * return the larger one;
+             */
+            return Math.max(height(root.left),height(root.right)) + 1;
         }
     }
  
