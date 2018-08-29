@@ -1,4 +1,4 @@
-package main.com.java.conversions;
+package src.main.java.com.conversions;
 
 import java.util.ArrayList;
 

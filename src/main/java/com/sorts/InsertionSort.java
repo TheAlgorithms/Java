@@ -1,6 +1,4 @@
-package src.main.com.java.sorts;
-
-import static src.main.com.java.sorts.SortUtils.less;
+package src.main.java.com.sorts;
 
 public class InsertionSort {
 
@@ -17,7 +15,7 @@ public class InsertionSort {
       T key = array[j];
       int i = j - 1;
 
-      while (i >= 0 && less(key, array[i])) {
+      while (i >= 0 && SortUtils.less(key, array[i])) {
         array[i + 1] = array[i];
         i--;
       }

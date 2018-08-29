@@ -1,11 +1,8 @@
-package src.main.com.java.sorts;
+package src.main.java.com.sorts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static src.main.com.java.sorts.SortUtils.less;
-import static src.main.com.java.sorts.SortUtils.swap;
 
 public class HeapSort {
 
@@ -39,18 +36,18 @@ public class HeapSort {
         // if has right and left children
         T left = heap[leftIndex];
         T right = heap[rightIndex];
-        if (less(left, right) && less(left, root)) {
-          swap(heap, leftIndex, rootIndex);
+        if (SortUtils.less(left, right) && SortUtils.less(left, root)) {
+          SortUtils.swap(heap, leftIndex, rootIndex);
           heapSubtree(leftIndex, lastChild);
-        } else if (less(right, root)) {
-          swap(heap, rightIndex, rootIndex);
+        } else if (SortUtils.less(right, root)) {
+          SortUtils.swap(heap, rightIndex, rootIndex);
           heapSubtree(rightIndex, lastChild);
         }
       } else if (leftIndex <= lastChild) {
         // if no right child, but has left child
         T left = heap[leftIndex];
-        if (less(left, root)) {
-          swap(heap, leftIndex, rootIndex);
+        if (SortUtils.less(left, root)) {
+          SortUtils.swap(heap, leftIndex, rootIndex);
           heapSubtree(leftIndex, lastChild);
         }
       }
@@ -83,7 +80,7 @@ public class HeapSort {
      * @return root of heap
      */
     private T getRoot(int size) {
-      swap(heap, 0, size);
+      SortUtils.swap(heap, 0, size);
       heapSubtree(0, size - 1);
       // return old root
       return heap[size];

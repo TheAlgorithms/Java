@@ -1,7 +1,4 @@
-package src.main.com.java.sorts;
-
-import static src.main.com.java.sorts.SortUtils.less;
-import static src.main.com.java.sorts.SortUtils.swap;
+package src.main.java.com.sorts;
 
 public class SelectionSort {
 
@@ -17,13 +14,13 @@ public class SelectionSort {
       // Initial index of min
       int min = i;
       for (int j = i + 1; j < n; j++) {
-        if (less(arr[j], arr[min])) {
+        if (SortUtils.less(arr[j], arr[min])) {
           min = j;
         }
       }
       // Swapping if index of min is changed
       if (min != i) {
-        swap(arr, i, min);
+        SortUtils.swap(arr, i, min);
       }
     }
 

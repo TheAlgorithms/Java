@@ -1,8 +1,8 @@
-package src.test.com.java.sorts;
+package src.test.java.com.sorts;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.com.java.sorts.ShellSort;
+import src.main.java.com.sorts.ShellSort;
 
 import java.util.Arrays;
 

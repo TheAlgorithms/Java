@@ -1,7 +1,4 @@
-package src.main.com.java.sorts;
-
-import static src.main.com.java.sorts.SortUtils.less;
-import static src.main.com.java.sorts.SortUtils.swap;
+package src.main.java.com.sorts;
 
 public class ShellSort {
 
@@ -20,8 +17,8 @@ public class ShellSort {
 
     while (n >= 1) {
       for (int i = n; i < length; i++) {
-        for (int j = i; j >= n && less(array[j], array[j - n]); j -= n) {
-          swap(array, j, j - n);
+        for (int j = i; j >= n && SortUtils.less(array[j], array[j - n]); j -= n) {
+          SortUtils.swap(array, j, j - n);
         }
       }
       n /= 3;

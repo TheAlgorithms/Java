@@ -1,8 +1,8 @@
-package src.test.com.java.search;
+package src.test.java.com.search;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.com.java.search.BinarySearch;
+import src.main.java.com.search.BinarySearch;
 
 public class BinarySearchTest {
 
