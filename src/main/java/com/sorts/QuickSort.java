@@ -1,5 +1,8 @@
 package src.main.java.com.sorts;
 
+import static src.main.java.com.sorts.SortUtils.less;
+import static src.main.java.com.sorts.SortUtils.swap;
+
 public class QuickSort {
 
 
@@ -45,14 +48,14 @@ public class QuickSort {
     T pivot = array[mid];
 
     while (left <= right) {
-      while (SortUtils.less(array[left], pivot)) {
+      while (less(array[left], pivot)) {
         ++left;
       }
-      while (SortUtils.less(pivot, array[right])) {
+      while (less(pivot, array[right])) {
         --right;
       }
       if (left <= right) {
-        SortUtils.swap(array, left, right);
+        swap(array, left, right);
         ++left;
         --right;
       }
