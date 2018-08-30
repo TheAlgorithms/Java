@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  *
  * Java implementation of Matrix fast power
@@ -14,11 +12,67 @@ import java.util.*;
  * other Matrix basic operator is based on  @author Kyler Smith, 2017
  *
  * @author DDullahan, 2018
- * 
+ *
  */
 
+class MatrixFastPower {
+
+    /**
+     * Matrix Fast Power
+     *
+     * @param matrix : square Matrix
+     * @param k : power of Matrix
+     * @return product
+     */
+    public static Matrix FastPower(Matrix matrix, int k) throws RuntimeException {
+
+        if(matrix.getColumns() != matrix.getRows())
+            throw new RuntimeException("Matrix is not square Matrix.");
+
+        int[][] newData = new int[matrix.getColumns()][matrix.getRows()];
+
+        for(int i = 0; i < matrix.getColumns(); i++)
+            newData[i][i] = 1;
+
+        Matrix newMatrix = new Matrix(newData),
+        coMatrix = new Matrix(matrix.data);
+
+        while(k != 0) {
+
+            if((k & 1) != 0)
+                newMatrix = newMatrix.multiply(coMatrix);
+
+            k >>= 1;
+            coMatrix = coMatrix.multiply(coMatrix);
+
+        }
+
+        return newMatrix;
+    }
+
+    public static void main(String[] argv) {
+
+        int[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        Matrix matrix = new Matrix(data);
+
+        System.out.println("original matrix : ");
+        System.out.println(matrix.toString());
+
+        matrix = MatrixFastPower.FastPower(matrix, 5);
+
+        System.out.println("after power : ");
+        System.out.println(matrix.toString());
+
+        matrix = MatrixFastPower.FastPower(matrix, 1000000);
+
+        System.out.println("notice, large power may cause overflow : ");
+        System.out.print(matrix.toString());
+        System.out.println("you can use mod to fix that :-) ");
+
+    }
+}
 class Matrix {
-    private int[][] data;
+    public int[][] data;
 
     /**
      * Constructor for the matrix takes in a 2D array
@@ -106,34 +160,32 @@ class Matrix {
     }
 
     /**
-     * Matrix Fast Power
-     *
-     * @param k : power of Matrix
-     * @return product
-     */
-    public Matrix MatrixFastPower(int k) throws RuntimeException {
+    * Returns the Matrix as a String in the following format
+    *
+    * [ a b c ] ...
+    * [ x y z ] ...
+    * [ i j k ] ...
+    *    ...
+    *
+    * @return Matrix as String
+    * TODO: Work formatting for different digit sizes
+    */
+    public String toString() {
+        String str = "";
 
-        if(this.getColumns() != this.getRows())
-            throw new RuntimeException("Matrix is not square Matrix.");
+        for(int i = 0; i < this.data.length; i++) {
+            str += "[ ";
 
-        int[][] newData = new int[this.getColumns()][this.getRows()];
+            for(int j = 0; j < this.data[0].length; j++) {
+                str += data[i][j];
+                str += " ";
+            }
 
-        for(int i = 0; i < this.getColumns(); i++)
-            newData[i][i] = 1;
-
-        Matrix newMatrix = new Matrix(newData),
-        coMatrix = new Matrix(this.data);
-
-        while(k != 0) {
-
-            if((k & 1) != 0)
-                newMatrix = newMatrix.multiply(coMatrix);
-
-            k >>= 1;
-            coMatrix = coMatrix.multiply(coMatrix);
-
+            str += "]";
+            str += "\n";
         }
 
-        return newMatrix;
+        return str;
     }
+
 }
