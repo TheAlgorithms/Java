@@ -3,14 +3,22 @@
  * 
  * @author nikhilbarar
  */
-
 public class NQueens {
+	/**
+	 * The main method
+	 *
+	 * @param args Command line arguments
+	 */
 	public static void main(String[] args) {
 		NQueens nQueens = new NQueens();
 		nQueens.placeQueens(4); // Lets take example of 4*4
 	}
 
-	// Function to place and find the correct positions of the queens and print the board
+	/**
+	 * Function to place and find the correct positions of the queens and print the board
+	 * 
+	 * @param gridSize The size of the board
+	 */
 	private void placeQueens(int gridSize) {
 		// If Grid is 1*1 or 2*2 or 3*3 then solution is not possible as,
 		// In 1*1 or 2*2 grid, Queen placed in 1st row at any position will attack queen
@@ -26,7 +34,13 @@ public class NQueens {
 		}
 	}
 
-	// Function to place all queens on the board and find the correct positions
+	/**
+	 * Function to place all queens on the board and find the correct positions
+	 * 
+	 * @param board Matrix representing the chess board
+	 * @param row The current row of the board
+	 * @return Boolean specifying if all queens have been placed correctly
+	 */
 	private boolean placeAllQueens(int board[][], int row) {
 		if (row >= board.length) {
 			return true;
@@ -47,7 +61,14 @@ public class NQueens {
 		return isAllQueensPlaced;
 	}
 
-	// Function to check if the position is safe
+	/**
+	 * Function to check if the position is safe
+	 * 
+	 * @param board Matrix representing the chess board
+	 * @param row The current row of the board
+	 * @param col The current column of the board
+	 * @return Boolean specifying if the current position is safe
+	 */
 	private boolean isSafe(int board[][], int row, int col) {
 		// Check Left Upper Diagonal
 		for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
@@ -73,7 +94,11 @@ public class NQueens {
 		return true;
 	}
 
-	// Function to print the chess board
+	/**
+	 * Function to print the chess board
+	 * 
+	 * @param board Matrix representing the chess board
+	 */
 	private void printBoard(int[][] board) {
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board.length; col++) {
