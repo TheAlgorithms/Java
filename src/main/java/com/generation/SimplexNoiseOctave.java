@@ -45,7 +45,7 @@ public class SimplexNoiseOctave {
 	private final short[] permMod12 = new short[LENGTH];
 
 	/**
-	 * @param seed the seed for this octave
+	 * @param seed the seed that this octave uses to generate pseudo random numbers
 	 */
 	public SimplexNoiseOctave(long seed) {
 		
@@ -201,7 +201,6 @@ public class SimplexNoiseOctave {
 	 * @param y Y
 	 * @param z Z
 	 * @return the noise
-	 * @since 21.08.2018/0.2.0
 	 */
 	public double noise(double x, double y, double z) {
 		
@@ -380,7 +379,6 @@ public class SimplexNoiseOctave {
 		 * @param x X
 		 * @param y Y
 		 * @param z Z
-		 * @since 21.08.2018/0.2.0
 		 */
 		private Gradient(double x, double y, double z) {
 			

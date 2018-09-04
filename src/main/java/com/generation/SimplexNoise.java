@@ -4,7 +4,6 @@ import java.util.Random;
 
 /**
  * Implementation of the simplex noise algorithm.
- * @see <a href="https://en.wikipedia.org/wiki/Simplex_noise">Wikipedia</a>
  */
 public class SimplexNoise {
 
@@ -16,9 +15,9 @@ public class SimplexNoise {
 	private long seed;
 	
 	/**
-	 * @param largestFeature size of the largest possible feature
-	 * @param persistence the persistence
-	 * @param seed the seed
+	 * @param largestFeature the diameter of the largest possible "cloud".
+	 * @param persistence the persistence. a low persistence causes smoother transition between the features while a high one makes the transition hard. (range = {@code 0.0F} - {@code 1.0F})
+	 * @param seed the seed this algorithm will use to generate pseudo random numbers. The generation will always look the same if the seed and the other parameters have the same value as in a previous generation
 	 */
 	public SimplexNoise(int largestFeature, double persistence, long seed) {
 		
