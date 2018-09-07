@@ -15,6 +15,18 @@ public class InsertionSortTest {
     Integer[] sortedInt = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     Assert.assertArrayEquals(sortedInt, insertionSort.sort(unsortedInt));
 
+    Integer[] unsortedInt = new Integer[]{5,4,3,2,1,0};
+    Integer[] sortedInt = new Integer[]{0, 1, 2, 3, 4, 5};
+    Assert.assertArrayEquals(sortedInt, insertionSort.sort(unsortedInt));
+    
+    Integer[] unsortedInt = new Integer[]{-1,-2,-3,-4,-5};
+    Integer[] sortedInt = new Integer[]{-5,-4,-3,-2,-1};
+    Assert.assertArrayEquals(sortedInt, insertionSort.sort(unsortedInt));
+    
+    Integer[] unsortedInt = new Integer[]{-1,-5,-10,-990,990,1010};
+    Integer[] sortedInt = new Integer[]{-990,-10,-5,-1,990,1010};
+    Assert.assertArrayEquals(sortedInt, insertionSort.sort(unsortedInt));
+    
     Character[] unsortedChar = new Character[]{'f', 'h', 'c', 'a', 'b', 'd', 'g', 'e'};
     Character[] sortedChar = new Character[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
     Assert.assertArrayEquals(sortedChar, insertionSort.sort(unsortedChar));
