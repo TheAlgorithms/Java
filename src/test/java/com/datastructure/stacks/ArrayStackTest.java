@@ -5,6 +5,7 @@ import org.junit.Test;
 import src.main.java.com.datastructure.stacks.ArrayStack;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
@@ -145,5 +146,31 @@ public class ArrayStackTest {
         } catch (Exception ex) {
             assertEquals(IndexOutOfBoundsException.class, ex.getClass());
         }
+    }
+
+    @Test
+    public void test_toArray_method() {
+        // create instance
+        ArrayStack<String> arrayStack = new ArrayStack<>(5);
+        String[] array = new String[5];
+        // test empty
+        assertArrayEquals(array, arrayStack.toArray());
+
+        // test one value
+        arrayStack.push("1");
+        array[0] = "1";
+        assertArrayEquals(array, arrayStack.toArray());
+
+        // test full
+        arrayStack.push("2");
+        array[1] = "2";
+        arrayStack.push("3");
+        array[2] = "3";
+        arrayStack.push("4");
+        array[3] = "4";
+        arrayStack.push("5");
+        array[4] = "5";
+
+        assertArrayEquals(array, arrayStack.toArray());
     }
 }
