@@ -1,4 +1,4 @@
 Java.iml
 .idea/*
 out/
-Downloads.iml
+*.iml
