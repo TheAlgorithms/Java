@@ -54,9 +54,9 @@ public class Fibonacci {
         var fib = new HashMap<Integer, Integer>();
         
         for (int i = 1; i < n + 1; i++) {
-            var f = i <= 2 ? 1 : fib.get(i - 1) + fib.get(i - 2);
+            var fibonacciNumber = i <= 2 ? 1 : fib.get(i - 1) + fib.get(i - 2);
 
-            fib.put(i, f);
+            fib.put(i, fibonacciNumber);
         }
 
         return fib.get(n);
