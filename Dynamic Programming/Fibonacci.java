@@ -15,8 +15,8 @@ public class Fibonacci {
 
     public static void main(String[] args) throws Exception {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        var br = new BufferedReader(new InputStreamReader(System.in));
+        var n = Integer.parseInt(br.readLine());
 
         System.out.println(fibMemo(n)); // Returns 8 for n = 6
         System.out.println(fibBotUp(n)); // Returns 8 for n = 6
@@ -30,21 +30,17 @@ public class Fibonacci {
      **/
 
     private static int fibMemo(int n) {
-        if (map.containsKey(n)) {
+         if (map.containsKey(n)) {
             return map.get(n);
         }
 
-        int f;
-
         if (n <= 2) {
-            f = 1;
-        }
-        else {
-            f = fibMemo(n-1) + fibMemo(n-2);
-            map.put(n,f);
+            return 1;
         }
 
-        return f;
+        var fibonacciNumber = fibMemo(n - 1) + fibMemo(n - 2);
+        map.put(n, fibonacciNumber);
+        return fibonacciNumber;
     }
 
     /**
@@ -55,17 +51,11 @@ public class Fibonacci {
      **/
 
     private static int fibBotUp(int n) {
+        var fib = new HashMap<Integer, Integer>();
+        
+        for (int i = 1; i < n + 1; i++) {
+            var f = i <= 2 ? 1 : fib.get(i - 1) + fib.get(i - 2);
 
-        Map<Integer,Integer> fib = new HashMap<Integer,Integer>();
-
-        for (int i=1;i<n+1;i++) {
-            int f = 1;
-            if (i<=2) {
-                f = 1;
-            }
-            else {
-                f = fib.get(i-1) + fib.get(i-2);
-            }
             fib.put(i, f);
         }
 
