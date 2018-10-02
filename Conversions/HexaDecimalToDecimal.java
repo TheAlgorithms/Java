@@ -5,14 +5,19 @@ import java.util.Scanner;
 public class HexaDecimalToDecimal {
 
     // convert hexadecimal to decimal
-    public static int getHexaToDec(String hex){
-        String digits = "012345678910ABCDEFF";
+    public static int getHexaToDec(String hex)
+    {
         hex = hex.toUpperCase();
-        int val = 0;
+        int val = 0 , num=0;
+        char ch='';
         for (int i = 0; i < hex.length(); i++)
         {
-            int d = digits.indexOf(hex.charAt(i));
-            val = 16*val + d;
+            ch = hex.charAt(i);
+            if(ch>=48 && ch<=57)
+                num = ch;
+            if(ch>=65 && ch<=70)
+                num = ch-55;
+            val = 16*val + num;
         }
         return val;
     }
