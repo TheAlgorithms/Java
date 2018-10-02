@@ -45,3 +45,26 @@ public class Armstrong {
 
 	}
 }
+
+// Above program is only to print 3 digit Armstrong Number
+
+// For n digit Armstrong number. Ex - 1634 : 1^4 + 6^4 + 3^4 + 4^4
+//Sum of the individual digits raised to the power of the length of the number
+
+/* 	public static boolean checkIfANumberIsAmstrongOrNot(int number) {
+		int remainder, sum = 0, temp = 0;
+		int length = String.valueOf(number).length();
+		temp = number;
+		while (number > 0) {
+			remainder = number % 10;
+			sum = sum + Math.pow(remainder, length);
+			number = number / 10;
+		}
+		if (sum == temp) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+*/	
