@@ -1,4 +1,4 @@
-package src.main.java.com.conversions;
+package com.algorithms.conversions;
 
 public class AnyBaseToDecimal {
     /**

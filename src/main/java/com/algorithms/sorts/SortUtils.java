@@ -1,4 +1,4 @@
-package src.main.java.com.sorts;
+package com.algorithms.sorts;
 
 final class SortUtils {
 

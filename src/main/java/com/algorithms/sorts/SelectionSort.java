@@ -1,7 +1,7 @@
-package src.main.java.com.sorts;
+package com.algorithms.sorts;
 
-import static src.main.java.com.sorts.SortUtils.less;
-import static src.main.java.com.sorts.SortUtils.swap;
+import static com.algorithms.sorts.SortUtils.less;
+import static com.algorithms.sorts.SortUtils.swap;
 
 public class SelectionSort {
 
