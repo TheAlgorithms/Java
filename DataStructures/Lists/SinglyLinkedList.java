@@ -45,8 +45,7 @@ class SinglyLinkedList{
 
     Node InsertNth(Node head, int data, int position) {
         
-        Node newNode = new Node();
-        newNode.data = data;
+        Node newNode = new Node(data);
         
         if (position == 0) {
             newNode.next = head;
