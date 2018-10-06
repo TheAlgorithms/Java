@@ -1,3 +1,5 @@
+package abc;
+
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
@@ -46,7 +48,7 @@ class SinglyLinkedList{
     Node InsertNth(Node head, int data, int position) {
         
         Node newNode = new Node();
-        newNode.data = data;
+        newNode.value = data;		// take value
         
         if (position == 0) {
             newNode.next = head;
@@ -139,6 +141,13 @@ class Node{
 	 */
 	public Node(int valuein){
 		value = valuein;
+	}
+
+
+
+// Default constructor
+	public Node(){
+		value = 0;
 	}
 
 	/**
