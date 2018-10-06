@@ -1,4 +1,4 @@
-package abc;
+package Lists;
 
 /**
  * This class implements a SinglyLinked List. This is done
