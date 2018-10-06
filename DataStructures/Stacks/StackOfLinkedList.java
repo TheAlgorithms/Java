@@ -68,14 +68,14 @@ class LinkedListStack {
 
     public void pop() {
         if (getSize() == 0) {
-            System.out.println("Empty stack. Nothing to pop");
+            System.out.println("empty stack");
         }
 
         Node temp = head;
         head = head.next;
         size--;
 
-        System.out.println("Popped element is: " + temp.data);
+        System.out.println("Popped element is: " +temp.data);
     }
 
     public int peek() {
@@ -94,7 +94,7 @@ class LinkedListStack {
             System.out.println(temp.data + " ");
             temp = temp.next;
         }
-        System.out.println();
+        System.out.println("stack is:"+temp);
 
     }
 
