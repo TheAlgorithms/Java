@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+public class SegmentTreeLazy {
+	static class SegTreeLazy{
+		long[] segTree;
+		long[] lazy;
+		public SegTreeLazy(int n){
+			segTree = new long[4*n];
+			lazy = new long[4*n];
+		}
+		void build(int l,int r,int pos,int[] arr) {
+			if(l == r) {
+				segTree[pos] = arr[l];
+				return;
+			}
+			int mid = (l + r)/2;
+			build(l, mid, 2*pos+1, arr);
+			build(mid+1, r, 2*pos+2, arr);
+			segTree[pos] = segTree[2*pos+1] + segTree[2*pos+2];
+		}
+		void update(int l,int r,int start,int end,int pos,long val) {
+			
+			if(lazy[pos] != 0) {
+				segTree[pos] += (r - l + 1) * lazy[pos];
+				if(l != r) {
+					lazy[2*pos+1] += lazy[pos];
+					lazy[2*pos+2] += lazy[pos];
+				}
+				lazy[pos] = 0;
+			}
+			if(l > r || l > end || r < start) {
+				return;
+			}
+			if(l >= start && r <= end) {
+				segTree[pos] += (r - l + 1) * val;
+				if(l != r) {
+					lazy[2*pos+1] += val;
+					lazy[2*pos+2] += val;
+				}
+				return;
+			}
+			int mid = (l + r)/2;
+			update(l, mid, start, end, 2*pos+1, val);
+			update(mid+1, r, start, end, 2*pos+2, val);
+			segTree[pos] = segTree[2*pos+1] + segTree[2*pos+2];
+		}
+		long query(int l,int r,int start,int end,int pos) {
+			if(lazy[pos] != 0) {
+				segTree[pos] += (r - l + 1) * lazy[pos];
+				if(l != r) {
+					lazy[2*pos+1] += lazy[pos];
+					lazy[2*pos+2] += lazy[pos];
+				}
+				lazy[pos] = 0;
+			}
+			if(l > r || l > end || r < start) {
+				return 0;
+			}
+			if(l >= start && r <= end) {
+				return segTree[pos];
+			}
+			int mid = (l + r)/2;
+			long p1 = query(l, mid, start, end, 2*pos+1);
+			long p2 = query(mid+1, r, start, end, 2*pos+2);
+			return p1 + p2;
+		}
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] arr=  new int[n];
+		for(int i =0;i < n;i++) {
+			arr[i] = sc.nextInt();
+		}
+		SegTreeLazy l = new SegTreeLazy(n);
+		l.build(0, n-1, 0, arr);
+		l.update(0, n-1, 1, 3, 0, 5);
+		System.out.println(l.query(0, n-1, 1, 3, 0));
+	}
+}
