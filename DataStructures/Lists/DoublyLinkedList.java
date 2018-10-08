@@ -60,13 +60,12 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new head
 	 */
-	public Link deleteHead(){
+	public void deleteHead(){
 		Link temp = head;
 		head = head.next; // oldHead <--> 2ndElement(head)
 		head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
 		if(head == null)
 			tail = null;
-		return temp;
 	}
 
 	/**
@@ -74,11 +73,11 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new tail
 	 */
-	public Link deleteTail(){
+	public void deleteTail(){
 		Link temp = tail;
 		tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
  		tail.next = null; // 2ndLast(tail) --> null
-		return temp;
+		
 	}
 
 	/**
@@ -87,7 +86,7 @@ class DoublyLinkedList{
 	 * @param x element to be deleted
 	 * @return  Link deleted
 	 */
-	public Link delete(int x){
+	public void delete(int x){
 		Link current = head;
 
 		while(current.value != x) //Find the position to delete
@@ -102,8 +101,7 @@ class DoublyLinkedList{
 		else{ //Before: 1 <--> 2(current) <--> 3
 			current.previous.next = current.next;  // 1 --> 3
 			current.next.previous = current.previous; // 1 <--> 3
-		}
-		return current;
+		}	
 	}
 
 	/**
