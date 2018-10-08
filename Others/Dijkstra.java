@@ -12,7 +12,6 @@ package Others;
  * Also most of the comments are from RosettaCode.
  *
  */
-
 //import java.io.*;
 import java.util.*; 
 public class Dijkstra {
