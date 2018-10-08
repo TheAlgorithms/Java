@@ -34,9 +34,9 @@ class DoublyLinkedList{
  	*/
 	public DoublyLinkedList(int[] array){
 		if (array == null) throw new NullPointerException();
-    			for (int i:array) {
-        	insertTail(i);
-   	 }
+    		for (int i:array) {
+        		insertTail(i);
+   	 	}
 	}
 
 	/**
