@@ -20,11 +20,23 @@ class DoublyLinkedList{
 	private Link tail;
 
 	/**
-	 * Constructor
+	 * Default Constructor
 	 */
 	public DoublyLinkedList(){
 		head = null;
 		tail = null;
+	}
+	
+		/**
+ 	* Constructs a list containing the elements of the array
+	 * @param  array the array whose elements are to be placed into this list
+ 	* @throws NullPointerException if the specified collection is null
+ 	*/
+	public DoublyLinkedList(int[] array){
+		if (array == null) throw new NullPointerException();
+    			for (int i:array) {
+        	insertTail(i);
+   	 }
 	}
 
 	/**
