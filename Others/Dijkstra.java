@@ -68,16 +68,13 @@ class Graph {
 	}
  
 	private void printPath() {
-		if (this == this.previous)
-		{
+		if (this == this.previous) {
 			System.out.printf("%s", this.name);
 		}
-		else if (this.previous == null)
-		{
+		else if (this.previous == null) {
 			System.out.printf("%s(unreached)", this.name);
 		}
-		else
-		{
+		else {
 			this.previous.printPath();
 			System.out.printf(" -> %s(%d)", this.name, this.dist);
 		}
