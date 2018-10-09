@@ -57,7 +57,7 @@ class Graph {
    }
  
    /** One vertex of the graph, complete with mappings to neighbouring vertices */
-  public static class Vertex implements Comparable<Vertex>{
+  public static class Vertex implements Comparable<Vertex> {
 	public final String name;
 	public int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
 	public Vertex previous = null;
@@ -67,7 +67,7 @@ class Graph {
 		this.name = name;
 	}
  
-	private void printPath(){
+	private void printPath() {
 		if (this == this.previous)
 		{
 			System.out.printf("%s", this.name);
@@ -83,14 +83,14 @@ class Graph {
 		}
 	}
  
-	public int compareTo(Vertex other){
+	public int compareTo(Vertex other) {
 		if (dist == other.dist)
 			return name.compareTo(other.name);
  
 		return Integer.compare(dist, other.dist);
 	}
  
-	@Override public String toString(){
+	@Override public String toString() {
 		return "(" + name + ", " + dist + ")";
 	}
 }
