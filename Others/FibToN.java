@@ -1,14 +1,22 @@
+/**
+ *
+ * Fibonacci sequence, and characterized by the fact that every number
+ * after the first two is the sum of the two preceding ones.
+ * 
+ * Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21,...
+ * 
+ * Source for the explanation: https://en.wikipedia.org/wiki/Fibonacci_number
+ */
+
 import java.util.Scanner;
 
 public class FibToN {
-
 	public static void main(String[] args) {
 		//take input
 		Scanner scn = new Scanner(System.in);
 		int N = scn.nextInt();
-		// print fibonacci sequence less than N
+		// print all Fibonacci numbers that are smaller than your given input N
 		int first = 0, second = 1;
-		//first fibo and second fibonacci are 0 and 1 respectively
 		scn.close();
 		while(first <= N){
 			//print first fibo 0 then add second fibo into it while updating second as well
