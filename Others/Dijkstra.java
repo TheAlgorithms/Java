@@ -63,7 +63,7 @@ class Graph {
 	public Vertex previous = null;
 	public final Map<Vertex, Integer> neighbours = new HashMap<>();
  
-	public Vertex(String name){
+	public Vertex(String name) {
 		this.name = name;
 	}
  
