@@ -63,13 +63,11 @@ class Graph {
 	public Vertex previous = null;
 	public final Map<Vertex, Integer> neighbours = new HashMap<>();
  
-	public Vertex(String name)
-	{
+	public Vertex(String name){
 		this.name = name;
 	}
  
-	private void printPath()
-	{
+	private void printPath(){
 		if (this == this.previous)
 		{
 			System.out.printf("%s", this.name);
@@ -85,16 +83,14 @@ class Graph {
 		}
 	}
  
-	public int compareTo(Vertex other)
-	{
+	public int compareTo(Vertex other){
 		if (dist == other.dist)
 			return name.compareTo(other.name);
  
 		return Integer.compare(dist, other.dist);
 	}
  
-	@Override public String toString()
-	{
+	@Override public String toString(){
 		return "(" + name + ", " + dist + ")";
 	}
 }
