@@ -8,6 +8,7 @@ public class PalindromePrime {
         funtioning(n); // calling funtion - functioning  
     }
 
+
     public static boolean prime(int num) { // checking if number is prime or not
         for (int divisor = 2; divisor <= num / 2; divisor++) {
             if (num % divisor == 0) {
@@ -16,6 +17,7 @@ public class PalindromePrime {
         }
         return true; // True if prime
     }
+
 
     public static int reverse(int n){ //  Returns  the reverse of the number
         int reverse = 0;
