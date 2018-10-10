@@ -8,6 +8,8 @@ import java.util.Scanner;
  * in which each letter in the plaintext is replaced by a letter some fixed
  * number of positions down the alphabet. /
  *
+ * Used in encryption, a very basic encryption technique.
+ *
  * @author FAHRI YARDIMCI
  * @author khalil2535
  */
