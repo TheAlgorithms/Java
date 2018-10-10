@@ -1,0 +1,71 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+
+/**
+ * This program helps find permutation and combination using memoisation technique
+ * 
+ * BigInteger is used to increase the range and precision of output
+ * 
+ * @author Tushar Sharma https://github.com/TusharSharma23
+ */
+public class PermutationAndCombination {
+    
+    private static BigInteger factArr[];
+    
+    public static void main(String args[]) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("\n Find Permutation and Combinations \n Enter n and r in formula nCr or npr :");
+        int n = Integer.parseInt(reader.readLine());
+        int r = Integer.parseInt(reader.readLine());
+        factArr = new BigInteger[n];
+        
+        System.out.println(" Permutation value is " + permutation(n , r));
+        System.out.println(" Combination value is " + combination(n, r));
+    }
+    
+    /**
+     * This method calculates combination value using
+     * nCr = npr/r!
+     * 
+     * @param n 
+     * @param r
+     * @return combination value
+     */
+    private static BigInteger combination(int n,int r) {
+        return permutation(n , r).divide(factorial(r));
+    }
+    
+    /**
+     * This method calculates permutation value using
+     * npr = n!/(n - r)!
+     * 
+     * @param n
+     * @param r
+     * @return permutation value
+     */
+    private static BigInteger permutation(int n, int r) {
+        BigInteger nFact = factorial(n);
+        BigInteger rFact = factorial(r);
+        return nFact.divide(factorial(n - r));
+    }
+    
+    /**
+     * This method return factorial of a number using memoization technique.
+     * 
+     * @param num
+     * @return factorial of given number
+     */
+    private static BigInteger factorial(int num) {
+        if(num <= 1) {
+            return new BigInteger("1");
+        }        
+        if (factArr[num - 1] != null) {
+            return factArr[num - 1];
+        } else {
+            BigInteger num1 = new BigInteger(num + "");
+            factArr[num - 1] = factorial(num - 1).multiply(num1);
+            return factArr[num - 1];
+        }
+    }
+}
