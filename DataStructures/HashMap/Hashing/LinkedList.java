@@ -50,7 +50,7 @@ class LinkedList {
 			}
 		}
 	}
-
+// Function to print the list
 	public void display() {
 		Node temp = Head;
 		while(temp != null) {
