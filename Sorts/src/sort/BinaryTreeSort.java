@@ -63,7 +63,6 @@ public class BinaryTreeSort implements SortAlgorithm {
 
 	}
 
-
 	@Override
 	public  <T extends Comparable<T>> T[] sort(T[] array) {
 
