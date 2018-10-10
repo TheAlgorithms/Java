@@ -1,55 +1,33 @@
-import java.util.Scanner;
-
-/**
- * Program to implement Kadane’s Algorithm to 
- * calculate maximum contiguous subarray sum of an array
- * Time Complexity: O(n)
- * 
- * @author Nishita Aggarwal
- *
- */
-
-public class KadaneAlgorithm {
-	
-	/**
-	* This method implements Kadane's Algorithm
-	* 
-        * @param arr The input array
-	* @return The maximum contiguous subarray sum of the array
-        * 
-        */
-	static int largestContiguousSum(int arr[]){
-		int i,len=arr.length,cursum=0,maxsum=Integer.MIN_VALUE;
-		if(len==0)	//empty array
-			return 0;
-		for(i=0;i<len;i++){
-			cursum+=arr[i];
-			if(cursum>maxsum){
-				maxsum=cursum;
-			}
-			if(cursum<=0){
-				cursum=0;
-			}
-		}
-		return maxsum;
-	}
-
-	/**
-	 * Main method
-	 * 
-	 * @param args Command line arguments
-	 */
-	public static void main(String[] args) {
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+class Sun{
+static int maxSubArraySum(int a[], int size) 
+    {
+    int max_so_far = a[0]; 
+    int curr_max = a[0]; 
+  
+    for (int i = 1; i < size; i++) 
+    { 
+           curr_max = Math.max(a[i], curr_max+a[i]); 
+        max_so_far = Math.max(max_so_far, curr_max); 
+    } 
+    return max_so_far; 
+    } 
+	public static void main(String[] args) throws Exception{
+		try{
 		Scanner sc=new Scanner(System.in);
-		int n,arr[],i;
-		n=sc.nextInt();
-		arr=new int[n];
-		for(i=0;i<n;i++){
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++){
 			arr[i]=sc.nextInt();
 		}
-		int maxContSum=largestContiguousSum(arr);
+		int maxContSum=maxSubArraySum(arr,n);
 		System.out.println(maxContSum);
 		sc.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
-
 }
