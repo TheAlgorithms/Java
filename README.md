@@ -16,8 +16,8 @@ From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sor
 
 __Properties__
 * Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
+* Best case performance     O(n)
+* Average case performance  O(n^2)
 
 ###### View the algorithm in [action][bubble-toptal]
 
@@ -31,8 +31,8 @@ In the figure, each bar represents an element of an array that needs to be sorte
 
 __Properties__
 * Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
+* Best case performance     O(n)
+* Average case performance  O(n^2)
 
 ###### View the algorithm in [action][insertion-toptal]
 
@@ -57,8 +57,8 @@ From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sor
 
 __Properties__
 * Worst case performance    O(n^2)
-* Best case performance    O(n log n) or O(n) with three-way partition
-* Average case performance    O(n^2)
+* Best case performance     O(n log n) or O(n) with three-way partition
+* Average case performance  O(n^2)
 
 ###### View the algorithm in [action][quick-toptal]
 
@@ -69,8 +69,8 @@ From [Wikipedia][selection-wiki]: The algorithm divides the input list into two 
 
 __Properties__
 * Worst case performance    O(n^2)
-* Best case performance    O(n^2)
-* Average case performance    O(n^2)
+* Best case performance     O(n^2)
+* Average case performance  O(n^2)
 
 ###### View the algorithm in [action][selection-toptal]
 
@@ -104,9 +104,9 @@ From [Wikipedia][linear-wiki]: linear search or sequential search is a method fo
 
 __Properties__
 * Worst case performance    O(n)
-* Best case performance    O(1)
-* Average case performance    O(n)
-* Worst case space complexity    O(1) iterative
+* Best case performance     O(1)
+* Average case performance  O(n)
+* Worst case space complexity O(1) iterative
 
 ### Binary
 ![alt text][binary-image]
@@ -115,15 +115,15 @@ From [Wikipedia][binary-wiki]: Binary search, also known as half-interval search
 
 __Properties__
 * Worst case performance    O(log n)
-* Best case performance    O(1)
-* Average case performance    O(log n)
-* Worst case space complexity    O(1) 
+* Best case performance     O(1)
+* Average case performance  O(log n)
+* Worst case space complexity O(1) 
 
 From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
 
 __Properties__
 * Worst case performance O(nlog2 2n)
-* Best case performance O(n log n)
+* Best case performance  O(n log n)
 * Average case performance depends on gap sequence
 
 ###### View the algorithm in [action][shell-toptal]
