@@ -15,9 +15,9 @@ These are for demonstration purposes only. There are many implementations of sor
 From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.
 
 __Properties__
-* Worst case performance    O(n^2)
+* Worst case performance    O(n<sup>2</sup>)
 * Best case performance    O(n)
-* Average case performance    O(n^2)
+* Average case performance    O(n<sup>2</sup>)
 
 ###### View the algorithm in [action][bubble-toptal]
 
@@ -30,9 +30,9 @@ From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm t
 In the figure, each bar represents an element of an array that needs to be sorted. What happens at the first intersection of the top most and second top most bars is to swap these elements, represented by bars, because the second element has a higher precedence than the first element does. By repeating this method, insertion sort completes sorting.
 
 __Properties__
-* Worst case performance    O(n^2)
+* Worst case performance    O(n<sup>2</sup>)
 * Best case performance    O(n)
-* Average case performance    O(n^2)
+* Average case performance    O(n<sup>2</sup>)
 
 ###### View the algorithm in [action][insertion-toptal]
 
@@ -56,9 +56,9 @@ __Properties__
 From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.
 
 __Properties__
-* Worst case performance    O(n^2)
+* Worst case performance    O(n<sup>2</sup>)
 * Best case performance    O(n log n) or O(n) with three-way partition
-* Average case performance    O(n^2)
+* Average case performance    O(n<sup>2</sup>)
 
 ###### View the algorithm in [action][quick-toptal]
 
@@ -68,9 +68,9 @@ __Properties__
 From [Wikipedia][selection-wiki]: The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
 
 __Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n^2)
-* Average case performance    O(n^2)
+* Worst case performance    O(n<sup>2</sup>)
+* Best case performance    O(n<sup>2</sup>)
+* Average case performance    O(n<sup>2</sup>)
 
 ###### View the algorithm in [action][selection-toptal]
 
