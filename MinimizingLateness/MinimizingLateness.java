@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class MinimizingLateness {
+c class MinimizingLateness {
 
 	private static class Schedule { // Schedule class
 		int t = 0; // Time required for the operation to be performed
