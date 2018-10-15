@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 /**
  * For detailed info and implementation see: <a href="http://devmag.org.za/2009/04/25/perlin-noise/">Perlin-Noise</a>
+ * Algorithm description: https://en.wikipedia.org/wiki/Perlin_noise
  */
 public class PerlinNoise {
     /**
@@ -137,7 +138,7 @@ public class PerlinNoise {
         System.out.println("Charset (String): ");
         charset = in.next();
 
-
+        in.close();
         perlinNoise = generatePerlinNoise(width, height, octaveCount, persistence, seed);
         final char[] chars = charset.toCharArray();
         final int length = chars.length;
