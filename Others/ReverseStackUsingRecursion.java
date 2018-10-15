@@ -44,8 +44,7 @@ public class ReverseStackUsingRecursion {
         }
         /* All items are stored in call stack until we reach the end*/
 
-        int temptop=stack.peek();
-        stack.pop();
+        int temptop=stack.pop();
         reverseUsingRecursion(stack); //Recursion call
         insertAtEnd(temptop); // Insert items held in call stack one by one into stack
     }
@@ -66,5 +65,4 @@ public class ReverseStackUsingRecursion {
         }
 
     }
-
 }
