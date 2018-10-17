@@ -1,0 +1,33 @@
+import java.util.Arrays;
+
+public class recursiveLinearSearch{
+	
+	public static void main(String... args){
+		int[] data = {5, 6, 7, 1, 1, 15};
+		recursiveLinearSearch(data, 9);
+		recursiveLinearSearch(data, 1);
+
+	}
+
+	/**
+     * Recursive method that does a linear search in an array to find a key
+
+     * @param data  Array to be searched.
+     * @param searchKey Key to be found.
+     * @return If you find the search key inside the array
+     * returns the index where the element is, otherwise returns -1
+     */
+    public static int recursiveLinearSearch(int data[], int searchKey) {
+        assert data != null : "The list can not be null";
+
+        if (data.length == 0)return -1;
+
+        if (searchKey == data[data.length-1]) {
+            System.out.println("Found key!, your index is: " + (data.length-1));
+            return data.length-1;
+        } else {
+            return recursiveLinearSearch(Arrays.copyOfRange(data, 0, data.length - 1), searchKey);
+        }
+	}	
+
+}
