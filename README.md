@@ -1,4 +1,4 @@
-# The Algorithms - Java
+# The Algorithms of Java
 
 ## A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we are trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
 
@@ -9,7 +9,7 @@ These are for demonstration purposes only. There are many implementations of sor
 ## Sort Algorithms
 
 
-### Bubble
+### Bubble Sort
 ![alt text][bubble-image]
 
 From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.
@@ -23,7 +23,7 @@ __Properties__
 
 
 
-### Insertion
+### Insertion Sort
 ![alt text][insertion-image]
 
 From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. 
@@ -37,7 +37,7 @@ __Properties__
 ###### View the algorithm in [action][insertion-toptal]
 
 
-### Merge
+### Merge Sort
 ![alt text][merge-image]
 
 From [Wikipedia][merge-wiki]: In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
@@ -50,7 +50,7 @@ __Properties__
 
 ###### View the algorithm in [action][merge-toptal]
 
-### Quick
+### Quick Sort
 ![alt text][quick-image]
 
 From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.
@@ -62,7 +62,7 @@ __Properties__
 
 ###### View the algorithm in [action][quick-toptal]
 
-### Selection
+### Selection Sort
 ![alt text][selection-image]
 
 From [Wikipedia][selection-wiki]: The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
@@ -74,7 +74,7 @@ __Properties__
 
 ###### View the algorithm in [action][selection-toptal]
 
-### Shell
+### Shell Sort
 ![alt text][shell-image]
 
 From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
