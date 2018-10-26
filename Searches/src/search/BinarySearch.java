@@ -2,7 +2,8 @@ package search;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.stream.Stream;
+import java.util.concurrent.ThreadLocalRandom
+import java.util.stream.IntStream;
 
 import static java.lang.String.format;
 
@@ -70,23 +71,24 @@ class BinarySearch implements SearchAlgorithm {
 
     // Driver Program
     public static void main(String[] args) {
-
-        //just generate data
-        Random r = new Random();
+        // Just generate data
+        Random random = ThreadLocalRandom.current();
+        
         int size = 100;
         int maxElement = 100000;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
+        
+        int[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray();
 
-
-        //the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
+        // The element that should be found
+        int shouldBeFound = integers[r.nextInt(size - 1)];
 
         BinarySearch search = new BinarySearch();
         int atIndex = search.find(integers, shouldBeFound);
 
-        System.out.println(String.format("Should be found: %d. Found %d at index %d. An array length %d"
-                , shouldBeFound, integers[atIndex], atIndex, size));
-
+        System.out.println(format(
+            "Should be found: %d. Found %d at index %d. An array length %d",
+            shouldBeFound, integers[atIndex], atIndex, size
+        ));
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
         System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
