@@ -31,8 +31,8 @@ class Schedule {
         processes = new ArrayList<Process>();
         remainingProcess = new ArrayList<Process>();
 
-        gantChart = new ArrayList<Integer>();
-        arrivals = new HashMap<Integer, ArrayList<Process>>();
+        gantChart = new ArrayList<>();
+        arrivals = new HashMap<>();
 
         System.out.print("Enter the no. of processes: ");
         noOfProcess = in.nextInt();
