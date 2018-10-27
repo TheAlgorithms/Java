@@ -1,4 +1,3 @@
-
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,24 +13,24 @@ Output :
 
 Enter number of distinct letters 
 6
-Enter letters with its frequncy to encode
+Enter letters with its frequency to encode
 Enter letter : a
-Enter frequncy : 45
+Enter frequency : 45
 
 Enter letter : b
-Enter frequncy : 13
+Enter frequency : 13
 
 Enter letter : c
-Enter frequncy : 12
+Enter frequency : 12
 
 Enter letter : d
-Enter frequncy : 16
+Enter frequency : 16
 
 Enter letter : e
-Enter frequncy : 9
+Enter frequency : 9
 
 Enter letter : f
-Enter frequncy : 5
+Enter frequency : 5
 
 Letter		Encoded Form
 a		0 
@@ -64,17 +63,17 @@ public class Huffman {
     
     // A simple function to print a given list
     //I just made it for debugging
-    public static void print_list(List li){
+    public static void print_list(List<Node> li){
     Iterator<Node> it=li.iterator();
     while(it.hasNext()){Node n=it.next();System.out.print(n.freq+" ");}System.out.println();
     }
     
     //Function for making tree (Huffman Tree)
-    public static Node make_huffmann_tree(List li){
+    public static Node make_huffmann_tree(List<Node> li){
     //Sorting list in increasing order of its letter frequency    
     li.sort(new comp());
     Node temp=null;
-    Iterator it=li.iterator();
+    Iterator<Node> it=li.iterator();
     //System.out.println(li.size());
     //Loop for making huffman tree till only single node remains in list
     while(true){
@@ -89,7 +88,7 @@ public class Huffman {
     //Below condition is to check either list has 2nd node or not to combine 
     //If this condition will be false, then it means construction of huffman tree is completed
     if(it.hasNext()){b=(Node)it.next();}
-    //Combining first two smallest nodes in list to make its parent whose frequncy 
+    //Combining first two smallest nodes in list to make its parent whose frequency 
     //will be equals to sum of frequency of these two nodes 
     if(b!=null){
     temp.freq=a.freq+b.freq;a.data=0;b.data=1;//assigining 0 and 1 to left and right nodes
@@ -109,7 +108,7 @@ public class Huffman {
     
     //Function for finding path between root and given letter ch
     public static void dfs(Node n,String ch){
-        Stack<Node> st=new Stack(); // stack for storing path
+        Stack<Node> st=new Stack<Node>(); // stack for storing path
         int freq=n.freq; // recording root freq to avoid it adding in path encoding
         find_path_and_encode(st,n,ch,freq);
     }
@@ -140,15 +139,16 @@ public class Huffman {
     System.out.println("Enter number of distinct letters ");
     int n=in.nextInt();
     String s[]=new String[n];
-    System.out.print("Enter letters with its frequncy to encode\n");
+    System.out.print("Enter letters with its frequency to encode\n");
     for(int  i=0;i<n;i++){
     Node a=new Node();
     System.out.print("Enter letter : ");
     a.letr=in.next();s[i]=a.letr;
-    System.out.print("Enter frequncy : ");
+    System.out.print("Enter frequency : ");
     a.freq=in.nextInt();System.out.println();
     li.add(a);
     }
+    in.close();
     Node root=new Node();
     root=make_huffmann_tree(li);
     System.out.println("Letter\t\tEncoded Form");

@@ -177,20 +177,20 @@ and much more...|                                                    and more...
 ### Data Structures
 Graphs|Heaps|Lists|Queues|
 ------|-----|-----|------|
-[BFS](Data%20Structures/Graphs/BFS.java)|[Empty Heap Exception](Data%20Structures/Heaps/EmptyHeapException.java)|[Circle Linked List](Data%20Structures/Lists/CircleLinkedList.java)|[Generic Array List Queue](Data%20Structures/Queues/GenericArrayListQueue.java)|
-[DFS](Data%20Structures/Graphs/DFS.java)|[Heap](Data%20Structures/Heaps/Heap.java)|[Doubly Linked List](Data%20Structures/Lists/DoublyLinkedList.java)|[Queues](Data%20Structures/Queues/Queues.java)|
-[Graphs](Data%20Structures/Graphs/Graphs.java)|[Heap Element](Data%20Structures/Heaps/HeapElement.java)|[Singly Linked List](Data%20Structures/Lists/SinglyLinkedList.java)|
-[Kruskals Algorithm](Data%20Structures/Graphs/KruskalsAlgorithm.java)|[Max Heap](Data%Structures/Heaps/MaxHeap.java)|
-[Matrix Graphs](Data%20Structures/Graphs/MatrixGraphs.java)|[Min Heap](Data%20Structures/Heaps/MinHeap.java)|
-[PrimMST](Data%20Structures/Graphs/PrimMST.java)|
+[BFS](DataStructures/Graphs/BFS.java)|[Empty Heap Exception](DataStructures/Heaps/EmptyHeapException.java)|[Circle Linked List](DataStructures/Lists/CircleLinkedList.java)|[Generic Array List Queue](DataStructures/Queues/GenericArrayListQueue.java)|
+[DFS](DataStructures/Graphs/DFS.java)|[Heap](DataStructures/Heaps/Heap.java)|[Doubly Linked List](DataStructures/Lists/DoublyLinkedList.java)|[Queues](DataStructures/Queues/Queues.java)|
+[Graphs](DataStructures/Graphs/Graphs.java)|[Heap Element](DataStructures/Heaps/HeapElement.java)|[Singly Linked List](DataStructures/Lists/SinglyLinkedList.java)|
+[Kruskals Algorithm](DataStructures/Graphs/KruskalsAlgorithm.java)|[Max Heap](Data%Structures/Heaps/MaxHeap.java)|
+[Matrix Graphs](DataStructures/Graphs/MatrixGraphs.java)|[Min Heap](DataStructures/Heaps/MinHeap.java)|
+[PrimMST](DataStructures/Graphs/PrimMST.java)|
 
 Stacks|Trees|
 ------|-----|
-[Node Stack](Data%20Structures/Stacks/NodeStack.java)|[AVL Tree](Data%20Structures/Trees/AVLTree.java)|
-[Stack of Linked List](Data%20Structures/Stacks/StackOfLinkedList.java)|[Binary Tree](Data%20Structures/Trees/BinaryTree.java)|
-[Stacks](Data%20Structures/Stacks/Stacks.java)|And much more...|
+[Node Stack](DataStructures/Stacks/NodeStack.java)|[AVL Tree](DataStructures/Trees/AVLTree.java)|
+[Stack of Linked List](DataStructures/Stacks/StackOfLinkedList.java)|[Binary Tree](DataStructures/Trees/BinaryTree.java)|
+[Stacks](DataStructures/Stacks/Stacks.java)|And much more...|
 
-* [Bags](Data%20Structures/Bags/Bag.java)
-* [Buffer](Data%20Structures/Buffers/CircularBuffer.java)
-* [HashMap](Data%20Structures/HashMap/HashMap.java)
-* [Matrix](Data%20Structures/Matrix/Matrix.java)
+* [Bags](DataStructures/Bags/Bag.java)
+* [Buffer](DataStructures/Buffers/CircularBuffer.java)
+* [HashMap](DataStructures/HashMap/HashMap.java)
+* [Matrix](DataStructures/Matrix/Matrix.java)

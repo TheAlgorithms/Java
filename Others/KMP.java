@@ -1,25 +1,26 @@
-
 /*
 Implementation of Knuth–Morris–Pratt algorithm
-Usage: 
-final String T = "AAAAABAAABA";
-final String P = "AAAA";
-KMPmatcher(T, P);
+Usage: see the main function for an example
 */
 public class KMP {
-
-    // find the starting index in string T[] that matches the search word P[]
-    public void KMPmatcher(final String T, final String P) {
-        final int m = T.length();
-        final int n = P.length();
-        final int[] pi = computePrefixFunction(P);
+    //a working example
+	public static void main(String[] args) {
+		final String haystack = "AAAAABAAABA";		//This is the full string
+		final String needle = "AAAA";				//This is the substring that we want to find
+		KMPmatcher(haystack, needle);
+	}
+    // find the starting index in string haystack[] that matches the search word P[]
+    public static void KMPmatcher(final String haystack, final String needle) {
+        final int m = haystack.length();
+        final int n = needle.length();
+        final int[] pi = computePrefixFunction(needle);
         int q = 0;
         for (int i = 0; i < m; i++) {
-            while (q > 0 && T.charAt(i) != P.charAt(q)) {
+            while (q > 0 && haystack.charAt(i) != needle.charAt(q)) {
                 q = pi[q - 1]; 
             }
 
-            if (T.charAt(i) == P.charAt(q)) {
+            if (haystack.charAt(i) == needle.charAt(q)) {
                 q++;
             }
 
@@ -28,11 +29,9 @@ public class KMP {
                 q = pi[q - 1];  
             }
         }
-
     }
-
     // return the prefix function 
-    private int[] computePrefixFunction(final String P) {
+    private static int[] computePrefixFunction(final String P) {
         final int n = P.length();
         final int[] pi = new int[n];
         pi[0] = 0;
@@ -49,7 +48,6 @@ public class KMP {
             pi[i] = q;
 
         }
-
         return pi;
     }
 }
