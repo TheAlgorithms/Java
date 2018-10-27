@@ -1,3 +1,15 @@
+// Shortest job first.
+
+// Shortest job first (SJF) or shortest job next, is a scheduling policy 
+// that selects the waiting process with the smallest execution time to execute next
+// Shortest Job first has the advantage of having minimum average waiting 
+// time among all scheduling algorithms.
+// It is a Greedy Algorithm.
+// It may cause starvation if shorter processes keep coming.
+// This problem has been solved using the concept of aging.
+
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Comparator;
