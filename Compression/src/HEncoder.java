@@ -37,6 +37,7 @@ public class HEncoder {
 				freqmap.put(ch, 1);
 			}
 		}
+	}		
 
 		// 2. prepare the heap from keyset
 		genericheap<Node> heap = new genericheap<Node>(Node.Ctor);
