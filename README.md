@@ -8,7 +8,6 @@ These are for demonstration purposes only. There are many implementations of sor
 
 ## Sort Algorithms
 
-
 ### Bubble
 ![alt text][bubble-image]
 
