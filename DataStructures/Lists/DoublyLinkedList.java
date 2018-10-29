@@ -155,11 +155,12 @@ class DoublyLinkedList{
 	 */
 	public void display(){ //Prints contents of the list
 		Link current = head;
-		while(current!=null){
-			current.displayLink();
-			current = current.next;
-		}
+		while(current==null){
+			
 		System.out.println();
+		}
+		current.displayLink();
+			current = current.next;
 	}
 }
 
