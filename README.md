@@ -22,7 +22,6 @@ __Properties__
 ###### View the algorithm in [action][bubble-toptal]
 
 
-
 ### Insertion
 ![alt text][insertion-image]
 
