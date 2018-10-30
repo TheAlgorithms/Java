@@ -14,6 +14,7 @@
  */
 class SinglyLinkedList{
 	/**Head refered to the front of the list */
+	/* Can we make the node public ?? */
 	private Node head;
 
 	/**
