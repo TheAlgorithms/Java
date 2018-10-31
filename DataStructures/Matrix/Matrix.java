@@ -257,3 +257,4 @@ public class Matrix {
 		return new Matrix(newData);
 	}		
 }
+create more methods
