@@ -22,7 +22,7 @@ public class BinarySearch {
 
     /**
      * @param array The array to make the binary search
-     * @param key The number you are looking for
+     * @param key The element you are looking for
      * @param left The lower bound
      * @param right The  upper bound
      * @return the location of the key
