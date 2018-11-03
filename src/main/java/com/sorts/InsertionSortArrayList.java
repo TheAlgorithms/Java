@@ -6,28 +6,29 @@ public class InsertionSortArrayList {
 
 	 /**
 	   * This method implements the Generic Insertion Sort 
-	   *
-	   * @param arrayList The arraylist to be sorted
-	   *            Sorts the arraylist in increasing order
+	   * Sorts the arraylist in increasing order
+	   * @param arrList The arraylist to be sorted
+	   * @param <T>      Comparable class
+	   * @return sorted ArrayList
 	   **/	
 
-	 public <T extends Comparable<T>> List<T> sort(List<T> arrayList)
+	 public <T extends Comparable<T>> List<T> sort(List<T> arrList)
 	  {
-	 int n = arrayList.size();
+	 int n = arrList.size();
 	    for (int i = 1;i < n; i++) {
 	    
 	    	for (int j = i;i > 0;i--){
-	    		T keyLower = arrayList.get(j-1);
-	    		T keyHigher = arrayList.get(j);
+	    		T keyLower = arrList.get(j-1);
+	    		T keyHigher = arrList.get(j);
 
 	    		if (keyHigher.compareTo(keyLower) < 0) {
-	    			arrayList.set(j, keyLower);
-	    			arrayList.set(j - 1, keyHigher);
+	    			arrList.set(j, keyLower);
+	    			arrList.set(j - 1, keyHigher);
 				} else {
 					break;
 				}
 	    	}     
 	    }
-	    return arrayList;
+	    return arrList;
 	  }
 	}
