@@ -18,7 +18,7 @@ public class Fibonacci {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        System.out.println(fibMemo(n)); // Returns 8 for n = 6
+        System.out.println(fibMemo(n)); // Returns 8 for n = 6 this is ownsome
         System.out.println(fibBotUp(n)); // Returns 8 for n = 6
     }
 
