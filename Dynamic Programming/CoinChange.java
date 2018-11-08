@@ -22,7 +22,7 @@ public class CoinChange {
      *
      * @param coins The list of coins
      * @param amount The amount for which we need to find the change
-     * Finds the number of combinations of change
+     * Finds the number of combinations of change test
      **/
     public static int change(int[] coins, int amount) {
 
