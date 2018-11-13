@@ -1,10 +1,10 @@
-package sort;
+package Sorts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static sort.SortUtils.*;
+import static Sorts.SortUtils.*;
 
 /**
  * Heap Sort Algorithm

@@ -1,6 +1,4 @@
-package sort;
-
-import static sort.SortUtils.*;
+package Sorts;
 
 /**
  *
@@ -29,8 +27,8 @@ class CocktailShakerSort implements SortAlgorithm {
             // front
             swappedRight = 0;
             for (int i = left; i < right; i++) {
-                if (less(array[i + 1], array[i])) {
-                    swap(array, i, i + 1);
+                if (SortUtils.less(array[i + 1], array[i])) {
+                    SortUtils.swap(array, i, i + 1);
                     swappedRight = i;
                 }
             }
@@ -38,8 +36,8 @@ class CocktailShakerSort implements SortAlgorithm {
             right = swappedRight;
             swappedLeft = length - 1;
             for (int j = right; j > left; j--) {
-                if (less(array[j], array[j - 1])) {
-                    swap(array, j - 1, j);
+                if (SortUtils.less(array[j], array[j - 1])) {
+                    SortUtils.swap(array, j - 1, j);
                     swappedLeft = j;
                 }
             }
@@ -56,11 +54,11 @@ class CocktailShakerSort implements SortAlgorithm {
 		CocktailShakerSort shakerSort = new CocktailShakerSort();
 
 		// Output => 1 4 6 9 12 23 54 78 231
-		print(shakerSort.sort(integers));
+		SortUtils.print(shakerSort.sort(integers));
 
 		// String Input
 		String[] strings = { "c", "a", "e", "b", "d" };
-		print(shakerSort.sort(strings));
+		SortUtils.print(shakerSort.sort(strings));
 	}
 
 

@@ -1,4 +1,4 @@
-package search;
+package Searches;
 
 import java.util.Random;
 import java.util.stream.Stream;

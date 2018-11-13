@@ -1,6 +1,4 @@
-package sort;
-
-import static sort.SortUtils.*;
+package Sorts;
 
 /**
  *
@@ -27,14 +25,14 @@ public class SelectionSort implements SortAlgorithm {
             int min = i;
 
             for (int j = i +1 ; j < n; j++) {
-                if (less(arr[j], arr[min])) {
+                if (SortUtils.less(arr[j], arr[min])) {
                     min = j;
                 }
             }
 
             // Swapping if index of min is changed
             if (min != i) {
-                swap(arr, i , min);
+                SortUtils.swap(arr, i , min);
             }
         }
 
@@ -51,13 +49,13 @@ public class SelectionSort implements SortAlgorithm {
         Integer[] sorted = selectionSort.sort(arr);
 
         // Output => 1	  4	 6	9	12	23	54	78	231
-        print(sorted);
+        SortUtils.print(sorted);
 
         // String Input
         String[] strings = {"c", "a", "e", "b","d"};
         String[] sortedStrings = selectionSort.sort(strings);
 
         //Output => a	b	 c  d	e
-        print(sortedStrings);
+        SortUtils.print(sortedStrings);
     }
 }
