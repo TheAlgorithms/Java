@@ -51,12 +51,12 @@ public class InterpolationSearch {
 	 * @param highIndex The last and largest element in the sorted array
 	 * @return The array's current retrieved index position
 	 */
-	private <T> int getPostion(T arr[], T key, int lowIndex, int highIndex) {	
+	private <T> int getPostion(T arr[], T key, int lowIndex, int highIndex) {			
 		String startValueString = arr[lowIndex].toString(); //First convert <T> array element to String
-		int startValueInt = Integer.parseInt(startValueString); //Convert String to int to computate later
+		int startValueInt = Integer.parseInt(startValueString); //Convert String to int to later computate
 		String endValueString = arr[highIndex].toString();
 		int endValueInt = Integer.parseInt(endValueString);
-		String keyValueString = key.toString(); //Repeat for <T> key to later computate
+		String keyValueString = key.toString(); //Repeat for <T> key to also later computate
 		int keyValueInt = Integer.parseInt(keyValueString);
 
 		int arrayIndexRangeDiff =  highIndex - lowIndex;
