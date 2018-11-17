@@ -51,8 +51,7 @@ public class InterpolationSearch {
 	 * @param highIndex The last and largest element in the sorted array
 	 * @return The array's current retrieved index position
 	 */
-	private <T> int getPostion(T arr[], T key, int lowIndex, int highIndex) {
-		
+	private <T> int getPostion(T arr[], T key, int lowIndex, int highIndex) {	
 		String startValueString = arr[lowIndex].toString(); //First convert <T> array element to String
 		int startValueInt = Integer.parseInt(startValueString); //Convert String to int to computate later
 		String endValueString = arr[highIndex].toString();
