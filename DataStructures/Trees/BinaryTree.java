@@ -69,8 +69,12 @@ class Tree{
 		Node current = root;
 		while (current != null) {
 			if(key < current.data) {
+				if(current.left == null)
+					return current;	//The key isn't exist, returns the parent
 				current = current.left;
 			} else if(key > current.data) {
+				if(current.right == null)
+					return current;	
 				current = current.right;
 			} else {	// If you find the value return it
 				return current;
