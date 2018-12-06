@@ -9,7 +9,7 @@
 ## 정렬 알고리즘
 
 
-### Bubble(버블 소트)
+### Bubble(버블 정렬)
 ![alt text][bubble-image]
 
 From [Wikipedia][bubble-wiki]: 버블 소트(sinking sor라고도 불리움)는 리스트를 반복적인 단계로 접근하여 정렬한다. 각각의 짝을 비교하며, 순서가 잘못된 경우 그접한 아이템들을 스왑하는 알고리즘이다. 더 이상 스왑할 것이 없을 때까지 반복하며, 반복이 끝남음 리스트가 정렬되었음을 의미한다.
@@ -23,16 +23,15 @@ __속성__
 
 
 
-### Insertion
+### Insertion(삽입 정렬)
 ![alt text][insertion-image]
 
-From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. 
-In the figure, each bar represents an element of an array that needs to be sorted. What happens at the first intersection of the top most and second top most bars is to swap these elements, represented by bars, because the second element has a higher precedence than the first element does. By repeating this method, insertion sort completes sorting.
+From [Wikipedia][insertion-wiki]: 삽입 정렬은 최종 정렬된 배열(또는 리스트)을 한번에 하나씩 구축하는 알고리즘이다. 이것은 큰 리스트에서 더 나은 알고리즘인 퀵 소트, 힙 소트, 또는 머지 소트보다 훨씬 안좋은 효율을 가진다. 그림에서 각 막대는 정렬해야 하는 배열의 요소를 나타낸다. 상단과 두 번째 상단 막대의 첫 번째 교차점에서 발생하는 것은 두 번째 요소가 첫 번째 요소보다 더 높은 우선 순위를 가지기 떄문에 막대로 표시되는 이러한 요소를 교환한 것이다. 이 방법을 반복하면 삽입 정렬이 완료된다.
 
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
+__속성__
+* 최악의 성능    O(n^2)
+* 최고의 성능    O(n)
+* 평균     O(n^2)
 
 ###### View the algorithm in [action][insertion-toptal]
 
