@@ -2,22 +2,22 @@
 
 ## 이 [개발브런치](https://github.com/TheAlgorithms/Java/tree/Development)는 기존 프로젝트를 Java 프로젝트 구조로 재개발하기 위해 작성되었다. 기여도를 위해 개발 지사로 전환할 수 있다. 자세한 내용은 이 문제를 참조하십시오. 컨트리뷰션을 위해 [개발브런치](https://github.com/TheAlgorithms/Java/tree/Development)로 전환할 수 있다. 자세한 내용은 [이 이슈](https://github.com/TheAlgorithms/Java/issues/474)를 참고하십시오.
 
-### All algorithms implemented in Java (for education)
+### 자바로 구현된 모든 알고리즘들 (교육용)
 
-These are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
+이것들은 단지 시범을 위한 것이다. 표준 자바 라이브러리에는 성능상의 이유로 더 나은 것들이 구현되어있다
 
-## Sort Algorithms
+## 정렬 알고리즘
 
 
-### Bubble
+### Bubble(버블 소트)
 ![alt text][bubble-image]
 
-From [Wikipedia][bubble-wiki]: Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list to be sorted, compares each pair of adjacent items and swaps them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.
+From [Wikipedia][bubble-wiki]: 버블 소트(sinking sor라고도 불리움)는 리스트를 반복적인 단계로 접근하여 정렬한다. 각각의 짝을 비교하며, 순서가 잘못된 경우 그접한 아이템들을 스왑하는 알고리즘이다. 더 이상 스왑할 것이 없을 때까지 반복하며, 반복이 끝남음 리스트가 정렬되었음을 의미한다.
 
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n)
-* Average case performance    O(n^2)
+__속성__
+* 최악의 성능    O(n^2)
+* 최고의 성능    O(n)
+* 평균 성능    O(n^2)
 
 ###### View the algorithm in [action][bubble-toptal]
 
