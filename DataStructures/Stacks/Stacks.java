@@ -88,8 +88,9 @@ class Stack{
 		//for(int i = 0; i < stackArray.length(); i++){ the length isn't a method .
                 for(int i = 0; i < stackArray.length; i++){
 			transferArray[i] = stackArray[i];
-			stackArray = transferArray;
 		}
+		//After moving all elements of stackArray to transferArray(with new size), assigning newly updated transferArray to stackArray
+		stackArray = transferArray;
 		maxSize = newSize;
 	}
 
