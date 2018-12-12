@@ -1,6 +1,6 @@
 # The Algorithms - Java
 
-## A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we are trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
+NOTE: A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we are trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
 
 ### All algorithms implemented in Java (for education)
 
@@ -19,7 +19,7 @@ __Properties__
 * Best case performance    O(n)
 * Average case performance    O(n^2)
 
-###### View the algorithm in [action][bubble-toptal]
+##### View the algorithm in [action][bubble-toptal]
 
 
 
@@ -34,7 +34,7 @@ __Properties__
 * Best case performance    O(n)
 * Average case performance    O(n^2)
 
-###### View the algorithm in [action][insertion-toptal]
+##### View the algorithm in [action][insertion-toptal]
 
 
 ### Merge
@@ -48,7 +48,7 @@ __Properties__
 * Average case performance    O(n log n)
 
 
-###### View the algorithm in [action][merge-toptal]
+##### View the algorithm in [action][merge-toptal]
 
 ### Quick
 ![alt text][quick-image]
@@ -60,7 +60,7 @@ __Properties__
 * Best case performance    O(n log n) or O(n) with three-way partition
 * Average case performance    O(n log n)
 
-###### View the algorithm in [action][quick-toptal]
+##### View the algorithm in [action][quick-toptal]
 
 ### Selection
 ![alt text][selection-image]
@@ -72,7 +72,7 @@ __Properties__
 * Best case performance    O(n^2)
 * Average case performance    O(n^2)
 
-###### View the algorithm in [action][selection-toptal]
+##### View the algorithm in [action][selection-toptal]
 
 ### Shell
 ![alt text][shell-image]
@@ -84,7 +84,7 @@ __Properties__
 * Best case performance O(n log n)
 * Average case performance depends on gap sequence
 
-###### View the algorithm in [action][shell-toptal]
+##### View the algorithm in [action][shell-toptal]
 
 ### Time-Compexity Graphs
 
@@ -119,6 +119,7 @@ __Properties__
 * Average case performance    O(log n)
 * Worst case space complexity    O(1) 
 
+### Shell
 From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
 
 __Properties__
@@ -126,7 +127,7 @@ __Properties__
 * Best case performance O(n log n)
 * Average case performance depends on gap sequence
 
-###### View the algorithm in [action][shell-toptal]
+##### View the algorithm in [action][shell-toptal]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
