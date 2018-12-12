@@ -8,17 +8,18 @@ public class BinarySearchTest {
 
     @Test
     public void testBinarySearch() {
-        BinarySearch binarySearch = new BinarySearch();
-
         Integer[] arr1 = {1,2,3,4,5};
-        Assert.assertEquals("Incorrect index", 2, binarySearch.findIndex(arr1,3));
-        Assert.assertEquals("Incorrect index", 0, binarySearch.findIndex(arr1,1));
-        Assert.assertEquals("Incorrect index", -1, binarySearch.findIndex(arr1,8));
-        Assert.assertEquals("Incorrect index", -1, binarySearch.findIndex(arr1,-2));
+        Assert.assertEquals("Incorrect index", 2, BinarySearch.findIndex(arr1,3));
+        Assert.assertEquals("Incorrect index", 0, BinarySearch.findIndex(arr1,1));
+        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr1,8));
+        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr1,-2));
 
         String[] arr2 = {"A", "B", "C", "D"};
-        Assert.assertEquals("Incorrect index", 2, binarySearch.findIndex(arr2,"C"));
-        Assert.assertEquals("Incorrect index", 1, binarySearch.findIndex(arr2,"B"));
-        Assert.assertEquals("Incorrect index", -1, binarySearch.findIndex(arr2,"F"));
+        Assert.assertEquals("Incorrect index", 2, BinarySearch.findIndex(arr2,"C"));
+        Assert.assertEquals("Incorrect index", 1, BinarySearch.findIndex(arr2,"B"));
+        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr2,"F"));
+
+        String[] arr3 = {};
+        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr3, ""));
     }
 }
