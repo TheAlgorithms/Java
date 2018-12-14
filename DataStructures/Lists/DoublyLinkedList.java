@@ -8,12 +8,12 @@
  * as it is edited. This is an example of a double ended, doubly
  * linked list. Each link references the next link and the previous
  * one.Therefore a person can traverse the linked list according to their requirements
- * and makes the prgram more dynamic. 
+ * and makes the program more dynamic. 
  * @author Unknown
  *
  */
 
-class DoublyLinkedList{
+class DoublyLinkedList {
 	/** Head refers to the front of the list */
 	private Link head;
 	/** Tail refers to the back of the list */
@@ -22,7 +22,7 @@ class DoublyLinkedList{
 	/**
 	 * Constructor
 	 */
-	public DoublyLinkedList(){
+	public DoublyLinkedList() {
 		head = null;
 		tail = null;
 	}
@@ -32,7 +32,7 @@ class DoublyLinkedList{
 	 * 
 	 * @param x Element to be inserted
 	 */
-	public void insertHead(int x){
+	public void insertHead(int x) {
 		Link newLink = new Link(x); //Create a new link with a value attached to it
 		if(isEmpty()) //Set the first element added to be the tail
 			tail = newLink;
@@ -47,7 +47,7 @@ class DoublyLinkedList{
 	 * 
 	 * @param x Element to be inserted
 	 */
-	public void insertTail(int x){
+	public void insertTail(int x) {
 		Link newLink = new Link(x);
 		newLink.next = null; // currentTail(tail)     newlink -->
 		tail.next = newLink; // currentTail(tail) --> newLink -->
@@ -60,7 +60,7 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new head
 	 */
-	public Link deleteHead(){
+	public Link deleteHead() {
 		Link temp = head;
 		head = head.next; // oldHead <--> 2ndElement(head)
 		head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
@@ -74,7 +74,7 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new tail
 	 */
-	public Link deleteTail(){
+	public Link deleteTail() {
 		Link temp = tail;
 		tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
  		tail.next = null; // 2ndLast(tail) --> null
@@ -87,7 +87,7 @@ class DoublyLinkedList{
 	 * @param x element to be deleted
 	 * @return  Link deleted
 	 */
-	public Link delete(int x){
+	public Link delete(int x) {
 		Link current = head;
 
 		while(current.value != x) //Find the position to delete
@@ -99,7 +99,7 @@ class DoublyLinkedList{
 		else if(current == tail)
 			deleteTail();
 
-		else{ //Before: 1 <--> 2(current) <--> 3
+		else { //Before: 1 <--> 2(current) <--> 3
 			current.previous.next = current.next;  // 1 --> 3
 			current.next.previous = current.previous; // 1 <--> 3
 		}
@@ -111,7 +111,7 @@ class DoublyLinkedList{
 	 * 
 	 * @param x Element to be added
 	 */
-	public void insertOrdered(int x){
+	public void insertOrdered(int x) {
 		Link newLink = new Link(x);
 		Link current = head;
 		while(current != null && x > current.value) //Find the position to insert
@@ -123,7 +123,7 @@ class DoublyLinkedList{
 		else if(current == null)
 			insertTail(x);
 
-		else{ //Before: 1 <--> 2(current) <--> 3
+		else { //Before: 1 <--> 2(current) <--> 3
 			newLink.previous = current.previous; // 1 <-- newLink
 			current.previous.next = newLink; // 1 <--> newLink
 			newLink.next = current; // 1 <--> newLink --> 2(current) <--> 3
@@ -136,16 +136,16 @@ class DoublyLinkedList{
 	 * 
 	 * @return true if list is empty
 	 */
-	public boolean isEmpty(){
-		return(head == null);
+	public boolean isEmpty() {
+		return head == null;
 	}
 
 	/**
 	 * Prints contents of the list
 	 */
-	public void display(){ //Prints contents of the list
+	public void display() { //Prints contents of the list
 		Link current = head;
-		while(current!=null){
+		while(current!=null) {
 			current.displayLink();
 			current = current.next;
 		}
@@ -160,7 +160,7 @@ class DoublyLinkedList{
  * @author Unknown
  *
  */
-class Link{
+class Link {
 	/** Value of node */
 	public int value;
 	/** This points to the link in front of the new link */
@@ -173,14 +173,14 @@ class Link{
 	 * 
 	 * @param value Value of node
 	 */
-	public Link(int value){
+	public Link(int value) {
 		this.value = value;
 	}
 
 	/**
 	 * Displays the node
 	 */
-	public void displayLink(){
+	public void displayLink() {
 		System.out.print(value+" ");
 	}
 
@@ -189,7 +189,7 @@ class Link{
 	 * 
 	 * @param args Command line arguments
 	 */
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		DoublyLinkedList myList = new DoublyLinkedList();
 
 		myList.insertHead(13);
