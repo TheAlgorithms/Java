@@ -36,15 +36,15 @@ __속성__
 ###### View the algorithm in [action][insertion-toptal]
 
 
-### Merge
+### Merge(합병 정렬)
 ![alt text][merge-image]
 
-From [Wikipedia][merge-wiki]: In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
+From [Wikipedia][merge-wiki]: 컴퓨터 과학에서, 합병 정렬은 효율적인, 범용적인, 비교 기반 정렬 알고리즘이다. 대부분의 구현은 안정적인 분류를 이루는데, 이것은 구현이 정렬된 출력에 동일한 요소의 입력 순서를 유지한다는 것을 의미한다. 합병 정렬은 1945년에 John von Neumann이 발명한 분할 정복 알고리즘이다.
 
 __Properties__
-* Worst case performance    O(n log n) (typical)
-* Best case performance    O(n log n)
-* Average case performance    O(n log n)
+* 최악의 성능    O(n log n) (일반적)
+* 최고의 성능    O(n log n)
+* 평균    O(n log n)
 
 
 ###### View the algorithm in [action][merge-toptal]
