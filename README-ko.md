@@ -165,21 +165,21 @@ __속성__
 [Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java)|[Rod Cutting](Dynamic%20Programming/RodCutting.java)|
 and much more...|                                                    and more...|
 
-### Data Structures
-Graphs|Heaps|Lists|Queues|
+### 자료 구조
+그래프|힙|리스트|큐|
 ------|-----|-----|------|
-[BFS](DataStructures/Graphs/BFS.java)|[Empty Heap Exception](DataStructures/Heaps/EmptyHeapException.java)|[Circle Linked List](DataStructures/Lists/CircleLinkedList.java)|[Generic Array List Queue](DataStructures/Queues/GenericArrayListQueue.java)|
-[DFS](DataStructures/Graphs/DFS.java)|[Heap](DataStructures/Heaps/Heap.java)|[Doubly Linked List](DataStructures/Lists/DoublyLinkedList.java)|[Queues](DataStructures/Queues/Queues.java)|
-[Graphs](DataStructures/Graphs/Graphs.java)|[Heap Element](DataStructures/Heaps/HeapElement.java)|[Singly Linked List](DataStructures/Lists/SinglyLinkedList.java)|
-[Kruskals Algorithm](DataStructures/Graphs/KruskalsAlgorithm.java)|[Max Heap](Data%Structures/Heaps/MaxHeap.java)|
-[Matrix Graphs](DataStructures/Graphs/MatrixGraphs.java)|[Min Heap](DataStructures/Heaps/MinHeap.java)|
-[PrimMST](DataStructures/Graphs/PrimMST.java)|
+[너비우선탐색](DataStructures/Graphs/BFS.java)|[빈 힙 예외처리](DataStructures/Heaps/EmptyHeapException.java)|[원형 연결리스트](DataStructures/Lists/CircleLinkedList.java)|[제너릭 어레이 리스트 큐](DataStructures/Queues/GenericArrayListQueue.java)|
+[깊이우선탐색](DataStructures/Graphs/DFS.java)|[힙](DataStructures/Heaps/Heap.java)|[이중 연결리스트](DataStructures/Lists/DoublyLinkedList.java)|[큐](DataStructures/Queues/Queues.java)|
+[그래프](DataStructures/Graphs/Graphs.java)|[힙 요소](DataStructures/Heaps/HeapElement.java)|[단순 연결리스트](DataStructures/Lists/SinglyLinkedList.java)|
+[크루스칼 알고리즘](DataStructures/Graphs/KruskalsAlgorithm.java)|[최대힙](Data%Structures/Heaps/MaxHeap.java)|
+[행렬 그래프](DataStructures/Graphs/MatrixGraphs.java)|[최소힙](DataStructures/Heaps/MinHeap.java)|
+[프림 최소신장트리](DataStructures/Graphs/PrimMST.java)|
 
-Stacks|Trees|
+스택|트리|
 ------|-----|
-[Node Stack](DataStructures/Stacks/NodeStack.java)|[AVL Tree](DataStructures/Trees/AVLTree.java)|
-[Stack of Linked List](DataStructures/Stacks/StackOfLinkedList.java)|[Binary Tree](DataStructures/Trees/BinaryTree.java)|
-[Stacks](DataStructures/Stacks/Stacks.java)|And much more...|
+[노드 스택](DataStructures/Stacks/NodeStack.java)|[AVL 트리](DataStructures/Trees/AVLTree.java)|
+[연결리스트 스택](DataStructures/Stacks/StackOfLinkedList.java)|[이진 트리](DataStructures/Trees/BinaryTree.java)|
+[스택](DataStructures/Stacks/Stacks.java)|And much more...|
 
 * [Bags](DataStructures/Bags/Bag.java)
 * [Buffer](DataStructures/Buffers/CircularBuffer.java)
