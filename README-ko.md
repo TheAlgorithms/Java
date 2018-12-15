@@ -118,7 +118,6 @@ __속성__
 * 평균    O(log n)
 * 최악의 경우 공간 복잡성    O(1) 
 
-###### View the algorithm in [action][shell-toptal]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
@@ -152,9 +151,9 @@ __속성__
 
 
 --------------------------------------------------------------------
-## Links to the rest of the algorithms
+## 나머지 알고리즘에 대한 링크
 
-Conversions          |                                          Dynamic Programming   |Ciphers|Miscellaneous|
+전환          |                                          다이나믹프로그래밍(DP)   |암호|그 외 것들|
 -----------          |----------------------------------------------------------------|-------|-------------|
 [Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](Dynamic%20Programming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](misc/heap_sort.java)|
 [Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](Dynamic%20Programming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](misc/PalindromicPrime.java)|
