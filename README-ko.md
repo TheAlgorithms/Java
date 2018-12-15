@@ -110,20 +110,13 @@ __속성__
 ### Binary (이진 탐색)
 ![alt text][binary-image]
 
-From [Wikipedia][binary-wiki]: Binary search, also known as half-interval search or logarithmic search, is a search algorithm that finds the position of a target value within a sorted array. It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+From [Wikipedia][binary-wiki]: 이진 탐색, (also known as half-interval search or logarithmic search), 은 정렬된 배열 내에서 목표값의 위치를 찾는 검색 알고리즘이다. 목표값을 배열의 중간 요소와 비교한다; 만약 목표값이 동일하지 않으면, 목표물의 절반이 제거되고 검색이 성공할 때까지 나머지 절반에서 게속된다.
 
-__Properties__
-* Worst case performance    O(log n)
-* Best case performance    O(1)
-* Average case performance    O(log n)
-* Worst case space complexity    O(1) 
-
-From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
-
-__Properties__
-* Worst case performance O(nlog2 2n)
-* Best case performance O(n log n)
-* Average case performance depends on gap sequence
+__속성__
+* 최악의 성능    O(log n)
+* 최고의 성능    O(1)
+* 평균    O(log n)
+* 최악의 경우 공간 복잡성    O(1) 
 
 ###### View the algorithm in [action][shell-toptal]
 
