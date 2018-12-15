@@ -85,29 +85,29 @@ __속성__
 
 ###### View the algorithm in [action][shell-toptal]
 
-### Time-Compexity Graphs
+### 시간 복잡성 그래프
 
-Comparing the complexity of sorting algorithms (Bubble Sort, Insertion Sort, Selection Sort)
+정렬 알고리즘의 복잡성 비교 (버블 정렬, 삽입 정렬, 선택 정렬)
 
-[Complexity Graphs](https://github.com/prateekiiest/Python/blob/master/sorts/sortinggraphs.png)
+[복잡성 그래프](https://github.com/prateekiiest/Python/blob/master/sorts/sortinggraphs.png)
 
 ----------------------------------------------------------------------------------
 
-## Search Algorithms
+## 검색 알고리즘
 
-### Linear
+### Linear (선형 탐색)
 ![alt text][linear-image]
 
-From [Wikipedia][linear-wiki]: linear search or sequential search is a method for finding a target value within a list. It sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched.
-  The linear search runs in at the worst linear time and makes at most n comparisons, where n is the length of the list.
+From [Wikipedia][linear-wiki]: 선형 탐색 또는 순차 탐색은 목록 내에서 목표값을 찾는 방법이다. 일치 항목이 발견되거나 모든 요소가 탐색될 때까지 목록의 각 요소에 대해 목표값을 순차적으로 검사한다.
+  선형 검색은 최악의 선형 시간으로 실행되며 최대 n개의 비교에서 이루어진다. 여기서 n은 목록의 길이다.
 
-__Properties__
-* Worst case performance    O(n)
-* Best case performance    O(1)
-* Average case performance    O(n)
-* Worst case space complexity    O(1) iterative
+__속성__
+* 최악의 성능    O(n)
+* 최고의 성능    O(1)
+* 평균    O(n)
+* 최악의 경우 공간 복잡성    O(1) iterative
 
-### Binary
+### Binary (이진 탐색)
 ![alt text][binary-image]
 
 From [Wikipedia][binary-wiki]: Binary search, also known as half-interval search or logarithmic search, is a search algorithm that finds the position of a target value within a sorted array. It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
