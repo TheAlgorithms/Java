@@ -126,7 +126,6 @@ __Properties__
 * Best case performance O(n log n)
 * Average case performance depends on gap sequence
 
-###### View the algorithm in [action][shell-toptal]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
