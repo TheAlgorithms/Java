@@ -68,19 +68,19 @@ From [Wikipedia][selection-wiki]: 알고리즘 입력 리스트를 두 부분으
 
 __속성__
 * 최악의 성능    O(n^2)
-* Best case performance    O(n^2)
-* Average case performance    O(n^2)
+* 최고의 성능    O(n^2)
+* 평균    O(n^2)
 
 ###### View the algorithm in [action][selection-toptal]
 
-### Shell
+### Shell(쉘 정렬)
 ![alt text][shell-image]
 
-From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
+From [Wikipedia][shell-wiki]:  쉘 정렬은 멀리 떨어져 있는 항목의 교환을 허용하는 삽입 종류의 일반화이다. 그 아이디어는 모든 n번째 요소가 정렬된 목록을 제공한다는 것을 고려하여 어느 곳에서든지 시작하도록 요소의 목록을 배열하는 것이다. 이러한 목록은 h-sorted로 알려져 있다. 마찬가지로, 각각 개별적으로 정렬된 h 인터리브 목록으로 간주될 수 있다.
 
-__Properties__
-* Worst case performance O(nlog2 2n)
-* Best case performance O(n log n)
+__속성__
+* 최악의 성능 O(nlog2 2n)
+* 최고의 성능 O(n log n)
 * Average case performance depends on gap sequence
 
 ###### View the algorithm in [action][shell-toptal]
