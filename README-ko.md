@@ -41,7 +41,7 @@ __속성__
 
 From [Wikipedia][merge-wiki]: 컴퓨터 과학에서, 합병 정렬은 효율적인, 범용적인, 비교 기반 정렬 알고리즘이다. 대부분의 구현은 안정적인 분류를 이루는데, 이것은 구현이 정렬된 출력에 동일한 요소의 입력 순서를 유지한다는 것을 의미한다. 합병 정렬은 1945년에 John von Neumann이 발명한 분할 정복 알고리즘이다.
 
-__Properties__
+__속성__
 * 최악의 성능    O(n log n) (일반적)
 * 최고의 성능    O(n log n)
 * 평균    O(n log n)
@@ -49,25 +49,25 @@ __Properties__
 
 ###### View the algorithm in [action][merge-toptal]
 
-### Quick
+### Quick(퀵 정렬)
 ![alt text][quick-image]
 
-From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.
+From [Wikipedia][quick-wiki]: 퀵 정렬sometimes called partition-exchange sort)은 효율적인 정렬 알고리즘으로, 배열의 요소를 순서대로 정렬하는 체계적인 방법 역활을 한다.
 
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n log n) or O(n) with three-way partition
-* Average case performance    O(n log n)
+__속성__
+* 최악의 성능    O(n^2)
+* 최고의 성능    O(n log n) or O(n) with three-way partition
+* 평균    O(n log n)
 
 ###### View the algorithm in [action][quick-toptal]
 
-### Selection
+### Selection(선택 정렬)
 ![alt text][selection-image]
 
-From [Wikipedia][selection-wiki]: The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
+From [Wikipedia][selection-wiki]: 알고리즘 입력 리스트를 두 부분으로 나눈다 : 첫 부분은 아이템들이 이미 왼쪽에서 오른쪽으로 정렬되었다. 그리고 남은 부분의 아이템들은 나머지 항목을 차지하는 리스트이다. 처음에는 정렬된 리스트는 공백이고 나머지가 전부이다. 오르차순(또는 내림차순) 알고리즘은 가장 작은 요소를 정렬되지 않은 리스트에서 찾고 정렬이 안된 가장 왼쪽(정렬된 리스트) 리스트와 바꾼다. 이렇게 오른쪽으로 나아간다.
 
-__Properties__
-* Worst case performance    O(n^2)
+__속성__
+* 최악의 성능    O(n^2)
 * Best case performance    O(n^2)
 * Average case performance    O(n^2)
 
