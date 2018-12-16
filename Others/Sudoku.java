@@ -5,8 +5,8 @@ class Sudoku {
 		Scanner scn = new Scanner(System.in);
 		
 		int[][] arr = new int[9][9];
-		for(int i = 0; i < arr.length; i++){
-			for(int j = 0; j < arr[0].length; j++){
+		for(int i = 0; i < arr.length; ++i){
+			for(int j = 0; j < arr[0].length; ++j){
 				arr[i][j] = scn.nextInt();
 			}
 		}
@@ -15,8 +15,8 @@ class Sudoku {
 		int[] cols = new int[9];
 		int[][] sms = new int[3][3];
 		
-		for(int row = 0; row < arr.length; row++){
-			for(int col = 0; col < arr[0].length; col++){
+		for(int row = 0; row < arr.length; ++row){
+			for(int col = 0; col < arr[0].length; ++col){
 				rows[row] |= (1 << arr[row][col]);
 				cols[col] |= (1 << arr[row][col]);
 				sms[row / 3][col / 3] |= (1 << arr[row][col]);
@@ -28,8 +28,8 @@ class Sudoku {
 	
 	private static void sudoku(int[][] arr, int cellno, int[] rows, int[] cols, int[][] sms){
 		if(cellno > arr.length * arr.length){
-			for(int i = 0; i < arr.length; i++){
-				for(int j = 0; j < arr[0].length; j++){
+			for(int i = 0; i < arr.length; ++i){
+				for(int j = 0; j < arr[0].length; ++j){
 					System.out.print(arr[i][j] + " ");
 				}
 				System.out.println();
@@ -42,8 +42,8 @@ class Sudoku {
 		if(arr[row][col] != 0){
 			sudoku(arr, cellno + 1, rows, cols, sms);
 		} else {
-			for(int choice = 1; choice <= 9; choice++){
-				if(isNumberAvailable(arr, rows, cols, sms, choice, row, col) == true){
+			for(int choice = 1; choice <= 9; ++choice){
+				if(isNumberAvailable(arr, rows, cols, sms, choice, row, col)){
 					reserveANumber(arr, rows, cols, sms, choice, row, col);
 					sudoku(arr, cellno + 1, rows, cols, sms);
 					releaseTheNumber(arr, rows, cols, sms, choice, row, col);
