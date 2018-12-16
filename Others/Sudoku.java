@@ -52,9 +52,7 @@ class Sudoku {
 		}
 	}
 	
-	private static boolean isNumberAvailable(int[][] arr, 
-									         int[] rows, int[] cols, int[][] sms, 
-									         int num, int row, int col){
+	private static boolean isNumberAvailable(int[][] arr,int[] rows, int[] cols, int[][] sms, int num, int row, int col){
 		int mask = 1 << num;
 		
 		if((rows[row] & mask) != 0){
@@ -68,9 +66,7 @@ class Sudoku {
 		}
 	}
 	
-	private static void reserveANumber(int[][] arr, 
-									   int[] rows, int[] cols, int[][] sms, 
-									   int num, int row, int col){
+	private static void reserveANumber(int[][] arr,int[] rows, int[] cols, int[][] sms, int num, int row, int col){
 		int mask = 1 << num;
 		
 		arr[row][col] = num;
@@ -79,9 +75,7 @@ class Sudoku {
 		sms[row / 3][col / 3] = sms[row / 3][col / 3] | mask;
 	}
 	
-	private static void releaseTheNumber(int[][] arr, 
-									     int[] rows, int[] cols, int[][] sms, 
-									     int num, int row, int col){
+	private static void releaseTheNumber(int[][] arr,int[] rows, int[] cols, int[][] sms, int num, int row, int col){
 		int mask = ~(1 << num);
 			
 		arr[row][col] = 0;
