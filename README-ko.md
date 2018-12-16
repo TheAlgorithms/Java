@@ -36,96 +36,88 @@ __속성__
 ###### View the algorithm in [action][insertion-toptal]
 
 
-### Merge
+### Merge(합병 정렬)
 ![alt text][merge-image]
 
-From [Wikipedia][merge-wiki]: In computer science, merge sort (also commonly spelt mergesort) is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Mergesort is a divide and conquer algorithm that was invented by John von Neumann in 1945.
+From [Wikipedia][merge-wiki]: 컴퓨터 과학에서, 합병 정렬은 효율적인, 범용적인, 비교 기반 정렬 알고리즘이다. 대부분의 구현은 안정적인 분류를 이루는데, 이것은 구현이 정렬된 출력에 동일한 요소의 입력 순서를 유지한다는 것을 의미한다. 합병 정렬은 1945년에 John von Neumann이 발명한 분할 정복 알고리즘이다.
 
-__Properties__
-* Worst case performance    O(n log n) (typical)
-* Best case performance    O(n log n)
-* Average case performance    O(n log n)
+__속성__
+* 최악의 성능    O(n log n) (일반적)
+* 최고의 성능    O(n log n)
+* 평균    O(n log n)
 
 
 ###### View the algorithm in [action][merge-toptal]
 
-### Quick
+### Quick(퀵 정렬)
 ![alt text][quick-image]
 
-From [Wikipedia][quick-wiki]: Quicksort (sometimes called partition-exchange sort) is an efficient sorting algorithm, serving as a systematic method for placing the elements of an array in order.
+From [Wikipedia][quick-wiki]: 퀵 정렬sometimes called partition-exchange sort)은 효율적인 정렬 알고리즘으로, 배열의 요소를 순서대로 정렬하는 체계적인 방법 역활을 한다.
 
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n log n) or O(n) with three-way partition
-* Average case performance    O(n log n)
+__속성__
+* 최악의 성능    O(n^2)
+* 최고의 성능    O(n log n) or O(n) with three-way partition
+* 평균    O(n log n)
 
 ###### View the algorithm in [action][quick-toptal]
 
-### Selection
+### Selection(선택 정렬)
 ![alt text][selection-image]
 
-From [Wikipedia][selection-wiki]: The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
+From [Wikipedia][selection-wiki]: 알고리즘 입력 리스트를 두 부분으로 나눈다 : 첫 부분은 아이템들이 이미 왼쪽에서 오른쪽으로 정렬되었다. 그리고 남은 부분의 아이템들은 나머지 항목을 차지하는 리스트이다. 처음에는 정렬된 리스트는 공백이고 나머지가 전부이다. 오르차순(또는 내림차순) 알고리즘은 가장 작은 요소를 정렬되지 않은 리스트에서 찾고 정렬이 안된 가장 왼쪽(정렬된 리스트) 리스트와 바꾼다. 이렇게 오른쪽으로 나아간다.
 
-__Properties__
-* Worst case performance    O(n^2)
-* Best case performance    O(n^2)
-* Average case performance    O(n^2)
+__속성__
+* 최악의 성능    O(n^2)
+* 최고의 성능    O(n^2)
+* 평균    O(n^2)
 
 ###### View the algorithm in [action][selection-toptal]
 
-### Shell
+### Shell(쉘 정렬)
 ![alt text][shell-image]
 
-From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
+From [Wikipedia][shell-wiki]:  쉘 정렬은 멀리 떨어져 있는 항목의 교환을 허용하는 삽입 종류의 일반화이다. 그 아이디어는 모든 n번째 요소가 정렬된 목록을 제공한다는 것을 고려하여 어느 곳에서든지 시작하도록 요소의 목록을 배열하는 것이다. 이러한 목록은 h-sorted로 알려져 있다. 마찬가지로, 각각 개별적으로 정렬된 h 인터리브 목록으로 간주될 수 있다.
 
-__Properties__
-* Worst case performance O(nlog2 2n)
-* Best case performance O(n log n)
+__속성__
+* 최악의 성능 O(nlog2 2n)
+* 최고의 성능 O(n log n)
 * Average case performance depends on gap sequence
 
 ###### View the algorithm in [action][shell-toptal]
 
-### Time-Compexity Graphs
+### 시간 복잡성 그래프
 
-Comparing the complexity of sorting algorithms (Bubble Sort, Insertion Sort, Selection Sort)
+정렬 알고리즘의 복잡성 비교 (버블 정렬, 삽입 정렬, 선택 정렬)
 
-[Complexity Graphs](https://github.com/prateekiiest/Python/blob/master/sorts/sortinggraphs.png)
+[복잡성 그래프](https://github.com/prateekiiest/Python/blob/master/sorts/sortinggraphs.png)
 
 ----------------------------------------------------------------------------------
 
-## Search Algorithms
+## 검색 알고리즘
 
-### Linear
+### Linear (선형 탐색)
 ![alt text][linear-image]
 
-From [Wikipedia][linear-wiki]: linear search or sequential search is a method for finding a target value within a list. It sequentially checks each element of the list for the target value until a match is found or until all the elements have been searched.
-  The linear search runs in at the worst linear time and makes at most n comparisons, where n is the length of the list.
+From [Wikipedia][linear-wiki]: 선형 탐색 또는 순차 탐색은 목록 내에서 목표값을 찾는 방법이다. 일치 항목이 발견되거나 모든 요소가 탐색될 때까지 목록의 각 요소에 대해 목표값을 순차적으로 검사한다.
+  선형 검색은 최악의 선형 시간으로 실행되며 최대 n개의 비교에서 이루어진다. 여기서 n은 목록의 길이다.
 
-__Properties__
-* Worst case performance    O(n)
-* Best case performance    O(1)
-* Average case performance    O(n)
-* Worst case space complexity    O(1) iterative
+__속성__
+* 최악의 성능    O(n)
+* 최고의 성능    O(1)
+* 평균    O(n)
+* 최악의 경우 공간 복잡성    O(1) iterative
 
-### Binary
+### Binary (이진 탐색)
 ![alt text][binary-image]
 
-From [Wikipedia][binary-wiki]: Binary search, also known as half-interval search or logarithmic search, is a search algorithm that finds the position of a target value within a sorted array. It compares the target value to the middle element of the array; if they are unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
+From [Wikipedia][binary-wiki]: 이진 탐색, (also known as half-interval search or logarithmic search), 은 정렬된 배열 내에서 목표값의 위치를 찾는 검색 알고리즘이다. 목표값을 배열의 중간 요소와 비교한다; 만약 목표값이 동일하지 않으면, 목표물의 절반이 제거되고 검색이 성공할 때까지 나머지 절반에서 게속된다.
 
-__Properties__
-* Worst case performance    O(log n)
-* Best case performance    O(1)
-* Average case performance    O(log n)
-* Worst case space complexity    O(1) 
+__속성__
+* 최악의 성능    O(log n)
+* 최고의 성능    O(1)
+* 평균    O(log n)
+* 최악의 경우 공간 복잡성    O(1) 
 
-From [Wikipedia][shell-wiki]:  Shellsort is a generalization of insertion sort that allows the exchange of items that are far apart.  The idea is to arrange the list of elements so that, starting anywhere, considering every nth element gives a sorted list.  Such a list is said to be h-sorted.  Equivalently, it can be thought of as h interleaved lists, each individually sorted.
-
-__Properties__
-* Worst case performance O(nlog2 2n)
-* Best case performance O(n log n)
-* Average case performance depends on gap sequence
-
-###### View the algorithm in [action][shell-toptal]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
@@ -159,9 +151,9 @@ __Properties__
 
 
 --------------------------------------------------------------------
-## Links to the rest of the algorithms
+## 나머지 알고리즘에 대한 링크
 
-Conversions          |                                          Dynamic Programming   |Ciphers|Miscellaneous|
+전환          |                                          다이나믹프로그래밍(DP)   |암호|그 외 것들|
 -----------          |----------------------------------------------------------------|-------|-------------|
 [Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](Dynamic%20Programming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](misc/heap_sort.java)|
 [Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](Dynamic%20Programming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](misc/PalindromicPrime.java)|
@@ -173,21 +165,21 @@ Conversions          |                                          Dynamic Programm
 [Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java)|[Rod Cutting](Dynamic%20Programming/RodCutting.java)|
 and much more...|                                                    and more...|
 
-### Data Structures
-Graphs|Heaps|Lists|Queues|
+### 자료 구조
+그래프|힙|리스트|큐|
 ------|-----|-----|------|
-[BFS](DataStructures/Graphs/BFS.java)|[Empty Heap Exception](DataStructures/Heaps/EmptyHeapException.java)|[Circle Linked List](DataStructures/Lists/CircleLinkedList.java)|[Generic Array List Queue](DataStructures/Queues/GenericArrayListQueue.java)|
-[DFS](DataStructures/Graphs/DFS.java)|[Heap](DataStructures/Heaps/Heap.java)|[Doubly Linked List](DataStructures/Lists/DoublyLinkedList.java)|[Queues](DataStructures/Queues/Queues.java)|
-[Graphs](DataStructures/Graphs/Graphs.java)|[Heap Element](DataStructures/Heaps/HeapElement.java)|[Singly Linked List](DataStructures/Lists/SinglyLinkedList.java)|
-[Kruskals Algorithm](DataStructures/Graphs/KruskalsAlgorithm.java)|[Max Heap](Data%Structures/Heaps/MaxHeap.java)|
-[Matrix Graphs](DataStructures/Graphs/MatrixGraphs.java)|[Min Heap](DataStructures/Heaps/MinHeap.java)|
-[PrimMST](DataStructures/Graphs/PrimMST.java)|
+[너비우선탐색](DataStructures/Graphs/BFS.java)|[빈 힙 예외처리](DataStructures/Heaps/EmptyHeapException.java)|[원형 연결리스트](DataStructures/Lists/CircleLinkedList.java)|[제너릭 어레이 리스트 큐](DataStructures/Queues/GenericArrayListQueue.java)|
+[깊이우선탐색](DataStructures/Graphs/DFS.java)|[힙](DataStructures/Heaps/Heap.java)|[이중 연결리스트](DataStructures/Lists/DoublyLinkedList.java)|[큐](DataStructures/Queues/Queues.java)|
+[그래프](DataStructures/Graphs/Graphs.java)|[힙 요소](DataStructures/Heaps/HeapElement.java)|[단순 연결리스트](DataStructures/Lists/SinglyLinkedList.java)|
+[크루스칼 알고리즘](DataStructures/Graphs/KruskalsAlgorithm.java)|[최대힙](Data%Structures/Heaps/MaxHeap.java)|
+[행렬 그래프](DataStructures/Graphs/MatrixGraphs.java)|[최소힙](DataStructures/Heaps/MinHeap.java)|
+[프림 최소신장트리](DataStructures/Graphs/PrimMST.java)|
 
-Stacks|Trees|
+스택|트리|
 ------|-----|
-[Node Stack](DataStructures/Stacks/NodeStack.java)|[AVL Tree](DataStructures/Trees/AVLTree.java)|
-[Stack of Linked List](DataStructures/Stacks/StackOfLinkedList.java)|[Binary Tree](DataStructures/Trees/BinaryTree.java)|
-[Stacks](DataStructures/Stacks/Stacks.java)|And much more...|
+[노드 스택](DataStructures/Stacks/NodeStack.java)|[AVL 트리](DataStructures/Trees/AVLTree.java)|
+[연결리스트 스택](DataStructures/Stacks/StackOfLinkedList.java)|[이진 트리](DataStructures/Trees/BinaryTree.java)|
+[스택](DataStructures/Stacks/Stacks.java)|And much more...|
 
 * [Bags](DataStructures/Bags/Bag.java)
 * [Buffer](DataStructures/Buffers/CircularBuffer.java)
