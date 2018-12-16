@@ -185,5 +185,5 @@ Stacks|Trees|
 
 * [Bags](DataStructures/Bags/Bag.java)
 * [Buffer](DataStructures/Buffers/CircularBuffer.java)
-* [HashMap](DataStructures/HashMap/HashMap.java)
+* [HashMap](DataStructures/HashMap/Hashing/HashMap.java)
 * [Matrix](DataStructures/Matrix/Matrix.java)
