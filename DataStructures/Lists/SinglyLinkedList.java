@@ -106,7 +106,7 @@ class SinglyLinkedList {
 			if (nodesCounter == 1 || head.getValue() == data) return deleteHead();
 			else {
 				Node currentNode = head;
-				while ( currentNode.getNextNodeReference() != null) {
+				while ( currentNode.getNextNodeReference().getNextNodeReference() != null) {
 					if (currentNode.getNextNodeReference().getValue() == data){
 						//make returnNode points to Node to Remove
 						returnNode = currentNode.getNextNodeReference();
@@ -129,8 +129,12 @@ class SinglyLinkedList {
 						nodesCounter--;
 						return returnNode;
 					}
-					currentNode = currentNode.getNextNodeReference();
+					currentNode.setNextNodeReference(currentNode.getNextNodeReference());
 				}
+				returnNode = currentNode.getNextNodeReference();
+				currentNode.setNextNodeReference(null);
+				nodesCounter--;
+				return returnNode;
 			}
 		}
 		return null;

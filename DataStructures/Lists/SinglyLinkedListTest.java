@@ -14,7 +14,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void headMustNotNullAfterInsertion(){
+    public void headMustNotNullAfterInsertingOneNode(){
         //When
         list.insertHead(10);
         //Then
@@ -44,14 +44,35 @@ public class SinglyLinkedListTest {
     }
 
     @Test
+    public void deletionOfHeadNode(){
+        list.insertHead(10);
+        list.insertAtPosition(30,1);
+        list.insertAtPosition(20,2);
+
+        list.delete(20);
+
+        assertEquals(30, list.getHead().getNextNodeReference().getValue());
+    }
+
+    @Test
+    public void deletionOfEnd(){
+        list.insertHead(10);
+        list.insertHead(20);
+        list.insertHead(30);
+
+        list.delete(30);
+
+        assertEquals(null , list.getHead().getNextNodeReference().getNextNodeReference());
+    }
+    @Test
     public void deletionAtASpecificPosition(){
         //When
         list.insertHead(10);
         list.insertHead(20);
         list.insertAtPosition(30 , 2);
-        list.delete(20);
+        list.delete(30);
         //Then
-        assertEquals(30, list.getHead().getValue());
+        assertEquals(10, list.getHead().getNextNodeReference().getValue());
     }
 
     @Test

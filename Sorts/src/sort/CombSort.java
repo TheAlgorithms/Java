@@ -47,7 +47,7 @@ class CombSort implements SortAlgorithm {
  
         // Keep running while gap is more than 1 and last iteration caused a swap
         while (gap != 1 || swapped) {
-            // Find next gap
+            // Find nextNodeLink gap
             gap = nextGap(gap);
  
             // Initialize swapped as false so that we can check if swap happened or not
