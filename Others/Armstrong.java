@@ -9,10 +9,10 @@ import java.util.Scanner;
  * 
  */
 public class Armstrong {
+	static Scanner scan;
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("please enter the number");
-		int n = scan.nextInt();
+		scan = new Scanner(System.in);
+		int n = inputInt("please enter the number");
 		boolean isArmstrong = checkIfANumberIsAmstrongOrNot(n);
 		if (isArmstrong) {
 			System.out.println("the number is armstrong");
@@ -42,6 +42,9 @@ public class Armstrong {
 		} else {
 			return false;
 		}
-
+	}
+	private static int inputInt(String string) {
+		System.out.print(string);
+		return Integer.parseInt(scan.nextLine());
 	}
 }
