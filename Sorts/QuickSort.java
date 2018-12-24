@@ -60,14 +60,14 @@ class QuickSort implements SortAlgorithm {
         T pivot = array[mid];
 
         while(left <= right) {
-            while(less(array[left], pivot)){
+            while(SortUtils.less(array[left], pivot)){
                 ++left;
             }
-            while(less(pivot, array[right])) {
+            while(SortUtils.less(pivot, array[right])) {
                 --right;
             }
             if(left <= right) {
-                swap(array, left, right);
+                SortUtils.swap(array, left, right);
                 ++left;
                 --right;
             }
@@ -85,13 +85,13 @@ class QuickSort implements SortAlgorithm {
        // quickSort.sort(array);
 
         //Output => 0 1 1 2 2 3 4 5 5 5 7 8 9 12 32 44 111
-        print(array);
+        SortUtils.print(array);
 
         String[] stringArray =  {"c", "a", "e", "b", "d"};
         quickSort.sort(stringArray);
 
         //Output => a	b	c	d	e
-        print(stringArray);
+        SortUtils.print(stringArray);
     }
 }
 
