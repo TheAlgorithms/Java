@@ -16,13 +16,18 @@ public class CountingSort {
             max = Math.max(max, arr[i]);
         }
 
+        // Finding the minimum element in the array
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            min = Math.min(min, arr[i]);
+        }
+
         // Creating the count array - This method will store the count of each element in the unsorted array
-        int[] count = new int[max + 1];
+        int[] count = new int[max - min + 1];
 
         // This loop will store the count of each element in the array
-        for (int i = 0; i < max; i++) {
-
-            count[arr[i]]++;
+        for (Integer integer : arr) {
+            count[integer - min]++;
         }
 
         // This loop will replace the ith index of the count array with the sum of values at the ith and (i-1) index
@@ -40,8 +45,8 @@ public class CountingSort {
             // Getting the value of the index - the value at the oount array index will be replaced by the value
             // in the original array
             int index = arr[i];
-            places[count[index] - 1] = index;
-            count[index]--;
+            places[count[index - min] - 1] = index;
+            count[index - min]--;
         }
 
         // Copy the places array back to the original array - which will be sorted
