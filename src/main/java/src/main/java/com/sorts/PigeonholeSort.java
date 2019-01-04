@@ -17,20 +17,12 @@ public class PigeonholeSort {
     public Integer[] sort(Integer[] arr) {
 
         // Find maximum and minimum elements in array
-        int min = arr[0];
-        int max = arr[0];
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
 
         for (Integer integer : arr) {
-
-            // For minimum value
-            if (min > integer) {
-                min = integer;
-            }
-
-            // For maximum value
-            if (max < integer) {
-                max = integer;
-            }
+            min = Math.min(min, integer);
+            max = Math.max(max, integer);
         }
 
         // Range
