@@ -181,7 +181,8 @@ Stacks|Trees|
 ------|-----|
 [Node Stack](DataStructures/Stacks/NodeStack.java)|[AVL Tree](DataStructures/Trees/AVLTree.java)|
 [Stack of Linked List](DataStructures/Stacks/StackOfLinkedList.java)|[Binary Tree](DataStructures/Trees/BinaryTree.java)|
-[Stacks](DataStructures/Stacks/Stacks.java)|And much more...|
+[Array Stack](DataStructures/Stacks/StackArray.java)|And much more...|
+[ArrayList Stack](DataStructures/Stacks/StackArrayList.java)||
 
 * [Bags](DataStructures/Bags/Bag.java)
 * [Buffer](DataStructures/Buffers/CircularBuffer.java)
