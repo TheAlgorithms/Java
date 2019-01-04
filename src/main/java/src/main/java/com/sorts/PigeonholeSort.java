@@ -41,13 +41,13 @@ public class PigeonholeSort {
         int index = 0;
 
         // Loop over pigeonhole array
-        for (int i = 0; i < range; i++) {
+        for (int j = 0; j < range; j++) {
             // This inner loop will execute only for those indexes in
             // pigeonhole which are greater than zero i.e., only for those
             // elements which are present in the original array. This also
             // takes care of the duplicate elements
-            while (pigeonholes[i]-- > 0) {
-                arr[index++] = i + min;
+            while (pigeonholes[j]-- > 0) {
+                arr[index++] = j + min;
             }
         }
 
