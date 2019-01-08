@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
  * can determine if a file was manipulated, by comparing the message digest
  * of the original file with the message digest of the file in question.
  * Another example is the use of SHA-256 in the Proof-of-work algorithm of Bitcoin.
- *
+ * <p>
  * This implementation is based on the RFC 6234 specification. The original
  * specification of SHA-2 is defined in FIPS PUB 180-4. Due to the U.S.
  * government shutdown by the end of 2018 the original specification was offline.
@@ -27,19 +27,20 @@ public final class Sha2 {
      * By specification, the user-provided data can have a length of 0 &lt;= L &lt; 2^61 byte.
      * The JVM, though, allows an array with a maximum length of approximately
      * Integer.MAX_VALUE.</p>
+     *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 224 bit (28 byte)
      */
     public static String SHA224(byte[] data) {
         final int[] initialHash = {
-            0xc1059ed8, 0x367cd507, 0x3070dd17, 0xf70e5939,
-            0xffc00b31, 0x68581511, 0x64f98fa7, 0xbefa4fa4
+                0xc1059ed8, 0x367cd507, 0x3070dd17, 0xf70e5939,
+                0xffc00b31, 0x68581511, 0x64f98fa7, 0xbefa4fa4
         };
 
         int[] finalHash = digest(data, initialHash);
 
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < finalHash.length-1; i++) {
+        for (int i = 0; i < finalHash.length - 1; i++) {
             builder.append(String.format("%1$08x", finalHash[i]));
         }
 
@@ -48,14 +49,15 @@ public final class Sha2 {
 
     /**
      * <p>Returns a SHA-256 message digest with a fixed length of 256 bit (32 byte).<p>
+     *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 256 bit (32 byte)
      * @see src.main.java.com.crypto.hash.Sha2#SHA224(byte[]) SHA224()
      */
     public static String SHA256(byte[] data) {
         final int[] initialHash = {
-            0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
-            0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+                0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+                0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
         };
 
         int[] finalHash = digest(data, initialHash);
@@ -73,19 +75,20 @@ public final class Sha2 {
      * By specification, the user-provided data can have a length of 0 &lt;= L &lt; 2^125 byte.
      * The JVM, though, allows an array with a maximum length of approximately
      * Integer.MAX_VALUE.</p>
+     *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 384 bit (48 byte)
      */
     public static String SHA384(byte[] data) {
         final long[] initialHash = {
-            0xcbbb9d5dc1059ed8L, 0x629a292a367cd507L, 0x9159015a3070dd17L, 0x152fecd8f70e5939L,
-            0x67332667ffc00b31L, 0x8eb44a8768581511L, 0xdb0c2e0d64f98fa7L, 0x47b5481dbefa4fa4L
+                0xcbbb9d5dc1059ed8L, 0x629a292a367cd507L, 0x9159015a3070dd17L, 0x152fecd8f70e5939L,
+                0x67332667ffc00b31L, 0x8eb44a8768581511L, 0xdb0c2e0d64f98fa7L, 0x47b5481dbefa4fa4L
         };
 
         long[] finalHash = digest(data, initialHash);
 
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < finalHash.length-2; i++) {
+        for (int i = 0; i < finalHash.length - 2; i++) {
             builder.append(String.format("%1$016x", finalHash[i]));
         }
 
@@ -94,14 +97,15 @@ public final class Sha2 {
 
     /**
      * <p>Returns a SHA-512 message digest with a fixed length of 512 bit (64 byte).</p>
+     *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 512 bit (64 byte)
      * @see src.main.java.com.crypto.hash.Sha2#SHA384(byte[]) SHA384()
      */
     public static String SHA512(byte[] data) {
         final long[] initialHash = {
-            0x6a09e667f3bcc908L, 0xbb67ae8584caa73bL, 0x3c6ef372fe94f82bL, 0xa54ff53a5f1d36f1L,
-            0x510e527fade682d1L, 0x9b05688c2b3e6c1fL, 0x1f83d9abfb41bd6bL, 0x5be0cd19137e2179L
+                0x6a09e667f3bcc908L, 0xbb67ae8584caa73bL, 0x3c6ef372fe94f82bL, 0xa54ff53a5f1d36f1L,
+                0x510e527fade682d1L, 0x9b05688c2b3e6c1fL, 0x1f83d9abfb41bd6bL, 0x5be0cd19137e2179L
         };
 
         long[] finalHash = digest(data, initialHash);
@@ -119,6 +123,7 @@ public final class Sha2 {
      * <p>This method is wrapped by SHA224() and SHA256(). Both algorithms differ
      * only in two points: the initialization hashes are different and for SHA-224
      * the raw message digest is truncated by 1 byte.</p>
+     *
      * @param data the data/message to be digested
      * @param hash the initial hash value, which in the process gets used
      *             for the intermediate hashes
@@ -151,6 +156,7 @@ public final class Sha2 {
      * <p>This method is wrapped by SHA384() and SHA512(). Both algorithms differ
      * only in two points: the initialization hashes are different and for SHA-384
      * the raw message digest is truncated by 2 byte.</p>
+     *
      * @param data the data/message to be digested
      * @param hash the initial hash value, which in the process gets used
      *             for the intermediate hashes
@@ -180,7 +186,8 @@ public final class Sha2 {
 
     /**
      * <p>Pads the user-provided data.</p>
-     * @param data the data/message to be digested
+     *
+     * @param data      the data/message to be digested
      * @param blockSize the size of a data block (64 or 128 byte)
      * @return the padding for the data
      * @see <a href="https://tools.ietf.org/html/rfc6234#section-4">RFC 6234 - Message padding</a>
@@ -189,7 +196,7 @@ public final class Sha2 {
         byte[] padding;
         int lastBlockLength = data.length % blockSize;
         if (lastBlockLength + 1 > (blockSize / 8) * 7) {
-            padding = new byte[blockSize*2 - lastBlockLength];
+            padding = new byte[blockSize * 2 - lastBlockLength];
         } else {
             padding = new byte[blockSize - lastBlockLength];
         }
@@ -206,8 +213,9 @@ public final class Sha2 {
 
     /**
      * Scrambles data blocks in a deterministic way.
+     *
      * @param dataBlock the data blocks to be scrambled
-     * @param hash the resulting hash
+     * @param hash      the resulting hash
      * @see <a href="https://tools.ietf.org/html/rfc6234#section-6.2">SHA-224 and SHA-256 Processing</a>
      */
     private static void hashBlock(int[] dataBlock, int[] hash) {
@@ -221,7 +229,7 @@ public final class Sha2 {
             W[i] = dataBlock[i];
         }
         for (int i = 16; i < 64; i++) {
-            W[i] = SSIG1(W[i-2]) + W[i-7] + SSIG0(W[i-15]) + W[i-16];
+            W[i] = SSIG1(W[i - 2]) + W[i - 7] + SSIG0(W[i - 15]) + W[i - 16];
         }
 
         // Initialize the working variables
@@ -251,8 +259,9 @@ public final class Sha2 {
 
     /**
      * Scrambles data blocks in a deterministic way.
+     *
      * @param dataBlock the data blocks to be scrambled
-     * @param hash the resulting hash
+     * @param hash      the resulting hash
      * @see <a href="https://tools.ietf.org/html/rfc6234#section-6.4">SHA-384 and SHA-512 Processing</a>
      */
     private static void hashBlock(long[] dataBlock, long[] hash) {
@@ -266,7 +275,7 @@ public final class Sha2 {
             W[i] = dataBlock[i];
         }
         for (int i = 16; i < 80; i++) {
-            W[i] = SSIG1(W[i-2]) + W[i-7] + SSIG0(W[i-15]) + W[i-16];
+            W[i] = SSIG1(W[i - 2]) + W[i - 7] + SSIG0(W[i - 15]) + W[i - 16];
         }
 
         // Initialize the working variables
