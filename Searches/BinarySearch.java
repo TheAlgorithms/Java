@@ -72,7 +72,7 @@ class BinarySearch implements SearchAlgorithm {
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
-        Random random = ThreadLocalRandom.current();
+        Random r = ThreadLocalRandom.current();
         
         int size = 100;
         int maxElement = 100000;
