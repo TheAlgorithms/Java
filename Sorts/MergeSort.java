@@ -70,26 +70,19 @@ class MergeSort implements SortAlgorithm {
 
         while (i <= mid && j <= right) {
             if (temp[i].compareTo(temp[j]) <= 0) {
-                arr[k] = temp[i];
-                i++;
+                arr[k++] = temp[i++];
             }
             else {
-                arr[k] = temp[j];
-                j++;
+                arr[k++] = temp[j++];
             }
-            k++;
         }
 
         while (i <= mid) {
-            arr[k] = temp[i];
-            i++;
-            k++;
+            arr[k++] = temp[i++];
         }
 
 	while (j <= right) {
-	    arr[k] = temp[j];
-	    j++;
-	    k++;
+	    arr[k++] = temp[j++];
 	}
     }
 
