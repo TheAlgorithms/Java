@@ -176,9 +176,10 @@ public class AVLTree {
     }
  
     private void setBalance(Node... nodes) {
-        for (Node n : nodes)
+        for (Node n : nodes) {
             reheight(n);
             n.balance = height(n.right) - height(n.left);
+        }
     }
  
     public void printBalance() {
