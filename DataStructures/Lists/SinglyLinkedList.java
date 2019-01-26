@@ -1,14 +1,14 @@
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
- * 
+ *
  * A linked list is similar to an array, it hold values.
  * However, links in a linked list do not have indexes. With
  * a linked list you do not need to predetermine it's size as
  * it grows and shrinks as it is edited. This is an example of
  * a singly linked list. Elements can only be added/removed
  * at the head/front of the list.
- * 
+ *
  * @author Unknown
  *
  */
@@ -25,15 +25,23 @@ class SinglyLinkedList{
 
 	/**
 	 * This method inserts an element at the head
-	 * 
+	 *
 	 * @param x Element to be added
 	 */
 	public void insertHead(int x){
 		Node newNode = new Node(x); //Create a new link with a value attached to it
 		newNode.next = head; 		//Set the new link to point to the current head
 		head = newNode; 			//Now set the new link to be the head
+        Node.indexCount++;          //Count the all indexes of inserted values
 	}
-
+    /**
+     * Insert values at spesific position
+     * @param number    inserted value
+     * @param position  spesific position of inserted value
+     */
+    public void addToSpecifiedPosition(int number, int position) {
+            InsertNth(head, number, position);
+    }
 
 	/**
      * Inserts a new node at a specified position
@@ -44,40 +52,37 @@ class SinglyLinkedList{
      */
 
     Node InsertNth(Node head, int data, int position) {
-        
-        Node newNode = new Node();
-        newNode.data = data;
-        
-        if (position == 0) {
-            newNode.next = head;
-            return newNode;
-        }
 
+        Node newNode = new Node(data);
         Node current = head;
+        int temp = position - Node.getIndexCount();
 
-        while (--position > 0) {
-            current = current.next;
+        while (temp-- > 0) {
+            insertHead(0);
+            System.out.println("Do something " + Node.indexCount);
         }
-        
-        newNode.next = current.next;
-        current.next = newNode;
+
+        newNode.next = current;
+        head = newNode;
+        insertHead(newNode.value);
         return head;
     }
-    
+
 	/**
 	 * This method deletes an element at the head
-	 * 
+	 *
 	 * @return The element deleted
 	 */
 	public Node deleteHead(){
 		Node temp = head;
 		head = head.next; //Make the second element in the list the new head, the Java garbage collector will later remove the old head
+        --Node.indexCount;
 		return temp;
 	}
 
 	/**
 	 * Checks if the list is empty
-	 * 
+	 *
 	 * @return true is list is empty
 	 */
 	public boolean isEmpty(){
@@ -95,10 +100,10 @@ class SinglyLinkedList{
 		}
 		System.out.println();
 	}
-	
+
 	/**
 	 * Main method
-	 * 
+	 *
 	 * @param args Command line arguments
 	 */
 	public static void main(String args[]){
@@ -122,19 +127,23 @@ class SinglyLinkedList{
  * This class is the nodes of the SinglyLinked List.
  * They consist of a value and a pointer to the node
  * after them.
- * 
+ *
  * @author Unknown
  *
  */
 class Node{
 	/** The value of the node */
 	public int value;
+    /**
+     * The count of Indexes
+     */
+    public static int indexCount;
 	/** Point to the next node */
 	public Node next; //This is what the link will point to
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param valuein Value to be put in the node
 	 */
 	public Node(int valuein){
@@ -147,5 +156,10 @@ class Node{
 	public int getValue(){
 		return value;
 	}
-
+    /**
+     * @return the count of indexes
+     */
+    public static int getIndexCount() {
+        return indexCount;
+    }
 }
