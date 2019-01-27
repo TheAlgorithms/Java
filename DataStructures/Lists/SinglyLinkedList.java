@@ -1,7 +1,7 @@
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
- *
+ * <p>
  * A linked list is similar to an array, it hold values.
  * However, links in a linked list do not have indexes. With
  * a linked list you do not need to predetermine it's size as
@@ -9,118 +9,115 @@
  * a singly linked list. Elements can only be added/removed
  * at the head/front of the list.
  *
- * @author Unknown
- *
+ * @author yanglbme
  */
-class SinglyLinkedList{
-	/**Head refered to the front of the list */
-	private Node head;
-
-	/**
-	 * Constructor of SinglyLinkedList
-	 */
-	public SinglyLinkedList(){
-		head = null;
-	}
-
-	/**
-	 * This method inserts an element at the head
-	 *
-	 * @param x Element to be added
-	 */
-	public void insertHead(int x){
-		Node newNode = new Node(x); //Create a new link with a value attached to it
-		newNode.next = head; 		//Set the new link to point to the current head
-		head = newNode; 			//Now set the new link to be the head
-        Node.indexCount++;          //Count the all indexes of inserted values
-	}
+class SinglyLinkedList {
     /**
-     * Insert values at spesific position
-     * @param number    inserted value
-     * @param position  spesific position of inserted value
+     * Head refer to the front of the list
      */
-    public void addToSpecifiedPosition(int number, int position) {
-            InsertNth(head, number, position);
+    private Node head;
+
+    /**
+     * Count of nodes
+     */
+    private int count;
+
+    /**
+     * This method inserts an element at the head
+     *
+     * @param x Element to be added
+     */
+    public void insertHead(int x) {
+        Node newNode = new Node(x);
+        newNode.next = head;
+        head = newNode;
+        ++count;
     }
 
-	/**
+    /**
      * Inserts a new node at a specified position
-     * @param head     head node of the linked list
+     *
      * @param data     data to be stored in a new node
      * @param position position at which a new node is to be inserted
-     * @return  reference of the head of the linked list
      */
 
-    Node InsertNth(Node head, int data, int position) {
-
-        Node newNode = new Node(data);
-        Node current = head;
-        int temp = position - Node.getIndexCount();
-
-        while (temp-- > 0) {
-            insertHead(0);
-            System.out.println("Do something " + Node.indexCount);
+    public void insertNth(int data, int position) {
+        if (position < 0 || position > count) {
+            throw new RuntimeException("position less than zero or position more than the count of list");
         }
-
-        newNode.next = current;
-        head = newNode;
-        insertHead(newNode.value);
-        return head;
+        Node node = new Node(data);
+        Node dummy = new Node(-1);
+        dummy.next = head;
+        Node cur = dummy;
+        for (int i = 0; i < position; ++i) {
+            cur = cur.next;
+        }
+        node.next = cur.next;
+        cur.next = node;
+        ++count;
     }
 
-	/**
-	 * This method deletes an element at the head
-	 *
-	 * @return The element deleted
-	 */
-	public Node deleteHead(){
-		Node temp = head;
-		head = head.next; //Make the second element in the list the new head, the Java garbage collector will later remove the old head
-        --Node.indexCount;
-		return temp;
-	}
+    /**
+     * This method deletes an element at the head
+     *
+     * @return The element deleted
+     */
+    public Node deleteHead() {
+        if (isEmpty()) {
+            throw new RuntimeException("The list is empty!");
+        }
 
-	/**
-	 * Checks if the list is empty
-	 *
-	 * @return true is list is empty
-	 */
-	public boolean isEmpty(){
-		return(head == null);
-	}
+        Node temp = head;
+        head = head.next;
+        --count;
+        return temp;
+    }
 
-	/**
-	 * Prints contents of the list
-	 */
-	public void display(){
-		Node current = head;
-		while(current!=null){
-			System.out.print(current.getValue()+" ");
-			current = current.next;
-		}
-		System.out.println();
-	}
+    /**
+     * Checks if the list is empty
+     *
+     * @return true is list is empty
+     */
+    public boolean isEmpty() {
+        return count == 0;
+    }
 
-	/**
-	 * Main method
-	 *
-	 * @param args Command line arguments
-	 */
-	public static void main(String args[]){
-		SinglyLinkedList myList = new SinglyLinkedList();
+    /**
+     * Prints contents of the list
+     */
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.value + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
 
-		System.out.println(myList.isEmpty()); //Will print true
+    /**
+     * Main method
+     *
+     * @param args Command line arguments
+     */
+    public static void main(String args[]) {
+        SinglyLinkedList myList = new SinglyLinkedList();
 
-		myList.insertHead(5);
-		myList.insertHead(7);
-		myList.insertHead(10);
+        assert myList.isEmpty();
 
-		myList.display(); // 10(head) --> 7 --> 5
+        myList.insertHead(5);
+        myList.insertHead(7);
+        myList.insertHead(10);
 
-		myList.deleteHead();
+        myList.display(); // 10 -> 7 -> 5
 
-		myList.display(); // 7(head) --> 5
-	}
+        myList.deleteHead();
+
+        myList.display(); // 7 -> 5
+
+        myList.insertNth(11, 2);
+
+        myList.display(); // 7 -> 5 -> 11
+    }
 }
 
 /**
@@ -128,38 +125,25 @@ class SinglyLinkedList{
  * They consist of a value and a pointer to the node
  * after them.
  *
- * @author Unknown
- *
+ * @author yanglbme
  */
-class Node{
-	/** The value of the node */
-	public int value;
+class Node {
     /**
-     * The count of Indexes
+     * The value of the node
      */
-    public static int indexCount;
-	/** Point to the next node */
-	public Node next; //This is what the link will point to
+    int value;
 
-	/**
-	 * Constructor
-	 *
-	 * @param valuein Value to be put in the node
-	 */
-	public Node(int valuein){
-		value = valuein;
-	}
-
-	/**
-	 * Returns value of the node
-	 */
-	public int getValue(){
-		return value;
-	}
     /**
-     * @return the count of indexes
+     * Point to the next node
      */
-    public static int getIndexCount() {
-        return indexCount;
+    Node next;
+
+    /**
+     * Constructor
+     *
+     * @param value Value to be put in the node
+     */
+    Node(int value) {
+        this.value = value;
     }
 }
