@@ -12,7 +12,7 @@ public class BinaryToHexadecimal {
      * @return The hexadecimal number
      */
 
-    public String binToHex(int binary) {
+    public String binToHex(long binary) {
         //hm to store hexadecimal codes for binary numbers within the range: 0000 to 1111 i.e. for decimal numbers 0 to 15
         HashMap<Integer,String> hmHexadecimal = new HashMap<>();
 
@@ -25,7 +25,7 @@ public class BinaryToHexadecimal {
         for(i=10 ; i<16 ; i++)
             hmHexadecimal.put(i,String.valueOf((char)('A'+i-10)));
 
-        int currentbit;
+        long currentbit;
         while(binary != 0) {
             int code4 = 0;	//to store decimal equivalent of number formed by 4 decimal digits
             for(i=0 ; i<4 ; i++)
