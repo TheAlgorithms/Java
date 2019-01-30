@@ -9,8 +9,8 @@ public class BinaryToHexadecimalTest {
     @Test
     public void testBinaryToHexadecimal(){
         BinaryToHexadecimal binaryToHexadecimal = new BinaryToHexadecimal();
-        Assert.assertEquals("Incorrect Conversion", "2A", binaryToHexadecimal.binToHex(new BigInteger("101010")));
-        Assert.assertEquals("Incorrect Conversion", "24", binaryToHexadecimal.binToHex(new BigInteger("100100")));
-        Assert.assertEquals("Incorrect Conversion", "AAAAAAAAAAAAAAAAAA1", binaryToHexadecimal.binToHex(new BigInteger("1010101010101010101010101010101010101010101010101010101010101010101010100001")));
+        Assert.assertEquals("Incorrect Conversion", "2A", binaryToHexadecimal.binToHex("101010"));
+        Assert.assertEquals("Incorrect Conversion", "24", binaryToHexadecimal.binToHex("100100"));
+        Assert.assertEquals("Incorrect Conversion", "AAAAAAAAAAAAAAAAAA1", binaryToHexadecimal.binToHex("1010101010101010101010101010101010101010101010101010101010101010101010100001"));
     }
 }
