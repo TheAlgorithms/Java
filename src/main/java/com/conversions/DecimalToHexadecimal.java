@@ -16,7 +16,7 @@ public class DecimalToHexadecimal {
 
         int rem;
         String hex = "";
-        while(decimal.compareTo(BigInteger.ZERO) > 0) {
+        while (decimal.compareTo(BigInteger.ZERO) > 0) {
             rem = decimal.mod(valueHex).intValueExact();
             hex = hexChars[rem] + hex;
             decimal = decimal.divide(valueHex);
