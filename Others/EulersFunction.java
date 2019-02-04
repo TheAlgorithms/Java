@@ -1,6 +1,7 @@
-//You can read more about Euler's totient function https://en.wikipedia.org/wiki/Euler%27s_totient_function
+// You can read more about Euler's totient function 
+// https://en.wikipedia.org/wiki/Euler%27s_totient_function
 public class EulersFunction {
-    //This method returns us number of x that (x < n) and gcd(x, n) == 1 in O(sqrt(n)) time complexity;
+    // This method returns us number of x that (x < n) and gcd(x, n) == 1 in O(sqrt(n)) time complexity;
     public static int getEuler(int n) {
         int result = n;
         for (int i = 2; i * i <= n; i++) {
@@ -13,7 +14,7 @@ public class EulersFunction {
         return result;
     }
     public static void main(String[] args) {
-        for(int i = 1; i < 100; i++) {
+        for (int i = 1; i < 100; i++) {
             System.out.println(getEuler(i));
         }
     }
