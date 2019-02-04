@@ -136,7 +136,7 @@ public class CSVFile {
 		table = new ArrayList<ArrayList<String>>();
 		trackList = new ArrayList<Integer>();
 		pathCSVFile = "";
-		this.seperator = seperator;
+		this.seperator = separator;
 	}
 
 	
