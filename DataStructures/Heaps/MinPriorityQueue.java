@@ -1,13 +1,13 @@
-
+package Heaps;
 /* Minimum Priority Queue
-* It is a part of heap data structure
-* A heap is a specific tree based data structure 
-* in which all the nodes of tree are in a specific order. 
-* that is the children are arranged in some
-* respect of their parents, can either be greater
-* or less than the parent. This makes it a min priority queue
-* or max priority queue.
-*/
+ * It is a part of heap data structure
+ * A heap is a specific tree based data structure
+ * in which all the nodes of tree are in a specific order.
+ * that is the children are arranged in some
+ * respect of their parents, can either be greater
+ * or less than the parent. This makes it a min priority queue
+ * or max priority queue.
+ */
 
 // Functions: insert, delete, peek, isEmpty, print, heapSort, sink
 
@@ -16,15 +16,15 @@ public class MinPriorityQueue {
     private int capacity;
     private int size;
 
-	// calss the constructor and initializes the capacity
+    // calss the constructor and initializes the capacity
     MinPriorityQueue(int c) {
         this.capacity = c;
         this.size = 0;
         this.heap = new int[c + 1];
     }
 
-	// inserts the key at the end and rearranges it
-	// so that the binary heap is in appropriate order
+    // inserts the key at the end and rearranges it
+    // so that the binary heap is in appropriate order
     public void insert(int key) {
         if (this.isFull())
             return;
@@ -41,41 +41,41 @@ public class MinPriorityQueue {
         this.size++;
     }
 
-	// returns the highest priority value
+    // returns the highest priority value
     public int peek() {
         return this.heap[1];
     }
 
-	// returns boolean value whether the heap is empty or not
+    // returns boolean value whether the heap is empty or not
     public boolean isEmpty() {
         if (0 == this.size)
             return true;
         return false;
     }
 
-	// returns boolean value whether the heap is full or not
+    // returns boolean value whether the heap is full or not
     public boolean isFull() {
         if (this.size == this.capacity)
             return true;
         return false;
     }
 
-	// prints the heap
+    // prints the heap
     public void print() {
         for (int i = 1; i <= this.capacity; i++)
             System.out.print(this.heap[i] + " ");
         System.out.println();
     }
 
-	// heap sorting can be done by performing
-	// delete function to the number of times of the size of the heap
-	// it returns reverse sort because it is a min priority queue
+    // heap sorting can be done by performing
+    // delete function to the number of times of the size of the heap
+    // it returns reverse sort because it is a min priority queue
     public void heapSort() {
         for (int i = 1; i < this.capacity; i++)
             this.delete();
     }
 
-	// this function reorders the heap after every delete function
+    // this function reorders the heap after every delete function
     private void sink() {
         int k = 1;
         while (2 * k <= this.size || 2 * k + 1 <= this.size) {
@@ -103,7 +103,7 @@ public class MinPriorityQueue {
         }
     }
 
-	// deletes the highest priority value from the heap
+    // deletes the highest priority value from the heap
     public int delete() {
         int min = this.heap[1];
         this.heap[1] = this.heap[this.size];

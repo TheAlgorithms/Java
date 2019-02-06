@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
 /**
- *
  * @author Afrizal Fikri (https://github.com/icalF)
- *
+ * @author Libin Yang (https://github.com/yanglbme)
  */
 public class LongestIncreasingSubsequence {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -20,7 +19,7 @@ public class LongestIncreasingSubsequence {
     }
 
     private static int upperBound(int[] ar, int l, int r, int key) {
-        while (l < r-1) {
+        while (l < r - 1) {
             int m = (l + r) / 2;
             if (ar[m] >= key)
                 r = m;
@@ -35,10 +34,12 @@ public class LongestIncreasingSubsequence {
         int N = array.length;
         if (N == 0)
             return 0;
- 
+
         int[] tail = new int[N];
-        int length = 1; // always points empty slot in tail
-     
+
+        // always points empty slot in tail
+        int length = 1;
+
         tail[0] = array[0];
         for (int i = 1; i < N; i++) {
 
@@ -46,17 +47,17 @@ public class LongestIncreasingSubsequence {
             if (array[i] < tail[0])
                 tail[0] = array[i];
 
-            // array[i] extends largest subsequence
-            else if (array[i] > tail[length-1])
+                // array[i] extends largest subsequence
+            else if (array[i] > tail[length - 1])
                 tail[length++] = array[i];
 
-            // array[i] will become end candidate of an existing subsequence or
-            // Throw away larger elements in all LIS, to make room for upcoming grater elements than array[i]
-            // (and also, array[i] would have already appeared in one of LIS, identify the location and replace it)
+                // array[i] will become end candidate of an existing subsequence or
+                // Throw away larger elements in all LIS, to make room for upcoming grater elements than array[i]
+                // (and also, array[i] would have already appeared in one of LIS, identify the location and replace it)
             else
-                tail[upperBound(tail, -1, length-1, array[i])] = array[i];
+                tail[upperBound(tail, -1, length - 1, array[i])] = array[i];
         }
-     
+
         return length;
     }
 }
