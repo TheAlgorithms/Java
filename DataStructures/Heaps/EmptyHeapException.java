@@ -1,7 +1,7 @@
 /**
  *
  */
-package Heaps;
+package DataStructures.Heaps;
 
 /**
  * @author Nicolas Renard

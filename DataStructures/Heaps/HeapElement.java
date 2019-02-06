@@ -1,7 +1,7 @@
 /**
  *
  */
-package Heaps;
+package DataStructures.Heaps;
 
 import java.lang.Double;
 import java.lang.Object;
