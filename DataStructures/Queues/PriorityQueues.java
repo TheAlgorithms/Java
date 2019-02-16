@@ -37,6 +37,10 @@ class PriorityQueue{
 	public void insert(int value){
 		if(nItems == 0){
 			queueArray[0] = value;
+			nItems++;
+		}
+		else if(isFull()){	//does not insert value when the queue is full
+			System.out.println("Queue is full");
 		}
 		else{
 			int j = nItems;
@@ -45,8 +49,8 @@ class PriorityQueue{
 				j--;
 			}
 			queueArray[j] = value; //Once the correct position is found the value is inserted
+			nItems++;
 		}
-		nItems++;
 	}
 
 	/**
