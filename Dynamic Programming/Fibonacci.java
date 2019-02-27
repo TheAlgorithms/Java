@@ -17,8 +17,9 @@ public class Fibonacci {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        System.out.println(fibMemo(n)); // Returns 8 for n = 6
-        System.out.println(fibBotUp(n)); // Returns 8 for n = 6
+        // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
+        System.out.println(fibMemo(n));
+        System.out.println(fibBotUp(n));
     }
 
     /**
@@ -34,13 +35,12 @@ public class Fibonacci {
 
         int f;
 
-        if (n <= 2) {
-            f = 1;
+        if (n <= 1) {
+            f = n;
         } else {
             f = fibMemo(n - 1) + fibMemo(n - 2);
             map.put(n, f);
         }
-
         return f;
     }
 
@@ -54,10 +54,10 @@ public class Fibonacci {
 
         Map<Integer, Integer> fib = new HashMap<>();
 
-        for (int i = 1; i < n + 1; i++) {
+        for (int i = 0; i <= n; i++) {
             int f;
-            if (i <= 2) {
-                f = 1;
+            if (i <= 1) {
+                f = i;
             } else {
                 f = fib.get(i - 1) + fib.get(i - 2);
             }
