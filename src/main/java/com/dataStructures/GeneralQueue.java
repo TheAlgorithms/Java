@@ -4,6 +4,7 @@ import src.main.java.com.types.Queue;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 /**
  * linkedList based implementation of queue.
@@ -24,17 +25,22 @@ public class GeneralQueue<T> implements Queue<T> {
     public boolean add(T t) {
 
         if(queue == null) {
-            throw new NullPointerException();
+            throw new IllegalStateException();
         }
-
+        if(t == null){
+           throw new NullPointerException();
+        }
         queue.add(t);
         return true;
     }
 
     @Override
     public boolean remove(T t) {
-        if(null == queue || queue.size() == 0){
+        if(null == queue){
             throw new NullPointerException();
+        }
+        if(queue.isEmpty()) {
+            throw new NoSuchElementException();
         }
         queue.remove(t);
         return true;
@@ -65,7 +71,9 @@ public class GeneralQueue<T> implements Queue<T> {
         if(null == queue) {
             return false;
         }
-
+        if(t == null){
+            throw new NullPointerException();
+        }
         queue.add(t);
         return true;
     }
@@ -84,7 +92,7 @@ public class GeneralQueue<T> implements Queue<T> {
     public T element() {
 
         if(queue == null || queue.isEmpty()) {
-            throw new NullPointerException();
+            throw new NoSuchElementException();
         }
 
         return queue.peekFirst();
