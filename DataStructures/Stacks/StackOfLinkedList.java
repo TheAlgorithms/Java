@@ -1,7 +1,5 @@
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
- *
  */
 
 // An implementation of a Stack using a Linked List
@@ -42,7 +40,7 @@ class Node {
 
 /**
  * A class which implements a stack using a linked list
- *
+ * <p>
  * Contains all the stack methods : push, pop, printStack, isEmpty
  **/
 
@@ -54,8 +52,7 @@ class LinkedListStack {
         Node n = new Node(x);
         if (head == null) {
             head = n;
-        }
-        else {
+        } else {
             Node temp = head;
             n.next = temp;
             head = n;
@@ -73,20 +70,19 @@ class LinkedListStack {
     }
 
     public int peek() {
-      if (head == null) {
-        return -1;
-      }
-      return head.data;
+        if (head == null) {
+            return -1;
+        }
+        return head.data;
     }
 
     public void printStack() {
         Node temp = head;
         System.out.println("Stack is printed as below: ");
         while (temp != null) {
-            if(temp.next == null) {
+            if (temp.next == null) {
                 System.out.print(temp.data);
-            }
-            else {
+            } else {
                 System.out.print(temp.data + " -> ");
             }
             temp = temp.next;
@@ -99,12 +95,12 @@ class LinkedListStack {
     }
 
     public int getSize() {
-        if(head == null)
+        if (head == null)
             return 0;
         else {
             int size = 1;
             Node temp = head;
-            while(temp.next != null) {
+            while (temp.next != null) {
                 temp = temp.next;
                 size++;
             }
