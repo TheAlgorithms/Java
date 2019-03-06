@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 /**
  * linkedList based implementation of queue.
  * This implementation is not thread safe and need exclusive thread safety measures from the client.
+ *
  * @param <T>
  */
 public class GeneralQueue<T> implements Queue<T> {
@@ -16,7 +17,9 @@ public class GeneralQueue<T> implements Queue<T> {
     private LinkedList<T> queue;
     private Iterator<T> itr;
 
-    //Overloaded constructor to create queue of specific size
+    /**
+     * Overloaded constructor to create queue of specific size
+     */
     public GeneralQueue() {
         queue = new LinkedList<>();
     }
@@ -24,11 +27,11 @@ public class GeneralQueue<T> implements Queue<T> {
     @Override
     public boolean add(T t) {
 
-        if(queue == null) {
+        if (queue == null) {
             throw new IllegalStateException();
         }
-        if(t == null){
-           throw new NullPointerException();
+        if (t == null) {
+            throw new NullPointerException();
         }
         queue.add(t);
         return true;
@@ -36,10 +39,10 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public boolean remove(T t) {
-        if(null == queue){
+        if (null == queue) {
             throw new NullPointerException();
         }
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             throw new NoSuchElementException();
         }
         queue.remove(t);
@@ -48,18 +51,12 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public boolean isEmpty() {
-
-        if(null == queue || queue.size() == 0){
-            return true;
-        }
-
-        return false;
+        return null == queue || queue.size() == 0;
     }
 
     @Override
     public Iterator<T> iterator() {
-
-        if(queue == null) {
+        if (queue == null) {
             return null;
         }
         itr = queue.iterator();
@@ -68,10 +65,10 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public boolean offer(T t) {
-        if(null == queue) {
+        if (null == queue) {
             return false;
         }
-        if(t == null){
+        if (t == null) {
             throw new NullPointerException();
         }
         queue.add(t);
@@ -80,9 +77,8 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public T poll() {
-
-        if(queue == null || queue.isEmpty()){
-            return  null;
+        if (queue == null || queue.isEmpty()) {
+            return null;
         }
 
         return queue.pollFirst();
@@ -90,8 +86,7 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public T element() {
-
-        if(queue == null || queue.isEmpty()) {
+        if (queue == null || queue.isEmpty()) {
             throw new NoSuchElementException();
         }
 
@@ -100,8 +95,8 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        if(null == queue ||  queue.size() == 0){
-            return  null;
+        if (null == queue || queue.size() == 0) {
+            return null;
         }
 
         return queue.peekFirst();
@@ -109,28 +104,22 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public boolean hasNext() {
-
-        if(itr.hasNext()){
-            return true;
-        }
-        return false;
+        return itr.hasNext();
     }
 
     @Override
     public T next() {
-
         return itr.next();
     }
 
     @Override
     public Object[] toArray() {
-
         Object[] elements = {};
-        if(null == queue || queue.isEmpty()){
+        if (null == queue || queue.isEmpty()) {
             return elements;
         }
         elements = new Object[queue.size()];
-        for(int i=0;i<queue.size();i++){
+        for (int i = 0; i < queue.size(); i++) {
             elements[i] = queue.get(i);
         }
 
@@ -139,12 +128,9 @@ public class GeneralQueue<T> implements Queue<T> {
 
     @Override
     public int size() {
-        if(null == queue || queue.isEmpty()) {
+        if (null == queue || queue.isEmpty()) {
             return 0;
         }
-
         return queue.size();
     }
-
-
 }
