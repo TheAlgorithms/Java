@@ -2,6 +2,7 @@ package src.test.java.com.conversions;
 
 import org.junit.Assert;
 import org.junit.Test;
+import src.main.java.com.conversions.DecimalToOctal;
 
 public class DecimalToOctalTest {
     @Test
