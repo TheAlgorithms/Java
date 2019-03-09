@@ -18,11 +18,6 @@ class SinglyLinkedList {
     private Node head;
 
     /**
-     * Count of nodes
-     */
-    private int count;
-
-    /**
      * This method inserts an element at the head
      *
      * @param x Element to be added
@@ -31,7 +26,6 @@ class SinglyLinkedList {
         Node newNode = new Node(x);
         newNode.next = head;
         head = newNode;
-        ++count;
     }
 
     /**
@@ -42,19 +36,20 @@ class SinglyLinkedList {
      */
 
     public void insertNth(int data, int position) {
-        if (position < 0 || position > count) {
+        if (position < 0 || position > getSize()) {
             throw new RuntimeException("position less than zero or position more than the count of list");
         }
-        Node node = new Node(data);
-        Node dummy = new Node(-1);
-        dummy.next = head;
-        Node cur = dummy;
-        for (int i = 0; i < position; ++i) {
-            cur = cur.next;
+        else if (position == 0)
+            insertHead(data);
+        else {
+            Node cur = head;
+            Node node = new Node(data);
+            for (int i = 1; i < position; ++i) {
+                cur = cur.next;
+            }
+            node.next = cur.next;
+            cur.next = node;
         }
-        node.next = cur.next;
-        cur.next = node;
-        ++count;
     }
 
     /**
@@ -62,15 +57,30 @@ class SinglyLinkedList {
      *
      * @return The element deleted
      */
-    public Node deleteHead() {
+    public void deleteHead() {
         if (isEmpty()) {
             throw new RuntimeException("The list is empty!");
         }
 
-        Node temp = head;
         head = head.next;
-        --count;
-        return temp;
+    }
+
+    /**
+    * This method deletes an element at Nth position
+    */
+    public void deleteNth(int position) {
+         if (position < 0 || position > getSize()) {
+            throw new RuntimeException("position less than zero or position more than the count of list");
+        }
+        else if (position == 0)
+            deleteHead();
+        else {
+            Node cur = head;
+            for (int i = 1; i < position; ++i) {
+                cur = cur.next;
+            }
+            cur.next = cur.next.next;
+        }
     }
 
     /**
@@ -79,7 +89,7 @@ class SinglyLinkedList {
      * @return true is list is empty
      */
     public boolean isEmpty() {
-        return count == 0;
+        return getSize() == 0;
     }
 
     /**
@@ -92,6 +102,23 @@ class SinglyLinkedList {
             current = current.next;
         }
         System.out.println();
+    }
+
+    /**
+    * Returns the size of the linked list
+    */
+    public int getSize() {
+        if (head == null)
+            return 0;
+        else {
+            Node current = head;
+            int size = 1;
+            while (current.next != null) {
+                current = current.next;
+                size++;
+            }
+            return size;
+        }
     }
 
     /**
@@ -117,6 +144,11 @@ class SinglyLinkedList {
         myList.insertNth(11, 2);
 
         myList.display(); // 7 -> 5 -> 11
+
+        myList.deleteNth(1);
+
+        myList.display(); // 7-> 11
+
     }
 }
 
@@ -145,5 +177,6 @@ class Node {
      */
     Node(int value) {
         this.value = value;
+        this.next = null;
     }
 }
