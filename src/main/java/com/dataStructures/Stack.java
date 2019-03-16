@@ -2,9 +2,8 @@ package src.main.java.com.dataStructures;
 
 import java.io.Serializable;
 import java.util.EmptyStackException;
-import java.util.Vector;
 
-public class Stack<E> extends Vector implements Serializable {
+public class Stack<E>  implements Serializable {
 
     /**
      * Inital capacity alloted to stack on object creation
