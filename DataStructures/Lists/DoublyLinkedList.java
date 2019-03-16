@@ -1,3 +1,4 @@
+
 /**
  * This class implements a DoublyLinkedList. This is done using the classes
  * LinkedList and Link.
@@ -62,9 +63,15 @@ class DoublyLinkedList{
 	public void insertTail(int x){
 		Link newLink = new Link(x);
 		newLink.next = null; // currentTail(tail)     newlink -->
-		tail.next = newLink; // currentTail(tail) --> newLink -->
-		newLink.previous = tail; // currentTail(tail) <--> newLink -->
-		tail = newLink; // oldTail <--> newLink(tail) -->
+		if(isEmpty()) {		// Check if there are no elements in list then it adds first element 
+			tail=newLink;
+			head=tail;
+		}
+		else {
+			tail.next = newLink; // currentTail(tail) --> newLink -->
+			newLink.previous = tail; // currentTail(tail) <--> newLink -->
+			tail = newLink; // oldTail <--> newLink(tail) -->
+		}
 	}
 
 	/**
@@ -72,12 +79,13 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new head
 	 */
-	public void deleteHead(){
+	public Link deleteHead(){
 		Link temp = head;
 		head = head.next; // oldHead <--> 2ndElement(head)
 		head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
 		if(head == null)
 			tail = null;
+		return temp;
 	}
 
 	/**
@@ -85,11 +93,15 @@ class DoublyLinkedList{
 	 * 
 	 * @return The new tail
 	 */
-	public void deleteTail(){
+	public Link deleteTail(){
 		Link temp = tail;
 		tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
  		tail.next = null; // 2ndLast(tail) --> null
-		
+ 		if(tail==null)
+ 		{
+ 			head=null;
+ 		}
+		return temp;
 	}
 
 	/**
