@@ -3,17 +3,17 @@ package src.main.java.com.dataStructures;
 import java.io.Serializable;
 import java.util.EmptyStackException;
 
-public class Stack<E>  implements Serializable {
+public class Stack<E> implements Serializable {
 
     /**
-     * Inital capacity alloted to stack on object creation
+     * Initial capacity allocated to stack on object creation
      */
     private final int INITIAL_CAPACITY = 10;
 
     /**
      * Increment in memory space once stack is out of space
      */
-    private final int EXNTEDED_CAPACITY = 10;
+    private final int EXTENDED_CAPACITY = 10;
 
 
     /**
@@ -30,15 +30,14 @@ public class Stack<E>  implements Serializable {
 
     /**
      * Uninitialized array to hold stack elements.
-     * WIll be intialized with inital capacity once the object is created
+     * WIll be initialized with initial capacity once the object is created
      */
     private Object[] elements;
 
     /**
-     * No argument to create stack object with inital capacity
+     * No argument to create stack object with initial capacity
      */
     public Stack() {
-
         elements = new Object[INITIAL_CAPACITY];
     }
 
@@ -47,16 +46,7 @@ public class Stack<E>  implements Serializable {
      */
 
     public boolean empty() {
-
-        if(null == elements) {
-            return true;
-        }
-
-        if(size == 0){
-            return true;
-        }
-
-        return false;
+        return elements == null || size == 0;
     }
 
 
@@ -65,12 +55,11 @@ public class Stack<E>  implements Serializable {
      */
 
     public Object peek() {
+        if (empty()) {
+            throw new EmptyStackException();
+        }
 
-       if(empty()) {
-           throw new EmptyStackException();
-       }
-
-       return elements[tail];
+        return elements[tail];
     }
 
     /**
@@ -78,8 +67,7 @@ public class Stack<E>  implements Serializable {
      */
 
     public Object pop() {
-
-        if(empty()) {
+        if (empty()) {
             throw new EmptyStackException();
         }
 
@@ -95,12 +83,12 @@ public class Stack<E>  implements Serializable {
     public Object push(Object e) {
 
         boolean isSuccess = false;
-        if(tail < (INITIAL_CAPACITY - 1)){
+        if (tail < (INITIAL_CAPACITY - 1)) {
             tail++;
             elements[tail] = e;
-        }else{
-            Object[] extendedElements = new Object[INITIAL_CAPACITY + EXNTEDED_CAPACITY];
-            System.arraycopy(elements, 0, extendedElements, 0, (tail+1));
+        } else {
+            Object[] extendedElements = new Object[INITIAL_CAPACITY + EXTENDED_CAPACITY];
+            System.arraycopy(elements, 0, extendedElements, 0, (tail + 1));
             elements = extendedElements;
             tail++;
             elements[tail] = e;
@@ -118,19 +106,19 @@ public class Stack<E>  implements Serializable {
 
         int index = -1;
         boolean found = false;
-        if(empty()) {
+        if (empty()) {
             return -1;
         }
 
-        for(int i=0; i<size();i++) {
-            if(elements[i] == o) {
+        for (int i = 0; i < size(); i++) {
+            if (elements[i] == o) {
                 index = i;
                 found = true;
                 break;
             }
         }
 
-        if(found) {
+        if (found) {
             index = tail - index + 1;
         }
 
@@ -143,5 +131,4 @@ public class Stack<E>  implements Serializable {
     public int size() {
         return size;
     }
-
 }
