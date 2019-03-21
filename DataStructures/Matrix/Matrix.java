@@ -211,7 +211,12 @@ public class Matrix {
 	* @return boolean
     */
     public boolean equals(Matrix other) {
-        return this == other;
+        for (int i = 0; i < this.data.length; i++)
+            for (int j = 0; j < this.data[0].length; j++)
+                if (this.data[i][j] != other.data[i][j])
+                    return false;
+
+        return true;
     }
 
     /**
