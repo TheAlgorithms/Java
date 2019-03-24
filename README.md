@@ -173,7 +173,7 @@ Graphs|Heaps|Lists|Queues|
 [BFS](DataStructures/Graphs/BFS.java)|[Empty Heap Exception](DataStructures/Heaps/EmptyHeapException.java)|[Circle Linked List](DataStructures/Lists/CircleLinkedList.java)|[Generic Array List Queue](DataStructures/Queues/GenericArrayListQueue.java)|
 [DFS](DataStructures/Graphs/DFS.java)|[Heap](DataStructures/Heaps/Heap.java)|[Doubly Linked List](DataStructures/Lists/DoublyLinkedList.java)|[Queues](DataStructures/Queues/Queues.java)|
 [Graphs](DataStructures/Graphs/Graphs.java)|[Heap Element](DataStructures/Heaps/HeapElement.java)|[Singly Linked List](DataStructures/Lists/SinglyLinkedList.java)|
-[Kruskals Algorithm](DataStructures/Graphs/KruskalsAlgorithm.java)|[Max Heap](Data%Structures/Heaps/MaxHeap.java)|
+[Kruskals Algorithm](DataStructures/Graphs/KruskalsAlgorithm.java)|[Max Heap](DataStructures/Heaps/MaxHeap.java)|
 [CursorLinkedList](DataStructures/Lists/CursorLinkedList.java)|
 [Matrix Graphs](DataStructures/Graphs/MatrixGraphs.java)|[Min Heap](DataStructures/Heaps/MinHeap.java)|
 [PrimMST](DataStructures/Graphs/PrimMST.java)|
