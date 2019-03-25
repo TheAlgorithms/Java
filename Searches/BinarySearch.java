@@ -65,16 +65,16 @@ class BinarySearch implements SearchAlgorithm {
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
-        Random rnd = new Random();
+        Random r = new Random();
         int size = 100;
         int maxElement = 100000;
         Integer[] integers = new Integer[size];
         for (int i = 0; i < size; i++) {
-            integers[i] = rnd.nextInt(maxElement);
+            integers[i] = r.nextInt(maxElement);
         }
         Arrays.sort(integers);
         // The element that should be found
-        int shouldBeFound = integers[rnd.nextInt(size - 1)];
+        int shouldBeFound = integers[r.nextInt(size - 1)];
         BinarySearch s = new BinarySearch();
         int atIndex = s.find(integers, shouldBeFound);
         print(size, integers, shouldBeFound, atIndex);
