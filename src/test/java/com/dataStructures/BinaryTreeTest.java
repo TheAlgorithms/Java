@@ -1,4 +1,4 @@
-package dataStructures;
+package src.main.java.com.dataStructures;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

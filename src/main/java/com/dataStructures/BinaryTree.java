@@ -1,4 +1,4 @@
-package dataStructures;
+package src.main.java.com.dataStructures;
 
 /**
  * Binary tree for general value type, without redundancy
@@ -76,7 +76,7 @@ public class BinaryTree<T extends Comparable> {
      * @return true if this tree contains the data value, false if not.
      */
     public boolean contains(T data){
-        return !(this.search(data) == null);
+        return this.search(data) != null;
     }
     
     /**
@@ -89,10 +89,10 @@ public class BinaryTree<T extends Comparable> {
         
         System.out.println(this);
         
-        if (this.left!=null)
-            this.left.print(tabCounter+1);  //it can't be ++ , pls don't change it
-        if (this.right!=null)
-            this.right.print(tabCounter+1);  //it can't be ++ , pls don't change it
+        if (this.left != null)
+            this.left.print(tabCounter + 1);  //it can't be ++ , pls don't change it
+        if (this.right != null)
+            this.right.print(tabCounter + 1);  //it can't be ++ , pls don't change it
     }
     
     /**
