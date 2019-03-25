@@ -1,0 +1,5 @@
+<application>
+  <component name="LafManager">
+    <laf class-name="com.intellij.ide.ui.laf.IntelliJLaf" />
+  </component>
+</application>
