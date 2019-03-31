@@ -135,8 +135,8 @@ public class Base64 {
         if (base64String == null) {
             throw new IllegalArgumentException("Base64 string must not be null!");
         }
-
-        base64String = base64String.strip();
+        // remove trailing spaces if any
+        base64String = base64String.trim();
         if (!isValidBase64String(base64String)) {
             throw new IllegalArgumentException("String is not a valid Base64 string!");
         }
