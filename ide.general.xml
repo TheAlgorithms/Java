@@ -1,0 +1,5 @@
+<application>
+  <component name="Registry">
+    <entry key="git.explicit.commit.renames.prohibit.multiple.calls" value="false" />
+  </component>
+</application>
