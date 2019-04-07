@@ -120,7 +120,23 @@ class SinglyLinkedList {
             return size;
         }
     }
-
+    /**
+    * Reverses the SinglyLinkedList
+    */
+    public void reverse()
+	{
+		Node current = head;
+		Node nextNode =null;
+		Node previous = null;
+		while(current !=null)
+		{		
+				next = current.next;
+				current.next=previous;
+				previous = current;
+				current=nextNode;
+		}
+		head = previous;
+	}
     /**
      * Main method
      *
@@ -148,6 +164,8 @@ class SinglyLinkedList {
         myList.deleteNth(1);
 
         myList.display(); // 7-> 11
+        myList.reverse();
+        myList.diplay();
 
     }
 }
