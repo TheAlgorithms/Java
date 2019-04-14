@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * This class converts a Binary number to a Decimal number
  * 
- * @author Unknown
+ * @author thonn
  *
  */
 class BinaryToDecimal
