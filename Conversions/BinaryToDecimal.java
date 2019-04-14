@@ -29,6 +29,7 @@ class BinaryToDecimal
       k/=10;
     }
     System.out.println("Decimal equivalent:"+s);
+    System.out.println("End of conversion");
     sc.close();
   }
 }
