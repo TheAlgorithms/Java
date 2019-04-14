@@ -9,6 +9,7 @@ import java.util.Scanner;
  * determining whether a number is valid for a given base.
  * 
  * @author Michael Rolland
+ * @author Ngoc Tho Nguyen
  * @version 2017.10.10
  *
  */
