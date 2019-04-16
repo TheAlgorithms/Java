@@ -10,7 +10,7 @@ package src.main.java.com.search;
    In comes, depth-first search
  * Worst-case performance	O(n)
  * Best-case performance	O(1)
- * Average performance	    O(n)
+ * Average performance	   	O(n)
  * 
  * @author abir (https://github.com/abircb)
  */
@@ -26,8 +26,8 @@ public class DepthFirstSearch {
      */
 
 	public static <T extends Comparable<T>> T find(T key, BinaryTree<T> tree) {
-        return tree.get(key);
-    }
+        	return tree.get(key);
+	}
 	
 }
 
