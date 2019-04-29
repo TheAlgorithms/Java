@@ -6,12 +6,12 @@ package src.main.java.com.dataStructures;
  * @param <E> Data type
  * @param <T> Key type
  */
-public class HashTable <E,T> {
+public class HashTable <T,E> {
     
-    private E[] data_table;
+    private E[] dataTable;
 
-    public HashTable(int table_size) {
-        data_table = (E[])(new Object[table_size]);
+    public HashTable(int tableSize) {
+        data_table = (E[])(new Object[tableSize]);
     }
 
     public HashTable() {
@@ -26,7 +26,7 @@ public class HashTable <E,T> {
         return sum % this.data_table.length;
     }
     
-    public void add(E data, T key){
+    public void add(T key, E data){
         this.data_table[ hash(key.toString()) ] = data;
     }
     
