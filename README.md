@@ -108,6 +108,8 @@ __Properties__
 * Average case performance    O(n)
 * Worst case space complexity    O(1) iterative
 
+##### View the algorithm in [action][linear-tutorialspoint]
+
 ### Binary
 ![alt text][binary-image]
 
@@ -119,7 +121,7 @@ __Properties__
 * Average case performance    O(log n)
 * Worst case space complexity    O(1) 
 
-##### View the algorithm in [action][shell-toptal]
+##### View the algorithm in [action][binary-tutorialspoint]
 
 [bubble-toptal]: https://www.toptal.com/developers/sorting-algorithms/bubble-sort
 [bubble-wiki]: https://en.wikipedia.org/wiki/Bubble_sort
@@ -147,9 +149,11 @@ __Properties__
 
 [linear-wiki]: https://en.wikipedia.org/wiki/Linear_search
 [linear-image]: http://www.tutorialspoint.com/data_structures_algorithms/images/linear_search.gif
+[linear-tutorialspoint]: https://www.tutorialspoint.com/data_structures_algorithms/linear_search_algorithm.htm
 
 [binary-wiki]: https://en.wikipedia.org/wiki/Binary_search_algorithm
 [binary-image]: https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_search_into_array.png
+[binary-tutorialspoint]: https://www.tutorialspoint.com/data_structures_algorithms/binary_search_algorithm.htm
 
 
 --------------------------------------------------------------------
