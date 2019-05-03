@@ -10,19 +10,19 @@ public class BinaryToGray
 	public String binaryToGray(String binarycode)
 	{
 				
-		String graycode = Character.toString(binarycode.charAt(0));
+		StringBuilder graycode = new StringBuilder(Character.toString(binarycode.charAt(0)));
 		
 		for(int i = 0; i < binarycode.length() - 1; i++)
 		{
 			
 			if (binarycode.charAt(i) == binarycode.charAt(i+1))
-				graycode = graycode + "0";
+				graycode.append("0");
 			else
-				graycode = graycode + "1";
+				graycode.append("1");
 			
 		}
 	
-		return graycode;
+		return graycode.toString();
 	}
 
 }
