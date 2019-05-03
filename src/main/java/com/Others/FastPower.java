@@ -13,11 +13,11 @@ public class FastPower {
     public static BigInteger calculate(BigInteger n, BigInteger k, BigInteger mod) {
         BigInteger ans = BigInteger.ONE;
         while (!k.equals(BigInteger.ZERO)) {
-            int odd = k.mod(new BigInteger("2")).compareTo(BigInteger.ZERO);
-            if(odd == 1){
+            int odd = k.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO);
+            if(odd > 0){
                 ans = ans.multiply(n).mod(mod);
             }
-            k = k.divide(new BigInteger("2"));
+            k = k.divide(BigInteger.valueOf(2));
             n = n.multiply(n).mod(mod);
         }
         return ans.mod(mod);
