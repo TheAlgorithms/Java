@@ -15,15 +15,16 @@ import java.util.Scanner;
  */
 public class AnyBaseToAnyBase {
 
-    // Smallest and largest base you want to accept as valid input
+    /**
+     * Smallest and largest base you want to accept as valid input
+     */
     static final int MINIMUM_BASE = 2;
     static final int MAXIMUM_BASE = 36;
 
-    // Driver
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String n;
-        int b1 = 0, b2 = 0;
+        int b1, b2;
         while (true) {
             try {
                 System.out.print("Enter number: ");
@@ -64,7 +65,7 @@ public class AnyBaseToAnyBase {
         char[] digitsForBase = Arrays.copyOfRange(validDigits, 0, base);
 
         // Convert character array into set for convenience of contains() method
-        HashSet<Character> digitsList = new HashSet();
+        HashSet<Character> digitsList = new HashSet<>();
         for (int i = 0; i < digitsForBase.length; i++)
             digitsList.add(digitsForBase[i]);
 
