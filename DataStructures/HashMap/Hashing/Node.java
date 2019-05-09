@@ -1,3 +1,5 @@
+package DataStructures.HashMap.Hashing;
+
 class Node {
 	int data;
 	Node next;

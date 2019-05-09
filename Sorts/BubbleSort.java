@@ -3,10 +3,8 @@ package Sorts;
 import static Sorts.SortUtils.*;
 
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  * @see SortAlgorithm
  */
 
@@ -15,17 +13,17 @@ class BubbleSort implements SortAlgorithm {
      * This method implements the Generic Bubble Sort
      *
      * @param array The array to be sorted
-     * Sorts the array in increasing order
+     *              Sorts the array in increasing order
      **/
 
     @Override
-    public  <T extends Comparable<T>> T[] sort(T array[]) {
+    public <T extends Comparable<T>> T[] sort(T array[]) {
         int last = array.length;
         //Sorting
         boolean swap;
         do {
             swap = false;
-            for (int count = 0; count < last-1; count++) {
+            for (int count = 0; count < last - 1; count++) {
                 if (less(array[count], array[count + 1])) {
                     swap = swap(array, count, count + 1);
                 }
@@ -47,7 +45,7 @@ class BubbleSort implements SortAlgorithm {
         print(integers);
 
         // String Input
-        String[] strings = {"c", "a", "e", "b","d"};
+        String[] strings = {"c", "a", "e", "b", "d"};
         //Output => e, d, c, b, a
         print(bubbleSort.sort(strings));
 

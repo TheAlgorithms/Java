@@ -1,3 +1,5 @@
+package DataStructures.HashMap.Hashing;
+
 import java.util.Scanner;
 
 public class Main {

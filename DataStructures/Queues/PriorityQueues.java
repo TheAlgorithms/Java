@@ -1,3 +1,5 @@
+package DataStructures.Queues;
+
 /**
  * This class implements a PriorityQueue.
  * <p>
@@ -6,7 +8,6 @@
  * In this example I give numbers that are bigger, a higher priority.
  * Queues in theory have no fixed size but when using an array
  * implementation it does.
- *
  */
 class PriorityQueue {
     /**

@@ -1,3 +1,5 @@
+package divideconquer;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -42,7 +44,6 @@ public class SkylineAlgorithm {
      * @param list, the initial list of points
      * @return leftSkyLine, the combination of first half's and second half's skyline
      * @see Point
-     * @see produceFinalSkyLine
      */
     public ArrayList<Point> produceSubSkyLines(ArrayList<Point> list) {
 
@@ -72,7 +73,7 @@ public class SkylineAlgorithm {
             }
         }
         ArrayList<Point> leftSubSkyLine = produceSubSkyLines(leftHalf);
-        ArrayList<Point> rightSubSkyLine= produceSubSkyLines(rightHalf);
+        ArrayList<Point> rightSubSkyLine = produceSubSkyLines(rightHalf);
 
         // skyline is produced
         return produceFinalSkyLine(leftSubSkyLine, rightSubSkyLine);

@@ -1,16 +1,17 @@
+package Conversions;
+
 import java.util.Scanner;
 
 /**
  * This class converts a Decimal number to a Binary number
- * 
- * @author Unknown
  *
+ * @author Unknown
  */
 class DecimalToBinary {
 
     /**
      * Main Method
-     * 
+     *
      * @param args Command Line Arguments
      */
     public static void main(String args[]) {
@@ -19,7 +20,7 @@ class DecimalToBinary {
     }
 
     /**
-     * This method converts a decimal number 
+     * This method converts a decimal number
      * to a binary number using a conventional
      * algorithm.
      */
@@ -37,7 +38,7 @@ class DecimalToBinary {
     }
 
     /**
-     * This method converts a decimal number 
+     * This method converts a decimal number
      * to a binary number using a bitwise
      * algorithm
      */

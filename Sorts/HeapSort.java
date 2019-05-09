@@ -11,13 +11,14 @@ import static Sorts.SortUtils.*;
  * Implements MinHeap
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  */
 public class HeapSort implements SortAlgorithm {
 
 
     private static class Heap<T extends Comparable<T>> {
-        /** Array to store heap */
+        /**
+         * Array to store heap
+         */
         private T[] heap;
 
         /**
@@ -90,14 +91,11 @@ public class HeapSort implements SortAlgorithm {
         }
 
 
-
-
-
     }
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-       return sort(Arrays.asList(unsorted)).toArray(unsorted);
+        return sort(Arrays.asList(unsorted)).toArray(unsorted);
     }
 
     @Override
@@ -108,7 +106,7 @@ public class HeapSort implements SortAlgorithm {
         Heap<T> heap = new Heap<>(unsorted.toArray((T[]) new Comparable[unsorted.size()]));
 
         heap.makeMinHeap(0); // make min heap using index 0 as root.
-        List<T> sorted =  new ArrayList<>(size);
+        List<T> sorted = new ArrayList<>(size);
         while (size > 0) {
             T min = heap.getRoot(--size);
             sorted.add(min);

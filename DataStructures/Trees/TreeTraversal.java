@@ -1,10 +1,10 @@
+package DataStructures.Trees;
+
 import java.util.LinkedList;
 
 /**
-*
-* @author Varun Upadhyay (https://github.com/varunu28)
-*
-*/
+ * @author Varun Upadhyay (https://github.com/varunu28)
+ */
 
 
 // Driver Program
@@ -38,13 +38,13 @@ public class TreeTraversal {
 }
 
 /**
-* The Node class which initializes a Node of a tree
-* Consists of all 4 traversal methods: printInOrder, printPostOrder， printPreOrder & printLevelOrder
-* printInOrder: LEFT -> ROOT -> RIGHT
-* printPreOrder: ROOT -> LEFT -> RIGHT
-* printPostOrder: LEFT -> RIGHT -> ROOT
-* printLevelOrder: Prints by level (starting at root), from left to right.
-*/
+ * The Node class which initializes a Node of a tree
+ * Consists of all 4 traversal methods: printInOrder, printPostOrder， printPreOrder & printLevelOrder
+ * printInOrder: LEFT -> ROOT -> RIGHT
+ * printPreOrder: ROOT -> LEFT -> RIGHT
+ * printPostOrder: LEFT -> RIGHT -> ROOT
+ * printLevelOrder: Prints by level (starting at root), from left to right.
+ */
 class Node {
     Node left, right;
     int data;
@@ -53,20 +53,17 @@ class Node {
         this.data = data;
     }
 
-    public void insert (int value) {
+    public void insert(int value) {
         if (value < data) {
             if (left == null) {
                 left = new Node(value);
-            }
-            else {
+            } else {
                 left.insert(value);
             }
-        }
-        else {
+        } else {
             if (right == null) {
                 right = new Node(value);
-            }
-            else {
+            } else {
                 right.insert(value);
             }
         }
@@ -103,9 +100,9 @@ class Node {
     }
 
     /**
-    * O(n) time algorithm.
-    * Uses O(n) space to store nodes in a queue to aid in traversal.
-    */
+     * O(n) time algorithm.
+     * Uses O(n) space to store nodes in a queue to aid in traversal.
+     */
     public void printLevelOrder() {
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(this);

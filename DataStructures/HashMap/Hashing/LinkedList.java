@@ -1,3 +1,5 @@
+package DataStructures.HashMap.Hashing;
+
 class LinkedList {
 
 	private Node Head;

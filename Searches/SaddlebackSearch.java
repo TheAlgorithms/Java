@@ -27,10 +27,10 @@ public class SaddlebackSearch {
     /**
      * This method performs Saddleback Search
      *
-     * @param arr  The **Sorted** array in which we will search the element.
+     * @param arr The **Sorted** array in which we will search the element.
      * @param row the current row.
      * @param col the current column.
-     * @param key  the element that we want to search for.
+     * @param key the element that we want to search for.
      * @return The index(row and column) of the element if found.
      * Else returns -1 -1.
      */

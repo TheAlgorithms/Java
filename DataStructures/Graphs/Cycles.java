@@ -1,3 +1,5 @@
+package DataStructures.Graphs;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -5,10 +7,10 @@ import java.util.ArrayList;
 class Cycle {
 
     private int nodes, edges;
-    private int [][] adjacencyMatrix;
-    private boolean [] visited;
+    private int[][] adjacencyMatrix;
+    private boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
-    private  boolean [] finalCycles;
+    private boolean[] finalCycles;
 
     public Cycle() {
         Scanner in = new Scanner(System.in);
@@ -17,8 +19,8 @@ class Cycle {
         System.out.print("Enter the no. of Edges: ");
         edges = in.nextInt();
 
-        adjacencyMatrix = new int [nodes][nodes];
-        visited = new boolean [nodes];
+        adjacencyMatrix = new int[nodes][nodes];
+        visited = new boolean[nodes];
 
         for (int i = 0; i < nodes; i++) {
             visited[i] = false;
@@ -26,7 +28,7 @@ class Cycle {
 
         System.out.println("Enter the details of each edges <Start Node> <End Node>");
 
-        for(int i = 0; i < edges; i++) {            
+        for (int i = 0; i < edges; i++) {
             int start, end;
             start = in.nextInt();
             end = in.nextInt();
@@ -50,7 +52,7 @@ class Cycle {
         temp.add(curr);
         visited[curr] = true;
         for (int i = 0; i < nodes; i++) {
-            if(adjacencyMatrix[curr][i] == 1) {
+            if (adjacencyMatrix[curr][i] == 1) {
                 if (i == start) {
                     cycles.add(new ArrayList<Integer>(temp));
                 } else {
@@ -61,7 +63,7 @@ class Cycle {
             }
         }
 
-        if(temp.size() > 0) {
+        if (temp.size() > 0) {
             temp.remove(temp.size() - 1);
         }
         visited[curr] = false;

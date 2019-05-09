@@ -5,22 +5,20 @@ import java.util.Scanner;
 public class HexaDecimalToDecimal {
 
     // convert hexadecimal to decimal
-    public static int getHexaToDec(String hex){
+    public static int getHexaToDec(String hex) {
         String digits = "012345678910ABCDEFF";
         hex = hex.toUpperCase();
         int val = 0;
-        for (int i = 0; i < hex.length(); i++)
-        {
+        for (int i = 0; i < hex.length(); i++) {
             int d = digits.indexOf(hex.charAt(i));
-            val = 16*val + d;
+            val = 16 * val + d;
         }
         return val;
     }
 
     // Main method gets the hexadecimal input from user and converts it into Decimal output.
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         String hexa_Input;
         int dec_output;
         Scanner scan = new Scanner(System.in);
@@ -35,7 +33,7 @@ public class HexaDecimalToDecimal {
         Pass the string to the getHexaToDec function
         and it returns the decimal form in the variable dec_output.
         */
-        System.out.println("Number in Decimal: "+dec_output);
+        System.out.println("Number in Decimal: " + dec_output);
 
 
     }

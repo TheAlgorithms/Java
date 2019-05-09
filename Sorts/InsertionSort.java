@@ -4,10 +4,8 @@ import static Sorts.SortUtils.less;
 import static Sorts.SortUtils.print;
 
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  */
 
 class InsertionSort implements SortAlgorithm {
@@ -17,7 +15,6 @@ class InsertionSort implements SortAlgorithm {
      * Sorts the array in increasing order
      *
      * @param array The array to be sorted
-     *
      **/
 
     @Override
@@ -51,7 +48,7 @@ class InsertionSort implements SortAlgorithm {
         print(integers);
 
         // String Input
-        String[] strings = {"c", "a", "e", "b","d"};
+        String[] strings = {"c", "a", "e", "b", "d"};
 
         sort.sort(strings);
 

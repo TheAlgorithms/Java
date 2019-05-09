@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 /**
  * This class implements a SinglyLinked List. This is done
  * using SinglyLinkedList class and a LinkForLinkedList Class.
@@ -8,10 +10,8 @@
  * it grows and shrinks as it is edited. This is an example of
  * a singly linked list. Elements can only be added/removed
  * at the head/front of the list.
- *
- * @author yanglbme
  */
-class SinglyLinkedList {
+public class SinglyLinkedList {
     /**
      * Head refer to the front of the list
      */
@@ -38,8 +38,7 @@ class SinglyLinkedList {
     public void insertNth(int data, int position) {
         if (position < 0 || position > getSize()) {
             throw new RuntimeException("position less than zero or position more than the count of list");
-        }
-        else if (position == 0)
+        } else if (position == 0)
             insertHead(data);
         else {
             Node cur = head;
@@ -66,13 +65,12 @@ class SinglyLinkedList {
     }
 
     /**
-    * This method deletes an element at Nth position
-    */
+     * This method deletes an element at Nth position
+     */
     public void deleteNth(int position) {
-         if (position < 0 || position > getSize()) {
+        if (position < 0 || position > getSize()) {
             throw new RuntimeException("position less than zero or position more than the count of list");
-        }
-        else if (position == 0)
+        } else if (position == 0)
             deleteHead();
         else {
             Node cur = head;
@@ -105,8 +103,8 @@ class SinglyLinkedList {
     }
 
     /**
-    * Returns the size of the linked list
-    */
+     * Returns the size of the linked list
+     */
     public int getSize() {
         if (head == null)
             return 0;
@@ -156,8 +154,6 @@ class SinglyLinkedList {
  * This class is the nodes of the SinglyLinked List.
  * They consist of a value and a pointer to the node
  * after them.
- *
- * @author yanglbme
  */
 class Node {
     /**

@@ -49,7 +49,9 @@ class Graph {
     // mapping of vertex names to Vertex objects, built from a set of Edges
     private final Map<String, Vertex> graph;
 
-    /** One edge of the graph (only used by Graph constructor) */
+    /**
+     * One edge of the graph (only used by Graph constructor)
+     */
     public static class Edge {
         public final String v1, v2;
         public final int dist;
@@ -61,7 +63,9 @@ class Graph {
         }
     }
 
-    /** One vertex of the graph, complete with mappings to neighbouring vertices */
+    /**
+     * One vertex of the graph, complete with mappings to neighbouring vertices
+     */
     public static class Vertex implements Comparable<Vertex> {
         public final String name;
         // MAX_VALUE assumed to be infinity
@@ -97,7 +101,9 @@ class Graph {
         }
     }
 
-    /** Builds a graph from a set of edges */
+    /**
+     * Builds a graph from a set of edges
+     */
     public Graph(Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
@@ -114,7 +120,9 @@ class Graph {
         }
     }
 
-    /** Runs dijkstra using a specified source vertex */
+    /**
+     * Runs dijkstra using a specified source vertex
+     */
     public void dijkstra(String startName) {
         if (!graph.containsKey(startName)) {
             System.err.printf("Graph doesn't contain start vertex \"%s\"\n", startName);
@@ -133,7 +141,9 @@ class Graph {
         dijkstra(q);
     }
 
-    /** Implementation of dijkstra's algorithm using a binary heap. */
+    /**
+     * Implementation of dijkstra's algorithm using a binary heap.
+     */
     private void dijkstra(final NavigableSet<Vertex> q) {
         Vertex u, v;
         while (!q.isEmpty()) {
@@ -157,7 +167,9 @@ class Graph {
         }
     }
 
-    /** Prints a path from the source to the specified vertex */
+    /**
+     * Prints a path from the source to the specified vertex
+     */
     public void printPath(String endName) {
         if (!graph.containsKey(endName)) {
             System.err.printf("Graph doesn't contain end vertex \"%s\"\n", endName);
@@ -168,7 +180,9 @@ class Graph {
         System.out.println();
     }
 
-    /** Prints the path from the source to every vertex (output order is not guaranteed) */
+    /**
+     * Prints the path from the source to every vertex (output order is not guaranteed)
+     */
     public void printAllPaths() {
         for (Vertex v : graph.values()) {
             v.printPath();

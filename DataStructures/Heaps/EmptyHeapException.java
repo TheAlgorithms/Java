@@ -1,6 +1,3 @@
-/**
- *
- */
 package DataStructures.Heaps;
 
 /**

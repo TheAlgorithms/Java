@@ -7,18 +7,17 @@ import java.util.List;
  * The class contains util methods
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  **/
 final class SortUtils {
 
-
     /**
      * Helper method for swapping places in array
+     *
      * @param array The array which elements we want to swap
-     * @param idx index of the first element
-     * @param idy index of the second element
+     * @param idx   index of the first element
+     * @param idy   index of the second element
      */
-    static <T> boolean swap(T[] array, int idx, int idy){
+    static <T> boolean swap(T[] array, int idx, int idy) {
         T swap = array[idx];
         array[idx] = array[idy];
         array[idy] = swap;
@@ -28,6 +27,7 @@ final class SortUtils {
 
     /**
      * This method checks if first element is less then the other element
+     *
      * @param v first element
      * @param w second element
      * @return true if the first element is less then the second element
@@ -39,9 +39,10 @@ final class SortUtils {
 
     /**
      * Just print list
+     *
      * @param toPrint - a list which should be printed
      */
-    static void print(List<?> toPrint){
+    static void print(List<?> toPrint) {
         toPrint.stream()
                 .map(Object::toString)
                 .map(str -> str + " ")
@@ -53,23 +54,24 @@ final class SortUtils {
 
     /**
      * Prints an array
+     *
      * @param toPrint - the array  which should be printed
      */
-    static void print(Object[] toPrint){
+    static void print(Object[] toPrint) {
         System.out.println(Arrays.toString(toPrint));
     }
 
 
-
     /**
      * Swaps all position from {@param left} to @{@param right} for {@param array}
+     *
      * @param array is an array
-     * @param left is a left flip border of the array
+     * @param left  is a left flip border of the array
      * @param right is a right flip border of the array
      */
     static <T extends Comparable<T>> void flip(T[] array, int left, int right) {
         while (left <= right) {
-            swap(array, left++ , right--);
+            swap(array, left++, right--);
         }
     }
 }
