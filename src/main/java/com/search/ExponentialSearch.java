@@ -20,9 +20,11 @@ public class ExponentialSearch {
      * @return The index position of the key in the array, returns -1 for empty array
      */
     public <T extends Comparable<T>> int findIndex(T[] array, T key) {
-        int size = array.length;
-        if(size == 0)
+        if (array == null || array.length == 0) {
             return -1;
+        }
+        int size = array.length;
+
         // If the element is present at first position
         if (array[0] == key)
             return 0;
@@ -30,10 +32,10 @@ public class ExponentialSearch {
         // Find the range for binary search by repeated doubling
         int i = 1;
         while (i < size && array[i].compareTo(key) <= 0) {
-            i = i * 2;
+            i <<= 1;
         }
 
         // Call binary search for the range found
-        return Arrays.binarySearch(array, i / 2, Math.min(i, size), key);
+        return Arrays.binarySearch(array, i >> 1, Math.min(i, size), key);
     }
 }
