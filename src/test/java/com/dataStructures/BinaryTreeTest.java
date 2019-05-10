@@ -1,30 +1,29 @@
-package src.main.java.com.dataStructures;
+package src.test.java.com.dataStructures;
 
 import org.junit.Test;
+import src.main.java.com.dataStructures.BinaryTree;
+
 import static org.junit.Assert.*;
 
-/**
- *
- * @author RICARDO
- */
 public class BinaryTreeTest {
-    
+
     public BinaryTreeTest() {
     }
-    
+
     /**
      * Test of insert method, of class BinaryTree.
      */
     @Test
-    public void testInsert_BinaryTree() {
+    public void testInsertBinaryTree() {
         System.out.println("insert");
-        BinaryTree<String> lowerdata = new BinaryTree<>("1");
-        BinaryTree<String> upperdata = new BinaryTree<>("3");
+        BinaryTree<String> lowerData = new BinaryTree<>("1");
+        BinaryTree<String> upperData = new BinaryTree<>("3");
         BinaryTree<String> instance = new BinaryTree<>("2");
-        instance.insert(lowerdata);
-        instance.insert(upperdata);
-        String proof = instance.getLeft().toString()+instance.toString()+instance.getRight().toString();
-        System.out.println(proof);
+        instance.insert(lowerData);
+        instance.insert(upperData);
+        String proof = instance.getLeft().toString()
+                + instance.toString()
+                + instance.getRight().toString();
         assertEquals("123", proof);
     }
 
@@ -36,10 +35,10 @@ public class BinaryTreeTest {
         System.out.println("search");
         BinaryTree<Integer> instance = new BinaryTree<>(5);
         for (int i = 1; i < 10; i++) {
-            instance.insert(new Integer(i));
+            instance.insert(i);
         }
-        BinaryTree result = instance.search(new Integer(1));
-        assertEquals(new Integer(1), result.getData());
+        BinaryTree result = instance.search(1);
+        assertEquals(1, result.getData());
     }
 
     /**
@@ -52,9 +51,8 @@ public class BinaryTreeTest {
         for (int i = 1; i < 10; i++) {
             instance.insert(i);
         }
-        
-        boolean result = instance.contains(2)&&instance.contains(11);
-        assertEquals(false, result);
-    }
 
+        boolean result = instance.contains(2) && instance.contains(11);
+        assertFalse(result);
+    }
 }

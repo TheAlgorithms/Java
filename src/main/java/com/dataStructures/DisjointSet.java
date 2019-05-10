@@ -15,7 +15,6 @@ import java.util.*;
  * <p>
  * 2. quickly query two elements whether contained in the same set, requiring about O(1) time.
  *
- * @author yangxf
  */
 public class DisjointSet<T> implements Serializable {
     private static final long serialVersionUID = 3134700471905625636L;
