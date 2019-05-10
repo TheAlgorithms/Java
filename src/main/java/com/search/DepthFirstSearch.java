@@ -12,7 +12,6 @@ package src.main.java.com.search;
  * Best-case performance	O(1)
  * Average performance	   	O(n)
  * 
- * @author abir (https://github.com/abircb)
  */
 
 public class DepthFirstSearch {
@@ -35,14 +34,12 @@ public class DepthFirstSearch {
  * The BinaryTree class defines the structure of a binary tree
  * Also contains a static nested class called TreeNode
  * @param <T>
- * @author abir
  */
 class BinaryTree<T extends Comparable<T>> {
 	
 	private TreeNode<T> root;
 	
 	/**
-	 * @author abir
 	 * @param <P> 
 	 * This class defines what a node in a binary tree looks like
 	 */
@@ -87,10 +84,10 @@ class BinaryTree<T extends Comparable<T>> {
 		 * @return the tree node corresponding to the key
 		 */
 		private TreeNode<P> find(P key) {
-			if(key.compareTo(this.key) == 0) return this;
+			if (key.compareTo(this.key) == 0) return this;
 
 			else if(key.compareTo(this.key) < 0) {
-				if(this.left == null) return null;
+				if (this.left == null) return null;
 				else return this.left.find(key);
 			}
 			
