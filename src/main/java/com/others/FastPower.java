@@ -1,4 +1,4 @@
-package src.main.java.com.Others;
+package src.main.java.com.others;
 
 import java.math.BigInteger;
 
@@ -7,14 +7,13 @@ import java.math.BigInteger;
  * FastPower aims to calculate quickly in this circumstances with time complexity O(log k),
  * where k is the index.
  *
- * @author DDullahan
  */
 public class FastPower {
     public static BigInteger calculate(BigInteger n, BigInteger k, BigInteger mod) {
         BigInteger ans = BigInteger.ONE;
         while (!k.equals(BigInteger.ZERO)) {
             int odd = k.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO);
-            if(odd > 0){
+            if (odd > 0) {
                 ans = ans.multiply(n).mod(mod);
             }
             k = k.divide(BigInteger.valueOf(2));
