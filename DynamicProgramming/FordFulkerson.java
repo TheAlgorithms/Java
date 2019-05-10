@@ -2,13 +2,12 @@ package DynamicProgramming;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
 import java.util.Vector;
 
-public class Ford_Fulkerson {
-    Scanner scan = new Scanner(System.in);
+public class FordFulkerson {
     final static int INF = 987654321;
-    static int V; // edges
+    // edges
+    static int V;
     static int[][] capacity, flow;
 
     public static void main(String[] args) {

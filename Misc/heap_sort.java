@@ -1,7 +1,7 @@
 package Misc;
 
 public class heap_sort {
-    public void sort(int arr[]) {
+    public void sort(int[] arr) {
         int n = arr.length;
 
         // Build heap (rearrange array)
@@ -22,7 +22,7 @@ public class heap_sort {
 
     // To heapify a subtree rooted with node i which is
     // an index in arr[]. n is size of heap
-    void heapify(int arr[], int n, int i) {
+    void heapify(int[] arr, int n, int i) {
         int largest = i;  // Initialize largest as root
         int l = 2 * i + 1;  // left = 2*i + 1
         int r = 2 * i + 2;  // right = 2*i + 2
@@ -47,7 +47,7 @@ public class heap_sort {
     }
 
     /* A utility function to print array of size n */
-    static void printArray(int arr[]) {
+    static void printArray(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n; ++i)
             System.out.print(arr[i] + " ");

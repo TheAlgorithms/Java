@@ -1,5 +1,6 @@
-package DynamicProgramming; /**
- * Author : SUBHAM SANGHAI
+package DynamicProgramming;
+
+/**
  * A DynamicProgramming based solution for Edit Distance problem In Java
  * Description of Edit Distance with an Example:
  * <p>
@@ -13,37 +14,13 @@ package DynamicProgramming; /**
  * kitten → sitten (substitution of "s" for "k")
  * sitten → sittin (substitution of "i" for "e")
  * sittin → sitting (insertion of "g" at the end).
- * Description of Edit Distance with an Example:
- * <p>
- * Edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one another,
- * by counting the minimum number of operations required to transform one string into the other. The
- * distance operations are the removal, insertion, or substitution of a character in the string.
- * <p>
- * <p>
- * The Distance between "kitten" and "sitting" is 3. A minimal edit script that transforms the former into the latter is:
- * <p>
- * kitten → sitten (substitution of "s" for "k")
- * sitten → sittin (substitution of "i" for "e")
- * sittin → sitting (insertion of "g" at the end).
+ *
+ * @author SUBHAM SANGHAI
  **/
-
-/**Description of Edit Distance with an Example:
-
- Edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one another,
- by counting the minimum number of operations required to transform one string into the other. The
- distance operations are the removal, insertion, or substitution of a character in the string.
-
-
- The Distance between "kitten" and "sitting" is 3. A minimal edit script that transforms the former into the latter is:
-
- kitten → sitten (substitution of "s" for "k")
- sitten → sittin (substitution of "i" for "e")
- sittin → sitting (insertion of "g" at the end).**/
 
 import java.util.Scanner;
 
-public class Edit_Distance {
-
+public class EditDistance {
 
     public static int minDistance(String word1, String word2) {
         int len1 = word1.length();
@@ -87,8 +64,7 @@ public class Edit_Distance {
     }
 
 
-    // Driver program to test above function
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String s1, s2;
         System.out.println("Enter the First String");
@@ -96,8 +72,7 @@ public class Edit_Distance {
         System.out.println("Enter the Second String");
         s2 = input.nextLine();
         //ans stores the final Edit Distance between the two strings
-        int ans = 0;
-        ans = minDistance(s1, s2);
+        int ans = minDistance(s1, s2);
         System.out.println("The minimum Edit Distance between \"" + s1 + "\" and \"" + s2 + "\" is " + ans);
     }
 }
