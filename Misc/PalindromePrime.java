@@ -1,5 +1,3 @@
-package Misc;
-
 import java.util.Scanner;
 
 public class PalindromePrime {
