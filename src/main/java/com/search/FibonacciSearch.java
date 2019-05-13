@@ -31,7 +31,7 @@ public class FibonacciSearch {
         int fibN2 = 0; // (n-2)th Fibonacci term
         int fibN = fibN1 + fibN2; // nth Fibonacci term
 
-        //fibN should store the smallest Fibonacci Number greater than or equal to size
+        // fibN should store the smallest Fibonacci Number greater than or equal to size
         while (fibN < size) {
             fibN2 = fibN1;
             fibN1 = fibN;
@@ -45,7 +45,7 @@ public class FibonacciSearch {
             // Check if fibN2 is a valid location
             int i = min(offset + fibN2, size - 1);
 
-            //If key is greater than the value at index fibN2, cuts the sub-array from offset to i
+            // If key is greater than the value at index fibN2, cuts the sub-array from offset to i
             if (array[i].compareTo(key) < 0) {
                 fibN = fibN1;
                 fibN1 = fibN2;
@@ -53,12 +53,12 @@ public class FibonacciSearch {
                 offset = i;
             }
 
-            //If x is greater than the value at index fibN2, cuts the sub-array after i+1
+            // If x is greater than the value at index fibN2, cuts the sub-array after i+1
             else if (array[i].compareTo(key) > 0) {
                 fibN = fibN2;
                 fibN1 = fibN1 - fibN2;
                 fibN2 = fibN - fibN1;
-            } else return i; //Element found
+            } else return i; // Element found
         }
         // comparing the last element with key
         if (fibN1 == 1 && array[offset + 1].compareTo(key) == 0)
