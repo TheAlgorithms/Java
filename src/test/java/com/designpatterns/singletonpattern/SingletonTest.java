@@ -23,7 +23,6 @@ public class SingletonTest {
                 try {
                     Singleton singletonInstance = Singleton.getInstance();
                     int singletonInsCode = singletonInstance.hashCode();
-                    System.out.println(singletonInsCode);
                     hashCodeList.add(singletonInsCode);
                 } catch (Exception e) {
                     System.out.println("Exception is caught");
