@@ -21,7 +21,7 @@ public class PolygonFactoryTest {
         }
 
 
-        //Test for square
+        // Test for square
         Polygon square = polFactory.getPolygon(4);
         if (!square.getType().equals("Square")) {
             failReason += "Polygon Factory failed for Square.";
