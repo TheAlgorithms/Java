@@ -11,7 +11,7 @@ public class PolygonFactoryTest {
         String failReason = "";
         PolygonFactory polFactory = new PolygonFactory();
 
-        //Test for triangle
+        // Test for triangle
         Polygon triangle = polFactory.getPolygon(3);
         if (!triangle.getType().equals("Triangle")) {
             failReason += "Polygon Factory failed for Triangle.";
