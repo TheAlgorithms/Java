@@ -31,7 +31,7 @@ public class PolygonFactoryTest {
         }
 
 
-        //Test for pentagon
+        // Test for pentagon
         Polygon pentagon = polFactory.getPolygon(5);
         if (!"Pentagon".equals(pentagon.getType())) {
             failReason += "Polygon Factory failed for Pentagon.";
