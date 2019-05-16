@@ -13,7 +13,7 @@ public class PolygonFactoryTest {
 
         // Test for triangle
         Polygon triangle = polFactory.getPolygon(3);
-        if (!triangle.getType().equals("Triangle")) {
+        if (!"Triangle".equals(triangle.getType())) {
             failReason += "Polygon Factory failed for Triangle.";
         }
         if (triangle.area(4) != 6.928208) {
