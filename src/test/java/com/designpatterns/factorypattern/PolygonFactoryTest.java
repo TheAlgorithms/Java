@@ -23,7 +23,7 @@ public class PolygonFactoryTest {
 
         // Test for square
         Polygon square = polFactory.getPolygon(4);
-        if (!square.getType().equals("Square")) {
+        if (!"Square".equals(square.getType())) {
             failReason += "Polygon Factory failed for Square.";
         }
         if (square.area(5) != 25) {
