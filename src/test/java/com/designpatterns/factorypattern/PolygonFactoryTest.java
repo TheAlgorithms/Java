@@ -33,7 +33,7 @@ public class PolygonFactoryTest {
 
         //Test for pentagon
         Polygon pentagon = polFactory.getPolygon(5);
-        if (!pentagon.getType().equals("Pentagon")) {
+        if (!"Pentagon".equals(pentagon.getType())) {
             failReason += "Polygon Factory failed for Pentagon.";
         }
         if (pentagon.area(9) != 311.615424) {
