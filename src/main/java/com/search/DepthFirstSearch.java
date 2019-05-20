@@ -1,4 +1,4 @@
-package Searches;
+package src.main.java.com.search;
 
 /**
  * Searching is faster in sorted structures. Binary search is O(log n).
