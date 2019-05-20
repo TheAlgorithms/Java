@@ -1,16 +1,16 @@
-package src.main.java.com.search;
+package searchAlgorithms;
 
 /**
  * Searching is faster in sorted structures. Binary search is O(log n).
  * However, the cost of sorting is O(n · log n).
- * What to do when adding or removing elements? Sort again? No.
- * Create efficient data structures to maintain sorted sequences, and search in them
- * Key example: binary sorted tree, allowing O(log N) insert, remove and lookup.
+ * What should we do when adding or removing elements? Sort again? No.
+ * Instead, we should create efficient data structures to maintain sorted sequences, and search in them
+ * Key example: binary sorted tree; allowing O(log N) insert, remove and lookup.
    
    In comes, depth-first search
  * Worst-case performance	O(n)
  * Best-case performance	O(1)
- * Average performance	   	O(n)
+ * Average performance	        O(n)
  * 
  */
 
@@ -25,9 +25,8 @@ public class DepthFirstSearch {
      */
 
 	public static <T extends Comparable<T>> T find(T key, BinaryTree<T> tree) {
-        	return tree.get(key);
-	}
-	
+        return tree.get(key);
+    }
 }
 
 /**
@@ -40,8 +39,8 @@ class BinaryTree<T extends Comparable<T>> {
 	private TreeNode<T> root;
 	
 	/**
-	 * @param <P> 
 	 * This class defines what a node in a binary tree looks like
+	 * @param <P> 
 	 */
 	private static class TreeNode<P extends Comparable<P>>  {
 		
@@ -61,7 +60,7 @@ class BinaryTree<T extends Comparable<T>> {
 		 */
 		private void add(TreeNode<P> node) {
 			if (node.key.compareTo(this.key) < 0) {
-				if(this.left == null) {
+				if (this.left == null) {
 					this.left = node;
 				}
 				else {
@@ -70,7 +69,7 @@ class BinaryTree<T extends Comparable<T>> {
 			}
 			
 			else {
-				if(this.right == null) {
+				if (this.right == null) {
 					this.right = node;
 				}
 				else {
@@ -86,13 +85,13 @@ class BinaryTree<T extends Comparable<T>> {
 		private TreeNode<P> find(P key) {
 			if (key.compareTo(this.key) == 0) return this;
 
-			else if(key.compareTo(this.key) < 0) {
+			else if (key.compareTo(this.key) < 0) {
 				if (this.left == null) return null;
 				else return this.left.find(key);
 			}
 			
 			else {
-				if(this.right == null) return null;
+				if (this.right == null) return null;
 				else return this.right.find(key);
 			}
 		}
@@ -105,7 +104,7 @@ class BinaryTree<T extends Comparable<T>> {
 	
 	public void add(T key, T value) {
 		TreeNode<T> node = new TreeNode<T>(key, value);
-		if(this.root == null) {
+		if (this.root == null) {
 			this.root = node;
 		}
 		else {
@@ -114,10 +113,10 @@ class BinaryTree<T extends Comparable<T>> {
 	}
 	
 	public T get(T key) {
-		if(this.root == null) return null;
+		if (this.root == null) return null;
 		
 		TreeNode<T> node = this.root.find(key);
-		if(node == null) return null;
+		if (node == null) return null;
 		return node.value;
 	}
 }
