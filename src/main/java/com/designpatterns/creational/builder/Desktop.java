@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.builderpattern;
+package src.main.java.com.designpatterns.creational.builder;
 
 /**
  * The Builder is a design pattern designed to provide a flexible solution to various object creation problems in

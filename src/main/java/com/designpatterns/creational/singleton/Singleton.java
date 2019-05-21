@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.singletonpattern;
+package src.main.java.com.designpatterns.creational.singleton;
 
 /**
  * The singleton pattern is a design pattern that restricts the instantiation of a class to one "single" instance.

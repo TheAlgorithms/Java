@@ -1,8 +1,8 @@
-package src.test.java.com.designpatterns.singletonpattern;
+package src.test.java.com.designpatterns.creational.singleton;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.java.com.designpatterns.singletonpattern.Singleton;
+import src.main.java.com.designpatterns.creational.singleton.Singleton;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
