@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.factorypattern;
+package src.main.java.com.designpatterns.creational.factory;
 
 public class Square implements Polygon {
 

@@ -1,9 +1,9 @@
-package src.test.java.com.designpatterns.factorypattern;
+package src.test.java.com.designpatterns.creational.factory;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.java.com.designpatterns.factorypattern.Polygon;
-import src.main.java.com.designpatterns.factorypattern.PolygonFactory;
+import src.main.java.com.designpatterns.creational.factory.Polygon;
+import src.main.java.com.designpatterns.creational.factory.PolygonFactory;
 
 public class PolygonFactoryTest {
     @Test

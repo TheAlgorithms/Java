@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.factorypattern;
+package src.main.java.com.designpatterns.creational.factory;
 
 /**
  * In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal

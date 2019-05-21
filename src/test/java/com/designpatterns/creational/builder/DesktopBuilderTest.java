@@ -1,8 +1,8 @@
-package src.test.java.com.designpatterns.builderpattern;
+package src.test.java.com.designpatterns.creational.builder;
 
 import org.junit.Assert;
 import org.junit.Test;
-import src.main.java.com.designpatterns.builderpattern.Desktop;
+import src.main.java.com.designpatterns.creational.builder.Desktop;
 
 public class DesktopBuilderTest {
     private final String configOne = "Desktop{CPU='Intel i7', RAM='Corsair Vengeance 3000', isGraphicCardEnabled=true" +
