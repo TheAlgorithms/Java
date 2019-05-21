@@ -16,7 +16,6 @@ import java.util.function.Function;
  * <p>
  * The accuracy rate depends on capacity and hash functions.
  *
- * @author yangxf
  */
 public class BloomFilter implements Serializable {
     private static final long serialVersionUID = -4466610350741278658L;

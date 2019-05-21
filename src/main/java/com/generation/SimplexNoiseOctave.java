@@ -14,7 +14,7 @@ public class SimplexNoiseOctave {
             new Gradient(1, 0, -1), new Gradient(-1, 0, -1), new Gradient(0, 1, 1),
             new Gradient(0, -1, 1), new Gradient(0, 1, -1), new Gradient(0, -1, -1)
     };
-    private static final short P_SUPPLY[] = {
+    private static final short[] P_SUPPLY = {
 
             151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225,
             140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148,

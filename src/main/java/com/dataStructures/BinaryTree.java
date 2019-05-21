@@ -2,39 +2,42 @@ package src.main.java.com.dataStructures;
 
 /**
  * Binary tree for general value type, without redundancy
- * @author RICARDO
+ *
  * @param <T> root data
  */
+
 public class BinaryTree<T extends Comparable> {
     private final T data;
-    private BinaryTree  right,  // the upper binary tree
-                        left;   // the lower binary tree
+    private BinaryTree right,  // the upper binary tree
+            left;   // the lower binary tree
 
     public BinaryTree(T data) {
         this.data = data;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.data.toString();
     }
-    
+
     /**
      * inserts a new value in it's correspondant place
-     * @param newDataValue value of the new banary tree to add on this tree
+     *
+     * @param newDataValue value of the new binary tree to add on this tree
      */
-    public void insert(T newDataValue){
+    public void insert(T newDataValue) {
         this.insert(new BinaryTree(newDataValue));
     }
-    
+
     /**
      * inserts a new binary tree in it's correspondant place
-     * @param newData new value to add on this tree 
+     *
+     * @param newData new value to add on this tree
      */
-    public void insert(BinaryTree newData){
-        
+    public void insert(BinaryTree newData) {
+
         int cpr = newData.data.compareTo(this.data); //new value comparission respect to actual value
-        
+
         if (cpr < 0)
             if (this.left == null)
                 this.setLeft(newData);
@@ -51,12 +54,13 @@ public class BinaryTree<T extends Comparable> {
 
     /**
      * search and specific value on the tree
-     * @param data Searched value 
-     * @return Binary tree wich contains the value, null if it doesn't exist
+     *
+     * @param data Searched value
+     * @return Binary tree which contains the value, null if it doesn't exist
      */
-    public BinaryTree search(T data){
+    public BinaryTree search(T data) {
         int cpr = data.compareTo(this.data); //new value comparission respect to actual value
-        
+
         if (cpr < 0) {
             if (this.left == null)
                 return null;    //the value doesn't exist
@@ -65,43 +69,45 @@ public class BinaryTree<T extends Comparable> {
         if (cpr > 0) {
             if (this.right == null)
                 return null;    //the value doesn't exist
-            return this.right.search(data);             
+            return this.right.search(data);
         }
         return this;
     }
-    
+
     /**
      * Checks if the data value exist in the tree
+     *
      * @param data data to be searched
      * @return true if this tree contains the data value, false if not.
      */
-    public boolean contains(T data){
+    public boolean contains(T data) {
         return this.search(data) != null;
     }
-    
+
     /**
      * uses recursive black magic to print this tree in console
+     *
      * @param tabCounter prev tabs
      */
-    private void print(int tabCounter){
+    private void print(int tabCounter) {
         for (int i = 0; i < tabCounter; i++)
             System.out.print("\t");
-        
+
         System.out.println(this);
-        
+
         if (this.left != null)
             this.left.print(tabCounter + 1);  //it can't be ++ , pls don't change it
         if (this.right != null)
             this.right.print(tabCounter + 1);  //it can't be ++ , pls don't change it
     }
-    
+
     /**
      * uses black magic to print this tree in console
      */
-    public void print(){
+    public void print() {
         this.print(0);
     }
-    
+
     //getters and setters
     public T getData() {
         return data;

@@ -11,7 +11,7 @@ public class BinaryToHexadecimal {
      * hm to store hexadecimal codes for binary numbers
      * within the range: 0000 to 1111 i.e. for decimal numbers 0 to 15
      */
-   private static Map<Integer, String> hmHexadecimal = new HashMap<>(16);
+    private static Map<Integer, String> hmHexadecimal = new HashMap<>(16);
 
     static {
         int i;

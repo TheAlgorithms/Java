@@ -5,8 +5,8 @@ public class GaleShapley {
     /**
      * Return a stable matching between men and women according to their preferences,
      * following the Gale-Shapley algorithm.
-     * 
-     * @param menPrefs for each man, for each preference rank, the corresponding woman
+     *
+     * @param menPrefs   for each man, for each preference rank, the corresponding woman
      * @param womenPrefs for each woman, for each preference rank, the corresponding man
      * @return for each man, the associated woman (1-dimensional array)
      */
@@ -88,7 +88,7 @@ public class GaleShapley {
 
     /**
      * Get a currently unengaged man, if there is one
-     * 
+     *
      * @param menMatching the current men matching array (being constructed)
      * @return the first man that is not engaged, or -1 if all men are engaged
      */
