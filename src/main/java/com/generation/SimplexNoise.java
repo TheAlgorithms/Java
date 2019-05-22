@@ -36,7 +36,7 @@ public class SimplexNoise {
 
             this.octaves[index] = new SimplexNoiseOctave(random.nextInt());
             this.frequencys[index] = Math.pow(2, index);
-            this.amplitudes[index] = Math.pow(persistence, (double)octaveCount - index);
+            this.amplitudes[index] = Math.pow(persistence, (double) octaveCount - index);
         }
     }
 
