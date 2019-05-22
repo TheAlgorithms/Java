@@ -10,10 +10,10 @@ import java.io.InputStreamReader;
 public class RemoveDuplicateFromString {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String inp_str = br.readLine();
+        String inpStr = br.readLine();
 
-        System.out.println("Actual string is: " + inp_str);
-        System.out.println("String after removing duplicates: " + removeDuplicate(inp_str));
+        System.out.println("Actual string is: " + inpStr);
+        System.out.println("String after removing duplicates: " + removeDuplicate(inpStr));
 
         br.close();
     }
@@ -32,7 +32,7 @@ public class RemoveDuplicateFromString {
             return s;
         }
 
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         int n = s.length();
 
         for (int i = 0; i < n; i++) {

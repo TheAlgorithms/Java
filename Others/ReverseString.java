@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  *
  * @author Unknown
  */
-class ReverseString {
+public class ReverseString {
 
     /**
      * This method reverses the string str and returns it
@@ -18,9 +18,9 @@ class ReverseString {
      * @return Reversed string
      */
     public static String reverse(String str) {
-        if (str.isEmpty() || str == null) return str;
+        if (str == null || str.isEmpty()) return str;
 
-        char arr[] = str.toCharArray();
+        char[] arr = str.toCharArray();
         for (int i = 0, j = str.length() - 1; i < j; i++, j--) {
             char temp = arr[i];
             arr[i] = arr[j];
@@ -35,7 +35,7 @@ class ReverseString {
      * @param args Command line arguments
      * @throws IOException Exception thrown because of BufferedReader
      */
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the string");
         String srr = br.readLine();
