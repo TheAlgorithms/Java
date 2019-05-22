@@ -1,7 +1,10 @@
 package MinimizingLateness;
 
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class MinimizingLateness {
 
@@ -18,23 +21,23 @@ public class MinimizingLateness {
     }
 
     public static void main(String[] args) throws IOException {
-        // TODO Auto-generated method stub
         StringTokenizer token;
 
-        String ch;
-        BufferedReader in = new BufferedReader(new FileReader("input.txt"));
-        int indexCount; // size of array index
-        ch = in.readLine();
-        indexCount = Integer.parseInt(ch); // The first line specifies the size of the operation (= the size of the array)
+        BufferedReader in = new BufferedReader(new FileReader("MinimizingLateness/lateness_data.txt"));
+        String ch = in.readLine();
+        if (ch == null || ch.isEmpty()) {
+            return;
+        }
+        int indexCount = Integer.parseInt(ch);
         System.out.println("Input Data : ");
         System.out.println(indexCount); // number of operations
-        Schedule array[] = new Schedule[indexCount]; // Create an array to hold the operation
+        Schedule[] array = new Schedule[indexCount]; // Create an array to hold the operation
         int i = 0;
         while ((ch = in.readLine()) != null) {
             token = new StringTokenizer(ch, " ");
             // Include the time required for the operation to be performed in the array and the time it should be completed.
             array[i] = new Schedule(Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken()));
-            i++; // 다음 인덱스
+            i++;
             System.out.println(array[i - 1].t + " " + array[i - 1].d);
         }
 
