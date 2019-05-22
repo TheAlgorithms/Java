@@ -1,14 +1,10 @@
 package src.test.java.com.generation;
 
-
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
-
-
 import org.junit.Assert;
 import org.junit.Test;
 import src.main.java.com.generation.SimplexNoise;
@@ -35,7 +31,7 @@ public class SimplexNoiseTest {
             Assert.assertEquals(HEIGHT, image.getHeight());
 
         } catch (IOException | IllegalArgumentException exception) {
-
+            Assert.fail(exception.toString());
         }
 
         for (int x = 0; x < WIDTH; x++) {
