@@ -52,7 +52,7 @@ public class CircleLinkedList<E> {
             before = before.next;
         }
         E saved = iterator.value;
-        // assigning the next referance to the the element following the element we want to remove... the last element will be assigned to the head.
+        // assigning the next reference to the the element following the element we want to remove... the last element will be assigned to the head.
         before.next = iterator.next;
         // scrubbing
         iterator.next = null;

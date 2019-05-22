@@ -6,8 +6,7 @@ import java.util.Scanner;
 /**
  * This class is build to demonstrate the application of the AES-algorithm on a
  * single 128-Bit block of data.
- * 
- * @see khalil2535
+ *
  */
 public class AES {
 
@@ -202,8 +201,7 @@ public class AES {
 		String rBytes = t.toString(16);
 
 		// Add zero padding
-		int rBytesLength = rBytes.length();
-		while (rBytesLength < 8) {
+		while (rBytes.length() < 8) {
 			rBytes = "0" + rBytes;
 		}
 
@@ -228,8 +226,8 @@ public class AES {
 			currentByteBits = Integer.toHexString(currentByte);
 
 			// Add zero padding
-			int currentByteBitsLength = currentByteBits.length();
-			while (currentByteBitsLength < 2) {
+
+			while (currentByteBits.length() < 2) {
 				currentByteBits = '0' + currentByteBits;
 			}
 
@@ -304,8 +302,7 @@ public class AES {
 		String blockBits = block.toString(2);
 
 		// Append leading 0 for full "128-bit" string
-		int blockBitsLength = blockBits.length();
-		while (blockBitsLength < 128) {
+		while (blockBits.length() < 128) {
 			blockBits = '0' + blockBits;
 		}
 
@@ -333,8 +330,7 @@ public class AES {
 			String cellBits = Integer.toBinaryString(cells[i]);
 
 			// Append leading 0 for full "8-bit" strings
-			int cellBitsLength = cellBits.length();
-			while (cellBitsLength < 8) {
+			while (cellBits.length() < 8) {
 				cellBits = '0' + cellBits;
 			}
 
