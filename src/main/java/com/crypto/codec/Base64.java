@@ -184,7 +184,7 @@ public class Base64 {
 
         decodedBlock[0] = (byte) (decodeAlphabet[block[0]] << 2 | decodeAlphabet[block[1]] >>> 4);
         decodedBlock[1] = (byte) (decodeAlphabet[block[1]] << 4 | decodeAlphabet[block[2]] >>> 2);
-        decodedBlock[2] = (byte) (decodeAlphabet[block[2]] << 6 | decodeAlphabet[block[3]]);
+        decodedBlock[2] = (byte) (decodeAlphabet[block[2]] << 6 | decodeAlphabet[block[3]] & 0xff);
 
         return decodedBlock;
     }
