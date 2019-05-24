@@ -9,14 +9,12 @@ import static org.junit.Assert.*;
 
 public class FastPowerTest {
 
-    @Test
-    void testLong(long n, long k, long m) {
+    private void testLong(long n, long k, long m) {
         long result = FastPower.calculate(n, k, m);
         assertEquals(result, BigInteger.valueOf(n).modPow(BigInteger.valueOf(k), BigInteger.valueOf(m)).longValue());
     }
 
-    @Test
-    void testBigInteger(BigInteger n, BigInteger k, BigInteger m) {
+    private void testBigInteger(BigInteger n, BigInteger k, BigInteger m) {
         BigInteger result = FastPower.calculate(n, k, m);
         assertEquals(result, n.modPow(k, m));
     }
