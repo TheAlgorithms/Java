@@ -1,4 +1,4 @@
-package src.test.java.com.designpatterns.structural;
+package src.test.java.com.designpatterns.structural.adapter;
 
 import org.junit.Test;
 import src.main.java.com.designpatterns.structural.adapter.BugattiVeyron;
