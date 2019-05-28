@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class DecimalToOctal {
     private static final char[] octalChars = {'0', '1', '2', '3', '4', '5', '6', '7'};
-    private static final BigInteger valueOctal = new BigInteger("8");
+    private static final BigInteger valueOctal = BigInteger.valueOf(8);
 
     /**
      * This method converts and decimal number to a octal number

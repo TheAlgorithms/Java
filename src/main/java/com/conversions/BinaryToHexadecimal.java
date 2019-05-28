@@ -36,7 +36,7 @@ public class BinaryToHexadecimal {
         String hex = "";
 
         int currentBit;
-        BigInteger tenValue = new BigInteger("10");
+        BigInteger tenValue = BigInteger.valueOf(10);
         while (binary.compareTo(BigInteger.ZERO) != 0) {
             // to store decimal equivalent of number formed by 4 decimal digits
             int code4 = 0;
