@@ -1,3 +1,5 @@
+package DataStructures.Queues;
+
 /**
  * This implements Queues by using the class Queue.
  * <p>

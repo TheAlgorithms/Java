@@ -1,3 +1,5 @@
+package Others;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,11 +8,11 @@ import java.util.Scanner;
  */
 public class PerlinNoise {
     /**
-     * @param width width of noise array
-     * @param height height of noise array
+     * @param width       width of noise array
+     * @param height      height of noise array
      * @param octaveCount numbers of layers used for blending noise
      * @param persistence value of impact each layer get while blending
-     * @param seed used for randomizer
+     * @param seed        used for randomizer
      * @return float array containing calculated "Perlin-Noise" values
      */
     static float[][] generatePerlinNoise(int width, int height, int octaveCount, float persistence, long seed) {
@@ -20,14 +22,14 @@ public class PerlinNoise {
 
         Random random = new Random(seed);
         //fill base array with random values as base for noise
-        for(int x = 0; x < width; x++) {
-            for(int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
                 base[x][y] = random.nextFloat();
             }
         }
 
         //calculate octaves with different roughness
-        for(int octave = 0; octave < octaveCount; octave++) {
+        for (int octave = 0; octave < octaveCount; octave++) {
             noiseLayers[octave] = generatePerlinNoiseLayer(base, width, height, octave);
         }
 
@@ -35,12 +37,12 @@ public class PerlinNoise {
         float totalAmplitude = 0f;
 
         //calculate perlin noise by blending each layer together with specific persistence
-        for(int octave = octaveCount - 1; octave >= 0; octave--) {
+        for (int octave = octaveCount - 1; octave >= 0; octave--) {
             amplitude *= persistence;
             totalAmplitude += amplitude;
 
-            for(int x = 0; x < width; x++) {
-                for(int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
                     //adding each value of the noise layer to the noise
                     //by increasing amplitude the rougher noises will have more impact
                     perlinNoise[x][y] += noiseLayers[octave][x][y] * amplitude;
@@ -49,7 +51,7 @@ public class PerlinNoise {
         }
 
         //normalize values so that they stay between 0..1
-        for(int x = 0; x < width; x++) {
+        for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 perlinNoise[x][y] /= totalAmplitude;
             }
@@ -59,8 +61,8 @@ public class PerlinNoise {
     }
 
     /**
-     * @param base base random float array
-     * @param width width of noise array
+     * @param base   base random float array
+     * @param width  width of noise array
      * @param height height of noise array
      * @param octave current layer
      * @return float array containing calculated "Perlin-Noise-Layer" values
@@ -72,13 +74,13 @@ public class PerlinNoise {
         int period = 1 << octave; //2^k
         float frequency = 1f / period; // 1/2^k
 
-        for(int x = 0; x < width; x++) {
+        for (int x = 0; x < width; x++) {
             //calculates the horizontal sampling indices
             int x0 = (x / period) * period;
             int x1 = (x0 + period) % width;
             float horizintalBlend = (x - x0) * frequency;
 
-            for(int y = 0; y < height; y++) {
+            for (int y = 0; y < height; y++) {
                 //calculates the vertical sampling indices
                 int y0 = (y / period) * period;
                 int y1 = (y0 + period) % height;
@@ -99,8 +101,8 @@ public class PerlinNoise {
     }
 
     /**
-     * @param a value of point a
-     * @param b value of point b
+     * @param a     value of point a
+     * @param b     value of point b
      * @param alpha determine which value has more impact (closer to 0 -> a, closer to 1 -> b)
      * @return interpolated value
      */
@@ -143,8 +145,8 @@ public class PerlinNoise {
         final int length = chars.length;
         final float step = 1f / length;
         //output based on charset
-        for(int x = 0; x < width; x++) {
-            for(int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
                 float value = step;
                 float noiseValue = perlinNoise[x][y];
 

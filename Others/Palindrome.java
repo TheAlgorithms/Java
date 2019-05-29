@@ -1,3 +1,5 @@
+package Others;
+
 class Palindrome {
 
     private String reverseString(String x) { // *helper method

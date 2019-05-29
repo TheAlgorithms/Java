@@ -1,3 +1,5 @@
+package Others;
+
 import java.io.*;
 import java.util.*;
 
@@ -24,8 +26,8 @@ public class TopKWords {
                 in = fis.read();  // read one character
 
                 while (-1 != in) {
-                    if (Character.isLetter((char)in)) {
-                        s += (char)in;  //if get a letter, append to s
+                    if (Character.isLetter((char) in)) {
+                        s += (char) in;  //if get a letter, append to s
                     } else {
                         // this branch means an entire word has just been read
                         if (s.length() > 0) {
@@ -56,6 +58,7 @@ public class TopKWords {
             return null;
         }
     }
+
     public static void main(String[] args) {
         // you can replace the filePath with yours
         CountWords cw = new CountWords("/Users/lisanaaa/Desktop/words.txt");

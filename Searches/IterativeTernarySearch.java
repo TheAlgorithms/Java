@@ -7,24 +7,20 @@ import java.util.stream.Stream;
 import static java.lang.String.format;
 
 /**
- *
  * A iterative version of a ternary search algorithm
  * This is better way to implement the ternary search, because a recursive version adds some overhead to a stack.
  * But in java the compile can transform the recursive version to iterative implicitly,
  * so there are no much differences between these two algorithms
- *
+ * <p>
  * Worst-case performance	Θ(log3(N))
  * Best-case performance	O(1)
  * Average performance	Θ(log3(N))
  * Worst-case space complexity	O(1)
  *
- *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- * @since 2018-04-13
- *
  * @see SearchAlgorithm
  * @see TernarySearch
- *
+ * @since 2018-04-13
  */
 
 public class IterativeTernarySearch implements SearchAlgorithm {
@@ -35,10 +31,10 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         int left = 0;
         int right = array.length - 1;
 
-         while (right > left) {
+        while (right > left) {
 
-            int leftCmp =  array[left].compareTo(key);
-            int rightCmp =  array[right].compareTo(key);
+            int leftCmp = array[left].compareTo(key);
+            int rightCmp = array[right].compareTo(key);
             if (leftCmp == 0) return left;
             if (rightCmp == 0) return right;
 

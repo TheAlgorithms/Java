@@ -1,3 +1,5 @@
+package Misc;
+
 import java.util.Scanner;
 
 public class PalindromePrime {
@@ -20,9 +22,9 @@ public class PalindromePrime {
 
     public static int reverse(int n) { //  Returns  the reverse of the number
         int reverse = 0;
-        while(n != 0) {
+        while (n != 0) {
             reverse *= 10;
-            reverse += n%10;
+            reverse += n % 10;
             n /= 10;
         }
         return reverse;
@@ -33,8 +35,8 @@ public class PalindromePrime {
         System.out.print(2 + "\n"); // print the first Palindromic Prime
         int count = 1;
         int num = 3;
-        while(count < y) {
-            if(num == reverse(num) && prime(num)) { // number is prime and it's reverse is same
+        while (count < y) {
+            if (num == reverse(num) && prime(num)) { // number is prime and it's reverse is same
                 count++; // counts check when to terminate while loop
                 System.out.print(num + "\n"); // print the Palindromic Prime
             }

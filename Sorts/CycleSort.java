@@ -4,10 +4,9 @@ import static Sorts.SortUtils.less;
 import static Sorts.SortUtils.print;
 
 /**
- *  @author Podshivalov Nikita (https://github.com/nikitap492)
+ * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 class CycleSort implements SortAlgorithm {
-
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] arr) {
@@ -24,7 +23,7 @@ class CycleSort implements SortAlgorithm {
                 if (less(arr[i], item)) pos++;
 
             // If item is already in correct position
-            if (pos == j)  continue;
+            if (pos == j) continue;
 
             // ignore all duplicate elements
             while (item.compareTo(arr[pos]) == 0)
@@ -41,7 +40,7 @@ class CycleSort implements SortAlgorithm {
 
                 // Find position where we put the element
                 for (int i = j + 1; i < n; i++)
-                    if (less(arr[i], item)){
+                    if (less(arr[i], item)) {
                         pos += 1;
                     }
 
@@ -60,7 +59,7 @@ class CycleSort implements SortAlgorithm {
         return arr;
     }
 
-    private <T extends Comparable<T>> T replace(T[] arr, int pos, T item){
+    private <T extends Comparable<T>> T replace(T[] arr, int pos, T item) {
         T temp = item;
         item = arr[pos];
         arr[pos] = temp;
@@ -68,9 +67,8 @@ class CycleSort implements SortAlgorithm {
     }
 
 
-
     public static void main(String[] args) {
-        Integer arr[] = { 4, 23, 6, 78, 1, 26, 11, 23 , 0, -6, 3, 54, 231, 9, 12 };
+        Integer arr[] = {4, 23, 6, 78, 1, 26, 11, 23, 0, -6, 3, 54, 231, 9, 12};
         CycleSort cycleSort = new CycleSort();
         cycleSort.sort(arr);
 

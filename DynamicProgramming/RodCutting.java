@@ -1,8 +1,9 @@
+package DynamicProgramming;
+
 /**
- * A Dynamic Programming solution for Rod cutting problem
+ * A DynamicProgramming solution for Rod cutting problem
  * Returns the best obtainable price for a rod of
- * length n and price[] as prices of different pieces 
- *
+ * length n and price[] as prices of different pieces
  */
 public class RodCutting {
 

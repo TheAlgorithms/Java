@@ -1,14 +1,16 @@
+package Others;
 /**
-*  <h2>Shortest job first.</h2>
-* <p>Shortest job first (SJF) or shortest job next, is a scheduling policy 
-* that selects the waiting process with the smallest execution time to execute next
-* Shortest Job first has the advantage of having minimum average waiting time among all scheduling algorithms.
-* It is a Greedy Algorithm.
-* It may cause starvation if shorter processes keep coming.
-* This problem has been solved using the concept of aging.</p>
-* @author shivg7706
-* @since 2018/10/27
-*/
+ * <h2>Shortest job first.</h2>
+ * <p>Shortest job first (SJF) or shortest job next, is a scheduling policy
+ * that selects the waiting process with the smallest execution time to execute next
+ * Shortest Job first has the advantage of having minimum average waiting time among all scheduling algorithms.
+ * It is a Greedy Algorithm.
+ * It may cause starvation if shorter processes keep coming.
+ * This problem has been solved using the concept of aging.</p>
+ *
+ * @author shivg7706
+ * @since 2018/10/27
+ */
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -71,17 +73,17 @@ class Schedule {
 
     void startScheduling() {
 
-        
+
         processes.sort(new Comparator<Process>() {
             @Override
-            public int compare (Process a, Process b) {
+            public int compare(Process a, Process b) {
                 return a.arrivalTime - b.arrivalTime;
             }
         });
 
-        while(!(arrivals.size() == 0 && remainingProcess.size() == 0)) {
+        while (!(arrivals.size() == 0 && remainingProcess.size() == 0)) {
             removeFinishedProcess();
-            if(arrivals.get(timer) != null) {    
+            if (arrivals.get(timer) != null) {
                 remainingProcess.addAll(arrivals.get(timer));
                 arrivals.remove(timer);
             }
@@ -91,12 +93,12 @@ class Schedule {
                 private int beta = 1;
 
                 @Override
-                public int compare (Process a, Process b) {
+                public int compare(Process a, Process b) {
                     int aRem = a.remainingTime;
                     int bRem = b.remainingTime;
                     int aprior = a.priority;
                     int bprior = b.priority;
-                    return (alpha*aRem + beta*aprior) - (alpha*bRem + beta*bprior);
+                    return (alpha * aRem + beta * aprior) - (alpha * bRem + beta * bprior);
                 }
             });
 
@@ -105,13 +107,13 @@ class Schedule {
             timer++;
         }
 
-        System.out.println("Total time required: " + (timer-1));
+        System.out.println("Total time required: " + (timer - 1));
     }
 
     void removeFinishedProcess() {
         ArrayList<Integer> completed = new ArrayList<Integer>();
         for (int i = 0; i < remainingProcess.size(); i++) {
-            if(remainingProcess.get(i).remainingTime == 0) {
+            if (remainingProcess.get(i).remainingTime == 0) {
                 completed.add(i);
             }
         }
@@ -126,7 +128,7 @@ class Schedule {
     }
 
     public int timeElapsed(int i) {
-        if(!remainingProcess.isEmpty()) {
+        if (!remainingProcess.isEmpty()) {
             gantChart.add(i, remainingProcess.get(0).pid);
             remainingProcess.get(0).remainingTime--;
             return 1;
@@ -140,7 +142,7 @@ class Schedule {
             if (remainingProcess.get(i).waitTime % 7 == 0) {
                 remainingProcess.get(i).priority--;
             }
-        }   
+        }
     }
 
 
@@ -163,11 +165,11 @@ class Schedule {
             System.out.println("Process no.: " + i + " Wait time: " + processes.get(i).waitTime + " Turn Around Time: " + processes.get(i).turnAroundTime);
         }
 
-        System.out.println("Average Waiting Time: " + waitTimeTot/noOfProcess);
-        System.out.println("Average TAT Time: " + tatTime/noOfProcess);
-        System.out.println("Throughput: " + (float)noOfProcess/(timer - 1));
+        System.out.println("Average Waiting Time: " + waitTimeTot / noOfProcess);
+        System.out.println("Average TAT Time: " + tatTime / noOfProcess);
+        System.out.println("Throughput: " + (float) noOfProcess / (timer - 1));
     }
-    
+
 }
 
 public class SJF {

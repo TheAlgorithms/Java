@@ -1,8 +1,10 @@
+package DataStructures.Graphs;
+
 import java.util.ArrayList;
 import java.lang.StringBuilder;
 
 class AdjacencyListGraph<E extends Comparable<E>> {
-	
+
     ArrayList<Vertex> verticies;
 
     public AdjacencyListGraph() {
@@ -19,7 +21,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         }
 
         public boolean addAdjacentVertex(Vertex to) {
-            for (Vertex v: adjacentVerticies) {
+            for (Vertex v : adjacentVerticies) {
                 if (v.data.compareTo(to.data) == 0) {
                     return false; // the edge already exists
                 }
@@ -46,12 +48,12 @@ class AdjacencyListGraph<E extends Comparable<E>> {
      * verticies
      *
      * @param from the data of the vertex the edge is from
-     * @param to the data of the vertex the edge is going to
+     * @param to   the data of the vertex the edge is going to
      * @return returns false if the edge doesn't exist, returns true if the edge exists and is removed
      */
     public boolean removeEdge(E from, E to) {
         Vertex fromV = null;
-        for (Vertex v: verticies) {
+        for (Vertex v : verticies) {
             if (from.compareTo(v.data) == 0) {
                 fromV = v;
                 break;
@@ -60,17 +62,18 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         if (fromV == null) return false;
         return fromV.removeAdjacentVertex(to);
     }
+
     /**
      * this method adds an edge to the graph between two specified
-     * verticies 
+     * verticies
      *
      * @param from the data of the vertex the edge is from
-     * @param to the data of the vertex the edge is going to
+     * @param to   the data of the vertex the edge is going to
      * @return returns true if the edge did not exist, return false if it already did
      */
     public boolean addEdge(E from, E to) {
         Vertex fromV = null, toV = null;
-        for (Vertex v: verticies) {
+        for (Vertex v : verticies) {
             if (from.compareTo(v.data) == 0) { // see if from vertex already exists
                 fromV = v;
             } else if (to.compareTo(v.data) == 0) { // see if to vertex already exists
@@ -91,17 +94,18 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
     /**
      * this gives a list of verticies in the graph and their adjacencies
-     * 
+     *
      * @return returns a string describing this graph
      */
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Vertex v: verticies) {
+        for (Vertex v : verticies) {
             sb.append("Vertex: ");
             sb.append(v.data);
             sb.append("\n");
             sb.append("Adjacent verticies: ");
-            for (Vertex v2: v.adjacentVerticies) {
+            for (Vertex v2 : v.adjacentVerticies) {
                 sb.append(v2.data);
                 sb.append(" ");
             }
@@ -112,18 +116,18 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 }
 
 public class Graphs {
-	
-	public static void main(String args[]) {
-		AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
+
+    public static void main(String args[]) {
+        AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
         assert graph.addEdge(1, 2);
         assert graph.addEdge(1, 5);
         assert graph.addEdge(2, 5);
-	    assert !graph.addEdge(1, 2);
+        assert !graph.addEdge(1, 2);
         assert graph.addEdge(2, 3);
         assert graph.addEdge(3, 4);
         assert graph.addEdge(4, 1);
         assert !graph.addEdge(2, 3);
         System.out.println(graph);
     }
-	
+
 }

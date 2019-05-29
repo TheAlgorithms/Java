@@ -1,8 +1,10 @@
+package Conversions;
+
 import java.util.*;
 
 public class RomanToInteger {
 
-    private static Map<Character, Integer> map = new HashMap<>() {{
+    private static Map<Character, Integer> map = new HashMap<Character, Integer>() {{
         put('I', 1);
         put('V', 5);
         put('X', 10);

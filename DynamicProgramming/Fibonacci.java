@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -5,7 +7,6 @@ import java.util.Map;
 
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
- * @author yanglbme (https://github.com/yanglbme)
  */
 
 public class Fibonacci {

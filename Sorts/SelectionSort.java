@@ -1,12 +1,9 @@
 package Sorts;
 
 /**
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  * @see SortAlgorithm
- *
  */
 
 public class SelectionSort implements SortAlgorithm {
@@ -15,7 +12,7 @@ public class SelectionSort implements SortAlgorithm {
      * This method implements the Generic Selection Sort
      *
      * @param arr The array to be sorted
-     * Sorts the array in increasing order
+     *            Sorts the array in increasing order
      **/
     @Override
     public <T extends Comparable<T>> T[] sort(T[] arr) {
@@ -24,7 +21,7 @@ public class SelectionSort implements SortAlgorithm {
             // Initial index of min
             int min = i;
 
-            for (int j = i +1 ; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (SortUtils.less(arr[j], arr[min])) {
                     min = j;
                 }
@@ -32,7 +29,7 @@ public class SelectionSort implements SortAlgorithm {
 
             // Swapping if index of min is changed
             if (min != i) {
-                SortUtils.swap(arr, i , min);
+                SortUtils.swap(arr, i, min);
             }
         }
 
@@ -52,7 +49,7 @@ public class SelectionSort implements SortAlgorithm {
         SortUtils.print(sorted);
 
         // String Input
-        String[] strings = {"c", "a", "e", "b","d"};
+        String[] strings = {"c", "a", "e", "b", "d"};
         String[] sortedStrings = selectionSort.sort(strings);
 
         //Output => a	b	 c  d	e

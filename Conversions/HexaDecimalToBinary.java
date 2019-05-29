@@ -1,3 +1,5 @@
+package Conversions;
+
 public class HexaDecimalToBinary {
 
     private final int LONG_BITS = 8;

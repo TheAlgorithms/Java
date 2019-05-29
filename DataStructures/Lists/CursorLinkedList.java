@@ -1,3 +1,7 @@
+package DataStructures.Lists;
+
+import java.util.Objects;
+
 public class CursorLinkedList<T> {
 
     private static class Node<T> {
@@ -93,8 +97,8 @@ public class CursorLinkedList<T> {
             while (start != -1) {
 
                 T element = cursorSpace[start].element;
-                if (counter == position){
-                    return  element;
+                if (counter == position) {
+                    return element;
                 }
 
                 start = cursorSpace[start].next;
@@ -107,9 +111,9 @@ public class CursorLinkedList<T> {
     }
 
 
-    public void removeByIndex(int index){
+    public void removeByIndex(int index) {
 
-        if(index >= 0 && index < count){
+        if (index >= 0 && index < count) {
 
             T element = get(index);
             remove(element);
@@ -130,13 +134,13 @@ public class CursorLinkedList<T> {
             head = temp_next;
         } else { // otherwise cases
 
-            int  prev_index = head;
+            int prev_index = head;
             int current_index = cursorSpace[prev_index].next;
 
-            while (current_index != -1 ) {
+            while (current_index != -1) {
 
                 T current_element = cursorSpace[current_index].element;
-                if(current_element.equals(element)){
+                if (current_element.equals(element)) {
                     cursorSpace[prev_index].next = cursorSpace[current_index].next;
                     free(current_index);
                     break;

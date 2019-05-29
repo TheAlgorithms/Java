@@ -1,3 +1,4 @@
+package DataStructures.Lists;
 
 /**
  * This class implements a DoublyLinkedList. This is done using the classes
@@ -13,7 +14,7 @@
  * @author Unknown
  */
 
-class DoublyLinkedList {
+public class DoublyLinkedList {
     /**
      * Head refers to the front of the list
      */

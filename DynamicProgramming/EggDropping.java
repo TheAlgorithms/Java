@@ -1,5 +1,7 @@
+package DynamicProgramming;
+
 /**
- * Dynamic Programming solution for the Egg Dropping Puzzle
+ * DynamicProgramming solution for the Egg Dropping Puzzle
  */
 public class EggDropping {
 
@@ -37,7 +39,7 @@ public class EggDropping {
 
         return eggFloor[n][m];
     }
-    
+
     public static void main(String args[]) {
         int n = 2, m = 4;
         // result outputs min no. of trials in worst case for n eggs and m floors

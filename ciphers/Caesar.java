@@ -24,9 +24,9 @@ public class Caesar {
     public static String encode(String message, int shift) {
         String encoded = "";
 
-        while (shift >= 26) { // 26 = number of latin letters
-            shift -= 26;
-        }
+        
+        shift %= 26;
+        
 
         final int length = message.length();
         for (int i = 0; i < length; i++) {
@@ -62,9 +62,9 @@ public class Caesar {
     public static String decode(String encryptedMessage, int shift) {
         String decoded = "";
 
-        while (shift >= 26) { // 26 = number of latin letters
-            shift -= 26;
-        }
+        
+        shift %= 26;
+        
 
         final int length = encryptedMessage.length();
         for (int i = 0; i < length; i++) {
