@@ -68,7 +68,7 @@ public class SinglyLinkedList {
      * This method deletes an element at Nth position
      */
     public void deleteNth(int position) {
-        if (position < 0 || position > getSize()) {
+        if (position < 0 || position >= getSize()) {
             throw new RuntimeException("position less than zero or position more than the count of list");
         } else if (position == 0)
             deleteHead();
