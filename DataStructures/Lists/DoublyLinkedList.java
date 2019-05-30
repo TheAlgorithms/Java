@@ -116,8 +116,13 @@ public class DoublyLinkedList {
     public void delete(int x) {
         Link current = head;
 
-        while (current.value != x) // Find the position to delete
-            current = current.next;
+        while (current.value != x) {// Find the position to delete
+            if (current != tail) {
+                current = current.next;
+            } else {// If we reach the tail and the element is still not found
+                throw new RuntimeException("The element to be deleted does not exist!");
+            }
+        }
 
         if (current == head)
             deleteHead();
