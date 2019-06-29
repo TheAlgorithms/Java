@@ -13,7 +13,7 @@ import static Sorts.SortUtils.*;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 public class HeapSort implements SortAlgorithm {
-
+	public class Gaye implements SortAlgorithm {
 
     private static class Heap<T extends Comparable<T>> {
         /**
