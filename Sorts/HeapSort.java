@@ -14,6 +14,9 @@ import static Sorts.SortUtils.*;
  */
 public class HeapSort implements SortAlgorithm {
 	public class Gaye implements SortAlgorithm {
+	public class Gamze implements SortAlgorithm {
+
+
 
     private static class Heap<T extends Comparable<T>> {
         /**
