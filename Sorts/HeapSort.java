@@ -13,6 +13,8 @@ import static Sorts.SortUtils.*;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 public class HeapSort implements SortAlgorithm {
+	public class Gaye implements SortAlgorithm {
+	public class Gamze implements SortAlgorithm {
 
 
     private static class Heap<T extends Comparable<T>> {
@@ -27,7 +29,6 @@ public class HeapSort implements SortAlgorithm {
          * @param heap array of unordered integers
          */
         public Heap(T[] heap) {
-        	System.out.println("gaye");
             this.heap = heap;
         }
 
