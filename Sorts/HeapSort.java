@@ -13,7 +13,13 @@ import static Sorts.SortUtils.*;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 public class HeapSort implements SortAlgorithm {
+<<<<<<< HEAD
 	public class Orkun implements SortAlgorithm {
+=======
+	public class Gaye implements SortAlgorithm {
+	public class Gamze implements SortAlgorithm {
+
+>>>>>>> branch 'master' of https://github.com/gayepeker/Java.git
 
 
     private static class Heap<T extends Comparable<T>> {
