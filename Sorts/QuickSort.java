@@ -1,6 +1,6 @@
 package Sorts;
 
-import static sorts.SortUtils.*;
+import static Sorts.SortUtils.*;
 
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
