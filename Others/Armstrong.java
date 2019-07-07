@@ -14,7 +14,7 @@ public class Armstrong {
 
     public static void main(String[] args) {
         scan = new Scanner(System.in);
-        int n = inputInt("please enter the number");
+        int n = inputInt("please enter the number: ");
         boolean isArmstrong = checkIfANumberIsAmstrongOrNot(n);
         if (isArmstrong) {
             System.out.println("the number is armstrong");
@@ -32,14 +32,16 @@ public class Armstrong {
      * @return boolean
      */
     public static boolean checkIfANumberIsAmstrongOrNot(int number) {
-        int remainder, sum = 0, temp = 0;
+        int remainder, sum = 0, temp = 0, placeNum;
+        String numberStr = String.valueOf(number);
+        placeNum = numberStr.length();
         temp = number;
-        while (number > 0) {
-            remainder = number % 10;
-            sum = sum + (remainder * remainder * remainder);
-            number = number / 10;
+        while (temp > 0) {
+            remainder = temp % 10;
+            sum += Math.pow(remainder, placeNum);
+            temp = temp / 10;
         }
-        if (sum == temp) {
+        if (sum == number) {
             return true;
         } else {
             return false;
@@ -47,7 +49,7 @@ public class Armstrong {
     }
 
     private static int inputInt(String string) {
-        System.out.print(string);
+        System.out.println(string);
         return Integer.parseInt(scan.nextLine());
     }
 }
