@@ -15,14 +15,14 @@ class BinaryToDecimal {
      */
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        int n, k, d, s = 0, c = 0;
+        int bin_num, bin_copy, d, s = 0, power = 0;
         System.out.print("Binary number: ");
-        n = sc.nextInt();
-        k = n;
-        while (k != 0) {
-            d = k % 10;
-            s += d * (int) Math.pow(2, c++);
-            k /= 10;
+        bin_num = sc.nextInt();
+        bin_copy = bin_num;
+        while (bin_copy != 0) {
+            d = bin_copy % 10;
+            s += d * (int) Math.pow(2, power++);
+            bin_copy /= 10;
         }
         System.out.println("Decimal equivalent:" + s);
         sc.close();
