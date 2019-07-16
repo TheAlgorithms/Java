@@ -16,6 +16,7 @@ public class BinaryToOctal {
      */
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Input the binary number: ");
         int b = sc.nextInt();
         System.out.println("Octal equivalent: " + convertBinaryToOctal(b));
         sc.close();
@@ -26,18 +27,24 @@ public class BinaryToOctal {
      * This method converts a binary number to
      * an octal number.
      *
-     * @param b The binary number
+     * @param binary The binary number
      * @return The octal number
      */
-    public static int convertBinaryToOctal(int b) {
-        int o = 0, r = 0, j = 1;
-        while (b != 0) {
-            r = b % 10;
-            o = o + r * j;
-            j = j * 2;
-            b = b / 10;
+    public static String convertBinaryToOctal(int binary) {
+        String octal = "";
+        int currBit = 0, j = 1;
+        while (binary != 0) {
+            int code3 = 0;
+            for (int i = 0; i < 3; i++) {
+                currBit = binary % 10;
+                binary = binary / 10;
+                code3 += currBit * j;
+                j *= 2;
+            }
+            octal = code3 + octal;
+            j = 1;
         }
-        return o;
+        return octal;
     }
 
 }
