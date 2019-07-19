@@ -1,4 +1,4 @@
-package src.main.java.com.crypto.codec;
+package com.crypto.codec;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;

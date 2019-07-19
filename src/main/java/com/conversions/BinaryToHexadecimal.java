@@ -1,4 +1,4 @@
-package src.main.java.com.conversions;
+package com.conversions;
 
 import java.math.BigInteger;
 import java.util.HashMap;

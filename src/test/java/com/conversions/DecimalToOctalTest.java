@@ -1,17 +1,16 @@
-package src.test.java.com.conversions;
+package com.conversions;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.conversions.DecimalToOctal;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class DecimalToOctalTest {
+class DecimalToOctalTest {
     @Test
-    public void testDecimalToOctalTest() {
+    void testDecimalToOctalTest() {
         DecimalToOctal decimalToOctal = new DecimalToOctal();
-        Assert.assertEquals("Incorrect Conversion", "41", decimalToOctal.decimalToOctal("33"));
-        Assert.assertEquals("Incorrect Conversion", "5512", decimalToOctal.decimalToOctal("2890"));
-        Assert.assertEquals("Incorrect Conversion", "12525252525252525252525241", decimalToOctal.decimalToOctal("50371909150609548946081"));
-        Assert.assertEquals("Incorrect Conversion", "13", decimalToOctal.decimalToOctal("11"));
-        Assert.assertEquals("Incorrect Conversion", "46703754", decimalToOctal.decimalToOctal("10192876"));
+        Assertions.assertEquals("41", decimalToOctal.decimalToOctal("33"), "Incorrect Conversion");
+        Assertions.assertEquals("5512", decimalToOctal.decimalToOctal("2890"), "Incorrect Conversion");
+        Assertions.assertEquals("12525252525252525252525241", decimalToOctal.decimalToOctal("50371909150609548946081"), "Incorrect Conversion");
+        Assertions.assertEquals("13", decimalToOctal.decimalToOctal("11"), "Incorrect Conversion");
+        Assertions.assertEquals("46703754", decimalToOctal.decimalToOctal("10192876"), "Incorrect Conversion");
     }
 }

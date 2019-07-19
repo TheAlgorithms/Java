@@ -1,4 +1,4 @@
-package src.main.java.com.search;
+package com.search;
 
 /**
  * Linear search is an algorithm which finds the position of a target value within an array (Usually unsorted)

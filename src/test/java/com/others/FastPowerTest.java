@@ -1,26 +1,24 @@
-package src.test.java.com.others;
+package com.others;
 
-import org.junit.Test;
-import src.main.java.com.others.FastPower;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
-
-public class FastPowerTest {
+class FastPowerTest {
 
     private void testLong(long n, long k, long m) {
         long result = FastPower.calculate(n, k, m);
-        assertEquals(result, BigInteger.valueOf(n).modPow(BigInteger.valueOf(k), BigInteger.valueOf(m)).longValue());
+        Assertions.assertEquals(result, BigInteger.valueOf(n).modPow(BigInteger.valueOf(k), BigInteger.valueOf(m)).longValue());
     }
 
     private void testBigInteger(BigInteger n, BigInteger k, BigInteger m) {
         BigInteger result = FastPower.calculate(n, k, m);
-        assertEquals(result, n.modPow(k, m));
+        Assertions.assertEquals(result, n.modPow(k, m));
     }
 
     @Test
-    public void test() {
+    void test() {
         testLong(2, 2, 10);
         testLong(100, 1000, 20);
         testLong(123456, 123456789, 234);

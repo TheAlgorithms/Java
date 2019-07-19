@@ -1,4 +1,4 @@
-package src.main.java.com.types;
+package com.types;
 
 @FunctionalInterface
 public interface Sort<T> {

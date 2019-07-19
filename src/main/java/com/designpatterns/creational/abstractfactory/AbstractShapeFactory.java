@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.creational.abstractfactory;
+package com.designpatterns.creational.abstractfactory;
 
 /**
  * The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme

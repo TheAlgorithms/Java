@@ -1,18 +1,16 @@
-package src.test.java.com.search;
+package com.search;
 
-import org.junit.Test;
-import src.main.java.com.search.BloomFilter;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.Assert.*;
-
-public class BloomFilterTest {
+class BloomFilterTest {
 
     @Test
-    public void test() {
+    void test() {
         int count = 100000;
         int low = 50, up = 100;
         BloomFilter filter = BloomFilter.builder(10000).build();
@@ -36,15 +34,15 @@ public class BloomFilterTest {
                     error++;
                 }
             } else {
-                assertFalse(dataSet.contains(str));
+                Assertions.assertFalse(dataSet.contains(str));
             }
         }
         System.out.println("error: " + error);
         System.out.println("total: " + total);
         System.out.println("error rate : " + (double) error / total);
     }
-    
-    public static String randomString(int minLength, int maxLength) {
+
+    private static String randomString(int minLength, int maxLength) {
         ThreadLocalRandom r = ThreadLocalRandom.current();
         int chLen = r.nextInt(minLength, maxLength),
                 poolSize = CHAR_POOL.length;
@@ -66,5 +64,5 @@ public class BloomFilterTest {
             CHAR_POOL[i++] = (char) (c - 32);
         }
     }
-    
+
 }

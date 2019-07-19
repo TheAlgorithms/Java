@@ -1,25 +1,24 @@
-package src.test.java.com.search;
+package com.search;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.search.BinarySearch;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class BinarySearchTest {
+class BinarySearchTest {
 
     @Test
-    public void testBinarySearch() {
-        Integer[] arr1 = {1,2,3,4,5};
-        Assert.assertEquals("Incorrect index", 2, BinarySearch.findIndex(arr1,3));
-        Assert.assertEquals("Incorrect index", 0, BinarySearch.findIndex(arr1,1));
-        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr1,8));
-        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr1,-2));
+    void testBinarySearch() {
+        Integer[] arr1 = {1, 2, 3, 4, 5};
+        Assertions.assertEquals(2, BinarySearch.findIndex(arr1, 3), "Incorrect index");
+        Assertions.assertEquals(0, BinarySearch.findIndex(arr1, 1), "Incorrect index");
+        Assertions.assertEquals(-1, BinarySearch.findIndex(arr1, 8), "Incorrect index");
+        Assertions.assertEquals(-1, BinarySearch.findIndex(arr1, -2), "Incorrect index");
 
         String[] arr2 = {"A", "B", "C", "D"};
-        Assert.assertEquals("Incorrect index", 2, BinarySearch.findIndex(arr2,"C"));
-        Assert.assertEquals("Incorrect index", 1, BinarySearch.findIndex(arr2,"B"));
-        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr2,"F"));
+        Assertions.assertEquals(2, BinarySearch.findIndex(arr2, "C"), "Incorrect index");
+        Assertions.assertEquals(1, BinarySearch.findIndex(arr2, "B"), "Incorrect index");
+        Assertions.assertEquals(-1, BinarySearch.findIndex(arr2, "F"), "Incorrect index");
 
         String[] arr3 = {};
-        Assert.assertEquals("Incorrect index", -1, BinarySearch.findIndex(arr3, ""));
+        Assertions.assertEquals(-1, BinarySearch.findIndex(arr3, ""), "Incorrect index");
     }
 }

@@ -1,4 +1,4 @@
-package src.main.java.com.types;
+package com.types;
 
 import java.util.Iterator;
 

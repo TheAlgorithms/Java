@@ -1,20 +1,18 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
-import org.junit.Test;
-import src.main.java.com.dataStructures.BinaryTree;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+class BinaryTreeTest {
 
-public class BinaryTreeTest {
-
-    public BinaryTreeTest() {
+    BinaryTreeTest() {
     }
 
     /**
      * Test of insert method, of class BinaryTree.
      */
     @Test
-    public void testInsertBinaryTree() {
+    void testInsertBinaryTree() {
         System.out.println("insert");
         BinaryTree<String> lowerData = new BinaryTree<>("1");
         BinaryTree<String> upperData = new BinaryTree<>("3");
@@ -24,28 +22,28 @@ public class BinaryTreeTest {
         String proof = instance.getLeft().toString()
                 + instance.toString()
                 + instance.getRight().toString();
-        assertEquals("123", proof);
+        Assertions.assertEquals("123", proof);
     }
 
     /**
      * Test of search method, of class BinaryTree.
      */
     @Test
-    public void testSearch() {
+    void testSearch() {
         System.out.println("search");
         BinaryTree<Integer> instance = new BinaryTree<>(5);
         for (int i = 1; i < 10; i++) {
             instance.insert(i);
         }
         BinaryTree result = instance.search(1);
-        assertEquals(1, result.getData());
+        Assertions.assertEquals(1, result.getData());
     }
 
     /**
      * Test of contains method, of class BinaryTree.
      */
     @Test
-    public void testContains() {
+    void testContains() {
         System.out.println("contains");
         BinaryTree<Integer> instance = new BinaryTree<>(5);
         for (int i = 1; i < 10; i++) {
@@ -53,6 +51,6 @@ public class BinaryTreeTest {
         }
 
         boolean result = instance.contains(2) && instance.contains(11);
-        assertFalse(result);
+        Assertions.assertFalse(result);
     }
 }

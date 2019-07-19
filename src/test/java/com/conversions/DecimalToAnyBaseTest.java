@@ -1,16 +1,14 @@
-package src.test.java.com.conversions;
+package com.conversions;
 
-import src.main.java.com.conversions.DecimalToAnyBase;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
-
-public class DecimalToAnyBaseTest {
+class DecimalToAnyBaseTest {
 
     @Test
-    public void testDecimalToAnyBase() {
+    void testDecimalToAnyBase() {
         DecimalToAnyBase decimalToAnyBase = new DecimalToAnyBase();
-        assertEquals("Incorrect Conversion", "100", decimalToAnyBase.convertToAnyBase(4, 2));
-        assertEquals("Incorrect Conversion", "11", decimalToAnyBase.convertToAnyBase(4, 3));
+        Assertions.assertEquals("100", decimalToAnyBase.convertToAnyBase(4, 2), "Incorrect Conversion");
+        Assertions.assertEquals("11", decimalToAnyBase.convertToAnyBase(4, 3), "Incorrect Conversion");
     }
 }

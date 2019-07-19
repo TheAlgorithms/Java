@@ -1,4 +1,4 @@
-package src.main.java.com.generation;
+package com.generation;
 
 import java.util.Random;
 
