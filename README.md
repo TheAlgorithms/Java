@@ -163,8 +163,8 @@ __Properties__
 
 Conversions          |                                          Dynamic Programming   |Ciphers|Miscellaneous|
 -----------          |----------------------------------------------------------------|-------|-------------|
-[Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](DynamicProgramming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](misc/heap_sort.java)|
-[Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](DynamicProgramming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](misc/PalindromicPrime.java)|
+[Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](DynamicProgramming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](Misc/heap_sort.java)|
+[Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](DynamicProgramming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](Misc/PalindromePrime.java)|
 [Binary to Decimal](Conversions/BinaryToDecimal.java)|[Fibonacci](DynamicProgramming/Fibonacci.java)|[RSA](ciphers/RSA.java)|More soon...|
 [Binary to HexaDecimal](Conversions/BinaryToHexadecimal.java)|[Kadane Algorithm](DynamicProgramming/KadaneAlgorithm.java)|more coming soon...|
 [Binary to Octal](Conversions/BinaryToOctal.java)|[Knapsack](DynamicProgramming/Knapsack.java)|
