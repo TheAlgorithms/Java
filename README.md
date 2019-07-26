@@ -163,14 +163,14 @@ __Properties__
 
 Conversions          |                                          Dynamic Programming   |Ciphers|Miscellaneous|
 -----------          |----------------------------------------------------------------|-------|-------------|
-[Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](Dynamic%20Programming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](misc/heap_sort.java)|
-[Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](Dynamic%20Programming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](misc/PalindromicPrime.java)|
-[Binary to Decimal](Conversions/BinaryToDecimal.java)|[Fibonacci](Dynamic%20Programming/Fibonacci.java)|[RSA](ciphers/RSA.java)|More soon...|
-[Binary to HexaDecimal](Conversions/BinaryToHexadecimal.java)|[Kadane Algorithm](Dynamic%20Programming/KadaneAlgorithm.java)|more coming soon...|
-[Binary to Octal](Conversions/BinaryToOctal.java)|[Knapsack](Dynamic%20Programming/Knapsack.java)|
-[Decimal To Any Base](Conversions/DecimalToAnyBase.java)|[Longest Common Subsequence](Dynamic%20Programming/LongestCommonSubsequence.java)|
-[Decimal To Binary](Conversions/DecimalToBinary.java)|[Longest Increasing Subsequence](Dynamic%20Programming/LongestIncreasingSubsequence.java)|
-[Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java)|[Rod Cutting](Dynamic%20Programming/RodCutting.java)|
+[Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)| [Coin Change](DynamicProgramming/CoinChange.java)|[Caesar](ciphers/Caesar.java)|[Heap Sort](misc/heap_sort.java)|
+[Any Base to Decimal](Conversions/AnyBaseToDecimal.java)|[Egg Dropping](DynamicProgramming/EggDropping.java)|[Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java)|[Palindromic Prime Checker](misc/PalindromicPrime.java)|
+[Binary to Decimal](Conversions/BinaryToDecimal.java)|[Fibonacci](DynamicProgramming/Fibonacci.java)|[RSA](ciphers/RSA.java)|More soon...|
+[Binary to HexaDecimal](Conversions/BinaryToHexadecimal.java)|[Kadane Algorithm](DynamicProgramming/KadaneAlgorithm.java)|more coming soon...|
+[Binary to Octal](Conversions/BinaryToOctal.java)|[Knapsack](DynamicProgramming/Knapsack.java)|
+[Decimal To Any Base](Conversions/DecimalToAnyBase.java)|[Longest Common Subsequence](DynamicProgramming/LongestCommonSubsequence.java)|
+[Decimal To Binary](Conversions/DecimalToBinary.java)|[Longest Increasing Subsequence](DynamicProgramming/LongestIncreasingSubsequence.java)|
+[Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java)|[Rod Cutting](DynamicProgramming/RodCutting.java)|
 and much more...|                                                    and more...|
 
 ### Data Structures
