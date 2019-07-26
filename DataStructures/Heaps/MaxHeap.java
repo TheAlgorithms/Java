@@ -49,10 +49,10 @@ public class MaxHeap implements Heap {
     // Toggle an element up to its right place as long as its key is lower than its parent's
     private void toggleUp(int elementIndex) {
         double key = maxHeap.get(elementIndex - 1).getKey();
-        while (getElementKey((int) Math.floor(elementIndex / 2)) < key) {
-            swap(elementIndex, (int) Math.floor(elementIndex / 2));
+		while ((int) Math.floor(elementIndex / 2) > 0 && getElementKey((int) Math.floor(elementIndex / 2)) < key) {
+			swap(elementIndex, (int) Math.floor(elementIndex / 2));
             elementIndex = (int) Math.floor(elementIndex / 2);
-        }
+		}
     }
 
     // Toggle an element down to its right place as long as its key is higher
