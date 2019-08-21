@@ -4,6 +4,11 @@
 
 NOTE: A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we are trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
 
+You can playaround (run and edit) the Algorithms or contribute to them using Gitpod.io a free online dev environment with a single click. No need to worry about the Dev enviroment.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
+
+
 ### All algorithms implemented in Java (for education)
 
 These are for demonstration purposes only. There are many implementations of sorts in the Java standard library that are much better for performance reasons.
@@ -28,7 +33,7 @@ __Properties__
 ### Insertion
 ![alt text][insertion-image]
 
-From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. 
+From [Wikipedia][insertion-wiki]: Insertion sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.
 In the figure, each bar represents an element of an array that needs to be sorted. What happens at the first intersection of the top most and second top most bars is to swap these elements, represented by bars, because the second element has a higher precedence than the first element does. By repeating this method, insertion sort completes sorting.
 
 __Properties__
@@ -121,7 +126,7 @@ __Properties__
 * Worst case performance    O(log n)
 * Best case performance    O(1)
 * Average case performance    O(log n)
-* Worst case space complexity    O(1) 
+* Worst case space complexity    O(1)
 
 ##### View the algorithm in [action][binary-tutorialspoint]
 
