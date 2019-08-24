@@ -14,12 +14,17 @@ import java.util.*;
  * 1. quickly unites two sets into a new set, requiring O(1) time.
  * <p>
  * 2. quickly query two elements whether contained in the same set, requiring about O(1) time.
- *
  */
 public class DisjointSet<T> implements Serializable {
     private static final long serialVersionUID = 3134700471905625636L;
 
     private Map<T, Node<T>> nodeMap = new HashMap<>();
+
+    private static void checkNotNull(Object obj, String msg) {
+        if (obj == null) {
+            throw new NullPointerException(msg + " must be not null");
+        }
+    }
 
     /**
      * Add an element to the disjoint-set forests as a set.
@@ -96,7 +101,7 @@ public class DisjointSet<T> implements Serializable {
         Map<Node<T>, Set<T>> setMap = new HashMap<>();
         for (Map.Entry<T, Node<T>> entry : nodeMap.entrySet()) {
             setMap.computeIfAbsent(findSet(entry.getValue()), k -> new HashSet<>())
-                  .add(entry.getKey());
+                    .add(entry.getKey());
         }
         return setMap.values();
     }
@@ -115,12 +120,6 @@ public class DisjointSet<T> implements Serializable {
             node.parent = findSet(node.parent);
         }
         return node.parent;
-    }
-
-    private static void checkNotNull(Object obj, String msg) {
-        if (obj == null) {
-            throw new NullPointerException(msg + " must be not null");
-        }
     }
 
     static class Node<T> {

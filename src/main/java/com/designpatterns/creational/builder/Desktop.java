@@ -26,6 +26,18 @@ public class Desktop {
         this.graphicCard = builder.graphicCard;
     }
 
+    @Override
+    public String toString() {
+        return "Desktop{" +
+                "CPU='" + CPU + '\'' +
+                ", RAM='" + RAM + '\'' +
+                ", isGraphicCardEnabled=" + isGraphicCardEnabled +
+                ", operatingSystem='" + operatingSystem + '\'' +
+                ", diskSizeGB=" + diskSizeGB +
+                ", graphicCard='" + graphicCard + '\'' +
+                '}';
+    }
+
     /**
      * Builder class for the above Desktop class. Constructs the Desktop by invoking the Desktop class constructor and
      * allows access to set optional fields in the Desktop class.
@@ -66,17 +78,5 @@ public class Desktop {
         public Desktop build() {
             return new Desktop(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Desktop{" +
-                "CPU='" + CPU + '\'' +
-                ", RAM='" + RAM + '\'' +
-                ", isGraphicCardEnabled=" + isGraphicCardEnabled +
-                ", operatingSystem='" + operatingSystem + '\'' +
-                ", diskSizeGB=" + diskSizeGB +
-                ", graphicCard='" + graphicCard + '\'' +
-                '}';
     }
 }

@@ -10,6 +10,29 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class BloomFilterTest {
 
+    private static final char[] CHAR_POOL;
+
+    static {
+        CHAR_POOL = new char[52];
+        int i = 0;
+        for (char c = 'a'; c <= 'z'; c++) {
+            CHAR_POOL[i++] = c;
+            CHAR_POOL[i++] = (char) (c - 32);
+        }
+    }
+
+    public static String randomString(int minLength, int maxLength) {
+        ThreadLocalRandom r = ThreadLocalRandom.current();
+        int chLen = r.nextInt(minLength, maxLength),
+                poolSize = CHAR_POOL.length;
+        char[] chars = new char[chLen];
+        for (int i = 0; i < chLen; i++) {
+            chars[i] = CHAR_POOL[r.nextInt(poolSize)];
+        }
+
+        return new String(chars);
+    }
+
     @Test
     public void test() {
         int count = 100000;
@@ -42,28 +65,5 @@ public class BloomFilterTest {
         System.out.println("total: " + total);
         System.out.println("error rate : " + (double) error / total);
     }
-    
-    public static String randomString(int minLength, int maxLength) {
-        ThreadLocalRandom r = ThreadLocalRandom.current();
-        int chLen = r.nextInt(minLength, maxLength),
-                poolSize = CHAR_POOL.length;
-        char[] chars = new char[chLen];
-        for (int i = 0; i < chLen; i++) {
-            chars[i] = CHAR_POOL[r.nextInt(poolSize)];
-        }
 
-        return new String(chars);
-    }
-
-    private static final char[] CHAR_POOL;
-
-    static {
-        CHAR_POOL = new char[52];
-        int i = 0;
-        for (char c = 'a'; c <= 'z'; c++) {
-            CHAR_POOL[i++] = c;
-            CHAR_POOL[i++] = (char) (c - 32);
-        }
-    }
-    
 }

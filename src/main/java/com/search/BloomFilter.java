@@ -15,7 +15,6 @@ import java.util.function.Function;
  * if assert an element exists, but not necessarily.
  * <p>
  * The accuracy rate depends on capacity and hash functions.
- *
  */
 public class BloomFilter implements Serializable {
     private static final long serialVersionUID = -4466610350741278658L;
@@ -50,6 +49,22 @@ public class BloomFilter implements Serializable {
         }
 
         return new Builder(capacity);
+    }
+
+    private static void checkNotNull(String element, String msg) {
+        if (element == null) {
+            throw new NullPointerException(msg + " must be not null");
+        }
+    }
+
+    private static int nextPowerOf2(int i) {
+        int n = i - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= 0x40000000) ? 0x40000000 : n + 1;
     }
 
     /**
@@ -88,22 +103,6 @@ public class BloomFilter implements Serializable {
 
     public int size() {
         return size;
-    }
-
-    private static void checkNotNull(String element, String msg) {
-        if (element == null) {
-            throw new NullPointerException(msg + " must be not null");
-        }
-    }
-
-    private static int nextPowerOf2(int i) {
-        int n = i - 1;
-        n |= n >>> 1;
-        n |= n >>> 2;
-        n |= n >>> 4;
-        n |= n >>> 8;
-        n |= n >>> 16;
-        return (n < 0) ? 1 : (n >= 0x40000000) ? 0x40000000 : n + 1;
     }
 
     /**

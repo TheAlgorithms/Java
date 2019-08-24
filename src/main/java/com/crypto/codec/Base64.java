@@ -193,7 +193,7 @@ public class Base64 {
      * <p>Removes the padding from the last block.
      *
      * @param block
-     * @return  The decoded last block of data
+     * @return The decoded last block of data
      */
     private static byte[] undoPadding(byte[] block) {
         int padCount = 0;

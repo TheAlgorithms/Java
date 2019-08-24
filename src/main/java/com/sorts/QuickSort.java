@@ -6,18 +6,6 @@ import static com.sorts.SortUtils.swap;
 public class QuickSort {
 
     /**
-     * This method implements the Generic Quick Sort
-     *
-     * @param array The array to be sorted
-     *              Sorts the array in increasing order
-     **/
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        doSort(array, 0, array.length - 1);
-        return array;
-    }
-
-
-    /**
      * The sorting process
      *
      * @param left  The first index of an array
@@ -60,5 +48,16 @@ public class QuickSort {
             }
         }
         return left;
+    }
+
+    /**
+     * This method implements the Generic Quick Sort
+     *
+     * @param array The array to be sorted
+     *              Sorts the array in increasing order
+     **/
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        doSort(array, 0, array.length - 1);
+        return array;
     }
 }

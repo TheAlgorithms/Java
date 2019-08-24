@@ -18,7 +18,7 @@ public class GeneralQueueTest {
         myQueue.add(50);
 
 
-        Object[] myArray =  myQueue.toArray();
+        Object[] myArray = myQueue.toArray();
         assertEquals(myArray.length, myQueue.size());
 
         myQueue.remove(20);

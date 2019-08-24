@@ -35,7 +35,7 @@ public class GaleShapleyTest {
                     womenPrefs[i][j] = j;
                 }
                 shuffleArray(menPrefs[i], i);
-                shuffleArray(womenPrefs[i], n+i);
+                shuffleArray(womenPrefs[i], n + i);
             }
             // Now we have pseudo-random preferences for each man and each woman.
             GaleShapleyMenMatching = galeShapley.GaleShapleyStableMarriage(menPrefs, womenPrefs);
@@ -47,7 +47,7 @@ public class GaleShapleyTest {
      * Determine if the proposed menMatching is stable, i.e. if there is no
      * potential couple in which both members would strictly prefer being with each
      * other than being with their current partner.
-     * 
+     *
      * @param menMatching
      * @param menPrefs
      * @param womenPrefs
@@ -105,7 +105,7 @@ public class GaleShapleyTest {
 
     /**
      * Shuffle an array using Collections.shuffle
-     * 
+     *
      * @param array array to be shuffled
      * @param seed  fixed seed, for reproducibility
      */

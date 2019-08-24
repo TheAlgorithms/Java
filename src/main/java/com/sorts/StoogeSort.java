@@ -9,8 +9,8 @@ public class StoogeSort {
      * This method implements recursion StoogeSort
      *
      * @param arr array to store number elements
-     * @param f     first element in the array
-     * @param l     last element in the array
+     * @param f   first element in the array
+     * @param l   last element in the array
      */
     public <T extends Comparable<T>> T[] sort(T[] arr, int f, int l) {
 

@@ -6,7 +6,6 @@ import java.math.BigInteger;
  * We may calculate power with loops, but what if the index is too large ?
  * FastPower aims to calculate quickly in this circumstances with time complexity O(log k),
  * where k is the index.
- *
  */
 public class FastPower {
     public static BigInteger calculate(BigInteger n, BigInteger k, BigInteger mod) {

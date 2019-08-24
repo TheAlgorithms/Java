@@ -3,20 +3,6 @@ package com.sorts;
 public class MergeSort {
 
     /**
-     * This method implements the Generic Merge Sort
-     *
-     * @param unsorted the array which should be sorted
-     * @param <T>      Comparable class
-     * @return sorted array
-     */
-    @SuppressWarnings("unchecked")
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        T[] tmp = (T[]) new Comparable[unsorted.length];
-        doSort(unsorted, tmp, 0, unsorted.length - 1);
-        return unsorted;
-    }
-
-    /**
      * @param arr   The array to be sorted
      * @param temp  The copy of the actual array
      * @param left  The first index of the array
@@ -71,5 +57,19 @@ public class MergeSort {
             j++;
             k++;
         }
+    }
+
+    /**
+     * This method implements the Generic Merge Sort
+     *
+     * @param unsorted the array which should be sorted
+     * @param <T>      Comparable class
+     * @return sorted array
+     */
+    @SuppressWarnings("unchecked")
+    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        T[] tmp = (T[]) new Comparable[unsorted.length];
+        doSort(unsorted, tmp, 0, unsorted.length - 1);
+        return unsorted;
     }
 }

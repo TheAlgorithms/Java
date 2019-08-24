@@ -100,7 +100,7 @@ public class StackTest {
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        assertEquals(-1,myStack.search(50));
+        assertEquals(-1, myStack.search(50));
     }
 
     @Test
@@ -110,7 +110,7 @@ public class StackTest {
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        assertEquals(3,myStack.search(10));
+        assertEquals(3, myStack.search(10));
 
     }
 }

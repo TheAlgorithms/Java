@@ -9,6 +9,27 @@ import static com.sorts.SortUtils.swap;
 
 public class HeapSort {
 
+    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        return sort(Arrays.asList(unsorted)).toArray(unsorted);
+    }
+
+    private <T extends Comparable<T>> List<T> sort(List<T> unsorted) {
+        int size = unsorted.size();
+
+        @SuppressWarnings("unchecked")
+        Heap<T> heap = new Heap<>(unsorted.toArray((T[]) new Comparable[unsorted.size()]));
+
+        // make min heap using index 0 as root.
+        heap.makeMinHeap(0);
+        List<T> sorted = new ArrayList<>(size);
+        while (size > 0) {
+            T min = heap.getRoot(--size);
+            sorted.add(min);
+        }
+
+        return sorted;
+    }
+
     private static class Heap<T extends Comparable<T>> {
         /**
          * Array to store heap
@@ -89,26 +110,5 @@ public class HeapSort {
         }
 
 
-    }
-
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        return sort(Arrays.asList(unsorted)).toArray(unsorted);
-    }
-
-    private <T extends Comparable<T>> List<T> sort(List<T> unsorted) {
-        int size = unsorted.size();
-
-        @SuppressWarnings("unchecked")
-        Heap<T> heap = new Heap<>(unsorted.toArray((T[]) new Comparable[unsorted.size()]));
-
-        // make min heap using index 0 as root.
-        heap.makeMinHeap(0);
-        List<T> sorted = new ArrayList<>(size);
-        while (size > 0) {
-            T min = heap.getRoot(--size);
-            sorted.add(min);
-        }
-
-        return sorted;
     }
 }
