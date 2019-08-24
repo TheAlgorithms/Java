@@ -1,4 +1,4 @@
-package src.main.java.com.search;
+package com.search;
 
 import static java.lang.Math.min;
 

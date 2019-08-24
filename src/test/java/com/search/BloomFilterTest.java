@@ -1,13 +1,12 @@
-package src.test.java.com.search;
+package com.search;
 
-import org.junit.Test;
-import src.main.java.com.search.BloomFilter;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class BloomFilterTest {
 

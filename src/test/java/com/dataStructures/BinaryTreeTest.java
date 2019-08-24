@@ -1,14 +1,11 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
-import org.junit.Test;
-import src.main.java.com.dataStructures.BinaryTree;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class BinaryTreeTest {
-
-    public BinaryTreeTest() {
-    }
 
     /**
      * Test of insert method, of class BinaryTree.

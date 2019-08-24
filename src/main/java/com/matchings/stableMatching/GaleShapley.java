@@ -1,4 +1,4 @@
-package src.main.java.com.matchings.stableMatching;
+package com.matchings.stableMatching;
 
 public class GaleShapley {
 

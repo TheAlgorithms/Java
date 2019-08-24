@@ -1,10 +1,10 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.dataStructures.Stack;
+import org.junit.jupiter.api.Test;
 
 import java.util.EmptyStackException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackTest {
 
@@ -13,18 +13,17 @@ public class StackTest {
 
         Stack<Integer> myStack = new Stack<>();
         boolean isEmpty = myStack.empty();
-        Assert.assertTrue(isEmpty);
+        assertTrue(isEmpty);
 
         myStack.push(10);
         isEmpty = myStack.empty();
-        Assert.assertFalse(isEmpty);
+        assertFalse(isEmpty);
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testPeekWithoutElements() {
-
         Stack<Integer> myStack = new Stack<>();
-        myStack.peek();
+        assertThrows(EmptyStackException.class, () -> myStack.peek());
     }
 
     @Test
@@ -36,15 +35,13 @@ public class StackTest {
         myStack.push(30);
         myStack.push(40);
 
-        Assert.assertEquals(40, myStack.peek());
+        assertEquals(40, myStack.peek());
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test
     public void testPopWithoutElements() {
-
         Stack<Integer> myStack = new Stack<>();
-        myStack.pop();
-
+        assertThrows(EmptyStackException.class, () -> myStack.pop());
     }
 
     @Test
@@ -57,7 +54,7 @@ public class StackTest {
         myStack.push(40);
         myStack.push(50);
 
-        Assert.assertEquals(50, myStack.pop());
+        assertEquals(50, myStack.pop());
 
     }
 
@@ -75,7 +72,7 @@ public class StackTest {
         myStack.push(80);
         myStack.push(90);
         myStack.push(100);
-        Assert.assertEquals(10, myStack.size());
+        assertEquals(10, myStack.size());
     }
 
     @Test
@@ -93,7 +90,7 @@ public class StackTest {
         myStack.push(90);
         myStack.push(100);
         myStack.push(110);
-        Assert.assertEquals(11, myStack.size());
+        assertEquals(11, myStack.size());
     }
 
     @Test
@@ -103,7 +100,7 @@ public class StackTest {
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        Assert.assertEquals(-1,myStack.search(50));
+        assertEquals(-1,myStack.search(50));
     }
 
     @Test
@@ -113,7 +110,7 @@ public class StackTest {
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        Assert.assertEquals(3,myStack.search(10));
+        assertEquals(3,myStack.search(10));
 
     }
 }

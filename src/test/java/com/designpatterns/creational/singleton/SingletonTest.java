@@ -1,13 +1,13 @@
-package src.test.java.com.designpatterns.creational.singleton;
+package com.designpatterns.creational.singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.singleton.Singleton;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SingletonTest {
     private static volatile ArrayList<Integer> hashCodeList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class SingletonTest {
                     testFailed = true;
                 }
             }
-            Assert.assertFalse(testFailed);
+            assertFalse(testFailed);
         }
     }
 }

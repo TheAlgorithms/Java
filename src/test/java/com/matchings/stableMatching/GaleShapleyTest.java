@@ -1,14 +1,13 @@
-package src.test.java.com.matchings.stableMatching;
+package com.matchings.stableMatching;
 
-import src.main.java.com.matchings.stableMatching.GaleShapley;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
-import java.util.Collections; // for shuffling
-import java.util.ArrayList; // for shuffling
-import java.util.List; // for shuffling
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GaleShapleyTest {
 
@@ -16,7 +15,6 @@ public class GaleShapleyTest {
      * Test a number of GaleShapley executions on pseudo-random instances of the
      * stable marriage problem.
      */
-
     @Test
     public void testGaleShapley() {
         GaleShapley galeShapley = new GaleShapley();
@@ -41,7 +39,7 @@ public class GaleShapleyTest {
             }
             // Now we have pseudo-random preferences for each man and each woman.
             GaleShapleyMenMatching = galeShapley.GaleShapleyStableMarriage(menPrefs, womenPrefs);
-            assertEquals("Unstable matching", true, isStable(GaleShapleyMenMatching, menPrefs, womenPrefs));
+            assertEquals(true, isStable(GaleShapleyMenMatching, menPrefs, womenPrefs), "Unstable matching");
         }
     }
 

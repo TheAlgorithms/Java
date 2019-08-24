@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.creational.prototype;
+package com.designpatterns.creational.prototype;
 
 class BlackColor extends Color {
 

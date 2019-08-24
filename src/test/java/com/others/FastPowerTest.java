@@ -1,11 +1,10 @@
-package src.test.java.com.others;
+package com.others;
 
-import org.junit.Test;
-import src.main.java.com.others.FastPower;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FastPowerTest {
 
@@ -28,6 +27,5 @@ public class FastPowerTest {
         testBigInteger(BigInteger.TEN, BigInteger.TEN, BigInteger.valueOf(4));
         testBigInteger(new BigInteger("123456"), new BigInteger("123456789"), new BigInteger("234"));
         testBigInteger(new BigInteger("123456789101112"), new BigInteger("12345678910111213"), new BigInteger("567890"));
-
     }
 }

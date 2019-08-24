@@ -1,8 +1,8 @@
-package src.test.java.com.designpatterns.creational.builder;
+package com.designpatterns.creational.builder;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.builder.Desktop;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DesktopBuilderTest {
     private final String configOne = "Desktop{CPU='Intel i7', RAM='Corsair Vengeance 3000', isGraphicCardEnabled=true" +
@@ -18,7 +18,7 @@ public class DesktopBuilderTest {
                 .setGraphicCardEnabled(true)
                 .setOperatingSystem("Windows 10")
                 .build();
-        Assert.assertEquals(d1.toString(), configOne);
+        assertEquals(d1.toString(), configOne);
 
         Desktop d2 = new Desktop.DesktopBuilder("Intel i5", "HyperX Fury v5")
                 .setDiskSizeGB(16)
@@ -26,7 +26,6 @@ public class DesktopBuilderTest {
                 .setGraphicCardEnabled(true)
                 .setOperatingSystem("Red Hat Enterprise")
                 .build();
-        Assert.assertEquals(d2.toString(), configTwo);
+        assertEquals(d2.toString(), configTwo);
     }
-
 }

@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.creational.factory;
+package com.designpatterns.creational.factory;
 
 public class Pentagon implements Polygon {
     @Override

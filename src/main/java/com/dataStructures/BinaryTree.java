@@ -1,4 +1,4 @@
-package src.main.java.com.dataStructures;
+package com.dataStructures;
 
 /**
  * Binary tree for general value type, without redundancy

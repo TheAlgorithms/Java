@@ -1,14 +1,11 @@
-package src.test.java.com.designpatterns.structural.adapter;
+package com.designpatterns.structural.adapter;
 
-import org.junit.Test;
-import src.main.java.com.designpatterns.structural.adapter.BugattiVeyron;
-import src.main.java.com.designpatterns.structural.adapter.Movable;
-import src.main.java.com.designpatterns.structural.adapter.MovableAdapter;
-import src.main.java.com.designpatterns.structural.adapter.MovableAdapterImpl;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MovableAdapterTest {
+
     @Test
     public void testMovableAdapter() {
         Movable bugattiVeyron = new BugattiVeyron();

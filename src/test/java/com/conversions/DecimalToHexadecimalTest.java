@@ -1,18 +1,18 @@
-package src.test.java.com.conversions;
+package com.conversions;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.conversions.DecimalToHexadecimal;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DecimalToHexadecimalTest {
 
     @Test
     public void testDecimalToHexadecimalTest() {
         DecimalToHexadecimal decimalToHexadecimal = new DecimalToHexadecimal();
-        Assert.assertEquals("Incorrect Conversion", "F", decimalToHexadecimal.decimalToHex("15"));
-        Assert.assertEquals("Incorrect Conversion", "121", decimalToHexadecimal.decimalToHex("289"));
-        Assert.assertEquals("Incorrect Conversion", "AAAAAAAAAAAAAAAAAA1", decimalToHexadecimal.decimalToHex("50371909150609548946081"));
-        Assert.assertEquals("Incorrect Conversion", "A", decimalToHexadecimal.decimalToHex("10"));
-        Assert.assertEquals("Incorrect Conversion", "8B2F", decimalToHexadecimal.decimalToHex("35631"));
+        assertEquals("F", decimalToHexadecimal.decimalToHex("15"));
+        assertEquals("121", decimalToHexadecimal.decimalToHex("289"));
+        assertEquals("AAAAAAAAAAAAAAAAAA1", decimalToHexadecimal.decimalToHex("50371909150609548946081"));
+        assertEquals("A", decimalToHexadecimal.decimalToHex("10"));
+        assertEquals("8B2F", decimalToHexadecimal.decimalToHex("35631"));
     }
 }

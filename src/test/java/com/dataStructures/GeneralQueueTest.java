@@ -1,10 +1,9 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
+import com.types.Queue;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.dataStructures.GeneralQueue;
-import src.main.java.com.types.Queue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeneralQueueTest {
 
@@ -20,26 +19,25 @@ public class GeneralQueueTest {
 
 
         Object[] myArray =  myQueue.toArray();
-        Assert.assertEquals(myArray.length, myQueue.size());
+        assertEquals(myArray.length, myQueue.size());
 
         myQueue.remove(20);
-        Assert.assertEquals(myQueue.size(), 4);
+        assertEquals(myQueue.size(), 4);
 
         Boolean isEmpty = myQueue.isEmpty();
-        Assert.assertEquals(Boolean.valueOf("false"), Boolean.valueOf(isEmpty));
+        assertEquals(Boolean.valueOf("false"), Boolean.valueOf(isEmpty));
 
         myQueue.offer(60);
-        Assert.assertEquals(5, myQueue.size());
+        assertEquals(5, myQueue.size());
 
         int polledElement = myQueue.poll();
-        Assert.assertEquals(10, polledElement);
+        assertEquals(10, polledElement);
 
         int element = myQueue.element();
-        Assert.assertEquals(30, element);
+        assertEquals(30, element);
 
         myQueue.poll();
         int peekedElement = myQueue.peek();
-        Assert.assertEquals(40, peekedElement);
-
+        assertEquals(40, peekedElement);
     }
 }

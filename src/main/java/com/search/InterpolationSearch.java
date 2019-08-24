@@ -1,4 +1,4 @@
-package src.main.java.com.search;
+package com.search;
 
 public class InterpolationSearch {
 

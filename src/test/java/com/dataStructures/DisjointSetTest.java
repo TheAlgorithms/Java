@@ -1,11 +1,12 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
-import org.junit.Test;
-import src.main.java.com.dataStructures.DisjointSet;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DisjointSetTest {
+
     @Test
     public void test() {
         DisjointSet<Object> set = new DisjointSet<>();

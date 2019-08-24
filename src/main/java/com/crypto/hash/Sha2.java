@@ -1,4 +1,4 @@
-package src.main.java.com.crypto.hash;
+package com.crypto.hash;
 
 import java.nio.ByteBuffer;
 
@@ -52,7 +52,7 @@ public final class Sha2 {
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 256 bit (32 byte)
-     * @see src.main.java.com.crypto.hash.Sha2#SHA224(byte[]) SHA224()
+     * @see com.crypto.hash.Sha2#SHA224(byte[]) SHA224()
      */
     public static String SHA256(byte[] data) {
         final int[] initialHash = {
@@ -100,7 +100,7 @@ public final class Sha2 {
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 512 bit (64 byte)
-     * @see src.main.java.com.crypto.hash.Sha2#SHA384(byte[]) SHA384()
+     * @see com.crypto.hash.Sha2#SHA384(byte[]) SHA384()
      */
     public static String SHA512(byte[] data) {
         final long[] initialHash = {

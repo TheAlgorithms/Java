@@ -1,4 +1,4 @@
-package src.main.java.com.conversions;
+package com.conversions;
 
 /**
  * Convert the binary number into gray code

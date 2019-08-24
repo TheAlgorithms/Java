@@ -1,10 +1,8 @@
-package src.test.java.com.crypto.codec;
+package com.crypto.codec;
 
-import src.main.java.com.crypto.codec.Base64;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.*;
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Base64Test {
 
@@ -12,7 +10,6 @@ public class Base64Test {
      * Test vectors are taken from:
      * https://tools.ietf.org/html/rfc4648#section-10
      */
-
     @Test
     public void TestBase64Encode() {
         assertEquals("", Base64.encode("".getBytes()));
@@ -35,13 +32,15 @@ public class Base64Test {
         assertArrayEquals("foobar".getBytes(), Base64.decode("Zm9vYmFy"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testInvalidBase64String() {
-        Base64.decode("Z/+v&mF=");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> Base64.decode("Z/+v&mF="));
+        assertEquals(true, exception != null);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test()
     public void testInvalidLengthOfBase64String() {
-        Base64.decode("Zm9v" + "YmFy" + "d");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> Base64.decode("Zm9v" + "YmFy" + "d"));
+        assertEquals(true, exception != null);
     }
 }

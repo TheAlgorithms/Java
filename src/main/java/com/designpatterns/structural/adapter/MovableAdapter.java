@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.structural.adapter;
+package com.designpatterns.structural.adapter;
 
 /**
  * An Adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected
