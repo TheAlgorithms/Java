@@ -1,24 +1,24 @@
-package src.test.java.com.generation;
+package com.generation;
 
-import java.awt.Color;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.imageio.ImageIO;
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.generation.SimplexNoise;
 
-public class SimplexNoiseTest {
+class SimplexNoiseTest {
 
     @Test
-    public void testGenerateHeightMap() {
+    void testGenerateHeightMap() {
 
         final int WIDTH = 256;
         final int HEIGHT = 256;
         final int X = 0;
         final int Y = 0;
-        final String RESOURCE_NAME = "src/test/java/com/generation/expected-result.png";
+        final String RESOURCE_NAME = "com/generation/expected-result.png";
 
         float[][] heightmap = new SimplexNoise(50, 0.3F, 1111111111111111L).generateHeightMap(X, Y, WIDTH, HEIGHT);
         BufferedImage image = null;
@@ -27,18 +27,17 @@ public class SimplexNoiseTest {
 
             image = ImageIO.read(in);
 
-            Assert.assertEquals(WIDTH, image.getWidth());
-            Assert.assertEquals(HEIGHT, image.getHeight());
+            Assertions.assertEquals(WIDTH, image.getWidth());
+            Assertions.assertEquals(HEIGHT, image.getHeight());
 
         } catch (IOException | IllegalArgumentException exception) {
-            Assert.fail(exception.toString());
+            Assertions.fail(exception.toString());
         }
 
         for (int x = 0; x < WIDTH; x++) {
 
             for (int y = 0; y < HEIGHT; y++) {
-
-                Assert.assertEquals(new Color(image.getRGB(x, y)).getRed(), (int) (heightmap[x][y] * 255));
+                Assertions.assertEquals(new Color(image.getRGB(x, y)).getRed(), (int) (heightmap[x][y] * 255));
             }
         }
     }

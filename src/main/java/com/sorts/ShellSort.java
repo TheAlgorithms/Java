@@ -1,7 +1,7 @@
-package src.main.java.com.sorts;
+package com.sorts;
 
-import static src.main.java.com.sorts.SortUtils.less;
-import static src.main.java.com.sorts.SortUtils.swap;
+import static com.sorts.SortUtils.less;
+import static com.sorts.SortUtils.swap;
 
 public class ShellSort {
 

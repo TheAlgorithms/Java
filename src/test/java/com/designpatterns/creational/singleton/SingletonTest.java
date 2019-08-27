@@ -1,19 +1,18 @@
-package src.test.java.com.designpatterns.creational.singleton;
+package com.designpatterns.creational.singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.singleton.Singleton;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class SingletonTest {
+class SingletonTest {
     private static volatile ArrayList<Integer> hashCodeList = new ArrayList<>();
 
     @Test
-    public void testSingleton() throws InterruptedException {
+    void testSingleton() throws InterruptedException {
         boolean testFailed = false;
         ExecutorService es = Executors.newCachedThreadPool();
         // Creates 15 threads and makes all of them access the Singleton class
@@ -38,7 +37,7 @@ public class SingletonTest {
                     testFailed = true;
                 }
             }
-            Assert.assertFalse(testFailed);
+            Assertions.assertFalse(testFailed);
         }
     }
 }

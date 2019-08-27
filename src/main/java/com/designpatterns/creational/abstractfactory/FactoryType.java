@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.creational.abstractfactory;
+package com.designpatterns.creational.abstractfactory;
 
 public enum FactoryType {
     TWO_D_FACTORY,

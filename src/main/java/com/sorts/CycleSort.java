@@ -1,4 +1,4 @@
-package src.main.java.com.sorts;
+package com.sorts;
 
 public class CycleSort {
 

@@ -1,16 +1,14 @@
-package src.test.java.com.matchings.stableMatching;
+package com.matchings.stableMatching;
 
-import src.main.java.com.matchings.stableMatching.GaleShapley;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
-import java.util.Collections; // for shuffling
-import java.util.ArrayList; // for shuffling
-import java.util.List; // for shuffling
 
-public class GaleShapleyTest {
+class GaleShapleyTest {
 
     /**
      * Test a number of GaleShapley executions on pseudo-random instances of the
@@ -18,7 +16,7 @@ public class GaleShapleyTest {
      */
 
     @Test
-    public void testGaleShapley() {
+    void testGaleShapley() {
         GaleShapley galeShapley = new GaleShapley();
         int N = 10;
         int[][] menPrefs;
@@ -37,11 +35,11 @@ public class GaleShapleyTest {
                     womenPrefs[i][j] = j;
                 }
                 shuffleArray(menPrefs[i], i);
-                shuffleArray(womenPrefs[i], n+i);
+                shuffleArray(womenPrefs[i], n + i);
             }
             // Now we have pseudo-random preferences for each man and each woman.
             GaleShapleyMenMatching = galeShapley.GaleShapleyStableMarriage(menPrefs, womenPrefs);
-            assertEquals("Unstable matching", true, isStable(GaleShapleyMenMatching, menPrefs, womenPrefs));
+            Assertions.assertTrue(isStable(GaleShapleyMenMatching, menPrefs, womenPrefs), "Unstable matching");
         }
     }
 
@@ -49,14 +47,14 @@ public class GaleShapleyTest {
      * Determine if the proposed menMatching is stable, i.e. if there is no
      * potential couple in which both members would strictly prefer being with each
      * other than being with their current partner.
-     * 
+     *
      * @param menMatching
      * @param menPrefs
      * @param womenPrefs
      * @return whether menMatching is stable according to menPrefs and womenPrefs
      */
 
-    public boolean isStable(int[] menMatching, int[][] menPrefs, int[][] womenPrefs) {
+    private boolean isStable(int[] menMatching, int[][] menPrefs, int[][] womenPrefs) {
         int n = menMatching.length;
         // reconstruct womenMatching (for each woman, the associated man):
         int[] womenMatching = new int[n];
@@ -107,12 +105,12 @@ public class GaleShapleyTest {
 
     /**
      * Shuffle an array using Collections.shuffle
-     * 
+     *
      * @param array array to be shuffled
      * @param seed  fixed seed, for reproducibility
      */
 
-    public void shuffleArray(int[] array, long seed) {
+    private void shuffleArray(int[] array, long seed) {
         List<Integer> list = new ArrayList<>();
         for (int i : array) {
             list.add(i);

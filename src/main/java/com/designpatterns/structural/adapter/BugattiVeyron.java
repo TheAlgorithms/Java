@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.structural.adapter;
+package com.designpatterns.structural.adapter;
 
 public class BugattiVeyron implements Movable {
     @Override

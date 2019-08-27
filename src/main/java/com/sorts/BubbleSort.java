@@ -1,6 +1,6 @@
-package src.main.java.com.sorts;
+package com.sorts;
 
-import src.main.java.com.types.Sort;
+import com.types.Sort;
 
 public class BubbleSort<T> implements Sort<T> {
   /**

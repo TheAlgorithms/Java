@@ -1,12 +1,11 @@
-package src.test.java.com.designpatterns.creational.abstractfactory;
+package com.designpatterns.creational.abstractfactory;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.abstractfactory.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class AbstractShapeFactoryTest {
+class AbstractShapeFactoryTest {
     @Test
-    public void testAbstractShapeFactory() {
+    void testAbstractShapeFactory() {
         String failReason = "";
         // Tests for 2-D shape factory
         // Test for Line
@@ -40,7 +39,7 @@ public class AbstractShapeFactoryTest {
             failReason += "Surface area of Sphere is incorrect!.\n";
         }
 
-        Assert.assertEquals(failReason, "", failReason);
+        Assertions.assertEquals(failReason, "", failReason);
 
     }
 }

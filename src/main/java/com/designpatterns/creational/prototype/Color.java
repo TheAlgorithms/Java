@@ -1,4 +1,4 @@
-package src.main.java.com.designpatterns.creational.prototype;
+package com.designpatterns.creational.prototype;
 
 /**
  * The prototype pattern is used when the type of objects to create is determined by a prototypical instance, which

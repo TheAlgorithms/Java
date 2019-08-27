@@ -1,13 +1,11 @@
-package src.test.java.com.designpatterns.creational.factory;
+package com.designpatterns.creational.factory;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.factory.Polygon;
-import src.main.java.com.designpatterns.creational.factory.PolygonFactory;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class PolygonFactoryTest {
+class PolygonFactoryTest {
     @Test
-    public void testPolygonFactory() {
+    void testPolygonFactory() {
         String failReason = "";
         PolygonFactory polFactory = new PolygonFactory();
 
@@ -40,6 +38,6 @@ public class PolygonFactoryTest {
             failReason += "Pentagon area is incorrect!";
         }
 
-        Assert.assertEquals(failReason, failReason, "");
+        Assertions.assertEquals(failReason, failReason, "");
     }
 }

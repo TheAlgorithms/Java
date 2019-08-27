@@ -1,6 +1,6 @@
-package src.main.java.com.dataStructures;
+package com.dataStructures;
 
-import src.main.java.com.types.Queue;
+import com.types.Queue;
 
 import java.util.Iterator;
 import java.util.LinkedList;

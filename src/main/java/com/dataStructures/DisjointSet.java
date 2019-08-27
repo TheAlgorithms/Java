@@ -1,4 +1,4 @@
-package src.main.java.com.dataStructures;
+package com.dataStructures;
 
 import java.io.Serializable;
 import java.util.*;

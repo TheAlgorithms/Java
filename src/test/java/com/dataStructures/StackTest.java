@@ -1,34 +1,34 @@
-package src.test.java.com.dataStructures;
+package com.dataStructures;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.dataStructures.Stack;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.EmptyStackException;
 
-public class StackTest {
+class StackTest {
 
     @Test
-    public void testEmpty() {
+    void testEmpty() {
 
         Stack<Integer> myStack = new Stack<>();
         boolean isEmpty = myStack.empty();
-        Assert.assertTrue(isEmpty);
+        Assertions.assertTrue(isEmpty);
 
         myStack.push(10);
         isEmpty = myStack.empty();
-        Assert.assertFalse(isEmpty);
-    }
-
-    @Test(expected = EmptyStackException.class)
-    public void testPeekWithoutElements() {
-
-        Stack<Integer> myStack = new Stack<>();
-        myStack.peek();
+        Assertions.assertFalse(isEmpty);
     }
 
     @Test
-    public void testPeekWithElements() {
+    void testPeekWithoutElements() {
+        Assertions.assertThrows(EmptyStackException.class, () -> {
+            Stack<Integer> myStack = new Stack<>();
+            myStack.peek();
+        });
+    }
+
+    @Test
+    void testPeekWithElements() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
@@ -36,19 +36,19 @@ public class StackTest {
         myStack.push(30);
         myStack.push(40);
 
-        Assert.assertEquals(40, myStack.peek());
-    }
-
-    @Test(expected = EmptyStackException.class)
-    public void testPopWithoutElements() {
-
-        Stack<Integer> myStack = new Stack<>();
-        myStack.pop();
-
+        Assertions.assertEquals(40, myStack.peek());
     }
 
     @Test
-    public void testPopWithElements() {
+    void testPopWithoutElements() {
+        Assertions.assertThrows(EmptyStackException.class, () -> {
+            Stack<Integer> myStack = new Stack<>();
+            myStack.pop();
+        });
+    }
+
+    @Test
+    void testPopWithElements() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
@@ -57,12 +57,12 @@ public class StackTest {
         myStack.push(40);
         myStack.push(50);
 
-        Assert.assertEquals(50, myStack.pop());
+        Assertions.assertEquals(50, myStack.pop());
 
     }
 
     @Test
-    public void testPushWithinInitialCapacity() {
+    void testPushWithinInitialCapacity() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
@@ -75,11 +75,11 @@ public class StackTest {
         myStack.push(80);
         myStack.push(90);
         myStack.push(100);
-        Assert.assertEquals(10, myStack.size());
+        Assertions.assertEquals(10, myStack.size());
     }
 
     @Test
-    public void testPushOutsideInitialCapacity() {
+    void testPushOutsideInitialCapacity() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
@@ -93,27 +93,27 @@ public class StackTest {
         myStack.push(90);
         myStack.push(100);
         myStack.push(110);
-        Assert.assertEquals(11, myStack.size());
+        Assertions.assertEquals(11, myStack.size());
     }
 
     @Test
-    public void testSearchWithObjectUnavailable() {
+    void testSearchWithObjectUnavailable() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        Assert.assertEquals(-1,myStack.search(50));
+        Assertions.assertEquals(-1, myStack.search(50));
     }
 
     @Test
-    public void testSearchWithObjectAvailable() {
+    void testSearchWithObjectAvailable() {
 
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
         myStack.push(20);
         myStack.push(30);
-        Assert.assertEquals(3,myStack.search(10));
+        Assertions.assertEquals(3, myStack.search(10));
 
     }
 }

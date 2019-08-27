@@ -1,12 +1,11 @@
-package src.test.java.com.designpatterns.creational.prototype;
+package com.designpatterns.creational.prototype;
 
-import org.junit.Assert;
-import org.junit.Test;
-import src.main.java.com.designpatterns.creational.prototype.ColorStore;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class PrototypeTest {
+class PrototypeTest {
     @Test
-    public void testPrototype() {
+    void testPrototype() {
         String testFailReason = "";
         String testOne = ColorStore.getColor("blue").addColor();
         if (!"Blue color added".equals(testOne)) {
@@ -24,6 +23,6 @@ public class PrototypeTest {
         if (!"Blue color added".equals(testFour)) {
             testFailReason += "TC 4 Failed: Blue couldn't be added\n";
         }
-        Assert.assertEquals(testFailReason, "", testFailReason);
+        Assertions.assertEquals(testFailReason, "", testFailReason);
     }
 }
