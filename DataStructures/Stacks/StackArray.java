@@ -109,14 +109,13 @@ public class StackArray {
     }
 
     private void resize(int newSize) {
-        // private int[] transferArray = new int[newSize]; we can't put modifiers here !
         int[] transferArray = new int[newSize];
 
-        // for(int i = 0; i < stackArray.length(); i++){ the length isn't a method .
         for (int i = 0; i < stackArray.length; i++) {
             transferArray[i] = stackArray[i];
-            stackArray = transferArray;
         }
+        // This reference change might be nice in here
+        stackArray = transferArray;
         maxSize = newSize;
     }
 
