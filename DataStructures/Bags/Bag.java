@@ -98,7 +98,7 @@ public class Bag<Element> implements Iterable<Element> {
             if (!hasNext())
                 throw new NoSuchElementException();
             Element element = currentElement.content;
-            currentElement = currentElement.nextElement;
+            currentElement = currentElement.nextElementt;
             return element;
         }
     }
