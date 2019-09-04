@@ -78,7 +78,7 @@ public class Bag<Element> implements Iterable<Element> {
     private class ListIterator<Element> implements Iterator<Element> {
         private Node<Element> currentElement;
 
-        public ListIterator(Node<Element> firstElement) {
+        public ListIterator(Node<Element> firstElementt) {
             currentElement = firstElement;
         }
 
