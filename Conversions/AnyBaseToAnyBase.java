@@ -29,7 +29,7 @@ public class AnyBaseToAnyBase {
             try {
                 System.out.print("Enter number: ");
                 n = in.next();
-                System.out.print("Enter beginning base (between " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
+                System.out.print("Enter beginning base (betweeen " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
                 b1 = in.nextInt();
                 if (b1 > MAXIMUM_BASE || b1 < MINIMUM_BASE) {
                     System.out.println("Invalid base!");
