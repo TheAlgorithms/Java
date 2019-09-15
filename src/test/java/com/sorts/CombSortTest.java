@@ -9,12 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CombSortTest {
 
-    //One global combSort instance variable
     CombSort combSort = new CombSort();
 
-    //Integer Sort Test
     @Test
-    void CombSortIntegerTest(){
+    void testIntegerSort(){
 
         Integer array1[] =  { 9, 5, 4, 6, 0, 100, 91, 40, 140, 500, 4, -1, -19};
         Integer array2[] =  { 9, 5, 4, 6, 0, 100, 91, 40, 140, 500, 4, -1, -19};
@@ -29,9 +27,8 @@ class CombSortTest {
         Assertions.assertArrayEquals(array1,array2);
     }
 
-    //String Sort Test
     @Test
-    void CombSortStringTest(){
+    void testStringSort(){
 
         String array1[] =  { "Ten" , "Nine", "Eight", "Seven", "Six", "Five", "Four", "One", "Zero" };
         String array2[] =  { "Ten" , "Nine", "Eight", "Seven", "Six", "Five", "Four", "One", "Zero" };
@@ -44,12 +41,10 @@ class CombSortTest {
 
         //compare the two results, our CombSort vs. Java's sort
         Assertions.assertArrayEquals(array1,array2);
-
     }
 
-    //Double Sort Test
     @Test
-    void CombSortDoubleTest(){
+    void testDoubleSort(){
 
         Double array1[] =  { 90.0, -10.0, 0.0, -1.0, -23.98, 10.76, 20.92 };
         Double array2[] =  { 90.0, -10.0, 0.0, -1.0, -23.98, 10.76, 20.92 };
@@ -62,12 +57,10 @@ class CombSortTest {
 
         //compare the two results, our CombSort vs. Java's sort
         Assertions.assertArrayEquals(array1,array2);
-
     }
 
-    //Character Sort Test
     @Test
-    void CombSortCharacterTest(){
+    void testCharacterSort(){
 
         Character array1[] =  { 'Z', 'A', 'B', 'z', 'b', 'c' };
         Character array2[] =  { 'Z', 'A', 'B', 'z', 'b', 'c' };
@@ -80,6 +73,5 @@ class CombSortTest {
 
         //compare the two results, our CombSort vs. Java's sort
         Assertions.assertArrayEquals(array1,array2);
-
     }
 }
