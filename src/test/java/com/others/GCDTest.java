@@ -36,7 +36,11 @@ public class GCDTest {
 
         Assertions.assertEquals(MAX_INT - 1, GCD.gcd(0, MAX_INT - 1 ));
 
-        Assertions.assertEquals(MIN_INT + 1, GCD.gcd(0, MIN_INT + 1 ));
+        Assertions.assertEquals(-(MIN_INT + 1), GCD.gcd(0, MIN_INT + 1 ));
+
+        Assertions.assertEquals(MAX_INT, GCD.gcd(0, MAX_INT  ));
+
+        Assertions.assertEquals(-MIN_INT , GCD.gcd(0, MIN_INT  ));
     }
     @Test
     void GCDNormalTest() {
