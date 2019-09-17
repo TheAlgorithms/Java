@@ -39,4 +39,11 @@ public class CRC32Test {
         Assertions.assertEquals(0xF51CDA68,result3,"Fail for string not contain space");
     }
 
+    @Test
+    public void testWithStringWithUTF(){
+        String str = "Nguyễn Thành Nam";
+        int result3 = CRC32.crc32(str);
+        Assertions.assertEquals(0x5553BA76,result3,"Fail for string with utf-8");
+    }
+
 }
