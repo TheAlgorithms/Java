@@ -1,6 +1,6 @@
 package DataStructures.Lists;
 
-public static testePullRequest;
+public static int testePullRequest;
 
 public class CircleLinkedList<E> {
     private static class Node<E> {
