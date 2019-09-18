@@ -51,5 +51,10 @@ public class GCDTest {
         Assertions.assertEquals(2, GCD.gcd(-10, 2));
         Assertions.assertEquals(2, GCD.gcd(10, -2));
         Assertions.assertEquals(2, GCD.gcd(-10, -2));
+        Assertions.assertEquals(51, GCD.gcd(1989, 867));
+        Assertions.assertEquals(7, GCD.gcd(567, 56));
+        Assertions.assertEquals(5, GCD.gcd(10002345, 67885));
+        Assertions.assertEquals(79, GCD.gcd(-79, -79));
     }
+
 }
