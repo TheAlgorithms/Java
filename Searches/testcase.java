@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class AddStringsTest {
+class TestCase {
 @Test
 public void testcase1(){
 		Integer[] array = {1, 3, 5, 7, 9, 11, 13, 15, 17}
