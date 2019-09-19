@@ -2,3 +2,4 @@ Java.iml
 .idea/*
 out/
 *.iml
+/target/
