@@ -58,25 +58,23 @@ class BinarySearch implements SearchAlgorithm {
         int median = (left + right) >>> 1;
         int comp = key.compareTo(array[median]);
 
-        if (comp < 0) {
+        if (comp == 0) {
+            return median;
+        } else if (comp < 0) {
             return search(array, key, left, median - 1);
-        }
-
-        if (comp > 0) {
+        } else {
             return search(array, key, median + 1, right);
         }
-
-        return median;
     }
 
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
         Random r = ThreadLocalRandom.current();
-        
+
         int size = 100;
         int maxElement = 100000;
-        
+
         Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[]::new);
 
 
