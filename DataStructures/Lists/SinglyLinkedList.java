@@ -61,7 +61,9 @@ public class SinglyLinkedList {
             throw new RuntimeException("The list is empty!");
         }
 
+        Node destroy = head;
         head = head.next;
+        destroy = null;  // clear to let GC do its work
     }
 
     /**
