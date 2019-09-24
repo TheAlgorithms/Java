@@ -1,0 +1,1 @@
+The Karatsuba algorithm is a fast multiplication algorithm. It reduces the multiplication of two n-digit numbers to at most n^(log3 [base:2]) ≈ n^(1.58)  single-digit multiplications in general (and exactly n^(log 3[base:2]) when n is a power of 2). 
