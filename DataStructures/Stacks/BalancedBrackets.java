@@ -38,29 +38,25 @@ class BalancedBrackets {
                     bracketsStack.push(x);
                     break;
                 case '}':
-                    if (bracketsStack.peek() == '{') {
-                        bracketsStack.pop();
+                    if (!bracketsStack.empty() && bracketsStack.pop() == '{') {
                         break;
                     } else {
                         return false;
                     }
                 case '>':
-                    if (bracketsStack.peek() == '<') {
-                        bracketsStack.pop();
+                    if (!bracketsStack.empty() && bracketsStack.pop() == '<') {
                         break;
                     } else {
                         return false;
                     }
                 case ')':
-                    if (bracketsStack.peek() == '(') {
-                        bracketsStack.pop();
+                    if (!bracketsStack.empty() && bracketsStack.pop() == '(') {
                         break;
                     } else {
                         return false;
                     }
                 case ']':
-                    if (bracketsStack.peek() == '[') {
-                        bracketsStack.pop();
+                    if (!bracketsStack.empty() && bracketsStack.pop() == '[') {
                         break;
                     } else {
                         return false;
