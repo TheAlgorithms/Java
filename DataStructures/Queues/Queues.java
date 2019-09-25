@@ -53,9 +53,7 @@ class Queue {
     public boolean insert(int x) {
         if (isFull())
             return false;
-        if (rear == maxSize - 1) // If the back of the queue is the end of the array wrap around to the front
-            rear = -1;
-        rear++;
+        rear = (rear + 1) % maxSize; // If the back of the queue is the end of the array wrap around to the front
         queueArray[rear] = x;
         nItems++;
         return true;
@@ -72,9 +70,7 @@ class Queue {
             return -1;
         }
         int temp = queueArray[front];
-        front++;
-        if (front == maxSize) //Dealing with wrap-around again
-            front = 0;
+        front = (front + 1) % maxSize;
         nItems--;
         return temp;
     }
@@ -153,6 +149,6 @@ public class Queues {
         // [7(rear), 2(front), 5, 3]
 
         System.out.println(myQueue.peekFront()); // Will print 2
-        System.out.println(myQueue.peekRear()); // Will print 7 	
+        System.out.println(myQueue.peekRear()); // Will print 7
     }
 }
