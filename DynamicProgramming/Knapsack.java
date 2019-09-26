@@ -6,7 +6,9 @@ package DynamicProgramming;
 
 public class Knapsack {
 
-    private static int knapSack(int W, int wt[], int val[], int n) {
+    private static int knapSack(int W, int wt[], int val[], int n) throws IllegalArgumentException {
+        if(wt == null || val == null)
+            throw new IllegalArgumentException();
         int i, w;
         int rv[][] = new int[n + 1][W + 1];    //rv means return value
 
