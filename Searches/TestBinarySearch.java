@@ -11,21 +11,25 @@ public class UnitTestForBinarySearch {
 		int actualResult = object.find(arr,5);
 		assertEquals(-1,actualResult);
 	}
+	@Test
 	public void test2() {
 		int arr[] = {2,3,4,5,6,7,8,9};
 		int actualResult = object.find(arr,5);
 		assertEquals(5,actualResult);
 	}
+	@Test
 	public void test3() {
 		int arr[] = {2,3,4,6,7,8,9};
 		int actualResult = object.find(arr,2);
 		assertEquals(2,actualResult);
 	}
+	@Test
 	public void test4() {
 		int arr[] = {2,3,4,6,7,8,9};
 		int actualResult = object.find(arr,9);
 		assertEquals(9,actualResult);
 	}
+	@Test
 	public void test5() {
 		int arr[] = {2,3,4,6,7,8,9};
 		int actualResult = object.find(arr,3);
