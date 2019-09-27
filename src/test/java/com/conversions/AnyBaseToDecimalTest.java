@@ -34,34 +34,30 @@ class AnyBaseToDecimalTest {
         Assertions.assertEquals("100", anyBaseToDecimal.convertToDecimal("64", 16));
         Assertions.assertEquals("225", anyBaseToDecimal.convertToDecimal("E1", 16));
         Assertions.assertEquals("1024", anyBaseToDecimal.convertToDecimal("400", 16));
+
     }
 
+    @Test
+    void testConvertToDecimal2() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("1", anyBaseToDecimal.convertToDecimal2("1", 2));
+    }
 
-//    public String convertToDecimal2(String inpNum, int base) {
-//        int len = inpNum.length(); (1)
-//        int num = 0; (1)
-//        int pow = 1; (1)
-//
-//        for (int i = len - 1; i >= 0; i--) (2)
-//        {
-//            int valOfChar = 0; (3)
-//            char c = inpNum.charAt(i); (3)
-//            if (c >= '0' && c <= '9') (4)
-//            {
-//                valOfChar = (int) c - '0'; (5)
-//            }
-//            else
-//            {
-//                valOfChar = (int) c - 'A' + 10; (6)
-//            }
-//
-//            if (valOfChar >= base) (7)
-//            {
-//                return "Invalid Number"; (8)
-//            }
-//            num += valOfChar * pow; (9)
-//            pow *= base; (9)
-//        }
-//        return String.valueOf(num); (10)
-//    }
+    @Test
+    void testConvertToDecimal2CheckInvalid() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimal2("2", 2));
+    }
+
+    @Test
+    void testConvertToDecimal2CoverageReturnInvalidNumber() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimal2("12", 2));
+    }
+
+    @Test
+    void testConvertToDecimal2CoverageReturnToString() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("3", anyBaseToDecimal.convertToDecimal2("11", 2));
+    }
 }
