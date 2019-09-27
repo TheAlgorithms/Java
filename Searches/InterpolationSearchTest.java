@@ -31,7 +31,7 @@ public class InterpolationSearchTest {
         assetEquals(a, -1);
     }
     @test
-    public static void testFind3(){
+    public static void testFind4(){
         int[] arr1 = {};
         int a = InterpolationSearchTest.find(arr1, 0);
         assetEquals(a, -1);
