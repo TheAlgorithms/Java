@@ -29,15 +29,17 @@ public class RomanToInteger {
         int newPrev = 0;
         for (int i = A.length() - 1; i >= 0; i--) {
             char c = A.charAt(i);
-
+            //System.out.println("prev != ' ' " + String.valueOf(prev != ' '));
             if (prev != ' ') {
                 // checking current Number greater then previous or not
+                //System.out.println("map.get(prev) > newPrev: " + String.valueOf(map.get(prev) > newPrev));
                 newPrev = map.get(prev) > newPrev ? map.get(prev) : newPrev;
             }
 
             int currentNum = map.get(c);
 
             // if current number greater then prev max previous then add
+            System.out.println("currentNum >= newPrev: " + String.valueOf(currentNum >= newPrev));
             if (currentNum >= newPrev) {
                 sum += currentNum;
             } else {
@@ -52,7 +54,7 @@ public class RomanToInteger {
     }
 
     public static void main(String[] args) {
-        int sum = romanToInt("MDCCCIV");
+        int sum = romanToInt("IX");
         System.out.println(sum);
     }
 }
