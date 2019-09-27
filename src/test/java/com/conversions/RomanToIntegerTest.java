@@ -14,6 +14,24 @@ public class RomanToIntegerTest {
         Assertions.assertEquals(0,  RomanToInteger.romanToInt(""));
     }
     @Test
+    public void shouldReturnNull() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            RomanToInteger.romanToInt(" ");
+        });
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            RomanToInteger.romanToInt(" I");
+        });
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            RomanToInteger.romanToInt("I ");
+        });
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            RomanToInteger.romanToInt(" I I");
+        });
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            RomanToInteger.romanToInt(" I ");
+        });
+    }
+    @Test
     public void singleDigit() {
         Assertions.assertEquals(1,  RomanToInteger.romanToInt("I"));
         Assertions.assertEquals(5,  RomanToInteger.romanToInt("V"));
@@ -31,6 +49,8 @@ public class RomanToIntegerTest {
     @Test
     public void manyLettersInOrder() {
         Assertions.assertEquals(4, RomanToInteger.romanToInt("IV"));
+        Assertions.assertEquals(4, RomanToInteger.romanToInt("IX"));
+        Assertions.assertEquals(4, RomanToInteger.romanToInt("XI"));
         Assertions.assertEquals(14, RomanToInteger.romanToInt("XIV"));
         Assertions.assertEquals(39, RomanToInteger.romanToInt("XXXIX"));
         Assertions.assertEquals(344, RomanToInteger.romanToInt("CCCXLIV"));
