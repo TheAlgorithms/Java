@@ -1,0 +1,49 @@
+﻿test luồng điều khiển 
+
+sử dụng thước đo bao phủ lệnh
+
+
+mục tiêu chính đo phần trăm số lệnh được chạy bởi bộ kiểm thưc
+
+
+B1 Tìm function thỏa mãn yêu cầu đề bài. 
+
+B2 Xác định chỉ số đỉnh.
+
+public String convertToDecimal2(String inpNum, int base) {
+        int len = inpNum.length(); (1)
+        int num = 0; (1)
+        int pow = 1; (1)
+
+        for (int i = len - 1; i >= 0; i--) (2)
+        {
+            int valOfChar = 0; (3)
+            char c = inpNum.charAt(i); (3)
+            if (c >= '0' && c <= '9') (4)
+            {
+                valOfChar = (int) c - '0'; (5)
+            }
+            else
+            {
+                valOfChar = (int) c - 'A' + 10; (6)
+            }
+
+            if (valOfChar >= base) (7)
+            {
+                return "Invalid Number"; (8)
+            }
+            num += valOfChar * pow; (9)
+            pow *= base; (9)
+        }
+        return String.valueOf(num); (10)
+    }
+
+B3 Lập đồ thị
+
+B4 Lập đường đi chương trình
+
+B5 Chọn đường đi có thể qua được nhiều đỉnh nhất
+
+B6 Xác định đầu vào thỏa mãn cho đường đi
+
+B7 Viết Test

@@ -23,4 +23,12 @@ class StoogeSortTest {
         Character[] sortedCharArr = new Character[]{'a', 'd', 'k', 'p', 'r'};
         Assertions.assertArrayEquals(sortedCharArr, stoogesort.sort(unsortedCharArr, 0, n - 1));
     }
+
+    @Test
+    void areaValueTest() {
+        StoogeSort stoogeSort = new StoogeSort();
+        Integer arr[] = {};
+        Integer output[] = {};
+        Assertions.assertArrayEquals(output, stoogeSort.sort(arr, 0, -1));
+    }
 }
