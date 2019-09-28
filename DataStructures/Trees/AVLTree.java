@@ -184,16 +184,20 @@ public class AVLTree {
         }
     }
 
-    public void printBalance() {
-        printBalance(root);
+    public String toString() {
+        String result = "";
+        result = toString(root, result);
+        return result;
     }
 
-    private void printBalance(Node n) {
+    private String toString(Node n, String result) {
         if (n != null) {
-            printBalance(n.left);
-            System.out.printf("%s ", n.balance);
-            printBalance(n.right);
+            result = toString(n.left, result);
+            result += n.balance + " ";
+            result = toString(n.right, result);
         }
+
+        return result;
     }
 
     private void reheight(Node node) {
@@ -210,6 +214,6 @@ public class AVLTree {
             tree.insert(i);
 
         System.out.print("Printing balance: ");
-        tree.printBalance();
+        System.out.println(tree.toString());
     }
 }
