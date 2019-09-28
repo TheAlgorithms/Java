@@ -5,6 +5,10 @@ import static sun.java2d.cmm.ColorTransform.In;
 
 class InterpolationSearchTest {
 
+    /*solution
+    https://docs.google.com/document/d/1XW53qH64WaqfOMfAvvuIZ2BKmw3QS9GtR-o4qRLM8fA/edit
+     */
+
     @org.junit.jupiter.api.Test
     void find1() {
         assertEquals(-1, Searches.InterpolationSearch.find(new int[]{}, 3));
