@@ -37,4 +37,30 @@ public class AnyBaseToDecimal {
             return (int) c - 'A' + 10;
         }
     }
+
+    public String convertToDecimalSecondEdition(String inpNum, int base) {
+        int len = inpNum.length();
+        int num = 0;
+        int pow = 1;
+
+        for (int i = len - 1; i >= 0; i--) {
+            int valueOfChar = 0;
+            char c = inpNum.charAt(i);
+
+            if (c >= '0' && c <= '9') {
+                valueOfChar = (int) c - '0';
+            } else {
+                valueOfChar = (int) c - 'A' + 10;
+            }
+
+            if (valueOfChar >= base) {
+                return "Invalid Number";
+            }
+
+            num += valueOfChar * pow;
+            pow *= base;
+        }
+
+        return String.valueOf(num);
+    }
 }

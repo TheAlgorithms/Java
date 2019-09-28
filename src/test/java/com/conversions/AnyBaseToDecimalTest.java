@@ -34,5 +34,90 @@ class AnyBaseToDecimalTest {
         Assertions.assertEquals("100", anyBaseToDecimal.convertToDecimal("64", 16));
         Assertions.assertEquals("225", anyBaseToDecimal.convertToDecimal("E1", 16));
         Assertions.assertEquals("1024", anyBaseToDecimal.convertToDecimal("400", 16));
+
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionLen() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("0", anyBaseToDecimal.convertToDecimalSecondEdition("", 7));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionNumFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("16", anyBaseToDecimal.convertToDecimalSecondEdition("10", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionNumSecond() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("225", anyBaseToDecimal.convertToDecimalSecondEdition("E1", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionBaseFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("7", anyBaseToDecimal.convertToDecimalSecondEdition("7", 8));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionBaseSecond() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("13", anyBaseToDecimal.convertToDecimalSecondEdition("D", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionBaseThird() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimalSecondEdition("C", 10));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionBaseFourth() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimalSecondEdition("7", 7));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionValOfCharFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("3", anyBaseToDecimal.convertToDecimalSecondEdition("3", 8));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionValOfCharSecond() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("11", anyBaseToDecimal.convertToDecimalSecondEdition("B", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionPowFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("7", anyBaseToDecimal.convertToDecimalSecondEdition("7", 8));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionPowSecond() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("13", anyBaseToDecimal.convertToDecimalSecondEdition("D", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionInpNumFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimalSecondEdition("2", 2));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionCFirst() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimalSecondEdition("Z", 16));
+    }
+
+    @Test
+    void testConvertToDecimalSecondEditionCSecond() {
+        AnyBaseToDecimal anyBaseToDecimal = new AnyBaseToDecimal();
+        Assertions.assertEquals("Invalid Number", anyBaseToDecimal.convertToDecimalSecondEdition("3", 2));
     }
 }
