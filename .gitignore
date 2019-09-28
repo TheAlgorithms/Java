@@ -34,3 +34,4 @@ local.properties
 gradle.properties
 
 .vscode
+/Sorts/javatest/nbproject/private/
