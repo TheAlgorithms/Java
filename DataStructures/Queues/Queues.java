@@ -26,10 +26,6 @@ class Queue {
      * Rear of the queue
      */
     private int rear;
-    /**
-     * How many items are in the queue
-     */
-    private int nItems;
 
     /**
      * Constructor
@@ -40,8 +36,7 @@ class Queue {
         maxSize = size;
         queueArray = new int[size];
         front = 0;
-        rear = -1;
-        nItems = 0;
+        rear = 0;
     }
 
     /**
@@ -53,9 +48,8 @@ class Queue {
     public boolean insert(int x) {
         if (isFull())
             return false;
-        rear = (rear + 1) % maxSize; // If the back of the queue is the end of the array wrap around to the front
         queueArray[rear] = x;
-        nItems++;
+        rear = (rear + 1) % maxSize; // If the back of the queue is the end of the array wrap around to the front
         return true;
     }
 
@@ -71,7 +65,6 @@ class Queue {
         }
         int temp = queueArray[front];
         front = (front + 1) % maxSize;
-        nItems--;
         return temp;
     }
 
@@ -90,7 +83,7 @@ class Queue {
      * @return element at the rear of the queue
      */
     public int peekRear() {
-        return queueArray[rear];
+        return queueArray[(rear - 1 + maxSize) % maxSize];
     }
 
     /**
@@ -99,7 +92,7 @@ class Queue {
      * @return true if the queue is empty
      */
     public boolean isEmpty() {
-        return (nItems == 0);
+        return front == rear;
     }
 
     /**
@@ -108,7 +101,7 @@ class Queue {
      * @return true if the queue is full
      */
     public boolean isFull() {
-        return (nItems == maxSize);
+        return (rear + 1) % maxSize == front;
     }
 
     /**
@@ -117,7 +110,7 @@ class Queue {
      * @return number of elements in the queue
      */
     public int getSize() {
-        return nItems;
+        return (rear - front + maxSize) % maxSize;
     }
 }
 
@@ -133,7 +126,7 @@ public class Queues {
      * @param args Command line arguments
      */
     public static void main(String args[]) {
-        Queue myQueue = new Queue(4);
+        Queue myQueue = new Queue(5);
         myQueue.insert(10);
         myQueue.insert(2);
         myQueue.insert(5);
