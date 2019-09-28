@@ -1,0 +1,55 @@
+package com.sorting.bubble;
+
+import static com.sorting.insert.SortUtils.arrayToString;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class TestallBubbleSortt {
+//so be nhat dung dau
+  @Test
+public void test1() {
+Integer[] mang= {4,23,6,78,1,54,231,9,12};
+BubbleSort bubbleSort = new BubbleSort();
+bubbleSort.sort(mang);
+assertEquals("231:78:54:23:12:9:4", arrayToString(mang));
+	}
+
+  // da duoc xep tu lon den be
+  @Test
+	public void test2() {
+Integer[] mang= {122,25,9,7,3};
+ BubbleSort bubbleSort = new BubbleSort();
+ bubbleSort.sort(mang);
+
+	assertEquals("122:25:9:7:3", arrayToString(mang));
+	}
+  
+  // so lon nhat dung dau
+  @Test
+	public void test3() {
+Integer[] mang= {122,9,36,3,7};
+BubbleSort bubbleSort = new BubbleSort();
+bubbleSort.sort(mang);
+assertEquals("122:36:9:7:3", arrayToString(mang));
+	}
+
+  // co nhung gia tri bang nhau
+  @Test
+	public void test4() {
+Integer[] mang= {35,9,9,3,7,12};
+BubbleSort bubbleSort = new BubbleSort();
+bubbleSort.sort(mang);
+
+assertEquals("35:12:9:9:7:3", arrayToString(mang));
+	}
+  // sap xep theo thu tu chu cai
+   @Test
+   public void test5() {
+	String[] mang= {"c", "a", "e", "b", "d"};
+  BubbleSort bubbleSort = new BubbleSort();
+  bubbleSort.sort(mang);
+
+		assertEquals("e:d:c:b:a", arrayToString(mang));
+	}
+
+}
