@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class EncodeCeasarTestFlowData {
-
-
     // - All-DU path với biến message: 1 - 2 - 3 - 4 - 5 - 6
 	@Test
 	void test1() {
