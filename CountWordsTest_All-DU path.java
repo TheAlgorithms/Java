@@ -1,3 +1,4 @@
+
 package Others;
 
 import static org.junit.Assert.assertEquals;
@@ -47,3 +48,4 @@ public class CountWordsTest {
         assertEquals(7, num);
     }
  }
+
