@@ -46,3 +46,4 @@ public class CountWordsTest {
         int num = CountWords.secondaryWordCount(str);
         assertEquals(7, num);
     }
+ }
