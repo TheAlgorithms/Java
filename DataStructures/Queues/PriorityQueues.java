@@ -42,18 +42,15 @@ class PriorityQueue {
     public void insert(int value) {
         if (isFull()) {
             throw new RuntimeException("Queue is full");
-        }
-        if (nItems == 0) {
-            queueArray[0] = value;
         } else {
-            int j = nItems;
-            while (j > 0 && queueArray[j - 1] > value) {
-                queueArray[j] = queueArray[j - 1]; // Shifts every element up to make room for insertion
+            int j = nItems - 1; // index of last element
+            while (j >= 0 && queueArray[j] > value) {
+                queueArray[j + 1] = queueArray[j]; // Shifts every element up to make room for insertion
                 j--;
             }
-            queueArray[j] = value; // Once the correct position is found the value is inserted
-        }
-        nItems++;
+            queueArray[j + 1] = value; // Once the correct position is found the value is inserted
+            nItems++;
+        } 
     }
 
     /**
