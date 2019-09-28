@@ -18,7 +18,7 @@ public class AbsoluteValue {
      * @return the absolute value of a number
      */
     public static int absVal(int value) {
-        return value > 0 ? value : -value;
+        return value < 0 ? -value : value;
     }
 
 }
