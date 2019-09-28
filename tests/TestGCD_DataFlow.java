@@ -60,5 +60,5 @@ public class TestGCD_DataFlow {
         int y = 30;
         int result = GCD.gcd(x, y);
         Assert.assertEquals(10, result);
-    }   
+    }
 }
