@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'http://repo.maven.apache.org/maven2'
+    }
+}
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.0'
+}
+
+group = 'algorithm'
+version = '1.0-SNAPSHOT'
+description = 'java-algorithm'
+sourceCompatibility = '1.8'
