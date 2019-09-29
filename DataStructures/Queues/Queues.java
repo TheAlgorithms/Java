@@ -10,6 +10,11 @@ package DataStructures.Queues;
  */
 class Queue {
     /**
+     * Default initial capacity.
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+
+    /**
      * Max size of the queue
      */
     private int maxSize;
@@ -29,6 +34,13 @@ class Queue {
      * How many items are in the queue
      */
     private int nItems;
+
+    /**
+     * init with DEFAULT_CAPACITY
+     */
+    public Queue() {
+        this(DEFAULT_CAPACITY);
+    }
 
     /**
      * Constructor

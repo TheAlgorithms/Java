@@ -35,6 +35,11 @@ public class StackArray {
     }
 
     /**
+     * Default initial capacity.
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+
+    /**
      * The max size of the Stack
      */
     private int maxSize;
@@ -49,6 +54,13 @@ public class StackArray {
      */
     private int top;
 
+    /**
+     * init Stack with DEFAULT_CAPACITY
+     */
+    public StackArray() {
+        this(DEFAULT_CAPACITY);
+    }
+    
     /**
      * Constructor
      *
