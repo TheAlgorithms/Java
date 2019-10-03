@@ -53,7 +53,7 @@ public class Caesar {
 		Character choice = input.next().toLowerCase().charAt(0);
 		if (choice == 'e')
 			System.out.println(cipher(message, shift, true));
-		else if (choice == 'd')
+		if (choice == 'd')
 			System.out.println(cipher(message, shift, false));
 		
 		input.close();
