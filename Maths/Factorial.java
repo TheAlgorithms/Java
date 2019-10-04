@@ -16,6 +16,9 @@ public class Factorial {
         if (n < 0) {
             throw new ArithmeticException("n < 0");
         }
+        catch(ArithmeticException e){
+            System.out.println("error is " + e};
+                               }
         long fac = 1;
         for (int i = 1; i <= n; ++i) {
             fac *= i;
