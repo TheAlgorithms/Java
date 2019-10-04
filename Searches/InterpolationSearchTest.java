@@ -49,19 +49,19 @@ public class InterpolationSearchTest {
     }
 
     @Test
-    public void InterpolationSearchTest5() {
+    public void InterpolationSearchTest6() {
         int arr[] = new int[]{0};
         assertEquals(-1, t.find(arr, 1));
     }
 
     @Test
-    public void InterpolationSearchTest5() {
+    public void InterpolationSearchTest7() {
         int arr[] = new int[]{0};
         assertEquals(0, t.find(arr, 0));
     }
 
     @Test
-    public void InterpolationSearchTest5() {
+    public void InterpolationSearchTest8() {
         int arr[] = new int[]{0, 1, 2, 100, 200};
         assertEquals(4, t.find(arr, 200));
     }
