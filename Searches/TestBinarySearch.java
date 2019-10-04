@@ -35,7 +35,7 @@ public class TestBinarySearch {
     }
 
     @Test
-    public void test2() {
+    public void test4() {
         TestBinarySearch Test4 = new TestBinarySearch();
         Character[] arr = new Character[]{'a', 'b', 'c', 'd', 'e', 'f'};
         assertEquals(1, Test4.find(arr, 'c'));
