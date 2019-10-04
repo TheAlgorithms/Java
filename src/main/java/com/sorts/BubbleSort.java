@@ -1,12 +1,16 @@
-package src.main.java.com.sorts;
+package com.sorts;
 
-public class BubbleSort {
+import com.types.Sort;
+
+public class BubbleSort<T> implements Sort<T> {
   /**
    * This method implements the Generic Bubble Sort
    *
    * @param array The array to be sorted
    *              Sorts the array in increasing order
    **/
+
+  @Override
   public <T extends Comparable<T>> T[] sort(T[] array) {
     int last = array.length;
     //Sorting

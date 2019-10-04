@@ -2,3 +2,6 @@ Java.iml
 .idea/*
 out/
 *.iml
+.gradle
+target
+build

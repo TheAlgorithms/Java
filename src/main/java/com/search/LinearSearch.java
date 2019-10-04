@@ -1,4 +1,4 @@
-package src.main.java.com.search;
+package com.search;
 
 /**
  * Linear search is an algorithm which finds the position of a target value within an array (Usually unsorted)
@@ -15,7 +15,7 @@ public final class LinearSearch {
      * @param <T> is any comparable type
      * @return index of the element
      */
-    public static <T extends Comparable<T>> int findIndex(T array[], T key) {
+    public static <T extends Comparable<T>> int findIndex(T[] array, T key) {
         return search(array, key);
     }
 
@@ -24,7 +24,7 @@ public final class LinearSearch {
      * @param key The element you are looking for
      * @return the location of the key or -1 if the element is not found
      **/
-    private static <T extends Comparable<T>> int search(T array[], T key){
+    private static <T extends Comparable<T>> int search(T[] array, T key){
         for(int i = 0; i < array.length;i++) {
             if (array[i].compareTo(key) == 0){
                 return i;
