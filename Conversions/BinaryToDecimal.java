@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * This class converts a Binary number to a Decimal number
- *
  */
 class BinaryToDecimal {
 
@@ -13,7 +12,7 @@ class BinaryToDecimal {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int binNum, binCopy, d, s = 0, power = 0;
         System.out.print("Binary number: ");

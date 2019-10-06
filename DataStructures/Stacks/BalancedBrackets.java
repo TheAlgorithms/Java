@@ -1,10 +1,9 @@
-package data_structures.Stacks;
+package DataStructures.Stacks;
 
 import java.util.Scanner;
 import java.util.Stack;
 
 /**
- *
  * The nested brackets problem is a problem that determines if a sequence of
  * brackets are properly nested. A sequence of brackets s is considered properly
  * nested if any of the following conditions are true: - s is empty - s has the
@@ -15,14 +14,12 @@ import java.util.Stack;
  * returns true if S is nested and false otherwise.
  *
  * @author akshay sharma
- * @date: 2017-10-17
  * @author <a href="https://github.com/khalil2535">khalil2535<a>
- *
+ * @date: 2017-10-17
  */
 class BalancedBrackets {
 
     /**
-     *
      * @param s
      * @return
      */
@@ -67,11 +64,10 @@ class BalancedBrackets {
     }
 
     /**
-     *
      * @param args
      * @TODO remove main method and Test using JUnit or other methodology
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("Enter sequence of brackets: ");
             String s = in.nextLine();

@@ -52,7 +52,6 @@ public class Fibonacci {
      *          Outputs the nth fibonacci number
      **/
     private static int fibBotUp(int n) {
-
         Map<Integer, Integer> fib = new HashMap<>();
 
         for (int i = 0; i <= n; i++) {
@@ -67,7 +66,6 @@ public class Fibonacci {
 
         return fib.get(n);
     }
-
 
     /**
      * This method finds the nth fibonacci number using bottom up

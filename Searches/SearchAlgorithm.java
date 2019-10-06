@@ -13,6 +13,6 @@ public interface SearchAlgorithm {
      * @param <T>   Comparable type
      * @return first found index of the element
      */
-    <T extends Comparable<T>> int find(T array[], T key);
+    <T extends Comparable<T>> int find(T[] array, T key);
 
 }

@@ -6,7 +6,6 @@ package DataStructures.Queues;
  * A queue data structure functions the same as a real world queue.
  * The elements that are added first are the first to be removed.
  * New elements are added to the back/rear of the queue.
- *
  */
 class Queue {
     /**
@@ -143,7 +142,7 @@ public class Queues {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Queue myQueue = new Queue(4);
         myQueue.insert(10);
         myQueue.insert(2);

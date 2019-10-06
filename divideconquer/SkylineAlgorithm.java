@@ -20,14 +20,12 @@ public class SkylineAlgorithm {
         points = new ArrayList<>();
     }
 
-
     /**
      * @return points, the ArrayList that includes all points.
      */
     public ArrayList<Point> getPoints() {
         return points;
     }
-
 
     /**
      * The main divide and conquer, and also recursive algorithm.
@@ -79,7 +77,6 @@ public class SkylineAlgorithm {
         return produceFinalSkyLine(leftSubSkyLine, rightSubSkyLine);
     }
 
-
     /**
      * The first half's skyline gets cleared
      * from some points that are not part of the final skyline
@@ -128,7 +125,6 @@ public class SkylineAlgorithm {
         left.addAll(right);
         return left;
     }
-
 
     public static class Point {
         private int x;

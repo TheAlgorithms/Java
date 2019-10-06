@@ -3,7 +3,6 @@ package DynamicProgramming;
 class LongestCommonSubsequence {
 
     public static String getLCS(String str1, String str2) {
-
         //At least one string is null
         if (str1 == null || str2 == null)
             return null;

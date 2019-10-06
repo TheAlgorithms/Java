@@ -11,7 +11,7 @@ public class StackPostfixNotation {
 
     // Evaluates the given postfix expression string and returns the result.
     public static int postfixEvaluate(String exp) {
-        Stack<Integer> s = new Stack<Integer>();
+        Stack<Integer> s = new Stack<>();
         Scanner tokens = new Scanner(exp);
 
         while (tokens.hasNext()) {
@@ -22,14 +22,19 @@ public class StackPostfixNotation {
                 int num1 = s.pop();
                 String op = tokens.next();
 
-                if (op.equals("+")) {
-                    s.push(num1 + num2);
-                } else if (op.equals("-")) {
-                    s.push(num1 - num2);
-                } else if (op.equals("*")) {
-                    s.push(num1 * num2);
-                } else {
-                    s.push(num1 / num2);
+                switch (op) {
+                    case "+":
+                        s.push(num1 + num2);
+                        break;
+                    case "-":
+                        s.push(num1 - num2);
+                        break;
+                    case "*":
+                        s.push(num1 * num2);
+                        break;
+                    default:
+                        s.push(num1 / num2);
+                        break;
                 }
 
                 //  "+", "-", "*", "/"

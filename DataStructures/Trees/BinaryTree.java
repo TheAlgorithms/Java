@@ -13,7 +13,6 @@ package DataStructures.Trees;
  * bigger.
  *
  * @author Unknown
- *
  */
 public class BinaryTree {
 
@@ -23,16 +22,23 @@ public class BinaryTree {
      * to the right, and the parent from which they came from.
      *
      * @author Unknown
-     *
      */
     class Node {
-        /** Data for the node */
+        /**
+         * Data for the node
+         */
         public int data;
-        /** The Node to the left of this one */
+        /**
+         * The Node to the left of this one
+         */
         public Node left;
-        /** The Node to the right of this one */
+        /**
+         * The Node to the right of this one
+         */
         public Node right;
-        /** The parent of this node */
+        /**
+         * The parent of this node
+         */
         public Node parent;
 
         /**
@@ -48,8 +54,9 @@ public class BinaryTree {
         }
     }
 
-
-    /** The root of the Binary Tree */
+    /**
+     * The root of the Binary Tree
+     */
     private Node root;
 
     /**

@@ -4,18 +4,19 @@ import java.util.Arrays;
 
 class RadixSort {
 
-    private static int getMax(int arr[], int n) {
+    private static int getMax(int[] arr) {
         int mx = arr[0];
-        for (int i = 1; i < n; i++)
+        for (int i = 1, n = arr.length; i < n; i++)
             if (arr[i] > mx)
                 mx = arr[i];
         return mx;
     }
 
-    private static void countSort(int arr[], int n, int exp) {
-        int output[] = new int[n];
+    private static void countSort(int[] arr, int exp) {
+        int n = arr.length;
+        int[] output = new int[n];
         int i;
-        int count[] = new int[10];
+        int[] count = new int[10];
         Arrays.fill(count, 0);
 
         for (i = 0; i < n; i++)
@@ -33,27 +34,25 @@ class RadixSort {
             arr[i] = output[i];
     }
 
-    private static void radixsort(int arr[], int n) {
+    private static void radixsort(int[] arr) {
 
-        int m = getMax(arr, n);
+        int m = getMax(arr);
 
 
         for (int exp = 1; m / exp > 0; exp *= 10)
-            countSort(arr, n, exp);
+            countSort(arr, exp);
     }
 
 
-    static void print(int arr[], int n) {
-        for (int i = 0; i < n; i++)
-            System.out.print(arr[i] + " ");
+    static void print(int[] arr) {
+        for (int value : arr) System.out.print(value + " ");
     }
 
 
     public static void main(String[] args) {
-        int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
-        int n = arr.length;
-        radixsort(arr, n);
-        print(arr, n);
+        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
+        radixsort(arr);
+        print(arr);
     }
 }
 // Written by James Mc Dermott(theycallmemac)

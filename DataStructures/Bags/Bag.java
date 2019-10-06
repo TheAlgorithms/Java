@@ -122,5 +122,4 @@ public class Bag<Element> implements Iterable<Element> {
         System.out.println(bag.contains("1"));
         System.out.println(bag.contains("3"));
     }
-
 }

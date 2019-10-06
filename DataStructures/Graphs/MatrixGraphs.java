@@ -2,7 +2,7 @@ package DataStructures.Graphs;
 
 public class MatrixGraphs {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(10);
         graph.addEdge(1, 2);
         graph.addEdge(1, 5);
@@ -65,11 +65,7 @@ class AdjacencyMatrixGraph {
     }
 
     public boolean vertexDoesExist(int aVertex) {
-        if (aVertex >= 0 && aVertex < this.numberOfVertices()) {
-            return true;
-        } else {
-            return false;
-        }
+        return aVertex >= 0 && aVertex < this.numberOfVertices();
     }
 
     public boolean edgeDoesExist(int from, int to) {
@@ -127,7 +123,7 @@ class AdjacencyMatrixGraph {
      * @return returns a string describing this graph
      */
     public String toString() {
-        String s = new String();
+        String s;
         s = "    ";
         for (int i = 0; i < this.numberOfVertices(); i++) {
             s = s + String.valueOf(i) + " ";
@@ -143,5 +139,4 @@ class AdjacencyMatrixGraph {
         }
         return s;
     }
-
 }

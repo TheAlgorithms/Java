@@ -16,8 +16,7 @@ public class SelectionSort implements SortAlgorithm {
      **/
     @Override
     public <T extends Comparable<T>> T[] sort(T[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0, n = arr.length; i < n - 1; i++) {
             // Initial index of min
             int min = i;
 

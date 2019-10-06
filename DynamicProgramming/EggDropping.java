@@ -5,8 +5,7 @@ package DynamicProgramming;
  */
 public class EggDropping {
 
-    // min trials with n eggs and m floors 
-
+    // min trials with n eggs and m floors
     private static int minTrials(int n, int m) {
 
         int[][] eggFloor = new int[n + 1][m + 1];
@@ -40,7 +39,7 @@ public class EggDropping {
         return eggFloor[n][m];
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int n = 2, m = 4;
         // result outputs min no. of trials in worst case for n eggs and m floors
         int result = minTrials(n, m);

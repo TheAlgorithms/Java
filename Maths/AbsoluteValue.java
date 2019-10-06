@@ -20,5 +20,4 @@ public class AbsoluteValue {
     public static int absVal(int value) {
         return value < 0 ? -value : value;
     }
-
 }

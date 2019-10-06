@@ -18,7 +18,7 @@ public class ColumnarTranspositionCipher {
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
+     * @param word    Word being encrypted
      * @param keyword String with keyword being used
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
@@ -40,15 +40,15 @@ public class ColumnarTranspositionCipher {
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
-     * @param keyword String with keyword being used
+     * @param word        Word being encrypted
+     * @param keyword     String with keyword being used
      * @param abecedarium String with the abecedarium being used. null for
-     * default one
+     *                    default one
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */
     public static String encrpyter(String word, String keyword,
-            String abecedarium) {
+                                   String abecedarium) {
         ColumnarTranspositionCipher.keyword = keyword;
         if (abecedarium != null) {
             ColumnarTranspositionCipher.abecedarium = abecedarium;
@@ -125,7 +125,6 @@ public class ColumnarTranspositionCipher {
     }
 
     /**
-     *
      * @return charValues
      */
     private static Object[] findElements() {
@@ -138,7 +137,6 @@ public class ColumnarTranspositionCipher {
     }
 
     /**
-     *
      * @param table
      * @return tableSorted
      */
@@ -159,7 +157,6 @@ public class ColumnarTranspositionCipher {
     }
 
     /**
-     *
      * @param table
      * @param rows
      * @param column
@@ -174,14 +171,13 @@ public class ColumnarTranspositionCipher {
     }
 
     /**
-     *
      * @param table
      * @param firstColumnIndex
      * @param secondColumnIndex
      * @param columnToSwitch
      */
     private static void switchColumns(Object[][] table, int firstColumnIndex,
-            int secondColumnIndex, Object[] columnToSwitch) {
+                                      int secondColumnIndex, Object[] columnToSwitch) {
         for (int i = 0; i < table.length; i++) {
             table[i][secondColumnIndex] = table[i][firstColumnIndex];
             table[i][firstColumnIndex] = columnToSwitch[i];
