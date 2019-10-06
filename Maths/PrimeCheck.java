@@ -6,17 +6,17 @@ public class PrimeCheck {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter n:");
+        System.out.print("Enter a number: ");
         int n = scanner.nextInt();
         if (isPrime(n)) {
-            System.out.println(n + "is prime number");
+            System.out.println(n + " is a prime number");
         } else {
-            System.out.println(n + "is not prime number");
+            System.out.println(n + " is not a prime number");
         }
     }
 
     /***
-     * Check a number is prime or not
+     * Checks if a number is prime or not
      * @param n the number
      * @return {@code true} if {@code n} is prime
      */
