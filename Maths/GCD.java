@@ -5,7 +5,7 @@ public class GCD {
         int i = 98;
         int j = 56;
 
-        System.out.println("The GCM of "+i +" and " +j +" is " + gcd(i, j));
+        System.out.println("The GCD of "+i +" and " +j +" is " + gcd(i, j));
     }
 
     /**
