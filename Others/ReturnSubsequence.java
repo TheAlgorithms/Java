@@ -10,8 +10,8 @@ public class ReturnSubsequence {
         String[] subsequence = returnSubsequence(givenString); //calling returnSubsequence() function
         System.out.println("Subsequences : ");
         //print the given array of subsequences
-        for (int i = 0; i < subsequence.length; i++) {
-            System.out.println(subsequence[i]);
+        for (String value : subsequence) {
+            System.out.println(value);
         }
     }
 

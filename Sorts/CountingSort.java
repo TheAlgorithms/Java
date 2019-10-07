@@ -56,7 +56,7 @@ class CountingSort implements SortAlgorithm {
      **/
     private static <T extends Comparable<T>> List<T> streamSort(List<T> list) {
         return list.stream()
-                .collect(toMap(k -> k, v -> 1, (v1, v2) -> v1 + v2, TreeMap::new))
+                .collect(toMap(k -> k, v -> 1, Integer::sum, TreeMap::new))
                 .entrySet()
                 .stream()
                 .flatMap(entry -> IntStream.rangeClosed(1, entry.getValue()).mapToObj(t -> entry.getKey()))

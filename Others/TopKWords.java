@@ -50,7 +50,9 @@ public class TopKWords {
             } finally {
                 try {
                     // you always have to close the I/O streams
-                    fis.close();
+                    if (fis != null) {
+                        fis.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +71,7 @@ public class TopKWords {
 
         // sort by lambda valueComparator
         list.sort(Comparator.comparing(
-                m -> m.getValue())
+                Map.Entry::getValue)
         );
 
         Scanner input = new Scanner(System.in);

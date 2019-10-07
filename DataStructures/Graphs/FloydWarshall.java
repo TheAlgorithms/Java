@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FloydWarshall {
-    private int DistanceMatrix[][];
+    private int[][] DistanceMatrix;
     private int numberofvertices;//number of vertices in the graph
     public static final int INFINITY = 999;
 
@@ -14,12 +14,11 @@ public class FloydWarshall {
         this.numberofvertices = numberofvertices;
     }
 
-    public void floydwarshall(int AdjacencyMatrix[][])//calculates all the distances from source to destination vertex
+    public void floydwarshall(int[][] AdjacencyMatrix)//calculates all the distances from source to destination vertex
     {
         for (int source = 1; source <= numberofvertices; source++) {
-            for (int destination = 1; destination <= numberofvertices; destination++) {
-                DistanceMatrix[source][destination] = AdjacencyMatrix[source][destination];
-            }
+            if (numberofvertices >= 0)
+                System.arraycopy(AdjacencyMatrix[source], 1, DistanceMatrix[source], 1, numberofvertices);
         }
         for (int intermediate = 1; intermediate <= numberofvertices; intermediate++) {
             for (int source = 1; source <= numberofvertices; source++) {
@@ -27,7 +26,7 @@ public class FloydWarshall {
                     if (DistanceMatrix[source][intermediate] + DistanceMatrix[intermediate][destination]
                             < DistanceMatrix[source][destination])
                     // if the new distance calculated is less then the earlier shortest
-                        // calculated distance it get replaced as new shortest distance
+                    // calculated distance it get replaced as new shortest distance
                     {
                         DistanceMatrix[source][destination] = DistanceMatrix[source][intermediate]
                                 + DistanceMatrix[intermediate][destination];

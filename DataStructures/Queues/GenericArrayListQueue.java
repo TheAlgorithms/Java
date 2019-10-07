@@ -9,14 +9,13 @@ import java.util.ArrayList;
  * The GenericArrayListQueue holds elemets of types to-be-specified at runtime.
  * The elements that are added first are the first to be removed (FIFO)
  * New elements are added to the back/rear of the queue.
- *
  */
 public class GenericArrayListQueue<T> {
     /**
      * The generic ArrayList for the queue
      * T is the generic element
      */
-    ArrayList<T> _queue = new ArrayList<T>();
+    ArrayList<T> _queue = new ArrayList<>();
 
     /**
      * Checks if the queue has elements (not empty)
@@ -34,7 +33,9 @@ public class GenericArrayListQueue<T> {
      */
     public T peek() {
         T result = null;
-        if(this.hasElements()) { result = _queue.get(0); }
+        if (this.hasElements()) {
+            result = _queue.get(0);
+        }
         return result;
     }
 
@@ -55,7 +56,9 @@ public class GenericArrayListQueue<T> {
      */
     public T poll() {
         T result = null;
-        if(this.hasElements()) { result = _queue.remove(0); }
+        if (this.hasElements()) {
+            result = _queue.remove(0);
+        }
         return result;
     }
 

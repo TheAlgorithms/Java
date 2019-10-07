@@ -143,7 +143,6 @@ public class GenericTree {
         return false;
     }
 
-
     /**
      * Function to calculate depth of generic tree
      *
@@ -230,5 +229,4 @@ public class GenericTree {
             node.child.remove(arr.get(i) + 0);
         }
     }
-
 }

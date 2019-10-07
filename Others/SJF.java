@@ -74,12 +74,7 @@ class Schedule {
     void startScheduling() {
 
 
-        processes.sort(new Comparator<Process>() {
-            @Override
-            public int compare(Process a, Process b) {
-                return a.arrivalTime - b.arrivalTime;
-            }
-        });
+        processes.sort((a, b) -> a.arrivalTime - b.arrivalTime);
 
         while (!(arrivals.size() == 0 && remainingProcess.size() == 0)) {
             removeFinishedProcess();
@@ -88,7 +83,7 @@ class Schedule {
                 arrivals.remove(timer);
             }
 
-            remainingProcess.sort(new Comparator<Process>() {
+            remainingProcess.sort(new Comparator<>() {
                 private int alpha = 6;
                 private int beta = 1;
 
@@ -111,17 +106,17 @@ class Schedule {
     }
 
     void removeFinishedProcess() {
-        ArrayList<Integer> completed = new ArrayList<Integer>();
+        ArrayList<Integer> completed = new ArrayList<>();
         for (int i = 0; i < remainingProcess.size(); i++) {
             if (remainingProcess.get(i).remainingTime == 0) {
                 completed.add(i);
             }
         }
 
-        for (int i = 0; i < completed.size(); i++) {
-            int pid = remainingProcess.get(completed.get(i)).pid;
-            processes.get(pid).waitTime = remainingProcess.get(completed.get(i)).waitTime;
-            remainingProcess.remove(remainingProcess.get(completed.get(i)));
+        for (Integer integer : completed) {
+            int pid = remainingProcess.get(integer).pid;
+            processes.get(pid).waitTime = remainingProcess.get(integer).waitTime;
+            remainingProcess.remove(remainingProcess.get(integer));
         }
 
 
@@ -148,8 +143,8 @@ class Schedule {
 
     public void solve() {
         System.out.println("Gant chart ");
-        for (int i = 0; i < gantChart.size(); i++) {
-            System.out.print(gantChart.get(i) + " ");
+        for (Integer integer : gantChart) {
+            System.out.print(integer + " ");
         }
         System.out.println();
 

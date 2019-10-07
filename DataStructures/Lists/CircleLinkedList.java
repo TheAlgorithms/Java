@@ -58,8 +58,6 @@ public class CircleLinkedList<E> {
         iterator.next = null;
         iterator.value = null;
         return saved;
-
     }
-
 }
 

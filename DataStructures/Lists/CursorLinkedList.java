@@ -19,13 +19,11 @@ public class CursorLinkedList<T> {
         }
     }
 
-
     private final int os;
     private int head;
     private final Node<T>[] cursorSpace;
     private int count;
     private final static int CURSOR_SPACE_SIZE = 100;
-
 
     {
         // init at loading time
@@ -44,10 +42,7 @@ public class CursorLinkedList<T> {
     }
 
     public void printList() {
-
         if (head != -1) {
-
-
             int start = head;
             while (start != -1) {
 
@@ -56,17 +51,13 @@ public class CursorLinkedList<T> {
                 start = cursorSpace[start].next;
             }
         }
-
     }
-
 
     /**
      * @return the logical index of the element within the list , not the actual
      * index of the [cursorSpace] array
      */
     public int indexOf(T element) {
-
-
         Objects.requireNonNull(element);
         Node<T> iterator = cursorSpace[head];
         for (int i = 0; i < count; i++) {
@@ -75,11 +66,8 @@ public class CursorLinkedList<T> {
             }
             iterator = cursorSpace[iterator.next];
         }
-
-
         return -1;
     }
-
 
     /**
      * @param position , the logical index of the element , not the actual one
@@ -87,9 +75,7 @@ public class CursorLinkedList<T> {
      *                 this method should be used to get the index give by indexOf() method.
      * @return
      */
-
     public T get(int position) {
-
         if (position >= 0 && position < count) {
 
             int start = head;
@@ -104,26 +90,18 @@ public class CursorLinkedList<T> {
                 start = cursorSpace[start].next;
                 counter++;
             }
-
         }
-
         return null;
     }
 
-
     public void removeByIndex(int index) {
-
         if (index >= 0 && index < count) {
-
             T element = get(index);
             remove(element);
         }
-
     }
 
     public void remove(T element) {
-
-
         Objects.requireNonNull(element);
 
         // case element is in the head
@@ -151,25 +129,18 @@ public class CursorLinkedList<T> {
             }
 
         }
-
-
         count--;
-
     }
 
     private void free(int index) {
-
         Node os_node = cursorSpace[os];
         int os_next = os_node.next;
         cursorSpace[os].next = index;
         cursorSpace[index].element = null;
         cursorSpace[index].next = os_next;
-
     }
 
-
     public void append(T element) {
-
         Objects.requireNonNull(element);
         int availableIndex = alloc();
         cursorSpace[availableIndex].element = element;
@@ -186,7 +157,6 @@ public class CursorLinkedList<T> {
         cursorSpace[iterator].next = availableIndex;
         cursorSpace[availableIndex].next = -1;
 
-
         count++;
     }
 
@@ -194,8 +164,6 @@ public class CursorLinkedList<T> {
      * @return the index of the next available node
      */
     private int alloc() {
-
-
         //1- get the index at which the os is pointing
         int availableNodeIndex = cursorSpace[os].next;
 
@@ -204,16 +172,12 @@ public class CursorLinkedList<T> {
         }
 
         //2- make the os point to the next of the  @var{availableNodeIndex}
-        int availableNext = cursorSpace[availableNodeIndex].next;
-        cursorSpace[os].next = availableNext;
+        cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
 
         // this to indicate an end of the list , helpful at testing since any err
         // would throw an outOfBoundException
         cursorSpace[availableNodeIndex].next = -1;
 
         return availableNodeIndex;
-
     }
-
-
 }

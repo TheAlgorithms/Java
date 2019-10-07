@@ -24,7 +24,7 @@ class InterpolationSearch {
      * @param key   is a value what shoulb be found in the array
      * @return an index if the array contains the key unless -1
      */
-    public int find(int array[], int key) {
+    public int find(int[] array, int key) {
         // Find indexes of two corners
         int start = 0, end = (array.length - 1);
 
@@ -59,7 +59,7 @@ class InterpolationSearch {
 
 
         //the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
+        int shouldBeFound = integers[r.nextInt(size - 1)];
 
         InterpolationSearch search = new InterpolationSearch();
         int atIndex = search.find(integers, shouldBeFound);

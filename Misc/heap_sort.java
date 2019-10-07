@@ -49,14 +49,13 @@ public class heap_sort {
     /* A utility function to print array of size n */
     static void printArray(int[] arr) {
         int n = arr.length;
-        for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
+        for (int value : arr) System.out.print(value + " ");
         System.out.println();
     }
 
     // Driver program
-    public static void main(String args[]) {
-        int arr[] = {12, 11, 13, 5, 6, 7};
+    public static void main(String[] args) {
+        int[] arr = {12, 11, 13, 5, 6, 7};
         int n = arr.length;
 
         heap_sort ob = new heap_sort();

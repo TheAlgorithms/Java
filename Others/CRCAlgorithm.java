@@ -157,9 +157,7 @@ public class CRCAlgorithm {
         }
         dividedMessage = (ArrayList<Integer>) x.clone();
         if (!check) {
-            for (int z : dividedMessage) {
-                message.add(z);
-            }
+            message.addAll(dividedMessage);
         } else {
             if (dividedMessage.contains(1) && messageChanged) {
                 wrongMessCaught++;

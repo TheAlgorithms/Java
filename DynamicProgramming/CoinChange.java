@@ -71,8 +71,8 @@ public class CoinChange {
 
     // A basic print method which prints all the contents of the array
     public static void printAmount(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+        for (int value : arr) {
+            System.out.print(value + " ");
         }
         System.out.println();
     }

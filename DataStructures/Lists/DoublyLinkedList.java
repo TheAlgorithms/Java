@@ -224,7 +224,7 @@ class Link {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         DoublyLinkedList myList = new DoublyLinkedList();
         myList.insertHead(13);
         myList.insertHead(7);

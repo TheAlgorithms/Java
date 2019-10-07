@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RomanToInteger {
 
-    private static Map<Character, Integer> map = new HashMap<Character, Integer>() {{
+    private static Map<Character, Integer> map = new HashMap<>() {{
         put('I', 1);
         put('V', 5);
         put('X', 10);
@@ -21,7 +21,6 @@ public class RomanToInteger {
      * @return integer
      */
     public static int romanToInt(String A) {
-
         char prev = ' ';
 
         int sum = 0;

@@ -50,7 +50,7 @@ class PriorityQueue {
             }
             queueArray[j + 1] = value; // Once the correct position is found the value is inserted
             nItems++;
-        } 
+        }
     }
 
     /**

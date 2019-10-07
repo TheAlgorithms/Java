@@ -66,8 +66,7 @@ public class AnyBaseToAnyBase {
 
         // Convert character array into set for convenience of contains() method
         HashSet<Character> digitsList = new HashSet<>();
-        for (int i = 0; i < digitsForBase.length; i++)
-            digitsList.add(digitsForBase[i]);
+        for (char value : digitsForBase) digitsList.add(value);
 
         // Check that every digit in n is within the list of valid digits for that base.
         for (char c : n.toCharArray())

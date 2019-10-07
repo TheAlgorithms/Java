@@ -91,7 +91,7 @@ class MergeSort implements SortAlgorithm {
         // Output => 1	   4  	 6	9	12	23	54	78	231
         print(arr);
 
-        // String Inpu
+        // String Input
         String[] stringArray = {"c", "a", "e", "b", "d"};
         mergeSort.sort(stringArray);
         //Output => a	b	c	d	e
