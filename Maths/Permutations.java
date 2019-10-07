@@ -2,14 +2,14 @@ package Maths;
 
 public class Permutations {
     public static void main(String[] args) {
-        int n = ;
-        int k = 3
-        System.out.println(n + "P" + k  + " = " + permutations(5,3));
+        int n = 5;
+        int k = 3;
+        System.out.println(n + "P" + k  + " = " + permutations(n,k));
     }
 
     /**
      * Calculate the number of permuatations possible given number of elements and length of permutation.
-     * Can be thought of as drawing balls from a bag without putting them back and puttin them in a row so the final output will have
+     * Can be thought of as drawing balls from a bag without putting them back and putting them in a row so the final output will have
      * no repeats and order will matter
      * 
      * eg. Given 3 options all permutations of lenth 2 (3P2)
@@ -21,6 +21,6 @@ public class Permutations {
      *  @return the number of permutations from {@code n} options of length {@code k}
      */
     public static long permutations(int n, int k) {
-        return factorial(n)/factorial(n-k)
+        return Factorial.factorial(n)/Factorial.factorial(n-k);
     }
 }
