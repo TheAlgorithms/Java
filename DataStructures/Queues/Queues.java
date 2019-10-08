@@ -130,6 +130,20 @@ class Queue {
     public int getSize() {
         return nItems;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = front; ; i = ++i % maxSize) {
+            sb.append(queueArray[i]).append(", ");
+            if (i == rear) {
+                break;
+            }
+        }
+        sb.replace(sb.length() - 2, sb.length(), "]");
+        return sb.toString();
+    }
 }
 
 /**
@@ -161,5 +175,6 @@ public class Queues {
 
         System.out.println(myQueue.peekFront()); // Will print 2
         System.out.println(myQueue.peekRear()); // Will print 7
+        System.out.println(myQueue.toString()); // Will print [2, 5, 3, 7]
     }
 }
