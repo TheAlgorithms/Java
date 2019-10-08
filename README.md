@@ -10,19 +10,13 @@ You can play around (run and edit) the Algorithms or contribute to them using Gi
 
 
 ### All algorithms implemented in Java (for education)
-
 These implementations are for learning purposes. They may be less efficient than the implementations in the Java standard library.
 
 ## Contribution Guidelines
-
 Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg?style=flat-square)](https://gitpod.io/#https://github.com/TheAlgorithms/java)
-
 ## Community Channel
-
 We're on [Gitter](https://gitter.im/TheAlgorithms)! Please join us.
 
 ## Algorithms
-
 See our [directory](DIRECTORY.md).
