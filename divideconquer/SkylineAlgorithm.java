@@ -110,9 +110,6 @@ public class SkylineAlgorithm {
         for (int i = 1; i < left.size(); i++) {
             if (min > left.get(i).y) {
                 min = left.get(i).y;
-                if (min == 1) {
-                    i = left.size();
-                }
             }
         }
 
