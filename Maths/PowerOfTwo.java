@@ -1,5 +1,5 @@
 // to check if a number is a power of 2 or not in O(1)
-// contributed by
+// contributed by @shubham-ahuja13
 
 package Maths;
 
