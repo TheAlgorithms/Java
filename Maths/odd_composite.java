@@ -1,3 +1,4 @@
+package Maths;
 import java.util.*;
 class odd_composite{
 	public static boolean isodd(int x){ 
