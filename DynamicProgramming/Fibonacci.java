@@ -16,11 +16,11 @@ public class Fibonacci {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        int size = Integer.parseInt(br.readLine());
 
         // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
-        System.out.println(fibMemo(n));
-        System.out.println(fibBotUp(n));
+        System.out.println(fibMemo(size));
+        System.out.println(fibBotUp(size));
     }
 
     /**
