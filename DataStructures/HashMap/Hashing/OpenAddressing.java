@@ -3,7 +3,7 @@
  * the Open_Addressing object uses an array for hashing
  * using quadratic hashing, we make it possible to add an element and retrieve its value from the array in constant time
  */
-public class Open_Addressing {
+public class OpenAddressing {
 
     public int tableSize; // number of SLOTS AVAILABLE
     public int randomNumber; // the default random number
@@ -11,7 +11,7 @@ public class Open_Addressing {
     int hasher;
     public int[] Table;
 
-    protected Open_Addressing(int index, int seed) {
+    protected OpenAddressing(int index, int seed) {
         this.index = index;
         this.hasher = (int) (index - 1) / 2 + 1;
         this.tableSize = power2(hasher);
@@ -101,5 +101,12 @@ public class Open_Addressing {
             }
         }
         return found;
+    }
+
+     /**
+     * Calculate 2^index
+     */
+    public static int power2(int index) {
+        return (int) Math.pow(2, index);
     }
 }
