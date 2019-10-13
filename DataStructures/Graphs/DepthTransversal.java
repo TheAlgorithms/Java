@@ -16,7 +16,7 @@ public class DepthTransversal {
         g.addEdge(2, 4, 2);
         g.addEdge(2, 5, 3);
         g.addEdge(4, 5, 6);
-        System.out.print(g.iteration);
+        System.out.print(g.iteration(0));
     }
 
     
