@@ -39,22 +39,26 @@ public class DepthTransversal {
             graph[second][first] = value;
         }
 
-        ArrayList<Intger> iteration(int act){
+        ArrayList<Intger> iteration(int start){
+            int act;
             // List which collects the index of the nodes in the correct order
             ArrayList<Integer> list = new ArrayList<>();
             // Stack element to simulate a memory-stack
             Stack<Integer> stack = new Stack<>();
+            stack.push(start);
             // Set to controll, that no node was added twice. (Possible to do this with the ArrayList "list" too).
             Set<Integer> controll = new HashSet<>();
 
-            for(int i = 0; i < graph.length; i++){
-                if(i != act && !controll.contains(i) && graph[act] != Integer.MAX_VALUE){
-                    doSomething(i);
-                    list.add(i);
-                    stack.push(i);
+            while(!stack.isEmpty()){
+                act = stack.pop();
+                for(int i = 0; i < graph.length; i++){
+                    if(i != act && !controll.contains(i) && graph[act] != Integer.MAX_VALUE){
+                        doSomething(i);
+                        list.add(i);
+                        stack.push(i);
+                    }
                 }
             }
-
             return list;
             
         }
