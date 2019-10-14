@@ -11,9 +11,9 @@ import java.util.Random;
  public class CompareSortArray{
 
     public static void main(String[] args) {
-        int[] listA = new int[10];
-        int i;
         int size = 10;
+        int[] listA = new int[size];
+        int i;
         Random rand = new Random();
 
         /* init ListA and List B */
