@@ -2,11 +2,16 @@ package Maths;
 
 public class FindMinRecursion {
     public static void main(String[] args) {
-        int[] array = {2, 4, 9, 7, 19, 94, 5};
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        res.add("1");
+	res.add("2");
+	res.add("3");
+	res.add("4");
+	res.add("5");
         int low = 0;
-        int high = array.length - 1;
+        int high = res.size() - 1;
 
-        System.out.println("min value is " + min(array, low, high));
+        System.out.println("min value is " + min(res, low, high));
     }
 
     /**
@@ -17,15 +22,15 @@ public class FindMinRecursion {
      * @param high  the index of the last element
      * @return min of {@code array}
      */
-    public static int min(int[] array, int low, int high) {
+    public static int min(ArrayList<Interger>, int low, int high) {
         if (low == high) {
-            return array[low]; //or array[high]
+            return res.get(high); //or array[high]
         }
 
         int mid = (low + high) >>> 1;
 
-        int leftMin = min(array, low, mid); //get min in [low, mid]
-        int rightMin = min(array, mid + 1, high); //get min in [mid+1, high]
+        int leftMin = min(res, low, mid); //get min in [low, mid]
+        int rightMin = min(res, mid + 1, high); //get min in [mid+1, high]
 
         return leftMin <= rightMin ? leftMin : rightMin;
     }
