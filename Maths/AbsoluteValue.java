@@ -1,4 +1,5 @@
 package Maths;
+import java.util.*;
 
 /**
  * @author PatOnTheBack
@@ -7,8 +8,9 @@ package Maths;
 public class AbsoluteValue {
 
     public static void main(String[] args) {
-        int value = -34;
-        System.out.println("The absolute value of " + value + " is " + absVal(value));
+        Scanner scn = new Scanner(System.in);
+        int value = scn.nextInt();
+        System.out.println("The value of " + value + " is " + absVal(value));
     }
 
     /**
