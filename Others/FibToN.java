@@ -12,6 +12,14 @@ import java.util.Scanner;
  */
 
 public class FibToN {
+    
+    public static int fib(int n){
+        if(n==0 || n ==1){
+            return n;
+        }
+        int smallans = fib(n-1)+fib(n-2);
+        return smallans;
+    }
     public static void main(String[] args) {
         //take input
         Scanner scn = new Scanner(System.in);
