@@ -1,19 +1,23 @@
 package Maths;
 
 import java.util.Scanner;
+import java.io.*;
 
 public class PrimeCheck {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
+    public static void main(String[] args) throws Exception {
+        //Scanner scanner = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
         System.out.print("Enter a number: ");
-        int n = scanner.nextInt();
+        //int n = scanner.nextInt();
         if (isPrime(n)) {
             System.out.println(n + " is a prime number");
         } else {
             System.out.println(n + " is not a prime number");
         }
     }
+    
+    
 
     /***
      * Checks if a number is prime or not
