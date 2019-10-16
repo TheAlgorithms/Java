@@ -68,6 +68,30 @@ public class CoinChange {
         //printAmount(minimumCoins);
         return minimumCoins[amount];
     }
+    
+    /**
+     * This method actually prints all the combination. It takes exponential time.
+     */
+    public void printCoinChangingSolution(int total,int coins[]){
+        List<Integer> result = new ArrayList<>();
+        printActualSolution(result, total, coins, 0);
+    }
+    
+    private void printActualSolution(List<Integer> result,int total,int coins[],int pos){
+        if(total == 0){
+            for(int r : result){
+                System.out.print(r + " ");
+            }
+            System.out.print("\n");
+        }
+        for(int i=pos; i < coins.length; i++){
+            if(total >= coins[i]){
+                result.add(coins[i]);
+                printActualSolution(result,total-coins[i],coins,i);
+                result.remove(result.size()-1);
+            }
+        }
+    }
 
     // A basic print method which prints all the contents of the array
     public static void printAmount(int[] arr) {
