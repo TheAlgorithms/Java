@@ -107,6 +107,25 @@ public class SinglyLinkedList {
     }
 
     /**
+     * clear all nodes in list
+     */
+    public void clear() {
+        if (size == 0) {
+            return;
+        }
+        Node prev = head.next;
+        Node cur = prev.next;
+        while (cur != null) {
+            prev = null; // clear to let GC do its work
+            prev = cur;
+            cur = cur.next;
+        }
+        prev = null;
+        head.next = null;
+        size = 0;
+    }
+
+    /**
      * Checks if the list is empty
      *
      * @return true is list is empty
