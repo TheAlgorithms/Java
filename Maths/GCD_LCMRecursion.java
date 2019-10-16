@@ -2,12 +2,14 @@ package Maths;
 
 /**
  * @author https://github.com/shellhub/
+ * @author https://github.com/namangup/
  */
-public class GCDRecursion {
+public class GCD_LCMRecursion {
     public static void main(String[] args) {
         System.out.println(gcd(20, 15)); /* output: 5 */
         System.out.println(gcd(10, 8));  /* output: 2 */
         System.out.println(gcd(gcd(10, 5), gcd(5, 10))); /* output: 5 */
+        System.out.println(lcm(20,15)); /* output: 60 */
     }
 
     /**
@@ -32,5 +34,11 @@ public class GCDRecursion {
         } else {
             return gcd(b, a % b);
         }
+    }
+    
+    //lowest common multiple
+    public static int lcm(int a,int b)
+    {
+        return (a/gcd(a,b))*b;
     }
 }
