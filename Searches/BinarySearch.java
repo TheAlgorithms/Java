@@ -91,5 +91,6 @@ class BinarySearch implements SearchAlgorithm {
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
         System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
+        System.out.println("Nenki passou por aqui!");
     }
 }
