@@ -22,3 +22,4 @@ We're on [Gitter](https://gitter.im/TheAlgorithms)! Please join us.
 See our [directory](DIRECTORY.md).
 
 ## JAVA interview Questions
+In this section we will seee all  the Question which is asked in java Interview
