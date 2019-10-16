@@ -1,0 +1,31 @@
+1. What is Polymorphism? 
+2. Explain garbage collection.
+3. What is an immutable object?
+4. How are this() and super() used with constructors?
+5. What are Access Specifiers available in Java?
+6. What is Constructor?
+7. What are the List interface and its main implementation?
+8. Explain the user defined Exceptions.
+9. Describe life cycle of thread.
+10.What is an Applets?
+11 What is the Set interface?
+12 What is a HashSet and TreeSet?
+13 How do you decide when to use HashMap and when to use TreeMap and what is difference between these two?
+14 What is the Comparable interface?
+15 When should I use abstract classes and when should I use interfaces?
+16 Explain the Polymorphism principle.
+17 What are the difference between throw and throws?
+18 What are the difference between throw and throws?
+19 What is difference between preemptive scheduling and time slicing?
+20 Explain traversing through a collector using Iterator.
+21 What are the principle concepts of OOPS?
+22 What are the basic features of java?
+23 How java becomes object oriented?
+24 How java becomes robust?
+25 How a Java program compiles?
+26 What is 'public static void main ( String args[ ] ) ' signifies?
+27 What 'System.out.println()' signifies?
+28 What is a variable in Java program?
+29 What is JVM?
+30 What is bytecode?
+31 What is Java applet?
