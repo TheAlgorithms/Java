@@ -54,20 +54,16 @@ public class SinglyLinkedList {
      * @param data     data to be stored in a new node
      * @param position position at which a new node is to be inserted
      */
-
     public void insertNth(int data, int position) {
-        if (position < 0 || position > getSize()) {
-            throw new IndexOutOfBoundsException("position less than zero or position more than the count of list");
-        } else {
-            Node cur = head;
-            Node node = new Node(data);
-            for (int i = 0; i < position; ++i) {
-                cur = cur.next;
-            }
-            node.next = cur.next;
-            cur.next = node;
-            size++;
+        checkBounds(position, 0, size);
+        Node cur = head;
+        for (int i = 0; i < position; ++i) {
+            cur = cur.next;
         }
+        Node node = new Node(data);
+        node.next = cur.next;
+        cur.next = node;
+        size++;
     }
 
     /**
@@ -90,19 +86,28 @@ public class SinglyLinkedList {
      * This method deletes an element at Nth position
      */
     public void deleteNth(int position) {
-        if (position < 0 || position > size - 1) {
-            throw new IndexOutOfBoundsException("position less than zero or position more than the count of list");
-        } else {
-            Node cur = head;
-            for (int i = 0; i < position; ++i) {
-                cur = cur.next;
-            }
+        checkBounds(position, 0, size - 1);
+        Node cur = head;
+        for (int i = 0; i < position; ++i) {
+            cur = cur.next;
+        }
 
-            Node destroy = cur.next;
-            cur.next = cur.next.next;
-            destroy = null; // clear to let GC do its work
+        Node destroy = cur.next;
+        cur.next = cur.next.next;
+        destroy = null; // clear to let GC do its work
 
-            size--;
+        size--;
+    }
+
+    /**
+     * @param position to check position
+     * @param low      low index
+     * @param high     high index
+     * @throws IndexOutOfBoundsException if {@code position} not in range {@code low} to {@code high}
+     */
+    public void checkBounds(int position, int low, int high) {
+        if (position < low || position > high) {
+            throw new IndexOutOfBoundsException(position + "");
         }
     }
 
@@ -135,22 +140,24 @@ public class SinglyLinkedList {
     }
 
     /**
-     * Prints contents of the list
-     */
-    public void display() {
-        Node current = head.next;
-        while (current != null) {
-            System.out.print(current.value + " ");
-            current = current.next;
-        }
-        System.out.println();
-    }
-
-    /**
      * Returns the size of the linked list
      */
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public String toString() {
+        if (size == 0) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        Node cur = head.next;
+        while (cur != null) {
+            builder.append(cur.value).append("->");
+            cur = cur.next;
+        }
+        return builder.replace(builder.length() - 2, builder.length(), "").toString();
     }
 
     /**
@@ -167,19 +174,24 @@ public class SinglyLinkedList {
         myList.insertHead(7);
         myList.insertHead(10);
 
-        myList.display(); // 10 -> 7 -> 5
+        System.out.println(myList);; // 10 -> 7 -> 5
 
         myList.deleteHead();
 
-        myList.display(); // 7 -> 5
+        System.out.println(myList);; // 7 -> 5
 
         myList.insertNth(11, 2);
 
-        myList.display(); // 7 -> 5 -> 11
+        System.out.println(myList);; // 7 -> 5 -> 11
 
         myList.deleteNth(1);
 
-        myList.display(); // 7-> 11
+        System.out.println(myList);; // 7-> 11
+
+        myList.clear();
+        assert myList.isEmpty();
+
+        System.out.println(myList); // ""
 
     }
 }
