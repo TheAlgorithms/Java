@@ -8,30 +8,21 @@ import java.util.stream.IntStream;
 import static java.lang.String.format;
 
 /**
- *
- *
- *
  * Binary search is one of the most popular algorithms
  * The algorithm finds the position of a target value within a sorted array
- *
  * Worst-case performance	O(log n)
  * Best-case performance	O(1)
  * Average performance	O(log n)
  * Worst-case space complexity	O(1)
- *
- *
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
- *
  * @see SearchAlgorithm
  * @see IterativeBinarySearch
- *
  */
 
 class BinarySearch implements SearchAlgorithm {
 
     /**
-     *
      * @param array is an array where the element should be found
      * @param key is an element which should be found
      * @param <T> is any comparable type
@@ -44,7 +35,6 @@ class BinarySearch implements SearchAlgorithm {
 
     /**
      * This method implements the Generic Binary Search
-     *
      * @param array The array to make the binary search
      * @param key The number you are looking for
      * @param left The lower bound
@@ -73,7 +63,7 @@ class BinarySearch implements SearchAlgorithm {
         Random r = ThreadLocalRandom.current();
 
         int size = 100;
-        int maxElement = 100000;
+        int maxElement = 1000;
 
         Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[]::new);
 
@@ -85,7 +75,7 @@ class BinarySearch implements SearchAlgorithm {
         int atIndex = search.find(integers, shouldBeFound);
 
         System.out.println(format(
-            "Should be found: %d. Found %d at index %d. An array length %d",
+            "should be found at : %d. Found %d at index %d. An array of length %d",
             shouldBeFound, integers[atIndex], atIndex, size
         ));
 
