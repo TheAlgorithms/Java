@@ -21,6 +21,8 @@ public class Fibonacci {
         // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
         System.out.println(fibMemo(size));
         System.out.println(fibBotUp(size));
+        System.out.println(fibOptimized(size));
+
     }
 
     /**
@@ -88,7 +90,7 @@ public class Fibonacci {
             return 0;
         }
         int prev = 0, res = 1, next;
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i <= n; i++) {
             next = prev + res;
             prev = res;
             res = next;
