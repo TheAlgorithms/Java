@@ -5,7 +5,7 @@ package Others;
  *
  * @author Oskar Enmalm
  */
-class Abecedarian {
+public class Abecedarian {
 
     public static boolean isAbecedarian(String s) {
         int index = s.length() - 1;
