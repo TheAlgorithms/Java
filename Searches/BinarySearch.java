@@ -66,7 +66,20 @@ class BinarySearch implements SearchAlgorithm {
             return search(array, key, median + 1, right);
         }
     }
-
+    // Iterative Binary Search
+    public static int binarySearch(int a[], int low, int high, int key){
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            if(a[mid] == key)
+                return mid;
+            else if(a[mid] > key)
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+        return -1;
+    }
+    
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
