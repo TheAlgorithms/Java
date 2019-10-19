@@ -52,12 +52,10 @@ class BinarySearch implements SearchAlgorithm {
      * @return the location of the key
      **/
     private <T extends Comparable<T>> int search(T array[], T key, int left, int right){
-        if (right < left) return -1; // this means that the key not found
-
-        // find median
-        int median = (left + right) >>> 1;
+        if(right < left)return -1; // this means that the key not found
+        // find median    
+        int median = (left + right) >>> 1;     
         int comp = key.compareTo(array[median]);
-
         if (comp == 0) {
             return median;
         } else if (comp < 0) {
@@ -71,16 +69,13 @@ class BinarySearch implements SearchAlgorithm {
     public static void main(String[] args) {
         // Just generate data
         Random r = ThreadLocalRandom.current();
-
         int size = 100;
         int maxElement = 100000;
-
         Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[]::new);
-
-
+        int index = r.nextInt(size - 1);
         // The element that should be found
-        int shouldBeFound = integers[r.nextInt(size - 1)];
-
+        int shouldBeFound = integers[index];
+        //int shouldBeFound = integers[100];
         BinarySearch search = new BinarySearch();
         int atIndex = search.find(integers, shouldBeFound);
 
