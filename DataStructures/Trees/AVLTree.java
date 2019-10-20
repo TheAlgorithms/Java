@@ -209,7 +209,7 @@ public class AVLTree {
         for (int i = 1; i < 10; i++)
             tree.insert(i);
 
-        System.out.print("Printing balance: ");
+        System.out.println("Printing balance tree:");
         tree.printBalance();
     }
 }
