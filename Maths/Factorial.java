@@ -2,7 +2,7 @@ package Maths;
 
 public class Factorial {
     public static void main(String[] args) {
-        int n = 5;
+        int n = 10;//value of n is changed
         System.out.println(n + "! = " + factorial(n));
     }
 
