@@ -165,7 +165,7 @@ public class SinglyLinkedList {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         SinglyLinkedList myList = new SinglyLinkedList();
 
         assert myList.isEmpty();

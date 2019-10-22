@@ -50,7 +50,7 @@ public class HexToOct {
      * Main method that gets the hex input from user and converts it into octal.
      * @param args arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String hexadecnum;
         int decnum, octalnum;
         Scanner scan = new Scanner(System.in);

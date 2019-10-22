@@ -4,7 +4,7 @@ class BellmanFord
 start vertex, end vertes and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/
 {
     int vertex,edge;
-    private Edge edges[];
+    private Edge[] edges;
     private int index=0;
     BellmanFord(int v,int e)
     {
@@ -17,8 +17,8 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
         int u,v;
         int w;
         /**
-        *@param u Source Vertex
-        * @param v End vertex
+        *@param a Source Vertex
+        * @param b End vertex
         * @param c Weight
         */
         Edge(int a,int b,int c)
@@ -26,21 +26,21 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
             u=a;
             v=b;
             w=c;
-        }    
+        }
     }
     /**
-     * @param p[] Parent array which shows updates in edges
+     * @param p Parent array which shows updates in edges
      * @param  i Current vertex under consideration
      */
-    void printPath(int p[],int i)
+    void printPath(int[] p, int i)
     {
         if(p[i]==-1)//Found the path back to parent
             return;
         printPath(p,p[i]);
         System.out.print(i+" ");
     }
-    public static void main(String args[])
-    {    
+    public static void main(String[] args)
+    {
         BellmanFord obj=new BellmanFord(0,0);//Dummy object to call nonstatic variables
         obj.go();
     }
@@ -51,7 +51,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
         System.out.println("Enter no. of vertices and edges please");
         v=sc.nextInt();
         e=sc.nextInt();
-        Edge arr[]=new Edge[e];//Array of edges 
+        Edge[] arr = new Edge[e];//Array of edges
         System.out.println("Input edges");
         for(i=0;i<e;i++)
         {
@@ -60,8 +60,8 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
             w=sc.nextInt();
             arr[i]=new Edge(u,ve,w);
         }
-        int dist[]=new int[v];//Distance array for holding the finalized shortest path distance between source and all vertices
-        int p[]=new int[v];//Parent array for holding the paths
+        int[] dist = new int[v];//Distance array for holding the finalized shortest path distance between source and all vertices
+        int[] p = new int[v];//Parent array for holding the paths
         for(i=0;i<v;i++)
             dist[i]=Integer.MAX_VALUE;//Initializing distance values
         dist[0]=0;
@@ -92,7 +92,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
             System.out.println(i+" "+dist[i]);
             System.out.println("Path followed:");
             for(i=0;i<v;i++)
-            { 
+            {
                 System.out.print("0 ");
                 printPath(p,i);
                 System.out.println();
@@ -102,14 +102,14 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
     /**
      * @param source Starting vertex
      * @param end Ending vertex
-     * @param Edge Array of edges 
+     * @param arr Array of edges
     */
-    public void show(int source,int end, Edge arr[])//Just shows results of computation, if graph is passed to it. The graph should
+    public void show(int source, int end, Edge[] arr)//Just shows results of computation, if graph is passed to it. The graph should
     //be created by using addEdge() method and passed by calling getEdgeArray() method
     {
         int i,j,v=vertex,e=edge,neg=0;
-        double dist[]=new double[v];//Distance array for holding the finalized shortest path distance between source and all vertices
-        int p[]=new int[v];//Parent array for holding the paths
+        double[] dist = new double[v];//Distance array for holding the finalized shortest path distance between source and all vertices
+        int[] p = new int[v];//Parent array for holding the paths
         for(i=0;i<v;i++)
             dist[i]=Integer.MAX_VALUE;//Initializing distance values
         dist[source]=0;
@@ -145,7 +145,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
     /**
      *@param x Source Vertex
      * @param y End vertex
-     * @param z Weight 
+     * @param z Weight
     */
     public void addEdge(int x,int y,int z)//Adds unidirectionl Edge
     {

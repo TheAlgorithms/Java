@@ -8,7 +8,7 @@ package DynamicProgramming;
 public class RodCutting {
 
     private static int cutRod(int[] price, int n) {
-        int val[] = new int[n + 1];
+        int[] val = new int[n + 1];
         val[0] = 0;
 
         for (int i = 1; i <= n; i++) {
@@ -23,7 +23,7 @@ public class RodCutting {
     }
 
     // main function to test
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int[] arr = new int[]{2, 5, 13, 19, 20};
         int size = arr.length;
 	int result = cutRod(arr,size); 
