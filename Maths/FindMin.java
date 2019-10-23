@@ -9,7 +9,7 @@ public class FindMin {
     }
 
     /**
-     * find min of array
+     * Find the minimum number of an array of numbers.
      *
      * @param array the array contains element
      * @return min value
