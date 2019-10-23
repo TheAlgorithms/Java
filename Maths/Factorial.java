@@ -22,4 +22,4 @@ public class Factorial {
         }
         return fac;
     }
-}
+}.
