@@ -44,7 +44,5 @@ public class CountWords {
         }
         s = sb.toString();
         return s.trim().split("[\\s]+").length;
-
     }
-
 }
