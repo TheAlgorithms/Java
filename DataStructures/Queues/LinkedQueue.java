@@ -80,6 +80,11 @@ public class LinkedQueue {
         front.next = front.next.next;
         destroy = null; /* clear let GC do it's work */
         size--;
+
+        if (isEmpty()) {
+            front = rear;
+        }
+
         return retValue;
     }
 
@@ -120,11 +125,16 @@ public class LinkedQueue {
      * Clear all nodes in queue
      */
     public void clear() {
-        //TODO
+        while (!isEmpty()) {
+            dequeue();
+        }
     }
 
     @Override
     public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder builder = new StringBuilder();
         Node cur = front.next;
         builder.append("[");
@@ -144,11 +154,16 @@ public class LinkedQueue {
         queue.enqueue(1); /* 1 */
         queue.enqueue(2); /* 1 2 */
         queue.enqueue(3); /* 1 2 3 */
-        System.out.println(queue);
+        System.out.println(queue); /* [1, 2, 3] */
 
         assert queue.size() == 3;
         assert queue.dequeue() == 1;
         assert queue.peekFront() == 2;
         assert queue.peekRear() == 3;
+
+        queue.clear();
+        assert queue.isEmpty();
+
+        System.out.println(queue); /* [] */
     }
 }
