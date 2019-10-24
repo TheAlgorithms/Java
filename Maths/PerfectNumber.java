@@ -1,5 +1,4 @@
 package Maths;
-
 /**
  * In number theory, a perfect number is a positive integer that is equal to the sum of
  * its positive divisors, excluding the number itself. For instance, 6 has divisors 1, 2 and 3
@@ -14,7 +13,6 @@ public class PerfectNumber {
         assert !isPerfectNumber(8); /* 1 + 2 + 4 != 8 */
         assert isPerfectNumber(28); /* 1 + 2 + 4 + 7 + 14 == 28 */
     }
-
     /**
      * Check if {@code number} is perfect number or not
      *
@@ -23,9 +21,11 @@ public class PerfectNumber {
      */
     public static boolean isPerfectNumber(int number) {
         int sum = 0;  /* sum of its positive divisors */
-        for (int i = 1; i < number; ++i) {
+        for (int i = 1; i <= number/2; ++i) {
             if (number % i == 0) {
                 sum += i;
+                if(sum>number)
+                    break;
             }
         }
         return sum == number;
