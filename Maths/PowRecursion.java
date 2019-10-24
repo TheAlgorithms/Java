@@ -17,10 +17,10 @@ public class PowRecursion {
      * @return the value {@code a}<sup>{@code b}</sup>.
      */
     public static long pow(int a, int b) {
-        int result = 1;
-        for (int i = 1; i <= b; i++) {
-            result *= a;
+        if (b == 0) {
+            return 1;
+        } else {
+            return a * pow(a, b - 1);
         }
-        return result;
     }
 }
