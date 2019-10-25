@@ -103,9 +103,16 @@ public class AnyBaseToAnyBase {
                 // Else, store the integer value in charB2
             else
                 charB2 = charB1 - '0';
+
             // Convert the digit to decimal and add it to the
-            // decimalValue of n
-            decimalValue = decimalValue * b1 + charB2;
+            // decimalValue of n, check if integer overflow occurs
+            long result = (long)decimalValue * b1 + charB2;
+            if (result != (int)result) {
+                // Overflow has occurred
+                throw new ArithmeticException("Integer overflow occurred");
+            }
+
+            decimalValue = (int)result;
         }
 
         // Converting the decimal value to base b2:
