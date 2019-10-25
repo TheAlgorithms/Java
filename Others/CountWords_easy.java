@@ -34,6 +34,7 @@ public class CountWords_easy {
             // Move to next character 
             ++i; 
         } 
+       //return the word counts
         return wc; 
     } 
        
