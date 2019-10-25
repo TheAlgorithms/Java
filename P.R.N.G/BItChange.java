@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- * @author Abhinandan Pal (https://github.com/Abhinandan-Pal)
+ * @author Abhinandan P. (https://github.com/Abhinandan-Pal)
  */
 public class PRNG 
 {
