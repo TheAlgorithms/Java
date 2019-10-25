@@ -79,7 +79,7 @@ class BinarySearch implements SearchAlgorithm {
 
 
         // The element that should be found
-        int shouldBeFound = integers[r.nextInt(size - 1)];
+        int shouldBeFound = integers[r.nextInt(size)];
 
         BinarySearch search = new BinarySearch();
         int atIndex = search.find(integers, shouldBeFound);
