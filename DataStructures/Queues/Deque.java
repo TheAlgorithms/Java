@@ -4,79 +4,79 @@ import java.util.Scanner;
 
 public class Deque {
 	private int maxSize;
-	private int f, r, a[];
+	private int front, rear, deque[];
 
 	public Deque(int S) {
 		maxSize = S;
-		a = new int[S];
-		f = r = -1;
+		deque = new int[S];
+		front = rear = -1;
 	}
 
 	int deleteRear() {
-		if (f == -1)
+		if (front == -1)
 			return -1;
-		else if (f == r) {
-			int x = a[r];
-			f = r = -1;
+		else if (front == rear) {
+			int x = deque[rear];
+			front = rear = -1;
 			return x;
 		} else {
-			int x = a[r];
-			r--;
+			int x = deque[rear];
+			rear--;
 			return x;
 		}
 	}
 
 	int insertFront(int x) {
-		if (f == 0)
+		if (front == 0)
 			return 0;
-		else if (f == -1 || r == -1) {
-			f++;
-			r++;
-			a[f] = x;
+		else if (front == -1 || rear == -1) {
+			front++;
+			rear++;
+			deque[front] = x;
 			return x;
 		} else {
-			f--;
-			a[f] = x;
+			front--;
+			deque[front] = x;
 			return x;
 		}
 	}
 
 	int insertRear(int x) {
-		if (r == maxSize - 1)
+		if (rear == maxSize - 1)
 			return -1;
-		else if (f == -1 || r == -1) {
-			f++;
-			r++;
-			a[r] = x;
+		else if (front == -1 || rear == -1) {
+			front++;
+			rear++;
+			deque[rear] = x;
 			return x;
 		} else {
-			r++;
-			a[r] = x;
+			rear++;
+			deque[rear] = x;
 			return x;
 
 		}
 	}
 
 	int deleteFront() {
-		if (f == -1)
+		if (front == -1)
 			return -1;
-		else if (f == r) {
-			int x = a[f];
-			f = r = -1;
+		else if (front == rear) {
+			int x = deque[front];
+			front = rear = -1;
 			return x;
 		} else {
-			int x = a[f];
-			f++;
+			int x = deque[front];
+			front++;
 			return x;
 		}
 	}
 
 	int display() {
-		if (f == -1 && r == -1)
+		if (front == -1 && rear == -1)
 			return -1;
 		else {
-			for (int i = f; i <= r; i++)
-				System.out.println(a[i]);
+			for (int i = front; i <= rear; i++)
+				System.out.println(deque[i]);
 			return 0;
 		}
 
