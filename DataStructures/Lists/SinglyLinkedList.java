@@ -106,7 +106,7 @@ public class SinglyLinkedList {
      * @throws IndexOutOfBoundsException if {@code position} not in range {@code low} to {@code high}
      */
     public void checkBounds(int position, int low, int high) {
-        if (position < low || position > high) {
+        if (position > high || position < low) {
             throw new IndexOutOfBoundsException(position + "");
         }
     }
