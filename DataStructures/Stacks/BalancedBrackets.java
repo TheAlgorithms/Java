@@ -62,7 +62,7 @@ class BalancedBrackets {
                 case ')':
                 case ']':
                 case '}':
-                    if (!(!bracketsStack.isEmpty() && isPaired(bracketsStack.pop(), bracket))) {
+                    if (bracketsStack.isEmpty() || !isPaired(bracketsStack.pop(), bracket)) {
                         return false;
                     }
                     break;
