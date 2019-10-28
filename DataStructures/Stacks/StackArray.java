@@ -32,6 +32,8 @@ public class StackArray {
         System.out.println(myStackArray.peek()); // will print 9
         System.out.println(myStackArray.pop()); // will print 9
         System.out.println(myStackArray.peek()); // will print 2
+        System.out.println( myStackArray.push(7));
+         System.out.println(myStackArray.peek()); // will print 7
     }
 
     /**
