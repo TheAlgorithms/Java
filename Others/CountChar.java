@@ -2,13 +2,6 @@ package Others;
 
 import java.util.Scanner;
 
-
-/**
- * @author blast314
- * <p>
- * Counts the number of characters in the text.
- */
-
 public class CountChar {
 
     public static void main(String[] args) {
@@ -20,11 +13,12 @@ public class CountChar {
     }
 
     /**
-     * @param str: String to count the characters
-     * @return int: Number of characters in the passed string
+     * Count non space character in string
+     *
+     * @param str String to count the characters
+     * @return number of character in the specified string
      */
     private static int CountCharacters(String str) {
-    	str = str.replaceAll("\\s","");
-        return str.length();
+        return str.replaceAll("\\s", "").length();
     }
 }
