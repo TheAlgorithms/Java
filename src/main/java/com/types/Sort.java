@@ -1,7 +1,7 @@
 package com.types;
 
 @FunctionalInterface
-public interface Sort<T> {
+public interface Sort<T extends Comparable<T>> {
 
-    <T extends Comparable<T>> T[] sort(T[] array);
+    T[] sort(T[] array);
 }
