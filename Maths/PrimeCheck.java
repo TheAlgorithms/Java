@@ -24,7 +24,7 @@ public class PrimeCheck {
         if (n == 2) {
             return true;
         }
-        if (n < 2 || n % 2 == 0) {
+        if (n % 2 == 0) {
             return false;
         }
         for (int i = 3, limit = (int) Math.sqrt(n); i <= limit; i += 2) {
