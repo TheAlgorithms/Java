@@ -121,8 +121,8 @@ public class SinglyLinkedList {
         }
 
         Node destroy = cur.next;
-        cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
+        cur.next = destroy.next;
+        destroy.next = null;
 
         size--;
     }
