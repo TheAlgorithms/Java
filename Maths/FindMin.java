@@ -5,7 +5,7 @@ public class FindMin {
     //Driver
     public static void main(String[] args) {
         int[] array = {2, 4, 9, 7, 19, 94, 5};
-        System.out.println("min = " + findMax(array));
+        System.out.println("min = " + findMin(array));
     }
 
     /**
@@ -14,7 +14,7 @@ public class FindMin {
      * @param array the array contains element
      * @return min value
      */
-    public static int findMax(int[] array) {
+    public static int findMin(int[] array) {
         int min = array[0];
         for (int i = 1; i < array.length; ++i) {
             if (array[i] < min) {
