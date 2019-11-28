@@ -2,6 +2,10 @@ package com.designpatterns.structural.proxy.president;
 
 import com.designpatterns.creational.singleton.Singleton;
 
+/**
+ * This is a class which is gonna be proxied by PresidentSecretary.
+ * Whenever any citizen decides to contact the President, they have to talk to the Secretary.
+ */
 public class President {
 
     private volatile static President instance = null;
