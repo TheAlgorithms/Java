@@ -13,9 +13,9 @@ public class PresidentSecretary {
         if(!isMessageValid(message))
             throw new RuntimeException("invalid message");
 
-        System.out.println("message is being sent to the President...");
+        System.out.println("Secretary: message is being sent to the President...");
         president.talkToThePresident(message);
-        System.out.println("message is received by the President.");
+        System.out.println("Secretary: message is sent to the President.");
 
     }
 

@@ -22,6 +22,6 @@ public class President {
 
 
     void talkToThePresident(String message){
-        System.out.println("I, the President, have received this message:" + message);
+        System.out.println("President: I have received the message:" + message);
     }
 }
