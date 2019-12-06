@@ -1,0 +1,215 @@
+COMPOSITE PATTERN (Source: https://www.javatpoint.com/composite-pattern)
+
+ADVANTAGES:
+- Defines class heirarches that contain primitive and complex objects.
+- Easier to add new kinds of components.
+- Provides flexibility of structure with manageable class or internface.
+
+USAGES:
+- When one wants to represent a full or partial heirarchy of objects.
+- When the responsibilities are needed to be added dynamically to the individual objects without affecting other objects. Where the responsibility of object may vary from time to time.
+
+ELEMENTS:
+1) Component
+    - Declares interface for objects in compostion.
+    - Implements default behavior for the interface common to all classes as appropriate.
+    - Declares an interface for accessing and managing its child components.
+    
+2) Leaf
+    - Represents leaf objects in composition. A leaf has no children.
+    - Defines behavior for primitive objects in the composition.
+    
+3) Composite
+    - Defines behavior for components having children
+    - Stores child component.
+    - Implements child related operations in the component interface.
+    
+4) Client
+    - Manipulates objects in the composition through the component interface.
+    
+    
+CODE EXAMPLE:
+
+// this is the Employee interface i.e. Component.  
+public interface Employee {  
+    public  int getId();  
+    public String getName();  
+    public double getSalary();  
+       public void print();  
+    public void add(Employee employee);  
+       public void remove(Employee employee);  
+       public Employee getChild(int i);  
+}// End of the Employee interface.  
+
+// this is the BankManager class i.e. Composite.  
+import java.util.ArrayList;  
+import java.util.Iterator;  
+import java.util.List;  
+public class BankManager implements Employee {  
+     private int id;  
+     private String name;  
+     private double salary;  
+  
+     public BankManager(int id,String name,double salary) {  
+      this.id=id;      
+      this.name = name;  
+      this.salary = salary;  
+     }  
+         List<Employee> employees = new ArrayList<Employee>();  
+     @Override  
+     public void add(Employee employee) {  
+        employees.add(employee);  
+     }  
+        @Override  
+     public Employee getChild(int i) {  
+      return employees.get(i);  
+     }  
+     @Override  
+     public void remove(Employee employee) {  
+      employees.remove(employee);  
+     }    
+     @Override  
+     public int getId()  {  
+      return id;  
+     }  
+     @Override  
+     public String getName() {  
+      return name;  
+     }  
+    @Override  
+     public double getSalary() {  
+      return salary;  
+     }  
+     @Override  
+     public void print() {  
+      System.out.println("==========================");  
+      System.out.println("Id ="+getId());  
+      System.out.println("Name ="+getName());  
+      System.out.println("Salary ="+getSalary());  
+      System.out.println("==========================");  
+        
+      Iterator<Employee> it = employees.iterator();  
+        
+          while(it.hasNext())  {  
+            Employee employee = it.next();  
+            employee.print();  
+         }  
+     }  
+}// End of the BankManager class.  
+
+public  class Cashier implements Employee{  
+    /* 
+         In this class,there are many methods which are not applicable to cashier because 
+         it is a leaf node. 
+     */  
+        private int id;  
+            private String name;  
+        private double salary;  
+        public Cashier(int id,String name,double salary)  {  
+            this.id=id;  
+            this.name = name;  
+            this.salary = salary;  
+        }  
+        @Override  
+        public void add(Employee employee) {  
+            //this is leaf node so this method is not applicable to this class.  
+        }  
+        @Override  
+        public Employee getChild(int i) {  
+            //this is leaf node so this method is not applicable to this class.  
+            return null;  
+        }  
+        @Override  
+        public int getId() {  
+            // TODO Auto-generated method stub  
+            return id;  
+        }  
+        @Override  
+        public String getName() {  
+            return name;  
+        }  
+        @Override  
+        public double getSalary() {  
+            return salary;  
+        }  
+        @Override  
+        public void print() {  
+            System.out.println("==========================");  
+            System.out.println("Id ="+getId());  
+            System.out.println("Name ="+getName());  
+            System.out.println("Salary ="+getSalary());  
+            System.out.println("==========================");  
+        }  
+        @Override  
+        public void remove(Employee employee) {  
+            //this is leaf node so this method is not applicable to this class.  
+        }  
+}  
+
+public class Accountant implements Employee{  
+/* 
+    In this class,there are many methods which are not applicable to cashier because 
+    it is a leaf node. 
+*/  
+    private int id;  
+    private String name;  
+    private double salary;  
+   public Accountant(int id,String name,double salary)  {  
+       this.id=id;  
+       this.name = name;  
+       this.salary = salary;  
+   }  
+   @Override  
+   public void add(Employee employee) {  
+       //this is leaf node so this method is not applicable to this class.  
+   }  
+   @Override  
+   public Employee getChild(int i) {  
+       //this is leaf node so this method is not applicable to this class.  
+       return null;  
+   }  
+   @Override  
+    public int getId() {  
+        // TODO Auto-generated method stub  
+        return id;  
+   }  
+   @Override  
+   public String getName() {  
+       return name;  
+   }  
+   @Override  
+   public double getSalary() {  
+       return salary;  
+   }  
+   @Override  
+   public void print() {  
+       System.out.println("=========================");  
+       System.out.println("Id ="+getId());  
+       System.out.println("Name ="+getName());  
+       System.out.println("Salary ="+getSalary());  
+       System.out.println("=========================");  
+   }  
+  @Override  
+   public void remove(Employee employee) {  
+       //this is leaf node so this method is not applicable to this class.  
+   }  
+}  
+
+public class CompositePatternDemo {  
+    public static void main(String args[]){  
+         Employee emp1=new Cashier(101,"Sohan Kumar", 20000.0);  
+         Employee emp2=new Cashier(102,"Mohan Kumar", 25000.0);  
+         Employee emp3=new Accountant(103,"Seema Mahiwal", 30000.0);   
+         Employee manager1=new BankManager(100,"Ashwani Rajput",100000.0);  
+            
+          manager1.add(emp1);  
+          manager1.add(emp2);  
+          manager1.add(emp3);  
+          manager1.print();  
+        }  
+}
+
+
+EXPLANATION:
+
+Client uses the component class interface to interact with objects in the composition structure.  If recipient is a composite, then it usually forwards the request to its child for performing the additional operations. Interface Employee is treated as a component the class Accountant, Cashier, and BankManager implements from.  BankManager is treated as a composite and takes employees in an array to iterate through and provide information on identification, name, and salary. Cashier along with Accountant is treated as a leaf node.  Finally, Composite Pattern Demo is treated as a client and is the base for pairing employee information to each class.   
