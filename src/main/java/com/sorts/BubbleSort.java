@@ -2,7 +2,7 @@ package com.sorts;
 
 import com.types.Sort;
 
-public class BubbleSort<T> implements Sort<T> {
+public class BubbleSort<T extends Comparable<T>> implements Sort<T> {
   /**
    * This method implements the Generic Bubble Sort
    *
@@ -11,7 +11,7 @@ public class BubbleSort<T> implements Sort<T> {
    **/
 
   @Override
-  public <T extends Comparable<T>> T[] sort(T[] array) {
+  public T[] sort(T[] array) {
     int last = array.length;
     //Sorting
     boolean swap;

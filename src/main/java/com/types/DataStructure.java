@@ -3,7 +3,7 @@ package com.types;
 import java.util.Iterator;
 
 /**
- * This interface is to define bacis functionality expected out of any implementation class
+ * This interface is to define basic functionality expected out of any implementation class
  * Since this is a data structure it should have the flexibility to contain any kind of object hence it has been made generic
  * Any implementation class need not to be thread safe or it could be depending on the implementation class how does it want to behave.
  *
