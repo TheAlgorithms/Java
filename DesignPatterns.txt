@@ -27,7 +27,7 @@ ELEMENTS:
 4) Client
     - Manipulates objects in the composition through the component interface.
     
-    
+   
 CODE EXAMPLE:
 
 // this is the Employee interface i.e. Component.  
