@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * This class converts a Decimal number to a Binary number
  *
- * @author Unknown
+ *
  */
 class DecimalToBinary {
 

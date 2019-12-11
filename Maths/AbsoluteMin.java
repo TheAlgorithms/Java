@@ -15,7 +15,7 @@ public class AbsoluteMin {
     }
 
     /**
-     * get the value, it's absolute value is min
+     * get the value, returns the absolute min value min
      *
      * @param numbers contains elements
      * @return the absolute min value

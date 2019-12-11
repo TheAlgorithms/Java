@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * This class converts Decimal numbers to Octal Numbers
  *
- * @author Unknown
+ *
  */
 public class DecimalToOctal {
     /**
@@ -13,6 +13,8 @@ public class DecimalToOctal {
      *
      * @param args Command line Arguments
      */
+
+    //enter in a decimal value to get Octal output
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n, k, d, s = 0, c = 0;
