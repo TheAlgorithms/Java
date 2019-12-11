@@ -15,7 +15,7 @@ public class AbsoluteMax {
     }
 
     /**
-     * get the value, it's absolute value is max
+     * get the value, return the absolute max value
      *
      * @param numbers contains elements
      * @return the absolute max value

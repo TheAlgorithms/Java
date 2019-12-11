@@ -1,11 +1,12 @@
 package maths;
 
+//POWER (exponentials) Examples (a^b)
 public class Pow {
     public static void main(String[] args) {
-        assert pow(2, 0) == Math.pow(2, 0);
-        assert pow(0, 2) == Math.pow(0, 2);
-        assert pow(2, 10) == Math.pow(2, 10);
-        assert pow(10, 2) == Math.pow(10, 2);
+        assert pow(2, 0) == Math.pow(2, 0); // == 1
+        assert pow(0, 2) == Math.pow(0, 2); // == 0
+        assert pow(2, 10) == Math.pow(2, 10); // == 1024
+        assert pow(10, 2) == Math.pow(10, 2); // == 100
     }
 
     /**
