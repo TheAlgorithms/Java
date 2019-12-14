@@ -16,22 +16,20 @@ public class CompressingDecorator extends SenderDecorator {
 
     @Override
     public String send(String content) {
-        String compressedContent = new String(compressContent(content));
+        byte[] compressedBytes = compressContent(content);
+        String compressedContent = new String(compressedBytes);
         super.send(compressedContent);
         return compressedContent;
     }
 
     private byte[] compressContent(String content) {
-        try{
-            ByteArrayOutputStream baostream = new ByteArrayOutputStream();
-            OutputStream outStream = new GZIPOutputStream(baostream);
-            outStream.write(content.getBytes("UTF-8"));
+        try (ByteArrayOutputStream baostream = new ByteArrayOutputStream();
+             OutputStream outStream = new GZIPOutputStream(baostream)){
+            outStream.write(content.getBytes());
             outStream.close();
-            byte[] compressedBytes = baostream.toByteArray(); // toString not always possible
-            return compressedBytes;
+            return baostream.toByteArray();
         } catch (IOException e) {
             throw new RuntimeException("exception happened while compressing email content");
-
         }
     }
 
