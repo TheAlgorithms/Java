@@ -21,8 +21,8 @@ public class AbsoluteMax {
      * @return the absolute max value
      */
     public static int absMax(int[] numbers) {
-        int absMaxValue = numbers[0];
-        for (int i = 1, length = numbers.length; i < length; ++i) {
+        int absMaxValue = 0;
+        for (int i = 0;i<numbers.length;i++) {
             if (Math.abs(numbers[i]) > Math.abs(absMaxValue)) {
                 absMaxValue = numbers[i];
             }
