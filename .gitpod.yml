@@ -1,0 +1,3 @@
+tasks:
+  - init: ./gradlew build
+image: gitpod/workspace-full
