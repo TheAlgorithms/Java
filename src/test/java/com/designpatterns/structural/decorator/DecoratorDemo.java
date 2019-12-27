@@ -1,6 +1,5 @@
-package com.designpatterns.decorator;
+package com.designpatterns.structural.decorator;
 
-import com.designpatterns.structural.decorator.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
