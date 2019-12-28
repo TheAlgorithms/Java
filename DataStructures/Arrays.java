@@ -31,8 +31,7 @@ class Trap{
     // arr: input array
     // n: size of array
     static int trappingWater(int arr[], int n) { 
-        
-        // Your code here
+
         int res = 0;
         int[] lMax = new int[n];
         int[] rMax = new int[n];
