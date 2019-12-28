@@ -7,27 +7,23 @@ import com.designpatterns.behavioral.cor.handler.AuthorizationHandler;
 import com.designpatterns.behavioral.cor.handler.Handler;
 import com.designpatterns.behavioral.cor.handler.ValidationHandler;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class Demo {
 
-    public static void main(String[] args) {
-        Request request = new Request("user1", "JSH*njhs9989LKH", "/get-user-by-id");
+    private List<User> users;
+    private Handler authorizationHandler;
+    private Handler authenticationHandler;
+    private Handler validationHandler;
 
-        List<User> users = instantiateUsersList();
-
-        Handler handler = getHandler(users) ;
-
-        handler.execute(request);
-
-
-    }
-
-
-    private static List<User> instantiateUsersList(){
-        List<User> users = new ArrayList<>();
+    {
+        users = new ArrayList<>();
 
         List<String> user1Resources = Arrays.asList("/get-user-by-id","/post-user");
         List<String> user2Resources = Arrays.asList("/get-user","/get-all-users","/put-user");
@@ -38,16 +34,32 @@ public class Demo {
         users.add(user1);
         users.add(user2);
 
-        return users;
-
+        authorizationHandler = new AuthorizationHandler(null, users);
+        authenticationHandler = new AuthenticationHandler(authorizationHandler, users);
+        validationHandler = new ValidationHandler(authenticationHandler);
     }
 
-    private static Handler getHandler(List<User> users){
-        Handler authorizationHandler = new AuthorizationHandler(null, users);
-        Handler authenticationHandler = new AuthenticationHandler(authorizationHandler, users);
-        Handler validationHandler = new ValidationHandler(authenticationHandler);
 
-        return validationHandler;
-
+    @Test
+    public void testChainOfResponsibility_AllHandlersShouldBePassed() {
+        Request request = new Request("user1", "JSH*njhs9989LKH", "/get-user-by-id");
+        validationHandler.execute(request);
     }
+
+    @Test
+    public void testChainOfResponsibility_AuthenticationShouldBreak() {
+        Request request = new Request("user12", "JSH*njhs9989LKH", "/get-user-by-id");
+        assertThrows(RuntimeException.class,
+                () -> validationHandler.execute(request),
+                "user is not authenticated, runtime exception should be thrown");
+    }
+
+    @Test
+    public void testChainOfResponsibility_AuthorizationShouldBreak() {
+        Request request = new Request("user1", "JSH*njhs9989LKH", "/get-list-of-users-by-id");
+        assertThrows(RuntimeException.class,
+                () -> validationHandler.execute(request),
+                "user is not authorized to access to requested resource, runtime exception should be thrown");
+    }
+
 }
