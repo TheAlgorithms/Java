@@ -17,7 +17,7 @@ class BubbleSort implements SortAlgorithm {
      **/
 
     @Override
-    public <T extends Comparable<T>> T[] sort(T array[]) {
+    public <T extends Comparable<T>> T[] sort(T[] array) {
         for (int i = 0, size = array.length; i < size - 1; ++i) {
             boolean swapped = false;
             for (int j = 0; j < size - 1 - i; ++j) {
