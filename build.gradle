@@ -10,7 +10,15 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.0'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.5.0')
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
 
 group = 'algorithm'
