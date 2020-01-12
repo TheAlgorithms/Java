@@ -1,7 +1,15 @@
+.settings
+
+.classpath
+.project
+
 Java.iml
 .idea/*
 out/
 *.iml
+
 .gradle
+
+bin
 target
 build

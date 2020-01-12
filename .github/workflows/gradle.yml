@@ -1,0 +1,38 @@
+name: Java gradle CI
+
+on:
+  push:
+    branches:
+      - Development
+
+jobs:
+  test:
+    name: Test algorithms
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        java-version: [1.8, 11]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          ref: Development
+      - name: Set up jdk
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: JUnit5 tests on ubuntu
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test
+      - name: JUnit5 tests on macos
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          chmod +x gradlew
+          ./gradlew clean test
+      - name: JUnit5 tests on windows
+        if: startsWith(matrix.os, 'windows')
+        run: gradle clean test
