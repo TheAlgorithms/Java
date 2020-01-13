@@ -1,3 +1,4 @@
+package DataStructures.Graphs;
 import java.util.*;
 class BellmanFord
 /*Implementation of Bellman ford to detect negative cycles. Graph accepts inputs in form of edges which have 
