@@ -1,6 +1,3 @@
-//import java.util.Stack;
-//import java.util.LinkedList;
-
 public class Tree{
   private Node root = null;
   private static int level = 0;
@@ -40,7 +37,7 @@ public class Tree{
       else return searchLevel(root.left,value);
     }
   }
-  private static int searchLevel(Node node, char value){
+  private static int searchLevel(Node node, char value){//method for search a node and return the level from root
     level++;
     while(node != null){
       if(node.getData() == value) {
@@ -56,7 +53,7 @@ public class Tree{
     return -1;
   }
   
-  public void printPostOrder(){
+  public void printPostOrder(){//method for postorder
     if(root == null){
       System.out.println("Error, tree is empty!!");
       return;
@@ -73,7 +70,7 @@ public class Tree{
     System.out.print(node.getData()+" ");
   }
   
-  public void printInOrder(){
+  public void printInOrder(){//method for inorder
     if(root == null){
       System.out.println("Error, tree is empty!!");
       return;
@@ -90,7 +87,7 @@ public class Tree{
     printInOrder(root.right);
   }
 
-  public void printPreOrder(){
+  public void printPreOrder(){//method for preorder
     if(root == null){
       System.out.println("Error, tree is empty!!");
       return;
@@ -106,18 +103,4 @@ public class Tree{
     printPreOrder(root.left);
     printPreOrder(root.right);
   }
-
-  
- /* public void DFS(char data){
-    if(root == null) return;
-    
-    Stack<Node> s1 = new Stack<Node>();
-    LinkedList<Node> l1 = new LinkedList<Node>();
-     
-    s1.push(root);
-     Node temp = pop();
-    s1.push(temp.right);
-    s1.push(temp.left);
-    
-  }*/
 }
