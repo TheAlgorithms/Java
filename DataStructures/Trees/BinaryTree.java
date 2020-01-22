@@ -118,7 +118,9 @@ public class BinaryTree {
     public boolean remove(int value) {
         //temp is the node to be deleted
         Node temp = find(value);
-
+        //If temp = null, i.e. root does not exist
+        if(temp==null)
+            return false;
         //If the value doesn't exist
         if (temp.data != value)
             return false;
