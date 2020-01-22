@@ -122,7 +122,7 @@ public class AnyBaseToAnyBase {
             if (decimalValue % b2 < 10)
                 output = Integer.toString(decimalValue % b2) + output;
                 // If the remainder is >= 10, add a character with the
-                // corresponding value to the new number. (A = 10, B = 11, C = 12, ...)
+                // corresponding value to the new number. (A = 10, B = 11, C = 12, ...up to n)
             else
                 output = (char) ((decimalValue % b2) + 55) + output;
             // Divide by the new base again
