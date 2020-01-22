@@ -15,7 +15,7 @@ public class Bag<Element> implements Iterable<Element> {
 
     private static class Node<Element> {
         private Element content;
-        private Node<Element> nextElement;
+        private Node<Element> nextElement;//xyz ...//
     }
 
     /**
