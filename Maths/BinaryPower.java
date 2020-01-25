@@ -32,8 +32,8 @@ public class Main
 	public static void main(String args[])
 	{
 		assert binPower(2, 0) == Math.pow(2, 0); // == 1
-        assert binPower(0, 2) == Math.pow(0, 2); // == 0
-        assert binPower(2, 10) == Math.pow(2, 10); // == 1024
-        assert binPower(10, 2) == Math.pow(10, 2); // == 100
+		assert binPower(0, 2) == Math.pow(0, 2); // == 0
+		assert binPower(2, 10) == Math.pow(2, 10); // == 1024
+		assert binPower(10, 2) == Math.pow(10, 2); // == 100
 	}
 }
