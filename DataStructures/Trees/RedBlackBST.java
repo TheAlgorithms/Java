@@ -309,6 +309,7 @@ public class RedBlackBST {
             printTreepre(root);
             break;
         }
+        scan.close();
     }
 
     public void deleteDemo() {
@@ -329,5 +330,6 @@ public class RedBlackBST {
         printTree(root);
         System.out.println("Pre order");
         printTreepre(root);
+        scan.close();
     }
 }

@@ -52,6 +52,7 @@ public class AnyBaseToAnyBase {
             }
         }
         System.out.println(base2base(n, b1, b2));
+        in.close();
     }
 
     /**

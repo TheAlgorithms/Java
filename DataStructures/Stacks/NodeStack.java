@@ -5,6 +5,8 @@
 * @author Kyler Smith, 2017
 */
 
+package DataStructures.Stacks;
+
 
 public class NodeStack<Item> {
 

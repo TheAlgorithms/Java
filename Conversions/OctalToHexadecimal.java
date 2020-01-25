@@ -59,6 +59,7 @@ public class OctalToHexadecimal {
         // Pass the decimla number to function and get converted Hex form of the number
         String hex = DecimalToHex(decimal);
         System.out.println("The Hexadecimal equivalant is: " + hex);
+        input.close();
     }
 }
 

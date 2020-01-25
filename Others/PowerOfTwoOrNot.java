@@ -20,6 +20,7 @@ public class PowerOfTwoOrNot {
         } else {
             System.out.println("Number is not a power of two");
         }
+        sc.close();
     }
 
 

@@ -10,7 +10,6 @@ class Cycle {
     private int[][] adjacencyMatrix;
     private boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
-    private boolean[] finalCycles;
 
     public Cycle() {
         Scanner in = new Scanner(System.in);
@@ -34,7 +33,7 @@ class Cycle {
             end = in.nextInt();
             adjacencyMatrix[start][end] = 1;
         }
-
+        in.close();
     }
 
     public void start() {

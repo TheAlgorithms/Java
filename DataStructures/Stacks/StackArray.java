@@ -9,6 +9,9 @@
  *
  * @author Unknown
  */
+
+package DataStructures.Stacks;
+
 public class StackArray {
 
     /**
