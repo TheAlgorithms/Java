@@ -1,6 +1,6 @@
 package Others;
 
-import java.util.Array-List;
+import java.util.ArrayList;
 
 /**
  * @author Dekas Dimitrios
