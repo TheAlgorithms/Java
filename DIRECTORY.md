@@ -135,6 +135,7 @@
 ## Others
   * [Abecedarian](https://github.com/TheAlgorithms/Java/blob/master/Others/Abecedarian.java)
   * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Others/Armstrong.java)
+  * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
   * [BrianKernighanAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Others/BrianKernighanAlgorithm.java)
   * [CountChar](https://github.com/TheAlgorithms/Java/blob/master/Others/CountChar.java)
   * [CountWords](https://github.com/TheAlgorithms/Java/blob/master/Others/CountWords.java)
@@ -144,6 +145,7 @@
   * [Dijkstra](https://github.com/TheAlgorithms/Java/blob/master/Others/Dijkstra.java)
   * [EulersFunction](https://github.com/TheAlgorithms/Java/blob/master/Others/EulersFunction.java)
   * [FibToN](https://github.com/TheAlgorithms/Java/blob/master/Others/FibToN.java)
+  * [FirstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/FirstFit.java)
   * [FloydTriangle](https://github.com/TheAlgorithms/Java/blob/master/Others/FloydTriangle.java)
   * [GuassLegendre](https://github.com/TheAlgorithms/Java/blob/master/Others/GuassLegendre.java)
   * [InsertDeleteInArray](https://github.com/TheAlgorithms/Java/blob/master/Others/InsertDeleteInArray.java)
@@ -167,6 +169,7 @@
   * [StackPostfixNotation](https://github.com/TheAlgorithms/Java/blob/master/Others/StackPostfixNotation.java)
   * [TopKWords](https://github.com/TheAlgorithms/Java/blob/master/Others/TopKWords.java)
   * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/Others/TowerOfHanoi.java)
+  * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/WorstFit.java)
 
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
