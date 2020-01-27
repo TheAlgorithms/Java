@@ -5,12 +5,10 @@ jobs:
   update_directory_md:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - shell: python  # Legacy Python 2.7.15 :-(
-        run: import sys ; print("Python {}.{}.{}".format(*sys.version_info))
-      - shell: bash -c "$RUNNER_TOOL_CACHE/Python/3.8.0/x64/python {0}"
-        run: import sys ; print("Python {}.{}.{}".format(*sys.version_info))
-      - shell: bash -c "$RUNNER_TOOL_CACHE/Python/3.8.0/x64/python {0}"
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@master
+      - name: update_directory_md
+        shell: python
         run: |
             import os
             from typing import Iterator
