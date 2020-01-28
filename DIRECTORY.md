@@ -142,7 +142,6 @@
   * [CountWords](https://github.com/TheAlgorithms/Java/blob/master/Others/CountWords.java)
   * [CRC32](https://github.com/TheAlgorithms/Java/blob/master/Others/CRC32.java)
   * [CRCAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Others/CRCAlgorithm.java)
-  * [Dijkshtra](https://github.com/TheAlgorithms/Java/blob/master/Others/Dijkshtra.java)
   * [Dijkstra](https://github.com/TheAlgorithms/Java/blob/master/Others/Dijkstra.java)
   * [EulersFunction](https://github.com/TheAlgorithms/Java/blob/master/Others/EulersFunction.java)
   * [FibToN](https://github.com/TheAlgorithms/Java/blob/master/Others/FibToN.java)
