@@ -80,5 +80,6 @@ public class Dijkshtra {
                 System.out.print("-1" + " ");
             }
         }
+        in.close();
     }
 }

@@ -53,6 +53,7 @@ class DecimalToBinary {
             n >>= 1;
         }
         System.out.println("\tBinary number: " + b);
+        input.close();
     }
 
 }

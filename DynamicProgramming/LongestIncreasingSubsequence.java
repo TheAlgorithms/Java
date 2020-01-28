@@ -17,6 +17,7 @@ public class LongestIncreasingSubsequence {
         }
 
         System.out.println(LIS(ar));
+        sc.close();
     }
 
     private static int upperBound(int[] ar, int l, int r, int key) {

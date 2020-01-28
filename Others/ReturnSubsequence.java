@@ -13,6 +13,7 @@ public class ReturnSubsequence {
         for (int i = 0; i < subsequence.length; i++) {
             System.out.println(subsequence[i]);
         }
+        s.close();
     }
 
     /**

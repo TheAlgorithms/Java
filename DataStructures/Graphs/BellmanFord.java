@@ -100,6 +100,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
                 System.out.println();
             }
         }
+        sc.close();
     }
     /**
      * @param source Starting vertex

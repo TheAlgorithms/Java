@@ -44,5 +44,6 @@ public class InsertDeleteInArray {
         }
         for (i = 0; i < size2 - 1; i++)
             System.out.println(b[i]);
+        s.close();
     }
 }

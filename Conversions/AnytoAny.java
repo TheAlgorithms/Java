@@ -24,6 +24,7 @@ public class AnytoAny {
             dec /= db;
         }
         System.out.println(dn);
+        scn.close();
     }
 
 }
