@@ -309,6 +309,7 @@ public class RedBlackBST {
             printTreepre(root);
             break;
         }
+        scan.close();
     }
 
     public void deleteDemo() {

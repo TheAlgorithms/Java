@@ -67,6 +67,7 @@ class Schedule {
             processes.add(p);
             burstAll += p.burstTime;
         }
+        in.close();
 
     }
 

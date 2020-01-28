@@ -82,6 +82,7 @@ public class TopKWords {
         for (int i = 0; i < k; i++) {
             System.out.println(list.get(list.size() - i - 1));
         }
+        input.close();
     }
 }
 

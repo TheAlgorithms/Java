@@ -20,6 +20,7 @@ public class PowerOfTwoOrNot {
         } else {
             System.out.println("Number is not a power of two");
         }
+        sc.close();
     }
 
 
@@ -32,5 +33,4 @@ public class PowerOfTwoOrNot {
     public static boolean checkIfPowerOfTwoOrNot(int number) {
         return number != 0 && ((number & (number - 1)) == 0);
     }
-
 }

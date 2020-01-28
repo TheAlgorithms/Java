@@ -42,6 +42,7 @@ public class Main {
 					return;
 				}	
 			}
+			In.close();
 		}
 	}
 }

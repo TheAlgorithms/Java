@@ -14,6 +14,8 @@ public class RootPrecision {
         // P is precision value for eg - P is 3 in 2.564 and 5 in 3.80870.
         int P = scn.nextInt();
         System.out.println(squareRoot(N, P));
+
+        scn.close();
     }
 
     public static double squareRoot(int N, int P) {
