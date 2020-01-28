@@ -1,4 +1,4 @@
-package maths;
+package Maths;
 
 //POWER (exponentials) Examples (a^b)
 public class Pow {
