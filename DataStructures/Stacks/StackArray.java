@@ -1,3 +1,5 @@
+package DataStructures.Stacks;
+
 /**
  * This class implements a Stack using a regular array.
  * <p>
