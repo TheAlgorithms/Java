@@ -14,7 +14,7 @@ class Graph<E extends Comparable<E>> {
     class Node {
         E name;
 
-        public Node(E name) {
+        public Node(final E name) {
             this.name = name;
         }
     }
@@ -22,7 +22,7 @@ class Graph<E extends Comparable<E>> {
     class Edge {
         Node startNode, endNode;
 
-        public Edge(Node startNode, Node endNode) {
+        public Edge(final Node startNode, final Node endNode) {
             this.startNode = startNode;
             this.endNode = endNode;
         }
@@ -43,9 +43,9 @@ class Graph<E extends Comparable<E>> {
      * @param startNode the starting Node from the edge
      * @param endNode   the ending Node from the edge
      */
-    public void addEdge(E startNode, E endNode) {
+    public void addEdge(final E startNode, final E endNode) {
         Node start = null, end = null;
-        for (Node node : nodeList) {
+        for (final Node node : nodeList) {
             if (startNode.compareTo(node.name) == 0) {
                 start = node;
             } else if (endNode.compareTo(node.name) == 0) {
@@ -74,9 +74,9 @@ class Graph<E extends Comparable<E>> {
      */
     public int countGraphs() {
         int count = 0;
-        Set<Node> markedNodes = new HashSet<Node>();
+        final Set<Node> markedNodes = new HashSet<Node>();
 
-        for (Node n : nodeList) {
+        for (final Node n : nodeList) {
             if (!markedNodes.contains(n)) {
                 markedNodes.add(n);
                 markedNodes.addAll(depthFirstSearch(n, new ArrayList<Node>()));
@@ -94,9 +94,9 @@ class Graph<E extends Comparable<E>> {
      * @param visited A list of already visited nodes in the depth first search
      * @return returns a set of visited nodes
      */
-    public ArrayList<Node> depthFirstSearch(Node n, ArrayList<Node> visited) {
+    public ArrayList<Node> depthFirstSearch(final Node n, final ArrayList<Node> visited) {
         visited.add(n);
-        for (Edge e : edgeList) {
+        for (final Edge e : edgeList) {
             if (e.startNode.equals(n) && !visited.contains(e.endNode)) {
                 depthFirstSearch(e.endNode, visited);
             }
@@ -107,8 +107,8 @@ class Graph<E extends Comparable<E>> {
 
 public class ConnectedComponent {
 
-    public static void main(String[] args) {
-        Graph graphChars = new Graph();
+    public static void main(final String[] args) {
+        final Graph graphChars = new Graph();
 
         // Graph 1
         graphChars.addEdge('a', 'b');
@@ -123,7 +123,7 @@ public class ConnectedComponent {
 
         graphChars.addEdge('w', 'w');
 
-        Graph graphInts = new Graph();
+        final Graph graphInts = new Graph();
 
         // Graph 2
         graphInts.addEdge(1, 2);

@@ -13,6 +13,7 @@ public class PrimeCheck {
         } else {
             System.out.println(n + " is not a prime number");
         }
+        scanner.close();
     }
 
     /***
