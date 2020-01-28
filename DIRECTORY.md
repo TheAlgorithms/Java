@@ -5,6 +5,7 @@
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
   * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/ColumnarTranspositionCipher.java)
   * [RSA](https://github.com/TheAlgorithms/Java/blob/master/ciphers/RSA.java)
+  * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/SimpleSubstitutionCipher.java)
   * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Vigenere.java)
 
 ## Conversions
