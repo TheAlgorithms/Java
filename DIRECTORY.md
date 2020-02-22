@@ -4,6 +4,7 @@
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AESEncryption.java)
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
   * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/ColumnarTranspositionCipher.java)
+  * [HuffmanCoding](https://github.com/TheAlgorithms/Java/blob/master/ciphers/HuffmanCoding.java)
   * [RSA](https://github.com/TheAlgorithms/Java/blob/master/ciphers/RSA.java)
   * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/SimpleSubstitutionCipher.java)
   * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Vigenere.java)
