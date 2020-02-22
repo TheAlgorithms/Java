@@ -64,7 +64,6 @@ public class HexToOct {
         // convert decimal to octal
         octalnum = decimal2octal(decnum);
         System.out.println("Number in octal: " + octalnum);
-
-
+        scan.close();
     }
 }

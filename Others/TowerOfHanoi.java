@@ -22,5 +22,6 @@ class TowerOfHanoi {
         Scanner scanner = new Scanner(System.in);
         int numberOfDiscs = scanner.nextInt(); //input of number of discs on pole 1
         shift(numberOfDiscs, "Pole1", "Pole2", "Pole3"); //Shift function called
+        scanner.close();
     }
 }

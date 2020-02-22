@@ -145,12 +145,19 @@ public class BinaryTree {
             successor.left.parent = successor;
 
             //If the successor has a right child, the child's grandparent is it's new parent
-            if (successor.right != null && successor.parent != temp) {
-                successor.right.parent = successor.parent;
-                successor.parent.left = successor.right;
-                successor.right = temp.right;
-                successor.right.parent = successor;
+            if(successor.parent!=temp){
+                if(successor.right!=null){
+                    successor.right.parent = successor.parent;
+                    successor.parent.left = successor.right;
+                    successor.right = temp.right;
+                    successor.right.parent = successor;
+                }else{
+                    successor.parent.left=null;
+                    successor.right=temp.right;
+                    successor.right.parent=successor;
+                }
             }
+
             if (temp == root) {
                 successor.parent = null;
                 root = successor;

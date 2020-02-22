@@ -53,5 +53,6 @@ public class MinimizingLateness {
         System.out.println();
         System.out.println("Output Data : ");
         System.out.println(lateness);
+        in.close();
     }
 }

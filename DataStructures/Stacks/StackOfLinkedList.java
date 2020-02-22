@@ -1,5 +1,7 @@
 package DataStructures.Stacks;
 
+import java.util.NoSuchElementException;
+
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
@@ -17,12 +19,12 @@ class StackOfLinkedList {
         stack.push(4);
         stack.push(5);
 
-        stack.printStack();
+        System.out.println(stack);
 
         System.out.println("Size of stack currently is: " + stack.getSize());
 
-        stack.pop();
-        stack.pop();
+        assert stack.pop() == 5;
+        assert stack.pop() == 4;
 
         System.out.println("Top element of stack currently is: " + stack.peek());
     }
@@ -48,65 +50,95 @@ class Node {
 
 class LinkedListStack {
 
-    Node head = null;
+    /**
+     * Top of stack
+     */
+    Node head;
 
-    public void push(int x) {
-        Node n = new Node(x);
-        if (head == null) {
-            head = n;
-        } else {
-            Node temp = head;
-            n.next = temp;
-            head = n;
-        }
+    /**
+     * Size of stack
+     */
+    private int size;
+
+    /**
+     * Init properties
+     */
+    public LinkedListStack() {
+        head = null;
+        size = 0;
     }
 
-    public void pop() {
-        if (head == null) {
-            System.out.println("Empty stack. Nothing to pop");
-        }
+    /**
+     * Add element at top
+     *
+     * @param x to be added
+     * @return <tt>true</tt> if add successfully
+     */
+    public boolean push(int x) {
+        Node newNode = new Node(x);
+        newNode.next = head;
+        head = newNode;
+        size++;
+        return true;
+    }
 
-        Node temp = head;
+    /**
+     * Pop element at top of stack
+     *
+     * @return element at top of stack
+     * @throws NoSuchElementException if stack is empty
+     */
+    public int pop() {
+        if (size == 0) {
+            throw new NoSuchElementException("Empty stack. Nothing to pop");
+        }
+        Node destroy = head;
         head = head.next;
-        System.out.println("Popped element is: " + temp.data);
+        int retValue = destroy.data;
+        destroy = null; // clear to let GC do it's work
+        size--;
+        return retValue;
     }
 
+    /**
+     * Peek element at top of stack
+     *
+     * @return element at top of stack
+     * @throws NoSuchElementException if stack is empty
+     */
     public int peek() {
-        if (head == null) {
-            return -1;
+        if (size == 0) {
+            throw new NoSuchElementException("Empty stack. Nothing to pop");
         }
         return head.data;
     }
 
-    public void printStack() {
-        Node temp = head;
-        System.out.println("Stack is printed as below: ");
-        while (temp != null) {
-            if (temp.next == null) {
-                System.out.print(temp.data);
-            } else {
-                System.out.print(temp.data + " -> ");
-            }
-            temp = temp.next;
+    @Override
+    public String toString() {
+        Node cur = head;
+        StringBuilder builder = new StringBuilder();
+        while (cur != null) {
+            builder.append(cur.data).append("->");
+            cur = cur.next;
         }
-        System.out.println();
+        return builder.replace(builder.length() - 2, builder.length(), "").toString();
     }
 
+    /**
+     * Check if stack is empty
+     *
+     * @return <tt>true</tt> if stack is empty, otherwise <tt>false</tt>
+     */
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 
+    /**
+     * Return size of stack
+     *
+     * @return size of stack
+     */
     public int getSize() {
-        if (head == null)
-            return 0;
-        else {
-            int size = 1;
-            Node temp = head;
-            while (temp.next != null) {
-                temp = temp.next;
-                size++;
-            }
-            return size;
-        }
+        return size;
     }
 }

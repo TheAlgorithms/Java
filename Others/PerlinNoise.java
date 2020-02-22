@@ -162,5 +162,6 @@ public class PerlinNoise {
 
             System.out.println();
         }
+        in.close();
     }
 }

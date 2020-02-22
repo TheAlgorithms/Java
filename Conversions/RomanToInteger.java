@@ -13,6 +13,7 @@ public class RomanToInteger {
         put('D', 500);
         put('M', 1000);
     }};
+    //Roman Number = Roman Numerals
 
     /**
      * This function convert Roman number into Integer

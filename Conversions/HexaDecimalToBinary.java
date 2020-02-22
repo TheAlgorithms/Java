@@ -1,5 +1,7 @@
 package Conversions;
 
+//Hex [0-9],[A-F] -> Binary [0,1]
+
 public class HexaDecimalToBinary {
 
     private final int LONG_BITS = 8;
@@ -9,7 +11,7 @@ public class HexaDecimalToBinary {
         int conHex = Integer.parseInt(numHex, 16);
         // Hex a Binary:
         String binary = Integer.toBinaryString(conHex);
-        // Presentation:
+        // Output:
         System.out.println(numHex + " = " + completeDigits(binary));
     }
 

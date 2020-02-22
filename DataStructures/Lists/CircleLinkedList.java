@@ -44,22 +44,20 @@ public class CircleLinkedList<E> {
             //catching errors
             throw new IndexOutOfBoundsException("position cannot be greater than size or negative");
         }
-        Node<E> iterator = head.next;
         //we need to keep track of the element before the element we want to remove we can see why bellow.
         Node<E> before = head;
         for (int i = 1; i <= pos; i++) {
-            iterator = iterator.next;
             before = before.next;
         }
-        E saved = iterator.value;
+        Node<E> destroy = before.next;
+        E saved = destroy.value;
         // assigning the next reference to the the element following the element we want to remove... the last element will be assigned to the head.
-        before.next = iterator.next;
+        before.next = before.next.next;
         // scrubbing
-        iterator.next = null;
-        iterator.value = null;
+        destroy = null;
+        size--;
         return saved;
 
     }
 
 }
-
