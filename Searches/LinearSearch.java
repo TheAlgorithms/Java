@@ -50,6 +50,9 @@ public class LinearSearch implements SearchAlgorithm {
         //the element that should be found
         Integer shouldBeFound = integers[r.nextInt(size - 1)];
 
+        
+        
+        
         LinearSearch search = new LinearSearch();
         int atIndex = search.find(integers, shouldBeFound);
 
