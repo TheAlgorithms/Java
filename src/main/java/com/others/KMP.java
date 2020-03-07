@@ -1,4 +1,4 @@
-package Others;
+package com.others;
 
 /**
  * Implementation of Knuth–Morris–Pratt algorithm
