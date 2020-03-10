@@ -88,8 +88,7 @@ public class PrimMinimumSpanningTree {
             int u = findMinimumKey(key, mstSet);
             mstSet[u] = true;
             for (int i = 0; i < _numberOfVertices; i++)
-                if (graph[u][i] != 0 && !mstSet[i] &&
-                        graph[u][i] < key[i]) {
+                if (graph[u][i] != 0 && !mstSet[i] && graph[u][i] < key[i]) {
                     parent[i] = u;
                     key[i] = graph[u][i];
                 }

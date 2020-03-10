@@ -4,7 +4,7 @@ package com.dataStructures.graphs;
  * Finds shortest distances between every pair of vertices in a given weighted directed graph.
  */
 public class FloydWarshall {
-    private int _distanceMatrix[][];
+    private int[][] _distanceMatrix;
     private int _numberOfVertices;
     final static int INF = 99999;
 
