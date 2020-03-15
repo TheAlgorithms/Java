@@ -19,42 +19,38 @@ public class Stack<E> implements Serializable {
     /**
      * Position of tail in stack
      */
-
     private int tail = -1;
 
     /**
      * Size of stack at any given time
      */
-
     private int size;
 
     /**
      * Uninitialized array to hold stack elements.
-     * WIll be initialized with initial capacity once the object is created
+     * Will be initialized with initial capacity once the object is created
      */
-    private Object[] elements;
+    private E[] elements;
 
     /**
      * No argument to create stack object with initial capacity
      */
+    @SuppressWarnings("unchecked")
     public Stack() {
-        elements = new Object[INITIAL_CAPACITY];
+        elements = (E[]) new Object[INITIAL_CAPACITY];
     }
 
     /**
      * Method to check if the given stack is empty or not
      */
-
     public boolean empty() {
         return elements == null || size == 0;
     }
 
-
     /**
      * Method to check the element on head without removing it
      */
-
-    public Object peek() {
+    public E peek() {
         if (empty()) {
             throw new EmptyStackException();
         }
@@ -65,13 +61,12 @@ public class Stack<E> implements Serializable {
     /**
      * Method to remove the top element from stack
      */
-
-    public Object pop() {
+    public E pop() {
         if (empty()) {
             throw new EmptyStackException();
         }
 
-        Object removedElement = elements[tail];
+        E removedElement = elements[tail];
         tail--;
         size--;
         return removedElement;
@@ -80,29 +75,23 @@ public class Stack<E> implements Serializable {
     /**
      * Method to add element to stack
      */
-    public Object push(Object e) {
+    @SuppressWarnings("unchecked")
+    public void push(E e) {
 
-        boolean isSuccess = false;
-        if (tail < (INITIAL_CAPACITY - 1)) {
-            tail++;
-            elements[tail] = e;
-        } else {
-            Object[] extendedElements = new Object[INITIAL_CAPACITY + EXTENDED_CAPACITY];
-            System.arraycopy(elements, 0, extendedElements, 0, (tail + 1));
+        tail = tail + 1;
+        if (tail >= INITIAL_CAPACITY) {
+            E[] extendedElements = (E[]) new Object[INITIAL_CAPACITY + EXTENDED_CAPACITY];
+            System.arraycopy(elements, 0, extendedElements, 0, tail);
             elements = extendedElements;
-            tail++;
-            elements[tail] = e;
         }
-        size++;
-        return e;
-
+        elements[tail] = e;
+        size = size + 1;
     }
 
     /**
      * Method to search for an element in stack
      */
-
-    public int search(Object o) {
+    public int search(E o) {
 
         int index = -1;
         boolean found = false;
@@ -111,7 +100,7 @@ public class Stack<E> implements Serializable {
         }
 
         for (int i = 0; i < size(); i++) {
-            if (elements[i] == o) {
+            if (elements[i].equals(o)) {
                 index = i;
                 found = true;
                 break;
