@@ -8,7 +8,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.xml.bind.DatatypeConverter;
 
 /**
  * This example program shows how AES encryption and decryption can be done in
@@ -19,6 +18,8 @@ import javax.xml.bind.DatatypeConverter;
  */
 public class AESEncryption {
 
+
+	private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 	/**
 	 * 1. Generate a plain text for encryption 2. Get a secret key (printed in
 	 * hexadecimal form). In actual use this must by encrypted and kept safe. The
@@ -103,12 +104,22 @@ public class AESEncryption {
 
 	/**
 	 * Convert a binary byte array into readable hex form
-	 * 
+	 * Old library is deprecated on OpenJdk 11 and 
+	 * this is faster regarding other solution is using StringBuilder
+	 * Credit
+	 * {@link 
+	 * https://stackoverflow.com/questions/9655181/how-to-convert-a-byte-array-to-a-hex-string-in-java/9855338#9855338}
 	 * @param hash
 	 *            (in binary)
 	 * @return hexHash
 	 */
-	private static String bytesToHex(byte[] hash) {
-		return DatatypeConverter.printHexBinary(hash);
+	public static String bytesToHex(byte[] bytes) {
+	    char[] hexChars = new char[bytes.length * 2];
+	    for (int j = 0; j < bytes.length; j++) {
+	        int v = bytes[j] & 0xFF;
+	        hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+	        hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+	    }
+	    return new String(hexChars);
 	}
 }
