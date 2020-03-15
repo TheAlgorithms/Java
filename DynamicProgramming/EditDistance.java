@@ -1,5 +1,6 @@
 package DynamicProgramming;
-
+import org.checkerframework.common.value.qual.*;
+import org.checkerframework.checker.index.qual.*;
 /**
  * A DynamicProgramming based solution for Edit Distance problem In Java
  * Description of Edit Distance with an Example:
@@ -22,11 +23,12 @@ import java.util.Scanner;
 
 public class EditDistance {
 
-    public static int minDistance(String word1, String word2) {
-        int len1 = word1.length();
-        int len2 = word2.length();
+    @SuppressWarnings({"cast.unsafe", "array.access.unsafe.high"})
+    public static int minDistance(@MinLen(0) String word1, @MinLen(0) String word2) {
+        @NonNegative int len1 = word1.length();
+        @NonNegative int len2 = word2.length();
         // len1+1, len2+1, because finally return dp[len1][len2]
-        int[][] dp = new int[len1 + 1][len2 + 1];
+        int @MinLen(1) [] @MinLen(1) [] dp = (int @MinLen(1) [] @MinLen(1) [])new int[len1 + 1][len2 + 1];
      	/* If second string is empty, the only option is to
    	  insert all characters of first string into second*/
         for (int i = 0; i <= len1; i++) {
@@ -35,7 +37,7 @@ public class EditDistance {
      	/* If first string is empty, the only option is to
    	  insert all characters of second string into first*/
         for (int j = 0; j <= len2; j++) {
-            dp[0][j] = j;
+            dp[0][ (@IndexFor("dp[0]") int) j] = j;
         }
         //iterate though, and check last char
         for (int i = 0; i < len1; i++) {
@@ -45,11 +47,11 @@ public class EditDistance {
                 //if last two chars equal
                 if (c1 == c2) {
                     //update dp value for +1 length
-                    dp[i + 1][j + 1] = dp[i][j];
+                    dp[i + 1] [j + 1] = dp[i][(@IndexFor("dp[i]") int)j];
                 } else {
 			/* if two characters are different ,
 			then take the minimum of the various operations(i.e insertion,removal,substitution)*/
-                    int replace = dp[i][j] + 1;
+                    int replace = dp[i][(@IndexFor("dp[i]") int)j] + 1;
                     int insert = dp[i][j + 1] + 1;
                     int delete = dp[i + 1][j] + 1;
 

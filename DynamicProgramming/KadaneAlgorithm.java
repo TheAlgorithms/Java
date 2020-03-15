@@ -1,5 +1,6 @@
 package DynamicProgramming;
-
+import org.checkerframework.common.value.qual.*;
+import org.checkerframework.checker.index.qual.*;
 import java.util.Scanner;
 
 /**
@@ -43,13 +44,16 @@ public class KadaneAlgorithm {
         Scanner sc = new Scanner(System.in);
         int n, arr[], i;
         n = sc.nextInt();
-        arr = new int[n];
-        for (i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+        if(n>=0)
+        {
+            arr = new int[n];
+            for (i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            int maxContSum = largestContiguousSum(arr);
+            System.out.println(maxContSum);
+            sc.close();
         }
-        int maxContSum = largestContiguousSum(arr);
-        System.out.println(maxContSum);
-        sc.close();
     }
 
 }
