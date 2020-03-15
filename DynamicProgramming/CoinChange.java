@@ -29,7 +29,7 @@ public class CoinChange {
     public static int change(@Positive int[] coins,@NonNegative int amount) {
 
         int[] combinations =(int @MinLen(1) []) new int[amount + 1];
-        combinations[0] = 1;
+        combinations[0] = 1; /* This Line gives cast.unsafe warning because the compiler is unable to statically verify that the length of the array "combinations" is greater than 1*/
 
         for (@Positive int coin : coins) {
             for (int i = coin; i < amount + 1; i++) {
@@ -54,7 +54,7 @@ public class CoinChange {
         //minimumCoins[i] will store the minimum coins needed for amount i
         int[] minimumCoins = (int @MinLen(1) [])new int[amount + 1];
 
-        minimumCoins[0] = 0;
+        minimumCoins[0] = 0;/* This Line gives cast.unsafe warning because the compiler is unable to statically verify that the length of the array "minimumCoins" is greater than 1*/
 
         for (int i = 1; i <= amount; i++) {
             minimumCoins[i] = Integer.MAX_VALUE;

@@ -9,7 +9,7 @@ public class EggDropping {
     // min trials with n eggs and m floors 
     @SuppressWarnings({"cast.unsafe" , "expression.unparsable.type.invalid", "array.access.unsafe.high"})
     private static int minTrials(@Positive int n, @Positive int m) {
-
+        /* The below Line gives cast.unsafe warning because the compiler is unable to statically verify that the length of the array "eggFloor" and "eggFloor[i]" is greater than 1*/
         int @MinLen(2) [] @MinLen(2) [] eggFloor = (int @MinLen(2) [] @MinLen(2) [])new int[n + 1][m + 1];
         int result, x;
 
@@ -29,6 +29,7 @@ public class EggDropping {
             for (int j = 2; j <= m; j++) {
                 eggFloor[i][(@IndexFor("eggFloor[i]") int)j] = Integer.MAX_VALUE;
                 for (x = 1; x <= j; x++) {
+                    /* This Line gives array.access.unsafe.high, expression.unparsable.type.invalid warning because the compiler is unable to statically verify that i-1 is less than length of the array "eggFloor"*/
                     result = 1 + Math.max(eggFloor[i - 1][(@IndexFor("eggFloor[i-1]") @NonNegative int)(x - 1)], eggFloor[i][(@IndexFor("eggFloor[i]") @NonNegative int)(j - x)]);
 
                     // choose min of all values for particular x

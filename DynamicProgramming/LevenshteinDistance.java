@@ -17,6 +17,8 @@ public class LevenshteinDistance {
         }
     }
     @SuppressWarnings({"cast.unsafe", "array.access.unsafe.high"})
+        /* Cast unsafe arrises whenever the compiler is unable to prove the code statically.*/
+    // array.access.unsafe.high arrises whenever the compiler finds an expression used to index and cannot prove it statically whether the index is valid or not.
     private static int calculate_distance(String a, String b) {
         @Positive int len_a = a.length() + 1;
         @Positive int len_b = b.length() + 1;

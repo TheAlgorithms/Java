@@ -28,6 +28,7 @@ public class EditDistance {
         @NonNegative int len1 = word1.length();
         @NonNegative int len2 = word2.length();
         // len1+1, len2+1, because finally return dp[len1][len2]
+        /* The below Line gives cast.unsafe warning because the compiler is unable to statically verify that the length of the array "dp" and "dp[i]" is greater than 1*/
         int @MinLen(1) [] @MinLen(1) [] dp = (int @MinLen(1) [] @MinLen(1) [])new int[len1 + 1][len2 + 1];
      	/* If second string is empty, the only option is to
    	  insert all characters of first string into second*/
@@ -47,6 +48,7 @@ public class EditDistance {
                 //if last two chars equal
                 if (c1 == c2) {
                     //update dp value for +1 length
+                    /* This Line gives array.access.unsafe.high warning because the compiler is unable to statically verify that i+1 is less than length of the array "dp"*/
                     dp[i + 1] [j + 1] = dp[i][(@IndexFor("dp[i]") int)j];
                 } else {
 			/* if two characters are different ,

@@ -4,6 +4,8 @@ import org.checkerframework.checker.index.qual.*;
 
 class LongestCommonSubsequence {
     @SuppressWarnings({"assignment.type.incompatible", "cast.unsafe", "array.access.unsafe.high"})
+    /* Cast unsafe arrises whenever the compiler is unable to prove the code statically.*/
+    // array.access.unsafe.high arrises whenever the compiler finds an expression used to index and cannot prove it statically whether the index is valid or not.
     public static String getLCS(String str1, String str2) {
 
         //At least one string is null

@@ -29,9 +29,11 @@ public class FordFulkerson {
 
         System.out.println("Max capacity in networkFlow : " + networkFlow(0, 5));
     }
-    @SuppressWarnings({"cast.unsafe"})
+    @SuppressWarnings({"cast.unsafe", "array.access.unsafe.high"})
+    /* Cast unsafe arrises whenever the compiler is unable to prove the code statically.*/
+    // array.access.unsafe.high arrises whenever the compiler finds an expression used to index and cannot prove it statically whether the index is valid or not.
     private static int networkFlow(@NonNegative int source,@NonNegative int sink) {
-        flow = (int @MinLen(6) [] @MinLen(6) [])new int[V][V];
+        flow = new int[V][V];
         int totalFlow = 0;
         while (true) {
             Vector<Integer> parent = new Vector<>(V);
@@ -56,13 +58,13 @@ public class FordFulkerson {
             String printer = "path : ";
             StringBuilder sb = new StringBuilder();
             for (@NonNegative int p = sink; p != source; p = (@NonNegative int) parent.get((@NonNegative int )p)) {
-                amount = Math.min(capacity[parent.get((@NonNegative @IndexFor("DynamicProgramming.FordFulkerson.capacity") int)p)][p] - flow[(@NonNegative @IndexFor("DynamicProgramming.FordFulkerson.flow") int)parent.get(p)][p], amount);
+                amount = Math.min(capacity[(@Positive int)parent.get((@NonNegative @IndexFor("DynamicProgramming.FordFulkerson.capacity") int)p)][p] - flow[(@NonNegative @IndexFor("DynamicProgramming.FordFulkerson.flow") int)parent.get(p)][p], amount);
                 sb.append(p + "-");
             }
             sb.append(source);
             for (@NonNegative int p = sink; p != source; p = (@NonNegative int) parent.get((@NonNegative int )p)) {
-                flow[parent.get(p)][p] += amount;
-                flow[p][parent.get(p)] -= amount;
+                flow[(@Positive int)parent.get(p)][p] += amount;
+                flow[p][(@Positive int)parent.get(p)] -= amount;
             }
             totalFlow += amount;
             printer += sb.reverse() + " / max flow : " + totalFlow;

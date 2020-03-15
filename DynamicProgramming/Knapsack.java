@@ -7,6 +7,8 @@ import org.checkerframework.checker.index.qual.*;
 
 public class Knapsack {
     @SuppressWarnings({"cast.unsafe", "array.access.unsafe.high"})
+        /* Cast unsafe arrises whenever the compiler is unable to prove the code statically.*/
+    // array.access.unsafe.high arrises whenever the compiler finds an expression used to index and cannot prove it statically whether the index is valid or not.
     private static int knapSack(@Positive int W,@Positive int wt[],@Positive @SameLen("#2") int val[], @Positive @SameLen("#2") int n) throws IllegalArgumentException {
         if(wt == null || val == null)
             throw new IllegalArgumentException();
@@ -29,6 +31,8 @@ public class Knapsack {
     }
 
     @SuppressWarnings({"assignment.type.incompatible", "cast.unsafe"})
+        /* Cast unsafe arrises whenever the compiler is unable to prove the code statically.*/
+    // array.access.unsafe.high arrises whenever the compiler finds an expression used to index and cannot prove it statically whether the index is valid or not.
     // Driver program to test above function
     public static void main(String args[]) {
         @Positive int val @ArrayLen(3) [] = new int[]{50, 100, 130};
