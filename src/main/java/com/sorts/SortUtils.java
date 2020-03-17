@@ -38,7 +38,7 @@ final class SortUtils {
      * @param right is a right flip border of the array
      */
     static <T extends Comparable<T>> void flip(T[] array, int left, int right) {
-        while (left <= right) {
+        while (left < right) {
             swap(array, left++, right--);
         }
     }
