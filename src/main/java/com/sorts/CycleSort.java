@@ -15,7 +15,7 @@ public class CycleSort {
         int count = 0;
 
         // Traverse array and put the elements on their respective right places
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 0; i < n - 1; i++) {
 
             // Initialize item as the starting point
             T item = arr[i];
