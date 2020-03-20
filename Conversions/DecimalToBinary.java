@@ -35,6 +35,7 @@ class DecimalToBinary {
             n /= 2;
         } //converting decimal to binary
         System.out.println("\tBinary number: " + b);
+        input.close();
     }
 
     /**
