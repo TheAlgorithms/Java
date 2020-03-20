@@ -34,6 +34,7 @@ class Cycle {
             end = in.nextInt();
             adjacencyMatrix[start][end] = 1;
         }
+        in.close();
 
     }
 
