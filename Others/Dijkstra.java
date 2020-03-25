@@ -14,6 +14,8 @@ package Others;
  */
 
 import java.util.*;
+import org.checkerframework.common.value.qual.*;
+import org.checkerframework.checker.index.qual.*;
 
 public class Dijkstra {
     private static final Graph.Edge[] GRAPH = {
@@ -47,7 +49,7 @@ public class Dijkstra {
 
 class Graph {
     // mapping of vertex names to Vertex objects, built from a set of Edges
-    private final Map<String, Vertex> graph;
+    private final Map<@NonNull String, Vertex> graph;
 
     /**
      * One edge of the graph (only used by Graph constructor)
@@ -56,7 +58,7 @@ class Graph {
         public final String v1, v2;
         public final int dist;
 
-        public Edge(String v1, String v2, int dist) {
+        public Edge(@NonNull String v1, @NonNull String v2, @NonNegative int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
@@ -71,7 +73,7 @@ class Graph {
         // MAX_VALUE assumed to be infinity
         public int dist = Integer.MAX_VALUE;
         public Vertex previous = null;
-        public final Map<Vertex, Integer> neighbours = new HashMap<>();
+        public final Map<Vertex, @NonNegative Integer> neighbours = new HashMap<>();
 
         public Vertex(String name) {
             this.name = name;
@@ -95,7 +97,7 @@ class Graph {
             return Integer.compare(dist, other.dist);
         }
 
-        @Override
+        @Override 
         public String toString() {
             return "(" + name + ", " + dist + ")";
         }
@@ -104,7 +106,7 @@ class Graph {
     /**
      * Builds a graph from a set of edges
      */
-    public Graph(Edge[] edges) {
+    public Graph(@Positive Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
         // one pass to find all vertices
@@ -123,7 +125,7 @@ class Graph {
     /**
      * Runs dijkstra using a specified source vertex
      */
-    public void dijkstra(String startName) {
+    public void dijkstra(@NonNull String startName) {
         if (!graph.containsKey(startName)) {
             System.err.printf("Graph doesn't contain start vertex \"%s\"\n", startName);
             return;
