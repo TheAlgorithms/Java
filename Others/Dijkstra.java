@@ -56,9 +56,9 @@ class Graph {
      */
     public static class Edge {
         public final String v1, v2;
-        public final int dist;
+        public @NonNegative int dist;
 
-        public Edge(@NonNull String v1, @NonNull String v2, @NonNegative int dist) {
+        public Edge( String v1,  String v2, @NonNegative int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
@@ -106,7 +106,7 @@ class Graph {
     /**
      * Builds a graph from a set of edges
      */
-    public Graph(@Positive Edge[] edges) {
+    public Graph( Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
         // one pass to find all vertices
@@ -125,7 +125,7 @@ class Graph {
     /**
      * Runs dijkstra using a specified source vertex
      */
-    public void dijkstra(@NonNull String startName) {
+    public void dijkstra(String startName) {
         if (!graph.containsKey(startName)) {
             System.err.printf("Graph doesn't contain start vertex \"%s\"\n", startName);
             return;
