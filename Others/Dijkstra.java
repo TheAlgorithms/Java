@@ -58,7 +58,7 @@ class Graph {
         public final String v1, v2;
         public @NonNegative int dist;
 
-        public Edge( String v1,  String v2, @NonNegative int dist) {
+        public Edge(String v1, String v2, @NonNegative int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
@@ -97,7 +97,7 @@ class Graph {
             return Integer.compare(dist, other.dist);
         }
 
-        @Override 
+        @Override
         public String toString() {
             return "(" + name + ", " + dist + ")";
         }
@@ -106,7 +106,7 @@ class Graph {
     /**
      * Builds a graph from a set of edges
      */
-    public Graph( Edge[] edges) {
+    public Graph(Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
         // one pass to find all vertices
