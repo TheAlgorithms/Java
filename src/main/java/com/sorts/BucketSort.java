@@ -2,15 +2,16 @@ package com.sorts;
 
 public class BucketSort {
 
-	/** 
-	 * Performs a bucket sort of an array in which all the elements are
-	 * distributed in different buckets and then each bucket is then sorted individually.
+	/**
+	 * Performs a bucket sort of an array in which all the elements are distributed
+	 * in different buckets and then each bucket is then sorted individually.
+	 * 
 	 * @param array to be sorted and maxValue in the array
 	 * @return sorted array
-	 */	
-	public Integer[] sort(Integer[] array, Integer maxValue) {
-		Integer[] bucket = new Integer[maxValue + 1];
-		Integer[] sortedArray = new Integer[array.length];
+	 */
+	public int[] sort(int[] array, int maxValue) {
+		int[] bucket = new int[maxValue + 1];
+		int[] sortedArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
 			bucket[array[i]]++;
 		}
@@ -23,13 +24,14 @@ public class BucketSort {
 		return sortedArray;
 	}
 
-	/** 
+	/**
 	 * Utility method to find max value from array
-	*/
-	public int maxValue(Integer[] array) {
+	 */
+	public int maxValue(int[] array) {
 		int max = Integer.MIN_VALUE;
-		for (Integer element : array) {
-			if(element > max) max = element;
+		for (int element : array) {
+			if (element > max)
+				max = element;
 		}
 		return max;
 	}
