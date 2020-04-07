@@ -108,7 +108,7 @@ class Graph<E extends Comparable<E>> {
 public class ConnectedComponent {
 
     public static void main(String[] args) {
-        Graph graphChars = new Graph();
+        Graph<Character> graphChars = new Graph<>();
 
         // Graph 1
         graphChars.addEdge('a', 'b');
@@ -123,7 +123,7 @@ public class ConnectedComponent {
 
         graphChars.addEdge('w', 'w');
 
-        Graph graphInts = new Graph();
+        Graph<Integer> graphInts = new Graph<>();
 
         // Graph 2
         graphInts.addEdge(1, 2);
