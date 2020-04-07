@@ -120,9 +120,9 @@ public class SinglyLinkedList {
             cur = cur.next;
         }
 
-        Node destroy = cur.next;
+        //Node destroy = cur.next;
         cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
+        //destroy = null; // clear to let GC do its work
 
         size--;
     }
