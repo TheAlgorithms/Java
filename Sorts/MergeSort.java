@@ -20,7 +20,7 @@ class MergeSort implements SortAlgorithm {
      * @return sorted array
      */
     @Override
-    @SuppressWarnings("unchecked")
+    
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
         doSort(unsorted, 0, unsorted.length - 1);
         return unsorted;

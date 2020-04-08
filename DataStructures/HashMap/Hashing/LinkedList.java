@@ -12,7 +12,6 @@ class LinkedList {
 
 	public void insert(int data) {
 
-		Node temp = Head;
 		Node newnode = new Node(data);
 	
 		size++;
