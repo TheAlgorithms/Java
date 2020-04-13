@@ -1,3 +1,4 @@
+package Maths;
 
 /**
  * @author Ishan Goel <br> <a href="https://github.com/quackduck">GitHub Account<a> 
