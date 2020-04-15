@@ -5,7 +5,7 @@ plugins {
 repositories {
     mavenLocal()
     maven {
-        url = 'http://repo.maven.apache.org/maven2'
+        url = 'https://repo.maven.apache.org/maven2'
     }
 }
 
@@ -15,7 +15,10 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform{
+        includeEngines 'junit-jupiter'
+
+    }
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
