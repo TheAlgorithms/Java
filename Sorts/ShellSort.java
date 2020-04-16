@@ -22,7 +22,7 @@ public class ShellSort implements SortAlgorithm {
         for (; gap > 0; gap /= 3) {
             for (int i = gap; i < length; i++) {
                 int j;
-				T temp = array[i];
+		T temp = array[i];
                 for (j = i; j >= gap && less(temp, array[j - gap]); j -= gap) {
                     array[j] = array[j - gap];
                 }
