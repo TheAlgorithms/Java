@@ -11,5 +11,6 @@ class WWPTest {
         Assertions.assertEquals(4, text.solveWWP("I'm doing this for fun, what about you?", 10), "Incorrect Conversion");
         Assertions.assertEquals(2, text.solveWWP("This will be in two rows.", 12), "Incorrect Conversion");
         Assertions.assertEquals(4, text.solveWWP("The brown fox and the grey dog...", 9), "Incorrect Conversion");
+        Assertions.assertEquals(3, text.solveWWP("What a coincidence you say ", 8), "Incorrect Conversion");
     }
 }
