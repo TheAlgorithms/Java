@@ -1,0 +1,98 @@
+package DataStructures.Stacks;
+import java.util.stack; 
+
+/**
+ * A stack can be implemented using only two queues
+ * we start by enqueuing an element x to the second queue Q2
+ * then we dequeue all the element of Q1 and enqueue it to Q2 
+ * finally we switch the names of the two queues 
+ * ==> this is for the push operation 
+ *
+ * for the pop operation we dequeue items from Q1 and print it 
+ * ==> this is for the pop operation 
+ */  
+
+class Stack { 
+    Queue<Integer> Q1 = new LinkedList<>(), Q2 = new LinkedList<>(); 
+    int curr_size; 
+  
+    public Stack() 
+    { 
+        current_size = 0; 
+    } 
+  
+    void remove() 
+    { 
+        if (Q1.isEmpty()) 
+            return; 
+  
+        // Let one element in Q1 and and put the rest in Q2
+        
+        while (Q1.size() != 1) { 
+            Q2.add(q1.peek()); 
+            Q1.remove(); 
+        } 
+  
+       
+        Q1.remove(); 
+        current_size--; 
+  
+        // switch the names of the queues 
+        Queue<Integer> Q = Q1; 
+        Q1 = Q2; 
+        Q2 = Q; 
+    } 
+  
+    void add(int x) 
+    { 
+        Q1.add(x); 
+        current_size++; 
+    } 
+  
+    int top() 
+    { 
+        if (Q1.isEmpty()) 
+            return -1; 
+  
+        while (Q1.size() != 1) { 
+            Q2.add(q1.peek()); 
+            Q1.remove(); 
+        } 
+  
+         
+        int temp = Q1.peek(); 
+        Q1.remove(); 
+  
+        // push the last element to q2 
+        Q2.add(temp); 
+  
+        // switch the two queues names 
+        Queue<Integer> Q = Q1; 
+        Q1 = Q2; 
+        Q2 = Q; 
+        return temp; 
+    } 
+  
+    int size() 
+    { 
+        return current_size; 
+    } 
+   
+    public static void main(String[] args) 
+    { 
+        Stack s = new Stack(); 
+        s.add(1); 
+        s.add(2); 
+        s.add(3); 
+        s.add(4);
+        s.add(5);
+  
+        System.out.println("current size: " + s.size()); 
+        System.out.println(s.top()); 
+        s.remove(); 
+        System.out.println(s.top()); 
+        s.remove(); 
+        System.out.println(s.top()); 
+        System.out.println("current size: " + s.size()); 
+    } 
+} 
