@@ -2,13 +2,13 @@ package DataStructures.Stacks;
 import java.util.stack; 
 
 /**
- * A stack can be implemented using only two queues
- * we start by enqueuing an element x to the second queue Q2
- * then we dequeue all the element of Q1 and enqueue it to Q2 
- * finally we switch the names of the two queues 
+ * enqueue the elment x to the queue Q1
  * ==> this is for the push operation 
  *
- * for the pop operation we dequeue items from Q1 and print it 
+ * dequeue all the element of Q1 and put it in Q2 except the last element
+ * dequeue the last element of Q1 and store it
+ * switch the name of the queues
+ * print the stored element 
  * ==> this is for the pop operation 
  */  
 
