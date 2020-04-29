@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class CaesarBruteForceTest {
+    
     @Test
     void testCaesarBruteForce() {
         CaesarBruteForce cipher = new CaesarBruteForce();
