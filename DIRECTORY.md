@@ -32,6 +32,8 @@
     * [Bag](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Bags/Bag.java)
   * Buffers
     * [CircularBuffer](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Buffers/CircularBuffer.java)
+  * DynamicArray
+    * [DynamicArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DynamicArray/DynamicArray.java)
   * Graphs
     * [BellmanFord](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/BellmanFord.java)
     * [ConnectedComponent](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/ConnectedComponent.java)
