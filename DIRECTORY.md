@@ -185,6 +185,7 @@
   * [TernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/TernarySearch.java)
 
 ## Sorts
+  * [BitonicSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BitonicSort.java)
   * [BogoSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BogoSort.java)
   * [BubbleSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BubbleSort.java)
   * [CocktailShakerSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CocktailShakerSort.java)
