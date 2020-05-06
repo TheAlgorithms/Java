@@ -36,7 +36,7 @@ class StackTest {
         myStack.push(30);
         myStack.push(40);
 
-        Assertions.assertEquals(40, myStack.peek());
+        Assertions.assertEquals(40, (int) myStack.peek());
     }
 
     @Test
@@ -57,7 +57,7 @@ class StackTest {
         myStack.push(40);
         myStack.push(50);
 
-        Assertions.assertEquals(50, myStack.pop());
+        Assertions.assertEquals(50, (int) myStack.pop());
 
     }
 

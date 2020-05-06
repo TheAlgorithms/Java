@@ -30,5 +30,8 @@ class CycleSortTest {
         String[] sortedStr = new String[]{"Alan", "David", "Dennis", "Edward", "Ken", "Linus", "Robert"};
         Assertions.assertArrayEquals(sortedStr, cycleSort.sort(unsortedStr));
 
+        Integer[] unsortedShortInt = new Integer[]{29, 11};
+        Integer[] sortedShortInt = new Integer[]{11, 29};
+        Assertions.assertArrayEquals(sortedShortInt, cycleSort.sort(unsortedShortInt));
     }
 }
