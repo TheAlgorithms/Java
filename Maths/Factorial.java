@@ -2,7 +2,7 @@ package Maths;
 import java.util.*; //for importing scanner
 
 public class Factorial {
-    public static void main(String[] args) {
+    public static void main(String[] args) { //main method
         int n = 1;
 Scanner sc= new Scanner(System.in);
 System.out.println("Enter Number");
