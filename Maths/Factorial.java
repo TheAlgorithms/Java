@@ -1,10 +1,13 @@
 package Maths;
+import java.util.*; //for importing scanner
 
-//change around 'n' for different factorial results
 public class Factorial {
-    public static void main(String[] args) {
-        int n = 5;
-        System.out.println(n + "! = " + factorial(n));
+    public static void main(String[] args) { //main method
+           int n = 1;
+           Scanner sc= new Scanner(System.in);
+           System.out.println("Enter Number");
+           n=sc.nextInt();
+           System.out.println(n + "! = " + factorial(n));
     }
 
     //Factorial = n! = n1 * (n-1) * (n-2)*...1
