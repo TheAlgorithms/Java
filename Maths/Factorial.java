@@ -19,13 +19,16 @@ public class Factorial {
      * @return the factorial of {@code n}
      */
     public static long factorial(int n) {
-        if (n < 0) {
-            throw new ArithmeticException("n < 0");     //Dont work with less than 0
-        }
-        long fac = 1;
-        for (int i = 1; i <= n; ++i) {
-            fac *= i;
-        }
-        return fac; //Return factorial
+        // Using recursion
+        try {
+        	if (n == 0) {
+				return 1; // if n = 0, return factorial of n;
+			}else {
+				return n*factorial(n-1); // While N is greater than 0, call the function again, passing n-1 (Principle of factoring);
+			}
+        }catch (ArithmeticException e) {
+			System.out.println("Dont work with less than 0");
+		}
+		return n;
     }
 }
