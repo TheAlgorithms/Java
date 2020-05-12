@@ -67,6 +67,32 @@ class BinarySearch implements SearchAlgorithm {
         }
     }
 
+    /**
+     * this method implements the Binary Search without Recursion
+     *
+     * @param array the array to make the binary search
+     * @param key   the number you are looking for
+     * @param <T>   The type param
+     * @return the index of the key
+     */
+    private static <T extends Comparable<T>> int search(T[] array, T key) {
+        int low, high, mid;
+        low = 0;
+        high = array.length - 1;
+        while (low <= high) {
+            mid = (low + high) >> 1;
+            if (key.compareTo(array[mid]) < 0) {
+                high = mid;
+            } else if (key.compareTo(array[mid]) > 0) {
+                low = mid;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
@@ -91,5 +117,15 @@ class BinarySearch implements SearchAlgorithm {
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
         System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
+
+        System.out.println("-------------test binarySearch without Recursion!!!---------------");
+
+        int index = search(integers,shouldBeFound);
+        System.out.println(format(
+                "Should be found: %d. Found %d at index %d. An array length %d",
+                shouldBeFound, integers[index], index, size
+        ));
+        int toCheck2 = Arrays.binarySearch(integers, shouldBeFound);
+        System.out.println(format("Found by system method at an index: %d. Is equal: %b", toCheck2, toCheck2 == index));
     }
 }
