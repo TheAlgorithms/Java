@@ -202,7 +202,7 @@ public class AVLTree {
         }
     }
 
-        public boolean search(int key) {
+    public boolean search(int key) {
     	Node result = searchHelper(this.root,key);
     	if(result != null)
     		return true ;
