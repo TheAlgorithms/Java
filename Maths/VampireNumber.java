@@ -31,7 +31,7 @@ public class VampireNumber {
       test(10,1000);
     }
 
-     static void  test(int  startValue,  int  stopValue) {
+     static void test(int  startValue,  int  stopValue) {
          int countofRes = 1;
          StringBuilder res = new StringBuilder();
 
@@ -51,7 +51,7 @@ public class VampireNumber {
 
 
 
-        static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers ) {
+     static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers ) {
 
         // this is for pseudoVampireNumbers  pseudovampire number need not be of length n/2 digits for example
             // 126 = 6 x 21
@@ -70,7 +70,7 @@ public class VampireNumber {
 
 
 // methode to Split the numbers to Digits
-        static String splitIntoDigits(int num, int num2) {
+     static String splitIntoDigits(int num, int num2) {
 
         StringBuilder res = new StringBuilder();
 
