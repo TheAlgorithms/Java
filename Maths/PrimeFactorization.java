@@ -3,7 +3,7 @@ package Maths;
 import java.lang.Math;
 import java.util.Scanner;
 
-public class algorithm {
+public class PrimeFactorization {
     public static void main(String[] args){
         System.out.println("## all prime factors ##");
         Scanner scanner = new Scanner(System.in);
