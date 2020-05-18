@@ -13,7 +13,7 @@ class BubbleSort implements SortAlgorithm {
      * This method implements the Generic Bubble Sort
      *
      * @param array The array to be sorted
-     *              Sorts the array in increasing order
+     *              Sorts the array in descending order
      **/
 
     @Override
