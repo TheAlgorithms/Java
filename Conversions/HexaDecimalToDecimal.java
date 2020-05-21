@@ -34,7 +34,7 @@ public class HexaDecimalToDecimal {
         and it returns the decimal form in the variable dec_output.
         */
         System.out.println("Number in Decimal: " + dec_output);
-
+        scan.close();
 
     }
 }

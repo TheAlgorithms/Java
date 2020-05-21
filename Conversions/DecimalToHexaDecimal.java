@@ -1,5 +1,6 @@
 package Conversions;
 
+//hex = [0 - 9] -> [A - F]
 class DecimalToHexaDecimal {
 	private static final int sizeOfIntInHalfBytes = 8;
 	private static final int numberOfBitsInAHalfByte = 4;

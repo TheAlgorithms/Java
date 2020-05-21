@@ -202,6 +202,29 @@ public class AVLTree {
         }
     }
 
+    public boolean search(int key) {
+    	Node result = searchHelper(this.root,key);
+    	if(result != null)
+    		return true ;
+    	
+    	return false ;
+    }
+    
+    private Node searchHelper(Node root, int key) 
+    { 
+        //root is null or key is present at root 
+        if (root==null || root.key==key) 
+            return root; 
+      
+        // key is greater than root's key 
+        if (root.key > key) 
+            return searchHelper(root.left, key); // call the function on the node's left child
+      
+        // key is less than root's key then 
+        //call the function on the node's right child as it is greater
+        return searchHelper(root.right, key); 
+    } 
+
     public static void main(String[] args) {
         AVLTree tree = new AVLTree();
 

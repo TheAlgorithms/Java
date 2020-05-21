@@ -7,6 +7,7 @@ public class StackPostfixNotation {
         Scanner scanner = new Scanner(System.in);
         String post = scanner.nextLine();   // Takes input with spaces in between eg. "1 21 +"
         System.out.println(postfixEvaluate(post));
+        scanner.close();
     }
 
     // Evaluates the given postfix expression string and returns the result.
@@ -35,6 +36,7 @@ public class StackPostfixNotation {
                 //  "+", "-", "*", "/"
             }
         }
+        tokens.close();
         return s.pop();
     }
 }

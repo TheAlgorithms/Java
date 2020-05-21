@@ -8,6 +8,7 @@ public class Main {
 		int choice, key;
 
 		HashMap h = new HashMap(7);
+		Scanner In = new Scanner(System.in);
 
 		while (true) {
 			System.out.println("Enter your Choice :");
@@ -15,9 +16,7 @@ public class Main {
 			System.out.println("2. Delete Key");
 			System.out.println("3. Print Table");
 			System.out.println("4. Exit");
-
-			Scanner In = new Scanner(System.in);
-
+			
 			choice = In.nextInt();
 
 			switch (choice) {
@@ -39,9 +38,11 @@ public class Main {
 					break;
 				}
 				case 4: {
+					In.close();
 					return;
 				}	
 			}
+			
 		}
 	}
 }

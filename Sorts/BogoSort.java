@@ -12,7 +12,7 @@ public class BogoSort implements SortAlgorithm {
     private static final Random random = new Random();
 
 
-    private static <T extends Comparable<T>> boolean isSorted(T array[]) {
+    private static <T extends Comparable<T>> boolean isSorted(T[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             if (SortUtils.less(array[i + 1], array[i])) return false;
         }
@@ -20,7 +20,7 @@ public class BogoSort implements SortAlgorithm {
     }
 
     // Randomly shuffles the array
-    private static <T> void nextPermutation(T array[]) {
+    private static <T> void nextPermutation(T[] array) {
         int length = array.length;
 
         for (int i = 0; i < array.length; i++) {
@@ -29,7 +29,7 @@ public class BogoSort implements SortAlgorithm {
         }
     }
 
-    public <T extends Comparable<T>> T[] sort(T array[]) {
+    public <T extends Comparable<T>> T[] sort(T[] array) {
         while (!isSorted(array)) {
             nextPermutation(array);
         }

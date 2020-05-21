@@ -1,4 +1,4 @@
-package Others;
+package Maths;
 
 /**
  * This is Euclid's algorithm which is used to find the greatest common denominator
@@ -8,21 +8,36 @@ package Others;
  */
 public class GCD {
 
+    /**
+     * get greatest common divisor
+     *
+     * @param num1 the first number
+     * @param num2 the second number
+     * @return gcd
+     */
     public static int gcd(int num1, int num2) {
-
-        if (num1 == 0)
-            return num2;
-
-        while (num2 != 0) {
-            if (num1 > num2)
-                num1 -= num2;
-            else
-                num2 -= num1;
+        if (num1 < 0 || num2 < 0) {
+            throw new ArithmeticException();
         }
 
-        return num1;
+        if (num1 == 0 || num2 == 0) {
+            return Math.abs(num1 - num2);
+        }
+
+        while (num1 % num2 != 0) {
+            int remainder = num1 % num2;
+            num1 = num2;
+            num2 = remainder;
+        }
+        return num2;
     }
 
+    /**
+     * get greatest common divisor in array
+     *
+     * @param number contains number
+     * @return gcd
+     */
     public static int gcd(int[] number) {
         int result = number[0];
         for (int i = 1; i < number.length; i++)

@@ -160,6 +160,19 @@ public class DoublyLinkedList {
             current.previous = newLink; // 1 <--> newLink <--> 2(current) <--> 3
         }
     }
+    
+    public static void removeDuplicates(DoublyLinkedList l ) {
+    	Link linkOne = l.head ;
+    	while(linkOne.next != null) { // list is present  
+    		Link linkTwo = linkOne.next; // second link for comparison
+    		while(linkTwo.next!= null) {
+    			if(linkOne.value == linkTwo.value) // if there are duplicates values then 
+    				l.delete(linkTwo.value);  // delete the link
+    			linkTwo = linkTwo.next ; // go to next link 
+    		}
+    		linkOne = linkOne.next; // go to link link to iterate the whole list again
+    	}
+    }
 
     /**
      * Returns true if list is empty

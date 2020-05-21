@@ -26,6 +26,7 @@ public class MinimizingLateness {
         BufferedReader in = new BufferedReader(new FileReader("MinimizingLateness/lateness_data.txt"));
         String ch = in.readLine();
         if (ch == null || ch.isEmpty()) {
+            in.close();
             return;
         }
         int indexCount = Integer.parseInt(ch);
@@ -53,5 +54,6 @@ public class MinimizingLateness {
         System.out.println();
         System.out.println("Output Data : ");
         System.out.println(lateness);
+        in.close();
     }
 }

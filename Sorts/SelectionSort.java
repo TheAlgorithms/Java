@@ -9,6 +9,17 @@ package Sorts;
 public class SelectionSort implements SortAlgorithm {
 
     /**
+     * This method swaps the two elements in the array
+     * @param arr, i, j The array for the swap and 
+                        the indexes of the to-swap elements
+     */
+    public void swap(T[] arr, int i, int j) {
+       T temp = arr[i];
+       arr[i] = arr[j];
+       arr[j] = temp;
+    }
+    
+    /**
      * This method implements the Generic Selection Sort
      *
      * @param arr The array to be sorted
@@ -22,14 +33,14 @@ public class SelectionSort implements SortAlgorithm {
             int min = i;
 
             for (int j = i + 1; j < n; j++) {
-                if (SortUtils.less(arr[j], arr[min])) {
+                if (arr[min].compareTo(arr[j]) < 0) {
                     min = j;
                 }
             }
 
             // Swapping if index of min is changed
             if (min != i) {
-                SortUtils.swap(arr, i, min);
+                swap(arr, i, min);
             }
         }
 

@@ -39,11 +39,7 @@ public class Armstrong {
             sum = sum + (remainder * remainder * remainder);
             number = number / 10;
         }
-        if (sum == temp) {
-            return true;
-        } else {
-            return false;
-        }
+        return sum == temp;
     }
 
     private static int inputInt(String string) {

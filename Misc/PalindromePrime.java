@@ -9,6 +9,7 @@ public class PalindromePrime {
         System.out.println("Enter the quantity of First Palindromic Primes you want");
         int n = in.nextInt(); // Input of how many first pallindromic prime we want
         functioning(n); // calling function - functioning  
+        in.close();
     }
 
     public static boolean prime(int num) { // checking if number is prime or not

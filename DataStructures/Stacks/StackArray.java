@@ -1,3 +1,5 @@
+package DataStructures.Stacks;
+
 /**
  * This class implements a Stack using a regular array.
  * <p>
@@ -35,6 +37,11 @@ public class StackArray {
     }
 
     /**
+     * Default initial capacity.
+     */
+    private static final int DEFAULT_CAPACITY = 10;
+
+    /**
      * The max size of the Stack
      */
     private int maxSize;
@@ -49,6 +56,13 @@ public class StackArray {
      */
     private int top;
 
+    /**
+     * init Stack with DEFAULT_CAPACITY
+     */
+    public StackArray() {
+        this(DEFAULT_CAPACITY);
+    }
+    
     /**
      * Constructor
      *
@@ -109,14 +123,13 @@ public class StackArray {
     }
 
     private void resize(int newSize) {
-        // private int[] transferArray = new int[newSize]; we can't put modifiers here !
         int[] transferArray = new int[newSize];
 
-        // for(int i = 0; i < stackArray.length(); i++){ the length isn't a method .
         for (int i = 0; i < stackArray.length; i++) {
             transferArray[i] = stackArray[i];
-            stackArray = transferArray;
         }
+        // This reference change might be nice in here
+        stackArray = transferArray;
         maxSize = newSize;
     }
 
