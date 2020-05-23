@@ -55,6 +55,8 @@ public class Bucket_Sort
     }
 }
 
+
+/*
 #Output:
 
 $ javac Bucket_Sort.java
@@ -66,3 +68,4 @@ Original Sequence:
 95 9 95 87 8 81 18 54 57 53 92 15 38 24 8 56 29 69 64 66 
 Sorted Sequence: 
 8 8 9 15 18 24 29 38 53 54 56 57 64 66 69 81 87 92 95 95
+*/
