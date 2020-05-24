@@ -1,3 +1,44 @@
+package DataStructures.Lists;
+
+/*
+ * This class implements a SinglyLinked List. 
+ * A linked list is similar to an array, it hold values.
+ * However, links in a linked list do not have indexes. With
+ * a linked list you do not need to predetermine it's size as
+ * it grows and shrinks as it is edited. 
+ *it has functions called mid that gives node at mid 
+ * in addn to linked list there is algo that 
+ * construct a linked list with alternate sums of linked list 
+ * and added to new one and add mid value 
+ * i.e sum of first and last value of inital list
+ 
+ Test Case:
+ 
+ 
+ LinkedList LL1 = new LinkedList();    
+	        Scanner scn=new Scanner(System.in);
+	        int numNodes=scn.nextInt();
+	        for(int i=0;i<2*numNodes;i++) {
+	        	LL1.addLast(scn.nextInt());
+	        }    
+	        LL1.display();    
+	        LinkedList LL2=new LinkedList();
+	        LL2.formLL2(LL1);
+	        LL2.display();
+	        LinkedList LL3=new LinkedList();
+	        LL3.formLL3(LL1);
+	        LL3.display();
+	        Node MID=LL1.midValue();	        
+	        System.out.println(MID.data);
+	        LinkedList updLL1=new LinkedList();
+	        updLL1.formRes(LL1,LL2,LL3,MID);
+	        updLL1.display();
+	        updLL1.Size();
+ 
+ */
+ 
+ 
+ 
 import java.util.*;
 import java.lang.*;
 import java.io.*;
