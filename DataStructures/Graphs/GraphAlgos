@@ -1,3 +1,53 @@
+package DataStructures.Graphs;
+/*
+Implementation of graph by using hashmap for vertices of class which contains hashmap for vertex and then algos like prims dijktsra ,depth for search and traversal ,breadth for search and traversal ,algo for cycle present or not ,connected or not ,if not connected then connect it
+Test case
+Graph gp=new Graph();
+		gp.addVertex("A");
+		gp.addVertex("B");
+		gp.addVertex("C");
+		gp.addVertex("D");
+		gp.addVertex("E");
+		gp.addVertex("F");
+		gp.addVertex("G");
+		gp.addEdge("A", "B", 2);
+		gp.addEdge("A", "D", 10);
+		gp.addEdge("B", "C", 3);
+		gp.addEdge("C", "D", 1);
+		gp.addEdge("D", "E", 8);
+		gp.addEdge("E", "F", 5);
+		gp.addEdge("E", "G", 6);
+		gp.addEdge("F", "G", 4);
+		
+//		gp.display();
+//		System.out.println(gp.numVertex());
+//		System.out.println(gp.numEdge());
+//		System.out.println(gp.containsEdge("A", "C"));
+//
+//		System.out.println(gp.containsEdge("E", "F"));
+//		gp.removeEdge("D", "E");
+//		gp.display();
+//		gp.removeVertex("F");
+//		gp.addVertex("F");
+//		gp.display();
+//		System.out.println(gp.hasPath("A", "F", new HashMap<>()));
+//		System.out.println(gp.dfs("A", "F"));
+//		gp.bft();
+//		gp.dft();
+//		gp.removeEdge("B","C");
+//		gp.removeEdge("F","G");
+//		System.out.println(gp.isConnected());
+//		System.out.println(gp.isCyclic());
+//		System.out.println(gp.isTree());
+//		System.out.println(gp.getConnectedComp());
+//		gp.prims().display();
+		System.out.println(gp.Dijktsra("A"));
+
+
+
+*/
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
