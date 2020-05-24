@@ -52,6 +52,6 @@ public class GCD {
 
         // call gcd function (input array)
         System.out.println(gcd(myIntArray)); // => 4
-        System.out.printf("gcd(40,24)=%d gcd(24,40)=%d\n", gcd(40, 24), gcd(24, 40)); // => 8
+        System.out.printf("gcd(40,24)=%d gcd(24,40)=%d%n", gcd(40, 24), gcd(24, 40)); // => 8
     }
 }

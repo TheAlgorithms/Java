@@ -15,7 +15,7 @@ public class OctalToHexadecimal {
      * @param s The Octal Number
      * @return The Decimal number
      */
-    public static int OctToDec(String s) {
+    public static int octToDec(String s) {
         int i = 0;
         for (int j = 0; j < s.length(); j++) {
             char num = s.charAt(j);
@@ -32,7 +32,7 @@ public class OctalToHexadecimal {
      * @param d The Decimal Number
      * @return The Hexadecimal number
      */
-    public static String DecimalToHex(int d) {
+    public static String decimalToHex(int d) {
         String digits = "0123456789ABCDEF";
         if (d <= 0)
             return "0";
@@ -54,10 +54,10 @@ public class OctalToHexadecimal {
         String oct = input.next();
 
         // Pass the octal number to function and get converted deciaml form
-        int decimal = OctToDec(oct);
+        int decimal = octToDec(oct);
 
         // Pass the decimla number to function and get converted Hex form of the number
-        String hex = DecimalToHex(decimal);
+        String hex = decimalToHex(decimal);
         System.out.println("The Hexadecimal equivalant is: " + hex);
         input.close();
     }

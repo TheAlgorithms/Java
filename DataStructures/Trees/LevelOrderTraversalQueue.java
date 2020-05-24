@@ -19,11 +19,9 @@ public class LevelOrderTraversalQueue {
         }
     }
 
-    Node root;
-
     /* Given a binary tree. Print its nodes in level order
      using array for implementing queue  */
-    void printLevelOrder() {
+    void printLevelOrder(Node root) {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(root);
         while (!queue.isEmpty()) {

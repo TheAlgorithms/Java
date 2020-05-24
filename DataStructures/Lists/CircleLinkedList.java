@@ -14,7 +14,7 @@ public class CircleLinkedList<E> {
     //For better O.O design this should be private allows for better black box design
     private int size;
     //this will point to dummy node;
-    private Node<E> head;
+    private Node<E> head =  null;
 
     //constructer for class.. here we will make a dummy node for circly linked list implementation with reduced error catching as our list will never be empty;
     public CircleLinkedList() {

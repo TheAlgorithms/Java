@@ -15,8 +15,8 @@ public class LevelOrderTraversal {
     // Root of the Binary Tree
     Node root;
 
-    public LevelOrderTraversal() {
-        root = null;
+    public LevelOrderTraversal( Node root) {
+        this.root = root;
     }
 
     /* function to print level order traversal of tree*/

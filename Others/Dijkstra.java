@@ -96,6 +96,32 @@ class Graph {
         }
 
         @Override
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null || getClass() != object.getClass()) return false;
+            if (!super.equals(object)) return false;
+
+            Vertex vertex = (Vertex) object;
+
+            if (dist != vertex.dist) return false;
+            if (name != null ? !name.equals(vertex.name) : vertex.name != null) return false;
+            if (previous != null ? !previous.equals(vertex.previous) : vertex.previous != null) return false;
+            if (neighbours != null ? !neighbours.equals(vertex.neighbours) : vertex.neighbours != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = super.hashCode();
+            result = 31 * result + (name != null ? name.hashCode() : 0);
+            result = 31 * result + dist;
+            result = 31 * result + (previous != null ? previous.hashCode() : 0);
+            result = 31 * result + (neighbours != null ? neighbours.hashCode() : 0);
+            return result;
+        }
+
+        @Override
         public String toString() {
             return "(" + name + ", " + dist + ")";
         }
@@ -125,7 +151,7 @@ class Graph {
      */
     public void dijkstra(String startName) {
         if (!graph.containsKey(startName)) {
-            System.err.printf("Graph doesn't contain start vertex \"%s\"\n", startName);
+            System.err.printf("Graph doesn't contain start vertex \"%s\"%n", startName);
             return;
         }
         final Vertex source = graph.get(startName);
@@ -172,7 +198,7 @@ class Graph {
      */
     public void printPath(String endName) {
         if (!graph.containsKey(endName)) {
-            System.err.printf("Graph doesn't contain end vertex \"%s\"\n", endName);
+            System.err.printf("Graph doesn't contain end vertex \"%s\"%n", endName);
             return;
         }
 
@@ -189,4 +215,5 @@ class Graph {
             System.out.println();
         }
     }
+
 }

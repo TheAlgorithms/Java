@@ -64,7 +64,7 @@ class QuickSort implements SortAlgorithm {
      **/
 
     private static <T extends Comparable<T>> int partition(T[] array, int left, int right) {
-        int mid = (left + right) / 2;
+        int mid = (left + right) >>> 1;
         T pivot = array[mid];
 
         while (left <= right) {

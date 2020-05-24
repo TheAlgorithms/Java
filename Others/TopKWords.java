@@ -50,7 +50,8 @@ public class TopKWords {
             } finally {
                 try {
                     // you always have to close the I/O streams
-                    fis.close();
+                    if (fis != null)
+                        fis.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

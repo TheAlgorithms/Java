@@ -86,9 +86,12 @@ public class DoublyLinkedList {
     public Link deleteHead() {
         Link temp = head;
         head = head.next; // oldHead <--> 2ndElement(head)
-        head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
-        if (head == null)
+
+        if (head == null) {
             tail = null;
+        } else {
+            head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
+        }
         return temp;
     }
 
@@ -100,10 +103,13 @@ public class DoublyLinkedList {
     public Link deleteTail() {
         Link temp = tail;
         tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
-        tail.next = null; // 2ndLast(tail) --> null
+
         if (tail == null) {
             head = null;
+        } else{
+            tail.next = null; // 2ndLast(tail) --> null
         }
+
         return temp;
     }
 
