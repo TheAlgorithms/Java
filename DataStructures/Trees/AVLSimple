@@ -1,3 +1,34 @@
+  
+package DataStructures.Trees;
+
+/*
+* Avl is algo that balance itself while adding new alues to tree
+* by rotating branches of binary tree and make itself Binary seaarch tree
+* there are four cases which has to tackle 
+* rotating - left right ,left left,right right,right left 
+
+Test Case:
+
+AVLTree tree=new AVLTree();
+		tree.insert(20);
+		tree.insert(25);
+		tree.insert(30);
+		tree.insert(10);
+		tree.insert(5);
+		tree.insert(15);
+		tree.insert(27);
+		tree.insert(19);
+		tree.insert(16);
+		
+		tree.display();
+
+
+
+
+*/
+
+
+
 public class AVLTree {
 	private class Node{
 		int data;
