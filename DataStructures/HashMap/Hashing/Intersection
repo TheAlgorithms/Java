@@ -1,3 +1,30 @@
+package DataStructures.HashMap.Hashing;
+/*
+* this is algo which implies common mathematical set theory concept 
+* called intersection in which result is common values of both the sets 
+* here metaphor of sets is HashMap 
+
+
+Test Case:
+		Scanner scn=new Scanner(System.in);
+		int len =scn.nextInt();
+		int arr[]=new int[len];
+		int arr2[]=new int[len];
+		
+		for(int i=0;i<2*len;i++) {
+			
+			if(i<len)
+				arr[i]=scn.nextInt();
+			if(i>=len) {
+				arr2[i-len]=scn.nextInt();
+			}
+		}
+		System.out.println(Main(arr,arr2));
+		
+	
+
+*/
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
