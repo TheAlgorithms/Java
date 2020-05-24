@@ -1,3 +1,31 @@
+package DynamicProgramming;
+/*
+* here is a important algo in this we have to count  
+* maximum no. of different binary strings which doesnot have 
+* consectuive 1s 
+
+
+
+Test Case:
+
+int n=30;
+		
+		startAlgo();
+		System.out.println(numStrIS(n));
+		System.out.println(endAlgo()+"ms");
+
+		startAlgo();
+		CountNumBinaryStr out=new CountNumBinaryStr();
+		System.out.println(out.numStrR(n).ans);
+		System.out.println(endAlgo()+"ms");
+		
+		startAlgo();
+		System.out.println(countStrings(n,0));
+		System.out.println(endAlgo()+"ms");
+		
+		
+		
+*/
 public class CountNumBinaryStr {
 	public static long startTime;
 	public static long endTime;
