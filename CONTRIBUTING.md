@@ -6,6 +6,8 @@
 
 * **Ensure the bug was not already reported** by searching on GitHub under [Project Issues](https://github.com/TheAlgorithms/Java/issues).
 
+* Please avoid opening issues asking to be "assigned” to a particular algorithm.  This merely creates unnecessary noise for maintainers.  Instead, please submit your implementation in a pull request and it will be evaluated by project maintainers.
+
 * If you are unable to find an open issue refering to the same problem, depending on the type of issue follow the appropriate steps:
 
 #### **Do you want to contribute to the documentation?**
