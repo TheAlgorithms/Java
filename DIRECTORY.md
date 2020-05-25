@@ -45,9 +45,7 @@
   * HashMap
     * Hashing
       * [HashMap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMap.java)
-      * [LinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/LinkedList.java)
       * [Main](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/Main.java)
-      * [Node](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/Node.java)
   * Heaps
     * [EmptyHeapException](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/EmptyHeapException.java)
     * [Heap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/Heap.java)
