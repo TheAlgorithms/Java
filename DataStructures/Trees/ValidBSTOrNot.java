@@ -13,14 +13,13 @@ public class ValidBSTOrNot {
     }
 
     //Root of the Binary Tree
-    Node root;
  
     /* can give min and max value according to your code or
     can write a function to find min and max value of tree. */
 
     /* returns true if given search tree is binary
      search tree (efficient version) */
-    boolean isBST() {
+    boolean isBST(Node root) {
         return isBSTUtil(root, Integer.MIN_VALUE,
                 Integer.MAX_VALUE);
     }

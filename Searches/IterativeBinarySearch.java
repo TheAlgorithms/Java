@@ -40,7 +40,7 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
         r = array.length - 1;
 
         while (l <= r) {
-            k = (l + r) / 2;
+            k = (l + r) >>> 1;
             cmp = key.compareTo(array[k]);
 
             if (cmp == 0) {

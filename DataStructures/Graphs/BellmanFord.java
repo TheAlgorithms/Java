@@ -23,7 +23,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
         * @param v End vertex
         * @param c Weight
         */
-        Edge(int a,int b,int c)
+        public Edge(int a,int b,int c)
         {
             u=a;
             v=b;

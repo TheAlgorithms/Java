@@ -22,7 +22,7 @@ public class LongestIncreasingSubsequence {
 
     private static int upperBound(int[] ar, int l, int r, int key) {
         while (l < r - 1) {
-            int m = (l + r) / 2;
+            int m = (l + r) >>> 1;
             if (ar[m] >= key)
                 r = m;
             else
