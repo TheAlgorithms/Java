@@ -8,6 +8,27 @@ import java.util.*;
  *
  * @author Ujjawal Joshi
  * @date 2020.05.18
+ *
+ * Test Cases:
+
+ 	Input:
+ 	2 //Size of matrix
+	1 2
+ 	3 4
+ 	Output:
+ 	3 1
+ 	4 2
+ ------------------------------
+ 	Input:
+ 	3 //Size of matrix
+	1 2 3 
+	4 5 6
+	7 8 9  
+	Output:
+	7 4 1 
+	8 5 2
+	9 6 3
+ * 
  */
 
 class main{

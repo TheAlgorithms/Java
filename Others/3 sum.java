@@ -11,6 +11,18 @@ import java.util.Arrays;
  *
  * @author Ujjawal Joshi
  * @date 2020.05.18
+ *
+ * Test Cases:
+ 	Input:
+ *	6 //Length of array
+ 	12 3 4 1 6 9
+ 	target=24
+ *	Output:3 9 12
+ *	Explanation: There is a triplet (12, 3 and 9) present
+	in the array whose sum is 24. 
+ *
+ *
+
  */
 
 
@@ -26,7 +38,7 @@ class threesum{
 		{
 			a[i]=sc.nextInt();
 		}
-		System.out.println("Number to be find");
+		System.out.println("Target");
 		int n_find=sc.nextInt();
 
 		Arrays.sort(a);	// Sort the array if array is not sorted
