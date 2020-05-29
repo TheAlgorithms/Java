@@ -137,6 +137,7 @@
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
 
 ## Others
+  * [3 sum](https://github.com/TheAlgorithms/Java/blob/master/Others/3%20sum.java)
   * [Abecedarian](https://github.com/TheAlgorithms/Java/blob/master/Others/Abecedarian.java)
   * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Others/Armstrong.java)
   * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
@@ -167,6 +168,7 @@
   * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseStackUsingRecursion.java)
   * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseString.java)
   * [RootPrecision](https://github.com/TheAlgorithms/Java/blob/master/Others/RootPrecision.java)
+  * [Rotation of array without using extra space](https://github.com/TheAlgorithms/Java/blob/master/Others/Rotation%20of%20array%20without%20using%20extra%20space.java)
   * [SieveOfEratosthenes](https://github.com/TheAlgorithms/Java/blob/master/Others/SieveOfEratosthenes.java)
   * [SJF](https://github.com/TheAlgorithms/Java/blob/master/Others/SJF.java)
   * [SkylineProblem](https://github.com/TheAlgorithms/Java/blob/master/Others/SkylineProblem.java)
