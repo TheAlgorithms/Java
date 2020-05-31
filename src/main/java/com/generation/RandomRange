@@ -1,0 +1,29 @@
+package Maths;
+
+public class RandomRange {
+
+	public static void main(String[] args) {
+		System.out.println(randomRange(10, 20));
+		System.out.println(randomRange(-5, 5));
+		System.out.println(randomRange(20, 50));
+		System.out.println(randomRange(27, 37));
+		System.out.println(randomRange(0, 20));
+	}
+
+	/**
+	 * Returns a random number within a specified range of numbers.
+	 * Returns 0 if "Highest" value is less than "Lowest" value.
+	 * 
+	 * @param val1 Lowest desired number in range
+	 * @param val2 Highest desired number in range
+	 * @return Random number within range entered by user
+	 */
+	public static int randomRange(int val1, int val2) {
+		if (val2 <= val1) {
+			return 0;
+		}
+		double d = (double) Math.random();
+		int i = (int) ((int)(d * ((val2 + 1) - val1)) + val1);
+		return i;
+	}
+}
