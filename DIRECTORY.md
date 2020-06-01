@@ -193,6 +193,7 @@
   * [BitonicSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BitonicSort.java)
   * [BogoSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BogoSort.java)
   * [BubbleSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BubbleSort.java)
+  * [BucketSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BucketSort.java)
   * [CocktailShakerSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CocktailShakerSort.java)
   * [CombSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CombSort.java)
   * [CountingSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CountingSort.java)
