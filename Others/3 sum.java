@@ -37,6 +37,7 @@ class threesum{
 		for(int i=0;i<n;i++)
 		{
 			a[i]=sc.nextInt();
+			System.out.println("Correction d'erreur");
 		}
 		System.out.println("Target");
 		int n_find=sc.nextInt();
