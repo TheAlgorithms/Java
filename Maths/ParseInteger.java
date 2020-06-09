@@ -16,7 +16,7 @@ public class ParseInteger {
      * @throws NumberFormatException if the {@code string} does not contain a parsable integer.
      */
     public static int parseInt(String s) {
-        if (s == null) {
+        if (s == null || s.length() == 0) {
             throw new NumberFormatException("null");
         }
         boolean isNegative = s.charAt(0) == '-';
