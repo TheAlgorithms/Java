@@ -3,6 +3,8 @@ package Ford_Fulkerson_Max_Flow;
 import java.util.*;
 
 public class Ford_Fulkerson_Max_Flow {
+    //Complexity of O(E * f'), where E is the number of edges,
+    //and f' is the maximum flow of the network
 
     private static int graphNodes;
     private static int source;
