@@ -27,49 +27,6 @@ public class A_Star {
             this.graph[edge.getFrom()].add(new Edge(edge.getFrom(), edge.getTo(), edge.getWeight()));
             this.graph[edge.getTo()].add(new Edge(edge.getTo(), edge.getFrom(), edge.getWeight()));
         }
-
-        private void initializeGraph() {
-            this.addEdge(new Edge(0, 19, 75));  this.addEdge(new Edge(0, 15, 140));
-            this.addEdge(new Edge(0, 16, 118)); this.addEdge(new Edge(19, 12, 71));
-            this.addEdge(new Edge(12, 15, 151));this.addEdge(new Edge(16, 9, 111));
-            this.addEdge(new Edge(9, 10, 70));  this.addEdge(new Edge(10, 3, 75));
-            this.addEdge(new Edge(3, 2, 120));  this.addEdge(new Edge(2, 14, 146));
-            this.addEdge(new Edge(2, 13, 138)); this.addEdge(new Edge(2, 6, 115));
-            this.addEdge(new Edge(15, 14, 80)); this.addEdge(new Edge(15, 5, 99));
-            this.addEdge(new Edge(14, 13, 97)); this.addEdge(new Edge(5, 1, 211));
-            this.addEdge(new Edge(13, 1, 101)); this.addEdge(new Edge(6, 1, 160));
-            this.addEdge(new Edge(1, 17, 85));  this.addEdge(new Edge(17, 7, 98));
-            this.addEdge(new Edge(7, 4, 86));   this.addEdge(new Edge(17, 18, 142));
-            this.addEdge(new Edge(18, 8, 92));  this.addEdge(new Edge(8, 11, 87));
-
-        /*
-        .x. node
-        (y) cost
-        - or | or / bidirectional connection
-
-                              ( 98)- .7. -(86)- .4.
-                                |
-                        ( 85)- .17. -(142)- .18. -(92)- .8. -(87)- .11.
-                          |
-                         . 1. -------------------- (160)
-                          |  \                       |
-                        (211) \                     .6.
-                          |    \                     |
-                         . 5.  (101)-.13. -(138)   (115)
-                          |           |     |     /
-                        ( 99)       ( 97)   |    /
-                          |           |     |   /
-            .12. -(151)- .15. -(80)- .14.   |  /
-             |            |           |     | /
-           ( 71)        (140)       (146)- .2. -(120)
-             |            |                       |
-            .19. -( 75)- . 0.        .10. -(75)- .3.
-                          |            |
-                        (118)        ( 70)
-                          |            |
-                         .16. -(111)- .9.
-         */
-        }
     }
 
     private static class Edge {
@@ -117,13 +74,53 @@ public class A_Star {
         }
     }
 
+    private static void initializeGraph(Graph graph, ArrayList<Integer> data) {
+        for (int i = 0; i < data.size(); i+=4) {
+            graph.addEdge(new Edge(data.get(i), data.get(i + 1), data.get(i + 2)));
+        }
+        /*
+        .x. node
+        (y) cost
+        - or | or / bidirectional connection
+
+                              ( 98)- .7. -(86)- .4.
+                                |
+                        ( 85)- .17. -(142)- .18. -(92)- .8. -(87)- .11.
+                          |
+                         . 1. -------------------- (160)
+                          |  \                       |
+                        (211) \                     .6.
+                          |    \                     |
+                         . 5.  (101)-.13. -(138)   (115)
+                          |           |     |     /
+                        ( 99)       ( 97)   |    /
+                          |           |     |   /
+            .12. -(151)- .15. -(80)- .14.   |  /
+             |            |           |     | /
+           ( 71)        (140)       (146)- .2. -(120)
+             |            |                       |
+            .19. -( 75)- . 0.        .10. -(75)- .3.
+                          |            |
+                        (118)        ( 70)
+                          |            |
+                         .16. -(111)- .9.
+         */
+    }
+
     public static void main(String[] args) {
         //heuristic function optimistic values
         int[] heuristic = {366, 0, 160, 242, 161, 178, 77, 151, 226,
                 244, 241, 234, 380, 98, 193, 253, 329, 80, 199, 374};
 
         Graph graph = new Graph(20);
-        graph.initializeGraph();
+        ArrayList<Integer> graphData = new ArrayList<>(Arrays.asList(0, 19, 75, null,
+                0, 15, 140, null, 0, 16, 118, null, 19, 12, 71, null, 12, 15, 151, null,
+                16, 9, 111, null, 9, 10, 70, null, 10, 3, 75, null, 3, 2, 120, null,
+                2, 14, 146, null, 2, 13, 138, null, 2, 6, 115, null, 15, 14, 80, null,
+                15, 5, 99, null, 14, 13, 97, null, 5, 1, 211, null, 13, 1, 101, null,
+                6, 1, 160, null, 1, 17, 85, null, 17, 7, 98, null, 7, 4, 86, null,
+                17, 18, 142, null, 18, 8, 92, null, 8, 11, 87));
+        initializeGraph(graph, graphData);
 
         PathAndDistance solution = aStar(3, 1, graph, heuristic);
         solution.printSolution();
