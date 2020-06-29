@@ -53,8 +53,8 @@ class threesum{
 				else r--;
 			}
 		}
-		
 
+		sc.close();
 		
 	}
 }
