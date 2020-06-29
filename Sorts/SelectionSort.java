@@ -10,10 +10,12 @@ public class SelectionSort implements SortAlgorithm {
 
     /**
      * This method swaps the two elements in the array
+     * @param <T>
      * @param arr, i, j The array for the swap and 
                         the indexes of the to-swap elements
      */
-    public void swap(T[] arr, int i, int j) {
+    
+    public <T> void swap(T[] arr, int i, int j) {
        T temp = arr[i];
        arr[i] = arr[j];
        arr[j] = temp;
