@@ -26,11 +26,11 @@ final class SortUtils {
 
 
     /**
-     * This method checks if first element is less then the other element
+     * This method checks if first element is less than the other element
      *
      * @param v first element
      * @param w second element
-     * @return true if the first element is less then the second element
+     * @return true if the first element is less than the second element
      */
     static <T extends Comparable<T>> boolean less(T v, T w) {
         return v.compareTo(w) < 0;
@@ -38,7 +38,19 @@ final class SortUtils {
 
 
     /**
-     * Just print list
+     * This method checks if first element is greater than the other element
+     *
+     * @param v first element
+     * @param w second element
+     * @return true if the first element is greater than the second element
+     */
+    static <T extends Comparable<T>> boolean greater(T v, T w) {
+        return v.compareTo(w) > 0;
+    }
+
+
+    /**
+     * Prints a list
      *
      * @param toPrint - a list which should be printed
      */
@@ -55,7 +67,7 @@ final class SortUtils {
     /**
      * Prints an array
      *
-     * @param toPrint - the array  which should be printed
+     * @param toPrint - an array which should be printed
      */
     static void print(Object[] toPrint) {
         System.out.println(Arrays.toString(toPrint));
