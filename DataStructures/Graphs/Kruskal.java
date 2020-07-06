@@ -3,7 +3,6 @@
 //The graph needs to be connected, because if there are nodes impossible to reach, there are no edges that could connect every node in the graph.
 //KA is a Greedy Algorithm, because edges are analysed based on their weights, that is why a Priority Queue is used, to take first those less weighted.
 //This implementations below has some changes compared to conventional ones, but they are explained all along the code.
-//In case you need to know anyhing else, I would be willing to answer all your doubts, you can contact me by https://www.linkedin.com/in/marcosvillacanas/
 
 import java.util.Comparator;
 import java.util.HashSet;
