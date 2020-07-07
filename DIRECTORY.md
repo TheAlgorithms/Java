@@ -40,6 +40,7 @@
     * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Cycles.java)
     * [FloydWarshall](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/FloydWarshall.java)
     * [Graphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Graphs.java)
+    * [Kruskal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Kruskal.java)
     * [MatrixGraphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/MatrixGraphs.java)
     * [PrimMST](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/PrimMST.java)
   * HashMap
