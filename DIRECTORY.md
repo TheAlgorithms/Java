@@ -35,6 +35,7 @@
   * DynamicArray
     * [DynamicArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DynamicArray/DynamicArray.java)
   * Graphs
+    * [A Star](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/A_Star.java)
     * [BellmanFord](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/BellmanFord.java)
     * [ConnectedComponent](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/ConnectedComponent.java)
     * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Cycles.java)
