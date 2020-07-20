@@ -56,6 +56,20 @@ class LongestCommonSubsequence {
         String str1 = "DSGSHSRGSRHTRD";
         String str2 = "DATRGAGTSHS";
         String lcs = getLCS(str1, str2);
+        
+        
+        // Not Hard coded the string values, user can give input
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s1 = br.readLine();
+        String s2 = br.readLine();
+         String lcsValue = getLCS(s1, s2);
+        
+         if (lcsValue != null) {
+            System.out.println("String 1: " + s1);
+            System.out.println("String 2: " + s2);
+            System.out.println("LCS: " + lcsValue);
+            System.out.println("LCS length: " + lcsValue.length());
+        }
 
         //Print LCS
         if (lcs != null) {
