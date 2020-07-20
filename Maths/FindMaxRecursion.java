@@ -2,11 +2,16 @@ package Maths;
 
 public class FindMaxRecursion {
     public static void main(String[] args) {
-        int[] array = {2, 4, 9, 7, 19, 94, 5};
+        ArrayList<Integer> res = new ArrayList<>();
+	res.add("1");
+	res.add("2");
+	res.add("3");
+	res.add("4");
+	res.add("5");
         int low = 0;
-        int high = array.length - 1;
+        int high = array.size() - 1;
 
-        System.out.println("max value is " + max(array, low, high));
+        System.out.println("max value is " + max(res, low, high));
     }
 
     /**
@@ -17,15 +22,15 @@ public class FindMaxRecursion {
      * @param high  the index of the last element
      * @return max of {@code array}
      */
-    public static int max(int[] array, int low, int high) {
+    public static int max(ArrayList<Integer>, int low, int high) {
         if (low == high) {
-            return array[low]; //or array[high]
+            return res.get(low); //or array[high]
         }
 
         int mid = (low + high) >>> 1;
 
-        int leftMax = max(array, low, mid); //get max in [low, mid]
-        int rightMax = max(array, mid + 1, high); //get max in [mid+1, high]
+        int leftMax = max(res, low, mid); //get max in [low, mid]
+        int rightMax = max(res, mid + 1, high); //get max in [mid+1, high]
 
         return leftMax >= rightMax ? leftMax : rightMax;
     }
