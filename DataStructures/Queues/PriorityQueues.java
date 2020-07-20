@@ -25,7 +25,6 @@ class PriorityQueue {
 
     /**
      * Constructor
-     *
      * @param size Size of the queue
      */
     public PriorityQueue(int size) {
@@ -36,7 +35,6 @@ class PriorityQueue {
 
     /**
      * Inserts an element in it's appropriate place
-     *
      * @param value Value to be inserted
      */
     public void insert(int value) {
@@ -55,7 +53,6 @@ class PriorityQueue {
 
     /**
      * Remove the element from the front of the queue
-     *
      * @return The element removed
      */
     public int remove() {
@@ -73,7 +70,6 @@ class PriorityQueue {
 
     /**
      * Returns true if the queue is empty
-     *
      * @return true if the queue is empty
      */
     public boolean isEmpty() {
@@ -91,7 +87,6 @@ class PriorityQueue {
 
     /**
      * Returns the number of elements in the queue
-     *
      * @return number of elements in the queue
      */
     public int getSize() {
@@ -101,8 +96,6 @@ class PriorityQueue {
 
 /**
  * This class implements the PriorityQueue class above.
- *
- * @author Unknown
  */
 public class PriorityQueues {
     /**
@@ -119,7 +112,7 @@ public class PriorityQueues {
         // [2, 3, 5, 10] Here higher numbers have higher priority, so they are on the top
 
         for (int i = 3; i >= 0; i--)
-            System.out.print(myQueue.remove() + " "); // will print the queue in reverse order [10, 5, 3, 2]
+            System.out.print(myQueue.remove() + " "); // print reverse order [10, 5, 3, 2]
 
         // As you can see, a Priority Queue can be used as a sorting algotithm
     }
