@@ -31,4 +31,4 @@ public class Factorial {
 		}
 		return n;
     }
-}
+}.
