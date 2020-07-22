@@ -211,6 +211,3 @@
   * [ShellSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/ShellSort.java)
   * [SortAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortAlgorithm.java)
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
-
-## Strings
-  * [ZFunction](https://github.com/TheAlgorithms/Java/blob/master/Strings/ZFunction.java)
