@@ -166,6 +166,22 @@ public class DoublyLinkedList {
             current.previous = newLink; // 1 <--> newLink <--> 2(current) <--> 3
         }
     }
+
+    /**
+     * Deletes the passed node from the current list
+     *
+     * @param z Element to be deleted
+     */
+    public void deleteNode(Link z) {
+        if(z.next == null){
+            deleteTail();
+        } else if(z == head){
+            deleteHead();
+        } else{ //before <-- 1 <--> 2(z) <--> 3 -->
+            z.previous.next = z.next // 1 --> 3
+            z.next.previous = z.previous // 1 <--> 3
+        }
+    }
     
     public static void removeDuplicates(DoublyLinkedList l ) {
     	Link linkOne = l.head ;
