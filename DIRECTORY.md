@@ -35,19 +35,19 @@
   * DynamicArray
     * [DynamicArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DynamicArray/DynamicArray.java)
   * Graphs
+    * [A Star](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/A_Star.java)
     * [BellmanFord](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/BellmanFord.java)
     * [ConnectedComponent](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/ConnectedComponent.java)
     * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Cycles.java)
     * [FloydWarshall](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/FloydWarshall.java)
     * [Graphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Graphs.java)
+    * [Kruskal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Kruskal.java)
     * [MatrixGraphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/MatrixGraphs.java)
     * [PrimMST](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/PrimMST.java)
   * HashMap
     * Hashing
       * [HashMap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMap.java)
-      * [LinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/LinkedList.java)
       * [Main](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/Main.java)
-      * [Node](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/Node.java)
   * Heaps
     * [EmptyHeapException](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/EmptyHeapException.java)
     * [Heap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/Heap.java)
@@ -139,6 +139,7 @@
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
 
 ## Others
+  * [3 sum](https://github.com/TheAlgorithms/Java/blob/master/Others/3%20sum.java)
   * [Abecedarian](https://github.com/TheAlgorithms/Java/blob/master/Others/Abecedarian.java)
   * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Others/Armstrong.java)
   * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
@@ -169,6 +170,7 @@
   * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseStackUsingRecursion.java)
   * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseString.java)
   * [RootPrecision](https://github.com/TheAlgorithms/Java/blob/master/Others/RootPrecision.java)
+  * [Rotation of array without using extra space](https://github.com/TheAlgorithms/Java/blob/master/Others/Rotation%20of%20array%20without%20using%20extra%20space.java)
   * [SieveOfEratosthenes](https://github.com/TheAlgorithms/Java/blob/master/Others/SieveOfEratosthenes.java)
   * [SJF](https://github.com/TheAlgorithms/Java/blob/master/Others/SJF.java)
   * [SkylineProblem](https://github.com/TheAlgorithms/Java/blob/master/Others/SkylineProblem.java)
@@ -193,6 +195,7 @@
   * [BitonicSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BitonicSort.java)
   * [BogoSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BogoSort.java)
   * [BubbleSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BubbleSort.java)
+  * [BucketSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BucketSort.java)
   * [CocktailShakerSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CocktailShakerSort.java)
   * [CombSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CombSort.java)
   * [CountingSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/CountingSort.java)

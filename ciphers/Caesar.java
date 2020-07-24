@@ -125,6 +125,8 @@ public class Caesar {
             case 'D':
             case 'd':
                 System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
+            default:
+                System.out.println("default case");
         }
         input.close();
     }

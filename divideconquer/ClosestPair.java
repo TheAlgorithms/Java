@@ -31,6 +31,15 @@ public final class ClosestPair {
      * Minimum point length.
      */
     private static double minNum = Double.MAX_VALUE;
+
+    public static void setMinNum(double minNum) {
+        ClosestPair.minNum = minNum;
+    }
+
+    public static void setSecondCount(int secondCount) {
+        ClosestPair.secondCount = secondCount;
+    }
+
     /**
      * secondCount
      */
@@ -213,7 +222,7 @@ public final class ClosestPair {
         for (int i = 0; i < totalNum; i++) {
             double xGap = Math.abs(divideArray[divideX].x - divideArray[i].x);
             if (xGap < minValue) {
-                secondCount++; // size of the array
+                ClosestPair.setSecondCount(secondCount + 1); // size of the array
             } else {
                 if (divideArray[i].x > divideArray[divideX].x) {
                     break;
@@ -250,7 +259,7 @@ public final class ClosestPair {
                         minValue = length;
                         // Conditional for registering final coordinate
                         if (length < minNum) {
-                            minNum = length;
+                           ClosestPair.setMinNum(length);
                             point1 = firstWindow[i];
                             point2 = firstWindow[j];
                         }
@@ -260,7 +269,7 @@ public final class ClosestPair {
                 }
             }
         }
-        secondCount = 0;
+       ClosestPair.setSecondCount(0);
         return minValue;
     }
 
@@ -288,7 +297,7 @@ public final class ClosestPair {
             length = Math.sqrt(Math.pow(xGap, 2) + Math.pow(yGap, 2));
             // Conditional statement for registering final coordinate
             if (length < minNum) {
-                minNum = length;
+               ClosestPair.setMinNum(length);
 
             }
             point1 = arrayParam[0];
@@ -311,7 +320,7 @@ public final class ClosestPair {
                         minValue = length;
                         if (length < minNum) {
                             // Registering final coordinate
-                            minNum = length;
+                            ClosestPair.setMinNum(length);
                             point1 = arrayParam[i];
                             point2 = arrayParam[j];
                         }

@@ -41,7 +41,7 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     public void put(final int index, E element) {
-        Objects.checkIndex(index, this.size);
+//        Objects.checkIndex(index, this.size);
 
         this.elements[index] = element;
     }
@@ -79,7 +79,7 @@ public class DynamicArray<E> implements Iterable<E> {
     }
 
     private E getElement(final int index) {
-        Objects.checkIndex(index, this.size);
+//        Objects.checkIndex(index, this.size);
         return (E) this.elements[index];
     }
 

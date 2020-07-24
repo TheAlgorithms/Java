@@ -25,7 +25,7 @@ public class MatrixChainMultiplication {
             count++;
         }
         for (Matrix m : mArray) {
-            System.out.format("A(%d)  =  %2d  x  %2d\n", m.count(), m.col(), m.row());
+            System.out.format("A(%d)  =  %2d  x  %2d%n", m.count(), m.col(), m.row());
         }
 
         size = mArray.size();

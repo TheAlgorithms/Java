@@ -127,8 +127,7 @@ class AdjacencyMatrixGraph {
      * @return returns a string describing this graph
      */
     public String toString() {
-        String s = new String();
-        s = "    ";
+        String s = "    ";
         for (int i = 0; i < this.numberOfVertices(); i++) {
             s = s + String.valueOf(i) + " ";
         }
