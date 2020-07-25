@@ -7,7 +7,14 @@ class CountDigit{
 		System.out.print("Enter the number: ");
 		int number = sc.nextInt();
 		int digits = 0;
-		digits = (int)Math.floor(Math.log10(number) + 1);
-		System.out.println("The number of digits present in the number: " + digits);
+		if(number == 0)
+		{
+			System.out.println("The number of digits present in the number: 1");
+		}
+		else
+		{
+			digits = (int)Math.floor(Math.log10(Math.abs(number)) + 1);
+			System.out.println("The number of digits present in the number: " + digits);
+		}
 	}
 }
