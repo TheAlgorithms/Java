@@ -1,5 +1,5 @@
 import java.util.*;
-import java.lang.*;
+package Maths;
 // count the number of digits in a number
 class CountDigit {
 	public static void main(String args[]) {
