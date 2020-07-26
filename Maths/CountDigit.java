@@ -1,8 +1,8 @@
 import java.util.*;
 import java.lang.*;
 // count the number of digits in a number
-class CountDigit{
-	public static void main(String args[]){
+class CountDigit {
+	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the number: ");
 		int number = sc.nextInt();
