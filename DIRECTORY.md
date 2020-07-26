@@ -110,6 +110,7 @@
   * [AbsoluteMin](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteMin.java)
   * [AbsoluteValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteValue.java)
   * [AmicableNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/AmicableNumber.java)
+  * [CountDigit](https://github.com/TheAlgorithms/Java/blob/master/Maths/CountDigit.java)
   * [Factorial](https://github.com/TheAlgorithms/Java/blob/master/Maths/Factorial.java)
   * [FactorialRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/FactorialRecursion.java)
   * [FibonacciNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/FibonacciNumber.java)
