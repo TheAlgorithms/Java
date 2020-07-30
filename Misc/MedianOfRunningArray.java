@@ -50,7 +50,3 @@ public class MedianOfRunningArray {
     }
 
 }
-
-
-
-
