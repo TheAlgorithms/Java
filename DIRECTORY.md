@@ -188,6 +188,7 @@
   * [IterativeTernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeTernarySearch.java)
   * [JumpSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/JumpSearch.java)
   * [LinearSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/LinearSearch.java)
+  * [PerfectBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/PerfectBinarySearch.java)
   * [SaddlebackSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/SaddlebackSearch.java)
   * [SearchAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Searches/SearchAlgorithm.java)
   * [TernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/TernarySearch.java)
