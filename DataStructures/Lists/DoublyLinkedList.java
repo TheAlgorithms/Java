@@ -1,18 +1,3 @@
-package DataStructures.Lists;
-
-/**
- * This class implements a DoublyLinkedList. This is done using the classes
- * LinkedList and Link.
- * <p>
- * A linked list is similar to an array, it holds values. However,
- * links in a linked list do not have indexes. With a linked list
- * you do not need to predetermine it's size as it grows and shrinks
- * as it is edited. This is an example of a double ended, doubly
- * linked list. Each link references the next link and the previous
- * one.
- *
- * @author Unknown
- */
 
 public class DoublyLinkedList {
     /**
@@ -112,6 +97,22 @@ public class DoublyLinkedList {
 
         return temp;
     }
+    /**
+     * Delete all the elements in the list
+     *
+     *
+     *
+     */
+    public void clearList(){
+        Link temp = head;
+        while(temp != null){
+            Link next = temp.next;// Keep the next element as a reference
+            temp.previous = temp.next = null;// Delete the the next and previous pointers
+            temp = next;// Move to the next node
+        }
+        head = tail = temp = null;// Update the head and the tail with the new values
+
+    }
 
     /**
      * Delete the element from somewhere in the list
@@ -166,6 +167,38 @@ public class DoublyLinkedList {
             current.previous = newLink; // 1 <--> newLink <--> 2(current) <--> 3
         }
     }
+    /**
+     * Add the element int the position "index" (0 based)
+     *
+     * @param index the position of the element to be added
+     * @param data the value to the element to be added
+     */
+
+    public void addIn(int index,int data)  { // index is 0 based
+        if(index < 0){
+            System.out.println("non valid index!");
+            return;
+        }
+        if(index == 0){
+            insertHead(data);
+            return;
+        }
+
+        Link temp = head;
+        for(int i = 0 ; i < index - 1 ; i++ ){
+            temp = (temp != null) ? temp.next : tail;
+        }
+        if(temp == tail ) {
+            insertTail(data);
+        }else{
+            Link newLink =  new Link(data);
+            newLink.next = temp.next;
+            newLink.previous = temp;
+            temp.next.previous = newLink;
+            temp.next = newLink;
+        }
+
+    }
 
     /**
      * Deletes the passed node from the current list
@@ -178,22 +211,22 @@ public class DoublyLinkedList {
         } else if(z == head){
             deleteHead();
         } else{ //before <-- 1 <--> 2(z) <--> 3 -->
-            z.previous.next = z.next // 1 --> 3
-            z.next.previous = z.previous // 1 <--> 3
+            z.previous.next = z.next; // 1 --> 3
+            z.next.previous = z.previous; // 1 <--> 3
         }
     }
-    
+
     public static void removeDuplicates(DoublyLinkedList l ) {
-    	Link linkOne = l.head ;
-    	while(linkOne.next != null) { // list is present  
-    		Link linkTwo = linkOne.next; // second link for comparison
-    		while(linkTwo.next!= null) {
-    			if(linkOne.value == linkTwo.value) // if there are duplicates values then 
-    				l.delete(linkTwo.value);  // delete the link
-    			linkTwo = linkTwo.next ; // go to next link 
-    		}
-    		linkOne = linkOne.next; // go to link link to iterate the whole list again
-    	}
+        Link linkOne = l.head ;
+        while(linkOne.next != null) { // list is present
+            Link linkTwo = linkOne.next; // second link for comparison
+            while(linkTwo.next!= null) {
+                if(linkOne.value == linkTwo.value) // if there are duplicates values then
+                    l.delete(linkTwo.value);  // delete the link
+                linkTwo = linkTwo.next ; // go to next link
+            }
+            linkOne = linkOne.next; // go to link link to iterate the whole list again
+        }
     }
 
     /**
@@ -210,12 +243,15 @@ public class DoublyLinkedList {
      */
     public void display() { // Prints contents of the list
         Link current = head;
+        if(isEmpty()) System.out.println("Empty list!");// Check if list is empty
         while (current != null) {
             current.displayLink();
             current = current.next;
         }
         System.out.println();
     }
+
+
 }
 
 /**
@@ -279,5 +315,8 @@ class Link {
         myList.insertOrdered(67);
         myList.insertOrdered(3);
         myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+        myList.addIn(9,18);
+        myList.display();// <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67 <--> 18 (tail) -->
     }
+
 }
