@@ -1,3 +1,18 @@
+package DataStructures.Lists;
+
+/**
+ * This class implements a DoublyLinkedList. This is done using the classes
+ * LinkedList and Link.
+ * <p>
+ * A linked list is similar to an array, it holds values. However,
+ * links in a linked list do not have indexes. With a linked list
+ * you do not need to predetermine it's size as it grows and shrinks
+ * as it is edited. This is an example of a double ended, doubly
+ * linked list. Each link references the next link and the previous
+ * one.
+ *
+ * @author Unknown
+ */
 
 public class DoublyLinkedList {
     /**
