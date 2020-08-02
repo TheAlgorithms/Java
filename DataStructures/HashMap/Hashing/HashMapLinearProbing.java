@@ -4,7 +4,7 @@ package DataStructures.HashMap.Hashing;
  * This class is an implementation of a hash table using linear probing
  *
  */
-class HashMapLinearProbing {
+public class HashMapLinearProbing {
     private int hsize;
     private Integer[] buckets;
     private Integer AVAILABLE;
