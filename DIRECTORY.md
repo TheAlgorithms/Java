@@ -91,6 +91,7 @@
   * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/SkylineAlgorithm.java)
 
 ## DynamicProgramming
+  * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/BoardPath.java)
   * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/CoinChange.java)
   * [EditDistance](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/EditDistance.java)
   * [EggDropping](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/EggDropping.java)
