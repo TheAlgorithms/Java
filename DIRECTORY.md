@@ -47,7 +47,9 @@
   * HashMap
     * Hashing
       * [HashMap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMap.java)
+      * [HashMapLinearProbing](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMapLinearProbing.java)
       * [Main](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/Main.java)
+      * [MainLinearProbing](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/MainLinearProbing.java)
   * Heaps
     * [EmptyHeapException](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/EmptyHeapException.java)
     * [Heap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/Heap.java)
