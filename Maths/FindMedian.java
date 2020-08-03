@@ -3,10 +3,10 @@ ackage ads.set02.median;
 import java.util.Arrays;
 
 /**
- * Find Median.
+ * Implementation of a median algorithm.
  * @author github.com/b3z
  */
-public class FindMedian2 {
+public class FindMedian {
 
     /**
      * Computes and retrieves the lower median of the given array of pairwise
