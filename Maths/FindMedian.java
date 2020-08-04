@@ -11,8 +11,8 @@ public class FindMedian {
      * Computes and retrieves the lower median of the given array of pairwise
      * distinct numbers.
      * 
-     * @param numbers array with pairwise distinct numbers.
-     * @return the lower median.
+     * @param int[] numbers array with pairwise distinct numbers.
+     * @return int the lower median.
      * @throw IllegalArgumentException if the array is {@code null} or empty.
      */
     public static int lowerMedian(int[] numbers) {
@@ -26,9 +26,9 @@ public class FindMedian {
     /**
      * Partitions 5er groups and recalls.
      * 
-     * @param numbers     input array.
-     * @param indexMedian index of median to search by.
-     * @return sorted by pivot. Also called median.
+     * @param int[] numbers     input array.
+     * @param int indexMedian index of median to search by.
+     * @return int[] sorted by pivot. Also called median.
      */
     public static int findMedian(int[] numbers, int indexMedian) {
 
@@ -50,9 +50,9 @@ public class FindMedian {
     /**
      * Groups the array and saves their submedians.
      * 
-     * @param size    groups we have.
-     * @param numbers original numbers to group.
-     * @return submedians
+     * @param int size    groups we have.
+     * @param int[] numbers original numbers to group.
+     * @return int[] submedians
      */
     private static int[] grouping(int size, int[] numbers) {
         int[] submedians = new int[size];
@@ -61,15 +61,16 @@ public class FindMedian {
 
         for (int i = 0; i < numbers.length / 5; i++) {
             for (int k = 0; k < 5; k++)
-                tmp[k] = numbers[pointer++];
-
+                tmp[k] = numbers[pointer];
+                pointer++;
             submedians[i] = subMedian(tmp);
         }
 
         if (numbers.length % 5 != 0) {  // handle groups smaller than 5.
             int[] subGroup = new int[numbers.length % 5];
             for (int i = 0; i < (numbers.length % 5); i++)
-                subGroup[i] = numbers[pointer++];
+                subGroup[i] = numbers[pointer];
+                pointer++;
 
             submedians[numbers.length / 5] = subMedian(subGroup);
         }
@@ -79,8 +80,8 @@ public class FindMedian {
     /**
      * Median of subgroup sorted.
      * 
-     * @param subGroups
-     * @return submedian
+     * @param int[] subGroups
+     * @return int submedian
      */
     public static int subMedian(int[] subGroups) {
         int size = subGroups.length;
@@ -106,8 +107,8 @@ public class FindMedian {
     /**
      * Split lists by pivot.
      * 
-     * @param numbers List to split.
-     * @param pivot   splitting index.
+     * @param int[] numbers List to split.
+     * @param int pivot   splitting index.
      */
     private static int splitLists(int[] numbers, int pivot, int medianIndex) {
 
@@ -118,9 +119,11 @@ public class FindMedian {
 
         for (int i = 0; i < numbers.length; i++) { // split into sorted lists by pivot.
             if (numbers[i] < pivot)
-                left[leftPointer++] = numbers[i];
+                left[leftPointer] = numbers[i];
+                leftPointer++;
             else if (numbers[i] > pivot)
-                right[rightPointer++] = numbers[i];
+                right[rightPointer] = numbers[i];
+                rightPointer++;
         }
 
         if (leftPointer == medianIndex) { // case: found median - Yayy.
@@ -130,4 +133,16 @@ public class FindMedian {
         } else // case: its in right part.
             return findMedian(Arrays.copyOfRange(right, 0, rightPointer), medianIndex - leftPointer - 1);
     }
+
+    /**
+     * A test class which demonstrates the algorithm.
+     */
+    public static void test() {
+        int numbers [] = {17, 5, 3, 6, 9, 12, 2, 4, 1};
+        int lowerMedian = lowerMedian(numbers);
+        
+        System.out.println("The lower median is: " + lowerMedian);
+    } 
 }
+
+
