@@ -1,5 +1,4 @@
-ackage ads.set02.median;
-
+package Maths;
 import java.util.Arrays;
 
 /**
