@@ -3,7 +3,6 @@ import java.util.Arrays;
 
 /**
  * Implementation of a median algorithm.
- * @author github.com/b3z
  */
 public class FindMedian {
 
