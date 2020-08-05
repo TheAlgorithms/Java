@@ -1,6 +1,6 @@
 package DataStructures.HashMap.Hashing;
 
-class HashMap {
+public class HashMap {
     private int hsize;
     private LinkedList[] buckets;
 
