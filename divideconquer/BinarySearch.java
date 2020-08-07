@@ -1,25 +1,32 @@
 import java.io.*;
+
 import java.util.*;
 
 public class BinarySearch {
 
-    static int binarySearch(int[] a, int x, int left, int right)
-    {
+    public static int binarySearch(int[] a, int x, int left, int right) {
+	    
 	    int mid = low + (high-low)/2;
 	    
-	    if(left<=right)
-	    {
-		    if (arr[mid] == u)
+	    if(left<=right) {
+		    
+		    if (arr[mid] == u) {
+			    
 			    return mid;
+		    }
 
-		    else if(u > arr[mid])
+		    else if (u > arr[mid]) {
+			    
 			    return Search(arr, u, mid+1, high);
+		    }
 
-		    else 
+		    else { 
 			    return Search(arr, u, low, mid-1);
+		    }
 	    }
-	    else
+	    else {
 		    return -1;
+	    }
     }
 
     public static void main(String[] args) {
@@ -30,59 +37,60 @@ public class BinarySearch {
 	    
         int[] a = new int[n];
 	    
-        for (int i = 0; i < n; i++) 
-	{
+        for (int i = 0; i < n; i++) {
+		
             a[i] = scanner.nextInt();
         }
+	    
         int m = scanner.nextInt();
 	    
         int[] b = new int[m];
 	    
-        for (int i = 0; i < m; i++) 
-	{
+        for (int i = 0; i < m; i++) {
+		
           b[i] = scanner.nextInt();
         }
-        for (int i = 0; i < m; i++) 
-	{
+	    
+        for (int i = 0; i < m; i++) {
+		
             System.out.print(binarySearch(a, b[i], 0, a.length-1) + " ");
         }
     }
+	
     static class FastScanner {
+	    
         BufferedReader br;
 	    
         StringTokenizer st;
 
-        FastScanner(InputStream stream) 
-	{
-		try 
-		{	
+        FastScanner(InputStream stream) {
+		try {
 		    	br = new BufferedReader(new InputStreamReader(stream));
             	} 
-		catch (Exception e) 
-		{
+		catch (Exception e) {
+			
                 	e.printStackTrace();
                 }
         }
 
-        String next() 
-	{
-		while (st == null || !st.hasMoreTokens()) 
-		{
+        String next() {
+		
+		while (st == null || !st.hasMoreTokens()) {
 			
-			try 
-			{
+			try {
 			    	st = new StringTokenizer(br.readLine());
 			} 
-			catch (IOException e)
-			{
+			catch (IOException e) {
+				
 			    	e.printStackTrace();
 			}
 		}
+		
 		return st.nextToken();
         }
 
-        int nextInt() 
-	{
+        int nextInt() {
+		
             	return Integer.parseInt(next());
         }
     }
