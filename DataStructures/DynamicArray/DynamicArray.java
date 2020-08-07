@@ -73,6 +73,7 @@ public class DynamicArray<E> implements Iterable<E> {
     public E get(final int index) {
         return getElement(index);
     }
+    
     /**
      * Removes an element from the array
      * @param index the index of the element to be removed
