@@ -11,6 +11,7 @@ public class HashMap {
     /**
      * Constructor initialize HashMap object and 
      * create new Hashmap based on the size 
+		 * @param hsize for declaring the size of hashmap
      */
     public HashMap(int hsize) {
         buckets = new LinkedList[hsize];
@@ -118,8 +119,8 @@ public class HashMap {
 			/**
 			 * Find node based on the key and for certain node 
 			 * @param n a node which a member in linkedlist
-			 * @param key key of a node which will be find
-			 * @return 
+			 * @param key key of a node which will be found
+			 * @return Node based on the key 
 			 */
     	private Node findKey(Node n, int key) {
     		if(n.getKey() == key) {
@@ -167,7 +168,7 @@ public class HashMap {
 			
 			/**
 			 * Call the display method  
-			 * @return
+			 * @return String some member of the linked list
 			 */
     	public String display() {
     		return display(first);
@@ -176,6 +177,8 @@ public class HashMap {
 			
 			/**
 			 * Print all of item in linked list
+			 * @param n the front node before the rest item of linked list
+			 * @return String some member of the linked list 
 			 */
     	private String display(Node n) {
     		if(n == null) {
@@ -200,6 +203,7 @@ public class HashMap {
 			
 			/**
 			 * Constructor to create a new node and assign the initial key
+			 * @param key the key of a node 
 			 */
     	public Node(int key) {
     		next = null;
@@ -208,7 +212,7 @@ public class HashMap {
 			
 			/**
 			 * Get the next node after the current node
-			 * @return next node
+			 * @return Node next node
 			 */
     	public Node getNext() {
     		return next;
@@ -216,7 +220,7 @@ public class HashMap {
 			
 			/**
 			 * Get key of current node
-			 * @return key
+			 * @return int key of a node 
 			 */
     	public int getKey() {
     		return key;
@@ -224,7 +228,7 @@ public class HashMap {
 			
 			/**
 			 * Set next node of current node, make it chaining with current node 
-			 * @param next
+			 * @param next the next node after the current node
 			 */
     	public void setNext(Node next) {
     		this.next = next;
