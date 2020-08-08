@@ -20,7 +20,19 @@ public class HashMap {
             // Java requires explicit initialisaton of each object
         }
         this.hsize = hsize;
-    }
+		}
+		
+		/**
+     * For do the hashing using modulo from key and hsize division
+     * @param key the key of the hash 
+     * @return int a result after do hashing 
+     */
+		public int hashing(int key) {
+			int hash = key % hsize;
+			if (hash < 0)
+					hash += hsize;
+			return hash;
+		}
 
     /**
      * Inserting the hash object into the bucket 
@@ -52,17 +64,6 @@ public class HashMap {
         }
     }
 
-    /**
-     * For do the hashing using modulo from key and hsize division
-     * @param key the key of the hash 
-     * @return int a result after do hashing 
-     */
-    private int hashing(int key) {
-        int hash = key % hsize;
-        if (hash < 0)
-            hash += hsize;
-        return hash;
-    }
     
     public static class LinkedList {
     	private Node first;
