@@ -49,7 +49,7 @@ public class BinarySearch {
         BufferedReader br;
         StringTokenizer st;
 
-        FastScanner(InputStream stream) {
+        public static FastScanner(InputStream stream) {
 		try {
 		    	br = new BufferedReader(new InputStreamReader(stream));
             	} 
@@ -58,17 +58,15 @@ public class BinarySearch {
                 }
         }
 
-        String next() {
+        public static String next() {
 		while (st == null || !st.hasMoreTokens()) {
 			try {
 			    	st = new StringTokenizer(br.readLine());
 			} 
 			catch (IOException e) {
-				
 			    	e.printStackTrace();
 			}
 		}
-		
 		return st.nextToken();
         }
 
