@@ -1,25 +1,18 @@
 import java.io.*;
-
 import java.util.*;
 
 public class BinarySearch {
 
     public static int binarySearch(int[] a, int x, int left, int right) {
-	    
 	    int mid = low + (high-low)/2;
 	    
 	    if(left<=right) {
-		    
-		    if (arr[mid] == u) {
-			    
+		    if (arr[mid] == u) {  
 			    return mid;
 		    }
-
-		    else if (u > arr[mid]) {
-			    
+		    else if (u > arr[mid]) {  
 			    return Search(arr, u, mid+1, high);
 		    }
-
 		    else { 
 			    return Search(arr, u, low, mid-1);
 		    }
@@ -32,35 +25,28 @@ public class BinarySearch {
     public static void main(String[] args) {
 	    
         FastScanner scanner = new FastScanner(System.in);
-	    
         int n = scanner.nextInt();
-	    
         int[] a = new int[n];
 	    
         for (int i = 0; i < n; i++) {
-		
             a[i] = scanner.nextInt();
         }
 	    
         int m = scanner.nextInt();
-	    
         int[] b = new int[m];
 	    
         for (int i = 0; i < m; i++) {
-		
           b[i] = scanner.nextInt();
         }
 	    
         for (int i = 0; i < m; i++) {
-		
             System.out.print(binarySearch(a, b[i], 0, a.length-1) + " ");
         }
     }
 	
-    static class FastScanner {
+    public static class FastScanner {
 	    
         BufferedReader br;
-	    
         StringTokenizer st;
 
         FastScanner(InputStream stream) {
@@ -68,15 +54,12 @@ public class BinarySearch {
 		    	br = new BufferedReader(new InputStreamReader(stream));
             	} 
 		catch (Exception e) {
-			
                 	e.printStackTrace();
                 }
         }
 
         String next() {
-		
 		while (st == null || !st.hasMoreTokens()) {
-			
 			try {
 			    	st = new StringTokenizer(br.readLine());
 			} 
@@ -90,7 +73,6 @@ public class BinarySearch {
         }
 
         int nextInt() {
-		
             	return Integer.parseInt(next());
         }
     }
