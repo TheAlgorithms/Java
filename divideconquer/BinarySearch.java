@@ -70,7 +70,7 @@ public class BinarySearch {
 		return st.nextToken();
         }
 
-        int nextInt() {
+        public static int nextInt() {
             	return Integer.parseInt(next());
         }
     }
