@@ -5,7 +5,7 @@ public class FindMax {
     //Driver
     public static void main(String[] args) {
         int[] array = {2, 4, 9, 7, 19, 94, 5};
-        System.out.println("max = " + findMax(array));
+        assert findMax(array) == 94;
     }
 
     /**
