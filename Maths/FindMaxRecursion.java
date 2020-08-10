@@ -6,7 +6,8 @@ public class FindMaxRecursion {
         int low = 0;
         int high = array.length - 1;
 
-        System.out.println("max value is " + max(array, low, high));
+        assert max(array, low, high) == 94;
+        assert max(array, array.length) == 94;
     }
 
     /**
@@ -27,6 +28,17 @@ public class FindMaxRecursion {
         int leftMax = max(array, low, mid); //get max in [low, mid]
         int rightMax = max(array, mid + 1, high); //get max in [mid+1, high]
 
-        return leftMax >= rightMax ? leftMax : rightMax;
+        return Math.max(leftMax, rightMax);
+    }
+
+    /**
+     * Get max of array using recursion algorithm
+     *
+     * @param array contains elements
+     * @param len   length of given array
+     * @return max value of {@code array}
+     */
+    public static int max(int[] array, int len) {
+        return len == 1 ? array[0] : Math.max(max(array, len - 1), array[len - 1]);
     }
 }
