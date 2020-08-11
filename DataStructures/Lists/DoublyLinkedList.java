@@ -25,11 +25,17 @@ public class DoublyLinkedList {
     private Link tail;
 
     /**
+     * Size refers to the number of elements present in the list
+     */
+    private int size;
+
+    /**
      * Default Constructor
      */
     public DoublyLinkedList() {
         head = null;
         tail = null;
+        size = 0;
     }
 
     /**
@@ -43,6 +49,7 @@ public class DoublyLinkedList {
         for (int i : array) {
             insertTail(i);
         }
+        size = array.length;
     }
 
     /**
@@ -58,6 +65,7 @@ public class DoublyLinkedList {
             head.previous = newLink; // newLink <-- currenthead(head)
         newLink.next = head; // newLink <--> currenthead(head)
         head = newLink; // newLink(head) <--> oldhead
+        ++size;
     }
 
     /**
@@ -76,6 +84,38 @@ public class DoublyLinkedList {
             newLink.previous = tail; // currentTail(tail) <--> newLink -->
             tail = newLink; // oldTail <--> newLink(tail) -->
         }
+        ++size;
+    }
+
+    /**
+     * Insert an element at the index
+     * 
+     * @param x Element to be inserted
+     * @param index Index(from start) at which the element x to be inserted
+     * 
+     */
+    public void insertElementByIndex(int x,int index){
+        if(index > size) throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        if(index == 0){
+            insertHead(x);
+        }else{
+            if(index == size){
+                insertTail(x);
+            }else{
+                Link newLink = new Link(x);
+                Link previousLink = head; // 
+                for(int i = 1; i < index; i++){ //Loop to reach the index
+                    previousLink = previousLink.next;
+                }
+                // previousLink is the Link at index - 1 from start 
+                previousLink.next.previous = newLink; 
+                newLink.next = previousLink.next;
+                newLink.previous = previousLink;
+                previousLink.next = newLink;
+            }
+        }
+        ++size;
+
     }
 
     /**
@@ -92,6 +132,7 @@ public class DoublyLinkedList {
         } else {
             head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
         }
+        --size;
         return temp;
     }
 
@@ -109,7 +150,7 @@ public class DoublyLinkedList {
         } else{
             tail.next = null; // 2ndLast(tail) --> null
         }
-
+        --size;
         return temp;
     }
 
@@ -140,6 +181,7 @@ public class DoublyLinkedList {
             current.previous.next = current.next;  // 1 --> 3
             current.next.previous = current.previous; // 1 <--> 3
         }
+        --size;
     }
 
     /**
@@ -165,6 +207,7 @@ public class DoublyLinkedList {
             newLink.next = current; // 1 <--> newLink --> 2(current) <--> 3
             current.previous = newLink; // 1 <--> newLink <--> 2(current) <--> 3
         }
+        ++size;
     }
 
     /**
@@ -178,9 +221,10 @@ public class DoublyLinkedList {
         } else if(z == head){
             deleteHead();
         } else{ //before <-- 1 <--> 2(z) <--> 3 -->
-            z.previous.next = z.next // 1 --> 3
-            z.next.previous = z.previous // 1 <--> 3
+            z.previous.next = z.next; // 1 --> 3
+            z.next.previous = z.previous; // 1 <--> 3
         }
+        --size;
     }
     
     public static void removeDuplicates(DoublyLinkedList l ) {
@@ -195,6 +239,16 @@ public class DoublyLinkedList {
     		linkOne = linkOne.next; // go to link link to iterate the whole list again
     	}
     }
+
+    /**
+     * Clears List
+     * 
+     */
+     public void clearList(){
+         head = null;
+         tail = null;
+         size = 0;
+     }
 
     /**
      * Returns true if list is empty
@@ -279,5 +333,11 @@ class Link {
         myList.insertOrdered(67);
         myList.insertOrdered(3);
         myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+        myList.insertElementByIndex(5, 1);
+        myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+        myList.clearList();
+        myList.display();
+        myList.insertHead(20);
+        myList.display();
     }
 }
