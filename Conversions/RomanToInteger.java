@@ -29,6 +29,7 @@ public class RomanToInteger {
      */
     public static int romanToInt(String A) {
 
+        A = A.toUpperCase();
         char prev = ' ';
 
         int sum = 0;
