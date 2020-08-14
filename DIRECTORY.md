@@ -127,6 +127,7 @@
   * [GCDRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/GCDRecursion.java)
   * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MaxValue.java)
   * [MinValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MinValue.java)
+  * [NumberOfDigits](https://github.com/TheAlgorithms/Java/blob/master/Maths/NumberOfDigits.java)
   * [PalindromeNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/PalindromeNumber.java)
   * [ParseInteger](https://github.com/TheAlgorithms/Java/blob/master/Maths/ParseInteger.java)
   * [PerfectNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectNumber.java)

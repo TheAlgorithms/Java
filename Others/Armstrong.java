@@ -1,49 +1,43 @@
 package Others;
 
-import java.util.Scanner;
-
 /**
- * A utility to check if a given number is armstrong or not. Armstrong number is
- * a number that is equal to the sum of cubes of its digits for example 0, 1,
- * 153, 370, 371, 407 etc. For example 153 = 1^3 + 5^3 +3^3
- *
- * @author mani manasa mylavarapu
+ * An Armstrong number is equal to the sum of the cubes of its digits.
+ * For example, 370 is an Armstrong number because 3*3*3 + 7*7*7 + 0*0*0 = 370.
+ * An Armstrong number is often called Narcissistic number.
  */
 public class Armstrong {
-    static Scanner scan;
 
     public static void main(String[] args) {
-        scan = new Scanner(System.in);
-        int n = inputInt("please enter the number");
-        boolean isArmstrong = checkIfANumberIsAmstrongOrNot(n);
-        if (isArmstrong) {
-            System.out.println("the number is armstrong");
-        } else {
-            System.out.println("the number is not armstrong");
-        }
+        assert (isArmStrong(0));
+        assert (isArmStrong(1));
+        assert (isArmStrong(153));
+        assert (isArmStrong(1634));
+        assert (isArmStrong(371));
+        assert (!isArmStrong(200));
     }
 
     /**
-     * Checks whether a given number is an armstrong number or not. Armstrong
-     * number is a number that is equal to the sum of cubes of its digits for
-     * example 0, 1, 153, 370, 371, 407 etc.
+     * Checks whether a given number is an armstrong number or not.
      *
-     * @param number
-     * @return boolean
+     * @param number number to check
+     * @return {@code true} if given number is armstrong number, {@code false} otherwise
      */
-    public static boolean checkIfANumberIsAmstrongOrNot(int number) {
-        int remainder, sum = 0, temp = 0;
-        temp = number;
+    private static boolean isArmStrong(int number) {
+        int sum = 0;
+        int temp = number;
+        int numberOfDigits = 0;
+        while (temp != 0) {
+            numberOfDigits++;
+            temp /= 10;
+        }
+        temp = number; /* copy number again */
         while (number > 0) {
-            remainder = number % 10;
-            sum = sum + (remainder * remainder * remainder);
-            number = number / 10;
+            int remainder = number % 10;
+            int power = 1;
+            for (int i = 1; i <= numberOfDigits; power *= remainder, ++i) ;
+            sum = sum + power;
+            number /= 10;
         }
         return sum == temp;
-    }
-
-    private static int inputInt(String string) {
-        System.out.print(string);
-        return Integer.parseInt(scan.nextLine());
     }
 }
