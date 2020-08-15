@@ -33,16 +33,16 @@ package DataStructures.Lists;
 	        LinkedList updLL1=new LinkedList();
 	        updLL1.formRes(LL1,LL2,LL3,MID);
 	        updLL1.display();
-	        updLL1.Size();
+	        updLL1.size();
  
  */
- 
- 
  
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-class LinkedList {
+
+public class LinkedList {
+
 	    private class Node{    
 	        int data;    
 	        Node next;    
@@ -52,9 +52,16 @@ class LinkedList {
 	            this.next = null;    
 	        }    
 	    }
-	    public Node head = null;    
-	    public Node tail = null;    
-	    private int size=0;    
+	    
+	    private Node head;  
+	    private Node tail;    
+	    private int size;  
+	    
+	    public LinkedList() {
+	    	head = null;
+		tail = null;
+		size = 0;
+	    }
 	    
 	    public void addLast(int data) {    
 	        Node newNode = new Node(data);    
@@ -92,6 +99,7 @@ class LinkedList {
 	    		current=current.next.next;
 	    	}	
 	    }
+	    
 	    public void formLL3(LinkedList LL1) {
 	    	Node current=LL1.head.next;
 	    	while(current.next!=null&&current.next.next!=null) {
@@ -100,6 +108,7 @@ class LinkedList {
 	    		current=current.next.next;	    		
 	    	}	
 	    }
+	    
 	    public Node mid() {
 	    	Node slow=this.head;
 	    	Node fast=this.head;
@@ -109,11 +118,13 @@ class LinkedList {
 	    	}
 	    	return slow;
 	    }
+	    
 	    public Node midValue() {
 	    	int sum=this.head.data+this.tail.data;
 	    	Node mid=new Node(sum);
 	    	return mid;
 	    }
+	    
 	    public void formRes(LinkedList LL1,LinkedList LL2,LinkedList LL3,Node MID) {
 	    	Node LL1mid=LL1.mid();
 	    	Node currentLL1=LL1.head;
@@ -135,7 +146,8 @@ class LinkedList {
     			currentLL1=currentLL1.next;	
 	    	}
 	    }
-	    public void Size() {
+	    
+	    public void size() {
 	    	System.out.println(this.size);
 	    }
   }
