@@ -62,6 +62,7 @@
     * [CircleLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CircleLinkedList.java)
     * [CursorLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CursorLinkedList.java)
     * [DoublyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/DoublyLinkedList.java)
+    * [ListAddnFun](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/ListAddnFun.java)
     * [Merge K SortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/Merge_K_SortedLinkedlist.java)
     * [MergeSortedArrayList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/MergeSortedArrayList.java)
     * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/SinglyLinkedList.java)
