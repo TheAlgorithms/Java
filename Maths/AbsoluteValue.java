@@ -1,12 +1,12 @@
 package Maths;
 
-/**
- * @author PatOnTheBack
- */
-
 public class AbsoluteValue {
 
     public static void main(String[] args) {
+    	assert absVal(-13) == 13;
+    	assert absVal(0) == 0;
+    	assert absVal(100) == 100;
+    	
         int value = -34;
         System.out.println("The absolute value of " + value + " is " + absVal(value));
     }

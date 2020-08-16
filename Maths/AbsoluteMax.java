@@ -10,7 +10,10 @@ import java.util.Arrays;
  */
 public class AbsoluteMax {
     public static void main(String[] args) {
-        int[] numbers = new int[]{3, -10, -2};
+    	int[] testnums = {-2, 0, 16};
+    	assert absMax(testnums) == 16;
+    	
+        int[] numbers = {3, -10, -2};
         System.out.println("absMax(" + Arrays.toString(numbers) + ") = " + absMax(numbers));
     }
 
