@@ -17,6 +17,11 @@ public class MaxValue {
     }
 
     public static void main(String[] args) {
+    	assert max(-3,3) == 3;
+    	assert max(-6,-20) == -6;
+    	assert max(100,32) == 100;
+    	assert max(13,13) == 13;
+    	
         int a = 3;
         int b = 4;
         System.out.format("max:%d between %d and %d", max(a, b), a, b);

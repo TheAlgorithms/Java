@@ -17,6 +17,11 @@ public class MinValue {
     }
 
     public static void main(String[] args) {
+    	assert min(-3,3) == -3;
+    	assert min(-6,-20) == -20;
+    	assert min(100,32) == 32;
+    	assert min(13,13) == 13;
+    	
         int a = 3;
         int b = 4;
         System.out.format("min:%d between %d and %d", min(a, b), a, b);
