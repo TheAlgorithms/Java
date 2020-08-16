@@ -1,6 +1,6 @@
 package Misc;
 
-public class heap_sort {
+public class HeapSort {
     public void sort(int[] arr) {
         int n = arr.length;
 
