@@ -149,7 +149,7 @@
   * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/MinimizingLateness/MinimizingLateness.java)
 
 ## Misc
-  * [heap sort](https://github.com/TheAlgorithms/Java/blob/master/Misc/heap_sort.java)
+  * [HeapSort](https://github.com/TheAlgorithms/Java/blob/master/Misc/HeapSort.java)
   * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/MedianOfRunningArray.java)
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
 
