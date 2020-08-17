@@ -1,22 +1,27 @@
 package DataStructures.HashMap.Hashing;
 
+import java.util.*;
+
 /**
  * This class is an implementation of a hash table using linear probing
- *
+ * It uses a dynamic array to lengthen the size of the hash table when
+ * load factor > .7
  */
 public class HashMapLinearProbing {
-    private int hsize;
-    private Integer[] buckets;
+    private int hsize; //size of the hash table
+    private Integer[] buckets; //array representing the table
     private Integer AVAILABLE;
+    private int size; //amount of elements in the hash table
 
     /**
      * Constructor initializes buckets array, hsize, and creates dummy object for AVAILABLE
      * @param hsize the desired size of the hash map
      */
     public HashMapLinearProbing(int hsize) {
-        buckets = new Integer[hsize];
+        this.buckets = new Integer[hsize];
         this.hsize = hsize;
-        AVAILABLE = new Integer(Integer.MIN_VALUE);
+        this.AVAILABLE = new Integer(Integer.MIN_VALUE);
+        this.size = 0;
     }
     
     /**
@@ -48,6 +53,7 @@ public class HashMapLinearProbing {
         for (int i = 0;i < hsize; i++) {
     		if(buckets[hash] == null || buckets[hash] == AVAILABLE) {
     			buckets[hash] = wrappedInt;
+    	        size++;
     			return;
     		}
     		
@@ -56,7 +62,7 @@ public class HashMapLinearProbing {
         	} else {
         		hash = 0;
         	} 
-    	}	
+    	}
     }
     
     /**
@@ -75,6 +81,7 @@ public class HashMapLinearProbing {
         for(int i = 0;i < hsize; i++) {
         	if(buckets[hash] != null && buckets[hash].equals(wrappedInt)) {
             	buckets[hash] = AVAILABLE;
+            	size--;
             	return;
             }
         	
@@ -116,10 +123,12 @@ public class HashMapLinearProbing {
         }
         
         for(int i = 0;i < hsize; i++) {
-        	if(buckets[hash].equals(wrappedInt)) {
-            	buckets[hash] = AVAILABLE;
-            	return hash;
-            }
+        	try {
+        		if(buckets[hash].equals(wrappedInt)) {
+                	buckets[hash] = AVAILABLE;
+                	return hash;
+                }
+        	} catch (Exception E) {}
         	
         	if(hash + 1 < hsize) {
         		hash++;
@@ -129,6 +138,27 @@ public class HashMapLinearProbing {
         }
     	System.out.println("Key " + key + " not found");
     	return -1;
+    }
+    
+    private void lengthenTable() {
+    	buckets = Arrays.copyOf(buckets, hsize * 2);
+    	hsize *= 2;
+    	System.out.println("Table size is now: " + hsize);
+    }
+    
+    /**
+     * Checks the load factor of the hash table
+     * if greater than .7, automatically lengthens table 
+     * to prevent further collisions
+     */
+    public void checkLoadFactor() {
+    	double factor = (double) size / hsize;
+    	if(factor > .7) {
+    		System.out.println("Load factor is " + factor + ",  lengthening table");
+    		lengthenTable();
+    	} else {
+    		System.out.println("Load factor is " + factor);
+    	}
     }
     
     /**

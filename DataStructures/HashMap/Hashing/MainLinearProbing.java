@@ -17,6 +17,7 @@ public class MainLinearProbing {
 			System.out.println("3. Print Table");
 			System.out.println("4. Exit");
 			System.out.println("5. Search and print key index");
+			System.out.println("6. Check load factor");
 			
 			choice = In.nextInt();
 
@@ -46,7 +47,12 @@ public class MainLinearProbing {
 					System.out.println("Enter the Key to find and print:  ");
 					key = In.nextInt();
 					System.out.println("Key: "+ key + " is at index: "+ h.findHash(key));
+					break;
 				}	
+				case 6: {
+					h.checkLoadFactor();
+					break;
+				}
 			}
 			
 		}
