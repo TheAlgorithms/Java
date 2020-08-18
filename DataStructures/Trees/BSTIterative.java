@@ -3,9 +3,9 @@
  *
  * <h1>Binary Search Tree (Iterative)</h1>
  *
- * An implementation of BST iteratively. Binary Search Tree is a binary tree which satisfies three
- * properties: left child is less than root node, right child is grater than root node, both left
- * and right childs must themselves be a BST.
+ * <p>An implementation of BST iteratively. Binary Search Tree is a binary tree which satisfies
+ * three properties: left child is less than root node, right child is grater than root node, both
+ * left and right childs must themselves be a BST.
  *
  * @author [Lakhan Nad](https://github.com/Lakhan-Nad)
  */
@@ -18,6 +18,28 @@ public class BSTIterative {
   /** Default Constructor Initializes the root of BST with null. */
   BSTIterative() {
     root = null;
+  }
+
+  /** main function for tests */
+  public static void main(String[] args) {
+    BSTIterative tree = new BSTIterative();
+    tree.add(3);
+    tree.add(2);
+    tree.add(9);
+    assert !tree.find(4) : "4 is not yet present in BST";
+    assert tree.find(2) : "2 should be present in BST";
+    tree.remove(2);
+    assert !tree.find(2) : "2 was just deleted from BST";
+    tree.remove(1);
+    assert !tree.find(1) : "Since 1 was not present so find deleting would do no change";
+    tree.add(30);
+    tree.add(40);
+    assert tree.find(40) : "40 was inserted but not found";
+    /*
+       Will print following order
+       3 9 30 40
+    */
+    tree.inorder();
   }
 
   /**
@@ -47,24 +69,24 @@ public class BSTIterative {
         return; // if data already present we ignore insertion
       }
     }
-    /* Creates a newnode with the value passed
+    /* Creates a newNode with the value passed
      * Since this data doesn't already exists
      */
-    Node newnode = new Node(data);
+    Node newNode = new Node(data);
     /* If the parent node is null
      * then the insertion is to be done in
      * root itself.
      */
     if (parent == null) {
-      this.root = newnode;
+      this.root = newNode;
     } else {
       /* Check if insertion is to be made in
        * left or right subtree.
        */
       if (rightOrLeft == 0) {
-        parent.left = newnode;
+        parent.left = newNode;
       } else {
-        parent.right = newnode;
+        parent.right = newNode;
       }
     }
   }
@@ -250,7 +272,7 @@ public class BSTIterative {
   }
 
   /** The Node class used for building binary search tree */
-  private class Node {
+  private static class Node {
     int data;
     Node left;
     Node right;
