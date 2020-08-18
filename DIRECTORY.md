@@ -81,6 +81,8 @@
   * Trees
     * [AVLTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/AVLTree.java)
     * [BinaryTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/BinaryTree.java)
+    * [BSTIterative](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/BSTIterative.java)
+    * [BSTRecursive](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/BSTRecursive.java)
     * [GenericTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/GenericTree.java)
     * [LevelOrderTraversal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/LevelOrderTraversal.java)
     * [LevelOrderTraversalQueue](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/LevelOrderTraversalQueue.java)
