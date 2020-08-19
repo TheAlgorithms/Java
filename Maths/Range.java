@@ -23,6 +23,8 @@ public class Range {
 		assert range(new short[]{5, 12, 7, 199}) == 194;
 		
 		/* Test array of integers */
+		assert range(new int[]{}) == 0;
+		assert range(new int[]{4}) == 0;
 		assert range(new int[]{6, 2, 1, 0, 8, 4, 9}) == 9;
 		assert range(new int[]{5, 3, 9, 27, 10}) == 24;
 		assert range(new int[]{-8, -12, 5}) == 17;
@@ -50,7 +52,6 @@ public class Range {
 	public static byte range(byte[] numbers) {
 		
 		if(numbers.length == 0) return 0;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
@@ -67,7 +68,6 @@ public class Range {
 	public static short range(short[] numbers) {
 		
 		if(numbers.length == 0) return 0;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
@@ -84,7 +84,6 @@ public class Range {
 	public static int range(int[] numbers) {
 		
 		if(numbers.length == 0) return 0;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
@@ -101,7 +100,6 @@ public class Range {
 	public static long range(long[] numbers) {
 		
 		if(numbers.length == 0) return 0l;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
@@ -118,7 +116,6 @@ public class Range {
 	public static float range(float[] numbers) {
 		
 		if(numbers.length == 0) return 0.0f;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
@@ -135,7 +132,6 @@ public class Range {
 	public static double range(double[] numbers) {
 		
 		if(numbers.length == 0) return 0.0d;
-		if(numbers.length == 1) return numbers[0];
 		
 		Arrays.sort(numbers);
 		
