@@ -1,7 +1,5 @@
 package Maths;
 
-import java.util.Arrays;
-
 /*
  * Calculate the range of an array of numbers
  * 
@@ -25,6 +23,7 @@ public class Range {
 		/* Test array of integers */
 		assert range(new int[]{}) == 0;
 		assert range(new int[]{4}) == 0;
+		assert range(new int[]{7, 3}) == 4;
 		assert range(new int[]{6, 2, 1, 0, 8, 4, 9}) == 9;
 		assert range(new int[]{5, 3, 9, 27, 10}) == 24;
 		assert range(new int[]{-8, -12, 5}) == 17;
@@ -51,11 +50,23 @@ public class Range {
 	 */
 	public static byte range(byte[] numbers) {
 		
-		if(numbers.length == 0) return 0;
+		if(numbers.length == 0 || numbers.length == 1) return 0;
 		
-		Arrays.sort(numbers);
+		byte min = numbers[0];
+		byte max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			byte num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return (byte) (numbers[numbers.length - 1] - numbers[0]);
+		return (byte) (max - min);
 		
 	}
 	
@@ -67,11 +78,23 @@ public class Range {
 	 */
 	public static short range(short[] numbers) {
 		
-		if(numbers.length == 0) return 0;
+		if(numbers.length == 0 || numbers.length == 1) return 0;
 		
-		Arrays.sort(numbers);
+		short min = numbers[0];
+		short max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			short num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return (short) (numbers[numbers.length - 1] - numbers[0]);
+		return (short) (max - min);
 		
 	}
 	
@@ -83,11 +106,23 @@ public class Range {
 	 */
 	public static int range(int[] numbers) {
 		
-		if(numbers.length == 0) return 0;
+		if(numbers.length == 0 || numbers.length == 1) return 0;
 		
-		Arrays.sort(numbers);
+		int min = numbers[0];
+		int max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			int num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return numbers[numbers.length - 1] - numbers[0];
+		return max - min;
 		
 	}
 	
@@ -99,11 +134,23 @@ public class Range {
 	 */
 	public static long range(long[] numbers) {
 		
-		if(numbers.length == 0) return 0l;
+		if(numbers.length == 0 || numbers.length == 1) return 0;
 		
-		Arrays.sort(numbers);
+		long min = numbers[0];
+		long max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			long num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return numbers[numbers.length - 1] - numbers[0];
+		return max - min;
 		
 	}
 	
@@ -115,11 +162,23 @@ public class Range {
 	 */
 	public static float range(float[] numbers) {
 		
-		if(numbers.length == 0) return 0.0f;
+		if(numbers.length == 0 || numbers.length == 1) return 0.0f;
 		
-		Arrays.sort(numbers);
+		float min = numbers[0];
+		float max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			float num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return numbers[numbers.length - 1] - numbers[0];
+		return max - min;
 		
 	}
 	
@@ -131,11 +190,23 @@ public class Range {
 	 */
 	public static double range(double[] numbers) {
 		
-		if(numbers.length == 0) return 0.0d;
+		if(numbers.length == 0 || numbers.length == 1) return 0.0d;
 		
-		Arrays.sort(numbers);
+		double min = numbers[0];
+		double max = numbers[0];
+		for(int i = 1; i < numbers.length; i++) {
+			
+			double num = numbers[i];
+			
+			if(num < min) {
+				min = num;
+			} else if(num > max) {
+				max = num;
+			}
+			
+		}
 		
-		return numbers[numbers.length - 1] - numbers[0];
+		return max - min;
 		
 	}
 	
