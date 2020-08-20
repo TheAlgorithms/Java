@@ -135,6 +135,7 @@
   * [LucasSeries](https://github.com/TheAlgorithms/Java/blob/master/Maths/LucasSeries.java)
   * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MaxValue.java)
   * [MinValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MinValue.java)
+  * [Mode](https://github.com/TheAlgorithms/Java/blob/master/Maths/Mode.java)
   * [NumberOfDigits](https://github.com/TheAlgorithms/Java/blob/master/Maths/NumberOfDigits.java)
   * [PalindromeNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/PalindromeNumber.java)
   * [ParseInteger](https://github.com/TheAlgorithms/Java/blob/master/Maths/ParseInteger.java)
