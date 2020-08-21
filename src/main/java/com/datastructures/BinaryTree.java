@@ -8,7 +8,7 @@ package com.datastructures;
 
 public class BinaryTree<T extends Comparable> {
     private final T data;
-    private BinaryTree right,  // the upper binary tree
+    private BinaryTree<T> right,  // the upper binary tree
             left;   // the lower binary tree
 
     public BinaryTree(T data) {
@@ -21,35 +21,38 @@ public class BinaryTree<T extends Comparable> {
     }
 
     /**
-     * inserts a new value in it's correspondant place
+     * inserts a new value in it's correspondent place
      *
      * @param newDataValue value of the new binary tree to add on this tree
      */
     public void insert(T newDataValue) {
-        this.insert(new BinaryTree(newDataValue));
+        this.insert(new BinaryTree<>(newDataValue));
     }
 
     /**
-     * inserts a new binary tree in it's correspondant place
+     * inserts a new binary tree in it's correspondent place
      *
      * @param newData new value to add on this tree
      */
-    public void insert(BinaryTree newData) {
+    public void insert(BinaryTree<T> newData) {
 
         int cpr = newData.data.compareTo(this.data); //new value comparission respect to actual value
 
-        if (cpr < 0)
-            if (this.left == null)
+        if (cpr < 0) {
+            if (this.left == null) {
                 this.setLeft(newData);
-            else
+            } else {
                 this.left.insert(newData);
-        else if (cpr > 0)
-            if (this.right == null)
+            }
+        } else if (cpr > 0) {
+            if (this.right == null) {
                 this.setRight(newData);
-            else
+            } else {
                 this.right.insert(newData);
-        else
+            }
+        } else {
             System.out.println("Redundant value, not added");
+        }
     }
 
     /**
@@ -58,8 +61,8 @@ public class BinaryTree<T extends Comparable> {
      * @param data Searched value
      * @return Binary tree which contains the value, null if it doesn't exist
      */
-    public BinaryTree search(T data) {
-        int cpr = data.compareTo(this.data); //new value comparission respect to actual value
+    public BinaryTree<T> search(T data) {
+        int cpr = data.compareTo(this.data); //new value comparison respect to actual value
 
         if (cpr < 0) {
             if (this.left == null)
@@ -113,19 +116,19 @@ public class BinaryTree<T extends Comparable> {
         return data;
     }
 
-    public BinaryTree getRight() {
+    public BinaryTree<T> getRight() {
         return right;
     }
 
-    public void setRight(BinaryTree right) {
+    public void setRight(BinaryTree<T> right) {
         this.right = right;
     }
 
-    public BinaryTree getLeft() {
+    public BinaryTree<T> getLeft() {
         return left;
     }
 
-    public void setLeft(BinaryTree left) {
+    public void setLeft(BinaryTree<T> left) {
         this.left = left;
     }
 }
