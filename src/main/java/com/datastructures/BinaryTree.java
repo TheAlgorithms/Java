@@ -1,4 +1,4 @@
-package com.dataStructures;
+package com.datastructures;
 
 /**
  * Binary tree for general value type, without redundancy

@@ -1,4 +1,4 @@
-package com.dataStructures;
+package com.datastructures;
 
 import static org.junit.Assert.*;
 
