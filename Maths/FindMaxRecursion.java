@@ -1,13 +1,23 @@
 package Maths;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class FindMaxRecursion {
     public static void main(String[] args) {
-        int[] array = {2, 4, 9, 7, 19, 94, 5};
-        int low = 0;
-        int high = array.length - 1;
+        Random rand = new Random();
 
-        assert max(array, low, high) == 94;
-        assert max(array, array.length) == 94;
+        /* rand size */
+        int size = rand.nextInt(100) + 1;
+        int[] array = new int[size];
+
+        /* init array with rand numbers */
+        for (int i = 0; i < size; i++) {
+            array[i] = rand.nextInt() % 100;
+        }
+
+        assert max(array, array.length) == Arrays.stream(array).max().getAsInt();
+        assert max(array, 0, array.length - 1) == Arrays.stream(array).max().getAsInt();
     }
 
     /**
