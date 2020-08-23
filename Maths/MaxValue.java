@@ -1,6 +1,23 @@
 package Maths;
 
+import java.util.Random;
+
 public class MaxValue {
+
+    /**
+     * Driver Code
+     */
+    public static void main(String[] args) {
+        Random rand = new Random();
+
+        /* test 100 times using rand numbers */
+        for (int i = 1; i <= 100; ++i) {
+            /* generate number from -50 to 49 */
+            int a = rand.nextInt(100) - 50;
+            int b = rand.nextInt(100) - 50;
+            assert max(a, b) == Math.max(a, b);
+        }
+    }
 
     /**
      * Returns the greater of two {@code int} values. That is, the
@@ -14,16 +31,5 @@ public class MaxValue {
      */
     public static int max(int a, int b) {
         return a >= b ? a : b;
-    }
-
-    public static void main(String[] args) {
-    	assert max(-3,3) == 3;
-    	assert max(-6,-20) == -6;
-    	assert max(100,32) == 100;
-    	assert max(13,13) == 13;
-    	
-        int a = 3;
-        int b = 4;
-        System.out.format("max:%d between %d and %d", max(a, b), a, b);
     }
 }

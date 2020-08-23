@@ -1,14 +1,17 @@
 package Maths;
 
+import java.util.Random;
+
 public class AbsoluteValue {
 
     public static void main(String[] args) {
-    	assert absVal(-13) == 13;
-    	assert absVal(0) == 0;
-    	assert absVal(100) == 100;
-    	
-        int value = -34;
-        System.out.println("The absolute value of " + value + " is " + absVal(value));
+        Random random = new Random();
+
+        /* test 1000 random numbers */
+        for (int i = 1; i <= 1000; ++i) {
+            int randomNumber = random.nextInt();
+            assert absVal(randomNumber) == Math.abs(randomNumber);
+        }
     }
 
     /**
