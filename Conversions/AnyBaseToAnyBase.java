@@ -115,7 +115,8 @@ public class AnyBaseToAnyBase {
         // the remainder until the quotient is zero. The number in the
         // new base is the remainders, with the last remainder
         // being the left-most digit.
-
+        if (0 == decimalValue)
+        	return "0";
         // While the quotient is NOT zero:
         while (decimalValue != 0) {
             // If the remainder is a digit < 10, simply add it to
