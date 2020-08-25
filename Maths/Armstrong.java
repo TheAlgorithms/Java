@@ -1,4 +1,4 @@
-package Others;
+package strings;
 
 /**
  * An Armstrong number is equal to the sum of the cubes of its digits.
