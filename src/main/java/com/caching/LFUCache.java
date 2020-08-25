@@ -75,8 +75,8 @@ class LFUCache<T> {
     public LFUCache(int capacity) {
         this.capacity = capacity;
         size = 0;
-        freq = new TreeMap<Integer, DLL>();
-        map = new HashMap<Integer, Node>();
+        freq = new TreeMap<>();
+        map = new HashMap<>();
         System.out.println("LFUCache initialised with capacity: " + capacity);
     }
 
@@ -145,8 +145,8 @@ class LFUCache<T> {
                 dll.deleteNode(dll.tail.pre);
                 if (dll.len == 0 && lowest != 1)
                     freq.remove(lowest);
-                DLL freq_one = freq.computeIfAbsent(1, k -> new DLL());
-                freq_one.addToHead(node);
+                DLL freqOne = freq.computeIfAbsent(1, k -> new DLL());
+                freqOne.addToHead(node);
             }
         }
 

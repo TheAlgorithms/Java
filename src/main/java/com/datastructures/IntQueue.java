@@ -1,4 +1,4 @@
-package com.dataStructures;
+package com.datastructures;
 
 /**
  * This file contains an implementation of an integer only queue which is extremely quick and

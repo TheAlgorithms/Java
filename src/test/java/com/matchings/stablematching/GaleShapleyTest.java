@@ -1,4 +1,4 @@
-package com.matchings.stableMatching;
+package com.matchings.stablematching;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
