@@ -1,4 +1,4 @@
-package com.dataStructures;
+package com.datastructures;
 
 import java.io.Serializable;
 import java.util.*;
@@ -18,14 +18,15 @@ import java.util.*;
  */
 public class DisjointSet<T> implements Serializable {
     private static final long serialVersionUID = 3134700471905625636L;
+    private static final String elementKey = "element";
 
-    private Map<T, Node<T>> nodeMap = new HashMap<>();
+    private final Map<T, Node<T>> nodeMap = new HashMap<>();
 
     /**
      * Add an element to the disjoint-set forests as a set.
      */
     public void makeSet(T element) {
-        checkNotNull(element, "element");
+        checkNotNull(element, elementKey);
         nodeMap.putIfAbsent(element, new Node<>());
     }
 
@@ -36,8 +37,8 @@ public class DisjointSet<T> implements Serializable {
      * Rank is an upper bound on the height of node.
      */
     public void union(T left, T right) {
-        checkNotNull(left, "element");
-        checkNotNull(right, "element");
+        checkNotNull(left, elementKey);
+        checkNotNull(right, elementKey);
 
         Node<T> leftNode = nodeMap.get(left),
                 rightNode = nodeMap.get(right);

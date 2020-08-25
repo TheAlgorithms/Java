@@ -1,4 +1,4 @@
-package com.dataStructures;
+package com.datastructures;
 
 
 import com.types.Queue;
