@@ -36,7 +36,7 @@ public class LRUCache<T> {
          *
          * @param accessOrder - Set to true if ordering mode is specified (removeEldestEntry).
          */
-        this.cache = new LinkedHashMap<>(capacity, 1.0f, true) {
+        this.cache = new LinkedHashMap<Integer, T>(capacity, 1.0f, true) {
             /**
              * @param eldest - The least recently accessed entry This is the entry that will
              *               be removed if the method returns {@code true}.
