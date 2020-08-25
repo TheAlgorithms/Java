@@ -1,4 +1,4 @@
-package com.datastructures;
+package com.dataStructures;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
