@@ -120,6 +120,7 @@
   * [AliquotSum](https://github.com/TheAlgorithms/Java/blob/master/Maths/AliquotSum.java)
   * [AmicableNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/AmicableNumber.java)
   * [Area](https://github.com/TheAlgorithms/Java/blob/master/Maths/Area.java)
+  * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Maths/Armstrong.java)
   * [Average](https://github.com/TheAlgorithms/Java/blob/master/Maths/Average.java)
   * [Ceil](https://github.com/TheAlgorithms/Java/blob/master/Maths/Ceil.java)
   * [Combinations](https://github.com/TheAlgorithms/Java/blob/master/Maths/Combinations.java)
@@ -162,8 +163,6 @@
 
 ## Others
   * [3 sum](https://github.com/TheAlgorithms/Java/blob/master/Others/3%20sum.java)
-  * [Abecedarian](https://github.com/TheAlgorithms/Java/blob/master/Others/Abecedarian.java)
-  * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Others/Armstrong.java)
   * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
   * [BrianKernighanAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Others/BrianKernighanAlgorithm.java)
   * [CountChar](https://github.com/TheAlgorithms/Java/blob/master/Others/CountChar.java)
@@ -181,7 +180,6 @@
   * [Krishnamurthy](https://github.com/TheAlgorithms/Java/blob/master/Others/Krishnamurthy.java)
   * [LinearCongruentialGenerator](https://github.com/TheAlgorithms/Java/blob/master/Others/LinearCongruentialGenerator.java)
   * [LowestBasePalindrome](https://github.com/TheAlgorithms/Java/blob/master/Others/LowestBasePalindrome.java)
-  * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/Others/Palindrome.java)
   * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/Others/PasswordGen.java)
   * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/Others/PerlinNoise.java)
   * [PowerOfTwoOrNot](https://github.com/TheAlgorithms/Java/blob/master/Others/PowerOfTwoOrNot.java)
@@ -190,7 +188,6 @@
   * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/Others/RemoveDuplicateFromString.java)
   * [ReturnSubsequence](https://github.com/TheAlgorithms/Java/blob/master/Others/ReturnSubsequence.java)
   * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseStackUsingRecursion.java)
-  * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseString.java)
   * [RootPrecision](https://github.com/TheAlgorithms/Java/blob/master/Others/RootPrecision.java)
   * [Rotation of array without using extra space](https://github.com/TheAlgorithms/Java/blob/master/Others/Rotation%20of%20array%20without%20using%20extra%20space.java)
   * [SieveOfEratosthenes](https://github.com/TheAlgorithms/Java/blob/master/Others/SieveOfEratosthenes.java)
@@ -235,3 +232,8 @@
   * [ShellSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/ShellSort.java)
   * [SortAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortAlgorithm.java)
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
+
+## strings
+  * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
+  * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/strings/Palindrome.java)
+  * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/strings/ReverseString.java)
