@@ -1,4 +1,4 @@
-package com.datastructures;
+package com.dataStructures;
 
 import java.io.Serializable;
 import java.util.EmptyStackException;
