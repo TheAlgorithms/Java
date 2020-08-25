@@ -12,7 +12,7 @@ public class HexadecimalToBinary {
 	public String hexToBin (String hexStr) {
 		
 		String binaryString = "", hexaNumbers = "0123456789ABCDEF", 
-				decimalStr ="", binaryStringBefore ="" , binaryStringAfter = "";
+				DecimalStr ="", binaryStringBefore ="" , binaryStringAfter = "";
 		int indexOfHex, decimalNumber = 0, k = 1, n =1, z=1, decimalNumberBefore = 0
 				, decimalNumberAfter = 0;
 		char letter;
@@ -48,12 +48,12 @@ public class HexadecimalToBinary {
 
 			String decimalNumberAfterStr = String.valueOf(decimalNumberAfter);
 			
-			decimalStr = decimalNumberBeforeStr + '.' + decimalNumberAfterStr;
+			DecimalStr = decimalNumberBeforeStr + '.' + decimalNumberAfterStr;
 			}
 
 		
 		
-		int pointPositionDec = decimalStr.indexOf(".");
+		int pointPositionDec = DecimalStr.indexOf(".");
 		/**
 		 * Check whether the result contains a floating point or not
 		 */

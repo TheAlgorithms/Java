@@ -63,6 +63,7 @@ public class LRUCache<T> {
             System.out.println("Cache set to 0 capacity. No elements will be cached");
         }
 
+        T currentValue = cache.get(key);
         if (!cache.containsKey(key)) {
             cache.put(key, value);
             System.out.println("Adding new key:" + key + " to cache");
