@@ -146,6 +146,7 @@
   * [PerfectNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectNumber.java)
   * [PerfectSquare](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectSquare.java)
   * [Pow](https://github.com/TheAlgorithms/Java/blob/master/Maths/Pow.java)
+  * [PowerOfTwoOrNot](https://github.com/TheAlgorithms/Java/blob/master/Maths/PowerOfTwoOrNot.java)
   * [PowRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/PowRecursion.java)
   * [PrimeCheck](https://github.com/TheAlgorithms/Java/blob/master/Maths/PrimeCheck.java)
   * [PrimeFactorization](https://github.com/TheAlgorithms/Java/blob/master/Maths/PrimeFactorization.java)
@@ -182,7 +183,6 @@
   * [LowestBasePalindrome](https://github.com/TheAlgorithms/Java/blob/master/Others/LowestBasePalindrome.java)
   * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/Others/PasswordGen.java)
   * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/Others/PerlinNoise.java)
-  * [PowerOfTwoOrNot](https://github.com/TheAlgorithms/Java/blob/master/Others/PowerOfTwoOrNot.java)
   * [QueueUsingTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/Others/QueueUsingTwoStacks.java)
   * [RabinKarp](https://github.com/TheAlgorithms/Java/blob/master/Others/RabinKarp.java)
   * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/Others/RemoveDuplicateFromString.java)
@@ -235,5 +235,10 @@
 
 ## strings
   * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
+  * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/strings/CharactersSame.java)
+  * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckAnagrams.java)
+  * [Lower](https://github.com/TheAlgorithms/Java/blob/master/strings/Lower.java)
   * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/strings/Palindrome.java)
+  * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/strings/Pangram.java)
   * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/strings/ReverseString.java)
+  * [Upper](https://github.com/TheAlgorithms/Java/blob/master/strings/Upper.java)
