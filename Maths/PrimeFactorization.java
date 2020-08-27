@@ -11,6 +11,7 @@ public class PrimeFactorization {
         int n = scanner.nextInt();
         System.out.print(("printing factors of " + n + " : "));
         pfactors(n);
+        scanner.close();
     }
     public static void pfactors(int n){
 
