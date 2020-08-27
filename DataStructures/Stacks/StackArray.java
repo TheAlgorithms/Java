@@ -8,19 +8,18 @@ package DataStructures.Stacks;
  * of an array implementation of a Stack. So an element can only be added/removed
  * from the end of the array. In theory stack have no fixed size, but with an
  * array implementation it does.
- *
- * @author Unknown
  */
 public class StackArray {
 
     /**
-     * Main method
-     *
-     * @param args Command line arguments
+     * Driver Code
      */
     public static void main(String[] args) {
         // Declare a stack of maximum size 4
         StackArray myStackArray = new StackArray(4);
+
+        assert myStackArray.isEmpty();
+        assert !myStackArray.isFull();
 
         // Populate the stack
         myStackArray.push(5);
@@ -28,12 +27,12 @@ public class StackArray {
         myStackArray.push(2);
         myStackArray.push(9);
 
-        System.out.println("*********************Stack Array Implementation*********************");
-        System.out.println(myStackArray.isEmpty()); // will print false
-        System.out.println(myStackArray.isFull()); // will print true
-        System.out.println(myStackArray.peek()); // will print 9
-        System.out.println(myStackArray.pop()); // will print 9
-        System.out.println(myStackArray.peek()); // will print 2
+        assert !myStackArray.isEmpty();
+        assert myStackArray.isFull();
+        assert myStackArray.peek() == 9;
+        assert myStackArray.pop() == 9;
+        assert myStackArray.peek() == 2;
+        assert myStackArray.size() == 3;
     }
 
     /**
@@ -62,7 +61,7 @@ public class StackArray {
     public StackArray() {
         this(DEFAULT_CAPACITY);
     }
-    
+
     /**
      * Constructor
      *
@@ -161,5 +160,14 @@ public class StackArray {
      */
     public void makeEmpty() { // Doesn't delete elements in the array but if you call
         top = -1;             // push method after calling makeEmpty it will overwrite previous values
+    }
+
+    /**
+     * Return size of stack
+     *
+     * @return size of stack
+     */
+    public int size() {
+        return top + 1;
     }
 }
