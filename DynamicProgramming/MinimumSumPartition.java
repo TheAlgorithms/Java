@@ -41,6 +41,7 @@ public class MinimumSumPartition
 		     	    min = Math.min(min,(sum-2*ans[i]));
 			System.out.println(min);
 		}
+		sc.close();
 	 }
 	 static int[] subset(int arr[],int sum)
 	 {
