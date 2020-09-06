@@ -27,7 +27,7 @@ public class MinimumSumPartition
         for (int i = 0; i <= n; i++) {
             dp[i][0] = true;
         }
-        for(int j = 0; j < sum; j++){
+        for (int j = 0; j <= sum; j++) {
             dp[0][j] = false;
         }
 
