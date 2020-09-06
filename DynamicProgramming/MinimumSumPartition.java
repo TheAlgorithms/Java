@@ -81,13 +81,12 @@ public class MinimumSumPartition
         return min;
     }
 
-    public static void main(String args[]){
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int arr[] = new int[n];
-        for(int i = 0 ; i<n; i++){
-            arr[i] = in.nextInt();
-        }
-        System.out.println(subSet(arr));
+    /**
+     * Driver Code
+     */
+    public static void main(String[] args) {
+        assert subSet(new int[]{1, 6, 11,5}) == 1;
+        assert subSet(new int[]{36, 7, 46, 40}) == 23;
+        assert subSet(new int[]{1, 2, 3, 9}) == 3;
     }
 }
