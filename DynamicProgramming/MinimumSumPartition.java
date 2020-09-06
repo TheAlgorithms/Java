@@ -69,13 +69,13 @@ public class MinimumSumPartition
         return sum;
     }
 
-    public static int getMin(int arr[], int sum){
-        if(arr.length <= 0){
+    public static int getMin(int[] arr, int sum) {
+        if (arr.length == 0) {
             return 0;
         }
         int min = Integer.MAX_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            min = Math.min(min, (sum - 2*arr[i]));
+        for (int temp : arr) {
+            min = Math.min(min, sum - 2 * temp);
         }
         return min;
     }
