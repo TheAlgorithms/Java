@@ -20,56 +20,73 @@ import java.lang.*;
 import java.io.*;
 public class MinimumSumPartition
 {
-	public static void main (String[] args)
-	{
-	 	Scanner sc = new Scanner(System.in);
-	 	int t = sc.nextInt();
-	 	while(t-->0)
-	 	{
-			int n = sc.nextInt();
-		     	int arr[] = new int[n];
-		     	int sum = 0;
-		     	for(int i = 0;i < n;i++)
-		     	{
-				arr[i] = sc.nextInt();
-			 	sum += arr[i];
-		     	}
-		     	int ans[] = new int[sum];
-		     	ans = subset(arr,sum);
-		     	int min = Integer.MAX_VALUE;
-		     	for (int i = 0; i < ans.length; i++)
-		     	    min = Math.min(min,(sum-2*ans[i]));
-			System.out.println(min);
-		}
-		sc.close();
-	 }
-	 static int[] subset(int arr[],int sum)
-	 {
-	 	int n = arr.length;
-	     	boolean dp[][] = new boolean[n+1][sum+1];
-	    	for(int i = 0; i <= n; i++)
-	     		dp[i][0] = true;
-	     	for(int i = 1; i <= sum; i++)
-	     		dp[0][i] = false;
-	     	// subset sum concept
-	    	for(int i = 1; i <= n; i++)
-	    	{
-	        	for(int j = 1; j <= sum; j++)
-	        	{
-	            		if(arr[i-1] <= j)
-	            			dp[i][j] = dp[i-1][j-arr[i-1]] || dp[i-1][j];
-	            		else
-	            			dp[i][j] = dp[i-1][j];
-	        	}
-	    	}
-	    	//storing last dp column whose value is true till sum/2
-	    	int index[] = new int[sum];
-	    	int p = 0;
-	    	for(int i = 0 ; i <= sum / 2; i++)
-	    	{
-	        	if(dp[n][i] == true)
-	            		index[p++] = i;
-	    	}
-	    	return index;
-	 }
+	public static int subSet(int[] arr) {
+        int n = arr.length;
+        int sum = getSum(arr);
+        boolean[][] dp = new boolean[n + 1][sum + 1];
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = true;
+        }
+        for (int j = 0; j <= sum; j++) {
+            dp[0][j] = false;
+        }
+
+        //fill dp array
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                if (arr[i - 1] < j) {
+                    dp[i][j] = dp[i - 1][j - arr[i - 1]] || dp[i - 1][j];
+                } else if (arr[i - 1] == j) {
+                    dp[i][j] = true;
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
+
+        // fill the index array
+        int[] index = new int[sum];
+        int p = 0;
+        for (int i = 0; i <= sum / 2; i++) {
+            if (dp[n][i]) {
+                index[p++] = i;
+            }
+        }
+
+        return getMin(index, sum);
+    }
+
+    /**
+     * Calculate sum of array elements
+     *
+     * @param arr the array
+     * @return sum of given array
+     */
+    public static int getSum(int[] arr) {
+        int sum = 0;
+        for (int temp : arr) {
+            sum += temp;
+        }
+        return sum;
+    }
+
+    public static int getMin(int[] arr, int sum) {
+        if (arr.length == 0) {
+            return 0;
+        }
+        int min = Integer.MAX_VALUE;
+        for (int temp : arr) {
+            min = Math.min(min, sum - 2 * temp);
+        }
+        return min;
+    }
+
+    /**
+     * Driver Code
+     */
+    public static void main(String[] args) {
+        assert subSet(new int[]{1, 6, 11,5}) == 1;
+        assert subSet(new int[]{36, 7, 46, 40}) == 23;
+        assert subSet(new int[]{1, 2, 3, 9}) == 3;
+    }
 }
