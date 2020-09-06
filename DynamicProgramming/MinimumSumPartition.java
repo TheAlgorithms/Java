@@ -49,8 +49,8 @@ public class MinimumSumPartition
         // fill the index array
         int index[] = new int[sum];
         int p = 0;
-        for(int i = 0; i <= sum / 2; i++){
-            if(dp[n][i]){
+        for (int i = 0; i <= sum / 2; i++) {
+            if (dp[n][i]) {
                 index[p++] = i;
             }
         }
