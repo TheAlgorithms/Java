@@ -58,13 +58,16 @@ public class MinimumSumPartition
         return getMin(index, sum);
     }
 
-    public static int getSum(int arr[]){
-        if(arr.length <= 0){
-            return 0;
-        }
+    /**
+     * Calculate sum of array elements
+     *
+     * @param arr the array
+     * @return sum of given array
+     */
+    public static int getSum(int[] arr) {
         int sum = 0;
-        for(int i = 0; i < arr.length; i++){
-            sum += arr[i];
+        for (int temp : arr) {
+            sum += temp;
         }
         return sum;
     }
