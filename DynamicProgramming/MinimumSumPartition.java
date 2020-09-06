@@ -20,7 +20,7 @@ import java.lang.*;
 import java.io.*;
 public class MinimumSumPartition
 {
-	public static int subSet(int arr[]){
+	public static int subSet(int[] arr) {
         int n = arr.length;
         int sum = getSum(arr);
         boolean dp[][] = new boolean[n+1][sum+1];
