@@ -24,7 +24,7 @@ public class MinimumSumPartition
         int n = arr.length;
         int sum = getSum(arr);
         boolean[][] dp = new boolean[n + 1][sum + 1];
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i <= n; i++) {
             dp[i][0] = true;
         }
         for(int j = 0; j < sum; j++){
