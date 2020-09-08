@@ -50,7 +50,7 @@ public class BucketSort {
 
         /* store elements to buckets */
         for (int value : arr) {
-            int hash = hash(value, max, numberOfBuckets);
+            int hash = hash(value, min, numberOfBuckets);
             buckets.get(hash).add(value);
         }
 
