@@ -241,4 +241,5 @@
   * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/strings/Palindrome.java)
   * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/strings/Pangram.java)
   * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/strings/ReverseString.java)
+  * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/strings/Rotation.java)
   * [Upper](https://github.com/TheAlgorithms/Java/blob/master/strings/Upper.java)
