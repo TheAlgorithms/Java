@@ -5,31 +5,31 @@ package Maths;
  */
 public class Area {
     public static void main(String[] args) {
+        
         /* test cube */
-        assert surfaceAreaCube(1) == 6;
+        assert Double.compare(surfaceAreaCube(1), 6.0) == 0;
 
         /* test sphere */
-        assert surfaceAreaSphere(5) == 314.1592653589793;
-        assert surfaceAreaSphere(1) == 12.566370614359172;
+        assert Double.compare(surfaceAreaSphere(5), 314.1592653589793) == 0;
+        assert Double.compare(surfaceAreaSphere(1), 12.566370614359172) == 0;
 
         /* test rectangle */
-        assert surfaceAreaRectangle(10, 20) == 200;
+        assert Double.compare(surfaceAreaRectangle(10, 20), 200.0) == 0;
 
         /* test square */
-        assert surfaceAreaSquare(10) == 100;
+        assert Double.compare(surfaceAreaSquare(10), 100.0) == 0;
 
         /* test triangle */
-        assert surfaceAreaTriangle(10, 10) == 50;
+        assert Double.compare(surfaceAreaTriangle(10, 10), 50.0) == 0;
 
         /* test parallelogram */
-        assert surfaceAreaParallelogram(10, 20) == 200;
+        assert Double.compare(surfaceAreaParallelogram(10, 20), 200.0) == 0;
 
         /* test trapezium */
-        assert surfaceAreaTrapezium(10, 20, 30) == 450;
+        assert Double.compare(surfaceAreaTrapezium(10, 20, 30), 450.0) == 0;
 
         /* test circle */
-        assert surfaceAreaCircle(20) == 1256.6370614359173;
-
+        assert Double.compare(surfaceAreaCircle(20), 1256.6370614359173) == 0;
     }
 
     /**
@@ -38,7 +38,7 @@ public class Area {
      * @param sideLength side length of cube
      * @return surface area of given cube
      */
-    public static double surfaceAreaCube(double sideLength) {
+    private static double surfaceAreaCube(double sideLength) {
         return 6 * sideLength * sideLength;
     }
 
@@ -48,7 +48,7 @@ public class Area {
      * @param radius radius of sphere
      * @return surface area of given sphere
      */
-    public static double surfaceAreaSphere(double radius) {
+    private static double surfaceAreaSphere(double radius) {
         return 4 * Math.PI * radius * radius;
     }
 
@@ -59,7 +59,7 @@ public class Area {
      * @param width  width of rectangle
      * @return area of given rectangle
      */
-    public static double surfaceAreaRectangle(double length, double width) {
+    private static double surfaceAreaRectangle(double length, double width) {
         return length * width;
     }
 
@@ -69,7 +69,7 @@ public class Area {
      * @param sideLength side length of square
      * @return area of given square
      */
-    public static double surfaceAreaSquare(double sideLength) {
+    private static double surfaceAreaSquare(double sideLength) {
         return sideLength * sideLength;
     }
 
@@ -80,7 +80,7 @@ public class Area {
      * @param height height of triangle
      * @return area of given triangle
      */
-    public static double surfaceAreaTriangle(double base, double height) {
+    private static double surfaceAreaTriangle(double base, double height) {
         return base * height / 2;
     }
 
@@ -91,7 +91,7 @@ public class Area {
      * @param height height of parallelogram
      * @return area of given parallelogram
      */
-    public static double surfaceAreaParallelogram(double base, double height) {
+    private static double surfaceAreaParallelogram(double base, double height) {
         return base * height;
     }
 
@@ -103,7 +103,7 @@ public class Area {
      * @param height height of trapezium
      * @return area of given trapezium
      */
-    public static double surfaceAreaTrapezium(double base1, double base2, double height) {
+    private static double surfaceAreaTrapezium(double base1, double base2, double height) {
         return (base1 + base2) * height / 2;
     }
 
@@ -113,7 +113,7 @@ public class Area {
      * @param radius radius of circle
      * @return area of given circle
      */
-    public static double surfaceAreaCircle(double radius) {
+    private static double surfaceAreaCircle(double radius) {
         return Math.PI * radius * radius;
     }
 }
