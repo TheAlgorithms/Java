@@ -200,6 +200,10 @@
   * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/Others/TowerOfHanoi.java)
   * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/WorstFit.java)
 
+## ProjectEuler
+  * [Problem01](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem01.java)
+  * [Problem02](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem02.java)
+
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
   * [InterpolationSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/InterpolationSearch.java)
