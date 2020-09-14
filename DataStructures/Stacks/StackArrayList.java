@@ -1,6 +1,7 @@
 package DataStructures.Stacks;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 /**
  * This class implements a Stack using an ArrayList.
@@ -10,43 +11,49 @@ import java.util.ArrayList;
  * <p>
  * This is an ArrayList Implementation of a stack, where size is not
  * a problem we can extend the stack as much as we want.
- *
- * @author Unknown
  */
 public class StackArrayList {
 
     /**
-     * Main method
-     *
-     * @param args Command line arguments
+     * Driver Code
      */
     public static void main(String[] args) {
-        
-        StackArrayList myStackArrayList = new StackArrayList();
-        
-        myStackArrayList.push(5);
-        myStackArrayList.push(8);
-        myStackArrayList.push(2);
-        myStackArrayList.push(9);
+        StackArrayList stack = new StackArrayList();
+        assert stack.isEmpty();
 
-        System.out.println("*********************Stack List Implementation*********************");
-        System.out.println(myStackArrayList.isEmpty()); // will print false
-        System.out.println(myStackArrayList.peek()); // will print 9
-        System.out.println(myStackArrayList.pop()); // will print 9
-        System.out.println(myStackArrayList.peek()); // will print 2
-        System.out.println(myStackArrayList.pop()); // will print 2
+        for (int i = 1; i <= 5; ++i) {
+            stack.push(i);
+            assert stack.size() == i;
+        }
+
+        assert stack.size() == 5;
+        assert stack.peek() == 5 && stack.pop() == 5 && stack.peek() == 4;
+
+        /* pop elements at the top of this stack one by one */
+        while (!stack.isEmpty()) {
+            stack.pop();
+        }
+        assert stack.isEmpty();
+
+        try {
+            stack.pop();
+            assert false; /* this should not happen */
+        } catch (EmptyStackException e) {
+            assert true; /* this should happen */
+        }
+
     }
 
     /**
      * ArrayList representation of the stack
      */
-    private ArrayList<Integer> stackList;
+    private ArrayList<Integer> stack;
 
     /**
      * Constructor
      */
     public StackArrayList() {
-        stackList = new ArrayList<>();
+        stack = new ArrayList<>();
     }
 
     /**
@@ -56,42 +63,51 @@ public class StackArrayList {
      * @param value value to be added
      */
     public void push(int value) {
-        stackList.add(value);
+        stack.add(value);
     }
 
     /**
-     * Pops last element of list which is indeed
-     * the top for Stack
+     * Removes the element at the top of this stack and returns
      *
      * @return Element popped
+     * @throws EmptyStackException if the stack is empty.
      */
     public int pop() {
-
-        if (!isEmpty()) { // checks for an empty Stack
-            int popValue = stackList.get(stackList.size() - 1);
-            stackList.remove(stackList.size() - 1);  // removes the poped element from the list
-            return popValue;
+        if (isEmpty()) {
+            throw new EmptyStackException();
         }
 
-        System.out.print("The stack is already empty!");
-        return -1;
+        /* remove the element on the top of the stack */
+        return stack.remove(stack.size() - 1);
     }
 
     /**
-     * Checks for empty Stack
+     * Test if the stack is empty.
      *
-     * @return true if stack is empty
+     * @return {@code true} if this stack is empty, {@code false} otherwise.
      */
     public boolean isEmpty() {
-        return stackList.isEmpty();
+        return stack.isEmpty();
     }
 
     /**
-     * Top element of stack
+     * Return the element at the top of this stack without removing it from the stack.
      *
-     * @return top element of stack
+     * @return the element at the top of this stack.
      */
     public int peek() {
-        return stackList.get(stackList.size() - 1);
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.get(stack.size() - 1);
+    }
+
+    /**
+     * Return size of this stack.
+     *
+     * @return size of this stack.
+     */
+    public int size() {
+        return stack.size();
     }
 }
