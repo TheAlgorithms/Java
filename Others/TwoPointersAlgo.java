@@ -2,6 +2,8 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+//https://www.geeksforgeeks.org/two-pointers-technique/
+
 class TwoPointersAlgo {
     //This function prints all pairs in the array that sum to a number X. If no such pair exists then output will be -1.
 	static void twoSum(int A[], int X)
