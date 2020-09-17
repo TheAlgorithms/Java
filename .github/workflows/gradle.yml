@@ -1,9 +1,8 @@
 name: Java gradle CI
 
-on:
-  push:
-    branches:
-      - Development
+on: [push, pull_request]
+  branches:
+    - Development
 
 jobs:
   test:
