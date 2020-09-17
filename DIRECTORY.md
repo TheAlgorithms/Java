@@ -198,6 +198,7 @@
   * [StringMatchFiniteAutomata](https://github.com/TheAlgorithms/Java/blob/master/Others/StringMatchFiniteAutomata.java)
   * [TopKWords](https://github.com/TheAlgorithms/Java/blob/master/Others/TopKWords.java)
   * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/Others/TowerOfHanoi.java)
+  * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/Others/TwoPointers.java)
   * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/WorstFit.java)
 
 ## ProjectEuler
