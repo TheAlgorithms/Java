@@ -10,7 +10,7 @@ You can run and edit the algorithms or contribute to them using Gitpod.io, a fre
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
 
 
-### All algorithms are implemented in Java (for education purposes)
+### All algorithms are implemented in Java (for educational purposes)
 These implementations are for learning purposes. The implementations may be less efficient than the Java standard library.
 
 ## Contribution Guidelines
