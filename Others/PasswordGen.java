@@ -35,13 +35,13 @@ class PasswordGen {
 
         // Inbuilt method to randomly shuffle a elements of a list
         Collections.shuffle(letters);
-        String password = "";
+       StringBuilder password = new StringBuilder();
 
         // Note that size of the password is also random
         for (int i = random.nextInt(max_length - min_length) + min_length; i > 0; --i) {
-            password += letters.get(random.nextInt(letters.size()));
+            password .append( letters.get(random.nextInt(letters.size())));
         }
 
-        return password;
+        return password.toString();
     }
 }
