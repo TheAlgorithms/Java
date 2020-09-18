@@ -10,38 +10,49 @@ import java.util.ArrayList;
  * Creates a random password from ASCII letters
  * Given password length bounds
  *
- * @author AKS1996
- * @date 2017.10.25
+ * @author arrnavvv
+ * @date 18-09-2020
  */
-class PasswordGen {
-    public static void main(String args[]) {
-        String password = generatePassword(8, 16);
-        System.out.print("Password: " + password);
-    }
+public class PasswordGenerator {
 
-    static String generatePassword(int min_length, int max_length) {
+    static String generatePassword(int min_length, int max_length){
+        String smallAlphabet="abcdefghijklmnopqrstuvwxyz";
+        String largeAlphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String digits="1234567890";
+        String specialCharacters="!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+        String all = smallAlphabet+largeAlphabet+digits+specialCharacters;
         Random random = new Random();
+        int length = random.nextInt(max_length - min_length) + min_length;
 
-        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lower = "abcdefghijklmnopqrstuvwxyz";
-        String numbers = "0123456789";
-        String specialChars = "!@#$%^&*(){}?";
+        StringBuilder password = new StringBuilder();
+        password.append((smallAlphabet.charAt(random.nextInt(26)))).
+                append(largeAlphabet.charAt(random.nextInt(26))).
+                append(digits.charAt(random.nextInt(10))).
+                append(specialCharacters.charAt(random.nextInt(31)));
 
-        String allChars = upper + lower + numbers + specialChars;
-
-        List<Character> letters = new ArrayList<Character>();
-        for (char c : allChars.toCharArray())
-            letters.add(c);
-
-        // Inbuilt method to randomly shuffle a elements of a list
-        Collections.shuffle(letters);
-       StringBuilder password = new StringBuilder();
-
-        // Note that size of the password is also random
-        for (int i = random.nextInt(max_length - min_length) + min_length; i > 0; --i) {
-            password .append( letters.get(random.nextInt(letters.size())));
+        int left = length-4;
+        StringBuilder remainingPassword = new StringBuilder();
+        while(left-->0){
+            remainingPassword.append(all.charAt(random.nextInt(93)));
         }
+        password.append(remainingPassword);
 
-        return password.toString();
+        ArrayList<Character> list = new ArrayList<>();
+        for (char c : password.toString().toCharArray())
+            list.add(c);
+        Collections.shuffle(list);
+
+        StringBuilder finalPassword = new StringBuilder();
+        for(int i=0;i<list.size();i++){
+            finalPassword.append(list.get(i));
+        }
+        return finalPassword.toString();
+    }
+    public static void main(String[] args) {
+
+        String password = generatePassword(8,16);
+        System.out.println("Your password is: "+password);
     }
 }
+
