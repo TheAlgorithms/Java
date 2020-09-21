@@ -249,6 +249,7 @@ public class BoruvkaMST {
 			for(Pair edge : toMerge)
 				uf.union(edge.u, edge.v);
 			
+			toMerge = new ArrayList<>();
 		}
 		return mst;
 	}
