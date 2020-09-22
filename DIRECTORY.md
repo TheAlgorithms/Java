@@ -65,6 +65,7 @@
     * [ListAddnFun](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/ListAddnFun.java)
     * [Merge K SortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/Merge_K_SortedLinkedlist.java)
     * [MergeSortedArrayList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/MergeSortedArrayList.java)
+    * [MergeSortedSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/MergeSortedSinglyLinkedList.java)
     * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/SinglyLinkedList.java)
   * Queues
     * [GenericArrayListQueue](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Queues/GenericArrayListQueue.java)
@@ -207,6 +208,8 @@
   * [Problem04](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem04.java)
   * [Problem06](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem06.java)
   * [Problem07](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem07.java)
+  * [Problem09](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem09.java)
+  * [Problem10](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem10.java)
 
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
