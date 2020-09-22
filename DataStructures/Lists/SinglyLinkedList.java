@@ -18,15 +18,15 @@ public class SinglyLinkedList {
     private Node head;
 
     /**
-     * size of SinglyLinkedList
+     * Size of SinglyLinkedList
      */
     private int size;
 
     /**
-     * init SinglyLinkedList
+     * Init SinglyLinkedList
      */
     public SinglyLinkedList() {
-        head = new Node(0);
+        head = null;
         size = 0;
     }
 
@@ -42,87 +42,86 @@ public class SinglyLinkedList {
     }
 
     /**
-     * This method inserts an element at the head
+     * Inserts an element at the head of the list
      *
-     * @param x Element to be added
+     * @param x element to be added
      */
     public void insertHead(int x) {
         insertNth(x, 0);
     }
 
     /**
-     * insert an element at the tail of list
+     * Insert an element at the tail of the list
      *
-     * @param data Element to be added
+     * @param data element to be added
      */
     public void insert(int data) {
         insertNth(data, size);
     }
 
     /**
-     * Inserts a new node at a specified position
+     * Inserts a new node at a specified position of the list
      *
      * @param data     data to be stored in a new node
      * @param position position at which a new node is to be inserted
      */
     public void insertNth(int data, int position) {
         checkBounds(position, 0, size);
-        Node cur = head;
-        for (int i = 0; i < position; ++i) {
-            cur = cur.next;
-        }
-        Node node = new Node(data);
-        node.next = cur.next;
-        cur.next = node;
-        size++;
-    }
-
-    /**
-     * Insert element to list, always sorted
-     *
-     * @param data to be inserted
-     */
-    public void insertSorted(int data) {
-        Node cur = head;
-        while (cur.next != null && data > cur.next.value) {
-            cur = cur.next;
-        }
-
         Node newNode = new Node(data);
+        if (head == null) { /* the list is empty */
+            head = newNode;
+            size++;
+            return;
+        } else if (position == 0) { /* insert at the head of the list */
+            newNode.next = head;
+            head = newNode;
+            size++;
+            return;
+        }
+        Node cur = head;
+        for (int i = 0; i < position - 1; ++i) {
+            cur = cur.next;
+        }
         newNode.next = cur.next;
         cur.next = newNode;
         size++;
     }
 
+
     /**
-     * This method deletes an element at the head
-     *
-     * @return The element deleted
+     * Deletes a node at the head
      */
     public void deleteHead() {
         deleteNth(0);
     }
 
     /**
-     * This method deletes an element at the tail
+     * Deletes an element at the tail
      */
     public void delete() {
         deleteNth(size - 1);
     }
 
     /**
-     * This method deletes an element at Nth position
+     * Deletes an element at Nth position
      */
     public void deleteNth(int position) {
         checkBounds(position, 0, size - 1);
+        if (position == 0) {
+            Node destroy = head;
+            head = head.next;
+            destroy = null; /* clear to let GC do its work */
+            size--;
+            return;
+        }
         Node cur = head;
-        for (int i = 0; i < position; ++i) {
+        for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
         }
 
-        //Node destroy = cur.next;
+        Node destroy = cur.next;
         cur.next = cur.next.next;
-        //destroy = null; // clear to let GC do its work
+        destroy = null; // clear to let GC do its work
 
         size--;
     }
@@ -140,38 +139,59 @@ public class SinglyLinkedList {
     }
 
     /**
-     * clear all nodes in list
+     * Clear all nodes in the list
      */
     public void clear() {
-        if (size == 0) {
-            return;
-        }
-        Node prev = head.next;
-        Node cur = prev.next;
+        Node cur = head;
         while (cur != null) {
-            prev = null; // clear to let GC do its work
-            prev = cur;
+            Node prev = cur;
             cur = cur.next;
+            prev = null; // clear to let GC do its work
         }
-        prev = null;
-        head.next = null;
+        head = null;
         size = 0;
     }
 
     /**
      * Checks if the list is empty
      *
-     * @return true is list is empty
+     * @return {@code true} if list is empty, otherwise {@code false}.
      */
     public boolean isEmpty() {
         return size == 0;
     }
 
     /**
-     * Returns the size of the linked list
+     * Returns the size of the linked list.
+     *
+     * @return the size of the list.
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Get head of the list.
+     *
+     * @return head of the list.
+     */
+    public Node getHead() {
+        return head;
+    }
+
+    /**
+     * Calculate the count of the list manually
+     *
+     * @return count of the list
+     */
+    public int count() {
+        int count = 0;
+        Node cur = head;
+        while (cur != null) {
+            cur = cur.next;
+            count++;
+        }
+        return count;
     }
 
     @Override
@@ -180,7 +200,7 @@ public class SinglyLinkedList {
             return "";
         }
         StringBuilder builder = new StringBuilder();
-        Node cur = head.next;
+        Node cur = head;
         while (cur != null) {
             builder.append(cur.value).append("->");
             cur = cur.next;
@@ -188,79 +208,43 @@ public class SinglyLinkedList {
         return builder.replace(builder.length() - 2, builder.length(), "").toString();
     }
 
-    /**
-     * Merge two sorted SingleLinkedList
-     *
-     * @param listA the first sorted list
-     * @param listB the second sored list
-     * @return merged sorted list
-     */
-    public static SinglyLinkedList merge(SinglyLinkedList listA, SinglyLinkedList listB) {
-        Node headA = listA.head.next;
-        Node headB = listB.head.next;
-
-        int size = listA.size() + listB.size();
-
-        Node head = new Node();
-        Node tail = head;
-        while (headA != null && headB != null) {
-            if (headA.value <= headB.value) {
-                tail.next = headA;
-                headA = headA.next;
-            } else {
-                tail.next = headB;
-                headB = headB.next;
-            }
-            tail = tail.next;
-        }
-        if (headA == null) {
-            tail.next = headB;
-        }
-        if (headB == null) {
-            tail.next = headA;
-        }
-        return new SinglyLinkedList(head, size);
-    }
 
     /**
-     * Main method
-     *
-     * @param args Command line arguments
+     * Driver Code
      */
-    public static void main(String args[]) {
-        SinglyLinkedList myList = new SinglyLinkedList();
-        assert myList.isEmpty();
-        assert myList.toString().equals("");
+    public static void main(String[] arg) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assert list.isEmpty();
+        assert list.size() == 0
+                && list.count() == 0;
+        assert list.toString().equals("");
 
-        myList.insertHead(5);
-        myList.insertHead(7);
-        myList.insertHead(10);
-        assert myList.toString().equals("10->7->5");
+        /* Test insert function */
+        list.insertHead(5);
+        list.insertHead(7);
+        list.insertHead(10);
+        list.insert(3);
+        list.insertNth(1, 4);
+        assert list.toString().equals("10->7->5->3->1");
 
-        myList.deleteHead();
-        assert myList.toString().equals("7->5");
+        /* Test delete function */
+        list.deleteHead();
+        list.deleteNth(1);
+        list.delete();
+        assert list.toString().equals("7->3");
 
-        myList.insertNth(11, 2);
-        assert myList.toString().equals("7->5->11");
+        assert list.size == 2
+                && list.size() == list.count();
 
-        myList.deleteNth(1);
-        assert myList.toString().equals("7->11");
+        list.clear();
+        assert list.isEmpty();
 
-        myList.clear();
-        assert myList.isEmpty();
-
-        /* Test MergeTwoSortedLinkedList */
-        SinglyLinkedList listA = new SinglyLinkedList();
-        SinglyLinkedList listB = new SinglyLinkedList();
-
-        for (int i = 10; i >= 2; i -= 2) {
-            listA.insertSorted(i);
-            listB.insertSorted(i - 1);
+        try {
+            list.delete();
+            assert false; /* this should not happen */
+        } catch (Exception e) {
+            assert true; /* this should happen */
         }
-        assert listA.toString().equals("2->4->6->8->10");
-        assert listB.toString().equals("1->3->5->7->9");
-        assert SinglyLinkedList.merge(listA, listB).toString().equals("1->2->3->4->5->6->7->8->9->10");
-
     }
 }
 
