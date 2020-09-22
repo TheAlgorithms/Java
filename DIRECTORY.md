@@ -60,12 +60,14 @@
     * [MinPriorityQueue](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Heaps/MinPriorityQueue.java)
   * Lists
     * [CircleLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CircleLinkedList.java)
+    * [CountSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CountSinglyLinkedListRecursion.java)
     * [CursorLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CursorLinkedList.java)
     * [DoublyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/DoublyLinkedList.java)
     * [ListAddnFun](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/ListAddnFun.java)
     * [Merge K SortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/Merge_K_SortedLinkedlist.java)
     * [MergeSortedArrayList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/MergeSortedArrayList.java)
     * [MergeSortedSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/MergeSortedSinglyLinkedList.java)
+    * [SearchSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/SearchSinglyLinkedListRecursion.java)
     * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/SinglyLinkedList.java)
   * Queues
     * [GenericArrayListQueue](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Queues/GenericArrayListQueue.java)
