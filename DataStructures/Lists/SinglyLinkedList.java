@@ -194,6 +194,39 @@ public class SinglyLinkedList {
         return count;
     }
 
+    /**
+     * Test if the value key is present in the list.
+     *
+     * @param key the value to be searched.
+     * @return {@code true} if key is present in the list, otherwise {@code false}.
+     */
+    public boolean search(int key) {
+        Node cur = head;
+        while (cur != null) {
+            if (cur.value == key) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
+    /**
+     * Return element at special index.
+     *
+     * @param index given index of element
+     * @return element at special index.
+     */
+    public int getNth(int index) {
+        checkBounds(index, 0, size - 1);
+        Node cur = head;
+        for (int i = 0; i < index; ++i) {
+            cur = cur.next;
+        }
+        return cur.value;
+    }
+
+
     @Override
     public String toString() {
         if (size == 0) {
@@ -226,6 +259,17 @@ public class SinglyLinkedList {
         list.insert(3);
         list.insertNth(1, 4);
         assert list.toString().equals("10->7->5->3->1");
+
+        /* Test search function */
+        assert list.search(10)
+                && list.search(5)
+                && list.search(1)
+                && !list.search(100);
+
+        /* Test get function */
+        assert list.getNth(0) == 10
+                && list.getNth(2) == 5
+                && list.getNth(4) == 1;
 
         /* Test delete function */
         list.deleteHead();
