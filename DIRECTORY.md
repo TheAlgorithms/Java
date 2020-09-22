@@ -113,6 +113,7 @@
   * [MatrixChainMultiplication](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MatrixChainMultiplication.java)
   * [MinimumSumPartition](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MinimumSumPartition.java)
   * [RodCutting](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/RodCutting.java)
+  * [SubsetSum](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/SubsetSum.java)
 
 ## Maths
   * [AbsoluteMax](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteMax.java)
