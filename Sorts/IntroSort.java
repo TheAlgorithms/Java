@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @author Shivam Anand (https://github.com/anandshivam44)
  */
 
-class Introsort {
+class IntroSort {
 
 	static boolean swap(int[] array, int idx, int idy) {
 		int swap = array[idx];
@@ -178,7 +178,7 @@ class Introsort {
 
 	public static void main(String args[]) throws IOException {
 
-		Introsort introsort = new Introsort();
+		IntroSort introsort = new IntroSort();
 		int[] array = { 2, 10, 24, 2, 10, 11, 27, 4, 2, 4, 28, 16, 9, 8, 28, 10, 13, 24, 22, 28, 0, 13, 27, 13, 3, 23,
 				18, 22, 8, 8, 99 };
 
