@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="DataStructures/Graphs/|DataStructures/Stacks/|Sorts/" kind="src" path=""/>
+	<classpathentry kind="src" path="DataStructures/Graphs"/>
+	<classpathentry kind="src" path="DataStructures/Stacks"/>
+	<classpathentry kind="src" path="Sorts"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
