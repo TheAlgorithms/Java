@@ -37,11 +37,11 @@ class BubbleSort implements SortAlgorithm {
     public static void main(String[] args) {
 
         // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] integers = {122, 120, 34, 31, 20, 10, 9, 8, 1};
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(integers);
 
-        // Output => 1, 4, 6, 9, 12, 23, 54, 78, 231
+        // Output => 1, 8, 9, 10, 20, 31, 34, 120, 122
         print(integers);
 
         // String Input
