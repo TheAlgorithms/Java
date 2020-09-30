@@ -31,7 +31,7 @@ public class SumOfGeometricProgression {
         assert Double.compare(-0.9990234375, sumOfSeries(1, 2, -10)) == 0;
     }
     /**
-     * Calculate sum of arithmetic series
+     * Calculate sum of geometric series
      *
      * @param firstTerm  the initial term of a geometric series
      * @param commonRatio the common ratio of a geometric series
