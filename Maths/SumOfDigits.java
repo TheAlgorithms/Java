@@ -24,7 +24,7 @@ public class SumOfDigits {
      * @return sum of digits of given {@code number}
      */
     public static int sumOfDigits(int number) {
-        number = number < 0 ? -number : number; /* calculate abs value */
+        Math.abs(number) /* calculate abs value */
         int sum = 0;
         while (number != 0) {
             sum += number % 10;
