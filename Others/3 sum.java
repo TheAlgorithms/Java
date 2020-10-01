@@ -1,3 +1,4 @@
+//A simple and effective java 3 sum program 
 package Others;
 
 import java.util.Scanner;
@@ -58,3 +59,4 @@ class threesum{
 		
 	}
 }
+//The process gets finished up here
