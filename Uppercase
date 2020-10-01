@@ -1,0 +1,9 @@
+public class uppercase{
+	public static void main(String[]args){
+		String name="ritesh";
+		char[] name1=name.toCharArray();
+		for(char lc:name1) {
+			System.out.print((char) ((int)lc-32));
+		}
+	}
+}
