@@ -24,7 +24,7 @@ class BinaryToDecimal {
             s += d * (int) Math.pow(2, power++);
             binCopy /= 10;
         }
-        System.out.println("Decimal equivalent:" + s);
+        System.out.println("Decimal Equivalent of "+binNum+" = " + s);
         sc.close();
     }
 }
