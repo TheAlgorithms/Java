@@ -1,4 +1,4 @@
-
+import java.util.*;
 class FermatLittle 
 { 
 	static int __gcd(int a, int b) 
@@ -41,8 +41,9 @@ class FermatLittle
 	
 	
 	public static void main (String[] args) 
-	{ 
-		int a = 3, m = 11; 
+	{       Scanner sc =new Scanner(System.in);
+		int a = sc.nextInt();
+	        int m= sc.nextInt();
 		modInverse(a, m); 
 	} 
 } 
