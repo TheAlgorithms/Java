@@ -321,6 +321,11 @@ class Node {
         this(value, null);
     }
 
+    /**
+     * Constructor
+     * @param value Value to be put in the node
+     * @param next Reference to the next node
+     */
     Node(int value, Node next) {
         this.value = value;
         this.next = next;
