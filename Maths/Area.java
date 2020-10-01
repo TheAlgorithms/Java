@@ -1,10 +1,10 @@
-package Maths;
+package Maths; // This statement is Package Maths
 
 /**
  * Find the area of various geometric shapes
  */
-public class Area {
-    public static void main(String[] args) {
+public class Area { // This statement is public class Area 
+    public static void main(String[] args) { // This is the main method
         
         /* test cube */
         assert Double.compare(surfaceAreaCube(1), 6.0) == 0;
