@@ -1,6 +1,7 @@
 package Sorts;
 
 import static Sorts.SortUtils.*;
+import java.util.Scanner;
 
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
@@ -36,8 +37,17 @@ class BubbleSort implements SortAlgorithm {
     // Driver Program
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of elements : ");
+        int n = scanner.nextInt();
+        //n = 9
+        Integer[] integers = new Integer[n];
+        for(int i=0;i<n;i++)
+        {
+            integers[i] = scanner.nextInt();
+        }
         // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        //Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(integers);
 
