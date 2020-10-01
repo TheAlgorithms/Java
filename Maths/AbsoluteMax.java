@@ -24,12 +24,7 @@ public class AbsoluteMax {
      * @return the absolute max value
      */
     public static int absMax(int[] numbers) {
-        int absMaxValue = numbers[0];
-        for (int i = 1, length = numbers.length; i < length; ++i) {
-            if (Math.abs(numbers[i]) > Math.abs(absMaxValue)) {
-                absMaxValue = numbers[i];
-            }
-        }
-        return absMaxValue;
+        Arrays.sort(numbers);
+        return numbers[numbers.length-1];
     }
 }
