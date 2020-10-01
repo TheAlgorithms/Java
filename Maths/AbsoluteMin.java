@@ -24,12 +24,7 @@ public class AbsoluteMin {
      * @return the absolute min value
      */
     public static int absMin(int[] numbers) {
-        int absMinValue = numbers[0];
-        for (int i = 1, length = numbers.length; i < length; ++i) {
-            if (Math.abs(numbers[i]) < Math.abs(absMinValue)) {
-                absMinValue = numbers[i];
-            }
-        }
-        return absMinValue;
+        Arrays.sort(numbers);
+        return numbers[0];
     }
 }
