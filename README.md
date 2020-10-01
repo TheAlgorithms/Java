@@ -17,7 +17,7 @@ These implementations are for learning purposes. The implementations may be less
 Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
 
 ## Community Channel
-We're on [Gitter](https://gitter.im/TheAlgorithms)! Please join us.
+We are on [Gitter](https://gitter.im/TheAlgorithms)! Please join us.
 
 ## Algorithms
 See our [directory](DIRECTORY.md).
