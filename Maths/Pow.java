@@ -19,8 +19,23 @@ public class Pow {
      */
     public static long pow(int a, int b) {
         long result = 1;
-        for (int i = 1; i <= b; i++) {
-            result *= a;
+        if(b == 0){
+            return 1L;
+        }
+        else if(b == 1){
+            return result;
+        }else{
+            if(b % 2 == 0){
+                for (int i = 1; i <= b/2; i++) {
+                    result *= a;
+                }
+                result *= result;
+            }else{
+                for (int i = 1; i <= b/2; i++) {
+                    result *= a;
+                }
+                result *= result * a;
+            }
         }
         return result;
     }
