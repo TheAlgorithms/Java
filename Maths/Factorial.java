@@ -1,4 +1,3 @@
-package Maths;
 
 public class Factorial {
 
@@ -16,12 +15,17 @@ public class Factorial {
      * @param n the number
      * @return the factorial of {@code n}
      */
-    public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
+    public static int factorial(int n){
+        int[] arr = new int[1001];
+        arr[0] = 1;
+        if(n >= 0){
+            if(n == 0){
+                return 1;
+            }
+            for(int i = 1 ; i <= n ; i ++){
+                arr[i] = i * factorial(i-1);
+            }
         }
-        long factorial = 1;
-        for (int i = 1; i <= n; factorial *= i, ++i) ;
-        return factorial;
+        return arr[n];
     }
 }
