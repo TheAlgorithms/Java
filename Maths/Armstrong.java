@@ -27,7 +27,7 @@ public class Armstrong
     {
         int sum = 0 ,a,temp; 
         temp=number;  
-        while(number>0)  
+        while(number > 0)  
         {  
             a=number%10;  
             number/=10;  
