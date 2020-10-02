@@ -24,7 +24,8 @@ class DecimalToBinary {
      * to a binary number using a conventional
      * algorithm.
      */
-    public static void conventionalConversion() {
+    public static void conventionalConversion()
+    {
         int n, b = 0, c = 0, d;
         Scanner input = new Scanner(System.in);
         System.out.printf("Conventional conversion.%n Enter the decimal number: ");
