@@ -146,7 +146,7 @@ public class StackArray {
      *
      * @return true if the stack is full
      */
-    public boolean isFull() {
+    public boolean isFull() {//if the stack is full, no element can be furthur added. 
         return (top + 1 == maxSize);
     }
 
