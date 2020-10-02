@@ -98,7 +98,6 @@
 
 6 Range Minimum Query Maximal 
 
-
 *Specific Algorithms* 
 
 7 Partially Ordered Sets [6] CF Blog
