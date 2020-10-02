@@ -29,7 +29,8 @@ class DecimalToBinary {
         Scanner input = new Scanner(System.in);
         System.out.printf("Conventional conversion.%n Enter the decimal number: ");
         n = input.nextInt();
-        for(int i=n ; i!=0 ; i/=2) {
+        for(int i=n ; i!=0 ; i/=2) 
+	{
             d = i % 2;
             b = b + d * (int) Math.pow(10, c++);
         } //converting decimal to binary
