@@ -1,4 +1,4 @@
-package Conversions;
+ 
 
 import java.util.Scanner;
 
@@ -29,10 +29,9 @@ class DecimalToBinary {
         Scanner input = new Scanner(System.in);
         System.out.printf("Conventional conversion.%n Enter the decimal number: ");
         n = input.nextInt();
-        while (n != 0) {
-            d = n % 2;
+        for(int i=n ; i!=0 ; i/=2) {
+            d = i % 2;
             b = b + d * (int) Math.pow(10, c++);
-            n /= 2;
         } //converting decimal to binary
         System.out.println("\tBinary number: " + b);
         input.close();
