@@ -83,6 +83,18 @@ public class Area {
     private static double surfaceAreaTriangle(double base, double height) {
         return base * height / 2;
     }
+    
+    /** 
+    *Calculate the area of triangle 
+    *
+    * @ param base given the three side of tringle 
+    *side a ,side b,side c
+    *
+    */
+    private static double areaTriangle(double a,double b,double c)
+    {
+        double perimeter=((a+b+c)/2);
+        return Math.sqrt(perimeter*(perimeter-a)*(perimeter-b)*(perimeter-c));
 
     /**
      * Calculate the area of a parallelogram
