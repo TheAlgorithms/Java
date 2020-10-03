@@ -3,6 +3,39 @@
 //Date - 3/10/20
 //Question taken --> Geeksgorgeeks
 //-------------------------------------------------------------
+
+//Question 
+/*
+Given a binary matrix. Find the maximum area of a rectangle formed only of 1s in the given matrix.
+
+Test cases
+-----------
+Input:
+n = 4, m = 4
+M[][] = {{0 1 1 0},
+         {1 1 1 1},
+         {1 1 1 1},
+         {1 1 0 0}}
+Output: 8
+Explanation: For the above test case the
+matrix will look like
+0 1 1 0
+1 1 1 1
+1 1 1 1
+1 1 0 0
+the max size rectangle is 
+1 1 1 1
+1 1 1 1
+and area is 4 *2 = 8.
+----------------------------------------
+Expected Time Complexity : O(n*m)
+Expected Auixiliary Space : O(m)
+
+Constraints:
+1<=n,m<=1000
+0<=M[][]<=1
+
+*/
 import java.util.*;
 import java.lang.*;
 import java.io.*;
