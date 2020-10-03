@@ -32,18 +32,5 @@ class RandomQuicksort
 	    RQsort(arr, low, pi-1); 
             RQsort(arr, pi+1, high); 
 	} 
-    } 
-    public static void main(String args[]){ 
-	int arr[] = {10, 7, 8, 9, 1, 5}; 
-	int n = arr.length; 
-        System.out.println("Input array - "); 
-        for (int i = 0; i < n; ++i){
-             System.out.print(arr[i]+" ");
-        } 
-	RQsort(arr, 0, n-1); 
-	System.out.println("Sorted array - "); 
-	for (int i = 0; i < n; ++i){
-	     System.out.print(arr[i]+" ");  
-	}
-	} 
+    }  
 } 
