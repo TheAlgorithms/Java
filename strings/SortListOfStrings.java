@@ -1,6 +1,6 @@
 /*
 
-Given a list of strings or names, sort them in alphabetical order. (Using Trie data structure)
+Given a list of strings or names, sort them in alphabetical order. (Using Trie data structure - https://en.wikipedia.org/wiki/Trie)
 
 For example:
 Input: {"turing","dijkstra","knuth"}
