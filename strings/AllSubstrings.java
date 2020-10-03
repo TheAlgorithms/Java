@@ -1,5 +1,7 @@
+package strings;
+
 //Java program to print all possible substrings of a given string
-class AllSubstrings {
+public class AllSubstrings {
 
     static void printAllSubstrings(char str[], int n) {
         for (int len = 1; len <= n; len++) {
