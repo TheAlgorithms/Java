@@ -12,7 +12,7 @@
 import java.util.*;
 class CircularPrime
 {
-    boolean isPrime(int n) 
+    boolean isPrime(int n) //func to check whether no. is prime or not
     {
         int c = 0;
         for(int i = 1; i<=n; i++)
@@ -26,7 +26,7 @@ class CircularPrime
             return false;
     }
      
-    int circulate(int n) //Function for circulating the digits to form new number
+    int circulate(int n) //circulating the digits in clockwise manner
     {
         String s = Integer.toString(n);
         String p = s.substring(1)+s.charAt(0);
@@ -34,7 +34,7 @@ class CircularPrime
         return a;
     }
      
-    void isCircularPrime(int n) //Function to check for circular prime
+    void isCircularPrime(int n) //check for circularPrime
     {
         int f = 0,a = n;
         do
@@ -61,6 +61,5 @@ class CircularPrime
         System.out.print("Enter no. : ");
         int n = sc.nextInt();
         ob.isCircularPrime(n);
-    }
-}
-
+    }//end of main
+}//end of class
