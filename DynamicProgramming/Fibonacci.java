@@ -22,6 +22,7 @@ public class Fibonacci {
         System.out.println(fibMemo(n));
         System.out.println(fibBotUp(n));
         System.out.println(fibOptimized(n));
+		System.out.println(fibIterativeDP(n));
         sc.close();
     }
 
@@ -97,4 +98,30 @@ public class Fibonacci {
         }
         return res;
     }
+	
+	/**
+	 * This method finds the nth fibonacci number using memoization technique
+	 * iterative approach without recursion
+	 *
+	 * @param n The input n for which we have to determine the fibonacci number 
+	 * @return  nth fibonacci number 
+	 * Time complexity: O(n)
+	 
+	 * @author Nirmal Silwal (https://github.com/NirmalSilwal) 
+	 **/
+	public static int fibIterativeDP(int n) {
+		if (n == 0 || n == 1) {
+			return n;
+		}
+		int[] memStorage = new int[n + 1];
+
+		memStorage[0] = 0;
+		memStorage[1] = 1;
+
+		for (int i = 2; i <= n; i++) {
+			memStorage[i] = memStorage[i - 1] + memStorage[i - 2];
+		}
+
+		return memStorage[n];
+	}
 }
