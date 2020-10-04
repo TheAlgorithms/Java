@@ -70,7 +70,7 @@ public class TopKWords {
 
         // sort by lambda valueComparator
         list.sort(Comparator.comparing(
-                m -> m.getValue())
+                Map.Entry::getValue)
         );
 
         Scanner input = new Scanner(System.in);
