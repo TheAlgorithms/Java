@@ -158,6 +158,7 @@
   * [SumOfArithmeticSeries](https://github.com/TheAlgorithms/Java/blob/master/Maths/SumOfArithmeticSeries.java)
   * [SumOfDigits](https://github.com/TheAlgorithms/Java/blob/master/Maths/SumOfDigits.java)
   * [VampireNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/VampireNumber.java)
+  * [VolumeOfCylinder](https://github.com/TheAlgorithms/Java/blob/master/Maths/VolOfCylinder.java)
 
 ## MinimizingLateness
   * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/MinimizingLateness/MinimizingLateness.java)
