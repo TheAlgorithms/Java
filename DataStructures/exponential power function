@@ -1,0 +1,25 @@
+// Java program to demonstrate working 
+// of java.lang.Math.pow() method 
+import java.lang.Math; // importing java.lang package 
+
+public class GFG { 
+	public static void main(String[] args) 
+	{ 
+
+		double nan = Double.NaN; 
+		double result; 
+
+		// Here second argument is NaN, 
+		// output will be NaN 
+		result = Math.pow(2, nan); 
+		System.out.println(result); 
+
+		// Here second argument is zero 
+		result = Math.pow(1254, 0); 
+		System.out.println(result); 
+
+		// Here second argument is one 
+		result = Math.pow(5, 1); 
+		System.out.println(result); 
+	} 
+} 
