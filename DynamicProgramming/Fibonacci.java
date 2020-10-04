@@ -22,7 +22,7 @@ public class Fibonacci {
         System.out.println(fibMemo(n));
         System.out.println(fibBotUp(n));
         System.out.println(fibOptimized(n));
-		System.out.println(fibIterativeDP(n));
+	System.out.println(fibIterativeDP(n));
         sc.close();
     }
 
