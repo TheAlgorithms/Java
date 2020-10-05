@@ -1,343 +1,671 @@
-package DataStructures.Lists;
+package org.apache.zookeeper.server;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import org.apache.commons.lang.StringUtils;
+import org.apache.jute.Record;
+import org.apache.zookeeper.ClientCnxn;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.KeeperException.Code;
+import org.apache.zookeeper.KeeperException.SessionMovedException;
+import org.apache.zookeeper.MultiOperationRecord;
+import org.apache.zookeeper.MultiResponse;
+import org.apache.zookeeper.Op;
+import org.apache.zookeeper.OpResult;
+import org.apache.zookeeper.OpResult.CheckResult;
+import org.apache.zookeeper.OpResult.CreateResult;
+import org.apache.zookeeper.OpResult.DeleteResult;
+import org.apache.zookeeper.OpResult.ErrorResult;
+import org.apache.zookeeper.OpResult.GetChildrenResult;
+import org.apache.zookeeper.OpResult.GetDataResult;
+import org.apache.zookeeper.OpResult.SetDataResult;
+import org.apache.zookeeper.Watcher.WatcherType;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooDefs.OpCode;
+import org.apache.zookeeper.audit.AuditHelper;
+import org.apache.zookeeper.common.Time;
+import org.apache.zookeeper.data.ACL;
+import org.apache.zookeeper.data.Id;
+import org.apache.zookeeper.data.Stat;
+import org.apache.zookeeper.proto.AddWatchRequest;
+import org.apache.zookeeper.proto.CheckWatchesRequest;
+import org.apache.zookeeper.proto.Create2Response;
+import org.apache.zookeeper.proto.CreateResponse;
+import org.apache.zookeeper.proto.ErrorResponse;
+import org.apache.zookeeper.proto.ExistsRequest;
+import org.apache.zookeeper.proto.ExistsResponse;
+import org.apache.zookeeper.proto.GetACLRequest;
+import org.apache.zookeeper.proto.GetACLResponse;
+import org.apache.zookeeper.proto.GetAllChildrenNumberRequest;
+import org.apache.zookeeper.proto.GetAllChildrenNumberResponse;
+import org.apache.zookeeper.proto.GetChildren2Request;
+import org.apache.zookeeper.proto.GetChildren2Response;
+import org.apache.zookeeper.proto.GetChildrenRequest;
+import org.apache.zookeeper.proto.GetChildrenResponse;
+import org.apache.zookeeper.proto.GetDataRequest;
+import org.apache.zookeeper.proto.GetDataResponse;
+import org.apache.zookeeper.proto.GetEphemeralsRequest;
+import org.apache.zookeeper.proto.GetEphemeralsResponse;
+import org.apache.zookeeper.proto.RemoveWatchesRequest;
+import org.apache.zookeeper.proto.ReplyHeader;
+import org.apache.zookeeper.proto.SetACLResponse;
+import org.apache.zookeeper.proto.SetDataResponse;
+import org.apache.zookeeper.proto.SetWatches;
+import org.apache.zookeeper.proto.SetWatches2;
+import org.apache.zookeeper.proto.SyncRequest;
+import org.apache.zookeeper.proto.SyncResponse;
+import org.apache.zookeeper.server.DataTree.ProcessTxnResult;
+import org.apache.zookeeper.server.quorum.QuorumZooKeeperServer;
+import org.apache.zookeeper.server.util.RequestPathMetricsCollector;
+import org.apache.zookeeper.txn.ErrorTxn;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * This class implements a DoublyLinkedList. This is done using the classes
- * LinkedList and Link.
- * <p>
- * A linked list is similar to an array, it holds values. However,
- * links in a linked list do not have indexes. With a linked list
- * you do not need to predetermine it's size as it grows and shrinks
- * as it is edited. This is an example of a double ended, doubly
- * linked list. Each link references the next link and the previous
- * one.
+ * This Request processor actually applies any transaction associated with a
+ * request and services any queries. It is always at the end of a
+ * RequestProcessor chain (hence the name), so it does not have a nextProcessor
+ * member.
  *
- * @author Unknown
+ * This RequestProcessor counts on ZooKeeperServer to populate the
+ * outstandingRequests member of ZooKeeperServer.
  */
+public class FinalRequestProcessor implements RequestProcessor {
 
-public class DoublyLinkedList {
-    /**
-     * Head refers to the front of the list
-     */
-    private Link head;
-    /**
-     * Tail refers to the back of the list
-     */
-    private Link tail;
+    private static final Logger LOG = LoggerFactory.getLogger(FinalRequestProcessor.class);
 
-    /**
-     * Size refers to the number of elements present in the list
-     */
-    private int size;
+    private final RequestPathMetricsCollector requestPathMetricsCollector;
 
-    /**
-     * Default Constructor
-     */
-    public DoublyLinkedList() {
-        head = null;
-        tail = null;
-        size = 0;
+    ZooKeeperServer zks;
+
+    public FinalRequestProcessor(ZooKeeperServer zks) {
+        this.zks = zks;
+        this.requestPathMetricsCollector = zks.getRequestPathMetricsCollector();
     }
 
-    /**
-     * Constructs a list containing the elements of the array
-     *
-     * @param array the array whose elements are to be placed into this list
-     * @throws NullPointerException if the specified collection is null
-     */
-    public DoublyLinkedList(int[] array) {
-        if (array == null) throw new NullPointerException();
-        for (int i : array) {
-            insertTail(i);
+    private ProcessTxnResult applyRequest(Request request) {
+        ProcessTxnResult rc = zks.processTxn(request);
+
+        // ZOOKEEPER-558:
+        // In some cases the server does not close the connection (e.g., closeconn buffer
+        // was not being queued — ZOOKEEPER-558) properly. This happens, for example,
+        // when the client closes the connection. The server should still close the session, though.
+        // Calling closeSession() after losing the cnxn, results in the client close session response being dropped.
+        if (request.type == OpCode.closeSession && connClosedByClient(request)) {
+            // We need to check if we can close the session id.
+            // Sometimes the corresponding ServerCnxnFactory could be null because
+            // we are just playing diffs from the leader.
+            if (closeSession(zks.serverCnxnFactory, request.sessionId)
+                || closeSession(zks.secureServerCnxnFactory, request.sessionId)) {
+                return rc;
+            }
         }
-        size = array.length;
-    }
 
-    /**
-     * Insert an element at the head
-     *
-     * @param x Element to be inserted
-     */
-    public void insertHead(int x) {
-        Link newLink = new Link(x); // Create a new link with a value attached to it
-        if (isEmpty()) // Set the first element added to be the tail
-            tail = newLink;
-        else
-            head.previous = newLink; // newLink <-- currenthead(head)
-        newLink.next = head; // newLink <--> currenthead(head)
-        head = newLink; // newLink(head) <--> oldhead
-        ++size;
-    }
-
-    /**
-     * Insert an element at the tail
-     *
-     * @param x Element to be inserted
-     */
-    public void insertTail(int x) {
-        Link newLink = new Link(x);
-        newLink.next = null; // currentTail(tail)     newlink -->
-        if (isEmpty()) {        // Check if there are no elements in list then it adds first element
-            tail = newLink;
-            head = tail;
-        } else {
-            tail.next = newLink; // currentTail(tail) --> newLink -->
-            newLink.previous = tail; // currentTail(tail) <--> newLink -->
-            tail = newLink; // oldTail <--> newLink(tail) -->
+        if (request.getHdr() != null) {
+            /*
+             * Request header is created only by the leader, so this must be
+             * a quorum request. Since we're comparing timestamps across hosts,
+             * this metric may be incorrect. However, it's still a very useful
+             * metric to track in the happy case. If there is clock drift,
+             * the latency can go negative. Note: headers use wall time, not
+             * CLOCK_MONOTONIC.
+             */
+            long propagationLatency = Time.currentWallTime() - request.getHdr().getTime();
+            if (propagationLatency >= 0) {
+                ServerMetrics.getMetrics().PROPAGATION_LATENCY.add(propagationLatency);
+            }
         }
-        ++size;
+
+        return rc;
     }
 
-    /**
-     * Insert an element at the index
-     * 
-     * @param x Element to be inserted
-     * @param index Index(from start) at which the element x to be inserted
-     * 
-     */
-    public void insertElementByIndex(int x,int index){
-        if(index > size) throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        if(index == 0){
-            insertHead(x);
-        }else{
-            if(index == size){
-                insertTail(x);
-            }else{
-                Link newLink = new Link(x);
-                Link previousLink = head; // 
-                for(int i = 1; i < index; i++){ //Loop to reach the index
-                    previousLink = previousLink.next;
+    public void processRequest(Request request) {
+        LOG.debug("Processing request:: {}", request);
+
+        if (LOG.isTraceEnabled()) {
+            long traceMask = ZooTrace.CLIENT_REQUEST_TRACE_MASK;
+            if (request.type == OpCode.ping) {
+                traceMask = ZooTrace.SERVER_PING_TRACE_MASK;
+            }
+            ZooTrace.logRequest(LOG, traceMask, 'E', request, "");
+        }
+        ProcessTxnResult rc = null;
+        if (!request.isThrottled()) {
+          rc = applyRequest(request);
+        }
+        if (request.cnxn == null) {
+            return;
+        }
+        ServerCnxn cnxn = request.cnxn;
+
+        long lastZxid = zks.getZKDatabase().getDataTreeLastProcessedZxid();
+
+        String lastOp = "NA";
+        // Notify ZooKeeperServer that the request has finished so that it can
+        // update any request accounting/throttling limits
+        zks.decInProcess();
+        zks.requestFinished(request);
+        Code err = Code.OK;
+        Record rsp = null;
+        String path = null;
+        int responseSize = 0;
+        try {
+            if (request.getHdr() != null && request.getHdr().getType() == OpCode.error) {
+                AuditHelper.addAuditLog(request, rc, true);
+                /*
+                 * When local session upgrading is disabled, leader will
+                 * reject the ephemeral node creation due to session expire.
+                 * However, if this is the follower that issue the request,
+                 * it will have the correct error code, so we should use that
+                 * and report to user
+                 */
+                if (request.getException() != null) {
+                    throw request.getException();
+                } else {
+                    throw KeeperException.create(KeeperException.Code.get(((ErrorTxn) request.getTxn()).getErr()));
                 }
-                // previousLink is the Link at index - 1 from start 
-                previousLink.next.previous = newLink; 
-                newLink.next = previousLink.next;
-                newLink.previous = previousLink;
-                previousLink.next = newLink;
             }
-        }
-        ++size;
 
-    }
-
-    /**
-     * Delete the element at the head
-     *
-     * @return The new head
-     */
-    public Link deleteHead() {
-        Link temp = head;
-        head = head.next; // oldHead <--> 2ndElement(head)
-
-        if (head == null) {
-            tail = null;
-        } else {
-            head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
-        }
-        --size;
-        return temp;
-    }
-
-    /**
-     * Delete the element at the tail
-     *
-     * @return The new tail
-     */
-    public Link deleteTail() {
-        Link temp = tail;
-        tail = tail.previous; // 2ndLast(tail) <--> oldTail --> null
-
-        if (tail == null) {
-            head = null;
-        } else{
-            tail.next = null; // 2ndLast(tail) --> null
-        }
-        --size;
-        return temp;
-    }
-
-    /**
-     * Delete the element from somewhere in the list
-     *
-     * @param x element to be deleted
-     * @return Link deleted
-     */
-    public void delete(int x) {
-        Link current = head;
-
-        while (current.value != x) {// Find the position to delete
-            if (current != tail) {
-                current = current.next;
-            } else {// If we reach the tail and the element is still not found
-                throw new RuntimeException("The element to be deleted does not exist!");
+            KeeperException ke = request.getException();
+            if (ke instanceof SessionMovedException) {
+                throw ke;
             }
+            if (ke != null && request.type != OpCode.multi) {
+                throw ke;
+            }
+
+            LOG.debug("{}", request);
+
+            if (request.isStale()) {
+                ServerMetrics.getMetrics().STALE_REPLIES.add(1);
+            }
+
+            if (request.isThrottled()) {
+              throw KeeperException.create(Code.THROTTLEDOP);
+            }
+
+            AuditHelper.addAuditLog(request, rc);
+
+            switch (request.type) {
+            case OpCode.ping: {
+                lastOp = "PING";
+                updateStats(request, lastOp, lastZxid);
+
+                responseSize = cnxn.sendResponse(new ReplyHeader(ClientCnxn.PING_XID, lastZxid, 0), null, "response");
+                return;
+            }
+            case OpCode.createSession: {
+                lastOp = "SESS";
+                updateStats(request, lastOp, lastZxid);
+
+                zks.finishSessionInit(request.cnxn, true);
+                return;
+            }
+            case OpCode.multi: {
+                lastOp = "MULT";
+                rsp = new MultiResponse();
+
+                for (ProcessTxnResult subTxnResult : rc.multiResult) {
+
+                    OpResult subResult;
+
+                    switch (subTxnResult.type) {
+                    case OpCode.check:
+                        subResult = new CheckResult();
+                        break;
+                    case OpCode.create:
+                        subResult = new CreateResult(subTxnResult.path);
+                        break;
+                    case OpCode.create2:
+                    case OpCode.createTTL:
+                    case OpCode.createContainer:
+                        subResult = new CreateResult(subTxnResult.path, subTxnResult.stat);
+                        break;
+                    case OpCode.delete:
+                    case OpCode.deleteContainer:
+                        subResult = new DeleteResult();
+                        break;
+                    case OpCode.setData:
+                        subResult = new SetDataResult(subTxnResult.stat);
+                        break;
+                    case OpCode.error:
+                        subResult = new ErrorResult(subTxnResult.err);
+                        if (subTxnResult.err == Code.SESSIONMOVED.intValue()) {
+                            throw new SessionMovedException();
+                        }
+                        break;
+                    default:
+                        throw new IOException("Invalid type of op");
+                    }
+
+                    ((MultiResponse) rsp).add(subResult);
+                }
+
+                break;
+            }
+            case OpCode.multiRead: {
+                lastOp = "MLTR";
+                MultiOperationRecord multiReadRecord = new MultiOperationRecord();
+                ByteBufferInputStream.byteBuffer2Record(request.request, multiReadRecord);
+                rsp = new MultiResponse();
+                OpResult subResult;
+                for (Op readOp : multiReadRecord) {
+                    try {
+                        Record rec;
+                        switch (readOp.getType()) {
+                        case OpCode.getChildren:
+                            rec = handleGetChildrenRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
+                            subResult = new GetChildrenResult(((GetChildrenResponse) rec).getChildren());
+                            break;
+                        case OpCode.getData:
+                            rec = handleGetDataRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
+                            GetDataResponse gdr = (GetDataResponse) rec;
+                            subResult = new GetDataResult(gdr.getData(), gdr.getStat());
+                            break;
+                        default:
+                            throw new IOException("Invalid type of readOp");
+                        }
+                    } catch (KeeperException e) {
+                        subResult = new ErrorResult(e.code().intValue());
+                    }
+                    ((MultiResponse) rsp).add(subResult);
+                }
+                break;
+            }
+            case OpCode.create: {
+                lastOp = "CREA";
+                rsp = new CreateResponse(rc.path);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.create2:
+            case OpCode.createTTL:
+            case OpCode.createContainer: {
+                lastOp = "CREA";
+                rsp = new Create2Response(rc.path, rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.delete:
+            case OpCode.deleteContainer: {
+                lastOp = "DELE";
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.setData: {
+                lastOp = "SETD";
+                rsp = new SetDataResponse(rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.reconfig: {
+                lastOp = "RECO";
+                rsp = new GetDataResponse(
+                    ((QuorumZooKeeperServer) zks).self.getQuorumVerifier().toString().getBytes(),
+                    rc.stat);
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.setACL: {
+                lastOp = "SETA";
+                rsp = new SetACLResponse(rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.closeSession: {
+                lastOp = "CLOS";
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.sync: {
+                lastOp = "SYNC";
+                SyncRequest syncRequest = new SyncRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, syncRequest);
+                rsp = new SyncResponse(syncRequest.getPath());
+                requestPathMetricsCollector.registerRequest(request.type, syncRequest.getPath());
+                break;
+            }
+            case OpCode.check: {
+                lastOp = "CHEC";
+                rsp = new SetDataResponse(rc.stat);
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.exists: {
+                lastOp = "EXIS";
+                // TODO we need to figure out the security requirement for this!
+                ExistsRequest existsRequest = new ExistsRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, existsRequest);
+                path = existsRequest.getPath();
+                if (path.indexOf('\0') != -1) {
+                    throw new KeeperException.BadArgumentsException();
+                }
+                Stat stat = zks.getZKDatabase().statNode(path, existsRequest.getWatch() ? cnxn : null);
+                rsp = new ExistsResponse(stat);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.getData: {
+                lastOp = "GETD";
+                GetDataRequest getDataRequest = new GetDataRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getDataRequest);
+                path = getDataRequest.getPath();
+                rsp = handleGetDataRequest(getDataRequest, cnxn, request.authInfo);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.setWatches: {
+                lastOp = "SETW";
+                SetWatches setWatches = new SetWatches();
+                // TODO we really should not need this
+                request.request.rewind();
+                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
+                long relativeZxid = setWatches.getRelativeZxid();
+                zks.getZKDatabase()
+                   .setWatches(
+                       relativeZxid,
+                       setWatches.getDataWatches(),
+                       setWatches.getExistWatches(),
+                       setWatches.getChildWatches(),
+                       Collections.emptyList(),
+                       Collections.emptyList(),
+                       cnxn);
+                break;
+            }
+            case OpCode.setWatches2: {
+                lastOp = "STW2";
+                SetWatches2 setWatches = new SetWatches2();
+                // TODO we really should not need this
+                request.request.rewind();
+                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
+                long relativeZxid = setWatches.getRelativeZxid();
+                zks.getZKDatabase().setWatches(relativeZxid,
+                        setWatches.getDataWatches(),
+                        setWatches.getExistWatches(),
+                        setWatches.getChildWatches(),
+                        setWatches.getPersistentWatches(),
+                        setWatches.getPersistentRecursiveWatches(),
+                        cnxn);
+                break;
+            }
+            case OpCode.addWatch: {
+                lastOp = "ADDW";
+                AddWatchRequest addWatcherRequest = new AddWatchRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request,
+                        addWatcherRequest);
+                zks.getZKDatabase().addWatch(addWatcherRequest.getPath(), cnxn, addWatcherRequest.getMode());
+                rsp = new ErrorResponse(0);
+                break;
+            }
+            case OpCode.getACL: {
+                lastOp = "GETA";
+                GetACLRequest getACLRequest = new GetACLRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getACLRequest);
+                path = getACLRequest.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ | ZooDefs.Perms.ADMIN, request.authInfo, path,
+                    null);
+
+                Stat stat = new Stat();
+                List<ACL> acl = zks.getZKDatabase().getACL(path, stat);
+                requestPathMetricsCollector.registerRequest(request.type, getACLRequest.getPath());
+
+                try {
+                    zks.checkACL(
+                        request.cnxn,
+                        zks.getZKDatabase().aclForNode(n),
+                        ZooDefs.Perms.ADMIN,
+                        request.authInfo,
+                        path,
+                        null);
+                    rsp = new GetACLResponse(acl, stat);
+                } catch (KeeperException.NoAuthException e) {
+                    List<ACL> acl1 = new ArrayList<ACL>(acl.size());
+                    for (ACL a : acl) {
+                        if ("digest".equals(a.getId().getScheme())) {
+                            Id id = a.getId();
+                            Id id1 = new Id(id.getScheme(), id.getId().replaceAll(":.*", ":x"));
+                            acl1.add(new ACL(a.getPerms(), id1));
+                        } else {
+                            acl1.add(a);
+                        }
+                    }
+                    rsp = new GetACLResponse(acl1, stat);
+                }
+                break;
+            }
+            case OpCode.getChildren: {
+                lastOp = "GETC";
+                GetChildrenRequest getChildrenRequest = new GetChildrenRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getChildrenRequest);
+                path = getChildrenRequest.getPath();
+                rsp = handleGetChildrenRequest(getChildrenRequest, cnxn, request.authInfo);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.getAllChildrenNumber: {
+                lastOp = "GETACN";
+                GetAllChildrenNumberRequest getAllChildrenNumberRequest = new GetAllChildrenNumberRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getAllChildrenNumberRequest);
+                path = getAllChildrenNumberRequest.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ,
+                    request.authInfo,
+                    path,
+                    null);
+                int number = zks.getZKDatabase().getAllChildrenNumber(path);
+                rsp = new GetAllChildrenNumberResponse(number);
+                break;
+            }
+            case OpCode.getChildren2: {
+                lastOp = "GETC";
+                GetChildren2Request getChildren2Request = new GetChildren2Request();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getChildren2Request);
+                Stat stat = new Stat();
+                path = getChildren2Request.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ,
+                    request.authInfo, path,
+                    null);
+                List<String> children = zks.getZKDatabase()
+                                           .getChildren(path, stat, getChildren2Request.getWatch() ? cnxn : null);
+                rsp = new GetChildren2Response(children, stat);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.checkWatches: {
+                lastOp = "CHKW";
+                CheckWatchesRequest checkWatches = new CheckWatchesRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, checkWatches);
+                WatcherType type = WatcherType.fromInt(checkWatches.getType());
+                path = checkWatches.getPath();
+                boolean containsWatcher = zks.getZKDatabase().containsWatcher(path, type, cnxn);
+                if (!containsWatcher) {
+                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
+                    throw new KeeperException.NoWatcherException(msg);
+                }
+                requestPathMetricsCollector.registerRequest(request.type, checkWatches.getPath());
+                break;
+            }
+            case OpCode.removeWatches: {
+                lastOp = "REMW";
+                RemoveWatchesRequest removeWatches = new RemoveWatchesRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, removeWatches);
+                WatcherType type = WatcherType.fromInt(removeWatches.getType());
+                path = removeWatches.getPath();
+                boolean removed = zks.getZKDatabase().removeWatch(path, type, cnxn);
+                if (!removed) {
+                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
+                    throw new KeeperException.NoWatcherException(msg);
+                }
+                requestPathMetricsCollector.registerRequest(request.type, removeWatches.getPath());
+                break;
+            }
+            case OpCode.getEphemerals: {
+                lastOp = "GETE";
+                GetEphemeralsRequest getEphemerals = new GetEphemeralsRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getEphemerals);
+                String prefixPath = getEphemerals.getPrefixPath();
+                Set<String> allEphems = zks.getZKDatabase().getDataTree().getEphemerals(request.sessionId);
+                List<String> ephemerals = new ArrayList<>();
+                if (StringUtils.isBlank(prefixPath) || "/".equals(prefixPath.trim())) {
+                    ephemerals.addAll(allEphems);
+                } else {
+                    for (String p : allEphems) {
+                        if (p.startsWith(prefixPath)) {
+                            ephemerals.add(p);
+                        }
+                    }
+                }
+                rsp = new GetEphemeralsResponse(ephemerals);
+                break;
+            }
+            }
+        } catch (SessionMovedException e) {
+            // session moved is a connection level error, we need to tear
+            // down the connection otw ZOOKEEPER-710 might happen
+            // ie client on slow follower starts to renew session, fails
+            // before this completes, then tries the fast follower (leader)
+            // and is successful, however the initial renew is then
+            // successfully fwd/processed by the leader and as a result
+            // the client and leader disagree on where the client is most
+            // recently attached (and therefore invalid SESSION MOVED generated)
+            cnxn.sendCloseSession();
+            return;
+        } catch (KeeperException e) {
+            err = e.code();
+        } catch (Exception e) {
+            // log at error level as we are returning a marshalling
+            // error to the user
+            LOG.error("Failed to process {}", request, e);
+            StringBuilder sb = new StringBuilder();
+            ByteBuffer bb = request.request;
+            bb.rewind();
+            while (bb.hasRemaining()) {
+                sb.append(Integer.toHexString(bb.get() & 0xff));
+            }
+            LOG.error("Dumping request buffer: 0x{}", sb.toString());
+            err = Code.MARSHALLINGERROR;
         }
 
-        if (current == head)
-            deleteHead();
+        ReplyHeader hdr = new ReplyHeader(request.cxid, lastZxid, err.intValue());
 
-        else if (current == tail)
-            deleteTail();
+        updateStats(request, lastOp, lastZxid);
 
-        else { // Before: 1 <--> 2(current) <--> 3
-            current.previous.next = current.next;  // 1 --> 3
-            current.next.previous = current.previous; // 1 <--> 3
+        try {
+            if (path == null || rsp == null) {
+                responseSize = cnxn.sendResponse(hdr, rsp, "response");
+            } else {
+                int opCode = request.type;
+                Stat stat = null;
+                // Serialized read and get children responses could be cached by the connection
+                // object. Cache entries are identified by their path and last modified zxid,
+                // so these values are passed along with the response.
+                switch (opCode) {
+                    case OpCode.getData : {
+                        GetDataResponse getDataResponse = (GetDataResponse) rsp;
+                        stat = getDataResponse.getStat();
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
+                        break;
+                    }
+                    case OpCode.getChildren2 : {
+                        GetChildren2Response getChildren2Response = (GetChildren2Response) rsp;
+                        stat = getChildren2Response.getStat();
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
+                        break;
+                    }
+                    default:
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response");
+                }
+            }
+
+            if (request.type == OpCode.closeSession) {
+                cnxn.sendCloseSession();
+            }
+        } catch (IOException e) {
+            LOG.error("FIXMSG", e);
+        } finally {
+            ServerMetrics.getMetrics().RESPONSE_BYTES.add(responseSize);
         }
-        --size;
     }
 
-    /**
-     * Inserts element and reorders
-     *
-     * @param x Element to be added
-     */
-    public void insertOrdered(int x) {
-        Link newLink = new Link(x);
-        Link current = head;
-        while (current != null && x > current.value) // Find the position to insert
-            current = current.next;
-
-        if (current == head)
-            insertHead(x);
-
-        else if (current == null)
-            insertTail(x);
-
-        else { // Before: 1 <--> 2(current) <--> 3
-            newLink.previous = current.previous; // 1 <-- newLink
-            current.previous.next = newLink; // 1 <--> newLink
-            newLink.next = current; // 1 <--> newLink --> 2(current) <--> 3
-            current.previous = newLink; // 1 <--> newLink <--> 2(current) <--> 3
+    private Record handleGetChildrenRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
+        GetChildrenRequest getChildrenRequest = (GetChildrenRequest) request;
+        String path = getChildrenRequest.getPath();
+        DataNode n = zks.getZKDatabase().getNode(path);
+        if (n == null) {
+            throw new KeeperException.NoNodeException();
         }
-        ++size;
+        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
+        List<String> children = zks.getZKDatabase()
+                                   .getChildren(path, null, getChildrenRequest.getWatch() ? cnxn : null);
+        return new GetChildrenResponse(children);
     }
 
-    /**
-     * Deletes the passed node from the current list
-     *
-     * @param z Element to be deleted
-     */
-    public void deleteNode(Link z) {
-        if(z.next == null){
-            deleteTail();
-        } else if(z == head){
-            deleteHead();
-        } else{ //before <-- 1 <--> 2(z) <--> 3 -->
-            z.previous.next = z.next; // 1 --> 3
-            z.next.previous = z.previous; // 1 <--> 3
+    private Record handleGetDataRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
+        GetDataRequest getDataRequest = (GetDataRequest) request;
+        String path = getDataRequest.getPath();
+        DataNode n = zks.getZKDatabase().getNode(path);
+        if (n == null) {
+            throw new KeeperException.NoNodeException();
         }
-        --size;
-    }
-    
-    public static void removeDuplicates(DoublyLinkedList l ) {
-    	Link linkOne = l.head ;
-    	while(linkOne.next != null) { // list is present  
-    		Link linkTwo = linkOne.next; // second link for comparison
-    		while(linkTwo.next!= null) {
-    			if(linkOne.value == linkTwo.value) // if there are duplicates values then 
-    				l.delete(linkTwo.value);  // delete the link
-    			linkTwo = linkTwo.next ; // go to next link 
-    		}
-    		linkOne = linkOne.next; // go to link link to iterate the whole list again
-    	}
+        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
+        Stat stat = new Stat();
+        byte[] b = zks.getZKDatabase().getData(path, stat, getDataRequest.getWatch() ? cnxn : null);
+        return new GetDataResponse(b, stat);
     }
 
-    /**
-     * Clears List
-     * 
-     */
-     public void clearList(){
-         head = null;
-         tail = null;
-         size = 0;
-     }
-
-    /**
-     * Returns true if list is empty
-     *
-     * @return true if list is empty
-     */
-    public boolean isEmpty() {
-        return (head == null);
-    }
-
-    /**
-     * Prints contents of the list
-     */
-    public void display() { // Prints contents of the list
-        Link current = head;
-        while (current != null) {
-            current.displayLink();
-            current = current.next;
+    private boolean closeSession(ServerCnxnFactory serverCnxnFactory, long sessionId) {
+        if (serverCnxnFactory == null) {
+            return false;
         }
-        System.out.println();
-    }
-}
-
-/**
- * This class is used to implement the nodes of the
- * linked list.
- *
- * @author Unknown
- */
-class Link {
-    /**
-     * Value of node
-     */
-    public int value;
-    /**
-     * This points to the link in front of the new link
-     */
-    public Link next;
-    /**
-     * This points to the link behind the new link
-     */
-    public Link previous;
-
-    /**
-     * Constructor
-     *
-     * @param value Value of node
-     */
-    public Link(int value) {
-        this.value = value;
+        return serverCnxnFactory.closeSession(sessionId, ServerCnxn.DisconnectReason.CLIENT_CLOSED_SESSION);
     }
 
-    /**
-     * Displays the node
-     */
-    public void displayLink() {
-        System.out.print(value + " ");
+    private boolean connClosedByClient(Request request) {
+        return request.cnxn == null;
     }
 
-    /**
-     * Main Method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String args[]) {
-        DoublyLinkedList myList = new DoublyLinkedList();
-        myList.insertHead(13);
-        myList.insertHead(7);
-        myList.insertHead(10);
-        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
-
-        myList.insertTail(11);
-        myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
-
-        myList.deleteTail();
-        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
-
-        myList.delete(7);
-        myList.display(); // <-- 10(head) <--> 13(tail) -->
-
-        myList.insertOrdered(23);
-        myList.insertOrdered(67);
-        myList.insertOrdered(3);
-        myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
-        myList.insertElementByIndex(5, 1);
-        myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
-        myList.clearList();
-        myList.display();
-        myList.insertHead(20);
-        myList.display();
+    public void shutdown() {
+        // we are the final link in the chain
+        LOG.info("shutdown of request processor complete");
     }
+
+    private void updateStats(Request request, String lastOp, long lastZxid) {
+        if (request.cnxn == null) {
+            return;
+        }
+        long currentTime = Time.currentElapsedTime();
+        zks.serverStats().updateLatency(request, currentTime);
+        request.cnxn.updateStatsForResponse(request.cxid, lastZxid, lastOp, request.createTime, currentTime);
+    }
+
 }
