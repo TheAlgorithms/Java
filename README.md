@@ -11,7 +11,7 @@ You can run and edit the algorithms or contribute to them using Gitpod.io, a fre
 
 
 ### All algorithms are implemented in Java (for educational purposes)
-These implementations are for learning purposes. The implementations may be less efficient than the Java standard library.
+This implementation are for learning purposes. The implementations may be less efficient than the Java standard library.
 
 ## Contribution Guidelines
 Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
