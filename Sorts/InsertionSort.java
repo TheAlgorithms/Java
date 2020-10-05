@@ -1,58 +1,33 @@
-package Sorts;
+import java.util.Arrays;
+import java.util.Random;
 
-import static Sorts.SortUtils.less;
-import static Sorts.SortUtils.print;
+public class InsertionSort {
+    public static void main(String[] args) {
+        int[] stuff = getRandomArray(50000);
+        //System.out.println(Arrays.toString(stuff));
 
-/**
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
- */
+        long started = System.currentTimeMillis();
+        insertionSort(stuff);
+        long finished = System.currentTimeMillis();
+        long totalTime = finished - started;
 
-class InsertionSort implements SortAlgorithm {
+        //System.out.println(Arrays.toString(stuff));
 
-    /**
-     * This method implements the Generic Insertion Sort
-     * Sorts the array in increasing order
-     *
-     * @param array The array to be sorted
-     **/
+        System.out.println("Started: " + started);
+        System.out.println("Finished: " + finished);
+        System.out.println("Elapsed: " + totalTime);
+    }
 
-    @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int j = 1; j < array.length; j++) {
-
-            // Picking up the key(Card)
-            T key = array[j];
-            int i = j - 1;
-
-            while (i >= 0 && less(key, array[i])) {
-                array[i + 1] = array[i];
-                i--;
-            }
-            // Placing the key (Card) at its correct position in the sorted subarray
-            array[i + 1] = key;
+    public static int[] getRandomArray(int size) {
+        int[] array = new int[size];
+        Random r = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = r.nextInt(size);
         }
         return array;
     }
 
-    // Driver Program
-    public static void main(String[] args) {
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-
-        InsertionSort sort = new InsertionSort();
-
-        sort.sort(integers);
-
-        // Output => 1 4 6 9 12 23 54 78 231
-        print(integers);
-
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
-
-        sort.sort(strings);
-
-        //Output => a	b	c	d	e
-        print(strings);
+    public static void insertionSort(int[] array) {
+        // Implementation goes here
     }
 }
