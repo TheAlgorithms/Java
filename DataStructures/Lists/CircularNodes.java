@@ -1,6 +1,8 @@
 // Java program to count number of nodes in 
 // a circular linked list. 
-class GFG 
+package DataStructures.Lists;
+
+class CircularNodes 
 { 
 
 /* ure for a node */
