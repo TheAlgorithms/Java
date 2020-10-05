@@ -13,6 +13,7 @@ public class PowerOfTwoOrNot {
         assert checkIfPowerOfTwoOrNot(8);
         assert checkIfPowerOfTwoOrNot(16);
         assert checkIfPowerOfTwoOrNot(1024);
+        assert checkIfPowerOfTwoOrNot2(64);
     }
 
 
@@ -25,4 +26,17 @@ public class PowerOfTwoOrNot {
     public static boolean checkIfPowerOfTwoOrNot(int number) {
         return number != 0 && ((number & (number - 1)) == 0);
     }
+    
+    
+    /**
+    *approach 2
+    *by using math-logarithimic function
+    */
+    public static boolean checkIfPowerOfTwoOrNot2(int number) {
+		if (number == 0) {
+			return false;
+		}
+		double logn = Math.log(number) / Math.log(2);
+		return Math.floor(logn) == Math.ceil(logn);
+	}
 }
