@@ -1,17 +1,15 @@
-package com.company;
-
 import java.io.*;
 import java.util.*;
 
 
-class Graph
+class Dfs
 {
     private int vertices;
     LinkedList<Integer> adjacencyList[];
     private List<Integer> visitedNodes = new ArrayList<Integer>();
     boolean visited[];
 
-    Graph(int v)
+    Dfs(int v)
     {
         //create adjacencyList object
         adjacencyList = new LinkedList[v]; //length of the nodes;
