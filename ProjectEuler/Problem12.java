@@ -18,7 +18,7 @@
     What is the value of the first triangle number to have over five hundred divisors?
 */
 
-public class Problem_12_Highly_Divisible_Triangular_Number {
+public class Problem_12 {
 
     /* returns the nth triangle number; that is, the sum of all the natural numbers less than, or equal to, n */
     public static int triangleNumber(int n) {
