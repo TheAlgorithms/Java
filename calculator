@@ -1,0 +1,57 @@
+import java.lang.*;
+import java.util.Scanner;
+class Calculator1
+{
+ public static void main(String args[])
+ {
+  System.out.println("1:ADDITION");
+  System.out.println("2:MULTIPLICATION");
+  System.out.println("3:SUBTRACTION");
+  System.out.println("4:DIVISION");
+ 
+  Scanner s=new Scanner(System.in);
+  System.out.println("Enter your choice");
+  int choice=s.nextInt();
+  switch(choice)
+  {
+   case 1:  System.out.println("enter 2 numbers");
+            Scanner v=new Scanner(System.in);
+            int a=v.nextInt();
+            int b=v.nextInt();
+            int c;
+            c=a+b;
+            System.out.println("SUM :"+c);
+            break;
+
+   case 2:  System.out.println("enter 2 numbers");
+            Scanner d=new Scanner(System.in);
+            int z=d.nextInt();
+            int i=d.nextInt();
+            int k;
+            k=z*i;
+            System.out.println("MULTIPLICATION :"+k);
+            break;
+
+   case 3:  System.out.println("enter 2 numbers");
+            Scanner f=new Scanner(System.in);
+            int e=f.nextInt();
+            int g=f.nextInt();
+            int h;
+            h=e-g;
+            System.out.println("SUBTRACTION :"+h);
+            break;
+
+   case 4:  System.out.println("enter 2 numbers");
+            Scanner q=new Scanner(System.in);
+            float l=q.nextInt();
+            float m=q.nextInt();
+            float p;
+            p=l/m;
+            System.out.println("DIVISION :"+p);
+            break;
+
+   default: System.out.println("invalid");
+  }
+ }
+}
+              
