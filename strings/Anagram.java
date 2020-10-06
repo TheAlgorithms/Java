@@ -1,8 +1,9 @@
 public class Anagram {
 
 	public static void main(String[] args) {
-		String a="Hello";
-		String b="hEllo";
+		Scanner scan=new Scanner(System.in);
+		String a=scan.nextLine();
+		String b=scan.nextLine();
 		 boolean ana=true;
 	      int[] u=new int[256];
 	      int[] v=new int[256];
