@@ -1,0 +1,30 @@
+import java.util.Scanner;
+class Area1
+{	public static void main(String args[])
+	{	int l,b,s;
+                double r;
+		Scanner x=new Scanner(System.in);
+		Area a=new Area();
+		System.out.println("Enter the side of Square");
+		s=x.nextInt();
+		a.area(s);
+		System.out.println("Enter the length and breadth of rectangle");
+		l=x.nextInt();
+		b=x.nextInt();
+		a.area(l,b);
+		System.out.println("Enter the radius of Circle");
+		r=x.nextDouble();
+		a.area(r);
+	}
+}
+
+class Area
+{	void area(int s)
+	{System.out.println("The area of Square="+(s*s));}
+	
+	void area(int l,int b)
+	{System.out.println("The area of Rectangle="+(l*b));}
+
+	void area(double r)
+	{System.out.println("The area of Circle="+(3.14*r*r));}
+}
