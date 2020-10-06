@@ -70,7 +70,7 @@ class BalancedBrackets {
                     return false;
             }
         }
-        return bracketsStack.isEmpty();
+        return (bracketsStack.isEmpty()==true);
     }
 
 
