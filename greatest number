@@ -1,0 +1,25 @@
+import java.lang.*;
+import java.util.Scanner;
+class Greatest
+{
+ public static void main(String args[])
+ {
+  Scanner s=new Scanner(System.in);
+  System.out.println("Enter the 3 values");
+  int x=s.nextInt();
+  int y=s.nextInt();
+  int z=s.nextInt();
+  if(x>y && x>z)
+  {
+   System.out.println("Greatest is:" +x);
+  }
+  else if(y>z && y>x)
+  {
+  System.out.println("Greatest is:" +y);
+  }
+  else
+  {
+   System.out.println("Greatest is:" +z);
+  }
+}
+}
