@@ -213,6 +213,7 @@
   * [Problem07](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem07.java)
   * [Problem09](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem09.java)
   * [Problem10](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem10.java)
+  * [Problem12](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem12.java)
 
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
