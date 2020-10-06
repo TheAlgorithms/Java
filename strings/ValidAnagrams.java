@@ -1,6 +1,7 @@
 // To check if two strings are anagrams of each other (consider all the letters in both the strings in lowercase)
+package strings;
 
-public class Main {
+public class ValidAnagrams {
     public static boolean isAnagram(String s, String t) {
         int[] arr = new int[26];
         if (s.length() != t.length()) {
