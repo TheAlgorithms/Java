@@ -226,6 +226,60 @@ public class SinglyLinkedList {
         return cur.value;
     }
 
+    /**
+     * Returns the position that the requested value is in.
+     *
+     * @param element the element requested to be found in the list.
+     * @return position of the element in the linked list, -1 if not found.
+     */
+    public int indexOf(int element) {
+        int index = 0;
+        if (head == null) {
+            return -1;
+        }
+        Node cur = head;
+        while (cur != null) {
+            if (cur.value == element) {
+                return index;
+            }
+            cur = cur.next;
+            index++;
+        }
+        return -1;
+    }
+
+    /**
+     * Returns the position that the requested value first appears in.
+     *
+     * @param element the element requested to be found in the list.
+     * @return position of the first appearance of the element in the linked list, -1 if not found.
+     */
+    public int indexOfFirstAppearance(int element) {
+        return indexOf(element);
+    }
+
+    /**
+     * Returns the position that the requested value last appears in.
+     *
+     * @param element the element requested to be found in the list.
+     * @return position of the last appearance of the element in the linked list, -1 if not found.
+     */
+    public int indexOfLastAppearance(int element) {
+        int index = 0;
+        int position = -1;
+        if (head == null) {
+            return -1;
+        }
+        Node cur = head;
+        while (cur != null) {
+            if (cur.value == element) {
+                position = index;
+            }
+            cur = cur.next;
+            index++;
+        }
+        return position;
+    }
 
     @Override
     public String toString() {
@@ -258,7 +312,28 @@ public class SinglyLinkedList {
         list.insertHead(10);
         list.insert(3);
         list.insertNth(1, 4);
-        assert list.toString().equals("10->7->5->3->1");
+        list.insert(7);
+        list.insert(10);
+        assert list.toString().equals("10->7->5->3->1->7->10");
+
+        /* Test indexOf function */
+        assert list.indexOf(10) == 0
+                && list.indexOf(7) == 1
+                && list.indexOf(5) == 2
+                && list.indexOf(3) == 3
+                && list.indexOf(1) == 4
+                && list.indexOf(6) == -1;
+
+        /* Test of indexOfFirstAppearance function */
+        assert list.indexOfFirstAppearance(10) == 0
+                && list.indexOfFirstAppearance(5) == 2
+                && list.indexOfFirstAppearance(6) == -1;
+
+        /* Test of indexOfLastAppearance function */
+        assert list.indexOfLastAppearance(10) == 6
+                && list.indexOfLastAppearance(5) == 2
+                && list.indexOfLastAppearance(7) == 5
+                && list.indexOfLastAppearance(6) == -1;
 
         /* Test search function */
         assert list.search(10)
