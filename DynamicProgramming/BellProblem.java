@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package BellProblem;
 
 import java.io.*; 
   
