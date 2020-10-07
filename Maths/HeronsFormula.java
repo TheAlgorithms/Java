@@ -2,6 +2,7 @@ package Maths;
 
 /**
  * Heron's formula gives the area of a triangle when the length of all three sides are known.
+ * <a href="https://www.wikiwand.com/en/Heron%27s_formula">https://www.wikiwand.com/en/Heron%27s_formula</a>
  */
 
 public class HeronsFormula {
