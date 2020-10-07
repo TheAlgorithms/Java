@@ -1,0 +1,48 @@
+// Java code to demonstrate the working of 
+// trimToSize() method in Stack 
+
+// for Stack functions 
+import java.util.Stack; 
+
+public class GFG { 
+	public static void main(String[] args) 
+	{ 
+
+		// Creating object of Stack<Integer> 
+		Stack<Integer> 
+			stack = new Stack<Integer>(); 
+
+		// adding element to stack 
+		stack.add(10); 
+		stack.add(20); 
+		stack.add(30); 
+		stack.add(40); 
+
+		// Print the Stack 
+		System.out.println("Stack: " + stack); 
+
+		// Print the current capacity of Stack 
+		System.out.println("Current capacity of Stack: "
+						+ stack.capacity()); 
+
+		// Change the capacity to 15 
+		stack.ensureCapacity(15); 
+
+		// Print the current capacity of Stack 
+		System.out.println("New capacity of Stack: "
+						+ stack.capacity()); 
+
+		// trims the capacity to the number of elements 
+		stack.trimToSize(); 
+
+		// Print the current capacity of Stack 
+		System.out.println("Current capacity of Stack"
+						+ " after use of trimToSize() method: "
+						+ stack.capacity()); 
+	} 
+} 
+Output:
+Stack: [10, 20, 30, 40]
+Current capacity of Stack: 10
+New capacity of Stack: 20
+Current capacity of Stack after use of trimToSize() method: 4
