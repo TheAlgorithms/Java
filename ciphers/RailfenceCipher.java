@@ -3,7 +3,8 @@
 * Java.In the rail fence cipher, the plain text is written downwards 
 * and diagonally on successive "rails" of an imaginary fence, then moving up 
 * when the bottom rail is reached. When the top rail is reached, the message 
-* is written downwards again until the whole plaintext is written out. 
+* is written downwards again until the whole plaintext is written out.
+*
 * Code by Anvikshajain
 */
 
