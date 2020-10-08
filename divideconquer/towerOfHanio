@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+class jsol{
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        int t1 = scn.nextInt(); //tower 1 id
+        int t2 = scn.nextInt(); //tower 2 id
+        int t3 = scn.nextInt(); //tower 3 id
+        
+        toh(n,t1,t2,t3);
+    }
+
+    public static void toh(int n, int t1, int t2, int t3){
+        if(n==0){
+            return;
+        }
+        
+        toh(n-1,t1,t3,t2);
+        System.out.println(n+"["+t1+" -> "+t2+"]");
+        toh(n-1,t3,t2,t1);
+        // output is of the format n[n1 -> n2] 
+        // which means move nth disc from n1 tower to n2 tower
+        
+    }
+
+}
+//contibuted by @rohanfizzz (github)
