@@ -5,6 +5,7 @@ import java.util.*;
   
 /**
  * @author Matteo Messmer https://github.com/matteomessmer
+ * Algorithm explanation https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
  */
 public class LongestPalindromicSubsequence {
     public static void main(String[] args) {
