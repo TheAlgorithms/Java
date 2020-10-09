@@ -1,29 +1,29 @@
 /*
  *  In the given Example we take the input of the two strings s1 and s2 and we find out the length of the 
- *  Longest Palindromic Subsequence
+ *  Longest Common Substring
  */
+/*
+@Author : Amit Thakur
+*/
 
 package DynamicProgramming;
 
 import java.lang.*;
 import java.util.*;
 import java.io.*;
-/*
-@Author : Amit Thakur
-*/
 
-public class LongestPalindromicSubsequence 
+public class LongestCommonSubstring 
 {
 	public static int LCS(String s1,String s2)
 	{
-		int i=0,j=0,row=0,col=0;
+		int i=0,j=0,row=0,col=0,max=0,ret=0;
 		
 		int dp[][];
 		dp=new int [s1.length()+1][s2.length()+1];
 		
 		row=s1.length();
 		col=s2.length();
-		System.out.println(dp.length+" "+dp[0].length);
+		
 		for(i=0;i<row+1;i++)
 		{
 			for(j=0;j<col+1;j++)
@@ -45,45 +45,32 @@ public class LongestPalindromicSubsequence
 				}
 				else
 				{
-					dp[i][j]=Math.max(dp[i-1][j], dp[i][j-1]);
+					dp[i][j]=0;
 				}
 			}
 		}
 		
-		return(dp[row][col]);
-	}
-	
-	public static int util(String s1,String s2)
-	{
-		int i=0,ret=0;
-		
-		String reverseS="";
-		
-		StringBuffer sb=new StringBuffer();
-		
-		for(i=0;i<s2.length();i++)
+		for(i=0;i<row+1;i++)
 		{
-
-			sb.append(s2.charAt(i));
+			for(j=0;j<col+1;j++)
+			{
+				max=Math.max(dp[i][j], max);
+			}
 		}
 		
-		reverseS=sb.reverse().toString();
-		
-		ret=LCS(s1,reverseS);
-		
+		ret=max;
 		return(ret);
 	}
 
 	public static void main(String[] args) 
 	{
-		String s1="BBABCBCAB";
-		String s2="BABCBAB";
+		int i=0,ret=0;
+		String s1="abbaf";
+		String s2="abcdef";
 		
-		int ret=0;
+		ret=LCS(s1,s2);
 		
-		ret=util(s1,s2);
-		
-		System.out.println("The Length of the Longest Palindromic Subsequence of the above Two Strings is:-");
+		System.out.println("The Length of the Longest Common Substring is :");
 		System.out.println(ret);
 
 	}
