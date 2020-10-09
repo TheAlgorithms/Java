@@ -22,11 +22,11 @@ public class LongestPalindromicSubsequence {
         StringBuilder reverse = new StringBuilder(); 
         reverse.append(original); 
         reverse = reverse.reverse();
-        return recursiveLPS(original, reverse);
+        return recursiveLPS(original, reverse.toString());
     }
 
     private static String recursiveLPS(String original, String reverse) {
-        String bestResult = ""
+        String bestResult = "";
         
         //no more chars, then return empty
         if(original.length() == 0 || reverse.length() == 0) {
