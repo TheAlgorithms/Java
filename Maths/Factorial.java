@@ -1,27 +1,24 @@
 package Maths;
 
+import java.util.*;
+
 public class Factorial {
 
-    /* Driver Code */
-    public static void main(String[] args) {
-        assert factorial(0) == 1;
-        assert factorial(1) == 1;
-        assert factorial(5) == 120;
-        assert factorial(10) == 3628800;
-    }
-
-    /**
-     * Calculate factorial N using iteration
-     *
-     * @param n the number
-     * @return the factorial of {@code n}
-     */
-    public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
-        }
-        long factorial = 1;
-        for (int i = 1; i <= n; factorial *= i, ++i) ;
-        return factorial;
-    }
+    // Method to find factorial of given number 
+    static int factorial(int n) 
+    { 
+        int res = 1, i; 
+        for (i=2; i<=n; i++) 
+            res *= i; 
+        return res; 
+    } 
+      
+    // Driver method 
+    public static void main(String[] args)  
+    { 
+        try (Scanner sc = new Scanner(System.in)) {
+			int num=sc.nextInt();//enter the you want
+			System.out.println("Factorial of "+ num + " is " + factorial(5));
+		} 
+    } 
 }

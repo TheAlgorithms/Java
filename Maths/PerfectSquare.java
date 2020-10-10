@@ -1,25 +1,30 @@
 package Maths;
 
-/**
- * https://en.wikipedia.org/wiki/Perfect_square
- */
-public class PerfectSquare {
-    public static void main(String[] args) {
-        assert !isPerfectSquare(-1);
-        assert !isPerfectSquare(3);
-        assert !isPerfectSquare(5);
-        assert isPerfectSquare(9);
-        assert isPerfectSquare(100);
-    }
+import java.util.*;
 
-    /**
-     * Check if a number is perfect square number
-     *
-     * @param number the number to be checked
-     * @return <tt>true</tt> if {@code number} is perfect square, otherwise <tt>false</tt>
-     */
-    public static boolean isPerfectSquare(int number) {
-        int sqrt = (int) Math.sqrt(number);
-        return sqrt * sqrt == number;
-    }
+public class PerfectSquare {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in)) {
+			double x=sc.nextInt();//enter the number you want 
+			
+			if (isPerfectSquare(x)) 
+			    System.out.print("Yes"); 
+			else
+			    System.out.print("No");
+		}
+
+	}
+	static boolean isPerfectSquare(double x)  
+    { 
+          
+        // Find floating point value of 
+        // square root of x. 
+        double sr = Math.sqrt(x); 
+      
+        // If square root is an integer 
+        return ((sr - Math.floor(sr)) == 0); 
+    } 
+
 }
+//If the number is a perfect square it will return yes other wise it will return no.
