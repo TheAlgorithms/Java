@@ -1,10 +1,9 @@
-package DynamicProgramming;
+package test;
 import java.lang.*; 
 import java.io.*; 
 import java.util.*; 
   
 /**
- * @author Matteo Messmer https://github.com/matteomessmer
  * Algorithm explanation https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
  */
 public class LongestPalindromicSubsequence {
@@ -19,9 +18,8 @@ public class LongestPalindromicSubsequence {
         System.out.println(b + " => " + bLPS);
     }
 
-    private static String LPS(String original) {
-        StringBuilder reverse = new StringBuilder(); 
-        reverse.append(original); 
+    public static String LPS(String original) throws IllegalArgumentException {
+        StringBuilder reverse = new StringBuilder(original);
         reverse = reverse.reverse();
         return recursiveLPS(original, reverse.toString());
     }
