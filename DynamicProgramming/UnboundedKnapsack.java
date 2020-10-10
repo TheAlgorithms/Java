@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class UnboundedKnapsack {
 
-	static int unboundedknapsack(int[] wt, int[] val, int w, int i) {
+	static int unboundedKnapsack(int[] wt, int[] val, int w, int i) {
 		if(i>=wt.length || w==0)
 			return 0;
 		if(wt[i]<=w)
-			return Math.max(val[i]+unboundedknapsack(wt, val, w-wt[i], i), unboundedknapsack(wt, val, w, i+1));
-		return unboundedknapsack(wt, val, w, i+1);
+			return Math.max(val[i]+unboundedKnapsack(wt, val, w-wt[i], i), unboundedKnapsack(wt, val, w, i+1));
+		return unboundedKnapsack(wt, val, w, i+1);
 	}
 	
 	static int unboundedKnapsackMemo(int[] wt, int[] val, int w, int i){
@@ -46,7 +46,7 @@ public class UnboundedKnapsack {
 		for (int i = 0; i < dp.length; i++) {
 			Arrays.fill(dp[i], -1);
 		}
-		System.out.println(unboundedknapsack(wt, val, w, 0));
+		System.out.println(unboundedKnapsack(wt, val, w, 0));
 		System.out.println(unboundedKnapsackMemo(wt, val, w, 0));
 		System.out.println(unboundedKnapsackTopDown(wt, val, w));
 	}
