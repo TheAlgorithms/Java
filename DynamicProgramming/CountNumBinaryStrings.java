@@ -1,10 +1,8 @@
 package DynamicProgramming;
 /*
-* here is a important algo in this we have to count  
-* maximum no. of different binary strings which doesnot have 
-* consectuive 1s 
-
-
+* Here is an important algorithm in which we have to count the
+* maximum number of different binary strings which doesnot have 
+* consectuive 1s
 
 Test Case:
 
@@ -22,9 +20,6 @@ int n=30;
 		startAlgo();
 		System.out.println(countStrings(n,0));
 		System.out.println(endAlgo()+"ms");
-		
-		
-		
 */
 public class CountNumBinaryStr {
 	public static long startTime;
