@@ -21,7 +21,7 @@ int n=30;
 		System.out.println(countStrings(n,0));
 		System.out.println(endAlgo()+"ms");
 */
-public class CountNumBinaryStr {
+public class CountNumBinaryStrings {
 	public static long startTime;
 	public static long endTime;
 	public static void startAlgo() {
