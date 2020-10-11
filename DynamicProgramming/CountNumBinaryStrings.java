@@ -1,8 +1,8 @@
 package DynamicProgramming;
 /*
 * Here is an important algorithm in which we have to count the
-* maximum number of different binary strings which doesnot have 
-* consectuive 1s
+* maximum number of distinct binary strings which does not have
+* consectuive 1s.
 
 Test Case:
 
