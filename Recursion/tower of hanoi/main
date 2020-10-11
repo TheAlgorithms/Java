@@ -1,0 +1,10 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        hanoiAlgo h1=new hanoiAlgo();
+        h1.solveHanoi(3,'A','B','c');
+    }
+}
+
