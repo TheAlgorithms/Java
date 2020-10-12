@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -16,10 +17,10 @@ public class Main {
         s2 = in.nextLine();
 
         if (areAnagram(s1, s2)) {
-            System.out.println("same");
+            System.out.println("The Strings are anagram");
         }
         else {
-            System.out.println("not same");
+            System.out.println("The Strings are not anagram");
         }
 
     }
@@ -28,27 +29,22 @@ public class Main {
         boolean b;
         ArrayList<Character> charsOfS1 = new ArrayList<>();
         ArrayList<Character> charsForS2 = new ArrayList<>();
+
         if (s1.length() == s2.length()) {
             for (int i = 0; i < s1.length(); i++) {
-                charsOfS1.add(s1.charAt(i));
-                charsForS2.add(s2.charAt(i));
+                charsOfS1.add(s1.toLowerCase().charAt(i));
+                charsForS2.add(s2.toLowerCase().charAt(i));
             }
 
             Collections.sort(charsOfS1);
             Collections.sort(charsForS2);
 
 
-            if (charsOfS1.equals(charsForS2)) {
-                b = true;
-            }
+            if (charsOfS1.equals(charsForS2)) {b = true;}
 
-            else {
-                b = false;
-            }
+            else {b = false;}
         }
-        else {
-            b = false;
-        }
+        else {b = false;}
         return b;
     }
 }
