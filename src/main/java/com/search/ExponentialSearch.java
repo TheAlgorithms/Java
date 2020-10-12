@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Exponential search (also called doubling search or galloping search or Struzik search) is an algorithm which finds
  * the position of a target value within an array. It works by determining a range that the search key resides in and
  * performing a binary search within that range
- * <p>
+ * 
  * Worst-case performance	O(n)
  * Best-case performance	O(1)
  * Average performance	O(Log n)

@@ -7,7 +7,7 @@ import static java.lang.Math.min;
  * possible locations with the aid of Fibonacci numbers. Compared to binary search where the sorted array is divided
  * into two equal-sized parts, one of which is examined further, Fibonacci search divides the array into two parts that
  * have sizes that are consecutive Fibonacci numbers.
- * <p>
+ * 
  * Worst-case performance	O(Log n)
  * Best-case performance	O(1)
  * Average performance	O(Log n)

@@ -3,16 +3,16 @@ package com.crypto.hash;
 import java.nio.ByteBuffer;
 
 /**
- * <p>This class implements the Secure Hash Algorithm 2 family, namely SHA-224,
+ * This class implements the Secure Hash Algorithm 2 family, namely SHA-224,
  * SHA-256, SHA-384 and SHA-512. These algorithms produce a compressed
  * representation with fixed length of any message provided by the user.
  * The result is called a message digest. Any change to the message will
  * result in a different message digest.
- * <p>SHA-2 has many possible areas of application. For example, someone
+ * SHA-2 has many possible areas of application. For example, someone
  * can determine if a file was manipulated, by comparing the message digest
  * of the original file with the message digest of the file in question.
  * Another example is the use of SHA-256 in the Proof-of-work algorithm of Bitcoin.
- * <p>
+ * 
  * This implementation is based on the RFC 6234 specification. The original
  * specification of SHA-2 is defined in FIPS PUB 180-4. Due to the U.S.
  * government shutdown by the end of 2018 the original specification was offline.
@@ -23,10 +23,10 @@ import java.nio.ByteBuffer;
 public final class Sha2 {
 
     /**
-     * <p>Returns a SHA-224 message digest with a fixed length of 224 bit (28 byte).
+     * Returns a SHA-224 message digest with a fixed length of 224 bit (28 byte).
      * By specification, the user-provided data can have a length of 0 &lt;= L &lt; 2^61 byte.
      * The JVM, though, allows an array with a maximum length of approximately
-     * Integer.MAX_VALUE.</p>
+     * Integer.MAX_VALUE.
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 224 bit (28 byte)
@@ -48,7 +48,7 @@ public final class Sha2 {
     }
 
     /**
-     * <p>Returns a SHA-256 message digest with a fixed length of 256 bit (32 byte).<p>
+     * Returns a SHA-256 message digest with a fixed length of 256 bit (32 byte).
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 256 bit (32 byte)
@@ -71,10 +71,10 @@ public final class Sha2 {
     }
 
     /**
-     * <p>Returns a SHA-384 message digest with a fixed length of 384 bit (48 byte).
+     * Returns a SHA-384 message digest with a fixed length of 384 bit (48 byte).
      * By specification, the user-provided data can have a length of 0 &lt;= L &lt; 2^125 byte.
      * The JVM, though, allows an array with a maximum length of approximately
-     * Integer.MAX_VALUE.</p>
+     * Integer.MAX_VALUE.
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 384 bit (48 byte)
@@ -96,7 +96,7 @@ public final class Sha2 {
     }
 
     /**
-     * <p>Returns a SHA-512 message digest with a fixed length of 512 bit (64 byte).</p>
+     * Returns a SHA-512 message digest with a fixed length of 512 bit (64 byte).
      *
      * @param data the data/message to be digested
      * @return the message digest with a fixed length of 512 bit (64 byte)
@@ -119,10 +119,10 @@ public final class Sha2 {
 
 
     /**
-     * <p>Returns an integer array, which holds the raw message digest.</p>
-     * <p>This method is wrapped by SHA224() and SHA256(). Both algorithms differ
+     * Returns an integer array, which holds the raw message digest.
+     * This method is wrapped by SHA224() and SHA256(). Both algorithms differ
      * only in two points: the initialization hashes are different and for SHA-224
-     * the raw message digest is truncated by 1 byte.</p>
+     * the raw message digest is truncated by 1 byte.
      *
      * @param data the data/message to be digested
      * @param hash the initial hash value, which in the process gets used
@@ -152,10 +152,10 @@ public final class Sha2 {
     }
 
     /**
-     * <p>Returns an integer array, which holds the raw message digest.</p>
-     * <p>This method is wrapped by SHA384() and SHA512(). Both algorithms differ
+     * Returns an integer array, which holds the raw message digest.
+     * This method is wrapped by SHA384() and SHA512(). Both algorithms differ
      * only in two points: the initialization hashes are different and for SHA-384
-     * the raw message digest is truncated by 2 byte.</p>
+     * the raw message digest is truncated by 2 byte.
      *
      * @param data the data/message to be digested
      * @param hash the initial hash value, which in the process gets used
@@ -185,7 +185,7 @@ public final class Sha2 {
     }
 
     /**
-     * <p>Pads the user-provided data.</p>
+     * Pads the user-provided data.
      *
      * @param data      the data/message to be digested
      * @param blockSize the size of a data block (64 or 128 byte)

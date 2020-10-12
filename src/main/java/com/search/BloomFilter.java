@@ -8,12 +8,12 @@ import java.util.function.Function;
 
 /**
  * A simple implementation of Bloom filter.
- * <p>
+ * 
  * Bloom filter have a chance of being wrong.
- * <p>
+ * 
  * The Bloom filter assert that elements that do not exist must not exist,
  * if assert an element exists, but not necessarily.
- * <p>
+ * 
  * The accuracy rate depends on capacity and hash functions.
  *
  */

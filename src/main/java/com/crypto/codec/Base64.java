@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
- * <p>This class implements the Base64 codec as it is specified in the RFC 4648.
+ * This class implements the Base64 codec as it is specified in the RFC 4648.
  * Base64 represents binary data as a text string. It is used to store or transfer
  * data in legacy systems that are restricted to 7 bit per character. There are
  * many variations of Base64, e.g. MIME (RFC 2045) specifies Base64 slightly
@@ -33,7 +33,7 @@ public class Base64 {
     };
 
     /**
-     * <p>Encodes user-provided data with the Base64 encoding. For this, the data
+     * Encodes user-provided data with the Base64 encoding. For this, the data
      * is split in to blocks of 3-byte length. The last block may be of a shorter
      * length. The blocks are then encoded, and the last block is padded.
      *
@@ -69,7 +69,7 @@ public class Base64 {
     }
 
     /**
-     * <p>Encodes one block of data.
+     * Encodes one block of data.
      *
      * @param block The block to be encoded with a length of 3 bytes
      * @return The encoded block
@@ -87,10 +87,10 @@ public class Base64 {
     }
 
     /**
-     * <p>Pads a block of data with a padding character ('='). A data block can
+     * Pads a block of data with a padding character ('='). A data block can
      * have one or two elements. The resulting encoded block has always four
      * characters.
-     * <p>There are two cases:
+     * There are two cases:
      * <ul>
      * <li>If data block has one element, then the encoded block has two
      * characters and two padding characters</li>
@@ -122,10 +122,10 @@ public class Base64 {
     }
 
     /**
-     * <p>Decodes original data from a Base64 string. The string has always
+     * Decodes original data from a Base64 string. The string has always
      * a length of the multiple of four characters (empty string included). The
      * last block of four characters can contain one or two padding characters ('=').
-     * <p>Each block is decoded in to 3 bytes of data. The last block is
+     * Each block is decoded in to 3 bytes of data. The last block is
      * processed separately to reverse the padding.
      *
      * @param base64String Base64 encoded data
@@ -174,7 +174,7 @@ public class Base64 {
     }
 
     /**
-     * <p>Decodes an encoded block.
+     * Decodes an encoded block.
      *
      * @param block The encoded block with a length of 4 bytes
      * @return The decoded block
@@ -190,7 +190,7 @@ public class Base64 {
     }
 
     /**
-     * <p>Removes the padding from the last block.
+     * Removes the padding from the last block.
      *
      * @param block
      * @return  The decoded last block of data
@@ -217,8 +217,8 @@ public class Base64 {
     }
 
     /**
-     * <p>Check if the provided string is a valid Base64 string.
-     * <p>The specification (RFC 4648) says: <i>"Implementations MUST reject the
+     * Check if the provided string is a valid Base64 string.
+     * The specification (RFC 4648) says: <i>"Implementations MUST reject the
      * encoded data if it contains characters outside the base alphabet when
      * interpreting base-encoded data, unless the specification referring to this
      * document explicitly states otherwise."</i>

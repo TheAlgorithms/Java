@@ -5,14 +5,14 @@ import java.util.*;
 
 /**
  * An implementation of disjoint-set, represented by rooted trees.
- * <p>
+ * 
  * Actually, the instance of {@link DisjointSet} is a disjoint-set forests.
  *
- * <p>
+ * 
  * Disjoint-set operations:
- * <p>
+ * 
  * 1. quickly unites two sets into a new set, requiring O(1) time.
- * <p>
+ * 
  * 2. quickly query two elements whether contained in the same set, requiring about O(1) time.
  *
  */
@@ -33,7 +33,7 @@ public class DisjointSet<T> implements Serializable {
     /**
      * Unites the set that contains left and the set that contains right
      * into a new set with the union-by-rank heuristic.
-     * <p>
+     * 
      * Rank is an upper bound on the height of node.
      */
     public void union(T left, T right) {
@@ -108,7 +108,7 @@ public class DisjointSet<T> implements Serializable {
 
     /**
      * Find the set that contains the node, actual is the first node of the set.
-     * <p>
+     * 
      * Backtracking with path compression.
      */
     private Node<T> findSet(Node<T> node) {

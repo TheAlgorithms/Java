@@ -4,7 +4,7 @@ package com.search;
  * A ternary search algorithm is a technique in computer science for finding the minimum or maximum of a unimodal function
  * The algorithm determines either that the minimum or maximum cannot be in the first third of the domain
  * or that it cannot be in the last third of the domain, then repeats on the remaining third.
- * <p>
+ * 
  * Worst-case performance	Θ(log3(N))
  * Best-case performance	O(1)
  * Average performance	Θ(log3(N))
