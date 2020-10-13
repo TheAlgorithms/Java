@@ -18,32 +18,37 @@ public class OctalToDecimal {
 	 */
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Octal Input: ");
-		String inputOctal = sc.nextLine();
-		int result = convertOctalToDecimal(inputOctal);
-		if (result != -1)
-			System.out.println("Result convertOctalToDecimal : " + result);
-		sc.close();
-	}
-
-	/**
-	 * This method converts an octal number to a decimal number.
-	 * 
-	 * @param inputOctal
-	 *            The octal number
-	 * @return The decimal number
-	 */
-	public static int convertOctalToDecimal(String inputOctal) {
-
-		try {
-			// Actual conversion of Octal to Decimal:
-			Integer outputDecimal = Integer.parseInt(inputOctal, 8);
-			return outputDecimal;
-		} catch (NumberFormatException ne) {
-			// Printing a warning message if the input is not a valid octal
-			// number:
-			System.out.println("Invalid Input, Expecting octal number 0-7");
-			return -1;
-		}
-	}
+        int num;
+        System.out.print("Octal number: ");
+        num = sc.nextInt();
+        if(isOctal(num)) {
+        	System.out.println("Decimal equivalent:" + octalTodecimal(num));
+        }
+        else {
+        	System.out.println("Enter a valid octal number");
+        }
+        sc.close();
+    }
+    public static boolean isOctal(int number) {
+        boolean isOctal = false;
+        while (number > 0) {
+            if (number % 10 <= 7) {
+                isOctal = true;
+             } else {
+                 isOctal = false;
+                 break;
+              }
+            number /= 10;
+        }
+        return isOctal;
+    }
+    public static int octalTodecimal(int num) {
+    	int d, dec = 0, power = 0;
+        while (num != 0) {
+            d = num % 10;
+            dec += d * (int) Math.pow(8, power++);
+            num /= 10;
+        }
+        return dec;
+    }
 }
