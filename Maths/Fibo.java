@@ -1,10 +1,15 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 
+/**
+ * A utility to calculate a fibonacci number at the exact position
+ * @author KoreeZ https://github.com/HandsomeKoreeZ
+ *
+ */
 
 public class Fibo {
 
-    //divide the fib number position to the list of position of bits
+    //spread the fib number to the list of position of bits
     private static ArrayList<Integer> powList(int p) {
         int bitFlag = 0;
         ArrayList<Integer> list = new ArrayList<>();
@@ -16,11 +21,17 @@ public class Fibo {
         return list;
     }
 
-    public static BigInteger execute(Integer pow){
+    /**
+     *
+     * @param pow an integer number of the position
+     * @return BigInteger fibonacci number
+     */
+
+    public static BigInteger at(Integer pow){
         ArrayList<Integer> list = powList(pow);
         ArrayList<FiboMatrix> matrixList = new ArrayList<>();
 
-        //exponented matrix list
+        //exponent pow matrix list
         for (Integer item: list){ matrixList.add(
                 new FiboMatrix().binPowMatrix(item)); }
 
@@ -33,6 +44,7 @@ public class Fibo {
     }
 
 
+    //matrix helper class
     static class FiboMatrix {
         private BigInteger[][] matrix;
 
@@ -63,7 +75,7 @@ public class Fibo {
     }
 
 
-    //test
+    //assertions
     public static void main(String[] args) {
         assert Fibo.execute(10).equals(new BigInteger(String.valueOf(55)));
         assert Fibo.execute(15).equals(new BigInteger(String.valueOf(610)));
