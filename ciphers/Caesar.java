@@ -1,671 +1,498 @@
 package org.apache.zookeeper.server;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import org.apache.commons.lang.StringUtils;
-import org.apache.jute.Record;
-import org.apache.zookeeper.ClientCnxn;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.KeeperException.Code;
-import org.apache.zookeeper.KeeperException.SessionMovedException;
-import org.apache.zookeeper.MultiOperationRecord;
-import org.apache.zookeeper.MultiResponse;
-import org.apache.zookeeper.Op;
-import org.apache.zookeeper.OpResult;
-import org.apache.zookeeper.OpResult.CheckResult;
-import org.apache.zookeeper.OpResult.CreateResult;
-import org.apache.zookeeper.OpResult.DeleteResult;
-import org.apache.zookeeper.OpResult.ErrorResult;
-import org.apache.zookeeper.OpResult.GetChildrenResult;
-import org.apache.zookeeper.OpResult.GetDataResult;
-import org.apache.zookeeper.OpResult.SetDataResult;
-import org.apache.zookeeper.Watcher.WatcherType;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooDefs.OpCode;
-import org.apache.zookeeper.audit.AuditHelper;
-import org.apache.zookeeper.common.Time;
-import org.apache.zookeeper.data.ACL;
-import org.apache.zookeeper.data.Id;
-import org.apache.zookeeper.data.Stat;
-import org.apache.zookeeper.proto.AddWatchRequest;
-import org.apache.zookeeper.proto.CheckWatchesRequest;
-import org.apache.zookeeper.proto.Create2Response;
-import org.apache.zookeeper.proto.CreateResponse;
-import org.apache.zookeeper.proto.ErrorResponse;
-import org.apache.zookeeper.proto.ExistsRequest;
-import org.apache.zookeeper.proto.ExistsResponse;
-import org.apache.zookeeper.proto.GetACLRequest;
-import org.apache.zookeeper.proto.GetACLResponse;
-import org.apache.zookeeper.proto.GetAllChildrenNumberRequest;
-import org.apache.zookeeper.proto.GetAllChildrenNumberResponse;
-import org.apache.zookeeper.proto.GetChildren2Request;
-import org.apache.zookeeper.proto.GetChildren2Response;
-import org.apache.zookeeper.proto.GetChildrenRequest;
-import org.apache.zookeeper.proto.GetChildrenResponse;
-import org.apache.zookeeper.proto.GetDataRequest;
-import org.apache.zookeeper.proto.GetDataResponse;
-import org.apache.zookeeper.proto.GetEphemeralsRequest;
-import org.apache.zookeeper.proto.GetEphemeralsResponse;
-import org.apache.zookeeper.proto.RemoveWatchesRequest;
-import org.apache.zookeeper.proto.ReplyHeader;
-import org.apache.zookeeper.proto.SetACLResponse;
-import org.apache.zookeeper.proto.SetDataResponse;
-import org.apache.zookeeper.proto.SetWatches;
-import org.apache.zookeeper.proto.SetWatches2;
-import org.apache.zookeeper.proto.SyncRequest;
-import org.apache.zookeeper.proto.SyncResponse;
-import org.apache.zookeeper.server.DataTree.ProcessTxnResult;
-import org.apache.zookeeper.server.quorum.QuorumZooKeeperServer;
-import org.apache.zookeeper.server.util.RequestPathMetricsCollector;
-import org.apache.zookeeper.txn.ErrorTxn;
+import org.apache.zookeeper.metrics.Counter;
+import org.apache.zookeeper.metrics.MetricsContext;
+import org.apache.zookeeper.metrics.MetricsContext.DetailLevel;
+import org.apache.zookeeper.metrics.MetricsProvider;
+import org.apache.zookeeper.metrics.Summary;
+import org.apache.zookeeper.metrics.SummarySet;
+import org.apache.zookeeper.metrics.impl.DefaultMetricsProvider;
+import org.apache.zookeeper.metrics.impl.NullMetricsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * This Request processor actually applies any transaction associated with a
- * request and services any queries. It is always at the end of a
- * RequestProcessor chain (hence the name), so it does not have a nextProcessor
- * member.
- *
- * This RequestProcessor counts on ZooKeeperServer to populate the
- * outstandingRequests member of ZooKeeperServer.
- */
-public class FinalRequestProcessor implements RequestProcessor {
+public final class ServerMetrics {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FinalRequestProcessor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ServerMetrics.class);
 
-    private final RequestPathMetricsCollector requestPathMetricsCollector;
+    /**
+     * Dummy instance useful for tests.
+     */
+    public static final ServerMetrics NULL_METRICS = new ServerMetrics(NullMetricsProvider.INSTANCE);
 
-    ZooKeeperServer zks;
+    /**
+     * Dummy instance useful for tests.
+     */
+    public static final ServerMetrics DEFAULT_METRICS_FOR_TESTS = new ServerMetrics(new DefaultMetricsProvider());
 
-    public FinalRequestProcessor(ZooKeeperServer zks) {
-        this.zks = zks;
-        this.requestPathMetricsCollector = zks.getRequestPathMetricsCollector();
+    /**
+     * Real instance used for tracking server side metrics. The final value is
+     * assigned after the {@link MetricsProvider} bootstrap.
+     */
+    private static volatile ServerMetrics CURRENT = DEFAULT_METRICS_FOR_TESTS;
+
+    /**
+     * Access current ServerMetrics.
+     *
+     * @return a reference to the current Metrics
+     */
+    public static ServerMetrics getMetrics() {
+        return CURRENT;
     }
 
-    private ProcessTxnResult applyRequest(Request request) {
-        ProcessTxnResult rc = zks.processTxn(request);
-
-        // ZOOKEEPER-558:
-        // In some cases the server does not close the connection (e.g., closeconn buffer
-        // was not being queued — ZOOKEEPER-558) properly. This happens, for example,
-        // when the client closes the connection. The server should still close the session, though.
-        // Calling closeSession() after losing the cnxn, results in the client close session response being dropped.
-        if (request.type == OpCode.closeSession && connClosedByClient(request)) {
-            // We need to check if we can close the session id.
-            // Sometimes the corresponding ServerCnxnFactory could be null because
-            // we are just playing diffs from the leader.
-            if (closeSession(zks.serverCnxnFactory, request.sessionId)
-                || closeSession(zks.secureServerCnxnFactory, request.sessionId)) {
-                return rc;
-            }
-        }
-
-        if (request.getHdr() != null) {
-            /*
-             * Request header is created only by the leader, so this must be
-             * a quorum request. Since we're comparing timestamps across hosts,
-             * this metric may be incorrect. However, it's still a very useful
-             * metric to track in the happy case. If there is clock drift,
-             * the latency can go negative. Note: headers use wall time, not
-             * CLOCK_MONOTONIC.
-             */
-            long propagationLatency = Time.currentWallTime() - request.getHdr().getTime();
-            if (propagationLatency >= 0) {
-                ServerMetrics.getMetrics().PROPAGATION_LATENCY.add(propagationLatency);
-            }
-        }
-
-        return rc;
+    public static void metricsProviderInitialized(MetricsProvider metricsProvider) {
+        LOG.info("ServerMetrics initialized with provider {}", metricsProvider);
+        CURRENT = new ServerMetrics(metricsProvider);
     }
 
-    public void processRequest(Request request) {
-        LOG.debug("Processing request:: {}", request);
+    private ServerMetrics(MetricsProvider metricsProvider) {
+        this.metricsProvider = metricsProvider;
+        MetricsContext metricsContext = this.metricsProvider.getRootContext();
 
-        if (LOG.isTraceEnabled()) {
-            long traceMask = ZooTrace.CLIENT_REQUEST_TRACE_MASK;
-            if (request.type == OpCode.ping) {
-                traceMask = ZooTrace.SERVER_PING_TRACE_MASK;
-            }
-            ZooTrace.logRequest(LOG, traceMask, 'E', request, "");
-        }
-        ProcessTxnResult rc = null;
-        if (!request.isThrottled()) {
-          rc = applyRequest(request);
-        }
-        if (request.cnxn == null) {
-            return;
-        }
-        ServerCnxn cnxn = request.cnxn;
+        FSYNC_TIME = metricsContext.getSummary("fsynctime", DetailLevel.BASIC);
 
-        long lastZxid = zks.getZKDatabase().getDataTreeLastProcessedZxid();
+        SNAPSHOT_TIME = metricsContext.getSummary("snapshottime", DetailLevel.BASIC);
+        DB_INIT_TIME = metricsContext.getSummary("dbinittime", DetailLevel.BASIC);
+        READ_LATENCY = metricsContext.getSummary("readlatency", DetailLevel.ADVANCED);
+        UPDATE_LATENCY = metricsContext.getSummary("updatelatency", DetailLevel.ADVANCED);
+        PROPAGATION_LATENCY = metricsContext.getSummary("propagation_latency", DetailLevel.ADVANCED);
+        FOLLOWER_SYNC_TIME = metricsContext.getSummary("follower_sync_time", DetailLevel.BASIC);
+        ELECTION_TIME = metricsContext.getSummary("election_time", DetailLevel.BASIC);
+        LOOKING_COUNT = metricsContext.getCounter("looking_count");
+        DIFF_COUNT = metricsContext.getCounter("diff_count");
+        SNAP_COUNT = metricsContext.getCounter("snap_count");
+        COMMIT_COUNT = metricsContext.getCounter("commit_count");
+        CONNECTION_REQUEST_COUNT = metricsContext.getCounter("connection_request_count");
+        CONNECTION_TOKEN_DEFICIT = metricsContext.getSummary("connection_token_deficit", DetailLevel.BASIC);
+        CONNECTION_REJECTED = metricsContext.getCounter("connection_rejected");
 
-        String lastOp = "NA";
-        // Notify ZooKeeperServer that the request has finished so that it can
-        // update any request accounting/throttling limits
-        zks.decInProcess();
-        zks.requestFinished(request);
-        Code err = Code.OK;
-        Record rsp = null;
-        String path = null;
-        int responseSize = 0;
-        try {
-            if (request.getHdr() != null && request.getHdr().getType() == OpCode.error) {
-                AuditHelper.addAuditLog(request, rc, true);
-                /*
-                 * When local session upgrading is disabled, leader will
-                 * reject the ephemeral node creation due to session expire.
-                 * However, if this is the follower that issue the request,
-                 * it will have the correct error code, so we should use that
-                 * and report to user
-                 */
-                if (request.getException() != null) {
-                    throw request.getException();
-                } else {
-                    throw KeeperException.create(KeeperException.Code.get(((ErrorTxn) request.getTxn()).getErr()));
-                }
-            }
+        INFLIGHT_SNAP_COUNT = metricsContext.getSummary("inflight_snap_count", DetailLevel.BASIC);
+        INFLIGHT_DIFF_COUNT = metricsContext.getSummary("inflight_diff_count", DetailLevel.BASIC);
 
-            KeeperException ke = request.getException();
-            if (ke instanceof SessionMovedException) {
-                throw ke;
-            }
-            if (ke != null && request.type != OpCode.multi) {
-                throw ke;
-            }
+        WRITE_PER_NAMESPACE = metricsContext.getSummarySet("write_per_namespace", DetailLevel.BASIC);
+        READ_PER_NAMESPACE = metricsContext.getSummarySet("read_per_namespace", DetailLevel.BASIC);
 
-            LOG.debug("{}", request);
+        BYTES_RECEIVED_COUNT = metricsContext.getCounter("bytes_received_count");
+        UNRECOVERABLE_ERROR_COUNT = metricsContext.getCounter("unrecoverable_error_count");
 
-            if (request.isStale()) {
-                ServerMetrics.getMetrics().STALE_REPLIES.add(1);
-            }
+        NODE_CREATED_WATCHER = metricsContext.getSummary("node_created_watch_count", DetailLevel.BASIC);
+        NODE_DELETED_WATCHER = metricsContext.getSummary("node_deleted_watch_count", DetailLevel.BASIC);
+        NODE_CHANGED_WATCHER = metricsContext.getSummary("node_changed_watch_count", DetailLevel.BASIC);
+        NODE_CHILDREN_WATCHER = metricsContext.getSummary("node_children_watch_count", DetailLevel.BASIC);
 
-            if (request.isThrottled()) {
-              throw KeeperException.create(Code.THROTTLEDOP);
-            }
+        /*
+         * Number of dead watchers in DeadWatcherListener
+         */
+        ADD_DEAD_WATCHER_STALL_TIME = metricsContext.getCounter("add_dead_watcher_stall_time");
+        DEAD_WATCHERS_QUEUED = metricsContext.getCounter("dead_watchers_queued");
+        DEAD_WATCHERS_CLEARED = metricsContext.getCounter("dead_watchers_cleared");
+        DEAD_WATCHERS_CLEANER_LATENCY = metricsContext.getSummary("dead_watchers_cleaner_latency", DetailLevel.ADVANCED);
 
-            AuditHelper.addAuditLog(request, rc);
+        RESPONSE_PACKET_CACHE_HITS = metricsContext.getCounter("response_packet_cache_hits");
+        RESPONSE_PACKET_CACHE_MISSING = metricsContext.getCounter("response_packet_cache_misses");
+        RESPONSE_PACKET_GET_CHILDREN_CACHE_HITS = metricsContext.getCounter("response_packet_get_children_cache_hits");
+        RESPONSE_PACKET_GET_CHILDREN_CACHE_MISSING = metricsContext.getCounter("response_packet_get_children_cache_misses");
 
-            switch (request.type) {
-            case OpCode.ping: {
-                lastOp = "PING";
-                updateStats(request, lastOp, lastZxid);
+        ENSEMBLE_AUTH_SUCCESS = metricsContext.getCounter("ensemble_auth_success");
 
-                responseSize = cnxn.sendResponse(new ReplyHeader(ClientCnxn.PING_XID, lastZxid, 0), null, "response");
-                return;
-            }
-            case OpCode.createSession: {
-                lastOp = "SESS";
-                updateStats(request, lastOp, lastZxid);
+        ENSEMBLE_AUTH_FAIL = metricsContext.getCounter("ensemble_auth_fail");
 
-                zks.finishSessionInit(request.cnxn, true);
-                return;
-            }
-            case OpCode.multi: {
-                lastOp = "MULT";
-                rsp = new MultiResponse();
+        ENSEMBLE_AUTH_SKIP = metricsContext.getCounter("ensemble_auth_skip");
 
-                for (ProcessTxnResult subTxnResult : rc.multiResult) {
+        PREP_PROCESSOR_QUEUE_TIME = metricsContext.getSummary("prep_processor_queue_time_ms", DetailLevel.ADVANCED);
+        PREP_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("prep_processor_queue_size", DetailLevel.BASIC);
+        PREP_PROCESSOR_QUEUED = metricsContext.getCounter("prep_processor_request_queued");
+        OUTSTANDING_CHANGES_QUEUED = metricsContext.getCounter("outstanding_changes_queued");
+        OUTSTANDING_CHANGES_REMOVED = metricsContext.getCounter("outstanding_changes_removed");
+        PREP_PROCESS_TIME = metricsContext.getSummary("prep_process_time", DetailLevel.BASIC);
+        PROPOSAL_PROCESS_TIME = metricsContext.getSummary("proposal_process_time", DetailLevel.BASIC);
+        CLOSE_SESSION_PREP_TIME = metricsContext.getSummary("close_session_prep_time", DetailLevel.ADVANCED);
 
-                    OpResult subResult;
+        REVALIDATE_COUNT = metricsContext.getCounter("revalidate_count");
+        CONNECTION_DROP_COUNT = metricsContext.getCounter("connection_drop_count");
+        CONNECTION_REVALIDATE_COUNT = metricsContext.getCounter("connection_revalidate_count");
 
-                    switch (subTxnResult.type) {
-                    case OpCode.check:
-                        subResult = new CheckResult();
-                        break;
-                    case OpCode.create:
-                        subResult = new CreateResult(subTxnResult.path);
-                        break;
-                    case OpCode.create2:
-                    case OpCode.createTTL:
-                    case OpCode.createContainer:
-                        subResult = new CreateResult(subTxnResult.path, subTxnResult.stat);
-                        break;
-                    case OpCode.delete:
-                    case OpCode.deleteContainer:
-                        subResult = new DeleteResult();
-                        break;
-                    case OpCode.setData:
-                        subResult = new SetDataResult(subTxnResult.stat);
-                        break;
-                    case OpCode.error:
-                        subResult = new ErrorResult(subTxnResult.err);
-                        if (subTxnResult.err == Code.SESSIONMOVED.intValue()) {
-                            throw new SessionMovedException();
-                        }
-                        break;
-                    default:
-                        throw new IOException("Invalid type of op");
-                    }
+        // Expiry queue stats
+        SESSIONLESS_CONNECTIONS_EXPIRED = metricsContext.getCounter("sessionless_connections_expired");
+        STALE_SESSIONS_EXPIRED = metricsContext.getCounter("stale_sessions_expired");
 
-                    ((MultiResponse) rsp).add(subResult);
-                }
+        /*
+         * Number of requests that are in the session queue.
+         */
+        REQUESTS_IN_SESSION_QUEUE = metricsContext.getSummary("requests_in_session_queue", DetailLevel.BASIC);
+        PENDING_SESSION_QUEUE_SIZE = metricsContext.getSummary("pending_session_queue_size", DetailLevel.BASIC);
+        /*
+         * Consecutive number of read requests that are in the session queue right after a commit request.
+         */
+        READS_AFTER_WRITE_IN_SESSION_QUEUE = metricsContext.getSummary("reads_after_write_in_session_queue", DetailLevel.BASIC);
+        READ_ISSUED_FROM_SESSION_QUEUE = metricsContext.getSummary("reads_issued_from_session_queue", DetailLevel.BASIC);
+        SESSION_QUEUES_DRAINED = metricsContext.getSummary("session_queues_drained", DetailLevel.BASIC);
 
-                break;
-            }
-            case OpCode.multiRead: {
-                lastOp = "MLTR";
-                MultiOperationRecord multiReadRecord = new MultiOperationRecord();
-                ByteBufferInputStream.byteBuffer2Record(request.request, multiReadRecord);
-                rsp = new MultiResponse();
-                OpResult subResult;
-                for (Op readOp : multiReadRecord) {
-                    try {
-                        Record rec;
-                        switch (readOp.getType()) {
-                        case OpCode.getChildren:
-                            rec = handleGetChildrenRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
-                            subResult = new GetChildrenResult(((GetChildrenResponse) rec).getChildren());
-                            break;
-                        case OpCode.getData:
-                            rec = handleGetDataRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
-                            GetDataResponse gdr = (GetDataResponse) rec;
-                            subResult = new GetDataResult(gdr.getData(), gdr.getStat());
-                            break;
-                        default:
-                            throw new IOException("Invalid type of readOp");
-                        }
-                    } catch (KeeperException e) {
-                        subResult = new ErrorResult(e.code().intValue());
-                    }
-                    ((MultiResponse) rsp).add(subResult);
-                }
-                break;
-            }
-            case OpCode.create: {
-                lastOp = "CREA";
-                rsp = new CreateResponse(rc.path);
-                err = Code.get(rc.err);
-                requestPathMetricsCollector.registerRequest(request.type, rc.path);
-                break;
-            }
-            case OpCode.create2:
-            case OpCode.createTTL:
-            case OpCode.createContainer: {
-                lastOp = "CREA";
-                rsp = new Create2Response(rc.path, rc.stat);
-                err = Code.get(rc.err);
-                requestPathMetricsCollector.registerRequest(request.type, rc.path);
-                break;
-            }
-            case OpCode.delete:
-            case OpCode.deleteContainer: {
-                lastOp = "DELE";
-                err = Code.get(rc.err);
-                requestPathMetricsCollector.registerRequest(request.type, rc.path);
-                break;
-            }
-            case OpCode.setData: {
-                lastOp = "SETD";
-                rsp = new SetDataResponse(rc.stat);
-                err = Code.get(rc.err);
-                requestPathMetricsCollector.registerRequest(request.type, rc.path);
-                break;
-            }
-            case OpCode.reconfig: {
-                lastOp = "RECO";
-                rsp = new GetDataResponse(
-                    ((QuorumZooKeeperServer) zks).self.getQuorumVerifier().toString().getBytes(),
-                    rc.stat);
-                err = Code.get(rc.err);
-                break;
-            }
-            case OpCode.setACL: {
-                lastOp = "SETA";
-                rsp = new SetACLResponse(rc.stat);
-                err = Code.get(rc.err);
-                requestPathMetricsCollector.registerRequest(request.type, rc.path);
-                break;
-            }
-            case OpCode.closeSession: {
-                lastOp = "CLOS";
-                err = Code.get(rc.err);
-                break;
-            }
-            case OpCode.sync: {
-                lastOp = "SYNC";
-                SyncRequest syncRequest = new SyncRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, syncRequest);
-                rsp = new SyncResponse(syncRequest.getPath());
-                requestPathMetricsCollector.registerRequest(request.type, syncRequest.getPath());
-                break;
-            }
-            case OpCode.check: {
-                lastOp = "CHEC";
-                rsp = new SetDataResponse(rc.stat);
-                err = Code.get(rc.err);
-                break;
-            }
-            case OpCode.exists: {
-                lastOp = "EXIS";
-                // TODO we need to figure out the security requirement for this!
-                ExistsRequest existsRequest = new ExistsRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, existsRequest);
-                path = existsRequest.getPath();
-                if (path.indexOf('\0') != -1) {
-                    throw new KeeperException.BadArgumentsException();
-                }
-                Stat stat = zks.getZKDatabase().statNode(path, existsRequest.getWatch() ? cnxn : null);
-                rsp = new ExistsResponse(stat);
-                requestPathMetricsCollector.registerRequest(request.type, path);
-                break;
-            }
-            case OpCode.getData: {
-                lastOp = "GETD";
-                GetDataRequest getDataRequest = new GetDataRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getDataRequest);
-                path = getDataRequest.getPath();
-                rsp = handleGetDataRequest(getDataRequest, cnxn, request.authInfo);
-                requestPathMetricsCollector.registerRequest(request.type, path);
-                break;
-            }
-            case OpCode.setWatches: {
-                lastOp = "SETW";
-                SetWatches setWatches = new SetWatches();
-                // TODO we really should not need this
-                request.request.rewind();
-                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
-                long relativeZxid = setWatches.getRelativeZxid();
-                zks.getZKDatabase()
-                   .setWatches(
-                       relativeZxid,
-                       setWatches.getDataWatches(),
-                       setWatches.getExistWatches(),
-                       setWatches.getChildWatches(),
-                       Collections.emptyList(),
-                       Collections.emptyList(),
-                       cnxn);
-                break;
-            }
-            case OpCode.setWatches2: {
-                lastOp = "STW2";
-                SetWatches2 setWatches = new SetWatches2();
-                // TODO we really should not need this
-                request.request.rewind();
-                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
-                long relativeZxid = setWatches.getRelativeZxid();
-                zks.getZKDatabase().setWatches(relativeZxid,
-                        setWatches.getDataWatches(),
-                        setWatches.getExistWatches(),
-                        setWatches.getChildWatches(),
-                        setWatches.getPersistentWatches(),
-                        setWatches.getPersistentRecursiveWatches(),
-                        cnxn);
-                break;
-            }
-            case OpCode.addWatch: {
-                lastOp = "ADDW";
-                AddWatchRequest addWatcherRequest = new AddWatchRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request,
-                        addWatcherRequest);
-                zks.getZKDatabase().addWatch(addWatcherRequest.getPath(), cnxn, addWatcherRequest.getMode());
-                rsp = new ErrorResponse(0);
-                break;
-            }
-            case OpCode.getACL: {
-                lastOp = "GETA";
-                GetACLRequest getACLRequest = new GetACLRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getACLRequest);
-                path = getACLRequest.getPath();
-                DataNode n = zks.getZKDatabase().getNode(path);
-                if (n == null) {
-                    throw new KeeperException.NoNodeException();
-                }
-                zks.checkACL(
-                    request.cnxn,
-                    zks.getZKDatabase().aclForNode(n),
-                    ZooDefs.Perms.READ | ZooDefs.Perms.ADMIN, request.authInfo, path,
-                    null);
+        TIME_WAITING_EMPTY_POOL_IN_COMMIT_PROCESSOR_READ = metricsContext.getSummary("time_waiting_empty_pool_in_commit_processor_read_ms", DetailLevel.BASIC);
+        WRITE_BATCH_TIME_IN_COMMIT_PROCESSOR = metricsContext.getSummary("write_batch_time_in_commit_processor", DetailLevel.BASIC);
 
-                Stat stat = new Stat();
-                List<ACL> acl = zks.getZKDatabase().getACL(path, stat);
-                requestPathMetricsCollector.registerRequest(request.type, getACLRequest.getPath());
+        CONCURRENT_REQUEST_PROCESSING_IN_COMMIT_PROCESSOR = metricsContext.getSummary("concurrent_request_processing_in_commit_processor", DetailLevel.BASIC);
 
-                try {
-                    zks.checkACL(
-                        request.cnxn,
-                        zks.getZKDatabase().aclForNode(n),
-                        ZooDefs.Perms.ADMIN,
-                        request.authInfo,
-                        path,
-                        null);
-                    rsp = new GetACLResponse(acl, stat);
-                } catch (KeeperException.NoAuthException e) {
-                    List<ACL> acl1 = new ArrayList<ACL>(acl.size());
-                    for (ACL a : acl) {
-                        if ("digest".equals(a.getId().getScheme())) {
-                            Id id = a.getId();
-                            Id id1 = new Id(id.getScheme(), id.getId().replaceAll(":.*", ":x"));
-                            acl1.add(new ACL(a.getPerms(), id1));
-                        } else {
-                            acl1.add(a);
-                        }
-                    }
-                    rsp = new GetACLResponse(acl1, stat);
-                }
-                break;
-            }
-            case OpCode.getChildren: {
-                lastOp = "GETC";
-                GetChildrenRequest getChildrenRequest = new GetChildrenRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getChildrenRequest);
-                path = getChildrenRequest.getPath();
-                rsp = handleGetChildrenRequest(getChildrenRequest, cnxn, request.authInfo);
-                requestPathMetricsCollector.registerRequest(request.type, path);
-                break;
-            }
-            case OpCode.getAllChildrenNumber: {
-                lastOp = "GETACN";
-                GetAllChildrenNumberRequest getAllChildrenNumberRequest = new GetAllChildrenNumberRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getAllChildrenNumberRequest);
-                path = getAllChildrenNumberRequest.getPath();
-                DataNode n = zks.getZKDatabase().getNode(path);
-                if (n == null) {
-                    throw new KeeperException.NoNodeException();
-                }
-                zks.checkACL(
-                    request.cnxn,
-                    zks.getZKDatabase().aclForNode(n),
-                    ZooDefs.Perms.READ,
-                    request.authInfo,
-                    path,
-                    null);
-                int number = zks.getZKDatabase().getAllChildrenNumber(path);
-                rsp = new GetAllChildrenNumberResponse(number);
-                break;
-            }
-            case OpCode.getChildren2: {
-                lastOp = "GETC";
-                GetChildren2Request getChildren2Request = new GetChildren2Request();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getChildren2Request);
-                Stat stat = new Stat();
-                path = getChildren2Request.getPath();
-                DataNode n = zks.getZKDatabase().getNode(path);
-                if (n == null) {
-                    throw new KeeperException.NoNodeException();
-                }
-                zks.checkACL(
-                    request.cnxn,
-                    zks.getZKDatabase().aclForNode(n),
-                    ZooDefs.Perms.READ,
-                    request.authInfo, path,
-                    null);
-                List<String> children = zks.getZKDatabase()
-                                           .getChildren(path, stat, getChildren2Request.getWatch() ? cnxn : null);
-                rsp = new GetChildren2Response(children, stat);
-                requestPathMetricsCollector.registerRequest(request.type, path);
-                break;
-            }
-            case OpCode.checkWatches: {
-                lastOp = "CHKW";
-                CheckWatchesRequest checkWatches = new CheckWatchesRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, checkWatches);
-                WatcherType type = WatcherType.fromInt(checkWatches.getType());
-                path = checkWatches.getPath();
-                boolean containsWatcher = zks.getZKDatabase().containsWatcher(path, type, cnxn);
-                if (!containsWatcher) {
-                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
-                    throw new KeeperException.NoWatcherException(msg);
-                }
-                requestPathMetricsCollector.registerRequest(request.type, checkWatches.getPath());
-                break;
-            }
-            case OpCode.removeWatches: {
-                lastOp = "REMW";
-                RemoveWatchesRequest removeWatches = new RemoveWatchesRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, removeWatches);
-                WatcherType type = WatcherType.fromInt(removeWatches.getType());
-                path = removeWatches.getPath();
-                boolean removed = zks.getZKDatabase().removeWatch(path, type, cnxn);
-                if (!removed) {
-                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
-                    throw new KeeperException.NoWatcherException(msg);
-                }
-                requestPathMetricsCollector.registerRequest(request.type, removeWatches.getPath());
-                break;
-            }
-            case OpCode.getEphemerals: {
-                lastOp = "GETE";
-                GetEphemeralsRequest getEphemerals = new GetEphemeralsRequest();
-                ByteBufferInputStream.byteBuffer2Record(request.request, getEphemerals);
-                String prefixPath = getEphemerals.getPrefixPath();
-                Set<String> allEphems = zks.getZKDatabase().getDataTree().getEphemerals(request.sessionId);
-                List<String> ephemerals = new ArrayList<>();
-                if (StringUtils.isBlank(prefixPath) || "/".equals(prefixPath.trim())) {
-                    ephemerals.addAll(allEphems);
-                } else {
-                    for (String p : allEphems) {
-                        if (p.startsWith(prefixPath)) {
-                            ephemerals.add(p);
-                        }
-                    }
-                }
-                rsp = new GetEphemeralsResponse(ephemerals);
-                break;
-            }
-            }
-        } catch (SessionMovedException e) {
-            // session moved is a connection level error, we need to tear
-            // down the connection otw ZOOKEEPER-710 might happen
-            // ie client on slow follower starts to renew session, fails
-            // before this completes, then tries the fast follower (leader)
-            // and is successful, however the initial renew is then
-            // successfully fwd/processed by the leader and as a result
-            // the client and leader disagree on where the client is most
-            // recently attached (and therefore invalid SESSION MOVED generated)
-            cnxn.sendCloseSession();
-            return;
-        } catch (KeeperException e) {
-            err = e.code();
-        } catch (Exception e) {
-            // log at error level as we are returning a marshalling
-            // error to the user
-            LOG.error("Failed to process {}", request, e);
-            StringBuilder sb = new StringBuilder();
-            ByteBuffer bb = request.request;
-            bb.rewind();
-            while (bb.hasRemaining()) {
-                sb.append(Integer.toHexString(bb.get() & 0xff));
-            }
-            LOG.error("Dumping request buffer: 0x{}", sb.toString());
-            err = Code.MARSHALLINGERROR;
-        }
+        READS_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("read_commit_proc_req_queued", DetailLevel.BASIC);
+        WRITES_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("write_commit_proc_req_queued", DetailLevel.BASIC);
+        COMMITS_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("commit_commit_proc_req_queued", DetailLevel.BASIC);
+        COMMITS_QUEUED = metricsContext.getCounter("request_commit_queued");
+        READS_ISSUED_IN_COMMIT_PROC = metricsContext.getSummary("read_commit_proc_issued", DetailLevel.BASIC);
+        WRITES_ISSUED_IN_COMMIT_PROC = metricsContext.getSummary("write_commit_proc_issued", DetailLevel.BASIC);
 
-        ReplyHeader hdr = new ReplyHeader(request.cxid, lastZxid, err.intValue());
+        THROTTLED_OPS = metricsContext.getCounter("throttled_ops");
 
-        updateStats(request, lastOp, lastZxid);
+        /**
+         * Time spent by a read request in the commit processor.
+         */
+        READ_COMMITPROC_TIME = metricsContext.getSummary("read_commitproc_time_ms", DetailLevel.ADVANCED);
 
-        try {
-            if (path == null || rsp == null) {
-                responseSize = cnxn.sendResponse(hdr, rsp, "response");
-            } else {
-                int opCode = request.type;
-                Stat stat = null;
-                // Serialized read and get children responses could be cached by the connection
-                // object. Cache entries are identified by their path and last modified zxid,
-                // so these values are passed along with the response.
-                switch (opCode) {
-                    case OpCode.getData : {
-                        GetDataResponse getDataResponse = (GetDataResponse) rsp;
-                        stat = getDataResponse.getStat();
-                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
-                        break;
-                    }
-                    case OpCode.getChildren2 : {
-                        GetChildren2Response getChildren2Response = (GetChildren2Response) rsp;
-                        stat = getChildren2Response.getStat();
-                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
-                        break;
-                    }
-                    default:
-                        responseSize = cnxn.sendResponse(hdr, rsp, "response");
-                }
-            }
+        /**
+         * Time spent by a write request in the commit processor.
+         */
+        WRITE_COMMITPROC_TIME = metricsContext.getSummary("write_commitproc_time_ms", DetailLevel.ADVANCED);
 
-            if (request.type == OpCode.closeSession) {
-                cnxn.sendCloseSession();
-            }
-        } catch (IOException e) {
-            LOG.error("FIXMSG", e);
-        } finally {
-            ServerMetrics.getMetrics().RESPONSE_BYTES.add(responseSize);
-        }
+        /**
+         * Time spent by a committed request, for a locally issued write, in the
+         * commit processor.
+         */
+        LOCAL_WRITE_COMMITTED_TIME = metricsContext.getSummary("local_write_committed_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by a committed request for a write, issued by other server, in the
+         * commit processor.
+         */
+        SERVER_WRITE_COMMITTED_TIME = metricsContext.getSummary("server_write_committed_time_ms", DetailLevel.ADVANCED);
+
+        COMMIT_PROCESS_TIME = metricsContext.getSummary("commit_process_time", DetailLevel.BASIC);
+
+        /**
+         * Observer Master processing metrics.
+         */
+        OM_PROPOSAL_PROCESS_TIME = metricsContext.getSummary("om_proposal_process_time_ms", DetailLevel.ADVANCED);
+        OM_COMMIT_PROCESS_TIME = metricsContext.getSummary("om_commit_process_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by the final processor. This is tracked in the commit processor.
+         */
+        READ_FINAL_PROC_TIME = metricsContext.getSummary("read_final_proc_time_ms", DetailLevel.ADVANCED);
+        WRITE_FINAL_PROC_TIME = metricsContext.getSummary("write_final_proc_time_ms", DetailLevel.ADVANCED);
+
+        PROPOSAL_LATENCY = metricsContext.getSummary("proposal_latency", DetailLevel.ADVANCED);
+        PROPOSAL_ACK_CREATION_LATENCY = metricsContext.getSummary("proposal_ack_creation_latency", DetailLevel.ADVANCED);
+        COMMIT_PROPAGATION_LATENCY = metricsContext.getSummary("commit_propagation_latency", DetailLevel.ADVANCED);
+        LEARNER_PROPOSAL_RECEIVED_COUNT = metricsContext.getCounter("learner_proposal_received_count");
+        LEARNER_COMMIT_RECEIVED_COUNT = metricsContext.getCounter("learner_commit_received_count");
+
+        /**
+         * Learner handler quorum packet metrics.
+         */
+        LEARNER_HANDLER_QP_SIZE = metricsContext.getSummarySet("learner_handler_qp_size", DetailLevel.BASIC);
+        LEARNER_HANDLER_QP_TIME = metricsContext.getSummarySet("learner_handler_qp_time_ms", DetailLevel.ADVANCED);
+
+        STARTUP_TXNS_LOADED = metricsContext.getSummary("startup_txns_loaded", DetailLevel.BASIC);
+        STARTUP_TXNS_LOAD_TIME = metricsContext.getSummary("startup_txns_load_time", DetailLevel.BASIC);
+        STARTUP_SNAP_LOAD_TIME = metricsContext.getSummary("startup_snap_load_time", DetailLevel.BASIC);
+
+        SYNC_PROCESSOR_QUEUE_AND_FLUSH_TIME = metricsContext.getSummary("sync_processor_queue_and_flush_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("sync_processor_queue_size", DetailLevel.BASIC);
+        SYNC_PROCESSOR_QUEUED = metricsContext.getCounter("sync_processor_request_queued");
+        SYNC_PROCESSOR_QUEUE_TIME = metricsContext.getSummary("sync_processor_queue_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESSOR_FLUSH_TIME = metricsContext.getSummary("sync_processor_queue_flush_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESS_TIME = metricsContext.getSummary("sync_process_time", DetailLevel.BASIC);
+
+        BATCH_SIZE = metricsContext.getSummary("sync_processor_batch_size", DetailLevel.BASIC);
+
+        QUORUM_ACK_LATENCY = metricsContext.getSummary("quorum_ack_latency", DetailLevel.ADVANCED);
+        ACK_LATENCY = metricsContext.getSummarySet("ack_latency", DetailLevel.ADVANCED);
+        PROPOSAL_COUNT = metricsContext.getCounter("proposal_count");
+        QUIT_LEADING_DUE_TO_DISLOYAL_VOTER = metricsContext.getCounter("quit_leading_due_to_disloyal_voter");
+
+        STALE_REQUESTS = metricsContext.getCounter("stale_requests");
+        STALE_REQUESTS_DROPPED = metricsContext.getCounter("stale_requests_dropped");
+        STALE_REPLIES = metricsContext.getCounter("stale_replies");
+        REQUEST_THROTTLE_QUEUE_TIME = metricsContext.getSummary("request_throttle_queue_time_ms", DetailLevel.ADVANCED);
+        REQUEST_THROTTLE_WAIT_COUNT = metricsContext.getCounter("request_throttle_wait_count");
+        LARGE_REQUESTS_REJECTED = metricsContext.getCounter("large_requests_rejected");
+
+        NETTY_QUEUED_BUFFER = metricsContext.getSummary("netty_queued_buffer_capacity", DetailLevel.BASIC);
+
+        DIGEST_MISMATCHES_COUNT = metricsContext.getCounter("digest_mismatches_count");
+
+        LEARNER_REQUEST_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("learner_request_processor_queue_size", DetailLevel.BASIC);
+
+        UNSUCCESSFUL_HANDSHAKE = metricsContext.getCounter("unsuccessful_handshake");
+        INSECURE_ADMIN = metricsContext.getCounter("insecure_admin_count");
+        TLS_HANDSHAKE_EXCEEDED = metricsContext.getCounter("tls_handshake_exceeded");
+
+        CNXN_CLOSED_WITHOUT_ZK_SERVER_RUNNING = metricsContext.getCounter("cnxn_closed_without_zk_server_running");
+
+        SKIP_LEARNER_REQUEST_TO_NEXT_PROCESSOR_COUNT = metricsContext.getCounter("skip_learner_request_to_next_processor_count");
+
+        SOCKET_CLOSING_TIME = metricsContext.getSummary("socket_closing_time", DetailLevel.BASIC);
+
+        REQUESTS_NOT_FORWARDED_TO_COMMIT_PROCESSOR = metricsContext.getCounter(
+                "requests_not_forwarded_to_commit_processor");
+
+        RESPONSE_BYTES = metricsContext.getCounter("response_bytes");
+        WATCH_BYTES = metricsContext.getCounter("watch_bytes");
+
+        JVM_PAUSE_TIME = metricsContext.getSummary("jvm_pause_time_ms", DetailLevel.ADVANCED);
     }
 
-    private Record handleGetChildrenRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
-        GetChildrenRequest getChildrenRequest = (GetChildrenRequest) request;
-        String path = getChildrenRequest.getPath();
-        DataNode n = zks.getZKDatabase().getNode(path);
-        if (n == null) {
-            throw new KeeperException.NoNodeException();
-        }
-        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
-        List<String> children = zks.getZKDatabase()
-                                   .getChildren(path, null, getChildrenRequest.getWatch() ? cnxn : null);
-        return new GetChildrenResponse(children);
+    /**
+     * Txnlog fsync time
+     */
+    public final Summary FSYNC_TIME;
+
+    /**
+     * Snapshot writing time
+     */
+    public final Summary SNAPSHOT_TIME;
+
+    /**
+     * Db init time (snapshot loading + txnlog replay)
+     */
+    public final Summary DB_INIT_TIME;
+
+    /**
+     * Stats for read request. The timing start from when the server see the
+     * request until it leave final request processor.
+     */
+    public final Summary READ_LATENCY;
+
+    /**
+     * Stats for request that need quorum voting. Timing is the same as read
+     * request. We only keep track of stats for request that originated from
+     * this machine only.
+     */
+    public final Summary UPDATE_LATENCY;
+
+    /**
+     * Stats for all quorum request. The timing start from when the leader see
+     * the request until it reach the learner.
+     */
+    public final Summary PROPAGATION_LATENCY;
+
+    public final Summary FOLLOWER_SYNC_TIME;
+
+    public final Summary ELECTION_TIME;
+
+    public final Counter LOOKING_COUNT;
+    public final Counter DIFF_COUNT;
+    public final Counter SNAP_COUNT;
+    public final Counter COMMIT_COUNT;
+    public final Counter CONNECTION_REQUEST_COUNT;
+
+    public final Counter REVALIDATE_COUNT;
+    public final Counter CONNECTION_DROP_COUNT;
+    public final Counter CONNECTION_REVALIDATE_COUNT;
+
+    // Expiry queue stats
+    public final Counter SESSIONLESS_CONNECTIONS_EXPIRED;
+    public final Counter STALE_SESSIONS_EXPIRED;
+
+    // Connection throttling related
+    public final Summary CONNECTION_TOKEN_DEFICIT;
+    public final Counter CONNECTION_REJECTED;
+
+    public final Summary INFLIGHT_SNAP_COUNT;
+    public final Summary INFLIGHT_DIFF_COUNT;
+
+    public final Counter UNRECOVERABLE_ERROR_COUNT;
+    public final SummarySet WRITE_PER_NAMESPACE;
+    public final SummarySet READ_PER_NAMESPACE;
+    public final Counter BYTES_RECEIVED_COUNT;
+
+    public final Summary PREP_PROCESSOR_QUEUE_TIME;
+    public final Summary PREP_PROCESSOR_QUEUE_SIZE;
+    public final Counter PREP_PROCESSOR_QUEUED;
+    public final Counter OUTSTANDING_CHANGES_QUEUED;
+    public final Counter OUTSTANDING_CHANGES_REMOVED;
+    public final Summary PREP_PROCESS_TIME;
+    public final Summary PROPOSAL_PROCESS_TIME;
+    public final Summary CLOSE_SESSION_PREP_TIME;
+
+    public final Summary PROPOSAL_LATENCY;
+    public final Summary PROPOSAL_ACK_CREATION_LATENCY;
+    public final Summary COMMIT_PROPAGATION_LATENCY;
+    public final Counter LEARNER_PROPOSAL_RECEIVED_COUNT;
+    public final Counter LEARNER_COMMIT_RECEIVED_COUNT;
+
+    public final Summary STARTUP_TXNS_LOADED;
+    public final Summary STARTUP_TXNS_LOAD_TIME;
+    public final Summary STARTUP_SNAP_LOAD_TIME;
+
+    public final Summary SYNC_PROCESSOR_QUEUE_AND_FLUSH_TIME;
+    public final Summary SYNC_PROCESSOR_QUEUE_SIZE;
+    public final Counter SYNC_PROCESSOR_QUEUED;
+    public final Summary SYNC_PROCESSOR_QUEUE_TIME;
+    public final Summary SYNC_PROCESSOR_FLUSH_TIME;
+    public final Summary SYNC_PROCESS_TIME;
+
+    public final Summary BATCH_SIZE;
+
+    public final Summary QUORUM_ACK_LATENCY;
+    public final SummarySet ACK_LATENCY;
+    public final Counter PROPOSAL_COUNT;
+    public final Counter QUIT_LEADING_DUE_TO_DISLOYAL_VOTER;
+
+    /**
+     * Fired watcher stats.
+     */
+    public final Summary NODE_CREATED_WATCHER;
+    public final Summary NODE_DELETED_WATCHER;
+    public final Summary NODE_CHANGED_WATCHER;
+    public final Summary NODE_CHILDREN_WATCHER;
+
+    /*
+     * Number of dead watchers in DeadWatcherListener
+     */
+    public final Counter ADD_DEAD_WATCHER_STALL_TIME;
+    public final Counter DEAD_WATCHERS_QUEUED;
+    public final Counter DEAD_WATCHERS_CLEARED;
+    public final Summary DEAD_WATCHERS_CLEANER_LATENCY;
+
+    /*
+     * Response cache hit and miss metrics.
+     */
+    public final Counter RESPONSE_PACKET_CACHE_HITS;
+    public final Counter RESPONSE_PACKET_CACHE_MISSING;
+    public final Counter RESPONSE_PACKET_GET_CHILDREN_CACHE_HITS;
+    public final Counter RESPONSE_PACKET_GET_CHILDREN_CACHE_MISSING;
+
+    /**
+     * Learner handler quorum packet metrics.
+     */
+    public final SummarySet LEARNER_HANDLER_QP_SIZE;
+    public final SummarySet LEARNER_HANDLER_QP_TIME;
+
+    /*
+     * Number of requests that are in the session queue.
+     */
+    public final Summary REQUESTS_IN_SESSION_QUEUE;
+    public final Summary PENDING_SESSION_QUEUE_SIZE;
+    /*
+     * Consecutive number of read requests that are in the session queue right after a commit request.
+     */
+    public final Summary READS_AFTER_WRITE_IN_SESSION_QUEUE;
+    public final Summary READ_ISSUED_FROM_SESSION_QUEUE;
+    public final Summary SESSION_QUEUES_DRAINED;
+
+    public final Summary TIME_WAITING_EMPTY_POOL_IN_COMMIT_PROCESSOR_READ;
+    public final Summary WRITE_BATCH_TIME_IN_COMMIT_PROCESSOR;
+
+    public final Summary CONCURRENT_REQUEST_PROCESSING_IN_COMMIT_PROCESSOR;
+
+    public final Summary READS_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Summary WRITES_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Summary COMMITS_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Counter COMMITS_QUEUED;
+    public final Summary READS_ISSUED_IN_COMMIT_PROC;
+    public final Summary WRITES_ISSUED_IN_COMMIT_PROC;
+
+    // Request op throttling related
+    public final Counter THROTTLED_OPS;
+
+    /**
+     * Time spent by a read request in the commit processor.
+     */
+    public final Summary READ_COMMITPROC_TIME;
+
+    /**
+     * Time spent by a write request in the commit processor.
+     */
+    public final Summary WRITE_COMMITPROC_TIME;
+
+    /**
+     * Time spent by a committed request, for a locally issued write, in the
+     * commit processor.
+     */
+    public final Summary LOCAL_WRITE_COMMITTED_TIME;
+
+    /**
+     * Time spent by a committed request for a write, issued by other server, in the
+     * commit processor.
+     */
+    public final Summary SERVER_WRITE_COMMITTED_TIME;
+
+    public final Summary COMMIT_PROCESS_TIME;
+
+    /**
+     * Observer Master processing metrics.
+     */
+    public final Summary OM_PROPOSAL_PROCESS_TIME;
+    public final Summary OM_COMMIT_PROCESS_TIME;
+
+    /**
+     * Time spent by the final processor. This is tracked in the commit processor.
+     */
+    public final Summary READ_FINAL_PROC_TIME;
+    public final Summary WRITE_FINAL_PROC_TIME;
+
+    /*
+     * Number of successful matches of expected ensemble name in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_SUCCESS;
+
+    /*
+     * Number of unsuccessful matches of expected ensemble name in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_FAIL;
+
+    /*
+     * Number of client auth requests with no ensemble set in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_SKIP;
+
+    public final Counter STALE_REQUESTS;
+    public final Counter STALE_REQUESTS_DROPPED;
+    public final Counter STALE_REPLIES;
+    public final Summary REQUEST_THROTTLE_QUEUE_TIME;
+    public final Counter REQUEST_THROTTLE_WAIT_COUNT;
+    public final Counter LARGE_REQUESTS_REJECTED;
+
+    public final Summary NETTY_QUEUED_BUFFER;
+
+    // Total number of digest mismatches that are observed when applying
+    // txns to data tree.
+    public final Counter DIGEST_MISMATCHES_COUNT;
+
+    public final Summary LEARNER_REQUEST_PROCESSOR_QUEUE_SIZE;
+
+    public final Counter UNSUCCESSFUL_HANDSHAKE;
+
+    /*
+     * Number of insecure connections to admin port
+     */
+    public final Counter INSECURE_ADMIN;
+
+    public final Counter TLS_HANDSHAKE_EXCEEDED;
+
+    public final Counter CNXN_CLOSED_WITHOUT_ZK_SERVER_RUNNING;
+
+    public final Counter SKIP_LEARNER_REQUEST_TO_NEXT_PROCESSOR_COUNT;
+
+    public final Summary SOCKET_CLOSING_TIME;
+
+    public final Counter REQUESTS_NOT_FORWARDED_TO_COMMIT_PROCESSOR;
+
+    /**
+     *  Number of response/watch bytes written to clients.
+     */
+    public final Counter RESPONSE_BYTES;
+    public final Counter WATCH_BYTES;
+
+    public final Summary JVM_PAUSE_TIME;
+
+    private final MetricsProvider metricsProvider;
+
+    public void resetAll() {
+        metricsProvider.resetAllValues();
     }
 
-    private Record handleGetDataRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
-        GetDataRequest getDataRequest = (GetDataRequest) request;
-        String path = getDataRequest.getPath();
-        DataNode n = zks.getZKDatabase().getNode(path);
-        if (n == null) {
-            throw new KeeperException.NoNodeException();
-        }
-        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
-        Stat stat = new Stat();
-        byte[] b = zks.getZKDatabase().getData(path, stat, getDataRequest.getWatch() ? cnxn : null);
-        return new GetDataResponse(b, stat);
-    }
-
-    private boolean closeSession(ServerCnxnFactory serverCnxnFactory, long sessionId) {
-        if (serverCnxnFactory == null) {
-            return false;
-        }
-        return serverCnxnFactory.closeSession(sessionId, ServerCnxn.DisconnectReason.CLIENT_CLOSED_SESSION);
-    }
-
-    private boolean connClosedByClient(Request request) {
-        return request.cnxn == null;
-    }
-
-    public void shutdown() {
-        // we are the final link in the chain
-        LOG.info("shutdown of request processor complete");
-    }
-
-    private void updateStats(Request request, String lastOp, long lastZxid) {
-        if (request.cnxn == null) {
-            return;
-        }
-        long currentTime = Time.currentElapsedTime();
-        zks.serverStats().updateLatency(request, currentTime);
-        request.cnxn.updateStatsForResponse(request.cxid, lastZxid, lastOp, request.createTime, currentTime);
+    public MetricsProvider getMetricsProvider() {
+        return metricsProvider;
     }
 
 }
