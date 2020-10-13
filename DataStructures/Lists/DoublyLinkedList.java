@@ -1,1005 +1,498 @@
-package com.alibaba.nacos.naming.core;
+package org.apache.zookeeper.server;
 
-import com.alibaba.nacos.api.common.Constants;
-import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.api.naming.utils.NamingUtils;
-import com.alibaba.nacos.common.utils.JacksonUtils;
-import com.alibaba.nacos.core.cluster.Member;
-import com.alibaba.nacos.core.cluster.ServerMemberManager;
-import com.alibaba.nacos.naming.consistency.ConsistencyService;
-import com.alibaba.nacos.naming.consistency.Datum;
-import com.alibaba.nacos.naming.consistency.KeyBuilder;
-import com.alibaba.nacos.naming.consistency.RecordListener;
-import com.alibaba.nacos.naming.consistency.persistent.raft.RaftPeer;
-import com.alibaba.nacos.naming.consistency.persistent.raft.RaftPeerSet;
-import com.alibaba.nacos.naming.misc.GlobalExecutor;
-import com.alibaba.nacos.naming.misc.Loggers;
-import com.alibaba.nacos.naming.misc.Message;
-import com.alibaba.nacos.naming.misc.NetUtils;
-import com.alibaba.nacos.naming.misc.ServiceStatusSynchronizer;
-import com.alibaba.nacos.naming.misc.SwitchDomain;
-import com.alibaba.nacos.naming.misc.Synchronizer;
-import com.alibaba.nacos.naming.misc.UtilsAndCommons;
-import com.alibaba.nacos.naming.push.PushService;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.google.common.collect.Sets;
+import org.apache.zookeeper.metrics.Counter;
+import org.apache.zookeeper.metrics.MetricsContext;
+import org.apache.zookeeper.metrics.MetricsContext.DetailLevel;
+import org.apache.zookeeper.metrics.MetricsProvider;
+import org.apache.zookeeper.metrics.Summary;
+import org.apache.zookeeper.metrics.SummarySet;
+import org.apache.zookeeper.metrics.impl.DefaultMetricsProvider;
+import org.apache.zookeeper.metrics.impl.NullMetricsProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringJoiner;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+public final class ServerMetrics {
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
+    private static final Logger LOG = LoggerFactory.getLogger(ServerMetrics.class);
 
-/**
- * Core manager storing all services in Nacos.
- *
- * @author nkorange
- */
-@Component
-public class ServiceManager implements RecordListener<Service> {
-    
     /**
-     * Map(namespace, Map(group::serviceName, Service)).
+     * Dummy instance useful for tests.
      */
-    private final Map<String, Map<String, Service>> serviceMap = new ConcurrentHashMap<>();
-    
-    private final LinkedBlockingDeque<ServiceKey> toBeUpdatedServicesQueue = new LinkedBlockingDeque<>(1024 * 1024);
-    
-    private final Synchronizer synchronizer = new ServiceStatusSynchronizer();
-    
-    private final Lock lock = new ReentrantLock();
-    
-    @Resource(name = "consistencyDelegate")
-    private ConsistencyService consistencyService;
-    
-    private final SwitchDomain switchDomain;
-    
-    private final DistroMapper distroMapper;
-    
-    private final ServerMemberManager memberManager;
-    
-    private final PushService pushService;
-    
-    private final RaftPeerSet raftPeerSet;
-    
-    private int maxFinalizeCount = 3;
-    
-    private final Object putServiceLock = new Object();
-    
-    @Value("${nacos.naming.empty-service.auto-clean:false}")
-    private boolean emptyServiceAutoClean;
-    
-    @Value("${nacos.naming.empty-service.clean.initial-delay-ms:60000}")
-    private int cleanEmptyServiceDelay;
-    
-    @Value("${nacos.naming.empty-service.clean.period-time-ms:20000}")
-    private int cleanEmptyServicePeriod;
-    
-    public ServiceManager(SwitchDomain switchDomain, DistroMapper distroMapper, ServerMemberManager memberManager,
-            PushService pushService, RaftPeerSet raftPeerSet) {
-        this.switchDomain = switchDomain;
-        this.distroMapper = distroMapper;
-        this.memberManager = memberManager;
-        this.pushService = pushService;
-        this.raftPeerSet = raftPeerSet;
-    }
-    
+    public static final ServerMetrics NULL_METRICS = new ServerMetrics(NullMetricsProvider.INSTANCE);
+
     /**
-     * Init service maneger.
+     * Dummy instance useful for tests.
      */
-    @PostConstruct
-    public void init() {
-        GlobalExecutor.scheduleServiceReporter(new ServiceReporter(), 60000, TimeUnit.MILLISECONDS);
-        
-        GlobalExecutor.submitServiceUpdateManager(new UpdatedServiceProcessor());
-        
-        if (emptyServiceAutoClean) {
-            
-            Loggers.SRV_LOG.info("open empty service auto clean job, initialDelay : {} ms, period : {} ms",
-                    cleanEmptyServiceDelay, cleanEmptyServicePeriod);
-            
-            // delay 60s, period 20s;
-            
-            // This task is not recommended to be performed frequently in order to avoid
-            // the possibility that the service cache information may just be deleted
-            // and then created due to the heartbeat mechanism
-            
-            GlobalExecutor.scheduleServiceAutoClean(new EmptyServiceAutoClean(), cleanEmptyServiceDelay,
-                    cleanEmptyServicePeriod);
-        }
-        
-        try {
-            Loggers.SRV_LOG.info("listen for service meta change");
-            consistencyService.listen(KeyBuilder.SERVICE_META_KEY_PREFIX, this);
-        } catch (NacosException e) {
-            Loggers.SRV_LOG.error("listen for service meta change failed!");
-        }
-    }
-    
-    public Map<String, Service> chooseServiceMap(String namespaceId) {
-        return serviceMap.get(namespaceId);
-    }
-    
+    public static final ServerMetrics DEFAULT_METRICS_FOR_TESTS = new ServerMetrics(new DefaultMetricsProvider());
+
     /**
-     * Add a service into queue to update.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param serverIP    target server ip
-     * @param checksum    checksum of service
+     * Real instance used for tracking server side metrics. The final value is
+     * assigned after the {@link MetricsProvider} bootstrap.
      */
-    public void addUpdatedServiceToQueue(String namespaceId, String serviceName, String serverIP, String checksum) {
-        lock.lock();
-        try {
-            toBeUpdatedServicesQueue
-                    .offer(new ServiceKey(namespaceId, serviceName, serverIP, checksum), 5, TimeUnit.MILLISECONDS);
-        } catch (Exception e) {
-            toBeUpdatedServicesQueue.poll();
-            toBeUpdatedServicesQueue.add(new ServiceKey(namespaceId, serviceName, serverIP, checksum));
-            Loggers.SRV_LOG.error("[DOMAIN-STATUS] Failed to add service to be updatd to queue.", e);
-        } finally {
-            lock.unlock();
-        }
-    }
-    
-    @Override
-    public boolean interests(String key) {
-        return KeyBuilder.matchServiceMetaKey(key) && !KeyBuilder.matchSwitchKey(key);
-    }
-    
-    @Override
-    public boolean matchUnlistenKey(String key) {
-        return KeyBuilder.matchServiceMetaKey(key) && !KeyBuilder.matchSwitchKey(key);
-    }
-    
-    @Override
-    public void onChange(String key, Service service) throws Exception {
-        try {
-            if (service == null) {
-                Loggers.SRV_LOG.warn("received empty push from raft, key: {}", key);
-                return;
-            }
-            
-            if (StringUtils.isBlank(service.getNamespaceId())) {
-                service.setNamespaceId(Constants.DEFAULT_NAMESPACE_ID);
-            }
-            
-            Loggers.RAFT.info("[RAFT-NOTIFIER] datum is changed, key: {}, value: {}", key, service);
-            
-            Service oldDom = getService(service.getNamespaceId(), service.getName());
-            
-            if (oldDom != null) {
-                oldDom.update(service);
-                // re-listen to handle the situation when the underlying listener is removed:
-                consistencyService
-                        .listen(KeyBuilder.buildInstanceListKey(service.getNamespaceId(), service.getName(), true),
-                                oldDom);
-                consistencyService
-                        .listen(KeyBuilder.buildInstanceListKey(service.getNamespaceId(), service.getName(), false),
-                                oldDom);
-            } else {
-                putServiceAndInit(service);
-            }
-        } catch (Throwable e) {
-            Loggers.SRV_LOG.error("[NACOS-SERVICE] error while processing service update", e);
-        }
-    }
-    
-    @Override
-    public void onDelete(String key) throws Exception {
-        String namespace = KeyBuilder.getNamespace(key);
-        String name = KeyBuilder.getServiceName(key);
-        Service service = chooseServiceMap(namespace).get(name);
-        Loggers.RAFT.info("[RAFT-NOTIFIER] datum is deleted, key: {}", key);
-        
-        if (service != null) {
-            service.destroy();
-            consistencyService.remove(KeyBuilder.buildInstanceListKey(namespace, name, true));
-            
-            consistencyService.remove(KeyBuilder.buildInstanceListKey(namespace, name, false));
-            
-            consistencyService.unListen(KeyBuilder.buildServiceMetaKey(namespace, name), service);
-            Loggers.SRV_LOG.info("[DEAD-SERVICE] {}", service.toJson());
-        }
-        
-        chooseServiceMap(namespace).remove(name);
-    }
-    
-    private class UpdatedServiceProcessor implements Runnable {
-        
-        //get changed service from other server asynchronously
-        @Override
-        public void run() {
-            ServiceKey serviceKey = null;
-            
-            try {
-                while (true) {
-                    try {
-                        serviceKey = toBeUpdatedServicesQueue.take();
-                    } catch (Exception e) {
-                        Loggers.EVT_LOG.error("[UPDATE-DOMAIN] Exception while taking item from LinkedBlockingDeque.");
-                    }
-                    
-                    if (serviceKey == null) {
-                        continue;
-                    }
-                    GlobalExecutor.submitServiceUpdate(new ServiceUpdater(serviceKey));
-                }
-            } catch (Exception e) {
-                Loggers.EVT_LOG.error("[UPDATE-DOMAIN] Exception while update service: {}", serviceKey, e);
-            }
-        }
-    }
-    
-    private class ServiceUpdater implements Runnable {
-        
-        String namespaceId;
-        
-        String serviceName;
-        
-        String serverIP;
-        
-        public ServiceUpdater(ServiceKey serviceKey) {
-            this.namespaceId = serviceKey.getNamespaceId();
-            this.serviceName = serviceKey.getServiceName();
-            this.serverIP = serviceKey.getServerIP();
-        }
-        
-        @Override
-        public void run() {
-            try {
-                updatedHealthStatus(namespaceId, serviceName, serverIP);
-            } catch (Exception e) {
-                Loggers.SRV_LOG
-                        .warn("[DOMAIN-UPDATER] Exception while update service: {} from {}, error: {}", serviceName,
-                                serverIP, e);
-            }
-        }
-    }
-    
-    public RaftPeer getMySelfClusterState() {
-        return raftPeerSet.local();
-    }
-    
+    private static volatile ServerMetrics CURRENT = DEFAULT_METRICS_FOR_TESTS;
+
     /**
-     * Update health status of instance in service.
+     * Access current ServerMetrics.
      *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param serverIP    source server Ip
+     * @return a reference to the current Metrics
      */
-    public void updatedHealthStatus(String namespaceId, String serviceName, String serverIP) {
-        Message msg = synchronizer.get(serverIP, UtilsAndCommons.assembleFullServiceName(namespaceId, serviceName));
-        JsonNode serviceJson = JacksonUtils.toObj(msg.getData());
-        
-        ArrayNode ipList = (ArrayNode) serviceJson.get("ips");
-        Map<String, String> ipsMap = new HashMap<>(ipList.size());
-        for (int i = 0; i < ipList.size(); i++) {
-            
-            String ip = ipList.get(i).asText();
-            String[] strings = ip.split("_");
-            ipsMap.put(strings[0], strings[1]);
-        }
-        
-        Service service = getService(namespaceId, serviceName);
-        
-        if (service == null) {
-            return;
-        }
-        
-        boolean changed = false;
-        
-        List<Instance> instances = service.allIPs();
-        for (Instance instance : instances) {
-            
-            boolean valid = Boolean.parseBoolean(ipsMap.get(instance.toIpAddr()));
-            if (valid != instance.isHealthy()) {
-                changed = true;
-                instance.setHealthy(valid);
-                Loggers.EVT_LOG.info("{} {SYNC} IP-{} : {}:{}@{}", serviceName,
-                        (instance.isHealthy() ? "ENABLED" : "DISABLED"), instance.getIp(), instance.getPort(),
-                        instance.getClusterName());
-            }
-        }
-        
-        if (changed) {
-            pushService.serviceChanged(service);
-            if (Loggers.EVT_LOG.isDebugEnabled()) {
-                StringBuilder stringBuilder = new StringBuilder();
-                List<Instance> allIps = service.allIPs();
-                for (Instance instance : allIps) {
-                    stringBuilder.append(instance.toIpAddr()).append("_").append(instance.isHealthy()).append(",");
-                }
-                Loggers.EVT_LOG
-                        .debug("[HEALTH-STATUS-UPDATED] namespace: {}, service: {}, ips: {}", service.getNamespaceId(),
-                                service.getName(), stringBuilder.toString());
-            }
-        }
-        
+    public static ServerMetrics getMetrics() {
+        return CURRENT;
     }
-    
-    public Set<String> getAllServiceNames(String namespaceId) {
-        return serviceMap.get(namespaceId).keySet();
+
+    public static void metricsProviderInitialized(MetricsProvider metricsProvider) {
+        LOG.info("ServerMetrics initialized with provider {}", metricsProvider);
+        CURRENT = new ServerMetrics(metricsProvider);
     }
-    
-    public Map<String, Set<String>> getAllServiceNames() {
-        
-        Map<String, Set<String>> namesMap = new HashMap<>(16);
-        for (String namespaceId : serviceMap.keySet()) {
-            namesMap.put(namespaceId, serviceMap.get(namespaceId).keySet());
-        }
-        return namesMap;
-    }
-    
-    public Set<String> getAllNamespaces() {
-        return serviceMap.keySet();
-    }
-    
-    public List<String> getAllServiceNameList(String namespaceId) {
-        if (chooseServiceMap(namespaceId) == null) {
-            return new ArrayList<>();
-        }
-        return new ArrayList<>(chooseServiceMap(namespaceId).keySet());
-    }
-    
-    public Map<String, Set<Service>> getResponsibleServices() {
-        Map<String, Set<Service>> result = new HashMap<>(16);
-        for (String namespaceId : serviceMap.keySet()) {
-            result.put(namespaceId, new HashSet<>());
-            for (Map.Entry<String, Service> entry : serviceMap.get(namespaceId).entrySet()) {
-                Service service = entry.getValue();
-                if (distroMapper.responsible(entry.getKey())) {
-                    result.get(namespaceId).add(service);
-                }
-            }
-        }
-        return result;
-    }
-    
-    public int getResponsibleServiceCount() {
-        int serviceCount = 0;
-        for (String namespaceId : serviceMap.keySet()) {
-            for (Map.Entry<String, Service> entry : serviceMap.get(namespaceId).entrySet()) {
-                if (distroMapper.responsible(entry.getKey())) {
-                    serviceCount++;
-                }
-            }
-        }
-        return serviceCount;
-    }
-    
-    public int getResponsibleInstanceCount() {
-        Map<String, Set<Service>> responsibleServices = getResponsibleServices();
-        int count = 0;
-        for (String namespaceId : responsibleServices.keySet()) {
-            for (Service service : responsibleServices.get(namespaceId)) {
-                count += service.allIPs().size();
-            }
-        }
-        
-        return count;
-    }
-    
-    /**
-     * Fast remove service.
-     *
-     * <p>Remove service bu async.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @throws Exception exception
-     */
-    public void easyRemoveService(String namespaceId, String serviceName) throws Exception {
-        
-        Service service = getService(namespaceId, serviceName);
-        if (service == null) {
-            throw new IllegalArgumentException("specified service not exist, serviceName : " + serviceName);
-        }
-        
-        consistencyService.remove(KeyBuilder.buildServiceMetaKey(namespaceId, serviceName));
-    }
-    
-    public void addOrReplaceService(Service service) throws NacosException {
-        consistencyService.put(KeyBuilder.buildServiceMetaKey(service.getNamespaceId(), service.getName()), service);
-    }
-    
-    public void createEmptyService(String namespaceId, String serviceName, boolean local) throws NacosException {
-        createServiceIfAbsent(namespaceId, serviceName, local, null);
-    }
-    
-    /**
-     * Create service if not exist.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param local       whether create service by local
-     * @param cluster     cluster
-     * @throws NacosException nacos exception
-     */
-    public void createServiceIfAbsent(String namespaceId, String serviceName, boolean local, Cluster cluster)
-            throws NacosException {
-        Service service = getService(namespaceId, serviceName);
-        if (service == null) {
-            
-            Loggers.SRV_LOG.info("creating empty service {}:{}", namespaceId, serviceName);
-            service = new Service();
-            service.setName(serviceName);
-            service.setNamespaceId(namespaceId);
-            service.setGroupName(NamingUtils.getGroupName(serviceName));
-            // now validate the service. if failed, exception will be thrown
-            service.setLastModifiedMillis(System.currentTimeMillis());
-            service.recalculateChecksum();
-            if (cluster != null) {
-                cluster.setService(service);
-                service.getClusterMap().put(cluster.getName(), cluster);
-            }
-            service.validate();
-            
-            putServiceAndInit(service);
-            if (!local) {
-                addOrReplaceService(service);
-            }
-        }
-    }
-    
-    /**
-     * Register an instance to a service in AP mode.
-     *
-     * <p>This method creates service or cluster silently if they don't exist.
-     *
-     * @param namespaceId id of namespace
-     * @param serviceName service name
-     * @param instance    instance to register
-     * @throws Exception any error occurred in the process
-     */
-    public void registerInstance(String namespaceId, String serviceName, Instance instance) throws NacosException {
-        
-        createEmptyService(namespaceId, serviceName, instance.isEphemeral());
-        
-        Service service = getService(namespaceId, serviceName);
-        
-        if (service == null) {
-            throw new NacosException(NacosException.INVALID_PARAM,
-                    "service not found, namespace: " + namespaceId + ", service: " + serviceName);
-        }
-        
-        addInstance(namespaceId, serviceName, instance.isEphemeral(), instance);
-    }
-    
-    /**
-     * Update instance to service.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param instance    instance
-     * @throws NacosException nacos exception
-     */
-    public void updateInstance(String namespaceId, String serviceName, Instance instance) throws NacosException {
-        
-        Service service = getService(namespaceId, serviceName);
-        
-        if (service == null) {
-            throw new NacosException(NacosException.INVALID_PARAM,
-                    "service not found, namespace: " + namespaceId + ", service: " + serviceName);
-        }
-        
-        if (!service.allIPs().contains(instance)) {
-            throw new NacosException(NacosException.INVALID_PARAM, "instance not exist: " + instance);
-        }
-        
-        addInstance(namespaceId, serviceName, instance.isEphemeral(), instance);
-    }
-    
-    /**
-     * Add instance to service.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param ephemeral   whether instance is ephemeral
-     * @param ips         instances
-     * @throws NacosException nacos exception
-     */
-    public void addInstance(String namespaceId, String serviceName, boolean ephemeral, Instance... ips)
-            throws NacosException {
-        
-        String key = KeyBuilder.buildInstanceListKey(namespaceId, serviceName, ephemeral);
-        
-        Service service = getService(namespaceId, serviceName);
-        
-        synchronized (service) {
-            List<Instance> instanceList = addIpAddresses(service, ephemeral, ips);
-            
-            Instances instances = new Instances();
-            instances.setInstanceList(instanceList);
-            
-            consistencyService.put(key, instances);
-        }
-    }
-    
-    /**
-     * Remove instance from service.
-     *
-     * @param namespaceId namespace
-     * @param serviceName service name
-     * @param ephemeral   whether instance is ephemeral
-     * @param ips         instances
-     * @throws NacosException nacos exception
-     */
-    public void removeInstance(String namespaceId, String serviceName, boolean ephemeral, Instance... ips)
-            throws NacosException {
-        Service service = getService(namespaceId, serviceName);
-        
-        synchronized (service) {
-            removeInstance(namespaceId, serviceName, ephemeral, service, ips);
-        }
-    }
-    
-    private void removeInstance(String namespaceId, String serviceName, boolean ephemeral, Service service,
-            Instance... ips) throws NacosException {
-        
-        String key = KeyBuilder.buildInstanceListKey(namespaceId, serviceName, ephemeral);
-        
-        List<Instance> instanceList = substractIpAddresses(service, ephemeral, ips);
-        
-        Instances instances = new Instances();
-        instances.setInstanceList(instanceList);
-        
-        consistencyService.put(key, instances);
-    }
-    
-    public Instance getInstance(String namespaceId, String serviceName, String cluster, String ip, int port) {
-        Service service = getService(namespaceId, serviceName);
-        if (service == null) {
-            return null;
-        }
-        
-        List<String> clusters = new ArrayList<>();
-        clusters.add(cluster);
-        
-        List<Instance> ips = service.allIPs(clusters);
-        if (ips == null || ips.isEmpty()) {
-            return null;
-        }
-        
-        for (Instance instance : ips) {
-            if (instance.getIp().equals(ip) && instance.getPort() == port) {
-                return instance;
-            }
-        }
-        
-        return null;
-    }
-    
-    /**
-     * Compare and get new instance list.
-     *
-     * @param service   service
-     * @param action    {@link UtilsAndCommons#UPDATE_INSTANCE_ACTION_REMOVE} or {@link UtilsAndCommons#UPDATE_INSTANCE_ACTION_ADD}
-     * @param ephemeral whether instance is ephemeral
-     * @param ips       instances
-     * @return instance list after operation
-     * @throws NacosException nacos exception
-     */
-    public List<Instance> updateIpAddresses(Service service, String action, boolean ephemeral, Instance... ips)
-            throws NacosException {
-        
-        Datum datum = consistencyService
-                .get(KeyBuilder.buildInstanceListKey(service.getNamespaceId(), service.getName(), ephemeral));
-        
-        List<Instance> currentIPs = service.allIPs(ephemeral);
-        Map<String, Instance> currentInstances = new HashMap<>(currentIPs.size());
-        Set<String> currentInstanceIds = Sets.newHashSet();
-        
-        for (Instance instance : currentIPs) {
-            currentInstances.put(instance.toIpAddr(), instance);
-            currentInstanceIds.add(instance.getInstanceId());
-        }
-        
-        Map<String, Instance> instanceMap;
-        if (datum != null) {
-            instanceMap = setValid(((Instances) datum.value).getInstanceList(), currentInstances);
-        } else {
-            instanceMap = new HashMap<>(ips.length);
-        }
-        
-        for (Instance instance : ips) {
-            if (!service.getClusterMap().containsKey(instance.getClusterName())) {
-                Cluster cluster = new Cluster(instance.getClusterName(), service);
-                cluster.init();
-                service.getClusterMap().put(instance.getClusterName(), cluster);
-                Loggers.SRV_LOG
-                        .warn("cluster: {} not found, ip: {}, will create new cluster with default configuration.",
-                                instance.getClusterName(), instance.toJson());
-            }
-            
-            if (UtilsAndCommons.UPDATE_INSTANCE_ACTION_REMOVE.equals(action)) {
-                instanceMap.remove(instance.getDatumKey());
-            } else {
-                instance.setInstanceId(instance.generateInstanceId(currentInstanceIds));
-                instanceMap.put(instance.getDatumKey(), instance);
-            }
-            
-        }
-        
-        if (instanceMap.size() <= 0 && UtilsAndCommons.UPDATE_INSTANCE_ACTION_ADD.equals(action)) {
-            throw new IllegalArgumentException(
-                    "ip list can not be empty, service: " + service.getName() + ", ip list: " + JacksonUtils
-                            .toJson(instanceMap.values()));
-        }
-        
-        return new ArrayList<>(instanceMap.values());
-    }
-    
-    private List<Instance> substractIpAddresses(Service service, boolean ephemeral, Instance... ips)
-            throws NacosException {
-        return updateIpAddresses(service, UtilsAndCommons.UPDATE_INSTANCE_ACTION_REMOVE, ephemeral, ips);
-    }
-    
-    private List<Instance> addIpAddresses(Service service, boolean ephemeral, Instance... ips) throws NacosException {
-        return updateIpAddresses(service, UtilsAndCommons.UPDATE_INSTANCE_ACTION_ADD, ephemeral, ips);
-    }
-    
-    private Map<String, Instance> setValid(List<Instance> oldInstances, Map<String, Instance> map) {
-        
-        Map<String, Instance> instanceMap = new HashMap<>(oldInstances.size());
-        for (Instance instance : oldInstances) {
-            Instance instance1 = map.get(instance.toIpAddr());
-            if (instance1 != null) {
-                instance.setHealthy(instance1.isHealthy());
-                instance.setLastBeat(instance1.getLastBeat());
-            }
-            instanceMap.put(instance.getDatumKey(), instance);
-        }
-        return instanceMap;
-    }
-    
-    public Service getService(String namespaceId, String serviceName) {
-        if (serviceMap.get(namespaceId) == null) {
-            return null;
-        }
-        return chooseServiceMap(namespaceId).get(serviceName);
-    }
-    
-    public boolean containService(String namespaceId, String serviceName) {
-        return getService(namespaceId, serviceName) != null;
-    }
-    
-    /**
-     * Put service into manager.
-     *
-     * @param service service
-     */
-    public void putService(Service service) {
-        if (!serviceMap.containsKey(service.getNamespaceId())) {
-            synchronized (putServiceLock) {
-                if (!serviceMap.containsKey(service.getNamespaceId())) {
-                    serviceMap.put(service.getNamespaceId(), new ConcurrentHashMap<>(16));
-                }
-            }
-        }
-        serviceMap.get(service.getNamespaceId()).put(service.getName(), service);
-    }
-    
-    private void putServiceAndInit(Service service) throws NacosException {
-        putService(service);
-        service.init();
-        consistencyService
-                .listen(KeyBuilder.buildInstanceListKey(service.getNamespaceId(), service.getName(), true), service);
-        consistencyService
-                .listen(KeyBuilder.buildInstanceListKey(service.getNamespaceId(), service.getName(), false), service);
-        Loggers.SRV_LOG.info("[NEW-SERVICE] {}", service.toJson());
-    }
-    
-    /**
-     * Search services.
-     *
-     * @param namespaceId namespace
-     * @param regex       search regex
-     * @return list of service which searched
-     */
-    public List<Service> searchServices(String namespaceId, String regex) {
-        List<Service> result = new ArrayList<>();
-        for (Map.Entry<String, Service> entry : chooseServiceMap(namespaceId).entrySet()) {
-            Service service = entry.getValue();
-            String key = service.getName() + ":" + ArrayUtils.toString(service.getOwners());
-            if (key.matches(regex)) {
-                result.add(service);
-            }
-        }
-        
-        return result;
-    }
-    
-    public int getServiceCount() {
-        int serviceCount = 0;
-        for (String namespaceId : serviceMap.keySet()) {
-            serviceCount += serviceMap.get(namespaceId).size();
-        }
-        return serviceCount;
-    }
-    
-    public int getInstanceCount() {
-        int total = 0;
-        for (String namespaceId : serviceMap.keySet()) {
-            for (Service service : serviceMap.get(namespaceId).values()) {
-                total += service.allIPs().size();
-            }
-        }
-        return total;
-    }
-    
-    public Map<String, Service> getServiceMap(String namespaceId) {
-        return serviceMap.get(namespaceId);
-    }
-    
-    public int getPagedService(String namespaceId, int startPage, int pageSize, String param, String containedInstance,
-            List<Service> serviceList, boolean hasIpCount) {
-        
-        List<Service> matchList;
-        
-        if (chooseServiceMap(namespaceId) == null) {
-            return 0;
-        }
-        
-        if (StringUtils.isNotBlank(param)) {
-            StringJoiner regex = new StringJoiner(Constants.SERVICE_INFO_SPLITER);
-            for (String s : param.split(Constants.SERVICE_INFO_SPLITER)) {
-                regex.add(StringUtils.isBlank(s) ? Constants.ANY_PATTERN
-                        : Constants.ANY_PATTERN + s + Constants.ANY_PATTERN);
-            }
-            matchList = searchServices(namespaceId, regex.toString());
-        } else {
-            matchList = new ArrayList<>(chooseServiceMap(namespaceId).values());
-        }
-        
-        if (!CollectionUtils.isEmpty(matchList) && hasIpCount) {
-            matchList = matchList.stream().filter(s -> !CollectionUtils.isEmpty(s.allIPs()))
-                    .collect(Collectors.toList());
-        }
-        
-        if (StringUtils.isNotBlank(containedInstance)) {
-            
-            boolean contained;
-            for (int i = 0; i < matchList.size(); i++) {
-                Service service = matchList.get(i);
-                contained = false;
-                List<Instance> instances = service.allIPs();
-                for (Instance instance : instances) {
-                    if (containedInstance.contains(":")) {
-                        if (StringUtils.equals(instance.getIp() + ":" + instance.getPort(), containedInstance)) {
-                            contained = true;
-                            break;
-                        }
-                    } else {
-                        if (StringUtils.equals(instance.getIp(), containedInstance)) {
-                            contained = true;
-                            break;
-                        }
-                    }
-                }
-                if (!contained) {
-                    matchList.remove(i);
-                    i--;
-                }
-            }
-        }
-        
-        if (pageSize >= matchList.size()) {
-            serviceList.addAll(matchList);
-            return matchList.size();
-        }
-        
-        for (int i = 0; i < matchList.size(); i++) {
-            if (i < startPage * pageSize) {
-                continue;
-            }
-            
-            serviceList.add(matchList.get(i));
-            
-            if (serviceList.size() >= pageSize) {
-                break;
-            }
-        }
-        
-        return matchList.size();
-    }
-    
-    public static class ServiceChecksum {
-        
-        public String namespaceId;
-        
-        public Map<String, String> serviceName2Checksum = new HashMap<String, String>();
-        
-        public ServiceChecksum() {
-            this.namespaceId = Constants.DEFAULT_NAMESPACE_ID;
-        }
-        
-        public ServiceChecksum(String namespaceId) {
-            this.namespaceId = namespaceId;
-        }
-        
-        /**
-         * Add service checksum.
-         *
-         * @param serviceName service name
-         * @param checksum    checksum of service
+
+    private ServerMetrics(MetricsProvider metricsProvider) {
+        this.metricsProvider = metricsProvider;
+        MetricsContext metricsContext = this.metricsProvider.getRootContext();
+
+        FSYNC_TIME = metricsContext.getSummary("fsynctime", DetailLevel.BASIC);
+
+        SNAPSHOT_TIME = metricsContext.getSummary("snapshottime", DetailLevel.BASIC);
+        DB_INIT_TIME = metricsContext.getSummary("dbinittime", DetailLevel.BASIC);
+        READ_LATENCY = metricsContext.getSummary("readlatency", DetailLevel.ADVANCED);
+        UPDATE_LATENCY = metricsContext.getSummary("updatelatency", DetailLevel.ADVANCED);
+        PROPAGATION_LATENCY = metricsContext.getSummary("propagation_latency", DetailLevel.ADVANCED);
+        FOLLOWER_SYNC_TIME = metricsContext.getSummary("follower_sync_time", DetailLevel.BASIC);
+        ELECTION_TIME = metricsContext.getSummary("election_time", DetailLevel.BASIC);
+        LOOKING_COUNT = metricsContext.getCounter("looking_count");
+        DIFF_COUNT = metricsContext.getCounter("diff_count");
+        SNAP_COUNT = metricsContext.getCounter("snap_count");
+        COMMIT_COUNT = metricsContext.getCounter("commit_count");
+        CONNECTION_REQUEST_COUNT = metricsContext.getCounter("connection_request_count");
+        CONNECTION_TOKEN_DEFICIT = metricsContext.getSummary("connection_token_deficit", DetailLevel.BASIC);
+        CONNECTION_REJECTED = metricsContext.getCounter("connection_rejected");
+
+        INFLIGHT_SNAP_COUNT = metricsContext.getSummary("inflight_snap_count", DetailLevel.BASIC);
+        INFLIGHT_DIFF_COUNT = metricsContext.getSummary("inflight_diff_count", DetailLevel.BASIC);
+
+        WRITE_PER_NAMESPACE = metricsContext.getSummarySet("write_per_namespace", DetailLevel.BASIC);
+        READ_PER_NAMESPACE = metricsContext.getSummarySet("read_per_namespace", DetailLevel.BASIC);
+
+        BYTES_RECEIVED_COUNT = metricsContext.getCounter("bytes_received_count");
+        UNRECOVERABLE_ERROR_COUNT = metricsContext.getCounter("unrecoverable_error_count");
+
+        NODE_CREATED_WATCHER = metricsContext.getSummary("node_created_watch_count", DetailLevel.BASIC);
+        NODE_DELETED_WATCHER = metricsContext.getSummary("node_deleted_watch_count", DetailLevel.BASIC);
+        NODE_CHANGED_WATCHER = metricsContext.getSummary("node_changed_watch_count", DetailLevel.BASIC);
+        NODE_CHILDREN_WATCHER = metricsContext.getSummary("node_children_watch_count", DetailLevel.BASIC);
+
+        /*
+         * Number of dead watchers in DeadWatcherListener
          */
-        public void addItem(String serviceName, String checksum) {
-            if (StringUtils.isEmpty(serviceName) || StringUtils.isEmpty(checksum)) {
-                Loggers.SRV_LOG.warn("[DOMAIN-CHECKSUM] serviceName or checksum is empty,serviceName: {}, checksum: {}",
-                        serviceName, checksum);
-                return;
-            }
-            serviceName2Checksum.put(serviceName, checksum);
-        }
+        ADD_DEAD_WATCHER_STALL_TIME = metricsContext.getCounter("add_dead_watcher_stall_time");
+        DEAD_WATCHERS_QUEUED = metricsContext.getCounter("dead_watchers_queued");
+        DEAD_WATCHERS_CLEARED = metricsContext.getCounter("dead_watchers_cleared");
+        DEAD_WATCHERS_CLEANER_LATENCY = metricsContext.getSummary("dead_watchers_cleaner_latency", DetailLevel.ADVANCED);
+
+        RESPONSE_PACKET_CACHE_HITS = metricsContext.getCounter("response_packet_cache_hits");
+        RESPONSE_PACKET_CACHE_MISSING = metricsContext.getCounter("response_packet_cache_misses");
+        RESPONSE_PACKET_GET_CHILDREN_CACHE_HITS = metricsContext.getCounter("response_packet_get_children_cache_hits");
+        RESPONSE_PACKET_GET_CHILDREN_CACHE_MISSING = metricsContext.getCounter("response_packet_get_children_cache_misses");
+
+        ENSEMBLE_AUTH_SUCCESS = metricsContext.getCounter("ensemble_auth_success");
+
+        ENSEMBLE_AUTH_FAIL = metricsContext.getCounter("ensemble_auth_fail");
+
+        ENSEMBLE_AUTH_SKIP = metricsContext.getCounter("ensemble_auth_skip");
+
+        PREP_PROCESSOR_QUEUE_TIME = metricsContext.getSummary("prep_processor_queue_time_ms", DetailLevel.ADVANCED);
+        PREP_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("prep_processor_queue_size", DetailLevel.BASIC);
+        PREP_PROCESSOR_QUEUED = metricsContext.getCounter("prep_processor_request_queued");
+        OUTSTANDING_CHANGES_QUEUED = metricsContext.getCounter("outstanding_changes_queued");
+        OUTSTANDING_CHANGES_REMOVED = metricsContext.getCounter("outstanding_changes_removed");
+        PREP_PROCESS_TIME = metricsContext.getSummary("prep_process_time", DetailLevel.BASIC);
+        PROPOSAL_PROCESS_TIME = metricsContext.getSummary("proposal_process_time", DetailLevel.BASIC);
+        CLOSE_SESSION_PREP_TIME = metricsContext.getSummary("close_session_prep_time", DetailLevel.ADVANCED);
+
+        REVALIDATE_COUNT = metricsContext.getCounter("revalidate_count");
+        CONNECTION_DROP_COUNT = metricsContext.getCounter("connection_drop_count");
+        CONNECTION_REVALIDATE_COUNT = metricsContext.getCounter("connection_revalidate_count");
+
+        // Expiry queue stats
+        SESSIONLESS_CONNECTIONS_EXPIRED = metricsContext.getCounter("sessionless_connections_expired");
+        STALE_SESSIONS_EXPIRED = metricsContext.getCounter("stale_sessions_expired");
+
+        /*
+         * Number of requests that are in the session queue.
+         */
+        REQUESTS_IN_SESSION_QUEUE = metricsContext.getSummary("requests_in_session_queue", DetailLevel.BASIC);
+        PENDING_SESSION_QUEUE_SIZE = metricsContext.getSummary("pending_session_queue_size", DetailLevel.BASIC);
+        /*
+         * Consecutive number of read requests that are in the session queue right after a commit request.
+         */
+        READS_AFTER_WRITE_IN_SESSION_QUEUE = metricsContext.getSummary("reads_after_write_in_session_queue", DetailLevel.BASIC);
+        READ_ISSUED_FROM_SESSION_QUEUE = metricsContext.getSummary("reads_issued_from_session_queue", DetailLevel.BASIC);
+        SESSION_QUEUES_DRAINED = metricsContext.getSummary("session_queues_drained", DetailLevel.BASIC);
+
+        TIME_WAITING_EMPTY_POOL_IN_COMMIT_PROCESSOR_READ = metricsContext.getSummary("time_waiting_empty_pool_in_commit_processor_read_ms", DetailLevel.BASIC);
+        WRITE_BATCH_TIME_IN_COMMIT_PROCESSOR = metricsContext.getSummary("write_batch_time_in_commit_processor", DetailLevel.BASIC);
+
+        CONCURRENT_REQUEST_PROCESSING_IN_COMMIT_PROCESSOR = metricsContext.getSummary("concurrent_request_processing_in_commit_processor", DetailLevel.BASIC);
+
+        READS_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("read_commit_proc_req_queued", DetailLevel.BASIC);
+        WRITES_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("write_commit_proc_req_queued", DetailLevel.BASIC);
+        COMMITS_QUEUED_IN_COMMIT_PROCESSOR = metricsContext.getSummary("commit_commit_proc_req_queued", DetailLevel.BASIC);
+        COMMITS_QUEUED = metricsContext.getCounter("request_commit_queued");
+        READS_ISSUED_IN_COMMIT_PROC = metricsContext.getSummary("read_commit_proc_issued", DetailLevel.BASIC);
+        WRITES_ISSUED_IN_COMMIT_PROC = metricsContext.getSummary("write_commit_proc_issued", DetailLevel.BASIC);
+
+        THROTTLED_OPS = metricsContext.getCounter("throttled_ops");
+
+        /**
+         * Time spent by a read request in the commit processor.
+         */
+        READ_COMMITPROC_TIME = metricsContext.getSummary("read_commitproc_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by a write request in the commit processor.
+         */
+        WRITE_COMMITPROC_TIME = metricsContext.getSummary("write_commitproc_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by a committed request, for a locally issued write, in the
+         * commit processor.
+         */
+        LOCAL_WRITE_COMMITTED_TIME = metricsContext.getSummary("local_write_committed_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by a committed request for a write, issued by other server, in the
+         * commit processor.
+         */
+        SERVER_WRITE_COMMITTED_TIME = metricsContext.getSummary("server_write_committed_time_ms", DetailLevel.ADVANCED);
+
+        COMMIT_PROCESS_TIME = metricsContext.getSummary("commit_process_time", DetailLevel.BASIC);
+
+        /**
+         * Observer Master processing metrics.
+         */
+        OM_PROPOSAL_PROCESS_TIME = metricsContext.getSummary("om_proposal_process_time_ms", DetailLevel.ADVANCED);
+        OM_COMMIT_PROCESS_TIME = metricsContext.getSummary("om_commit_process_time_ms", DetailLevel.ADVANCED);
+
+        /**
+         * Time spent by the final processor. This is tracked in the commit processor.
+         */
+        READ_FINAL_PROC_TIME = metricsContext.getSummary("read_final_proc_time_ms", DetailLevel.ADVANCED);
+        WRITE_FINAL_PROC_TIME = metricsContext.getSummary("write_final_proc_time_ms", DetailLevel.ADVANCED);
+
+        PROPOSAL_LATENCY = metricsContext.getSummary("proposal_latency", DetailLevel.ADVANCED);
+        PROPOSAL_ACK_CREATION_LATENCY = metricsContext.getSummary("proposal_ack_creation_latency", DetailLevel.ADVANCED);
+        COMMIT_PROPAGATION_LATENCY = metricsContext.getSummary("commit_propagation_latency", DetailLevel.ADVANCED);
+        LEARNER_PROPOSAL_RECEIVED_COUNT = metricsContext.getCounter("learner_proposal_received_count");
+        LEARNER_COMMIT_RECEIVED_COUNT = metricsContext.getCounter("learner_commit_received_count");
+
+        /**
+         * Learner handler quorum packet metrics.
+         */
+        LEARNER_HANDLER_QP_SIZE = metricsContext.getSummarySet("learner_handler_qp_size", DetailLevel.BASIC);
+        LEARNER_HANDLER_QP_TIME = metricsContext.getSummarySet("learner_handler_qp_time_ms", DetailLevel.ADVANCED);
+
+        STARTUP_TXNS_LOADED = metricsContext.getSummary("startup_txns_loaded", DetailLevel.BASIC);
+        STARTUP_TXNS_LOAD_TIME = metricsContext.getSummary("startup_txns_load_time", DetailLevel.BASIC);
+        STARTUP_SNAP_LOAD_TIME = metricsContext.getSummary("startup_snap_load_time", DetailLevel.BASIC);
+
+        SYNC_PROCESSOR_QUEUE_AND_FLUSH_TIME = metricsContext.getSummary("sync_processor_queue_and_flush_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("sync_processor_queue_size", DetailLevel.BASIC);
+        SYNC_PROCESSOR_QUEUED = metricsContext.getCounter("sync_processor_request_queued");
+        SYNC_PROCESSOR_QUEUE_TIME = metricsContext.getSummary("sync_processor_queue_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESSOR_FLUSH_TIME = metricsContext.getSummary("sync_processor_queue_flush_time_ms", DetailLevel.ADVANCED);
+        SYNC_PROCESS_TIME = metricsContext.getSummary("sync_process_time", DetailLevel.BASIC);
+
+        BATCH_SIZE = metricsContext.getSummary("sync_processor_batch_size", DetailLevel.BASIC);
+
+        QUORUM_ACK_LATENCY = metricsContext.getSummary("quorum_ack_latency", DetailLevel.ADVANCED);
+        ACK_LATENCY = metricsContext.getSummarySet("ack_latency", DetailLevel.ADVANCED);
+        PROPOSAL_COUNT = metricsContext.getCounter("proposal_count");
+        QUIT_LEADING_DUE_TO_DISLOYAL_VOTER = metricsContext.getCounter("quit_leading_due_to_disloyal_voter");
+
+        STALE_REQUESTS = metricsContext.getCounter("stale_requests");
+        STALE_REQUESTS_DROPPED = metricsContext.getCounter("stale_requests_dropped");
+        STALE_REPLIES = metricsContext.getCounter("stale_replies");
+        REQUEST_THROTTLE_QUEUE_TIME = metricsContext.getSummary("request_throttle_queue_time_ms", DetailLevel.ADVANCED);
+        REQUEST_THROTTLE_WAIT_COUNT = metricsContext.getCounter("request_throttle_wait_count");
+        LARGE_REQUESTS_REJECTED = metricsContext.getCounter("large_requests_rejected");
+
+        NETTY_QUEUED_BUFFER = metricsContext.getSummary("netty_queued_buffer_capacity", DetailLevel.BASIC);
+
+        DIGEST_MISMATCHES_COUNT = metricsContext.getCounter("digest_mismatches_count");
+
+        LEARNER_REQUEST_PROCESSOR_QUEUE_SIZE = metricsContext.getSummary("learner_request_processor_queue_size", DetailLevel.BASIC);
+
+        UNSUCCESSFUL_HANDSHAKE = metricsContext.getCounter("unsuccessful_handshake");
+        INSECURE_ADMIN = metricsContext.getCounter("insecure_admin_count");
+        TLS_HANDSHAKE_EXCEEDED = metricsContext.getCounter("tls_handshake_exceeded");
+
+        CNXN_CLOSED_WITHOUT_ZK_SERVER_RUNNING = metricsContext.getCounter("cnxn_closed_without_zk_server_running");
+
+        SKIP_LEARNER_REQUEST_TO_NEXT_PROCESSOR_COUNT = metricsContext.getCounter("skip_learner_request_to_next_processor_count");
+
+        SOCKET_CLOSING_TIME = metricsContext.getSummary("socket_closing_time", DetailLevel.BASIC);
+
+        REQUESTS_NOT_FORWARDED_TO_COMMIT_PROCESSOR = metricsContext.getCounter(
+                "requests_not_forwarded_to_commit_processor");
+
+        RESPONSE_BYTES = metricsContext.getCounter("response_bytes");
+        WATCH_BYTES = metricsContext.getCounter("watch_bytes");
+
+        JVM_PAUSE_TIME = metricsContext.getSummary("jvm_pause_time_ms", DetailLevel.ADVANCED);
     }
-    
-    private class EmptyServiceAutoClean implements Runnable {
-        
-        @Override
-        public void run() {
-            
-            // Parallel flow opening threshold
-            
-            int parallelSize = 100;
-            
-            serviceMap.forEach((namespace, stringServiceMap) -> {
-                Stream<Map.Entry<String, Service>> stream = null;
-                if (stringServiceMap.size() > parallelSize) {
-                    stream = stringServiceMap.entrySet().parallelStream();
-                } else {
-                    stream = stringServiceMap.entrySet().stream();
-                }
-                stream.filter(entry -> {
-                    final String serviceName = entry.getKey();
-                    return distroMapper.responsible(serviceName);
-                }).forEach(entry -> stringServiceMap.computeIfPresent(entry.getKey(), (serviceName, service) -> {
-                    if (service.isEmpty()) {
-                        
-                        // To avoid violent Service removal, the number of times the Service
-                        // experiences Empty is determined by finalizeCnt, and if the specified
-                        // value is reached, it is removed
-                        
-                        if (service.getFinalizeCount() > maxFinalizeCount) {
-                            Loggers.SRV_LOG.warn("namespace : {}, [{}] services are automatically cleaned", namespace,
-                                    serviceName);
-                            try {
-                                easyRemoveService(namespace, serviceName);
-                            } catch (Exception e) {
-                                Loggers.SRV_LOG.error("namespace : {}, [{}] services are automatically clean has "
-                                        + "error : {}", namespace, serviceName, e);
-                            }
-                        }
-                        
-                        service.setFinalizeCount(service.getFinalizeCount() + 1);
-                        
-                        Loggers.SRV_LOG
-                                .debug("namespace : {}, [{}] The number of times the current service experiences "
-                                                + "an empty instance is : {}", namespace, serviceName,
-                                        service.getFinalizeCount());
-                    } else {
-                        service.setFinalizeCount(0);
-                    }
-                    return service;
-                }));
-            });
-        }
+
+    /**
+     * Txnlog fsync time
+     */
+    public final Summary FSYNC_TIME;
+
+    /**
+     * Snapshot writing time
+     */
+    public final Summary SNAPSHOT_TIME;
+
+    /**
+     * Db init time (snapshot loading + txnlog replay)
+     */
+    public final Summary DB_INIT_TIME;
+
+    /**
+     * Stats for read request. The timing start from when the server see the
+     * request until it leave final request processor.
+     */
+    public final Summary READ_LATENCY;
+
+    /**
+     * Stats for request that need quorum voting. Timing is the same as read
+     * request. We only keep track of stats for request that originated from
+     * this machine only.
+     */
+    public final Summary UPDATE_LATENCY;
+
+    /**
+     * Stats for all quorum request. The timing start from when the leader see
+     * the request until it reach the learner.
+     */
+    public final Summary PROPAGATION_LATENCY;
+
+    public final Summary FOLLOWER_SYNC_TIME;
+
+    public final Summary ELECTION_TIME;
+
+    public final Counter LOOKING_COUNT;
+    public final Counter DIFF_COUNT;
+    public final Counter SNAP_COUNT;
+    public final Counter COMMIT_COUNT;
+    public final Counter CONNECTION_REQUEST_COUNT;
+
+    public final Counter REVALIDATE_COUNT;
+    public final Counter CONNECTION_DROP_COUNT;
+    public final Counter CONNECTION_REVALIDATE_COUNT;
+
+    // Expiry queue stats
+    public final Counter SESSIONLESS_CONNECTIONS_EXPIRED;
+    public final Counter STALE_SESSIONS_EXPIRED;
+
+    // Connection throttling related
+    public final Summary CONNECTION_TOKEN_DEFICIT;
+    public final Counter CONNECTION_REJECTED;
+
+    public final Summary INFLIGHT_SNAP_COUNT;
+    public final Summary INFLIGHT_DIFF_COUNT;
+
+    public final Counter UNRECOVERABLE_ERROR_COUNT;
+    public final SummarySet WRITE_PER_NAMESPACE;
+    public final SummarySet READ_PER_NAMESPACE;
+    public final Counter BYTES_RECEIVED_COUNT;
+
+    public final Summary PREP_PROCESSOR_QUEUE_TIME;
+    public final Summary PREP_PROCESSOR_QUEUE_SIZE;
+    public final Counter PREP_PROCESSOR_QUEUED;
+    public final Counter OUTSTANDING_CHANGES_QUEUED;
+    public final Counter OUTSTANDING_CHANGES_REMOVED;
+    public final Summary PREP_PROCESS_TIME;
+    public final Summary PROPOSAL_PROCESS_TIME;
+    public final Summary CLOSE_SESSION_PREP_TIME;
+
+    public final Summary PROPOSAL_LATENCY;
+    public final Summary PROPOSAL_ACK_CREATION_LATENCY;
+    public final Summary COMMIT_PROPAGATION_LATENCY;
+    public final Counter LEARNER_PROPOSAL_RECEIVED_COUNT;
+    public final Counter LEARNER_COMMIT_RECEIVED_COUNT;
+
+    public final Summary STARTUP_TXNS_LOADED;
+    public final Summary STARTUP_TXNS_LOAD_TIME;
+    public final Summary STARTUP_SNAP_LOAD_TIME;
+
+    public final Summary SYNC_PROCESSOR_QUEUE_AND_FLUSH_TIME;
+    public final Summary SYNC_PROCESSOR_QUEUE_SIZE;
+    public final Counter SYNC_PROCESSOR_QUEUED;
+    public final Summary SYNC_PROCESSOR_QUEUE_TIME;
+    public final Summary SYNC_PROCESSOR_FLUSH_TIME;
+    public final Summary SYNC_PROCESS_TIME;
+
+    public final Summary BATCH_SIZE;
+
+    public final Summary QUORUM_ACK_LATENCY;
+    public final SummarySet ACK_LATENCY;
+    public final Counter PROPOSAL_COUNT;
+    public final Counter QUIT_LEADING_DUE_TO_DISLOYAL_VOTER;
+
+    /**
+     * Fired watcher stats.
+     */
+    public final Summary NODE_CREATED_WATCHER;
+    public final Summary NODE_DELETED_WATCHER;
+    public final Summary NODE_CHANGED_WATCHER;
+    public final Summary NODE_CHILDREN_WATCHER;
+
+    /*
+     * Number of dead watchers in DeadWatcherListener
+     */
+    public final Counter ADD_DEAD_WATCHER_STALL_TIME;
+    public final Counter DEAD_WATCHERS_QUEUED;
+    public final Counter DEAD_WATCHERS_CLEARED;
+    public final Summary DEAD_WATCHERS_CLEANER_LATENCY;
+
+    /*
+     * Response cache hit and miss metrics.
+     */
+    public final Counter RESPONSE_PACKET_CACHE_HITS;
+    public final Counter RESPONSE_PACKET_CACHE_MISSING;
+    public final Counter RESPONSE_PACKET_GET_CHILDREN_CACHE_HITS;
+    public final Counter RESPONSE_PACKET_GET_CHILDREN_CACHE_MISSING;
+
+    /**
+     * Learner handler quorum packet metrics.
+     */
+    public final SummarySet LEARNER_HANDLER_QP_SIZE;
+    public final SummarySet LEARNER_HANDLER_QP_TIME;
+
+    /*
+     * Number of requests that are in the session queue.
+     */
+    public final Summary REQUESTS_IN_SESSION_QUEUE;
+    public final Summary PENDING_SESSION_QUEUE_SIZE;
+    /*
+     * Consecutive number of read requests that are in the session queue right after a commit request.
+     */
+    public final Summary READS_AFTER_WRITE_IN_SESSION_QUEUE;
+    public final Summary READ_ISSUED_FROM_SESSION_QUEUE;
+    public final Summary SESSION_QUEUES_DRAINED;
+
+    public final Summary TIME_WAITING_EMPTY_POOL_IN_COMMIT_PROCESSOR_READ;
+    public final Summary WRITE_BATCH_TIME_IN_COMMIT_PROCESSOR;
+
+    public final Summary CONCURRENT_REQUEST_PROCESSING_IN_COMMIT_PROCESSOR;
+
+    public final Summary READS_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Summary WRITES_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Summary COMMITS_QUEUED_IN_COMMIT_PROCESSOR;
+    public final Counter COMMITS_QUEUED;
+    public final Summary READS_ISSUED_IN_COMMIT_PROC;
+    public final Summary WRITES_ISSUED_IN_COMMIT_PROC;
+
+    // Request op throttling related
+    public final Counter THROTTLED_OPS;
+
+    /**
+     * Time spent by a read request in the commit processor.
+     */
+    public final Summary READ_COMMITPROC_TIME;
+
+    /**
+     * Time spent by a write request in the commit processor.
+     */
+    public final Summary WRITE_COMMITPROC_TIME;
+
+    /**
+     * Time spent by a committed request, for a locally issued write, in the
+     * commit processor.
+     */
+    public final Summary LOCAL_WRITE_COMMITTED_TIME;
+
+    /**
+     * Time spent by a committed request for a write, issued by other server, in the
+     * commit processor.
+     */
+    public final Summary SERVER_WRITE_COMMITTED_TIME;
+
+    public final Summary COMMIT_PROCESS_TIME;
+
+    /**
+     * Observer Master processing metrics.
+     */
+    public final Summary OM_PROPOSAL_PROCESS_TIME;
+    public final Summary OM_COMMIT_PROCESS_TIME;
+
+    /**
+     * Time spent by the final processor. This is tracked in the commit processor.
+     */
+    public final Summary READ_FINAL_PROC_TIME;
+    public final Summary WRITE_FINAL_PROC_TIME;
+
+    /*
+     * Number of successful matches of expected ensemble name in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_SUCCESS;
+
+    /*
+     * Number of unsuccessful matches of expected ensemble name in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_FAIL;
+
+    /*
+     * Number of client auth requests with no ensemble set in EnsembleAuthenticationProvider.
+     */
+    public final Counter ENSEMBLE_AUTH_SKIP;
+
+    public final Counter STALE_REQUESTS;
+    public final Counter STALE_REQUESTS_DROPPED;
+    public final Counter STALE_REPLIES;
+    public final Summary REQUEST_THROTTLE_QUEUE_TIME;
+    public final Counter REQUEST_THROTTLE_WAIT_COUNT;
+    public final Counter LARGE_REQUESTS_REJECTED;
+
+    public final Summary NETTY_QUEUED_BUFFER;
+
+    // Total number of digest mismatches that are observed when applying
+    // txns to data tree.
+    public final Counter DIGEST_MISMATCHES_COUNT;
+
+    public final Summary LEARNER_REQUEST_PROCESSOR_QUEUE_SIZE;
+
+    public final Counter UNSUCCESSFUL_HANDSHAKE;
+
+    /*
+     * Number of insecure connections to admin port
+     */
+    public final Counter INSECURE_ADMIN;
+
+    public final Counter TLS_HANDSHAKE_EXCEEDED;
+
+    public final Counter CNXN_CLOSED_WITHOUT_ZK_SERVER_RUNNING;
+
+    public final Counter SKIP_LEARNER_REQUEST_TO_NEXT_PROCESSOR_COUNT;
+
+    public final Summary SOCKET_CLOSING_TIME;
+
+    public final Counter REQUESTS_NOT_FORWARDED_TO_COMMIT_PROCESSOR;
+
+    /**
+     *  Number of response/watch bytes written to clients.
+     */
+    public final Counter RESPONSE_BYTES;
+    public final Counter WATCH_BYTES;
+
+    public final Summary JVM_PAUSE_TIME;
+
+    private final MetricsProvider metricsProvider;
+
+    public void resetAll() {
+        metricsProvider.resetAllValues();
     }
-    
-    private class ServiceReporter implements Runnable {
-        
-        @Override
-        public void run() {
-            try {
-                
-                Map<String, Set<String>> allServiceNames = getAllServiceNames();
-                
-                if (allServiceNames.size() <= 0) {
-                    //ignore
-                    return;
-                }
-                
-                for (String namespaceId : allServiceNames.keySet()) {
-                    
-                    ServiceChecksum checksum = new ServiceChecksum(namespaceId);
-                    
-                    for (String serviceName : allServiceNames.get(namespaceId)) {
-                        if (!distroMapper.responsible(serviceName)) {
-                            continue;
-                        }
-                        
-                        Service service = getService(namespaceId, serviceName);
-                        
-                        if (service == null || service.isEmpty()) {
-                            continue;
-                        }
-                        
-                        service.recalculateChecksum();
-                        
-                        checksum.addItem(serviceName, service.getChecksum());
-                    }
-                    
-                    Message msg = new Message();
-                    
-                    msg.setData(JacksonUtils.toJson(checksum));
-                    
-                    Collection<Member> sameSiteServers = memberManager.allMembers();
-                    
-                    if (sameSiteServers == null || sameSiteServers.size() <= 0) {
-                        return;
-                    }
-                    
-                    for (Member server : sameSiteServers) {
-                        if (server.getAddress().equals(NetUtils.localServer())) {
-                            continue;
-                        }
-                        synchronizer.send(server.getAddress(), msg);
-                    }
-                }
-            } catch (Exception e) {
-                Loggers.SRV_LOG.error("[DOMAIN-STATUS] Exception while sending service status", e);
-            } finally {
-                GlobalExecutor.scheduleServiceReporter(this, switchDomain.getServiceStatusSynchronizationPeriodMillis(),
-                        TimeUnit.MILLISECONDS);
-            }
-        }
+
+    public MetricsProvider getMetricsProvider() {
+        return metricsProvider;
     }
-    
-    private static class ServiceKey {
-        
-        private String namespaceId;
-        
-        private String serviceName;
-        
-        private String serverIP;
-        
-        private String checksum;
-        
-        public String getChecksum() {
-            return checksum;
-        }
-        
-        public String getServerIP() {
-            return serverIP;
-        }
-        
-        public String getServiceName() {
-            return serviceName;
-        }
-        
-        public String getNamespaceId() {
-            return namespaceId;
-        }
-        
-        public ServiceKey(String namespaceId, String serviceName, String serverIP, String checksum) {
-            this.namespaceId = namespaceId;
-            this.serviceName = serviceName;
-            this.serverIP = serverIP;
-            this.checksum = checksum;
-        }
-        
-        @Override
-        public String toString() {
-            return JacksonUtils.toJson(this);
-        }
-    }
+
 }
