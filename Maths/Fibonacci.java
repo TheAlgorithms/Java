@@ -6,6 +6,8 @@ import java.util.ArrayList;
  *
  *
  * A utility is to calculate a fibonacci number at the exact position in O(log(n))
+ * https://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form
+ *
  * @author KoreeZ https://github.com/HandsomeKoreeZ
  *
  */
