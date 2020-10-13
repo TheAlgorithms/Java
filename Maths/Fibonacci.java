@@ -4,6 +4,7 @@ import java.util.ArrayList;
 /**
  * Fibonacci: 0 1 1 2 3 5 8 13 21 ...
  *
+ *
  * A utility is to calculate a fibonacci number at the exact position in O(log(n))
  * @author KoreeZ https://github.com/HandsomeKoreeZ
  *
@@ -14,7 +15,7 @@ public class Fibonacci {
      * @param pow an integer number of the position
      * @return BigInteger fibonacci number
      */
-    public static BigInteger at(Integer pow){
+    public static BigInteger calculate(Integer pow){
         ArrayList<Integer> list = powList(pow);
         ArrayList<FiboMatrix> matrixList = new ArrayList<>();
 
@@ -48,7 +49,7 @@ public class Fibonacci {
         private BigInteger[][] matrix;
 
         public FiboMatrix() {
-            this.matrix = new BigInteger[][]{{BigInteger.valueOf(0), BigInteger.valueOf(1)}, {BigInteger.valueOf(1), BigInteger.valueOf(1)}};
+            this.matrix = new BigInteger[][]{{BigInteger.valueOf(1), BigInteger.valueOf(1)}, {BigInteger.valueOf(1), BigInteger.valueOf(0)}};
         }
 
         public BigInteger[][] getMatx(){
@@ -67,7 +68,7 @@ public class Fibonacci {
             this.matrix = result;
         }
 
-        //exponential squaring matrix
+        //exponential powering matrix
         public FiboMatrix binPowMatrix(int n){
             for (int i = 0; i<n; i++) this.multiplicateMatrix(this);
             return this;
@@ -75,9 +76,9 @@ public class Fibonacci {
     }
 
 
-    //test
+    //assertion
     public static void main(String[] args) {
-        assert Fibonacci.at(10).equals(new BigInteger(String.valueOf(45)));
-        assert Fibonacci.at(15).equals(new BigInteger(String.valueOf(610)));
+        assert Fibonacci.calculate(10).equals(new BigInteger(String.valueOf(55)));
+        assert Fibonacci.calculate(15).equals(new BigInteger(String.valueOf(610)));
     }
 }
