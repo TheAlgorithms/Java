@@ -1,5 +1,3 @@
-//Hactober Fest 2020
-
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
