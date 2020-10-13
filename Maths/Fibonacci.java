@@ -46,6 +46,7 @@ public class Fibonacci {
     }
 
 
+    // matrix helper class
     static class FiboMatrix {
         private BigInteger[][] matrix;
 
