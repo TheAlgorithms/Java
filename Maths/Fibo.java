@@ -77,7 +77,7 @@ public class Fibo {
 
     //assertions
     public static void main(String[] args) {
-        assert Fibo.execute(10).equals(new BigInteger(String.valueOf(55)));
-        assert Fibo.execute(15).equals(new BigInteger(String.valueOf(610)));
+        assert Fibo.at(10).equals(new BigInteger(String.valueOf(55)));
+        assert Fibo.at(15).equals(new BigInteger(String.valueOf(610)));
     }
 }
