@@ -10,25 +10,10 @@ import java.util.ArrayList;
  */
 public class Fibonacci {
 
-    //divide the fib number position to the list of position of bits
-    public static ArrayList<Integer> powList(int p) {
-        int bitFlag = 0;
-        ArrayList<Integer> list = new ArrayList<>();
-        while(p>0){
-            if ((p & 1)== 1) list.add(bitFlag);
-            p>>=1;
-            bitFlag++;
-        }
-        return list;
-    }
-
     /**
-     *
      * @param pow an integer number of the position
      * @return BigInteger fibonacci number
      */
-
-
     public static BigInteger at(Integer pow){
         ArrayList<Integer> list = powList(pow);
         ArrayList<FiboMatrix> matrixList = new ArrayList<>();
@@ -43,6 +28,18 @@ public class Fibonacci {
             first.multiplicateMatrix(matrixList.get(i));
         }
         return first.getMatx()[0][1];
+    }
+
+    //divide the fib number position to the list of position of bits
+    public static ArrayList<Integer> powList(int p) {
+        int bitFlag = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while(p>0){
+            if ((p & 1)== 1) list.add(bitFlag);
+            p>>=1;
+            bitFlag++;
+        }
+        return list;
     }
 
 
