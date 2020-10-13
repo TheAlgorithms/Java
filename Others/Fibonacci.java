@@ -12,9 +12,8 @@ import java.util.*;
 public class Fibonacci{
 
     public static void main(String[] args){
- 
         Scanner sc = new Scanner(System.in);
-        int number,fib_1,fib_2,i;
+        long number, fib_1 = 1, fib_2 = 1, i;
   
         do{
             System.out.print("Enter a number greater than one: ");
@@ -23,11 +22,9 @@ public class Fibonacci{
   
         System.out.println("The first " + number + " terms of the Fibonacci series are:");                 
 
-        fib_1=1;
-        fib_2=1;
-
         System.out.print(fib_1 + " ");
-        for(i=2;i<=number;i++){
+        
+        for(i=2; i<=number; i++){
             System.out.print(fib_2 + " ");
             fib_2 = fib_1 + fib_2;
             fib_1 = fib_2 - fib_1;
