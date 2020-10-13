@@ -123,7 +123,713 @@ public class HeapSort implements SortAlgorithm {
     public static void main(String[] args) {
         Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
         print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		void  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		    public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		void  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		    public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		void  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		    public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		void  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));    public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		void  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));  public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap)); 
+		
+		public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
+		 public static void main(String[] args) {
+        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        HeapSort heapSort = new HeapSort();
+        print(heapSort.sort(heap));
+		
     }
 
 }
