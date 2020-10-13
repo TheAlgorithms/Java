@@ -12,8 +12,8 @@ class Queue {
     /**
      * Default initial capacity.
      */
-    private static final int DEFAULT_CAPACITY = 10;
-
+    private static final int DEFAULT_CAPACITY = 100;
+    //capacity might be large only 10 ele are allowed better to take this as input or inc the size
     /**
      * Max size of the queue
      */
