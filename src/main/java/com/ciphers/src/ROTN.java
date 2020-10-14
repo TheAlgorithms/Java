@@ -1,6 +1,7 @@
 public class ROTN {
     /**
      * Method that solves ROT N cipher
+     * FOr more information: https://medium.com/@jt.redden/rot-n-cipher-4e7039ca721d
      * @param encrypted message that is encrypted with ROT N cipher
      * @param rot amount encrypted message was rotated
      * @return decrypted message
