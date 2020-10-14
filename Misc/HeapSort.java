@@ -58,7 +58,7 @@ public class HeapSort {
     public static void main(String args[]) {
         int arr[] = {12, 11, 13, 5, 6, 7};
         
-        heap_sort ob = new heap_sort();
+        HeapSort ob = new HeapSort();
         ob.sort(arr);
 
         System.out.println("Sorted array is");
