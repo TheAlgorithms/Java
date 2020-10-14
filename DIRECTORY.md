@@ -111,6 +111,8 @@
   * [LevenshteinDistance](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LevenshteinDistance.java)
   * [LongestCommonSubsequence](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestCommonSubsequence.java)
   * [LongestIncreasingSubsequence](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestIncreasingSubsequence.java)
+  * [LongestPalindromicSubsequence](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestPalindromicSubsequence.java)
+  * [LongestPalindromicSubsequenceTests](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestPalindromicSubsequenceTests.java)
   * [LongestValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestValidParentheses.java)
   * [MatrixChainMultiplication](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MatrixChainMultiplication.java)
   * [MinimumSumPartition](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MinimumSumPartition.java)
