@@ -4,11 +4,34 @@ package Misc;
  * A Java implementation of the offcial W3 documented procedure
  * to calculate contrast ratio between colors on the web.
  *
+ * This is used to calculate the readability of a foreground color
+ * on top of a background color.
+ *
  * @since 2020-10-15
  * @see <a href="https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure">Color Contrast Ratio Procedure</a>
  * @author Seth Falco (https://elypia.org/)
  */
 public class ColorContrastRatio {
+
+    /**
+     * You can check this example against another open-source implementation available on GitHub.
+     *
+     * @see <a href="https://contrast-ratio.com/#rgb%28226%2C%20229%2C%20248-on-rgb%2823%2C%20103%2C%20154%29">Online Contrast Ratio</a>
+     * @see <a href="https://github.com/LeaVerou/contrast-ratio">GitHub Repository for Online Contrast Ratio</a>
+     * @param args
+     */
+    public static void main(String args[]) {
+        // Relative Luminance: 0.12215748057375966
+        final Color foreground = new Color(23, 103, 154);
+
+        // Relative Luminance: 0.7898468477881603
+        final Color background = new Color(226, 229, 248);
+
+        // Contrast Ratio: 4.878363954846178
+        final double contrastRatio = getContrastRatio(foreground, background);
+
+        System.out.println(contrastRatio);
+    }
 
     /**
      * Calculates the contrast ratio between two given colors.
