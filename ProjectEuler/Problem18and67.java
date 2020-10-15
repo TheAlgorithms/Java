@@ -59,7 +59,7 @@ public class MaximumPathSum {
     };
     
 
-    public static int maxSum(int[][] tri){
+    public static int solution(int[][] tri){
         int answer = 0;
         
         for(int i = 1; i < tri.length; i++){
@@ -76,7 +76,7 @@ public class MaximumPathSum {
     }
     
     public static void main(String[] args){
-        System.out.println(maxSum(triangle));
+        System.out.println(solution(triangle));
     }
 
 }
