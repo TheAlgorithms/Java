@@ -1,0 +1,25 @@
+// Java program to find sum of  
+// harmonic series using recursion  
+import java.io.*;  
+  
+class BKK  
+{  
+  
+float sum(float n)  
+{  
+    // Base condition  
+    if (n < 2)  
+        return 1;  
+  
+    else
+        return 1 / n + (sum(n - 1));  
+}  
+  
+// Driven Code  
+public static void main(String args[])  
+{  
+   BKK g = new BKK();  
+  System.out.println(g.sum(8));  
+  System.out.print(g.sum(10));  
+}  
+}  
