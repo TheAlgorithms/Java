@@ -1,15 +1,16 @@
 /*
 
-Non-brute force solution to Project Euler Problem 18 (Also works for Problem 67)
+Non-brute force solution to Project Euler Problem 18 (Also works for Problem 67 - similar to Problem 18, but with a larger test case)
 www.projecteuler.net/problem=18
-www.projecteuler.net/problem=67
 
 While this problem can be solved using brute-force, a DP solution is much more efficient.
-Consider the triangle given in the example:
+Consider this triangle for example
     3
    7 4
   2 4 6
  8 5 9 3
+ 
+ The maximum sum path is 3 -> 7 -> 4 -> 9, yielding a sum of 23.
 
 consider the second row 7,4.
 If the path reaches 7 (counting from the top), we must have come from 3, meaning our 
@@ -30,8 +31,8 @@ Repeating the process a final time :
 22 19 23 17
 
 And the maximum of the numbers in this row will give us the answer. This is because
-we have effectively calculated all the n*(n-1) running sums - 2 for each element,only
-taking the maximum of the two adjacent.
+we have effectively calculated all the n*(n-1) running sums -> 2 for each element,only
+taking the maximum of the two adjacent numbers.
 
 The same would work starting from the bottom row of the triangle, in which case
 the final element left at the tip of the triangle would be the answer.
@@ -39,7 +40,7 @@ the final element left at the tip of the triangle would be the answer.
 */
 
 
-public class MaximumPathSum {
+public class Problem18 {
     static int [][] triangle = new int[][]{
       {75},
       {95, 64},
@@ -58,26 +59,39 @@ public class MaximumPathSum {
       {4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 04, 23},
     };
     
-
-    public static int solution(int[][] tri){
+    
+    
+    //driver code
+    public static void main(String[] args){
+        assert solution(triangle) == 1074;
+    }
+    
+    
+    
+    //calculates the maximum path sum for a given triangle
+    //@param tri is the array representing the triangle
+    public static int solution1(int[][] tri){
         int answer = 0;
         
         for(int i = 1; i < tri.length; i++){
             tri[i][0] += tri[i-1][0];
-            tri[i][i] += tri[i-1][i-1];
+            tri[i][i] += tri[i-1][i-1]; //setting the leftmost and rightmost elements manually so as to avoid
+                                        //out-of-bounds indices
             for(int j = 1; j < i; j++){
-                tri[i][j] += Math.max(tri[i-1][j], tri[i-1][j-1]);
+                tri[i][j] += Math.max(tri[i-1][j], tri[i-1][j-1]); //adding the maximum of the adjacent elements on the previous row
+                                                                   //as explained in the header comments.
             }
         }
+        
+        
         for(int k = 0; k < tri.length; k++) {
-            answer = Math.max(tri[tri.length - 1][k], answer);
+            answer = Math.max(tri[tri.length - 1][k], answer); //the maximum number in the last row is the answer
         }
+        
+        
         return answer;
     }
-    
-    public static void main(String[] args){
-        System.out.println(solution(triangle));
-    }
+
 
 }
     
