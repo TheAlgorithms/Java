@@ -10,9 +10,10 @@ Consider this triangle for example
  8 5 9 3
  
  The maximum sum path is 3 -> 7 -> 4 -> 9, yielding a sum of 23.
+For the dynamic programming method, the method followed to reach the same answer is as follows:
 
-consider the second row 7,4.
-If the path reaches 7 (counting from the top), we must have come from 3, meaning our 
+Consider the second row 7,4.
+We simplify our task by noticing that if the path reaches 7 (counting from the top), we must have come from 3, meaning our 
 running sum until now is 7+3 = 10. The same goes for 4 ; (4+3 = 7). This effectively means we can
 replace 7 and 4 with 10 and 7, and reduce our problem to this triangle:
      
@@ -30,8 +31,8 @@ Repeating the process a final time :
 22 19 23 17
 
 And the maximum of the numbers in this row will give us the answer. This is because
-we have effectively calculated all the n*(n-1) running sums -> 2 for each element,only
-taking the maximum of the two adjacent numbers.
+we have effectively calculated all the n*(n-1) running sums -> 2 for each element,but only
+taking the maximum of the two adjacent numbers thereby improving efficiency.
 
 The same would work starting from the bottom row of the triangle, in which case
 the final element left at the tip of the triangle would be the answer.
@@ -62,7 +63,7 @@ public class Problem18 {
     
     //driver code
     public static void main(String[] args){
-        assert solution(triangle) == 1074;
+        assert solution(triangle) == 1074; //expected answer
     }
     
     
