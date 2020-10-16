@@ -1,5 +1,4 @@
 /*
-
 Non-brute force solution to Project Euler Problem 18 (Also works for Problem 67 - similar to Problem 18, but with a larger test case)
 www.projecteuler.net/problem=18
 
