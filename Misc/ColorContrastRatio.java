@@ -21,6 +21,8 @@ public class ColorContrastRatio {
      * @param args
      */
     public static void main(String args[]) {
+        final ColorContrastRatio algorithmImpl = new ColorContrastRatio();
+
         // Relative Luminance: 0.12215748057375966
         final Color foreground = new Color(23, 103, 154);
 
@@ -28,7 +30,7 @@ public class ColorContrastRatio {
         final Color background = new Color(226, 229, 248);
 
         // Contrast Ratio: 4.878363954846178
-        final double contrastRatio = getContrastRatio(foreground, background);
+        final double contrastRatio = algorithmImpl.getContrastRatio(foreground, background);
 
         System.out.println(contrastRatio);
     }
