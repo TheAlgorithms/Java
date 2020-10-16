@@ -36,7 +36,7 @@ class Palindrome {
      * @param s a string to check
      * @return {@code true} if given string is palindrome, otherwise {@code false}
      */
-    public static boolean isPalindromeRecursion(String s) {
+    public static boolean isPalindromeRecursion(String s) {  //checks palindrome
         if (s == null || s.length() <= 1) {
             return true;
         }
