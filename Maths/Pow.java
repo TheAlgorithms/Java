@@ -17,11 +17,14 @@ public class Pow {
      * @param b the exponent.
      * @return the value {@code a}<sup>{@code b}</sup>.
      */
-    public static long pow(int a, int b) {
-        long result = 1;
-        for (int i = 1; i <= b; i++) {
-            result *= a;
+    class Solution {
+    public double myPow(double x, int n) {
+        if (n == 0) {
+            return 1;
         }
-        return result;
+        if (n < 0) {
+            return 1 / x * myPow(1 / x, -(n + 1));
+        }
+        return (n % 2 == 0) ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2);
     }
 }
