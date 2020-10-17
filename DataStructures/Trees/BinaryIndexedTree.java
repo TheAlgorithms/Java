@@ -61,7 +61,7 @@ public class BinaryIndexedTree {
 	 * @param index = index to query to
 	 * @return query to index
 	 */
-	static long query(int[] binaryIndexedTree, int index) {
+	static int query(int[] binaryIndexedTree, int index) {
 		int answer = 0;
 		for (int i = index; i > 0; i -= (i & -i)) {
 			answer += binaryIndexedTree[i];
@@ -76,7 +76,7 @@ public class BinaryIndexedTree {
 	 * @param index2 = upperbound index
 	 * @return query of inclusive sum between index1 and index2
 	 */
-	static long query(int[] binaryIndexedTree, int index1, int index2) {
+	static int query(int[] binaryIndexedTree, int index1, int index2) {
 		return query(binaryIndexedTree, index2) - query(binaryIndexedTree, index1 - 1);
 	}
 	
