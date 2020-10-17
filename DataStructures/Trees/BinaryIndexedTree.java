@@ -1,3 +1,4 @@
+package DataStructures.Trees;
 /**
  * Binary Indexed Tree = Fenwick Tree
  */
