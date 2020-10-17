@@ -30,6 +30,15 @@ public class Area {
 
         /* test circle */
         assert Double.compare(surfaceAreaCircle(20), 1256.6370614359173) == 0;
+        
+        /* test polygon from apothem */
+        assert Double.compare(surfaceAreaPolygonApothem(8, 2), 13.254833995939041) == 0;
+        
+        /* test polygon from radius */
+        assert Double.compare(surfaceAreaPolygonRadius(8, 2), 11.313708498984761) == 0;
+        
+        /* test polygon from side length */
+        assert Double.compare(surfaceAreaPolygonSideLength(8, 2), 19.31370849898476) == 0;
     }
 
     /**
@@ -115,5 +124,38 @@ public class Area {
      */
     private static double surfaceAreaCircle(double radius) {
         return Math.PI * radius * radius;
+    }
+    
+    /**
+     * Calculate the area of a regular polygon with an apothem
+     * 
+     * @param sides number of sides
+     * @param apothem apothem of polygon (distance from origin to center of side)
+     * @return area of given polygon
+     */
+    private static double surfaceAreaPolygonApothem(int sides, double apothem) {
+    	return apothem * apothem * sides * Math.tan( Math.PI / sides );
+    }
+    
+    /**
+     * Calculate the area of a regular polygon with a radius
+     * 
+     * @param sides number of sides
+     * @param radius radius of polygon (distance from origin to corner)
+     * @return area of given polygon
+     */
+    private static double surfaceAreaPolygonRadius(int sides, double radius) {
+    	return radius * radius * sides * Math.sin( Math.PI / sides ) * Math.cos( Math.PI / sides );
+    }
+    
+    /**
+     * Calculate the area of a regular polygon with a side length
+     * 
+     * @param sides number of sides
+     * @param sideLength length of a side
+     * @return area of given polygon
+     */
+    private static double surfaceAreaPolygonSideLength(int sides, double sideLength) {
+    	return sideLength * sideLength * sides / ( 4 * Math.tan( Math.PI / sides ) );
     }
 }
