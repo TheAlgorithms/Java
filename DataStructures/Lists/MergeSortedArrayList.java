@@ -11,7 +11,6 @@ public class MergeSortedArrayList {
     public static void main(String[] args) {
         List<Integer> listA = new ArrayList<>();
         List<Integer> listB = new ArrayList<>();
-        List<Integer> listC = new ArrayList<>();
 
         /* init ListA and List B */
         for (int i = 1; i <= 10; i += 2) {
@@ -20,7 +19,7 @@ public class MergeSortedArrayList {
         }
 
         /* merge listA and listB to listC */
-        merge(listA, listB, listC);
+        List<Integer> listC=merge(listA, listB);
 
         System.out.println("listA: " + listA);
         System.out.println("listB: " + listB);
@@ -34,9 +33,11 @@ public class MergeSortedArrayList {
      * @param listB the second list to merge
      * @param listC the result list after merging
      */
-    public static void merge(List<Integer> listA, List<Integer> listB, List<Integer> listC) {
+    public static void merge(List<Integer> listA, List<Integer> listB) {
         int pa = 0; /* the index of listA */
         int pb = 0; /* the index of listB */
+
+        List<Integer> listC=new ArrayList<>();
 
         while (pa < listA.size() && pb < listB.size()) {
             if (listA.get(pa) <= listB.get(pb)) {
