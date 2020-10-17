@@ -23,12 +23,31 @@ public class AnyBaseToAnyBase {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String n;
-        int b1, b2;
+        String n ;
+	    
+        int b1, b2,ifzero = 0;
         while (true) {
             try {
                 System.out.print("Enter number: ");
                 n = in.next();
+		    
+		    
+		char[] digits = n.toCharArray();
+	    for (int i = 0 ; i < digits.length; i++)
+	    {
+		    //converting lower case letters to upper case letters
+		    if (digits[i] >= 'a' && digits[i] <= 'z')
+			    digits[i] = (char)(digits[i] - 32);
+		    //checking if the input is 0
+		    if (digits[i] =='0') {}
+		    else 
+			    {
+				    ifzero++;
+			    }
+	    }
+	    n = String.valueOf(digits);
+	    
+	    
                 System.out.print("Enter beginning base (between " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
                 b1 = in.nextInt();
                 if (b1 > MAXIMUM_BASE || b1 < MINIMUM_BASE) {
@@ -45,6 +64,14 @@ public class AnyBaseToAnyBase {
                     System.out.println("Invalid base!");
                     continue;
                 }
+		
+		// in the case of input 0
+		if (ifzero == 0) 
+		{
+			System.out.println(0);
+			System.exit(0);
+		}
+		
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input.");
@@ -88,7 +115,7 @@ public class AnyBaseToAnyBase {
      * @return n in base b2.
      */
     public static String base2base(String n, int b1, int b2) {
-        // Declare variables: decimal value of n,
+	// Declare variables: decimal value of n,
         // character of base b1, character of base b2,
         // and the string that will be returned.
         int decimalValue = 0, charB2;
