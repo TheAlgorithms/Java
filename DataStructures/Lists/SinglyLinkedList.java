@@ -1,4 +1,4 @@
-package DataStructures.Lists;
+ 
 
 /**
  * This class implements a SinglyLinked List. This is done
@@ -23,7 +23,7 @@ public class SinglyLinkedList {
     private int size;
 
     /**
-     * Init SinglyLinkedList
+     * Initialising SinglyLinkedList
      */
     public SinglyLinkedList() {
         head = null;
@@ -31,10 +31,10 @@ public class SinglyLinkedList {
     }
 
     /**
-     * Init SinglyLinkedList with specified head node and size
+     * Initialising SinglyLinkedList with specified head node and size
      *
-     * @param head the head node of list
-     * @param size the size of list
+     * @parameter head = the head node of list
+     * @parameter size = the size of list
      */
     public SinglyLinkedList(Node head, int size) {
         this.head = head;
@@ -44,7 +44,7 @@ public class SinglyLinkedList {
     /**
      * Inserts an element at the head of the list
      *
-     * @param x element to be added
+     * @parameter x element to be added
      */
     public void insertHead(int x) {
         insertNth(x, 0);
@@ -53,7 +53,7 @@ public class SinglyLinkedList {
     /**
      * Insert an element at the tail of the list
      *
-     * @param data element to be added
+     * @parameter data element to be added
      */
     public void insert(int data) {
         insertNth(data, size);
@@ -62,8 +62,8 @@ public class SinglyLinkedList {
     /**
      * Inserts a new node at a specified position of the list
      *
-     * @param data     data to be stored in a new node
-     * @param position position at which a new node is to be inserted
+     * @parameter data = data to be stored in a new node
+     * @parameter position = position at which a new node is to be inserted
      */
     public void insertNth(int data, int position) {
         checkBounds(position, 0, size);
@@ -127,9 +127,9 @@ public class SinglyLinkedList {
     }
 
     /**
-     * @param position to check position
-     * @param low      low index
-     * @param high     high index
+     * @parameter position to check position
+     * @parameter low = low index
+     * @parameter high = high index
      * @throws IndexOutOfBoundsException if {@code position} not in range {@code low} to {@code high}
      */
     public void checkBounds(int position, int low, int high) {
@@ -197,7 +197,7 @@ public class SinglyLinkedList {
     /**
      * Test if the value key is present in the list.
      *
-     * @param key the value to be searched.
+     * @parameter key = the value to be searched.
      * @return {@code true} if key is present in the list, otherwise {@code false}.
      */
     public boolean search(int key) {
@@ -214,7 +214,7 @@ public class SinglyLinkedList {
     /**
      * Return element at special index.
      *
-     * @param index given index of element
+     * @parameter index = given index of element
      * @return element at special index.
      */
     public int getNth(int index) {
@@ -315,7 +315,7 @@ class Node {
     /**
      * Constructor
      *
-     * @param value Value to be put in the node
+     * @parameter value = Value to be put in the node
      */
     Node(int value) {
         this(value, null);
@@ -323,8 +323,8 @@ class Node {
 
     /**
      * Constructor
-     * @param value Value to be put in the node
-     * @param next Reference to the next node
+     * @parameter value = Value to be put in the node
+     * @parameter next = Reference to the next node
      */
     Node(int value, Node next) {
         this.value = value;
