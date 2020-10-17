@@ -16,45 +16,36 @@ public class TopKWords {
 
         public Map<String, Integer> getDictionary() {
             Map<String, Integer> dictionary = new HashMap<>();
-            FileInputStream fis = null;
 
-            try {
-
-                fis = new FileInputStream(fileName);  // open the file
-                int in = 0;
-                String s = "";  // init a empty word
-                in = fis.read();  // read one character
+            //Java 7's try-with-resources structure automatically handles closing the resources that the try itself opens.
+            //Thus, adding an explicit close() call is redundant and potentially confusing.
+            try (FileInputStream fis = new FileInputStream(fileName)) {
+                StringBuilder stringBuilder = new StringBuilder();  // init a empty word
+                int in = fis.read();  // read one character
 
                 while (-1 != in) {
                     if (Character.isLetter((char) in)) {
-                        s += (char) in;  //if get a letter, append to s
+                        stringBuilder.append(in);  //if get a letter, append to s
                     } else {
                         // this branch means an entire word has just been read
-                        if (s.length() > 0) {
+                        String word = stringBuilder.toString();
+                        if (word.length() > 0) {
                             // see whether word exists or not
-                            if (dictionary.containsKey(s)) {
+                            if (dictionary.containsKey(word)) {
                                 // if exist, count++
-                                dictionary.put(s, dictionary.get(s) + 1);
+                                dictionary.put(word, dictionary.get(word) + 1);
                             } else {
                                 // if not exist, initiate count of this word with 1
-                                dictionary.put(s, 1);
+                                dictionary.put(word, 1);
                             }
                         }
-                        s = ""; // reInit a empty word
+                        stringBuilder = new StringBuilder(); // reInit a empty word
                     }
                     in = fis.read();
                 }
                 return dictionary;
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    // you always have to close the I/O streams
-                    if (fis != null)
-                        fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
             return null;
         }
@@ -69,18 +60,17 @@ public class TopKWords {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(dictionary.entrySet());
 
         // sort by lambda valueComparator
-        list.sort(Comparator.comparing(
-                m -> m.getValue())
-        );
+        list.sort(Map.Entry.comparingByValue());
 
         Scanner input = new Scanner(System.in);
-        int k = input.nextInt();
-        while (k > list.size()) {
+        int inputInteger = input.nextInt();
+        while (inputInteger > list.size()) {
             System.out.println("Retype a number, your number is too large");
             input = new Scanner(System.in);
-            k = input.nextInt();
+            inputInteger = input.nextInt();
         }
-        for (int i = 0; i < k; i++) {
+
+        for (int i = 0; i < inputInteger; i++) {
             System.out.println(list.get(list.size() - i - 1));
         }
         input.close();
