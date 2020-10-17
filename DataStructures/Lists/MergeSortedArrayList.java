@@ -56,6 +56,8 @@ public class MergeSortedArrayList {
         while (pb < listB.size()) {
             listC.add(listB.get(pb++));
         }
+
+        return listC;
     }
 
 }
