@@ -17,23 +17,42 @@ public class StackArray <T> {
      */
     public static void main(String[] args) {
         // Declare a stack of maximum size 4
-        StackArray<Integer> myStackArray = new StackArray<>(4);
+        StackArray<Integer> myStackArrayInteger = new StackArray<>(4);
 
-        assert myStackArray.isEmpty();
-        assert !myStackArray.isFull();
+        assert myStackArrayInteger.isEmpty();
+        assert !myStackArrayInteger.isFull();
 
         // Populate the stack
-        myStackArray.push(5);
-        myStackArray.push(8);
-        myStackArray.push(2);
-        myStackArray.push(9);
+        myStackArrayInteger.push(5);
+        myStackArrayInteger.push(8);
+        myStackArrayInteger.push(2);
+        myStackArrayInteger.push(9);
 
-        assert !myStackArray.isEmpty();
-        assert myStackArray.isFull();
-        assert myStackArray.peek() == 9;
-        assert myStackArray.pop() == 9;
-        assert myStackArray.peek() == 2;
-        assert myStackArray.size() == 3;
+        assert !myStackArrayInteger.isEmpty();
+        assert myStackArrayInteger.isFull();
+        assert myStackArrayInteger.peek() == 9;
+        assert myStackArrayInteger.pop() == 9;
+        assert myStackArrayInteger.peek() == 2;
+        assert myStackArrayInteger.size() == 3;
+        
+        
+        StackArray<String> myStackArrayString = new StackArray<>(4);
+
+        assert myStackArrayString.isEmpty();
+        assert !myStackArrayString.isFull();
+
+        // Populate the stack
+        myStackArrayString.push("A");
+        myStackArrayString.push("B");
+        myStackArrayString.push("C");
+        myStackArrayString.push("D");
+
+        assert !myStackArrayString.isEmpty();
+        assert myStackArrayString.isFull();
+        assert "D".equals(myStackArrayString.peek());
+        assert "D".equals(myStackArrayString.pop());
+        assert "C".equals(myStackArrayString.peek());
+        assert myStackArrayString.size() == 3;
     }
 
     /**
