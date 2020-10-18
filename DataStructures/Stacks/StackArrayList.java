@@ -12,31 +12,56 @@ import java.util.EmptyStackException;
  * This is an ArrayList Implementation of a stack, where size is not
  * a problem we can extend the stack as much as we want.
  */
-public class StackArrayList {
+public class StackArrayList <T> {
 
     /**
      * Driver Code
      */
     public static void main(String[] args) {
-        StackArrayList stack = new StackArrayList();
-        assert stack.isEmpty();
+        StackArrayList<Integer> stackInteger = new StackArrayList<>();
+        assert stackInteger.isEmpty();
 
         for (int i = 1; i <= 5; ++i) {
-            stack.push(i);
-            assert stack.size() == i;
+            stackInteger.push(i);
+            assert stackInteger.size() == i;
         }
 
-        assert stack.size() == 5;
-        assert stack.peek() == 5 && stack.pop() == 5 && stack.peek() == 4;
+        assert stackInteger.size() == 5;
+        assert stackInteger.peek() == 5 && stackInteger.pop() == 5 && stackInteger.peek() == 4;
 
         /* pop elements at the top of this stack one by one */
-        while (!stack.isEmpty()) {
-            stack.pop();
+        while (!stackInteger.isEmpty()) {
+            stackInteger.pop();
         }
-        assert stack.isEmpty();
+        assert stackInteger.isEmpty();
 
         try {
-            stack.pop();
+            stackInteger.pop();
+            assert false; /* this should not happen */
+        } catch (EmptyStackException e) {
+            assert true; /* this should happen */
+        }
+        
+        StackArrayList<String> stackString = new StackArrayList<>();
+        assert stackString.isEmpty();
+
+        String[] strings = {"Hello", "Hi", "Hey", "Hola", "Salut"};
+        for (int i = 0; i < strings.length; ++i) {
+            stackString.push(strings[i]);
+            assert stackString.size() == i+1;
+        }
+
+        assert stackString.size() == 5;
+        assert "Salut".equals(stackString.peek()) && "Salut".equals(stackString.pop()) && "Hola".equals(stackString.peek());
+
+        /* pop elements at the top of this stack one by one */
+        while (!stackString.isEmpty()) {
+            stackString.pop();
+        }
+        assert stackString.isEmpty();
+
+        try {
+            stackString.pop();
             assert false; /* this should not happen */
         } catch (EmptyStackException e) {
             assert true; /* this should happen */
@@ -47,7 +72,7 @@ public class StackArrayList {
     /**
      * ArrayList representation of the stack
      */
-    private ArrayList<Integer> stack;
+    private ArrayList<T> stack;
 
     /**
      * Constructor
@@ -62,7 +87,7 @@ public class StackArrayList {
      *
      * @param value value to be added
      */
-    public void push(int value) {
+    public void push(T value) {
         stack.add(value);
     }
 
@@ -72,7 +97,7 @@ public class StackArrayList {
      * @return Element popped
      * @throws EmptyStackException if the stack is empty.
      */
-    public int pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
@@ -95,7 +120,7 @@ public class StackArrayList {
      *
      * @return the element at the top of this stack.
      */
-    public int peek() {
+    public T peek() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
