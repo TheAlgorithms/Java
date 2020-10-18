@@ -1,0 +1,161 @@
+
+/*
+Given n wines in a row, with integers denoting the cost of each wine respectively.
+Each year you can sale the first or the last wine in the row. However, the price of
+wines increases over time. Let the initial profits from the wines be P1, P2, P3…Pn.
+On the Yth year, the profit from the ith wine will be Y*Pi. For each year, your task
+is to print “beg” or “end” denoting whether first or last wine should be sold. Also,
+calculate the maximum profit from all the wines.
+*/
+
+package DP;
+
+public class WineProblem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int[] wine= {1,3,2,4};
+		
+//		int[] wine=new int[1000];
+//		
+//		for(int i=0;i<wine.length;i++) {
+//			
+//			wine[i]=i;
+//			
+//		}
+		
+//		System.out.println(WPRecursive(wine,0,wine.length-1,1));
+//
+//		System.out.println(WPRecursiveX(wine,0,wine.length-1));
+		
+		//System.out.println(WPTD(wine,0,wine.length-1,new int[wine.length][wine.length]));
+		
+		System.out.println(WPBU(wine));
+		
+	}
+	
+	public static int WPRecursive(int[] arr,int si,int ei,int year) {
+		
+		if(si==ei) {
+			return arr[si]*year;
+			
+		}
+		
+		int ans=0;
+		
+		int start=WPRecursive(arr,si+1,ei,year+1)+(year*arr[si]);    //selling starting wine
+		int end=WPRecursive(arr,si,ei-1,year+1)+(year*arr[ei]);      //selling ending wine
+		
+		ans=Math.max(start, end);
+		
+		return ans;
+		
+	}
+  
+  //Recursive Approach
+	
+    public static int WPRecursiveX(int[] arr,int si,int ei) {
+		
+    	int year=arr.length-(ei-si+1)+1;
+    	
+		if(si==ei) {
+			return arr[si]*year;
+			
+		}
+				
+		int ans=0;
+		
+		int start=WPRecursiveX(arr,si+1,ei)+(year*arr[si]);    //selling starting wine
+		int end=WPRecursiveX(arr,si,ei-1)+(year*arr[ei]);      //selling ending wine
+		
+		ans=Math.max(start, end);
+		
+		return ans;
+		
+	}
+  
+  //Top Down Approach
+    
+    public static int WPTD(int[] arr,int si,int ei,int[][] strg) {
+		
+    	int year=arr.length-(ei-si+1)+1;
+    	
+		if(si==ei) {
+			return arr[si]*year;
+			
+		}
+		
+		if(strg[si][ei] !=0) {
+			
+			return strg[si][ei];
+			
+		}
+				
+		int ans=0;
+		
+		int start=WPTD(arr,si+1,ei,strg)+(year*arr[si]);    //selling starting wine
+		int end=WPTD(arr,si,ei-1,strg)+(year*arr[ei]);      //selling ending wine
+		
+		ans=Math.max(start, end);
+		
+		strg[si][ei]=ans;
+		
+		return ans;
+		
+	}
+  
+  //Bottom Up Approach
+    
+    public static int WPBU(int[] arr) {
+    	
+    	int[][] strg=new int[arr.length][arr.length];
+    	
+    	for(int slide=0;slide<arr.length;slide++) {
+    		
+    		for(int si=0;si<=(arr.length-1-slide);si++) {
+    			
+    			int ei=si+slide;
+    			
+    			int year=arr.length-(ei-si+1)+1;
+    			
+    			if(si==ei) {
+    				
+    				strg[si][ei]=arr[si]*year;
+    				
+    			}else {
+    				
+    				int start=strg[si+1][ei]+(arr[si]*year);
+    				int end=strg[si][ei-1]+(arr[ei]*year);
+    				
+    				strg[si][ei]=Math.max(start,end);
+    				
+    			}
+    			
+    		}
+    		
+    	}
+    	
+    	display(strg);
+    	
+    	return strg[0][arr.length-1];
+    	
+    }
+    
+    public static void display(int[][] strg) {
+    	
+    	for(int i=0;i<strg.length;i++) {
+    		
+    		for(int j=0;j<strg[i].length;j++) {
+    			
+    			System.out.print(strg[i][j]+"\t");
+    		}
+    		
+    		System.out.println();
+    		
+    	}
+    	
+    }
+    
+
+}
