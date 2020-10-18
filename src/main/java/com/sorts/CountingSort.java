@@ -42,7 +42,7 @@ public class CountingSort {
         // This loop will put the ith element at is correct position in the places array
         for (int i = 0; i < places.length; i++) {
 
-            // Getting the value of the index - the value at the oount array index will be replaced by the value
+            // Getting the value of the index - the value at the count array index will be replaced by the value
             // in the original array
             int index = arr[i];
             places[count[index - min] - 1] = index;
