@@ -28,7 +28,7 @@ public class Problem20{
     public static BigInteger getFactorial(int x) {
 
         BigInteger fact = BigInteger.valueOf(1);
-        for (int i = 1; i <= 100; i++)
+        for (int i = 1; i <= x; i++)
         {
             fact = fact.multiply(BigInteger.valueOf(i));
         }
