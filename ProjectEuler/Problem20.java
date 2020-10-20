@@ -15,7 +15,7 @@ link: https://projecteuler.net/problem=20
 */
 
 //main class
-class FactorialExample2{  
+public class Problem20{  
     
     //main method to run code
     public static void main(String[] args) {
