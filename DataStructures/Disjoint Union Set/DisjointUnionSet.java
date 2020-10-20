@@ -52,3 +52,8 @@ public class DisjointUnionSet {
         return true; // a new Connection is made between two components
     }
 }
+
+// For more detailed Analysis visit below given Resources
+// https://en.wikipedia.org/wiki/Disjoint-set_data_structure
+// https://cp-algorithms.com/data_structures/disjoint_set_union.html
+// https://www.hackerearth.com/practice/notes/disjoint-set-union-union-find/
