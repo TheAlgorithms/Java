@@ -1,7 +1,7 @@
 package Maths;
 
 /**
- * Find the area of various geometric shapes
+ * https://en.wikipedia.org/wiki/Matrix_addition
  */
 public class MatrixAddition {
     public static void main(String[] args) {
