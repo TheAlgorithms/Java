@@ -10,7 +10,7 @@ import java.util.*;
 public class TwoSum {
 
     public static void main(String[] args) {
-        
+
         int[] test = {2,7,11,15};
         int[] result = {0,1};
 
