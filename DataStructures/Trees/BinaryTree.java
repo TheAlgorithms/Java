@@ -15,6 +15,15 @@ package DataStructures.Trees;
  * @author Unknown
  *
  */
+
+/*
+* importing all necessary libraries
+*
+*/
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class BinaryTree {
 
     /**
@@ -277,6 +286,75 @@ public class BinaryTree {
             postOrder(localRoot.left);
             postOrder(localRoot.right);
             System.out.print(localRoot.data + " ");
+        }
+    }
+
+    /*
+    * Above inorder, preorder and postorder provides recursive traversal
+    * so below code provides iterative traversals for preorder and inorder
+    */
+
+    /*
+    * An iterative inorder is same as recursive inorder with a small tweeks
+    * likewise in recursive inorder first whole left child is explored
+    * then root after that right child in similiar way first stack is filled with
+    * all the way to node left until node left is null then pop one left and go to its right
+    * then again move all ways to left and whole process is repeated
+    * see line 316 and 323
+    */
+    public void iterInorder(Node root)
+    {
+        if (root == null)
+            return;
+        else
+        {
+            binTreeNode curr = root;
+            Stack<binTreeNode> stack = new Stack<>();
+
+            System.out.print("tree inOrder "+"\t");
+            while (curr!=null || stack.size()>0)
+            {
+                while (curr!=null)
+                {
+                    stack.push(curr);
+                    curr = curr.left;
+                }
+                curr = stack.pop();
+                System.out.print(curr.key+" ");
+                curr = curr.right;
+            }
+
+            System.out.println();
+        }
+    }
+
+    /*An iterative preorder is done using external stack unlike from
+    * regular recursive traversals
+    * keeping in mind the same approach as recursive but since stack is LIFO data structure
+    * first right child is pushed then left child see line 343 and 345
+    */
+    public void iterPreorder(Node root)
+    {
+        if (root == null)
+            return;
+        else
+        {
+            Stack<binTreeNode> stack = new Stack<>();
+            stack.push(root);
+
+            System.out.print("tree preOrder "+"\t");
+            while (!stack.isEmpty())
+            {
+                binTreeNode temp = stack.pop();
+
+                System.out.print(temp.key+" ");
+                if (temp.right!=null)
+                    stack.push(temp.right);
+                if (temp.left!=null)
+                    stack.push(temp.left);
+            }
+
+            System.out.println();
         }
     }
 }
