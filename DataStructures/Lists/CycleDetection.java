@@ -3,14 +3,14 @@ we set two pointers one slow that is current node and other fast pointer which i
 slow pointer. We compare fast and slow pointer if they are same then there is a cycle and return true else
 return false.
 */
-public class cycleDetection {
+public class CycleDetection {
     int data;
-    cycleDetection next = null;
-    public cycleDetection(int d){
+    CycleDetection next = null;
+    public CycleDetection(int d){
         this.data = d;
     }
-    public static cycleDetection insert(cycleDetection head, cycleDetection tmp){
-        cycleDetection copy = head;
+    public static CycleDetection insert(CycleDetection head, CycleDetection tmp){
+        CycleDetection copy = head;
         while(copy.next != null){
             copy = copy.next;
         }
@@ -22,8 +22,8 @@ public class cycleDetection {
         if(this == null){
             return false;
         }
-        cycleDetection slow = this;
-        cycleDetection fast = this.next;
+        CycleDetection slow = this;
+        CycleDetection fast = this.next;
         while(fast.next.next != null){
             if(slow == fast){
                 return true;
@@ -35,9 +35,9 @@ public class cycleDetection {
     }
 
     public static void main(String[] args) {
-        cycleDetection head = new cycleDetection(1);
+        CycleDetection head = new CycleDetection(1);
         for (int i = 2; i <= 7; i++) {
-            cycleDetection tmp = new cycleDetection(i);
+            CycleDetection tmp = new CycleDetection(i);
             head = insert(head, tmp);
         }
         /*while (head.next != null) {
@@ -48,9 +48,9 @@ public class cycleDetection {
             1->2->3->4->5->6->null
         
         */
-        cycleDetection copy = head;
-        cycleDetection randomNode = copy.next.next.next.next;
-        cycleDetection endNode = copy.next.next.next.next.next.next;
+        CycleDetection copy = head;
+        CycleDetection randomNode = copy.next.next.next.next;
+        CycleDetection endNode = copy.next.next.next.next.next.next;
         endNode.next = randomNode;
         /*Now list looks like this
         1->2->3->4->5->6-
