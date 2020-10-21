@@ -308,8 +308,8 @@ public class BinaryTree {
             return;
         else
         {
-            binTreeNode curr = root;
-            Stack<binTreeNode> stack = new Stack<>();
+            Node curr = root;
+            Stack<Node> stack = new Stack<>();
 
             System.out.print("tree inOrder "+"\t");
             while (curr!=null || stack.size()>0)
@@ -339,13 +339,13 @@ public class BinaryTree {
             return;
         else
         {
-            Stack<binTreeNode> stack = new Stack<>();
+            Stack<Node> stack = new Stack<>();
             stack.push(root);
 
             System.out.print("tree preOrder "+"\t");
             while (!stack.isEmpty())
             {
-                binTreeNode temp = stack.pop();
+                Node temp = stack.pop();
 
                 System.out.print(temp.key+" ");
                 if (temp.right!=null)
