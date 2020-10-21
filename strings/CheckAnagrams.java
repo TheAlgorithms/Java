@@ -1,32 +1,36 @@
-package strings;
+import java.util.Scanner;
 
-import java.util.Arrays;
+public class Solution {
 
-/**
- * Two strings are anagrams if they are made of the same letters
- * arranged differently (ignoring the case).
- */
-public class CheckAnagrams {
-    public static void main(String[] args) {
-        assert isAnagrams("Silent", "Listen");
-        assert isAnagrams("This is a string", "Is this a string");
-        assert !isAnagrams("There", "Their");
+    static boolean isAnagram(String a, String b) {
+        // Complete the function
+        int i,j;
+        a = a.toUpperCase();
+        b = b.toUpperCase();
+        if(a.length() != b.length()){
+            return false;
+        }
+        int[] c = new int[26];
+         int[] d = new int[26];
+
+        for(i = 0;i < a.length();i++){
+              c[a.charAt(i)-'A']++;
+                d[b.charAt(i)-'A']++;
+        }
+        for(j = 0;j < 26;j++){
+                if(c[j] != d[j]) return false;
+          }
+     return true;
+        
     }
 
-    /**
-     * Check if two strings are anagrams or not
-     *
-     * @param s1 the first string
-     * @param s2 the second string
-     * @return {@code true} if two string are anagrams, otherwise {@code false}
-     */
-    public static boolean isAnagrams(String s1, String s2) {
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
-        char[] values1 = s1.toCharArray();
-        char[] values2 = s2.toCharArray();
-        Arrays.sort(values1);
-        Arrays.sort(values2);
-        return new String(values1).equals(new String(values2));
+    public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
     }
 }
