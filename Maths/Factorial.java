@@ -1,27 +1,28 @@
-package Maths;
-
-public class Factorial {
-
-    /* Driver Code */
-    public static void main(String[] args) {
-        assert factorial(0) == 1;
-        assert factorial(1) == 1;
-        assert factorial(5) == 120;
-        assert factorial(10) == 3628800;
-    }
-
-    /**
-     * Calculate factorial N using iteration
-     *
-     * @param n the number
-     * @return the factorial of {@code n}
-     */
-    public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
-        }
-        long factorial = 1;
-        for (int i = 1; i <= n; factorial *= i, ++i) ;
-        return factorial;
-    }
+import java.util.*;
+class factorial
+{
+public int fact(long n)
+{
+long f=1;
+for(long i=1;i<=n;i++)
+f=f*i;
+return f;
+}
+public static void main(String args[])
+{
+factorial obj=new factorial();
+int a[]={1,4,7,3,10};
+for(j=0;j<5;j++)
+{
+if(a[j]<0)
+System.out.println("Number is negative");
+else if(a[j]==0)
+System.out.println("1");
+else
+{
+long a=obj.fact(a[j]);
+System.out.println(a);
+}
+}
+}
 }
