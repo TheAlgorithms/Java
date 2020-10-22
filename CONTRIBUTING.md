@@ -4,6 +4,7 @@
 
 #### **Did you find a bug?**
 
+
 * **Ensure the bug was not already reported** by searching on GitHub under [Project Issues](https://github.com/TheAlgorithms/Java/issues).
 
 * Please avoid opening issues asking to be "assigned” to a particular algorithm.  This merely creates unnecessary noise for maintainers.  Instead, please submit your implementation in a pull request and it will be evaluated by project maintainers.
@@ -20,7 +21,7 @@
 #### **Do you want to fix a bug?**
 * [Open a new one issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behaviour that is not occuring.
 
-#### **Do you have questions about the source code?**
+#### **Do you have questions about the source code and any advice for us?**
 
 * Ask any question about how to use the repository in the [TheAlgorithms room in GITTER](https://gitter.im/TheAlgorithms/community?source=orgpage#) or [open a new one issue](https://github.com/TheAlgorithms/Java/issues/new)
 
