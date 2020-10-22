@@ -1,9 +1,8 @@
 import java.util.*;
 class Main{
  public static void main(String[] args){
-   Scanner s=new Scanner(System.in);
-   String str=s.next();
-   frequencyOfCharacters(str);
+   
+   frequencyOfCharacters("fngbgburfufufhurfjsfshsbpoowoimmnerjifidififif");
  }
  public static void frequencyOfCharacters(String str){
     HashMap<Character,Integer>map=new HashMap<>();
