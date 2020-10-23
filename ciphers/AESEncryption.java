@@ -51,8 +51,7 @@ public class AESEncryption {
 	public static SecretKey getSecretEncryptionKey() throws NoSuchAlgorithmException {
 		KeyGenerator aesKeyGenerator = KeyGenerator.getInstance("AES");
 		aesKeyGenerator.init(128); // The AES key size in number of bits
-		SecretKey secKey = aesKeyGenerator.generateKey();
-		return secKey;
+		return aesKeyGenerator.generateKey();
 	}
 
 	/**
@@ -77,8 +76,7 @@ public class AESEncryption {
 		// AES defaults to AES/ECB/PKCS5Padding in Java 7
 		Cipher aesCipher = Cipher.getInstance("AES");
 		aesCipher.init(Cipher.ENCRYPT_MODE, secKey);
-		byte[] byteCipherText = aesCipher.doFinal(plainText.getBytes());
-		return byteCipherText;
+		return aesCipher.doFinal(plainText.getBytes());
 	}
 
 	/**

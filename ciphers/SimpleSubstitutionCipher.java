@@ -23,10 +23,10 @@ public class SimpleSubstitutionCipher {
      * @return Encrypted message
      */
     public static String encode(String message, String cipherSmall) {
-        String encoded = "";
+        StringBuilder encoded = new StringBuilder();
 
         // This map is used to encode
-        Map<Character,Character> cipherMap = new HashMap<Character,Character>();
+        Map<Character,Character> cipherMap = new HashMap<>();
 
         char beginSmallLetter = 'a';
         char beginCapitalLetter = 'A';
@@ -42,12 +42,12 @@ public class SimpleSubstitutionCipher {
 
         for(int i = 0; i < message.length(); i++){
             if(Character.isAlphabetic(message.charAt(i)))
-                encoded += cipherMap.get(message.charAt(i));
+                encoded.append(cipherMap.get(message.charAt(i)));
             else
-                encoded += message.charAt(i);
+                encoded.append(message.charAt(i));
         }
 
-        return encoded;
+        return encoded.toString();
     }
 
     /**
@@ -58,10 +58,10 @@ public class SimpleSubstitutionCipher {
      * @return message
      */
     public static String decode(String encryptedMessage, String cipherSmall) {
-        String decoded = "";
+        StringBuilder decoded = new StringBuilder();
 
 
-        Map<Character,Character> cipherMap = new HashMap<Character,Character>();
+        Map<Character,Character> cipherMap = new HashMap<>();
 
         char beginSmallLetter = 'a';
         char beginCapitalLetter = 'A';
@@ -76,12 +76,12 @@ public class SimpleSubstitutionCipher {
 
         for(int i = 0; i < encryptedMessage.length(); i++){
             if(Character.isAlphabetic(encryptedMessage.charAt(i)))
-                decoded += cipherMap.get(encryptedMessage.charAt(i));
+                decoded.append(cipherMap.get(encryptedMessage.charAt(i)));
             else
-                decoded += encryptedMessage.charAt(i);
+                decoded.append(encryptedMessage.charAt(i));
         }
 
-        return decoded;
+        return decoded.toString();
     }
 
     /**

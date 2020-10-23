@@ -198,18 +198,18 @@ public class AES {
 	 * @return
 	 */
 	public static BigInteger scheduleCore(BigInteger t, int rconCounter) {
-		String rBytes = t.toString(16);
+		StringBuilder rBytes = new StringBuilder(t.toString(16));
 
 		// Add zero padding
 		while (rBytes.length() < 8) {
-			rBytes = "0" + rBytes;
+			rBytes.insert(0, "0");
 		}
 
 		// rotate the first 16 bits to the back
 		String rotatingBytes = rBytes.substring(0, 2);
 		String fixedBytes = rBytes.substring(2);
 
-		rBytes = fixedBytes + rotatingBytes;
+		rBytes = new StringBuilder(fixedBytes + rotatingBytes);
 
 		// apply S-Box to all 8-Bit Substrings
 		for (int i = 0; i < 4; i++) {
@@ -232,12 +232,12 @@ public class AES {
 			}
 
 			// replace bytes in original string
-			rBytes = rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2);
+			rBytes = new StringBuilder(rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
 		}
 
 		// t = new BigInteger(rBytes, 16);
 		// return t;
-		return new BigInteger(rBytes, 16);
+		return new BigInteger(rBytes.toString(), 16);
 	}
 
 	/**
@@ -299,11 +299,11 @@ public class AES {
 	public static int[] splitBlockIntoCells(BigInteger block) {
 
 		int[] cells = new int[16];
-		String blockBits = block.toString(2);
+		StringBuilder blockBits = new StringBuilder(block.toString(2));
 
 		// Append leading 0 for full "128-bit" string
 		while (blockBits.length() < 128) {
-			blockBits = '0' + blockBits;
+			blockBits.insert(0, '0');
 		}
 
 		// split 128 to 8 bit cells
@@ -325,19 +325,19 @@ public class AES {
 	 */
 	public static BigInteger mergeCellsIntoBlock(int[] cells) {
 
-		String blockBits = "";
+		StringBuilder blockBits = new StringBuilder();
 		for (int i = 0; i < 16; i++) {
-			String cellBits = Integer.toBinaryString(cells[i]);
+			StringBuilder cellBits = new StringBuilder(Integer.toBinaryString(cells[i]));
 
 			// Append leading 0 for full "8-bit" strings
 			while (cellBits.length() < 8) {
-				cellBits = '0' + cellBits;
+				cellBits.insert(0, '0');
 			}
 
-			blockBits += cellBits;
+			blockBits.append(cellBits);
 		}
 
-		return new BigInteger(blockBits, 2);
+		return new BigInteger(blockBits.toString(), 2);
 	}
 
 	/**
