@@ -8,31 +8,51 @@ package DataStructures.Stacks;
  * of an array implementation of a Stack. So an element can only be added/removed
  * from the end of the array. In theory stack have no fixed size, but with an
  * array implementation it does.
+ * @param <T>
  */
-public class StackArray {
+public class StackArray <T> {
 
     /**
      * Driver Code
      */
     public static void main(String[] args) {
         // Declare a stack of maximum size 4
-        StackArray myStackArray = new StackArray(4);
+        StackArray<Integer> myStackArrayInteger = new StackArray<>(4);
 
-        assert myStackArray.isEmpty();
-        assert !myStackArray.isFull();
+        assert myStackArrayInteger.isEmpty();
+        assert !myStackArrayInteger.isFull();
 
         // Populate the stack
-        myStackArray.push(5);
-        myStackArray.push(8);
-        myStackArray.push(2);
-        myStackArray.push(9);
+        myStackArrayInteger.push(5);
+        myStackArrayInteger.push(8);
+        myStackArrayInteger.push(2);
+        myStackArrayInteger.push(9);
 
-        assert !myStackArray.isEmpty();
-        assert myStackArray.isFull();
-        assert myStackArray.peek() == 9;
-        assert myStackArray.pop() == 9;
-        assert myStackArray.peek() == 2;
-        assert myStackArray.size() == 3;
+        assert !myStackArrayInteger.isEmpty();
+        assert myStackArrayInteger.isFull();
+        assert myStackArrayInteger.peek() == 9;
+        assert myStackArrayInteger.pop() == 9;
+        assert myStackArrayInteger.peek() == 2;
+        assert myStackArrayInteger.size() == 3;
+        
+        
+        StackArray<String> myStackArrayString = new StackArray<>(4);
+
+        assert myStackArrayString.isEmpty();
+        assert !myStackArrayString.isFull();
+
+        // Populate the stack
+        myStackArrayString.push("A");
+        myStackArrayString.push("B");
+        myStackArrayString.push("C");
+        myStackArrayString.push("D");
+
+        assert !myStackArrayString.isEmpty();
+        assert myStackArrayString.isFull();
+        assert "D".equals(myStackArrayString.peek());
+        assert "D".equals(myStackArrayString.pop());
+        assert "C".equals(myStackArrayString.peek());
+        assert myStackArrayString.size() == 3;
     }
 
     /**
@@ -48,7 +68,7 @@ public class StackArray {
     /**
      * The array representation of the Stack
      */
-    private int[] stackArray;
+    private T[] stackArray;
 
     /**
      * The top of the stack
@@ -69,7 +89,7 @@ public class StackArray {
      */
     public StackArray(int size) {
         maxSize = size;
-        stackArray = new int[maxSize];
+        stackArray = (T[]) new Object[maxSize];
         top = -1;
     }
 
@@ -78,7 +98,7 @@ public class StackArray {
      *
      * @param value The element added
      */
-    public void push(int value) {
+    public void push(T value) {
         if (!isFull()) { // Checks for a full stack
             top++;
             stackArray[top] = value;
@@ -93,7 +113,7 @@ public class StackArray {
      *
      * @return value popped off the Stack
      */
-    public int pop() {
+    public T pop() {
         if (!isEmpty()) { // Checks for an empty stack
             return stackArray[top--];
         }
@@ -103,7 +123,7 @@ public class StackArray {
             return pop();// don't forget pop after resizing
         } else {
             System.out.println("The stack is already empty");
-            return -1;
+            return null;
         }
     }
 
@@ -112,21 +132,19 @@ public class StackArray {
      *
      * @return element at the top of the stack
      */
-    public int peek() {
+    public T peek() {
         if (!isEmpty()) { // Checks for an empty stack
             return stackArray[top];
         } else {
             System.out.println("The stack is empty, cant peek");
-            return -1;
+            return null;
         }
     }
 
     private void resize(int newSize) {
-        int[] transferArray = new int[newSize];
+        T[] transferArray = (T[]) new Object[newSize];
 
-        for (int i = 0; i < stackArray.length; i++) {
-            transferArray[i] = stackArray[i];
-        }
+        System.arraycopy(stackArray, 0, transferArray, 0, stackArray.length);
         // This reference change might be nice in here
         stackArray = transferArray;
         maxSize = newSize;
