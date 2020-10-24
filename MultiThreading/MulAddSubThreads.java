@@ -58,3 +58,6 @@ class Sub extends Thread {
         System.out.println ("Subtraction: " +value); 
 	}
 }
+
+
+// https://en.wikipedia.org/wiki/Thread_(computing)
