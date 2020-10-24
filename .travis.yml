@@ -1,0 +1,9 @@
+language: java
+script:
+  - find . -type f -name "*.java" > sources.txt
+  - javac @sources.txt
+  
+notifications:
+    webhooks: https://www.travisbuddy.com/
+    on_success: never
+    on_failure: always
