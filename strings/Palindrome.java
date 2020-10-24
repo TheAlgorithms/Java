@@ -26,7 +26,7 @@ class Palindrome {
      * @param s a string to check
      * @return {@code true} if given string is palindrome, otherwise {@code false}
      */
-    public static boolean isPalindrome(String s) {
+    public static boolean isPalindrome(String s) {//palindrome check
         return (s == null || s.length() <= 1) || s.equals(new StringBuilder(s).reverse().toString());
     }
 
