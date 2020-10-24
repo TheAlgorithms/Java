@@ -1,6 +1,9 @@
 package DataStructures.DynamicArray;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * This class implements a dynamic array

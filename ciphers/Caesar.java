@@ -104,10 +104,6 @@ public class Caesar {
         return c >= 'a' && c <= 'z';
     }
 
-    /**
-     *
-     * @deprecated TODO remove main and make JUnit Testing
-     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the message (Latin Alphabet)");
