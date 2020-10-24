@@ -30,6 +30,9 @@ public class Area {
 
         /* test circle */
         assert Double.compare(surfaceAreaCircle(20), 1256.6370614359173) == 0;
+
+        /* test cone */
+        assert Double.compare(surfaceAreaCone(20,20), 1345.4947201990846) == 0;
     }
 
     /**
@@ -115,5 +118,17 @@ public class Area {
      */
     private static double surfaceAreaCircle(double radius) {
         return Math.PI * radius * radius;
+    }
+
+    /**
+     * Calculate the area of a cone
+     *
+     * @param radius  radius of cone base
+     * @param height  height of cone
+     * @return area   area of given cone
+     */
+
+    private static double surfaceAreaCone(double radius, double height){
+        return surfaceAreaCircle(radius) + Math.PI * radius * Math.sqrt(radius * radius + height * height);
     }
 }
