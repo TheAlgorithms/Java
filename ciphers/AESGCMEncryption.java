@@ -1,6 +1,8 @@
 package ciphers;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -76,7 +78,7 @@ public class AESGCMEncryption {
 			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException,
 			BadPaddingException, UnsupportedEncodingException {
 		
-		byte[] bytesPlainText = plainText.getBytes(Charsets.UTF_8);
+		byte[] bytesPlainText = plainText.getBytes(StandardCharsets.UTF_8);
 		Cipher aesCipher = Cipher.getInstance(AES_CHIPER_SECURE_ALGORITHM);
 		aesCipher.init(Cipher.ENCRYPT_MODE, secKey);
 		byte[] encryptedText = aesCipher.doFinal(plainText.getBytes());
@@ -110,7 +112,7 @@ public class AESGCMEncryption {
 		GCMParameterSpec gcmParams = new GCMParameterSpec(128, byteCipherText, 0, 12);
 		aesCipher.init(Cipher.DECRYPT_MODE, secKey, gcmParams);
 		byte[] decryptedText = aesCipher.doFinal(byteCipherText, 12, byteCipherText.length - 12);
-		return new String(decryptedText, Charsets.UTF_8);
+		return new String(decryptedText, StandardCharsets.UTF_8);
 	}
 
 	/**
