@@ -23,7 +23,7 @@ public class ReturnSubsequence {
   private static String[] returnSubsequence(String givenString) {
     if (givenString.length()
         == 0) // If string is empty we will create an array of size=1 and insert "" (Empty string)
-              // in it
+    // in it
     {
       String[] ans = new String[1];
       ans[0] = "";
@@ -33,7 +33,7 @@ public class ReturnSubsequence {
         returnSubsequence(
             givenString.substring(
                 1)); // recursive call to get subsequences of substring starting from index
-                     // position=1
+    // position=1
 
     String[] ans =
         new String
@@ -47,7 +47,7 @@ public class ReturnSubsequence {
           givenString.charAt(0)
               + SmallAns[
                   k]; // Insert character at index=0 of the given substring in front of every string
-                      // in SmallAns
+      // in SmallAns
     }
     return ans;
   }

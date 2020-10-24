@@ -31,7 +31,7 @@ public class JumpSearch implements SearchAlgorithm {
 
     for (int i = limit - blockSize; i <= limit; i++) {
       if (array[i] == key) {
-          /* execute linear search */
+        /* execute linear search */
         return i;
       }
     }

@@ -1,6 +1,5 @@
 package DataStructures.Heaps;
 
-
 /**
  * Class for heap elements.<br>
  *

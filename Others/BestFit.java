@@ -38,7 +38,7 @@ public class BestFit {
     int minDiff = findMaxElement(blockSizes);
     int index =
         NO_ALLOCATION; // If there is no block that can fit the process, return NO_ALLOCATION as the
-                       // result.
+    // result.
     for (int i = 0;
         i < blockSizes.length;
         i++) { // Find the most fitting memory block for the given process.

@@ -48,7 +48,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
 
   public void
       go() // Interactive run for understanding the class first time. Assumes source vertex is 0 and
-           // shows distaance to all vertices
+        // shows distaance to all vertices
       {
     Scanner sc = new Scanner(System.in); // Grab scanner object for user input
     int i, v, e, u, ve, w, j, neg = 0;
@@ -66,7 +66,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
     int dist[] =
         new int
             [v]; // Distance array for holding the finalized shortest path distance between source
-                 // and all vertices
+    // and all vertices
     int p[] = new int[v]; // Parent array for holding the paths
     for (i = 0; i < v; i++) dist[i] = Integer.MAX_VALUE; // Initializing distance values
     dist[0] = 0;
@@ -115,7 +115,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
     double dist[] =
         new double
             [v]; // Distance array for holding the finalized shortest path distance between source
-                 // and all vertices
+    // and all vertices
     int p[] = new int[v]; // Parent array for holding the paths
     for (i = 0; i < v; i++) dist[i] = Integer.MAX_VALUE; // Initializing distance values
     dist[source] = 0;

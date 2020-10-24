@@ -1,6 +1,5 @@
 package Others;
 
-
 /**
  * Guass Legendre Algorithm ref https://en.wikipedia.org/wiki/Gauss–Legendre_algorithm
  *

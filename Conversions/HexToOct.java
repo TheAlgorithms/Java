@@ -63,7 +63,7 @@ public class HexToOct {
     decnum =
         hex2decimal(
             hexadecnum); // Pass the string to the hex2decimal function and get the decimal form in
-                         // variable decnum
+    // variable decnum
 
     // convert decimal to octal
     octalnum = decimal2octal(decnum);

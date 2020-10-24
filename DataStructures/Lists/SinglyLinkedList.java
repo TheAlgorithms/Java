@@ -61,12 +61,12 @@ public class SinglyLinkedList {
     checkBounds(position, 0, size);
     Node newNode = new Node(data);
     if (head == null) {
-        /* the list is empty */
+      /* the list is empty */
       head = newNode;
       size++;
       return;
     } else if (position == 0) {
-        /* insert at the head of the list */
+      /* insert at the head of the list */
       newNode.next = head;
       head = newNode;
       size++;
