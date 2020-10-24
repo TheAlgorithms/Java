@@ -9,13 +9,6 @@ import javax.swing.JOptionPane;
  */
 public final class RSA {
 
-    /**
-     * Trivial test program.
-     *
-     * @param args
-     * @deprecated TODO remove main and make JUnit Testing or any other
-     * methodology
-     */
     public static void main(String[] args) {
 
         RSA rsa = new RSA(1024);
