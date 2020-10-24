@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
  */
 public class MedianOfRunningArray {
     private PriorityQueue<Integer> p1;
-    private PriorityQueue<Integer> p2;
+    private PriorityQueue<Integer> p2
 
     //Constructor
     public MedianOfRunningArray() {
