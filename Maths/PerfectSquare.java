@@ -18,8 +18,34 @@ public class PerfectSquare {
      * @param number the number to be checked
      * @return <tt>true</tt> if {@code number} is perfect square, otherwise <tt>false</tt>
      */
+
+
+     /*
+     Uses binary search for finding the perfect number
+
+     */
     public static boolean isPerfectSquare(int number) {
-        int sqrt = (int) Math.sqrt(number);
-        return sqrt * sqrt == number;
+        
+        int value=0;
+        int start=0,end=number;
+        while(start<=end)
+         {
+             int mid=start+(end-start)/2;
+
+             if(mid*mid==number)
+                return true;
+             
+             if(mid*mid<number)
+              {
+                  value=mid;
+                  start=mid+1;
+              }
+              else
+                 end=mid-1;
+         }
+
+
+
+        return value * value == number;
     }
 }
