@@ -1,9 +1,9 @@
-name: Build
+name: Build Project
 
 on: [push, pull_request]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
