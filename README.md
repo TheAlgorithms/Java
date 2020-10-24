@@ -1,5 +1,5 @@
 # The Algorithms - Java
-
+[![Build Status](https://img.shields.io/travis/TheAlgorithms/Java.svg?label=Travis%20CI&logo=travis&style=flat-square)](https://travis-ci.com/TheAlgorithms/Java)&nbsp;
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/TheAlgorithms/100)
 [![Gitter chat](https://img.shields.io/badge/Chat-Gitter-ff69b4.svg?label=Chat&logo=gitter&style=flat-square)](https://gitter.im/TheAlgorithms)&nbsp;
 
