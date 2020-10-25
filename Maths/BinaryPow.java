@@ -11,11 +11,11 @@ public class BinaryPow {
     public static int BinPow(int a, int p){
         int res = 1;
         while(p > 0){
-            if(p & 1 == 1){
+            if((p&1) == 1){
                 res = res * a;
             }
             a = a*a;
-            p = p/2;
+            p >>>= 1;
         }
         return res;
     }
