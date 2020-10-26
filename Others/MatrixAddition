@@ -1,9 +1,12 @@
-import java.io.*;
-import java.util.*;
 /* This program is matrix addition
-where, matrices a,b are taken from the user and result is displayed 
+where, matrices a,b are taken from the user and result is stored in the matrix c and is displayed.
+m indicates the number of rows in the matrix
+n indicates the number of columns in the matrix
 */
 
+
+import java.io.*;
+import java.util.*;
 import java.math.*;
 import java.text.*;
 public class MatrixAddition
@@ -11,8 +14,8 @@ public class MatrixAddition
 	public static void main(String[] args)
 	{
 		Scanner sc = new Scanner(System.in);
-		int m = sc.nextInt();
-		int n = sc.nextInt();
+		int m = sc.nextInt(); /* enter the number of rows */
+		int n = sc.nextInt(); /* enter the number of columns*/
 		int a[][] = new int[m][n];
 		int b[][] = new int[m][n];
 		for(int i=0;i<m;i++)
