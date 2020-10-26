@@ -1,6 +1,12 @@
 import java.util.concurrent.CountDownLatch;
 
 public class SleepSort {
+    /**
+     * Sleep sorting makes use of threads to sort the elements
+     * [Sleep-Sorting](https://en.wikipedia.org/wiki/Talk%3ASorting_algorithm#Sleep_sort)
+     *
+     * @param nums the interger array to be sorted
+     */
     public static void sleepSortAndPrint(int[] nums) {
         final CountDownLatch doneSignal = new CountDownLatch(nums.length);
         for (final int num: nums) {
