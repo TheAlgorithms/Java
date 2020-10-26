@@ -1,16 +1,16 @@
 package com.designpatterns.behavorial.chain_of_responsibility;
 
-public class Context {
+public class CommandContext {
 
-    public final String input;
+    public final String command;
     public String output;
 
-    public Context(String input) {
-        this.input = input;
+    public CommandContext(String command) {
+        this.command = command;
     }
 
-    public String getInput() {
-        return input;
+    public String getCommand() {
+        return command;
     }
 
     public String getOutput() {

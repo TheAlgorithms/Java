@@ -3,14 +3,25 @@ package com.designpatterns.behavorial.chain_of_responsibility;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern
+ */
 class CommandChainTest {
 
     @Test
-    public void theChainReturnsByFirstFittingHandler() throws InvalidInputException {
+    public void processorsCanDefineCommandsToHandle() throws InvalidInputException {
 
-        CommandChain commandChain = new CommandChain(
-            context -> {/* do nothing */},
-            context -> context.setOutput("chuck norris"),
+        ProcessorChain commandChain = new ProcessorChain(
+            context -> {
+                if ("say nothing".equals(context.getCommand())) {
+                    context.setOutput("...");
+                }
+            },
+            context -> {
+                if ("say something".equals(context.getCommand())) {
+                    context.setOutput("chuck norris");
+                }
+            },
             context -> context.setOutput("hello world")
         );
 
@@ -20,10 +31,22 @@ class CommandChainTest {
     }
 
     @Test
+    public void newProcessorsCanBeAdded() throws InvalidInputException {
+        ProcessorChain processorChain = new ProcessorChain();
+        processorChain.addProcessor(
+            context -> context.setOutput("hello world")
+        );
+
+        String output = processorChain.handleInput("hey");
+
+        Assertions.assertEquals("hello world", output);
+    }
+
+    @Test
     public void theChainThrowsIfNoHandlerResolved() {
-        CommandChain commandChain = new CommandChain(
+        ProcessorChain commandChain = new ProcessorChain(
             context -> {
-                if ("a".equals(context.getInput())) {
+                if ("a".equals(context.getCommand())) {
                     context.setOutput("b");
                 }
             }
