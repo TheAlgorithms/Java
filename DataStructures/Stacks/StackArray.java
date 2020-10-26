@@ -1,13 +1,5 @@
 package DataStructures.Stacks;
 
-/**
- * This class implements a Stack using a regular array.
- *
- * <p>A stack is exactly what it sounds like. An element gets added to the top of the stack and only
- * the element on the top may be removed. This is an example of an array implementation of a Stack.
- * So an element can only be added/removed from the end of the array. In theory stack have no fixed
- * size, but with an array implementation it does.
- */
 public class StackArray {
 
   /** Driver Code */
@@ -81,13 +73,15 @@ public class StackArray {
    * @return value popped off the Stack
    */
   public int pop() {
-    if (!isEmpty()) { // Checks for an empty stack
+    if (!isEmpty()) { 
+	// Checks for an empty stack
       return stackArray[top--];
     }
 
     if (top < maxSize / 4) {
       resize(maxSize / 2);
-      return pop(); // don't forget pop after resizing
+      return pop(); 
+	// don't forget pop after resizing
     } else {
       System.out.println("The stack is already empty");
       return -1;
@@ -100,7 +94,8 @@ public class StackArray {
    * @return element at the top of the stack
    */
   public int peek() {
-    if (!isEmpty()) { // Checks for an empty stack
+    if (!isEmpty()) { 
+	// Checks for an empty stack
       return stackArray[top];
     } else {
       System.out.println("The stack is empty, cant peek");
@@ -119,39 +114,21 @@ public class StackArray {
     maxSize = newSize;
   }
 
-  /**
-   * Returns true if the stack is empty
-   *
-   * @return true if the stack is empty
-   */
   public boolean isEmpty() {
+
     return (top == -1);
+
   }
 
-  /**
-   * Returns true if the stack is full
-   *
-   * @return true if the stack is full
-   */
+
   public boolean isFull() {
-    return (top + 1 == maxSize);
-  }
 
-  /**
-   * Deletes everything in the Stack
-   *
-   * <p>Doesn't delete elements in the array but if you call push method after calling makeEmpty it
-   * will overwrite previous values
-   */
+    return (top + 1 == maxSize);
+
+  }
   public void makeEmpty() { // Doesn't delete elements in the array but if you call
     top = -1; // push method after calling makeEmpty it will overwrite previous values
   }
-
-  /**
-   * Return size of stack
-   *
-   * @return size of stack
-   */
   public int size() {
     return top + 1;
   }
