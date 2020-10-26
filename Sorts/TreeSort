@@ -1,0 +1,64 @@
+/* Tree sort is based on binary search tree data structure.
+It first creates a binary search tree from the elements of the 
+input list or array and then performs inorder traversal 
+on created binary search tree to get sorted order of elements
+*/
+
+public class TreeSort
+{
+	class Node
+	{
+		int k;
+		Node left, right;
+		public Node(int data)
+		{
+			k = data;
+			left=right=null;
+		}
+	}
+	Node root;
+	TreeSort()
+	{
+		root = null;
+	}
+	void insert(int k)
+	{
+		root = insertRecursive(root, k);
+	}
+	Node insertRecursive(Node root, int k)
+	{
+		if(root == null)
+		{
+			root = new Node(k);
+			return root;
+		}
+		if (k < root.k)
+			root.left = insertRecursive(root.left, k);
+		else if (k > root.key)
+			root.right = insertRecursive(root.right, k);
+		return root;
+	}
+	void inorderRecursive(Node root)
+	{
+		if (root != null)
+		{
+			inorderRecursive(root.left);
+			System.out.print(root.k + " ");
+			inorderRec(root.right);
+		}
+	}
+	void treeinsert(int arr[])
+	{
+		for(int i = 0; i < arr.length; i++)
+		{
+			insert(arr[i]);
+		}
+	}
+	public static void main(String[] args)
+	{
+		TreeSort tree = new TreeSort();
+		int arr[] = {10, 4, 7, 5, 11, 6};
+		tree.treeinsert(arr);
+		tree.inorderRecursive(tree.root);
+	}
+}
