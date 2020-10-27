@@ -5,8 +5,8 @@ jobs:
   update_directory_md:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-python@master
+      - uses: actions/checkout@v1  # v1, NOT v2
+      - uses: actions/setup-python@v2
       - name: update_directory_md
         shell: python
         run: |
