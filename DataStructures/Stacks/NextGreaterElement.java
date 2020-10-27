@@ -37,4 +37,3 @@ public class NextGreaterElement{
 		printNGE(arr, n); 
 	} 
 }
- 
