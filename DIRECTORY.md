@@ -75,6 +75,7 @@
   * Stacks
     * [BalancedBrackets](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/BalancedBrackets.java)
     * [DecimalToAnyUsingStack](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/DecimalToAnyUsingStack.java)
+    * [InfixToPostfix](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/InfixToPostfix.java)
     * [NodeStack](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/NodeStack.java)
     * [StackArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/StackArray.java)
     * [StackArrayList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Stacks/StackArrayList.java)
