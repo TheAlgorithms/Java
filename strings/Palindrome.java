@@ -50,15 +50,27 @@ class Palindrome {
    * @param s a string to check
    * @return {@code true} if given string is palindrome, otherwise {@code false}
    */
-  public static boolean isPalindrome1(String s) {
-    if (s == null || s.length() <= 1) {
-      return true;
-    }
-    for (int i = 0, j = s.length() - 1; i < j; ++i, --j) {
-      if (s.charAt(i) != s.charAt(j)) {
+  public static boolean isPalindrome(String str)
+  {
+
+    // Pointers pointing to the beginning
+    // and the end of the string
+    int i = 0, j = str.length() - 1;
+
+    // While there are characters toc compare
+    while (i < j) {
+
+      // If there is a mismatch
+      if (str.charAt(i) != str.charAt(j))
         return false;
-      }
+
+      // Increment first pointer and
+      // decrement the other
+      i++;
+      j--;
     }
+
+    // Given string is a palindrome
     return true;
   }
 }
