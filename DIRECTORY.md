@@ -211,6 +211,7 @@
   * [Problem07](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem07.java)
   * [Problem09](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem09.java)
   * [Problem10](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem10.java)
+  * [Problem11](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem11.java)
   * [Problem12](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem12.java)
 
 ## Searches
