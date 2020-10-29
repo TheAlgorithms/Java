@@ -6,8 +6,9 @@ public class piglatinGame
          try {
              if (args[0]  == null )
              ;
-             
-         } catch (ArrayIndexOutOfBoundsException e) {
+             } 
+        catch (ArrayIndexOutOfBoundsException e)
+        {
            System.out.println("Enter A valid string");
            System.exit(1);
             //TODO: handle exception
@@ -20,8 +21,8 @@ public class piglatinGame
        s= null ;
      
      char temp=ch[0];
-     int t=  0 ;   // b a n a n a - a y 
-      while(t<k-2)     // 0 1 2 3 4 5 6 7 8    k  = 9 
+     int t=  0 ;  
+      while(t<k-2)     
         ch[t]=ch[++t];
 
         ch[k-3] = temp;
