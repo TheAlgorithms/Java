@@ -1,4 +1,4 @@
-package Maths;
+import java.util.*;
 
 public class BinaryPow {
   /**
