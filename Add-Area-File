@@ -1,0 +1,56 @@
+// Computes the areas of the shapes below with a random integer from 1 through 100
+import java.util.Random;
+public class Area
+{
+    public static void main(String[] args)
+    {
+        int radius, base1, base2, base, height, length, width, edge;
+        double area;
+        Random generator = new Random();
+
+        // Cube Area
+        edge = generator.nextInt(100)+1;
+        area = 6*Math.pow(edge,2);
+        System.out.println("Cube area: " + area + " edge value: " + edge);
+
+        // Sphere Area
+        radius= generator.nextInt(100)+1;
+        area = 4*Math.PI*Math.pow(radius,2);
+        System.out.println("Sphere area: " + area + " radius value: " + radius);
+
+        // Rectangle Area
+        length = generator.nextInt(100)+1;
+        width=generator.nextInt(100)+1;
+        area= length*width;
+        System.out.println("Rectangle area: " + area + " length and width values respectively: " + length + "," + width);
+
+        // Square Area
+        length=generator.nextInt(100)+1;
+        area=Math.pow(length,2);
+        System.out.println("Square area: " + area + " length value: " + length);
+
+        // Triangle Area
+        base=generator.nextInt(100)+1;
+        height=generator.nextInt(100)+1;
+        area=.5*base*height;
+        System.out.println("Triangle area: " + area + " base and height values respectively: " + base + "," + height);
+
+        // Parallelogram Area
+        base=generator.nextInt(100)+1;
+        height=generator.nextInt(100)+1;
+        area=base*height;
+        System.out.println("Parallelogram area: " + area + " base and height values respectively: " + base + "," + height);
+
+        // Trapezium Area
+        base1=generator.nextInt(100)+1;
+        base2=generator.nextInt(100)+1;
+        height=generator.nextInt(100)+1;
+        area=((base1+base2)/2)*height;
+        System.out.println("Trapezium area: " + area + " base1, base2, and height values respectively: " + base1 + "," + base2 + "," + height);
+
+        // Circle Area
+        radius=generator.nextInt(100)+1;
+        area=Math.PI*Math.pow(radius,2);
+        System.out.println("Circle area: " + area + " radius value: " + radius);
+    }
+}
