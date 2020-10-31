@@ -3,6 +3,7 @@ package Maths;
 import java.util.Arrays;
 
 /**
+  * @author Jessica Chen (https://github.com/jessicachen011) -
   * description:
   *
   * <p> getVariance([3, 4, 4, 5, 6, 8]) = 14, 
