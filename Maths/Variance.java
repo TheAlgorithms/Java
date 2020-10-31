@@ -2,6 +2,12 @@ package Maths;
 
 import java.util.Arrays;
 
+/**
+  * description:
+  *
+  * <p> getVariance([3, 4, 4, 5, 6, 8]) = 14, 
+  * getVariance([1, 2, 4, 5, 7, 11]) = 
+  */
 public class Variance {
 
    public static void main(String[] args) {
@@ -13,6 +19,12 @@ public class Variance {
                          " is = " + getVariance(numbers));
    }
    
+   /**
+     * get the values, return the variance value
+     *
+     * @param numbers contains elements
+     * @return the variance value
+     */
    public static double getVariance(int[] numbers) {
       //Compute sum
       double sum = 0;
