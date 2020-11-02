@@ -2,7 +2,7 @@ package DataStructures.Stacks;
 
 import java.util.Stack;
 
-public class       InfixToPostfix {
+public class InfixToPostfix {
   public static void main(String[] args) throws Exception {
     assert "32+".equals(infix2PostFix("3+2"));
     assert "123++".equals(infix2PostFix("1+(2+3)"));
