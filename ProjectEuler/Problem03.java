@@ -37,7 +37,3 @@ public class Problem03{
     }
 }
 
-/**
- * Liked it do visit: 
- *           https://github.com/OBrutus/
- */
