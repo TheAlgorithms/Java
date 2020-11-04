@@ -2,7 +2,7 @@ package strings;
 
 import java.util.*;
 
-public class longestPalindromicSubstringManacher {
+public class LongestPalindromicSubstringManacher {
 
   // Finds the longest palindromic substring in a string s in O(n) time using Manacher's algorithm.
   // An explanation of Manacher's algorithm can be found here :
