@@ -14,7 +14,7 @@ class ParenthesisString {
   }
 }
 
-public class generateBalancedParenthesis {
+public class GenerateBalancedParenthesis {
 
   /**
    * Follows a BFS-based approach to generate all combinations of balanced paranthesis with 'A'
