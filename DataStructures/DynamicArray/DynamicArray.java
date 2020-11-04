@@ -40,7 +40,7 @@ public class DynamicArray<E> implements Iterable<E> {
    * @return int the new capacity of the array
    */
   public int newCapacity() {
-    this.capacity *= 1.5;
+    this.capacity *= 1.8;
     // changed from this.capacity <<= 1; now much easier to understand
     return this.capacity;
   }
