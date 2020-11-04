@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class wordBoggle {
+public class WordBoggle {
 
     /**
      * O(nm * 8^s + ws) time where n=width of boggle board, m=height of boggle board, s=length of
