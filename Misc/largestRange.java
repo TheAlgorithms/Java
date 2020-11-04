@@ -1,4 +1,5 @@
 package Misc;
+
 import java.util.*;
 public class largestRange
 {
