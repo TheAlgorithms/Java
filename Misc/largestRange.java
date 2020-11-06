@@ -39,7 +39,7 @@ public class largestRange {
     assert longestRange(new int[] {1, 2, 3, 4, -1, 11, 10}) == 4;
     // The longest consecutive number range is of length 4 i.e. {1, 2, 3, 4}
     assert longestRange(new int[] {-1, 1, 3, 5, 7}) == 1;
-    // The longest consecutive number range is of length 1 i.e. any of the element alone
+    // The longest consecutive number range is of length 1 i.e. any of the elements alone
     assert longestRange(new int[] {0, 1, 2, 3, 4, 7, 6, 5}) == 8;
     // The longest consecutive number range is of length 8 i.e. {0, 1, 2, 3, 4, 5, 6, 7}
   }
