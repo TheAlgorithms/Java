@@ -7,8 +7,8 @@ public class ReverseWords {
    * @param s the string to convert
    * @return the {@code String}, converted to a string with reveresed words.
    */
-  
-  public static String returnReverseWords(String s) {
+
+  public String returnReverseWords(String s) {
     StringBuilder sb = new StringBuilder();
     StringBuilder word = new StringBuilder();
 
