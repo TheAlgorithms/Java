@@ -28,6 +28,7 @@ public class BinaryPow {
    */
   public static void test(int a, int p) { 
     int res = binPow(a, p);
+    assert res == (int) Math.pow(a, p) : "Incorrect Implementation";
     System.out.println(a + "^" + p + ": " + res);
   }
 
