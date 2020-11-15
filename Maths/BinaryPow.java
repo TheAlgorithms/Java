@@ -9,7 +9,7 @@ public class BinaryPow {
    * @param p the exponent - must be greater than 0
    * @return a^p
    */
-  public static int BinPow(int a, int p) {
+  public static int binPow(int a, int p) {
     int res = 1;
     while (p > 0) {
       if ((p & 1) == 1) {
@@ -21,11 +21,25 @@ public class BinaryPow {
     return res;
   }
 
-  /** Test Functions */
-  public static void main(String[] args) {
-    int a = 2;
-    int p = 15;
-    int res = BinPow(a, p);
+  /** 
+   * Function for testing binary exponentiation
+   * @param a the base 
+   * @param p the exponent
+   */
+  public static void test(int a, int p) { 
+    int res = binPow(a, p);
     System.out.println(a + "^" + p + ": " + res);
+  }
+
+  /** Main Function to call tests
+   * 
+   * @param args System Line Arguments
+   */
+  public static void main(String[] args) {
+    // prints 2^15: 32768
+    test(2, 15); 
+
+    // prints 3^9: 19683
+    test(3,9);
   }
 }
