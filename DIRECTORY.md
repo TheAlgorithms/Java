@@ -126,6 +126,7 @@
   * [Area](https://github.com/TheAlgorithms/Java/blob/master/Maths/Area.java)
   * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Maths/Armstrong.java)
   * [Average](https://github.com/TheAlgorithms/Java/blob/master/Maths/Average.java)
+  * [BinaryPow](https://github.com/TheAlgorithms/Java/blob/master/Maths/BinaryPow.java)
   * [Ceil](https://github.com/TheAlgorithms/Java/blob/master/Maths/Ceil.java)
   * [Combinations](https://github.com/TheAlgorithms/Java/blob/master/Maths/Combinations.java)
   * [Factorial](https://github.com/TheAlgorithms/Java/blob/master/Maths/Factorial.java)
