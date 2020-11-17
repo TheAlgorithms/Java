@@ -71,7 +71,7 @@ public class Interleave {
     }
 
     @Test
-    public void testInterleaveSpaces() {
+    public void testInterleaveSpaces() {     // This string interleave algorithm defines a space as a valid character.
         String string1 = " ";
         String string2 = "a";
         String string3 = "5 g";
