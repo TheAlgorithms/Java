@@ -1,4 +1,4 @@
-package strings;
+package com.strings;
 
 public class ReverseWords {
   /**
