@@ -95,6 +95,8 @@ public class Interleave {
      * For example, if string1 = "abc" and string2 = "def", then the result would be "adbecf", as the first character
      * of the string1 is 'a', then the first character of string2 is 'd', and so forth.
      *
+     * For more information on interleaving, check out: https://en.wikipedia.org/wiki/Interleave_sequence
+     *
      * @param string1
      * @param string2
      * @return string resulting from the interweaving of the two input strings; string1 and string2.
