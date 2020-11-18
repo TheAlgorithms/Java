@@ -8,10 +8,13 @@ import static Sorts.SortUtils.*;
  * @see SortAlgorithm
  */
 class BubbleSort implements SortAlgorithm {
+
   /**
-   * This method implements the Generic Bubble Sort
+   * Implements generic bubble sort algorithm.
    *
-   * @param array The array to be sorted Sorts the array in ascending order
+   * @param array the array to be sorted.
+   * @param <T> the type of elements in the array.
+   * @return the sorted array.
    */
   @Override
   public <T extends Comparable<T>> T[] sort(T[] array) {
@@ -30,20 +33,23 @@ class BubbleSort implements SortAlgorithm {
     return array;
   }
 
-  // Driver Program
+  /** Driver Code */
   public static void main(String[] args) {
 
-    // Integer Input
     Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
     BubbleSort bubbleSort = new BubbleSort();
     bubbleSort.sort(integers);
 
-    // Output => 1, 4, 6, 9, 12, 23, 54, 78, 231
-    print(integers);
+    for (int i = 0; i < integers.length - 1; ++i) {
+      assert integers[i] <= integers[i + 1];
+    }
+    print(integers); /* output: [1, 4, 6, 9, 12, 23, 54, 78, 231] */
 
-    // String Input
     String[] strings = {"c", "a", "e", "b", "d"};
-    // Output => a, b, c, d, e
-    print(bubbleSort.sort(strings));
+    bubbleSort.sort(strings);
+    for (int i = 0; i < strings.length - 1; i++) {
+      assert strings[i].compareTo(strings[i + 1]) <= 0;
+    }
+    print(bubbleSort.sort(strings)); /* output: [a, b, c, d, e] */
   }
 }
