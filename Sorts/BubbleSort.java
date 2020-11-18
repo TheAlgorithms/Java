@@ -33,9 +33,7 @@ class BubbleSort implements SortAlgorithm {
     return array;
   }
 
-  /**
-   * Driver Code
-   */
+  /** Driver Code */
   public static void main(String[] args) {
 
     Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
