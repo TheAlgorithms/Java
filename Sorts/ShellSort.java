@@ -5,9 +5,11 @@ import static Sorts.SortUtils.*;
 public class ShellSort implements SortAlgorithm {
 
   /**
-   * This method implements Generic Shell Sort.
+   * Implements generic shell sort.
    *
-   * @param array the array to be sorted
+   * @param array the array to be sorted.
+   * @param <T> the type of elements in the array.
+   * @return the sorted array.
    */
   @Override
   public <T extends Comparable<T>> T[] sort(T[] array) {
@@ -37,6 +39,10 @@ public class ShellSort implements SortAlgorithm {
     Integer[] toSort = {4, 23, 6, 78, 1, 54, 231, 9, 12};
 
     ShellSort sort = new ShellSort();
-    print(sort.sort(toSort));
+    sort.sort(toSort);
+    for (int i = 0; i < toSort.length - 1; ++i) {
+      assert toSort[i] <= toSort[i + 1];
+    }
+    print(toSort);
   }
 }
