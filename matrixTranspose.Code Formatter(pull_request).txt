@@ -1,0 +1,8 @@
+ java -jar formatter.jar --replace --set-exit-if-changed $(find . -type f -name "*.java")
+  shell: /bin/bash -e {0}
+  env:
+    pythonLocation: /opt/hostedtoolcache/Python/3.9.0/x64
+    LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.0/x64/lib
+    JAVA_HOME_12.0.2_x64: /opt/hostedtoolcache/jdk/12.0.2/x64
+    JAVA_HOME: /opt/hostedtoolcache/jdk/12.0.2/x64
+    JAVA_HOME_12_0_2_X64: /opt/hostedtoolcache/jdk/12.0.2/x64
