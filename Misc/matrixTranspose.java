@@ -1,6 +1,10 @@
 package Misc;
 import java.util.*;
 public class matrixTranspose {
+
+	
+/** @author RajatJain */
+// It takes input from user and transpoase the matrix
 	public static void main(String[] args) {
 		int a[][]=new int[3][3];
 		Scanner sc=new Scanner(System.in);

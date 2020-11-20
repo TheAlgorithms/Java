@@ -36,3 +36,10 @@ gradle.properties
 .vscode
 
 *.log
+
+/.metadata/
+/.metadata/
+*.classpath
+*.project
+.settings/*
+*.class
