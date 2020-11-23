@@ -14,7 +14,7 @@ public class StrandSort<T> {
      * check out this Wikipedia article: https://en.wikipedia.org/wiki/Strand_sort
      *
      * @param unsorted
-     * @return final sorted list after the completion of the algorithm
+     * @return final sorted list after the completion of the strand sort algorithm
      */
     public <T extends Comparable<T>> List<T> strandSort(List<T> unsorted) {
         List<T> subList = new ArrayList<>();
