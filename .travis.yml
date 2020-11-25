@@ -1,8 +1,9 @@
+os: linux
+dist: focal
 language: java
 script:
   - find . -type f -name "*.java" > sources.txt
-  - javac @sources.txt
-  
+  - javac -Xlint:deprecation -Xlint:unchecked @sources.txt
 notifications:
     webhooks: https://www.travisbuddy.com/
     on_success: never
