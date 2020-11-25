@@ -190,6 +190,9 @@
   * [QueueUsingTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/Others/QueueUsingTwoStacks.java)
   * [RabinKarp](https://github.com/TheAlgorithms/Java/blob/master/Others/RabinKarp.java)
   * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/Others/RemoveDuplicateFromString.java)
+  * RestrictedTowerOfHanoi
+    * Main
+      * [Hanoi](https://github.com/TheAlgorithms/Java/blob/master/Others/RestrictedTowerOfHanoi/Main/Hanoi.java)
   * [ReturnSubsequence](https://github.com/TheAlgorithms/Java/blob/master/Others/ReturnSubsequence.java)
   * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/Others/ReverseStackUsingRecursion.java)
   * [RootPrecision](https://github.com/TheAlgorithms/Java/blob/master/Others/RootPrecision.java)
