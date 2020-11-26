@@ -1,4 +1,5 @@
-import java.util.*;	
+import java.util.*;
+import java.lang.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
