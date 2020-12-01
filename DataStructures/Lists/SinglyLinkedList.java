@@ -1,14 +1,8 @@
 package DataStructures.Lists;
 
-/**
- * This class implements a SinglyLinked List. This is done using SinglyLinkedList class and a
- * LinkForLinkedList Class.
- *
- * <p>A linked list is similar to an array, it hold values. However, links in a linked list do not
- * have indexes. With a linked list you do not need to predetermine it's size as it grows and
- * shrinks as it is edited. This is an example of a singly linked list. Elements can only be
- * added/removed at the head/front of the list.
- */
+import java.util.StringJoiner;
+
+/** https://en.wikipedia.org/wiki/Linked_list */
 public class SinglyLinkedList {
   /** Head refer to the front of the list */
   private Node head;
@@ -213,16 +207,13 @@ public class SinglyLinkedList {
 
   @Override
   public String toString() {
-    if (size == 0) {
-      return "";
-    }
-    StringBuilder builder = new StringBuilder();
+    StringJoiner joiner = new StringJoiner("->");
     Node cur = head;
     while (cur != null) {
-      builder.append(cur.value).append("->");
+      joiner.add(cur.value + "");
       cur = cur.next;
     }
-    return builder.replace(builder.length() - 2, builder.length(), "").toString();
+    return joiner.toString();
   }
 
   /** Driver Code */
