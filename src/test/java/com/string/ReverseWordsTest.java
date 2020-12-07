@@ -3,7 +3,7 @@ package com.string;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ReveresWordsTest {
+class ReverseWordsTest {
 
     @Test
     void testReverseWords() {
