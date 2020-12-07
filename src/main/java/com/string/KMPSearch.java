@@ -1,12 +1,11 @@
 package com.string;
 
-
 public class KMPSearch {
 
     /**
      * isSubstring method finds the first occurrence of pattern in text string
      *
-     * @param  text original string
+     * @param text    original string
      * @param pattern string to be searched for in the text
      * @return returns the starting index for the first occurrence of pattern in text, if found, else -1
      */
