@@ -9,7 +9,7 @@ class UpperTest extends Upper {
     void testUpper() {
         Assertions.assertEquals(toUpperCase("abc"), ("abc").toUpperCase(), "The strings are equals");
         //Assertions fail for functional reasons
-        Assertions.assertEquals(toUpperCase("abc"), "abc", "The strings are not equals");
+        Assertions.assertNotEquals(toUpperCase("abc"), "abc", "The strings are not equals");
     }
 
 }
