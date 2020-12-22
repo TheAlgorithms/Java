@@ -16,19 +16,18 @@ import java.util.Queue;
  */
 
 /**
- * References - 1.
- * https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html
+ * References - 1. https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html
  * 2. https://leetcode.com/problems/implement-stack-using-queues/solution/
  */
 public class StackUsingQueue {
 
-    // Queue that will keep track of elements inserted and removed
-    private Queue<Integer> queue;
+  // Queue that will keep track of elements inserted and removed
+  private Queue<Integer> queue;
 
-    // Init Queue
-    public StackUsingQueue() {
-        queue = new LinkedList<>();
-    }
+  // Init Queue
+  public StackUsingQueue() {
+    queue = new LinkedList<>();
+  }
 
   /**
    * Inserts an item onto the top of the stack.
@@ -44,50 +43,49 @@ public class StackUsingQueue {
     }
   }
 
-    /**
-     * Removes the item at the top of the stack and returns that item as the value
-     * of this function.
-     *
-     * @return The item at the top of the stack
-     * @throws EmptyStackException - If stack is empty
-     */
-    public int pop() {
-        if (!queue.isEmpty()) {
-            return queue.remove();
-        }
-        throw new EmptyStackException();
+  /**
+   * Removes the item at the top of the stack and returns that item as the value of this function.
+   *
+   * @return The item at the top of the stack
+   * @throws EmptyStackException - If stack is empty
+   */
+  public int pop() {
+    if (!queue.isEmpty()) {
+      return queue.remove();
     }
+    throw new EmptyStackException();
+  }
 
-    /**
-     * Looks at the item at the top of the stack without removing it from the stack.
-     *
-     * @return The item at the top of the stack
-     * @throws EmptyStackException - If stack is empty
-     */
-    public int peek() {
-        if (!queue.isEmpty()) {
-            return queue.peek();
-        }
-        throw new EmptyStackException();
+  /**
+   * Looks at the item at the top of the stack without removing it from the stack.
+   *
+   * @return The item at the top of the stack
+   * @throws EmptyStackException - If stack is empty
+   */
+  public int peek() {
+    if (!queue.isEmpty()) {
+      return queue.peek();
     }
+    throw new EmptyStackException();
+  }
 
-    /**
-     * Tests if this stack is empty.
-     *
-     * @return true if and only if this stack contains no items; false otherwise
-     */
-    public boolean empty() {
-        return queue.isEmpty();
-    }
+  /**
+   * Tests if this stack is empty.
+   *
+   * @return true if and only if this stack contains no items; false otherwise
+   */
+  public boolean empty() {
+    return queue.isEmpty();
+  }
 
-    /**
-     * Returns the number of items in the stack.
-     *
-     * @return The number of items in the stack
-     */
-    public int size() {
-        return queue.size();
-    }
+  /**
+   * Returns the number of items in the stack.
+   *
+   * @return The number of items in the stack
+   */
+  public int size() {
+    return queue.size();
+  }
 
   /**
    * Main method.
