@@ -30,7 +30,6 @@ public class StackUsingQueue {
   }
 
   /**
-   *
    * Inserts an item onto the top of the stack.
    *
    * @param item - The item to be added onto top of the stack
@@ -94,16 +93,21 @@ public class StackUsingQueue {
    * @param args Command line arguments
    */
   public static void main(String[] args) {
-    int one = 1;
-    int two = 2;
-    int three = 3;
+    int value = 1;
     StackUsingQueue myStack = new StackUsingQueue();
-    myStack.push(one);
-    myStack.push(two);
-    myStack.push(three);
-    assert myStack.peek() == three;
-    assert myStack.pop() == three;
-    assert myStack.pop() == two;
+    value++;
+    myStack.push(value);
+    value++;
+    myStack.push(value);
+    value++;
+    myStack.push(value);
+    assert myStack.peek() == value;
+    int pop = myStack.pop();
+    value--;
+    assert pop == value;
+    pop = myStack.pop();
+    value--;
+    assert pop == value;
     assert !myStack.empty();
     assert myStack.size() == 1;
   }
