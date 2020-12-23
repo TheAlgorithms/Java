@@ -1,5 +1,7 @@
 package DynamicProgramming;
 
+import org.junit.Test;
+
 /*
  Given the following grid with length m and width n:
  \---\---\---\ (n)
@@ -11,6 +13,8 @@ package DynamicProgramming;
  \---\---\---\
  (m)
  Find the path where its sum is the smallest.
+
+ All numbers given are positive.
  The Time Complexity of your algorithm should be smaller than or equal to O(mn).
  The Space Complexity of your algorithm should be smaller than or equal to O(mn).
  You can only move from the top left corner to the down right corner.
@@ -20,23 +24,43 @@ package DynamicProgramming;
  INPUT: grid = [[1,3,1],[1,5,1],[4,2,1]]
  OUTPUT: 7
  EXPLANATIONS: 1 + 3 + 1 + 1 + 1 = 7
+
+ For more information see https://www.geeksforgeeks.org/maximum-path-sum-matrix/
  */
 public class MinimumPathSum {
-    public static void main(String[] args) {
+
+    @Test
+    public void testRegular() {
         int[][] grid = {
                 {1, 3, 1},
                 {1, 5, 1},
                 {4, 2, 1}
         };
-//        int[][] grid2 = {
-//                {1, 2},
-//                {5, 6},
-//                {1, 1}
-//        };
-//        int [][] grid3 = {
-//                {2, 3, 3},
-//                {7, 2, 1}
-//        };
+        System.out.println(minimumPathSum(grid));
+    }
+
+    @Test
+    public void testLessColumns() {
+        int[][] grid = {
+                {1, 2},
+                {5, 6},
+                {1, 1}
+        };
+        System.out.println(minimumPathSum(grid));
+    }
+
+    @Test
+    public void testLessRows() {
+        int [][] grid = {
+                {2, 3, 3},
+                {7, 2, 1}
+        };
+        System.out.println(minimumPathSum(grid));
+    }
+
+    @Test
+    public void testOneRowOneColumn() {
+        int[][] grid = {{2}};
         System.out.println(minimumPathSum(grid));
     }
 
