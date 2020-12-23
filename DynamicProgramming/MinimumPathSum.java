@@ -1,7 +1,5 @@
 package DynamicProgramming;
 
-import org.junit.Test;
-
 /*
  Given the following grid with length m and width n:
  \---\---\---\ (n)
@@ -29,7 +27,6 @@ import org.junit.Test;
  */
 public class MinimumPathSum {
 
-    @Test
     public void testRegular() {
         int[][] grid = {
                 {1, 3, 1},
@@ -39,7 +36,6 @@ public class MinimumPathSum {
         System.out.println(minimumPathSum(grid));
     }
 
-    @Test
     public void testLessColumns() {
         int[][] grid = {
                 {1, 2},
@@ -49,7 +45,6 @@ public class MinimumPathSum {
         System.out.println(minimumPathSum(grid));
     }
 
-    @Test
     public void testLessRows() {
         int [][] grid = {
                 {2, 3, 3},
@@ -58,7 +53,6 @@ public class MinimumPathSum {
         System.out.println(minimumPathSum(grid));
     }
 
-    @Test
     public void testOneRowOneColumn() {
         int[][] grid = {{2}};
         System.out.println(minimumPathSum(grid));
