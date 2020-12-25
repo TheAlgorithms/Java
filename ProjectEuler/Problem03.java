@@ -29,7 +29,7 @@ public class Problem03 {
      * @return the maximum prime factor of the given number
      */
     static long maxPrimeFactor(long n) {
-        for (int i = 2; i < n/2; i++) {
+        for (int i = 2; i < n / 2; i++) {
             if (isPrime(i))
                 while (n % i == 0) {
                     n /= i;
