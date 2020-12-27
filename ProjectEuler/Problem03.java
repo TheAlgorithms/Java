@@ -8,15 +8,24 @@ package ProjectEuler;
  * <p>Link: https://projecteuler.net/problem=3
  */
 public class Problem03 {
+
   /**
-   * Check if a given number is prime
+   * Checks if a number is prime or not
    *
-   * @param n integer number
-   * @return true if n is prime, false otherwise
+   * @param n the number
+   * @return {@code true} if {@code n} is prime
    */
-  static boolean isPrime(int n) {
-    for (int i = 2; i <= Math.sqrt(n); i++) {
-      if (n % i == 0) return false;
+  public static boolean isPrime(int n) {
+    if (n == 2) {
+      return true;
+    }
+    if (n < 2 || n % 2 == 0) {
+      return false;
+    }
+    for (int i = 3, limit = (int) Math.sqrt(n); i <= limit; i += 2) {
+      if (n % i == 0) {
+        return false;
+      }
     }
     return true;
   }
@@ -38,7 +47,6 @@ public class Problem03 {
   }
 
   public static void main(String[] args) {
-    long c = 600851475143L;
     int[][] testNumbers = {
       {87, 29},
       {10, 5},
@@ -49,6 +57,6 @@ public class Problem03 {
     for (int[] num : testNumbers) {
       assert Problem03.maxPrimeFactor(num[0]) == num[1];
     }
-    assert Problem03.maxPrimeFactor(c) == 6857;
+    assert Problem03.maxPrimeFactor(600851475143L) == 6857;
   }
 }
