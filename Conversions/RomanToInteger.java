@@ -19,6 +19,22 @@ public class RomanToInteger {
           put('M', 1000);
         }
       };
+  
+  private static Map<String, Integer> mapException = 
+    new HashMap<String, Integer>() {
+		  /** */
+		  private static final long serialVersionUID = 87605733047260530L;
+
+		  {
+			  put("IV", 4);
+			  put("IX", 9);
+			  put("XL", 40);
+			  put("XC", 90);
+			  put("CD", 400);
+			  put("CM", 500);
+		  }
+	  };
+  
   // Roman Number = Roman Numerals
 
   /**
@@ -30,6 +46,17 @@ public class RomanToInteger {
   public static int romanToInt(String A) {
 
     A = A.toUpperCase();
+    
+    for (int i = 1; i < A.length(); i++) {
+			if (map.get(A.charAt(i)) > map.get(A.charAt(i - 1))) {
+				if(mapException.containsKey(new String(new char[] { A.charAt(i-1), A.charAt(i) }))) {
+					i++;
+				} else {
+					return -1;
+				}
+			}
+		}
+    
     char prev = ' ';
 
     int sum = 0;
@@ -61,6 +88,9 @@ public class RomanToInteger {
 
   public static void main(String[] args) {
     int sum = romanToInt("MDCCCIV");
-    System.out.println(sum);
+    if(sum==-1)
+    	System.out.println("Invalid Input");
+    else
+      System.out.println(sum);
   }
 }
