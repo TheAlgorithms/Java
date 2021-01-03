@@ -65,7 +65,11 @@ public class RomanToInteger {
   }
 
   public static void main(String[] args) {
-    int sum = romanToInt("IC");
+    int sum = romanToInt("XCIX"); // Valid Input 
     System.out.println((sum>=0)?sum:"Invalid Input");
+    sum = romanToInt("IC"); // Invalid Input.
+
+    System.out.println((sum>=0)?sum:"Invalid Input");
+    
   }
 }
