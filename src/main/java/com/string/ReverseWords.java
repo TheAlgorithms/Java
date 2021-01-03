@@ -1,4 +1,4 @@
-package com.strings;
+package com.string;
 
 public class ReverseWords {
   /**
@@ -8,7 +8,7 @@ public class ReverseWords {
    * @return the {@code String}, converted to a string with reveresed words.
    */
 
-  public String returnReverseWords(String s) {
+  public static String returnReverseWords(String s) {
     StringBuilder sb = new StringBuilder();
     StringBuilder word = new StringBuilder();
 
