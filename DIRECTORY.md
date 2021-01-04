@@ -113,6 +113,7 @@
   * [LongestPalindromicSubsequence](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestPalindromicSubsequence.java)
   * [LongestValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/LongestValidParentheses.java)
   * [MatrixChainMultiplication](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MatrixChainMultiplication.java)
+  * [MinimumPathSum](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MinimumPathSum.java)
   * [MinimumSumPartition](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/MinimumSumPartition.java)
   * [RodCutting](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/RodCutting.java)
   * [SubsetSum](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/SubsetSum.java)
