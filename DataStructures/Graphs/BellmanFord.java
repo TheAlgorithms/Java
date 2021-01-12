@@ -87,7 +87,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
         System.out.println("Negative cycle");
         break;
       }
-    if (neg == 0) // Go ahead and show results of computaion
+    if (neg == 0) // Go ahead and show results of computation
     {
       System.out.println("Distances are: ");
       for (i = 0; i < v; i++) System.out.println(i + " " + dist[i]);
