@@ -167,6 +167,8 @@
 ## Misc
   * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/MedianOfRunningArray.java)
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
+  * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/RangeInSortedArray.java)
+  * [WordBoggle](https://github.com/TheAlgorithms/Java/blob/master/Misc/WordBoggle.java)
 
 ## Others
   * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
