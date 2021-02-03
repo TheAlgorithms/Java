@@ -48,7 +48,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
 
   public void
       go() // Interactive run for understanding the class first time. Assumes source vertex is 0 and
-        // shows distaance to all vertices
+        // shows distance to all vertices
       {
     Scanner sc = new Scanner(System.in); // Grab scanner object for user input
     int i, v, e, u, ve, w, j, neg = 0;
