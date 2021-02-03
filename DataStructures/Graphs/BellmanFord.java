@@ -150,7 +150,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
    * @param y End vertex
    * @param z Weight
    */
-  public void addEdge(int x, int y, int z) // Adds unidirectionl Edge
+  public void addEdge(int x, int y, int z) // Adds unidirectional edge
       {
     edges[index++] = new Edge(x, y, z);
   }
