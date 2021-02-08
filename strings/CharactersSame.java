@@ -21,5 +21,4 @@ public class CharactersSame {
             chars().
             allMatch(currentChar -> currentChar == s.charAt(0));
   }
-
 }
