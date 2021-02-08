@@ -17,11 +17,9 @@ public class CharactersSame {
    * @return {@code true} if all characters of a string are same, otherwise {@code false}
    */
   public static boolean isAllCharactersSame(String s) {
-    for (int i = 1, length = s.length(); i < length; ++i) {
-      if (s.charAt(i) != s.charAt(0)) {
-        return false;
-      }
-    }
-    return true;
+    return s.
+            chars().
+            allMatch(currentChar -> currentChar == s.charAt(0));
   }
+
 }
