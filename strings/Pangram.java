@@ -1,5 +1,8 @@
 package strings;
 
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 /** Wikipedia: https://en.wikipedia.org/wiki/Pangram */
 public class Pangram {
 
@@ -17,19 +20,24 @@ public class Pangram {
    */
   public static boolean isPangram(String s) {
     boolean[] marked = new boolean[26]; /* by default all letters don't exists */
-    char[] values = s.toCharArray();
-    for (char value : values) {
-      if (Character.isLetter(value)) {
-        int index = Character.isUpperCase(value) ? value - 'A' : value - 'a';
-        marked[index] = true; /* mark current character exists */
-      }
-    }
 
-    for (boolean b : marked) {
-      if (!b) {
-        return false;
-      }
-    }
+    char[] values = s.toCharArray();
+
+    getStreamOfCharArray(values).
+            filter(Character::isLetter).
+            map(c -> Character.isUpperCase(c) ? c - 'A' : c - 'a').
+            forEach(index -> marked[index] = true);
+
+    return areAllTrue(marked);
+  }
+  private static Stream<Character> getStreamOfCharArray(char[] values) {
+    return IntStream.
+            range(0, values.length).
+            mapToObj(i -> values[i]);
+  }
+  public static boolean areAllTrue(boolean[] array)
+  {
+    for(boolean b : array) if(!b) return false;
     return true;
   }
 }
