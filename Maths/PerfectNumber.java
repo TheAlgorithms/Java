@@ -1,32 +1,24 @@
-package Maths;
+/*A number is a perfect number if is equal to sum of its proper divisors, that is, sum of its positive divisors excluding the number itself.
+  example- 6 is a perfect number as sum of its factors i.e 1+2+3=6 i.e the number itself */
 
-/**
- * In number theory, a perfect number is a positive integer that is equal to the sum of its positive
- * divisors, excluding the number itself. For instance, 6 has divisors 1, 2 and 3 (excluding
- * itself), and 1 + 2 + 3 = 6, so 6 is a perfect number.
- *
- * <p>link:https://en.wikipedia.org/wiki/Perfect_number
- */
-public class PerfectNumber {
-  public static void main(String[] args) {
-    assert isPerfectNumber(6); /* 1 + 2 + 3 == 6 */
-    assert !isPerfectNumber(8); /* 1 + 2 + 4 != 8 */
-    assert isPerfectNumber(28); /* 1 + 2 + 4 + 7 + 14 == 28 */
-  }
+import java.util.Scanner;
 
-  /**
-   * Check if {@code number} is perfect number or not
-   *
-   * @param number the number
-   * @return {@code true} if {@code number} is perfect number, otherwise false
-   */
-  public static boolean isPerfectNumber(int number) {
-    int sum = 0; /* sum of its positive divisors */
-    for (int i = 1; i < number; ++i) {
-      if (number % i == 0) {
-        sum += i;
-      }
+public class PerfectNumber
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int Number,Sum=0,i;
+        System.out.println("Enter a number to check if it is perfect number or not : ");
+        Number=sc.nextInt();
+        for(i = 1 ; i < Number ; i++)            //used to sum the factors excluding itself.
+        {
+            if(Number % i == 0)
+                Sum = Sum + i ;
+        }
+        if(Sum == Number)
+            System.out.println(Number+" is a Perfect Number.") ;
+        else
+            System.out.println(Number+" is not the Perfect Number.") ;
     }
-    return sum == number;
-  }
 }
