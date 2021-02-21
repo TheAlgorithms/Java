@@ -1,6 +1,7 @@
 package strings;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Two strings are anagrams if they are made of the same letters arranged differently (ignoring the
@@ -21,12 +22,31 @@ public class CheckAnagrams {
    * @return {@code true} if two string are anagrams, otherwise {@code false}
    */
   public static boolean isAnagrams(String s1, String s2) {
+    int l1 = s1.length();
+    int l2 = s2.length();
     s1 = s1.toLowerCase();
     s2 = s2.toLowerCase();
-    char[] values1 = s1.toCharArray();
-    char[] values2 = s2.toCharArray();
-    Arrays.sort(values1);
-    Arrays.sort(values2);
-    return new String(values1).equals(new String(values2));
+    Map<Character, Integer> charAppearances = new HashMap<>();
+
+    for (int i = 0; i < l1; i++) {
+      char c = s1.charAt(i);
+      int numOfAppearances = charAppearances.getOrDefault(c, 0);
+      charAppearances.put(c, numOfAppearances + 1);
+    }
+
+    for (int i = 0; i < l2; i++) {
+      char c = s2.charAt(i);
+      if (!charAppearances.containsKey(c)) {
+        return false;
+      }
+      charAppearances.put(c, charAppearances.get(c) - 1);
+    }
+
+    for (int cnt : charAppearances.values()) {
+      if (cnt != 0) {
+        return false;
+      }
+    }
+    return true;
   }
 }
