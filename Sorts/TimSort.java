@@ -3,16 +3,29 @@ package Sorts;
 import java.lang.Math;
 import java.util.Random;
 
+/**
+ * @author Hemanth Kotagiri (https://github.com/hemanth-kotagiri)
+ * @see SortAlgorithm
+ */
+
+// Tim Sort: https://en.wikipedia.org/wiki/Tim_sort
 class TimSort {
     int array[];
     int array_length;
     int RUN = 32;
+
+    /**
+     * @param array the array given by the user
+    */
 
     public TimSort(int[] array) {
         this.array = array;
         this.array_length = array.length;
     }
 
+    /**
+     * @param array_length the array_length given by the user to generate random array of that length
+    */
     public TimSort(int array_length) {
         Random rand = new Random();
 
@@ -25,10 +38,15 @@ class TimSort {
         }
     }
 
+    /**
+     * @param run change size of the run
+    */
+
     public void change_run(int run) {
         this.RUN = run;
     }
 
+    // Constructor when no argument is given.
     public TimSort() {
         this.array_length = 100;
         this.array = new int[this.array_length];
@@ -40,6 +58,7 @@ class TimSort {
         }
     }
 
+    // Insertion sort algorithm
     public void insertion_sort(int[] array, int start_idx, int end_idx) {
         for (int i = 0; i < array.length; i++) {
             int current_element = array[i];
@@ -92,6 +111,7 @@ class TimSort {
         }
     }
 
+    // Tim Sort Algorithm
     public void algorithm() {
         // Before Sorting
         System.out.println("Before sorting the array: ");
