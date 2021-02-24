@@ -8,11 +8,11 @@
 
 - Please avoid opening issues asking to be "assigned” to a particular algorithm. This merely creates unnecessary noise for maintainers. Instead, please submit your implementation in a pull request and it will be evaluated by project maintainers.
 
-- If you are unable to find an open issue refering to the same problem, depending on the type of issue follow the appropriate steps:
+- If you are unable to find an open issue referring to the same problem, depending on the type of issue follow the appropriate steps:
 
 #### **Do you want to contribute to the documentation?**
 
-- Please read the documentation in here [Contributing to the Documentation]() ,[open a new one issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is approprite.
+- Please read the documentation in here [Contributing to the Documentation]() ,[open a new one issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is appropriate.
 
 #### **Do you want to add a new feature?**
 
@@ -20,7 +20,7 @@
 
 #### **Do you want to fix a bug?**
 
-- [Open a new one issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behaviour that is not occuring.
+- [Open a new one issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behaviour that is not occurring.
 
 #### **Do you have questions about the source code?**
 
