@@ -24,7 +24,7 @@ public class ColorContrastRatio {
 
     if (aColorLuminance > bColorLuminance)
       return (aColorLuminance + 0.05) / (bColorLuminance + 0.05);
-    
+
     return (bColorLuminance + 0.05) / (aColorLuminance + 0.05);
   }
 
