@@ -13,28 +13,6 @@ import java.awt.Color;
 public class ColorContrastRatio {
 
   /**
-   * You can check this example against another open-source implementation available on GitHub.
-   *
-   * @see [Online Contrast Ratio](https://contrast-ratio.com/#rgb%28226%2C%20229%2C%20248-on-rgb%2823%2C%20103%2C%20154%29)
-   * @see [GitHub Repository for Online Contrast Ratio](https://github.com/LeaVerou/contrast-ratio)
-   * @param args
-   */
-  public static void main(String args[]) {
-    final ColorContrastRatio algorithmImpl = new ColorContrastRatio();
-
-    // Relative Luminance: 0.12215748057375966
-    final Color foreground = new Color(23, 103, 154);
-
-    // Relative Luminance: 0.7898468477881603
-    final Color background = new Color(226, 229, 248);
-
-    // Contrast Ratio: 4.878363954846178
-    final double contrastRatio = algorithmImpl.getContrastRatio(foreground, background);
-
-    System.out.println(contrastRatio);
-  }
-
-  /**
    * @brief Calculates the contrast ratio between two given colors.
    *
    * @param a Any color, used to get the red, green, and blue values.
@@ -85,5 +63,41 @@ public class ColorContrastRatio {
    */
   private double getColorSRgb(double color8Bit) {
     return color8Bit / 255.0;
+  }
+
+ /**
+  * You can check these examples against another open-source implementation available on GitHub.
+  *
+  * @see [Online Contrast Ratio](https://contrast-ratio.com/#rgb%28226%2C%20229%2C%20248-on-rgb%2823%2C%20103%2C%20154%29)
+  * @see [GitHub Repository for Online Contrast Ratio](https://github.com/LeaVerou/contrast-ratio)
+  */
+  private static void test() {
+    final ColorContrastRatio algImpl = new ColorContrastRatio();
+
+    final Color black = Color.BLACK;
+    final double blackLuminance = algImpl.getRelativeLuminance(black);
+    assert blackLuminance == 0 : "Test 1 Failed - Incorrect relative luminance.";
+
+    final Color white = Color.WHITE;
+    final double whiteLuminance = algImpl.getRelativeLuminance(white);
+    assert whiteLuminance == 1 : "Test 2 Failed - Incorrect relative luminance.";
+
+    final double highestColorRatio = algImpl.getContrastRatio(black, white);
+    assert highestColorRatio == 21 : "Test 3 Failed - Incorrect contrast ratio.";
+
+    final Color foreground = new Color(23, 103, 154);
+    final double foregroundLuminance = algImpl.getRelativeLuminance(foreground);
+    assert foregroundLuminance == 0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
+
+    final Color background = new Color(226, 229, 248);
+    final double backgroundLuminance = algImpl.getRelativeLuminance(background);
+    assert backgroundLuminance == 0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
+
+    final double contrastRatio = algImpl.getContrastRatio(foreground, background);
+    assert contrastRatio == 4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";
+  }
+
+  public static void main(String args[]) {
+    test();
   }
 }
