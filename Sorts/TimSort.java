@@ -8,14 +8,15 @@ import java.util.Random;
  * @see SortAlgorithm
  */
 
-// Tim Sort: https://en.wikipedia.org/wiki/Tim_sort
+ // Wikipedia: https://en.wikipedia.org/wiki/Tim_sort
 class TimSort {
     int array[];
     int array_length;
     int RUN = 32;
 
     /**
-     * @param array the array given by the user
+     * A constructor which takes in the array specified by the user.
+     * @param array : Array given by the user.
     */
 
     public TimSort(int[] array) {
@@ -24,8 +25,11 @@ class TimSort {
     }
 
     /**
-     * @param array_length the array_length given by the user to generate random array of that length
-    */
+     * A constructor which takes in an array length and randomly initializes an
+     * array.
+     * @param array_length length given by the 
+     */
+
     public TimSort(int array_length) {
         Random rand = new Random();
 
@@ -38,15 +42,20 @@ class TimSort {
         }
     }
 
-    /**
-     * @param run change size of the run
+    /** A method to change the size of the run.
+     * @param run : Value specified by the user to change the run.
     */
 
     public void change_run(int run) {
         this.RUN = run;
     }
 
-    // Constructor when no argument is given.
+    /**
+     * A default constructor when no parameters are given.
+     * Initializes the array length to be 100.
+     * Generates a random number array of size 100.
+     */
+
     public TimSort() {
         this.array_length = 100;
         this.array = new int[this.array_length];
@@ -58,7 +67,15 @@ class TimSort {
         }
     }
 
-    // Insertion sort algorithm
+    /**
+     * Performs Insertion Sort Algorithm on given array with bounded indices.
+     * @param array : The array on which the algorithm is to be performed.
+     * @param start_idx : The starting index from which the algorithm is to be
+     * performed.
+     * @param end_idx : The ending index at which the algorithm needs to stop
+     * sorting.
+     */
+
     public void insertion_sort(int[] array, int start_idx, int end_idx) {
         for (int i = 0; i < array.length; i++) {
             int current_element = array[i];
@@ -70,6 +87,14 @@ class TimSort {
             array[j + 1] = current_element;
         }
     }
+
+    /**
+     * A method to merge two runs(chunks of array).
+     * @param array : The origin array which is to be sorted.
+     * @param start : Starting index of the first run(chunk).
+     * @param mid : The ending index of the first run(chunk).
+     * @param end : Ending index of the second run(chunk).
+     */
 
     public void merge_runs(int array[], int start, int mid, int end) {
 
@@ -111,7 +136,10 @@ class TimSort {
         }
     }
 
-    // Tim Sort Algorithm
+    /**
+     * Tim Sort Algorithm method.
+     */
+
     public void algorithm() {
         // Before Sorting
         System.out.println("Before sorting the array: ");
@@ -135,6 +163,10 @@ class TimSort {
         this.showArrayElements();
         System.out.println();
     }
+
+    /**
+     * A method to show the elements inside the array.
+     */
 
     public void showArrayElements() {
         for (int i = 0; i < this.array.length; i++) {
