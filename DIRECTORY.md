@@ -129,9 +129,14 @@
   * [Average](https://github.com/TheAlgorithms/Java/blob/master/Maths/Average.java)
   * [BinaryPow](https://github.com/TheAlgorithms/Java/blob/master/Maths/BinaryPow.java)
   * [Ceil](https://github.com/TheAlgorithms/Java/blob/master/Maths/Ceil.java)
+  * [CircularConvolutionFFT](https://github.com/TheAlgorithms/Java/blob/master/Maths/CircularConvolutionFFT.java)
   * [Combinations](https://github.com/TheAlgorithms/Java/blob/master/Maths/Combinations.java)
+  * [Convolution](https://github.com/TheAlgorithms/Java/blob/master/Maths/Convolution.java)
+  * [ConvolutionFFT](https://github.com/TheAlgorithms/Java/blob/master/Maths/ConvolutionFFT.java)
   * [Factorial](https://github.com/TheAlgorithms/Java/blob/master/Maths/Factorial.java)
   * [FactorialRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/FactorialRecursion.java)
+  * [FFT](https://github.com/TheAlgorithms/Java/blob/master/Maths/FFT.java)
+  * [FFTBluestein](https://github.com/TheAlgorithms/Java/blob/master/Maths/FFTBluestein.java)
   * [FibonacciNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/FibonacciNumber.java)
   * [FindMax](https://github.com/TheAlgorithms/Java/blob/master/Maths/FindMax.java)
   * [FindMaxRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/FindMaxRecursion.java)
@@ -165,6 +170,7 @@
   * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/MinimizingLateness/MinimizingLateness.java)
 
 ## Misc
+  * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/Misc/ColorContrastRatio.java)
   * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/MedianOfRunningArray.java)
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
   * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/RangeInSortedArray.java)
