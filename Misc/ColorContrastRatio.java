@@ -24,6 +24,7 @@ public class ColorContrastRatio {
 
     if (aColorLuminance > bColorLuminance)
       return (aColorLuminance + 0.05) / (bColorLuminance + 0.05);
+    
     return (bColorLuminance + 0.05) / (aColorLuminance + 0.05);
   }
 
@@ -45,17 +46,17 @@ public class ColorContrastRatio {
   /**
    * @brief Calculates the final value for a color to be used in the relative luminance formula as
    *     described in step 1.
-   * @param color8Bit The 8-bit repretation of a color component value.
+   * @param color8Bit 8-bit representation of a color component value.
    * @return Value for the provided color component to be used in the relative luminance formula.
    */
-  public double getColor(int value) {
-    final double sRgb = getColorSRgb(value);
+  public double getColor(int color8Bit) {
+    final double sRgb = getColorSRgb(color8Bit);
     return (sRgb <= 0.03928) ? sRgb / 12.92 : Math.pow((sRgb + 0.055) / 1.055, 2.4);
   }
 
   /**
    * @brief Calculates the Color sRGB value as denoted in step 1 of the procedure document.
-   * @param color8Bit The 8-bit repretation of a color component value.
+   * @param color8Bit 8-bit representation of a color component value.
    * @return A percentile value of the color component.
    */
   private double getColorSRgb(double color8Bit) {
