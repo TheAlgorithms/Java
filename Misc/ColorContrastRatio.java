@@ -1,5 +1,7 @@
 package Misc;
 
+import java.awt.Color;
+
 /**
  * A Java implementation of the offcial W3 documented procedure
  * to calculate contrast ratio between colors on the web.
