@@ -53,7 +53,7 @@ public class ConvolutionFFT {
     convolved
         .subList(convolvedSize, convolved.size())
         .clear(); // Remove the remaining zeros after the convolvedSize. These extra zeros came from
-                  // paddingPowerOfTwo() method inside the fft() method.
+    // paddingPowerOfTwo() method inside the fft() method.
 
     return convolved;
   }
