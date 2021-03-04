@@ -1,0 +1,88 @@
+import java.util.*;
+import java.io.*;
+
+class Node {
+    Node left;
+    Node right;
+    int data;
+    
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+
+	/* 
+    
+    class Node 
+    	int data;
+    	Node left;
+    	Node right;
+	*/
+	public static void topView(Node root) {
+        
+      class MyNode{
+          Node node;
+          int hd;
+          
+          MyNode(Node node,int hd){
+              this.node=node;
+              this.hd=hd;
+          }
+      }
+       
+       TreeMap<Integer,Integer> tmp = new TreeMap<>();
+       Queue<MyNode> que = new LinkedList<>();
+       
+       que.add(new MyNode(root, 0));
+       
+       while(!que.isEmpty()){
+           MyNode cur = que.poll();
+           
+           if(!tmp.containsKey(cur.hd)){
+               tmp.put(cur.hd,cur.node.data);
+           }
+           
+           if(cur.node.left!=null){
+               que.add(new MyNode(cur.node.left,cur.hd-1));
+           }
+           if(cur.node.right!=null){
+               que.add(new MyNode(cur.node.right,cur.hd+1));
+           }
+       }
+       for(Integer val:tmp.values()){
+           System.out.print(val+" ");
+       }
+    }
+
+	public static Node insert(Node root, int data) {
+        if(root == null) {
+            return new Node(data);
+        } else {
+            Node cur;
+            if(data <= root.data) {
+                cur = insert(root.left, data);
+                root.left = cur;
+            } else {
+                cur = insert(root.right, data);
+                root.right = cur;
+            }
+            return root;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+        Node root = null;
+        while(t-- > 0) {
+            int data = scan.nextInt();
+            root = insert(root, data);
+        }
+        scan.close();
+        topView(root);
+    }	
+}
