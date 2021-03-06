@@ -7,7 +7,7 @@ import static Sorts.SortUtils.print;
 
 /**
  * This method implements the Generic Merge Sort
- *
+ * Visit Wikipedia (https://en.wikipedia.org/wiki/Timsort) for more information on the topic
  * @author Andreas Manos (https://github.com/Antwhite420)
  */
 public class TimSort {
