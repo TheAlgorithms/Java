@@ -49,7 +49,7 @@ public class LongestValidParentheses {
       if ("quit".equals(str)) {
         break;
       }
-      
+
       System.out.println("Len is: " + getLongestValidParentheses(str));
     }
 
