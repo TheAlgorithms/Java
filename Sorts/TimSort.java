@@ -176,13 +176,16 @@ class TimSort {
         }
         System.out.println();
     }
+    public static void main(String[] args) {
+    }
 }
 
 class Test {
     public static void main(String[] args) {
+        int[] array = { 4, 1, 3, 17, 12, 11, 8 };
         TimSort sorterObj1 = new TimSort();
         TimSort sorterObj2 = new TimSort(50);
-        TimSort sorterObj3 = new TimSort([4, 1, 3, 17, 12, 11, 8]);
+        TimSort sorterObj3 = new TimSort(array);
 
 
         sorterObj1.algorithm();
