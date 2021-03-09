@@ -42,17 +42,12 @@ public class LongestValidParentheses {
   }
 
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        while (!"quit".equals(str)) {
+            System.out.println("Len is: " + LongestValidParentheses(str));
+        }
 
-    while (true) {
-      String str = sc.nextLine();
-      if ("quit".equals(str)) {
-        break;
-      }
-
-      System.out.println("Len is: " + getLongestValidParentheses(str));
-    }
-
-    sc.close();
+        sc.close();
   }
 }
