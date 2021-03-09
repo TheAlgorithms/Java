@@ -4,18 +4,18 @@ import java.lang.Math;
 import java.util.Random;
 
 /**
- * @author Hemanth Kotagiri (https://github.com/hemanth-kotagiri)
+ * @author [Hemanth Kotagiri](https://github.com/hemanth-kotagiri)
  * @see SortAlgorithm
  */
 
- // Wikipedia: https://en.wikipedia.org/wiki/Tim_sort
+ // [Wikipedia](https://en.wikipedia.org/wiki/Tim_sort)
 class TimSort {
     int array[];
     int array_length;
     int RUN = 32;
 
     /**
-     * A constructor which takes in the array specified by the user.
+     * @brief A constructor which takes in the array specified by the user.
      * @param array : Array given by the user.
     */
 
@@ -25,9 +25,9 @@ class TimSort {
     }
 
     /**
-     * A constructor which takes in an array length and randomly initializes an
-     * array.
-     * @param array_length length given by the 
+     * @brief A constructor which takes in an array length and randomly
+     * initializes an array.
+     * @param array_length length given by the user.
      */
 
     public TimSort(int array_length) {
@@ -42,7 +42,8 @@ class TimSort {
         }
     }
 
-    /** A method to change the size of the run.
+    /** 
+     * @brief A method to change the size of the run.
      * @param run : Value specified by the user to change the run.
     */
 
@@ -51,7 +52,7 @@ class TimSort {
     }
 
     /**
-     * A default constructor when no parameters are given.
+     * @brief A default constructor when no parameters are given.
      * Initializes the array length to be 100.
      * Generates a random number array of size 100.
      */
@@ -68,7 +69,8 @@ class TimSort {
     }
 
     /**
-     * Performs Insertion Sort Algorithm on given array with bounded indices.
+     * @brief Performs Insertion Sort Algorithm on given array with bounded
+     * indices.
      * @param array : The array on which the algorithm is to be performed.
      * @param start_idx : The starting index from which the algorithm is to be
      * performed.
@@ -89,7 +91,7 @@ class TimSort {
     }
 
     /**
-     * A method to merge two runs(chunks of array).
+     * @brief A method to merge two runs(chunks of array).
      * @param array : The origin array which is to be sorted.
      * @param start : Starting index of the first run(chunk).
      * @param mid : The ending index of the first run(chunk).
@@ -137,7 +139,7 @@ class TimSort {
     }
 
     /**
-     * Tim Sort Algorithm method.
+     * @brief Tim Sort Algorithm method.
      */
 
     public void algorithm() {
@@ -165,7 +167,7 @@ class TimSort {
     }
 
     /**
-     * A method to show the elements inside the array.
+     * @brief A method to show the elements inside the array.
      */
 
     public void showArrayElements() {
@@ -173,5 +175,18 @@ class TimSort {
             System.out.print(this.array[i] + " ");
         }
         System.out.println();
+    }
+}
+
+class Test {
+    public static void main(String[] args) {
+        TimSort sorterObj1 = new TimSort();
+        TimSort sorterObj2 = new TimSort(50);
+        TimSort sorterObj3 = new TimSort([4, 1, 3, 17, 12, 11, 8]);
+
+
+        sorterObj1.algorithm();
+        sorterObj2.algorithm();
+        sorterObj3.algorithm();
     }
 }
