@@ -26,11 +26,12 @@ public class RootPrecision {
 
     // calculate precision to power of 10 and then multiply it with root value.
     int precision = (int) Math.pow(10, P);
-    root = root * precision;
+    root *= precision;
     /*typecast it into integer then divide by precision and again typecast into double
     so as to have decimal points upto P precision */
-
     rv = (int) root;
+    
+    
     return rv / precision;
   }
 }
