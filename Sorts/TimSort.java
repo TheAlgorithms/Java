@@ -92,7 +92,7 @@ class TimSort {
     /**
      * @brief A method to merge two runs(chunks of array).
      * @param array: The origin array which is to be sorted.
-     * @param start : Starting index of the first run(chunk).
+     * @param start: Starting index of the first run(chunk).
      * @param mid : The ending index of the first run(chunk).
      * @param end : Ending index of the second run(chunk).
      */
