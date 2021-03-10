@@ -70,7 +70,7 @@ class TimSort {
     /**
      * @brief Performs Insertion Sort Algorithm on given array with bounded
      * indices.
-     * @param array : The array on which the algorithm is to be performed.
+     * @param array: The array on which the algorithm is to be performed.
      * @param start_idx : The starting index from which the algorithm is to be
      * performed.
      * @param end_idx : The ending index at which the algorithm needs to stop
