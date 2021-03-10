@@ -8,7 +8,6 @@ import java.util.Random;
  * @see [Tim Sort](https://en.wikipedia.org/wiki/Tim_sort)
  */
 
- // 
 class TimSort {
     int array[];
     int array_length;
@@ -197,4 +196,3 @@ class TimSort {
         test();
     }
 }
-
