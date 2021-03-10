@@ -94,7 +94,7 @@ class TimSort {
      * @param array: The origin array which is to be sorted.
      * @param start: Starting index of the first run(chunk).
      * @param mid: The ending index of the first run(chunk).
-     * @param end : Ending index of the second run(chunk).
+     * @param end: Ending index of the second run(chunk).
      */
 
     public void merge_runs(int array[], int start, int mid, int end) {
