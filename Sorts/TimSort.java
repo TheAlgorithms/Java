@@ -73,7 +73,7 @@ class TimSort {
      * @param array: The array on which the algorithm is to be performed.
      * @param start_idx: The starting index from which the algorithm is to be
      * performed.
-     * @param end_idx : The ending index at which the algorithm needs to stop
+     * @param end_idx: The ending index at which the algorithm needs to stop
      * sorting.
      */
 
