@@ -5,10 +5,10 @@ import java.util.Random;
 
 /**
  * @author [Hemanth Kotagiri](https://github.com/hemanth-kotagiri)
- * @see SortAlgorithm
+ * @see [Tim Sort](https://en.wikipedia.org/wiki/Tim_sort)
  */
 
- // [Wikipedia](https://en.wikipedia.org/wiki/Tim_sort)
+ // 
 class TimSort {
     int array[];
     int array_length;
@@ -176,12 +176,12 @@ class TimSort {
         }
         System.out.println();
     }
-    public static void main(String[] args) {
-    }
-}
 
-class Test {
-    public static void main(String[] args) {
+    /**
+     * @brief A method to test the sorting algorithm
+     */
+
+    static void test() {
         int[] array = { 4, 1, 3, 17, 12, 11, 8 };
         TimSort sorterObj1 = new TimSort();
         TimSort sorterObj2 = new TimSort(50);
@@ -192,4 +192,9 @@ class Test {
         sorterObj2.algorithm();
         sorterObj3.algorithm();
     }
+
+    public static void main(String[] args) {
+        test();
+    }
 }
+
