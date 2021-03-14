@@ -23,8 +23,7 @@ public class RodCutting {
   // main function to test
   public static void main(String args[]) {
     int[] arr = new int[] {2, 5, 13, 19, 20};
-    int size = arr.length;
-    int result = cutRod(arr, size);
+    int result = cutRod(arr, arr.length);
     System.out.println("Maximum Obtainable Value is " + result);
   }
 }
