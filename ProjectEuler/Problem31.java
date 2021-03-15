@@ -16,18 +16,18 @@ package ProjectEuler;
  */
 public class Problem31 {
   public static void main(String[] args) {
-    assert solution1() == 73682;
+    assert solution() == 73682;
   }
 
-  public static int solution1() {
+  public static int solution() {
     int target = 200;
     int[] coins = {1, 2, 5, 10, 20, 50, 100, 200};
     int[] combos = new int[201];
     combos[0] = 1;
 
     for (int coin : coins) {
-      for (int j = coin; j <= target; j++) {
-        combos[j] += combos[j - coin];
+      for (int i = coin; i <= target; i++) {
+        combos[i] += combos[i - coin];
       }
     }
 
