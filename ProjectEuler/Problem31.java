@@ -12,7 +12,7 @@ package ProjectEuler;
  *
  * <p>How many different ways can £2 be made using any number of coins?
  *
- * <p>link: https://projecteuler.net/problem=31
+ * <p> link: https://projecteuler.net/problem=31
  */
 public class Problem31 {
   public static void main(String[] args) {
