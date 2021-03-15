@@ -16,7 +16,7 @@ package ProjectEuler;
  */
 public class Problem31 {
   public static void main(String[] args) {
-    assert solution1() == 1;
+    assert solution1() == 73682;
   }
 
   public static int solution1() {
