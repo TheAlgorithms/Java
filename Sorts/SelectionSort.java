@@ -32,7 +32,7 @@ public class SelectionSort implements SortAlgorithm {
       int min = i;
 
       for (int j = i + 1; j < n; j++) {
-        if (arr[min].compareTo(arr[j]) < 0) {
+        if (arr[min].compareTo(arr[j]) > 0) {
           min = j;
         }
       }
