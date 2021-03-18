@@ -9,7 +9,7 @@ class Palindrome {
     for (String s : palindromes) {
       assert isPalindrome(s) && isPalindromeRecursion(s) && isPalindrome1(s);
     }
-
+//xd
     String[] notPalindromes = {"abb", "abc", "abc123"};
     for (String s : notPalindromes) {
       assert !isPalindrome(s) && !isPalindromeRecursion(s) && !isPalindrome1(s);
