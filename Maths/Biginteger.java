@@ -1,6 +1,6 @@
 package Maths;
-// Java program to find large
-// factorials using BigInteger
+//https://www.geeksforgeeks.org/factorial-large-number/
+
 import java.math.BigInteger;
 import java.util.Scanner;
 public class Biginteger {
@@ -20,7 +20,7 @@ public class Biginteger {
     // Driver method
     public static void main(String args[]) throws Exception
     {
-        int N = 50;
+        int N = 120;
         System.out.println(factorial(N));
     }
 }
