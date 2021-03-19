@@ -3,7 +3,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
 
 /**
  * The Mandelbrot set is the set of complex numbers "c" for which the series "z_(n+1) = z_n * z_n +
