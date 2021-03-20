@@ -29,25 +29,30 @@ int n=30;
 public class CountNumBinaryStr {
 	public static long startTime;
 	public static long endTime;
+	
 	public static void startAlgo() {
 		startTime=System.currentTimeMillis();
 	}
+	
 	public static long endAlgo() {
 		endTime=System.currentTimeMillis();
 		return endTime-startTime;
 	}
+	
 	public static int numStrIS(int n) {
 		int[] zeros=new int[n];
 		int []ones=new int[n];
 		//seed
 		zeros[0]=1;
 		ones[0]=1;
+		
 		for(int i=1;i<n;i++) {
 			zeros[i]=zeros[i-1]+ones[i-1];
 			ones[i]=zeros[i-1];
 		}
+		
 		int ans=zeros[n-1]+ones[n-1];
-		return ans;
+	        return ans;
 	}
 	private class Binary{
 		int ones;
@@ -72,8 +77,7 @@ public class CountNumBinaryStr {
 		mr.ans=mr.zeros+mr.ones;
 		return mr;
 	}
-	public static int countStrings(int n, int lastDigit)
-	{
+	public static int countStrings(int n, int lastDigit) {
 		if (n == 0) {
 			return 0;
 		}
