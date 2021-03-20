@@ -175,9 +175,9 @@ public class Mandelbrot {
     int currentStep = 0;
     for (int step = 0; step < maxStep; step++) {
       currentStep = step;
-      double a_new = a * a - b * b + figureX;
+      double aNew = a * a - b * b + figureX;
       b = 2 * a * b + figureY;
-      a = a_new;
+      a = aNew;
 
       // divergence happens for all complex number with an absolute value
       // greater than 4 (= divergence threshold)
