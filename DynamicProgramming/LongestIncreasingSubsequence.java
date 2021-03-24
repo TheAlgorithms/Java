@@ -17,7 +17,6 @@ public class LongestIncreasingSubsequence {
     System.out.println(LIS(arr));
     System.out.println(findLISLen(arr));
     sc.close();
-    
   }
 
   private static int upperBound(int[] ar, int l, int r, int key) {
@@ -58,40 +57,33 @@ public class LongestIncreasingSubsequence {
 
     return length;
   }
-  
-    /** @author Alon Firestein (https://github.com/alonfirestein) */
-  
-    // A function for finding the length of the LIS algorithm in O(nlogn) complexity.  
-  	public static int findLISLen(int a[]) { 
-		int size = a.length;
-		int arr[] = new int[size];
-		arr[0] = a[0];
-		int lis = 1;
-		for (int i = 1; i < size; i++) {
-			int index = binarySearchBetween(arr, lis, a[i]);
-			arr[index] = a[i];
-			if (index > lis)
-				lis++;
-		}
-		return lis;
-	}
+
+  /** @author Alon Firestein (https://github.com/alonfirestein) */
+
+  // A function for finding the length of the LIS algorithm in O(nlogn) complexity.
+  public static int findLISLen(int a[]) {
+    int size = a.length;
+    int arr[] = new int[size];
+    arr[0] = a[0];
+    int lis = 1;
+    for (int i = 1; i < size; i++) {
+      int index = binarySearchBetween(arr, lis, a[i]);
+      arr[index] = a[i];
+      if (index > lis) lis++;
+    }
+    return lis;
+  }
   // O(logn)
-	private static int binarySearchBetween(int[] t, int end, int key) { 
-		int left = 0;
-		int right = end;
-		if (key < t[0])
-			return 0;
-		if (key > t[end])
-			return end + 1;
-		while (left < right - 1) {
-			int middle = (left + right) / 2;
-			if (t[middle] < key)
-				left = middle;
-			else
-				right = middle;
-		}
-		return right;
-	}
-  
-  
+  private static int binarySearchBetween(int[] t, int end, int key) {
+    int left = 0;
+    int right = end;
+    if (key < t[0]) return 0;
+    if (key > t[end]) return end + 1;
+    while (left < right - 1) {
+      int middle = (left + right) / 2;
+      if (t[middle] < key) left = middle;
+      else right = middle;
+    }
+    return right;
+  }
 }
