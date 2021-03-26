@@ -14,7 +14,7 @@ public class FloydWarshall {
             [numberofvertices
                 + 1]; // stores the value of distance from all the possible path form the source
     // vertex to destination vertex
-    Arrays.fill(DistanceMatrix, 0);
+    // The matrix is initialized with 0's by default
     this.numberofvertices = numberofvertices;
   }
 
