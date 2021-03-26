@@ -1,6 +1,5 @@
 package DataStructures.Graphs;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class FloydWarshall {
