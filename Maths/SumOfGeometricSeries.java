@@ -37,3 +37,4 @@ public class SumOfGeometricSeries {
   private static double sumOfGSeries(double firstTerm, double commonRatio, int numOfTerms) {
       return firstTerm * (1 - (Math.pow(commonRatio , numOfTerms) ) ) / ( 1 - commonRatio) ;
   }
+}
