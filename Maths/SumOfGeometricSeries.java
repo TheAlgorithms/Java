@@ -35,5 +35,5 @@ public class SumOfGeometricSeries {
    * @return sum of given geometric series
    */
   private static double sumOfGSeries(double firstTerm, double commonRatio, int numOfTerms) {
-      return firstTerm * (1 - (Math.pow(commonRatio , numOfTerms) ) ) / ( 1 - commonRatio)
+      return firstTerm * (1 - (Math.pow(commonRatio , numOfTerms) ) ) / ( 1 - commonRatio) ;
   }
