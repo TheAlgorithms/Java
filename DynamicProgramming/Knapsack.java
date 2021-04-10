@@ -11,9 +11,8 @@ public class Knapsack {
     // Build table rv[][] in bottom up manner
     for (i = 0; i < n; i++) {
       for (w = 0; w <= W; w++) {
-        if (wt[i] <= w)
-          rv[i+1][w] = Math.max(val[i] + rv[i][w - wt[i]], rv[i][w]);
-        else rv[i+1][w] = rv[i][w];
+        if (wt[i] <= w) rv[i + 1][w] = Math.max(val[i] + rv[i][w - wt[i]], rv[i][w]);
+        else rv[i + 1][w] = rv[i][w];
       }
     }
 
