@@ -4,6 +4,7 @@ public class SelectionSort implements SortAlgorithm {
 
   /**
    * Generic selection sort algorithm in increasing order.
+   *
    * @param arr the array to be sorted.
    * @param <T> the class of array.
    * @return sorted array.
@@ -27,9 +28,7 @@ public class SelectionSort implements SortAlgorithm {
     return arr;
   }
 
-  /**
-   * Driver Code
-   */
+  /** Driver Code */
   public static void main(String[] args) {
 
     Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
