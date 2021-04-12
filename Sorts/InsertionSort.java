@@ -7,6 +7,7 @@ class InsertionSort implements SortAlgorithm {
 
   /**
    * Generic insertion sort algorithm in increasing order.
+   *
    * @param array the array to be sorted.
    * @param <T> the class of array.
    * @return sorted array.
@@ -26,9 +27,7 @@ class InsertionSort implements SortAlgorithm {
     return array;
   }
 
-  /**
-   * Driver Code
-   */
+  /** Driver Code */
   public static void main(String[] args) {
     Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
     InsertionSort sort = new InsertionSort();
