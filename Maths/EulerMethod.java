@@ -1,3 +1,5 @@
+package Maths;
+
 import java.util.ArrayList;
 import java.util.function.BiFunction;
 
