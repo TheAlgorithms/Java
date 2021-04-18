@@ -4,7 +4,7 @@ import java.util.*;
 
 class BellmanFord
 /*Implementation of Bellman ford to detect negative cycles. Graph accepts inputs in form of edges which have
-start vertex, end vertes and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/
+start vertex, end vertex and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/
 {
   int vertex, edge;
   private Edge edges[];
