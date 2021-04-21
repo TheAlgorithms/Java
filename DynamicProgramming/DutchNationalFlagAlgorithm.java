@@ -59,8 +59,8 @@ public class DutchNationalFlagAlgorithm {
     // Driver program to test above function
     public static void main(String args[]) {
 
-        int[] arr = { 0, 1, 2, 0, 1, 0, 0, 2, 1, 2 };
-        int[] result = sort0s1s2s(arr);
+        int[] array = { 0, 1, 2, 0, 1, 0, 0, 2, 1, 2 };
+        int[] result = sort0s1s2s(array);
 
         for (int i = 0; i < result.length; i++)
             System.out.print(result[i] + " ");
