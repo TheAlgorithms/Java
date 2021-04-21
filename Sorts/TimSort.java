@@ -8,7 +8,6 @@ import java.util.Random;
  * @see [Tim Sort](https://en.wikipedia.org/wiki/Tim_sort)
  */
 
- // 
 class TimSort {
     int array[];
     int array_length;
@@ -71,10 +70,10 @@ class TimSort {
     /**
      * @brief Performs Insertion Sort Algorithm on given array with bounded
      * indices.
-     * @param array : The array on which the algorithm is to be performed.
-     * @param start_idx : The starting index from which the algorithm is to be
+     * @param array: The array on which the algorithm is to be performed.
+     * @param start_idx: The starting index from which the algorithm is to be
      * performed.
-     * @param end_idx : The ending index at which the algorithm needs to stop
+     * @param end_idx: The ending index at which the algorithm needs to stop
      * sorting.
      */
 
@@ -92,10 +91,10 @@ class TimSort {
 
     /**
      * @brief A method to merge two runs(chunks of array).
-     * @param array : The origin array which is to be sorted.
-     * @param start : Starting index of the first run(chunk).
-     * @param mid : The ending index of the first run(chunk).
-     * @param end : Ending index of the second run(chunk).
+     * @param array: The origin array which is to be sorted.
+     * @param start: Starting index of the first run(chunk).
+     * @param mid: The ending index of the first run(chunk).
+     * @param end: Ending index of the second run(chunk).
      */
 
     public void merge_runs(int array[], int start, int mid, int end) {
@@ -212,4 +211,3 @@ class TimSort {
         test();
     }
 }
-
