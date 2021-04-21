@@ -45,7 +45,7 @@ class BinarySearch implements SearchAlgorithm {
     if (right < left) return -1; // this means that the key not found
 
     // find median
-    int median = left + ((right - left) >>> 1);
+    int median = (left + right) >>> 1;
     int comp = key.compareTo(array[median]);
 
     if (comp == 0) {
