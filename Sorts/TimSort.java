@@ -191,6 +191,21 @@ class TimSort {
         sorterObj1.algorithm();
         sorterObj2.algorithm();
         sorterObj3.algorithm();
+
+        // Testing the first array
+        for(int i = 1; i < sorterObj1.array_length; i++) {
+            assert(!(sorterObj1.array[i] < sorterObj1.array[i - 1])) : "Array is not sorted";
+        }
+
+        // Testing the second array.
+        for(int i = 1; i < sorterObj2.array_length; i++) {
+            assert(!(sorterObj2.array[i] < sorterObj2.array[i - 1])) : "Array is not sorted";
+        }
+
+        // Testing the third array.
+        for(int i = 1; i < sorterObj3.array_length; i++) {
+            assert(!(sorterObj3.array[i] < sorterObj3.array[i - 1])) : "Array is not sorted";
+        }
     }
 
     public static void main(String[] args) {
