@@ -193,7 +193,7 @@ class TimSort {
 
         // Testing the first array
         for(int i = 0; i < sorterObj1.array_length - 1; i++) {
-            assert((sorterObj1.array[i] < sorterObj1.array[i +1])) : "Array is not sorted";
+            assert((sorterObj1.array[i] <= sorterObj1.array[i +1])) : "Array is not sorted";
         }
 
         // Testing the second array.
