@@ -203,7 +203,7 @@ class TimSort {
 
         // Testing the third array.
         for(int i = 0; i < sorterObj3.array_length - 1; i++) {
-            assert((sorterObj3.array[i] < sorterObj3.array[i + 1])) : "Array is not sorted";
+            assert((sorterObj3.array[i] <= sorterObj3.array[i + 1])) : "Array is not sorted";
         }
     }
 
