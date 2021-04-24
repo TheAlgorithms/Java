@@ -133,6 +133,7 @@
   * [Combinations](https://github.com/TheAlgorithms/Java/blob/master/Maths/Combinations.java)
   * [Convolution](https://github.com/TheAlgorithms/Java/blob/master/Maths/Convolution.java)
   * [ConvolutionFFT](https://github.com/TheAlgorithms/Java/blob/master/Maths/ConvolutionFFT.java)
+  * [EulerMethod](https://github.com/TheAlgorithms/Java/blob/master/Maths/EulerMethod.java)
   * [Factorial](https://github.com/TheAlgorithms/Java/blob/master/Maths/Factorial.java)
   * [FactorialRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/FactorialRecursion.java)
   * [FFT](https://github.com/TheAlgorithms/Java/blob/master/Maths/FFT.java)
@@ -260,6 +261,7 @@
   * [ShellSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/ShellSort.java)
   * [SortAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortAlgorithm.java)
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
+  * [TimSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/TimSort.java)
 
 ## strings
   * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
