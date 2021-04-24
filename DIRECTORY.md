@@ -25,6 +25,7 @@
   * [IntegerToRoman](https://github.com/TheAlgorithms/Java/blob/master/Conversions/IntegerToRoman.java)
   * [OctalToDecimal](https://github.com/TheAlgorithms/Java/blob/master/Conversions/OctalToDecimal.java)
   * [OctalToHexadecimal](https://github.com/TheAlgorithms/Java/blob/master/Conversions/OctalToHexadecimal.java)
+  * [RgbHsvConversion](https://github.com/TheAlgorithms/Java/blob/master/Conversions/RgbHsvConversion.java)
   * [RomanToInteger](https://github.com/TheAlgorithms/Java/blob/master/Conversions/RomanToInteger.java)
 
 ## DataStructures
