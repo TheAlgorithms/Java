@@ -195,6 +195,7 @@
   * [Krishnamurthy](https://github.com/TheAlgorithms/Java/blob/master/Others/Krishnamurthy.java)
   * [LinearCongruentialGenerator](https://github.com/TheAlgorithms/Java/blob/master/Others/LinearCongruentialGenerator.java)
   * [LowestBasePalindrome](https://github.com/TheAlgorithms/Java/blob/master/Others/LowestBasePalindrome.java)
+  * [Mandelbrot](https://github.com/TheAlgorithms/Java/blob/master/Others/Mandelbrot.java)
   * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/Others/PasswordGen.java)
   * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/Others/PerlinNoise.java)
   * [QueueUsingTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/Others/QueueUsingTwoStacks.java)
