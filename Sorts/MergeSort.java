@@ -2,6 +2,7 @@ package Sorts;
 
 /**
  * Generic merge sort algorithm.
+ *
  * @see SortAlgorithm
  */
 class MergeSort implements SortAlgorithm {
@@ -68,9 +69,7 @@ class MergeSort implements SortAlgorithm {
     System.arraycopy(temp, 0, arr, left, length);
   }
 
-  /**
-   * Driver code
-   */
+  /** Driver code */
   public static void main(String[] args) {
     MergeSort mergeSort = new MergeSort();
 
