@@ -1,4 +1,4 @@
-package stack;
+package DataStructures.Stacks;
 
 public class ArrayImplementation {
   

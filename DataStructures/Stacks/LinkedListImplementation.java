@@ -1,4 +1,4 @@
-package stack;
+package DataStructures.Stacks;
 import linkedList.Node;
 public class LinkedListImplementation {
 	Node head;
