@@ -17,8 +17,7 @@ class BinaryToDecimal {
     binNum = sc.nextInt();
     binCopy = binNum;
     while (binCopy != 0) {
-      d = binCopy % 10;
-      s += d * (int) Math.pow(2, power++);
+      s += (binCopy % 10) * (int) Math.pow(2, power++);
       binCopy /= 10;
     }
     System.out.println("Decimal equivalent:" + s);
