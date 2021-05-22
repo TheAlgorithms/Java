@@ -4,18 +4,18 @@ class PasswordValidator
 {
   public static void main(String args[])
   {
-    PasswordValidator pv=new PasswordValidtor();
+    PasswordValidator pv=new PasswordValidator();
     Scanner sc=new Scanner(System.in);
     System.out.print("Input Password: ");
     String P=sc.nextLine();
     boolean v=pv.isValidPassword(P);
-    if(v)
+    if(v==false)
     {
-      System.out.println("\n\nPassword should be more than 5 but less than 20 characters in length.\nPassword should contain at least one number.\nPassword should contain at least one special character.\nPassword should not contain any spaces.\nInvalid Password.\n");
+      System.out.println("\nPassword should be more than 5 but less than 20 characters in length.\nPassword should contain at least one number.\nPassword should contain at least one special character.\nPassword should not contain any spaces.\nInvalid Password.\n");
     }
     else
     {
-      System.out.println("\n\nValid Password.\n");
+      System.out.println("\nValid Password.\n");
     }
     System.out.println("Password is: "+P);
   }
