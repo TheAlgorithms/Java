@@ -114,4 +114,15 @@ public class Area {
   private static double surfaceAreaCircle(double radius) {
     return Math.PI * radius * radius;
   }
+  
+  /**
+   * Calculate the area of a pentagon
+   *
+   * @param side length of the side of pentagon
+   * @param apothem distance from center of pentagon to any side
+   * @return area of given pentagon
+   */
+  private static double areaOfPentagon(double side, double apothem){
+    return (5/2.0) * side * apothem;
+  }
 }
