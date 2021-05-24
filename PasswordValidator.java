@@ -4,41 +4,51 @@ class PasswordValidator
 {
   public static void main(String args[])
   {
-    PasswordValidator pv=new PasswordValidator();
+    PasswordValidator passwordValidator=new PasswordValidator();
     Scanner sc=new Scanner(System.in);
     System.out.print("Input Password: ");
-    String P=sc.nextLine();
-    boolean v=pv.isValidPassword(P);
-    if(v==false)
+    String Password=sc.nextLine();
+    System.out.println();
+    boolean valid=passwordValidator.isValidPassword(Password);
+    if(valid==false)
     {
-      System.out.println("\nPassword should be more than 5 but less than 20 characters in length.\nPassword should contain at least one number.\nPassword should contain at least one special character.\nPassword should not contain any spaces.\nInvalid Password.\n");
+      System.out.println("Invalid Password.\n");
     }
     else
     {
-      System.out.println("\nValid Password.\n");
+      System.out.println("Valid Password.\n");
     }
-    System.out.println("Password is: "+P);
+    System.out.println("Password is: "+Password);
   }
   public static boolean isValidPassword(String password)
   {
      boolean isValid = true;
-     if (password.length() > 20 || password.length() < 5)
+     if (password.length() >= 20 || password.length() <= 5)
      {
+       System.out.println("Password should be more than 5 but less than 20 characters in length.");
        isValid = false;
      }
      String numbers = "(.*[0-9].*)";
      if (!password.matches(numbers))
      {
+       System.out.println("Password should contain at least one number.");
        isValid = false;
      }
-     String specialChars = "(.*[@,#,$,%].*$)";
+     String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
      if (!password.matches(specialChars))
      {
+       System.out.println("Password should contain at least one special character.");
        isValid = false;
      }
-     if (password.matches(" "))
+     for (int i=0; i<password.length();i++)
      {
-       isValid = false;
+       char c=password.charAt(i);
+       if(c==' ')
+       {
+    	   System.out.println("Password should not contain any spaces.");
+           isValid = false;
+           break;
+       }
      }
      return isValid;
   }
