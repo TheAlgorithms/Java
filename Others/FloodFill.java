@@ -25,10 +25,8 @@ public class FloodFill {
   public static void main(String[] args) {
     testBreadthFirst(new int[] {1, 1}, green, orange, new int[] {1, 1}, orange);
     testBreadthFirst(new int[] {1, 1}, green, orange, new int[] {0, 1}, violet);
-    testBreadthFirst(new int[] {1, 1}, green, orange, new int[] {0, 1}, violet);
     testBreadthFirst(new int[] {1, 1}, green, orange, new int[] {6, 4}, white);
     testDepthFirst(new int[] {1, 1}, green, orange, new int[] {1, 1}, orange);
-    testDepthFirst(new int[] {1, 1}, green, orange, new int[] {0, 1}, violet);
     testDepthFirst(new int[] {1, 1}, green, orange, new int[] {0, 1}, violet);
     testDepthFirst(new int[] {1, 1}, green, orange, new int[] {6, 4}, white);
   }
