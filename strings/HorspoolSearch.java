@@ -1,4 +1,4 @@
-package strings.matching;
+package strings;
 
 import java.util.HashMap;
 
@@ -6,7 +6,8 @@ import java.util.HashMap;
  * This class is not thread safe<br><br>
  * (From wikipedia)
  * In computer science, the Boyer–Moore–Horspool algorithm or Horspool's algorithm is an algorithm for finding
- * substrings in strings. It was published by Nigel Horspool in 1980.<br><br>
+ * substrings in strings. It was published by Nigel Horspool in 1980. <br>
+ * <a href=https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm>Wikipedia page</a><br><br>
  * <p>
  * An explanation:<br>
  * <p>
@@ -27,7 +28,7 @@ import java.util.HashMap;
  * professor Anany Levitin's book: Introduction To The Design And Analysis Of Algorithms.
  * </p>
  */
-public class Horspool {
+public class HorspoolSearch {
 
     private static HashMap<Character, Integer> shiftValues; // bad symbol table
     private static Integer patternLength;
@@ -61,7 +62,7 @@ public class Horspool {
      * @return number of character comparisons of the last search
      */
     public static Integer getLastComparisons() {
-        return Horspool.comparisons;
+        return HorspoolSearch.comparisons;
     }
 
     /**
