@@ -270,6 +270,7 @@
   * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
   * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/strings/CharactersSame.java)
   * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckAnagrams.java)
+  * [HorspoolSearch](https://github.com/TheAlgorithms/Java/blob/master/strings/HorspoolSearch.java)
   * [Lower](https://github.com/TheAlgorithms/Java/blob/master/strings/Lower.java)
   * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/strings/Palindrome.java)
   * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/strings/Pangram.java)
