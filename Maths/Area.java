@@ -114,4 +114,8 @@ public class Area {
   private static double surfaceAreaCircle(double radius) {
     return Math.PI * radius * radius;
   }
+  
+  private static double areaOfPentagon(double size , double apothem){
+    return 2.5*size*apothem;
+    
 }
