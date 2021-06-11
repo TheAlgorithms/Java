@@ -67,6 +67,7 @@ public class MatrixArithmetic {
 				sum += matrix1[i][j]*matrix2[j][i];
 			}
 			resultMatrix[row][i] = sum;
+			sum = 0;
 		  }
 		}
 		return resultMatrix;
