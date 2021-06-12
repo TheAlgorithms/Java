@@ -9,10 +9,6 @@ import static org.junit.Assert.*;
  * Test 1: a string that have no numbers or potential non-alphanumeric characters.
  * Test 2: a string that contains number.
  * Test 3: a string that contains number and potential non-alphanumeric characters.
- *
- * So I have found a few issues:
- * It doesn't return the positive number or absolute max that I expected it would be.
- * And you should check condition for array not empty.
  */
 
 @SuppressWarnings("InstantiationOfUtilityClass")
