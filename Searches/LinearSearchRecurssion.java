@@ -1,3 +1,7 @@
+/*
+Linear Search is a type of Search where an element is searched in an array sequentially by comparing it with one cell at a time.
+To know More visit this Link= https://en.wikipedia.org/wiki/Linear_search#:~:text=In%20computer%20science%2C%20a%20linear,whole%20list%20has%20been%20searched.
+*/
 import java.util.*;
 public class LinearSearchRecurssion
 {
