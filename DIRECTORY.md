@@ -97,6 +97,7 @@
 
 ## divideconquer
   * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/ClosestPair.java)
+  * [MaxMin](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/MaxMin.java)
   * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/SkylineAlgorithm.java)
 
 ## DynamicProgramming
