@@ -1,5 +1,7 @@
 /*
 This Algorithm finds the Maximum and Minimum elements of an Array.
+The method used here is called the Tournament Method which uses divide and conquer algorithmic strategy to solve the problem.
+To know visit this Link--> https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm	or	https://www.tutorialspoint.com/design_and_analysis_of_algorithms/design_and_analysis_of_algorithms_max_min_problem.htm
 */
 import java.util.*;
 public class MaxMin
