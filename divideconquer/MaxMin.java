@@ -1,3 +1,6 @@
+/*
+This Algorithm finds the Maximum and Minimum elements of an Array.
+*/
 import java.util.*;
 public class MaxMin
 {
