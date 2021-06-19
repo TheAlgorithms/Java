@@ -1,33 +1,99 @@
 package DynamicProgramming;
 
+import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
-/** @author Varun Upadhyay (https://github.com/varunu28) */
-public class Fibonacci {
 
-  private static Map<Integer, Integer> map = new HashMap<>();
 
-  public static void main(String[] args) {
-
-    // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-
-    System.out.println(fibMemo(n));
-    System.out.println(fibBotUp(n));
-    System.out.println(fibOptimized(n));
-    sc.close();
+/** @author Darshan Pawar [Applying Graphical User Interface to choose one of any Algorithm.]
+  * There are three algorithm provided - fibMemo() , fibBotUp() and fibOptimized().
+  * Of which 'fibOptimized' is Fastest- Tested along System time...followed by 'fibMemo' and then 'fibBotUp'.
+  * After running ,one has to start and Enter one element to be searched.
+  *  Click appropriate Algorithm further.
+  *  Thank you.
+  */
+public class Fibonacci implements ActionListener
+{
+	int n;
+	JLabel jl ;
+	JFrame jf;
+	JRadioButton rb1 , rb2,rb3;
+  Fibonacci()
+  {
+	  jf = new JFrame("Fibonacci Algorithms");
+	  jf.setSize(500,400);
+	  jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  jf.setLayout(new FlowLayout());
+	  jl = new JLabel("SELECT ANY ONE:");
+	  jf.setVisible(true);
+	  jf.add(jl);
+	  rb1 = new JRadioButton("Algorithm1 (fibMemo).");
+	  rb1.addActionListener(this);
+	  jf.add(rb1);
+	  rb2 = new JRadioButton("Algorithm2 (fibBotUp).");
+	  rb2.addActionListener(this);
+	  jf.add(rb2);
+	  rb3 = new JRadioButton("Algorithm3 (fibOptimized).");
+	  rb3.addActionListener(this);
+	  jf.add(rb3);
+	  ButtonGroup bg = new ButtonGroup();
+	  bg.add(rb1);
+	  bg.add(rb2);
+	  bg.add(rb3);
+	  JOptionPane.showMessageDialog(jf, "Enter The Element Of Fibonacci Series!");
+	  String s = JOptionPane.showInputDialog(jf,"Enter the N'th term").trim();
+	  n = Integer.parseInt(s);
   }
+  
+  @Override
+  public void actionPerformed(ActionEvent e)
+  {
+	
+  	int m;
+  	if(rb1.isSelected())
+  	{
+  		  m=fibMemo(n);
+  	
+  	}
+  	else if(rb2.isSelected())
+  	{
+  		  m=fibBotUp(n);
+  	
+  	}
+  	 else
+  	{
+  		  m=fibOptimized(n);
+    	 
+  	}
+  		JOptionPane.showMessageDialog(jf, "Element at " + n + " is : " + m);
+  }
+  
+  
 
+    public static void main(String[] args)
+  {
+     SwingUtilities.invokeLater(new Runnable()
+                                  { public void run() 
+                                     { 
+                                	    new Fibonacci(); 
+                                	  } 
+                                  }
+                               );
+   
+  }
+  /** @author Varun Upadhyay (https://github.com/varunu28) */
   /**
    * This method finds the nth fibonacci number using memoization technique
    *
    * @param n The input n for which we have to determine the fibonacci number Outputs the nth
    *     fibonacci number
    */
-  public static int fibMemo(int n) {
+  private static Map<Integer, Integer> map = new HashMap<>();
+   public static int fibMemo(int n) {
     if (map.containsKey(n)) {
       return map.get(n);
     }
