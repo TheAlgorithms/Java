@@ -1,0 +1,14 @@
+a[] is an array of size N
+begin InsertionSort(a[])
+
+for i = 1 to N
+key = a[ i ]
+j = i - 1
+while ( j >= 0 and a[ j ] > key0
+a[ j+1 ] = x[ j ]
+j = j - 1
+end while
+a[ j+1 ] = key
+end for
+
+end InsertionSort
