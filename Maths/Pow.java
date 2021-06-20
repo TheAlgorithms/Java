@@ -7,6 +7,7 @@ public class Pow {
     assert pow(0, 2) == Math.pow(0, 2); // == 0
     assert pow(2, 10) == Math.pow(2, 10); // == 1024
     assert pow(10, 2) == Math.pow(10, 2); // == 100
+    assert pow(2, 3) == Math.pow(2, 3); // == 8
   }
 
   /**
@@ -17,10 +18,28 @@ public class Pow {
    * @return the value {@code a}<sup>{@code b}</sup>.
    */
   public static long pow(int a, int b) {
-    long result = 1;
-    for (int i = 1; i <= b; i++) {
-      result *= a;
+    if(a == 0 && b == 1) {
+      throw new RuntimeException("Undefined");
     }
-    return result;
+
+    if(a == 0) {
+      return 0;
+    }
+
+    if(b == 0) {
+      return 1;
+    }
+
+    if(b == 1) {
+      return a;
+    }
+
+    long c = pow(a, b / 2);
+
+    if ( b % 2 == 0) {
+      return c * c;
+    } else {
+      return a * c * c;
+    }
   }
 }
