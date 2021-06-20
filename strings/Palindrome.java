@@ -1,5 +1,7 @@
 package strings;
 
+import java.util.stream.IntStream;
+
 /** Wikipedia: https://en.wikipedia.org/wiki/Palindrome */
 class Palindrome {
 
@@ -51,14 +53,9 @@ class Palindrome {
    * @return {@code true} if given string is palindrome, otherwise {@code false}
    */
   public static boolean isPalindrome1(String s) {
-    if (s == null || s.length() <= 1) {
-      return true;
-    }
-    for (int i = 0, j = s.length() - 1; i < j; ++i, --j) {
-      if (s.charAt(i) != s.charAt(j)) {
-        return false;
-      }
-    }
-    return true;
+    if (s == null || s.length() <= 1) return true;
+    else return IntStream.
+            range(0, s.length() / 2).
+            allMatch(i -> s.charAt(i) == s.charAt(s.length() - i - 1));
   }
 }

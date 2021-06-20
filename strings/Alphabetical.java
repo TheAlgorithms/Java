@@ -1,5 +1,7 @@
 package strings;
 
+import java.util.stream.IntStream;
+
 /**
  * Alphabetical order is a system whereby character strings are placed in order based on the
  * position of the characters in the conventional ordering of an alphabet. Wikipedia:
@@ -22,12 +24,14 @@ class Alphabetical {
    * @return {@code true} if given string is alphabetical order, otherwise {@code false}
    */
   public static boolean isAlphabetical(String s) {
-    s = s.toLowerCase();
-    for (int i = 0; i < s.length() - 1; ++i) {
-      if (!Character.isLetter(s.charAt(i)) || !(s.charAt(i) <= s.charAt(i + 1))) {
-        return false;
-      }
-    }
-    return true;
+    final String sLower = s.toLowerCase();
+    return IntStream.
+            range(0, sLower.length() - 1).
+            allMatch(i -> isOrderderdAndAlphabaticAtIndex(i, sLower));
+  }
+  private static boolean isOrderderdAndAlphabaticAtIndex(int index, String string){
+    int currentCharValue = string.charAt(index);
+    int nextCharValue = string.charAt(index + 1);
+    return Character.isLetter(currentCharValue) && currentCharValue <= nextCharValue;
   }
 }
