@@ -1,0 +1,77 @@
+//A subsequence of an array of length len is called Bitonic if it first strictly increasing and then strictly decreasing. A sequence, sorted in increasing order is considered 
+//Bitonic with the decreasing part as empty. Similarly, decreasing order sequence is considered Bitonic with the increasing part as empty.
+//So we take two arrays, one compute the longest increasing and second compute the longest decreasing subsequence but in opposite direction(right to left).
+//We then compare both arrays and find the max value of LIS[i]+RDS[j]-1 where i is from 0 to len-1.
+
+
+public class TheAlgorithms 
+{
+    
+    static void incBitonicSeq(int a[],int len)
+    {
+        //Array to record longest increasing subsequence from left to right
+        int LIS[] = new int[len];
+        
+        //Array to record longest decreasing subsequence from right to left
+        int RDS[] = new int[len];
+        
+        //Initialize LIS array with 1
+        for (int i = 0; i < len; i++)
+        {
+            LIS[i] = 1;
+        }
+        
+        //Initialize RDS array with 1
+        for(int j=0;j<len;j++)
+        {
+            RDS[j] = 1;
+        }
+        
+        //Compute values from left to right 
+        for(int i=1;i<len;i++)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(a[i]>a[j] && LIS[i]<LIS[j]+1)
+                {
+                    LIS[i] = LIS[j]+1;
+                }
+            }
+        }
+        
+        //Compute values from right to left
+        for(int i=len-2; i>=0;i--)
+        {
+            for(int j=len-1;j>i;j--)
+            {
+                if(a[i]>a[j] && LIS[i]<LIS[j]+1)
+                {
+                    LIS[i] = LIS[j]+1;
+                }
+            }
+        }
+        
+        //Returns maximum value by comparing values of both arrays
+        int maxval = LIS[0]+RDS[0]-1;
+        for(int i=0;i<len;i++)
+        {
+            if(LIS[i]+RDS[i]-1>maxval)
+            {
+                maxval = LIS[i]+RDS[i]-1;
+            }
+            
+        }
+        
+        System.out.println(maxval);
+             
+    }
+    
+    public static void main(String[] args) 
+    {
+        int a[] = {0,3,4,7,2,10,9,14,13,1,6,5,13,17,11,15};
+        int len = a.length;
+        incBitonicSeq(a,len);
+    }
+}
+//Output is: 8
+//Time Complexity: O(n^2)
