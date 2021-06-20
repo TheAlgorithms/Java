@@ -89,7 +89,7 @@ public class LinkedQueue {
     if (isEmpty()) {
       throw new NoSuchElementException("queue is empty");
     }
-    return front.next.data;
+    return front.data;
   }
 
   /**
