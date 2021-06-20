@@ -30,6 +30,11 @@ public class RomanToInteger {
   public static int romanToInt(String A) {
 
     A = A.toUpperCase();
+    boolean valid = A.matches("^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+    if(!valid){
+      
+      return -1;
+    }
     char prev = ' ';
 
     int sum = 0;
@@ -60,7 +65,11 @@ public class RomanToInteger {
   }
 
   public static void main(String[] args) {
-    int sum = romanToInt("MDCCCIV");
-    System.out.println(sum);
+    int sum = romanToInt("XCIX"); // Valid Input 
+    System.out.println((sum>=0)?sum:"Invalid Input");
+    sum = romanToInt("IC"); // Invalid Input.
+
+    System.out.println((sum>=0)?sum:"Invalid Input");
+    
   }
 }
