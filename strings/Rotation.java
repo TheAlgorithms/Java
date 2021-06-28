@@ -1,4 +1,4 @@
-package strings;
+//package strings;
 
 /**
  * Given a string, moving several characters in front of the string to the end of the string. For
