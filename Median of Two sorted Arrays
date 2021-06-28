@@ -1,0 +1,31 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+     int i1 = 0;
+    int  i2 = 0;
+    int med1 = 0;
+    int med2 = 0;
+    for (int i=0; i<=(nums1.length+nums2.length)/2; i++) {
+        med1 = med2;
+        if (i1 == nums1.length) {
+            med2 = nums2[i2];
+            i2++;
+        } else if (i2 == nums2.length) {
+            med2 = nums1[i1];
+            i1++;
+        } else if (nums1[i1] < nums2[i2] ) {
+            med2 = nums1[i1];
+            i1++;
+        }  else {
+            med2 = nums2[i2];
+            i2++;
+        }
+    }
+
+   
+    if ((nums1.length+nums2.length)%2 == 0) {    //median= avg of two numbers
+        return (float) (med1+med2)/2;
+    }
+
+    return med2;
+}
+}
