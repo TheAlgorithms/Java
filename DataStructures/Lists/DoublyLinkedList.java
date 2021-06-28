@@ -156,6 +156,31 @@ public class DoublyLinkedList {
         throw new RuntimeException("The element to be deleted does not exist!");
       }
     }
+    
+    /*
+     * Delets node whose pointer is passed
+     * 
+     * @param ptr Pointer of node to be deleted
+     */
+    
+    public void DeleteNode(Link pointer) {
+    	
+    	//If the node is the last node
+    	if(pointer.next==null) {
+    		
+    		tail=pointer.previous;
+    		tail.next=null;
+    	}
+    	
+    	//or if the node is somewhere other than the end of the list
+    	else {
+    		
+    		pointer.value=pointer.next.value;
+    		pointer.next=pointer.next.next;
+    		pointer.next.previous=pointer;
+    		
+    	}
+    }
 
     if (current == head) deleteHead();
     else if (current == tail) deleteTail();
