@@ -1,0 +1,27 @@
+public class inorder{
+	public class node{
+		int val;
+		node left;
+		node right;
+		node(int v){
+			val = v;
+		}
+	}
+	public static void main(String[] args){ 
+        node root = new node(1); 
+        root.left = new Node(2); 
+        root.right = new Node(3); 
+        root.left.left = new Node(4); 
+        root.left.right = new Node(5); 
+        PrintInorder(root);
+  
+	}
+	public static void PrintInorder(node root){
+          if(root == null){
+          	return;
+          }
+          PrintInorder(root.left);
+          System.out.println(root.val);
+          PrintInorder(root.right);
+	}
+}
