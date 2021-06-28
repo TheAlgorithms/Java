@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Series 
+{
+    public static void main(String[] args) 
+    {
+        double sum = 0;
+        int n , i ;
+        System.out.println("1/1! + 2/2! + 3/3! + ..N/N!");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of terms for given series :");
+        n = sc.nextInt();
+        Series obj = new Series();
+        
+        for(i = 1; i <= n; i++)
+        {
+            sum = sum + (double)i / (obj.fact(i));     //takes the value of i and places the value in the object fact and then uses the result
+        }
+        System.out.println("Sum of series:"+sum);
+    }
+    int fact(int x)                                    //used to caluclate the factorial of x which represnents i 
+    {
+        int multiple = 1;
+        while(x > 0)
+        {
+            multiple = multiple * x;
+            x--;
+        }
+        return multiple;
+    }
+}
