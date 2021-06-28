@@ -9,6 +9,7 @@ bin/
 gen/
 build/
 out/
+lib/
 
 # gradle
 .gradle/
