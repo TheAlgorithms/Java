@@ -1,7 +1,8 @@
 
-## ciphers
+## Ciphers
   * [AES](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AES.java)
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AESEncryption.java)
+  * [AESGCMEncryption](https://github.com/fabiopereira96/Java/blob/master/ciphers/AESGCMEncryption.java)
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
   * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/ColumnarTranspositionCipher.java)
   * [RSA](https://github.com/TheAlgorithms/Java/blob/master/ciphers/RSA.java)
