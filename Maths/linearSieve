@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Random;
+import java.math.*;
+
+class linearSieve{
+
+   // Linear Sieve to Generate prime numbers in Linear Time
+    public ArrayList<Integer> linearSeive(int n){
+        ArrayList<Integer> primes = new ArrayList<Integer>();
+        ArrayList<Boolean> isPrime = new ArrayList<Boolean>(Collections.nCopies(n+1, true));
+
+        for(int i = 2; i <= n; i++){
+            if(isPrime.get(i) == true){
+                primes.add(i);
+            }
+            for(int j = 0, ld = 0; j < primes.size() &&  primes.get(j)*i <= n; j++){
+                ld = primes.get(j)*i;
+                isPrime.set(ld, false);
+                if(i%primes.get(j) == 0){
+                    break;
+                }
+            }
+        }
+        return primes;
+    }
+}
