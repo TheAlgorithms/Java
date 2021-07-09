@@ -70,7 +70,7 @@ public class Problem18 {
     
     //calculates the maximum path sum for a given triangle
     //@param tri is the array representing the triangle
-    public static int solution1(int[][] tri){
+    public static int solution(int[][] tri){
         int answer = 0;
         
         for(int i = 1; i < tri.length; i++){
