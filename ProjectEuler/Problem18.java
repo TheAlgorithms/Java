@@ -32,7 +32,7 @@ Repeating the process a final time :
 
 And the maximum of the numbers in this row will give us the answer. This is because
 we have effectively calculated all the n*(n-1) running sums -> 2 for each element,but only
-taking the maximum of the two adjacent numbers thereby improving efficiency.
+taking the maximum of the two adjacent numbers above(as opposed to the entire above row) thereby improving efficiency.
 
 The same would work starting from the bottom row of the triangle, in which case
 the final element left at the tip of the triangle would be the answer.
