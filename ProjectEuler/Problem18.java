@@ -38,7 +38,7 @@ The same would work starting from the bottom row of the triangle, in which case
 the final element left at the tip of the triangle would be the answer.
 
 Complexity: For a triangle of height n, O(n^2). Cannot be improved upon as all
-of the n*(n-1) = n^2 - n = O(n^2) elements must be visited atleast once.
+of the n*(n+1)/2 = n^2/2 + n/2 = O(n^2) elements must be visited atleast once.
 
 The O(n) operation of finding the maximum of the last row, can be avoided by
 following the above-mentioned bottom-to-up method. This will also result in
