@@ -57,6 +57,7 @@ public class Graph {
 		   		dist(v) = dist(u) + w(u,v)
 				add v to the priority queue.
 			}
+		 @see https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/
 		
 	*/
 	public long[] dijkstra(int s) {
