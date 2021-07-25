@@ -1,5 +1,4 @@
-//package src.main.java.com.others;
-package Other;
+package src.main.java.com.others;
 
 /*
  *  Using greedy Algorithms for 0 - 1 knapsack Problem
