@@ -1,6 +1,6 @@
 package src.test.java.com.others;
 
-import src.main.java.com.others.greedyAlgorithms;
+import src.main.java.com.others.GreedyAlgorithm;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import org.junit.Test;
