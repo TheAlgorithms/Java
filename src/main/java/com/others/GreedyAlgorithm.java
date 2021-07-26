@@ -4,6 +4,7 @@ package src.main.java.com.others;
  *  Using greedy Algorithms for 0 - 1 knapsack Problem
  *  Greedy Algorithm take consideration on the cost item before include them into bag
  *  Item will highest cost will be include first and the following until the next item weight/size is exceed the bag remaining space.
+ *  then the remaining space will be fill in by the fractional items.
  */
 
 import java.util.*;
@@ -14,13 +15,13 @@ public class GreedyAlgorithm {
 	 * 
 	 * @param items item refer to the object to be consider keep in bag
 	 * @param size	size refer to the capacity of bag
-	 * @param n		n refer to the number of items to be choose from.
-	 * @return rI = result items that is selected to be keep in limited size sack.
+	 * @param n	n refer to the number of items to be choose from.
+	 * @return totalVal  maximum value contribute by the selected items.
 	 * @throws IllegalArgumentException
 	 */
-	public Item[] knapsack(ArrayList<Item> items, int size, int n) throws IllegalArgumentException {
-		ArrayList<Item> rI = new ArrayList<Item>();
+	public double knapsack(ArrayList<Item> items, int size, int n) throws IllegalArgumentException {
 		int iw, iv;
+		double fraction, totalVal = 0d;
 		
 		if(items.isEmpty())
 			throw new IllegalArgumentException();
@@ -29,7 +30,7 @@ public class GreedyAlgorithm {
         { 
             public int compare(Item i1, Item i2)  
             { 
-                return Integer.valueOf(i2.getCost()).compareTo(Integer.valueOf(i1.getCost())) ; 
+                return Double.valueOf(i2.getCost()).compareTo(Double.valueOf(i1.getCost())) ; 
             } 																						
         }); 
 		
@@ -42,21 +43,21 @@ public class GreedyAlgorithm {
 			iw = currentItem.getWeight();
 			iv = currentItem.getValues();
 			
-			if(size-iw >= 0) // if the space available is not 0 , then add in the items that is fit with the space available currently
+			if(size-iw >= 0) // if the space available is not 0 , then add in full item that is fit with the space available currently
 			{																
-				rI.add(currentItem);
 				size -= iw;
+				totalVal += iv;
 			}
 			else
 			{
-				break;		// if the space is not enough for the item, then exit the loop
+				fraction = ((double)size/ (double)iw);
+				totalVal += (iv * fraction);
+				size = (int)(size - (iv * fraction));
+				break;		// get the fractional part of the item to fill in available space
 			}				
 		}
 		
-		Item[] myItem = new Item[rI.size()];
-	    rI.toArray(myItem);
-		
-		return myItem;
+		return totalVal;
 	}
 	
 }
@@ -91,10 +92,10 @@ class Item {
 	}
 	
 	/**
-	 * @return the cost is the product of its weight and value
+	 * @return the cost is the weight divided by value
 	 */
-	public int getCost()
+	public double getCost()
 	{
-		return wt * val;
+		return (double)val/(double)wt ;
 	}
 }
