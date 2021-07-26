@@ -1,4 +1,4 @@
-package Strings;
+package strings;
 import java.util.ArrayList;
 
 public class Split {
