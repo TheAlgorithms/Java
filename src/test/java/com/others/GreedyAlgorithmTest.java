@@ -20,17 +20,10 @@ public class GreedyAlgorithmTest {
 		int n = itemlist.size();
 		
 		GreedyAlgorithm bag = new GreedyAlgorithm();
+		double AR = bag.knapsack(itemlist, size, n);
+		double ER = 270;
 		
-		Item[] AR = bag.knapsack(itemlist, size, n);
-		Item[] ER = {new Item(30,120), new Item(20,100)};
-		
-		assertSame(ER.length, AR.length);
-		
-		for(int i = 0; i < ER.length; i++)
-		{
-			assertEquals(ER[i].getWeight(), AR[i].getWeight());
-			assertEquals(ER[i].getValues(), AR[i].getValues());
-		}
+		assertEquals(ER,AR,0.1);
 		
 	}
 
