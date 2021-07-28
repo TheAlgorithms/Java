@@ -1,6 +1,6 @@
 package strings;
 
-public class vowelCounter{
+public class CheckVowels{
 	
 	public static void main(String[] args) {
 	    
