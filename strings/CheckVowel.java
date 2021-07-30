@@ -3,6 +3,7 @@ package strings;
 public class CheckVowel {
 
     /**
+     * fixing an issue
      * this method will accept the string and count the vowel present in the string.
      * count will be return which will tell the number of vowels present
      *
