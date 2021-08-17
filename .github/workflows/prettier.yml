@@ -18,9 +18,9 @@ jobs:
         ref: ${{ github.head_ref }}
 
     - name: Prettify code
-      uses: creyD/prettier_action@v3.0
+      uses: creyD/prettier_action@v3.3
       with:
         prettier_options: --write **/*.{java}
-        commit_message: 'feat: prettify code'
+        commit_message: 'style: prettify code'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

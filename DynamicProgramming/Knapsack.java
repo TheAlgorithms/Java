@@ -26,7 +26,6 @@ public class Knapsack {
     int val[] = new int[] {50, 100, 130};
     int wt[] = new int[] {10, 20, 40};
     int W = 50;
-    int n = val.length;
-    System.out.println(knapSack(W, wt, val, n));
+    System.out.println(knapSack(W, wt, val, val.length));
   }
 }

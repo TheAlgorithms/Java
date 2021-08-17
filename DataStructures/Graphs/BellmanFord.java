@@ -4,7 +4,7 @@ import java.util.*;
 
 class BellmanFord
 /*Implementation of Bellman ford to detect negative cycles. Graph accepts inputs in form of edges which have
-start vertex, end vertes and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/
+start vertex, end vertex and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/
 {
   int vertex, edge;
   private Edge edges[];
@@ -48,7 +48,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
 
   public void
       go() // Interactive run for understanding the class first time. Assumes source vertex is 0 and
-        // shows distaance to all vertices
+        // shows distance to all vertices
       {
     Scanner sc = new Scanner(System.in); // Grab scanner object for user input
     int i, v, e, u, ve, w, j, neg = 0;
@@ -87,7 +87,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
         System.out.println("Negative cycle");
         break;
       }
-    if (neg == 0) // Go ahead and show results of computaion
+    if (neg == 0) // Go ahead and show results of computation
     {
       System.out.println("Distances are: ");
       for (i = 0; i < v; i++) System.out.println(i + " " + dist[i]);
@@ -150,7 +150,7 @@ start vertex, end vertes and weights. Vertices should be labelled with a number 
    * @param y End vertex
    * @param z Weight
    */
-  public void addEdge(int x, int y, int z) // Adds unidirectionl Edge
+  public void addEdge(int x, int y, int z) // Adds unidirectional edge
       {
     edges[index++] = new Edge(x, y, z);
   }

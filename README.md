@@ -1,9 +1,10 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
+
 # The Algorithms - Java
 [![Build Status](https://api.travis-ci.com/TheAlgorithms/Java.svg?branch=master)](https://travis-ci.com/TheAlgorithms/Java)&nbsp;
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/TheAlgorithms/100)
+[![Discord chat](https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square)](https://discord.gg/c7MnfGFGa6)&nbsp;
 [![Gitter chat](https://img.shields.io/badge/Chat-Gitter-ff69b4.svg?label=Chat&logo=gitter&style=flat-square)](https://gitter.im/TheAlgorithms)&nbsp;
-
-NOTE: A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we're trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
 
 You can run and edit the algorithms or contribute to them using Gitpod.io, a free online development environment, with a single click.
 
