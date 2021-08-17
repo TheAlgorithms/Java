@@ -36,3 +36,4 @@ gradle.properties
 .vscode
 
 *.log
+/.metadata/
