@@ -10,6 +10,8 @@
  * interface.
  * 
  * This code is contributed by AdityaMitra5102.
+ *
+ * Reference: https://www.tutorialspoint.com/what-are-the-advantages-of-lambda-expressions-in-java
    */
 
 package Misc;
