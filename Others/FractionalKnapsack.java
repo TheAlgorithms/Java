@@ -1,6 +1,13 @@
 package Others;
 
 import java.util.*;
+
+/*
+*In Fractional Knapsack, we can break items for maximizing the total value of knapsack.
+*This problem in which we can break an item is also called the fractional knapsack problem.
+*You can read more about Fractional Knapsack on "https://en.wikipedia.org/wiki/Knapsack_problem"
+*/
+
 // Greedy approach
 public class FractionalKnapsack {
     // function to get maximum value based on their cost which is the product of weight and value of the item.
