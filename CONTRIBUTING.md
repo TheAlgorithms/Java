@@ -12,7 +12,7 @@
 
 #### **Do you want to contribute to the documentation?**
 
-- Please read the documentation in here [Contributing to the Documentation]() ,[open a new one issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is appropriate.
+- Please read the documentation in here [Contributing to the Documentation](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md) ,[open a new one issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is appropriate.
 
 #### **Do you want to add a new feature?**
 
