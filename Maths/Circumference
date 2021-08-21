@@ -1,0 +1,20 @@
+package Maths;
+
+public class Circumference {
+  public static void main(String[] args) {
+
+   
+    /* test sphere */
+    assert Double.compare(surfaceAreaSphere(1), 12.566370614359172) == 0;
+
+ 
+  /**
+   * Calculate the circumference of a sphere
+   *
+   * @param radius radius of sphere
+   * @return circumference of given sphere
+   */
+  private static double CircumferenceaSphere(double radius) {
+    return 2 * Math.PI * radius;
+  }
+}
