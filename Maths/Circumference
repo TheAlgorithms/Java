@@ -5,7 +5,7 @@ public class Circumference {
 
    
     /* test sphere */
-    assert Double.compare(surfaceAreaSphere(1), 12.566370614359172) == 0;
+    assert Double.compare(CircumferenceSphere(5), 31.415926535897932) == 0;
 
  
   /**
@@ -14,7 +14,7 @@ public class Circumference {
    * @param radius radius of sphere
    * @return circumference of given sphere
    */
-  private static double CircumferenceaSphere(double radius) {
+  private static double CircumferenceSphere(double radius) {
     return 2 * Math.PI * radius;
   }
 }
