@@ -21,6 +21,22 @@ class CheckVowels{
    * @return {@code true} if given string has vowels, otherwise {@code false}
    */
     public static boolean hasVowels(String input){
-        return input.matches("[AEIOUaeiou]");
+        if(input.matches("[AEIOUaeiou]")){
+            countVowels(input);
+            return true;
+        }
+        return false;
+    }
+    public static void countVowels(String input){
+        input.toLowerCase();
+        int count=0;
+        int i=0;
+        while(i<input.length()){
+            if(input.charAt(i)=='a' || input.charAt(i)=='e'||input.charAt(i)=='i'||input.charAt(i)=='o'||input.charAt(i)=='u' ){
+                count++;
+            }
+            i++;
+        }
+        System.out.println(count);
     }
 }
