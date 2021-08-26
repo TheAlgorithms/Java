@@ -27,6 +27,12 @@ class CheckVowels{
         }
         return false;
     }
+    /**
+     * count the number of vowels
+     *
+     * @param input a string
+     * prints the count of vowels
+     */
     public static void countVowels(String input){
         input.toLowerCase();
         int count=0;
