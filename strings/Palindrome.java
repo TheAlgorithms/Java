@@ -5,12 +5,12 @@ class Palindrome {
 
   /** Driver Code */
   public static void main(String[] args) {
-    String[] palindromes = {null, "", "aba", "123321"};
+    String[] palindromes = {null, "", "aba", "12321","12aba21"};
     for (String s : palindromes) {
       assert isPalindrome(s) && isPalindromeRecursion(s) && isPalindrome1(s);
     }
 
-    String[] notPalindromes = {"abb", "abc", "abc123"};
+    String[] notPalindromes = {"abb", "abc","1234", "abc123"};
     for (String s : notPalindromes) {
       assert !isPalindrome(s) && !isPalindromeRecursion(s) && !isPalindrome1(s);
     }
