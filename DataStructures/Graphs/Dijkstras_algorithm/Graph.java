@@ -3,7 +3,7 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Graph {
-	private ArrayList<ArrayList<Pair>> g;	//ArrayList for storing adjacency list for a graph
+	private ArrayList<ArrayList<Pair>> g;	//ArrayList for storing adjacency list for a directed graph
 	private int vertexSetSize;	//Number of vertices
 	private int edgeSetSize;	//Number of vertices
 	final long UNREACHABLE_DISTANCE = (long) 1e14;
@@ -28,17 +28,23 @@ public class Graph {
 	
 	//A helper function for reading user input
 	public void readGraph(Scanner scanner) {
+		System.out.println("Enter end points and edge weights of " + edgeSetSize + " edges:");
 		int u,v,w;
 		
 		for(int i = 0; i < edgeSetSize; i++) {
 			u = scanner.nextInt();
 			v = scanner.nextInt();
 			w = scanner.nextInt();
+			/**
+				Assigning edge from u to v for the directed graph. 
+				If we intend to work with undirected graphs, we also need to mark an edge from v to u. Rest of the things remain the same.
+			 */
 			g.get(u - 1).add(new Pair(v - 1, w));
 		}
 	}
 	
 	/*
+		@param s: Source vertex
 		@brief
 		   This function uses Dijkstra's algorithm for calculating minimum distance.
 
@@ -57,7 +63,7 @@ public class Graph {
 		   		dist(v) = dist(u) + w(u,v)
 				add v to the priority queue.
 			}
-		 @see https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/
+		 @see https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/ for reference
 		
 	*/
 	public long[] dijkstra(int s) {
