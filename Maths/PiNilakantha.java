@@ -3,6 +3,9 @@ package Maths;
 public class PiNilakantha {
 
     // Calculates Pi using Nilakantha's infinite series
+    // Method 2 in the following link explains the algorithm
+    //https://en.scratch-wiki.info/wiki/Calculating_Pi
+
 
     public static void main(String[] args) {
         assert calculatePi(0) == 3.0;
