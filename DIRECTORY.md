@@ -158,6 +158,7 @@
   * [PerfectCube](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectCube.java)
   * [PerfectNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectNumber.java)
   * [PerfectSquare](https://github.com/TheAlgorithms/Java/blob/master/Maths/PerfectSquare.java)
+  * [PiNilakantha](https://github.com/TheAlgorithms/Java/blob/master/Maths/PiNilakantha.java)
   * [Pow](https://github.com/TheAlgorithms/Java/blob/master/Maths/Pow.java)
   * [PowerOfTwoOrNot](https://github.com/TheAlgorithms/Java/blob/master/Maths/PowerOfTwoOrNot.java)
   * [PowRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/PowRecursion.java)
