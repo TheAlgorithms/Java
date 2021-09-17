@@ -173,6 +173,7 @@
 
 ## Misc
   * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/Misc/ColorContrastRatio.java)
+  * [matrixTranspose](https://github.com/TheAlgorithms/Java/blob/master/Misc/matrixTranspose.java)
   * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/MedianOfRunningArray.java)
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
   * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/RangeInSortedArray.java)
