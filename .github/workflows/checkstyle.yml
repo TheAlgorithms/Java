@@ -2,7 +2,6 @@ name: Code Formatter
 
 on:
   push:
-    branches: [master, Development]
     paths:
       - "**.java"
     
@@ -11,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-
       - name: Set up JDK 17
         uses: actions/setup-java@v1
         with:
