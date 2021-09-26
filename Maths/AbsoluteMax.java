@@ -8,27 +8,22 @@ import java.util.Arrays;
  * <p>absMax([0, 5, 1, 11]) = 11, absMax([3 , -10, -2]) = -10
  */
 public class AbsoluteMax {
-  public static void main(String[] args) {
-    int[] testnums = {-2, 0, 16};
-    assert absMax(testnums) == 16;
+  int [] theArray;
+  public static int AbsMax(int[] tab){
+    int Max= tab[0];
+    for (int j = 1; j< tab.length;j++){
 
-    int[] numbers = {3, -10, -2};
-    System.out.println("absMax(" + Arrays.toString(numbers) + ") = " + absMax(numbers));
-  }
-
-  /**
-   * get the value, return the absolute max value
-   *
-   * @param numbers contains elements
-   * @return the absolute max value
-   */
-  public static int absMax(int[] numbers) {
-    int absMaxValue = numbers[0];
-    for (int i = 1, length = numbers.length; i < length; ++i) {
-      if (Math.abs(numbers[i]) > Math.abs(absMaxValue)) {
-        absMaxValue = numbers[i];
+      if (Math.abs(Max)< Math.abs(tab[j])){
+        Max=tab[j];
       }
     }
-    return absMaxValue;
+    return Max;
+  }
+  public static  void main(String[] args){
+    int[] tab1={0,5,1,11};
+    int[] tab2={3, -10,-2};
+    System.out.println("max 1:"+ AbsMax(tab1));
+    System.out.println("max 1:"+ AbsMax(tab2));
   }
 }
+
