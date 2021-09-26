@@ -1,13 +1,13 @@
 # This GitHub Action updates the DIRECTORY.md file (if needed) when doing a git push
-name: update_directory_md
-on: [push]
+name: Update Directory
+on: push
 jobs:
   update_directory_md:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@master
-      - name: update_directory_md
+      - name: Update Directory
         shell: python
         run: |
             import os
@@ -63,5 +63,5 @@ jobs:
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git add DIRECTORY.md
-          git commit -am "updating DIRECTORY.md" ||  true
+          git commit -am "Update directory" ||  true
           git push --force origin HEAD:$GITHUB_REF || true

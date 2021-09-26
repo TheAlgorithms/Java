@@ -1,4 +1,4 @@
-package ciphers;
+package Ciphers;
 
 import java.util.Scanner;
 
@@ -14,12 +14,10 @@ public class Caesar {
   /**
    * Encrypt text by shifting every Latin char by add number shift for ASCII Example : A + 1 -> B
    *
-   * @param message
-   * @param shift
    * @return Encrypted message
    */
   public static String encode(String message, int shift) {
-    String encoded = "";
+    StringBuilder encoded = new StringBuilder();
 
     shift %= 26;
 
@@ -33,29 +31,27 @@ public class Caesar {
       if (IsCapitalLatinLetter(current)) {
 
         current += shift;
-        encoded += (char) (current > 'Z' ? current - 26 : current); // 26 = number of latin letters
+        encoded.append((char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
 
       } else if (IsSmallLatinLetter(current)) {
 
         current += shift;
-        encoded += (char) (current > 'z' ? current - 26 : current); // 26 = number of latin letters
+        encoded.append((char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
 
       } else {
-        encoded += current;
+        encoded.append(current);
       }
     }
-    return encoded;
+    return encoded.toString();
   }
 
   /**
    * Decrypt message by shifting back every Latin char to previous the ASCII Example : B - 1 -> A
    *
-   * @param encryptedMessage
-   * @param shift
    * @return message
    */
   public static String decode(String encryptedMessage, int shift) {
-    String decoded = "";
+    StringBuilder decoded = new StringBuilder();
 
     shift %= 26;
 
@@ -65,22 +61,21 @@ public class Caesar {
       if (IsCapitalLatinLetter(current)) {
 
         current -= shift;
-        decoded += (char) (current < 'A' ? current + 26 : current); // 26 = number of latin letters
+        decoded.append((char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
 
       } else if (IsSmallLatinLetter(current)) {
 
         current -= shift;
-        decoded += (char) (current < 'a' ? current + 26 : current); // 26 = number of latin letters
+        decoded.append((char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
 
       } else {
-        decoded += current;
+        decoded.append(current);
       }
     }
-    return decoded;
+    return decoded.toString();
   }
 
   /**
-   * @param c
    * @return true if character is capital Latin letter or false for others
    */
   private static boolean IsCapitalLatinLetter(char c) {
@@ -88,7 +83,6 @@ public class Caesar {
   }
 
   /**
-   * @param c
    * @return true if character is small Latin letter or false for others
    */
   private static boolean IsSmallLatinLetter(char c) {

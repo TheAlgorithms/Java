@@ -1,4 +1,6 @@
-package ciphers;
+package Ciphers;
+
+import java.util.Objects;
 
 /**
  * Columnar Transposition Cipher Encryption and Decryption.
@@ -27,13 +29,13 @@ public class ColumnarTranspositionCipher {
     abecedariumBuilder(500);
     table = tableBuilder(word);
     Object[][] sortedTable = sortTable(table);
-    String wordEncrypted = "";
+    StringBuilder wordEncrypted = new StringBuilder();
     for (int i = 0; i < sortedTable[i].length; i++) {
       for (int j = 1; j < sortedTable.length; j++) {
-        wordEncrypted += sortedTable[j][i];
+        wordEncrypted.append(sortedTable[j][i]);
       }
     }
-    return wordEncrypted;
+    return wordEncrypted.toString();
   }
 
   /**
@@ -46,20 +48,16 @@ public class ColumnarTranspositionCipher {
    */
   public static String encrpyter(String word, String keyword, String abecedarium) {
     ColumnarTranspositionCipher.keyword = keyword;
-    if (abecedarium != null) {
-      ColumnarTranspositionCipher.abecedarium = abecedarium;
-    } else {
-      ColumnarTranspositionCipher.abecedarium = ABECEDARIUM;
-    }
+    ColumnarTranspositionCipher.abecedarium = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
     table = tableBuilder(word);
     Object[][] sortedTable = sortTable(table);
-    String wordEncrypted = "";
+    StringBuilder wordEncrypted = new StringBuilder();
     for (int i = 0; i < sortedTable[0].length; i++) {
       for (int j = 1; j < sortedTable.length; j++) {
-        wordEncrypted += sortedTable[j][i];
+        wordEncrypted.append(sortedTable[j][i]);
       }
     }
-    return wordEncrypted;
+    return wordEncrypted.toString();
   }
 
   /**
@@ -68,13 +66,13 @@ public class ColumnarTranspositionCipher {
    * @return a String decrypted with the word encrypted by the Columnar Transposition Cipher Rule
    */
   public static String decrypter() {
-    String wordDecrypted = "";
+    StringBuilder wordDecrypted = new StringBuilder();
     for (int i = 1; i < table.length; i++) {
       for (Object item : table[i]) {
-        wordDecrypted += item;
+        wordDecrypted.append(item);
       }
     }
-    return wordDecrypted.replaceAll(ENCRYPTION_FIELD, "");
+    return wordDecrypted.toString().replaceAll(ENCRYPTION_FIELD, "");
   }
 
   /**
@@ -127,7 +125,6 @@ public class ColumnarTranspositionCipher {
   }
 
   /**
-   * @param table
    * @return tableSorted
    */
   private static Object[][] sortTable(Object[][] table) {
@@ -147,9 +144,6 @@ public class ColumnarTranspositionCipher {
   }
 
   /**
-   * @param table
-   * @param rows
-   * @param column
    * @return columnArray
    */
   private static Object[] getColumn(Object[][] table, int rows, int column) {
@@ -160,12 +154,6 @@ public class ColumnarTranspositionCipher {
     return columnArray;
   }
 
-  /**
-   * @param table
-   * @param firstColumnIndex
-   * @param secondColumnIndex
-   * @param columnToSwitch
-   */
   private static void switchColumns(
       Object[][] table, int firstColumnIndex, int secondColumnIndex, Object[] columnToSwitch) {
     for (int i = 0; i < table.length; i++) {
@@ -180,10 +168,11 @@ public class ColumnarTranspositionCipher {
    * @param value Number of characters being used based on the ASCII Table
    */
   private static void abecedariumBuilder(int value) {
-    abecedarium = "";
+    StringBuilder t = new StringBuilder();
     for (int i = 0; i < value; i++) {
-      abecedarium += (char) i;
+      t.append((char) i);
     }
+    abecedarium = t.toString();
   }
 
   private static void showTable() {

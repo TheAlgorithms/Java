@@ -1,12 +1,12 @@
 
-## ciphers
-  * [AES](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AES.java)
-  * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AESEncryption.java)
-  * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
-  * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/ColumnarTranspositionCipher.java)
-  * [RSA](https://github.com/TheAlgorithms/Java/blob/master/ciphers/RSA.java)
-  * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/ciphers/SimpleSubstitutionCipher.java)
-  * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Vigenere.java)
+## Ciphers
+  * [AES](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AES.java)
+  * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AESEncryption.java)
+  * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/Caesar.java)
+  * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/ColumnarTranspositionCipher.java)
+  * [RSA](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/RSA.java)
+  * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/SimpleSubstitutionCipher.java)
+  * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/Vigenere.java)
 
 ## Conversions
   * [AnyBaseToAnyBase](https://github.com/TheAlgorithms/Java/blob/master/Conversions/AnyBaseToAnyBase.java)
@@ -96,9 +96,9 @@
     * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/TrieImp.java)
     * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/ValidBSTOrNot.java)
 
-## divideconquer
-  * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/ClosestPair.java)
-  * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/SkylineAlgorithm.java)
+## DivideAndConquer
+  * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/DivideAndConquer/ClosestPair.java)
+  * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/DivideAndConquer/SkylineAlgorithm.java)
 
 ## DynamicProgramming
   * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/BoardPath.java)
@@ -227,20 +227,8 @@
   * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/Others/TwoPointers.java)
   * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/WorstFit.java)
 
-## ProjectEuler
-  * [Problem01](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem01.java)
-  * [Problem02](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem02.java)
-  * [Problem03](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem03.java)
-  * [Problem04](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem04.java)
-  * [Problem06](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem06.java)
-  * [Problem07](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem07.java)
-  * [Problem09](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem09.java)
-  * [Problem10](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem10.java)
-  * [Problem12](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem12.java)
-
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
-  * [IBSearch test](https://github.com/TheAlgorithms/Java/blob/master/Searches/IBSearch_test.java)
   * [InterpolationSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/InterpolationSearch.java)
   * [IterativeBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeBinarySearch.java)
   * [IterativeTernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeTernarySearch.java)
@@ -274,15 +262,15 @@
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
   * [TimSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/TimSort.java)
 
-## strings
-  * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
-  * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/strings/CharactersSame.java)
-  * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckAnagrams.java)
-  * [CheckVowels](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckVowels.java)
-  * [HorspoolSearch](https://github.com/TheAlgorithms/Java/blob/master/strings/HorspoolSearch.java)
-  * [Lower](https://github.com/TheAlgorithms/Java/blob/master/strings/Lower.java)
-  * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/strings/Palindrome.java)
-  * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/strings/Pangram.java)
-  * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/strings/ReverseString.java)
-  * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/strings/Rotation.java)
-  * [Upper](https://github.com/TheAlgorithms/Java/blob/master/strings/Upper.java)
+## Strings
+  * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/Strings/Alphabetical.java)
+  * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/Strings/CharactersSame.java)
+  * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/Strings/CheckAnagrams.java)
+  * [CheckVowels](https://github.com/TheAlgorithms/Java/blob/master/Strings/CheckVowels.java)
+  * [HorspoolSearch](https://github.com/TheAlgorithms/Java/blob/master/Strings/HorspoolSearch.java)
+  * [Lower](https://github.com/TheAlgorithms/Java/blob/master/Strings/Lower.java)
+  * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/Strings/Palindrome.java)
+  * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/Strings/Pangram.java)
+  * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/Strings/ReverseString.java)
+  * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/Strings/Rotation.java)
+  * [Upper](https://github.com/TheAlgorithms/Java/blob/master/Strings/Upper.java)

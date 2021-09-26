@@ -20,7 +20,7 @@ public class HashMapLinearProbing {
   public HashMapLinearProbing(int hsize) {
     this.buckets = new Integer[hsize];
     this.hsize = hsize;
-    this.AVAILABLE = new Integer(Integer.MIN_VALUE);
+    this.AVAILABLE = Integer.MIN_VALUE;
     this.size = 0;
   }
 
@@ -44,7 +44,7 @@ public class HashMapLinearProbing {
    * @param key the desired key to be inserted in the hash map
    */
   public void insertHash(int key) {
-    Integer wrappedInt = new Integer(key);
+    Integer wrappedInt = key;
     int hash = hashing(key);
 
     if (isFull()) {
@@ -73,7 +73,7 @@ public class HashMapLinearProbing {
    * @param key the desired key to be deleted
    */
   public void deleteHash(int key) {
-    Integer wrappedInt = new Integer(key);
+    Integer wrappedInt = key;
     int hash = hashing(key);
 
     if (isEmpty()) {
@@ -115,7 +115,7 @@ public class HashMapLinearProbing {
    * @return int the index where the key is located
    */
   public int findHash(int key) {
-    Integer wrappedInt = new Integer(key);
+    Integer wrappedInt = key;
     int hash = hashing(key);
 
     if (isEmpty()) {
