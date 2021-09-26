@@ -1,5 +1,5 @@
 
-## Ciphers
+## ciphers
   * [AES](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AES.java)
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AESEncryption.java)
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
@@ -29,12 +29,12 @@
   * [RomanToInteger](https://github.com/TheAlgorithms/Java/blob/master/Conversions/RomanToInteger.java)
   * [TurkishToLatinConversion](https://github.com/TheAlgorithms/Java/blob/master/Conversions/TurkishToLatinConversion.java)
 
-## Data Structures
+## DataStructures
   * Bags
     * [Bag](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Bags/Bag.java)
   * Buffers
     * [CircularBuffer](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Buffers/CircularBuffer.java)
-  * Dynamic Arrays
+  * DynamicArray
     * [DynamicArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DynamicArray/DynamicArray.java)
   * Graphs
     * [A Star](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/A_Star.java)
@@ -46,7 +46,7 @@
     * [Kruskal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Kruskal.java)
     * [MatrixGraphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/MatrixGraphs.java)
     * [PrimMST](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/PrimMST.java)
-  * Hash Maps
+  * HashMap
     * Hashing
       * [HashMap](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMap.java)
       * [HashMapLinearProbing](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/HashMap/Hashing/HashMapLinearProbing.java)
@@ -96,11 +96,11 @@
     * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/TrieImp.java)
     * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/ValidBSTOrNot.java)
 
-## Divide and Conquer
+## divideconquer
   * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/ClosestPair.java)
   * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/SkylineAlgorithm.java)
 
-## Dynamic Programming
+## DynamicProgramming
   * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/BoardPath.java)
   * [BruteForceKnapsack](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/BruteForceKnapsack.java)
   * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/DynamicProgramming/CoinChange.java)
@@ -173,7 +173,7 @@
   * [SumOfDigits](https://github.com/TheAlgorithms/Java/blob/master/Maths/SumOfDigits.java)
   * [VampireNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/VampireNumber.java)
 
-## Minimizing Lateness
+## MinimizingLateness
   * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/MinimizingLateness/MinimizingLateness.java)
 
 ## Misc
@@ -227,7 +227,7 @@
   * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/Others/TwoPointers.java)
   * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/Others/WorstFit.java)
 
-## Project Euler
+## ProjectEuler
   * [Problem01](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem01.java)
   * [Problem02](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem02.java)
   * [Problem03](https://github.com/TheAlgorithms/Java/blob/master/ProjectEuler/Problem03.java)
@@ -274,7 +274,7 @@
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
   * [TimSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/TimSort.java)
 
-## Strings
+## strings
   * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
   * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/strings/CharactersSame.java)
   * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckAnagrams.java)
