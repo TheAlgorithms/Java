@@ -1,7 +1,5 @@
 name: 'Close stale issues and PRs'
-on:
-  schedule:
-    - cron: '0 */10 * * *'
+on: push
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -14,6 +12,6 @@ jobs:
           close-pr-message: 'Please reopen this pull request once you commit the changes requested or make improvements on the code. If this is not the case and you need some help, feel free to seek help from our [Gitter](https://gitter.im/TheAlgorithms) or ping one of the reviewers. Thank you for your contributions!'
           exempt-issue-labels: 'dont-close'
           exempt-pr-labels: 'dont-close'
-          days-before-stale: 30
-          days-before-close: 7
-          operations-per-run: 150
+          days-before-stale: 5
+          days-before-close: 0
+          operations-per-run: 500
