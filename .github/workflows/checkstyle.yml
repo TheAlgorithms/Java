@@ -1,10 +1,5 @@
-name: Code Formatter
-
-on:
-  push:
-    paths:
-      - "**.java"
-    
+name: Format Code
+on: push
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -23,5 +18,5 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git commit -am "Formatted with Google Java Formatter" || true
+          git commit -am "Format with Google Java Formatter" || true
           git push --force origin HEAD:$GITHUB_REF || true
