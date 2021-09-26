@@ -363,7 +363,7 @@ public class AES {
       blockBits.append(cellBits);
     }
 
-    return new BigInteger(blockBits.toString(), 2);
+    return new BigInteger(blockBits.toStbring(), 2);
   }
 
   /**
