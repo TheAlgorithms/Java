@@ -12,6 +12,6 @@ jobs:
           close-pr-message: 'Please reopen this pull request once you commit the changes requested or make improvements on the code. If this is not the case and you need some help, feel free to seek help from our [Gitter](https://gitter.im/TheAlgorithms) or ping one of the reviewers. Thank you for your contributions!'
           exempt-issue-labels: 'dont-close'
           exempt-pr-labels: 'dont-close'
-          days-before-stale: 4
+          days-before-stale: 3
           days-before-close: 0
           operations-per-run: 500
