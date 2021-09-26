@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-python@master
-      - name: update_directory_md
+      - name: Update Directory
         shell: python
         run: |
             import os
