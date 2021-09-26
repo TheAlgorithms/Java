@@ -1,4 +1,4 @@
-package ciphers;
+package Ciphers;
 
 import java.math.BigInteger;
 import java.util.Scanner;
@@ -215,30 +215,26 @@ public class AES {
 
   /**
    * Subroutine of the Rijndael key expansion.
-   *
-   * @param t
-   * @param rconCounter
-   * @return
    */
   public static BigInteger scheduleCore(BigInteger t, int rconCounter) {
-    String rBytes = t.toString(16);
+    StringBuilder rBytes = new StringBuilder(t.toString(16));
 
     // Add zero padding
     while (rBytes.length() < 8) {
-      rBytes = "0" + rBytes;
+      rBytes.insert(0, "0");
     }
 
     // rotate the first 16 bits to the back
     String rotatingBytes = rBytes.substring(0, 2);
     String fixedBytes = rBytes.substring(2);
 
-    rBytes = fixedBytes + rotatingBytes;
+    rBytes = new StringBuilder(fixedBytes + rotatingBytes);
 
     // apply S-Box to all 8-Bit Substrings
     for (int i = 0; i < 4; i++) {
-      String currentByteBits = rBytes.substring(i * 2, (i + 1) * 2);
+      StringBuilder currentByteBits = new StringBuilder(rBytes.substring(i * 2, (i + 1) * 2));
 
-      int currentByte = Integer.parseInt(currentByteBits, 16);
+      int currentByte = Integer.parseInt(currentByteBits.toString(), 16);
       currentByte = SBOX[currentByte];
 
       // add the current RCON value to the first byte
@@ -246,27 +242,26 @@ public class AES {
         currentByte = currentByte ^ RCON[rconCounter];
       }
 
-      currentByteBits = Integer.toHexString(currentByte);
+      currentByteBits = new StringBuilder(Integer.toHexString(currentByte));
 
       // Add zero padding
 
       while (currentByteBits.length() < 2) {
-        currentByteBits = '0' + currentByteBits;
+        currentByteBits.insert(0, '0');
       }
 
       // replace bytes in original string
-      rBytes = rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2);
+      rBytes = new StringBuilder(rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
     }
 
     // t = new BigInteger(rBytes, 16);
     // return t;
-    return new BigInteger(rBytes, 16);
+    return new BigInteger(rBytes.toString(), 16);
   }
 
   /**
    * Returns an array of 10 + 1 round keys that are calculated by using Rijndael key schedule
    *
-   * @param initialKey
    * @return array of 10 + 1 round keys
    */
   public static BigInteger[] keyExpansion(BigInteger initialKey) {
@@ -332,11 +327,11 @@ public class AES {
   public static int[] splitBlockIntoCells(BigInteger block) {
 
     int[] cells = new int[16];
-    String blockBits = block.toString(2);
+    StringBuilder blockBits = new StringBuilder(block.toString(2));
 
     // Append leading 0 for full "128-bit" string
     while (blockBits.length() < 128) {
-      blockBits = '0' + blockBits;
+      blockBits.insert(0, '0');
     }
 
     // split 128 to 8 bit cells
@@ -356,24 +351,22 @@ public class AES {
    */
   public static BigInteger mergeCellsIntoBlock(int[] cells) {
 
-    String blockBits = "";
+    StringBuilder blockBits = new StringBuilder();
     for (int i = 0; i < 16; i++) {
-      String cellBits = Integer.toBinaryString(cells[i]);
+      StringBuilder cellBits = new StringBuilder(Integer.toBinaryString(cells[i]));
 
       // Append leading 0 for full "8-bit" strings
       while (cellBits.length() < 8) {
-        cellBits = '0' + cellBits;
+        cellBits.insert(0, '0');
       }
 
-      blockBits += cellBits;
+      blockBits.append(cellBits);
     }
 
-    return new BigInteger(blockBits, 2);
+    return new BigInteger(blockBits.toString(), 2);
   }
 
   /**
-   * @param ciphertext
-   * @param key
    * @return ciphertext XOR key
    */
   public static BigInteger addRoundKey(BigInteger ciphertext, BigInteger key) {
@@ -383,7 +376,6 @@ public class AES {
   /**
    * substitutes 8-Bit long substrings of the input using the S-Box and returns the result.
    *
-   * @param ciphertext
    * @return subtraction Output
    */
   public static BigInteger subBytes(BigInteger ciphertext) {
@@ -401,7 +393,6 @@ public class AES {
    * substitutes 8-Bit long substrings of the input using the inverse S-Box for decryption and
    * returns the result.
    *
-   * @param ciphertext
    * @return subtraction Output
    */
   public static BigInteger subBytesDec(BigInteger ciphertext) {
@@ -417,8 +408,6 @@ public class AES {
 
   /**
    * Cell permutation step. Shifts cells within the rows of the input and returns the result.
-   *
-   * @param ciphertext
    */
   public static BigInteger shiftRows(BigInteger ciphertext) {
     int[] cells = splitBlockIntoCells(ciphertext);
@@ -454,8 +443,6 @@ public class AES {
   /**
    * Cell permutation step for decryption . Shifts cells within the rows of the input and returns
    * the result.
-   *
-   * @param ciphertext
    */
   public static BigInteger shiftRowsDec(BigInteger ciphertext) {
     int[] cells = splitBlockIntoCells(ciphertext);
@@ -490,8 +477,6 @@ public class AES {
 
   /**
    * Applies the Rijndael MixColumns to the input and returns the result.
-   *
-   * @param ciphertext
    */
   public static BigInteger mixColumns(BigInteger ciphertext) {
 
@@ -511,8 +496,6 @@ public class AES {
 
   /**
    * Applies the inverse Rijndael MixColumns for decryption to the input and returns the result.
-   *
-   * @param ciphertext
    */
   public static BigInteger mixColumnsDec(BigInteger ciphertext) {
 
@@ -563,7 +546,6 @@ public class AES {
    * Decrypts the ciphertext with the key and returns the result
    *
    * @param cipherText The Encrypted text which we want to decrypt
-   * @param key
    * @return decryptedText
    */
   public static BigInteger decrypt(BigInteger cipherText, BigInteger key) {
@@ -596,8 +578,7 @@ public class AES {
       char choice = input.nextLine().charAt(0);
       String in;
       switch (choice) {
-        case 'E':
-        case 'e':
+        case 'E', 'e' -> {
           System.out.println("Choose a plaintext block (128-Bit Integer in base 16):");
           in = input.nextLine();
           BigInteger plaintext = new BigInteger(in, 16);
@@ -605,10 +586,9 @@ public class AES {
           in = input.nextLine();
           BigInteger encryptionKey = new BigInteger(in, 16);
           System.out.println(
-              "The encrypted message is: \n" + encrypt(plaintext, encryptionKey).toString(16));
-          break;
-        case 'D':
-        case 'd':
+                  "The encrypted message is: \n" + encrypt(plaintext, encryptionKey).toString(16));
+        }
+        case 'D', 'd' -> {
           System.out.println("Enter your ciphertext block (128-Bit Integer in base 16):");
           in = input.nextLine();
           BigInteger ciphertext = new BigInteger(in, 16);
@@ -616,10 +596,9 @@ public class AES {
           in = input.nextLine();
           BigInteger decryptionKey = new BigInteger(in, 16);
           System.out.println(
-              "The deciphered message is:\n" + decrypt(ciphertext, decryptionKey).toString(16));
-          break;
-        default:
-          System.out.println("** End **");
+                  "The deciphered message is:\n" + decrypt(ciphertext, decryptionKey).toString(16));
+        }
+        default -> System.out.println("** End **");
       }
     }
   }

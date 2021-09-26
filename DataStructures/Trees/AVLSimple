@@ -82,7 +82,7 @@ public class AVLTree {
 		System.out.println(this.root.height);
 	}
 	private void display (Node node) {
-		String str="";
+		Strings str="";
 		if(node.left!=null)
 			str+=node.left.data+"=>";
 		else

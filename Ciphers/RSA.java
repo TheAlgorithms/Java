@@ -1,4 +1,4 @@
-package ciphers;
+package Ciphers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -20,13 +20,11 @@ public final class RSA {
 
   private BigInteger modulus, privateKey, publicKey;
 
-  /** @param bits */
   public RSA(int bits) {
     generateKeys(bits);
   }
 
   /**
-   * @param message
    * @return encrypted message
    */
   public synchronized String encrypt(String message) {
@@ -34,7 +32,6 @@ public final class RSA {
   }
 
   /**
-   * @param message
    * @return encrypted message as big integer
    */
   public synchronized BigInteger encrypt(BigInteger message) {
@@ -42,7 +39,6 @@ public final class RSA {
   }
 
   /**
-   * @param encryptedMessage
    * @return plain message
    */
   public synchronized String decrypt(String encryptedMessage) {
@@ -50,7 +46,6 @@ public final class RSA {
   }
 
   /**
-   * @param encryptedMessage
    * @return plain message as big integer
    */
   public synchronized BigInteger decrypt(BigInteger encryptedMessage) {
@@ -59,8 +54,6 @@ public final class RSA {
 
   /**
    * Generate a new public and private key set.
-   *
-   * @param bits
    */
   public synchronized void generateKeys(int bits) {
     SecureRandom r = new SecureRandom();

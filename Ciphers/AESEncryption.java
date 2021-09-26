@@ -1,4 +1,4 @@
-package ciphers;
+package Ciphers;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -42,15 +42,12 @@ public class AESEncryption {
   public static SecretKey getSecretEncryptionKey() throws NoSuchAlgorithmException {
     KeyGenerator aesKeyGenerator = KeyGenerator.getInstance("AES");
     aesKeyGenerator.init(128); // The AES key size in number of bits
-    SecretKey secKey = aesKeyGenerator.generateKey();
-    return secKey;
+    return aesKeyGenerator.generateKey();
   }
 
   /**
    * Encrypts plainText in AES using the secret key
    *
-   * @param plainText
-   * @param secKey
    * @return byteCipherText (The encrypted text)
    * @throws NoSuchPaddingException (from Cipher)
    * @throws NoSuchAlgorithmException (from Cipher)
@@ -64,21 +61,13 @@ public class AESEncryption {
     // AES defaults to AES/ECB/PKCS5Padding in Java 7
     Cipher aesCipher = Cipher.getInstance("AES");
     aesCipher.init(Cipher.ENCRYPT_MODE, secKey);
-    byte[] byteCipherText = aesCipher.doFinal(plainText.getBytes());
-    return byteCipherText;
+    return aesCipher.doFinal(plainText.getBytes());
   }
 
   /**
    * Decrypts encrypted byte array using the key used for encryption.
    *
-   * @param byteCipherText
-   * @param secKey
    * @return plainText
-   * @throws NoSuchPaddingException
-   * @throws NoSuchAlgorithmException
-   * @throws InvalidKeyException
-   * @throws BadPaddingException
-   * @throws IllegalBlockSizeException
    */
   public static String decryptText(byte[] byteCipherText, SecretKey secKey)
       throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
@@ -92,10 +81,8 @@ public class AESEncryption {
 
   /**
    * Convert a binary byte array into readable hex form Old library is deprecated on OpenJdk 11 and
-   * this is faster regarding other solution is using StringBuilder Credit {@link
-   * https://stackoverflow.com/questions/9655181/how-to-convert-a-byte-array-to-a-hex-string-in-java/9855338#9855338}
+   * this is faster regarding other solution is using StringBuilder
    *
-   * @param hash (in binary)
    * @return hexHash
    */
   public static String bytesToHex(byte[] bytes) {

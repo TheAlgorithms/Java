@@ -1,3 +1,5 @@
+package Searches;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -12,21 +14,21 @@ public class IterativeBinarySearch_Test {
 
   @Test
   void tc1_key_khong_co_trong_mang() {
-    assertTrue(search.find(arr, 11) == -1);
+    assertEquals(-1, search.find(arr, 11));
   }
 
   @Test
   void tc2_key_nam_chinh_giua_mang() {
-    assertTrue(search.find(arr, 5) == 5);
+    assertEquals(5, search.find(arr, 5));
   }
 
   @Test
   void tc3_key_nam_cuoi_mang() {
-    assertTrue(search.find(arr, 10) == 10);
+    assertEquals(10, search.find(arr, 10));
   }
 
   @Test
   void tc4_key_nam_dau_mang() {
-    assertTrue(search.find(arr, 0) == 0);
+    assertEquals(0, search.find(arr, 0));
   }
 }

@@ -22,7 +22,7 @@ public class DecimalToAnyUsingStack {
   private static String convert(int number, int radix) {
     if (radix < 2 || radix > 16) {
       throw new ArithmeticException(
-          String.format("Invalid input -> number:%d,radius:%d", number, radix));
+          Strings.format("Invalid input -> number:%d,radius:%d", number, radix));
     }
     char[] tables = {
       '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'

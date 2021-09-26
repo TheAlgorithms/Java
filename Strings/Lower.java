@@ -1,4 +1,4 @@
-package strings;
+package Strings;
 
 public class Lower {
 

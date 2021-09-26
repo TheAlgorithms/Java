@@ -1,16 +1,15 @@
-package divideconquer;
+package DivideAndConquer;
+
+import java.io.IOException;
 
 /**
  * For a set of points in a coordinates system (10000 maximum), ClosestPair class calculates the two
  * closest points.
- *
- * @author: anonymous
- * @author: Marisa Afuera
  */
 public final class ClosestPair {
 
   /** Number of points */
-  int numberPoints = 0;
+  int numberPoints;
   /** Input data, maximum 10000. */
   private Location[] array;
   /** Minimum point coordinate. */
@@ -40,8 +39,8 @@ public final class ClosestPair {
   /** Location class is an auxiliary type to keep points coordinates. */
   public static class Location {
 
-    double x = 0;
-    double y = 0;
+    double x;
+    double y;
 
     /**
      * @param xpar (IN Parameter) x coordinate <br>
@@ -172,9 +171,9 @@ public final class ClosestPair {
     // divide-right array
     System.arraycopy(divideArray, divideX, rightArray, 0, indexNum - divideX);
 
-    double minLeftArea = 0; // Minimum length of left array
-    double minRightArea = 0; // Minimum length of right array
-    double minValue = 0; // Minimum lengt
+    double minLeftArea; // Minimum length of left array
+    double minRightArea; // Minimum length of right array
+    double minValue; // Minimum lengt
 
     minLeftArea = closestPair(leftArray, divideX); // recursive closestPair
     minRightArea = closestPair(rightArray, indexNum - divideX);
@@ -209,7 +208,7 @@ public final class ClosestPair {
     }
     yQuickSort(firstWindow, 0, secondCount - 1); // Sort by y coordinates
     /* Coordinates in Window */
-    double length = 0;
+    double length;
     // size comparison within window
     for (int i = 0; i < secondCount - 1; i++) {
       for (int j = (i + 1); j < secondCount; j++) {
@@ -246,9 +245,9 @@ public final class ClosestPair {
   public double bruteForce(final Location[] arrayParam) {
 
     double minValue = Double.MAX_VALUE; // minimum distance
-    double length = 0;
-    double xGap = 0; // Difference between x coordinates
-    double yGap = 0; // Difference between y coordinates
+    double length;
+    double xGap; // Difference between x coordinates
+    double yGap; // Difference between y coordinates
     double result = 0;
 
     if (arrayParam.length == 2) {
@@ -297,7 +296,6 @@ public final class ClosestPair {
    * main function: execute class.
    *
    * @param args (IN Parameter) <br>
-   * @throws IOException If an input or output exception occurred
    */
   public static void main(final String[] args) {
 

@@ -1,5 +1,5 @@
 
-## ciphers
+## Ciphers
   * [AES](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AES.java)
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/ciphers/AESEncryption.java)
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/ciphers/Caesar.java)
@@ -96,7 +96,7 @@
     * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/TrieImp.java)
     * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/ValidBSTOrNot.java)
 
-## divideconquer
+## DivideAndConquer
   * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/ClosestPair.java)
   * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/divideconquer/SkylineAlgorithm.java)
 
@@ -274,7 +274,7 @@
   * [SortUtils](https://github.com/TheAlgorithms/Java/blob/master/Sorts/SortUtils.java)
   * [TimSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/TimSort.java)
 
-## strings
+## Strings
   * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/strings/Alphabetical.java)
   * [CharactersSame](https://github.com/TheAlgorithms/Java/blob/master/strings/CharactersSame.java)
   * [CheckAnagrams](https://github.com/TheAlgorithms/Java/blob/master/strings/CheckAnagrams.java)

@@ -1,4 +1,4 @@
-package strings;
+package Strings;
 
 /** Wikipedia: https://en.wikipedia.org/wiki/Palindrome */
 class Palindrome {
