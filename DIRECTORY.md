@@ -231,7 +231,6 @@
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
   * [InterpolationSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/InterpolationSearch.java)
   * [IterativeBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeBinarySearch.java)
-  * [IterativeBinarySearch Test](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeBinarySearch_Test.java)
   * [IterativeTernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/IterativeTernarySearch.java)
   * [JumpSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/JumpSearch.java)
   * [LinearSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/LinearSearch.java)
