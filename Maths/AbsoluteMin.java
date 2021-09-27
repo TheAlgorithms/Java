@@ -7,28 +7,24 @@ import java.util.Arrays;
  *
  * <p>absMin([0, 5, 1, 11]) = 0, absMin([3 , -10, -2]) = -2
  */
+
 public class AbsoluteMin {
-  public static void main(String[] args) {
-    int[] testnums = {4, 0, 16};
-    assert absMin(testnums) == 0;
+  int [] theArray;
+  public static int AbsMin(int[] tab){
+    int Min= tab[0];
+    for (int j = 1; j< tab.length;j++){
 
-    int[] numbers = {3, -10, -2};
-    System.out.println("absMin(" + Arrays.toString(numbers) + ") = " + absMin(numbers));
-  }
-
-  /**
-   * get the value, returns the absolute min value min
-   *
-   * @param numbers contains elements
-   * @return the absolute min value
-   */
-  public static int absMin(int[] numbers) {
-    int absMinValue = numbers[0];
-    for (int i = 1, length = numbers.length; i < length; ++i) {
-      if (Math.abs(numbers[i]) < Math.abs(absMinValue)) {
-        absMinValue = numbers[i];
+      if (Math.abs(Min)> Math.abs(tab[j])){
+        Min=tab[j];
       }
     }
-    return absMinValue;
+    return Min;
+  }
+  public static  void main(String[] args){
+    int[] tab1={0,5,1,11};
+    int[] tab2={3, -10,-2};
+    System.out.println("min 1:"+ AbsMin(tab1));
+    System.out.println("min 1:"+ AbsMin(tab2));
   }
 }
+
