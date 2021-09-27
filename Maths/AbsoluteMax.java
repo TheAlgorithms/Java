@@ -19,6 +19,7 @@ public class AbsoluteMax {
     }
     return Max;
   }
+
   public static  void main(String[] args){
     int[] tab1={0,5,1,11};
     int[] tab2={3, -10,-2};
