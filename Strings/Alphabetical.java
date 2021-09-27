@@ -1,4 +1,4 @@
-package strings;
+package Strings;
 
 /**
  * Alphabetical order is a system whereby character strings are placed in order based on the

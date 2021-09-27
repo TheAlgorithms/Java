@@ -1,5 +1,3 @@
-:+1::tada: Before guiding you through the contribution process TheAlgorithms/Java thank you for being one of us! :+1::tada:
-
 ## How to contribute?
 
 #### **Did you find a bug?**

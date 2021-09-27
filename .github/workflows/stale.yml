@@ -1,7 +1,7 @@
 name: 'Close stale issues and PRs'
 on:
   schedule:
-    - cron: '0 */10 * * *'
+    - cron: '0 0 * * *'
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -16,4 +16,3 @@ jobs:
           exempt-pr-labels: 'dont-close'
           days-before-stale: 30
           days-before-close: 7
-          operations-per-run: 150

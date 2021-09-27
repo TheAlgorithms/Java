@@ -1,4 +1,4 @@
-package strings;
+package Strings;
 
 /** Reverse String using different version */
 public class ReverseString {

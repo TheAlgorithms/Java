@@ -1,4 +1,4 @@
-package strings;
+package Strings;
 
 /**
  * Vowel Count is a system whereby character strings are placed in order based on the position of
@@ -33,7 +33,7 @@ class CheckVowels {
    * @param input a string prints the count of vowels
    */
   public static void countVowels(String input) {
-    input.toLowerCase();
+    input = input.toLowerCase();
     int count = 0;
     int i = 0;
     while (i < input.length()) {
