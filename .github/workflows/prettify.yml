@@ -1,5 +1,5 @@
 name: Prettify
-on: push
+on: [push, pull_request]
 jobs:
   prettier:
     runs-on: ubuntu-latest
