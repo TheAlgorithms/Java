@@ -28,6 +28,9 @@ public class Area {
 
     /* test circle */
     assert Double.compare(surfaceAreaCircle(20), 1256.6370614359173) == 0;
+    
+    /* test cylinder */
+    assert Double.compare(surfaceAreaCylinder(1,2), 18.84955592153876) == 0;
   }
 
   /**
@@ -59,6 +62,16 @@ public class Area {
    */
   private static double surfaceAreaRectangle(double length, double width) {
     return length * width;
+  }
+  
+  /**
+   * Calculate surface of a cylinder
+   *
+   * @param radius radius of the floor
+   * @param height height of the cylinder.
+   */
+  private static double surfaceAreaCylinder(double radius, double height) {
+    return 2 * (Math.PI * radius * radius + Math.PI * radius * height);
   }
 
   /**
