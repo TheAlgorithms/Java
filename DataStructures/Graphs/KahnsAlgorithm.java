@@ -1,4 +1,4 @@
-package DataStructures.Graphs;
+package Graphs;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -15,11 +15,11 @@ import java.util.LinkedList;
 /**
  * A class that represents the adjaceny list of a graph
  */
-class AdjacencyListGraph<E extends Comparable<E>>{    
+class AdjacencyList<E extends Comparable<E>>{
     
     Map<E,ArrayList<E>> adj;
     
-    AdjacencyListGraph(){
+    AdjacencyList(){
         adj = new LinkedHashMap<E,ArrayList<E>>();
     }
     
@@ -70,11 +70,11 @@ class AdjacencyListGraph<E extends Comparable<E>>{
     }
 }
 
-class KahnsAlgorithm<E extends Comparable<E>>{
-    AdjacencyListGraph<E> graph;
+class TopologicalSort<E extends Comparable<E>>{
+    AdjacencyList<E> graph;
     Map<E,Integer> inDegree;
     
-    KahnsAlgorithm(AdjacencyListGraph<E> graph){
+    TopologicalSort(AdjacencyList<E> graph){
         this.graph = graph;
     }
     
@@ -134,11 +134,11 @@ class KahnsAlgorithm<E extends Comparable<E>>{
 /**
  * A driver class that sorts a given graph in topological order.
  */ 
-public class Driver{
+public class KahnsAlgorithm{
     public static void main(String[] args){
         
         //Graph definition and initialization
-        AdjacencyListGraph<String> graph = new AdjacencyListGraph<String>();
+        AdjacencyList<String> graph = new AdjacencyList<>();
         graph.addEdge("a","b");
         graph.addEdge("c","a");
         graph.addEdge("a","d");
@@ -146,7 +146,7 @@ public class Driver{
         graph.addEdge("c","u");
         graph.addEdge("u","b");
         
-        KahnsAlgorithm<String> topSort = new KahnsAlgorithm<>(graph);
+        TopologicalSort<String> topSort = new TopologicalSort<>(graph);
         
         //Printing the order
         for(String s: topSort.topSortOrder()){
