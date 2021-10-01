@@ -33,6 +33,6 @@ class postfix_to_Infix {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the expression"); //We input the expression from user.
         String exp = sc.nextLine();
-        System.out.println(convert_infix(exp));
+        System.out.println(convert_infix(exp));     //function call
     }
 }
