@@ -3,8 +3,8 @@ import java.util.*;
 public class WordBoggle {
 
   /**
-   * O(nm * 8^s + ws) time where n=width of boggle board, m=height of boggle board, s=length of
-   * longest word in string array, w= length of string array, 8 is due to 8 explorable neighbours
+   * O(nm * 8^s + ws) time where n = width of boggle board, m = height of boggle board, s = length of
+   * longest word in string array, w = length of string array, 8 is due to 8 explorable neighbours
    * O(nm + ws) space.
    */
   public static List<String> boggleBoard(char[][] board, String[] words) {
