@@ -1,0 +1,40 @@
+import java.util.Scanner;
+class CountWords
+{
+    public static void main(String[]args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter any sentence");
+        String s = sc.nextLine();
+        System.out.println("Enter word to be searched");
+        String w = sc.next();
+        s=s+" ";
+        int l = s.length();
+        String word="";
+        int count=0;
+        for(int x = 0  ; x<l-1 ; x++)
+        {
+            char ch = s.charAt(x);
+            if(ch!=' ')
+            {
+                word+=ch;
+            }
+            else
+            {
+                if(word.equalsIgnoreCase(w))
+                {
+                    count++;
+                }
+                word="";
+            }
+            }
+            if(count>0)
+            {
+                System.out.println("Searched ord occurs "+count+" times");
+            }
+            else
+            {
+                System.out.println("word not found");
+            }
+        }
+    }
