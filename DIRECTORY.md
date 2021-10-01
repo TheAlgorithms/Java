@@ -8,6 +8,14 @@
   * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/SimpleSubstitutionCipher.java)
   * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/Vigenere.java)
 
+## Client-Server
+  * TCP
+    * [tclient](https://github.com/TheAlgorithms/Java/blob/master/Client-Server/TCP/tclient.java)
+    * [tserver](https://github.com/TheAlgorithms/Java/blob/master/Client-Server/TCP/tserver.java)
+  * UDP
+    * [UDPClient](https://github.com/TheAlgorithms/Java/blob/master/Client-Server/UDP/UDPClient.java)
+    * [UDPServer](https://github.com/TheAlgorithms/Java/blob/master/Client-Server/UDP/UDPServer.java)
+
 ## Conversions
   * [AnyBaseToAnyBase](https://github.com/TheAlgorithms/Java/blob/master/Conversions/AnyBaseToAnyBase.java)
   * [AnyBaseToDecimal](https://github.com/TheAlgorithms/Java/blob/master/Conversions/AnyBaseToDecimal.java)
@@ -43,6 +51,7 @@
     * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Cycles.java)
     * [FloydWarshall](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/FloydWarshall.java)
     * [Graphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Graphs.java)
+    * [KahnsAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/KahnsAlgorithm.java)
     * [Kruskal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/Kruskal.java)
     * [MatrixGraphs](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/MatrixGraphs.java)
     * [PrimMST](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Graphs/PrimMST.java)
@@ -131,6 +140,7 @@
   * [AmicableNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/AmicableNumber.java)
   * [Area](https://github.com/TheAlgorithms/Java/blob/master/Maths/Area.java)
   * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/Maths/Armstrong.java)
+  * [AutomorphicNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/AutomorphicNumber.java)
   * [Average](https://github.com/TheAlgorithms/Java/blob/master/Maths/Average.java)
   * [BinaryPow](https://github.com/TheAlgorithms/Java/blob/master/Maths/BinaryPow.java)
   * [Ceil](https://github.com/TheAlgorithms/Java/blob/master/Maths/Ceil.java)
@@ -151,6 +161,8 @@
   * [Floor](https://github.com/TheAlgorithms/Java/blob/master/Maths/Floor.java)
   * [GCD](https://github.com/TheAlgorithms/Java/blob/master/Maths/GCD.java)
   * [GCDRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/GCDRecursion.java)
+  * [KeithNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/KeithNumber.java)
+  * [KrishnamurthyNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/KrishnamurthyNumber.java)
   * [LucasSeries](https://github.com/TheAlgorithms/Java/blob/master/Maths/LucasSeries.java)
   * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MaxValue.java)
   * [Median](https://github.com/TheAlgorithms/Java/blob/master/Maths/Median.java)
