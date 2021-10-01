@@ -54,6 +54,7 @@ class Palindrome {
     if (s == null || s.length() <= 1) {
       return true;
     }
+    //we can try this for as a foreach as you mentioned in line number 14, it will be more efficient(time complexity will be little good)
     for (int i = 0, j = s.length() - 1; i < j; ++i, --j) {
       if (s.charAt(i) != s.charAt(j)) {
         return false;
