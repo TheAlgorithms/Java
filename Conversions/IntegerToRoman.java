@@ -3,7 +3,7 @@ package Conversions;
 /**
  * Converting Integers into Roman Numerals
  *
- * <p>('I', 1); ('IV',4); ('V', 5); ('IV',9); ('X', 10); ('XL',40; ('L', 50); ('XC',90); ('C', 100);
+ * <p>('I', 1); ('IV',4); ('V', 5); ('IX',9); ('X', 10); ('XL',40); ('L', 50); ('XC',90); ('C', 100);
  * ('D', 500); ('M', 1000);
  */
 public class IntegerToRoman {
