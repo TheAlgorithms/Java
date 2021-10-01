@@ -151,6 +151,8 @@
   * [Floor](https://github.com/TheAlgorithms/Java/blob/master/Maths/Floor.java)
   * [GCD](https://github.com/TheAlgorithms/Java/blob/master/Maths/GCD.java)
   * [GCDRecursion](https://github.com/TheAlgorithms/Java/blob/master/Maths/GCDRecursion.java)
+  * [KeithNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/KeithNumber.java)
+  * [KrishnamurthyNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/KrishnamurthyNumber.java)
   * [LucasSeries](https://github.com/TheAlgorithms/Java/blob/master/Maths/LucasSeries.java)
   * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/MaxValue.java)
   * [Median](https://github.com/TheAlgorithms/Java/blob/master/Maths/Median.java)
@@ -178,6 +180,7 @@
 
 ## Misc
   * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/Misc/ColorContrastRatio.java)
+  * [DuplicateZeros](https://github.com/TheAlgorithms/Java/blob/master/Misc/DuplicateZeros.java)
   * [matrixTranspose](https://github.com/TheAlgorithms/Java/blob/master/Misc/matrixTranspose.java)
   * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/Misc/MedianOfRunningArray.java)
   * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/Misc/PalindromePrime.java)
