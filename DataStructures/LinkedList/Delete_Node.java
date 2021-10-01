@@ -1,14 +1,13 @@
-
-class LinkedList {
+class Main {
     
     //Linked list Node
     //Definition for singly-linked list.
     class Node {
-        int data;
+        int val;
         Node next;
-        Node(int d)
+        Node(int data)
         {
-            data = d;
+            val = data;
             next = null;
         }
     }
@@ -23,12 +22,12 @@ class LinkedList {
         Node temp = head, prev = null;
  
         // If head should be deleted
-        if (temp != null && temp.data == key) {
+        if (temp != null && temp.val == key) {
             head = temp.next; // Changed head
             return;
         }
  
-        while (temp != null && temp.data != key) {
+        while (temp != null && temp.val != key) {
             prev = temp;
             temp = temp.next;
         }
@@ -50,16 +49,16 @@ class LinkedList {
     
     public void printList()
     {
-        Node tnode = head;
-        while (tnode != null) {
-            System.out.print(tnode.data + " ");
-            tnode = tnode.next;
+        Node node = head;
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
         }
     }
  
     public static void main(String[] args)
     {
-        LinkedList ll = new LinkedList();
+        Main ll = new Main();
  
         ll.push(5);
         ll.push(1);
@@ -76,3 +75,5 @@ class LinkedList {
         ll.printList();
     }
 }
+
+
