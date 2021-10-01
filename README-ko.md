@@ -156,28 +156,28 @@ From [Wikipedia][binary-wiki]: 이진 탐색, (also known as half-interval searc
 
 ## 나머지 알고리즘에 대한 링크
 
-| 전환                                                            | 다이나믹프로그래밍(DP)                                                                    | 암호                                                                      | 그 외 것들                                              |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)       | [Coin Change](Dynamic%20Programming/CoinChange.java)                                      | [Caesar](ciphers/Caesar.java)                                             | [Heap Sort](misc/heap_sort.java)                        |
-| [Any Base to Decimal](Conversions/AnyBaseToDecimal.java)        | [Egg Dropping](Dynamic%20Programming/EggDropping.java)                                    | [Columnar Transposition Cipher](ciphers/ColumnarTranspositionCipher.java) | [Palindromic Prime Checker](misc/PalindromicPrime.java) |
-| [Binary to Decimal](Conversions/BinaryToDecimal.java)           | [Fibonacci](Dynamic%20Programming/Fibonacci.java)                                         | [RSA](ciphers/RSA.java)                                                   | More soon...                                            |
-| [Binary to HexaDecimal](Conversions/BinaryToHexadecimal.java)   | [Kadane Algorithm](Dynamic%20Programming/KadaneAlgorithm.java)                            | more coming soon...                                                       |
-| [Binary to Octal](Conversions/BinaryToOctal.java)               | [Knapsack](Dynamic%20Programming/Knapsack.java)                                           |
-| [Decimal To Any Base](Conversions/DecimalToAnyBase.java)        | [Longest Common Subsequence](Dynamic%20Programming/LongestCommonSubsequence.java)         |
-| [Decimal To Binary](Conversions/DecimalToBinary.java)           | [Longest Increasing Subsequence](Dynamic%20Programming/LongestIncreasingSubsequence.java) |
-| [Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java) | [Rod Cutting](Dynamic%20Programming/RodCutting.java)                                      |
-| and much more...                                                | and more...                                                                               |
+| 전환                                                            | 다이나믹프로그래밍(DP)                                                                 | 암호                                                                      | 그 외 것들                                             |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [Any Base to Any Base](Conversions/AnyBaseToAnyBase.java)       | [Coin Change](DynamicProgramming/CoinChange.java)                                      | [Caesar](Ciphers/Caesar.java)                                             | [Heap Sort](Sorts/HeapSort.java)                       |
+| [Any Base to Decimal](Conversions/AnyBaseToDecimal.java)        | [Egg Dropping](DynamicProgramming/EggDropping.java)                                    | [Columnar Transposition Cipher](Ciphers/ColumnarTranspositionCipher.java) | [Palindromic Prime Checker](Misc/PalindromePrime.java) |
+| [Binary to Decimal](Conversions/BinaryToDecimal.java)           | [Fibonacci](DynamicProgramming/Fibonacci.java)                                         | [RSA](Ciphers/RSA.java)                                                   | More soon...                                           |
+| [Binary to HexaDecimal](Conversions/BinaryToHexadecimal.java)   | [Kadane Algorithm](DynamicProgramming/KadaneAlgorithm.java)                            | more coming soon...                                                       |
+| [Binary to Octal](Conversions/BinaryToOctal.java)               | [Knapsack](DynamicProgramming/Knapsack.java)                                           |
+| [Decimal To Any Base](Conversions/DecimalToAnyBase.java)        | [Longest Common Subsequence](DynamicProgramming/LongestCommonSubsequence.java)         |
+| [Decimal To Binary](Conversions/DecimalToBinary.java)           | [Longest Increasing Subsequence](DynamicProgramming/LongestIncreasingSubsequence.java) |
+| [Decimal To Hexadecimal](Conversions/DecimalToHexaDecimal.java) | [Rod Cutting](DynamicProgramming/RodCutting.java)                                      |
+| and much more...                                                | and more...                                                                            |
 
 ### 자료 구조
 
-| 그래프                                                            | 힙                                                             | 리스트                                                        | 큐                                                                          |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [너비우선탐색](DataStructures/Graphs/BFS.java)                    | [빈 힙 예외처리](DataStructures/Heaps/EmptyHeapException.java) | [원형 연결리스트](DataStructures/Lists/CircleLinkedList.java) | [제너릭 어레이 리스트 큐](DataStructures/Queues/GenericArrayListQueue.java) |
-| [깊이우선탐색](DataStructures/Graphs/DFS.java)                    | [힙](DataStructures/Heaps/Heap.java)                           | [이중 연결리스트](DataStructures/Lists/DoublyLinkedList.java) | [큐](DataStructures/Queues/Queues.java)                                     |
-| [그래프](DataStructures/Graphs/Graphs.java)                       | [힙 요소](DataStructures/Heaps/HeapElement.java)               | [단순 연결리스트](DataStructures/Lists/SinglyLinkedList.java) |
-| [크루스칼 알고리즘](DataStructures/Graphs/KruskalsAlgorithm.java) | [최대힙](Data%Structures/Heaps/MaxHeap.java)                   |
-| [행렬 그래프](DataStructures/Graphs/MatrixGraphs.java)            | [최소힙](DataStructures/Heaps/MinHeap.java)                    |
-| [프림 최소신장트리](DataStructures/Graphs/PrimMST.java)           |
+| 그래프                                                  | 힙                                                             | 리스트                                                        | 큐                                                                          |
+| ------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------- |
+|                                                         | [빈 힙 예외처리](DataStructures/Heaps/EmptyHeapException.java) | [원형 연결리스트](DataStructures/Lists/CircleLinkedList.java) | [제너릭 어레이 리스트 큐](DataStructures/Queues/GenericArrayListQueue.java) |
+|                                                         | [힙](DataStructures/Heaps/Heap.java)                           | [이중 연결리스트](DataStructures/Lists/DoublyLinkedList.java) | [큐](DataStructures/Queues/Queues.java)                                     |
+| [그래프](DataStructures/Graphs/Graphs.java)             | [힙 요소](DataStructures/Heaps/HeapElement.java)               | [단순 연결리스트](DataStructures/Lists/SinglyLinkedList.java) |
+| [크루스칼 알고리즘](DataStructures/Graphs/Kruskal.java) | [최대힙](DataStructures/Heaps/MaxHeap.java)                    |
+| [행렬 그래프](DataStructures/Graphs/MatrixGraphs.java)  | [최소힙](DataStructures/Heaps/MinHeap.java)                    |
+| [프림 최소신장트리](DataStructures/Graphs/PrimMST.java) |
 
 | 스택                                                            | 트리                                              |
 | --------------------------------------------------------------- | ------------------------------------------------- |
@@ -187,5 +187,5 @@ From [Wikipedia][binary-wiki]: 이진 탐색, (also known as half-interval searc
 
 - [Bags](DataStructures/Bags/Bag.java)
 - [Buffer](DataStructures/Buffers/CircularBuffer.java)
-- [HashMap](DataStructures/HashMap/HashMap.java)
-- [Matrix](DataStructures/Matrix/Matrix.java)
+- [HashMap](DataStructures/HashMap/Hashing/HashMap.java)
+-

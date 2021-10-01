@@ -11,6 +11,7 @@ import java.util.stream.StreamSupport;
  * @param <E> the type that each index of the array will hold
  */
 public class DynamicArray<E> implements Iterable<E> {
+  private static final int DEFAULT_CAPACITY = 16;
 
   private int capacity;
   private int size;
@@ -29,20 +30,7 @@ public class DynamicArray<E> implements Iterable<E> {
 
   /** No-args constructor */
   public DynamicArray() {
-    this.size = 0;
-    this.capacity = 10;
-    this.elements = new Object[this.capacity];
-  }
-
-  /**
-   * Doubles the capacity of the array
-   *
-   * @return int the new capacity of the array
-   */
-  public int newCapacity() {
-    this.capacity *= 2;
-    // changed from this.capacity <<= 1; now much easier to understand
-    return this.capacity;
+    this(DEFAULT_CAPACITY);
   }
 
   /**
@@ -52,7 +40,7 @@ public class DynamicArray<E> implements Iterable<E> {
    */
   public void add(final E element) {
     if (this.size == this.elements.length) {
-      this.elements = Arrays.copyOf(this.elements, newCapacity());
+      this.elements = Arrays.copyOf(this.elements, newCapacity(2 * this.capacity));
     }
 
     this.elements[this.size] = element;
@@ -89,6 +77,8 @@ public class DynamicArray<E> implements Iterable<E> {
     final E oldElement = getElement(index);
     fastRemove(this.elements, index);
 
+    if (this.capacity > DEFAULT_CAPACITY && size * 4 <= this.capacity)
+      this.elements = Arrays.copyOf(this.elements, newCapacity(this.capacity / 2));
     return oldElement;
   }
 
@@ -126,6 +116,11 @@ public class DynamicArray<E> implements Iterable<E> {
 
   private E getElement(final int index) {
     return (E) this.elements[index];
+  }
+
+  private int newCapacity(int capacity) {
+    this.capacity = capacity;
+    return this.capacity;
   }
 
   /**

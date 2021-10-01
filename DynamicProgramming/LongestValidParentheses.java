@@ -49,8 +49,8 @@ public class LongestValidParentheses {
       if ("quit".equals(str)) {
         break;
       }
-      int len = getLongestValidParentheses(str);
-      System.out.println(len);
+
+      System.out.println("Len is: " + getLongestValidParentheses(str));
     }
 
     sc.close();
