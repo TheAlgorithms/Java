@@ -1,0 +1,52 @@
+import java.io.*;
+import java.lang.*;
+
+class GFG {
+    
+    public static int triplets(int arr[],int n)
+    {
+        int number= 0; // total number of triplets found 
+        if(n==0) // if length of array is zero
+            return(number);
+            
+        //taking 0th index element as the first element of the triplet 
+        int count= 1;
+        int prev= arr[0];
+        int index= 1;
+        while( index<n )
+        {
+            if( (arr[index]-prev)==1 )
+                count+= 1;
+            else
+                count= 1;
+                
+            if(count==3)
+            {
+                number+= 1;
+                count= 2;
+            }
+            prev= arr[index];
+            index+= 1;
+
+        }
+        
+        return(number);
+    }
+	public static void main (String[] args) throws IOException
+	{
+	    BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));
+	    //taking input for number of elements 
+	    int n= Integer.parseInt(obj.readLine());
+	    int arr[]= new int[n];
+	    //taking input for the array
+	    String line[]= obj.readLine().trim().split(" ");
+	    for(int i=0; i<n; i++)
+	    {
+	        arr[i]= Integer.parseInt(line[i]);
+	    }
+	    
+	    System.out.println( triplets(arr, n) );
+	    
+		
+	}
+}
