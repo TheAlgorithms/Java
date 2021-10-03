@@ -16,16 +16,19 @@ class InsertionSort implements SortAlgorithm {
   public <T extends Comparable<T>> T[] sort(T[] array) {
     for (int i = 1; i < array.length; i++) {
       T insertValue = array[i];
-      int j;
-      for (j = i - 1; j >= 0 && less(insertValue, array[j]); j--) {
-        array[j + 1] = array[j];
+      int j=i-1;
+
+      while((j>-1)&&(array[j]>insertValue)){
+        array[j+1]=array[j];
+        j--;
       }
-      if (j != i - 1) {
-        array[j + 1] = insertValue;
-      }
+
+      array[j+1]=insertValue;
+
     }
     return array;
   }
+
 
   /** Driver Code */
   public static void main(String[] args) {
