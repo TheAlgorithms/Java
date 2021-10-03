@@ -14,12 +14,7 @@ public class AbsoluteValue {
     }
   }
 
-  /**
-   * If value is less than zero, make value positive.
-   *
-   * @param value a number
-   * @return the absolute value of a number
-   */
+
   public static int absVal(int value) {
     return Math.abs(value);
   }
