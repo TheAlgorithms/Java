@@ -1,7 +1,7 @@
 package Maths;
 
 import java.util.Arrays;
-
+import java.lang.Math;
 /**
  * description:
  *
@@ -25,9 +25,7 @@ public class AbsoluteMax {
   public static int absMax(int[] numbers) {
     int absMaxValue = numbers[0];
     for (int i = 1, length = numbers.length; i < length; ++i) {
-      if (Math.abs(numbers[i]) > Math.abs(absMaxValue)) {
-        absMaxValue = numbers[i];
-      }
+        absMaxValue = Math.max(absMaxValue , numbers[i]);
     }
     return absMaxValue;
   }
