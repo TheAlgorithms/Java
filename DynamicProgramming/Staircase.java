@@ -6,6 +6,8 @@ implement a method to count how many possible ways
 are there to reach the top of the staircase,
 given that, at every step you can take either 1 step or 2 steps.
 */
+
+// For more details, visit https://leetcode.com/problems/climbing-stairs/
 public class Staircase {
 
   public int climbStairs(int n) {
