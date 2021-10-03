@@ -127,4 +127,14 @@ public class Area {
   private static double surfaceAreaCircle(double radius) {
     return Math.PI * radius * radius;
   }
+  
+  /**
+   * Calculate surface area of a cone
+   * @param height height of cone
+   * @param radius radius of cone
+   * @return surface area of a cone
+   */
+  private static double surfaceAreaCone(double radius, double height) {
+    return Math.PI * radius * (radius + Math.sqrt(radius*radius + height*height));
+  }
 }
