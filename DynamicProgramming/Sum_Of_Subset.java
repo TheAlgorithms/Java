@@ -11,7 +11,7 @@ public class Sum_Of_Subset {
             System.out.print("Nope, that number does not exist");
         }
     }
-    public static boolean subsetSum(int[] A, int num, int Key)
+    public static boolean subsetSum(int[] arr, int num, int Key)
     {
         if (Key == 0) {
             return true;
@@ -20,8 +20,8 @@ public class Sum_Of_Subset {
             return false;
         }
 
-        boolean include = subsetSum(A, num - 1, Key - A[num]);
-        boolean exclude = subsetSum(A, num - 1, Key);
+        boolean include = subsetSum(arr, num - 1, Key - arr[num]);
+        boolean exclude = subsetSum(arr, num - 1, Key);
 
         return include || exclude;
     }
