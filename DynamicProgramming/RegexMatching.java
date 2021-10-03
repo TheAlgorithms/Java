@@ -9,14 +9,14 @@ package DynamicProgramming;
  **/
 
 /**
- * For Time and Space Complexity. Let N be length of src and M be length of pat
+ * For calculation Time and Space Complexity. Let N be length of src and M be length of pat
  **/
 
 public class RegexMatching {
 
 	// Method 1: Using Recursion
 	// Time Complexity=0(2^(N+M)) Space Complexity=Recursion Extra Space
-	static boolean RegexRecursion(String src, String pat) {
+	static boolean regexRecursion(String src, String pat) {
 		if (src.length() == 0 && pat.length() == 0) {
 			return true;
 		}
@@ -39,10 +39,10 @@ public class RegexMatching {
 
 		boolean ans;
 		if (chs == chp || chp == '?') {
-			ans = RegexRecursion(ros, rop);
+			ans = regexRecursion(ros, rop);
 		} else if (chp == '*') {
-			boolean blank = RegexRecursion(src, rop);
-			boolean multiple = RegexRecursion(ros, pat);
+			boolean blank = regexRecursion(src, rop);
+			boolean multiple = regexRecursion(ros, pat);
 			ans = blank || multiple;
 		} else {
 			ans = false;
@@ -52,7 +52,7 @@ public class RegexMatching {
 
 	// Method 2: Using Recursion and breaking string using virtual index
 	// Time Complexity=0(2^(N+M)) Space Complexity=Recursion Extra Space
-	static boolean RegexRecursion(String src, String pat, int svidx, int pvidx) {
+	static boolean regexRecursion(String src, String pat, int svidx, int pvidx) {
 		if (src.length() == svidx && pat.length() == pvidx) {
 			return true;
 		}
@@ -72,10 +72,10 @@ public class RegexMatching {
 
 		boolean ans;
 		if (chs == chp || chp == '?') {
-			ans = RegexRecursion(src, pat, svidx + 1, pvidx + 1);
+			ans = regexRecursion(src, pat, svidx + 1, pvidx + 1);
 		} else if (chp == '*') {
-			boolean blank = RegexRecursion(src, pat, svidx, pvidx + 1);
-			boolean multiple = RegexRecursion(src, pat, svidx + 1, pvidx);
+			boolean blank = regexRecursion(src, pat, svidx, pvidx + 1);
+			boolean multiple = regexRecursion(src, pat, svidx + 1, pvidx);
 			ans = blank || multiple;
 		} else {
 			ans = false;
@@ -83,9 +83,9 @@ public class RegexMatching {
 		return ans;
 	}
 
-	// Method 3: Top-Down DP
+	// Method 3: Top-Down DP(Memoization)
 	// Time Complexity=0(N*M) Space Complexity=0(N*M)+Recursion Extra Space
-	static boolean RegexRecursion(String src, String pat, int svidx, int pvidx, int[][] strg) {
+	static boolean regexRecursion(String src, String pat, int svidx, int pvidx, int[][] strg) {
 		if (src.length() == svidx && pat.length() == pvidx) {
 			return true;
 		}
@@ -108,10 +108,10 @@ public class RegexMatching {
 
 		boolean ans;
 		if (chs == chp || chp == '?') {
-			ans = RegexRecursion(src, pat, svidx + 1, pvidx + 1, strg);
+			ans = regexRecursion(src, pat, svidx + 1, pvidx + 1, strg);
 		} else if (chp == '*') {
-			boolean blank = RegexRecursion(src, pat, svidx, pvidx + 1, strg);
-			boolean multiple = RegexRecursion(src, pat, svidx + 1, pvidx, strg);
+			boolean blank = regexRecursion(src, pat, svidx, pvidx + 1, strg);
+			boolean multiple = regexRecursion(src, pat, svidx + 1, pvidx, strg);
 			ans = blank || multiple;
 		} else {
 			ans = false;
@@ -120,7 +120,7 @@ public class RegexMatching {
 		return ans;
 	}
 
-	// Method 4: Bottom-Up DP
+	// Method 4: Bottom-Up DP(Tabulation)
 	// Time Complexity=0(N*M) Space Complexity=0(N*M)
 	static boolean regexBU(String src, String pat) {
 
@@ -159,11 +159,13 @@ public class RegexMatching {
 
 		String src = "aa";
 		String pat = "*";
-		System.out.println("Method 1: "+RegexRecursion(src, pat));
-		System.out.println("Method 2: "+RegexRecursion(src, pat, 0, 0));
-		System.out.println("Method 3: "+RegexRecursion(src, pat, 0, 0, new int[src.length()][pat.length()]));
+		System.out.println("Method 1: "+regexRecursion(src, pat));
+		System.out.println("Method 2: "+regexRecursion(src, pat, 0, 0));
+		System.out.println("Method 3: "+regexRecursion(src, pat, 0, 0, new int[src.length()][pat.length()]));
 		System.out.println("Method 4: "+regexBU(src, pat));
 
 	}
 
 }
+// Memoization vs Tabulation : https://www.geeksforgeeks.org/tabulation-vs-memoization/
+// Question Link : https://practice.geeksforgeeks.org/problems/wildcard-pattern-matching/1
