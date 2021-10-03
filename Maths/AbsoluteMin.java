@@ -1,6 +1,7 @@
 package Maths;
 
 import java.util.Arrays;
+import java.lang.Math;
 
 /**
  * description:
@@ -25,9 +26,7 @@ public class AbsoluteMin {
   public static int absMin(int[] numbers) {
     int absMinValue = numbers[0];
     for (int i = 1, length = numbers.length; i < length; ++i) {
-      if (Math.abs(numbers[i]) < Math.abs(absMinValue)) {
-        absMinValue = numbers[i];
-      }
+      absMinValue = Math.min(absMinValue , numbers[i]);
     }
     return absMinValue;
   }
