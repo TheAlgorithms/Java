@@ -10,14 +10,14 @@ given that, at every step you can take either 1 step or 2 steps.
 // For more details, visit https://leetcode.com/problems/climbing-stairs/
 public class Staircase {
 
-  public int climbStairs(int n) {
+  public static int climbStairs(int n) {
     int[] dp = new int[n + 1];
     dp[0] = 1;
     dp[1] = 1;
     return climbStairsRec(n, dp);
   }
     
-  private int climbStairsRec(int n, int[] dp) {
+  private static int climbStairsRec(int n, int[] dp) {
     if(dp[n] != 0) {
         return dp[n];
     }
