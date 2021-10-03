@@ -1,5 +1,5 @@
 <b><h1 align=center> HASHMAP DATA STRUCTURE</h1></b>
-<p>A hash table organizes data so you can quickly look up values for a given key.</p>
+<p>A hash map organizes data so you can quickly look up values for a given key.</p>
 
 ## <h2>Strengths:</h2>
 <ul>
@@ -65,30 +65,39 @@ Performance of HashMap depends on 2 parameters which are named as follows:
     <li>Load Factor</li>
 </ul>
 <p>
-<strong>Initial Capacity: </strong> It is the capacity of HashMap at the time of its creation (It is the number of buckets a HashMap can hold when the HashMap is instantiated). In java, it is 2^4=16 initially, meaning it can hold 16 key-value pairs.
+<strong>Initial Capacity : </strong> It is the capacity of HashMap at the time of its creation (It is the number of buckets a HashMap can hold when the HashMap is instantiated). In java, it is 2^4=16 initially, meaning it can hold 16 key-value pairs.
 </p>
 <p>
-<strong>Load Factor: </strong> It is the percent value of the capacity after which the capacity of Hashmap is to be increased (It is the percentage fill of buckets after which Rehashing takes place). In java, it is 0.75f by default, meaning the rehashing takes place after filling 75% of the capacity.
+<strong>Load Factor : </strong> It is the percent value of the capacity after which the capacity of Hashmap is to be increased (It is the percentage fill of buckets after which Rehashing takes place). In java, it is 0.75f by default, meaning the rehashing takes place after filling 75% of the capacity.
 </p>
 <p>
-<strong>Threshold: </strong> It is the product of Load Factor and Initial Capacity. In java, by default, it is (16 * 0.75 = 12). That is, Rehashing takes place after inserting 12 key-value pairs into the HashMap.
+<strong>Threshold : </strong> It is the product of Load Factor and Initial Capacity. In java, by default, it is (16 * 0.75 = 12). That is, Rehashing takes place after inserting 12 key-value pairs into the HashMap.
 </p>
 <p>
-<strong>Rehashing: </strong> It is the process of doubling the capacity of the HashMap after it reaches its Threshold. In java, HashMap continues to rehash(by default) in the following sequence – 2^4, 2^5, 2^6, 2^7, …. so on. 
+<strong>Rehashing : </strong> It is the process of doubling the capacity of the HashMap after it reaches its Threshold. In java, HashMap continues to rehash(by default) in the following sequence – 2^4, 2^5, 2^6, 2^7, …. so on. 
 </p>
 <p>
 If the initial capacity is kept higher then rehashing will never be done. But by keeping it higher increases the time complexity of iteration. So it should be chosen very cleverly to increase performance. The expected number of values should be taken into account to set the initial capacity. The most generally preferred load factor value is 0.75 which provides a good deal between time and space costs. The load factor’s value varies between 0 and 1. 
 </p>
 
 ```
-Note: From Java 8 onward, Java has started using Self Balancing BST instead of a linked list for chaining. The advantage of self-balancing bst is, we get the worst case (when every key maps to the same slot) search time is O(Log n). 
+Note: From Java 8 onward, Java has started using Self Balancing BST instead of a linked list for chaining. 
+The advantage of self-balancing bst is, we get the worst case (when every key maps to the same slot) search time is O(Log n). 
 ```
+Java has two hash table classes: HashTable and HashMap. In general, you should use a HashMap.
 
-## <h2>When hash table operations cost O(n) time ? </h2>
+While both classes use keys to look up values, there are some important differences, including:
+
+<ul>
+    <li>A HashTable doesn't allow null keys or values; a HashMap does.</li>
+    <li>A HashTable is synchronized to prevent multiple threads from accessing it at once; a HashMap isn't.</li>
+</ul>
+
+## <h2>When Hash Map operations cost O(n) time ? </h2>
 
 <p>
-<strong>Hash collisions</strong> If all our keys caused hash collisions, we'd be at risk of having to walk through all of our values for a single lookup (in the example above, we'd have one big linked list). This is unlikely, but it could happen. That's the worst case.
+<strong>Hash collisions : </strong> If all our keys caused hash collisions, we'd be at risk of having to walk through all of our values for a single lookup (in the example above, we'd have one big linked list). This is unlikely, but it could happen. That's the worst case.
 
-<strong>Dynamic array resizing</strong> Suppose we keep adding more items to our hash map. As the number of keys and values in our hash map exceeds the number of indices in the underlying array, hash collisions become inevitable. To mitigate this, we could expand our underlying array whenever things start to get crowded. That requires allocating a larger array and rehashing all of our existing keys to figure out their new position—O(n) time.
+<strong>Dynamic array resizing : </strong> Suppose we keep adding more items to our hash map. As the number of keys and values in our hash map exceeds the number of indices in the underlying array, hash collisions become inevitable. To mitigate this, we could expand our underlying array whenever things start to get crowded. That requires allocating a larger array and rehashing all of our existing keys to figure out their new position—O(n) time.
 
 </p>
