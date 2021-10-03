@@ -1,3 +1,5 @@
+package DataStructures.Lists;
+
 public class RemoveDuplicateNodes {
     public static class ListNode {
         int val;
