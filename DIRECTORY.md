@@ -129,6 +129,7 @@
   * [AbsoluteMax](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteMax.java)
   * [AbsoluteMin](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteMin.java)
   * [AbsoluteValue](https://github.com/TheAlgorithms/Java/blob/master/Maths/AbsoluteValue.java)
+  * [ADTFraction](https://github.com/TheAlgorithms/Java/blob/master/Maths/ADTFraction.java)
   * [AliquotSum](https://github.com/TheAlgorithms/Java/blob/master/Maths/AliquotSum.java)
   * [AmicableNumber](https://github.com/TheAlgorithms/Java/blob/master/Maths/AmicableNumber.java)
   * [Area](https://github.com/TheAlgorithms/Java/blob/master/Maths/Area.java)
