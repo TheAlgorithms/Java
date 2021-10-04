@@ -44,7 +44,7 @@ public class BitonicSort {
       // sort in descending order since dir here is 0
       bitonicSort(a, low + k, k, 0);
 
-      // Will merge wole sequence in ascending order
+      // Will merge whole sequence in ascending order
       // since dir=1.
       bitonicMerge(a, low, cnt, dir);
     }
