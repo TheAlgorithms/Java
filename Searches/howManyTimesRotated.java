@@ -6,6 +6,7 @@
     Eg. [11,12,15,18,2,5,6,8]
     It has been rotated: 4 times
     (One rotation means putting the first element to the end)
+    Note: The array cannot contain duplicates
 
     Logic: 
     The position of the minimum element will give the number of times the array has been rotated
