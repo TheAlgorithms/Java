@@ -7,7 +7,7 @@ public class BinaryExponentiation {
     // Function to calculate x^y
     // Time Complexity: O(logn)
     public static long calculatePower(long x, long y) {
-        if (y == 0) return 1 L;
+        if (y == 0) return 1;
         long val = calculatePower(x, y / 2);
         val *= val;
         if (y % 2 == 1) val *= x;
