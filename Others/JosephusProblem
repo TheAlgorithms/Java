@@ -1,0 +1,23 @@
+// Java code for Josephus Problem
+import java.io.*;
+
+//Problem Details:https://en.wikipedia.org/wiki/Josephus_problem
+
+class JosephusProblem {
+
+//Method to maintain the cyclic value using recursion 
+	static int josephus(int persons, int positions)
+	{
+		if (persons== 1)
+			return 1;
+		else
+			return ( positions - 1+josephus(persons - 1, positions) ) % persons + 1;
+	}
+
+	public static void main(String[] args)
+	{
+		int persons = 14; // Total no of positions n the circle.
+		int positions = 2;  // continous positions to be skipped before kill 
+		System.out.println("The safest place is "+ josephus(persons, positions));
+	}
+}
