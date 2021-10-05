@@ -9,20 +9,19 @@ import java.util.Scanner;
  * <p>Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21,...
  *
  * <p>Source for the explanation: https://en.wikipedia.org/wiki/Fibonacci_number
+ *
+ * Problem Statement: print all Fibonacci numbers that are smaller than your given input N 
  */
-public class FibToN {
+public class FibbonaciSeries {
   public static void main(String[] args) {
-    // take input
-    Scanner scn = new Scanner(System.in);
-    int N = scn.nextInt();
-    // print all Fibonacci numbers that are smaller than your given input N
+    // Get input from the user
+    Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
     int first = 0, second = 1;
-    scn.close();
-    while (first <= N) {
+    scan.close();
+    while (first <= n) {
       // print first fibo 0 then add second fibo into it while updating second as well
-
       System.out.println(first);
-
       int next = first + second;
       first = second;
       second = next;
