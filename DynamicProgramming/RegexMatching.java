@@ -9,7 +9,7 @@ package DynamicProgramming;
  **/
 
 /**
- * For calculation Time and Space Complexity. Let N be length of src and M be length of pat
+ * For calculation of Time and Space Complexity. Let N be length of src and M be length of pat
  **/
 
 public class RegexMatching {
