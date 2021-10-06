@@ -4,14 +4,13 @@
 
 package Graphs;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class A_Star {
 
   private static class Graph {
     // Graph's structure can be changed only applying changes to this class.
-    private ArrayList<ArrayList<Edge>> graph;
+    private final ArrayList<ArrayList<Edge>> graph;
 
     // Initialise ArrayLists in Constructor
     public Graph(int size) {
@@ -32,61 +31,42 @@ public class A_Star {
     }
   }
 
-  private static class Edge {
-    private int from;
-    private int to;
-    private int weight;
-
-    public Edge(int from, int to, int weight) {
-      this.from = from;
-      this.to = to;
-      this.weight = weight;
-    }
+  private record Edge(int from, int to, int weight) {
 
     public int getFrom() {
       return from;
-    }
+      }
 
-    public int getTo() {
-      return to;
-    }
+      public int getTo() {
+        return to;
+      }
 
-    public int getWeight() {
-      return weight;
-    }
+      public int getWeight() {
+        return weight;
+      }
   }
 
   // class to iterate during the algorithm execution, and also used to return the solution.
-  private static class PathAndDistance {
-    private int distance; // distance advanced so far.
-    private ArrayList<Integer> path; // list of visited nodes in this path.
-    private int
-        estimated; // heuristic value associated to the last node od the path (current node).
-
-    public PathAndDistance(int distance, ArrayList<Integer> path, int estimated) {
-      this.distance = distance;
-      this.path = path;
-      this.estimated = estimated;
-    }
+  private record PathAndDistance(int distance, ArrayList<Integer> path, int estimated) {
 
     public int getDistance() {
       return distance;
-    }
+      }
 
-    public ArrayList<Integer> getPath() {
-      return path;
-    }
+      public ArrayList<Integer> getPath() {
+        return path;
+      }
 
-    public int getEstimated() {
-      return estimated;
-    }
+      public int getEstimated() {
+        return estimated;
+      }
 
-    private void printSolution() {
-      if (this.path != null)
-        System.out.println(
-            "Optimal path: " + this.path + ", distance: " + this.distance);
-      else System.out.println("There is no path available to connect the points");
-    }
+      private void printSolution() {
+        if (this.path != null)
+          System.out.println(
+                  "Optimal path: " + this.path + ", distance: " + this.distance);
+        else System.out.println("There is no path available to connect the points");
+      }
   }
 
   private static void initializeGraph(Graph graph, ArrayList<Integer> data) {

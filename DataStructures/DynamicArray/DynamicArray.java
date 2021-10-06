@@ -1,4 +1,4 @@
-package DataStructures.DynamicArray;
+package DynamicArray;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -188,13 +188,11 @@ public class DynamicArray<E> implements Iterable<E> {
    * the output
    */
   public static void main(String[] args) {
-    DynamicArray<String> names = new DynamicArray<>();
+    DynamicArray<String> names = new DynamicArray<String>();
     names.add("Peubes");
     names.add("Marley");
 
-    for (String name : names) {
-      System.out.println(name);
-    }
+    for (String name : names) System.out.println(name);
 
     names.stream().forEach(System.out::println);
 
@@ -204,8 +202,7 @@ public class DynamicArray<E> implements Iterable<E> {
 
     names.remove(0);
 
-    for (String name : names) {
-      System.out.println(name);
-    }
+    for (var name : names) System.out.println(name);
+
   }
 }

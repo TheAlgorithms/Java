@@ -1,4 +1,4 @@
-package DataStructures.Graphs;
+package Graphs;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,8 +32,8 @@ class Graph<E extends Comparable<E>> {
   ArrayList<Node> nodeList;
 
   public Graph() {
-    edgeList = new ArrayList<Edge>();
-    nodeList = new ArrayList<Node>();
+    edgeList = new ArrayList<>();
+    nodeList = new ArrayList<>();
   }
 
   /**
@@ -72,12 +72,12 @@ class Graph<E extends Comparable<E>> {
    */
   public int countGraphs() {
     int count = 0;
-    Set<Node> markedNodes = new HashSet<Node>();
+    Set<Node> markedNodes = new HashSet<>();
 
     for (Node n : nodeList) {
       if (!markedNodes.contains(n)) {
         markedNodes.add(n);
-        markedNodes.addAll(depthFirstSearch(n, new ArrayList<Node>()));
+        markedNodes.addAll(depthFirstSearch(n, new ArrayList<>()));
         count++;
       }
     }

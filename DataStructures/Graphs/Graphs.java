@@ -1,4 +1,4 @@
-package DataStructures.Graphs;
+package Graphs;
 
 import java.util.ArrayList;
 
@@ -114,8 +114,8 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
 public class Graphs {
 
-  public static void main(String args[]) {
-    AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
+  public static void main(String[] args) {
+    AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<Integer>();
     assert graph.addEdge(1, 2);
     assert graph.addEdge(1, 5);
     assert graph.addEdge(2, 5);

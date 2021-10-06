@@ -138,7 +138,7 @@ public class KahnsAlgorithm{
     public static void main(String[] args){
         
         //Graph definition and initialization
-        AdjacencyList<String> graph = new AdjacencyList<>();
+        AdjacencyList<String> graph = new AdjacencyList<String>();
         graph.addEdge("a","b");
         graph.addEdge("c","a");
         graph.addEdge("a","d");
@@ -146,7 +146,7 @@ public class KahnsAlgorithm{
         graph.addEdge("c","u");
         graph.addEdge("u","b");
         
-        TopologicalSort<String> topSort = new TopologicalSort<>(graph);
+        TopologicalSort<String> topSort = new TopologicalSort<String>(graph);
         
         //Printing the order
         for(String s: topSort.topSortOrder()){

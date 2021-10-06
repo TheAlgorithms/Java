@@ -1,14 +1,14 @@
-package DataStructures.Buffers;
+package  Buffers;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CircularBuffer {
-  private char[] _buffer;
+  private final char[] _buffer;
   public final int _buffer_size;
   private int _write_index = 0;
   private int _read_index = 0;
-  private AtomicInteger _readable_data = new AtomicInteger(0);
+  private final AtomicInteger _readable_data = new AtomicInteger(0);
 
   public CircularBuffer(int buffer_size) {
     if (!IsPowerOfTwo(buffer_size)) {
@@ -32,7 +32,7 @@ public class CircularBuffer {
     // if we have data to read
     if (_readable_data.get() > 0) {
 
-      result = Character.valueOf(_buffer[getTrueIndex(_read_index)]);
+      result = _buffer[getTrueIndex(_read_index)];
       _readable_data.decrementAndGet();
       _read_index++;
     }

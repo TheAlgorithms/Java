@@ -1,29 +1,28 @@
-package DataStructures.Graphs;
+package Graphs;
 
 import java.util.Scanner;
 
 public class FloydWarshall {
-  private int DistanceMatrix[][];
+  private final int[][] DistanceMatrix;
   private int numberofvertices; // number of vertices in the graph
   public static final int INFINITY = 999;
 
-  public FloydWarshall(int numberofvertices) {
+  public FloydWarshall(int NumberOfVertices) {
     DistanceMatrix =
-        new int[numberofvertices + 1]
-            [numberofvertices
+        new int[NumberOfVertices + 1]
+            [NumberOfVertices
                 + 1]; // stores the value of distance from all the possible path form the source
     // vertex to destination vertex
     // The matrix is initialized with 0's by default
-    this.numberofvertices = numberofvertices;
+    this.numberofvertices = NumberOfVertices;
   }
 
   public void floydwarshall(
-      int AdjacencyMatrix[][]) // calculates all the distances from source to destination vertex
+          int[][] AdjacencyMatrix) // calculates all the distances from source to destination vertex
       {
     for (int source = 1; source <= numberofvertices; source++) {
-      for (int destination = 1; destination <= numberofvertices; destination++) {
-        DistanceMatrix[source][destination] = AdjacencyMatrix[source][destination];
-      }
+      if (numberofvertices >= 0)
+        System.arraycopy(AdjacencyMatrix[source], 1, DistanceMatrix[source], 1, numberofvertices);
     }
     for (int intermediate = 1; intermediate <= numberofvertices; intermediate++) {
       for (int source = 1; source <= numberofvertices; source++) {

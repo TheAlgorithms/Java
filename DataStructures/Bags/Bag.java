@@ -1,4 +1,4 @@
-package DataStructures.Bags;
+package Bags;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -36,10 +36,10 @@ public class Bag<Element> implements Iterable<Element> {
 
   /** @param element - the element to add */
   public void add(Element element) {
-    Node<Element> oldfirst = firstElement;
+    Node<Element> OldFirst = firstElement;
     firstElement = new Node<>();
     firstElement.content = element;
-    firstElement.nextElement = oldfirst;
+    firstElement.nextElement = OldFirst;
     size++;
   }
 
@@ -50,9 +50,8 @@ public class Bag<Element> implements Iterable<Element> {
    * @return true if bag contains element, otherwise false
    */
   public boolean contains(Element element) {
-    Iterator<Element> iterator = this.iterator();
-    while (iterator.hasNext()) {
-      if (iterator.next().equals(element)) {
+    for (Element value : this) {
+      if (value.equals(element)) {
         return true;
       }
     }
@@ -65,7 +64,7 @@ public class Bag<Element> implements Iterable<Element> {
   }
 
   @SuppressWarnings("hiding")
-  private class ListIterator<Element> implements Iterator<Element> {
+  private static class ListIterator<Element> implements Iterator<Element> {
     private Node<Element> currentElement;
 
     public ListIterator(Node<Element> firstElement) {

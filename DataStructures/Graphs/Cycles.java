@@ -1,14 +1,15 @@
-package DataStructures.Graphs;
+package Graphs;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 class Cycle {
 
-  private int nodes, edges;
-  private int[][] adjacencyMatrix;
-  private boolean[] visited;
-  ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
+  private final int nodes;
+  private final int edges;
+  private final int[][] adjacencyMatrix;
+  private final boolean[] visited;
+  ArrayList<ArrayList<Integer>> cycles = new ArrayList<>();
 
   public Cycle() {
     Scanner in = new Scanner(System.in);
@@ -52,7 +53,7 @@ class Cycle {
     for (int i = 0; i < nodes; i++) {
       if (adjacencyMatrix[curr][i] == 1) {
         if (i == start) {
-          cycles.add(new ArrayList<Integer>(temp));
+          cycles.add(new ArrayList<>(temp));
         } else {
           if (!visited[i]) {
             dfs(start, i, temp);
@@ -68,11 +69,11 @@ class Cycle {
   }
 
   public void printAll() {
-    for (int i = 0; i < cycles.size(); i++) {
-      for (int j = 0; j < cycles.get(i).size(); j++) {
-        System.out.print(cycles.get(i).get(j) + " -> ");
+    for (ArrayList<Integer> cycle : cycles) {
+      for (Integer integer : cycle) {
+        System.out.print(integer + " -> ");
       }
-      System.out.println(cycles.get(i).get(0));
+      System.out.println(cycle.get(0));
       System.out.println();
     }
   }
