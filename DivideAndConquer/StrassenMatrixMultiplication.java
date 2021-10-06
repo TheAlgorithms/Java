@@ -1,7 +1,7 @@
 // Java Program to Implement Strassen Algorithm
  
 // Class Strassen matrix multiplication
-public class Strassen {
+public class StrassenMatrixMultiplication {
  
     // Method 1
     // Function to multiply matrices
