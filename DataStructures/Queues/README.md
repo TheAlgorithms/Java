@@ -11,15 +11,13 @@
 
 `Queue<Obj> queue = new PriorityQueue<Obj> ();` 
 
-## Common methods
+## Important operations
 
-| Method | Description |
+| Operations | Description |
 | ----------- | ----------- |
-|`add(int index, element)` | Inserts an element in the list at the specified index (At the end, if not specified)|
-| `size()` | This method is used to return the size of the list|
-| `indexOf(element)` | Returns the index of the first occurrence of the element (-1 if it is not present)|
-| `get(int index)` | Returns the element at the specified index|
-| `set(int index, element)` | This method replaces the element at the given index with the new element|
-| `remove(int index)` | This method removes an element from the specified index|
+|Enqueue|Adds an item to the queue|
+|Dequeue|Removes an item from the queue|
+|Front|Gets the front item from the queue|
+|Rear|Gets the last item from the queue|
 
 
