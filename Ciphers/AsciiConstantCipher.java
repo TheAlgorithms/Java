@@ -1,5 +1,5 @@
 /*
-	This was created by William Kourafas
+	This was created by @AlternateWalls
 
 	This cipher takes in a message and a constant number, and converts the message to ascii values while adding the constant number to the ascii values.
 	It's not very complex, but it takes a little while to decrypt and isn't easily recognizable.
@@ -7,6 +7,26 @@
 */
 public class AsciiConstantCipher
 {
+	public static void main(String[] args) 
+	{
+		//Encrypt message
+		double[] encryptedArray = AsciiConstantCipher.AsciiScrambleMessage("Testing to see if this works...", 117);
+
+		//Print message array (encrypted)
+		System.out.print("["); //Added for looks
+		for (double i : encryptedArray)
+		{
+			System.out.print(i + ", ");
+		}
+		System.out.println("]"); //Added for looks
+
+		//Decrypt message
+		String message = AsciiConstantCipher.AsciiDecryptMessage(encryptedArray, 117);
+
+		//Print out message
+		System.out.println(message);
+	}
+
     public static double[] AsciiScrambleMessage(String message, double user_constant)
     {
         double[] encrypted_message = new double[message.length()];
@@ -20,7 +40,7 @@ public class AsciiConstantCipher
 					
 			//Add character and space to return Strin
 			encrypted_message[i] = asciiCharacter;
-}
+		}
 		//Return array
 		return encrypted_message;
     }
