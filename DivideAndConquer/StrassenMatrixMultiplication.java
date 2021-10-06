@@ -144,7 +144,7 @@ public class StrassenMatrixMultiplication {
     {
         System.out.println("Strassen Multiplication Algorithm Implementation For Matrix Multiplication :\n");
 
-        Strassen s = new Strassen();
+        StrassenMatrixMultiplication s = new StrassenMatrixMultiplication();
  
         // Size of matrix
         // Considering size as 4 in order to illustrate
