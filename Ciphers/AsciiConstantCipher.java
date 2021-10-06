@@ -1,3 +1,4 @@
+package cipher
 /*
 	This was created by @AlternateWalls
 
