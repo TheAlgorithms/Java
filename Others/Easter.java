@@ -1,14 +1,19 @@
 //You can read more about the reason behind the algorithm itself here: https://en.wikipedia.org/wiki/Date_of_Easter
 
-  /* Testing data:
- * 2003 - 20th of April (4/20) - Passed
- * 1830 - 11th of April (4/11) - Passed
- * 2020 - 12th of April (4/12) - Passed
- * 1910 - 27th of March (3/27) - Passed
- */
+
 
 public class Easter
-{
+{   
+    public static void main(String[] args) 
+    {
+     //Testing data:
+     FindEaster(2003); // 2003 - 20th of April (4/20) - Passed
+     FindEaster(2003); // 1830 - 11th of April (4/11) - Passed
+     FindEaster(2003); // 2020 - 12th of April (4/12) - Passed
+     FindEaster(2003); // 1910 - 27th of March (3/27) - Passed
+     FindEaster(2003); // 1400 - Invalid date - Passed
+    }
+
 	public static void FindEaster(int y) 
 	{
 		if (y > 1582)
@@ -38,7 +43,7 @@ public class Easter
 		}
 		else
 		{
-		    return;
+		    System.out.println("Invalid date");
 		}		
 	}
 }
