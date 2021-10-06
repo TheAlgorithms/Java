@@ -1,3 +1,5 @@
+// Wikipedia for Harshad Number : https://en.wikipedia.org/wiki/Harshad_number
+
 package Maths;
 
 import java.util.Scanner;
