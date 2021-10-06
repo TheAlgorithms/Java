@@ -27,13 +27,13 @@ public class Strassen {
             int[][] B21 = new int[n / 2][n / 2];
             int[][] B22 = new int[n / 2][n / 2];
  
-            // Dividing matrix A into 4 halves
+            // Dividing matrix A into 4 parts
             split(A, A11, 0, 0);
             split(A, A12, 0, n / 2);
             split(A, A21, n / 2, 0);
             split(A, A22, n / 2, n / 2);
  
-            // Dividing matrix B into 4 halves
+            // Dividing matrix B into 4 parts
             split(B, B11, 0, 0);
             split(B, B12, 0, n / 2);
             split(B, B21, n / 2, 0);
