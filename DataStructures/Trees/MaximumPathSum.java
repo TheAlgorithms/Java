@@ -10,7 +10,9 @@ package DataStructures.Trees;
  * 
  * Input : Root Node Object
  * Output : Integer value
- *
+ * 
+ * Problem references - https://leetcode.com/problems/binary-tree-maximum-path-sum/
+ * 
  * @author Deepti Shahi (https://github.com/DeeptiShahi)
  */
 public class MaximumPathSum {
