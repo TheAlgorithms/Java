@@ -1,7 +1,7 @@
 import java.io.*;
 import java.lang.*;
 
-class GFG {
+class Triplets {
     
     public static int triplets(int arr[],int n)
     {
