@@ -3,7 +3,7 @@ package DataStructures.Queues;
 /**
  * This implements Queues by using the class Queue.
  *
- * <p>A queue data structure functions the same as a real world queue. The elements that are added
+ * A queue data structure functions the same as a real world queue. The elements that are added
  * first are the first to be removed. New elements are added to the back/rear of the queue.
  */
 class Queue {
@@ -153,7 +153,7 @@ public class Queues {
     myQueue.remove(); // Will make 2 the new front, making 10 no longer part of the queue
     // [10, 2(front), 5, 3(rear)]
 
-    myQueue.insert(7); // Insert 7 at the rear which will be index 0 because of wrap around
+    myQueue.insert(7); // Insert 7 at the rear which will get 0 index because of wrap around
     // [7(rear), 2(front), 5, 3]
 
     System.out.println(myQueue.peekFront()); // Will print 2
