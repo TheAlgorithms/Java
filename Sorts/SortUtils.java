@@ -47,6 +47,17 @@ final class SortUtils {
   }
 
   /**
+   * This method checks if first element is greater than or equal the other element
+   *
+   * @param v first element
+   * @param w second element
+   * @return true if the first element is greater than or equal the second element
+   */
+  static <T extends Comparable<T>> boolean greaterOrEqual(T v, T w) {
+    return v.compareTo(w) >= 0;
+  }
+
+  /**
    * Prints a list
    *
    * @param toPrint - a list which should be printed
