@@ -8,7 +8,7 @@ package Strings;
 class Alphabetical {
 
   public static void main(String[] args) {
-    assert !isAlphabetical("123abc");
+    assert !isAlphabetical("123ABC");
     assert isAlphabetical("aBC");
     assert isAlphabetical("abc");
     assert !isAlphabetical("xyzabc");
