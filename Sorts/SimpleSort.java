@@ -3,23 +3,19 @@ package Sorts;
 import static Sorts.SortUtils.*;
 
 public class SimpleSort implements SortAlgorithm {
-    
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         final int LENGTH = array.length;
-        int index = 0;
 
-        for(int i = 0; i<LENGTH; i++) {
-
-            for(int j = i+1; j < LENGTH; j++) {
-                if(less(array[j],array[i])) {
+        for (int i = 0; i < LENGTH; i++) {
+            for (int j = i + 1; j < LENGTH; j++) {
+                if (less(array[j], array[i])) {
                     T element = array[j];
                     array[j] = array[i];
                     array[i] = element;
                 }
             }
-
         }
 
         return array;
