@@ -1,14 +1,14 @@
-## List
+## Linked List
 ### Description
 
-List is a data structure in which data is stored in a linear manner. It ususally contains a data field and a link to the memory location of the next mode.
+LinkedList is a data structure in which data is stored in a linear manner. It usually contains a data field and a link to the memory location of the next mode.
 
 ### Structure
 
 ```
-class List<E>{
+class LinkedList<E>{
     E value;
-    List next;
+    LinkedList next;
 }
 ```
 
@@ -18,7 +18,7 @@ The `next` variable points to the next node in the data structure and value stor
 ### Properties
 1. Linked list does not provide indexing like an array. For accessing a node at position `p` , &theta;(p) nodes need to be accessed.
 2. Main advantage of linked list is addition and removal of nodes near the end and beginning of lists. It can be done just by updating the link (O(1) time)
-3. UNlike array, it's size is not predefined. SO, any number of nodes can be appended.
+3. Unlike an array, its size is not predefined. So any number of nodes can be appended.
 
 ### File descriptions:
 
@@ -27,4 +27,4 @@ The `next` variable points to the next node in the data structure and value stor
 3. `CountSinglyLinkedListRecursion.java`: Recursively counts the size of a list.
 4. `detect_and_create_loop.java` : Detect a loop in linked list
 5. `DoublyLinkedList.java` : A modification of singly linked list which has a `prev` pointer to point to the previous node.
-6. `Merge_K_SortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list)
+6. `Merge_K_SortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
