@@ -8,7 +8,7 @@ stack is based on two methods (functions)
 
 ## push(element)
 
-add "alement" to last position of stack (i.e. top of stack).
+add "element" to the top of the stack.
 
 for example: we have `1, 3, 5` in stack, then we call push(9),
 
@@ -16,7 +16,7 @@ for example: we have `1, 3, 5` in stack, then we call push(9),
 
 ## peek() or top()
 
-return alement at last position of stack (i.e. top of stack).
+return element at the top of the stack.
 
 for example: we have `1, 3, 5` in stack, then we call peek(),
 
