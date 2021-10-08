@@ -1,5 +1,5 @@
 // Algorithm Explanation: https://www.geeksforgeeks.org/count-ways-reach-nth-stair/
-class GenericRoot {
+class ClimbStairs {
 
 	private static int count;
 
