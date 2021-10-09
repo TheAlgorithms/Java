@@ -3,7 +3,7 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
 
  import java.util.*;
  class Floydloop{
-  static ListNode head;
+  ListNode head;
  class ListNode{     //The class ised to contruct the Linked list
      int val;
      ListNode next;
