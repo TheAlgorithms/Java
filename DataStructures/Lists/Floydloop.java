@@ -43,7 +43,7 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
          list1.add(3);
          list1.add(5);
          list1.head.next.next.next.next = list1.head;// Just to create a loop
-         list.Cycle(); 
+         list1.Cycle(); 
         }
 
  }
