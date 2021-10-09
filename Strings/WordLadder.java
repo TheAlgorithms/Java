@@ -54,7 +54,7 @@ class WordLadder {
      * @param beginWord: Starting word of the ladder 
      * @param endWord: Ending word of the ladder
      * @param wordList: This list contains the words which needs to be included in ladder.
-     * @return ladderLength: This function will return the ladderLength(level) if the nedword is there. 
+     * @return ladderLength: This function will return the ladderLength(level) if the endword is there. 
      *  Otherwise, will return the length as 0.
      */
 
