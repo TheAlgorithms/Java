@@ -3,7 +3,7 @@ package Sorts;
 import static Sorts.SortUtils.*;
 
 /**
- * Implementation of gnome sort
+ * Implementation of pancake sort
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  * @since 2018-04-10
