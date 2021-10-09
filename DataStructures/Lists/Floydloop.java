@@ -3,6 +3,7 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
 
  import java.util.*;
  class Floydloop{
+  static ListNode head;
  class ListNode{     //The class ised to contruct the Linked list
      int val;
      ListNode next;
@@ -37,10 +38,10 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
      public static void main(String args[])
      {
          Floydloop list1 = new Floydloop();
-         list1.push(1);
-         list1.push(2);
-         list1.push(3);
-         list1.push(5);
+         list1.add(1);
+         list1.add(2);
+         list1.add(3);
+         list1.add(5);
          list1.head.next.next.next.next = list1.head;// Just to create a loop
          list.Cycle(); 
         }
