@@ -46,7 +46,3 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
         }
 
  }
-
-
- /*TIME COMPLEXITY IS O(n) as only one traversal of linked list is done.
- SPACE COMPLEXITY IS O(1) as noextra space is used. 
