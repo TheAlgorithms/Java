@@ -20,18 +20,23 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
         head = new_node;
     }
 
-     public boolean Cycle(ListNode head)
+ void  Cycle(ListNode head)
      {
          ListNode slow= head; //Declaring 2 pointers slow and fast 
          ListNode fast= head;
+         int flg=0;
          while (slow!=null && fast!= null && fast.next!=null)
          {
              slow=slow.next;// this poiter runs slow in one steps 
              fast=fast.next.next;// this pointer runs faster with two steps
              if(slow==fast)//if value of both are same then there is a loop
-             return true;
+             { flg=1;
+             break;}
          }
-         return false;
+       if(flg==1)
+        System.out.println("Loop found");
+       else
+        System.out.println("Loop not  found");
 
      }
 
@@ -45,5 +50,4 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
          list1.head.next.next.next.next = list1.head;// Just to create a loop
          list1.Cycle(); 
         }
-
  }
