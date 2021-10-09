@@ -1,5 +1,7 @@
 package DataStructures.Trees;
 
+import DataStructures.Trees.BinaryTree.Node;
+
 /**
  * Problem Statement
  * Ceil value for any number x in a collection is a number y which is either equal to x or the least greater number than x.
@@ -45,31 +47,28 @@ package DataStructures.Trees;
  * otherwise the root is ceil
  */
 public class CeilInBinarySearchTree {
-    class TreeNode {
-        Integer val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode(Integer x) {
-            val = x;
-        }
-    }
-
-
-    public static TreeNode getCeil(TreeNode root, int key) {
+    public static Node getCeil(Node root, int key) {
         if (root == null) {
             return null;
         }
 
-        if (root.val == key) {
+        // if root value is same as key than root is the ceiling
+        if (root.data == key) {
             return root;
         }
 
-        if (root.val < key) {
+        // if root value is lesser than key then ceil must be in right subtree
+        if (root.data < key) {
             return getCeil(root.right, key);
         }
 
-        TreeNode result = getCeil(root.left, key);
+        // if root value is greater than key then ceil can be in left subtree or if
+        // it is not in left subtree then current node will be ceil
+        Node result = getCeil(root.left, key);
+
+        // if result is null it means that there is no ceil in children subtrees
+        // and the root is the ceil otherwise the returned node is the ceil.
         return result == null ? root : result;
     }
 }
