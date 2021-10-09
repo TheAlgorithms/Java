@@ -1,0 +1,35 @@
+// package Search; //
+/*Exponential search is also known as doubling or galloping search. This mechanism is used to find the range where the search key may present. 
+If L and U are the upper and lower bound of the list, then L and U both are the power of 2. For the last section, the U is the last position of the list.
+For that reason, it is known as exponential.After finding the specific range, it uses the binary search technique to find the exact location of the search key.
+Time Complexity: O(1) for the best case. O(log2 i) for average or worst case. Where i is the location where search key is present.
+Space Complexity: O(1)*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Search
+{
+  public static void main(String[] args) {
+   int array[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60};
+   //looking for 50
+   int searchValue = 50;
+   int result = exponetialSearch(array, array.length, searchValue);
+   System.out.println("Element is present at index: " + result);
+  }
+static int exponetialSearch(int array[], int n, int searchValue) {
+  //if value is at position one
+  if(array[0] == searchValue) {
+   return 0;
+  }
+  //find the range for the binary search
+  int i = 1;
+  while (i < n && array[i] <= searchValue) {
+   i = i * 2;
+  }
+  //now call the binary search
+  return Arrays.binarySearch(array, (i / 2), Math.min(i, n), searchValue);
+}
+}
