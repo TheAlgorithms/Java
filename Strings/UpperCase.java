@@ -1,10 +1,13 @@
 package Strings;
+/** 
+*Problem statement: lower case alphabets to UpperCase
+*/
 
-public class Upper {
+public class UpperCase {
 
   /** Driver Code */
   public static void main(String[] args) {
-    String[] strings = {"ABC", "ABC123", "abcABC", "abc123ABC"};
+    String[] strings = {"ABC", "ABC123", "abcABC", "abc123ABC", "125abC"};
     for (String s : strings) {
       assert toUpperCase(s).equals(s.toUpperCase());
     }
@@ -22,6 +25,7 @@ public class Upper {
       if (Character.isLetter(values[i]) && Character.isLowerCase(values[i])) {
         values[i] = Character.toUpperCase(values[i]);
       }
+
     }
     return new String(values);
   }
