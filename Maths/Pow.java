@@ -23,4 +23,10 @@ public class Pow {
     }
     return result;
   }
+  
+  //method
+  public static long pow(int a,int b){
+    return Math.pow(a,b);
+  }
+  
 }
