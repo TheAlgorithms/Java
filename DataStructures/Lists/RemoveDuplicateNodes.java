@@ -1,34 +1,23 @@
 package DataStructures.Lists;
 
+import DataStructures.Lists.Node;
+
 public class RemoveDuplicateNodes {
-    public static class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-    public ListNode deleteDuplicates(ListNode head) {
+    public Node deleteDuplicates(Node head) {
         // sentinel
-        ListNode sentinel = new ListNode(0, head);
+        Node sentinel = new Node(0, head);
 
         // predecessor = the last node 
         // before the sublist of duplicates
-        ListNode pred = sentinel;
+        Node pred = sentinel;
 
         while (head != null) {
             // if it's a beginning of duplicates sublist 
             // skip all duplicates
-            if (head.next != null && head.val == head.next.val) {
+            if (head.next != null && head.value == head.next.value) {
                 // move till the end of duplicates sublist
-                while (head.next != null && head.val == head.next.val) {
+                while (head.next != null && head.value == head.next.value) {
                     head = head.next;
                 }
                 // skip all duplicates
@@ -44,20 +33,20 @@ public class RemoveDuplicateNodes {
         return sentinel.next;
     }
 
-    public void print(ListNode head) {
-        ListNode temp = head;
+    public void print(Node head) {
+        Node temp = head;
         while (temp != null && temp.next != null) {
-            System.out.print(temp.val + "->");
+            System.out.print(temp.value + "->");
             temp = temp.next;
         }
         if (temp != null) {
-            System.out.print(temp.val);
+            System.out.print(temp.value);
         }
     }
 
     public static void main(String arg[]) {
         RemoveDuplicateNodes instance = new RemoveDuplicateNodes();
-        ListNode head = new ListNode(0, new ListNode(2, new ListNode(3, new ListNode(3, new ListNode(4)))));
+        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
         head = instance.deleteDuplicates(head);
         instance.print(head);
     }
