@@ -1,7 +1,7 @@
 //This program implements the concept of CircularQueue in Java
 //Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
 
-public class CircularQueue_arrays {
+public class Solution {
     public static void main(String[] args) {
         CircularQueue cq= new CircularQueue(5);
         System.out.println(cq.isEmpty());
