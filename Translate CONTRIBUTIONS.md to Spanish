@@ -1,0 +1,26 @@
+¿Cómo contribuir?
+Encontraste un error?
+
+    Asegúrese de que el error aún no se haya informado buscando en GitHub en Problemas del proyecto.
+
+    Evite abrir problemas que soliciten ser "asignado" a un algoritmo en particular. Esto simplemente crea un ruido innecesario para los mantenedores. En su lugar, envíe su implementación en una solicitud de extracción y será evaluada por los encargados del mantenimiento del proyecto.
+
+    Si no puede encontrar un problema abierto que se refiera al mismo problema, según el tipo de problema, siga los pasos correspondientes:
+
+¿Quieres contribuir a la documentación?
+
+    ¿Podrías leer la documentación aquí? Contribuyendo a la documentación, abrir una nueva emitida, hacer cambios y luego crear un pull request, se pondrá en revisión y se aceptará si es el caso.
+
+¿Quieres agregar una nueva función?
+
+    Abra una nueva edición. Asegúrese de incluir un título y una descripción clara y un caso de prueba que demuestre la nueva función que desea agregar al proyecto.
+
+¿Quieres arreglar un error?
+
+    Abra una nueva edición. Asegúrese de incluir un título y una descripción clara y un caso de prueba que demuestre el comportamiento esperado que no está ocurriendo.
+
+¿Tiene preguntas sobre el código fuente?
+
+    Haga cualquier pregunta sobre cómo usar el repositorio en la sala TheAlgorithms en GITTER o abra una nueva edición.
+
+👍🎉 Eso es todo lo que necesita saber sobre el proceso, ahora es su turno de ayudarnos a mejorar el repositorio, ¡gracias de nuevo! 👍🎉
