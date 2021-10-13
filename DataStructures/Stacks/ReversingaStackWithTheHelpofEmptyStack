@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+class GFG{
+
+static void transfer(Stack<Integer> s1,
+					Stack<Integer> s2, int n)
+{
+	for(int i = 0; i < n; i++)
+	{
+
+		int temp = s1.peek();
+		s1.pop();
+		s2.push(temp);
+	}
+}
+
+static void reverse_stack_by_using_extra_stack(Stack<Integer> s, int n)
+{
+	Stack<Integer> s2 = new Stack<Integer>();
+
+	for(int i = 0; i < n; i++)
+	{
+		int x = s.peek();
+
+		s.pop();
+
+		transfer(s, s2, n - i - 1);
+		s.push(x);
+		transfer(s2, s, n - i - 1);
+	}
+}
+
+public static void main(String[] args)
+{
+	int n = 5;
+
+	Stack<Integer> s = new Stack<Integer>();
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.push(4);
+	s.push(5);
+
+	reverse_stack_by_using_extra_stack(s, n);
+
+	for(int i = 0; i < n; i++)
+	{
+		System.out.print(s.peek() + " ");
+		s.pop();
+	}
+}
+}
