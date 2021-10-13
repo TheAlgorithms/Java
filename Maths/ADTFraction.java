@@ -1,5 +1,8 @@
 
-public class ADTFractionApp {
+package Maths;
+
+
+public class ADTFraction {
 
    
     public static void main(String[] args) {
