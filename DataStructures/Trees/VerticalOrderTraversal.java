@@ -6,8 +6,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-import BinaryTree.Node;
-
 /* The following class implements a vertical order traversal
 in a tree from top to bottom and left to right, so for a tree :
            1
@@ -32,7 +30,7 @@ public class VerticalOrderTraversal{
 		tree.put(3);
 		tree.put(1);
 		tree.put(4);
-		Node root = tree.getRoot();
+		BinaryTree.Node root = tree.getRoot();
 		ArrayList<Integer> ans = verticalTraversal(root);
 		for(int i : ans) {
 			System.out.print(i+" ");
@@ -41,9 +39,9 @@ public class VerticalOrderTraversal{
 	 
 	/*Function that receives a root Node and prints the tree 
 	in Vertical Order.*/
-	private static ArrayList<Integer> verticalTraversal(Node root) {
+	private static ArrayList<Integer> verticalTraversal(BinaryTree.Node root) {
 		/*Queue to store the Nodes.*/
-		Queue<Node> queue= new LinkedList<>(); 
+		Queue<BinaryTree.Node> queue= new LinkedList<>(); 
 		
 		/*Queue to store the index of particular vertical 
 		 column of a tree , with root at 0, Nodes on left 
