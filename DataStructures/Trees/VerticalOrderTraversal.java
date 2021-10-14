@@ -1,11 +1,15 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Map;
+package DataStructures.Trees;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-/* The following class prints a tree in vertical order from
- top to bottom and left to right so for a tree :
+import BinaryTree.Node;
+
+/* The following class implements a vertical order traversal
+in a tree from top to bottom and left to right, so for a tree :
            1
           / \
          2   3
@@ -15,44 +19,29 @@ import java.util.HashMap;
          7   8   10
           \
            9
- the output will be :
- 4
- 2 7
- 1 5 9
- 3 8
- 6
- 10
+ the sequence will be :
+ 4 2 7 1 5 9 3 8 6 10
  */
 public class VerticalOrderTraversal{
-	/* Class to represent Tree Node */
-	static class Node {
-	   int data;
-	   Node left, right;
-	   public Node(int data) {
-	     this.data = data;
-	     left = null;
-	     right = null;
-	   }
-	}
 
+	
 	public static void main(String[] args) {
-		/* Creating a tree */
-		Node root = new Node(1);
-		root.left = new Node(2);
-		root.right = new Node(3);
-		root.left.left = new Node(4);
-		root.left.right = new Node(5);
-		root.left.left.right = new Node(7);
-		root.left.left.right.right = new Node(9);
-		root.right.right = new Node(6);
-		root.right.right.left = new Node(8);
-		root.right.right.right = new Node(10);
-		verticalTraversal(root);
+		BinaryTree tree = new BinaryTree();
+		tree.put(5);
+		tree.put(6);
+		tree.put(3);
+		tree.put(1);
+		tree.put(4);
+		Node root = tree.getRoot();
+		ArrayList<Integer> ans = verticalTraversal(root);
+		for(int i : ans) {
+			System.out.print(i+" ");
+		}
 	}
 	 
 	/*Function that receives a root Node and prints the tree 
 	in Vertical Order.*/
-	private static void verticalTraversal(Node root) {
+	private static ArrayList<Integer> verticalTraversal(Node root) {
 		/*Queue to store the Nodes.*/
 		Queue<Node> queue= new LinkedList<>(); 
 		
@@ -107,12 +96,13 @@ public class VerticalOrderTraversal{
 		}
 		/*Finally map data is printed here which has keys
 		from min to max. Each ArrayList represents a 
-		vertical column that is printed in separate lines.*/
+		vertical column that is added in ans ArrayList.*/
+		ArrayList<Integer> ans= new ArrayList<>();
 		for(int i =min ; i<= max ; i++) {
 			for(int j = 0 ; j<map.get(i).size(); j++) {
-				System.out.print(map.get(i).get(j)+" ");
+				ans.add(map.get(i).get(j));
 			}
-			System.out.println();
 		}
+		return ans;
 	}
 }
