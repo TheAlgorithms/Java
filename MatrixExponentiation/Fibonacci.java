@@ -2,7 +2,9 @@ package MatrixExponentiation;
 
 import java.util.Scanner;
 
-/** @author Anirudh Buvanesh (https://github.com/anirudhb11) */
+/** @author Anirudh Buvanesh (https://github.com/anirudhb11)
+ * For more information see https://www.geeksforgeeks.org/matrix-exponentiation/
+ * */
 public class Fibonacci {
     // Exponentiation matrix for Fibonacci sequence
     private static final int [][] fibMatrix = {{1,1}, {1,0}};
