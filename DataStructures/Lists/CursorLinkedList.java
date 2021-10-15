@@ -2,6 +2,13 @@ package DataStructures.Lists;
 
 import java.util.Objects;
 
+/**
+ * This class implements a Cursor Linked List.
+ *
+ * A CursorLinkedList is an array version of a Linked List. Essentially you have an array of list nodes but instead of 
+ * each node containing a pointer to the next item in the linked list, each node element in the array contains the index for the next node element. 
+ *
+ */
 public class CursorLinkedList<T> {
 
   private static class Node<T> {

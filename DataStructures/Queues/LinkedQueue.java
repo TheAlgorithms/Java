@@ -38,7 +38,7 @@ public class LinkedQueue {
   /**
    * Check if queue is empty
    *
-   * @return <tt>true</tt> if queue is empty, otherwise <tt>false</tt>
+   * @return true if queue is empty, otherwise false
    */
   public boolean isEmpty() {
     return size == 0;
@@ -48,7 +48,7 @@ public class LinkedQueue {
    * Add element to rear of queue
    *
    * @param data insert value
-   * @return <tt>true</tt> if add successfully
+   * @return true if add successfully
    */
   public boolean enqueue(int data) {
     Node newNode = new Node(data);
