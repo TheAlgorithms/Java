@@ -14,52 +14,84 @@ import java.util.regex.Pattern;
 /**
  * Class that checks if all open close parameters are valid in string or in file. Parameters can be
  * default or custom if passed with ie -l "{" - r "}" or --left, --right Passed input can be string
- * line -s or --string or file -f or --file with path after it You can use --example to see how
- * input can look like
+ * line -s or --string or file -f or --file with path after it.
+ * You can use --example to see how input can look like
  */
-public class ValidParentheses {
-
-  private static final String ERROR_MSG = "Submitted input contain improper closures.";
-  // Pattern to extract left symbols argument from command line
-  private static final String LEFT_SYMBOL_PATTERN = "(--left\\s*\"|-l\\s*\")(.*?)\"";
-  private static final String LEFT_SYMBOL_REG = "-l|--left";
-  // Pattern to extract right symbols argument from command line
-  private static final String RIGHT_SYMBOL_PATTERN = "(--right\\s*\"|-r\\s*\")(.*?)\"";
-  private static final String RIGHT_SYMBOL_REG = "-r|--right";
-  // Pattern to extract line argument from command line
-  private static final String LINE_PATTERN = "(--string\\s*\"|-s\\s*\")(.*?)\"";
-  private static final String LINE_ARG_REG = "-s|--string";
-  // Pattern to extract file argument from command line
-  private static final String FILE_PATTERN = "(--file\\s*\"|-f\\s*\")(.*?)\"";
-  private static final String FILE_ARG_REG = "-f|--file";
-  // Line separator independent of system
-  private static final String LINE_SEPARATOR = System.lineSeparator();
-  // Map of symbols that we are checking
-  private static final Map<Character, Character> symbolMap = new HashMap<>();
-  private static final Stack<Character> stack = new Stack<>();
-  // Regex holder
-  private static String symbolMapRegex;
+class ValidParentheses {
 
   /**
-   * Program for check if open-close symbol relationship is met.
+   * Error message in case input doesn't contain valid parentheses.
+   */
+  private static final String ERROR_MSG = "Submitted input contain non valid parentheses.";
+  /**
+   * Pattern to extract left parentheses' argument from command line.
+   */
+  private static final String LEFT_PARENTHESES_PATTERN = "(--left\\s*\"|-l\\s*\")(.*?)\"";
+  /**
+   * Pattern to extract left parentheses' argument from command line.
+   */
+  private static final String LEFT_PARENTHESES_REG = "-l|--left";
+  /**
+   * Pattern to extract right parentheses' argument from command line.
+   */
+  private static final String RIGHT_PARENTHESES_PATTERN = "(--right\\s*\"|-r\\s*\")(.*?)\"";
+  /**
+   * Pattern to split by right parentheses' argument value from command line.
+   */
+  private static final String RIGHT_PARENTHESES_REG = "-r|--right";
+  /**
+   * Pattern to extract line argument from command line.
+   */
+  private static final String LINE_PATTERN = "(--string\\s*\"|-s\\s*\")(.*?)\"";
+  /**
+   * Pattern to split by string input argument value from command line.
+   */
+  private static final String LINE_ARG_REG = "-s|--string";
+  /**
+   * Pattern to extract file argument from command line.
+   */
+  private static final String FILE_PATTERN = "(--file\\s*\"|-f\\s*\")(.*?)\"";
+  /**
+   * Pattern to split by file path input argument value from command line.
+   */
+  private static final String FILE_ARG_REG = "-f|--file";
+  /**
+   * Line separator independent of system.
+   */
+  private static final String LINE_SEPARATOR = System.lineSeparator();
+  /**
+   * Map of parentheses that we are checking.
+   */
+  private static final Map<Character, Character> parenthesesMap = new HashMap<>();
+  /**
+   * Stack data-structure to hold our most recently read character sign.
+   */
+  private static final Stack<Character> CHARACTER_STACK = new Stack<>();
+  /**
+   * Regex holder.
+   */
+  private static String parenthesesMapRegex;
+
+  /**
+   * Program for check if open-close parentheses relationship is met.
    *
    * @param argv Program arguments -s,-f,-l,-r,-e ...
    */
-  public static void main(String... argv) {
-    // Create a Scanner object
+  public static void main(final String... argv) {
+    /* Create a Scanner object */
     final Scanner myObj = new Scanner(System.in);
-    // Printout starting text
+    /* Printout starting text */
     startText();
-    // Read console input
+    /* Read console input */
     final String input = myObj.nextLine();
-    // Parse console line arguments
-    readArgumentsAndAnalyze(input.trim());
-    // Printout end text
+    /* Parse console line arguments */
+    readArgumentsAndCheckValidity(input.trim());
+    /* Printout end text */
     endText();
   }
 
   private static void endText() {
-    System.out.println("***Finished***");
+    System.out.println("***Finished successfully***");
   }
 
   private static void startText() {
@@ -81,26 +113,26 @@ public class ValidParentheses {
         + LINE_SEPARATOR);
   }
 
-  private static void readArgumentsAndAnalyze(String input) {
+  private static void readArgumentsAndCheckValidity(final String input) {
     // Check if example is requested.
     if (scanForExampleParameter(input)) {
       showExample();
       System.exit(0);
     }
-    // Check if symbol arguments are passed and initialize symbolMap
-    scanForSymbolsParameter(input);
+    // Check if parentheses arguments are passed and initialize parenthesesMap
+    scanForParenthesesParameter(input);
     // If line command parameter is used, get line
     final String line = scanForLineParameter(input);
     // Check if line passed is string containing whitespace
     if (!line.isBlank()) {
       // Check if input is meeting the criteria
-      analyseLine(line);
+      validateLine(line);
     } else {
       // If file command parameter is used, get file path
       final String filePath = scanForFileParameter(input);
       if (!filePath.isBlank()) {
         // If filePath is not blank check if file meets criteria
-        analyseFile(filePath);
+        validateFile(filePath);
       } else {
         System.out.println(
             "Please insert line of file to analyse using parameters -s|--string|-f|--file");
@@ -120,19 +152,19 @@ public class ValidParentheses {
         + "-f \"C:\\Users\\Username\\Folder\\file.txt\"");
   }
 
-  private static boolean scanForExampleParameter(String input) {
+  private static boolean scanForExampleParameter(final String input) {
     return input.contains("-e") || input.contains("--example");
   }
 
-  private static void analyseFile(String filePath) {
+  private static void validateFile(final String filePath) {
     try {
       final FileInputStream inputStream = new FileInputStream(filePath);
       final BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
       String line;
       while ((line = br.readLine()) != null) {
-        analyseLine(line);
+        validateLine(line);
       }
-      if (!stack.empty()) {
+      if (!CHARACTER_STACK.empty()) {
         System.out.println(ERROR_MSG);
       }
     } catch (IOException e) {
@@ -140,69 +172,69 @@ public class ValidParentheses {
     }
   }
 
-  private static void scanForSymbolsParameter(String input) {
-    final char[] leftSymbols = scanForLeftSymbols(input);
-    final char[] rightSymbols = scanForRightSymbols(input);
-    if (leftSymbols.length != rightSymbols.length) {
-      System.out.println("-l (--left) and -r (--right) symbols are unequal length.");
+  private static void scanForParenthesesParameter(final String input) {
+    final char[] leftParentheses = scanForLeftParentheses(input);
+    final char[] rightParentheses = scanForRightParentheses(input);
+    if (leftParentheses.length != rightParentheses.length) {
+      System.out.println("-l (--left) and -r (--right) parentheses are unequal length.");
       System.exit(0);
-    } else if (leftSymbols.length == 0) {
-      // Initialize symbolMap with default symbols.
-      initDefaultSymbols();
+    } else if (leftParentheses.length == 0) {
+      // Initialize parenthesesMap with default parentheses.
+      initDefaultParentheses();
     } else {
-      // Initialize symbolMap using provided symbols
-      initSymbols(leftSymbols, rightSymbols);
+      // Initialize parenthesesMap using provided parentheses
+      initParentheses(leftParentheses, rightParentheses);
     }
-    generateRegexForSymbolMap();
+    generateRegexForParenthesesMap();
   }
 
-  private static void initSymbols(char[] leftSymbols, char[] rightSymbols) {
-    for (int i = 0; i < leftSymbols.length; i++) {
-      symbolMap.put(leftSymbols[i], rightSymbols[i]);
+  private static void initParentheses(final char[] leftParentheses, final char[] rightParentheses) {
+    for (int i = 0; i < leftParentheses.length; i++) {
+      parenthesesMap.put(leftParentheses[i], rightParentheses[i]);
     }
   }
 
-  private static void initDefaultSymbols() {
-    // By defaults adds following symbols to analyze.
-    symbolMap.put('(', ')');
-    symbolMap.put('{', '}');
-    symbolMap.put('[', ']');
-    // Generates regex for above symbols that is used in removeNonSymbolCharacters method.
-    System.out.println("Custom symbols not provided, using default (), {}, []");
+  private static void initDefaultParentheses() {
+    // By defaults adds following parentheses to analyze.
+    parenthesesMap.put('(', ')');
+    parenthesesMap.put('{', '}');
+    parenthesesMap.put('[', ']');
+    // Generates regex for above parentheses that is used in removeNonParenthesesCharacters method.
+    System.out.println("Custom parentheses not provided, using default (), {}, []");
   }
 
-  private static void generateRegexForSymbolMap() {
+  private static void generateRegexForParenthesesMap() {
     final StringBuilder regex = new StringBuilder();
-    for (char c : symbolMap.keySet()) {
+    for (char c : parenthesesMap.keySet()) {
       regex.append("\\")
           .append(c)
           .append("\\")
-          .append(symbolMap.get(c));
+          .append(parenthesesMap.get(c));
     }
-    symbolMapRegex = regex.toString();
+    parenthesesMapRegex = regex.toString();
   }
 
-  private static void analyseLine(String line) {
+  private static void validateLine(final String line) {
     // Remove all noise that isn't relevant to analysis.
-    line = removeNonSymbolCharacters(line);
+    final String sanitizedline = removeNonParenthesesCharacters(line);
     // We are analyzing individual chars.
-    final char[] chars = line.toCharArray();
+    final char[] chars = sanitizedline.toCharArray();
     for (char c : chars) {
-      // If character is left symbol we are pushing it to the stack.
-      // If it is right symbol we are pulling from stack and checking left symbol.
-      if (symbolMap.containsKey(c)) {
-        stack.push(c);
+      // If character is left parentheses we are pushing it to the stack.
+      // If it is right parentheses we are pulling from stack and checking left parentheses.
+      if (parenthesesMap.containsKey(c)) {
+        CHARACTER_STACK.push(c);
       } else {
-        // If we consumed all left symbols from stack,
-        // that means that symbols on the right are not paired.
-        if (stack.isEmpty()) {
+        // If we consumed all left parentheses from stack,
+        // that means that parentheses on the right are not paired.
+        if (CHARACTER_STACK.isEmpty()) {
           System.out.println(ERROR_MSG);
           break;
         }
-        final char stackKey = stack.pop();
-        // We get matching right symbol for our left stack symbol.
-        final char stackValue = symbolMap.get(stackKey);
-        // If matching right symbol isn't equal to our current right character we break.
+        final char stackKey = CHARACTER_STACK.pop();
+        // We get matching right parentheses for our left stack parentheses.
+        final char stackValue = parenthesesMap.get(stackKey);
+        // If matching right parentheses isn't equal to our current right character we break.
         if (stackValue != c) {
           System.out.println(ERROR_MSG);
           break;
@@ -211,25 +243,24 @@ public class ValidParentheses {
     }
   }
 
-  private static String removeNonSymbolCharacters(String line) {
-    // Sanitizes line, so it only contains symbols that we are checking.
-    line = line.replaceAll("[^" + symbolMapRegex + "]*", "");
-    return line;
+  private static String removeNonParenthesesCharacters(final String line) {
+    // Sanitizes line, so it only contains parentheses that we are checking.
+    return line.replaceAll("[^" + parenthesesMapRegex + "]*", "");
   }
 
-  private static char[] scanForRightSymbols(String input) {
-    return scanForParameter(RIGHT_SYMBOL_PATTERN, RIGHT_SYMBOL_REG, input).toCharArray();
+  private static char[] scanForRightParentheses(final String input) {
+    return scanForParameter(RIGHT_PARENTHESES_PATTERN, RIGHT_PARENTHESES_REG, input).toCharArray();
   }
 
-  private static char[] scanForLeftSymbols(String input) {
-    return scanForParameter(LEFT_SYMBOL_PATTERN, LEFT_SYMBOL_REG, input).toCharArray();
+  private static char[] scanForLeftParentheses(final String input) {
+    return scanForParameter(LEFT_PARENTHESES_PATTERN, LEFT_PARENTHESES_REG, input).toCharArray();
   }
 
-  private static String scanForFileParameter(String input) {
+  private static String scanForFileParameter(final String input) {
     return scanForParameter(FILE_PATTERN, FILE_ARG_REG, input);
   }
 
-  private static String scanForLineParameter(String input) {
+  private static String scanForLineParameter(final String input) {
     return scanForParameter(LINE_PATTERN, LINE_ARG_REG, input);
   }
 
