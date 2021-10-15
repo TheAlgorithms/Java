@@ -104,7 +104,6 @@ class TopologicalSort<E extends Comparable<E>>{
      */
     ArrayList<E> topSortOrder(){
         calculateInDegree();
-        int count = 0;
         Queue<E> q = new LinkedList<E>();
         
         for(E vertex: inDegree.keySet()){

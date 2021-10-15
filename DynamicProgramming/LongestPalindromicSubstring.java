@@ -1,8 +1,5 @@
 package DynamicProgramming;
 
-import java.io.*;
-import java.util.*;
-
 /*
  * Algorithm explanation https://leetcode.com/problems/longest-palindromic-substring/
  */
