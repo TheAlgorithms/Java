@@ -3,6 +3,9 @@ package Ciphers;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Wikipedia link for Affine Cipher: https://en.wikipedia.org/wiki/Affine_cipher
+ */
 public class Affine {
 
     public static void main(String[] args) {
