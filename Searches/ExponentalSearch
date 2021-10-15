@@ -48,11 +48,10 @@ public class ExponentialSearch implements SearchAlgorithm {
             return array.length;
 
         int range = 1;
-        int elem = (int) array[range];
 
-        while (range < array.length && elem <= (int)key) {
+
+        while (range < array.length && array[range].compareTo(key) <= -1) {
             range = range * 2;
-            elem = (int) array[range];
         }
 
         return Arrays.binarySearch(array, range / 2, Math.min(range, array.length), key);
