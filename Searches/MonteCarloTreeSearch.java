@@ -16,7 +16,7 @@ public class MonteCarloTreeSearch {
     public class Node {
         Node parent;
         ArrayList <Node> childNodes;
-        boolean isPlayer; // True if it is the players turn.
+        boolean isPlayersTurn; // True if it is the player's turn.
         boolean isPlayerWinner; // True if the player won; false if the opponent won.
         int score;
         int visitCount;
