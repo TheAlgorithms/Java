@@ -13,7 +13,7 @@ public class MaxSumContiguousSubArray
         {
             a[i]=sc.nextInt();
         }
-        Max_sum_contiguous_subarray ob=new Max_sum_contiguous_subarray();
+        MaxSumContiguousSubArray ob=new MaxSumContiguousSubArray();
         int result=ob.maxSubArray(a);
         System.out.println(result);
     }
