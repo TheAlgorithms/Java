@@ -1,3 +1,5 @@
+package DivideAndConquer;
+
 public class BinaryExponentiation {
 
     public static void main(String args[]) {
