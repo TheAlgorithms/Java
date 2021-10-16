@@ -2,7 +2,7 @@
 
 import java.io.*;
 import java.util.*;
-public class MaxSumContiguousSubArray
+public class MaxSumContiguousSubarray
 {
     public static void main(String[] args)throws Exception
     {
@@ -13,7 +13,7 @@ public class MaxSumContiguousSubArray
         {
             a[i]=sc.nextInt();
         }
-        MaxSumContiguousSubArray ob=new MaxSumContiguousSubArray();
+        MaxSumContiguousSubarray ob=new MaxSumContiguousSubarray();
         int result=ob.maxSubArray(a);
         System.out.println(result);
     }
