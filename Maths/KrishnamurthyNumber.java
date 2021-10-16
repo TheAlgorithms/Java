@@ -1,4 +1,4 @@
-//package Maths;
+package Maths;
 
 /* This is a program to check if a number is a Krishnamurthy number or not.
 A number is a Krishnamurthy number if the sum of the factorials of the digits of the number is equal to the number itself.
