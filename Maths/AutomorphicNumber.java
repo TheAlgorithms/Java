@@ -1,3 +1,5 @@
+package Maths;
+
 /**
  * A number is said to be an Automorphic, if it is present in the last digit(s) of its square.
  * Example- Let the number be 25, its square is 625.

@@ -1,7 +1,4 @@
-package test;
-
-import java.io.*;
-import java.util.*;
+package DynamicProgramming;
 
 /**
  * Algorithm explanation https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
