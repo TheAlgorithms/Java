@@ -1,0 +1,29 @@
+class Graph{
+  boolean[] visited,recursive;
+    public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        visited = new boolean[V];
+        recursive = new boolean[V];
+        Arrays.fill(visited,false);
+        Arrays.fill(recursive,false);
+        for(int i = 0;i<V;i++){
+            if(dfs(i,adj))
+                return true;
+        }
+        return false;
+    }
+    
+    private boolean dfs(int V,ArrayList<ArrayList<Integer>> adj){
+        if(recursive[V])
+            return true;
+        if(visited[V])
+            return false;
+        recursive[V] = visited[V] = true;
+        for(int i = 0;i<adj.get(V).size();i++){
+            if(dfs(adj.get(V).get(i),adj))
+                return true;
+        }
+        recursive[V] = false;
+        return false;
+    }
+}
