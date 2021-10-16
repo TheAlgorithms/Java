@@ -2,7 +2,7 @@
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         Tree root = BuildTree();
@@ -53,7 +53,7 @@ public class Main {
 }
 
 
-public class Tree {
+class Tree {
 
     public Tree left;
     public Tree right;
@@ -111,7 +111,7 @@ public class Tree {
     }
 }
 
-public class Point {
+class Point {
     public int x;
     public int y;
 
