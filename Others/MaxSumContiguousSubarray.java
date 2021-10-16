@@ -2,7 +2,7 @@
 
 import java.io.*;
 import java.util.*;
-public class Max_sum_contiguous_subarray
+public class MaxSumContiguousSubArray
 {
     public static void main(String[] args)throws Exception
     {
