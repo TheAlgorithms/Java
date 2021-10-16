@@ -23,11 +23,11 @@ public class MonteCarloTreeSearch {
 
         public Node() {}
 
-        public Node(Node parent, boolean isPlayer) {
+        public Node(Node parent, boolean isPlayersTurn) {
             this.parent = parent;
             childNodes = new ArrayList<>();
-            this.isPlayer = isPlayer;
-            isPlayerWinner = false;
+            this.isPlayersTurn = isPlayersTurn;
+            playerWon = false;
             score = 0;
             visitCount = 0;
         }
@@ -82,7 +82,7 @@ public class MonteCarloTreeSearch {
 
     public void addChildNodes(Node node, int childCount) {
         for (int i = 0; i < childCount; i++) {
-            node.childNodes.add(new Node(node, !node.isPlayer));
+            node.childNodes.add(new Node(node, !node.isPlayersTurn));
         }
     }
 
@@ -146,17 +146,17 @@ public class MonteCarloTreeSearch {
         // state of the game until it finishes (if possible) and use an evaluation function to
         // determine how good or bad the play was.
         // e.g. Play tic tac toe choosing random squares until the game ends. 
-        promisingNode.isPlayerWinner = (rand.nextInt(6) == 0);
+        promisingNode.playerWon = (rand.nextInt(6) == 0);
 
-        isPlayerWinner = promisingNode.isPlayerWinner;
+        isPlayerWinner = promisingNode.playerWon;
 
         // Back propagation of the random play.
         while (tempNode != null) {
             tempNode.visitCount++;
 
             // Add wining scores to bouth player and opponent depending on the turn.
-            if ((tempNode.isPlayer && isPlayerWinner) ||
-                (!tempNode.isPlayer && !isPlayerWinner)) {
+            if ((tempNode.isPlayersTurn && isPlayerWinner) ||
+                (!tempNode.isPlayersTurn && !isPlayerWinner)) {
                 tempNode.score += WIN_SCORE;
             }
 
