@@ -6,8 +6,8 @@ public class MaxSumContiguousSubarray
 {
     public static void main(String[] args)throws Exception
     {
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
+        Random rand=new Random();
+        int n=rand.nextInt(10);
         int[] a=new int[n];
         for(int i=0;i<n;i++)
         {
