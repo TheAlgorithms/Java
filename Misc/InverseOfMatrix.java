@@ -1,3 +1,4 @@
+package Misc;
 import java.util.Scanner;
  
 /*
