@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 class SieveOfEratosthenes {
-    void sieveOfEratosthenes(int n)
+    public static void sieveOfEratosthenes(int n)
     {
         boolean prime[] = new boolean[n + 1];
         for (int i = 0; i <= n; i++)
@@ -19,7 +19,7 @@ class SieveOfEratosthenes {
         
         for (int i = 2; i <= n; i++)
         {
-            if (prime[i] == true)
+            if (prime[i])
                 System.out.print(i + " ");
         }
     }
@@ -31,7 +31,6 @@ class SieveOfEratosthenes {
         System.out.print(
             "Following are the prime numbers ");
         System.out.println("smaller than or equal to " + n);
-        SieveOfEratosthenes g = new SieveOfEratosthenes();
-        g.sieveOfEratosthenes(n);
+        sieveOfEratosthenes(n);
     }
 }
