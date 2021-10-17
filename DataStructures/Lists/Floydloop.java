@@ -20,7 +20,7 @@ for  better understanding the algorithm go through https://en.wikipedia.org/wiki
         head = new_node;
     }
 
- void  Cycle(ListNode head)
+public  void  Cycle(ListNode head)
      {
          ListNode slow= head; //Declaring 2 pointers slow and fast 
          ListNode fast= head;
