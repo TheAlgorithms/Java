@@ -1,5 +1,5 @@
 package Ciphers;
-class affine-cipher
+class affineCipher
 {
  
     // Key values of a and b
