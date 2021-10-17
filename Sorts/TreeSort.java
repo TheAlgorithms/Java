@@ -1,3 +1,5 @@
+package Sorts;
+
 class TreeSort {
     //Class which has the left and right child of current node and value
     class Node {
