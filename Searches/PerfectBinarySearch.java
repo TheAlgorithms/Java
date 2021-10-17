@@ -1,7 +1,5 @@
 package Searches;
 
-import java.util.*;
-
 class PerfectBinarySearch {
 
   static int binarySearch(int[] arr, int target) {
