@@ -2,17 +2,22 @@
 // The following discussion assumes the use of a 26 character alphabet (m = 26).
 // a should be chosen to be relatively prime to m (i.e. a should have no factors in common with m).
 
-package com.vatsal;
+package Ciphers;
+
+import java.util.Scanner;
 
 class AffineCipher
 {
-
-    // Initialising a and b
-    static int a = 17;
-    static int b = 20;
+    static Scanner in = new Scanner(System.in);
 
     static String encryptMessage(char[] msg)
     {
+        System.out.println("Enter key value a for encryption : ");
+        int a = in.nextInt();
+        
+        System.out.println("Enter key value b for encryption : ");
+        int b = in.nextInt();
+        
         /// Initially empty cipher String
         String cipher = "";
         for (int i = 0; i < msg.length; i++)
@@ -35,6 +40,12 @@ class AffineCipher
 
     static String decryptCipher(String cipher)
     {
+        System.out.println("Enter key value a for decryption : ");
+        int a = in.nextInt();
+        
+        System.out.println("Enter key value b for decryption : ");
+        int b = in.nextInt();
+        
         String msg = "";
         int a_inv = 0;
         int flag = 0;
