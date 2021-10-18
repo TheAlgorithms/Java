@@ -5,6 +5,7 @@
 ## Ciphers
   * [AES](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AES.java)
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AESEncryption.java)
+  * [affineCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/affineCipher.java)
   * [Caesar](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/Caesar.java)
   * [ColumnarTranspositionCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/ColumnarTranspositionCipher.java)
   * [HillCipher](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/HillCipher.java)
