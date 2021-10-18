@@ -15,9 +15,6 @@ Subset1 = {7, 46} ;  sum of Subset1 = 53
 Subset2 = {36, 40} ; sum of Subset2  = 76
  */
 
-import java.io.*;
-import java.util.*;
-
 public class MinimumSumPartition {
   public static int subSet(int[] arr) {
     int n = arr.length;
