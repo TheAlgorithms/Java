@@ -4,7 +4,6 @@ package DataStructures.Trees;
  * For more information see https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
  * */
 public class FenwickTree {
-
     static final int MAX = 100;
     static int[] fenwickTree = new int [MAX];
 
