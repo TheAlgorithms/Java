@@ -5,7 +5,8 @@ import java.util.TreeMap;
 public class SimpsonIntegration{
 
     /*
-     * Calculate definite integrals by using Simpson's method.
+     * Calculate definite integrals by using Composite Simpson's rule.
+     * Wiki: https://en.wikipedia.org/wiki/Simpson%27s_rule#Composite_Simpson's_rule
      * Given f a function and an even number N of intervals that divide the integration interval e.g. [a, b],
      * we calculate the step h = (b-a)/N and create a table that contains all the x points of
      * the real axis xi = x0 + i*h and the value f(xi) that corresponds to these xi.
