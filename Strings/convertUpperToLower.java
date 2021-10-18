@@ -4,7 +4,7 @@ public class convertUpperToLower
 {
    public static void main(String[] args) {
       assert convert("tHis IS a TesTCaSe");
-      assert isAnagrams("The Fox Jumped Over tHE FeNCE");
+      assert convert("The Fox Jumped Over tHE FeNCE");
    }
    
   public static String convert(String s)
