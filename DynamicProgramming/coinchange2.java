@@ -17,7 +17,7 @@ public class coinChange2{
         int coins[]=new int[n];
         for(int i=0; i<n; i++) coins[i]=scanner.nextInt();
      
-      Syatem.out.print(change(amount, coins));
+      System.out.print(change(amount, coins));
       
     }
    // Two key points:
