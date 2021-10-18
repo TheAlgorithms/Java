@@ -1,4 +1,4 @@
-package com.maths;
+package Maths;
 
 /**
  * Class for linear convolution of two discrete signals
