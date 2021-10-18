@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class coinChange2{
     public static void main(String[] args) throws Exception { 
-        Scanner scanner = new Scanner();
+        Scanner scanner = new Scanner(System.in);
         int amount=scanner.nextInt();
         int n=scanner.nextInt();
-        int coins[]=new coin[n];
+        int coins[]=new int[n];
         for(int i=0; i<n; i++) coins[i]=scanner.nextInt();
       Solution sol=new Solution();
       sol.change(amount, coins);
