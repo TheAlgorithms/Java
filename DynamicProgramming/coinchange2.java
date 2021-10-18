@@ -16,8 +16,8 @@ public class coinChange2{
         int n=scanner.nextInt();
         int coins[]=new int[n];
         for(int i=0; i<n; i++) coins[i]=scanner.nextInt();
-      Solution sol=new Solution();
-      sol.change(amount, coins);
+     
+      Syatem.out.print(change(amount, coins));
       
     }
    // Two key points:
@@ -25,14 +25,13 @@ public class coinChange2{
 // in a recursive call using index i without increment
 // Last key respects cases 1 + 2 == 2 + 1 and should be counted as one way of amount decompositions.
 
-class Solution {
-    public int change(int amount, int[] coins) {
+    public static int change(int amount, int[] coins) {
 
         return change(amount, coins, 0, new Integer[amount + 1][coins.length]);
 
     }
     
-    public int change(int amount, int[] coins, int pos, Integer[][] memo) {
+    public static int change(int amount, int[] coins, int pos, Integer[][] memo) {
         if (amount == 0) return 1;
         if (amount < 0) return 0;
 
@@ -47,5 +46,5 @@ class Solution {
         memo[amount][pos] = ret;
         return ret;
     }
-}
+
 }
