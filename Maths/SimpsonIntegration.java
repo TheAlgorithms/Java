@@ -12,6 +12,7 @@ public class SimpsonIntegration{
      *
      * To evaluate the integral i use the formula below:
      * I = h/3 * {f(x0) + 4*f(x1) + 2*f(x2) + 4*f(x3) + ... + 2*f(xN-2) + 4*f(xN-1) + f(xN)}
+     *
      */
 
     public static void main(String[] args) {
@@ -31,7 +32,7 @@ public class SimpsonIntegration{
         // Calculate step h and evaluate the integral
         double h = (b-a) / (double) N;
         double integralEvaluation = integration.simpsonsMethod(N, h, a);
-        System.out.println("The integral is evaluated to: " + integralEvaluation);
+        System.out.println("The integral is equal to: " + integralEvaluation);
     }
 
     /*
@@ -42,7 +43,7 @@ public class SimpsonIntegration{
      *
      * The interpolation points xi = x0 + i*h are stored the treeMap data
      *
-     * @return result of the integral evauation
+     * @return result of the integral evaluation
      */
     public double simpsonsMethod(int N, double h, double a){
         TreeMap<Integer, Double> data = new TreeMap<>(); // Key: i, Value: f(xi)
@@ -84,6 +85,7 @@ public class SimpsonIntegration{
     // Function f(x) = e^(-x) * (4 - x^2)
     public double f(double x){
         return Math.exp(-x) * (4 - Math.pow(x, 2));
+//        return Math.sqrt(x);
     }
 
 }
