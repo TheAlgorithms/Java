@@ -1,6 +1,7 @@
 /* THIS CODE IS USED TO DETECT CYCLE OR LOOPS IN lINKED LIST USING FLOYD'S ALGORITHM 
 for  better understanding the algorithm go through https://en.wikipedia.org/wiki/Cycle_detection*/
 
+ package DataStructures.Lists;
  import java.util.*;
  class Floydloop{
   ListNode head;
