@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class coinChange2{
+public class CoinChange2{
     public static void main(String[] args) throws Exception { 
        int amount = 12;
     int[] coins = {2, 4, 5};
