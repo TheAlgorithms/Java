@@ -1,14 +1,12 @@
 package Strings;
-
+import java.util.Scanner;
 public class convertUpperToLower
 {
-   public static void main(String[] args) {
-      assert convert("tHis IS a TesTCaSe");
-      assert convert("The Fox Jumped Over tHE FeNCE");
-   }
    
-  public static String convert(String s)
+  public static void main()
   {
+      Scanner sc = new Scanner(System.in);
+      String s = sc.nextLine();
       for(int i=0; i<=s.length(); i++)
       {
           String res = "";
@@ -16,6 +14,6 @@ public class convertUpperToLower
           if(x>=65 && x<=90) res+=x+32;
           else if(x>=99 && x<=122) res+=x-32;
       }
-      return res;
+      System.out.println("Converted String :- " + res);
   }
 }
