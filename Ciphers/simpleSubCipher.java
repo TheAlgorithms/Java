@@ -12,7 +12,7 @@ import java.util.*;
  * 
  */
  
-public class SimpleSubstitutionCipher {
+public class simpleSubCipher {
  
     /**
      * Encrypt text by replacing each element with its opposite character.
