@@ -1,4 +1,7 @@
-import java.util.*;  
+package Maths;
+
+import java.util.*;
+
 class KeithNumber  
 {  
     //user-defined function that checks if the given number is Keith or not  
