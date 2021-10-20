@@ -4,9 +4,6 @@ for better understanding
 */
 package DataStructures.Graphs;
 
-import java.util.*;
-import java.io.*;
-
 class dijkstras{
 
     int k=9;

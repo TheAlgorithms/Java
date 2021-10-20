@@ -1,7 +1,5 @@
 package DataStructures.Lists;
 
-import DataStructures.Lists.Node;
-
 public class RemoveDuplicateNodes {
 
     public Node deleteDuplicates(Node head) {
