@@ -1,4 +1,4 @@
-//package DataStructures.Trees;
+package DataStructures.Trees;
 
 public class FenwickTree {
     private int n;
