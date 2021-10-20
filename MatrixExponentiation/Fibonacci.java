@@ -52,7 +52,8 @@ public class Fibonacci {
             return Fibonacci.identityMatrix;
         }
         else{
-            int [][] matrixExpResult = matrixMultiplication(fib(n/2), fib(n/2));
+            int [][] cachedResult = fib(n/2);
+            int [][] matrixExpResult = matrixMultiplication(cachedResult, cachedResult);
             if(n%2 == 0){
                 return matrixExpResult;
             }
