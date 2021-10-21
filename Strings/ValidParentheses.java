@@ -145,6 +145,10 @@ class ValidParentheses {
                 + " using parameters -s|--string|-f|--file");
       }
     }
+    if (!CHARACTER_STACK.empty()) {
+      System.out.println(ERROR_MSG);
+      System.exit(0);
+    }
   }
 
   private static void showExample() {
@@ -171,9 +175,6 @@ class ValidParentheses {
       String line;
       while ((line = br.readLine()) != null) {
         validateLine(line);
-      }
-      if (!CHARACTER_STACK.empty()) {
-        System.out.println(ERROR_MSG);
       }
     } catch (IOException e) {
       e.printStackTrace();
