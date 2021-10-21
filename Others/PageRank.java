@@ -1,4 +1,6 @@
-import java.util.*; // package declaration
+package Others;
+
+import java.util.*;
 
 class PageRank {
   public static void main(String args[]) {
