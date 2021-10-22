@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 import static java.lang.String.format;
 
-public class ExponentialSearch implements SearchAlgorithm {
+class ExponentialSearch implements SearchAlgorithm {
 
     public static void main(String [] args) {
         Random r = ThreadLocalRandom.current();
