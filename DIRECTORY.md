@@ -1,4 +1,7 @@
 
+## Audio Filters
+  * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/AudioFilters/IIRFilter.java)
+
 ## Ciphers
   * [AES](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AES.java)
   * [AESEncryption](https://github.com/TheAlgorithms/Java/blob/master/Ciphers/AESEncryption.java)
