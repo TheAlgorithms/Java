@@ -1,10 +1,6 @@
-
 package Maths;
 
-
 public class ADTFraction {
-
-   
     public static void main(String[] args) {
         // TODO code application logic here
 
@@ -21,9 +17,6 @@ public class ADTFraction {
 
     }
 
-}
-
-class ADTFraction {
     private int n; //numerator
     private int d; //denomenator
 
