@@ -25,6 +25,6 @@ The `next` variable points to the next node in the data structure and value stor
 1. `CircleLinkedList.java` : A circular linked list where next pointer of last node points to first nide of linked list.
 2. `SinglyLinkedList.java` : The classic case of single links.
 3. `CountSinglyLinkedListRecursion.java`: Recursively counts the size of a list.
-4. `detect_and_create_loop.java` : Detect a loop in linked list
+4. `CreateAndDetectLoop.java` : Create and detect a loop in a linked list.
 5. `DoublyLinkedList.java` : A modification of singly linked list which has a `prev` pointer to point to the previous node.
 6. `Merge_K_SortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
