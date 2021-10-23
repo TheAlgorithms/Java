@@ -44,6 +44,7 @@ public class CreateAndDetectLoop {
 
     /**
 	 * Detects the presence of a loop in the linked list.
+	 * Wiki: https://en.wikipedia.org/wiki/Cycle_detection
 	 * 
 	 * @param 	head 	the head node of the linked list
 	 * 
