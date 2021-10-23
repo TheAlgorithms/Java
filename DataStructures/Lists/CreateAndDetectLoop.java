@@ -20,7 +20,8 @@ public class CreateAndDetectLoop {
 
 	/**
 	 * Creates a loop in the linked list.
-	 * 
+	 * @see 	<a href="https://www.geeksforgeeks.org/make-loop-k-th-position-linked-list/">
+	 * 			GeeksForGeeks: Make a loop at K-th position</a>
 	 * @param	head	head node of the linked list
 	 * @param	k		position of node where loop is to be created
 	 */
@@ -44,7 +45,8 @@ public class CreateAndDetectLoop {
 
     /**
 	 * Detects the presence of a loop in the linked list.
-	 * Wiki: https://en.wikipedia.org/wiki/Cycle_detection
+	 * @see 	<a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">
+	 * 			Floyd's Cycle Detection Algorithm</a>
 	 * 
 	 * @param 	head 	the head node of the linked list
 	 * 
