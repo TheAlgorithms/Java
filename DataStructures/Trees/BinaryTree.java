@@ -223,6 +223,7 @@ public class BinaryTree {
 
   /**
    * Prints leftChild - root - rightChild
+   * This is the equivalent of a depth first search
    *
    * @param localRoot The local root of the binary tree
    */
