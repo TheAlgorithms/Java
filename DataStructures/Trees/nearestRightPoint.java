@@ -9,19 +9,17 @@ class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter first number: ");
         int inputX0 = sc.nextInt();
-        Point toPrint = nearestRightPoint(root, inputX0);
-        System.out.println("X: " + toPrint.x + " Y: " + toPrint.y);
+        int toPrint = nearestRightKey(root, inputX0);
+        System.out.println("Key: " + toPrint);
     }
 
     public static Tree BuildTree() {
         int randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-        int randomY = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-        Tree root = new Tree(null, null, new Point(randomX, randomY));
+        Tree root = new Tree(null, null, randomX);
 
         for (int i = 0; i < 1000; i++) {
             randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-            randomY = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-            root = root.insertPoint(root, new Point(randomX, randomY));
+            root = root.insertKey(root, randomX);
         }
 
         Tree.print2D(root);
@@ -29,22 +27,22 @@ class Main {
         return root;
     }
 
-    public static Point nearestRightPoint(Tree root, int x0) {
+    public static int nearestRightKey(Tree root, int x0) {
         //Check whether tree is empty
         if(root == null){
-           return new Point(0,0);
+           return 0;
         }
         else {
-            if(root.data.x - x0 > 0){
+            if(root.data - x0 > 0){
                 // Go left
-                Point temp = nearestRightPoint(root.left, x0);
-                if(temp.x == 0 && temp.y == 0){
+                int temp = nearestRightKey(root.left, x0);
+                if(temp == 0){
                     return root.data;
                 }
                 return temp;
             } else {
                 // Go right
-                return nearestRightPoint(root.right, x0);
+                return nearestRightKey(root.right, x0);
             }
 
         }
@@ -57,29 +55,29 @@ class Tree {
 
     public Tree left;
     public Tree right;
-    public Point data;
+    public int data;
 
-    public Tree(Point p) {
+    public Tree(int x) {
         this.left = null;
         this.right = null;
-        this.data = p;
+        this.data = x;
     }
 
-    public Tree(Tree right, Tree left, Point point) {
+    public Tree(Tree right, Tree left, int x) {
         this.left = left;
         this.right = right;
-        this.data = point;
+        this.data = x;
     }
 
-    public Tree insertPoint(Tree current, Point value) {
+    public Tree insertKey(Tree current, int x) {
         if (current == null) {
             return new Tree(value);
         }
 
-        if (value.x < current.data.x) {
-            current.left = insertPoint(current.left, value);
+        if (value < current.data) {
+            current.left = insertKey(current.left, value);
         } else if (value.x > current.data.x) {
-            current.right = insertPoint(current.right, value);
+            current.right = insertKey(current.right, value);
         }
 
         return current;
@@ -100,7 +98,7 @@ class Tree {
         System.out.print("\n");
         for (int i = COUNT; i < space; i++)
             System.out.print(" ");
-        System.out.print(root.data.x + "\n");
+        System.out.print(root.data + "\n");
 
         print2DUtil(root.left, space);
     }
@@ -108,19 +106,5 @@ class Tree {
     public static void print2D(Tree root)
     {
         print2DUtil(root, 0);
-    }
-}
-
-class Point {
-    public int x;
-    public int y;
-
-    public Point(){
-        this.x = 0;
-        this.y = 0;
-    }
-    public Point(int x, int y){
-        this.x = x;
-        this.y = y;
     }
 }
