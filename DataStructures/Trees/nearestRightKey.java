@@ -69,14 +69,14 @@ class Tree {
         this.data = x;
     }
 
-    public Tree insertKey(Tree current, int x) {
+    public Tree insertKey(Tree current, int value) {
         if (current == null) {
             return new Tree(value);
         }
 
         if (value < current.data) {
             current.left = insertKey(current.left, value);
-        } else if (value.x > current.data.x) {
+        } else if (value > current.data) {
             current.right = insertKey(current.right, value);
         }
 
