@@ -1,6 +1,6 @@
 // class Person
    
-public class TagSort
+public class Person
 {
     private int id;
     private float salary;
@@ -28,7 +28,7 @@ public class TagSort
     }
 }
   
-public class Main
+public class TagSort
 {
     public static void main(String[] args)
     {
