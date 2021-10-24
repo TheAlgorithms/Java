@@ -1,4 +1,6 @@
-class Person
+// class Person
+   
+public class TagSort
 {
     private int id;
     private float salary;
