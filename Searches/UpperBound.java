@@ -8,9 +8,9 @@ import java.util.stream.IntStream;
 
 /**
  * The UpperBound method is used to return an index pointing to the first element in the range
- * [first, last) which has a value not less than val, i.e. the index of the next smallest number
- * just greater than or equal to that number. If there are multiple values that are equal to val it
- * returns the index of the first such value.
+ * [first, last) which has a value greater than val, or the last index if no such element exists
+ * i.e. the index of the next smallest number just greater than that number. If there are multiple
+ * values that are equal to val it returns the index of the first such value.
  *
  * <p>This is an extension of BinarySearch.
  *
@@ -41,7 +41,7 @@ class UpperBound implements SearchAlgorithm {
     // The element for which the lower bound is to be found
     int val = integers[r.nextInt(size - 1)] + 1;
 
-    UpperBound search = new UpperBound();
+    LowerBound search = new LowerBound();
     int atIndex = search.find(integers, val);
 
     System.out.println(
@@ -84,10 +84,8 @@ class UpperBound implements SearchAlgorithm {
     int median = (left + right) >>> 1;
     int comp = key.compareTo(array[median]);
 
-    if (comp == 0) {
-      return median;
-    } else if (comp < 0) {
-      // median position can be a possible solution
+    if (comp < 0) {
+      // key is smaller, median position can be a possible solution
       return search(array, key, left, median);
     } else {
       // key we are looking is greater, so we must look on the right of median position
