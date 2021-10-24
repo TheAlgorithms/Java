@@ -20,7 +20,6 @@ public class MergeSortNoExtraSpace {
                 implement_merge_sort(a,start,mid,end,maxele);
 
             }
-
         }
         public static void implement_merge_sort(int a[], int start , int mid , int end,int maxele){  //implementation of mergesort
             int i=start;
@@ -72,11 +71,5 @@ public class MergeSortNoExtraSpace {
             for(int i=0;i<a.length;i++){
                 System.out.print(a[i]+" ");
             }
-
-
         }
     }
-
-
-
-
