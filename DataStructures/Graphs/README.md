@@ -18,9 +18,7 @@ Example: Social media graph, where if two persons are friend, it implies that bo
 
 ### Representation
 
-![alt graph image](graph.png)
-
-1.  **Adjacency Lists**: Each node is represented as an entry and all the edges are represented as a list emerging from the corresponding node. So if vertex `1` has eadges to 2,3, and 6, the list corresponding to 1 will have 2,3 and 6 as entries. For the above graph, the adjacency list representation will be
+1.  **Adjacency Lists**: Each node is represented as an entry and all the edges are represented as a list emerging from the corresponding node. So if vertex `1` has eadges to 2,3, and 6, the list corresponding to 1 will have 2,3 and 6 as entries. Consider the following graph.
 
 ```
 0: 1-->2-->3
@@ -29,7 +27,7 @@ Example: Social media graph, where if two persons are friend, it implies that bo
 3: 0-->4
 4: 3
 ```
-
+It means there are edges from 0 to 1, 2 and 3; from 1 to 0 and 2 and so on.
 2. **Adjacency Matrix**: The graph is represented as a matrix of size `|V| x |V|` and an entry 1 in cell `(i,j)` implies that there is an edge from i to j. 0 represents no edge.
 The mtrix for the above graph:
 
