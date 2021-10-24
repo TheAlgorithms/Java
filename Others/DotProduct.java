@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 /**
  * Calculate the Dot Product of two vectors length 3
+ * More Information: https://en.wikipedia.org/wiki/Dot_product
+ * Test Case: v1 = <2, 3, 4>  v2 = <5, 6, 2>
+ * Expected: 36
+ * Explaination: 2*5 + 3*6 + 4*2 = 10 + 18 + 8 = 36
  *
  * @author John Li
  * @date 2021.10.24
