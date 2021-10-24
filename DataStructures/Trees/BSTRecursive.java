@@ -1,3 +1,5 @@
+package DataStructures.Trees;
+
 /**
  *
  *
@@ -24,7 +26,7 @@ public class BSTRecursive {
 
   /** main function for tests */
   public static void main(String[] args) {
-    BSTIterative tree = new BSTIterative();
+    BSTRecursive tree = new BSTRecursive();
     tree.add(5);
     tree.add(10);
     tree.add(9);
