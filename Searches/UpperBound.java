@@ -38,28 +38,28 @@ class UpperBound implements SearchAlgorithm {
             .boxed()
             .toArray(Integer[]::new);
 
-    // The element for which the lower bound is to be found
+    // The element for which the upper bound is to be found
     int val = integers[r.nextInt(size - 1)] + 1;
 
-    LowerBound search = new LowerBound();
+    UpperBound search = new UpperBound();
     int atIndex = search.find(integers, val);
 
     System.out.println(
         format(
-            "Val: %d. Lower Bound Found %d at index %d. An array length %d",
+            "Val: %d. Upper Bound Found %d at index %d. An array length %d",
             val, integers[atIndex], atIndex, size));
 
-    boolean toCheck = integers[atIndex] >= val || integers[size - 1] < val;
+    boolean toCheck = integers[atIndex] > val || integers[size - 1] < val;
     System.out.println(
         format(
-            "Lower Bound found at an index: %d. Is greater or max element: %b", atIndex, toCheck));
+            "Upper Bound found at an index: %d. Is greater or max element: %b", atIndex, toCheck));
   }
 
   /**
-   * @param array is an array where the LowerBound value is to be found
-   * @param key   is an element for which the LowerBound is to be found
+   * @param array is an array where the UpperBound value is to be found
+   * @param key   is an element for which the UpperBound is to be found
    * @param <T>   is any comparable type
-   * @return index of the LowerBound element
+   * @return index of the UpperBound element
    */
   @Override
   public <T extends Comparable<T>> int find(T[] array, T key) {
