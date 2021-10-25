@@ -3,6 +3,15 @@ package DataStructures.Caches;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Most recently used (MRU)
+ * <p>
+ * In contrast to Least Recently Used (LRU), MRU discards the most recently used items first.
+ * https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)
+ *
+ * @param <K> key type
+ * @param <V> value type
+ */
 public class MRUCache<K, V> {
     private final Map<K, Entry<K, V>> data = new HashMap<>();
     private Entry<K, V> head;
@@ -14,6 +23,9 @@ public class MRUCache<K, V> {
         setCapacity(DEFAULT_CAP);
     }
 
+    /**
+     * Initial new MRUCache with custom size
+     */
     private void setCapacity(int newCapacity) {
         checkCapacity(newCapacity);
         for (int i = data.size(); i > newCapacity; i--) {
@@ -22,6 +34,7 @@ public class MRUCache<K, V> {
         }
         this.cap = newCapacity;
     }
+
 
     private void checkCapacity(int capacity) {
         if (capacity <= 0) {
@@ -53,6 +66,38 @@ public class MRUCache<K, V> {
         return entry.getValue();
     }
 
+    public void put(K key, V value) {
+        if (data.containsKey(key)) {
+            final Entry<K, V> exitingEntry = data.get(key);
+            exitingEntry.setValue(value);
+            moveEntryToLast(exitingEntry);
+            return;
+        }
+        Entry<K, V> newEntry;
+        if (data.size() == cap) {
+            newEntry = evict();
+            data.remove(newEntry.getKey());
+        } else {
+            newEntry = new Entry<>();
+        }
+        newEntry.setKey(key);
+        newEntry.setValue(value);
+        addNewEntry(newEntry);
+        data.put(key, newEntry);
+    }
+
+    private void addNewEntry(Entry<K, V> newEntry) {
+        if (data.isEmpty()) {
+            head = newEntry;
+            tail = newEntry;
+            return;
+        }
+        tail.setNextEntry(newEntry);
+        newEntry.setPreEntry(tail);
+        newEntry.setNextEntry(null);
+        tail = newEntry;
+    }
+
     private void moveEntryToLast(Entry<K, V> entry) {
         if (tail == entry) {
             return;
@@ -79,6 +124,9 @@ public class MRUCache<K, V> {
         private Entry<I, J> nextEntry;
         private I key;
         private J value;
+
+        public Entry() {
+        }
 
         public Entry(Entry<I, J> preEntry, Entry<I, J> nextEntry, I key, J value) {
             this.preEntry = preEntry;
@@ -118,5 +166,17 @@ public class MRUCache<K, V> {
         public void setValue(J value) {
             this.value = value;
         }
+    }
+
+    public static void main(String[] args) {
+        final MRUCache<String, Integer> cache = new MRUCache<>(2);
+        cache.put("Key1", 1);
+        cache.put("Key2", 2);
+        cache.put("Key3", 3);
+        cache.put("Key4", 4);
+        System.out.println("getValue(Key1): " + cache.get("Key1"));
+        System.out.println("getValue(Key2): " + cache.get("Key2"));
+        System.out.println("getValue(Key3): " + cache.get("Key3"));
+        System.out.println("getValue(Key4): " + cache.get("Key4"));
     }
 }
