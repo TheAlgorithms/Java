@@ -23,9 +23,6 @@ public class MRUCache<K, V> {
         setCapacity(DEFAULT_CAP);
     }
 
-    /**
-     * Initial new MRUCache with custom size
-     */
     private void setCapacity(int newCapacity) {
         checkCapacity(newCapacity);
         for (int i = data.size(); i > newCapacity; i--) {
