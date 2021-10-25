@@ -43,7 +43,6 @@ public class LRUCache<K, V> {
         if (head == null) {
             throw new RuntimeException("cache cannot be empty!");
         }
-        /* Evict the head, update next and evicted node */
         Entry<K, V> evicted = head;
         head = evicted.getNextEntry();
         head.setPreEntry(null);
