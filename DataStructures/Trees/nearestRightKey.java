@@ -1,3 +1,4 @@
+package DataStructures.Trees;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
