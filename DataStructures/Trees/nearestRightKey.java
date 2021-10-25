@@ -1,4 +1,4 @@
-package DataStructures.Trees;
+package DataStructures.NRKTrees;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 class Main {
 
     public static void main(String[] args) {
-        Tree root = BuildTree();
+        NRKTree root = BuildTree();
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter first number: ");
         int inputX0 = sc.nextInt();
@@ -14,9 +14,9 @@ class Main {
         System.out.println("Key: " + toPrint);
     }
 
-    public static Tree BuildTree() {
+    public static NRKTree BuildTree() {
         int randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-        Tree root = new Tree(null, null, randomX);
+        NRKTree root = new NRKTree(null, null, randomX);
 
         for (int i = 0; i < 1000; i++) {
             randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
@@ -26,7 +26,7 @@ class Main {
         return root;
     }
 
-    public static int nearestRightKey(Tree root, int x0) {
+    public static int nearestRightKey(NRKTree root, int x0) {
         //Check whether tree is empty
         if(root == null){
            return 0;
@@ -50,27 +50,27 @@ class Main {
 }
 
 
-class Tree {
+class NRKTree {
 
-    public Tree left;
-    public Tree right;
+    public NRKTree left;
+    public NRKTree right;
     public int data;
 
-    public Tree(int x) {
+    public NRKTree(int x) {
         this.left = null;
         this.right = null;
         this.data = x;
     }
 
-    public Tree(Tree right, Tree left, int x) {
+    public NRKTree(NRKTree right, NRKTree left, int x) {
         this.left = left;
         this.right = right;
         this.data = x;
     }
 
-    public Tree insertKey(Tree current, int value) {
+    public NRKTree insertKey(NRKTree current, int value) {
         if (current == null) {
-            return new Tree(value);
+            return new NRKTree(value);
         }
 
         if (value < current.data) {
