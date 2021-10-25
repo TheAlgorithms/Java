@@ -23,8 +23,6 @@ class Main {
             root = root.insertKey(root, randomX);
         }
 
-        Tree.print2D(root);
-
         return root;
     }
 
@@ -82,30 +80,5 @@ class Tree {
         }
 
         return current;
-
-    }
-
-    static final int COUNT = 10;
-
-    static void print2DUtil(Tree root, int space)
-    {
-        if (root == null)
-            return;
-
-        space += COUNT;
-
-        print2DUtil(root.right, space);
-
-        System.out.print("\n");
-        for (int i = COUNT; i < space; i++)
-            System.out.print(" ");
-        System.out.print(root.data + "\n");
-
-        print2DUtil(root.left, space);
-    }
-
-    public static void print2D(Tree root)
-    {
-        print2DUtil(root, 0);
     }
 }
