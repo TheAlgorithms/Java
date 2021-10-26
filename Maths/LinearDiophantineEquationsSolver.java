@@ -7,6 +7,8 @@ import java.util.Objects;
 
 public final class LinearDiophantineEquationsSolver {
     public static final class Solution {
+        public static final Solution NO_SOLUTION = new Solution(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        public static final Solution INFINITE_SOLUTIONS = new Solution(Integer.MIN_VALUE, Integer.MIN_VALUE);
         private int x;
         private int y;
 
@@ -55,22 +57,25 @@ public final class LinearDiophantineEquationsSolver {
     }
     public record Equation(int a, int b, int c) {
     }
-    public static List<Solution> solve(final Equation equation) {
-        if (equation.a() == 0 && equation.b() == 0 && equation.c() == 0) {
-            return List.of(new Solution(0, 0));
-        }
-        if (equation.a() == 0 && equation.b() == 0) {
-            return Collections.emptyList();
-        }
-        final var toReturn = new ArrayList<Solution>();
-        final int gcd = gcd(equation.a(), equation.b());
-        return toReturn;
-    }
+
     private static int gcd(final int a, final int b) {
         if (b == 0) {
             return a;
         }
         return gcd(b, a % b);
+    }
+    public static Solution findAnySolution(final Equation equation) {
+        final var stub = new GcdSolutionWrapper(0, new Solution(0, 0));
+        final var gcdSolution = gcd(equation.a(), equation.b(), stub);
+        if (equation.c() % gcdSolution.getGcd() != 0) {
+            return Solution.NO_SOLUTION;
+        }
+        final var toReturn = new Solution(0, 0);
+        var xToSet = stub.getSolution().getX() * (equation.c() / stub.getGcd());
+        var yToSet = stub.getSolution().getY() * (equation.c() / stub.getGcd());
+        toReturn.setX(xToSet);
+        toReturn.setY(yToSet);
+        return toReturn;
     }
 
     public static final class GcdSolutionWrapper {
