@@ -1,5 +1,8 @@
 package DataStructures.Trees;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 /**
  * This entire class is used to build a Binary Tree data structure. There is the Node Class and the
  * Tree Class, both explained below.
@@ -19,7 +22,7 @@ public class BinaryTree {
    *
    * @author Unknown
    */
-  class Node {
+  static class Node {
     /** Data for the node */
     public int data;
     /** The Node to the left of this one */
@@ -48,6 +51,11 @@ public class BinaryTree {
   /** Constructor */
   public BinaryTree() {
     root = null;
+  }
+
+  /** Parameterized Constructor */
+  public BinaryTree(Node root) {
+    this.root = root;
   }
 
   /**
@@ -220,6 +228,7 @@ public class BinaryTree {
 
   /**
    * Prints leftChild - root - rightChild
+   * This is the equivalent of a depth first search
    *
    * @param localRoot The local root of the binary tree
    */
@@ -254,6 +263,39 @@ public class BinaryTree {
       postOrder(localRoot.left);
       postOrder(localRoot.right);
       System.out.print(localRoot.data + " ");
+    }
+  }
+
+  /**
+   * Prints the tree in a breadth first search order
+   * This is similar to pre-order traversal, but instead of being
+   * implemented with a stack (or recursion), it is implemented
+   * with a queue
+   * 
+   * @param localRoot The local root of the binary tree
+   */
+  public void bfs(Node localRoot) {
+    // Create a queue for the order of the nodes
+    Queue<Node> queue = new LinkedList<Node>();
+    
+    // If the give root is null, then we don't add to the queue
+    // and won't do anything
+    if (localRoot != null)
+      queue.add(localRoot);
+    
+    // Continue until the queue is empty
+    while (! queue.isEmpty()) {
+      // Get the next node on the queue to visit
+      localRoot = queue.remove();
+      
+      // Print the data from the node we are visiting
+      System.out.print(localRoot.data + " ");
+
+      // Add the children to the queue if not null
+      if (localRoot.right != null)
+        queue.add(localRoot.right);
+      if (localRoot.left != null)
+        queue.add(localRoot.left);
     }
   }
 }

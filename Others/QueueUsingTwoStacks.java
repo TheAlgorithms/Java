@@ -15,14 +15,14 @@ import java.util.Stack;
 class QueueWithStack {
 
   // Stack to keep track of elements inserted into the queue
-  private Stack inStack;
+  private Stack<Object> inStack;
   // Stack to keep track of elements to be removed next in queue
-  private Stack outStack;
+  private Stack<Object> outStack;
 
   /** Constructor */
   public QueueWithStack() {
-    this.inStack = new Stack();
-    this.outStack = new Stack();
+    this.inStack = new Stack<>();
+    this.outStack = new Stack<>();
   }
 
   /**
@@ -82,6 +82,24 @@ class QueueWithStack {
   public boolean isEmpty() {
     return (this.inStack.isEmpty() && this.outStack.isEmpty());
   }
+
+  /**
+   * Returns true if the inStack is empty.
+   * 
+   * @return true if the inStack is empty.
+   */
+  public boolean isInStackEmpty() {
+    return (inStack.size() == 0);
+  }
+
+  /**
+   * Returns true if the outStack is empty.
+   * 
+   * @return true if the outStack is empty.
+   */
+  public boolean isOutStackEmpty() {
+    return (outStack.size() == 0);
+  }
 }
 
 /**
@@ -118,7 +136,7 @@ public class QueueUsingTwoStacks {
     System.out.println(myQueue.isEmpty()); // Will print false
 
     System.out.println(myQueue.remove()); // Will print 1
-    System.out.println(myQueue.peekBack()); // Will print NULL
+    System.out.println((myQueue.isInStackEmpty()) ? "null" : myQueue.peekBack()); // Will print NULL
     // instack: []
     // outStack: [(top) 2, 3, 4]
 

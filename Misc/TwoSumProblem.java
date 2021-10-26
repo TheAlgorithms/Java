@@ -1,5 +1,7 @@
+package Misc;
 import java.util.*;
 import java.util.stream.Collectors;
+
 public class TwoSumProblem {
 	public static void main(String args[])
 	{

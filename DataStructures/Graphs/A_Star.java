@@ -2,9 +2,8 @@
 	Time Complexity = O(E), where E is equal to the number of edges
 */
 
-package Graphs;
+package DataStructures.Graphs;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class A_Star {

@@ -10,18 +10,18 @@
 
 #### **Do you want to contribute to the documentation?**
 
-- Please read the documentation in here [Contributing to the Documentation](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md) ,[open a new one issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is appropriate.
+- Please read the documentation here [Contributing to the Documentation](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md), [open a new issue](https://github.com/TheAlgorithms/Java/issues/new), make changes, and then create a pull request, it will be put under review and accepted if it is appropriate.
 
 #### **Do you want to add a new feature?**
 
-- [Open a new one issue](https://github.com/TheAlgorithms/Java/issues/new). Be sure to include a **title and a clear description** and a **test case** demonstrating the new feature that you want to add to the project.
+- [Open a new issue](https://github.com/TheAlgorithms/Java/issues/new). Be sure to include a **title and a clear description** and a **test case** demonstrating the new feature that you want to add to the project.
 
 #### **Do you want to fix a bug?**
 
-- [Open a new one issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behaviour that is not occurring.
+- [Open a new issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behavior that is not occurring.
 
 #### **Do you have questions about the source code?**
 
-- Ask any question about how to use the repository in the [TheAlgorithms room in GITTER](https://gitter.im/TheAlgorithms/community?source=orgpage#) or [open a new one issue](https://github.com/TheAlgorithms/Java/issues/new)
+- Ask any question about how to use the repository in the [TheAlgorithms room in GITTER](https://gitter.im/TheAlgorithms/community?source=orgpage#) or [open a new issue](https://github.com/TheAlgorithms/Java/issues/new)
 
 :+1::tada: That's all you need to know about the process now it's your turn to help us improve the repository, thank you again! :+1::tada:
