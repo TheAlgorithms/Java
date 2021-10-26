@@ -22,7 +22,7 @@ public class BinaryTree {
    *
    * @author Unknown
    */
-  class Node {
+  static class Node {
     /** Data for the node */
     public int data;
     /** The Node to the left of this one */
@@ -51,6 +51,11 @@ public class BinaryTree {
   /** Constructor */
   public BinaryTree() {
     root = null;
+  }
+
+  /** Parameterized Constructor */
+  public BinaryTree(Node root) {
+    this.root = root;
   }
 
   /**
