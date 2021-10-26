@@ -1,4 +1,7 @@
 
+## Audio Filters
+  * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/AudioFilters/IIRFilter.java)
+
 ## Backtracking
   * [NQueens](https://github.com/TheAlgorithms/Java/blob/master/Backtracking/NQueens.java)
   * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/Backtracking/PowerSum.java)
