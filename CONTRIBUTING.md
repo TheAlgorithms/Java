@@ -10,7 +10,7 @@
 
 #### **Do you want to contribute to the documentation?**
 
-- Please read the documentation in here [Contributing to the Documentation](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md) ,[open a new issue](https://github.com/TheAlgorithms/Java/issues/new), make changes and then create a pull request, it will be put under review and accepted if it is appropriate.
+- Please read the documentation here [Contributing to the Documentation](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md), [open a new issue](https://github.com/TheAlgorithms/Java/issues/new), make changes, and then create a pull request, it will be put under review and accepted if it is appropriate.
 
 #### **Do you want to add a new feature?**
 
@@ -18,7 +18,7 @@
 
 #### **Do you want to fix a bug?**
 
-- [Open a new issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behaviour that is not occurring.
+- [Open a new issue](https://github.com/TheAlgorithms/Java/issues/new).Be sure to include a **title and a clear description** and a **test case** demonstrating the expected behavior that is not occurring.
 
 #### **Do you have questions about the source code?**
 

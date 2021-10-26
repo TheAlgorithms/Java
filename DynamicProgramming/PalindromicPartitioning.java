@@ -1,4 +1,7 @@
 package DynamicProgramming;
+
+import java.util.Scanner;
+
 /**
  * @file
  * @brief Implements [Palindrome
@@ -16,9 +19,6 @@ package DynamicProgramming;
  * "aba | b | bbabb | ababa"
  * @author [Syed] (https://github.com/roeticvampire)
  */
-
-import java.util.Scanner;
-
 public class PalindromicPartitioning {
   
     public static int minimalpartitions(String word){
@@ -31,7 +31,7 @@ public class PalindromicPartitioning {
            int[] minCuts = new int[len];
            boolean[][] isPalindrome = new boolean[len][len];
     
-           int i, j, k, L; // different looping variables
+           int i, j, L; // different looping variables
     
            // Every substring of length 1 is a palindrome
            for (i = 0; i < len; i++) {

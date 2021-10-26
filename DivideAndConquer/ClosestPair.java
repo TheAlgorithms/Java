@@ -1,7 +1,5 @@
 package DivideAndConquer;
 
-import java.io.IOException;
-
 /**
  * For a set of points in a coordinates system (10000 maximum), ClosestPair class calculates the two
  * closest points.

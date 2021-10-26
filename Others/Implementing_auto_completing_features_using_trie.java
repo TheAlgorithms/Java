@@ -1,13 +1,7 @@
 package Others;
 
-
 // Java Program to implement Auto-Complete 
 // Feature using Trie
-
-import java.util.*;
-import java.io.*;
-import java.lang.*;
-
 class Trieac {
     
     // Alphabet size (# of symbols) 
