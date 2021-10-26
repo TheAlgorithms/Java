@@ -97,8 +97,8 @@ public class MiniMaxAlgorithm {
         int[] randomScores = new int[(int) Math.pow(2, size)];
         Random rand = new Random();
 
-        for (int a : randomScores) {
-            a = rand.nextInt(maxScore) + 1;
+        for (int i = 0; i < randomScores.length; i++) {
+            randomScores[i] = rand.nextInt(maxScore) + 1;
         }
 
         return randomScores;

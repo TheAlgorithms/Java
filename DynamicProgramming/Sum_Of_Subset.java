@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class Sum_Of_Subset {
         public static void main(String[] args){
     
