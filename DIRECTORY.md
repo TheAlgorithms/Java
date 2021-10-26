@@ -1,5 +1,5 @@
 
-## Audio Filters
+## AudioFilters
   * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/AudioFilters/IIRFilter.java)
 
 ## Backtracking
