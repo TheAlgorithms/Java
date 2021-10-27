@@ -1,5 +1,6 @@
-/*Take three-pointers, namely - low, mid, high.
-We use low and mid pointers at the start, and the high pointer will point at the end of the given array
+package Misc;
+import java.util.*;
+/**
 The array is divided into four sections: 
 a[1..Lo-1] zeroes
 a[Lo..Mid-1] ones 
@@ -10,8 +11,6 @@ If array [mid] = 1, then no swapping is required. Increment mid pointer once.
 If array [mid] = 2, then we swap array [mid] with array [high] and decrement the high pointer once.
 For more information on the Dutch national flag algorithm refer https://en.wikipedia.org/wiki/Dutch_national_flag_problem
 */
-package Misc;
-import java.util.*;
 public class Sort012D {
     public static void main(String args[]) {
         Scanner np = new Scanner(System.in);
@@ -19,11 +18,10 @@ public class Sort012D {
         int a[] = new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = np.nextInt();
-
         }
         sort012(a);}
 
-       public static void sort012(int[]a){
+   public static void sort012(int[]a){
             int l = 0;
             int h = a.length - 1;
             int mid = 0;
@@ -49,8 +47,7 @@ public class Sort012D {
                     }
                 }
             }
-            System.out.println("the Sorted array is ");
-            for (int i = 0; i < a.length; i++)
-                System.out.print(+a[i] + " ");
-        }
+          System.out.println("the Sorted array is ");
+          for (int i = 0; i < a.length; i++)
+              System.out.print(+a[i] + " "); }
 }
