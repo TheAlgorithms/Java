@@ -1,97 +1,105 @@
 package DataStructures.Stacks;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 /**
  * This class implements a Stack using an ArrayList.
- * <p>
- * A stack is exactly what it sounds like. An element gets added to the top of
- * the stack and only the element on the top may be removed.
- * <p>
- * This is an ArrayList Implementation of a stack, where size is not
- * a problem we can extend the stack as much as we want.
  *
- * @author Unknown
+ * <p>A stack is exactly what it sounds like. An element gets added to the top of the stack and only
+ * the element on the top may be removed.
+ *
+ * <p>This is an ArrayList Implementation of a stack, where size is not a problem we can extend the
+ * stack as much as we want.
  */
 public class StackArrayList {
 
-    /**
-     * Main method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-        
-        StackArrayList myStackArrayList = new StackArrayList();
-        
-        myStackArrayList.push(5);
-        myStackArrayList.push(8);
-        myStackArrayList.push(2);
-        myStackArrayList.push(9);
+  /** Driver Code */
+  public static void main(String[] args) {
+    StackArrayList stack = new StackArrayList();
+    assert stack.isEmpty();
 
-        System.out.println("*********************Stack List Implementation*********************");
-        System.out.println(myStackArrayList.isEmpty()); // will print false
-        System.out.println(myStackArrayList.peek()); // will print 9
-        System.out.println(myStackArrayList.pop()); // will print 9
-        System.out.println(myStackArrayList.peek()); // will print 2
-        System.out.println(myStackArrayList.pop()); // will print 2
+    for (int i = 1; i <= 5; ++i) {
+      stack.push(i);
+      assert stack.size() == i;
     }
 
-    /**
-     * ArrayList representation of the stack
-     */
-    private ArrayList<Integer> stackList;
+    assert stack.size() == 5;
+    assert stack.peek() == 5 && stack.pop() == 5 && stack.peek() == 4;
 
-    /**
-     * Constructor
-     */
-    public StackArrayList() {
-        stackList = new ArrayList<>();
+    /* pop elements at the top of this stack one by one */
+    while (!stack.isEmpty()) {
+      stack.pop();
+    }
+    assert stack.isEmpty();
+
+    try {
+      stack.pop();
+      assert false; /* this should not happen */
+    } catch (EmptyStackException e) {
+      assert true; /* this should happen */
+    }
+  }
+
+  /** ArrayList representation of the stack */
+  private ArrayList<Integer> stack;
+
+  /** Constructor */
+  public StackArrayList() {
+    stack = new ArrayList<>();
+  }
+
+  /**
+   * Adds value to the end of list which is the top for stack
+   *
+   * @param value value to be added
+   */
+  public void push(int value) {
+    stack.add(value);
+  }
+
+  /**
+   * Removes the element at the top of this stack and returns
+   *
+   * @return Element popped
+   * @throws EmptyStackException if the stack is empty.
+   */
+  public int pop() {
+    if (isEmpty()) {
+      throw new EmptyStackException();
     }
 
-    /**
-     * Adds value to the end of list which
-     * is the top for stack
-     *
-     * @param value value to be added
-     */
-    public void push(int value) {
-        stackList.add(value);
+    /* remove the element on the top of the stack */
+    return stack.remove(stack.size() - 1);
+  }
+
+  /**
+   * Test if the stack is empty.
+   *
+   * @return {@code true} if this stack is empty, {@code false} otherwise.
+   */
+  public boolean isEmpty() {
+    return stack.isEmpty();
+  }
+
+  /**
+   * Return the element at the top of this stack without removing it from the stack.
+   *
+   * @return the element at the top of this stack.
+   */
+  public int peek() {
+    if (isEmpty()) {
+      throw new EmptyStackException();
     }
+    return stack.get(stack.size() - 1);
+  }
 
-    /**
-     * Pops last element of list which is indeed
-     * the top for Stack
-     *
-     * @return Element popped
-     */
-    public int pop() {
-
-        if (!isEmpty()) { // checks for an empty Stack
-            int popValue = stackList.get(stackList.size() - 1);
-            stackList.remove(stackList.size() - 1);  // removes the poped element from the list
-            return popValue;
-        }
-
-        System.out.print("The stack is already empty!");
-        return -1;
-    }
-
-    /**
-     * Checks for empty Stack
-     *
-     * @return true if stack is empty
-     */
-    public boolean isEmpty() {
-        return stackList.isEmpty();
-    }
-
-    /**
-     * Top element of stack
-     *
-     * @return top element of stack
-     */
-    public int peek() {
-        return stackList.get(stackList.size() - 1);
-    }
+  /**
+   * Return size of this stack.
+   *
+   * @return size of this stack.
+   */
+  public int size() {
+    return stack.size();
+  }
 }

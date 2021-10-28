@@ -1,22 +1,22 @@
 # The Algorithms - Java
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/TheAlgorithms/100)
+
+[![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
+[![Discord chat](https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square)](https://discord.gg/c7MnfGFGa6)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
 
 
-NOTE: A [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch is made for this repo where we're trying to migrate the existing project to a Java project structure. You can switch to [Development](https://github.com/TheAlgorithms/Java/tree/Development) branch for contributions. Please refer [this issue](https://github.com/TheAlgorithms/Java/issues/474) for more info.
-
-You can run and edit the algorithms or contribute to them using Gitpod.io, a free online development environment, with a single click.
+You can run and edit the algorithms, or contribute to them using Gitpod.io (a free online development environment) with a single click.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
 
-
-### All algorithms are implemented in Java (for education purposes)
-These implementations are for learning purposes. The implementations may be less efficient than the Java standard library.
+### All algorithms are implemented in Java (for educational purposes)
+These implementations are intended for learning purposes. As such, they may be less efficient than the Java standard library.
 
 ## Contribution Guidelines
-Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
+Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
 
 ## Community Channel
-We're on [Gitter](https://gitter.im/TheAlgorithms)! Please join us.
+We're on [Gitter](https://gitter.im/TheAlgorithms)! Come join us.
 
 ## Algorithms
-See our [directory](DIRECTORY.md).
+Our [directory](DIRECTORY.md) has the full list of applications.

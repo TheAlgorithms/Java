@@ -3,56 +3,39 @@ package Sorts;
 import static Sorts.SortUtils.less;
 import static Sorts.SortUtils.print;
 
-/**
- * @author Varun Upadhyay (https://github.com/varunu28)
- * @author Podshivalov Nikita (https://github.com/nikitap492)
- */
-
 class InsertionSort implements SortAlgorithm {
 
-    /**
-     * This method implements the Generic Insertion Sort
-     * Sorts the array in increasing order
-     *
-     * @param array The array to be sorted
-     **/
-
-    @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int j = 1; j < array.length; j++) {
-
-            // Picking up the key(Card)
-            T key = array[j];
-            int i = j - 1;
-
-            while (i >= 0 && less(key, array[i])) {
-                array[i + 1] = array[i];
-                i--;
-            }
-            // Placing the key (Card) at its correct position in the sorted subarray
-            array[i + 1] = key;
-        }
-        return array;
+  /**
+   * Generic insertion sort algorithm in increasing order.
+   *
+   * @param array the array to be sorted.
+   * @param <T> the class of array.
+   * @return sorted array.
+   */
+  @Override
+  public <T extends Comparable<T>> T[] sort(T[] array) {
+    for (int i = 1; i < array.length; i++) {
+      T insertValue = array[i];
+      int j;
+      for (j = i - 1; j >= 0 && less(insertValue, array[j]); j--) {
+        array[j + 1] = array[j];
+      }
+      if (j != i - 1) {
+        array[j + 1] = insertValue;
+      }
     }
+    return array;
+  }
 
-    // Driver Program
-    public static void main(String[] args) {
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+  /** Driver Code */
+  public static void main(String[] args) {
+    Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+    InsertionSort sort = new InsertionSort();
+    sort.sort(integers);
+    print(integers); /* [1, 4, 6, 9, 12, 23, 54, 78, 231] */
 
-        InsertionSort sort = new InsertionSort();
-
-        sort.sort(integers);
-
-        // Output => 1 4 6 9 12 23 54 78 231
-        print(integers);
-
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
-
-        sort.sort(strings);
-
-        //Output => a	b	c	d	e
-        print(strings);
-    }
+    String[] strings = {"c", "a", "e", "b", "d"};
+    sort.sort(strings);
+    print(strings); /* [a, b, c, d, e] */
+  }
 }
