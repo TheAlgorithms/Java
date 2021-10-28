@@ -1,14 +1,24 @@
 package Misc;
 import org.junit.Test;
-
 import java.util.*;
-
 import static org.junit.Assert.assertEquals;
 
 /**
+ * This class contains the method for returning a list of elements after traversing
+ * an input matrix in the clockwise direction. This class also contains a variety of junit tests
+ * to test the spiralTraverse method with matrices of different sizes.
  *
+ * @author Phillip La (https://github.com/pdsla112)
  */
 public class SpiralMatrixTraversal {
+
+    /**
+     * Method that implements spiral travers of a generic matrix. Requires an input
+     * of a generic matrix of any size. Traverses the matrix in clockwise direction.
+     *
+     * @author Phillip La (https://github.com/pdsla112)
+     * @return List of elements in order of the spiral traverse of the input matrix.
+     */
     public static <T> List<T> spiralTraverse(T[][] matrix) {
         List<T> result = new ArrayList<>();
 
@@ -51,6 +61,9 @@ public class SpiralMatrixTraversal {
         return result;
     }
 
+    /**
+     * Tests the spiralTraverse method for an empty matrix.
+     */
     @Test
     public void testEmptyMatrix() {
         Integer[][] testMatrix = {
@@ -62,6 +75,9 @@ public class SpiralMatrixTraversal {
         assertEquals("Incorrect result", expectedResult, result);
     }
 
+    /**
+     * Tests the spiralTraverse method for a simple square matrix.
+     */
     @Test
     public void testSquareMatrix() {
         Integer[][] testMatrix = {
@@ -77,6 +93,9 @@ public class SpiralMatrixTraversal {
         assertEquals("Incorrect result", expectedResult, result);
     }
 
+    /**
+     * Tests the spiralTraverse method for a matrix containing a single element.
+     */
     @Test
     public void testSingleMatrix() {
         Integer[][] testMatrix = {
@@ -89,6 +108,10 @@ public class SpiralMatrixTraversal {
         assertEquals("Incorrect result", expectedResult, result);
     }
 
+    /**
+     * Tests the spiralTraverse method for a matrix with the number of columns
+     * being greater than the number of rows.
+     */
     @Test
     public void testGreaterColumnMatrix() {
         Integer[][] testMatrix = {
@@ -102,6 +125,10 @@ public class SpiralMatrixTraversal {
         assertEquals("Incorrect result", expectedResult, result);
     }
 
+    /**
+     * Tests the spiralTraverse method for a matrix with the number of rows
+     * being greater than the number of columns.
+     */
     @Test
     public void testGreaterRowMatrix() {
         Integer[][] testMatrix = {
