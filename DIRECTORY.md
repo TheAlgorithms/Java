@@ -3,6 +3,7 @@
   * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/AudioFilters/IIRFilter.java)
 
 ## Backtracking
+  * [KnightsTour](https://github.com/TheAlgorithms/Java/blob/master/Backtracking/KnightsTour.java)
   * [NQueens](https://github.com/TheAlgorithms/Java/blob/master/Backtracking/NQueens.java)
   * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/Backtracking/PowerSum.java)
 
@@ -48,6 +49,7 @@
     * [CircularBuffer](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Buffers/CircularBuffer.java)
   * Caches
     * [LRUCache](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Caches/LRUCache.java)
+    * [MRUCache](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Caches/MRUCache.java)
   * DisjointSets
     * [DisjointSets](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DisjointSets/DisjointSets.java)
     * [Node](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/DisjointSets/Node.java)
@@ -82,6 +84,7 @@
   * Lists
     * [CircleLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CircleLinkedList.java)
     * [CountSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CountSinglyLinkedListRecursion.java)
+    * [CreateAndDetectLoop](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CreateAndDetectLoop.java)
     * [CursorLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/CursorLinkedList.java)
     * [DoublyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/DoublyLinkedList.java)
     * [Merge K SortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Lists/Merge_K_SortedLinkedlist.java)
@@ -113,11 +116,14 @@
     * [BSTRecursive](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/BSTRecursive.java)
     * [BSTRecursiveGeneric](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/BSTRecursiveGeneric.java)
     * [CeilInBinarySearchTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/CeilInBinarySearchTree.java)
+    * [CreateBinaryTreeFromInorderPreorder](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/CreateBinaryTreeFromInorderPreorder.java)
+    * [CreateBSTFromSortedArray](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/CreateBSTFromSortedArray.java)
     * [FenwickTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/FenwickTree.java)
     * [GenericTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/GenericTree.java)
     * [LCA](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/LCA.java)
     * [LevelOrderTraversal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/LevelOrderTraversal.java)
     * [LevelOrderTraversalQueue](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/LevelOrderTraversalQueue.java)
+    * [nearestRightKey](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/nearestRightKey.java)
     * [PrintTopViewofTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/PrintTopViewofTree.java)
     * [RedBlackBST](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/RedBlackBST.java)
     * [SegmentTree](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/SegmentTree.java)
@@ -253,6 +259,7 @@
 ## Others
   * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/Others/BestFit.java)
   * [BFPRT](https://github.com/TheAlgorithms/Java/blob/master/Others/BFPRT.java)
+  * [BoyerMoore](https://github.com/TheAlgorithms/Java/blob/master/Others/BoyerMoore.java)
   * [BrianKernighanAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Others/BrianKernighanAlgorithm.java)
   * [CountChar](https://github.com/TheAlgorithms/Java/blob/master/Others/CountChar.java)
   * [CountWords](https://github.com/TheAlgorithms/Java/blob/master/Others/CountWords.java)
@@ -317,6 +324,7 @@
   * [SquareRootBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/SquareRootBinarySearch.java)
   * [TernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/TernarySearch.java)
   * [UnionFind](https://github.com/TheAlgorithms/Java/blob/master/Searches/UnionFind.java)
+  * [UpperBound](https://github.com/TheAlgorithms/Java/blob/master/Searches/UpperBound.java)
 
 ## Sorts
   * [BitonicSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/BitonicSort.java)
