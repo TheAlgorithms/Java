@@ -1,7 +1,5 @@
 package Misc;
-import org.junit.Test;
 import java.util.*;
-import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains the method for returning a list of elements after traversing
@@ -59,90 +57,5 @@ public class SpiralMatrixTraversal {
         }
 
         return result;
-    }
-
-    /**
-     * Tests the spiralTraverse method for an empty matrix.
-     */
-    @Test
-    public void testEmptyMatrix() {
-        Integer[][] testMatrix = {
-                {}
-        };
-
-        List<Integer> result = spiralTraverse(testMatrix);
-        List<Integer> expectedResult = new ArrayList<>();
-        assertEquals("Incorrect result", expectedResult, result);
-    }
-
-    /**
-     * Tests the spiralTraverse method for a simple square matrix.
-     */
-    @Test
-    public void testSquareMatrix() {
-        Integer[][] testMatrix = {
-                {1, 2, 3, 4},
-                {12, 13, 14, 5},
-                {11, 16, 15, 6},
-                {10, 9, 8, 7}
-        };
-
-        List<Integer> result = spiralTraverse(testMatrix);
-        List<Integer> expectedResult = new ArrayList<>();
-        Collections.addAll(expectedResult, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
-        assertEquals("Incorrect result", expectedResult, result);
-    }
-
-    /**
-     * Tests the spiralTraverse method for a matrix containing a single element.
-     */
-    @Test
-    public void testSingleMatrix() {
-        Integer[][] testMatrix = {
-                {7}
-        };
-
-        List<Integer> result = spiralTraverse(testMatrix);
-        List<Integer> expectedResult = new ArrayList<>();
-        Collections.addAll(expectedResult, 7);
-        assertEquals("Incorrect result", expectedResult, result);
-    }
-
-    /**
-     * Tests the spiralTraverse method for a matrix with the number of columns
-     * being greater than the number of rows.
-     */
-    @Test
-    public void testGreaterColumnMatrix() {
-        Integer[][] testMatrix = {
-                {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-                {20, 19, 18, 17, 16, 15, 14, 13, 12, 11}
-        };
-
-        List<Integer> result = spiralTraverse(testMatrix);
-        List<Integer> expectedResult = new ArrayList<>();
-        Collections.addAll(expectedResult, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
-        assertEquals("Incorrect result", expectedResult, result);
-    }
-
-    /**
-     * Tests the spiralTraverse method for a matrix with the number of rows
-     * being greater than the number of columns.
-     */
-    @Test
-    public void testGreaterRowMatrix() {
-        Integer[][] testMatrix = {
-                {1, 2, 3, 4},
-                {16, 17, 18, 5},
-                {15, 24, 19, 6},
-                {14, 23, 20, 7},
-                {13, 22, 21, 8},
-                {12, 11, 10, 9}
-        };
-
-        List<Integer> result = spiralTraverse(testMatrix);
-        List<Integer> expectedResult = new ArrayList<>();
-        Collections.addAll(expectedResult, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
-        assertEquals("Incorrect result", expectedResult, result);
     }
 }
