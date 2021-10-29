@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
  
-public class Reverse_k_element_queue {
+class Reverse_k_element_queue {
  
     static Queue<Integer> queue;
  
