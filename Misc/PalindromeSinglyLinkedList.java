@@ -1,6 +1,7 @@
 package Misc;
 
 import java.util.Stack;
+import DataStructures.Lists.SinglyLinkedList;
 
 /**
  * A simple way of knowing if a singly linked list is palindrome is to
@@ -11,49 +12,36 @@ import java.util.Stack;
  */
 public class PalindromeSinglyLinkedList {
     public static void main(String[] args) {
-        Node node5 = new Node(3, null);
-        Node node4 = new Node(2, node5);
-        Node node3 = new Node(1, node4);
-        Node node2 = new Node(2, node3);
-        Node node1 = new Node(3, node2);
-        // Node node1 = new Node(2, node2);
+        SinglyLinkedList linkedList = new SinglyLinkedList();
 
-        if (isPalindrome(node1)) {
+        linkedList.insertHead(3);
+        linkedList.insertNth(2, 1);
+        linkedList.insertNth(1, 2);
+        linkedList.insertNth(2, 3);
+        linkedList.insertNth(3, 4);
+
+        if (isPalindrome(linkedList)) {
             System.out.println("It's a palindrome list");
         } else {
             System.out.println("It's NOT a palindrome list");
         }
     }
 
-    public static boolean isPalindrome(Node head) {
+    public static boolean isPalindrome(SinglyLinkedList linkedList) {
         boolean ret = true;
-        Node tempNode = head;
         Stack<Integer> linkedListValues = new Stack<>();
 
-        while (tempNode != null) {
-            linkedListValues.push(tempNode.data);
-            tempNode = tempNode.nextNode;
+        for (int i = 0; i < linkedList.size(); i++) {
+            linkedListValues.push(linkedList.getNth(i));
         }
 
-        while (head != null) {
-            if (head.data != linkedListValues.pop()) {
+        for (int i = 0; i < linkedList.size(); i++) {
+            if (linkedList.getNth(i) != linkedListValues.pop()) {
                 ret = false;
                 break;
             }
-
-            head = head.nextNode;
         }
 
         return ret;
-    }
-}
-
-class Node {
-    int data;
-    Node nextNode;
-
-    public Node(int data, Node nextNode) {
-        this.data = data;
-        this.nextNode = nextNode;
     }
 }
