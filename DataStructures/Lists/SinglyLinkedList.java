@@ -74,7 +74,64 @@ public class SinglyLinkedList {
     cur.next = newNode;
     size++;
   }
-
+  
+  /**
+  Detects if there is a loop in the singly linked list
+  using floy'd turtle and hare algorithm.
+  **/
+  public boolean detectLoop(){
+    Node currentNodeFast = head;
+    Node currentNodeSlow = head;
+    boolean flag = false;
+    while(currentNodeFast!=null && currentNodeFast.next != null && currentNodeSlow!=null && currentNodeSlow.next != null){
+        currentNodeFast = currentNodeFast.next.next;
+        currentNodeSlow = currentNodeSlow.next;
+        if (currentNodeFast==currentNodeSlow){
+            flag = true;
+            break;
+        }
+      }
+    return flag;
+    }
+  
+  /**
+  Swaps nodes of two given values a and b.
+  **/
+  
+  public void swapNodes(int a, int b){
+        Node currentNode = head;
+        Node temp = null;
+        while(currentNode!=null){
+            if (currentNode.next.value == a){
+                temp = currentNode.next;
+            }
+            if(currentNode.next.value == b){
+                currentNode.next=temp;
+            }
+            currentNode=currentNode.next;
+        }
+    }
+  
+  
+  /**
+  Reverse a singly linked list from a given node till the end
+  **/
+    
+    
+  Node reverseList(Node node) {
+      Node prev = null, curr = node, next;
+      while (curr != null) {
+          next = curr.next;
+          curr.next = prev;
+          prev = curr;
+          curr = next;
+      }
+      node = prev;
+      return node;
+  }
+  
+  
+  
   /** Deletes a node at the head */
   public void deleteHead() {
     deleteNth(0);
