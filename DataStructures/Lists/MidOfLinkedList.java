@@ -19,7 +19,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class MidOfLinkedList {
   public static class Node {
     int data;
     Node next;
