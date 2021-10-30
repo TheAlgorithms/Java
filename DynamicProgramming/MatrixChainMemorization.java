@@ -39,7 +39,7 @@ public static void main (String[] args)
 	for (int[] row : dp)
 	Arrays.fill(row, -1);
 
-	System.out.println("Minimum number of multiplications is " + MatrixChain(arr,1, n-1));
+	System.out.println("Minimum number of multiplications is " + matrixChain(arr,1, n-1));
 }
 }
 
