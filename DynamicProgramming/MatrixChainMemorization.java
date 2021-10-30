@@ -8,7 +8,7 @@ class matrixChainMemorization
 static int[][] dp = new int[100][100];
 
 // Function for matrix chain multiplication
-static int matrixChainMemoised(int[] p, int i, int j)
+static int matrixChain(int[] p, int i, int j)
 {
 	if (i == j)
 	{
@@ -22,17 +22,11 @@ static int matrixChainMemoised(int[] p, int i, int j)
 	for (int k = i; k < j; k++)
 	{
 	dp[i][j] = Math.min(
-		dp[i][j], matrixChainMemoised(p, i, k)
-		+ matrixChainMemoised(p, k + 1, j)
+		dp[i][j], matrixChain(p, i, k)
+		+ matrixChain(p, k + 1, j)
 		+ p[i - 1] * p[k] * p[j]);
 	}
 	return dp[i][j];
-}
-
-static int MatrixChainOrder(int[] p, int n)
-{
-	int i = 1, j = n - 1;
-	return matrixChainMemoised(p, i, j);
 }
 
 // Driver Code
@@ -45,7 +39,7 @@ public static void main (String[] args)
 	for (int[] row : dp)
 	Arrays.fill(row, -1);
 
-	System.out.println("Minimum number of multiplications is " + MatrixChainOrder(arr, n));
+	System.out.println("Minimum number of multiplications is " + MatrixChain(arr,1, n-1));
 }
 }
 
