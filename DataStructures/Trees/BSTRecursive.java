@@ -155,6 +155,29 @@ public class BSTRecursive {
       inOrder(node.right);
     }
   }
+  
+  
+  /**
+   * heightBalancedBST creates a height balanced BST, it is a wrapper function for buildTree function 
+   * the array to be inserted as @param must be sorted.
+  **/
+
+  public Node heightBalancedBST(int[] nums) {
+        return buildTree(nums, 0, nums.length-1);
+    }
+
+  public Node buildTree(int [] nums ,int low, int high){
+        if(low>high){
+            return null;
+        }
+        int mid = (high+low)/2;
+
+        Node node = new Node(nums[mid]);
+        node.left = buildTree(nums,low, mid-1);
+        node.right = buildTree(nums,mid+1,high);
+
+        return node;
+    }
 
   /**
    * Serach recursively if the given value is present in BST or not.
