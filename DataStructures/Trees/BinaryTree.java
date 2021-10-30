@@ -79,7 +79,33 @@ public class BinaryTree {
     }
     return null;
   }
+  
+  
+  /**
+   * Check if two nodes have same parent node or not.
+   
+   *
+   * @param value Value to be inserted
+   */
+  
+  public boolean sameParent(TreeNode node, TreeNode a, TreeNode b) {
+        if (node == null)
+            return false;
+        return ((node.left == a && node.right == b) || (node.left == b && node.right == a) || sameParent(node.left, a, b) || sameParent(node.right, a, b));
+    }                                                                                                                                                                                                                                                                      // then return true, if not then return false
 
+    int treeLevel(TreeNode root, TreeNode node, int level) {
+        if (root == null)
+            return 0;
+        if (root == node)
+            return level;
+        int a = treeLevel(root.left, node, level + 1);
+        if (a != 0)
+            return a;
+        return treeLevel(root.right, node, level + 1);
+    }
+  
+  
   /**
    * Inserts certain value into the Binary Tree
    *
@@ -104,7 +130,29 @@ public class BinaryTree {
       }
     }
   }
-
+  
+  /**
+   * heightBalancedBST creates a height balanced BST, it is a wrapper function for buildTree function 
+   * the array to be inserted as @param must be sorted.
+   * @
+  **/
+  
+  public Node heightBalancedBST(int[] nums) {
+        return buildTree(nums, 0, nums.length-1);
+    }
+  
+  public Node buildTree(int [] nums ,int low, int high){
+        if(low>high){
+            return null;
+        }
+        int mid = (high+low)/2;
+        
+        Node node = new Node(nums[mid]);
+        node.left = buildTree(nums,low, mid-1);
+        node.right = buildTree(nums,mid+1,high);
+        
+        return node;
+    }
   /**
    * Deletes a given value from the Binary Tree
    *
