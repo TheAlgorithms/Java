@@ -33,7 +33,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class ContinuedFractions {
   static InputReader in = new InputReader(System.in);
 
   public static void main(String[] args) throws IOException {
