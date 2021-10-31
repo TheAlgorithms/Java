@@ -61,7 +61,7 @@ class CycleSort implements SortAlgorithm {
   }
 
   public static void main(String[] args) {
-    Integer arr[] = {4, 23, 6, 78, 1, 26, 11, 23, 0, -6, 3, 54, 231, 9, 12};
+    Integer[] arr = {4, 23, 6, 78, 1, 26, 11, 23, 0, -6, 3, 54, 231, 9, 12};
     CycleSort cycleSort = new CycleSort();
     cycleSort.sort(arr);
 

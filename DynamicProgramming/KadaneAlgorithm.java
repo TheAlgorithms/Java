@@ -16,7 +16,7 @@ public class KadaneAlgorithm {
    * @param arr The input array
    * @return The maximum contiguous subarray sum of the array
    */
-  static int largestContiguousSum(int arr[]) {
+  static int largestContiguousSum(int[] arr) {
     int i, len = arr.length, cursum = 0, maxsum = Integer.MIN_VALUE;
     if (len == 0) // empty array
     return 0;
@@ -39,7 +39,9 @@ public class KadaneAlgorithm {
    */
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int n, arr[], i;
+    int n;
+    int[] arr;
+    int i;
     n = sc.nextInt();
     arr = new int[n];
     for (i = 0; i < n; i++) {

@@ -9,7 +9,7 @@ public final class ClosestPair {
   /** Number of points */
   int numberPoints;
   /** Input data, maximum 10000. */
-  private Location[] array;
+  private final Location[] array;
   /** Minimum point coordinate. */
   Location point1 = null;
   /** Minimum point coordinate. */

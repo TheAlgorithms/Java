@@ -9,7 +9,6 @@ public class CircleSort implements SortAlgorithm {
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         int n = array.length;
-        while(doSort(array, 0, n - 1));
         return array;
     }
     

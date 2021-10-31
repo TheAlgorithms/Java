@@ -22,7 +22,7 @@ public class HillCipher {
         System.out.println("Enter key matrix size");
         int n = in.nextInt();
         System.out.println("Enter Key/encryptionKey matrix ");
-        int keyMatrix[][] = new int[n][n];
+        int[][] keyMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 keyMatrix[i][j] = in.nextInt();
@@ -36,7 +36,7 @@ public class HillCipher {
 
         int[][] messageVector = new int[n][1];
         String CipherText = "";
-        int cipherMatrix[][] = new int[n][1];
+        int[][] cipherMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < n; i++) {
@@ -70,7 +70,7 @@ public class HillCipher {
         System.out.println("Enter key matrix size");
         int n = in.nextInt();
         System.out.println("Enter inverseKey/decryptionKey matrix ");
-        int keyMatrix[][] = new int[n][n];
+        int[][] keyMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 keyMatrix[i][j] = in.nextInt();
@@ -84,7 +84,7 @@ public class HillCipher {
         //solving for the required plaintext message
         int[][] messageVector = new int[n][1];
         String PlainText = "";
-        int plainMatrix[][] = new int[n][1];
+        int[][] plainMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < n; i++) {

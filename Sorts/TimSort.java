@@ -7,7 +7,7 @@ import java.util.Random;
  * @see [Tim Sort](https://en.wikipedia.org/wiki/Tim_sort)
  */
 class TimSort {
-  int array[];
+  int[] array;
   int array_length;
   int RUN = 32;
 
@@ -87,7 +87,7 @@ class TimSort {
   public void merge_runs(int array[], int start, int mid, int end) {
 
     int first_array_size = mid - start + 1, second_array_size = end - mid;
-    int array1[] = new int[first_array_size], array2[] = new int[second_array_size];
+    int[] array1 = new int[first_array_size], array2 = new int[second_array_size];
     int i = 0, j = 0, k = 0;
 
     // Building the two sub arrays from the array to merge later
@@ -149,8 +149,8 @@ class TimSort {
 
   /** @brief A method to show the elements inside the array. */
   public void showArrayElements() {
-    for (int i = 0; i < this.array.length; i++) {
-      System.out.print(this.array[i] + " ");
+    for (int j : this.array) {
+      System.out.print(j + " ");
     }
     System.out.println();
   }

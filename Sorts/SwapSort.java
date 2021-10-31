@@ -33,8 +33,8 @@ public class SwapSort implements SortAlgorithm {
 
     private <T extends Comparable<T>> int getSmallerElementCount(T[] array, int index) {
         int counter = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (less(array[i], array[index])) {
+        for (T t : array) {
+            if (less(t, array[index])) {
                 counter++;
             }
         }

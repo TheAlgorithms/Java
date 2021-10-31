@@ -13,7 +13,7 @@ import java.util.Random;
  * https://www.baeldung.com/java-monte-carlo-tree-search
  */
 public class MonteCarloTreeSearch {
-    public class Node {
+    public static class Node {
         Node parent;
         ArrayList <Node> childNodes;
         boolean isPlayersTurn; // True if it is the player's turn.
@@ -39,7 +39,7 @@ public class MonteCarloTreeSearch {
     public static void main(String[] args) {
         MonteCarloTreeSearch mcts = new MonteCarloTreeSearch();
 
-        mcts.monteCarloTreeSearch(mcts.new Node(null, true));
+        mcts.monteCarloTreeSearch(new Node(null, true));
     }
 
     /**

@@ -61,9 +61,9 @@ public class LongestIncreasingSubsequence {
   /** @author Alon Firestein (https://github.com/alonfirestein) */
 
   // A function for finding the length of the LIS algorithm in O(nlogn) complexity.
-  public static int findLISLen(int a[]) {
+  public static int findLISLen(int[] a) {
     int size = a.length;
-    int arr[] = new int[size];
+    int[] arr = new int[size];
     arr[0] = a[0];
     int lis = 1;
     for (int i = 1; i < size; i++) {

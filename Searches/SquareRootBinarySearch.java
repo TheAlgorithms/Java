@@ -20,7 +20,7 @@ public class SquareRootBinarySearch {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a number you want to calculate square root of : ");
         int num = sc.nextInt();

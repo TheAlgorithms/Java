@@ -15,7 +15,7 @@ public class HeapSort implements SortAlgorithm {
 
   private static class Heap<T extends Comparable<T>> {
     /** Array to store heap */
-    private T[] heap;
+    private final T[] heap;
 
     /**
      * Constructor

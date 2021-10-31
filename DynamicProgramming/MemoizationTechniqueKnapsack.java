@@ -10,7 +10,7 @@ public class MemoizationTechniqueKnapsack {
   }
 
   // Returns the value of maximum profit
-  static int knapSackRec(int W, int wt[], int val[], int n, int[][] dp) {
+  static int knapSackRec(int W, int[] wt, int[] val, int n, int[][] dp) {
 
     // Base condition
     if (n == 0 || W == 0) return 0;
@@ -31,10 +31,10 @@ public class MemoizationTechniqueKnapsack {
               knapSackRec(W, wt, val, n - 1, dp));
   }
 
-  static int knapSack(int W, int wt[], int val[], int N) {
+  static int knapSack(int W, int[] wt, int[] val, int N) {
 
     // Declare the table dynamically
-    int dp[][] = new int[N + 1][W + 1];
+    int[][] dp = new int[N + 1][W + 1];
 
     // Loop to initially filled the
     // table with -1
@@ -45,8 +45,8 @@ public class MemoizationTechniqueKnapsack {
 
   // Driver Code
   public static void main(String[] args) {
-    int val[] = {60, 100, 120};
-    int wt[] = {10, 20, 30};
+    int[] val = {60, 100, 120};
+    int[] wt = {10, 20, 30};
 
     int W = 50;
     int N = val.length;

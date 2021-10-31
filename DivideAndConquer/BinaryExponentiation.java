@@ -2,7 +2,7 @@ package DivideAndConquer;
 
 public class BinaryExponentiation {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.println(calculatePower(2, 30));
     }
 

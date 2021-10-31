@@ -7,7 +7,7 @@ import java.util.Scanner;
 /** @author Varun Upadhyay (https://github.com/varunu28) */
 public class Fibonacci {
 
-  private static Map<Integer, Integer> map = new HashMap<>();
+  private static final Map<Integer, Integer> map = new HashMap<>();
 
   public static void main(String[] args) {
 

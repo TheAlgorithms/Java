@@ -14,7 +14,7 @@ public class TurkishToLatinConversion {
    *
    * @param args Command line arguments
    */
-  public static void main(String args[]) {
+  public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     System.out.println("Input the string: ");
     String b = sc.next();

@@ -41,7 +41,7 @@ public class KnapsackMemoization {
   }
 
   // Driver code
-  public static void main(String args[]) {
+  public static void main(String[] args) {
     int[] wt = {1, 3, 4, 5};
     int[] value = {1, 4, 5, 7};
     int W = 10;

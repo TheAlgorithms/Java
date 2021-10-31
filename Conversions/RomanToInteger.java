@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RomanToInteger {
 
-  private static Map<Character, Integer> map =
+  private static final Map<Character, Integer> map =
       new HashMap<Character, Integer>() {
         /** */
         private static final long serialVersionUID = 87605733047260530L;

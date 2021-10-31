@@ -57,7 +57,7 @@ public class MergeSortNoExtraSpace {
             }
 
         }
-        public static void main(String args[]) {
+        public static void main(String[] args) {
             Scanner inp=new Scanner(System.in);
             System.out.println("Enter array size");
             int n=inp.nextInt();
@@ -68,8 +68,8 @@ public class MergeSortNoExtraSpace {
                 a[i]=inp.nextInt();
             }
             call_merge_sort(a,n);
-            for(int i=0;i<a.length;i++){
-                System.out.print(a[i]+" ");
+            for (int j : a) {
+                System.out.print(j + " ");
             }
         }
     }

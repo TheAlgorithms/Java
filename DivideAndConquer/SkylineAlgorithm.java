@@ -9,7 +9,7 @@ import java.util.Comparator;
  *     algorithm
  */
 public class SkylineAlgorithm {
-  private ArrayList<Point> points;
+  private final ArrayList<Point> points;
 
   /**
    * Main constructor of the application. ArrayList points gets created, which represents the sum of
@@ -160,7 +160,7 @@ public class SkylineAlgorithm {
    * It is used to compare the 2 Dimension points, based on their x-values, in order get sorted
    * later.
    */
-  class XComparator implements Comparator<Point> {
+  static class XComparator implements Comparator<Point> {
     @Override
     public int compare(Point a, Point b) {
       return Integer.compare(a.x, b.x);

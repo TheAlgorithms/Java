@@ -51,10 +51,7 @@ public class PalindromicPartitioning {
                        isPalindrome[i][j] = (word.charAt(i) == word.charAt(j));
                    else
                        {
-                        if((word.charAt(i) == word.charAt(j)) && isPalindrome[i + 1][j - 1])
-                        isPalindrome[i][j] =true;
-                        else 
-                        isPalindrome[i][j]=false;
+                           isPalindrome[i][j] = (word.charAt(i) == word.charAt(j)) && isPalindrome[i + 1][j - 1];
 
                     }      
                 }
@@ -62,12 +59,12 @@ public class PalindromicPartitioning {
     
            //We find the minimum for each index
            for (i = 0; i < len; i++) {
-               if (isPalindrome[0][i] == true) 
+               if (isPalindrome[0][i])
                    minCuts[i] = 0;
                else {
                    minCuts[i] = Integer.MAX_VALUE;
                    for (j = 0; j < i; j++) {
-                       if (isPalindrome[j + 1][i] == true && 1 + minCuts[j] < minCuts[i])
+                       if (isPalindrome[j + 1][i] && 1 + minCuts[j] < minCuts[i])
                            minCuts[i] = 1 + minCuts[j];
                    }
                }
