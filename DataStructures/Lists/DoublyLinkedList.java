@@ -243,6 +243,18 @@ public class DoublyLinkedList {
     }
     System.out.println();
   }
+
+  /**
+   * Prints the contents of the list in reverse order
+   */
+  public void displayBackwards() {
+    Link current = tail;
+    while (current != null) {
+      current.displayLink();
+      current = current.previous;
+    }
+    System.out.println();
+  }
 }
 
 /**
@@ -283,15 +295,19 @@ class Link {
     myList.insertHead(7);
     myList.insertHead(10);
     myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.insertTail(11);
     myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
+    myList.displayBackwards();
 
     myList.deleteTail();
     myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.delete(7);
     myList.display(); // <-- 10(head) <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.insertOrdered(23);
     myList.insertOrdered(67);
@@ -299,9 +315,12 @@ class Link {
     myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
     myList.insertElementByIndex(5, 1);
     myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+    myList.displayBackwards();
     myList.clearList();
     myList.display();
+    myList.displayBackwards();
     myList.insertHead(20);
     myList.display();
+    myList.displayBackwards();
   }
 }
