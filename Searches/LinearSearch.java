@@ -2,6 +2,7 @@ package Searches;
 
 import java.util.Random;
 import java.util.stream.Stream;
+import DevUtils.Searches.SearchAlgorithm;
 
 /**
  * Linear search is the easiest search algorithm It works with sorted and unsorted arrays (an binary

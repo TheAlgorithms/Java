@@ -1,4 +1,4 @@
-package DevUtils;
+package DevUtils.Nodes;
 
 public abstract class Node<E> {
     private E data;

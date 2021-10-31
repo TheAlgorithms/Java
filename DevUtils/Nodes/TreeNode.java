@@ -1,4 +1,4 @@
-package DevUtils;
+package DevUtils.Nodes;
 
 public abstract class TreeNode<E> extends Node<E> {
     private Node<E> parentNode;

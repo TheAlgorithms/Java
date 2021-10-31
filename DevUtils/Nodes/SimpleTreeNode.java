@@ -1,4 +1,4 @@
-package DevUtils;
+package DevUtils.Nodes;
 
 public class SimpleTreeNode<E> extends TreeNode<E> {
     private Node<E> leftNode;

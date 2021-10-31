@@ -1,4 +1,4 @@
-package DevUtils;
+package DevUtils.Nodes;
 
 public class SimpleNode<E> extends Node<E> {
     private Node<E> nextNode;
