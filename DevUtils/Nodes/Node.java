@@ -1,10 +1,27 @@
 package DevUtils.Nodes;
 
+/**
+ * Base class for any node implementation which
+ * contains a generic type variable.
+ * 
+ * All known subclasses: {@link TreeNode}, {@link SimpleNode}.
+ * 
+ * @param <E> The type of the data held in the Node.
+ * 
+ * @author aitorfi (https://github.com/aitorfi)
+ */
 public abstract class Node<E> {
+    /** Generic type data stored in the Node. */
     private E data;
 
+    /** Empty constructor. */
     public Node() {}
 
+    /**
+     * Initializes the Nodes' data.
+     * 
+     * @param data Value to which data will be initialized.
+     */
     public Node(E data) {
         this.data = data;
     }
