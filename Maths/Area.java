@@ -11,6 +11,14 @@ public class Area {
     assert Double.compare(surfaceAreaSphere(5), 314.1592653589793) == 0;
     assert Double.compare(surfaceAreaSphere(1), 12.566370614359172) == 0;
 
+    /* test hemisphere */
+    assert Double.compare(surfaceAreaHemiphere(5), 235.61944901923448) == 0;
+    assert Double.compare(surfaceAreaHemiphere(1), 9.42477796076938) == 0;
+
+    /* test cone */
+    assert Double.compare(surfaceAreaCone(6, 8), 301.59289474462014) == 0;
+    assert Double.compare(surfaceAreaCone(10, 24), 1130.9733552923256) == 0;
+
     /* test rectangle */
     assert Double.compare(surfaceAreaRectangle(10, 20), 200.0) == 0;
 
@@ -51,6 +59,28 @@ public class Area {
    */
   private static double surfaceAreaSphere(double radius) {
     return 4 * Math.PI * radius * radius;
+  }
+
+  
+  /**
+   * Calculate the surface area of a hemisphere.
+   *
+   * @param radius radius of hemisphere
+   * @return surface area of given hemisphere
+   */
+  private static double surfaceAreaHemisphere(double radius) {
+    return 3 * Math.PI * radius * radius;
+  }
+
+  /**
+   * Calculate the surface area of a cone.
+   *
+   * @param radius radius of cone.
+   * @param height of cone.
+   * @return surface area of given cone.
+   */
+  private static double surfaceAreaCone(double radius, double height) {
+    return Math.PI * radius * (radius + (height * height + radius * radius) ** 0.5);
   }
 
   /**
