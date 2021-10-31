@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * @author:  caos321
+ * @date:    31 October 2021 (Sunday)
+ */
 public class DepthFirstSearch {
     static class Node {
         private final String name;
