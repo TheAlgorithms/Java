@@ -1,6 +1,6 @@
 package DevUtils;
 
-public class Node<E> {
+public abstract class Node<E> {
     private E data;
 
     public Node() {}
