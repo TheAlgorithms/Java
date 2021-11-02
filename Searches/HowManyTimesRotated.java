@@ -1,3 +1,7 @@
+package Searches;
+
+import java.util.*;
+
 /*
     Problem Statement: 
     Given an array, find out how many times it has to been rotated 
@@ -19,10 +23,7 @@
     1. [1,2,3,4] Number of rotations: 0 or 4(Both valid)
     2. [15,17,2,3,5] Number of rotations: 3
 */
-
-import java.util.*;
-
-class howManyTimesRotated
+class HowManyTimesRotated
 {
     public static void main(String[] args) 
     {
@@ -42,11 +43,11 @@ class howManyTimesRotated
         int low = 0;
         int high = a.length-1;
         int mid=0; // low + (high-low)/2 = (low + high)/2
-        int i=0;
+        
         while(low<=high)
         {
             mid = low + (high-low)/2;
-            i++;
+            
             if(a[mid]<a[mid-1] && a[mid]<a[mid+1])
             {
                 break;
