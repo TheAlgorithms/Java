@@ -218,6 +218,34 @@ public class DoublyLinkedList {
     }
   }
 
+  /**
+   * Reverses the list in place
+   *
+   * @param l the DoublyLinkedList to reverse
+   */
+  public void reverse() {
+    // Keep references to the head and tail
+    Link thisHead = this.head;
+    Link thisTail = this.tail;
+
+    // Flip the head and tail references
+    this.head = thisTail;
+    this.tail = thisHead;
+
+    // While the link we're visiting is not null, flip the
+    // next and previous links
+    Link nextLink = thisHead;
+    while (nextLink != null) {
+      Link nextLinkNext = nextLink.next;
+      Link nextLinkPrevious = nextLink.previous;
+      nextLink.next = nextLinkPrevious;
+      nextLink.previous = nextLinkNext;
+
+      // Now, we want to go to the next link
+      nextLink = nextLinkNext;
+    }
+  }
+
   /** Clears List */
   public void clearList() {
     head = null;
@@ -316,6 +344,9 @@ class Link {
     myList.insertElementByIndex(5, 1);
     myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
     myList.displayBackwards();
+    myList.reverse(); // <-- 67(head) <--> 23 <--> 13 <--> 10 <--> 5 <--> 3(tail) -->
+    myList.display();
+    
     myList.clearList();
     myList.display();
     myList.displayBackwards();
