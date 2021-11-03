@@ -74,10 +74,11 @@ public class Area {
   }
   
   /**
-   * Calculate surface of a cylinder
+   * Calculate surface area of a cylinder
    *
    * @param radius radius of the floor
    * @param height height of the cylinder.
+   * @return volume of given cylinder
    */
   private static double surfaceAreaCylinder(double radius, double height) {
     return 2 * (Math.PI * radius * radius + Math.PI * radius * height);
