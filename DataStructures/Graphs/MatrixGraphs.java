@@ -5,6 +5,13 @@ import java.util.Queue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Implementation of a graph in a matrix form
+ * Also known as an adjacency matrix representation
+ * [Adjacency matrix - Wikipedia](https://en.wikipedia.org/wiki/Adjacency_matrix)
+ *
+ * @author Unknown
+ */
 public class MatrixGraphs {
 
   public static void main(String args[]) {
@@ -31,14 +38,35 @@ public class MatrixGraphs {
   }
 }
 
+/**
+ * AdjacencyMatrixGraph Implementation
+ */
 class AdjacencyMatrixGraph {
+  /**
+   * The number of vertices in the graph
+   */
   private int _numberOfVertices;
+
+  /**
+   * The number of edges in the graph
+   */
   private int _numberOfEdges;
+
+  /**
+   * The adjacency matrix for the graph
+   */
   private int[][] _adjacency;
 
+  /**
+   * Static variables to define whether or not an edge exists in the
+   * adjacency matrix
+   */
   static final int EDGE_EXIST = 1;
   static final int EDGE_NONE = 0;
 
+  /**
+   * Constructor
+   */
   public AdjacencyMatrixGraph(int givenNumberOfVertices) {
     this.setNumberOfVertices(givenNumberOfVertices);
     this.setNumberOfEdges(0);
@@ -50,34 +78,77 @@ class AdjacencyMatrixGraph {
     }
   }
 
+  /**
+   * Updates the number of vertices in the graph
+   *
+   * @param newNumberOfVertices the new number of vertices
+   */
   private void setNumberOfVertices(int newNumberOfVertices) {
     this._numberOfVertices = newNumberOfVertices;
   }
 
+  /**
+   * Getter for `this._numberOfVertices`
+   *
+   * @return the number of vertices in the graph
+   */
   public int numberOfVertices() {
     return this._numberOfVertices;
   }
 
+  /**
+   * Updates the number of edges in the graph
+   *
+   * @param newNumberOfEdges
+   * */
   private void setNumberOfEdges(int newNumberOfEdges) {
     this._numberOfEdges = newNumberOfEdges;
   }
 
+  /**
+   * Getter for `this._numberOfEdges`
+   *
+   * @return the number of edges
+   */
   public int numberOfEdges() {
     return this._numberOfEdges;
   }
 
+  /**
+   * Sets a new matrix as the adjacency matrix
+   *
+   * @param newAdjacency the new adjaceny matrix
+   */
   private void setAdjacency(int[][] newAdjacency) {
     this._adjacency = newAdjacency;
   }
 
+  /**
+   * Getter for the adjacency matrix
+   *
+   * @return the adjacency matrix
+   */
   private int[][] adjacency() {
     return this._adjacency;
   }
 
+  /**
+   * Checks if two vertices are connected by an edge
+   *
+   * @param from the parent vertex to check for adjacency
+   * @param to the child vertex to check for adjacency
+   * @return whether or not the vertices are adjancent
+   */
   private boolean adjacencyOfEdgeDoesExist(int from, int to) {
     return (this.adjacency()[from][to] != AdjacencyMatrixGraph.EDGE_NONE);
   }
 
+  /**
+   * Checks if a particular vertex exists in a graph
+   *
+   * @param aVertex the vertex to check for existence
+   * @return whether or not the vertex exists
+   */
   public boolean vertexDoesExist(int aVertex) {
     if (aVertex >= 0 && aVertex < this.numberOfVertices()) {
       return true;
@@ -86,6 +157,13 @@ class AdjacencyMatrixGraph {
     }
   }
 
+  /**
+   * Checks if two vertices are connected by an edge
+   *
+   * @param from the parent vertex to check for adjacency
+   * @param to the child vertex to check for adjacency
+   * @return whether or not the vertices are adjancent
+   */
   public boolean edgeDoesExist(int from, int to) {
     if (this.vertexDoesExist(from) && this.vertexDoesExist(to)) {
       return (this.adjacencyOfEdgeDoesExist(from, to));
