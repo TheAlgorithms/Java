@@ -1,3 +1,5 @@
+package DataStructures.Queues;
+
 //This program implements the concept of CircularQueue in Java
 //Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
 
