@@ -8,11 +8,11 @@ import java.util.Collection;
  * 
  * @param <E> The type of the data held in the Node.
  * 
- * @author aitorfi (https://github.com/aitorfi)
+ * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class LargeTreeNode<E> extends TreeNode<E> {
     /** {@link Collection} that holds the Nodes' child nodes. */
-    private Collection<Node<E>> childNodes;
+    private Collection<LargeTreeNode<E>> childNodes;
 
     /** Empty contructor. */
     public LargeTreeNode() {
@@ -36,7 +36,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @see TreeNode#TreeNode(Object, Node)
      */
-    public LargeTreeNode(E data, Node<E> parentNode) {
+    public LargeTreeNode(E data, LargeTreeNode<E> parentNode) {
         super(data, parentNode);
     }
 
@@ -48,7 +48,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      * @param childNodes {@link Collection} of child Nodes.
      * @see TreeNode#TreeNode(Object, Node)
      */
-    public LargeTreeNode(E data, Node<E> parentNode, Collection<Node<E>> childNodes) {
+    public LargeTreeNode(E data, LargeTreeNode<E> parentNode, Collection<LargeTreeNode<E>> childNodes) {
         super(data, parentNode);
         this.childNodes = childNodes;
     }
@@ -62,11 +62,11 @@ public class LargeTreeNode<E> extends TreeNode<E> {
         return (childNodes == null || childNodes.size() == 0);
     }
 
-    public Collection<Node<E>> getChildNodes() {
+    public Collection<LargeTreeNode<E>> getChildNodes() {
         return childNodes;
     }
 
-    public void setChildNodes(Collection<Node<E>> childNodes) {
+    public void setChildNodes(Collection<LargeTreeNode<E>> childNodes) {
         this.childNodes = childNodes;
     }
 }

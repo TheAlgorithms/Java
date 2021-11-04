@@ -6,11 +6,11 @@ package DevUtils.Nodes;
  * 
  * @param <E> The type of the data held in the Node.
  * 
- * @author aitorfi (https://github.com/aitorfi)
+ * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class SimpleNode<E> extends Node<E> {
     /** Reference to the next Node. */
-    private Node<E> nextNode;
+    private SimpleNode<E> nextNode;
 
     /** Empty contructor. */
     public SimpleNode() {
@@ -33,7 +33,7 @@ public class SimpleNode<E> extends Node<E> {
      * @param data Value to which data will be initialized.
      * @param nextNode Value to which the next node reference will be set.
      */
-    public SimpleNode(E data, Node<E> nextNode) {
+    public SimpleNode(E data, SimpleNode<E> nextNode) {
         super(data);
         this.nextNode = nextNode;
     }
@@ -45,11 +45,11 @@ public class SimpleNode<E> extends Node<E> {
         return (nextNode != null);
     }
 
-    public Node<E> getNextNode() {
+    public SimpleNode<E> getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node<E> nextNode) {
+    public void setNextNode(SimpleNode<E> nextNode) {
         this.nextNode = nextNode;
     }
 }

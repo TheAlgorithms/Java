@@ -8,7 +8,7 @@ package DevUtils.Nodes;
  * 
  * @param <E> The type of the data held in the Node.
  * 
- * @author aitorfi (https://github.com/aitorfi)
+ * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public abstract class Node<E> {
     /** Generic type data stored in the Node. */

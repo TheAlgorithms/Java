@@ -6,13 +6,13 @@ package DevUtils.Nodes;
  * 
  * @param <E> The type of the data held in the Node.
  * 
- * @author aitorfi (https://github.com/aitorfi)
+ * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class SimpleTreeNode<E> extends TreeNode<E> {
     /** Refrence to the child Node on the left. */
-    private Node<E> leftNode;
+    private SimpleTreeNode<E> leftNode;
     /** Refrence to the child Node on the right. */
-    private Node<E> rightNode;
+    private SimpleTreeNode<E> rightNode;
 
     /** Empty contructor. */
     public SimpleTreeNode() {
@@ -36,7 +36,7 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @see TreeNode#TreeNode(Object, Node)
      */
-    public SimpleTreeNode(E data, Node<E> parentNode) {
+    public SimpleTreeNode(E data, SimpleTreeNode<E> parentNode) {
         super(data, parentNode);
     }
 
@@ -48,7 +48,7 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
      * @param leftNode Value to which the nodes' left child reference will be set.
      * @param rightNode Value to which the nodes' right child reference will be set.
      */
-    public SimpleTreeNode(E data, Node<E> parentNode, Node<E> leftNode, Node<E> rightNode) {
+    public SimpleTreeNode(E data, SimpleTreeNode<E> parentNode, SimpleTreeNode<E> leftNode, SimpleTreeNode<E> rightNode) {
         super(data, parentNode);
         this.leftNode = leftNode;
         this.rightNode = rightNode;
@@ -63,19 +63,19 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
         return (leftNode == null && rightNode == null);
     }
 
-    public Node<E> getLeftNode() {
+    public SimpleTreeNode<E> getLeftNode() {
         return leftNode;
     }
 
-    public void setLeftNode(Node<E> leftNode) {
+    public void setLeftNode(SimpleTreeNode<E> leftNode) {
         this.leftNode = leftNode;
     }
 
-    public Node<E> getRightNode() {
+    public SimpleTreeNode<E> getRightNode() {
         return rightNode;
     }
 
-    public void setRightNode(Node<E> rightNode) {
+    public void setRightNode(SimpleTreeNode<E> rightNode) {
         this.rightNode = rightNode;
     }
 }

@@ -8,15 +8,18 @@ package DevUtils.Nodes;
  * 
  * @param <E> The type of the data held in the Node.
  * 
- * @author aitorfi (https://github.com/aitorfi)
+ * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public abstract class TreeNode<E> extends Node<E> {
     /** Refernce to the parent Node. */
-    private Node<E> parentNode;
+    private TreeNode<E> parentNode;
+    /** Indicates the depth at which this node is in the tree. */
+    private int depth;
 
     /** Empty contructor. */
     public TreeNode() {
         super();
+        depth = 0;
     }
 
     /**
@@ -27,6 +30,7 @@ public abstract class TreeNode<E> extends Node<E> {
      */
     public TreeNode(E data) {
         super(data);
+        depth = 0;
     }
 
     /**
@@ -35,9 +39,10 @@ public abstract class TreeNode<E> extends Node<E> {
      * @param data Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      */
-    public TreeNode(E data, Node<E> parentNode) {
+    public TreeNode(E data, TreeNode<E> parentNode) {
         super(data);
         this.parentNode = parentNode;
+        depth = this.parentNode.getDepth() + 1;
     }
 
     /**
@@ -52,11 +57,16 @@ public abstract class TreeNode<E> extends Node<E> {
         return (parentNode == null);
     }
 
-    public Node<E> getParent() {
+    public TreeNode<E> getParent() {
         return parentNode;
     }
 
-    public void setParent(Node<E> parentNode) {
+    public void setParent(TreeNode<E> parentNode) {
         this.parentNode = parentNode;
+        depth = this.parentNode.getDepth() + 1;
+    }
+
+    public int getDepth() {
+        return depth;
     }
 }
