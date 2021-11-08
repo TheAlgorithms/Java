@@ -1,5 +1,7 @@
 package Searches;
 
+import DevUtils.Searches.SearchAlgorithm;
+
 public class JumpSearch implements SearchAlgorithm {
 
   public static void main(String[] args) {
