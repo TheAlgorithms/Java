@@ -5,6 +5,7 @@ import static java.lang.String.format;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
+import DevUtils.Searches.SearchAlgorithm;
 
 /**
  * A iterative version of a ternary search algorithm This is better way to implement the ternary

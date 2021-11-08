@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
+import DevUtils.Searches.SearchAlgorithm;
 
 import static java.lang.String.format;
 
