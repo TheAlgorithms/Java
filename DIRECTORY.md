@@ -344,6 +344,7 @@
   * [MergeSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/MergeSort.java)
   * [MergeSortNoExtraSpace](https://github.com/TheAlgorithms/Java/blob/master/Sorts/MergeSortNoExtraSpace.java)
   * [MergeSortRecursive](https://github.com/TheAlgorithms/Java/blob/master/Sorts/MergeSortRecursive.java)
+  * [OddEvenSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/OddEvenSort.java)
   * [PancakeSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/PancakeSort.java)
   * [QuickSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/QuickSort.java)
   * [RadixSort](https://github.com/TheAlgorithms/Java/blob/master/Sorts/RadixSort.java)

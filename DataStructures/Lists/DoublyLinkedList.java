@@ -218,6 +218,34 @@ public class DoublyLinkedList {
     }
   }
 
+  /**
+   * Reverses the list in place
+   *
+   * @param l the DoublyLinkedList to reverse
+   */
+  public void reverse() {
+    // Keep references to the head and tail
+    Link thisHead = this.head;
+    Link thisTail = this.tail;
+
+    // Flip the head and tail references
+    this.head = thisTail;
+    this.tail = thisHead;
+
+    // While the link we're visiting is not null, flip the
+    // next and previous links
+    Link nextLink = thisHead;
+    while (nextLink != null) {
+      Link nextLinkNext = nextLink.next;
+      Link nextLinkPrevious = nextLink.previous;
+      nextLink.next = nextLinkPrevious;
+      nextLink.previous = nextLinkNext;
+
+      // Now, we want to go to the next link
+      nextLink = nextLinkNext;
+    }
+  }
+
   /** Clears List */
   public void clearList() {
     head = null;
@@ -240,6 +268,18 @@ public class DoublyLinkedList {
     while (current != null) {
       current.displayLink();
       current = current.next;
+    }
+    System.out.println();
+  }
+
+  /**
+   * Prints the contents of the list in reverse order
+   */
+  public void displayBackwards() {
+    Link current = tail;
+    while (current != null) {
+      current.displayLink();
+      current = current.previous;
     }
     System.out.println();
   }
@@ -283,15 +323,19 @@ class Link {
     myList.insertHead(7);
     myList.insertHead(10);
     myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.insertTail(11);
     myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
+    myList.displayBackwards();
 
     myList.deleteTail();
     myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.delete(7);
     myList.display(); // <-- 10(head) <--> 13(tail) -->
+    myList.displayBackwards();
 
     myList.insertOrdered(23);
     myList.insertOrdered(67);
@@ -299,9 +343,15 @@ class Link {
     myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
     myList.insertElementByIndex(5, 1);
     myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+    myList.displayBackwards();
+    myList.reverse(); // <-- 67(head) <--> 23 <--> 13 <--> 10 <--> 5 <--> 3(tail) -->
+    myList.display();
+    
     myList.clearList();
     myList.display();
+    myList.displayBackwards();
     myList.insertHead(20);
     myList.display();
+    myList.displayBackwards();
   }
 }
