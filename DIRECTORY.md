@@ -133,6 +133,16 @@
     * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/ValidBSTOrNot.java)
     * [VerticalOrderTraversal](https://github.com/TheAlgorithms/Java/blob/master/DataStructures/Trees/VerticalOrderTraversal.java)
 
+## DevUtils
+  * Nodes
+    * [LargeTreeNode](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Nodes/LargeTreeNode.java)
+    * [Node](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Nodes/Node.java)
+    * [SimpleNode](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Nodes/SimpleNode.java)
+    * [SimpleTreeNode](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Nodes/SimpleTreeNode.java)
+    * [TreeNode](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Nodes/TreeNode.java)
+  * Searches
+    * [SearchAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/DevUtils/Searches/SearchAlgorithm.java)
+
 ## DivideAndConquer
   * [BinaryExponentiation](https://github.com/TheAlgorithms/Java/blob/master/DivideAndConquer/BinaryExponentiation.java)
   * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/DivideAndConquer/ClosestPair.java)
@@ -321,6 +331,7 @@
 
 ## Searches
   * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BinarySearch.java)
+  * [BreadthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/BreadthFirstSearch.java)
   * [DepthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/DepthFirstSearch.java)
   * [ExponentalSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/ExponentalSearch.java)
   * [FibonacciSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/FibonacciSearch.java)
@@ -334,7 +345,6 @@
   * [MonteCarloTreeSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/MonteCarloTreeSearch.java)
   * [PerfectBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/PerfectBinarySearch.java)
   * [SaddlebackSearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/SaddlebackSearch.java)
-  * [SearchAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/Searches/SearchAlgorithm.java)
   * [SquareRootBinarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/SquareRootBinarySearch.java)
   * [TernarySearch](https://github.com/TheAlgorithms/Java/blob/master/Searches/TernarySearch.java)
   * [UnionFind](https://github.com/TheAlgorithms/Java/blob/master/Searches/UnionFind.java)
