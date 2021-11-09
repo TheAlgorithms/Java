@@ -5,6 +5,7 @@ import static java.lang.String.format;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
+import DevUtils.Searches.SearchAlgorithm;
 
 /**
  * Binary search is one of the most popular algorithms This class represents iterative version
