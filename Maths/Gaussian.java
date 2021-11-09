@@ -3,6 +3,7 @@
  * \brief [Gaussian elimination
  * method](https://en.wikipedia.org/wiki/Gaussian_elimination)
  */
+package Maths;
 import java.util.*;
 
 /** Main function */
@@ -38,8 +39,8 @@ public class Gaussian {
         }
     }
     
-     System.out.println("Matrix using Gaussian Elimination method: ");
-     System.out.println(" ");
+    System.out.println("Matrix using Gaussian Elimination method: ");
+    System.out.println(" ");
     for (i = 0; i < mat_size; i++) {
         for (j = 0; j <= mat_size; j++) {
             x[i][j] = mat[i][j];
