@@ -65,5 +65,4 @@ public class Gaussian {
         System.out.println(" ");
     }
   }
-
 }
