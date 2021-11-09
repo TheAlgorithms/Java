@@ -1,5 +1,7 @@
 package Searches;
 
+import DevUtils.Searches.SearchAlgorithm;
+
 /*
 *  Fibonacci Search is a popular algorithm which finds the position of a target value in
 *  a sorted array
