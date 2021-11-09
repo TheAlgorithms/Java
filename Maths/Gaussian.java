@@ -10,8 +10,6 @@ import java.util.*;
 public class Gaussian {
 
   public static void main(String[] args) {
-
-
     int mat_size, i, j, step;
     Scanner sc = new Scanner(System.in);
     
