@@ -64,6 +64,6 @@ public class Gaussian {
         System.out.print("x" + i + "=" + x[i][i]);
         System.out.println(" ");
     }
+  }
 
-}
 }
