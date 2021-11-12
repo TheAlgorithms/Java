@@ -16,6 +16,12 @@ gradle-app.setting
 !gradle-wrapper.jar
 build/
 
+# maven
+*.classpath
+*.project
+*.settings
+/target/
+
 local.properties
 
 ##----------idea----------
