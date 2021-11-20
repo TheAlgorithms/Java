@@ -2,6 +2,7 @@
  * \file
  * \brief [Gaussian elimination
  * method](https://en.wikipedia.org/wiki/Gaussian_elimination)
+ * @author [Sachwin Kohli](https://github.com/Sachwin-Kohli)
  */
 package com.thealgorithms.maths;
 
