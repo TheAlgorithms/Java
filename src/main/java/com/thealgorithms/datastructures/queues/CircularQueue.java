@@ -4,41 +4,12 @@ package com.thealgorithms.datastructures.queues;
 //Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
 public class CircularQueue {
 
-    public static void main(String[] args) {
-        circularQueue cq = new circularQueue(5);
-        System.out.println(cq.isEmpty());
-        System.out.println(cq.isFull());
-        cq.enQueue(1);
-        cq.enQueue(2);
-        cq.enQueue(3);
-        cq.enQueue(4);
-        cq.enQueue(5);
-
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.isFull());
-        System.out.println(cq.isEmpty());
-        cq.enQueue(6);
-        cq.enQueue(7);
-        cq.enQueue(8);
-        System.out.println(cq.peek());
-        System.out.println(cq.peek());
-        cq.deleteQueue();
-
-    }
-}
-
-class circularQueue {
-
     int[] arr;
     int topOfQueue;
     int beginningOfQueue;
     int size;
 
-    public circularQueue(int size) {
+    public CircularQueue(int size) {
         arr = new int[size];
         topOfQueue = -1;
         beginningOfQueue = -1;
@@ -115,4 +86,30 @@ class circularQueue {
         System.out.println("The Queue is deleted!");
     }
 
+
+    public static void main(String[] args) {
+        CircularQueue cq = new CircularQueue(5);
+        System.out.println(cq.isEmpty());
+        System.out.println(cq.isFull());
+        cq.enQueue(1);
+        cq.enQueue(2);
+        cq.enQueue(3);
+        cq.enQueue(4);
+        cq.enQueue(5);
+
+        System.out.println(cq.deQueue());
+        System.out.println(cq.deQueue());
+        System.out.println(cq.deQueue());
+        System.out.println(cq.deQueue());
+        System.out.println(cq.deQueue());
+        System.out.println(cq.isFull());
+        System.out.println(cq.isEmpty());
+        cq.enQueue(6);
+        cq.enQueue(7);
+        cq.enQueue(8);
+        System.out.println(cq.peek());
+        System.out.println(cq.peek());
+        cq.deleteQueue();
+
+    }
 }
