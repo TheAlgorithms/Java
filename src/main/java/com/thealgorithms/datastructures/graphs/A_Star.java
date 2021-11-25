@@ -16,7 +16,7 @@ public class A_Star {
         public Graph(int size) {
             this.graph = new ArrayList<>();
             for (int i = 0; i < size; i++) {
-                this.graph.set(i, new ArrayList<>());
+                this.graph.add(new ArrayList<>());
             }
         }
 
