@@ -2,7 +2,7 @@ package com.thealgorithms.searches;
 
 import java.util.Scanner;
 
-class LinearSearchThread {
+public class LinearSearchThread {
     public static void main(String[] args) {
         int[] list = new int[200];
         for (int j = 0; j < list.length; j++) {
@@ -36,27 +36,26 @@ class LinearSearchThread {
 }
 
 class Searcher extends Thread {
-    private int[] f;
-    private int a, b;
-    private int x;
+    private final int[] arr;
+    private final int left, right;
+    private final int x;
     private boolean found;
 
-    Searcher(int[] f, int a, int b, int x) {
-        this.f = f;
-        this.a = a;
-        this.b = b;
+    Searcher(int[] arr, int left, int right, int x) {
+        this.arr = arr;
+        this.left = left;
+        this.right = right;
         this.x = x;
     }
 
     @Override
     public void run() {
-        int k = a;
+        int k = left;
         found = false;
-        while (k < b && !found) {
-            if (f[k] == x) {
+        while (k < right && !found) {
+            if (arr[k++] == x) {
                 found = true;
             }
-            k++;
         }
     }
 
