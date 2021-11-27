@@ -1,5 +1,8 @@
 package com.thealgorithms.maths;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Java program for printing juggler sequence 
  * Wikipedia: https://en.wikipedia.org/wiki/Juggler_sequence
