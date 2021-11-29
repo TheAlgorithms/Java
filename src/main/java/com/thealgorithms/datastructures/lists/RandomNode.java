@@ -12,7 +12,7 @@
  * Step 3 : Declare an integer type variable for size and linked list type for head
  * Step 4 : We will use two methods, one for traversing through the linked list using while loop and also increase the size by 1
  *
- * (a) Algorithms_random_node(head)
+ * (a) RandomNode(head)
  * (b) run a while loop till null;
  * (c) add the value to arraylist;
  * (d) increase the size;
@@ -28,9 +28,9 @@ package com.thealgorithms.datastructures.lists;
 
 import java.util.ArrayList;
 
-public class Algorithms_random_node {
+public class RandomNode {
 
-    ArrayList < Integer > list;
+    ArrayList <Integer> list;
     int size;
     static ListNode head;
 
@@ -43,8 +43,8 @@ public class Algorithms_random_node {
             this.val = val;
         }
     }
-    public Algorithms_random_node(ListNode head) {
-        list = new ArrayList < > ();
+    public RandomNode(ListNode head) {
+        list = new ArrayList <>();
         size = 0;
 
         ListNode temp = head;
@@ -74,10 +74,10 @@ public class Algorithms_random_node {
         head.next.next.next = new ListNode(1);
         head.next.next.next.next = new ListNode(78);
         head.next.next.next.next.next = new ListNode(63);
-        Algorithms_random_node list = new Algorithms_random_node(head);
+        RandomNode list = new RandomNode(head);
 
-        int random_num = list.getRandom();
-        System.out.println("Random Node : " + random_num);
+        int randomNum = list.getRandom();
+        System.out.println("Random Node : " + randomNum);
     }
 }
 
