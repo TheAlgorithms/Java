@@ -4,7 +4,7 @@
 
 /** PROBLEM DESCRIPTION :
  * There is a single linked list and we are supposed to find a random node in the given linked list
-  */
+ */
 
 /** ALGORITHM :
  * Step 1 : START
@@ -30,21 +30,21 @@ import java.util.ArrayList;
 
 public class Algorithms_random_node {
 
-    ArrayList<Integer> list;
+    ArrayList < Integer > list;
     int size;
     static ListNode head;
 
 
-    static class ListNode{
+    static class ListNode {
         int val;
         ListNode next;
 
-        ListNode(int val){
+        ListNode(int val) {
             this.val = val;
         }
     }
     public Algorithms_random_node(ListNode head) {
-        list = new ArrayList<>();
+        list = new ArrayList < > ();
         size = 0;
 
         ListNode temp = head;
@@ -54,13 +54,13 @@ public class Algorithms_random_node {
 
         while (temp != null) {
             list.add(temp.val);
-            temp=temp.next;
+            temp = temp.next;
             size++;
         }
     }
 
     public int getRandom() {
-        int index = (int)(Math.random()*size);
+        int index = (int)(Math.random() * size);
         return list.get(index);
     }
 
@@ -77,7 +77,7 @@ public class Algorithms_random_node {
         Algorithms_random_node list = new Algorithms_random_node(head);
 
         int random_num = list.getRandom();
-        System.out.println("Random Node : "+random_num);
+        System.out.println("Random Node : " + random_num);
     }
 }
 
