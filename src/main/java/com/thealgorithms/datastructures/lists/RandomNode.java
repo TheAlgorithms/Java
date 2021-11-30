@@ -25,7 +25,6 @@
 
 package com.thealgorithms.datastructures.lists;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -48,9 +47,8 @@ public class RandomNode {
         list = new ArrayList<>();
         ListNode temp = head;
 
-        //Now using while loop to traverse through the linked list and
-        //go on adding values and increasing the size value by 1
-
+        // Now using while loop to traverse through the linked list and
+        // go on adding values and increasing the size value by 1
         while (temp != null) {
             list.add(temp.val);
             temp = temp.next;
