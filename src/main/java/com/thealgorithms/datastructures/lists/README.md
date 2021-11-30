@@ -28,3 +28,4 @@ The `next` variable points to the next node in the data structure and value stor
 4. `CreateAndDetectLoop.java` : Create and detect a loop in a linked list.
 5. `DoublyLinkedList.java` : A modification of singly linked list which has a `prev` pointer to point to the previous node.
 6. `Merge_K_SortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
+7. `RandomNode.java` : Selects a random node from given linked list and diplays it.
