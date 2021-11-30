@@ -13,6 +13,7 @@ jobs:
       uses: creyD/prettier_action@v3.3
       with:
         prettier_options: --write **/*.java
+        prettier_plugins: prettier-plugin-java
         commit_message: 'Prettify code'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
