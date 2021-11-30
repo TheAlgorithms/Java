@@ -27,13 +27,13 @@ package com.thealgorithms.datastructures.lists;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class RandomNode {
-
-    ArrayList <Integer> list;
-    int size;
-    static ListNode head;
-
+    private List<Integer> list;
+    private int size;
+    private static Random rand = new Random();
 
     static class ListNode {
         int val;
@@ -43,10 +43,9 @@ public class RandomNode {
             this.val = val;
         }
     }
-    public RandomNode(ListNode head) {
-        list = new ArrayList <>();
-        size = 0;
 
+    public RandomNode(ListNode head) {
+        list = new ArrayList<>();
         ListNode temp = head;
 
         //Now using while loop to traverse through the linked list and
@@ -60,33 +59,35 @@ public class RandomNode {
     }
 
     public int getRandom() {
-        int index = (int)(Math.random() * size);
+        int index = rand.nextInt(size);
         return list.get(index);
     }
 
     // Driver program to test above functions
     public static void main(String[] args) {
-
-
-        head = new ListNode(15);
+        ListNode head = new ListNode(15);
         head.next = new ListNode(25);
         head.next.next = new ListNode(4);
         head.next.next.next = new ListNode(1);
         head.next.next.next.next = new ListNode(78);
         head.next.next.next.next.next = new ListNode(63);
         RandomNode list = new RandomNode(head);
-
         int randomNum = list.getRandom();
         System.out.println("Random Node : " + randomNum);
     }
 }
 
 
-/** OUTPUT :
+/**
+ * OUTPUT :
  * First output :
  * Random Node : 25
  * Second output :
  * Random Node : 78
+ * Time Complexity : O(n)
+ * Auxiliary Space Complexity : O(1)
+ * Time Complexity : O(n)
+ * Auxiliary Space Complexity : O(1)
  */
 
 /** Time Complexity : O(n)
