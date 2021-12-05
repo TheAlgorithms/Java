@@ -34,6 +34,7 @@ import java.util.Stack;
            till elements in "stack.peek() >= input[i]" or stack becomes empty.
         b) If the stack is non-empty, then the top element is our previous element. Else the previous element does not exist. 
         c) push input[i] in stack.
+    3) If elements are left then their answer is -1
  */
 
 public class NextSmallerElement {
