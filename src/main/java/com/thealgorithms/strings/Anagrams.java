@@ -16,10 +16,10 @@ public class Anagrams
         String second = "lead";
         // All the below methods takes input but doesn't return any output to the main method.
         Anagrams nm=new Anagrams();
-        nm.approach2(first, second);  /* To activate methods for different approaches*/
-        nm.approach1(first, second);  /* To activate methods for different approaches*/
-        nm.approach3(first, second);  /* To activate methods for different approaches*/
-        nm.approach4(first, second);  /* To activate methods for different approaches*/
+        System.out.println(nm.approach2(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach1(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach3(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach4(first, second));  /* To activate methods for different approaches*/
 
         /**
          * OUTPUT :
@@ -37,11 +37,11 @@ public class Anagrams
          */
     }
 
-    void approach1(String s, String t) 
+    boolean approach1(String s, String t) 
     {
         if (s.length() != t.length())
         {
-            System.out.println(false);
+            return false;
         }
         else 
         {
@@ -51,19 +51,19 @@ public class Anagrams
             Arrays.sort(d);    /* In this approach the strings are stored in the character arrays and both the arrays are sorted. After that both the arrays are compared for checking anangram */
             if (Arrays.equals(c, d)) 
             {
-                System.out.println("Anagram");
+                return true;
             } else 
             {
-                System.out.println("Not Anagram");
+                return false;
             }
         }
     }
 
-    void approach2(String a, String b)
+    boolean approach2(String a, String b)
     {
         if(a.length()!=b.length())
         {
-            System.out.println("Not Anagram");
+            return false;
         }
         else
         {
@@ -73,7 +73,7 @@ public class Anagrams
             {
                 m[c-'a']++;
             }
-            // In this approach the frequency of both the strings are stored and after that the frequencies are iterated from 0 to 26(from 'a' to 'z' ). If the frequencies match then anagram message is displayed
+            // In this approach the frequency of both the strings are stored and after that the frequencies are iterated from 0 to 26(from 'a' to 'z' ). If the frequencies match then anagram message is displayed in the form of boolean format
             // Running time and space complexity of this algo is less as compared to others
             for(char c:b.toCharArray())
             {
@@ -83,18 +83,18 @@ public class Anagrams
             {
                 if(m[i]!=n[i])
                 {
-                    System.out.println("Not Anagram");
+                    return false;
                 }
             }
-            System.out.println("Anagram");
+            return true;
         }
     }
 
-    void approach3(String s, String t)
+    boolean approach3(String s, String t)
     {
         if(s.length()!=t.length())
         {
-            System.out.println("Not Anagram");
+            return false;
         }
         // this is similar to approach number 2 but here the string is not converted to character array
         else
@@ -110,19 +110,19 @@ public class Anagrams
             for(int i=0;i<26;i++)
             {
                 if(a[i]!=b[i])
-                    System.out.println("Not Anagram");
+                    return false;
             }
-            System.out.println("Anagram");
+            return true;
         }
     }
 
-    void approach4(String s, String t)
+    boolean approach4(String s, String t)
     {
         if(s.length()!=t.length())
         {
-             System.out.println("Not Anagram");
+             return false;
         }
-        // This approach is done using hashmap where frequencies are stored and checked iteratively and if all the frequencies of first string match with the second string then anagram message is displayed
+        // This approach is done using hashmap where frequencies are stored and checked iteratively and if all the frequencies of first string match with the second string then anagram message is displayed in boolean format
         else
         {
             HashMap<Character,Integer> nm=new HashMap<>(); 
@@ -141,10 +141,10 @@ public class Anagrams
             {
                 if(!nm.get(c).equals(kk.get(c)))
                 {
-                    System.out.println("Not Anagram");
+                    return false;
                 }
             } 
-            System.out.println("Anagram");
+            return true;
         }
     }
 }
