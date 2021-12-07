@@ -9,5 +9,6 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 17
+          distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
