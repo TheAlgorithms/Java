@@ -61,5 +61,7 @@ public class ArrayLeftRotation {
 
 		System.out.println("Result of left rotation by " + n + ": ");
 		printIntegerArray(rotateLeft(arr, n));
+		
+		scanner.close();
 	}
 }
