@@ -50,7 +50,7 @@ public class ArrayLeftRotation {
 
 		System.out.println("Enter the integer values for the array, " + "use spaces to separate values entered: ");
 		for (int i = 0; i < size; i++) {
-			arr[i] = Integer.parseInt(scanner.next());
+			arr[i] = scanner.nextInt();
 		}
 
 		System.out.println("Enter how many steps you want to rotate: ");
