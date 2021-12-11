@@ -39,7 +39,7 @@ public class PascalTriangle {
         printPascal(n);
     }
 
-    public static void printPascal(int n)
+    public static int[][] pascal(int n)
     {
         /**
          * @param arr  An auxiliary array to store generated pascal triangle values
@@ -65,9 +65,9 @@ public class PascalTriangle {
                     // The rest elements are sum of values just above and left of above
                 else
                     arr[line][i] = arr[line-1][i-1] + arr[line-1][i];
-                System.out.print(arr[line][i]+" ");
             }
-            System.out.println();
         }
+        
+        return arr;
     }
 }
