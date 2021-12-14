@@ -19,7 +19,7 @@ public class String_Compare {
         nm.add("Siddhi");
         nm.add("Urus");
         nm.add("Mony");
-        String_Compare3 kk=new String_Compare3();
+        String_Compare kk=new String_Compare();
         nm=kk.task(nm);
         System.out.println(nm);
         // task method is executed and the returned result is stored in the list and after that the list is displayed
