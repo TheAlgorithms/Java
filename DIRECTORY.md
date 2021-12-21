@@ -407,6 +407,7 @@
           * maths
             * [KaprekarNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaprekarNumbersTest.java)
             * [PascalTriangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PascalTriangleTest.java)
+            * [PronicNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PronicNumberTest.java)
           * others
             * [ArrayLeftRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayLeftRotationTest.java)
           * searches
