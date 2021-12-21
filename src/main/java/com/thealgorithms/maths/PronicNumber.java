@@ -35,13 +35,4 @@ public class PronicNumber {
 		//return false if product of i and (i+1) for all values from 0 to input_number is not equals input_number
 		return false;
 	}
-	
-	//Driver code
-	public static void main(String[] args) {
-		
-		System.out.println(isPronic(30));
-		
-		//Ouput: true
-	}
-	
 }
