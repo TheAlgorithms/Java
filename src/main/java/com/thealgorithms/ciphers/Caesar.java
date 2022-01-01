@@ -105,6 +105,7 @@ public class Caesar {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        int shift;
         System.out.println("Please enter the message (Latin Alphabet)");
         String message = input.nextLine();
         System.out.println(message);
@@ -114,14 +115,14 @@ public class Caesar {
             case 'E':
             case 'e':
                 System.out.println("Please enter the shift number");
-                int shift = input.nextInt() % 26;
+                shift = input.nextInt() % 26;
                 System.out.println(
                         "ENCODED MESSAGE IS \n" + encode(message, shift)); // send our function to handle
                 break;
             case 'D':
             case 'd':
                 System.out.println("Please enter the shift number");
-                int shift = input.nextInt() % 26;
+                shift = input.nextInt() % 26;
                 System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
                 break;
             case 'B':
