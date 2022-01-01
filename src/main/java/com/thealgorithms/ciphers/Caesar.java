@@ -91,28 +91,49 @@ public class Caesar {
     private static boolean IsSmallLatinLetter(char c) {
         return c >= 'a' && c <= 'z';
     }
+    /**
+     *  @return string array which contains all the possible decoded combination.
+     */
+    public static String[] bruteforce(String encryptedMessage) {
+        String[] listOfAllTheAnswers = new String[27];
+        for (int i=0; i<=26; i++) {
+            listOfAllTheAnswers[i] = decode(encryptedMessage, i);
+        }
+
+        return listOfAllTheAnswers;
+    }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the message (Latin Alphabet)");
         String message = input.nextLine();
         System.out.println(message);
-        System.out.println("Please enter the shift number");
-        int shift = input.nextInt() % 26;
-        System.out.println("(E)ncode or (D)ecode ?");
+        System.out.println("(E)ncode or (D)ecode or (B)ruteforce?");
         char choice = input.next().charAt(0);
         switch (choice) {
             case 'E':
             case 'e':
+                System.out.println("Please enter the shift number");
+                int shift = input.nextInt() % 26;
                 System.out.println(
                         "ENCODED MESSAGE IS \n" + encode(message, shift)); // send our function to handle
                 break;
             case 'D':
             case 'd':
+                System.out.println("Please enter the shift number");
+                int shift = input.nextInt() % 26;
                 System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
+                break;
+            case 'B':
+            case 'b':
+                String[] listOfAllTheAnswers = bruteforce(message);
+                for (int i =0; i<=26; i++) {
+                    System.out.println("FOR SHIFT " + String.valueOf(i) + " decoded message is " + listOfAllTheAnswers[i]);
+                }
             default:
                 System.out.println("default case");
         }
+        
         input.close();
     }
 }
