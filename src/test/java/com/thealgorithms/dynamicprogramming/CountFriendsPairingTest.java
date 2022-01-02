@@ -1,8 +1,3 @@
-package com.thealgorithms.others;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CountFriendsPairingTest { 
 CountFriendsPairings obj=new CountFriendsPairings(); 
