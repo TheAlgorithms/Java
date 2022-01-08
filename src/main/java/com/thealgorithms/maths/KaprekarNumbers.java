@@ -1,4 +1,5 @@
 package com.thealgorithms.maths;
+import java.math.BigInteger;
 import java.util.*;
 
 public class KaprekarNumbers {
@@ -21,19 +22,31 @@ public class KaprekarNumbers {
 	}
 
 	// Checks whether a given number is Kaprekar Number or not
-	public static boolean isKaprekarNumber(long number) {
-		long numberSquared = number * number;
-		if(Long.toString(number).length() == Long.toString(numberSquared).length()){
-			return (number == numberSquared);
+	public static boolean isKaprekarNumber(long num) {
+		String number = Long.toString(num);
+		BigInteger originalNumber = new BigInteger(number);
+		BigInteger numberSquared = originalNumber.multiply(originalNumber);
+		if(number.length() == numberSquared.toString().length()){
+			return number.equals(numberSquared.toString());
 		}
 		else{
-			long leftDigits1 = 0, leftDigits2;
-			if(Long.toString(numberSquared).contains("0")){
-				leftDigits1 = Long.parseLong(Long.toString(numberSquared).substring(0, Long.toString(numberSquared).indexOf("0")));
+			BigInteger leftDigits1 = new BigInteger("0");
+			BigInteger leftDigits2;
+			if(numberSquared.toString().contains("0")){
+				leftDigits1 = new BigInteger(
+						numberSquared.toString().
+								substring(0, numberSquared.toString().indexOf("0")
+								)
+				);
 			}
-			leftDigits2 = Long.parseLong(Long.toString(numberSquared).substring(0, (Long.toString(numberSquared).length() - Long.toString(number).length())));
-			long rightDigits = Long.parseLong(Long.toString(numberSquared).substring(Long.toString(numberSquared).length() - Long.toString(number).length()));
-			return (number == (leftDigits1 + rightDigits)) || (number == (leftDigits2 + rightDigits));
+			leftDigits2 = new BigInteger(
+					numberSquared.toString()
+							.substring(0, (numberSquared.toString().length() - number.length()))
+			);
+			BigInteger rightDigits = new BigInteger(numberSquared.toString().substring(numberSquared.toString().length() - number.length()));
+			String x = leftDigits1.add(rightDigits).toString();
+			String y = leftDigits2.add(rightDigits).toString();
+			return (number.equals(x)) || (number.equals(y));
 		}		
 	}
 
