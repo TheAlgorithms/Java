@@ -133,6 +133,7 @@
               * [PrintTopViewofTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/PrintTopViewofTree.java)
               * [RedBlackBST](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/RedBlackBST.java)
               * [SegmentTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/SegmentTree.java)
+              * [TreeRandomNode](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/TreeRandomNode.java)
               * [TreeTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/TreeTraversal.java)
               * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/TrieImp.java)
               * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/ValidBSTOrNot.java)
