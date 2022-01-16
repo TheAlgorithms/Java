@@ -7,7 +7,7 @@ import static com.thealgorithms.sorts.SortUtils.*;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  * @see SortAlgorithm
  */
-class BubbleSort implements SortAlgorithm {
+public class BubbleSort implements SortAlgorithm {
 
     /**
      * Implements generic bubble sort algorithm.

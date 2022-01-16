@@ -97,9 +97,9 @@ public class Luhn {
     /**
      * Object representation of credit card.
      */
-    private record CreditCard(int[] digits) {
+    //private record CreditCard(int[] digits) {
 
-        private static final int DIGITS_COUNT = 16;
+        //private static final int DIGITS_COUNT = 16;
 
         /**
          * @param cardNumber string representation of credit card number - 16
@@ -108,54 +108,54 @@ public class Luhn {
          * @throws IllegalArgumentException if input string is not 16 digits or
          * if Luhn check was failed
          */
-        public static CreditCard fromString(String cardNumber) {
-            Objects.requireNonNull(cardNumber);
-            String trimmedCardNumber = cardNumber.replaceAll(" ", "");
-            if (trimmedCardNumber.length() != DIGITS_COUNT || !trimmedCardNumber.matches("\\d+")) {
-                throw new IllegalArgumentException("{" + cardNumber + "} - is not a card number");
-            }
-
-            int[] cardNumbers = toIntArray(trimmedCardNumber);
-            boolean isValid = luhnCheck(cardNumbers);
-            if (!isValid) {
-                throw new IllegalArgumentException("Credit card number {" + cardNumber + "} - have a typo");
-            }
-
-            return new CreditCard(cardNumbers);
-        }
+//        public static CreditCard fromString(String cardNumber) {
+//            Objects.requireNonNull(cardNumber);
+//            String trimmedCardNumber = cardNumber.replaceAll(" ", "");
+//            if (trimmedCardNumber.length() != DIGITS_COUNT || !trimmedCardNumber.matches("\\d+")) {
+//                throw new IllegalArgumentException("{" + cardNumber + "} - is not a card number");
+//            }
+//
+//            int[] cardNumbers = toIntArray(trimmedCardNumber);
+//            boolean isValid = luhnCheck(cardNumbers);
+//            if (!isValid) {
+//                throw new IllegalArgumentException("Credit card number {" + cardNumber + "} - have a typo");
+//            }
+//
+//            return new CreditCard(cardNumbers);
+//        }
 
         /**
          * @return string representation separated by space every 4 digits.
          * Example: "5265 9251 6151 1412"
          */
-        public String number() {
-            StringBuilder result = new StringBuilder();
-            for (int i = 0; i < DIGITS_COUNT; i++) {
-                if (i % 4 == 0 && i != 0) {
-                    result.append(" ");
-                }
-                result.append(digits[i]);
-            }
-            return result.toString();
-        }
+//        public String number() {
+//            StringBuilder result = new StringBuilder();
+//            for (int i = 0; i < DIGITS_COUNT; i++) {
+//                if (i % 4 == 0 && i != 0) {
+//                    result.append(" ");
+//                }
+//                result.append(digits[i]);
+//            }
+//            return result.toString();
+//        }
 
-        @Override
-        public String toString() {
-            return String.format("%s {%s}", CreditCard.class.getSimpleName(), number());
-        }
+//        @Override
+//        public String toString() {
+//            return String.format("%s {%s}", CreditCard.class.getSimpleName(), number());
+//        }
 
-        private static int[] toIntArray(String string) {
-            return string.chars()
-                    .map(i -> Character.digit(i, 10))
-                    .toArray();
-        }
-    }
+//        private static int[] toIntArray(String string) {
+//            return string.chars()
+//                    .map(i -> Character.digit(i, 10))
+//                    .toArray();
+//        }
+//    }
 
     private static void businessExample(String cardNumber) {
         try {
             System.out.println("Trying to create CreditCard object from valid card number: " + cardNumber);
-            CreditCard creditCard = CreditCard.fromString(cardNumber);
-            System.out.println("And business object is successfully created: " + creditCard + "\n");
+            //CreditCard creditCard = CreditCard.fromString(cardNumber);
+            //System.out.println("And business object is successfully created: " + creditCard + "\n");
         } catch (IllegalArgumentException e) {
             System.out.println("And fail with exception message: " + e.getMessage() + "\n");
         }

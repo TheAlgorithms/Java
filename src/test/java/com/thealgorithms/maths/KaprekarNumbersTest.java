@@ -1,8 +1,10 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 public class KaprekarNumbersTest {
 

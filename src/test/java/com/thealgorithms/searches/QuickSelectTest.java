@@ -1,11 +1,9 @@
 package com.thealgorithms.searches;
 
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class QuickSelectTest {
     @Test
@@ -121,7 +119,7 @@ class QuickSelectTest {
         int actual = QuickSelect.select(elements, medianIndex);
 
         List<Integer> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(medianIndex), actual);
+        assertSame(elementsSorted.get(medianIndex), actual);
     }
 
     @Test
@@ -130,7 +128,7 @@ class QuickSelectTest {
         int actual = QuickSelect.select(elements, 2);
 
         List<Integer> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(2), actual);
+        assertSame(elementsSorted.get(2), actual);
     }
 
     @Test
@@ -140,7 +138,7 @@ class QuickSelectTest {
         int actual = QuickSelect.select(elements, percentile30th);
 
         List<Integer> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(percentile30th), actual);
+        assertSame(elementsSorted.get(percentile30th), actual);
     }
 
     @Test
@@ -149,7 +147,7 @@ class QuickSelectTest {
         int actual = QuickSelect.select(elements, 6);
 
         List<Integer> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(6), actual);
+        assertSame(elementsSorted.get(6), actual);
     }
 
     @Test
@@ -159,7 +157,7 @@ class QuickSelectTest {
         int actual = QuickSelect.select(elements, percentile70th);
 
         List<Integer> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(percentile70th), actual);
+        assertSame(elementsSorted.get(percentile70th), actual);
     }
 
     @Test
@@ -175,7 +173,7 @@ class QuickSelectTest {
         char actual = QuickSelect.select(elements, NUM_RND_ELEMENTS / 30);
 
         List<Character> elementsSorted = getSortedCopyOfList(elements);
-        assertEquals(elementsSorted.get(NUM_RND_ELEMENTS / 30), actual);
+        assertSame(elementsSorted.get(NUM_RND_ELEMENTS / 30), actual);
     }
 
     @Test

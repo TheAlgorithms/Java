@@ -6,26 +6,26 @@ public final class LinearDiophantineEquationsSolver {
 
     public static void main(String[] args) {
         // 3x + 4y = 7
-        final var toSolve = new Equation(3, 4, 7);
-        System.out.println(findAnySolution(toSolve));
+        //final var toSolve = new Equation(3, 4, 7);
+        //System.out.println(findAnySolution(toSolve));
     }
 
-    public static Solution findAnySolution(final Equation equation) {
-        if (equation.a() == 0 && equation.b() == 0 && equation.c() == 0) {
-            return Solution.INFINITE_SOLUTIONS;
-        }
-        final var stub = new GcdSolutionWrapper(0, new Solution(0, 0));
-        final var gcdSolution = gcd(equation.a(), equation.b(), stub);
-        if (equation.c() % gcdSolution.getGcd() != 0) {
-            return Solution.NO_SOLUTION;
-        }
-        final var toReturn = new Solution(0, 0);
-        var xToSet = stub.getSolution().getX() * (equation.c() / stub.getGcd());
-        var yToSet = stub.getSolution().getY() * (equation.c() / stub.getGcd());
-        toReturn.setX(xToSet);
-        toReturn.setY(yToSet);
-        return toReturn;
-    }
+//    public static Solution findAnySolution(final Equation equation) {
+//        if (equation.a() == 0 && equation.b() == 0 && equation.c() == 0) {
+//            return Solution.INFINITE_SOLUTIONS;
+//        }
+//        final var stub = new GcdSolutionWrapper(0, new Solution(0, 0));
+//        final var gcdSolution = gcd(equation.a(), equation.b(), stub);
+//        if (equation.c() % gcdSolution.getGcd() != 0) {
+//            return Solution.NO_SOLUTION;
+//        }
+//        final var toReturn = new Solution(0, 0);
+//        var xToSet = stub.getSolution().getX() * (equation.c() / stub.getGcd());
+//        var yToSet = stub.getSolution().getY() * (equation.c() / stub.getGcd());
+//        toReturn.setX(xToSet);
+//        toReturn.setY(yToSet);
+//        return toReturn;
+//    }
 
     private static GcdSolutionWrapper gcd(final int a, final int b, final GcdSolutionWrapper previous) {
         if (b == 0) {
@@ -95,9 +95,9 @@ public final class LinearDiophantineEquationsSolver {
 
     }
 
-    public record Equation(int a, int b, int c) {
-
-    }
+//    public record Equation(int a, int b, int c) {
+//
+//    }
 
     public static final class GcdSolutionWrapper {
 
