@@ -23,6 +23,12 @@ public class Volume {
 
         /* test cone */
         assert Double.compare(volumeCone(5, 7), 916.297857297023) == 0;
+        
+        /*test prism*/
+        assert Double.compare(volumePrism(10, 2), 20.0) == 0;
+        
+        /*test pyramid*/
+        assert Double.compare(volumePyramid(10, 3), 10.0) == 0;
 
     }
 
@@ -88,5 +94,27 @@ public class Volume {
      */
     private static double volumeCone(double radius, double height) {
         return Math.PI * radius * radius * height / 3;
+    }
+    
+    /**
+     * Calculate the volume of a prism.
+     *
+     * @param area of the base.
+     * @param height of prism.
+     * @return volume of given prism.
+     */
+    private static double volumePrism(double basearea, double height) {
+        return basearea * height;
+    }
+    
+    /**
+     * Calculate the volume of a pyramid.
+     *
+     * @param area of the base.
+     * @param height of pyramid.
+     * @return volume of given pyramid.
+     */
+    private static double volumePyramid(double basearea, double height) {
+        return basearea * height / 3;
     }
 }
