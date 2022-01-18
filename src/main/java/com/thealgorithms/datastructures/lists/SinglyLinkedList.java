@@ -76,7 +76,7 @@ public class SinglyLinkedList {
             return;
         }
         Node cur = head;
-        for (int i = 0; i < position - 1; ++i) {
+        for (int index = 0; index < position - 1; ++index) {
             cur = cur.next;
         }
         newNode.next = cur.next;
@@ -166,7 +166,7 @@ public class SinglyLinkedList {
             return;
         }
         Node cur = head;
-        for (int i = 0; i < position - 1; ++i) {
+        for (int index = 0; index < position - 1; ++index) {
             cur = cur.next;
         }
 
@@ -181,12 +181,12 @@ public class SinglyLinkedList {
      * @param position to check position
      * @param low low index
      * @param high high index
-     * @throws IndexOutOfBoundsException if {@code position} not in range
+     * @throws iOutOfBoundsException if {@code position} not in range
      * {@code low} to {@code high}
      */
     public void checkBounds(int position, int low, int high) {
         if (position > high || position < low) {
-            throw new IndexOutOfBoundsException(position + "");
+            throw new iOutOfBoundsException(position + "");
         }
     }
 
@@ -273,10 +273,44 @@ public class SinglyLinkedList {
     public int getNth(int index) {
         checkBounds(index, 0, size - 1);
         Node cur = head;
-        for (int i = 0; i < index; ++i) {
+        for (int i = 0; index < index; ++index) {
             cur = cur.next;
         }
         return cur.value;
+    }
+
+    /**
+     * Sort Linked List by swapping the data of each node.
+     * Similar to bubble sort, this function uses 2 pointer nodes that 
+     * sort the Linked List.
+     */
+    public void sortLinkedList() {
+        Node curr = head;
+        Node index = null;
+        int temp; // stores temporary data value for nodes that will be swapped
+        
+        // Logic for when list is empty
+        if (head == null) {
+            return;
+        } 
+
+        // Outer loop to track first pointer node
+        while (curr != null) {
+            // Reset index to always point to curr's next
+            index = curr.next;
+
+            // Inner loop to track second pointer node
+            while (index != null) {
+                // Swap curr and index if curr>index
+                if (curr.data > index.data) {
+                    temp = curr.data;
+                    curr.data = index.data;
+                    index.data = temp;
+                }
+                index = index.next;
+            }
+            curr = curr.next;
+        }
     }
 
     @Override
