@@ -76,7 +76,7 @@ public class SinglyLinkedList {
             return;
         }
         Node cur = head;
-        for (int index = 0; index < position - 1; ++index) {
+        for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
         }
         newNode.next = cur.next;
@@ -166,7 +166,7 @@ public class SinglyLinkedList {
             return;
         }
         Node cur = head;
-        for (int index = 0; index < position - 1; ++index) {
+        for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
         }
 
@@ -181,12 +181,12 @@ public class SinglyLinkedList {
      * @param position to check position
      * @param low low index
      * @param high high index
-     * @throws iOutOfBoundsException if {@code position} not in range
+     * @throws IndexOutOfBoundsException if {@code position} not in range
      * {@code low} to {@code high}
      */
     public void checkBounds(int position, int low, int high) {
         if (position > high || position < low) {
-            throw new iOutOfBoundsException(position + "");
+            throw new IndexOutOfBoundsException(position + "");
         }
     }
 
@@ -273,7 +273,7 @@ public class SinglyLinkedList {
     public int getNth(int index) {
         checkBounds(index, 0, size - 1);
         Node cur = head;
-        for (int i = 0; index < index; ++index) {
+        for (int i = 0; i < index; ++i) {
             cur = cur.next;
         }
         return cur.value;
