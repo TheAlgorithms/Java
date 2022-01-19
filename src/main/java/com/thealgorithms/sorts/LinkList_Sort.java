@@ -5,15 +5,17 @@
 /** Program description - To sort the LinkList as per sorting technique */
 
 package com.thealgorithms.sorts;
-
+import java.util.*;
 public class LinkList_Sort {
-    public static void main(String args[]) {
-        int a[] = { 89, 56, 98, 123, 26, 75, 12, 40, 39, 68, 91 };
-        // Array is taken as input
-        int b[] = { 12, 26, 39, 40, 56, 68, 75, 89, 91, 98, 123 };
-        // Excepted Array
-        int ch = 1;
-        // Choice is choosed as 1 (So the linked list will be sorted by Merge sort technique)
+    public static boolean isSorted(int p[] , int option) {
+        try (Scanner sc = new Scanner(System.in)) {
+        }
+        int a[] = p;
+        // Array is taken as input from test class
+        int b[] = p;
+        // array similar to a
+        int ch = option;
+        // Choice is choosed as any number from 1 to 3 (So the linked list will be sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
         switch (ch) {
             case 1:
                 Task nm = new Task();
@@ -35,11 +37,18 @@ public class LinkList_Sort {
                     a[i++]=ptr.val;
                     // storing the sorted values in the array
                 }
+                Arrays.sort(b);
+                // array b is sorted and it will return true when checked with sorted list
                 LinkList_Sort uu=new LinkList_Sort();
-                System.out.println(uu.compare(a,b));
+                if(uu.compare(a,b))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 // The given array and the expected array is checked if both are same then true is displayed else false is displayed
-                break;
-
             case 2:
                 Node start1 = null, prev1 = null, fresh1, ptr1;
                 for (int i1 = 0; i1 < a.length; i1++) {
@@ -61,10 +70,16 @@ public class LinkList_Sort {
                     // storing the sorted values in the array
                 }
                 LinkList_Sort uu1=new LinkList_Sort();
-                System.out.println(uu1.compare(a,b));
+                // array b is not sorted and it will return false when checked with sorted list
+                if(uu1.compare(a,b))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 // The given array and the expected array is checked if both are same then true is displayed else false is displayed
-                break;
-
             case 3:
                 Task2 mm = new Task2();
                 Node start2 = null, prev2 = null, fresh2, ptr2;
@@ -85,16 +100,24 @@ public class LinkList_Sort {
                     a[i3++]=ptr2.val;
                     // storing the sorted values in the array
                 }
+                Arrays.sort(b);
+                // array b is sorted and it will return true when checked with sorted list
                 LinkList_Sort uu2=new LinkList_Sort();
-                System.out.println(uu2.compare(a,b));
+                if(uu2.compare(a,b))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
                 // The given array and the expected array is checked if both are same then true is displayed else false is displayed
-                break;
-
             default:
                 // default is used incase user puts a unauthorized value
                 System.out.println("Wrong choice");
         }
         // Switch case is used to call the classes as per the user requirement
+        return false;
     }
     boolean compare(int a[] , int b[])
     {
@@ -192,7 +215,6 @@ class Task {
     }
     // The method task and task1 is used to sort the linklist using merge sort
 }
-
 class Task1 {
     public Node sort_by_insertionsort(Node head) {
         if (head == null || head.next == null)
