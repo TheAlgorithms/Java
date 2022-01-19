@@ -302,10 +302,10 @@ public class SinglyLinkedList {
             // Inner loop to track second pointer node
             while (index != null) {
                 // Swap curr and index if curr>index
-                if (curr.data > index.data) {
-                    temp = curr.data;
-                    curr.data = index.data;
-                    index.data = temp;
+                if (curr.value > index.value) {
+                    temp = curr.value;
+                    curr.value = index.value;
+                    index.value = temp;
                 }
                 index = index.next;
             }
