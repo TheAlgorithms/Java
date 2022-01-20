@@ -1,8 +1,6 @@
-package sudoku;
-
 import java.util.*;
 
-public class Main {
+public class sudoku {
 
     static final Scanner s = new Scanner(System.in);
 
