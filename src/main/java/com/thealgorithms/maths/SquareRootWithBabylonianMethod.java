@@ -22,11 +22,4 @@ public class SquareRootWithBabylonianMethod {
         return a;
     }
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Input an integer: ");
-        int num = scan.nextInt();
-        scan.close();
-        System.out.println("Square root of a number using Babylonian method: "+square_Root(num));
-    }
 }
