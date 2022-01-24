@@ -22,6 +22,8 @@ public class RunTest {
 		System.out.println("Passed: " + (runCount - failCount) + "/" + runCount);
 		System.out.println("Result JUnitTestSort: " + r.wasSuccessful() + ", run times: " + r.getRunTime() + "(ms)");
 		System.out.println("");
+		
+		
 		System.out.println("###### TEST MathFloor ######");
 		Result r2 = JUnitCore.runClasses(JUnitTestFloor.class);
 		int runCount2 = r2.getRunCount();

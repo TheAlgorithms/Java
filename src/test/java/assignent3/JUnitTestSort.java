@@ -7,7 +7,7 @@ import static org.junit.Assert.assertArrayEquals;
 public class JUnitTestSort {
 
 	@Test
-	public void case1() { // Test if input array is null
+	public void bubbleSort_whenCall_return_null() { // Test if input array is null
 		Integer[] inputArrs = null;
 		Integer[] espectArrs = {};
 		BubbleSort bubbleSort = new BubbleSort();
