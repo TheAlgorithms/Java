@@ -17,11 +17,21 @@
     4. When these three steps are done we continue to maintain the max value.
 
  */
+import java.util.Scanner;
+
 public class MaximumSubarray{
 
     public static void main(String[] args) {
+        int x;
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Number of elements in the array: ");
+        x=scnr.nextInt();
 
-        int[] arr = {30, -40, 20, 40};
+        int[] arr = new int[x];
+
+        for(int i=0; i<x; i++) {
+            arr[x] = scnr.nextInt();
+        }
 
         int sum = findMaxSum(arr);
         System.out.println("The maximum sum in the sub array is : " + sum);
