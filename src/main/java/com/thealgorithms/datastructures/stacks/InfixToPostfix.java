@@ -1,6 +1,6 @@
 package com.thealgorithms.datastructures.stacks;
 
-import java.util.Stack;
+import java.util.*;
 
 public class InfixToPostfix {
 
@@ -39,7 +39,7 @@ public class InfixToPostfix {
         return output.toString();
     }
 
-    private static int precedence(char operator) {
+    private int precedence(char operator) {
         switch (operator) {
             case '+':
             case '-':
