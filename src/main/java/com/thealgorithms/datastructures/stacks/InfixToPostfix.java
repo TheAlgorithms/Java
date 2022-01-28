@@ -11,7 +11,7 @@ public class InfixToPostfix {
     }
 
     public static String infix2PostFix(String infixExpression) throws Exception {
-        if (!BalancedBrackets.isBalanced(infixExpression)) {
+        if (BalancedBrackets.isBalanced(infixExpression)) {
             throw new Exception("invalid expression");
         }
         StringBuilder output = new StringBuilder();
