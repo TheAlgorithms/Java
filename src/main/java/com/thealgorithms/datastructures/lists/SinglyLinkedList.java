@@ -55,6 +55,39 @@ public class SinglyLinkedList {
     }
 
     /**
+     * Sort the list in ascending order using bubble sort
+     */
+
+    public void sortAsc(){
+        Node curr = head, next = null;
+
+        if(head = null){
+            /* the list is empty */
+            return;
+        }else{
+            while (current != null) {
+                /* Node next will point to node next to
+                 current */
+                next = current.next;
+ 
+                while (index != null) {
+                    // If current node's data is greater
+                    // than next's node data, swap the data
+                    // between them
+                    if (current.data > next.data) {
+                        int temp = current.data;
+                        current.data = next.data;
+                        next.data = temp;
+                    }
+ 
+                    next = next.next;
+                }
+                current = current.next;
+            }
+        }
+    }
+
+    /**
      * Inserts a new node at a specified position of the list
      *
      * @param data data to be stored in a new node
