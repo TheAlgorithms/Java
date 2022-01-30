@@ -191,7 +191,7 @@ public class PlayfairCipher {
     {
         //message to be encoded should only contain letters, NO PUNCTUATION.
         //spaces are okay, but they will be removed by the encoding anyway.
-        String text = "deez nuts lol get dunkd on";
+        String text = "Test message";
         System.out.println("Message: " + text);
         String ciphertext = encode(text);
         System.out.println("Encoded message: " + ciphertext);
