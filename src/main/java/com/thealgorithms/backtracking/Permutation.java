@@ -1,5 +1,6 @@
 package com.thealgorithms.backtracking;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,20 +49,5 @@ public class Permutation {
         T temp = arr[a];
         arr[a] = arr[b];
         arr[b] = temp;
-    }
-    /**
-     * Simply test
-     */
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[] {1, 2, 3 ,4};
-        List<Integer []> list1 = Permutation.permutation(arr);
-        for (Integer[] ar : list1) {
-            System.out.print("[");
-            for (int i : ar) {
-                System.out.print(i);
-                if (i != ar[ar.length - 1]) System.out.print(" ");
-            }
-            System.out.print("] ");
-        }
     }
 }

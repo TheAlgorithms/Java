@@ -49,22 +49,4 @@ public class Combination {
             currSet.remove(arr[i]);
         }
     }
-    /**
-     * Simply test
-     */
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[]{6,15,7,12,8,1,2,4};
-        for (int n = 1; n <= arr.length; n++) {
-            List<TreeSet<Integer>> result  = Combination.combination(arr, n);
-            System.out.println("n = " + n + " size: " + result.size());
-            for (TreeSet<Integer> set : result) {
-                System.out.print("(");
-                for (int i : set) {
-                    System.out.print(i + " ");
-                }
-                System.out.println(")");
-            }
-
-        }
-    }
 }
