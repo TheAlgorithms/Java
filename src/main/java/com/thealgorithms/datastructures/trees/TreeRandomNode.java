@@ -1,22 +1,4 @@
-/* Author : Suraj Kumar
-  Github : https://github.com/skmodi649
- */
-
-/* PROBLEM DESCRIPTION :
-  There is a Binary Search Tree given, and we are supposed to find a random node in the given binary tree.
- */
-
-/* ALGORITHM :
-  Step 1: START
-  Step 2: First create a binary tree using the steps mentioned in the first approach
-  Step 3: Now use a method inOrder() that takes a node as input parameter to traverse through the
-          binary tree in inorder fashion as also store the values in a ArrayList simultaneously.
-  Step 4: Now define a method getrandom() that takes a node as input parameter, in this first call
-          the inOrder() method to store the values in the arraylist, then find the size of the binary tree and now just generate a random number between 0 to n-1.
-  Step 5: After generating the number display the value of the ArrayList at the generated index
-  Step 6: STOP
- */
-
+package com.thealgorithms.datastructures.trees;
 
 import java.util.ArrayList;
 

@@ -7,11 +7,12 @@ class Main {
 
     public static void main(String[] args) {
         NRKTree root = BuildTree();
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter first number: ");
-        int inputX0 = sc.nextInt();
-        int toPrint = nearestRightKey(root, inputX0);
-        System.out.println("Key: " + toPrint);
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter first number: ");
+            int inputX0 = sc.nextInt();
+            int toPrint = nearestRightKey(root, inputX0);
+            System.out.println("Key: " + toPrint);
+        }
     }
 
     public static NRKTree BuildTree() {

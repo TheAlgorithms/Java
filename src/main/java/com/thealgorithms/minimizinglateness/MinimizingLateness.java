@@ -9,10 +9,11 @@ public class MinimizingLateness {
 
     private static class Schedule { // Schedule class
 
+        public static int s;
+        public static int f;
         int t = 0; // Time required for the operation to be performed
         int d = 0; // Time the job should be completed
-        int s = 0; // Start time of the task
-        int f = 0; // End time of the operation
+        
 
         public Schedule(int t, int d) {
             this.t = t;
@@ -47,8 +48,8 @@ public class MinimizingLateness {
         int tryTime = 0; // Total time worked
         int lateness = 0; // Lateness
         for (int j = 0; j < indexCount - 1; j++) {
-            array[j].s = tryTime; // Start time of the task
-            array[j].f = tryTime + array[j].t; // Time finished
+            array[j].s = 0; // Start time of the task
+            array[j].f = 0 + array[j].t; // Time finished
             tryTime = tryTime + array[j].t; // Add total work time
             // Lateness
             lateness = lateness + Math.max(0, tryTime - array[j].d);

@@ -23,8 +23,6 @@ public class GenericTree {
     }
 
     private Node root;
-    private int size;
-
     public GenericTree() { // Constructor
         Scanner scn = new Scanner(System.in);
         root = create_treeG(null, 0, scn);
@@ -44,7 +42,6 @@ public class GenericTree {
         int number = scn.nextInt();
         for (int i = 0; i < number; i++) {
             Node child = create_treeG(node, i, scn);
-            size++;
             node.child.add(child);
         }
         return node;
