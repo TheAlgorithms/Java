@@ -6,7 +6,7 @@
  package com.thealgorithms.dynamicprogramming;
 
 public class KadaneAlgorithm {
-    public static boolean max_Sum(int a[])
+    public static boolean max_Sum(int a[] , int predicted_answer)
     {
         int sum=a[0],running_sum=0;
         for(int k:a)
@@ -20,8 +20,8 @@ public class KadaneAlgorithm {
             // if running sum is negative then it is initialized to zero
         }
         // for-each loop is used to iterate over the array and find the maximum subarray sum
-        return task(a,sum);
-        // the max_Sum method returns true if the "sub array sum" matches with the "sum of all the elements present in the array" else it returns false
+        return sum==predicted_answer;
+        // It returns true if sum and predicted answer matches
     }
     /**
      * OUTPUT :
@@ -30,16 +30,4 @@ public class KadaneAlgorithm {
      * 1st approach Time Complexity : O(n)
      * Auxiliary Space Complexity : O(1)
      */
-    static boolean task(int a[] , int s)
-    {
-        int p=0;
-        // p is created inorder to store the sum of the elements present in the array
-        for(int i:a)
-        {
-            p=p+i;
-        }
-        // for-each loop is initialized inorder to get the sum of all the elements of the array
-        return p==s;
-        // the task method adds all the elements of the array and checks it with the "maximum subarray sum". If the sum is equal then it returns true else it returns false
-    }
 }
