@@ -22,6 +22,7 @@ public class KadaneAlgorithm {
         // for-each loop is used to iterate over the array and find the maximum subarray sum
         return sum==predicted_answer;
         // It returns true if sum and predicted answer matches
+        // The predicted answer is the answer itself. So it always return true
     }
     /**
      * OUTPUT :
