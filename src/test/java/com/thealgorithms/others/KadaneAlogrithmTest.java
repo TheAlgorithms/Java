@@ -44,20 +44,20 @@ public class KadaneAlogrithmTest {
 	void testForSixElements() 
 	{
 		int a[]={-43,-45,47,12,87,-13};
-		assertTrue(KadaneAlgorithm.max_Sum(a,10));
+		assertTrue(KadaneAlgorithm.max_Sum(a,146));
 	}
 
 	@Test
 	void testForSevenElements() 
 	{
 		int a[]={9,8,2,23,13,6,7};
-		assertTrue(KadaneAlgorithm.max_Sum(a,146));
+		assertTrue(KadaneAlgorithm.max_Sum(a,68));
     }
 
 	@Test
 	void testForEightElements() 
 	{
 		int a[]={9,-5,-5,-2,4,5,0,1};
-		assertTrue(KadaneAlgorithm.max_Sum(a,68));
+		assertTrue(KadaneAlgorithm.max_Sum(a,10));
 	}
 }
