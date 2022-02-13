@@ -1,54 +1,34 @@
-package com.thealgorithms.dynamicprogramming;
-
-import java.util.Scanner;
-
-/**
- * Program to implement Kadane’s Algorithm to calculate maximum contiguous
- * subarray sum of an array Time Complexity: O(n)
- *
- * @author Nishita Aggarwal
+/** Author : Siddhant Swarup Mallick
+ * Github : https://github.com/siddhant2002
  */
+
+/** Program description - To find the maximum subarray sum */
+ package com.thealgorithms.dynamicprogramming;
+
 public class KadaneAlgorithm {
-
-    /**
-     * This method implements Kadane's Algorithm
-     *
-     * @param arr The input array
-     * @return The maximum contiguous subarray sum of the array
-     */
-    static int largestContiguousSum(int arr[]) {
-        int i, len = arr.length, cursum = 0, maxsum = Integer.MIN_VALUE;
-        if (len == 0) // empty array
+    public static boolean max_Sum(int a[] , int predicted_answer)
+    {
+        int sum=a[0],running_sum=0;
+        for(int k:a)
         {
-            return 0;
+            running_sum=running_sum+k;
+            // running sum of all the indexs are stored
+            sum=Math.max(sum,running_sum);
+            // the max is stored inorder to the get the maximum sum
+            if(running_sum<0)
+            running_sum=0;
+            // if running sum is negative then it is initialized to zero
         }
-        for (i = 0; i < len; i++) {
-            cursum += arr[i];
-            if (cursum > maxsum) {
-                maxsum = cursum;
-            }
-            if (cursum <= 0) {
-                cursum = 0;
-            }
-        }
-        return maxsum;
+        // for-each loop is used to iterate over the array and find the maximum subarray sum
+        return sum==predicted_answer;
+        // It returns true if sum and predicted answer matches
+        // The predicted answer is the answer itself. So it always return true
     }
-
     /**
-     * Main method
-     *
-     * @param args Command line arguments
+     * OUTPUT :
+     * Input - {89,56,98,123,26,75,12,40,39,68,91}
+     * Output: it returns either true or false
+     * 1st approach Time Complexity : O(n)
+     * Auxiliary Space Complexity : O(1)
      */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n, arr[], i;
-        n = sc.nextInt();
-        arr = new int[n];
-        for (i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-        int maxContSum = largestContiguousSum(arr);
-        System.out.println(maxContSum);
-        sc.close();
-    }
 }
