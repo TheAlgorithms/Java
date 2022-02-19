@@ -29,7 +29,7 @@ AVLTree tree=new AVLTree();
 
 
 
-public class AVLTree {
+public class AVLSimple {
 	private class Node{
 		int data;
 		int height;
