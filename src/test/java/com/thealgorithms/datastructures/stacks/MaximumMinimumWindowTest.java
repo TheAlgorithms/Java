@@ -10,22 +10,20 @@ import java.util.*;
 
 public class MaximumMinimumWindowTest {
     
-    MaximumMinimumWindow MMW;
+    static MaximumMinimumWindow MMW;
 
     @BeforeAll
-    public void startUp(){
+    static void startUp(){
         MMW = new MaximumMinimumWindow();
-        System.out.println("Hello 0");
     }
 
     @Test
     public void testDummy(){
         assertTrue(true);
-        System.out.println("Hello 1");
     }
 
     @AfterAll
-    public void printCoverage(){
+    static void printCoverage(){
         float covered = 0;
         for (int i : MaximumMinimumWindow.coverage)  {
             if (i != 0) {
