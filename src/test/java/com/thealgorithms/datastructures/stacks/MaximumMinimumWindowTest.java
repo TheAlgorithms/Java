@@ -21,13 +21,13 @@ class MaximumMinimumWindowTest {
     @AfterAll
     public static void printCoverage()    {
         float covered = 0;
-        for (int i : MMW.coverage)  {
+        for (int i : MaximumMinimumWindow.coverage)  {
             if (i != 0) {
                 covered += 1;
             }
         }
-        float coverage = covered / MMW.coverage.length * 100;
-        System.out.println(Arrays.toString(MMW.coverage));
+        float coverage = covered / MaximumMinimumWindow.coverage.length * 100;
+        System.out.println(Arrays.toString(MaximumMinimumWindow.coverage));
         System.out.println("Percentage of branches taken: " + coverage + "%");
     }
 
