@@ -1,25 +1,31 @@
 package com.thealgorithms.datastructures.stacks;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.Arrays;
 
-class MaximumMinimumWindowTest {
+import java.util.*;
+
+
+public class MaximumMinimumWindowTest {
     
-    public static MaximumMinimumWindow MMW;
+    MaximumMinimumWindow MMW;
 
     @BeforeAll
     public void startUp(){
         MMW = new MaximumMinimumWindow();
+        System.out.println("Hello 0");
     }
 
     @Test
     public void testDummy(){
         assertTrue(true);
+        System.out.println("Hello 1");
     }
 
     @AfterAll
-    public static void printCoverage()    {
+    public void printCoverage(){
         float covered = 0;
         for (int i : MaximumMinimumWindow.coverage)  {
             if (i != 0) {
