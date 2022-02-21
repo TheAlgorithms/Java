@@ -32,7 +32,7 @@ public class MaximumMinimumWindowTest {
         }
         float coverage = covered / MaximumMinimumWindow.coverage.length * 100;
         System.out.println(Arrays.toString(MaximumMinimumWindow.coverage));
-        System.out.println("Percentage of branches taken: " + coverage + "%");
+        System.out.println("Percentage of branches taken: " + coverage + "% ");
     }
 
 }
