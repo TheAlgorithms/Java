@@ -29,7 +29,7 @@ AVLTree tree=new AVLTree();
 
 
 
-public class AVLTree {
+public class AVLSimple {
 	private class Node{
 		int data;
 		int height;
@@ -82,7 +82,7 @@ public class AVLTree {
 		System.out.println(this.root.height);
 	}
 	private void display (Node node) {
-		Strings str="";
+		String str="";
 		if(node.left!=null)
 			str+=node.left.data+"=>";
 		else
