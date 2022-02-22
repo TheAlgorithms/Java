@@ -41,18 +41,6 @@ public class MaximumMinimumWindow {
      * @return result array
      */
     public static int[] calculateMaxOfMin(int[] arr, int n) {
-
-        //Return null if the size of the array is different from n
-        if (n != arr.length)
-            return null;
-        
-        //Return null if the size of the array is 0
-        if (n == 0 || arr.length == 0){
-            int[] ans_empty = new int[]{};
-            return ans_empty;
-        }
-            
-            
         Stack<Integer> s = new Stack<>();
         int left[] = new int[n + 1];
         int right[] = new int[n + 1];
@@ -126,6 +114,7 @@ public class MaximumMinimumWindow {
             System.out.print(ans[i] + " ");
         }
         System.out.println("]");
+
         return ans;
     }
 

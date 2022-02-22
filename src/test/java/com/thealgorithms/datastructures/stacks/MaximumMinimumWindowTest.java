@@ -17,15 +17,15 @@ public class MaximumMinimumWindowTest {
         MMW = new MaximumMinimumWindow();
     }
 
-    /* //Check a basic test
+    //Check a basic test
     @Test
     public void checkBasicCase(){
         int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] target = new int[]{70, 30, 20, 10, 10, 10, 10};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        boolean answer = Arrays.equals(target, res);
-        assertTrue(answer);
-    } */
+        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
+        assert Arrays.equals(target, real_res);
+    }
 
     //Check a basic false test
     @Test
@@ -33,26 +33,29 @@ public class MaximumMinimumWindowTest {
         int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] fake_target = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        boolean answer = Arrays.equals(fake_target, res);
+        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
+        boolean answer = Arrays.equals(fake_target, real_res);
         assertFalse(answer);
     }
 
-   //Check when the array is empty
+    //Check an array full of identical numbers
     @Test
-    public void checkArrayEmpty(){
-        int[] arr = new int[]{};
-        int[] target = new int[]{};
+    public void checkAnArrayFullOfIdenticalNumbers(){
+        int[] arr = new int[]{10, 10, 10, 10, 10, 10, 10};
+        int[] target = new int[]{10, 10, 10, 10, 10, 10, 10};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        boolean answer = Arrays.equals(target, res);
-        assertTrue(answer);
+        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
+        assert Arrays.equals(target, real_res);
     }
 
-    //Check if the length of the array is equal to the lenght given
+    //Check when the window is lower than the array's length
     @Test
-    public void checkLengthOfTheArrayEqualsLenghtGiven(){
+    public void checkWindowLower(){
         int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
-        int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, 1);
-        assertNull(res);
+        int[] target = new int[]{20, 10};
+        int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, 2);
+        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
+        assert Arrays.equals(target, real_res);
     }
 
     @AfterAll
