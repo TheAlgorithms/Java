@@ -21,7 +21,6 @@ public class NewManShanksPrime {
         }
         // The loop is continued till n
         return a[n];
-        // Calculated sum is checked with the expected answer
-        // here it will always return true
+        // returns the nth shank prime
     }
 }
