@@ -19,9 +19,9 @@ import java.util.Stack;
     At i = 3
     Next smaller element between (0 , 2) is 3
     At i = 4
-    Next smaller element between (0 , 3) is 4
+    Next smaller element between (0 , 3) is 3
     At i = 5
-    Next smaller element between (0 , 4) is 3
+    Next smaller element between (0 , 4) is 4
     At i = 6
     Next smaller element between (0 , 5) is 6
     
