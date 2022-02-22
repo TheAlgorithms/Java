@@ -18,5 +18,6 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 ## Community Channel
 We're on [Gitter](https://gitter.im/TheAlgorithms)! Come join us.
 
+
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
