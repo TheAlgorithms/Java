@@ -22,7 +22,6 @@ public class MaximumMinimumWindowTest {
         int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] target = new int[]{70, 30, 20, 10, 10, 10, 10};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
         assert Arrays.equals(target, res);
     }
 
@@ -32,8 +31,7 @@ public class MaximumMinimumWindowTest {
         int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] fake_target = new int[]{10, 20, 30, 50, 10, 70, 30};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
-        boolean answer = Arrays.equals(fake_target, real_res);
+        boolean answer = Arrays.equals(fake_target, res);
         assertFalse(answer);
     }
 
@@ -43,7 +41,15 @@ public class MaximumMinimumWindowTest {
         int[] arr = new int[]{10, 10, 10, 10, 10, 10, 10};
         int[] target = new int[]{10, 10, 10, 10, 10, 10, 10};
         int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, arr.length);
-        int[] real_res = Arrays.copyOfRange(res, 1, res.length);
+        assert Arrays.equals(target, res);
+    }
+
+    //Check when the window is lower than the array's length
+    @Test
+    public void checkWindowLower(){
+        int[] arr = new int[]{10, 20, 30, 50, 10, 70, 30};
+        int[] target = new int[]{70, 10};
+        int[] res = MaximumMinimumWindow.calculateMaxOfMin(arr, 2);
         assert Arrays.equals(target, res);
     }
 

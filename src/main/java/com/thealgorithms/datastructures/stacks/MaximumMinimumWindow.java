@@ -18,7 +18,7 @@ import java.util.Arrays;
  * So in the iteration 1 the windows would be [10], [20], [30], [50], [10],
  * [70], [30]. Now we need to check the minimum value in each window. Since the
  * window size is 1 here the minimum element would be the number itself. Now the
- * maximum out of these is the result in iteration 1. In the second iteration we
+ * maximum out of these is the result in iteration 1 (70). In the second iteration we
  * need to consider window size 2, so there would be [10,20], [20,30], [30,50],
  * [50,10], [10,70], [70,30]. Now the minimum of each window size would be
  * [10,20,30,10,10] and the maximum out of these is 30. Similarly we solve for
