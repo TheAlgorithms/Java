@@ -9,7 +9,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 public class NewManShanksPrime {
-    public static boolean nthManShanksPrime(int n , int answer)
+    public static int nthManShanksPrime(int n)
     {
         int a[] = new int[n+1];
         // array of n+1 size is initialized
@@ -20,7 +20,7 @@ public class NewManShanksPrime {
             a[i]=2*a[i-1]+a[i-2];
         }
         // The loop is continued till n
-        return a[n]==answer;
+        return a[n];
         // Calculated sum is checked with the expected answer
         // here it will always return true
     }

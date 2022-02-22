@@ -5,50 +5,50 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.thealgorithms.dynamicprogramming.NewManShanksPrime;
 public class NewManShanksPrimeTest {
     @Test
-	void testForOneElement() 
+	void testOne() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(1,1));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(1)));
 	}
 
 	@Test
-	void testForTwoElements() 
+	void testTwo() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(2,3));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(2)));
 	}
 
 	@Test
-	void testForThreeElements() 
+	void testThree() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(3,7));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(3)));
 	}
 
 	@Test
-	void testForFourElements() 
+	void testFour() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(4,17));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(4)));
 	}
 
 	@Test
-	void testForFiveElements() 
+	void testFive() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(5,41));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(5)));
 	}
 
 	@Test
-	void testForSixElements() 
+	void testSix() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(6,99));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(6)));
 	}
 
-	@Test
-	void testForSevenElements() 
+    @Test
+	void testSeven() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(7,239));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(7)));
     }
 
 	@Test
-	void testForEightElements() 
+	void testEight() 
 	{
-		assertTrue(NewManShanksPrime.nthManShanksPrime(8,577));
+		System.out.println((NewManShanksPrime.nthManShanksPrime(8)));
 	}
 }
