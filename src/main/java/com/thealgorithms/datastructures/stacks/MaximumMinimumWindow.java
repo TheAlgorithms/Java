@@ -29,6 +29,9 @@ import java.util.Stack;
  */
 public class MaximumMinimumWindow {
 
+    // Array for manual code coverage checks
+    public static int[] coverage = new int[14];
+
     /**
      * This function contains the logic of finding maximum of minimum for every
      * window size using Stack Data Structure.
@@ -38,37 +41,61 @@ public class MaximumMinimumWindow {
      * @return result array
      */
     public static int[] calculateMaxOfMin(int[] arr, int n) {
+
+        //Return null if the size of the array is different from n
+        if (n != arr.length)
+            return null;
+        
+        //Return null if the size of the array is 0
+        if (n == 0 || arr.length == 0){
+            int[] ans_empty = new int[]{};
+            return ans_empty;
+        }
+            
+            
         Stack<Integer> s = new Stack<>();
         int left[] = new int[n + 1];
         int right[] = new int[n + 1];
         for (int i = 0; i < n; i++) {
+            coverage[0] += 1;
             left[i] = -1;
             right[i] = n;
         }
 
         for (int i = 0; i < n; i++) {
+            coverage[1] += 1;
             while (!s.empty() && arr[s.peek()] >= arr[i]) {
+                coverage[2] += 1;
                 s.pop();
             }
 
             if (!s.empty()) {
+                coverage[3] += 1;
                 left[i] = s.peek();
+            } else {
+                coverage[4] += 1;
             }
 
             s.push(i);
         }
 
         while (!s.empty()) {
+            coverage[5] += 1;
             s.pop();
         }
 
         for (int i = n - 1; i >= 0; i--) {
+            coverage[6] += 1;
             while (!s.empty() && arr[s.peek()] >= arr[i]) {
+                coverage[7] += 1;
                 s.pop();
             }
 
             if (!s.empty()) {
+                coverage[8] += 1;
                 right[i] = s.peek();
+            } else {
+                coverage[9] += 1;
             }
 
             s.push(i);
@@ -76,23 +103,29 @@ public class MaximumMinimumWindow {
 
         int ans[] = new int[n + 1];
         for (int i = 0; i <= n; i++) {
+            coverage[10] += 1;
             ans[i] = 0;
         }
 
         for (int i = 0; i < n; i++) {
+            coverage[11] += 1;
             int len = right[i] - left[i] - 1;
 
             ans[len] = Math.max(ans[len], arr[i]);
         }
 
         for (int i = n - 1; i >= 1; i--) {
+            coverage[12] += 1;
             ans[i] = Math.max(ans[i], ans[i + 1]);
         }
 
         // Print the result
+        System.out.print("Answer: [");
         for (int i = 1; i <= n; i++) {
+            coverage[13] += 1;
             System.out.print(ans[i] + " ");
         }
+        System.out.println("]");
         return ans;
     }
 
