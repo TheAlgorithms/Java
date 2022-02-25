@@ -7,48 +7,49 @@ public class NewManShanksPrimeTest {
     @Test
 	void testOne() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(1)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(1,1));
 	}
 
 	@Test
 	void testTwo() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(2)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(2,3));
 	}
 
 	@Test
 	void testThree() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(3)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(3,7));
 	}
 
 	@Test
 	void testFour() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(4)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(4,17));
 	}
 
 	@Test
 	void testFive() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(5)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(5,41));
 	}
 
 	@Test
 	void testSix() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(6)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(6,99));
 	}
 
     @Test
 	void testSeven() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(7)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(7,239));
     }
 
 	@Test
 	void testEight() 
 	{
-		System.out.println((NewManShanksPrime.nthManShanksPrime(8)));
+		assertTrue(NewManShanksPrime.nthManShanksPrime(8,577));
 	}
+	
 }
