@@ -1,4 +1,5 @@
-the code is amazing
+the code is amazing 
+code
 # The Algorithms - Java
 
 [![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
