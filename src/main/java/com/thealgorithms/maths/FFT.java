@@ -142,8 +142,10 @@ public class FFT {
          */
         public Complex divide(Complex z) {
             Complex temp = new Complex();
-            temp.real = (this.real * z.real + this.img * z.img) / (z.abs() * z.abs());
-            temp.img = (this.img * z.real - this.real * z.img) / (z.abs() * z.abs());
+            double d = z.abs() * z.abs();
+            d = (double)Math.round(d * 1000000000d) / 1000000000d;
+            temp.real = (this.real * z.real + this.img * z.img) / (d);
+            temp.img = (this.img * z.real - this.real * z.img) / (d);
             return temp;
         }
 
