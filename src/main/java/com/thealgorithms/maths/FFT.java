@@ -184,7 +184,7 @@ public class FFT {
         /* Pad the signal with zeros if necessary */
         paddingPowerOfTwo(x);
         int N = x.size();
-        int log2N= findLog2(N);
+        int log2N = findLog2(N);
         x = fftBitReversal(N,log2N,x);
         int direction = inverse ? -1 : 1;
 
