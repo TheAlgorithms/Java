@@ -7,8 +7,10 @@
           * audiofilters
             * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/audiofilters/IIRFilter.java)
           * backtracking
+            * [Combination](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Combination.java)
             * [KnightsTour](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/KnightsTour.java)
             * [NQueens](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/NQueens.java)
+            * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
           * ciphers
             * [AES](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/AES.java)
@@ -258,6 +260,7 @@
             * [ReverseNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/ReverseNumber.java)
             * [RomanNumeralUtil](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/RomanNumeralUtil.java)
             * [SimpsonIntegration](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SimpsonIntegration.java)
+            * [SquareRootWithBabylonianMethod](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SquareRootWithBabylonianMethod.java)
             * [SumOfArithmeticSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SumOfArithmeticSeries.java)
             * [SumOfDigits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SumOfDigits.java)
             * [TrinomialTriangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/TrinomialTriangle.java)
@@ -284,19 +287,18 @@
           * others
             * [ArrayLeftRotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ArrayLeftRotation.java)
             * [BankersAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BankersAlgorithm.java)
-            * [BestFit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BestFit.java)
             * [BFPRT](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BFPRT.java)
             * [BoyerMoore](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BoyerMoore.java)
             * [BrianKernighanAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BrianKernighanAlgorithm.java)
             * [CountChar](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CountChar.java)
             * [CountWords](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CountWords.java)
+            * [CPUalgorithms](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CPUalgorithms.java)
             * [CRC32](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CRC32.java)
             * [CRCAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CRCAlgorithm.java)
             * [Damm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Damm.java)
             * [Dijkstra](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Dijkstra.java)
             * [EulersFunction](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/EulersFunction.java)
             * [FibbonaciSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/FibbonaciSeries.java)
-            * [FirstFit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/FirstFit.java)
             * [FloydTriangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/FloydTriangle.java)
             * [GuassLegendre](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/GuassLegendre.java)
             * [HappyNumbersSeq](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/HappyNumbersSeq.java)
@@ -332,7 +334,6 @@
             * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TowerOfHanoi.java)
             * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TwoPointers.java)
             * [Verhoeff](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Verhoeff.java)
-            * [WorstFit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/WorstFit.java)
           * searches
             * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch.java)
             * [BreadthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BreadthFirstSearch.java)
@@ -406,12 +407,21 @@
             * [Upper](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Upper.java)
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
   * test
+          * backtracking
+            * [CombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/CombinationTest.java)
+            * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
           * maths
             * [KaprekarNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaprekarNumbersTest.java)
             * [PascalTriangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PascalTriangleTest.java)
             * [PronicNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PronicNumberTest.java)
+            * [SquareRootwithBabylonianMethodTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/SquareRootwithBabylonianMethodTest.java)
           * others
             * [ArrayLeftRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayLeftRotationTest.java)
+            * [BestFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BestFitCPUTest.java)
+            * [FirstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/FirstFitCPUTest.java)
+            * [KadaneAlogrithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/KadaneAlogrithmTest.java)
             * [LinkList Sort test](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/LinkList_Sort_test.java)
+            * [NextFitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/NextFitTest.java)
+            * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
           * searches
             * [QuickSelectTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/QuickSelectTest.java)
