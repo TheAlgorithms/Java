@@ -144,5 +144,4 @@ class FFTTest {
         assertEquals(8.0, imgV1);
         assertEquals(-2.0,imgV2);
     }
-
 }
