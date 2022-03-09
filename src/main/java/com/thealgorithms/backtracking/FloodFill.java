@@ -1,4 +1,4 @@
-package com.thealgorithms.dynamicprogramming;
+package com.thealgorithms.backtracking;
 
 /**
  * Java program for Flood fill algorithm.
@@ -45,21 +45,25 @@ public class FloodFill {
      * @return
      */
 	public static void floodFill(int[][] image, int x_co_ordinate, int y_co_ordinate, int new_color, int old_color) {
-		if(x_co_ordinate >= 0 && y_co_ordinate >= 0 && getPixel(image, x_co_ordinate, y_co_ordinate) == old_color) {
-			
-			putPixel(image, x_co_ordinate, y_co_ordinate, new_color);
-			floodFill(image, x_co_ordinate + 1, y_co_ordinate, new_color, old_color);
-			floodFill(image, x_co_ordinate - 1, y_co_ordinate, new_color, old_color);
-			floodFill(image, x_co_ordinate, y_co_ordinate + 1, new_color, old_color);
-			floodFill(image, x_co_ordinate, y_co_ordinate - 1, new_color, old_color);
-			floodFill(image, x_co_ordinate + 1, y_co_ordinate - 1, new_color, old_color);
-			floodFill(image, x_co_ordinate - 1, y_co_ordinate + 1, new_color, old_color);
-			floodFill(image, x_co_ordinate + 1, y_co_ordinate + 1, new_color, old_color);
-			floodFill(image, x_co_ordinate - 1, y_co_ordinate - 1, new_color, old_color);
-			
-			
-		}
-		
+
+		if(x_co_ordinate < 0 || x_co_ordinate >= image.length) return;
+		if(y_co_ordinate < 0 || y_co_ordinate >= image[x_co_ordinate].length) return;
+		if(getPixel(image, x_co_ordinate, y_co_ordinate) != old_color) return;
+
+		putPixel(image, x_co_ordinate, y_co_ordinate, new_color);
+
+		/* Recursively check for horizontally & vertically adjacent coordinates */
+		floodFill(image, x_co_ordinate + 1, y_co_ordinate, new_color, old_color);
+		floodFill(image, x_co_ordinate - 1, y_co_ordinate, new_color, old_color);
+		floodFill(image, x_co_ordinate, y_co_ordinate + 1, new_color, old_color);
+		floodFill(image, x_co_ordinate, y_co_ordinate - 1, new_color, old_color);
+
+		/* Recursively check for diagonally adjacent coordinates  */
+		floodFill(image, x_co_ordinate + 1, y_co_ordinate - 1, new_color, old_color);
+		floodFill(image, x_co_ordinate - 1, y_co_ordinate + 1, new_color, old_color);
+		floodFill(image, x_co_ordinate + 1, y_co_ordinate + 1, new_color, old_color);
+		floodFill(image, x_co_ordinate - 1, y_co_ordinate - 1, new_color, old_color);
+
 	}
 	
     /**
@@ -79,6 +83,15 @@ public class FloodFill {
 		}
 		
 	}
+
+
+	/** Function for JUnit testing **/
+	public static int[][] getFloodFillImage(int image[][], int pixelX, int pixelY, int newColor, int oldColor)
+	{
+		floodFill(image, pixelX, pixelY, newColor, oldColor);
+		return image;
+	}
+
 	
 	// Driver Program
 	public static void main(String[] args) {
