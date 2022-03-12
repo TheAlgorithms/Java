@@ -142,8 +142,10 @@ public class FFT {
          */
         public Complex divide(Complex z) {
             Complex temp = new Complex();
-            temp.real = (this.real * z.real + this.img * z.img) / (z.abs() * z.abs());
-            temp.img = (this.img * z.real - this.real * z.img) / (z.abs() * z.abs());
+            double d = z.abs() * z.abs();
+            d = (double)Math.round(d * 1000000000d) / 1000000000d;
+            temp.real = (this.real * z.real + this.img * z.img) / (d);
+            temp.img = (this.img * z.real - this.real * z.img) / (d);
             return temp;
         }
 
@@ -173,31 +175,17 @@ public class FFT {
      * https://www.geeksforgeeks.org/iterative-fast-fourier-transformation-polynomial-multiplication/
      * https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
      * https://cp-algorithms.com/algebra/fft.html
-     *
-     * @param x The discrete signal which is then converted to the FFT or the
+     *  @param x The discrete signal which is then converted to the FFT or the
      * IFFT of signal x.
      * @param inverse True if you want to find the inverse FFT.
+     * @return
      */
-    public static void fft(ArrayList<Complex> x, boolean inverse) {
+    public static ArrayList<Complex> fft(ArrayList<Complex> x, boolean inverse) {
         /* Pad the signal with zeros if necessary */
         paddingPowerOfTwo(x);
         int N = x.size();
-
-        /* Find the log2(N) */
-        int log2N = 0;
-        while ((1 << log2N) < N) {
-            log2N++;
-        }
-
-        /* Swap the values of the signal with bit-reversal method */
-        int reverse;
-        for (int i = 0; i < N; i++) {
-            reverse = reverseBits(i, log2N);
-            if (i < reverse) {
-                Collections.swap(x, i, reverse);
-            }
-        }
-
+        int log2N = findLog2(N);
+        x = fftBitReversal(N,log2N,x);
         int direction = inverse ? -1 : 1;
 
         /* Main loop of the algorithm */
@@ -215,14 +203,40 @@ public class FFT {
                 }
             }
         }
+        x = inverseFFT(N,inverse,x);
+        return x;
+    }
 
-        /* Divide by N if we want the inverse FFT */
+    /* Find the log2(N) */
+    public static int findLog2(int N){
+        int log2N = 0;
+        while ((1 << log2N) < N) {
+            log2N++;
+        }
+        return log2N;
+    }
+
+    /* Swap the values of the signal with bit-reversal method */
+    public static ArrayList<Complex> fftBitReversal(int N, int log2N, ArrayList<Complex> x){
+        int reverse;
+        for (int i = 0; i < N; i++) {
+            reverse = reverseBits(i, log2N);
+            if (i < reverse) {
+                Collections.swap(x, i, reverse);
+            }
+        }
+        return x;
+    }
+
+    /* Divide by N if we want the inverse FFT */
+    public static ArrayList<Complex> inverseFFT(int N, boolean inverse, ArrayList<Complex> x ){
         if (inverse) {
             for (int i = 0; i < x.size(); i++) {
                 Complex z = x.get(i);
                 x.set(i, z.divide(N));
             }
         }
+        return x;
     }
 
     /**
