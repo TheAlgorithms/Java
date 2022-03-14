@@ -43,9 +43,9 @@ public final class RSA {
     /**
      * @return plain message
      */
-    public synchronized String decrypt(String encryptedMessage) {
-        return new String((new BigInteger(encryptedMessage)).modPow(privateKey, modulus).toByteArray());
-    }
+    //public synchronized String decrypt(String encryptedMessage) {
+        //return new String((new BigInteger(encryptedMessage)).modPow(privateKey, modulus).toByteArray());
+   // }
 
     /**
      * @return plain message as big integer
