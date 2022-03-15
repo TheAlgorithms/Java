@@ -10,25 +10,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class ArmstrongTest {
 
-    Armstrong armstrong = new Armstrong();
-
     @Test
-    void testIsArmStrongV1() {
-        assertThat(armstrong.isArmStrongV1(153)).isTrue();
-        assertThat(armstrong.isArmStrongV1(0)).isTrue();
-        assertThat(armstrong.isArmStrongV1(1)).isTrue();
-        assertThat(armstrong.isArmStrongV1(1634)).isTrue();
-        assertThat(armstrong.isArmStrongV1(371)).isTrue();
-        assertThat(armstrong.isArmStrongV1(200)).isFalse();
-    }
-
-    @Test
-    void testIsArmStrongV2() {
-        assertThat(armstrong.isArmStrongV2(153)).isTrue();
-        assertThat(armstrong.isArmStrongV2(0)).isTrue();
-        assertThat(armstrong.isArmStrongV2(1)).isTrue();
-        assertThat(armstrong.isArmStrongV2(1634)).isFalse(); //this proves wrong v1.
-        assertThat(armstrong.isArmStrongV2(371)).isTrue();
-        assertThat(armstrong.isArmStrongV2(200)).isFalse();
+    void testisArmStrong() {
+        Armstrong armstrong = new Armstrong();
+        assertThat(armstrong.isArmStrong(153)).isTrue();
+        assertThat(armstrong.isArmStrong(0)).isTrue();
+        assertThat(armstrong.isArmStrong(1)).isTrue();
+        assertThat(armstrong.isArmStrong(1634)).isFalse(); //this proves wrong v1.
+        assertThat(armstrong.isArmStrong(371)).isTrue();
+        assertThat(armstrong.isArmStrong(200)).isFalse();
     }
 }
