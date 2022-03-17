@@ -9,14 +9,14 @@ public class SinglyLinkedList extends Node{
 
     /**
      * Head refer to the front of the list
-     *//*
+     */
     private Node head;
 
-    *//**
+    /**
      * Size of SinglyLinkedList
-     *//*
+     */
     private int size;
-*/
+
     /**
      * Init SinglyLinkedList
      */
