@@ -5,18 +5,18 @@ import java.util.StringJoiner;
 /**
  * https://en.wikipedia.org/wiki/Linked_list
  */
-public class SinglyLinkedList {
+public class SinglyLinkedList extends Node{
 
     /**
      * Head refer to the front of the list
-     */
+     *//*
     private Node head;
 
-    /**
+    *//**
      * Size of SinglyLinkedList
-     */
+     *//*
     private int size;
-
+*/
     /**
      * Init SinglyLinkedList
      */
@@ -37,57 +37,9 @@ public class SinglyLinkedList {
     }
 
     /**
-     * Inserts an element at the head of the list
-     *
-     * @param x element to be added
-     */
-    public void insertHead(int x) {
-        insertNth(x, 0);
-    }
-
-    /**
-     * Insert an element at the tail of the list
-     *
-     * @param data element to be added
-     */
-    public void insert(int data) {
-        insertNth(data, size);
-    }
-
-    /**
-     * Inserts a new node at a specified position of the list
-     *
-     * @param data data to be stored in a new node
-     * @param position position at which a new node is to be inserted
-     */
-    public void insertNth(int data, int position) {
-        checkBounds(position, 0, size);
-        Node newNode = new Node(data);
-        if (head == null) {
-            /* the list is empty */
-            head = newNode;
-            size++;
-            return;
-        } else if (position == 0) {
-            /* insert at the head of the list */
-            newNode.next = head;
-            head = newNode;
-            size++;
-            return;
-        }
-        Node cur = head;
-        for (int i = 0; i < position - 1; ++i) {
-            cur = cur.next;
-        }
-        newNode.next = cur.next;
-        cur.next = newNode;
-        size++;
-    }
-
-    /**
      * Detects if there is a loop in the singly linked list using floy'd turtle
      * and hare algorithm.
-  *
+     *
      */
     public boolean detectLoop() {
         Node currentNodeFast = head;
@@ -105,26 +57,8 @@ public class SinglyLinkedList {
     }
 
     /**
-     * Swaps nodes of two given values a and b.
-  *
-     */
-    public void swapNodes(int a, int b) {
-        Node currentNode = head;
-        Node temp = null;
-        while (currentNode != null) {
-            if (currentNode.next.value == a) {
-                temp = currentNode.next;
-            }
-            if (currentNode.next.value == b) {
-                currentNode.next = temp;
-            }
-            currentNode = currentNode.next;
-        }
-    }
-
-    /**
      * Reverse a singly linked list from a given node till the end
-  *
+     *
      */
     Node reverseList(Node node) {
         Node prev = null, curr = node, next;
@@ -136,58 +70,6 @@ public class SinglyLinkedList {
         }
         node = prev;
         return node;
-    }
-
-    /**
-     * Deletes a node at the head
-     */
-    public void deleteHead() {
-        deleteNth(0);
-    }
-
-    /**
-     * Deletes an element at the tail
-     */
-    public void delete() {
-        deleteNth(size - 1);
-    }
-
-    /**
-     * Deletes an element at Nth position
-     */
-    public void deleteNth(int position) {
-        checkBounds(position, 0, size - 1);
-        if (position == 0) {
-            Node destroy = head;
-            head = head.next;
-            destroy = null;
-            /* clear to let GC do its work */
-            size--;
-            return;
-        }
-        Node cur = head;
-        for (int i = 0; i < position - 1; ++i) {
-            cur = cur.next;
-        }
-
-        Node destroy = cur.next;
-        cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
-
-        size--;
-    }
-
-    /**
-     * @param position to check position
-     * @param low low index
-     * @param high high index
-     * @throws IndexOutOfBoundsException if {@code position} not in range
-     * {@code low} to {@code high}
-     */
-    public void checkBounds(int position, int low, int high) {
-        if (position > high || position < low) {
-            throw new IndexOutOfBoundsException(position + "");
-        }
     }
 
     /**
@@ -264,21 +146,6 @@ public class SinglyLinkedList {
         return false;
     }
 
-    /**
-     * Return element at special index.
-     *
-     * @param index given index of element
-     * @return element at special index.
-     */
-    public int getNth(int index) {
-        checkBounds(index, 0, size - 1);
-        Node cur = head;
-        for (int i = 0; i < index; ++i) {
-            cur = cur.next;
-        }
-        return cur.value;
-    }
-
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner("->");
@@ -332,6 +199,12 @@ public class SinglyLinkedList {
             assert true;
             /* this should happen */
         }
+
+        Node instance = new Node();
+        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
+        head = instance.deleteDuplicates(head);
+        instance.print(head);
+
     }
 }
 
@@ -340,6 +213,18 @@ public class SinglyLinkedList {
  * a pointer to the node after them.
  */
 class Node {
+
+    /**
+     * Head refer to the front of the list
+     */
+    public Node head;
+
+    /**
+     * Size of SinglyLinkedList
+     */
+    public int size;
+
+
 
     /**
      * The value of the node
@@ -372,5 +257,178 @@ class Node {
     Node(int value, Node next) {
         this.value = value;
         this.next = next;
+    }
+
+    public Node deleteDuplicates(Node head) {
+        // sentinel
+        Node sentinel = new Node(0, head);
+
+        // predecessor = the last node
+        // before the sublist of duplicates
+        Node pred = sentinel;
+
+        while (head != null) {
+            // if it's a beginning of duplicates sublist
+            // skip all duplicates
+            if (head.next != null && head.value == head.next.value) {
+                // move till the end of duplicates sublist
+                while (head.next != null && head.value == head.next.value) {
+                    head = head.next;
+                }
+                // skip all duplicates
+                pred.next = head.next;
+                // otherwise, move predecessor
+            } else {
+                pred = pred.next;
+            }
+
+            // move forward
+            head = head.next;
+        }
+        return sentinel.next;
+    }
+
+    public void print(Node head) {
+        Node temp = head;
+        while (temp != null && temp.next != null) {
+            System.out.print(temp.value + "->");
+            temp = temp.next;
+        }
+        if (temp != null) {
+            System.out.print(temp.value);
+        }
+    }
+
+    /**
+     * Inserts an element at the head of the list
+     *
+     * @param x element to be added
+     */
+    public void insertHead(int x) {
+        insertNth(x, 0);
+    }
+
+    /**
+     * Insert an element at the tail of the list
+     *
+     * @param data element to be added
+     */
+    public void insert(int data) {
+        insertNth(data, size);
+    }
+
+    /**
+     * Inserts a new node at a specified position of the list
+     *
+     * @param data data to be stored in a new node
+     * @param position position at which a new node is to be inserted
+     */
+    public void insertNth(int data, int position) {
+        checkBounds(position, 0, size);
+        Node newNode = new Node(data);
+        if (head == null) {
+            /* the list is empty */
+            head = newNode;
+            size++;
+            return;
+        } else if (position == 0) {
+            /* insert at the head of the list */
+            newNode.next = head;
+            head = newNode;
+            size++;
+            return;
+        }
+        Node cur = head;
+        for (int i = 0; i < position - 1; ++i) {
+            cur = cur.next;
+        }
+        newNode.next = cur.next;
+        cur.next = newNode;
+        size++;
+    }
+
+    /**
+     * Swaps nodes of two given values a and b.
+     *
+     */
+    public void swapNodes(int a, int b) {
+        Node currentNode = head;
+        Node temp = null;
+        while (currentNode != null) {
+            if (currentNode.next.value == a) {
+                temp = currentNode.next;
+            }
+            if (currentNode.next.value == b) {
+                currentNode.next = temp;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+
+    /**
+     * Deletes a node at the head
+     */
+    public void deleteHead() {
+        deleteNth(0);
+    }
+
+    /**
+     * Deletes an element at the tail
+     */
+    public void delete() {
+        deleteNth(size - 1);
+    }
+
+    /**
+     * Deletes an element at Nth position
+     */
+    public void deleteNth(int position) {
+        checkBounds(position, 0, size - 1);
+        if (position == 0) {
+            Node destroy = head;
+            head = head.next;
+            destroy = null;
+            /* clear to let GC do its work */
+            size--;
+            return;
+        }
+        Node cur = head;
+        for (int i = 0; i < position - 1; ++i) {
+            cur = cur.next;
+        }
+
+        Node destroy = cur.next;
+        cur.next = cur.next.next;
+        destroy = null; // clear to let GC do its work
+
+        size--;
+    }
+
+    /**
+     * Return element at special index.
+     *
+     * @param index given index of element
+     * @return element at special index.
+     */
+    public int getNth(int index) {
+        checkBounds(index, 0, size - 1);
+        Node cur = head;
+        for (int i = 0; i < index; ++i) {
+            cur = cur.next;
+        }
+        return cur.value;
+    }
+
+    /**
+     * @param position to check position
+     * @param low low index
+     * @param high high index
+     * @throws IndexOutOfBoundsException if {@code position} not in range
+     * {@code low} to {@code high}
+     */
+    public void checkBounds(int position, int low, int high) {
+        if (position > high || position < low) {
+            throw new IndexOutOfBoundsException(position + "");
+        }
     }
 }
