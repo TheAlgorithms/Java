@@ -109,17 +109,47 @@ public class SinglyLinkedList {
   *
      */
     public void swapNodes(int a, int b) {
-        Node currentNode = head;
-        Node temp = null;
-        while (currentNode != null) {
-            if (currentNode.next.value == a) {
-                temp = currentNode.next;
-            }
-            if (currentNode.next.value == b) {
-                currentNode.next = temp;
-            }
-            currentNode = currentNode.next;
+        if(a==b){
+            return;
         }
+        Node previousA = null ,currA = head;
+        while(currA!=null && currA.value!=a){
+            previousA = currA;
+            currA = currA.next;
+        }
+
+        Node previousB = null ,currB = head;
+        while(currB!=null && currB.value!=b){
+            previousB = currB;
+            currB = currB.next;
+        }
+        /** If either of 'a' or 'b' is not present, then return */
+        if(currA == null || currB == null){
+            return;
+        }
+
+        // If 'a' is not head node of list
+        if(previousA != null){
+            previousA.next = currB;
+        }
+        else{ 
+            // make 'b' as the new head
+            head = currB;
+        }
+
+        // If 'b' is not head node of list
+        if(previousB != null){
+            previousB.next = currA;
+        }
+        else{
+            // Make 'a' as new head
+            head = currA;
+        }
+        // Swap next pointer
+        
+        Node temp = currA.next;
+        currA.next = currB.next;
+        currB.next = temp;
     }
 
     /**
