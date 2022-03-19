@@ -25,11 +25,6 @@ public class AlphabeticalTest {
         assertFalse(Alphabetical.isAlphabetical(input4));
         assertFalse(Alphabetical.isAlphabetical(input5));
         assertFalse(Alphabetical.isAlphabetical(input6));
-
-        Throwable exc1 = assertThrows(IllegalArgumentException.class, () -> Alphabetical.isAlphabetical(""));
-        Throwable exc2 = assertThrows(IllegalArgumentException.class, () -> Alphabetical.isAlphabetical(null));
-        assertEquals("parameter cannot be null or empty.", exc1.getMessage());
-        assertEquals("parameter cannot be null or empty.", exc2.getMessage());
     }
 
 }
