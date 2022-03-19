@@ -23,6 +23,9 @@ class Alphabetical {
      * {@code false}
      */
     public static boolean isAlphabetical(String s) {
+        if (s == null || s.isEmpty()) {
+            throw new IllegalArgumentException("parameter cannot be null or empty.");
+        }
         s = s.toLowerCase();
         for (int i = 0; i < s.length() - 1; ++i) {
             if (!Character.isLetter(s.charAt(i)) || !(s.charAt(i) <= s.charAt(i + 1))) {
