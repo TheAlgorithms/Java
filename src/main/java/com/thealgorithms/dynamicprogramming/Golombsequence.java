@@ -20,14 +20,21 @@ public class Golombsequence {
     {
         int dp[] = new int[n+1];
         // array of n+1 size is created
-        dp[1] = 1;
+        dp[0] = 1;
         // since 1st index position value is fixed so it's marked as 1
-        for(int i=2;i<=n;i++)
+        for(int i=1;i<n;i++)
         {
             dp[i] = 1 + dp[i - dp[dp[i - 1]]];
             // formula for ith golomb sequence
         }
-        return Arrays.equals(dp , a);
+        for(int i=1;i<n;i++)
+        {
+            if(a[i-1]!=dp[i])
+            {
+                return false;
+            }
+        }
+        return true;
         // returns true if calculated answer matches with the expected answer
     }
 }
