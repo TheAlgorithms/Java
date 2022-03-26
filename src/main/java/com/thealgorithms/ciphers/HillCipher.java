@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class HillCipher {
 
-    static Scanner in = new Scanner(System.in);
+    static Scanner userInput = new Scanner(System.in);
 
     /* Following function encrypts the message
      */
@@ -20,26 +20,23 @@ public class HillCipher {
         message = message.toUpperCase();
         // Get key matrix
         System.out.println("Enter key matrix size");
-        int n = in.nextInt();
+        int matrixSize = userInput.nextInt();
         System.out.println("Enter Key/encryptionKey matrix ");
-        int keyMatrix[][] = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                keyMatrix[i][j] = in.nextInt();
+        int keyMatrix[][] = new int[matrixSize][matrixSize];
+        for (int i = 0; i < matrixSize; i++) {
+            for (int j = 0; j < matrixSize; j++) {
+                keyMatrix[i][j] = userInput.nextInt();
             }
         }
         //check if det = 0
-        if (determinant(keyMatrix, n) % 26 == 0) {
-            System.out.println("Invalid key, as determinant = 0. Program Terminated");
-            return;
-        }
+        validateDeterminant(keyMatrix,matrixSize);
 
-        int[][] messageVector = new int[n][1];
+        int[][] messageVector = new int[matrixSize][1];
         String CipherText = "";
-        int cipherMatrix[][] = new int[n][1];
+        int cipherMatrix[][] = new int[matrixSize][1];
         int j = 0;
         while (j < message.length()) {
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < matrixSize; i++) {
                 if (j >= message.length()) {
                     messageVector[i][0] = 23;
                 } else {
@@ -49,16 +46,16 @@ public class HillCipher {
                 j++;
             }
             int x, i;
-            for (i = 0; i < n; i++) {
+            for (i = 0; i < matrixSize; i++) {
                 cipherMatrix[i][0] = 0;
 
-                for (x = 0; x < n; x++) {
+                for (x = 0; x < matrixSize; x++) {
                     cipherMatrix[i][0] += keyMatrix[i][x] * messageVector[x][0];
                 }
                 System.out.println(cipherMatrix[i][0]);
                 cipherMatrix[i][0] = cipherMatrix[i][0] % 26;
             }
-            for (i = 0; i < n; i++) {
+            for (i = 0; i < matrixSize; i++) {
                 CipherText += (char) (cipherMatrix[i][0] + 65);
             }
         }
@@ -70,19 +67,17 @@ public class HillCipher {
         message = message.toUpperCase();
         // Get key matrix
         System.out.println("Enter key matrix size");
-        int n = in.nextInt();
+        int n = userInput.nextInt();
         System.out.println("Enter inverseKey/decryptionKey matrix ");
         int keyMatrix[][] = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                keyMatrix[i][j] = in.nextInt();
+                keyMatrix[i][j] = userInput.nextInt();
             }
         }
         //check if det = 0
-        if (determinant(keyMatrix, n) % 26 == 0) {
-            System.out.println("Invalid key, as determinant = 0. Program Terminated");
-            return;
-        }
+        validateDeterminant(keyMatrix,n);
+
         //solving for the required plaintext message
         int[][] messageVector = new int[n][1];
         String PlainText = "";
@@ -145,12 +140,12 @@ public class HillCipher {
     }
 
     // Function to implement Hill Cipher
-    static void hillcipher(String message) {
+    static void hillCipher(String message) {
         message.toUpperCase();
         System.out.println("What do you want to process from the message?");
         System.out.println("Press 1: To Encrypt");
         System.out.println("Press 2: To Decrypt");
-        short sc = in.nextShort();
+        short sc = userInput.nextShort();
         if (sc == 1) {
             encrypt(message);
         } else if (sc == 2) {
@@ -160,11 +155,18 @@ public class HillCipher {
         }
     }
 
+    static void validateDeterminant(int[][] keyMatrix, int n){
+        if (determinant(keyMatrix, n) % 26 == 0) {
+            System.out.println("Invalid key, as determinant = 0. Program Terminated");
+            return;
+        }
+    }
+
     // Driver code
     public static void main(String[] args) {
         // Get the message to be encrypted
         System.out.println("Enter message");
-        String message = in.nextLine();
-        hillcipher(message);
+        String message = userInput.nextLine();
+        hillCipher(message);
     }
 }

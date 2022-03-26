@@ -18,11 +18,15 @@ public class DoublyLinkedList {
     /**
      * Head refers to the front of the list
      */
-    private Link head;
+    protected Link head;
     /**
      * Tail refers to the back of the list
      */
     private Link tail;
+    /**
+     * Link Operations to perform operations on nodes of the list
+     */
+    private LinkOperations linkOperations;
 
     /**
      * Size refers to the number of elements present in the list
@@ -49,19 +53,152 @@ public class DoublyLinkedList {
             throw new NullPointerException();
         }
         for (int i : array) {
-            insertTail(i);
+            linkOperations.insertTail(i,this);
         }
         size = array.length;
     }
+
+    /**
+     * Returns true if list is empty
+     *
+     * @return true if list is empty
+     */
+    public boolean isEmpty() {
+        return (head == null);
+    }
+
+    /**
+     * Prints contents of the list
+     */
+    public void display() { // Prints contents of the list
+        Link current = head;
+        while (current != null) {
+            current.displayLink();
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    /**
+     * Prints the contents of the list in reverse order
+     */
+    public void displayBackwards() {
+        Link current = tail;
+        while (current != null) {
+            current.displayLink();
+            current = current.previous;
+        }
+        System.out.println();
+    }
+}
+
+/**
+ * This class is used to implement the nodes of the linked list.
+ *
+ * @author Unknown
+ */
+class Link {
+
+    /**
+     * Value of node
+     */
+    public int value;
+    /**
+     * This points to the link in front of the new link
+     */
+    public Link next;
+    /**
+     * This points to the link behind the new link
+     */
+    public Link previous;
+
+    /**
+     * Constructor
+     *
+     * @param value Value of node
+     */
+    public Link(int value) {
+        this.value = value;
+    }
+
+    /**
+     * Displays the node
+     */
+    public void displayLink() {
+        System.out.print(value + " ");
+    }
+
+    /**
+     * Main Method
+     *
+     * @param args Command line arguments
+     */
+    public static void main(String args[]) {
+        DoublyLinkedList myList = new DoublyLinkedList();
+        LinkOperations linkOperations = new LinkOperations();
+        linkOperations.insertHead(13,myList);
+        linkOperations.insertHead(7,myList);
+        linkOperations.insertHead(10,myList);
+        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+        myList.displayBackwards();
+
+        linkOperations.insertTail(11,myList);
+        myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
+        myList.displayBackwards();
+
+        linkOperations.deleteTail();
+        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
+        myList.displayBackwards();
+
+        linkOperations.delete(7);
+        myList.display(); // <-- 10(head) <--> 13(tail) -->
+        myList.displayBackwards();
+
+        linkOperations.insertOrdered(23,myList);
+        linkOperations.insertOrdered(67,myList);
+        linkOperations.insertOrdered(3,myList);
+        myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+        linkOperations.insertElementByIndex(5, 1,myList);
+        myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
+        myList.displayBackwards();
+        linkOperations.reverse(); // <-- 67(head) <--> 23 <--> 13 <--> 10 <--> 5 <--> 3(tail) -->
+        myList.display();
+
+        linkOperations.clearList();
+        myList.display();
+        myList.displayBackwards();
+        linkOperations.insertHead(20,myList);
+        myList.display();
+        myList.displayBackwards();
+    }
+}
+
+/*
+ * This class implements the operations of the Link nodes.
+ */
+class LinkOperations{
+    /**
+     * Head refers to the front of the list
+     */
+    private Link head;
+    /**
+     * Tail refers to the back of the list
+     */
+    private Link tail;
+
+    /**
+     * Size refers to the number of elements present in the list
+     */
+    private int size;
 
     /**
      * Insert an element at the head
      *
      * @param x Element to be inserted
      */
-    public void insertHead(int x) {
+    public void insertHead(int x,DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x); // Create a new link with a value attached to it
-        if (isEmpty()) // Set the first element added to be the tail
+        if (doublyLinkedList.isEmpty()) // Set the first element added to be the tail
         {
             tail = newLink;
         } else {
@@ -77,10 +214,10 @@ public class DoublyLinkedList {
      *
      * @param x Element to be inserted
      */
-    public void insertTail(int x) {
+    public void insertTail(int x,DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x);
         newLink.next = null; // currentTail(tail)     newlink -->
-        if (isEmpty()) { // Check if there are no elements in list then it adds first element
+        if (doublyLinkedList.isEmpty()) { // Check if there are no elements in list then it adds first element
             tail = newLink;
             head = tail;
         } else {
@@ -97,15 +234,15 @@ public class DoublyLinkedList {
      * @param x Element to be inserted
      * @param index Index(from start) at which the element x to be inserted
      */
-    public void insertElementByIndex(int x, int index) {
+    public void insertElementByIndex(int x, int index,DoublyLinkedList doublyLinkedList) {
         if (index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
         if (index == 0) {
-            insertHead(x);
+            insertHead(x,doublyLinkedList);
         } else {
             if (index == size) {
-                insertTail(x);
+                insertTail(x,doublyLinkedList);
             } else {
                 Link newLink = new Link(x);
                 Link previousLink = head; //
@@ -192,7 +329,7 @@ public class DoublyLinkedList {
      *
      * @param x Element to be added
      */
-    public void insertOrdered(int x) {
+    public void insertOrdered(int x,DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x);
         Link current = head;
         while (current != null && x > current.value) // Find the position to insert
@@ -201,9 +338,9 @@ public class DoublyLinkedList {
         }
 
         if (current == head) {
-            insertHead(x);
+            insertHead(x,doublyLinkedList);
         } else if (current == null) {
-            insertTail(x);
+            insertTail(x,doublyLinkedList);
         } else { // Before: 1 <--> 2(current) <--> 3
             newLink.previous = current.previous; // 1 <-- newLink
             current.previous.next = newLink; // 1 <--> newLink
@@ -230,14 +367,14 @@ public class DoublyLinkedList {
         --size;
     }
 
-    public static void removeDuplicates(DoublyLinkedList l) {
+    public void removeDuplicates(DoublyLinkedList l) {
         Link linkOne = l.head;
         while (linkOne.next != null) { // list is present
             Link linkTwo = linkOne.next; // second link for comparison
             while (linkTwo.next != null) {
                 if (linkOne.value == linkTwo.value) // if there are duplicates values then
                 {
-                    l.delete(linkTwo.value); // delete the link
+                    delete(linkTwo.value); // delete the link
                 }
                 linkTwo = linkTwo.next; // go to next link
             }
@@ -247,8 +384,6 @@ public class DoublyLinkedList {
 
     /**
      * Reverses the list in place
-     *
-     * @param l the DoublyLinkedList to reverse
      */
     public void reverse() {
         // Keep references to the head and tail
@@ -282,116 +417,4 @@ public class DoublyLinkedList {
         size = 0;
     }
 
-    /**
-     * Returns true if list is empty
-     *
-     * @return true if list is empty
-     */
-    public boolean isEmpty() {
-        return (head == null);
-    }
-
-    /**
-     * Prints contents of the list
-     */
-    public void display() { // Prints contents of the list
-        Link current = head;
-        while (current != null) {
-            current.displayLink();
-            current = current.next;
-        }
-        System.out.println();
-    }
-
-    /**
-     * Prints the contents of the list in reverse order
-     */
-    public void displayBackwards() {
-        Link current = tail;
-        while (current != null) {
-            current.displayLink();
-            current = current.previous;
-        }
-        System.out.println();
-    }
-}
-
-/**
- * This class is used to implement the nodes of the linked list.
- *
- * @author Unknown
- */
-class Link {
-
-    /**
-     * Value of node
-     */
-    public int value;
-    /**
-     * This points to the link in front of the new link
-     */
-    public Link next;
-    /**
-     * This points to the link behind the new link
-     */
-    public Link previous;
-
-    /**
-     * Constructor
-     *
-     * @param value Value of node
-     */
-    public Link(int value) {
-        this.value = value;
-    }
-
-    /**
-     * Displays the node
-     */
-    public void displayLink() {
-        System.out.print(value + " ");
-    }
-
-    /**
-     * Main Method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String args[]) {
-        DoublyLinkedList myList = new DoublyLinkedList();
-        myList.insertHead(13);
-        myList.insertHead(7);
-        myList.insertHead(10);
-        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
-        myList.displayBackwards();
-
-        myList.insertTail(11);
-        myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
-        myList.displayBackwards();
-
-        myList.deleteTail();
-        myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
-        myList.displayBackwards();
-
-        myList.delete(7);
-        myList.display(); // <-- 10(head) <--> 13(tail) -->
-        myList.displayBackwards();
-
-        myList.insertOrdered(23);
-        myList.insertOrdered(67);
-        myList.insertOrdered(3);
-        myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
-        myList.insertElementByIndex(5, 1);
-        myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
-        myList.displayBackwards();
-        myList.reverse(); // <-- 67(head) <--> 23 <--> 13 <--> 10 <--> 5 <--> 3(tail) -->
-        myList.display();
-
-        myList.clearList();
-        myList.display();
-        myList.displayBackwards();
-        myList.insertHead(20);
-        myList.display();
-        myList.displayBackwards();
-    }
 }
