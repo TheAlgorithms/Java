@@ -21,11 +21,12 @@ public class Golombsequence {
         // since 1st index position value is fixed so it's marked as 1
         for (int i = 1; i < n; i++) {
             dp[i] = 1 + dp[i - dp[dp[i - 1]]];
-            // formula for ith golomb sequence
+            // formula for ith golomb sequence is dp(i) = 1 + dp(i – dp(dp(i - 1)))
         }
         for (int i = 1; i < n; i++) {
             if (a[i - 1] != dp[i]) {
                 return false;
+                // checks whether the calculated answer matches with the expected answer
             }
         }
         return true;
