@@ -55,6 +55,54 @@ public class SinglyLinkedList extends Node{
     }
 
     /**
+     * Swaps nodes of two given values a and b.
+  *
+     */
+    public void swapNodes(int valueFirst, int valueSecond) {
+        if(valueFirst ==  valueSecond){
+            return;
+        }
+        Node previousA = null ,currentA = head;
+        while(currentA != null && currentA.value != valueFirst){
+            previousA = currentA;
+            currentA = currentA.next;
+        }
+
+        Node previousB = null ,currentB = head;
+        while(currentB != null && currentB.value != valueSecond){
+            previousB = currentB;
+            currentB = currentB.next;
+        }
+        /** If either of 'a' or 'b' is not present, then return */
+        if(currentA == null || currentB == null){
+            return;
+        }
+
+        // If 'a' is not head node of list
+        if(previousA != null){
+            previousA.next = currentB;
+        }
+        else{ 
+            // make 'b' as the new head
+            head = currentB;
+        }
+
+        // If 'b' is not head node of list
+        if(previousB != null){
+            previousB.next = currentA;
+        }
+        else{
+            // Make 'a' as new head
+            head = currentA;
+        }
+        // Swap next pointer
+        
+        Node temp = currentA.next;
+        currentA.next = currentB.next;
+        currentB.next = temp;
+    }
+
+    /**
      * Reverse a singly linked list from a given node till the end
      *
      */
