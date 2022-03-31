@@ -13,8 +13,8 @@
 
 package com.thealgorithms.dynamicprogramming;
 
-public class Golombsequence {
-    public static boolean golombsequence(int n, int a[]) {
+public class CountFriendsPairing {
+    public static boolean CountFriendsPairing(int n, int a[]) {
         int dp[] = new int[n + 1];
         // array of n+1 size is created
         dp[0] = 1;
