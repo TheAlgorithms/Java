@@ -10,7 +10,7 @@ E = a set of edges
 Each edge in `E` connects any two vertices from `V`. Based on the type of edge, graphs can be of two types:
 
 1. **Directed**: The edges are directed in nature which means that when there is an edge from node `A` to `B`, it does not imply that there is an edge from `B` to `A`.
-An example of directed edge graph the **follow** feature of social media. If you follow a celebrity, it doesn't imply that s/he follows you.
+An example of directed edge graph the **follow** feature of social media. If you follow a celebrity, it doesn't imply that s/they follows you.
 
 2. **Undirected**: The edges don't have any direction. So if `A` and `B` are connected, we can assume that there is edge from both `A` to `B` and `B` to `A`.
 Example: Social media graph, where if two persons are friend, it implies that both are friend with each other.
