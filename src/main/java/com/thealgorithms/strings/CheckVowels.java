@@ -19,15 +19,7 @@ public class CheckVowels {
      * @return {@code true} if given string has vowels, otherwise {@code false}
      */
     public static boolean hasVowels(String input) {
-        if (input == null) {
-            return false;
-        }
-        for (char c : input.toLowerCase().toCharArray()) {
-            if (VOWELS.contains(c)) {
-                return true;
-            }
-        }
-        return false;
+        return countVowels(input) > 0;
     }
 
     /**
@@ -48,3 +40,4 @@ public class CheckVowels {
         return cnt;
     }
 }
+
