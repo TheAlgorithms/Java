@@ -1,5 +1,9 @@
 package com.thealgorithms.strings;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Vowel Count is a system whereby character strings are placed in order based
  * on the position of the characters in the conventional ordering of an
