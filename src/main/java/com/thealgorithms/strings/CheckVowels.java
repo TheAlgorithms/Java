@@ -5,15 +5,8 @@ package com.thealgorithms.strings;
  * on the position of the characters in the conventional ordering of an
  * alphabet. Wikipedia: https://en.wikipedia.org/wiki/Alphabetical_order
  */
-class CheckVowels {
-
-    public static void main(String[] args) {
-        assert !hasVowels("This is a strings");
-        assert hasVowels("Hello World");
-        assert hasVowels("Java is fun");
-        assert !hasVowels("123hi");
-        assert hasVowels("Coding vs Programming");
-    }
+public class CheckVowels {
+    private static final Set<Character> VOWELS = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
 
     /**
      * Check if a string is has vowels or not
@@ -22,9 +15,13 @@ class CheckVowels {
      * @return {@code true} if given string has vowels, otherwise {@code false}
      */
     public static boolean hasVowels(String input) {
-        if (input.matches("[AEIOUaeiou]")) {
-            countVowels(input);
-            return true;
+        if (input == null) {
+            return false;
+        }
+        for (char c : input.toLowerCase().toCharArray()) {
+            if (VOWELS.contains(c)) {
+                return true;
+            }
         }
         return false;
     }
@@ -34,20 +31,16 @@ class CheckVowels {
      *
      * @param input a string prints the count of vowels
      */
-    public static void countVowels(String input) {
-        input = input.toLowerCase();
-        int count = 0;
-        int i = 0;
-        while (i < input.length()) {
-            if (input.charAt(i) == 'a'
-                    || input.charAt(i) == 'e'
-                    || input.charAt(i) == 'i'
-                    || input.charAt(i) == 'o'
-                    || input.charAt(i) == 'u') {
-                count++;
-            }
-            i++;
+    public static int countVowels(String input) {
+        if (input == null) {
+            return 0;
         }
-        System.out.println(count);
+        int cnt = 0;
+        for (char c : input.toLowerCase().toCharArray()) {
+            if (VOWELS.contains(c)) {
+                ++cnt;
+            }
+        }
+        return cnt;
     }
 }
