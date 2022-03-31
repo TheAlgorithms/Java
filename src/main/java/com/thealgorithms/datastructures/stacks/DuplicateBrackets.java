@@ -38,6 +38,7 @@ public class DuplicateBrackets {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         System.out.println(check(str));
+        sc.close();
     }
 
 }
