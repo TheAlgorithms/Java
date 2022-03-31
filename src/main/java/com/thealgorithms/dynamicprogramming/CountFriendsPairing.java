@@ -14,7 +14,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 public class CountFriendsPairing {
-    public static boolean CountFriendsPairing(int n, int a[]) {
+    public static boolean countFriendsPairing(int n, int a[]) {
         int dp[] = new int[n + 1];
         // array of n+1 size is created
         dp[0] = 1;
