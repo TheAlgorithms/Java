@@ -263,8 +263,11 @@ public class SinglyLinkedList extends Node{
     public void swapNodes(int a, int b) {
         Node currentNode = head;
         Node prev_a , prev_b , a_node , b_node;
-        while(currentNode.next.value!=a&&currentNode.next.value!=b){
+        while(currentNode.next!=null&&currentNode.next.value!=a&&currentNode.next.value!=b){
             currentNode = currentNode.next;
+        }
+        if(currentNode.next==null){
+            return;
         }
         if(currentNode.next.value==a){
             prev_a = currentNode;
