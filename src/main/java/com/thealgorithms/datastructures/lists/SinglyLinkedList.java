@@ -82,7 +82,7 @@ public class SinglyLinkedList extends Node{
         if(previousA != null){
             previousA.next = currentB;
         }
-        else{ 
+        else{
             // make 'b' as the new head
             head = currentB;
         }
@@ -96,7 +96,7 @@ public class SinglyLinkedList extends Node{
             head = currentA;
         }
         // Swap next pointer
-        
+
         Node temp = currentA.next;
         currentA.next = currentB.next;
         currentB.next = temp;
@@ -308,44 +308,6 @@ public class SinglyLinkedList extends Node{
      * Swaps nodes of two given values a and b.
      *
      */
-    public void swapNodes(int a, int b) {
-        Node currentNode = head;
-        Node prev_a , prev_b , a_node , b_node;
-        while(currentNode.next!=null&&currentNode.next.value!=a&&currentNode.next.value!=b){
-            currentNode = currentNode.next;
-        }
-        if(currentNode.next==null){
-            return;
-        }
-        if(currentNode.next.value==a){
-            prev_a = currentNode;
-            a_node = currentNode.next;
-
-            while(currentNode.next!=null&&currentNode.next.value!=b){
-                currentNode = currentNode.next;
-            }
-            prev_b = currentNode;
-            b_node = currentNode.next;
-        }
-        else{
-            prev_b = currentNode;
-            b_node = currentNode.next;
-            while(currentNode.next!=null&&currentNode.next.value!=a){
-                currentNode = currentNode.next;
-            }
-            prev_a = currentNode;
-            a_node = currentNode.next;
-        }
-
-        if(a_node==null||b_node==null){
-            return;
-        }
-        Node c = a_node.next;
-        a_node.next = b_node.next;
-        b_node.next = c;
-        prev_a.next = b_node;
-        prev_b.next = a_node;
-    }
 
     /**
      * Deletes a node at the head
