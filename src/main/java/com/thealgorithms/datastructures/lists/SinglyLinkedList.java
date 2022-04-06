@@ -44,16 +44,14 @@ public class SinglyLinkedList extends Node{
     public boolean detectLoop() {
         Node currentNodeFast = head;
         Node currentNodeSlow = head;
-        boolean flag = false;
-        while (currentNodeFast != null && currentNodeFast.next != null && currentNodeSlow != null && currentNodeSlow.next != null) {
+        while (currentNodeFast != null && currentNodeFast.next != null) {
             currentNodeFast = currentNodeFast.next.next;
             currentNodeSlow = currentNodeSlow.next;
             if (currentNodeFast == currentNodeSlow) {
-                flag = true;
-                break;
+                return true;
             }
         }
-        return flag;
+        return false;
     }
 
     /**
@@ -84,7 +82,7 @@ public class SinglyLinkedList extends Node{
         if(previousA != null){
             previousA.next = currentB;
         }
-        else{ 
+        else{
             // make 'b' as the new head
             head = currentB;
         }
@@ -98,7 +96,7 @@ public class SinglyLinkedList extends Node{
             head = currentA;
         }
         // Swap next pointer
-        
+
         Node temp = currentA.next;
         currentA.next = currentB.next;
         currentB.next = temp;
@@ -109,6 +107,10 @@ public class SinglyLinkedList extends Node{
      *
      */
     Node reverseList(Node node) {
+        Node prevNode = head;
+        while(prevNode.next!=node){
+            prevNode = prevNode.next;
+        }
         Node prev = null, curr = node, next;
         while (curr != null) {
             next = curr.next;
@@ -116,8 +118,8 @@ public class SinglyLinkedList extends Node{
             prev = curr;
             curr = next;
         }
-        node = prev;
-        return node;
+        prevNode.next = prev;
+        return head;
     }
 
     /**
@@ -159,6 +161,14 @@ public class SinglyLinkedList extends Node{
      */
     public Node getHead() {
         return head;
+    }
+
+    /**
+     * Set head of the list.
+     *
+     */
+    public void setHead(Node head) {
+        this.head = head;
     }
 
     /**
@@ -205,138 +215,33 @@ public class SinglyLinkedList extends Node{
         return joiner.toString();
     }
 
-    /**
-     * Driver Code
-     */
-    public static void main(String[] arg) {
-        SinglyLinkedList list = new SinglyLinkedList();
-        assert list.isEmpty();
-        assert list.size() == 0 && list.count() == 0;
-        assert list.toString().equals("");
+    public void deleteDuplicates() {
 
-        /* Test insert function */
-        list.insertHead(5);
-        list.insertHead(7);
-        list.insertHead(10);
-        list.insert(3);
-        list.insertNth(1, 4);
-        assert list.toString().equals("10->7->5->3->1");
-
-        /* Test search function */
-        assert list.search(10) && list.search(5) && list.search(1) && !list.search(100);
-
-        /* Test get function */
-        assert list.getNth(0) == 10 && list.getNth(2) == 5 && list.getNth(4) == 1;
-
-        /* Test delete function */
-        list.deleteHead();
-        list.deleteNth(1);
-        list.delete();
-        assert list.toString().equals("7->3");
-
-        assert list.size == 2 && list.size() == list.count();
-
-        list.clear();
-        assert list.isEmpty();
-
-        try {
-            list.delete();
-            assert false;
-            /* this should not happen */
-        } catch (Exception e) {
-            assert true;
-            /* this should happen */
-        }
-
-        Node instance = new Node();
-        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
-        head = instance.deleteDuplicates(head);
-        instance.print(head);
-
-    }
-}
-
-/**
- * This class is the nodes of the SinglyLinked List. They consist of a value and
- * a pointer to the node after them.
- */
-class Node {
-
-    /**
-     * Head refer to the front of the list
-     */
-    public Node head;
-
-    /**
-     * Size of SinglyLinkedList
-     */
-    public int size;
-
-
-
-    /**
-     * The value of the node
-     */
-    int value;
-
-    /**
-     * Point to the next node
-     */
-    Node next;
-
-    Node() {
-    }
-
-    /**
-     * Constructor
-     *
-     * @param value Value to be put in the node
-     */
-    Node(int value) {
-        this(value, null);
-    }
-
-    /**
-     * Constructor
-     *
-     * @param value Value to be put in the node
-     * @param next Reference to the next node
-     */
-    Node(int value, Node next) {
-        this.value = value;
-        this.next = next;
-    }
-
-    public Node deleteDuplicates(Node head) {
-        // sentinel
-        Node sentinel = new Node(0, head);
-
-        // predecessor = the last node
-        // before the sublist of duplicates
-        Node pred = sentinel;
-
-        while (head != null) {
+        Node pred = head;
+        // predecessor = the node
+        // having sublist of its duplicates
+        Node newHead = head;
+        while (newHead != null) {
             // if it's a beginning of duplicates sublist
             // skip all duplicates
-            if (head.next != null && head.value == head.next.value) {
+            if (newHead.next != null && newHead.value == newHead.next.value) {
                 // move till the end of duplicates sublist
-                while (head.next != null && head.value == head.next.value) {
-                    head = head.next;
+                while (newHead.next != null && newHead.value == newHead.next.value) {
+                    newHead = newHead.next;
                 }
                 // skip all duplicates
-                pred.next = head.next;
-                // otherwise, move predecessor
-            } else {
-                pred = pred.next;
-            }
+                pred.next = newHead.next;
+                newHead = null;
 
+                // otherwise, move predecessor
+            }
             // move forward
-            head = head.next;
+            pred = pred.next;
+            newHead = pred;
         }
-        return sentinel.next;
     }
 
-    public void print(Node head) {
+    public void print() {
         Node temp = head;
         while (temp != null && temp.next != null) {
             System.out.print(temp.value + "->");
@@ -344,6 +249,7 @@ class Node {
         }
         if (temp != null) {
             System.out.print(temp.value);
+            System.out.println();
         }
     }
 
@@ -379,13 +285,15 @@ class Node {
             head = newNode;
             size++;
             return;
-        } else if (position == 0) {
+        }
+        if (position == 0) {
             /* insert at the head of the list */
             newNode.next = head;
             head = newNode;
             size++;
             return;
         }
+
         Node cur = head;
         for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
@@ -393,25 +301,13 @@ class Node {
         newNode.next = cur.next;
         cur.next = newNode;
         size++;
+
     }
 
     /**
      * Swaps nodes of two given values a and b.
      *
      */
-    public void swapNodes(int a, int b) {
-        Node currentNode = head;
-        Node temp = null;
-        while (currentNode != null) {
-            if (currentNode.next.value == a) {
-                temp = currentNode.next;
-            }
-            if (currentNode.next.value == b) {
-                currentNode.next = temp;
-            }
-            currentNode = currentNode.next;
-        }
-    }
 
     /**
      * Deletes a node at the head
@@ -479,4 +375,96 @@ class Node {
             throw new IndexOutOfBoundsException(position + "");
         }
     }
+    /**
+     * Driver Code
+     */
+    public static void main(String[] arg) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assert list.isEmpty();
+        assert list.size() == 0 && list.count() == 0;
+        assert list.toString().equals("");
+
+        /* Test insert function */
+        list.insertHead(5);
+        list.insertHead(7);
+        list.insertHead(10);
+        list.insert(3);
+        list.insertNth(1, 4);
+        assert list.toString().equals("10->7->5->3->1");
+        System.out.println(list.toString());
+        /* Test search function */
+        assert list.search(10) && list.search(5) && list.search(1) && !list.search(100);
+
+        /* Test get function */
+        assert list.getNth(0) == 10 && list.getNth(2) == 5 && list.getNth(4) == 1;
+
+        /* Test delete function */
+        list.deleteHead();
+        list.deleteNth(1);
+        list.delete();
+        assert list.toString().equals("7->3");
+        System.out.println(list.toString());
+        assert list.size == 2 && list.size() == list.count();
+
+        list.clear();
+        assert list.isEmpty();
+
+        try {
+            list.delete();
+            assert false;
+            /* this should not happen */
+        } catch (Exception e) {
+            assert true;
+            /* this should happen */
+        }
+
+        SinglyLinkedList instance = new SinglyLinkedList();
+        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
+        instance.setHead(head);
+        instance.deleteDuplicates();
+        instance.print();
+
+    }
+
+}
+
+/**
+ * This class is the nodes of the SinglyLinked List. They consist of a value and
+ * a pointer to the node after them.
+ */
+class Node {
+
+    /**
+     * The value of the node
+     */
+    int value;
+
+    /**
+     * Point to the next node
+     */
+    Node next;
+
+    Node() {
+    }
+
+    /**
+     * Constructor
+     *
+     * @param value Value to be put in the node
+     */
+    Node(int value) {
+        this(value, null);
+    }
+
+    /**
+     * Constructor
+     *
+     * @param value Value to be put in the node
+     * @param next Reference to the next node
+     */
+    Node(int value, Node next) {
+        this.value = value;
+        this.next = next;
+    }
+
 }
