@@ -11,14 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ArmstrongTest {
 
     @Test
-    void testisArmStrong() {
+    void testIsArmstrong() {
         Armstrong armstrong = new Armstrong();
-        assertThat(armstrong.isArmStrong(0)).isTrue();
-        assertThat(armstrong.isArmStrong(1)).isTrue();
-        assertThat(armstrong.isArmStrong(153)).isTrue();
-        assertThat(armstrong.isArmStrong(371)).isTrue();
-
-        assertThat(armstrong.isArmStrong(1634)).isFalse();
-        assertThat(armstrong.isArmStrong(200)).isFalse();
+        assertThat(armstrong.isArmstrong(0)).isTrue();
+        assertThat(armstrong.isArmstrong(1)).isTrue();
+        assertThat(armstrong.isArmstrong(153)).isTrue();
+        assertThat(armstrong.isArmstrong(371)).isTrue();
+        assertThat(armstrong.isArmstrong(1634)).isFalse();
+        assertThat(armstrong.isArmstrong(200)).isFalse();
     }
 }
