@@ -1,14 +1,22 @@
 package com.thealgorithms.sorts;
 
-import java.util.Collections;
-
+/**
+ * The Dutch National Flag Sort sorts a sequence of values into three permutations which are defined by a value given
+ * as the indented middle.
+ * First permutation: values less than middle.
+ * Second permutation: values equal middle.
+ * Third permutation: values greater than middle.
+ * If no indented middle is given, this implementation will use a value from the given Array.
+ * This value is the one positioned in the arrays' middle if the arrays' length is odd.
+ * If the arrays' length is even, the value left to the middle will be used.
+ */
 public class DutchNationalFlagSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        System.out.println(unsorted[(int) Math.floor((unsorted.length -1)/2.0)]);
+        System.out.println(unsorted[(int) Math.floor((unsorted.length)/2.0) -1]);
 
-        return dutch_national_flag_sort(unsorted, unsorted[(int) Math.floor((unsorted.length -1)/2.0)]);
+        return dutch_national_flag_sort(unsorted, unsorted[(int) Math.floor((unsorted.length)/2.0) -1]);
     }
 
     public <T extends Comparable<T>> T[] sort(T[] unsorted, T intendedMiddle) {
@@ -22,12 +30,12 @@ public class DutchNationalFlagSort implements SortAlgorithm {
 
         while( j <= k){
             // arr[j] is more than middle
-            if ( 0 < arr[j].compareTo(intendedMiddle)){
+            if ( 0 > arr[j].compareTo(intendedMiddle)){
                 SortUtils.swap(arr, i, j);
                 j++;
                 i++;
                 // arr[j] is more than middle
-            } else if (0 > arr[j].compareTo(intendedMiddle)){
+            } else if (0 < arr[j].compareTo(intendedMiddle)){
                 SortUtils.swap(arr, j, k);
                 k--;
             } else {
