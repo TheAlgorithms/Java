@@ -20,7 +20,7 @@ public class HeronsFormula {
 		return area;
 	}
 	@Test
-	public static void main(String[] args)
+	void testAssertions()
 	{
 		assertAll("triangles",
 		        () -> assertEquals(Herons(3,4,5), 6.0),
