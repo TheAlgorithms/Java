@@ -21,11 +21,8 @@ public class AbsoluteMax {
 
         Arrays.stream(numbers)
                 .skip(1)
-                .forEach(number -> {
-                    if (Math.abs(number) > Math.abs(absMaxWrapper.value)) {
-                        absMaxWrapper.value = number;
-                    }
-                });
+                .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
+                .forEach(number -> absMaxWrapper.value = number);
 
         return absMaxWrapper.value;
     }
