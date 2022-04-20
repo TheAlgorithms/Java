@@ -21,11 +21,8 @@ public class AbsoluteMin {
 
         Arrays.stream(numbers)
                 .skip(1)
-                .forEach(number -> {
-                    if (Math.abs(number) < Math.abs(absMinWrapper.value)) {
-                        absMinWrapper.value = number;
-                    }
-                });
+                .filter(number -> Math.abs(number) < Math.abs(absMinWrapper.value))
+                .forEach(number -> absMinWrapper.value = number);
 
         return absMinWrapper.value;
     }
