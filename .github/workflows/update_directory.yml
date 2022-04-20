@@ -1,6 +1,18 @@
 # This GitHub Action updates the DIRECTORY.md file (if needed) when doing a git push
 name: Update Directory
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '**.yml'
+      - '**.xml'
+      - '**.Dockerfile'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '**.yml'
+      - '**.xml'
+      - '**.Dockerfile'
 jobs:
   update_directory_md:
     runs-on: ubuntu-latest
