@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
-import java.lang.*;
 import java.util.*;
+import static com.thealgorithms.sorts.SortUtils.*;
 
 public class PigeonholeSort {
     /*
@@ -40,13 +40,15 @@ public class PigeonholeSort {
         PigeonholeSort pigeonholeSort = new PigeonholeSort();
         Integer[] arr = { 8, 3, 2, 7, 4, 6, 8 };
 
-        System.out.print("Unsorted: ");
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+        System.out.print("Unsorted order is : ");
+        print(arr);
 
         pigeonholeSort.sort(arr);
-        System.out.print("\nSorted order is : ");
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+        
+        System.out.print("Sorted order is : ");
+        for (int i = 0; i < arr.length; i++) {
+            assert (arr[i]) <= (arr[i+1]);
+        }
+        print(arr);
     }
 }
