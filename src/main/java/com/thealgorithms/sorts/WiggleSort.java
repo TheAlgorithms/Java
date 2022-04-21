@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import com.thealgorithms.searches.QuickSelect;
-
 import java.util.Arrays;
 
 import static com.thealgorithms.maths.Ceil.ceil;
@@ -59,12 +57,12 @@ public class WiggleSort implements SortAlgorithm {
 
         System.out.println(median);
 
-        for(int i = 0; i < sortThis.length; i++){
+        for (T sortThi : sortThis) {
             int numMedians = 0;
-            if(0 == sortThis[i].compareTo(median)){
+            if (0 == sortThi.compareTo(median)) {
                 numMedians++;
             }
-            if( numMedians > ceil(sortThis.length/ 2.0)){
+            if (numMedians > ceil(sortThis.length / 2.0)) {
                 throw new IllegalArgumentException("No more than half the number of values may be the same.");
             }
         }
