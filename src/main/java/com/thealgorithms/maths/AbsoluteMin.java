@@ -2,35 +2,28 @@ package com.thealgorithms.maths;
 
 import java.util.Arrays;
 
-/**
- * description:
- *
- * <p>
- * absMin([0, 5, 1, 11]) = 0, absMin([3 , -10, -2]) = -2
- */
 public class AbsoluteMin {
 
-    public static void main(String[] args) {
-        int[] testnums = {4, 0, 16};
-        assert absMin(testnums) == 0;
-
-        int[] numbers = {3, -10, -2};
-        System.out.println("absMin(" + Arrays.toString(numbers) + ") = " + absMin(numbers));
-    }
-
     /**
-     * get the value, returns the absolute min value min
+     * Compares the numbers given as arguments to get the absolute min value.
      *
-     * @param numbers contains elements
-     * @return the absolute min value
+     * @param numbers The numbers to compare
+     * @return The absolute min value
      */
-    public static int absMin(int[] numbers) {
-        int absMinValue = numbers[0];
-        for (int i = 1, length = numbers.length; i < length; ++i) {
-            if (Math.abs(numbers[i]) < Math.abs(absMinValue)) {
-                absMinValue = numbers[i];
-            }
+    public static int getMinValue(int... numbers) {
+        if (numbers.length == 0) {
+            throw new IllegalArgumentException("Numbers array cannot be empty");
         }
-        return absMinValue;
+
+        var absMinWrapper = new Object() {
+            int value = numbers[0];
+        };
+
+        Arrays.stream(numbers)
+                .skip(1)
+                .filter(number -> Math.abs(number) < Math.abs(absMinWrapper.value))
+                .forEach(number -> absMinWrapper.value = number);
+
+        return absMinWrapper.value;
     }
 }
