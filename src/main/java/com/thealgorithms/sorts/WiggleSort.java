@@ -7,8 +7,10 @@ import static com.thealgorithms.maths.Floor.floor;
 import static com.thealgorithms.searches.QuickSelect.select;
 
 /**
- * A wriggle sort implementation based on John L.s' answer in
+ * A wiggle sort implementation based on John L.s' answer in
  * https://cs.stackexchange.com/questions/125372/how-to-wiggle-sort-an-array-in-linear-time-complexity
+ * Not all arrays are wiggle-sortable. This algorithm will find some obviously not wiggle-sortable arrays and throw an error,
+ * but there are some exceptions that won't be caught, for example [1, 2, 2].
  */
 public class WiggleSort implements SortAlgorithm {
     @Override
@@ -17,7 +19,7 @@ public class WiggleSort implements SortAlgorithm {
     }
 
     private int mapIndex(int index, int n){
-        return (2 * index) % (n-1 | 1);
+        return ((2 * index + 1) % (n | 1)) ;
     }
 
     /**
@@ -32,11 +34,11 @@ public class WiggleSort implements SortAlgorithm {
         int j = 0;
         int k = n - 1;
         while (j <= k) {
-            if (0 > sortThis[mapIndex(j, n)].compareTo(median)) {
+            if (0 < sortThis[mapIndex(j, n)].compareTo(median)) {
                 SortUtils.swap(sortThis, mapIndex(j, n), mapIndex(i, n));
                 i++;
                 j++;
-            } else if (0 < sortThis[mapIndex(j, n)].compareTo(median)) {
+            } else if (0 > sortThis[mapIndex(j, n)].compareTo(median)) {
                 SortUtils.swap(sortThis, mapIndex(j, n), mapIndex(k, n));
                 k--;
             } else {
@@ -49,13 +51,7 @@ public class WiggleSort implements SortAlgorithm {
         // find the median using quickSelect (if the result isn't in the array, use the next greater value)
         T median;
 
-        if(sortThis.length % 2 == 0) {
-            median = select(Arrays.<T>asList(sortThis), (int) (sortThis.length / 2.0));
-        } else {
-            median = select(Arrays.<T>asList(sortThis), (int) floor(sortThis.length / 2.0));
-        }
-
-        System.out.println(median);
+        median = select(Arrays.<T>asList(sortThis), (int) floor(sortThis.length / 2.0) -1);
 
         for (T sortThi : sortThis) {
             int numMedians = 0;
@@ -69,20 +65,5 @@ public class WiggleSort implements SortAlgorithm {
 
         triColorSort(sortThis, median);
         return sortThis;
-    }
-    public static void main(String[] args) {
-        WiggleSort wiggleSort = new WiggleSort();
-
-        Integer[] integers0 = new Integer[]{1, 2, 3, 4, 5};
-        Integer[] integers1 = new Integer[]{1, 2, 1, 1, 5};
-        String[] strings = new String[]{"a", "b", "e", "d"};
-
-        wiggleSort.sort(integers0);
-        wiggleSort.sort(integers1);
-        wiggleSort.sort(strings);
-
-        System.out.println(Arrays.toString(integers0));
-        System.out.println(Arrays.toString(integers1));
-        System.out.println(Arrays.toString(strings));
     }
 }
