@@ -7,21 +7,21 @@ public class HeronsFormulaTest {
 		@Test
 		void test1()
 		{
-			Assertions.assertEquals(Herons(3,4,5), 6.0);
+			Assertions.assertEquals(HeronsFormula.Herons(3,4,5), 6.0);
 		}
 		@Test
 		void test2() 
 		{
-			Assertions.assertEquals(Herons(24,30,18), 216.0);
+			Assertions.assertEquals(HeronsFormula.Herons(24,30,18), 216.0);
 		}
 		@Test
 		void test3()
 		{
-			Assertions.assertEquals(Herons(1,1,1), 0.4330127018922193);
+			Assertions.assertEquals(HeronsFormula.Herons(1,1,1), 0.4330127018922193);
 		}
 		@Test
 		void test4()
 		{
-			Assertions.assertEquals(Herons(4,5,8), 8.181534085976786);
+			Assertions.assertEquals(HeronsFormula.Herons(4,5,8), 8.181534085976786);
 		}
 }
