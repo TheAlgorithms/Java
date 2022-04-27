@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PermutationTest {
+public class FibonacciHeapTest {
 
     @Test
     void testHeap()
