@@ -1,9 +1,8 @@
 package com.thealgorithms.datastructures.heaps;
 
 
-public class FibonacciHeap{
-
-	private static final double GOLDAN_RATIO = (1+Math.sqrt(5))/2;
+public class FibonacciHeap {
+    private static final double GOLDAN_RATIO = (1+Math.sqrt(5))/2;
 	private HeapNode min;
 	private static int totalLinks = 0;
 	private static int totalCuts = 0;
@@ -419,5 +418,19 @@ public class FibonacciHeap{
     	private boolean isRoot() {
     		return (this.parent == null);
     	}
+    }
+
+    public static void main(String[] args) {
+        FibonacciHeap fibonacciHeap = new FibonacciHeap();
+        fibonacciHeap.insert(5);
+        HeapNode node = fibonacciHeap.insert(3);
+        fibonacciHeap.insert(1);
+        fibonacciHeap.insert(18);
+        fibonacciHeap.insert(33);
+
+        System.out.println(fibonacciHeap.findMin().getKey());
+        fibonacciHeap.deleteMin();
+        System.out.println(fibonacciHeap.findMin().getKey());
+
     }
 }
