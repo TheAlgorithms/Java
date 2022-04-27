@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.heaps;
+
 
 public class FibonacciHeap{
 
