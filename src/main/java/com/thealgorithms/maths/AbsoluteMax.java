@@ -2,35 +2,28 @@ package com.thealgorithms.maths;
 
 import java.util.Arrays;
 
-/**
- * description:
- *
- * <p>
- * absMax([0, 5, 1, 11]) = 11, absMax([3 , -10, -2]) = -10
- */
 public class AbsoluteMax {
 
-    public static void main(String[] args) {
-        int[] testnums = {-2, 0, 16};
-        assert absMax(testnums) == 16;
-
-        int[] numbers = {3, -10, -2};
-        System.out.println("absMax(" + Arrays.toString(numbers) + ") = " + absMax(numbers));
-    }
-
     /**
-     * get the value, return the absolute max value
+     * Compares the numbers given as arguments to get the absolute max value.
      *
-     * @param numbers contains elements
-     * @return the absolute max value
+     * @param numbers The numbers to compare
+     * @return The absolute max value
      */
-    public static int absMax(int[] numbers) {
-        int absMaxValue = numbers[0];
-        for (int i = 1, length = numbers.length; i < length; ++i) {
-            if (Math.abs(numbers[i]) > Math.abs(absMaxValue)) {
-                absMaxValue = numbers[i];
-            }
+    public static int getMaxValue(int... numbers) {
+        if (numbers.length == 0) {
+            throw new IllegalArgumentException("Numbers array cannot be empty");
         }
-        return absMaxValue;
+
+        var absMaxWrapper = new Object() {
+            int value = numbers[0];
+        };
+
+        Arrays.stream(numbers)
+                .skip(1)
+                .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
+                .forEach(number -> absMaxWrapper.value = number);
+
+        return absMaxWrapper.value;
     }
 }

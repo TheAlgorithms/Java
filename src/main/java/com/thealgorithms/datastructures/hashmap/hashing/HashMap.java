@@ -105,6 +105,8 @@ public class HashMap {
                 } else {
                     n.setNext(n.getNext().getNext());
                 }
+            } else {
+                delete(n.getNext(), key);
             }
         }
 
