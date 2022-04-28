@@ -90,7 +90,7 @@ public class RangeInSortedArray {
             if (nums[mid] > key) {
                 right = mid - 1;
             } else if (nums[mid] <= key) {
-                count = mid + 1; // Atleast mid+1 elements exist which are <= key
+                count = mid + 1; // At least mid+1 elements exist which are <= key
                 left = mid + 1;
             }
         }
