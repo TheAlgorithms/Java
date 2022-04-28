@@ -28,7 +28,7 @@ package com.thealgorithms.maths;
  * following Java Program calculates the direction ratios of the cross products
  * of two vector. The program uses a function, cross() for doing so. The
  * direction ratios for the first and the second vector has to be passed one by
- * one seperated by a space character.
+ * one separated by a space character.
  *
  * Magnitude of a vector is the square root of the sum of the squares of the
  * direction ratios.
