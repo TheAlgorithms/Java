@@ -49,7 +49,7 @@ public class CoinChange {
      *
      * @param coins The list of coins
      * @param amount The amount for which we need to find the minimum number of
-     * coins. Finds the the minimum number of coins that make a given value.
+     * coins. Finds the minimum number of coins that make a given value.
      */
     public static int minimumCoins(int[] coins, int amount) {
         // minimumCoins[i] will store the minimum coins needed for amount i
