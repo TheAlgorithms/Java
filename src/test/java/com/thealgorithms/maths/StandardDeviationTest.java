@@ -26,7 +26,7 @@ public class StandardDeviationTest{
   void test4()
   {
     double[] t4 = new double[]{3.14, 2.22222, 9.89898989, 100.00045, 56.7};
-     Assertions.assertEquals(StandardDeviation.stdDev(t4), 6.8308125431752265);
+     Assertions.assertEquals(StandardDeviation.stdDev(t4), 38.506117353865775);
   }
 }
   
