@@ -35,7 +35,7 @@ public class BloomFilter<T> {
         return true;
     }
 
-    public class Hash<T> {
+    private class Hash<T> {
 
         int index;
 
