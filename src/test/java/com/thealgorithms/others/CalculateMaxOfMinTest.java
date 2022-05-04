@@ -1,8 +1,6 @@
 package com.thealgorithms.others;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import com.thealgorithms.datastructures.stacks.CalculateMaxOfMin;
 
 public class CalculateMaxOfMinTest {
