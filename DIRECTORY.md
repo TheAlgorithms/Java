@@ -6,6 +6,8 @@
         * thealgorithms
           * audiofilters
             * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/audiofilters/IIRFilter.java)
+          * bloomfilter
+            * [BloomFilter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/bloomfilter/BloomFilter.java) 
           * backtracking
             * [Combination](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Combination.java)
             * [FloodFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/FloodFill.java)
@@ -84,6 +86,7 @@
               * [MaxHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MaxHeap.java)
               * [MinHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MinHeap.java)
               * [MinPriorityQueue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MinPriorityQueue.java)
+              * [FibonacciHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/FibonacciHeap.java)
             * lists
               * [CircleLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/CircleLinkedList.java)
               * [CountSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/CountSinglyLinkedListRecursion.java)
