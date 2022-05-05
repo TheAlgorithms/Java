@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.util.stream.IntStream;
+
 /**
  * In number theory, the aliquot sum s(n) of a positive integer n is the sum of
  * all proper divisors of n, that is, all divisors of n other than n itself. For
@@ -9,26 +11,22 @@ package com.thealgorithms.maths;
  */
 public class AliquotSum {
 
-    public static void main(String[] args) {
-        assert aliquotSum(1) == 0;
-        assert aliquotSum(6) == 6;
-        assert aliquotSum(15) == 9;
-        assert aliquotSum(19) == 1;
-    }
-
     /**
-     * Finds the aliquot sum of an integer number
+     * Finds the aliquot sum of an integer number.
      *
      * @param number a positive integer
      * @return aliquot sum of given {@code number}
      */
-    public static int aliquotSum(int number) {
-        int sum = 0;
-        for (int i = 1, limit = number / 2; i <= limit; ++i) {
-            if (number % i == 0) {
-                sum += i;
-            }
-        }
-        return sum;
+    public static int getAliquotValue(int number) {
+        var sumWrapper = new Object() {
+            int value = 0;
+        };
+
+        IntStream.iterate(1, i -> ++i)
+                .limit(number / 2)
+                .filter(i -> number % i == 0)
+                .forEach(i -> sumWrapper.value += i);
+
+        return sumWrapper.value;
     }
 }

@@ -90,7 +90,7 @@ public class CircleLinkedList<E> {
         }
         Node<E> destroy = before.next;
         E saved = destroy.value;
-        // assigning the next reference to the the element following the element we want to remove...
+        // assigning the next reference to the element following the element we want to remove...
         // the last element will be assigned to the head.
         before.next = before.next.next;
         // scrubbing
