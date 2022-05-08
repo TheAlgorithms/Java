@@ -8,9 +8,10 @@ package com.thealgorithms.datastructures.stacks;
 import java.util.*;
 
 public class CalculateMaxOfMin {
-    public static boolean calculateMaxOfMin(int[] a, int b[], int n) {
+    public static int calculateMaxOfMin(int[] a) {
+        int n = a.length;
         int[] ans = new int[n];
-        int[] arr2 = Arrays.copyOf(a, a.length);
+        int[] arr2 = Arrays.copyOf(a, n);
         Arrays.sort(arr2);
         int maxNum = arr2[arr2.length - 1];
         ans[0] = maxNum;
@@ -27,14 +28,7 @@ public class CalculateMaxOfMin {
             ans[index] = minimums[minimums.length - 1];
             index += 1;
         }
-        for (int i = 0; i < b.length; i++) {
-            if (b[i] != ans[i]) {
-                return false;
-                // checks whether the calculated answer matches with the expected answer
-            }
-        }
-        return true;
-        // returns true if calculated answer matches with the expected answer
+        return ans[0];
     }
 }
 /**
