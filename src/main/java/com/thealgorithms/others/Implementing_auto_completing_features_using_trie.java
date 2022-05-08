@@ -135,7 +135,7 @@ class Trieac {
             return -1;
         }
 
-        // If there are are nodes below last 
+        // If there are nodes below the last 
         // matching character. 
         if (!isLast) {
             String prefix = query;
