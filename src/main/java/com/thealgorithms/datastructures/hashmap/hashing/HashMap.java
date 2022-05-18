@@ -89,7 +89,9 @@ public class HashMap {
         public void delete(int key) {
             if (!isEmpty()) {
                 if (first.getKey() == key) {
-                    first = null;
+                    Node head = first;
+                    first = first.next;
+                    head = null;
                 } else {
                     delete(first, key);
                 }
