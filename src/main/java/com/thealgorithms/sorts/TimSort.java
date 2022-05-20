@@ -71,10 +71,10 @@ class TimSort {
      * sorting.
      */
     public void insertion_sort(int[] array, int start_idx, int end_idx) {
-        for (int i = 0; i < array.length; i++) {
+        for (int i = start_idx; i <= end_idx; i++) {
             int current_element = array[i];
             int j = i - 1;
-            while (j >= 0 && array[j] > current_element) {
+            while (j >= start_idx && array[j] > current_element) {
                 array[j + 1] = array[j];
                 j--;
             }
