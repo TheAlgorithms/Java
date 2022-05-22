@@ -10,6 +10,8 @@ import java.util.LinkedList;
  * a linked list. A Directed Graph is proven to be acyclic when a DFS or Depth First Search is
  * performed, yielding no back-edges.
  *
+ * https://en.wikipedia.org/wiki/Topological_sorting
+ *
  * @author Jonathan Taylor (https://github.com/Jtmonument)
  * Based on Introduction to Algorithms 3rd Edition
  */
