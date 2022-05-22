@@ -1,3 +1,4 @@
+package com.thealgorithms.strings ;
 import java.util.HashMap ;
 class longestNonRepeativeSubstring {
 
