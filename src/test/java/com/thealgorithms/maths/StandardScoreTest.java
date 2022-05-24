@@ -24,5 +24,4 @@ public class StandardScoreTest{
   {
     Assertions.assertEquals(StandardScore.zScore(8.9, 3, 4.2), 1.4047619047619049);
   }
-  }  
 }
