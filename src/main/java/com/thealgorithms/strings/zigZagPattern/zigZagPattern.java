@@ -1,7 +1,7 @@
 package com.thealgorithms.strings.zigZagPattern;
 class zigZagPattern {
 
-    public String encode(String s, int numRows) {
+    public static String encode(String s, int numRows) {
         if ( numRows < 2 || s.length() < numRows ) return s ;
         int start = 0 , index = 0 , height = 1 , depth = numRows ;
         char[] zigZagedArray = new char[ s.length() ] ;
