@@ -6,5 +6,4 @@ public class StandardScore {
 		double z = (num - mean)/stdDev;
 		return z;
 	}
-
 }
