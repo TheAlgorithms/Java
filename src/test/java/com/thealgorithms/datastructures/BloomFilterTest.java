@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class BloomFilterTest {
-
+//Test
     @Test
     public void test1(){
         BloomFilter<Integer> bloomFilter = new BloomFilter<>(3,10);
@@ -15,7 +15,7 @@ public class BloomFilterTest {
         Assertions.assertTrue(bloomFilter.contains(3));
         Assertions.assertTrue(bloomFilter.contains(17));
     }
-
+//Test
     @Test
     public void test2(){
         BloomFilter<String> bloomFilter = new BloomFilter<>(4,20);
