@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PythagoreanTripleTest {
     @Test
-    public void Testpythagoreantriplevalie(){
+    public void Testpythagoreantriple(){
         
         assertEquals(true, PythagoreanTriple.isPythagTriple(3,4,5));
         assertEquals(true, PythagoreanTriple.isPythagTriple(6,8,10));
