@@ -5,7 +5,7 @@ package com.thealgorithms.others;
 
 import java.util.ArrayList;
 
-public abstract class CPUalgorithms {
+public abstract class MemoryManagementAlgorithms {
 
     /**
      * Method to allocate memory to blocks according to CPU algorithms.
@@ -26,7 +26,7 @@ public abstract class CPUalgorithms {
 /**
  * @author Dekas Dimitrios
  */
-class BestFitCPU extends CPUalgorithms{
+class BestFitCPU extends MemoryManagementAlgorithms {
 
     private static final int NO_ALLOCATION
             = -255; // if a process has been allocated in position -255,
@@ -110,7 +110,7 @@ class BestFitCPU extends CPUalgorithms{
 /**
  * @author Dekas Dimitrios
  */
-class WorstFitCPU extends CPUalgorithms{
+class WorstFitCPU extends MemoryManagementAlgorithms {
 
     private static final int NO_ALLOCATION
             = -255; // if a process has been allocated in position -255,
@@ -177,7 +177,7 @@ class WorstFitCPU extends CPUalgorithms{
 /**
  * @author Dekas Dimitrios
  */
-class FirstFitCPU extends CPUalgorithms{
+class FirstFitCPU extends MemoryManagementAlgorithms {
 
     private static final int NO_ALLOCATION
             = -255; // if a process has been allocated in position -255,
@@ -236,7 +236,7 @@ class FirstFitCPU extends CPUalgorithms{
 /**
  * @author Alexandros Lemonaris
  */
-class NextFit extends CPUalgorithms{
+class NextFit extends MemoryManagementAlgorithms {
 
     private static final int NO_ALLOCATION
             = -255; // if a process has been allocated in position -255,
