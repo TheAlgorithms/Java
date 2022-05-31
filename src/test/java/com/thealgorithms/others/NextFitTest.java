@@ -16,7 +16,7 @@ class NextFitCPUTest {
     int [] sizeOfProcesses;
     ArrayList<Integer> memAllocation = new ArrayList<>();
     ArrayList<Integer> testMemAllocation ;
-    CPUalgorithms nextFit = new NextFit();
+     MemoryManagementAlgorithms nextFit = new NextFit();
 
     @Test
     void testFitForUseOfOneBlock() {
