@@ -1,29 +1,48 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
+import static org.junit.Assert.assertEquals;  
+import org.junit.After;  
+import org.junit.AfterClass;  
+import org.junit.Before;  
+import org.junit.BeforeClass;  
+import org.junit.Test;  
+import com.javatpoint.logic.Calculation; 
 
 public class AbsoluteMax {
-
-    /**
-     * Compares the numbers given as arguments to get the absolute max value.
-     *
-     * @param numbers The numbers to compare
-     * @return The absolute max value
-     */
-    public static int getMaxValue(int... numbers) {
-        if (numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty");
-        }
-
-        var absMaxWrapper = new Object() {
-            int value = numbers[0];
-        };
-
-        Arrays.stream(numbers)
-                .skip(1)
-                .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
-                .forEach(number -> absMaxWrapper.value = number);
-
-        return absMaxWrapper.value;
-    }
-}
+ 
+    @BeforeClass  
+    public static void setUpBeforeClass() throws Exception {  
+        System.out.println("before class");  
+    }  
+    @Before  
+    public void setUp() throws Exception {  
+        System.out.println("before");  
+    }  
+  
+    @Test  
+    public void testFindMax(){  
+        System.out.println("test case find max");  
+        assertEquals(4,Calculation.findMax(new int[]{1,3,4,2}));  
+        assertEquals(-2,Calculation.findMax(new int[]{-12,-3,-4,-2}));  
+    }  
+    @Test  
+    public void testCube(){  
+        System.out.println("test case cube");  
+        assertEquals(27,Calculation.cube(3));  
+    }  
+    @Test  
+    public void testReverseWord(){  
+        System.out.println("test case reverse word");  
+        assertEquals("ym eman si nahk",Calculation.reverseWord("my name is khan");  
+    }  
+    @After  
+    public void tearDown() throws Exception {  
+        System.out.println("after");  
+    }  
+  
+    @AfterClass  
+    public static void tearDownAfterClass() throws Exception {  
+        System.out.println("after class");  
+    }  
+  
+}  
