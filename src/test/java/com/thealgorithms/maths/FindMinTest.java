@@ -1,9 +1,10 @@
-package com.thealgorithms.maths
+package com.thealgorithms.maths;
 
-import org.junit.juniper.api.Test;
+
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestFindMind {
+public class FindMinTest {
   @Test
   public void test1(){
     assertEquals(1, FindMin.findMin(new int[] {1, 3, 5, 7, 9}));
