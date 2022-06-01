@@ -1,12 +1,9 @@
-package testing;
+package com.thealgorithms.maths;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import javax.annotation.processing.Generated;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+public class FindMaxTest {
 	
 
 	
