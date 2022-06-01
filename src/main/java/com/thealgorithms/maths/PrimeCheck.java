@@ -44,6 +44,15 @@ public class PrimeCheck {
         }
         return true;
     }
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.assertEquals;
+    public class primeCheck{
+    	@Test
+    	public void testprimeCheck() {
+    		assertEquals(true,PrimeCheck.isPrime(new int[] {1,3,5,7,11,13,17,19,23,29}))
+    	}
+    }
+
 
     /**
      * *
