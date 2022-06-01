@@ -9,6 +9,6 @@ public class SumOfDigitsTest {
 
         Assertions.assertEquals(6, SumOfDigits.SumOfDigitsRecursion(-123));
         Assertions.assertEquals(15, SumOfDigits.SumOfDigitsRecursion(456));
-        Assertions.assertEquals(18, SumOfDigits.SumOfDigitsRecursion(-9,12,15));
+        Assertions.assertEquals(9, SumOfDigits.SumOfDigitsRecursion(-292));
     }
 } 
