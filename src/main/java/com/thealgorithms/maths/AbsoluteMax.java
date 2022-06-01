@@ -1,29 +1,15 @@
 package com.thealgorithms.maths;
 
 import java.util.Arrays;
+import static org.junit.Assert.*;  
+import com.javatpoint.logic.*;  
+import org.junit.Test;  
 
-public class AbsoluteMax {
-
-    /**
-     * Compares the numbers given as arguments to get the absolute max value.
-     *
-     * @param numbers The numbers to compare
-     * @return The absolute max value
-     */
-    public static int getMaxValue(int... numbers) {
-        if (numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty");
-        }
-
-        var absMaxWrapper = new Object() {
-            int value = numbers[0];
-        };
-
-        Arrays.stream(numbers)
-                .skip(1)
-                .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
-                .forEach(number -> absMaxWrapper.value = number);
-
-        return absMaxWrapper.value;
-    }
-}
+public class AbsoluteMax {  
+ 
+     @Test  
+    public void testFindMax(){  
+        assertEquals(4,Calculation.findMax(new int[]{1,3,4,2}));  
+        assertEquals(-1,Calculation.findMax(new int[]{-12,-1,-3,-4,-2}));  
+    }  
+}  
