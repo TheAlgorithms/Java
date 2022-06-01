@@ -7,8 +7,8 @@ public class SumOfDigitsTest {
     @Test
     public void TestSumOfDigitsRecursion(){
 
-        Assertions.assertEquals(6, SumOfDigits.SumOfDigitsRecursion(-123));
-        Assertions.assertEquals(15, SumOfDigits.SumOfDigitsRecursion(456));
-        Assertions.assertEquals(9, SumOfDigits.SumOfDigitsRecursion(-292));
+        Assertions.assertEquals(6, SumOfDigits.sumOfDigitsRecursion(-123));
+        Assertions.assertEquals(15, SumOfDigits.sumOfDigitsRecursion(456));
+        Assertions.assertEquals(9, SumOfDigits.sumOfDigitsRecursion(-292));
     }
 } 
