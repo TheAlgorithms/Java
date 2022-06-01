@@ -2,10 +2,6 @@ package com.thealgorithms.maths;
 
 import javax.annotation.processing.Generated;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-@Generated(value = "org.junit-tools-1.1.0")
 public class FactorialTest {
 
 	
