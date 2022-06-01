@@ -38,4 +38,6 @@ public class GCDTest {
     void test7() {
         Assertions.assertEquals(GCD.gcd(9, 6), 3);
     }
+    
 }
+    
