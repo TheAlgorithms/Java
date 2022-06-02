@@ -14,12 +14,10 @@ public class SumOfDigitsTest {
         SumOfDigits sum = new SumOfDigits();
         assertEquals(11, sum.sumOfDigits(56));
     }
-
     void isSumOf3Digits() {
         SumOfDigits sum = new SumOfDigits();
         assertEquals(12, sum.sumOfDigits(192));
     }
-
     void isSumOf4Digits() {
         SumOfDigits sum = new SumOfDigits();
         assertEquals(25, sum.sumOfDigits(8962));
