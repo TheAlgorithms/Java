@@ -15,6 +15,4 @@ class PerfectNumberTest{
         assertEquals(false, perfectNumber.isPerfectNumber(29));
         assertEquals(false, perfectNumber.isPerfectNumber(497));
     }
-    
-
 }
