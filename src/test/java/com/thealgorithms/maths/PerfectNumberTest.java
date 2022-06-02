@@ -3,14 +3,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PerfectNumberTest{
-    @Test
+    PerfectNumber perfectNumber = new PerfectNumber();
+    @Test 
     public void TestPerfectNumber() {
-        PerfectNumber perfectNumber = new PerfectNumber();
         assertEquals(true, perfectNumber.isPerfectNumber(28));
-        assertEquals(false, perfectNumber.isPerfectNumber(29));
         assertEquals(true, perfectNumber.isPerfectNumber(496));
-        assertEquals(true, perfectNumber.isPerfectNumber(8128));
-        assertEquals(false, perfectNumber.isPerfectNumber(8129));
+    }
+
+    @Test
+    public void TestNotPerfectNumber() {
+        assertEquals(false, perfectNumber.isPerfectNumber(29));
+        assertEquals(false, perfectNumber.isPerfectNumber(497));
     }
     
+
 }
