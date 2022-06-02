@@ -39,3 +39,27 @@ public class FindMin {
         return min;
     }
 }
+public class ArrayValuesTest {
+
+ArrayValues array = new ArrayValues();
+
+@Test
+public void returnsSmallestValue() {
+
+    assertEquals(array.findSmallestArrayValue(new int[]{5,11,3,6,8}),3);
+    assertEquals(array.findSmallestArrayValue(new int[]{5}),5);
+    assertEquals(array.findSmallestArrayValue(new int[]{0}),0);
+    assertEquals(array.findSmallestArrayValue(new int[]{-5,-8,-3,-6,-11}),-11);
+    assertEquals(array.findSmallestArrayValue(new int[]{-20,11,-3,6,-8}),-20);
+
+}
+
+@Test(expected = ArrayIndexOutOfBoundsException.class)
+public void emptyArrayIsNotAcceptedArgument() {
+    array.findSmallestArrayValue(new int[]{});
+}
+
+@Test(expected = NullPointerException.class)
+public void nullArrayIsNotAcceptedArgument() {
+    array.findSmallestArrayValue(null);
+}
