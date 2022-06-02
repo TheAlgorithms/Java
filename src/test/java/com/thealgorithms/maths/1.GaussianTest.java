@@ -40,9 +40,9 @@ public class GaussianTest {
         list.add(0.1);
         list.add(1.2);
         list.add(1.3);
-        list.add(2.4);
-        list.add(1.0);
-        list.add(2.0);
+        list.add(2.9);
+        list.add(2.3);
+        list.add(3.0);
         gaussian=gaussian(matrixSize,list);
 
         assertEquals(answer,gaussian);
