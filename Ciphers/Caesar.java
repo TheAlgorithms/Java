@@ -90,6 +90,7 @@ public class Caesar {
     }
 
     public static void main(String[] args) {
+        System.out.println("bug");
         Scanner input = new Scanner(System.in);
         logger.info("Please enter the message (Latin Alphabet)");
         String message = input.nextLine();
