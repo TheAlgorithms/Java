@@ -38,4 +38,8 @@ public class PrimeCheckTest {
     void test7() {
         Assertions.assertFalse(PrimeCheck.isPrime(49));
     }
+    @Test
+    void test7() {
+        Assertions.assertFalse(PrimeCheck.isPrime(13));
+    }
 }
