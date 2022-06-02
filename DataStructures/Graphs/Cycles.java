@@ -11,6 +11,7 @@ class Cycle {
   ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
 
   public Cycle() {
+    int c;
     Scanner in = new Scanner(System.in);
     System.out.print("Enter the no. of nodes: ");
     nodes = in.nextInt();
