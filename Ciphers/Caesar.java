@@ -91,24 +91,24 @@ public class Caesar {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the message (Latin Alphabet)");
+        logger.info("Please enter the message (Latin Alphabet)");
         String message = input.nextLine();
-        System.out.println(message);
-        System.out.println("Please enter the shift number");
+        logger.info(message);
+        logger.info("Please enter the shift number");
         int shift = input.nextInt() % 26;
-        System.out.println("(E)ncode or (D)ecode ?");
+        logger.info("(E)ncode or (D)ecode ?");
         char choice = input.next().charAt(0);
         switch (choice) {
             case 'E':
             case 'e':
-                System.out.println(
+                logger.info(
                         "ENCODED MESSAGE IS \n" + encode(message, shift)); // send our function to handle
                 break;
             case 'D':
             case 'd':
-                System.out.println("DECODED MESSAGE IS \n" + decode(message, shift));
+                logger.info("DECODED MESSAGE IS \n" + decode(message, shift));
             default:
-                System.out.println("default case");
+                logger.info("default case");
         }
         input.close();
     }
