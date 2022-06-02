@@ -1,9 +1,7 @@
-package com.thealgorithms.maths;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class numberOfDigitsTest {
+public class NumberOfDigitsTest {
   @Test
   public void testNumberOfDigits() {
     assertEquals(1, NumberOfDigits.numberOfDigits(987654321));
