@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 
 
 public class AvarageTest {
+    double [] numbers = {3, 6, 9, 12, 15, 18, 21};
     @Test
-    void test1() {
-        Assertions.assertEquals(Avarage.avarage(1,1,2,2), 1.4142135623730951);
+    public void testAverage() {
+        
+        Assertions.assertEquals(12, Avarage.average(numbers));
     }
-    
 }
