@@ -16,7 +16,7 @@ public class CheckAnagramsTest {
     @Test
     public void CheckFalseAnagrams() {
         String testString1 = "STUDY";
-        String testString2 = "word";
+        String testString2 = "random";
         assertFalse(CheckAnagrams.isAnagrams(testString1,testString2));
     }
 
