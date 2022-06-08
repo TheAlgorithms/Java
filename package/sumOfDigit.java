@@ -1,22 +1,21 @@
-public class sumofdigit {
-    package sumofdigit {
-        import java.util.*;
-        import java.lang.*;
-        import java.io.*;
-        class sumofdigit {
-            public static void main(String args[]) {
-                Scanner sc = new Scanner(System.in);
-                int n = sc.nextInt();
-                int a[] = new int[n];
-                for (int i = 0; i < n; i++) {
-                    a[i] = sc.nextInt();
-                }
-                int sum = 0;
-                for (int i = 0; i < n; i++) {
-                    sum += a[i];
-                }
-                System.out.println(sum);
-            }
-        }
+public package com.thealgorithms.maths;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SumOfDigitsTest {
+
+    @Test
+    void sumOfDigits() {
+//        var sumOfDigits = new SumOfDigits();
+        assertEquals(0, SumOfDigits.sumOfDigits(0));
+        assertEquals(0, SumOfDigits.sumOfDigitsRecursion(0));
+        assertEquals(0, SumOfDigits.sumOfDigitsFast(0));
+        assertEquals(15, SumOfDigits.sumOfDigits(12345));
+        assertEquals(15, SumOfDigits.sumOfDigitsRecursion(12345));
+        assertEquals(15, SumOfDigits.sumOfDigitsFast(12345));
     }
+} {
+    
 }
