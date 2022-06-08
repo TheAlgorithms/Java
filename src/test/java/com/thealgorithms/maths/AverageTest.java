@@ -9,6 +9,6 @@ public class AverageTest {
     @Test
     public void testAverage() {
         
-        Assertions.assertEquals(12, Avarage.average(numbers));
+        Assertions.assertEquals(12, Average.average(numbers));
     }
 }
