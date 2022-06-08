@@ -11,6 +11,5 @@ public class FibonacciNumTest {
         assertEquals(true, FibonacciNumber.isPerfectSquare(1));
         assertEquals(false, FibonacciNumber.isPerfectSquare(2));
         assertEquals(false, FibonacciNumber.isPerfectSquare(21));
-    }
-    
+    }    
 }
