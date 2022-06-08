@@ -21,7 +21,7 @@ public class CheckAnagramsTest {
     }
 
     @Test
-    public void CheckSameLetterAnagrams() {
+    public void CheckSameWordAnagrams() {
         String testString1 = "STUDY";
         assertTrue(CheckAnagrams.isAnagrams(testString1,testString1));
     }
