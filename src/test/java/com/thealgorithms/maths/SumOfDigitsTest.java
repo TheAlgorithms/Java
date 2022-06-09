@@ -2,30 +2,24 @@ package com.thealgorithms.maths;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SumOfDigitsTest {
-    
-    SumOfDigits SoD = new SumOfDigits();
-
+/**
+ * @author SirFixalot16
+ * @since 01/06/22
+ */
+public class SumOfDigitsTest {
     @Test
-    void testZero() {
-        assertEquals(0, SoD.sumOfDigits(0));
-        assertEquals(0, SoD.sumOfDigitsRecursion(0));
-        assertEquals(0, SoD.sumOfDigitsFast(0));
-}
-
-    @Test
-    void testPositive() {
-        assertEquals(15, SoD.sumOfDigits(12345));
-        assertEquals(15, SoD.sumOfDigitsRecursion(12345));
-        assertEquals(15, SoD.sumOfDigitsFast(12345));
+    void isSumOf2Digits() {
+        SumOfDigits sum = new SumOfDigits();
+        assertEquals(11, sum.sumOfDigits(56));
     }
-
-    @Test
-    void testNegative() {
-        assertEquals(6, SoD.sumOfDigits(-123));
-        assertEquals(6, SoD.sumOfDigitsRecursion(-123));
-        assertEquals(6, SoD.sumOfDigitsFast(-123));
+    void isSumOf3Digits() {
+        SumOfDigits sum = new SumOfDigits();
+        assertEquals(12, sum.sumOfDigits(192));
+    }
+    void isSumOf4Digits() {
+        SumOfDigits sum = new SumOfDigits();
+        assertEquals(25, sum.sumOfDigits(8962));
     }
 }
