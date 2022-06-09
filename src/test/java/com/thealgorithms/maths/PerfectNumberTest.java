@@ -15,3 +15,4 @@ class PerfectNumberTest{
         assertEquals(false, PerfectNumber.isPerfectNumber(10));
     }
 }
+
