@@ -61,5 +61,4 @@ class TopologicalSortTest {
                 "Back edge: 6 -> 2";
         assertEquals(exception.getMessage(), expected);
     }
-
 }
