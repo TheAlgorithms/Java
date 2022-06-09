@@ -5,11 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindMinTest {
   @Test
-  public void testFindMinValue(){
-    assertEquals(1, FindMin.findMin(new int[] {1,2,3,4,5,6,7,8,9,10}));
-  }
-
-  @Test
   public void test1(){
     assertEquals(1, FindMin.findMin(new int[] {1, 3, 5, 7, 9}));
   }
