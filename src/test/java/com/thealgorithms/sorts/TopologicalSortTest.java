@@ -24,8 +24,6 @@ class TopologicalSortTest {
         graph.addEdge("socks", "shoes");
         graph.addEdge("jacket","");
         graph.addEdge("pants", "belt", "shoes");
-        TopologicalSort top = new TopologicalSort();
-        top.sort(graph);
         LinkedList<String> expected = new LinkedList<>();
         expected.add("socks");
         expected.add("undershorts");
@@ -36,7 +34,7 @@ class TopologicalSortTest {
         expected.add("belt");
         expected.add("tie");
         expected.add("jacket");
-        assertIterableEquals(expected, top.getList());
+        assertIterableEquals(expected, TopologicalSort.sort(graph));
     }
 
     @Test
@@ -55,8 +53,7 @@ class TopologicalSortTest {
         graph.addEdge("6", "2");
         graph.addEdge("7", "");
         graph.addEdge("8", "");
-        TopologicalSort top = new TopologicalSort();
-        Exception exception = assertThrows(BackEdgeException.class, () -> top.sort(graph));
+        Exception exception = assertThrows(BackEdgeException.class, () -> TopologicalSort.sort(graph));
         String expected = "This graph contains a cycle. No linear ordering is possible. " +
                 "Back edge: 6 -> 2";
         assertEquals(exception.getMessage(), expected);

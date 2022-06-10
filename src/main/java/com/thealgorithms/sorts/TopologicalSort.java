@@ -90,21 +90,9 @@ public class TopologicalSort {
     }
 
     /*
-     * The linked list that will contain the vertices in linear order.
-     * */
-    private final LinkedList<String> list = new LinkedList<>();
-
-    /*
      * Time variable in DFS
      * */
-    private int time;
-
-    /*
-    * Return list of vertices in topological order
-    * */
-    public LinkedList<String> getList() {
-        return list;
-    }
+    private static int time;
 
     /*
      * Depth First Search
@@ -120,12 +108,14 @@ public class TopologicalSort {
      *
      * Performed in Θ(V + E) time
      * */
-    public void sort(Graph graph) {
+    public static LinkedList<String> sort(Graph graph) {
+        LinkedList<String> list = new LinkedList<>();
         graph.adj.forEach((name, vertex) -> {
             if (vertex.color == Color.WHITE) {
-                sort(graph, vertex);
+                list.addFirst(sort(graph, vertex, list));
             }
         });
+        return list;
     }
 
     /*
@@ -143,14 +133,14 @@ public class TopologicalSort {
      *   time = time + 1
      *   u.f = time
      * */
-    private void sort(Graph graph, Vertex u) {
+    private static String sort(Graph graph, Vertex u, LinkedList<String> list) {
         time++;
         u.weight = time;
         u.color = Color.GRAY;
         graph.adj.get(u.label).next.forEach(label -> {
             if (graph.adj.get(label).color == Color.WHITE) {
                 graph.adj.get(label).predecessor = u;
-                sort(graph, graph.adj.get(label));
+                list.addFirst(sort(graph, graph.adj.get(label), list));
             } else if (graph.adj.get(label).color == Color.GRAY) {
                 /*
                  * A back edge exists if an edge (u, v) connects a vertex u to its ancestor vertex v
@@ -164,7 +154,7 @@ public class TopologicalSort {
         u.color = Color.BLACK;
         time++;
         u.finished = time;
-        list.addFirst(u.label);
+        return u.label;
     }
 }
 
