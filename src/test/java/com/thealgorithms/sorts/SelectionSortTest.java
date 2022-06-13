@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SelectionSortTest {
 
     @Test
+    // valid test case
     void IntegerArrTest() {
         Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         SelectionSort selectionSort = new SelectionSort();
@@ -15,10 +16,20 @@ class SelectionSortTest {
     }
 
     @Test
+    // valid test case
     void StringArrTest() {
         String[] arr = {"c", "a", "e", "b", "d"};
         SelectionSort selectionSort = new SelectionSort();
 
         assertArrayEquals(new String[]{"a", "b", "c", "d", "e"}, selectionSort.sort(arr));
+    }
+
+    @Test
+    // invalid test case
+    void emptyArrTest() {
+        Integer[] arr = {};
+        SelectionSort selectionSort = new SelectionSort();
+
+        assertArrayEquals(new Integer[]{}, selectionSort.sort(arr));
     }
 }
