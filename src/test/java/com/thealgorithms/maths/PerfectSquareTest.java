@@ -13,7 +13,7 @@ public class PerfectSquareTest{
 		
 		boolean result = PerfectSquare.isPerfectSquare(number);
 		
-		assertTrue(result)
+		assertTrue(result);
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ public class PerfectSquareTest{
 		
 		boolean result = PerfectSquare.isPerfectSquare(number);
 		
-		assertFalse(result)
+		assertFalse(result);
 	}
 	@Test
 	public void TestPerfectSquareifisNegativeNumber(){
