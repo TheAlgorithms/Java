@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PerfectSquareTest{
 	
 	@Test
+	//Valid Partition
 	public void TestPerfectSquare(){
 		int number = 9;
 		
@@ -16,6 +17,7 @@ public class PerfectSquareTest{
 	}
 	
 	@Test
+	//Invalid Partition
 	public void TestPerfectSquare(){
 		int number = 3;
 		
