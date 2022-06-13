@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class AvarageTest {
+
+public class AverageTest {
     double [] double_numbers = {3.5, 6.5, 9, 12};
     int [] int_numbers = {6,7,8,4};
     @Test 
@@ -21,3 +22,5 @@ public class AvarageTest {
     }
 
 }
+
+
