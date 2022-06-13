@@ -9,8 +9,8 @@ class FFTTest {
     @Test
     void getRealtest()
     {
-        FFT.Complex complex = new FFT.Complex(1.0,1.0);
-        assertEquals(1.0,complex.getReal());
+        FFT.Complex complex = new FFT.Complex(2.0,2.0);
+        assertEquals(2.0,complex.getReal());
     }
 
     // Testing the simple function getImaginary
@@ -26,9 +26,9 @@ class FFTTest {
     void addTest()
     {
         FFT.Complex complex1 = new FFT.Complex(1.0,1.0);
-        FFT.Complex complex2 = new FFT.Complex(2.0,2.0);
+        FFT.Complex complex2 = new FFT.Complex(3.0,3.0);
         double add = complex1.add(complex2).getReal();
-        assertEquals(3.0,add);
+        assertEquals(4.0,add);
     }
 
     // Testing the function add, assertNotEqual test
