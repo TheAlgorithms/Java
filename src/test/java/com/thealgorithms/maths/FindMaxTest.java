@@ -7,6 +7,6 @@ public class FindMaxTest {
     
     @Test
     public void testFindMaxValue(){
-        assertEquals(10, FindMax.findMax(new int[] {1,2,3,4,5,6,7,8,9,10}));
+        assertEquals(20, FindMax.findMax(new int[] {1,2,3,4,5,20,7,8,9,10}));
     }
 }
