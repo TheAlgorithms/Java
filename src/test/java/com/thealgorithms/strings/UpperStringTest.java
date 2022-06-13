@@ -8,7 +8,7 @@ public class UpperStringTest{
     
 	 @Test
 	    public void toUpperCase1() {
-			//Partition: not have numbers
+		//Partition: not have numbers
 	        String str1 = "Hello World";
 	        assertEquals("HELLO WORLD", Upper.toUpperCase(str1));
 	    }
