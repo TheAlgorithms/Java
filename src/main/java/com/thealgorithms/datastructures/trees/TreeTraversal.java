@@ -1,4 +1,4 @@
-package com.thealgorithms.datastructures.trees;
+﻿package com.thealgorithms.datastructures.trees;
 
 import java.util.LinkedList;
 
@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class TreeTraversal {
 
     public static void main(String[] args) {
-        Node tree = new Node(5);
+        TNode tree = new TNode(5);
         tree.insert(3);
         tree.insert(2);
         tree.insert(7);
@@ -37,31 +37,31 @@ public class TreeTraversal {
 }
 
 /**
- * The Node class which initializes a Node of a tree Consists of all 4 traversal
+ * The TNode class which initializes a TNode of a tree Consists of all 4 traversal
  * methods: printInOrder, printPostOrder， printPreOrder & printLevelOrder
  * printInOrder: LEFT -> ROOT -> RIGHT printPreOrder: ROOT -> LEFT -> RIGHT
  * printPostOrder: LEFT -> RIGHT -> ROOT printLevelOrder: Prints by level
  * (starting at root), from left to right.
  */
-class Node {
+class TNode {
 
-    Node left, right;
+    TNode left, right;
     int data;
 
-    public Node(int data) {
+    public TNode(int data) {
         this.data = data;
     }
 
     public void insert(int value) {
         if (value < data) {
             if (left == null) {
-                left = new Node(value);
+                left = new TNode(value);
             } else {
                 left.insert(value);
             }
         } else {
             if (right == null) {
-                right = new Node(value);
+                right = new TNode(value);
             } else {
                 right.insert(value);
             }
@@ -99,16 +99,16 @@ class Node {
     }
 
     /**
-     * O(n) time algorithm. Uses O(n) space to store nodes in a queue to aid in
+     * O(n) time algorithm. Uses O(n) space to store TNodes in a queue to aid in
      * traversal.
      */
     public void printLevelOrder() {
-        LinkedList<Node> queue = new LinkedList<>();
+        LinkedList<TNode> queue = new LinkedList<>();
         queue.add(this);
         while (queue.size() > 0) {
-            Node head = queue.remove();
+            TNode head = queue.remove();
             System.out.print(head.data + " ");
-            // Add children of recently-printed node to queue, if they exist.
+            // Add children of recently-printed TNode to queue, if they exist.
             if (head.left != null) {
                 queue.add(head.left);
             }
