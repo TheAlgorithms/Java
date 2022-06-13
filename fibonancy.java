@@ -1,8 +1,10 @@
 // write test junit cases for fibonancy.java
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.Before;
+
 public class fibonancy {
-    import static org.junit.Assert.*;
-    import org.junit.Test;
-    import org.junit.Before;
 
     public class fibonancyTest {
         private fibonancy fib;
@@ -36,5 +38,4 @@ public class fibonancy {
             assertEquals(fib.fibonancy(21), 10946);
             assertEquals(fib.fibonancy(22), 17711);
             assertEquals(fib.fibonancy(23), 28657);
-            assertEquals(
 }
