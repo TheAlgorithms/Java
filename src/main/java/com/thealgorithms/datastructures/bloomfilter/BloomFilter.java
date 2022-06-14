@@ -1,16 +1,18 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
 
+import java.util.BitSet;
+
 public class BloomFilter<T> {
 
     private int numberOfHashFunctions;
-    private int [] bitArray;
+    private BitSet bitArray;
     private Hash<T>[] hashFunctions;
 
     public BloomFilter(int numberOfHashFunctions, int n) {
         this.numberOfHashFunctions = numberOfHashFunctions;
         hashFunctions = new Hash[numberOfHashFunctions];
-        bitArray = new int[n];
+        bitArray = new BitSet(n);
         insertHash();
     }
 
@@ -22,13 +24,15 @@ public class BloomFilter<T> {
 
     public void insert(T key) {
         for (Hash<T> hash : hashFunctions){
-            bitArray[hash.compute(key) % bitArray.length] = 1;
+            int position = hash.compute(key) % bitArray.size();
+            bitArray.set(position);
         }
     }
 
     public boolean contains(T key) {
         for (Hash<T> hash : hashFunctions){
-            if (bitArray[hash.compute(key) % bitArray.length] == 0){
+            int position = hash.compute(key) % bitArray.size();
+            if (!bitArray.get(position)) {
                 return false;
             }
         }
