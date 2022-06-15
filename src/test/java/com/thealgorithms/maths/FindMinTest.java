@@ -15,6 +15,12 @@ public class FindMinTest {
   public void test2(){
     assertEquals(0, FindMin.findMin(new int[] {0, 192, 384, 576}));
   }
+
+  @Test
+      //Valid PArtition
+  public void validPartition(){
+    assertEquals(0, FindMin.findMin(new int[] {0, 192, 384, 576}));
+  }
   
   @Test public void invalidPartition1() {
       //Invalid Partition
