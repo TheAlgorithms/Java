@@ -18,7 +18,7 @@ public class AverageTest {
     @Test
     //partition: test average value of array of integer numbers
     public void testAverage_int(){
-        Assertions.assertEquals(7.75, Average.average(double_numbers));
+        Assertions.assertEquals(7.75, Average.average(int_numbers));
     }
 
 }
