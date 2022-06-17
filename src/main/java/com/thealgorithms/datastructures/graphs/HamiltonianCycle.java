@@ -18,7 +18,6 @@ public class HamiltonianCycle {
 	 * @return Array containing hamiltonian cycle else returns 1D array with value -1.
 	 */
 	public int[] findHamiltonianCycle(int[][] graph){
-
 		this.V = graph.length;
 		this.path = new int[this.V];
 
@@ -38,9 +37,7 @@ public class HamiltonianCycle {
 			for(int i=0 ; i<this.path.length ; i++) {
 				this.path[i] = -1;
 			}
-
 		}
-
 		catch (Exception e){
 
 		}
@@ -54,28 +51,18 @@ public class HamiltonianCycle {
 	 * @param vertex Vertex from which path is to be found
 	 */
 	public void solve(int vertex) throws Exception{
-
 		if (this.graph[vertex][0] == 1 && this.pathCount == this.V) {
-
 			throw new Exception("Solution found");
-
 		}
 
 		/** all vertices selected but last vertex not linked to 0 **/
-
 		if (this.pathCount == this.V) {
-
 			return;
 		}
 
-
-
 		for (int v = 0; v < this.V; v++){
-
 			/** if connected **/
-
 			if (this.graph[vertex][v] == 1 ){
-
 				/** add to path **/            
 				this.path[this.pathCount++] = v;    
 
@@ -83,15 +70,10 @@ public class HamiltonianCycle {
 				this.graph[vertex][v] = 0;
 				this.graph[v][vertex] = 0;
 
-
-
 				/** if vertex not already selected  solve recursively **/
 				if (!isPresent(v)) {
-
 					solve(v);
 				}
-
-
 
 				/** restore connection **/
 				this.graph[vertex][v] = 1;
@@ -101,9 +83,7 @@ public class HamiltonianCycle {
 				this.path[--this.pathCount] = -1;                    
 
 			}
-
 		}
-
 	}    
 
 	/** function to check if path is already selected **/
@@ -120,8 +100,6 @@ public class HamiltonianCycle {
 			}
 		}
 
-		return false;                
-
+		return false;
 	}
-
 }
