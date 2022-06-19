@@ -1,41 +1,45 @@
 package com.thealgorithms.datastructures.graphs;
 
 /**
- * Java program for Hamiltonian Cycle (https://en.wikipedia.org/wiki/Hamiltonian_path).
+ * Java program for Hamiltonian Cycle (https://en.wikipedia.org/wiki/Hamiltonian_path)
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
 public class HamiltonianCycle {
 
     private int V, pathCount;
-    private int[] path;
+    private int[] cycle;
     private int[][] graph;
 
     /**
      * Find hamiltonian cycle for given graph G(V,E)
      * @param graph Adjacency matrix of a graph G(V, E) 
      * for which hamiltonian path is to be found
-     * @return Array containing hamiltonian cycle else returns 1D array with value -1.
+     * @return Array containing hamiltonian cycle 
+     * else returns 1D array with value -1.
      */
     public int[] findHamiltonianCycle(int[][] graph){
         this.V = graph.length;
-        this.path = new int[this.V];
+        this.cycle = new int[this.V+1];
 
         //Initialize path array with -1 value
-        for(int i=0 ; i<this.path.length ; i++) {
-            this.path[i] = -1;
+        for(int i=0 ; i<this.cycle.length ; i++) {
+            this.cycle[i] = -1;
         }
 
         this.graph = graph;        
 
-        this.path[0] = 0;
+        this.cycle[0] = 0;
         this.pathCount = 1;            
         if(!isPathFound(0)) {
-            for(int i=0 ; i<this.path.length ; i++) {
-                this.path[i] = -1;
+            for(int i=0 ; i<this.cycle.length ; i++) {
+                this.cycle[i] = -1;
             }
         }
-
-        return path;
+        else {
+        	this.cycle[this.cycle.length-1] = this.cycle[0];
+        }
+        
+        return cycle;
     }
 
     /** function to find paths recursively
@@ -57,7 +61,7 @@ public class HamiltonianCycle {
             /** if connected **/
             if (this.graph[vertex][v] == 1 ){
                 /** add to path **/            
-                this.path[this.pathCount++] = v;    
+                this.cycle[this.pathCount++] = v;    
 
                 /** remove connection **/            
                 this.graph[vertex][v] = 0;
@@ -73,7 +77,7 @@ public class HamiltonianCycle {
                 this.graph[v][vertex] = 1;
 
                 /** remove path **/
-                this.path[--this.pathCount] = -1;
+                this.cycle[--this.pathCount] = -1;
             }
         }
         return false;
@@ -86,7 +90,7 @@ public class HamiltonianCycle {
     public boolean isPresent(int vertex){
 
         for (int i = 0; i < pathCount - 1; i++) {
-            if (path[i] == vertex) {
+            if (cycle[i] == vertex) {
                 return true;
             }
         }
