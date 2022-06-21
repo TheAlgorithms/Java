@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import com.thealgorithms.sorts.LinkList_Sort;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class LinkList_Sort_test {
+public class LinkListSortTest {
     @Test
 	void testForOneElement() 
 	{
@@ -30,7 +30,7 @@ public class LinkList_Sort_test {
 	void testForFourElements() 
 	{
 		int a[]={86,32,87,13};
-		assertFalse(LinkList_Sort.isSorted(a,2));
+		assertTrue(LinkList_Sort.isSorted(a,1));
 	}
 
 	@Test
@@ -59,6 +59,6 @@ public class LinkList_Sort_test {
 	void testForEightElements() 
 	{
 		int a[]={123,234,145,764,322,367,768,34};
-		assertFalse(LinkList_Sort.isSorted(a,2));
+		assertTrue(LinkList_Sort.isSorted(a,2));
 	}
 }
