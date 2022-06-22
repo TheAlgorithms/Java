@@ -42,12 +42,26 @@ class SkipListTest {
     }
 
     @Test
-    void remove() {
+    void removeFromHead() {
         SkipList<String> skipList = createSkipList();
+        String mostLeftElement = skipList.get(0);
         int initialSize = skipList.size();
         print(skipList);
 
-        skipList.remove("a");
+        skipList.remove(mostLeftElement);
+
+        print(skipList);
+        assertEquals(initialSize - 1, skipList.size());
+    }
+
+    @Test
+    void removeFromTail() {
+        SkipList<String> skipList = createSkipList();
+        String mostRightValue = skipList.get(skipList.size() - 1);
+        int initialSize = skipList.size();
+        print(skipList);
+
+        skipList.remove(mostRightValue);
 
         print(skipList);
         assertEquals(initialSize - 1, skipList.size());
