@@ -117,7 +117,9 @@ public class SkipList<E extends Comparable<E>> {
         }
         for (int i = 0; i <= layer; i++) {
             current.previous(i).setNext(i, current.next(i));
-            current.next(i).setPrevious(i, current.previous(i));
+            if (current.next(i) != null) {
+                current.next(i).setPrevious(i, current.previous(i));
+            }
         }
         size--;
     }
