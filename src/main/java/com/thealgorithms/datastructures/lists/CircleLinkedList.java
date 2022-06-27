@@ -1,26 +1,54 @@
+/**
+ * com.thealgorithms.datastructures.lists
+ */
 package com.thealgorithms.datastructures.lists;
-
+/**
+ * TheAlgorithms
+ * Class CircleLinkedList
+ */
 public class CircleLinkedList<E> {
 
+    /**
+     * Class Node
+     */
     private static class Node<E> {
-
-        Node<E> next;
-        E value;
-
+        /** 
+         * class variables <br>
+         * components of the composite data object Node */
+        Node<E> next;   // acts like a pointer on the next element of a composite data object
+        E value;    // acts like the key of a composite data object
+        /**
+         * Constructor for class Node taking two parameters
+         * @param value the E(-type) to assign to a new object of Node
+         * @param next the Node to assign to a new object of Node (pointing to the following list element)
+         */
         private Node(E value, Node<E> next) {
             this.value = value;
             this.next = next;
         }
     }
 
-    // For better O.O design this should be private allows for better black box design
+    /** int size: <br>
+     * Variable to store the size of a list
+     * For better O.O design this should be private and allows for better black box design
+     */
     private int size;
-    // this will point to dummy node;
+    /** Node<E> head: <br>
+     * This will point to dummy node <br>
+     * Starting point of a list
+     */
     private Node<E> head = null;
-    private Node<E> tail = null; // keeping a tail pointer to keep track of the end of list
+    /** Node<E> tail: <br>
+     * keeping a tail pointer to keep track of the end of list <br>
+     * End point of a list
+     */
+    private Node<E> tail = null;
 
-    // constructer for class.. here we will make a dummy node for circly linked list implementation
-    // with reduced error catching as our list will never be empty;
+    /** CircleLinkedList(): <br>
+     * Constructor for class.. <br>
+     * here we will make a dummy node for circly linked list <br>
+     * implementation with reduced error catching as our list will never be empty
+     */
     public CircleLinkedList() {
         // creation of the dummy node
         head = new Node<E>(null, head);
@@ -28,13 +56,21 @@ public class CircleLinkedList<E> {
         size = 0;
     }
 
-    // getter for the size... needed because size is private.
+    /** getSize(): <br>
+     * getter for the size... needed because size is private.
+     * @return int returns the size of a given list
+     */
     public int getSize() {
         return size;
     }
 
-    // for the sake of simplistiy this class will only contain the append function or addLast other
-    // add functions can be implemented however this is the basses of them all really.
+    /** append(E value): <br>
+     * For the sake of simplicity this class will only contain the append function <br>
+     * or addLast other <br>
+     * add functions can be implemented however this is the basses of them all <br>
+     * really.
+     * @param value a value given of type E
+     */
     public void append(E value) {
         if (value == null) {
             // we do not want to add null elements to the list.
@@ -51,7 +87,11 @@ public class CircleLinkedList<E> {
         size++;
     }
 
-    // utility function for teraversing the list
+    /** toString(): <br>
+     * Utility function for traversing the list
+     * @return String 
+     */
+    @Override // toString() method without parameters should usually have an @Override annotation to make shure the custom implementation is used
     public String toString() {
         Node p = head.next;
         String s = "[ ";
@@ -63,6 +103,10 @@ public class CircleLinkedList<E> {
         return s + " ]";
     }
 
+    /** main(String args[]): <br>
+     * Starting point of the program
+     * @param args[] Standard main parameter
+     */
     public static void main(String args[]) {
         CircleLinkedList cl = new CircleLinkedList<Integer>();
         cl.append(12);
@@ -77,12 +121,17 @@ public class CircleLinkedList<E> {
         System.out.println(cl);
     }
 
+    /** remove(int pos): <br>
+     * @param pos the given position for the element to delete
+     * @return E returns the value of type E
+     */
     public E remove(int pos) {
         if (pos > size || pos < 0) {
             // catching errors
             throw new IndexOutOfBoundsException("position cannot be greater than size or negative");
         }
-        // we need to keep track of the element before the element we want to remove we can see why
+        // we need to keep track of the element before the element we want to remove we
+        // can see why
         // bellow.
         Node<E> before = head;
         for (int i = 1; i <= pos; i++) {
@@ -90,7 +139,8 @@ public class CircleLinkedList<E> {
         }
         Node<E> destroy = before.next;
         E saved = destroy.value;
-        // assigning the next reference to the element following the element we want to remove...
+        // assigning the next reference to the element following the element we want to
+        // remove...
         // the last element will be assigned to the head.
         before.next = before.next.next;
         // scrubbing
