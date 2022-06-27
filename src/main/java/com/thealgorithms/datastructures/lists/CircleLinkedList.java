@@ -91,7 +91,7 @@ public class CircleLinkedList<E> {
      * Utility function for traversing the list
      * @return String 
      */
-    @Override // toString() method without parameters should usually have an @Override annotation to make shure the custom implementation is used
+    @Override // toString() method without parameters should usually have an @Override annotation to make sure the custom implementation is used
     public String toString() {
         Node p = head.next;
         String s = "[ ";
