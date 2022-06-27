@@ -1,6 +1,5 @@
-/* Author : Suraj Kumar
-  Github : https://github.com/skmodi649
- */
+/** com.thealgorithms.datastructures.trees */
+package com.thealgorithms.datastructures.trees;
 
 /* PROBLEM DESCRIPTION :
   There is a Binary Search Tree given, and we are supposed to find a random node in the given binary tree.
@@ -17,10 +16,13 @@
   Step 6: STOP
  */
 
-
 import java.util.ArrayList;
 
-// Using auxiliary array to find the random node in a given binary tree
+/**
+ * Using auxiliary array to find the random node in a given binary tree
+ * @author : Suraj Kumar
+ * Github : https://github.com/skmodi649
+ */
 class Node {
     int item;
     Node left, right;
