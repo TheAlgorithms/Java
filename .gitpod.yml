@@ -1,6 +1,0 @@
-image:
-  file: .gitpod.Dockerfile
-
-tasks:
-  - init: 'echo "TODO: Replace with init/build command"'
-    command: (e.g. 'npm start', 'yarn watch'...)
