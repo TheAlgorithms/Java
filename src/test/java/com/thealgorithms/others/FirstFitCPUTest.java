@@ -16,7 +16,7 @@ class FirstFitCPUTest {
     int [] sizeOfProcesses;
     ArrayList<Integer> memAllocation = new ArrayList<>();
     ArrayList<Integer> testMemAllocation ;
-    CPUalgorithms firstFit = new FirstFitCPU();
+     MemoryManagementAlgorithms firstFit = new FirstFitCPU();
 
     @Test
     void testFitForUseOfOneBlock() {

@@ -19,7 +19,7 @@ public class CircleLinkedList<E> {
     private Node<E> head = null;
     private Node<E> tail = null; // keeping a tail pointer to keep track of the end of list
 
-    // constructer for class.. here we will make a dummy node for circly linked list implementation
+    // constructor for class.. here we will make a dummy node for circly linked list implementation
     // with reduced error catching as our list will never be empty;
     public CircleLinkedList() {
         // creation of the dummy node
