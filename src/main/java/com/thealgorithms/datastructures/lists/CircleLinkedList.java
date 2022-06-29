@@ -51,7 +51,8 @@ public class CircleLinkedList<E> {
      */
     public CircleLinkedList() {
         // creation of the dummy node
-        head = new Node<E>(null, head);
+    	// E inside diamond nodes is obsolete here
+        head = new Node<>(null, head);
         tail = head;
         size = 0;
     }
@@ -78,10 +79,10 @@ public class CircleLinkedList<E> {
         }
         // head.next points to the last element;
         if (tail == null) {
-            tail = new Node<E>(value, head);
+            tail = new Node<>(value, head); // E inside diamond nodes is obsolete here
             head.next = tail;
         } else {
-            tail.next = new Node<E>(value, head);
+            tail.next = new Node<>(value, head); // E inside diamond nodes is obsolete here
             tail = tail.next;
         }
         size++;
@@ -93,7 +94,7 @@ public class CircleLinkedList<E> {
      */
     @Override // toString() method without parameters should usually have an @Override annotation to make sure the custom implementation is used
     public String toString() {
-        Node p = head.next;
+        Node<E> p = head.next;
         String s = "[ ";
         while (p != head) {
             s += p.value;
@@ -108,7 +109,7 @@ public class CircleLinkedList<E> {
      * @param args[] Standard main parameter
      */
     public static void main(String args[]) {
-        CircleLinkedList cl = new CircleLinkedList<Integer>();
+        CircleLinkedList<Integer> cl = new CircleLinkedList<Integer>(); // Parameter for generic type was missing for constructor call
         cl.append(12);
         System.out.println(cl);
         cl.append(23);

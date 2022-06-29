@@ -85,7 +85,7 @@ public class LFUCache<K,V> {
     /**
      * This method stores the node in the cache with updated frequency
      *
-     * @param Node node which is to be updated in the cache 
+     * @param NodeTree node which is to be updated in the cache 
      */
 	private void addNodeWithUpdatedFrequency(Node node) {
 		if(tail != null && head != null) {
@@ -127,7 +127,7 @@ public class LFUCache<K,V> {
     /**
      * This method removes node from the cache 
      * 
-     * @param Node node which is to be removed in the cache 
+     * @param NodeTree node which is to be removed in the cache 
      */
 	private void removeNode(Node node) {
 		if(node.previous != null) {

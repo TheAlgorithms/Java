@@ -43,12 +43,14 @@ public class TreeTraversal {
  * printPostOrder: LEFT -> RIGHT -> ROOT printLevelOrder: Prints by level
  * (starting at root), from left to right.
  */
-class Node {
+class NodeTree {
 
-    Node left, right;
+    Node left;
+    Node right;
     int data;
+	public Integer item;
 
-    public Node(int data) {
+    public NodeTree(int data) {
         this.data = data;
     }
 
@@ -104,16 +106,16 @@ class Node {
      */
     public void printLevelOrder() {
         LinkedList<Node> queue = new LinkedList<>();
-        queue.add(this);
+        queue.add(null); // What node should be added here ? This had a wrong parameter type
         while (queue.size() > 0) {
             Node head = queue.remove();
             System.out.print(head.data + " ");
             // Add children of recently-printed node to queue, if they exist.
             if (head.left != null) {
-                queue.add(head.left);
+                queue.add(left); // There is no method taking a List.Node Object as parameter ? ...
             }
             if (head.right != null) {
-                queue.add(head.right);
+                queue.add(right); // There is no method taking a List.Node Object as parameter ? ...
             }
         }
     }

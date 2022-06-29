@@ -25,12 +25,38 @@ import java.util.ArrayList;
  */
 class Node {
     int item;
-    Node left, right;
+    NodeTree left, right;
+	public String data;
 
     public Node(int key) {
         item = key;
         left = right = null;
     }
+
+	public void insert(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printInOrder() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printPreOrder() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printPostOrder() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printLevelOrder() {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 public class TreeRandomNode {
@@ -38,14 +64,14 @@ public class TreeRandomNode {
     // Using an arraylist to store the inorder traversal of the given binary tree
     static ArrayList<Integer> list = new ArrayList<>();
     // root of Tree
-    Node root;
+    NodeTree root;
 
     TreeRandomNode() {
         root = null;
     }
 
     // Now lets find the inorder traversal of the given binary tree
-    static void inOrder(Node node) {
+    static void inOrder(NodeTree node) {
         if (node == null)
             return;
 
@@ -57,7 +83,12 @@ public class TreeRandomNode {
         inOrder(node.right);
     }
 
-    public void getrandom(Node val)
+    private static void inOrder(Node right) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void getrandom(NodeTree val)
     {
         inOrder(val);
         // getting the count of node of the binary tree
