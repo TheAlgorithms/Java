@@ -13,7 +13,7 @@ public class CircleLinkedList<E> {
      */
     private static class Node<E> {
         /** 
-         * class variables <br>
+         * class variables <br> 
          * components of the composite data object Node */
         Node<E> next;   // acts like a pointer on the next element of a composite data object
         E value;    // acts like the key of a composite data object
