@@ -35,6 +35,17 @@ public class BinaryPow {
     }
 
     /**
+     * Function for p <= 0
+     * 
+     * @param args
+     */
+    public static void ExceptionBinPow(int a, int p) {
+        if(p <= 0){
+            throw new IllegalArgumentException("Power cannot be less then 0");
+        }
+    }
+
+    /**
      * Main Function to call tests
      *
      * @param args System Line Arguments
