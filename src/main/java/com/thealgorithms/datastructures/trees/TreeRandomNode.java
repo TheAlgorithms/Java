@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.trees;
+
 /* Author : Suraj Kumar
   Github : https://github.com/skmodi649
  */
