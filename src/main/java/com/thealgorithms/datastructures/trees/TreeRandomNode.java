@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
+
 /* Author : Suraj Kumar
   Github : https://github.com/skmodi649
  */
@@ -57,15 +58,14 @@ public class TreeRandomNode {
         inOrder(node.right);
     }
 
-    public void getrandom(Node val)
-    {
+    public void getrandom(Node val) {
         inOrder(val);
         // getting the count of node of the binary tree
         int n = list.size();
         int min = 0;
         int max = n - 1;
         //Generate random int value from 0 to n-1
-        int b = (int)(Math.random()*(max-min+1)+min);
+        int b = (int) (Math.random() * (max - min + 1) + min);
         // displaying the value at the generated index
         int random = list.get(b);
         System.out.println("Random Node : " + random);
