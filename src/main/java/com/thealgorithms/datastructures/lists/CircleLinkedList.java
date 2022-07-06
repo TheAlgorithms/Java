@@ -57,7 +57,9 @@ public class CircleLinkedList<E> {
         String s = "[ ";
         while (p != head) {
             s += p.value;
-            s += " , ";
+            if (p != tail){
+                s += " , ";
+            }
             p = p.next;
         }
         return s + " ]";
