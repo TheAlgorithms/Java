@@ -1,3 +1,6 @@
+package com.thealgorithms.datastructures.trees;
+
+
 /* Author : Suraj Kumar
   Github : https://github.com/skmodi649
  */
@@ -11,7 +14,7 @@
   Step 2: First create a binary tree using the steps mentioned in the first approach
   Step 3: Now use a method inOrder() that takes a node as input parameter to traverse through the
           binary tree in inorder fashion as also store the values in a ArrayList simultaneously.
-  Step 4: Now define a method getrandom() that takes a node as input parameter, in this first call
+  Step 4: Now define a method getRandom() that takes a node as input parameter, in this first call
           the inOrder() method to store the values in the arraylist, then find the size of the binary tree and now just generate a random number between 0 to n-1.
   Step 5: After generating the number display the value of the ArrayList at the generated index
   Step 6: STOP
@@ -21,17 +24,17 @@
 import java.util.ArrayList;
 
 // Using auxiliary array to find the random node in a given binary tree
-class Node {
-    int item;
-    Node left, right;
-
-    public Node(int key) {
-        item = key;
-        left = right = null;
-    }
-}
 
 public class TreeRandomNode {
+    private class Node {
+        int item;
+        Node left, right;
+
+        public Node(int key) {
+            item = key;
+            left = right = null;
+        }
+    }
 
     // Using an arraylist to store the inorder traversal of the given binary tree
     static ArrayList<Integer> list = new ArrayList<>();
@@ -44,8 +47,9 @@ public class TreeRandomNode {
 
     // Now lets find the inorder traversal of the given binary tree
     static void inOrder(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
 
         // traverse the left child
         inOrder(node.left);
@@ -55,15 +59,14 @@ public class TreeRandomNode {
         inOrder(node.right);
     }
 
-    public void getrandom(Node val)
-    {
+    public void getRandom(Node val) {
         inOrder(val);
         // getting the count of node of the binary tree
         int n = list.size();
         int min = 0;
         int max = n - 1;
         //Generate random int value from 0 to n-1
-        int b = (int)(Math.random()*(max-min+1)+min);
+        int b = (int) (Math.random() * (max - min + 1) + min);
         // displaying the value at the generated index
         int random = list.get(b);
         System.out.println("Random Node : " + random);
@@ -90,4 +93,3 @@ public class TreeRandomNode {
 /* Time Complexity : O(n)
   Auxiliary Space Complexity : O(1)
  */
-
