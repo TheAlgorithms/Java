@@ -61,10 +61,11 @@ class DigitalRoot {
     // Sum of digits is stored in the Stack memory and then finally returned
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number : ");
-        int n = sc.nextInt();                                     // Taking a number as input from the user
-        System.out.println("Digital Root : " + digitalRoot(n));     // Printing the value returned by digitalRoot() method
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter the number : ");
+            int n = sc.nextInt();                                     // Taking a number as input from the user
+            System.out.println("Digital Root : " + digitalRoot(n));     // Printing the value returned by digitalRoot() method
+        }
     }
 }
 
