@@ -50,7 +50,7 @@ public class MinHeap implements Heap {
     // Toggle an element up to its right place as long as its key is lower than its parent's
     private void toggleUp(int elementIndex) {
         double key = minHeap.get(elementIndex - 1).getKey();
-        while (getElementKey((int) Math.floor(elementIndex / 2.0)) > key) {
+        while (getElementKey((int) Math.floor(elementIndex / 2.0) + 1) > key) {
             swap(elementIndex, (int) Math.floor(elementIndex / 2.0));
             elementIndex = (int) Math.floor(elementIndex / 2.0);
         }
