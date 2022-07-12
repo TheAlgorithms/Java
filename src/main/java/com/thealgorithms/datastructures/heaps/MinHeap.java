@@ -37,6 +37,12 @@ public class MinHeap implements Heap {
 
     // Get the key of the element at a given index
     private double getElementKey(int elementIndex) {
+        
+        // Added on 11/07/2022
+        if ((elementIndex <= 0) || (elementIndex > minHeap.size())) {
+            throw new IndexOutOfBoundsException("Index out of heap range");
+        }
+        
         return minHeap.get(elementIndex - 1).getKey();
     }
 

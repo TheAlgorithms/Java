@@ -43,6 +43,11 @@ public class MaxHeap implements Heap {
 
     // Get the key of the element at a given index
     private double getElementKey(int elementIndex) {
+        // Added on 11/07/2022 
+        if ((elementIndex <= 0) || (elementIndex > maxHeap.size())) {
+            throw new IndexOutOfBoundsException("Index out of heap range");
+        }
+        
         return maxHeap.get(elementIndex - 1).getKey();
     }
 
