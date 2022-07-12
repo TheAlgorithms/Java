@@ -51,30 +51,18 @@ public class CircleLinkedList<E> {
         size++;
     }
 
-    // utility function for teraversing the list
+    // utility function for traversing the list
     public String toString() {
         Node p = head.next;
         String s = "[ ";
         while (p != head) {
             s += p.value;
-            s += " , ";
+            if (p != tail){
+                s += " , ";
+            }
             p = p.next;
         }
         return s + " ]";
-    }
-
-    public static void main(String args[]) {
-        CircleLinkedList cl = new CircleLinkedList<Integer>();
-        cl.append(12);
-        System.out.println(cl);
-        cl.append(23);
-        System.out.println(cl);
-        cl.append(34);
-        System.out.println(cl);
-        cl.append(56);
-        System.out.println(cl);
-        cl.remove(3);
-        System.out.println(cl);
     }
 
     public E remove(int pos) {
@@ -100,5 +88,19 @@ public class CircleLinkedList<E> {
         destroy = null;
         size--;
         return saved;
+    }
+
+    public static void main(String[] args) {
+        CircleLinkedList cl = new CircleLinkedList<String>();
+        cl.append(12);
+        System.out.println(cl);
+        cl.append(23);
+        System.out.println(cl);
+        cl.append(34);
+        System.out.println(cl);
+        cl.append(56);
+        System.out.println(cl);
+        cl.remove(3);
+        System.out.println(cl);
     }
 }
