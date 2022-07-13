@@ -3,7 +3,6 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 import java.util.Scanner;
 
 public class MainCuckooHashing {
-
     public static void main(String[] args) {
 
         int choice, key;
