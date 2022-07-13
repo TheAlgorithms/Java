@@ -20,6 +20,7 @@ public class MainCuckooHashing {
             System.out.println("4. Exit");
             System.out.println("5. Search and print key index");
             System.out.println("6. Check load factor");
+            System.out.println("7. Rehash Current Table");
 
             choice = In.nextInt();
 
@@ -27,7 +28,7 @@ public class MainCuckooHashing {
                 case 1: {
                     System.out.println("Enter the Key: ");
                     key = In.nextInt();
-                    h.displayHashtable();
+//                    h.displayHashtable();
                     h.insertHash0(key);
                     h.displayHashtable();
                     break;
@@ -50,11 +51,15 @@ public class MainCuckooHashing {
                 case 5: {
                     System.out.println("Enter the Key to find and print:  ");
                     key = In.nextInt();
-                    System.out.println("Key: " + key + " is at index: " + h.findHash(key)+"\n");
+                    System.out.println("Key: " + key + " is at index: " + h.findHash(key) + "\n");
                     break;
                 }
                 case 6: {
                     h.checkLoadFactor();
+                    break;
+                }
+                case 7: {
+                    h.ReHashTable();
                     break;
                 }
             }
