@@ -50,7 +50,7 @@ public class HashMapCuckooHashing {
 
     public int hashing2(int key) {
         int hash = key / hsize;
-        hash = key % hsize;
+        hash %= hsize;
         if (hash < 0) {
             hash += hsize;
         }
