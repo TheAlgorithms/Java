@@ -137,6 +137,7 @@ public class HashMapCuckooHashing {
             if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
                 buckets[hash] = wrappedInt;
                 size++;
+                checkLoadFactor();
                 return;
             }
 
@@ -147,6 +148,7 @@ public class HashMapCuckooHashing {
             if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
                 buckets[hash] = wrappedInt;
                 size++;
+                checkLoadFactor();
                 return;
             }
 
@@ -192,12 +194,14 @@ public class HashMapCuckooHashing {
 
         if (buckets[hash] == wrappedInt) {
             buckets[hash] = AVAILABLE;
+            size--;
             return;
         }
 
         hash = hashing2(key);
         if (buckets[hash] == wrappedInt) {
             buckets[hash] = AVAILABLE;
+            size--;
             return;
         }
 
@@ -297,4 +301,7 @@ public class HashMapCuckooHashing {
         }
         return response;
     }
+
+    public int getHsize(){ return hsize;}
+    public int getSize(){return size;}
 }
