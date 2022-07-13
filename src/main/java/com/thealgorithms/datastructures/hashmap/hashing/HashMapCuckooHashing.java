@@ -86,6 +86,47 @@ public class HashMapCuckooHashing {
         }
     }
 
+    public void insertHash0(int key) {
+        if (isFull()) {
+            System.out.println("Hash table is full");
+            return;
+        } else {
+            size++;
+            ReHash(key, 2);
+        }
+    }
+
+
+    public void ReHash(int key, int currHash) {
+        Integer wrappedInt = key;
+        int hash;
+
+        if (currHash != 1 && currHash != 2) {
+            System.out.println("curr hash should be 1 or 2");
+            return;
+        }
+        if (isFull()) {
+            System.out.println("Hash table is full");
+            return;
+        }
+
+        if (currHash == 1) hash = hashing2(key);
+        else hash = hashing1(key);
+
+        if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
+            buckets[hash] = wrappedInt;
+        } else {
+            int pushedInt = buckets[hash];
+            buckets[hash] = wrappedInt;
+            if (hash == hashing1(pushedInt)) {
+                ReHash(pushedInt, 1);
+            } else if (hash == hashing2(pushedInt)) {
+                ReHash(pushedInt, 2);
+            }
+        }
+    }
+
+
     /**
      * deletes a key from the hash map and adds an available placeholder
      *
