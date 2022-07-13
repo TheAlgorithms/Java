@@ -8,7 +8,7 @@ public class MainCuckooHashing {
 
         int choice, key;
 
-        HashMapLinearProbing h = new HashMapLinearProbing(7);
+        HashMapCuckooHashing h = new HashMapCuckooHashing(7);
         Scanner In = new Scanner(System.in);
 
         while (true) {
@@ -26,7 +26,9 @@ public class MainCuckooHashing {
                 case 1: {
                     System.out.println("Enter the Key: ");
                     key = In.nextInt();
-                    h.insertHash(key);
+                    h.displayHashtable();
+                    h.insertHash0(key);
+                    h.displayHashtable();
                     break;
                 }
                 case 2: {

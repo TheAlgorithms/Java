@@ -67,7 +67,7 @@ public class HashMapCuckooHashing {
         int hash = hashing(key);
 
         if (isFull()) {
-            System.out.println("Hash table is full");
+            System.out.println("Hash table is full\n");
             return;
         }
 
@@ -88,7 +88,7 @@ public class HashMapCuckooHashing {
 
     public void insertHash0(int key) {
         if (isFull()) {
-            System.out.println("Hash table is full");
+            System.out.println("Hash table is full\n");
             return;
         } else {
             size++;
@@ -102,11 +102,11 @@ public class HashMapCuckooHashing {
         int hash;
 
         if (currHash != 1 && currHash != 2) {
-            System.out.println("curr hash should be 1 or 2");
+            System.out.println("curr hash should be 1 or 2\n");
             return;
         }
         if (isFull()) {
-            System.out.println("Hash table is full");
+            System.out.println("Hash table is full\n");
             return;
         }
 
@@ -168,6 +168,7 @@ public class HashMapCuckooHashing {
                 System.out.println("Bucket " + i + ": " + buckets[i].toString());
             }
         }
+        System.out.println();
     }
 
     /**
