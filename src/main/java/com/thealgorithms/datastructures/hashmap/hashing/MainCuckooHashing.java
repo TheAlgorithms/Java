@@ -29,7 +29,7 @@ public class MainCuckooHashing {
                     System.out.println("Enter the Key: ");
                     key = In.nextInt();
 //                    h.displayHashtable();
-                    h.insertHash0(key);
+                    h.insertHash(key);
                     h.displayHashtable();
                     break;
                 }

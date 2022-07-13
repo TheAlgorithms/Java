@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-import java.util.*;
 
 import java.lang.Math;
 
@@ -15,7 +14,7 @@ public class HashMapCuckooHashing {
     private final Integer AVAILABLE;
     private int size; // amount of elements in the hash table
 
-    private int thresh; // threshhold for infinite loop checking
+    private int thresh; // threshold for infinite loop checking
 
     /**
      * Constructor initializes buckets array, hsize, and creates dummy object
@@ -54,58 +53,68 @@ public class HashMapCuckooHashing {
         }
         return hash;
     }
-
+//
+//    /**
+//     * THIS FUNCTION DOESN'T USE INFINITE LOOP PROTECTION!!
+//     * inserts the key into the hash map by wrapping it as an Integer object, then uses first hash function to insert.
+//     *
+//     * @param key the desired key to be inserted in the hash map
+//     */
+//
+//    public void insertHash(int key) {
+//        if (isFull()) System.out.println("Hash table is full\n");
+//        else {
+//            size++;
+//            ReHash(key, 2);
+//        }
+//    }
+//
+//    /**
+//     * THIS FUNCTION DOESN'T USE INFINITE LOOP PROTECTION!!
+//     * rehashes a key with current position relating to hash function indicated by currHash.
+//     * inserts the key into the hash map by wrapping it as an Integer object, then uses other hash function to push to next position.
+//     * If next pos is not empty, it rehashes the current occupant to his other hash, and does that recursively until all keys have good indices.
+//     *
+//     * @param key the desired key to be inserted in the hash map
+//     */
+//    public void ReHash(int key, int currHash) {
+//        Integer wrappedInt = key;
+//        int hash;
+//
+//        if (currHash != 1 && currHash != 2) {
+//            System.out.println("curr hash should be 1 or 2\n");
+//            return;
+//        }
+//        if (isFull()) {
+//            System.out.println("Hash table is full\n");
+//            return;
+//        }
+//
+//        if (currHash == 1) hash = hashing2(key);
+//        else hash = hashing1(key);
+//
+//        if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
+//            buckets[hash] = wrappedInt;
+//        } else {
+//            int pushedInt = buckets[hash];
+//            buckets[hash] = wrappedInt;
+//            if (hash == hashing1(pushedInt)) {
+//                ReHash(pushedInt, 1);
+//            } else if (hash == hashing2(pushedInt)) {
+//                ReHash(pushedInt, 2);
+//            }
+//        }
+//    }
     /**
-     * inserts the key into the hash map by wrapping it as an Integer object, then uses first hash function to insert
+     * inserts the key into the hash map by wrapping it as an Integer object, then uses while loop to insert new key
+     * if desired place is empty, return.
+     * if already occupied, continue while loop over the new key that has just been pushed out.
+     * if while loop continues more than Thresh, rehash table to new size, then push again.
      *
      * @param key the desired key to be inserted in the hash map
      */
 
     public void insertHash(int key) {
-        if (isFull()) System.out.println("Hash table is full\n");
-        else {
-            size++;
-            ReHash(key, 2);
-        }
-    }
-
-    /**
-     * rehashes a key with current position relating to hash function indicated by currHash.
-     * inserts the key into the hash map by wrapping it as an Integer object, then uses other hash function to push to next position.
-     * If next pos is not empty, it rehashes the current occupant to his other hash, and does that recursively until all keys have good indices.
-     *
-     * @param key the desired key to be inserted in the hash map
-     */
-    public void ReHash(int key, int currHash) {
-        Integer wrappedInt = key;
-        int hash;
-
-        if (currHash != 1 && currHash != 2) {
-            System.out.println("curr hash should be 1 or 2\n");
-            return;
-        }
-        if (isFull()) {
-            System.out.println("Hash table is full\n");
-            return;
-        }
-
-        if (currHash == 1) hash = hashing2(key);
-        else hash = hashing1(key);
-
-        if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
-            buckets[hash] = wrappedInt;
-        } else {
-            int pushedInt = buckets[hash];
-            buckets[hash] = wrappedInt;
-            if (hash == hashing1(pushedInt)) {
-                ReHash(pushedInt, 1);
-            } else if (hash == hashing2(pushedInt)) {
-                ReHash(pushedInt, 2);
-            }
-        }
-    }
-
-    public void insertHash0(int key) {
         Integer wrappedInt = key, temp;
         int hash, maxloop = 0;
 
@@ -145,14 +154,19 @@ public class HashMapCuckooHashing {
         }
         System.out.println("Need to rehash table\n");
         ReHashTable();
-        insertHash0(key);
+        insertHash(key);
     }
 
+    /**
+     * creates new HashMapCuckooHashing object, then inserts each of the elements in the previous table to it with its new hash functions.
+     * then refers current array to new table.
+     *
+     */
     public void ReHashTable() {
         HashMapCuckooHashing newT = new HashMapCuckooHashing(hsize * 2);
         for (int i = 0; i < hsize; i++) {
             if (buckets[i] != null && buckets[i] != AVAILABLE) {
-                newT.insertHash0(this.buckets[i]);
+                newT.insertHash(this.buckets[i]);
             }
         }
         this.hsize *= 2;
@@ -203,7 +217,7 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * Finds the index of location based on an inputed key
+     * Finds the index of location based on an inputted key
      *
      * @param key the desired key to be found
      * @return int the index where the key is located
@@ -225,9 +239,14 @@ public class HashMapCuckooHashing {
         System.out.println("Key " + key + " not found\n");
         return -1;
     }
-
+    /**
+     * checks if key is inside without any output other than returned boolean.
+     *
+     * @param key the desired key to be found
+     * @return int the index where the key is located
+     */
     public boolean contains(int key){
-        if (buckets[hashing1(key)] != null) if (buckets[hashing1(key)] == key || buckets[hashing1(key)] == key) return true;
+        if (buckets[hashing1(key)] != null) return buckets[hashing1(key)] == key || buckets[hashing1(key)] == key;
         return false;
     }
 
