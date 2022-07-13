@@ -257,8 +257,7 @@ public class HashMapCuckooHashing {
     public void checkLoadFactor() {
         double factor = (double) size / hsize;
         if (factor > .7) {
-            System.out.println("Load factor is " + factor + ",  lengthening table");
-            System.out.println("Need to Rehash Table\n");
+            System.out.println("Load factor is " + factor + ",  rehashing table");
             ReHashTable();
         } else {
             System.out.println("Load factor is " + factor);

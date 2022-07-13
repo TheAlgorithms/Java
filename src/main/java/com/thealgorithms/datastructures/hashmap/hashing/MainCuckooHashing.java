@@ -28,9 +28,7 @@ public class MainCuckooHashing {
                 case 1: {
                     System.out.println("Enter the Key: ");
                     key = In.nextInt();
-//                    h.displayHashtable();
                     h.insertHash(key);
-                    h.displayHashtable();
                     break;
                 }
                 case 2: {
@@ -40,7 +38,7 @@ public class MainCuckooHashing {
                     break;
                 }
                 case 3: {
-                    System.out.println("Print table");
+                    System.out.println("Print table:\n");
                     h.displayHashtable();
                     break;
                 }
