@@ -12,6 +12,7 @@ public class MainCuckooHashing {
         Scanner In = new Scanner(System.in);
 
         while (true) {
+            System.out.println("_________________________");
             System.out.println("Enter your Choice :");
             System.out.println("1. Add Key");
             System.out.println("2. Delete Key");
@@ -49,7 +50,7 @@ public class MainCuckooHashing {
                 case 5: {
                     System.out.println("Enter the Key to find and print:  ");
                     key = In.nextInt();
-                    System.out.println("Key: " + key + " is at index: " + h.findHash(key));
+                    System.out.println("Key: " + key + " is at index: " + h.findHash(key)+"\n");
                     break;
                 }
                 case 6: {

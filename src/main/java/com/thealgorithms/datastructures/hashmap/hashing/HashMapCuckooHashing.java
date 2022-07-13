@@ -32,13 +32,13 @@ public class HashMapCuckooHashing {
      * @param key the desired key to be converted
      * @return int an index corresponding to the key
      */
-    public int hashing(int key) {
-        int hash = key % hsize;
-        if (hash < 0) {
-            hash += hsize;
-        }
-        return hash;
-    }
+//    public int hashing(int key) {
+//        int hash = key % hsize;
+//        if (hash < 0) {
+//            hash += hsize;
+//        }
+//        return hash;
+//    }
 
     public int hashing1(int key) {
         int hash = key % hsize;
@@ -62,29 +62,29 @@ public class HashMapCuckooHashing {
      *
      * @param key the desired key to be inserted in the hash map
      */
-    public void insertHash(int key) {
-        Integer wrappedInt = key;
-        int hash = hashing(key);
-
-        if (isFull()) {
-            System.out.println("Hash table is full\n");
-            return;
-        }
-
-        for (int i = 0; i < hsize; i++) {
-            if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
-                buckets[hash] = wrappedInt;
-                size++;
-                return;
-            }
-
-            if (hash + 1 < hsize) {
-                hash++;
-            } else {
-                hash = 0;
-            }
-        }
-    }
+//    public void insertHash(int key) {
+//        Integer wrappedInt = key;
+//        int hash = hashing(key);
+//
+//        if (isFull()) {
+//            System.out.println("Hash table is full\n");
+//            return;
+//        }
+//
+//        for (int i = 0; i < hsize; i++) {
+//            if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
+//                buckets[hash] = wrappedInt;
+//                size++;
+//                return;
+//            }
+//
+//            if (hash + 1 < hsize) {
+//                hash++;
+//            } else {
+//                hash = 0;
+//            }
+//        }
+//    }
 
     public void insertHash0(int key) {
         if (isFull()) {
@@ -134,27 +134,24 @@ public class HashMapCuckooHashing {
      */
     public void deleteHash(int key) {
         Integer wrappedInt = key;
-        int hash = hashing(key);
-
+        int hash = hashing1(key);
         if (isEmpty()) {
             System.out.println("Table is empty");
             return;
         }
 
-        for (int i = 0; i < hsize; i++) {
-            if (buckets[hash] != null && buckets[hash].equals(wrappedInt)) {
-                buckets[hash] = AVAILABLE;
-                size--;
-                return;
-            }
-
-            if (hash + 1 < hsize) {
-                hash++;
-            } else {
-                hash = 0;
-            }
+        if (buckets[hash] == wrappedInt) {
+            buckets[hash] = null;
+            return;
         }
-        System.out.println("Key " + key + " not found");
+
+        hash = hashing2(key);
+        if (buckets[hash] == wrappedInt) {
+            buckets[hash] = null;
+            return;
+        }
+
+        System.out.println("Key " + key + " not found\n");
     }
 
     /**
@@ -179,29 +176,19 @@ public class HashMapCuckooHashing {
      */
     public int findHash(int key) {
         Integer wrappedInt = key;
-        int hash = hashing(key);
+        int hash = hashing1(key);
 
         if (isEmpty()) {
             System.out.println("Table is empty");
             return -1;
         }
 
-        for (int i = 0; i < hsize; i++) {
-            try {
-                if (buckets[hash].equals(wrappedInt)) {
-                    buckets[hash] = AVAILABLE;
-                    return hash;
-                }
-            } catch (Exception E) {
-            }
+        if (buckets[hash] == wrappedInt) return hash;
 
-            if (hash + 1 < hsize) {
-                hash++;
-            } else {
-                hash = 0;
-            }
-        }
-        System.out.println("Key " + key + " not found");
+        hash = hashing2(key);
+        if (buckets[hash] == wrappedInt) return hash;
+
+        System.out.println("Key " + key + " not found\n");
         return -1;
     }
 
