@@ -72,7 +72,7 @@ class MainCuckooHashingTest {
         hashTable.displayHashtable();
         int initialSize = hashTable.getSize();
 
-        hashTable.ReHashTable();
+        hashTable.reHashTable();
 
         hashTable.displayHashtable();
         assertEquals(initialSize * 2, hashTable.getSize());
@@ -97,7 +97,9 @@ class MainCuckooHashingTest {
         hashTable.insertHash(100);
         hashTable.displayHashtable();
 
-        assertTrue(hashTable.contains(0) && hashTable.contains(10) && hashTable.contains(100));
+        assertTrue(hashTable.contains(0));
+        assertTrue(hashTable.contains(10));
+        assertTrue(hashTable.contains(100));
     }
 
 

@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 import java.util.Scanner;
 
-public class MainCuckooHashing {
+public class HashMapCuckooHashingTest {
     public static void main(String[] args) {
 
         int choice, key;
@@ -56,7 +56,7 @@ public class MainCuckooHashing {
                     break;
                 }
                 case 7: {
-                    h.ReHashTable();
+                    h.reHashTable();
                     break;
                 }
             }

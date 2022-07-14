@@ -55,58 +55,7 @@ public class HashMapCuckooHashing {
         }
         return hash;
     }
-//
-//    /**
-//     * THIS FUNCTION DOESN'T USE INFINITE LOOP PROTECTION!!
-//     * inserts the key into the hash map by wrapping it as an Integer object, then uses first hash function to insert.
-//     *
-//     * @param key the desired key to be inserted in the hash map
-//     */
-//
-//    public void insertHash(int key) {
-//        if (isFull()) System.out.println("Hash table is full\n");
-//        else {
-//            size++;
-//            ReHash(key, 2);
-//        }
-//    }
-//
-//    /**
-//     * THIS FUNCTION DOESN'T USE INFINITE LOOP PROTECTION!!
-//     * rehashes a key with current position relating to hash function indicated by currHash.
-//     * inserts the key into the hash map by wrapping it as an Integer object, then uses other hash function to push to next position.
-//     * If next pos is not empty, it rehashes the current occupant to his other hash, and does that recursively until all keys have good indices.
-//     *
-//     * @param key the desired key to be inserted in the hash map
-//     */
-//    public void ReHash(int key, int currHash) {
-//        Integer wrappedInt = key;
-//        int hash;
-//
-//        if (currHash != 1 && currHash != 2) {
-//            System.out.println("curr hash should be 1 or 2\n");
-//            return;
-//        }
-//        if (isFull()) {
-//            System.out.println("Hash table is full\n");
-//            return;
-//        }
-//
-//        if (currHash == 1) hash = hashing2(key);
-//        else hash = hashing1(key);
-//
-//        if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
-//            buckets[hash] = wrappedInt;
-//        } else {
-//            int pushedInt = buckets[hash];
-//            buckets[hash] = wrappedInt;
-//            if (hash == hashing1(pushedInt)) {
-//                ReHash(pushedInt, 1);
-//            } else if (hash == hashing2(pushedInt)) {
-//                ReHash(pushedInt, 2);
-//            }
-//        }
-//    }
+
     /**
      * inserts the key into the hash map by wrapping it as an Integer object, then uses while loop to insert new key
      * if desired place is empty, return.
@@ -157,7 +106,7 @@ public class HashMapCuckooHashing {
             wrappedInt = temp;
         }
         System.out.println("Need to rehash table\n");
-        ReHashTable();
+        reHashTable();
         insertHash(key);
     }
 
@@ -166,7 +115,7 @@ public class HashMapCuckooHashing {
      * then refers current array to new table.
      *
      */
-    public void ReHashTable() {
+    public void reHashTable() {
         HashMapCuckooHashing newT = new HashMapCuckooHashing(hsize * 2);
         for (int i = 0; i < hsize; i++) {
             if (buckets[i] != null && buckets[i] != AVAILABLE) {
@@ -264,7 +213,7 @@ public class HashMapCuckooHashing {
         double factor = (double) size / hsize;
         if (factor > .7) {
             System.out.println("Load factor is " + factor + ",  rehashing table");
-            ReHashTable();
+            reHashTable();
         } else {
             System.out.println("Load factor is " + factor);
         }
