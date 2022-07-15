@@ -79,7 +79,7 @@ class MainCuckooHashingTest {
     }
 
     @Test
-    void diffHashFunc() {
+    void hashFunctionsAreDifferent() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
         hashTable.insertHash(33);
 
