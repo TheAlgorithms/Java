@@ -5,7 +5,7 @@ import java.lang.Math;
 
 /**
  * This class is an implementation of a hash table using Cuckoo Hashing It uses
- * // * a dynamic array to lengthen the size of the hash table when load factor > .7
+ * a dynamic array to lengthen the size of the hash table when load factor > .7
  *
  * https://en.wikipedia.org/wiki/Cuckoo_hashing
  */
