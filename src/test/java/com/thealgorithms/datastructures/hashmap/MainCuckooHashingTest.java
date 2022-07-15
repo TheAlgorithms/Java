@@ -82,7 +82,6 @@ class MainCuckooHashingTest {
     void diffHashFunc() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
         hashTable.insertHash(33);
-        hashTable.displayHashtable();
 
         assertNotEquals(hashTable.hashing1(3), hashTable.hashing2(3));
     }
