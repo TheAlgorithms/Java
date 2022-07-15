@@ -228,8 +228,7 @@ public class HashMapCuckooHashing {
         boolean response = true;
         for (int i = 0; i < hsize; i++) {
             if (buckets[i] == null || buckets[i] == AVAILABLE) {
-                response = false;
-                break;
+                return false;
             }
         }
         return response;
