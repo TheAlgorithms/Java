@@ -14,7 +14,7 @@ public class HashMapCuckooHashing {
     private int hsize; // size of the hash table
     private Integer[] buckets; // array representing the table
     private final Integer AVAILABLE;
-    private int size; // amount of elements in the hash table
+    private int size; // number of elements in the hash table
 
     private int thresh; // threshold for infinite loop checking
 
