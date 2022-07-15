@@ -67,7 +67,7 @@ class MainCuckooHashingTest {
     }
 
     @Test
-    void reHashTable() {
+    void reHashTableIncreasesTableSize() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
         hashTable.displayHashtable();
         int initialSize = hashTable.getSize();
