@@ -25,7 +25,6 @@ class MainCuckooHashingTest {
         hashTable.insertKey2HashTable(8);
         hashTable.insertKey2HashTable(4);
 
-        int val = hashTable.findKeyInTable(8);
         assertNotEquals(-1, hashTable.findKeyInTable(8));
     }
 

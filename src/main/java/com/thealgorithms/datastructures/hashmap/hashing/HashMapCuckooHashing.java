@@ -2,12 +2,13 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 
 import java.lang.Math;
+import java.util.Objects;
 
 /**
  * This class is an implementation of a hash table using Cuckoo Hashing It uses
  * a dynamic array to lengthen the size of the hash table when load factor > .7
  *
- * https://en.wikipedia.org/wiki/Cuckoo_hashing
+ * <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">...</a>
  */
 public class HashMapCuckooHashing {
 
@@ -70,24 +71,19 @@ public class HashMapCuckooHashing {
         int hash, loopCounter = 0;
 
         if (isFull()) {
-            try {
-                throw new Exception("Exception: Hash table is full\n");
-            } catch(Exception e) {}
-            return;
+            System.out.println("Hash table is full, lengthening & rehashing table");
+            reHashTableIncreasesTableSize();
         }
 
         if (checkTableContainsKey(key)) {
-            try {
-                throw new Exception("Exception: Key already inside, no duplicates allowed\n");
-            } catch(Exception e) {}
-            return;
+            throw new IllegalArgumentException("Key already inside, no duplicates allowed");
         }
 
         while (loopCounter <= thresh) {
             loopCounter++;
             hash = hashFunction1(key);
 
-            if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
+            if ((buckets[hash] == null) || Objects.equals(buckets[hash], AVAILABLE)) {
                 buckets[hash] = wrappedInt;
                 size++;
                 checkLoadFactor();
@@ -98,7 +94,12 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
             hash = hashFunction2(temp);
-            if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
+            if (Objects.equals(buckets[hash], AVAILABLE)) {
+                buckets[hash] = wrappedInt;
+                size++;
+                checkLoadFactor();
+                return;
+            } else if (buckets[hash] == null) {
                 buckets[hash] = wrappedInt;
                 size++;
                 checkLoadFactor();
@@ -109,7 +110,7 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
         }
-        System.out.println("Infinite loop occured, need to rehash table");
+        System.out.println("Infinite loop occured, lengthening & rehashing table");
         reHashTableIncreasesTableSize();
         insertKey2HashTable(key);
     }
@@ -122,7 +123,7 @@ public class HashMapCuckooHashing {
     public void reHashTableIncreasesTableSize() {
         HashMapCuckooHashing newT = new HashMapCuckooHashing(tableSize * 2);
         for (int i = 0; i < tableSize; i++) {
-            if (buckets[i] != null && buckets[i] != AVAILABLE) {
+            if (buckets[i] != null && !Objects.equals(buckets[i], AVAILABLE)) {
                 newT.insertKey2HashTable(this.buckets[i]);
             }
         }
@@ -141,26 +142,22 @@ public class HashMapCuckooHashing {
         Integer wrappedInt = key;
         int hash = hashFunction1(key);
         if (isEmpty()) {
-            try {
-                throw new Exception("Exception: Table is empty\n");
-            } catch(Exception e) {}
-            return;
+            throw new IllegalArgumentException("Table is empty");
         }
 
-        if (buckets[hash] == wrappedInt) {
+        if (Objects.equals(buckets[hash], wrappedInt)) {
             buckets[hash] = AVAILABLE;
             size--;
             return;
         }
 
         hash = hashFunction2(key);
-        if (buckets[hash] == wrappedInt) {
+        if (Objects.equals(buckets[hash], wrappedInt)) {
             buckets[hash] = AVAILABLE;
             size--;
             return;
         }
-
-        System.out.println("Key " + key + " not found\n");
+        throw new IllegalArgumentException("Key " + key + " already inside, no duplicates allowed");
     }
 
     /**
@@ -168,7 +165,7 @@ public class HashMapCuckooHashing {
      */
     public void displayHashtable() {
         for (int i = 0; i < tableSize; i++) {
-            if (buckets[i] == null || buckets[i] == AVAILABLE) {
+            if ((buckets[i] == null) || Objects.equals(buckets[i], AVAILABLE)) {
                 System.out.println("Bucket " + i + ": Empty");
             } else {
                 System.out.println("Bucket " + i + ": " + buckets[i].toString());
@@ -188,19 +185,17 @@ public class HashMapCuckooHashing {
         int hash = hashFunction1(key);
 
         if (isEmpty()) {
-            try {
-                throw new Exception("Exception: Table is empty\n");
-            } catch(Exception e) {}
-            return -1;
+            throw new IllegalArgumentException("Table is empty");
         }
 
-        if (buckets[hash] == wrappedInt) return hash;
+        if (Objects.equals(buckets[hash], wrappedInt)) return hash;
 
         hash = hashFunction2(key);
-        if (buckets[hash] == wrappedInt) return hash;
-
-        System.out.println("Key " + key + " not found\n");
-        return -1;
+        if (!Objects.equals(buckets[hash], wrappedInt))
+            throw new IllegalArgumentException("Key " + key + " not found in table");
+        else {
+            return hash;
+        }
     }
     /**
      * checks if key is inside without any output other than returned boolean.
@@ -233,7 +228,7 @@ public class HashMapCuckooHashing {
     public boolean isFull() {
         boolean response = true;
         for (int i = 0; i < tableSize; i++) {
-            if (buckets[i] == null || buckets[i] == AVAILABLE) {
+            if (buckets[i] == null || Objects.equals(buckets[i], AVAILABLE)) {
                 return false;
             }
         }
