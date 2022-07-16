@@ -11,7 +11,7 @@ import java.lang.Math;
  */
 public class HashMapCuckooHashing {
 
-    private int hsize; // size of the hash table
+    private int tableSize; // size of the hash table
     private Integer[] buckets; // array representing the table
     private final Integer AVAILABLE;
     private int size; // number of elements in the hash table
@@ -22,14 +22,14 @@ public class HashMapCuckooHashing {
      * Constructor initializes buckets array, hsize, and creates dummy object
      * for AVAILABLE
      *
-     * @param hsize the desired size of the hash map
+     * @param tableSize the desired size of the hash map
      */
-    public HashMapCuckooHashing(int hsize) {
-        this.buckets = new Integer[hsize];
-        this.hsize = hsize;
+    public HashMapCuckooHashing(int tableSize) {
+        this.buckets = new Integer[tableSize];
+        this.tableSize = tableSize;
         this.AVAILABLE = Integer.MIN_VALUE;
         this.size = 0;
-        this.thresh = (int) (Math.log(hsize) / Math.log(2)) + 2;
+        this.thresh = (int) (Math.log(tableSize) / Math.log(2)) + 2;
     }
 
     /**
@@ -39,19 +39,19 @@ public class HashMapCuckooHashing {
      * @return int an index corresponding to the key
      */
 
-    public int hashing1(int key) {
-        int hash = key % hsize;
+    public int hashFunction1(int key) {
+        int hash = key % tableSize;
         if (hash < 0) {
-            hash += hsize;
+            hash += tableSize;
         }
         return hash;
     }
 
-    public int hashing2(int key) {
-        int hash = key / hsize;
-        hash %= hsize;
+    public int hashFunction2(int key) {
+        int hash = key / tableSize;
+        hash %= tableSize;
         if (hash < 0) {
-            hash += hsize;
+            hash += tableSize;
         }
         return hash;
     }
@@ -65,23 +65,27 @@ public class HashMapCuckooHashing {
      * @param key the desired key to be inserted in the hash map
      */
 
-    public void insertHash(int key) {
+    public void insertKey2HashTable(int key) {
         Integer wrappedInt = key, temp;
-        int hash, maxloop = 0;
+        int hash, loopCounter = 0;
 
         if (isFull()) {
-            System.out.println("Hash table is full\n");
+            try {
+                throw new Exception("Exception: Hash table is full\n");
+            } catch(Exception e) {}
             return;
         }
 
-        if (contains(key)) {
-            System.out.println("Key already inside, no duplicates allowed\n");
+        if (checkTableContainsKey(key)) {
+            try {
+                throw new Exception("Exception: Key already inside, no duplicates allowed\n");
+            } catch(Exception e) {}
             return;
         }
 
-        while (maxloop <= thresh) {
-            maxloop++;
-            hash = hashing1(key);
+        while (loopCounter <= thresh) {
+            loopCounter++;
+            hash = hashFunction1(key);
 
             if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
                 buckets[hash] = wrappedInt;
@@ -93,7 +97,7 @@ public class HashMapCuckooHashing {
             temp = buckets[hash];
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
-            hash = hashing2(temp);
+            hash = hashFunction2(temp);
             if (buckets[hash] == null || buckets[hash] == AVAILABLE) {
                 buckets[hash] = wrappedInt;
                 size++;
@@ -105,9 +109,9 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
         }
-        System.out.println("Need to rehash table\n");
-        reHashTable();
-        insertHash(key);
+        System.out.println("Infinite loop occured, need to rehash table");
+        reHashTableIncreasesTableSize();
+        insertKey2HashTable(key);
     }
 
     /**
@@ -115,16 +119,16 @@ public class HashMapCuckooHashing {
      * then refers current array to new table.
      *
      */
-    public void reHashTable() {
-        HashMapCuckooHashing newT = new HashMapCuckooHashing(hsize * 2);
-        for (int i = 0; i < hsize; i++) {
+    public void reHashTableIncreasesTableSize() {
+        HashMapCuckooHashing newT = new HashMapCuckooHashing(tableSize * 2);
+        for (int i = 0; i < tableSize; i++) {
             if (buckets[i] != null && buckets[i] != AVAILABLE) {
-                newT.insertHash(this.buckets[i]);
+                newT.insertKey2HashTable(this.buckets[i]);
             }
         }
-        this.hsize *= 2;
+        this.tableSize *= 2;
         this.buckets = newT.buckets;
-        this.thresh = (int) (Math.log(hsize) / Math.log(2)) + 2;
+        this.thresh = (int) (Math.log(tableSize) / Math.log(2)) + 2;
     }
 
 
@@ -133,11 +137,13 @@ public class HashMapCuckooHashing {
      *
      * @param key the desired key to be deleted
      */
-    public void deleteHash(int key) {
+    public void deleteKeyFromHashTable(int key) {
         Integer wrappedInt = key;
-        int hash = hashing1(key);
+        int hash = hashFunction1(key);
         if (isEmpty()) {
-            System.out.println("Table is empty");
+            try {
+                throw new Exception("Exception: Table is empty\n");
+            } catch(Exception e) {}
             return;
         }
 
@@ -147,7 +153,7 @@ public class HashMapCuckooHashing {
             return;
         }
 
-        hash = hashing2(key);
+        hash = hashFunction2(key);
         if (buckets[hash] == wrappedInt) {
             buckets[hash] = AVAILABLE;
             size--;
@@ -161,7 +167,7 @@ public class HashMapCuckooHashing {
      * Displays the hash table line by line
      */
     public void displayHashtable() {
-        for (int i = 0; i < hsize; i++) {
+        for (int i = 0; i < tableSize; i++) {
             if (buckets[i] == null || buckets[i] == AVAILABLE) {
                 System.out.println("Bucket " + i + ": Empty");
             } else {
@@ -177,18 +183,20 @@ public class HashMapCuckooHashing {
      * @param key the desired key to be found
      * @return int the index where the key is located
      */
-    public int findHash(int key) {
+    public int findKeyInTable(int key) {
         Integer wrappedInt = key;
-        int hash = hashing1(key);
+        int hash = hashFunction1(key);
 
         if (isEmpty()) {
-            System.out.println("Table is empty");
+            try {
+                throw new Exception("Exception: Table is empty\n");
+            } catch(Exception e) {}
             return -1;
         }
 
         if (buckets[hash] == wrappedInt) return hash;
 
-        hash = hashing2(key);
+        hash = hashFunction2(key);
         if (buckets[hash] == wrappedInt) return hash;
 
         System.out.println("Key " + key + " not found\n");
@@ -200,23 +208,21 @@ public class HashMapCuckooHashing {
      * @param key the desired key to be found
      * @return int the index where the key is located
      */
-    public boolean contains(int key){
-        if (buckets[hashing1(key)] != null) return buckets[hashing1(key)] == key || buckets[hashing1(key)] == key;
-        return false;
+    public boolean checkTableContainsKey(int key){
+        return  ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key)) || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)] == key));
     }
 
     /**
      * Checks the load factor of the hash table if greater than .7,
      * automatically lengthens table to prevent further collisions
      */
-    public void checkLoadFactor() {
-        double factor = (double) size / hsize;
+    public double checkLoadFactor() {
+        double factor = (double) size / tableSize;
         if (factor > .7) {
-            System.out.println("Load factor is " + factor + ",  rehashing table");
-            reHashTable();
-        } else {
-            System.out.println("Load factor is " + factor);
+            System.out.printf("Load factor is %.2f , rehashing table\n", factor);
+            reHashTableIncreasesTableSize();
         }
+        return factor;
     }
 
     /**
@@ -226,7 +232,7 @@ public class HashMapCuckooHashing {
      */
     public boolean isFull() {
         boolean response = true;
-        for (int i = 0; i < hsize; i++) {
+        for (int i = 0; i < tableSize; i++) {
             if (buckets[i] == null || buckets[i] == AVAILABLE) {
                 return false;
             }
@@ -241,7 +247,7 @@ public class HashMapCuckooHashing {
      */
     public boolean isEmpty() {
         boolean response = true;
-        for (int i = 0; i < hsize; i++) {
+        for (int i = 0; i < tableSize; i++) {
             if (buckets[i] != null) {
                 response = false;
                 break;
@@ -250,6 +256,6 @@ public class HashMapCuckooHashing {
         return response;
     }
 
-    public int getHsize(){ return hsize;}
-    public int getSize(){return size;}
+    public int getHashTableSize(){ return tableSize;}
+    public int getNumberOfKeysInTable(){return size;}
 }

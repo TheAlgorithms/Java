@@ -27,13 +27,13 @@ public class HashMapCuckooHashingTest {
                 case 1: {
                     System.out.println("Enter the Key: ");
                     key = In.nextInt();
-                    h.insertHash(key);
+                    h.insertKey2HashTable(key);
                     break;
                 }
                 case 2: {
                     System.out.println("Enter the Key delete:  ");
                     key = In.nextInt();
-                    h.deleteHash(key);
+                    h.deleteKeyFromHashTable(key);
                     break;
                 }
                 case 3: {
@@ -48,15 +48,15 @@ public class HashMapCuckooHashingTest {
                 case 5: {
                     System.out.println("Enter the Key to find and print:  ");
                     key = In.nextInt();
-                    System.out.println("Key: " + key + " is at index: " + h.findHash(key) + "\n");
+                    System.out.println("Key: " + key + " is at index: " + h.findKeyInTable(key) + "\n");
                     break;
                 }
                 case 6: {
-                    h.checkLoadFactor();
+                    System.out.printf("Load factor is: %.2f\n", h.checkLoadFactor());
                     break;
                 }
                 case 7: {
-                    h.reHashTable();
+                    h.reHashTableIncreasesTableSize();
                     break;
                 }
             }
