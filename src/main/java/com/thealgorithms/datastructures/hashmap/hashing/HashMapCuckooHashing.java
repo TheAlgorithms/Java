@@ -110,7 +110,7 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
         }
-        System.out.println("Infinite loop occured, lengthening & rehashing table");
+        System.out.println("Infinite loop occurred, lengthening & rehashing table");
         reHashTableIncreasesTableSize();
         insertKey2HashTable(key);
     }
@@ -250,7 +250,5 @@ public class HashMapCuckooHashing {
         }
         return response;
     }
-
-    public int getHashTableSize(){ return tableSize;}
     public int getNumberOfKeysInTable(){return size;}
 }
