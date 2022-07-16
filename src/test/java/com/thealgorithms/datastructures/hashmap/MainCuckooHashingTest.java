@@ -53,10 +53,14 @@ class MainCuckooHashingTest {
     void removeNone() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
         int initialSize = hashTable.getNumberOfKeysInTable();
-
-        hashTable.deleteKeyFromHashTable(3);
-
-        assertEquals(initialSize, hashTable.getNumberOfKeysInTable());
+        try {
+            hashTable.deleteKeyFromHashTable(3);
+        }
+        catch (Exception e){
+            assertTrue(true);
+            return;
+        }
+        fail();
     }
 
     @Test
