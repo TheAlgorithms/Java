@@ -1,20 +1,37 @@
 package com.thealgorithms.maths;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PythagoreanTripleTest {
     @Test
-    public void Testpythagoreantriple(){
-        
+    public void Testtruevalue(){
+         //partition to test true value
         assertEquals(true, PythagoreanTriple.isPythagTriple(3,4,5));
-        assertEquals(true, PythagoreanTriple.isPythagTriple(6,8,10));
-        assertEquals(true, PythagoreanTriple.isPythagTriple(9,12,15));
-        assertEquals(true, PythagoreanTriple.isPythagTriple(12,16,20));
-        assertEquals(true, PythagoreanTriple.isPythagTriple(15,20,25));
-        assertEquals(true, PythagoreanTriple.isPythagTriple(18,24,30));        
-        assertEquals(false, PythagoreanTriple.isPythagTriple(5,20,30));
-        assertEquals(false, PythagoreanTriple.isPythagTriple(6,8,100));
-        assertEquals(false, PythagoreanTriple.isPythagTriple(-2,-2,2));   
+    }
+    @Test
+    public void Testfalsevalue(){
+        //partition to test false value
+        assertEquals(false, PythagoreanTriple.isPythagTriple(3,4,6));
+    }
+    @Test
+    public void TestminusvalueforA(){
+        //partition to test minus value for parameter A
+        assertEquals(false, PythagoreanTriple.isPythagTriple(-3,4,5));
+    }
+    @Test
+    public void TestminusvalueforB(){
+        //partition to test minus value for parameter B
+        assertEquals(false, PythagoreanTriple.isPythagTriple(3,-4,5));   
+    }
+    @Test
+    public void TestminusvalueforC(){
+        //partition to test minus value for parameter C
+        assertEquals(false, PythagoreanTriple.isPythagTriple(3,4,-5));        
+    }
+    @Test
+    public void Testminusvalue(){
+        //partition to test minus value for all parameters
+        assertEquals(false, PythagoreanTriple.isPythagTriple(-3,-4,-5));
     }
 }
