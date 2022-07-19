@@ -5,23 +5,6 @@ package com.thealgorithms.maths;
  */
 public class Combinations {
 
-    public static void main(String[] args) {
-        assert combinations(1, 1) == 1;
-        assert combinations(10, 5) == 252;
-        assert combinations(6, 3) == 20;
-        assert combinations(20, 5) == 15504;
-
-        // Since, 200 is a big number its factorial will go beyond limits of long even when 200C5 can be saved in a long
-        // variable. So below will fail
-        // assert combinations(200, 5) == 2535650040l;
-        assert combinationsOptimized(100, 0) == 1;
-        assert combinationsOptimized(1, 1) == 1;
-        assert combinationsOptimized(10, 5) == 252;
-        assert combinationsOptimized(6, 3) == 20;
-        assert combinationsOptimized(20, 5) == 15504;
-        assert combinationsOptimized(200, 5) == 2535650040l;
-    }
-
     /**
      * Calculate of factorial
      *
