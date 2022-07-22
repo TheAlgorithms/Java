@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.heaps;
+
 import java.util.*;
 
 public class GenericHeap <T extends Comparable <T> >{
