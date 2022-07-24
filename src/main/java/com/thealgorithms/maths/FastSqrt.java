@@ -2,6 +2,35 @@ package com.thealgorithms.maths;
 
 public class FastSqrt {
 
+    public static void main(String[] args){
+        //Using Inverse Square Root Method #1
+        float floatResult = 0f;
+        double doubleResult = 0d;
+        long start, mid, end; //Times to be benchmarked
+        start = System.currentTimeMillis();
+        for (float x = 1F; x < 4_000_000F; x += 0.25F) {
+            floatResult = inverseSqrt(x);
+        }
+        mid = System.currentTimeMillis();
+
+        for(double x = 1D; x < 4_000_000D; x += 0.25D){
+            doubleResult = inverseSqrt(x);
+        }
+        end = System.currentTimeMillis();
+
+        long controlled = mid - start;
+
+        long experimental = end - mid;
+
+        long percentageError = 100 * (controlled - experimental) / controlled;
+
+        System.out.println("Controlled Difference: " + controlled + "ms With result: " + floatResult);
+
+        System.out.println("Experimental Difference: " + experimental + "ms With result: " + doubleResult);
+
+        System.out.println("Method 2 of Inverse Square Root Was " + percentageError + "% faster than Method 1 of Inverse Square Root");
+    }
+
     /**
      * To better understand this algorithm, please refer to the following link: https://en.wikipedia.org/wiki/Fast_inverse_square_root
      */
