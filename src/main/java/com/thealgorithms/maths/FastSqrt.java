@@ -3,7 +3,6 @@ package com.thealgorithms.maths;
 public class FastSqrt {
 
     public static void main(String[] args){
-        //Using Inverse Square Root Method #1
         float floatResult = 0f;
         double doubleResult = 0d;
         long start, mid, end; //Times to be benchmarked
