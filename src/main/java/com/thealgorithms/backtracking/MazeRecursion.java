@@ -26,8 +26,6 @@ public class MazeRecursion {
 		// Here we set the obstacle
 		map[3][1] = 1;
 		map[3][2] = 1;
-//		map[1][1] = 1; 死路挡板
-//		map[2][1] = 1;
 
 		// Print the current map
 		System.out.println("The condition of the map： ");
