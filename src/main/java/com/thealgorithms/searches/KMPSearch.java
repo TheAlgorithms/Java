@@ -1,3 +1,5 @@
+package com.thealgorithms.searches;
+
 class KMPSearch {
     int KMPSearch(String pat, String txt)
     {
