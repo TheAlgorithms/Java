@@ -11,8 +11,9 @@ public class RabinKarpAlgorithm
         txt -> text
         q -> A prime number
     */
-    static void search(String pat, String txt, int q)
+    public int search(String pat, String txt, int q)
     {
+    	int index = -1; //note: -1 here represent not found, it is not an index
         int M = pat.length();
         int N = txt.length();
         int i, j;
@@ -49,8 +50,11 @@ public class RabinKarpAlgorithm
                 }
       
                 // if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
-                if (j == M)
+                if (j == M) {
                     System.out.println("Pattern found at index " + i);
+                    index= i;
+                    return index ;
+                }
             }
       
             // Calculate hash value for next window of text: Remove
@@ -65,20 +69,9 @@ public class RabinKarpAlgorithm
                 t = (t + q);
             }
         }
+        return index; // return -1 if pattern does not found
     }
       
-    /* Driver Code */
-    public static void main(String[] args)
-    {
-        String txt = "This is an example for rabin karp algorithmn";
-        String pat = "for";
-            
-          // A prime number
-        int q = 101; 
-        
-          // Function Call
-        search(pat, txt, q);
-    }
 }
   
 // This code is contributed by nuclode
