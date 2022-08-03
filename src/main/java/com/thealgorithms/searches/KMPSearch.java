@@ -1,7 +1,7 @@
 package com.thealgorithms.searches;
 
-class KMPSerach {
-    void KMPSearch(String pat, String txt)
+class KMPSearch {
+    int KMPSearch(String pat, String txt)
     {
         int M = pat.length();
         int N = txt.length();
@@ -24,7 +24,10 @@ class KMPSerach {
             if (j == M) {
                 System.out.println("Found pattern "
                                 + "at index " + (i - j));
+                int index = (i - j);
                 j = lps[j - 1];
+                return index;
+        
             }
  
             // mismatch after j matches
@@ -37,6 +40,8 @@ class KMPSerach {
                     i = i + 1;
             }
         }
+        System.out.println("No pattern found");
+		return -1;
     }
  
     void computeLPSArray(String pat, int M, int lps[])
@@ -78,7 +83,7 @@ class KMPSerach {
     {
         String txt = "ABABDABACDABABCABAB";
         String pat = "ABABCABAB";
-        new KMPSerach().KMPSearch(pat, txt);
+        new KMPSearch().KMPSearch(pat, txt);
     }
 }
 // This code has been contributed by Amit Khandelwal.
