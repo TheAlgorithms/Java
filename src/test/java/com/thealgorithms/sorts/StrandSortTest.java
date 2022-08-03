@@ -1,13 +1,13 @@
 package com.thealgorithms.sorts;
 
-import static org.junit.Assert.assertArrayEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import org.junit.jupiter.api.Test;
 
-public class StrandSortTest {
+class StrandSortTest {
 	@Test
 	// valid test case
 	public void StrandSortNonDuplicateTest() {
