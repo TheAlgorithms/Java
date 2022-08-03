@@ -1,6 +1,7 @@
+package com.thealgorithms.sorts;
+
 import static org.junit.Assert.assertArrayEquals;
 
-package com.thealgorithms.sorts;
 import java.util.Arrays;
 import java.util.LinkedList;
 
