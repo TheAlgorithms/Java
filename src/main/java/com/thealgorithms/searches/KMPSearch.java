@@ -1,5 +1,3 @@
-package com.thealgorithms.searches;
-
 class KMPSearch {
     int KMPSearch(String pat, String txt)
     {
@@ -78,12 +76,6 @@ class KMPSearch {
         }
     }
  
-    // Driver program to test above function
-    public static void main(String args[])
-    {
-        String txt = "ABABDABACDABABCABAB";
-        String pat = "ABABCABAB";
-        new KMPSearch().KMPSearch(pat, txt);
-    }
+
 }
 // This code has been contributed by Amit Khandelwal.
