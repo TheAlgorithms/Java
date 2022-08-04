@@ -1,5 +1,4 @@
 package com.thealgorithms.sorts;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,9 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryInsertionSortTest {
 	BinaryInsertionSort BIS= new BinaryInsertionSort();
-
-	
-	
 	
     @Test
     // valid test case
@@ -20,9 +16,6 @@ class BinaryInsertionSortTest {
         assertArrayEquals(expResult,actResult);
     }
 
-    
-    
-    
     @Test
     public void BinaryInsertionSortTestDuplicate() {
     	int[] array = {1,1,1,5,9,8,7,2,6};	
@@ -30,7 +23,4 @@ class BinaryInsertionSortTest {
         int[] actResult = BIS.binaryInsertSort(array);
         assertArrayEquals(expResult,actResult);
     }
-
-    
-
 }
