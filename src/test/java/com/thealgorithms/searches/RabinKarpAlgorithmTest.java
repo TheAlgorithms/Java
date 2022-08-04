@@ -4,17 +4,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-
-
 class RabinKarpAlgorithmTest {
 
 	
 	RabinKarpAlgorithm RKA= new RabinKarpAlgorithm();
 	int q= 101;
-	
-	
-	
-	
+
     @Test
     // valid test case
     public void RabinKarpAlgorithmTestExample() {
@@ -22,11 +17,7 @@ class RabinKarpAlgorithmTest {
         String pat = "algorithmn";
         int value = RKA.search(pat, txt, q);
         assertEquals(value,34);
-
     }
-
-    
-    
     
     @Test
     // valid test case
@@ -35,12 +26,8 @@ class RabinKarpAlgorithmTest {
         String pat = "AAA";
         int value = RKA.search(pat, txt, q);
         assertEquals(value, 0);
-
     }
 
-    
-    
-    
     @Test
     // valid test case
     public void RabinKarpAlgorithmTestMiddle() {
@@ -48,12 +35,8 @@ class RabinKarpAlgorithmTest {
         String pat = "BBCC";
         int value = RKA.search(pat, txt, q);
         assertEquals(value, 3);
-
     }
-    
-    
-    
-    
+
     @Test
     // valid test case
     public void RabinKarpAlgorithmTestLast() {
@@ -61,12 +44,8 @@ class RabinKarpAlgorithmTest {
         String pat = "CCC";
         int value = RKA.search(pat, txt, q);
         assertEquals(value, 8);
-
     }
-    
-    
-    
-    
+
     @Test
     // valid test case
     public void RabinKarpAlgorithmTestNotFound() {
@@ -74,7 +53,6 @@ class RabinKarpAlgorithmTest {
         String pat = "AADB";
         int value = RKA.search(pat, txt, q);
         assertEquals(value, -1);
-
     }
 
 }
