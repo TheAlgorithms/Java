@@ -1,10 +1,17 @@
 package com.thealgorithms.datastructures.trees;
 
 public class LazySegmentTree {
+    /**
+     * Lazy Segment Tree
+     *
+     * @see
+     *	<a href="https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/">
+     */
     static class Node {
-        private final int start, end;
-        private int value, lazy;
-        Node left, right;
+        private final int start, end; // start and end of the segment represented by this node
+        private int value; // value is the sum of all elements in the range [start, end)
+        private int lazy; // lazied value that should be added to children nodes
+        Node left, right; // left and right children
         public Node(int start, int end, int value) {
             this.start = start;
             this.end = end;
@@ -14,11 +21,17 @@ public class LazySegmentTree {
             this.right = null;
         }
 
+        /** Update the value of this node with the given value diff.
+         *
+         * @param diff The value to add to every index of this node range.
+         */
         public void applyUpdate(int diff) {
             this.lazy += diff;
             this.value += (this.end - this.start) * diff;
         }
 
+        /** Shift the lazy value of this node to its children.
+         */
         public void shift() {
             if (lazy == 0) return;
             if (this.left == null && this.right == null) return;
@@ -28,6 +41,12 @@ public class LazySegmentTree {
             this.lazy = 0;
         }
 
+        /** Create a new node that is the sum of this node and the given node.
+         *
+         * @param left The left Node of merging
+         * @param right The right Node of merging
+         * @return The new Node.
+         */
         static Node merge(Node left, Node right) {
             if (left == null) return right;
             if (right == null) return left;
@@ -52,18 +71,36 @@ public class LazySegmentTree {
 
     private final Node root;
 
-    public LazySegmentTree(int[] arr) {
-        this.root = buildTree(arr, 0, arr.length);
+    /** Create a new LazySegmentTree with the given array.
+     *
+     * @param array The array to create the LazySegmentTree from.
+     */
+    public LazySegmentTree(int[] array) {
+        this.root = buildTree(array, 0, array.length);
     }
 
-    private Node buildTree(int[] arr, int start, int end) {
-        if (end - start < 2) return new Node(start, end, arr[start]);
+    /** Build a new LazySegmentTree from the given array in O(n) time.
+     *
+     * @param array The array to build the LazySegmentTree from.
+     * @param start The start index of the current node.
+     * @param end The end index of the current node.
+     * @return The root of the new LazySegmentTree.
+     */
+    private Node buildTree(int[] array, int start, int end) {
+        if (end - start < 2) return new Node(start, end, array[start]);
         int mid = (start + end) >> 1;
-        Node left = buildTree(arr, start, mid);
-        Node right = buildTree(arr, mid, end);
+        Node left = buildTree(array, start, mid);
+        Node right = buildTree(array, mid, end);
         return Node.merge(left, right);
     }
 
+    /** Update the value of given range with the given value diff in O(log n) time.
+     *
+     * @param left The left index of the range to update.
+     * @param right The right index of the range to update.
+     * @param diff The value to add to every index of the range.
+     * @param curr The current node.
+     */
     private void updateRange(int left, int right, int diff, Node curr) {
         if (left <= curr.start && curr.end <= right) {
             curr.applyUpdate(diff);
@@ -77,6 +114,12 @@ public class LazySegmentTree {
         curr.value = merge.value;
     }
 
+    /** Get Node of given range in O(log n) time.
+     *
+     * @param left The left index of the range to update.
+     * @param right The right index of the range to update.
+     * @return The Node representing the sum of the given range.
+     */
     private Node getRange(int left, int right, Node curr) {
         if (left <= curr.start && curr.end <= right) return curr;
         if (left >= curr.end || right <= curr.start) return null;
