@@ -140,6 +140,24 @@ public class KDTree {
         }
     }
 
+    public Node findMax(int dimension) {
+        return findMax(root, dimension, 0);
+    }
 
+    public Node findMax(Node curr, int dimension, int depth) {
+        if (curr == null) return null;
+        int axis = depth % k;
+        if (axis == dimension) {
+            if (curr.right == null) return curr;
+            return findMax(curr.right, dimension, depth + 1);
+        } else {
+            Node left = findMax(curr.left, dimension, depth + 1);
+            Node right = findMax(curr.right, dimension, depth + 1);
+            Node[] candidates = {left, curr, right};
+            return Arrays.stream(candidates)
+                        .filter(Objects::nonNull)
+                        .max(Comparator.comparingInt(a -> a.getPoint().getCoordinate(dimension))).orElse(null);
+        }
+    }
 
 }
