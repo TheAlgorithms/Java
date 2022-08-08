@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MazeRecursionTest {
 
     @Test
-    public void testMigong() {
+    public void testMaze() {
 
 
         // First create a 2 dimensions array to mimic a maze map
