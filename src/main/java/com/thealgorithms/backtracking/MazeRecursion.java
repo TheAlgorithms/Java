@@ -1,4 +1,4 @@
-package com.atguigu.recursion;
+package com.thealgorithms.backtracking;
 
 public class MazeRecursion {
 

@@ -44,8 +44,8 @@ public class MazeRecursionTest {
             }
         }
 
-        com.atguigu.recursion.MazeRecursion.setWay(map, 1, 1);
-        com.atguigu.recursion.MazeRecursion.setWay2(map2, 1, 1);
+        MazeRecursion.setWay(map, 1, 1);
+        MazeRecursion.setWay2(map2, 1, 1);
 
 
         int expectedMap[][] = new int[][]{
