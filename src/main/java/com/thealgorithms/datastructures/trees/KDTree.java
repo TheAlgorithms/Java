@@ -109,14 +109,12 @@ public class KDTree {
         return search(root, point, 0);
     }
 
-    public Optional<Node> search(Node curr, Point point, int depth) {
-        if (curr == null) return Optional.empty();
-        if (curr.getPoint().equals(point)) return Optional.of(curr);
+    public Optional<Node> search(Node root, Point point, int depth) {
+        if (root == null) return Optional.empty();
+        if (root.point.equals(point)) return Optional.of(root);
         int axis = depth % k;
-        int currDimension = curr.getPoint().getCoordinate(axis);
-        int pointDimension = point.getCoordinate(axis);
-        if (pointDimension < currDimension) return search(curr.left, point, depth + 1);
-        else return search(curr.right, point, depth + 1);
+        if (point.getCoordinate(axis) < root.point.getCoordinate(axis)) return search(root.left, point, depth + 1);
+        else return search(root.right, point, depth + 1);
 
     }
 
