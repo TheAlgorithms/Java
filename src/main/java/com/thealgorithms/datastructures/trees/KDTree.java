@@ -50,12 +50,14 @@ public class KDTree {
 
     static class Node {
         private Point point;
+        private int axis; // 0 for x, 1 for y, 2 for z, etc.
 
         private Node left = null; // Left child
         private Node right = null; // Right child
 
-        Node(Point point) {
+        Node(Point point, int axis) {
             this.point = point;
+            this.axis = axis;
         }
 
         public Point getPoint() {
@@ -69,6 +71,14 @@ public class KDTree {
         public Node getRight() {
             return right;
         }
+
+        public int getAxis() {
+            return axis;
+        }
+
+        public int getAxisCoordinate() {
+            return point.getCoordinate(axis);
+        }
     }
 
     public Node getRoot() {
@@ -77,10 +87,11 @@ public class KDTree {
 
     private Node build(Point[] points, int depth) {
         if (points.length == 0) return null;
-        if (points.length == 1) return new Node(points[0]);
-        Arrays.sort(points, Comparator.comparingInt(o -> o.getCoordinate(depth % k)));
+        int axis = depth % k;
+        if (points.length == 1) return new Node(points[0], axis);
+        Arrays.sort(points, Comparator.comparingInt(o -> o.getCoordinate(axis)));
         int median = points.length >> 1;
-        Node node = new Node(points[median]);
+        Node node = new Node(points[median], axis);
         node.left = build(Arrays.copyOfRange(points, 0, median), depth + 1);
         node.right = build(Arrays.copyOfRange(points, median + 1, points.length), depth + 1);
         return node;
@@ -92,11 +103,9 @@ public class KDTree {
     }
 
     private Node insert(Node root, Point point, int depth) {
-        if (root == null) return new Node(point);
-
         int axis = depth % k;
-
-        if (root.point.getCoordinate(axis) < point.getCoordinate(axis)) root.left = insert(root.left, point, depth + 1);
+        if (root == null) return new Node(point, axis);
+        if (point.getCoordinate(axis) < root.getAxisCoordinate()) root.left = insert(root.left, point, depth + 1);
         else root.right = insert(root.right, point, depth + 1);
 
         return root;
@@ -104,79 +113,75 @@ public class KDTree {
 
     public Optional<Node> search(Point point) {
         if (point.getDimension() != k) throw new IllegalArgumentException("Point has wrong dimension");
-        return search(root, point, 0);
+        return search(root, point);
     }
 
-    public Optional<Node> search(Node root, Point point, int depth) {
+    public Optional<Node> search(Node root, Point point) {
         if (root == null) return Optional.empty();
         if (root.point.equals(point)) return Optional.of(root);
-        int axis = depth % k;
-        if (point.getCoordinate(axis) < root.point.getCoordinate(axis)) return search(root.left, point, depth + 1);
-        else return search(root.right, point, depth + 1);
+        if (point.getCoordinate(root.getAxis()) < root.getAxisCoordinate()) return search(root.left, point);
+        else return search(root.right, point);
 
     }
 
-    public Point findMin(int dimension) {
-        return findMin(root, dimension, 0).point;
+    public Point findMin(int axis) {
+        return findMin(root, axis).point;
     }
 
-    public Node findMin(Node root, int dimension, int depth) {
+    public Node findMin(Node root, int axis) {
         if (root == null) return null;
-        int axis = depth % k;
-        if (axis == dimension) {
+        if (root.getAxis() == axis) {
             if (root.left == null) return root;
-            return findMin(root.left, dimension, depth + 1);
+            return findMin(root.left, axis);
         } else {
-            Node left = findMin(root.left, dimension, depth + 1);
-            Node right = findMin(root.right, dimension, depth + 1);
+            Node left = findMin(root.left, axis);
+            Node right = findMin(root.right, axis);
             Node[] candidates = {left, root, right};
             return Arrays.stream(candidates)
                         .filter(Objects::nonNull)
-                        .min(Comparator.comparingInt(a -> a.point.getCoordinate(dimension))).orElse(null);
+                        .min(Comparator.comparingInt(a -> a.point.getCoordinate(axis))).orElse(null);
         }
     }
 
-    public Point findMax(int dimension) {
-        return findMax(root, dimension, 0).point;
+    public Point findMax(int axis) {
+        return findMax(root, axis).point;
     }
 
-    public Node findMax(Node root, int dimension, int depth) {
+    public Node findMax(Node root, int axis) {
         if (root == null) return null;
-        int axis = depth % k;
-        if (axis == dimension) {
+        if (root.getAxis() == axis) {
             if (root.right == null) return root;
-            return findMax(root.right, dimension, depth + 1);
+            return findMax(root.right, axis);
         } else {
-            Node left = findMax(root.left, dimension, depth + 1);
-            Node right = findMax(root.right, dimension, depth + 1);
+            Node left = findMax(root.left, axis);
+            Node right = findMax(root.right, axis);
             Node[] candidates = {left, root, right};
             return Arrays.stream(candidates)
                         .filter(Objects::nonNull)
-                        .max(Comparator.comparingInt(a -> a.point.getCoordinate(dimension))).orElse(null);
+                        .max(Comparator.comparingInt(a -> a.point.getCoordinate(axis))).orElse(null);
         }
     }
 
     public void delete(Point point) {
         Node node = search(point).orElseThrow(() -> new IllegalArgumentException("Point not found"));
-        root = delete(root, node, 0);
+        root = delete(root, node);
     }
 
-    private Node delete(Node root, Node node, int depth) {
+    private Node delete(Node root, Node node) {
         if (root == null) return null;
-        int axis = depth % k;
         if (root.equals(node)) {
             if (root.right != null) {
-                Node min = findMin(root.right, axis, depth + 1);
+                Node min = findMin(root.right, root.getAxis());
                 root.point = min.point;
-                root.right = delete(root.right, min, depth + 1);
+                root.right = delete(root.right, min);
             } else if (root.left != null) {
-                Node min = findMin(root.left, axis, depth + 1);
+                Node min = findMin(root.left, root.getAxis());
                 root.point = min.point;
-                root.left = delete(root.left, min, depth + 1);
+                root.left = delete(root.left, min);
             } else return null;
         }
-        if (root.point.getCoordinate(axis) < node.point.getCoordinate(axis)) root.left = delete(root.left, node, depth + 1);
-        else root.right = delete(root.right, node, depth + 1);
+        if (root.getAxisCoordinate() < node.point.getCoordinate(root.getAxis())) root.left = delete(root.left, node);
+        else root.right = delete(root.right, node);
         return root;
     }
 }
