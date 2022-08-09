@@ -15,6 +15,21 @@ public class LeastCommonMultiple {
         num1 = input.nextInt();
         num2 = input.nextInt();
 
-        
+        if (num1 > num2){
+            high = num3 = num1;
+        }
+        else{
+            high = num3 = num2;
+        }
+
+        while(num1 != 0){
+            if(high % num1 == 0 && high % num2 == 0){
+                cmv = high;
+                break;
+            }
+            high += num3;
+        }
+        System.out.println("The greatest common divisor of two numbers is >> " + cmv);
     }
+    
 }
