@@ -1,7 +1,7 @@
 package com.thealgorithms.maths;
 
 /**
- * Find number of least common multiple
+ * Find least common multiple of two numbers
  */
 
 public class LeastCommonMultiple {
