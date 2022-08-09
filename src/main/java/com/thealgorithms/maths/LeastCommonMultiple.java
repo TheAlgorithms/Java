@@ -30,6 +30,9 @@ public class LeastCommonMultiple {
             high += num3;
         }
         System.out.println("The greatest common divisor of two numbers is >> " + cmv);
+
     }
-    
+
 }
+
+
