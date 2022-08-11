@@ -23,11 +23,11 @@ public class JosephusProblem {
      * @return return the winner of the game
      */
 
-    public int findTheWinner(int n, int k) {
+    public static int findTheWinner(int n, int k) {
         return winner(n, k) + 1;
     }
     
-    public int winner(int n, int k){
+    public static int winner(int n, int k){
         if (n == 1){
             return 0;
         }
