@@ -28,6 +28,9 @@ public class LeastCommonMultiple {
 	public static int lcm (int num1, int num2){
         int high, num3;
         int cmv = 0;
+        /*
+         * value selection for the numerator
+         */
         if (num1 > num2){
             high = num3 = num1;
         }
