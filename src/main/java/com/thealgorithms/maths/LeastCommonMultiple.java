@@ -1,12 +1,16 @@
 package com.thealgorithms.maths;
 
 /**
- * Find least common multiple of two numbers
+ * Is a common mathematics concept to find the smallest value number 
+ * that can be divide using either number without having the remainder. 
  * 
  * @author LauKinHoong
  */
 
 public class LeastCommonMultiple {
+    /**
+     * Driver Code
+     */
     public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
@@ -18,6 +22,9 @@ public class LeastCommonMultiple {
 
 	}
 	
+    /*
+     * get least common multiple from two number
+     */
 	public static int lcm (int num1, int num2){
         int high, num3;
         int cmv = 0;
