@@ -23,4 +23,5 @@ public class LeastCommonMultipleTest {
 		int expected = 24;
 		assertEquals(result, expected);
 	}
+    
 }
