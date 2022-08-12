@@ -11,7 +11,7 @@ public class LeastCommonMultipleTest {
 	public void testForFirst() {
 		int result = LeastCommonMultiple.lcm(6,8);
 		int expected = 24;
-		assertEquals(result, expected);
+		Assertions.assertEquals(result, expected);
 	}
 
 	/*
@@ -21,7 +21,7 @@ public class LeastCommonMultipleTest {
 	public void testForSecond() {
 		int result = LeastCommonMultiple.lcm(8,6);
 		int expected = 24;
-		assertEquals(result, expected);
+		Assertions.assertEquals(result, expected);
 	}
-    
+
 }
