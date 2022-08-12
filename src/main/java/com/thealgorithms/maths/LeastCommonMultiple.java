@@ -2,19 +2,25 @@ package com.thealgorithms.maths;
 
 /**
  * Find least common multiple of two numbers
+ * 
+ * @author LauKinHoong
  */
 
 public class LeastCommonMultiple {
-    public static void main(String args[]){
-        
-        int num1, num2, num3, high;
-        int cmv = 0;
-
-        Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
         System.out.println("Please enter first number >> ");
-        num1 = input.nextInt();
-        num2 = input.nextInt();
+        int num1 = input.nextInt();
+        System.out.println("Please enter second number >> ");
+        int num2 = input.nextInt();
+        System.out.println("The least common multiple of two numbers is >> " + lcm(num1,num2));
 
+	}
+	
+	public static int lcm (int num1, int num2){
+        int high, num3;
+        int cmv = 0;
         if (num1 > num2){
             high = num3 = num1;
         }
@@ -29,10 +35,6 @@ public class LeastCommonMultiple {
             }
             high += num3;
         }
-        System.out.println("The greatest common divisor of two numbers is >> " + cmv);
-
+        return cmv;
     }
-
 }
-
-
