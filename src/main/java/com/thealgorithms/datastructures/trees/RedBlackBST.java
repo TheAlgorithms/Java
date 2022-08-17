@@ -25,22 +25,23 @@ public class RedBlackBST {
 
     public void printTree(Node node) {
         if (node == nil) {
-            return;
+
         }
-        printTree(node.left);
-        System.out.print(
-                ((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
-        printTree(node.right);
+        else{
+            printTree(node.left);
+            System.out.print(((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
+            printTree(node.right);
+        }
     }
 
     public void printTreepre(Node node) {
         if (node == nil) {
-            return;
         }
-        System.out.print(
-                ((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
-        printTree(node.left);
-        printTree(node.right);
+        else{
+            System.out.print(((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
+            printTreepre(node.left);
+            printTreepre(node.right);
+        }
     }
 
     private Node findNode(Node findNode, Node node) {
