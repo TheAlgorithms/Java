@@ -1,7 +1,5 @@
 package com.thealgorithms.others;
 
-import java.util.Arrays;
-
 /**
  * Sieve of Eratosthenes is an ancient algorithm for finding all prime numbers
  * up to any given limit. It does so by iteratively marking as composite (i.e.,
@@ -32,49 +30,39 @@ public class SieveOfEratosthenes {
      * prime numbers till n. Should be more than 1.
      * @return array of all prime numbers between 0 to n
      */
-    public static int[] findPrimesTill(int n) {
-        // Create array where index is number and value is flag - is that number a prime or not.
-        // size of array is n + 1 cause in Java array indexes starts with 0
-        Type[] numbers = new Type[n + 1];
+    public static void findPrimesTill(int n, boolean[] notPrime) {
+        
+        //Initializing indexes 0 & 1 to be true as they are neither prime nor composite.
+        notPrime[0] = true;
+        notPrime[1] = true;
 
-        // Start with assumption that all numbers except 0 and 1 are primes.
-        Arrays.fill(numbers, Type.PRIME);
-        numbers[0] = numbers[1] = Type.NOT_PRIME;
+        for(int i = 2; i*i <= n; i++) {  
 
-        double cap = Math.sqrt(n);
-        // Main algorithm: mark all numbers which are multiples of some other values as not prime
-        for (int i = 2; i <= cap; i++) {
-            if (numbers[i] == Type.PRIME) {
-                for (int j = 2; i * j <= n; j++) {
-                    numbers[i * j] = Type.NOT_PRIME;
+            if (!notPrime[i]) {  //As if the index is false means that the index value is a prime, so taking the negation of false i.e. !false = true
+
+                for (int j = i*2; j <= n; j += i) {  //making the multiples of i to be true i.e. they aren't prime
+                    notPrime[j] = true;
                 }
             }
         }
-
-        //Write all primes to result array
-        int primesCount = (int) Arrays.stream(numbers)
-                .filter(element -> element == Type.PRIME)
-                .count();
-        int[] primes = new int[primesCount];
-
-        int primeIndex = 0;
-        for (int i = 0; i < n + 1; i++) {
-            if (numbers[i] == Type.PRIME) {
-                primes[primeIndex++] = i;
-            }
-        }
-
-        return primes;
-    }
-
-    private enum Type {
-        PRIME, NOT_PRIME
     }
 
     public static void main(String[] args) {
         int n = 100;
         System.out.println("Searching for all primes from zero to " + n);
-        int[] primes = findPrimesTill(n);
-        System.out.println("Found: " + Arrays.toString(primes));
+
+        boolean[] notPrime = new boolean[n+1];  //java indexes starts from 0, so taking length to be n+1 to include the n'th index also.
+        /*
+        The boolean array notPrime will be initialized with default value false, so let's take that if the index is false then the
+        index value is a prime number, else the index value is not prime.
+        */
+        findPrimesTill(n+1, notPrime);           
+        
+        for (int i = 2; i <= n; i++) {
+            if (!notPrime[i]) {
+
+                System.out.print(i + " ");
+            }
+        }
     }
 }
