@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.stacks;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class InfixToPostfix {
