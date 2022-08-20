@@ -46,7 +46,6 @@ class WordLadder {
         String words[] = {"hot", "dot", "dog", "lot", "log", "cog"};
         List<String> wordList = Arrays.asList(words);
 
-        System.out.println("Ladder Length: " + ladderLength(beginWord, endWord, wordList));
     }
 
     /**
