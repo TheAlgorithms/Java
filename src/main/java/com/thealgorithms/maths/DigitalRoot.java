@@ -36,8 +36,6 @@
  */
 package com.thealgorithms.maths;
 
-import java.util.*;
-
 class DigitalRoot {
 
     public static int digitalRoot(int n) {
