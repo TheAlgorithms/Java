@@ -49,6 +49,6 @@ public class FastSqrtTests {
 	@Test
 	void testForEightElements() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(4522,0.01486756));
+		assertTrue(FastSqrt.inverseSqrt(4522.4457f,0.014866836));
 	}
 }
