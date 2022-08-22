@@ -37,18 +37,19 @@ public class FastSqrtTests {
 	@Test
 	void testForSixElements() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(675.543f,0.038408123));
+		assertTrue(FastSqrt.inverseSqrt(4522f,0.01486756));
 	}
 
 	@Test
 	void testForSevenElements() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(675,0.03842351213097572));
+		assertTrue(FastSqrt.inverseSqrt(21,0.218117818236351));
     }
 
 	@Test
 	void testForEightElements() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(4522.4457f,0.014866836));
+		assertTrue(FastSqrt.inverseSqrt(21f,0.21811782));
 	}
 }
+
