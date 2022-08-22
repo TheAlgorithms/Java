@@ -37,6 +37,10 @@ public class MinHeap implements Heap {
 
     // Get the key of the element at a given index
     private double getElementKey(int elementIndex) {
+        if ((elementIndex <= 0) || (elementIndex > minHeap.size())) {
+            throw new IndexOutOfBoundsException("Index out of heap range");
+        }
+        
         return minHeap.get(elementIndex - 1).getKey();
     }
 
@@ -50,7 +54,7 @@ public class MinHeap implements Heap {
     // Toggle an element up to its right place as long as its key is lower than its parent's
     private void toggleUp(int elementIndex) {
         double key = minHeap.get(elementIndex - 1).getKey();
-        while (getElementKey((int) Math.floor(elementIndex / 2.0)) > key) {
+        while (getElementKey((int) Math.floor(elementIndex / 2.0) + 1) > key) {
             swap(elementIndex, (int) Math.floor(elementIndex / 2.0));
             elementIndex = (int) Math.floor(elementIndex / 2.0);
         }

@@ -1,6 +1,4 @@
 package com.thealgorithms.maths;
-
-import java.util.Scanner;
 public class PascalTriangle {
     /**
      *In mathematics, Pascal's triangle is a triangular array of the binomial coefficients that arises

@@ -39,8 +39,8 @@ public class RedBlackBST {
         }
         System.out.print(
                 ((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
-        printTree(node.left);
-        printTree(node.right);
+        printTreepre(node.left);
+        printTreepre(node.right);
     }
 
     private Node findNode(Node findNode, Node node) {
