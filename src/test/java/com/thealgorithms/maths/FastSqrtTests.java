@@ -12,7 +12,7 @@ public class FastSqrtTests {
 	@Test
 	void testForsecond() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(1332f,0.027388955));
+		assertTrue(FastSqrt.inverseSqrt(1332f,0.027388955f));
         // calls for the 1st inverse method
 	}
 
@@ -25,7 +25,7 @@ public class FastSqrtTests {
 	@Test
 	void testForFourth() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(1f,0.99830717));
+		assertTrue(FastSqrt.inverseSqrt(1f,0.99830717f));
 	}
 
 	@Test
@@ -37,7 +37,7 @@ public class FastSqrtTests {
 	@Test
 	void testForSixth() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(4522f,0.01486756));
+		assertTrue(FastSqrt.inverseSqrt(4522f,0.01486756f));
 	}
 
 	@Test
@@ -49,7 +49,7 @@ public class FastSqrtTests {
 	@Test
 	void testForEighth() 
 	{
-		assertTrue(FastSqrt.inverseSqrt(21f,0.21811782));
+		assertTrue(FastSqrt.inverseSqrt(21f,0.21811782f));
 	}
 }
 
