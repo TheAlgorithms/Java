@@ -3,22 +3,22 @@
  */
 
 
-
 /** Program description - To find out the inverse square root of the given number*/
 
 /** Wikipedia Link - https://en.wikipedia.org/wiki/Fast_inverse_square_root */
 
+
 package com.thealgorithms.maths;
 
-public class FastSqrt {
-    public static boolean inverseSqrt(float number, float answer) {
+public class FastInverseSqrt {
+    public static boolean inverseSqrt(float number) {
         float x = number;
         float xhalf = 0.5f * x;
         int i = Float.floatToIntBits(x);
         i = 0x5f3759df - (i >> 1);
         x = Float.intBitsToFloat(i);
         x = x * (1.5f - xhalf * x * x);
-        return x == answer;
+        return x == (float)((float)1/(float)Math.sqrt(number));
     }
     
     /**
@@ -27,7 +27,7 @@ public class FastSqrt {
      */
 
     
-    public static boolean inverseSqrt(double number , double answer) {
+    public static boolean inverseSqrt(double number) {
         double x = number;
         double xhalf = 0.5d * x;
         long i = Double.doubleToLongBits(x);
@@ -37,7 +37,7 @@ public class FastSqrt {
             x = x * (1.5d - xhalf * x * x);
         }
         x *= number;
-        return x == answer;
+        return x == 1/Math.sqrt(number);
     }
     /**
      * Returns the inverse square root of the given number upto 14 - 16 decimal places.

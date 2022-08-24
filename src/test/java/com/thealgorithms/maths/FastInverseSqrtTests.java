@@ -2,54 +2,55 @@ package com.thealgorithms.maths;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FastSqrtTests {
+
+
+public class FastInverseSqrtTests {
     @Test
 	void testForOneElement() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(1332,0.027388954535126686));
+		assertFalse(FastInverseSqrt.inverseSqrt(1332));
         // calls for the 2nd inverse method
     }
 	@Test
 	void testForsecond() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(1332f,0.027388955f));
+		assertFalse(FastInverseSqrt.inverseSqrt(1332f));
         // calls for the 1st inverse method
 	}
 
 	@Test
 	void testForThird() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(1,0.9983071684837341));
+		assertFalse(FastInverseSqrt.inverseSqrt(1));
 	}
     
 	@Test
 	void testForFourth() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(1f,0.99830717f));
+		assertFalse(FastInverseSqrt.inverseSqrt(1f));
 	}
 
 	@Test
 	void testForFifth() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(4522,0.014867560006678104));
+		assertFalse(FastInverseSqrt.inverseSqrt(4522));
 	}
     
 	@Test
 	void testForSixth() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(4522f,0.01486756f));
+		assertFalse(FastInverseSqrt.inverseSqrt(4522f));
 	}
 
 	@Test
 	void testForSeventh() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(21,0.218117818236351));
+		assertFalse(FastInverseSqrt.inverseSqrt(21));
     }
 
 	@Test
 	void testForEighth() 
 	{
-		assertFalse(FastSqrt.inverseSqrt(21f,0.21811782f));
+		assertFalse(FastInverseSqrt.inverseSqrt(21f));
 	}
 }
-
