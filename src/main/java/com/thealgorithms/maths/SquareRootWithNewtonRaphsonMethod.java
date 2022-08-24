@@ -24,10 +24,10 @@ public class SquareRootWithNewtonRaphsonMethod {
         System.out.print("Enter n to find it's square root: ");
         int n = in.nextInt();
 
-        System.out.println("Square root of " + n + " is " + sqRoot(n));
+        System.out.println("Square root of " + n + " is " + squareRoot(n));
     }
 
-    public static double sqRoot (int n) {
+    public static double squareRoot (int n) {
 
         double x = n;                         //initially taking a guess that x = n.
         double root;
