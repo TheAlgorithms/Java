@@ -2,8 +2,8 @@ package com.thealgorithms.searches;
 
 import com.thealgorithms.searches.DepthFirstSearch.Node;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ public class BreadthFirstSearch {
             return Optional.of(node);
         }
 
-        List<Node> queue = new ArrayList<>(node.getSubNodes());
+        Queue<Node> queue = new ArrayDeque<>(node.getSubNodes());
 
         while (!queue.isEmpty()) {
             final Node current = queue.get(0);
@@ -29,7 +29,7 @@ public class BreadthFirstSearch {
 
             queue.addAll(current.getSubNodes());
 
-            queue.remove(0);
+            queue.remove();
         }
 
         return Optional.empty();
