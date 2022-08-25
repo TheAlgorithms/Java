@@ -22,7 +22,7 @@ public class BreadthFirstSearch {
         Queue<Node> queue = new ArrayDeque<>(node.getSubNodes());
 
         while (!queue.isEmpty()) {
-            final Node current = queue.get(0);
+            final Node current = queue.poll();
 
             if (current.getName().equals(name)) {
                 return Optional.of(current);
