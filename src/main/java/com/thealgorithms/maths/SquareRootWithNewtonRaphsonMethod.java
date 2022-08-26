@@ -18,29 +18,15 @@ import java.util.Scanner;
 
 public class SquareRootWithNewtonRaphsonMethod {
 
-    public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter n to find it's square root: ");
-        int n = in.nextInt();
-
-        System.out.println("Square root of " + n + " is " + squareRoot(n));
-    }
-
     public static double squareRoot (int n) {
 
         double x = n;                         //initially taking a guess that x = n.
-        double root;
+        double root = 0.5 * (x + n/x);        //applying Newton-Raphson Method.
 
-        while (true) {
-
-            root = 0.5 * (x + n/x);           //applying Newton-Raphson Method.
-
-            if (Math.abs(root - x) < 0.1){    //root - x = error and error < 0.1, 0.1 is the precision value taken over here.
-                break;                        //if error is below the stated precision value, break out of the loop.
-            }
+        while (Math.abs(root - x) > 0.0000001) {      //root - x = error and error < 0.01, 0.01 is the precision value taken over here.
 
             x = root;                         //decreasing the value of x to root, i.e. decreasing the guess.
+            root = 0.5 * (x + n/x);
         }
 
         return root;
