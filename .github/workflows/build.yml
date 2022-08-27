@@ -26,3 +26,11 @@ jobs:
         run: mvn --batch-mode --update-snapshots verify
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        
+        
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.2
+        with:
+          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
