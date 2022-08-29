@@ -14,6 +14,7 @@ on:
       - '**.Dockerfile'
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,3 +25,35 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+        
+      - name: Upload jacoco to Codecov
+        uses: codecov/codecov-action@v3
+        
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.2
+        with:
+          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Run PMD 
+        run: mvn pmd:pmd
+      
+      - name: print pmd result
+        uses: jwgmeligmeyling/pmd-github-action@master
+        with:
+          path: 'target/site/pmd/pmd.xml'
+          
+          
+      - uses: pmd/pmd-github-action@v1
+        with:
+          rulesets: 'target/pmd/rulesets/maven-pmd-plugin-default.xml'
+          analyzeModifiedFilesOnly: true
+          
+          
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: pmd-report.sarif
+
+
