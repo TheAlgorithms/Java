@@ -1,8 +1,8 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CaesarTest {
 	
@@ -15,7 +15,7 @@ public class CaesarTest {
 	@Test
 	public void testDecode() {
 		String expResult = "abc";
-		String actResult = Caesar.encode("bcd", 1);
+		String actResult = Caesar.decode("bcd", 1);
 		assertEquals(expResult, actResult);
 	}
 }
