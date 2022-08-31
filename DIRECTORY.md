@@ -458,6 +458,7 @@
             * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
           * ciphers
             * [BlowfishTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/BlowfishTest.java)
+            * [CaesarTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/CaesarTest.java)
             * [PolybiusTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/PolybiusTest.java)
           * datastructures
             * bloomfilter
