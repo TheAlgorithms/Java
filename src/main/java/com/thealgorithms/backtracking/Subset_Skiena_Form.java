@@ -9,6 +9,10 @@ package com.thealgorithms.backtracking;
 import java.util.*;
 public class Subset_Skiena_Form {
     static List<List<Integer>> nm=new ArrayList<>();
+    Subset_Skiena_Form()
+    {
+        nm.clear();
+    }
     static boolean subset_Skiena_Form(int arr[], int index, int len, int num[])
     {
         int p[] = new int[len];
@@ -53,7 +57,6 @@ public class Subset_Skiena_Form {
         // stores answer in list
     }
 }
-
 
 /**
      * OUTPUT : [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
