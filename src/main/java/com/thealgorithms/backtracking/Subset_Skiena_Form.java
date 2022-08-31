@@ -8,14 +8,15 @@ package com.thealgorithms.backtracking;
 
 import java.util.*;
 public class Subset_Skiena_Form {
-    static boolean subset_Skiena_Form(int arr[], int index, int len, int num[], List<List<Integer>> nm)
+    static List<List<Integer>> nm=new ArrayList<>();
+    static boolean subset_Skiena_Form(int arr[], int index, int len, int num[])
     {
         int p[] = new int[len];
         // empty array initialized
         int freq;
         if(index == len)
         {
-            answer_store(num,len,nm,arr);
+            answer_store(num,len,arr);
             // method call for answer store
         }
         else
@@ -25,7 +26,7 @@ public class Subset_Skiena_Form {
             for(int i = 0; i < freq; i++)
             {
                 num[index - 1] = p[i];
-                subset_Skiena_Form(arr,index,len,num,nm);
+                subset_Skiena_Form(arr,index,len,num);
                 // recursion process
             }
         }
@@ -38,7 +39,7 @@ public class Subset_Skiena_Form {
         return 2;
         // Array validation
     }
-    static void answer_store(int arr[], int len, List<List<Integer>> nm, int ans[])
+    static void answer_store(int arr[], int len, int ans[])
     {
         List<Integer> kk=new ArrayList<>();
         for(int i = 0; i < len; i++)
