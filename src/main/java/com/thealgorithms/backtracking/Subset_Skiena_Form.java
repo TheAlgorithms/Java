@@ -30,7 +30,7 @@ public class Subset_Skiena_Form {
                 // recursion process
             }
         }
-        return true;
+        return false;
     }
     static int validation(int arr[])
     {
