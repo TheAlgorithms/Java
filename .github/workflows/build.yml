@@ -29,12 +29,12 @@ jobs:
       - name: Upload jacoco to Codecov
         uses: codecov/codecov-action@v3
         
-      - name: Add coverage to PR
-        id: jacoco
-        uses: madrapps/jacoco-report@v1.2
-        with:
-          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Add coverage to PR
+       # id: jacoco
+       # uses: madrapps/jacoco-report@v1.2
+       # with:
+        #  paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+        #  token: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Run PMD 
         run: mvn pmd:pmd
@@ -50,9 +50,9 @@ jobs:
           sarif_file: pmd-report.sarif
           
           
-      - name: print pmd result
-        uses: jwgmeligmeyling/pmd-github-action@master
-        with:
-          path: 'target/site/pmd/pmd.xml'
+      #- name: print pmd result
+        #uses: jwgmeligmeyling/pmd-github-action@master
+       #with:
+         # path: 'target/site/pmd/pmd.xml'
 
 
