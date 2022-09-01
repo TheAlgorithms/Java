@@ -546,6 +546,7 @@
             * [QuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/QuickSortTest.java)
             * [SelectionSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SelectionSortTest.java)
             * [StrandSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/StrandSortTest.java)
+            * [SwapSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SwapSortTest.java)
             * [TopologicalSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TopologicalSortTest.java)
             * [WiggleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/WiggleSortTest.java)
           * strings
