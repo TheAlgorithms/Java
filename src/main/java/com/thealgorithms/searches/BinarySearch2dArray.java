@@ -8,25 +8,6 @@ greater than the target, then the rows below it are ignored.
  */
 public class BinarySearch2dArray
 {
-    public static void main (String[] args){
-
-        int[][] arr = {
-                {1,  2,  3,  4},
-                {5,  6,  7,  8},
-                {10, 11, 12, 13}
-        };
-        int target = 7;
-
-        int[] ans = BinarySearch(arr, target);
-
-        if (ans[0] == -1) {
-            System.out.println("Target doesn't exist in the provided array");
-        }
-        else {
-            System.out.println("Target is at index (" + ans[0] + ", " + ans[1] + ")");
-        }
-    }
-
     static int[] BinarySearch(int[][] arr, int target){
 
         int rowCount = arr.length, colCount = arr[0].length;
