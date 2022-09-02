@@ -21,18 +21,21 @@ class MobiusFunctionTest {
 		//then
 		assertEquals(expectedMessage, actualMessage);
 	}
-
+	
 	@Test
 	void testMobiusForNegativeNumber() {
 		//given
 		int number = -1;
-		int expectedValue = 1;
+		String expectedMessage = "Number must be greater than zero.";
 
 		//when
-		int actualValue = MobiusFunction.mobius(number);
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			MobiusFunction.mobius(number);
+		});
+		String actualMessage = exception.getMessage();
 
 		//then
-		assertEquals(expectedValue, actualValue);
+		assertEquals(expectedMessage, actualMessage);
 	}
 
 	@Test
