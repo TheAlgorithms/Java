@@ -53,14 +53,7 @@ public class MobiusFunction {
 			}
 		}
 		
-		if(primeFactorCount % 2 == 0) {
-			//if primeFactorCount is even
-			return 1;
-		}
-		else {
-			//if primeFactorCount is odd
-			return -1;
-		}
+		return (primeFactorCount % 2 == 0) ? 1 : -1;
 	}
 
 }
