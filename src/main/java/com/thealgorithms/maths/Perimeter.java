@@ -3,10 +3,6 @@ package com.thealgorithms.maths;
 public class Perimeter {
     // Perimeter of different 2D geometrical shapes
 
-    public static void main(String[] args) {
-        
-    }
-
     /**
      *Calculate the Perimeter of polygon.
 
