@@ -21,7 +21,7 @@ class MobiusFunctionTest {
 		//then
 		assertEquals(expectedMessage, actualMessage);
 	}
-	
+
 	@Test
 	void testMobiusForNegativeNumber() {
 		//given
@@ -41,16 +41,16 @@ class MobiusFunctionTest {
 	@Test
 	void testMobiusFunction(){
 		int[] expectedResultArray = {
-				1, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1, -1, 0, -1, 1, 1, 0, -1, 0, -1, 0, 1, 1, -1, 0, 
+				1, -1, -1, 0, -1, 1, -1, 0, 0, 1, -1, 0, -1, 1, 1, 0, -1, 0, -1, 0, 1, 1, -1, 0, 
 				0, 1, 0, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, 1, 1, 0, -1, -1, -1, 0, 0, 1, -1, 0, 0, 
 				0, 1, 0, -1, 0, 1, 0, 1, 1, -1, 0, -1, 1, 0, 0, 1, -1, -1, 0, 1, -1, -1, 0, -1, 1, 
 				0, 0, 1, -1, -1, 0, 0, 1, -1, 0, 1, 1, 1, 0, -1, 0, 1, 0, 1, 1, 1, 0, -1, 0, 0, 0
 		};
 
-		for(int i = 0; i <= 100; i++) {
+		for(int i = 1; i <= 100; i++) {
 
 			//given
-			int expectedValue = expectedResultArray[i];
+			int expectedValue = expectedResultArray[i-1];
 
 			//when
 			int actualValue = MobiusFunction.mobius(i);
