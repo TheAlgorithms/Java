@@ -15,16 +15,16 @@ package com.thealgorithms.maths;
 public class MobiusFunction {
 
 	/**
-     * This method returns μ(n) of given number n
-     *
-     * @param number Integer value which μ(n) is to be calculated 
-     * @return  1 when number is less than or equals 1 
-     *            or number has even number of prime factors
-     *          0 when number has repeated prime factor
-     *         -1 when number has odd number of prime factors
-     */
+	 * This method returns μ(n) of given number n
+	 *
+	 * @param number Integer value which μ(n) is to be calculated 
+	 * @return  1 when number is less than or equals 1 
+	 *            or number has even number of prime factors
+	 *          0 when number has repeated prime factor
+	 *         -1 when number has odd number of prime factors
+	 */
 	static int mobius(int number) {
-		
+
 		if(number <= 0) {
 			//throw exception when number is less than or is zero
 			throw new IllegalArgumentException("Number must greater than zero.");
@@ -45,14 +45,12 @@ public class MobiusFunction {
 					//if number is divisible by square of prime factor
 					return 0;
 				}
-				else {
-					/*increment primeFactorCount by 1 
-					if number is not divisible by square of found prime factor*/
-					primeFactorCount++;
-				}
+				/*increment primeFactorCount by 1 
+				if number is not divisible by square of found prime factor*/
+				primeFactorCount++;
 			}
 		}
-		
+
 		return (primeFactorCount % 2 == 0) ? 1 : -1;
 	}
 
