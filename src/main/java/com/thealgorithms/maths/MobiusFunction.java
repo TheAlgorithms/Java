@@ -27,7 +27,7 @@ public class MobiusFunction {
 
 		if(number <= 0) {
 			//throw exception when number is less than or is zero
-			throw new IllegalArgumentException("Number must greater than zero.");
+			throw new IllegalArgumentException("Number must be greater than zero.");
 		}
 
 		if(number == 1) {
