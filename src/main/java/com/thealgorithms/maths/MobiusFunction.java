@@ -24,8 +24,13 @@ public class MobiusFunction {
      *         -1 when number has odd number of prime factors
      */
 	static int mobius(int number) {
+		
+		if(number <= 0) {
+			//throw exception when number is less than or is zero
+			throw new IllegalArgumentException("Number must greater than zero.");
+		}
 
-		if(number <= 1) {
+		if(number == 1) {
 			//return 1 if number passed is less or is 1
 			return 1;
 		}
