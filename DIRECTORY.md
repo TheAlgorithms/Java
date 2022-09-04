@@ -268,6 +268,7 @@
             * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MaxValue.java)
             * [Median](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Median.java)
             * [MinValue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MinValue.java)
+            * [MobiusFunction](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MobiusFunction.java)
             * [Mode](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Mode.java)
             * [NonRepeatingElement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/NonRepeatingElement.java)
             * [NthUglyNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/NthUglyNumber.java)
@@ -368,6 +369,7 @@
             * [Verhoeff](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Verhoeff.java)
           * searches
             * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch.java)
+            * [BinarySearch2dArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch2dArray.java)
             * [BreadthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BreadthFirstSearch.java)
             * [DepthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/DepthFirstSearch.java)
             * [ExponentalSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/ExponentalSearch.java)
@@ -506,6 +508,7 @@
             * [JosephusProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/JosephusProblemTest.java)
             * [KaprekarNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaprekarNumbersTest.java)
             * [LeastCommonMultipleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LeastCommonMultipleTest.java)
+            * [MobiusFunctionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MobiusFunctionTest.java)
             * [PascalTriangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PascalTriangleTest.java)
             * [PerfectSquareTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PerfectSquareTest.java)
             * [PrimeCheckTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PrimeCheckTest.java)
@@ -531,6 +534,7 @@
             * [UniquePathsTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/UniquePathsTests.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
           * searches
+            * [BinarySearch2dArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearch2dArrayTest.java)
             * [KMPSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/KMPSearchTest.java)
             * [LinearSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/LinearSearchTest.java)
             * [QuickSelectTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/QuickSelectTest.java)
