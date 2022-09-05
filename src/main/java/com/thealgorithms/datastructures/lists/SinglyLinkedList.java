@@ -53,6 +53,27 @@ public class SinglyLinkedList extends Node{
         }
         return false;
     }
+    
+    
+     /**
+     * Returns the Middle Node of the Singly Linked List
+     *
+     */
+    
+    public Node middleNode(){
+        Node slow=head;
+        Node fast=head;
+
+        while(fast.next!=null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+
+        return slow;
+     }
+    
+    
+    
 
     /**
      * Swaps nodes of two given values a and b.
