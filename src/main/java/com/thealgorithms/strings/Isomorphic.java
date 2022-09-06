@@ -2,7 +2,7 @@ package com.thealgorithms.strings;
 import java.util.*;
 
 public class Isomorphic {
-  public static boolean isIsomorphic(String s, String t) {
+  public static boolean checkStrings(String s, String t) {
         
     //  Check if two strings have same length or not
     //  IF      not then return false
@@ -58,7 +58,7 @@ public class Isomorphic {
     // ---------------------------------------
 
     // Checking is two strings are isomorphic
-    boolean ans = isIsomorphic(str1, str2);
+    boolean ans = checkStrings(str1, str2);
 
     System.out.println(ans);
   }
