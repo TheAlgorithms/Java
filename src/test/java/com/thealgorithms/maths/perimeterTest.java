@@ -18,20 +18,20 @@ public class perimeterTest {
     //Perimeter of Rectangle
     @Test
     void testcase3(){
-        Assertions.assertEquals(20.0,Perimeter.perimeter_rectangle(4,5));
+        Assertions.assertEquals(18.0,Perimeter.perimeter_rectangle(4,5));
     }
     @Test
     void testcase4(){
-        Assertions.assertEquals(12.0,Perimeter.perimeter_rectangle(4,3));
+        Assertions.assertEquals(14.0,Perimeter.perimeter_rectangle(4,3));
     }
 
     //Circumference of a circle
     @Test
     void testcase5(){
-        Assertions.assertEquals(78.50,Perimeter.circumference(5));
+        Assertions.assertEquals(31.41,Perimeter.circumference(5));
     }
     @Test
     void testcase6(){
-        Assertions.assertEquals(153.86,Perimeter.circumference(7));
+        Assertions.assertEquals(43.98,Perimeter.circumference(7));
     }
 }
