@@ -28,10 +28,10 @@ public class perimeterTest {
     //Circumference of a circle
     @Test
     void testcase5(){
-        Assertions.assertEquals(31.41,Perimeter.circumference(5));
+        Assertions.assertEquals(31.41592653589793,Perimeter.circumference(5));
     }
     @Test
     void testcase6(){
-        Assertions.assertEquals(43.98,Perimeter.circumference(7));
+        Assertions.assertEquals(43.982297150257104,Perimeter.circumference(7));
     }
 }
