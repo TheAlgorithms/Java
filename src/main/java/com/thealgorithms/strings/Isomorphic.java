@@ -17,21 +17,18 @@ public class Isomorphic {
     // character of first string as KEY and another as VALUE
     // now check occurence by keeping the track with SET data structure
     // -------------------------------------------------------------
-    boolean check = true;
     Map<Character, Character> map = new HashMap<Character, Character>();
     Set<Character> set = new HashSet<Character>();
     
     for(int i=0; i<s.length(); i++){
         if(map.containsKey(s.charAt(i))){
             if(t.charAt(i) != map.get(s.charAt(i))){
-                check = false;
-                break;
+                return false;
             }
         }
         else{
             if(set.contains(t.charAt(i))){
-                check = false;
-                break;
+                return false;
             }
             
             map.put(s.charAt(i), t.charAt(i));
@@ -42,7 +39,7 @@ public class Isomorphic {
     // -------------------------------------------------------------
 
     
-    return check;
+    return true;
 }
 
   public static void main(String[] args) {
