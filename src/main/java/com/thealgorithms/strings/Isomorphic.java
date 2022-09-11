@@ -22,7 +22,7 @@ public class Isomorphic {
     
     for(int i=0; i<s.length(); i++){
         if(mapCharactersFrequency.containsKey(s.charAt(i))){
-            if(t.charAt(i) != mapCharactersFreq.get(s.charAt(i))){
+            if(t.charAt(i) != mapCharactersFrequency.get(s.charAt(i))){
                 return false;
             }
         }
