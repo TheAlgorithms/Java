@@ -10,12 +10,12 @@ public class Isomorphic {
     // To mark the characters of string using MAP
     // character of first string as KEY and another as VALUE
     // now check occurence by keeping the track with SET data structure
-    Map<Character, Character> mapCharactersFrequency = new HashMap<Character, Character>();
+    Map<Character, Character> characterMap = new HashMap<Character, Character>();
     Set<Character> trackUinqueCharacter = new HashSet<Character>();
     
     for(int i=0; i<s.length(); i++){
-        if(mapCharactersFrequency.containsKey(s.charAt(i))){
-            if(t.charAt(i) != mapCharactersFrequency.get(s.charAt(i))){
+        if(characterMap.containsKey(s.charAt(i))){
+            if(t.charAt(i) != characterMap.get(s.charAt(i))){
                 return false;
             }
         }
@@ -24,7 +24,7 @@ public class Isomorphic {
                 return false;
             }
             
-            mapCharactersFrequency.put(s.charAt(i), t.charAt(i));
+            characterMap.put(s.charAt(i), t.charAt(i));
         }
         trackUinqueCharacter.add(t.charAt(i));
     }
