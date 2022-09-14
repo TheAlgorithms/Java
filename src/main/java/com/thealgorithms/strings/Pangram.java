@@ -11,6 +11,8 @@ public class Pangram {
     public static void main(String[] args) {
         assert isPangram("The quick brown fox jumps over the lazy dog");
         assert !isPangram("The quick brown fox jumps over the azy dog"); // L is missing
+        assert !isPangram("+-1234 This string is not alphabetical");
+        assert !isPangram("\u0000/\\");
     }
 
     /**
