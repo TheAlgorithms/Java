@@ -21,6 +21,7 @@ public class Sort012D {
             a[i] = np.nextInt();
         }
         sort012(a);
+        approach2(a);
     }
 
     public static void sort012(int[] a) {
@@ -50,6 +51,22 @@ public class Sort012D {
                 }
             }
         }
+        System.out.println("the Sorted array is ");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(+a[i] + " ");
+        }
+    }
+    static void approach2(int a[]){
+        int cnt0=0,cnt1=0,cnt2=0;
+        for(int i:a){
+            if(i==0)cnt0++;
+            else if(i==1)cnt1++;
+            else cnt2++;
+        }
+        int k=0;
+        while(cnt0-->0)a[k++]=0;
+        while(cnt1-->0)a[k++]=1;
+        while(cnt2-->0)a[k++]=2;
         System.out.println("the Sorted array is ");
         for (int i = 0; i < a.length; i++) {
             System.out.print(+a[i] + " ");
