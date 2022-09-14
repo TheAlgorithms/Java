@@ -6,34 +6,29 @@ package com.thealgorithms.strings;
 public class Pangram {
 
     /**
-     * Driver Code
+     * Test code
      */
     public static void main(String[] args) {
         assert isPangram("The quick brown fox jumps over the lazy dog");
-        assert !isPangram("The quick brown fox jumps over the azy dog");
-        /* not exists l character */
+        assert !isPangram("The quick brown fox jumps over the azy dog"); // L is missing
     }
 
     /**
-     * Check if a string is a pangram string or not
+     * Checks if a String is considered a Pangram
      *
-     * @param s string to check
-     * @return {@code true} if given string is pangram, otherwise {@code false}
+     * @param s The String to check
+     * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
     public static boolean isPangram(String s) {
-        boolean[] marked = new boolean[26];
-        /* by default all letters don't exists */
-        char[] values = s.toCharArray();
-        for (char value : values) {
-            if (Character.isLetter(value)) {
-                int index = Character.isUpperCase(value) ? value - 'A' : value - 'a';
-                marked[index] = true;
-                /* mark current character exists */
+        boolean[] lettersExisting = new boolean[26];
+        for (char c : s.toCharArray()) {
+            int letterIndex = c - (Character.isUpperCase(c) ? 'A' : 'a');
+            if (letterIndex >= 0 && letterIndex < lettersExisting.length) {
+                lettersExisting[letterIndex] = true;
             }
         }
-
-        for (boolean b : marked) {
-            if (!b) {
+        for (boolean letterFlag : lettersExisting) {
+            if (!letterFlag) {
                 return false;
             }
         }
