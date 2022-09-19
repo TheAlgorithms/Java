@@ -4,16 +4,6 @@ import java.util.Scanner;
 
 public class PrimeFactorization {
 
-    public static void main(String[] args) {
-        System.out.println("## all prime factors ##");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int n = scanner.nextInt();
-        System.out.print(("printing factors of " + n + " : "));
-        pfactors(n);
-        scanner.close();
-    }
-
     public static void pfactors(int n) {
 
         while (n % 2 == 0) {
