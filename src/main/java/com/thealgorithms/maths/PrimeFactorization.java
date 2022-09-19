@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
-
 public class PrimeFactorization {
 
     public static void pfactors(int n) {
