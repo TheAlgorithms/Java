@@ -14,4 +14,8 @@ To check if a number is even, you can use-
 if(n%2==0)
 */
 
+/**
+Guide:- https://www.geeksforgeeks.org/java-program-to-check-if-a-given-integer-is-odd-or-even/
+*/
+
 
