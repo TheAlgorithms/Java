@@ -2,6 +2,8 @@ package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 class PrimeFactorizationTest {
@@ -18,13 +20,17 @@ class PrimeFactorizationTest {
 	@Test
 	void testpFactorsMustReturnNonEmptyList() {
 		//given
-		int n = 4;
-		int expectedResult = 2;
+		int n = 198;
+		int expectedListSize = 4;
 		
 		//when
-		int actualResult = PrimeFactorization.pfactors(n).size();
+		List<Integer> actualResultList = PrimeFactorization.pfactors(n);
 		
 		//then
-		assertEquals(expectedResult, actualResult);
+		assertEquals(expectedListSize, actualResultList.size());
+		assertEquals(2, actualResultList.get(0));
+		assertEquals(3, actualResultList.get(1));
+		assertEquals(3, actualResultList.get(2));
+		assertEquals(11, actualResultList.get(3));
 	}
 }
