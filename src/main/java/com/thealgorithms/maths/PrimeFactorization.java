@@ -11,9 +11,9 @@ import java.util.List;
 
 public class PrimeFactorization {
 
-	static List<Integer> primeFactors = new ArrayList<>();
-
 	public static List<Integer> pfactors(int n) {
+		
+		List<Integer> primeFactors = new ArrayList<>();
 
 		if (n == 0) {
 			return primeFactors;
