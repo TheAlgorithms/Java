@@ -30,7 +30,7 @@ public class SudokuTest {
 
         }
 
-
+        //Tên method _ Kịch bản _ Kết quả mong muốn.
         @DisplayName("1 - Check if a value is in the row yet. Return False")
         @Test
         void PositionInARowIsInValid(){
@@ -79,7 +79,7 @@ public class SudokuTest {
 
 
 
-            @AfterEach
+    @AfterEach
     void tearDown() {
         System.out.println("@AfterEach - executed after each test method.");
     }
