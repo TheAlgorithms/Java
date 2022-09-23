@@ -1,8 +1,10 @@
 package com.thealgorithms.others.cn;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ThrowableTypeAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 public class HammingDistanceTest {
 
@@ -50,11 +52,16 @@ public class HammingDistanceTest {
         Assertions.assertThat(answer).isEqualTo(7);
     }
 
-    @Test()
+    @Test
     public void mismatchDataBits(){
         String senderBits = "100010", receiverBits = "00011";
-        int answer = hd.getHammingDistanceBetweenBits(senderBits, receiverBits);
-        Assertions.assertThat(answer).isEqualTo(-1);
+
+        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () ->{
+            int answer = hd.getHammingDistanceBetweenBits(senderBits, receiverBits);
+        });
+
+        Assertions.assertThat(ex.getMessage()).contains("bits should be same");
+
     }
 
     @Test

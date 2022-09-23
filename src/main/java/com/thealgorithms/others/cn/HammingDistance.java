@@ -6,24 +6,21 @@ import java.util.List;
 public class HammingDistance {
 
 
-    private List<byte[]> extractBinaryData(String senderBits, String receiverBits){
+
+    public int getHammingDistanceBetweenBits(String senderBits, String receiverBits) {
+
+        if(senderBits.length() != receiverBits.length()) {
+            throw new IllegalArgumentException("Sender and Receiver bits should be same");
+        }
+
         List<byte[]> byteArray = new ArrayList<>();
 
         byteArray.add(senderBits.getBytes());
         byteArray.add(receiverBits.getBytes());
 
-        return byteArray;
-    }
 
-    public int getHammingDistanceBetweenBits(String senderBits, String receiverBits) {
-
-        if(senderBits.length() != receiverBits.length()) {
-           return -1;
-        }
-
-        List<byte[]> bytes = extractBinaryData(senderBits, receiverBits);
-        byte[] senderData = bytes.get(0);
-        byte[] receiverData = bytes.get(1);
+        byte[] senderData = byteArray.get(0);
+        byte[] receiverData = byteArray.get(1);
 
         int totalErrorBitCount = 0;
 
