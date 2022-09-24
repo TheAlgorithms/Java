@@ -1,7 +1,6 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,7 +29,7 @@ public class CollatzConjecture {
      */
     public List<Integer> sequenceToOne(int firstNumber) {
         if (firstNumber < 1) {
-            return Collections.emptyList();
+            throw new IllegalArgumentException("Must be a natural number");
         }
         ArrayList<Integer> result = new ArrayList<>();
         result.add(firstNumber);

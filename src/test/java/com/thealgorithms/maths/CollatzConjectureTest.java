@@ -37,8 +37,8 @@ class CollatzConjectureTest {
     }
 
     @Test
-    void sequenceOfNotNaturalNumbers() {
-        assertTrue(cConjecture.sequenceToOne(0).isEmpty());
-        assertTrue(cConjecture.sequenceToOne(-1).isEmpty());
+    void sequenceOfNotNaturalFirstNumber() {
+        assertThrows(IllegalArgumentException.class, () -> cConjecture.sequenceToOne(0));
+        assertThrows(IllegalArgumentException.class, () -> cConjecture.sequenceToOne(-1));
     }
 }
