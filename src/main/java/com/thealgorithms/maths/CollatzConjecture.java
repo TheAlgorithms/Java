@@ -27,7 +27,7 @@ public class CollatzConjecture {
      * @param firstNumber starting number of the sequence
      * @return sequence of the Collatz Conjecture
      */
-    public List<Integer> sequenceToOne(int firstNumber) {
+    public List<Integer> collatzConjecture(int firstNumber) {
         if (firstNumber < 1) {
             throw new IllegalArgumentException("Must be a natural number");
         }
