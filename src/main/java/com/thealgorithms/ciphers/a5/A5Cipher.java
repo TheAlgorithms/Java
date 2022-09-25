@@ -2,6 +2,7 @@ package com.thealgorithms.ciphers.a5;
 
 import java.util.BitSet;
 
+// https://en.wikipedia.org/wiki/A5/1
 public class A5Cipher {
     private final A5KeyStreamGenerator keyStreamGenerator;
     private static final int KEY_STREAM_LENGTH = 228; // 28.5 bytes so we need to pad bytes or something
