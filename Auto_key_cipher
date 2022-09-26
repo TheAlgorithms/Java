@@ -1,0 +1,47 @@
+package com.company;
+import java.util.*;
+import java.lang.*;
+
+public class Main {
+   private static final String Alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static void main(String[] args)
+    {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Enter PlainText: ");
+        String plaintext = reader.nextLine();
+        System.out.println("Enter Key: "); 
+        String key = reader.nextLine();
+        if (key.matches("[-+]?\\d*\\.?\\d+"))
+        {
+            key =""+Alpha.charAt(Integer.parseInt(key));
+        }
+        String encoded_message = auto_enc(plaintext,key);
+        System.out.println("PlainText: " + plaintext);
+        System.out.println("encoded message: " + encoded_message);
+
+    }
+
+    public static String auto_enc(String plaintext, String key)
+    {
+        String encrypted_message ="";
+        int length = plaintext.length();
+        //generates new keystream
+        String newKey = key.concat(plaintext);
+        newKey = newKey.substring(0, newKey.length() - key.length());
+        for(int i=0; i<length; i++)
+        {
+            int firstHalf = Alpha.indexOf(plaintext.charAt(i));
+            int secondHalf = Alpha.indexOf(newKey.charAt(i));
+            int total = (firstHalf + secondHalf) % 26;
+            encrypted_message += Alpha.charAt(total);
+
+        }
+
+        return encrypted_message;
+
+    }
+
+
+}
+
+    
