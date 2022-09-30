@@ -2,7 +2,7 @@ package com.thealgorithms.strings;
 
 public class Upper {
 
-    /**
+    /*
      * Driver Code
      */
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Upper {
         }
     }
 
-    /**
+    /*
      * Converts all of the characters in this {@code String} to upper case
      *
      * @param s the string to convert
