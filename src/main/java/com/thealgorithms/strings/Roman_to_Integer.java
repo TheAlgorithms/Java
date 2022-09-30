@@ -1,4 +1,4 @@
-class Roman_to_Integer {
+Public class Roman_to_Integer {
     public int romanToInt(String s) {
         int result = 0;
         char[] arr1 = s.toCharArray();
