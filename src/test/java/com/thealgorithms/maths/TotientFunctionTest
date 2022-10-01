@@ -1,0 +1,28 @@
+package com.thealgorithms.maths;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TotientFunctionTest
+{
+    TotientFunction totient = new TotientFunction();
+
+    @Test
+    void test1()
+    {
+        Assertions.assertEquals(totient.phi(1), 1);
+    }
+
+    @Test
+    void test2()
+    {
+        Assertions.assertEquals(totient.phi(5), 4);
+    }
+
+    @Test
+    void test3()
+    {
+        Assertions.assertEquals(totient.phi(9), 6);
+    }
+}
