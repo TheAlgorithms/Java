@@ -1,8 +1,9 @@
-
 package com.thealgorithms.maths;
 
 /**
+ * Algorithm to find mean absolute deviation of a list of numbers
  * https://en.wikipedia.org/wiki/Average_absolute_deviation
+ * @author Prashal Ruchiranga
  */
 
 public class MeanAbsoluteDeviation {
