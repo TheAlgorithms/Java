@@ -3,16 +3,18 @@ package com.thealgorithms.maths;
 import java.math.BigInteger;
 
 /**
+ * Algorithm to find the nth Cullen number (1, 3, 9, 25, 65, 161, 385, 897, 2049, 4609...) where n is a positive integer
  * https://en.wikipedia.org/wiki/Cullen_number
+ * @author Prashal Ruchiranga
  */
 public class CullenNumbers {
 
     /**
-     * Calculate the nth Cullen number(1, 3, 9, 25, 65, 161, 385, 897, 2049, 4609...) where n is a positive integer
+     * Calculate the nth Cullen number
      * @param n nth
      * @return nth Cullen number
      */
-    public static BigInteger cullenNumber(int n) throws IllegalArgumentException {
+    public static BigInteger cullenNumber(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("n must be a positive integer");
         }
