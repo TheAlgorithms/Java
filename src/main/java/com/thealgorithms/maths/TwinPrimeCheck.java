@@ -7,7 +7,6 @@ import java.util.Scanner;
  */
 public class TwinPrimeCheck {
     public static void main(String[] args) {
-        // TODO code application logic here
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the 2 numbers: ");
         final int num1=scan.nextInt();
