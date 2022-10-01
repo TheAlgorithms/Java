@@ -18,7 +18,7 @@ public class CountChar {
      * @param str String to count the characters
      * @return number of character in the specified string
      */
-    private static int CountCharacters(String str) {
+    public static int CountCharacters(String str) {
         return str.replaceAll("\\s", "").length();
     }
 }
