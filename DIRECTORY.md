@@ -275,6 +275,7 @@
             * [MagicSquare](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MagicSquare.java)
             * [MatrixUtil](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MatrixUtil.java)
             * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MaxValue.java)
+            * [ValidBSTOrNot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/ValidBSTOrNot.java)
             * [Median](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Median.java)
             * [MinValue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MinValue.java)
             * [MobiusFunction](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MobiusFunction.java)
