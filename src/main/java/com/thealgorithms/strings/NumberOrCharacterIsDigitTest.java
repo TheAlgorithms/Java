@@ -10,18 +10,17 @@ import java.io.InputStreamReader;
 public class NumberOrCharacterIsDigitTest {
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter a value: ");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter a text containing letters and numbers: ");
 
-        String str = br.readLine();
+        String inputString = bufferedReader.readLine();
 
-        for(int i=0; i < str.length(); i++) {
-            Boolean flag = Character.isDigit(str.charAt(i));
-            if(flag) {
-                System.out.println("'"+ str.charAt(i)+"' is a number!");
-            }
-            else {
-                System.out.println("'"+ str.charAt(i)+"' is a letter!");
+        for(int i=0; i < inputString.length(); i++) {
+            Boolean check = Character.isDigit(inputString.charAt(i));
+            if(check) {
+                System.out.println(inputString.charAt(i) + " is a number!");
+            } else {
+                System.out.println(inputString.charAt(i) + " is a letter!");
             }
         }
     }
