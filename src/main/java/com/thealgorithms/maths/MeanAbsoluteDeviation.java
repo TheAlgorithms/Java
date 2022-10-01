@@ -1,4 +1,4 @@
-
+package com.thealgorithms.maths;
 
 /**
  * https://en.wikipedia.org/wiki/Average_absolute_deviation
