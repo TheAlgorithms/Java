@@ -25,6 +25,7 @@ public class ProcessDetails {
         return burstTime;
     }
 
+
     public int getWaitingTime() {
         return waitingTime;
     }
