@@ -19,9 +19,9 @@ public class InfixToPostfix {
         for (char element : infixExpression.toCharArray()) {
             if (Character.isLetterOrDigit(element)) {
                 output.append(element);
-            } else if (element == '(') {
+            } else if (element == '(') {//push
                 stack.push(element);
-            } else if (element == ')') {
+            } else if (element == ')') {//push everything back to (
                 while (!stack.isEmpty() && stack.peek() != '(') {
                     output.append(stack.pop());
                 }
@@ -43,12 +43,13 @@ public class InfixToPostfix {
         switch (operator) {
             case '+':
             case '-':
-                return 0;
-            case '*':
-            case '/':
                 return 1;
-            case '^':
+            case '*':
+            case '%':
+            case '/':
                 return 2;
+            case '^':
+                return 3;
             default:
                 return -1;
         }
