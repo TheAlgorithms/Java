@@ -70,7 +70,7 @@ public class MazeRecursion {
 	}
 
 	/**
-     * Using recursive path finding to help the ball find its way in the maze
+     	 * Using recursive path finding to help the ball find its way in the maze
 	 * Description：
 	 * 1. map (means the maze)
 	 * 2. i, j (means the initial coordinate of the ball in the maze)
@@ -81,7 +81,7 @@ public class MazeRecursion {
 	 * means the ball has gone through the path but this path is dead end
 	 * 5. We will need strategy for the ball to pass through the maze for example:
 	 * Down -> Right -> Up -> Left, if the path doesn't work, then backtrack
-     * 
+     	 * 
 	 * @author OngLipWei
 	 * @version Jun 23, 2021 11:36:14 AM
 	 * @param map The maze
