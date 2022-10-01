@@ -2,6 +2,9 @@ package com.thealgorithms.maths;
 
 import java.math.BigInteger;
 
+/**
+ * https://en.wikipedia.org/wiki/Cullen_number
+ */
 public class CullenNumbers {
 
     /**
