@@ -53,6 +53,30 @@ public class SinglyLinkedList extends Node{
         }
         return false;
     }
+    
+    
+    /*
+    Added the logic of finding the middle of the LinkedList    
+    **/
+     
+    public Node middleNode(){
+
+        Node fast=head;
+        Node slow=head;
+
+        while(fast.next!=null && fast.next.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+
+        if(fast.next!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+
+        return slow;
+
+    }
 
     /**
      * Swaps nodes of two given values a and b.
