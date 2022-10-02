@@ -1,0 +1,21 @@
+A binary number system is one of the four types of number system. In computer applications, where binary numbers are represented by only two symbols or digits, i.e. 0 (zero) and 1(one). The binary numbers here are expressed in the base-2 numeral system. For example, (101)2 is a binary number. Each digit in this system is said to be a bit.
+
+**What is a Binary Number System?**
+
+Binary Number System: According to digital electronics and mathematics, a binary number is defined as a number that is expressed in the binary system or base 2 numeral system. It describes numeric values by two separate symbols; 1 (one) and 0 (zero). The base-2 system is the positional notation with 2 as a radix.
+
+The binary system is applied internally by almost all latest computers and computer-based devices because of its direct implementation in electronic circuits using logic gates. Every digit is referred to as a bit. 
+
+**What is Bit in Binary Number?**
+
+A single binary digit is called a “Bit”. A binary number consists of several bits. Examples are:
+
+10101 is a five-bit binary number
+101 is a three-bit binary number
+100001 is a six-bit binary number
+
+# Facts to Remember:
+
+Binary numbers are made up of only 0’s and 1’s.
+A binary number is represented with a base-2
+A bit is a single binary digit.
