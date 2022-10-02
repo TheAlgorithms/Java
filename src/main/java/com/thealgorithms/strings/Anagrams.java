@@ -24,6 +24,9 @@ public class Anagrams {
         System.out.println(nm.approach2(first, second));  /* To activate methods for different approaches*/
         System.out.println(nm.approach3(first, second));  /* To activate methods for different approaches*/
         System.out.println(nm.approach4(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach5(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach6(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach7(first, second));  /* To activate methods for different approaches*/
 
         /**
          * OUTPUT :
