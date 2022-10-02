@@ -66,6 +66,33 @@ class SkipListTest {
         print(skipList);
         assertEquals(initialSize - 1, skipList.size());
     }
+    
+    
+    @Test 
+    void middleElement(){
+        SkipList<String> skipList=createSkipList();
+
+        //Last index of the list
+        int mostRightIndex=skipList.size()-1;
+
+        int fastPointer=0;
+        int slowPointer=0;
+
+        //run faster pointer 2 times and slow pointer 1 time
+       while(fastPointer!=mostRightIndex){
+           fastPointer+=2;
+           slowPointer+=1;
+       }
+
+        //act
+        String middleValue=skipList.get(slowPointer);
+
+        print(skipList);
+        assertEquals(middleValue,()=>"Getting right middle element");
+
+    }
+
+
 
     @Test
     void checkSortedOnLowestLayer() {
