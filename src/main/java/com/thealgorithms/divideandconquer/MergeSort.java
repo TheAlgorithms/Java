@@ -12,7 +12,7 @@ public class MergeSort
 	 * 
 	 */
 
-	static void mergeSort(int arr[] , int start , int end)
+	static void mergeSort(int arr[], int start, int end)
 	{
 		if (end <= start) return ;        
 		
