@@ -28,7 +28,7 @@ public class MergeSort
 	}
 	
 	// This is function to merge two sorted arrays.
-	static void merge(int arr[] , int start , int mid , int end)
+	static void merge(int arr[], int start, int mid, int end)
 	{
 		int temp[] = new int[end-start+1] ;
 		
