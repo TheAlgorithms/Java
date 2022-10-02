@@ -49,8 +49,8 @@ public class Area {
     /**
      * Calculate the area of a rectangle.
      *
-     * @param length length of rectangle
-     * @param width  width of rectangle
+     * @param length length of a rectangle
+     * @param width  width of a rectangle
      * @return area of given rectangle
      */
     public static double surfaceAreaRectangle(final double length, final double width) {
@@ -113,8 +113,8 @@ public class Area {
     /**
      * Calculate the area of a parallelogram.
      *
-     * @param base   base of parallelogram
-     * @param height height of parallelogram
+     * @param base   base of a parallelogram
+     * @param height height of a parallelogram
      * @return area of given parallelogram
      */
     public static double surfaceAreaParallelogram(final double base, final double height) {
