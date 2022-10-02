@@ -16,10 +16,12 @@ public class Anagrams {
     public static void main(String[] args) {
         String first = "deal";
         String second = "lead";
+
         // All the below methods takes input but doesn't return any output to the main method.
         Anagrams nm = new Anagrams();
-        System.out.println(nm.approach2(first, second));  /* To activate methods for different approaches*/
+
         System.out.println(nm.approach1(first, second));  /* To activate methods for different approaches*/
+        System.out.println(nm.approach2(first, second));  /* To activate methods for different approaches*/
         System.out.println(nm.approach3(first, second));  /* To activate methods for different approaches*/
         System.out.println(nm.approach4(first, second));  /* To activate methods for different approaches*/
 
@@ -123,4 +125,71 @@ public class Anagrams {
             return true;
         }
     }
+
+    public boolean approach5(String s, String t) {
+
+		if (s.length() != t.length()) {
+			return false;
+		}
+
+		// This approach is done using only one hashmap where frequencies are
+		// Frequency of character is increased by 1 when found in string s and decreased
+		// by 1 if found in string t
+		// then anagram message is displayed in boolean format
+
+		HashMap<Character, Integer> frquency = new HashMap<>();
+		for (int i = 0; i < t.length(); i++) {
+			frquency.put(s.charAt(i), frquency.getOrDefault(s.charAt(i), 0) + 1);
+			frquency.put(t.charAt(i), frquency.getOrDefault(t.charAt(i), 0) - 1);
+		}
+		for (char c : frquency.keySet()) {
+			if (frquency.get(c) != 0) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+//	no need of two loops as well
+	public boolean approach6(String s, String t) {
+		if (s.length() != t.length()) {
+			return false;
+		}
+
+		int[] freqs = new int[26];
+
+		for (char c : s.toCharArray()) {
+			freqs[c - 'a']++;
+		}
+
+		for (char c : t.toCharArray()) {
+			if (--freqs[c - 'a'] < 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+//	this code will be helpful for all special characters as well
+	public boolean approach7(String s, String t) {
+		if (s.length() != t.length()) {
+			return false;
+		}
+		
+		int[] flag = new int[256];
+		
+		for (int i = 0; i < s.length(); i++) {
+			flag[(int) s.charAt(i)]++;
+			flag[(int) t.charAt(i)]--;
+		}
+		
+		for (int i : flag) {
+			if (i != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }
