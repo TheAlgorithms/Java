@@ -14,9 +14,10 @@ public class MergeSort
 
 	static void mergeSort(int arr[], int start, int end)
 	{
-		if (end <= start) return ;        
+		if (end <= start) 
+		    return;        
 		
-		int mid = (start+end)/2 ;                  
+		int mid = (start+end)/2;                  
 		
     // sort left half
 		mergeSort(arr, start, mid);
