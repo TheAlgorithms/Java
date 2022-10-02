@@ -19,11 +19,11 @@ public class MergeSort
 		
 		int mid = (start+end)/2;                  
 		
-    // sort left half
+                // sort left half
 		mergeSort(arr, start, mid);
-    // sort right half
+                // sort right half
 		mergeSort(arr, mid+1, end);
-    // merge left and right halves in sorted order
+                // merge left and right halves in sorted order
 		merge(arr, start,mid+1 , end);
 	}
 	
