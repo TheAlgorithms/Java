@@ -32,18 +32,18 @@ public class MergeSort
 	{
 		int temp[] = new int[end-start+1] ;
 		
-		int i = start , j = mid , k = 0 ;
+		int i = start, j = mid, k = 0;
 		
 		while (i < mid && j <= end)
 		{
-			if (arr[i] < arr[j]) temp[k++] = arr[i++] ;
-			else temp[k++] = arr[j++] ;
+			if (arr[i] < arr[j]) temp[k++] = arr[i++];
+			else temp[k++] = arr[j++];
 		}
 		
-		while (i < mid) temp[k++] = arr[i++] ;
-		while(j <= end) temp[k++] = arr[j++] ;
+		while (i < mid) temp[k++] = arr[i++];
+		while(j <= end) temp[k++] = arr[j++];
 		
-		for (i = start ; i <= end ; i++) arr[i] = temp[i-start] ;
+		for (i = start; i <= end; i++) arr[i] = temp[i - start];
 	}
   
   public static void main(String[] args) 
