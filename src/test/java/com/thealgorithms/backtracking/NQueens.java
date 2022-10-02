@@ -1,3 +1,8 @@
+// https://en.wikipedia.org/wiki/Eight_queens_puzzle
+// 1. Given a number n, the size of a chess board.
+// 2. Place n number of queens in the n * n cells of board such that no queen can kill another.
+// Note - Queens kill at distance in all 8 directions
+
 package com.thealgorithms.backtracking;
 import java.util.*;
 public class NQueens {
