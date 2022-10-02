@@ -112,6 +112,21 @@ public class BinarySearch2dArrayTest {
         assertEquals(-1, ans[0]);
         assertEquals(-1, ans[1]);
     }
+    @Test
+    // valid test case
+    public void BinarySearch2dArrayTestNotFound() {
+        int[][] arr = { {1, 2, 3, 4, 5},
+                        {6, 7, 8, 9, 10},
+                        {11, 12, 13, 14, 15},
+                        {16, 17, 18, 19, 20}}};
+        int target = 18;
+
+        int[] ans = BinarySearch2dArray.BinarySearch(arr, target);
+        int[] expected = {3,2};
+        System.out.println(Arrays.toString(ans));
+        assertEquals(-1, ans[0]);
+        assertEquals(-1, ans[1]);
+    }
 
 }
 
