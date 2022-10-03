@@ -12,10 +12,10 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 public class CreateBSTFromSortedArray {
 
     public static void main(String[] args) {
-        test(new int[]{});
-        test(new int[]{1, 2, 3});
-        test(new int[]{1, 2, 3, 4, 5});
-        test(new int[]{1, 2, 3, 4, 5, 6, 7});
+        test(new int[] {});
+        test(new int[] { 1, 2, 3 });
+        test(new int[] { 1, 2, 3, 4, 5 });
+        test(new int[] { 1, 2, 3, 4, 5, 6, 7 });
     }
 
     private static void test(int[] array) {

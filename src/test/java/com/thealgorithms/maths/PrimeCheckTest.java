@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PrimeCheckTest {
+
     @Test
     void test1() {
         Assertions.assertTrue(PrimeCheck.isPrime(2));

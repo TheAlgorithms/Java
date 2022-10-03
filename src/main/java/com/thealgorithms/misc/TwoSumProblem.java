@@ -17,14 +17,23 @@ public class TwoSumProblem {
             arr[i] = scan.nextInt();
         }
         TwoSumProblem t = new TwoSumProblem();
-        System.out.println("Brute Force Approach\n" + Arrays.toString(t.BruteForce(arr, ts)) + "\n");
-        System.out.println("Two Pointer Approach\n" + Arrays.toString(t.TwoPointer(arr, ts)) + "\n");
-        System.out.println("Hashmap Approach\n" + Arrays.toString(t.HashMap(arr, ts)));
-
+        System.out.println(
+            "Brute Force Approach\n" +
+            Arrays.toString(t.BruteForce(arr, ts)) +
+            "\n"
+        );
+        System.out.println(
+            "Two Pointer Approach\n" +
+            Arrays.toString(t.TwoPointer(arr, ts)) +
+            "\n"
+        );
+        System.out.println(
+            "Hashmap Approach\n" + Arrays.toString(t.HashMap(arr, ts))
+        );
     }
 
     public int[] BruteForce(int[] nums, int target) {
-        //Brute Force Approach 
+        //Brute Force Approach
         int ans[] = new int[2];
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -34,7 +43,6 @@ public class TwoSumProblem {
 
                     break;
                 }
-
             }
         }
 
@@ -48,21 +56,24 @@ public class TwoSumProblem {
         for (int i = 0; i < nums.length; i++) {
             hm.put(i, nums[i]);
         }
-        HashMap<Integer, Integer> temp
-                = hm.entrySet()
-                        .stream()
-                        .sorted((i1, i2)
-                                -> i1.getValue().compareTo(
-                                i2.getValue()))
-                        .collect(Collectors.toMap(
-                                Map.Entry::getKey,
-                                Map.Entry::getValue,
-                                (e1, e2) -> e1, LinkedHashMap::new));
+        HashMap<Integer, Integer> temp = hm
+            .entrySet()
+            .stream()
+            .sorted((i1, i2) -> i1.getValue().compareTo(i2.getValue()))
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (e1, e2) -> e1,
+                    LinkedHashMap::new
+                )
+            );
 
         int start = 0;
         int end = nums.length - 1;
         while (start < end) {
-            int currSum = (Integer) temp.values().toArray()[start] + (Integer) temp.values().toArray()[end];
+            int currSum = (Integer) temp.values().toArray()[start] +
+            (Integer) temp.values().toArray()[end];
 
             if (currSum == target) {
                 ans[0] = (Integer) temp.keySet().toArray()[start];
@@ -73,10 +84,8 @@ public class TwoSumProblem {
             } else if (currSum < target) {
                 start += 1;
             }
-
         }
         return ans;
-
     }
 
     public int[] HashMap(int[] nums, int target) {
@@ -97,5 +106,4 @@ public class TwoSumProblem {
 
         return ans;
     }
-
 }

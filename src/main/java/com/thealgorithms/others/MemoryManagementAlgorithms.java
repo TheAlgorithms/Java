@@ -1,4 +1,5 @@
 package com.thealgorithms.others;
+
 /**
  * @author Alexandros Lemonaris
  */
@@ -20,16 +21,19 @@ public abstract class MemoryManagementAlgorithms {
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
-    public abstract ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses);
-
+    public abstract ArrayList<Integer> fitProcess(
+        int[] sizeOfBlocks,
+        int[] sizeOfProcesses
+    );
 }
+
 /**
  * @author Dekas Dimitrios
  */
 class BestFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION
-            = -255; // if a process has been allocated in position -255,
+    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
+
     // it means that it has not been actually allocated.
 
     /**
@@ -62,13 +66,13 @@ class BestFitCPU extends MemoryManagementAlgorithms {
         // Initialize minDiff with an unreachable value by a difference between a blockSize and the
         // processSize.
         int minDiff = findMaxElement(blockSizes);
-        int index
-                = NO_ALLOCATION; // If there is no block that can fit the process, return NO_ALLOCATION as the
+        int index = NO_ALLOCATION; // If there is no block that can fit the process, return NO_ALLOCATION as the
         // result.
-        for (int i = 0;
-             i < blockSizes.length;
-             i++) { // Find the most fitting memory block for the given process.
-            if (blockSizes[i] - processSize < minDiff && blockSizes[i] - processSize >= 0) {
+        for (int i = 0; i < blockSizes.length; i++) { // Find the most fitting memory block for the given process.
+            if (
+                blockSizes[i] - processSize < minDiff &&
+                blockSizes[i] - processSize >= 0
+            ) {
                 minDiff = blockSizes[i] - processSize;
                 index = i;
             }
@@ -88,23 +92,22 @@ class BestFitCPU extends MemoryManagementAlgorithms {
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
-    public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
+    public ArrayList<Integer> fitProcess(
+        int[] sizeOfBlocks,
+        int[] sizeOfProcesses
+    ) {
         // The array list responsible for saving the memory allocations done by the best-fit algorithm
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx
-                    = findBestFit(
-                    sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findBestFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                    != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
                 sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
     }
-
 }
 
 /**
@@ -112,8 +115,8 @@ class BestFitCPU extends MemoryManagementAlgorithms {
  */
 class WorstFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION
-            = -255; // if a process has been allocated in position -255,
+    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
+
     // it means that it has not been actually allocated.
 
     /**
@@ -128,9 +131,7 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
     private static int findWorstFit(int[] blockSizes, int processSize) {
         int max = -1;
         int index = -1;
-        for (int i = 0;
-             i < blockSizes.length;
-             i++) { // Find the index of the biggest memory block available.
+        for (int i = 0; i < blockSizes.length; i++) { // Find the index of the biggest memory block available.
             if (blockSizes[i] > max) {
                 max = blockSizes[i];
                 index = i;
@@ -155,23 +156,22 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
-    public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
+    public ArrayList<Integer> fitProcess(
+        int[] sizeOfBlocks,
+        int[] sizeOfProcesses
+    ) {
         // The array list responsible for saving the memory allocations done by the worst-fit algorithm
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx
-                    = findWorstFit(
-                    sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findWorstFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                    != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
                 sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
     }
-
 }
 
 /**
@@ -179,8 +179,8 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
  */
 class FirstFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION
-            = -255; // if a process has been allocated in position -255,
+    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
+
     // it means that it has not been actually allocated.
 
     /**
@@ -214,23 +214,22 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
-    public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
+    public ArrayList<Integer> fitProcess(
+        int[] sizeOfBlocks,
+        int[] sizeOfProcesses
+    ) {
         // The array list responsible for saving the memory allocations done by the first-fit algorithm
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx
-                    = findFirstFit(
-                    sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findFirstFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                    != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
                 sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
     }
-
 }
 
 /**
@@ -238,10 +237,10 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
  */
 class NextFit extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION
-            = -255; // if a process has been allocated in position -255,
+    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
     // it means that it has not been actually allocated.
     private int counter = 0; // variable that keeps the position of the last registration into the memory
+
     /**
      * Method to find the index of the memory block that is going to fit the
      * given process based on the next fit algorithm. In the case of next fit,
@@ -253,9 +252,8 @@ class NextFit extends MemoryManagementAlgorithms {
      * exists.
      */
     private int findNextFit(int[] blockSizes, int processSize) {
-
         for (int i = 0; i < blockSizes.length; i++) {
-            if (counter + i >= blockSizes.length){
+            if (counter + i >= blockSizes.length) {
                 counter = -i; // starts from the start of the array
             }
             if (blockSizes[i + counter] >= processSize) {
@@ -280,22 +278,20 @@ class NextFit extends MemoryManagementAlgorithms {
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
-    public ArrayList<Integer> fitProcess(int[] sizeOfBlocks, int[] sizeOfProcesses) {
+    public ArrayList<Integer> fitProcess(
+        int[] sizeOfBlocks,
+        int[] sizeOfProcesses
+    ) {
         // The array list responsible for saving the memory allocations done by the first-fit algorithm
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx
-                    = findNextFit(
-                    sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findNextFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                    != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
                 sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
     }
-
 }
-

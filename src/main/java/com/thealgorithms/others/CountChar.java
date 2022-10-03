@@ -9,7 +9,9 @@ public class CountChar {
         System.out.print("Enter your text: ");
         String str = input.nextLine();
         input.close();
-        System.out.println("There are " + CountCharacters(str) + " characters.");
+        System.out.println(
+            "There are " + CountCharacters(str) + " characters."
+        );
     }
 
     /**
