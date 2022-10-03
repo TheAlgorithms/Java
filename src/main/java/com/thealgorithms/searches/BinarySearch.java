@@ -23,46 +23,22 @@ import java.util.stream.IntStream;
  */
 class BinarySearch implements SearchAlgorithm {
 
-    /**
-     * @param array is an array where the element should be found
-     * @param key is an element which should be found
-     * @param <T> is any comparable type
-     * @return index of the element
-     */
-    @Override
-    public <T extends Comparable<T>> int find(T[] array, T key) {
-        return search(array, key, 0, array.length - 1);
-    }
-
-    /**
-     * This method implements the Generic Binary Search
-     *
-     * @param array The array to make the binary search
-     * @param key The number you are looking for
-     * @param left The lower bound
-     * @param right The upper bound
-     * @return the location of the key
-     */
-    private <T extends Comparable<T>> int search(
-        T array[],
-        T key,
-        int left,
-        int right
-    ) {
-        if (right < left) {
-            return -1; // this means that the key not found
+    static int binarySearch(int [] arr, int target){
+        int start = 0;
+        int end = arr.length-1;
+        while (start <= end){
+            int mid = start + (end-start)/2;
+            if (target < arr[mid]){
+                end = mid-1;
+            }
+            else if (target > arr[mid]){
+                start = mid+1;
+            }
+            else{
+                return mid;     //Will return the index of the element, if found
+            }
         }
-        // find median
-        int median = (left + right) >>> 1;
-        int comp = key.compareTo(array[median]);
-
-        if (comp == 0) {
-            return median;
-        } else if (comp < 0) {
-            return search(array, key, left, median - 1);
-        } else {
-            return search(array, key, median + 1, right);
-        }
+        return -1;      //Else it'll return -1
     }
 
     // Driver Program
