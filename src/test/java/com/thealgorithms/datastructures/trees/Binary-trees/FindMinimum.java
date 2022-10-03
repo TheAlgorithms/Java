@@ -2,7 +2,7 @@ package BinaryTrees;
 
 import java.util.*;
 
-public class test {
+public class FindMinimum {
 
     // Structure of binary tree node
     static class Node {
