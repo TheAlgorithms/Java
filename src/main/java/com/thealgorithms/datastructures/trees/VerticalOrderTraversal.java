@@ -60,7 +60,6 @@ public class VerticalOrderTraversal {
         index.offer(0);
 
         while (!queue.isEmpty()) {
-
             if (queue.peek().left != null) {
                 /*Adding the left Node if it is not null
 				and its index by subtracting 1 from it's 

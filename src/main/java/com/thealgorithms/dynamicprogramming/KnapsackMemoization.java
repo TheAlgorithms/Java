@@ -40,8 +40,8 @@ public class KnapsackMemoization {
 
     // Driver code
     public static void main(String args[]) {
-        int[] wt = {1, 3, 4, 5};
-        int[] value = {1, 4, 5, 7};
+        int[] wt = { 1, 3, 4, 5 };
+        int[] value = { 1, 4, 5, 7 };
         int W = 10;
         t = new int[wt.length + 1][W + 1];
         Arrays.stream(t).forEach(a -> Arrays.fill(a, -1));
