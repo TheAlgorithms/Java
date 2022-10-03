@@ -33,7 +33,6 @@ public class StackPostfixNotation {
                 } else {
                     s.push(num1 / num2);
                 }
-
                 //  "+", "-", "*", "/"
             }
         }

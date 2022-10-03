@@ -22,9 +22,20 @@ public class HexaDecimalToBinary {
     }
 
     public static void main(String[] args) {
-
         // Testing Numbers:
-        String[] hexNums = {"1", "A1", "ef", "BA", "AA", "BB", "19", "01", "02", "03", "04"};
+        String[] hexNums = {
+            "1",
+            "A1",
+            "ef",
+            "BA",
+            "AA",
+            "BB",
+            "19",
+            "01",
+            "02",
+            "03",
+            "04",
+        };
         HexaDecimalToBinary objConvert = new HexaDecimalToBinary();
 
         for (String num : hexNums) {

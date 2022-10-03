@@ -8,10 +8,19 @@ public class Average {
     private static final double SMALL_VALUE = 0.00001f;
 
     public static void main(String[] args) {
-        assert Math.abs(average(new double[]{3, 6, 9, 12, 15, 18, 21}) - 12) < SMALL_VALUE;
-        assert Math.abs(average(new double[]{5, 10, 15, 20, 25, 30, 35}) - 20) < SMALL_VALUE;
-        assert Math.abs(average(new double[]{1, 2, 3, 4, 5, 6, 7, 8}) - 4.5) < SMALL_VALUE;
-        int[] array = {2, 4, 10};
+        assert Math.abs(
+            average(new double[] { 3, 6, 9, 12, 15, 18, 21 }) - 12
+        ) <
+        SMALL_VALUE;
+        assert Math.abs(
+            average(new double[] { 5, 10, 15, 20, 25, 30, 35 }) - 20
+        ) <
+        SMALL_VALUE;
+        assert Math.abs(
+            average(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 }) - 4.5
+        ) <
+        SMALL_VALUE;
+        int[] array = { 2, 4, 10 };
         assert average(array) == 5;
     }
 

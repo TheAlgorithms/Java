@@ -43,6 +43,5 @@ public class BoyerMoore {
             a[i] = input.nextInt();
         }
         System.out.println("the majority element is " + findmajor(a));
-
     }
 }

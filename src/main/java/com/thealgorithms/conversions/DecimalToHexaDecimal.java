@@ -7,7 +7,22 @@ class DecimalToHexaDecimal {
     private static final int numberOfBitsInAHalfByte = 4;
     private static final int halfByte = 0x0F;
     private static final char[] hexDigits = {
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
     };
 
     // Returns the hex value of the dec entered in the parameter.

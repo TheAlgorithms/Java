@@ -2,10 +2,10 @@ package com.thealgorithms.searches;
 
 import static java.lang.String.format;
 
+import com.thealgorithms.devutils.searches.SearchAlgorithm;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
-import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
 /**
  * A iterative version of a ternary search algorithm This is better way to
@@ -31,7 +31,6 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         int right = array.length - 1;
 
         while (right > left) {
-
             int leftCmp = array[left].compareTo(key);
             int rightCmp = array[right].compareTo(key);
             if (leftCmp == 0) {
@@ -59,8 +58,11 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         Random r = new Random();
         int size = 100;
         int maxElement = 100000;
-        Integer[] integers
-                = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[]::new);
+        Integer[] integers = Stream
+            .generate(() -> r.nextInt(maxElement))
+            .limit(size)
+            .sorted()
+            .toArray(Integer[]::new);
 
         // the element that should be found
         Integer shouldBeFound = integers[r.nextInt(size - 1)];
@@ -69,13 +71,22 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         int atIndex = search.find(integers, shouldBeFound);
 
         System.out.println(
-                format(
-                        "Should be found: %d. Found %d at index %d. An array length %d",
-                        shouldBeFound, integers[atIndex], atIndex, size));
+            format(
+                "Should be found: %d. Found %d at index %d. An array length %d",
+                shouldBeFound,
+                integers[atIndex],
+                atIndex,
+                size
+            )
+        );
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
         System.out.println(
-                format(
-                        "Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
+            format(
+                "Found by system method at an index: %d. Is equal: %b",
+                toCheck,
+                toCheck == atIndex
+            )
+        );
     }
 }

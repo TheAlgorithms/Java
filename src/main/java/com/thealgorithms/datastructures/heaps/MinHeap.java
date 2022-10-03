@@ -40,7 +40,7 @@ public class MinHeap implements Heap {
         if ((elementIndex <= 0) || (elementIndex > minHeap.size())) {
             throw new IndexOutOfBoundsException("Index out of heap range");
         }
-        
+
         return minHeap.get(elementIndex - 1).getKey();
     }
 
@@ -64,22 +64,30 @@ public class MinHeap implements Heap {
     // than any of its children's
     private void toggleDown(int elementIndex) {
         double key = minHeap.get(elementIndex - 1).getKey();
-        boolean wrongOrder
-                = (key > getElementKey(elementIndex * 2))
-                || (key > getElementKey(Math.min(elementIndex * 2, minHeap.size())));
+        boolean wrongOrder =
+            (key > getElementKey(elementIndex * 2)) ||
+            (key > getElementKey(Math.min(elementIndex * 2, minHeap.size())));
         while ((2 * elementIndex <= minHeap.size()) && wrongOrder) {
             // Check whether it shall swap the element with its left child or its right one if any.
-            if ((2 * elementIndex < minHeap.size())
-                    && (getElementKey(elementIndex * 2 + 1) < getElementKey(elementIndex * 2))) {
+            if (
+                (2 * elementIndex < minHeap.size()) &&
+                (
+                    getElementKey(elementIndex * 2 + 1) <
+                    getElementKey(elementIndex * 2)
+                )
+            ) {
                 swap(elementIndex, 2 * elementIndex + 1);
                 elementIndex = 2 * elementIndex + 1;
             } else {
                 swap(elementIndex, 2 * elementIndex);
                 elementIndex = 2 * elementIndex;
             }
-            wrongOrder
-                    = (key > getElementKey(elementIndex * 2))
-                    || (key > getElementKey(Math.min(elementIndex * 2, minHeap.size())));
+            wrongOrder =
+                (key > getElementKey(elementIndex * 2)) ||
+                (
+                    key >
+                    getElementKey(Math.min(elementIndex * 2, minHeap.size()))
+                );
         }
     }
 
@@ -97,9 +105,10 @@ public class MinHeap implements Heap {
 
     @Override
     public void deleteElement(int elementIndex) {
-        if (minHeap.isEmpty())
-      try {
-            throw new EmptyHeapException("Attempt to delete an element from an empty heap");
+        if (minHeap.isEmpty()) try {
+            throw new EmptyHeapException(
+                "Attempt to delete an element from an empty heap"
+            );
         } catch (EmptyHeapException e) {
             e.printStackTrace();
         }
@@ -110,13 +119,22 @@ public class MinHeap implements Heap {
         minHeap.set(elementIndex - 1, getElement(minHeap.size()));
         minHeap.remove(minHeap.size());
         // Shall the new element be moved up...
-        if (getElementKey(elementIndex) < getElementKey((int) Math.floor(elementIndex / 2.0))) {
+        if (
+            getElementKey(elementIndex) <
+            getElementKey((int) Math.floor(elementIndex / 2.0))
+        ) {
             toggleUp(elementIndex);
         } // ... or down ?
-        else if (((2 * elementIndex <= minHeap.size())
-                && (getElementKey(elementIndex) > getElementKey(elementIndex * 2)))
-                || ((2 * elementIndex < minHeap.size())
-                && (getElementKey(elementIndex) > getElementKey(elementIndex * 2)))) {
+        else if (
+            (
+                (2 * elementIndex <= minHeap.size()) &&
+                (getElementKey(elementIndex) > getElementKey(elementIndex * 2))
+            ) ||
+            (
+                (2 * elementIndex < minHeap.size()) &&
+                (getElementKey(elementIndex) > getElementKey(elementIndex * 2))
+            )
+        ) {
             toggleDown(elementIndex);
         }
     }
@@ -126,7 +144,9 @@ public class MinHeap implements Heap {
         try {
             return extractMin();
         } catch (Exception e) {
-            throw new EmptyHeapException("Heap is empty. Error retrieving element");
+            throw new EmptyHeapException(
+                "Heap is empty. Error retrieving element"
+            );
         }
     }
 }

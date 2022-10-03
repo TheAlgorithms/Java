@@ -22,7 +22,6 @@ public class GCDRecursion {
      * @return gcd
      */
     public static int gcd(int a, int b) {
-
         if (a < 0 || b < 0) {
             throw new ArithmeticException();
         }
