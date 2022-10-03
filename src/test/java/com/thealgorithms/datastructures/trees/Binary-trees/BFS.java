@@ -2,7 +2,7 @@ package BinaryTrees;
 
 import java.util.*;
 
-public class test {
+public class BFS {
 
     // Structure of binary tree node
     static class Node {
