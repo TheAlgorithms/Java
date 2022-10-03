@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-class warshall
+class Warshall
 {
 	static void update(double[][] paths, int n, int medial)
 	{
