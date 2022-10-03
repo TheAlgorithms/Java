@@ -1,8 +1,8 @@
 package com.thealgorithms.datastructures.trees;
 
+import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 import java.util.HashMap;
 import java.util.Map;
-import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 
 /**
  * Approach: Naive Solution: Create root node from first value present in
@@ -21,17 +21,27 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 public class CreateBinaryTreeFromInorderPreorder {
 
     public static void main(String[] args) {
-        test(new Integer[]{}, new Integer[]{}); // empty tree
-        test(new Integer[]{1}, new Integer[]{1}); // single node tree
-        test(new Integer[]{1, 2, 3, 4}, new Integer[]{1, 2, 3, 4}); // right skewed tree
-        test(new Integer[]{1, 2, 3, 4}, new Integer[]{4, 3, 2, 1}); // left skewed tree
-        test(new Integer[]{3, 9, 20, 15, 7}, new Integer[]{9, 3, 15, 20, 7}); // normal tree
+        test(new Integer[] {}, new Integer[] {}); // empty tree
+        test(new Integer[] { 1 }, new Integer[] { 1 }); // single node tree
+        test(new Integer[] { 1, 2, 3, 4 }, new Integer[] { 1, 2, 3, 4 }); // right skewed tree
+        test(new Integer[] { 1, 2, 3, 4 }, new Integer[] { 4, 3, 2, 1 }); // left skewed tree
+        test(
+            new Integer[] { 3, 9, 20, 15, 7 },
+            new Integer[] { 9, 3, 15, 20, 7 }
+        ); // normal tree
     }
 
-    private static void test(final Integer[] preorder, final Integer[] inorder) {
-        System.out.println("\n====================================================");
+    private static void test(
+        final Integer[] preorder,
+        final Integer[] inorder
+    ) {
+        System.out.println(
+            "\n===================================================="
+        );
         System.out.println("Naive Solution...");
-        BinaryTree root = new BinaryTree(createTree(preorder, inorder, 0, 0, inorder.length));
+        BinaryTree root = new BinaryTree(
+            createTree(preorder, inorder, 0, 0, inorder.length)
+        );
         System.out.println("Preorder Traversal: ");
         root.preOrder(root.getRoot());
         System.out.println("\nInorder Traversal: ");
@@ -43,7 +53,9 @@ public class CreateBinaryTreeFromInorderPreorder {
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        BinaryTree optimizedRoot = new BinaryTree(createTreeOptimized(preorder, inorder, 0, 0, inorder.length, map));
+        BinaryTree optimizedRoot = new BinaryTree(
+            createTreeOptimized(preorder, inorder, 0, 0, inorder.length, map)
+        );
         System.out.println("\n\nOptimized solution...");
         System.out.println("Preorder Traversal: ");
         optimizedRoot.preOrder(root.getRoot());
@@ -53,8 +65,13 @@ public class CreateBinaryTreeFromInorderPreorder {
         optimizedRoot.postOrder(root.getRoot());
     }
 
-    private static Node createTree(final Integer[] preorder, final Integer[] inorder,
-            final int preStart, final int inStart, final int size) {
+    private static Node createTree(
+        final Integer[] preorder,
+        final Integer[] inorder,
+        final int preStart,
+        final int inStart,
+        final int size
+    ) {
         if (size == 0) {
             return null;
         }
@@ -66,16 +83,33 @@ public class CreateBinaryTreeFromInorderPreorder {
         }
         int leftNodesCount = i - inStart;
         int rightNodesCount = size - leftNodesCount - 1;
-        root.left = createTree(preorder, inorder, preStart + 1, inStart, leftNodesCount);
-        root.right = createTree(preorder, inorder, preStart + leftNodesCount + 1, i + 1,
-                rightNodesCount);
+        root.left =
+            createTree(
+                preorder,
+                inorder,
+                preStart + 1,
+                inStart,
+                leftNodesCount
+            );
+        root.right =
+            createTree(
+                preorder,
+                inorder,
+                preStart + leftNodesCount + 1,
+                i + 1,
+                rightNodesCount
+            );
         return root;
-
     }
 
-    private static Node createTreeOptimized(final Integer[] preorder, final Integer[] inorder,
-            final int preStart, final int inStart, final int size,
-            final Map<Integer, Integer> inorderMap) {
+    private static Node createTreeOptimized(
+        final Integer[] preorder,
+        final Integer[] inorder,
+        final int preStart,
+        final int inStart,
+        final int size,
+        final Map<Integer, Integer> inorderMap
+    ) {
         if (size == 0) {
             return null;
         }
@@ -84,11 +118,24 @@ public class CreateBinaryTreeFromInorderPreorder {
         int i = inorderMap.get(preorder[preStart]);
         int leftNodesCount = i - inStart;
         int rightNodesCount = size - leftNodesCount - 1;
-        root.left = createTreeOptimized(preorder, inorder, preStart + 1, inStart,
-                leftNodesCount, inorderMap);
-        root.right = createTreeOptimized(preorder, inorder, preStart + leftNodesCount + 1,
-                i + 1, rightNodesCount, inorderMap);
+        root.left =
+            createTreeOptimized(
+                preorder,
+                inorder,
+                preStart + 1,
+                inStart,
+                leftNodesCount,
+                inorderMap
+            );
+        root.right =
+            createTreeOptimized(
+                preorder,
+                inorder,
+                preStart + leftNodesCount + 1,
+                i + 1,
+                rightNodesCount,
+                inorderMap
+            );
         return root;
     }
-
 }

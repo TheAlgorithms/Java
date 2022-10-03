@@ -39,8 +39,7 @@ public class StrassenMatrixMultiplication {
 
             // Using Formulas as described in algorithm
             // M1:=(A1+A3)×(B1+B2)
-            int[][] M1
-                    = multiply(add(A11, A22), add(B11, B22));
+            int[][] M1 = multiply(add(A11, A22), add(B11, B22));
 
             // M2:=(A2+A4)×(B3+B4)
             int[][] M2 = multiply(add(A21, A22), B11);
@@ -55,12 +54,10 @@ public class StrassenMatrixMultiplication {
             int[][] M5 = multiply(add(A11, A12), B22);
 
             // M6:=(A1+A2)×(B4)
-            int[][] M6
-                    = multiply(sub(A21, A11), add(B11, B12));
+            int[][] M6 = multiply(sub(A21, A11), add(B11, B12));
 
             // M7:=A4×(B3−B1)
-            int[][] M7
-                    = multiply(sub(A12, A22), add(B21, B22));
+            int[][] M7 = multiply(sub(A12, A22), add(B21, B22));
 
             // P:=M2+M3−M6−M7
             int[][] C11 = add(sub(add(M1, M4), M5), M7);
@@ -102,7 +99,6 @@ public class StrassenMatrixMultiplication {
     // Method 3
     // Function to add two matrices
     public int[][] add(int[][] A, int[][] B) {
-
         int n = A.length;
 
         int[][] C = new int[n][n];
@@ -141,7 +137,9 @@ public class StrassenMatrixMultiplication {
     // Method 5
     // Main driver method
     public static void main(String[] args) {
-        System.out.println("Strassen Multiplication Algorithm Implementation For Matrix Multiplication :\n");
+        System.out.println(
+            "Strassen Multiplication Algorithm Implementation For Matrix Multiplication :\n"
+        );
 
         StrassenMatrixMultiplication s = new StrassenMatrixMultiplication();
 
@@ -151,17 +149,21 @@ public class StrassenMatrixMultiplication {
 
         // Matrix A
         // Custom input to matrix
-        int[][] A = {{1, 2, 5, 4},
-        {9, 3, 0, 6},
-        {4, 6, 3, 1},
-        {0, 2, 0, 6}};
+        int[][] A = {
+            { 1, 2, 5, 4 },
+            { 9, 3, 0, 6 },
+            { 4, 6, 3, 1 },
+            { 0, 2, 0, 6 },
+        };
 
         // Matrix B
         // Custom input to matrix
-        int[][] B = {{1, 0, 4, 1},
-        {1, 2, 0, 2},
-        {0, 3, 1, 3},
-        {1, 8, 1, 2}};
+        int[][] B = {
+            { 1, 0, 4, 1 },
+            { 1, 2, 0, 2 },
+            { 0, 3, 1, 3 },
+            { 1, 8, 1, 2 },
+        };
 
         // Matrix C computations
         // Matrix C calling method to get Result

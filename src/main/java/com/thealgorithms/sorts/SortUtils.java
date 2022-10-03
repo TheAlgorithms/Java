@@ -65,7 +65,11 @@ final class SortUtils {
      * @param toPrint - a list which should be printed
      */
     static void print(List<?> toPrint) {
-        toPrint.stream().map(Object::toString).map(str -> str + " ").forEach(System.out::print);
+        toPrint
+            .stream()
+            .map(Object::toString)
+            .map(str -> str + " ")
+            .forEach(System.out::print);
 
         System.out.println();
     }

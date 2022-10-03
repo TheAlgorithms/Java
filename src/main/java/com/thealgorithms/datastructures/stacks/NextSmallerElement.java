@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.stacks;
+
 import java.util.Arrays;
 import java.util.Stack;
-
 
 /*
     Given an array "input" you need to print the first smaller element for each element to the left side of an array.
@@ -38,8 +38,8 @@ import java.util.Stack;
  */
 
 public class NextSmallerElement {
-    public static int[] findNextSmallerElements(int[] array)
-    {
+
+    public static int[] findNextSmallerElements(int[] array) {
         // base case
         if (array == null) {
             return array;
@@ -60,8 +60,7 @@ public class NextSmallerElement {
         return result;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         int[] input = { 2, 7, 3, 5, 4, 6, 8 };
         int[] result = findNextSmallerElements(input);
         System.out.println(Arrays.toString(result));

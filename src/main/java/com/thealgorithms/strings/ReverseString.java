@@ -27,7 +27,6 @@ public class ReverseString {
      * @return reversed string
      */
     public static String reverse2(String str) {
-
         if (str == null || str.isEmpty()) {
             return str;
         }

@@ -16,7 +16,9 @@ public class MatrixChainMultiplication {
     public static void main(String[] args) {
         int count = 1;
         while (true) {
-            String[] mSize = input("input size of matrix A(" + count + ") ( ex. 10 20 ) : ");
+            String[] mSize = input(
+                "input size of matrix A(" + count + ") ( ex. 10 20 ) : "
+            );
             int col = Integer.parseInt(mSize[0]);
             if (col == 0) {
                 break;
@@ -28,7 +30,12 @@ public class MatrixChainMultiplication {
             count++;
         }
         for (Matrix m : mArray) {
-            System.out.format("A(%d)  =  %2d  x  %2d%n", m.count(), m.col(), m.row());
+            System.out.format(
+                "A(%d)  =  %2d  x  %2d%n",
+                m.count(),
+                m.col(),
+                m.row()
+            );
         }
 
         size = mArray.size();

@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 public class countSetBits {
+
     /** 
      * The below algorithm is called as Brian Kernighan's algorithm 
      * We can use Brian Kernighan’s algorithm to improve the above naive algorithm’s performance. The idea is to only consider the set bits of an integer by turning off its rightmost set bit (after counting it), so the next iteration of the loop considers the next rightmost bit.
@@ -35,11 +36,11 @@ public class countSetBits {
      * @param num takes Long number whose number of set bit is to be found
      * @return the count of set bits in the binary equivalent
     */
-    public long countsetBits(long num){
-        long cnt=0;
-        while(num>0){
+    public long countsetBits(long num) {
+        long cnt = 0;
+        while (num > 0) {
             cnt++;
-            num&=(num-1);
+            num &= (num - 1);
         }
         return cnt;
     }
