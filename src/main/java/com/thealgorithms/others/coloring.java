@@ -46,20 +46,14 @@ class coloring
 	public static void main(String[] args)
 	{
 		Scanner x=new Scanner(System.in);
-		System.out.println("P. Sriram Bhardwaj");
-		System.out.println("Regd.no - 122010308005");
-		System.out.println(" ");
-		System.out.println("Mcoloring");
-		System.out.println(" ");
-		System.out.println("enter the number of nodes"); 
 		int V=x.nextInt();
-		int[][] graph=new int[V][V];                                     //adjacency matrix
+		int[][] graph=new int[V][V];                                     //adjacency matrix declaration
 
 		for(int i=0;i<V;i++)
 		{
 			for(int j=0;j<V;j++)
 			{	
-				System.out.println("enter edge "+i+" "+j);          //filling the elements for adjacency matrix
+				System.out.println("enter edge "+i+" "+j);          //initializing adjacency matrix
 				graph[i][j]=x.nextInt();
 			}
 		
