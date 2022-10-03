@@ -19,7 +19,7 @@ public class FindMinimum {
     public static int findMin(Node root){
         if(root==null) return Integer.MAX_VALUE;
         int min = root.val;
-        return Math.min(Math.min(findMin1(root.left), min),Math.min(findMin1(root.right),min));
+        return Math.min(Math.min(findMin(root.left), min),Math.min(findMin(root.right),min));
     }
 
     public static void main(String[] args) {
