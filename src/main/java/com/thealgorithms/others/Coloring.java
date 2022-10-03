@@ -1,3 +1,6 @@
+// this a backtracking problem
+// explanation link:- https://www.geeksforgeeks.org/m-coloring-problem-backtracking-5/
+
 import java.util.Scanner;
 import java.util.Arrays;
 
