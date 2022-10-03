@@ -55,6 +55,6 @@ public class test {
                     7
         */
 
-        System.out.println("\nDepth First Traversal: " + depthFirstTraversal(n1));
+        System.out.println("\nBreadth First Traversal: " + breadthFirstTraversal(n1));
     }
 }
