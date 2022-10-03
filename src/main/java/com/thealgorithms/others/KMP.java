@@ -5,6 +5,7 @@ package com.thealgorithms.others;
  * for an example
  */
 public class KMP {
+
     // a working example
 
     public static void main(String[] args) {

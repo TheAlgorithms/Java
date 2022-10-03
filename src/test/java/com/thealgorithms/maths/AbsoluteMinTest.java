@@ -1,9 +1,9 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class AbsoluteMinTest {
 
@@ -15,7 +15,10 @@ public class AbsoluteMinTest {
 
     @Test
     void testGetMinValueWithNoArguments() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> AbsoluteMin.getMinValue());
+        Exception exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> AbsoluteMin.getMinValue()
+        );
         assertEquals("Numbers array cannot be empty", exception.getMessage());
     }
 }

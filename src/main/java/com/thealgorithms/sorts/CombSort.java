@@ -64,7 +64,26 @@ class CombSort implements SortAlgorithm {
     // Driver method
     public static void main(String[] args) {
         CombSort ob = new CombSort();
-        Integer[] arr = {8, 4, 1, 56, 3, -44, -1, 0, 36, 34, 8, 12, -66, -78, 23, -6, 28, 0};
+        Integer[] arr = {
+            8,
+            4,
+            1,
+            56,
+            3,
+            -44,
+            -1,
+            0,
+            36,
+            34,
+            8,
+            12,
+            -66,
+            -78,
+            23,
+            -6,
+            28,
+            0,
+        };
         ob.sort(arr);
 
         System.out.println("sorted array");

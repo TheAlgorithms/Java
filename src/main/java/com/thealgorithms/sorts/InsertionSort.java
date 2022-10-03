@@ -31,13 +31,13 @@ class InsertionSort implements SortAlgorithm {
      * Driver Code
      */
     public static void main(String[] args) {
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] integers = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
         InsertionSort sort = new InsertionSort();
         sort.sort(integers);
         print(integers);
         /* [1, 4, 6, 9, 12, 23, 54, 78, 231] */
 
-        String[] strings = {"c", "a", "e", "b", "d"};
+        String[] strings = { "c", "a", "e", "b", "d" };
         sort.sort(strings);
         print(strings);
         /* [a, b, c, d, e] */

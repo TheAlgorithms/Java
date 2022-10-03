@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
 public class LazySegmentTree {
+
     /**
      * Lazy Segment Tree
      *
@@ -8,10 +9,12 @@ public class LazySegmentTree {
      *	<a href="https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/">
      */
     static class Node {
+
         private final int start, end; // start and end of the segment represented by this node
         private int value; // value is the sum of all elements in the range [start, end)
         private int lazy; // lazied value that should be added to children nodes
         Node left, right; // left and right children
+
         public Node(int start, int end, int value) {
             this.start = start;
             this.end = end;
@@ -50,7 +53,11 @@ public class LazySegmentTree {
         static Node merge(Node left, Node right) {
             if (left == null) return right;
             if (right == null) return left;
-            Node result = new Node(left.start, right.end, left.value + right.value);
+            Node result = new Node(
+                left.start,
+                right.end,
+                left.value + right.value
+            );
             result.left = left;
             result.right = right;
             return result;
@@ -124,7 +131,10 @@ public class LazySegmentTree {
         if (left <= curr.start && curr.end <= right) return curr;
         if (left >= curr.end || right <= curr.start) return null;
         curr.shift();
-        return Node.merge(getRange(left, right, curr.left), getRange(left, right, curr.right));
+        return Node.merge(
+            getRange(left, right, curr.left),
+            getRange(left, right, curr.right)
+        );
     }
 
     public int getRange(int left, int right) {

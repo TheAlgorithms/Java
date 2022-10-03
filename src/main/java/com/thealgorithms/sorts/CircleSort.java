@@ -5,7 +5,7 @@ import static com.thealgorithms.sorts.SortUtils.*;
 public class CircleSort implements SortAlgorithm {
 
     /* This method implements the circle sort
-    * @param array The array to be sorted 
+     * @param array The array to be sorted
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
@@ -15,11 +15,15 @@ public class CircleSort implements SortAlgorithm {
     }
 
     /* This method implements the cyclic sort recursive version
-    * @param array The array to be sorted
-    * @param the left boundary of the part currently being sorted
-    * @param the right boundary of the part currently being sorted
+     * @param array The array to be sorted
+     * @param the left boundary of the part currently being sorted
+     * @param the right boundary of the part currently being sorted
      */
-    private <T extends Comparable<T>> Boolean doSort(T[] array, int left, int right) {
+    private <T extends Comparable<T>> Boolean doSort(
+        T[] array,
+        int left,
+        int right
+    ) {
         Boolean swapped = false;
 
         if (left == right) {
@@ -54,13 +58,13 @@ public class CircleSort implements SortAlgorithm {
     public static void main(String[] args) {
         CircleSort CSort = new CircleSort();
 
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] arr = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
         CSort.sort(arr);
         for (int i = 0; i < arr.length - 1; ++i) {
             assert arr[i] <= arr[i + 1];
         }
 
-        String[] stringArray = {"c", "a", "e", "b", "d"};
+        String[] stringArray = { "c", "a", "e", "b", "d" };
         CSort.sort(stringArray);
         for (int i = 0; i < stringArray.length - 1; ++i) {
             assert arr[i].compareTo(arr[i + 1]) <= 0;
