@@ -1,6 +1,12 @@
 package com.thealgorithms.datastructures.stacks;
 import java.util.Stack;
 
+
+/*
+* We have to implement a data structure that supports push and pop operations of stack in O(1) time
+* It should also support getMin() and getMax() operations which return the minimum and maximum value in the stack in O(1) time
+*
+* */
 public class MinMaxStack {
 
     public static void main(String[] args) {
