@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-class coloring
+class Coloring
 {
 	static boolean safecoloring(int[][] graph, int[] colors, int V, int i, int j)  //we check if color j can be assigned to node the  i
 	{
