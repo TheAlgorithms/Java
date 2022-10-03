@@ -35,12 +35,7 @@ class warshall
 	public static void main(String[] args)
 	{
 		Scanner x=new Scanner(System.in);
-		System.out.println("P. Sriram Bhardwaj");
-		System.out.println("Regd.no - 122010308005");
-		System.out.println(" ");
-		System.out.println("All pairs shortest path");
-		System.out.println(" ");
-		 System.out.println("enter the number of elements");
+		System.out.println("enter the number of nodes");
 		int n=x.nextInt();
 		
 		double[][] paths=new double[n][n];
