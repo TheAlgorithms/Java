@@ -2,9 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.*;
 
-/* 
-* @author Ojasva Jain
-* Determinant of Matrix Wikipedia link : https://en.wikipedia.org/wiki/Determinant
+/*
+ * @author Ojasva Jain
+ * Determinant of Matrix Wikipedia link : https://en.wikipedia.org/wiki/Determinant
  */
 public class DeterminantOfMatrix {
 

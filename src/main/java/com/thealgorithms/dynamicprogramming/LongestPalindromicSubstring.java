@@ -24,7 +24,6 @@ public class LongestPalindromicSubstring {
         int start = 0, end = 0;
         for (int g = 0; g < input.length(); g++) {
             for (int i = 0, j = g; j < input.length(); i++, j++) {
-
                 if (g == 0) {
                     arr[i][j] = true;
                 } else if (g == 1) {
@@ -34,8 +33,9 @@ public class LongestPalindromicSubstring {
                         arr[i][j] = false;
                     }
                 } else {
-
-                    if (input.charAt(i) == input.charAt(j) && arr[i + 1][j - 1]) {
+                    if (
+                        input.charAt(i) == input.charAt(j) && arr[i + 1][j - 1]
+                    ) {
                         arr[i][j] = true;
                     } else {
                         arr[i][j] = false;
@@ -50,5 +50,4 @@ public class LongestPalindromicSubstring {
         }
         return input.substring(start, end + 1);
     }
-
 }

@@ -1,12 +1,12 @@
 package com.thealgorithms.strings;
 
+import static com.thealgorithms.strings.Pangram.isPangram;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static com.thealgorithms.strings.Pangram.isPangram;
-
-
 public class PangramTest {
+
     @Test
     public void testPangram() {
         assertTrue(isPangram("The quick brown fox jumps over the lazy dog"));

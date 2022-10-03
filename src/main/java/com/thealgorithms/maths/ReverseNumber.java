@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
-import java.util.NoSuchElementException;
 import java.lang.IllegalStateException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class ReverseNumber {
 
