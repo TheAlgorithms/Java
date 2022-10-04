@@ -1,7 +1,8 @@
 package com.thealgorithms.backtracking;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @author onglipwei
@@ -11,8 +12,6 @@ public class MazeRecursionTest {
 
     @Test
     public void testMaze() {
-
-
         // First create a 2 dimensions array to mimic a maze map
         int[][] map = new int[8][7];
         int[][] map2 = new int[8][7];
@@ -28,7 +27,6 @@ public class MazeRecursionTest {
         for (int i = 0; i < 8; i++) {
             map[i][0] = 1;
             map[i][6] = 1;
-
         }
 
         // Now we have created a maze with its wall initialized
@@ -38,41 +36,38 @@ public class MazeRecursionTest {
         map[3][2] = 1;
 
         //clone another map for setWay2 method
-        for (int i = 0; i < map.length;i++) {
-            for (int j = 0; j < map[i].length;j++) {
-                map2[i][j]=map[i][j];
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                map2[i][j] = map[i][j];
             }
         }
 
         MazeRecursion.setWay(map, 1, 1);
         MazeRecursion.setWay2(map2, 1, 1);
 
-
-        int expectedMap[][] = new int[][]{
-                {1,1,1,1,1,1,1},
-                {1,2,0,0,0,0,1},
-                {1,2,2,2,0,0,1},
-                {1,1,1,2,0,0,1},
-                {1,0,0,2,0,0,1},
-                {1,0,0,2,0,0,1},
-                {1,0,0,2,2,2,1},
-                {1,1,1,1,1,1,1}
+        int expectedMap[][] = new int[][] {
+            { 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 2, 0, 0, 0, 0, 1 },
+            { 1, 2, 2, 2, 0, 0, 1 },
+            { 1, 1, 1, 2, 0, 0, 1 },
+            { 1, 0, 0, 2, 0, 0, 1 },
+            { 1, 0, 0, 2, 0, 0, 1 },
+            { 1, 0, 0, 2, 2, 2, 1 },
+            { 1, 1, 1, 1, 1, 1, 1 },
         };
 
-        int expectedMap2[][] = new int[][]{
-                {1,1,1,1,1,1,1},
-                {1,2,2,2,2,2,1},
-                {1,0,0,0,0,2,1},
-                {1,1,1,0,0,2,1},
-                {1,0,0,0,0,2,1},
-                {1,0,0,0,0,2,1},
-                {1,0,0,0,0,2,1},
-                {1,1,1,1,1,1,1}
+        int expectedMap2[][] = new int[][] {
+            { 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 2, 2, 2, 2, 2, 1 },
+            { 1, 0, 0, 0, 0, 2, 1 },
+            { 1, 1, 1, 0, 0, 2, 1 },
+            { 1, 0, 0, 0, 0, 2, 1 },
+            { 1, 0, 0, 0, 0, 2, 1 },
+            { 1, 0, 0, 0, 0, 2, 1 },
+            { 1, 1, 1, 1, 1, 1, 1 },
         };
 
         assertArrayEquals(map, expectedMap);
         assertArrayEquals(map2, expectedMap2);
-
     }
-
 }

@@ -9,14 +9,18 @@ class Palindrome {
      * Driver Code
      */
     public static void main(String[] args) {
-        String[] palindromes = {null, "", "aba", "123321"};
+        String[] palindromes = { null, "", "aba", "123321" };
         for (String s : palindromes) {
-            assert isPalindrome(s) && isPalindromeRecursion(s) && isPalindrome1(s);
+            assert isPalindrome(s) &&
+            isPalindromeRecursion(s) &&
+            isPalindrome1(s);
         }
 
-        String[] notPalindromes = {"abb", "abc", "abc123"};
+        String[] notPalindromes = { "abb", "abc", "abc123" };
         for (String s : notPalindromes) {
-            assert !isPalindrome(s) && !isPalindromeRecursion(s) && !isPalindrome1(s);
+            assert !isPalindrome(s) &&
+            !isPalindromeRecursion(s) &&
+            !isPalindrome1(s);
         }
     }
 
@@ -28,7 +32,10 @@ class Palindrome {
      * {@code false}
      */
     public static boolean isPalindrome(String s) {
-        return (s == null || s.length() <= 1) || s.equals(new StringBuilder(s).reverse().toString());
+        return (
+            (s == null || s.length() <= 1) ||
+            s.equals(new StringBuilder(s).reverse().toString())
+        );
     }
 
     /**

@@ -1,10 +1,11 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
 public class CharacterSameTest {
+
     @Test
     public void isAllCharactersSame() {
         String input1 = "aaa";
@@ -22,7 +23,5 @@ public class CharacterSameTest {
         assertTrue(CharactersSame.isAllCharactersSame(input5));
         assertTrue(CharactersSame.isAllCharactersSame(input6));
         assertFalse(CharactersSame.isAllCharactersSame(input7));
-
     }
-
 }

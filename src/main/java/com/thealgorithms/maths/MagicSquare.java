@@ -7,7 +7,6 @@ rows, all columns, and both diagonals sum to the same constant. A magic square c
 public class MagicSquare {
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         System.out.print("Input a number: ");
         int num = sc.nextInt();
@@ -23,7 +22,10 @@ public class MagicSquare {
         magic_square[row_num][col_num] = 1;
 
         for (int i = 2; i <= num * num; i++) {
-            if (magic_square[(row_num - 1 + num) % num][(col_num + 1) % num] == 0) {
+            if (
+                magic_square[(row_num - 1 + num) % num][(col_num + 1) % num] ==
+                0
+            ) {
                 row_num = (row_num - 1 + num) % num;
                 col_num = (col_num + 1) % num;
             } else {
@@ -45,6 +47,5 @@ public class MagicSquare {
             }
             System.out.println();
         }
-
     }
 }

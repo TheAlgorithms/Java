@@ -23,7 +23,10 @@ public class SearchSinglyLinkedListRecursion extends SinglyLinkedList {
      * {@code false}.
      */
     private boolean searchRecursion(Node node, int key) {
-        return node != null && (node.value == key || searchRecursion(node.next, key));
+        return (
+            node != null &&
+            (node.value == key || searchRecursion(node.next, key))
+        );
     }
 
     @Override

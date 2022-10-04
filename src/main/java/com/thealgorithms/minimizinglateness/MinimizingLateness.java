@@ -23,7 +23,9 @@ public class MinimizingLateness {
     public static void main(String[] args) throws IOException {
         StringTokenizer token;
 
-        BufferedReader in = new BufferedReader(new FileReader("MinimizingLateness/lateness_data.txt"));
+        BufferedReader in = new BufferedReader(
+            new FileReader("MinimizingLateness/lateness_data.txt")
+        );
         String ch = in.readLine();
         if (ch == null || ch.isEmpty()) {
             in.close();
@@ -38,8 +40,11 @@ public class MinimizingLateness {
             token = new StringTokenizer(ch, " ");
             // Include the time required for the operation to be performed in the array and the time it
             // should be completed.
-            array[i]
-                    = new Schedule(Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken()));
+            array[i] =
+                new Schedule(
+                    Integer.parseInt(token.nextToken()),
+                    Integer.parseInt(token.nextToken())
+                );
             i++;
             System.out.println(array[i - 1].t + " " + array[i - 1].d);
         }

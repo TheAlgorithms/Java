@@ -11,9 +11,10 @@ import java.util.Stack;
 public class ReverseStack {
 
     public static void main(String args[]) {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements you wish to insert in the stack");
+        System.out.println(
+            "Enter the number of elements you wish to insert in the stack"
+        );
         int n = sc.nextInt();
         int i;
         Stack<Integer> stack = new Stack<Integer>();
@@ -28,7 +29,6 @@ public class ReverseStack {
             System.out.print(stack.peek() + ",");
             stack.pop();
         }
-
     }
 
     private static void reverseStack(Stack<Integer> stack) {
@@ -46,11 +46,9 @@ public class ReverseStack {
 
         //Insert the topmost element to the bottom of the stack
         insertAtBottom(stack, element);
-
     }
 
     private static void insertAtBottom(Stack<Integer> stack, int element) {
-
         if (stack.isEmpty()) {
             //When stack is empty, insert the element so it will be present at the bottom of the stack
             stack.push(element);
@@ -66,5 +64,4 @@ public class ReverseStack {
 
         stack.push(ele);
     }
-
 }
