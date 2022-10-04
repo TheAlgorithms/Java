@@ -22,7 +22,6 @@
  * Step 7 : STOP
  */
 
-
 package com.thealgorithms.datastructures.lists;
 
 import java.util.ArrayList;
@@ -30,11 +29,13 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomNode {
+
     private List<Integer> list;
     private int size;
     private static Random rand = new Random();
 
     static class ListNode {
+
         int val;
         ListNode next;
 
@@ -74,8 +75,6 @@ public class RandomNode {
         System.out.println("Random Node : " + randomNum);
     }
 }
-
-
 /**
  * OUTPUT :
  * First output :
@@ -87,7 +86,6 @@ public class RandomNode {
  * Time Complexity : O(n)
  * Auxiliary Space Complexity : O(1)
  */
-
 /** Time Complexity : O(n)
  * Auxiliary Space Complexity : O(1)
  */

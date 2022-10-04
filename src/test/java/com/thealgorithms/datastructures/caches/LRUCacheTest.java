@@ -13,11 +13,11 @@ public class LRUCacheTest {
     public void putAndGetIntegerValues() {
         LRUCache<Integer, Integer> lruCache = new LRUCache<>(SIZE);
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             lruCache.put(i, i);
         }
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             assertEquals(i, lruCache.get(i));
         }
     }
@@ -26,11 +26,11 @@ public class LRUCacheTest {
     public void putAndGetStringValues() {
         LRUCache<String, String> lruCache = new LRUCache<>(SIZE);
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             lruCache.put("key" + i, "value" + i);
         }
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             assertEquals("value" + i, lruCache.get("key" + i));
         }
     }
@@ -49,7 +49,7 @@ public class LRUCacheTest {
     public void overCapacity() {
         LRUCache<Integer, Integer> mruCache = new LRUCache<>(SIZE);
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             mruCache.put(i, i);
         }
 

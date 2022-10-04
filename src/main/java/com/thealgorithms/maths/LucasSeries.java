@@ -23,7 +23,9 @@ public class LucasSeries {
      * @return nth number of lucas series
      */
     public static int lucasSeries(int n) {
-        return n == 1 ? 2 : n == 2 ? 1 : lucasSeries(n - 1) + lucasSeries(n - 2);
+        return n == 1
+            ? 2
+            : n == 2 ? 1 : lucasSeries(n - 1) + lucasSeries(n - 2);
     }
 
     /**
