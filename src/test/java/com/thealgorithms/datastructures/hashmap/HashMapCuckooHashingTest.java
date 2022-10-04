@@ -1,11 +1,10 @@
 package com.thealgorithms.datastructures.hashmap;
 
-import com.thealgorithms.datastructures.hashmap.hashing.HashMapCuckooHashing;
-import org.junit.jupiter.api.Test;
-
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.thealgorithms.datastructures.hashmap.hashing.HashMapCuckooHashing;
+import java.util.*;
+import org.junit.jupiter.api.Test;
 
 class HashMapCuckooHashingTest {
 
@@ -55,8 +54,7 @@ class HashMapCuckooHashingTest {
         int initialSize = hashTable.getNumberOfKeysInTable();
         try {
             hashTable.deleteKeyFromHashTable(3);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             assertTrue(true);
             return;
         }
@@ -93,12 +91,10 @@ class HashMapCuckooHashingTest {
         assertTrue(hashTable.checkTableContainsKey(100));
     }
 
-
     private HashMapCuckooHashing createHashMapCuckooHashing() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
-        int[] values = {11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222};
+        int[] values = { 11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222 };
         Arrays.stream(values).forEach(hashTable::insertKey2HashTable);
         return hashTable;
     }
-
 }

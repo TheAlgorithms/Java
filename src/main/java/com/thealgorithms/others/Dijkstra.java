@@ -31,7 +31,8 @@ public class Dijkstra {
         new Graph.Edge("c", "d", 11),
         new Graph.Edge("c", "f", 2),
         new Graph.Edge("d", "e", 6),
-        new Graph.Edge("e", "f", 9),};
+        new Graph.Edge("e", "f", 9),
+    };
     private static final String START = "a";
     private static final String END = "e";
 
@@ -47,6 +48,7 @@ public class Dijkstra {
 }
 
 class Graph {
+
     // mapping of vertex names to Vertex objects, built from a set of Edges
 
     private final Map<String, Vertex> graph;
@@ -117,13 +119,23 @@ class Graph {
             if (dist != vertex.dist) {
                 return false;
             }
-            if (name != null ? !name.equals(vertex.name) : vertex.name != null) {
+            if (
+                name != null ? !name.equals(vertex.name) : vertex.name != null
+            ) {
                 return false;
             }
-            if (previous != null ? !previous.equals(vertex.previous) : vertex.previous != null) {
+            if (
+                previous != null
+                    ? !previous.equals(vertex.previous)
+                    : vertex.previous != null
+            ) {
                 return false;
             }
-            if (neighbours != null ? !neighbours.equals(vertex.neighbours) : vertex.neighbours != null) {
+            if (
+                neighbours != null
+                    ? !neighbours.equals(vertex.neighbours)
+                    : vertex.neighbours != null
+            ) {
                 return false;
             }
 
@@ -136,7 +148,8 @@ class Graph {
             result = 31 * result + (name != null ? name.hashCode() : 0);
             result = 31 * result + dist;
             result = 31 * result + (previous != null ? previous.hashCode() : 0);
-            result = 31 * result + (neighbours != null ? neighbours.hashCode() : 0);
+            result =
+                31 * result + (neighbours != null ? neighbours.hashCode() : 0);
             return result;
         }
 
@@ -175,7 +188,10 @@ class Graph {
      */
     public void dijkstra(String startName) {
         if (!graph.containsKey(startName)) {
-            System.err.printf("Graph doesn't contain start vertex \"%s\"%n", startName);
+            System.err.printf(
+                "Graph doesn't contain start vertex \"%s\"%n",
+                startName
+            );
             return;
         }
         final Vertex source = graph.get(startName);
@@ -222,7 +238,10 @@ class Graph {
      */
     public void printPath(String endName) {
         if (!graph.containsKey(endName)) {
-            System.err.printf("Graph doesn't contain end vertex \"%s\"%n", endName);
+            System.err.printf(
+                "Graph doesn't contain end vertex \"%s\"%n",
+                endName
+            );
             return;
         }
 

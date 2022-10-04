@@ -14,14 +14,15 @@ public class HammingDistance {
      * @return {@code int} hamming distance
      * @throws Exception
      */
-    public static int calculateHammingDistance(String s1, String s2) throws Exception {
+    public static int calculateHammingDistance(String s1, String s2)
+        throws Exception {
         if (s1.length() != s2.length()) {
             throw new Exception("String lengths must be equal");
         }
-        
+
         int stringLength = s1.length();
         int counter = 0;
-        
+
         for (int i = 0; i < stringLength; i++) {
             if (s1.charAt(i) != s2.charAt(i)) {
                 counter++;

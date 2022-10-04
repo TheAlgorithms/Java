@@ -4,19 +4,29 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GCDTest {
+
     @Test
     void test1() {
-        Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(-1,0));
+        Assertions.assertThrows(
+            ArithmeticException.class,
+            () -> GCD.gcd(-1, 0)
+        );
     }
 
     @Test
     void test2() {
-        Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(10, -2));
+        Assertions.assertThrows(
+            ArithmeticException.class,
+            () -> GCD.gcd(10, -2)
+        );
     }
 
     @Test
     void test3() {
-        Assertions.assertThrows(ArithmeticException.class, () -> GCD.gcd(-5, -3));
+        Assertions.assertThrows(
+            ArithmeticException.class,
+            () -> GCD.gcd(-5, -3)
+        );
     }
 
     @Test
