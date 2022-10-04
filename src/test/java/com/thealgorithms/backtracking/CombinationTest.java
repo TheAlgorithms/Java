@@ -29,4 +29,11 @@ public class CombinationTest {
         assertTrue(arr[0] == 1);
         assertTrue(arr[1] == 2);
     }
+    void testLengthThree()
+    {
+        List<TreeSet<Integer>> result  = Combination.combination(new Integer[]{1, 2, 3, 4, 5}, 3);
+        Integer[] arr = result.get(0).toArray(new Integer[3]);
+        assertTrue(arr[0] == 1);
+        assertTrue(arr[1] == 2);
+    }
 }
