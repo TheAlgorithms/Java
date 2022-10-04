@@ -3,18 +3,19 @@ package com.thealgorithms.maths;
 import java.util.Scanner;
 
 /*
-*To learn about the method, visit the link below :
-* https://en.wikipedia.org/wiki/Newton%27s_method
-*
-* To obtain the square root, no built-in functions should be used
-*
-* The formula to calculate the root is : root = 0.5(x + n/x),
-* here, n is the no. whose square root has to be calculated and
-* x has to be guessed such that, the calculation should result into
-* the square root of n.
-* And the root will be obtained when the error < 0.5 or the precision value can also
-* be changed according to the user preference.
-*/
+ *To learn about the method, visit the link below :
+ * https://en.wikipedia.org/wiki/Newton%27s_method
+ *
+ * To obtain the square root, no built-in functions should be used
+ *
+ * The formula to calculate the root is : root = 0.5(x + n/x),
+ * here, n is the no. whose square root has to be calculated and
+ * x has to be guessed such that, the calculation should result into
+ * the square root of n.
+ * And the root will be obtained when the error < 0.5 or the precision value can also
+ * be changed according to the user preference.
+ */
+
 
 public class SquareRootWithNewtonRaphsonMethod {
 

@@ -53,7 +53,7 @@ public class DoublyLinkedList {
             throw new NullPointerException();
         }
         for (int i : array) {
-            linkOperations.insertTail(i,this);
+            linkOperations.insertTail(i, this);
         }
         size = array.length;
     }
@@ -136,13 +136,13 @@ class Link {
     public static void main(String args[]) {
         DoublyLinkedList myList = new DoublyLinkedList();
         LinkOperations linkOperations = new LinkOperations();
-        linkOperations.insertHead(13,myList);
-        linkOperations.insertHead(7,myList);
-        linkOperations.insertHead(10,myList);
+        linkOperations.insertHead(13, myList);
+        linkOperations.insertHead(7, myList);
+        linkOperations.insertHead(10, myList);
         myList.display(); // <-- 10(head) <--> 7 <--> 13(tail) -->
         myList.displayBackwards();
 
-        linkOperations.insertTail(11,myList);
+        linkOperations.insertTail(11, myList);
         myList.display(); // <-- 10(head) <--> 7 <--> 13 <--> 11(tail) -->
         myList.displayBackwards();
 
@@ -154,11 +154,11 @@ class Link {
         myList.display(); // <-- 10(head) <--> 13(tail) -->
         myList.displayBackwards();
 
-        linkOperations.insertOrdered(23,myList);
-        linkOperations.insertOrdered(67,myList);
-        linkOperations.insertOrdered(3,myList);
+        linkOperations.insertOrdered(23, myList);
+        linkOperations.insertOrdered(67, myList);
+        linkOperations.insertOrdered(3, myList);
         myList.display(); // <-- 3(head) <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
-        linkOperations.insertElementByIndex(5, 1,myList);
+        linkOperations.insertElementByIndex(5, 1, myList);
         myList.display(); // <-- 3(head) <--> 5 <--> 10 <--> 13 <--> 23 <--> 67(tail) -->
         myList.displayBackwards();
         linkOperations.reverse(); // <-- 67(head) <--> 23 <--> 13 <--> 10 <--> 5 <--> 3(tail) -->
@@ -167,7 +167,7 @@ class Link {
         linkOperations.clearList();
         myList.display();
         myList.displayBackwards();
-        linkOperations.insertHead(20,myList);
+        linkOperations.insertHead(20, myList);
         myList.display();
         myList.displayBackwards();
     }
@@ -176,7 +176,8 @@ class Link {
 /*
  * This class implements the operations of the Link nodes.
  */
-class LinkOperations{
+class LinkOperations {
+
     /**
      * Head refers to the front of the list
      */
@@ -196,10 +197,9 @@ class LinkOperations{
      *
      * @param x Element to be inserted
      */
-    public void insertHead(int x,DoublyLinkedList doublyLinkedList) {
+    public void insertHead(int x, DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x); // Create a new link with a value attached to it
-        if (doublyLinkedList.isEmpty()) // Set the first element added to be the tail
-        {
+        if (doublyLinkedList.isEmpty()) { // Set the first element added to be the tail
             tail = newLink;
         } else {
             head.previous = newLink; // newLink <-- currenthead(head)
@@ -214,7 +214,7 @@ class LinkOperations{
      *
      * @param x Element to be inserted
      */
-    public void insertTail(int x,DoublyLinkedList doublyLinkedList) {
+    public void insertTail(int x, DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x);
         newLink.next = null; // currentTail(tail)     newlink -->
         if (doublyLinkedList.isEmpty()) { // Check if there are no elements in list then it adds first element
@@ -234,15 +234,21 @@ class LinkOperations{
      * @param x Element to be inserted
      * @param index Index(from start) at which the element x to be inserted
      */
-    public void insertElementByIndex(int x, int index,DoublyLinkedList doublyLinkedList) {
+    public void insertElementByIndex(
+        int x,
+        int index,
+        DoublyLinkedList doublyLinkedList
+    ) {
         if (index > size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            throw new IndexOutOfBoundsException(
+                "Index: " + index + ", Size: " + size
+            );
         }
         if (index == 0) {
-            insertHead(x,doublyLinkedList);
+            insertHead(x, doublyLinkedList);
         } else {
             if (index == size) {
-                insertTail(x,doublyLinkedList);
+                insertTail(x, doublyLinkedList);
             } else {
                 Link newLink = new Link(x);
                 Link previousLink = head; //
@@ -271,8 +277,7 @@ class LinkOperations{
         if (head == null) {
             tail = null;
         } else {
-            head.previous
-                    = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
+            head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
         }
         --size;
         return temp;
@@ -309,7 +314,9 @@ class LinkOperations{
             if (current != tail) {
                 current = current.next;
             } else { // If we reach the tail and the element is still not found
-                throw new RuntimeException("The element to be deleted does not exist!");
+                throw new RuntimeException(
+                    "The element to be deleted does not exist!"
+                );
             }
         }
 
@@ -329,18 +336,17 @@ class LinkOperations{
      *
      * @param x Element to be added
      */
-    public void insertOrdered(int x,DoublyLinkedList doublyLinkedList) {
+    public void insertOrdered(int x, DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x);
         Link current = head;
-        while (current != null && x > current.value) // Find the position to insert
-        {
+        while (current != null && x > current.value) { // Find the position to insert
             current = current.next;
         }
 
         if (current == head) {
-            insertHead(x,doublyLinkedList);
+            insertHead(x, doublyLinkedList);
         } else if (current == null) {
-            insertTail(x,doublyLinkedList);
+            insertTail(x, doublyLinkedList);
         } else { // Before: 1 <--> 2(current) <--> 3
             newLink.previous = current.previous; // 1 <-- newLink
             current.previous.next = newLink; // 1 <--> newLink
@@ -372,8 +378,7 @@ class LinkOperations{
         while (linkOne.next != null) { // list is present
             Link linkTwo = linkOne.next; // second link for comparison
             while (linkTwo.next != null) {
-                if (linkOne.value == linkTwo.value) // if there are duplicates values then
-                {
+                if (linkOne.value == linkTwo.value) { // if there are duplicates values then
                     delete(linkTwo.value); // delete the link
                 }
                 linkTwo = linkTwo.next; // go to next link
@@ -416,5 +421,4 @@ class LinkOperations{
         tail = null;
         size = 0;
     }
-
 }

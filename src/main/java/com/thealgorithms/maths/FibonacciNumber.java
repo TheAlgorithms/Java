@@ -35,6 +35,9 @@ public class FibonacciNumber {
      * @link https://en.wikipedia.org/wiki/Fibonacci_number#Identification
      */
     public static boolean isFibonacciNumber(int number) {
-        return isPerfectSquare(5 * number * number + 4) || isPerfectSquare(5 * number * number - 4);
+        return (
+            isPerfectSquare(5 * number * number + 4) ||
+            isPerfectSquare(5 * number * number - 4)
+        );
     }
 }

@@ -25,7 +25,6 @@ public class LevelOrderTraversalQueue {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(root);
         while (!queue.isEmpty()) {
-
             /* poll() removes the present head.
       For more information on poll() visit
       http://www.tutorialspoint.com/java/util/linkedlist_poll.htm */

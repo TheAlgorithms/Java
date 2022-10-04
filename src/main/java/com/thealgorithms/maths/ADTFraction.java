@@ -1,7 +1,6 @@
 package com.thealgorithms.maths;
 
 public record ADTFraction(int numerator, int denominator) {
-
     /**
      * Initializes a newly created {@code ADTFraction} object so that it represents
      * a fraction with the {@code numerator} and {@code denominator} provided as arguments.
@@ -22,10 +21,13 @@ public record ADTFraction(int numerator, int denominator) {
      * @return A new {@code ADTFraction} containing the result of the operation
      */
     public ADTFraction plus(ADTFraction fraction) {
-        var numerator = this.denominator * fraction.numerator + this.numerator * fraction.denominator;
+        var numerator =
+            this.denominator *
+            fraction.numerator +
+            this.numerator *
+            fraction.denominator;
         var denominator = this.denominator * fraction.denominator;
         return new ADTFraction(numerator, denominator);
-
     }
 
     /**

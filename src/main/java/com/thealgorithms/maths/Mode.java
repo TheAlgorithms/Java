@@ -14,23 +14,30 @@ import java.util.HashMap;
 public class Mode {
 
     public static void main(String[] args) {
-
         /* Test array of integers */
-        assert (mode(new int[]{})) == null;
-        assert Arrays.equals(mode(new int[]{5}), new int[]{5});
-        assert Arrays.equals(mode(new int[]{1, 2, 3, 4, 5}), new int[]{1, 2, 3, 4, 5});
-        assert Arrays.equals(mode(new int[]{7, 9, 9, 4, 5, 6, 7, 7, 8}), new int[]{7});
-        assert Arrays.equals(mode(new int[]{7, 9, 9, 4, 5, 6, 7, 7, 9}), new int[]{7, 9});
+        assert (mode(new int[] {})) == null;
+        assert Arrays.equals(mode(new int[] { 5 }), new int[] { 5 });
+        assert Arrays.equals(
+            mode(new int[] { 1, 2, 3, 4, 5 }),
+            new int[] { 1, 2, 3, 4, 5 }
+        );
+        assert Arrays.equals(
+            mode(new int[] { 7, 9, 9, 4, 5, 6, 7, 7, 8 }),
+            new int[] { 7 }
+        );
+        assert Arrays.equals(
+            mode(new int[] { 7, 9, 9, 4, 5, 6, 7, 7, 9 }),
+            new int[] { 7, 9 }
+        );
     }
 
     /*
-   * Find the mode of an array of integers
-   *
-   * @param numbers array of integers
-   * @return mode of the array
+     * Find the mode of an array of integers
+     *
+     * @param numbers array of integers
+     * @return mode of the array
      */
     public static int[] mode(int[] numbers) {
-
         if (numbers.length == 0) {
             return null;
         }
@@ -39,11 +46,8 @@ public class Mode {
 
         for (int num : numbers) {
             if (count.containsKey(num)) {
-
                 count.put(num, count.get(num) + 1);
-
             } else {
-
                 count.put(num, 1);
             }
         }
