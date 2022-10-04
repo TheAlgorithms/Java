@@ -62,7 +62,7 @@ class RailFence {
   public static void main(String args[]) throws Exception {
     RailFenceBasic rf = new RailFenceBasic();
     Scanner input = new Scanner(System.in);
-        int shift = 0;
+        int depth = 0;
         System.out.println("Please enter the message (Latin Alphabet)");
         String message = input.nextLine();
         System.out.println(message);
