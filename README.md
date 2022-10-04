@@ -19,4 +19,4 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 We're on [Gitter](https://gitter.im/TheAlgorithms)! Come join us.
 
 ## Algorithms
-Our [directory](DIRECTORY.md) has the full list of applications.
+Our [directories](DIRECTORY.md) have the full list of applications.
