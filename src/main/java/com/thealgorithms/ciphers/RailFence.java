@@ -73,13 +73,13 @@ class RailFence {
             case 'e':
                 System.out.println("Please enter the depth number");
                 depth = input.nextInt() % 26;
-                System.out.println("ENCRYPTED TEXT IS \n" + rf.Encryption(message, shift));
+                System.out.println("ENCRYPTED TEXT IS \n" + rf.Encryption(message, depth));
                 break;
             case 'D':
             case 'd':
                 System.out.println("Please enter the depth number");
                 shift = input.nextInt() % 26;
-                System.out.println("DECRYPTED TEXT IS \n" + rf.Decryption(message, shift));
+                System.out.println("DECRYPTED TEXT IS \n" + rf.Decryption(message, depth));
                 break;
             default:
                 System.out.println("default case");
