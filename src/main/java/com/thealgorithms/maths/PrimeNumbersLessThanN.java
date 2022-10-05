@@ -26,7 +26,7 @@ public class PrimeNumbersLessThanN {
                   System.out.println("--" + i);
           }
     }
-
+// this is the optimised solution for printing the prime numbers less than n and works in O(n*log(log(n))) time complexity
     static void seiveSolution(int n){
         boolean []arr = new boolean[n+1];
         Arrays.fill(arr,true);
