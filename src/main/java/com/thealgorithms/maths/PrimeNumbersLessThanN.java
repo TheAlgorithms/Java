@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class PrimeNumbersLessThanN {
-
+    //function that checks that the no is prime or not 
     static boolean isPrime(int n) {
 
         if(n==1)
@@ -19,7 +19,7 @@ public class PrimeNumbersLessThanN {
         }
         return true;
     }
-
+//naive solution for printing the prime numbers less than n 
     static void printPrime(int num){
           for(int i=2;i<=num;i++) {
               if (isPrime(i))
@@ -39,6 +39,8 @@ public class PrimeNumbersLessThanN {
             }
         }
     }
+    
+    //main method
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
         int number =sc.nextInt();
