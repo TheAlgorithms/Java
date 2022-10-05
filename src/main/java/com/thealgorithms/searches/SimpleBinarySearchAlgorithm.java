@@ -1,7 +1,7 @@
 package com.thealgorithms.searches;
 
-public class SimpleBinarySeachAlgorithm {
-    class Solution {
+public class SimpleBinarySearchAlgorithm {
+
         public static int findMid(int[] numbers, int target) {
             int  start=0;
             int end=numbers.length-1;
@@ -20,7 +20,7 @@ public class SimpleBinarySeachAlgorithm {
         }
         public static void main(String[] args) {
             int[] numArray = new int[]{1, 6, 10, 19, 20, 23}; // sample sorted array
-            int foundVal = Solution.findMid(numArray, 1);
+            int foundVal = SimpleBinarySearchAlgorithm.findMid(numArray, 23);
             if (foundVal == -1)
                 System.out.println("given target element is not present");
             else
@@ -29,4 +29,4 @@ public class SimpleBinarySeachAlgorithm {
 
         }
 
-    }
+
