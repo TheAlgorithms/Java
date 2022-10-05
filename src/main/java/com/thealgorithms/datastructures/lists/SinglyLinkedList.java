@@ -101,6 +101,26 @@ public class SinglyLinkedList extends Node{
         currentA.next = currentB.next;
         currentB.next = temp;
     }
+    /*
+     * Left Shift the linked list by K nodes, K must be less than or equal to length of Linked list
+    */
+    //Function to rotate a linked list.
+    public Node rotate(Node head, int k) {
+        // add code here
+        Node current = head;
+        while(current.next!=null){
+            current = current.next;
+        }
+        Node prev = null;
+        for(int i=0; i < k; i++){
+            prev = head;
+            head = head.next;
+            prev.next = null;
+            current.next = prev;
+            current = prev;
+        }
+        return head;
+    }//Rotate Ended
 
     /**
      * Reverse a singly linked list from a given node till the end
