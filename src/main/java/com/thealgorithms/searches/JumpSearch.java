@@ -6,6 +6,8 @@ public class JumpSearch implements SearchAlgorithm {
 
     public static void main(String[] args) {
         JumpSearch jumpSearch = new JumpSearch();
+
+        //Array we are going to search in
         Integer[] array = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         for (int i = 0; i < array.length; i++) {
             assert jumpSearch.find(array, i) == i;
@@ -16,6 +18,21 @@ public class JumpSearch implements SearchAlgorithm {
 
     /**
      * Jump Search algorithm implements
+     *
+     * <<<<<<   Jump Search     >>>>>
+     * EXPLAINATION
+     * -------------------------------------
+     * -It can only be used in SORTED arrays.
+     * -Based on searching a fewer number of elements compared to linear search
+     * - The way it works:
+     * Divide the array to search into blocks
+     * Jump between the blocks until we find one that 'should' contain the searched value
+     * Use linear search on the block
+     * 
+     * BIG O ANALYSIS	
+     *------------------------------------
+     * -Best Case Scenario : O(1) -> When element is found in the very first block it searches
+     * -Worst/Average Case Scenario: O(√n) since jump searches optimal jump values are √n
      *
      * @param array the array contains elements
      * @param key to be searched
