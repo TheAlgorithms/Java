@@ -46,7 +46,32 @@ public class UniquePaths {
         return dp[m - 1][n - 1] == ans;
         // return true if predicted answer matches with expected answer
     }
-    // The above mthod takes O(m*n) time
+    // The above method takes O(m*n) time
+
+    /*
+     * we can also solve this problem in o(m+n) time and o(1) space, here is how
+     * we have to take m-1 right moves and n-1 down moves to reach 
+     * to the bottom right corner, a path is unique arrangement of these moves.
+     * suppose m=3 and n=3, now you will move 2 times right and 2 times down, possible paths are
+     * (R,R,D,D),(R,D,R,D),(D,R,D,R),(D,D,R,R),(R,D,D,R),(D,R,R,D)
+     * R means Right and D means DOWN.
+     * we can use combinatorics to find the number of unique paths, the number of arrangements
+     * to place A identical things and B identical things, will be ((A+B)!)/(A!*B!)
+     */
+    public static boolean uniquePaths3(int m, int n, int expectedAns) {
+        int downMoves=m-1, rightMoves=n-1, ans=1;
+        for(int i=1;i<=downMoves+rightMoves;i++){
+            ans*=i;
+        }
+        for(int i=1;i<=downMoves;i++){
+            ans/=i;
+        }
+        for(int i=1;i<=rightMoves;i++){
+            ans/=i;
+        }
+        return (ans==expectedAns);
+    }
+
 }
 /**
  * OUTPUT :
