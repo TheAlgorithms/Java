@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class TrappingRainwater {
    
-    public static long trappedRainwater(int height[]){
+    public static long trappedRainWater(int height[]){
         int n = height.length;
         int waterLevel =0;
         int trappedWater =0;
