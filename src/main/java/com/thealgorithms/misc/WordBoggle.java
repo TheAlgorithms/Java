@@ -26,21 +26,31 @@ public class WordBoggle {
 
     public static void main(String[] args) {
         // Testcase
-        List<String> ans
-                = new ArrayList<>(
-                        Arrays.asList("a", "boggle", "this", "NOTRE_PEATED", "is", "simple", "board"));
-        assert (boggleBoard(
-                new char[][]{
-                    {'t', 'h', 'i', 's', 'i', 's', 'a'},
-                    {'s', 'i', 'm', 'p', 'l', 'e', 'x'},
-                    {'b', 'x', 'x', 'x', 'x', 'e', 'b'},
-                    {'x', 'o', 'g', 'g', 'l', 'x', 'o'},
-                    {'x', 'x', 'x', 'D', 'T', 'r', 'a'},
-                    {'R', 'E', 'P', 'E', 'A', 'd', 'x'},
-                    {'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-                    {'N', 'O', 'T', 'R', 'E', '_', 'P'},
-                    {'x', 'x', 'D', 'E', 'T', 'A', 'E'},},
-                new String[]{
+        List<String> ans = new ArrayList<>(
+            Arrays.asList(
+                "a",
+                "boggle",
+                "this",
+                "NOTRE_PEATED",
+                "is",
+                "simple",
+                "board"
+            )
+        );
+        assert (
+            boggleBoard(
+                new char[][] {
+                    { 't', 'h', 'i', 's', 'i', 's', 'a' },
+                    { 's', 'i', 'm', 'p', 'l', 'e', 'x' },
+                    { 'b', 'x', 'x', 'x', 'x', 'e', 'b' },
+                    { 'x', 'o', 'g', 'g', 'l', 'x', 'o' },
+                    { 'x', 'x', 'x', 'D', 'T', 'r', 'a' },
+                    { 'R', 'E', 'P', 'E', 'A', 'd', 'x' },
+                    { 'x', 'x', 'x', 'x', 'x', 'x', 'x' },
+                    { 'N', 'O', 'T', 'R', 'E', '_', 'P' },
+                    { 'x', 'x', 'D', 'E', 'T', 'A', 'E' },
+                },
+                new String[] {
                     "this",
                     "is",
                     "not",
@@ -50,17 +60,21 @@ public class WordBoggle {
                     "boggle",
                     "board",
                     "REPEATED",
-                    "NOTRE_PEATED",})
-                .equals(ans));
+                    "NOTRE_PEATED",
+                }
+            )
+                .equals(ans)
+        );
     }
 
     public static void explore(
-            int i,
-            int j,
-            char[][] board,
-            TrieNode trieNode,
-            boolean[][] visited,
-            Set<String> finalWords) {
+        int i,
+        int j,
+        char[][] board,
+        TrieNode trieNode,
+        boolean[][] visited,
+        Set<String> finalWords
+    ) {
         if (visited[i][j]) {
             return;
         }
@@ -77,7 +91,14 @@ public class WordBoggle {
 
         List<Integer[]> neighbors = getNeighbors(i, j, board);
         for (Integer[] neighbor : neighbors) {
-            explore(neighbor[0], neighbor[1], board, trieNode, visited, finalWords);
+            explore(
+                neighbor[0],
+                neighbor[1],
+                board,
+                trieNode,
+                visited,
+                finalWords
+            );
         }
 
         visited[i][j] = false;
@@ -86,35 +107,35 @@ public class WordBoggle {
     public static List<Integer[]> getNeighbors(int i, int j, char[][] board) {
         List<Integer[]> neighbors = new ArrayList<>();
         if (i > 0 && j > 0) {
-            neighbors.add(new Integer[]{i - 1, j - 1});
+            neighbors.add(new Integer[] { i - 1, j - 1 });
         }
 
         if (i > 0 && j < board[0].length - 1) {
-            neighbors.add(new Integer[]{i - 1, j + 1});
+            neighbors.add(new Integer[] { i - 1, j + 1 });
         }
 
         if (i < board.length - 1 && j < board[0].length - 1) {
-            neighbors.add(new Integer[]{i + 1, j + 1});
+            neighbors.add(new Integer[] { i + 1, j + 1 });
         }
 
         if (i < board.length - 1 && j > 0) {
-            neighbors.add(new Integer[]{i + 1, j - 1});
+            neighbors.add(new Integer[] { i + 1, j - 1 });
         }
 
         if (i > 0) {
-            neighbors.add(new Integer[]{i - 1, j});
+            neighbors.add(new Integer[] { i - 1, j });
         }
 
         if (i < board.length - 1) {
-            neighbors.add(new Integer[]{i + 1, j});
+            neighbors.add(new Integer[] { i + 1, j });
         }
 
         if (j > 0) {
-            neighbors.add(new Integer[]{i, j - 1});
+            neighbors.add(new Integer[] { i, j - 1 });
         }
 
         if (j < board[0].length - 1) {
-            neighbors.add(new Integer[]{i, j + 1});
+            neighbors.add(new Integer[] { i, j + 1 });
         }
 
         return neighbors;

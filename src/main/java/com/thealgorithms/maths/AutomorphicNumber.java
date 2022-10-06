@@ -30,8 +30,7 @@ public class AutomorphicNumber {
         } while (n != 0);
         s = Math.pow(10, c);
         r = p % (int) s;
-        if (m == r) //Checking if the original number entered is present at the end of the square
-        {
+        if (m == r) { //Checking if the original number entered is present at the end of the square
             return true;
         } else {
             return false;
@@ -44,7 +43,9 @@ public class AutomorphicNumber {
      * Number: 7 Output - It is not an Automorphic Number.
      */
     public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(
+            new InputStreamReader(System.in)
+        );
         System.out.println("Enter a Number: ");
         int n = Integer.parseInt(br.readLine());
         if (isAutomorphic(n)) {

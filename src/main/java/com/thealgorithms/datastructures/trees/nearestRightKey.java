@@ -42,10 +42,8 @@ class Main {
                 // Go right
                 return nearestRightKey(root.right, x0);
             }
-
         }
     }
-
 }
 
 class NRKTree {

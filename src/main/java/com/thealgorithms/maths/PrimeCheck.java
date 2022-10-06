@@ -12,13 +12,17 @@ public class PrimeCheck {
         if (isPrime(n)) {
             System.out.println("algo1 verify that " + n + " is a prime number");
         } else {
-            System.out.println("algo1 verify that " + n + " is not a prime number");
+            System.out.println(
+                "algo1 verify that " + n + " is not a prime number"
+            );
         }
 
         if (fermatPrimeChecking(n, 20)) {
             System.out.println("algo2 verify that " + n + " is a prime number");
         } else {
-            System.out.println("algo2 verify that " + n + " is not a prime number");
+            System.out.println(
+                "algo2 verify that " + n + " is not a prime number"
+            );
         }
         scanner.close();
     }
@@ -52,18 +56,17 @@ public class PrimeCheck {
      * @param n the number
      * @return {@code true} if {@code n} is prime
      */
-    public static boolean fermatPrimeChecking(int n, int iteration){
-      long a;
-      int up = n - 2, down = 2;
-      for(int i=0;i<iteration;i++){
-        a = (long)Math.floor(Math.random()*(up - down + 1) + down);
-        if(modPow(a,n-1,n) != 1){
-          return false;
+    public static boolean fermatPrimeChecking(int n, int iteration) {
+        long a;
+        int up = n - 2, down = 2;
+        for (int i = 0; i < iteration; i++) {
+            a = (long) Math.floor(Math.random() * (up - down + 1) + down);
+            if (modPow(a, n - 1, n) != 1) {
+                return false;
+            }
         }
-      }
-      return true;
+        return true;
     }
-
 
     /**
      * *
@@ -72,10 +75,9 @@ public class PrimeCheck {
      * @param c modulo
      * @return (a^b) mod c
      */
-    private static long modPow(long a, long b, long c){
+    private static long modPow(long a, long b, long c) {
         long res = 1;
-        for (int i = 0; i < b; i++)
-        {
+        for (int i = 0; i < b; i++) {
             res *= a;
             res %= c;
         }

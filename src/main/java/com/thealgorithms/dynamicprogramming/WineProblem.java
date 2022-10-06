@@ -68,7 +68,6 @@ public class WineProblem {
                     int end = strg[si][ei - 1] + arr[ei] * year;
 
                     strg[si][ei] = Math.max(start, end);
-
                 }
             }
         }
@@ -76,13 +75,14 @@ public class WineProblem {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 3, 5, 1, 4};
+        int[] arr = { 2, 3, 5, 1, 4 };
         System.out.println("Method 1: " + WPRecursion(arr, 0, arr.length - 1));
-        System.out.println("Method 2: " + WPTD(arr, 0, arr.length - 1, new int[arr.length][arr.length]));
+        System.out.println(
+            "Method 2: " +
+            WPTD(arr, 0, arr.length - 1, new int[arr.length][arr.length])
+        );
         System.out.println("Method 3: " + WPBU(arr));
-
     }
-
 }
 // Memoization vs Tabulation : https://www.geeksforgeeks.org/tabulation-vs-memoization/
 // Question Link : https://www.geeksforgeeks.org/maximum-profit-sale-wines/

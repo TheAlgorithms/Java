@@ -5,6 +5,7 @@ import java.util.LinkedList;
 // implementation of generic hashmaps using array of Linked Lists
 
 public class GenericHashMapUsingArray<K, V> {
+
     private int size; // n (total number of key-value pairs)
     private LinkedList<Node>[] buckets; // N = buckets.length
     private float lf = 0.75f;
@@ -13,6 +14,7 @@ public class GenericHashMapUsingArray<K, V> {
         initBuckets(16);
         size = 0;
     }
+
     // load factor = 0.75 means if we need to add 100 items and we have added
     // 75, then adding 76th item it will double the size, copy all elements
     // & then add 76th item.
@@ -114,6 +116,7 @@ public class GenericHashMapUsingArray<K, V> {
     }
 
     public class Node {
+
         K key;
         V value;
 

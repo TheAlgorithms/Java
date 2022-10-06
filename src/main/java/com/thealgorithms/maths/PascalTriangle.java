@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
+
 public class PascalTriangle {
+
     /**
      *In mathematics, Pascal's triangle is a triangular array of the binomial coefficients that arises
      * in probability theory, combinatorics, and algebra. In much of the Western world, it is named after
@@ -31,8 +33,7 @@ public class PascalTriangle {
      *
      */
 
-        public static int[][] pascal(int n)
-    {
+    public static int[][] pascal(int n) {
         /**
          * @param arr  An auxiliary array to store generated pascal triangle values
          * @return
@@ -42,22 +43,18 @@ public class PascalTriangle {
          * @param line Iterate through every line and print integer(s) in it
          * @param i Represents the column number of the element we are currently on
          */
-        for (int line = 0; line < n; line++)
-        {
+        for (int line = 0; line < n; line++) {
             /**
              *  @Every line has number of integers equal to line number
              */
-            for (int i = 0; i <= line; i++)
-            {
+            for (int i = 0; i <= line; i++) {
                 // First and last values in every row are 1
-                if (line == i || i == 0)
-                    arr[line][i] = 1;
-                    // The rest elements are sum of values just above and left of above
-                else
-                    arr[line][i] = arr[line-1][i-1] + arr[line-1][i];
+                if (line == i || i == 0) arr[line][i] = 1;
+                // The rest elements are sum of values just above and left of above
+                else arr[line][i] = arr[line - 1][i - 1] + arr[line - 1][i];
             }
         }
-        
+
         return arr;
     }
 }

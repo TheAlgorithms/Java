@@ -7,7 +7,9 @@ import java.util.*;
  * @author Alan Piao (https://github.com/cpiao3)
  */
 public class Combination {
+
     private static int length;
+
     /**
      * Find all combinations of given array using backtracking
      * @param arr the array.
@@ -26,6 +28,7 @@ public class Combination {
         backtracking(array, 0, new TreeSet<T>(), result);
         return result;
     }
+
     /**
      * Backtrack all possible combinations of a given array
      * @param arr the array.
@@ -34,7 +37,12 @@ public class Combination {
      * @param result the list contains all combination.
      * @param <T> the type of elements in the array.
      */
-    private static <T> void backtracking(T[] arr, int index, TreeSet<T> currSet, List<TreeSet<T>> result) {
+    private static <T> void backtracking(
+        T[] arr,
+        int index,
+        TreeSet<T> currSet,
+        List<TreeSet<T>> result
+    ) {
         if (index + length - currSet.size() > arr.length) return;
         if (length - 1 == currSet.size()) {
             for (int i = index; i < arr.length; i++) {
