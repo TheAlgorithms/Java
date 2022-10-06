@@ -4,6 +4,8 @@ package com.thealgorithms.divideandconquer;
 // The average case time complexity of merge sort is O(n*logn).
 // The space complexity of merge sort is O(n)
 
+
+// wikipidea link for merge sort: https://en.wikipedia.org/wiki/Merge_sort
 class Merge {
 
     void merge(int a[], int beg, int mid, int end) {
@@ -65,7 +67,7 @@ class Merge {
 }
 
 
- public class mergeSort {
+ public class MERGESORT {
 
     public static void main(String[] args) {
         int a[] = { 11, 30, 24, 7, 31, 16, 39, 41 };
