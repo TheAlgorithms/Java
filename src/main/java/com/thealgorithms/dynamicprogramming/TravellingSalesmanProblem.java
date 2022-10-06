@@ -12,7 +12,7 @@ The travelling salesperson problem is to find a route starting and ending at x1 
 
 import java.util.Scanner;
 
-public class TSP {
+public class TravellingSalesmanProblem {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int c[][]=new int[10][10];
