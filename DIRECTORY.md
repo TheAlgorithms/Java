@@ -14,6 +14,8 @@
             * [NQueens](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/NQueens.java)
             * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
+          * branchandbound
+            * [TravellingSalespersonProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/branchandbound/TSP.java)
           * ciphers
             * a5
               * [A5Cipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/a5/A5Cipher.java)
@@ -476,6 +478,8 @@
             * [FloodFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/FloodFillTest.java)
             * [MazeRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/MazeRecursionTest.java)
             * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
+          * branchandbound
+            * [TravellingSalespersonProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/branchandbound/TSPTest.java)
           * ciphers
             * a5
               * [LFSRTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/LFSRTest.java) 
