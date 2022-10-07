@@ -1,8 +1,8 @@
 package com.thealgorithms.datastructures.lists;
 
-public class CircleLinkedList<E> {
+public class circleLinkedList<E> {
 
-    private static class Node<E> {
+    private static class node<E> {
 
         Node<E> next;
         E value;
