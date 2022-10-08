@@ -69,7 +69,6 @@ public class CircularQueue {
             }
             return res;
         }
-
     }
 
     public int peek() {
@@ -85,7 +84,6 @@ public class CircularQueue {
         arr = null;
         System.out.println("The Queue is deleted!");
     }
-
 
     public static void main(String[] args) {
         CircularQueue cq = new CircularQueue(5);
@@ -110,6 +108,5 @@ public class CircularQueue {
         System.out.println(cq.peek());
         System.out.println(cq.peek());
         cq.deleteQueue();
-
     }
 }

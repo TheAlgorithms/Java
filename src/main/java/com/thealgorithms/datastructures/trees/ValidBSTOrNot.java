@@ -18,7 +18,7 @@ public class ValidBSTOrNot {
     /* can give min and max value according to your code or
   can write a function to find min and max value of tree. */
 
- /* returns true if given search tree is binary
+    /* returns true if given search tree is binary
   search tree (efficient version) */
     boolean isBST(Node root) {
         return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
@@ -40,6 +40,9 @@ public class ValidBSTOrNot {
         /* otherwise check the subtrees recursively
     tightening the min/max constraints */
         // Allow only distinct values
-        return (isBSTUtil(node.left, min, node.data - 1) && isBSTUtil(node.right, node.data + 1, max));
+        return (
+            isBSTUtil(node.left, min, node.data - 1) &&
+            isBSTUtil(node.right, node.data + 1, max)
+        );
     }
 }

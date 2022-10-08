@@ -32,7 +32,6 @@ public class OctalToDecimal {
      * @return The decimal number
      */
     public static int convertOctalToDecimal(String inputOctal) {
-
         try {
             // Actual conversion of Octal to Decimal:
             Integer outputDecimal = Integer.parseInt(inputOctal, 8);

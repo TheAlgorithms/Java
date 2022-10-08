@@ -44,7 +44,9 @@ public class BSTRecursive {
         tree.remove(9);
         assert !tree.find(9) : "9 was just deleted from BST";
         tree.remove(1);
-        assert !tree.find(1) : "Since 1 was not present so find deleting would do no change";
+        assert !tree.find(
+            1
+        ) : "Since 1 was not present so find deleting would do no change";
         tree.add(20);
         tree.add(70);
         assert tree.find(70) : "70 was inserted but not found";

@@ -48,12 +48,14 @@ public class PalindromicPartitioning {
                 if (L == 2) {
                     isPalindrome[i][j] = (word.charAt(i) == word.charAt(j));
                 } else {
-                    if ((word.charAt(i) == word.charAt(j)) && isPalindrome[i + 1][j - 1]) {
+                    if (
+                        (word.charAt(i) == word.charAt(j)) &&
+                        isPalindrome[i + 1][j - 1]
+                    ) {
                         isPalindrome[i][j] = true;
                     } else {
                         isPalindrome[i][j] = false;
                     }
-
                 }
             }
         }
@@ -65,7 +67,10 @@ public class PalindromicPartitioning {
             } else {
                 minCuts[i] = Integer.MAX_VALUE;
                 for (j = 0; j < i; j++) {
-                    if (isPalindrome[j + 1][i] == true && 1 + minCuts[j] < minCuts[i]) {
+                    if (
+                        isPalindrome[j + 1][i] == true &&
+                        1 + minCuts[j] < minCuts[i]
+                    ) {
                         minCuts[i] = 1 + minCuts[j];
                     }
                 }
@@ -85,7 +90,11 @@ public class PalindromicPartitioning {
         // ans stores the final minimal cut count needed for partitioning
         int ans = minimalpartitions(word);
         System.out.println(
-                "The minimum cuts needed to partition \"" + word + "\" into palindromes is " + ans);
+            "The minimum cuts needed to partition \"" +
+            word +
+            "\" into palindromes is " +
+            ans
+        );
         input.close();
     }
 }
