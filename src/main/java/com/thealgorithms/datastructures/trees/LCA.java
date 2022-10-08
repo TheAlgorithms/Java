@@ -8,7 +8,6 @@ public class LCA {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         //The adjacency list representation of a tree:
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
@@ -22,7 +21,6 @@ public class LCA {
         //Storing the given tree as an adjacency list
         int to, from;
         for (int i = 0; i < e; i++) {
-
             to = scanner.nextInt();
             from = scanner.nextInt();
 
@@ -44,7 +42,6 @@ public class LCA {
 
         //Outputting the LCA
         System.out.println(getLCA(v1, v2, depth, parent));
-
     }
 
     /**
@@ -56,7 +53,13 @@ public class LCA {
      * @param parent An array to store parents of all vertices
      * @param depth An array to store depth of all vertices
      */
-    private static void dfs(ArrayList<ArrayList<Integer>> adj, int s, int p, int[] parent, int[] depth) {
+    private static void dfs(
+        ArrayList<ArrayList<Integer>> adj,
+        int s,
+        int p,
+        int[] parent,
+        int[] depth
+    ) {
         for (int adjacent : adj.get(s)) {
             if (adjacent != p) {
                 parent[adjacent] = s;
@@ -94,7 +97,6 @@ public class LCA {
         return v1;
     }
 }
-
 /**
  * Input:
  * 10

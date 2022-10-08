@@ -8,6 +8,7 @@ Krishnamurthy number is also referred to as a Strong number.
 import java.io.*;
 
 public class KrishnamurthyNumber {
+
     //returns True if the number is a Krishnamurthy number and False if it is not.
 
     public static boolean isKMurthy(int n) {
@@ -44,8 +45,12 @@ public class KrishnamurthyNumber {
     }
 
     public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter a number to check if it is a Krishnamurthy number: ");
+        BufferedReader br = new BufferedReader(
+            new InputStreamReader(System.in)
+        );
+        System.out.println(
+            "Enter a number to check if it is a Krishnamurthy number: "
+        );
         int n = Integer.parseInt(br.readLine());
         if (isKMurthy(n)) {
             System.out.println(n + " is a Krishnamurthy number.");

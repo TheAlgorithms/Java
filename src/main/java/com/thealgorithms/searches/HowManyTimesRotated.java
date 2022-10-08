@@ -33,9 +33,10 @@ class HowManyTimesRotated {
             a[i] = sc.nextInt();
         }
 
-        System.out.println("The array has been rotated " + rotated(a) + " times");
+        System.out.println(
+            "The array has been rotated " + rotated(a) + " times"
+        );
         sc.close();
-
     }
 
     public static int rotated(int[] a) {

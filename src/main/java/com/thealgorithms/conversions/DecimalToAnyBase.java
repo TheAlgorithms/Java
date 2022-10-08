@@ -11,7 +11,9 @@ import java.util.ArrayList;
 public class DecimalToAnyBase {
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(
+            new InputStreamReader(System.in)
+        );
         System.out.println("Enter the decimal input below: ");
         int decInput = Integer.parseInt(br.readLine());
         System.out.println();
@@ -22,7 +24,13 @@ public class DecimalToAnyBase {
 
         System.out.println("Decimal Input" + " is: " + decInput);
         System.out.println(
-                "Value of " + decInput + " in base " + base + " is: " + convertToAnyBase(decInput, base));
+            "Value of " +
+            decInput +
+            " in base " +
+            base +
+            " is: " +
+            convertToAnyBase(decInput, base)
+        );
 
         br.close();
     }

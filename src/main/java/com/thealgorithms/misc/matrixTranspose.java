@@ -22,25 +22,25 @@ public class matrixTranspose {
 
     public static void main(String[] args) {
         /*
-     * This is the main method
-     *
-     * @param args Unused.
-     *
-     * @return Nothing.
+         * This is the main method
+         *
+         * @param args Unused.
+         *
+         * @return Nothing.
          */
         Scanner sc = new Scanner(System.in);
         int i, j, row, column;
         System.out.println("Enter the number of rows in the 2D matrix:");
 
         /*
-     * Take input from user for how many rows to be print
+         * Take input from user for how many rows to be print
          */
         row = sc.nextInt();
 
         System.out.println("Enter the number of columns in the 2D matrix:");
 
         /*
-     * Take input from user for how many coloumn to be print
+         * Take input from user for how many coloumn to be print
          */
         column = sc.nextInt();
         int[][] arr = new int[row][column];
@@ -52,7 +52,7 @@ public class matrixTranspose {
         }
 
         /*
-     * Print matrix before the Transpose in proper way
+         * Print matrix before the Transpose in proper way
          */
         System.out.println("The matrix is:");
         for (i = 0; i < row; i++) {
@@ -63,9 +63,9 @@ public class matrixTranspose {
         }
 
         /*
-     * Print matrix after the tranpose in proper way Transpose means Interchanging
-     * of rows wth column so we interchange the rows in next loop Thus at last
-     * matrix of transpose is obtained through user input...
+         * Print matrix after the tranpose in proper way Transpose means Interchanging
+         * of rows wth column so we interchange the rows in next loop Thus at last
+         * matrix of transpose is obtained through user input...
          */
         System.out.println("The Transpose of the given matrix is:");
         for (i = 0; i < column; i++) {

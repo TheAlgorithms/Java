@@ -1,13 +1,13 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AutomorphicNumberTest{
+import org.junit.jupiter.api.Test;
+
+public class AutomorphicNumberTest {
 
     @Test
-    void testAutomorphicNumber(){
+    void testAutomorphicNumber() {
         assertThat(AutomorphicNumber.isAutomorphic(625)).isTrue();
         assertThat(AutomorphicNumber.isAutomorphic(144)).isFalse();
         assertThat(AutomorphicNumber.isAutomorphic(9376)).isTrue();

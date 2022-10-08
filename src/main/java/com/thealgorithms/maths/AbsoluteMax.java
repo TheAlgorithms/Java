@@ -19,10 +19,11 @@ public class AbsoluteMax {
             int value = numbers[0];
         };
 
-        Arrays.stream(numbers)
-                .skip(1)
-                .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
-                .forEach(number -> absMaxWrapper.value = number);
+        Arrays
+            .stream(numbers)
+            .skip(1)
+            .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
+            .forEach(number -> absMaxWrapper.value = number);
 
         return absMaxWrapper.value;
     }

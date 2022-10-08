@@ -30,7 +30,7 @@ public class SlowSort implements SortAlgorithm {
     public static void main(String[] args) {
         SlowSort slowSort = new SlowSort();
 
-        Integer[] integerArray = {8, 84, 53, 953, 64, 2, 202, 98};
+        Integer[] integerArray = { 8, 84, 53, 953, 64, 2, 202, 98 };
         // Print integerArray unsorted
         SortUtils.print(integerArray);
 
@@ -38,7 +38,7 @@ public class SlowSort implements SortAlgorithm {
         // Print integerArray sorted
         SortUtils.print(integerArray);
 
-        String[] stringArray = {"g", "d", "a", "b", "f", "c", "e"};
+        String[] stringArray = { "g", "d", "a", "b", "f", "c", "e" };
         // Print stringArray unsorted
         SortUtils.print(stringArray);
 
