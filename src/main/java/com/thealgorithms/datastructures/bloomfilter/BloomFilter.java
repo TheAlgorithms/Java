@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
-
 import java.util.BitSet;
 
 public class BloomFilter<T> {
@@ -23,14 +22,14 @@ public class BloomFilter<T> {
     }
 
     public void insert(T key) {
-        for (Hash<T> hash : hashFunctions){
+        for (Hash<T> hash : hashFunctions) {
             int position = hash.compute(key) % bitArray.size();
             bitArray.set(position);
         }
     }
 
     public boolean contains(T key) {
-        for (Hash<T> hash : hashFunctions){
+        for (Hash<T> hash : hashFunctions) {
             int position = hash.compute(key) % bitArray.size();
             if (!bitArray.get(position)) {
                 return false;
@@ -43,21 +42,20 @@ public class BloomFilter<T> {
 
         int index;
 
-        public Hash(int index){
+        public Hash(int index) {
             this.index = index;
         }
 
-        public int compute(T key){
+        public int compute(T key) {
             return index * asciiString(String.valueOf(key));
         }
 
-        private int asciiString(String word){
+        private int asciiString(String word) {
             int number = 0;
-            for (int i=0;i<word.length();i++){
+            for (int i = 0; i < word.length(); i++) {
                 number += word.charAt(i);
             }
             return number;
         }
     }
-
 }

@@ -90,7 +90,6 @@ class TimSort {
      * @param end: Ending index of the second run(chunk).
      */
     public void merge_runs(int array[], int start, int mid, int end) {
-
         int first_array_size = mid - start + 1, second_array_size = end - mid;
         int array1[] = new int[first_array_size], array2[] = new int[second_array_size];
         int i = 0, j = 0, k = 0;
@@ -142,13 +141,28 @@ class TimSort {
 
         // Applying insertion sort on RUNS.
         for (int i = 0; i < this.array_length; i += this.RUN) {
-            this.insertion_sort(this.array, i, Math.min(i + this.RUN, (this.array_length - 1)));
+            this.insertion_sort(
+                    this.array,
+                    i,
+                    Math.min(i + this.RUN, (this.array_length - 1))
+                );
         }
 
-        for (int split = this.RUN; split < this.array_length; split = 2 * split) {
-            for (int start_idx = 0; start_idx < this.array_length; start_idx += 2 * split) {
+        for (
+            int split = this.RUN;
+            split < this.array_length;
+            split = 2 * split
+        ) {
+            for (
+                int start_idx = 0;
+                start_idx < this.array_length;
+                start_idx += 2 * split
+            ) {
                 int mid = start_idx + split - 1;
-                int end_idx = Math.min((start_idx + 2 * split - 1), (this.array_length - 1));
+                int end_idx = Math.min(
+                    (start_idx + 2 * split - 1),
+                    (this.array_length - 1)
+                );
 
                 this.merge_runs(this.array, start_idx, mid, end_idx);
             }
@@ -173,7 +187,7 @@ class TimSort {
      * @brief A method to test the sorting algorithm
      */
     static void test() {
-        int[] array = {4, 1, 3, 17, 12, 11, 8};
+        int[] array = { 4, 1, 3, 17, 12, 11, 8 };
         TimSort sorterObj1 = new TimSort();
         TimSort sorterObj2 = new TimSort(50);
         TimSort sorterObj3 = new TimSort(array);
@@ -184,17 +198,23 @@ class TimSort {
 
         // Testing the first array
         for (int i = 0; i < sorterObj1.array_length - 1; i++) {
-            assert ((sorterObj1.array[i] <= sorterObj1.array[i + 1])) : "Array is not sorted";
+            assert (
+                (sorterObj1.array[i] <= sorterObj1.array[i + 1])
+            ) : "Array is not sorted";
         }
 
         // Testing the second array.
         for (int i = 0; i < sorterObj2.array_length - 1; i++) {
-            assert ((sorterObj2.array[i] <= sorterObj2.array[i + 1])) : "Array is not sorted";
+            assert (
+                (sorterObj2.array[i] <= sorterObj2.array[i + 1])
+            ) : "Array is not sorted";
         }
 
         // Testing the third array.
         for (int i = 0; i < sorterObj3.array_length - 1; i++) {
-            assert ((sorterObj3.array[i] <= sorterObj3.array[i + 1])) : "Array is not sorted";
+            assert (
+                (sorterObj3.array[i] <= sorterObj3.array[i + 1])
+            ) : "Array is not sorted";
         }
     }
 

@@ -15,12 +15,12 @@ package com.thealgorithms.ciphers;
 public class Polybius {
 
     private static final char[][] key = {
-          //         0    1    2    3    4
-          /* 0 */  {'A', 'B', 'C', 'D', 'E'},
-          /* 1 */  {'F', 'G', 'H', 'I', 'J'},
-          /* 2 */  {'K', 'L', 'M', 'N', 'O'},
-          /* 3 */  {'P', 'Q', 'R', 'S', 'T'},
-          /* 4 */  {'V', 'W', 'X', 'Y', 'Z'}
+        //         0    1    2    3    4
+        /* 0 */{ 'A', 'B', 'C', 'D', 'E' },
+        /* 1 */{ 'F', 'G', 'H', 'I', 'J' },
+        /* 2 */{ 'K', 'L', 'M', 'N', 'O' },
+        /* 3 */{ 'P', 'Q', 'R', 'S', 'T' },
+        /* 4 */{ 'V', 'W', 'X', 'Y', 'Z' },
     };
 
     private static String findLocationByCharacter(final char character) {
@@ -49,7 +49,7 @@ public class Polybius {
     public static String decrypt(final String ciphertext) {
         final char[] chars = ciphertext.toCharArray();
         final StringBuilder plaintext = new StringBuilder();
-        for(int i = 0; i < chars.length; i+=2) {
+        for (int i = 0; i < chars.length; i += 2) {
             int pozitionX = Character.getNumericValue(chars[i]);
             int pozitionY = Character.getNumericValue(chars[i + 1]);
             plaintext.append(key[pozitionX][pozitionY]);

@@ -33,7 +33,6 @@ class ThreeSum {
         Arrays.sort(a); // Sort the array if array is not sorted
 
         for (int i = 0; i < n; i++) {
-
             int l = i + 1, r = n - 1;
 
             while (l < r) {
