@@ -15,9 +15,9 @@ package com.thealgorithms.searches;
 // pointer pointing to the end column will be decremented by 1. And if the element doesn't exist in the array, an array
 // {-1, -1} will be returned.
 
-public class RowColumnWiseSorted2dArray_BinarySearch {
+public class RowColumnWiseSorted2dArrayBinarySearch {
 
-    public static int[] Search(int[][] matrix, int target) {
+    public static int[] search(int[][] matrix, int target) {
 
         int rowPointer = 0;                 //The pointer at 0th row
         int colPointer = matrix.length-1;   //The pointer at end column
