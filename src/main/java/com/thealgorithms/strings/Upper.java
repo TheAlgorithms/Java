@@ -25,10 +25,11 @@ public class Upper {
         char[] values = s.toCharArray();
         for (int i = 0; i < values.length; ++i) {
             if (
-                Character.isLetter(values[i]) &&
-                Character.isLowerCase(values[i])
+               values[i]>='a' &&
+                values[i]<='z'
             ) {
-                values[i] = Character.toUpperCase(values[i]);
+                //using ascci values a-97 and A-65    //  97-65=32
+                values[i] = (char)(values[i]-32);
             }
         }
         return new String(values);
