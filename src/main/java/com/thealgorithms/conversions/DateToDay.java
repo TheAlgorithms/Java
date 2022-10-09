@@ -1,8 +1,6 @@
 package com.thealgorithms.conversions;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Converts Date (dd/mm/yyyy) to WeekDay based on Zeller's Congruence
@@ -36,14 +34,15 @@ public class DateToDay {
      * @return Name of day
      */
     public static String findDayFromDate(String date) {
-        Map<Integer, String> daysNameList = new HashMap<>();
-        daysNameList.put(1, "Sunday");
-        daysNameList.put(2, "Monday");
-        daysNameList.put(3, "Tuesday");
-        daysNameList.put(4, "Wednesday");
-        daysNameList.put(5, "Thursday");
-        daysNameList.put(6, "Friday");
-        daysNameList.put(0, "Saturday");
+        // Array holding name of the day: Saturday - Sunday - Friday => 0 - 1 - 6
+        List<String> daysNameArr = new ArrayList<>();
+        daysNameArr.add("Saturday");
+        daysNameArr.add("Sunday");
+        daysNameArr.add("Monday");
+        daysNameArr.add("Tuesday");
+        daysNameArr.add("Wednesday");
+        daysNameArr.add("Thursday");
+        daysNameArr.add("Friday");
 
         String[] arrOfDate = date.split("/");
 
@@ -60,8 +59,10 @@ public class DateToDay {
             throw new Error("Date is not valid.");
         }
 
-        // In case of Jan and Feb, we consider it as previous year
+        // In case of Jan and Feb:
+        // Year: we consider it as previous year
         // e.g., 1/1/1987 here year is 1986 (-1)
+        // Month: we consider value as 13 & 14 respectively
         if (month < 3) {
             year--;
             month += 12;
@@ -71,10 +72,22 @@ public class DateToDay {
         int yearDigit = (year % 100);
         double century = Math.floor(year / 100);
 
-        // Apply the algorithm shown above
-        double weekDay = Math.abs((day + Math.floor((month + 1) * 2.6) + yearDigit + (yearDigit / 4) + (century / 4) - (2 * century)) % 7);
+        /**
+         * Algorithm implementation
+         *
+         * In the mathematics modulo operations, truncated division is used mostly in most of programming languages.
+         * Truncation defines quotient part (integer part) q = trunc(a/n), remainder has same sign as dividend.
+         * -2 mod 7 return result of -2 => console.log(-2 % 7) => -2
+         *
+         * To overcome this problem, to ensure positive numerator, formula is modified by replacing -2J with +5J (J => century)
+         *
+         * Following example shows issue with modulo division
+         * 1. For date 2/3/2014 with old formula - (2 * century) weekDay comes as -6 and wrong day
+         * 2. With computer logic + (5 * century) it gives proper valid day as Sunday
+         */
+        double weekDay = (day + Math.floor((month + 1) * 2.6) + yearDigit + Math.floor(yearDigit / 4) + Math.floor(century / 4) + (5 * century)) % 7;
 
         // return the weekDay name.
-        return daysNameList.get((int) Math.floor(weekDay));
+        return daysNameArr.get((int) weekDay);
     }
 }
