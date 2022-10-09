@@ -2,10 +2,10 @@ package com.thealgorithms.searches;
 
 import static java.lang.String.format;
 
+import com.thealgorithms.devutils.searches.SearchAlgorithm;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
-import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
 /**
  * The UpperBound method is used to return an index pointing to the first
@@ -35,12 +35,12 @@ class UpperBound implements SearchAlgorithm {
         int size = 100;
         int maxElement = 100000;
 
-        Integer[] integers
-                = IntStream.generate(() -> r.nextInt(maxElement))
-                        .limit(size)
-                        .sorted()
-                        .boxed()
-                        .toArray(Integer[]::new);
+        Integer[] integers = IntStream
+            .generate(() -> r.nextInt(maxElement))
+            .limit(size)
+            .sorted()
+            .boxed()
+            .toArray(Integer[]::new);
 
         // The element for which the upper bound is to be found
         int val = integers[r.nextInt(size - 1)] + 1;
@@ -49,14 +49,23 @@ class UpperBound implements SearchAlgorithm {
         int atIndex = search.find(integers, val);
 
         System.out.println(
-                format(
-                        "Val: %d. Upper Bound Found %d at index %d. An array length %d",
-                        val, integers[atIndex], atIndex, size));
+            format(
+                "Val: %d. Upper Bound Found %d at index %d. An array length %d",
+                val,
+                integers[atIndex],
+                atIndex,
+                size
+            )
+        );
 
         boolean toCheck = integers[atIndex] > val || integers[size - 1] < val;
         System.out.println(
-                format(
-                        "Upper Bound found at an index: %d. Is greater or max element: %b", atIndex, toCheck));
+            format(
+                "Upper Bound found at an index: %d. Is greater or max element: %b",
+                atIndex,
+                toCheck
+            )
+        );
     }
 
     /**
@@ -79,7 +88,12 @@ class UpperBound implements SearchAlgorithm {
      * @param right The upper bound
      * @return the location of the key
      */
-    private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
+    private <T extends Comparable<T>> int search(
+        T[] array,
+        T key,
+        int left,
+        int right
+    ) {
         if (right <= left) {
             return left;
         }

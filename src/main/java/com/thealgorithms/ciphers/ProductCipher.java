@@ -68,5 +68,4 @@ class ProductCipher {
         System.out.println(plaintext);
         sc.close();
     }
-
 }

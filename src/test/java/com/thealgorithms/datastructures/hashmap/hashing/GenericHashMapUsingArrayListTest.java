@@ -1,10 +1,11 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+
 class GenericHashMapUsingArrayListTest {
+
     @Test
     void testGenericHashmapWhichUsesArrayAndBothKeyAndValueAreStrings() {
         GenericHashMapUsingArrayList<String, String> map = new GenericHashMapUsingArrayList<>();

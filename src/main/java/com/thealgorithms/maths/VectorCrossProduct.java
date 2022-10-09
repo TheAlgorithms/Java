@@ -121,7 +121,5 @@ public class VectorCrossProduct {
         //Determine dot product
         int dotProd = A.dotProduct(B);
         System.out.println("Dot Product of A and B: " + dotProd);
-
     }
-
 }

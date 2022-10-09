@@ -11,13 +11,12 @@ keep on counting the results that sum to X. This can be done using recursion. */
 And it can be done using Dynamic Programming(DP).
 Following is implementation of Dynamic Programming approach. */
 // Code ---->
-// Java program to find number of ways to get sum 'x' with 'n' 
-// dice where every dice has 'm' faces 
+// Java program to find number of ways to get sum 'x' with 'n'
+// dice where every dice has 'm' faces
 class DP {
 
     /* The main function that returns the number of ways to get sum 'x' with 'n' dice and 'm' with m faces. */
     public static long findWays(int m, int n, int x) {
-
         /* Create a table to store the results of subproblems. 
     One extra row and column are used for simplicity 
     (Number of dice is directly used as row index and sum is directly used as column index). 
@@ -50,7 +49,6 @@ class DP {
         System.out.println(findWays(4, 3, 5));
     }
 }
-
 /*
 OUTPUT:
 0
@@ -60,4 +58,3 @@ OUTPUT:
 6
  */
 // Time Complexity: O(m * n * x) where m is number of faces, n is number of dice and x is given sum.
-

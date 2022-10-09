@@ -1,12 +1,12 @@
 package com.thealgorithms.datastructures.graphs;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.LinkedHashMap;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.Queue;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * An algorithm that sorts a graph in toplogical order.
@@ -124,7 +124,6 @@ class TopologicalSort<E extends Comparable<E>> {
         }
 
         return answer;
-
     }
 }
 
@@ -134,7 +133,6 @@ class TopologicalSort<E extends Comparable<E>> {
 public class KahnsAlgorithm {
 
     public static void main(String[] args) {
-
         //Graph definition and initialization
         AdjacencyList<String> graph = new AdjacencyList<>();
         graph.addEdge("a", "b");

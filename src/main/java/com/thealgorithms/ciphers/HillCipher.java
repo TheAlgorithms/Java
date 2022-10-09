@@ -29,7 +29,7 @@ public class HillCipher {
             }
         }
         //check if det = 0
-        validateDeterminant(keyMatrix,matrixSize);
+        validateDeterminant(keyMatrix, matrixSize);
 
         int[][] messageVector = new int[matrixSize][1];
         String CipherText = "";
@@ -76,7 +76,7 @@ public class HillCipher {
             }
         }
         //check if det = 0
-        validateDeterminant(keyMatrix,n);
+        validateDeterminant(keyMatrix, n);
 
         //solving for the required plaintext message
         int[][] messageVector = new int[n][1];
@@ -155,9 +155,11 @@ public class HillCipher {
         }
     }
 
-    static void validateDeterminant(int[][] keyMatrix, int n){
+    static void validateDeterminant(int[][] keyMatrix, int n) {
         if (determinant(keyMatrix, n) % 26 == 0) {
-            System.out.println("Invalid key, as determinant = 0. Program Terminated");
+            System.out.println(
+                "Invalid key, as determinant = 0. Program Terminated"
+            );
             return;
         }
     }
