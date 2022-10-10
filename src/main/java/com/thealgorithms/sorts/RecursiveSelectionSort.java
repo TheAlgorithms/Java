@@ -1,6 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+/*
+	explanation url: https://www.geeksforgeeks.org/recursive-selection-sort/
+*/
+
 class RecursiveSelectionSort {
 
     public static void main(String[] args) {
