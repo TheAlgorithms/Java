@@ -8,6 +8,7 @@ package com.thealgorithms.datastructures.stacks;
 import java.util.*;
 
 public class CalculateMaxOfMin {
+
     public static int calculateMaxOfMin(int[] a) {
         int n = a.length;
         int[] ans = new int[n];

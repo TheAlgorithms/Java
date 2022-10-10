@@ -33,15 +33,14 @@ public class CreateAndDetectLoop {
         }
         Node temp = head;
         int count = 1;
-        while (count < k) { 		// Traverse the list till the kth node
+        while (count < k) { // Traverse the list till the kth node
             temp = temp.next;
             count++;
         }
 
         Node connectedPoint = temp;
 
-        while (temp.next != null) // Traverse remaining nodes
-        {
+        while (temp.next != null) { // Traverse remaining nodes
             temp = temp.next;
         }
 

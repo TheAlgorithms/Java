@@ -1,11 +1,10 @@
 package com.thealgorithms.datastructures.lists;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SkipListTest {
 
@@ -70,20 +69,33 @@ class SkipListTest {
     @Test
     void checkSortedOnLowestLayer() {
         SkipList<String> skipList = new SkipList<>();
-        String[] values = {"d", "b", "a", "c"};
+        String[] values = { "d", "b", "a", "c" };
         Arrays.stream(values).forEach(skipList::add);
         print(skipList);
 
-        String[] actualOrder = IntStream.range(0, values.length)
-                .mapToObj(skipList::get)
-                .toArray(String[]::new);
+        String[] actualOrder = IntStream
+            .range(0, values.length)
+            .mapToObj(skipList::get)
+            .toArray(String[]::new);
 
-        assertArrayEquals(new String[]{"a", "b", "c", "d"}, actualOrder);
+        assertArrayEquals(new String[] { "a", "b", "c", "d" }, actualOrder);
     }
 
     private SkipList<String> createSkipList() {
         SkipList<String> skipList = new SkipList<>();
-        String[] values = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+        String[] values = {
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k",
+        };
         Arrays.stream(values).forEach(skipList::add);
         return skipList;
     }

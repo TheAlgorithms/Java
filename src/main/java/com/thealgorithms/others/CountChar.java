@@ -1,16 +1,17 @@
 package com.thealgorithms.others;
 
-import java.util.Scanner;
+import org.junit.jupiter.api.Test;
 
-public class CountChar {
+import static org.junit.jupiter.api.Assertions.*;
 
-    /**
-     * Count non space character in string
-     *
-     * @param str String to count the characters
-     * @return number of character in the specified string
-     */
-    public static int CountCharacters(String str) {
-        return str.replaceAll("\\s", "").length();
+class CountCharTest {
+
+    @Test
+    void testCountCharacters(){
+        String input = "12345";
+        int expectedValue = 5;
+
+        assertEquals(expectedValue, CountChar.CountCharacters(input));
     }
+
 }

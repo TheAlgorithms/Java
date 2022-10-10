@@ -3,6 +3,7 @@ package com.thealgorithms.searches;
 import java.util.Scanner;
 
 public class LinearSearchThread {
+
     public static void main(String[] args) {
         int[] list = new int[200];
         for (int j = 0; j < list.length; j++) {
@@ -28,14 +29,15 @@ public class LinearSearchThread {
             t1.join();
             t2.join();
             t3.join();
-        } catch (InterruptedException e) {
-        }
-        boolean found = t.getResult() || t1.getResult() || t2.getResult() || t3.getResult();
+        } catch (InterruptedException e) {}
+        boolean found =
+            t.getResult() || t1.getResult() || t2.getResult() || t3.getResult();
         System.out.println("Found = " + found);
     }
 }
 
 class Searcher extends Thread {
+
     private final int[] arr;
     private final int left, right;
     private final int x;

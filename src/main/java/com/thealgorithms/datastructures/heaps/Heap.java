@@ -19,7 +19,6 @@ package com.thealgorithms.datastructures.heaps;
  * @author Nicolas Renard
  */
 public interface Heap {
-
     /**
      * @return the top element in the heap, the one with lowest key for min-heap
      * or with the highest key for max-heap

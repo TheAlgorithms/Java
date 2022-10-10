@@ -121,8 +121,7 @@ public class PriorityQueues {
         // [2, 3, 5, 10] Here higher numbers have higher priority, so they are on the top
 
         for (int i = 3; i >= 0; i--) {
-            System.out.print(
-                    myQueue.remove() + " "); // will print the queue in reverse order [10, 5, 3, 2]
+            System.out.print(myQueue.remove() + " "); // will print the queue in reverse order [10, 5, 3, 2]
         }
         // As you can see, a Priority Queue can be used as a sorting algotithm
     }
