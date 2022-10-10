@@ -1,9 +1,9 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class AbsoluteMaxTest {
 
@@ -15,7 +15,10 @@ public class AbsoluteMaxTest {
 
     @Test
     void testGetMaxValueWithNoArguments() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> AbsoluteMax.getMaxValue());
+        Exception exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> AbsoluteMax.getMaxValue()
+        );
         assertEquals("Numbers array cannot be empty", exception.getMessage());
     }
 }

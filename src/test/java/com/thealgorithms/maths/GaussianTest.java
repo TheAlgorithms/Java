@@ -1,17 +1,16 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-
 import static com.thealgorithms.maths.Gaussian.gaussian;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
 public class GaussianTest {
 
     // easy pass test for the whole class. Matrix of 2*3.
     @Test
-    void passTest1()
-    {
+    void passTest1() {
         ArrayList<Double> list = new ArrayList<Double>();
         ArrayList<Double> gaussian = new ArrayList<Double>();
         ArrayList<Double> answer = new ArrayList<Double>();
@@ -25,8 +24,8 @@ public class GaussianTest {
         list.add(2.0);
         list.add(1.0);
         list.add(1.0);
-        gaussian=gaussian(matrixSize,list);
+        gaussian = gaussian(matrixSize, list);
 
-        assertEquals(answer,gaussian);
+        assertEquals(answer, gaussian);
     }
 }

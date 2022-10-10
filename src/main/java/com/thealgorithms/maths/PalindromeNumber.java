@@ -3,7 +3,6 @@ package com.thealgorithms.maths;
 public class PalindromeNumber {
 
     public static void main(String[] args) {
-
         assert isPalindrome(12321);
         assert !isPalindrome(1234);
         assert isPalindrome(1);

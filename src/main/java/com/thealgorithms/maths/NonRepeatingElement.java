@@ -5,12 +5,11 @@ import java.util.Scanner;
 /*
  * Find the 2 elements which are non repeating in an array
  * Reason to use bitwise operator: It makes our program faster as we are operating on bits and not on
- * actual numbers.  
+ * actual numbers.
  */
 public class NonRepeatingElement {
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         int i, res = 0;
         System.out.println("Enter the number of elements in the array");
@@ -22,7 +21,11 @@ public class NonRepeatingElement {
         }
         int arr[] = new int[n];
 
-        System.out.println("Enter " + n + " elements in the array. NOTE: Only 2 elements should not repeat");
+        System.out.println(
+            "Enter " +
+            n +
+            " elements in the array. NOTE: Only 2 elements should not repeat"
+        );
         for (i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
@@ -43,18 +46,17 @@ public class NonRepeatingElement {
         int num1 = 0, num2 = 0;
 
         for (i = 0; i < n; i++) {
-            if ((res & arr[i]) > 0)//Case 1 explained below
-            {
+            if ((res & arr[i]) > 0) { //Case 1 explained below
                 num1 ^= arr[i];
             } else {
-                num2 ^= arr[i];//Case 2 explained below
+                num2 ^= arr[i]; //Case 2 explained below
             }
         }
 
-        System.out.println("The two non repeating elements are " + num1 + " and " + num2);
-
+        System.out.println(
+            "The two non repeating elements are " + num1 + " and " + num2
+        );
     }
-
     /* 
   Explanation of the code:
   let us assume we have an array [1,2,1,2,3,4]
