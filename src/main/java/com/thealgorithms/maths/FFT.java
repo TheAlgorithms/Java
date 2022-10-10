@@ -143,7 +143,7 @@ public class FFT {
         public Complex divide(Complex z) {
             Complex temp = new Complex();
             double d = z.abs() * z.abs();
-            d = (double)Math.round(d * 1000000000d) / 1000000000d;
+            d = (double) Math.round(d * 1000000000d) / 1000000000d;
             temp.real = (this.real * z.real + this.img * z.img) / (d);
             temp.img = (this.img * z.real - this.real * z.img) / (d);
             return temp;
@@ -180,12 +180,15 @@ public class FFT {
      * @param inverse True if you want to find the inverse FFT.
      * @return
      */
-    public static ArrayList<Complex> fft(ArrayList<Complex> x, boolean inverse) {
+    public static ArrayList<Complex> fft(
+        ArrayList<Complex> x,
+        boolean inverse
+    ) {
         /* Pad the signal with zeros if necessary */
         paddingPowerOfTwo(x);
         int N = x.size();
         int log2N = findLog2(N);
-        x = fftBitReversal(N,log2N,x);
+        x = fftBitReversal(N, log2N, x);
         int direction = inverse ? -1 : 1;
 
         /* Main loop of the algorithm */
@@ -203,12 +206,12 @@ public class FFT {
                 }
             }
         }
-        x = inverseFFT(N,inverse,x);
+        x = inverseFFT(N, inverse, x);
         return x;
     }
 
     /* Find the log2(N) */
-    public static int findLog2(int N){
+    public static int findLog2(int N) {
         int log2N = 0;
         while ((1 << log2N) < N) {
             log2N++;
@@ -217,7 +220,11 @@ public class FFT {
     }
 
     /* Swap the values of the signal with bit-reversal method */
-    public static ArrayList<Complex> fftBitReversal(int N, int log2N, ArrayList<Complex> x){
+    public static ArrayList<Complex> fftBitReversal(
+        int N,
+        int log2N,
+        ArrayList<Complex> x
+    ) {
         int reverse;
         for (int i = 0; i < N; i++) {
             reverse = reverseBits(i, log2N);
@@ -229,7 +236,11 @@ public class FFT {
     }
 
     /* Divide by N if we want the inverse FFT */
-    public static ArrayList<Complex> inverseFFT(int N, boolean inverse, ArrayList<Complex> x ){
+    public static ArrayList<Complex> inverseFFT(
+        int N,
+        boolean inverse,
+        ArrayList<Complex> x
+    ) {
         if (inverse) {
             for (int i = 0; i < x.size(); i++) {
                 Complex z = x.get(i);

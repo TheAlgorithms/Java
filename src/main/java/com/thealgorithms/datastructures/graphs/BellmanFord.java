@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.graphs;
 import java.util.*;
 
 class BellmanFord /*Implementation of Bellman ford to detect negative cycles. Graph accepts inputs in form of edges which have
-start vertex, end vertex and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/ {
+start vertex, end vertex and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/{
 
     int vertex, edge;
     private Edge edges[];
@@ -37,8 +37,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
      * @param i Current vertex under consideration
      */
     void printPath(int p[], int i) {
-        if (p[i] == -1) // Found the path back to parent
-        {
+        if (p[i] == -1) { // Found the path back to parent
             return;
         }
         printPath(p, p[i]);
@@ -50,10 +49,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         obj.go();
     }
 
-    public void
-            go() // Interactive run for understanding the class first time. Assumes source vertex is 0 and
-    // shows distance to all vertices
-    {
+    public void go() { // shows distance to all vertices // Interactive run for understanding the class first time. Assumes source vertex is 0 and
         Scanner sc = new Scanner(System.in); // Grab scanner object for user input
         int i, v, e, u, ve, w, j, neg = 0;
         System.out.println("Enter no. of vertices and edges please");
@@ -67,8 +63,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
             w = sc.nextInt();
             arr[i] = new Edge(u, ve, w);
         }
-        int dist[]
-                = new int[v]; // Distance array for holding the finalized shortest path distance between source
+        int dist[] = new int[v]; // Distance array for holding the finalized shortest path distance between source
         // and all vertices
         int p[] = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {
@@ -78,8 +73,10 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         p[0] = -1;
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
-                if ((int) dist[arr[j].u] != Integer.MAX_VALUE
-                        && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+                if (
+                    (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                    dist[arr[j].v] > dist[arr[j].u] + arr[j].w
+                ) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
                     p[arr[j].v] = arr[j].u;
                 }
@@ -87,14 +84,16 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         }
         // Final cycle for negative checking
         for (j = 0; j < e; j++) {
-            if ((int) dist[arr[j].u] != Integer.MAX_VALUE && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+            if (
+                (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                dist[arr[j].v] > dist[arr[j].u] + arr[j].w
+            ) {
                 neg = 1;
                 System.out.println("Negative cycle");
                 break;
             }
         }
-        if (neg == 0) // Go ahead and show results of computation
-        {
+        if (neg == 0) { // Go ahead and show results of computation
             System.out.println("Distances are: ");
             for (i = 0; i < v; i++) {
                 System.out.println(i + " " + dist[i]);
@@ -114,15 +113,9 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
      * @param end Ending vertex
      * @param Edge Array of edges
      */
-    public void show(
-            int source,
-            int end,
-            Edge arr[]) // Just shows results of computation, if graph is passed to it. The graph should
-    // be created by using addEdge() method and passed by calling getEdgeArray() method
-    {
+    public void show(int source, int end, Edge arr[]) { // be created by using addEdge() method and passed by calling getEdgeArray() method // Just shows results of computation, if graph is passed to it. The graph should
         int i, j, v = vertex, e = edge, neg = 0;
-        double dist[]
-                = new double[v]; // Distance array for holding the finalized shortest path distance between source
+        double dist[] = new double[v]; // Distance array for holding the finalized shortest path distance between source
         // and all vertices
         int p[] = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {
@@ -132,8 +125,10 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         p[source] = -1;
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
-                if ((int) dist[arr[j].u] != Integer.MAX_VALUE
-                        && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+                if (
+                    (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                    dist[arr[j].v] > dist[arr[j].u] + arr[j].w
+                ) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
                     p[arr[j].v] = arr[j].u;
                 }
@@ -141,14 +136,16 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         }
         // Final cycle for negative checking
         for (j = 0; j < e; j++) {
-            if ((int) dist[arr[j].u] != Integer.MAX_VALUE && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+            if (
+                (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                dist[arr[j].v] > dist[arr[j].u] + arr[j].w
+            ) {
                 neg = 1;
                 System.out.println("Negative cycle");
                 break;
             }
         }
-        if (neg == 0) // Go ahead and show results of computaion
-        {
+        if (neg == 0) { // Go ahead and show results of computaion
             System.out.println("Distance is: " + dist[end]);
             System.out.println("Path followed:");
             System.out.print(source + " ");
@@ -162,8 +159,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
      * @param y End vertex
      * @param z Weight
      */
-    public void addEdge(int x, int y, int z) // Adds unidirectional edge
-    {
+    public void addEdge(int x, int y, int z) { // Adds unidirectional edge
         edges[index++] = new Edge(x, y, z);
     }
 

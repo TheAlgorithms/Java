@@ -1,12 +1,12 @@
 package com.thealgorithms.searches;
 
+import static java.lang.String.format;
+
+import com.thealgorithms.devutils.searches.SearchAlgorithm;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
-import com.thealgorithms.devutils.searches.SearchAlgorithm;
-
-import static java.lang.String.format;
 
 class ExponentialSearch implements SearchAlgorithm {
 
@@ -16,12 +16,12 @@ class ExponentialSearch implements SearchAlgorithm {
         int size = 100;
         int maxElement = 100000;
 
-        Integer[] integers
-                = IntStream.generate(() -> r.nextInt(maxElement))
-                        .limit(size)
-                        .sorted()
-                        .boxed()
-                        .toArray(Integer[]::new);
+        Integer[] integers = IntStream
+            .generate(() -> r.nextInt(maxElement))
+            .limit(size)
+            .sorted()
+            .boxed()
+            .toArray(Integer[]::new);
 
         // The element that should be found
         int shouldBeFound = integers[r.nextInt(size - 1)];
@@ -30,15 +30,23 @@ class ExponentialSearch implements SearchAlgorithm {
         int atIndex = search.find(integers, shouldBeFound);
 
         System.out.println(
-                format(
-                        "Should be found: %d. Found %d at index %d. An array length %d",
-                        shouldBeFound, integers[atIndex], atIndex, size));
+            format(
+                "Should be found: %d. Found %d at index %d. An array length %d",
+                shouldBeFound,
+                integers[atIndex],
+                atIndex,
+                size
+            )
+        );
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
         System.out.println(
-                format(
-                        "Found by system method at an index: %d. Is equal: %b", toCheck, toCheck == atIndex));
-
+            format(
+                "Found by system method at an index: %d. Is equal: %b",
+                toCheck,
+                toCheck == atIndex
+            )
+        );
     }
 
     @Override
@@ -56,6 +64,11 @@ class ExponentialSearch implements SearchAlgorithm {
             range = range * 2;
         }
 
-        return Arrays.binarySearch(array, range / 2, Math.min(range, array.length), key);
+        return Arrays.binarySearch(
+            array,
+            range / 2,
+            Math.min(range, array.length),
+            key
+        );
     }
 }
