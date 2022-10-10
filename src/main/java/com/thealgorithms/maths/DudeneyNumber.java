@@ -39,22 +39,4 @@ public class DudeneyNumber {
 
         return true;
     }
-
-    /**
-     * Method to check if number is Dudeney Number or Not 1) Input - Enter a
-     * Number: 512 Output - It is a Dudeney Number. 2) Input - Enter a Number:
-     * 125 Output - It is not a Dudeney Number.
-     */
-    public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(
-                new InputStreamReader(System.in)
-        );
-        System.out.println("Enter a Number: ");
-        int n = Integer.parseInt(br.readLine());
-        if (isDudeney(n)) {
-            System.out.println("It is a Dudeney Number.");
-        } else {
-            System.out.println("It is not a Dudeney Number.");
-        }
-    }
 }
