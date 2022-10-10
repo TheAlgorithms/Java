@@ -23,7 +23,7 @@ public class DudeneyNumber {
         // Loop to calculate sum of the digits.
         while (temp > 0) {
             // Extracting Last digit of the number
-            int rem = temp % 10;s
+            int rem = temp % 10;
 
             // Calculating sum of digits.
             sum_of_digits += rem;
