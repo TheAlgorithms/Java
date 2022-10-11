@@ -1,4 +1,7 @@
- public static void main(String[] args) {
+import java.util.*;
+
+public class countFrequency {
+    public static void main(String[] args) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int[] arr = {4, 2, 1, 5, 6, 7, 1, 4, 7};
         for(int i = 0; i< arr.length; i++){
@@ -16,3 +19,4 @@
         }
 
     }
+}
