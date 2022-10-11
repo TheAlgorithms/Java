@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
  */
 public class MatrixUtil {
     // Construct a toeplitz matrix with first column c and first row r
+    // https://en.wikipedia.org/wiki/Toeplitz_matrix
     public static BigDecimal[][] toeplitz(BigDecimal[] c, BigDecimal[] r) {
         if (c[0].equals(r[0])) {
             throw new IllegalArgumentException("First element of c must be equal to first element of r");
