@@ -12,6 +12,28 @@ import java.util.stream.IntStream;
  * @date: 31 October 2021 (Sunday)
  */
 public class MatrixUtil {
+    // Construct a toeplitz matrix with first column c and first row r
+    public static BigDecimal[][] toeplitz(BigDecimal[] c, BigDecimal[] r) {
+        if (c[0].equals(r[0])) {
+            throw new IllegalArgumentException("First element of c must be equal to first element of r");
+        }
+
+        int m = c.length;
+        int n = r.length;
+        BigDecimal[][] matrix = new BigDecimal[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0) {
+                    matrix[i][j] = r[j];
+                } else if (j == 0) {
+                    matrix[i][j] = c[i];
+                } else {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                }
+            }
+        }
+        return matrix;
+    }
 
     public static boolean isValid(final BigDecimal[][] matrix) {
         return matrix != null && matrix.length > 0 && matrix[0].length > 0;
