@@ -19,7 +19,6 @@ public class HarshadNumber {
      * @param a The number which should be checked
      */
     public static void checkHarshadNumber(long a) {
-
         long b = a;
         int sum = 0;
 

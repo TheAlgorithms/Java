@@ -16,7 +16,7 @@ public class GuassLegendre {
 
     static double pi(int l) {
         /*
-     * l: No of loops to run
+         * l: No of loops to run
          */
 
         double a = 1, b = Math.pow(2, -0.5), t = 0.25, p = 1;

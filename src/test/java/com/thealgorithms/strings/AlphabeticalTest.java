@@ -1,11 +1,11 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
 public class AlphabeticalTest {
+
     @Test
     public void isAlphabetical() {
         // expected to be true
@@ -26,5 +26,4 @@ public class AlphabeticalTest {
         assertFalse(Alphabetical.isAlphabetical(input5));
         assertFalse(Alphabetical.isAlphabetical(input6));
     }
-
 }

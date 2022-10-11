@@ -1,24 +1,24 @@
 package com.thealgorithms.datastructures.trees;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class KDTreeTest {
 
     KDTree.Point pointOf(int x, int y) {
-        return new KDTree.Point(new int[]{x, y});
+        return new KDTree.Point(new int[] { x, y });
     }
 
     @Test
     void findMin() {
         int[][] coordinates = {
-                {30, 40},
-                {5, 25},
-                {70, 70},
-                {10, 12},
-                {50, 30},
-                {35, 45}
+            { 30, 40 },
+            { 5, 25 },
+            { 70, 70 },
+            { 10, 12 },
+            { 50, 30 },
+            { 35, 45 },
         };
         KDTree kdTree = new KDTree(coordinates);
 
@@ -29,12 +29,12 @@ public class KDTreeTest {
     @Test
     void delete() {
         int[][] coordinates = {
-                {30, 40},
-                {5, 25},
-                {70, 70},
-                {10, 12},
-                {50, 30},
-                {35, 45}
+            { 30, 40 },
+            { 5, 25 },
+            { 70, 70 },
+            { 10, 12 },
+            { 50, 30 },
+            { 35, 45 },
         };
         KDTree kdTree = new KDTree(coordinates);
 
@@ -46,12 +46,12 @@ public class KDTreeTest {
     @Test
     void findNearest() {
         int[][] coordinates = {
-                {2, 3},
-                {5, 4},
-                {9, 6},
-                {4, 7},
-                {8, 1},
-                {7, 2}
+            { 2, 3 },
+            { 5, 4 },
+            { 9, 6 },
+            { 4, 7 },
+            { 8, 1 },
+            { 7, 2 },
         };
         KDTree kdTree = new KDTree(coordinates);
 
@@ -60,5 +60,4 @@ public class KDTreeTest {
         assertEquals(pointOf(2, 3), kdTree.findNearest(pointOf(1, 1)));
         assertEquals(pointOf(5, 4), kdTree.findNearest(pointOf(5, 5)));
     }
-
 }
