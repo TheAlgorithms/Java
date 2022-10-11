@@ -1,6 +1,6 @@
 package com.thealgorithms.scheduling;
 
-import com.thealgorithms.scheduling.entities.ProcessDetails;
+import com.thealgorithms.devutils.entities.ProcessDetails;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

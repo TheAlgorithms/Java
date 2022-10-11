@@ -1,11 +1,11 @@
 package com.thealgorithms.scheduling;
 
-import com.thealgorithms.scheduling.entities.ProcessDetails;
+import com.thealgorithms.devutils.entities.ProcessDetails;
 
 import java.util.List;
 
 /**
- * Non-pre-emptive First Come First Serve scheduling
+ * Non-pre-emptive First Come First Serve scheduling. This can be understood here - https://www.scaler.com/topics/first-come-first-serve/
  */
 public class FCFSScheduling {
 
