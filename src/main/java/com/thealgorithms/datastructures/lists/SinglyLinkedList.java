@@ -121,6 +121,27 @@ public class SinglyLinkedList extends Node {
     }
 
     /**
+     *  Rotate the list to the right by k places.
+     */
+    public Node rotateRight(Node node, int k) {
+        if (node == null || node.next == null) return node;
+        Node b = node;
+        int leng = 1;
+        while (b.next != null) {
+            b = b.next;
+            leng++;
+        }
+        b.next = node;
+        k %= leng;
+        for (int j = 0; j < leng - k; j++) {
+            b = b.next;
+        }
+        node = b.next;
+        b.next = null;
+        return node;
+    }
+
+    /**
      * Clear all nodes in the list
      */
     public void clear() {
@@ -344,6 +365,7 @@ public class SinglyLinkedList extends Node {
 
         size--;
     }
+
 
     /**
      * Return element at special index.
