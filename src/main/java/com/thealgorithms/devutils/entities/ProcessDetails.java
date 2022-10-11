@@ -1,4 +1,4 @@
-package com.thealgorithms.scheduling.entities;
+package com.thealgorithms.devutils.entities;
 
 public class ProcessDetails {
     private String processId;
