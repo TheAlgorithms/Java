@@ -20,3 +20,19 @@ We're on [Gitter](https://gitter.im/TheAlgorithms)! Come join us.
 
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
+
+## Steps to cloning the repository
+1. Navigate to the main page of the repository
+2. Above the list of files (and to the right of the button "Add file") is a button called Code (Usually in Green), Click it.
+3. Copy the URL for the repository:
+   - To clone the repository using HTTPS, under "HTTPS", click .
+   - To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click SSH, then click .
+   - To clone a repository using GitHub CLI, click GitHub CLI, then click .
+4. Open Git Bash (or your preferred terminal) and navigate your working directory to the location you'd like to create the local clone.
+5. Once you're in your desired working directory, type `git clone` and paste the copied URL from step 3.
+
+It should look  something like this.
+```
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+6. Finally, press enter to create your local clone!
