@@ -23,11 +23,11 @@ public class Upper {
             return s;
         }
         char[] values = s.toCharArray();
-        for (int i = 0; i < values.length; ++i) {
-            if (
-                Character.isLetter(values[i]) &&
-                Character.isLowerCase(values[i])
-            ) {
+        for (int i = 0; i < values.length; ++i) 
+        {
+            //if ( Character.isLetter(values[i]) && Character.isLowerCase(values[i]))
+            if ((int)values[i] >= 97 && (int)values[i] <= 122)
+            {
                 values[i] = Character.toUpperCase(values[i]);
             }
         }
