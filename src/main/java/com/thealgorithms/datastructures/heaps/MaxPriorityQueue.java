@@ -12,14 +12,14 @@ package com.thealgorithms.datastructures.heaps;
  * <p>
  * Functions: insert, delete, peek, isEmpty, print, heapSort, sink
  */
-public class MinPriorityQueue {
+public class MaxPriorityQueue {
 
     private int[] heap;
     private int capacity;
     private int size;
 
     // calss the constructor and initializes the capacity
-    MinPriorityQueue(int c) {
+    MaxPriorityQueue(int c) {
         this.capacity = c;
         this.size = 0;
         this.heap = new int[c + 1];
@@ -34,7 +34,7 @@ public class MinPriorityQueue {
         this.heap[this.size + 1] = key;
         int k = this.size + 1;
         while (k > 1) {
-            if (this.heap[k] < this.heap[k / 2]) {
+            if (this.heap[k] > this.heap[k / 2]) {
                 int temp = this.heap[k];
                 this.heap[k] = this.heap[k / 2];
                 this.heap[k / 2] = temp;
@@ -75,7 +75,7 @@ public class MinPriorityQueue {
 
     // heap sorting can be done by performing
     // delete function to the number of times of the size of the heap
-    // it returns reverse sort because it is a min priority queue
+    // it returns reverse sort because it is a max priority queue
     public void heapSort() {
         while (this.size > 0){
             this.delete();
@@ -86,11 +86,11 @@ public class MinPriorityQueue {
     private void sink() {
         int k = 1;
         while (2 * k <= this.size || 2 * k + 1 <= this.size) {
-            int minIndex;
-            if (this.heap[2 * k] >= this.heap[k]) {
+            int maxIndex;
+            if (this.heap[2 * k] <= this.heap[k]) {
                 if (
                     2 * k + 1 <= this.size &&
-                    this.heap[2 * k + 1] >= this.heap[k]
+                    this.heap[2 * k + 1] <= this.heap[k]
                 ) {
                     break;
                 } else if (2 * k + 1 > this.size) {
@@ -98,60 +98,71 @@ public class MinPriorityQueue {
                 }
             }
             if (2 * k + 1 > this.size) {
-                minIndex = this.heap[2 * k] < this.heap[k] ? 2 * k : k;
+                maxIndex = this.heap[2 * k] > this.heap[k] ? 2 * k : k;
             } else {
                 if (
-                    this.heap[k] > this.heap[2 * k] ||
-                    this.heap[k] > this.heap[2 * k + 1]
+                    this.heap[k] < this.heap[2 * k] ||
+                    this.heap[k] < this.heap[2 * k + 1]
                 ) {
-                    minIndex =
-                        this.heap[2 * k] < this.heap[2 * k + 1]
+                    maxIndex =
+                        this.heap[2 * k] > this.heap[2 * k + 1]
                             ? 2 * k
                             : 2 * k + 1;
                 } else {
-                    minIndex = k;
+                    maxIndex = k;
                 }
             }
             int temp = this.heap[k];
-            this.heap[k] = this.heap[minIndex];
-            this.heap[minIndex] = temp;
-            k = minIndex;
+            this.heap[k] = this.heap[maxIndex];
+            this.heap[maxIndex] = temp;
+            k = maxIndex;
         }
     }
 
     // deletes the highest priority value from the heap
     public int delete() {
-        int min = this.heap[1];
+        int max = this.heap[1];
         this.heap[1] = this.heap[this.size];
-        this.heap[this.size] = min;
+        this.heap[this.size] = max;
         this.size--;
         this.sink();
-        return min;
+        return max;
     }
 
     public static void main(String[] args) {
         // testing
-        MinPriorityQueue q = new MinPriorityQueue(8);
+        MaxPriorityQueue q = new MaxPriorityQueue(8);
         q.insert(5);
+        q.print();
         q.insert(2);
+        q.print();
         q.insert(4);
+        q.print();
         q.insert(1);
+        q.print();
         q.insert(7);
+        q.print();
         q.insert(6);
+        q.print();
         q.insert(3);
+        q.print();
         q.insert(8);
-        q.print(); // [ 1, 2, 3, 5, 7, 6, 4, 8 ]
+        q.print(); // [ 8, 7, 6, 5, 2, 4, 3, 1 ]
         
         System.out.println();
         System.out.println("====================================================");
         System.out.println();
         
         System.out.println(q.delete());
-        q.print();
-        //System.out.println(q.delete());
-        //q.print();
+        System.out.println(q.delete());
+        System.out.println(q.delete());
+        System.out.println(q.delete());
+        System.out.println(q.delete());
+        System.out.println(q.delete());
+        System.out.println(q.delete());
+        System.out.println(q.delete());
         
         q.heapSort();
-        q.print(); // [ 8, 7, 6, 5, 4, 3, 2, 1 ]
+        q.print(); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
     }
 }
