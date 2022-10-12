@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
-
 /*
  *To learn about the method, visit the link below :
  * https://en.wikipedia.org/wiki/Newton%27s_method

@@ -1,4 +1,4 @@
-package assignment.learning;
+package com.thealgorithms.maths;
 
 import java.util.Scanner;
 
