@@ -73,22 +73,21 @@ public class MazeRecursion {
         }
     }
 
-    // Using recursive path finding to help the ball find its way in the maze
-    // Description：
-    // 1. map (means the maze)
-    // 2. i, j (means the initial coordinate of the ball in the maze)
-    // 3. if the ball can reach the end of maze, that is position of map[6][5],
-    // means the we have found a path for the ball
-    // 4. Additional Information： 0 in the map[i][j] means the ball has not gone
-    // through this position, 1 means the wall, 2 means the path is feasible, 3
-    // means the ball has gone through the path but this path is dead end
-    // 5. We will need strategy for the ball to pass through the maze for example:
-    // Down -> Right -> Up -> Left, if the path doesn't work, then backtrack
     /**
-     *
-     * @Description
+     * Using recursive path finding to help the ball find its way in the maze
+     * Description：
+     * 1. map (means the maze)
+     * 2. i, j (means the initial coordinate of the ball in the maze)
+     * 3. if the ball can reach the end of maze, that is position of map[6][5],
+     * means the we have found a path for the ball
+     * 4. Additional Information： 0 in the map[i][j] means the ball has not gone
+     * through this position, 1 means the wall, 2 means the path is feasible, 3
+     * means the ball has gone through the path but this path is dead end
+     * 5. We will need strategy for the ball to pass through the maze for example:
+     * Down -> Right -> Up -> Left, if the path doesn't work, then backtrack
+     * 
      * @author OngLipWei
-     * @date Jun 23, 202111:36:14 AM
+     * @version Jun 23, 2021 11:36:14 AM
      * @param map The maze
      * @param i   x coordinate of your ball(target)
      * @param j   y coordinate of your ball(target)
