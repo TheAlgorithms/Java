@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Reverse String using different version
  */
@@ -27,7 +29,7 @@ public class ReverseString {
      * @return reversed string
      */
     public static String reverse2(String str) {
-        if (str == null || str.isEmpty()) {
+        if (StringUtils.isBlank(str)) {
             return str;
         }
 

@@ -13,6 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <assertj.version>3.23.1</assertj.version>
+        <org.appache.commons.version>3.0</org.appache.commons.version>
     </properties>
 
     <dependencyManagement>
@@ -44,6 +45,11 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.9.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${org.appache.commons.version}</version>
         </dependency>
     </dependencies>
 

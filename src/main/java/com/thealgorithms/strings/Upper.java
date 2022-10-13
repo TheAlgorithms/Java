@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Upper {
 
     /**
@@ -19,7 +21,7 @@ public class Upper {
      * @return the {@code String}, converted to uppercase.
      */
     public static String toUpperCase(String s) {
-        if (s == null || "".equals(s)) {
+        if (StringUtils.isBlank(s)) {
             return s;
         }
         char[] values = s.toCharArray();

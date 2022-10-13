@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +24,7 @@ public class CheckVowels {
      * @return {@code true} if given string has vowels, otherwise {@code false}
      */
     public static boolean hasVowels(String input) {
-        if (input == null) {
+        if (StringUtils.isBlank(input)) {
             return false;
         }
         input = input.toLowerCase();
