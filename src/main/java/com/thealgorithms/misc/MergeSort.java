@@ -53,8 +53,6 @@ class Sort
             k++;
         }
     }
- 
-
     void mergeSort(int arr[], int left, int right)       //helper function that creates the sub cases for sorting
     {
         int middle;
