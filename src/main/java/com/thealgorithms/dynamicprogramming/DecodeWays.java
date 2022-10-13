@@ -12,7 +12,7 @@ public class DecodeWays {
      * while 21 01 2 is invalid combination because the string "01" cannot be mapped to "A" because
      * "01" is different from "1"
      */
-    public static int getways(String s){
+    public static int getWays(String s){
         // Initialisations
         int n = s.length();
         // Declaring a dp array
@@ -33,7 +33,7 @@ public class DecodeWays {
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);
         String str = scn.next();
-        int ans = getways(str);
+        int ans = getWays(str);
         System.out.println("The number of valid ways to decode the string are "+ans);
     }
 }
