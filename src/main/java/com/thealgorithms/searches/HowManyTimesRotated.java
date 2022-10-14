@@ -43,7 +43,7 @@ class HowManyTimesRotated {
     public static int rotated(int[] a) {
 
         int low = 0;
-        int high = arr.length - 1;
+        int high = a.length - 1;
         int res = -1;
         int l = a.length;
 
