@@ -24,7 +24,7 @@ import java.util.*;
     1. [1,2,3,4] Number of rotations: 0 or 4(Both valid)
     2. [15,17,2,3,5] Number of rotations: 3
  */
-public static class HowManyTimesRotated {
+class HowManyTimesRotated {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -45,13 +45,13 @@ public static class HowManyTimesRotated {
         int low = 0;
         int high = arr.length - 1;
         int res = -1;
-        int n = a.length;
+        int l = a.length;
 
         while (low <= high) {
             int mid = low + (high - low)/2;
 
-            int next = (mid + 1) % n;
-            int prev = (mid + n - 1) % n;
+            int next = (mid + 1) % l;
+            int prev = (mid + n - 1) % l;
 
             if ((a[mid] <= a[next]) && (a[mid] <= a[prev])){
                 res = mid;
@@ -60,7 +60,7 @@ public static class HowManyTimesRotated {
             else if (a[mid] >= a[0]){
                 low = mid + 1;
             }
-            else if (a[mid] <= a[n-1]){
+            else if (a[mid] <= a[l-1]){
                 high = mid - 1;
             }
         }
