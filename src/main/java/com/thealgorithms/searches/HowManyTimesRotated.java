@@ -45,6 +45,7 @@ public static class HowManyTimesRotated {
         int low = 0;
         int high = arr.length - 1;
         int res = -1;
+        int n = a.length;
 
         while (low <= high) {
             int mid = low + (high - low)/2;
@@ -52,14 +53,14 @@ public static class HowManyTimesRotated {
             int next = (mid + 1) % n;
             int prev = (mid + n - 1) % n;
 
-            if ((arr[mid] <= arr[next]) && (arr[mid] <= arr[prev])){
+            if ((a[mid] <= arr[next]) && (arr[mid] <= a[prev])){
                 res = mid;
                 break;
             }
-            else if (arr[mid] >= arr[0]){
+            else if (a[mid] >= a[0]){
                 low = mid + 1;
             }
-            else if (arr[mid] <= arr[n-1]){
+            else if (a[mid] <= a[n-1]){
                 high = mid - 1;
             }
         }
