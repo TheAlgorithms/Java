@@ -18,12 +18,13 @@ import java.util.*;
     Eg. For [2,5,6,8,11,12,15,18], 1 rotation gives [5,6,8,11,12,15,18,2], 2 rotations [6,8,11,12,15,18,2,5] and so on.
     Finding the minimum element will take O(N) time but, we can  use Binary Search to find the mimimum element, we can reduce the complexity to O(log N).
     If we look at the rotated array, to identify the minimum element (say a[i]), we observe that  a[i-1]>a[i]<a[i+1].
+    To avoid overflow we can add a[(i+a.length-1)%a.length]>a[i]<a[(i+1)%a.length].
 
     Some other test cases: 
     1. [1,2,3,4] Number of rotations: 0 or 4(Both valid)
     2. [15,17,2,3,5] Number of rotations: 3
  */
-class HowManyTimesRotated {
+public static class HowManyTimesRotated {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -40,22 +41,29 @@ class HowManyTimesRotated {
     }
 
     public static int rotated(int[] a) {
+
         int low = 0;
-        int high = a.length - 1;
-        int mid = 0; // low + (high-low)/2 = (low + high)/2
+        int high = arr.length - 1;
+        int res = -1;
 
         while (low <= high) {
-            mid = low + (high - low) / 2;
+            int mid = low + (high - low)/2;
 
-            if (a[mid] < a[mid - 1] && a[mid] < a[mid + 1]) {
+            int next = (mid + 1) % n;
+            int prev = (mid + n - 1) % n;
+
+            if ((arr[mid] <= arr[next]) && (arr[mid] <= arr[prev])){
+                res = mid;
                 break;
-            } else if (a[mid] > a[mid - 1] && a[mid] < a[mid + 1]) {
-                high = mid + 1;
-            } else if (a[mid] > a[mid - 1] && a[mid] > a[mid + 1]) {
-                low = mid - 1;
+            }
+            else if (arr[mid] >= arr[0]){
+                low = mid + 1;
+            }
+            else if (arr[mid] <= arr[n-1]){
+                high = mid - 1;
             }
         }
+        return res;
 
-        return mid;
     }
 }
