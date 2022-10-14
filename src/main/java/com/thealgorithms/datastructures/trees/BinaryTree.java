@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * This entire class is used to build a Binary Tree data structure. There is the

@@ -107,7 +107,9 @@ public class HashMapLinearProbing {
             if (buckets[i] == null || buckets[i] == AVAILABLE) {
                 System.out.println("Bucket " + i + ": Empty");
             } else {
-                System.out.println("Bucket " + i + ": " + buckets[i].toString());
+                System.out.println(
+                    "Bucket " + i + ": " + buckets[i].toString()
+                );
             }
         }
     }
@@ -133,8 +135,7 @@ public class HashMapLinearProbing {
                     buckets[hash] = AVAILABLE;
                     return hash;
                 }
-            } catch (Exception E) {
-            }
+            } catch (Exception E) {}
 
             if (hash + 1 < hsize) {
                 hash++;
@@ -159,7 +160,9 @@ public class HashMapLinearProbing {
     public void checkLoadFactor() {
         double factor = (double) size / hsize;
         if (factor > .7) {
-            System.out.println("Load factor is " + factor + ",  lengthening table");
+            System.out.println(
+                "Load factor is " + factor + ",  lengthening table"
+            );
             lengthenTable();
         } else {
             System.out.println("Load factor is " + factor);

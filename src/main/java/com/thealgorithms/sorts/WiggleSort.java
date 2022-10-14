@@ -1,10 +1,10 @@
 package com.thealgorithms.sorts;
 
-import java.util.Arrays;
-
 import static com.thealgorithms.maths.Ceil.ceil;
 import static com.thealgorithms.maths.Floor.floor;
 import static com.thealgorithms.searches.QuickSelect.select;
+
+import java.util.Arrays;
 
 /**
  * A wiggle sort implementation based on John L.s' answer in
@@ -14,6 +14,7 @@ import static com.thealgorithms.searches.QuickSelect.select;
  * but there are some exceptions that won't be caught, for example [1, 2, 2].
  */
 public class WiggleSort implements SortAlgorithm {
+
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
         return wiggleSort(unsorted);
@@ -30,7 +31,10 @@ public class WiggleSort implements SortAlgorithm {
      * @param median   defines the groups
      * @param <T>      extends interface Comparable
      */
-    private <T extends Comparable<T>> void triColorSort(T[] sortThis, T median) {
+    private <T extends Comparable<T>> void triColorSort(
+        T[] sortThis,
+        T median
+    ) {
         int n = sortThis.length;
         int i = 0;
         int j = 0;
@@ -53,7 +57,11 @@ public class WiggleSort implements SortAlgorithm {
         // find the median using quickSelect (if the result isn't in the array, use the next greater value)
         T median;
 
-        median = select(Arrays.<T>asList(sortThis), (int) floor(sortThis.length / 2.0));
+        median =
+            select(
+                Arrays.<T>asList(sortThis),
+                (int) floor(sortThis.length / 2.0)
+            );
 
         int numMedians = 0;
 
@@ -64,16 +72,22 @@ public class WiggleSort implements SortAlgorithm {
         }
         // added condition preventing off-by-one errors for odd arrays.
         // https://cs.stackexchange.com/questions/150886/how-to-find-wiggle-sortable-arrays-did-i-misunderstand-john-l-s-answer?noredirect=1&lq=1
-        if (sortThis.length % 2 == 1 && numMedians == ceil(sortThis.length / 2.0)) {
+        if (
+            sortThis.length % 2 == 1 &&
+            numMedians == ceil(sortThis.length / 2.0)
+        ) {
             T smallestValue = select(Arrays.asList(sortThis), 0);
             if (!(0 == smallestValue.compareTo(median))) {
-                throw new IllegalArgumentException("For odd Arrays if the median appears ceil(n/2) times, " +
-                        "the median has to be the smallest values in the array.");
+                throw new IllegalArgumentException(
+                    "For odd Arrays if the median appears ceil(n/2) times, " +
+                    "the median has to be the smallest values in the array."
+                );
             }
         }
         if (numMedians > ceil(sortThis.length / 2.0)) {
-            throw new IllegalArgumentException("No more than half the number of values may be the same.");
-
+            throw new IllegalArgumentException(
+                "No more than half the number of values may be the same."
+            );
         }
 
         triColorSort(sortThis, median);
