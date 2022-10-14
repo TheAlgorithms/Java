@@ -51,7 +51,7 @@ class HowManyTimesRotated {
             int mid = low + (high - low)/2;
 
             int next = (mid + 1) % l;
-            int prev = (mid + n - 1) % l;
+            int prev = (mid + l - 1) % l;
 
             if ((a[mid] <= a[next]) && (a[mid] <= a[prev])){
                 res = mid;
