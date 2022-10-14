@@ -53,7 +53,7 @@ public static class HowManyTimesRotated {
             int next = (mid + 1) % n;
             int prev = (mid + n - 1) % n;
 
-            if ((a[mid] <= arr[next]) && (arr[mid] <= a[prev])){
+            if ((a[mid] <= a[next]) && (a[mid] <= a[prev])){
                 res = mid;
                 break;
             }
