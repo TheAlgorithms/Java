@@ -58,5 +58,5 @@ public class ClimbingStairs{
 10946
 377
 
-Time-Complexity:-
+Time-Complexity:- O(n)
  */
