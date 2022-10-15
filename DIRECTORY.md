@@ -15,7 +15,7 @@
             * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
           * bitmanipulation
-            * [TravellingSalesmanBitsManipulation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/TravellingSalesmanBitManipulation.java)
+            * [TravellingSalesmanBitManipulation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/TravellingSalesmanBitManipulation.java)
           * ciphers
             * a5
               * [A5Cipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/a5/A5Cipher.java)
