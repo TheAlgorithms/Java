@@ -1,4 +1,9 @@
-/*
+/* PROBLEM STATEMENT:-
+Given a keypad, and an n digit number, list all words which are possible by pressing these numbers.
+Before the advent of QWERTY keyboards, texts and numbers were placed on the same key. 
+For example, 2 has “ABC”, so if we wanted to write anything starting with ‘A’ we need to type key 2 once. 
+If we wanted to type ‘B’, press key 2 twice and thrice for typing ‘C’. Below is a picture of such a keypad.
+
 Sample Input 1: digits = "23"Sample Output 1: "ad", "ae", "af", "bd", "be", "bf","cd", "ce", "cf"
 Sample Output 1: "ad", "ae", "af", "bd", "be", "bf","cd", "ce", "cf"
 
@@ -8,6 +13,8 @@ Sample Output 2: "a", "b", "c"
 Sample Input 3: digits = ""
 Sample Output 3: ""
 */
+
+// Article :- https://www.interviewbit.com/blog/letter-combinations-of-a-phone-number/
 
 // Contributed by @PranavAvasthi
 
