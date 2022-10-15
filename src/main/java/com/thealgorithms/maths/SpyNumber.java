@@ -2,9 +2,8 @@
 //A spy number is a number where the sum of its digits equals the product of its digits.
 // For example, 1124 is a spy number, the sum of its digits is 1+1+2+4=8 and the product of its digits is 1*1*2*4=8.
 
-
-
-import java.io.*;
+package com.thealgorithms.maths;
+ 
 import java.util.*;
 public class SpyNumber {
        public static void main(String[] args) {
@@ -12,10 +11,10 @@ public class SpyNumber {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number");
         int n = sc.nextInt();
-
+sc.close();
         int sum = 0;
         int product = 1;
-        
+
         int temp = n;
         while (temp > 0) {
             int rem = temp % 10;

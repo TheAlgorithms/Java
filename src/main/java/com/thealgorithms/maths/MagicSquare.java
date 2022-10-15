@@ -13,6 +13,7 @@ public class MagicSquare {
         if ((num % 2 == 0) || (num <= 0)) {
             System.out.print("Input number must be odd and >0");
             System.exit(0);
+            sc.close();
         }
 
         int[][] magic_square = new int[num][num];

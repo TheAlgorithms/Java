@@ -11,6 +11,7 @@ public class HarshadNumber {
         long a = sc.nextLong();
 
         checkHarshadNumber(a);
+        sc.close();
     }
 
     /**

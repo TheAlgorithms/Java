@@ -23,6 +23,7 @@ public class LeastCommonMultiple {
         System.out.println(
             "The least common multiple of two numbers is >> " + lcm(num1, num2)
         );
+        input.close();
     }
 
     /*
