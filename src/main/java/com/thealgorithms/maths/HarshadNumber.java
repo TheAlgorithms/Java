@@ -9,7 +9,7 @@ public class HarshadNumber {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a number : ");
         long a = sc.nextLong();
-
+sc.close();
         checkHarshadNumber(a);
     }
 

@@ -19,6 +19,7 @@ public class NonRepeatingElement {
             System.out.println("Array should contain even number of elements");
             return;
         }
+         
         int arr[] = new int[n];
 
         System.out.println(

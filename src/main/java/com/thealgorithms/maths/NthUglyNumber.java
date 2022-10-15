@@ -53,5 +53,6 @@ class NthUglyNumber {
         NthUglyNumber ob = new NthUglyNumber();
         long ugly = ob.getNthUglyNo(n);
         System.out.println("nth Ugly number is : " + ugly);
+        sc.close();
     }
 }

@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /*
  *To learn about the method, visit the link below :

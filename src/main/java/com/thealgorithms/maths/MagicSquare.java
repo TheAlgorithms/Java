@@ -46,6 +46,10 @@ public class MagicSquare {
                 System.out.print(magic_square[i][j] + " ");
             }
             System.out.println();
+    
         }
+        sc.close();
     }
+
+
 }

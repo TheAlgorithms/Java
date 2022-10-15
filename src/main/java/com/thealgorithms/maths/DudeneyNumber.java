@@ -6,7 +6,7 @@
  */
 package com.thealgorithms.maths;
 
-import java.io.*;
+//import java.io.*;
 
 public class DudeneyNumber {
 
