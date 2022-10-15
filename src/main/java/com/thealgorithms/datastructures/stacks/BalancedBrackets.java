@@ -28,13 +28,16 @@ class BalancedBrackets {
      */
     public static boolean isPaired(char leftBracket, char rightBracket) {
         char[][] pairedBrackets = {
-            {'(', ')'},
-            {'[', ']'},
-            {'{', '}'},
-            {'<', '>'}
+            { '(', ')' },
+            { '[', ']' },
+            { '{', '}' },
+            { '<', '>' },
         };
         for (char[] pairedBracket : pairedBrackets) {
-            if (pairedBracket[0] == leftBracket && pairedBracket[1] == rightBracket) {
+            if (
+                pairedBracket[0] == leftBracket &&
+                pairedBracket[1] == rightBracket
+            ) {
                 return true;
             }
         }
@@ -63,7 +66,10 @@ class BalancedBrackets {
                 case ')':
                 case ']':
                 case '}':
-                    if (bracketsStack.isEmpty() || !isPaired(bracketsStack.pop(), bracket)) {
+                    if (
+                        bracketsStack.isEmpty() ||
+                        !isPaired(bracketsStack.pop(), bracket)
+                    ) {
                         return false;
                     }
                     break;

@@ -6,7 +6,6 @@ package com.thealgorithms.maths;
 public class Area {
 
     public static void main(String[] args) {
-
         /* test cube */
         assert Double.compare(surfaceAreaCube(1), 6.0) == 0;
 
@@ -33,16 +32,17 @@ public class Area {
         assert Double.compare(surfaceAreaCircle(20), 1256.6370614359173) == 0;
 
         /* test cylinder */
-        assert Double.compare(surfaceAreaCylinder(1, 2), 18.84955592153876) == 0;
+        assert Double.compare(surfaceAreaCylinder(1, 2), 18.84955592153876) ==
+        0;
 
         /* test hemisphere */
-        assert Double.compare(surfaceAreaHemisphere(5), 235.61944901923448) == 0;
+        assert Double.compare(surfaceAreaHemisphere(5), 235.61944901923448) ==
+        0;
         assert Double.compare(surfaceAreaHemisphere(1), 9.42477796076938) == 0;
 
         /* test cone */
         assert Double.compare(surfaceAreaCone(6, 8), 301.59289474462014) == 0;
         assert Double.compare(surfaceAreaCone(10, 24), 1130.9733552923256) == 0;
-
     }
 
     /**
@@ -127,7 +127,11 @@ public class Area {
      * @param height height of trapezium
      * @return area of given trapezium
      */
-    private static double surfaceAreaTrapezium(double base1, double base2, double height) {
+    private static double surfaceAreaTrapezium(
+        double base1,
+        double base2,
+        double height
+    ) {
         return (base1 + base2) * height / 2;
     }
 
@@ -159,6 +163,10 @@ public class Area {
      * @return surface area of given cone.
      */
     private static double surfaceAreaCone(double radius, double height) {
-        return Math.PI * radius * (radius + Math.pow((height * height + radius * radius), 0.5));
+        return (
+            Math.PI *
+            radius *
+            (radius + Math.pow((height * height + radius * radius), 0.5))
+        );
     }
 }

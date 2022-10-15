@@ -52,9 +52,10 @@ public class SieveOfEratosthenes {
         }
 
         //Write all primes to result array
-        int primesCount = (int) Arrays.stream(numbers)
-                .filter(element -> element == Type.PRIME)
-                .count();
+        int primesCount = (int) Arrays
+            .stream(numbers)
+            .filter(element -> element == Type.PRIME)
+            .count();
         int[] primes = new int[primesCount];
 
         int primeIndex = 0;
@@ -68,7 +69,8 @@ public class SieveOfEratosthenes {
     }
 
     private enum Type {
-        PRIME, NOT_PRIME
+        PRIME,
+        NOT_PRIME,
     }
 
     public static void main(String[] args) {
