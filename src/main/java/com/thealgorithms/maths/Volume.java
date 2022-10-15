@@ -1,11 +1,9 @@
 package com.thealgorithms.maths;
 
-
 /* Find volume of various shapes.*/
 public class Volume {
 
     public static void main(String[] args) {
-
         /* test cube */
         assert Double.compare(volumeCube(7), 343.0) == 0;
 
@@ -23,13 +21,12 @@ public class Volume {
 
         /* test cone */
         assert Double.compare(volumeCone(5, 7), 916.297857297023) == 0;
-        
+
         /*test prism*/
         assert Double.compare(volumePrism(10, 2), 20.0) == 0;
-        
+
         /*test pyramid*/
         assert Double.compare(volumePyramid(10, 3), 10.0) == 0;
-
     }
 
     /**
@@ -50,7 +47,11 @@ public class Volume {
      * @param length of cuboid
      * @return volume of given cuboid
      */
-    private static double volumeCuboid(double width, double height, double length) {
+    private static double volumeCuboid(
+        double width,
+        double height,
+        double length
+    ) {
         return width * height * length;
     }
 
@@ -95,7 +96,7 @@ public class Volume {
     private static double volumeCone(double radius, double height) {
         return Math.PI * radius * radius * height / 3;
     }
-    
+
     /**
      * Calculate the volume of a prism.
      *
@@ -106,7 +107,7 @@ public class Volume {
     private static double volumePrism(double basearea, double height) {
         return basearea * height;
     }
-    
+
     /**
      * Calculate the volume of a pyramid.
      *

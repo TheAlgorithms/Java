@@ -18,11 +18,10 @@ public class DudeneyNumber {
         if (cube_root * cube_root * cube_root != n) {
             return false;
         }
-        int sum_of_digits = 0;// Stores the sums of the digit of the entered number
-        int temp = n;//A temporary variable to store the entered number
+        int sum_of_digits = 0; // Stores the sums of the digit of the entered number
+        int temp = n; //A temporary variable to store the entered number
         // Loop to calculate sum of the digits.
         while (temp > 0) {
-
             // Extracting Last digit of the number
             int rem = temp % 10;
 
@@ -33,27 +32,11 @@ public class DudeneyNumber {
             temp /= 10;
         }
 
-        //If the cube root of the number is not equal to the sum of its digits we return false.  
+        //If the cube root of the number is not equal to the sum of its digits we return false.
         if (cube_root != sum_of_digits) {
             return false;
         }
 
         return true;
-    }
-
-    /**
-     * Method to check if number is Dudeney Number or Not 1) Input - Enter a
-     * Number: 512 Output - It is a Dudeney Number. 2) Input - Enter a Number:
-     * 125 Output - It is not a Dudeney Number.
-     */
-    public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter a Number: ");
-        int n = Integer.parseInt(br.readLine());
-        if (isDudeney(n)) {
-            System.out.println("It is a Dudeney Number.");
-        } else {
-            System.out.println("It is not a Dudeney Number.");
-        }
     }
 }

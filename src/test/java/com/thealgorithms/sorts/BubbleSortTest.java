@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
  * @see BubbleSort
  */
 public class BubbleSortTest {
+
     private BubbleSort bubbleSort = new BubbleSort();
 
     @Test
@@ -21,33 +22,73 @@ public class BubbleSortTest {
 
     @Test
     public void bubbleSortSingleIntegerElementArray() {
-        Integer[] inputArray = {4};
+        Integer[] inputArray = { 4 };
         Integer[] outputArray = bubbleSort.sort(inputArray);
-        Integer[] expectedOutput = {4};
+        Integer[] expectedOutput = { 4 };
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
     public void bubbleSortSingleStringElementArray() {
-        String[] inputArray = {"s"};
+        String[] inputArray = { "s" };
         String[] outputArray = bubbleSort.sort(inputArray);
-        String[] expectedOutput = {"s"};
+        String[] expectedOutput = { "s" };
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
     public void bubbleSortIntegerArray() {
-        Integer[] inputArray = {4, 23, -6, 78, 1, 54, 23, -6, -231, 9, 12};
+        Integer[] inputArray = { 4, 23, -6, 78, 1, 54, 23, -6, -231, 9, 12 };
         Integer[] outputArray = bubbleSort.sort(inputArray);
-        Integer[] expectedOutput = {-231, -6, -6, 1, 4, 9, 12, 23, 23, 54, 78};
+        Integer[] expectedOutput = {
+            -231,
+            -6,
+            -6,
+            1,
+            4,
+            9,
+            12,
+            23,
+            23,
+            54,
+            78,
+        };
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
     public void bubbleSortStringArray() {
-        String[] inputArray = {"cbf", "auk", "ó", "(b", "a", ")", "au", "á", "cba", "auk", "(a", "bhy", "cba"};
+        String[] inputArray = {
+            "cbf",
+            "auk",
+            "ó",
+            "(b",
+            "a",
+            ")",
+            "au",
+            "á",
+            "cba",
+            "auk",
+            "(a",
+            "bhy",
+            "cba",
+        };
         String[] outputArray = bubbleSort.sort(inputArray);
-        String[] expectedOutput = {"(a", "(b", ")", "a", "au", "auk", "auk", "bhy", "cba", "cba", "cbf", "á", "ó"};
+        String[] expectedOutput = {
+            "(a",
+            "(b",
+            ")",
+            "a",
+            "au",
+            "auk",
+            "auk",
+            "bhy",
+            "cba",
+            "cba",
+            "cbf",
+            "á",
+            "ó",
+        };
         assertArrayEquals(outputArray, expectedOutput);
     }
 }
