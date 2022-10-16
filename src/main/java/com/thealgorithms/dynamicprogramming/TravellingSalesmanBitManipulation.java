@@ -1,7 +1,4 @@
 package com.thealgorithms.dynamicprogramming;
-
-
-
 public class TravellingSalesmanBitManipulation {
 
     /** 
@@ -54,6 +51,4 @@ public class TravellingSalesmanBitManipulation {
         dp[setOfCities][city] = ans;
         return ans;
     }
-
-
 }
