@@ -99,7 +99,9 @@ public class HeapSort implements SortAlgorithm {
         int size = unsorted.size();
 
         @SuppressWarnings("unchecked")
-        Heap<T> heap = new Heap<>(unsorted.toArray((T[]) new Comparable[unsorted.size()]));
+        Heap<T> heap = new Heap<>(
+            unsorted.toArray((T[]) new Comparable[unsorted.size()])
+        );
 
         heap.makeMinHeap(0); // make min heap using index 0 as root.
         List<T> sorted = new ArrayList<>(size);
@@ -117,7 +119,7 @@ public class HeapSort implements SortAlgorithm {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Integer[] heap = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] heap = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
         HeapSort heapSort = new HeapSort();
         print(heapSort.sort(heap));
     }

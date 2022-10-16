@@ -42,7 +42,9 @@ public class BSTIterative {
         tree.remove(2);
         assert !tree.find(2) : "2 was just deleted from BST";
         tree.remove(1);
-        assert !tree.find(1) : "Since 1 was not present so find deleting would do no change";
+        assert !tree.find(
+            1
+        ) : "Since 1 was not present so find deleting would do no change";
         tree.add(30);
         tree.add(40);
         assert tree.find(40) : "40 was inserted but not found";
@@ -64,7 +66,7 @@ public class BSTIterative {
         Node temp = this.root;
         int rightOrLeft = -1;
         /* Finds the proper place this node can
-     * be placed in according to rules of BST.
+         * be placed in according to rules of BST.
          */
         while (temp != null) {
             if (temp.data > data) {
@@ -81,18 +83,18 @@ public class BSTIterative {
             }
         }
         /* Creates a newNode with the value passed
-     * Since this data doesn't already exists
+         * Since this data doesn't already exists
          */
         Node newNode = new Node(data);
         /* If the parent node is null
-     * then the insertion is to be done in
-     * root itself.
+         * then the insertion is to be done in
+         * root itself.
          */
         if (parent == null) {
             this.root = newNode;
         } else {
             /* Check if insertion is to be made in
-       * left or right subtree.
+             * left or right subtree.
              */
             if (rightOrLeft == 0) {
                 parent.left = newNode;
@@ -112,11 +114,11 @@ public class BSTIterative {
         Node temp = this.root;
         int rightOrLeft = -1;
         /* Find the parent of the node and node itself
-     * That is to be deleted.
-     * parent variable store parent
-     * temp stores node itself.
-     * rightOrLeft use to keep track weather child
-     * is left or right subtree
+         * That is to be deleted.
+         * parent variable store parent
+         * temp stores node itself.
+         * rightOrLeft use to keep track weather child
+         * is left or right subtree
          */
         while (temp != null) {
             if (temp.data == data) {
@@ -132,7 +134,7 @@ public class BSTIterative {
             }
         }
         /* If temp is null than node with given value is not
-     * present in our tree.
+         * present in our tree.
          */
         if (temp != null) {
             Node replacement; // used to store the new values for replacing nodes
@@ -146,10 +148,10 @@ public class BSTIterative {
                 temp.right = null;
             } else {
                 /* If both left and right child are present
-         * we replace this nodes data with
-         * leftmost node's data in its right subtree
-         * to maintain the balance of BST.
-         * And then delete that node
+                 * we replace this nodes data with
+                 * leftmost node's data in its right subtree
+                 * to maintain the balance of BST.
+                 * And then delete that node
                  */
                 if (temp.right.left == null) {
                     temp.data = temp.right.data;
@@ -168,7 +170,7 @@ public class BSTIterative {
                 }
             }
             /* Change references of parent after
-       * deleting the child.
+             * deleting the child.
              */
             if (parent == null) {
                 this.root = replacement;

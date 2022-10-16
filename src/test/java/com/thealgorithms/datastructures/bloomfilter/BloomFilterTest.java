@@ -3,12 +3,11 @@ package com.thealgorithms.datastructures.bloomfilter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class BloomFilterTest {
 
     @Test
-    public void test1(){
-        BloomFilter<Integer> bloomFilter = new BloomFilter<>(3,10);
+    public void test1() {
+        BloomFilter<Integer> bloomFilter = new BloomFilter<>(3, 10);
         bloomFilter.insert(3);
         bloomFilter.insert(17);
 
@@ -17,8 +16,8 @@ public class BloomFilterTest {
     }
 
     @Test
-    public void test2(){
-        BloomFilter<String> bloomFilter = new BloomFilter<>(4,20);
+    public void test2() {
+        BloomFilter<String> bloomFilter = new BloomFilter<>(4, 20);
         bloomFilter.insert("omar");
         bloomFilter.insert("mahamid");
 

@@ -6,7 +6,6 @@ package com.thealgorithms.devutils.searches;
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 public interface SearchAlgorithm {
-
     /**
      * @param key is an element which should be found
      * @param array is an array where the element should be found

@@ -6,61 +6,67 @@ import org.junit.jupiter.api.Test;
 
 class LiouvilleLambdaFunctionTest {
 
-	@Test
-	void testLiouvilleLambdaMustThrowExceptionIfNumberIsZero() {
-		//given
-		int number = 0;
-		String expectedMessage = "Number must be greater than zero.";
+    @Test
+    void testLiouvilleLambdaMustThrowExceptionIfNumberIsZero() {
+        //given
+        int number = 0;
+        String expectedMessage = "Number must be greater than zero.";
 
-		//when
-		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-			LiouvilleLambdaFunction.liouvilleLambda(number);
-		});
-		String actualMessage = exception.getMessage();
+        //when
+        Exception exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                LiouvilleLambdaFunction.liouvilleLambda(number);
+            }
+        );
+        String actualMessage = exception.getMessage();
 
-		//then
-		assertEquals(expectedMessage, actualMessage);
-	}
+        //then
+        assertEquals(expectedMessage, actualMessage);
+    }
 
-	@Test
-	void testLiouvilleLambdaMustThrowExceptionIfNumberIsNegative() {
-		//given
-		int number = -1;
-		String expectedMessage = "Number must be greater than zero.";
+    @Test
+    void testLiouvilleLambdaMustThrowExceptionIfNumberIsNegative() {
+        //given
+        int number = -1;
+        String expectedMessage = "Number must be greater than zero.";
 
-		//when
-		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-			LiouvilleLambdaFunction.liouvilleLambda(number);
-		});
-		String actualMessage = exception.getMessage();
+        //when
+        Exception exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                LiouvilleLambdaFunction.liouvilleLambda(number);
+            }
+        );
+        String actualMessage = exception.getMessage();
 
-		//then
-		assertEquals(expectedMessage, actualMessage);
-	}
+        //then
+        assertEquals(expectedMessage, actualMessage);
+    }
 
-	@Test
-	void testLiouvilleLambdaMustReturnNegativeOne() {
-		//given
-		int number = 11;
-		int expectedOutput = -1;
+    @Test
+    void testLiouvilleLambdaMustReturnNegativeOne() {
+        //given
+        int number = 11;
+        int expectedOutput = -1;
 
-		//when
-		int actualOutput = LiouvilleLambdaFunction.liouvilleLambda(number);
+        //when
+        int actualOutput = LiouvilleLambdaFunction.liouvilleLambda(number);
 
-		//then
-		assertEquals(expectedOutput, actualOutput);
-	}
+        //then
+        assertEquals(expectedOutput, actualOutput);
+    }
 
-	@Test
-	void testLiouvilleLambdaMustReturnPositiveOne() {
-		//given
-		int number = 10;
-		int expectedOutput = 1;
+    @Test
+    void testLiouvilleLambdaMustReturnPositiveOne() {
+        //given
+        int number = 10;
+        int expectedOutput = 1;
 
-		//when
-		int actualOutput = LiouvilleLambdaFunction.liouvilleLambda(number);
+        //when
+        int actualOutput = LiouvilleLambdaFunction.liouvilleLambda(number);
 
-		//then
-		assertEquals(expectedOutput, actualOutput);
-	}
+        //then
+        assertEquals(expectedOutput, actualOutput);
+    }
 }
