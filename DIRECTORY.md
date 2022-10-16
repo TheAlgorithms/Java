@@ -219,7 +219,7 @@
             * [Sum Of Subset](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Sum_Of_Subset.java)
             * [UniquePaths](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniquePaths.java)
             * [WineProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/WineProblem.java)
-            * [TravellingSalesmanBitManipulation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/TravellingSalesmanBitManipulation.java)
+            * [TravellingSalesmanBitManipulation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/TravellingSalesmanBitManipulation.java)
           * maths
             * [AbsoluteMax](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AbsoluteMax.java)
             * [AbsoluteMin](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AbsoluteMin.java)
