@@ -1,13 +1,12 @@
-package com.thealgorithms.bitmanipulation;
+package com.thealgorithms.dynamicprogramming;
 
 
-import java.util.Arrays;
 
 public class TravellingSalesmanBitManipulation {
 
     /** 
      * @brief
-     * The below algorithm is called as Travelling Salesman Using Bit-manipulation.
+     * The below algorithm is called as Travelling Salesman DP optimisation Using Bit-manipulation.
      * We can use this algorithm to improve the  naive algorithm’s performance.
      * @detail
      * Given the distance/cost(as and adjacency matrix) between each city/node to the other city/node,
@@ -19,7 +18,7 @@ public class TravellingSalesmanBitManipulation {
      * OUTPUT ->  Minimum cost of whole tour from starting point
      * The Worst Case Time Complexity: O(n^2 * 2^n)
      * Space complexity: O(n)
-       [Travelling Salesman problem using bit-masking](https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/)
+       [Travelling Salesman problem Dynamic Programming optimisation using bit-masking](https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/)
 
      * @author
      * [Utkarsh Yadav](https://github.com/Rytnix)
@@ -56,16 +55,5 @@ public class TravellingSalesmanBitManipulation {
         return ans;
     }
 
-     /**
-       @output 97
-     */
-    public static void main(String[] args) {
-        int[][] dist = {{0, 20, 42, 35}, {20, 0, 30, 34}, {42, 30, 0, 12}, {35, 34, 12, 0}};
-        int s = dist.length;
-        int[][] dp = new int[1 << s][s];
-        for (int[] i : dp)
-            Arrays.fill(i, -1);
 
-        System.out.println( travellingSalesmanBits(dist, 1, 0, s, dp));
-    }
 }
