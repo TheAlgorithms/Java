@@ -1,78 +1,33 @@
 package com.thealgorithms.strings;
 
+import java.util.Scanner;
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Palindrome
+ * Checks whether a word is Palindrome or not
+ *
+ * @author Pritam Dash
  */
-class Palindrome {
-
+class Palindrome
+{
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        String[] palindromes = { null, "", "aba", "123321" };
-        for (String s : palindromes) {
-            assert isPalindrome(s) &&
-            isPalindromeRecursion(s) &&
-            isPalindrome1(s);
-        }
-
-        String[] notPalindromes = { "abb", "abc", "abc123" };
-        for (String s : notPalindromes) {
-            assert !isPalindrome(s) &&
-            !isPalindromeRecursion(s) &&
-            !isPalindrome1(s);
-        }
-    }
-
-    /**
-     * Check if a string is palindrome string or not
+     * Main method
      *
-     * @param s a string to check
-     * @return {@code true} if given string is palindrome, otherwise
-     * {@code false}
+     * @param args Command line arguments
      */
-    public static boolean isPalindrome(String s) {
-        return (
-            (s == null || s.length() <= 1) ||
-            s.equals(new StringBuilder(s).reverse().toString())
-        );
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String s=sc.nextLine();
+        int len=s.length();
+        String s1="",s2="";
+        for(int i=0, j=len-1; i<len/2; i++, j--)
+        {
+            s1+=s.charAt(i);
+            s2+=s.charAt(j);
+        }
+        if(s1.equalsIgnoreCase(s2))
+        System.out.println("Palindrome word");
+        else
+        System.out.println("Not Palindrome word");;
     }
-
-    /**
-     * Check if a string is palindrome string or not using recursion
-     *
-     * @param s a string to check
-     * @return {@code true} if given string is palindrome, otherwise
-     * {@code false}
-     */
-    public static boolean isPalindromeRecursion(String s) {
-        if (s == null || s.length() <= 1) {
-            return true;
-        }
-
-        if (s.charAt(0) != s.charAt(s.length() - 1)) {
-            return false;
-        }
-
-        return isPalindrome(s.substring(1, s.length() - 1));
-    }
-
-    /**
-     * Check if a string is palindrome string or not another way
-     *
-     * @param s a string to check
-     * @return {@code true} if given string is palindrome, otherwise
-     * {@code false}
-     */
-    public static boolean isPalindrome1(String s) {
-        if (s == null || s.length() <= 1) {
-            return true;
-        }
-        for (int i = 0, j = s.length() - 1; i < j; ++i, --j) {
-            if (s.charAt(i) != s.charAt(j)) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
+}        
