@@ -47,8 +47,7 @@ class HamiltonianCycle
         {
             /* Check if this vertex can be added to Hamiltonian
                Cycle */
-            if (isSafe(v, graph, path, pos))
-            {
+            if (isSafe(v, graph, path, pos)) {
                 path[pos] = v;
  
                 /* recur to construct rest of the path */
