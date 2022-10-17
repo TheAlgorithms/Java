@@ -105,8 +105,7 @@ class HamiltonianCycle
     }
  
     // driver program to test above function
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         HamiltonianCycle hamiltonian =
                                 new HamiltonianCycle();
         /* Let us create the following graph
