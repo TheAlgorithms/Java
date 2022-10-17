@@ -3,9 +3,10 @@ package com.thealgorithms.datastructures.graphs;
 import java.util.LinkedList; 
 
 /**
- * Ford-Fulkerson algorith in Java 
+ * Ford-Fulkerson algorith in Java. 
  * @author Manish Syal (https://github.com/Manish-Syal123)
 */
+//Follow this link for better understanding this algorithm. (https://brilliant.org/wiki/ford-fulkerson-algorithm/)
 
 class FordFulkerson {
   static final int V = 6;
