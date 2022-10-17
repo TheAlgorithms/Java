@@ -43,8 +43,7 @@ class HamiltonianCycle
         // Try different vertices as a next candidate in
         // Hamiltonian Cycle. We don't try for 0 as we
         // included 0 as starting point in hamCycle()
-        for (int v = 1; v < V; v++)
-        {
+        for (int v = 1; v < V; v++) {
             /* Check if this vertex can be added to Hamiltonian
                Cycle */
             if (isSafe(v, graph, path, pos)) {
