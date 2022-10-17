@@ -82,8 +82,7 @@ class HamiltonianCycle
            started from any point of the cycle as the graph is
            undirected */
         path[0] = 0;
-        if (hamCycleUtil(graph, path, 1) == false)
-        {
+        if (hamCycleUtil(graph, path, 1) == false) {
             System.out.println("\nSolution does not exist");
             return 0;
         }
