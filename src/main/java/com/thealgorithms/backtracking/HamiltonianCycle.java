@@ -28,8 +28,7 @@ class HamiltonianCycle
  
     /* A recursive utility function to solve hamiltonian
        cycle problem */
-    boolean hamCycleUtil(int graph[][], int path[], int pos)
-    {
+    boolean hamCycleUtil(int graph[][], int path[], int pos) {
         /* base case: If all vertices are included in
            Hamiltonian Cycle */
         if (pos == V)
