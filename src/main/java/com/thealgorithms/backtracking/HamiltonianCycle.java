@@ -31,8 +31,7 @@ class HamiltonianCycle
     boolean hamCycleUtil(int graph[][], int path[], int pos) {
         /* base case: If all vertices are included in
            Hamiltonian Cycle */
-        if (pos == V)
-        {
+        if (pos == V) {
             // And if there is an edge from the last included
             // vertex to the first vertex
             if (graph[path[pos - 1]][path[0]] == 1)
