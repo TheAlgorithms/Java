@@ -112,7 +112,6 @@ public class Bag<Element> implements Iterable<Element> {
      */
     public static void main(String[] args) {
         Bag<String> bag = new Bag<>();
-
         bag.add("1");
         bag.add("1");
         bag.add("2");
