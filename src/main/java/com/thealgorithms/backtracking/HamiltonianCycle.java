@@ -92,8 +92,7 @@ class HamiltonianCycle
     }
  
     /* A utility function to print solution */
-    void printSolution(int path[])
-    {
+    void printSolution(int path[]) {
         System.out.println("Solution Exists: Following" +
                            " is one Hamiltonian Cycle");
         for (int i = 0; i < V; i++)
