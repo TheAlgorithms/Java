@@ -74,7 +74,6 @@ public class HashMap {
                     if (temp.getKey() == key) return temp;
                 }
             }
-            System.out.println("List is empty");
             return null;
         }
 
@@ -87,8 +86,6 @@ public class HashMap {
                 } else {
                     delete(first, key);
                 }
-            } else {
-                System.out.println("List is empty");
             }
         }
 
