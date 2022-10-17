@@ -71,7 +71,7 @@ public class SubsetCount {
 
     public static void main(String[] args) {
         int[] testArray = new int[]{1,2,3,3};
-        System.out.println(new SubsetCount().getCountSO(testArray,6));//Answer = 3
+        System.out.println(new SubsetCount().getCount(testArray,6));//Answer = 3
         testArray = new int[]{1, 1, 1, 1};
         System.out.println(new SubsetCount().getCountSO(testArray,1));//Answer = 4
     }
