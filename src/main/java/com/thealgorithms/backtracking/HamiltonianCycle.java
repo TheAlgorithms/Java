@@ -10,8 +10,7 @@ class HamiltonianCycle
     /* A utility function to check if the vertex v can be
        added at index 'pos'in the Hamiltonian Cycle
        constructed so far (stored in 'path[]') */
-    boolean isSafe(int v, int graph[][], int path[], int pos)
-    {
+    boolean isSafe(int v, int graph[][], int path[], int pos) {
         /* Check if this vertex is an adjacent vertex of
            the previously added vertex. */
         if (graph[path[pos - 1]][v] == 0)
