@@ -8,10 +8,11 @@ public class ReverseString {
     public static void main(String[] args) {
         assert reverse("abc123").equals("321cba");
         assert reverse2("abc123").equals("321cba");
+        assert reverse3("abc123").equals("321cba");
     }
 
     /**
-     * easiest way to reverses the string str and returns it
+     * easiest way to reverse the string str and return it
      *
      * @param str string to be reversed
      * @return reversed string
@@ -21,7 +22,7 @@ public class ReverseString {
     }
 
     /**
-     * second way to reverses the string str and returns it
+     * second way to reverse the string str and return it
      *
      * @param str string to be reversed
      * @return reversed string
@@ -38,5 +39,29 @@ public class ReverseString {
             value[j] = temp;
         }
         return new String(value);
+    }
+    
+    /**
+     * third way to reverse the string str and return it reducing the time complexity
+     *
+     * @param str string to be reversed
+     * @return reversed string
+     */
+    public static String reverse3(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        int len=str.length();
+        String s1="",s2="";
+        for(int i=0, j=len-1; i<len/2; i++, j--)
+        {
+            s1=str.charAt(i)+s1;
+            s2+=str.charAt(j);
+        }
+        if(len%2==0)
+        return new String(s2+s1);
+        else
+        return new String(s2+str.charAt(len/2)+s1);
     }
 }
