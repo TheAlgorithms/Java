@@ -25,7 +25,13 @@ public class BankersAlgorithm {
     /**
      * This method finds the need of each process
      */
-    static void calculateNeed(int needArray[][], int maxArray[][], int allocationArray[][], int totalProcess, int totalResources) {
+    static void calculateNeed(
+        int needArray[][],
+        int maxArray[][],
+        int allocationArray[][],
+        int totalProcess,
+        int totalResources
+    ) {
         for (int i = 0; i < totalProcess; i++) {
             for (int j = 0; j < totalResources; j++) {
                 needArray[i][j] = maxArray[i][j] - allocationArray[i][j];
@@ -48,10 +54,23 @@ public class BankersAlgorithm {
      *
      * @return boolean if the system is in safe state or not
      */
-    static boolean checkSafeSystem(int processes[], int availableArray[], int maxArray[][], int allocationArray[][], int totalProcess, int totalResources) {
+    static boolean checkSafeSystem(
+        int processes[],
+        int availableArray[],
+        int maxArray[][],
+        int allocationArray[][],
+        int totalProcess,
+        int totalResources
+    ) {
         int[][] needArray = new int[totalProcess][totalResources];
 
-        calculateNeed(needArray, maxArray, allocationArray, totalProcess, totalResources);
+        calculateNeed(
+            needArray,
+            maxArray,
+            allocationArray,
+            totalProcess,
+            totalResources
+        );
 
         boolean[] finishProcesses = new boolean[totalProcess];
 
@@ -94,12 +113,16 @@ public class BankersAlgorithm {
 
             // If we could not find a next process in safe sequence.
             if (foundSafeSystem == false) {
-                System.out.print("The system is not in the safe state because lack of resources");
+                System.out.print(
+                    "The system is not in the safe state because lack of resources"
+                );
                 return false;
             }
         }
 
-        System.out.print("The system is in safe sequence and the sequence is as follows: ");
+        System.out.print(
+            "The system is in safe sequence and the sequence is as follows: "
+        );
         for (int i = 0; i < totalProcess; i++) {
             System.out.print("P" + safeSequenceArray[i] + " ");
         }
@@ -140,7 +163,9 @@ public class BankersAlgorithm {
         for (int i = 0; i < numberOfProcesses; i++) {
             System.out.println("For process " + i + ": ");
             for (int j = 0; j < numberOfResources; j++) {
-                System.out.println("Enter the maximum instances of resource " + j);
+                System.out.println(
+                    "Enter the maximum instances of resource " + j
+                );
                 maxArray[i][j] = sc.nextInt();
             }
         }
@@ -156,12 +181,18 @@ public class BankersAlgorithm {
             }
         }
 
-        checkSafeSystem(processes, availableArray, maxArray, allocationArray, numberOfProcesses, numberOfResources);
+        checkSafeSystem(
+            processes,
+            availableArray,
+            maxArray,
+            allocationArray,
+            numberOfProcesses,
+            numberOfResources
+        );
 
         sc.close();
     }
 }
-
 /*
     Example: 
     n = 5

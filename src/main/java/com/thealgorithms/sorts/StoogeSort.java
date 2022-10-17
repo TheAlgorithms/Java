@@ -12,7 +12,11 @@ public class StoogeSort implements SortAlgorithm {
         return unsortedArray;
     }
 
-    public <T extends Comparable<T>> T[] sort(T[] unsortedArray, int start, int end) {
+    public <T extends Comparable<T>> T[] sort(
+        T[] unsortedArray,
+        int start,
+        int end
+    ) {
         if (SortUtils.less(unsortedArray[end - 1], unsortedArray[start])) {
             T temp = unsortedArray[start];
             unsortedArray[start] = unsortedArray[end - 1];
@@ -32,7 +36,7 @@ public class StoogeSort implements SortAlgorithm {
     public static void main(String[] args) {
         StoogeSort stoogeSort = new StoogeSort();
 
-        Integer[] integerArray = {8, 84, 53, 953, 64, 2, 202};
+        Integer[] integerArray = { 8, 84, 53, 953, 64, 2, 202 };
         // Print integerArray unsorted
         SortUtils.print(integerArray);
 
@@ -40,7 +44,7 @@ public class StoogeSort implements SortAlgorithm {
         // Print integerArray sorted
         SortUtils.print(integerArray);
 
-        String[] stringArray = {"g", "d", "a", "b", "f", "c", "e"};
+        String[] stringArray = { "g", "d", "a", "b", "f", "c", "e" };
         // Print stringArray unsorted
         SortUtils.print(stringArray);
 
