@@ -71,8 +71,7 @@ class HamiltonianCycle
        possible, otherwise return true and prints the path.
        Please note that there may be more than one solutions,
        this function prints one of the feasible solutions. */
-    int hamCycle(int graph[][])
-    {
+    int hamCycle(int graph[][]) {
         path = new int[V];
         for (int i = 0; i < V; i++)
             path[i] = -1;
