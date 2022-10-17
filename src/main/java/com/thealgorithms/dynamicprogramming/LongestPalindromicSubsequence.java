@@ -30,15 +30,18 @@ public class LongestPalindromicSubsequence {
         if (original.length() == 0 || reverse.length() == 0) {
             bestResult = "";
         } else {
-
             // if the last chars match, then remove it from both strings and recur
-            if (original.charAt(original.length() - 1) == reverse.charAt(reverse.length() - 1)) {
-                String bestSubResult
-                        = recursiveLPS(
-                                original.substring(0, original.length() - 1),
-                                reverse.substring(0, reverse.length() - 1));
+            if (
+                original.charAt(original.length() - 1) ==
+                reverse.charAt(reverse.length() - 1)
+            ) {
+                String bestSubResult = recursiveLPS(
+                    original.substring(0, original.length() - 1),
+                    reverse.substring(0, reverse.length() - 1)
+                );
 
-                bestResult = reverse.charAt(reverse.length() - 1) + bestSubResult;
+                bestResult =
+                    reverse.charAt(reverse.length() - 1) + bestSubResult;
             } else {
                 // otherwise (1) ignore the last character of reverse, and recur on original and updated
                 // reverse again
@@ -46,8 +49,14 @@ public class LongestPalindromicSubsequence {
                 // again
                 // then select the best result from these two subproblems.
 
-                String bestSubResult1 = recursiveLPS(original, reverse.substring(0, reverse.length() - 1));
-                String bestSubResult2 = recursiveLPS(original.substring(0, original.length() - 1), reverse);
+                String bestSubResult1 = recursiveLPS(
+                    original,
+                    reverse.substring(0, reverse.length() - 1)
+                );
+                String bestSubResult2 = recursiveLPS(
+                    original.substring(0, original.length() - 1),
+                    reverse
+                );
                 if (bestSubResult1.length() > bestSubResult2.length()) {
                     bestResult = bestSubResult1;
                 } else {

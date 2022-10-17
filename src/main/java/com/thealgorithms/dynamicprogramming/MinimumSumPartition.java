@@ -1,4 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
+
 // Partition a set into two subsets such that the difference of subset sums is minimum
 
 /*
@@ -81,8 +82,8 @@ public class MinimumSumPartition {
      * Driver Code
      */
     public static void main(String[] args) {
-        assert subSet(new int[]{1, 6, 11, 5}) == 1;
-        assert subSet(new int[]{36, 7, 46, 40}) == 23;
-        assert subSet(new int[]{1, 2, 3, 9}) == 3;
+        assert subSet(new int[] { 1, 6, 11, 5 }) == 1;
+        assert subSet(new int[] { 36, 7, 46, 40 }) == 23;
+        assert subSet(new int[] { 1, 2, 3, 9 }) == 3;
     }
 }

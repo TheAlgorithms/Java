@@ -6,8 +6,6 @@ public class DisjointSets<T> {
         return new Node<T>(x);
     }
 
-    ;
-
     public Node<T> FindSet(Node<T> node) {
         if (node != node.parent) {
             node.parent = FindSet(node.parent);

@@ -20,8 +20,7 @@ public abstract class Node<E> {
     /**
      * Empty constructor.
      */
-    public Node() {
-    }
+    public Node() {}
 
     /**
      * Initializes the Nodes' data.

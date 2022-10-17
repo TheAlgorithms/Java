@@ -1,10 +1,11 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+
 public class UpperTest {
+
     @Test
     public void toUpperCase() {
         String input1 = "hello world";

@@ -44,7 +44,9 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         integerTree.remove(9);
         assert !integerTree.find(9) : "9 was just deleted from BST";
         integerTree.remove(1);
-        assert !integerTree.find(1) : "Since 1 was not present so find deleting would do no change";
+        assert !integerTree.find(
+            1
+        ) : "Since 1 was not present so find deleting would do no change";
         integerTree.add(20);
         integerTree.add(70);
         assert integerTree.find(70) : "70 was inserted but not found";
@@ -66,7 +68,9 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         stringTree.remove("date");
         assert !stringTree.find("date") : "date was just deleted from BST";
         stringTree.remove("boy");
-        assert !stringTree.find("boy") : "Since boy was not present so deleting would do no change";
+        assert !stringTree.find(
+            "boy"
+        ) : "Since boy was not present so deleting would do no change";
         stringTree.add("india");
         stringTree.add("hills");
         assert stringTree.find("hills") : "hills was inserted but not found";
@@ -75,7 +79,6 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
      banana hills india pineapple
          */
         stringTree.inorder();
-
     }
 
     /**
