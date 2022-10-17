@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author Pritam Dash
  */
-class PalindromeWord
+class Palindrome
 {
     /**
      * Main method
