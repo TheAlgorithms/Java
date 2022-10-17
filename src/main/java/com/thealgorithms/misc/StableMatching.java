@@ -1,14 +1,14 @@
 // Java program for stable marriage problem 
 import java.util.*;
   
-class GFG
+class StableMatching
 { 
   
-// Number of Men or Women 
+// Number of Men or Women(can use scanner to define too) 
 static int N = 4; 
   
-// This function returns true if woman 
-// 'w' prefers man 'm1' over man 'm' 
+// This function returns true if the woman 
+// 'w' prefers a man 'm1' over a man 'm' 
 static boolean wPrefersM1OverM(int prefer[][], int w, 
                                int m, int m1) 
 { 
@@ -34,12 +34,12 @@ static boolean wPrefersM1OverM(int prefer[][], int w,
 // Prints stable matching for N boys and
 // N girls. Boys are numbered as 0 to 
 // N-1. Girls are numbered as N to 2N-1. 
-static void stableMarriage(int prefer[][]) 
+static void stableMatchingMethod(int prefer[][]) 
 { 
-    // Stores partner of women. This is our
-    // output array that stores passing information. 
+    // Stores partner of the women. This is our
+    // output array that stores the passing information. 
     // The value of wPartner[i] indicates the partner 
-    // assigned to woman N+i. Note that the woman 
+    // assigned to the woman N+i. Note that the woman 
     // numbers between N and 2*N-1. The value -1 
     // indicates that (N+i)'th woman is free 
     int wPartner[] = new int[N]; 
@@ -49,15 +49,15 @@ static void stableMarriage(int prefer[][])
     // free, otherwise engaged. 
     boolean mFree[] = new boolean[N]; 
   
-    // Initialize all men and women as free 
+    // Initialize all men and women as free at the start 
     Arrays.fill(wPartner, -1); 
     int freeCount = N; 
   
     // While there are free men 
     while (freeCount > 0) 
     { 
-        // Pick the first free man 
-        // (we could pick any) 
+        // Pick the first free man from the list
+        // (we could pick any from the list) 
         int m; 
         for (m = 0; m < N; m++) 
             if (mFree[m] == false) 
@@ -73,8 +73,8 @@ static void stableMarriage(int prefer[][])
   
             // The woman of preference is free, 
             // w and m become partners (Note that 
-            // the partnership maybe changed later).
-            // So we can say they are engaged not married 
+            // the partnership maybe changed later due to preference).
+            // So we can say they are engaged not married to be exact 
             if (wPartner[w - N] == -1) 
             { 
                 wPartner[w - N] = m; 
@@ -87,22 +87,22 @@ static void stableMarriage(int prefer[][])
                 // Find current engagement of w 
                 int m1 = wPartner[w - N]; 
   
-                // If w prefers m over her current engagement m1, 
+                // If w prefers m over her current engagement with m1, 
                 // then break the engagement between w and m1 and 
-                // engage m with w. 
+                // engage m with w.  
                 if (wPrefersM1OverM(prefer, w, m, m1) == false) 
                 { 
                     wPartner[w - N] = m; 
                     mFree[m] = true; 
                     mFree[m1] = false; 
                 } 
-            } // End of Else 
+            } // End of Else statement
         } // End of the for loop that goes 
-          // to all women in m's list 
-    } // End of main while loop 
+          // to all women in the m's list 
+    } // End of main while loop here
   
   
-// Print the solution 
+// Print the solution here
 System.out.println("Woman Man"); 
 for (int i = 0; i < N; i++) 
 {
@@ -112,7 +112,7 @@ for (int i = 0; i < N; i++)
 }
 } 
   
-// Driver Code
+// Driver Code to execute
 public static void main(String[] args) 
 { 
     int prefer[][] = new int[][]{{7, 5, 6, 4}, 
@@ -123,6 +123,6 @@ public static void main(String[] args)
                                  {0, 1, 2, 3}, 
                                  {0, 1, 2, 3}, 
                                  {0, 1, 2, 3}}; 
-    stableMarriage(prefer); 
+    stableMatchingMethod(prefer); 
 }
 } 
