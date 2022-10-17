@@ -25,7 +25,11 @@ class MergeSort implements SortAlgorithm {
      * @param left the first index of the array.
      * @param right the last index of the array.
      */
-    private static <T extends Comparable<T>> void doSort(T[] arr, int left, int right) {
+    private static <T extends Comparable<T>> void doSort(
+        T[] arr,
+        int left,
+        int right
+    ) {
         if (left < right) {
             int mid = (left + right) >>> 1;
             doSort(arr, left, mid);
@@ -43,7 +47,12 @@ class MergeSort implements SortAlgorithm {
      * @param right the last index of the array merges two parts of an array in
      * increasing order.
      */
-    private static <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
+    private static <T extends Comparable<T>> void merge(
+        T[] arr,
+        int left,
+        int mid,
+        int right
+    ) {
         int length = right - left + 1;
         @SuppressWarnings("unchecked")
         T[] temp = (T[]) new Comparable[length];
@@ -76,13 +85,13 @@ class MergeSort implements SortAlgorithm {
     public static void main(String[] args) {
         MergeSort mergeSort = new MergeSort();
 
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] arr = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
         mergeSort.sort(arr);
         for (int i = 0; i < arr.length - 1; ++i) {
             assert arr[i] <= arr[i + 1];
         }
 
-        String[] stringArray = {"c", "a", "e", "b", "d"};
+        String[] stringArray = { "c", "a", "e", "b", "d" };
         mergeSort.sort(stringArray);
         for (int i = 0; i < stringArray.length - 1; ++i) {
             assert arr[i].compareTo(arr[i + 1]) <= 0;

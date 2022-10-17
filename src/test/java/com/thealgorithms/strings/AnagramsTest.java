@@ -1,10 +1,11 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+
 public class AnagramsTest {
+
     @Test
     public void isAlphabetical() {
         String input1 = "late";

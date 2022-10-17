@@ -9,11 +9,15 @@ import java.io.InputStreamReader;
 public class RemoveDuplicateFromString {
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(
+            new InputStreamReader(System.in)
+        );
         String inpStr = br.readLine();
 
         System.out.println("Actual string is: " + inpStr);
-        System.out.println("String after removing duplicates: " + removeDuplicate(inpStr));
+        System.out.println(
+            "String after removing duplicates: " + removeDuplicate(inpStr)
+        );
 
         br.close();
     }
