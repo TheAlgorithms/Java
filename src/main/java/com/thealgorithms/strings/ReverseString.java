@@ -54,8 +54,7 @@ public class ReverseString {
 
         int len=str.length();
         String s1="",s2="";
-        for(int i=0, j=len-1; i<len/2; i++, j--)
-        {
+        for(int i=0, j=len-1; i<len/2; i++, j--) {
             s1=str.charAt(i)+s1;
             s2+=str.charAt(j);
         }
