@@ -59,9 +59,9 @@ public class ReverseString {
             s1=str.charAt(i)+s1;
             s2+=str.charAt(j);
         }
-        if(len%2==0)
-        return new String(s2+s1);
+        if(len%2 == 0)
+            return new String(s2 + s1);
         else
-        return new String(s2+str.charAt(len/2)+s1);
+            return new String(s2 + str.charAt(len/2) + s1);
     }
 }
