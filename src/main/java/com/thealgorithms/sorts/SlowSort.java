@@ -26,24 +26,4 @@ public class SlowSort implements SortAlgorithm {
         }
         sort(array, i, j - 1);
     }
-
-    public static void main(String[] args) {
-        SlowSort slowSort = new SlowSort();
-
-        Integer[] integerArray = { 8, 84, 53, 953, 64, 2, 202, 98 };
-        // Print integerArray unsorted
-        SortUtils.print(integerArray);
-
-        slowSort.sort(integerArray);
-        // Print integerArray sorted
-        SortUtils.print(integerArray);
-
-        String[] stringArray = { "g", "d", "a", "b", "f", "c", "e" };
-        // Print stringArray unsorted
-        SortUtils.print(stringArray);
-
-        slowSort.sort(stringArray);
-        // Print stringArray sorted
-        SortUtils.print(stringArray);
-    }
 }
