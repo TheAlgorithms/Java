@@ -27,6 +27,9 @@ public class Volume {
 
         /*test pyramid*/
         assert Double.compare(volumePyramid(10, 3), 10.0) == 0;
+        
+        /*test ellipsoid*/
+        assert Double.compare(volumeEllipsoid(2, 5, 7), 11.666666666666666) == 0;
     }
 
     /**
@@ -117,5 +120,15 @@ public class Volume {
      */
     private static double volumePyramid(double basearea, double height) {
         return basearea * height / 3;
+    }
+
+    /**
+     * Calculate the volume of an ellipsoid.
+     *
+     * @param semi-axes of an ellipsoid.
+     * @return volume of given ellipsoid.
+     */
+    private static double volumeEllipsoid(double x, double y, , double z) {
+        return (Math.PI * x * y * z )/(6 * Math.sqrt(2));
     }
 }
