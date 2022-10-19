@@ -7,6 +7,11 @@ import java.util.Map;
  * Two strings are anagrams if they are made of the same letters arranged
  * differently (ignoring the case).
  */
+
+/**
+ * Time Complexity is O(n)
+ * Space Complexity is O(1)
+ */
 public class CheckAnagrams {
 
     public static void main(String[] args) {
@@ -27,27 +32,18 @@ public class CheckAnagrams {
         int l2 = s2.length();
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();
-        Map<Character, Integer> charAppearances = new HashMap<>();
-
+        long count=0;
         for (int i = 0; i < l1; i++) {
-            char c = s1.charAt(i);
-            int numOfAppearances = charAppearances.getOrDefault(c, 0);
-            charAppearances.put(c, numOfAppearances + 1);
+            count += s1.charAt(i);
         }
 
         for (int i = 0; i < l2; i++) {
-            char c = s2.charAt(i);
-            if (!charAppearances.containsKey(c)) {
-                return false;
-            }
-            charAppearances.put(c, charAppearances.get(c) - 1);
+            count -= s2.charAt(i);
         }
 
-        for (int cnt : charAppearances.values()) {
-            if (cnt != 0) {
-                return false;
-            }
-        }
-        return true;
+        if(count == 0)
+            return true;
+        else
+            return false;
     }
 }
