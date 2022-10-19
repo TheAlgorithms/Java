@@ -1,6 +1,4 @@
-package com.thealgorithms.others;
-
-
+ //Hamming code for 7-bit
  import java.util.*;
 public class HammingCode{
 
