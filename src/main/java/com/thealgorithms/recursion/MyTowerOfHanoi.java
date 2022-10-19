@@ -1,4 +1,4 @@
-public class TowerOfHanoi {
+public class MyTowerOfHanoi {
     public static void FuntowerOfHanoi(int n, String S, String H, String D){
         if (n==1) {
             System.out.println("transfer disk "+n+" from "+S+" to "+D);
