@@ -25,6 +25,9 @@ public class Rotation {
      * @return string after rotation
      */
     public static String rotation(String s, int n) {
+        if (s.length() == 1 || s.length() == 0) {
+            return s;
+        }
         return s.substring(n) + s.substring(0, n);
     }
 
