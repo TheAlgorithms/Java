@@ -10,7 +10,7 @@ public class FactorsTest {
     public void test() {
         ArrayList<Long> out = new ArrayList<Long>();
         out.add(toLong(1));
-        assertEquals(new ArrayList<>(out, Factors.factors(1)));
+        assertEquals(out, Factors.factors(1));
     }
 
     @Test
@@ -18,7 +18,7 @@ public class FactorsTest {
         ArrayList<Long> out = new ArrayList<Long>();
         out.add(toLong(1));
         out.add(toLong(5));
-        assertEquals(new ArrayList<>(out, Factors.factors(5)));
+        assertEquals(out, Factors.factors(5));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class FactorsTest {
         out.add(toLong(2));
         out.add(toLong(3));
         out.add(toLong(6));
-        assertEquals(new ArrayList<>(out, Factors.factors(6)));
+        assertEquals(out, Factors.factors(6));
     }
 
     private Long toLong(int n) {
