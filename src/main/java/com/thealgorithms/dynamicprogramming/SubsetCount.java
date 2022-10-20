@@ -1,6 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.*;
 /**
  * Find the number of subsets present in the given array with a sum equal to target.
  * Based on Solution discussed on StackOverflow(https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k)
@@ -67,12 +66,4 @@ public class SubsetCount {
         return prev[target];
     }
 
-
-
-    public static void main(String[] args) {
-        int[] testArray = new int[]{1,2,3,3};
-        System.out.println(new SubsetCount().getCount(testArray,6));//Answer = 3
-        testArray = new int[]{1, 1, 1, 1};
-        System.out.println(new SubsetCount().getCountSO(testArray,1));//Answer = 4
-    }
 }
