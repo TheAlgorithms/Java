@@ -1,10 +1,10 @@
 package com.thealgorithms.strings;
 
 import java.util.HashSet;
-import java.util.Locale;
 
 public class CharactersUnique {
 
+    //similar to https://www.geeksforgeeks.org/determine-string-unique-characters/
     /**
      * check if all the characters of a string are unique
      *
