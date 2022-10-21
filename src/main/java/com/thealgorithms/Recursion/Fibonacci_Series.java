@@ -1,4 +1,3 @@
-package Practice;
 public class Fibonacci_Series{
 //    "a", "b", "c" are the three consecutive numbers in a fibonacci series.
 //    "n" is a number in the series till which we want our series to be printed.
