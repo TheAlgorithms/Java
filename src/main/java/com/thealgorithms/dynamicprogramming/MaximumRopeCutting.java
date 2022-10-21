@@ -1,18 +1,27 @@
-
-// A Dynamic Programming solution for Max Product Problem
-int maxProd(int n)
+import java.io.*;
+import java.util.*;
+ 
+class GFG 
 {
-   int val[n+1];
-   val[0] = val[1] = 0;
+	static int maxCuts(int n, int a, int b, int c)
+	{
+		if(n == 0) return 0;
+		if(n < 0)  return -1;
+ 
+		int res = Math.max(maxCuts(n-a, a, b, c), 
+		          Math.max(maxCuts(n-b, a, b, c), 
+		          maxCuts(n-c, a, b, c)));
+ 
+		if(res == -1)
+			return -1;
+ 
+		return res + 1; 
+	}
   
-   // Build the table val[] in bottom up manner and return
-   // the last entry from the table
-   for (int i = 1; i <= n; i++)
-   {
-      int max_val = 0;
-      for (int j = 1; j <= i; j++)
-         max_val = Math.max(max_val, (i-j)*j, j*val[i-j]);
-      val[i] = max_val;
-   }
-   return val[n];
+    public static void main(String [] args) 
+    {
+    	int n = 5, a = 2, b = 1, c = 5;
+    	
+    	System.out.println(maxCuts(n, a, b, c));
+    }
 }
