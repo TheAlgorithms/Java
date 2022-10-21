@@ -1,7 +1,4 @@
-import java.io.*;
-import java.util.*;
- 
-class GFG 
+class RopeCutting 
 {
 	static int maxCuts(int n, int a, int b, int c)
 	{
