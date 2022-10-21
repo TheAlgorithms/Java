@@ -14,8 +14,7 @@ Other Applications of Rolling Hash :-
 
 package com.thealgorithms.others;
 
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class RollingHash {
     
