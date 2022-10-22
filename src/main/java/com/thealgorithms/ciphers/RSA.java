@@ -77,10 +77,10 @@ public final class RSA {
         BigInteger m =
             (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 
-        publicKey = new BigInteger("3");
+        publicKey = BigInteger.valueOf(3);
 
         while (m.gcd(publicKey).intValue() > 1) {
-            publicKey = publicKey.add(new BigInteger("2"));
+            publicKey = publicKey.add(BigInteger.TWO);
         }
 
         privateKey = publicKey.modInverse(m);
