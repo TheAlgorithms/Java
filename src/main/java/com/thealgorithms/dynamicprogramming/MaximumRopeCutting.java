@@ -14,14 +14,18 @@ class RopeCutting
 	}
     public static void main(String [] args) 
     {
-	Scanner n = new Scanner(System.in);  // Create a Scanner object
+	Scanner i = new Scanner(System.in);  // Create a Scanner object
     	System.out.println("Enter for n");
-	Scanner a = new Scanner(System.in);  // Create a Scanner object
+	int n = i.nextLine();
+	Scanner j = new Scanner(System.in);  // Create a Scanner object
     	System.out.println("Enter for a");
-    	Scanner b = new Scanner(System.in);  // Create a Scanner object
+	int a = j.nextLine();
+    	Scanner k = new Scanner(System.in);  // Create a Scanner object
     	System.out.println("Enter for b");
-	Scanner c = new Scanner(System.in);  // Create a Scanner object
+	int b = k.nextLine();
+	Scanner l = new Scanner(System.in);  // Create a Scanner object
     	System.out.println("Enter for c");
+	int c = l.nextLine();
     	System.out.println(maxCuts(n, a, b, c));
     }
 }
