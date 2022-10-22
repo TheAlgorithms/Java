@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class RopeCutting 
 {
 	static int maxCuts(int n, int a, int b, int c)
