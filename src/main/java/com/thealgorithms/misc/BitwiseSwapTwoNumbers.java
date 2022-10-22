@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class SwapTwoNumbers 
 {  
   static void swapNumbers(int x, int y)  
