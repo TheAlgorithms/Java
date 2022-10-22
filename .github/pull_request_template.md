@@ -1,16 +1,4 @@
-### **Describe your change:**
-
-- [ ] Add an algorithm?
-- [ ] Fix a bug or typo in an existing algorithm?
-- [ ] Documentation change?
-
-#### References
-
-<!-- Add any reference to previous pull-request or issue -->
-
-### **Checklist:**
-
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
+<!-- For completed items, change [ ] to [x] -->
 
 - [ ] I have read [CONTRIBUTING.md](https://github.com/TheAlgorithms/Java/blob/master/CONTRIBUTING.md).
 - [ ] This pull request is all my own work -- I have not plagiarized it.
