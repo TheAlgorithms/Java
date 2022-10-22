@@ -1,5 +1,8 @@
 package com.thealgorithms.datastructures.heaps;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Minimum Priority Queue It is a part of heap data structure A heap is a
  * specific tree based data structure in which all the nodes of tree are in a
@@ -12,32 +15,33 @@ package com.thealgorithms.datastructures.heaps;
  * <p>
  * Functions: insert, delete, peek, isEmpty, print, heapSort, sink
  */
-public class MinPriorityQueue {
+public class MinPriorityQueue<T extends Comparable<T>> {
 
-    private int[] heap;
+    private List<T> heap;
     private int capacity;
     private int size;
 
     // calss the constructor and initializes the capacity
-    MinPriorityQueue(int c) {
+    public MinPriorityQueue(int c) {
         this.capacity = c;
         this.size = 0;
-        this.heap = new int[c + 1];
+        this.heap = new ArrayList<T>(c + 1); //new T[c + 1];
     }
 
     // inserts the key at the end and rearranges it
     // so that the binary heap is in appropriate order
-    public void insert(int key) {
+    public void insert(T key) {
         if (this.isFull()) {
             return;
         }
-        this.heap[this.size + 1] = key;
         int k = this.size + 1;
+        this.heap.set(k, key);
+        
         while (k > 1) {
-            if (this.heap[k] < this.heap[k / 2]) {
-                int temp = this.heap[k];
-                this.heap[k] = this.heap[k / 2];
-                this.heap[k / 2] = temp;
+            if (this.heap.get(k).compareTo(this.heap.get(k / 2)) < 0) {
+                T temp = this.heap.get(k);
+                this.heap.set(k, this.heap.get(k / 2));
+                this.heap.set(k / 2, temp);
             }
             k = k / 2;
         }
@@ -45,8 +49,8 @@ public class MinPriorityQueue {
     }
 
     // returns the highest priority value
-    public int peek() {
-        return this.heap[1];
+    public T peek() {
+        return this.heap.get(1);
     }
 
     // returns boolean value whether the heap is empty or not
@@ -68,7 +72,7 @@ public class MinPriorityQueue {
     // prints the heap
     public void print() {
         for (int i = 1; i <= this.capacity; i++) {
-            System.out.print(this.heap[i] + " ");
+            System.out.print(this.heap.get(i) + " ");
         }
         System.out.println();
     }
@@ -87,10 +91,10 @@ public class MinPriorityQueue {
         int k = 1;
         while (2 * k <= this.size || 2 * k + 1 <= this.size) {
             int minIndex;
-            if (this.heap[2 * k] >= this.heap[k]) {
+            if (this.heap.get(2 * k).compareTo(this.heap.get(k)) >= 0) {
                 if (
                     2 * k + 1 <= this.size &&
-                    this.heap[2 * k + 1] >= this.heap[k]
+                    this.heap.get(2 * k + 1).compareTo(this.heap.get(k)) >= 0
                 ) {
                     break;
                 } else if (2 * k + 1 > this.size) {
@@ -98,32 +102,32 @@ public class MinPriorityQueue {
                 }
             }
             if (2 * k + 1 > this.size) {
-                minIndex = this.heap[2 * k] < this.heap[k] ? 2 * k : k;
+                minIndex = this.heap.get(2 * k).compareTo(this.heap.get(k)) < 0 ? 2 * k : k;
             } else {
                 if (
-                    this.heap[k] > this.heap[2 * k] ||
-                    this.heap[k] > this.heap[2 * k + 1]
+                    this.heap.get(k).compareTo(this.heap.get(2*k)) > 0 ||
+                    this.heap.get(k).compareTo(this.heap.get(2*k + 1)) > 0
                 ) {
                     minIndex =
-                        this.heap[2 * k] < this.heap[2 * k + 1]
+                        this.heap.get(2 * k).compareTo(this.heap.get(2 * k + 1)) < 0
                             ? 2 * k
                             : 2 * k + 1;
                 } else {
                     minIndex = k;
                 }
             }
-            int temp = this.heap[k];
-            this.heap[k] = this.heap[minIndex];
-            this.heap[minIndex] = temp;
+            T temp = this.heap.get(k);
+            this.heap.set(k, this.heap.get(minIndex));
+            this.heap.set(minIndex, temp);
             k = minIndex;
         }
     }
 
     // deletes the highest priority value from the heap
-    public int delete() {
-        int min = this.heap[1];
-        this.heap[1] = this.heap[this.size];
-        this.heap[this.size] = min;
+    public T delete() {
+        T min = this.heap.get(1);
+        this.heap.set(1, this.heap.get(this.size));
+        this.heap.set(size, min);
         this.size--;
         this.sink();
         return min;
