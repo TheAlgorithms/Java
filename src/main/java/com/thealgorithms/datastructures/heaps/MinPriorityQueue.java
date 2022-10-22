@@ -6,7 +6,7 @@ package com.thealgorithms.datastructures.heaps;
  * specific order. that is the children are arranged in some respect of their
  * parents, can either be greater or less than the parent. This makes it a min
  * priority queue or max priority queue.
- *
+ * 
  * <p>
  *
  * <p>
@@ -129,29 +129,5 @@ public class MinPriorityQueue {
         return min;
     }
 
-    public static void main(String[] args) {
-        // testing
-        MinPriorityQueue q = new MinPriorityQueue(8);
-        q.insert(5);
-        q.insert(2);
-        q.insert(4);
-        q.insert(1);
-        q.insert(7);
-        q.insert(6);
-        q.insert(3);
-        q.insert(8);
-        q.print(); // [ 1, 2, 3, 5, 7, 6, 4, 8 ]
-        
-        System.out.println();
-        System.out.println("====================================================");
-        System.out.println();
-        
-        System.out.println(q.delete());
-        q.print();
-        //System.out.println(q.delete());
-        //q.print();
-        
-        q.heapSort();
-        q.print(); // [ 8, 7, 6, 5, 4, 3, 2, 1 ]
-    }
+    
 }

@@ -67,4 +67,5 @@ public class CeilInBinarySearchTree {
         // and the root is the ceil otherwise the returned node is the ceil.
         return result == null ? root : result;
     }
+    
 }

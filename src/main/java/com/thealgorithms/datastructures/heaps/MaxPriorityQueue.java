@@ -128,41 +128,5 @@ public class MaxPriorityQueue {
         this.sink();
         return max;
     }
-
-    public static void main(String[] args) {
-        // testing
-        MaxPriorityQueue q = new MaxPriorityQueue(8);
-        q.insert(5);
-        q.print();
-        q.insert(2);
-        q.print();
-        q.insert(4);
-        q.print();
-        q.insert(1);
-        q.print();
-        q.insert(7);
-        q.print();
-        q.insert(6);
-        q.print();
-        q.insert(3);
-        q.print();
-        q.insert(8);
-        q.print(); // [ 8, 7, 6, 5, 2, 4, 3, 1 ]
-        
-        System.out.println();
-        System.out.println("====================================================");
-        System.out.println();
-        
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        System.out.println(q.delete());
-        
-        q.heapSort();
-        q.print(); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
-    }
+    
 }
