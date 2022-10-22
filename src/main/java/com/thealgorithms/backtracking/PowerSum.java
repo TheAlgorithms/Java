@@ -10,25 +10,6 @@ import java.util.Scanner;
  */
 public class PowerSum {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number and the power");
-        int N = sc.nextInt();
-        int X = sc.nextInt();
-        PowerSum ps = new PowerSum();
-        int count = ps.powSum(N, X);
-        //printing the answer.
-        System.out.println(
-            "Number of combinations of different natural number's raised to " +
-            X +
-            " having sum " +
-            N +
-            " are : "
-        );
-        System.out.println(count);
-        sc.close();
-    }
-
     private int count = 0, sum = 0;
 
     public int powSum(int N, int X) {
