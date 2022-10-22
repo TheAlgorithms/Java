@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class SwapTwoNumbers 
+public class BitwiseSwapTwoNumbers 
 {  
   static void swapNumbers(int x, int y)  
   {  
