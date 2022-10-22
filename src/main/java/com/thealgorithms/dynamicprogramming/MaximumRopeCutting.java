@@ -13,7 +13,14 @@ class RopeCutting
 	}
     public static void main(String [] args) 
     {
-    	int n = 5, a = 2, b = 1, c = 5;
+	Scanner n = new Scanner(System.in);  // Create a Scanner object
+    	System.out.println("Enter for n");
+	Scanner a = new Scanner(System.in);  // Create a Scanner object
+    	System.out.println("Enter for a");
+    	Scanner b = new Scanner(System.in);  // Create a Scanner object
+    	System.out.println("Enter for b");
+	Scanner c = new Scanner(System.in);  // Create a Scanner object
+    	System.out.println("Enter for c");
     	System.out.println(maxCuts(n, a, b, c));
     }
 }
