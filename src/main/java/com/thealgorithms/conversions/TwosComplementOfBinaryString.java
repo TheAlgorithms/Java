@@ -1,5 +1,5 @@
 // An efficient Java program to find 2's complement
-
+import java.util.Scanner;
 class Test
 {
 	// Method to find two's complement
