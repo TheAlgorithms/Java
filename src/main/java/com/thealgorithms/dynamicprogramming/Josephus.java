@@ -17,10 +17,10 @@ class josephus {
 	{
 		Scanner a = new Scanner(System.in);  // Create a Scanner object
     		System.out.println("Enter for n");
-		int n = a.nexInt();
+		int n = a.nextInt();
 		Scanner b = new Scanner(System.in);  // Create a Scanner object
     		System.out.println("Enter for k");
-		int k = b.nexInt();
+		int k = b.nextInt();
 		System.out.println("The chosen place is "+ josephus(n, k));
 	}
 }
