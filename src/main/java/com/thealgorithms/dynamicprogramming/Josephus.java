@@ -1,4 +1,5 @@
 // Java code for Josephus Problem
+import java.util.Scanner;
 class josephus {
 	static int josephus(int n, int k)
 	{
