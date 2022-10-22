@@ -14,9 +14,12 @@ class josephus {
 	// Driver Program to test above function
 	public static void main(String[] args)
 	{
-		int n = 14;
-		int k = 2;
-		System.out.println("The chosen place is "
-						+ josephus(n, k));
+		Scanner a = new Scanner(System.in);  // Create a Scanner object
+    		System.out.println("Enter for n");
+		int n = a.nexInt();
+		Scanner b = new Scanner(System.in);  // Create a Scanner object
+    		System.out.println("Enter for k");
+		int k = b.nexInt();
+		System.out.println("The chosen place is "+ josephus(n, k));
 	}
 }
