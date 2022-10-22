@@ -37,7 +37,11 @@ class Test
 	// Driver method
 	public static void main(String[] args)
 	{
-		StringBuffer str = new StringBuffer("00000101");
+		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    		System.out.println("Enter binary");
+    		String binary = myObj.nextLine();
+		
+		StringBuffer str = new StringBuffer(binary);
 		System.out.println(findTwoscomplement(str));
 	}
 }
