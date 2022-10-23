@@ -9,11 +9,11 @@ public class PalindromeTest {
     public void palindrome() {
         String input1 = "kayak";
         String input2 = "kayaks";
-        Assertions.assertTrue(Palindrome.isPalindrome(input1));
-        Assertions.assertFalse(Palindrome.isPalindrome(input2));
+        Assertions.assertTrue(Palindrome.isPalindromeStringBuilder(input1));
+        Assertions.assertFalse(Palindrome.isPalindromeStringBuilder(input2));
         Assertions.assertTrue(Palindrome.isPalindromeRecursion(input1));
         Assertions.assertFalse(Palindrome.isPalindromeRecursion(input2));
-        Assertions.assertTrue(Palindrome.isPalindrome1(input1));
-        Assertions.assertFalse(Palindrome.isPalindrome1(input2));
+        Assertions.assertTrue(Palindrome.isPalindromeTwoPointer(input1));
+        Assertions.assertFalse(Palindrome.isPalindromeTwoPointer(input2));
     }
 }
