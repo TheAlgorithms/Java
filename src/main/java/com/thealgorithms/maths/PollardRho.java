@@ -35,40 +35,40 @@ package com.thealgorithms.maths;
  * 
  * */
 public class PollardRho {
-	
-	/**
-	 * This method returns a polynomial in x computed modulo n
-	 *
-	 * @param base Integer base of the polynomial
-	 * @param modulus Integer is value which is to be used to perform modulo operation over the polynomial 
-	 * @return Integer (((base * base) - 1) % modulus)
-	 */
-	static int g(int base,int modulus) {
-		return ((base * base) - 1) % modulus;
-	}
-	
-	/**
-	 * This method returns a non-trivial factor of given integer number  
-	 *
-	 * @param number Integer is a integer value whose non-trivial factor is to be found
-	 * @return Integer non-trivial factor of number
-	 * @throws RuntimeException object if GCD of given number cannot be found
-	 */
-	static int pollardRho(int number) {
-		int x = 2, y = 2, d = 1;
-		while(d == 1) {
-			//tortoise move
-			x = g(x, number);
-			
-			//hare move
-			y = g(g(y, number), number);
-			
-			//check GCD of |x-y| and number
-			d = GCD.gcd(Math.abs(x - y), number);
-		}
-		if(d == number) {
-			throw new RuntimeException("GCD cannot be found.");
-		}
-		return d;
-	}
+
+    /**
+     * This method returns a polynomial in x computed modulo n
+     *
+     * @param base Integer base of the polynomial
+     * @param modulus Integer is value which is to be used to perform modulo operation over the polynomial
+     * @return Integer (((base * base) - 1) % modulus)
+     */
+    static int g(int base, int modulus) {
+        return ((base * base) - 1) % modulus;
+    }
+
+    /**
+     * This method returns a non-trivial factor of given integer number
+     *
+     * @param number Integer is a integer value whose non-trivial factor is to be found
+     * @return Integer non-trivial factor of number
+     * @throws RuntimeException object if GCD of given number cannot be found
+     */
+    static int pollardRho(int number) {
+        int x = 2, y = 2, d = 1;
+        while (d == 1) {
+            //tortoise move
+            x = g(x, number);
+
+            //hare move
+            y = g(g(y, number), number);
+
+            //check GCD of |x-y| and number
+            d = GCD.gcd(Math.abs(x - y), number);
+        }
+        if (d == number) {
+            throw new RuntimeException("GCD cannot be found.");
+        }
+        return d;
+    }
 }

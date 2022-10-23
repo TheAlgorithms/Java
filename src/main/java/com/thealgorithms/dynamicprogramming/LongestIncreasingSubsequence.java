@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
@@ -48,7 +47,6 @@ public class LongestIncreasingSubsequence {
 
         tail[0] = array[0];
         for (int i = 1; i < N; i++) {
-
             // new smallest value
             if (array[i] < tail[0]) {
                 tail[0] = array[i];
@@ -86,6 +84,7 @@ public class LongestIncreasingSubsequence {
         }
         return lis;
     }
+
     // O(logn)
 
     private static int binarySearchBetween(int[] t, int end, int key) {

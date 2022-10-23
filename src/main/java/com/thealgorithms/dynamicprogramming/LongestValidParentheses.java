@@ -31,7 +31,10 @@ public class LongestValidParentheses {
                     int index = i - res[i - 1] - 1;
                     if (index >= 0 && chars[index] == '(') {
                         // ()(())
-                        res[i] = res[i - 1] + 2 + (index - 1 >= 0 ? res[index - 1] : 0);
+                        res[i] =
+                            res[i - 1] +
+                            2 +
+                            (index - 1 >= 0 ? res[index - 1] : 0);
                     }
                 }
             }
@@ -39,20 +42,5 @@ public class LongestValidParentheses {
         }
 
         return max;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        while (true) {
-            String str = sc.nextLine();
-            if ("quit".equals(str)) {
-                break;
-            }
-
-            System.out.println("Len is: " + getLongestValidParentheses(str));
-        }
-
-        sc.close();
     }
 }

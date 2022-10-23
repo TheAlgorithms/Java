@@ -5,9 +5,9 @@ package com.thealgorithms.maths;
  * Binomial Cofficients: A binomial cofficient C(n,k) gives number ways
  * in which k objects can be chosen from n objects.
  * Wikipedia: https://en.wikipedia.org/wiki/Binomial_coefficient
- * 
+ *
  * Author: Akshay Dubey (https://github.com/itsAkshayDubey)
- * 
+ *
  * */
 
 public class BinomialCoefficient {
@@ -20,8 +20,10 @@ public class BinomialCoefficient {
      * @return number of ways in which no_of_objects objects can be chosen from total_objects objects
      */
 
-    public static int binomialCoefficient(int totalObjects, int numberOfObjects) {
-
+    public static int binomialCoefficient(
+        int totalObjects,
+        int numberOfObjects
+    ) {
         // Base Case
         if (numberOfObjects > totalObjects) {
             return 0;
@@ -33,7 +35,9 @@ public class BinomialCoefficient {
         }
 
         // Recursive Call
-        return binomialCoefficient(totalObjects - 1, numberOfObjects - 1)
-                + binomialCoefficient(totalObjects - 1, numberOfObjects);
+        return (
+            binomialCoefficient(totalObjects - 1, numberOfObjects - 1) +
+            binomialCoefficient(totalObjects - 1, numberOfObjects)
+        );
     }
 }

@@ -11,7 +11,9 @@ class LongestPalindromicSubstring {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the string: ");
         str = sc.nextLine();
-        System.out.println("Longest substring is : " + s.longestPalindrome(str));
+        System.out.println(
+            "Longest substring is : " + s.longestPalindrome(str)
+        );
     }
 }
 

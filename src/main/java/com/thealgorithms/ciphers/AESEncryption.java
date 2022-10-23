@@ -1,8 +1,10 @@
 package com.thealgorithms.ciphers;
 
-import javax.crypto.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import javax.crypto.*;
+import javax.crypto.spec.GCMParameterSpec;
+import java.security.InvalidAlgorithmParameterException;
 
 /**
  * This example program shows how AES encryption and decryption can be done in
@@ -13,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 public class AESEncryption {
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    private static Cipher aesCipher;
 
     /**
      * 1. Generate a plain text for encryption 2. Get a secret key (printed in
@@ -26,8 +29,12 @@ public class AESEncryption {
         String decryptedText = decryptText(cipherText, secKey);
 
         System.out.println("Original Text:" + plainText);
-        System.out.println("AES Key (Hex Form):" + bytesToHex(secKey.getEncoded()));
-        System.out.println("Encrypted Text (Hex Form):" + bytesToHex(cipherText));
+        System.out.println(
+            "AES Key (Hex Form):" + bytesToHex(secKey.getEncoded())
+        );
+        System.out.println(
+            "Encrypted Text (Hex Form):" + bytesToHex(cipherText)
+        );
         System.out.println("Descrypted Text:" + decryptedText);
     }
 
@@ -38,7 +45,8 @@ public class AESEncryption {
      * @return secKey (Secret key that we encrypt using it)
      * @throws NoSuchAlgorithmException (from KeyGenrator)
      */
-    public static SecretKey getSecretEncryptionKey() throws NoSuchAlgorithmException {
+    public static SecretKey getSecretEncryptionKey()
+        throws NoSuchAlgorithmException {
         KeyGenerator aesKeyGenerator = KeyGenerator.getInstance("AES");
         aesKeyGenerator.init(128); // The AES key size in number of bits
         return aesKeyGenerator.generateKey();
@@ -55,10 +63,9 @@ public class AESEncryption {
      * @throws IllegalBlockSizeException (from Cipher)
      */
     public static byte[] encryptText(String plainText, SecretKey secKey)
-            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
-            IllegalBlockSizeException, BadPaddingException {
+        throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         // AES defaults to AES/ECB/PKCS5Padding in Java 7
-        Cipher aesCipher = Cipher.getInstance("AES");
+        aesCipher = Cipher.getInstance("AES/GCM/NoPadding");
         aesCipher.init(Cipher.ENCRYPT_MODE, secKey);
         return aesCipher.doFinal(plainText.getBytes());
     }
@@ -70,11 +77,12 @@ public class AESEncryption {
      */
     public static String decryptText(byte[] byteCipherText, SecretKey secKey)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
-            IllegalBlockSizeException, BadPaddingException {
+            IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
         // AES defaults to AES/ECB/PKCS5Padding in Java 7
-        Cipher aesCipher = Cipher.getInstance("AES");
-        aesCipher.init(Cipher.DECRYPT_MODE, secKey);
-        byte[] bytePlainText = aesCipher.doFinal(byteCipherText);
+        Cipher decryptionCipher = Cipher.getInstance("AES/GCM/NoPadding");
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(128, aesCipher.getIV());
+        decryptionCipher.init(Cipher.DECRYPT_MODE, secKey, gcmParameterSpec);
+        byte[] bytePlainText = decryptionCipher.doFinal(byteCipherText);
         return new String(bytePlainText);
     }
 
