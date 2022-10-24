@@ -16,21 +16,18 @@ public class Pangram {
     }
 
     /**
-     * Checks if a String is considered a Pangram
+     * Checks if a String is considered a Pangram by checking if each alhpabet is present or not
      *
      * @param s The String to check
      * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
     public static boolean isPangram(String s) {
-        boolean[] lettersExisting = new boolean[26];
-        for (char c : s.toCharArray()) {
-            int letterIndex = c - (Character.isUpperCase(c) ? 'A' : 'a');
-            if (letterIndex >= 0 && letterIndex < lettersExisting.length) {
-                lettersExisting[letterIndex] = true;
-            }
+        if (s.length() < 26) {
+            return false;
         }
-        for (boolean letterFlag : lettersExisting) {
-            if (!letterFlag) {
+        s = s.toLowerCase();
+        for (char i = 'a'; i <= 'z'; i++) {
+            if (s.indexOf(i) == -1) {
                 return false;
             }
         }
