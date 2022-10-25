@@ -17,7 +17,7 @@ class WordLadderTest {
         // which is 5 words long.
       
         List<String> wordList1 = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
-        Assertions.assertTrue(WordLadder.ladderLength("hit", "cog", wordList1), 5);
+        Assertions.assertTrue(WordLadder.ladderLength("hit", "cog", wordList1) == 5);
 
         // **Test 2:**
         // Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log"]
@@ -26,7 +26,7 @@ class WordLadderTest {
         // therefore there is no valid transformation sequence.
       
         List<String> wordList2 = Arrays.asList("hot", "dot", "dog", "lot", "log");
-        Assertions.assertTrue(WordLadder.ladderLength("hit", "cog", wordList2), 0);
+        Assertions.assertTrue(WordLadder.ladderLength("hit", "cog", wordList2) == 0);
 
     }
 }
