@@ -121,13 +121,12 @@ public class Anagrams {
             for (char c : t.toCharArray()) {
                 kk.put(c, kk.getOrDefault(c, 0) + 1);
             }
-            // It checks for equal frequencies
-            for (char c : nm.keySet()) {
-                if (!nm.get(c).equals(kk.get(c))) {
-                    return false;
-                }
+            // It checks for equal frequencies by comparing key-value pairs of two hashmaps
+            if (nm.equals(kk)) {
+                return true;
+            } else {
+                return false;
             }
-            return true;
         }
     }
 }
