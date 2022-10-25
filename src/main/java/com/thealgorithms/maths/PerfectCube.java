@@ -29,6 +29,7 @@ public class PerfectCube {
      * {@code false}
      */
     public static boolean isPerfectCube(int number) {
+        number = Math.abs(number); // converting negative number to positive number
         int a = (int) Math.pow(number, 1.0 / 3);
         return a * a * a == number;
     }
