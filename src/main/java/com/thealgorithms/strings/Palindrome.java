@@ -6,32 +6,13 @@ package com.thealgorithms.strings;
 class Palindrome {
 
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        String[] palindromes = { null, "", "aba", "123321" };
-        for (String s : palindromes) {
-            assert isPalindromeStringBuilder(s) &&
-            isPalindromeRecursion(s) &&
-            isPalindromeTwoPointer(s);
-        }
-
-        String[] notPalindromes = { "abb", "abc", "abc123" };
-        for (String s : notPalindromes) {
-            assert !isPalindromeStringBuilder(s) &&
-            !isPalindromeRecursion(s) &&
-            !isPalindromeTwoPointer(s);
-        }
-    }
-
-    /**
      * Check if a string is palindrome string or not using String Builder
      *
      * @param s a string to check
      * @return {@code true} if given string is palindrome, otherwise
      * {@code false}
      */
-    public static boolean isPalindromeStringBuilder(String s) {
+    public static boolean isPalindrome(String s) {
         return (
             (s == null || s.length() <= 1) ||
             s.equals(new StringBuilder(s).reverse().toString())
