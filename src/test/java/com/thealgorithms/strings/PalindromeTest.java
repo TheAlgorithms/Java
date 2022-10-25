@@ -7,13 +7,20 @@ public class PalindromeTest {
 
     @Test
     public void palindrome() {
-        String input1 = "kayak";
-        String input2 = "kayaks";
-        Assertions.assertTrue(Palindrome.isPalindromeStringBuilder(input1));
-        Assertions.assertFalse(Palindrome.isPalindromeStringBuilder(input2));
-        Assertions.assertTrue(Palindrome.isPalindromeRecursion(input1));
-        Assertions.assertFalse(Palindrome.isPalindromeRecursion(input2));
-        Assertions.assertTrue(Palindrome.isPalindromeTwoPointer(input1));
-        Assertions.assertFalse(Palindrome.isPalindromeTwoPointer(input2));
+
+        String[] palindromes = { null, "", "aba", "123321", "kayak" };
+        for (String s : palindromes) {
+            Assertions.assertTrue(isPalindrome(s) &&
+            isPalindromeRecursion(s) &&
+            isPalindromeTwoPointer(s));
+        }
+
+        String[] notPalindromes = { "abb", "abc", "abc123", "kayaks" };
+        for (String s : notPalindromes) {
+            Assertions.assertFalse(isPalindrome(s) &&
+            !isPalindromeRecursion(s) &&
+            !isPalindromeTwoPointer(s));
+        }
+        
     }
 }
