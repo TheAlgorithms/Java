@@ -4,7 +4,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class List_all_Possible_Words_From_Phone_Digits_Test {
+public class List_all_Possible_Words_From_Phone_Digits_Test extends List_all_Possible_Words_From_Phone_Digits {
 
     @Test
     public void list_all_Possible_Words_From_Phone_Digits() {
