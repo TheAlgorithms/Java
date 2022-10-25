@@ -23,4 +23,62 @@ jobs:
           java-version: 17
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots verify -Dmaven.javadoc.skip=true -Dmaven.test.skip=true
+      - name: Build Docker Image
+        run: ./build_docker.sh
+      - name: Publish to Docker Hub
+        run: ./publish_docker.sh
+      - name: Build and Publish Maven Artifact
+        run: ./build_publish_maven_artifact.sh
+```
+
+```bash
+#!/bin/bash
+
+set -e
+
+# Build
+mvn verify -Dmaven.javadoc.skip=true -Dmaven.test.skip=true
+
+# Build Docker Image
+./mvnw -Dmaven.test.skip=true package docker:build -U
+```
+
+```bash
+#!/bin/bash
+
+set -e
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+# Tag Image
+docker tag maven-action-java-docker-demo:latest cnfldemos/maven-action-java-docker-demo:latest
+
+# Publish to Docker Hub
+docker push cnfldemos/maven-action-java-docker-demo:latest
+```
+
+```bash
+#!/bin/bash
+
+set -e
+
+# Build
+mvn verify -Dmaven.javadoc.skip=true -Dmaven.test.skip=true
+
+# Build Docker Image
+./mvnw -Dmaven.test.skip=true package docker:build -U
+
+# Publish to Docker Hub
+./publish_docker.sh
+
+# Build Maven Artifact
+./mvnw deploy -U
+```
+
+## References
+
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
+- [GitHub Actions Java Workflow Documentation](https://docs.github.com/en/actions/language-and-framework-guides/building-java-applications)
+- [GitHub Actions Maven Workflow Documentation](https://docs.github.com/en/actions/language-and-framework-guides/building-maven-java-applications)
+- [GitHub Documentation](https://docs.github.com/)
