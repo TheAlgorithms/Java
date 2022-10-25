@@ -122,11 +122,7 @@ public class Anagrams {
                 kk.put(c, kk.getOrDefault(c, 0) + 1);
             }
             // It checks for equal frequencies by comparing key-value pairs of two hashmaps
-            if (nm.equals(kk)) {
-                return true;
-            } else {
-                return false;
-            }
+            return nm.equals(kk);
         }
     }
 }
