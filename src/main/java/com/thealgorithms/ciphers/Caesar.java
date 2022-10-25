@@ -68,18 +68,6 @@ public class Caesar {
     }
 
     /**
-     *  @return string array which contains all the possible decoded combination.
-     */
-    public String[] bruteforce(String encryptedMessage) {
-        String[] listOfAllTheAnswers = new String[27];
-        for (int i = 0; i <= 26; i++) {
-            listOfAllTheAnswers[i] = decode(encryptedMessage, i);
-        }
-
-        return listOfAllTheAnswers;
-    }
-
-    /**
      * @return true if character is capital Latin letter or false for others
      */
     private static boolean isCapitalLatinLetter(char c) {
@@ -91,5 +79,17 @@ public class Caesar {
      */
     private static boolean isSmallLatinLetter(char c) {
         return c >= 'a' && c <= 'z';
+    }
+
+    /**
+     *  @return string array which contains all the possible decoded combination.
+     */
+    public String[] bruteforce(String encryptedMessage) {
+        String[] listOfAllTheAnswers = new String[27];
+        for (int i = 0; i <= 26; i++) {
+            listOfAllTheAnswers[i] = decode(encryptedMessage, i);
+        }
+
+        return listOfAllTheAnswers;
     }
 }
