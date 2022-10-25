@@ -37,20 +37,6 @@ import java.util.Queue;
 class WordLadder {
 
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        String beginWord = "hit";
-        String endWord = "cog";
-        String words[] = { "hot", "dot", "dog", "lot", "log", "cog" };
-        List<String> wordList = Arrays.asList(words);
-
-        System.out.println(
-            "Ladder Length: " + ladderLength(beginWord, endWord, wordList)
-        );
-    }
-
-    /**
      * This function finds the ladderLength
      *
      * @param beginWord: Starting word of the ladder
