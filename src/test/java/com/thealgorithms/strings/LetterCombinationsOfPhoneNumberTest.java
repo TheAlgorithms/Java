@@ -37,7 +37,7 @@ public class LetterCombinationsOfPhoneNumberTest {
         // Output: ["adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi",
         // "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh",
         // "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi"]
-        int numbers4[] = { 2, 3, 4 };
+        int[] numbers4 = { 2, 3, 4 };
         List<String> output4 = Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg",
                 "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg",
                 "cfh", "cfi");
