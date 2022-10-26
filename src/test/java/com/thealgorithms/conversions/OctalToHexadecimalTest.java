@@ -8,7 +8,7 @@ public class OctalToHexadecimalTest {
 
     @Test
     public void testOctalToHexadecimal() {
-        assertEquals("1D9", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec(752)));
-        assertEquals("15E", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec(536)));
+        assertEquals("1D9", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("752")));
+        assertEquals("15E", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("536")));
     }
 }
