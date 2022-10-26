@@ -12,8 +12,11 @@ public class RadixSortTest {
     public void testRadixSortEmptyArray() {
         int[] array = {};
         radixSort.radixSort(array);
-        int[] expected = {};
-        assertArrayEquals(expected, array);
+        //catch exception if array is empty//
+        assertArrayEquals(new int[] {}, array);
+
+//        int[] expected = {};
+//        assertArrayEquals(expected, array);
     }
 
     @Test
@@ -39,6 +42,6 @@ public class RadixSortTest {
         int[] expected = { 2, 24, 45, 66, 75, 90, 170, 802, 1000000, 1000000000 };
         assertArrayEquals(expected, array);
     }
-
-
 }
+
+

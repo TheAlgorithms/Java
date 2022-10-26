@@ -19,13 +19,17 @@ class RadixSort {
      * @param arr The array where to find the maximum value
      */
     private int getMax(int[] arr) {
-        int mx = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
+        //throw exception if array is empty//
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > mx) {
-                mx = arr[i];
+            if (arr[i] > max) {
+                max = arr[i];
             }
         }
-        return mx;
+        return max;
     }
 
     /*
@@ -56,6 +60,9 @@ class RadixSort {
         }
     }
 
+    /**
+     * @param arr
+     */
     public void radixSort(int[] arr) {
         // Find the maximum number to know number of digits
         int max = getMax(arr);
@@ -67,14 +74,3 @@ class RadixSort {
             countSort(arr, exp);
         }
     }
-
-    public static void main(String[] args) {
-        int[] arr = { };
-        int n = arr.length;
-        RadixSort rs = new RadixSort();
-        rs.radixSort(arr);
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
