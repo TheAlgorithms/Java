@@ -1,4 +1,4 @@
-package com.Rishabh.Searching;
+package com.thealgorithms.searches;
 
 public class InifiniteArrey {
     public static void main(String[] args) {
