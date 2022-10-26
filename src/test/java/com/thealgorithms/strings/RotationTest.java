@@ -9,7 +9,7 @@ public class RotationTest {
     @Test
     public void isLongestPalindromicSubstring() {
         assertEquals("eksge", Rotation.rotate("geeks", 2));
-        assertEquals("anasban", LongestPalindromicSubstring.longestPalindrome("bananas", 3));
-        assertEquals("abracadabra", LongestPalindromicSubstring.longestPalindrome("abracadabra", 0));
+        assertEquals("anasban", Rotation.rotate("bananas", 3));
+        assertEquals("abracadabra", Rotation.rotate("abracadabra", 0));
      }
 }
