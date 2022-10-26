@@ -8,8 +8,8 @@ public class RotationTest {
 
     @Test
     public void isLongestPalindromicSubstring() {
-        assertEquals("eksge", Rotation.rotate("geeks", 2));
-        assertEquals("anasban", Rotation.rotate("bananas", 3));
-        assertEquals("abracadabra", Rotation.rotate("abracadabra", 0));
+        assertEquals("eksge", Rotation.rotation("geeks", 2));
+        assertEquals("anasban", Rotation.rotation("bananas", 3));
+        assertEquals("abracadabra", Rotation.rotation("abracadabra", 0));
      }
 }
