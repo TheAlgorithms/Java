@@ -10,14 +10,14 @@ class RSATest {
 
     @Test
     void testRSA() {
-        //given
+        // given
         String textToEncrypt = "Such secure";
 
-        //when
+        // when
         String cipherText = rsa.encrypt(textToEncrypt);
         String decryptedText = rsa.decrypt(cipherText);
 
-        //then
+        // then
         assertEquals("Such secure", decryptedText);
     }
 
