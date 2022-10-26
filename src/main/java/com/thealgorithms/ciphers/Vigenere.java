@@ -8,10 +8,11 @@ package com.thealgorithms.ciphers;
  */
 public class Vigenere {
 
-    public static String encrypt(final String message, final String key) {
+    public String encrypt(final String message, final String key) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0, j = 0; i < message.length(); i++) {
+        int j = 0;
+        for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
             if (Character.isLetter(c)) {
                 if (Character.isUpperCase(c)) {
@@ -39,10 +40,11 @@ public class Vigenere {
         return result.toString();
     }
 
-    public static String decrypt(final String message, final String key) {
+    public String decrypt(final String message, final String key) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0, j = 0; i < message.length(); i++) {
+        int j = 0;
+        for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
             if (Character.isLetter(c)) {
                 if (Character.isUpperCase(c)) {
@@ -65,14 +67,5 @@ public class Vigenere {
             j = ++j % key.length();
         }
         return result.toString();
-    }
-
-    public static void main(String[] args) {
-        String text = "Hello World!";
-        String key = "itsakey";
-        System.out.println(text);
-        String ciphertext = encrypt(text, key);
-        System.out.println(ciphertext);
-        System.out.println(decrypt(ciphertext, key));
     }
 }
