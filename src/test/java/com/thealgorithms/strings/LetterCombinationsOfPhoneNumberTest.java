@@ -14,7 +14,7 @@ public class LetterCombinationsOfPhoneNumberTest {
         // ** Test 1 **
         // Input: digits = ""
         // Output: []
-        int numbers1[] = {};
+        int[] numbers1 = {};
         List<String> output1 = Arrays.asList("");
         assertTrue(ob.printWords(numbers1, numbers1.length, 0, "").equals(output1));
 
