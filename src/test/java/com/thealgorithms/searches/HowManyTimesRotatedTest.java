@@ -1,4 +1,4 @@
-package com.thealgorithms.strings;
+package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.*;
 
