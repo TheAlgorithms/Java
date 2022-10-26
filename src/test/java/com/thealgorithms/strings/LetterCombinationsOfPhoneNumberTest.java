@@ -28,7 +28,7 @@ public class LetterCombinationsOfPhoneNumberTest {
         // ** Test 3 **
         // Input: digits = "23"
         // Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        int numbers3[] = { 2, 3 };
+        int[] numbers3 = { 2, 3 };
         List<String> output3 = Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf");
         assertTrue(ob.printWords(numbers3, numbers3.length, 0, "").equals(output3));
 
