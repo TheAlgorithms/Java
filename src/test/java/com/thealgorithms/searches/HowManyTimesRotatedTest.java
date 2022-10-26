@@ -14,3 +14,4 @@ public class HowManyTimesRotatedTest {
         assertEquals(3, HowManyTimesRotated.rotated(arr2));
     }
 }
+
