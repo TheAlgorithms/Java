@@ -13,7 +13,7 @@ public class Main {
         int row=0;
         int col=arr.length-1;
         while(row<=col){
-            int ele= (row+col)/2;
+            int ele= row+(col-row)/2;
             if(arr[row][ele]==target){
                 return new int[]{row,ele};
             }
