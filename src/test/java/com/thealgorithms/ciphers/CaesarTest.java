@@ -10,25 +10,25 @@ class CaesarTest {
 
     @Test
     void caesarEncryptTest() {
-        //given
+        // given
         String textToEncrypt = "Encrypt this text";
 
-        //when
+        // when
         String cipherText = caesar.encode(textToEncrypt, 5);
 
-        //then
+        // then
         assertEquals("Jshwduy ymnx yjcy", cipherText);
     }
 
     @Test
     void caesarDecryptTest() {
-        //given
+        // given
         String encryptedText = "Jshwduy ymnx yjcy";
 
-        //when
+        // when
         String cipherText = caesar.decode(encryptedText, 5);
 
-        //then
+        // then
         assertEquals("Encrypt this text", cipherText);
     }
 
