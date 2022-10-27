@@ -43,7 +43,7 @@ public class Pangram {
      * @param s The String to check
      * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
-    public static boolean isPangramIndexOf(String s) {
+    public static boolean isPangram2(String s) {
         if (s.length() < 26) {
             return false;
         }
