@@ -4,22 +4,22 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class divide_two_integersTest {
+public class DivideTwoIntegersTest {
 	
     @Test
     void test_one() {
-        assertEquals(3, divide_two_integers.divide(10,3));
+        assertEquals(3, DivideTwoIntegers.divide(10,3));
     }
   
       @Test
     void test_two() {
-        assertEquals(-2, divide_two_integers.divide(7,-3));
+        assertEquals(-2, DivideTwoIntegers.divide(7,-3));
     }
   
   
       @Test
     void test_three() {
-        assertEquals(10, divide_two_integers.divide(105,10));
+        assertEquals(10, DivideTwoIntegers.divide(105,10));
     }
 	
 }
