@@ -10,7 +10,7 @@
 
 import java.util.*;
 
-class Sort_Sentence_String {
+class SortSentenceString {
     public String sortSentence(String s) {
         String answer = "";
         String[] arr_1 = new StringBuilder(s).reverse().toString().split(" "); Arrays.sort(arr_1);
