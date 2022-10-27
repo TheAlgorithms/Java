@@ -1,4 +1,4 @@
-package com.example;
+package com.thealgorithms.searches;
 
 /**
 * Finding all the possible paths between two points of n x n matrix
