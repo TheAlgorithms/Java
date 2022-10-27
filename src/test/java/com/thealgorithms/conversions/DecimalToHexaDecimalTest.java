@@ -8,7 +8,7 @@ public class DecimalToHexaDecimalTest {
 
     @Test
     public void testDecimalToHexaDecimal() {
-        assertEquals("BE", DecimalToHexaDecimal.decToHex(190));
+        assertEquals("000000be", DecimalToHexaDecimal.decToHex(190));
         assertEquals("708", DecimalToHexaDecimal.decToHex(1800));
     }
 }
