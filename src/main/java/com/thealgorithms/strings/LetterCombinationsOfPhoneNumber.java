@@ -2,16 +2,11 @@ package com.thealgorithms.strings;
 
 import java.util.*;
 
-public class List_all_Possible_Words_From_Phone_Digits {
+public class LetterCombinationsOfPhoneNumber {
 
     static Character[][] numberToCharMap;
 
-    private static List<String> printWords(
-        int[] numbers,
-        int len,
-        int numIndex,
-        String s
-    ) {
+    protected static List<String> printWords(int[] numbers, int len, int numIndex, String s) {
         if (len == numIndex) {
             return new ArrayList<>(Collections.singleton(s));
         }
@@ -33,7 +28,7 @@ public class List_all_Possible_Words_From_Phone_Digits {
         stringList.stream().forEach(System.out::println);
     }
 
-    private static void generateNumberToCharMap() {
+    protected static void generateNumberToCharMap() {
         numberToCharMap = new Character[10][5];
         numberToCharMap[0] = new Character[] { '\0' };
         numberToCharMap[1] = new Character[] { '\0' };
