@@ -5,22 +5,6 @@ package com.thealgorithms.maths;
  */
 public class PerfectCube {
 
-    public static void main(String[] args) {
-        assert isPerfectCube(-1);
-        assert isPerfectCube(0);
-        assert isPerfectCube(1);
-        assert !isPerfectCube(4);
-        assert isPerfectCube(8);
-        assert isPerfectCube(27);
-        
-        assert isPerfectCubeMathCbrt(-1);
-        assert isPerfectCubeMathCbrt(0);
-        assert isPerfectCubeMathCbrt(1);
-        assert !isPerfectCubeMathCbrt(4);
-        assert isPerfectCubeMathCbrt(8);
-        assert isPerfectCubeMathCbrt(27);
-    }
-
     /**
      * Check if a number is perfect cube or not
      *
