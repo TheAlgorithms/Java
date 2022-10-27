@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Plus_oneTest {
+public class PlusOneTest {
 
 int[] intArray_1 = new int[]{ 1,2,4 }; 
 int[] intArray_2 = new int[]{ 4,3,2,2 }; 
@@ -16,18 +16,18 @@ int[] intArray_3_test = new int[]{ 9};
 
     @Test
     void test_one() {
-        assertEquals(intArray_1, Plus_one.plusOne(intArray_1_test));
+        assertEquals(intArray_1, PlusOne.plusOne(intArray_1_test));
     }
 
       @Test
     void test_two() {
-        assertEquals(intArray_2, Plus_one.plusOne(intArray_2_test));
+        assertEquals(intArray_2, PlusOne.plusOne(intArray_2_test));
     }
 
 
       @Test
     void test_three() {
-        assertEquals(intArray_3, Plus_one.plusOne(intArray_3_test));
+        assertEquals(intArray_3, PlusOne.plusOne(intArray_3_test));
     }
 
 }
