@@ -11,13 +11,13 @@ public class ValidParenthesesTest {
         assertEquals(true, ValidParentheses.isValid("()"));
     }
   
-      @Test
+    @Test
     void test_two() {
         assertEquals(true, ValidParentheses.isValid("()[]{}"));
     }
   
   
-      @Test
+    @Test
     void test_three() {
         assertEquals(false, ValidParentheses.isValid("(]"));
     }
