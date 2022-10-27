@@ -10,7 +10,7 @@
 //        then return -231.
 
 
-class divide_two_integers {
+class DivideTwoIntegers {
 public static int divide(int dividend, int divisor) {
         long new_dividend_1 = dividend;
         long new_divisor_1 = divisor;
