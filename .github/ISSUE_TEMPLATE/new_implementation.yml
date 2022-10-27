@@ -1,0 +1,36 @@
+name: "New or optimize implementation"
+description: "Propose an enhancement or a new algorithm implementation."
+title: "[ENHANCEMENT]"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would you like to share?
+      description: Provide a clear and concise explanation of your issue.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        "
+        For new implementations, please specify the name and problem statement for the algorithm.
+        For algorithm enhancements, specify what needs to be changed and why. For example:
+        - Adding tests.
+        - Optimizing logic.
+        - Refactoring the file and folders for better structure.
+        "
+  - type: textarea
+    id: issuedetails
+    attributes:
+      label: "Extra issue details"
+      description: "Write down all the issue/algorithm details mentioned above."
+    validations:
+      required: true
+  - type: textarea
+    id: extrainfo
+    attributes:
+      label: Additional information
+      description: Is there anything else we should know about this issue?
+    validations:
+      required: false
