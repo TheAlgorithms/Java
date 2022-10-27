@@ -474,7 +474,7 @@
             * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ReverseString.java)
             * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Rotation.java)
             * [Upper](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Upper.java)
-            * [Valid Parentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Valid_Parentheses.java)
+            * [ValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ValidParentheses.java)
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
             * zigZagPattern
               * [zigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/zigZagPattern.java)
