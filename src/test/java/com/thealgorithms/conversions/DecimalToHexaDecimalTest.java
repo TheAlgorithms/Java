@@ -9,6 +9,6 @@ public class DecimalToHexaDecimalTest {
     @Test
     public void testDecimalToHexaDecimal() {
         assertEquals("000000be", DecimalToHexaDecimal.decToHex(190));
-        assertEquals("708", DecimalToHexaDecimal.decToHex(1800));
+        assertEquals("00000708", DecimalToHexaDecimal.decToHex(1800));
     }
 }
