@@ -1,0 +1,19 @@
+package com.thealgorithms.strings;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class Sort_Sentence_StringTest {
+
+    @Test
+    void test_one() {
+        assertEquals("This is a sentence", Sort_Sentence_String.sortSentence("is2 sentence4 This1 a3"));
+    }
+
+      @Test
+    void test_two() {
+        assertEquals("Me Myself and I", Sort_Sentence_String.sortSentence("Myself2 Me1 I4 and3"));
+    }
+
+}
