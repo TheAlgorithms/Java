@@ -1,0 +1,25 @@
+package com.thealgorithms.maths;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class divide_two_integersTest {
+	
+    @Test
+    void test_one() {
+        assertEquals(3, divide_two_integers.divide(10,3));
+    }
+  
+      @Test
+    void test_two() {
+        assertEquals(-2, divide_two_integers.divide(7,-3));
+    }
+  
+  
+      @Test
+    void test_three() {
+        assertEquals(10, divide_two_integers.divide(105,10));
+    }
+	
+}
