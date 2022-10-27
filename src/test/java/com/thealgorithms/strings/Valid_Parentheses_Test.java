@@ -4,22 +4,22 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Valid_Parentheses_Test {
+public class ValidParenthesesTest {
 	
     @Test
     void test_one() {
-        assertEquals(true, Valid_Parentheses.isValid("()"));
+        assertEquals(true, ValidParentheses.isValid("()"));
     }
   
       @Test
     void test_two() {
-        assertEquals(true, Valid_Parentheses.isValid("()[]{}"));
+        assertEquals(true, ValidParentheses.isValid("()[]{}"));
     }
   
   
       @Test
     void test_three() {
-        assertEquals(false, Valid_Parentheses.isValid("(]"));
+        assertEquals(false, ValidParentheses.isValid("(]"));
     }
 	
 }
