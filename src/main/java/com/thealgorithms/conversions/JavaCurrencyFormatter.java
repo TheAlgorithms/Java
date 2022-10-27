@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class JavaCurrencyFormatter {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
