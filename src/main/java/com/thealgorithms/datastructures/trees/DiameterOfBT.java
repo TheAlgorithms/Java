@@ -5,21 +5,23 @@ package com.thealgorithms.datastructures.trees;
  *  Link for further explanation - https://www.javatpoint.com/diameter-of-binary-tree   
  */
 
-// Definition for a binary tree node.
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 
-class Solution {
+class DiameterOfBT {
 
     //Below functions accepts root of a Binary Tree and returns the diameter of a Binary tree
     public int diameterOfBinaryTree(TreeNode root) {
