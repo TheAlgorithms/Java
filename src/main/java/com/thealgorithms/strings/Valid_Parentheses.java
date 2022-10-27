@@ -30,6 +30,5 @@ public class ValidParentheses {
 			}
 		}
 		return head == 0;
-
 	}
 }
