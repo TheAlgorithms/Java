@@ -1,0 +1,80 @@
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.Stack;
+//class stackkk{
+public class stack{
+    //        Scanner n = new Scanner(System.in);
+//        int length = n.nextInt();
+    int[] stack =new int[1000];
+    int top=0;
+
+    public void push(int value){
+        stack[top]=value;
+        top++;
+    }
+
+    public int pop(){
+        int value;
+        top--;
+        value=stack[top];
+        stack[top]=0;
+        return value;
+    }
+
+    public int peak(){
+        int value;
+        value=stack[top-1];
+        return value;
+//        System.out.println(value);
+    }
+
+    public void display(){
+//        for(int i=0; i<5;i++){
+//            System.out.print(stack[i]+" ");
+//        }
+        for( int i : stack){
+            System.out.print(i +" ");
+
+        }
+        System.out.println(" ");
+
+    }
+    // }
+//    public static void check()
+
+
+
+    public static void main(String[] args) {
+
+        Scanner ac = new Scanner(System.in);
+        int length = 27;
+        int k= ac.nextInt();
+        char[] a1 = new char[length];
+
+        for (int i = 0; i < length; i++) {
+            a1[i] = ac.next().charAt(i);
+        }
+
+        stack a = new stack();
+        a.push(a1[0]);
+
+        for(int i=1; i<length;i++){
+            if(a.peak()<a1[i]){
+                a.push(a1[i]);
+                System.out.println(a1[i]);
+            }
+            else{
+                a.pop();
+                k--;
+                a.push(a1[i]);
+
+
+            }
+        }
+        a.push(a[i]);
+        a.push(20);
+        a.push(10);
+        a.display();
+        a.pop();
+    }
+}
