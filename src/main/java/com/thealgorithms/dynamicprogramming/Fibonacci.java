@@ -80,15 +80,6 @@ public class Fibonacci {
      * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
      */
     public static int fibOptimized(int n) {
-        if (n == 0) {
-            return 0;
-        }
-        int prev = 0, res = 1, next;
-        for (int i = 2; i <= n; i++) {
-            next = prev + res;
-            prev = res;
-            res = next;
-        }
-        return res;
+        return (int) (Math.pow(((1 + Math.sqrt(5)) / 2), n) / Math.sqrt(5));
     }
 }
