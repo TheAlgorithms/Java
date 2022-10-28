@@ -10,9 +10,9 @@ public class HanoiTowers {
             = new EnumMap<>(Peg.class);
  
     { // Use lists as Stacks:
-        pegs.put(A, asLifoQueue(new LinkedList<>()));
-        pegs.put(B, asLifoQueue(new LinkedList<>()));
-        pegs.put(C, asLifoQueue(new LinkedList<>()));
+        pegs.put(Peg.A, asLifoQueue(new LinkedList<>()));
+        pegs.put(Peg.B, asLifoQueue(new LinkedList<>()));
+        pegs.put(Peg.C, asLifoQueue(new LinkedList<>()));
     }
  
     public HanoiTowers(int n) {
@@ -22,7 +22,7 @@ public class HanoiTowers {
         }
         while (n > 0) {
             // Peg A always starts with all the disks:
-            this.pegs.get(A).add(n--);
+            this.pegs.get(Peg.A).add(n--);
         }
     }
  
