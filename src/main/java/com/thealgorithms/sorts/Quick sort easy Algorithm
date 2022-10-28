@@ -1,0 +1,57 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class quicksort{
+
+    public static void main(String[] args){
+        Scanner a = new Scanner(System.in);
+      System.out.println("Enter the length of the array:");
+        int length = a.nextInt();
+        int [] a1 = new int[length];
+       System.out.println("Enter the elements of the array:");
+        for(int i=0; i<length; i++ ) {
+            a1[i] = a.nextInt();
+        }
+        int f= 0;
+        qs(a1,f,length-1);
+        System.out.println(Arrays.toString(a1));
+
+    }
+
+    public static void qs(int[] a ,int first, int last) {
+//        System.out.println("OK6");
+        if (first<last) {
+//            System.out.println("OK5");
+            int p = partition(a,first, last);
+//            System.out.println("OK1");
+            qs(a,first, p - 1);
+            qs(a,p + 1, last);
+        }
+    }
+    public static int partition(int[] b, int f,int l) {
+        int p=b[f];
+        int i=f;
+        int j=l;
+//        System.out.println("OK2");
+        while(i<j){
+            while(b[i]<=p && i<l){
+                i++;
+            }
+            while(b[j]>p && j>f) {
+                j--;
+
+            }
+            if (i<j){
+                int temp=b[i];
+                b[i]=b[j];
+                b[j]=temp;
+            }
+
+        }
+        int temp=b[j];
+        b[j]=b[f];
+        b[f]=temp;
+        return j;
+    }
+}
