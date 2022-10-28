@@ -34,21 +34,8 @@ import java.util.Queue;
     beginWord != endWord
     All the words in wordList are unique.
  */
+
 class WordLadder {
-
-    /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        String beginWord = "hit";
-        String endWord = "cog";
-        String words[] = { "hot", "dot", "dog", "lot", "log", "cog" };
-        List<String> wordList = Arrays.asList(words);
-
-        System.out.println(
-            "Ladder Length: " + ladderLength(beginWord, endWord, wordList)
-        );
-    }
 
     /**
      * This function finds the ladderLength
@@ -60,11 +47,7 @@ class WordLadder {
      * @return ladderLength: This function will return the ladderLength(level)
      * if the endword is there. Otherwise, will return the length as 0.
      */
-    public static int ladderLength(
-        String beginWord,
-        String endWord,
-        List<String> wordList
-    ) {
+    public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> set = new HashSet();
         for (String word : wordList) {
             set.add(word);

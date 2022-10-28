@@ -7,7 +7,7 @@ package com.thealgorithms.backtracking;
 public class FloodFill {
 
     /**
-     * Get the color at the given co-odrinates of a 2D image
+     * Get the color at the given coordinates of a 2D image
      *
      * @param image The image to be filled
      * @param x The x co-ordinate of which color is to be obtained
@@ -19,9 +19,9 @@ public class FloodFill {
     }
 
     /**
-     * Put the color at the given co-odrinates of a 2D image
+     * Put the color at the given coordinates of a 2D image
      *
-     * @param image The image to be filed
+     * @param image The image to be filled
      * @param x The x co-ordinate at which color is to be filled
      * @param y The y co-ordinate at which color is to be filled
      */
@@ -32,7 +32,7 @@ public class FloodFill {
     /**
      * Fill the 2D image with new color
      *
-     * @param image The image to be filed
+     * @param image The image to be filled
      * @param x The x co-ordinate at which color is to be filled
      * @param y The y co-ordinate at which color is to be filled
      * @param newColor The new color which to be filled in the image
