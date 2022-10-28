@@ -2,7 +2,7 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.thealgorithms.others.TowerOfHanoi;
+import com.thealgorithms.others.TowerOfHanoi.Peg.*;
 import org.junit.jupiter.api.Test;
 /**
 Author @Atharva Joshi (https://github.com/atharva20-coder)
