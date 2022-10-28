@@ -2,9 +2,6 @@ import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.Queue;
  
-import static com.thealgorithms.HanoiTowers.Peg.*;
-import static java.util.Collections.asLifoQueue;
- 
 public class HanoiTowers {
  
     enum Peg {A, B, C}
