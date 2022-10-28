@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * @author Atharva Joshi (https://github.com/atharva20-coder)
  * @see BubbleSortRecursion
  */
-public class BubbleSortTest {
+public class BubbleSortRecursionTest {
 
     private BubbleSortRecursion bubbleSort = new BubbleSortRecursion();
 
