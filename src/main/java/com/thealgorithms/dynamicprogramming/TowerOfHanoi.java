@@ -1,24 +1,74 @@
-import java.util.Scanner;
-class TowerOfHanoi
-{
-	// Java recursive function to solve tower of hanoi puzzle
-	static void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod)
-	{
-		if (n == 1)
-		{
-			System.out.println("Move disk 1 from rod " + from_rod + " to rod " + to_rod);
-			return;
-		}
-		towerOfHanoi(n-1, from_rod, aux_rod, to_rod);
-		System.out.println("Move disk " + n + " from rod " + from_rod + " to rod " + to_rod);
-		towerOfHanoi(n-1, aux_rod, to_rod, from_rod);
-	}
-
-    public static void main(String args[])
-    {
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter for n");
-        int n = myObj.nextInt();  // Read user input
-        towerOfHanoi(n,'A','C', 'B');
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.Queue;
+ 
+import static com.thealgorithms.HanoiTowers.Peg.*;
+import static java.util.Collections.asLifoQueue;
+ 
+public class HanoiTowers {
+ 
+    enum Peg {A, B, C}
+ 
+    private final EnumMap<Peg, Queue<Integer>> pegs
+            = new EnumMap<>(Peg.class);
+ 
+    { // Use lists as Stacks:
+        pegs.put(A, asLifoQueue(new LinkedList<>()));
+        pegs.put(B, asLifoQueue(new LinkedList<>()));
+        pegs.put(C, asLifoQueue(new LinkedList<>()));
+    }
+ 
+    public HanoiTowers(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException(
+                    "Pegs must not be negative. Was: " + n);
+        }
+        while (n > 0) {
+            // Peg A always starts with all the disks:
+            this.pegs.get(A).add(n--);
+        }
+    }
+ 
+    // return content of selected peg
+    public Integer[] peg(Peg peg) {
+        Queue<Integer> p = pegs.get(peg);
+        return p.toArray(new Integer[p.size()]);
+    }
+ 
+    public void solve(Peg from, Peg to) {
+        solve(pegs.get(from).size(), from, to);
+    }
+ 
+    private void solve(int n, Peg from, Peg to) {
+        if (n >= 1) {
+            Peg spare = sparePeg(from, to);
+            solve(n-1, from, spare);
+            move(from, to);
+            solve(n-1, spare, to);
+        }
+    }
+ 
+    private Peg sparePeg(Peg from, Peg to) {
+        Peg spare = null;
+        switch (from) {
+            case A: spare = notSelected(to, B, C); break;
+            case B: spare = notSelected(to, A, C); break;
+            case C: spare = notSelected(to, A, B); break;
+        }
+        return spare;
+    }
+ 
+    private Peg notSelected(Peg given, Peg a, Peg b) {
+        return (given == a) ? b : a;
+    }
+ 
+    private void move(Peg from, Peg to) {
+        pegs.get(to).add(pegs.get(from).remove());
+    }
+ 
+    @Override
+    public String toString() {
+        // helpful for debugging:
+        return pegs.toString();
     }
 }
