@@ -7,7 +7,7 @@ public class HarshadNumber {
     /**
      * A function to check if a number is Harshad number or not
      *
-     * @param a The number to be checked
+     * @param n The number to be checked
      * @return {@code true} if {@code a} is Harshad number, otherwise
      *         {@code false}
      */
