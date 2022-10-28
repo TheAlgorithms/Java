@@ -336,6 +336,7 @@
             * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromePrime.java)
             * [PalindromeSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromeSinglyLinkedList.java)
             * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/RangeInSortedArray.java)
+            * [SingleNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/SingleNumber.java)
             * [SingleNumberInArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/SingleNumberInArray.java)
             * [Sort012D](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sort012D.java)
             * [Sparcity](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sparcity.java)
