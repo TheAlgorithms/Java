@@ -19,31 +19,31 @@ public class TowerOfHanoiTest {
  
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionForNegativePegs() {
-        new HanoiTowers(-1);
+        new TowerOfHanoi(-1);
     }
  
     @Test
     public void shouldInitializePegsWithGivenNumberOfDisks() {
-        HanoiTowers hanoi = new HanoiTowers(0);
+        TowerOfHanoi hanoi = new TowerOfHanoi(0);
         assertPegs(hanoi, EMPTY, EMPTY, EMPTY);
  
-        hanoi = new HanoiTowers(1);
+        hanoi = new TowerOfHanoi(1);
         assertPegs(hanoi, ONE_DISK, EMPTY, EMPTY);
  
-        hanoi = new HanoiTowers(5);
+        hanoi = new TowerOfHanoi(5);
         assertPegs(hanoi, FIVE_DISKS, EMPTY, EMPTY);
     }
  
     @Test
     public void shouldDoNothingWithEmptyPegs() {
-        HanoiTowers hanoi = new HanoiTowers(0);
+        TowerOfHanoi hanoi = new TowerOfHanoi(0);
         hanoi.solve(A, B);
         assertPegs(hanoi, EMPTY, EMPTY, EMPTY);
     }
  
     @Test
     public void shouldMoveTheOnlyDiskToSelectedPeg() {
-        HanoiTowers hanoi = new HanoiTowers(1);
+        TowerOfHanoi hanoi = new TowerOfHanoi(1);
         hanoi.solve(A, B);
         assertPegs(hanoi, EMPTY, ONE_DISK, EMPTY);
  
@@ -56,27 +56,27 @@ public class TowerOfHanoiTest {
  
     @Test
     public void shouldMoveAllDisksToSelectedPeg() {
-        HanoiTowers hanoi = new HanoiTowers(3);
+        TowerOfHanoi hanoi = new TowerOfHanoi(3);
         hanoi.solve(A, C);
         assertPegs(hanoi, EMPTY, EMPTY, THREE_DISKS);
  
-        hanoi = new HanoiTowers(5);
+        hanoi = new TowerOfHanoi(5);
         hanoi.solve(A, C);
         assertPegs(hanoi, EMPTY, EMPTY, FIVE_DISKS);
  
-        hanoi = new HanoiTowers(20);
+        hanoi = new TowerOfHanoi(20);
         hanoi.solve(A, C);
         assertPegs(hanoi, EMPTY, EMPTY, TWENTY_DISKS);
     }
  
-    private void assertPegs(HanoiTowers hanoi, Integer[] pegA,
+    private void assertPegs(TowerOfHanoi hanoi, Integer[] pegA,
                             Integer[] pegB, Integer[] pegC) {
         assertPeg(hanoi, A, pegA);
         assertPeg(hanoi, B, pegB);
         assertPeg(hanoi, C, pegC);
     }
  
-    private void assertPeg(HanoiTowers hanoi, Peg peg,
+    private void assertPeg(TowerOfHanoi hanoi, Peg peg,
                            Integer[] actual) {
         assertArrayEquals(hanoi.toString(),
                 hanoi.peg(peg), actual);
