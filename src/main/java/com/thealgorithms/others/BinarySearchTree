@@ -1,0 +1,93 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class labb {
+    public static class Node{
+        int val;
+        Node left;
+        Node right;
+        Node(int x){
+            val=x;
+        }
+    }
+
+
+    public static Node insert(Node root, int x){
+        if(root==null){
+            return new Node(x);
+        }
+        if(root.val>x){
+            root.left=insert(root.left,x);
+        }
+        else if(root.val<x){
+            root.right=insert(root.right,x);
+        }
+        return root;
+    }
+    public static void preorder(Node root){
+        if (root==null){
+            return ;
+        }
+        System.out.print(root.val+" ");
+        preorder(root.left);
+        preorder(root.right);
+
+    }
+
+    public static void inorder(Node root){
+        if (root==null){
+            return ;
+        }
+        inorder(root.left);
+        System.out.print(root.val+" ");
+        inorder(root.right);
+
+
+    }
+
+    public static void postorder(Node root){
+        if (root==null){
+            return ;
+        }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.val+" ");
+
+    }
+
+    public static void levelorder(Node root){
+        if (root==null){
+            return ;
+        }
+        Queue<Node>a=new LinkedList<Node>();
+        a.add(root);
+        while (a.isEmpty()==false){
+            Node curr=a.remove();
+            System.out.print(curr.val+" ");
+            if (curr.left!=null){
+                a.add(curr.left);
+            }
+            if (curr.right!=null){
+                a.add(curr.right);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Node root = null;
+        root = insert(root, 50);
+        insert(root,20);
+        insert(root,60);
+        insert(root,30);
+        insert(root,40);
+        preorder(root);
+        System.out.println();
+        inorder(root);
+        System.out.println();
+        postorder(root);
+        System.out.println();
+        levelorder(root);
+
+    }
+}
