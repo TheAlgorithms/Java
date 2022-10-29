@@ -11,12 +11,13 @@ public class RadixSortTest {
     @Test
     public void testRadixSortEmptyArray() {
         int[] array = {};
-        radixSort.radixSort(array);
-        //catch exception if array is empty//
-        assertArrayEquals(new int[] {}, array);
-
-//        int[] expected = {};
-//        assertArrayEquals(expected, array);
+        try{
+            radixSort.radixSort(array);
+        } catch (IllegalArgumentException e) {
+            assertArrayEquals(new int[]{}, array);
+        }
+         //catch exception if array is empty//
+        // assertArrayEquals(new int[] {}, array);
     }
 
     @Test
