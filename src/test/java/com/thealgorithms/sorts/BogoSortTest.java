@@ -8,7 +8,7 @@ public class BogoSortTest {
 	
     private BogoSort bogoSort = new BogoSort();
 	
-	@Test
+    @Test
     public void bogoSortEmptyArray() {
         Integer[] inputArray = {};
         Integer[] outputArray = bogoSort.sort(inputArray);
