@@ -569,6 +569,7 @@
             * [LiouvilleLambdaFunctionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LiouvilleLambdaFunctionTest.java)
             * [MobiusFunctionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MobiusFunctionTest.java)
             * [PascalTriangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PascalTriangleTest.java)
+            * [PerfectCubeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PerfectCubeTest.java)
             * [PerfectSquareTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PerfectSquareTest.java)
             * [perimeterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/perimeterTest.java)
             * [PlusOneTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PlusOneTest.java)
