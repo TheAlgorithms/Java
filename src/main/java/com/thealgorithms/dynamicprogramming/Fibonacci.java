@@ -19,6 +19,7 @@ public class Fibonacci {
         System.out.println(fibMemo(n));
         System.out.println(fibBotUp(n));
         System.out.println(fibOptimized(n));
+        System.out.println(fibBinet(n));
         sc.close();
     }
 
@@ -107,3 +108,4 @@ public class Fibonacci {
         int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n))/squareRootOf5);
         return nthTerm;
     }
+}
