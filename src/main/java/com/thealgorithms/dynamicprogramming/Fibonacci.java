@@ -106,4 +106,4 @@ public class Fibonacci {
         double phi = (1 + squareRootOf5)/2;
         int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n))/squareRootOf5);
         return nthTerm;
-}
+    }
