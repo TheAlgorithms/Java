@@ -554,6 +554,7 @@
             * [CombinationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CombinationsTest.java)
             * [DigitalRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DigitalRootTest.java)
             * [DistanceFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DistanceFormulaTest.java)
+            * [DivideTwoIntegersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DivideTwoIntegersTest.java)
             * [DudeneyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DudeneyNumberTest.java)
             * [FactorialTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FactorialTest.java)
             * [FastInverseSqrtTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FastInverseSqrtTests.java)
