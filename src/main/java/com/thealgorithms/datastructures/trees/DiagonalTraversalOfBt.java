@@ -27,18 +27,18 @@ class DiagonalTraversalOfBt {
      * }
      */
 
-    /**
-     * Definition of Pair class
-     * public static class Pair {
-     *         int hd; //horizontal distance
-     *         TreeNode node;
-     *
-     *         public Pair(int hd, TreeNode node) {
-     *             this.hd = hd;
-     *             this.node = node;
-     *         }
-     *     }
-     */
+
+//     * Definition of Pair class
+      public static class Pair {
+              int hd; //horizontal distance
+              TreeNode node;
+
+              public Pair(int hd, TreeNode node) {
+                  this.hd = hd;
+                  this.node = node;
+              }
+      }
+
 
 
     public static ArrayList<Integer> diagonal(TreeNode root){
