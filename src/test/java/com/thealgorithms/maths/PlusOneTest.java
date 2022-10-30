@@ -16,18 +16,18 @@ int[] intArray_3_test = new int[]{ 9};
 
     @Test
     void testOne() {
-        assertEquals(Arrays.toString(intArray_1), Arrays.toString(intArray_1_test));
+        assertEquals(Arrays.toString(intArray_1), Arrays.toString(PlusOne.plusOne(intArray_1_test)));
     }
 
       @Test
     void testTwo() {
-        assertEquals(Arrays.toString(intArray_2), Arrays.toString(intArray_2_test));
+        assertEquals(Arrays.toString(intArray_2), Arrays.toString(PlusOne.plusOne(intArray_2_test)));
     }
 
 
       @Test
     void testThree() {
-        assertEquals(Arrays.toString(intArray_3), Arrays.toString(intArray_3_test));
+        assertEquals(Arrays.toString(intArray_3), Arrays.toString(PlusOne.plusOne(intArray_3_test)));
     }
 
 }
