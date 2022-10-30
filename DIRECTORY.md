@@ -640,6 +640,7 @@
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
             * [RotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/RotationTest.java)
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
+            * [ValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ValidParenthesesTest.java)
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
               * [zigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/zigZagPatternTest.java)
