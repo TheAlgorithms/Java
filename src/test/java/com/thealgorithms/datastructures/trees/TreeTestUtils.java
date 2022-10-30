@@ -14,7 +14,7 @@ public class TreeTestUtils {
      */
     public static Node createTree(final Integer[] values) {
         if (values == null || values.length == 0 || values[0] == null) {
-            return null;
+            throw new IllegalArgumentException("Values array should not be empty or null.");
         }
         final Node root = new Node(values[0]);
         final Queue<Node> queue = new LinkedList<>();
