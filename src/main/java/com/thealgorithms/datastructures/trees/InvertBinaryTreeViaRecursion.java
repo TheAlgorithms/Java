@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.trees;
 
 
 
-public class InvertBinaryTreeviaRecursion {
+class InvertBinaryTreeviaRecursion {
 
     //Question Link: https://leetcode.com/problems/invert-binary-tree/
 
