@@ -1,9 +1,8 @@
 package com.thealgorithms.maths;
 
 import org.junit.jupiter.api.Test;
-
+import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.Assert;
 
 public class PlusOneTest {
 
@@ -17,18 +16,18 @@ int[] intArray_3_test = new int[]{ 9};
 
     @Test
     void testOne() {
-        assertArrayEquals(intArray_1, PlusOne.plusOne(intArray_1_test));
+        assertEquals(Arrays.toString(intArray_1), Arrays.toString(intArray_1_test));
     }
 
       @Test
     void testTwo() {
-        assertArrayEquals(intArray_2, PlusOne.plusOne(intArray_2_test));
+        assertEquals(Arrays.toString(intArray_2), Arrays.toString(intArray_2_test));
     }
 
 
       @Test
     void testThree() {
-        assertArrayEquals(intArray_3, PlusOne.plusOne(intArray_3_test));
+        assertEquals(Arrays.toString(intArray_3), Arrays.toString(intArray_3_test));
     }
 
 }
