@@ -150,6 +150,7 @@
               * [BSTRecursiveGeneric](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTRecursiveGeneric.java)
               * [CeilInBinarySearchTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CeilInBinarySearchTree.java)
               * [CheckIfBinaryTreeBalanced](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CheckIfBinaryTreeBalanced.java)
+              * [CheckTreeIsSymmetric](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CheckTreeIsSymmetric.java)
               * [CreateBinaryTreeFromInorderPreorder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CreateBinaryTreeFromInorderPreorder.java)
               * [CreateBSTFromSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CreateBSTFromSortedArray.java)
               * [FenwickTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/FenwickTree.java)
@@ -527,6 +528,7 @@
               * [SkipListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SkipListTest.java)
             * trees
               * [CeilInBinarySearchTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/CeilInBinarySearchTreeTest.java)
+              * [CheckTreeIsSymmetricTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/CheckTreeIsSymmetricTest.java)
               * [KDTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/KDTreeTest.java)
               * [LazySegmentTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/LazySegmentTreeTest.java)
               * [TreeTestUtils](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TreeTestUtils.java)
