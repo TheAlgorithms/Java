@@ -13,19 +13,26 @@ class DiagonalTraversalOfBt {
 
     /**
      * Definition for a binary tree node.
-     * public class TreeNode {
-     *     int val;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode() {}
-     *     TreeNode(int val) { this.val = val; }
-     *     TreeNode(int val, TreeNode left, TreeNode right) {
-     *         this.val = val;
-     *         this.left = left;
-     *         this.right = right;
-     *     }
-     * }
      */
+      public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
 
 
 //     * Definition of Pair class
@@ -58,11 +65,11 @@ class DiagonalTraversalOfBt {
 //                size--;
                 while (current.node!= null) {  //traverse each component
                     if(map.containsKey(current.hd)){
-                        map.get(current.hd).add(current.node.data);
+                        map.get(current.hd).add(current.node.val);
                     }
                     else{
                         ArrayList<Integer> temp = new ArrayList<>();
-                        temp.add(current.node.data);
+                        temp.add(current.node.val);
                         map.put(current.hd,temp);
                     }
                     if (current.node.left != null) {
