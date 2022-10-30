@@ -10,8 +10,8 @@
 package com.thealgorithms.strings;
 import java.util.*;
 
-class SortSentenceString {
-    public String sortSentence(String s) {
+public class SortSentenceString {
+    public static String sortSentence(String s) {
         String answer = "";
         String[] arr_1 = new StringBuilder(s).reverse().toString().split(" "); Arrays.sort(arr_1);
         for(String word:arr_1)
