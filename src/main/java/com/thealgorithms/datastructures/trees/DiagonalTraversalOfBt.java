@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.trees;
 import javax.swing.tree.TreeNode;
 import java.util.*;
 
-public class Main {
+class DiagonalTraversalOfBt {
 
     /*  Given a binary tree, print all nodes for each diagonal having negative slope (\).
      *  Assume that the left and right child of a node makes a 45–degree angle with the parent.
