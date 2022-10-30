@@ -13,8 +13,9 @@ import java.util.*;
 public class SortSentenceString {
     public static String sortSentence(String s) {
         String answer = "";
-        String[] arr_1 = new StringBuilder(s).reverse().toString().split(" "); Arrays.sort(arr_1);
-        for(String word:arr_1)
+        String[] arr1 = new StringBuilder(s).reverse().toString().split(" ");
+        Arrays.sort(arr1);
+        for(String word:arr1)
          answer = answer+" "+new StringBuilder(word.substring(1)).reverse().toString();
         return answer.trim();  
     }
