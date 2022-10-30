@@ -18,18 +18,18 @@ class BubbleSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int i = 1, size = array.length; i < size; ++i) {
-            boolean swapped = false;
-            for (int j = 0; j < size - i; ++j) {
-                if (greater(array[j], array[j + 1])) {
-                    swap(array, j, j + 1);
-                    swapped = true;
-                }
-            }
-            if (!swapped) {
-                break;
-            }
-        }
-        return array;
+         int n = array.length;  
+        int temp = 0;  
+         for(int i=0; i < n; i++){  
+                 for(int j=1; j < (n-i); j++){  
+                          if(array[j-1] > array[j]){  
+                                 //swap elements  
+                                 temp = array[j-1];  
+                                 array[j-1] = array[j];  
+                                 array[j] = temp;  
+                         }  
+                          
+                 }
+             return array;
     }
 }
