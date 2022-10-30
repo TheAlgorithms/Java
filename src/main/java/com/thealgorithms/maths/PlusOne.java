@@ -4,7 +4,7 @@
 //        Increment the large integer by one and return the resulting array of digits.
 package com.thealgorithms.maths;
 
-public class PlusOne {
+public static class PlusOne {
     public int[] plusOne(int[] digits) {
         String number = "";
         boolean leading_one = false;
