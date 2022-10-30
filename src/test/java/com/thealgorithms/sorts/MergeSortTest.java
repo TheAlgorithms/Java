@@ -7,72 +7,64 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class MergeSortTest {
 
-    private static MergeSort mergeSort;
-    Integer[] array;
-    Integer[] expected;
-    Integer[] sorted;
-
-    @BeforeAll
-    public static void setup() {
-        mergeSort = new MergeSort();
-    }
+    private static MergeSort mergeSort= new MergeSort();
 
     @Test
     void shouldAcceptWhenEmptyArrayIsPassed() {
-        array = new Integer[]{};
-        expected = new Integer[]{};
+        Integer [] array = new Integer[]{};
+        Integer [] expected = new Integer[]{};
 
-        sorted = mergeSort.sort(array);
+        Integer []sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
 
     @Test
     void shouldAcceptWhenSingleValuedArrayIsPassed() {
-        array = new Integer[]{2};
-        expected = new Integer[]{2};
+        Integer [] array = new Integer[]{2};
+        Integer [] expected = new Integer[]{2};
 
-        sorted = mergeSort.sort(array);
+        Integer [] sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
 
     @Test
     void shouldAcceptWhenArrayWithAllPositiveValuesIsPassed() {
-        array = new Integer[]{60, 7, 55, 9, 999, 3};
-        expected = new Integer[]{3, 7, 9, 55, 60, 999};
+        Integer [] array = new Integer[]{60, 7, 55, 9, 999, 3};
+        Integer [] expected = new Integer[]{3, 7, 9, 55, 60, 999};
 
-        sorted = mergeSort.sort(array);
+        Integer [] sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
 
     @Test
     void shouldAcceptWhenArrayWithAllNegativeValuesIsPassed() {
-        array = new Integer[]{-60, -7, -55, -9, -999, -3};
-        expected = new Integer[]{-999, -60, -55, -9, -7, -3};
+        Integer [] array = new Integer[]{-60, -7, -55, -9, -999, -3};
+        Integer [] expected = new Integer[]{-999, -60, -55, -9, -7, -3};
 
-        sorted = mergeSort.sort(array);
+        Integer [] sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
 
     @Test
     void shouldAcceptWhenArrayWithRealNumberValuesIsPassed() {
-        array = new Integer[]{60, -7, 55, 9, -999, -3};
-        expected = new Integer[]{-999, -7, -3, 9, 55, 60};
+        Integer [] array = new Integer[]{60, -7, 55, 9, -999, -3};
+        Integer [] expected = new Integer[]{-999, -7, -3, 9, 55, 60};
 
-        sorted = mergeSort.sort(array);
+        Integer [] sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
 
     @Test
     void shouldAcceptWhenArrayWithDuplicateValueIsPassed() {
-        array = new Integer[]{60, 7, 55, 55, 999, 3};
-        expected = new Integer[]{3, 7, 55, 55, 60, 999};
+        Integer [] array = new Integer[]{60, 7, 55, 55, 999, 3};
+        Integer [] expected = new Integer[]{3, 7, 55, 55, 60, 999};
 
-        sorted = mergeSort.sort(array);
+        Integer [] sorted = mergeSort.sort(array);
 
         assertArrayEquals(expected, sorted);
     }
