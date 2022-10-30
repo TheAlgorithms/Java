@@ -245,6 +245,7 @@
             * [DeterminantOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DeterminantOfMatrix.java)
             * [DigitalRoot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DigitalRoot.java)
             * [DistanceFormula](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DistanceFormula.java)
+            * [DivideTwoIntegers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DivideTwoIntegers.java)
             * [DudeneyNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DudeneyNumber.java)
             * [EulerMethod](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/EulerMethod.java)
             * [Factorial](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Factorial.java)
