@@ -294,6 +294,7 @@
             * [PerfectSquare](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PerfectSquare.java)
             * [Perimeter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Perimeter.java)
             * [PiNilakantha](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PiNilakantha.java)
+            * [PlusOne](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PlusOne.java)
             * [PollardRho](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PollardRho.java)
             * [Pow](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Pow.java)
             * [PowerOfTwoOrNot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PowerOfTwoOrNot.java)
