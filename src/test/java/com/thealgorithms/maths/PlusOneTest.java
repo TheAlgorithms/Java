@@ -3,7 +3,7 @@ package com.thealgorithms.maths;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Assert;
+import static org.junit.Assert;
 
 public class PlusOneTest {
 
