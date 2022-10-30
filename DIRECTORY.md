@@ -638,7 +638,7 @@
             * [PangramTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PangramTest.java)
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
             * [RotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/RotationTest.java)
-            * [Sort Sentence String](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/Sort_Sentence_String.java)
+            * [SortSentenceString](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/SortSentenceString.java)
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
