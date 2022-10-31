@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.strings;
 
 import org.junit.jupiter.api.Test;
 
