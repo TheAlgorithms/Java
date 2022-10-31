@@ -8,18 +8,18 @@ public class FirstUniqueCharacterTest {
 	
     @Test
     void testOne() {
-        assertEquals(0, FirstUniqueCharacterTest.firstUniqChar("leetcode"));
+        assertEquals(0, FirstUniqueCharacter.firstUniqChar("leetcode"));
     }
   
       @Test
     void testTwo() {
-        assertEquals(2, FirstUniqueCharacterTest.firstUniqChar("loveleetcode"));
+        assertEquals(2, FirstUniqueCharacter.firstUniqChar("loveleetcode"));
     }
   
   
       @Test
     void testThree() {
-        assertEquals(-1, FirstUniqueCharacterTest.firstUniqChar("aabb"));
+        assertEquals(-1, FirstUniqueCharacter.firstUniqChar("aabb"));
     }
 	
 }
