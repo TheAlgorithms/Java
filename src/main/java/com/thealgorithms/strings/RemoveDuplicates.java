@@ -11,7 +11,7 @@ package com.thealgorithms.strings;
 import java.util.*;
 
 public class RemoveDuplicates {
-    public int removeDuplicates(int[] nums) {
+    public static int removeDuplicates(int[] nums) {
         
         ArrayList<Integer> intList = new ArrayList<Integer>(nums.length);
 for (int i : nums)
