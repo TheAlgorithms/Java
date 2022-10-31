@@ -1,0 +1,42 @@
+package collectionsolve;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapRunner {
+	public static void main(String[] args) {
+		String str = "This is an awsome occasion." + "This has never happened before.";
+		Map<Character, Integer> occu = new HashMap<>();
+
+		char[] characters = str.toCharArray();
+
+		for (char character : characters) {
+			// get the character
+			Integer integer = occu.get(character);
+			if (integer == null) {
+				occu.put(character, 1);
+			} else {
+				occu.put(character, integer + 1);
+			}
+
+		}
+		System.out.println(occu);
+		Map<String, Integer> Stringoccu = new HashMap<>();
+
+		String[] words = str.split(" ");
+
+		for (String word : words) {
+			// get the character
+			Integer integer = occu.get(word);
+			if (integer == null) {
+				Stringoccu.put(word, 1);
+			} else {
+				Stringoccu.put(word, integer + 1);
+			}
+
+		}
+		System.out.println(Stringoccu);
+
+	}
+
+}
