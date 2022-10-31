@@ -11,7 +11,7 @@
 
 package com.thealgorithms.maths;
 
-public class DivideTwoIntegers {
+public class LongDivision {
 public static int divide(int dividend, int divisor) {
         long new_dividend_1 = dividend;
         long new_divisor_1 = divisor;
