@@ -17,7 +17,7 @@ public class PerfectNumber {
      * @return {@code true} if {@code number} is perfect number, otherwise false
      */
     public static boolean isPerfectNumber(int number) {
-        if (n <= 0)
+        if (number <= 0)
             return false;
         int sum = 0;
         /* sum of its positive divisors */
