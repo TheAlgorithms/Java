@@ -632,6 +632,7 @@
             * [CharacterSameTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CharacterSameTest.java)
             * [CheckAnagramsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CheckAnagramsTest.java)
             * [CheckVowelsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CheckVowelsTest.java)
+            * [FirstUniqueCharacterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/FirstUniqueCharacterTest.java)
             * [HammingDistanceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/HammingDistanceTest.java)
             * [IsomorphicTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/IsomorphicTest.java)
             * [LetterCombinationsOfPhoneNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LetterCombinationsOfPhoneNumberTest.java)
