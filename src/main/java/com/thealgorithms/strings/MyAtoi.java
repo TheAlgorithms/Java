@@ -2,7 +2,7 @@
 
 package com.thealgorithms.strings;
 
-public class Solution {
+public class MyAtoi {
 public static int myAtoi(String s) {
         s = s.trim();
         char[] char_1 = s.toCharArray();
