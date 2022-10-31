@@ -637,6 +637,7 @@
             * [LetterCombinationsOfPhoneNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LetterCombinationsOfPhoneNumberTest.java)
             * [longestNonRepeativeSubstringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/longestNonRepeativeSubstringTest.java)
             * [LowerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LowerTest.java)
+            * [MyAtoiTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/MyAtoiTest.java)
             * [PalindromeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PalindromeTest.java)
             * [PangramTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PangramTest.java)
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
