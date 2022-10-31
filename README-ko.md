@@ -90,7 +90,8 @@ From [Wikipedia][shell-wiki]: 쉘 정렬은 멀리 떨어져 있는 항목의 �
 - 최고의 성능 O(n log n)
 - Average case performance depends on gap sequence
 
-###### View the algorithm in [action][shell-toptal]
+
+###### View the below algorithm in ["action"][shell-toptal]
 
 ### 시간 복잡성 그래프
 
