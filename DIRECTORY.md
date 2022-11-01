@@ -470,6 +470,7 @@
             * [longestNonRepeativeSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/longestNonRepeativeSubstring.java)
             * [LongestPalindromicSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/LongestPalindromicSubstring.java)
             * [Lower](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Lower.java)
+            * [MyAtoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/MyAtoi.java)
             * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Palindrome.java)
             * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Pangram.java)
             * [PermuteString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/PermuteString.java)
@@ -642,6 +643,7 @@
             * [LetterCombinationsOfPhoneNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LetterCombinationsOfPhoneNumberTest.java)
             * [longestNonRepeativeSubstringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/longestNonRepeativeSubstringTest.java)
             * [LowerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LowerTest.java)
+
             * [PalindromeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PalindromeTest.java)
             * [PangramTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PangramTest.java)
             * [ReverseStringRecursiveTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringRecursiveTest.java)
