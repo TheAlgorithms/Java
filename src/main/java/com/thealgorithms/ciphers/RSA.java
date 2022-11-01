@@ -2,32 +2,15 @@ package com.thealgorithms.ciphers;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import javax.swing.*;
 
 /**
  * @author Nguyen Duy Tiep on 23-Oct-17.
  */
-public final class RSA {
+public class RSA {
 
-    public static void main(String[] args) {
-        RSA rsa = new RSA(1024);
-        String text1 = JOptionPane.showInputDialog(
-            "Enter a message to encrypt :"
-        );
-
-        String ciphertext = rsa.encrypt(text1);
-        JOptionPane.showMessageDialog(
-            null,
-            "Your encrypted message : " + ciphertext
-        );
-
-        JOptionPane.showMessageDialog(
-            null,
-            "Your message after decrypt : " + rsa.decrypt(ciphertext)
-        );
-    }
-
-    private BigInteger modulus, privateKey, publicKey;
+    private BigInteger modulus;
+    private BigInteger privateKey;
+    private BigInteger publicKey;
 
     public RSA(int bits) {
         generateKeys(bits);
@@ -77,10 +60,10 @@ public final class RSA {
         BigInteger m =
             (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 
-        publicKey = new BigInteger("3");
+        publicKey = BigInteger.valueOf(3L);
 
         while (m.gcd(publicKey).intValue() > 1) {
-            publicKey = publicKey.add(new BigInteger("2"));
+            publicKey = publicKey.add(BigInteger.valueOf(2L));
         }
 
         privateKey = publicKey.modInverse(m);
