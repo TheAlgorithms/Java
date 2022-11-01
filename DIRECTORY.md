@@ -473,6 +473,7 @@
             * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Pangram.java)
             * [PermuteString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/PermuteString.java)
             * [ReverseString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ReverseString.java)
+            * [ReverseStringRecursive](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ReverseStringRecursive.java)
             * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Rotation.java)
             * [Upper](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Upper.java)
             * [ValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ValidParentheses.java)
@@ -480,9 +481,6 @@
             * zigZagPattern
               * [zigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/zigZagPattern.java)
   * test
-    * java
-      * com
-        * thealgorithms
           * backtracking
             * [CombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/CombinationTest.java)
             * [FloodFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/FloodFillTest.java)
@@ -624,6 +622,7 @@
             * [BubbleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BubbleSortTest.java)
             * [DualPivotQuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/DualPivotQuickSortTest.java)
             * [DutchNationalFlagSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/DutchNationalFlagSortTest.java)
+            * [MergeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/MergeSortTest.java)
             * [QuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/QuickSortTest.java)
             * [SelectionSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SelectionSortTest.java)
             * [SlowSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SlowSortTest.java)
@@ -643,6 +642,7 @@
             * [LowerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/LowerTest.java)
             * [PalindromeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PalindromeTest.java)
             * [PangramTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/PangramTest.java)
+            * [ReverseStringRecursiveTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringRecursiveTest.java)
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
             * [RotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/RotationTest.java)
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
