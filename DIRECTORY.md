@@ -469,6 +469,7 @@
             * [longestNonRepeativeSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/longestNonRepeativeSubstring.java)
             * [LongestPalindromicSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/LongestPalindromicSubstring.java)
             * [Lower](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Lower.java)
+            * [MyAtoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/MyAtoi.java)
             * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Palindrome.java)
             * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Pangram.java)
             * [PermuteString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/PermuteString.java)
@@ -647,7 +648,6 @@
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
             * [RotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/RotationTest.java)
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
-            * [ValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ValidParenthesesTest.java)
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
               * [zigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/zigZagPatternTest.java)
