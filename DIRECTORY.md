@@ -568,6 +568,7 @@
             * [FindMinTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMinTest.java)
             * [GaussianTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GaussianTest.java)
             * [GCDTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GCDTest.java)
+            * [HarshadNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HarshadNumberTest.java)
             * [HeronsFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HeronsFormulaTest.java)
             * [JosephusProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/JosephusProblemTest.java)
             * [KaprekarNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaprekarNumbersTest.java)
