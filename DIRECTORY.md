@@ -478,6 +478,7 @@
             * [ReverseStringRecursive](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ReverseStringRecursive.java)
             * [Rotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Rotation.java)
             * [Upper](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Upper.java)
+            * [ValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ValidParentheses.java)
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
             * zigZagPattern
               * [zigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/zigZagPattern.java)
@@ -650,6 +651,7 @@
             * [ReverseStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
             * [RotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/RotationTest.java)
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
+            * [ValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ValidParenthesesTest.java)
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
               * [zigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/zigZagPatternTest.java)
