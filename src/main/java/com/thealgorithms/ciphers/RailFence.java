@@ -82,7 +82,7 @@ class RailFence {
                 System.out.println("DECRYPTED TEXT IS \n" + rf.Decryption(message, depth));
                 break;
             default:
-                System.out.println("default case");
+                System.out.println("Invalid Input);
         }
         input.close();
   }
