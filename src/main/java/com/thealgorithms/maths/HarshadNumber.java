@@ -1,56 +1,47 @@
-// Wikipedia for Harshad Number : https://en.wikipedia.org/wiki/Harshad_number
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
+// Wikipedia for Harshad Number : https://en.wikipedia.org/wiki/Harshad_number
 
 public class HarshadNumber {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number : ");
-        long a = sc.nextLong();
+    /**
+     * A function to check if a number is Harshad number or not
+     *
+     * @param n The number to be checked
+     * @return {@code true} if {@code a} is Harshad number, otherwise
+     *         {@code false}
+     */
+    public static boolean isHarshad(long n) {
+        if (n <= 0)
+            return false;
 
-        checkHarshadNumber(a);
+        long t = n;
+        int sumOfDigits = 0;
+        while (t > 0) {
+            sumOfDigits += t % 10;
+            t /= 10;
+        }
+
+        return n % sumOfDigits == 0;
     }
 
     /**
      * A function to check if a number is Harshad number or not
      *
-     * @param a The number which should be checked
+     * @param s The number in String to be checked
+     * @return {@code true} if {@code a} is Harshad number, otherwise
+     *         {@code false}
      */
-    public static void checkHarshadNumber(long a) {
-        long b = a;
-        int sum = 0;
+    public static boolean isHarshad(String s) {
+        long n = Long.valueOf(s);
+        if (n <= 0)
+            return false;
 
-        // this is just for showing the explanation else it's of no use you can ommit it
-        int[] each = new int[Long.toString(a).length()];
-
-        int c = 0;
-
-        while (b > 0) {
-            sum += b % 10;
-            each[c] = (int) (b % 10);
-            b /= 10;
-            c++;
+        int sumOfDigits = 0;
+        for (char ch : s.toCharArray()) {
+            sumOfDigits += ch - '0';
         }
 
-        if (a % sum == 0) {
-            System.out.println(a + " is a Harshad Number");
-
-            // For you better explanation how is that a Harshad Number
-            System.out.println("\nExplaination :");
-
-            for (int i = each.length - 1; i >= 0; i--) {
-                System.out.print(each[i] + " ");
-                if (i != 0) {
-                    System.out.print("+ ");
-                }
-            }
-
-            System.out.println("= " + sum);
-            System.out.println(sum + " × " + (a / sum) + " = " + a);
-        } else {
-            System.out.println(a + " is not a Harshad Number");
-        }
+        return n % sumOfDigits == 0;
     }
 }
