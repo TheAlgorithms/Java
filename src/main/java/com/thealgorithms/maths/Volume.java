@@ -3,55 +3,25 @@ package com.thealgorithms.maths;
 /* Find volume of various shapes.*/
 public class Volume {
 
-    public static void main(String[] args) {
-        /* test cube */
-        assert Double.compare(volumeCube(7), 343.0) == 0;
-
-        /* test cuboid */
-        assert Double.compare(volumeCuboid(2, 5, 7), 70.0) == 0;
-
-        /* test sphere */
-        assert Double.compare(volumeSphere(5), 523.5987755982989) == 0;
-
-        /* test cylinder */
-        assert Double.compare(volumeCylinder(1, 2), 12.566370614359172) == 0;
-
-        /* test hemisphere */
-        assert Double.compare(volumeHemisphere(5), 261.79938779914943) == 0;
-
-        /* test cone */
-        assert Double.compare(volumeCone(5, 7), 916.297857297023) == 0;
-
-        /*test prism*/
-        assert Double.compare(volumePrism(10, 2), 20.0) == 0;
-
-        /*test pyramid*/
-        assert Double.compare(volumePyramid(10, 3), 10.0) == 0;
-    }
-
     /**
      * Calculate the volume of a cube.
      *
      * @param sideLength side length of cube
      * @return volume of given cube
      */
-    private static double volumeCube(double sidelength) {
+    public static double volumeCube(double sidelength) {
         return sidelength * sidelength * sidelength;
     }
 
     /**
      * Calculate the volume of a cuboid.
      *
-     * @param width of cuboid
+     * @param width  of cuboid
      * @param height of cuboid
      * @param length of cuboid
      * @return volume of given cuboid
      */
-    private static double volumeCuboid(
-        double width,
-        double height,
-        double length
-    ) {
+    public static double volumeCuboid(double width, double height, double length) {
         return width * height * length;
     }
 
@@ -61,8 +31,8 @@ public class Volume {
      * @param radius radius of sphere
      * @return volume of given sphere
      */
-    private static double volumeSphere(double radius) {
-        return 4 / 3 * Math.PI * radius * radius * radius;
+    public static double volumeSphere(double radius) {
+        return (4 * Math.PI * radius * radius * radius) / 3;
     }
 
     /**
@@ -72,7 +42,7 @@ public class Volume {
      * @param height height of the cylinder.
      * @return volume of given cylinder
      */
-    private static double volumeCylinder(double radius, double height) {
+    public static double volumeCylinder(double radius, double height) {
         return Math.PI * radius * radius * height;
     }
 
@@ -82,8 +52,8 @@ public class Volume {
      * @param radius radius of hemisphere
      * @return volume of given hemisphere
      */
-    private static double volumeHemisphere(double radius) {
-        return 2 / 3 * Math.PI * radius * radius * radius;
+    public static double volumeHemisphere(double radius) {
+        return (2 * Math.PI * radius * radius * radius) / 3;
     }
 
     /**
@@ -93,29 +63,29 @@ public class Volume {
      * @param height of cone.
      * @return volume of given cone.
      */
-    private static double volumeCone(double radius, double height) {
-        return Math.PI * radius * radius * height / 3;
+    public static double volumeCone(double radius, double height) {
+        return (Math.PI * radius * radius * height) / 3;
     }
 
     /**
      * Calculate the volume of a prism.
      *
-     * @param area of the base.
+     * @param area   of the base.
      * @param height of prism.
      * @return volume of given prism.
      */
-    private static double volumePrism(double basearea, double height) {
+    public static double volumePrism(double basearea, double height) {
         return basearea * height;
     }
 
     /**
      * Calculate the volume of a pyramid.
      *
-     * @param area of the base.
+     * @param area   of the base.
      * @param height of pyramid.
      * @return volume of given pyramid.
      */
-    private static double volumePyramid(double basearea, double height) {
-        return basearea * height / 3;
+    public static double volumePyramid(double basearea, double height) {
+        return (basearea * height) / 3;
     }
 }

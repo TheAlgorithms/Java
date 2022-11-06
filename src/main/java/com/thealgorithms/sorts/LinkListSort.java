@@ -8,16 +8,18 @@ package com.thealgorithms.sorts;
 
 import java.util.*;
 
-public class LinkList_Sort {
+public class LinkListSort {
 
     public static boolean isSorted(int p[], int option) {
-        try (Scanner sc = new Scanner(System.in)) {}
+        try (Scanner sc = new Scanner(System.in)) {
+        }
         int a[] = p;
         // Array is taken as input from test class
         int b[] = p;
         // array similar to a
         int ch = option;
-        // Choice is choosed as any number from 1 to 3 (So the linked list will be sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
+        // Choice is choosed as any number from 1 to 3 (So the linked list will be
+        // sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
         switch (ch) {
             case 1:
                 Task nm = new Task();
@@ -26,10 +28,13 @@ public class LinkList_Sort {
                     // New nodes are created and values are added
                     fresh = new Node(); // Node class is called
                     fresh.val = a[i]; // Node val is stored
-                    if (start == null) start = fresh; else prev.next = fresh;
+                    if (start == null)
+                        start = fresh;
+                    else
+                        prev.next = fresh;
                     prev = fresh;
                 }
-                start = nm.sort_by_mergesort(start);
+                start = nm.sortByMergeSort(start);
                 // method is being called
                 int i = 0;
                 for (ptr = start; ptr != null; ptr = ptr.next) {
@@ -38,39 +43,43 @@ public class LinkList_Sort {
                 }
                 Arrays.sort(b);
                 // array b is sorted and it will return true when checked with sorted list
-                LinkList_Sort uu = new LinkList_Sort();
+                LinkListSort uu = new LinkListSort();
                 if (uu.compare(a, b)) {
                     return true;
                 } else {
                     return false;
                 }
-            // The given array and the expected array is checked if both are same then true is displayed else false is displayed
+                // The given array and the expected array is checked if both are same then true
+                // is displayed else false is displayed
             case 2:
                 Node start1 = null, prev1 = null, fresh1, ptr1;
                 for (int i1 = 0; i1 < a.length; i1++) {
                     // New nodes are created and values are added
                     fresh1 = new Node(); // New node is created
                     fresh1.val = a[i1]; // Value is stored in the value part of the node
-                    if (start1 == null) start1 = fresh1; else prev1.next =
-                        fresh1;
+                    if (start1 == null)
+                        start1 = fresh1;
+                    else
+                        prev1.next = fresh1;
                     prev1 = fresh1;
                 }
                 Task1 kk = new Task1();
-                start1 = kk.sort_by_insertionsort(start1);
+                start1 = kk.sortByInsertionSort(start1);
                 // method is being called
                 int i1 = 0;
                 for (ptr1 = start1; ptr1 != null; ptr1 = ptr1.next) {
                     a[i1++] = ptr1.val;
                     // storing the sorted values in the array
                 }
-                LinkList_Sort uu1 = new LinkList_Sort();
+                LinkListSort uu1 = new LinkListSort();
                 // array b is not sorted and it will return false when checked with sorted list
                 if (uu1.compare(a, b)) {
                     return true;
                 } else {
                     return false;
                 }
-            // The given array and the expected array is checked if both are same then true is displayed else false is displayed
+                // The given array and the expected array is checked if both are same then true
+                // is displayed else false is displayed
             case 3:
                 Task2 mm = new Task2();
                 Node start2 = null, prev2 = null, fresh2, ptr2;
@@ -78,11 +87,13 @@ public class LinkList_Sort {
                     // New nodes are created and values are added
                     fresh2 = new Node(); // Node class is created
                     fresh2.val = a[i2]; // Value is stored in the value part of the Node
-                    if (start2 == null) start2 = fresh2; else prev2.next =
-                        fresh2;
+                    if (start2 == null)
+                        start2 = fresh2;
+                    else
+                        prev2.next = fresh2;
                     prev2 = fresh2;
                 }
-                start2 = mm.sort_by_heapsort(start2);
+                start2 = mm.sortByHeapSort(start2);
                 // method is being called
                 int i3 = 0;
                 for (ptr2 = start2; ptr2 != null; ptr2 = ptr2.next) {
@@ -91,13 +102,14 @@ public class LinkList_Sort {
                 }
                 Arrays.sort(b);
                 // array b is sorted and it will return true when checked with sorted list
-                LinkList_Sort uu2 = new LinkList_Sort();
+                LinkListSort uu2 = new LinkListSort();
                 if (uu2.compare(a, b)) {
                     return true;
                 } else {
                     return false;
                 }
-            // The given array and the expected array is checked if both are same then true is displayed else false is displayed
+                // The given array and the expected array is checked if both are same then true
+                // is displayed else false is displayed
             default:
                 // default is used incase user puts a unauthorized value
                 System.out.println("Wrong choice");
@@ -108,10 +120,12 @@ public class LinkList_Sort {
 
     boolean compare(int a[], int b[]) {
         for (int i = 0; i < a.length; i++) {
-            if (a[i] != b[i]) return false;
+            if (a[i] != b[i])
+                return false;
         }
         return true;
-        // Both the arrays are checked for equalness. If both are equal then true is returned else false is returned
+        // Both the arrays are checked for equalness. If both are equal then true is
+        // returned else false is returned
     }
     /**
      * OUTPUT :
@@ -137,8 +151,9 @@ class Task {
 
     static int a[];
 
-    public Node sort_by_mergesort(Node head) {
-        if (head == null || head.next == null) return head;
+    public Node sortByMergeSort(Node head) {
+        if (head == null || head.next == null)
+            return head;
         int c = count(head);
         a = new int[c];
         // Array of size c is created
@@ -182,7 +197,10 @@ class Task {
         int i = s, k = 0, j = m + 1;
         int b[] = new int[e - s + 1];
         while (i <= m && j <= e) {
-            if (n[j] >= n[i]) b[k++] = n[i++]; else b[k++] = n[j++];
+            if (n[j] >= n[i])
+                b[k++] = n[i++];
+            else
+                b[k++] = n[j++];
         }
         // Smallest number is stored after checking from both the arrays
         while (i <= m) {
@@ -200,8 +218,9 @@ class Task {
 
 class Task1 {
 
-    public Node sort_by_insertionsort(Node head) {
-        if (head == null || head.next == null) return head;
+    public Node sortByInsertionSort(Node head) {
+        if (head == null || head.next == null)
+            return head;
         int c = count(head);
         int a[] = new int[c];
         // Array of size c is created
@@ -242,8 +261,9 @@ class Task2 {
 
     static int a[];
 
-    public Node sort_by_heapsort(Node head) {
-        if (head == null || head.next == null) return head;
+    public Node sortByHeapSort(Node head) {
+        if (head == null || head.next == null)
+            return head;
         int c = count(head);
         a = new int[c];
         // Array of size c is created
@@ -290,8 +310,10 @@ class Task2 {
         int p = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
-        if (l < k && n[l] > n[p]) p = l;
-        if (r < k && n[r] > n[p]) p = r;
+        if (l < k && n[l] > n[p])
+            p = l;
+        if (r < k && n[r] > n[p])
+            p = r;
         if (p != i) {
             int d = n[p];
             n[p] = n[i];
