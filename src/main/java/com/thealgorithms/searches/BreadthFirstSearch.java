@@ -28,8 +28,6 @@ public class BreadthFirstSearch {
             }
 
             queue.addAll(current.getSubNodes());
-
-            queue.remove();
         }
 
         return Optional.empty();
