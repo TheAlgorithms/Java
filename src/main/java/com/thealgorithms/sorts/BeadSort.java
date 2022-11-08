@@ -25,32 +25,32 @@ public class BeadSort {
         count[i] = 0;
     }
 
-		for(int i = 0; i < unsorted.length; i++) {
-			int k = 0;
-			for(int j = 0; j < (int) unsorted[i] ; j++) {
-				grid[count[max - k - 1]++][k] = '*';
-				k++;
-			}
-		}
-		
-		for(int i = 0; i < unsorted.length; i++) {
-			int k = 0;
-			for(int j = 0; j < max && grid[unsorted.length - 1 - i][j] == '*'; j++) {
-				k++;
-			}
-			sorted[i] = k;
-		}
-		return sorted;
-	}
-	
-	public static void main(String[] args) {
-		int[] inputInt = {30, 5, 7, 2, 6, 10, 25 ,3};
-		
-		BeadSort beadSort = new BeadSort();
-		
-		int[] sorted = beadSort.sort(inputInt);
-		for(int i = 0; i < sorted.length; i++) {
-			System.out.print(sorted[i] + " ");
-		}
-	}
+        for(int i = 0; i < unsorted.length; i++) {
+            int k = 0;
+            for(int j = 0; j < (int) unsorted[i] ; j++) {
+                grid[count[max - k - 1]++][k] = '*';
+                k++;
+             }
+        }
+
+        for(int i = 0; i < unsorted.length; i++) {
+            int k = 0;
+            for(int j = 0; j < max && grid[unsorted.length - 1 - i][j] == '*'; j++) {
+                k++;
+            }
+            sorted[i] = k;
+        }
+        return sorted;
+    }
+
+    public static void main(String[] args) {
+        int[] inputInt = {30, 5, 7, 2, 6, 10, 25 ,3};
+
+        BeadSort beadSort = new BeadSort();
+
+        int[] sorted = beadSort.sort(inputInt);
+        for(int i = 0; i < sorted.length; i++) {
+            System.out.print(sorted[i] + " ");
+        }
+    }
 }
