@@ -2,7 +2,8 @@ package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class KaprekarNumbersTest {
@@ -50,7 +51,7 @@ public class KaprekarNumbersTest {
     @Test
     void testForRangeOfNumber() {
         try {
-            ArrayList<Long> rangedNumbers = KaprekarNumbers.kaprekarNumberInRange(
+            List<Long> rangedNumbers = KaprekarNumbers.kaprekarNumberInRange(
                 1,
                 100000
             );
