@@ -18,9 +18,7 @@ public class Combination {
      * @return a list of all combinations of length n. If n == 0, return null.
      */
     public static <T> List<TreeSet<T>> combination(T[] arr, int n) {
-        if (n == 0) {
-            return null;
-        }
+        if (n == 0)  return null;
         length = n;
         T[] array = arr.clone();
         Arrays.sort(array);

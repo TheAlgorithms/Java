@@ -13,7 +13,7 @@ import java.util.*;
     Input : N = 8
 
     Output:
-        0  59  38  33  30  17   8  63
+        0   59  38  33  30  17   8  63
         37  34  31  60   9  62  29  16
         58   1  36  39  32  27  18   7
         35  48  41  26  61  10  15  28
@@ -65,17 +65,10 @@ public class KnightsTour {
 
     // Return True when solvable
     private static boolean solve(int row, int column, int count) {
-        if (count > total) {
-            return true;
-        }
-
+        if (count > total) return true;
         List<int[]> neighbor = neighbors(row, column);
-
-        if (neighbor.isEmpty() && count != total) {
-            return false;
-        }
-
-        Collections.sort(
+        if (neighbor.isEmpty() && count != total) return false;
+         Collections.sort(
             neighbor,
             new Comparator<int[]>() {
                 public int compare(int[] a, int[] b) {
@@ -105,8 +98,7 @@ public class KnightsTour {
         List<int[]> neighbour = new ArrayList<>();
 
         for (int[] m : moves) {
-            int x = m[0];
-            int y = m[1];
+            int x = m[0],y = m[1];
             if (grid[row + y][column + x] == 0) {
                 int num = countNeighbors(row + y, column + x);
                 neighbour.add(new int[] { row + y, column + x, num });
