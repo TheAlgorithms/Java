@@ -98,7 +98,8 @@ public class KnightsTour {
         List<int[]> neighbour = new ArrayList<>();
 
         for (int[] m : moves) {
-            int x = m[0],y = m[1];
+            int x = m[0];
+            int y = m[1];
             if (grid[row + y][column + x] == 0) {
                 int num = countNeighbors(row + y, column + x);
                 neighbour.add(new int[] { row + y, column + x, num });
