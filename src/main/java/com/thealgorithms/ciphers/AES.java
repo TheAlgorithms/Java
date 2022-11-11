@@ -2438,16 +2438,16 @@ public class AES {
     public static BigInteger[] keyExpansion(BigInteger initialKey) {
         BigInteger[] roundKeys = {
             initialKey,
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
-            new BigInteger("0"),
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
+                BigInteger.ZERO,
         };
 
         // initialize rcon iteration
