@@ -19,8 +19,8 @@ public class SimpleSubCipher {
      * @param cipherSmall
      * @return Encrypted message
      */
-    public static String encode(String message, String cipherSmall) {
-        String encoded = "";
+    public String encode(String message, String cipherSmall) {
+        StringBuilder encoded = new StringBuilder();
 
         // This map is used to encode
         Map<Character, Character> cipherMap = new HashMap<>();
@@ -39,13 +39,13 @@ public class SimpleSubCipher {
 
         for (int i = 0; i < message.length(); i++) {
             if (Character.isAlphabetic(message.charAt(i))) {
-                encoded += cipherMap.get(message.charAt(i));
+                encoded.append(cipherMap.get(message.charAt(i)));
             } else {
-                encoded += message.charAt(i);
+                encoded.append(message.charAt(i));
             }
         }
 
-        return encoded;
+        return encoded.toString();
     }
 
     /**
@@ -56,10 +56,10 @@ public class SimpleSubCipher {
      * @param cipherSmall
      * @return message
      */
-    public static String decode(String encryptedMessage, String cipherSmall) {
-        String decoded = "";
+    public String decode(String encryptedMessage, String cipherSmall) {
+        StringBuilder decoded = new StringBuilder();
 
-        Map<Character, Character> cipherMap = new HashMap<Character, Character>();
+        Map<Character, Character> cipherMap = new HashMap<>();
 
         char beginSmallLetter = 'a';
         char beginCapitalLetter = 'A';
@@ -74,21 +74,13 @@ public class SimpleSubCipher {
 
         for (int i = 0; i < encryptedMessage.length(); i++) {
             if (Character.isAlphabetic(encryptedMessage.charAt(i))) {
-                decoded += cipherMap.get(encryptedMessage.charAt(i));
+                decoded.append(cipherMap.get(encryptedMessage.charAt(i)));
             } else {
-                decoded += encryptedMessage.charAt(i);
+                decoded.append(encryptedMessage.charAt(i));
             }
         }
 
-        return decoded;
+        return decoded.toString();
     }
 
-    public static void main(String[] args) {
-        String a = encode(
-            "defend the east wall of the castle",
-            "phqgiumeaylnofdxjkrcvstzwb"
-        );
-        String b = decode(a, "phqgiumeaylnofdxjkrcvstzwb");
-        System.out.println(b);
-    }
 }
