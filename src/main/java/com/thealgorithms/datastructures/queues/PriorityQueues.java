@@ -107,7 +107,7 @@ class PriorityQueue {
      */
     public int remove() {
         if (isEmpty()) {
-            throw new RuntimeException("Queue is full");
+            throw new RuntimeException("Queue is Empty");
         } else {
             int max = queueArray[1]; // By defintion of our max-heap, value at queueArray[1] pos is the greatest
 
