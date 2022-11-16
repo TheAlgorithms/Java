@@ -9,11 +9,11 @@ class Test
 	
 		// Traverse the string to get first '1' from
 		// the last of string
-		int i;
-		for (i = n-1 ; i >= 0 ; i--)
-			if (str.charAt(i) == '1')
+		for (int i = n-1 ; i >= 0 ; i--){
+			if (str.charAt(i) == '1'){
 				break;
-	
+			}
+		}
 		// If there exists no '1' concat 1 at the
 		// starting of string
 		if (i == -1)
