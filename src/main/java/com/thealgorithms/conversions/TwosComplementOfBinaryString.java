@@ -16,8 +16,9 @@ class Test
 		}
 		// If there exists no '1' concat 1 at the
 		// starting of string
-		if (i == -1)
+		if (i == -1){
 			return "1" + str;
+		}
 	
 		// Continue traversal after the position of
 		// first '1'
