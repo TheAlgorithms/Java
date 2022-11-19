@@ -35,4 +35,13 @@ public class SortUtilsRandomGenerator {
         return random.nextDouble();
     }
 
+    /**
+     * Function to generate int value.
+     *
+     * @return int value [0, n)
+     */
+    public static int generateInt(int n) {
+        return random.nextInt(n);
+    }
+
 }
