@@ -88,4 +88,14 @@ public class Volume {
     public static double volumePyramid(double basearea, double height) {
         return (basearea * height) / 3;
     }
+    
+    /**
+     * Calculate the volume of an ellipsoid.
+     *
+     * @param semi-axes of an ellipsoid.
+     * @return volume of given ellipsoid.
+     */
+    private static double volumeEllipsoid(double x, double y, , double z) {
+        return (Math.PI * x * y * z )/(6 * Math.sqrt(2));
+    }
 }
