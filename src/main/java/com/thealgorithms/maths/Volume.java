@@ -95,7 +95,7 @@ public class Volume {
      * @param semi-axes of an ellipsoid.
      * @return volume of given ellipsoid.
      */
-    private static double volumeEllipsoid(double x, double y, , double z) {
+    private static double volumeEllipsoid(double x, double y, double z) {
         return (Math.PI * x * y * z )/(6 * Math.sqrt(2));
     }
 }
