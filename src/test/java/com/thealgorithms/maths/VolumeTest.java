@@ -33,6 +33,6 @@ public class VolumeTest {
         assertTrue(Volume.volumePyramid(10, 3) == 10.0);
         
         /* test ellipsoid */
-        assertTrue(volumeEllipsoid(2, 5, 7) == 11.666666666666666);
+        assertTrue(Volume.volumeEllipsoid(2, 5, 7) == 11.666666666666666);
     }
 }
