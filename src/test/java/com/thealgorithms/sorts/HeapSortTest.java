@@ -1,35 +1,95 @@
 package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class HeapSortTest {
-	
-	private HeapSort heapSort = new HeapSort();
-	
-	@Test
-    void testHeapSortCase1() {
-        Integer[] array = { 49, 4, 36, 9, 144, 1 };
+    private HeapSort heapSort;
+
+    @BeforeEach
+    void setUp() {
+        heapSort = new HeapSort();
+    }
+
+    @Test
+    void shouldAcceptWhenEmptyArrayIsPassed() {
+        Integer[] array = new Integer[]{};
+        Integer[] expected = new Integer[]{};
+
         Integer[] sorted = heapSort.sort(array);
-        Integer[] expected = { 1, 4, 9, 36, 49, 144 };
+
         assertArrayEquals(expected, sorted);
     }
-	
-	@Test
-    void testHeapSortCase2() {
-        Integer[] array = { };
+
+    @Test
+    void shouldAcceptWhenSingleValuedArrayIsPassed() {
+        Integer[] array = new Integer[]{2};
+        Integer[] expected = new Integer[]{2};
+
         Integer[] sorted = heapSort.sort(array);
-        Integer[] expected = { };
+
         assertArrayEquals(expected, sorted);
     }
-	
-	@Test
-    void testHeapSortCase3 () {
-        Integer[] array = { -3, 5, 3, 4, 3, 7, 40, -20, 30, 0 };
+
+    @Test
+    void shouldAcceptWhenArrayWithAllPositiveValuesIsPassed() {
+        Integer[] array = new Integer[]{60, 7, 55, 9, 999, 3};
+        Integer[] expected = new Integer[]{3, 7, 9, 55, 60, 999};
+
         Integer[] sorted = heapSort.sort(array);
-        Integer[] expected = { -20, -3, 0, 3, 3, 4, 5, 7, 30, 40 };
+
         assertArrayEquals(expected, sorted);
+    }
+
+    @Test
+    void shouldAcceptWhenArrayWithAllNegativeValuesIsPassed() {
+        Integer[] array = new Integer[]{-60, -7, -55, -9, -999, -3};
+        Integer[] expected = new Integer[]{-999, -60, -55, -9, -7, -3};
+
+        Integer[] sorted = heapSort.sort(array);
+
+        assertArrayEquals(expected, sorted);
+    }
+
+    @Test
+    void shouldAcceptWhenArrayWithRealNumberValuesIsPassed() {
+        Integer[] array = new Integer[]{60, -7, 55, 9, -999, -3};
+        Integer[] expected = new Integer[]{-999, -7, -3, 9, 55, 60};
+
+        Integer[] sorted = heapSort.sort(array);
+
+        assertArrayEquals(expected, sorted);
+    }
+
+    @Test
+    void shouldAcceptWhenArrayWithDuplicateValueIsPassed() {
+        Integer[] array = new Integer[]{60, 7, 55, 55, 999, 3};
+        Integer[] expected = new Integer[]{3, 7, 55, 55, 60, 999};
+
+        Integer[] sorted = heapSort.sort(array);
+
+        assertArrayEquals(expected, sorted);
+    }
+
+    @Test
+    void shouldAcceptWhenStringValueArrayIsPassed() {
+        String[] array = {"z", "a", "x", "b", "y"};
+        String[] expected = {"a", "b", "x", "y", "z"};
+
+        String[] sorted = heapSort.sort(array);
+
+        assertArrayEquals(expected, sorted);
+    }
+
+    @Test
+    void shouldAcceptWhenRandomArrayIsPassed() {
+        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
+        Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
+        Double[] sorted = heapSort.sort(array);
+        assertTrue(SortUtils.isSorted(sorted));
     }
 
 }
