@@ -33,8 +33,12 @@ public class HeapSort implements SortAlgorithm {
     private static <T extends Comparable<T>> void siftDown(T[] unsorted, int k, int n) {
         while (2 * k <= n) {
             int j = 2 * k;
-            if (j < n && less(unsorted, j, j + 1)) j++;
-            if (!less(unsorted, k, j)) break;
+            if (j < n && less(unsorted, j, j + 1)) {
+                j++;
+            }
+            if (!less(unsorted, k, j)) {
+                break;
+            }
             swap(unsorted, k, j);
             k = j;
         }
