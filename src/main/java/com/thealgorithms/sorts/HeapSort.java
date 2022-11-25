@@ -25,8 +25,9 @@ public class HeapSort implements SortAlgorithm {
     }
 
     private static <T extends Comparable<T>> void heapify(T[] unsorted, int n) {
-        for (int k = n / 2; k >= 1; k--)
+        for (int k = n / 2; k >= 1; k--) {
             siftDown(unsorted, k, n);
+        }
     }
 
     private static <T extends Comparable<T>> void siftDown(T[] unsorted, int k, int n) {
