@@ -1,4 +1,5 @@
-package com.thealgorithms.datastructures.queues;
+// package com.thealgorithms.datastructures.queues;
+
 
 /**
  * This class implements a PriorityQueue.
@@ -9,7 +10,7 @@ package com.thealgorithms.datastructures.queues;
  * give numbers that are bigger, a higher priority. Queues in theory have no
  * fixed size but when using an array implementation it does.
  * 
- *Addtional contibutions made by: PuneetTri(https://github.com/PuneetTri)
+ * Additional contibutions made by: PuneetTri(https://github.com/PuneetTri)
  */
 class PriorityQueue {
 
@@ -27,11 +28,10 @@ class PriorityQueue {
     private int nItems;
 
     /**
-     * Constructor
-     *
-     * @param size Size of the queue
+     * Default Constructor
      */
-    public PriorityQueue(int size) {
+    
+    public PriorityQueue() {
         /* If capacity is not defined, default size of 11 would be used
         *  capacity=max+1 because we cant access 0th element of PQ, and to 
         *  accomodate (max)th elements we need capacity to be max+1.
@@ -39,6 +39,19 @@ class PriorityQueue {
         *  use positon 0 in our queue, its child would be at:
         *  (0*2, 0*2+1) -> (0,0). This is why we start at position 1
         */
+        int size = 11; // Default value of 11
+        maxSize = size+1;
+        queueArray = new int[maxSize];
+        nItems = 0;
+    }
+    
+    /**
+     * Parameterized Constructor
+     *
+     * @param size Size of the queue
+     */
+    
+    public PriorityQueue(int size) {
         maxSize = size+1;
         queueArray = new int[maxSize];
         nItems = 0;
@@ -50,7 +63,7 @@ class PriorityQueue {
     *  position
     *  @param pos Position of newly added element at bottom
     */
-    public void swim(int pos) {
+    private void swim(int pos) {
         // Check if parent is smaller than child node
         while(pos > 1 && (queueArray[pos/2] < queueArray[pos])) {
             // In such case swap value of child with parent
@@ -68,7 +81,7 @@ class PriorityQueue {
     *  position
     *  @param pos Position of element at top
     */
-    void sink(int pos) {
+    private void sink(int pos) {
         // Check if node's position is that of parent node
         while(2*pos <= nItems) {
             int current = 2*pos; // Jump to the positon of child node
@@ -113,10 +126,10 @@ class PriorityQueue {
 
             // Swap max and last element
             int temp = queueArray[1];
-            queueArray[1] = queueArray[nItems+1];
-            queueArray[nItems+1] = temp;
+            queueArray[1] = queueArray[nItems];
+            queueArray[nItems] = temp;
+            queueArray[nItems--] = 0; // Nullify the last element from the priority queue
             sink(1); // Sink the element in order
-            queueArray[nItems--] = 0; // Nullify the deleted element from the priority queue
             
             return max;
         }
@@ -146,7 +159,7 @@ class PriorityQueue {
      * @return true if the queue is full
      */
     public boolean isFull() {
-        return (nItems == maxSize);
+        return (nItems == maxSize-1);
     }
 
     /**
@@ -179,7 +192,9 @@ public class PriorityQueues {
         myQueue.insert(3);
         // [2, 3, 5, 10] Here higher numbers have higher priority, so they are on the top
 
-        for (int i = 3; i >= 0; i--) {
+
+        // System.out.println(myQueue.remove());
+        for (int i = 0; i < 4; i++) {
             System.out.print(myQueue.remove() + " "); // will print the queue in reverse order [10, 5, 3, 2]
         }
         // As you can see, a Priority Queue can be used as a sorting algotithm
