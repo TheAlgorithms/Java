@@ -12,9 +12,9 @@ public class MergeSortRecursive {
         this.arr = arr;
     }
 
-    public void mergeSort() {
+    public List<Integer> mergeSort() {
         List<Integer> arrSorted = merge(arr);
-        System.out.println(arrSorted);
+        return arrSorted;
     }
 
     private static List<Integer> merge(List<Integer> arr) {
