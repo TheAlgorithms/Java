@@ -106,7 +106,7 @@ class InsertionSortTest {
     }
 
     private void testWithRandomArray(Function<Double[], Double[]> sortAlgorithm) {
-        int randomSize = (int) (SortUtilsRandomGenerator.generateDouble() * 10_000);
+        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
         Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
         Double[] sorted = sortAlgorithm.apply(array);
         assertTrue(SortUtils.isSorted(sorted));

@@ -1,13 +1,19 @@
 package com.thealgorithms.sorts;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MergeSortTest {
 
-    private static MergeSort mergeSort= new MergeSort();
+    private MergeSort mergeSort;
+
+    @BeforeEach
+    void setUp() {
+        mergeSort = new MergeSort();
+    }
 
     @Test
     void shouldAcceptWhenEmptyArrayIsPassed() {
@@ -79,5 +85,11 @@ public class MergeSortTest {
         assertArrayEquals(expected, sorted);
     }
 
-
+    @Test
+    void shouldAcceptWhenRandomArrayIsPassed() {
+        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
+        Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
+        Double[] sorted = mergeSort.sort(array);
+        assertTrue(SortUtils.isSorted(sorted));
+    }
 }
