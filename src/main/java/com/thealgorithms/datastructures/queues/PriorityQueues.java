@@ -1,4 +1,4 @@
-// package com.thealgorithms.datastructures.queues;
+package com.thealgorithms.datastructures.queues;
 
 
 /**
