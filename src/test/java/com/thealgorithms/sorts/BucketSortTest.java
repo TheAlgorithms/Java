@@ -31,7 +31,7 @@ public class BucketSortTest {
     }
 
     @Test
-    public void bucketSortNonDuplicateIntegerArrayWithNegativNum() {
+    public void bucketSortNonDuplicateIntegerArrayWithNegativeNum() {
         int[] inputArray = {  6, -1, 99, 27, -15, 23, -36  };
         int[] outputArray = BucketSort.bucketSort(inputArray);
         int[] expectedOutput = { -36, -15, -1, 6, 23, 27, 99};
