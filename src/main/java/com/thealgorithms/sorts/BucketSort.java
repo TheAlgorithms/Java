@@ -32,7 +32,7 @@ public class BucketSort {
      *
      * @param arr the array contains elements
      */
-    private static void bucketSort(int[] arr) {
+    public static int[] bucketSort(int[] arr) {
         /* get max value of arr */
         int max = max(arr);
 
@@ -67,6 +67,8 @@ public class BucketSort {
                 arr[index++] = value;
             }
         }
+        
+        return arr;
     }
 
     /**
