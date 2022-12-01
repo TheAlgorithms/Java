@@ -112,4 +112,11 @@ final class SortUtils {
                 return false;
         return true;
     }
+
+    static <T extends Comparable<T>> boolean isSorted(List<T> list) {
+        for (int i = 1; i < list.size(); i++)
+            if (less(list.get(i), list.get(i - 1)))
+                return false;
+        return true;
+    }
 }
