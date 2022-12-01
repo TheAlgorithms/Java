@@ -15,9 +15,15 @@ class InsertionSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int i = 1; i < array.length; i++)
-            for (int j = i; j > 0 && less(array[j], array[j - 1]); j--)
+        return sort(array, 0, array.length);
+    }
+
+    public <T extends Comparable<T>> T[] sort(T[] array, int lo, int hi) {
+        for (int i = lo; i < hi; i++) {
+            for (int j = i; j > lo && less(array[j], array[j - 1]); j--) {
                 swap(array, j, j - 1);
+            }
+        }
         return array;
     }
 
