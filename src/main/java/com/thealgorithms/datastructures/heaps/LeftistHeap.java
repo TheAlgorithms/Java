@@ -35,13 +35,10 @@ public class LeftistHeap {
 
 	// Merge function that merges the contents of another leftist heap with the
 	// current one
-	public void merge(LeftistHeap rhs) {
+	public void merge(LeftistHeap h1) {
 		// If the present function is rhs then we ignore the merge
-		if (this == rhs)
-			return;
-
-		root = merge(root, rhs.root);
-		rhs.root = null;
+		root = merge(root, h1.root);
+		h1.root = null;
 	}
 
 	// Function merge with two Nodes a and b
