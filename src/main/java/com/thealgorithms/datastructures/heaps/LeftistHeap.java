@@ -2,6 +2,16 @@ package com.thealgorithms.datastructures.heaps;
 
 import java.util.ArrayList;
 
+/* 
+ * This is a leftist heap that follows the same operations as a
+ * binary min heap, but may be unbalanced at times and follows a
+ * leftist property, in which the left side is more heavy on the
+ * right based on the null-path length (npl) values.
+ * 
+ * Source: https://iq.opengenus.org/leftist-heap/
+ * 
+ */
+
 public class LeftistHeap {
 	private class Node {
 		private int element, npl;
