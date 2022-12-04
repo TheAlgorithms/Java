@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.heaps;
 
+import java.util.ArrayList;
+
 public class LeftistHeap {
 	private class Node {
 		private int element, npl;
@@ -91,17 +93,19 @@ public class LeftistHeap {
 		return min;
 	}
 
-	// Function printing an in order traversal of the data structure
-	public void in_order() {
-		in_order_aux(root);
+	// Function returning a list of an in order traversal of the data structure
+	public ArrayList<Integer> in_order() {
+		ArrayList<Integer> lst = new ArrayList<>();
+		in_order_aux(root, lst);
+		return new ArrayList<>(lst);
 	}
 
 	// Auxiliary function for in_order
-	private void in_order_aux(Node n) {
+	private void in_order_aux(Node n, ArrayList<Integer> lst) {
 		if (n == null)
 			return;
-		in_order_aux(n.left);
-		System.out.print(n.element + " ");
-		in_order_aux(n.right);
+		in_order_aux(n.left, lst);
+		lst.add(n.element);
+		in_order_aux(n.right, lst);
 	}
 }
