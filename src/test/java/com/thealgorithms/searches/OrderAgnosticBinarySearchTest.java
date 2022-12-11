@@ -1,5 +1,6 @@
 package com.thealgorithms.searches;
 
+import com.thealgorithms.searches.OrderAgnosticBinarySearch;
 
 import org.junit.jupiter.api.Test;
 
