@@ -55,9 +55,9 @@ import org.junit.jupiter.api.Test;
     //valid Test Case
      public void RightHalfDescOrder(){
         int[] arr = {50,40,30,20,10};
-        int answer = BinSearchAlgo(arr,0,arr.length-1,50);
+        int answer = BinSearchAlgo(arr,0,arr.length-1,10);
         System.out.println(answer);
-        int expected = 0;
+        int expected = 4;
         assertEquals(expected,answer);
     }
 
@@ -65,9 +65,9 @@ import org.junit.jupiter.api.Test;
      //valid test case
      public void LeftHalfDescOrder(){
         int[] arr = {50,40,30,20,10};
-        int answer = BinSearchAlgo(arr,0,arr.length-1,10);
+        int answer = BinSearchAlgo(arr,0,arr.length-1,50);
         System.out.println(answer);
-        int expected = 4;
+        int expected = 0;
         assertEquals(expected,answer);
     }
 
