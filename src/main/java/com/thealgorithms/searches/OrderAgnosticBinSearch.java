@@ -1,59 +1,103 @@
 package com.thealgorithms.searches;
 
-
-
 //URL: https://www.geeksforgeeks.org/order-agnostic-binary-search/
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.*;
+import org.junit.jupiter.api.Test;
 
-public class OrderAgnosticBinSearch {
+ class OrderAgnosticBinarySearch {
 
-    /* Order Agnostic Binary Search is an algorithm in which we do not know whether the given sorted array is
-    in ascending or descending order.
-     */
+    static int BinSearchAlgo(int arr[], int start, int end, int target)
+    {
 
-    public static int BinSearchAlgo(int[] arr, int target){
-        int first = arr[0];      //first element in the array
-        int last = arr[arr.length-1];  //last element in the array
+        // Checking whether the given array is ascending order
+        boolean AscOrd = arr[start] < arr[end];
 
-        //checking if the array is in ascending order, and it's corresponding algorithm
+        while (start <= end) {
+            int middle = start + (end - start) / 2;
 
-        if(first < last){
-            int start = 0;
-            int end = arr.length - 1;
-            while(start <= end){
-                int mid = start + (end-start)/2;
+            // Check if the desired element is present at the middle position
+            if (arr[middle] == target)
+                return middle;
 
-                if(target < arr[mid]){
-                    end = mid - 1;
-                }else if(target > arr[mid]){
-                    start = mid + 1;
-                }else{
-                    return mid;       //returns the index of the required element
-                }
+            // Ascending order
+            if (AscOrd) {
+                if (arr[middle] < target)
+                    start = middle + 1;
+                else
+                    end = middle - 1;
+            }
+
+            // Descending order
+            else {
+                if (arr[middle] > target)
+                    start = middle + 1;
+                else
+                    end = middle - 1;
             }
         }
-        //Array is in descending order and it's corresponding code
-
-        else{
-            int start = arr.length - 1; // smallest element as start
-            int end = 0;                // greatest element as end
-            while(end <= start){
-
-                int mid = end + (start - end)/2;
-
-                if(target < arr[mid]){
-                    end = mid + 1;
-                }else if(target > arr[mid]){
-                    start = mid - 1;
-                }else{
-                    return mid;   //returns the index of the required element
-                }
-            }
-        }
-        return -1;           //if no such element exists in the array
+        // Element is not present
+        return -1;
     }
-    public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};      //given sorted array
-        System.out.println(BinSearchAlgo(arr,8));
+    
+     @Test
+    //valid Test Case
+    public void ElementInMiddle(){
+        int[] arr = {10,20,30,40,50};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,30);
+        System.out.println(answer);
+        int expected = 2;
+        assertEquals(expected,answer);
+    }
+     
+    @Test
+    //valid Test Case
+     public void RightHalfDescOrder(){
+        int[] arr = {50,40,30,20,10};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,50);
+        System.out.println(answer);
+        int expected = 0;
+        assertEquals(expected,answer);
+    }
+
+    @Test
+     //valid test case
+     public void LeftHalfDescOrder(){
+        int[] arr = {50,40,30,20,10};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,10);
+        System.out.println(answer);
+        int expected = 4;
+        assertEquals(expected,answer);
+    }
+
+    @Test
+     //valid test case
+     public void RightHalfAscOrder(){
+        int[] arr = {10,20,30,40,50};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,50);
+        System.out.println(answer);
+        int expected = 4;
+        assertEquals(expected,answer);
+    }
+
+    @Test
+     //valid test case
+     public void LeftHalfAscOrder(){
+        int[] arr = {10,20,30,40,50};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,10);
+        System.out.println(answer);
+        int expected = 0;
+        assertEquals(expected,answer);
+    }
+
+    @Test
+     //valid test case
+     public void ElementNotFound(){
+        int[] arr = {10,20,30,40,50};
+        int answer = BinSearchAlgo(arr,0,arr.length-1,100);
+        System.out.println(answer);
+        int expected = -1;
+        assertEquals(expected,answer);
     }
 }
