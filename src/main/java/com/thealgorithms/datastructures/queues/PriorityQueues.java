@@ -1,6 +1,8 @@
 package com.thealgorithms.datastructures.queues;
 
 
+
+
 /**
  * This class implements a PriorityQueue.
  *
@@ -9,7 +11,7 @@ package com.thealgorithms.datastructures.queues;
  * most important elements are placed at the front/on the top. In this example I
  * give numbers that are bigger, a higher priority. Queues in theory have no
  * fixed size but when using an array implementation it does.
- * 
+ * <p>
  * Additional contibutions made by: PuneetTri(https://github.com/PuneetTri)
  */
 class PriorityQueue {
@@ -30,66 +32,68 @@ class PriorityQueue {
     /**
      * Default Constructor
      */
-    
+
     public PriorityQueue() {
         /* If capacity is not defined, default size of 11 would be used
-        *  capacity=max+1 because we cant access 0th element of PQ, and to 
-        *  accomodate (max)th elements we need capacity to be max+1.
-        *  Parent is at position k, child at position (k*2,k*2+1), if we
-        *  use positon 0 in our queue, its child would be at:
-        *  (0*2, 0*2+1) -> (0,0). This is why we start at position 1
-        */
+         *  capacity=max+1 because we cant access 0th element of PQ, and to
+         *  accomodate (max)th elements we need capacity to be max+1.
+         *  Parent is at position k, child at position (k*2,k*2+1), if we
+         *  use position 0 in our queue, its child would be at:
+         *  (0*2, 0*2+1) -> (0,0). This is why we start at position 1
+         */
         int size = 11; // Default value of 11
-        maxSize = size+1;
+        maxSize = size + 1;
         queueArray = new int[maxSize];
         nItems = 0;
     }
-    
+
     /**
      * Parameterized Constructor
      *
      * @param size Size of the queue
      */
-    
+
     public PriorityQueue(int size) {
-        maxSize = size+1;
+        maxSize = size + 1;
         queueArray = new int[maxSize];
         nItems = 0;
     }
 
-    /** 
-    *  Helper function for the max-heap implementation of PQ
-    *  Function would help demote parent node to their correct 
-    *  position
-    *  @param pos Position of newly added element at bottom
-    */
+    /**
+     * Helper function for the max-heap implementation of PQ
+     * Function would help demote parent node to their correct
+     * position
+     *
+     * @param pos Position of newly added element at bottom
+     */
     private void swim(int pos) {
         // Check if parent is smaller than child node
-        while(pos > 1 && (queueArray[pos/2] < queueArray[pos])) {
+        while (pos > 1 && (queueArray[pos / 2] < queueArray[pos])) {
             // In such case swap value of child with parent
             int temp = queueArray[pos];
-            queueArray[pos] = queueArray[pos/2];
-            queueArray[pos/2] = temp;
-            pos = pos/2; // Jump to position of parent node
+            queueArray[pos] = queueArray[pos / 2];
+            queueArray[pos / 2] = temp;
+            pos = pos / 2; // Jump to position of parent node
         }
         // Promotion of child node will go on until it becomes smaller than the parent
     }
 
-    /** 
-    *  Helper function for the max-heap implementation of PQ
-    *  Function would help demote parent node to their correct 
-    *  position
-    *  @param pos Position of element at top
-    */
+    /**
+     * Helper function for the max-heap implementation of PQ
+     * Function would help demote parent node to their correct
+     * position
+     *
+     * @param pos Position of element at top
+     */
     private void sink(int pos) {
         // Check if node's position is that of parent node
-        while(2*pos <= nItems) {
-            int current = 2*pos; // Jump to the positon of child node
+        while (2 * pos <= nItems) {
+            int current = 2 * pos; // Jump to the positon of child node
             // Compare both the children for the greater one
-            if(current < nItems && queueArray[current] < queueArray[current+1]) current++;
+            if (current < nItems && queueArray[current] < queueArray[current + 1]) current++;
             // If the parent node is greater, sink operation is complete. Break the loop
-            if(queueArray[pos] >= queueArray[current]) break;
-            
+            if (queueArray[pos] >= queueArray[current]) break;
+
             // If not exchange the value of parent with child
             int temp = queueArray[pos];
             queueArray[pos] = queueArray[current];
@@ -130,7 +134,7 @@ class PriorityQueue {
             queueArray[nItems] = temp;
             queueArray[nItems--] = 0; // Nullify the last element from the priority queue
             sink(1); // Sink the element in order
-            
+
             return max;
         }
     }
@@ -159,7 +163,7 @@ class PriorityQueue {
      * @return true if the queue is full
      */
     public boolean isFull() {
-        return (nItems == maxSize-1);
+        return (nItems == maxSize - 1);
     }
 
     /**
@@ -172,31 +176,3 @@ class PriorityQueue {
     }
 }
 
-/**
- * This class implements the PriorityQueue class above.
- *
- * @author Unknown
- */
-public class PriorityQueues {
-
-    /**
-     * Main method
-     *
-     * @param args Command Line Arguments
-     */
-    public static void main(String[] args) {
-        PriorityQueue myQueue = new PriorityQueue(4);
-        myQueue.insert(10);
-        myQueue.insert(2);
-        myQueue.insert(5);
-        myQueue.insert(3);
-        // [2, 3, 5, 10] Here higher numbers have higher priority, so they are on the top
-
-
-        // System.out.println(myQueue.remove());
-        for (int i = 0; i < 4; i++) {
-            System.out.print(myQueue.remove() + " "); // will print the queue in reverse order [10, 5, 3, 2]
-        }
-        // As you can see, a Priority Queue can be used as a sorting algotithm
-    }
-}
