@@ -56,11 +56,8 @@ public class Anagrams {
             Arrays.sort(
                 d
             );/* In this approach the strings are stored in the character arrays and both the arrays are sorted. After that both the arrays are compared for checking anangram */
-            if (Arrays.equals(c, d)) {
-                return true;
-            } else {
-                return false;
-            }
+
+            return Arrays.equals(c, d);
         }
     }
 
