@@ -38,4 +38,5 @@ package com.thealgorithms.searches;
         }
         return BinSearchAlgo(arr, start, end, target);
      }
+    
 } 
