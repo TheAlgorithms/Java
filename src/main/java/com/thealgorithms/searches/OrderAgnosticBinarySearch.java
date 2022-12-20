@@ -36,6 +36,6 @@ package com.thealgorithms.searches;
                 end=middle-1;
             }
         }
-        return trail(arr, start, end, target);
+        return BinSearchAlgo(arr, start, end, target);
      }
 } 
