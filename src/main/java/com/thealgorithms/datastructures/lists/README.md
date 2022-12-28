@@ -22,7 +22,7 @@ The `next` variable points to the next node in the data structure and value stor
 
 ### File descriptions:
 
-1. `CircleLinkedList.java` : A circular linked list where next pointer of last node points to first nide of linked list.
+1. `CircleLinkedList.java` : A circular linked list where next pointer of last node points to first node of linked list.
 2. `SinglyLinkedList.java` : The classic case of single links.
 3. `CountSinglyLinkedListRecursion.java`: Recursively counts the size of a list.
 4. `CreateAndDetectLoop.java` : Create and detect a loop in a linked list.

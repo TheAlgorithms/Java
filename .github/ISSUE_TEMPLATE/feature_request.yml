@@ -1,0 +1,34 @@
+name: "Feature Request"
+description: "Suggest an idea for this project"
+title: "[FEATURE REQUEST] <title>"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would you like to Propose?
+      description: Provide a clear and concise explanation of your Proposal.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        For new implementations, please specify the name and problem statement for the algorithm.
+        For algorithm enhancements, specify what needs to be changed and why. For example:
+        - Adding tests.
+        - Optimizing logic.
+        - Refactoring the file and folders for better structure.
+  - type: textarea
+    id: needdetails
+    attributes:
+      label: "Issue details"
+      description: "Write down all the issue/algorithm details description mentioned above."
+    validations:
+      required: true
+  - type: textarea
+    id: extrainfo
+    attributes:
+      label: "Additional Information"
+      description: "Add any other information or screenshots about the request here."
+    validations:
+      required: false

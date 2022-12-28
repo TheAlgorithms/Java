@@ -99,4 +99,17 @@ final class SortUtils {
             swap(array, left++, right--);
         }
     }
+
+    /**
+     * Function to check if the array is sorted. By default, it will check if the array is sorted in ASC order.
+     *
+     * @param array - an array which to check is it sorted or not.
+     * @return true - if array sorted in ASC order, false otherwise.
+     */
+    static <T extends Comparable<T>> boolean isSorted(T[] array) {
+        for (int i = 1; i < array.length; i++)
+            if (less(array[i], array[i - 1]))
+                return false;
+        return true;
+    }
 }
