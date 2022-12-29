@@ -1,6 +1,6 @@
 name: "Bug report"
 description: "Create a report to help us improve"
-title: "[BUG]"
+title: "[BUG] <title>"
 labels: ["bug"]
 body:
   - type: textarea
@@ -40,6 +40,6 @@ body:
     id: context
     attributes:
       label: "Additional context"
-      description: "Add any other context about the problem here."
+      description: "Is there anything else we should know about this bug report?"
     validations:
       required: false
