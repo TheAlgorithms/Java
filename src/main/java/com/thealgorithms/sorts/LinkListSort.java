@@ -44,11 +44,7 @@ public class LinkListSort {
                 Arrays.sort(b);
                 // array b is sorted and it will return true when checked with sorted list
                 LinkListSort uu = new LinkListSort();
-                if (uu.compare(a, b)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return uu.compare(a, b);
                 // The given array and the expected array is checked if both are same then true
                 // is displayed else false is displayed
             case 2:
@@ -73,11 +69,7 @@ public class LinkListSort {
                 }
                 LinkListSort uu1 = new LinkListSort();
                 // array b is not sorted and it will return false when checked with sorted list
-                if (uu1.compare(a, b)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return uu1.compare(a, b);
                 // The given array and the expected array is checked if both are same then true
                 // is displayed else false is displayed
             case 3:
@@ -103,11 +95,7 @@ public class LinkListSort {
                 Arrays.sort(b);
                 // array b is sorted and it will return true when checked with sorted list
                 LinkListSort uu2 = new LinkListSort();
-                if (uu2.compare(a, b)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return uu2.compare(a, b);
                 // The given array and the expected array is checked if both are same then true
                 // is displayed else false is displayed
             default:
