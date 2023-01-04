@@ -56,11 +56,8 @@ public class Anagrams {
             Arrays.sort(
                 d
             );/* In this approach the strings are stored in the character arrays and both the arrays are sorted. After that both the arrays are compared for checking anangram */
-            if (Arrays.equals(c, d)) {
-                return true;
-            } else {
-                return false;
-            }
+
+            return Arrays.equals(c, d);
         }
     }
 
@@ -121,13 +118,8 @@ public class Anagrams {
             for (char c : t.toCharArray()) {
                 kk.put(c, kk.getOrDefault(c, 0) + 1);
             }
-            // It checks for equal frequencies
-            for (char c : nm.keySet()) {
-                if (!nm.get(c).equals(kk.get(c))) {
-                    return false;
-                }
-            }
-            return true;
+            // It checks for equal frequencies by comparing key-value pairs of two hashmaps
+            return nm.equals(kk);
         }
     }
 }
