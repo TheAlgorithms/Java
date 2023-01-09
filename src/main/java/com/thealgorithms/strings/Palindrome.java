@@ -6,26 +6,7 @@ package com.thealgorithms.strings;
 class Palindrome {
 
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        String[] palindromes = { null, "", "aba", "123321" };
-        for (String s : palindromes) {
-            assert isPalindrome(s) &&
-            isPalindromeRecursion(s) &&
-            isPalindrome1(s);
-        }
-
-        String[] notPalindromes = { "abb", "abc", "abc123" };
-        for (String s : notPalindromes) {
-            assert !isPalindrome(s) &&
-            !isPalindromeRecursion(s) &&
-            !isPalindrome1(s);
-        }
-    }
-
-    /**
-     * Check if a string is palindrome string or not
+     * Check if a string is palindrome string or not using String Builder
      *
      * @param s a string to check
      * @return {@code true} if given string is palindrome, otherwise
@@ -54,17 +35,17 @@ class Palindrome {
             return false;
         }
 
-        return isPalindrome(s.substring(1, s.length() - 1));
+        return isPalindromeRecursion(s.substring(1, s.length() - 1));
     }
 
     /**
-     * Check if a string is palindrome string or not another way
+     * Check if a string is palindrome string or not using two pointer technique
      *
      * @param s a string to check
      * @return {@code true} if given string is palindrome, otherwise
      * {@code false}
      */
-    public static boolean isPalindrome1(String s) {
+    public static boolean isPalindromeTwoPointer(String s) {
         if (s == null || s.length() <= 1) {
             return true;
         }

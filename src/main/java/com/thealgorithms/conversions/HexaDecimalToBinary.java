@@ -5,13 +5,13 @@ public class HexaDecimalToBinary {
 
     private final int LONG_BITS = 8;
 
-    public void convert(String numHex) {
+    public String convert(String numHex) {
         // String a HexaDecimal:
         int conHex = Integer.parseInt(numHex, 16);
         // Hex a Binary:
         String binary = Integer.toBinaryString(conHex);
         // Output:
-        System.out.println(numHex + " = " + completeDigits(binary));
+        return completeDigits(binary);
     }
 
     public String completeDigits(String binNum) {
@@ -39,7 +39,7 @@ public class HexaDecimalToBinary {
         HexaDecimalToBinary objConvert = new HexaDecimalToBinary();
 
         for (String num : hexNums) {
-            objConvert.convert(num);
+            System.out.println(num + " = " + objConvert.convert(num));
         }
     }
 }
