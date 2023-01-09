@@ -23,14 +23,22 @@ public class Conway {
         System.out.println("Enter any character you want : ");
         scanner = new Scanner(System.in);originalString = scanner.nextLine();
 
+        List<String> strings = generateList(originalString);
+        System.out.println(strings);
+
+    }
+
+    protected static List<String> generateList(String originalString) {
+        List<String> numbers = new ArrayList<>();
         for(int i=0; i<20; i++) {
-            originalString=   generateNextElement(originalString);
-            System.out.println(originalString);
-        }
+            originalString =   generateNextElement(originalString);
+            numbers.add(originalString);
+            }
+        return numbers;
     }
 
 
-    private static String generateNextElement(String originalString) {
+    public static String generateNextElement(String originalString) {
 
         builder.setLength(0);
         String[] stp = originalString.split("(?<=(.))(?!\\1)");
