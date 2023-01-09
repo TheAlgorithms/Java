@@ -1,5 +1,7 @@
 package com.thealgorithms.searches;
 
+import java.util.Arrays;
+
 public class SearchInARowAndColWiseSortedMatrix {
     /**
      * Search a key in row and column wise sorted matrix
@@ -9,18 +11,20 @@ public class SearchInARowAndColWiseSortedMatrix {
      * @author Sadiul Hakim : https://github.com/sadiul-hakim
      */
 
-    public void search(int[][] matrix, int value) {
+    public int[] search(int[][] matrix, int value) {
         int n = matrix.length;
         // This variable iterates over rows
         int i = 0;
         // This variable iterates over columns
         int j = n - 1;
+        int[] result = { -1, -1 };
 
         while (i < n && j >= 0) {
 
             if (matrix[i][j] == value) {
-                System.out.println(value + " found at position row : " + i + " ,column :" + j);
-                return;
+                result[0] = i;
+                result[1] = j;
+                return result;
             }
             if (value > matrix[i][j]) {
 
@@ -31,7 +35,7 @@ public class SearchInARowAndColWiseSortedMatrix {
             }
 
         }
-        System.out.println(value + "Not Found.");
+        return result;
     }
 
     public static void main(String[] args) {
@@ -44,6 +48,7 @@ public class SearchInARowAndColWiseSortedMatrix {
         };
 
         var search = new SearchInARowAndColWiseSortedMatrix();
-        search.search(matrix, 26);
+        int[] res = search.search(matrix, 26);
+        System.out.println(Arrays.toString(res));
     }
 }
