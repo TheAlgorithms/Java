@@ -1,5 +1,8 @@
 package com.thealgorithms.others;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrintAMatrixInSpiralOrder {
     /**
      * Search a key in row and column wise sorted matrix
@@ -10,65 +13,53 @@ public class PrintAMatrixInSpiralOrder {
      * @author Sadiul Hakim : https://github.com/sadiul-hakim
      */
 
-    public void print(int[][] matrix, int row, int col) {
+    public List<Integer> print(int[][] matrix, int row, int col) {
 
-        //r traverses matrix row wise from first
+        // r traverses matrix row wise from first
         int r = 0;
-        //c traverses matrix column wise from first
+        // c traverses matrix column wise from first
         int c = 0;
         int i;
 
-        while (r < row && c < col) {
-            //print first row of matrix
-            for (i = c; i < col; i++) {
-                System.out.print(matrix[r][i] + " ");
+        List<Integer> result = new ArrayList<>();
 
+        while (r < row && c < col) {
+            // print first row of matrix
+            for (i = c; i < col; i++) {
+                result.add(matrix[r][i]);
             }
 
-            //increase r by one because first row printed
+            // increase r by one because first row printed
             r++;
 
-            //print last column
+            // print last column
             for (i = r; i < row; i++) {
-                System.out.print(matrix[i][col - 1] + " ");
+                result.add(matrix[i][col - 1]);
             }
 
-            //decrease col by one because last column has been printed
+            // decrease col by one because last column has been printed
             col--;
 
-            //print rows from last except printed elements
+            // print rows from last except printed elements
             if (r < row) {
                 for (i = col - 1; i >= c; i--) {
-                    System.out.print(matrix[row - 1][i] + " ");
+                    result.add(matrix[row - 1][i]);
                 }
 
                 row--;
 
             }
 
-            //print columns from first except printed elements
+            // print columns from first except printed elements
             if (c < col) {
                 for (i = row - 1; i >= r; i--) {
-                    System.out.print(matrix[i][c] + " ");
+                    result.add(matrix[i][c]);
                 }
                 c++;
             }
 
         }
-
+        return result;
     }
 
-    public static void main(String[] args) {
-        int[][] matrix = {
-                { 3, 4, 5, 6, 7 },
-                { 8, 9, 10, 11, 12 },
-                { 14, 15, 16, 17, 18 },
-                { 23, 24, 25, 26, 27 },
-                { 30, 31, 32, 33, 34 }
-        };
-
-        var printer = new PrintAMatrixInSpiralOrder();
-        printer.print(matrix, matrix.length, matrix[0].length);
-
-    }
 }
