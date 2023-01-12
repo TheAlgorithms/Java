@@ -92,8 +92,10 @@ protected void sortByArrivalTime() {
         if (ReadyProcesses.isEmpty()){
             return null;
         }
-        int size = ReadyProcesses.size();
-        int i, minBurstTime = ReadyProcesses.get(0).getBurstTime(), temp, positionOfShortestJob = 0;
+        int i,size = ReadyProcesses.size();
+        int minBurstTime = ReadyProcesses.get(0).getBurstTime(), temp, positionOfShortestJob = 0;
+
+
         for (i = 1; i < size; i++) {
             temp = ReadyProcesses.get(i).getBurstTime();
             if (minBurstTime > temp  ) {
