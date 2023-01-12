@@ -29,7 +29,7 @@ import java.util.*;
  *
  * @author Albina Gimaletdinova on 11/01/2023
  */
-public class ZigZagTraversal {
+public class ZigzagTraversal {
     public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
             return new ArrayList<>();
