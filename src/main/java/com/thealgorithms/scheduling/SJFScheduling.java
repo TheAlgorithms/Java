@@ -4,14 +4,23 @@ import com.thealgorithms.devutils.entities.ProcessDetails;
 
 import java.util.ArrayList;
 
+/**
+ * Implementation of Shortest Job First Algorithm: The algorithm allows the waiting process with the minimal burst time to be executed first.
+ * see more here: https://www.guru99.com/shortest-job-first-sjf-scheduling.html
+ */
 
 public class SJFScheduling {
     protected ArrayList<ProcessDetails> processes;
     protected ArrayList<String>schedule ;
 
+    /**
+     * a simple constructor
+     * @param processes a list of processes the user wants to schedule
+     *  it also sorts the processes based on the time of their arrival
+     */
     SJFScheduling(final ArrayList<ProcessDetails> processes) {
         this.processes = processes;
-        schedule=new ArrayList<String>();
+        schedule=new ArrayList<>();
         sortByArrivalTime();
     }
 protected void sortByArrivalTime() {
@@ -31,15 +40,16 @@ protected void sortByArrivalTime() {
         }
 
 }
-    public void scheduleProcesses() {
-        createSchedule();
-    }
 
-    protected void createSchedule() {
+    /**
+     * this functions returns the order of the executions
+     */
+
+    public void scheduleProcesses() {
         ArrayList<ProcessDetails> ready=new ArrayList<>();
 
         int size = processes.size(),runtime,time=0;
-        int i=0,j,k=0;
+        int executed=0,j,k=0;
         ProcessDetails running;
 
         if (size == 0) {
@@ -47,34 +57,37 @@ protected void sortByArrivalTime() {
         }
 
 
-        while(i<size)
+        while(executed<size)
         {
-            while(k<size && processes.get(k).getArrivalTime()<=time)
+            while(k<size && processes.get(k).getArrivalTime()<=time)//here we find the processes that have arrived.
             {
                 ready.add(processes.get(k));
                 k++;
             }
 
-          running=findShortestJob(ready);
-          if(running==null)
-          {
-              time++;
-          }
-          else {
-              runtime = running.getBurstTime();
-              for (j = 0; j < runtime; j++) {
+            running=findShortestJob(ready);
+            if(running==null)
+            {
                   time++;
-              }
-              schedule.add(running.getProcessId());
-              ready.remove(running);
-              i++;
-          }
+            }
+            else {
+                  runtime = running.getBurstTime();
+                  for (j = 0; j < runtime; j++) {
+                      time++;}
+                  schedule.add(running.getProcessId());
+                  ready.remove(running);
+                  executed++;
+                  }
         }
 
 
     }
 
-
+    /**
+     * this function evaluates the shortest job of all the ready processes (based on  a process burst time)
+     * @param ReadyProcesses an array list of ready processes
+     * @return returns the process' with the shortest burst time OR NULL if there are no ready processes
+     */
     private ProcessDetails findShortestJob(ArrayList<ProcessDetails> ReadyProcesses) {
 if (ReadyProcesses.isEmpty()){
     return null;

@@ -83,7 +83,7 @@ class SJFSchedulingTest {
     }
 
     @Test
-    void scheduling1(){
+    void schedulingOf_TwoProcesses(){
         initialisation0();
         SJFScheduling a=new SJFScheduling(process);
         a.scheduleProcesses();
@@ -92,7 +92,7 @@ class SJFSchedulingTest {
     }
 
     @Test
-    void scheduling2(){
+    void schedulingOfA_ShortestJobArrivingLast(){
         initialisation2();
         SJFScheduling a=new SJFScheduling(process);
         a.scheduleProcesses();
@@ -101,12 +101,20 @@ class SJFSchedulingTest {
         assertEquals( "2"  , a.schedule.get(2));
     }
     @Test
-    void scheduling3(){
+    void scheduling_WithProcessesNotComingBackToBack(){
         initialisation3();
         SJFScheduling a=new SJFScheduling(process);
         a.scheduleProcesses();
         assertEquals( "1"  , a.schedule.get(0));
         assertEquals( "2"  , a.schedule.get(1));
         assertEquals( "3"  , a.schedule.get(2));
+    }
+    @Test
+    void schedulingOf_nothing(){
+        process=new ArrayList<>();
+        SJFScheduling a=new SJFScheduling(process);
+        a.scheduleProcesses();
+        assertTrue( a.schedule.isEmpty());
+
     }
 }
