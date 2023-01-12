@@ -52,7 +52,7 @@ class SJFSchedulingTest {
         assertEquals( 2,a.processes.get(1).getBurstTime());
     }
 
-    @Test
+     @Test
     void sort()
     {
         initialisation1();
