@@ -89,9 +89,9 @@ protected void sortByArrivalTime() {
      * @return returns the process' with the shortest burst time OR NULL if there are no ready processes
      */
     private ProcessDetails findShortestJob(ArrayList<ProcessDetails> ReadyProcesses) {
-if (ReadyProcesses.isEmpty()){
-    return null;
-}
+        if (ReadyProcesses.isEmpty()){
+            return null;
+        }
         int size = ReadyProcesses.size();
         int i, minBurstTime = ReadyProcesses.get(0).getBurstTime(), temp, positionOfShortestJob = 0;
         for (i = 1; i < size; i++) {
