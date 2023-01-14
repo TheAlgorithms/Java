@@ -68,7 +68,7 @@ class LFUCacheTest {
      */
     @Test
     void testAddNodeWithUpdatedFrequency() {
-        LFUCache<Integer, String> lfuCache = new LFUCache<>(5);
+        LFUCache<Integer, String> lfuCache = new LFUCache<>(3);
         lfuCache.put(1, "beijing");
         lfuCache.put(2, "shanghai");
         lfuCache.put(3, "gansu");
