@@ -1,6 +1,5 @@
 package com.thealgorithms.backtracking;
 
-import java.util.Scanner;
 
 /*
  * Problem Statement :
