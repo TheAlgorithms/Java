@@ -61,4 +61,22 @@ class LFUCacheTest {
         assertEquals(null, lfuCache.get(2));
         assertEquals("Zeta", lfuCache.get(7));
     }
+
+    /**
+     * test addNodeWithUpdatedFrequency method
+     * @author yuluo
+     */
+    @Test
+    void testAddNodeWithUpdatedFrequency() {
+        LFUCache<Integer, String> lfuCache = new LFUCache<>(5);
+        lfuCache.put(1, "beijing");
+        lfuCache.put(2, "shanghai");
+        lfuCache.put(3, "gansu");
+
+        assertEquals("beijing", lfuCache.get(1));
+
+        lfuCache.put(1, "shanxi");
+
+        assertEquals("shanxi", lfuCache.get(1));
+    }
 }
