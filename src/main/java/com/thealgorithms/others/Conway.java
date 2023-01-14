@@ -17,27 +17,6 @@ public class Conway {
 
     private static final StringBuilder builder = new StringBuilder();
 
-    private static final Integer MAX_ITERATION_ALLOWED = 50;
-    private static final Integer MIN_ITERATION_ALLOWED = 1;
-
-    public static void main(String[]args) {
-        Scanner scanner;
-        String originalString;
-        int maxIteration;
-        System.out.println("Enter any character you want : ");
-        scanner = new Scanner(System.in);
-        originalString = scanner.nextLine();
-
-        do {
-        System.out.println("Enter the maximum of iteration (max allowed 50) : ");
-        scanner = new Scanner(System.in);
-        maxIteration = scanner.nextInt();
-        }
-        while (maxIteration < MIN_ITERATION_ALLOWED || maxIteration > MAX_ITERATION_ALLOWED);
-        List<String> strings = generateList(originalString, maxIteration);
-        System.out.println(strings);
-    }
-
     protected static List<String> generateList(String originalString, int maxIteration) {
         List<String> numbers = new ArrayList<>();
         for(int i=0; i<maxIteration; i++) {
