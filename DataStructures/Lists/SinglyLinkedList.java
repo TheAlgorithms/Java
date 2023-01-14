@@ -17,6 +17,7 @@ public class SinglyLinkedList {
   }
   //below is the function to find middle element of LinkedList.
   public int middle(){
+    
   Node s = head;
     Node f = s.next;
     while(f != null && f.next != null){
