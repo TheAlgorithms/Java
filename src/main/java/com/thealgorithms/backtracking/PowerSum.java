@@ -1,7 +1,5 @@
 package com.thealgorithms.backtracking;
 
-import java.util.Scanner;
-
 /*
  * Problem Statement :
  * Find the number of ways that a given integer, N , can be expressed as the sum of the Xth powers of unique, natural numbers.
