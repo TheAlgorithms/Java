@@ -7,9 +7,6 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
 public class ConwayReverse {
-
-
-    private static final int MAX_ITERATION_ALLOWED = 5;
 /*
 * This class will generate the previous element from the conway sequence
 * ex : the input will generate 1
@@ -19,19 +16,6 @@ public class ConwayReverse {
 *      if we loop 11131221131211132221232112111312111213111213211231132132211211131221232112111312212221121123222110 will generate 1321132132211331121321231231121113112221121321133112132112211213322110, 31131122211311123113321112131221123113111231121123222110, 11131221131211132221232112111312111213322110, 132113213221133112132123222110, 31131122211311123113322110, 1113122113121113222110, 13211321322110, 311311222110, 1113122110, 132110, 3110, 1110, 10, 0
 *
 * */
-    public static void main(String[]args) {
-        Scanner scanner;
-        String originalString;
-        do {
-            System.out.println("Enter a number with an even number of characters  : ");
-            scanner = new Scanner(System.in);
-            originalString = scanner.nextLine();
-        }
-        while (originalString.length()%2!=0 || originalString.length()<1);
-        System.out.println(generateList(originalString));
-    }
-
-
     protected static List<String> generateList(String s){
         if(s.length()%2!=0)
             throw new IllegalArgumentException("Invalid input " + s);
