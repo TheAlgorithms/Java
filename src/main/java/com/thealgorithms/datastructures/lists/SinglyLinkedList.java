@@ -16,6 +16,19 @@ public class SinglyLinkedList extends Node {
      * Size of SinglyLinkedList
      */
     private int size;
+    
+    //below is the function to find out middle node in the singlyLinkedList.
+      public Node middle(){
+    
+  Node s = head;
+    Node f = s.next;
+    while(f != null && f.next != null){
+    s = s.next;
+      f = f.next.next;
+    }
+    return s;
+  }
+  
 
     /**
      * Init SinglyLinkedList
