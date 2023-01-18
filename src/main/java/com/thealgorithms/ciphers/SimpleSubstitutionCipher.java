@@ -80,16 +80,4 @@ public class SimpleSubstitutionCipher {
 
         return decoded.toString();
     }
-
-    /**
-     * TODO remove main and make JUnit Testing
-     */
-    public static void main(String[] args) {
-        String a = encode(
-            "defend the east wall of the castle",
-            "phqgiumeaylnofdxjkrcvstzwb"
-        );
-        String b = decode(a, "phqgiumeaylnofdxjkrcvstzwb");
-        System.out.println(b);
-    }
 }

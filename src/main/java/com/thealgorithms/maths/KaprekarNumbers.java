@@ -10,7 +10,7 @@ public class KaprekarNumbers {
 	digits and sum of these parts is equal to the original number. */
 
     // Provides a list of kaprekarNumber in a range
-    public static ArrayList<Long> kaprekarNumberInRange(long start, long end)
+    public static List<Long> kaprekarNumberInRange(long start, long end)
         throws Exception {
         long n = end - start;
         if (n < 0) throw new Exception("Invalid range");
@@ -26,12 +26,12 @@ public class KaprekarNumbers {
     // Checks whether a given number is Kaprekar Number or not
     public static boolean isKaprekarNumber(long num) {
         String number = Long.toString(num);
-        BigInteger originalNumber = new BigInteger(number);
+        BigInteger originalNumber = BigInteger.valueOf(num);
         BigInteger numberSquared = originalNumber.multiply(originalNumber);
         if (number.length() == numberSquared.toString().length()) {
             return number.equals(numberSquared.toString());
         } else {
-            BigInteger leftDigits1 = new BigInteger("0");
+            BigInteger leftDigits1 = BigInteger.ZERO;
             BigInteger leftDigits2;
             if (numberSquared.toString().contains("0")) {
                 leftDigits1 =
