@@ -60,7 +60,7 @@ public class Kosaraju {
     //All the strongly connected components
     private List<List<Integer>> sccsList = new ArrayList<>();
 
-    public void kosaraju(int v, List<List<Integer>> list){
+    public List<List<Integer>> kosaraju(int v, List<List<Integer>> list){
         
         //Sort the edges according to lowest finish time
         var st = new Stack<Integer>();
@@ -93,6 +93,7 @@ public class Kosaraju {
                 scc = new ArrayList<>();
             }
         }
+        return sccsList;
     }
 
     //Dfs to store the nodes in order of lowest finish time
@@ -137,9 +138,9 @@ public class Kosaraju {
         System.out.println(adjList);
 
         var scc = new Kosaraju();
-        scc.kosaraju(n, adjList);
+        List<List<Integer>> sccsList = scc.kosaraju(n, adjList);
 
-        System.out.println(scc.sccsList);
+        System.out.println(sccsList);
     }
     
 }
