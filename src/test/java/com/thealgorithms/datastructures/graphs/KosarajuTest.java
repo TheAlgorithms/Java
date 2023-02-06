@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.graphs;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class KosarajuTest {
         List<List<Integer>> expectedResult = new ArrayList<>();
         /*
             Expected result: 
-            0, 1, 2, 0
+            0, 1, 2
             3
             5, 4, 6 
             7
