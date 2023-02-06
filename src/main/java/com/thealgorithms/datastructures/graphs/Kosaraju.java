@@ -29,14 +29,16 @@ import java.util.Stack;
     1                            5 --> 6 
 
     For the above graph, the SCC list goes as follows:
-    0, 1, 2
+    0, 1, 2 
     3
     4, 5, 6
     7
     
+    We can also see that order of the nodes in an SCC doesn't matter since they are in cycle.
+
  {@summary}
  * Kosaraju Algorithm: 
-    1. Perform DFS traversal of the graph. Push node to stack before returning.
+    1. Perform DFS traversal of the graph. Push node to stack before returning. This gives edges sorted by lowest finish time.
     2. Find the transpose graph by reversing the edges.
     3. Pop nodes one by one from the stack and again to DFS on the modified graph.
 
@@ -54,56 +56,83 @@ import java.util.Stack;
 
 public class Kosaraju {
 
+    // Sort edges according to lowest finish time
+    Stack<Integer> stack = new Stack<Integer>();
+
     //Store each component
     private List<Integer> scc = new ArrayList<>();
 
     //All the strongly connected components
     private List<List<Integer>> sccsList = new ArrayList<>();
 
+    /**
+     * 
+     * @param v Node count
+     * @param list Adjacency list of graph
+     * @return List of SCCs
+     */
     public List<List<Integer>> kosaraju(int v, List<List<Integer>> list){
         
         //Sort the edges according to lowest finish time
-        var st = new Stack<Integer>();
+        sortEdgesByLowestFinishTime(v, list);
+        
+        //Create transpose graph of the given graph
+        List<List<Integer>> transposeGraph = createTransposeMatrix(v, list);
+
+        //Run DFS on the transpose graph and get the Strongly Connected Components
+        findSCCs(v, transposeGraph);
+        
+        //Return the SCCs
+        return sccsList;
+    }
+
+    private void sortEdgesByLowestFinishTime(int v, List<List<Integer>> list){
         int vis[] = new int[v];
         for (int i = 0; i < v; i++) {
             if(vis[i] == 0){
-                dfs(i, vis, list, st);
+                dfs(i, vis, list);
             }
         }
+    }
 
-        //Create a transpose graph of the given graph
-        var transposeGraph = new ArrayList<List<Integer>>(8);
+    private List<List<Integer>> createTransposeMatrix(int v, List<List<Integer>> list) {
+        var transposeGraph = new ArrayList<List<Integer>>(v);
         for (int i = 0; i < v; i++) {
             transposeGraph.add(new ArrayList<>());
         }
-        for (int i = 0; i < vis.length; i++) {
-            vis[i] = 0;
+        for (int i = 0; i < v; i++) {
             for (Integer neigh : list.get(i)) {
                 transposeGraph.get(neigh).add(i);
             }
         }
+        return transposeGraph;
+    }
 
-        //Run DFS on the transpose graph and get the Strongly Connected Components
-        while (!st.isEmpty()) {
-            var node = st.pop();
+    /**
+     * 
+     * @param v Node count
+     * @param transposeGraph Transpose of the given adjacency list
+     */
+    public void findSCCs(int v, List<List<Integer>> transposeGraph){
+        int vis[] = new int[v];
+        while (!stack.isEmpty()) {
+            var node = stack.pop();
             if(vis[node] == 0){
                 dfs2(node, vis, transposeGraph);
-                System.out.println();
                 sccsList.add(scc);
                 scc = new ArrayList<>();
             }
         }
-        return sccsList;
     }
 
     //Dfs to store the nodes in order of lowest finish time
-    private void dfs(int node, int vis[], List<List<Integer>> list, Stack<Integer> st){
+    private void dfs(int node, int vis[], List<List<Integer>> list){
         vis[node] = 1;
         for(Integer neighbour : list.get(node)){
             if(vis[neighbour] == 0)
-                dfs(neighbour, vis, list, st);
+                dfs(neighbour, vis, list);
         }
-        st.push(node);
+        stack.push(node);
     }
 
     //Dfs to find all the nodes of each strongly connected component
@@ -115,7 +144,6 @@ public class Kosaraju {
         }
         scc.add(node);
     }
-
 
     public static void main(String[] args) {
         var n = 8;
@@ -135,12 +163,24 @@ public class Kosaraju {
         adjList.get(5).add(6);
         adjList.get(6).add(4);
         adjList.get(6).add(7);
-        System.out.println(adjList);
+
+        System.out.println("Adjacency list: ");
+        for (int i = 0; i < adjList.size(); i++) {
+            System.out.print(i + ": ");
+            if(adjList.get(i).isEmpty()){
+                System.out.println("No outgoing edges");
+                continue;
+            }
+            for (int index = 0; index < adjList.get(i).size(); index++) {
+                System.out.print(adjList.get(i).get(index) + " ");
+            }
+            System.out.println();
+        }
 
         var scc = new Kosaraju();
         List<List<Integer>> sccsList = scc.kosaraju(n, adjList);
 
-        System.out.println(sccsList);
+        System.out.println("\nStrongly connected components: " + sccsList);
     }
     
 }
