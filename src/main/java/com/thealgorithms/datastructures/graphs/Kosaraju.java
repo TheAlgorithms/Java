@@ -73,16 +73,12 @@ public class Kosaraju {
      */
     public List<List<Integer>> kosaraju(int v, List<List<Integer>> list){
         
-        //Sort the edges according to lowest finish time
         sortEdgesByLowestFinishTime(v, list);
         
-        //Create transpose graph of the given graph
         List<List<Integer>> transposeGraph = createTransposeMatrix(v, list);
 
-        //Run DFS on the transpose graph and get the Strongly Connected Components
-        findSCCs(v, transposeGraph);
+        findStronglyConnectedComponents(v, transposeGraph);
         
-        //Return the SCCs
         return sccsList;
     }
 
@@ -113,7 +109,7 @@ public class Kosaraju {
      * @param v Node count
      * @param transposeGraph Transpose of the given adjacency list
      */
-    public void findSCCs(int v, List<List<Integer>> transposeGraph){
+    public void findStronglyConnectedComponents(int v, List<List<Integer>> transposeGraph){
         int vis[] = new int[v];
         while (!stack.isEmpty()) {
             var node = stack.pop();
@@ -143,44 +139,6 @@ public class Kosaraju {
                 dfs2(neighbour, vis, list);
         }
         scc.add(node);
-    }
-
-    public static void main(String[] args) {
-        var n = 8;
-        var adjList = new ArrayList<List<Integer>>(n);
-
-        for (int i = 0; i < n; i++) {
-            adjList.add(new ArrayList<>());
-        }
-
-        adjList.get(0).add(1);
-        adjList.get(1).add(2);
-        adjList.get(2).add(0);
-        adjList.get(2).add(3);
-        adjList.get(3).add(4);
-        adjList.get(4).add(5);
-        adjList.get(4).add(7);
-        adjList.get(5).add(6);
-        adjList.get(6).add(4);
-        adjList.get(6).add(7);
-
-        System.out.println("Adjacency list: ");
-        for (int i = 0; i < adjList.size(); i++) {
-            System.out.print(i + ": ");
-            if(adjList.get(i).isEmpty()){
-                System.out.println("No outgoing edges");
-                continue;
-            }
-            for (int index = 0; index < adjList.get(i).size(); index++) {
-                System.out.print(adjList.get(i).get(index) + " ");
-            }
-            System.out.println();
-        }
-
-        var scc = new Kosaraju();
-        List<List<Integer>> sccsList = scc.kosaraju(n, adjList);
-
-        System.out.println("\nStrongly connected components: " + sccsList);
     }
     
 }

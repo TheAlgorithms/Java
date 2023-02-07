@@ -69,7 +69,6 @@ public class KosarajuTest {
         adjList.get(7).add(0);
 
         List<List<Integer>> actualResult = kosaraju.kosaraju(n, adjList);
-        System.out.println(actualResult);
         List<List<Integer>> expectedResult = new ArrayList<>();
         /*
             Expected result: 
