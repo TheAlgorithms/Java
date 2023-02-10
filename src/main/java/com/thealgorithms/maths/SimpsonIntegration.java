@@ -25,7 +25,9 @@ public class SimpsonIntegration {
 
         // Check so that N is even
         if (N % 2 != 0) {
-            System.out.println("N must be even number for Simpsons method. Aborted");
+            System.out.println(
+                "N must be even number for Simpsons method. Aborted"
+            );
             System.exit(1);
         }
 
@@ -83,7 +85,6 @@ public class SimpsonIntegration {
     // Function f(x) = e^(-x) * (4 - x^2)
     public double f(double x) {
         return Math.exp(-x) * (4 - Math.pow(x, 2));
-//        return Math.sqrt(x);
+        //        return Math.sqrt(x);
     }
-
 }

@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MergeSortRecursive {
@@ -12,13 +12,12 @@ public class MergeSortRecursive {
         this.arr = arr;
     }
 
-    public void mergeSort() {
+    public List<Integer> mergeSort() {
         List<Integer> arrSorted = merge(arr);
-        System.out.println(arrSorted);
+        return arrSorted;
     }
 
     private static List<Integer> merge(List<Integer> arr) {
-
         // base condition
         if (arr.size() <= 1) {
             return arr;
@@ -36,7 +35,10 @@ public class MergeSortRecursive {
         return sort(arrA, arrB);
     }
 
-    private static List<Integer> sort(List<Integer> unsortedA, List<Integer> unsortedB) {
+    private static List<Integer> sort(
+        List<Integer> unsortedA,
+        List<Integer> unsortedB
+    ) {
         if (unsortedA.size() <= 0 && unsortedB.size() <= 0) {
             return new ArrayList<>();
         }
@@ -52,7 +54,9 @@ public class MergeSortRecursive {
                     add(unsortedA.get(0));
                 }
             };
-            newAl.addAll(sort(unsortedA.subList(1, unsortedA.size()), unsortedB));
+            newAl.addAll(
+                sort(unsortedA.subList(1, unsortedA.size()), unsortedB)
+            );
             return newAl;
         } else {
             List<Integer> newAl = new ArrayList<Integer>() {
@@ -60,17 +64,20 @@ public class MergeSortRecursive {
                     add(unsortedB.get(0));
                 }
             };
-            newAl.addAll(sort(unsortedA, unsortedB.subList(1, unsortedB.size())));
+            newAl.addAll(
+                sort(unsortedA, unsortedB.subList(1, unsortedB.size()))
+            );
             return newAl;
         }
     }
-
 }
 
 class App {
 
     public static void main(String[] args) {
-        MergeSortRecursive sort = new MergeSortRecursive(new ArrayList<>(Arrays.asList(4, 3, 1, 8, 5, 10, 0, 1, 4, 11, 8, 9)));
+        MergeSortRecursive sort = new MergeSortRecursive(
+            new ArrayList<>(Arrays.asList(4, 3, 1, 8, 5, 10, 0, 1, 4, 11, 8, 9))
+        );
         sort.mergeSort();
     }
 }

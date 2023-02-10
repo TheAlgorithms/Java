@@ -1,14 +1,13 @@
 package com.thealgorithms.searches;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
 class RabinKarpAlgorithmTest {
 
-	
-	RabinKarpAlgorithm RKA= new RabinKarpAlgorithm();
-	int q= 101;
+    RabinKarpAlgorithm RKA = new RabinKarpAlgorithm();
+    int q = 101;
 
     @Test
     // valid test case
@@ -16,9 +15,9 @@ class RabinKarpAlgorithmTest {
         String txt = "This is an example for rabin karp algorithmn";
         String pat = "algorithmn";
         int value = RKA.search(pat, txt, q);
-        assertEquals(value,34);
+        assertEquals(value, 34);
     }
-    
+
     @Test
     // valid test case
     public void RabinKarpAlgorithmTestFront() {
@@ -54,5 +53,4 @@ class RabinKarpAlgorithmTest {
         int value = RKA.search(pat, txt, q);
         assertEquals(value, -1);
     }
-
 }

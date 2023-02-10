@@ -1,10 +1,22 @@
 package com.thealgorithms.divideandconquer;
 
-// Java Program to Implement Strassen Algorithm
-// Class Strassen matrix multiplication
+// Java Program to Implement Strassen Algorithm for Matrix Multiplication
+
+/*
+ * Uses the divide and conquer approach to multiply two matrices.
+ * Time Complexity: O(n^2.8074) better than the O(n^3) of the standard matrix multiplication algorithm.
+ * Space Complexity: O(n^2)
+ * 
+ * This Matrix multiplication can be performed only on square matrices 
+ * where n is a power of 2. Order of both of the matrices are n × n.
+ * 
+ * Reference:
+ * https://www.tutorialspoint.com/design_and_analysis_of_algorithms/design_and_analysis_of_algorithms_strassens_matrix_multiplication.htm#:~:text=Strassen's%20Matrix%20multiplication%20can%20be,matrices%20are%20n%20%C3%97%20n.
+ * https://www.geeksforgeeks.org/strassens-matrix-multiplication/
+ */
+
 public class StrassenMatrixMultiplication {
 
-    // Method 1
     // Function to multiply matrices
     public int[][] multiply(int[][] A, int[][] B) {
         int n = A.length;
@@ -39,8 +51,7 @@ public class StrassenMatrixMultiplication {
 
             // Using Formulas as described in algorithm
             // M1:=(A1+A3)×(B1+B2)
-            int[][] M1
-                    = multiply(add(A11, A22), add(B11, B22));
+            int[][] M1 = multiply(add(A11, A22), add(B11, B22));
 
             // M2:=(A2+A4)×(B3+B4)
             int[][] M2 = multiply(add(A21, A22), B11);
@@ -55,12 +66,10 @@ public class StrassenMatrixMultiplication {
             int[][] M5 = multiply(add(A11, A12), B22);
 
             // M6:=(A1+A2)×(B4)
-            int[][] M6
-                    = multiply(sub(A21, A11), add(B11, B12));
+            int[][] M6 = multiply(sub(A21, A11), add(B11, B12));
 
             // M7:=A4×(B3−B1)
-            int[][] M7
-                    = multiply(sub(A12, A22), add(B21, B22));
+            int[][] M7 = multiply(sub(A12, A22), add(B21, B22));
 
             // P:=M2+M3−M6−M7
             int[][] C11 = add(sub(add(M1, M4), M5), M7);
@@ -83,7 +92,6 @@ public class StrassenMatrixMultiplication {
         return R;
     }
 
-    // Method 2
     // Function to subtract two matrices
     public int[][] sub(int[][] A, int[][] B) {
         int n = A.length;
@@ -99,10 +107,8 @@ public class StrassenMatrixMultiplication {
         return C;
     }
 
-    // Method 3
     // Function to add two matrices
     public int[][] add(int[][] A, int[][] B) {
-
         int n = A.length;
 
         int[][] C = new int[n][n];
@@ -116,9 +122,7 @@ public class StrassenMatrixMultiplication {
         return C;
     }
 
-    // Method 4
-    // Function to split parent matrix
-    // into child matrices
+    // Function to split parent matrix into child matrices
     public void split(int[][] P, int[][] C, int iB, int jB) {
         for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++) {
             for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++) {
@@ -127,9 +131,7 @@ public class StrassenMatrixMultiplication {
         }
     }
 
-    // Method 5
-    // Function to join child matrices
-    // into (to) parent matrix
+    // Function to join child matrices into (to) parent matrix
     public void join(int[][] C, int[][] P, int iB, int jB) {
         for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++) {
             for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++) {
@@ -138,43 +140,4 @@ public class StrassenMatrixMultiplication {
         }
     }
 
-    // Method 5
-    // Main driver method
-    public static void main(String[] args) {
-        System.out.println("Strassen Multiplication Algorithm Implementation For Matrix Multiplication :\n");
-
-        StrassenMatrixMultiplication s = new StrassenMatrixMultiplication();
-
-        // Size of matrix
-        // Considering size as 4 in order to illustrate
-        int N = 4;
-
-        // Matrix A
-        // Custom input to matrix
-        int[][] A = {{1, 2, 5, 4},
-        {9, 3, 0, 6},
-        {4, 6, 3, 1},
-        {0, 2, 0, 6}};
-
-        // Matrix B
-        // Custom input to matrix
-        int[][] B = {{1, 0, 4, 1},
-        {1, 2, 0, 2},
-        {0, 3, 1, 3},
-        {1, 8, 1, 2}};
-
-        // Matrix C computations
-        // Matrix C calling method to get Result
-        int[][] C = s.multiply(A, B);
-
-        System.out.println("\nProduct of matrices A and  B : ");
-
-        // Print the output
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(C[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
 }

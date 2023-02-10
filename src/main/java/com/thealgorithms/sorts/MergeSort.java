@@ -1,11 +1,16 @@
 package com.thealgorithms.sorts;
 
+import static com.thealgorithms.sorts.SortUtils.less;
+
 /**
  * Generic merge sort algorithm.
  *
  * @see SortAlgorithm
  */
 class MergeSort implements SortAlgorithm {
+
+    @SuppressWarnings("rawtypes")
+    private static Comparable[] aux;
 
     /**
      * Generic merge sort algorithm implements.
@@ -16,6 +21,7 @@ class MergeSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        aux = new Comparable[unsorted.length];
         doSort(unsorted, 0, unsorted.length - 1);
         return unsorted;
     }
@@ -43,49 +49,21 @@ class MergeSort implements SortAlgorithm {
      * @param right the last index of the array merges two parts of an array in
      * increasing order.
      */
+    @SuppressWarnings("unchecked")
     private static <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-        int length = right - left + 1;
-        @SuppressWarnings("unchecked")
-        T[] temp = (T[]) new Comparable[length];
-        int i = left;
-        int j = mid + 1;
-        int k = 0;
+        int i = left, j = mid + 1;
+        System.arraycopy(arr, left, aux, left, right + 1 - left);
 
-        while (i <= mid && j <= right) {
-            if (arr[i].compareTo(arr[j]) <= 0) {
-                temp[k++] = arr[i++];
+        for (int k = left; k <= right; k++) {
+            if (j > right) {
+                arr[k] = (T) aux[i++];
+            } else if (i > mid) {
+                arr[k] = (T) aux[j++];
+            } else if (less(aux[j], aux[i])) {
+                arr[k] = (T) aux[j++];
             } else {
-                temp[k++] = arr[j++];
+                arr[k] = (T) aux[i++];
             }
-        }
-
-        while (i <= mid) {
-            temp[k++] = arr[i++];
-        }
-
-        while (j <= right) {
-            temp[k++] = arr[j++];
-        }
-
-        System.arraycopy(temp, 0, arr, left, length);
-    }
-
-    /**
-     * Driver code
-     */
-    public static void main(String[] args) {
-        MergeSort mergeSort = new MergeSort();
-
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        mergeSort.sort(arr);
-        for (int i = 0; i < arr.length - 1; ++i) {
-            assert arr[i] <= arr[i + 1];
-        }
-
-        String[] stringArray = {"c", "a", "e", "b", "d"};
-        mergeSort.sort(stringArray);
-        for (int i = 0; i < stringArray.length - 1; ++i) {
-            assert arr[i].compareTo(arr[i + 1]) <= 0;
         }
     }
 }

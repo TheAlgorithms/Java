@@ -1,7 +1,7 @@
 package com.thealgorithms.misc;
 
-import java.util.Stack;
 import com.thealgorithms.datastructures.lists.SinglyLinkedList;
+import java.util.Stack;
 
 /**
  * A simple way of knowing if a singly linked list is palindrome is to push all

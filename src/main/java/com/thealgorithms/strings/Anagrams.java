@@ -3,7 +3,6 @@ package com.thealgorithms.strings;
 import java.util.Arrays;
 import java.util.HashMap;
 
-
 /**
  * An anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
  * typically using all the original letters exactly once.[1]
@@ -12,17 +11,25 @@ import java.util.HashMap;
  * Reference from https://en.wikipedia.org/wiki/Anagram
  */
 public class Anagrams {
+
     // 4 approaches are provided for anagram checking. approach 2 and approach 3 are similar but differ in running time.
     public static void main(String[] args) {
         String first = "deal";
         String second = "lead";
         // All the below methods takes input but doesn't return any output to the main method.
         Anagrams nm = new Anagrams();
-        System.out.println(nm.approach2(first, second));  /* To activate methods for different approaches*/
-        System.out.println(nm.approach1(first, second));  /* To activate methods for different approaches*/
-        System.out.println(nm.approach3(first, second));  /* To activate methods for different approaches*/
-        System.out.println(nm.approach4(first, second));  /* To activate methods for different approaches*/
-
+        System.out.println(
+            nm.approach2(first, second)
+        );/* To activate methods for different approaches*/
+        System.out.println(
+            nm.approach1(first, second)
+        );/* To activate methods for different approaches*/
+        System.out.println(
+            nm.approach3(first, second)
+        );/* To activate methods for different approaches*/
+        System.out.println(
+            nm.approach4(first, second)
+        );/* To activate methods for different approaches*/
         /**
          * OUTPUT :
          * first string ="deal" second string ="lead"
@@ -46,12 +53,11 @@ public class Anagrams {
             char c[] = s.toCharArray();
             char d[] = t.toCharArray();
             Arrays.sort(c);
-            Arrays.sort(d);    /* In this approach the strings are stored in the character arrays and both the arrays are sorted. After that both the arrays are compared for checking anangram */
-            if (Arrays.equals(c, d)) {
-                return true;
-            } else {
-                return false;
-            }
+            Arrays.sort(
+                d
+            );/* In this approach the strings are stored in the character arrays and both the arrays are sorted. After that both the arrays are compared for checking anangram */
+
+            return Arrays.equals(c, d);
         }
     }
 
@@ -92,8 +98,7 @@ public class Anagrams {
                 b[t.charAt(i) - 'a']++;
             }
             for (int i = 0; i < 26; i++) {
-                if (a[i] != b[i])
-                    return false;
+                if (a[i] != b[i]) return false;
             }
             return true;
         }
@@ -111,16 +116,10 @@ public class Anagrams {
                 nm.put(c, nm.getOrDefault(c, 0) + 1);
             }
             for (char c : t.toCharArray()) {
-
                 kk.put(c, kk.getOrDefault(c, 0) + 1);
             }
-            // It checks for equal frequencies
-            for (char c : nm.keySet()) {
-                if (!nm.get(c).equals(kk.get(c))) {
-                    return false;
-                }
-            }
-            return true;
+            // It checks for equal frequencies by comparing key-value pairs of two hashmaps
+            return nm.equals(kk);
         }
     }
 }

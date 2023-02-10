@@ -57,7 +57,12 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
      * @param rightNode Value to which the nodes' right child reference will be
      * set.
      */
-    public SimpleTreeNode(E data, SimpleTreeNode<E> parentNode, SimpleTreeNode<E> leftNode, SimpleTreeNode<E> rightNode) {
+    public SimpleTreeNode(
+        E data,
+        SimpleTreeNode<E> parentNode,
+        SimpleTreeNode<E> leftNode,
+        SimpleTreeNode<E> rightNode
+    ) {
         super(data, parentNode);
         this.leftNode = leftNode;
         this.rightNode = rightNode;

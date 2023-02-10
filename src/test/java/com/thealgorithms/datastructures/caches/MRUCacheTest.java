@@ -1,9 +1,9 @@
 package com.thealgorithms.datastructures.caches;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.Test;
 
 public class MRUCacheTest {
 
@@ -13,11 +13,11 @@ public class MRUCacheTest {
     public void putAndGetIntegerValues() {
         MRUCache<Integer, Integer> lruCache = new MRUCache<>(SIZE);
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             lruCache.put(i, i);
         }
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             assertEquals(i, lruCache.get(i));
         }
     }
@@ -26,11 +26,11 @@ public class MRUCacheTest {
     public void putAndGetStringValues() {
         MRUCache<String, String> lruCache = new MRUCache<>(SIZE);
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             lruCache.put("key" + i, "value" + i);
         }
 
-        for(int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             assertEquals("value" + i, lruCache.get("key" + i));
         }
     }
@@ -49,7 +49,7 @@ public class MRUCacheTest {
     public void overCapacity() {
         MRUCache<Integer, Integer> mruCache = new MRUCache<>(SIZE);
 
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             mruCache.put(i, i);
         }
 

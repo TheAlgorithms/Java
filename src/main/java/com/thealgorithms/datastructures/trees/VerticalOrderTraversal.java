@@ -22,23 +22,13 @@ in a tree from top to bottom and left to right, so for a tree :
  */
 public class VerticalOrderTraversal {
 
-    public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
-        tree.put(5);
-        tree.put(6);
-        tree.put(3);
-        tree.put(1);
-        tree.put(4);
-        BinaryTree.Node root = tree.getRoot();
-        ArrayList<Integer> ans = verticalTraversal(root);
-        for (int i : ans) {
-            System.out.print(i + " ");
-        }
-    }
-
-    /*Function that receives a root Node and prints the tree 
+    /*Function that receives a root Node and prints the tree
 	in Vertical Order.*/
-    private static ArrayList<Integer> verticalTraversal(BinaryTree.Node root) {
+    public static ArrayList<Integer> verticalTraversal(BinaryTree.Node root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+
         /*Queue to store the Nodes.*/
         Queue<BinaryTree.Node> queue = new LinkedList<>();
 
@@ -60,7 +50,6 @@ public class VerticalOrderTraversal {
         index.offer(0);
 
         while (!queue.isEmpty()) {
-
             if (queue.peek().left != null) {
                 /*Adding the left Node if it is not null
 				and its index by subtracting 1 from it's 
@@ -85,21 +74,19 @@ public class VerticalOrderTraversal {
 			 to the respective ArrayList present at that
 			 index. */
             map.get(index.peek()).add(queue.peek().data);
-            max = (int) Math.max(max, index.peek());
-            min = (int) Math.min(min, index.peek());
-            /*The Node and its index are removed 
+            max = Math.max(max, index.peek());
+            min = Math.min(min, index.peek());
+            /*The Node and its index are removed
 			 from their respective queues.*/
             index.poll();
             queue.poll();
         }
         /*Finally map data is printed here which has keys
-		from min to max. Each ArrayList represents a 
+		from min to max. Each ArrayList represents a
 		vertical column that is added in ans ArrayList.*/
         ArrayList<Integer> ans = new ArrayList<>();
         for (int i = min; i <= max; i++) {
-            for (int j = 0; j < map.get(i).size(); j++) {
-                ans.add(map.get(i).get(j));
-            }
+            ans.addAll(map.get(i));
         }
         return ans;
     }

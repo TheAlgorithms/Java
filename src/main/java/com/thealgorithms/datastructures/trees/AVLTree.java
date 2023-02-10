@@ -105,7 +105,6 @@ public class AVLTree {
             } else {
                 n = rotateLeftThenRight(n);
             }
-
         } else if (n.balance == 2) {
             if (height(n.right.right) >= height(n.right.left)) {
                 n = rotateLeft(n);
@@ -122,7 +121,6 @@ public class AVLTree {
     }
 
     private Node rotateLeft(Node a) {
-
         Node b = a.right;
         b.parent = a.parent;
 
@@ -149,7 +147,6 @@ public class AVLTree {
     }
 
     private Node rotateRight(Node a) {
-
         Node b = a.left;
         b.parent = a.parent;
 

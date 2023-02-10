@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-
 import java.lang.Math;
 import java.util.Objects;
 
@@ -71,19 +70,26 @@ public class HashMapCuckooHashing {
         int hash, loopCounter = 0;
 
         if (isFull()) {
-            System.out.println("Hash table is full, lengthening & rehashing table");
+            System.out.println(
+                "Hash table is full, lengthening & rehashing table"
+            );
             reHashTableIncreasesTableSize();
         }
 
         if (checkTableContainsKey(key)) {
-            throw new IllegalArgumentException("Key already inside, no duplicates allowed");
+            throw new IllegalArgumentException(
+                "Key already inside, no duplicates allowed"
+            );
         }
 
         while (loopCounter <= thresh) {
             loopCounter++;
             hash = hashFunction1(key);
 
-            if ((buckets[hash] == null) || Objects.equals(buckets[hash], AVAILABLE)) {
+            if (
+                (buckets[hash] == null) ||
+                Objects.equals(buckets[hash], AVAILABLE)
+            ) {
                 buckets[hash] = wrappedInt;
                 size++;
                 checkLoadFactor();
@@ -110,7 +116,9 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
         }
-        System.out.println("Infinite loop occurred, lengthening & rehashing table");
+        System.out.println(
+            "Infinite loop occurred, lengthening & rehashing table"
+        );
         reHashTableIncreasesTableSize();
         insertKey2HashTable(key);
     }
@@ -131,7 +139,6 @@ public class HashMapCuckooHashing {
         this.buckets = newT.buckets;
         this.thresh = (int) (Math.log(tableSize) / Math.log(2)) + 2;
     }
-
 
     /**
      * deletes a key from the hash map and adds an available placeholder
@@ -157,7 +164,9 @@ public class HashMapCuckooHashing {
             size--;
             return;
         }
-        throw new IllegalArgumentException("Key " + key + " already inside, no duplicates allowed");
+        throw new IllegalArgumentException(
+            "Key " + key + " already inside, no duplicates allowed"
+        );
     }
 
     /**
@@ -168,7 +177,9 @@ public class HashMapCuckooHashing {
             if ((buckets[i] == null) || Objects.equals(buckets[i], AVAILABLE)) {
                 System.out.println("Bucket " + i + ": Empty");
             } else {
-                System.out.println("Bucket " + i + ": " + buckets[i].toString());
+                System.out.println(
+                    "Bucket " + i + ": " + buckets[i].toString()
+                );
             }
         }
         System.out.println();
@@ -191,20 +202,32 @@ public class HashMapCuckooHashing {
         if (Objects.equals(buckets[hash], wrappedInt)) return hash;
 
         hash = hashFunction2(key);
-        if (!Objects.equals(buckets[hash], wrappedInt))
-            throw new IllegalArgumentException("Key " + key + " not found in table");
-        else {
+        if (
+            !Objects.equals(buckets[hash], wrappedInt)
+        ) throw new IllegalArgumentException(
+            "Key " + key + " not found in table"
+        ); else {
             return hash;
         }
     }
+
     /**
      * checks if key is inside without any output other than returned boolean.
      *
      * @param key the desired key to be found
      * @return int the index where the key is located
      */
-    public boolean checkTableContainsKey(int key){
-        return  ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key)) || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)] == key));
+    public boolean checkTableContainsKey(int key) {
+        return (
+            (
+                buckets[hashFunction1(key)] != null &&
+                buckets[hashFunction1(key)].equals(key)
+            ) ||
+            (
+                buckets[hashFunction2(key)] != null &&
+                buckets[hashFunction2(key)] == key
+            )
+        );
     }
 
     /**
@@ -214,7 +237,10 @@ public class HashMapCuckooHashing {
     public double checkLoadFactor() {
         double factor = (double) size / tableSize;
         if (factor > .7) {
-            System.out.printf("Load factor is %.2f , rehashing table\n", factor);
+            System.out.printf(
+                "Load factor is %.2f , rehashing table\n",
+                factor
+            );
             reHashTableIncreasesTableSize();
         }
         return factor;
@@ -250,5 +276,8 @@ public class HashMapCuckooHashing {
         }
         return response;
     }
-    public int getNumberOfKeysInTable(){return size;}
+
+    public int getNumberOfKeysInTable() {
+        return size;
+    }
 }

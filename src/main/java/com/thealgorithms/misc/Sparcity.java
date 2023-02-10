@@ -3,23 +3,23 @@ package com.thealgorithms.misc;
 import java.util.*;
 
 /*
-*A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements are 0, it is considered as sparse). 
-*The interest in sparsity arises because its exploitation can lead to enormous computational savings and because many large matrix problems that occur in practice are sparse.
-*
-* @author Ojasva Jain
+ *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements are 0, it is considered as sparse).
+ *The interest in sparsity arises because its exploitation can lead to enormous computational savings and because many large matrix problems that occur in practice are sparse.
+ *
+ * @author Ojasva Jain
  */
 
 class Sparcity {
 
     /*
-    * @return Sparcity of matrix
-    * 
-    * where sparcity = number of zeroes/total elements in matrix
-    *
+     * @return Sparcity of matrix
+     *
+     * where sparcity = number of zeroes/total elements in matrix
+     *
      */
     static double sparcity(double[][] mat) {
         int zero = 0;
-        //Traversing the matrix to count number of zeroes 
+        //Traversing the matrix to count number of zeroes
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i][j] == 0) {
