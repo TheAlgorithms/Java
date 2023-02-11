@@ -54,4 +54,12 @@ public class IntrospectiveSortTest {
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);
     }
+
+    @Test
+    // valid test case
+    public void allSameTest() {
+        Integer[] expectedArray = {1, 1, 1, 1, 1};
+        Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
+        assertArrayEquals(expectedArray, actualList);
+    }
 }
