@@ -53,7 +53,7 @@ public class All_Paths_From_Source_To_Target {
 
     // Prints all paths from 's' to 'd'
 
-    public void printAllPaths(int s, int d)
+    public int printAllPaths(int s, int d)
     {
         boolean[] isVisited = new boolean[v];
         ArrayList<Integer> pathList = new ArrayList<>();
