@@ -53,7 +53,7 @@ public class All_Paths_From_Source_To_Target {
 
     // Prints all paths from 's' to 'd'
 
-    public void printAllPaths(int s, int d, int c)
+    public void printAllPaths(int s, int d)
     {
         boolean[] isVisited = new boolean[v];
         ArrayList<Integer> pathList = new ArrayList<>();
@@ -62,7 +62,7 @@ public class All_Paths_From_Source_To_Target {
         pathList.add(s);
 
         // Call recursive utility
-        printAllPathsUtil(s, d, isVisited, pathList);
+        printAllPathsUtil(s, d, isVisited, pathList,a);
         return a[0];
     }
 
@@ -88,7 +88,7 @@ public class All_Paths_From_Source_To_Target {
             if (!isVisited[i]) {
                 // store current node in path[]
                 localPathList.add(i);
-                printAllPathsUtil(i, d, isVisited, localPathList);
+                printAllPathsUtil(i, d, isVisited, localPathList,a);
 
                 // remove current node in path[]
                 localPathList.remove(i);
