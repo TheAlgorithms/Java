@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Java program that implements Kosaraju Algorithm.
+ * Java program that implements Tarjan's Algorithm.
  * @author Shivanagouda S A (https://github.com/shivu2002a)
  * 
  */
