@@ -60,7 +60,7 @@ public class All_Paths_From_Source_To_Target {
 
         // add source to path[]
         pathList.add(s);
-
+        int a[]=new int[1];
         // Call recursive utility
         printAllPathsUtil(s, d, isVisited, pathList,a);
         return a[0];
