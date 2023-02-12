@@ -38,4 +38,20 @@ public class FindMin {
         }
         return min;
     }
+
+    /**
+     * Find the minimum number of an array of numbers.
+     *
+     * @param array the array contains element
+     * @return min value
+     */
+    public static double findMin(double[] array) {
+        double min = array[0];
+        for (int i = 1; i < array.length; ++i) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
 }

@@ -38,4 +38,20 @@ public class FindMax {
         }
         return max;
     }
+
+    /**
+     * find max of array
+     *
+     * @param array the array contains element
+     * @return max value of given array
+     */
+    public static double findMax(double[] array) {
+        double max = array[0];
+        for (int i = 1; i < array.length; ++i) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
 }

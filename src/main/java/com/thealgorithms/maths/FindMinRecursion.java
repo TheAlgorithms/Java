@@ -48,6 +48,27 @@ public class FindMinRecursion {
     }
 
     /**
+     * Get min of array using divide and conquer algorithm
+     *
+     * @param array contains elements
+     * @param low the index of the first element
+     * @param high the index of the last element
+     * @return min of {@code array}
+     */
+    public static double min(double[] array, int low, int high) {
+        if (low == high) {
+            return array[low]; // or array[high]
+        }
+
+        int mid = (low + high) >>> 1;
+
+        double leftMin = min(array, low, mid); // get min in [low, mid]
+        double rightMin = min(array, mid + 1, high); // get min in [mid+1, high]
+
+        return Math.min(leftMin, rightMin);
+    }
+
+    /**
      * Get min of array using recursion algorithm
      *
      * @param array contains elements
@@ -58,5 +79,18 @@ public class FindMinRecursion {
         return len == 1
             ? array[0]
             : Math.min(min(array, len - 1), array[len - 1]);
+    }
+
+    /**
+     * Get min of array using recursion algorithm
+     *
+     * @param array contains elements
+     * @param len length of given array
+     * @return min value of {@code array}
+     */
+    public static double min(double[] array, int len) {
+        return len == 1
+                ? array[0]
+                : Math.min(min(array, len - 1), array[len - 1]);
     }
 }
