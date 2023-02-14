@@ -13,7 +13,7 @@ import java.util.*;
 // A directed graph using adjacency list representation
 
 
-public class All_Paths_From_Source_To_Target {
+public class AllPathsFromSourceToTarget {
 
     // No. of vertices in graph
     private int v;
@@ -105,7 +105,7 @@ public class All_Paths_From_Source_To_Target {
     public static boolean all_Paths_From_Source_To_Target(int vertices, int a[][], int source, int destination, int num_of_paths)
     {
         // Create a sample graph
-        All_Paths_From_Source_To_Target g = new All_Paths_From_Source_To_Target(vertices);
+        AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
         for(int i=0 ; i<a.length ; i++)
         {
             g.addEdge(a[i][0], a[i][1]);

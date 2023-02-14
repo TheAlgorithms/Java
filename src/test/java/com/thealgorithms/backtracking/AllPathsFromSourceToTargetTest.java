@@ -2,10 +2,10 @@ package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.thealgorithms.backtracking.All_Paths_From_Source_To_Target;
+import com.thealgorithms.backtracking.AllPathsFromSourceToTarget;
 import org.junit.jupiter.api.Test;
 
-public class All_Paths_From_Source_To_Target_Test {
+public class AllPathsFromSourceToTargetTest {
 
     @Test
     void testForFirstCase() {
@@ -14,7 +14,7 @@ public class All_Paths_From_Source_To_Target_Test {
         int source = 2;
         int destination = 3;
         int num_of_paths = 3;
-        assertTrue(All_Paths_From_Source_To_Target.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class All_Paths_From_Source_To_Target_Test {
         int source = 0;
         int destination = 4;
         int num_of_paths = 6;
-        assertTrue(All_Paths_From_Source_To_Target.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class All_Paths_From_Source_To_Target_Test {
         int source = 1;
         int destination = 5;
         int num_of_paths = 2;
-        assertTrue(All_Paths_From_Source_To_Target.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -44,6 +44,6 @@ public class All_Paths_From_Source_To_Target_Test {
         int source = 0;
         int destination = 2;
         int num_of_paths = 2;
-        assertTrue(All_Paths_From_Source_To_Target.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
     }
 }
