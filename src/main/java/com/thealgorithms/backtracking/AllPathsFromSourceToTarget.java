@@ -22,7 +22,7 @@ public class AllPathsFromSourceToTarget {
     private ArrayList<Integer>[] adjList;
 
     // Constructor
-    public All_Paths_From_Source_To_Target(int vertices)
+    public AllPathsFromSourceToTarget(int vertices)
     {
 
         // initialise vertex count
