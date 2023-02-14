@@ -32,7 +32,7 @@ import java.util.*;
 public class ZigzagTraversal {
     public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
-            return new ArrayList<>();
+            return List.of();
         }
 
         List<List<Integer>> result = new ArrayList<>();
