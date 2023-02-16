@@ -62,6 +62,63 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+            <plugin>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.8</version>
+      <configuration>
+        <skip>false</skip>
+        <check/>
+        <rules>
+          <rule>
+            <element>CLASS</element>
+            <excludes>
+                  <exclude>*Test</exclude>
+            </excludes>
+            <limits>
+                  <limit>
+                    <counter>LINE</counter>
+                    <value>COVEREDRATIO</value>
+                    <!-- <minimum>0.50</minimum> -->
+                  </limit>
+            </limits>
+          </rule>
+        </rules>
+      </configuration>
+      <executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>report</id>
+          <phase>prepare-package</phase>
+          <goals>
+            <goal>report</goal>
+          </goals>
+          <configuration>
+            <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+          </configuration>
+        </execution>
+        <execution>
+          <id>check</id>
+          <goals>
+            <goal>check</goal>
+          </goals>
+          <configuration>
+            <check>
+              <instructionRatio>100</instructionRatio>
+              <branchRatio>95</branchRatio>
+              <lineRatio>90</lineRatio>
+              <methodRatio>90</methodRatio>
+              <classRatio>90</classRatio>
+            </check>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
         </plugins>
     </build>
 </project>
