@@ -60,8 +60,10 @@ The functions are MyAtoi, LongDivision, CRCAlgorithm, BinaryTree, BinaryTree, Re
 
 #### Manual calculation of the complexity
 
-- CRCAlgorithm had 21 branches and 5 exit points, based on the formula we have the complexity is 21-5+2=18. This is the same value that Lizard finds.
 - MyAtoi had 32 branches and 8 exit points, based on the formula we have the complexity is 32-8+2=26. This is contrary to what Lizard finds.
+- LongDivision had 17 branches and 5 exit points. Based on the formula, the cyclomatic complecity was manually calculated to be 17-5+2=14. This was not coherent with the data we got from Lizard, which told the CC was  19. 
+- CRCAlgorithm had 21 branches and 5 exit points, based on the formula we have the complexity is 21-5+2=18. This is the same value that Lizard finds.
+- BinaryTree had 30 branches and 17 exit points, based on the formula we have the complexity 30-17+2=15. This is _not_ the same value that Lizard finds.
 
 ### **2. Are the functions just complex, or also long?**
 
