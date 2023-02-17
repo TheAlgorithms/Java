@@ -1,22 +1,14 @@
-# The Algorithms - Java
+# code-complexity-g17
+The third assignment for Software Engineering Fundamentals masters course at KTH.
 
-[![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
-[![Discord chat](https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square)](https://discord.gg/c7MnfGFGa6)
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
-
-
-You can run and edit the algorithms, or contribute to them using Gitpod.io (a free online development environment) with a single click.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
-
-### All algorithms are implemented in Java (for educational purposes)
-These implementations are intended for learning purposes. As such, they may be less efficient than the Java standard library.
-
-## Contribution Guidelines
-Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
-
-## Community Channel
-We're on [Gitter](https://gitter.im/TheAlgorithms)! Come join us.
-
-## Algorithms
-Our [directory](DIRECTORY.md) has the full list of applications.
+## Git Commit Message Template
+### `type(domain): Description #issuenumber`
+### Types
+- `build`: Changes that affect the build system or external dependencies (example scopes: broccoli, npm).
+- `docs`: Documentation only changes.
+- `feat`: A new feature. Can of course also contain tests for the feature.
+- `fix`: Bug fixes. Can of course also contain tests for the feature.
+- `refactor`: A code change that neither fixes a bug nor adds a feature.
+- `revert`: Reverts a previous commit.
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).
+- `test`: Adding missing tests or correcting existing tests.
