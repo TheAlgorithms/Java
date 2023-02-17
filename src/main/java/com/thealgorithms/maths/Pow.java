@@ -25,4 +25,23 @@ public class Pow {
         }
         return result;
     }
+    
+    
+    // this is a hard way :)
+    public static long pow(int a, int b) {
+    if (b == 0) {
+        return 1;
+    }
+    if (b == 1) {
+        return a;
+    }
+    if (b % 2 == 0) {
+        long halfPow = pow(a, b / 2);
+        return halfPow * halfPow;
+    } else {
+        long halfPow = pow(a, (b - 1) / 2);
+        return a * halfPow * halfPow;
+    }
+}
+
 }
