@@ -27,4 +27,26 @@ public class AbsoluteMax {
 
         return absMaxWrapper.value;
     }
+    
+    
+    // another way :)
+    public static int getMaxValue(int... numbers) {
+    if (numbers.length == 0) {
+        throw new IllegalArgumentException("Numbers array cannot be empty");
+    }
+
+    int absMax = Math.abs(numbers[0]);
+    int max = numbers[0];
+
+    for (int i = 1; i < numbers.length; i++) {
+        int absValue = Math.abs(numbers[i]);
+        if (absValue > absMax) {
+            absMax = absValue;
+            max = numbers[i];
+        }
+    }
+
+    return max;
+}
+
 }
