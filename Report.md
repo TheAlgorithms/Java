@@ -21,16 +21,39 @@ there is no need to write much here. If the first project(s) you picked
 ended up being unsuitable, you can describe the "onboarding experience"
 for each project, along with reason(s) why you changed to a different one.
 
-
 ## Complexity
 
-1. What are your results for ten complex functions?
-    * Did all methods (tools vs. manual count) get the same result?
-    * Are the results clear?
-2. Are the functions just complex, or also long?
-3. What is the purpose of the functions?
-4. Are exceptions taken into account in the given measurements?
-5. Is the documentation clear w.r.t. all the possible outcomes?
+### 1. 
+
+#### What are your results for ten complex functions?
+
+| Method                            | Member 1        | Member 2        | Lizard |
+| --------------------------------- | --------------- | --------------- | ------ |
+| BinarySearch2dArray::BinarySearch | 10 + 2 - 8 = 4  | 10 + 2 - 8 = 4  | 11     |
+| LinkListSort::isSorted            | 12 + 2 - 4 = 10 | 12 + 2 - 4 = 10 | 13     |
+| FordFulkerson::networkFlow        | 10 + 2 - 1 = 11 | 10 + 2 - 1 = 11 | 11     |
+| BinaryTree::remove                | 16 + 2 - 8 = 10 | 16 + 2 - 8 = 10 | 17     |
+| BellmanFord::go                   | 12 + 2 - 0 = 14 | 11 + 2 - 0 = 13 | 13     |
+| LongestCommonSubsequence::getLCS  | 10 + 2 - 3 = 9  | 9 + 2 - 3 = 8   | 11     |
+| WordBoggle::getNeighbors          | 12 + 2 - 1 = 13 | 12 + 2 - 1 = 13 | 13     |
+| ClosestPair::closestPair          | 12 + 2 - 2 = 12 | 12 + 2 - 2 = 12 | 13     |
+
+The only differences between the two members are the methods “BellmanFord::go” and “LongestCommonSubsequence::getLCS”, which was confirmed by a third member to be VALUE and VALUE respectively.
+
+#### Did all methods (tools vs. manual count) get the same result?
+Our tool, Lizard, gave very different results compared to our values calculated by hand. We think that this may be due to the Lizard tool not counting every exit point, and instead only accounts for one exit point.
+#### Are the results clear?
+They are clear in the sense that the complexity corresponds to the amount of branches and exit points in the methods. However, it is not exactly clear why our results differ from the results from the Lizard tool.
+### 2. Are the functions just complex, or also long?
+There seems to be a small correlation, with more complex methods having more lines of code. The methods have between 25 and 81 LOC each, with a mean of around 45 LOC. We haven’t worked with large enough codebases to definitively say whether or not this is a lot for these kinds of methods or not.
+### 3. What is the purpose of the functions?
+The functions are all algorithms, most of which use some form of searching which requires iteration and branching through many loops and conditions, which explains the complexity.
+### 4. Are exceptions taken into account in the given measurements?
+Yes, the possible exceptions are taken into account by the Lizard complexity measurement tool. This was tested by removing a line that throws an exception, and observing that the measured CC differed from the initially measured value.
+
+If an exception counts as another possible branch, then the CC will increase by one for each exception try-catch block.
+### 5. Is the documentation clear w.r.t. all the possible outcomes?
+No, not at all. The documentation is very limited, and does not discuss branching.
 
 ## Refactoring
 
