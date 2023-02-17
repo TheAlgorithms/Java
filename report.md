@@ -58,6 +58,10 @@ We used Lizard which put the most complex functions as follows.
 
 The functions are MyAtoi, LongDivision, CRCAlgorithm, BinaryTree, BinaryTree, RegexMatching, MaximumMinimumWindow, RedBlackBST, ValidParentheses.
 
+#### Manual calculation of the complexity
+
+- CRCAlgorithm had 21 branches and 5 exit points, based on the formula we have the complexity 21-5+2=18. This is the same value that Lizard finds.
+
 ### **2. Are the functions just complex, or also long?**
 
 They are also long. The median LOC is 2 whereas the median for the top eight is 16.5. Thus they are longer.
