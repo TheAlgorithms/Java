@@ -33,8 +33,6 @@ public class AllPathsFromSourceToTarget {
     }
 
     // utility method to initialise adjacency list
-    
-    @SuppressWarnings("unchecked")
     private void initAdjList()
     {
         adjList = new ArrayList[v];
@@ -102,7 +100,7 @@ public class AllPathsFromSourceToTarget {
     }
 
     // Driver program
-    public static boolean all_Paths_From_Source_To_Target(int vertices, int a[][], int source, int destination, int num_of_paths)
+    public static int[][] allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination, int num_of_paths)
     {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);

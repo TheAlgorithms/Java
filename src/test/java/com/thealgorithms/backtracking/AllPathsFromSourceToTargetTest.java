@@ -14,7 +14,7 @@ public class AllPathsFromSourceToTargetTest {
         int source = 2;
         int destination = 3;
         int num_of_paths = 3;
-        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -24,7 +24,7 @@ public class AllPathsFromSourceToTargetTest {
         int source = 0;
         int destination = 4;
         int num_of_paths = 6;
-        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class AllPathsFromSourceToTargetTest {
         int source = 1;
         int destination = 5;
         int num_of_paths = 2;
-        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination,num_of_paths));
     }
 
     @Test
@@ -44,6 +44,6 @@ public class AllPathsFromSourceToTargetTest {
         int source = 0;
         int destination = 2;
         int num_of_paths = 2;
-        assertTrue(AllPathsFromSourceToTarget.all_Paths_From_Source_To_Target (vertices,a,source,destination,num_of_paths));
+        assertTrue(AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination,num_of_paths));
     }
 }
