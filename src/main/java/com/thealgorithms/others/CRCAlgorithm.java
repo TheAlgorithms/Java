@@ -58,6 +58,7 @@ public class CRCAlgorithm {
         this.ber = ber;
 
         boolean[] testArray;
+        testArray = new boolean[22];
 
         for (i = 0; i < 22; i++) {
             testArray[i] = false;
@@ -74,7 +75,7 @@ public class CRCAlgorithm {
             }
         }
 
-        double percentage = (double) counter / this.coverageArray.length;
+        double percentage = (double) counter / this.testArray.length;
         percentage = percentage * 100;
 
         System.out.println("PERCENTAGE COVERAGE: " + percentage);
@@ -137,7 +138,7 @@ public class CRCAlgorithm {
         for (int i = 0; i < messSize; i++) {
             int x = ThreadLocalRandom.current().nextInt(0, 2);
             message.add(x);
-            testArray[0] = true;
+            this.testArray[0] = true;
         }
     }
 
@@ -242,7 +243,8 @@ public class CRCAlgorithm {
         }
         if (messageChanged) {
             wrongMess++;
-            testArray[21] = true;
+            this.testArray[21] = true;
         }
     }
 }
+
