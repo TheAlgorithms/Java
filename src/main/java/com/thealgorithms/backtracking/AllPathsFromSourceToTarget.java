@@ -100,7 +100,7 @@ public class AllPathsFromSourceToTarget {
     }
 
     // Driver program
-    public static int[][] allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination, int num_of_paths)
+    public static boolean allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination, int num_of_paths)
     {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
