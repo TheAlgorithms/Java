@@ -40,7 +40,7 @@ public class VerticalOrderTraversalTest {
         / \
        2   3
       /\   /\
-     4   56  7
+     4  5 6  7
         /  \
        8    9
     */
