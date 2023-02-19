@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -55,6 +56,28 @@ public class CRCAlgorithm {
         wrongMessCaught = 0;
         wrongMessNotCaught = 0;
         this.ber = ber;
+
+        boolean[] testArray;
+
+        for (i = 0; i < 22; i++) {
+            testArray[i] = false;
+        }
+    }
+
+    public void getCoverage(){
+        System.out.println(Arrays.toString(testArray));
+
+        int counter = 0;
+        for(int i = 0; i < testArray.length; i++){
+            if(testArray[i]){
+                counter++;
+            }
+        }
+
+        double percentage = (double) counter / this.coverageArray.length;
+        percentage = percentage * 100;
+
+        System.out.println("PERCENTAGE COVERAGE: " + percentage);
     }
 
     /**
@@ -114,6 +137,7 @@ public class CRCAlgorithm {
         for (int i = 0; i < messSize; i++) {
             int x = ThreadLocalRandom.current().nextInt(0, 2);
             message.add(x);
+            testArray[0] = true;
         }
     }
 
@@ -134,40 +158,55 @@ public class CRCAlgorithm {
         ArrayList<Integer> x = new ArrayList<>();
         ArrayList<Integer> k = (ArrayList<Integer>) message.clone();
         if (!check) {
+            testArray[1] = true;
             for (int i = 0; i < p.size() - 1; i++) {
                 k.add(0);
+                testArray[2] = true;
             }
         }
         while (!k.isEmpty()) {
+            testArray[3] = true;
             while (x.size() < p.size() && !k.isEmpty()) {
                 x.add(k.get(0));
                 k.remove(0);
+                testArray[4] = true;
             }
             if (x.size() == p.size()) {
+                testArray[5] = true;
                 for (int i = 0; i < p.size(); i++) {
+                    testArray[6] = true;
                     if (x.get(i) == p.get(i)) {
                         x.set(i, 0);
+                        testArray[7] = true;
                     } else {
                         x.set(i, 1);
+                        testArray[8] = true;
                     }
                 }
                 for (int i = 0; i < x.size() && x.get(i) != 1; i++) {
                     x.remove(0);
+                    testArray[9] = true;
                 }
             }
         }
         dividedMessage = (ArrayList<Integer>) x.clone();
         if (!check) {
+            testArray[10] = true;
             for (int z : dividedMessage) {
                 message.add(z);
+                testArray[11] = true;
             }
         } else {
+            testArray[12] = true;
             if (dividedMessage.contains(1) && messageChanged) {
                 wrongMessCaught++;
+                testArray[13] = true;
             } else if (!dividedMessage.contains(1) && messageChanged) {
                 wrongMessNotCaught++;
+                testArray[14] = true;
             } else if (!messageChanged) {
                 correctMess++;
+                testArray[15] = true;
             }
         }
     }
@@ -183,21 +222,27 @@ public class CRCAlgorithm {
      */
     public void changeMess() {
         for (int y : message) {
+            testArray[16] = true;
             double x = randomGenerator.nextDouble();
             while (x < 0.0000 || x > 1.00000) {
                 x = randomGenerator.nextDouble();
+                testArray[17] = true;
             }
             if (x < ber) {
                 messageChanged = true;
+                testArray[18] = true;
                 if (y == 1) {
                     message.set(message.indexOf(y), 0);
+                    testArray[19] = true;
                 } else {
                     message.set(message.indexOf(y), 1);
+                    testArray[20] = true;
                 }
             }
         }
         if (messageChanged) {
             wrongMess++;
+            testArray[21] = true;
         }
     }
 }
