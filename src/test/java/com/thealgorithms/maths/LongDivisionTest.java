@@ -6,20 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LongDivisionTest {
 	
+    // Requirement: Dividend (positive) is  greater than divisor (positive), returns correct integer after division
     @Test
     void testOne() {
         assertEquals(3, LongDivision.divide(10,3));
     }
-  
-      @Test
+
+    // Requirement: Dividend (positive) is  greater than divisor (negative), returns correct integer after division
+    @Test
     void testTwo() {
         assertEquals(-2, LongDivision.divide(7,-3));
     }
   
-  
-      @Test
+    // Requirement: Dividend (positive) is  greater than divisor (negative), returns correct integer after division
+    // Basically the same as in the first test
+    @Test
     void testThree() {
         assertEquals(10, LongDivision.divide(105,10));
     }
-	
+
 }
