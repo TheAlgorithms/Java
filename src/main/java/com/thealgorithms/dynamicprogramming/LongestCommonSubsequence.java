@@ -16,6 +16,14 @@ class LongestCommonSubsequence {
         String[] arr1 = str1.split("");
         String[] arr2 = str2.split("");
 
+
+        int[][] lcsMatrix = lcsCompute(arr1, arr2);
+
+        return lcsString(str1, str2, lcsMatrix);
+    }
+
+    public static int[][] lcsCompute(String[] arr1, String[] arr2){
+
         // lcsMatrix[i][j]  = LCS of first i elements of arr1 and first j characters of arr2
         int[][] lcsMatrix = new int[arr1.length + 1][arr2.length + 1];
 
@@ -37,7 +45,7 @@ class LongestCommonSubsequence {
                 }
             }
         }
-        return lcsString(str1, str2, lcsMatrix);
+        return lcsMatrix;
     }
 
     public static String lcsString(
