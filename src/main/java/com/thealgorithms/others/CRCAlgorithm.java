@@ -32,6 +32,8 @@ public class CRCAlgorithm {
 
     private Random randomGenerator;
 
+    boolean[] testArray = new boolean[22];
+
     /**
      * The algorithm's main constructor. The most significant variables, used in
      * the algorithm, are set in their initial values.
@@ -57,10 +59,7 @@ public class CRCAlgorithm {
         wrongMessNotCaught = 0;
         this.ber = ber;
 
-        boolean[] testArray;
-        testArray = new boolean[22];
-
-        for (i = 0; i < 22; i++) {
+        for (int i = 0; i < 22; i++) {
             testArray[i] = false;
         }
     }
