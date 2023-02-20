@@ -11,30 +11,31 @@ public class agnosticBinarySearch {
             arr[i]=sc.nextInt();
         }
         System.out.println("enter key element to search in a array");
-        int k=sc.nextInt();
+        int key=sc.nextInt();
         sc.close();
-        int m =agnosticbinarySearch(arr,k);
-        System.out.println(m);        
+        int keyIndexPosition =agnosticbinarySearch(arr,key);
+        System.out.println(keyIndexPosition);        
         
     }
-    public static int agnosticbinarySearch(int arr[],int k){
+    public static int agnosticbinarySearch(int arr[],int key){
         int start = 0;
         int end = arr.length-1;
-        boolean ac=arr[start]>arr[end];
+        boolean arrDescending=arr[start]>arr[end];  //checking for Array is in ascending order or descending order.
         while(start<=end){
             int mid = end-start/2;
-            if (arr[mid]==k){
+            if (arr[mid]==key){
                 return mid;
             }
-            if(ac){
-            if(k<arr[mid]){
-                start=mid+1;
+            if(arrDescending){       // boolean is true then our array is in descending order 
+                if(key<arr[mid]){
+                    start=mid+1;
+                }
+                else{
+                    end=mid-1;
+                }
             }
-            else{
-                end=mid-1;
-            }}
-            else {
-                if(k>arr[mid]){
+            else {         // otherwise our array is in ascending order 
+                if(key>arr[mid]){
                    start=mid+1;
                }
                else{
