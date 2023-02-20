@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.thealgorithms.datastructures.trees.BinaryTree;
-import com.thealgorithms.others.CRCALgorithm;
+import com.thealgorithms.others.CRCAlgorithm;
 
 public class CoverageTest {
     public static void main(String[] args) {
@@ -15,9 +15,9 @@ public class CoverageTest {
         t.find(10);
 
         System.out.println("\n===== BinaryTree coverage test =====\n");
-        t.getCoverage();
+        //t.getCoverage();
 
-        CRCAlgorithm c = new CRCAlgorithm(1001, 10, 0.1);
+        CRCAlgorithm c = new CRCAlgorithm("1001", 10, 0.1);
 
         c.generateRandomMess();
         c.divideMessageWithP(false);
