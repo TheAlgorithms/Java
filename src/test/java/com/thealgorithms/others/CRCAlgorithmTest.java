@@ -1,3 +1,4 @@
+
 package com.thealgorithms.others;
 
 import org.junit.jupiter.api.Test;
@@ -17,43 +18,39 @@ public class CRCAlgorithmTest {
 
         assertEquals(c.getWrongMess(), 1);
     }
-    
+
 
     @Test
     void test2(){
-        CRCAlgorithm c = new CRCAlgorithm("1001", 10, 0.1);
+        CRCAlgorithm c = new CRCAlgorithm("1", 10, 1000000);
 
-        c.generateRandomMess();
         c.divideMessageWithP(true);
-        c.divideMessageWithP(false);
-        c.changeMess();
+        c.divideMessageWithP(true);
 
-        assertEquals(c.getCorrectMess(), 1);
+        assertEquals(c.getCorrectMess(), 2);
     }
 
     @Test
     void test3(){
-        CRCAlgorithm c = new CRCAlgorithm("1001", 10, 0.1);
+        CRCAlgorithm c = new CRCAlgorithm("1001", 100000, 0.1);
 
         c.generateRandomMess();
-        c.divideMessageWithP(true);
-        c.divideMessageWithP(false);
-        c.changeMess();
 
         //test the other function
-        //assertEquals(c.divideMessageWithP(false), "10");
+        assertEquals(c.getWrongMessNotCaught(), 0);
     }
 
     @Test
     void test4(){
-        CRCAlgorithm c = new CRCAlgorithm("1001", 10, 0.1);
+        CRCAlgorithm c = new CRCAlgorithm("1001", 100000, 1000000000);
 
         c.generateRandomMess();
         c.divideMessageWithP(true);
         c.divideMessageWithP(false);
         c.changeMess();
+        c.refactor();
 
-        //test some other function here too
+        assertEquals(c.getWrongMessCaught(), 0);
     }
 
 }
