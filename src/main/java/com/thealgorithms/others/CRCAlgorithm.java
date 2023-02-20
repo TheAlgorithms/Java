@@ -138,7 +138,7 @@ public class CRCAlgorithm {
         for (int i = 0; i < messSize; i++) {
             int x = ThreadLocalRandom.current().nextInt(0, 2);
             message.add(x);
-            this.testArray[0] = true;
+            testArray[0] = true;
         }
     }
 
@@ -243,7 +243,7 @@ public class CRCAlgorithm {
         }
         if (messageChanged) {
             wrongMess++;
-            this.testArray[21] = true;
+            testArray[21] = true;
         }
     }
 }
