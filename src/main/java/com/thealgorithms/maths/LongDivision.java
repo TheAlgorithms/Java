@@ -33,6 +33,12 @@ public static int divide(int dividend, int divisor) {
         long new_dividend_1 = dividend;
         long new_divisor_1 = divisor;
 
+        // New implementation. Handles when the divisor is 0
+        if (divisor == 0){
+            return 0;
+        }
+
+        
         // Branch ID: 1
         if (dividend < 0) {      
             branchesTaken[0] = true;                     
