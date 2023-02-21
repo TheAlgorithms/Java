@@ -18,8 +18,8 @@ void test1(){
     t.put(12);
     
 
-    assertEquals(t.find(5).getData(), 5);
-    assertEquals(t.find(7).getData(), 7);
+    assertEquals(t.find(5).data, 5);
+    assertEquals(t.find(7).data, 7);
 }
 
     //checks that removing data from the tree
@@ -37,7 +37,7 @@ void test2(){
     t.remove(7);
     
 
-    assertEquals(t.getRoot().getData(), 9);
+    assertEquals(t.getRoot().data, 9);
 }
 
 //checks that removing an unexistend node returns false
