@@ -1,21 +1,6 @@
 package com.thealgorithms.searches;
 import java.util.*;
 public class sortOrderAgnosticBinarySearch {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter the size of an array");
-        int n = sc.nextInt();
-        int arr[]= new int[n];
-        System.out.println("enter the "+n+" elements to store in an array");
-        for(int i=0;i<n;i++){
-            arr[i]=sc.nextInt();
-        }
-        System.out.println("enter key element to search in a array");
-        int key=sc.nextInt();
-        sc.close();
-        System.out.println(find(arr, key));     // function calling     
-        
-    }
     public static int find(int arr[],int key){
         int start = 0;
         int end = arr.length-1;
