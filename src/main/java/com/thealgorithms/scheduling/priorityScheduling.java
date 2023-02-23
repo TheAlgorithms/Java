@@ -85,4 +85,5 @@ class Process {
     public boolean isCompleted() {
         return remainingTime == 0;
     }
+    
 }
