@@ -1,17 +1,5 @@
 name: Build
-on:
-  push:
-    paths:
-      - 'src/**'
-      - '**.yml'
-      - '**.xml'
-      - '**.Dockerfile'
-  pull_request:
-    paths:
-      - 'src/**'
-      - '**.yml'
-      - '**.xml'
-      - '**.Dockerfile'
+on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest

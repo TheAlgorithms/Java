@@ -33,10 +33,6 @@ public class DudeneyNumber {
         }
 
         //If the cube root of the number is not equal to the sum of its digits we return false.
-        if (cube_root != sum_of_digits) {
-            return false;
-        }
-
-        return true;
+        return cube_root == sum_of_digits;
     }
 }
