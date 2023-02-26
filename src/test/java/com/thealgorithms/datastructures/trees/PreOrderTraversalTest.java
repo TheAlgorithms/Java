@@ -27,10 +27,8 @@ public class PreOrderTraversalTest {
     @Test
     public void testRecursivePreOrder() {
         final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{1, 2, 3, 4, 5, 6, 7});
-        List<Integer> expected = List.of(1, 2, 4, 5, 3, 6, 7);
-
-        assertEquals(expected, PreOrderTraversal.recursivePreOrder(root));
-        assertEquals(expected, PreOrderTraversal.iterativePreOrder(root));
+        assertEquals(List.of(1, 2, 4, 5, 3, 6, 7), PreOrderTraversal.recursivePreOrder(root));
+        assertEquals(List.of(1, 2, 4, 5, 3, 6, 7), PreOrderTraversal.iterativePreOrder(root));
     }
 
     /*
@@ -45,9 +43,7 @@ public class PreOrderTraversalTest {
     @Test
     public void testRecursivePreOrderNonBalanced() {
         final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{5, null, 6, null, 7, null, 8});
-        List<Integer> expected = List.of(5, 6, 7, 8);
-
-        assertEquals(expected, PreOrderTraversal.recursivePreOrder(root));
-        assertEquals(expected, PreOrderTraversal.iterativePreOrder(root));
+        assertEquals(List.of(5, 6, 7, 8), PreOrderTraversal.recursivePreOrder(root));
+        assertEquals(List.of(5, 6, 7, 8), PreOrderTraversal.iterativePreOrder(root));
     }
 }
