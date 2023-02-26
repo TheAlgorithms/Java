@@ -7,17 +7,15 @@
 /**Wikipedia link -> https://en.wikipedia.org/wiki/Shortest_path_problem */
 package com.thealgorithms.backtracking;
 
-// JAVA program to print all paths from a source to destination.
 import java.util.*;
-
-// A directed graph using adjacency list representation
-
 
 public class AllPathsFromSourceToTarget {
 
     // No. of vertices in graph
     private int v;
 
+    // To store the paths from source to destination
+    static List<List<Integer>> nm=new ArrayList<>();
     // adjacency list
     private ArrayList<Integer>[] adjList;
 
@@ -49,7 +47,6 @@ public class AllPathsFromSourceToTarget {
         adjList[u].add(v);
     }
 
-    // Prints all paths from 's' to 'd'
 
     public int printAllPaths(int s, int d)
     {
@@ -58,23 +55,19 @@ public class AllPathsFromSourceToTarget {
 
         // add source to path[]
         pathList.add(s);
-        int a[]=new int[1];
         // Call recursive utility
-        printAllPathsUtil(s, d, isVisited, pathList,a);
-        return a[0];
+        printAllPathsUtil(s, d, isVisited, pathList);
     }
 
     // A recursive function to print all paths from 'u' to 'd'.
     // isVisited[] keeps track of vertices in current path.
     // localPathList<> stores actual vertices in the current path 
-    private int printAllPathsUtil(Integer u, Integer d, boolean[] isVisited, List<Integer> localPathList, int a[])
+    private int printAllPathsUtil(Integer u, Integer d, boolean[] isVisited, List<Integer> localPathList)
     {
 
         if (u.equals(d)) {
-            System.out.println(localPathList);
-            a[0]++;
-            // if match found then no need to traverse more till depth
-            return a[0];
+            nm.add(new ArrayList<>(localPathList));
+            return;
         }
 
         // Mark the current node
@@ -100,7 +93,7 @@ public class AllPathsFromSourceToTarget {
     }
 
     // Driver program
-    public static boolean allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination, int num_of_paths)
+    public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination)
     {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
@@ -109,10 +102,9 @@ public class AllPathsFromSourceToTarget {
             g.addEdge(a[i][0], a[i][1]);
             // edges are added
         }
-        System.out.println("Following are all different paths from "+ source + " to " + destination);
         int c = g.printAllPaths(source, destination);
-        // method call to find number of paths
-        return c == num_of_paths;
-        // returns true if number of paths calculated from source to destination matches with given paths
+        // method call to store all possible paths
+        return nm;
+        // returns all possible paths from source to destination
     }
 }
