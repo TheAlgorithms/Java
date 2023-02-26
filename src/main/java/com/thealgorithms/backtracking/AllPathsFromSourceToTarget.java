@@ -100,7 +100,7 @@ public class AllPathsFromSourceToTarget {
             g.addEdge(a[i][0], a[i][1]);
             // edges are added
         }
-        int c = g.storeAllPaths(source, destination);
+        g.storeAllPaths(source, destination);
         // method call to store all possible paths
         return nm;
         // returns all possible paths from source to destination
