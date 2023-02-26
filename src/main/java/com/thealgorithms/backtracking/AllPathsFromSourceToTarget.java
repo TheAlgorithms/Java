@@ -88,8 +88,6 @@ public class AllPathsFromSourceToTarget {
 
         // Mark the current node
         isVisited[u] = false;
-        return a[0];
-        // returns number of paths from source to destination
     }
 
     // Driver program
