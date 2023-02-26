@@ -48,7 +48,7 @@ public class AllPathsFromSourceToTarget {
     }
 
 
-    public int printAllPaths(int s, int d)
+    public int storeAllPaths(int s, int d)
     {
         boolean[] isVisited = new boolean[v];
         ArrayList<Integer> pathList = new ArrayList<>();
@@ -56,13 +56,13 @@ public class AllPathsFromSourceToTarget {
         // add source to path[]
         pathList.add(s);
         // Call recursive utility
-        printAllPathsUtil(s, d, isVisited, pathList);
+        storeAllPathsUtil(s, d, isVisited, pathList);
     }
 
     // A recursive function to print all paths from 'u' to 'd'.
     // isVisited[] keeps track of vertices in current path.
     // localPathList<> stores actual vertices in the current path 
-    private int printAllPathsUtil(Integer u, Integer d, boolean[] isVisited, List<Integer> localPathList)
+    private void storeAllPathsUtil(Integer u, Integer d, boolean[] isVisited, List<Integer> localPathList)
     {
 
         if (u.equals(d)) {
@@ -79,7 +79,7 @@ public class AllPathsFromSourceToTarget {
             if (!isVisited[i]) {
                 // store current node in path[]
                 localPathList.add(i);
-                printAllPathsUtil(i, d, isVisited, localPathList,a);
+                storeAllPathsUtil(i, d, isVisited, localPathList);
 
                 // remove current node in path[]
                 localPathList.remove(i);
@@ -100,7 +100,7 @@ public class AllPathsFromSourceToTarget {
             g.addEdge(a[i][0], a[i][1]);
             // edges are added
         }
-        int c = g.printAllPaths(source, destination);
+        int c = g.storeAllPaths(source, destination);
         // method call to store all possible paths
         return nm;
         // returns all possible paths from source to destination
