@@ -48,7 +48,7 @@ public class AllPathsFromSourceToTarget {
     }
 
 
-    public int storeAllPaths(int s, int d)
+    public void storeAllPaths(int s, int d)
     {
         boolean[] isVisited = new boolean[v];
         ArrayList<Integer> pathList = new ArrayList<>();
