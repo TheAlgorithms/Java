@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 public abstract class Map<Key, Value> {
 
-    abstract void put(Key key, Value value);
+    abstract boolean put(Key key, Value value);
 
     abstract Value get(Key key);
 

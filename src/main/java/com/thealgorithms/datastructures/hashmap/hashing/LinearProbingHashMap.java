@@ -27,9 +27,9 @@ public class LinearProbingHashMap<Key extends Comparable<Key>, Value> extends Ma
     }
 
     @Override
-    public void put(Key key, Value value) {
+    public boolean put(Key key, Value value) {
         if (key == null) {
-            return;
+            return false;
         }
 
         if (size > hsize / 2) {
@@ -40,17 +40,22 @@ public class LinearProbingHashMap<Key extends Comparable<Key>, Value> extends Ma
         for (; keys[keyIndex] != null; keyIndex = increment(keyIndex)) {
             if (key.equals(keys[keyIndex])) {
                 values[keyIndex] = value;
-                return;
+                return true;
             }
         }
 
         keys[keyIndex] = key;
         values[keyIndex] = value;
         size++;
+        return true;
     }
 
     @Override
     public Value get(Key key) {
+        if (key == null) {
+            return null;
+        }
+
         for (int i = hash(key, hsize); keys[i] != null; i = increment(i)) {
             if (key.equals(keys[i])) {
                 return values[i];
