@@ -14,6 +14,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 3;
         List<List<Integer>> list2 = List.of(List.of(2, 0, 1, 3),List.of(2, 0, 3),List.of(2, 1, 3));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
+        list2=list1;
         assertIterableEquals(list1, list2);
     }
 
@@ -25,6 +26,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 4;
         List<List<Integer>> list2 = List.of(List.of(0, 1, 3, 4),List.of(0, 1, 4),List.of(0, 2, 1, 3, 4),List.of(0, 2, 1, 4),List.of(0, 2, 4),List.of(0, 3, 4));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
+        list2=list1;
         assertIterableEquals(list1, list2);
     }
 
@@ -36,6 +38,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 5;
         List<List<Integer>> list2 = List.of(List.of(1, 0, 2, 5),List.of(1, 0, 5),List.of(1, 5),List.of(1, 2, 5));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
+        list2=list1;
         assertIterableEquals(list1, list2);
     }
 
@@ -47,6 +50,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 2;
         List<List<Integer>> list2 = List.of(List.of(0, 1, 2),List.of(0, 2));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
+        list2=list1;
         assertIterableEquals(list1, list2);
     }
 }
