@@ -2,7 +2,6 @@ package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
-
 import org.junit.jupiter.api.Test;
 
 public class AllPathsFromSourceToTargetTest {
@@ -15,7 +14,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 3;
         List<List<Integer>> list2 = List.of(List.of(2, 0, 1, 3),List.of(2, 0, 3),List.of(2, 1, 3));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
-        assertTrue(list1.hashCode()==list2.hashCode());
+        assertIterableEquals(list1, list2);
     }
 
     @Test
@@ -26,7 +25,7 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 4;
         List<List<Integer>> list2 = List.of(List.of(0, 1, 3, 4),List.of(0, 1, 4),List.of(0, 2, 1, 3, 4),List.of(0, 2, 1, 4),List.of(0, 2, 4),List.of(0, 3, 4));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
-        assertTrue(list1.hashCode()==list2.hashCode());
+        assertIterableEquals(list1, list2);
     }
 
     @Test
@@ -35,9 +34,9 @@ public class AllPathsFromSourceToTargetTest {
         int a[][] = {{1,0},{2,3},{0,4},{1,5},{4,3},{0,2},{0,3},{1,2},{0,5},{3,4},{2,5},{2,4}};
         int source = 1;
         int destination = 5;
-        List<List<Integer>> list2 = List.of(List.of(1, 5),List.of(1, 2, 5));
+        List<List<Integer>> list2 = List.of(List.of(1, 0, 2, 5),List.of(1, 0, 5),List.of(1, 5),List.of(1, 2, 5));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
-        assertTrue(list1.hashCode()==list2.hashCode());
+        assertIterableEquals(list1, list2);
     }
 
     @Test
@@ -48,6 +47,6 @@ public class AllPathsFromSourceToTargetTest {
         int destination = 2;
         List<List<Integer>> list2 = List.of(List.of(0, 1, 2),List.of(0, 2));
         List<List<Integer>> list1 = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices,a,source,destination);
-        assertTrue(list1.hashCode()==list2.hashCode());
+        assertIterableEquals(list1, list2);
     }
 }
