@@ -42,3 +42,4 @@ public class LongestStringChainTest {
         int expected = LongestStringChain.longestStringChain(words);
         assertEquals(actual,expected);
     }
+}
