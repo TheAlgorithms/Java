@@ -5,7 +5,7 @@
 /** Program Description - To find the length of the longest string chain*/
 /** Program Description link - https://medium.com/nerd-for-tech/longest-string-chain-daily-challenge-may-a07eda8b112b */
 
-/** Wikipedia Link - https://en.wikipedia.org/wiki/Longest_common_substring */
+/** Wikipedia Link - https://en.wikipedia.org/wiki/Longest_string_chain */
 
 package com.thealgorithms.dynamicprogramming;
 import java.util.*;
