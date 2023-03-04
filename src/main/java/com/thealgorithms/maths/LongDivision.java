@@ -12,7 +12,7 @@ public static int divide(int dividend, int divisor) {
         long new_divisor_1 = divisor;
 
         if(divisor == 0){
-            throw new ArithmeticException("Division by zero");
+            return 0;
         }
         if (dividend < 0) {
             new_dividend_1 = new_dividend_1 * -1;
