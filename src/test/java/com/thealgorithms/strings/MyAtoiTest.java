@@ -35,8 +35,8 @@ public class MyAtoiTest {
     void testSix() {
         assertEquals(42, MyAtoi.myAtoi("+42"));
     }
-    
-	@Test
+
+    @Test
     void testSeven() {
         assertEquals(0, MyAtoi.myAtoi("  +0   "));
     }
