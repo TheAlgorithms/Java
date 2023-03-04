@@ -9,48 +9,21 @@ public class CRCAlgorithmTest {
 
     @Test
     void test1(){
-        CRCAlgorithm c = new CRCAlgorithm("10010101010100101010010000001010010101010", 10, 0.1);
+        CRCAlgorithm c = new CRCAlgorithm("10010101010100101010010000001010010101010", 10, 0.0);
 
-        c.generateRandomMess();
-        c.divideMessageWithP(true);
-        c.divideMessageWithP(false);
+        //A bit-error rate of 0.0 should not provide any wrong messages
         c.changeMess();
-
-        assertEquals(c.getWrongMess(), 1);
+        c.divideMessageWithP(false);
+        assertEquals(c.getWrongMess(), 0);
     }
-
 
     @Test
     void test2(){
-        CRCAlgorithm c = new CRCAlgorithm("1", 10, 1000000);
+        CRCAlgorithm c = new CRCAlgorithm("10010101010100101010010000001010010101010", 10, 1.0);
 
-        c.divideMessageWithP(true);
-        c.divideMessageWithP(true);
-
-        assertEquals(c.getCorrectMess(), 2);
-    }
-
-    @Test
-    void test3(){
-        CRCAlgorithm c = new CRCAlgorithm("1001", 100000, 0.1);
-
-        c.generateRandomMess();
-
-        //test the other function
-        assertEquals(c.getWrongMessNotCaught(), 0);
-    }
-
-    @Test
-    void test4(){
-        CRCAlgorithm c = new CRCAlgorithm("1001", 100000, 1000000000);
-
-        c.generateRandomMess();
-        c.divideMessageWithP(true);
-        c.divideMessageWithP(false);
+        //A bit error rate of 1.0 should not provide any correct messages
         c.changeMess();
-        c.refactor();
-
-        assertEquals(c.getWrongMessCaught(), 0);
+        c.divideMessageWithP(false);
+        assertEquals(c.getCorrectMess(), 0);
     }
-
 }
