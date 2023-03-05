@@ -19,7 +19,7 @@ class LinkedQueueTest {
 
     final int[] element = { 1 };
 
-    // iterates over al the elements present
+    // iterates over all the elements present
     // as in the form of nodes
     queue.forEach(integer -> {
       if (element[0]++ != integer)

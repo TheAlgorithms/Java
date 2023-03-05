@@ -134,7 +134,7 @@ public class LinkedQueue<T> implements Iterable<T> {
 
     /**
      * Node iterator, allows to travel through
-     * the nodes using for() loop of forEach(Consumer)
+     * the nodes using for() loop or forEach(Consumer)
      */
 
     @Override
