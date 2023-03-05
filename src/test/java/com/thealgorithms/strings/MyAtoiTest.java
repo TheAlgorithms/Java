@@ -11,15 +11,33 @@ public class MyAtoiTest {
         assertEquals(42, MyAtoi.myAtoi("42"));
     }
   
-      @Test
+    @Test
     void testTwo() {
         assertEquals(-42, MyAtoi.myAtoi("   -42"));
     }
   
-  
-      @Test
+    @Test
     void testThree() {
         assertEquals(4193, MyAtoi.myAtoi("4193 with words"));
     }
 	
+    @Test
+    void testFour() {
+        assertEquals(0, MyAtoi.myAtoi("0"));
+    }
+
+    @Test
+    void testFive() {
+        assertEquals(5678, MyAtoi.myAtoi("5678"));
+    }
+
+    @Test
+    void testSix() {
+        assertEquals(42, MyAtoi.myAtoi("+42"));
+    }
+
+    @Test
+    void testSeven() {
+        assertEquals(0, MyAtoi.myAtoi("  +0   "));
+    }
 }
