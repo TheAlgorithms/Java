@@ -66,4 +66,68 @@ class BufferedReaderTest {
       // intentional, for testing purpose
     }
   }
+
+  @Test
+  public void testBlockPractical() throws IOException {
+    String text = "!Hello\nWorld!";
+    byte[] bytes = text.getBytes();
+    int len = bytes.length;
+
+    ByteArrayInputStream input = new ByteArrayInputStream(bytes);
+    BufferedReader reader = new BufferedReader(input);
+
+
+    assertEquals(reader.peek(), 'H');
+    assertEquals(reader.read(), '!'); // read the first letter
+    len--;
+
+    // this only reads the next 5 bytes (Hello) because
+    // the default buffer size = 5
+    assertEquals(new String(reader.readBlock()), "Hello");
+    len -= 5;
+    assertEquals(reader.available(), len);
+
+    // maybe kind of a practical demonstration / use case
+    if (reader.read() == '\n') {
+      assertEquals(reader.read(), 'W');
+      assertEquals(reader.read(), 'o');
+
+      // the rest of the blocks
+      assertEquals(new String(reader.readBlock()), "rld!");
+    } else {
+      // should not reach
+      throw new IOException("Something not right");
+    }
+  }
+
+  @Test
+  public void randomTest() throws IOException {
+    Random random = new Random();
+
+    int len = random.nextInt(9999);
+    int bound = 256;
+
+    ByteArrayOutputStream stream = new ByteArrayOutputStream(len);
+    while (len-- > 0)
+      stream.write(random.nextInt(bound));
+
+    byte[] bytes = stream.toByteArray();
+    ByteArrayInputStream comparer = new ByteArrayInputStream(bytes);
+
+    int blockSize = random.nextInt(7) + 5;
+    BufferedReader reader = new BufferedReader(
+            new ByteArrayInputStream(bytes), blockSize);
+
+    for (int i = 0; i < 50; i++) {
+      if ((i & 1) == 0) {
+        assertEquals(comparer.read(), reader.read());
+        continue;
+      }
+      byte[] block = new byte[blockSize];
+      comparer.read(block);
+      byte[] read = reader.readBlock();
+
+      assertArrayEquals(block, read);
+    }
+  }
 }
