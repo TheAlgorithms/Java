@@ -1,5 +1,5 @@
 package com.thealgorithms.strings;
-
+// Link to the problem : https://leetcode.com/problems/string-compression/description/
 import java.util.Scanner;
 
 // String compression or String encoding algorithm deals with shortening the size of the string like for example,
