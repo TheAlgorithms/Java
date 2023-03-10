@@ -105,19 +105,18 @@ public class SinglyLinkedList extends Node {
      *
      */
     Node reverseList(Node node) {
-        Node prevNode = head;
-        while (prevNode.next != node) {
-            prevNode = prevNode.next;
-        }
-        Node prev = null, curr = node, next;
+        Node curr = node;
+        Node next;
+        Node prev = null;
         while (curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-        prevNode.next = prev;
-        return head;
+        node = prev;
+        head = node;
+        return node;
     }
 
     /**
