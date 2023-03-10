@@ -106,7 +106,7 @@ public class SinglyLinkedList extends Node {
      */
     Node reverseList(Node node) {
         Node prevNode = head;
-        while (prevNode.next != node) {
+        while (head!=node && prevNode.next != node) {
             prevNode = prevNode.next;
         }
         Node prev = null, curr = node, next;
@@ -116,6 +116,8 @@ public class SinglyLinkedList extends Node {
             prev = curr;
             curr = next;
         }
+        if(head==node) head=prev;
+        else
         prevNode.next = prev;
         return head;
     }
