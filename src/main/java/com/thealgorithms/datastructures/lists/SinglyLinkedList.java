@@ -55,6 +55,24 @@ public class SinglyLinkedList extends Node {
     }
 
     /**
+     * Return the node in the middle of the list
+     * If the length of the list is even then return item number length/2
+     * @return middle node of the list
+     */
+    public Node middle() {
+        if (head == null) {
+            return null;
+        }
+        Node firstCounter = head;
+        Node secondCounter = firstCounter.next;
+        while (secondCounter != null && secondCounter.next != null) {
+            firstCounter = firstCounter.next;
+            secondCounter = secondCounter.next.next;
+        }
+        return firstCounter;
+    }
+
+    /**
      * Swaps nodes of two given values a and b.
      *
      */
