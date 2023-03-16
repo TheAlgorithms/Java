@@ -1,24 +1,13 @@
 package com.thealgorithms.strings;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class StringCompressionTest {
-    @Test
-    public void StringCompressionTest(){
-        //inputs
-        char[] input1={'a'};
-        char[] input2={'a','a','b','b','b'};
-        char[] input3={'a','b','b','b','c'};
-        char[] input4={'a','a','b','c','c','d'};
-        //expected outputs
-        String output1="a";
-        String output2="a2b3";
-        String output3="ab3c";
-        String output4="a2bc2d";
-
-        assertEquals(StringCompression.compress(input1), output1);
-        assertEquals(StringCompression.compress(input2), output2);
-        assertEquals(StringCompression.compress(input3), output3);
-        assertEquals(StringCompression.compress(input4), output4);
+    @ParameterizedTest
+    @CsvSource({"a,a","aabbb,a2b3","abbbc,ab3c","aabccd,a2bc2d"})
+    void stringCompressionTest(String input,String expectedOutput){
+        String output=StringCompression.compress(input);
+        assertEquals(expectedOutput, output);
     }
 }
