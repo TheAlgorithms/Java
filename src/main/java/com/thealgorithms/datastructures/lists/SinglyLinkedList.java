@@ -120,22 +120,18 @@ public class SinglyLinkedList extends Node {
 
     /**
      * Reverse a singly linked list from a given node till the end
-     *
      */
-    Node reverseList(Node node) {
-        Node prevNode = head;
-        while (prevNode.next != node) {
-            prevNode = prevNode.next;
+    void reverseList(Node node) {
+        Node prev = null;
+        Node next = null;
+
+        while (node != null) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
         }
-        Node prev = null, curr = node, next;
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        prevNode.next = prev;
-        return head;
+        head = prev;
     }
 
     /**
@@ -406,8 +402,14 @@ public class SinglyLinkedList extends Node {
         list.insertHead(10);
         list.insert(3);
         list.insertNth(1, 4);
+
         assert list.toString().equals("10->7->5->3->1");
         System.out.println(list.toString());
+
+        list.reverseList(list.getHead());
+        assert list.toString().equals("1->3->5->7->10");
+        System.out.println(list.toString());
+
         /* Test search function */
         assert list.search(10) &&
         list.search(5) &&
