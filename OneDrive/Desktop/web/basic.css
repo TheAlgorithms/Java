@@ -1,0 +1,34 @@
+
+body{
+    background-color:aliceblue;
+}
+.parent{
+    display: grid;
+   
+}
+
+.oimage{
+    
+    float: middle;
+    margin: 50px ;
+    padding-left: 500px;
+    width: 400px;
+    padding-bottom: 0%;
+    padding-top: 0%;
+    
+
+}
+.timage{
+    float : right;
+    margin: 10px ;
+    padding-left: 550px;  
+    width: 400px;
+   padding-top: 0px;
+    padding-bottom: 0%;
+    
+    
+}
+h1{
+   
+color: crimson;
+}

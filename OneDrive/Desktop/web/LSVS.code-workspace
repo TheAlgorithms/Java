@@ -1,0 +1,12 @@
+{
+    "folders": [
+		{
+			"path": "../LSVS"
+		}
+	],
+    "settings": {
+        "files.associations": {
+            "stdio.h": "c"
+        }
+    }
+}
