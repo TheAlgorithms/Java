@@ -25,58 +25,51 @@ import java.util.Arrays;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki</a>
  */
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SieveOfEratosthenes {
 
     /**
      * @param n The number till which we have to check for prime Prints all the
      * prime numbers till n. Should be more than 1.
-     * @return array of all prime numbers between 0 to n
+     * @return ArrayList of all prime numbers between 0 to n
      */
-    public static int[] findPrimesTill(int n) {
-        // Create array where index is number and value is flag - is that number a prime or not.
-        // size of array is n + 1 cause in Java array indexes starts with 0
-        Type[] numbers = new Type[n + 1];
+    public static ArrayList<Integer> findPrimesTill(int n) {
+        // Create boolean array where index is number and value is flag - is that number a prime or not.
+        boolean[] numbers = new boolean[n + 1];
 
-        // Start with assumption that all numbers except 0 and 1 are primes.
-        Arrays.fill(numbers, Type.PRIME);
-        numbers[0] = numbers[1] = Type.NOT_PRIME;
+        // Start with assumption that all odd numbers are primes.
+        Arrays.fill(numbers, true);
+        numbers[0] = numbers[1] = false;
+        numbers[2] = true;
 
         double cap = Math.sqrt(n);
-        // Main algorithm: mark all numbers which are multiples of some other values as not prime
-        for (int i = 2; i <= cap; i++) {
-            if (numbers[i] == Type.PRIME) {
-                for (int j = 2; i * j <= n; j++) {
-                    numbers[i * j] = Type.NOT_PRIME;
+        // Main algorithm: mark all numbers which are multiples of some other primes as not prime
+        for (int i = 3; i <= cap; i += 2) {
+            if (numbers[i]) {
+                for (int j = i * i; j <= n; j += 2 * i) {
+                    numbers[j] = false;
                 }
             }
         }
 
-        //Write all primes to result array
-        int primesCount = (int) Arrays
-            .stream(numbers)
-            .filter(element -> element == Type.PRIME)
-            .count();
-        int[] primes = new int[primesCount];
-
-        int primeIndex = 0;
-        for (int i = 0; i < n + 1; i++) {
-            if (numbers[i] == Type.PRIME) {
-                primes[primeIndex++] = i;
+        // Write all primes to result list
+        ArrayList<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        for (int i = 3; i <= n; i += 2) {
+            if (numbers[i]) {
+                primes.add(i);
             }
         }
 
         return primes;
     }
 
-    private enum Type {
-        PRIME,
-        NOT_PRIME,
-    }
-
     public static void main(String[] args) {
         int n = 100;
         System.out.println("Searching for all primes from zero to " + n);
-        int[] primes = findPrimesTill(n);
-        System.out.println("Found: " + Arrays.toString(primes));
+        ArrayList<Integer> primes = findPrimesTill(n);
+        System.out.println("Found: " + primes);
     }
 }
