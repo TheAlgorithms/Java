@@ -27,7 +27,7 @@ public class SieveOfEratosthenes {
             }
         }
 
-        // Write all primes to result list
+
         ArrayList<Integer> primes = new ArrayList<>();
         primes.add(2);
         for (int i = 3; i <= n; i += 2) {
