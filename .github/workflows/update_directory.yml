@@ -1,5 +1,7 @@
 # This GitHub Action updates the DIRECTORY.md file (if needed) when doing a git push or pull_request
 name: Update Directory
+permissions:
+  contents: write
 on:
   push:
     paths:
@@ -7,6 +9,17 @@ on:
   pull_request:
     paths:
       - 'src/**'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'info'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
 jobs:
   update_directory_md:
     runs-on: ubuntu-latest
