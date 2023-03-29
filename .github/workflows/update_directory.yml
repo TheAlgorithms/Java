@@ -1,4 +1,4 @@
-# This GitHub Action updates the DIRECTORY.md file (if needed) when doing a git push
+# This GitHub Action updates the DIRECTORY.md file (if needed) when doing a git push or pull_request
 name: Update Directory
 on:
   push:
