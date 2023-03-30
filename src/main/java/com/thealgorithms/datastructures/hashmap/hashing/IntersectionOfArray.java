@@ -1,6 +1,6 @@
 import java.util.HashSet;
 
-public class intersection_of_array {
+public class IntersectionOfArray {
     public static int intersection(int[] a,int[] b){
         HashSet<Integer> set = new HashSet<>();
         int count = 0;
