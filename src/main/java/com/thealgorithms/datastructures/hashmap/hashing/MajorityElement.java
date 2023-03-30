@@ -2,6 +2,10 @@
 import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 /*
 This class finds the majority element(s) in an array of integers.
 A majority element is an element that appears more than n/3 times, where n is the length of the array.
