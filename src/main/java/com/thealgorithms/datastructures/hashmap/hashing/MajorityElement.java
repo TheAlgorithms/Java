@@ -35,7 +35,7 @@ public class MajorityElement {
     This method tests the majority method of MajorityElement class with an input array.
     */
     @Test
-    public void testMajority() {
+    void testMajority() {
         int[] nums = {1,3,3,3,2,5,1,3,1,5,1};
         int[] expected = {1, 3};
         assertArrayEquals(expected, MajorityElement.majority(nums));
