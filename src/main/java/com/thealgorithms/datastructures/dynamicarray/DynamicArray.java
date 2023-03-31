@@ -79,7 +79,10 @@ public class DynamicArray<E> implements Iterable<E> {
      * @param index the index of the element to be removed
      * @return <E> the element removed
      */
-    public E remove(final int index) {
+    public E remove(final int index){
+        if(this.elements[0]==null){
+            return null;
+        }else{
         final E oldElement = getElement(index);
         fastRemove(this.elements, index);
 
@@ -88,6 +91,7 @@ public class DynamicArray<E> implements Iterable<E> {
                 Arrays.copyOf(this.elements, newCapacity(this.capacity / 2));
         }
         return oldElement;
+    }
     }
 
     /**
