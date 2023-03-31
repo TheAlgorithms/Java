@@ -1,7 +1,10 @@
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /*
 This class finds the majority element(s) in an array of integers.
