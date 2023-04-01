@@ -154,11 +154,7 @@ class AdjacencyMatrixGraph {
      * @return whether or not the vertex exists
      */
     public boolean vertexDoesExist(int aVertex) {
-        if (aVertex >= 0 && aVertex < this.numberOfVertices()) {
-            return true;
-        } else {
-            return false;
-        }
+        return aVertex >= 0 && aVertex < this.numberOfVertices();
     }
 
     /**

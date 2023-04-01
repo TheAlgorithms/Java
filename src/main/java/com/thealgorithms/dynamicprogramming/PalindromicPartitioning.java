@@ -48,14 +48,8 @@ public class PalindromicPartitioning {
                 if (L == 2) {
                     isPalindrome[i][j] = (word.charAt(i) == word.charAt(j));
                 } else {
-                    if (
-                        (word.charAt(i) == word.charAt(j)) &&
-                        isPalindrome[i + 1][j - 1]
-                    ) {
-                        isPalindrome[i][j] = true;
-                    } else {
-                        isPalindrome[i][j] = false;
-                    }
+                    isPalindrome[i][j] = (word.charAt(i) == word.charAt(j)) &&
+                            isPalindrome[i + 1][j - 1];
                 }
             }
         }

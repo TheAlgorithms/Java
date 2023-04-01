@@ -27,19 +27,9 @@ public class LongestPalindromicSubstring {
                 if (g == 0) {
                     arr[i][j] = true;
                 } else if (g == 1) {
-                    if (input.charAt(i) == input.charAt(j)) {
-                        arr[i][j] = true;
-                    } else {
-                        arr[i][j] = false;
-                    }
+                    arr[i][j] = input.charAt(i) == input.charAt(j);
                 } else {
-                    if (
-                        input.charAt(i) == input.charAt(j) && arr[i + 1][j - 1]
-                    ) {
-                        arr[i][j] = true;
-                    } else {
-                        arr[i][j] = false;
-                    }
+                    arr[i][j] = input.charAt(i) == input.charAt(j) && arr[i + 1][j - 1];
                 }
 
                 if (arr[i][j]) {
