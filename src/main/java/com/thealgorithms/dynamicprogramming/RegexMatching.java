@@ -127,7 +127,7 @@ public class RegexMatching {
         } else {
             ans = false;
         }
-        strg[svidx][pvidx] = ans == false ? 1 : 2;
+        strg[svidx][pvidx] = ans ? 2 : 1;
         return ans;
     }
 

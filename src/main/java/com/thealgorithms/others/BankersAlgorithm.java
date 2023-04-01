@@ -88,7 +88,7 @@ public class BankersAlgorithm {
         while (count < totalProcess) {
             boolean foundSafeSystem = false;
             for (int m = 0; m < totalProcess; m++) {
-                if (finishProcesses[m] == false) {
+                if (!finishProcesses[m]) {
                     int j;
 
                     for (j = 0; j < totalResources; j++) {
@@ -112,7 +112,7 @@ public class BankersAlgorithm {
             }
 
             // If we could not find a next process in safe sequence.
-            if (foundSafeSystem == false) {
+            if (!foundSafeSystem) {
                 System.out.print(
                     "The system is not in the safe state because lack of resources"
                 );
