@@ -46,7 +46,7 @@ public class MiniMaxAlgorithm {
             "The best score for " +
             (isMaximizer ? "Maximizer" : "Minimizer") +
             " is " +
-            String.valueOf(bestScore)
+                    bestScore
         );
     }
 
