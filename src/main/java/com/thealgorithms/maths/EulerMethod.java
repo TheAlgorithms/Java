@@ -83,11 +83,7 @@ public class EulerMethod {
                 "stepSize should be greater than zero"
             );
         }
-        double yNext =
-            yCurrent +
-            stepSize *
-            differentialEquation.apply(xCurrent, yCurrent);
-        return yNext;
+        return yCurrent + stepSize * differentialEquation.apply(xCurrent, yCurrent);
     }
 
     /**
