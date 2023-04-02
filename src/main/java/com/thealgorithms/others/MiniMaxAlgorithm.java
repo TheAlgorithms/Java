@@ -88,14 +88,12 @@ public class MiniMaxAlgorithm {
         // (1 x 2) = 2; ((1 x 2) + 1) = 3
         // (2 x 2) = 4; ((2 x 2) + 1) = 5 ...
         if (verbose) {
-            System.out.println(
-                String.format(
-                    "From %02d and %02d, %s chooses %02d",
+            System.out.printf(
+                    "From %02d and %02d, %s chooses %02d%n",
                     score1,
                     score2,
                     (isMaximizer ? "Maximizer" : "Minimizer"),
                     bestScore
-                )
             );
         }
 

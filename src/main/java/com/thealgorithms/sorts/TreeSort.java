@@ -72,20 +72,20 @@ public class TreeSort implements SortAlgorithm {
         // ==== Integer Array =======
         System.out.println("Testing for Integer Array....");
         Integer[] a = { 3, -7, 45, 1, 343, -5, 2, 9 };
-        System.out.print(String.format("%-10s", "unsorted: "));
+        System.out.printf("%-10s", "unsorted: ");
         print(a);
         a = treeSort.sort(a);
-        System.out.print(String.format("%-10s", "sorted: "));
+        System.out.printf("%-10s", "sorted: ");
         print(a);
         System.out.println();
 
         // ==== Integer List =======
         System.out.println("Testing for Integer List....");
         List<Integer> intList = List.of(3, -7, 45, 1, 343, -5, 2, 9);
-        System.out.print(String.format("%-10s", "unsorted: "));
+        System.out.printf("%-10s", "unsorted: ");
         print(intList);
         intList = treeSort.sort(intList);
-        System.out.print(String.format("%-10s", "sorted: "));
+        System.out.printf("%-10s", "sorted: ");
         print(intList);
         System.out.println();
 
@@ -101,10 +101,10 @@ public class TreeSort implements SortAlgorithm {
             "apple",
             "pineapple",
         };
-        System.out.print(String.format("%-10s", "unsorted: "));
+        System.out.printf("%-10s", "unsorted: ");
         print(b);
         b = treeSort.sort(b);
-        System.out.print(String.format("%-10s", "sorted: "));
+        System.out.printf("%-10s", "sorted: ");
         print(b);
         System.out.println();
 
@@ -120,10 +120,10 @@ public class TreeSort implements SortAlgorithm {
             "apple",
             "pineapple"
         );
-        System.out.print(String.format("%-10s", "unsorted: "));
+        System.out.printf("%-10s", "unsorted: ");
         print(stringList);
         stringList = treeSort.sort(stringList);
-        System.out.print(String.format("%-10s", "sorted: "));
+        System.out.printf("%-10s", "sorted: ");
         print(stringList);
     }
 }
