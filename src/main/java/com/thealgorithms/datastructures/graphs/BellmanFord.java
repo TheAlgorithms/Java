@@ -74,7 +74,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
                 if (
-                    (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                    dist[arr[j].u] != Integer.MAX_VALUE &&
                     dist[arr[j].v] > dist[arr[j].u] + arr[j].w
                 ) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
@@ -85,7 +85,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         // Final cycle for negative checking
         for (j = 0; j < e; j++) {
             if (
-                (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                dist[arr[j].u] != Integer.MAX_VALUE &&
                 dist[arr[j].v] > dist[arr[j].u] + arr[j].w
             ) {
                 neg = 1;
