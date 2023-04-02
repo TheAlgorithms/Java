@@ -57,8 +57,8 @@ public class EditDistance {
                     int insert = dp[i][j + 1] + 1;
                     int delete = dp[i + 1][j] + 1;
 
-                    int min = replace > insert ? insert : replace;
-                    min = delete > min ? min : delete;
+                    int min = Math.min(replace, insert);
+                    min = Math.min(delete, min);
                     dp[i + 1][j + 1] = min;
                 }
             }
