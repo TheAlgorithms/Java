@@ -65,7 +65,7 @@ class InterpolationSearch {
             .toArray();
 
         // the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
+        int shouldBeFound = integers[r.nextInt(size - 1)];
 
         InterpolationSearch search = new InterpolationSearch();
         int atIndex = search.find(integers, shouldBeFound);
