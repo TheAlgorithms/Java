@@ -54,7 +54,8 @@ class CombSort implements SortAlgorithm {
             for (int i = 0; i < size - gap; i++) {
                 if (less(arr[i + gap], arr[i])) {
                     // Swap arr[i] and arr[i+gap]
-                    swapped = swap(arr, i, i + gap);
+                    swap(arr, i, i + gap);
+                    swapped = true;
                 }
             }
         }
