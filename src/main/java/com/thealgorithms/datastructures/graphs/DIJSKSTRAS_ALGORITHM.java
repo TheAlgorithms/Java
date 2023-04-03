@@ -12,7 +12,7 @@ class dijkstras {
         int min = Integer.MAX_VALUE, min_index = -1;
 
         for (int r = 0; r < k; r++) {
-            if (Set[r] == false && dist[r] <= min) {
+            if (!Set[r] && dist[r] <= min) {
                 min = dist[r];
                 min_index = r;
             }

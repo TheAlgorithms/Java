@@ -120,7 +120,7 @@ class Trieac {
         }
 
         // If prefix is present as a word.
-        boolean isWord = (pCrawl.isWordEnd == true);
+        boolean isWord = (pCrawl.isWordEnd);
 
         // If prefix is last node of tree (has no
         // children)

@@ -23,7 +23,7 @@ class CombSort implements SortAlgorithm {
     private int nextGap(int gap) {
         // Shrink gap by Shrink factor
         gap = (gap * 10) / 13;
-        return (gap < 1) ? 1 : gap;
+        return Math.max(gap, 1);
     }
 
     /**
