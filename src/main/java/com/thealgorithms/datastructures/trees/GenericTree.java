@@ -168,7 +168,6 @@ public class GenericTree {
         for (int i = 0; i < node.child.size(); i++) {
             depth(node.child.get(i), dep - 1);
         }
-        return;
     }
 
     /**

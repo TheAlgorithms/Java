@@ -1079,7 +1079,7 @@ public class Blowfish {
      */
     private String hexToBin(String hex) {
         String binary = "";
-        Long num;
+        long num;
         String binary4B;
         int n = hex.length();
         for (int i = 0; i < n; i++) {

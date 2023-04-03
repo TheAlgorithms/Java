@@ -187,13 +187,11 @@ public class MonteCarloTreeSearch {
         System.out.println("N.\tScore\t\tVisits");
 
         for (int i = 0; i < rootNode.childNodes.size(); i++) {
-            System.out.println(
-                String.format(
-                    "%02d\t%d\t\t%d",
+            System.out.printf(
+                    "%02d\t%d\t\t%d%n",
                     i + 1,
                     rootNode.childNodes.get(i).score,
                     rootNode.childNodes.get(i).visitCount
-                )
             );
         }
     }

@@ -62,7 +62,7 @@ public class TrieImp {
             }
             currentNode = node;
         }
-        if (currentNode.end == true) {
+        if (currentNode.end) {
             currentNode.end = false;
             return true;
         }

@@ -28,7 +28,7 @@ public class BipartiteGrapfDFS {
         for (Integer it : adj.get(node)) {
             if (color[it] == -1) {
                 color[it] = 1 - color[node];
-                if (bipartite(V, adj, color, it) == false) {
+                if (!bipartite(V, adj, color, it)) {
                     return false;
                 }
             } else if (color[it] == color[node]) {

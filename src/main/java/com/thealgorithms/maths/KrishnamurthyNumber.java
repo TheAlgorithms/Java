@@ -36,11 +36,7 @@ public class KrishnamurthyNumber {
             }
 
             //evaluating if sum of the factorials of the digits equals the number itself
-            if (tmp == s) {
-                return true;
-            } else {
-                return false;
-            }
+            return tmp == s;
         }
     }
 

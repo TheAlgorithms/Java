@@ -91,13 +91,12 @@ public class Deques<T> {
         if (tail == null) {
             // If the deque is empty, add the node as the head and tail
             head = newNode;
-            tail = newNode;
         } else {
             // If the deque is not empty, insert the node as the new tail
             newNode.prev = tail;
             tail.next = newNode;
-            tail = newNode;
         }
+        tail = newNode;
 
         size++;
     }
