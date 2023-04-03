@@ -49,7 +49,7 @@ class PageRank {
         for (k = 1; k <= totalNodes; k++) {
             this.pagerank[k] = InitialPageRank;
         }
-        System.out.printf("\n Initial PageRank Values , 0th Step \n");
+        System.out.print("\n Initial PageRank Values , 0th Step \n");
 
         for (k = 1; k <= totalNodes; k++) {
             System.out.printf(
@@ -113,7 +113,7 @@ class PageRank {
             }
 
             // Display PageRank
-            System.out.printf("\n Final Page Rank : \n");
+            System.out.print("\n Final Page Rank : \n");
             for (k = 1; k <= totalNodes; k++) {
                 System.out.printf(
                     " Page Rank of " + k + " is :\t" + this.pagerank[k] + "\n"

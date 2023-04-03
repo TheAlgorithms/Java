@@ -72,13 +72,8 @@ public static int myAtoi(String s) {
             if (db1 > (2147483647)) {
                 return 2147483647;
             }
-        }else if (number.length() == 10 && negative) {
-            double db1 = Double.parseDouble(number);
-            if (db1 >= 2147483648d) {
-                return -2147483648;
-            }
         }
-    
+
     if(negative){
         return Integer.parseInt(number)*-1;
     }

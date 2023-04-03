@@ -17,7 +17,7 @@ class PrimMST {
         int min = Integer.MAX_VALUE, min_index = -1;
 
         for (int v = 0; v < V; v++) {
-            if (mstSet[v] == false && key[v] < min) {
+            if (!mstSet[v] && key[v] < min) {
                 min = key[v];
                 min_index = v;
             }
@@ -80,7 +80,7 @@ class PrimMST {
             {
                 if (
                     graph[u][v] != 0 &&
-                    mstSet[v] == false &&
+                            !mstSet[v] &&
                     graph[u][v] < key[v]
                 ) {
                     parent[v] = u;

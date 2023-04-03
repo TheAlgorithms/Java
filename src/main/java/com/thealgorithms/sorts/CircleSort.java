@@ -24,7 +24,7 @@ public class CircleSort implements SortAlgorithm {
         int left,
         int right
     ) {
-        Boolean swapped = false;
+        boolean swapped = false;
 
         if (left == right) {
             return false;

@@ -160,7 +160,6 @@ public class HillCipher {
             System.out.println(
                 "Invalid key, as determinant = 0. Program Terminated"
             );
-            return;
         }
     }
 

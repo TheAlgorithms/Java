@@ -117,11 +117,9 @@ public class BinaryTree {
             if (value < parent.data) {
                 parent.left = newNode;
                 parent.left.parent = parent;
-                return;
             } else {
                 parent.right = newNode;
                 parent.right.parent = parent;
-                return;
             }
         }
     }
@@ -177,7 +175,6 @@ public class BinaryTree {
             if (temp == root) {
                 successor.parent = null;
                 root = successor;
-                return true;
             } // If you're not deleting the root
             else {
                 successor.parent = temp.parent;
@@ -188,8 +185,8 @@ public class BinaryTree {
                 } else {
                     temp.parent.left = successor;
                 }
-                return true;
             }
+            return true;
         } // One child
         else {
             // If it has a right child
@@ -207,7 +204,6 @@ public class BinaryTree {
                 } else {
                     temp.parent.right = temp.right;
                 }
-                return true;
             } // If it has a left child
             else {
                 if (temp == root) {
@@ -223,8 +219,8 @@ public class BinaryTree {
                 } else {
                     temp.parent.right = temp.left;
                 }
-                return true;
             }
+            return true;
         }
     }
 

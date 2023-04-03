@@ -10,8 +10,7 @@ public class DistanceFormula {
     ) {
         double dX = Math.pow(x2 - x1, 2);
         double dY = Math.pow(y2 - x1, 2);
-        double d = Math.sqrt(dX + dY);
-        return d;
+        return Math.sqrt(dX + dY);
     }
 
     public static double manhattanDistance(
@@ -20,8 +19,7 @@ public class DistanceFormula {
         double x2,
         double y2
     ) {
-        double d = Math.abs(x1 - x2) + Math.abs(y1 - y2);
-        return d;
+        return Math.abs(x1 - x2) + Math.abs(y1 - y2);
     }
 
     public static int hammingDistance(int[] b1, int[] b2) {
