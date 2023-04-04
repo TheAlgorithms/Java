@@ -123,19 +123,20 @@ public class SinglyLinkedList extends Node {
      *
      */
     Node reverseList(Node node) {
-        Node prevNode = head;
-        while (prevNode.next != node) {
-            prevNode = prevNode.next;
-        }
-        Node prev = null, curr = node, next;
+        Node prev = null;
+        Node curr = node;
+        Node next=curr.next;
         while (curr != null) {
-            next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
+            //NullPointer Exception is handled here
+            if(next!=null){
+                next = next.next;
+            }
         }
-        prevNode.next = prev;
-        return head;
+        //prev will be pointing to the last element in the Linkedlist
+        return prev;
     }
 
     /**
