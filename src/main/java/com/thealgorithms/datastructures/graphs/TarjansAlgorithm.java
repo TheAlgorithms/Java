@@ -101,22 +101,16 @@ public class TarjansAlgorithm {
         isInStack[u] = true;
         st.push(u);
 
-        int n;
-
         // Go through all vertices adjacent to this
-        Iterator<Integer> i = graph.get(u).iterator();
-
-        while (i.hasNext()) {
-            n = i.next();
-
+        for (Integer vertex : graph.get(u)) {
             //If the adjacent node is unvisited, do DFS
-            if (insertionTime[n] == -1) {
-                stronglyConnCompsUtil(n, lowTime, insertionTime, isInStack, st, graph);
+            if (insertionTime[vertex] == -1) {
+                stronglyConnCompsUtil(vertex, lowTime, insertionTime, isInStack, st, graph);
                 //update lowTime for the current node comparing lowtime of adj node
-                lowTime[u] = Math.min(lowTime[u], lowTime[n]);
-            } else if (isInStack[n]) {
+                lowTime[u] = Math.min(lowTime[u], lowTime[vertex]);
+            } else if (isInStack[vertex]) {
                 //If adj node is in stack, update low 
-                lowTime[u] = Math.min(lowTime[u], insertionTime[n]);
+                lowTime[u] = Math.min(lowTime[u], insertionTime[vertex]);
             }
         }
         //If lowtime and insertion time are same, current node is the head of an SCC
