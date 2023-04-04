@@ -49,9 +49,7 @@ class WordLadder {
      */
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> set = new HashSet();
-        for (String word : wordList) {
-            set.add(word);
-        }
+        set.addAll(wordList);
 
         if (!set.contains(endWord)) {
             return 0;
