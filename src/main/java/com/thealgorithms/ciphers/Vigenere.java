@@ -6,66 +6,63 @@ package com.thealgorithms.ciphers;
  * @author straiffix
  * @author beingmartinbmc
  */
-public class Vigenere {
 
-    public String encrypt(final String message, final String key) {
-        StringBuilder result = new StringBuilder();
+abstract class VigenereBase {
+    protected int getKeyChar(final String key, final int index) {
+        return key.charAt(index % key.length());
+    }
 
+    protected char shiftChar(final char c, final int shift) {
+        if (!Character.isLetter(c)) {
+            return c;
+        }
+        final int base = Character.isUpperCase(c) ? 'A' : 'a';
+        return (char) (((c - base + shift) % 26 + 26) % 26 + base);
+    }
+
+    public abstract String process(final String message, final String key);
+}
+
+class VigenereEncryptor extends VigenereBase {
+    @Override
+    public String process(final String message, final String key) {
+        final StringBuilder result = new StringBuilder();
         int j = 0;
         for (int i = 0; i < message.length(); i++) {
-            char c = message.charAt(i);
-            if (Character.isLetter(c)) {
-                if (Character.isUpperCase(c)) {
-                    result.append(
-                        (char) (
-                            (c + key.toUpperCase().charAt(j) - 2 * 'A') %
-                            26 +
-                            'A'
-                        )
-                    );
-                } else {
-                    result.append(
-                        (char) (
-                            (c + key.toLowerCase().charAt(j) - 2 * 'a') %
-                            26 +
-                            'a'
-                        )
-                    );
-                }
-            } else {
-                result.append(c);
-            }
-            j = ++j % key.length();
+            final char c = message.charAt(i);
+            final int shift = getKeyChar(key, j++) - 'a';
+            result.append(shiftChar(c, shift));
         }
         return result.toString();
     }
+}
 
-    public String decrypt(final String message, final String key) {
-        StringBuilder result = new StringBuilder();
-
+class VigenereDecryptor extends VigenereBase {
+    @Override
+    public String process(final String message, final String key) {
+        final StringBuilder result = new StringBuilder();
         int j = 0;
         for (int i = 0; i < message.length(); i++) {
-            char c = message.charAt(i);
-            if (Character.isLetter(c)) {
-                if (Character.isUpperCase(c)) {
-                    result.append(
-                        (char) (
-                            'Z' - (25 - (c - key.toUpperCase().charAt(j))) % 26
-                        )
-                    );
-                } else {
-                    result.append(
-                        (char) (
-                            'z' - (25 - (c - key.toLowerCase().charAt(j))) % 26
-                        )
-                    );
-                }
-            } else {
-                result.append(c);
-            }
-
-            j = ++j % key.length();
+            final char c = message.charAt(i);
+            final int shift = 'z' - getKeyChar(key, j++) + 1;
+            result.append(shiftChar(c, shift));
         }
         return result.toString();
+    }
+}
+
+public class Vigenere {
+    public static void main(final String[] args) {
+        final String message = "HELLO WORLD";
+        final String key = "SECRET";
+
+        final VigenereEncryptor encryptor = new VigenereEncryptor();
+        final VigenereDecryptor decryptor = new VigenereDecryptor();
+
+        final String encrypted = encryptor.process(message, key);
+        System.out.println("Encrypted message: " + encrypted);
+
+        final String decrypted = decryptor.process(encrypted, key);
+        System.out.println("Decrypted message: " + decrypted);
     }
 }

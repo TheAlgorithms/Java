@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class VigenereTest {
 
-    Vigenere vigenere = new Vigenere();
+    VigenereEncryptor vigenereE = new VigenereEncryptor();
+    VigenereDecryptor vigenereD = new VigenereDecryptor();
 
     @Test
     void vigenereEncryptTest() {
@@ -15,7 +16,7 @@ class VigenereTest {
         String key = "suchsecret";
 
         // when
-        String cipherText = vigenere.encrypt(text, key);
+        String cipherText = vigenereE.process(text, key);
 
         // then
         assertEquals("Zynsg Yfvev!", cipherText);
@@ -28,7 +29,7 @@ class VigenereTest {
         String key = "suchsecret";
 
         // when
-        String decryptedText = vigenere.decrypt(encryptedText, key);
+        String decryptedText = vigenereD.process(encryptedText, key);
 
         // then
         assertEquals("Hello World!", decryptedText);

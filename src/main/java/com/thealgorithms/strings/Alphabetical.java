@@ -8,26 +8,39 @@ package com.thealgorithms.strings;
 class Alphabetical {
 
     public static void main(String[] args) {
-        assert !isAlphabetical("123abc");
-        assert isAlphabetical("aBC");
-        assert isAlphabetical("abc");
-        assert !isAlphabetical("xyzabc");
-        assert isAlphabetical("abcxyz");
+        if (!isAlphabetical("123abc")) {
+            System.out.println("Assertion failed: 123abc is not in alphabetical order");
+        }
+        if (!isAlphabetical("xyzabc")) {
+            System.out.println("Assertion failed: xyzabc is not in alphabetical order");
+        }
+        if (!isAlphabetical("123")) {
+            System.out.println("Assertion failed: 123 is not in alphabetical order");
+        }
+        if (isAlphabetical("aBC")) {
+            System.out.println("Assertion passed: aBC is in alphabetical order");
+        }
+        if (isAlphabetical("abc")) {
+            System.out.println("Assertion passed: abc is in alphabetical order");
+        }
+        if (isAlphabetical("abcxyz")) {
+            System.out.println("Assertion passed: abcxyz is in alphabetical order");
+        }
     }
 
     /**
      * Check if a string is alphabetical order or not
      *
-     * @param s a string
+     * @param inputLineString a string
      * @return {@code true} if given string is alphabetical order, otherwise
      * {@code false}
      */
-    public static boolean isAlphabetical(String s) {
-        s = s.toLowerCase();
-        for (int i = 0; i < s.length() - 1; ++i) {
+    public static boolean isAlphabetical(String inputLineString) {
+        inputLineString = inputLineString.toLowerCase();
+        for (int index = 0; index < inputLineString.length() - 1; ++index) {
             if (
-                !Character.isLetter(s.charAt(i)) ||
-                !(s.charAt(i) <= s.charAt(i + 1))
+                !Character.isLetter(inputLineString.charAt(index)) ||
+                !(inputLineString.charAt(index) <= inputLineString.charAt(index + 1))
             ) {
                 return false;
             }

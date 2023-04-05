@@ -2778,48 +2778,72 @@ public class AES {
         return cipherText;
     }
 
+
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
-            System.out.println(
-                "Enter (e) letter for encrpyt or (d) letter for decrypt :"
-            );
+            System.out.println("Enter (e) letter for encrypt or (d) letter for decrypt:");
             char choice = input.nextLine().charAt(0);
-            String in;
+
+            Cryptographer cryptographer;
+
             switch (choice) {
-                case 'E', 'e' -> {
-                    System.out.println(
-                        "Choose a plaintext block (128-Bit Integer in base 16):"
-                    );
-                    in = input.nextLine();
-                    BigInteger plaintext = new BigInteger(in, 16);
-                    System.out.println(
-                        "Choose a Key (128-Bit Integer in base 16):"
-                    );
-                    in = input.nextLine();
-                    BigInteger encryptionKey = new BigInteger(in, 16);
-                    System.out.println(
-                        "The encrypted message is: \n" +
-                        encrypt(plaintext, encryptionKey).toString(16)
-                    );
+                case 'E', 'e' -> cryptographer = new Encryptor(input);
+                case 'D', 'd' -> cryptographer = new Decryptor(input);
+                default -> {
+                    System.out.println("** End **");
+                    return;
                 }
-                case 'D', 'd' -> {
-                    System.out.println(
-                        "Enter your ciphertext block (128-Bit Integer in base 16):"
-                    );
-                    in = input.nextLine();
-                    BigInteger ciphertext = new BigInteger(in, 16);
-                    System.out.println(
-                        "Choose a Key (128-Bit Integer in base 16):"
-                    );
-                    in = input.nextLine();
-                    BigInteger decryptionKey = new BigInteger(in, 16);
-                    System.out.println(
-                        "The deciphered message is:\n" +
-                        decrypt(ciphertext, decryptionKey).toString(16)
-                    );
-                }
-                default -> System.out.println("** End **");
             }
+
+            cryptographer.execute();
         }
+    }
+}
+
+abstract class Cryptographer {
+    public abstract void execute();
+}
+
+class Encryptor extends Cryptographer {
+    private final Scanner input;
+
+    public Encryptor(final Scanner input) {
+        this.input = input;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println("Choose a plaintext block (128-Bit Integer in base 16):");
+        String in = input.nextLine();
+        BigInteger plaintext = new BigInteger(in, 16);
+        System.out.println("Choose a Key (128-Bit Integer in base 16):");
+        in = input.nextLine();
+        BigInteger encryptionKey = new BigInteger(in, 16);
+        System.out.println(
+                "The encrypted message is: \n" +
+                        AES.encrypt(plaintext, encryptionKey).toString(16)
+        );
+    }
+}
+
+class Decryptor extends Cryptographer {
+    private final Scanner input;
+
+    public Decryptor(final Scanner input) {
+        this.input = input;
+    }
+
+    @Override
+    public void execute() {
+        System.out.println("Enter your ciphertext block (128-Bit Integer in base 16):");
+        String in = input.nextLine();
+        BigInteger ciphertext = new BigInteger(in, 16);
+        System.out.println("Choose a Key (128-Bit Integer in base 16):");
+        in = input.nextLine();
+        BigInteger decryptionKey = new BigInteger(in, 16);
+        System.out.println(
+                "The deciphered message is:\n" +
+                        AES.decrypt(ciphertext, decryptionKey).toString(16)
+        );
     }
 }

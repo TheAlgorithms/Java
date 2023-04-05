@@ -17,16 +17,10 @@ public class Kruskal {
 
     // Complexity: O(E log V) time, where E is the number of edges in the graph and V is the number of
     // vertices
-    private static class Edge {
-
-        private int from;
-        private int to;
-        private int weight;
+    private static class Edge extends AbstractEdge{
 
         public Edge(int from, int to, int weight) {
-            this.from = from;
-            this.to = to;
-            this.weight = weight;
+            super(from, to, weight);
         }
     }
 

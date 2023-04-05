@@ -76,39 +76,44 @@ public class MinPriorityQueue {
         }
     }
 
+    private boolean hasLeftChild(int k) {
+        return 2 * k <= this.size;
+    }
+
+    private boolean hasRightChild(int k) {
+        return 2 * k + 1 <= this.size;
+    }
+
+    private void swap(int i, int j) {
+        int temp = this.heap[i];
+        this.heap[i] = this.heap[j];
+        this.heap[j] = temp;
+    }
+
+    private int getMinChildIndex(int k) {
+        int leftChildIndex = 2 * k;
+        int rightChildIndex = 2 * k + 1;
+
+        if (!hasRightChild(k)) {
+            return leftChildIndex;
+        }
+
+        if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
+            return leftChildIndex;
+        } else {
+            return rightChildIndex;
+        }
+    }
+
     // this function reorders the heap after every delete function
     private void sink() {
         int k = 1;
-        while (2 * k <= this.size || 2 * k + 1 <= this.size) {
-            int minIndex;
-            if (this.heap[2 * k] >= this.heap[k]) {
-                if (
-                    2 * k + 1 <= this.size &&
-                    this.heap[2 * k + 1] >= this.heap[k]
-                ) {
-                    break;
-                } else if (2 * k + 1 > this.size) {
-                    break;
-                }
+        while (hasLeftChild(k) || hasRightChild(k)) {
+            int minIndex = getMinChildIndex(k);
+            if (heap[k] <= heap[minIndex]) {
+                break;
             }
-            if (2 * k + 1 > this.size) {
-                minIndex = this.heap[2 * k] < this.heap[k] ? 2 * k : k;
-            } else {
-                if (
-                    this.heap[k] > this.heap[2 * k] ||
-                    this.heap[k] > this.heap[2 * k + 1]
-                ) {
-                    minIndex =
-                        this.heap[2 * k] < this.heap[2 * k + 1]
-                            ? 2 * k
-                            : 2 * k + 1;
-                } else {
-                    minIndex = k;
-                }
-            }
-            int temp = this.heap[k];
-            this.heap[k] = this.heap[minIndex];
-            this.heap[minIndex] = temp;
+            swap(k, minIndex);
             k = minIndex;
         }
     }
