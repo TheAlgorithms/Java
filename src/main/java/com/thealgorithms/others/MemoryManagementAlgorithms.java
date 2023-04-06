@@ -45,8 +45,6 @@ public abstract class MemoryManagementAlgorithms {
 class BestFitCPU extends MemoryManagementAlgorithms {
 
 
-    // it means that it has not been actually allocated.
-
     /**
      * Method to find the maximum valued element of an array filled with
      * positive integers.
@@ -126,8 +124,6 @@ class BestFitCPU extends MemoryManagementAlgorithms {
  */
 class WorstFitCPU extends MemoryManagementAlgorithms {
 
-    // it means that it has not been actually allocated.
-
     /**
      * Method to find the index of the memory block that is going to fit the
      * given process based on the worst fit algorithm.
@@ -189,8 +185,6 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
 class FirstFitCPU extends MemoryManagementAlgorithms {
 
 
-    // it means that it has not been actually allocated.
-
     /**
      * Method to find the index of the memory block that is going to fit the
      * given process based on the first fit algorithm.
@@ -245,7 +239,6 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
  */
 class NextFit extends MemoryManagementAlgorithms {
 
-    // it means that it has not been actually allocated.
     private int counter = 0; // variable that keeps the position of the last registration into the memory
 
     /**
