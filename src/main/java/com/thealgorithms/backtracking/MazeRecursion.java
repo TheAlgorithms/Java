@@ -1,5 +1,81 @@
 package com.thealgorithms.backtracking;
 
+
+/**
+ * This code defines an interface "Move" and its implementations for moving up, down, left, and right.
+ * The "Move" interface includes the method "makeMove" which takes in a two-dimensional array "map"
+ * and two integers "i" and "j" as arguments, and returns an integer array.
+ * By creating an interface named "Move" and implementing it in separate classes for each direction, we can encapsulate the logic for each direction.
+ * This not only makes the code more organized and easier to read, but it also allows us to add new directions or modify the behavior of existing ones without affecting the rest of the code.
+ * 
+ * @author: Ishan Makadia (github.com/intrepid-ishan)
+ * @version: April 06, 2023
+*/
+// Define an interface named "Move" which includes the method "makeMove"
+interface Move {
+    int[] makeMove(int[][] map, int i, int j); // The method takes in a two-dimensional array "map" and two integers "i" and "j" as arguments, and returns an integer array.
+}
+
+// Implement the "Move" interface for moving down
+class MoveDown implements Move {
+    // Override the "makeMove" method
+    @Override
+    public int[] makeMove(int[][] map, int i, int j) {
+        // Check if moving down is possible
+        if (i + 1 < map.length && map[i + 1][j] == 0) {
+            // Return the new coordinates after moving down as an integer array
+            return new int[]{i + 1, j};
+        }
+        // If moving down is not possible, return null
+        return null;
+    }
+}
+
+// Implement the "Move" interface for moving left
+class MoveLeft implements Move {
+    // Override the "makeMove" method
+    @Override
+    public int[] makeMove(int[][] map, int i, int j) {
+        // Check if moving left is possible
+        if (j - 1 >= 0 && map[i][j - 1] == 0) {
+            // Return the new coordinates after moving left as an integer array
+            return new int[]{i, j - 1};
+        }
+        // If moving left is not possible, return null
+        return null;
+    }
+}
+
+// Implement the "Move" interface for moving right
+class MoveRight implements Move {
+    // Override the "makeMove" method
+    @Override
+    public int[] makeMove(int[][] map, int i, int j) {
+        // Check if moving right is possible
+        if (j + 1 < map[0].length && map[i][j + 1] == 0) {
+            // Return the new coordinates after moving right as an integer array
+            return new int[]{i, j + 1};
+        }
+        // If moving right is not possible, return null
+        return null;
+    }
+}
+
+// Implement the "Move" interface for moving up
+class MoveUp implements Move {
+    // Override the "makeMove" method
+    @Override
+    public int[] makeMove(int[][] map, int i, int j) {
+        // Check if moving up is possible
+        if (i - 1 >= 0 && map[i - 1][j] == 0) {
+            // Return the new coordinates after moving up as an integer array
+            return new int[]{i - 1, j};
+        }
+        // If moving up is not possible, return null
+        return null;
+    }
+}
+
 public class MazeRecursion {
 
     public static void mazeRecursion() {
@@ -51,9 +127,7 @@ public class MazeRecursion {
         setWay2(map2, 1, 1);
 
         // Print out the new map1, with the ball footprint
-        System.out.println(
-            "After the ball goes through the map1，show the current map1 condition"
-        );
+        System.out.println("After the ball goes through the map1，show the current map1 condition");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map[i][j] + " ");
@@ -62,9 +136,7 @@ public class MazeRecursion {
         }
 
         // Print out the new map2, with the ball footprint
-        System.out.println(
-            "After the ball goes through the map2，show the current map2 condition"
-        );
+        System.out.println("After the ball goes through the map2，show the current map2 condition");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map2[i][j] + " ");
@@ -100,22 +172,21 @@ public class MazeRecursion {
         if (map[i][j] == 0) { // if the ball haven't gone through this point
             // then the ball follows the move strategy : down -> right -> up -> left
             map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2 first。
-            if (setWay(map, i + 1, j)) { // go down
-                return true;
-            } else if (setWay(map, i, j + 1)) { // go right
-                return true;
-            } else if (setWay(map, i - 1, j)) { // go up
-                return true;
-            } else if (setWay(map, i, j - 1)) { // go left
-                return true;
-            } else {
-                // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
-                // go to the previous step and check for feasible path again
-                map[i][j] = 3;
-                return false;
+            Move[] moves = {new MoveDown(), new MoveRight(), new MoveUp(), new MoveLeft()};
+            for (Move move : moves) {
+                int[] newPos = move.makeMove(map, i, j);
+                if (newPos != null) {
+                    if (setWay(map, newPos[0], newPos[1])) {
+                        return true;
+                    }
+                }
             }
-        } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
+            // means that the current point is the dead end, the ball cannot proceed, set
+            // the current point to 3 and return false, the backtracking will start, it will
+            // go to the previous step and check for feasible path again
+            map[i][j] = 3;
+            return false;
+        } else { // if the map[i][j] != 0, it will probably be 1,2,3, return false because the
             // ball cannot hit the wall, cannot go to the path that has gone though before,
             // and cannot head to deadend.
             return false;
@@ -130,21 +201,20 @@ public class MazeRecursion {
         if (map[i][j] == 0) { // if the ball haven't gone through this point
             // then the ball follows the move strategy : up->right->down->left
             map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2 first。
-            if (setWay2(map, i - 1, j)) { // go up
-                return true;
-            } else if (setWay2(map, i, j + 1)) { // go right
-                return true;
-            } else if (setWay2(map, i + 1, j)) { // go down
-                return true;
-            } else if (setWay2(map, i, j - 1)) { // go left
-                return true;
-            } else {
-                // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
-                // go to the previous step and check for feasible path again
-                map[i][j] = 3;
-                return false;
+            Move[] moves = {new MoveUp(), new MoveRight(), new MoveDown(), new MoveLeft()};
+            for (Move move : moves) {
+                int[] newPos = move.makeMove(map, i, j);
+                if (newPos != null) {
+                    if (setWay2(map, newPos[0], newPos[1])) {
+                        return true;
+                    }
+                }
             }
+            // means that the current point is the dead end, the ball cannot proceed, set
+            // the current point to 3 and return false, the backtracking will start, it will
+            // go to the previous step and check for feasible path again
+            map[i][j] = 3;
+            return false;
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
             // ball cannot hit the wall, cannot go to the path that has gone though before,
             // and cannot head to deadend.
