@@ -25,6 +25,18 @@ public abstract class MemoryManagementAlgorithms {
         int[] sizeOfBlocks,
         int[] sizeOfProcesses
     );
+
+    /**
+     * A constant value used to indicate that an allocation has not been made. 
+     * This value is used as a sentinel value to represent that no allocation has been made 
+     * when allocating space in an array or other data structure. 
+     * The value is -255 and is marked as protected and final to ensure that it cannot be modified
+     * from outside the class and that its value remains consistent throughout the program execution.
+     * 
+     * @author: Ishan Makadia (github.com/intrepid-ishan)
+     * @version: April 06, 2023
+     */
+    protected static final int NO_ALLOCATION = -255;
 }
 
 /**
@@ -32,7 +44,6 @@ public abstract class MemoryManagementAlgorithms {
  */
 class BestFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
 
     // it means that it has not been actually allocated.
 
@@ -115,8 +126,6 @@ class BestFitCPU extends MemoryManagementAlgorithms {
  */
 class WorstFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
-
     // it means that it has not been actually allocated.
 
     /**
@@ -179,7 +188,6 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
  */
 class FirstFitCPU extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
 
     // it means that it has not been actually allocated.
 
@@ -237,7 +245,6 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
  */
 class NextFit extends MemoryManagementAlgorithms {
 
-    private static final int NO_ALLOCATION = -255; // if a process has been allocated in position -255,
     // it means that it has not been actually allocated.
     private int counter = 0; // variable that keeps the position of the last registration into the memory
 
