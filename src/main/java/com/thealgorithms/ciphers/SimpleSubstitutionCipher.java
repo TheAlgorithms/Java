@@ -28,16 +28,18 @@ public class SimpleSubstitutionCipher {
 }
 
 /**
- * A CipherMap class that provides functionality to map characters using a substitution cipher.
- * It generates a map of character pairs where each character in the English alphabet
- * is mapped to another unique character in the provided cipher key.
- * This class provides two methods:
- *  1. mapCharacters: maps the characters in a given message using the cipher map.
- *  2. reverseMapCharacters: maps the characters in an encrypted message back to the original message using the cipher map.
-*/
+ * The CipherMap class is responsible for creating a mapping between characters used in encoding/decoding of messages.
+ * It creates a map from the input cipher strings.
+ */
 class CipherMap {
     private Map<Character, Character> cipherMap;
 
+    /**
+     * Constructs a CipherMap object.
+     *
+     * @param cipherSmall a string of lowercase letters to be used in encoding/decoding.
+     * @param type the type of operation to be performed (encode/decode).
+     */
     public CipherMap(String cipherSmall, String type) {
         cipherMap = new HashMap<>();
         char beginSmallLetter = 'a';
@@ -46,17 +48,23 @@ class CipherMap {
         String cipherCapital = cipherSmall.toUpperCase();
 
         for (int i = 0; i < cipherSmall.length(); i++) {
-            if(type == "encode"){
+            if(type.equals("encode")){
                 cipherMap.put(beginSmallLetter++, cipherSmall.charAt(i));
                 cipherMap.put(beginCapitalLetter++, cipherCapital.charAt(i));
             }
-            if(type == "decode"){
+            if(type.equals("decode")){
                 cipherMap.put(cipherSmall.charAt(i), beginSmallLetter++);
-                cipherMap.put(cipherCapital.charAt(i), beginCapitalLetter++);   
+                cipherMap.put(cipherCapital.charAt(i), beginCapitalLetter++);
             }
         }
     }
 
+    /**
+     * Maps the characters in the message to their encoded characters.
+     *
+     * @param message the message to be encoded.
+     * @return the encoded message as a string.
+     */
     public String mapCharacters(String message) {
         StringBuilder encoded = new StringBuilder();
 
@@ -71,8 +79,15 @@ class CipherMap {
         return encoded.toString();
     }
 
+    /**
+     * Maps the characters in the encrypted message to their original characters.
+     *
+     * @param encryptedMessage the message to be decoded.
+     * @return the decoded message as a string.
+     */
     public String reverseMapCharacters(String encryptedMessage) {
         StringBuilder decoded = new StringBuilder();
+
         for (int i = 0; i < encryptedMessage.length(); i++) {
             if (Character.isAlphabetic(encryptedMessage.charAt(i))) {
                 decoded.append(cipherMap.get(encryptedMessage.charAt(i)));
