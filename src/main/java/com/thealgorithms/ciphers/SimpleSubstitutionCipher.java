@@ -14,28 +14,51 @@ import java.util.Map;
  */
 public class SimpleSubstitutionCipher {
 
-    /**
-     * Encrypt text by replacing each element with its opposite character.
-     *
-     * @return Encrypted message
-     */
     public static String encode(String message, String cipherSmall) {
-        StringBuilder encoded = new StringBuilder();
+        String type = "encode";
+        CipherMap cipherMap = new CipherMap(cipherSmall, type);
+        return cipherMap.mapCharacters(message);
+    }
 
-        // This map is used to encode
-        Map<Character, Character> cipherMap = new HashMap<>();
+    public static String decode(String encryptedMessage, String cipherSmall) {
+        String type = "decode";
+        CipherMap cipherMap = new CipherMap(cipherSmall, type);
+        return cipherMap.reverseMapCharacters(encryptedMessage);
+    }
+}
 
+/**
+ * A CipherMap class that provides functionality to map characters using a substitution cipher.
+ * It generates a map of character pairs where each character in the English alphabet
+ * is mapped to another unique character in the provided cipher key.
+ * This class provides two methods:
+ *  1. mapCharacters: maps the characters in a given message using the cipher map.
+ *  2. reverseMapCharacters: maps the characters in an encrypted message back to the original message using the cipher map.
+*/
+class CipherMap {
+    private Map<Character, Character> cipherMap;
+
+    public CipherMap(String cipherSmall, String type) {
+        cipherMap = new HashMap<>();
         char beginSmallLetter = 'a';
         char beginCapitalLetter = 'A';
-
         cipherSmall = cipherSmall.toLowerCase();
         String cipherCapital = cipherSmall.toUpperCase();
 
-        // To handle Small and Capital letters
         for (int i = 0; i < cipherSmall.length(); i++) {
-            cipherMap.put(beginSmallLetter++, cipherSmall.charAt(i));
-            cipherMap.put(beginCapitalLetter++, cipherCapital.charAt(i));
+            if(type == "encode"){
+                cipherMap.put(beginSmallLetter++, cipherSmall.charAt(i));
+                cipherMap.put(beginCapitalLetter++, cipherCapital.charAt(i));
+            }
+            if(type == "decode"){
+                cipherMap.put(cipherSmall.charAt(i), beginSmallLetter++);
+                cipherMap.put(cipherCapital.charAt(i), beginCapitalLetter++);   
+            }
         }
+    }
+
+    public String mapCharacters(String message) {
+        StringBuilder encoded = new StringBuilder();
 
         for (int i = 0; i < message.length(); i++) {
             if (Character.isAlphabetic(message.charAt(i))) {
@@ -48,28 +71,8 @@ public class SimpleSubstitutionCipher {
         return encoded.toString();
     }
 
-    /**
-     * Decrypt message by replacing each element with its opposite character in
-     * cipher.
-     *
-     * @return message
-     */
-    public static String decode(String encryptedMessage, String cipherSmall) {
+    public String reverseMapCharacters(String encryptedMessage) {
         StringBuilder decoded = new StringBuilder();
-
-        Map<Character, Character> cipherMap = new HashMap<>();
-
-        char beginSmallLetter = 'a';
-        char beginCapitalLetter = 'A';
-
-        cipherSmall = cipherSmall.toLowerCase();
-        String cipherCapital = cipherSmall.toUpperCase();
-
-        for (int i = 0; i < cipherSmall.length(); i++) {
-            cipherMap.put(cipherSmall.charAt(i), beginSmallLetter++);
-            cipherMap.put(cipherCapital.charAt(i), beginCapitalLetter++);
-        }
-
         for (int i = 0; i < encryptedMessage.length(); i++) {
             if (Character.isAlphabetic(encryptedMessage.charAt(i))) {
                 decoded.append(cipherMap.get(encryptedMessage.charAt(i)));
