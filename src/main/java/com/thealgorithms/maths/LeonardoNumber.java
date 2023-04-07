@@ -8,7 +8,7 @@ public class LeonardoNumber {
     /**
      * Calculate nth Leonardo Number (1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, ...)
      *
-     * @param n nth
+     * @param n the index of Leonardo Number to calculate
      * @return nth number of Leonardo sequences
      */
     public static int leonardoNumber(int n) {
