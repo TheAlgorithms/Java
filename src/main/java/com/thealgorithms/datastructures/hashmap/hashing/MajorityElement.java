@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 /*
 This class finds the majority element(s) in an array of integers.
@@ -30,8 +30,7 @@ public class MajorityElement {
         }
     }
     /*
-    This method tests the majority method of MajorityElement class with an input array.
-    */
+    This method tests the majority method of MajorityElement class with an input array.*/
     @Test
     void testMajority() {
         int[] nums = {1,3,3,3,2,5,1,3,1,5,1};
