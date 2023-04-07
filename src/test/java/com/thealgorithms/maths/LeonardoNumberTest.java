@@ -2,12 +2,13 @@ package com.thealgorithms.maths;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LeonardoNumberTest {
     @Test
         //Negative Leonardo Number
     void leonardoNumberNegative() {
-        assertEquals(0, LeonardoNumber.leonardoNumber(-1));
+        assertThrows(ArithmeticException.class, ()-> LeonardoNumber.leonardoNumber(-1));
     }
     @Test
         //Zero Leonardo Number
