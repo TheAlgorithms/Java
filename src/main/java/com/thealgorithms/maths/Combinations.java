@@ -52,8 +52,7 @@ public class Combinations {
         // nC0 is always 1
         long solution = 1;
         for (int i = 0; i < k; i++) {
-            long next = (n - i) * solution / (i + 1);
-            solution = next;
+            solution = (n - i) * solution / (i + 1);
         }
         return solution;
     }

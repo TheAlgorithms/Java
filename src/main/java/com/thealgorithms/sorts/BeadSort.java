@@ -27,7 +27,7 @@ public class BeadSort {
 
         for(int i = 0; i < unsorted.length; i++) {
             int k = 0;
-            for(int j = 0; j < (int) unsorted[i] ; j++) {
+            for(int j = 0; j < unsorted[i]; j++) {
                 grid[count[max - k - 1]++][k] = '*';
                 k++;
              }

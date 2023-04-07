@@ -114,7 +114,7 @@ public class TarjansAlgorithm {
                 stronglyConnCompsUtil(n, lowTime, insertionTime, isInStack, st, graph);
                 //update lowTime for the current node comparing lowtime of adj node
                 lowTime[u] = Math.min(lowTime[u], lowTime[n]);
-            } else if (isInStack[n] == true) {
+            } else if (isInStack[n]) {
                 //If adj node is in stack, update low 
                 lowTime[u] = Math.min(lowTime[u], insertionTime[n]);
             }

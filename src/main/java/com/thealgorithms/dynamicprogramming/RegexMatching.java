@@ -112,7 +112,7 @@ public class RegexMatching {
             return true;
         }
         if (strg[svidx][pvidx] != 0) {
-            return strg[svidx][pvidx] == 1 ? false : true;
+            return strg[svidx][pvidx] != 1;
         }
         char chs = src.charAt(svidx);
         char chp = pat.charAt(pvidx);
@@ -127,7 +127,7 @@ public class RegexMatching {
         } else {
             ans = false;
         }
-        strg[svidx][pvidx] = ans == false ? 1 : 2;
+        strg[svidx][pvidx] = ans ? 2 : 1;
         return ans;
     }
 
