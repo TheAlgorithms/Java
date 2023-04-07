@@ -154,11 +154,7 @@ class AdjacencyMatrixGraph {
      * @return whether or not the vertex exists
      */
     public boolean vertexDoesExist(int aVertex) {
-        if (aVertex >= 0 && aVertex < this.numberOfVertices()) {
-            return true;
-        } else {
-            return false;
-        }
+        return aVertex >= 0 && aVertex < this.numberOfVertices();
     }
 
     /**
@@ -343,14 +339,14 @@ class AdjacencyMatrixGraph {
     public String toString() {
         String s = "    ";
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + String.valueOf(i) + " ";
+            s = s + i + " ";
         }
         s = s + " \n";
 
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + String.valueOf(i) + " : ";
+            s = s + i + " : ";
             for (int j = 0; j < this.numberOfVertices(); j++) {
-                s = s + String.valueOf(this._adjacency[i][j]) + " ";
+                s = s + this._adjacency[i][j] + " ";
             }
             s = s + "\n";
         }

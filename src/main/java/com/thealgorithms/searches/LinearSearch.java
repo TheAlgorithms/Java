@@ -53,14 +53,12 @@ public class LinearSearch implements SearchAlgorithm {
         LinearSearch search = new LinearSearch();
         int atIndex = search.find(integers, shouldBeFound);
 
-        System.out.println(
-            String.format(
-                "Should be found: %d. Found %d at index %d. An array length %d",
+        System.out.printf(
+                "Should be found: %d. Found %d at index %d. An array length %d%n",
                 shouldBeFound,
                 integers[atIndex],
                 atIndex,
                 size
-            )
         );
     }
 }

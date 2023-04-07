@@ -174,8 +174,7 @@ public class CursorLinkedList<T> {
         }
 
         // 2- make the os point to the next of the  @var{availableNodeIndex}
-        int availableNext = cursorSpace[availableNodeIndex].next;
-        cursorSpace[os].next = availableNext;
+        cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
 
         // this to indicate an end of the list , helpful at testing since any err
         // would throw an outOfBoundException

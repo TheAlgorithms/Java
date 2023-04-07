@@ -17,7 +17,7 @@ public class FastInverseSqrt {
         i = 0x5f3759df - (i >> 1);
         x = Float.intBitsToFloat(i);
         x = x * (1.5f - xhalf * x * x);
-        return x == (float) ((float) 1 / (float) Math.sqrt(number));
+        return x == ((float) 1 / (float) Math.sqrt(number));
     }
 
     /**

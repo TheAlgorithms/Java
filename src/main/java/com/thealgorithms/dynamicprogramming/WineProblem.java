@@ -24,9 +24,7 @@ public class WineProblem {
         int start = WPRecursion(arr, si + 1, ei) + arr[si] * year;
         int end = WPRecursion(arr, si, ei - 1) + arr[ei] * year;
 
-        int ans = Math.max(start, end);
-
-        return ans;
+        return Math.max(start, end);
     }
 
     // Method 2: Top-Down DP(Memoization)

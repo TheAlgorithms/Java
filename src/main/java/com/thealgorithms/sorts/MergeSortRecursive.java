@@ -13,8 +13,7 @@ public class MergeSortRecursive {
     }
 
     public List<Integer> mergeSort() {
-        List<Integer> arrSorted = merge(arr);
-        return arrSorted;
+        return merge(arr);
     }
 
     private static List<Integer> merge(List<Integer> arr) {

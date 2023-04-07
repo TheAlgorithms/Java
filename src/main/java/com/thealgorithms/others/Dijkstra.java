@@ -131,15 +131,7 @@ class Graph {
             ) {
                 return false;
             }
-            if (
-                neighbours != null
-                    ? !neighbours.equals(vertex.neighbours)
-                    : vertex.neighbours != null
-            ) {
-                return false;
-            }
-
-            return true;
+            return neighbours != null ? neighbours.equals(vertex.neighbours) : vertex.neighbours == null;
         }
 
         @Override
