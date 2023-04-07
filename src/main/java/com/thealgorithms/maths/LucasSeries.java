@@ -6,11 +6,11 @@ package com.thealgorithms.maths;
 public class LucasSeries {
 
     /**
-     * Calculate nth number of lucas series(2, 1, 3, 4, 7, 11, 18, 29, 47, 76,
+     * Calculate nth number of Lucas Series(2, 1, 3, 4, 7, 11, 18, 29, 47, 76,
      * 123, ....) using recursion
      *
      * @param n nth
-     * @return nth number of lucas series
+     * @return nth number of Lucas Series
      */
     public static int lucasSeries(int n) {
         return n == 1
@@ -19,7 +19,7 @@ public class LucasSeries {
     }
 
     /**
-     * Calculate nth number of lucas series(2, 1, 3, 4, 7, 11, 18, 29, 47, 76,
+     * Calculate nth number of Lucas Series(2, 1, 3, 4, 7, 11, 18, 29, 47, 76,
      * 123, ....) using iteration
      *
      * @param n nth
