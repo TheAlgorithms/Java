@@ -6,7 +6,7 @@ package com.thealgorithms.maths;
 public class LeonardoNumber {
 
     /**
-     * Calculate nth number of Leonardo Number (1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, ...)
+     * Calculate nth Leonardo Number (1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, ...)
      *
      * @param n nth
      * @return nth number of Leonardo sequences
