@@ -1,8 +1,12 @@
-import src.main.java.com.thealgorithms.datastructures.hashmap.hashing.MajorityElement.majority;
+import com.thealgorithms.datastructures.hashmap.hashing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import java.util.ArrayList;
 
 public class MajorityElementTest{
     @Test
