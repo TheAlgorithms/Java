@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.lists;
 
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -99,4 +100,42 @@ public class SinglyLinkedListTest {
         list.deleteNth(6); //Index 6 has value 7
         assertFalse(list.search(7));
     }
+    //Test to check whether the method reverseList() works fine
+    @Test
+    void reverseList(){
+
+        //Creating a new LinkedList of size:4
+        //The linkedlist will be 1->2->3->4->null
+        SinglyLinkedList list = createSampleList(4);
+          
+        //Reversing the LinkedList using reverseList() method and storing the head of the reversed linkedlist in a head node
+        //The reversed linkedlist will be 4->3->2->1->null
+        Node head=list.reverseList(list.getHead());
+
+        //Recording the Nodes after reversing the LinkedList
+        Node firstNode = head;              //4
+        Node secondNode = firstNode.next;   //3
+        Node thirdNode = secondNode.next;   //2
+        Node fourthNode = thirdNode.next;   //1
+        
+        //Checking whether the LinkedList is reversed or not by comparing the original list and reversed list nodes
+        assertEquals(1,fourthNode.value);
+        assertEquals(2,thirdNode.value);
+        assertEquals(3,secondNode.value);
+        assertEquals(4,firstNode.value);
+    }
+    
+    //Test to check whether implemented reverseList() method handles NullPointer Exception for TestCase where head==null
+    @Test
+    void reverseListNullPointer(){
+        SinglyLinkedList list=new SinglyLinkedList();
+        Node first=list.getHead();
+
+        list.reverseList(first);
+
+        Node newFirst=list.getHead();
+        assertEquals(first,newFirst);
+
+    }
+
 }

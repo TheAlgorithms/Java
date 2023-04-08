@@ -122,7 +122,11 @@ public class SinglyLinkedList extends Node {
      * Reverse a singly linked list from a given node till the end
      *
      */
-    Node reverseList(Node node) {
+    public Node reverseList(Node node) {
+        //When node is null, then "next" will cause an error as we are accesing node.next, which will give a NullPointer Exception
+        if(node==null){
+            return node;
+        }
         Node prev = null;
         Node curr = node;
         Node next=curr.next;
@@ -135,7 +139,7 @@ public class SinglyLinkedList extends Node {
                 next = next.next;
             }
         }
-        //prev will be pointing to the last element in the Linkedlist
+        //prev will be pointing to the last element in the Linkedlist, it will be the new head of the linkedlist
         return prev;
     }
 
