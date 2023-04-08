@@ -1,39 +1,30 @@
 import java.util.HashMap;
-
-import org.junit.jupiter.api.Test;
-
-//import static org.junit.jupiter.api.Assertions.*;
-
 /*
 This class finds the majority element(s) in an array of integers.
-A majority element is an element that appears more than n/3 times, where n is the length of the array.
+A majority element is an element that appears more than or more than equal to n/3 times, where n is the length of the array.
 */
 public class MajorityElement {
-    /*
-    This method finds the majority element(s) in the given array of integers and prints them to console.
-    @param nums: an array of integers
-    */
-    public static void majority(int[] nums){
+      /*
+     This method returns the majority element(s) in the given array of integers.
+     @param nums: an array of integers
+     @return a list of majority elements
+     */
+    public static List<Integer> majority(int[] nums){
         HashMap<Integer,Integer> map = new HashMap<>();
         int n = nums.length;
         for (int i = 0; i < n; i++) {
-            if (map.containsKey(nums[i])){ //true
+            if (map.containsKey(nums[i])){
                 map.put(nums[i],map.get(nums[i])+1);
-            }else { //false or element appeared first time
+            } else {
                 map.put(nums[i],1);
             }
         }
+        List<Integer> majorityElements = new ArrayList<>();
         for (int key: map.keySet()) {
-            if (map.get(key) > n/3){
-                System.out.println(key);
+            if (map.get(key) >= n/3){
+                majorityElements.add(key);
             }
         }
-    }
-    /*
-    This method tests the majority method of MajorityElement class with an input array.*/
-    @Test
-    void testMajority() {
-        int[] nums = {1,3,3,3,2,5,1,3,1,5,1};
-        MajorityElement.majority(nums);
+        return majorityElements;
     }
 }
