@@ -128,14 +128,36 @@ public class SinglyLinkedListTest {
     //Test to check whether implemented reverseList() method handles NullPointer Exception for TestCase where head==null
     @Test
     void reverseListNullPointer(){
+        //Creating a linkedlist with first node assigned to null
         SinglyLinkedList list=new SinglyLinkedList();
         Node first=list.getHead();
+        
+        //Reversing the linkedlist
+        Node head=list.reverseList(first);
 
-        list.reverseList(first);
+        //checking whether the method works fine if the input is null
+        assertEquals(head,first);
+    }
 
-        Node newFirst=list.getHead();
-        assertEquals(first,newFirst);
+    //Testing reverseList() method for a linkedlist of size: 20
+    @Test
+    void reverseListTest(){
+        //Creating a new linkedlist
+        SinglyLinkedList list = createSampleList(20);
 
+        //Reversing the LinkedList using reverseList() method and storing the head of the reversed linkedlist in a head node
+        Node head=list.reverseList(list.getHead());
+        
+        //Storing the head in a temp variable, so that we cannot loose the track of head
+        Node temp=head;
+
+        int i=20; //This is for the comparison of values of nodes of the reversed linkedlist
+        //Checking whether the reverseList() method performed its task
+        while(temp!=null && i>0){
+            assertEquals(temp.value,i);
+            temp=temp.next;
+            i--;
+        }
     }
 
 }

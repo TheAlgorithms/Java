@@ -134,12 +134,12 @@ public class SinglyLinkedList extends Node {
             curr.next = prev;
             prev = curr;
             curr = next;
-            //NullPointer Exception is handled here
+            //NullPointer Exception is handled here for next variable inside while loop
             if(next!=null){
                 next = next.next;
             }
         }
-        //prev will be pointing to the last element in the Linkedlist, it will be the new head of the linkedlist
+        //prev will be pointing to the last element in the Linkedlist, it will be the new head of the reversed linkedlist
         return prev;
     }
 
