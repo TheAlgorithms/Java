@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 /*
 This class finds the majority element(s) in an array of integers.
 A majority element is an element that appears more than or more than equal to n/3 times, where n is the length of the array.
