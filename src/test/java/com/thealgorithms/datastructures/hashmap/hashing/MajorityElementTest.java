@@ -1,4 +1,4 @@
-import src.main.java.com.thealgorithms.datastructures.hashmap.hashing.MajorityElement.majority
+import src.main.java.com.thealgorithms.datastructures.hashmap.hashing.MajorityElement.majority;
 
 import static org.junit.jupiter.api.Assertions.*;
 
