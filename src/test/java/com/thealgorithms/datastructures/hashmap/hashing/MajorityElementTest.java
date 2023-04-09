@@ -1,6 +1,6 @@
-//package com.thealgorithms.datastructures.hashmap.hashing;
+package com.thealgorithms.datastructures.hashmap.hashing;//package com.thealgorithms.datastructures.hashmap.hashing;
 
-import src.main.java.com.thealgorithms.datastructures.hashmap.hashing.MajorityElement;
+import com.thealgorithms.datastructures.hashmap.hashing.MajorityElement;
 
 import static org.junit.jupiter.api.Assertions.*;
 

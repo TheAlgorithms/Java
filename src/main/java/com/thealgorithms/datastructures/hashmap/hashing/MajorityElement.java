@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.hashmap.hashing;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
