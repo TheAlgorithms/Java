@@ -1,4 +1,4 @@
-package com.thealgorithms.datastructures.hashmap.hashing;//package com.thealgorithms.datastructures.hashmap.hashing;
+package com.thealgorithms.datastructures.hashmap.hashing;
 
 import com.thealgorithms.datastructures.hashmap.hashing.MajorityElement;
 
