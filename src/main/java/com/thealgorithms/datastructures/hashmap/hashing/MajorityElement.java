@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-=======
->>>>>>> 58db2f7839d057bc5aeb6873f4b4d0a5ab846ed5
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
