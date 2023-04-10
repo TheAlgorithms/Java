@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 /*
 This class finds the majority element(s) in an array of integers.
-A majority element is an element that appears more than or more than equal to n/3 times, where n is the length of the array.
+A majority element is an element that appears more than or more than equal to n/2 times, where n is the length of the array.
 */
 public class MajorityElement {
       /*
@@ -14,6 +14,9 @@ public class MajorityElement {
      @return a list of majority elements
      */
     public static List<Integer> majority(int[] nums){
+        if (nums.length == 0) {
+            return new ArrayList<>(); // return an empty list if input array is empty
+        }
         HashMap<Integer,Integer> map = new HashMap<>();
         int n = nums.length;
         for (int i = 0; i < n; i++) {
@@ -25,7 +28,7 @@ public class MajorityElement {
         }
         List<Integer> majorityElements = new ArrayList<>();
         for (int key: map.keySet()) {
-            if (map.get(key) >= n/3){
+            if (map.get(key) >= n/2){
                 majorityElements.add(key);
             }
         }
