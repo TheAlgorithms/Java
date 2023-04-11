@@ -32,7 +32,7 @@ public class MajorityElementTest{
     @Test
     void testMajorityWithNoMajorityElement() {
         int[] nums = {1, 2, 4, 4, 5, 4};
-        expected.add(4)
+        expected.add(4);
         List<Integer> actual = MajorityElement.majority(nums);
         assertEquals(expected, actual);
     }
