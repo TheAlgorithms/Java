@@ -15,7 +15,7 @@ public class MajorityElementTest{
     @Test
     void testMajorityWithSingleMajorityElement() {
         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9};
-        List<Integer> expected = Collections.emptyList(); // create an empty list
+        List<Integer> expected = Collections.emptyList(); 
         List<Integer> actual = MajorityElement.majority(nums);
         assertEquals(expected, actual);
     }
@@ -31,8 +31,8 @@ public class MajorityElementTest{
 
     @Test
     void testMajorityWithNoMajorityElement() {
-        int[] nums = {1, 2, 3, 4, 5, 6};
-        List<Integer> expected = Collections.emptyList(); // create an empty list
+        int[] nums = {1, 2, 4, 4, 5, 4};
+        expected.add(4)
         List<Integer> actual = MajorityElement.majority(nums);
         assertEquals(expected, actual);
     }
@@ -40,8 +40,7 @@ public class MajorityElementTest{
     @Test
     void testMajorityWithEmptyArray() {
         int[] nums = {};
-        //List<Integer> expected = new ArrayList<>();
-        List<Integer> expected = Collections.emptyList(); // create an empty list
+        List<Integer> expected = Collections.emptyList(); 
         List<Integer> actual = MajorityElement.majority(nums);
         assertEquals(expected, actual);
     }
