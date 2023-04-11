@@ -6,10 +6,10 @@ public class LineSweep {
      /** Line Sweep algorithm can be used to solve range problems by first sorting the list of ranges
      * by the start value of the range in non-decreasing order and doing a "sweep" through the number
      * line(x-axis) by incrementing the start point by 1 and decrementing end point by -1 on the
-     * number line.
+     * number line. https://www.topcoder.com/thrive/articles/Line%20Sweep%20Algorithms
      * /
 
-     * Find if any interval overlaps
+     * Find if any ranges overlap
      * param = ranges Array of range[start,end]
      * param = maximum Maximum length of number line or largest "end" value
      * return true if there overlap exists false
