@@ -13,10 +13,10 @@ import java.util.*;
  */
 public class Sort012D {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner np = new Scanner(System.in);
         int n = np.nextInt();
-        int a[] = new int[n];
+        int[] a = new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = np.nextInt();
         }

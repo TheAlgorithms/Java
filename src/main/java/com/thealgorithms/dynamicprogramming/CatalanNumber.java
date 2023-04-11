@@ -23,7 +23,7 @@ public class CatalanNumber {
      */
     static long findNthCatalan(int n) {
         // Array to store the results of subproblems i.e Catalan numbers from [1...n-1]
-        long catalanArray[] = new long[n + 1];
+        long[] catalanArray = new long[n + 1];
 
         // Initialising C₀ = 1 and C₁ = 1
         catalanArray[0] = 1;

@@ -83,7 +83,7 @@ public class Kosaraju {
     }
 
     private void sortEdgesByLowestFinishTime(int v, List<List<Integer>> list){
-        int vis[] = new int[v];
+        int[] vis = new int[v];
         for (int i = 0; i < v; i++) {
             if(vis[i] == 0){
                 dfs(i, vis, list);
@@ -110,7 +110,7 @@ public class Kosaraju {
      * @param transposeGraph Transpose of the given adjacency list
      */
     public void findStronglyConnectedComponents(int v, List<List<Integer>> transposeGraph){
-        int vis[] = new int[v];
+        int[] vis = new int[v];
         while (!stack.isEmpty()) {
             var node = stack.pop();
             if(vis[node] == 0){
@@ -122,7 +122,7 @@ public class Kosaraju {
     }
 
     //Dfs to store the nodes in order of lowest finish time
-    private void dfs(int node, int vis[], List<List<Integer>> list){
+    private void dfs(int node, int[] vis, List<List<Integer>> list){
         vis[node] = 1;
         for(Integer neighbour : list.get(node)){
             if(vis[neighbour] == 0)
@@ -132,7 +132,7 @@ public class Kosaraju {
     }
 
     //Dfs to find all the nodes of each strongly connected component
-    private void dfs2(int node, int vis[], List<List<Integer>> list){
+    private void dfs2(int node, int[] vis, List<List<Integer>> list){
         vis[node] = 1;
         for(Integer neighbour : list.get(node)){
             if(vis[neighbour] == 0)

@@ -68,15 +68,15 @@ public class TarjansAlgorithm {
 
         // lowTime: indicates the earliest visited vertex (the vertex with minimum insertion time) that can 
         // be reached from a subtree rooted with a particular node.
-        int lowTime[] = new int[V];
-        int insertionTime[] = new int[V];
+        int[] lowTime = new int[V];
+        int[] insertionTime = new int[V];
         for (int i = 0; i < V; i++) {
             insertionTime[i] = -1;
             lowTime[i] = -1;
         }
         
         // To check if element is present in stack
-        boolean isInStack[] = new boolean[V];
+        boolean[] isInStack = new boolean[V];
 
         // Store nodes during DFS
         Stack<Integer> st = new Stack<Integer>();
@@ -89,8 +89,8 @@ public class TarjansAlgorithm {
         return SCClist;
     }
 
-    private void stronglyConnCompsUtil(int u, int lowTime[], int insertionTime[],
-            boolean isInStack[], Stack<Integer> st, List<List<Integer>> graph) {
+    private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime,
+                                       boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
 
         // Initialize insertion time and lowTime value of current node
         insertionTime[u] = Time;

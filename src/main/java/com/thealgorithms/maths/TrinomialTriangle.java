@@ -39,7 +39,7 @@ public class TrinomialTriangle {
         }
     }
 
-    public static void main(String argc[]) {
+    public static void main(String[] argc) {
         int n = 6;
         printTrinomial(n);
     }

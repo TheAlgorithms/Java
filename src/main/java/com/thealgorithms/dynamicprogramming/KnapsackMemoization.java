@@ -9,10 +9,10 @@ package com.thealgorithms.dynamicprogramming;
  */
 public class KnapsackMemoization {
 
-    int knapSack(int W, int wt[], int val[], int N) {
+    int knapSack(int W, int[] wt, int[] val, int N) {
 
         // Declare the table dynamically
-        int dp[][] = new int[N + 1][W + 1];
+        int[][] dp = new int[N + 1][W + 1];
 
         // Loop to initially filled the
         // table with -1
@@ -26,9 +26,9 @@ public class KnapsackMemoization {
     }
 
     // Returns the value of maximum profit using Recursive approach
-    int knapSackRec(int W, int wt[],
-            int val[], int n,
-            int[][] dp) {
+    int knapSackRec(int W, int[] wt,
+                    int[] val, int n,
+                    int[][] dp) {
 
         // Base condition
         if (n == 0 || W == 0) {
