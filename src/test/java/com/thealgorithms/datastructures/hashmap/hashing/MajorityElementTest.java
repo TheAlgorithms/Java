@@ -14,8 +14,9 @@ import java.util.ArrayList;
 public class MajorityElementTest{
     @Test
     void testMajorityWithSingleMajorityElement() {
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9};
-        List<Integer> expected = Collections.emptyList(); 
+        int[] nums = {1, 2, 3, 9, 9, 6, 7, 8, 9, 9, 9, 9};
+        List<Integer> expected = new ArrayList<>();
+        expected.add(9);
         List<Integer> actual = MajorityElement.majority(nums);
         assertEquals(expected, actual);
     }
