@@ -14,18 +14,18 @@ public class MajorityElement {
      @return a list of majority elements
      */
     public static List<Integer> majority(int[] nums){
-        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Integer> numToCount  = new HashMap<>();
         int n = nums.length;
         for (int i = 0; i < n; i++) {
-            if (map.containsKey(nums[i])){
-                map.put(nums[i],map.get(nums[i])+1);
+            if (numToCount.containsKey(nums[i])){
+                numToCount.put(nums[i],numToCount.get(nums[i])+1);
             } else {
-                map.put(nums[i],1);
+                numToCount.put(nums[i],1);
             }
         }
         List<Integer> majorityElements = new ArrayList<>();
-        for (int key: map.keySet()) {
-            if (map.get(key) >= n/2){
+        for (int key: numToCount.keySet()) {
+            if (numToCount.get(key) >= n/2){
                 majorityElements.add(key);
             }
         }
