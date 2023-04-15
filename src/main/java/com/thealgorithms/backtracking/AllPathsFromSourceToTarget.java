@@ -91,7 +91,7 @@ public class AllPathsFromSourceToTarget {
     }
 
     // Driver program
-    public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int a[][], int source, int destination)
+    public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int[][] a, int source, int destination)
     {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);

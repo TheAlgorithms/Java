@@ -49,11 +49,11 @@ public class SubsetCount {
      */
     public int getCountSO(int[] arr, int target){
         int n = arr.length;
-        int prev[]=new int[target+1];
+        int[] prev =new int[target+1];
         prev[0] =1;
         if(arr[0]<=target) prev[arr[0]] = 1;
         for(int ind = 1; ind<n; ind++){
-            int cur[]=new int[target+1];
+            int[] cur =new int[target+1];
             cur[0]=1;
             for(int t= 1; t<=target; t++){
                 int notTaken = prev[t];

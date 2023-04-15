@@ -5,13 +5,13 @@ package com.thealgorithms.dynamicprogramming;
  */
 public class Knapsack {
 
-    private static int knapSack(int W, int wt[], int val[], int n)
+    private static int knapSack(int W, int[] wt, int[] val, int n)
         throws IllegalArgumentException {
         if (wt == null || val == null) {
             throw new IllegalArgumentException();
         }
         int i, w;
-        int rv[][] = new int[n + 1][W + 1]; // rv means return value
+        int[][] rv = new int[n + 1][W + 1]; // rv means return value
 
         // Build table rv[][] in bottom up manner
         for (i = 0; i <= n; i++) {
@@ -34,9 +34,9 @@ public class Knapsack {
     }
 
     // Driver program to test above function
-    public static void main(String args[]) {
-        int val[] = new int[] { 50, 100, 130 };
-        int wt[] = new int[] { 10, 20, 40 };
+    public static void main(String[] args) {
+        int[] val = new int[] { 50, 100, 130 };
+        int[] wt = new int[] { 10, 20, 40 };
         int W = 50;
         System.out.println(knapSack(W, wt, val, val.length));
     }

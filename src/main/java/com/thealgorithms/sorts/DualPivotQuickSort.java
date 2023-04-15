@@ -96,7 +96,7 @@ public class DualPivotQuickSort implements SortAlgorithm {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Integer array[] = { 24, 8, -42, 75, -29, -77, 38, 57 };
+        Integer[] array = { 24, 8, -42, 75, -29, -77, 38, 57 };
         DualPivotQuickSort dualPivotQuickSort = new DualPivotQuickSort();
         dualPivotQuickSort.sort(array);
         for (int i = 0; i < array.length; i++) {

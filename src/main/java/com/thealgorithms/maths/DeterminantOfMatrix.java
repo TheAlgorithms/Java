@@ -10,12 +10,12 @@ public class DeterminantOfMatrix {
 
     // Determinant calculator
     //@return determinant of the input matrix
-    static int determinant(int a[][], int n) {
+    static int determinant(int[][] a, int n) {
         int det = 0, sign = 1, p = 0, q = 0;
         if (n == 1) {
             det = a[0][0];
         } else {
-            int b[][] = new int[n - 1][n - 1];
+            int[][] b = new int[n - 1][n - 1];
             for (int x = 0; x < n; x++) {
                 p = 0;
                 q = 0;
@@ -44,7 +44,7 @@ public class DeterminantOfMatrix {
         System.out.println("Enter matrix size (Square matrix only)");
         int n = in.nextInt();
         System.out.println("Enter matrix");
-        int a[][] = new int[n][n];
+        int[][] a = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 a[i][j] = in.nextInt();

@@ -10,7 +10,7 @@ class Trieac {
     // Trie node
     static class TrieNode {
 
-        TrieNode children[] = new TrieNode[ALPHABET_SIZE];
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
 
         // isWordEnd is true if the node represents
         // end of a word

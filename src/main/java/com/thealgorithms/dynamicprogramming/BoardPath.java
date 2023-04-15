@@ -52,7 +52,7 @@ public class BoardPath {
         return count;
     }
 
-    public static int bpRS(int curr, int end, int strg[]) {
+    public static int bpRS(int curr, int end, int[] strg) {
         if (curr == end) {
             return 1;
         } else if (curr > end) {

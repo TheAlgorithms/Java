@@ -12,7 +12,7 @@ class DecimalToBinary {
      *
      * @param args Command Line Arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         conventionalConversion();
         bitwiseConversion();
     }

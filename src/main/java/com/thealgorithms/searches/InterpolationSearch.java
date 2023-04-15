@@ -21,7 +21,7 @@ class InterpolationSearch {
      * @param key is a value what shoulb be found in the array
      * @return an index if the array contains the key unless -1
      */
-    public int find(int array[], int key) {
+    public int find(int[] array, int key) {
         // Find indexes of two corners
         int start = 0, end = (array.length - 1);
 

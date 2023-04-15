@@ -22,18 +22,8 @@ public static int myAtoi(String s) {
                     number = "0";
                     break;
                 }
-                switch (ch) {
-                    case '0' -> number += ch;
-                    case '1' -> number += ch;
-                    case '2' -> number += ch;
-                    case '3' -> number += ch;
-                    case '4' -> number += ch;
-                    case '5' -> number += ch;
-                    case '6' -> number += ch;
-                    case '7' -> number += ch;
-                    case '8' -> number += ch;
-                    case '9' -> number += ch;
-                }
+                if(ch >= '0' && ch <= '9')
+                    number += ch;
             } else if (ch == '-' && !isDigit) {
                 number += "0";
                 negative = true;
