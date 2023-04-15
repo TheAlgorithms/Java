@@ -126,11 +126,16 @@ public class SinglyLinkedList extends Node {
         Node prev = null;
         Node curr = node;
         
-        while (curr != null) {
+        while (curr != null && curr.next != null) {
             Node next=curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
+        }
+        //when curr.next==null, the current element is left without pointing it to its prev,so 
+        if(curr != null){
+            curr.next = prev;
+            prev=curr;
         }
         //prev will be pointing to the last element in the Linkedlist, it will be the new head of the reversed linkedlist
         return prev;

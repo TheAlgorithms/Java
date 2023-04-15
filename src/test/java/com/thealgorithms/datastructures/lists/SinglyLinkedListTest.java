@@ -154,9 +154,9 @@ public class SinglyLinkedListTest {
         int i=20; //This is for the comparison of values of nodes of the reversed linkedlist
         //Checking whether the reverseList() method performed its task
         while(temp!=null && i>0){
-            assertEquals(temp.value,i);
-            temp=temp.next;
-            i--;
+             assertEquals(i,temp.value);
+             temp=temp.next;
+             i--;
         }
     }
 
