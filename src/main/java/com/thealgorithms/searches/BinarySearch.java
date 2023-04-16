@@ -42,10 +42,10 @@ class BinarySearch implements SearchAlgorithm {
      * @return the location of the key
      */
     private <T extends Comparable<T>> int search(
-        T array[],
-        T key,
-        int left,
-        int right
+            T[] array,
+            T key,
+            int left,
+            int right
     ) {
         if (right < left) {
             return -1; // this means that the key not found

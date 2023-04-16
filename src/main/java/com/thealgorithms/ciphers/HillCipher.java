@@ -22,7 +22,7 @@ public class HillCipher {
         System.out.println("Enter key matrix size");
         int matrixSize = userInput.nextInt();
         System.out.println("Enter Key/encryptionKey matrix ");
-        int keyMatrix[][] = new int[matrixSize][matrixSize];
+        int[][] keyMatrix = new int[matrixSize][matrixSize];
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
                 keyMatrix[i][j] = userInput.nextInt();
@@ -33,7 +33,7 @@ public class HillCipher {
 
         int[][] messageVector = new int[matrixSize][1];
         String CipherText = "";
-        int cipherMatrix[][] = new int[matrixSize][1];
+        int[][] cipherMatrix = new int[matrixSize][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < matrixSize; i++) {
@@ -69,7 +69,7 @@ public class HillCipher {
         System.out.println("Enter key matrix size");
         int n = userInput.nextInt();
         System.out.println("Enter inverseKey/decryptionKey matrix ");
-        int keyMatrix[][] = new int[n][n];
+        int[][] keyMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 keyMatrix[i][j] = userInput.nextInt();
@@ -81,7 +81,7 @@ public class HillCipher {
         //solving for the required plaintext message
         int[][] messageVector = new int[n][1];
         String PlainText = "";
-        int plainMatrix[][] = new int[n][1];
+        int[][] plainMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < n; i++) {
@@ -111,13 +111,13 @@ public class HillCipher {
     }
 
     // Determinant calculator
-    public static int determinant(int a[][], int n) {
+    public static int determinant(int[][] a, int n) {
         int det = 0, sign = 1, p = 0, q = 0;
 
         if (n == 1) {
             det = a[0][0];
         } else {
-            int b[][] = new int[n - 1][n - 1];
+            int[][] b = new int[n - 1][n - 1];
             for (int x = 0; x < n; x++) {
                 p = 0;
                 q = 0;

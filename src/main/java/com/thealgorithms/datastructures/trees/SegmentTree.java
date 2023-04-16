@@ -2,12 +2,12 @@ package com.thealgorithms.datastructures.trees;
 
 public class SegmentTree {
 
-    private int seg_t[];
+    private int[] seg_t;
     private int n;
-    private int arr[];
+    private int[] arr;
 
     /* Constructor which takes the size of the array and the array as a parameter*/
-    public SegmentTree(int n, int arr[]) {
+    public SegmentTree(int n, int[] arr) {
         this.n = n;
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
         int seg_size = 2 * (int) Math.pow(2, x) - 1;

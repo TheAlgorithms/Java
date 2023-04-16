@@ -10,12 +10,12 @@ import java.util.*;
 
 public class LinkListSort {
 
-    public static boolean isSorted(int p[], int option) {
+    public static boolean isSorted(int[] p, int option) {
         try (Scanner sc = new Scanner(System.in)) {
         }
-        int a[] = p;
+        int[] a = p;
         // Array is taken as input from test class
-        int b[] = p;
+        int[] b = p;
         // array similar to a
         int ch = option;
         // Choice is choosed as any number from 1 to 3 (So the linked list will be
@@ -106,7 +106,7 @@ public class LinkListSort {
         return false;
     }
 
-    boolean compare(int a[], int b[]) {
+    boolean compare(int[] a, int[] b) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i])
                 return false;
@@ -137,7 +137,7 @@ class Node {
 
 class Task {
 
-    static int a[];
+    static int[] a;
 
     public Node sortByMergeSort(Node head) {
         if (head == null || head.next == null)
@@ -171,7 +171,7 @@ class Task {
         // It will return a integer type value denoting the number of nodes present
     }
 
-    void task(int n[], int i, int j) {
+    void task(int[] n, int i, int j) {
         if (i < j) {
             int m = (i + j) / 2;
             task(n, i, m);
@@ -181,9 +181,9 @@ class Task {
         }
     }
 
-    void task1(int n[], int s, int m, int e) {
+    void task1(int[] n, int s, int m, int e) {
         int i = s, k = 0, j = m + 1;
-        int b[] = new int[e - s + 1];
+        int[] b = new int[e - s + 1];
         while (i <= m && j <= e) {
             if (n[j] >= n[i])
                 b[k++] = n[i++];
@@ -210,7 +210,7 @@ class Task1 {
         if (head == null || head.next == null)
             return head;
         int c = count(head);
-        int a[] = new int[c];
+        int[] a = new int[c];
         // Array of size c is created
         a[0] = head.val;
         int i;
@@ -247,7 +247,7 @@ class Task1 {
 
 class Task2 {
 
-    static int a[];
+    static int[] a;
 
     public Node sortByHeapSort(Node head) {
         if (head == null || head.next == null)
@@ -280,7 +280,7 @@ class Task2 {
         // It will return a integer type value denoting the number of nodes present
     }
 
-    void task(int n[]) {
+    void task(int[] n) {
         int k = n.length;
         for (int i = k / 2 - 1; i >= 0; i--) {
             task1(n, k, i);
@@ -294,7 +294,7 @@ class Task2 {
         }
     }
 
-    void task1(int n[], int k, int i) {
+    void task1(int[] n, int k, int i) {
         int p = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
