@@ -122,20 +122,23 @@ public class SinglyLinkedList extends Node {
      * Reverse a singly linked list from a given node till the end
      *
      */
-    Node reverseList(Node node) {
-        Node prevNode = head;
-        while (prevNode.next != node) {
-            prevNode = prevNode.next;
-        }
-        Node prev = null, curr = node, next;
-        while (curr != null) {
-            next = curr.next;
+    public Node reverseList(Node node) {
+        Node prev = null;
+        Node curr = node;
+        
+        while (curr != null && curr.next != null) {
+            Node next=curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-        prevNode.next = prev;
-        return head;
+        //when curr.next==null, the current element is left without pointing it to its prev,so 
+        if(curr != null){
+            curr.next = prev;
+            prev=curr;
+        }
+        //prev will be pointing to the last element in the Linkedlist, it will be the new head of the reversed linkedlist
+        return prev;
     }
 
     /**
@@ -407,7 +410,7 @@ public class SinglyLinkedList extends Node {
         list.insert(3);
         list.insertNth(1, 4);
         assert list.toString().equals("10->7->5->3->1");
-        System.out.println(list.toString());
+        System.out.println(list);
         /* Test search function */
         assert list.search(10) &&
         list.search(5) &&
@@ -424,7 +427,7 @@ public class SinglyLinkedList extends Node {
         list.deleteNth(1);
         list.delete();
         assert list.toString().equals("7->3");
-        System.out.println(list.toString());
+        System.out.println(list);
         assert list.size == 2 && list.size() == list.count();
 
         list.clear();

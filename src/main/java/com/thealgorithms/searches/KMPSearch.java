@@ -8,7 +8,7 @@ class KMPSearch {
 
         // create lps[] that will hold the longest
         // prefix suffix values for pattern
-        int lps[] = new int[M];
+        int[] lps = new int[M];
         int j = 0; // index for pat[]
 
         // Preprocess the pattern (calculate lps[]
@@ -38,7 +38,7 @@ class KMPSearch {
         return -1;
     }
 
-    void computeLPSArray(String pat, int M, int lps[]) {
+    void computeLPSArray(String pat, int M, int[] lps) {
         // length of the previous longest prefix suffix
         int len = 0;
         int i = 1;

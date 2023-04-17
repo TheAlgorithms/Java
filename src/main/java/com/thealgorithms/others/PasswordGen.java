@@ -13,7 +13,7 @@ import java.util.Random;
  */
 class PasswordGen {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String password = generatePassword(8, 16);
         System.out.print("Password: " + password);
     }

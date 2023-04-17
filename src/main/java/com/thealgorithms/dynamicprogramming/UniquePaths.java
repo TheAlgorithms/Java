@@ -31,7 +31,7 @@ public class UniquePaths {
 
     // The above method runs in O(n) time
     public static boolean uniquePaths2(int m, int n, int ans) {
-        int dp[][] = new int[m][n];
+        int[][] dp = new int[m][n];
         for (int i = 0; i < m; i++) {
             dp[i][0] = 1;
         }

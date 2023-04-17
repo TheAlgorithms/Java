@@ -6,7 +6,7 @@ class BellmanFord /*Implementation of Bellman ford to detect negative cycles. Gr
 start vertex, end vertex and weights. Vertices should be labelled with a number between 0 and total number of vertices-1,both inclusive*/{
 
     int vertex, edge;
-    private Edge edges[];
+    private Edge[] edges;
     private int index = 0;
 
     BellmanFord(int v, int e) {
@@ -36,7 +36,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
      * @param p[] Parent array which shows updates in edges
      * @param i Current vertex under consideration
      */
-    void printPath(int p[], int i) {
+    void printPath(int[] p, int i) {
         if (p[i] == -1) { // Found the path back to parent
             return;
         }
@@ -44,7 +44,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         System.out.print(i + " ");
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         BellmanFord obj = new BellmanFord(0, 0); // Dummy object to call nonstatic variables
         obj.go();
     }
@@ -55,7 +55,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         System.out.println("Enter no. of vertices and edges please");
         v = sc.nextInt();
         e = sc.nextInt();
-        Edge arr[] = new Edge[e]; // Array of edges
+        Edge[] arr = new Edge[e]; // Array of edges
         System.out.println("Input edges");
         for (i = 0; i < e; i++) {
             u = sc.nextInt();
@@ -63,9 +63,9 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
             w = sc.nextInt();
             arr[i] = new Edge(u, ve, w);
         }
-        int dist[] = new int[v]; // Distance array for holding the finalized shortest path distance between source
+        int[] dist = new int[v]; // Distance array for holding the finalized shortest path distance between source
         // and all vertices
-        int p[] = new int[v]; // Parent array for holding the paths
+        int[] p = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {
             dist[i] = Integer.MAX_VALUE; // Initializing distance values
         }
@@ -74,7 +74,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
                 if (
-                    (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                    dist[arr[j].u] != Integer.MAX_VALUE &&
                     dist[arr[j].v] > dist[arr[j].u] + arr[j].w
                 ) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
@@ -85,7 +85,7 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
         // Final cycle for negative checking
         for (j = 0; j < e; j++) {
             if (
-                (int) dist[arr[j].u] != Integer.MAX_VALUE &&
+                dist[arr[j].u] != Integer.MAX_VALUE &&
                 dist[arr[j].v] > dist[arr[j].u] + arr[j].w
             ) {
                 neg = 1;
@@ -113,11 +113,11 @@ start vertex, end vertex and weights. Vertices should be labelled with a number 
      * @param end Ending vertex
      * @param Edge Array of edges
      */
-    public void show(int source, int end, Edge arr[]) { // be created by using addEdge() method and passed by calling getEdgeArray() method // Just shows results of computation, if graph is passed to it. The graph should
+    public void show(int source, int end, Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray() method // Just shows results of computation, if graph is passed to it. The graph should
         int i, j, v = vertex, e = edge, neg = 0;
-        double dist[] = new double[v]; // Distance array for holding the finalized shortest path distance between source
+        double[] dist = new double[v]; // Distance array for holding the finalized shortest path distance between source
         // and all vertices
-        int p[] = new int[v]; // Parent array for holding the paths
+        int[] p = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {
             dist[i] = Integer.MAX_VALUE; // Initializing distance values
         }

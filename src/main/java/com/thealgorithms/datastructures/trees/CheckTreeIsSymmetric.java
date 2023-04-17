@@ -44,10 +44,14 @@ public class CheckTreeIsSymmetric {
             return true;
         }
 
-        if (leftSubtreeRoot == null || rightSubtreRoot == null || leftSubtreeRoot.data != rightSubtreRoot.data) {
+        if (isInvalidSubtree(leftSubtreeRoot, rightSubtreRoot)) {
             return false;
         }
 
         return isSymmetric(leftSubtreeRoot.right, rightSubtreRoot.left) && isSymmetric(leftSubtreeRoot.left, rightSubtreRoot.right);
+    }
+
+    private static boolean isInvalidSubtree(Node leftSubtreeRoot, Node rightSubtreeRoot) {
+        return leftSubtreeRoot == null || rightSubtreeRoot == null || leftSubtreeRoot.data != rightSubtreeRoot.data;
     }
 }

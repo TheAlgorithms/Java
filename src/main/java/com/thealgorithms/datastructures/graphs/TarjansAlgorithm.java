@@ -68,15 +68,15 @@ public class TarjansAlgorithm {
 
         // lowTime: indicates the earliest visited vertex (the vertex with minimum insertion time) that can 
         // be reached from a subtree rooted with a particular node.
-        int lowTime[] = new int[V];
-        int insertionTime[] = new int[V];
+        int[] lowTime = new int[V];
+        int[] insertionTime = new int[V];
         for (int i = 0; i < V; i++) {
             insertionTime[i] = -1;
             lowTime[i] = -1;
         }
         
         // To check if element is present in stack
-        boolean isInStack[] = new boolean[V];
+        boolean[] isInStack = new boolean[V];
 
         // Store nodes during DFS
         Stack<Integer> st = new Stack<Integer>();
@@ -89,8 +89,8 @@ public class TarjansAlgorithm {
         return SCClist;
     }
 
-    private void stronglyConnCompsUtil(int u, int lowTime[], int insertionTime[],
-            boolean isInStack[], Stack<Integer> st, List<List<Integer>> graph) {
+    private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime,
+                                       boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
 
         // Initialize insertion time and lowTime value of current node
         insertionTime[u] = Time;
@@ -101,22 +101,16 @@ public class TarjansAlgorithm {
         isInStack[u] = true;
         st.push(u);
 
-        int n;
-
         // Go through all vertices adjacent to this
-        Iterator<Integer> i = graph.get(u).iterator();
-
-        while (i.hasNext()) {
-            n = i.next();
-
+        for (Integer vertex : graph.get(u)) {
             //If the adjacent node is unvisited, do DFS
-            if (insertionTime[n] == -1) {
-                stronglyConnCompsUtil(n, lowTime, insertionTime, isInStack, st, graph);
+            if (insertionTime[vertex] == -1) {
+                stronglyConnCompsUtil(vertex, lowTime, insertionTime, isInStack, st, graph);
                 //update lowTime for the current node comparing lowtime of adj node
-                lowTime[u] = Math.min(lowTime[u], lowTime[n]);
-            } else if (isInStack[n] == true) {
+                lowTime[u] = Math.min(lowTime[u], lowTime[vertex]);
+            } else if (isInStack[vertex]) {
                 //If adj node is in stack, update low 
-                lowTime[u] = Math.min(lowTime[u], insertionTime[n]);
+                lowTime[u] = Math.min(lowTime[u], insertionTime[vertex]);
             }
         }
         //If lowtime and insertion time are same, current node is the head of an SCC

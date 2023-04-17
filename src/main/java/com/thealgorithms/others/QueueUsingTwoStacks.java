@@ -119,7 +119,7 @@ public class QueueUsingTwoStacks {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         QueueWithStack myQueue = new QueueWithStack();
         myQueue.insert(1);
         System.out.println(myQueue.peekBack()); // Will print 1

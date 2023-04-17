@@ -39,8 +39,8 @@ public class MaximumMinimumWindow {
      */
     public static int[] calculateMaxOfMin(int[] arr, int n) {
         Stack<Integer> s = new Stack<>();
-        int left[] = new int[n + 1];
-        int right[] = new int[n + 1];
+        int[] left = new int[n + 1];
+        int[] right = new int[n + 1];
         for (int i = 0; i < n; i++) {
             left[i] = -1;
             right[i] = n;
@@ -74,7 +74,7 @@ public class MaximumMinimumWindow {
             s.push(i);
         }
 
-        int ans[] = new int[n + 1];
+        int[] ans = new int[n + 1];
         for (int i = 0; i <= n; i++) {
             ans[i] = 0;
         }
@@ -96,7 +96,7 @@ public class MaximumMinimumWindow {
         return ans;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int[] arr = new int[] { 10, 20, 30, 50, 10, 70, 30 };
         int[] target = new int[] { 70, 30, 20, 10, 10, 10, 10 };
         int[] res = calculateMaxOfMin(arr, arr.length);

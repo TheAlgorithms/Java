@@ -40,7 +40,7 @@ public class RemoveDuplicateFromString {
 
         for (int i = 0; i < n; i++) {
             if (sb.toString().indexOf(s.charAt(i)) == -1) {
-                sb.append(String.valueOf(s.charAt(i)));
+                sb.append(s.charAt(i));
             }
         }
 
