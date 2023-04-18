@@ -1,12 +1,14 @@
 package com.thealgorithms.others;
 import java.util.Arrays;
 
-/** Line Sweep algorithm can be used to solve range problems by first sorting the list of ranges
- *  by the start value of the range in non-decreasing order and doing a "sweep" through the number
+/* Line Sweep algorithm can be used to solve range problems by first sorting the list of ranges
+ * by the start value of the range in non-decreasing order and doing a "sweep" through the number
  * line(x-axis) by incrementing the start point by 1 and decrementing the end point+1 by 1 on the
- * number line. https://en.wikipedia.org/wiki/Sweep_line_algorithm
+ * number line.
  * An overlapping range is defined as (StartA <= EndB) AND (EndA >= StartB)
- * https://en.wikipedia.org/wiki/De_Morgan%27s_laws
+ * References
+ * https://en.wikipedia.org/wiki/Sweep_line_algorithm
+ * https://en.wikipedia.org/wiki/De_Morgan%27s_laws>
  */
 public class LineSweep {
 
