@@ -1,6 +1,5 @@
 package com.thealgorithms.others;
 import static org.junit.jupiter.api.Assertions.*;
-import com.thealgorithms.others.LineSweep;
 import org.junit.jupiter.api.Test;
 public class LineSweepTest {
 
