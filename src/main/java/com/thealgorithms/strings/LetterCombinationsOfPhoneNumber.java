@@ -44,7 +44,7 @@ public class LetterCombinationsOfPhoneNumber {
 
     // Driver code
     public static void main(String[] args) {
-        int number[] = { 2, 3, 4 };
+        int[] number = { 2, 3, 4 };
         printWords(number);
     }
 }

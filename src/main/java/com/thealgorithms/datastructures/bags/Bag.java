@@ -59,9 +59,8 @@ public class Bag<Element> implements Iterable<Element> {
      * @return true if bag contains element, otherwise false
      */
     public boolean contains(Element element) {
-        Iterator<Element> iterator = this.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().equals(element)) {
+        for (Element value : this) {
+            if (value.equals(element)) {
                 return true;
             }
         }

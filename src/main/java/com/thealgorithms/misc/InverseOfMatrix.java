@@ -12,11 +12,11 @@ import java.util.Scanner;
  */
 public class InverseOfMatrix {
 
-    public static void main(String argv[]) {
+    public static void main(String[] argv) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the matrix size (Square matrix only): ");
         int n = input.nextInt();
-        double a[][] = new double[n][n];
+        double[][] a = new double[n][n];
         System.out.println("Enter the elements of matrix: ");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -24,7 +24,7 @@ public class InverseOfMatrix {
             }
         }
 
-        double d[][] = invert(a);
+        double[][] d = invert(a);
         System.out.println();
         System.out.println("The inverse is: ");
         for (int i = 0; i < n; ++i) {
@@ -36,11 +36,11 @@ public class InverseOfMatrix {
         input.close();
     }
 
-    public static double[][] invert(double a[][]) {
+    public static double[][] invert(double[][] a) {
         int n = a.length;
-        double x[][] = new double[n][n];
-        double b[][] = new double[n][n];
-        int index[] = new int[n];
+        double[][] x = new double[n][n];
+        double[][] b = new double[n][n];
+        int[] index = new int[n];
         for (int i = 0; i < n; ++i) {
             b[i][i] = 1;
         }
@@ -73,9 +73,9 @@ public class InverseOfMatrix {
 
     // Method to carry out the partial-pivoting Gaussian
     // elimination.  Here index[] stores pivoting order.
-    public static void gaussian(double a[][], int index[]) {
+    public static void gaussian(double[][] a, int[] index) {
         int n = index.length;
-        double c[] = new double[n];
+        double[] c = new double[n];
 
         // Initialize the index
         for (int i = 0; i < n; ++i) {

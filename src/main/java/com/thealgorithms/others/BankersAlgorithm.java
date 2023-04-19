@@ -26,11 +26,11 @@ public class BankersAlgorithm {
      * This method finds the need of each process
      */
     static void calculateNeed(
-        int needArray[][],
-        int maxArray[][],
-        int allocationArray[][],
-        int totalProcess,
-        int totalResources
+            int[][] needArray,
+            int[][] maxArray,
+            int[][] allocationArray,
+            int totalProcess,
+            int totalResources
     ) {
         for (int i = 0; i < totalProcess; i++) {
             for (int j = 0; j < totalResources; j++) {
@@ -55,12 +55,12 @@ public class BankersAlgorithm {
      * @return boolean if the system is in safe state or not
      */
     static boolean checkSafeSystem(
-        int processes[],
-        int availableArray[],
-        int maxArray[][],
-        int allocationArray[][],
-        int totalProcess,
-        int totalResources
+            int[] processes,
+            int[] availableArray,
+            int[][] maxArray,
+            int[][] allocationArray,
+            int totalProcess,
+            int totalResources
     ) {
         int[][] needArray = new int[totalProcess][totalResources];
 
@@ -144,14 +144,14 @@ public class BankersAlgorithm {
         System.out.println("Enter total number of resources");
         numberOfResources = sc.nextInt();
 
-        int processes[] = new int[numberOfProcesses];
+        int[] processes = new int[numberOfProcesses];
         for (int i = 0; i < numberOfProcesses; i++) {
             processes[i] = i;
         }
 
         System.out.println("--Enter the availability of--");
 
-        int availableArray[] = new int[numberOfResources];
+        int[] availableArray = new int[numberOfResources];
         for (int i = 0; i < numberOfResources; i++) {
             System.out.println("resource " + i + ": ");
             availableArray[i] = sc.nextInt();
@@ -159,7 +159,7 @@ public class BankersAlgorithm {
 
         System.out.println("--Enter the maximum matrix--");
 
-        int maxArray[][] = new int[numberOfProcesses][numberOfResources];
+        int[][] maxArray = new int[numberOfProcesses][numberOfResources];
         for (int i = 0; i < numberOfProcesses; i++) {
             System.out.println("For process " + i + ": ");
             for (int j = 0; j < numberOfResources; j++) {
@@ -172,7 +172,7 @@ public class BankersAlgorithm {
 
         System.out.println("--Enter the allocation matrix--");
 
-        int allocationArray[][] = new int[numberOfProcesses][numberOfResources];
+        int[][] allocationArray = new int[numberOfProcesses][numberOfResources];
         for (int i = 0; i < numberOfProcesses; i++) {
             System.out.println("For process " + i + ": ");
             for (int j = 0; j < numberOfResources; j++) {

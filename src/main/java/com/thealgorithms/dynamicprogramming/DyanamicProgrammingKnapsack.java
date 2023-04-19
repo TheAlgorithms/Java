@@ -5,9 +5,9 @@ package com.thealgorithms.dynamicprogramming;
 public class DyanamicProgrammingKnapsack {
     // Returns the maximum value that can
     // be put in a knapsack of capacity W
-    static int knapSack(int W, int wt[], int val[], int n) {
+    static int knapSack(int W, int[] wt, int[] val, int n) {
         int i, w;
-        int K[][] = new int[n + 1][W + 1];
+        int[][] K = new int[n + 1][W + 1];
 
         // Build table K[][] in bottom up manner
         for (i = 0; i <= n; i++) {
@@ -26,9 +26,9 @@ public class DyanamicProgrammingKnapsack {
     }
 
     // Driver code
-    public static void main(String args[]) {
-        int val[] = new int[] { 60, 100, 120 };
-        int wt[] = new int[] { 10, 20, 30 };
+    public static void main(String[] args) {
+        int[] val = new int[] { 60, 100, 120 };
+        int[] wt = new int[] { 10, 20, 30 };
         int W = 50;
         int n = val.length;
         System.out.println(knapSack(W, wt, val, n));

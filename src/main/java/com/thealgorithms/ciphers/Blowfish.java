@@ -11,7 +11,7 @@ package com.thealgorithms.ciphers;
 public class Blowfish {
 
     //Initializing substitution boxes
-    String S[][] = {
+    String[][] S = {
         {
             "d1310ba6",
             "98dfb5ac",
@@ -1047,7 +1047,7 @@ public class Blowfish {
     };
 
     //Initializing subkeys with digits of pi
-    String P[] = {
+    String[] P = {
         "243f6a88",
         "85a308d3",
         "13198a2e",
@@ -1146,7 +1146,7 @@ public class Blowfish {
 	 The outputs are added modulo 232 and XORed to produce the final 32-bit output 
 	*/
     private String f(String plainText) {
-        String a[] = new String[4];
+        String[] a = new String[4];
         String ans = "";
         for (int i = 0; i < 8; i += 2) {
             //column number for S-box is a 8-bit value

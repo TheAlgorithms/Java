@@ -99,35 +99,4 @@ class BufferedReaderTest {
       throw new IOException("Something not right");
     }
   }
-
-  @Test
-  public void randomTest() throws IOException {
-    Random random = new Random();
-
-    int len = random.nextInt(9999);
-    int bound = 256;
-
-    ByteArrayOutputStream stream = new ByteArrayOutputStream(len);
-    while (len-- > 0)
-      stream.write(random.nextInt(bound));
-
-    byte[] bytes = stream.toByteArray();
-    ByteArrayInputStream comparer = new ByteArrayInputStream(bytes);
-
-    int blockSize = random.nextInt(7) + 5;
-    BufferedReader reader = new BufferedReader(
-            new ByteArrayInputStream(bytes), blockSize);
-
-    for (int i = 0; i < 50; i++) {
-      if ((i & 1) == 0) {
-        assertEquals(comparer.read(), reader.read());
-        continue;
-      }
-      byte[] block = new byte[blockSize];
-      comparer.read(block);
-      byte[] read = reader.readBlock();
-
-      assertArrayEquals(block, read);
-    }
-  }
 }

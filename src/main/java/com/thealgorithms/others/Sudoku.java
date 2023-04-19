@@ -100,7 +100,7 @@ class Sudoku {
     }
 
     // Driver Code
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int[][] board = new int[][] {
             { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
             { 5, 2, 0, 0, 0, 0, 0, 0, 0 },

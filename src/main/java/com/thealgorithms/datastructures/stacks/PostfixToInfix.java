@@ -118,7 +118,7 @@ public class PostfixToInfix {
         return infix;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         assert getPostfixToInfix("ABC+/").equals("(A/(B+C))");
         assert getPostfixToInfix("AB+CD+*").equals("((A+B)*(C+D))");
         assert getPostfixToInfix("AB+C+D+").equals("(((A+B)+C)+D)");

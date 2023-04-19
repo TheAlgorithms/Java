@@ -117,7 +117,7 @@ public class ColorContrastRatio {
         4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         test();
     }
 }

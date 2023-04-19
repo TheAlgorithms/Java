@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 public class TwoSumProblem {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter the target sum ");
         int ts = scan.nextInt();
         System.out.print("Enter the number of elements in the array ");
         int n = scan.nextInt();
         System.out.println("Enter all your array elements:");
-        int arr[] = new int[n];
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = scan.nextInt();
         }
@@ -34,7 +34,7 @@ public class TwoSumProblem {
 
     public int[] BruteForce(int[] nums, int target) {
         //Brute Force Approach
-        int ans[] = new int[2];
+        int[] ans = new int[2];
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
@@ -51,7 +51,7 @@ public class TwoSumProblem {
 
     public int[] TwoPointer(int[] nums, int target) {
         // HashMap Approach
-        int ans[] = new int[2];
+        int[] ans = new int[2];
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             hm.put(i, nums[i]);
@@ -90,7 +90,7 @@ public class TwoSumProblem {
 
     public int[] HashMap(int[] nums, int target) {
         //Using Hashmaps
-        int ans[] = new int[2];
+        int[] ans = new int[2];
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             hm.put(nums[i], i);
