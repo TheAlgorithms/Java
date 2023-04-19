@@ -3,6 +3,15 @@ package com.thealgorithms.divideandconquer;
 public class MaximumSubarrayAlgorithm {
 
     /**
+     * This class implements Kadane's algorithm to find the maximum subarray of a given array of integers.
+     * Kadane's algorithm runs in O(n) time complexity.
+     *
+     * More information about the Maximum Subarray problem can be found at:
+     * https://en.wikipedia.org/wiki/Maximum_subarray_problem
+     */
+
+
+    /**
      * Finds the maximum subarray crossing the middle index.
      *
      * @param A the array to search for the maximum subarray
