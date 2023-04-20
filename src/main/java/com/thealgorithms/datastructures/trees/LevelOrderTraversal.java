@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class LevelOrderTraversal {
 
-    static List<List<Integer>> traverse(BinaryTree.Node root) {
+    public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
             return List.of();
         }
@@ -34,5 +34,19 @@ public class LevelOrderTraversal {
             result.add(level);
         }
         return result;
+    }
+
+    /* Print nodes at the given level */
+    public static void printGivenLevel(BinaryTree.Node root, int level) {
+        if (root == null) {
+            System.out.println("Root node must not be null! Exiting.");
+            return;
+        }
+        if (level == 1) {
+            System.out.print(root.data + " ");
+        } else if (level > 1) {
+            printGivenLevel(root.left, level - 1);
+            printGivenLevel(root.right, level - 1);
+        }
     }
 }
