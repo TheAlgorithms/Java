@@ -49,8 +49,7 @@ public class AVLSimple {
 
     private Node insert(Node node, int item) {
         if (node == null) {
-            Node add = new Node(item);
-            return add;
+            return new Node(item);
         }
         if (node.data > item) {
             node.left = insert(node.left, item);

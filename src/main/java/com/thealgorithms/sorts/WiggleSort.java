@@ -59,7 +59,7 @@ public class WiggleSort implements SortAlgorithm {
 
         median =
             select(
-                Arrays.<T>asList(sortThis),
+                Arrays.asList(sortThis),
                 (int) floor(sortThis.length / 2.0)
             );
 

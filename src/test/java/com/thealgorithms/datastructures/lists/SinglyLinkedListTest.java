@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.lists;
 
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -99,4 +100,64 @@ public class SinglyLinkedListTest {
         list.deleteNth(6); //Index 6 has value 7
         assertFalse(list.search(7));
     }
+    //Test to check whether the method reverseList() works fine
+    @Test
+    void reverseList(){
+
+        //Creating a new LinkedList of size:4
+        //The linkedlist will be 1->2->3->4->null
+        SinglyLinkedList list = createSampleList(4);
+          
+        //Reversing the LinkedList using reverseList() method and storing the head of the reversed linkedlist in a head node
+        //The reversed linkedlist will be 4->3->2->1->null
+        Node head=list.reverseList(list.getHead());
+
+        //Recording the Nodes after reversing the LinkedList
+        Node firstNode = head;              //4
+        Node secondNode = firstNode.next;   //3
+        Node thirdNode = secondNode.next;   //2
+        Node fourthNode = thirdNode.next;   //1
+        
+        //Checking whether the LinkedList is reversed or not by comparing the original list and reversed list nodes
+        assertEquals(1,fourthNode.value);
+        assertEquals(2,thirdNode.value);
+        assertEquals(3,secondNode.value);
+        assertEquals(4,firstNode.value);
+    }
+    
+    //Test to check whether implemented reverseList() method handles NullPointer Exception for TestCase where head==null
+    @Test
+    void reverseListNullPointer(){
+        //Creating a linkedlist with first node assigned to null
+        SinglyLinkedList list=new SinglyLinkedList();
+        Node first=list.getHead();
+        
+        //Reversing the linkedlist
+        Node head=list.reverseList(first);
+
+        //checking whether the method works fine if the input is null
+        assertEquals(head,first);
+    }
+
+    //Testing reverseList() method for a linkedlist of size: 20
+    @Test
+    void reverseListTest(){
+        //Creating a new linkedlist
+        SinglyLinkedList list = createSampleList(20);
+
+        //Reversing the LinkedList using reverseList() method and storing the head of the reversed linkedlist in a head node
+        Node head=list.reverseList(list.getHead());
+        
+        //Storing the head in a temp variable, so that we cannot loose the track of head
+        Node temp=head;
+
+        int i=20; //This is for the comparison of values of nodes of the reversed linkedlist
+        //Checking whether the reverseList() method performed its task
+        while(temp!=null && i>0){
+             assertEquals(i,temp.value);
+             temp=temp.next;
+             i--;
+        }
+    }
+
 }

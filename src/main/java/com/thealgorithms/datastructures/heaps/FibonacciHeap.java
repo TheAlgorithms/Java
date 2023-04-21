@@ -234,7 +234,6 @@ public class FibonacciHeap {
         if (!curr.isMarked()) { //stop the recursion
             curr.mark();
             if (!curr.isRoot()) this.markedHeapNoodesCounter++;
-            return;
         } else {
             if (curr.isRoot()) {
                 return;

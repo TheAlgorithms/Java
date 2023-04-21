@@ -58,7 +58,7 @@ public class AmicableNumber {
             countofRes +
             " Amicable_numbers.These are \n "
         );
-        System.out.println(res.toString());
+        System.out.println(res);
     }
 
     /**

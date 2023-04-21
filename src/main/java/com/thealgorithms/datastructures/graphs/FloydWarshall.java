@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FloydWarshall {
 
-    private int DistanceMatrix[][];
+    private int[][] DistanceMatrix;
     private int numberofvertices; // number of vertices in the graph
     public static final int INFINITY = 999;
 
@@ -15,7 +15,7 @@ public class FloydWarshall {
         this.numberofvertices = numberofvertices;
     }
 
-    public void floydwarshall(int AdjacencyMatrix[][]) { // calculates all the distances from source to destination vertex
+    public void floydwarshall(int[][] AdjacencyMatrix) { // calculates all the distances from source to destination vertex
         for (int source = 1; source <= numberofvertices; source++) {
             for (
                 int destination = 1;

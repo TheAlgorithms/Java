@@ -8,7 +8,7 @@ public class sortOrderAgnosticBinarySearchTest{
 
     @Test
     public void testAscending(){
-        int arr[] = {1,2,3,4,5};// for ascending order.
+        int[] arr = {1,2,3,4,5};// for ascending order.
         int target = 2;
         int ans=sortOrderAgnosticBinarySearch.find(arr, target);
         int excepted = 1;
@@ -17,7 +17,7 @@ public class sortOrderAgnosticBinarySearchTest{
 
     @Test
     public void testDescending(){
-        int arr[] = {5,4,3,2,1};// for descending order.
+        int[] arr = {5,4,3,2,1};// for descending order.
         int target = 2;
         int ans=sortOrderAgnosticBinarySearch.find(arr, target);
         int excepted = 3;

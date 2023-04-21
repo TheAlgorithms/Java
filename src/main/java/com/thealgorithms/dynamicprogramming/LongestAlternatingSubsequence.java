@@ -13,7 +13,7 @@ package com.thealgorithms.dynamicprogramming;
 public class LongestAlternatingSubsequence {
 
     /* Function to return longest alternating subsequence length*/
-    static int AlternatingLength(int arr[], int n) {
+    static int AlternatingLength(int[] arr, int n) {
         /*
 
 		las[i][0] = Length of the longest
@@ -28,7 +28,7 @@ public class LongestAlternatingSubsequence {
 			element 
 
          */
-        int las[][] = new int[n][2]; // las = LongestAlternatingSubsequence
+        int[][] las = new int[n][2]; // las = LongestAlternatingSubsequence
 
         for (int i = 0; i < n; i++) {
             las[i][0] = las[i][1] = 1;
@@ -61,7 +61,7 @@ public class LongestAlternatingSubsequence {
     }
 
     public static void main(String[] args) {
-        int arr[] = { 10, 22, 9, 33, 49, 50, 31, 60 };
+        int[] arr = { 10, 22, 9, 33, 49, 50, 31, 60 };
         int n = arr.length;
         System.out.println(
             "Length of Longest " +

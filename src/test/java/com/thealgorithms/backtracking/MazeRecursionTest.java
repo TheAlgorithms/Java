@@ -45,7 +45,7 @@ public class MazeRecursionTest {
         MazeRecursion.setWay(map, 1, 1);
         MazeRecursion.setWay2(map2, 1, 1);
 
-        int expectedMap[][] = new int[][] {
+        int[][] expectedMap = new int[][] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 2, 0, 0, 0, 0, 1 },
             { 1, 2, 2, 2, 0, 0, 1 },
@@ -56,7 +56,7 @@ public class MazeRecursionTest {
             { 1, 1, 1, 1, 1, 1, 1 },
         };
 
-        int expectedMap2[][] = new int[][] {
+        int[][] expectedMap2 = new int[][] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 2, 2, 2, 2, 2, 1 },
             { 1, 0, 0, 0, 0, 2, 1 },

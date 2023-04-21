@@ -8,7 +8,7 @@ public class InsertDeleteInArray {
         Scanner s = new Scanner(System.in); // Input statement
         System.out.println("Enter the size of the array");
         int size = s.nextInt();
-        int a[] = new int[size];
+        int[] a = new int[size];
         int i;
 
         // To enter the initial elements
@@ -25,7 +25,7 @@ public class InsertDeleteInArray {
         System.out.println("Enter the element to be inserted");
         int ins = s.nextInt();
         int size2 = size + 1;
-        int b[] = new int[size2];
+        int[] b = new int[size2];
         for (i = 0; i < size2; i++) {
             if (i <= insert_pos) {
                 b[i] = a[i];

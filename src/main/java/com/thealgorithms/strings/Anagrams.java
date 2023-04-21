@@ -50,8 +50,8 @@ public class Anagrams {
         if (s.length() != t.length()) {
             return false;
         } else {
-            char c[] = s.toCharArray();
-            char d[] = t.toCharArray();
+            char[] c = s.toCharArray();
+            char[] d = t.toCharArray();
             Arrays.sort(c);
             Arrays.sort(
                 d
@@ -65,8 +65,8 @@ public class Anagrams {
         if (a.length() != b.length()) {
             return false;
         } else {
-            int m[] = new int[26];
-            int n[] = new int[26];
+            int[] m = new int[26];
+            int[] n = new int[26];
             for (char c : a.toCharArray()) {
                 m[c - 'a']++;
             }
@@ -90,8 +90,8 @@ public class Anagrams {
         }
         // this is similar to approach number 2 but here the string is not converted to character array
         else {
-            int a[] = new int[26];
-            int b[] = new int[26];
+            int[] a = new int[26];
+            int[] b = new int[26];
             int k = s.length();
             for (int i = 0; i < k; i++) {
                 a[s.charAt(i) - 'a']++;

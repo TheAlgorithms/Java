@@ -47,7 +47,8 @@ public class HamiltonianCycle {
      * @returns true if path is found false otherwise
      */
     public boolean isPathFound(int vertex) {
-        if (this.graph[vertex][0] == 1 && this.pathCount == this.V) {
+        boolean isLastVertexConnectedToStart = this.graph[vertex][0] == 1 && this.pathCount == this.V;
+        if (isLastVertexConnectedToStart) {
             return true;
         }
 
