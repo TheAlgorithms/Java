@@ -1,3 +1,5 @@
+package com.thealgorithms.dynamicprogramming;
+
 //I created a sorting algorithm that uses dimunsional array to sort an array.
 //Worst case time complexity is O(n+d^2+g) || d == duplicated values and g == gaps.
 //Best case time complexity is O(n)
