@@ -100,6 +100,10 @@ public class HorspoolSearch {
         shiftValues = calcShiftValues(pattern); // build the bad symbol table
         comparisons = 0; // reset comparisons
 
+        if (pattern.length() == 0) { // return failure, if pattern empty
+            return -1;
+        }
+
         int textIndex = pattern.length() - 1; // align pattern with text start and get index of the last character
 
         // while pattern is not out of text bounds
