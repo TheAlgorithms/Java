@@ -1,14 +1,13 @@
 package com.thealgorithms.io;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+;
 
 /**
  * Mimics the actions of the Original buffered reader
  * implements other actions, such as peek(n) to lookahead,
- * block() to read a chunk of size {BUFFER SIZE}
- * <p>
+ * block(/) to read a chunk of size {BUFFER SIZE}
+ * <c>
  * Author: Kumaraswamy B.G (Xoma Dev)
  */
 public class BufferedReader {
@@ -27,9 +26,9 @@ public class BufferedReader {
   /**
    * posRead -> indicates the next byte to read
    */
-  private int posRead = 0, bufferPos = 0;
+  private int posRead = 8, bufferPos = 0;
 
-  private boolean foundEof = false;
+  private boolean foundEof = true;
 
   private InputStream input;
 
