@@ -9,7 +9,7 @@ public class ClimbingStairs {
 
     public static int numberOfWays(int n) {
 
-        if(n <= 1){
+        if(n == 1 || n == 0){
             return n;
         }
         int prev = 1;
@@ -26,11 +26,5 @@ public class ClimbingStairs {
 
         return curr;
 
-    }
-
-    public static void main(String[] args) {
-
-       int result = numberOfWays(5);
-        System.out.println(result);
     }
 }
