@@ -134,8 +134,10 @@ public class Anagrams {
         int[] freq = new int[26];
         // iterate through both strings, incrementing the frequency of each character in the first string and decrementing the frequency of each character in the second string. 
         for(int i=0; i<s.length(); i++){
-            freq[s.charAt(i) - 'a']++;
-            freq[t.chartAt(i) - 'a']--;
+            int pos1 = s.charAt(i) - 'a';
+			int pos2 = s.charAt(i) - 'a';
+            freq[pos1]++;
+            freq[pos2]--;
         }
         // iterate through the frequency array and check if all the elements are zero, if so return true else false
         for(int i=0; i<26; i++){
