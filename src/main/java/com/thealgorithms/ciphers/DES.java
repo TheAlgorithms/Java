@@ -1,7 +1,7 @@
 package com.thealgorithms.ciphers;
 
 /**
- * This class is build to demonstrate the application of the DES-algorithm on a
+ * This class is build to demonstrate the application of the DES-algorithm (https://en.wikipedia.org/wiki/Data_Encryption_Standard) on a
  * plain English message. The supplied key must be in form of a 64 bit binary String.
  */
 public class DES {
