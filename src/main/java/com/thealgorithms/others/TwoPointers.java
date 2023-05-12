@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * The two pointer technique is a useful tool to utilize when searching for
@@ -20,6 +21,14 @@ class TwoPointers {
      * @return {@code true} if there exists a pair of elements, {@code false}
      * otherwise.
      */
+
+    public static void main(String[] args) {
+
+        int [] arr ={1,5,31,56,2};
+        int key = 3;
+
+        System.out.println(isPairedSum(arr,key));
+    }
     public static boolean isPairedSum(int[] arr, int key) {
         /* array sorting is necessary for this algorithm to function correctly */
         Arrays.sort(arr);

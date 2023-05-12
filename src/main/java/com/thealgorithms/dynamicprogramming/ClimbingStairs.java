@@ -8,6 +8,7 @@ package com.thealgorithms.dynamicprogramming;
 public class ClimbingStairs {
 
     public static void main(String[] args) {
+
         System.out.println(numberOfWays(5));
     }
 
