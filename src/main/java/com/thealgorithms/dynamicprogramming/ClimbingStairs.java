@@ -7,6 +7,10 @@ package com.thealgorithms.dynamicprogramming;
 */
 public class ClimbingStairs {
 
+    public static void main(String[] args) {
+        System.out.println(numberOfWays(5));
+    }
+
     public static int numberOfWays(int n) {
 
         if(n == 1 || n == 0){
