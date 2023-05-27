@@ -33,10 +33,10 @@ public class GCD {
     }
 
     /**
-     * get greatest common divisor in array
+     * @brief computes gcd of an array of numbers
      *
-     * @param numbers contains numbers
-     * @return gcd
+     * @param numbers the input array
+     * @return gcd of all of the numbers in the input array
      */
     public static int gcd(int[] numbers) {
         int result = 0;
