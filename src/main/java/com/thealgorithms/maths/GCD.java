@@ -33,15 +33,15 @@ public class GCD {
     }
 
     /**
-     * get greatest common divisor in array
+     * @brief computes gcd of an array of numbers
      *
-     * @param number contains number
-     * @return gcd
+     * @param numbers the input array
+     * @return gcd of all of the numbers in the input array
      */
-    public static int gcd(int[] number) {
-        int result = number[0];
-        for (int i = 1; i < number.length; i++) { // call gcd function (input two value)
-            result = gcd(result, number[i]);
+    public static int gcd(int[] numbers) {
+        int result = 0;
+        for (final var number : numbers) {
+            result = gcd(result, number);
         }
 
         return result;
