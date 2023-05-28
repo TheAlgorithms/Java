@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class OctalToBinaryConverterTest {
+public class OctalToBinaryTest {
     @Test
     public void testConvertOctalToBinary() {
         assertEquals(101, OctalToBinary.convertOctalToBinary(5));
