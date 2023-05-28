@@ -2,7 +2,7 @@ package com.thealgorithms.conversions;
 import java.util.Scanner;
 
 /**
- * Converts any Binary Number to a Hexadecimal Number
+ * Converts any Octal Number to a Binary Number
  *
  * @author Bama Charan Chhandogi
  */
