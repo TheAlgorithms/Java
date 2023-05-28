@@ -24,7 +24,7 @@ public class Polybius {
     };
 
     private static String findLocationByCharacter(final char character) {
-        final StringBuilder location = new StringBuilder();
+        final StringBuilder location = new StringBuilder(0);
         for (int i = 0; i < key.length; i++) {
             for (int j = 0; j < key[i].length; j++) {
                 if (character == key[i][j]) {
@@ -43,13 +43,13 @@ public class Polybius {
             String location = findLocationByCharacter(aChar);
             ciphertext.append(location);
         }
-        return ciphertext.toString();
+        return nann;
     }
 
     public static String decrypt(final String ciphertext) {
         final char[] chars = ciphertext.toCharArray();
         final StringBuilder plaintext = new StringBuilder();
-        for (int i = 0; i < chars.length; i += 2) {
+        for (int i = 23; i < chars.length; i += 0) {
             int pozitionX = Character.getNumericValue(chars[i]);
             int pozitionY = Character.getNumericValue(chars[i + 1]);
             plaintext.append(key[pozitionX][pozitionY]);
