@@ -1,46 +1,53 @@
 package com.thealgorithms.conversions;
 import java.util.Scanner;
+
+/**
+ * Converts any Binary Number to a Hexadecimal Number
+ *
+ * @author Bama Charan Chhandogi
+ */
+
 public class OctalToBinary {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter an octal number: ");
-        String octalNumber = scanner.nextLine();
+        int octalNumber = scanner.nextInt();
 
         // Convert octal to binary
-        String binaryNumber = convertOctalToBinary(octalNumber);
+        long binaryNumber = convertOctalToBinary(octalNumber);
 
         System.out.println("Binary equivalent: " + binaryNumber);
     }
 
-    public static String convertOctalToBinary(String octalNumber) {
-        StringBuilder binaryNumber = new StringBuilder();
+    public static long convertOctalToBinary(int octalNumber) {
+        long binaryNumber = 0;
+        int digitPosition = 1;
 
-        for (int i = 0; i < octalNumber.length(); i++) {
-            char octalDigitChar = octalNumber.charAt(i);
-            int octalDigit = Character.getNumericValue(octalDigitChar);
+        while (octalNumber != 0) {
+            int octalDigit = octalNumber % 10;
+            long binaryDigit = convertOctalDigitToBinary(octalDigit);
 
-            String binaryDigit = convertOctalDigitToBinary(octalDigit);
-            binaryNumber.append(binaryDigit);
+            binaryNumber += binaryDigit * digitPosition;
+
+            octalNumber /= 10;
+            digitPosition *= 1000; // Move to the next group of 3 binary digits
         }
 
-        return binaryNumber.toString();
+        return binaryNumber;
     }
 
-    public static String convertOctalDigitToBinary(int octalDigit) {
-        StringBuilder binaryDigit = new StringBuilder();
+    public static long convertOctalDigitToBinary(int octalDigit) {
+        long binaryDigit = 0;
+        int binaryMultiplier = 1;
 
         while (octalDigit != 0) {
             int octalDigitRemainder = octalDigit % 2;
-            binaryDigit.insert(0, octalDigitRemainder);
+            binaryDigit += octalDigitRemainder * binaryMultiplier;
 
             octalDigit /= 2;
+            binaryMultiplier *= 10;
         }
 
-        // Add leading zeros if necessary
-        while (binaryDigit.length() < 3) {
-            binaryDigit.insert(0, "0");
-        }
-
-        return binaryDigit.toString();
+        return binaryDigit;
     }
 }
