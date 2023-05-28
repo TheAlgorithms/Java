@@ -13,7 +13,7 @@ package com.thealgorithms.searches;
 
  public class OrderAgnosticBinarySearch {
 
-     static int BinSearchAlgo(int arr[], int start, int end, int target) {
+     static int BinSearchAlgo(int[] arr, int start, int end, int target) {
 
          // Checking whether the given array is ascending order
          boolean AscOrd = arr[start] < arr[end];

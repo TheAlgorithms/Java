@@ -8,11 +8,11 @@ class dijkstras {
 
     int k = 9;
 
-    int minDist(int dist[], Boolean Set[]) {
+    int minDist(int[] dist, Boolean[] Set) {
         int min = Integer.MAX_VALUE, min_index = -1;
 
         for (int r = 0; r < k; r++) {
-            if (Set[r] == false && dist[r] <= min) {
+            if (!Set[r] && dist[r] <= min) {
                 min = dist[r];
                 min_index = r;
             }
@@ -21,16 +21,16 @@ class dijkstras {
         return min_index;
     }
 
-    void print(int dist[]) {
+    void print(int[] dist) {
         System.out.println("Vertex \t\t Distance");
         for (int i = 0; i < k; i++) {
             System.out.println(i + " \t " + dist[i]);
         }
     }
 
-    void dijkstra(int graph[][], int src) {
-        int dist[] = new int[k];
-        Boolean Set[] = new Boolean[k];
+    void dijkstra(int[][] graph, int src) {
+        int[] dist = new int[k];
+        Boolean[] Set = new Boolean[k];
 
         for (int i = 0; i < k; i++) {
             dist[i] = Integer.MAX_VALUE;
@@ -60,7 +60,7 @@ class dijkstras {
     }
 
     public static void main(String[] args) {
-        int graph[][] = new int[][] {
+        int[][] graph = new int[][] {
             { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
             { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
             { 0, 8, 0, 7, 0, 4, 0, 0, 2 },

@@ -12,12 +12,12 @@ class PrimMST {
 
     // A utility function to find the vertex with minimum key
     // value, from the set of vertices not yet included in MST
-    int minKey(int key[], Boolean mstSet[]) {
+    int minKey(int[] key, Boolean[] mstSet) {
         // Initialize min value
         int min = Integer.MAX_VALUE, min_index = -1;
 
         for (int v = 0; v < V; v++) {
-            if (mstSet[v] == false && key[v] < min) {
+            if (!mstSet[v] && key[v] < min) {
                 min = key[v];
                 min_index = v;
             }
@@ -28,7 +28,7 @@ class PrimMST {
 
     // A utility function to print the constructed MST stored in
     // parent[]
-    void printMST(int parent[], int n, int graph[][]) {
+    void printMST(int[] parent, int n, int[][] graph) {
         System.out.println("Edge   Weight");
         for (int i = 1; i < V; i++) {
             System.out.println(
@@ -39,15 +39,15 @@ class PrimMST {
 
     // Function to construct and print MST for a graph represented
     //  using adjacency matrix representation
-    void primMST(int graph[][]) {
+    void primMST(int[][] graph) {
         // Array to store constructed MST
-        int parent[] = new int[V];
+        int[] parent = new int[V];
 
         // Key values used to pick minimum weight edge in cut
-        int key[] = new int[V];
+        int[] key = new int[V];
 
         // To represent set of vertices not yet included in MST
-        Boolean mstSet[] = new Boolean[V];
+        Boolean[] mstSet = new Boolean[V];
 
         // Initialize all keys as INFINITE
         for (int i = 0; i < V; i++) {
@@ -80,7 +80,7 @@ class PrimMST {
             {
                 if (
                     graph[u][v] != 0 &&
-                    mstSet[v] == false &&
+                            !mstSet[v] &&
                     graph[u][v] < key[v]
                 ) {
                     parent[v] = u;
@@ -103,7 +103,7 @@ class PrimMST {
     (3)-------(4)
          9          */
         PrimMST t = new PrimMST();
-        int graph[][] = new int[][] {
+        int[][] graph = new int[][] {
             { 0, 2, 0, 6, 0 },
             { 2, 0, 3, 8, 5 },
             { 0, 3, 0, 0, 7 },

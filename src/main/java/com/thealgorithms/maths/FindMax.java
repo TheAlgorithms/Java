@@ -24,16 +24,20 @@ public class FindMax {
     }
 
     /**
-     * find max of array
+     * @brief finds the maximum value stored in the input array
      *
-     * @param array the array contains element
-     * @return max value of given array
+     * @param array the input array
+     * @exception IllegalArgumentException input array is empty
+     * @return the maximum value stored in the input array
      */
     public static int findMax(int[] array) {
-        int max = array[0];
-        for (int i = 1; i < array.length; ++i) {
-            if (array[i] > max) {
-                max = array[i];
+        if (array.length == 0) {
+            throw new IllegalArgumentException("array must be non-empty.");
+        }
+        int max = Integer.MIN_VALUE;
+        for (final var value : array) {
+            if (value > max) {
+                max = value;
             }
         }
         return max;

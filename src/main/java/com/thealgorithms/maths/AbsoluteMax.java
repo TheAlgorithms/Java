@@ -1,30 +1,24 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-
 public class AbsoluteMax {
 
     /**
-     * Compares the numbers given as arguments to get the absolute max value.
+     * Finds the absolute maximum value among the given numbers.
      *
-     * @param numbers The numbers to compare
-     * @return The absolute max value
+     * @param numbers The numbers to compare.
+     * @return The absolute maximum value.
+     * @throws IllegalArgumentException If the input array is empty or null.
      */
     public static int getMaxValue(int... numbers) {
-        if (numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty");
+        if (numbers == null || numbers.length == 0) {
+            throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
-
-        var absMaxWrapper = new Object() {
-            int value = numbers[0];
-        };
-
-        Arrays
-            .stream(numbers)
-            .skip(1)
-            .filter(number -> Math.abs(number) > Math.abs(absMaxWrapper.value))
-            .forEach(number -> absMaxWrapper.value = number);
-
-        return absMaxWrapper.value;
+        int absMax = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            if (Math.abs(numbers[i]) > Math.abs(absMax)) {
+                absMax = numbers[i];
+            }
+        }
+        return absMax;
     }
 }

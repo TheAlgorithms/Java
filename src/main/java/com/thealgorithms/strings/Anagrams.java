@@ -43,6 +43,8 @@ public class Anagrams {
          * Auxiliary Space Complexity : O(1)
          * 4th approach Time Complexity : O(n)
          * Auxiliary Space Complexity : O(n)
+         * 5th approach Time Complexity: O(n)
+         * Auxiliary Space Complexity: O(1)
          */
     }
 
@@ -50,8 +52,8 @@ public class Anagrams {
         if (s.length() != t.length()) {
             return false;
         } else {
-            char c[] = s.toCharArray();
-            char d[] = t.toCharArray();
+            char[] c = s.toCharArray();
+            char[] d = t.toCharArray();
             Arrays.sort(c);
             Arrays.sort(
                 d
@@ -65,8 +67,8 @@ public class Anagrams {
         if (a.length() != b.length()) {
             return false;
         } else {
-            int m[] = new int[26];
-            int n[] = new int[26];
+            int[] m = new int[26];
+            int[] n = new int[26];
             for (char c : a.toCharArray()) {
                 m[c - 'a']++;
             }
@@ -90,8 +92,8 @@ public class Anagrams {
         }
         // this is similar to approach number 2 but here the string is not converted to character array
         else {
-            int a[] = new int[26];
-            int b[] = new int[26];
+            int[] a = new int[26];
+            int[] b = new int[26];
             int k = s.length();
             for (int i = 0; i < k; i++) {
                 a[s.charAt(i) - 'a']++;
@@ -121,5 +123,28 @@ public class Anagrams {
             // It checks for equal frequencies by comparing key-value pairs of two hashmaps
             return nm.equals(kk);
         }
+    }
+
+    boolean approach5(String s, String t) {
+        if(s.length() != t.length()){
+            return false;
+        }
+        // Approach is different from above 4 aproaches. 
+        // Here we initialize an array of size 26 where each element corresponds to the frequency of a character. 
+        int[] freq = new int[26];
+        // iterate through both strings, incrementing the frequency of each character in the first string and decrementing the frequency of each character in the second string. 
+        for(int i=0; i<s.length(); i++){
+            int pos1 = s.charAt(i) - 'a';
+			int pos2 = s.charAt(i) - 'a';
+            freq[pos1]++;
+            freq[pos2]--;
+        }
+        // iterate through the frequency array and check if all the elements are zero, if so return true else false
+        for(int i=0; i<26; i++){
+            if(freq[i] != 0){
+                return false;
+            }
+        }
+        return true;
     }
 }

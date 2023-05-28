@@ -22,7 +22,7 @@ public class SubsetSum {
      * @param sum target sum of subset.
      * @return {@code true} if subset exists, otherwise {@code false}.
      */
-    private static boolean subsetSum(int[] arr, int sum) {
+    public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
         boolean[][] isSum = new boolean[n + 2][sum + 1];
 

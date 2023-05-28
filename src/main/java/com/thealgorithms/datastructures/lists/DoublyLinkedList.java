@@ -133,7 +133,7 @@ class Link {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         DoublyLinkedList myList = new DoublyLinkedList();
         LinkOperations linkOperations = new LinkOperations();
         linkOperations.insertHead(13, myList);

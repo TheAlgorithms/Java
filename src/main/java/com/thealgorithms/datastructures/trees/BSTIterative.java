@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
+import com.thealgorithms.datastructures.trees.BinaryTree.Node;
+
 /**
  *
  *
@@ -13,7 +15,6 @@ package com.thealgorithms.datastructures.trees;
  *
  * @author [Lakhan Nad](https://github.com/Lakhan-Nad)
  */
-import java.util.Stack;
 
 public class BSTIterative {
 
@@ -29,30 +30,8 @@ public class BSTIterative {
         root = null;
     }
 
-    /**
-     * main function for tests
-     */
-    public static void main(String[] args) {
-        BSTIterative tree = new BSTIterative();
-        tree.add(3);
-        tree.add(2);
-        tree.add(9);
-        assert !tree.find(4) : "4 is not yet present in BST";
-        assert tree.find(2) : "2 should be present in BST";
-        tree.remove(2);
-        assert !tree.find(2) : "2 was just deleted from BST";
-        tree.remove(1);
-        assert !tree.find(
-            1
-        ) : "Since 1 was not present so find deleting would do no change";
-        tree.add(30);
-        tree.add(40);
-        assert tree.find(40) : "40 was inserted but not found";
-        /*
-       Will print following order
-       3 9 30 40
-         */
-        tree.inorder();
+    public Node getRoot() {
+        return root;
     }
 
     /**
@@ -185,86 +164,6 @@ public class BSTIterative {
     }
 
     /**
-     * A method for inorder traversal of BST.
-     */
-    public void inorder() {
-        if (this.root == null) {
-            System.out.println("This BST is empty.");
-            return;
-        }
-        System.out.println("Inorder traversal of this tree is:");
-        Stack<Node> st = new Stack<Node>();
-        Node cur = this.root;
-        while (cur != null || !st.empty()) {
-            while (cur != null) {
-                st.push(cur);
-                cur = cur.left;
-            }
-            cur = st.pop();
-            System.out.print(cur.data + " ");
-            cur = cur.right;
-        }
-        System.out.println(); // for next line
-    }
-
-    /**
-     * A method used to print postorder traversal of BST.
-     */
-    public void postorder() {
-        if (this.root == null) {
-            System.out.println("This BST is empty.");
-            return;
-        }
-        System.out.println("Postorder traversal of this tree is:");
-        Stack<Node> st = new Stack<Node>();
-        Node cur = this.root, temp2;
-        while (cur != null || !st.empty()) {
-            if (cur != null) {
-                st.push(cur);
-                cur = cur.left;
-            } else {
-                temp2 = st.peek();
-                if (temp2.right != null) {
-                    cur = temp2.right;
-                } else {
-                    st.pop();
-                    while (!st.empty() && st.peek().right == temp2) {
-                        System.out.print(temp2.data + " ");
-                        temp2 = st.pop();
-                    }
-                    System.out.print(temp2.data + " ");
-                }
-            }
-        }
-        System.out.println(); // for next line
-    }
-
-    /**
-     * Method used to display preorder traversal of BST.
-     */
-    public void preorder() {
-        if (this.root == null) {
-            System.out.println("This BST is empty.");
-            return;
-        }
-        System.out.println("Preorder traversal of this tree is:");
-        Stack<Node> st = new Stack<Node>();
-        st.push(this.root);
-        Node temp;
-        while (!st.empty()) {
-            temp = st.pop();
-            System.out.print(temp.data + " ");
-            if (temp.right != null) {
-                st.push(temp.right);
-            }
-            if (temp.left != null) {
-                st.push(temp.left);
-            }
-        }
-        System.out.println(); // for next line
-    }
-
-    /**
      * A method to check if given data exists in out Binary Search Tree.
      *
      * @param data the value that needs to be searched for
@@ -288,24 +187,5 @@ public class BSTIterative {
         }
         System.out.println(data + " not found.");
         return false;
-    }
-
-    /**
-     * The Node class used for building binary search tree
-     */
-    private static class Node {
-
-        int data;
-        Node left;
-        Node right;
-
-        /**
-         * Constructor with data as parameter
-         */
-        Node(int d) {
-            data = d;
-            left = null;
-            right = null;
-        }
     }
 }

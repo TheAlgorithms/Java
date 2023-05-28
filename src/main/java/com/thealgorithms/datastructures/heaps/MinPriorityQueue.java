@@ -51,18 +51,12 @@ public class MinPriorityQueue {
 
     // returns boolean value whether the heap is empty or not
     public boolean isEmpty() {
-        if (0 == this.size) {
-            return true;
-        }
-        return false;
+        return 0 == this.size;
     }
 
     // returns boolean value whether the heap is full or not
     public boolean isFull() {
-        if (this.size == this.capacity) {
-            return true;
-        }
-        return false;
+        return this.size == this.capacity;
     }
 
     // prints the heap

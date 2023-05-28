@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.trees;
 public class FenwickTree {
 
     private int n;
-    private int fen_t[];
+    private int[] fen_t;
 
     /* Constructor which takes the size of the array as a parameter */
     public FenwickTree(int n) {

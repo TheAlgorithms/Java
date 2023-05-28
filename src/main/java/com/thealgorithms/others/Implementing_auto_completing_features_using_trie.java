@@ -10,7 +10,7 @@ class Trieac {
     // Trie node
     static class TrieNode {
 
-        TrieNode children[] = new TrieNode[ALPHABET_SIZE];
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
 
         // isWordEnd is true if the node represents
         // end of a word
@@ -120,7 +120,7 @@ class Trieac {
         }
 
         // If prefix is present as a word.
-        boolean isWord = (pCrawl.isWordEnd == true);
+        boolean isWord = (pCrawl.isWordEnd);
 
         // If prefix is last node of tree (has no
         // children)

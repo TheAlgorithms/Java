@@ -12,5 +12,5 @@ public interface MatrixSearchAlgorithm {
      * @param <T> Comparable type
      * @return array containing the first found coordinates of the element
      */
-    <T extends Comparable<T>> int[] find(T matrix[][], T key);
+    <T extends Comparable<T>> int[] find(T[][] matrix, T key);
 }
