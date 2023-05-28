@@ -24,16 +24,20 @@ public class FindMin {
     }
 
     /**
-     * Find the minimum number of an array of numbers.
+     * @brief finds the minimum value stored in the input array
      *
-     * @param array the array contains element
-     * @return min value
+     * @param array the input array
+     * @exception IllegalArgumentException input array is empty
+     * @return the mimum value stored in the input array
      */
     public static int findMin(int[] array) {
-        int min = array[0];
-        for (int i = 1; i < array.length; ++i) {
-            if (array[i] < min) {
-                min = array[i];
+        if (array.length == 0) {
+            throw new IllegalArgumentException("array must be non-empty.");
+        }
+        int min = Integer.MAX_VALUE;
+        for (final var value : array) {
+            if (value < min) {
+                min = value;
             }
         }
         return min;
