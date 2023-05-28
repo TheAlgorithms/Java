@@ -8,17 +8,6 @@ import java.util.Scanner;
  */
 
 public class OctalToBinary {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter an octal number: ");
-        int octalNumber = scanner.nextInt();
-
-        // Convert octal to binary
-        long binaryNumber = convertOctalToBinary(octalNumber);
-
-        System.out.println("Binary equivalent: " + binaryNumber);
-    }
-
     public static long convertOctalToBinary(int octalNumber) {
         long binaryNumber = 0;
         int digitPosition = 1;
