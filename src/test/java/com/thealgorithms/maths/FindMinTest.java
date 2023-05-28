@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,5 +28,13 @@ public class FindMinTest {
     @Test
     public void test3() {
         assertEquals(0, FindMin.findMin(new int[] { 10, 10, 0, 10 }));
+    }
+
+    @Test
+    public void testFindMinThrowsExceptionForEmptyInput() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> FindMin.findMin(new int[]{})
+        );
     }
 }

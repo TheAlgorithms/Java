@@ -30,6 +30,9 @@ public class FindMin {
      * @return min value
      */
     public static int findMin(int[] array) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("array must be non-empty.");
+        }
         int min = array[0];
         for (int i = 1; i < array.length; ++i) {
             if (array[i] < min) {
