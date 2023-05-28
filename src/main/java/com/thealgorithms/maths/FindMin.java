@@ -33,10 +33,10 @@ public class FindMin {
         if (array.length == 0) {
             throw new IllegalArgumentException("array must be non-empty.");
         }
-        int min = array[0];
-        for (int i = 1; i < array.length; ++i) {
-            if (array[i] < min) {
-                min = array[i];
+        int min = Integer.MAX_VALUE;
+        for (final var value : array) {
+            if (value < min) {
+                min = value;
             }
         }
         return min;
