@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,14 @@ public class FindMaxTest {
         assertEquals(
             10,
             FindMax.findMax(new int[] { 10, 0 })
+        );
+    }
+
+    @Test
+    public void testFindMaxThrowsExceptionForEmptyInput() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> FindMax.findMax(new int[]{})
         );
     }
 }
