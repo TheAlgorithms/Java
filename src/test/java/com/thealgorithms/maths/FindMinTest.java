@@ -23,4 +23,9 @@ public class FindMinTest {
     public void test2() {
         assertEquals(0, FindMin.findMin(new int[] { 0, 192, 384, 576 }));
     }
+
+    @Test
+    public void test3() {
+        assertEquals(0, FindMin.findMin(new int[] { 10, 10, 0, 10 }));
+    }
 }
