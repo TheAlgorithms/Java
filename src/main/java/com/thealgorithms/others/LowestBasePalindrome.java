@@ -7,6 +7,9 @@ import java.util.ArrayList;
      cf. https://oeis.org/A016026
  */
 public class LowestBasePalindrome {
+    private LowestBasePalindrome() {
+    }
+
     private static void checkBase(int base) {
         if (base <= 1) {
             throw new IllegalArgumentException("base must be greater than 1.");
