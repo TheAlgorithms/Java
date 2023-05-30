@@ -1,30 +1,31 @@
 package com.thealgorithms.maths;
 
-import java.lang.IllegalStateException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.lang.IllegalArgumentException;
 
-public class ReverseNumber {
+/**
+ * @brief utility class reversing numbers
+ */
+final public class ReverseNumber {
+    private ReverseNumber() {
+    }
 
-    public static void main(String[] args) {
-        int number;
-        int reverse = 0;
-
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter a number:");
-            number = sc.nextInt();
-        } catch (NoSuchElementException | IllegalStateException e) {
-            System.out.println("ERROR: Invalid input");
-            return;
+    /**
+     * @brief reverses the input number
+     * @param number the input number
+     * @exception IllegalArgumentException number is negative
+     * @return the number created by reversing the order of digits of the input number
+     */
+    public static int reverseNumber(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("number must be nonnegative.");
         }
 
-        while (number != 0) {
-            int remainder = number % 10;
-
-            reverse = reverse * 10 + remainder;
-            number = number / 10;
+        int result = 0;
+        while (number > 0) {
+            result *= 10;
+            result += number % 10;
+            number /= 10;
         }
-
-        System.out.println("The reverse of the given number is: " + reverse);
+        return result;
     }
 }
