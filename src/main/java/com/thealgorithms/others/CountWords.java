@@ -5,7 +5,10 @@ import java.util.Scanner;
 /**
  * @author Marcus
  */
-public class CountWords {
+final public class CountWords {
+    private CountWords() {
+    }
+
     /**
      * @brief counts the number of words in the input string
      * @param s the input string
