@@ -29,6 +29,16 @@ public class CountWords {
         return s.trim().split("[\\s]+").length;
     }
 
+    private static String removeSpecialCharacters(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (Character.isLetter(c) || Character.isDigit(c) || Character.isWhitespace(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
     /**
      * counts the number of words in a sentence but ignores all potential
      * non-alphanumeric characters that do not represent a word. runs in O(n)
@@ -41,13 +51,7 @@ public class CountWords {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            if (Character.isLetter(c) || Character.isDigit(c) || Character.isWhitespace(c)) {
-                sb.append(c);
-            }
-        }
-        s = sb.toString();
+        s = removeSpecialCharacters(s);
         return s.trim().split("[\\s]+").length;
     }
 }
