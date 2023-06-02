@@ -3,30 +3,32 @@ package com.thealgorithms.others;
 import java.util.Scanner;
 
 /**
- * You enter a string into this program, and it will return how many words were
- * in that particular string
- *
  * @author Marcus
  */
-public class CountWords {
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your text: ");
-        String str = input.nextLine();
-
-        System.out.println("Your text has " + wordCount(str) + " word(s)");
-        System.out.println(
-            "Your text has " + secondaryWordCount(str) + " word(s)"
-        );
-        input.close();
+final public class CountWords {
+    private CountWords() {
     }
 
-    private static int wordCount(String s) {
+    /**
+     * @brief counts the number of words in the input string
+     * @param s the input string
+     * @return the number of words in the input string
+     */
+    public static int wordCount(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
         return s.trim().split("[\\s]+").length;
+    }
+
+    private static String removeSpecialCharacters(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (Character.isLetterOrDigit(c) || Character.isWhitespace(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 
     /**
@@ -37,17 +39,10 @@ public class CountWords {
      * @param s String: sentence with word(s)
      * @return int: number of words
      */
-    private static int secondaryWordCount(String s) {
-        if (s == null || s.isEmpty()) {
+    public static int secondaryWordCount(String s) {
+        if (s == null) {
             return 0;
         }
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            if (Character.isLetter(c) || Character.isDigit(c)) {
-                sb.append(c);
-            }
-        }
-        s = sb.toString();
-        return s.trim().split("[\\s]+").length;
+        return wordCount(removeSpecialCharacters(s));
     }
 }
