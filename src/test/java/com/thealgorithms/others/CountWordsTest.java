@@ -14,6 +14,7 @@ class CountWordsTest {
         testCases.put(null, 0);
         testCases.put("aaaa bbb cccc", 3);
         testCases.put("note  extra     spaces   here", 4);
+        testCases.put(" a  b c d  e    ", 5);
 
         for (final var tc : testCases.entrySet()) {
             assertEquals(CountWords.wordCount(tc.getKey()), tc.getValue());

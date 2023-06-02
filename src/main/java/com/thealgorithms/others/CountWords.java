@@ -48,10 +48,9 @@ public class CountWords {
      * @return int: number of words
      */
     public static int secondaryWordCount(String s) {
-        if (s == null || s.isEmpty()) {
+        if (s == null) {
             return 0;
         }
-        s = removeSpecialCharacters(s);
-        return s.trim().split("[\\s]+").length;
+        return wordCount(removeSpecialCharacters(s));
     }
 }
