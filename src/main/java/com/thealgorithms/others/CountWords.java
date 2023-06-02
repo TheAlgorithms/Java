@@ -22,7 +22,7 @@ public class CountWords {
         input.close();
     }
 
-    private static int wordCount(String s) {
+    public static int wordCount(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
@@ -37,13 +37,13 @@ public class CountWords {
      * @param s String: sentence with word(s)
      * @return int: number of words
      */
-    private static int secondaryWordCount(String s) {
+    public static int secondaryWordCount(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
-            if (Character.isLetter(c) || Character.isDigit(c)) {
+            if (Character.isLetter(c) || Character.isDigit(c) || Character.isWhitespace(c)) {
                 sb.append(c);
             }
         }
