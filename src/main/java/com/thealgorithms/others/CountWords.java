@@ -32,7 +32,7 @@ public class CountWords {
     private static String removeSpecialCharacters(String s) {
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
-            if (Character.isLetter(c) || Character.isDigit(c) || Character.isWhitespace(c)) {
+            if (Character.isLetterOrDigit(c) || Character.isWhitespace(c)) {
                 sb.append(c);
             }
         }
