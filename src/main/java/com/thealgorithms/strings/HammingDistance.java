@@ -1,7 +1,7 @@
 package com.thealgorithms.strings;
 
-/* In information theory, the Hamming distance between two strings of equal length 
-is the number of positions at which the corresponding symbols are different. 
+/* In information theory, the Hamming distance between two strings of equal length
+is the number of positions at which the corresponding symbols are different.
 https://en.wikipedia.org/wiki/Hamming_distance
 */
 public class HammingDistance {
@@ -14,8 +14,7 @@ public class HammingDistance {
      * @return {@code int} hamming distance
      * @throws Exception
      */
-    public static int calculateHammingDistance(String s1, String s2)
-        throws Exception {
+    public static int calculateHammingDistance(String s1, String s2) throws Exception {
         if (s1.length() != s2.length()) {
             throw new Exception("String lengths must be equal");
         }

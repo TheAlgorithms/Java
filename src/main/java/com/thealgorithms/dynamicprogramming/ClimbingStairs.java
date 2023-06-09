@@ -9,7 +9,7 @@ public class ClimbingStairs {
 
     public static int numberOfWays(int n) {
 
-        if(n == 1 || n == 0){
+        if (n == 1 || n == 0) {
             return n;
         }
         int prev = 1;
@@ -17,14 +17,13 @@ public class ClimbingStairs {
 
         int next;
 
-        for(int i = 2; i <= n; i++){
-            next = curr+prev;
+        for (int i = 2; i <= n; i++) {
+            next = curr + prev;
             prev = curr;
 
             curr = next;
         }
 
         return curr;
-
     }
 }

@@ -31,10 +31,7 @@ public class LongestValidParentheses {
                     int index = i - res[i - 1] - 1;
                     if (index >= 0 && chars[index] == '(') {
                         // ()(())
-                        res[i] =
-                            res[i - 1] +
-                            2 +
-                            (index - 1 >= 0 ? res[index - 1] : 0);
+                        res[i] = res[i - 1] + 2 + (index - 1 >= 0 ? res[index - 1] : 0);
                     }
                 }
             }

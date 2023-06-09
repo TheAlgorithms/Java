@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
-
 import org.junit.jupiter.api.Test;
 
 public class ReverseNumberTest {
@@ -25,9 +24,6 @@ public class ReverseNumberTest {
 
     @Test
     public void testReverseNumberThrowsExceptionForNegativeInput() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> ReverseNumber.reverseNumber(-1)
-        );
+        assertThrows(IllegalArgumentException.class, () -> ReverseNumber.reverseNumber(-1));
     }
 }

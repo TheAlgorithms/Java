@@ -142,8 +142,7 @@ public class QueueUsingTwoStacks {
 
         System.out.println(myQueue.remove()); // Will print 1
         System.out.println(
-            (myQueue.isInStackEmpty()) ? "null" : myQueue.peekBack()
-        ); // Will print NULL
+            (myQueue.isInStackEmpty()) ? "null" : myQueue.peekBack()); // Will print NULL
         // instack: []
         // outStack: [(top) 2, 3, 4]
 

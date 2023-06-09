@@ -23,7 +23,7 @@ class LFSRTest {
     };
 
     // Represents 11 1010 1011 0011 1100 1011
-    byte[] frameCounterBytes = { (byte) 203, (byte) 179, 58 };
+    byte[] frameCounterBytes = {(byte) 203, (byte) 179, 58};
 
     @Test
     void initialize() {
@@ -46,7 +46,7 @@ class LFSRTest {
         expected.set(16);
         expected.set(17);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] { 13, 16, 17, 18 });
+        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
         lfsr0.initialize(sessionKey, frameCounter);
         assertEquals(expected.toString(), lfsr0.toString());
     }
@@ -56,7 +56,7 @@ class LFSRTest {
         BitSet sessionKey = BitSet.valueOf(sessionKeyBytes);
         BitSet frameCounter = BitSet.valueOf(frameCounterBytes);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] { 13, 16, 17, 18 });
+        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
         lfsr0.initialize(sessionKey, frameCounter);
 
         BitSet expected = new BitSet(19);
@@ -85,7 +85,7 @@ class LFSRTest {
         BitSet sessionKey = BitSet.valueOf(sessionKeyBytes);
         BitSet frameCounter = BitSet.valueOf(frameCounterBytes);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] { 13, 16, 17, 18 });
+        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
 
         assertFalse(lfsr0.getClockBit());
 

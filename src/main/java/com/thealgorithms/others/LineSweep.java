@@ -13,31 +13,33 @@ import java.util.Comparator;
  */
 public class LineSweep {
 
-    /**  Find Maximum end point
+    /**
+     * Find Maximum end point
      *   param = ranges : Array of range[start,end]
      *   return Maximum Endpoint
      */
-    public static int FindMaximumEndPoint (int[][]ranges){
-         Arrays.sort(ranges, Comparator.comparingInt(a->a[1]));
-         return ranges[ranges.length-1][1];
-     }
+    public static int FindMaximumEndPoint(int[][] ranges) {
+        Arrays.sort(ranges, Comparator.comparingInt(a -> a[1]));
+        return ranges[ranges.length - 1][1];
+    }
 
-    /**  Find if any ranges overlap
+    /**
+     * Find if any ranges overlap
      *   param = ranges : Array of range[start,end]
      *   return true if overlap exists false otherwise.
      */
     public static boolean isOverlap(int[][] ranges) {
 
         int maximumEndPoint = FindMaximumEndPoint(ranges);
-        Arrays.sort(ranges, Comparator.comparingInt(a->a[0]));
-        int[] numberLine = new int[maximumEndPoint+2];
+        Arrays.sort(ranges, Comparator.comparingInt(a -> a[0]));
+        int[] numberLine = new int[maximumEndPoint + 2];
         for (int[] range : ranges) {
 
             int start = range[0];
             int end = range[1];
 
             numberLine[start] += 1;
-            numberLine[end+1] -= 1;
+            numberLine[end + 1] -= 1;
         }
 
         int current = 0;
@@ -46,6 +48,6 @@ public class LineSweep {
             current += num;
             overlaps = Math.max(overlaps, current);
         }
-        return overlaps >1 ;
+        return overlaps > 1;
     }
 }

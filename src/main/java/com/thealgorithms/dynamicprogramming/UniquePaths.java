@@ -1,12 +1,13 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 
 /**
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
  * The robot can only move either down or right at any point in time.
- * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
- * How many possible unique paths are there?
+ * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram
+ * below). How many possible unique paths are there?
  */
 
 /** Program description - To find the number of unique paths possible */
@@ -51,11 +52,8 @@ public class UniquePaths {
 /**
  * OUTPUT :
  * Input - m = 3, n = 7
- * Output: it returns either true if expected answer matches with the predicted answer else it returns false
- * 1st approach Time Complexity : O(n)
- * Auxiliary Space Complexity : O(n)
- * Input - m = 3, n = 7
- * Output: it returns either true if expected answer matches with the predicted answer else it returns false
- * 2nd approach Time Complexity : O(m*n)
- * Auxiliary Space Complexity : O(m*n)
+ * Output: it returns either true if expected answer matches with the predicted answer else it
+ * returns false 1st approach Time Complexity : O(n) Auxiliary Space Complexity : O(n) Input - m =
+ * 3, n = 7 Output: it returns either true if expected answer matches with the predicted answer else
+ * it returns false 2nd approach Time Complexity : O(m*n) Auxiliary Space Complexity : O(m*n)
  */

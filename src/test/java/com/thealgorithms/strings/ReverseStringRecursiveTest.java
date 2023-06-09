@@ -1,8 +1,8 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class ReverseStringRecursiveTest {
     ReverseStringRecursive stringRecursive = new ReverseStringRecursive();
@@ -10,24 +10,24 @@ public class ReverseStringRecursiveTest {
     @Test
     void shouldAcceptWhenEmptyStringIsPassed() {
         String expected = "";
-        String reversed  = stringRecursive.reverse("");
+        String reversed = stringRecursive.reverse("");
 
-        assertEquals(expected,reversed);
+        assertEquals(expected, reversed);
     }
 
     @Test
     void shouldAcceptNotWhenWhenSingleCharacterIsPassed() {
         String expected = "a";
-        String reversed  = stringRecursive.reverse("a");
+        String reversed = stringRecursive.reverse("a");
 
-        assertEquals(expected,reversed);
+        assertEquals(expected, reversed);
     }
 
     @Test
     void shouldAcceptWhenStringIsPassed() {
         String expected = "dlroWolleH";
-        String reversed  = stringRecursive.reverse("HelloWorld");
+        String reversed = stringRecursive.reverse("HelloWorld");
 
-        assertEquals(expected,reversed);
+        assertEquals(expected, reversed);
     }
 }

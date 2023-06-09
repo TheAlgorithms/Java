@@ -1,9 +1,9 @@
 package com.thealgorithms.datastructures.trees;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Albina Gimaletdinova on 17/02/2023
@@ -16,7 +16,7 @@ public class CheckBinaryTreeIsValidBSTTest {
 
     @Test
     public void testOneNode() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{Integer.MIN_VALUE});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {Integer.MIN_VALUE});
         assertTrue(CheckBinaryTreeIsValidBST.isBST(root));
     }
 
@@ -29,7 +29,8 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeIsBST() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{9, 7, 13, 3, 8, 10, 20});
+        final BinaryTree.Node root
+            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 20});
         assertTrue(CheckBinaryTreeIsValidBST.isBST(root));
     }
 
@@ -42,7 +43,8 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeWithDuplicatedNodesIsNotBST() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{9, 7, 13, 3, 8, 10, 13});
+        final BinaryTree.Node root
+            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 13});
         assertFalse(CheckBinaryTreeIsValidBST.isBST(root));
     }
 
@@ -55,7 +57,8 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeIsNotBST() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{9, 7, 13, 3, 8, 10, 12});
+        final BinaryTree.Node root
+            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 12});
         assertFalse(CheckBinaryTreeIsValidBST.isBST(root));
     }
 }

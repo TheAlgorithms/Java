@@ -38,11 +38,7 @@ public class Combination {
      * @param <T> the type of elements in the array.
      */
     private static <T> void backtracking(
-        T[] arr,
-        int index,
-        TreeSet<T> currSet,
-        List<TreeSet<T>> result
-    ) {
+        T[] arr, int index, TreeSet<T> currSet, List<TreeSet<T>> result) {
         if (index + length - currSet.size() > arr.length) return;
         if (length - 1 == currSet.size()) {
             for (int i = index; i < arr.length; i++) {

@@ -5,15 +5,15 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 /**
- * The Round-robin scheduling algorithm is a kind of preemptive First come, First Serve CPU Scheduling algorithm.
- * This can be understood here - https://www.scaler.com/topics/round-robin-scheduling-in-os/
+ * The Round-robin scheduling algorithm is a kind of preemptive First come, First Serve CPU
+ * Scheduling algorithm. This can be understood here -
+ * https://www.scaler.com/topics/round-robin-scheduling-in-os/
  */
 
 public class RRScheduling {
@@ -33,7 +33,7 @@ public class RRScheduling {
     private void evaluateTurnAroundTime() {
         int processesNumber = processes.size();
 
-        if(processesNumber == 0) {
+        if (processesNumber == 0) {
             return;
         }
 
@@ -51,38 +51,42 @@ public class RRScheduling {
             remainingBurstTime[i] = processes.get(i).getBurstTime();
         }
 
-        while (completed != processesNumber){
+        while (completed != processesNumber) {
             int index = queue.poll();
 
-            if(remainingBurstTime[index] == processes.get(index).getBurstTime()){
+            if (remainingBurstTime[index] == processes.get(index).getBurstTime()) {
                 currentTime = Math.max(currentTime, processes.get(index).getArrivalTime());
             }
 
-            if(remainingBurstTime[index] - quantumTime > 0){
+            if (remainingBurstTime[index] - quantumTime > 0) {
                 remainingBurstTime[index] -= quantumTime;
                 currentTime += quantumTime;
             } else {
                 currentTime += remainingBurstTime[index];
-                processes.get(index).setTurnAroundTimeTime(currentTime - processes.get(index).getArrivalTime());
+                processes.get(index).setTurnAroundTimeTime(
+                    currentTime - processes.get(index).getArrivalTime());
                 completed++;
-                remainingBurstTime[index]=0;
+                remainingBurstTime[index] = 0;
             }
 
-            // If some process has arrived when this process was executing, insert them into the queue.
-            for (int i=1; i < processesNumber; i++){
-                if(remainingBurstTime[i] > 0 && processes.get(i).getArrivalTime() <= currentTime && mark[i] == 0){
-                    mark[i]=1;
+            // If some process has arrived when this process was executing, insert them into the
+            // queue.
+            for (int i = 1; i < processesNumber; i++) {
+                if (remainingBurstTime[i] > 0 && processes.get(i).getArrivalTime() <= currentTime
+                    && mark[i] == 0) {
+                    mark[i] = 1;
                     queue.add(i);
                 }
             }
 
-            // If the current process has burst time remaining, push the process into the queue again.
-            if(remainingBurstTime[index] > 0) queue.add(index);
+            // If the current process has burst time remaining, push the process into the queue
+            // again.
+            if (remainingBurstTime[index] > 0) queue.add(index);
 
             // If the queue is empty, pick the first process from the list that is not completed.
-            if(queue.isEmpty()){
-                for (int i=1; i<processesNumber; i++){
-                    if (remainingBurstTime[i] > 0){
+            if (queue.isEmpty()) {
+                for (int i = 1; i < processesNumber; i++) {
+                    if (remainingBurstTime[i] > 0) {
                         mark[i] = 1;
                         queue.add(i);
                         break;
@@ -94,6 +98,7 @@ public class RRScheduling {
 
     private void evaluateWaitingTime() {
         for (int i = 0; i < processes.size(); i++)
-            processes.get(i).setWaitingTime(processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
+            processes.get(i).setWaitingTime(
+                processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
     }
 }

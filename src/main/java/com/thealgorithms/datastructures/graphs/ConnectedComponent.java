@@ -137,11 +137,7 @@ public class ConnectedComponent {
         graphInts.addEdge(8, 10);
         graphInts.addEdge(10, 8);
 
-        System.out.println(
-            "Amount of different char-graphs: " + graphChars.countGraphs()
-        );
-        System.out.println(
-            "Amount of different int-graphs: " + graphInts.countGraphs()
-        );
+        System.out.println("Amount of different char-graphs: " + graphChars.countGraphs());
+        System.out.println("Amount of different int-graphs: " + graphInts.countGraphs());
     }
 }

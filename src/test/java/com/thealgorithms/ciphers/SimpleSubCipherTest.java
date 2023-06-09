@@ -1,8 +1,8 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class SimpleSubCipherTest {
 
@@ -33,5 +33,4 @@ class SimpleSubCipherTest {
         // then
         assertEquals("defend the east wall of the castle", decryptedText);
     }
-
 }

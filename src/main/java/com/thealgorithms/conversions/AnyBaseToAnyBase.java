@@ -30,13 +30,8 @@ public class AnyBaseToAnyBase {
             try {
                 System.out.print("Enter number: ");
                 n = in.next();
-                System.out.print(
-                    "Enter beginning base (between " +
-                    MINIMUM_BASE +
-                    " and " +
-                    MAXIMUM_BASE +
-                    "): "
-                );
+                System.out.print("Enter beginning base (between " + MINIMUM_BASE + " and "
+                    + MAXIMUM_BASE + "): ");
                 b1 = in.nextInt();
                 if (b1 > MAXIMUM_BASE || b1 < MINIMUM_BASE) {
                     System.out.println("Invalid base!");
@@ -47,12 +42,7 @@ public class AnyBaseToAnyBase {
                     continue;
                 }
                 System.out.print(
-                    "Enter end base (between " +
-                    MINIMUM_BASE +
-                    " and " +
-                    MAXIMUM_BASE +
-                    "): "
-                );
+                    "Enter end base (between " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
                 b2 = in.nextInt();
                 if (b2 > MAXIMUM_BASE || b2 < MINIMUM_BASE) {
                     System.out.println("Invalid base!");

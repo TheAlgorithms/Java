@@ -1,9 +1,10 @@
-// Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function). Here is my implementation
+// Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer
+// (similar to C/C++'s atoi function). Here is my implementation
 
 package com.thealgorithms.strings;
 
 public class MyAtoi {
-public static int myAtoi(String s) {
+    public static int myAtoi(String s) {
         s = s.trim();
         char[] char_1 = s.toCharArray();
         String number = "";
@@ -22,8 +23,7 @@ public static int myAtoi(String s) {
                     number = "0";
                     break;
                 }
-                if(ch >= '0' && ch <= '9')
-                    number += ch;
+                if (ch >= '0' && ch <= '9') number += ch;
             } else if (ch == '-' && !isDigit) {
                 number += "0";
                 negative = true;
@@ -40,15 +40,14 @@ public static int myAtoi(String s) {
                 break;
             }
         }
-    
-    if (!isDigit) {
+
+        if (!isDigit) {
             return 0;
         }
-    
-         number = number.replaceFirst("^0+(?!$)", "");
-    
-    
-    if (number.length() > 10 && negative) {
+
+        number = number.replaceFirst("^0+(?!$)", "");
+
+        if (number.length() > 10 && negative) {
             return -2147483648;
         } else if (number.length() > 10) {
             return 2147483647;
@@ -64,9 +63,9 @@ public static int myAtoi(String s) {
             }
         }
 
-    if(negative){
-        return Integer.parseInt(number)*-1;
-    }
+        if (negative) {
+            return Integer.parseInt(number) * -1;
+        }
 
         return Integer.parseInt(number);
     }

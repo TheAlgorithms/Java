@@ -47,9 +47,7 @@ public class CatalanNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println(
-            "Enter the number n to find nth Catalan number (n <= 50)"
-        );
+        System.out.println("Enter the number n to find nth Catalan number (n <= 50)");
         int n = sc.nextInt();
         System.out.println(n + "th Catalan number is " + findNthCatalan(n));
 

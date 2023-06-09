@@ -37,10 +37,10 @@ public class DeterminantOfMatrix {
         return det;
     }
 
-    //Driver Method
+    // Driver Method
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        //Input Matrix
+        // Input Matrix
         System.out.println("Enter matrix size (Square matrix only)");
         int n = in.nextInt();
         System.out.println("Enter matrix");

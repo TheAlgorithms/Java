@@ -30,10 +30,8 @@ public class SieveOfEratosthenes {
             }
         }
 
-        int primesCount = (int) Arrays
-            .stream(numbers)
-            .filter(element -> element == Type.PRIME)
-            .count();
+        int primesCount
+            = (int) Arrays.stream(numbers).filter(element -> element == Type.PRIME).count();
         int[] primes = new int[primesCount];
 
         int primeIndex = 0;

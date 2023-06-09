@@ -37,11 +37,7 @@ class LongestCommonSubsequence {
         return lcsString(str1, str2, lcsMatrix);
     }
 
-    public static String lcsString(
-        String str1,
-        String str2,
-        int[][] lcsMatrix
-    ) {
+    public static String lcsString(String str1, String str2, int[][] lcsMatrix) {
         StringBuilder lcs = new StringBuilder();
         int i = str1.length(), j = str2.length();
         while (i > 0 && j > 0) {

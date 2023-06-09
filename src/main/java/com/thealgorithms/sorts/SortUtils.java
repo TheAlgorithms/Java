@@ -59,9 +59,7 @@ final class SortUtils {
      * @param listToPrint the list to print
      */
     static void print(List<?> listToPrint) {
-        String result = listToPrint.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(" "));
+        String result = listToPrint.stream().map(Object::toString).collect(Collectors.joining(" "));
         System.out.println(result);
     }
 

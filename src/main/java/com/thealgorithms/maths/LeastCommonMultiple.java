@@ -20,9 +20,7 @@ public class LeastCommonMultiple {
         int num1 = input.nextInt();
         System.out.println("Please enter second number >> ");
         int num2 = input.nextInt();
-        System.out.println(
-            "The least common multiple of two numbers is >> " + lcm(num1, num2)
-        );
+        System.out.println("The least common multiple of two numbers is >> " + lcm(num1, num2));
     }
 
     /*

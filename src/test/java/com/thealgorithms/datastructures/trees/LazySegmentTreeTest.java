@@ -8,7 +8,7 @@ public class LazySegmentTreeTest {
 
     @Test
     void build() {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         LazySegmentTree lazySegmentTree = new LazySegmentTree(arr);
         assertEquals(55, lazySegmentTree.getRoot().getValue());
         assertEquals(15, lazySegmentTree.getRoot().getLeft().getValue());
@@ -17,7 +17,7 @@ public class LazySegmentTreeTest {
 
     @Test
     void update() {
-        int[] arr = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        int[] arr = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
         LazySegmentTree lazySegmentTree = new LazySegmentTree(arr);
         assertEquals(10, lazySegmentTree.getRoot().getValue());
 
@@ -36,7 +36,7 @@ public class LazySegmentTreeTest {
 
     @Test
     void get() {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         LazySegmentTree lazySegmentTree = new LazySegmentTree(arr);
         assertEquals(55, lazySegmentTree.getRange(0, 10));
         assertEquals(3, lazySegmentTree.getRange(0, 2));
@@ -46,14 +46,15 @@ public class LazySegmentTreeTest {
 
     @Test
     void updateAndGet() {
-        int[] arr = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] arr = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         LazySegmentTree lazySegmentTree = new LazySegmentTree(arr);
 
-        for (int i = 0; i < 10; i++) for (int j = i + 1; j < 10; j++) {
-            lazySegmentTree.updateRange(i, j, 1);
-            assertEquals(j - i, lazySegmentTree.getRange(i, j));
-            lazySegmentTree.updateRange(i, j, -1);
-            assertEquals(0, lazySegmentTree.getRange(i, j));
-        }
+        for (int i = 0; i < 10; i++)
+            for (int j = i + 1; j < 10; j++) {
+                lazySegmentTree.updateRange(i, j, 1);
+                assertEquals(j - i, lazySegmentTree.getRange(i, j));
+                lazySegmentTree.updateRange(i, j, -1);
+                assertEquals(0, lazySegmentTree.getRange(i, j));
+            }
     }
 }

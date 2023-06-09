@@ -1,10 +1,9 @@
 package com.thealgorithms.maths;
 
-import java.util.HashMap;
+import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.lang.IllegalArgumentException;
-
+import java.util.HashMap;
 
 /**
  * @brief class computing the n-th ugly number (when they are sorted)

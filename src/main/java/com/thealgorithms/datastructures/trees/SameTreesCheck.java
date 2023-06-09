@@ -5,9 +5,8 @@ import java.util.Deque;
 
 /**
  * Given 2 binary trees.
- * This code checks whether they are the same (structurally identical and have the same values) or not.
- * <p>
- * Example:
+ * This code checks whether they are the same (structurally identical and have the same values) or
+ * not. <p> Example:
  * 1. Binary trees:
  *      1                 1
  *     / \               / \

@@ -1,8 +1,8 @@
 package com.thealgorithms.strings;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class HorspoolSearchTest {
 
@@ -76,13 +76,12 @@ class HorspoolSearchTest {
 
     @Test
     void testFindFirstPatternNull() {
-        assertThrows(NullPointerException.class,
-                () -> HorspoolSearch.findFirst(null, "Hello World"));
+        assertThrows(
+            NullPointerException.class, () -> HorspoolSearch.findFirst(null, "Hello World"));
     }
 
     @Test
     void testFindFirstTextNull() {
-        assertThrows(NullPointerException.class,
-                () -> HorspoolSearch.findFirst("Hello", null));
+        assertThrows(NullPointerException.class, () -> HorspoolSearch.findFirst("Hello", null));
     }
 }

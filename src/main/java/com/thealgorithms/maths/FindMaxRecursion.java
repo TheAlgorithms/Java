@@ -17,10 +17,8 @@ public class FindMaxRecursion {
             array[i] = rand.nextInt() % 100;
         }
 
-        assert max(array, array.length) ==
-        Arrays.stream(array).max().getAsInt();
-        assert max(array, 0, array.length - 1) ==
-        Arrays.stream(array).max().getAsInt();
+        assert max(array, array.length) == Arrays.stream(array).max().getAsInt();
+        assert max(array, 0, array.length - 1) == Arrays.stream(array).max().getAsInt();
     }
 
     /**
@@ -52,8 +50,6 @@ public class FindMaxRecursion {
      * @return max value of {@code array}
      */
     public static int max(int[] array, int len) {
-        return len == 1
-            ? array[0]
-            : Math.max(max(array, len - 1), array[len - 1]);
+        return len == 1 ? array[0] : Math.max(max(array, len - 1), array[len - 1]);
     }
 }

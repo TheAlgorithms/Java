@@ -10,14 +10,8 @@ public class AbsoluteValueTest {
 
     @Test
     void testGetAbsValue() {
-        Stream
-            .generate(() -> ThreadLocalRandom.current().nextInt())
+        Stream.generate(() -> ThreadLocalRandom.current().nextInt())
             .limit(1000)
-            .forEach(number ->
-                assertEquals(
-                    Math.abs(number),
-                    AbsoluteValue.getAbsValue(number)
-                )
-            );
+            .forEach(number -> assertEquals(Math.abs(number), AbsoluteValue.getAbsValue(number)));
     }
 }

@@ -47,14 +47,8 @@ public class NQueens {
         List<List<String>> arrangements = new ArrayList<List<String>>();
         getSolution(queens, arrangements, new int[queens], 0);
         if (arrangements.isEmpty()) {
-            System.out.println(
-                "There is no way to place " +
-                queens +
-                " queens on board of size " +
-                queens +
-                "x" +
-                queens
-            );
+            System.out.println("There is no way to place " + queens + " queens on board of size "
+                + queens + "x" + queens);
         } else {
             System.out.println("Arrangement for placing " + queens + " queens");
         }
@@ -73,11 +67,7 @@ public class NQueens {
      * @param columnIndex: This is the column in which queen is being placed
      */
     private static void getSolution(
-        int boardSize,
-        List<List<String>> solutions,
-        int[] columns,
-        int columnIndex
-    ) {
+        int boardSize, List<List<String>> solutions, int[] columns, int columnIndex) {
         if (columnIndex == boardSize) {
             // this means that all queens have been placed
             List<String> sol = new ArrayList<String>();
@@ -96,7 +86,8 @@ public class NQueens {
         for (int rowIndex = 0; rowIndex < boardSize; rowIndex++) {
             columns[columnIndex] = rowIndex;
             if (isPlacedCorrectly(columns, rowIndex, columnIndex)) {
-                // If queen is placed successfully at rowIndex in column=columnIndex then try placing queen in next column
+                // If queen is placed successfully at rowIndex in column=columnIndex then try
+                // placing queen in next column
                 getSolution(boardSize, solutions, columns, columnIndex + 1);
             }
         }
@@ -111,11 +102,7 @@ public class NQueens {
      * @param columnIndex: column in which queen is being placed
      * @return true: if queen can be placed safely false: otherwise
      */
-    private static boolean isPlacedCorrectly(
-        int[] columns,
-        int rowIndex,
-        int columnIndex
-    ) {
+    private static boolean isPlacedCorrectly(int[] columns, int rowIndex, int columnIndex) {
         for (int i = 0; i < columnIndex; i++) {
             int diff = Math.abs(columns[i] - rowIndex);
             if (diff == 0 || columnIndex - i == diff) {

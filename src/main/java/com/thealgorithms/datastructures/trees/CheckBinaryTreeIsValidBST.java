@@ -24,8 +24,6 @@ public class CheckBinaryTreeIsValidBST {
         }
 
         return (
-            isBSTUtil(node.left, min, node.data - 1) &&
-            isBSTUtil(node.right, node.data + 1, max)
-        );
+            isBSTUtil(node.left, min, node.data - 1) && isBSTUtil(node.right, node.data + 1, max));
     }
 }

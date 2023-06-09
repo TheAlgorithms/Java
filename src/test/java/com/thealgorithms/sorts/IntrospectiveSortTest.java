@@ -1,9 +1,9 @@
 package com.thealgorithms.sorts;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class IntrospectiveSortTest {
     @Test
@@ -34,9 +34,8 @@ public class IntrospectiveSortTest {
     // valid test case
     public void StrandSortNullTest() {
         Integer[] expectedArray = null;
-        assertThrows(NullPointerException.class, () -> {
-            new IntrospectiveSort().sort(expectedArray);
-        });
+        assertThrows(
+            NullPointerException.class, () -> { new IntrospectiveSort().sort(expectedArray); });
     }
 
     @Test

@@ -2,12 +2,13 @@ package com.thealgorithms.dynamicprogramming;
 
 /*
 
- * Problem Statement: - 
+ * Problem Statement: -
  * Find Longest Alternating Subsequence
 
- * A sequence {x1, x2, .. xn} is alternating sequence if its elements satisfy one of the following relations : 
+ * A sequence {x1, x2, .. xn} is alternating sequence if its elements satisfy one of the following
+ relations :
 
-   x1 < x2 > x3 < x4 > x5 < …. xn or 
+   x1 < x2 > x3 < x4 > x5 < …. xn or
    x1 > x2 < x3 > x4 < x5 > …. xn
  */
 public class LongestAlternatingSubsequence {
@@ -16,16 +17,16 @@ public class LongestAlternatingSubsequence {
     static int AlternatingLength(int[] arr, int n) {
         /*
 
-		las[i][0] = Length of the longest
-			alternating subsequence ending at
-			index i and last element is
-			greater than its previous element
+                las[i][0] = Length of the longest
+                        alternating subsequence ending at
+                        index i and last element is
+                        greater than its previous element
 
-		las[i][1] = Length of the longest
-			alternating subsequence ending at
-			index i and last element is
-			smaller than its previous
-			element 
+                las[i][1] = Length of the longest
+                        alternating subsequence ending at
+                        index i and last element is
+                        smaller than its previous
+                        element
 
          */
         int[][] las = new int[n][2]; // las = LongestAlternatingSubsequence
@@ -61,12 +62,9 @@ public class LongestAlternatingSubsequence {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 10, 22, 9, 33, 49, 50, 31, 60 };
+        int[] arr = {10, 22, 9, 33, 49, 50, 31, 60};
         int n = arr.length;
-        System.out.println(
-            "Length of Longest " +
-            "alternating subsequence is " +
-            AlternatingLength(arr, n)
-        );
+        System.out.println("Length of Longest "
+            + "alternating subsequence is " + AlternatingLength(arr, n));
     }
 }

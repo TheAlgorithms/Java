@@ -30,7 +30,7 @@ public class SaddlebackSearch {
      */
     private static int[] find(int[][] arr, int row, int col, int key) {
         // array to store the answer row and column
-        int[] ans = { -1, -1 };
+        int[] ans = {-1, -1};
         if (row < 0 || col >= arr[row].length) {
             return ans;
         }

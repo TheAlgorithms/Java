@@ -1,14 +1,13 @@
 package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
 public class LowestBasePalindromeTest {
@@ -17,14 +16,18 @@ public class LowestBasePalindromeTest {
         assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>()));
         assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1))));
         assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 1))));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1))));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 2, 1))));
+        assertTrue(
+            LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1))));
+        assertTrue(
+            LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 2, 1))));
     }
 
     @Test
     public void testIsPalindromicNegative() {
-        assertFalse(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2))));
-        assertFalse(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1, 1))));
+        assertFalse(
+            LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2))));
+        assertFalse(
+            LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1, 1))));
     }
 
     @Test
@@ -45,17 +48,13 @@ public class LowestBasePalindromeTest {
     @Test
     public void testIsPalindromicInBaseThrowsExceptionForNegativeNumbers() {
         assertThrows(
-            IllegalArgumentException.class,
-            () -> LowestBasePalindrome.isPalindromicInBase(-1, 5)
-        );
+            IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(-1, 5));
     }
 
     @Test
     public void testIsPalindromicInBaseThrowsExceptionForWrongBases() {
         assertThrows(
-            IllegalArgumentException.class,
-            () -> LowestBasePalindrome.isPalindromicInBase(10, 1)
-        );
+            IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(10, 1));
     }
 
     @Test

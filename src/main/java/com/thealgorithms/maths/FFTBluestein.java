@@ -30,7 +30,8 @@ public class FFTBluestein {
         ArrayList<FFT.Complex> an = new ArrayList<>();
         ArrayList<FFT.Complex> bn = new ArrayList<>();
 
-        /* Initialization of the b(n) sequence (see Wikipedia's article above for the symbols used)*/
+        /* Initialization of the b(n) sequence (see Wikipedia's article above for the symbols
+         * used)*/
         for (int i = 0; i < bnSize; i++) {
             bn.add(new FFT.Complex());
         }
@@ -38,26 +39,16 @@ public class FFTBluestein {
         for (int i = 0; i < N; i++) {
             double angle = (i - N + 1) * (i - N + 1) * Math.PI / N * direction;
             bn.set(i, new FFT.Complex(Math.cos(angle), Math.sin(angle)));
-            bn.set(
-                bnSize - i - 1,
-                new FFT.Complex(Math.cos(angle), Math.sin(angle))
-            );
+            bn.set(bnSize - i - 1, new FFT.Complex(Math.cos(angle), Math.sin(angle)));
         }
 
         /* Initialization of the a(n) sequence */
         for (int i = 0; i < N; i++) {
             double angle = -i * i * Math.PI / N * direction;
-            an.add(
-                x
-                    .get(i)
-                    .multiply(new FFT.Complex(Math.cos(angle), Math.sin(angle)))
-            );
+            an.add(x.get(i).multiply(new FFT.Complex(Math.cos(angle), Math.sin(angle))));
         }
 
-        ArrayList<FFT.Complex> convolution = ConvolutionFFT.convolutionFFT(
-            an,
-            bn
-        );
+        ArrayList<FFT.Complex> convolution = ConvolutionFFT.convolutionFFT(an, bn);
 
         /* The final multiplication of the convolution with the b*(k) factor  */
         for (int i = 0; i < N; i++) {

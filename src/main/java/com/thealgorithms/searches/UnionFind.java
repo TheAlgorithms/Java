@@ -61,27 +61,19 @@ public class UnionFind {
     // Tests
     public static void main(String[] args) {
         UnionFind uf = new UnionFind(5);
-        System.out.println(
-            "init /w 5 (should print 'p [0, 1, 2, 3, 4] r [0, 0, 0, 0, 0]'):"
-        );
+        System.out.println("init /w 5 (should print 'p [0, 1, 2, 3, 4] r [0, 0, 0, 0, 0]'):");
         System.out.println(uf);
 
         uf.union(1, 2);
-        System.out.println(
-            "union 1 2 (should print 'p [0, 1, 1, 3, 4] r [0, 1, 0, 0, 0]'):"
-        );
+        System.out.println("union 1 2 (should print 'p [0, 1, 1, 3, 4] r [0, 1, 0, 0, 0]'):");
         System.out.println(uf);
 
         uf.union(3, 4);
-        System.out.println(
-            "union 3 4 (should print 'p [0, 1, 1, 3, 3] r [0, 1, 0, 1, 0]'):"
-        );
+        System.out.println("union 3 4 (should print 'p [0, 1, 1, 3, 3] r [0, 1, 0, 1, 0]'):");
         System.out.println(uf);
 
         uf.find(4);
-        System.out.println(
-            "find 4 (should print 'p [0, 1, 1, 3, 3] r [0, 1, 0, 1, 0]'):"
-        );
+        System.out.println("find 4 (should print 'p [0, 1, 1, 3, 3] r [0, 1, 0, 1, 0]'):");
         System.out.println(uf);
 
         System.out.println("count (should print '3'):");

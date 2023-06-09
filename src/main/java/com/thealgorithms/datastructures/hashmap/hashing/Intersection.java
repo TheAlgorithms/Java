@@ -15,9 +15,7 @@ import java.util.Map;
 public class Intersection {
 
     public static List<Integer> intersection(int[] arr1, int[] arr2) {
-        if (
-            arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0
-        ) {
+        if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
             return Collections.emptyList();
         }
         Map<Integer, Integer> cnt = new HashMap<>(16);
@@ -34,5 +32,6 @@ public class Intersection {
         return res;
     }
 
-    private Intersection() {}
+    private Intersection() {
+    }
 }
