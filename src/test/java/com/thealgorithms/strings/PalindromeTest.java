@@ -10,14 +10,12 @@ public class PalindromeTest {
 
         String[] palindromes = {null, "", "aba", "123321", "kayak"};
         for (String s : palindromes) {
-            Assertions.assertTrue(Palindrome.isPalindrome(s) && Palindrome.isPalindromeRecursion(s)
-                && Palindrome.isPalindromeTwoPointer(s));
+            Assertions.assertTrue(Palindrome.isPalindrome(s) && Palindrome.isPalindromeRecursion(s) && Palindrome.isPalindromeTwoPointer(s));
         }
 
         String[] notPalindromes = {"abb", "abc", "abc123", "kayaks"};
         for (String s : notPalindromes) {
-            Assertions.assertFalse(Palindrome.isPalindrome(s) || Palindrome.isPalindromeRecursion(s)
-                || Palindrome.isPalindromeTwoPointer(s));
+            Assertions.assertFalse(Palindrome.isPalindrome(s) || Palindrome.isPalindromeRecursion(s) || Palindrome.isPalindromeTwoPointer(s));
         }
     }
 }

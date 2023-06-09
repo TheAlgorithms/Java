@@ -27,8 +27,7 @@ public class AutomorphicNumber {
             numberOfdigits++; // Calculating number of digits in n
             t /= 10;
         }
-        long lastDigits
-            = square % (long) Math.pow(10, numberOfdigits); // Extracting last Digits of square
+        long lastDigits = square % (long) Math.pow(10, numberOfdigits); // Extracting last Digits of square
         return n == lastDigits;
     }
 

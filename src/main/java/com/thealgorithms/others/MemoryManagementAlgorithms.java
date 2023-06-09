@@ -75,8 +75,7 @@ class BestFitCPU extends MemoryManagementAlgorithms {
         int index = NO_ALLOCATION; // If there is no block that can fit the process, return
                                    // NO_ALLOCATION as the
         // result.
-        for (int i = 0; i < blockSizes.length;
-             i++) { // Find the most fitting memory block for the given process.
+        for (int i = 0; i < blockSizes.length; i++) { // Find the most fitting memory block for the given process.
             if (blockSizes[i] - processSize < minDiff && blockSizes[i] - processSize >= 0) {
                 minDiff = blockSizes[i] - processSize;
                 index = i;
@@ -103,13 +102,10 @@ class BestFitCPU extends MemoryManagementAlgorithms {
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx = findBestFit(
-                sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findBestFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
-                sizeOfBlocks[chosenBlockIdx]
-                    -= processSize; // resize the block based on the process size
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+                sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
@@ -133,8 +129,7 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
     private static int findWorstFit(int[] blockSizes, int processSize) {
         int max = -1;
         int index = -1;
-        for (int i = 0; i < blockSizes.length;
-             i++) { // Find the index of the biggest memory block available.
+        for (int i = 0; i < blockSizes.length; i++) { // Find the index of the biggest memory block available.
             if (blockSizes[i] > max) {
                 max = blockSizes[i];
                 index = i;
@@ -165,13 +160,10 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx = findWorstFit(
-                sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findWorstFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
-                sizeOfBlocks[chosenBlockIdx]
-                    -= processSize; // resize the block based on the process size
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+                sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
@@ -220,13 +212,10 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx = findFirstFit(
-                sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findFirstFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
-                sizeOfBlocks[chosenBlockIdx]
-                    -= processSize; // resize the block based on the process size
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+                sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;
@@ -238,8 +227,7 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
  */
 class NextFit extends MemoryManagementAlgorithms {
 
-    private int counter
-        = 0; // variable that keeps the position of the last registration into the memory
+    private int counter = 0; // variable that keeps the position of the last registration into the memory
 
     /**
      * Method to find the index of the memory block that is going to fit the
@@ -285,13 +273,10 @@ class NextFit extends MemoryManagementAlgorithms {
         ArrayList<Integer> memAlloc = new ArrayList<>();
         // Do this for every process
         for (int processSize : sizeOfProcesses) {
-            int chosenBlockIdx = findNextFit(
-                sizeOfBlocks, processSize); // Find the index of the memory block going to be used
+            int chosenBlockIdx = findNextFit(sizeOfBlocks, processSize); // Find the index of the memory block going to be used
             memAlloc.add(chosenBlockIdx); // Store the chosen block index in the memAlloc array list
-            if (chosenBlockIdx
-                != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
-                sizeOfBlocks[chosenBlockIdx]
-                    -= processSize; // resize the block based on the process size
+            if (chosenBlockIdx != NO_ALLOCATION) { // Only if a block was chosen to store the process in it,
+                sizeOfBlocks[chosenBlockIdx] -= processSize; // resize the block based on the process size
             }
         }
         return memAlloc;

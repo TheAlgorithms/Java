@@ -43,8 +43,7 @@ public class BufferedReader {
 
     public BufferedReader(InputStream input, int bufferSize) throws IOException {
         this.input = input;
-        if (input.available() == -1)
-            throw new IOException("Empty or already closed stream provided");
+        if (input.available() == -1) throw new IOException("Empty or already closed stream provided");
 
         this.bufferSize = bufferSize;
         buffer = new byte[bufferSize];
@@ -90,14 +89,10 @@ public class BufferedReader {
 
     public int peek(int n) throws IOException {
         int available = available();
-        if (n >= available)
-            throw new IOException(
-                "Out of range, available %d, but trying with %d".formatted(available, n));
+        if (n >= available) throw new IOException("Out of range, available %d, but trying with %d".formatted(available, n));
         pushRefreshData();
 
-        if (n >= bufferSize)
-            throw new IllegalAccessError(
-                "Cannot peek %s, maximum upto %s (Buffer Limit)".formatted(n, bufferSize));
+        if (n >= bufferSize) throw new IllegalAccessError("Cannot peek %s, maximum upto %s (Buffer Limit)".formatted(n, bufferSize));
         return buffer[n];
     }
 

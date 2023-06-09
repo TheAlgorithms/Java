@@ -37,8 +37,7 @@ public class KDTree {
         if (points.length == 0) throw new IllegalArgumentException("Points array cannot be empty");
         this.k = points[0].getDimension();
         for (Point point : points)
-            if (point.getDimension() != k)
-                throw new IllegalArgumentException("Points must have the same dimension");
+            if (point.getDimension() != k) throw new IllegalArgumentException("Points must have the same dimension");
         this.root = build(points, 0);
     }
 
@@ -49,13 +48,11 @@ public class KDTree {
      *
      */
     KDTree(int[][] pointsCoordinates) {
-        if (pointsCoordinates.length == 0)
-            throw new IllegalArgumentException("Points array cannot be empty");
+        if (pointsCoordinates.length == 0) throw new IllegalArgumentException("Points array cannot be empty");
         this.k = pointsCoordinates[0].length;
         Point[] points = Arrays.stream(pointsCoordinates).map(Point::new).toArray(Point[] ::new);
         for (Point point : points)
-            if (point.getDimension() != k)
-                throw new IllegalArgumentException("Points must have the same dimension");
+            if (point.getDimension() != k) throw new IllegalArgumentException("Points must have the same dimension");
         this.root = build(points, 0);
     }
 
@@ -224,8 +221,7 @@ public class KDTree {
      *
      */
     public void insert(Point point) {
-        if (point.getDimension() != k)
-            throw new IllegalArgumentException("Point has wrong dimension");
+        if (point.getDimension() != k) throw new IllegalArgumentException("Point has wrong dimension");
         root = insert(root, point, 0);
     }
 
@@ -257,8 +253,7 @@ public class KDTree {
      * @return The Node corresponding to the specified point
      */
     public Optional<Node> search(Point point) {
-        if (point.getDimension() != k)
-            throw new IllegalArgumentException("Point has wrong dimension");
+        if (point.getDimension() != k) throw new IllegalArgumentException("Point has wrong dimension");
         return search(root, point);
     }
 
@@ -304,10 +299,7 @@ public class KDTree {
             Node left = findMin(root.left, axis);
             Node right = findMin(root.right, axis);
             Node[] candidates = {left, root, right};
-            return Arrays.stream(candidates)
-                .filter(Objects::nonNull)
-                .min(Comparator.comparingInt(a -> a.point.getCoordinate(axis)))
-                .orElse(null);
+            return Arrays.stream(candidates).filter(Objects::nonNull).min(Comparator.comparingInt(a -> a.point.getCoordinate(axis))).orElse(null);
         }
     }
 
@@ -339,10 +331,7 @@ public class KDTree {
             Node left = findMax(root.left, axis);
             Node right = findMax(root.right, axis);
             Node[] candidates = {left, root, right};
-            return Arrays.stream(candidates)
-                .filter(Objects::nonNull)
-                .max(Comparator.comparingInt(a -> a.point.getCoordinate(axis)))
-                .orElse(null);
+            return Arrays.stream(candidates).filter(Objects::nonNull).max(Comparator.comparingInt(a -> a.point.getCoordinate(axis))).orElse(null);
         }
     }
 
@@ -352,8 +341,7 @@ public class KDTree {
      * @param point the point to delete
      * */
     public void delete(Point point) {
-        Node node
-            = search(point).orElseThrow(() -> new IllegalArgumentException("Point not found"));
+        Node node = search(point).orElseThrow(() -> new IllegalArgumentException("Point not found"));
         root = delete(root, node);
     }
 
@@ -406,12 +394,10 @@ public class KDTree {
         if (root == null) return nearest;
         if (root.point.equals(point)) return root;
         int distance = Point.comparableDistance(root.point, point);
-        int distanceExceptAxis
-            = Point.comparableDistanceExceptAxis(root.point, point, root.getAxis());
+        int distanceExceptAxis = Point.comparableDistanceExceptAxis(root.point, point, root.getAxis());
         if (distance < Point.comparableDistance(nearest.point, point)) nearest = root;
         nearest = findNearest(root.getNearChild(point), point, nearest);
-        if (distanceExceptAxis < Point.comparableDistance(nearest.point, point))
-            nearest = findNearest(root.getFarChild(point), point, nearest);
+        if (distanceExceptAxis < Point.comparableDistance(nearest.point, point)) nearest = findNearest(root.getFarChild(point), point, nearest);
         return nearest;
     }
 }

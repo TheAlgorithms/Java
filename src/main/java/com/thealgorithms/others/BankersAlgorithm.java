@@ -25,8 +25,7 @@ public class BankersAlgorithm {
     /**
      * This method finds the need of each process
      */
-    static void calculateNeed(int[][] needArray, int[][] maxArray, int[][] allocationArray,
-        int totalProcess, int totalResources) {
+    static void calculateNeed(int[][] needArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
         for (int i = 0; i < totalProcess; i++) {
             for (int j = 0; j < totalResources; j++) {
                 needArray[i][j] = maxArray[i][j] - allocationArray[i][j];
@@ -49,8 +48,7 @@ public class BankersAlgorithm {
      *
      * @return boolean if the system is in safe state or not
      */
-    static boolean checkSafeSystem(int[] processes, int[] availableArray, int[][] maxArray,
-        int[][] allocationArray, int totalProcess, int totalResources) {
+    static boolean checkSafeSystem(int[] processes, int[] availableArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
         int[][] needArray = new int[totalProcess][totalResources];
 
         calculateNeed(needArray, maxArray, allocationArray, totalProcess, totalResources);
@@ -158,8 +156,7 @@ public class BankersAlgorithm {
             }
         }
 
-        checkSafeSystem(processes, availableArray, maxArray, allocationArray, numberOfProcesses,
-            numberOfResources);
+        checkSafeSystem(processes, availableArray, maxArray, allocationArray, numberOfProcesses, numberOfResources);
 
         sc.close();
     }

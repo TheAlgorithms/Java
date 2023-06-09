@@ -108,8 +108,7 @@ public class TreeSort implements SortAlgorithm {
 
         // ==== String List =======
         System.out.println("Testing for String List....");
-        List<String> stringList = List.of(
-            "banana", "berry", "orange", "grape", "peach", "cherry", "apple", "pineapple");
+        List<String> stringList = List.of("banana", "berry", "orange", "grape", "peach", "cherry", "apple", "pineapple");
         System.out.printf("%-10s", "unsorted: ");
         print(stringList);
         stringList = treeSort.sort(stringList);

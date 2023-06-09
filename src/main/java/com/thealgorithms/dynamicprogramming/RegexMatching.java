@@ -159,8 +159,7 @@ public class RegexMatching {
         String pat = "*";
         System.out.println("Method 1: " + regexRecursion(src, pat));
         System.out.println("Method 2: " + regexRecursion(src, pat, 0, 0));
-        System.out.println(
-            "Method 3: " + regexRecursion(src, pat, 0, 0, new int[src.length()][pat.length()]));
+        System.out.println("Method 3: " + regexRecursion(src, pat, 0, 0, new int[src.length()][pat.length()]));
         System.out.println("Method 4: " + regexBU(src, pat));
     }
 }

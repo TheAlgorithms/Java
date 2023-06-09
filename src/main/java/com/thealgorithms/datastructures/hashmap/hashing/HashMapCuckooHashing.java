@@ -204,8 +204,7 @@ public class HashMapCuckooHashing {
      * @return int the index where the key is located
      */
     public boolean checkTableContainsKey(int key) {
-        return ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key))
-            || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)] == key));
+        return ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key)) || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)] == key));
     }
 
     /**

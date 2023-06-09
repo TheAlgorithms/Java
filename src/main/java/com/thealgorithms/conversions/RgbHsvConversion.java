@@ -126,8 +126,7 @@ public class RgbHsvConversion {
         return bHue && bSaturation && bValue;
     }
 
-    private static int[] getRgbBySection(
-        double hueSection, double chroma, double matchValue, double secondLargestComponent) {
+    private static int[] getRgbBySection(double hueSection, double chroma, double matchValue, double secondLargestComponent) {
         int red;
         int green;
         int blue;

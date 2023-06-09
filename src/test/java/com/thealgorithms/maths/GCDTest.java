@@ -47,8 +47,7 @@ public class GCDTest {
 
     @Test
     void testArrayGcd2() {
-        Assertions.assertEquals(
-            GCD.gcd(new int[] {2 * 3 * 5 * 7, 2 * 5 * 5 * 5, 2 * 5 * 11, 5 * 5 * 5 * 13}), 5);
+        Assertions.assertEquals(GCD.gcd(new int[] {2 * 3 * 5 * 7, 2 * 5 * 5 * 5, 2 * 5 * 11, 5 * 5 * 5 * 13}), 5);
     }
 
     @Test

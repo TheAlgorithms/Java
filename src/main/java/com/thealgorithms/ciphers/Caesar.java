@@ -30,12 +30,10 @@ public class Caesar {
 
             if (isCapitalLatinLetter(current)) {
                 current += shift;
-                encoded.append((
-                    char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
+                encoded.append((char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
                 current += shift;
-                encoded.append((
-                    char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
+                encoded.append((char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
             } else {
                 encoded.append(current);
             }
@@ -59,12 +57,10 @@ public class Caesar {
             char current = encryptedMessage.charAt(i);
             if (isCapitalLatinLetter(current)) {
                 current -= shift;
-                decoded.append((
-                    char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
+                decoded.append((char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
                 current -= shift;
-                decoded.append((
-                    char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
+                decoded.append((char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
             } else {
                 decoded.append(current);
             }

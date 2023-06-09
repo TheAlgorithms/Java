@@ -11,8 +11,7 @@ class RRSchedulingTest {
     @Test
     public void testingProcesses() {
         List<ProcessDetails> processes = addProcessesForRR();
-        final RRScheduling rrScheduling
-            = new RRScheduling(processes, 4); // for sending to RR with quantum value 4
+        final RRScheduling rrScheduling = new RRScheduling(processes, 4); // for sending to RR with quantum value 4
 
         rrScheduling.scheduleProcesses();
 

@@ -33,8 +33,7 @@ public class StringCompression {
                 break;
             } else if (input.charAt(i) != input.charAt(i + 1)) {
                 if ((i + 1) == input.length() - 1) {
-                    compressedString = appendCount(compressedString, count, input.charAt(i))
-                        + input.charAt(i + 1);
+                    compressedString = appendCount(compressedString, count, input.charAt(i)) + input.charAt(i + 1);
                     break;
                 } else {
                     compressedString = appendCount(compressedString, count, input.charAt(i));

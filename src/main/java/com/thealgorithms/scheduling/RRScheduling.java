@@ -63,8 +63,7 @@ public class RRScheduling {
                 currentTime += quantumTime;
             } else {
                 currentTime += remainingBurstTime[index];
-                processes.get(index).setTurnAroundTimeTime(
-                    currentTime - processes.get(index).getArrivalTime());
+                processes.get(index).setTurnAroundTimeTime(currentTime - processes.get(index).getArrivalTime());
                 completed++;
                 remainingBurstTime[index] = 0;
             }
@@ -72,8 +71,7 @@ public class RRScheduling {
             // If some process has arrived when this process was executing, insert them into the
             // queue.
             for (int i = 1; i < processesNumber; i++) {
-                if (remainingBurstTime[i] > 0 && processes.get(i).getArrivalTime() <= currentTime
-                    && mark[i] == 0) {
+                if (remainingBurstTime[i] > 0 && processes.get(i).getArrivalTime() <= currentTime && mark[i] == 0) {
                     mark[i] = 1;
                     queue.add(i);
                 }
@@ -97,8 +95,6 @@ public class RRScheduling {
     }
 
     private void evaluateWaitingTime() {
-        for (int i = 0; i < processes.size(); i++)
-            processes.get(i).setWaitingTime(
-                processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
+        for (int i = 0; i < processes.size(); i++) processes.get(i).setWaitingTime(processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
     }
 }

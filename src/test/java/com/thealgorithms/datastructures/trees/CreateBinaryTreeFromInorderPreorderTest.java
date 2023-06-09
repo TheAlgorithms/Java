@@ -12,8 +12,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
     public void testOnNullArraysShouldReturnNullTree() {
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(null, null);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(null, null);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(null, null);
 
         // then
         Assertions.assertNull(root);
@@ -28,8 +27,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
 
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(preorder, inorder);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
 
         // then
         Assertions.assertNull(root);
@@ -44,8 +42,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
 
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(preorder, inorder);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
 
         // then
         checkTree(preorder, inorder, root);
@@ -60,8 +57,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
 
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(preorder, inorder);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
 
         // then
         checkTree(preorder, inorder, root);
@@ -76,8 +72,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
 
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(preorder, inorder);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
 
         // then
         checkTree(preorder, inorder, root);
@@ -92,8 +87,7 @@ public class CreateBinaryTreeFromInorderPreorderTest {
 
         // when
         BinaryTree.Node root = CreateBinaryTreeFromInorderPreorder.createTree(preorder, inorder);
-        BinaryTree.Node rootOpt
-            = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
+        BinaryTree.Node rootOpt = CreateBinaryTreeFromInorderPreorder.createTreeOptimized(preorder, inorder);
 
         // then
         checkTree(preorder, inorder, root);

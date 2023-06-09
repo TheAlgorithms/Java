@@ -115,8 +115,7 @@ public class Luhn {
             int[] cardNumbers = toIntArray(trimmedCardNumber);
             boolean isValid = luhnCheck(cardNumbers);
             if (!isValid) {
-                throw new IllegalArgumentException(
-                    "Credit card number {" + cardNumber + "} - have a typo");
+                throw new IllegalArgumentException("Credit card number {" + cardNumber + "} - have a typo");
             }
 
             return new CreditCard(cardNumbers);
@@ -149,8 +148,7 @@ public class Luhn {
 
     private static void businessExample(String cardNumber) {
         try {
-            System.out.println(
-                "Trying to create CreditCard object from valid card number: " + cardNumber);
+            System.out.println("Trying to create CreditCard object from valid card number: " + cardNumber);
             CreditCard creditCard = CreditCard.fromString(cardNumber);
             System.out.println("And business object is successfully created: " + creditCard + "\n");
         } catch (IllegalArgumentException e) {

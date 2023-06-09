@@ -135,8 +135,7 @@ public class Area {
      * @param height height of trapezium
      * @return area of given trapezium
      */
-    public static double surfaceAreaTrapezium(
-        final double base1, final double base2, final double height) {
+    public static double surfaceAreaTrapezium(final double base1, final double base2, final double height) {
         if (base1 <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE + 1);
         }

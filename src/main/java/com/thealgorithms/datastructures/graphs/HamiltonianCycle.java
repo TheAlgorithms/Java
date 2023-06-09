@@ -1,7 +1,9 @@
 package com.thealgorithms.datastructures.graphs;
 
 /**
- * Java program for Hamiltonian Cycle (https://en.wikipedia.org/wiki/Hamiltonian_path)
+ * Java program for Hamiltonian Cycle
+ * (https://en.wikipedia.org/wiki/Hamiltonian_path)
+ *
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
 public class HamiltonianCycle {
@@ -12,10 +14,11 @@ public class HamiltonianCycle {
 
     /**
      * Find hamiltonian cycle for given graph G(V,E)
+     *
      * @param graph Adjacency matrix of a graph G(V, E)
-     * for which hamiltonian path is to be found
+     *              for which hamiltonian path is to be found
      * @return Array containing hamiltonian cycle
-     * else returns 1D array with value -1.
+     *         else returns 1D array with value -1.
      */
     public int[] findHamiltonianCycle(int[][] graph) {
         this.V = graph.length;
@@ -44,12 +47,12 @@ public class HamiltonianCycle {
     /**
      * function to find paths recursively
      * Find paths recursively from given vertex
+     *
      * @param vertex Vertex from which path is to be found
      * @returns true if path is found false otherwise
      */
     public boolean isPathFound(int vertex) {
-        boolean isLastVertexConnectedToStart
-            = this.graph[vertex][0] == 1 && this.pathCount == this.V;
+        boolean isLastVertexConnectedToStart = this.graph[vertex][0] == 1 && this.pathCount == this.V;
         if (isLastVertexConnectedToStart) {
             return true;
         }
@@ -69,7 +72,7 @@ public class HamiltonianCycle {
                 this.graph[vertex][v] = 0;
                 this.graph[v][vertex] = 0;
 
-                /** if vertex not already selected  solve recursively **/
+                /** if vertex not already selected solve recursively **/
                 if (!isPresent(v)) {
                     return isPathFound(v);
                 }
@@ -88,6 +91,7 @@ public class HamiltonianCycle {
     /**
      * function to check if path is already selected
      * Check if path is already selected
+     *
      * @param vertex Starting vertex
      */
     public boolean isPresent(int vertex) {

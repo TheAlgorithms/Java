@@ -47,8 +47,7 @@ public class IIRFilter {
      */
     public void setCoeffs(double[] aCoeffs, double[] bCoeffs) throws IllegalArgumentException {
         if (aCoeffs.length != order) {
-            throw new IllegalArgumentException(
-                "aCoeffs must be of size " + order + ", got " + aCoeffs.length);
+            throw new IllegalArgumentException("aCoeffs must be of size " + order + ", got " + aCoeffs.length);
         }
 
         if (aCoeffs[0] == 0.0) {
@@ -56,8 +55,7 @@ public class IIRFilter {
         }
 
         if (bCoeffs.length != order) {
-            throw new IllegalArgumentException(
-                "bCoeffs must be of size " + order + ", got " + bCoeffs.length);
+            throw new IllegalArgumentException("bCoeffs must be of size " + order + ", got " + bCoeffs.length);
         }
 
         for (int i = 0; i <= order; i++) {

@@ -66,11 +66,7 @@ class BinarySearch implements SearchAlgorithm {
         int size = 100;
         int maxElement = 100000;
 
-        Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement))
-                                 .limit(size)
-                                 .sorted()
-                                 .boxed()
-                                 .toArray(Integer[] ::new);
+        Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[] ::new);
 
         // The element that should be found
         int shouldBeFound = integers[r.nextInt(size - 1)];
@@ -78,11 +74,9 @@ class BinarySearch implements SearchAlgorithm {
         BinarySearch search = new BinarySearch();
         int atIndex = search.find(integers, shouldBeFound);
 
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n",
-            shouldBeFound, integers[atIndex], atIndex, size);
+        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.printf(
-            "Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
+        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }

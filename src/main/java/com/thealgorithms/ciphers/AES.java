@@ -2413,8 +2413,7 @@ public class AES {
             }
 
             // replace bytes in original string
-            rBytes = new StringBuilder(
-                rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
+            rBytes = new StringBuilder(rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
         }
 
         // t = new BigInteger(rBytes, 16);
@@ -2453,12 +2452,8 @@ public class AES {
             // split previous key into 8-bit segments
             BigInteger[] prevKey = {
                 roundKeys[i - 1].remainder(new BigInteger("100000000", 16)),
-                roundKeys[i - 1]
-                    .remainder(new BigInteger("10000000000000000", 16))
-                    .divide(new BigInteger("100000000", 16)),
-                roundKeys[i - 1]
-                    .remainder(new BigInteger("1000000000000000000000000", 16))
-                    .divide(new BigInteger("10000000000000000", 16)),
+                roundKeys[i - 1].remainder(new BigInteger("10000000000000000", 16)).divide(new BigInteger("100000000", 16)),
+                roundKeys[i - 1].remainder(new BigInteger("1000000000000000000000000", 16)).divide(new BigInteger("10000000000000000", 16)),
                 roundKeys[i - 1].divide(new BigInteger("1000000000000000000000000", 16)),
             };
 
@@ -2677,12 +2672,9 @@ public class AES {
             };
 
             outputCells[i * 4] = MULT14[row[0]] ^ MULT11[row[1]] ^ MULT13[row[2]] ^ MULT9[row[3]];
-            outputCells[i * 4 + 1]
-                = MULT9[row[0]] ^ MULT14[row[1]] ^ MULT11[row[2]] ^ MULT13[row[3]];
-            outputCells[i * 4 + 2]
-                = MULT13[row[0]] ^ MULT9[row[1]] ^ MULT14[row[2]] ^ MULT11[row[3]];
-            outputCells[i * 4 + 3]
-                = MULT11[row[0]] ^ MULT13[row[1]] ^ MULT9[row[2]] ^ MULT14[row[3]];
+            outputCells[i * 4 + 1] = MULT9[row[0]] ^ MULT14[row[1]] ^ MULT11[row[2]] ^ MULT13[row[3]];
+            outputCells[i * 4 + 2] = MULT13[row[0]] ^ MULT9[row[1]] ^ MULT14[row[2]] ^ MULT11[row[3]];
+            outputCells[i * 4 + 3] = MULT11[row[0]] ^ MULT13[row[1]] ^ MULT9[row[2]] ^ MULT14[row[3]];
         }
         return mergeCellsIntoBlock(outputCells);
     }

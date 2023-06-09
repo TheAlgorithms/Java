@@ -122,8 +122,7 @@ public class HeapElement {
                 return false;
             }
             HeapElement otherHeapElement = (HeapElement) o;
-            return ((this.key == otherHeapElement.key)
-                && (this.additionalInfo.equals(otherHeapElement.additionalInfo)));
+            return ((this.key == otherHeapElement.key) && (this.additionalInfo.equals(otherHeapElement.additionalInfo)));
         }
         return false;
     }

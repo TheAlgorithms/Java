@@ -18,8 +18,7 @@ public class SkylineProblem {
         for (int i = 0; i < num; i++) {
             String input = sc.next();
             String[] data = input.split(",");
-            this.add(
-                Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+            this.add(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
         }
         this.print(this.findSkyline(0, num - 1));
 

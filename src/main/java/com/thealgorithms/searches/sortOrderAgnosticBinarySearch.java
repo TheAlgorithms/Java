@@ -4,8 +4,7 @@ public class sortOrderAgnosticBinarySearch {
     public static int find(int[] arr, int key) {
         int start = 0;
         int end = arr.length - 1;
-        boolean arrDescending = arr[start]
-            > arr[end]; // checking for Array is in ascending order or descending order.
+        boolean arrDescending = arr[start] > arr[end]; // checking for Array is in ascending order or descending order.
         while (start <= end) {
             int mid = end - start / 2;
             if (arr[mid] == key) {

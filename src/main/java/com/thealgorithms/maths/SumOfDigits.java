@@ -3,13 +3,11 @@ package com.thealgorithms.maths;
 public class SumOfDigits {
 
     public static void main(String[] args) {
-        assert sumOfDigits(-123) == 6 && sumOfDigitsRecursion(-123) == 6
-            && sumOfDigitsFast(-123) == 6;
+        assert sumOfDigits(-123) == 6 && sumOfDigitsRecursion(-123) == 6 && sumOfDigitsFast(-123) == 6;
 
         assert sumOfDigits(0) == 0 && sumOfDigitsRecursion(0) == 0 && sumOfDigitsFast(0) == 0;
 
-        assert sumOfDigits(12345) == 15 && sumOfDigitsRecursion(12345) == 15
-            && sumOfDigitsFast(12345) == 15;
+        assert sumOfDigits(12345) == 15 && sumOfDigitsRecursion(12345) == 15 && sumOfDigitsFast(12345) == 15;
     }
 
     /**

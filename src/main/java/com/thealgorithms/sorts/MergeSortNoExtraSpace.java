@@ -13,8 +13,7 @@ public class MergeSortNoExtraSpace {
         merge_sort(a, 0, n - 1, maxele);
     }
 
-    public static void merge_sort(
-        int[] a, int start, int end, int maxele) { // this function divides the array into 2 halves
+    public static void merge_sort(int[] a, int start, int end, int maxele) { // this function divides the array into 2 halves
         if (start < end) {
             int mid = (start + end) / 2;
             merge_sort(a, start, mid, maxele);

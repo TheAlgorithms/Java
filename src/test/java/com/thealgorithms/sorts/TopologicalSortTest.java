@@ -53,8 +53,7 @@ class TopologicalSortTest {
         graph.addEdge("6", "2");
         graph.addEdge("7", "");
         graph.addEdge("8", "");
-        Exception exception
-            = assertThrows(BackEdgeException.class, () -> TopologicalSort.sort(graph));
+        Exception exception = assertThrows(BackEdgeException.class, () -> TopologicalSort.sort(graph));
         String expected = "This graph contains a cycle. No linear ordering is possible. "
             + "Back edge: 6 -> 2";
         assertEquals(exception.getMessage(), expected);

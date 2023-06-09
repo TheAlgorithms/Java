@@ -153,8 +153,7 @@ public class Verhoeff {
 
     private static void generateAndPrint(String input) {
         String result = addVerhoeffChecksum(input);
-        System.out.println(
-            "Generate and add checksum to initial value '" + input + "'. Result: '" + result + "'");
+        System.out.println("Generate and add checksum to initial value '" + input + "'. Result: '" + result + "'");
     }
 
     private static void checkInput(String input) {

@@ -100,8 +100,7 @@ public class HorspoolSearch {
             return -1;
         }
 
-        int textIndex = pattern.length()
-            - 1; // align pattern with text start and get index of the last character
+        int textIndex = pattern.length() - 1; // align pattern with text start and get index of the last character
 
         // while pattern is not out of text bounds
         while (textIndex < text.length()) {
@@ -111,8 +110,7 @@ public class HorspoolSearch {
                 comparisons++;
                 char patternChar = pattern.charAt(i);
                 char textChar = text.charAt((textIndex + i) - (pattern.length() - 1));
-                if (!charEquals(
-                        patternChar, textChar, caseSensitive)) { // bad character, shift pattern
+                if (!charEquals(patternChar, textChar, caseSensitive)) { // bad character, shift pattern
                     textIndex += getShiftValue(text.charAt(textIndex));
                     break;
                 }
@@ -159,8 +157,7 @@ public class HorspoolSearch {
         patternLength = pattern.length();
         HashMap<Character, Integer> table = new HashMap<>();
 
-        for (int i = pattern.length() - 2; i >= 0;
-             i--) { // length - 2 is the index of the second to last character
+        for (int i = pattern.length() - 2; i >= 0; i--) { // length - 2 is the index of the second to last character
             char c = pattern.charAt(i);
             int finalI = i;
             table.computeIfAbsent(c, k -> pattern.length() - 1 - finalI);

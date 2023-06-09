@@ -13,8 +13,7 @@ public class MergeSortRecursiveTest {
 
     @Test
     void testMergeSortRecursiveCase1() {
-        MergeSortRecursive mergeSortRecursive
-            = new MergeSortRecursive(Arrays.asList(5, 12, 9, 3, 15, 88));
+        MergeSortRecursive mergeSortRecursive = new MergeSortRecursive(Arrays.asList(5, 12, 9, 3, 15, 88));
 
         List<Integer> expected = Arrays.asList(3, 5, 9, 12, 15, 88);
         List<Integer> sorted = mergeSortRecursive.mergeSort();
@@ -24,8 +23,7 @@ public class MergeSortRecursiveTest {
 
     @Test
     void testMergeSortRecursiveCase2() {
-        MergeSortRecursive mergeSortRecursive
-            = new MergeSortRecursive(Arrays.asList(-3, 5, 3, 4, 3, 7, 40, -20, 30, 0));
+        MergeSortRecursive mergeSortRecursive = new MergeSortRecursive(Arrays.asList(-3, 5, 3, 4, 3, 7, 40, -20, 30, 0));
 
         List<Integer> expected = Arrays.asList(-20, -3, 0, 3, 3, 4, 5, 7, 30, 40);
         List<Integer> sorted = mergeSortRecursive.mergeSort();

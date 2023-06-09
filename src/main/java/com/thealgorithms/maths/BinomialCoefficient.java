@@ -33,7 +33,6 @@ public class BinomialCoefficient {
         }
 
         // Recursive Call
-        return (binomialCoefficient(totalObjects - 1, numberOfObjects - 1)
-            + binomialCoefficient(totalObjects - 1, numberOfObjects));
+        return (binomialCoefficient(totalObjects - 1, numberOfObjects - 1) + binomialCoefficient(totalObjects - 1, numberOfObjects));
     }
 }

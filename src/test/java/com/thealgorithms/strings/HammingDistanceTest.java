@@ -18,8 +18,7 @@ public class HammingDistanceTest {
 
     @Test
     void testNotEqualStringLengths() {
-        Exception exception = assertThrows(
-            Exception.class, () -> HammingDistance.calculateHammingDistance("ab", "abc"));
+        Exception exception = assertThrows(Exception.class, () -> HammingDistance.calculateHammingDistance("ab", "abc"));
         assertEquals("String lengths must be equal", exception.getMessage());
     }
 }

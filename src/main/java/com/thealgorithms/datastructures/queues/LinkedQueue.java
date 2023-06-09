@@ -123,8 +123,7 @@ public class LinkedQueue<T> implements Iterable<T> {
      */
 
     public T peek(int pos) {
-        if (pos > size)
-            throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
+        if (pos > size) throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
         Node<T> node = front;
         while (pos-- > 0) node = node.next;
         return node.data;

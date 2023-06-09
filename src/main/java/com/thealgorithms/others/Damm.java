@@ -98,8 +98,7 @@ public class Damm {
 
     private static void generateAndPrint(String input) {
         String result = addDammChecksum(input);
-        System.out.println(
-            "Generate and add checksum to initial value '" + input + "'. Result: '" + result + "'");
+        System.out.println("Generate and add checksum to initial value '" + input + "'. Result: '" + result + "'");
     }
 
     private static void checkInput(String input) {

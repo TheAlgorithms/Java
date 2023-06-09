@@ -30,11 +30,9 @@ public class TreeSortTest {
 
     @Test
     public void treeSortStringArray() {
-        String[] inputArray
-            = {"F6w9", "l1qz", "dIxH", "larj", "kRzy", "vnNH", "3ftM", "hc4n", "C5Qi", "btGF"};
+        String[] inputArray = {"F6w9", "l1qz", "dIxH", "larj", "kRzy", "vnNH", "3ftM", "hc4n", "C5Qi", "btGF"};
         String[] outputArray = treeSort.sort(inputArray);
-        String[] expectedArray
-            = {"3ftM", "C5Qi", "F6w9", "btGF", "dIxH", "hc4n", "kRzy", "l1qz", "larj", "vnNH"};
+        String[] expectedArray = {"3ftM", "C5Qi", "F6w9", "btGF", "dIxH", "hc4n", "kRzy", "l1qz", "larj", "vnNH"};
         assertArrayEquals(outputArray, expectedArray);
     }
 
@@ -48,11 +46,9 @@ public class TreeSortTest {
 
     @Test
     public void treeSortDoubleArray() {
-        Double[] inputArray = {0.8047485045, 0.4493112337, 0.8298433723, 0.2691406748, 0.2482782839,
-            0.5976243420, 0.6746235284, 0.0552623569, 0.3515624123, 0.0536747336};
+        Double[] inputArray = {0.8047485045, 0.4493112337, 0.8298433723, 0.2691406748, 0.2482782839, 0.5976243420, 0.6746235284, 0.0552623569, 0.3515624123, 0.0536747336};
         Double[] outputArray = treeSort.sort(inputArray);
-        Double[] expectedArray = {0.0536747336, 0.0552623569, 0.2482782839, 0.2691406748,
-            0.3515624123, 0.4493112337, 0.5976243420, 0.6746235284, 0.8047485045, 0.8298433723};
+        Double[] expectedArray = {0.0536747336, 0.0552623569, 0.2482782839, 0.2691406748, 0.3515624123, 0.4493112337, 0.5976243420, 0.6746235284, 0.8047485045, 0.8298433723};
         assertArrayEquals(outputArray, expectedArray);
     }
 }

@@ -43,8 +43,7 @@ public class InorderTraversalTest {
     */
     @Test
     public void testRecursiveInorderNonBalanced() {
-        final BinaryTree.Node root
-            = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
         List<Integer> expected = List.of(5, 6, 7, 8);
 
         assertEquals(expected, InorderTraversal.recursiveInorder(root));

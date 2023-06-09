@@ -34,13 +34,10 @@ public class KaprekarNumbers {
             BigInteger leftDigits1 = BigInteger.ZERO;
             BigInteger leftDigits2;
             if (numberSquared.toString().contains("0")) {
-                leftDigits1 = new BigInteger(
-                    numberSquared.toString().substring(0, numberSquared.toString().indexOf("0")));
+                leftDigits1 = new BigInteger(numberSquared.toString().substring(0, numberSquared.toString().indexOf("0")));
             }
-            leftDigits2 = new BigInteger(numberSquared.toString().substring(
-                0, (numberSquared.toString().length() - number.length())));
-            BigInteger rightDigits = new BigInteger(numberSquared.toString().substring(
-                numberSquared.toString().length() - number.length()));
+            leftDigits2 = new BigInteger(numberSquared.toString().substring(0, (numberSquared.toString().length() - number.length())));
+            BigInteger rightDigits = new BigInteger(numberSquared.toString().substring(numberSquared.toString().length() - number.length()));
             String x = leftDigits1.add(rightDigits).toString();
             String y = leftDigits2.add(rightDigits).toString();
             return (number.equals(x)) || (number.equals(y));

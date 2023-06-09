@@ -49,8 +49,7 @@ public final class QuickSelect {
         return selectIndex(list, 0, list.size() - 1, n);
     }
 
-    private static <T extends Comparable<T>> int selectIndex(
-        List<T> list, int left, int right, int n) {
+    private static <T extends Comparable<T>> int selectIndex(List<T> list, int left, int right, int n) {
         while (true) {
             if (left == right) return left;
             int pivotIndex = pivot(list, left, right);
@@ -65,8 +64,7 @@ public final class QuickSelect {
         }
     }
 
-    private static <T extends Comparable<T>> int partition(
-        List<T> list, int left, int right, int pivotIndex, int n) {
+    private static <T extends Comparable<T>> int partition(List<T> list, int left, int right, int pivotIndex, int n) {
         T pivotValue = list.get(pivotIndex);
         Collections.swap(list, pivotIndex, right);
         int storeIndex = left;

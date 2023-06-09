@@ -70,8 +70,7 @@ public class Mandelbrot {
      * @param useDistanceColorCoding Render in color or black and white.
      * @return The image of the rendered Mandelbrot set.
      */
-    public static BufferedImage getImage(int imageWidth, int imageHeight, double figureCenterX,
-        double figureCenterY, double figureWidth, int maxStep, boolean useDistanceColorCoding) {
+    public static BufferedImage getImage(int imageWidth, int imageHeight, double figureCenterX, double figureCenterY, double figureWidth, int maxStep, boolean useDistanceColorCoding) {
         if (imageWidth <= 0) {
             throw new IllegalArgumentException("imageWidth should be greater than zero");
         }
@@ -84,8 +83,7 @@ public class Mandelbrot {
             throw new IllegalArgumentException("maxStep should be greater than zero");
         }
 
-        BufferedImage image
-            = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         double figureHeight = figureWidth / imageWidth * imageHeight;
 
         // loop through the image-coordinates
@@ -93,15 +91,12 @@ public class Mandelbrot {
             for (int imageY = 0; imageY < imageHeight; imageY++) {
                 // determine the figure-coordinates based on the image-coordinates
                 double figureX = figureCenterX + ((double) imageX / imageWidth - 0.5) * figureWidth;
-                double figureY
-                    = figureCenterY + ((double) imageY / imageHeight - 0.5) * figureHeight;
+                double figureY = figureCenterY + ((double) imageY / imageHeight - 0.5) * figureHeight;
 
                 double distance = getDistance(figureX, figureY, maxStep);
 
                 // color the corresponding pixel based on the selected coloring-function
-                image.setRGB(imageX, imageY,
-                    useDistanceColorCoding ? colorCodedColorMap(distance).getRGB()
-                                           : blackAndWhiteColorMap(distance).getRGB());
+                image.setRGB(imageX, imageY, useDistanceColorCoding ? colorCodedColorMap(distance).getRGB() : blackAndWhiteColorMap(distance).getRGB());
             }
         }
 

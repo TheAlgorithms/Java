@@ -83,15 +83,13 @@ public class TarjansAlgorithm {
         Stack<Integer> st = new Stack<Integer>();
 
         for (int i = 0; i < V; i++) {
-            if (insertionTime[i] == -1)
-                stronglyConnCompsUtil(i, lowTime, insertionTime, isInStack, st, graph);
+            if (insertionTime[i] == -1) stronglyConnCompsUtil(i, lowTime, insertionTime, isInStack, st, graph);
         }
 
         return SCClist;
     }
 
-    private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime,
-        boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
+    private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime, boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
 
         // Initialize insertion time and lowTime value of current node
         insertionTime[u] = Time;

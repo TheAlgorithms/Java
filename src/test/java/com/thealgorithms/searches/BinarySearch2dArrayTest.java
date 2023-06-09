@@ -160,7 +160,6 @@ public class BinarySearch2dArrayTest {
         int target = 5;
 
         // Assert that an empty array is not valid input for the method.
-        assertThrows(ArrayIndexOutOfBoundsException.class,
-            () -> BinarySearch2dArray.BinarySearch(arr, target));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> BinarySearch2dArray.BinarySearch(arr, target));
     }
 }

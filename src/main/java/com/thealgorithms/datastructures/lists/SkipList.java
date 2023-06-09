@@ -203,9 +203,7 @@ public class SkipList<E extends Comparable<E>> {
                                 return acc.toString();
                             })
                             .collect(Collectors.joining("\n"));
-        String positions = IntStream.range(0, sizeWithHeader - 1)
-                               .mapToObj(i -> String.format("%3d", i))
-                               .collect(Collectors.joining(" "));
+        String positions = IntStream.range(0, sizeWithHeader - 1).mapToObj(i -> String.format("%3d", i)).collect(Collectors.joining(" "));
 
         return result + String.format("%n H %s%n", positions);
     }
@@ -296,8 +294,7 @@ public class SkipList<E extends Comparable<E>> {
 
         public BernoulliHeightStrategy(double probability) {
             if (probability <= 0 || probability >= 1) {
-                throw new IllegalArgumentException(
-                    "Probability should be from 0 to 1. But was: " + probability);
+                throw new IllegalArgumentException("Probability should be from 0 to 1. But was: " + probability);
             }
             this.probability = probability;
         }

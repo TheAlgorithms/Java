@@ -47,9 +47,7 @@ public class AmicableNumber {
                 }
             }
         }
-        res.insert(0,
-            "Int Range of " + startValue + " till " + stopValue + " there are " + countofRes
-                + " Amicable_numbers.These are \n ");
+        res.insert(0, "Int Range of " + startValue + " till " + stopValue + " there are " + countofRes + " Amicable_numbers.These are \n ");
         System.out.println(res);
     }
 
@@ -61,8 +59,7 @@ public class AmicableNumber {
      * otherwise false
      */
     static boolean isAmicableNumber(int numberOne, int numberTwo) {
-        return ((recursiveCalcOfDividerSum(numberOne, numberOne) == numberTwo
-            && numberOne == recursiveCalcOfDividerSum(numberTwo, numberTwo)));
+        return ((recursiveCalcOfDividerSum(numberOne, numberOne) == numberTwo && numberOne == recursiveCalcOfDividerSum(numberTwo, numberTwo)));
     }
 
     /**

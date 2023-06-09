@@ -26,8 +26,7 @@ public class DualPivotQuickSort implements SortAlgorithm {
      * @param right The last index of an array
      * @param array The array to be sorted
      */
-    private static <T extends Comparable<T>> void dualPivotQuicksort(
-        T[] array, int left, int right) {
+    private static <T extends Comparable<T>> void dualPivotQuicksort(T[] array, int left, int right) {
         if (left < right) {
             int[] pivots = partition(array, left, right);
 

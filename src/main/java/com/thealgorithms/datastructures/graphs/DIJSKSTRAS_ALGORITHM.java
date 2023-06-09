@@ -45,8 +45,7 @@ class dijkstras {
             Set[u] = true;
 
             for (int v = 0; v < k; v++) {
-                if (!Set[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE
-                    && dist[u] + graph[u][v] < dist[v]) {
+                if (!Set[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
                     dist[v] = dist[u] + graph[u][v];
                 }
             }
