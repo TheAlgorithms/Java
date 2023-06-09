@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class DudeneyNumberTest {
 
@@ -13,6 +13,5 @@ class DudeneyNumberTest {
 
         assertTrue(() -> DudeneyNumber.isDudeney(validDudeneyNumber));
         assertFalse(() -> DudeneyNumber.isDudeney(invalidDudeneyNumber));
-
     }
 }

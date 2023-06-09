@@ -1,13 +1,14 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class LeonardoNumberTest {
     @Test
     void leonardoNumberNegative() {
-        assertThrows(ArithmeticException.class, ()-> LeonardoNumber.leonardoNumber(-1));
+        assertThrows(ArithmeticException.class, () -> LeonardoNumber.leonardoNumber(-1));
     }
     @Test
     void leonardoNumberZero() {
@@ -23,6 +24,6 @@ public class LeonardoNumberTest {
     }
     @Test
     void leonardoNumberTwenty() {
-        assertEquals(21891 , LeonardoNumber.leonardoNumber(20));
+        assertEquals(21891, LeonardoNumber.leonardoNumber(20));
     }
 }

@@ -23,7 +23,8 @@ public class MonteCarloTreeSearch {
         int score;
         int visitCount;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(Node parent, boolean isPlayersTurn) {
             this.parent = parent;
@@ -78,9 +79,7 @@ public class MonteCarloTreeSearch {
         winnerNode = getWinnerNode(rootNode);
         printScores(rootNode);
         System.out.format(
-            "\nThe optimal node is: %02d\n",
-            rootNode.childNodes.indexOf(winnerNode) + 1
-        );
+            "\nThe optimal node is: %02d\n", rootNode.childNodes.indexOf(winnerNode) + 1);
 
         return winnerNode;
     }
@@ -120,13 +119,10 @@ public class MonteCarloTreeSearch {
                     break;
                 }
 
-                uctTemp =
-                    ((double) childNode.score / childNode.visitCount) +
-                    1.41 *
-                    Math.sqrt(
-                        Math.log(promisingNode.visitCount) /
-                        (double) childNode.visitCount
-                    );
+                uctTemp = ((double) childNode.score / childNode.visitCount)
+                    + 1.41
+                        * Math.sqrt(
+                            Math.log(promisingNode.visitCount) / (double) childNode.visitCount);
 
                 if (uctTemp > uctIndex) {
                     uctIndex = uctTemp;
@@ -165,10 +161,8 @@ public class MonteCarloTreeSearch {
             tempNode.visitCount++;
 
             // Add wining scores to bouth player and opponent depending on the turn.
-            if (
-                (tempNode.isPlayersTurn && isPlayerWinner) ||
-                (!tempNode.isPlayersTurn && !isPlayerWinner)
-            ) {
+            if ((tempNode.isPlayersTurn && isPlayerWinner)
+                || (!tempNode.isPlayersTurn && !isPlayerWinner)) {
                 tempNode.score += WIN_SCORE;
             }
 
@@ -177,22 +171,15 @@ public class MonteCarloTreeSearch {
     }
 
     public Node getWinnerNode(Node rootNode) {
-        return Collections.max(
-            rootNode.childNodes,
-            Comparator.comparing(c -> c.score)
-        );
+        return Collections.max(rootNode.childNodes, Comparator.comparing(c -> c.score));
     }
 
     public void printScores(Node rootNode) {
         System.out.println("N.\tScore\t\tVisits");
 
         for (int i = 0; i < rootNode.childNodes.size(); i++) {
-            System.out.printf(
-                    "%02d\t%d\t\t%d%n",
-                    i + 1,
-                    rootNode.childNodes.get(i).score,
-                    rootNode.childNodes.get(i).visitCount
-            );
+            System.out.printf("%02d\t%d\t\t%d%n", i + 1, rootNode.childNodes.get(i).score,
+                rootNode.childNodes.get(i).visitCount);
         }
     }
 }

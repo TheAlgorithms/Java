@@ -1,8 +1,5 @@
 package com.thealgorithms.datastructures.queues;
 
-
-
-
 /**
  * This class implements a PriorityQueue.
  *
@@ -126,7 +123,8 @@ class PriorityQueue {
         if (isEmpty()) {
             throw new RuntimeException("Queue is Empty");
         } else {
-            int max = queueArray[1]; // By defintion of our max-heap, value at queueArray[1] pos is the greatest
+            int max = queueArray[1]; // By defintion of our max-heap, value at queueArray[1] pos is
+                                     // the greatest
 
             // Swap max and last element
             int temp = queueArray[1];
@@ -175,4 +173,3 @@ class PriorityQueue {
         return nItems;
     }
 }
-

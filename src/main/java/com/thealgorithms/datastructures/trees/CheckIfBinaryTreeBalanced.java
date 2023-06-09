@@ -80,11 +80,7 @@ public class CheckIfBinaryTreeBalanced {
      * @param depth The current depth of the node
      * @param isBalanced The array of length 1 keeping track of our balance
      */
-    private int isBalancedRecursive(
-        BTNode node,
-        int depth,
-        boolean[] isBalanced
-    ) {
+    private int isBalancedRecursive(BTNode node, int depth, boolean[] isBalanced) {
         // If the node is null, we should not explore it and the height is 0
         // If the tree is already not balanced, might as well stop because we
         // can't make it balanced now!
@@ -94,11 +90,7 @@ public class CheckIfBinaryTreeBalanced {
 
         // Visit the left and right children, incrementing their depths by 1
         int leftHeight = isBalancedRecursive(node.left, depth + 1, isBalanced);
-        int rightHeight = isBalancedRecursive(
-            node.right,
-            depth + 1,
-            isBalanced
-        );
+        int rightHeight = isBalancedRecursive(node.right, depth + 1, isBalanced);
 
         // If the height of either of the left or right subtrees differ by more
         // than 1, we cannot be balanced
@@ -174,10 +166,7 @@ public class CheckIfBinaryTreeBalanced {
 
                     // The height of the subtree containing this node is the
                     // max of the left and right subtree heighs plus 1
-                    subtreeHeights.put(
-                        node,
-                        Math.max(rightHeight, leftHeight) + 1
-                    );
+                    subtreeHeights.put(node, Math.max(rightHeight, leftHeight) + 1);
 
                     // We've now visited this node, so we pop it from the stack
                     nodeStack.pop();

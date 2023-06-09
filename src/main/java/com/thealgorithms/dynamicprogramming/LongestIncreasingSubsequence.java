@@ -56,8 +56,8 @@ public class LongestIncreasingSubsequence {
             } // array[i] will become end candidate of an existing subsequence or
             // Throw away larger elements in all LIS, to make room for upcoming grater elements than
             // array[i]
-            // (and also, array[i] would have already appeared in one of LIS, identify the location and
-            // replace it)
+            // (and also, array[i] would have already appeared in one of LIS, identify the location
+            // and replace it)
             else {
                 tail[upperBound(tail, -1, length - 1, array[i])] = array[i];
             }

@@ -19,16 +19,17 @@ public class PronicNumber {
      * @return true if input number is a pronic number, false otherwise
      */
     static boolean isPronic(int input_number) {
-        //Iterating from 0 to input_number
+        // Iterating from 0 to input_number
         for (int i = 0; i <= input_number; i++) {
-            //Checking if product of i and (i+1) is equals input_number
+            // Checking if product of i and (i+1) is equals input_number
             if (i * (i + 1) == input_number && i != input_number) {
-                //return true if product of i and (i+1) is equals input_number
+                // return true if product of i and (i+1) is equals input_number
                 return true;
             }
         }
 
-        //return false if product of i and (i+1) for all values from 0 to input_number is not equals input_number
+        // return false if product of i and (i+1) for all values from 0 to input_number is not
+        // equals input_number
         return false;
     }
 }

@@ -12,17 +12,13 @@ public class PrimeCheck {
         if (isPrime(n)) {
             System.out.println("algo1 verify that " + n + " is a prime number");
         } else {
-            System.out.println(
-                "algo1 verify that " + n + " is not a prime number"
-            );
+            System.out.println("algo1 verify that " + n + " is not a prime number");
         }
 
         if (fermatPrimeChecking(n, 20)) {
             System.out.println("algo2 verify that " + n + " is a prime number");
         } else {
-            System.out.println(
-                "algo2 verify that " + n + " is not a prime number"
-            );
+            System.out.println("algo2 verify that " + n + " is not a prime number");
         }
         scanner.close();
     }

@@ -28,22 +28,22 @@ For more information see https://www.geeksforgeeks.org/maximum-path-sum-matrix/
 public class MinimumPathSum {
 
     public void testRegular() {
-        int[][] grid = { { 1, 3, 1 }, { 1, 5, 1 }, { 4, 2, 1 } };
+        int[][] grid = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
         System.out.println(minimumPathSum(grid));
     }
 
     public void testLessColumns() {
-        int[][] grid = { { 1, 2 }, { 5, 6 }, { 1, 1 } };
+        int[][] grid = {{1, 2}, {5, 6}, {1, 1}};
         System.out.println(minimumPathSum(grid));
     }
 
     public void testLessRows() {
-        int[][] grid = { { 2, 3, 3 }, { 7, 2, 1 } };
+        int[][] grid = {{2, 3, 3}, {7, 2, 1}};
         System.out.println(minimumPathSum(grid));
     }
 
     public void testOneRowOneColumn() {
-        int[][] grid = { { 2 } };
+        int[][] grid = {{2}};
         System.out.println(minimumPathSum(grid));
     }
 

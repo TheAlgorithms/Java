@@ -61,7 +61,8 @@ public class HexToOct {
         hexadecnum = scan.nextLine();
 
         // first convert hexadecimal to decimal
-        decnum = hex2decimal(hexadecnum); // Pass the string to the hex2decimal function and get the decimal form in
+        decnum = hex2decimal(
+            hexadecnum); // Pass the string to the hex2decimal function and get the decimal form in
         // variable decnum
 
         // convert decimal to octal

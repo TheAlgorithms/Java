@@ -38,13 +38,7 @@ public class FloodFill {
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      */
-    public static void floodFill(
-        int[][] image,
-        int x,
-        int y,
-        int newColor,
-        int oldColor
-    ) {
+    public static void floodFill(int[][] image, int x, int y, int newColor, int oldColor) {
         if (x < 0 || x >= image.length) return;
         if (y < 0 || y >= image[x].length) return;
         if (getPixel(image, x, y) != oldColor) return;

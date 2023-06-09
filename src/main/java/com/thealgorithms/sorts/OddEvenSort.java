@@ -19,7 +19,7 @@ public class OddEvenSort {
 
         oddEvenSort(arr);
 
-        //Print Sorted elements
+        // Print Sorted elements
         for (int i = 0; i < arr.length - 1; ++i) {
             System.out.println(arr[i]);
             assert arr[i] <= arr[i + 1];

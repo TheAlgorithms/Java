@@ -9,7 +9,7 @@ public class CircularBuffer<Item> {
     private final AtomicInteger size = new AtomicInteger(0);
 
     public CircularBuffer(int size) {
-        //noinspection unchecked
+        // noinspection unchecked
         this.buffer = (Item[]) new Object[size];
         this.putPointer = new CircularPointer(0, size);
         this.getPointer = new CircularPointer(0, size);
@@ -24,8 +24,7 @@ public class CircularBuffer<Item> {
     }
 
     public Item get() {
-        if (isEmpty())
-            return null;
+        if (isEmpty()) return null;
 
         Item item = buffer[getPointer.getAndIncrement()];
         size.decrementAndGet();
@@ -33,8 +32,7 @@ public class CircularBuffer<Item> {
     }
 
     public boolean put(Item item) {
-        if (isFull())
-            return false;
+        if (isFull()) return false;
 
         buffer[putPointer.getAndIncrement()] = item;
         size.incrementAndGet();
@@ -51,8 +49,7 @@ public class CircularBuffer<Item> {
         }
 
         public int getAndIncrement() {
-            if (pointer == max)
-                pointer = 0;
+            if (pointer == max) pointer = 0;
             int tmp = pointer;
             pointer++;
             return tmp;

@@ -15,19 +15,19 @@ public class BSTFromSortedArrayTest {
 
     @Test
     public void testEmptyArray() {
-        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[]{});
+        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[] {});
         Assertions.assertNull(actualBST);
     }
 
     @Test
     public void testSingleElementArray() {
-        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[]{Integer.MIN_VALUE});
+        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[] {Integer.MIN_VALUE});
         Assertions.assertTrue(CheckBinaryTreeIsValidBST.isBST(actualBST));
     }
 
     @Test
     public void testCreateBSTFromSmallArray() {
-        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[]{1, 2, 3});
+        BinaryTree.Node actualBST = BSTFromSortedArray.createBST(new int[] {1, 2, 3});
         Assertions.assertTrue(CheckBinaryTreeIsValidBST.isBST(actualBST));
     }
 

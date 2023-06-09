@@ -31,9 +31,7 @@ class PrimMST {
     void printMST(int[] parent, int n, int[][] graph) {
         System.out.println("Edge   Weight");
         for (int i = 1; i < V; i++) {
-            System.out.println(
-                parent[i] + " - " + i + "    " + graph[i][parent[i]]
-            );
+            System.out.println(parent[i] + " - " + i + "    " + graph[i][parent[i]]);
         }
     }
 
@@ -72,17 +70,12 @@ class PrimMST {
             // Update key value and parent index of the adjacent
             // vertices of the picked vertex. Consider only those
             // vertices which are not yet included in MST
-            for (
-                int v = 0;
-                v < V;
-                v++
-            ) // Update the key only if graph[u][v] is smaller than key[v] // mstSet[v] is false for vertices not yet included in MST // graph[u][v] is non zero only for adjacent vertices of m
+            for (int v = 0; v < V;
+                 v++) // Update the key only if graph[u][v] is smaller than key[v] // mstSet[v] is
+                      // false for vertices not yet included in MST // graph[u][v] is non zero only
+                      // for adjacent vertices of m
             {
-                if (
-                    graph[u][v] != 0 &&
-                            !mstSet[v] &&
-                    graph[u][v] < key[v]
-                ) {
+                if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] < key[v]) {
                     parent[v] = u;
                     key[v] = graph[u][v];
                 }
@@ -104,11 +97,11 @@ class PrimMST {
          9          */
         PrimMST t = new PrimMST();
         int[][] graph = new int[][] {
-            { 0, 2, 0, 6, 0 },
-            { 2, 0, 3, 8, 5 },
-            { 0, 3, 0, 0, 7 },
-            { 6, 8, 0, 0, 9 },
-            { 0, 5, 7, 9, 0 },
+            {0, 2, 0, 6, 0},
+            {2, 0, 3, 8, 5},
+            {0, 3, 0, 0, 7},
+            {6, 8, 0, 0, 9},
+            {0, 5, 7, 9, 0},
         };
 
         // Print the solution

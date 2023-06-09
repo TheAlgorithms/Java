@@ -5,7 +5,8 @@ package com.thealgorithms.datastructures.trees;
  */
 
 /* PROBLEM DESCRIPTION :
-  There is a Binary Search Tree given, and we are supposed to find a random node in the given binary tree.
+  There is a Binary Search Tree given, and we are supposed to find a random node in the given binary
+  tree.
  */
 
 /* ALGORITHM :
@@ -14,9 +15,9 @@ package com.thealgorithms.datastructures.trees;
   Step 3: Now use a method inOrder() that takes a node as input parameter to traverse through the
           binary tree in inorder fashion as also store the values in a ArrayList simultaneously.
   Step 4: Now define a method getRandom() that takes a node as input parameter, in this first call
-          the inOrder() method to store the values in the arraylist, then find the size of the binary tree and now just generate a random number between 0 to n-1.
-  Step 5: After generating the number display the value of the ArrayList at the generated index
-  Step 6: STOP
+          the inOrder() method to store the values in the arraylist, then find the size of the
+  binary tree and now just generate a random number between 0 to n-1. Step 5: After generating the
+  number display the value of the ArrayList at the generated index Step 6: STOP
  */
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class TreeRandomNode {
         int n = list.size();
         int min = 0;
         int max = n - 1;
-        //Generate random int value from 0 to n-1
+        // Generate random int value from 0 to n-1
         int b = (int) (Math.random() * (max - min + 1) + min);
         // displaying the value at the generated index
         int random = list.get(b);
@@ -74,9 +75,10 @@ public class TreeRandomNode {
 }
 /* Explanation of the Approach :
   (a) Form the required binary tree
-  (b) Now use the inOrder() method to get the nodes in inOrder fashion and also store them in the given arraylist 'list'
-  (c) Using the getRandom() method generate a random number between 0 to n-1, then get the value at the generated random number
-      from the arraylist using get() method and finally display the result.
+  (b) Now use the inOrder() method to get the nodes in inOrder fashion and also store them in the
+  given arraylist 'list' (c) Using the getRandom() method generate a random number between 0 to n-1,
+  then get the value at the generated random number from the arraylist using get() method and
+  finally display the result.
  */
 /* OUTPUT :
   First output :

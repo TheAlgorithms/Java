@@ -37,7 +37,8 @@ import java.util.Stack;
             popped elements.
         d. Finally, push the next in the stack.
 
-    3. If elements are left in stack after completing while loop then their Next Grater element is -1.
+    3. If elements are left in stack after completing while loop then their Next Grater element is
+   -1.
  */
 
 public class NextGraterElement {
@@ -61,7 +62,7 @@ public class NextGraterElement {
     }
 
     public static void main(String[] args) {
-        int[] input = { 2, 7, 3, 5, 4, 6, 8 };
+        int[] input = {2, 7, 3, 5, 4, 6, 8};
         int[] result = findNextGreaterElements(input);
         System.out.println(Arrays.toString(result));
     }

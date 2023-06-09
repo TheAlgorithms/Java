@@ -10,29 +10,29 @@ class BlowfishTest {
 
     @Test
     void testEncrypt() {
-        //given
+        // given
         String plainText = "123456abcd132536";
         String key = "aabb09182736ccdd";
         String expectedOutput = "d748ec383d3405f7";
 
-        //when
+        // when
         String cipherText = blowfish.encrypt(plainText, key);
 
-        //then
+        // then
         assertEquals(expectedOutput, cipherText);
     }
 
     @Test
     void testDecrypt() {
-        //given
+        // given
         String cipherText = "d748ec383d3405f7";
         String key = "aabb09182736ccdd";
         String expectedOutput = "123456abcd132536";
 
-        //when
+        // when
         String plainText = blowfish.decrypt(cipherText, key);
 
-        //then
+        // then
         assertEquals(expectedOutput, plainText);
     }
 }

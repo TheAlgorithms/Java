@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 public class KosarajuTest {
@@ -14,7 +13,7 @@ public class KosarajuTest {
 
     @Test
     public void findStronglyConnectedComps() {
-        //Create a adjacency list of graph
+        // Create a adjacency list of graph
         var n = 8;
         var adjList = new ArrayList<List<Integer>>(n);
 
@@ -36,10 +35,10 @@ public class KosarajuTest {
         List<List<Integer>> actualResult = kosaraju.kosaraju(n, adjList);
         List<List<Integer>> expectedResult = new ArrayList<>();
         /*
-            Expected result: 
+            Expected result:
             0, 1, 2
             3
-            5, 4, 6 
+            5, 4, 6
             7
         */
         expectedResult.add(Arrays.asList(1, 2, 0));
@@ -51,7 +50,7 @@ public class KosarajuTest {
 
     @Test
     public void findStronglyConnectedCompsShouldGetSingleNodes() {
-        //Create a adjacency list of graph
+        // Create a adjacency list of graph
         var n = 8;
         var adjList = new ArrayList<List<Integer>>(n);
 
@@ -71,11 +70,10 @@ public class KosarajuTest {
         List<List<Integer>> actualResult = kosaraju.kosaraju(n, adjList);
         List<List<Integer>> expectedResult = new ArrayList<>();
         /*
-            Expected result: 
+            Expected result:
             0, 1, 2, 3, 4, 5, 6, 7
         */
         expectedResult.add(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 0));
         assertTrue(expectedResult.equals(actualResult));
     }
-
 }

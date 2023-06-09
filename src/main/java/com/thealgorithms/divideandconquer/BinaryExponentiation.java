@@ -5,7 +5,7 @@ package com.thealgorithms.divideandconquer;
 /*
  * Binary Exponentiation is a method to calculate a to the power of b.
  * It is used to calculate a^n in O(log n) time.
- * 
+ *
  * Reference:
  * https://iq.opengenus.org/binary-exponentiation/
  */

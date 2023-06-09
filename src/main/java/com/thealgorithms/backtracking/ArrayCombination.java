@@ -22,7 +22,7 @@ public class ArrayCombination {
         length = k;
         Integer[] arr = new Integer[n];
         for (int i = 1; i <= n; i++) {
-            arr[i-1] = i;
+            arr[i - 1] = i;
         }
         return Combination.combination(arr, length);
     }

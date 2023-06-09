@@ -1,6 +1,6 @@
 package com.thealgorithms.searches;
 
-//URL: https://www.geeksforgeeks.org/order-agnostic-binary-search/
+// URL: https://www.geeksforgeeks.org/order-agnostic-binary-search/
 
 /* Order Agnostic Binary Search is an algorithm where we do not know whether the given
    sorted array is ascending or descending order.
@@ -11,37 +11,36 @@ package com.thealgorithms.searches;
    Depending upon the condition, respective statements will be executed and we will get our answer.
  */
 
- public class OrderAgnosticBinarySearch {
+public class OrderAgnosticBinarySearch {
 
-     static int BinSearchAlgo(int[] arr, int start, int end, int target) {
+    static int BinSearchAlgo(int[] arr, int start, int end, int target) {
 
-         // Checking whether the given array is ascending order
-         boolean AscOrd = arr[start] < arr[end];
+        // Checking whether the given array is ascending order
+        boolean AscOrd = arr[start] < arr[end];
 
-         while (start <= end) {
-             int middle = start + (end - start) / 2;
+        while (start <= end) {
+            int middle = start + (end - start) / 2;
 
-             // Check if the desired element is present at the middle position
-             if (arr[middle] == target)
-                 return middle;       // returns the index of the middle element
+            // Check if the desired element is present at the middle position
+            if (arr[middle] == target) return middle; // returns the index of the middle element
 
-             // Ascending order
-             if (AscOrd) {
-                 if (arr[middle] < target)
-                     start = middle + 1;
-                 else
-                     end = middle - 1;
-             }
+            // Ascending order
+            if (AscOrd) {
+                if (arr[middle] < target)
+                    start = middle + 1;
+                else
+                    end = middle - 1;
+            }
 
-             // Descending order
-             else {
-                 if (arr[middle] > target)
-                     start = middle + 1;
-                 else
-                     end = middle - 1;
-             }
-         }
-         // Element is not present
-         return -1;
-     }
- }
+            // Descending order
+            else {
+                if (arr[middle] > target)
+                    start = middle + 1;
+                else
+                    end = middle - 1;
+            }
+        }
+        // Element is not present
+        return -1;
+    }
+}

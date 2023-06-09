@@ -1,8 +1,8 @@
 package com.thealgorithms.others;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class CRC16Test {
 
@@ -19,5 +19,4 @@ class CRC16Test {
         // then
         assertEquals("10FC", resultCRC16);
     }
-
 }

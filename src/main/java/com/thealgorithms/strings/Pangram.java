@@ -36,7 +36,7 @@ public class Pangram {
         }
         return true;
     }
-    
+
     /**
      * Checks if a String is Pangram or not by checking if each alhpabet is present or not
      *

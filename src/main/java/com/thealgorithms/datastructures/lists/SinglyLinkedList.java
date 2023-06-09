@@ -125,19 +125,20 @@ public class SinglyLinkedList extends Node {
     public Node reverseList(Node node) {
         Node prev = null;
         Node curr = node;
-        
+
         while (curr != null && curr.next != null) {
-            Node next=curr.next;
+            Node next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-        //when curr.next==null, the current element is left without pointing it to its prev,so 
-        if(curr != null){
+        // when curr.next==null, the current element is left without pointing it to its prev,so
+        if (curr != null) {
             curr.next = prev;
-            prev=curr;
+            prev = curr;
         }
-        //prev will be pointing to the last element in the Linkedlist, it will be the new head of the reversed linkedlist
+        // prev will be pointing to the last element in the Linkedlist, it will be the new head of
+        // the reversed linkedlist
         return prev;
     }
 
@@ -244,9 +245,7 @@ public class SinglyLinkedList extends Node {
             // skip all duplicates
             if (newHead.next != null && newHead.value == newHead.next.value) {
                 // move till the end of duplicates sublist
-                while (
-                    newHead.next != null && newHead.value == newHead.next.value
-                ) {
+                while (newHead.next != null && newHead.value == newHead.next.value) {
                     newHead = newHead.next;
                 }
                 // skip all duplicates
@@ -412,15 +411,10 @@ public class SinglyLinkedList extends Node {
         assert list.toString().equals("10->7->5->3->1");
         System.out.println(list);
         /* Test search function */
-        assert list.search(10) &&
-        list.search(5) &&
-        list.search(1) &&
-        !list.search(100);
+        assert list.search(10) && list.search(5) && list.search(1) && !list.search(100);
 
         /* Test get function */
-        assert list.getNth(0) == 10 &&
-        list.getNth(2) == 5 &&
-        list.getNth(4) == 1;
+        assert list.getNth(0) == 10 && list.getNth(2) == 5 && list.getNth(4) == 1;
 
         /* Test delete function */
         list.deleteHead();
@@ -443,10 +437,7 @@ public class SinglyLinkedList extends Node {
         }
 
         SinglyLinkedList instance = new SinglyLinkedList();
-        Node head = new Node(
-            0,
-            new Node(2, new Node(3, new Node(3, new Node(4))))
-        );
+        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
         instance.setHead(head);
         instance.deleteDuplicates();
         instance.print();
@@ -469,7 +460,8 @@ class Node {
      */
     Node next;
 
-    Node() {}
+    Node() {
+    }
 
     /**
      * Constructor

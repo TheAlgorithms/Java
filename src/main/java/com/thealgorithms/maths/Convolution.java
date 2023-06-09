@@ -27,8 +27,9 @@ public class Convolution {
     C[i] = Σ (A[k]*B[i-k])
           k=0
 
-    It's obvious that:  0 <= k <= A.length , 0 <= i <= A.length + B.length - 2  and  0 <= i-k <= B.length - 1
-    From the last inequality we get that:  i - B.length + 1 <= k <= i and thus we get the conditions below.
+    It's obvious that:  0 <= k <= A.length , 0 <= i <= A.length + B.length - 2  and  0 <= i-k <=
+    B.length - 1 From the last inequality we get that:  i - B.length + 1 <= k <= i and thus we get
+    the conditions below.
          */
         for (int i = 0; i < convolved.length; i++) {
             convolved[i] = 0;

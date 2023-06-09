@@ -119,19 +119,14 @@ class Graph {
             if (dist != vertex.dist) {
                 return false;
             }
-            if (
-                name != null ? !name.equals(vertex.name) : vertex.name != null
-            ) {
+            if (name != null ? !name.equals(vertex.name) : vertex.name != null) {
                 return false;
             }
-            if (
-                previous != null
-                    ? !previous.equals(vertex.previous)
-                    : vertex.previous != null
-            ) {
+            if (previous != null ? !previous.equals(vertex.previous) : vertex.previous != null) {
                 return false;
             }
-            return neighbours != null ? neighbours.equals(vertex.neighbours) : vertex.neighbours == null;
+            return neighbours != null ? neighbours.equals(vertex.neighbours)
+                                      : vertex.neighbours == null;
         }
 
         @Override
@@ -140,8 +135,7 @@ class Graph {
             result = 31 * result + (name != null ? name.hashCode() : 0);
             result = 31 * result + dist;
             result = 31 * result + (previous != null ? previous.hashCode() : 0);
-            result =
-                31 * result + (neighbours != null ? neighbours.hashCode() : 0);
+            result = 31 * result + (neighbours != null ? neighbours.hashCode() : 0);
             return result;
         }
 
@@ -170,8 +164,8 @@ class Graph {
         // another pass to set neighbouring vertices
         for (Edge e : edges) {
             graph.get(e.v1).neighbours.put(graph.get(e.v2), e.dist);
-            // graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an undirected
-            // graph
+            // graph.get(e.v2).neighbours.put(graph.get(e.v1), e.dist); // also do this for an
+            // undirected graph
         }
     }
 
@@ -180,10 +174,7 @@ class Graph {
      */
     public void dijkstra(String startName) {
         if (!graph.containsKey(startName)) {
-            System.err.printf(
-                "Graph doesn't contain start vertex \"%s\"%n",
-                startName
-            );
+            System.err.printf("Graph doesn't contain start vertex \"%s\"%n", startName);
             return;
         }
         final Vertex source = graph.get(startName);
@@ -208,7 +199,8 @@ class Graph {
             // vertex with shortest distance (first iteration will return source)
             u = q.pollFirst();
             if (u.dist == Integer.MAX_VALUE) {
-                break; // we can ignore u (and any other remaining vertices) since they are unreachable
+                break; // we can ignore u (and any other remaining vertices) since they are
+                       // unreachable
             }
             // look at distances to each neighbour
             for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {
@@ -230,10 +222,7 @@ class Graph {
      */
     public void printPath(String endName) {
         if (!graph.containsKey(endName)) {
-            System.err.printf(
-                "Graph doesn't contain end vertex \"%s\"%n",
-                endName
-            );
+            System.err.printf("Graph doesn't contain end vertex \"%s\"%n", endName);
             return;
         }
 

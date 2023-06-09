@@ -21,7 +21,8 @@ public class Factorial {
             throw new IllegalArgumentException("number is negative");
         }
         long factorial = 1;
-        for (int i = 1; i <= n; factorial *= i, ++i);
+        for (int i = 1; i <= n; factorial *= i, ++i)
+            ;
         return factorial;
     }
 }

@@ -9,12 +9,8 @@ public class PasswordGenTest {
     @Test
     public void failGenerationWithSameMinMaxLengthTest() {
         int length = 10;
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                PasswordGen.generatePassword(length, length);
-            }
-        );
+        assertThrows(IllegalArgumentException.class,
+            () -> { PasswordGen.generatePassword(length, length); });
     }
 
     @Test
@@ -27,12 +23,8 @@ public class PasswordGenTest {
     public void failGenerationWithMinLengthSmallerThanMaxLengthTest() {
         int minLength = 10;
         int maxLength = 5;
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                PasswordGen.generatePassword(minLength, maxLength);
-            }
-        );
+        assertThrows(IllegalArgumentException.class,
+            () -> { PasswordGen.generatePassword(minLength, maxLength); });
     }
 
     @Test

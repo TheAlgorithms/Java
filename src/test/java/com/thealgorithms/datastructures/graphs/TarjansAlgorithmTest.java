@@ -5,15 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 public class TarjansAlgorithmTest {
-    
+
     TarjansAlgorithm tarjansAlgo = new TarjansAlgorithm();
 
     @Test
-    public void findStronglyConnectedComps(){
+    public void findStronglyConnectedComps() {
         var v = 5;
         var graph = new ArrayList<List<Integer>>();
         for (int i = 0; i < v; i++) {
@@ -27,10 +26,10 @@ public class TarjansAlgorithmTest {
 
         var actualResult = tarjansAlgo.stronglyConnectedComponents(v, graph);
         /*
-            Expected result: 
+            Expected result:
             0, 1, 2
             3
-            4 
+            4
         */
         List<List<Integer>> expectedResult = new ArrayList<>();
 
@@ -42,7 +41,7 @@ public class TarjansAlgorithmTest {
 
     @Test
     public void findStronglyConnectedCompsShouldGetSingleNodes() {
-        //Create a adjacency list of graph
+        // Create a adjacency list of graph
         var n = 8;
         var adjList = new ArrayList<List<Integer>>(n);
 
@@ -62,11 +61,10 @@ public class TarjansAlgorithmTest {
         List<List<Integer>> actualResult = tarjansAlgo.stronglyConnectedComponents(n, adjList);
         List<List<Integer>> expectedResult = new ArrayList<>();
         /*
-            Expected result: 
+            Expected result:
             7, 6, 5, 4, 3, 2, 1, 0
         */
         expectedResult.add(Arrays.asList(7, 6, 5, 4, 3, 2, 1, 0));
         assertTrue(expectedResult.equals(actualResult));
     }
-    
 }

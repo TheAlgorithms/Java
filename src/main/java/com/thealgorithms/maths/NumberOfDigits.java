@@ -47,9 +47,7 @@ public class NumberOfDigits {
      * @return number of digits of given number
      */
     private static int numberOfDigitsFast(int number) {
-        return number == 0
-            ? 1
-            : (int) Math.floor(Math.log10(Math.abs(number)) + 1);
+        return number == 0 ? 1 : (int) Math.floor(Math.log10(Math.abs(number)) + 1);
     }
 
     /**

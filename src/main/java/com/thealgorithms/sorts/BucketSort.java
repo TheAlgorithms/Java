@@ -67,7 +67,7 @@ public class BucketSort {
                 arr[index++] = value;
             }
         }
-        
+
         return arr;
     }
 

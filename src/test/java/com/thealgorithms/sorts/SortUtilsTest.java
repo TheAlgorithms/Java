@@ -1,10 +1,9 @@
 package com.thealgorithms.sorts;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SortUtilsTest {
 

@@ -39,17 +39,20 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         integerTree.add(5);
         integerTree.add(10);
         integerTree.add(9);
-        assert !integerTree.find(4) : "4 is not yet present in BST";
-        assert integerTree.find(10) : "10 should be present in BST";
+        assert !integerTree.find(4)
+            : "4 is not yet present in BST";
+        assert integerTree.find(10)
+            : "10 should be present in BST";
         integerTree.remove(9);
-        assert !integerTree.find(9) : "9 was just deleted from BST";
+        assert !integerTree.find(9)
+            : "9 was just deleted from BST";
         integerTree.remove(1);
-        assert !integerTree.find(
-            1
-        ) : "Since 1 was not present so find deleting would do no change";
+        assert !integerTree.find(1)
+            : "Since 1 was not present so find deleting would do no change";
         integerTree.add(20);
         integerTree.add(70);
-        assert integerTree.find(70) : "70 was inserted but not found";
+        assert integerTree.find(70)
+            : "70 was inserted but not found";
         /*
      Will print in following order
      5 10 20 70
@@ -63,17 +66,20 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
         stringTree.add("banana");
         stringTree.add("pineapple");
         stringTree.add("date");
-        assert !stringTree.find("girl") : "girl is not yet present in BST";
-        assert stringTree.find("pineapple") : "10 should be present in BST";
+        assert !stringTree.find("girl")
+            : "girl is not yet present in BST";
+        assert stringTree.find("pineapple")
+            : "10 should be present in BST";
         stringTree.remove("date");
-        assert !stringTree.find("date") : "date was just deleted from BST";
+        assert !stringTree.find("date")
+            : "date was just deleted from BST";
         stringTree.remove("boy");
-        assert !stringTree.find(
-            "boy"
-        ) : "Since boy was not present so deleting would do no change";
+        assert !stringTree.find("boy")
+            : "Since boy was not present so deleting would do no change";
         stringTree.add("india");
         stringTree.add("hills");
-        assert stringTree.find("hills") : "hills was inserted but not found";
+        assert stringTree.find("hills")
+            : "hills was inserted but not found";
         /*
      Will print in following order
      banana hills india pineapple

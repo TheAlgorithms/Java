@@ -1,10 +1,9 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 abstract class MapTest {
     abstract <Key extends Comparable<Key>, Value> Map<Key, Value> getMap();

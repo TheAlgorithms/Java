@@ -135,11 +135,7 @@ public final class ClosestPair {
      * @param first (IN Parameter) first point <br>
      * @param last (IN Parameter) last point <br>
      */
-    public void xQuickSort(
-        final Location[] a,
-        final int first,
-        final int last
-    ) {
+    public void xQuickSort(final Location[] a, final int first, final int last) {
         if (first < last) {
             int q = xPartition(a, first, last); // pivot
             xQuickSort(a, first, q - 1); // Left
@@ -154,11 +150,7 @@ public final class ClosestPair {
      * @param first (IN Parameter) first point <br>
      * @param last (IN Parameter) last point <br>
      */
-    public void yQuickSort(
-        final Location[] a,
-        final int first,
-        final int last
-    ) {
+    public void yQuickSort(final Location[] a, final int first, final int last) {
         if (first < last) {
             int q = yPartition(a, first, last); // pivot
             yQuickSort(a, first, q - 1); // Left
@@ -186,13 +178,7 @@ public final class ClosestPair {
         // divide-left array
         System.arraycopy(divideArray, 0, leftArray, 0, divideX);
         // divide-right array
-        System.arraycopy(
-            divideArray,
-            divideX,
-            rightArray,
-            0,
-            indexNum - divideX
-        );
+        System.arraycopy(divideArray, divideX, rightArray, 0, indexNum - divideX);
 
         double minLeftArea; // Minimum length of left array
         double minRightArea; // Minimum length of right array

@@ -9,8 +9,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  */
 class TimSort implements SortAlgorithm {
     private static final int SUB_ARRAY_SIZE = 32;
-    @SuppressWarnings("rawtypes")
-    private static Comparable[] aux;
+    @SuppressWarnings("rawtypes") private static Comparable[] aux;
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] a) {
@@ -48,5 +47,4 @@ class TimSort implements SortAlgorithm {
             }
         }
     }
-
 }

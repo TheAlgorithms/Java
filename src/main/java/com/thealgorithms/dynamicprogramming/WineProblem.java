@@ -73,12 +73,10 @@ public class WineProblem {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 2, 3, 5, 1, 4 };
+        int[] arr = {2, 3, 5, 1, 4};
         System.out.println("Method 1: " + WPRecursion(arr, 0, arr.length - 1));
         System.out.println(
-            "Method 2: " +
-            WPTD(arr, 0, arr.length - 1, new int[arr.length][arr.length])
-        );
+            "Method 2: " + WPTD(arr, 0, arr.length - 1, new int[arr.length][arr.length]));
         System.out.println("Method 3: " + WPBU(arr));
     }
 }

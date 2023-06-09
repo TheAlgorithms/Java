@@ -22,7 +22,8 @@ class KMPSearch {
                 i++;
             }
             if (j == M) {
-                System.out.println("Found pattern " + "at index " + (i - j));
+                System.out.println("Found pattern "
+                    + "at index " + (i - j));
                 int index = (i - j);
                 j = lps[j - 1];
                 return index;
@@ -31,7 +32,10 @@ class KMPSearch {
             else if (i < N && pat.charAt(j) != txt.charAt(i)) {
                 // Do not match lps[0..lps[j-1]] characters,
                 // they will match anyway
-                if (j != 0) j = lps[j - 1]; else i = i + 1;
+                if (j != 0)
+                    j = lps[j - 1];
+                else
+                    i = i + 1;
             }
         }
         System.out.println("No pattern found");

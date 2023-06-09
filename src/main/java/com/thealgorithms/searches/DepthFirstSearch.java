@@ -40,8 +40,7 @@ public class DepthFirstSearch {
             return Optional.of(node);
         }
 
-        return node
-            .getSubNodes()
+        return node.getSubNodes()
             .stream()
             .map(value -> search(value, name))
             .flatMap(Optional::stream)
@@ -51,32 +50,22 @@ public class DepthFirstSearch {
     public static void assertThat(final Object actual, final Object expected) {
         if (!Objects.equals(actual, expected)) {
             throw new AssertionError(
-                String.format("expected=%s but was actual=%s", expected, actual)
-            );
+                String.format("expected=%s but was actual=%s", expected, actual));
         }
     }
 
     public static void main(final String[] args) {
-        final Node rootNode = new Node(
-            "A",
+        final Node rootNode = new Node("A",
             List.of(
-                new Node(
-                    "B",
-                    List.of(
-                        new Node("D"),
-                        new Node("F", List.of(new Node("H"), new Node("I")))
-                    )
-                ),
-                new Node("C", List.of(new Node("G"))),
-                new Node("E")
-            )
-        );
+                new Node("B",
+                    List.of(new Node("D"), new Node("F", List.of(new Node("H"), new Node("I"))))),
+                new Node("C", List.of(new Node("G"))), new Node("E")));
 
         {
             final String expected = "I";
 
             final Node result = search(rootNode, expected)
-                .orElseThrow(() -> new AssertionError("Node not found!"));
+                                    .orElseThrow(() -> new AssertionError("Node not found!"));
 
             assertThat(result.getName(), expected);
         }
@@ -85,7 +74,7 @@ public class DepthFirstSearch {
             final String expected = "G";
 
             final Node result = search(rootNode, expected)
-                .orElseThrow(() -> new AssertionError("Node not found!"));
+                                    .orElseThrow(() -> new AssertionError("Node not found!"));
 
             assertThat(result.getName(), expected);
         }
@@ -94,7 +83,7 @@ public class DepthFirstSearch {
             final String expected = "E";
 
             final Node result = search(rootNode, expected)
-                .orElseThrow(() -> new AssertionError("Node not found!"));
+                                    .orElseThrow(() -> new AssertionError("Node not found!"));
 
             assertThat(result.getName(), expected);
         }

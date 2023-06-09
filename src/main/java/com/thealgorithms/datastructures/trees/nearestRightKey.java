@@ -27,7 +27,7 @@ class Main {
     }
 
     public static int nearestRightKey(NRKTree root, int x0) {
-        //Check whether tree is empty
+        // Check whether tree is empty
         if (root == null) {
             return 0;
         } else {

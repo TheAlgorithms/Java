@@ -27,7 +27,8 @@ final public class LowestBasePalindrome {
      * @param number the input number
      * @param base the given base
      * @exception IllegalArgumentException number is negative or base is less than 2
-     * @return the list containing the digits of the input number in the given base, the most significant digit is at the end of the array
+     * @return the list containing the digits of the input number in the given base, the most
+     *     significant digit is at the end of the array
      */
     public static ArrayList<Integer> computeDigitsInBase(int number, int base) {
         checkNumber(number);
@@ -46,8 +47,8 @@ final public class LowestBasePalindrome {
      * @return true, if the input array is a palindrome, false otherwise
      */
     public static boolean isPalindromic(ArrayList<Integer> list) {
-        for (int pos = 0; pos < list.size()/2; ++pos) {
-            if(list.get(pos) != list.get(list.size()-1-pos)) {
+        for (int pos = 0; pos < list.size() / 2; ++pos) {
+            if (list.get(pos) != list.get(list.size() - 1 - pos)) {
                 return false;
             }
         }
@@ -59,7 +60,8 @@ final public class LowestBasePalindrome {
      * @param number the input number
      * @param base the given base
      * @exception IllegalArgumentException number is negative or base is less than 2
-     * @return true, if the input number represented in the given base is a palindrome, false otherwise
+     * @return true, if the input number represented in the given base is a palindrome, false
+     *     otherwise
      */
     public static boolean isPalindromicInBase(int number, int base) {
         checkNumber(number);
@@ -78,14 +80,15 @@ final public class LowestBasePalindrome {
     }
 
     /**
-     * @brief finds the smallest base for which the representation of the input number is a palindrome
+     * @brief finds the smallest base for which the representation of the input number is a
+     * palindrome
      * @param number the input number
      * @exception IllegalArgumentException number is negative
      * @return the smallest base for which the representation of the input number is a palindrome
      */
     public static int lowestBasePalindrome(int number) {
         int base = 2;
-        while(!isPalindromicInBase(number, base)) {
+        while (!isPalindromicInBase(number, base)) {
             ++base;
         }
         return base;

@@ -120,8 +120,7 @@ public class CursorLinkedList<T> {
             while (current_index != -1) {
                 T current_element = cursorSpace[current_index].element;
                 if (current_element.equals(element)) {
-                    cursorSpace[prev_index].next =
-                        cursorSpace[current_index].next;
+                    cursorSpace[prev_index].next = cursorSpace[current_index].next;
                     free(current_index);
                     break;
                 }

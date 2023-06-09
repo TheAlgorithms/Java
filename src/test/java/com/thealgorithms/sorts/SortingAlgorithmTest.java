@@ -1,21 +1,20 @@
 package com.thealgorithms.sorts;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public abstract class SortingAlgorithmTest {
     abstract SortAlgorithm getSortAlgorithm();
 
     @Test
     void shouldAcceptWhenEmptyArrayIsPassed() {
-        Integer[] array = new Integer[]{};
-        Integer[] expected = new Integer[]{};
+        Integer[] array = new Integer[] {};
+        Integer[] expected = new Integer[] {};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -34,8 +33,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenSingleValuedArrayIsPassed() {
-        Integer[] array = new Integer[]{2};
-        Integer[] expected = new Integer[]{2};
+        Integer[] array = new Integer[] {2};
+        Integer[] expected = new Integer[] {2};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -54,8 +53,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenListWithAllPositiveValuesIsPassed() {
-        Integer[] array = new Integer[]{60, 7, 55, 9, 999, 3};
-        Integer[] expected = new Integer[]{3, 7, 9, 55, 60, 999};
+        Integer[] array = new Integer[] {60, 7, 55, 9, 999, 3};
+        Integer[] expected = new Integer[] {3, 7, 9, 55, 60, 999};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -74,8 +73,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithAllNegativeValuesIsPassed() {
-        Integer[] array = new Integer[]{-60, -7, -55, -9, -999, -3};
-        Integer[] expected = new Integer[]{-999, -60, -55, -9, -7, -3};
+        Integer[] array = new Integer[] {-60, -7, -55, -9, -999, -3};
+        Integer[] expected = new Integer[] {-999, -60, -55, -9, -7, -3};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -94,8 +93,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithRealNumberValuesIsPassed() {
-        Integer[] array = new Integer[]{60, -7, 55, 9, -999, -3};
-        Integer[] expected = new Integer[]{-999, -7, -3, 9, 55, 60};
+        Integer[] array = new Integer[] {60, -7, 55, 9, -999, -3};
+        Integer[] expected = new Integer[] {-999, -7, -3, 9, 55, 60};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -114,8 +113,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithDuplicateValueIsPassed() {
-        Integer[] array = new Integer[]{60, 7, 55, 55, 999, 3};
-        Integer[] expected = new Integer[]{3, 7, 55, 55, 60, 999};
+        Integer[] array = new Integer[] {60, 7, 55, 55, 999, 3};
+        Integer[] expected = new Integer[] {3, 7, 55, 55, 60, 999};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 

@@ -19,5 +19,4 @@ public abstract class Map<Key, Value> {
     protected int hash(Key key, int size) {
         return (key.hashCode() & Integer.MAX_VALUE) % size;
     }
-
 }

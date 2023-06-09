@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
-
 import org.junit.jupiter.api.Test;
 
 public class NthUglyNumberTest {
@@ -51,7 +50,7 @@ public class NthUglyNumberTest {
         for (final var tc : testCases.entrySet()) {
             assertEquals(uglyNumbers.get(tc.getKey()), tc.getValue());
         }
-        
+
         assertEquals(uglyNumbers.get(999), 385875);
     }
 
@@ -67,21 +66,14 @@ public class NthUglyNumberTest {
         assertEquals(uglyNumbers.get(5), 32);
     }
 
-
     @Test
     public void testGetThrowsAnErrorForNegativeInput() {
         var uglyNumbers = new NthUglyNumber(new int[] {1, 2});
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> uglyNumbers.get(-1)
-        );
+        assertThrows(IllegalArgumentException.class, () -> uglyNumbers.get(-1));
     }
 
     @Test
     public void testConstructorThrowsAnErrorForEmptyInput() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> new NthUglyNumber(new int[] {})
-        );
+        assertThrows(IllegalArgumentException.class, () -> new NthUglyNumber(new int[] {}));
     }
 }

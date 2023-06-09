@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
- /**
-  * https://en.wikipedia.org/wiki/Leonardo_number
-  */
+/**
+ * https://en.wikipedia.org/wiki/Leonardo_number
+ */
 public class LeonardoNumber {
 
     /**

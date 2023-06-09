@@ -1,13 +1,12 @@
 package com.thealgorithms.backtracking;
 
-
 /*
 Word Search Problem (https://en.wikipedia.org/wiki/Word_search)
 
 Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
-The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or
-vertically neighboring. The same letter cell may not be used more than once.
+The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are
+those horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
 For example,
 Given board =
@@ -27,8 +26,8 @@ word = "ABCB", -> returns false.
    Depth First Search in matrix (as multiple sources possible) with backtracking
    like finding cycle in a directed graph. Maintain a record of path
 
-   Tx = O(m * n * 3^L): for each cell, we look at 3 options (not 4 as that one will be visited), we do it L times
-   Sx = O(L) : stack size is max L
+   Tx = O(m * n * 3^L): for each cell, we look at 3 options (not 4 as that one will be visited), we
+   do it L times Sx = O(L) : stack size is max L
 */
 
 public class WordSearch {
@@ -52,8 +51,7 @@ public class WordSearch {
             int yi = y + dy[i];
             if (isValid(xi, yi) && board[xi][yi] == word.charAt(nextIdx) && !visited[xi][yi]) {
                 boolean exists = doDFS(xi, yi, nextIdx + 1);
-                if (exists)
-                    return true;
+                if (exists) return true;
             }
         }
         visited[x][y] = false;
@@ -68,12 +66,10 @@ public class WordSearch {
                 if (board[i][j] == word.charAt(0)) {
                     visited = new boolean[board.length][board[0].length];
                     boolean exists = doDFS(i, j, 1);
-                    if (exists)
-                        return true;
+                    if (exists) return true;
                 }
             }
         }
         return false;
     }
 }
-

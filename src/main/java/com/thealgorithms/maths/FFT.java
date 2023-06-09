@@ -180,10 +180,7 @@ public class FFT {
      * @param inverse True if you want to find the inverse FFT.
      * @return
      */
-    public static ArrayList<Complex> fft(
-        ArrayList<Complex> x,
-        boolean inverse
-    ) {
+    public static ArrayList<Complex> fft(ArrayList<Complex> x, boolean inverse) {
         /* Pad the signal with zeros if necessary */
         paddingPowerOfTwo(x);
         int N = x.size();
@@ -220,11 +217,7 @@ public class FFT {
     }
 
     /* Swap the values of the signal with bit-reversal method */
-    public static ArrayList<Complex> fftBitReversal(
-        int N,
-        int log2N,
-        ArrayList<Complex> x
-    ) {
+    public static ArrayList<Complex> fftBitReversal(int N, int log2N, ArrayList<Complex> x) {
         int reverse;
         for (int i = 0; i < N; i++) {
             reverse = reverseBits(i, log2N);
@@ -236,11 +229,7 @@ public class FFT {
     }
 
     /* Divide by N if we want the inverse FFT */
-    public static ArrayList<Complex> inverseFFT(
-        int N,
-        boolean inverse,
-        ArrayList<Complex> x
-    ) {
+    public static ArrayList<Complex> inverseFFT(int N, boolean inverse, ArrayList<Complex> x) {
         if (inverse) {
             for (int i = 0; i < x.size(); i++) {
                 Complex z = x.get(i);

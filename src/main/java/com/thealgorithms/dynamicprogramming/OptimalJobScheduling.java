@@ -22,9 +22,11 @@ public class OptimalJobScheduling {
      * @param numberProcesses ,refers to the number of precedent processes(N)
      * @param numberMachines ,refers to the number of different machines in our disposal(M)
      * @param Run , N*M matrix refers to the cost of running each process to each machine
-     * @param Transfer ,M*M symmetric matrix refers to the transportation delay for each pair of machines
+     * @param Transfer ,M*M symmetric matrix refers to the transportation delay for each pair of
+     *     machines
      */
-    public OptimalJobScheduling(int numberProcesses, int numberMachines, int[][] Run, int[][] Transfer) {
+    public OptimalJobScheduling(
+        int numberProcesses, int numberMachines, int[][] Run, int[][] Transfer) {
         this.numberProcesses = numberProcesses;
         this.numberMachines = numberMachines;
         this.Run = Run;
@@ -35,7 +37,7 @@ public class OptimalJobScheduling {
     /**
      * Function which computes the cost of process scheduling to a number of VMs.
      */
-    public void execute(){
+    public void execute() {
         this.calculateCost();
         this.showResults();
     }
@@ -43,11 +45,11 @@ public class OptimalJobScheduling {
     /**
      * Function which computes the cost of running each Process to each and every Machine
      */
-    private void calculateCost(){
+    private void calculateCost() {
 
-        for (int i=0; i < numberProcesses; i++){           //for each Process
+        for (int i = 0; i < numberProcesses; i++) { // for each Process
 
-            for (int j=0; j < numberMachines; j++) {       //for each Machine
+            for (int j = 0; j < numberMachines; j++) { // for each Machine
 
                 Cost[i][j] = runningCost(i, j);
             }
@@ -55,10 +57,12 @@ public class OptimalJobScheduling {
     }
 
     /**
-     * Function which returns the minimum cost of running a certain Process to a certain Machine.In order for the Machine to execute the Process ,he requires the output
-     * of the previously executed Process, which may have been executed to the same Machine or some other.If the previous Process has been executed to another Machine,we
-     * have to transfer her result, which means extra cost for transferring the data from one Machine to another(if the previous Process has been executed to the same
-     * Machine, there is no transport cost).
+     * Function which returns the minimum cost of running a certain Process to a certain Machine.In
+     * order for the Machine to execute the Process ,he requires the output of the previously
+     * executed Process, which may have been executed to the same Machine or some other.If the
+     * previous Process has been executed to another Machine,we have to transfer her result, which
+     * means extra cost for transferring the data from one Machine to another(if the previous
+     * Process has been executed to the same Machine, there is no transport cost).
      *
      * @param process ,refers to the Process
      * @param machine ,refers to the Machine
@@ -66,32 +70,38 @@ public class OptimalJobScheduling {
      */
     private int runningCost(int process, int machine) {
 
-        if (process==0)                         //refers to the first process,which does not require for a previous one to have been executed
+        if (process == 0) // refers to the first process,which does not require for a previous one
+                          // to have been executed
             return Run[process][machine];
         else {
 
-            int[] runningCosts = new int[numberMachines];     //stores the costs of executing our Process depending on the Machine the previous one was executed
+            int[] runningCosts
+                = new int[numberMachines]; // stores the costs of executing our Process depending on
+                                           // the Machine the previous one was executed
 
-            for (int k=0; k < numberMachines; k++)                                                     //computes the cost of executing the previous process to each and every Machine
-                runningCosts[k] = Cost[process-1][k] + Transfer[k][machine] + Run[process][machine];   //transferring the result to our Machine and executing the Process to our Machine
+            for (int k = 0; k < numberMachines; k++) // computes the cost of executing the previous
+                                                     // process to each and every Machine
+                runningCosts[k] = Cost[process - 1][k] + Transfer[k][machine]
+                    + Run[process][machine]; // transferring the result to our Machine and executing
+                                             // the Process to our Machine
 
-            return findMin(runningCosts);                     //returns the minimum running cost
+            return findMin(runningCosts); // returns the minimum running cost
         }
     }
 
     /**
      * Function used in order to return the minimum Cost.
-     * @param cost ,an Array of size M which refers to the costs of executing a Process to each Machine
+     * @param cost ,an Array of size M which refers to the costs of executing a Process to each
+     *     Machine
      * @return the minimum cost
      */
     private int findMin(int[] cost) {
 
-        int min=0;
+        int min = 0;
 
-        for (int i=1;i<cost.length;i++){
+        for (int i = 1; i < cost.length; i++) {
 
-            if (cost[i]<cost[min])
-                min=i;
+            if (cost[i] < cost[min]) min = i;
         }
         return cost[min];
     }
@@ -99,11 +109,11 @@ public class OptimalJobScheduling {
     /**
      * Method used in order to present the overall costs.
      */
-    private void showResults(){
+    private void showResults() {
 
-        for (int i=0; i < numberProcesses; i++){
+        for (int i = 0; i < numberProcesses; i++) {
 
-            for (int j=0; j < numberMachines; j++) {
+            for (int j = 0; j < numberMachines; j++) {
                 System.out.print(Cost[i][j]);
                 System.out.print(" ");
             }
@@ -116,7 +126,7 @@ public class OptimalJobScheduling {
     /**
      * Getter for the running Cost of i process on j machine.
      */
-    public int getCost(int process,int machine) {
+    public int getCost(int process, int machine) {
         return Cost[process][machine];
     }
 }

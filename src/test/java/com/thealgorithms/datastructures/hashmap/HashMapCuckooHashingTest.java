@@ -93,7 +93,7 @@ class HashMapCuckooHashingTest {
 
     private HashMapCuckooHashing createHashMapCuckooHashing() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
-        int[] values = { 11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222 };
+        int[] values = {11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222};
         Arrays.stream(values).forEach(hashTable::insertKey2HashTable);
         return hashTable;
     }

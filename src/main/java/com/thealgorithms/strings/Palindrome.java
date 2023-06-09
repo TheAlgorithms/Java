@@ -14,9 +14,7 @@ class Palindrome {
      */
     public static boolean isPalindrome(String s) {
         return (
-            (s == null || s.length() <= 1) ||
-            s.equals(new StringBuilder(s).reverse().toString())
-        );
+            (s == null || s.length() <= 1) || s.equals(new StringBuilder(s).reverse().toString()));
     }
 
     /**

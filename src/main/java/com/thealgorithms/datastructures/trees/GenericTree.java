@@ -35,9 +35,7 @@ public class GenericTree {
         if (node == null) {
             System.out.println("Enter root's data");
         } else {
-            System.out.println(
-                "Enter data of parent of index " + node.data + " " + childindx
-            );
+            System.out.println("Enter data of parent of index " + node.data + " " + childindx);
         }
         // input
         node = new Node();

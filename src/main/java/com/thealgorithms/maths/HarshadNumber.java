@@ -12,8 +12,7 @@ public class HarshadNumber {
      *         {@code false}
      */
     public static boolean isHarshad(long n) {
-        if (n <= 0)
-            return false;
+        if (n <= 0) return false;
 
         long t = n;
         int sumOfDigits = 0;
@@ -34,8 +33,7 @@ public class HarshadNumber {
      */
     public static boolean isHarshad(String s) {
         long n = Long.valueOf(s);
-        if (n <= 0)
-            return false;
+        if (n <= 0) return false;
 
         int sumOfDigits = 0;
         for (char ch : s.toCharArray()) {
