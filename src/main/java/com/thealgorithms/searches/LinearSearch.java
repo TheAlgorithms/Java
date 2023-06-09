@@ -42,8 +42,7 @@ public class LinearSearch implements SearchAlgorithm {
         Random r = new Random();
         int size = 200;
         int maxElement = 100;
-        Integer[] integers
-            = Stream.generate(() -> r.nextInt(maxElement)).limit(size).toArray(Integer[] ::new);
+        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).toArray(Integer[] ::new);
 
         // the element that should be found
         Integer shouldBeFound = integers[r.nextInt(size - 1)];
@@ -51,7 +50,6 @@ public class LinearSearch implements SearchAlgorithm {
         LinearSearch search = new LinearSearch();
         int atIndex = search.find(integers, shouldBeFound);
 
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n",
-            shouldBeFound, integers[atIndex], atIndex, size);
+        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
     }
 }

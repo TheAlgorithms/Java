@@ -31,8 +31,7 @@ public class LevelOrderTraversalTest {
     @Test
     public void testLevelOrderTraversalCompleteTree() {
         final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 3, 4, 5, 6, 7});
-        assertEquals(List.of(List.of(1), List.of(2, 3), List.of(4, 5, 6, 7)),
-            LevelOrderTraversal.traverse(root));
+        assertEquals(List.of(List.of(1), List.of(2, 3), List.of(4, 5, 6, 7)), LevelOrderTraversal.traverse(root));
     }
 
     /*
@@ -46,9 +45,7 @@ public class LevelOrderTraversalTest {
     */
     @Test
     public void testLevelOrderTraversalDifferentHeight() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(
-            new Integer[] {1, 2, 3, 4, 5, 6, 7, null, null, 8, null, null, 9});
-        assertEquals(List.of(List.of(1), List.of(2, 3), List.of(4, 5, 6, 7), List.of(8, 9)),
-            LevelOrderTraversal.traverse(root));
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 3, 4, 5, 6, 7, null, null, 8, null, null, 9});
+        assertEquals(List.of(List.of(1), List.of(2, 3), List.of(4, 5, 6, 7), List.of(8, 9)), LevelOrderTraversal.traverse(root));
     }
 }

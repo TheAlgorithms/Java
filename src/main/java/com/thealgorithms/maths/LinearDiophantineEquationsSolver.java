@@ -27,8 +27,7 @@ public final class LinearDiophantineEquationsSolver {
         return toReturn;
     }
 
-    private static GcdSolutionWrapper gcd(
-        final int a, final int b, final GcdSolutionWrapper previous) {
+    private static GcdSolutionWrapper gcd(final int a, final int b, final GcdSolutionWrapper previous) {
         if (b == 0) {
             return new GcdSolutionWrapper(a, new Solution(1, 0));
         }
@@ -36,18 +35,15 @@ public final class LinearDiophantineEquationsSolver {
         final var stubWrapper = new GcdSolutionWrapper(0, new Solution(0, 0));
         final var next = /* recursive call */ gcd(b, a % b, stubWrapper);
         previous.getSolution().setX(next.getSolution().getY());
-        previous.getSolution().setY(
-            next.getSolution().getX() - (a / b) * (next.getSolution().getY()));
+        previous.getSolution().setY(next.getSolution().getX() - (a / b) * (next.getSolution().getY()));
         previous.setGcd(next.getGcd());
         return new GcdSolutionWrapper(next.getGcd(), previous.getSolution());
     }
 
     public static final class Solution {
 
-        public static final Solution NO_SOLUTION
-            = new Solution(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        public static final Solution INFINITE_SOLUTIONS
-            = new Solution(Integer.MIN_VALUE, Integer.MIN_VALUE);
+        public static final Solution NO_SOLUTION = new Solution(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        public static final Solution INFINITE_SOLUTIONS = new Solution(Integer.MIN_VALUE, Integer.MIN_VALUE);
         private int x;
         private int y;
 

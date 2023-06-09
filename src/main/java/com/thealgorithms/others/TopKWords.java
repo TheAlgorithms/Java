@@ -64,8 +64,7 @@ public class TopKWords {
     public static void main(String[] args) {
         // you can replace the filePath with yours
         CountWords cw = new CountWords("/Users/lisanaaa/Desktop/words.txt");
-        Map<String, Integer> dictionary
-            = cw.getDictionary(); // get the words dictionary: {word: frequency}
+        Map<String, Integer> dictionary = cw.getDictionary(); // get the words dictionary: {word: frequency}
 
         // we change the map to list for convenient sort
         List<Map.Entry<String, Integer>> list = new ArrayList<>(dictionary.entrySet());

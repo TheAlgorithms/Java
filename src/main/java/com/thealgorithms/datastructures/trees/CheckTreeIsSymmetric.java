@@ -48,12 +48,10 @@ public class CheckTreeIsSymmetric {
             return false;
         }
 
-        return isSymmetric(leftSubtreeRoot.right, rightSubtreRoot.left)
-            && isSymmetric(leftSubtreeRoot.left, rightSubtreRoot.right);
+        return isSymmetric(leftSubtreeRoot.right, rightSubtreRoot.left) && isSymmetric(leftSubtreeRoot.left, rightSubtreRoot.right);
     }
 
     private static boolean isInvalidSubtree(Node leftSubtreeRoot, Node rightSubtreeRoot) {
-        return leftSubtreeRoot == null || rightSubtreeRoot == null
-            || leftSubtreeRoot.data != rightSubtreeRoot.data;
+        return leftSubtreeRoot == null || rightSubtreeRoot == null || leftSubtreeRoot.data != rightSubtreeRoot.data;
     }
 }

@@ -100,8 +100,7 @@ public class KochSnowflake {
         double offsetX = imageWidth / 10.;
         double offsetY = imageWidth / 3.7;
         Vector2 vector1 = new Vector2(offsetX, offsetY);
-        Vector2 vector2
-            = new Vector2(imageWidth / 2, Math.sin(Math.PI / 3) * imageWidth * 0.8 + offsetY);
+        Vector2 vector2 = new Vector2(imageWidth / 2, Math.sin(Math.PI / 3) * imageWidth * 0.8 + offsetY);
         Vector2 vector3 = new Vector2(imageWidth - offsetX, offsetY);
         ArrayList<Vector2> initialVectors = new ArrayList<Vector2>();
         initialVectors.add(vector1);
@@ -146,10 +145,8 @@ public class KochSnowflake {
      * @param imageHeight The height of the rendered image.
      * @return The image of the rendered edges.
      */
-    private static BufferedImage GetImage(
-        ArrayList<Vector2> vectors, int imageWidth, int imageHeight) {
-        BufferedImage image
-            = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
+    private static BufferedImage GetImage(ArrayList<Vector2> vectors, int imageWidth, int imageHeight) {
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = image.createGraphics();
 
         // Set the background white

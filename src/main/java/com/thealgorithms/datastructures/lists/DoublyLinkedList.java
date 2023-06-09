@@ -217,8 +217,7 @@ class LinkOperations {
     public void insertTail(int x, DoublyLinkedList doublyLinkedList) {
         Link newLink = new Link(x);
         newLink.next = null; // currentTail(tail)     newlink -->
-        if (doublyLinkedList
-                .isEmpty()) { // Check if there are no elements in list then it adds first element
+        if (doublyLinkedList.isEmpty()) { // Check if there are no elements in list then it adds first element
             tail = newLink;
             head = tail;
         } else {

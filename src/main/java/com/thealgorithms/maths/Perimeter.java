@@ -27,8 +27,7 @@ public class Perimeter {
      * @param sides for length of remaining sides
      * @return Perimeter of given trapezoid.
      */
-    public static float perimeterIrregularPolygon(
-        float side1, float side2, float side3, float... sides) {
+    public static float perimeterIrregularPolygon(float side1, float side2, float side3, float... sides) {
         float perimeter = side1 + side2 + side3;
         for (float side : sides) {
             perimeter += side;

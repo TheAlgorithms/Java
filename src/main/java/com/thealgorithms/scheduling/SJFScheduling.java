@@ -53,9 +53,7 @@ public class SJFScheduling {
         }
 
         while (executed < size) {
-            while (k < size
-                && processes.get(k).getArrivalTime()
-                    <= time) // here we find the processes that have arrived.
+            while (k < size && processes.get(k).getArrivalTime() <= time) // here we find the processes that have arrived.
             {
                 ready.add(processes.get(k));
                 k++;

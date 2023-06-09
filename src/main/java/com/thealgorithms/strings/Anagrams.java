@@ -19,14 +19,10 @@ public class Anagrams {
         String second = "lead";
         // All the below methods takes input but doesn't return any output to the main method.
         Anagrams nm = new Anagrams();
-        System.out.println(
-            nm.approach2(first, second)); /* To activate methods for different approaches*/
-        System.out.println(
-            nm.approach1(first, second)); /* To activate methods for different approaches*/
-        System.out.println(
-            nm.approach3(first, second)); /* To activate methods for different approaches*/
-        System.out.println(
-            nm.approach4(first, second)); /* To activate methods for different approaches*/
+        System.out.println(nm.approach2(first, second)); /* To activate methods for different approaches*/
+        System.out.println(nm.approach1(first, second)); /* To activate methods for different approaches*/
+        System.out.println(nm.approach3(first, second)); /* To activate methods for different approaches*/
+        System.out.println(nm.approach4(first, second)); /* To activate methods for different approaches*/
         /**
          * OUTPUT :
          * first string ="deal" second string ="lead"

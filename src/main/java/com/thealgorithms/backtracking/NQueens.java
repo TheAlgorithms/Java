@@ -47,8 +47,7 @@ public class NQueens {
         List<List<String>> arrangements = new ArrayList<List<String>>();
         getSolution(queens, arrangements, new int[queens], 0);
         if (arrangements.isEmpty()) {
-            System.out.println("There is no way to place " + queens + " queens on board of size "
-                + queens + "x" + queens);
+            System.out.println("There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
         } else {
             System.out.println("Arrangement for placing " + queens + " queens");
         }
@@ -66,8 +65,7 @@ public class NQueens {
      * @param columns: columns[i] = rowId where queen is placed in ith column.
      * @param columnIndex: This is the column in which queen is being placed
      */
-    private static void getSolution(
-        int boardSize, List<List<String>> solutions, int[] columns, int columnIndex) {
+    private static void getSolution(int boardSize, List<List<String>> solutions, int[] columns, int columnIndex) {
         if (columnIndex == boardSize) {
             // this means that all queens have been placed
             List<String> sol = new ArrayList<String>();

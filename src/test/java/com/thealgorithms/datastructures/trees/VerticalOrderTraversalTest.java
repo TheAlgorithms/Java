@@ -45,9 +45,7 @@ public class VerticalOrderTraversalTest {
     */
     @Test
     public void testVerticalTraversalDifferentHeight() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(
-            new Integer[] {1, 2, 3, 4, 5, 6, 7, null, null, 8, null, null, 9});
-        assertEquals(
-            List.of(4, 2, 8, 1, 5, 6, 3, 9, 7), VerticalOrderTraversal.verticalTraversal(root));
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 3, 4, 5, 6, 7, null, null, 8, null, null, 9});
+        assertEquals(List.of(4, 2, 8, 1, 5, 6, 3, 9, 7), VerticalOrderTraversal.verticalTraversal(root));
     }
 }

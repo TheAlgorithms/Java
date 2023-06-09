@@ -16,8 +16,7 @@ import java.util.Arrays;
  */
 public class BipartiteGrapfDFS {
 
-    private static boolean bipartite(
-        int V, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
+    private static boolean bipartite(int V, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
         if (color[node] == -1) {
             color[node] = 1;
         }

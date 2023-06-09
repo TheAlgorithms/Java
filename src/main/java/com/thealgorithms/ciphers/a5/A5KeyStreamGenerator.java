@@ -9,8 +9,7 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
     private BitSet frameCounter;
     private BitSet sessionKey;
     private static final int INITIAL_CLOCKING_CYCLES = 100;
-    private static final int KEY_STREAM_LENGTH
-        = 228; // 28.5 bytes so we need to pad bytes or something
+    private static final int KEY_STREAM_LENGTH = 228; // 28.5 bytes so we need to pad bytes or something
 
     @Override
     public void initialize(BitSet sessionKey, BitSet frameCounter) {

@@ -34,8 +34,7 @@ public class IntrospectiveSortTest {
     // valid test case
     public void StrandSortNullTest() {
         Integer[] expectedArray = null;
-        assertThrows(
-            NullPointerException.class, () -> { new IntrospectiveSort().sort(expectedArray); });
+        assertThrows(NullPointerException.class, () -> { new IntrospectiveSort().sort(expectedArray); });
     }
 
     @Test

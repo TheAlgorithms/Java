@@ -22,8 +22,7 @@ public class BruteForceKnapsack {
         // (1) nth item included
         // (2) not included
         else {
-            return Math.max(
-                val[n - 1] + knapSack(W - wt[n - 1], wt, val, n - 1), knapSack(W, wt, val, n - 1));
+            return Math.max(val[n - 1] + knapSack(W - wt[n - 1], wt, val, n - 1), knapSack(W, wt, val, n - 1));
         }
     }
 

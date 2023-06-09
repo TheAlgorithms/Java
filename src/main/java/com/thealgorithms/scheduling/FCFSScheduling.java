@@ -30,8 +30,7 @@ public class FCFSScheduling {
         int waitingTime = 0;
         int burstTime = processes.get(0).getBurstTime();
 
-        processes.get(0).setWaitingTime(
-            waitingTime); // for the first process, waiting time will be 0.
+        processes.get(0).setWaitingTime(waitingTime); // for the first process, waiting time will be 0.
 
         for (int i = 1; i < processesNumber; i++) {
             processes.get(i).setWaitingTime(waitingTime + burstTime);
@@ -42,8 +41,7 @@ public class FCFSScheduling {
 
     private void evaluateTurnAroundTime() {
         for (int i = 0; i < processes.size(); i++) {
-            processes.get(i).setTurnAroundTimeTime(
-                processes.get(i).getBurstTime() + processes.get(i).getWaitingTime());
+            processes.get(i).setTurnAroundTimeTime(processes.get(i).getBurstTime() + processes.get(i).getWaitingTime());
         }
     }
 }

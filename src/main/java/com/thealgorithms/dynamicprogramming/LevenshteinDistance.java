@@ -32,9 +32,7 @@ public class LevenshteinDistance {
                 if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
                     distanceMat[i][j] = distanceMat[i - 1][j - 1];
                 } else {
-                    distanceMat[i][j] = 1
-                        + minimum(distanceMat[i - 1][j], distanceMat[i - 1][j - 1],
-                            distanceMat[i][j - 1]);
+                    distanceMat[i][j] = 1 + minimum(distanceMat[i - 1][j], distanceMat[i - 1][j - 1], distanceMat[i][j - 1]);
                 }
             }
         }

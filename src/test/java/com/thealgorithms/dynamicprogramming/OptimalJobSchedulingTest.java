@@ -19,8 +19,7 @@ public class OptimalJobSchedulingTest {
 
         int[][] Transfer = {{0, 1, 2, 4}, {1, 0, 2, 3}, {2, 2, 0, 1}, {4, 3, 1, 0}};
 
-        OptimalJobScheduling opt
-            = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
 
         opt.execute();
 
@@ -45,8 +44,7 @@ public class OptimalJobSchedulingTest {
 
         int[][] Transfer = {{0, 1, 2}, {1, 0, 2}, {2, 2, 0}};
 
-        OptimalJobScheduling opt
-            = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
 
         opt.execute();
 
@@ -83,13 +81,11 @@ public class OptimalJobSchedulingTest {
             {1, 3, 2, 0},
         };
 
-        OptimalJobScheduling opt
-            = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
 
         opt.execute();
 
-        int[][] costs = {{5, 1, 3, 2}, {6, 3, 4, 3}, {5, 8, 6, 9}, {6, 7, 8, 9}, {8, 8, 12, 13},
-            {11, 10, 12, 12}};
+        int[][] costs = {{5, 1, 3, 2}, {6, 3, 4, 3}, {5, 8, 6, 9}, {6, 7, 8, 9}, {8, 8, 12, 13}, {11, 10, 12, 12}};
 
         for (int i = 0; i < numberProcesses; i++) {
 

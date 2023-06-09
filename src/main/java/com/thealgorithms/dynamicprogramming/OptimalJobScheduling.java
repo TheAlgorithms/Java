@@ -25,8 +25,7 @@ public class OptimalJobScheduling {
      * @param Transfer ,M*M symmetric matrix refers to the transportation delay for each pair of
      *     machines
      */
-    public OptimalJobScheduling(
-        int numberProcesses, int numberMachines, int[][] Run, int[][] Transfer) {
+    public OptimalJobScheduling(int numberProcesses, int numberMachines, int[][] Run, int[][] Transfer) {
         this.numberProcesses = numberProcesses;
         this.numberMachines = numberMachines;
         this.Run = Run;
@@ -75,15 +74,13 @@ public class OptimalJobScheduling {
             return Run[process][machine];
         else {
 
-            int[] runningCosts
-                = new int[numberMachines]; // stores the costs of executing our Process depending on
-                                           // the Machine the previous one was executed
+            int[] runningCosts = new int[numberMachines]; // stores the costs of executing our Process depending on
+                                                          // the Machine the previous one was executed
 
             for (int k = 0; k < numberMachines; k++) // computes the cost of executing the previous
                                                      // process to each and every Machine
-                runningCosts[k] = Cost[process - 1][k] + Transfer[k][machine]
-                    + Run[process][machine]; // transferring the result to our Machine and executing
-                                             // the Process to our Machine
+                runningCosts[k] = Cost[process - 1][k] + Transfer[k][machine] + Run[process][machine]; // transferring the result to our Machine and executing
+                                                                                                       // the Process to our Machine
 
             return findMin(runningCosts); // returns the minimum running cost
         }

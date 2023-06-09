@@ -45,8 +45,7 @@ public class PostOrderTraversalTest {
     */
     @Test
     public void testPostOrderNonBalanced() {
-        final BinaryTree.Node root
-            = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
         List<Integer> expected = List.of(8, 7, 6, 5);
 
         assertEquals(expected, PostOrderTraversal.recursivePostOrder(root));

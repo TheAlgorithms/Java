@@ -19,14 +19,12 @@ public class DistanceFormulaTest {
 
     @Test
     void euclideanTest3() {
-        Assertions.assertEquals(
-            DistanceFormula.euclideanDistance(2.4, 9.1, 55.1, 100), 110.91911467371168);
+        Assertions.assertEquals(DistanceFormula.euclideanDistance(2.4, 9.1, 55.1, 100), 110.91911467371168);
     }
 
     @Test
     void euclideanTest4() {
-        Assertions.assertEquals(
-            DistanceFormula.euclideanDistance(1000, 13, 20000, 84), 19022.067605809836);
+        Assertions.assertEquals(DistanceFormula.euclideanDistance(1000, 13, 20000, 84), 19022.067605809836);
     }
 
     @Test

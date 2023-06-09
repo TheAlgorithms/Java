@@ -76,8 +76,7 @@ class HorspoolSearchTest {
 
     @Test
     void testFindFirstPatternNull() {
-        assertThrows(
-            NullPointerException.class, () -> HorspoolSearch.findFirst(null, "Hello World"));
+        assertThrows(NullPointerException.class, () -> HorspoolSearch.findFirst(null, "Hello World"));
     }
 
     @Test

@@ -53,8 +53,7 @@ public class EulerMethod {
      * @param differentialEquation The differential equation to be solved.
      * @return The next y-value.
      */
-    public static double eulerStep(double xCurrent, double stepSize, double yCurrent,
-        BiFunction<Double, Double, Double> differentialEquation) {
+    public static double eulerStep(double xCurrent, double stepSize, double yCurrent, BiFunction<Double, Double, Double> differentialEquation) {
         if (stepSize <= 0) {
             throw new IllegalArgumentException("stepSize should be greater than zero");
         }
@@ -73,8 +72,7 @@ public class EulerMethod {
      * @return The points constituting the solution of the differential
      * equation.
      */
-    public static ArrayList<double[]> eulerFull(double xStart, double xEnd, double stepSize,
-        double yStart, BiFunction<Double, Double, Double> differentialEquation) {
+    public static ArrayList<double[]> eulerFull(double xStart, double xEnd, double stepSize, double yStart, BiFunction<Double, Double, Double> differentialEquation) {
         if (xStart >= xEnd) {
             throw new IllegalArgumentException("xEnd should be greater than xStart");
         }

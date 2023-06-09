@@ -25,8 +25,7 @@ public class StrandSort {
         return result;
     }
 
-    private static <E extends Comparable<? super E>> LinkedList<E> merge(
-        LinkedList<E> left, LinkedList<E> right) {
+    private static <E extends Comparable<? super E>> LinkedList<E> merge(LinkedList<E> left, LinkedList<E> right) {
         LinkedList<E> result = new LinkedList<E>();
         while (!left.isEmpty() && !right.isEmpty()) {
             // change the direction of this comparison to change the direction of the sort

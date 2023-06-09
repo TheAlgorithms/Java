@@ -25,8 +25,7 @@ public class KnapsackMemoization {
     }
 
     // Returns the value of maximum profit using recursive approach
-    int solveKnapsackRecursive(
-        int capacity, int[] weights, int[] profits, int numOfItems, int[][] dpTable) {
+    int solveKnapsackRecursive(int capacity, int[] weights, int[] profits, int numOfItems, int[][] dpTable) {
         // Base condition
         if (numOfItems == 0 || capacity == 0) {
             return 0;
@@ -38,16 +37,11 @@ public class KnapsackMemoization {
 
         if (weights[numOfItems - 1] > capacity) {
             // Store the value of function call stack in table
-            dpTable[numOfItems][capacity]
-                = solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable);
+            dpTable[numOfItems][capacity] = solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable);
             return dpTable[numOfItems][capacity];
         } else {
             // Return value of table after storing
-            return dpTable[numOfItems][capacity]
-                = Math.max((profits[numOfItems - 1]
-                               + solveKnapsackRecursive(capacity - weights[numOfItems - 1], weights,
-                                   profits, numOfItems - 1, dpTable)),
-                    solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable));
+            return dpTable[numOfItems][capacity] = Math.max((profits[numOfItems - 1] + solveKnapsackRecursive(capacity - weights[numOfItems - 1], weights, profits, numOfItems - 1, dpTable)), solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable));
         }
     }
 }

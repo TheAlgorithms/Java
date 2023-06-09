@@ -22,8 +22,7 @@ public class RangeInSortedArray {
 
     // Recursive altered binary search which searches for leftmost as well as rightmost occurrence
     // of 'key'
-    public static void alteredBinSearch(
-        int[] nums, int key, int left, int right, int[] range, boolean goLeft) {
+    public static void alteredBinSearch(int[] nums, int key, int left, int right, int[] range, boolean goLeft) {
         if (left > right) {
             return;
         }
@@ -51,8 +50,7 @@ public class RangeInSortedArray {
 
     // Iterative altered binary search which searches for leftmost as well as rightmost occurrence
     // of 'key'
-    public static void alteredBinSearchIter(
-        int[] nums, int key, int left, int right, int[] range, boolean goLeft) {
+    public static void alteredBinSearchIter(int[] nums, int key, int left, int right, int[] range, boolean goLeft) {
         while (left <= right) {
             int mid = (left + right) / 2;
             if (nums[mid] > key) {

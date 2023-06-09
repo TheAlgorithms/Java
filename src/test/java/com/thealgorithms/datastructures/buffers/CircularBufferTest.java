@@ -104,8 +104,7 @@ class CircularBufferTest {
 
     private void shutDownExecutorSafely(ExecutorService executorService) {
         try {
-            if (!executorService.awaitTermination(1_000, TimeUnit.MILLISECONDS))
-                executorService.shutdownNow();
+            if (!executorService.awaitTermination(1_000, TimeUnit.MILLISECONDS)) executorService.shutdownNow();
         } catch (InterruptedException e) {
             executorService.shutdownNow();
         }

@@ -71,11 +71,9 @@ public class SlowSortTest {
 
     @Test
     public void slowSortStringSymbolArray() {
-        String[] inputArray
-            = {"cbf", "auk", "ó", "(b", "a", ")", "au", "á", "cba", "auk", "(a", "bhy", "cba"};
+        String[] inputArray = {"cbf", "auk", "ó", "(b", "a", ")", "au", "á", "cba", "auk", "(a", "bhy", "cba"};
         String[] outputArray = slowSort.sort(inputArray);
-        String[] expectedOutput
-            = {"(a", "(b", ")", "a", "au", "auk", "auk", "bhy", "cba", "cba", "cbf", "á", "ó"};
+        String[] expectedOutput = {"(a", "(b", ")", "a", "au", "auk", "auk", "bhy", "cba", "cba", "cbf", "á", "ó"};
         assertArrayEquals(outputArray, expectedOutput);
     }
 }

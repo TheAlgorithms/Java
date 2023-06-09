@@ -51,8 +51,7 @@ public class ColumnarTranspositionCipher {
      */
     public static String encrpyter(String word, String keyword, String abecedarium) {
         ColumnarTranspositionCipher.keyword = keyword;
-        ColumnarTranspositionCipher.abecedarium
-            = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
+        ColumnarTranspositionCipher.abecedarium = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
         table = tableBuilder(word);
         Object[][] sortedTable = sortTable(table);
         StringBuilder wordEncrypted = new StringBuilder();
@@ -164,8 +163,7 @@ public class ColumnarTranspositionCipher {
         return columnArray;
     }
 
-    private static void switchColumns(
-        Object[][] table, int firstColumnIndex, int secondColumnIndex, Object[] columnToSwitch) {
+    private static void switchColumns(Object[][] table, int firstColumnIndex, int secondColumnIndex, Object[] columnToSwitch) {
         for (int i = 0; i < table.length; i++) {
             table[i][secondColumnIndex] = table[i][firstColumnIndex];
             table[i][firstColumnIndex] = columnToSwitch[i];
@@ -199,8 +197,7 @@ public class ColumnarTranspositionCipher {
         String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
         System.out.println("### Example of Columnar Transposition Cipher ###\n");
         System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        System.out.println("Word encrypted ->>> "
-            + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
+        System.out.println("Word encrypted ->>> " + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
         System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypter());
         System.out.println("\n### Encrypted Table ###");
         showTable();

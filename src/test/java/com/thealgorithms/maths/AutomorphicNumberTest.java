@@ -20,9 +20,7 @@ public class AutomorphicNumberTest {
             assertFalse(AutomorphicNumber.isAutomorphic2(n));
             assertFalse(AutomorphicNumber.isAutomorphic3(String.valueOf(n)));
         }
-        assertTrue(
-            AutomorphicNumber.isAutomorphic3("59918212890625")); // Special case for BigInteger
-        assertFalse(
-            AutomorphicNumber.isAutomorphic3("12345678912345")); // Special case for BigInteger
+        assertTrue(AutomorphicNumber.isAutomorphic3("59918212890625")); // Special case for BigInteger
+        assertFalse(AutomorphicNumber.isAutomorphic3("12345678912345")); // Special case for BigInteger
     }
 }

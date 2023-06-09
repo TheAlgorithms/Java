@@ -73,8 +73,7 @@ class SkipListTest {
         Arrays.stream(values).forEach(skipList::add);
         print(skipList);
 
-        String[] actualOrder
-            = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[] ::new);
+        String[] actualOrder = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[] ::new);
 
         assertArrayEquals(new String[] {"a", "b", "c", "d"}, actualOrder);
     }

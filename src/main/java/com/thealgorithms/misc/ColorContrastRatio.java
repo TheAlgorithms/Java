@@ -92,13 +92,11 @@ public class ColorContrastRatio {
 
         final Color foreground = new Color(23, 103, 154);
         final double foregroundLuminance = algImpl.getRelativeLuminance(foreground);
-        assert foregroundLuminance
-            == 0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
+        assert foregroundLuminance == 0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
 
         final Color background = new Color(226, 229, 248);
         final double backgroundLuminance = algImpl.getRelativeLuminance(background);
-        assert backgroundLuminance
-            == 0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
+        assert backgroundLuminance == 0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
 
         final double contrastRatio = algImpl.getContrastRatio(foreground, background);
         assert contrastRatio == 4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";

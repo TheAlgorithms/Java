@@ -125,8 +125,7 @@ class Graph {
             if (previous != null ? !previous.equals(vertex.previous) : vertex.previous != null) {
                 return false;
             }
-            return neighbours != null ? neighbours.equals(vertex.neighbours)
-                                      : vertex.neighbours == null;
+            return neighbours != null ? neighbours.equals(vertex.neighbours) : vertex.neighbours == null;
         }
 
         @Override

@@ -66,7 +66,6 @@ public class FibonacciSearch implements SearchAlgorithm {
         FibonacciSearch fsearch = new FibonacciSearch();
         int atIndex = fsearch.find(integers, shouldBeFound);
 
-        System.out.println("Should be found: " + shouldBeFound + ". Found " + integers[atIndex]
-            + " at index " + atIndex + ". An array length " + size);
+        System.out.println("Should be found: " + shouldBeFound + ". Found " + integers[atIndex] + " at index " + atIndex + ". An array length " + size);
     }
 }

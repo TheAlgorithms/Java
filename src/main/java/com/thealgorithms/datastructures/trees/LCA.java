@@ -53,8 +53,7 @@ public class LCA {
      * @param parent An array to store parents of all vertices
      * @param depth An array to store depth of all vertices
      */
-    private static void dfs(
-        ArrayList<ArrayList<Integer>> adj, int s, int p, int[] parent, int[] depth) {
+    private static void dfs(ArrayList<ArrayList<Integer>> adj, int s, int p, int[] parent, int[] depth) {
         for (int adjacent : adj.get(s)) {
             if (adjacent != p) {
                 parent[adjacent] = s;

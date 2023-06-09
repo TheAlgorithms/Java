@@ -26,8 +26,7 @@ public class WordBoggle {
 
     public static void main(String[] args) {
         // Testcase
-        List<String> ans = new ArrayList<>(
-            Arrays.asList("a", "boggle", "this", "NOTRE_PEATED", "is", "simple", "board"));
+        List<String> ans = new ArrayList<>(Arrays.asList("a", "boggle", "this", "NOTRE_PEATED", "is", "simple", "board"));
         assert (boggleBoard(
             new char[][] {
                 {'t', 'h', 'i', 's', 'i', 's', 'a'},
@@ -55,8 +54,7 @@ public class WordBoggle {
                     .equals(ans));
     }
 
-    public static void explore(int i, int j, char[][] board, TrieNode trieNode, boolean[][] visited,
-        Set<String> finalWords) {
+    public static void explore(int i, int j, char[][] board, TrieNode trieNode, boolean[][] visited, Set<String> finalWords) {
         if (visited[i][j]) {
             return;
         }

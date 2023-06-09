@@ -63,11 +63,9 @@ public class RomanNumeralUtil {
 
     public static String generate(int number) {
         if (number < MIN_VALUE || number > MAX_VALUE) {
-            throw new IllegalArgumentException(
-                String.format("The number must be in the range [%d, %d]", MIN_VALUE, MAX_VALUE));
+            throw new IllegalArgumentException(String.format("The number must be in the range [%d, %d]", MIN_VALUE, MAX_VALUE));
         }
 
-        return (RN_M[number / 1000] + RN_C[number % 1000 / 100] + RN_X[number % 100 / 10]
-            + RN_I[number % 10]);
+        return (RN_M[number / 1000] + RN_C[number % 1000 / 100] + RN_X[number % 100 / 10] + RN_I[number % 10]);
     }
 }

@@ -13,8 +13,7 @@ class MobiusFunctionTest {
         String expectedMessage = "Number must be greater than zero.";
 
         // when
-        Exception exception = assertThrows(
-            IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
         String actualMessage = exception.getMessage();
 
         // then
@@ -28,8 +27,7 @@ class MobiusFunctionTest {
         String expectedMessage = "Number must be greater than zero.";
 
         // when
-        Exception exception = assertThrows(
-            IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
         String actualMessage = exception.getMessage();
 
         // then

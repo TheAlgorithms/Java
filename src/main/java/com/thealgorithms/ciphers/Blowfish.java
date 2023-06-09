@@ -1120,8 +1120,7 @@ public class Blowfish {
         a = hexToBin(a);
         b = hexToBin(b);
         String ans = "";
-        for (int i = 0; i < a.length(); i++)
-            ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        for (int i = 0; i < a.length(); i++) ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
         ans = binToHex(ans);
         return ans;
     }

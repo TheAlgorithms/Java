@@ -21,8 +21,7 @@ public class NonRepeatingElement {
         }
         int[] arr = new int[n];
 
-        System.out.println(
-            "Enter " + n + " elements in the array. NOTE: Only 2 elements should not repeat");
+        System.out.println("Enter " + n + " elements in the array. NOTE: Only 2 elements should not repeat");
         for (i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }

@@ -40,8 +40,7 @@ class PollardRhoTest {
         String expectedMessage = "GCD cannot be found.";
 
         // when
-        Exception exception
-            = assertThrows(RuntimeException.class, () -> { PollardRho.pollardRho(number); });
+        Exception exception = assertThrows(RuntimeException.class, () -> { PollardRho.pollardRho(number); });
         String actualMessage = exception.getMessage();
 
         // then

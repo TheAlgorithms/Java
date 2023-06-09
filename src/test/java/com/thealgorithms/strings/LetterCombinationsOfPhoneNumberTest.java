@@ -39,9 +39,7 @@ public class LetterCombinationsOfPhoneNumberTest {
         // "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh",
         // "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi"]
         int[] numbers4 = {2, 3, 4};
-        List<String> output4 = Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh",
-            "afi", "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh",
-            "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi");
+        List<String> output4 = Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi");
         assertTrue(ob.printWords(numbers4, numbers4.length, 0, "").equals(output4));
     }
 }

@@ -29,8 +29,7 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeIsBST() {
-        final BinaryTree.Node root
-            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 20});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 20});
         assertTrue(CheckBinaryTreeIsValidBST.isBST(root));
     }
 
@@ -43,8 +42,7 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeWithDuplicatedNodesIsNotBST() {
-        final BinaryTree.Node root
-            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 13});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 13});
         assertFalse(CheckBinaryTreeIsValidBST.isBST(root));
     }
 
@@ -57,8 +55,7 @@ public class CheckBinaryTreeIsValidBSTTest {
     */
     @Test
     public void testBinaryTreeIsNotBST() {
-        final BinaryTree.Node root
-            = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 12});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {9, 7, 13, 3, 8, 10, 12});
         assertFalse(CheckBinaryTreeIsValidBST.isBST(root));
     }
 }

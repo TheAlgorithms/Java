@@ -36,7 +36,6 @@ public class ConwayTest {
 
     @Test
     public void testGenerateNextElementWith1A1Z3E1R1T3G1F1D2E1S1C() {
-        assertEquals("111A111Z131E111R111T131G111F111D121E111S111C",
-            Conway.generateNextElement("1A1Z3E1R1T3G1F1D2E1S1C"));
+        assertEquals("111A111Z131E111R111T131G111F111D121E111S111C", Conway.generateNextElement("1A1Z3E1R1T3G1F1D2E1S1C"));
     }
 }

@@ -77,8 +77,7 @@ number between 0 and total number of vertices-1,both inclusive*/
         p[0] = -1;
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
-                if (dist[arr[j].u] != Integer.MAX_VALUE
-                    && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+                if (dist[arr[j].u] != Integer.MAX_VALUE && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
                     p[arr[j].v] = arr[j].u;
                 }
@@ -128,8 +127,7 @@ number between 0 and total number of vertices-1,both inclusive*/
         p[source] = -1;
         for (i = 0; i < v - 1; i++) {
             for (j = 0; j < e; j++) {
-                if ((int) dist[arr[j].u] != Integer.MAX_VALUE
-                    && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+                if ((int) dist[arr[j].u] != Integer.MAX_VALUE && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
                     dist[arr[j].v] = dist[arr[j].u] + arr[j].w; // Update
                     p[arr[j].v] = arr[j].u;
                 }
@@ -137,8 +135,7 @@ number between 0 and total number of vertices-1,both inclusive*/
         }
         // Final cycle for negative checking
         for (j = 0; j < e; j++) {
-            if ((int) dist[arr[j].u] != Integer.MAX_VALUE
-                && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
+            if ((int) dist[arr[j].u] != Integer.MAX_VALUE && dist[arr[j].v] > dist[arr[j].u] + arr[j].w) {
                 neg = 1;
                 System.out.println("Negative cycle");
                 break;

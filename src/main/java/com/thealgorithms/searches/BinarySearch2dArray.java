@@ -42,11 +42,9 @@ public class BinarySearch2dArray {
 
         if (arr[endRow][midCol] == target) return new int[] {endRow, midCol};
 
-        if (target <= arr[startRow][midCol - 1])
-            return binarySearch(arr, target, startRow, 0, midCol - 1);
+        if (target <= arr[startRow][midCol - 1]) return binarySearch(arr, target, startRow, 0, midCol - 1);
 
-        if (target >= arr[startRow][midCol + 1] && target <= arr[startRow][colCount - 1])
-            return binarySearch(arr, target, startRow, midCol + 1, colCount - 1);
+        if (target >= arr[startRow][midCol + 1] && target <= arr[startRow][colCount - 1]) return binarySearch(arr, target, startRow, midCol + 1, colCount - 1);
 
         if (target <= arr[endRow][midCol - 1])
             return binarySearch(arr, target, endRow, 0, midCol - 1);

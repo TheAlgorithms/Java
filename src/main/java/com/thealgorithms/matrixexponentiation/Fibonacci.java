@@ -35,10 +35,8 @@ public class Fibonacci {
         for (int rowIndex = 0; rowIndex < rowsInMatrix1; rowIndex++) {
             for (int colIndex = 0; colIndex < columnsInMatrix2; colIndex++) {
                 int matrixEntry = 0;
-                for (int intermediateIndex = 0; intermediateIndex < columnsInMatrix1;
-                     intermediateIndex++) {
-                    matrixEntry += matrix1[rowIndex][intermediateIndex]
-                        * matrix2[intermediateIndex][colIndex];
+                for (int intermediateIndex = 0; intermediateIndex < columnsInMatrix1; intermediateIndex++) {
+                    matrixEntry += matrix1[rowIndex][intermediateIndex] * matrix2[intermediateIndex][colIndex];
                 }
                 product[rowIndex][colIndex] = matrixEntry;
             }

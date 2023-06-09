@@ -42,8 +42,7 @@ public class MiniMaxAlgorithm {
         }
 
         System.out.println(Arrays.toString(miniMaxAlgorith.getScores()));
-        System.out.println(
-            "The best score for " + (isMaximizer ? "Maximizer" : "Minimizer") + " is " + bestScore);
+        System.out.println("The best score for " + (isMaximizer ? "Maximizer" : "Minimizer") + " is " + bestScore);
     }
 
     /**
@@ -79,8 +78,7 @@ public class MiniMaxAlgorithm {
         // (1 x 2) = 2; ((1 x 2) + 1) = 3
         // (2 x 2) = 4; ((2 x 2) + 1) = 5 ...
         if (verbose) {
-            System.out.printf("From %02d and %02d, %s chooses %02d%n", score1, score2,
-                (isMaximizer ? "Maximizer" : "Minimizer"), bestScore);
+            System.out.printf("From %02d and %02d, %s chooses %02d%n", score1, score2, (isMaximizer ? "Maximizer" : "Minimizer"), bestScore);
         }
 
         return bestScore;

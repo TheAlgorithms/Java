@@ -22,8 +22,7 @@ public class DecimalToAnyBase {
 
         System.out.println("Decimal Input"
             + " is: " + decInput);
-        System.out.println("Value of " + decInput + " in base " + base
-            + " is: " + convertToAnyBase(decInput, base));
+        System.out.println("Value of " + decInput + " in base " + base + " is: " + convertToAnyBase(decInput, base));
 
         br.close();
     }

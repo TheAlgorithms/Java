@@ -13,8 +13,7 @@ public class DutchNationalFlagSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        return dutch_national_flag_sort(
-            unsorted, unsorted[(int) Math.ceil((unsorted.length) / 2.0) - 1]);
+        return dutch_national_flag_sort(unsorted, unsorted[(int) Math.ceil((unsorted.length) / 2.0) - 1]);
     }
 
     public <T extends Comparable<T>> T[] sort(T[] unsorted, T intendedMiddle) {

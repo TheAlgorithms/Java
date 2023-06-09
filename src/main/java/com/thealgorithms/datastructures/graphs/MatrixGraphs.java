@@ -258,9 +258,8 @@ class AdjacencyMatrixGraph {
 
         // Get the adjacency array for this vertex
         int[] adjacent = _adjacency[currentVertex];
-        for (int i = 0; i < adjacent.length;
-             i++) { // we are considering exploring, recurse on it // If an edge exists between the
-                    // currentVertex and the vertex
+        for (int i = 0; i < adjacent.length; i++) { // we are considering exploring, recurse on it // If an edge exists between the
+                                                    // currentVertex and the vertex
             if (adjacent[i] == AdjacencyMatrixGraph.EDGE_EXIST) {
                 depthFirstOrder(i, visited, orderList);
             }
@@ -309,9 +308,8 @@ class AdjacencyMatrixGraph {
             // Get the adjacency array for the currentVertex and
             // check each node
             int[] adjacent = _adjacency[currentVertex];
-            for (int vertex = 0; vertex < adjacent.length;
-                 vertex++) { // vertex we are considering exploring, we add it to the queue // If an
-                             // edge exists between the current vertex and the
+            for (int vertex = 0; vertex < adjacent.length; vertex++) { // vertex we are considering exploring, we add it to the queue // If an
+                                                                       // edge exists between the current vertex and the
                 if (adjacent[vertex] == AdjacencyMatrixGraph.EDGE_EXIST) {
                     queue.add(vertex);
                 }

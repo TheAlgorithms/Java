@@ -26,8 +26,7 @@ public class SegmentTree {
         }
 
         int mid = start + (end - start) / 2;
-        this.seg_t[index] = constructTree(arr, start, mid, index * 2 + 1)
-            + constructTree(arr, mid + 1, end, index * 2 + 2);
+        this.seg_t[index] = constructTree(arr, start, mid, index * 2 + 1) + constructTree(arr, mid + 1, end, index * 2 + 2);
         return this.seg_t[index];
     }
 
@@ -69,8 +68,7 @@ public class SegmentTree {
         }
 
         int mid = start + (end - start) / 2;
-        return (getSumTree(start, mid, q_start, q_end, seg_index * 2 + 1)
-            + getSumTree(mid + 1, end, q_start, q_end, seg_index * 2 + 2));
+        return (getSumTree(start, mid, q_start, q_end, seg_index * 2 + 1) + getSumTree(mid + 1, end, q_start, q_end, seg_index * 2 + 2));
     }
 
     /* A function to query the sum of the subarray [start...end]*/

@@ -24,8 +24,7 @@ public class BoundaryFill {
      * @param x_co_ordinate The x co-ordinate at which color is to be filled
      * @param y_co_ordinate The y co-ordinate at which color is to be filled
      */
-    public static void putPixel(
-        int[][] image, int x_co_ordinate, int y_co_ordinate, int new_color) {
+    public static void putPixel(int[][] image, int x_co_ordinate, int y_co_ordinate, int new_color) {
         image[x_co_ordinate][y_co_ordinate] = new_color;
     }
 
@@ -38,11 +37,8 @@ public class BoundaryFill {
      * @param new_color The new color which to be filled in the image
      * @param boundary_color The old color which is to be replaced in the image
      */
-    public static void boundaryFill(
-        int[][] image, int x_co_ordinate, int y_co_ordinate, int new_color, int boundary_color) {
-        if (x_co_ordinate >= 0 && y_co_ordinate >= 0
-            && getPixel(image, x_co_ordinate, y_co_ordinate) != new_color
-            && getPixel(image, x_co_ordinate, y_co_ordinate) != boundary_color) {
+    public static void boundaryFill(int[][] image, int x_co_ordinate, int y_co_ordinate, int new_color, int boundary_color) {
+        if (x_co_ordinate >= 0 && y_co_ordinate >= 0 && getPixel(image, x_co_ordinate, y_co_ordinate) != new_color && getPixel(image, x_co_ordinate, y_co_ordinate) != boundary_color) {
             putPixel(image, x_co_ordinate, y_co_ordinate, new_color);
             boundaryFill(image, x_co_ordinate + 1, y_co_ordinate, new_color, boundary_color);
             boundaryFill(image, x_co_ordinate - 1, y_co_ordinate, new_color, boundary_color);
