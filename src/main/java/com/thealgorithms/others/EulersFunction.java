@@ -7,11 +7,17 @@ package com.thealgorithms.others;
  * See https://en.wikipedia.org/wiki/Euler%27s_totient_function
  */
 public class EulersFunction {
+    private static void checkInput(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive.");
+        }
+    }
 
     // This method returns us number of x that (x < n) and gcd(x, n) == 1 in O(sqrt(n)) time
     // complexity;
 
     public static int getEuler(int n) {
+        checkInput(n);
         int result = n;
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {

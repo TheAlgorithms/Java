@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
@@ -29,5 +30,10 @@ class EulersFunctionTest {
         for (final var tc : testCases.entrySet()) {
             assertEquals(tc.getValue(), EulersFunction.getEuler(tc.getKey()));
         }
+    }
+
+    @Test
+    public void testGetEulerThrowsExceptionForNonPositiveInput() {
+        assertThrows(IllegalArgumentException.class, () -> EulersFunction.getEuler(0));
     }
 }
