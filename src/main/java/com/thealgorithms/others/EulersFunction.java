@@ -6,7 +6,10 @@ package com.thealgorithms.others;
  * <p>
  * See https://en.wikipedia.org/wiki/Euler%27s_totient_function
  */
-public class EulersFunction {
+final public class EulersFunction {
+    private EulersFunction() {
+    }
+
     private static void checkInput(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("n must be positive.");
@@ -31,11 +34,5 @@ public class EulersFunction {
             result -= result / n;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        for (int i = 1; i < 100; i++) {
-            System.out.println(getEuler(i));
-        }
     }
 }
