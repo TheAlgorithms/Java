@@ -3,10 +3,7 @@ package com.thealgorithms.others;
 import java.util.Arrays;
 
 /**
- * Sieve of Eratosthenes is an ancient algorithm for finding all prime numbers
- * up to any given limit.
- *
- * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki</a>
+ * @brief utility class implementing <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
  */
 final public class SieveOfEratosthenes {
     private SieveOfEratosthenes() {
@@ -18,7 +15,7 @@ final public class SieveOfEratosthenes {
         }
     }
 
-    private static Type[] sievePrimesFill(int n) {
+    private static Type[] sievePrimesTill(int n) {
         checkInput(n);
         Type[] isPrimeArray = new Type[n + 1];
         Arrays.fill(isPrimeArray, Type.PRIME);
@@ -52,13 +49,13 @@ final public class SieveOfEratosthenes {
     }
 
     /**
-     * Finds all prime numbers till n.
-     *
-     * @param n The number till which we have to check for primes. Should be more than 1.
-     * @return Array of all prime numbers between 0 to n.
+     * @brief finds all of the prime numbers up to the given upper (inclusive) limit
+     * @param n upper (inclusive) limit
+     * @exception IllegalArgumentException n is non-positive
+     * @return the array of all primes up to the given number (inclusive)
      */
     public static int[] findPrimesTill(int n) {
-        return extractPrimes(sievePrimesFill(n));
+        return extractPrimes(sievePrimesTill(n));
     }
 
     private enum Type {
