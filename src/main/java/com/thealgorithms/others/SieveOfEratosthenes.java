@@ -14,6 +14,40 @@ public class SieveOfEratosthenes {
             throw new IllegalArgumentException("n must be positive.");
         }
     }
+
+    private static Type[] sievePrimesFill(int n) {
+        checkInput(n);
+        Type[] isPrimeArray = new Type[n + 1];
+        Arrays.fill(isPrimeArray, Type.PRIME);
+        isPrimeArray[0] = isPrimeArray[1] = Type.NOT_PRIME;
+
+        double cap = Math.sqrt(n);
+        for (int i = 2; i <= cap; i++) {
+            if (isPrimeArray[i] == Type.PRIME) {
+                for (int j = 2; i * j <= n; j++) {
+                    isPrimeArray[i * j] = Type.NOT_PRIME;
+                }
+            }
+        }
+        return isPrimeArray;
+    }
+
+    private static int countPrimes(Type[] isPrimeArray) {
+        return (int) Arrays.stream(isPrimeArray).filter(element -> element == Type.PRIME).count();
+    }
+
+    private static int[] extractPrimes(Type[] isPrimeArray) {
+        int numberOfPrimes = countPrimes(isPrimeArray);
+        int[] primes = new int[numberOfPrimes];
+        int primeIndex = 0;
+        for (int curNumber = 0; curNumber < isPrimeArray.length; ++curNumber) {
+            if (isPrimeArray[curNumber] == Type.PRIME) {
+                primes[primeIndex++] = curNumber;
+            }
+        }
+        return primes;
+    }
+
     /**
      * Finds all prime numbers till n.
      *
@@ -21,31 +55,7 @@ public class SieveOfEratosthenes {
      * @return Array of all prime numbers between 0 to n.
      */
     public static int[] findPrimesTill(int n) {
-        checkInput(n);
-        Type[] numbers = new Type[n + 1];
-        Arrays.fill(numbers, Type.PRIME);
-        numbers[0] = numbers[1] = Type.NOT_PRIME;
-
-        double cap = Math.sqrt(n);
-        for (int i = 2; i <= cap; i++) {
-            if (numbers[i] == Type.PRIME) {
-                for (int j = 2; i * j <= n; j++) {
-                    numbers[i * j] = Type.NOT_PRIME;
-                }
-            }
-        }
-
-        int primesCount = (int) Arrays.stream(numbers).filter(element -> element == Type.PRIME).count();
-        int[] primes = new int[primesCount];
-
-        int primeIndex = 0;
-        for (int i = 0; i < n + 1; i++) {
-            if (numbers[i] == Type.PRIME) {
-                primes[primeIndex++] = i;
-            }
-        }
-
-        return primes;
+        return extractPrimes(sievePrimesFill(n));
     }
 
     private enum Type {
