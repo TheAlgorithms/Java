@@ -9,7 +9,11 @@ import java.util.Arrays;
  * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki</a>
  */
 public class SieveOfEratosthenes {
-
+    private static void checkInput(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive.");
+        }
+    }
     /**
      * Finds all prime numbers till n.
      *
@@ -17,6 +21,7 @@ public class SieveOfEratosthenes {
      * @return Array of all prime numbers between 0 to n.
      */
     public static int[] findPrimesTill(int n) {
+        checkInput(n);
         Type[] numbers = new Type[n + 1];
         Arrays.fill(numbers, Type.PRIME);
         numbers[0] = numbers[1] = Type.NOT_PRIME;
