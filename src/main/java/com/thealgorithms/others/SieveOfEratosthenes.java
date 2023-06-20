@@ -8,7 +8,10 @@ import java.util.Arrays;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki</a>
  */
-public class SieveOfEratosthenes {
+final public class SieveOfEratosthenes {
+    private SieveOfEratosthenes() {
+    }
+
     private static void checkInput(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("n must be positive.");
@@ -61,12 +64,5 @@ public class SieveOfEratosthenes {
     private enum Type {
         PRIME,
         NOT_PRIME,
-    }
-
-    public static void main(String[] args) {
-        int n = 100;
-        System.out.println("Searching for all primes from zero to " + n);
-        int[] primes = findPrimesTill(n);
-        System.out.println("Found: " + Arrays.toString(primes));
     }
 }
