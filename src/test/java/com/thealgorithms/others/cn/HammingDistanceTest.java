@@ -31,8 +31,8 @@ public class HammingDistanceTest {
 
     @Test
     public void checkForSameBits() {
-        String senderBits = "111", receiverBits = "111";
-        int answer = HammingDistance.getHammingDistanceBetweenBits(senderBits, receiverBits);
+        String someBits = "111";
+        int answer = HammingDistance.getHammingDistanceBetweenBits(someBits, someBits);
         Assertions.assertThat(answer).isEqualTo(0);
     }
 
@@ -54,8 +54,22 @@ public class HammingDistanceTest {
 
     @Test
     public void checkForLongDataBitsSame() {
-        String senderBits = "10010101101010000100110100", receiverBits = "10010101101010000100110100";
-        int answer = HammingDistance.getHammingDistanceBetweenBits(senderBits, receiverBits);
+        String someBits = "10010101101010000100110100";
+        int answer = HammingDistance.getHammingDistanceBetweenBits(someBits, someBits);
+        Assertions.assertThat(answer).isEqualTo(0);
+    }
+
+    @Test
+    public void checkForEmptyInput() {
+        String someBits = "";
+        int answer = HammingDistance.getHammingDistanceBetweenBits(someBits, someBits);
+        Assertions.assertThat(answer).isEqualTo(0);
+    }
+
+    @Test
+    public void checkForInputOfLength1() {
+        String someBits = "0";
+        int answer = HammingDistance.getHammingDistanceBetweenBits(someBits, someBits);
         Assertions.assertThat(answer).isEqualTo(0);
     }
 }
