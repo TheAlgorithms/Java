@@ -30,11 +30,6 @@ final public class HammingDistance {
             totalErrorBitCount += compute(bitsStrA.charAt(i), bitsStrB.charAt(i));
         }
 
-        if (totalErrorBitCount == 0) {
-            System.out.println("No Error bit in data segments");
-        } else {
-            System.out.println("Total Error bit count " + totalErrorBitCount);
-        }
         return totalErrorBitCount;
     }
 }
