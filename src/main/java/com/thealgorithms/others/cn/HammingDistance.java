@@ -3,9 +3,11 @@ package com.thealgorithms.others.cn;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HammingDistance {
+final public class HammingDistance {
+    private HammingDistance() {
+    }
 
-    public int getHammingDistanceBetweenBits(String senderBits, String receiverBits) {
+    public static int getHammingDistanceBetweenBits(String senderBits, String receiverBits) {
         if (senderBits.length() != receiverBits.length()) {
             throw new IllegalArgumentException("Sender and Receiver bits should be same");
         }
