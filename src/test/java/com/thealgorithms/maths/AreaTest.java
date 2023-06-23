@@ -35,7 +35,7 @@ class AreaTest {
     }
 
     @Test
-    void testSurfaceAreaTriangleRectangle() {
+    void testSurfaceAreaTriangle() {
         assertEquals(50.0, Area.surfaceAreaTriangleRectangle(10, 10));
     }
 
