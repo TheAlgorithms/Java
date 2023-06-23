@@ -16,6 +16,8 @@ public class BeadSortTest {
         assertArrayEquals(outputArray, expectedOutput);
     }
 
+    
+
     @Test
     public void beadSortSingleIntegerArray() {
         int[] inputArray = {4};
