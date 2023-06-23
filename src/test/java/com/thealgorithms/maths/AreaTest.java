@@ -36,7 +36,7 @@ class AreaTest {
 
     @Test
     void testSurfaceAreaTriangle() {
-        assertEquals(50.0, Area.surfaceAreaTriangleRectangle(10, 10));
+        assertEquals(50.0, Area.surfaceAreaTriangle(10, 10));
     }
 
     @Test
@@ -81,9 +81,9 @@ class AreaTest {
             ()
                 -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaSquare(0)),
             ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangleRectangle(0, 1)),
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(0, 1)),
             ()
-                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangleRectangle(1, 0)),
+                -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaTriangle(1, 0)),
             ()
                 -> assertThrows(IllegalArgumentException.class, () -> Area.surfaceAreaParallelogram(0, 1)),
             ()
