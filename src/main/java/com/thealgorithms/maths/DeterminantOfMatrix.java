@@ -35,10 +35,10 @@ public class DeterminantOfMatrix {
 		double det=0;
 		for(int c=0;c<order;++c) {
 			if(c%2==0) {
-				check=-1;
+				check=1;
 			}
 			else {
-				check=1;
+				check=-1;
 			}
 			det+=(check*(mat[0][c])*determinant(submatrix(mat,order,c),order-1));
 		}
