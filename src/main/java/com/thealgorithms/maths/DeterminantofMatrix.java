@@ -40,7 +40,7 @@ public class DeterminantOfMatrix {
 			else {
 				check=1;
 			}
-			det+=(check*(mat[0][c])*determinant(submatrix(mat,order,c),order-1)));
+			det+=(check*(mat[0][c])*determinant(submatrix(mat,order,c),order-1));
 		}
 		return(det);
 	}
