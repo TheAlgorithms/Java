@@ -4,8 +4,8 @@ import java.util.*;
  * Determinant of Matrix :https://textbooks.math.gatech.edu/ila/determinants-cofactors.html
  */
 public class DeterminantOfMatrix {
-    public static double[][] submatrix(double[][] mat,int order,int c) {
-		//creating reference for the sub matrix
+	public static double[][] submatrix(double[][] mat,int order,int c) {
+        //creating reference for the sub matrix
 		double[][] subMat=new double[order-1][order-1];
 		//sub_c stores the column column index of the sub matrix
 		int subC;
@@ -43,7 +43,7 @@ public class DeterminantOfMatrix {
 			det+=(check*(mat[0][c])*determinant(submatrix(mat,order,c),order-1));
 		}
 		return(det);
-	}
+    }
 }
 /*the above code will work for all square matrix whose order are greater than one.
 ---to initiate this recursive algorithm pass the matrix and its order to the operation() method
