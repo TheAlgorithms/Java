@@ -4,7 +4,7 @@ import java.util.*;
  * Determinant of Matrix :https://textbooks.math.gatech.edu/ila/determinants-cofactors.html
  */
 public class DeterminantOfMatrix {
-	public static double[][] submatrix(double[][] mat,int order,int c) {
+    public static double[][] submatrix(double[][] mat,int order,int c) {
 		//creating reference for the sub matrix
 		double[][] subMat=new double[order-1][order-1];
 		//sub_c stores the column column index of the sub matrix
