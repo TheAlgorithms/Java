@@ -8,7 +8,7 @@ package com.thealgorithms.audiofilters;
  */
 public class IIRFilter {
 
-	private final int order;
+private final int order;
 	private final double[] coeffsA;
 	private final double[] coeffsB;
 	private final double[] historyX;
