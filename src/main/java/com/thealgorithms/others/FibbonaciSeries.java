@@ -17,18 +17,18 @@ import java.util.Scanner;
  */
 public class FibbonaciSeries {
 
-    public static void main(String[] args) {
-        // Get input from the user
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int first = 0, second = 1;
-        scan.close();
-        while (first <= n) {
-            // print first fibo 0 then add second fibo into it while updating second as well
-            System.out.println(first);
-            int next = first + second;
-            first = second;
-            second = next;
-        }
-    }
+	public static void main(String[] args) {
+		// Get input from the user
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		int first = 0, second = 1;
+		scan.close();
+		while (first <= n) {
+			// print first fibo 0 then add second fibo into it while updating second as well
+			System.out.println(first);
+			int next = first + second;
+			first = second;
+			second = next;
+		}
+	}
 }

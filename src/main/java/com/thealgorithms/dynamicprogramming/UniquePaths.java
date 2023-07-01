@@ -18,36 +18,36 @@ import java.util.*;
 
 public class UniquePaths {
 
-    public static boolean uniquePaths(int m, int n, int ans) {
-        int[] dp = new int[n];
-        Arrays.fill(dp, 1);
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                dp[j] += dp[j - 1];
-            }
-        }
-        return dp[n - 1] == ans;
-        // return true if predicted answer matches with expected answer
-    }
+	public static boolean uniquePaths(int m, int n, int ans) {
+		int[] dp = new int[n];
+		Arrays.fill(dp, 1);
+		for (int i = 1; i < m; i++) {
+			for (int j = 1; j < n; j++) {
+				dp[j] += dp[j - 1];
+			}
+		}
+		return dp[n - 1] == ans;
+		// return true if predicted answer matches with expected answer
+	}
 
-    // The above method runs in O(n) time
-    public static boolean uniquePaths2(int m, int n, int ans) {
-        int[][] dp = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            dp[i][0] = 1;
-        }
-        for (int j = 0; j < n; j++) {
-            dp[0][j] = 1;
-        }
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
-            }
-        }
-        return dp[m - 1][n - 1] == ans;
-        // return true if predicted answer matches with expected answer
-    }
-    // The above mthod takes O(m*n) time
+	// The above method runs in O(n) time
+	public static boolean uniquePaths2(int m, int n, int ans) {
+		int[][] dp = new int[m][n];
+		for (int i = 0; i < m; i++) {
+			dp[i][0] = 1;
+		}
+		for (int j = 0; j < n; j++) {
+			dp[0][j] = 1;
+		}
+		for (int i = 1; i < m; i++) {
+			for (int j = 1; j < n; j++) {
+				dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+			}
+		}
+		return dp[m - 1][n - 1] == ans;
+		// return true if predicted answer matches with expected answer
+	}
+	// The above mthod takes O(m*n) time
 }
 /**
  * OUTPUT :

@@ -5,29 +5,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class ReverseStringRecursiveTest {
-    ReverseStringRecursive stringRecursive = new ReverseStringRecursive();
+	ReverseStringRecursive stringRecursive = new ReverseStringRecursive();
 
-    @Test
-    void shouldAcceptWhenEmptyStringIsPassed() {
-        String expected = "";
-        String reversed = stringRecursive.reverse("");
+	@Test
+	void shouldAcceptWhenEmptyStringIsPassed() {
+		String expected = "";
+		String reversed = stringRecursive.reverse("");
 
-        assertEquals(expected, reversed);
-    }
+		assertEquals(expected, reversed);
+	}
 
-    @Test
-    void shouldAcceptNotWhenWhenSingleCharacterIsPassed() {
-        String expected = "a";
-        String reversed = stringRecursive.reverse("a");
+	@Test
+	void shouldAcceptNotWhenWhenSingleCharacterIsPassed() {
+		String expected = "a";
+		String reversed = stringRecursive.reverse("a");
 
-        assertEquals(expected, reversed);
-    }
+		assertEquals(expected, reversed);
+	}
 
-    @Test
-    void shouldAcceptWhenStringIsPassed() {
-        String expected = "dlroWolleH";
-        String reversed = stringRecursive.reverse("HelloWorld");
+	@Test
+	void shouldAcceptWhenStringIsPassed() {
+		String expected = "dlroWolleH";
+		String reversed = stringRecursive.reverse("HelloWorld");
 
-        assertEquals(expected, reversed);
-    }
+		assertEquals(expected, reversed);
+	}
 }

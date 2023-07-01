@@ -12,32 +12,32 @@ import java.util.*;
 
 public class DuplicateBrackets {
 
-    public static boolean check(String str) {
-        Stack<Character> st = new Stack<>();
+	public static boolean check(String str) {
+		Stack<Character> st = new Stack<>();
 
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (ch == ')') {
-                if (st.peek() == '(') {
-                    return true;
-                } else {
-                    while (st.size() > 0 && st.peek() != '(') {
-                        st.pop();
-                    }
-                    st.pop();
-                }
-            } else {
-                st.push(ch);
-            }
-            // System.out.println(st);
-        }
-        return false;
-    }
+		for (int i = 0; i < str.length(); i++) {
+			char ch = str.charAt(i);
+			if (ch == ')') {
+				if (st.peek() == '(') {
+					return true;
+				} else {
+					while (st.size() > 0 && st.peek() != '(') {
+						st.pop();
+					}
+					st.pop();
+				}
+			} else {
+				st.push(ch);
+			}
+			// System.out.println(st);
+		}
+		return false;
+	}
 
-    public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        System.out.println(check(str));
-        sc.close();
-    }
+	public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		System.out.println(check(str));
+		sc.close();
+	}
 }

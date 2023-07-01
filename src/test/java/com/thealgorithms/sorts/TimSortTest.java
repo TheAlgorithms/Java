@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TimSortTest extends SortingAlgorithmTest {
-    @Override
-    SortAlgorithm getSortAlgorithm() {
-        return new TimSort();
-    }
+	@Override
+	SortAlgorithm getSortAlgorithm() {
+		return new TimSort();
+	}
 }

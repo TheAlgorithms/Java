@@ -23,40 +23,40 @@ import java.util.*;
  * @author Albina Gimaletdinova on 21/02/2023
  */
 public class PostOrderTraversal {
-    public static List<Integer> recursivePostOrder(BinaryTree.Node root) {
-        List<Integer> result = new ArrayList<>();
-        recursivePostOrder(root, result);
-        return result;
-    }
+	public static List<Integer> recursivePostOrder(BinaryTree.Node root) {
+		List<Integer> result = new ArrayList<>();
+		recursivePostOrder(root, result);
+		return result;
+	}
 
-    public static List<Integer> iterativePostOrder(BinaryTree.Node root) {
-        LinkedList<Integer> result = new LinkedList<>();
-        if (root == null) {
-            return result;
-        }
+	public static List<Integer> iterativePostOrder(BinaryTree.Node root) {
+		LinkedList<Integer> result = new LinkedList<>();
+		if (root == null) {
+			return result;
+		}
 
-        Deque<BinaryTree.Node> stack = new ArrayDeque<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            BinaryTree.Node node = stack.pop();
-            result.addFirst(node.data);
-            if (node.left != null) {
-                stack.push(node.left);
-            }
-            if (node.right != null) {
-                stack.push(node.right);
-            }
-        }
+		Deque<BinaryTree.Node> stack = new ArrayDeque<>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			BinaryTree.Node node = stack.pop();
+			result.addFirst(node.data);
+			if (node.left != null) {
+				stack.push(node.left);
+			}
+			if (node.right != null) {
+				stack.push(node.right);
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    private static void recursivePostOrder(BinaryTree.Node root, List<Integer> result) {
-        if (root == null) {
-            return;
-        }
-        recursivePostOrder(root.left, result);
-        recursivePostOrder(root.right, result);
-        result.add(root.data);
-    }
+	private static void recursivePostOrder(BinaryTree.Node root, List<Integer> result) {
+		if (root == null) {
+			return;
+		}
+		recursivePostOrder(root.left, result);
+		recursivePostOrder(root.right, result);
+		result.add(root.data);
+	}
 }

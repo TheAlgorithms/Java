@@ -31,41 +31,41 @@ import java.util.*;
  * @author Albina Gimaletdinova on 11/01/2023
  */
 public class ZigzagTraversal {
-    public static List<List<Integer>> traverse(BinaryTree.Node root) {
-        if (root == null) {
-            return List.of();
-        }
+	public static List<List<Integer>> traverse(BinaryTree.Node root) {
+		if (root == null) {
+			return List.of();
+		}
 
-        List<List<Integer>> result = new ArrayList<>();
+		List<List<Integer>> result = new ArrayList<>();
 
-        // create a queue
-        Deque<BinaryTree.Node> q = new ArrayDeque<>();
-        q.offer(root);
-        // start with writing nodes from left to right
-        boolean prevLevelFromLeftToRight = false;
+		// create a queue
+		Deque<BinaryTree.Node> q = new ArrayDeque<>();
+		q.offer(root);
+		// start with writing nodes from left to right
+		boolean prevLevelFromLeftToRight = false;
 
-        while (!q.isEmpty()) {
-            int nodesOnLevel = q.size();
-            List<Integer> level = new LinkedList<>();
-            // traverse all the level nodes
-            for (int i = 0; i < nodesOnLevel; i++) {
-                BinaryTree.Node node = q.poll();
-                if (prevLevelFromLeftToRight) {
-                    level.add(0, node.data);
-                } else {
-                    level.add(node.data);
-                }
-                if (node.left != null) {
-                    q.offer(node.left);
-                }
-                if (node.right != null) {
-                    q.offer(node.right);
-                }
-            }
-            // the next level node traversal will be from the other side
-            prevLevelFromLeftToRight = !prevLevelFromLeftToRight;
-            result.add(level);
-        }
-        return result;
-    }
+		while (!q.isEmpty()) {
+			int nodesOnLevel = q.size();
+			List<Integer> level = new LinkedList<>();
+			// traverse all the level nodes
+			for (int i = 0; i < nodesOnLevel; i++) {
+				BinaryTree.Node node = q.poll();
+				if (prevLevelFromLeftToRight) {
+					level.add(0, node.data);
+				} else {
+					level.add(node.data);
+				}
+				if (node.left != null) {
+					q.offer(node.left);
+				}
+				if (node.right != null) {
+					q.offer(node.right);
+				}
+			}
+			// the next level node traversal will be from the other side
+			prevLevelFromLeftToRight = !prevLevelFromLeftToRight;
+			result.add(level);
+		}
+		return result;
+	}
 }

@@ -16,66 +16,66 @@ import java.util.HashMap;
  *     - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
  */
 public class NthUglyNumber {
-    ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
-    final int[] baseNumbers;
-    HashMap<Integer, Integer> positions = new HashMap<>();
+	ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
+	final int[] baseNumbers;
+	HashMap<Integer, Integer> positions = new HashMap<>();
 
-    /**
-     * @brief initialized the object allowing to compute ugly numbers with given base
-     * @param baseNumbers the given base of ugly numbers
-     * @exception IllegalArgumentException baseNumber is empty
-     */
-    NthUglyNumber(int[] baseNumbers) {
-        if (baseNumbers.length == 0) {
-            throw new IllegalArgumentException("baseNumbers must be non-empty.");
-        }
+	/**
+	 * @brief initialized the object allowing to compute ugly numbers with given base
+	 * @param baseNumbers the given base of ugly numbers
+	 * @exception IllegalArgumentException baseNumber is empty
+	 */
+	NthUglyNumber(int[] baseNumbers) {
+		if (baseNumbers.length == 0) {
+			throw new IllegalArgumentException("baseNumbers must be non-empty.");
+		}
 
-        this.baseNumbers = baseNumbers;
-        for (final var baseNumber : baseNumbers) {
-            this.positions.put(baseNumber, 0);
-        }
-    }
+		this.baseNumbers = baseNumbers;
+		for (final var baseNumber : baseNumbers) {
+			this.positions.put(baseNumber, 0);
+		}
+	}
 
-    /**
-     * @param n the zero-based-index of the queried ugly number
-     * @exception IllegalArgumentException n is negative
-     * @return the n-th ugly number (starting from index 0)
-     */
-    public Long get(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("n must be non-negative.");
-        }
+	/**
+	 * @param n the zero-based-index of the queried ugly number
+	 * @exception IllegalArgumentException n is negative
+	 * @return the n-th ugly number (starting from index 0)
+	 */
+	public Long get(int n) {
+		if (n < 0) {
+			throw new IllegalArgumentException("n must be non-negative.");
+		}
 
-        while (uglyNumbers.size() <= n) {
-            addUglyNumber();
-        }
+		while (uglyNumbers.size() <= n) {
+			addUglyNumber();
+		}
 
-        return uglyNumbers.get(n);
-    }
+		return uglyNumbers.get(n);
+	}
 
-    private void addUglyNumber() {
-        uglyNumbers.add(computeMinimalCandidate());
-        updatePositions();
-    }
+	private void addUglyNumber() {
+		uglyNumbers.add(computeMinimalCandidate());
+		updatePositions();
+	}
 
-    private void updatePositions() {
-        final var lastUglyNumber = uglyNumbers.get(uglyNumbers.size() - 1);
-        for (final var baseNumber : baseNumbers) {
-            if (computeCandidate(baseNumber) == lastUglyNumber) {
-                positions.put(baseNumber, positions.get(baseNumber) + 1);
-            }
-        }
-    }
+	private void updatePositions() {
+		final var lastUglyNumber = uglyNumbers.get(uglyNumbers.size() - 1);
+		for (final var baseNumber : baseNumbers) {
+			if (computeCandidate(baseNumber) == lastUglyNumber) {
+				positions.put(baseNumber, positions.get(baseNumber) + 1);
+			}
+		}
+	}
 
-    private long computeCandidate(int candidateBase) {
-        return candidateBase * uglyNumbers.get(positions.get(candidateBase));
-    }
+	private long computeCandidate(int candidateBase) {
+		return candidateBase * uglyNumbers.get(positions.get(candidateBase));
+	}
 
-    private long computeMinimalCandidate() {
-        long res = Long.MAX_VALUE;
-        for (final var baseNumber : baseNumbers) {
-            res = Math.min(res, computeCandidate(baseNumber));
-        }
-        return res;
-    }
+	private long computeMinimalCandidate() {
+		long res = Long.MAX_VALUE;
+		for (final var baseNumber : baseNumbers) {
+			res = Math.min(res, computeCandidate(baseNumber));
+		}
+		return res;
+	}
 }

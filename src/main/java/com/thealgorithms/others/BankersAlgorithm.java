@@ -22,158 +22,158 @@ import java.util.Scanner;
 
 public class BankersAlgorithm {
 
-    /**
-     * This method finds the need of each process
-     */
-    static void calculateNeed(int[][] needArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
-        for (int i = 0; i < totalProcess; i++) {
-            for (int j = 0; j < totalResources; j++) {
-                needArray[i][j] = maxArray[i][j] - allocationArray[i][j];
-            }
-        }
-    }
+	/**
+	 * This method finds the need of each process
+	 */
+	static void calculateNeed(int[][] needArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
+		for (int i = 0; i < totalProcess; i++) {
+			for (int j = 0; j < totalResources; j++) {
+				needArray[i][j] = maxArray[i][j] - allocationArray[i][j];
+			}
+		}
+	}
 
-    /**
-     * This method find the system is in safe state or not
-     *
-     * @param processes[] int array of processes (0...n-1), size = n
-     * @param availableArray[] int array of number of instances of each
-     * resource, size = m
-     * @param maxArray[][] int matrix(2-D array) of maximum demand of each
-     * process in a system, size = n*m
-     * @param allocationArray[][] int matrix(2-D array) of the number of
-     * resources of each type currently allocated to each process, size = n*m
-     * @param totalProcess number of total processes, n
-     * @param totalResources number of total resources, m
-     *
-     * @return boolean if the system is in safe state or not
-     */
-    static boolean checkSafeSystem(int[] processes, int[] availableArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
-        int[][] needArray = new int[totalProcess][totalResources];
+	/**
+	 * This method find the system is in safe state or not
+	 *
+	 * @param processes[] int array of processes (0...n-1), size = n
+	 * @param availableArray[] int array of number of instances of each
+	 * resource, size = m
+	 * @param maxArray[][] int matrix(2-D array) of maximum demand of each
+	 * process in a system, size = n*m
+	 * @param allocationArray[][] int matrix(2-D array) of the number of
+	 * resources of each type currently allocated to each process, size = n*m
+	 * @param totalProcess number of total processes, n
+	 * @param totalResources number of total resources, m
+	 *
+	 * @return boolean if the system is in safe state or not
+	 */
+	static boolean checkSafeSystem(int[] processes, int[] availableArray, int[][] maxArray, int[][] allocationArray, int totalProcess, int totalResources) {
+		int[][] needArray = new int[totalProcess][totalResources];
 
-        calculateNeed(needArray, maxArray, allocationArray, totalProcess, totalResources);
+		calculateNeed(needArray, maxArray, allocationArray, totalProcess, totalResources);
 
-        boolean[] finishProcesses = new boolean[totalProcess];
+		boolean[] finishProcesses = new boolean[totalProcess];
 
-        int[] safeSequenceArray = new int[totalProcess];
+		int[] safeSequenceArray = new int[totalProcess];
 
-        int[] workArray = new int[totalResources];
+		int[] workArray = new int[totalResources];
 
-        for (int i = 0; i < totalResources; i++) {
-            workArray[i] = availableArray[i];
-        }
+		for (int i = 0; i < totalResources; i++) {
+			workArray[i] = availableArray[i];
+		}
 
-        int count = 0;
+		int count = 0;
 
-        // While all processes are not finished or system is not in safe state.
-        while (count < totalProcess) {
-            boolean foundSafeSystem = false;
-            for (int m = 0; m < totalProcess; m++) {
-                if (!finishProcesses[m]) {
-                    int j;
+		// While all processes are not finished or system is not in safe state.
+		while (count < totalProcess) {
+			boolean foundSafeSystem = false;
+			for (int m = 0; m < totalProcess; m++) {
+				if (!finishProcesses[m]) {
+					int j;
 
-                    for (j = 0; j < totalResources; j++) {
-                        if (needArray[m][j] > workArray[j]) {
-                            break;
-                        }
-                    }
+					for (j = 0; j < totalResources; j++) {
+						if (needArray[m][j] > workArray[j]) {
+							break;
+						}
+					}
 
-                    if (j == totalResources) {
-                        for (int k = 0; k < totalResources; k++) {
-                            workArray[k] += allocationArray[m][k];
-                        }
+					if (j == totalResources) {
+						for (int k = 0; k < totalResources; k++) {
+							workArray[k] += allocationArray[m][k];
+						}
 
-                        safeSequenceArray[count++] = m;
+						safeSequenceArray[count++] = m;
 
-                        finishProcesses[m] = true;
+						finishProcesses[m] = true;
 
-                        foundSafeSystem = true;
-                    }
-                }
-            }
+						foundSafeSystem = true;
+					}
+				}
+			}
 
-            // If we could not find a next process in safe sequence.
-            if (!foundSafeSystem) {
-                System.out.print("The system is not in the safe state because lack of resources");
-                return false;
-            }
-        }
+			// If we could not find a next process in safe sequence.
+			if (!foundSafeSystem) {
+				System.out.print("The system is not in the safe state because lack of resources");
+				return false;
+			}
+		}
 
-        System.out.print("The system is in safe sequence and the sequence is as follows: ");
-        for (int i = 0; i < totalProcess; i++) {
-            System.out.print("P" + safeSequenceArray[i] + " ");
-        }
+		System.out.print("The system is in safe sequence and the sequence is as follows: ");
+		for (int i = 0; i < totalProcess; i++) {
+			System.out.print("P" + safeSequenceArray[i] + " ");
+		}
 
-        return true;
-    }
+		return true;
+	}
 
-    /**
-     * This is main method of Banker's Algorithm
-     */
-    public static void main(String[] args) {
-        int numberOfProcesses, numberOfResources;
+	/**
+	 * This is main method of Banker's Algorithm
+	 */
+	public static void main(String[] args) {
+		int numberOfProcesses, numberOfResources;
 
-        Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter total number of processes");
-        numberOfProcesses = sc.nextInt();
+		System.out.println("Enter total number of processes");
+		numberOfProcesses = sc.nextInt();
 
-        System.out.println("Enter total number of resources");
-        numberOfResources = sc.nextInt();
+		System.out.println("Enter total number of resources");
+		numberOfResources = sc.nextInt();
 
-        int[] processes = new int[numberOfProcesses];
-        for (int i = 0; i < numberOfProcesses; i++) {
-            processes[i] = i;
-        }
+		int[] processes = new int[numberOfProcesses];
+		for (int i = 0; i < numberOfProcesses; i++) {
+			processes[i] = i;
+		}
 
-        System.out.println("--Enter the availability of--");
+		System.out.println("--Enter the availability of--");
 
-        int[] availableArray = new int[numberOfResources];
-        for (int i = 0; i < numberOfResources; i++) {
-            System.out.println("resource " + i + ": ");
-            availableArray[i] = sc.nextInt();
-        }
+		int[] availableArray = new int[numberOfResources];
+		for (int i = 0; i < numberOfResources; i++) {
+			System.out.println("resource " + i + ": ");
+			availableArray[i] = sc.nextInt();
+		}
 
-        System.out.println("--Enter the maximum matrix--");
+		System.out.println("--Enter the maximum matrix--");
 
-        int[][] maxArray = new int[numberOfProcesses][numberOfResources];
-        for (int i = 0; i < numberOfProcesses; i++) {
-            System.out.println("For process " + i + ": ");
-            for (int j = 0; j < numberOfResources; j++) {
-                System.out.println("Enter the maximum instances of resource " + j);
-                maxArray[i][j] = sc.nextInt();
-            }
-        }
+		int[][] maxArray = new int[numberOfProcesses][numberOfResources];
+		for (int i = 0; i < numberOfProcesses; i++) {
+			System.out.println("For process " + i + ": ");
+			for (int j = 0; j < numberOfResources; j++) {
+				System.out.println("Enter the maximum instances of resource " + j);
+				maxArray[i][j] = sc.nextInt();
+			}
+		}
 
-        System.out.println("--Enter the allocation matrix--");
+		System.out.println("--Enter the allocation matrix--");
 
-        int[][] allocationArray = new int[numberOfProcesses][numberOfResources];
-        for (int i = 0; i < numberOfProcesses; i++) {
-            System.out.println("For process " + i + ": ");
-            for (int j = 0; j < numberOfResources; j++) {
-                System.out.println("Allocated instances of resource " + j);
-                allocationArray[i][j] = sc.nextInt();
-            }
-        }
+		int[][] allocationArray = new int[numberOfProcesses][numberOfResources];
+		for (int i = 0; i < numberOfProcesses; i++) {
+			System.out.println("For process " + i + ": ");
+			for (int j = 0; j < numberOfResources; j++) {
+				System.out.println("Allocated instances of resource " + j);
+				allocationArray[i][j] = sc.nextInt();
+			}
+		}
 
-        checkSafeSystem(processes, availableArray, maxArray, allocationArray, numberOfProcesses, numberOfResources);
+		checkSafeSystem(processes, availableArray, maxArray, allocationArray, numberOfProcesses, numberOfResources);
 
-        sc.close();
-    }
+		sc.close();
+	}
 }
 /*
-    Example:
-    n = 5
-    m = 3
+	Example:
+	n = 5
+	m = 3
 
-    Process     Allocation      Max       Available
-                0   1   2    0   1   2    0   1   2
+	Process     Allocation      Max       Available
+				0   1   2    0   1   2    0   1   2
 
-        0       0   1   0    7   5   3    3   3   2
-        1       2   0   0    3   2   2
-        2       3   0   2    9   0   2
-        3       2   1   1    2   2   2
-        4       0   0   2    4   3   3
+		0       0   1   0    7   5   3    3   3   2
+		1       2   0   0    3   2   2
+		2       3   0   2    9   0   2
+		3       2   1   1    2   2   2
+		4       0   0   2    4   3   3
 
-    Result: The system is in safe sequence and the sequence is as follows: P1, P3, P4, P0, P2
+	Result: The system is in safe sequence and the sequence is as follows: P1, P3, P4, P0, P2
  */

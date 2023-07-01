@@ -33,49 +33,49 @@ import java.util.Deque;
  * @author Albina Gimaletdinova on 13/01/2023
  */
 public class SameTreesCheck {
-    public static boolean check(BinaryTree.Node p, BinaryTree.Node q) {
-        if (p == null && q == null) {
-            return true;
-        }
-        if (p == null || q == null) {
-            return false;
-        }
+	public static boolean check(BinaryTree.Node p, BinaryTree.Node q) {
+		if (p == null && q == null) {
+			return true;
+		}
+		if (p == null || q == null) {
+			return false;
+		}
 
-        Deque<BinaryTree.Node> q1 = new ArrayDeque<>();
-        Deque<BinaryTree.Node> q2 = new ArrayDeque<>();
-        q1.add(p);
-        q2.add(q);
-        while (!q1.isEmpty() && !q2.isEmpty()) {
-            BinaryTree.Node first = q1.poll();
-            BinaryTree.Node second = q2.poll();
-            // check that some node can be null
-            // if the check is true: both nodes are null or both nodes are not null
-            if (!equalNodes(first, second)) return false;
+		Deque<BinaryTree.Node> q1 = new ArrayDeque<>();
+		Deque<BinaryTree.Node> q2 = new ArrayDeque<>();
+		q1.add(p);
+		q2.add(q);
+		while (!q1.isEmpty() && !q2.isEmpty()) {
+			BinaryTree.Node first = q1.poll();
+			BinaryTree.Node second = q2.poll();
+			// check that some node can be null
+			// if the check is true: both nodes are null or both nodes are not null
+			if (!equalNodes(first, second)) return false;
 
-            if (first != null) {
-                if (!equalNodes(first.left, second.left)) return false;
-                if (first.left != null) {
-                    q1.add(first.left);
-                    q2.add(second.left);
-                }
+			if (first != null) {
+				if (!equalNodes(first.left, second.left)) return false;
+				if (first.left != null) {
+					q1.add(first.left);
+					q2.add(second.left);
+				}
 
-                if (!equalNodes(first.right, second.right)) return false;
-                if (first.right != null) {
-                    q1.add(first.right);
-                    q2.add(second.right);
-                }
-            }
-        }
-        return true;
-    }
+				if (!equalNodes(first.right, second.right)) return false;
+				if (first.right != null) {
+					q1.add(first.right);
+					q2.add(second.right);
+				}
+			}
+		}
+		return true;
+	}
 
-    private static boolean equalNodes(BinaryTree.Node p, BinaryTree.Node q) {
-        if (p == null && q == null) {
-            return true;
-        }
-        if (p == null || q == null) {
-            return false;
-        }
-        return p.data == q.data;
-    }
+	private static boolean equalNodes(BinaryTree.Node p, BinaryTree.Node q) {
+		if (p == null && q == null) {
+			return true;
+		}
+		if (p == null || q == null) {
+			return false;
+		}
+		return p.data == q.data;
+	}
 }

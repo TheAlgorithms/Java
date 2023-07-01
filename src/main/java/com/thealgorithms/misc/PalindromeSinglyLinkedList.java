@@ -13,37 +13,37 @@ import java.util.Stack;
  */
 public class PalindromeSinglyLinkedList {
 
-    public static void main(String[] args) {
-        SinglyLinkedList linkedList = new SinglyLinkedList();
+	public static void main(String[] args) {
+		SinglyLinkedList linkedList = new SinglyLinkedList();
 
-        linkedList.insertHead(3);
-        linkedList.insertNth(2, 1);
-        linkedList.insertNth(1, 2);
-        linkedList.insertNth(2, 3);
-        linkedList.insertNth(3, 4);
+		linkedList.insertHead(3);
+		linkedList.insertNth(2, 1);
+		linkedList.insertNth(1, 2);
+		linkedList.insertNth(2, 3);
+		linkedList.insertNth(3, 4);
 
-        if (isPalindrome(linkedList)) {
-            System.out.println("It's a palindrome list");
-        } else {
-            System.out.println("It's NOT a palindrome list");
-        }
-    }
+		if (isPalindrome(linkedList)) {
+			System.out.println("It's a palindrome list");
+		} else {
+			System.out.println("It's NOT a palindrome list");
+		}
+	}
 
-    public static boolean isPalindrome(SinglyLinkedList linkedList) {
-        boolean ret = true;
-        Stack<Integer> linkedListValues = new Stack<>();
+	public static boolean isPalindrome(SinglyLinkedList linkedList) {
+		boolean ret = true;
+		Stack<Integer> linkedListValues = new Stack<>();
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            linkedListValues.push(linkedList.getNth(i));
-        }
+		for (int i = 0; i < linkedList.size(); i++) {
+			linkedListValues.push(linkedList.getNth(i));
+		}
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            if (linkedList.getNth(i) != linkedListValues.pop()) {
-                ret = false;
-                break;
-            }
-        }
+		for (int i = 0; i < linkedList.size(); i++) {
+			if (linkedList.getNth(i) != linkedListValues.pop()) {
+				ret = false;
+				break;
+			}
+		}
 
-        return ret;
-    }
+		return ret;
+	}
 }

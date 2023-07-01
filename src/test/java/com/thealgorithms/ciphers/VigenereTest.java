@@ -6,31 +6,31 @@ import org.junit.jupiter.api.Test;
 
 class VigenereTest {
 
-    Vigenere vigenere = new Vigenere();
+	Vigenere vigenere = new Vigenere();
 
-    @Test
-    void vigenereEncryptTest() {
-        // given
-        String text = "Hello World!";
-        String key = "suchsecret";
+	@Test
+	void vigenereEncryptTest() {
+		// given
+		String text = "Hello World!";
+		String key = "suchsecret";
 
-        // when
-        String cipherText = vigenere.encrypt(text, key);
+		// when
+		String cipherText = vigenere.encrypt(text, key);
 
-        // then
-        assertEquals("Zynsg Yfvev!", cipherText);
-    }
+		// then
+		assertEquals("Zynsg Yfvev!", cipherText);
+	}
 
-    @Test
-    void vigenereDecryptTest() {
-        // given
-        String encryptedText = "Zynsg Yfvev!";
-        String key = "suchsecret";
+	@Test
+	void vigenereDecryptTest() {
+		// given
+		String encryptedText = "Zynsg Yfvev!";
+		String key = "suchsecret";
 
-        // when
-        String decryptedText = vigenere.decrypt(encryptedText, key);
+		// when
+		String decryptedText = vigenere.decrypt(encryptedText, key);
 
-        // then
-        assertEquals("Hello World!", decryptedText);
-    }
+		// then
+		assertEquals("Hello World!", decryptedText);
+	}
 }

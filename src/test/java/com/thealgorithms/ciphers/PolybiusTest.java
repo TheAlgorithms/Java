@@ -6,40 +6,40 @@ import org.junit.jupiter.api.Test;
 
 public class PolybiusTest {
 
-    @Test
-    void testEncrypt() {
-        // Given
-        String plaintext = "HELLOWORLD";
+	@Test
+	void testEncrypt() {
+		// Given
+		String plaintext = "HELLOWORLD";
 
-        // When
-        String actual = Polybius.encrypt(plaintext);
+		// When
+		String actual = Polybius.encrypt(plaintext);
 
-        // Then
-        assertEquals("12042121244124322103", actual);
-    }
+		// Then
+		assertEquals("12042121244124322103", actual);
+	}
 
-    @Test
-    void testDecrypt() {
-        // Given
-        String ciphertext = "12042121244124322103";
+	@Test
+	void testDecrypt() {
+		// Given
+		String ciphertext = "12042121244124322103";
 
-        // When
-        String actual = Polybius.decrypt(ciphertext);
+		// When
+		String actual = Polybius.decrypt(ciphertext);
 
-        // Then
-        assertEquals("HELLOWORLD", actual);
-    }
+		// Then
+		assertEquals("HELLOWORLD", actual);
+	}
 
-    @Test
-    void testIsTextTheSameAfterEncryptionAndDecryption() {
-        // Given
-        String plaintext = "HELLOWORLD";
+	@Test
+	void testIsTextTheSameAfterEncryptionAndDecryption() {
+		// Given
+		String plaintext = "HELLOWORLD";
 
-        // When
-        String encryptedText = Polybius.encrypt(plaintext);
-        String actual = Polybius.decrypt(encryptedText);
+		// When
+		String encryptedText = Polybius.encrypt(plaintext);
+		String actual = Polybius.decrypt(encryptedText);
 
-        // Then
-        assertEquals(plaintext, actual);
-    }
+		// Then
+		assertEquals(plaintext, actual);
+	}
 }

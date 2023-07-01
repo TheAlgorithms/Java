@@ -44,27 +44,27 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  */
 public class CeilInBinarySearchTree {
 
-    public static Node getCeil(Node root, int key) {
-        if (root == null) {
-            return null;
-        }
+	public static Node getCeil(Node root, int key) {
+		if (root == null) {
+			return null;
+		}
 
-        // if root value is same as key than root is the ceiling
-        if (root.data == key) {
-            return root;
-        }
+		// if root value is same as key than root is the ceiling
+		if (root.data == key) {
+			return root;
+		}
 
-        // if root value is lesser than key then ceil must be in right subtree
-        if (root.data < key) {
-            return getCeil(root.right, key);
-        }
+		// if root value is lesser than key then ceil must be in right subtree
+		if (root.data < key) {
+			return getCeil(root.right, key);
+		}
 
-        // if root value is greater than key then ceil can be in left subtree or if
-        // it is not in left subtree then current node will be ceil
-        Node result = getCeil(root.left, key);
+		// if root value is greater than key then ceil can be in left subtree or if
+		// it is not in left subtree then current node will be ceil
+		Node result = getCeil(root.left, key);
 
-        // if result is null it means that there is no ceil in children subtrees
-        // and the root is the ceil otherwise the returned node is the ceil.
-        return result == null ? root : result;
-    }
+		// if result is null it means that there is no ceil in children subtrees
+		// and the root is the ceil otherwise the returned node is the ceil.
+		return result == null ? root : result;
+	}
 }

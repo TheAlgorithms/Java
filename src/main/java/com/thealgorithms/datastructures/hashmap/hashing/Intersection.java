@@ -14,24 +14,24 @@ import java.util.Map;
 
 public class Intersection {
 
-    public static List<Integer> intersection(int[] arr1, int[] arr2) {
-        if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
-            return Collections.emptyList();
-        }
-        Map<Integer, Integer> cnt = new HashMap<>(16);
-        for (int v : arr1) {
-            cnt.put(v, cnt.getOrDefault(v, 0) + 1);
-        }
-        List<Integer> res = new ArrayList<>();
-        for (int v : arr2) {
-            if (cnt.containsKey(v) && cnt.get(v) > 0) {
-                res.add(v);
-                cnt.put(v, cnt.get(v) - 1);
-            }
-        }
-        return res;
-    }
+	public static List<Integer> intersection(int[] arr1, int[] arr2) {
+		if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
+			return Collections.emptyList();
+		}
+		Map<Integer, Integer> cnt = new HashMap<>(16);
+		for (int v : arr1) {
+			cnt.put(v, cnt.getOrDefault(v, 0) + 1);
+		}
+		List<Integer> res = new ArrayList<>();
+		for (int v : arr2) {
+			if (cnt.containsKey(v) && cnt.get(v) > 0) {
+				res.add(v);
+				cnt.put(v, cnt.get(v) - 1);
+			}
+		}
+		return res;
+	}
 
-    private Intersection() {
-    }
+	private Intersection() {
+	}
 }

@@ -6,27 +6,27 @@ import org.junit.jupiter.api.Test;
 
 public class PronicNumberTest {
 
-    @Test
-    void testForPronicNumber() {
-        // given
-        int number = 30;
+	@Test
+	void testForPronicNumber() {
+		// given
+		int number = 30;
 
-        // when
-        boolean result = PronicNumber.isPronic(number);
+		// when
+		boolean result = PronicNumber.isPronic(number);
 
-        // then
-        assertTrue(result);
-    }
+		// then
+		assertTrue(result);
+	}
 
-    @Test
-    void testForNonPronicNumber() {
-        // given
-        int number = 21;
+	@Test
+	void testForNonPronicNumber() {
+		// given
+		int number = 21;
 
-        // when
-        boolean result = PronicNumber.isPronic(number);
+		// when
+		boolean result = PronicNumber.isPronic(number);
 
-        // then
-        assertFalse(result);
-    }
+		// then
+		assertFalse(result);
+	}
 }

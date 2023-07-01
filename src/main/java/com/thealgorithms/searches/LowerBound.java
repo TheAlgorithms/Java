@@ -25,65 +25,65 @@ import java.util.stream.IntStream;
  */
 class LowerBound implements SearchAlgorithm {
 
-    // Driver Program
-    public static void main(String[] args) {
-        // Just generate data
-        Random r = ThreadLocalRandom.current();
+	// Driver Program
+	public static void main(String[] args) {
+		// Just generate data
+		Random r = ThreadLocalRandom.current();
 
-        int size = 100;
-        int maxElement = 100000;
+		int size = 100;
+		int maxElement = 100000;
 
-        Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[] ::new);
+		Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[] ::new);
 
-        // The element for which the lower bound is to be found
-        int val = integers[r.nextInt(size - 1)] + 1;
+		// The element for which the lower bound is to be found
+		int val = integers[r.nextInt(size - 1)] + 1;
 
-        LowerBound search = new LowerBound();
-        int atIndex = search.find(integers, val);
+		LowerBound search = new LowerBound();
+		int atIndex = search.find(integers, val);
 
-        System.out.printf("Val: %d. Lower Bound Found %d at index %d. An array length %d%n", val, integers[atIndex], atIndex, size);
+		System.out.printf("Val: %d. Lower Bound Found %d at index %d. An array length %d%n", val, integers[atIndex], atIndex, size);
 
-        boolean toCheck = integers[atIndex] >= val || integers[size - 1] < val;
-        System.out.printf("Lower Bound found at an index: %d. Is greater or max element: %b%n", atIndex, toCheck);
-    }
+		boolean toCheck = integers[atIndex] >= val || integers[size - 1] < val;
+		System.out.printf("Lower Bound found at an index: %d. Is greater or max element: %b%n", atIndex, toCheck);
+	}
 
-    /**
-     * @param array is an array where the LowerBound value is to be found
-     * @param key is an element for which the LowerBound is to be found
-     * @param <T> is any comparable type
-     * @return index of the LowerBound element
-     */
-    @Override
-    public <T extends Comparable<T>> int find(T[] array, T key) {
-        return search(array, key, 0, array.length - 1);
-    }
+	/**
+	 * @param array is an array where the LowerBound value is to be found
+	 * @param key is an element for which the LowerBound is to be found
+	 * @param <T> is any comparable type
+	 * @return index of the LowerBound element
+	 */
+	@Override
+	public <T extends Comparable<T>> int find(T[] array, T key) {
+		return search(array, key, 0, array.length - 1);
+	}
 
-    /**
-     * This method implements the Generic Binary Search
-     *
-     * @param array The array to make the binary search
-     * @param key The number you are looking for
-     * @param left The lower bound
-     * @param right The upper bound
-     * @return the location of the key
-     */
-    private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
-        if (right <= left) {
-            return left;
-        }
+	/**
+	 * This method implements the Generic Binary Search
+	 *
+	 * @param array The array to make the binary search
+	 * @param key The number you are looking for
+	 * @param left The lower bound
+	 * @param right The upper bound
+	 * @return the location of the key
+	 */
+	private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
+		if (right <= left) {
+			return left;
+		}
 
-        // find median
-        int median = (left + right) >>> 1;
-        int comp = key.compareTo(array[median]);
+		// find median
+		int median = (left + right) >>> 1;
+		int comp = key.compareTo(array[median]);
 
-        if (comp == 0) {
-            return median;
-        } else if (comp < 0) {
-            // median position can be a possible solution
-            return search(array, key, left, median);
-        } else {
-            // key we are looking is greater, so we must look on the right of median position
-            return search(array, key, median + 1, right);
-        }
-    }
+		if (comp == 0) {
+			return median;
+		} else if (comp < 0) {
+			// median position can be a possible solution
+			return search(array, key, left, median);
+		} else {
+			// key we are looking is greater, so we must look on the right of median position
+			return search(array, key, median + 1, right);
+		}
+	}
 }

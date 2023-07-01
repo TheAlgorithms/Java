@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 class DudeneyNumberTest {
 
-    @Test
-    void isDudeney() {
-        final int validDudeneyNumber = 512;
-        final int invalidDudeneyNumber = 125;
+	@Test
+	void isDudeney() {
+		final int validDudeneyNumber = 512;
+		final int invalidDudeneyNumber = 125;
 
-        assertTrue(() -> DudeneyNumber.isDudeney(validDudeneyNumber));
-        assertFalse(() -> DudeneyNumber.isDudeney(invalidDudeneyNumber));
-    }
+		assertTrue(() -> DudeneyNumber.isDudeney(validDudeneyNumber));
+		assertFalse(() -> DudeneyNumber.isDudeney(invalidDudeneyNumber));
+	}
 }

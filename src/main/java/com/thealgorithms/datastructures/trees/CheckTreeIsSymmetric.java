@@ -32,26 +32,26 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  */
 public class CheckTreeIsSymmetric {
 
-    public static boolean isSymmetric(Node root) {
-        if (root == null) {
-            return true;
-        }
-        return isSymmetric(root.left, root.right);
-    }
+	public static boolean isSymmetric(Node root) {
+		if (root == null) {
+			return true;
+		}
+		return isSymmetric(root.left, root.right);
+	}
 
-    private static boolean isSymmetric(Node leftSubtreeRoot, Node rightSubtreRoot) {
-        if (leftSubtreeRoot == null && rightSubtreRoot == null) {
-            return true;
-        }
+	private static boolean isSymmetric(Node leftSubtreeRoot, Node rightSubtreRoot) {
+		if (leftSubtreeRoot == null && rightSubtreRoot == null) {
+			return true;
+		}
 
-        if (isInvalidSubtree(leftSubtreeRoot, rightSubtreRoot)) {
-            return false;
-        }
+		if (isInvalidSubtree(leftSubtreeRoot, rightSubtreRoot)) {
+			return false;
+		}
 
-        return isSymmetric(leftSubtreeRoot.right, rightSubtreRoot.left) && isSymmetric(leftSubtreeRoot.left, rightSubtreRoot.right);
-    }
+		return isSymmetric(leftSubtreeRoot.right, rightSubtreRoot.left) && isSymmetric(leftSubtreeRoot.left, rightSubtreRoot.right);
+	}
 
-    private static boolean isInvalidSubtree(Node leftSubtreeRoot, Node rightSubtreeRoot) {
-        return leftSubtreeRoot == null || rightSubtreeRoot == null || leftSubtreeRoot.data != rightSubtreeRoot.data;
-    }
+	private static boolean isInvalidSubtree(Node leftSubtreeRoot, Node rightSubtreeRoot) {
+		return leftSubtreeRoot == null || rightSubtreeRoot == null || leftSubtreeRoot.data != rightSubtreeRoot.data;
+	}
 }

@@ -5,8 +5,8 @@ package com.thealgorithms.sorts;
  * @see QuickSort
  */
 class QuickSortTest extends SortingAlgorithmTest {
-    @Override
-    SortAlgorithm getSortAlgorithm() {
-        return new QuickSort();
-    }
+	@Override
+	SortAlgorithm getSortAlgorithm() {
+		return new QuickSort();
+	}
 }
