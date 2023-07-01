@@ -14,8 +14,8 @@ public class FibonacciNumberCheckTest {
         Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(1));
         Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(2));
         Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(21));
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(6765));      // 20th number
-        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(832040));    // 30th number
+        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(6765)); // 20th number
+        Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(832040)); // 30th number
         Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(102334155)); // 40th number
         Assertions.assertTrue(FibonacciNumberCheck.isFibonacciNumber(701408733)); // 45th number
     }
