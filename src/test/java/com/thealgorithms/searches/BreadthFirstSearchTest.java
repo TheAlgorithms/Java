@@ -4,31 +4,74 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.thealgorithms.datastructures.Node;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BreadthFirstSearchTest {
+public class BreadthFirstSearchTest {
+    private Node<String> root;
+    private BreadthFirstSearch<String> bfs;
 
-    private static final DepthFirstSearch.Node rootNode = new DepthFirstSearch.Node("A",
-        List.of(new DepthFirstSearch.Node("B", List.of(new DepthFirstSearch.Node("D"), new DepthFirstSearch.Node("F", List.of(new DepthFirstSearch.Node("H"), new DepthFirstSearch.Node("I"))))), new DepthFirstSearch.Node("C", List.of(new DepthFirstSearch.Node("G"))), new DepthFirstSearch.Node("E")));
+    @BeforeEach
+    public void setUp() {
+        // nodes declaration
+        root = new Node<>("A");
 
-    @Test
-    void searchI() {
-        Optional<DepthFirstSearch.Node> Inode = BreadthFirstSearch.search(rootNode, "I");
-        assertTrue(Inode.isPresent());
-        assertEquals(Inode.get().getName(), "I");
+        var nodeB = new Node<>("B");
+        var nodeC = new Node<>("C");
+        var nodeD = new Node<>("D");
+
+        var nodeE = new Node<>("E");
+        var nodeF = new Node<>("F");
+
+        // tree initialization
+        root.addChild(nodeB);
+        root.addChild(nodeC);
+        root.addChild(nodeD);
+
+        nodeB.addChild(nodeE);
+        nodeB.addChild(nodeF);
+
+        // create an instance to monitor the visited nodes
+        bfs = new BreadthFirstSearch<>();
     }
 
     @Test
-    void searchG() {
-        Optional<DepthFirstSearch.Node> Gnode = BreadthFirstSearch.search(rootNode, "G");
-        assertTrue(Gnode.isPresent());
-        assertEquals(Gnode.get().getName(), "G");
+    public void testSearchRoot() {
+        String expectedValue = "A";
+        List<String> expectedPath = List.of("A");
+
+        // check value
+        Optional<Node<String>> value = bfs.search(root, "A");
+        assertEquals(expectedValue, value.orElse(new Node<>("")).getValue());
+
+        // check path
+        assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
     }
 
     @Test
-    void searchE() {
-        Optional<DepthFirstSearch.Node> Enode = BreadthFirstSearch.search(rootNode, "E");
-        assertTrue(Enode.isPresent());
-        assertEquals(Enode.get().getName(), "E");
+    public void testSearchE() {
+        String expectedValue = "E";
+        List<String> expectedPath = List.of("A", "B", "C", "D", "E");
+
+        // check value
+        Optional<Node<String>> value = Optional.of(bfs.search(root, "E").orElse(new Node<>(null)));
+        assertEquals(expectedValue, value.get().getValue());
+
+        // check path
+        assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
+    }
+
+    @Test
+    void searchNull() {
+        List<String> expectedPath = List.of("A", "B", "C", "D", "E", "F");
+        Optional<Node<String>> node = bfs.search(root, null);
+
+        // check value
+        assertTrue(node.isEmpty());
+
+        // check path
+        assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
     }
 }
