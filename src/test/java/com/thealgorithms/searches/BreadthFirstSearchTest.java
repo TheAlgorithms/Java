@@ -13,6 +13,14 @@ public class BreadthFirstSearchTest {
     private Node<String> root;
     private BreadthFirstSearch<String> bfs;
 
+// Tree structure:
+//
+//        A
+//      / | \
+//     B  C  D
+//    / \
+//   E   F
+
     @BeforeEach
     public void setUp() {
         // nodes declaration
@@ -43,7 +51,7 @@ public class BreadthFirstSearchTest {
         List<String> expectedPath = List.of("A");
 
         // check value
-        Optional<Node<String>> value = bfs.search(root, "A");
+        Optional<Node<String>> value = bfs.search(root, expectedValue);
         assertEquals(expectedValue, value.orElse(new Node<>("")).getValue());
 
         // check path
@@ -51,12 +59,12 @@ public class BreadthFirstSearchTest {
     }
 
     @Test
-    public void testSearchE() {
-        String expectedValue = "E";
-        List<String> expectedPath = List.of("A", "B", "C", "D", "E");
+    public void testSearchF() {
+        String expectedValue = "F";
+        List<String> expectedPath = List.of("A", "B", "C", "D", "E", "F");
 
         // check value
-        Optional<Node<String>> value = Optional.of(bfs.search(root, "E").orElse(new Node<>(null)));
+        Optional<Node<String>> value = Optional.of(bfs.search(root, expectedValue).orElse(new Node<>(null)));
         assertEquals(expectedValue, value.get().getValue());
 
         // check path
@@ -64,7 +72,7 @@ public class BreadthFirstSearchTest {
     }
 
     @Test
-    void searchNull() {
+    void testSearchNull() {
         List<String> expectedPath = List.of("A", "B", "C", "D", "E", "F");
         Optional<Node<String>> node = bfs.search(root, null);
 
@@ -72,6 +80,24 @@ public class BreadthFirstSearchTest {
         assertTrue(node.isEmpty());
 
         // check path
+        assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
+    }
+
+    @Test
+    void testNullRoot() {
+        var value = bfs.search(null, "B");
+        assertTrue(value.isEmpty());
+    }
+
+    @Test
+    void testSearchValueThatNotExists() {
+        List<String> expectedPath = List.of("A", "B", "C", "D", "E", "F");
+        var value = bfs.search(root, "Z");
+
+        // check that the value is empty because it's not exists in the tree
+        assertTrue(value.isEmpty());
+
+        // check path is the whole list
         assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
     }
 }

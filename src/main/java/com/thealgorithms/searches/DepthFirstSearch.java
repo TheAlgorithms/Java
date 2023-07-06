@@ -15,6 +15,9 @@ public class DepthFirstSearch<T> {
     private final List<T> visited = new ArrayList<>();
 
     public Optional<Node<T>> recursiveSearch(final Node<T> node, final Integer value) {
+        if (node == null) {
+            return Optional.empty();
+        }
         visited.add(node.getValue());
         if (node.getValue().equals(value)) {
             return Optional.of(node);

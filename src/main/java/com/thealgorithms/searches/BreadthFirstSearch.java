@@ -13,6 +13,9 @@ public class BreadthFirstSearch<T> {
     private final List<T> visited = new ArrayList<>();
 
     public Optional<Node<T>> search(final Node<T> node, final T value) {
+        if (node == null) {
+            return Optional.empty();
+        }
         if (node.getValue().equals(value)) {
             // add root node to visited
             visited.add(value);
