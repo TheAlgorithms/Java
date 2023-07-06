@@ -682,6 +682,7 @@
             * [ArrayLeftRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayLeftRotationTest.java)
             * [BestFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BestFitCPUTest.java)
             * [CalculateMaxOfMinTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/CalculateMaxOfMinTest.java)
+            * [CheckAnagramsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/CheckAnagramsTest.java)
             * cn
               * [HammingDistanceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/cn/HammingDistanceTest.java)
             * [ConwayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ConwayTest.java)
