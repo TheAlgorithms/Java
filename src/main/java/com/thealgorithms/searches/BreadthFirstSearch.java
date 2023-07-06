@@ -7,6 +7,7 @@ import java.util.*;
 /**
  * @author: caos321
  * @date: 31 October 2021 (Sunday)
+ * @wiki: https://en.wikipedia.org/wiki/Breadth-first_search
  */
 public class BreadthFirstSearch<T> {
 
