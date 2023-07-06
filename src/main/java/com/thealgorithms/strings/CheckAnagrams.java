@@ -8,13 +8,6 @@ import java.util.Map;
  * differently (ignoring the case).
  */
 public class CheckAnagrams {
-
-    public static void main(String[] args) {
-        assert isAnagrams("Silent", "Listen");
-        assert isAnagrams("This is a string", "Is this a string");
-        assert !isAnagrams("There", "Their");
-    }
-
     /**
      * Check if two strings are anagrams or not
      *
