@@ -1,10 +1,10 @@
 package com.thealgorithms.others;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.thealgorithms.strings.CheckAnagrams;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Albina Gimaletdinova on 06/07/2023
