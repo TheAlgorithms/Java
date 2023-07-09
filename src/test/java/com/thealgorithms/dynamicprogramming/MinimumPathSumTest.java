@@ -6,56 +6,38 @@ import org.junit.jupiter.api.Test;
 public class MinimumPathSumTest {
     
     @Test
-    public void testMinimumPathSum_Regular() {
-        // Given
+    public void testMinimumPathSumWithRegularGrid() {
         int[][] grid = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
-
-        // Then
         assertEquals(7, MinimumPathSum.minimumPathSum(grid));
     }
 
     @Test
-    public void testMinimumPathSum_OneRowOneColumn() {
-        // Given
+    public void testMinimumPathSumWithOneRowOneColumnGrid() {
         int[][] grid = {{2}};
-
-        // Then
         assertEquals(2, MinimumPathSum.minimumPathSum(grid));
     }
 
     @Test
-    public void testMinimumPathSum_EmptyGrid() {
-        // Given
+    public void testMinimumPathSumWithEmptyGrid() {
         int[][] grid = {{}};
-
-        // Then
         assertEquals(0, MinimumPathSum.minimumPathSum(grid));
     }
 
     @Test
-    public void testMinimumPathSum_OneColumn() {
-        // Given
+    public void testMinimumPathSumWithOneColumnGrid() {
         int[][] grid = {{1}, {2}, {3}};
-
-        // Then
         assertEquals(6, MinimumPathSum.minimumPathSum(grid));
     }
 
     @Test
-    public void testMinimumPathSum_OneRow() {
-        // Given
+    public void testMinimumPathSumGridOneRowGrid() {
         int[][] grid = {{1, 2, 3}};
-
-        // Then
         assertEquals(6, MinimumPathSum.minimumPathSum(grid));
     }
 
     @Test
-    public void testMinimumPathSum_DiffRowAndColumn() {
-        // Given
+    public void testMinimumPathSumWithDiffRowAndColumnGrid() {
         int[][] grid = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
-
-        // Then
         assertEquals(30, MinimumPathSum.minimumPathSum(grid));
     }
 }
