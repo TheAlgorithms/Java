@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class MinimumPathSumTest {
-    
+
     @Test
     public void testMinimumPathSumWithRegularGrid() {
         int[][] grid = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
