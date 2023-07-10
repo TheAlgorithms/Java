@@ -1,10 +1,11 @@
 package com.thealgorithms.dynamicprogramming;
+
 /* 
 Dynamic Programming solution for the "Coin Change" problem, which calculates 
 the distinct ways to obtain change for a given amount while considering the
 single presence of each coin:
-
 */
+
 public class FixedCoinChange {
 
     public static void main(String[] args) {
