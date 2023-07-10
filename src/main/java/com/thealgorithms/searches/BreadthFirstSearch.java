@@ -1,7 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.datastructures.Node;
-
 import java.util.*;
 
 /**
@@ -29,7 +28,6 @@ public class BreadthFirstSearch<T> {
         while (!queue.isEmpty()) {
             final Node<T> current = queue.poll();
             visited.add(current.getValue());
-
 
             if (current.getValue().equals(value)) {
                 return Optional.of(current);

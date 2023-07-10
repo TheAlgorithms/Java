@@ -2,10 +2,9 @@ package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.thealgorithms.datastructures.Node;
 import java.util.List;
 import java.util.Optional;
-
-import com.thealgorithms.datastructures.Node;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,13 +12,13 @@ public class BreadthFirstSearchTest {
     private Node<String> root;
     private BreadthFirstSearch<String> bfs;
 
-// Tree structure:
-//
-//        A
-//      / | \
-//     B  C  D
-//    / \
-//   E   F
+    // Tree structure:
+    //
+    //        A
+    //      / | \
+    //     B  C  D
+    //    / \
+    //   E   F
 
     @BeforeEach
     public void setUp() {

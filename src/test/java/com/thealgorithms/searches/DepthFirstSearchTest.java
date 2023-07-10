@@ -1,26 +1,25 @@
 package com.thealgorithms.searches;
 
-import com.thealgorithms.datastructures.Node;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
+import com.thealgorithms.datastructures.Node;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DepthFirstSearchTest {
 
     private Node<Integer> root;
     private DepthFirstSearch<Integer> dfs;
 
-//
-// Tree structure:
-//          1
-//        / | \
-//       2  3  4
-//      / \
-//     5   6
+    //
+    // Tree structure:
+    //          1
+    //        / | \
+    //       2  3  4
+    //      / \
+    //     5   6
 
     @BeforeEach
     public void setUp() {
