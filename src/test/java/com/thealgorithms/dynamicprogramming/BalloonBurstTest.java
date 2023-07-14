@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class BalloonBurstTest {
-    private final BalloonBurst balloonBurst = new BalloonBurst();
+    BalloonBurst balloonBurst = new BalloonBurst();
 
     @Test
     public void testMaxCoinsCase1() {
@@ -16,7 +16,7 @@ public class BalloonBurstTest {
     @Test
     public void testMaxCoinsCase2() {
         int[] nums = {2, 4, 3, 5, 1};
-        int expected = 110;
+        int expected = 120;
         assertEquals(expected, balloonBurst.maxCoins(nums));
     }
 
