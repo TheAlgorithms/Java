@@ -2,6 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 public class BalloonBurst {
     /*
+    *  https://www.thealgorist.com/Algo/DynamicProgramming/BurstBalloons
      * This code implements the dynamic programming solution to the Balloon Burst problem.
      * Given an array of balloon values (represented by 'nums'), the goal is to find the maximum number of coins
      * that can be obtained by bursting the balloons in a specific order.
