@@ -33,6 +33,7 @@ public class LinearSearchThread {
         }
         boolean found = t.getResult() || t1.getResult() || t2.getResult() || t3.getResult();
         System.out.println("Found = " + found);
+        in.close();
     }
 }
 

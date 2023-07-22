@@ -49,5 +49,6 @@ class KeithNumber {
         } else {
             System.out.println("No, the given number is not a Keith number.");
         }
+        in.close();
     }
 }

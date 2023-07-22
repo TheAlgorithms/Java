@@ -50,6 +50,7 @@ public class NonRepeatingElement {
         }
 
         System.out.println("The two non repeating elements are " + num1 + " and " + num2);
+        sc.close();
     }
     /*
   Explanation of the code:
