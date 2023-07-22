@@ -1,7 +1,5 @@
 package com.thealgorithms.others;
 
-import java.util.Scanner;
-
 /**
  * @author Marcus
  */

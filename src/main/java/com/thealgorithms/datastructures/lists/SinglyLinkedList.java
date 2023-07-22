@@ -148,9 +148,7 @@ public class SinglyLinkedList extends Node {
     public void clear() {
         Node cur = head;
         while (cur != null) {
-            Node prev = cur;
             cur = cur.next;
-            prev = null; // clear to let GC do its work
         }
         head = null;
         size = 0;
@@ -346,9 +344,7 @@ public class SinglyLinkedList extends Node {
     public void deleteNth(int position) {
         checkBounds(position, 0, size - 1);
         if (position == 0) {
-            Node destroy = head;
             head = head.next;
-            destroy = null;
             /* clear to let GC do its work */
             size--;
             return;
@@ -358,10 +354,7 @@ public class SinglyLinkedList extends Node {
             cur = cur.next;
         }
 
-        Node destroy = cur.next;
         cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
-
         size--;
     }
 

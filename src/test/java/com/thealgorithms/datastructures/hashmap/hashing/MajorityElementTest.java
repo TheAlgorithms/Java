@@ -2,7 +2,6 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.thealgorithms.datastructures.hashmap.hashing.MajorityElement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -19,6 +19,7 @@ public class HappyNumbersSeq {
         }
         String res = n == 1 ? "1 Happy number" : "Sad number";
         System.out.println(res);
+        in.close();
     }
 
     private static int sumSquares(int n) {

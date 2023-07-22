@@ -49,5 +49,6 @@ class Sparcity {
             }
         }
         System.out.println("Sparcity of matrix is: " + sparcity(mat));
+        in.close();
     }
 }

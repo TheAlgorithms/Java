@@ -30,11 +30,6 @@ public class TreeRandomNode {
 
         int item;
         Node left, right;
-
-        public Node(int key) {
-            item = key;
-            left = right = null;
-        }
     }
 
     // Using an arraylist to store the inorder traversal of the given binary tree

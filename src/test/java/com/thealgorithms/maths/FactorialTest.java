@@ -8,7 +8,6 @@ public class FactorialTest {
 
     @Test
     public void test() {
-        Factorial fact = new Factorial();
-        assertEquals(120, fact.factorial(5));
+        assertEquals(120, Factorial.factorial(5));
     }
 }

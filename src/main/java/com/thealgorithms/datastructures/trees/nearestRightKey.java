@@ -12,6 +12,7 @@ class Main {
         int inputX0 = sc.nextInt();
         int toPrint = nearestRightKey(root, inputX0);
         System.out.println("Key: " + toPrint);
+        sc.close();
     }
 
     public static NRKTree BuildTree() {

@@ -21,6 +21,7 @@ public class Sort012D {
             a[i] = np.nextInt();
         }
         sort012(a);
+        np.close();
     }
 
     public static void sort012(int[] a) {

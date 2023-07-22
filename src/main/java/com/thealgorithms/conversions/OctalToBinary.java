@@ -1,5 +1,4 @@
 package com.thealgorithms.conversions;
-import java.util.Scanner;
 
 /**
  * Converts any Octal Number to a Binary Number

@@ -1,7 +1,5 @@
 package com.thealgorithms.searches;
 
-import java.util.Arrays;
-
 public class SearchInARowAndColWiseSortedMatrix {
     /**
      * Search a key in row and column wise sorted matrix

@@ -45,5 +45,6 @@ public class MagicSquare {
             }
             System.out.println();
         }
+        sc.close();
     }
 }

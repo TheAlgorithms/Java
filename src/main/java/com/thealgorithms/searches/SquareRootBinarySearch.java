@@ -27,6 +27,7 @@ public class SquareRootBinarySearch {
         int num = sc.nextInt();
         long ans = squareRoot(num);
         System.out.println("The square root is : " + ans);
+        sc.close();
     }
 
     /**

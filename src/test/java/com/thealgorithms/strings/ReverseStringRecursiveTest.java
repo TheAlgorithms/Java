@@ -10,7 +10,7 @@ public class ReverseStringRecursiveTest {
     @Test
     void shouldAcceptWhenEmptyStringIsPassed() {
         String expected = "";
-        String reversed = stringRecursive.reverse("");
+        String reversed = ReverseStringRecursive.reverse("");
 
         assertEquals(expected, reversed);
     }
@@ -18,7 +18,7 @@ public class ReverseStringRecursiveTest {
     @Test
     void shouldAcceptNotWhenWhenSingleCharacterIsPassed() {
         String expected = "a";
-        String reversed = stringRecursive.reverse("a");
+        String reversed = ReverseStringRecursive.reverse("a");
 
         assertEquals(expected, reversed);
     }
@@ -26,7 +26,7 @@ public class ReverseStringRecursiveTest {
     @Test
     void shouldAcceptWhenStringIsPassed() {
         String expected = "dlroWolleH";
-        String reversed = stringRecursive.reverse("HelloWorld");
+        String reversed = ReverseStringRecursive.reverse("HelloWorld");
 
         assertEquals(expected, reversed);
     }

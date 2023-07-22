@@ -29,17 +29,11 @@ public class DoublyLinkedList {
     private LinkOperations linkOperations;
 
     /**
-     * Size refers to the number of elements present in the list
-     */
-    private int size;
-
-    /**
      * Default Constructor
      */
     public DoublyLinkedList() {
         head = null;
         tail = null;
-        size = 0;
     }
 
     /**
@@ -55,7 +49,6 @@ public class DoublyLinkedList {
         for (int i : array) {
             linkOperations.insertTail(i, this);
         }
-        size = array.length;
     }
 
     /**
