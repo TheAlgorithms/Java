@@ -21,7 +21,7 @@ public class NthUglyNumber {
 
     /**
      * @brief initialized the object allowing to compute ugly numbers with given base
-     * @param baseNumbers the given base of ugly numbers
+     * @param inBaseNumbers the given base of ugly numbers
      * @exception IllegalArgumentException baseNumber is empty
      */
     NthUglyNumber(final int[] inBaseNumbers) {
