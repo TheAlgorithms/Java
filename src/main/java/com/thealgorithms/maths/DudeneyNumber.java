@@ -6,8 +6,6 @@
  */
 package com.thealgorithms.maths;
 
-import java.io.*;
-
 public class DudeneyNumber {
 
     // returns True if the number is a Dudeney number and False if it is not a Dudeney number.

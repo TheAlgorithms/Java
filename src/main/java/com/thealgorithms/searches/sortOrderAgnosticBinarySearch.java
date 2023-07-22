@@ -1,5 +1,4 @@
 package com.thealgorithms.searches;
-import java.util.*;
 public class sortOrderAgnosticBinarySearch {
     public static int find(int[] arr, int key) {
         int start = 0;

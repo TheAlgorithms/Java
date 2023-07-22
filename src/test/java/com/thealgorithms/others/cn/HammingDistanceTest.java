@@ -1,8 +1,6 @@
 package com.thealgorithms.others.cn;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.api.ThrowableTypeAssert;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class HammingDistanceTest {
