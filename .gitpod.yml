@@ -6,3 +6,7 @@ tasks:
   - init: |
       mvn dependency:resolve
       mvn compile
+
+vscode:
+  extensions:
+    - xaver.clang-format
