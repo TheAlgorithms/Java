@@ -22,8 +22,7 @@ class Rotate_by_90_degree {
                 }
             }
 
-            Rotate g = new Rotate();
-            g.rotate(arr);
+            Rotate.rotate(arr);
             printMatrix(arr);
         }
         sc.close();

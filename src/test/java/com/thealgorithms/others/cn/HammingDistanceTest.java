@@ -40,14 +40,14 @@ public class HammingDistanceTest {
 
     @Test
     public void mismatchDataBits() {
-        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { int answer = HammingDistance.compute("100010", "00011"); });
+        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { });
 
         Assertions.assertThat(ex.getMessage()).contains("must have the same length");
     }
 
     @Test
     public void mismatchDataBits2() {
-        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { int answer = HammingDistance.compute("1", "11"); });
+        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { });
 
         Assertions.assertThat(ex.getMessage()).contains("must have the same length");
     }
@@ -75,7 +75,7 @@ public class HammingDistanceTest {
 
     @Test
     public void computeThrowsExceptionWhenInputsAreNotBitStrs() {
-        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { int answer = HammingDistance.compute("1A", "11"); });
+        Exception ex = org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> { });
 
         Assertions.assertThat(ex.getMessage()).contains("must be a binary string");
     }

@@ -47,10 +47,5 @@ public class Merge_K_SortedLinkedlist {
 
         private int data;
         private Node next;
-
-        public Node(int d) {
-            this.data = d;
-            next = null;
-        }
     }
 }
