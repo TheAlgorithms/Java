@@ -76,11 +76,7 @@ public class KnightsTour {
             return false;
         }
 
-        Collections.sort(neighbor, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b) {
-                return a[2] - b[2];
-            }
-        });
+        neighbor.sort(Comparator.comparingInt(a -> a[2]));
 
         for (int[] nb : neighbor) {
             row = nb[0];

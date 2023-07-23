@@ -2,7 +2,7 @@ package com.thealgorithms.backtracking;
 
 /**
  * Java program for Flood fill algorithm.
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">...</a>)
  */
 public class FloodFill {
 

@@ -37,16 +37,14 @@ public class MazeRecursion {
 
         // clone another map for setWay2 method
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map2[i][j] = map[i][j];
-            }
+            System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
         }
 
         // By using recursive backtracking to let your ball(target) find its way in the
         // maze
         // The first parameter is the map
         // Second parameter is x coordinate of your target
-        // Thrid parameter is the y coordinate of your target
+        // Third parameter is the y coordinate of your target
         setWay(map, 1, 1);
         setWay2(map2, 1, 1);
 
@@ -107,14 +105,14 @@ public class MazeRecursion {
                 return true;
             } else {
                 // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
+                // the current point to 3 and return false, the backtracking will start, it will
                 // go to the previous step and check for feasible path again
                 map[i][j] = 3;
                 return false;
             }
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
             // ball cannot hit the wall, cannot go to the path that has gone though before,
-            // and cannot head to deadend.
+            // and cannot head to deadened.
             return false;
         }
     }
@@ -138,14 +136,14 @@ public class MazeRecursion {
                 return true;
             } else {
                 // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
+                // the current point to 3 and return false, the backtracking will start, it will
                 // go to the previous step and check for feasible path again
                 map[i][j] = 3;
                 return false;
             }
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
             // ball cannot hit the wall, cannot go to the path that has gone though before,
-            // and cannot head to deadend.
+            // and cannot head to deadened.
             return false;
         }
     }

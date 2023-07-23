@@ -19,10 +19,10 @@ import java.util.List;
  *
  * Generate all possible arrangement to place N queens on N*N board. Check each
  * board if queens are placed safely. If it is safe, include arrangement in
- * solution set. Otherwise ignore it
- *
+ * solution set. Otherwise, ignore it
+ * <p>
  * Optimized solution: This can be solved using backtracking in below steps
- *
+ * <p>
  * Start with first column and place queen on first row Try placing queen in a
  * row on second column If placing second queen in second column attacks any of
  * the previous queens, change the row in second column otherwise move to next
@@ -51,10 +51,10 @@ public class NQueens {
         } else {
             System.out.println("Arrangement for placing " + queens + " queens");
         }
-        arrangements.forEach(arrangement -> {
-            arrangement.forEach(row -> System.out.println(row));
+        for (List<String> arrangement : arrangements) {
+            arrangement.forEach(System.out::println);
             System.out.println();
-        });
+        }
     }
 
     /**

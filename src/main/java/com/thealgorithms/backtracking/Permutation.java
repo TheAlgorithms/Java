@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Finds all permutations of given array
- * @author Alan Piao (https://github.com/cpiao3)
+ * @author Alan Piao (<a href="https://github.com/cpiao3">...</a>)
  */
 public class Permutation {
 
