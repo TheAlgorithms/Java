@@ -28,7 +28,7 @@ AVLTree tree=new AVLTree();
 
 public class AVLSimple {
 
-    private class Node {
+    private static class Node {
 
         int data;
         int height;

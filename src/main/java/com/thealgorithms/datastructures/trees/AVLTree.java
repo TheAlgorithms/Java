@@ -4,7 +4,7 @@ public class AVLTree {
 
     private Node root;
 
-    private class Node {
+    private static class Node {
 
         private int key;
         private int balance;
@@ -82,7 +82,7 @@ public class AVLTree {
         if (root == null) {
             return;
         }
-        Node node = root;
+        Node node;
         Node child = root;
 
         while (child != null) {
@@ -190,7 +190,7 @@ public class AVLTree {
 
     private void setBalance(Node... nodes) {
         for (Node n : nodes) {
-            reheight(n);
+            reHeight(n);
             n.balance = height(n.right) - height(n.left);
         }
     }
@@ -207,7 +207,7 @@ public class AVLTree {
         }
     }
 
-    private void reheight(Node node) {
+    private void reHeight(Node node) {
         if (node != null) {
             node.height = 1 + Math.max(height(node.left), height(node.right));
         }
