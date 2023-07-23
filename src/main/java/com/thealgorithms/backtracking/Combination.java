@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Finds all permutations of given array
- * @author Alan Piao (https://github.com/cpiao3)
+ * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
  */
 public class Combination {
 
