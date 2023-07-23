@@ -21,16 +21,16 @@ public class NthUglyNumber {
 
     /**
      * @brief initialized the object allowing to compute ugly numbers with given base
-     * @param inBaseNumbers the given base of ugly numbers
+     * @param baseNumbers the given base of ugly numbers
      * @exception IllegalArgumentException baseNumber is empty
      */
-    NthUglyNumber(final int[] inBaseNumbers) {
-        if (inBaseNumbers.length == 0) {
+    NthUglyNumber(final int[] baseNumbers) {
+        if (baseNumbers.length == 0) {
             throw new IllegalArgumentException("baseNumbers must be non-empty.");
         }
 
-        this.baseNumbers = inBaseNumbers;
-        for (final var baseNumber : inBaseNumbers) {
+        this.baseNumbers = baseNumbers;
+        for (final var baseNumber : baseNumbers) {
             this.positions.put(baseNumber, 0);
         }
     }
