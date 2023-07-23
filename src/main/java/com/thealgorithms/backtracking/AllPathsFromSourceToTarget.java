@@ -89,8 +89,8 @@ public class AllPathsFromSourceToTarget {
     public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int[][] a, int source, int destination) {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
-        for (int[] ints : a) {
-            g.addEdge(ints[0], ints[1]);
+        for (int[] i : a) {
+            g.addEdge(i[0], i[1]);
             // edges are added
         }
         g.storeAllPaths(source, destination);

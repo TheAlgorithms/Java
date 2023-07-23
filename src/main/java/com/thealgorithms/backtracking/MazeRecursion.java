@@ -142,8 +142,8 @@ public class MazeRecursion {
                 return false;
             }
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
-            // ball cannot hit the wall, cannot go to the path that has gone though before,
-            // and cannot head to deadened.
+            // ball cannot hit the wall, cannot go to the path that has gone through before,
+            // and cannot head to deadend.
             return false;
         }
     }

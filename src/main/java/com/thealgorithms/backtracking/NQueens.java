@@ -8,11 +8,11 @@ import java.util.List;
  * which N queens can be placed on the board such no two queens attack each
  * other. Ex. N = 6 Solution= There are 4 possible ways Arrangement: 1 ".Q....",
  * "...Q..", ".....Q", "Q.....", "..Q...", "....Q."
- * <p>
+ *
  * Arrangement: 2 "..Q...", ".....Q", ".Q....", "....Q.", "Q.....", "...Q.."
- * <p>
+ *
  * Arrangement: 3 "...Q..", "Q.....", "....Q.", ".Q....", ".....Q", "..Q..."
- * <p>
+ *
  * Arrangement: 4 "....Q.", "..Q...", "Q.....", ".....Q", "...Q..", ".Q...."
  *
  * Solution: Brute Force approach:
@@ -20,9 +20,9 @@ import java.util.List;
  * Generate all possible arrangement to place N queens on N*N board. Check each
  * board if queens are placed safely. If it is safe, include arrangement in
  * solution set. Otherwise, ignore it
- * <p>
+ *
  * Optimized solution: This can be solved using backtracking in below steps
- * <p>
+ *
  * Start with first column and place queen on first row Try placing queen in a
  * row on second column If placing second queen in second column attacks any of
  * the previous queens, change the row in second column otherwise move to next
