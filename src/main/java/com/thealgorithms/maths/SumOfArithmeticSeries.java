@@ -36,7 +36,7 @@ public class SumOfArithmeticSeries {
      * @param numOfTerms the total terms of an arithmetic series
      * @return sum of given arithmetic series
      */
-    private static double sumOfSeries(double firstTerm, double commonDiff, int numOfTerms) {
+    public static double sumOfSeries(double firstTerm, double commonDiff, int numOfTerms) {
         return (numOfTerms / 2.0 * (2 * firstTerm + (numOfTerms - 1) * commonDiff));
     }
 }
