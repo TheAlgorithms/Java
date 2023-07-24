@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
+/*
  * This entire class is used to build a Binary Tree data structure. There is the
  * Node Class and the Tree Class, both explained below.
  */
@@ -97,7 +97,7 @@ public class BinaryTree {
                 return current;
             }
         }
-        return null;
+        return null;//if not found
     }
 
     /**
@@ -150,80 +150,78 @@ public class BinaryTree {
             } else {
                 temp.parent.left = null;
             }
-            return true;
         } // Two children
-        else if (temp.left != null && temp.right != null) {
-            Node successor = findSuccessor(temp);
-
-            // The left tree of temp is made the left tree of the successor
-            successor.left = temp.left;
-            successor.left.parent = successor;
-
-            // If the successor has a right child, the child's grandparent is it's new parent
-            if (successor.parent != temp) {
-                if (successor.right != null) {
-                    successor.right.parent = successor.parent;
-                    successor.parent.left = successor.right;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
-                } else {
-                    successor.parent.left = null;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
-                }
-            }
-
-            if (temp == root) {
-                successor.parent = null;
-                root = successor;
-            } // If you're not deleting the root
-            else {
-                successor.parent = temp.parent;
-
-                // This if/else assigns the new node to be either the left or right child of the
-                // parent
-                if (temp.parent.data < temp.data) {
-                    temp.parent.right = successor;
-                } else {
-                    temp.parent.left = successor;
-                }
-            }
-            return true;
-        } // One child
         else {
-            // If it has a right child
-            if (temp.right != null) {
+            if (temp.left != null && temp.right != null) {
+                Node successor = findSuccessor(temp);
+
+                // The left tree of temp is made the left tree of the successor
+                successor.left = temp.left;
+                successor.left.parent = successor;
+
+                // If the successor has a right child, the child's grandparent is it's new parent
+                if (successor.parent != temp) {
+                    if (successor.right != null) {
+                        successor.right.parent = successor.parent;
+                        successor.parent.left = successor.right;
+                    } else {
+                        successor.parent.left = null;
+                    }
+                    successor.right = temp.right;
+                    successor.right.parent = successor;
+                }
+
                 if (temp == root) {
-                    root = temp.right;
-                    return true;
-                }
+                    successor.parent = null;
+                    root = successor;
+                } // If you're not deleting the root
+                else {
+                    successor.parent = temp.parent;
 
-                temp.right.parent = temp.parent;
-
-                // Assigns temp to left or right child
-                if (temp.data < temp.parent.data) {
-                    temp.parent.left = temp.right;
-                } else {
-                    temp.parent.right = temp.right;
+                    // This if/else assigns the new node to be either the left or right child of the
+                    // parent
+                    if (temp.parent.data < temp.data) {
+                        temp.parent.right = successor;
+                    } else {
+                        temp.parent.left = successor;
+                    }
                 }
-            } // If it has a left child
+            } // One child
             else {
-                if (temp == root) {
-                    root = temp.left;
-                    return true;
-                }
+                // If it has a right child
+                if (temp.right != null) {
+                    if (temp == root) {
+                        root = temp.right;
+                        return true;
+                    }
 
-                temp.left.parent = temp.parent;
+                    temp.right.parent = temp.parent;
 
-                // Assigns temp to left or right side
-                if (temp.data < temp.parent.data) {
-                    temp.parent.left = temp.left;
-                } else {
-                    temp.parent.right = temp.left;
+                    // Assigns temp to left or right child
+                    if (temp.data < temp.parent.data) {
+                        temp.parent.left = temp.right;
+                    } else {
+                        temp.parent.right = temp.right;
+                    }
+                } // If it has a left child
+                else {
+                    if (temp == root) {
+                        root = temp.left;
+                        return true;
+                    }
+
+                    temp.left.parent = temp.parent;
+
+                    // Assigns temp to left or right side
+                    if (temp.data < temp.parent.data) {
+                        temp.parent.left = temp.left;
+                    } else {
+                        temp.parent.right = temp.left;
+                    }
                 }
             }
-            return true;
         }
+        return true;
     }
 
     /**
@@ -304,7 +302,7 @@ public class BinaryTree {
      */
     public void bfs(Node localRoot) {
         // Create a queue for the order of the nodes
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Node> queue = new LinkedList<>();
 
         // If the give root is null, then we don't add to the queue
         // and won't do anything
