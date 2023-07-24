@@ -23,6 +23,9 @@ final public class SumOfArithmeticSeries {
      * @return sum of given arithmetic series
      */
     public static double sumOfSeries(double firstTerm, double commonDiff, int numOfTerms) {
+        if (numOfTerms < 0) {
+            throw new IllegalArgumentException("numOfTerms nonnegative.");
+        }
         return (numOfTerms / 2.0 * (2 * firstTerm + (numOfTerms - 1) * commonDiff));
     }
 }
