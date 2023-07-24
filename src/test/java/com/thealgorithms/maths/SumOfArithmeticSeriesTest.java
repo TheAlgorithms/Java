@@ -40,4 +40,9 @@ public class SumOfArithmeticSeriesTest {
     public void testIfThrowsExceptionForNegativeNumberOfTerms() {
         assertThrows(IllegalArgumentException.class, () -> SumOfArithmeticSeries.sumOfSeries(1.0, 1.0, -1));
     }
+
+    @Test
+    public void testWithSingleTerm() {
+        assertEquals(123.0, SumOfArithmeticSeries.sumOfSeries(123.0, 5.0, 1));
+    }
 }
