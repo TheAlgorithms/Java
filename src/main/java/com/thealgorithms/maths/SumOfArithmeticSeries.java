@@ -10,7 +10,7 @@ package com.thealgorithms.maths;
  * <p>
  * Wikipedia: https://en.wikipedia.org/wiki/Arithmetic_progression
  */
-final public class SumOfArithmeticSeries {
+public final class SumOfArithmeticSeries {
     private SumOfArithmeticSeries() {
     }
 
@@ -22,7 +22,7 @@ final public class SumOfArithmeticSeries {
      * @param numOfTerms the total terms of an arithmetic series
      * @return sum of given arithmetic series
      */
-    public static double sumOfSeries(double firstTerm, double commonDiff, int numOfTerms) {
+    public static double sumOfSeries(final double firstTerm, final double commonDiff, final int numOfTerms) {
         if (numOfTerms < 0) {
             throw new IllegalArgumentException("numOfTerms nonnegative.");
         }
