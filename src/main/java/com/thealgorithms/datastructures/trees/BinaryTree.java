@@ -93,9 +93,11 @@ public class BinaryTree {
                     return current;
                 }
                 current = current.right;
+            } else { // If you find the value return it
+                return current;
             }
         }
-        return current;
+        return null;
     }
 
     /**
