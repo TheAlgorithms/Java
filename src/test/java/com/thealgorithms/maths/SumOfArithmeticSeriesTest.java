@@ -45,4 +45,9 @@ public class SumOfArithmeticSeriesTest {
     public void testWithSingleTerm() {
         assertEquals(123.0, SumOfArithmeticSeries.sumOfSeries(123.0, 5.0, 1));
     }
+
+    @Test
+    public void testWithZeroCommonDiff() {
+        assertEquals(100.0, SumOfArithmeticSeries.sumOfSeries(1.0, 0.0, 100));
+    }
 }
