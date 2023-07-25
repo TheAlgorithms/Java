@@ -2,6 +2,7 @@ package com.thealgorithms.others;
 
 import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -13,5 +14,10 @@ public class StackPostfixNotationTest {
         for (final var tc : testCases.entrySet()) {
             assertEquals(tc.getValue(), StackPostfixNotation.postfixEvaluate(tc.getKey()));
         }
+    }
+
+    @Test
+    public void testIfEvaluateThrowsExceptionForEmptyInput() {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate(""));
     }
 }

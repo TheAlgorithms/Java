@@ -34,6 +34,9 @@ public class StackPostfixNotation {
             }
         }
         tokens.close();
+        if (s.size() != 1) {
+            throw new IllegalArgumentException("exp is not a proper postfix expression.");
+        }
         return s.pop();
     }
 }
