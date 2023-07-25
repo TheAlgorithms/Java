@@ -1,11 +1,10 @@
 package com.thealgorithms.maths;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Albina Gimaletdinova on 25/07/2023
@@ -15,8 +14,8 @@ public class FibonacciJavaStreamsTest {
 
     @Test
     public void testWithNegativeIndexShouldThrowException() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> FibonacciJavaStreams.calculate(new BigDecimal(-1)));
-        assertEquals(EXCEPTION_MESSAGE, exception.getMessage());
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> FibonacciJavaStreams.calculate(new BigDecimal(-1)));
+        Assertions.assertEquals(EXCEPTION_MESSAGE, exception.getMessage());
     }
 
     @Test
@@ -67,7 +66,7 @@ public class FibonacciJavaStreamsTest {
         Optional<BigDecimal> result = FibonacciJavaStreams.calculate(index);
 
         // then
-        assertTrue(result.isPresent());
-        assertEquals(result.get(), expected);
+        Assertions.assertTrue(result.isPresent());
+        Assertions.assertEquals(result.get(), expected);
     }
 }
