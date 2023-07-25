@@ -1,18 +1,14 @@
 package com.thealgorithms.others;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
-public class StackPostfixNotation {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String post = scanner.nextLine(); // Takes input with spaces in between eg. "1 21 +"
-        System.out.println(postfixEvaluate(post));
-        scanner.close();
+public final class StackPostfixNotation {
+    private StackPostfixNotation() {
     }
 
     // Evaluates the given postfix expression string and returns the result.
-    public static int postfixEvaluate(String exp) {
+    public static int postfixEvaluate(final String exp) {
         Stack<Integer> s = new Stack<Integer>();
         Scanner tokens = new Scanner(exp);
 
