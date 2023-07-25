@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LCA {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         // The adjacency list representation of a tree:
@@ -91,7 +91,7 @@ public class LCA {
         return v1;
     }
 }
-/**
+/*
  * Input:
  * 10
  * 0 1

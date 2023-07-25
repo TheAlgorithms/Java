@@ -16,24 +16,24 @@ import java.util.Scanner;
  */
 public class GenericTree {
 
-    private class Node {
+    private static class Node {
 
         int data;
         ArrayList<Node> child = new ArrayList<>();
     }
 
-    private Node root;
+    private final Node root;
     public GenericTree() { // Constructor
         Scanner scn = new Scanner(System.in);
         root = create_treeG(null, 0, scn);
     }
 
-    private Node create_treeG(Node node, int childindx, Scanner scn) {
+    private Node create_treeG(Node node, int childIndx, Scanner scn) {
         // display
         if (node == null) {
             System.out.println("Enter root's data");
         } else {
-            System.out.println("Enter data of parent of index " + node.data + " " + childindx);
+            System.out.println("Enter data of parent of index " + node.data + " " + childIndx);
         }
         // input
         node = new Node();
