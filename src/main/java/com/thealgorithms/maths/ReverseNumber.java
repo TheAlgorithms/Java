@@ -1,11 +1,9 @@
 package com.thealgorithms.maths;
 
-import java.lang.IllegalArgumentException;
-
 /**
  * @brief utility class reversing numbers
  */
-final public class ReverseNumber {
+public final class ReverseNumber {
     private ReverseNumber() {
     }
 
