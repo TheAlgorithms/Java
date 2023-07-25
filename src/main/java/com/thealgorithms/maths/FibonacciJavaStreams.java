@@ -25,7 +25,7 @@ public class FibonacciJavaStreams {
         }
 
         final List<BigDecimal> results = Stream.iterate(index, x -> x.compareTo(BigDecimal.ZERO) > 0, x -> x.subtract(BigDecimal.ONE))
-                .reduce(List.of(), (list, current) -> list.isEmpty() || list.size() < 2 ? List.of(BigDecimal.ZERO, BigDecimal.ONE) : List.of(list.get(1), list.get(0).add(list.get(1))), (list1, list2) -> list1);
+                                             .reduce(List.of(), (list, current) -> list.isEmpty() || list.size() < 2 ? List.of(BigDecimal.ZERO, BigDecimal.ONE) : List.of(list.get(1), list.get(0).add(list.get(1))), (list1, list2) -> list1);
 
         return results.isEmpty() ? Optional.empty() : Optional.of(results.get(results.size() - 1));
     }
