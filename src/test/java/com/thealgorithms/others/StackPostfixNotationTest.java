@@ -20,4 +20,14 @@ public class StackPostfixNotationTest {
     public void testIfEvaluateThrowsExceptionForEmptyInput() {
         assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate(""));
     }
+
+    @Test
+    public void testIfEvaluateThrowsExceptionForInproperInput() {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("3 3 3"));
+    }
+
+    @Test
+    public void testIfEvaluateThrowsExceptionForInputWithUnknownOperation() {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("3 3 !"));
+    }
 }

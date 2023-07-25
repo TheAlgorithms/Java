@@ -28,7 +28,8 @@ public class StackPostfixNotation {
                     case "+" -> s.push(num1 + num2);
                     case "-" -> s.push(num1 - num2);
                     case "*" -> s.push(num1 * num2);
-                    default -> s.push(num1 / num2);
+                    case "/" -> s.push(num1 / num2);
+                    default -> throw new IllegalArgumentException("exp contains an unknown operation.");
                 }
                 //  "+", "-", "*", "/"
             }
