@@ -33,15 +33,15 @@ public class GenericTree {
         if (node == null) {
             System.out.println("Enter root's data");
         } else {
-            System.out.println("Enter data of parent of index " + node.data + " " + childIndx);
+            System.out.println("Enter data of parent of index " + node.data + " " + childIndex);
         }
         // input
         node = new Node();
-        node.data = scn.nextInt();
+        node.data = scanner.nextInt();
         System.out.println("number of children");
-        int number = scn.nextInt();
+        int number = scanner.nextInt();
         for (int i = 0; i < number; i++) {
-            Node child = create_treeG(node, i, scn);
+            Node child = create_treeG(node, i, scanner);
             node.child.add(child);
         }
         return node;
