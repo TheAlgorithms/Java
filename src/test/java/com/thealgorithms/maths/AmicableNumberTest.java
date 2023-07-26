@@ -1,12 +1,11 @@
 package com.thealgorithms.maths;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class AmicableNumberTest {
     private static final String INVALID_RANGE_EXCEPTION_MESSAGE = "Given range of values is invalid!";
