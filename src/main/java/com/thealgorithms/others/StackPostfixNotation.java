@@ -1,18 +1,14 @@
 package com.thealgorithms.others;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
-public class StackPostfixNotation {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String post = scanner.nextLine(); // Takes input with spaces in between eg. "1 21 +"
-        System.out.println(postfixEvaluate(post));
-        scanner.close();
+public final class StackPostfixNotation {
+    private StackPostfixNotation() {
     }
 
     // Evaluates the given postfix expression string and returns the result.
-    public static int postfixEvaluate(String exp) {
+    public static int postfixEvaluate(final String exp) {
         Stack<Integer> s = new Stack<Integer>();
         Scanner tokens = new Scanner(exp);
 
@@ -28,12 +24,16 @@ public class StackPostfixNotation {
                     case "+" -> s.push(num1 + num2);
                     case "-" -> s.push(num1 - num2);
                     case "*" -> s.push(num1 * num2);
-                    default -> s.push(num1 / num2);
+                    case "/" -> s.push(num1 / num2);
+                    default -> throw new IllegalArgumentException("exp contains an unknown operation.");
                 }
                 //  "+", "-", "*", "/"
             }
         }
         tokens.close();
+        if (s.size() != 1) {
+            throw new IllegalArgumentException("exp is not a proper postfix expression.");
+        }
         return s.pop();
     }
 }
