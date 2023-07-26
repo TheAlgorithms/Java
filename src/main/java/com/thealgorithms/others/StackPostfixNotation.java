@@ -5,7 +5,7 @@ import java.util.Stack;
 import java.util.function.BiFunction;
 
 /**
- * @brief Utility class evaluating a postix expressions, cf. https://en.wikipedia.org/wiki/Reverse_Polish_notation
+ * @brief Utility class evaluating postix expressions, cf. https://en.wikipedia.org/wiki/Reverse_Polish_notation
  * @details The computation is done using Integers.
  */
 public final class StackPostfixNotation {
@@ -51,8 +51,8 @@ public final class StackPostfixNotation {
     /**
      * @brief Evaluates the given postfix expression.
      * @param exp the expression to evaluate.
-     * @return the value of the given expresion.
-     * @exception IllegalArgumentException exp is not a valid postix expresion.
+     * @return the value of the given expression.
+     * @exception IllegalArgumentException exp is not a valid postix expression.
      */
     public static int postfixEvaluate(final String exp) {
         Stack<Integer> s = new Stack<Integer>();
