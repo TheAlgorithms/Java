@@ -30,4 +30,14 @@ public class StackPostfixNotationTest {
     public void testIfEvaluateThrowsExceptionForInputWithUnknownOperation() {
         assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("3 3 !"));
     }
+
+    @Test
+    public void testIfEvaluateThrowsExceptionForInputWithTooFewArgsA() {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("+"));
+    }
+
+    @Test
+    public void testIfEvaluateThrowsExceptionForInputWithTooFewArgsB() {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("2 +"));
+    }
 }

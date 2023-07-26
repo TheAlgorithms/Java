@@ -16,6 +16,9 @@ public final class StackPostfixNotation {
             if (tokens.hasNextInt()) {
                 s.push(tokens.nextInt()); // If int then push to stack
             } else { // else pop top two values and perform the operation
+                if (s.size() < 2) {
+                    throw new IllegalArgumentException("exp is not a proper postfix expression (too few arguments).");
+                }
                 int num2 = s.pop();
                 int num1 = s.pop();
                 String op = tokens.next();
