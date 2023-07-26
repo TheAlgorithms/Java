@@ -28,7 +28,7 @@ public class GenericTree {
         root = create_treeG(null, 0, scn);
     }
 
-    private Node create_treeG(Node node, int childIndx, Scanner scn) {
+    private Node create_treeG(Node node, int childIndex, Scanner scanner) {
         // display
         if (node == null) {
             System.out.println("Enter root's data");
