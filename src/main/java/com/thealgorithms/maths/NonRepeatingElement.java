@@ -33,8 +33,9 @@ public class NonRepeatingElement {
         }
 
         // Find XOR of the 2 non repeating elements
-        for (i = 0; i < n; i++) {
-            res ^= arr[i];
+        //using for each is good than looping and accessing
+        for (int j : arr) {
+            res ^= j;
         }
 
         // Finding the rightmost set bit
