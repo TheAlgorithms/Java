@@ -9,10 +9,10 @@ import java.util.List;
  * <p>
  * A recursive implementation of generic type BST.
  *
- * Reference: https://en.wikipedia.org/wiki/Binary_search_tree
+ * Reference: <a href="https://en.wikipedia.org/wiki/Binary_search_tree">Wiki links for BST</a>
  * </p>
  *
- * @author [Madhur Panwar](https://github.com/mdrpanwar)
+ * @author [Madhur Panwar](<a href="https://github.com/mdrpanwar">git-Madhur Panwar</a>)
  */
 public class BSTRecursiveGeneric<T extends Comparable<T>> {
 
@@ -219,7 +219,7 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     }
 
     /**
-     * Serach recursively if the given value is present in BST or not.
+     * Search recursively if the given value is present in BST or not.
      *
      * @param node the node under which to check
      * @param data the value to be checked

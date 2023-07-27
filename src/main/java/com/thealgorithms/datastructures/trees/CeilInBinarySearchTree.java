@@ -39,7 +39,7 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * ii) If key is lesser than root value than ceil will be in right subtree so
  * call recursively on right subtree iii) if key is greater than current root,
  * then either a) the root is ceil b) ceil is in left subtree: call for left
- * subtree. If left subtree returns a non null value then that will be ceil
+ * subtree. If left subtree returns a non-null value then that will be ceil
  * otherwise the root is ceil
  */
 public class CeilInBinarySearchTree {
