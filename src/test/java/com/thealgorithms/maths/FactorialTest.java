@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class FactorialTest {
-    private static final String EXCEPTION_MESSAGE = "Input number cannot be negative!";
+    private static final String EXCEPTION_MESSAGE = "Input number cannot be negative";
 
     @Test
     public void testWhenInvalidInoutProvidedShouldThrowException() {
