@@ -12,6 +12,7 @@ public class PalindromePrime {
         in.close();
     }
 
+    // I think this function is working with odd
     public static boolean prime(int num) { // checking if number is prime or not
         for (int divisor = 3; divisor <= Math.sqrt(num); divisor += 2) {
             if (num % divisor == 0) {
@@ -20,6 +21,17 @@ public class PalindromePrime {
         }
         return true; // True if prime
     }
+
+    // This function is working for all
+    public static boolean primeForAll(int num) { // checking if number is prime or not
+        for(int i=2;i<=num/2;i++) {
+            if(num % i == 0) {
+                return false; //  false if not prime
+            }
+        }
+        return true; // True if prime
+    }
+
 
     public static int reverse(int n) { //  Returns  the reverse of the number
         int reverse = 0;
