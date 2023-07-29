@@ -11,7 +11,7 @@ public class NonRepeatingElement {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int i, res = 0;
+        int i;
         System.out.println("Enter the number of elements in the array");
         int n = sc.nextInt();
         if ((n & 1) == 1) {
@@ -20,37 +20,45 @@ public class NonRepeatingElement {
             return;
         }
         int[] arr = new int[n];
-
         System.out.println("Enter " + n + " elements in the array. NOTE: Only 2 elements should not repeat");
         for (i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-
+        Test(arr);
         try {
             sc.close();
         } catch (Exception e) {
             System.out.println("Unable to close scanner" + e);
         }
+    }//main method
+
+
+
+
+    void test(int[] arr){
+
+
 
         // Find XOR of the 2 non repeating elements
-        for (i = 0; i < n; i++) {
-            res ^= arr[i];
+        // using foreach loop for optimization
+        int res = 0;
+        for (int j : arr) {
+            res ^= j;
         }
 
         // Finding the rightmost set bit
         res = res & (-res);
         int num1 = 0, num2 = 0;
-
-        for (i = 0; i < n; i++) {
-            if ((res & arr[i]) > 0) { // Case 1 explained below
-                num1 ^= arr[i];
+        // using foreach loop for optimization
+        for (int j : arr) {
+            if ((res & j) > 0) { // Case 1 explained below
+                num1 ^= j;
             } else {
-                num2 ^= arr[i]; // Case 2 explained below
+                num2 ^= j; // Case 2 explained below
             }
         }
 
         System.out.println("The two non repeating elements are " + num1 + " and " + num2);
-        sc.close();
     }
     /*
   Explanation of the code:
