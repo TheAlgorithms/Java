@@ -14,17 +14,12 @@ public class NonRepeatingElement {
         int i;
         System.out.println("Enter the number of elements in the array");
         int n = sc.nextInt();
-        if ((n & 1) == 1) {
-            // Not allowing odd number of elements as we are expecting 2 non repeating numbers
-            System.out.println("Array should contain even number of elements");
-            return;
-        }
         int[] arr = new int[n];
         System.out.println("Enter " + n + " elements in the array. NOTE: Only 2 elements should not repeat");
         for (i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        Test(arr);
+        this.test(arr);
         try {
             sc.close();
         } catch (Exception e) {
@@ -36,9 +31,13 @@ public class NonRepeatingElement {
 
 
     void test(int[] arr){
-
-
-
+        int n = arr.length;
+        if ((n & 1) == 1) {
+            // Not allowing odd number of elements as we are expecting 2 non repeating numbers
+            System.out.println("enter array with even elements");
+            return;
+        }
+        if()
         // Find XOR of the 2 non repeating elements
         // using foreach loop for optimization
         int res = 0;
@@ -59,7 +58,7 @@ public class NonRepeatingElement {
         }
 
         System.out.println("The two non repeating elements are " + num1 + " and " + num2);
-    }
+    }//test
     /*
   Explanation of the code:
   let us assume we have an array [1,2,1,2,3,4]
