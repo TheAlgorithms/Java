@@ -1,6 +1,9 @@
 package com.thealgorithms.maths;
 
-public class Factorial {
+public final class Factorial {
+    private Factorial() {
+    }
+
     /**
      * Calculate factorial N using iteration
      *
