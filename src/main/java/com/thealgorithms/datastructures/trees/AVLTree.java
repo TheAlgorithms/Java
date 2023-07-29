@@ -82,7 +82,8 @@ public class AVLTree {
         if (root == null) {
             return;
         }
-        Node node = root;
+        // node = child in while loop
+        Node node;
         Node child = root;
 
         while (child != null) {

@@ -39,10 +39,9 @@ public class BipartiteGrapfDFS {
         Arrays.fill(color, -1);
 
         for (int i = 0; i < V; i++) {
-            if (color[i] == -1) {
-                if (!bipartite(V, adj, color, i)) {
+            // Merging collapsible if statements increases the code’s readability.
+            if (color[i] == -1 && !bipartite(V, adj, color, i)) {
                     return false;
-                }
             }
         }
         return true;
