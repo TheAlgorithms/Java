@@ -15,7 +15,7 @@ public class GenericRoot {
         System.out.println("Generic root of " + number2 + " is: " + result2);
     }
 
-    private static int genericRoot(int n) {
+    public static int genericRoot(int n) {
         int root = 0;
         while (n > 0 || root > 9) {
             if (n == 0) {
