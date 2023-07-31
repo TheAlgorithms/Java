@@ -1,5 +1,3 @@
-// StrobogrammaticNumberTest.java
-
 package com.thealgorithms.maths;
 
 import static org.assertj.core.api.Assertions.assertThat;
