@@ -16,6 +16,9 @@ public class GenericRoot {
     }
 
     public static int genericRoot(int n) {
+        if (n < 0) {
+            return genericRoot(-n);
+        }
         int root = 0;
         while (n > 0 || root > 9) {
             if (n == 0) {
