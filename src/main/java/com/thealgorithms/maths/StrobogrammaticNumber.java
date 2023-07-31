@@ -3,17 +3,15 @@ package com.thealgorithms.maths;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A strobogrammatic number is a number that remains the same when rotated 180 degrees.
+ * In other words, the number looks the same when rotated upside down.
+ * Examples of strobogrammatic numbers are "69", "88", "818", and "101".
+ * Numbers like "609" or "120" are not strobogrammatic because they do not look the same when rotated.
+ */
+
 public class StrobogrammaticNumber {
-
-    public static void main(String[] args) {
-        assert isStrobogrammatic("69") == true;
-        assert isStrobogrammatic("88") == true;
-        assert isStrobogrammatic("818") == true;
-        assert isStrobogrammatic("101") == true;
-        assert isStrobogrammatic("609") == false;
-        assert isStrobogrammatic("120") == false;
-    }
-
+    
     /**
      * Check if a number is strobogrammatic
      *
