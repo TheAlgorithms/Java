@@ -18,7 +18,7 @@ public class StrobogrammaticNumber {
      * @param number the number to be checked
      * @return true if the number is strobogrammatic, false otherwise
      */
-    public static boolean isStrobogrammatic(String number) {
+    public boolean isStrobogrammatic(String number) {
         Map<Character, Character> strobogrammaticMap = new HashMap<>();
         strobogrammaticMap.put('0', '0');
         strobogrammaticMap.put('1', '1');
