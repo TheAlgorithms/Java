@@ -15,19 +15,21 @@ public class GenericRoot {
         System.out.println("Generic root of " + number2 + " is: " + result2);
     }
 
+    private static int sumOfDigits(int n) {
+        assert n >= 0;
+        if (n < 10) {
+            return n;
+        }
+        return n % 10 + sumOfDigits(n / 10);
+    }
+
     public static int genericRoot(int n) {
         if (n < 0) {
             return genericRoot(-n);
         }
-        int root = 0;
-        while (n > 0 || root > 9) {
-            if (n == 0) {
-                n = root;
-                root = 0;
-            }
-            root += n % 10;
-            n /= 10;
+        if (n > 10) {
+            return genericRoot(sumOfDigits(n));
         }
-        return root;
+        return n;
     }
 }
