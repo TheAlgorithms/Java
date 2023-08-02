@@ -10,8 +10,7 @@ import java.util.Map;
  * Numbers like "609" or "120" are not strobogrammatic because they do not look the same when rotated.
  */
 
-public class StrobogrammaticNumber {
-    
+public class StrobogrammaticNumber { 
     /**
      * Check if a number is strobogrammatic
      *
