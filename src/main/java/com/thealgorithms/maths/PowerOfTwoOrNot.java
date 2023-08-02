@@ -15,7 +15,7 @@ public final class PowerOfTwoOrNot {
      * @return {@code true} if given number is power of two, otherwise
      * {@code false}
      */
-    public static boolean checkIfPowerOfTwoOrNot(int number) {
+    public static boolean checkIfPowerOfTwoOrNot(final int number) {
         return number != 0 && ((number & (number - 1)) == 0);
     }
 }
