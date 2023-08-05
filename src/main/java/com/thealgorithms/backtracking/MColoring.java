@@ -14,33 +14,33 @@ class Node {
 public class MColoring {
     static int possiblePaint(ArrayList<Node> nodes, int n, int m) {
 
-		// Create a visited array of n nodes
+        // Create a visited array of n nodes
         ArrayList<Integer> visited = new ArrayList<Integer>();
         for (int i = 0; i < n + 1; i++) {
             visited.add(0);
         }
 
-		// maxColors used till now are 1 as
+        // maxColors used till now are 1 as
         // all nodes are painted color 1
         int maxColors = 1;
 
-		for (int sv = 1; sv <= n; sv++) {
+        for (int sv = 1; sv <= n; sv++) {
             if (visited.get(sv) > 0) {
                 continue;
             }
 
-			// If the starting point is unvisited,
+            // If the starting point is unvisited,
             // mark it visited and push it in queue
             visited.set(sv, 1);
             Queue<Integer> q = new LinkedList<>();
             q.add(sv);
 
-			// BFS
+            // BFS
             while (q.size() != 0) {
                 int top = q.peek();
                 q.remove();
 
-				// Checking all adjacent nodes
+                // Checking all adjacent nodes
                 // to "top" edge in our queue
                 for (int it : nodes.get(top).edges) {
 
@@ -54,8 +54,7 @@ public class MColoring {
                     // If number of colors used exceeds m,
                     // return 0
                     maxColors = Math.max(maxColors, Math.max(nodes.get(top).color, nodes.get(it).color));
-                    if (maxColors > m)
-                        return 0;
+                    if (maxColors > m) return 0;
 
                     // If the adjacent node is not visited,
                     // mark it visited and push it in queue
