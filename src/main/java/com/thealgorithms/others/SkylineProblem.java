@@ -18,11 +18,7 @@ public class SkylineProblem {
         for (int i = 0; i < num; i++) {
             String input = sc.next();
             String[] data = input.split(",");
-            this.add(
-                    Integer.parseInt(data[0]),
-                    Integer.parseInt(data[1]),
-                    Integer.parseInt(data[2])
-                );
+            this.add(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
         }
         this.print(this.findSkyline(0, num - 1));
 
@@ -62,10 +58,7 @@ public class SkylineProblem {
         return this.mergeSkyline(sky1, sky2);
     }
 
-    public ArrayList<Skyline> mergeSkyline(
-        ArrayList<Skyline> sky1,
-        ArrayList<Skyline> sky2
-    ) {
+    public ArrayList<Skyline> mergeSkyline(ArrayList<Skyline> sky1, ArrayList<Skyline> sky2) {
         int currentH1 = 0, currentH2 = 0;
         ArrayList<Skyline> skyline = new ArrayList<>();
         int maxH = 0;

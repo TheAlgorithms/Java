@@ -1,9 +1,9 @@
 package com.thealgorithms.dynamicprogramming;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LevenshteinDistanceTests {
 
@@ -13,5 +13,4 @@ public class LevenshteinDistanceTests {
         int result = LevenshteinDistance.calculateLevenshteinDistance(str1, str2);
         assertEquals(distance, result);
     }
-
 }

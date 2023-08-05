@@ -9,23 +9,23 @@ class PrimeFactorizationTest {
 
     @Test
     void testpFactorsMustReturnEmptyList() {
-        //given
+        // given
         int n = 0;
 
-        //then
+        // then
         assertTrue(PrimeFactorization.pfactors(n).isEmpty());
     }
 
     @Test
     void testpFactorsMustReturnNonEmptyList() {
-        //given
+        // given
         int n = 198;
         int expectedListSize = 4;
 
-        //when
+        // when
         List<Integer> actualResultList = PrimeFactorization.pfactors(n);
 
-        //then
+        // then
         assertEquals(expectedListSize, actualResultList.size());
         assertEquals(2, actualResultList.get(0));
         assertEquals(3, actualResultList.get(1));

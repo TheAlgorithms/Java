@@ -1,7 +1,8 @@
 /* this Code is the illustration of Boyer moore's voting algorithm to
 find the majority element is an array that appears more than n/2 times in an array
 where "n" is the length of the array.
-For more information on the algorithm refer https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+For more information on the algorithm refer
+https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
  */
 package com.thealgorithms.others;
 
@@ -43,5 +44,6 @@ public class BoyerMoore {
             a[i] = input.nextInt();
         }
         System.out.println("the majority element is " + findmajor(a));
+        input.close();
     }
 }

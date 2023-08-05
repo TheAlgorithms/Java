@@ -76,14 +76,7 @@ public class EditDistance {
         s2 = input.nextLine();
         // ans stores the final Edit Distance between the two strings
         int ans = minDistance(s1, s2);
-        System.out.println(
-            "The minimum Edit Distance between \"" +
-            s1 +
-            "\" and \"" +
-            s2 +
-            "\" is " +
-            ans
-        );
+        System.out.println("The minimum Edit Distance between \"" + s1 + "\" and \"" + s2 + "\" is " + ans);
         input.close();
     }
 
@@ -108,8 +101,7 @@ public class EditDistance {
             return storage[m][n];
         }
         if (s1.charAt(0) == s2.charAt(0)) {
-            storage[m][n] =
-                editDistance(s1.substring(1), s2.substring(1), storage);
+            storage[m][n] = editDistance(s1.substring(1), s2.substring(1), storage);
         } else {
             int op1 = editDistance(s1, s2.substring(1), storage);
             int op2 = editDistance(s1.substring(1), s2, storage);

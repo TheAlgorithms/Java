@@ -1,8 +1,8 @@
 package com.thealgorithms.others;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class CRC16Test {
 
@@ -14,10 +14,9 @@ class CRC16Test {
         String textToCRC16 = "hacktoberfest!";
 
         // when
-        String resultCRC16 = crc.crc16(textToCRC16); // Algorithm CRC16-CCITT-FALSE
+        String resultCRC16 = CRC16.crc16(textToCRC16); // Algorithm CRC16-CCITT-FALSE
 
         // then
         assertEquals("10FC", resultCRC16);
     }
-
 }

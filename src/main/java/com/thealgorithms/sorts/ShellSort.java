@@ -36,7 +36,7 @@ public class ShellSort implements SortAlgorithm {
 
     /* Driver Code */
     public static void main(String[] args) {
-        Integer[] toSort = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
+        Integer[] toSort = {4, 23, 6, 78, 1, 54, 231, 9, 12};
 
         ShellSort sort = new ShellSort();
         sort.sort(toSort);

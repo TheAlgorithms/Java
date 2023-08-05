@@ -3,7 +3,6 @@ package com.thealgorithms.datastructures.hashmap;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.thealgorithms.datastructures.hashmap.hashing.HashMapCuckooHashing;
-import java.util.*;
 import org.junit.jupiter.api.Test;
 
 class HashMapCuckooHashingTest {
@@ -51,7 +50,6 @@ class HashMapCuckooHashingTest {
     @Test
     void removeNone() {
         HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
-        int initialSize = hashTable.getNumberOfKeysInTable();
         try {
             hashTable.deleteKeyFromHashTable(3);
         } catch (Exception e) {
@@ -89,12 +87,5 @@ class HashMapCuckooHashingTest {
         assertTrue(hashTable.checkTableContainsKey(0));
         assertTrue(hashTable.checkTableContainsKey(10));
         assertTrue(hashTable.checkTableContainsKey(100));
-    }
-
-    private HashMapCuckooHashing createHashMapCuckooHashing() {
-        HashMapCuckooHashing hashTable = new HashMapCuckooHashing(10);
-        int[] values = { 11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222 };
-        Arrays.stream(values).forEach(hashTable::insertKey2HashTable);
-        return hashTable;
     }
 }

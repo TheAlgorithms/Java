@@ -53,25 +53,13 @@ class CountingSort implements SortAlgorithm {
      * @param list The list to be sorted
      */
     private static <T extends Comparable<T>> List<T> streamSort(List<T> list) {
-        return list
-            .stream()
-            .collect(toMap(k -> k, v -> 1, (v1, v2) -> v1 + v2, TreeMap::new))
-            .entrySet()
-            .stream()
-            .flatMap(entry ->
-                IntStream
-                    .rangeClosed(1, entry.getValue())
-                    .mapToObj(t -> entry.getKey())
-            )
-            .collect(toList());
+        return list.stream().collect(toMap(k -> k, v -> 1, (v1, v2) -> v1 + v2, TreeMap::new)).entrySet().stream().flatMap(entry -> IntStream.rangeClosed(1, entry.getValue()).mapToObj(t -> entry.getKey())).collect(toList());
     }
 
     // Driver Program
     public static void main(String[] args) {
         // Integer Input
-        List<Integer> unsortedInts = Stream
-            .of(4, 23, 6, 78, 1, 54, 23, 1, 9, 231, 9, 12)
-            .collect(toList());
+        List<Integer> unsortedInts = Stream.of(4, 23, 6, 78, 1, 54, 23, 1, 9, 231, 9, 12).collect(toList());
         CountingSort countingSort = new CountingSort();
 
         System.out.println("Before Sorting:");
@@ -86,9 +74,7 @@ class CountingSort implements SortAlgorithm {
         System.out.println("\n------------------------------\n");
 
         // String Input
-        List<String> unsortedStrings = Stream
-            .of("c", "a", "e", "b", "d", "a", "f", "g", "c")
-            .collect(toList());
+        List<String> unsortedStrings = Stream.of("c", "a", "e", "b", "d", "a", "f", "g", "c").collect(toList());
 
         System.out.println("Before Sorting:");
         print(unsortedStrings);

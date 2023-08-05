@@ -44,8 +44,7 @@ public class DynamicArray<E> implements Iterable<E> {
      */
     public void add(final E element) {
         if (this.size == this.elements.length) {
-            this.elements =
-                Arrays.copyOf(this.elements, newCapacity(2 * this.capacity));
+            this.elements = Arrays.copyOf(this.elements, newCapacity(2 * this.capacity));
         }
 
         this.elements[this.size] = element;
@@ -84,8 +83,7 @@ public class DynamicArray<E> implements Iterable<E> {
         fastRemove(this.elements, index);
 
         if (this.capacity > DEFAULT_CAPACITY && size * 4 <= this.capacity) {
-            this.elements =
-                Arrays.copyOf(this.elements, newCapacity(this.capacity / 2));
+            this.elements = Arrays.copyOf(this.elements, newCapacity(this.capacity / 2));
         }
         return oldElement;
     }
@@ -116,13 +114,7 @@ public class DynamicArray<E> implements Iterable<E> {
         final int newSize = this.size - 1;
 
         if (newSize > index) {
-            System.arraycopy(
-                elements,
-                index + 1,
-                elements,
-                index,
-                newSize - index
-            );
+            System.arraycopy(elements, index + 1, elements, index, newSize - index);
         }
 
         elements[this.size = newSize] = null;
@@ -144,9 +136,7 @@ public class DynamicArray<E> implements Iterable<E> {
      */
     @Override
     public String toString() {
-        return Arrays.toString(
-            Arrays.stream(this.elements).filter(Objects::nonNull).toArray()
-        );
+        return Arrays.toString(Arrays.stream(this.elements).filter(Objects::nonNull).toArray());
     }
 
     /**

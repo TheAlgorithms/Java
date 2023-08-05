@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
  * @see CocktailShakerSort
  */
 public class CocktailShakerSortTest {
-    
+
     private CocktailShakerSort cocktailShakerSort = new CocktailShakerSort();
 
     @Test
-    public void cocktailShakerSortEmptyArray(){
+    public void cocktailShakerSortEmptyArray() {
         Integer[] inputArray = {};
         Integer[] outputArray = cocktailShakerSort.sort(inputArray);
         Integer[] expectedOutput = {};
@@ -21,7 +21,7 @@ public class CocktailShakerSortTest {
     }
 
     @Test
-    public void cocktailShakerSortSingleStringElementArray(){
+    public void cocktailShakerSortSingleStringElementArray() {
         String[] inputArray = {"Test"};
         String[] outputArray = cocktailShakerSort.sort(inputArray);
         String[] expectedOutput = {"Test"};
@@ -29,15 +29,15 @@ public class CocktailShakerSortTest {
     }
 
     @Test
-    public void cocktailShakerSortIntegerArray(){
-        Integer[] inputArray = { 2, 92, 1, 33, -33, 27, 5, 100, 78, 99, -100};
+    public void cocktailShakerSortIntegerArray() {
+        Integer[] inputArray = {2, 92, 1, 33, -33, 27, 5, 100, 78, 99, -100};
         Integer[] outputArray = cocktailShakerSort.sort(inputArray);
-        Integer[] expectedOutput = { -100, -33, 1, 2, 5, 27, 33, 78, 92, 99, 100};
+        Integer[] expectedOutput = {-100, -33, 1, 2, 5, 27, 33, 78, 92, 99, 100};
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
-    public void cocktailShakerSortStringArray(){
+    public void cocktailShakerSortStringArray() {
         String[] inputArray = {
             "g3x1",
             "dN62",

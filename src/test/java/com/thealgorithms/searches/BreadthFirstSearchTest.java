@@ -1,28 +1,15 @@
 package com.thealgorithms.searches;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class BreadthFirstSearchTest {
 
-    private static final DepthFirstSearch.Node rootNode = new DepthFirstSearch.Node(
-            "A",
-            List.of(
-                    new DepthFirstSearch.Node(
-                            "B",
-                            List.of(
-                                    new DepthFirstSearch.Node("D"),
-                                    new DepthFirstSearch.Node("F", List.of(new DepthFirstSearch.Node("H"), new DepthFirstSearch.Node("I")))
-                            )
-                    ),
-                    new DepthFirstSearch.Node("C", List.of(new DepthFirstSearch.Node("G"))),
-                    new DepthFirstSearch.Node("E")
-            )
-    );
+    private static final DepthFirstSearch.Node rootNode = new DepthFirstSearch.Node("A",
+        List.of(new DepthFirstSearch.Node("B", List.of(new DepthFirstSearch.Node("D"), new DepthFirstSearch.Node("F", List.of(new DepthFirstSearch.Node("H"), new DepthFirstSearch.Node("I"))))), new DepthFirstSearch.Node("C", List.of(new DepthFirstSearch.Node("G"))), new DepthFirstSearch.Node("E")));
 
     @Test
     void searchI() {

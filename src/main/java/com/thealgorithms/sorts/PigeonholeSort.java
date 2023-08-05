@@ -39,7 +39,7 @@ public class PigeonholeSort {
 
     public static void main(String[] args) {
         PigeonholeSort pigeonholeSort = new PigeonholeSort();
-        Integer[] arr = { 8, 3, 2, 7, 4, 6, 8 };
+        Integer[] arr = {8, 3, 2, 7, 4, 6, 8};
 
         System.out.print("Unsorted order is : ");
         print(arr);

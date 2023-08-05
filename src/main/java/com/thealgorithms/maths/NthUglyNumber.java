@@ -1,57 +1,80 @@
-// Ugly numbers are numbers whose only prime factors are 2, 3 or 5. The sequence 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, … shows the first 11 ugly numbers.
-// By convention, 1 is included.
-// A program to find the nth Ugly number
-// Algorithm :
-// Initialize three-pointers two, three, and five pointing to zero.
-// Take 3 variables nm2, nm3, and nm5 to keep track of next multiple of 2,3 and 5.
-// Make an array of size n to store the ugly numbers with 1 at 0th index.
-// Initialize a variable next which stores the value of the last element in the array.
-// Run a loop n-1 times and perform steps 6,7 and 8.
-// Update the values of nm2, nm3, nm5 as ugly[two]*2, ugly[three]*3, ugly[5]*5 respectively.
-// Select the minimum value from nm2, nm3, and nm5 and increment the pointer related to it.
-// Store the minimum value in variable next and array.
-// Return next.
 package com.thealgorithms.maths;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-class NthUglyNumber {
+/**
+ * @brief class computing the n-th ugly number (when they are sorted)
+ * @details the ugly numbers with base [2, 3, 5] are all numbers of the form 2^a*3^b^5^c,
+ *   where the exponents a, b, c are non-negative integers.
+ *   Some properties of ugly numbers:
+ *     - base [2, 3, 5] ugly numbers are the 5-smooth numbers, cf. https://oeis.org/A051037
+ *     - base [2, 3, 5, 7] ugly numbers are 7-smooth numbers, cf. https://oeis.org/A002473
+ *     - base [2] ugly numbers are the non-negative powers of 2,
+ *     - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
+ */
+public class NthUglyNumber {
+    private ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
+    private final int[] baseNumbers;
+    private HashMap<Integer, Integer> positions = new HashMap<>();
 
-    /* Function to get the nth ugly number*/
-    public long getNthUglyNo(int n) {
-        long[] ugly = new long[n];
-        int two = 0, three = 0, five = 0;
-        long nm2 = 2, nm3 = 3, nm5 = 5;
-        long next = 1;
-
-        ugly[0] = 1;
-
-        for (int i = 1; i < n; i++) {
-            next = Math.min(nm2, Math.min(nm3, nm5));
-
-            ugly[i] = next;
-            if (next == nm2) {
-                two = two + 1;
-                nm2 = ugly[two] * 2;
-            }
-            if (next == nm3) {
-                three = three + 1;
-                nm3 = ugly[three] * 3;
-            }
-            if (next == nm5) {
-                five = five + 1;
-                nm5 = ugly[five] * 5;
-            }
+    /**
+     * @brief initialized the object allowing to compute ugly numbers with given base
+     * @param baseNumbers the given base of ugly numbers
+     * @exception IllegalArgumentException baseNumber is empty
+     */
+    NthUglyNumber(final int[] baseNumbers) {
+        if (baseNumbers.length == 0) {
+            throw new IllegalArgumentException("baseNumbers must be non-empty.");
         }
-        return next;
+
+        this.baseNumbers = baseNumbers;
+        for (final var baseNumber : baseNumbers) {
+            this.positions.put(baseNumber, 0);
+        }
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the value of n : ");
-        int n = sc.nextInt();
-        NthUglyNumber ob = new NthUglyNumber();
-        long ugly = ob.getNthUglyNo(n);
-        System.out.println("nth Ugly number is : " + ugly);
+    /**
+     * @param n the zero-based-index of the queried ugly number
+     * @exception IllegalArgumentException n is negative
+     * @return the n-th ugly number (starting from index 0)
+     */
+    public Long get(final int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be non-negative.");
+        }
+
+        while (uglyNumbers.size() <= n) {
+            addUglyNumber();
+        }
+
+        return uglyNumbers.get(n);
+    }
+
+    private void addUglyNumber() {
+        uglyNumbers.add(computeMinimalCandidate());
+        updatePositions();
+    }
+
+    private void updatePositions() {
+        final var lastUglyNumber = uglyNumbers.get(uglyNumbers.size() - 1);
+        for (final var baseNumber : baseNumbers) {
+            if (computeCandidate(baseNumber) == lastUglyNumber) {
+                positions.put(baseNumber, positions.get(baseNumber) + 1);
+            }
+        }
+    }
+
+    private long computeCandidate(final int candidateBase) {
+        return candidateBase * uglyNumbers.get(positions.get(candidateBase));
+    }
+
+    private long computeMinimalCandidate() {
+        long res = Long.MAX_VALUE;
+        for (final var baseNumber : baseNumbers) {
+            res = Math.min(res, computeCandidate(baseNumber));
+        }
+        return res;
     }
 }

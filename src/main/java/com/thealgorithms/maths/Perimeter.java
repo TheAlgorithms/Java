@@ -5,8 +5,9 @@ public class Perimeter {
 
     /**
      * Calculate the Perimeter of regular polygon (equals sides)
-     * Examples of regular polygon are Equilateral Triangle, Square, Regular Pentagon, Regular Hexagon. 
-     * 
+     * Examples of regular polygon are Equilateral Triangle, Square, Regular Pentagon, Regular
+     * Hexagon.
+     *
      * @param n for number of sides.
      * @param side for length of each side.
      * @return Perimeter of given polygon
@@ -17,8 +18,9 @@ public class Perimeter {
 
     /**
      * Calculate the Perimeter of irregular polygon (unequals sides)
-     * Examples of irregular polygon are scalent triangle, irregular quadrilateral, irregular Pentagon, irregular Hexagon. 
-     * 
+     * Examples of irregular polygon are scalent triangle, irregular quadrilateral, irregular
+     * Pentagon, irregular Hexagon.
+     *
      * @param side1 for length of side 1
      * @param side2 for length of side 2
      * @param side3 for length of side 3
@@ -35,7 +37,7 @@ public class Perimeter {
 
     /**
      * Calculate the Perimeter of rectangle
-     * 
+     *
      * @param length for length of rectangle
      * @param breadth for breadth of rectangle
      * @return Perimeter of given rectangle
@@ -46,7 +48,7 @@ public class Perimeter {
 
     /**
      * Calculate the Perimeter or Circumference of circle.
-     * 
+     *
      * @param r for radius of circle.
      * @return circumference of given circle.
      */

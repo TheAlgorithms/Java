@@ -5,8 +5,7 @@ package com.thealgorithms.dynamicprogramming;
  */
 public class Knapsack {
 
-    private static int knapSack(int W, int[] wt, int[] val, int n)
-        throws IllegalArgumentException {
+    private static int knapSack(int W, int[] wt, int[] val, int n) throws IllegalArgumentException {
         if (wt == null || val == null) {
             throw new IllegalArgumentException();
         }
@@ -19,11 +18,7 @@ public class Knapsack {
                 if (i == 0 || w == 0) {
                     rv[i][w] = 0;
                 } else if (wt[i - 1] <= w) {
-                    rv[i][w] =
-                        Math.max(
-                            val[i - 1] + rv[i - 1][w - wt[i - 1]],
-                            rv[i - 1][w]
-                        );
+                    rv[i][w] = Math.max(val[i - 1] + rv[i - 1][w - wt[i - 1]], rv[i - 1][w]);
                 } else {
                     rv[i][w] = rv[i - 1][w];
                 }
@@ -35,8 +30,8 @@ public class Knapsack {
 
     // Driver program to test above function
     public static void main(String[] args) {
-        int[] val = new int[] { 50, 100, 130 };
-        int[] wt = new int[] { 10, 20, 40 };
+        int[] val = new int[] {50, 100, 130};
+        int[] wt = new int[] {10, 20, 40};
         int W = 50;
         System.out.println(knapSack(W, wt, val, val.length));
     }

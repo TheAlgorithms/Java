@@ -1,11 +1,10 @@
 package com.thealgorithms.datastructures.trees;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given tree is traversed in a 'post-order' way: LEFT -> RIGHT -> ROOT.
@@ -28,7 +27,7 @@ public class PostOrderTraversalTest {
     */
     @Test
     public void testPostOrder() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{1, 2, 3, 4, 5, 6, 7});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 3, 4, 5, 6, 7});
         List<Integer> expected = List.of(4, 5, 2, 6, 7, 3, 1);
 
         assertEquals(expected, PostOrderTraversal.recursivePostOrder(root));
@@ -46,7 +45,7 @@ public class PostOrderTraversalTest {
     */
     @Test
     public void testPostOrderNonBalanced() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{5, null, 6, null, 7, null, 8});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
         List<Integer> expected = List.of(8, 7, 6, 5);
 
         assertEquals(expected, PostOrderTraversal.recursivePostOrder(root));

@@ -25,10 +25,7 @@ class Alphabetical {
     public static boolean isAlphabetical(String s) {
         s = s.toLowerCase();
         for (int i = 0; i < s.length() - 1; ++i) {
-            if (
-                !Character.isLetter(s.charAt(i)) ||
-                !(s.charAt(i) <= s.charAt(i + 1))
-            ) {
+            if (!Character.isLetter(s.charAt(i)) || !(s.charAt(i) <= s.charAt(i + 1))) {
                 return false;
             }
         }

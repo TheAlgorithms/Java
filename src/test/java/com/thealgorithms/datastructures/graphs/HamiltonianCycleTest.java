@@ -10,36 +10,30 @@ class HamiltonianCycleTest {
 
     @Test
     void testFindHamiltonianCycleShouldReturnHamiltonianCycle() {
-        int[] expectedArray = { 0, 1, 2, 4, 3, 0 };
+        int[] expectedArray = {0, 1, 2, 4, 3, 0};
         int[][] inputArray = {
-            { 0, 1, 0, 1, 0 },
-            { 1, 0, 1, 1, 1 },
-            { 0, 1, 0, 0, 1 },
-            { 1, 1, 0, 0, 1 },
-            { 0, 1, 1, 1, 0 },
+            {0, 1, 0, 1, 0},
+            {1, 0, 1, 1, 1},
+            {0, 1, 0, 0, 1},
+            {1, 1, 0, 0, 1},
+            {0, 1, 1, 1, 0},
         };
 
-        assertArrayEquals(
-            expectedArray,
-            hamiltonianCycle.findHamiltonianCycle(inputArray)
-        );
+        assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
     }
 
     @Test
     void testFindHamiltonianCycleShouldReturnInfinityArray() {
-        int[] expectedArray = { -1, -1, -1, -1, -1, -1 };
+        int[] expectedArray = {-1, -1, -1, -1, -1, -1};
 
         int[][] inputArray = {
-            { 0, 1, 0, 1, 0 },
-            { 1, 0, 1, 1, 1 },
-            { 0, 1, 0, 0, 1 },
-            { 1, 1, 0, 0, 0 },
-            { 0, 1, 1, 0, 0 },
+            {0, 1, 0, 1, 0},
+            {1, 0, 1, 1, 1},
+            {0, 1, 0, 0, 1},
+            {1, 1, 0, 0, 0},
+            {0, 1, 1, 0, 0},
         };
 
-        assertArrayEquals(
-            expectedArray,
-            hamiltonianCycle.findHamiltonianCycle(inputArray)
-        );
+        assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
     }
 }

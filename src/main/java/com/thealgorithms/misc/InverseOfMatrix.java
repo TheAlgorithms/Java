@@ -6,7 +6,8 @@ import java.util.Scanner;
  * Wikipedia link : https://en.wikipedia.org/wiki/Invertible_matrix
  *
  * Here we use gauss elimination method to find the inverse of a given matrix.
- * To understand gauss elimination method to find inverse of a matrix: https://www.sangakoo.com/en/unit/inverse-matrix-method-of-gaussian-elimination
+ * To understand gauss elimination method to find inverse of a matrix:
+ * https://www.sangakoo.com/en/unit/inverse-matrix-method-of-gaussian-elimination
  *
  * We can also find the inverse of a matrix
  */

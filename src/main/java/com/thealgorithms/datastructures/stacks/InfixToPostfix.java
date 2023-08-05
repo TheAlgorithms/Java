@@ -10,8 +10,7 @@ public class InfixToPostfix {
         assert "34+5*6-".equals(infix2PostFix("(3+4)*5-6"));
     }
 
-    public static String infix2PostFix(String infixExpression)
-        throws Exception {
+    public static String infix2PostFix(String infixExpression) throws Exception {
         if (!BalancedBrackets.isBalanced(infixExpression)) {
             throw new Exception("invalid expression");
         }
@@ -28,10 +27,7 @@ public class InfixToPostfix {
                 }
                 stack.pop();
             } else {
-                while (
-                    !stack.isEmpty() &&
-                    precedence(element) <= precedence(stack.peek())
-                ) {
+                while (!stack.isEmpty() && precedence(element) <= precedence(stack.peek())) {
                     output.append(stack.pop());
                 }
                 stack.push(element);
@@ -45,16 +41,16 @@ public class InfixToPostfix {
 
     private static int precedence(char operator) {
         switch (operator) {
-            case '+':
-            case '-':
-                return 0;
-            case '*':
-            case '/':
-                return 1;
-            case '^':
-                return 2;
-            default:
-                return -1;
+        case '+':
+        case '-':
+            return 0;
+        case '*':
+        case '/':
+            return 1;
+        case '^':
+            return 2;
+        default:
+            return -1;
         }
     }
 }

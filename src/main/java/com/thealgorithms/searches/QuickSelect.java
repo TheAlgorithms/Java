@@ -45,19 +45,11 @@ public final class QuickSelect {
         return list.get(index);
     }
 
-    private static <T extends Comparable<T>> int selectIndex(
-        List<T> list,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int selectIndex(List<T> list, int n) {
         return selectIndex(list, 0, list.size() - 1, n);
     }
 
-    private static <T extends Comparable<T>> int selectIndex(
-        List<T> list,
-        int left,
-        int right,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int selectIndex(List<T> list, int left, int right, int n) {
         while (true) {
             if (left == right) return left;
             int pivotIndex = pivot(list, left, right);
@@ -72,13 +64,7 @@ public final class QuickSelect {
         }
     }
 
-    private static <T extends Comparable<T>> int partition(
-        List<T> list,
-        int left,
-        int right,
-        int pivotIndex,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int partition(List<T> list, int left, int right, int pivotIndex, int n) {
         T pivotValue = list.get(pivotIndex);
         Collections.swap(list, pivotIndex, right);
         int storeIndex = left;
@@ -104,11 +90,7 @@ public final class QuickSelect {
         return (n < storeIndex) ? storeIndex : Math.min(n, storeIndexEq);
     }
 
-    private static <T extends Comparable<T>> int pivot(
-        List<T> list,
-        int left,
-        int right
-    ) {
+    private static <T extends Comparable<T>> int pivot(List<T> list, int left, int right) {
         if (right - left < 5) {
             return partition5(list, left, right);
         }
@@ -128,11 +110,7 @@ public final class QuickSelect {
         return selectIndex(list, left, rightIndex, mid);
     }
 
-    private static <T extends Comparable<T>> int partition5(
-        List<T> list,
-        int left,
-        int right
-    ) {
+    private static <T extends Comparable<T>> int partition5(List<T> list, int left, int right) {
         List<T> ts = list.subList(left, right);
         ts.sort(Comparator.naturalOrder());
         return (left + right) >>> 1;

@@ -1,14 +1,13 @@
 package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
 public class LowestBasePalindromeTest {
@@ -44,18 +43,12 @@ public class LowestBasePalindromeTest {
 
     @Test
     public void testIsPalindromicInBaseThrowsExceptionForNegativeNumbers() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> LowestBasePalindrome.isPalindromicInBase(-1, 5)
-        );
+        assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(-1, 5));
     }
 
     @Test
     public void testIsPalindromicInBaseThrowsExceptionForWrongBases() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> LowestBasePalindrome.isPalindromicInBase(10, 1)
-        );
+        assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(10, 1));
     }
 
     @Test

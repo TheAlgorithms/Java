@@ -1,8 +1,8 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class VigenereTest {
 
@@ -33,5 +33,4 @@ class VigenereTest {
         // then
         assertEquals("Hello World!", decryptedText);
     }
-
 }

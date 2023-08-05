@@ -27,14 +27,14 @@ public class PartitionProblem {
      * @param nums the array contains integers.
      * @return {@code true} if two subset exists, otherwise {@code false}.
      */
-    public static boolean partition(int[] nums)
-    {
+    public static boolean partition(int[] nums) {
         // calculate the sum of all the elements in the array
         int sum = Arrays.stream(nums).sum();
 
-        // it will return true if the sum is even and the array can be divided into two subarrays/subset with equal sum.
-        // and here i reuse the SubsetSum class from dynamic programming section to check if there is exists a
-        // subsetsum into nums[] array same as the given sum
-        return (sum & 1) == 0 && SubsetSum.subsetSum(nums, sum/2);
+        // it will return true if the sum is even and the array can be divided into two
+        // subarrays/subset with equal sum. and here i reuse the SubsetSum class from dynamic
+        // programming section to check if there is exists a subsetsum into nums[] array same as the
+        // given sum
+        return (sum & 1) == 0 && SubsetSum.subsetSum(nums, sum / 2);
     }
 }

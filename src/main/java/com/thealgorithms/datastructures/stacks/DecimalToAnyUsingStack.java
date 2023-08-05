@@ -23,13 +23,7 @@ public class DecimalToAnyUsingStack {
      */
     private static String convert(int number, int radix) {
         if (radix < 2 || radix > 16) {
-            throw new ArithmeticException(
-                String.format(
-                    "Invalid input -> number:%d,radius:%d",
-                    number,
-                    radix
-                )
-            );
+            throw new ArithmeticException(String.format("Invalid input -> number:%d,radius:%d", number, radix));
         }
         char[] tables = {
             '0',

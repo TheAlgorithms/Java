@@ -66,8 +66,7 @@ public class BFPRT {
         int offset = num % 5 == 0 ? 0 : 1;
         int[] mArr = new int[num / 5 + offset];
         for (int i = 0; i < mArr.length; i++) {
-            mArr[i] =
-                getMedian(arr, begin + i * 5, Math.min(end, begin + i * 5 + 4));
+            mArr[i] = getMedian(arr, begin + i * 5, Math.min(end, begin + i * 5 + 4));
         }
         return bfprt(mArr, 0, mArr.length - 1, mArr.length / 2);
     }

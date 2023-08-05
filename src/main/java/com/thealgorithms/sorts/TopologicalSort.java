@@ -34,22 +34,6 @@ public class TopologicalSort {
         public final String label;
 
         /*
-         * Weight of vertex
-         * (more accurately defined as the time that a vertex has begun a visit in DFS)
-         * */
-        public int weight;
-
-        /*
-         * The time that the vertex has finished a visit in DFS
-         * */
-        public int finished;
-
-        /*
-         * π parent of the vertex
-         * */
-        public Vertex predecessor;
-
-        /*
          * Represents the category of visit in DFS
          * */
         public Color color = Color.WHITE;
@@ -79,27 +63,16 @@ public class TopologicalSort {
          * */
         public void addEdge(String label, String... next) {
             adj.put(label, new Vertex(label));
-            if (!next[0].isEmpty()) Collections.addAll(
-                adj.get(label).next,
-                next
-            );
+            if (!next[0].isEmpty()) Collections.addAll(adj.get(label).next, next);
         }
     }
 
     static class BackEdgeException extends RuntimeException {
 
         public BackEdgeException(String backEdge) {
-            super(
-                "This graph contains a cycle. No linear ordering is possible. " +
-                backEdge
-            );
+            super("This graph contains a cycle. No linear ordering is possible. " + backEdge);
         }
     }
-
-    /*
-     * Time variable in DFS
-     * */
-    private static int time;
 
     /*
      * Depth First Search
@@ -141,30 +114,21 @@ public class TopologicalSort {
      *   u.f = time
      * */
     private static String sort(Graph graph, Vertex u, LinkedList<String> list) {
-        time++;
-        u.weight = time;
         u.color = Color.GRAY;
-        graph.adj
-            .get(u.label)
-            .next.forEach(label -> {
-                if (graph.adj.get(label).color == Color.WHITE) {
-                    graph.adj.get(label).predecessor = u;
-                    list.addFirst(sort(graph, graph.adj.get(label), list));
-                } else if (graph.adj.get(label).color == Color.GRAY) {
-                    /*
-                     * A back edge exists if an edge (u, v) connects a vertex u to its ancestor vertex v
-                     * in a depth first tree. If v.d ≤ u.d < u.f ≤ v.f
-                     *
-                     * In many cases, we will not know u.f, but v.color denotes the type of edge
-                     * */
-                    throw new BackEdgeException(
-                        "Back edge: " + u.label + " -> " + label
-                    );
-                }
-            });
+        graph.adj.get(u.label).next.forEach(label -> {
+            if (graph.adj.get(label).color == Color.WHITE) {
+                list.addFirst(sort(graph, graph.adj.get(label), list));
+            } else if (graph.adj.get(label).color == Color.GRAY) {
+                /*
+                 * A back edge exists if an edge (u, v) connects a vertex u to its ancestor vertex v
+                 * in a depth first tree. If v.d ≤ u.d < u.f ≤ v.f
+                 *
+                 * In many cases, we will not know u.f, but v.color denotes the type of edge
+                 * */
+                throw new BackEdgeException("Back edge: " + u.label + " -> " + label);
+            }
+        });
         u.color = Color.BLACK;
-        time++;
-        u.finished = time;
         return u.label;
     }
 }

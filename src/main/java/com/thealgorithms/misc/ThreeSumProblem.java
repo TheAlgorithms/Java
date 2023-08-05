@@ -16,13 +16,10 @@ public class ThreeSumProblem {
             arr[i] = scan.nextInt();
         }
         ThreeSumProblem th = new ThreeSumProblem();
-        System.out.println(
-            "Brute Force Approach\n" + (th.BruteForce(arr, ts)) + "\n"
-        );
-        System.out.println(
-            "Two Pointer Approach\n" + (th.TwoPointer(arr, ts)) + "\n"
-        );
+        System.out.println("Brute Force Approach\n" + (th.BruteForce(arr, ts)) + "\n");
+        System.out.println("Two Pointer Approach\n" + (th.TwoPointer(arr, ts)) + "\n");
         System.out.println("Hashmap Approach\n" + (th.Hashmap(arr, ts)));
+        scan.close();
     }
 
     public List<List<Integer>> BruteForce(int[] nums, int target) {
@@ -42,8 +39,7 @@ public class ThreeSumProblem {
                 }
             }
         }
-        arr =
-            new ArrayList<List<Integer>>(new LinkedHashSet<List<Integer>>(arr));
+        arr = new ArrayList<List<Integer>>(new LinkedHashSet<List<Integer>>(arr));
         return arr;
     }
 

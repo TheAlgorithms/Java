@@ -22,9 +22,8 @@ public class ReturnSubsequence {
      * @return subsequence
      */
     private static String[] returnSubsequence(String givenString) {
-        if (
-            givenString.length() == 0
-        ) { // in it // If string is empty we will create an array of size=1 and insert "" (Empty string)
+        if (givenString.length() == 0) { // in it // If string is empty we will create an array of
+                                         // size=1 and insert "" (Empty string)
             String[] ans = new String[1];
             ans[0] = "";
             return ans;
@@ -38,7 +37,8 @@ public class ReturnSubsequence {
             ans[i] = SmallAns[i]; // Copying all the strings present in SmallAns to ans string array
         }
         for (int k = 0; k < SmallAns.length; k++) {
-            ans[k + SmallAns.length] = givenString.charAt(0) + SmallAns[k]; // Insert character at index=0 of the given substring in front of every string
+            ans[k + SmallAns.length] = givenString.charAt(0) + SmallAns[k]; // Insert character at index=0 of the given
+                                                                            // substring in front of every string
             // in SmallAns
         }
         return ans;

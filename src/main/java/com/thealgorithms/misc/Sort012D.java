@@ -21,6 +21,7 @@ public class Sort012D {
             a[i] = np.nextInt();
         }
         sort012(a);
+        np.close();
     }
 
     public static void sort012(int[] a) {
@@ -30,26 +31,24 @@ public class Sort012D {
         int temp;
         while (mid <= h) {
             switch (a[mid]) {
-                case 0:
-                    {
-                        temp = a[l];
-                        a[l] = a[mid];
-                        a[mid] = temp;
-                        l++;
-                        mid++;
-                        break;
-                    }
-                case 1:
-                    mid++;
-                    break;
-                case 2:
-                    {
-                        temp = a[mid];
-                        a[mid] = a[h];
-                        a[h] = temp;
-                        h--;
-                        break;
-                    }
+            case 0: {
+                temp = a[l];
+                a[l] = a[mid];
+                a[mid] = temp;
+                l++;
+                mid++;
+                break;
+            }
+            case 1:
+                mid++;
+                break;
+            case 2: {
+                temp = a[mid];
+                a[mid] = a[h];
+                a[h] = temp;
+                h--;
+                break;
+            }
             }
         }
         System.out.println("the Sorted array is ");

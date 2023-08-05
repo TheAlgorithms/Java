@@ -3,10 +3,9 @@ package com.thealgorithms.scheduling;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class RRSchedulingTest {
     @Test
@@ -41,7 +40,6 @@ class RRSchedulingTest {
         assertEquals("P6", processes.get(5).getProcessId());
         assertEquals(11, processes.get(5).getWaitingTime());
         assertEquals(15, processes.get(5).getTurnAroundTimeTime());
-
     }
 
     private List<ProcessDetails> addProcessesForRR() {

@@ -15,15 +15,9 @@ public class AbsoluteMin {
             throw new IllegalArgumentException("Numbers array cannot be empty");
         }
 
-        var absMinWrapper = new Object() {
-            int value = numbers[0];
-        };
+        var absMinWrapper = new Object() { int value = numbers[0]; };
 
-        Arrays
-            .stream(numbers)
-            .skip(1)
-            .filter(number -> Math.abs(number) < Math.abs(absMinWrapper.value))
-            .forEach(number -> absMinWrapper.value = number);
+        Arrays.stream(numbers).skip(1).filter(number -> Math.abs(number) < Math.abs(absMinWrapper.value)).forEach(number -> absMinWrapper.value = number);
 
         return absMinWrapper.value;
     }

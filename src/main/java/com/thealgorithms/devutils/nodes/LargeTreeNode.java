@@ -53,11 +53,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      * @param childNodes {@link Collection} of child Nodes.
      * @see TreeNode#TreeNode(Object, Node)
      */
-    public LargeTreeNode(
-        E data,
-        LargeTreeNode<E> parentNode,
-        Collection<LargeTreeNode<E>> childNodes
-    ) {
+    public LargeTreeNode(E data, LargeTreeNode<E> parentNode, Collection<LargeTreeNode<E>> childNodes) {
         super(data, parentNode);
         this.childNodes = childNodes;
     }

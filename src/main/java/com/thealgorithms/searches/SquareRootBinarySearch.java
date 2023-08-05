@@ -23,12 +23,11 @@ public class SquareRootBinarySearch {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print(
-            "Enter a number you want to calculate square root of : "
-        );
+        System.out.print("Enter a number you want to calculate square root of : ");
         int num = sc.nextInt();
         long ans = squareRoot(num);
         System.out.println("The square root is : " + ans);
+        sc.close();
     }
 
     /**

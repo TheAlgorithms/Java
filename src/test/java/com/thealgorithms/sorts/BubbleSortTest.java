@@ -22,23 +22,23 @@ public class BubbleSortTest {
 
     @Test
     public void bubbleSortSingleIntegerElementArray() {
-        Integer[] inputArray = { 4 };
+        Integer[] inputArray = {4};
         Integer[] outputArray = bubbleSort.sort(inputArray);
-        Integer[] expectedOutput = { 4 };
+        Integer[] expectedOutput = {4};
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
     public void bubbleSortSingleStringElementArray() {
-        String[] inputArray = { "s" };
+        String[] inputArray = {"s"};
         String[] outputArray = bubbleSort.sort(inputArray);
-        String[] expectedOutput = { "s" };
+        String[] expectedOutput = {"s"};
         assertArrayEquals(outputArray, expectedOutput);
     }
 
     @Test
     public void bubbleSortIntegerArray() {
-        Integer[] inputArray = { 4, 23, -6, 78, 1, 54, 23, -6, -231, 9, 12 };
+        Integer[] inputArray = {4, 23, -6, 78, 1, 54, 23, -6, -231, 9, 12};
         Integer[] outputArray = bubbleSort.sort(inputArray);
         Integer[] expectedOutput = {
             -231,

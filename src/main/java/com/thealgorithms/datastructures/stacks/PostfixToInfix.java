@@ -20,12 +20,12 @@ public class PostfixToInfix {
 
     public static boolean isOperator(char token) {
         switch (token) {
-            case '+':
-            case '-':
-            case '/':
-            case '*':
-            case '^':
-                return true;
+        case '+':
+        case '-':
+        case '/':
+        case '*':
+        case '^':
+            return true;
         }
 
         return false;
@@ -42,7 +42,8 @@ public class PostfixToInfix {
         int operandCount = 0;
         int operatorCount = 0;
 
-        /* Traverse the postfix string to check if --> Number of operands = Number of operators + 1 */
+        /* Traverse the postfix string to check if --> Number of operands = Number of operators + 1
+         */
         for (int i = 0; i < postfix.length(); i++) {
             char token = postfix.charAt(i);
 
@@ -59,8 +60,8 @@ public class PostfixToInfix {
 
                 /* Operand count is set to 2 because:-
                  *
-                 * 1) the previous set of operands & operators combined have become a single valid expression,
-                 * which could be considered/assigned as a single operand.
+                 * 1) the previous set of operands & operators combined have become a single valid
+                 * expression, which could be considered/assigned as a single operand.
                  *
                  * 2) the operand in the current iteration.
                  */
@@ -123,7 +124,6 @@ public class PostfixToInfix {
         assert getPostfixToInfix("AB+CD+*").equals("((A+B)*(C+D))");
         assert getPostfixToInfix("AB+C+D+").equals("(((A+B)+C)+D)");
         assert getPostfixToInfix("ABCDE^*/-").equals("(A-(B/(C*(D^E))))");
-        assert getPostfixToInfix("AB+CD^/E*FGH+-^")
-            .equals("((((A+B)/(C^D))*E)^(F-(G+H)))");
+        assert getPostfixToInfix("AB+CD^/E*FGH+-^").equals("((((A+B)/(C^D))*E)^(F-(G+H)))");
     }
 }

@@ -12,9 +12,8 @@ public class ColumnarTranspositionCipher {
     private static String keyword;
     private static Object[][] table;
     private static String abecedarium;
-    public static final String ABECEDARIUM =
-        "abcdefghijklmnopqrstuvwxyzABCDEFG" +
-        "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
+    public static final String ABECEDARIUM = "abcdefghijklmnopqrstuvwxyzABCDEFG"
+        + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
     private static final String ENCRYPTION_FIELD = "≈";
     private static final char ENCRYPTION_FIELD_CHAR = '≈';
 
@@ -50,14 +49,9 @@ public class ColumnarTranspositionCipher {
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */
-    public static String encrpyter(
-        String word,
-        String keyword,
-        String abecedarium
-    ) {
+    public static String encrpyter(String word, String keyword, String abecedarium) {
         ColumnarTranspositionCipher.keyword = keyword;
-        ColumnarTranspositionCipher.abecedarium =
-            Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
+        ColumnarTranspositionCipher.abecedarium = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
         table = tableBuilder(word);
         Object[][] sortedTable = sortTable(table);
         StringBuilder wordEncrypted = new StringBuilder();
@@ -120,9 +114,7 @@ public class ColumnarTranspositionCipher {
      * order to respect the Columnar Transposition Cipher Rule.
      */
     private static int numberOfRows(String word) {
-        if (
-            word.length() / keyword.length() > word.length() / keyword.length()
-        ) {
+        if (word.length() / keyword.length() > word.length() / keyword.length()) {
             return (word.length() / keyword.length()) + 1;
         } else {
             return word.length() / keyword.length();
@@ -147,22 +139,12 @@ public class ColumnarTranspositionCipher {
     private static Object[][] sortTable(Object[][] table) {
         Object[][] tableSorted = new Object[table.length][table[0].length];
         for (int i = 0; i < tableSorted.length; i++) {
-            System.arraycopy(
-                table[i],
-                0,
-                tableSorted[i],
-                0,
-                tableSorted[i].length
-            );
+            System.arraycopy(table[i], 0, tableSorted[i], 0, tableSorted[i].length);
         }
         for (int i = 0; i < tableSorted[0].length; i++) {
             for (int j = i + 1; j < tableSorted[0].length; j++) {
                 if ((int) tableSorted[0][i] > (int) table[0][j]) {
-                    Object[] column = getColumn(
-                        tableSorted,
-                        tableSorted.length,
-                        i
-                    );
+                    Object[] column = getColumn(tableSorted, tableSorted.length, i);
                     switchColumns(tableSorted, j, i, column);
                 }
             }
@@ -181,12 +163,7 @@ public class ColumnarTranspositionCipher {
         return columnArray;
     }
 
-    private static void switchColumns(
-        Object[][] table,
-        int firstColumnIndex,
-        int secondColumnIndex,
-        Object[] columnToSwitch
-    ) {
+    private static void switchColumns(Object[][] table, int firstColumnIndex, int secondColumnIndex, Object[] columnToSwitch) {
         for (int i = 0; i < table.length; i++) {
             table[i][secondColumnIndex] = table[i][firstColumnIndex];
             table[i][firstColumnIndex] = columnToSwitch[i];
@@ -217,22 +194,11 @@ public class ColumnarTranspositionCipher {
 
     public static void main(String[] args) {
         String keywordForExample = "asd215";
-        String wordBeingEncrypted =
-            "This is a test of the Columnar Transposition Cipher";
-        System.out.println(
-            "### Example of Columnar Transposition Cipher ###\n"
-        );
+        String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
+        System.out.println("### Example of Columnar Transposition Cipher ###\n");
         System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        System.out.println(
-            "Word encrypted ->>> " +
-            ColumnarTranspositionCipher.encrpyter(
-                wordBeingEncrypted,
-                keywordForExample
-            )
-        );
-        System.out.println(
-            "Word decryped ->>> " + ColumnarTranspositionCipher.decrypter()
-        );
+        System.out.println("Word encrypted ->>> " + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
+        System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypter());
         System.out.println("\n### Encrypted Table ###");
         showTable();
     }

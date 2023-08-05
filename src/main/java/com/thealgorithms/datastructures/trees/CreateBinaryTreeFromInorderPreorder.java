@@ -1,7 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
 import com.thealgorithms.datastructures.trees.BinaryTree.Node;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,13 +36,7 @@ public class CreateBinaryTreeFromInorderPreorder {
         return createTreeOptimized(preorder, inorderMap, 0, 0, inorder.length);
     }
 
-    private static Node createTree(
-            final Integer[] preorder,
-            final Integer[] inorder,
-            final int preStart,
-            final int inStart,
-            final int size
-    ) {
+    private static Node createTree(final Integer[] preorder, final Integer[] inorder, final int preStart, final int inStart, final int size) {
         if (size == 0) {
             return null;
         }
@@ -55,32 +48,12 @@ public class CreateBinaryTreeFromInorderPreorder {
         }
         int leftNodesCount = i - inStart;
         int rightNodesCount = size - leftNodesCount - 1;
-        root.left =
-                createTree(
-                        preorder,
-                        inorder,
-                        preStart + 1,
-                        inStart,
-                        leftNodesCount
-                );
-        root.right =
-                createTree(
-                        preorder,
-                        inorder,
-                        preStart + leftNodesCount + 1,
-                        i + 1,
-                        rightNodesCount
-                );
+        root.left = createTree(preorder, inorder, preStart + 1, inStart, leftNodesCount);
+        root.right = createTree(preorder, inorder, preStart + leftNodesCount + 1, i + 1, rightNodesCount);
         return root;
     }
 
-    private static Node createTreeOptimized(
-            final Integer[] preorder,
-            final Map<Integer, Integer> inorderMap,
-            final int preStart,
-            final int inStart,
-            final int size
-    ) {
+    private static Node createTreeOptimized(final Integer[] preorder, final Map<Integer, Integer> inorderMap, final int preStart, final int inStart, final int size) {
         if (size == 0) {
             return null;
         }
@@ -89,22 +62,8 @@ public class CreateBinaryTreeFromInorderPreorder {
         int i = inorderMap.get(preorder[preStart]);
         int leftNodesCount = i - inStart;
         int rightNodesCount = size - leftNodesCount - 1;
-        root.left =
-                createTreeOptimized(
-                        preorder,
-                        inorderMap,
-                        preStart + 1,
-                        inStart,
-                        leftNodesCount
-                );
-        root.right =
-                createTreeOptimized(
-                        preorder,
-                        inorderMap,
-                        preStart + leftNodesCount + 1,
-                        i + 1,
-                        rightNodesCount
-                );
+        root.left = createTreeOptimized(preorder, inorderMap, preStart + 1, inStart, leftNodesCount);
+        root.right = createTreeOptimized(preorder, inorderMap, preStart + leftNodesCount + 1, i + 1, rightNodesCount);
         return root;
     }
 }

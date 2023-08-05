@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Finds all permutations of 1...n of length k
- * @author TheClerici (https://github.com/TheClerici)
+ * @author TheClerici (<a href="https://github.com/TheClerici">git-TheClerici</a>)
  */
 public class ArrayCombination {
     private static int length;
@@ -22,7 +22,7 @@ public class ArrayCombination {
         length = k;
         Integer[] arr = new Integer[n];
         for (int i = 1; i <= n; i++) {
-            arr[i-1] = i;
+            arr[i - 1] = i;
         }
         return Combination.combination(arr, length);
     }

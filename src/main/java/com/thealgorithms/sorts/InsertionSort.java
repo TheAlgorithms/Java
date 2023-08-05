@@ -1,8 +1,8 @@
 package com.thealgorithms.sorts;
 
-import java.util.function.Function;
-
 import static com.thealgorithms.sorts.SortUtils.*;
+
+import java.util.function.Function;
 
 class InsertionSort implements SortAlgorithm {
 
@@ -40,14 +40,12 @@ class InsertionSort implements SortAlgorithm {
     public <T extends Comparable<T>> T[] sentinelSort(T[] array) {
         int minElemIndex = 0;
         int n = array.length;
-        if (n < 1)
-            return array;
+        if (n < 1) return array;
 
         // put the smallest element to the 0 position as a sentinel, which will allow us to avoid
         // redundant comparisons like `j > 0` further
         for (int i = 1; i < n; i++)
-            if (less(array[i], array[minElemIndex]))
-                minElemIndex = i;
+            if (less(array[i], array[minElemIndex])) minElemIndex = i;
         swap(array, 0, minElemIndex);
 
         for (int i = 2; i < n; i++) {
@@ -81,8 +79,7 @@ class InsertionSort implements SortAlgorithm {
         System.out.printf("Sentinel insertion time: %5.2f  sec.\n", insertionSentinelTime);
 
         // ~ 1.5 time sentinel sort is faster, then classical Insertion sort implementation.
-        System.out.printf("Sentinel insertion is %f3.2 time faster than Original insertion sort\n",
-                insertionTime / insertionSentinelTime);
+        System.out.printf("Sentinel insertion is %f3.2 time faster than Original insertion sort\n", insertionTime / insertionSentinelTime);
     }
 
     private static double measureApproxExecTime(Function<Double[], Double[]> sortAlgorithm, Double[] randomArray) {

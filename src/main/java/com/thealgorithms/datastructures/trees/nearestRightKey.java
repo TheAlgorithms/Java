@@ -12,6 +12,7 @@ class Main {
         int inputX0 = sc.nextInt();
         int toPrint = nearestRightKey(root, inputX0);
         System.out.println("Key: " + toPrint);
+        sc.close();
     }
 
     public static NRKTree BuildTree() {
@@ -27,7 +28,7 @@ class Main {
     }
 
     public static int nearestRightKey(NRKTree root, int x0) {
-        //Check whether tree is empty
+        // Check whether tree is empty
         if (root == null) {
             return 0;
         } else {

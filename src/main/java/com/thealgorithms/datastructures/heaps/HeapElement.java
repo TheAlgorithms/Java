@@ -122,10 +122,7 @@ public class HeapElement {
                 return false;
             }
             HeapElement otherHeapElement = (HeapElement) o;
-            return (
-                (this.key == otherHeapElement.key) &&
-                (this.additionalInfo.equals(otherHeapElement.additionalInfo))
-            );
+            return ((this.key == otherHeapElement.key) && (this.additionalInfo.equals(otherHeapElement.additionalInfo)));
         }
         return false;
     }
@@ -134,10 +131,7 @@ public class HeapElement {
     public int hashCode() {
         int result = 0;
         result = 31 * result + (int) key;
-        result =
-            31 *
-            result +
-            (additionalInfo != null ? additionalInfo.hashCode() : 0);
+        result = 31 * result + (additionalInfo != null ? additionalInfo.hashCode() : 0);
         return result;
     }
 }

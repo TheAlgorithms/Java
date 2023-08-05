@@ -37,23 +37,19 @@ public class MazeRecursion {
 
         // clone another map for setWay2 method
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map2[i][j] = map[i][j];
-            }
+            System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
         }
 
         // By using recursive backtracking to let your ball(target) find its way in the
         // maze
         // The first parameter is the map
         // Second parameter is x coordinate of your target
-        // Thrid parameter is the y coordinate of your target
+        // Third parameter is the y coordinate of your target
         setWay(map, 1, 1);
         setWay2(map2, 1, 1);
 
         // Print out the new map1, with the ball footprint
-        System.out.println(
-            "After the ball goes through the map1，show the current map1 condition"
-        );
+        System.out.println("After the ball goes through the map1，show the current map1 condition");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map[i][j] + " ");
@@ -62,9 +58,7 @@ public class MazeRecursion {
         }
 
         // Print out the new map2, with the ball footprint
-        System.out.println(
-            "After the ball goes through the map2，show the current map2 condition"
-        );
+        System.out.println("After the ball goes through the map2，show the current map2 condition");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map2[i][j] + " ");
@@ -85,7 +79,7 @@ public class MazeRecursion {
      * means the ball has gone through the path but this path is dead end
      * 5. We will need strategy for the ball to pass through the maze for example:
      * Down -> Right -> Up -> Left, if the path doesn't work, then backtrack
-     * 
+     *
      * @author OngLipWei
      * @version Jun 23, 2021 11:36:14 AM
      * @param map The maze
@@ -99,7 +93,8 @@ public class MazeRecursion {
         }
         if (map[i][j] == 0) { // if the ball haven't gone through this point
             // then the ball follows the move strategy : down -> right -> up -> left
-            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2 first。
+            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2
+                           // first。
             if (setWay(map, i + 1, j)) { // go down
                 return true;
             } else if (setWay(map, i, j + 1)) { // go right
@@ -110,14 +105,14 @@ public class MazeRecursion {
                 return true;
             } else {
                 // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
+                // the current point to 3 and return false, the backtracking will start, it will
                 // go to the previous step and check for feasible path again
                 map[i][j] = 3;
                 return false;
             }
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
             // ball cannot hit the wall, cannot go to the path that has gone though before,
-            // and cannot head to deadend.
+            // and cannot head to deadened.
             return false;
         }
     }
@@ -129,7 +124,8 @@ public class MazeRecursion {
         }
         if (map[i][j] == 0) { // if the ball haven't gone through this point
             // then the ball follows the move strategy : up->right->down->left
-            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2 first。
+            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2
+                           // first。
             if (setWay2(map, i - 1, j)) { // go up
                 return true;
             } else if (setWay2(map, i, j + 1)) { // go right
@@ -140,13 +136,13 @@ public class MazeRecursion {
                 return true;
             } else {
                 // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtraking will start, it will
+                // the current point to 3 and return false, the backtracking will start, it will
                 // go to the previous step and check for feasible path again
                 map[i][j] = 3;
                 return false;
             }
         } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
-            // ball cannot hit the wall, cannot go to the path that has gone though before,
+            // ball cannot hit the wall, cannot go to the path that has gone through before,
             // and cannot head to deadend.
             return false;
         }

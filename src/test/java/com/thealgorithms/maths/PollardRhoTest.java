@@ -9,46 +9,41 @@ class PollardRhoTest {
 
     @Test
     void testPollardRhoForNumber315MustReturn5() {
-        //given
+        // given
         int number = 315;
         int expectedResult = 5;
 
-        //when
+        // when
         int actualResult = PollardRho.pollardRho(number);
 
-        //then
+        // then
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void testPollardRhoForNumber187MustReturn11() {
-        //given
+        // given
         int number = 187;
         int expectedResult = 11;
 
-        //when
+        // when
         int actualResult = PollardRho.pollardRho(number);
 
-        //then
+        // then
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void testPollardRhoForNumber239MustThrowException() {
-        //given
+        // given
         int number = 239;
         String expectedMessage = "GCD cannot be found.";
 
-        //when
-        Exception exception = assertThrows(
-            RuntimeException.class,
-            () -> {
-                PollardRho.pollardRho(number);
-            }
-        );
+        // when
+        Exception exception = assertThrows(RuntimeException.class, () -> { PollardRho.pollardRho(number); });
         String actualMessage = exception.getMessage();
 
-        //then
+        // then
         assertEquals(expectedMessage, actualMessage);
     }
 }

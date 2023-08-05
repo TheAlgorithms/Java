@@ -28,16 +28,13 @@ class BalancedBrackets {
      */
     public static boolean isPaired(char leftBracket, char rightBracket) {
         char[][] pairedBrackets = {
-            { '(', ')' },
-            { '[', ']' },
-            { '{', '}' },
-            { '<', '>' },
+            {'(', ')'},
+            {'[', ']'},
+            {'{', '}'},
+            {'<', '>'},
         };
         for (char[] pairedBracket : pairedBrackets) {
-            if (
-                pairedBracket[0] == leftBracket &&
-                pairedBracket[1] == rightBracket
-            ) {
+            if (pairedBracket[0] == leftBracket && pairedBracket[1] == rightBracket) {
                 return true;
             }
         }
@@ -58,24 +55,21 @@ class BalancedBrackets {
         Stack<Character> bracketsStack = new Stack<>();
         for (char bracket : brackets.toCharArray()) {
             switch (bracket) {
-                case '(':
-                case '[':
-                case '{':
-                    bracketsStack.push(bracket);
-                    break;
-                case ')':
-                case ']':
-                case '}':
-                    if (
-                        bracketsStack.isEmpty() ||
-                        !isPaired(bracketsStack.pop(), bracket)
-                    ) {
-                        return false;
-                    }
-                    break;
-                default:
-                    /* other character is invalid */
+            case '(':
+            case '[':
+            case '{':
+                bracketsStack.push(bracket);
+                break;
+            case ')':
+            case ']':
+            case '}':
+                if (bracketsStack.isEmpty() || !isPaired(bracketsStack.pop(), bracket)) {
                     return false;
+                }
+                break;
+            default:
+                /* other character is invalid */
+                return false;
             }
         }
         return bracketsStack.isEmpty();

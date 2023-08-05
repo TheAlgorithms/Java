@@ -47,7 +47,6 @@ public class PrintAMatrixInSpiralOrder {
                 }
 
                 row--;
-
             }
 
             // print columns from first except printed elements
@@ -57,9 +56,7 @@ public class PrintAMatrixInSpiralOrder {
                 }
                 c++;
             }
-
         }
         return result;
     }
-
 }

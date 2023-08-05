@@ -8,25 +8,25 @@ public class PronicNumberTest {
 
     @Test
     void testForPronicNumber() {
-        //given
+        // given
         int number = 30;
 
-        //when
+        // when
         boolean result = PronicNumber.isPronic(number);
 
-        //then
+        // then
         assertTrue(result);
     }
 
     @Test
     void testForNonPronicNumber() {
-        //given
+        // given
         int number = 21;
 
-        //when
+        // when
         boolean result = PronicNumber.isPronic(number);
 
-        //then
+        // then
         assertFalse(result);
     }
 }

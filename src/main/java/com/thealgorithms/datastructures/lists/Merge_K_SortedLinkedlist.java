@@ -18,9 +18,7 @@ public class Merge_K_SortedLinkedlist {
      */
     Node mergeKList(Node[] a, int N) {
         // Min Heap
-        PriorityQueue<Node> min = new PriorityQueue<>(
-            Comparator.comparingInt(x -> x.data)
-        );
+        PriorityQueue<Node> min = new PriorityQueue<>(Comparator.comparingInt(x -> x.data));
 
         // adding head of all linkedList in min heap
         min.addAll(Arrays.asList(a).subList(0, N));
@@ -49,10 +47,5 @@ public class Merge_K_SortedLinkedlist {
 
         private int data;
         private Node next;
-
-        public Node(int d) {
-            this.data = d;
-            next = null;
-        }
     }
 }

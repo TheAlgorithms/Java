@@ -28,14 +28,7 @@ public class RedBlackBST {
             return;
         }
         printTree(node.left);
-        System.out.print(
-            ((node.color == R) ? " R " : " B ") +
-            "Key: " +
-            node.key +
-            " Parent: " +
-            node.p.key +
-            "\n"
-        );
+        System.out.print(((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
         printTree(node.right);
     }
 
@@ -43,14 +36,7 @@ public class RedBlackBST {
         if (node == nil) {
             return;
         }
-        System.out.print(
-            ((node.color == R) ? " R " : " B ") +
-            "Key: " +
-            node.key +
-            " Parent: " +
-            node.p.key +
-            "\n"
-        );
+        System.out.print(((node.color == R) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
         printTreepre(node.left);
         printTreepre(node.right);
     }

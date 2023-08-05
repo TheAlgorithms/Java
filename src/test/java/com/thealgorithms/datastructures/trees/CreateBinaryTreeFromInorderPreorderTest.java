@@ -1,9 +1,8 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 /**
  * @author Albina Gimaletdinova on 14/05/2023

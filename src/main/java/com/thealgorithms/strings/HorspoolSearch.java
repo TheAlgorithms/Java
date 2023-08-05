@@ -92,11 +92,7 @@ public class HorspoolSearch {
      * @param text text String
      * @return index of first occurrence of the pattern in the text
      */
-    private static int firstOccurrence(
-        String pattern,
-        String text,
-        boolean caseSensitive
-    ) {
+    private static int firstOccurrence(String pattern, String text, boolean caseSensitive) {
         shiftValues = calcShiftValues(pattern); // build the bad symbol table
         comparisons = 0; // reset comparisons
 
@@ -113,9 +109,7 @@ public class HorspoolSearch {
             while (i >= 0) {
                 comparisons++;
                 char patternChar = pattern.charAt(i);
-                char textChar = text.charAt(
-                    (textIndex + i) - (pattern.length() - 1)
-                );
+                char textChar = text.charAt((textIndex + i) - (pattern.length() - 1));
                 if (!charEquals(patternChar, textChar, caseSensitive)) { // bad character, shift pattern
                     textIndex += getShiftValue(text.charAt(textIndex));
                     break;

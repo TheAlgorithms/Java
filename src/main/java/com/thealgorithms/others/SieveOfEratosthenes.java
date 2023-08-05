@@ -3,58 +3,63 @@ package com.thealgorithms.others;
 import java.util.Arrays;
 
 /**
- * Sieve of Eratosthenes is an ancient algorithm for finding all prime numbers
- * up to any given limit.
- *
- * @see <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Wiki</a>
+ * @brief utility class implementing <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
  */
-public class SieveOfEratosthenes {
+final public class SieveOfEratosthenes {
+    private SieveOfEratosthenes() {
+    }
 
-    /**
-     * Finds all prime numbers till n.
-     *
-     * @param n The number till which we have to check for primes. Should be more than 1.
-     * @return Array of all prime numbers between 0 to n.
-     */
-    public static int[] findPrimesTill(int n) {
-        Type[] numbers = new Type[n + 1];
-        Arrays.fill(numbers, Type.PRIME);
-        numbers[0] = numbers[1] = Type.NOT_PRIME;
+    private static void checkInput(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive.");
+        }
+    }
+
+    private static Type[] sievePrimesTill(int n) {
+        checkInput(n);
+        Type[] isPrimeArray = new Type[n + 1];
+        Arrays.fill(isPrimeArray, Type.PRIME);
+        isPrimeArray[0] = isPrimeArray[1] = Type.NOT_PRIME;
 
         double cap = Math.sqrt(n);
         for (int i = 2; i <= cap; i++) {
-            if (numbers[i] == Type.PRIME) {
+            if (isPrimeArray[i] == Type.PRIME) {
                 for (int j = 2; i * j <= n; j++) {
-                    numbers[i * j] = Type.NOT_PRIME;
+                    isPrimeArray[i * j] = Type.NOT_PRIME;
                 }
             }
         }
+        return isPrimeArray;
+    }
 
-        int primesCount = (int) Arrays
-            .stream(numbers)
-            .filter(element -> element == Type.PRIME)
-            .count();
-        int[] primes = new int[primesCount];
+    private static int countPrimes(Type[] isPrimeArray) {
+        return (int) Arrays.stream(isPrimeArray).filter(element -> element == Type.PRIME).count();
+    }
 
+    private static int[] extractPrimes(Type[] isPrimeArray) {
+        int numberOfPrimes = countPrimes(isPrimeArray);
+        int[] primes = new int[numberOfPrimes];
         int primeIndex = 0;
-        for (int i = 0; i < n + 1; i++) {
-            if (numbers[i] == Type.PRIME) {
-                primes[primeIndex++] = i;
+        for (int curNumber = 0; curNumber < isPrimeArray.length; ++curNumber) {
+            if (isPrimeArray[curNumber] == Type.PRIME) {
+                primes[primeIndex++] = curNumber;
             }
         }
-
         return primes;
+    }
+
+    /**
+     * @brief finds all of the prime numbers up to the given upper (inclusive) limit
+     * @param n upper (inclusive) limit
+     * @exception IllegalArgumentException n is non-positive
+     * @return the array of all primes up to the given number (inclusive)
+     */
+    public static int[] findPrimesTill(int n) {
+        return extractPrimes(sievePrimesTill(n));
     }
 
     private enum Type {
         PRIME,
         NOT_PRIME,
-    }
-
-    public static void main(String[] args) {
-        int n = 100;
-        System.out.println("Searching for all primes from zero to " + n);
-        int[] primes = findPrimesTill(n);
-        System.out.println("Found: " + Arrays.toString(primes));
     }
 }

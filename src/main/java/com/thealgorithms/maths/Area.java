@@ -100,7 +100,7 @@ public class Area {
      * @param height height of triangle
      * @return area of given triangle
      */
-    public static double surfaceAreaTriangleRectangle(final double base, final double height) {
+    public static double surfaceAreaTriangle(final double base, final double height) {
         if (base <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE);
         }

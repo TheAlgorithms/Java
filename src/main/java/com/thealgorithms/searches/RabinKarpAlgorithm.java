@@ -13,7 +13,7 @@ public class RabinKarpAlgorithm {
         q -> A prime number
     */
     public int search(String pat, String txt, int q) {
-        int index = -1; //note: -1 here represent not found, it is not an index
+        int index = -1; // note: -1 here represent not found, it is not an index
         int M = pat.length();
         int N = txt.length();
         int i, j;

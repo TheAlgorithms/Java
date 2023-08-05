@@ -21,11 +21,7 @@ public record ADTFraction(int numerator, int denominator) {
      * @return A new {@code ADTFraction} containing the result of the operation
      */
     public ADTFraction plus(ADTFraction fraction) {
-        var numerator =
-            this.denominator *
-            fraction.numerator +
-            this.numerator *
-            fraction.denominator;
+        var numerator = this.denominator * fraction.numerator + this.numerator * fraction.denominator;
         var denominator = this.denominator * fraction.denominator;
         return new ADTFraction(numerator, denominator);
     }
@@ -64,7 +60,8 @@ public record ADTFraction(int numerator, int denominator) {
     /**
      * Calculates the result of the fraction.
      *
-     * @return The numerical result of the division between {@code numerator} and {@code denominator}
+     * @return The numerical result of the division between {@code numerator} and {@code
+     *     denominator}
      */
     public float value() {
         return (float) this.numerator / this.denominator;

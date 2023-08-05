@@ -1,8 +1,10 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 /**
- * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal to number of times n appears in the sequence.
+ * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal
+ * to number of times n appears in the sequence.
  */
 
 /**

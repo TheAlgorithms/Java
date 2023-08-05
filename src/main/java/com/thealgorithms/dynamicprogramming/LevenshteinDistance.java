@@ -32,12 +32,7 @@ public class LevenshteinDistance {
                 if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
                     distanceMat[i][j] = distanceMat[i - 1][j - 1];
                 } else {
-                    distanceMat[i][j] =
-                            1 + minimum(
-                                    distanceMat[i - 1][j],
-                                    distanceMat[i - 1][j - 1],
-                                    distanceMat[i][j - 1]
-                            );
+                    distanceMat[i][j] = 1 + minimum(distanceMat[i - 1][j], distanceMat[i - 1][j - 1], distanceMat[i][j - 1]);
                 }
             }
         }
@@ -48,9 +43,7 @@ public class LevenshteinDistance {
         String str1 = ""; // enter your string here
         String str2 = ""; // enter your string here
 
-        System.out.print(
-                "Levenshtein distance between " + str1 + " and " + str2 + " is: "
-        );
+        System.out.print("Levenshtein distance between " + str1 + " and " + str2 + " is: ");
         System.out.println(calculateLevenshteinDistance(str1, str2));
     }
 }

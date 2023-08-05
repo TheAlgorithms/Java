@@ -29,17 +29,11 @@ public class DoublyLinkedList {
     private LinkOperations linkOperations;
 
     /**
-     * Size refers to the number of elements present in the list
-     */
-    private int size;
-
-    /**
      * Default Constructor
      */
     public DoublyLinkedList() {
         head = null;
         tail = null;
-        size = 0;
     }
 
     /**
@@ -55,7 +49,6 @@ public class DoublyLinkedList {
         for (int i : array) {
             linkOperations.insertTail(i, this);
         }
-        size = array.length;
     }
 
     /**
@@ -234,15 +227,9 @@ class LinkOperations {
      * @param x Element to be inserted
      * @param index Index(from start) at which the element x to be inserted
      */
-    public void insertElementByIndex(
-        int x,
-        int index,
-        DoublyLinkedList doublyLinkedList
-    ) {
+    public void insertElementByIndex(int x, int index, DoublyLinkedList doublyLinkedList) {
         if (index > size) {
-            throw new IndexOutOfBoundsException(
-                "Index: " + index + ", Size: " + size
-            );
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
         if (index == 0) {
             insertHead(x, doublyLinkedList);
@@ -277,7 +264,8 @@ class LinkOperations {
         if (head == null) {
             tail = null;
         } else {
-            head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so will be removed
+            head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so
+                                  // will be removed
         }
         --size;
         return temp;
@@ -314,9 +302,7 @@ class LinkOperations {
             if (current != tail) {
                 current = current.next;
             } else { // If we reach the tail and the element is still not found
-                throw new RuntimeException(
-                    "The element to be deleted does not exist!"
-                );
+                throw new RuntimeException("The element to be deleted does not exist!");
             }
         }
 

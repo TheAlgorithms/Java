@@ -10,10 +10,10 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * <p>
  * An implementation of BST iteratively. Binary Search Tree is a binary tree
  * which satisfies three properties: left child is less than root node, right
- * child is grater than root node, both left and right childs must themselves be
+ * child is grater than root node, both left and right child must themselves be
  * a BST.
  *
- * @author [Lakhan Nad](https://github.com/Lakhan-Nad)
+ * @author [Lakhan Nad](<a href="https://github.com/Lakhan-Nad">git-Lakhan Nad</a>)
  */
 
 public class BSTIterative {

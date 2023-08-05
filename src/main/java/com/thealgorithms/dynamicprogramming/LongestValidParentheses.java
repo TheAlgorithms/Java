@@ -1,7 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.Scanner;
-
 /**
  * Given a string containing just the characters '(' and ')', find the length of
  * the longest valid (well-formed) parentheses substring.
@@ -31,10 +29,7 @@ public class LongestValidParentheses {
                     int index = i - res[i - 1] - 1;
                     if (index >= 0 && chars[index] == '(') {
                         // ()(())
-                        res[i] =
-                            res[i - 1] +
-                            2 +
-                            (index - 1 >= 0 ? res[index - 1] : 0);
+                        res[i] = res[i - 1] + 2 + (index - 1 >= 0 ? res[index - 1] : 0);
                     }
                 }
             }
