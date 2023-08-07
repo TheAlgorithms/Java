@@ -544,7 +544,6 @@
             * [HexaDecimalToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/HexaDecimalToDecimalTest.java)
             * [HexToOctTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/HexToOctTest.java)
             * [IntegerToRomanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/IntegerToRomanTest.java)
-            * [OctalToBinaryTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToBinaryTest.java)
             * [OctalToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToDecimalTest.java)
             * [OctalToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToHexadecimalTest.java)
             * [RomanToIntegerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/RomanToIntegerTest.java)
