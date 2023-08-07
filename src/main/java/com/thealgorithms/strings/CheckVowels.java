@@ -14,7 +14,7 @@ public class CheckVowels {
     private static final Set<Character> VOWELS = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
 
     /**
-     * Check if a string is has vowels or not
+     * Check if a string has vowels or not
      *
      * @param input a string
      * @return {@code true} if given string has vowels, otherwise {@code false}
