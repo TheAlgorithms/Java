@@ -20,13 +20,12 @@ public class CheckVowels {
      * @return {@code true} if given string has vowels, otherwise {@code false}
      */
     public static boolean hasVowels(String input) {
-        if (input == null) {
-            return false;
-        }
-        input = input.toLowerCase();
-        for (int i = 0; i < input.length(); i++) {
-            if (VOWELS.contains(input.charAt(i))) {
-                return true;
+        if (input != null) {
+            input = input.toLowerCase();
+            for (int i = 0; i < input.length(); i++) {
+                if (VOWELS.contains(input.charAt(i))) {
+                    return true;
+                }
             }
         }
         return false;
