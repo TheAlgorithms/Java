@@ -108,7 +108,7 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node The reversed linkedlist will be 4->3->2->1->null
-        Node head = list.reverseList(list.getHead());
+        Node head = list.reverseListIter(list.getHead());
 
         // Recording the Nodes after reversing the LinkedList
         Node firstNode = head; // 4
@@ -133,7 +133,7 @@ public class SinglyLinkedListTest {
         Node first = list.getHead();
 
         // Reversing the linkedlist
-        Node head = list.reverseList(first);
+        Node head = list.reverseListIter(first);
 
         // checking whether the method works fine if the input is null
         assertEquals(head, first);
@@ -147,13 +147,60 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node
-        Node head = list.reverseList(list.getHead());
+        Node head = list.reverseListIter(list.getHead());
 
         // Storing the head in a temp variable, so that we cannot loose the track of head
         Node temp = head;
 
         int i = 20; // This is for the comparison of values of nodes of the reversed linkedlist
         // Checking whether the reverseList() method performed its task
+        while (temp != null && i > 0) {
+            assertEquals(i, temp.value);
+            temp = temp.next;
+            i--;
+        }
+    }
+    //This is Recursive Reverse List Test
+    // Test to check whether the method reverseListRec() works fine
+    void RecursiveReverseList() {
+        // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5
+        SinglyLinkedList list = createSampleList(5);
+
+        // Reversing the linked list using reverseList() method
+        Node head = list.reverseListRec(list.getHead());
+
+        // Check if the reversed list is: 5 -> 4 -> 3 -> 2 -> 1
+        assertEquals(5, head.value);
+        assertEquals(4, head.next.value);
+        assertEquals(3, head.next.next.value);
+        assertEquals(2, head.next.next.next.value);
+        assertEquals(1, head.next.next.next.next.value);
+    }
+
+    @Test
+    void RecursiveReverseListNullPointer() {
+        // Create an empty linked list
+        SinglyLinkedList list = new SinglyLinkedList();
+        Node first = list.getHead();
+
+        // Reversing the empty linked list
+        Node head = list.reverseListRec(first);
+
+        // Check if the head remains the same (null)
+        assertNull(head);
+    }
+
+    @Test
+    void RecursiveReverseListTest() {
+        // Create a linked list with values from 1 to 20
+        SinglyLinkedList list = createSampleList(20);
+
+        // Reversing the linked list using reverseList() method
+        Node head = list.reverseListRec(list.getHead());
+
+        // Check if the reversed list has the correct values
+        int i = 20;
+        Node temp = head;
         while (temp != null && i > 0) {
             assertEquals(i, temp.value);
             temp = temp.next;
