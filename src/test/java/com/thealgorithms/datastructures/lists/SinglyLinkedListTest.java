@@ -160,7 +160,7 @@ public class SinglyLinkedListTest {
             i--;
         }
     }
-    //This is Recursive Reverse List Test
+    // This is Recursive Reverse List Test
     // Test to check whether the method reverseListRec() works fine
     void RecursiveReverseList() {
         // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5

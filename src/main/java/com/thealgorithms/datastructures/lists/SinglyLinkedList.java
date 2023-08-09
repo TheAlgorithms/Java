@@ -165,8 +165,6 @@ public class SinglyLinkedList extends Node {
         return prev;
     }
 
-
-
     /**
      * Clear all nodes in the list
      */
