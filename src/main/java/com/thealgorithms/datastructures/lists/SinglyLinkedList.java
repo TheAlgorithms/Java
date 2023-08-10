@@ -35,7 +35,18 @@ public class SinglyLinkedList extends Node {
         this.head = head;
         this.size = size;
     }
-
+  public void reverse(){
+          tail = reverse(head);
+          tail.next = null;
+    }
+    private Node reverse(Node node){
+        if(node.next == null){
+            head = node;
+            return node;
+        }
+        reverse(node.next).next = node;
+        return node;
+    }
     /**
      * Detects if there is a loop in the singly linked list using floy'd turtle
      * and hare algorithm.
