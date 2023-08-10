@@ -182,7 +182,7 @@
               * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/TrieImp.java)
               * [VerticalOrderTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/VerticalOrderTraversal.java)
               * [ZigzagTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/ZigzagTraversal.java)
-          * utils
+          * devutils
             * entities
               * [ProcessDetails](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/devutils/entities/ProcessDetails.java)
             * nodes
