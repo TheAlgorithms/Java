@@ -145,24 +145,18 @@ public class SinglyLinkedList extends Node {
      * Reverse a singly linked list[Recursive] from a given node till the end
      *
      */
-    public Node reverseListRec(Node node) {
-        Node prev = null;
-        Node curr = node;
+    public Node reverseListRec(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
 
-        while (curr != null && curr.next != null) {
-            Node next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        // when curr.next==null, the current element is left without pointing it to its prev,so
-        if (curr != null) {
-            curr.next = prev;
-            prev = curr;
-        }
-        // prev will be pointing to the last element in the Linkedlist, it will be the new head of
-        // the reversed linkedlist
-        return prev;
+        Node prev = null;
+        Node h2 = reverseListRec(head.next);
+
+        head.next.next = head;
+        head.next = prev;
+
+        return h2;
     }
 
     /**
