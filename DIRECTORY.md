@@ -13,6 +13,7 @@
             * [FloodFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/FloodFill.java)
             * [KnightsTour](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/KnightsTour.java)
             * [MazeRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/MazeRecursion.java)
+            * [MColoring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/MColoring.java)
             * [NQueens](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/NQueens.java)
             * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
@@ -181,7 +182,7 @@
               * [TrieImp](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/TrieImp.java)
               * [VerticalOrderTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/VerticalOrderTraversal.java)
               * [ZigzagTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/ZigzagTraversal.java)
-          * devutils
+          * utils
             * entities
               * [ProcessDetails](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/devutils/entities/ProcessDetails.java)
             * nodes
@@ -522,6 +523,7 @@
             * [CombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/CombinationTest.java)
             * [FloodFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/FloodFillTest.java)
             * [MazeRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/MazeRecursionTest.java)
+            * [MColoringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/MColoringTest.java)
             * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
             * [PowerSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PowerSumTest.java)
             * [WordSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
@@ -645,6 +647,7 @@
             * [FrizzyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FrizzyNumberTest.java)
             * [GaussianTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GaussianTest.java)
             * [GCDTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GCDTest.java)
+            * [GenericRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GenericRootTest.java)
             * [HarshadNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HarshadNumberTest.java)
             * [HeronsFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HeronsFormulaTest.java)
             * [JosephusProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/JosephusProblemTest.java)
@@ -665,6 +668,7 @@
             * [PerfectSquareTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PerfectSquareTest.java)
             * [PerimeterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PerimeterTest.java)
             * [PollardRhoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PollardRhoTest.java)
+            * [PowerOfTwoOrNotTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PowerOfTwoOrNotTest.java)
             * [PrimeCheckTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PrimeCheckTest.java)
             * [PrimeFactorizationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PrimeFactorizationTest.java)
             * [PronicNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PronicNumberTest.java)
