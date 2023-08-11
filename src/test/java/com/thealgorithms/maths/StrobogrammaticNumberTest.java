@@ -13,7 +13,7 @@ class StrobogrammaticNumberTest {
         assertThat(strobogrammaticNumber.isStrobogrammatic("88")).isTrue();
         assertThat(strobogrammaticNumber.isStrobogrammatic("818")).isTrue();
         assertThat(strobogrammaticNumber.isStrobogrammatic("101")).isTrue();
-        assertThat(strobogrammaticNumber.isStrobogrammatic("609")).isFalse();
+        assertThat(strobogrammaticNumber.isStrobogrammatic("609")).isTrue();
         assertThat(strobogrammaticNumber.isStrobogrammatic("120")).isFalse();
     }
 }
