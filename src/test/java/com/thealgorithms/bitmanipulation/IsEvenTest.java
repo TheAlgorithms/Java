@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
- class IsEvenTest {
+class IsEvenTest {
     @Test
     void testIsEven() {
         assertEquals(true, IsEven.isEven(2));
