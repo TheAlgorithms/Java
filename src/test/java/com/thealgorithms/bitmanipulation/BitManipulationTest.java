@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BitManipulationTest {
+public class BitManipulationTest {
 
     @Test
     void isEven() {
