@@ -27,7 +27,7 @@ public class DepthFirstSearch<T> {
                 .stream()
                 .map(v -> recursiveSearch(v, value))
                 .flatMap(Optional::stream)
-                .findAny();
+                .findFirst();
     }
 
     public List<T> getVisited() {
