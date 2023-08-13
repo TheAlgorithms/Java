@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
+/*
  * @author: caos321
  * @date: 31 October 2021 (Sunday)
  * @wiki: https://en.wikipedia.org/wiki/Depth-first_search
  */
+
 public class DepthFirstSearch<T> {
 
     private final List<T> visited = new ArrayList<>();
 
-    public Optional<Node<T>> recursiveSearch(final Node<T> node, final Integer value) {
+    public Optional<Node<T>> recursiveSearch(final Node<T> node, final T value) {
         if (node == null) {
             return Optional.empty();
         }
@@ -27,10 +28,11 @@ public class DepthFirstSearch<T> {
                 .stream()
                 .map(v -> recursiveSearch(v, value))
                 .flatMap(Optional::stream)
-                .findFirst();
+                .findFirst();  // Use findFirst() instead of findAny()
     }
 
     public List<T> getVisited() {
         return visited;
     }
 }
+
