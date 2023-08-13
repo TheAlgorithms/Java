@@ -14,7 +14,7 @@ class CRC16Test {
         String textToCRC16 = "hacktoberfest!";
 
         // when
-        String resultCRC16 = crc.crc16(textToCRC16); // Algorithm CRC16-CCITT-FALSE
+        String resultCRC16 = CRC16.crc16(textToCRC16); // Algorithm CRC16-CCITT-FALSE
 
         // then
         assertEquals("10FC", resultCRC16);

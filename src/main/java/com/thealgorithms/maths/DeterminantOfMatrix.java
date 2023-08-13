@@ -51,5 +51,6 @@ public class DeterminantOfMatrix {
             }
         }
         System.out.println(determinant(a, n));
+        in.close();
     }
 }

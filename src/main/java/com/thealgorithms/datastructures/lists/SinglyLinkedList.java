@@ -119,10 +119,10 @@ public class SinglyLinkedList extends Node {
     }
 
     /**
-     * Reverse a singly linked list from a given node till the end
+     * Reverse a singly linked list[Iterative] from a given node till the end
      *
      */
-    public Node reverseList(Node node) {
+    public Node reverseListIter(Node node) {
         Node prev = null;
         Node curr = node;
 
@@ -141,6 +141,23 @@ public class SinglyLinkedList extends Node {
         // the reversed linkedlist
         return prev;
     }
+    /**
+     * Reverse a singly linked list[Recursive] from a given node till the end
+     *
+     */
+    public Node reverseListRec(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node prev = null;
+        Node h2 = reverseListRec(head.next);
+
+        head.next.next = head;
+        head.next = prev;
+
+        return h2;
+    }
 
     /**
      * Clear all nodes in the list
@@ -148,9 +165,7 @@ public class SinglyLinkedList extends Node {
     public void clear() {
         Node cur = head;
         while (cur != null) {
-            Node prev = cur;
             cur = cur.next;
-            prev = null; // clear to let GC do its work
         }
         head = null;
         size = 0;
@@ -346,9 +361,7 @@ public class SinglyLinkedList extends Node {
     public void deleteNth(int position) {
         checkBounds(position, 0, size - 1);
         if (position == 0) {
-            Node destroy = head;
             head = head.next;
-            destroy = null;
             /* clear to let GC do its work */
             size--;
             return;
@@ -358,10 +371,7 @@ public class SinglyLinkedList extends Node {
             cur = cur.next;
         }
 
-        Node destroy = cur.next;
         cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
-
         size--;
     }
 

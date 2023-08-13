@@ -1,8 +1,5 @@
 package com.thealgorithms.others.cn;
 
-import java.util.ArrayList;
-import java.util.List;
-
 final public class HammingDistance {
     private HammingDistance() {
     }

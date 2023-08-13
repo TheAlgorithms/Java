@@ -8,13 +8,6 @@ import java.util.Map;
  * differently (ignoring the case).
  */
 public class CheckAnagrams {
-
-    public static void main(String[] args) {
-        assert isAnagrams("Silent", "Listen");
-        assert isAnagrams("This is a string", "Is this a string");
-        assert !isAnagrams("There", "Their");
-    }
-
     /**
      * Check if two strings are anagrams or not
      *
@@ -49,5 +42,67 @@ public class CheckAnagrams {
             }
         }
         return true;
+    }
+
+    /**
+     * If given strings contain Unicode symbols.
+     * The first 128 ASCII codes are identical to Unicode.
+     * This algorithm is case-sensitive.
+     *
+     * @param s1 the first string
+     * @param s2 the second string
+     * @return true if two string are anagrams, otherwise false
+     */
+    public static boolean isAnagramsUnicode(String s1, String s2) {
+        int[] dict = new int[128];
+        for (char ch : s1.toCharArray()) {
+            dict[ch]++;
+        }
+        for (char ch : s2.toCharArray()) {
+            dict[ch]--;
+        }
+        for (int e : dict) {
+            if (e != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * If given strings contain only lowercase English letters.
+     * <p>
+     * The main "trick":
+     * To map each character from the first string 's1' we need to subtract an integer value of 'a' character
+     * as 'dict' array starts with 'a' character.
+     *
+     * @param s1 the first string
+     * @param s2 the second string
+     * @return true if two string are anagrams, otherwise false
+     */
+    public static boolean isAnagramsOptimised(String s1, String s2) {
+        // 26 - English alphabet length
+        int[] dict = new int[26];
+        for (char ch : s1.toCharArray()) {
+            checkLetter(ch);
+            dict[ch - 'a']++;
+        }
+        for (char ch : s2.toCharArray()) {
+            checkLetter(ch);
+            dict[ch - 'a']--;
+        }
+        for (int e : dict) {
+            if (e != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void checkLetter(char ch) {
+        int index = ch - 'a';
+        if (index < 0 || index >= 26) {
+            throw new IllegalArgumentException("Strings must contain only lowercase English letters!");
+        }
     }
 }

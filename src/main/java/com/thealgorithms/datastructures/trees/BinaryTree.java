@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
+/*
  * This entire class is used to build a Binary Tree data structure. There is the
  * Node Class and the Tree Class, both explained below.
  */
@@ -164,13 +164,11 @@ public class BinaryTree {
                 if (successor.right != null) {
                     successor.right.parent = successor.parent;
                     successor.parent.left = successor.right;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
                 } else {
                     successor.parent.left = null;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
                 }
+                successor.right = temp.right;
+                successor.right.parent = successor;
             }
 
             if (temp == root) {
@@ -304,7 +302,7 @@ public class BinaryTree {
      */
     public void bfs(Node localRoot) {
         // Create a queue for the order of the nodes
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Node> queue = new LinkedList<>();
 
         // If the give root is null, then we don't add to the queue
         // and won't do anything

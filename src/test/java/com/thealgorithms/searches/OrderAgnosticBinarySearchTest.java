@@ -2,8 +2,6 @@ package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.thealgorithms.searches.OrderAgnosticBinarySearch;
-import java.util.*;
 import org.junit.jupiter.api.Test;
 
 public class OrderAgnosticBinarySearchTest {

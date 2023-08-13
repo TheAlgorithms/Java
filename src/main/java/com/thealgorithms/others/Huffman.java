@@ -118,5 +118,6 @@ public class Huffman {
 
         // print the codes by traversing the tree
         printCode(root, "");
+        s.close();
     }
 }

@@ -1,13 +1,7 @@
 package com.thealgorithms.maths;
 
-public class Factorial {
-
-    /* Driver Code */
-    public static void main(String[] args) {
-        assert factorial(0) == 1;
-        assert factorial(1) == 1;
-        assert factorial(5) == 120;
-        assert factorial(10) == 3628800;
+public final class Factorial {
+    private Factorial() {
     }
 
     /**
@@ -18,11 +12,12 @@ public class Factorial {
      */
     public static long factorial(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
+            throw new IllegalArgumentException("Input number cannot be negative");
         }
         long factorial = 1;
-        for (int i = 1; i <= n; factorial *= i, ++i)
-            ;
+        for (int i = 1; i <= n; ++i) {
+            factorial *= i;
+        }
         return factorial;
     }
 }

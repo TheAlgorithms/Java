@@ -1,6 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,16 +15,16 @@ import java.util.HashMap;
  *     - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
  */
 public class NthUglyNumber {
-    ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
-    final int[] baseNumbers;
-    HashMap<Integer, Integer> positions = new HashMap<>();
+    private ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
+    private final int[] baseNumbers;
+    private HashMap<Integer, Integer> positions = new HashMap<>();
 
     /**
      * @brief initialized the object allowing to compute ugly numbers with given base
      * @param baseNumbers the given base of ugly numbers
      * @exception IllegalArgumentException baseNumber is empty
      */
-    NthUglyNumber(int[] baseNumbers) {
+    NthUglyNumber(final int[] baseNumbers) {
         if (baseNumbers.length == 0) {
             throw new IllegalArgumentException("baseNumbers must be non-empty.");
         }
@@ -41,7 +40,7 @@ public class NthUglyNumber {
      * @exception IllegalArgumentException n is negative
      * @return the n-th ugly number (starting from index 0)
      */
-    public Long get(int n) {
+    public Long get(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("n must be non-negative.");
         }
@@ -67,7 +66,7 @@ public class NthUglyNumber {
         }
     }
 
-    private long computeCandidate(int candidateBase) {
+    private long computeCandidate(final int candidateBase) {
         return candidateBase * uglyNumbers.get(positions.get(candidateBase));
     }
 

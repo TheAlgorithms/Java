@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Finds all permutations of 1...n of length k
- * @author TheClerici (https://github.com/TheClerici)
+ * @author TheClerici (<a href="https://github.com/TheClerici">git-TheClerici</a>)
  */
 public class ArrayCombination {
     private static int length;

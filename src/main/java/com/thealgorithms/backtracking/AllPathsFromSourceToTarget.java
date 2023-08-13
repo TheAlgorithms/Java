@@ -13,7 +13,7 @@ import java.util.*;
 public class AllPathsFromSourceToTarget {
 
     // No. of vertices in graph
-    private int v;
+    private final int v;
 
     // To store the paths from source to destination
     static List<List<Integer>> nm = new ArrayList<>();
@@ -89,8 +89,8 @@ public class AllPathsFromSourceToTarget {
     public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int[][] a, int source, int destination) {
         // Create a sample graph
         AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
-        for (int i = 0; i < a.length; i++) {
-            g.addEdge(a[i][0], a[i][1]);
+        for (int[] i : a) {
+            g.addEdge(i[0], i[1]);
             // edges are added
         }
         g.storeAllPaths(source, destination);
