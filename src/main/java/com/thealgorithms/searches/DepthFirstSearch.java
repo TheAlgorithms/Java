@@ -23,7 +23,11 @@ public class DepthFirstSearch<T> {
             return Optional.of(node);
         }
 
-        return node.getChildren().stream().map(v -> recursiveSearch(v, value)).flatMap(Optional::stream).findAny();
+        return node.getChildren()
+                .stream()
+                .map(v -> recursiveSearch(v, value))
+                .flatMap(Optional::stream)
+                .findAny();
     }
 
     public List<T> getVisited() {
