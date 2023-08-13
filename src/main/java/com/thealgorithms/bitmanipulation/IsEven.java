@@ -1,6 +1,6 @@
 package com.thealgorithms.bitmanipulation;
 
-public class BitManipulation {
+public class IsEven {
     /**
      * Check if a number is odd or even
      *
