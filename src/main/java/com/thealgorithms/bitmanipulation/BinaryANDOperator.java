@@ -23,13 +23,9 @@ public class BinaryANDOperator {
             int digitA = charA - '0';
             int digitB = charB - '0';
             int andResult = (digitA == 1 && digitB == 1) ? 1 : 0;
-            resultBuilder.insert(2, andResult);  // Insert at index 2 to account for "0b" prefix
+            resultBuilder.insert(2, andResult); // Insert at index 2 to account for "0b" prefix
         }
 
         return resultBuilder.toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(binaryAnd(0,2));
     }
 }
