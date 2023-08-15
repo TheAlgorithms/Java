@@ -65,7 +65,7 @@ public class GnomeSortTest {
     @Test
     @DisplayName("GnomeSort non duplicate String Array")
     public void gnomeSortNonDuplicateStringArray() {
-        String [] inputArray = {"He", "A", "bc", "lo", "n", "bcp", "mhp", "d"};
+        String[] inputArray = {"He", "A", "bc", "lo", "n", "bcp", "mhp", "d"};
         String[] expectedOutput = {"A", "He", "bc", "bcp", "d", "lo", "mhp", "n"};
         gnomeSort.sort(inputArray);
         assertThat(inputArray).isEqualTo(expectedOutput);
@@ -74,7 +74,7 @@ public class GnomeSortTest {
     @Test
     @DisplayName("GnomeSort String Array with duplicates")
     public void gnomeSortDuplicateStringArray() {
-        String [] inputArray = {"He", "A", "bc", "lo", "n", "bcp", "mhp", "bcp"};
+        String[] inputArray = {"He", "A", "bc", "lo", "n", "bcp", "mhp", "bcp"};
         String[] expectedOutput = {"A", "He", "bc", "bcp", "bcp", "lo", "mhp", "n"};
         gnomeSort.sort(inputArray);
         assertThat(inputArray).isEqualTo(expectedOutput);
