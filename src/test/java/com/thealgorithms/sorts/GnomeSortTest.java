@@ -55,7 +55,7 @@ public class GnomeSortTest {
 
     @Test
     @DisplayName("GnomeSort single String Array")
-    public void singleSringArray() {
+    public void singleStringArray() {
         String[] inputArray = {"b"};
         String[] expectedOutput = {"b"};
         gnomeSort.sort(inputArray);
