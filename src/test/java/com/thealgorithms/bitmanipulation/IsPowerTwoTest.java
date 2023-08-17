@@ -1,8 +1,8 @@
 package com.thealgorithms.bitmanipulation;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for IsPowerTwo class
