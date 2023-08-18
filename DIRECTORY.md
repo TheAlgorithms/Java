@@ -20,6 +20,7 @@
             * [WordSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/WordSearch.java)
           * bitmanipulation
             * [IsEven](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsEven.java)
+            * [IsPowerTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsPowerTwo.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
             * [ReverseBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ReverseBits.java)
           * ciphers
@@ -536,6 +537,7 @@
             * [WordSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
           * bitmanipulation
             * [IsEvenTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsEvenTest.java)
+            * [IsPowerTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsPowerTwoTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
             * [ReverseBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ReverseBitsTest.java)
           * ciphers
