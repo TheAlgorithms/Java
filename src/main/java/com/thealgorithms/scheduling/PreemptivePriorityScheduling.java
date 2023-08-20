@@ -22,7 +22,7 @@ class Process {
 }
 
 public class PreemptivePriorityScheduling {
-    public static List<String> preemptivePriorityScheduling(List<Process> processes) { 
+    public static List<String> preemptivePriorityScheduling(List<Process> processes) {
         List<String> ganttChart = new ArrayList<>();
         PriorityQueue<Process> readyQueue = new PriorityQueue<>(Comparator.comparingInt(p -> - p.priority));
 
