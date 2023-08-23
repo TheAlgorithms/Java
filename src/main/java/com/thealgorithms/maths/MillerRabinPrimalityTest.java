@@ -71,8 +71,7 @@ public class MillerRabinPrimalityTest {
     private static long power(long x, long y, long p) {
         long res = 1;     // Initialize result
 
-        x = x % p; // Update x if it is more than or
-        // equal to p
+        x = x % p; // Update x if it is more than or equal to p
 
         if (x == 0) return 0; // In case x is divisible by p;
 
@@ -89,8 +88,10 @@ public class MillerRabinPrimalityTest {
     }
 
     private static long moduloMultiplication(long a, long b, long m) {
-        long aHi = a >> 24, aLo = a & ((1 << 24) - 1);
-        long bHi = b >> 24, bLo = b & ((1 << 24) - 1);
+        long aHi = a >> 24;
+        long aLo = a & ((1 << 24) - 1);
+        long bHi = b >> 24;
+        long bLo = b & ((1 << 24) - 1);
         long result = ((((aHi*bHi << 16) % m) << 16) % m) << 16;
         result += ((aLo*bHi+aHi*bLo) << 24) + aLo*bLo;
         return result % m;
