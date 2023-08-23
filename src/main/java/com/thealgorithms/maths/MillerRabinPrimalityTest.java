@@ -79,20 +79,20 @@ public class MillerRabinPrimalityTest {
         while (y > 0) {
             // If y is odd, multiply x with result
             if ((y & 1) == 1)
-                res = modulo_multiplication(res, x, p);
+                res = moduloMultiplication(res, x, p);
 
             // y must be even now
             y = y>>1; // y = y/2
-            x = modulo_multiplication(x, x, p);
+            x = moduloMultiplication(x, x, p);
         }
         return res;
     }
 
-    private static long modulo_multiplication(long a, long b, long m) {
-        long a_hi = a >> 24, a_lo = a & ((1 << 24) - 1);
-        long b_hi = b >> 24, b_lo = b & ((1 << 24) - 1);
-        long result = ((((a_hi*b_hi << 16) % m) << 16) % m) << 16;
-        result += ((a_lo*b_hi+a_hi*b_lo) << 24) + a_lo*b_lo;
+    private static long moduloMultiplication(long a, long b, long m) {
+        long aHi = a >> 24, aLo = a & ((1 << 24) - 1);
+        long bHi = b >> 24, bLo = b & ((1 << 24) - 1);
+        long result = ((((aHi*bHi << 16) % m) << 16) % m) << 16;
+        result += ((aLo*bHi+aHi*bLo) << 24) + aLo*bLo;
         return result % m;
     }
 
