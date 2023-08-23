@@ -8,6 +8,7 @@ public class MillerRabinPrimalityTest {
      * Check whether the given number is prime or not
      * MillerRabin algorithm is probabilistic. There is also an altered version which is deterministic.
      * https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+     * https://cp-algorithms.com/algebra/primality_tests.html
      *
      * @param n Whole number which is tested on primality
      * @param k Number of iterations
