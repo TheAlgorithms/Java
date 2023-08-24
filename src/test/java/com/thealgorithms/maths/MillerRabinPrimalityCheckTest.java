@@ -1,9 +1,9 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static com.thealgorithms.maths.MillerRabinPrimalityCheck.*;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class MillerRabinPrimalityCheckTest {
     @Test
