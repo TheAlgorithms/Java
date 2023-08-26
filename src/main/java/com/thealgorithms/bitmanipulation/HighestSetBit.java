@@ -19,6 +19,6 @@ public class HighestSetBit {
             position++;
         }
 
-        return position-1;
+        return position - 1;
     }
 }
