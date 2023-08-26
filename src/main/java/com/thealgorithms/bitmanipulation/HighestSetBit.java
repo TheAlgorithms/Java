@@ -12,12 +12,13 @@ public class HighestSetBit {
             return -1; // No set bits
         }
 
+        num = Math.abs(num);
         int position = 0;
         while (num > 0) {
             num >>= 1;
             position++;
         }
 
-        return position;
+        return position-1;
     }
 }
