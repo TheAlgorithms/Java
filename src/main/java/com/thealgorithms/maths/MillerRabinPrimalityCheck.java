@@ -51,17 +51,28 @@ public class MillerRabinPrimalityCheck {
         return true;
     }
 
+    /**
+     * Check if number n is composite (probabilistic)
+     *
+     * @param n Whole number which is tested for compositeness
+     * @param a Random number (prime base) to check if it holds certain equality
+     * @param d Number which holds this equation: 'n - 1 = 2^s * d'
+     * @param s Number of twos in (n - 1) factorization
+     *
+     * @return true or false whether the numbers hold the equation or not
+     *          the equations are described on the websites mentioned at the beginning of the class
+     */
     private static boolean checkComposite(long n, long a, long d, int s) {
-        long x = power(a, d, n);
+        long x = powerModP(a, d, n);
         if (x == 1 || x == n - 1) return false;
         for (int r = 1; r < s; r++) {
-            x = power(x, 2, n);
+            x = powerModP(x, 2, n);
             if (x == n - 1) return false;
         }
         return true;
     }
 
-    private static long power(long x, long y, long p) {
+    private static long powerModP(long x, long y, long p) {
         long res = 1; // Initialize result
 
         x = x % p; // Update x if it is more than or equal to p
@@ -70,49 +81,22 @@ public class MillerRabinPrimalityCheck {
 
         while (y > 0) {
             // If y is odd, multiply x with result
-            if ((y & 1) == 1) res = moduloMultiplication(res, x, p);
+            if ((y & 1) == 1) res = multiplyModP(res, x, p);
 
             // y must be even now
             y = y >> 1; // y = y/2
-            x = moduloMultiplication(x, x, p);
+            x = multiplyModP(x, x, p);
         }
         return res;
     }
 
-    private static long moduloMultiplication(long a, long b, long m) {
+    private static long multiplyModP(long a, long b, long p) {
         long aHi = a >> 24;
         long aLo = a & ((1 << 24) - 1);
         long bHi = b >> 24;
         long bLo = b & ((1 << 24) - 1);
-        long result = ((((aHi * bHi << 16) % m) << 16) % m) << 16;
+        long result = ((((aHi * bHi << 16) % p) << 16) % p) << 16;
         result += ((aLo * bHi + aHi * bLo) << 24) + aLo * bLo;
-        return result % m;
-    }
-
-    public static void main(String[] args) {
-        // check primes
-        assert deterministicMillerRabin(2);
-        assert deterministicMillerRabin(37);
-        assert deterministicMillerRabin(123457);
-        assert deterministicMillerRabin(6472601713L);
-
-        // check not primes
-        assert !deterministicMillerRabin(1);
-        assert !deterministicMillerRabin(35);
-        assert !deterministicMillerRabin(123453);
-        assert !deterministicMillerRabin(647260175);
-
-        Random rnd = new Random();
-        int iterations = 1; // usually it is 5, but let's pick 1 for testing purposes
-        for (int i = 0; i < 100; i++) {
-            long number = rnd.nextLong(0, 3000);
-            if (!millerRabin(number, iterations)) {
-                System.out.println(number + " is not a prime");
-            } else if (deterministicMillerRabin(number)) {
-                System.out.println(number + " is a prime");
-            } else {
-                System.out.println(number + " is not a prime, but Miller-Rabin said it is");
-            }
-        }
+        return result % p;
     }
 }
