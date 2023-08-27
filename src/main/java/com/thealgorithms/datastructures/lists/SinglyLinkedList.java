@@ -215,10 +215,8 @@ public class SinglyLinkedList implements Iterable<Integer> {
      */
     public int count() {
         int count = 0;
-        Node cur = head;
-        while (cur != null) {
-            cur = cur.next;
-            count++;
+        for (final var element : this) {
+            ++count;
         }
         return count;
     }
@@ -230,13 +228,11 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * @return {@code true} if key is present in the list, otherwise
      * {@code false}.
      */
-    public boolean search(int key) {
-        Node cur = head;
-        while (cur != null) {
-            if (cur.value == key) {
+    public boolean search(final int key) {
+        for (final var element : this) {
+            if (element == key) {
                 return true;
             }
-            cur = cur.next;
         }
         return false;
     }
@@ -244,10 +240,8 @@ public class SinglyLinkedList implements Iterable<Integer> {
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner("->");
-        Node cur = head;
-        while (cur != null) {
-            joiner.add(cur.value + "");
-            cur = cur.next;
+        for (final var element : this) {
+            joiner.add(element + "");
         }
         return joiner.toString();
     }

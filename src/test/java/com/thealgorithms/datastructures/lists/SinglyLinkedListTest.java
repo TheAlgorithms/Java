@@ -226,22 +226,32 @@ public class SinglyLinkedListTest {
         assertEquals(readElements, expeced);
     }
 
-    void writeWithEnhancedForLoopTest() {
+    @Test
+    void toStringTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        assertEquals("1->2->3", list.toString());
+    }
+
+    @Test
+    void toStringForEmptyListTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assertEquals("", list.toString());
+    }
+
+    @Test
+    void countTest() {
         SinglyLinkedList list = new SinglyLinkedList();
         list.insert(10);
-        list.insert(100);
-        list.insert(1000);
+        list.insert(20);
+        assertEquals(2, list.count());
+    }
 
-        for (var x : list) {
-            x = -1;
-        }
-
-        var readElements = new ArrayList<Integer>();
-        for (final var x : list) {
-            readElements.add(x);
-        }
-
-        final var expeced = new ArrayList<Integer>(Arrays.asList(-1, -1, -1));
-        assertEquals(readElements, expeced);
+    @Test
+    void countForEmptyListTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assertEquals(0, list.count());
     }
 }
