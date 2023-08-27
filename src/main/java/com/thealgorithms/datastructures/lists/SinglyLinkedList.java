@@ -1,11 +1,13 @@
 package com.thealgorithms.datastructures.lists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 /**
  * https://en.wikipedia.org/wiki/Linked_list
  */
-public class SinglyLinkedList extends Node {
+public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Head refer to the front of the list
@@ -451,6 +453,34 @@ public class SinglyLinkedList extends Node {
         instance.setHead(head);
         instance.deleteDuplicates();
         instance.print();
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new SinglyLinkedListIterator();
+    }
+
+    private class SinglyLinkedListIterator implements Iterator<Integer> {
+        private Node current;
+
+        SinglyLinkedListIterator() {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            final var value = current.value;
+            current = current.next;
+            return value;
+        }
     }
 }
 
