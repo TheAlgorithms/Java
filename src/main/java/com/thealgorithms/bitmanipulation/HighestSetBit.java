@@ -6,7 +6,6 @@ package com.thealgorithms.bitmanipulation;
  */
 
 public class HighestSetBit {
-
     public static int findHighestSetBit(int num) {
         if (num < 0) {
             throw new IllegalArgumentException("Input cannot be negative");
@@ -21,8 +20,7 @@ public class HighestSetBit {
             num >>= 1;
             position++;
         }
-    
+        
         return position - 1;
-    
-    } 
+    }
 }
