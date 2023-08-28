@@ -16,8 +16,6 @@ class HighestSetBitTest {
         assertEquals(5, HighestSetBit.findHighestSetBit(37));
         assertEquals(-1, HighestSetBit.findHighestSetBit(0));
         assertEquals(0, HighestSetBit.findHighestSetBit(1));
-        
-        // Test case for negative input
         assertThrows(IllegalArgumentException.class, () -> HighestSetBit.findHighestSetBit(-37));
     }
 }
