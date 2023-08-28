@@ -20,7 +20,7 @@ public class HighestSetBit {
             num >>= 1;
             position++;
         }
-                
+
         return position - 1;
     }
 }
