@@ -1,11 +1,13 @@
 package com.thealgorithms.datastructures.lists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 /**
  * https://en.wikipedia.org/wiki/Linked_list
  */
-public class SinglyLinkedList extends Node {
+public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Head refer to the front of the list
@@ -213,10 +215,8 @@ public class SinglyLinkedList extends Node {
      */
     public int count() {
         int count = 0;
-        Node cur = head;
-        while (cur != null) {
-            cur = cur.next;
-            count++;
+        for (final var element : this) {
+            ++count;
         }
         return count;
     }
@@ -228,13 +228,11 @@ public class SinglyLinkedList extends Node {
      * @return {@code true} if key is present in the list, otherwise
      * {@code false}.
      */
-    public boolean search(int key) {
-        Node cur = head;
-        while (cur != null) {
-            if (cur.value == key) {
+    public boolean search(final int key) {
+        for (final var element : this) {
+            if (element == key) {
                 return true;
             }
-            cur = cur.next;
         }
         return false;
     }
@@ -242,10 +240,8 @@ public class SinglyLinkedList extends Node {
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner("->");
-        Node cur = head;
-        while (cur != null) {
-            joiner.add(cur.value + "");
-            cur = cur.next;
+        for (final var element : this) {
+            joiner.add(element + "");
         }
         return joiner.toString();
     }
@@ -451,6 +447,34 @@ public class SinglyLinkedList extends Node {
         instance.setHead(head);
         instance.deleteDuplicates();
         instance.print();
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new SinglyLinkedListIterator();
+    }
+
+    private class SinglyLinkedListIterator implements Iterator<Integer> {
+        private Node current;
+
+        SinglyLinkedListIterator() {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            final var value = current.value;
+            current = current.next;
+            return value;
+        }
     }
 }
 
