@@ -12,7 +12,7 @@ public class PowerUsingRecursion {
         if (exponent == 0) {
             return 1;
         }
-        
+
         // Recursive case: base ^ exponent = base * base ^ (exponent - 1)
         // Recurse with a smaller exponent and multiply with base
         return base * power(base, exponent - 1);
