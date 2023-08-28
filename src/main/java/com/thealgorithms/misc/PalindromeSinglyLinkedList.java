@@ -11,39 +11,23 @@ import java.util.Stack;
  * See more:
  * https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
  */
-public class PalindromeSinglyLinkedList {
-
-    public static void main(String[] args) {
-        SinglyLinkedList linkedList = new SinglyLinkedList();
-
-        linkedList.insertHead(3);
-        linkedList.insertNth(2, 1);
-        linkedList.insertNth(1, 2);
-        linkedList.insertNth(2, 3);
-        linkedList.insertNth(3, 4);
-
-        if (isPalindrome(linkedList)) {
-            System.out.println("It's a palindrome list");
-        } else {
-            System.out.println("It's NOT a palindrome list");
-        }
+public final class PalindromeSinglyLinkedList {
+    private PalindromeSinglyLinkedList() {
     }
 
-    public static boolean isPalindrome(SinglyLinkedList linkedList) {
-        boolean ret = true;
+    public static boolean isPalindrome(final SinglyLinkedList linkedList) {
         Stack<Integer> linkedListValues = new Stack<>();
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            linkedListValues.push(linkedList.getNth(i));
+        for (final var x : linkedList) {
+            linkedListValues.push(x);
         }
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            if (linkedList.getNth(i) != linkedListValues.pop()) {
-                ret = false;
-                break;
+        for (final var x : linkedList) {
+            if (x != linkedListValues.pop()) {
+                return false;
             }
         }
 
-        return ret;
+        return true;
     }
 }
