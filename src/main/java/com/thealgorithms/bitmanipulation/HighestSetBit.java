@@ -8,17 +8,20 @@ package com.thealgorithms.bitmanipulation;
 public class HighestSetBit {
 
     public static int findHighestSetBit(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Input cannot be negative");
+        }
+    
         if (num == 0) {
             return -1; // No set bits
         }
-
-        num = Math.abs(num);
+    
         int position = 0;
         while (num > 0) {
             num >>= 1;
             position++;
         }
-
+    
         return position - 1;
-    }
+    } 
 }
