@@ -1,4 +1,4 @@
-FROM gitpod/workspace-java-17:2023-07-20-19-56-24
+FROM gitpod/workspace-java-17:2023-08-30-14-07-38
 
 USER root
 
