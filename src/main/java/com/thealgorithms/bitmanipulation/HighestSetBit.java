@@ -24,7 +24,7 @@ public final class HighestSetBit {
             num >>= 1;
             position++;
         }
-        
+
         return Optional.of(position - 1);
     }
 }
