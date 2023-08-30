@@ -14,17 +14,17 @@ public final class HighestSetBit {
         if (num < 0) {
             throw new IllegalArgumentException("Input cannot be negative");
         }
-        
+
         if (num == 0) {
             return Optional.empty();
         }
-        
+
         int position = 0;
         while (num > 0) {
             num >>= 1;
             position++;
         }
-    
+        
         return Optional.of(position - 1);
     }
 }

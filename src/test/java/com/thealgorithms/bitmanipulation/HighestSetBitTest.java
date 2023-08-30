@@ -16,9 +16,6 @@ class HighestSetBitTest {
         assertEquals(5, HighestSetBit.findHighestSetBit(37).orElse(-1));
         assertFalse(HighestSetBit.findHighestSetBit(0).isPresent());
         assertEquals(0, HighestSetBit.findHighestSetBit(1).orElse(-1));
-        
-        // Use assertThrows with a specific exception type and provide a lambda
         assertThrows(IllegalArgumentException.class, () -> HighestSetBit.findHighestSetBit(-37).orElse(-1));
     }
 }
-
