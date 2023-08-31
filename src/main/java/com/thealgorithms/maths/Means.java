@@ -9,7 +9,9 @@ import java.util.List;
  */
 public final class Means {
 
-    private Means() {}
+    private Means() {
+    }
+
     /**
      * Arithmetic / Pythagorean Mean = (x₁ + x₂ + ... +  xₙ) / n
      */
