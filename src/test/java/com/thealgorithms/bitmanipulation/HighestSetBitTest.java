@@ -13,6 +13,7 @@ class HighestSetBitTest {
 
     @Test
     void testHighestSetBit() {
+        assertFalse(HighestSetBit.findHighestSetBit(0).isPresent());
         assertEquals(0, HighestSetBit.findHighestSetBit(1).get());
         assertEquals(1, HighestSetBit.findHighestSetBit(2).get());
         assertEquals(1, HighestSetBit.findHighestSetBit(3).get());
