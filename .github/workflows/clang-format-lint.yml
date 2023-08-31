@@ -13,4 +13,4 @@ jobs:
       with:
         source: './src'
         extensions: 'java'
-        clangFormatVersion: 12
+        clangFormatVersion: 16
