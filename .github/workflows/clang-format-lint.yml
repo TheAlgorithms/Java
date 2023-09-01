@@ -9,8 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: DoozyX/clang-format-lint-action@v0.13
+    - uses: DoozyX/clang-format-lint-action@v0.16.2
       with:
         source: './src'
         extensions: 'java'
-        clangFormatVersion: 12
+        clangFormatVersion: 16
