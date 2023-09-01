@@ -5,10 +5,10 @@ package com.thealgorithms.datastructures.lists;
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-public class RotateSinglyLinkedListsTest{
+public class RotateSinglyLinkedListsTest {
 
     @Test
     public void testRotateRight() {
@@ -38,14 +38,13 @@ public class RotateSinglyLinkedListsTest{
         assertEquals(2, rotated1.next.next.next.value);
         assertEquals(3, rotated1.next.next.next.next.value);
         assertNull(rotated1.next.next.next.next.next);
-
         
         head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
-        
+
         // Rotate by 1
         Node rotated2 = rotator.rotateRight(head, 1);
         assertEquals(5, rotated2.value);
@@ -61,8 +60,8 @@ public class RotateSinglyLinkedListsTest{
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
         head.next.next.next.next = new Node(5);
-        
-        // Rotate by 1
+
+        // Rotate by 7
         Node rotated3 = rotator.rotateRight(head, 7);
         assertEquals(4, rotated3.value);
         assertEquals(5, rotated3.next.value);
