@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
-import java.util.List;
+import java.util.stream.StreamSupport;
+import org.apache.commons.collections4.IterableUtils;
 
 /**
  * https://en.wikipedia.org/wiki/Mean
@@ -13,29 +14,44 @@ public final class Means {
     }
 
     /**
-     * Arithmetic / Pythagorean Mean = (x₁ + x₂ + ... +  xₙ) / n
+     * @brief computes the [Arithmetic Mean](https://en.wikipedia.org/wiki/Arithmetic_mean) of the input
+     * @param numbers the input numbers
+     * @throws IllegalArgumentException empty input
+     * @return the arithmetic mean of the input numbers
      */
-    public static Double arithmetic(final List<Double> numbers) {
-        if (numbers.isEmpty()) throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+    public static Double arithmetic(final Iterable<Double> numbers) {
+        if (!numbers.iterator().hasNext()) {
+            throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+        }
 
-        return numbers.stream().reduce((x, y) -> x + y).get() / numbers.size();
+        return StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x + y).get() / IterableUtils.size(numbers);
     }
 
     /**
-     * Geometric Mean = (x₁ · x₂ · ... · xₙ) ^ 1/n
+     * @brief computes the [Geometric Mean](https://en.wikipedia.org/wiki/Geometric_mean) of the input
+     * @param numbers the input numbers
+     * @throws IllegalArgumentException empty input
+     * @return the geometric mean of the input numbers
      */
-    public static Double geometric(final List<Double> numbers) {
-        if (numbers.isEmpty()) throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+    public static Double geometric(final Iterable<Double> numbers) {
+        if (!numbers.iterator().hasNext()) {
+            throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+        }
 
-        return Math.pow(numbers.stream().reduce((x, y) -> x * y).get(), 1.0 / numbers.size());
+        return Math.pow(StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x * y).get(), 1.0 / IterableUtils.size(numbers));
     }
 
     /**
-     * Harmonic Mean = n / (1/x₁ + 1/x₂ + ... +  1/xₙ)
+     * @brief computes the [Harmonic Mean](https://en.wikipedia.org/wiki/Harmonic_mean) of the input
+     * @param numbers the input numbers
+     * @throws IllegalArgumentException empty input
+     * @return the harmonic mean of the input numbers
      */
-    public static double harmonic(final List<Double> numbers) {
-        if (numbers.isEmpty()) throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+    public static double harmonic(final Iterable<Double> numbers) {
+        if (!numbers.iterator().hasNext()) {
+            throw new IllegalArgumentException("Emtpy list given for Mean computation.");
+        }
 
-        return numbers.size() / numbers.stream().map(x -> 1 / x).reduce((x, y) -> x + y).get();
+        return IterableUtils.size(numbers) / StreamSupport.stream(numbers.spliterator(), false).map(x -> 1 / x).reduce((x, y) -> x + y).get();
     }
 }
