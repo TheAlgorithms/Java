@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class BinaryXorTest {
-        
     @Test
     public void testBinaryXor() {
         assertEquals("0b111001", BinaryXOR.binaryXOR(25, 32));
