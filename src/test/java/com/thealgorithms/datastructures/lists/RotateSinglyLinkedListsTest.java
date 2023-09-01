@@ -6,6 +6,7 @@ package com.thealgorithms.datastructures.lists;
  */
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class RotateSinglyLinkedListsTest {
@@ -38,7 +39,7 @@ public class RotateSinglyLinkedListsTest {
         assertEquals(2, rotated1.next.next.next.value);
         assertEquals(3, rotated1.next.next.next.next.value);
         assertNull(rotated1.next.next.next.next.next);
-        
+
         head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
