@@ -20,10 +20,7 @@ public final class Means {
      * @return the arithmetic mean of the input numbers
      */
     public static Double arithmetic(final Iterable<Double> numbers) {
-        if (!numbers.iterator().hasNext()) {
-            throw new IllegalArgumentException("Emtpy list given for Mean computation.");
-        }
-
+        checkIfNotEmpty(numbers);
         return StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x + y).get() / IterableUtils.size(numbers);
     }
 
@@ -34,10 +31,7 @@ public final class Means {
      * @return the geometric mean of the input numbers
      */
     public static Double geometric(final Iterable<Double> numbers) {
-        if (!numbers.iterator().hasNext()) {
-            throw new IllegalArgumentException("Emtpy list given for Mean computation.");
-        }
-
+        checkIfNotEmpty(numbers);
         return Math.pow(StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x * y).get(), 1.0 / IterableUtils.size(numbers));
     }
 
@@ -47,11 +41,14 @@ public final class Means {
      * @throws IllegalArgumentException empty input
      * @return the harmonic mean of the input numbers
      */
-    public static double harmonic(final Iterable<Double> numbers) {
+    public static Double harmonic(final Iterable<Double> numbers) {
+        checkIfNotEmpty(numbers);
+        return IterableUtils.size(numbers) / StreamSupport.stream(numbers.spliterator(), false).reduce(0.0, (x, y) -> x + 1 / y);
+    }
+
+    private static void checkIfNotEmpty(final Iterable<Double> numbers) {
         if (!numbers.iterator().hasNext()) {
             throw new IllegalArgumentException("Emtpy list given for Mean computation.");
         }
-
-        return IterableUtils.size(numbers) / StreamSupport.stream(numbers.spliterator(), false).map(x -> 1 / x).reduce((x, y) -> x + y).get();
     }
 }
