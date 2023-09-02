@@ -32,7 +32,7 @@ public final class Means {
      */
     public static Double geometric(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);
-        return Math.pow(StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x * y).get(), 1.0 / IterableUtils.size(numbers));
+        return Math.pow(StreamSupport.stream(numbers.spliterator(), false).reduce((x, y) -> x * y).get(), 1d / IterableUtils.size(numbers));
     }
 
     /**
@@ -43,7 +43,7 @@ public final class Means {
      */
     public static Double harmonic(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);
-        return IterableUtils.size(numbers) / StreamSupport.stream(numbers.spliterator(), false).reduce(0.0, (x, y) -> x + 1 / y);
+        return IterableUtils.size(numbers) / StreamSupport.stream(numbers.spliterator(), false).reduce(0d, (x, y) -> x + 1d / y);
     }
 
     private static void checkIfNotEmpty(final Iterable<Double> numbers) {
