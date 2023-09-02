@@ -1,3 +1,0 @@
-public static double setBit(int num, int bit) {
-        return num | (1<<bit);
-    }
