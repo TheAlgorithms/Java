@@ -3,8 +3,8 @@ import java.util.Optional;
 
 /**
  * Find Highest Set Bit
- * This function calculates the position (or index) of the highest set bit (the leftmost 1 bit)
- * in a given binary number.
+ * This class provides a function calculating the position (or index)
+ * of the most significant bit being set to 1 in a given integer.
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
