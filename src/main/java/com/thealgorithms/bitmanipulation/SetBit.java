@@ -4,7 +4,7 @@ package com.thealgorithms.bitmanipulation;
  */
 
 public class SetBit {
-        public static int setBit(int num, int bit) {
-                return num | (1<<bit);
-        }
+    public static int setBit(int num, int bit) {
+        return num | (1<<bit);
+    }
 }
