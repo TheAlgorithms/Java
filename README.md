@@ -16,4 +16,4 @@ These implementations are intended for learning purposes. As such, they may be l
 Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
 
 ## Algorithms
-Our [directory](DIRECTORY.md) has the full list of applications.
+Our [directory](DIRECTORY.md) has the full list of applications..
