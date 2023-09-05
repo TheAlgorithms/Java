@@ -1,11 +1,22 @@
-FROM gitpod/workspace-java-17:2023-07-20-19-56-24
+FROM gitpod/workspace-java-17:2023-08-30-14-07-38
+
+ENV LLVM_SCRIPT="tmp_llvm.sh"
+
+RUN test ! -f  "$LLVM_SCRIPT" \
+  && wget https://apt.llvm.org/llvm.sh -O "$LLVM_SCRIPT" \
+  && chmod +x "$LLVM_SCRIPT"
 
 USER root
 
-RUN apt-get update \
+RUN ./"$LLVM_SCRIPT" 16 \
+  && apt-get update \
   && apt-get install -y --no-install-recommends \
-  clang-format=1:14.0-55~exp2 \
+  clang-format-16=1:16.0.6~++20230710042027+7cbf1a259152-1~exp1~20230710162048.105 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN ln -s "$(command -v clang-format-16)" "/usr/bin/clang-format"
+
 USER gitpod
+
+RUN rm "$LLVM_SCRIPT"

@@ -3,6 +3,7 @@ package com.thealgorithms.datastructures.lists;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -206,5 +207,51 @@ public class SinglyLinkedListTest {
             temp = temp.next;
             i--;
         }
+    }
+
+    @Test
+    void readWithEnhancedForLoopTest() {
+        final var expeced = new ArrayList<Integer>(Arrays.asList(10, 20, 30));
+
+        SinglyLinkedList list = new SinglyLinkedList();
+        for (final var x : expeced) {
+            list.insert(x);
+        }
+
+        var readElements = new ArrayList<Integer>();
+        for (final var x : list) {
+            readElements.add(x);
+        }
+
+        assertEquals(readElements, expeced);
+    }
+
+    @Test
+    void toStringTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        assertEquals("1->2->3", list.toString());
+    }
+
+    @Test
+    void toStringForEmptyListTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assertEquals("", list.toString());
+    }
+
+    @Test
+    void countTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(10);
+        list.insert(20);
+        assertEquals(2, list.count());
+    }
+
+    @Test
+    void countForEmptyListTest() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        assertEquals(0, list.count());
     }
 }
