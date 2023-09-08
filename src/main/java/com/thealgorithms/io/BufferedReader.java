@@ -16,7 +16,7 @@ public class BufferedReader {
     private static final int DEFAULT_BUFFER_SIZE = 5;
 
     /**
-     * The Maximum number of bytes the buffer can hold.
+     * The maximum number of bytes the buffer can hold.
      * Value is changed when encountered Eof to not
      * cause overflow read of 0 bytes
      */
