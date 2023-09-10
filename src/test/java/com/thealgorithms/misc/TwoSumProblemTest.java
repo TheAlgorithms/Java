@@ -43,6 +43,14 @@ public class TwoSumProblemTest {
         int[] result = TwoSumProblem.twoSum(nums, target);
         assertArrayEquals(expected, result);
     }
+     @Test
+    void testTwoSumMultipleSolution() {
+        int[] nums = {3, 4, 3, 3};
+        int target = 6;
+        int[] expected = {0, 2}; // nums[0] + nums[2] = 3 + 3 = 6
+        int[] result = TwoSumProblem.twoSum(nums, target);
+        assertArrayEquals(expected, result);
+    }
 
     @Test
     void testTwoSumNegativeNumbers() {

@@ -1,8 +1,10 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.HashMap;
 
-public class TwoSumProblem {
+public final class TwoSumProblem {
+    private TwoSumProblem() {
+    }
     /**
      * The function "twoSum" takes an array of integers and a target integer as input, and returns an
      * array of two indices where the corresponding elements in the input array add up to the target.
@@ -11,7 +13,7 @@ public class TwoSumProblem {
      * @return The method `twoSum` returns an array of integers.
      * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
      */
-    public static int[] twoSum(int[] arr, int target) {
+    public static int[] twoSum(final int[] arr, final int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             int rem = target - arr[i];
