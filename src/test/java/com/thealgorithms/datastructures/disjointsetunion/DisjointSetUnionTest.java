@@ -1,12 +1,11 @@
 package com.thealgorithms.datastructures.disjointsetunion;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class DisjointSetUnionTest {
-
 
     @Test
     public void testMakeSet() {
