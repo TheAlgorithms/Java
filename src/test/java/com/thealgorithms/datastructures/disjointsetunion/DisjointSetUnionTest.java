@@ -23,9 +23,10 @@ public class DisjointSetUnionTest {
         Node<Integer> node3 = dsu.makeSet(3);
         Node<Integer> node4 = dsu.makeSet(4);
 
-        dsu.unionSets(node1, node2); // 1 <- 2
-        dsu.unionSets(node3, node4); // 3 <- 4
-        dsu.unionSets(node2, node4); //  2 -> 1 <- 3 <- 4
+        dsu.unionSets(node1, node2);
+        dsu.unionSets(node3, node2);
+        dsu.unionSets(node3, node4);
+        dsu.unionSets(node1, node3);
 
         Node<Integer> root1 = dsu.findSet(node1);
         Node<Integer> root2 = dsu.findSet(node2);
@@ -35,16 +36,16 @@ public class DisjointSetUnionTest {
         Assertions.assertEquals(node1, node1.parent);
         Assertions.assertEquals(node1, node2.parent);
         Assertions.assertEquals(node1, node3.parent);
-        Assertions.assertEquals(node3, node4.parent);
+        Assertions.assertEquals(node1, node4.parent);
 
         Assertions.assertEquals(node1, root1);
         Assertions.assertEquals(node1, root2);
         Assertions.assertEquals(node1, root3);
         Assertions.assertEquals(node1, root4);
 
-        Assertions.assertEquals(2, node1.rank);
+        Assertions.assertEquals(1, node1.rank);
         Assertions.assertEquals(0, node2.rank);
-        Assertions.assertEquals(1, node3.rank);
+        Assertions.assertEquals(0, node3.rank);
         Assertions.assertEquals(0, node4.rank);
     }
 }

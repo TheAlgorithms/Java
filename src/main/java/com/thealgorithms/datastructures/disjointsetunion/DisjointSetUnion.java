@@ -12,7 +12,7 @@ public class DisjointSetUnion<T> {
     /**
      * Creates a new node of DSU with parent initialised as same node
      */
-    public Node<T> makeSet(T x) {
+    public Node<T> makeSet(final T x) {
         return new Node<T>(x);
     }
 
@@ -31,7 +31,7 @@ public class DisjointSetUnion<T> {
      * Unions two sets by merging their representative elements. The merge is performed based on the rank of each set
      * to ensure efficient merging and path compression to optimize future findSet operations.
      */
-    public void unionSets(Node<T> x, Node<T> y) {
+    public void unionSets(final Node<T> x, final Node<T> y) {
         Node<T> nx = findSet(x);
         Node<T> ny = findSet(y);
 

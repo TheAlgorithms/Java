@@ -18,7 +18,7 @@ public class Node<T> {
      */
     public T data;
 
-    public Node(T data) {
+    public Node(final T data) {
         this.data = data;
         parent = this; // Initially, a node is its own parent.
     }
