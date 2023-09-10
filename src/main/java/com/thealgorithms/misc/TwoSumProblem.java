@@ -27,6 +27,6 @@ public class TwoSumProblem {
                 return new int[] {i, index};
             }
         }
-        return new int[] {};  
+        return new int[] {};
     }
 }
