@@ -46,6 +46,5 @@ public class DisjointSetUnionTest {
         Assertions.assertEquals(0, node2.rank);
         Assertions.assertEquals(1, node3.rank);
         Assertions.assertEquals(0, node4.rank);
-
     }
 }
