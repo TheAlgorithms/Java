@@ -43,7 +43,7 @@ public class TwoSumProblemTest {
         int[] result = TwoSumProblem.twoSum(nums, target);
         assertArrayEquals(expected, result);
     }
-     @Test
+    @Test
     void testTwoSumMultipleSolution() {
         int[] nums = {3, 4, 3, 3};
         int target = 6;
