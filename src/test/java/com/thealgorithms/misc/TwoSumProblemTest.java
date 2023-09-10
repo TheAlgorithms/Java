@@ -1,10 +1,10 @@
 package com.thealgorithms.misc;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * Test case for Two sum Problem.
@@ -17,7 +17,7 @@ public class TwoSumProblemTest {
     @BeforeEach
     void setUp() {
         // Initialize the test data before each test case
-        nums = new int[]{2, 7, 11, 15};
+        nums = new int[] {2, 7, 11, 15};
     }
 
     @Test
