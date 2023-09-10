@@ -19,7 +19,7 @@ public class TwoSumProblem {
                 int index = map.get(rem);
                 return new int[] {index, i};
             }
-            if( !map.containsKey(arr[i])) {
+            if (!map.containsKey(arr[i])) {
                 map.put(arr[i], i);
             }
         }
