@@ -1,8 +1,9 @@
 package com.thealgorithms.misc;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,53 +12,50 @@ import org.junit.jupiter.api.Test;
  */
 
 public class TwoSumProblemTest {
-    private int[] nums;
-
-    @BeforeEach
-    void setUp() {
-        // Initialize the test data before each test case
-        nums = new int[] {2, 7, 11, 15};
-    }
 
     @Test
     void testTwoSumExists() {
-        int target = 9;
-        int[] expected = {0, 1}; // nums[0] + nums[1] = 2 + 7 = 9
-        int[] result = TwoSumProblem.twoSum(nums, target);
-        assertArrayEquals(expected, result);
+        final int[] values = new int[] {2, 7, 11, 15};
+        final int target = 9;
+        final var expected = Pair.of(0, 1); // values[0] + values[1] = 2 + 7 = 9
+        assertEquals(expected, TwoSumProblem.twoSum(values, target).get());
     }
 
     @Test
     void testTwoSumNoSolution() {
-        int target = 3;
-        int[] expected = {}; // No two elements sum up to 3
-        int[] result = TwoSumProblem.twoSum(nums, target);
-        assertArrayEquals(expected, result);
+        final int[] values = new int[] {2, 7, 11, 15};
+        final int target = 3;
+        assertFalse(TwoSumProblem.twoSum(values, target).isPresent());
     }
 
     @Test
     void testTwoSumMultipleSolutions() {
-        int[] nums = {3, 3};
-        int target = 6;
-        int[] expected = {0, 1}; // nums[0] + nums[1] = 3 + 3 = 6
-        int[] result = TwoSumProblem.twoSum(nums, target);
-        assertArrayEquals(expected, result);
+        final int[] values = {3, 3};
+        final int target = 6;
+        final var expected = Pair.of(0, 1); // values[0] + values[1] = 3 + 3 = 6
+        assertEquals(expected, TwoSumProblem.twoSum(values, target).get());
     }
+
     @Test
     void testTwoSumMultipleSolution() {
-        int[] nums = {3, 4, 3, 3};
-        int target = 6;
-        int[] expected = {0, 2}; // nums[0] + nums[2] = 3 + 3 = 6
-        int[] result = TwoSumProblem.twoSum(nums, target);
-        assertArrayEquals(expected, result);
+        final int[] values = {3, 4, 3, 3};
+        final int target = 6;
+        final var expected = Pair.of(0, 2); // values[0] + values[2] = 3 + 3 = 6
+        assertEquals(expected, TwoSumProblem.twoSum(values, target).get());
     }
 
     @Test
     void testTwoSumNegativeNumbers() {
-        int[] nums = {-1, -2, -3, -4, -5};
-        int target = -8;
-        int[] expected = {2, 4}; // nums[2] + nums[4] = -3 + (-5) = -8
-        int[] result = TwoSumProblem.twoSum(nums, target);
-        assertArrayEquals(expected, result);
+        final int[] values = {-1, -2, -3, -4, -5};
+        final int target = -8;
+        final var expected = Pair.of(2, 4); // values[2] + values[4] = -3 + (-5) = -8
+        assertEquals(expected, TwoSumProblem.twoSum(values, target).get());
+    }
+
+    @Test
+    void testTwoSumNoSolutionDuplicatedInputs() {
+        final int[] values = {0, 0, 0};
+        final int target = 100;
+        assertFalse(TwoSumProblem.twoSum(values, target).isPresent());
     }
 }

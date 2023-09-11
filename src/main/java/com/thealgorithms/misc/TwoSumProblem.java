@@ -1,30 +1,33 @@
 package com.thealgorithms.misc;
 
 import java.util.HashMap;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
 public final class TwoSumProblem {
     private TwoSumProblem() {
     }
+
     /**
      * The function "twoSum" takes an array of integers and a target integer as input, and returns an
      * array of two indices where the corresponding elements in the input array add up to the target.
-     * @param nums An array of integers.
+     * @param values An array of integers.
      * @param target The target is the sum that we are trying to find using two numbers from the given array.
-     * @return The method `twoSum` returns an array of integers.
+     * @return A pair or indexes such that sum of values at these indexes equals to the target
      * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
      */
-    public static int[] twoSum(final int[] arr, final int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            int rem = target - arr[i];
-            if (map.containsKey(rem)) {
-                int index = map.get(rem);
-                return new int[] {index, i};
+
+    public static Optional<Pair<Integer, Integer>> twoSum(final int[] values, final int target) {
+        HashMap<Integer, Integer> valueToIndex = new HashMap<>();
+        for (int i = 0; i < values.length; i++) {
+            final var rem = target - values[i];
+            if (valueToIndex.containsKey(rem)) {
+                return Optional.of(Pair.of(valueToIndex.get(rem), i));
             }
-            if (!map.containsKey(arr[i])) {
-                map.put(arr[i], i);
+            if (!valueToIndex.containsKey(values[i])) {
+                valueToIndex.put(values[i], i);
             }
         }
-        return new int[] {};
+        return Optional.empty();
     }
 }
