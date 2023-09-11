@@ -1,0 +1,56 @@
+package com.thealgorithms.dynamicprogramming;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class KnapsackTest {
+    @Test
+    public void testKnapSackBasic() {
+        int[] weights = {2, 3, 4, 5};
+        int[] values = {3, 4, 5, 6};
+        int weightCapacity = 5;
+        int expected = 7; // Maximum value should be 7 (items 1 and 4).
+        int result = Knapsack.knapSack(weightCapacity, weights, values);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKnapSackEmpty() {
+        int[] weights = {};
+        int[] values = {};
+        int weightCapacity = 10;
+        int expected = 0; // With no items, the result should be 0.
+        int result = Knapsack.knapSack(weightCapacity, weights, values);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKnapSackNoCapacity() {
+        int[] weights = {2, 3, 4};
+        int[] values = {3, 4, 5};
+        int weightCapacity = 0;
+        int expected = 0; // With no capacity, the result should be 0.
+        int result = Knapsack.knapSack(weightCapacity, weights, values);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKnapSackMaxCapacity() {
+        int[] weights = {2, 3, 4, 5};
+        int[] values = {3, 4, 5, 6};
+        int weightCapacity = 10;
+        int expected = 13; // Maximum value should be 13 (items 1, 3, and 4).
+        int result = Knapsack.knapSack(weightCapacity, weights, values);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKnapSackInvalidInput() {
+        int[] weights = {2, 3, 4};
+        int[] values = {3, 4, 5, 6}; // Different length values array.
+        int weightCapacity = 5;
+        // This test should throw an IllegalArgumentException.
+        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, values); });
+    }
+}
