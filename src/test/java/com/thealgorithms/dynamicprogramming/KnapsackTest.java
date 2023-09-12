@@ -63,6 +63,5 @@ public class KnapsackTest {
         // This test should throw an IllegalArgumentException.
         assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, null, values); });
         assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, null); });
-
     }
 }
