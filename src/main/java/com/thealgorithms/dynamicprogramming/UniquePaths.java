@@ -1,59 +1,70 @@
 /**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/**
+ * Author: Siddhant Swarup Mallick
+ * Github: https://github.com/siddhant2002
+ * <p>
+ * Problem Description:
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
  * The robot can only move either down or right at any point in time.
- * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram
- * below). How many possible unique paths are there?
+ * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+ * How many possible unique paths are there?
+ * <p>
+ * Program Description:
+ * This program calculates the number of unique paths possible for a robot to reach the bottom-right corner
+ * of an m x n grid using dynamic programming.
  */
-
-/** Program description - To find the number of unique paths possible */
 
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.*;
+import java.util.Arrays;
 
-public class UniquePaths {
+public final class UniquePaths {
 
-    public static boolean uniquePaths(int m, int n, int ans) {
-        int[] dp = new int[n];
-        Arrays.fill(dp, 1);
+    private UniquePaths() {};
+
+    /**
+     * Calculates the number of unique paths using a 1D dynamic programming array.
+     * Time complexity O(n*m)
+     * Space complexity O(min(n,m))
+     * @param m The number of rows in the grid.
+     * @param n The number of columns in the grid.
+     * @return The number of unique paths.
+     */
+    public static int uniquePaths(int m, int n) {
+        if (m > n) {
+            return uniquePaths(n, m); // Recursive call to handle n > m cases
+        }
+        int[] dp = new int[n]; // Create a 1D array to store unique paths for each column
+        Arrays.fill(dp, 1); // Initialize all values to 1 (one way to reach each cell)
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                dp[j] += dp[j - 1];
+                dp[j] += dp[j - 1]; // Update the number of unique paths for each cell
             }
         }
-        return dp[n - 1] == ans;
-        // return true if predicted answer matches with expected answer
+        return dp[n - 1]; // The result is stored in the last column of the array
     }
 
-    // The above method runs in O(n) time
-    public static boolean uniquePaths2(int m, int n, int ans) {
-        int[][] dp = new int[m][n];
+    /**
+     * Calculates the number of unique paths using a 2D dynamic programming array.
+     * Time complexity O(n*m)
+     * Space complexity O(n*m)
+     * @param m The number of rows in the grid.
+     * @param n The number of columns in the grid.
+     * @return The number of unique paths.
+     */
+    public static int uniquePaths2(int m, int n) {
+        int[][] dp = new int[m][n]; // Create a 2D array to store unique paths for each cell
         for (int i = 0; i < m; i++) {
-            dp[i][0] = 1;
+            dp[i][0] = 1; // Initialize the first column to 1 (one way to reach each cell)
         }
         for (int j = 0; j < n; j++) {
-            dp[0][j] = 1;
+            dp[0][j] = 1; // Initialize the first row to 1 (one way to reach each cell)
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; // Update the number of unique paths for each cell
             }
         }
-        return dp[m - 1][n - 1] == ans;
-        // return true if predicted answer matches with expected answer
+        return dp[m - 1][n - 1]; // The result is stored in the bottom-right cell of the array
     }
-    // The above mthod takes O(m*n) time
 }
-/**
- * OUTPUT :
- * Input - m = 3, n = 7
- * Output: it returns either true if expected answer matches with the predicted answer else it
- * returns false 1st approach Time Complexity : O(n) Auxiliary Space Complexity : O(n) Input - m =
- * 3, n = 7 Output: it returns either true if expected answer matches with the predicted answer else
- * it returns false 2nd approach Time Complexity : O(m*n) Auxiliary Space Complexity : O(m*n)
- */
+
