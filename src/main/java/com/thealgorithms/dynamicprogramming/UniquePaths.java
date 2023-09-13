@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public final class UniquePaths {
 
-    private UniquePaths() {};
+    private UniquePaths(){};
 
     /**
      * Calculates the number of unique paths using a 1D dynamic programming array.
@@ -67,4 +67,3 @@ public final class UniquePaths {
         return dp[m - 1][n - 1]; // The result is stored in the bottom-right cell of the array
     }
 }
-
