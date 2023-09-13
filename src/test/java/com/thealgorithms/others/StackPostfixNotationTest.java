@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Map;
+
+import com.thealgorithms.datastructures.stacks.StackPostfixNotation;
 import org.junit.jupiter.api.Test;
 
 public class StackPostfixNotationTest {

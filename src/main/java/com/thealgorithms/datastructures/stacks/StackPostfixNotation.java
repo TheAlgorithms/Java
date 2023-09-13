@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.datastructures.stacks;
 
 import java.util.Scanner;
 import java.util.Stack;
