@@ -10,7 +10,10 @@ package com.thealgorithms.dynamicprogramming;
  */
 public final class Knapsack {
 
-    private Knapsack(){};
+    private Knapsack() {
+    }
+
+    ;
 
     /**
      * Solves the 0-1 Knapsack problem using Dynamic Programming.
@@ -22,6 +25,9 @@ public final class Knapsack {
      * @throws IllegalArgumentException If the input arrays are null or have different lengths.
      */
     public static int knapSack(final int weightCapacity, final int[] weights, final int[] values) throws IllegalArgumentException {
+        if (weightCapacity < 0) {
+            throw new IllegalArgumentException("Weight capacity should not be negative.");
+        }
         if (weights == null || values == null || weights.length != values.length) {
             throw new IllegalArgumentException("Input arrays must not be null and must have the same length.");
         }
