@@ -19,17 +19,21 @@ import java.util.Arrays;
 
 public final class UniquePaths {
 
-    private UniquePaths(){};
+    private UniquePaths() {
+    }
+
+    ;
 
     /**
      * Calculates the number of unique paths using a 1D dynamic programming array.
      * Time complexity O(n*m)
      * Space complexity O(min(n,m))
+     *
      * @param m The number of rows in the grid.
      * @param n The number of columns in the grid.
      * @return The number of unique paths.
      */
-    public static int uniquePaths(int m, int n) {
+    public static int uniquePaths(final int m, final int n) {
         if (m > n) {
             return uniquePaths(n, m); // Recursive call to handle n > m cases
         }
@@ -37,7 +41,7 @@ public final class UniquePaths {
         Arrays.fill(dp, 1); // Initialize all values to 1 (one way to reach each cell)
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                dp[j] += dp[j - 1]; // Update the number of unique paths for each cell
+                dp[j] = Math.addExact(dp[j], dp[j - 1]); // Update the number of unique paths for each cell
             }
         }
         return dp[n - 1]; // The result is stored in the last column of the array
@@ -47,11 +51,12 @@ public final class UniquePaths {
      * Calculates the number of unique paths using a 2D dynamic programming array.
      * Time complexity O(n*m)
      * Space complexity O(n*m)
+     *
      * @param m The number of rows in the grid.
      * @param n The number of columns in the grid.
      * @return The number of unique paths.
      */
-    public static int uniquePaths2(int m, int n) {
+    public static int uniquePaths2(final int m, final int n) {
         int[][] dp = new int[m][n]; // Create a 2D array to store unique paths for each cell
         for (int i = 0; i < m; i++) {
             dp[i][0] = 1; // Initialize the first column to 1 (one way to reach each cell)
@@ -61,7 +66,7 @@ public final class UniquePaths {
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; // Update the number of unique paths for each cell
+                dp[i][j] = Math.addExact(dp[i - 1][j], dp[i][j - 1]); // Update the number of unique paths for each cell
             }
         }
         return dp[m - 1][n - 1]; // The result is stored in the bottom-right cell of the array
