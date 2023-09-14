@@ -13,7 +13,7 @@ public class UniquePathsTests {
 
     @Test
     public void testUniquePaths_1x1() {
-        assertEquals(1,  UniquePaths.uniquePaths(1, 1));
+        assertEquals(1, UniquePaths.uniquePaths(1, 1));
     }
 
     @Test
