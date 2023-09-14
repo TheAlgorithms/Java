@@ -46,7 +46,6 @@ public class UniquePathsTests {
         assertEquals(28, UniquePaths.uniquePaths2(3, 7));
     }
 
-
     @Test
     public void testUniquePaths2_7x3() {
         assertEquals(28, UniquePaths.uniquePaths2(7, 3));
