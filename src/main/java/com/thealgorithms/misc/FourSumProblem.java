@@ -69,3 +69,5 @@ public class FourSumProblem {
         return quadruplets;
     }
 }
+// https://codewithgeeks.com/4-sum-leetcode-solution/
+// https://redquark.org/leetcode/0018-4-sum/
