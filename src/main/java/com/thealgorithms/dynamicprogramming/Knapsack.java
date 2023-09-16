@@ -10,7 +10,10 @@ package com.thealgorithms.dynamicprogramming;
  */
 public final class Knapsack {
 
-    private Knapsack(){};
+    private Knapsack() {
+    }
+
+    ;
 
     /**
      * Solves the 0-1 Knapsack problem using Dynamic Programming.
@@ -27,6 +30,11 @@ public final class Knapsack {
         }
         if (weights == null || values == null || weights.length != values.length) {
             throw new IllegalArgumentException("Input arrays must not be null and must have the same length.");
+        }
+        for (int w : weights) {
+            if (w <= 0) {
+                throw new IllegalArgumentException("Input array should not contain non-positive weight(s).");
+            }
         }
 
         // DP table to store the state of the maximum possible return for a given weight capacity.
