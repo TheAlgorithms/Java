@@ -20,13 +20,13 @@ class StoneGameTest {
 
     @Test
     void stoneGame_case3() {
-        int[] stones = {2,4,1};
+        int[] stones = {2, 4, 1};
         assertEquals(false, StoneGame.stoneGame(stones));
     }
 
     @Test
     void stoneGame_case4() {
-        int[] stones = {3,3,3,3};
+        int[] stones = {3, 3, 3, 3};
         assertEquals(false, StoneGame.stoneGame(stones));
     }
 }
