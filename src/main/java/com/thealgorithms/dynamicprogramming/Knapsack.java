@@ -1,5 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
+import java.util.Arrays;
+
 /**
  * A Dynamic Programming based solution for the 0-1 Knapsack problem.
  * This class provides a method, `knapSack`, that calculates the maximum value that can be
@@ -10,7 +12,19 @@ package com.thealgorithms.dynamicprogramming;
  */
 public final class Knapsack {
 
-    private Knapsack() {
+    private Knapsack(){}
+
+    //Validate input for knapsack problem, otherwise throws exception
+    private static void throwIfInvalidInput(final int weightCapacity, final int[] weights, final int[] values) {
+        if (weightCapacity < 0) {
+            throw new IllegalArgumentException("Weight capacity should not be negative.");
+        }
+        if (weights == null || values == null || weights.length != values.length) {
+            throw new IllegalArgumentException("Input arrays must not be null and must have the same length.");
+        }
+        if (Arrays.stream(weights).anyMatch(w -> w <= 0)) {
+            throw new IllegalArgumentException("Input array should not contain non-positive weight(s).");
+        }
     }
 
     /**
@@ -23,17 +37,7 @@ public final class Knapsack {
      * @throws IllegalArgumentException If the input arrays are null or have different lengths.
      */
     public static int knapSack(final int weightCapacity, final int[] weights, final int[] values) throws IllegalArgumentException {
-        if (weightCapacity < 0) {
-            throw new IllegalArgumentException("Weight capacity should not be negative.");
-        }
-        if (weights == null || values == null || weights.length != values.length) {
-            throw new IllegalArgumentException("Input arrays must not be null and must have the same length.");
-        }
-        for (int w : weights) {
-            if (w <= 0) {
-                throw new IllegalArgumentException("Input array should not contain non-positive weight(s).");
-            }
-        }
+        throwIfInvalidInput(weightCapacity, weights, values);
 
         // DP table to store the state of the maximum possible return for a given weight capacity.
         int[] dp = new int[weightCapacity + 1];
