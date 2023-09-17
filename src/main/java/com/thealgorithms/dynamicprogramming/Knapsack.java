@@ -10,7 +10,7 @@ package com.thealgorithms.dynamicprogramming;
  */
 public final class Knapsack {
 
-    private Knapsack(){
+    private Knapsack() {
     }
 
     /**
