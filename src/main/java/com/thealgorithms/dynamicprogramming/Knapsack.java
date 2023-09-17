@@ -10,7 +10,8 @@ package com.thealgorithms.dynamicprogramming;
  */
 public final class Knapsack {
 
-    private Knapsack(){}
+    private Knapsack(){
+    }
 
     /**
      * Solves the 0-1 Knapsack problem using Dynamic Programming.
