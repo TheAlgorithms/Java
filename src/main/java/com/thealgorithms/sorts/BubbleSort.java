@@ -16,11 +16,14 @@ class BubbleSort implements SortAlgorithm {
      * @param <T> the type of elements in the array.
      * @return the sorted array.
      */
+    
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int i = 1, size = array.length; i < size; ++i) {
-            boolean swapped = false;
-            for (int j = 0; j < size - i; ++j) {
+        int n = array.length;
+        boolean swapped;
+        for (int i = 1, size = n; i < size; ++i) {
+             swapped = false;
+            for (int j = 0; j < n - i - 1; ++j) {
                 if (greater(array[j], array[j + 1])) {
                     swap(array, j, j + 1);
                     swapped = true;
