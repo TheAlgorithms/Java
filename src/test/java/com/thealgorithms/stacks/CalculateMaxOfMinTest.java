@@ -1,8 +1,8 @@
 package com.thealgorithms.stacks;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 public class CalculateMaxOfMinTest {
 
@@ -54,5 +54,4 @@ public class CalculateMaxOfMinTest {
         int k = CalculateMaxOfMin.calculateMaxOfMin(a);
         assertEquals(-1, k);
     }
-
 }
