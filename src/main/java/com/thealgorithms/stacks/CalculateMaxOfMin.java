@@ -7,7 +7,7 @@
  * Program description - Given an integer array. The task is to find the maximum of the minimum of
  * the array
  */
-package com.thealgorithms.datastructures.stacks;
+package com.thealgorithms.stacks;
 
 import java.util.*;
 
