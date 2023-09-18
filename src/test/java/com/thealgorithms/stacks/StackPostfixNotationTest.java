@@ -1,13 +1,11 @@
-package com.thealgorithms.others;
+package com.thealgorithms.stacks;
 
-import static java.util.Map.entry;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import com.thealgorithms.datastructures.stacks.StackPostfixNotation;
-import org.junit.jupiter.api.Test;
+import static java.util.Map.entry;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StackPostfixNotationTest {
     @Test
