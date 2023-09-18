@@ -22,7 +22,7 @@ class BubbleSort implements SortAlgorithm {
         int n = array.length;
         boolean swapped;
         for (int i = 1; i < n; ++i) {
-             swapped = false;
+            swapped = false;
             for (int j = 0; j < n - i; ++j) {
                 if (greater(array[j], array[j + 1])) {
                     swap(array, j, j + 1);
