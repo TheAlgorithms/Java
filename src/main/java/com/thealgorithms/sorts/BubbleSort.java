@@ -21,9 +21,9 @@ class BubbleSort implements SortAlgorithm {
     public <T extends Comparable<T>> T[] sort(T[] array) {
         int n = array.length;
         boolean swapped;
-        for (int i = 1, size = n; i < size; ++i) {
+        for (int i = 1; i < n; ++i) {
              swapped = false;
-            for (int j = 0; j < n - i - 1; ++j) {
+            for (int j = 0; j < n - i; ++j) {
                 if (greater(array[j], array[j + 1])) {
                     swap(array, j, j + 1);
                     swapped = true;
