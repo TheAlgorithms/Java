@@ -15,7 +15,6 @@ public final class Knapsack {
     private Knapsack() {
     }
 
-    // Validate input for knapsack problem, otherwise throws exception
     private static void throwIfInvalidInput(final int weightCapacity, final int[] weights, final int[] values) {
         if (weightCapacity < 0) {
             throw new IllegalArgumentException("Weight capacity should not be negative.");
