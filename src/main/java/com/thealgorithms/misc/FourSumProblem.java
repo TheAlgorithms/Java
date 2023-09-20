@@ -1,6 +1,5 @@
 package com.thealgorithms.misc;
 import java.util.*;
-
 public class FourSumProblem {
     public static List<List<Integer>> fourSum(int[] nums, int target) {
         int n = nums.length; // size of the array
@@ -28,8 +27,8 @@ public class FourSumProblem {
                         k++;
                         l--;
 
-                        while (k < l && nums[k] == nums[k - 1])
-                            k++;// skip the duplicates:
+                        while (k < l && nums[k] == nums[k - 1])// skip the duplicates
+                            k++;
                         while (k < l && nums[l] == nums[l + 1])
                             l--;
                     } else if (sum < target)
