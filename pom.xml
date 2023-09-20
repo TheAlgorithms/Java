@@ -72,8 +72,6 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>
