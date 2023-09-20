@@ -1,11 +1,8 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
 
-/** Program description - To find all possible paths from source to destination*/
-
-/**Wikipedia link -> https://en.wikipedia.org/wiki/Shortest_path_problem */
+/** Author : Siddhant Swarup Mallick
+GitHub : https://github.com/siddhant2002
+  Program description - To find all possible paths from source to destination
+Wikipedia link -> https://en.wikipedia.org/wiki/Shortest_path_problem **/
 package com.thealgorithms.backtracking;
 
 import java.util.*;
@@ -82,7 +79,7 @@ public class AllPathsFromSourceToTarget {
         }
 
         // Mark the current node
-        isVisited[u] = false;
+        isVisited[u] = true;
     }
 
     // Driver program
