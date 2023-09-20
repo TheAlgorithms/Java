@@ -46,6 +46,4 @@ public class MedianOfRunningArray {
         }
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() * 1.0 : minHeap.peek() * 1.0;
     }
-
-    
 }
