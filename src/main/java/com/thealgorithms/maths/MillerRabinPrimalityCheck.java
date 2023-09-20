@@ -28,7 +28,7 @@ public class MillerRabinPrimalityCheck {
         }
         Random rnd = new Random();
         for (int i = 0; i < k; i++) {
-            long a = 2 + rnd.nextLong(n) % (n - 3);
+            long a = 2 + rnd.nextLong() % (n - 3);
             if (checkComposite(n, a, d, s)) return false;
         }
         return true;
