@@ -8,13 +8,13 @@ import java.util.PriorityQueue;
  */
 public class MedianOfRunningArray {
 
-    private PriorityQueue<Integer> p1;
-    private PriorityQueue<Integer> p2;
+    private PriorityQueue<Integer> maxHeap;
+    private PriorityQueue<Integer> minHeap;
 
     // Constructor
     public MedianOfRunningArray() {
-        this.p1 = new PriorityQueue<>(Collections.reverseOrder()); // Max Heap
-        this.p2 = new PriorityQueue<>(); // Min Heap
+        this.maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // Max Heap
+        this.minHeap = new PriorityQueue<>(); // Min Heap
     }
 
     /*
@@ -22,20 +22,27 @@ public class MedianOfRunningArray {
       and upper half to min heap
      */
     public void insert(Integer e) {
-        p2.add(e);
-        if (p2.size() - p1.size() > 1) {
-            p1.add(p2.remove());
+        if (!minHeap.isEmpty() && e < minHeap.peek()) {
+            maxHeap.offer(e);
+            if (maxHeap.size() > minHeap.size() + 1) {
+                minHeap.offer(maxHeap.poll());
+            }
+        } else {
+            minHeap.offer(e);
+            if (minHeap.size() > maxHeap.size() + 1) {
+                maxHeap.offer(minHeap.poll());
+            }
         }
     }
 
     /*
       Returns median at any given point
      */
-    public Integer median() {
-        if (p1.size() == p2.size()) {
-            return (p1.peek() + p2.peek()) / 2;
+    public Double median() {
+        if (maxHeap.size() == minHeap.size()) {
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
         }
-        return p1.size() > p2.size() ? p1.peek() : p2.peek();
+        return maxHeap.size() > minHeap.size() ? maxHeap.peek()*1.0 : minHeap.peek()*1.0;
     }
 
     public static void main(String[] args) {
@@ -44,8 +51,8 @@ public class MedianOfRunningArray {
          */
 
         MedianOfRunningArray p = new MedianOfRunningArray();
-        int[] arr = {10, 7, 4, 9, 2, 3, 11, 17, 14};
-        for (int i = 0; i < 9; i++) {
+        int[] arr = {30,20,10};
+        for (int i = 0; i < arr.length; i++) {
             p.insert(arr[i]);
             System.out.print(p.median() + " ");
         }
