@@ -39,22 +39,14 @@ public class MedianOfRunningArray {
       Returns median at any given point
      */
     public Double median() {
-        if (maxHeap.size() == minHeap.size()) {
+        if (maxHeap.size() == minHeap.size() && maxHeap.size() > 0) {
             return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        }
+        else if(maxHeap.size() == minHeap.size()){
+            throw new IllegalArgumentException("Enter at least 1 element, Median of empty list is not defined!");
         }
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() * 1.0 : minHeap.peek() * 1.0;
     }
 
-    public static void main(String[] args) {
-        /*
-        Testing the median function
-         */
-
-        MedianOfRunningArray p = new MedianOfRunningArray();
-        int[] arr = {30, 20, 10};
-        for (int i = 0; i < arr.length; i++) {
-            p.insert(arr[i]);
-            System.out.print(p.median() + " ");
-        }
-    }
+    
 }
