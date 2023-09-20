@@ -41,8 +41,7 @@ public class MedianOfRunningArray {
     public Double median() {
         if (maxHeap.size() == minHeap.size() && maxHeap.size() > 0) {
             return (maxHeap.peek() + minHeap.peek()) / 2.0;
-        }
-        else if (maxHeap.size() == minHeap.size()) {
+        } else if (maxHeap.size() == minHeap.size()) {
             throw new IllegalArgumentException("Enter at least 1 element, Median of empty list is not defined!");
         }
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() * 1.0 : minHeap.peek() * 1.0;
