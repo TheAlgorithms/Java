@@ -11,9 +11,7 @@ public class FourSumProblem {
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
                     for (int l = k + 1; l < n; l++) {
-                        // taking bigger data type
-                        // to avoid integer overflow:
-                        long sum = (long)nums[i] + nums[j];
+                        long sum = (long) nums[i] + nums[j]; //  taking bigger data type to avoid integer overflow:
                         sum += nums[k];
                         sum += nums[l];
 
