@@ -18,7 +18,7 @@ public class MedianOfRunningArrayTest {
     @Test
     public void testWhenInvalidInoutProvidedShouldThrowException() {
         MedianOfRunningArray stream = new MedianOfRunningArray();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () - > stream.median());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> stream.median());
         assertEquals(exception.getMessage(), EXCEPTION_MESSAGE);
     }
 
