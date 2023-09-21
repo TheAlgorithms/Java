@@ -48,11 +48,17 @@ public class SumOfDigits {
     public static int sumOfDigitsFast(int number) {
         number = number < 0 ? -number : number;
         /* calculate abs value */
-        char[] digits = (number + "").toCharArray();
+        //char[] digits = (number + "").toCharArray();
         int sum = 0;
+	/*
         for (int i = 0; i < digits.length; ++i) {
             sum += digits[i] - '0';
         }
+	*/
+	while(number > 0){
+	   sum += number%10;
+	   number = number/10;
+	}
         return sum;
     }
 }
