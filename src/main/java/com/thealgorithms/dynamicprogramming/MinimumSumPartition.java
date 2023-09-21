@@ -19,14 +19,15 @@ Subset2 = {36, 40} ; sum of Subset2  = 76
  */
 public class MinimumSumPartition {
 
-    private MinimumSumPartition(){}
+    private MinimumSumPartition() {
+    }
 
     public static int minimumSumPartition(final int[] array) {
         int sum = Arrays.stream(array).sum();
         boolean[] dp = new boolean[sum / 2 + 1];
         dp[0] = true; // Base case , don't select any element from array
 
-        //Find the closest sum of subset array that we can achieve which is closest to half of sum of full array
+        // Find the closest sum of subset array that we can achieve which is closest to half of sum of full array
         int closestPartitionSum = 0;
 
         for (int i = 0; i < array.length; i++) {
