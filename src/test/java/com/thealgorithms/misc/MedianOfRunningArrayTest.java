@@ -122,4 +122,40 @@ public class MedianOfRunningArrayTest {
         for (int i = 1; i <= 1000; i++) stream.insert(i);
         assertEquals(500.5, stream.median());
     }
+
+    @Test
+    public void testWithThreeValuesInDescendingOrder() {
+        MedianOfRunningArray stream = new MedianOfRunningArray();
+        stream.insert(30);
+        stream.insert(20);
+        stream.insert(10);
+        assertEquals(20.0, stream.median());
+    }
+
+    @Test
+    public void testWithThreeValuesInOrder() {
+        MedianOfRunningArray stream = new MedianOfRunningArray();
+        stream.insert(10);
+        stream.insert(20);
+        stream.insert(30);
+        assertEquals(20.0, stream.median());
+    }
+
+    @Test
+    public void testWithThreeValuesNotInOrderA() {
+        MedianOfRunningArray stream = new MedianOfRunningArray();
+        stream.insert(30);
+        stream.insert(10);
+        stream.insert(20);
+        assertEquals(20.0, stream.median());
+    }
+
+    @Test
+    public void testWithThreeValuesNotInOrderB() {
+        MedianOfRunningArray stream = new MedianOfRunningArray();
+        stream.insert(20);
+        stream.insert(10);
+        stream.insert(30);
+        assertEquals(20.0, stream.median());
+    }
 }
