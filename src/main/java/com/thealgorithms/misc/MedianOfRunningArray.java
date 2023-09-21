@@ -48,7 +48,7 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
         }
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek();
     }
-    
+
     private T calculateAverage(T a, T b) {
         if (a instanceof Integer) {
             int sum = ((Integer) a) + ((Integer) b);

@@ -158,7 +158,7 @@ public class MedianOfRunningArrayTest {
         stream.insert(30);
         assertEquals(20, stream.median());
     }
-    
+
     @Test
     public void testWithFloatValues() {
         var stream = new MedianOfRunningArray<Float>();
@@ -189,7 +189,7 @@ public class MedianOfRunningArrayTest {
         stream.insert(92233720368547757L);
         assertEquals(46116860244273878L, stream.median());
     }
-    
+
     @Test
     public void testWithDoubleValues() {
         var stream = new MedianOfRunningArray<Double>();
