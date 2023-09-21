@@ -35,7 +35,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithSingleValues() {
-    	var stream = new MedianOfRunningArray<Integer>();
+    	MedianOfRunningArray<Integer> stream = new MedianOfRunningArray<Integer>();
         stream.insert(-1);
         assertEquals(-1, stream.median());
     }

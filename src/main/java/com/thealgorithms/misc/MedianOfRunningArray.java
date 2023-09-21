@@ -41,9 +41,7 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
     public T median() {
         if (maxHeap.isEmpty() && minHeap.isEmpty()) {
             throw new IllegalArgumentException("Enter at least 1 element, Median of empty list is not defined!");
-        }
-
-        if (maxHeap.size() == minHeap.size()) {
+        } else if (maxHeap.size() == minHeap.size()) {
         	T maxHeapTop = maxHeap.peek();
             T minHeapTop = minHeap.peek();
             return calculateAverage(maxHeapTop, minHeapTop);
