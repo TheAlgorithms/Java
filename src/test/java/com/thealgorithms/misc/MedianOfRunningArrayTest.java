@@ -91,6 +91,19 @@ public class MedianOfRunningArrayTest {
     }
 
     @Test
+    public void testWithDuplicateValuesB() {
+        MedianOfRunningArray stream = new MedianOfRunningArray();
+        stream.insert(10);
+        stream.insert(20);
+        stream.insert(10);
+        stream.insert(10);
+        stream.insert(20);
+        stream.insert(0);
+        stream.insert(50);
+        assertEquals(10, stream.median());
+    }
+
+    @Test
     public void testWithLargeValues() {
         MedianOfRunningArray stream = new MedianOfRunningArray();
         stream.insert(1000000);
