@@ -169,7 +169,7 @@ public class MedianOfRunningArrayTest {
         stream.insert(30.0f);
         assertEquals(20.0f, stream.median());
     }
-    
+
     @Test
     public void testWithByteValues() {
         var stream = new MedianOfRunningArray<Byte>();
@@ -180,7 +180,7 @@ public class MedianOfRunningArrayTest {
         stream.insert((byte) 127);
         assertEquals((byte) 120, stream.median());
     }
-    
+
     @Test
     public void testWithLongValues() {
         var stream = new MedianOfRunningArray<Long>();
