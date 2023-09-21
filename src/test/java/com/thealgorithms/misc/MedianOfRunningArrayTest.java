@@ -24,7 +24,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithNegativeValues() {
-    	var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArray<Integer>();
         stream.insert(-1);
         assertEquals(-1, stream.median());
         stream.insert(-2);
@@ -173,12 +173,12 @@ public class MedianOfRunningArrayTest {
     @Test
     public void testWithByteValues() {
         var stream = new MedianOfRunningArray<Byte>();
-        stream.insert((byte)120);
-        assertEquals((byte)120, stream.median());
-        stream.insert((byte)-120);
-        assertEquals((byte)0, stream.median());
-        stream.insert((byte)127);
-        assertEquals((byte)120, stream.median());
+        stream.insert((byte) 120);
+        assertEquals((byte) 120, stream.median());
+        stream.insert((byte) -120);
+        assertEquals((byte) 0, stream.median());
+        stream.insert((byte) 127);
+        assertEquals((byte) 120, stream.median());
     }
     
     @Test

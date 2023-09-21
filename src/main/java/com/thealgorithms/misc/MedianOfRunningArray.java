@@ -23,7 +23,7 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
       and upper half to min heap
      */
     public void insert(T e) {
-        if (!minHeap.isEmpty() && e.compareTo(minHeap.peek()) < 0 ) {
+        if (!minHeap.isEmpty() && e.compareTo(minHeap.peek()) < 0) {
             maxHeap.offer(e);
             if (maxHeap.size() > minHeap.size() + 1) {
                 minHeap.offer(maxHeap.poll());
@@ -47,7 +47,7 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
         if (maxHeap.size() == minHeap.size()) {
         	T maxHeapTop = maxHeap.peek();
             T minHeapTop = minHeap.peek();
-            return calculateAverage(maxHeapTop,minHeapTop);
+            return calculateAverage(maxHeapTop, minHeapTop);
         }
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek();
     }
