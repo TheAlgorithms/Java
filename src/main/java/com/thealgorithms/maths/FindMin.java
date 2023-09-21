@@ -35,7 +35,7 @@ public class FindMin {
             throw new IllegalArgumentException("array must be non-empty.");
         }
         int min = array[0];
-        for (int i=1; i<array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             if (array[i] < min) {
                 min = value;
             }
