@@ -24,7 +24,12 @@ public class FindMinTest {
 
     @Test
     public void test3() {
-        assertEquals(0, FindMin.findMin(new int[] {10, 10, 0, 10}));
+        assertEquals(-1, FindMin.findMin(new int[] {-1, 2, 5, 10}));
+    }
+
+    @Test
+    public void test4() {
+        assertEquals(-10, FindMin.findMin(new int[] {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1,0}));
     }
 
     @Test
