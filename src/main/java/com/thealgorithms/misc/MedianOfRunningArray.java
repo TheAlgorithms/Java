@@ -38,7 +38,7 @@ public class MedianOfRunningArray {
     /*
       Returns median at any given point
      */
-    public Double median() {
+    public double median() {
         if (maxHeap.size() == minHeap.size() && maxHeap.size() > 0) {
             return (maxHeap.peek() + minHeap.peek()) / 2.0;
         } else if (maxHeap.size() == minHeap.size()) {
