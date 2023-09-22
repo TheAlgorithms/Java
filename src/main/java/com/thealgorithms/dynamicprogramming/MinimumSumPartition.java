@@ -7,10 +7,10 @@ Given an array of non-negative integers , partition the array in two subset that
 difference in sum of elements for both subset minimum.
 Return the minimum difference in sum of these subsets you can achieve.
 
-Input:  array[] = {1, 6, 11, 5}
-Output: 1
+Input:  array[] = {1, 6, 11, 4}
+Output: 0
 Explanation:
-Subset1 = {1, 5, 6}, sum of Subset1 = 12
+Subset1 = {1, 4, 6}, sum of Subset1 = 11
 Subset2 = {11}, sum of Subset2 = 11
 
 Input:  array[] = {36, 7, 46, 40}
