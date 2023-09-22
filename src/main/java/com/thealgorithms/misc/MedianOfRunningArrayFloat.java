@@ -1,4 +1,5 @@
 package com.thealgorithms.misc;
+
 public final class MedianOfRunningArrayFloat extends MedianOfRunningArray<Float> {
     @Override
     public Float calculateAverage(final Float a, final Float b) {
