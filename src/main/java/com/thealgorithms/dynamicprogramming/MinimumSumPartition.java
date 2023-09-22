@@ -3,22 +3,23 @@ package com.thealgorithms.dynamicprogramming;
 import java.util.Arrays;
 
 /*
-Partition a set into two subsets such that the difference of subset sums is minimum
+Given an array of non-negative integers , partition the array in two subset that
+difference in sum of elements for both subset minimum.
+Return the minimum difference in sum of these subsets you can achieve.
 
-Input:  arr[] = {1, 6, 11, 5}
+Input:  array[] = {1, 6, 11, 5}
 Output: 1
 Explanation:
 Subset1 = {1, 5, 6}, sum of Subset1 = 12
 Subset2 = {11}, sum of Subset2 = 11
 
-Input:  arr[] = {36, 7, 46, 40}
+Input:  array[] = {36, 7, 46, 40}
 Output: 23
 Explanation:
 Subset1 = {7, 46} ;  sum of Subset1 = 53
 Subset2 = {36, 40} ; sum of Subset2  = 76
  */
-public class MinimumSumPartition {
-
+public final class MinimumSumPartition {
     private MinimumSumPartition() {
     }
 

@@ -5,17 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class MinimumSumPartitionTest {
-
     @Test
     public void testMinimumSumPartitionWithEvenSum() {
-        int[] array = {3, 1, 4, 2, 2};
+        int[] array = {1, 6, 11, 4};
         assertEquals(0, MinimumSumPartition.minimumSumPartition(array));
     }
 
     @Test
     public void testMinimumSumPartitionWithOddSum() {
-        int[] array = {3, 7, 4, 5, 2};
-        assertEquals(1, MinimumSumPartition.minimumSumPartition(array));
+        int[] array = {36, 7, 46, 40};
+        assertEquals(23, MinimumSumPartition.minimumSumPartition(array));
     }
 
     @Test
