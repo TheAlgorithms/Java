@@ -21,7 +21,7 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
       Inserting lower half of array to max Heap
       and upper half to min heap
      */
-    public void insert(T e) {
+    public void insert(final T e) {
         if (!minHeap.isEmpty() && e.compareTo(minHeap.peek()) < 0) {
             maxHeap.offer(e);
             if (maxHeap.size() > minHeap.size() + 1) {
