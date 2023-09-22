@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 /**
  * @author shrutisheoran
  */
-public class MedianOfRunningArray<T extends Number & Comparable<T>> {
+public abstract class MedianOfRunningArray<T extends Number & Comparable<T>> {
 
     private PriorityQueue<T> maxHeap;
     private PriorityQueue<T> minHeap;
@@ -49,29 +49,5 @@ public class MedianOfRunningArray<T extends Number & Comparable<T>> {
         return maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek();
     }
 
-    private T calculateAverage(T a, T b) {
-        if (a instanceof Integer) {
-            int sum = ((Integer) a) + ((Integer) b);
-            return (T) Integer.valueOf(sum / 2);
-        } else if (a instanceof Double) {
-            double sum = ((Double) a) + ((Double) b);
-            double roundedAverage = Math.round(sum / 2.0 * 100.0) / 100.0;
-            return (T) Double.valueOf(roundedAverage);
-        } else if (a instanceof Float) {
-            float sum = ((Float) a) + ((Float) b);
-            float roundedAverage = (float) (Math.round(sum / 2.0 * 100.0) / 100.0);
-            return (T) Float.valueOf(roundedAverage);
-        } else if (a instanceof Long) {
-            long sum = ((Long) a) + ((Long) b);
-            return (T) Long.valueOf(sum / 2);
-        } else if (a instanceof Short) {
-            int sum = ((Short) a) + ((Short) b);
-            return (T) Short.valueOf((short) (sum / 2));
-        } else if (a instanceof Byte) {
-            int sum = ((Byte) a) + ((Byte) b);
-            return (T) Byte.valueOf((byte) (sum / 2));
-        } else {
-            throw new IllegalArgumentException("Unsupported numeric type");
-        }
-    }
+    public abstract T calculateAverage(T a, T b);
 }

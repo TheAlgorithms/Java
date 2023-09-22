@@ -17,14 +17,14 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWhenInvalidInoutProvidedShouldThrowException() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> stream.median());
         assertEquals(exception.getMessage(), EXCEPTION_MESSAGE);
     }
 
     @Test
     public void testWithNegativeValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(-1);
         assertEquals(-1, stream.median());
         stream.insert(-2);
@@ -35,14 +35,14 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithSingleValues() {
-        MedianOfRunningArray<Integer> stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(-1);
         assertEquals(-1, stream.median());
     }
 
     @Test
     public void testWithRandomValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(10);
         assertEquals(10, stream.median());
 
@@ -70,7 +70,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithNegativeAndPositiveValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(-1);
         assertEquals(-1, stream.median());
         stream.insert(2);
@@ -81,7 +81,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithDuplicateValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(-1);
         assertEquals(-1, stream.median());
         stream.insert(-1);
@@ -92,7 +92,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithDuplicateValuesB() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(10);
         stream.insert(20);
         stream.insert(10);
@@ -105,7 +105,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithLargeValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(1000000);
         assertEquals(1000000, stream.median());
         stream.insert(12000);
@@ -118,14 +118,14 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithLargeCountOfValues() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         for (int i = 1; i <= 1000; i++) stream.insert(i);
         assertEquals(500, stream.median());
     }
 
     @Test
     public void testWithThreeValuesInDescendingOrder() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(30);
         stream.insert(20);
         stream.insert(10);
@@ -134,7 +134,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithThreeValuesInOrder() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(10);
         stream.insert(20);
         stream.insert(30);
@@ -143,7 +143,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithThreeValuesNotInOrderA() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(30);
         stream.insert(10);
         stream.insert(20);
@@ -152,7 +152,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithThreeValuesNotInOrderB() {
-        var stream = new MedianOfRunningArray<Integer>();
+        var stream = new MedianOfRunningArrayInteger();
         stream.insert(20);
         stream.insert(10);
         stream.insert(30);
@@ -161,7 +161,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithFloatValues() {
-        var stream = new MedianOfRunningArray<Float>();
+        var stream = new MedianOfRunningArrayFloat();
         stream.insert(20.0f);
         assertEquals(20.0f, stream.median());
         stream.insert(10.5f);
@@ -172,7 +172,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithByteValues() {
-        var stream = new MedianOfRunningArray<Byte>();
+        var stream = new MedianOfRunningArrayByte();
         stream.insert((byte) 120);
         assertEquals((byte) 120, stream.median());
         stream.insert((byte) -120);
@@ -183,7 +183,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithLongValues() {
-        var stream = new MedianOfRunningArray<Long>();
+        var stream = new MedianOfRunningArrayLong();
         stream.insert(120000000L);
         assertEquals(120000000L, stream.median());
         stream.insert(92233720368547757L);
@@ -192,7 +192,7 @@ public class MedianOfRunningArrayTest {
 
     @Test
     public void testWithDoubleValues() {
-        var stream = new MedianOfRunningArray<Double>();
+        var stream = new MedianOfRunningArrayDouble();
         stream.insert(12345.67891);
         assertEquals(12345.67891, stream.median());
         stream.insert(23456789.98);
