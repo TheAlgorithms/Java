@@ -46,15 +46,11 @@ public class SumOfDigits {
      * @return sum of digits of given {@code number}
      */
     public static int sumOfDigitsFast(int number) {
-        number = number < 0 ? -number : number;
+	    
+        number = Math.abs(number)
         /* calculate abs value */
-        //char[] digits = (number + "").toCharArray();
-        int sum = 0;
-	/*
-        for (int i = 0; i < digits.length; ++i) {
-            sum += digits[i] - '0';
-        }
-	*/
+         int sum = 0;
+	 
 	while(number > 0){
 	   sum += number%10;
 	   number = number/10;
