@@ -8,8 +8,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test case for Two sum Problem.
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * Test case for Median Of Running Array Problem.
+ * @author Ansh Shah (https://github.com/govardhanshah456)
  */
 
 public class MedianOfRunningArrayTest {
@@ -196,6 +196,6 @@ public class MedianOfRunningArrayTest {
         stream.insert(12345.67891);
         assertEquals(12345.67891, stream.median());
         stream.insert(23456789.98);
-        assertEquals(11734567.83, stream.median());
+        assertEquals(Double.valueOf(11734567.83),stream.median(),.01);
     }
 }
