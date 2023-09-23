@@ -23,7 +23,14 @@ public final class MinimumSumPartition {
     private MinimumSumPartition() {
     }
 
+    private static void throwIfInvalidInput(final int[] array) {
+        if (Arrays.stream(array).anyMatch(a -> a < 0)) {
+            throw new IllegalArgumentException("Input array should not contain negative number(s).");
+        }
+    }
+
     public static int minimumSumPartition(final int[] array) {
+        throwIfInvalidInput(array);
         int sum = Arrays.stream(array).sum();
         boolean[] dp = new boolean[sum / 2 + 1];
         dp[0] = true; // Base case , don't select any element from array

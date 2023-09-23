@@ -1,6 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,11 @@ class MinimumSumPartitionTest {
     public void testMinimumSumPartitionWithEmptyArray() {
         int[] array = {};
         assertEquals(0, MinimumSumPartition.minimumSumPartition(array));
+    }
+
+    @Test
+    public void testMinimumSumPartitionThrowsForNegativeArray() {
+        int[] array = {4,1,-6,7};
+        assertThrows(IllegalArgumentException.class, () -> { MinimumSumPartition.minimumSumPartition(array); });
     }
 }
