@@ -6,10 +6,10 @@ import java.util.PriorityQueue;
 /**
  * @author shrutisheoran
  */
-public class MedianOfRunningArray {
+public abstract class MedianOfRunningArray<T extends Number & Comparable<T>> {
 
-    private PriorityQueue<Integer> maxHeap;
-    private PriorityQueue<Integer> minHeap;
+    private PriorityQueue<T> maxHeap;
+    private PriorityQueue<T> minHeap;
 
     // Constructor
     public MedianOfRunningArray() {
@@ -21,8 +21,8 @@ public class MedianOfRunningArray {
       Inserting lower half of array to max Heap
       and upper half to min heap
      */
-    public void insert(Integer e) {
-        if (!minHeap.isEmpty() && e < minHeap.peek()) {
+    public void insert(final T e) {
+        if (!minHeap.isEmpty() && e.compareTo(minHeap.peek()) < 0) {
             maxHeap.offer(e);
             if (maxHeap.size() > minHeap.size() + 1) {
                 minHeap.offer(maxHeap.poll());
@@ -38,14 +38,16 @@ public class MedianOfRunningArray {
     /*
       Returns median at any given point
      */
-    public double median() {
+    public T median() {
         if (maxHeap.isEmpty() && minHeap.isEmpty()) {
             throw new IllegalArgumentException("Enter at least 1 element, Median of empty list is not defined!");
+        } else if (maxHeap.size() == minHeap.size()) {
+            T maxHeapTop = maxHeap.peek();
+            T minHeapTop = minHeap.peek();
+            return calculateAverage(maxHeapTop, minHeapTop);
         }
-
-        if (maxHeap.size() == minHeap.size()) {
-            return (maxHeap.peek() + minHeap.peek()) / 2.0;
-        }
-        return maxHeap.size() > minHeap.size() ? maxHeap.peek() * 1.0 : minHeap.peek() * 1.0;
+        return maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek();
     }
+
+    public abstract T calculateAverage(T a, T b);
 }
