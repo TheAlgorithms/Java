@@ -46,14 +46,15 @@ public class WildcardMatching {
                 } else if (patternChar == '*') {
                     // '*' can match zero or more characters
                     dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
-                }
+                } else {
+                dp[i][j] = false;
+            }
             }
         }
         
         // The result is in the bottom-right cell of the DP table
         return dp[m][n];
     }
-
     public static void main(String[] args) {
         String text = "acdcb";
         String pattern = "a*c?b";
