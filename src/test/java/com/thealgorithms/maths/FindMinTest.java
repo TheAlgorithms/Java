@@ -1,30 +1,24 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class FindMinTest {
 
-    @Test
-    public void testFindMinValue() {
-        assertEquals(1, FindMin.findMin(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
+    @ParameterizedTest
+    @MethodSource("provideStringsForIsBlank")
+    void numberTests(int expected, int[] input) {
+        Assertions.assertEquals(expected, FindMin.findMin(input));
     }
 
-    @Test
-    public void test1() {
-        assertEquals(1, FindMin.findMin(new int[] {1, 3, 5, 7, 9}));
-    }
-
-    @Test
-    public void test2() {
-        assertEquals(0, FindMin.findMin(new int[] {0, 192, 384, 576}));
-    }
-
-    @Test
-    public void test3() {
-        assertEquals(0, FindMin.findMin(new int[] {10, 10, 0, 10}));
+    private static Stream<Arguments> provideStringsForIsBlank() {
+        return Stream.of(Arguments.of(1, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}), Arguments.of(5, new int[] {5, 5, 5, 5, 5}), Arguments.of(0, new int[] {0, 192, 384, 576}), Arguments.of(-1, new int[] {-1, 2, 5, 10}), Arguments.of(-10, new int[] {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}));
     }
 
     @Test
