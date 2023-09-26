@@ -8,7 +8,6 @@ public class WildcardMatchingTest {
     public void testMatchingPattern() {
         assertTrue(WildcardMatching.isMatch("aa", "a*"));
         assertTrue(WildcardMatching.isMatch("adceb", "*a*b"));
-
     }
 
     @Test
@@ -16,8 +15,6 @@ public class WildcardMatchingTest {
         assertFalse(WildcardMatching.isMatch("cb", "?a"));
         assertFalse(WildcardMatching.isMatch("acdcb", "a*c?b"));
         assertFalse(WildcardMatching.isMatch("mississippi", "m*issi*iss?*i"));
-
-
     }
 
     @Test

@@ -2,9 +2,7 @@
  * 
  * Author: Janmesh Singh
  * Github: https://github.com/janmeshjs
- * 
- * 
- * 
+
  * Problem Statement: To determine if the pattern matches the text. 
  * The pattern can include two special wildcard characters:
  *       ' ? ': Matches any single character.
@@ -47,8 +45,8 @@ public class WildcardMatching {
                     // '*' can match zero or more characters
                     dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
                 } else {
-                dp[i][j] = false;
-            }
+                    dp[i][j] = false;
+                }
             }
         }
         
@@ -59,7 +57,6 @@ public class WildcardMatching {
         String text = "acdcb";
         String pattern = "a*c?b";
         boolean isMatching = isMatch(text, pattern);
-        
         if (isMatching) {
             System.out.println("Pattern matches the text.");
         } else {
@@ -67,4 +64,3 @@ public class WildcardMatching {
         }
     }
 }
-
