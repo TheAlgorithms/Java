@@ -15,12 +15,12 @@ public class FourSumProblem {
     in.close();
   }
 
-/*
-The Naive solution iterates over every 4 elements in the array.
-It checks if their sum is equal to the target sum, it adds them to the answer list.
-Sorting each four elements before adding them to the answer, ensures adding only distinct four elements, so no duplicates are found.
-Finally it takes time O(n^4) duo to 4 nested loops each iterates n time.
-*/
+  /*
+  The Naive solution iterates over every 4 elements in the array.
+  It checks if their sum is equal to the target sum, it adds them to the answer list.
+  Sorting each four elements before adding them to the answer, ensures adding only distinct four elements, so no duplicates are found.
+  Finally it takes time O(n^4) duo to 4 nested loops each iterates n time.
+  */
   public static List<List<Integer>> Naive(int[] arr, int target) {
     List<List<Integer>> answer = new ArrayList<List<Integer>>();
 
@@ -45,11 +45,11 @@ Finally it takes time O(n^4) duo to 4 nested loops each iterates n time.
   }
 
 
-/*
-In the hashing solution, we maintain a hashmap of the sum of each pair of elements in the array.
-We then iterate over each pair of elements in the array and check if the reuired sum to be equal to target is found in the map previously.
-The map now acts as a frequency table. However, we also need to check that the indices of all four elements are distinct, that's why we maintain a pair of indices in the map itself and compare it with the pair of elements we are at right now.
-*/
+  /*
+  In the hashing solution, we maintain a hashmap of the sum of each pair of elements in the array.
+  We then iterate over each pair of elements in the array and check if the reuired sum to be equal to target is found in the map previously.
+  The map now acts as a frequency table. However, we also need to check that the indices of all four elements are distinct, that's why we maintain a pair of indices in the map itself and compare it with the pair of elements we are at right now.
+  */
   public static List<List<Integer>> Hashing(int[] arr, int target) {
     Set<List<Integer>> set = new HashSet();
     HashMap<Integer, List<Integer>> map = new HashMap<>();
