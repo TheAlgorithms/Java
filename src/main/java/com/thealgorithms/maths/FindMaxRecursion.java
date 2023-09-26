@@ -17,7 +17,7 @@ public class FindMaxRecursion {
             array[i] = rand.nextInt() % 100;
         }
 
-        assert max(array, array.length) == Arrays.stream(array).max().getAsInt();
+        assert max(array) == Arrays.stream(array).max().getAsInt();
         assert max(array, 0, array.length - 1) == Arrays.stream(array).max().getAsInt();
     }
 
@@ -39,17 +39,16 @@ public class FindMaxRecursion {
         int leftMax = max(array, low, mid); // get max in [low, mid]
         int rightMax = max(array, mid + 1, high); // get max in [mid+1, high]
 
-        return Math.max(leftMax, rightMax);
+        return leftMax < rightMax ? rightMax : leftMax;
     }
 
     /**
      * Get max of array using recursion algorithm
      *
      * @param array contains elements
-     * @param len length of given array
      * @return max value of {@code array}
      */
-    public static int max(int[] array, int len) {
-        return len == 1 ? array[0] : Math.max(max(array, len - 1), array[len - 1]);
+    public static int max(int[] array) {
+        return array.length == 1 ? array[0] : max(array, 0, array.length);
     }
 }
