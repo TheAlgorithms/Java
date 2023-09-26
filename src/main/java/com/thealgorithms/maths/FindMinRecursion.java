@@ -42,7 +42,7 @@ public class FindMinRecursion {
         int leftMin = min(array, low, mid); // get min in [low, mid]
         int rightMin = min(array, mid + 1, high); // get min in [mid+1, high]
 
-        return leftMin > rightMin ? rightMix : leftMix;
+        return leftMin > rightMin ? rightMin : leftMin;
     }
 
     /**
