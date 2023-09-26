@@ -23,6 +23,7 @@ public class Combination {
         }
         length = n;
         T[] array = arr.clone();
+        System.out.println("1234");
         Arrays.sort(array);
         List<TreeSet<T>> result = new LinkedList<>();
         backtracking(array, 0, new TreeSet<T>(), result);

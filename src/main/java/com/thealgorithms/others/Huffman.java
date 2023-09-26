@@ -53,6 +53,7 @@ public class Huffman {
     // main function
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        System.out.println("it");
 
         // number of characters.
         int n = 6;
