@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class FindMinTest {
+public class FindMaxTest {
 
     @ParameterizedTest
     @MethodSource("inputStream")
@@ -22,7 +22,7 @@ public class FindMinTest {
     }
 
     @Test
-    public void testFindMinThrowsExceptionForEmptyInput() {
+    public void testFindMaxThrowsExceptionForEmptyInput() {
         assertThrows(IllegalArgumentException.class, () -> FindMin.findMin(new int[] {}));
     }
 }
