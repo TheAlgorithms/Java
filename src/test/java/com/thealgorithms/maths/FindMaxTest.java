@@ -14,7 +14,7 @@ public class FindMaxTest {
     @ParameterizedTest
     @MethodSource("inputStream")
     void numberTests(int expected, int[] input) {
-        Assertions.assertEquals(expected, FindMin.findMin(input));
+        Assertions.assertEquals(expected, FindMax.findMax(input));
     }
 
     private static Stream<Arguments> inputStream() {
