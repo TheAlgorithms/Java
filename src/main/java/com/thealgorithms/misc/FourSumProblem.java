@@ -1,3 +1,4 @@
+package com.thealgorithms.misc;
 import java.util.*;
 
 public class FourSumProblem {
