@@ -7,16 +7,17 @@ package com.thealgorithms.sorts;
  * 
  * SmoothSort uses a different data structure when compared to heap sort. 
  * Specifically, it uses a data structure called the Leonardo heap, which is a binary tree with the property that the root of each subtree has one fewer element than its parent. 
- * The shape of the Leonardo heap is determined by a sequence of numbers called the Leonardo
+ * The shape of the Leonardo heap is determined by a sequence of numbers called the Leonardo.
+ * Define the Leonardo numbers
+ *	Leonardo numbers are a sequence of numbers defined by: L(0) = 1, L(1) = 1,
+ *	L(n) = L(n - 1) + L(n - 2) + 1 for n > 1.
  */
 
 import java.util.Arrays;
 
 public class SmoothSort {
 
-	// Define the Leonardo numbers
-	// Leonardo numbers are a sequence of numbers defined by: L(0) = 1, L(1) = 1,
-	// L(n) = L(n - 1) + L(n - 2) + 1 for n > 1.
+	
 	static int leonardo(int k) {
 		if (k < 2) {
 			return 1;
