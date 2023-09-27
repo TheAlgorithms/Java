@@ -26,7 +26,7 @@ public class SingleBitOperators {
     /**
      * Get the bit located at 'bit' from 'num'
      */
-    public static int getBit(int num, int bit){
+    public static int getBit(int num, int bit) {
         return ((num >> get) & 1);
     }
 }
