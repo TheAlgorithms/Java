@@ -1,27 +1,30 @@
 package com.thealgorithms.bitmanipulation;
 
 public class SingleBitOperators {
-
+    /**
+    * Flip the bit at position 'bit' in 'num'
+    */
     public static int flipBit(int num, int bit){
         return num ^ (1 << bit);
     }
-
+    /**
+    * Set the bit at position 'bit' to 1 in the 'num' variable
+    */
     public static int setBit(int num, int bit) {
         return num | (1<<bit);
     }
     /**
- * Clears the bit located at clear from num
- */
-    public static int clearBit(int num, int clear) {
+    * Clears the bit located at 'bit' from 'num'
+    */
+    public static int clearBit(int num, int bit) {
         return num & ~(1 << clear);
     }
-
-    public static int getBit(int num, int get){
+    /**
+    * Get the bit located at 'bit' from 'num'
+    */
+    public static int getBit(int num, int bit){
         return ((num>>get) & 1);
     }
-
-    public static int getFirstBit(int num){
-        return num & 1;
     }
 
 
