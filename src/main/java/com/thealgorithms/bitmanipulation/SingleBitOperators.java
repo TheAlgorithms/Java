@@ -21,12 +21,12 @@ public class SingleBitOperators {
      * Clears the bit located at 'bit' from 'num'
      */
     public static int clearBit(int num, int bit) {
-        return num & ~(1 << clear);
+        return num & ~(1 << bit);
     }
     /**
      * Get the bit located at 'bit' from 'num'
      */
     public static int getBit(int num, int bit) {
-        return ((num >> get) & 1);
+        return ((num >> bit) & 1);
     }
 }
