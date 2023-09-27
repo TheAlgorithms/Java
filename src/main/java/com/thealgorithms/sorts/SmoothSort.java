@@ -1,4 +1,11 @@
-// Java implementation
+package com.thealgorithms.sorts;
+
+/**
+ * @author Pankaj Kumar Bind (https://github.com/Pankaj-Bind)
+ * @see SmoothSort Algorithm
+ * Detailed description of this algorithm given below the code
+ */
+
 import java.util.Arrays;
 
 public class SmoothSort {
@@ -51,7 +58,7 @@ public class SmoothSort {
 		}
 	}
 
-	// Smooth Sort function
+	// Smooth Sort function 
 	static int[] smoothSort(int[] arr)
 	{
 		int n = arr.length;
@@ -60,8 +67,8 @@ public class SmoothSort {
 		int q = p;
 		int r = 0;
 
-		// Build the Leonardo heap by merging
-		// pairs of adjacent trees
+		// Build the Leonardo heap by merging 
+		// pairs of adjacent trees 
 		while (p > 0) {
 			if ((r & 0x03) == 0) {
 				heapify(arr, r, q);
@@ -84,8 +91,8 @@ public class SmoothSort {
 			p = p - 1;
 		}
 
-		// Convert the Leonardo heap
-		// back into an array
+		// Convert the Leonardo heap 
+		// back into an array 
 		for (int i = 0; i < n - 1; i++) {
 			int j = i + 1;
 			while (j > 0 && arr[j] < arr[j - 1]) {
@@ -99,12 +106,11 @@ public class SmoothSort {
 		return arr;
 	}
 
-	// Driver code
 	public static void main(String[] args)
 	{
-		int[] arr = { 1, 7, 8, 2, 3, 5, 4, 6 };
+		int[] arr = { 8, 19, 7, 5, 4, 6, 2, 18, 9, 1, 17, 28, 29};
 
-		// Original Array
+		// Original Array 
 		System.out.print("Input: ");
 		System.out.println(Arrays.toString(arr));
 
@@ -128,16 +134,15 @@ Best-case performance : O(n)
 Average performance :	O(n log n)
 Worst-case space complexity : O(n)
 
-Creator and Year: Edsger W. Dijkstra, 1985.
-Type: Comparison-based sorting algorithm.
-Adaptiveness: Performs well on partially sorted data.
-Heap Structure: Uses a variant of Heap Sort called "smooth heap".
-Heap Construction: Builds smooth heap via "sift down" operations.
-Sorting Process: Swaps elements to sort the array.
-Efficiency: Effective for partially ordered data.
-Usage: Less common in practice compared to other algorithms.
-Advantages: Good for nearly sorted data, theoretical performance guarantees.
-Disadvantages: More complex to implement, not always practical advantage over other sorts.
+Creator and Year 		: Edsger W. Dijkstra, 1985.
+Type					: Comparison-based sorting algorithm.
+Adaptiveness			: Performs well on partially sorted data.
+Heap Structure			: Uses a variant of Heap Sort called "smooth heap".
+Heap Construction		: Builds smooth heap via "sift down" operations.
+Sorting Process			: Swaps elements to sort the array.
+Efficiency				: Effective for partially ordered data.
+Usage					: Less common in practice compared to other algorithms.
+Advantages				: Good for nearly sorted data, theoretical performance guarantees.
+Disadvantages			: More complex to implement, not always practical advantage over other sorts.
 
-ref : https://www.geeksforgeeks.org/introduction-to-smooth-sort/
 */
