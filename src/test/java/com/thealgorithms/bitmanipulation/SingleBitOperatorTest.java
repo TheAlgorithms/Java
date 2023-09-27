@@ -1,8 +1,8 @@
 package com.thealgorithms.bitmanipulation;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class SingleBitOperatorTest {
 
@@ -13,7 +13,7 @@ public class SingleBitOperatorTest {
     }
 
     @Test
-    public void setBitTest(){
+    public void setBitTest() {
         assertEquals(5, SingleBitOperators.setBit(4, 0));
         assertEquals(4, SingleBitOperators.setBit(4, 2));
 
@@ -21,12 +21,12 @@ public class SingleBitOperatorTest {
 
     @Test
     public void clearBitTest() {
-        assertEquals(5, SingleBitOperators.clearBit(7,1));
-        assertEquals(5, SingleBitOperators.clearBit(5,1));
+        assertEquals(5, SingleBitOperators.clearBit(7, 1));
+        assertEquals(5, SingleBitOperators.clearBit(5, 1));
     }
 
     @Test
-    public void getBitTest(){
+    public void getBitTest() {
         assertEquals(0, SingleBitOperators.getBit(6, 0));
         assertEquals(1, SingleBitOperators.getBit(7, 1));
     }
