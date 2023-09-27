@@ -11,13 +11,12 @@ package com.thealgorithms.sorts;
  * Define the Leonardo numbers
  *	Leonardo numbers are a sequence of numbers defined by: L(0) = 1, L(1) = 1,
  *	L(n) = L(n - 1) + L(n - 2) + 1 for n > 1.
- */
+ * */
 
 import java.util.Arrays;
 
 public class SmoothSort {
 
-	
 	static int leonardo(int k) {
 		if (k < 2) {
 			return 1;
@@ -25,8 +24,10 @@ public class SmoothSort {
 		return leonardo(k - 1) + leonardo(k - 2) + 1;
 	}
 
-	// Build the Leonardo heap by merging
-	// pairs of adjacent trees
+	/*
+     * Build the Leonardo heap by merging
+	 * pairs of adjacent trees
+     * */
 	static void heapify(int[] arr, int start, int end) {
 		int i = start;
 		int j = 0;
@@ -61,7 +62,9 @@ public class SmoothSort {
 		}
 	}
 
-	// Smooth Sort function
+	/*
+     * Smooth Sort function
+     * */
 	static int[] smoothSort(int[] arr) {
 		int n = arr.length;
 
@@ -69,8 +72,10 @@ public class SmoothSort {
 		int q = p;
 		int r = 0;
 
-		// Build the Leonardo heap by merging
-		// pairs of adjacent trees
+		/*
+     	* Build the Leonardo heap by merging
+     	* pairs of adjacent trees
+     	* */
 		while (p > 0) {
 			if ((r & 0x03) == 0) {
 				heapify(arr, r, q);
@@ -92,8 +97,10 @@ public class SmoothSort {
 			p = p - 1;
 		}
 
-		// Convert the Leonardo heap
-		// back into an array
+		/*
+     	* Convert the Leonardo heap
+     	* back into an array
+     	* */
 		for (int i = 0; i < n - 1; i++) {
 			int j = i + 1;
 			while (j > 0 && arr[j] < arr[j - 1]) {
@@ -110,14 +117,21 @@ public class SmoothSort {
 	public static void main(String[] args) {
 		int[] arr = { 8, 19, 7, 5, 4, 6, 2, 18, 9, 1, 17, 28, 29 };
 
-		// Original Array
+		
+		/*
+     	* Original Array
+     	* */
 		System.out.print("Input: ");
 		System.out.println(Arrays.toString(arr));
 
-		// Function call
+		/*
+     	* Function call
+     	* */
 		arr = smoothSort(arr);
 
-		// Sorted Array
+		/*
+     	* Sorted Array
+     	* */
 		System.out.print("Output: ");
 		System.out.println(Arrays.toString(arr));
 	}
@@ -145,5 +159,4 @@ public class SmoothSort {
  * Advantages : Good for nearly sorted data, theoretical performance guarantees.
  * Disadvantages : More complex to implement, not always practical advantage
  * over other sorts.
- * 
- */
+ * */
