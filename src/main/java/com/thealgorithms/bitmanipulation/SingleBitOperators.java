@@ -9,7 +9,9 @@ public class SingleBitOperators {
     public static int setBit(int num, int bit) {
         return num | (1<<bit);
     }
-
+    /**
+ * Clears the bit located at clear from num
+ */
     public static int clearBit(int num, int clear) {
         return num & ~(1 << clear);
     }
