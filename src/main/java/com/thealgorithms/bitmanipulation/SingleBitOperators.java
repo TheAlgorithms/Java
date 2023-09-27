@@ -1,3 +1,5 @@
+package com.thealgorithms.bitmanipulation;
+
 public class SingleBitOperators {
 
     public static int flipBit(int num, int bit){
