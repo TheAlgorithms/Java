@@ -4,6 +4,10 @@ package com.thealgorithms.sorts;
  * @author Pankaj Kumar Bind (https://github.com/Pankaj-Bind)
  * @see SmoothSort Algorithm
  * Detailed description of this algorithm given below the code
+ * 
+ * SmoothSort uses a different data structure when compared to heap sort. 
+ * Specifically, it uses a data structure called the Leonardo heap, which is a binary tree with the property that the root of each subtree has one fewer element than its parent. 
+ * The shape of the Leonardo heap is determined by a sequence of numbers called the Leonardo
  */
 
 import java.util.Arrays;
