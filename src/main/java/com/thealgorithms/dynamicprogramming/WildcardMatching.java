@@ -52,14 +52,4 @@ public class WildcardMatching {
         // The result is in the bottom-right cell of the DP table
         return dp[m][n];
     }
-    public static void main(String[] args) {
-        String text = "acdcb";
-        String pattern = "a*c?b";
-        boolean isMatching = isMatch(text, pattern);
-        if (isMatching) {
-            System.out.println("Pattern matches the text.");
-        } else {
-            System.out.println("Pattern does not match the text.");
-        }
-    }
 }
