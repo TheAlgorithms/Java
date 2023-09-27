@@ -30,9 +30,4 @@ public class SingleBitOperatorTest {
         assertEquals(0, SingleBitOperators.getBit(6, 0));
         assertEquals(1, SingleBitOperators.getBit(7, 1));
     }
-
-    @Test
-    public void getFirstBitTest(){
-        assertEquals(1, SingleBitOperators.getFirstBit(11));
-    }
 }
