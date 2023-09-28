@@ -1,7 +1,6 @@
 package com.thealgorithms.misc;
 import java.util.*;
 
-
 /**
  * Solution for The Four Sum Problem.
  * @author mouss3abbb

@@ -1,14 +1,13 @@
 package com.thealgorithms.misc;
 
-import org.apache.commons.lang3.tuple.Pair;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.apache.commons.lang3.tuple.Pair;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test cases for The Four Sum Problem.
@@ -36,18 +35,18 @@ public class FourSumProblemTest {
 
     @Test
     void testTwoSumMultipleSolutions() {
-        final var values = new ArrayList<>(List.of(-2, 5, 0, 6,5,5,0,-1));
+        final var values = new ArrayList<>(List.of(-2, 5, 0, 6, 5, 5, 0, -1));
         final var solution1 = new ArrayList<>(List.of(-2, 5, 0, 6));
-        final var solution2 = new ArrayList<>(List.of(5,5,0,-1));
+        final var solution2 = new ArrayList<>(List.of(5, 5, 0, -1));
         Collections.sort(solution1);
         Collections.sort(solution2);
         final int target = 9;
-        final var result1 = FourSumProblem.Hashing(values,target).get(0);
+        final var result1 = FourSumProblem.Hashing(values, target).get(0);
         Collections.sort(result1);
-        final var result2 = FourSumProblem.Hashing(values,target).get(1);
+        final var result2 = FourSumProblem.Hashing(values, target).get(1);
         Collections.sort(result2);
-        assertEquals(solution1,result1);
-        assertEquals(solution2,result2);
+        assertEquals(solution1, result1);
+        assertEquals(solution2, result2);
     }
 
     @Test
