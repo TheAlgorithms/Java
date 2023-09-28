@@ -14,19 +14,19 @@ public class final SingleBitOperators {
     /**
      * Set the bit at position 'bit' to 1 in the 'num' variable
      */
-    public static int setBit(final int num,final int bit) {
+    public static int setBit(final int num, final int bit) {
         return num | (1 << bit);
     }
     /**
      * Clears the bit located at 'bit' from 'num'
      */
-    public static int clearBit(final int num,final int bit) {
+    public static int clearBit(final int num, final int bit) {
         return num & ~(1 << bit);
     }
     /**
      * Get the bit located at 'bit' from 'num'
      */
-    public static int getBit(final int num,final int bit) {
+    public static int getBit(final int num, final int bit) {
         return ((num >> bit) & 1);
     }
 }
