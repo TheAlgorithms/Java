@@ -4,7 +4,7 @@ package com.thealgorithms.bitmanipulation;
  * Author: lukasb1b (https://github.com/lukasb1b)
  */
 
-public class final SingleBitOperators {
+public class final SingleBitOperator {
     /**
      * Flip the bit at position 'bit' in 'num'
      */
