@@ -30,6 +30,6 @@ public class FindMaxRecursion {
      * @return max value of {@code array}
      */
     public static int max(int[] array) {
-        return array.length == 1 ? array[0] : max(array, 0, array.length-1);
+        return array.length == 1 ? array[0] : max(array, 0, array.length - 1);
     }
 }
