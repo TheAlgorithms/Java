@@ -1,4 +1,5 @@
 package com.thealgorithms.others;
+import java.util.Arrays;
 
 public final class SpiralMatrixII {
     private SpiralMatrixII() {
