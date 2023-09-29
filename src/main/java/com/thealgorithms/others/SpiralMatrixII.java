@@ -1,52 +1,46 @@
 package com.thealgorithms.others;
 
-import java.util.Arrays;
-
-public
-class SpiralMatrixII {
-public
-  int[][] generateMatrix(int n) {
-    int[][] result = new int[n][n];
-    int num = 1;
-    int top = 0, bottom = n - 1, left = 0, right = n - 1;
-
-    while (num <= n * n) {
-      // Traverse right
-      for (int i = left; i <= right && num <= n * n; i++) {
-        result[top][i] = num++;
-      }
-      top++;
-
-      // Traverse down
-      for (int i = top; i <= bottom && num <= n * n; i++) {
-        result[i][right] = num++;
-      }
-      right--;
-
-      // Traverse left
-      for (int i = right; i >= left && num <= n * n; i--) {
-        result[bottom][i] = num++;
-      }
-      bottom--;
-
-      // Traverse up
-      for (int i = bottom; i >= top && num <= n * n; i--) {
-        result[i][left] = num++;
-      }
-      left++;
+public final class SpiralMatrixII {
+    private SpiralMatrixII() {
     }
+        static public int[][] generateMatrix(int size) {
+        int[][] result = new int[size][size];
+        int num = 1;
+        int top = 0, bottom = size - 1, left = 0, right = size - 1;
 
-    return result;
-  }
+        while (num <= size * size) {
+            // Traverse right
+            for (int i = left; i <= right && num <= size * size; i++) {
+                result[top][i] = num++;
+            }
+            top++;
 
-public
-  static void main(String[] args) {
-    SpiralMatrixII solution = new SpiralMatrixII();
-    int n = 3;
-    int[][] result = solution.generateMatrix(n);
+            // Traverse down
+            for (int i = top; i <= bottom && num <= size * size; i++) {
+                result[i][right] = num++;
+            }
+            right--;
 
-    for (int i = 0; i < n; i++) {
-      System.out.println(Arrays.toString(result[i]));
+            // Traverse left
+            for (int i = right; i >= left && num <= size * size; i--) {
+                result[bottom][i] = num++;
+            }
+            bottom--;
+
+            // Traverse up
+            for (int i = bottom; i >= top && num <= size * size; i--) {
+                result[i][left] = num++;
+            }
+            left++;
+        }
+        return result;
     }
-  }
+    public static void main(String[] args) {
+        SpiralMatrixII solution = new SpiralMatrixII();
+        int size = 3;
+        int[][] result = solution.generateMatrix(size);
+        for (int i = 0; i < size; i++) {
+            System.out.println(Arrays.toString(result[i]));
+        }
+    }
 }
