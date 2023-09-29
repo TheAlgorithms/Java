@@ -3,7 +3,7 @@ package com.thealgorithms.others;
 public final class SpiralMatrixII {
     private SpiralMatrixII() {
     }
-        static public int[][] generateMatrix(int size) {
+    static public int[][] generateMatrix(int size) {
         int[][] result = new int[size][size];
         int num = 1;
         int top = 0, bottom = size - 1, left = 0, right = size - 1;

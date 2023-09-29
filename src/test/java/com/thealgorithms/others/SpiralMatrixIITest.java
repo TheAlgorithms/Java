@@ -8,7 +8,7 @@ public class SpiralMatrixIITest {
 
     @Test
     public void testGeneratedMatrixSize() {
-        int size = 3;  // Change this to test different matrix sizes
+        int size = 3; // Change this to test different matrix sizes
         int[][] result = SpiralMatrixII.generateMatrix(size);
         assertEquals(size, result.length);
         for (int i = 0; i < size; i++) {
@@ -18,11 +18,7 @@ public class SpiralMatrixIITest {
 
     @Test
     public void testGeneratedMatrixCorrectness() {
-        int[][] expectedMatrix = {
-                {1, 2, 3},
-                {8, 9, 4},
-                {7, 6, 5}
-        };
+        int[][] expectedMatrix = {{1, 2, 3}, {8, 9, 4}, {7, 6, 5}};
 
         int size = 3;
         int[][] result = SpiralMatrixII.generateMatrix(size);
