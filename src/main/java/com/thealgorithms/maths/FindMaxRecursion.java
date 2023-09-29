@@ -1,25 +1,6 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public class FindMaxRecursion {
-
-    public static void main(String[] args) {
-        Random rand = new Random();
-
-        /* rand size */
-        int size = rand.nextInt(100) + 1;
-        int[] array = new int[size];
-
-        /* init array with rand numbers */
-        for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt() % 100;
-        }
-
-        assert max(array) == Arrays.stream(array).max().getAsInt();
-        assert max(array, 0, array.length - 1) == Arrays.stream(array).max().getAsInt();
-    }
 
     /**
      * Get max of array using divide and conquer algorithm
