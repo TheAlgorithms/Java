@@ -43,5 +43,4 @@ public class SecondMinMax {
         if (secMax == Integer.MIN_VALUE) throw new IllegalArgumentException("Cant find Second Maximum in array full of same numbers");
         return secMax;
     }
-
 }
