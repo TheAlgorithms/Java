@@ -11,7 +11,7 @@ public class SecondMinMax {
      */
 
     public static int findSecondMin(int[] arr) {
-        int secMin = Integer.MAX_VALUE, min  = Integer.MAX_VALUE;
+        int secMin = Integer.MAX_VALUE, min = Integer.MAX_VALUE;
         if (arr.length == 0)
             throw new IllegalArgumentException("Cant find Second Minimum for empty array");
         else if (arr.length == 1)
@@ -23,13 +23,12 @@ public class SecondMinMax {
                     min = num;
                 } else if ((num < secMin) && (num != min))
                     secMin = num;
-        if (secMin == Integer.MAX_VALUE)
-            throw new IllegalArgumentException("Cant find Second Minimum in array full of same numbers");
+        if (secMin == Integer.MAX_VALUE) throw new IllegalArgumentException("Cant find Second Minimum in array full of same numbers");
         return secMin;
     }
 
     public static int findSecondMax(int[] arr) {
-        int secMax = Integer.MIN_VALUE, max  = Integer.MIN_VALUE;
+        int secMax = Integer.MIN_VALUE, max = Integer.MIN_VALUE;
         if (arr.length == 0)
             throw new IllegalArgumentException("Cant find Second Maximum for empty array");
         else if (arr.length == 1)
