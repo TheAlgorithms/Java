@@ -9,12 +9,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class FindMaxRecusionTest {
+public class FindMaxRecursionTest {
 
     @ParameterizedTest
     @MethodSource("inputStream")
     void numberTests(int expected, int[] input) {
-        Assertions.assertEquals(expected, FindMaxRecusion.max(input));
+        Assertions.assertEquals(expected, FindMaxRecursion.max(input));
     }
 
     private static Stream<Arguments> inputStream() {
