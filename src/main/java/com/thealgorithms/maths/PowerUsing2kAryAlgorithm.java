@@ -1,5 +1,5 @@
 package com.thealgorithms.maths;
- 
+
 public class PowerUsing2kAryAlgorithm {
 
     /**
@@ -17,11 +17,11 @@ public class PowerUsing2kAryAlgorithm {
      * @throws IllegalArgumentException If the exponent,mod are negative!
      * @author Razat Aggarwal (https://github.com/razat-thapar)
      */
- 
-	public static long pow(long base, long exp, long mod) throws IllegalArgumentException {
-		long t = 1L;
+
+    public static long pow(long base, long exp, long mod) throws IllegalArgumentException {
+        long t = 1L;
         if (exp < 0 || mod < 0) {
-			throw new IllegalArgumentException("exponent and mod can't be negative!");
+            throw new IllegalArgumentException("exponent and mod can't be negative!");
         }
         while (exp > 0) {
             // for cases where exponent
@@ -33,4 +33,4 @@ public class PowerUsing2kAryAlgorithm {
         }
         return t % mod;
     }
- }
+}
