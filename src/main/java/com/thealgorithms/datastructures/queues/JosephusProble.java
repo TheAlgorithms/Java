@@ -18,12 +18,5 @@ public class JosephusProblem {
 		}
 		return queue.peek();	
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int n=6;
-		int k=5;
-		int ans=Josephus(n,k);
-		System.out.println(ans);
-	}
 
 }
