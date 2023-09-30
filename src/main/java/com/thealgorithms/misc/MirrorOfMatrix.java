@@ -40,6 +40,7 @@ public class MirrorOfMatrix {
             System.out.println();
         }
     }
+
     public static void main(String[] args) {
         // To take Inputs From the User
         Scanner sc = new Scanner(System.in);
@@ -54,7 +55,7 @@ public class MirrorOfMatrix {
                 arr[i][j] = sc.nextInt();
             }
         }
-        // To Print the Original MAtrix
+        // To Print the Original Matrix
         System.out.println("The Original matrix is:");
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -64,4 +65,5 @@ public class MirrorOfMatrix {
         }
         // Calling Function Mirror
         Mirror(arr);
-    }}
+    }
+}
