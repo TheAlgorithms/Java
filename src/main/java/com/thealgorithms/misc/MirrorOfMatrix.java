@@ -17,12 +17,12 @@ The Original matrix is:   |   The Mirror matrix is:
 public class MirrorOfMatrix {
 
     // Function Mirror that is used to mirror the Matrix
-    public static void Mirror(int[][] arr){
+    public static void Mirror(int[][] arr) {
 
-        for(int i = 0; i < arr.length; i++){
+        for(int i = 0; i < arr.length; i++) {
             int li = 0;
             int hi = arr[i].length - 1;
-            while(li < hi){
+            while(li < hi) {
                 int temp = arr[i][li];
                 arr[i][li] = arr[i][hi];
                 arr[i][hi] = temp;
