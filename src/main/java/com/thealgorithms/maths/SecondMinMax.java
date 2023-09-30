@@ -15,7 +15,7 @@ public final class SecondMinMax {
 
     public static int findSecondMin(final int[] arr) {
         int secMin = Integer.MAX_VALUE, min = Integer.MAX_VALUE;
-        checkInput( arr );
+        checkInput(arr);
         for (final int num : arr)
             if (num < min) {
                 secMin = min;
@@ -28,7 +28,7 @@ public final class SecondMinMax {
 
     public static int findSecondMax(final int[] arr) {
         int secMax = Integer.MIN_VALUE, max = Integer.MIN_VALUE;
-        checkInput( arr );
+        checkInput(arr);
         for (final int num : arr)
             if (num > max) {
                 secMax = max;
