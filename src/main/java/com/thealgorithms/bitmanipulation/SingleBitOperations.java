@@ -5,7 +5,7 @@ package com.thealgorithms.bitmanipulation;
  */
 
 public final class SingleBitOperations {
-    private SingleBitOperator() {
+    private SingleBitOperations() {
     }
     /**
      * Flip the bit at position 'bit' in 'num'
