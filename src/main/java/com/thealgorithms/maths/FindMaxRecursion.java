@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-public class FindMaxRecursion {
+public final class FindMaxRecursion {
 
     /**
      * Get max of array using divide and conquer algorithm
@@ -10,7 +10,7 @@ public class FindMaxRecursion {
      * @param high the index of the last element
      * @return max of {@code array}
      */
-    public static int max(int[] array, int low, int high) {
+    public static int max(final int[] array, final int low, final int high) {
         if (low == high) {
             return array[low]; // or array[high]
         }
