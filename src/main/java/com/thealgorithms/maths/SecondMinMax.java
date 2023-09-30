@@ -1,10 +1,11 @@
 package com.thealgorithms.maths;
 
+import java.util.function.BiPredicate;
+
 public final class SecondMinMax {
 
     /**
-     * @brief Finds the Second minimum / maximum value from the array
-     * @param int array
+     * Utility class for finding second maximum or minimum based on BiPredicate
      * @exception IllegalArgumentException => if input array is of length less than 2 also if all elements are same
      * @return the second minimum / maximum value from the input array
      * @author Bharath Sanjeevi ( https://github.com/BharathSanjeeviT )
@@ -13,38 +14,44 @@ public final class SecondMinMax {
     private SecondMinMax() {
     }
 
-    public static int findSecondMin(final int[] arr) {
+    private static int secondBest(final int[] arr, final int initialVal, final BiPredicate<Integer, Integer> isBetter) {
         checkInput(arr);
-        int secMin = Integer.MAX_VALUE, min = Integer.MAX_VALUE;
-        for (final int num : arr)
-            if (num < min) {
-                secMin = min;
-                min = num;
-            } else if ((num < secMin) && (num != min)) {
-                secMin = num;
+        int best = initialVal, secBest = initialVal;
+        for (final int num : arr) {
+            if (isBetter.test(num, best)) {
+                secBest = best;
+                best = num;
+            } else if ((isBetter.test(num, secBest)) && (num != best)) {
+                secBest = num;
             }
-        return checkOutput(secMin);
+        }
+        checkOutput(secBest, initialVal);
+        return secBest;
+
+    }
+
+    /**
+     * @brief Finds the Second minimum / maximum value from the array
+     * @param arr the input array
+     * @exception IllegalArgumentException => if input array is of length less than 2 also if all elements are same
+     * @return the second minimum / maximum value from the input array
+     * @author Bharath Sanjeevi ( https://github.com/BharathSanjeeviT )
+     */
+
+    public static int findSecondMin(final int[] arr) {
+        return secondBest(arr, Integer.MAX_VALUE, (a, b) -> a < b);
     }
 
     public static int findSecondMax(final int[] arr) {
-        checkInput(arr);
-        int secMax = Integer.MIN_VALUE, max = Integer.MIN_VALUE;
-        for (final int num : arr)
-            if (num > max) {
-                secMax = max;
-                max = num;
-            } else if ((num > secMax) && (num != max)) {
-                secMax = num;
-            }
-        return checkOutput(secMax);
+        return secondBest(arr, Integer.MIN_VALUE, (a, b) -> a > b);
     }
 
     private static void checkInput(final int[] arr) {
         if (arr.length < 2) throw new IllegalArgumentException("Input array must have length of at least two");
     }
 
-    private static int checkOutput(final int secNum) {
-        if ((secNum == Integer.MAX_VALUE) || (secNum == Integer.MIN_VALUE)) throw new IllegalArgumentException("Input array should have at least 2 distinct elements");
+    private static int checkOutput(final int secNum, int initialVal) {
+        if (secNum == initialVal) throw new IllegalArgumentException("Input array should have at least 2 distinct elements");
         return secNum;
     }
 }
