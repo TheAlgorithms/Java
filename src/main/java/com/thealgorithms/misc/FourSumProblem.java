@@ -25,8 +25,8 @@ public class FourSumProblem {
                         right--;
                     } else if (nums[left] + nums[right] < sum) {
                         left++;
-                    } else {
-                        result.add(Arrays.asList(new Integer[]{nums[i], nums[j], nums[left++], nums[right--]}));
+                    } else {                        
+                        result.add(Arrays.asList(new Integer[] {nums[i], nums[j], nums[left++], nums[right--]}));
                         while (left < right && nums[left] == nums[left - 1]) {
                             left++;
                         }
