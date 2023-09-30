@@ -1,3 +1,5 @@
+package com.thealgorithms.misc;
+
 import java.util.Scanner;
 
 public class ZigzagConversion {
