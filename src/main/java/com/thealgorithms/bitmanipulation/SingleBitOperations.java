@@ -4,7 +4,7 @@ package com.thealgorithms.bitmanipulation;
  * Author: lukasb1b (https://github.com/lukasb1b)
  */
 
-public final class SingleBitOperator {
+public final class SingleBitOperations {
     private SingleBitOperator() {
     }
     /**
