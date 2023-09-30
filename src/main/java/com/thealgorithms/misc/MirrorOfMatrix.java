@@ -55,7 +55,7 @@ public class MirrorOfMatrix {
                 arr[i][j] = sc.nextInt();
             }
         }
-        // To Print the Original Matrix
+        // To Print the Original MAtrix
         System.out.println("The Original matrix is:");
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
