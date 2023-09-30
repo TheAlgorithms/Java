@@ -1,9 +1,4 @@
 package com.thealgorithms.dynamicprogramming;
-
-// gfg -Given a string str of length N, you have to find number of palindromic subsequence (need not necessarily be distinct) present in the string str.
-// Note: You have to return the answer module 109+7;
-
-
 import java.util.Arrays;
 
 class CountPalindromicSubsequences {
@@ -21,9 +16,7 @@ class CountPalindromicSubsequences {
             return 0;
         }
         if (memo[i][j] != -1) return memo[i][j];
-        if (str.charAt(i) == str.charAt(j))
-            return memo[i][j] = (1 + f(i + 1, str, j, memo) % MOD + f(i, str, j - 1, memo) % MOD) % MOD;
-        else
-            return memo[i][j] = (f(i + 1, str, j, memo) % MOD + f(i, str, j - 1, memo) % MOD - f(i + 1, str, j - 1, memo) % MOD + MOD) % MOD;
+        if (str.charAt(i) == str.charAt(j)) return memo[i][j] = (1 + f(i + 1, str, j, memo) % MOD + f(i, str, j - 1, memo) % MOD) % MOD;
+        else return memo[i][j] = (f(i + 1, str, j, memo) % MOD + f(i, str, j - 1, memo) % MOD - f(i + 1, str, j - 1, memo) % MOD + MOD) % MOD;
     }
-   }
+}
