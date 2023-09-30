@@ -1,6 +1,9 @@
-import org.junit.Test;
-import java.util.*;
+package com.thealgorithms.misc;
+
 import static org.junit.Assert.*;
+
+import java.util.*;
+import org.junit.Test;
 
 /**
  * Solution for The Four Sum Problem.
@@ -17,48 +20,53 @@ public class FourSumProblemTest {
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
+
     // one solution
     @Test
     public void fourSum2() {
-        int value[] = {2,2,2,2,2};
+        int value[] = {2, 2, 2, 2, 2};
         final int target = 8;
-        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(2,2,2,2)));
+        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(2, 2, 2, 2)));
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
+
     // one solution
     @Test
-    public void fourSum3(){
+    public void fourSum3() {
         int value[] = {-2, 5, 0, 6};
         final int target = 9;
-        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(-2,0,5,6)));
+        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(-2, 0, 5, 6)));
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
+
     // no solution
     @Test
-    public void fourSum4(){
+    public void fourSum4() {
         int value[] = {-2, 5, 0, 6};
         final int target = 3;
         List<List<Integer>> solution = new ArrayList<>();
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
+
     // no solution
     @Test
-    public void fourSum5(){
+    public void fourSum5() {
         int value[] = {-2, 5, 0, 6};
         final int target = 3;
         List<List<Integer>> solution = new ArrayList<>();
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
+
     // time limit check
     @Test
     public void fourSum6() {
-        int value[] = {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2};
+        int value[] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
         final int target = 8;
-        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(2,2,2,2)));
+        List<List<Integer>> solution = new ArrayList<>(Arrays.asList(Arrays.asList(2, 2, 2, 2)));
         List<List<Integer>> result = FourSumProblem.fourSum(value, target);
         assertEquals(solution, result);
     }
