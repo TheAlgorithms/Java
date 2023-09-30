@@ -1,3 +1,5 @@
+package com.thealgorithms.misc;
+
 import java.util.*;
 
 /**
@@ -25,7 +27,7 @@ public class FourSumProblem {
                         right--;
                     } else if (nums[left] + nums[right] < sum) {
                         left++;
-                    } else {                        
+                    } else {
                         result.add(Arrays.asList(new Integer[] {nums[i], nums[j], nums[left++], nums[right--]}));
                         while (left < right && nums[left] == nums[left - 1]) {
                             left++;
