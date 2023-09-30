@@ -2,8 +2,7 @@ package com.thealgorithms.maths;
 
 public final class FindMaxRecursion {
 
-    private FindMaxRecursion() {
-        
+    private FindMaxRecursion() {       
     }
     /**
      * Get max of array using divide and conquer algorithm
