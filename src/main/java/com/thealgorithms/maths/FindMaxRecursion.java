@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 public final class FindMaxRecursion {
+    
     private FindMaxRecursion() {       
     }
     /**
