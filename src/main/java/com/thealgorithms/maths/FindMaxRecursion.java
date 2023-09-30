@@ -29,7 +29,7 @@ public class FindMaxRecursion {
      * @param array contains elements
      * @return max value of {@code array}
      */
-    public static int max(int[] array) {
+    public static int max(final int[] array) {
         return array.length == 1 ? array[0] : max(array, 0, array.length - 1);
     }
 }
