@@ -37,9 +37,9 @@ public class RecursiveBinarySearch {
         return -1;
     }
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
-        int arr[] = {1, 2, 4, 7, 10, 22, 31, 40,55,97,100};
+        int[] arr = {1, 2, 4, 7, 10, 22, 31, 40,55,97,100};
         int target = 13;
         int result = recBinarySearch(arr, 0, arr.length - 1, target);
         if (result == -1)
