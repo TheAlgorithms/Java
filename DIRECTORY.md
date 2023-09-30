@@ -19,6 +19,7 @@
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
             * [WordSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/WordSearch.java)
           * bitmanipulation
+            * [BitUtils](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BitUtils.java)
             * [HighestSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/HighestSetBit.java)
             * [IndexOfRightMostSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IndexOfRightMostSetBit.java)
             * [IsEven](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsEven.java)
@@ -551,6 +552,7 @@
             * [PowerSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PowerSumTest.java)
             * [WordSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
           * bitmanipulation
+            * [BitUtilsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BitUtilsTest.java)
             * [HighestSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/HighestSetBitTest.java)
             * [IndexOfRightMostSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IndexOfRightMostSetBitTest.java)
             * [IsEvenTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsEvenTest.java)
