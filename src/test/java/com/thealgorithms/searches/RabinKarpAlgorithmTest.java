@@ -2,55 +2,21 @@ package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class RabinKarpAlgorithmTest {
 
     RabinKarpAlgorithm RKA = new RabinKarpAlgorithm();
     int q = 101;
 
-    @Test
-    // valid test case
-    public void RabinKarpAlgorithmTestExample() {
-        String txt = "This is an example for rabin karp algorithmn";
-        String pat = "algorithmn";
-        int value = RKA.search(pat, txt, q);
-        assertEquals(value, 34);
-    }
+    @ParameterizedTest
+    @CsvSource({ "This is an example for rabin karp algorithmn, algorithmn", "AAABBDDG, AAA", "AAABBCCBB, BBCC",
+        "AAAABBBBCCC, CCC", "ABCBCBCAAB, AADB" })
+    void RabinKarpAlgorithmTestExample(String txt, String pat) {
 
-    @Test
-    // valid test case
-    public void RabinKarpAlgorithmTestFront() {
-        String txt = "AAABBDDG";
-        String pat = "AAA";
-        int value = RKA.search(pat, txt, q);
-        assertEquals(value, 0);
-    }
-
-    @Test
-    // valid test case
-    public void RabinKarpAlgorithmTestMiddle() {
-        String txt = "AAABBCCBB";
-        String pat = "BBCC";
-        int value = RKA.search(pat, txt, q);
-        assertEquals(value, 3);
-    }
-
-    @Test
-    // valid test case
-    public void RabinKarpAlgorithmTestLast() {
-        String txt = "AAAABBBBCCC";
-        String pat = "CCC";
-        int value = RKA.search(pat, txt, q);
-        assertEquals(value, 8);
-    }
-
-    @Test
-    // valid test case
-    public void RabinKarpAlgorithmTestNotFound() {
-        String txt = "ABCBCBCAAB";
-        String pat = "AADB";
-        int value = RKA.search(pat, txt, q);
-        assertEquals(value, -1);
+    int indexFromOurAlgorithm = RKA.search(pat, txt, q);
+    int indexFromLinearSearch = txt.indexOf(pat);
+    assertEquals(indexFromOurAlgorithm, indexFromLinearSearch);
     }
 }
