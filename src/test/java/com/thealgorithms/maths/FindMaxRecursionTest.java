@@ -23,6 +23,6 @@ public class FindMaxRecursionTest {
 
     @Test
     public void testFindMaxThrowsExceptionForEmptyInput() {
-        assertThrows(IllegalArgumentException.class, () -> FindMax.findMax(new int[] {}));
+        assertThrows(IllegalArgumentException.class, () -> FindMaxRecursion.max(new int[] {}));
     }
 }
