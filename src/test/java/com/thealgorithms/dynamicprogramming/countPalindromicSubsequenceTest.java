@@ -15,4 +15,9 @@ public class countPalindromicSubsequenceTest {
     void hasTwoSameChar() {
         assertEquals(4, CountPalindromicSubsequences.countPS("aab"));
     }
+
+    @Test
+    void hasAllSameChar() {
+        assertEquals(15, CountPalindromicSubsequences.countPS("aaaa"));
+    }
 }
