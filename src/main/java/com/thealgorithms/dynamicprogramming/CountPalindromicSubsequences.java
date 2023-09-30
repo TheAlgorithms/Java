@@ -3,15 +3,17 @@ package com.thealgorithms.dynamicprogramming;
 // gfg -Given a string str of length N, you have to find number of palindromic subsequence (need not necessarily be distinct) present in the string str.
 // Note: You have to return the answer module 109+7;
 
-class Solution
-{   int MOD =(int) (1e9+7);
-    long countPS(String str){
+import java.util.Arrays;
+
+class CountPalindromicSubsequences{
+    static int MOD =(int) (1e9+7);
+    public static long countPS(String str){
         // Your code here
         long[][] memo = new long[str.length()][str.length()];
         for(long[] m : memo) Arrays.fill(m, -1);
         return f(0, str, str.length() -1, memo);
     }
-    long f(int i, String str, int j, long[][] memo){
+    static long f(int i, String str, int j, long[][] memo){
         if( i > j) return 0;
         if(i == j){
             if(str.charAt(i) == str.charAt(j)) return 1;
