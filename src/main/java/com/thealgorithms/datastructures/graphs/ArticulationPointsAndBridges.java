@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 /*
  *
- * @aurthor - Prabhat-Kumar-42 
+ * @aurthor - Prabhat-Kumar-42
  * @github - https://github.com/Prabhat-Kumar-42
  *
  * Problem :
  *
- * Given an adjacency list of a graph with vertices = v, having 
+ * Given an adjacency list of a graph with vertices = v, having
  * 0 based indexing. Find all Articulation Points and Articulation
  * Bridge Present in Graph
  *
  * Articulation Point : vertex whcih when removed increases the number of
  * connected component in graph.
  *
- * Articulation Bridge : edge which when removed increases the number of 
+ * Articulation Bridge : edge which when removed increases the number of
  * connected component in graph.
  *
- * eg : Given graph with vertices = 5 and  
+ * eg : Given graph with vertices = 5 and
  *     adj list is :  vertex -> neighbours (Assuming all edges are bidirectional)
  *                    0 -> 1, 2
  *                    1 -> 2
  *                    2 -> 3
  *                    3 -> 4
  *
- *      Graph is : 
- *              
+ *      Graph is :
+ *
  *                0-------1
  *                |      /
  *                |     /
@@ -39,10 +39,10 @@ import java.util.ArrayList;
  *                2----------3
  *
  *     current connected component = 1
- *     
+ *
  *  -> Articulation Points : 2 , 3
  *     Explanation :
- *             
+ *
  *             -> When removing 2, graph changes to below and connected components increases
  *                from 1 to 2.
  *
@@ -55,8 +55,8 @@ import java.util.ArrayList;
  *                | /        |
  *                |/         |
  *                           3
- *                
- *                  
+ *
+ *
  *              -> When removing 3, graph changes to below and connected components increases
  *                from 1 to 2.
  *
@@ -66,14 +66,14 @@ import java.util.ArrayList;
  *                |    /
  *                |   /
  *                |  /       4
- *                | /        
- *                |/         
- *                2           
- *                
+ *                | /
+ *                |/
+ *                2
+ *
  *
  *  -> Articulation Bridges: edge : 2-3, edge: 3-4
  *     Explanation :
- *             
+ *
  *             -> When removing edge : 2-3, graph changes to below and connected components increases
  *                from 1 to 2.
  *
@@ -86,8 +86,8 @@ import java.util.ArrayList;
  *                | /        |
  *                |/         |
  *                2          3
- *                
- *                  
+ *
+ *
  *              -> When removing edge : 3-4, graph changes to below and connected components increases
  *                from 1 to 2.
  *
@@ -97,14 +97,14 @@ import java.util.ArrayList;
  *                |    /
  *                |   /
  *                |  /       4
- *                | /        
- *                |/         
+ *                | /
+ *                |/
  *                2----------3
- *                
+ *
  */
 
 class ArticulationPointsAndBridges {
-    
+
     // Edge class used to store bridges
     static class Edge {
         int u, v;
@@ -125,8 +125,8 @@ class ArticulationPointsAndBridges {
     private int[] parent; // Parent vertex in DFS traversal, initialized to -1
     private boolean[] articulationPoints; // To store articulation points
     private ArrayList<Edge> bridges; // ArrayList to store bridges
-    
-    /** 
+
+    /**
      * Constructor
      * @param v number of vertex in graph
      *
@@ -144,8 +144,8 @@ class ArticulationPointsAndBridges {
 
         // Initialize parent to -1 and adjacency lists
         for (int i = 0; i < v; ++i) {
-          parent[i] = -1;
-          adj.add(new ArrayList<>());
+            parent[i] = -1;
+            adj.add(new ArrayList<>());
         }
     }
 
@@ -170,7 +170,7 @@ class ArticulationPointsAndBridges {
 
     /* Helper function to perform DFS and find articulation points and bridges
      *
-     * @param u source vertex 
+     * @param u source vertex
      */
     private void findArticulationPointsAndBridges(int u) {
         int children = 0;
@@ -204,7 +204,7 @@ class ArticulationPointsAndBridges {
 
     /* Check if a vertex is an articulation point
      *
-     * @param u source vertex 
+     * @param u source vertex
      */
     public boolean isArticulationPoint(int u) {
         return articulationPoints[u];
