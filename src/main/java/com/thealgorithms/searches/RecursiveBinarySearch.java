@@ -43,7 +43,7 @@ public class RecursiveBinarySearch {
         int target = 13;
         int result = recBinarySearch(arr, 0, arr.length - 1, target);
         if (result == -1)
-            System.out.println("Target element is not in the array");
+            System.out.println("Target element is not in the array.");
         else
             System.out.println("Target element is at index " + result);
     }
