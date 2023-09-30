@@ -11,6 +11,9 @@ public final class FindMaxRecursion {
      * @return max of {@code array}
      */
     public static int max(final int[] array, final int low, final int high) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("array must be non-empty.");
+        }
         if (low == high) {
             return array[low]; // or array[high]
         }
