@@ -23,12 +23,12 @@ public class Pangram {
      * @param s The String to check
      * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
-    public static boolean isPangramOrNot(String s){
+    public static boolean isPangramOrNot(String s) {
         // an approach using Java Collection Framework
         HashSet<Character> alpha = new HashSet<Character>();
         s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
-            if (s.charAt(i)!=' ') alpha.add(s.charAt(i));
+            if (s.charAt(i) != ' ') alpha.add(s.charAt(i));
         if (alpha.size() == 26) return true;
         return false;
     }
