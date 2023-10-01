@@ -19,7 +19,6 @@ public class MirrorOfMatrixTest {
     public void testMirrorWithSingleRowMatrix() {
         int[][] arr = {{1, 2, 3, 4}};
         MirrorOfMatrix.Mirror(arr);
-        // The expected result is the reverse of the input row.
         int[][] expected = {{4, 3, 2, 1}};
         assertArrayEquals(expected, arr);
     }
