@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import java.util.HashSet;
+
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
@@ -13,6 +15,22 @@ public class Pangram {
         assert !isPangram("The quick brown fox jumps over the azy dog"); // L is missing
         assert !isPangram("+-1234 This string is not alphabetical");
         assert !isPangram("\u0000/\\");
+    }
+
+    /**
+     * Checks if a String is considered a Pangram
+     *
+     * @param s The String to check
+     * @return {@code true} if s is a Pangram, otherwise {@code false}
+     */
+    // alternative approach using Java Collection Framework
+    public static boolean isPangramUsingSet(String s) {
+        HashSet<Character> alpha = new HashSet<Character>();
+        s = s.trim().toLowerCase();
+        for (int i = 0; i < s.length(); i++)
+            if (s.charAt(i) != ' ') alpha.add(s.charAt(i));
+        if (alpha.size() == 26) return true;
+        return false;
     }
 
     /**
