@@ -17,13 +17,13 @@ Binary to Gray:
 
 import java.io.IOException;
 import java.util.*;
-class BinarytoGray{
-    //Function to convert given binary code to gray code.
+class BinarytoGray {
+    // Function to convert given binary code to gray code.
     public String binaryToGray(String bin) {
         StringBuilder sb = new StringBuilder();
         /*
-        Initializing a 2d matrice with one column for given binary code and 
-        another column for converted gray code
+        Initializing a 2d matrice with one column for given binary code and
+        another column for converted gray code.
         */
         char[][] matrice = new char[bin.length()][2];
 
@@ -37,7 +37,8 @@ class BinarytoGray{
             char x = (bin.charAt(i) == bin.charAt(i - 1)) ? '0' : '1';
             matrice[i][1] = x;
             matrice[i][0] = bin.charAt(i);
-         }
+
+        }
 
         for (i = 0; i < bin.length(); i++) {
             sb.append(matrice[i][1]);
@@ -49,5 +50,6 @@ class BinarytoGray{
         BinarytoGray obj = new BinarytoGray();
         String bin = "1001001"; // Given Binary Code
         System.out.println(obj.binaryToGray(bin));
+
     }   
 }

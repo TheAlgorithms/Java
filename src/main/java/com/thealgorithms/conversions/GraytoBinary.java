@@ -19,8 +19,8 @@ class GraytoBinary {
     public String grayToBinary(String gray) {
         StringBuilder sb = new StringBuilder();
         /*
-        Initializing a 2d matrice with one column for given gray code and 
-        another column for converted binary code
+        Initializing a 2d matrice with one column for given gray code and
+        another column for converted binary code.
         */
         char[][] matrice = new char[gray.length()][2];
 
@@ -47,10 +47,10 @@ class GraytoBinary {
         return sb.toString();
     }
 
-    public static void main(String as[]) throws IOException
-    {
+    public static void main(String as[]) throws IOException {
         GraytoBinary obj = new GraytoBinary();
         String gray = "1101101"; // Given Gray Code
         System.out.println(obj.grayToBinary(gray));
+        
     }   
 }
