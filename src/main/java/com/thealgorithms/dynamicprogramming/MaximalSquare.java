@@ -1,4 +1,7 @@
-//dp maximal Square 21st August
+package com.thealgorithms.dynamicprogramming;
+/*
+https://leetcode.com/problems/maximal-square/description/
+*/
 class MaximalSquare {
     public int maximalSquare(char[][] matrix) {
         int m = matrix.length;
