@@ -1,5 +1,4 @@
 package com.thealgorithms.datastructures.lists;
-
 /*
  *
  * @aurthor - Prabhat-Kumar-42
@@ -106,67 +105,38 @@ package com.thealgorithms.datastructures.lists;
 public class QuickSortLinkedList {
 
     // Linked List Node Structure
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
-
-    private ListNode head = null; // head of Linked list
-    private ListNode tail = null; // tail of Linked list
-
-    /*
-     *  function - insert : insert the values in the Linked List
-     *
-     *  @param  num : number to be inserted in Linked List
-     */
-    public void insert(int num) {
-        if (head == null) {
-            head = new ListNode(num);
-            tail = head;
-            return;
-        }
-        tail.next = new ListNode(num);
-        tail = tail.next;
-    }
-
-    // function - clear : clears the list
-    public boolean clear() {
-        head = tail = null;
-        return true;
-    }
-
-    // returns the Stored List
-    public ListNode getList() {
-        return head;
+    private SinglyLinkedList list = null; // head of Linked list
+    private Node head = null;
+    // Counstructor
+    public QuickSortLinkedList(SinglyLinkedList list) {
+        this.list = list;
+        this.head = list.getHead();
     }
 
     // Function to sort a linked list using the Quick Sort algorithm
     public void sortList() {
         head = sortList(head);
+        list.setHead(head);
     }
     // helper function to apply QuickSort to the stored list
-    public ListNode sortList(ListNode head) {
+    public Node sortList(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
 
         // Choose the first element as the pivot
-        ListNode pivot = head;
+        Node pivot = head;
         head = head.next;
         pivot.next = null;
 
-        ListNode lessHead = new ListNode(0); // stores the nodes cantaining data less than pivot node
-        ListNode lessTail = lessHead; // tail of lessHead
-        ListNode greaterHead = new ListNode(0); // stores the nodes cantaining data greater than pivot node
-        ListNode greaterTail = greaterHead; // tail of greaterHead
+        Node lessHead = new Node(); // stores the nodes cantaining data less than pivot node
+        Node lessTail = lessHead; // tail of lessHead
+        Node greaterHead = new Node(); // stores the nodes cantaining data greater than pivot node
+        Node greaterTail = greaterHead; // tail of greaterHead
 
         // Partition the list around the pivot
         while (head != null) {
-            if (head.val < pivot.val) {
+            if (head.value < pivot.value) {
                 lessTail.next = head;
                 lessTail = lessTail.next;
             } else {
@@ -181,15 +151,15 @@ public class QuickSortLinkedList {
         greaterTail.next = null;
 
         // Recursively sort the sublists
-        ListNode sortedLess = sortList(lessHead.next);
-        ListNode sortedGreater = sortList(greaterHead.next);
+        Node sortedLess = sortList(lessHead.next);
+        Node sortedGreater = sortList(greaterHead.next);
 
         // Combine the sorted sublists and pivot
         if (sortedLess == null) {
             pivot.next = sortedGreater;
             return pivot;
         } else {
-            ListNode current = sortedLess;
+            Node current = sortedLess;
             while (current.next != null) {
                 current = current.next;
             }
@@ -201,38 +171,27 @@ public class QuickSortLinkedList {
 
     public static void main(String[] args) {
         // Example usage
-        QuickSortLinkedList sorter = new QuickSortLinkedList();
-        sorter.insert(5);
-        sorter.insert(3);
-        sorter.insert(8);
-        sorter.insert(1);
-        sorter.insert(10);
-        sorter.insert(2);
-        sorter.insert(7);
-        sorter.insert(4);
-        sorter.insert(9);
-        sorter.insert(6);
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(5);
+        list.insert(3);
+        list.insert(8);
+        list.insert(1);
+        list.insert(10);
+        list.insert(2);
+        list.insert(7);
+        list.insert(4);
+        list.insert(9);
+        list.insert(6);
 
-        QuickSortLinkedList.ListNode unsortedHead = sorter.getList();
-
+        QuickSortLinkedList sorter = new QuickSortLinkedList(list);
         // Print the sorted linked list
         System.out.print("List before Applying QuickSort : ");
-        while (unsortedHead != null) {
-            System.out.print(unsortedHead.val + " ");
-            unsortedHead = unsortedHead.next;
-        }
+        list.print();
         System.out.println();
 
         sorter.sortList();
-
-        QuickSortLinkedList.ListNode sortedHead = sorter.getList();
-
-        System.out.print("List before Applying QuickSort : ");
-        // Print the sorted linked list
-        while (sortedHead != null) {
-            System.out.print(sortedHead.val + " ");
-            sortedHead = sortedHead.next;
-        }
+        System.out.print("List After Sort");
+        list.print();
         System.out.println();
     }
 }
