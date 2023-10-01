@@ -62,3 +62,9 @@ public class KruskalMST {
             System.out.println(edge.source + " - " + edge.destination + " : " + edge.weight);
     }
 }
+
+
+// In this implementation,
+//  Kruskal's algorithm finds the Minimum Spanning Tree (MST) by sorting the edges by weight and adding edges to the MST if they don't create a cycle.
+//  The findParent function implements path compression to efficiently find the representative of the set to which a vertex belongs. The MST is returned as a list of edges.
+//  The main method demonstrates the usage of the algorithm with a sample graph.

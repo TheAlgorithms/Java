@@ -63,3 +63,5 @@ public class HuffmanCoding {
         generateHuffmanCode(characters, frequencies);
     }
 }
+
+// Huffman coding is a widely used lossless data compression algorithm. It uses a variable-length prefix-free encoding of characters, based on their frequencies of occurrence, to compress data.

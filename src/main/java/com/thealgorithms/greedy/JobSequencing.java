@@ -34,3 +34,4 @@ public class JobSequencing {
                 }
             }
        
+// These examples illustrate the use of greedy algorithms to solve various problems. Greedy algorithms make locally optimal choices at each stage, aiming to find a global optimum. However, not all problems can be solved optimally using greedy algorithms, so careful analysis is required to determine if the greedy approach is suitable.
