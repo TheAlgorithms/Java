@@ -69,12 +69,12 @@ class PainterProblem{
         return  sum ;
     }
 
-    //Main method for a small test case.
-    public static void main(String[] args) {
-        int [] arr = { 30 ,80 , 67 , 54 ,90 ,54 ,76};
-        int n  =  arr.length ;
-        int k = 2 ;
-        System.out.println(partition(arr,n,k));
-    }
+    // Main method for a small test case.
+    // public static void main(String[] args) {
+    //     int [] arr = { 30 ,80 , 67 , 54 ,90 ,54 ,76};
+    //     int n  =  arr.length ;
+    //     int k = 2 ;
+    //     System.out.println(partition(arr,n,k));
+    // }
 
 }
