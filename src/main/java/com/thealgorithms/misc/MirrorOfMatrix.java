@@ -43,29 +43,4 @@ public final class MirrorOfMatrix {
         }
     }
 
-    public static void main(String[] args) {
-        // To take Inputs From the User
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of rows in the 2D matrix:");
-        int row = sc.nextInt();
-        System.out.println("Enter the number of columns in the 2D matrix:");
-        int column = sc.nextInt();
-        int[][] arr = new int[row][column];
-        System.out.println("Enter the elements");
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                arr[i][j] = sc.nextInt();
-            }
-        }
-        // To Print the Original MAtrix
-        System.out.println("The Original matrix is:");
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++) {
-                System.out.print(arr[i][j] + "\t");
-            }
-            System.out.print("\n");
-        }
-        // Calling Function Mirror
-        Mirror(arr);
-    }
 }
