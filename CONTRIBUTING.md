@@ -5,7 +5,7 @@ NOTE: *We DO NOT add leetcode problems. They are just applications of basic prin
 ### Did you find a bug?
 
 **Ensure the bug was not already reported** by searching on GitHub under [Project Issues](https://github.com/TheAlgorithms/Java/issues).
-  - If it is mentioned in the issues and you want to fix it, [fork](https://github.com/TheAlgorithms/Java/fork) the repository and submit your implementation in a pull request. The project maintainers will evaluate it.
+  - If it is mentioned in the issues and you want to fix it, [fork](https://github.com/TheAlgorithms/Java/fork) the repository and submit your implementation in a pull request. The project maintainers will evaluate it. Please format your changes before raising pull request.
   - If the bug is **NOT** mentioned in the issues, [open a new issue](https://github.com/TheAlgorithms/Java/issues/new). Be sure to include a **title**, a clear **description** and a **test case** demonstrating the expected behavior that is not occurring.
 
 NOTE: *Please avoid opening issues asking to be "assigned" to a particular algorithm. This merely creates unnecessary noise for maintainers. Instead, please submit your implementation in a pull request and project maintainers will evaluate it.*
@@ -14,7 +14,7 @@ NOTE: *Please avoid opening issues asking to be "assigned" to a particular algor
 
 ### Do you want to contribute to the documentation?
    - [Fork](https://github.com/TheAlgorithms/Java/fork) the repository and make necessary changes.
-   - Format you code and create a pull request.
+   - Create a pull request.
    - It will be put under review for approval.
    - If approved, the requested changes will be merged to the repository.
 
