@@ -27,7 +27,6 @@ public final class SecondMinMax {
         }
         checkOutput(secBest, initialVal);
         return secBest;
-
     }
 
     /**
