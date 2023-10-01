@@ -1,3 +1,8 @@
+// Test File for AhoCorasick
+
+// Author: Prabhat-Kumar-42
+// GitHub: https://github.com/Prabhat-Kumar-42
+
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
