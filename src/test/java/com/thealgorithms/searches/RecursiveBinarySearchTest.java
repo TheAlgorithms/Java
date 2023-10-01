@@ -3,6 +3,7 @@
 // Test file updated with JUnit tests
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class RecursiveBinarySearchTest {
