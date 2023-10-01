@@ -1,6 +1,5 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
 
 // Problem Statement
 /*
