@@ -52,7 +52,7 @@ class GraytoBinary{
     public static void main(String as[]) throws IOException
     {
         GraytoBinary obj=new GraytoBinary();
-        String gray="1101101";//Given Binary Code
+        String gray="1101101";//Given Gray Code
         System.out.println(obj.graytobinary(gray));
     }   
 }
