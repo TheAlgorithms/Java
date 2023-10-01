@@ -11,7 +11,6 @@ public class UniqueCharacters {
         // check if the length of the string and the hashSet is
         // same or not
         return hs.size() == str.length();
-
     }
 
     public static void main(String[] args) {

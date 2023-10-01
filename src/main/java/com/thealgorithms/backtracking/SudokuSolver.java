@@ -7,7 +7,6 @@
 //  GitHub link : https://github.com/Akashbag2001
 // Wiki link: https://en.wikipedia.org/wiki/Sudoku_solving_algorithms
 
-
 package main.java.com.thealgorithms.backtracking;
 import java.util.*;
 public class SudokuSolver {
