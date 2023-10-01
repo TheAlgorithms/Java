@@ -2,20 +2,20 @@ package com.thealgorithms.sorts;
 
 import java.util.Arrays;
 
-class Mergesortdivideandconquer{
+class MergeSortDivideAndConquer{
     public static void main(String[]args){
         //taking the sample array input
         int []array={12,32,1,5,9,7,25};
 
         //calling the recursive fumction which will divide and sort the array
-        array=Mergesort(array);
+        array=MergeSort(array);
         //print the sorted array
         System.out.println(Arrays.toString(array));
     }
 
     //implementing divide and sort method
 
-    public static int[] Mergesort(int [] array){
+    public static int[] MergeSort(int [] array){
         //base condition
         //if only 1 element present in the array then we return the array
         if(array.length==1){
@@ -27,10 +27,10 @@ class Mergesortdivideandconquer{
         int mid=array.length/2;
         //splitting the array into 2 equal lengths i.e left array is from 1st element to middle element and right array is from middle to last element.
 
-        int [] left=Mergesort(Arrays.copyOfRange(array,0,mid));
-        int [] right=Mergesort(Arrays.copyOfRange(array,mid,array.length));
+        int [] left=MergeSort(Arrays.copyOfRange(array,0,mid));
+        int [] right=MergeSort(Arrays.copyOfRange(array,mid,array.length));
         //after dividing the arrays until a single element exists in them we will combine them.
-        return merge(left,right);
+        return Merge(left,right);
 
 
 
@@ -38,7 +38,7 @@ class Mergesortdivideandconquer{
     }
 
     //implementing the merge function which will combine left and right arrays.
-    public static int [] merge(int[]left,int[]right){
+    public static int [] Merge(int[]left,int[]right){
         //creating a array which contain the result of merged array after sorting;
         int [] result=new int[left.length+right.length];
         //intializing the indexes
