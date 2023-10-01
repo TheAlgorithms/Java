@@ -13,7 +13,7 @@ import java.util.*;
  * GitHub: https://github.com/Prabhat-Kumar-42
  */
 public class AhoCorasick {
-   
+
     // Trie Node Class
     class Node {
         HashMap<Character, Node> child = new HashMap<>();
