@@ -6,6 +6,8 @@
 
 // Dishes can be prepared in any order and the chef can discard some dishes to get this maximum value.
 
+// author name : warsiKamran
+
 import java.util.Arrays;
 
 public class Solution {
