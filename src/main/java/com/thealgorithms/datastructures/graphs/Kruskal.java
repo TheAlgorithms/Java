@@ -1,103 +1,95 @@
 package com.thealgorithms.datastructures.graphs;
 
-// Problem -> Connect all the edges with the minimum cost.
-// Possible Solution -> Kruskal Algorithm (KA), KA finds the minimum-spanning-tree, which means, the
-// group of edges with the minimum sum of their weights that connect the whole graph.
-// The graph needs to be connected, because if there are nodes impossible to reach, there are no
-// edges that could connect every node in the graph.
-// KA is a Greedy Algorithm, because edges are analysed based on their weights, that is why a
-// Priority Queue is used, to take first those less weighted.
-// This implementations below has some changes compared to conventional ones, but they are explained
-// all along the code.
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.List;
 
-public class Kruskal {
+class Edge {
+    int source, destination, weight;
 
-    // Complexity: O(E log V) time, where E is the number of edges in the graph and V is the number
-    // of vertices
-    private static class Edge {
+    public Edge(int source, int destination, int weight) {
+        this.source = source;
+        this.destination = destination;
+        this.weight = weight;
+    }
+}
 
-        private int from;
-        private int to;
-        private int weight;
+class Graph {
+    private int vertices;
+    private List<Edge> edges;
 
-        public Edge(int from, int to, int weight) {
-            this.from = from;
-            this.to = to;
-            this.weight = weight;
+    public Graph(int vertices) {
+        this.vertices = vertices;
+        this.edges = new ArrayList<>();
+    }
+
+    public void addEdge(int source, int destination, int weight) {
+        Edge edge = new Edge(source, destination, weight);
+        edges.add(edge);
+    }
+
+    public List<Edge> kruskalMST() {
+        List<Edge> minimumSpanningTree = new ArrayList<>();
+        Collections.sort(edges, Comparator.comparingInt(e -> e.weight));
+
+        int[] parent = new int[vertices];
+        for (int i = 0; i < vertices; i++) {
+            parent[i] = i;
         }
+
+        int edgeCount = 0;
+        int index = 0;
+        while (edgeCount < vertices - 1 && index < edges.size()) {
+            Edge nextEdge = edges.get(index++);
+            int sourceParent = find(parent, nextEdge.source);
+            int destinationParent = find(parent, nextEdge.destination);
+
+            if (sourceParent != destinationParent) {
+                minimumSpanningTree.add(nextEdge);
+                union(parent, sourceParent, destinationParent);
+                edgeCount++;
+            }
+        }
+
+        return minimumSpanningTree;
     }
 
-    private static void addEdge(HashSet<Edge>[] graph, int from, int to, int weight) {
-        graph[from].add(new Edge(from, to, weight));
+    private int find(int[] parent, int vertex) {
+        if (parent[vertex] != vertex) {
+            parent[vertex] = find(parent, parent[vertex]);
+        }
+        return parent[vertex];
     }
 
+    private void union(int[] parent, int source, int destination) {
+        int sourceParent = find(parent, source);
+        int destinationParent = find(parent, destination);
+        parent[sourceParent] = destinationParent;
+    }
+}
+
+public class KruskalAlgorithm {
     public static void main(String[] args) {
-        HashSet<Edge>[] graph = new HashSet[7];
-        for (int i = 0; i < graph.length; i++) {
-            graph[i] = new HashSet<>();
-        }
-        addEdge(graph, 0, 1, 2);
-        addEdge(graph, 0, 2, 3);
-        addEdge(graph, 0, 3, 3);
-        addEdge(graph, 1, 2, 4);
-        addEdge(graph, 2, 3, 5);
-        addEdge(graph, 1, 4, 3);
-        addEdge(graph, 2, 4, 1);
-        addEdge(graph, 3, 5, 7);
-        addEdge(graph, 4, 5, 8);
-        addEdge(graph, 5, 6, 9);
+        int vertices = 6;
+        Graph graph = new Graph(vertices);
 
-        System.out.println("Initial Graph: ");
-        for (int i = 0; i < graph.length; i++) {
-            for (Edge edge : graph[i]) {
-                System.out.println(i + " <-- weight " + edge.weight + " --> " + edge.to);
-            }
-        }
+        // Add edges to the graph
+        graph.addEdge(0, 1, 4);
+        graph.addEdge(0, 2, 4);
+        graph.addEdge(1, 2, 2);
+        graph.addEdge(1, 3, 3);
+        graph.addEdge(1, 4, 5);
+        graph.addEdge(2, 4, 1);
+        graph.addEdge(3, 4, 7);
+        graph.addEdge(3, 5, 2);
+        graph.addEdge(4, 5, 6);
 
-        Kruskal k = new Kruskal();
-        HashSet<Edge>[] solGraph = k.kruskal(graph);
-
-        System.out.println("\nMinimal Graph: ");
-        for (int i = 0; i < solGraph.length; i++) {
-            for (Edge edge : solGraph[i]) {
-                System.out.println(i + " <-- weight " + edge.weight + " --> " + edge.to);
-            }
+        List<Edge> minimumSpanningTree = graph.kruskalMST();
+        
+        System.out.println("Edges in Minimum Spanning Tree:");
+        for (Edge edge : minimumSpanningTree) {
+            System.out.println(edge.source + " - " + edge.destination + " : " + edge.weight);
         }
-    }
-
-    public HashSet<Edge>[] kruskal(HashSet<Edge>[] graph) {
-        int nodes = graph.length;
-        int[] captain = new int[nodes];
-        // captain of i, stores the set with all the connected nodes to i
-        HashSet<Integer>[] connectedGroups = new HashSet[nodes];
-        HashSet<Edge>[] minGraph = new HashSet[nodes];
-        PriorityQueue<Edge> edges = new PriorityQueue<>((Comparator.comparingInt(edge -> edge.weight)));
-        for (int i = 0; i < nodes; i++) {
-            minGraph[i] = new HashSet<>();
-            connectedGroups[i] = new HashSet<>();
-            connectedGroups[i].add(i);
-            captain[i] = i;
-            edges.addAll(graph[i]);
-        }
-        int connectedElements = 0;
-        // as soon as two sets merge all the elements, the algorithm must stop
-        while (connectedElements != nodes && !edges.isEmpty()) {
-            Edge edge = edges.poll();
-            // This if avoids cycles
-            if (!connectedGroups[captain[edge.from]].contains(edge.to) && !connectedGroups[captain[edge.to]].contains(edge.from)) {
-                // merge sets of the captains of each point connected by the edge
-                connectedGroups[captain[edge.from]].addAll(connectedGroups[captain[edge.to]]);
-                // update captains of the elements merged
-                connectedGroups[captain[edge.from]].forEach(i -> captain[i] = captain[edge.from]);
-                // add Edge to minimal graph
-                addEdge(minGraph, edge.from, edge.to, edge.weight);
-                // count how many elements have been merged
-                connectedElements = connectedGroups[captain[edge.from]].size();
-            }
-        }
-        return minGraph;
     }
 }
