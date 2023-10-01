@@ -41,7 +41,7 @@ class PainterProblem {
          */
 
         for (int i = 0; i <= n; i++) {
-            max = Math.min(max, Math.max(partition(arr, i, k-1), sum(arr, i, n-1)));
+            max = Math.min(max, Math.max(partition(arr, i, k - 1), sum(arr, i, n - 1)));
         }
 
         return max;
@@ -61,7 +61,15 @@ class PainterProblem {
 
     // Main method for a small test case.
     public static void main(String[] args) {
-        int[] arr = {30, 80, 67, 54, 90, 54, 76};
+        int[] arr = {
+            30,
+            80,
+            67,
+            54,
+            90,
+            54,
+            76
+        };
         int n = arr.length;
         int k = 2;
         System.out.println(partition(arr, n, k));
