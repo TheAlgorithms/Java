@@ -2,7 +2,6 @@ package com.thealgorithms.misc;
 
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class MirrorOfMatrixTest {
@@ -19,45 +18,28 @@ public class MirrorOfMatrixTest {
 
     @Test
     public void testMirrorWithSingleRowMatrix() {
-        int[][] arr = { { 1, 2, 3, 4 } };
+        int[][] arr = {{ 1, 2, 3, 4 }};
         MirrorOfMatrix.Mirror(arr);
         // The expected result is the reverse of the input row.
-        int[][] expected = { { 4, 3, 2, 1 } };
+        int[][] expected = {{ 4, 3, 2, 1 }};
         assertArrayEquals(expected, arr);
     }
 
     @Test
     public void testMirrorWithMultipleRowMatrix() {
-        int[][] arr = {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 9 }
-        };
+        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         MirrorOfMatrix.Mirror(arr);
         // The expected result is each row reversed.
-        int[][] expected = {
-                { 3, 2, 1 },
-                { 6, 5, 4 },
-                { 9, 8, 7 }
-        };
+        int[][] expected = {{3, 2, 1}, {6, 5, 4}, {9, 8, 7}};
         assertArrayEquals(expected, arr);
     }
 
     @Test
     public void testMirrorWithOddLengthRows() {
-        int[][] arr = {
-                { 1, 2, 3 },
-                { 4, 5, 6, 7 },
-                { 8, 9 }
-        };
+        int[][] arr = {{1, 2, 3}, {4, 5, 6, 7}, {8, 9}};
         MirrorOfMatrix.Mirror(arr);
         // The expected result is each row reversed.
-        int[][] expected = {
-                { 3, 2, 1 },
-                { 7, 6, 5, 4 },
-                { 9, 8 }
-        };
+        int[][] expected = {{3, 2, 1}, {7, 6, 5, 4}, {9, 8}};
         assertArrayEquals(expected, arr);
     }
 }
-
