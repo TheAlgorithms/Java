@@ -1,5 +1,6 @@
 package com.thealgorithms.strings;
 
+import java.util.Collections;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
@@ -25,11 +26,9 @@ public class Pangram {
         // an approach using Java Collection Framework
         Set<Character> alpha = new HashSet<Character>();
         for (int i=0; i<s.length(); i++){
-            if (s.charAt(i)!=' ')
-                alpha.add(s.charAt(i));
+            if (s.charAt(i)!=' ') alpha.add(s.charAt(i));
         }
-        if (alpha.size() == 26)
-            return true;
+        if (alpha.size() == 26) return true;
         return false;
     }
 
