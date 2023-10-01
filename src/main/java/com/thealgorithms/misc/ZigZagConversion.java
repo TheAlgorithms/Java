@@ -1,8 +1,20 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
+/**
+ * How the Zigzag Conversion Works:
+ * --------------------------------
+ * How It Works:
+ * - If numRows is 1 or greater than or equal to the string's length, the original string is returned.
+ * - The input string is processed character by character and arranged in a zigzag pattern.
+ * - The result is obtained by appending the rows and returning the converted string.
+ *
+ * This code is used to convert strings into a zigzag pattern, often used in the context of encoding text for
+ * display in graphical user interfaces or for solving certain coding interview problems.
+ *
+ * For more information - https://codewithgeeks.com/zigzag-conversion-leetcode-solution/
+ */
 
-public class ZigzagConversion {
+public class ZigZagConversion {
     public String convert(String s, int numRows) {
         if (numRows == 1 || numRows >= s.length()) {
             return s;
@@ -31,21 +43,5 @@ public class ZigzagConversion {
         }
 
         return result.toString();
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the input string: ");
-        String s = scanner.nextLine();
-
-        System.out.print("Enter the number of rows: ");
-        int numRows = scanner.nextInt();
-
-        scanner.close();
-
-        ZigzagConversion solution = new ZigzagConversion();
-        String result = solution.convert(s, numRows);
-        System.out.println("Output: " + result);
     }
 }
