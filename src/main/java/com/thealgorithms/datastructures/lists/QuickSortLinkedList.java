@@ -167,30 +167,4 @@ public class QuickSortLinkedList {
             return sortedLess;
         }
     }
-
-    public static void main(String[] args) {
-        // Example usage
-        SinglyLinkedList list = new SinglyLinkedList();
-        list.insert(5);
-        list.insert(3);
-        list.insert(8);
-        list.insert(1);
-        list.insert(10);
-        list.insert(2);
-        list.insert(7);
-        list.insert(4);
-        list.insert(9);
-        list.insert(6);
-
-        QuickSortLinkedList sorter = new QuickSortLinkedList(list);
-        // Print the sorted linked list
-        System.out.print("List before Applying QuickSort : ");
-        list.print();
-        System.out.println();
-
-        sorter.sortList();
-        System.out.print("List After Sort");
-        list.print();
-        System.out.println();
-    }
 }
