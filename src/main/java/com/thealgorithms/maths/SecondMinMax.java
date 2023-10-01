@@ -46,11 +46,15 @@ public final class SecondMinMax {
     }
 
     private static void checkInput(final int[] arr) {
-        if (arr.length < 2) throw new IllegalArgumentException("Input array must have length of at least two");
+        if (arr.length < 2) {
+            throw new IllegalArgumentException("Input array must have length of at least two");
+        }
     }
 
     private static int checkOutput(final int secNum, int initialVal) {
-        if (secNum == initialVal) throw new IllegalArgumentException("Input array should have at least 2 distinct elements");
+        if (secNum == initialVal) {
+            throw new IllegalArgumentException("Input array should have at least 2 distinct elements");
+        }
         return secNum;
     }
 }
