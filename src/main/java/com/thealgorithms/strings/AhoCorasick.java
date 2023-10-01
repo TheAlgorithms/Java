@@ -13,7 +13,8 @@ import java.util.*;
  * GitHub: https://github.com/Prabhat-Kumar-42
  */
 public class AhoCorasick {
-
+   
+    // Trie Node Class
     class Node {
         HashMap<Character, Node> child = new HashMap<>();
         Node suffix_link;
@@ -29,7 +30,7 @@ public class AhoCorasick {
 
     Node root = null; // The root node of the Aho-Corasick trie
     private ArrayList<ArrayList<Integer>> res; // Stores the positions where patterns are found in the text
-    private String[] patterns;
+    private String[] patterns; // patterns according to which Trie is constructed
 
     // Clears the Aho-Corasick data structures
     public void clear() {
