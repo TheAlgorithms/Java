@@ -51,7 +51,7 @@ public final class SecondMinMax {
         }
     }
 
-    private static void checkOutput(final int secNum, int initialVal) {
+    private static void checkOutput(final int secNum, final int initialVal) {
         if (secNum == initialVal) {
             throw new IllegalArgumentException("Input array should have at least 2 distinct elements");
         }
