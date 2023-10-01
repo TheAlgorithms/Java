@@ -2,11 +2,12 @@ package com.thealgorithms.datastructures.lists;
 
 /**
  * Test cases for QuickSortLinkedList
- * Author: Prabhat-Kumar-42 
- * GitHub: https://github.com/Prabhat-Kumar-42 
+ * Author: Prabhat-Kumar-42
+ * GitHub: https://github.com/Prabhat-Kumar-42
  */
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class QuickSortLinkedListTest {
@@ -63,4 +64,3 @@ public class QuickSortLinkedListTest {
         assertNull(list.getHead().next.next.next.next.next.next.next.next.next.next);
     }
 }
-
