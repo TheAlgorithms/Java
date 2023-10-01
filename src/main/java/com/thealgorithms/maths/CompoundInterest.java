@@ -2,6 +2,8 @@ package com.thealgorithms.maths;
 
 import java.util.*;
 
+//Compound Interest Calculator
+
 class CompoundInterest {
     double monthlyInterestRate, cdvalue, deposit, apy;
     int maturityPeriod;
