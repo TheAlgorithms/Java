@@ -1,11 +1,11 @@
 // This code defines a SudokuSolver class that can solve Sudoku puzzles using a backtracking algorithm.
 // The solveSudoku method initiates the solving process, and solveSudokuHelper is a recursive function that tries to fill in the Sudoku cells one by one,
-// backtracking when necessary. The isValid method checks if a number can be legally placed in a specific cell. 
-//Finally, the printBoard method is used to print the solved Sudoku board.
+// backtracking when necessary. The isValid method checks if a number can be legally placed in a specific cell.
+// Finally, the printBoard method is used to print the solved Sudoku board.
 
-//Author name : AKASH BAG
-// GitHub link : https://github.com/Akashbag2001
-//Wiki link: https://en.wikipedia.org/wiki/Sudoku_solving_algorithms
+// Author name : AKASH BAG
+//  GitHub link : https://github.com/Akashbag2001
+// Wiki link: https://en.wikipedia.org/wiki/Sudoku_solving_algorithms
 
 
 package main.java.com.thealgorithms.backtracking;
@@ -75,17 +75,7 @@ public class SudokuSolver {
     }
 
     public static void main(String[] args) {
-        int[][] board = {
-            {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0},
-            {0, 9, 8, 0, 0, 0, 0, 6, 0},
-            {8, 0, 0, 0, 6, 0, 0, 0, 3},
-            {4, 0, 0, 8, 0, 3, 0, 0, 1},
-            {7, 0, 0, 0, 2, 0, 0, 0, 6},
-            {0, 6, 0, 0, 0, 0, 2, 8, 0},
-            {0, 0, 0, 4, 1, 9, 0, 0, 5},
-            {0, 0, 0, 0, 8, 0, 0, 7, 9}
-        };
+        int[][] board = {{5, 3, 0, 0, 7, 0, 0, 0, 0}, {6, 0, 0, 1, 9, 5, 0, 0, 0}, {0, 9, 8, 0, 0, 0, 0, 6, 0}, {8, 0, 0, 0, 6, 0, 0, 0, 3}, {4, 0, 0, 8, 0, 3, 0, 0, 1}, {7, 0, 0, 0, 2, 0, 0, 0, 6}, {0, 6, 0, 0, 0, 0, 2, 8, 0}, {0, 0, 0, 4, 1, 9, 0, 0, 5}, {0, 0, 0, 0, 8, 0, 0, 7, 9}};
 
         if (solveSudoku(board)) {
             System.out.println("Solved Sudoku:");
