@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class ActivitySelection {
     // Function to perform activity selection
-    public static void activitySelection(int start[], int end[]) {
+    public static ArrayList<Integer> activitySelection(int start[], int end[]) {
         int n = start.length;
         int activities[][] = new int[n][3]; 
 
@@ -39,20 +39,14 @@ public class ActivitySelection {
                 lastEnd = activities[i][2]; 
             }
         }
-
+        return ans;
+    }
+    public static void printActivities(ArrayList<Integer> ans){
         // Print the selected activities.
         System.out.print("Following activities are selected : \n");
         for (int i = 0; i < ans.size(); i++) {
             System.out.print("A" + ans.get(i) + " ");
         }
         System.out.println();
-    }
-
-    public static void main(String args[]) {
-        int start[] = {1, 3, 0, 5, 8, 5};
-        int end[] = {2, 4, 6, 7, 9, 9};
-
-        // Call the activitySelection function with the given start and end times.
-        activitySelection(start, end);
     }
 }
