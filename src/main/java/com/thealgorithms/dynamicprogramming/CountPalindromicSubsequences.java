@@ -22,4 +22,3 @@ class CountPalindromicSubsequences {
             return memo[i][j] = (f(i + 1, str, j, memo) % MOD + f(i, str, j - 1, memo) % MOD - f(i + 1, str, j - 1, memo) % MOD + MOD) % MOD;
     }
 }
-
