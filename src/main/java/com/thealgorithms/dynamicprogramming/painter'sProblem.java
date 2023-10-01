@@ -20,6 +20,7 @@ class PainterProblem{
      *
      * @return minimum amount of time required to paint the boards
      *
+     * 
      */
      static int partition (int[] arr , int n , int k){
 
