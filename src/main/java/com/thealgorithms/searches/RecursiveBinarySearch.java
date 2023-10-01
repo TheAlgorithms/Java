@@ -4,20 +4,29 @@
 // Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
 
 import java.util.*;
-public class RecursiveBinarySearch {
+
+public class RecursiveBinarySearch<T extends Comparable<T>> {
 
     // Recursive binary search function
-    static int binsear(int a[], int left, int right, int target) {
+    public int binsear(T[] arr, int left, int right, T target) {
         if (right >= left) {
             int mid = left + (right - left) / 2;
 
-            // If the element is present at the middle itself
-            if (a[mid] == target) return mid;
+            // Compare the element at the middle with the target
+            int comparison = arr[mid].compareTo(target);
 
-            // If the element is not in the middle but in the left or right subarray
-            if (a[mid] > target) return binsear(a, left, mid - 1, target);
+            // If the element is equal to the target, return its index
+            if (comparison == 0) {
+                return mid;
+            }
 
-            return binsear(a, mid + 1, right, target);
+            // If the element is greater than the target, search in the left subarray
+            if (comparison > 0) {
+                return binsear(arr, left, mid - 1, target);
+            }
+
+            // Otherwise, search in the right subarray
+            return binsear(arr, mid + 1, right, target);
         }
 
         // Element is not present in the array
@@ -26,11 +35,11 @@ public class RecursiveBinarySearch {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Added user inputs
+        // User inputs
         System.out.print("Enter the number of elements in the array: ");
         int n = sc.nextInt();
 
-        int a[] = new int[n];
+        Integer[] a = new Integer[n]; // You can change the array type as needed
 
         System.out.println("Enter the elements in sorted order:");
 
@@ -41,7 +50,8 @@ public class RecursiveBinarySearch {
         System.out.print("Enter the target element to search for: ");
         int t = sc.nextInt();
 
-        int res = binsear(a, 0, n - 1, t);
+        RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
+        int res = searcher.binsear(a, 0, n - 1, t);
 
         if (res == -1)
             System.out.println("Element not found in the array.");
