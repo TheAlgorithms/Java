@@ -9,8 +9,6 @@ public class MirrorOfMatrixTest {
     public void testMirrorWithEmptyMatrix() {
         int[][] arr = new int[0][0];
         MirrorOfMatrix.Mirror(arr);
-        // Since the matrix is empty, there's nothing to mirror.
-        // So, the expected result is also an empty matrix.
         int[][] expected = new int[0][0];
         assertArrayEquals(expected, arr);
     }
