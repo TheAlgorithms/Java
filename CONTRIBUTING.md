@@ -14,7 +14,7 @@ NOTE: *Please avoid opening issues asking to be "assigned" to a particular algor
 
 ### Do you want to contribute to the documentation?
    - [Fork](https://github.com/TheAlgorithms/Java/fork) the repository and make necessary changes.
-   - Create a pull request.
+   - Format you code and create a pull request.
    - It will be put under review for approval.
    - If approved, the requested changes will be merged to the repository.
 
