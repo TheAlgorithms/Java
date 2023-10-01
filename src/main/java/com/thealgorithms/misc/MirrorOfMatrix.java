@@ -16,7 +16,7 @@ The Original matrix is:   |   The Mirror matrix is:
 */
 
 public final class MirrorOfMatrix {
-    private MirrorOfMatrix(){
+    private MirrorOfMatrix() {
     }
     public static int[][] mirrorMatrix(int[][] originalMatrix) {
         if (originalMatrix == null || originalMatrix.length == 0) {
@@ -39,4 +39,3 @@ public final class MirrorOfMatrix {
         return mirroredMatrix;
     }
 }
-

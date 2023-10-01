@@ -8,17 +8,9 @@ public class MirrorOfMatrixTest {
 
     @Test
     public void testMirrorMatrix() {
-        int[][] originalMatrix = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        };
+        int[][] originalMatrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-        int[][] expectedMirroredMatrix = {
-                {3, 2, 1},
-                {6, 5, 4},
-                {9, 8, 7}
-        };
+        int[][] expectedMirroredMatrix = {{3, 2, 1}, {6, 5, 4}, {9, 8, 7}};
 
         int[][] mirroredMatrix = MirrorOfMatrix.mirrorMatrix(originalMatrix);
 
@@ -26,4 +18,3 @@ public class MirrorOfMatrixTest {
         assertArrayEquals(expectedMirroredMatrix, mirroredMatrix);
     }
 }
-
