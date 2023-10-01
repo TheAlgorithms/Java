@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import java.util.HashSet;
+
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
@@ -23,7 +25,7 @@ public class Pangram {
      */
     public static boolean isPangramOrNot(String s){
         // an approach using Java Collection Framework
-        Set<Character> alpha = new HashSet<Character>();
+        HashSet<Character> alpha = new HashSet<Character>();
         s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
             if (s.charAt(i)!=' ') alpha.add(s.charAt(i));
