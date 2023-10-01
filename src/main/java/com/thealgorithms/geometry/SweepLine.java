@@ -26,9 +26,7 @@ import java.util.Set;
  * References:
  * - https://en.wikipedia.org/wiki/Sweep_line_algorithm
  */
-
-
-class ClosestPairOfPoints {
+public class SweepLine {
 
     // Structure to represent a point with x and y coordinates
     static class Point {
