@@ -8,7 +8,7 @@
 //Wiki link: https://en.wikipedia.org/wiki/Sudoku_solving_algorithms
 
 
-package main.java.com.thealgorithms.backtracking;
+package com.thealgorithms.backtracking;
 import java.util.*;
 public class SudokuSolver {
     public static boolean solveSudoku(int[][] board) {
