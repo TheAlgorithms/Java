@@ -1,11 +1,9 @@
 package com.thealgorithms.misc;
-
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class MirrorOfMatrixTest {
+import org.junit.jupiter.api.Test;
 
+public class MirrorOfMatrixTest {
     @Test
     public void testMirrorWithEmptyMatrix() {
         int[][] arr = new int[0][0];
@@ -18,10 +16,10 @@ public class MirrorOfMatrixTest {
 
     @Test
     public void testMirrorWithSingleRowMatrix() {
-        int[][] arr = {{ 1, 2, 3, 4 }};
+        int[][] arr = {{1, 2, 3, 4}};
         MirrorOfMatrix.Mirror(arr);
         // The expected result is the reverse of the input row.
-        int[][] expected = {{ 4, 3, 2, 1 }};
+        int[][] expected = {{4, 3, 2, 1}};
         assertArrayEquals(expected, arr);
     }
 
