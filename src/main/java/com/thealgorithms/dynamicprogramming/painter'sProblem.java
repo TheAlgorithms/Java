@@ -16,7 +16,7 @@ class PainterProblem {
      * @return minimum amount of time required to paint the boards
      *
      */
-     static int partition(int[] arr, int n, int k){
+    static int partition(int[] arr, int n, int k) {
         /**
          *  If there is only one painter --> base case
          *  If there is only one board --> base case
@@ -41,7 +41,7 @@ class PainterProblem {
          */
 
         for (int i = 0; i <= n; i++) {
-            max = Math.min(max,Math.max(partition(arr,i,k-1),sum(arr,i,n-1)));
+            max = Math.min(max, Math.max(partition(arr, i, k-1),sum(arr, i, n-1)));
         }
 
         return max;
@@ -51,8 +51,8 @@ class PainterProblem {
      * @param An integer array same, A start index and A end index.
      * @return total sum of array in between the specified index.
      */
-    static int sum(int[] arr, int start,  int end){
-        int sum =  0;
+    static int sum(int[] arr, int start, int end){
+        int sum = 0;
         for (int i = start; i <= end; i++) {
             sum += arr[i];
         }
@@ -66,4 +66,4 @@ class PainterProblem {
         int k = 2;
         System.out.println(partition(arr, n, k));
     }
-}
+ }
