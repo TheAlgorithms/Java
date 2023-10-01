@@ -82,6 +82,5 @@ public class SudokuSolver {
         } else {
             System.out.println("No solution exists.");
         }
-    
     }
 }
