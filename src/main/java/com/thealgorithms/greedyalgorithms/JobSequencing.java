@@ -27,31 +27,8 @@ public class JobSequencing {
         }
     }
 
-    public static void main(String[] args) {
-        JobSequencing jobSequencing = new JobSequencing();
-        ArrayList<Job> jobs = new ArrayList<Job>();
-        
-        // Add jobs with their respective deadlines and profits
-        jobs.add(new Job('a', 2, 100));
-        jobs.add(new Job('b', 1, 19));
-        jobs.add(new Job('c', 2, 27));
-        jobs.add(new Job('d', 1, 25));
-        jobs.add(new Job('e', 3, 15));
-
-        // Sort jobs by profit in descending order
-        Collections.sort(jobs);
-
-        // Print sorted jobs with their profits
-        for (Job job : jobs) {
-            System.out.println(job.id + " - " + job.profit);
-        }
-
-        // Call the printJobSequence function to find the job sequence
-        jobSequencing.printJobSequence(jobs, jobs.size());
-    }
-
     // Function to print the job sequence
-    private void printJobSequence(ArrayList<Job> jobs, int size) {
+    public static String findJobSequence(ArrayList<Job> jobs, int size) {
         Boolean[] slots = new Boolean[size];
         Arrays.fill(slots, false);
 
@@ -68,11 +45,21 @@ public class JobSequencing {
             }
         }
 
-        // Print the job sequence
-        System.out.print("Job Sequence: ");
+        // Create a StringBuilder to build the job sequence string
+        StringBuilder jobSequenceBuilder = new StringBuilder();
+        jobSequenceBuilder.append("Job Sequence: ");
         for (int i = 0; i < jobs.size(); i++) {
-            if (slots[i])
-                System.out.print(jobs.get(result[i]).id + " -> ");
+            if (slots[i]) {
+                jobSequenceBuilder.append(jobs.get(result[i]).id).append(" -> ");
+            }
         }
+
+        // Remove the trailing " -> " from the job sequence
+        if (jobSequenceBuilder.length() >= 4) {
+            jobSequenceBuilder.setLength(jobSequenceBuilder.length() - 4);
+        }
+
+        // Return the job sequence as a string
+        return jobSequenceBuilder.toString();
     }
 }
