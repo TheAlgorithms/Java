@@ -42,5 +42,4 @@ public final class MirrorOfMatrix {
             System.out.println();
         }
     }
-
 }
