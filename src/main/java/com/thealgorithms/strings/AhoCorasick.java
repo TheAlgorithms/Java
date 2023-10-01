@@ -1,4 +1,5 @@
 package com.thealgorithms.strings;
+
 import java.util.*;
 
 /**
@@ -28,6 +29,7 @@ public class AhoCorasick {
 
     Node root = null; // The root node of the Aho-Corasick trie
     private ArrayList<ArrayList<Integer>> res; // Stores the positions where patterns are found in the text
+    private String[] patterns;
 
     // Clears the Aho-Corasick data structures
     public void clear() {
@@ -41,10 +43,10 @@ public class AhoCorasick {
     public void buildTrie(String[] patterns) {
         root = new Node(); // Initialize the root of the trie
         res = new ArrayList<>(patterns.length); // Initialize the result data structure
-
+        this.patterns = patterns;
         // Loop through each input pattern
         for (int i = 0; i < patterns.length; i++) {
-            res.add(new ArrayList<>()); // Initialize a list to store positions of the current pattern
+            res.add(new ArrayList<Integer>()); // Initialize a list to store positions of the current pattern
 
             Node curr = root; // Start at the root of the trie for each pattern
 
@@ -110,7 +112,7 @@ public class AhoCorasick {
     }
 
     // Searches for patterns in the input text and records their positions
-    public ArrayList<ArrayList<Integer>> search(String text) {
+    public void searchIn(String text) {
         Node parent = root; // Start searching from the root node
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i); // Get the current character in the text
@@ -140,9 +142,21 @@ public class AhoCorasick {
                 }
             }
         }
-        return res; // Return the positions of patterns found in the text
+        setUpStartPoints();
     }
 
+    /*
+     * returns the list of list containing the indexes of words in patterns/dictonary
+     * list index represet word.
+     * eg - list[0] cointains the list of start-index of word pattern[0]
+     *      list[1] cointains the list of start-index of word pattern[1]
+     *      ......
+     *      ......]
+     *      list[n] cointains the list of start-index of word pattern[n]
+     */
+    public ArrayList<ArrayList<Integer>> getWordsIndexList() {
+        return res;
+    }
     // Returns the count of occurrences of each pattern in the text
     public ArrayList<Integer> getRepeatCountOfWords() {
         ArrayList<Integer> countOfWords = new ArrayList<>();
@@ -151,37 +165,16 @@ public class AhoCorasick {
         }
         return countOfWords;
     }
-
-    public static void main(String[] args) {
-        String[] patterns = {"ACC", "ATC", "CAT", "GCG", "C", "T"};
-        String text = "GCATCG";
-
-        AhoCorasick obj = new AhoCorasick();
-        obj.buildTrie(patterns);
-        obj.buildSuffixAndOutputLinks();
-
-        ArrayList<ArrayList<Integer>> res = obj.search(text);
-        ArrayList<Integer> countOfWords = obj.getRepeatCountOfWords();
-
-        System.out.println("Using Zero Based Indexing");
-        System.out.println("Dictonary is : ");
+    // by default res contains end-points. This function convert those
+    // endpoints to start points
+    public void setUpStartPoints() {
         for (int i = 0; i < patterns.length; i++) {
-            System.out.println(i + ". " + patterns[i]);
-        }
-        System.out.println();
-        System.out.println("Given text is : " + text);
-        System.out.println();
-        System.out.println("-1 represents word is not in the given string");
-        for (int i = 0; i < patterns.length; i++) {
-            System.out.print(patterns[i] + " appeared " + countOfWords.get(i) + " times at indices : ");
-            if (res.get(i).isEmpty()) {
-                System.out.print(-1 + " ");
-            } else {
-                for (int endpoint : res.get(i)) {
-                    System.out.print((endpoint - patterns[i].length() + 1) + " ");
+            if (!res.get(i).isEmpty()) {
+                for (int j = 0; j < res.get(i).size(); j++) {
+                    int endpoint = res.get(i).get(j);
+                    res.get(i).set(j, endpoint - patterns[i].length() + 1);
                 }
             }
-            System.out.println();
         }
     }
 }
