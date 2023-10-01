@@ -27,7 +27,6 @@ public class MirrorOfMatrixTest {
     public void testMirrorWithMultipleRowMatrix() {
         int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         MirrorOfMatrix.Mirror(arr);
-        // The expected result is each row reversed.
         int[][] expected = {{3, 2, 1}, {6, 5, 4}, {9, 8, 7}};
         assertArrayEquals(expected, arr);
     }
