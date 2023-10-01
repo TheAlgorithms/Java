@@ -41,10 +41,10 @@ class AhoCorasickTest {
         assertEquals(0, res.get(0).size());
 
         // Test that the second pattern "ATC" is found at index 2
-        // assertEquals(2, res.get(1).get(0));
+        assertEquals(2, res.get(1).get(0));
 
         // Test that the third pattern "CAT" is found at index 1
-        // assertEquals(1, res.get(2).get(0));
+        assertEquals(1, res.get(2).get(0));
 
         // Test that the fourth pattern "GCG" is not found in the text
         assertEquals(0, res.get(3).size());
