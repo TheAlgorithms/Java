@@ -1,9 +1,7 @@
 // Created by Pronay Debnath
 // Date:- 1/10/2003
 // Updated FibonnaciNumber.java using golden ratio formula
-
-
-import java.util.*;
+// Explanation:- https://www.quickanddirtytips.com/articles/what-is-the-golden-ratio-and-how-is-it-related-to-the-fibonacci-sequence/
 
 public class FibonacciNumber<T extends Number> {
 
