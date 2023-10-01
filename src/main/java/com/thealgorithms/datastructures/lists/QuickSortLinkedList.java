@@ -104,9 +104,8 @@ package com.thealgorithms.datastructures.lists;
 
 public class QuickSortLinkedList {
 
-    // Linked List Node Structure
-    private SinglyLinkedList list = null; // head of Linked list
-    private Node head = null;
+    private SinglyLinkedList list = null; // Linked list
+    private Node head = null; // head of the list
     // Counstructor
     public QuickSortLinkedList(SinglyLinkedList list) {
         this.list = list;
