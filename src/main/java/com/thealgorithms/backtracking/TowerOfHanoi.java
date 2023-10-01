@@ -1,30 +1,37 @@
-import org.junit.jupiter.api.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 /*The problem consists of three rods and a number of disks of different sizes, which can be slid onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the source rod, with the largest disk at the bottom and the smallest at the top. The goal is to move the entire stack to another rod, the target rod, subject to the following rules:
 
 Only one disk can be moved at a time.
 A disk can only be placed on top of a larger disk or an empty rod. */
+package com.thealgorithms.backtracking;
 
-public class TowerOfHanoi {
-    //the three rods are src-source,helper,destination and n is number of disk
-    public static void towerOfHanoi(int n,String src,String helper,String dest){
-        if(n==1){//this is base condition
-            System.out.println("transfer disk  "+n+"  from  "+src+"  to  "+dest);
-            return ;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public final class TowerOfHanoi {
+    // Private constructor to prevent instantiation
+    private TowerOfHanoi() {
+    }
+
+    // the three rods are src-source, helper, destination, and n is the number of disks
+    public static void towerOfHanoi(int n, String src, String helper, String dest) {
+        if (n == 1) {
+            System.out.println("transfer disk " + n + " from " + src + " to " + dest);//this is base condition
+            return;
         }
 //Move the top n-1 disks from the source rod to an auxiliary rod,
 // using the target rod as the temporary rod
-        towerOfHanoi(n-1, src, dest, helper);
-        //Move the largest disk from the source rod to the target rod.
-        System.out.println("transfer disk  "+n+"  from  "+src+"  to  "+dest);
+        towerOfHanoi(n - 1, src, dest, helper);
+        System.out.println("transfer disk " + n + " from " + src + " to " + dest); //Move the largest disk from the source rod to the target rod.
         //Move the n-1 disks from the auxiliary rod to the target rod, 
         //using the source rod as the temporary rod.
-        towerOfHanoi(n-1, helper, src, dest);
-        
+        towerOfHanoi(n - 1, helper, src, dest);
     }
-     @Test
+
+    @Test
     public void testTowerOfHanoi() {
         // Redirect System.out 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -41,16 +48,10 @@ public class TowerOfHanoi {
                                  "transfer disk 2 from S to D\n" +
                                  "transfer disk 1 from H to D\n";
 
-        // Compare captured output to expected output . These assertions are crucial for ensuring that the method produces the expected output.
+        // Compare captured output to expected output
         assertEquals(expectedOutput1, outContent.toString());
         assertEquals(expectedOutput2, outContent.toString());
 
-        // you can add many more test cases
+        // Add more test cases for different values of n
     }
-
-
-    
-
-        
-    
 }
