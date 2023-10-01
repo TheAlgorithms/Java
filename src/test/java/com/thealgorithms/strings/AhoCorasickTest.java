@@ -16,9 +16,11 @@ class AhoCorasickTest {
 
         String[] patterns = {"ACC", "ATC", "CAT", "GCG", "C", "T"};
         String text = "GCATCG";
-
+        // building Trie by using to pattern array
         ahoCorasick.buildTrie(patterns);
+        // building Suffix links and output links
         ahoCorasick.buildSuffixAndOutputLinks();
+        // Processing the text in Trie
         ahoCorasick.searchIn(text);
         // Populate the res ArrayList only once in setUp
         res = ahoCorasick.getWordsIndexList();
@@ -26,6 +28,8 @@ class AhoCorasickTest {
 
     @Test
     void resSize() {
+        // list size check for the list containing the start index of words from
+        // from the dictonary/pattern array.
         assertEquals(6, res.size());
     }
 
