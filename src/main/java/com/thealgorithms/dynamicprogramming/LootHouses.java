@@ -1,3 +1,14 @@
+
+/**
+ * Loot Houses Problem Solution
+ * Problem Statement:
+ * A thief wants to loot houses. He knows the amount of money in each house.
+ * He cannot loot two consecutive houses. Find the maximum amount of money he can loot.
+ *
+ * Reference:
+ * Wikipedia - Loot Houses Problem: https://en.wikipedia.org/wiki/House_robber_problem
+ */
+
 package com.thealgorithms.dynamicprogramming;
 
 import java.util.List;
