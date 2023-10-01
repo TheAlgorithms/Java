@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 public class FractionalKnapsack {
     // Function to perform fractional knapsack
-    public static void fractionalKnapsack(int weight[], int value[], int capacity) {
+    public static int fractionalKnapsack(int weight[], int value[], int capacity) {
         // Create a 2D array to store item indices and their value-to-weight ratios.
         double ratio[][] = new double[weight.length][2];
 
@@ -37,17 +37,6 @@ public class FractionalKnapsack {
                 break; // Stop adding items to the knapsack since it's full.
             }
         }
-
-        // Print the final knapsack value.
-        System.out.println("Final Value: " + finalValue);
-    }
-
-    public static void main(String args[]) {
-        int weight[] = {10, 20, 30};
-        int value[] = {60, 100, 120};
-        int capacity = 50;
-
-        // Call the fractionalKnapsack function with the given weights, values, and capacity.
-        fractionalKnapsack(weight, value, capacity);
+        return finalValue;
     }
 }
