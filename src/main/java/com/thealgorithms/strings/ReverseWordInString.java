@@ -11,15 +11,9 @@ package com.thealgorithms.strings;
 
 public class ReverseWordInString {
 
-    public static void main(String[] args) {
-
-        System.out.println(reverseWords("the sky is blue"));
-    }
-
     public static String reverseWords(String s) {
 
         s = s.trim();
-
         String res = "";
         int start = 0;
         int end;
