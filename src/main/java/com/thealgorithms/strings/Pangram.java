@@ -22,19 +22,15 @@ public class Pangram {
      * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
     public static boolean isPangram(String s) {
-        boolean[] lettersExisting = new boolean[26];
-        for (char c : s.toCharArray()) {
-            int letterIndex = c - (Character.isUpperCase(c) ? 'A' : 'a');
-            if (letterIndex >= 0 && letterIndex < lettersExisting.length) {
-                lettersExisting[letterIndex] = true;
-            }
+        // an approach using Java Collection Framework
+        Set<Character> alpha = new HashSet<Character>();
+        for (int i=0; i<s.length(); i++){
+            if (s.charAt(i)!=' ')
+                alpha.add(s.charAt(i));
         }
-        for (boolean letterFlag : lettersExisting) {
-            if (!letterFlag) {
-                return false;
-            }
-        }
-        return true;
+        if (alpha.size() == 26)
+            return true;
+        return false;
     }
 
     /**
