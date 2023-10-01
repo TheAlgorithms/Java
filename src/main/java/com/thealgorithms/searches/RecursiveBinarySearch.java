@@ -5,7 +5,20 @@
 
 import java.util.*;
 
-public class RecursiveBinarySearch<T extends Comparable<T>> {
+// Create a SearchAlgorithm class with a generic type
+abstract class SearchAlgorithm<T extends Comparable<T>> {
+    // Abstract find method to be implemented by subclasses
+    public abstract int find(T[] arr, T target);
+}
+
+public class RecursiveBinarySearch<T extends Comparable<T>> extends SearchAlgorithm<T> {
+
+    // Override the find method as required
+    @Override
+    public int find(T[] arr, T target) {
+        // Call the recursive binary search function
+        return binsear(arr, 0, arr.length - 1, target);
+    }
 
     // Recursive binary search function
     public int binsear(T[] arr, int left, int right, T target) {
@@ -51,7 +64,7 @@ public class RecursiveBinarySearch<T extends Comparable<T>> {
         int t = sc.nextInt();
 
         RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
-        int res = searcher.binsear(a, 0, n - 1, t);
+        int res = searcher.find(a, t);
 
         if (res == -1)
             System.out.println("Element not found in the array.");
