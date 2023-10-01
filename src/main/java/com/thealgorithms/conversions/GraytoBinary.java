@@ -42,7 +42,6 @@ class GraytoBinary {
 
         for (i = 0; i < gray.length(); i++) {
             sb.append(matrice[i][1]);
-        
         }
         return sb.toString();
     }
@@ -51,6 +50,5 @@ class GraytoBinary {
         GraytoBinary obj = new GraytoBinary();
         String gray = "1101101"; // Given Gray Code
         System.out.println(obj.grayToBinary(gray));
-
     }   
 }

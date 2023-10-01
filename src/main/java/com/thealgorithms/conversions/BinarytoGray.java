@@ -37,7 +37,6 @@ class BinarytoGray {
             char x = (bin.charAt(i) == bin.charAt(i - 1)) ? '0' : '1';
             matrice[i][1] = x;
             matrice[i][0] = bin.charAt(i);
-
         }
 
         for (i = 0; i < bin.length(); i++) {
@@ -50,6 +49,5 @@ class BinarytoGray {
         BinarytoGray obj = new BinarytoGray();
         String bin = "1001001"; // Given Binary Code
         System.out.println(obj.binaryToGray(bin));
-
     }
 }
