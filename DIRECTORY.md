@@ -686,6 +686,7 @@
             * [FFTTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FFTTest.java)
             * [FibonacciJavaStreamsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FibonacciJavaStreamsTest.java)
             * [FibonacciNumberCheckTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FibonacciNumberCheckTest.java)
+            * [FindMaxRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMaxRecursionTest.java)
             * [FindMaxTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMaxTest.java)
             * [FindMinTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMinTest.java)
             * [FrizzyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FrizzyNumberTest.java)
