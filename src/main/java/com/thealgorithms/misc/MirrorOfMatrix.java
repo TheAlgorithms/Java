@@ -1,5 +1,7 @@
 package com.thealgorithms.misc;
 
+import java.util.Scanner;
+
 // Problem Statement
 /*
 We have given an array of m x n (where m is the number of rows and n is the number of columns).
@@ -13,53 +15,23 @@ The Original matrix is:   |   The Mirror matrix is:
 @author - Aman (https://github.com/Aman28801)
 */
 
-public class MirrorOfMatrix {
-
-    public static int[][] mirrorMatrix(int[][] originalMatrix) {
-        if (originalMatrix == null || originalMatrix.length == 0) {
-            // Handle invalid input
-            return null;
-        }
-
-        int numRows = originalMatrix.length;
-        int numCols = originalMatrix[0].length;
-
-        int[][] mirroredMatrix = new int[numRows][numCols];
-
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numCols; j++) {
-                // Copy elements from the original matrix in reverse order
-                mirroredMatrix[i][j] = originalMatrix[i][numCols - 1 - j];
-            }
-        }
-
-        return mirroredMatrix;
+public final class MirrorOfMatrix {
+    private MirrorOfMatrix() {
     }
+    // Function Mirror that is used to mirror the Matrix
+    public static void Mirror(final int[][] arr) {
 
-    public static void main(String[] args) {
-        int[][] originalMatrix = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        };
+        for (int i = 0; i < arr.length; i++) {
+            int li = 0;
+            int hi = arr[i].length - 1;
+            while (li < hi) {
+                int temp = arr[i][li];
+                arr[i][li] = arr[i][hi];
+                arr[i][hi] = temp;
 
-        int[][] mirroredMatrix = mirrorMatrix(originalMatrix);
-
-        // Print the original and mirrored matrices
-        System.out.println("Original Matrix:");
-        printMatrix(originalMatrix);
-
-        System.out.println("\nMirrored Matrix:");
-        printMatrix(mirroredMatrix);
-    }
-
-    public static void printMatrix(int[][] matrix) {
-        for (int[] row : matrix) {
-            for (int num : row) {
-                System.out.print(num + " ");
+                li++;
+                hi--;
             }
-            System.out.println();
         }
     }
 }
-
