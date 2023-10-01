@@ -5,7 +5,6 @@
 import java.util.*;
 public class RecursiveBinarySearch {
 
-  
     // Recursive binary search function
     static int binsear(int a[], int left, int right, int target) {
         if (right >= left) {
@@ -26,9 +25,8 @@ public class RecursiveBinarySearch {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        // Added user inputs
       
+        // Added user inputs
         System.out.print("Enter the number of elements in the array: ");
         int n = sc.nextInt();
 
