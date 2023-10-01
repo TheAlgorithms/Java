@@ -11,8 +11,8 @@
 
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class LootHouses {
     // Recursive function to calculate maximum loot using given indices
