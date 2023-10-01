@@ -16,11 +16,11 @@ The Original matrix is:   |   The Mirror matrix is:
 */
 
 public final class MirrorOfMatrix {
-    private MirrorOfMatrix() {
-    }
+    private MirrorOfMatrix() {}
+
     public static int[][] mirrorMatrix(int[][] originalMatrix) {
         if (originalMatrix == null || originalMatrix.length == 0) {
-            // Handle invalid input
+        // Handle invalid input
             return null;
         }
 
@@ -35,7 +35,6 @@ public final class MirrorOfMatrix {
                 mirroredMatrix[i][j] = originalMatrix[i][numCols - 1 - j];
             }
         }
-
         return mirroredMatrix;
     }
 }
