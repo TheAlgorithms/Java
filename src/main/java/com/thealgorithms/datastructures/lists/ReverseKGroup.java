@@ -5,7 +5,7 @@ package com.thealgorithms.datastructures.lists;
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
- public class ReverseKGroup {
+public class ReverseKGroup {
     public int length(Node head) {
         Node curr = head;
         int count = 0;
