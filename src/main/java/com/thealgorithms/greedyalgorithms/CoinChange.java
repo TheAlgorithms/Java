@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class CoinChange {
     // Function to solve the coin change problem
-    public static void coinChangeProblem(int amount) {
+    public static ArrayList<Integer> coinChangeProblem(int amount) {
         // Define an array of coin denominations in descending order
         Integer coins[] = {1, 2, 5, 10, 20, 50, 100, 500, 2000};
 
@@ -30,7 +30,9 @@ public class CoinChange {
                 }
             }
         }
-
+        return ans;
+    }
+    public static void printCoins(ArrayList<Integer> ans){
         // Print the selected coins
         System.out.println("Coins: ");
         for (int i = 0; i < ans.size(); i++) {
@@ -40,6 +42,6 @@ public class CoinChange {
 
     public static void main(String args[]) {
         // Call the coinChangeProblem function with the given amount (591)
-        coinChangeProblem(591);
+        System.out.println(coinChangeProblem(3));
     }
 }
