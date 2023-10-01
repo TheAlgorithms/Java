@@ -3,6 +3,7 @@
 // Test file updated with JUnit tests
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test; // Import the JUnit 5 Test annotation
 
 public class RecursiveBinarySearchTest {
