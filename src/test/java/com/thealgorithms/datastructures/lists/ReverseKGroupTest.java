@@ -29,7 +29,7 @@ public class ReverseKGroupTest {
     @Test
     public void testReverseKGroupWithMultipleElementsList() {
         ReverseKGroup reverser = new ReverseKGroup();
-        
+
         // Create a list with multiple elements (1 -> 2 -> 3 -> 4 -> 5)
         Node head = new Node(1);
         head.next = new Node(2);
@@ -45,14 +45,14 @@ public class ReverseKGroupTest {
         assertEquals(3, result1.next.next.next.value);
         assertEquals(5, result1.next.next.next.next.value);
         assertNull(result1.next.next.next.next.next);
-        
+
         // Test reverse with k=3
         Node head2 = new Node(1);
         head2.next = new Node(2);
         head2.next.next = new Node(3);
         head2.next.next.next = new Node(4);
         head2.next.next.next.next = new Node(5);
-        
+
         Node result2 = reverser.reverseKGroup(head2, 3);
         assertEquals(3, result2.value);
         assertEquals(2, result2.next.value);
