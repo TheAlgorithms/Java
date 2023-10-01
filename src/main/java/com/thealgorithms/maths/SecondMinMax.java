@@ -16,7 +16,8 @@ public final class SecondMinMax {
 
     private static int secondBest(final int[] arr, final int initialVal, final BiPredicate<Integer, Integer> isBetter) {
         checkInput(arr);
-        int best = initialVal, secBest = initialVal;
+        int best = initialVal;
+        int secBest = initialVal;
         for (final int num : arr) {
             if (isBetter.test(num, best)) {
                 secBest = best;
