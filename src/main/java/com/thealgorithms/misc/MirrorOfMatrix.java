@@ -16,22 +16,27 @@ The Original matrix is:   |   The Mirror matrix is:
 */
 
 public final class MirrorOfMatrix {
-    private MirrorOfMatrix() {
+    private MirrorOfMatrix(){
     }
-    // Function Mirror that is used to mirror the Matrix
-    public static void Mirror(final int[][] arr) {
+    public static int[][] mirrorMatrix(int[][] originalMatrix) {
+        if (originalMatrix == null || originalMatrix.length == 0) {
+            // Handle invalid input
+            return null;
+        }
 
-        for (int i = 0; i < arr.length; i++) {
-            int li = 0;
-            int hi = arr[i].length - 1;
-            while (li < hi) {
-                int temp = arr[i][li];
-                arr[i][li] = arr[i][hi];
-                arr[i][hi] = temp;
+        int numRows = originalMatrix.length;
+        int numCols = originalMatrix[0].length;
 
-                li++;
-                hi--;
+        int[][] mirroredMatrix = new int[numRows][numCols];
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                // Copy elements from the original matrix in reverse order
+                mirroredMatrix[i][j] = originalMatrix[i][numCols - 1 - j];
             }
         }
+
+        return mirroredMatrix;
     }
 }
+
