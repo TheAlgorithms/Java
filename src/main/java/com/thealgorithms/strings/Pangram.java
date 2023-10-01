@@ -25,6 +25,7 @@ public class Pangram {
     public static boolean isPangram(String s) {
         // an approach using Java Collection Framework
         Set<Character> alpha = new HashSet<Character>();
+        s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
             if (s.charAt(i)!=' ') alpha.add(s.charAt(i));
         if (alpha.size() == 26) return true;
