@@ -23,8 +23,8 @@ public class Pangram {
      * @param s The String to check
      * @return {@code true} if s is a Pangram, otherwise {@code false}
      */
-     // alternative approach using Java Collection Framework
-    public static boolean isPangramOrNot(String s) {
+    // alternative approach using Java Collection Framework
+    public static boolean isPangramUsingSet(String s) {
         HashSet<Character> alpha = new HashSet<Character>();
         s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
