@@ -1,3 +1,5 @@
+package com.thealgorithms.maths;
+
 import java.util.*;
 class CompoundInterest{
     double monthlyInterestRate,cdvalue,deposit,apy;
@@ -21,11 +23,10 @@ class CompoundInterest{
             System.out.println(i+"\t"+cdvalue);
         }
     }
-}
-public class CompoundD{
     public static void main(String[] args) {
         CompoundInterest c=new CompoundInterest();
         c.Compute();
         System.out.print("");
     }
 }
+
