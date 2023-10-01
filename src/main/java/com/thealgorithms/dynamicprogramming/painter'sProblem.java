@@ -52,7 +52,7 @@ class PainterProblem{
 
          }
 
-         return best ;
+         return max ;
      }
 
     /**
@@ -62,6 +62,13 @@ class PainterProblem{
      *
      * @return total sum of array in between the specified index.
      */
+    static int sum (int [] arr , int start ,  int end){
+        int sum =  0 ;
+        for (int i = start; i <=  end ; i++) {
+            sum += arr[i] ;
+        }
+        return  sum ;
+    }
 
     //Main method for a small test case.
     public static void main(String[] args) {
