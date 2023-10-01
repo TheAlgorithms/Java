@@ -33,13 +33,6 @@ public final class MirrorOfMatrix {
                 hi--;
             }
         }
-        // For printing the output of Code OR Mirror Image of Matrix
-        System.out.println("The Mirror matrix is:");
-        for (int[] ints : arr) {
-            for (int j = 0; j < arr[0].length; j++) {
-                System.out.print(ints[j] + "\t");
-            }
-            System.out.println();
         }
     }
 }
