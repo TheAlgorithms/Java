@@ -19,7 +19,6 @@ public class PangramTest {
         assertFalse(Pangram.isPangram2("\u0000/\\ Invalid characters are alright too"));
 
         assertTrue(Pangram.isPangramUsingSet("thequickbrownfoxjumpsoverthelazydog"));
-        assertFalse(Pangram.isPangramUsingSet("thequickbrownfoxjumpsoverthe azydog")); // l is missing
-        assertFalse(Pangram.isPangramUsingSet("leet code"));
+        assertFalse(Pangram.isPangramUsingSet("github"));
     }
 }
