@@ -25,7 +25,6 @@ public class RecursiveBinarySearch {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-      
         // Added user inputs
         System.out.print("Enter the number of elements in the array: ");
         int n = sc.nextInt();
