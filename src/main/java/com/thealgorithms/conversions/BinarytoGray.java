@@ -50,4 +50,4 @@ class BinarytoGray {
         String bin = "1001001"; // Given Binary Code
         System.out.println(obj.binaryToGray(bin));
     }
-    }
+}
