@@ -10,6 +10,10 @@ class GoldenRatio{
   }
 
   public static long nthFibonacci(long n){
-        return (long) ((long)1 / Math.sqrt(5) * ((Math.pow(((1 + Math.sqrt(5))* 0.5), n)) - (Math.pow(((1 - Math.sqrt(5))* 0.5), n))));
-    }
+    double a = Math.sqrt(5);
+    double b = Math.pow((1 + a) * 0.5, n);
+    double c = Math.pow((1 - a) * 0.5, n);
+    double ans = (1/a) * (b-c);
+    return (long) ans;
+  }
 }
