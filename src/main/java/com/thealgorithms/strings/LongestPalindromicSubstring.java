@@ -18,16 +18,12 @@ class LongestPalindromicSubstring {
 }
 
 class Solution {
-  private static boolean Palindrome(String str){
+  private boolean Palindrome(String str){
     str = str.toLowerCase();
     String rev = "";
-    for (int i=str.length()-1; i>-1; i--){
-      rev += str.charAt(i);
-    }
-    if (str.equals(rev))
-      return true;
-    else
-      return false;
+    for (int i=str.length()-1; i>-1; i--) rev += str.charAt(i);
+    if (str.equals(rev) return true;
+    return false;
   }
 
   public String longestPalindrome(String str) {
@@ -43,8 +39,7 @@ class Solution {
     }
     Collections.sort(al);
     String res = al.get(al.size()-1);
-    if (res.length()<2)
-      res = "none";
+    if (res.length()<2) res = "none";
     return res;
   }
 }
