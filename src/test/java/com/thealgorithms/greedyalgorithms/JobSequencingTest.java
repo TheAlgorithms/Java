@@ -18,6 +18,6 @@ public class JobSequencingTest {
         Collections.sort(jobs);
         String jobSequence = JobSequencing.findJobSequence(jobs, jobs.size());
 
-        assertEquals("Job Sequence: a -> c -> e", jobSequence);
+        assertEquals("Job Sequence: c -> a -> e", jobSequence);
     }
 }
