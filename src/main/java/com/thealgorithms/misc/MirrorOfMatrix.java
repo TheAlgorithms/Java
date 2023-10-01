@@ -18,7 +18,6 @@ The Original matrix is:   |   The Mirror matrix is:
 public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
-    // Function Mirror that is used to mirror the Matrix
     public static void Mirror(final int[][] arr) {
 
         for (int i = 0; i < arr.length; i++) {
