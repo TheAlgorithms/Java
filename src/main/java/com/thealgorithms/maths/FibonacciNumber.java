@@ -3,6 +3,8 @@
 // Updated FibonnaciNumber.java using golden ratio formula
 // Explanation:- https://www.quickanddirtytips.com/articles/what-is-the-golden-ratio-and-how-is-it-related-to-the-fibonacci-sequence/
 
+import java.util.*;
+
 public class FibonacciNumber<T extends Number> {
 
     // Function to find the nth Fibonacci number using the golden ratio formula
@@ -25,11 +27,11 @@ public class FibonacciNumber<T extends Number> {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter the value of n: ");
 
         // Read user input for n
-        int n = scanner.nextInt();
+        int n = sc.nextInt();
 
         // Calculate the nth Fibonacci number using the nthFibonacci method
         int nthFib = nthFibonacci(n);
