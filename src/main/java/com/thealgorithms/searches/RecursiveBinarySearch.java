@@ -1,9 +1,10 @@
-//Code by Pronay Debnath
-//Created:- 1/10/2023
-//File Name should be RecursiveBinarySearch.java
+// Code by Pronay Debnath
+// Created:- 1/10/2023
+// File Name should be RecursiveBinarySearch.java
 
 import java.util.*;
 public class RecursiveBinarySearch {
+
   
     // Recursive binary search function
     static int binsear(int a[], int left, int right, int target) {
@@ -11,12 +12,10 @@ public class RecursiveBinarySearch {
             int mid = left + (right - left) / 2;
 
             // If the element is present at the middle itself
-            if (a[mid] == target)
-                return mid;
+            if (a[mid] == target) return mid;
 
             // If the element is not in the middle but in the left or right subarray
-            if (a[mid] > target)
-                return binsear(a, left, mid - 1, target);
+            if (a[mid] > target) return binsear(a, left, mid - 1, target);
 
             return binsear(a, mid + 1, right, target);
         }
@@ -50,7 +49,6 @@ public class RecursiveBinarySearch {
             System.out.println("Element not found in the array.");
         else
             System.out.println("Element found at index " + res);
-
     }
 }
 
