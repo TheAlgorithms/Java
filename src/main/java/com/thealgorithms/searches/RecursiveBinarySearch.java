@@ -1,6 +1,7 @@
 // Code by Pronay Debnath
 // Created:- 1/10/2023
 // File Name should be RecursiveBinarySearch.java
+// Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
 
 import java.util.*;
 public class RecursiveBinarySearch {
@@ -48,5 +49,3 @@ public class RecursiveBinarySearch {
             System.out.println("Element found at index " + res);
     }
 }
-
-// Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
