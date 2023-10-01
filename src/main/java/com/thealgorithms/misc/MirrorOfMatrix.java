@@ -1,13 +1,11 @@
 package com.thealgorithms.misc;
+
 import java.util.Scanner;
 
 // Problem Statement
 /*
 We have given an array of m x n (where m is the number of rows and n is the number of columns).
 Print the new matrix in such a way that the new matrix is the mirror image of the original matrix.
-
-Solution:-
-it basically traverse column wise and swap the starting and ending element of each row to get the mirror of 2D array.
 
 The Original matrix is:   |   The Mirror matrix is:
 1	2	3	              |   3	 2	 1
@@ -35,6 +33,7 @@ public final class MirrorOfMatrix {
                 hi--;
             }
         }
+        // For printing the output of Code OR Mirror Image of Matrix
         System.out.println("The Mirror matrix is:");
         for (int[] ints : arr) {
             for (int j = 0; j < arr[0].length; j++) {
