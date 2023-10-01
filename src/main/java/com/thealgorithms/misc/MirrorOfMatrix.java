@@ -33,6 +33,5 @@ public final class MirrorOfMatrix {
                 hi--;
             }
         }
-        }
     }
 }
