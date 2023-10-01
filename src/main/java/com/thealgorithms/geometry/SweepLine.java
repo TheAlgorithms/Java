@@ -1,11 +1,11 @@
 package com.thealgorithms.geometry;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Comparator;
 
 /**
  * A Java program that calculates the closest pair of points in a set using the Sweep Line Algorithm.
@@ -104,9 +104,7 @@ class ClosestPairOfPoints {
 
     public static void main(String[] args) {
         // Points on a plane P[i] = (x, y)
-        Point[] points = {
-            new Point(1, 2), new Point(2, 3), new Point(3, 4), new Point(5, 6), new Point(2, 1)
-        };
+        Point[] points = {new Point(1, 2), new Point(2, 3), new Point(3, 4), new Point(5, 6), new Point(2, 1)};
 
         // Find the closest pair of points
         long closestDistance = closestPair(points);
