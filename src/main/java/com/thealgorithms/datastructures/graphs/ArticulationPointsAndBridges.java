@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.graphs;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /*
  *
@@ -106,12 +107,32 @@ import java.util.ArrayList;
 class ArticulationPointsAndBridges {
 
     // Edge class used to store bridges
-    static class Edge {
-        int u, v;
+    public static class Edge {
+        private int u;
+        private int v;
 
         public Edge(int u, int v) {
             this.u = u;
             this.v = v;
+        }
+
+        // Override equals method to compare the values of u and v
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null || getClass() != obj.getClass()) {
+                return false;
+            }
+            Edge other = (Edge) obj;
+            return u == other.u && v == other.v;
+        }
+
+        // Override hashCode method for consistency when using in collections
+        @Override
+        public int hashCode() {
+            return Objects.hash(u, v);
         }
     }
 
@@ -145,7 +166,7 @@ class ArticulationPointsAndBridges {
         // Initialize parent to -1 and adjacency lists
         for (int i = 0; i < v; ++i) {
             parent[i] = -1;
-            adj.add(new ArrayList<>());
+            adj.add(new ArrayList<Integer>());
         }
     }
 
@@ -224,30 +245,5 @@ class ArticulationPointsAndBridges {
             }
         }
         return articulationPointsList;
-    }
-
-    // main for test check
-    public static void main(String[] args) {
-        int V = 5;
-        ArticulationPointsAndBridges graph = new ArticulationPointsAndBridges(V);
-
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-        graph.findArticulationPointsAndBridges();
-        System.out.println("Articulation Points:");
-        ArrayList<Integer> articulationPoints = graph.getArticulationPoints();
-        for (int point : articulationPoints) {
-            System.out.print(point + " ");
-        }
-        System.out.println();
-
-        System.out.println("\nBridges:");
-        ArrayList<Edge> bridges = graph.getBridges();
-        for (Edge bridge : bridges) {
-            System.out.println("Bridge: " + bridge.u + " - " + bridge.v);
-        }
     }
 }
