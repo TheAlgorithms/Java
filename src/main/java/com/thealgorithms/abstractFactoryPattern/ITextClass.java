@@ -1,5 +1,3 @@
 package abstractFactoryPattern;
 
-public class ITextClass {
-
-}
+public class ITextClass {}

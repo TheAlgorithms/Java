@@ -1,5 +1,3 @@
 package abstractFactoryPattern;
 
-public class IButtonClass {
-
-}
+public class IButtonClass {}

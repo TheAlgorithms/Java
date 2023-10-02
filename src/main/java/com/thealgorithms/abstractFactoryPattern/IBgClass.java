@@ -1,5 +1,3 @@
 package abstractFactoryPattern;
 
-public class IBgClass {
-
-}
+public class IBgClass {}
