@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
 class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
