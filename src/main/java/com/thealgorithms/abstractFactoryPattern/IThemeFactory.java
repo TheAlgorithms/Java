@@ -8,5 +8,4 @@ interface IThemeFactory {
 
     public IButtonClass getButton(String text, String textColor, String buttonBg, String fontFamily, String fontSize,
             String fontWeight);
-
 }
