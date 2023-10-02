@@ -11,6 +11,11 @@ public class BinaryPow {
      * @return a^p
      */
     public static int binPow(int a, int p) {
+        //Checking if the exponent is a non-negative integer
+        if (p < 0) {
+            throw new IllegalArgumentException("Exponent (p) must be a non-negative integer");
+        }
+        
         int res = 1;
         while (p > 0) {
             if ((p & 1) == 1) {
