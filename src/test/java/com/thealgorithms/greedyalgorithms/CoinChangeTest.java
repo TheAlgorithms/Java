@@ -22,6 +22,13 @@ public class CoinChangeTest {
     }
 
     @Test
+    public void testCoinChangeProblemWithPartialCoins2() {
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(500, 50, 20));
+        ArrayList<Integer> coins = CoinChange.coinChangeProblem(570);
+        assertEquals(expected, coins);
+    }
+
+    @Test
     public void testCoinChangeProblemWithSmallAmount() {
         ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2, 1));
         ArrayList<Integer> coins = CoinChange.coinChangeProblem(3);

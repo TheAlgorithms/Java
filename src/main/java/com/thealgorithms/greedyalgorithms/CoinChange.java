@@ -32,16 +32,4 @@ public class CoinChange {
         }
         return ans;
     }
-    public static void printCoins(ArrayList<Integer> ans) {
-        // Print the selected coins
-        System.out.println("Coins: ");
-        for (int i = 0; i < ans.size(); i++) {
-            System.out.print(ans.get(i) + " ");
-        }
-    }
-
-    public static void main(String args[]) {
-        // Call the coinChangeProblem function with the given amount (591)
-        System.out.println(coinChangeProblem(3));
-    }
 }
