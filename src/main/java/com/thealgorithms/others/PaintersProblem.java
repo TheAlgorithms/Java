@@ -1,10 +1,9 @@
 package com.thealgorithms.others;
 
 public class PaintersProblem {
-    // function to calculate sum between two indices
+	// function to calculate sum between two indices
 	// in array
-	static int sum(int arr[], int start, int end)
-	{
+	static int sum(int arr[], int start, int end) {
 		int result = 0;
 		for (int i = start; i <= end; i++)
 			result += arr[i];
@@ -12,8 +11,7 @@ public class PaintersProblem {
 	}
 
 	// bottom up tabular dp
-	static int findMaxVal(int arr[], int n, int k)
-	{
+	static int findMaxVal(int arr[], int n, int k) {
 		// initialize table
 		int dp[][] = new int[k + 1][n + 1];
 
@@ -37,7 +35,7 @@ public class PaintersProblem {
 				// arr[k=1..j]
 				for (int a = 1; a <= j; a++)
 					best = Math.min(
-						best, Math.max(dp[i - 1][a],
+							best, Math.max(dp[i - 1][a],
 									sum(arr, a, j - 1)));
 
 				dp[i][j] = best;
@@ -48,8 +46,7 @@ public class PaintersProblem {
 		return dp[k][n];
 	}
 
-	public static void main(String args[])
-	{
+	public static void main(String args[]) {
 		int arr[] = { 10, 20, 60, 50, 30, 40 };
 
 		// Calculate size of array.

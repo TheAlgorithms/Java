@@ -400,6 +400,7 @@
             * [MemoryManagementAlgorithms](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/MemoryManagementAlgorithms.java)
             * [MiniMaxAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/MiniMaxAlgorithm.java)
             * [PageRank](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PageRank.java)
+            * [PaintersProgram](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PaintersProgram.java)
             * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PasswordGen.java)
             * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PerlinNoise.java)
             * [PrintAMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PrintAMatrixInSpiralOrder.java)
