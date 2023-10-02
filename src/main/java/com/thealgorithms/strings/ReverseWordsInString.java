@@ -19,19 +19,12 @@ public final class ReverseWordsInString {
         s = s.replaceAll("\\s+", " ").trim();
         StringBuilder res = new StringBuilder();
         int start = 0;
-        int end;
+        int end = 0;
 
         while (start < s.length()) {
-            while (s.charAt(start) == ' ') {
-                start++;
-            }
-            end = start + 1;
 
-            while (end < s.length() && (s.charAt(end) != ' ')) {
-                end++;
-            }
+            String sub = findNextWord(s, start, end);
 
-            String sub = s.substring(start, end);
             start = end;
 
             if (res.length() > 0) {
@@ -42,5 +35,18 @@ public final class ReverseWordsInString {
             }
         }
         return res.toString();
+    }
+
+    private static String findNextWord(String s, int start, int end) {
+        while (s.charAt(start) == ' ') {
+            start++;
+        }
+        end = start + 1;
+
+        while (end < s.length() && (s.charAt(end) != ' ')) {
+            end++;
+        }
+
+        return s.substring(start, end);
     }
 }
