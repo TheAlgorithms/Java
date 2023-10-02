@@ -7,8 +7,7 @@ public final class FindMinRecursion {
 
     private FindMaxRecursion() {
     }
-    
-    public static int min(int[] array, int low, int high) {
+    public static int min(final int[] array, final int low, final int high) {
         if (array.length == 0) {
             throw new IllegalArgumentException("array must be non-empty.");
         }
@@ -31,7 +30,7 @@ public final class FindMinRecursion {
      * @param len length of given array
      * @return min value of {@code array}
      */
-    public static int min(int[] array) {
-        return min(array, 0, array.length - 1);;
+    public static int min(final int[] array) {
+        return min(array, 0, array.length - 1);
     }
 }
