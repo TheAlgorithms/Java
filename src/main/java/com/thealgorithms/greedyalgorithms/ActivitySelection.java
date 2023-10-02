@@ -37,12 +37,4 @@ public class ActivitySelection {
         }
         return ans;
     }
-    public static void printActivities(ArrayList<Integer> ans) {
-        // Print the selected activities.
-        System.out.print("Following activities are selected : \n");
-        for (int i = 0; i < ans.size(); i++) {
-            System.out.print("A" + ans.get(i) + " ");
-        }
-        System.out.println();
-    }
 }
