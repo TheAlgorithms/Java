@@ -11,7 +11,7 @@ The strings consist of lowercase English letters.
  */
 
 
-public class findTheDifference {
+public class FindTheDifference {
 
         public static int extraCharcterIndex(String str1, String str2) {
           int result = 0;

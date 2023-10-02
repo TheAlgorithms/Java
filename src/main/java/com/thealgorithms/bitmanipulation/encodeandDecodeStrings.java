@@ -14,7 +14,7 @@ package com.thealgorithms.bitmanipulation;
  import java.util.*;
  import java.util.stream.Collectors;
 
-public class encodeandDecodeStrings {
+public class EncodeandDecodeStrings {
 
     public static String lengthToBytes(String x) {
         // Express the string length as a string of bytes
