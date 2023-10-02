@@ -21,7 +21,7 @@ public final class MirrorOfMatrix {
             // Handle invalid input
             return null;
         }
-        if(originalMatrix.length == 0){
+        if (originalMatrix.length == 0) {
             return new int[0][0];
         }
         int numRows = originalMatrix.length;
