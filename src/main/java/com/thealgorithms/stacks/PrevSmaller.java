@@ -37,9 +37,9 @@ import java.util.Stack;
    answer is -1
  */
 
-public class NextSmallerElement {
+public class PrevSmaller {
 
-    public static int[] findNextSmallerElements(int[] array) {
+    public static int[] findPrevSmallerElements(int[] array) {
         // base case
         if (array == null) {
             return array;
@@ -62,7 +62,7 @@ public class NextSmallerElement {
 
     public static void main(String[] args) {
         int[] input = {2, 7, 3, 5, 4, 6, 8};
-        int[] result = findNextSmallerElements(input);
+        int[] result = findPrevSmallerElements(input);
         System.out.println(Arrays.toString(result));
     }
 }
