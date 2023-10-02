@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CountNumberOfSetBitsTest {
 
-  @Test
+    @Test
     public void testCountNumberOfSetBits() {
         assertEquals(4, CountNumberOfSetBits.countNumberOfSetBits(15));
         assertNotEquals(1, CountNumberOfSetBits.countNumberOfSetBits(3));
