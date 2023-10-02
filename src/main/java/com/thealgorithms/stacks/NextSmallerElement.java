@@ -57,3 +57,4 @@ public class NextSmallerElement {
         System.out.println(Arrays.toString(result));
     }
 }
+// explanation - https://www.geeksforgeeks.org/next-smaller-element/

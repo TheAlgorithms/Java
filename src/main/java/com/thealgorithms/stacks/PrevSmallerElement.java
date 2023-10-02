@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /*
-    Given an array "input" you need to print the first smaller element for each element to the left
-   side of an array. For a given element x of an array, the Next Smaller element of that element is
+    Given an array "input" you need to print the previous smaller element for each element to the left
+   side of an array. For a given element x of an array, the previous Smaller element of that element is
    the first smaller element to the left side of it. If no such element is present print -1.
 
     Example
@@ -66,3 +66,5 @@ public class NextSmallerElement {
         System.out.println(Arrays.toString(result));
     }
 }
+
+//explanation -https://www.geeksforgeeks.org/find-the-nearest-smaller-numbers-on-left-side-in-an-array/
