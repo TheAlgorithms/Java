@@ -35,7 +35,7 @@ public class NextSmallerElement {
         }
 
         int[] result = new int[array.length];
-        Arrays.fill(result,-1);
+        Arrays.fill(result, -1);
         Stack<Integer> stack = new Stack<>();
 
         for (int i = 0; i < array.length; i++) {
