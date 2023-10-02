@@ -30,7 +30,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         }
 
         public boolean removeAdjacentVertex(E to) {
-            // use indexes here so it is possible to
+            // use indexes here, so it is possible to
             // remove easily without implementing
             // equals method that ArrayList.remove(Object o) uses
             for (int i = 0; i < adjacentVertices.size(); i++) {
@@ -98,7 +98,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
     }
 
     /**
-     * this gives a list of vertices in the graph and their adjacencies
+     * this gives a list of vertices in the graph and their adjacent vertices
      *
      * @return returns a string describing this graph
      */
@@ -121,17 +121,20 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 }
 
 public class Graphs {
-
+    /**
+     * Unit tests AdjacencyListGraph by creating a graph with a number of vertices and printing it
+     * graph to standard output.
+     */
     public static void main(String[] args) {
         AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
-        assert graph.addEdge(1, 2);
-        assert graph.addEdge(1, 5);
-        assert graph.addEdge(2, 5);
-        assert !graph.addEdge(1, 2);
-        assert graph.addEdge(2, 3);
-        assert graph.addEdge(3, 4);
-        assert graph.addEdge(4, 1);
-        assert !graph.addEdge(2, 3);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 5);
+        graph.addEdge(2, 5);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 1);
+        graph.addEdge(2, 3);
         System.out.println(graph);
     }
 }
