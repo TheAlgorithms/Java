@@ -9,7 +9,7 @@ public class CountNumberOfSetBitsTest {
 
   @Test
   public void testCountNumberOfSetBits() {
-    assertEquals(4, CountNumberOfSetBits.countNumberOfSetBits(15));
-    assertNotEquals(1, CountNumberOfSetBits.countNumberOfSetBits(3));
+      assertEquals(4, CountNumberOfSetBits.countNumberOfSetBits(15));
+      assertNotEquals(1, CountNumberOfSetBits.countNumberOfSetBits(3));
   }
 }
