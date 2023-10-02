@@ -4,32 +4,30 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /*
- Here is a algorithm for nextSmallerElement.
- Given an array "input," you need to find and print the first smaller element for each element.
+Here is a algorithm for nextSmallerElement.
 If there is no smaller number than current element it returns -1;
-Example:
-input = {2, 7, 3, 5, 4, 6, 8};
-At i = 0
-Next Smaller element between (i+1 to n) is -1
-At i = 1
-Next Smaller element between (i+1 to n) is 3
-At i = 2
-Next Smaller element between (i+1 to n) is -1
-At i = 3
-Next Smaller element between (i+1 to n) is 4
-At i = 4
-Next Smaller element between (i+1 to n) is -1
-At i = 5
-Next Smaller element between (i+1 to n) is -1
-At i = 6
-Next Smaller element between (i+1 to n) is -1
-
+Given an array "input," you need to find and print the first smaller element for each element.
+     Example:
+     input = {2, 7, 3, 5, 4, 6, 8};
+     At i = 0
+     Next Smaller element between (i+1 to n) is -1
+     At i = 1
+     Next Smaller element between (i+1 to n) is 3
+     At i = 2
+     Next Smaller element between (i+1 to n) is -1
+     At i = 3
+     Next Smaller element between (i+1 to n) is 4
+     At i = 4
+     Next Smaller element between (i+1 to n) is -1
+     At i = 5
+     Next Smaller element between (i+1 to n) is -1
+     At i = 6
+     Next Smaller element between (i+1 to n) is -1
+     
 Result: [-1, 3, -1, 4, -1, -1, -1]
-  
+*/
 
- */
-
-public class NextSmallerElementElement {
+public class NextSmallerElement {
 
     public static int[] findNextSmallerElements(int[] array) {
         if (array == null) {
