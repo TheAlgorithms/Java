@@ -1,26 +1,9 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-import java.util.Random;
+public final class FindMaxRecursion {
 
-public class FindMaxRecursion {
-
-    public static void main(String[] args) {
-        Random rand = new Random();
-
-        /* rand size */
-        int size = rand.nextInt(100) + 1;
-        int[] array = new int[size];
-
-        /* init array with rand numbers */
-        for (int i = 0; i < size; i++) {
-            array[i] = rand.nextInt() % 100;
-        }
-
-        assert max(array) == Arrays.stream(array).max().getAsInt();
-        assert max(array, 0, array.length - 1) == Arrays.stream(array).max().getAsInt();
+    private FindMaxRecursion() {
     }
-
     /**
      * Get max of array using divide and conquer algorithm
      *
@@ -29,7 +12,10 @@ public class FindMaxRecursion {
      * @param high the index of the last element
      * @return max of {@code array}
      */
-    public static int max(int[] array, int low, int high) {
+    public static int max(final int[] array, final int low, final int high) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("array must be non-empty.");
+        }
         if (low == high) {
             return array[low]; // or array[high]
         }
@@ -48,7 +34,7 @@ public class FindMaxRecursion {
      * @param array contains elements
      * @return max value of {@code array}
      */
-    public static int max(int[] array) {
-        return array.length == 1 ? array[0] : max(array, 0, array.length);
+    public static int max(final int[] array) {
+        return max(array, 0, array.length - 1);
     }
 }
