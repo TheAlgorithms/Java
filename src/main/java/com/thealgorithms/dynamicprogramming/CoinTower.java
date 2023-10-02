@@ -8,6 +8,8 @@ A and B are playing a new game today. They form a tower of N coins and make a mo
 
 Input : N (Number of coins), x & y (How many coins a player can remove)
 Ouput: 'A' or 'B' (who is the winner)
+
+Link: https://www.geeksforgeeks.org/coin-game-winner-every-player-three-choices/
 */
 
 public class CoinTower {
