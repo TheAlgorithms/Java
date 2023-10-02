@@ -1,10 +1,3 @@
-package com.thealgorithms.strings;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
 
 /**
  * Aho-Corasick String Matching Algorithm Implementation
@@ -16,6 +9,15 @@ import java.util.Queue;
  * Author: Prabhat-Kumar-42
  * GitHub: https://github.com/Prabhat-Kumar-42
  */
+
+package com.thealgorithms.strings;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+
 public class AhoCorasick {
 
     // Trie Node Class
