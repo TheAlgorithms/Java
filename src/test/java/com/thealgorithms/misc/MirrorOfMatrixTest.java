@@ -36,16 +36,8 @@ public class MirrorOfMatrixTest {
         assertArrayEquals(expectedSingleRowMirroredMatrix, mirroredSingleRowMatrix);
 
         // Test case 4: Single-column matrix
-        int[][] singleColumnMatrix = {
-                {1},
-                {2},
-                {3}
-        };
-        int[][] expectedSingleColumnMirroredMatrix = {
-                {1},
-                {2},
-                {3}
-        };
+        int[][] singleColumnMatrix = {{1}, {2}, {3}};
+        int[][] expectedSingleColumnMirroredMatrix = {{1}, {2}, {3}};
         int[][] mirroredSingleColumnMatrix = MirrorOfMatrix.mirrorMatrix(singleColumnMatrix);
         assertArrayEquals(expectedSingleColumnMirroredMatrix, mirroredSingleColumnMatrix);
     }
