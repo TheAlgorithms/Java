@@ -37,7 +37,7 @@ class Solution {
                 boolean flag = Palindrome(sub);
                 if (flag == true) al.add(sub);
             }
-         }
+        }
         Collections.sort(al);
         String res = al.get(al.size() - 1);
         if (res.length() < 2) res = "none";
