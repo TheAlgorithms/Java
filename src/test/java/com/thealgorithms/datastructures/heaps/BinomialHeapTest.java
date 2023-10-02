@@ -65,8 +65,8 @@ public class BinomialHeapTest {
         binomialHeap.insert(25);
 
         // Decrease the key of an element and test if the minimum element is updated correctly
-        binomialHeap.decreaseKey(30, 15);
-        assertEquals(5, binomialHeap.findMin());
+        binomialHeap.decreaseKey(30, 1);
+        assertEquals(1, binomialHeap.findMin());
     }
 
     @Test
