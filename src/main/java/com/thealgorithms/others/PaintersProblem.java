@@ -47,6 +47,7 @@ public class PaintersProblem {
 	}
 
 	public static void main(String args[]) {
+		// Providing the array
 		int arr[] = { 10, 20, 60, 50, 30, 40 };
 
 		// Calculate size of array.
