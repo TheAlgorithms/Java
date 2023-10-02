@@ -1,0 +1,51 @@
+import java.util.*;
+public class recursiveBS {
+    //making recursive function
+    public static int binary(int[] arr, int beg, int end, int n)
+    {
+    	// defining mid point
+    	int mid = (beg + end) / 2;
+ 
+    	// Comparing 
+ 
+    	// Base condition 
+    	if (n == arr[mid]) {
+        	return mid;
+        }
+      // Remove all elements from the right side
+    	else if (n < arr[mid]) {
+        	return binary(arr, beg, mid - 1, n);
+        }
+       // Remove all elements from the left side
+    	else {
+        	return binary(arr, mid + 1, end, n);
+        }
+    }
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        // input number of elements
+        System.out.println("Enter the number of elements:" );
+        int l= sc.nextInt();
+        int list[]= new int[l];
+        // input individual elements
+        for(int i=0; i<l; i++){
+            System.out.println("Enter the element number "+ (i+1)); 
+            int a = sc.nextInt();
+            list[i]= a;
+        }
+        // printing the list
+        System.out.println("The list is:");
+        for(int i=0; i<l; i++){
+            System.out.print(list[i]+" "); 
+            
+        }System.out.println();
+        // input key element to search
+        System.out.println("Enter the element you want to search:");
+        int key= sc.nextInt();
+        // using Recursive Binary Search Function
+        int r= binary(list, 0, l-1, key);
+        System.out.println("The element is at position:");
+        System.out.println(r+1);
+    }
+    
+}
