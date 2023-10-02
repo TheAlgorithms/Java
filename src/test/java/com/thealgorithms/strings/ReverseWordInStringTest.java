@@ -12,6 +12,11 @@ public class ReverseWordInStringTest {
     }
 
     @Test
+    public void testCorrectReverseWordsInTheStringWithWhiteSpace() {
+        assertEquals("blue is Sky", ReverseWordsInString.reverseWordsInString("Sky \n is \n \n blue"));
+    }
+
+    @Test
     public void testReverseWordsInStringForEmpty() {
         assertEquals("", ReverseWordsInString.reverseWordsInString(""));
     }
