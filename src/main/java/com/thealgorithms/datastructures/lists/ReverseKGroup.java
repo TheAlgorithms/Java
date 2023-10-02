@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.lists;
 
 /**
- * Reverse K Group LinkedList
+ * Reverse K Group LinkedList (https://github.com/azl397985856/leetcode/blob/master/problems/25.reverse-nodes-in-k-groups-en.md)
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
