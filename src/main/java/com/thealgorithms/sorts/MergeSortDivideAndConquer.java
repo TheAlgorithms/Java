@@ -48,11 +48,11 @@ class MergeSortDivideAndConquer{
 
         //appending the elements into resultant by comparing the left and right arrays
         while(i!=left.length && j!=right.length){
-            if(left[i]<right[j]){
+            if(left[i]<right[j]) {
                 result[k]=left[i];
                 i++;
             }
-            else{
+            else {
                 result[k]=right[j];
                 j++;
             }
@@ -72,5 +72,6 @@ class MergeSortDivideAndConquer{
 
         }
         return result;
+
     }
 }
