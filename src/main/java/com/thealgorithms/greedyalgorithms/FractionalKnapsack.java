@@ -3,7 +3,7 @@ package com.thealgorithms.greedyalgorithms;
 import java.util.Arrays;
 import java.util.Comparator;
 
-//Problem Link: https://en.wikipedia.org/wiki/Continuous_knapsack_problem
+// Problem Link: https://en.wikipedia.org/wiki/Continuous_knapsack_problem
 
 public class FractionalKnapsack {
     // Function to perform fractional knapsack

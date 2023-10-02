@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-//Problem Link: https://en.wikipedia.org/wiki/Job-shop_scheduling
+// Problem Link: https://en.wikipedia.org/wiki/Job-shop_scheduling
 
 public class JobSequencing {
 

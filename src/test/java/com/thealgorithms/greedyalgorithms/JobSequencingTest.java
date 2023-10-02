@@ -1,10 +1,10 @@
 package com.thealgorithms.greedyalgorithms;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import org.junit.jupiter.api.Test;
 
 public class JobSequencingTest {
     @Test

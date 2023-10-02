@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-//Problem Link : https://en.wikipedia.org/wiki/Change-making_problem
+// Problem Link : https://en.wikipedia.org/wiki/Change-making_problem
 
 public class CoinChange {
     // Function to solve the coin change problem
@@ -32,7 +32,7 @@ public class CoinChange {
         }
         return ans;
     }
-    public static void printCoins(ArrayList<Integer> ans){
+    public static void printCoins(ArrayList<Integer> ans) {
         // Print the selected coins
         System.out.println("Coins: ");
         for (int i = 0; i < ans.size(); i++) {
