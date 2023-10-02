@@ -1,8 +1,8 @@
 package com.thealgorithms.misc;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 class MirrorOfMatrixTest {
 
     @Test
@@ -24,7 +24,7 @@ class MirrorOfMatrixTest {
     void testMirrorMatrixSingleElementMatrix() {
         int[][] originalMatrix = {{42}};
         int[][] expectedMirrorMatrix = {{42}};
-            int[][] mirroredMatrix = com.thealgorithms.misc.MirrorOfMatrix.mirrorMatrix(originalMatrix);
+        int[][] mirroredMatrix = com.thealgorithms.misc.MirrorOfMatrix.mirrorMatrix(originalMatrix);
         assertArrayEquals(expectedMirrorMatrix, mirroredMatrix);
     }
 
