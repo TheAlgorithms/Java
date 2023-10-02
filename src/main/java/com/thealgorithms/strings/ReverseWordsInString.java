@@ -11,6 +11,9 @@ package com.thealgorithms.strings;
 
 public final class ReverseWordsInString {
 
+    private ReverseWordsInString() {
+    }
+
     public static String reverseWordsInString(String s) {
 
         s = s.replaceAll("\\s+", " ").trim();
