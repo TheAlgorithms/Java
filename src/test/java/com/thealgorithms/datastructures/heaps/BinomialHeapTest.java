@@ -1,7 +1,7 @@
 /******************************************************************
- *                  Tests For Binomail Heap                       *
+ *                  Tests For Binomial Heap                       *
  *                                                                *
- * For deatiled info regarding Binomail-Heap refer to below link  *
+ * For deatiled info regarding Binomial-Heap refer to below link  *
  *      wiki -  https://en.wikipedia.org/wiki/Binomial_heap       *
  *                                                                *
  *                                                                *
