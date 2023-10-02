@@ -480,7 +480,7 @@
             * [IntrospectiveSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/IntrospectiveSort.java)
             * [LinkListSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/LinkListSort.java)
             * [MergeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/MergeSort.java)
-            * [Mergesortdivideandconquer](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/Mergesortdivideandconquer.java)
+            * [MergeSortDivideAndConquer](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/MergeSortDivideAndConquer.java)
             * [MergeSortNoExtraSpace](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/MergeSortNoExtraSpace.java)
             * [MergeSortRecursive](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/MergeSortRecursive.java)
             * [OddEvenSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/OddEvenSort.java)
