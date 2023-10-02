@@ -1,10 +1,10 @@
-/******************************************************
- *           Test for AhoCorasick Algorithm           *
- *                                                    *
- *            Author : Prabhat-Kumar-42               *
- *     github : https://github.com/Prabhat-Kumar-42   *
- *                                                    *
- *****************************************************/
+/********************************************************
+ *            TestCase for AhoCorasick Algorithm        *
+ *                                                      *
+ *               Author :  Prabhat-Kumar-42             *
+ *      Github :  https://github.com/Prabhat-Kumar-42   *
+ *                                                      *
+ ********************************************************/
 
 package com.thealgorithms.strings;
 
@@ -57,13 +57,20 @@ class AhoCorasickTest {
         // Get the results
         ArrayList<ArrayList<Integer>> res = ahoCorasick.getWordsIndexList();
 
+        // Define expected results for each pattern
+        int[][] expected = {
+            {}, // "ACC" should not be found
+            {2}, // "ATC" should be found at index 2
+            {1}, // "CAT" should be found at index 1
+            {}, // "GCG" should not be found
+            {1, 4}, // "C" should be found at indices 1 and 4
+            {3} // "T" should be found at index 3
+        };
+
         // Check specific pattern occurrences
-        assertEquals(0, res.get(0).size()); // "ACC" should not be found
-        assertEquals(1, res.get(1).size()); // "ATC" should be found at index 2
-        assertEquals(1, res.get(2).size()); // "CAT" should be found at index 1
-        assertEquals(0, res.get(3).size()); // "GCG" should not be found
-        assertEquals(2, res.get(4).size()); // "C" should be found at indices 1 and 4
-        assertEquals(1, res.get(5).size()); // "T" should be found at index 3
+        for (int i = 0; i < patterns.length; i++) {
+            assertIterableEquals(toList(expected[i]), res.get(i));
+        }
     }
 
     @Test
@@ -78,13 +85,13 @@ class AhoCorasickTest {
         // Get the repeat counts
         ArrayList<Integer> countOfWords = ahoCorasick.getRepeatCountOfWords();
 
+        // Define expected repeat counts for each pattern
+        int[] expected = {0, 1, 1, 0, 2, 1};
+
         // Check the repeat counts
-        assertEquals(0, countOfWords.get(0)); // "ACC" appears zero times
-        assertEquals(1, countOfWords.get(1)); // "ATC" appears once
-        assertEquals(1, countOfWords.get(2)); // "CAT" appears once
-        assertEquals(0, countOfWords.get(3)); // "GCG" appears zero times
-        assertEquals(2, countOfWords.get(4)); // "C" appears twice
-        assertEquals(1, countOfWords.get(5)); // "T" appears once
+        for (int i = 0; i < patterns.length; i++) {
+            assertEquals(expected[i], countOfWords.get(i));
+        }
     }
 
     @Test
@@ -107,12 +114,9 @@ class AhoCorasickTest {
 
         // Verify that start points are correctly set up
         // In this example, all patterns should have their end points converted to start points
-        assertEquals(resBefore.get(0), resAfter.get(0)); // "ACC" start points should be the same
-        assertEquals(resBefore.get(1), resAfter.get(1)); // "ATC" start points should be the same
-        assertEquals(resBefore.get(2), resAfter.get(2)); // "CAT" start points should be the same
-        assertEquals(resBefore.get(3), resAfter.get(3)); // "GCG" start points should be the same
-        assertEquals(resBefore.get(4), resAfter.get(4)); // "C" start points should be the same
-        assertEquals(resBefore.get(5), resAfter.get(5)); // "T" start points should be the same
+        for (int i = 0; i < patterns.length; i++) {
+            assertIterableEquals(resBefore.get(i), resAfter.get(i));
+        }
     }
 
     @Test
@@ -237,11 +241,28 @@ class AhoCorasickTest {
         // Get the positionByString map
         Map<String, ArrayList<Integer>> positionByString = ahoCorasick.getPositionByString();
 
+        // Define expected positions for each pattern
+        int[][] expectedPositions = {
+            {}, // "ACC" should not be found
+            {2}, // "ATC" should be found at index 2
+            {1}, // "CAT" should be found at index 1
+            {}, // "GCG" should not be found
+            {1, 4}, // "C" should be found at indices 1 and 4
+            {3} // "T" should be found at index 3
+        };
+
         // Check specific pattern positions
-        assertEquals(1, positionByString.get("ATC").size()); // "ATC" should be found at index 2
-        assertEquals(1, positionByString.get("CAT").size()); // "CAT" should be found at index 1
-        assertEquals(2, positionByString.get("C").size()); // "C" should be found at indices 1 and 4
-        assertEquals(1, positionByString.get("T").size()); // "T" should be found at index 3
-        // You can add more assertions for other patterns if needed
+        for (int i = 0; i < patterns.length; i++) {
+            assertIterableEquals(toList(expectedPositions[i]), positionByString.get(patterns[i]));
+        }
+    }
+
+    // Helper method to convert an array to an ArrayList
+    private ArrayList<Integer> toList(int[] array) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int value : array) {
+            list.add(value);
+        }
+        return list;
     }
 }
