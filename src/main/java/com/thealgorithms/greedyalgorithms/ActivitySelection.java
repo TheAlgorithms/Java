@@ -23,18 +23,14 @@ public class ActivitySelection {
 
         // Sort activities by their end times in ascending order.
         Arrays.sort(activities, Comparator.comparingDouble(o -> o[2]));
-
-        int max = 1;         
         int lastEnd;         
         ArrayList<Integer> ans = new ArrayList<>();
-        
         ans.add(activities[0][0]);
         lastEnd = activities[0][2]; 
 
         // Iterate through sorted activities to select compatible ones.
         for (int i = 1; i < n; i++) {
-            if (activities[i][1] >= lastEnd) {
-                max++;                    
+            if (activities[i][1] >= lastEnd) {                
                 ans.add(activities[i][0]); 
                 lastEnd = activities[i][2]; 
             }

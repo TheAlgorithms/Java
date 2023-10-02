@@ -27,5 +27,4 @@ public class CoinChangeTest {
         ArrayList<Integer> coins = CoinChange.coinChangeProblem(3);
         assertEquals(expected, coins);
     }
-
 }

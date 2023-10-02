@@ -1,6 +1,7 @@
 package com.thealgorithms.greedyalgorithms;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class FractionalKnapsackTest {
