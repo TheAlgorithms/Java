@@ -35,22 +35,22 @@ public class MatrixRank {
         int rank = 0;
 
         boolean[] rowMarked = new boolean[numRows];
-        for(int colIndex = 0; colIndex < numColumns; ++colIndex) {
+        for (int colIndex = 0; colIndex < numColumns; ++colIndex) {
             int pivotRow;
-            for(pivotRow = 0; pivotRow < numRows; ++pivotRow) {
-                if(!rowMarked[pivotRow] && Math.abs(matrix[pivotRow][colIndex]) > EPSILON) {
+            for (pivotRow = 0; pivotRow < numRows; ++pivotRow) {
+                if (!rowMarked[pivotRow] && Math.abs(matrix[pivotRow][colIndex]) > EPSILON) {
                     break;
                 }
             }
-            if(pivotRow != numRows) {
+            if (pivotRow != numRows) {
                 ++rank;
                 rowMarked[pivotRow] = true;
-                for(int nextCol = colIndex + 1; nextCol < numColumns; ++nextCol) {
+                for (int nextCol = colIndex + 1; nextCol < numColumns; ++nextCol) {
                     matrix[pivotRow][nextCol] /= matrix[pivotRow][colIndex];
                 }
-                for(int otherRow = 0; otherRow < numRows; ++otherRow) {
-                    if(otherRow != pivotRow && Math.abs(matrix[otherRow][colIndex]) > EPSILON) {
-                        for(int col2 = colIndex + 1; col2 < numColumns; ++col2) {
+                for (int otherRow = 0; otherRow < numRows; ++otherRow) {
+                    if (otherRow != pivotRow && Math.abs(matrix[otherRow][colIndex]) > EPSILON) {
+                        for (int col2 = colIndex + 1; col2 < numColumns; ++col2) {
                             matrix[otherRow][col2] -= matrix[pivotRow][col2] * matrix[otherRow][colIndex];
                         }
                     }
