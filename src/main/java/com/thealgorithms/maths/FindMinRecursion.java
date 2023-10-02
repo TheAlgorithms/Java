@@ -5,7 +5,7 @@ import java.util.Random;
 
 public final class FindMinRecursion {
 
-    private FindMaxRecursion() {
+    private FindMinRecursion() {
     }
     public static int min(final int[] array, final int low, final int high) {
         if (array.length == 0) {
