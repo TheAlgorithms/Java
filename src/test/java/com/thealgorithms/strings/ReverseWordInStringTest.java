@@ -8,6 +8,11 @@ public class ReverseWordInStringTest {
 
     @Test
     public void testCorrectReverseWordsInTheString() {
-        assertEquals("blue is Sky", ReverseWordInString.reverseWords("Sky is blue"));
+        assertEquals("blue is Sky", ReverseWordsInString.reverseWordsInString("Sky is blue"));
+    }
+
+    @Test
+    public void testReverseWordsInStringForEmpty() {
+        assertEquals("", ReverseWordsInString.reverseWordsInString(""));
     }
 }
