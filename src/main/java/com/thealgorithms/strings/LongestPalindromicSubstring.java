@@ -2,6 +2,7 @@ package com.thealgorithms.strings;
 
 // Longest Palindromic Substring
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -23,8 +24,8 @@ class Solution {
         str = str.toLowerCase();
         String rev = "";
         for (int i = str.length() - 1; i > -1; i--) rev += str.charAt(i);
-    if (str.equals(rev)) return true;
-    return false;
+        if (str.equals(rev)) return true;
+        return false;
     }
 
     public String longestPalindrome(String str) {
@@ -41,5 +42,5 @@ class Solution {
         String res = al.get(al.size() - 1);
         if (res.length() < 2) res = "none";
         return res;
-     }
+    }
 }
