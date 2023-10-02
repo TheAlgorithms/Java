@@ -14,24 +14,37 @@ The Original matrix is:   |   The Mirror matrix is:
 */
 
 public final class MirrorOfMatrix {
-    private MirrorOfMatrix() {
+    MirrorOfMatrix() {
     }
     public static int[][] mirrorMatrix(int[][] originalMatrix) {
-        if (originalMatrix == null || originalMatrix.length == 0) {
+        if (originalMatrix == null) {
             // Handle invalid input
+            return null;
+        }
+        if(originalMatrix.length == 0){
             return new int[0][0];
         }
         int numRows = originalMatrix.length;
         int numCols = originalMatrix[0].length;
 
+        for (int i = 1; i < numRows; i++) {
+            if (originalMatrix[i].length != numCols) {
+                throw new IllegalArgumentException("Input matrix is not a valid matrix. Rows have different sizes.");
+            }
+        }
+
         int[][] mirroredMatrix = new int[numRows][numCols];
 
         for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numCols; j++) {
-                // Copy elements from the original matrix in reverse order
-                mirroredMatrix[i][j] = originalMatrix[i][numCols - 1 - j];
-            }
+            mirroredMatrix[i] = reverseRow(originalMatrix[i]);
         }
         return mirroredMatrix;
+    }
+    private static int[] reverseRow(final int[] inRow) {
+        int[] res = new int[inRow.length];
+        for (int i = 0; i < inRow.length; ++i) {
+            res[i] = inRow[inRow.length - 1 - i];
+        }
+        return res;
     }
 }
