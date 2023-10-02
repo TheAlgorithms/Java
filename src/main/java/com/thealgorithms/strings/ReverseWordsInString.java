@@ -13,7 +13,7 @@ public final class ReverseWordsInString {
 
     public static String reverseWordsInString(String s) {
 
-        s = s.replaceAll("\\s+"," ").trim();
+        s = s.replaceAll("\\s+", " ").trim();
         StringBuilder res = new StringBuilder();
         int start = 0;
         int end;
