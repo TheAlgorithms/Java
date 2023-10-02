@@ -1,7 +1,5 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
-
 // Problem Statement
 /*
 We have given an array of m x n (where m is the number of rows and n is the number of columns).
