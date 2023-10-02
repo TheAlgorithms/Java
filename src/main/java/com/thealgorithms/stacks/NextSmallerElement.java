@@ -23,9 +23,8 @@ Given an array "input," you need to find and print the first smaller element for
      Next Smaller element between (i+1 to n) is -1
      At i = 6
      Next Smaller element between (i+1 to n) is -1
-     
-Result: [-1, 3, -1, 4, -1, -1, -1]
-*/
+     Result: [-1, 3, -1, 4, -1, -1, -1]
+     */
 
 public class NextSmallerElement {
 
