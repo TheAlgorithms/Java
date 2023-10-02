@@ -1,6 +1,6 @@
 package abstractFactoryPattern;
 
-public class DarkThemeClass implements IThemeFactory{
+public class DarkThemeClass implements IThemeFactory {
 
     @Override
     public IBgClass getBackground() {
@@ -20,5 +20,4 @@ public class DarkThemeClass implements IThemeFactory{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getButton'");
     }
-    
 }
