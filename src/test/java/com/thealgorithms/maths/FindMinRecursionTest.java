@@ -18,7 +18,7 @@ public class FindMinRecursionTest {
     }
 
     private static Stream<Arguments> inputStream() {
-        return Stream.of(Arguments.of(5, new int[] {5, 5, 5, 5, 5}), Arguments.of(-1, new int[] {-1, 0}), Arguments.of(-1, new int[] {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}), Arguments.of(-4, new int[] {3, -2, 3, 9, -4, -4, 8}), Arguments.of(3, new int[] {3}));
+        return Stream.of(Arguments.of(5, new int[] {5, 5, 5, 5, 5}), Arguments.of(-1, new int[] {-1, 0}), Arguments.of(-10, new int[] {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}), Arguments.of(-4, new int[] {3, -2, 3, 9, -4, -4, 8}), Arguments.of(3, new int[] {3}));
     }
 
     @Test
