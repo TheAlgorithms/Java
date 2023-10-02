@@ -6,7 +6,7 @@ package com.thealgorithms.bitmanipulation;
  */
 public class CountNumberOfSetBits {
     public static int countNumberOfSetBits(int n) {
-        if(n == 0) {
+        if (n == 0) {
             return 0;
         }
         return (n & 1) + countNumberOfSetBits(n >> 1);
