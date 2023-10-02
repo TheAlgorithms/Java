@@ -37,7 +37,7 @@ import java.util.Stack;
    answer is -1
  */
 
-public class NextSmallerElement {
+public class prevSmaller {
 
     public static int[] findNextSmallerElements(int[] array) {
         // base case
