@@ -27,10 +27,7 @@ public final class MirrorOfMatrix {
         int[][] mirroredMatrix = new int[numRows][numCols];
 
         for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numCols; j++) {
-                // Copy elements from the original matrix in reverse order
-                mirroredMatrix[i][j] = originalMatrix[i][numCols - 1 - j];
-            }
+            mirroredMatrix[i] = reverseRow(originalMatrix[i]);
         }
         return mirroredMatrix;
     }
