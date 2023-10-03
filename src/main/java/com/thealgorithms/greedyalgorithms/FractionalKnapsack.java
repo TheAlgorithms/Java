@@ -26,8 +26,6 @@ public class FractionalKnapsack {
         // Iterate through the sorted items to select items for the knapsack.
         for (int i = ratio.length - 1; i >= 0; i--) {
             int index = (int) ratio[i][0]; // Get the item index.
-            
-            
             if (current >= weight[index]) {
                 // If the entire item can fit in the knapsack, add its value.
                 finalValue += value[index];

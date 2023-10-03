@@ -38,4 +38,3 @@ public class ActivitySelection {
         return selectedActivities;
     }
 }
-
