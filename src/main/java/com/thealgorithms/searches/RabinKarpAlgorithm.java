@@ -2,7 +2,9 @@ package com.thealgorithms.searches;
 
 // Implementation of Rabin Karp Algorithm
 
-public class RabinKarpAlgorithm {
+public final class RabinKarpAlgorithm {
+    private RabinKarpAlgorithm() {
+    }
 
     // d is the number of characters in the input alphabet
     private static final int d = 256;
