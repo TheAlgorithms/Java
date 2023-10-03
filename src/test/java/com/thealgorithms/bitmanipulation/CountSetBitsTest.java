@@ -8,10 +8,9 @@ public class CountSetBitsTest {
 
     @Test
     void testSetBits() {
-        countSetBits csb = new countSetBits();
-        assertEquals(1L, csb.countsetBits(16));
-        assertEquals(4, csb.countsetBits(15));
-        assertEquals(5, csb.countsetBits(10000));
-        assertEquals(5, csb.countsetBits(31));
+        assertEquals(1L, CountSetBits.countsetBits(16));
+        assertEquals(4, CountSetBits.countsetBits(15));
+        assertEquals(5, CountSetBits.countsetBits(10000));
+        assertEquals(5, CountSetBits.countsetBits(31));
     }
 }
