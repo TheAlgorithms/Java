@@ -49,7 +49,7 @@ class ChineseRemainderTheorem {
         System.out.println("Chinese Remainder Theorem");
         System.out.println("----------------------------");
         System.out.println("This program calculates the solution to a set of "
-                    + "congruence relations.");
+            + "congruence relations.");
         System.out.println("The Chinese Remainder Theorem states that there always exists a "
             + "unique solution x that satisfies these congruences.");
         System.out.println("Enter the number of congruence relations:");
