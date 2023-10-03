@@ -34,4 +34,25 @@ public class CoinChangeTest {
         ArrayList<Integer> coins = CoinChange.coinChangeProblem(3);
         assertEquals(expected, coins);
     }
+
+    @Test
+    public void testCoinChangeProblemWithLargeAmountAndMultipleDenominations() {
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2000, 2000, 2000, 2000, 500, 500, 500, 100, 100, 100, 100, 50, 20, 20, 5, 2, 2));
+        ArrayList<Integer> coins = CoinChange.coinChangeProblem(9999);
+        assertEquals(expected, coins);
+    }
+
+    @Test
+    public void testCoinChangeProblemWithAllDenominations() {
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2000, 500, 100, 100, 100, 50, 20, 10, 5, 2, 1));
+        ArrayList<Integer> coins = CoinChange.coinChangeProblem(2888);
+        assertEquals(expected, coins);
+    }
+
+    @Test
+    public void testCoinChangeProblemWithZeroAmount() {
+        ArrayList<Integer> expected = new ArrayList<>();
+        ArrayList<Integer> coins = CoinChange.coinChangeProblem(0);
+        assertEquals(expected, coins);
+    }
 }
