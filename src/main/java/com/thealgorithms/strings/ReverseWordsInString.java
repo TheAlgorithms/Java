@@ -51,6 +51,6 @@ public final class ReverseWordsInString {
             end++;
         }
 
-        return new Integer[]{start, end};
+        return new Integer[] {start, end};
     }
 }
