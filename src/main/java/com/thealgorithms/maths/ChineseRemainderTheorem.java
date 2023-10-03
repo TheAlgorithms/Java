@@ -16,8 +16,7 @@ import java.util.*;
 class ChineseRemainderTheorem {
     // Function to calculate the Chinese Remainder using given residues, moduli,
     // size, and product
-    static int chineseRemainder(int residues[], int moduli[], int n,
-            int product) {
+    static int chineseRemainder(int residues[], int moduli[], int n, int product) {
         int result = 0;
 
         // Iterate through the congruence relations
@@ -49,11 +48,10 @@ class ChineseRemainderTheorem {
         // Introduction and problem statement
         System.out.println("Chinese Remainder Theorem");
         System.out.println("----------------------------");
-        System.out.println("This program calculates the solution to a set of " +
-                "congruence relations.");
-        System.out.println(
-                "The Chinese Remainder Theorem states that there always exists a " +
-                        "unique solution x that satisfies these congruences.");
+        System.out.println("This program calculates the solution to a set of "
+                    + "congruence relations.");
+        System.out.println("The Chinese Remainder Theorem states that there always exists a "
+            + "unique solution x that satisfies these congruences.");
         System.out.println("Enter the number of congruence relations:");
 
         // Read the number of congruence relations
@@ -62,8 +60,7 @@ class ChineseRemainderTheorem {
         // Input residues
         System.out.println("Enter the values of residues:");
         int residues[] = new int[size];
-        for (int i = 0; i < size; i++)
-            residues[i] = scanner.nextInt();
+        for (int i = 0; i < size; i++) residues[i] = scanner.nextInt();
 
         // Input moduli and calculate the product of moduli
         System.out.println("Enter the values of moduli:");
@@ -74,7 +71,6 @@ class ChineseRemainderTheorem {
         }
 
         // Calculate and display the solution
-        System.out.println("The solution is " +
-                chineseRemainder(residues, moduli, size, product));
+        System.out.println("The solution is " + chineseRemainder(residues, moduli, size, product));
     }
 }
