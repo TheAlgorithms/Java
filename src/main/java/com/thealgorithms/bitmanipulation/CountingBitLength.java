@@ -4,8 +4,8 @@ package com.thealgorithms.bitmanipulation;
  * Author: lukasb1b (https://github.com/lukasb1b)
  */
 
-public class CountingBitLength {
-    private CountingBitLength(){
+public final class CountingBitLength {
+    private CountingBitLength() {
     }
 
     /*
