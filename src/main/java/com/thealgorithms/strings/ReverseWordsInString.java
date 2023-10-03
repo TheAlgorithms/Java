@@ -23,21 +23,25 @@ public final class ReverseWordsInString {
 
         while (start < s.length()) {
 
-            String sub = findNextWord(s, start, end);
+            Integer[] arr = findNextWord(s, start, end);
+
+            end = arr[1];
+
+            String word = s.substring(start, end);
 
             start = end;
 
             if (res.length() > 0) {
                 res.insert(0, " ");
-                res.insert(0, sub);
+                res.insert(0, word);
             } else {
-                res.append(sub);
+                res.append(word);
             }
         }
         return res.toString();
     }
 
-    private static String findNextWord(String s, int start, int end) {
+    private static Integer[] findNextWord(String s, int start, int end) {
         while (s.charAt(start) == ' ') {
             start++;
         }
@@ -47,6 +51,6 @@ public final class ReverseWordsInString {
             end++;
         }
 
-        return s.substring(start, end);
+        return new Integer[]{start, end};
     }
 }
