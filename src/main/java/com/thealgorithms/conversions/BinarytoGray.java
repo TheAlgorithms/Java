@@ -16,15 +16,15 @@ Binary to Gray:
 */
 
 import java.io.IOException;
-import java.util.*;
+
 class BinarytoGray {
     // Function to convert given binary code to gray code.
     public String binaryToGray(String bin) {
         StringBuilder sb = new StringBuilder();
         /*
-        Initializing a 2d matrice with one column for given binary code and
-        another column for converted gray code.
-        */
+         * Initializing a 2d matrice with one column for given binary code and
+         * another column for converted gray code.
+         */
         char[][] matrice = new char[bin.length()][2];
 
         int i;
@@ -33,7 +33,7 @@ class BinarytoGray {
         matrice[0][1] = (bin.charAt(0)); // MSB of Gray code is same as that of given Binary code
         for (i = 1; i < bin.length(); i++) {
             // taking the XOR of current index character of binary code with
-            //  the previous index character of binary code
+            // the previous index character of binary code
             char x = (bin.charAt(i) == bin.charAt(i - 1)) ? '0' : '1';
             matrice[i][1] = x;
             matrice[i][0] = bin.charAt(i);

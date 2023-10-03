@@ -13,15 +13,15 @@ Gray to Binary:
 */
 
 import java.io.IOException;
-import java.util.*;
+
 class GraytoBinary {
     // Function to convert given binary code to gray code.
     public String grayToBinary(String gray) {
         StringBuilder sb = new StringBuilder();
         /*
-        Initializing a 2d matrice with one column for given gray code and
-        another column for converted binary code.
-        */
+         * Initializing a 2d matrice with one column for given gray code and
+         * another column for converted binary code.
+         */
         char[][] matrice = new char[gray.length()][2];
 
         int i;
@@ -32,8 +32,10 @@ class GraytoBinary {
 
         for (i = 1; i < gray.length(); i++) {
             matrice[i][0] = gray.charAt(i);
-            // if the current character is '0' we copy the previous character of the binary code
-            if (gray.charAt(i) == '0') matrice[i][1] = (matrice[i - 1][1]);
+            // if the current character is '0' we copy the previous character of the binary
+            // code
+            if (gray.charAt(i) == '0')
+                matrice[i][1] = (matrice[i - 1][1]);
             // else we copy the flipped value of the previous gray code character
             // i.e if its '0' we take '1' and vice-versa
             else
