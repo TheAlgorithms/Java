@@ -5,6 +5,7 @@ package com.thealgorithms.dynamicprogramming;
  * and selling a stock represented by an array of prices. 
  * The stock can only be bought and sold once, and the selling can 
  * only happen after the buying.
+ * https://www.geeksforgeeks.org/best-time-to-buy-and-sell-stock/
  */
 
 public class StockBuyAndSell {
