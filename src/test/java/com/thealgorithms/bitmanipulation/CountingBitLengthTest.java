@@ -7,11 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class CountingBitLengthTest {
     static Stream<Object[]> inputStream() {
-        return Stream.of(
-                new Object[]{3, 5},
-                new Object[]{0, 0},
-                new Object[]{2, -3}
-        );
+        return Stream.of(new Object[] {3, 5}, new Object[] {0, 0}, new Object[] {2, -3});
     }
 
     @ParameterizedTest
