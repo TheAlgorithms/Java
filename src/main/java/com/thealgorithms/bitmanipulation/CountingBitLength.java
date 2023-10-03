@@ -6,7 +6,6 @@ package com.thealgorithms.bitmanipulation;
 
 public class CountingBitLength {
     private CountingBitLength(){
-
     }
 
     /*
@@ -17,7 +16,7 @@ public class CountingBitLength {
 
         while (!(num == 0 || num == -1)) {
             result++;
-            num = num>>1;
+            num = num >> 1;
         }
         return result;
     }
