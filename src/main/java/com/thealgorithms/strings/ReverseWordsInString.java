@@ -24,7 +24,7 @@ public final class ReverseWordsInString {
         while (start < s.length()) {
 
             Integer[] arr = findNextWord(s, start, end);
-
+            start = arr[0];
             end = arr[1];
 
             String word = s.substring(start, end);
