@@ -41,4 +41,3 @@ public final class NthRoot {
         return -1;
     }
 }
-
