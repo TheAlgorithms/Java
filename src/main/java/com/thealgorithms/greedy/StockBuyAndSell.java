@@ -1,9 +1,9 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * The problem is to find the maximum profit that can be obtained by buying 
- * and selling a stock represented by an array of prices. 
- * The stock can only be bought and sold once, and the selling can 
+ * The problem is to find the maximum profit that can be obtained by buying
+ * and selling a stock represented by an array of prices.
+ * The stock can only be bought and sold once, and the selling can
  * only happen after the buying.
  * https://www.geeksforgeeks.org/best-time-to-buy-and-sell-stock/
  */
@@ -11,7 +11,7 @@ package com.thealgorithms.dynamicprogramming;
 public class StockBuyAndSell {
     // Driver code
     public static void main(String[] args) {
-        int[] arr = { 100, 180, 260, 310, 40, 535, 695 };
+        int[] arr = {100, 180, 260, 310, 40, 535, 695};
         int maxProfit = maxProfit(arr);
         System.out.println("Maximum profit that can be obtained is: " + maxProfit);
     }
