@@ -244,6 +244,11 @@
             * [WineProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/WineProblem.java)
           * geometry
             * [GrahamScan](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/GrahamScan.java)
+          * greedyalgorithms
+            * [ActivitySelection](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
+            * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/CoinChange.java)
+            * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
+            * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
           * maths
@@ -356,12 +361,14 @@
             * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/ColorContrastRatio.java)
             * [InverseOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/InverseOfMatrix.java)
             * [matrixTranspose](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/matrixTranspose.java)
+            * [MedianOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfMatrix.java)
             * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArray.java)
             * [MedianOfRunningArrayByte](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayByte.java)
             * [MedianOfRunningArrayDouble](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayDouble.java)
             * [MedianOfRunningArrayFloat](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayFloat.java)
             * [MedianOfRunningArrayInteger](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayInteger.java)
             * [MedianOfRunningArrayLong](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayLong.java)
+            * [MirrorOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MirrorOfMatrix.java)
             * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromePrime.java)
             * [PalindromeSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromeSinglyLinkedList.java)
             * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/RangeInSortedArray.java)
@@ -662,6 +669,11 @@
             * [WildcardMatchingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/WildcardMatchingTest.java)
           * geometry
             * [GrahamScanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
+          * greedyalgorithms
+            * [ActivitySelectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/ActivitySelectionTest.java)
+            * [CoinChangeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/CoinChangeTest.java)
+            * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
+            * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
           * maths
@@ -738,7 +750,9 @@
             * [TwinPrimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/TwinPrimeTest.java)
             * [VolumeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/VolumeTest.java)
           * misc
+            * [MedianOfMatrixtest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfMatrixtest.java)
             * [MedianOfRunningArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfRunningArrayTest.java)
+            * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MirrorOfMatrixTest.java)
             * [PalindromeSinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromeSinglyLinkedListTest.java)
             * [TwoSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/TwoSumProblemTest.java)
           * others
