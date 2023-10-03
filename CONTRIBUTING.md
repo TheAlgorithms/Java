@@ -10,6 +10,9 @@ NOTE: *We DO NOT add leetcode problems. They are just applications of basic prin
 
 NOTE: *Please avoid opening issues asking to be "assigned" to a particular algorithm. This merely creates unnecessary noise for maintainers. Instead, please submit your implementation in a pull request and project maintainers will evaluate it.*
 
+**Ensure your code is properly formatted** by using the command **clang-format -i --style=file path/to/your/file.java**.
+ - If you do not have the correct version of clang-format (i.e. < 16.0), you can remove **InsertNewlineAtEOF: true** from
+ **java/.clang-format** and manually add a newline at the end of your file before pushing.
 
 
 ### Do you want to contribute to the documentation?
