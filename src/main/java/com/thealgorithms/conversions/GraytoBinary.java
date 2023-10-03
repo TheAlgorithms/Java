@@ -34,8 +34,7 @@ class GraytoBinary {
             matrice[i][0] = gray.charAt(i);
             // if the current character is '0' we copy the previous character of the binary
             // code
-            if (gray.charAt(i) == '0')
-                matrice[i][1] = (matrice[i - 1][1]);
+            if (gray.charAt(i) == '0') matrice[i][1] = (matrice[i - 1][1]);
             // else we copy the flipped value of the previous gray code character
             // i.e if its '0' we take '1' and vice-versa
             else
