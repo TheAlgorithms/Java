@@ -29,7 +29,7 @@ public final class MirrorOfMatrix {
 
         for (int i = 1; i < numRows; i++) {
             if (originalMatrix[i].length != numCols) {
-                throw new IllegalArgumentException("Input matrix is not a valid matrix. Rows have different sizes.");
+                throw new IllegalArgumentException("The input is not a matrix.");
             }
         }
 
