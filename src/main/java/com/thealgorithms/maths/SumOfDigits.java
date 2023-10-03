@@ -17,7 +17,7 @@ public class SumOfDigits {
      * @return sum of digits of given {@code number}
      */
     public static int sumOfDigits(int number) {
-        number = number < 0 ? -number : number;
+        number = number < 0 ? -number : number; // ternary operator to check of number is negative
         /* calculate abs value */
         int sum = 0;
         while (number != 0) {
