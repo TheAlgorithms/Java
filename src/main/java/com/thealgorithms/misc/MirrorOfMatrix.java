@@ -16,6 +16,7 @@ The Original matrix is:   |   The Mirror matrix is:
 public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
+
     public static int[][] mirrorMatrix(int[][] originalMatrix) {
         if (originalMatrix == null) {
             // Handle invalid input
@@ -47,7 +48,7 @@ public final class MirrorOfMatrix {
 
     private static void checkInput(int[][] matrix) {
         // Check if all rows have the same number of columns
-        for (int i = 1; i < matrix[0].length; i++) {
+        for (int i = 1; i < matrix.length; i++) {
             if (matrix[i].length != matrix[0].length) {
                 throw new IllegalArgumentException("The input is not a matrix.");
             }

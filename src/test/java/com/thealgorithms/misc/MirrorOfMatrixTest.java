@@ -1,6 +1,8 @@
 package com.thealgorithms.misc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,7 @@ class MirrorOfMatrixTest {
         int[][] mirroredMatrix = com.thealgorithms.misc.MirrorOfMatrix.mirrorMatrix(originalMatrix);
         assertArrayEquals(expectedMirrorMatrix, mirroredMatrix);
     }
+
     @Test
     void testMirrorMatrixEmptyMatrix() {
         int[][] originalMatrix = {};
@@ -41,5 +44,10 @@ class MirrorOfMatrixTest {
     void testMirrorMatrixNullInput() {
         int[][] originalMatrix = null;
         assertNull(com.thealgorithms.misc.MirrorOfMatrix.mirrorMatrix(originalMatrix));
+    }
+
+    @Test
+    void testMirrotMarixThrows() {
+        assertThrows(IllegalArgumentException.class, () -> MirrorOfMatrix.mirrorMatrix(new int[][] {{1}, {2, 3}}));
     }
 }
