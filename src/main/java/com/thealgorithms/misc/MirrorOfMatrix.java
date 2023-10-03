@@ -14,7 +14,7 @@ The Original matrix is:   |   The Mirror matrix is:
 */
 
 public final class MirrorOfMatrix {
-    MirrorOfMatrix() {
+    private MirrorOfMatrix() {
     }
     public static int[][] mirrorMatrix(int[][] originalMatrix) {
         if (originalMatrix == null) {
