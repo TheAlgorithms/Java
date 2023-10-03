@@ -1,6 +1,6 @@
 package com.thealgorithms.others;
 
-public class CountSetBits {
+public final class CountSetBits {
 
     /**
      * The below algorithm is called as Brian Kernighan's algorithm
@@ -40,7 +40,7 @@ public class CountSetBits {
      * @param num takes Long number whose number of set bit is to be found
      * @return the count of set bits in the binary equivalent
     */
-    public long countsetBits(long num) {
+    public static long countsetBits(long num) {
         long cnt = 0;
         while (num > 0) {
             cnt++;
