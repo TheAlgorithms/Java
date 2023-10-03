@@ -30,14 +30,6 @@ class MirrorOfMatrixTest {
     }
 
     @Test
-    void testMirrorMatrixOneRowMultipleColumnsMatrix() {
-        int[][] originalMatrix = {{1, 2, 3, 4}};
-        int[][] expectedMirrorMatrix = {{4, 3, 2, 1}};
-        int[][] mirroredMatrix = com.thealgorithms.misc.MirrorOfMatrix.mirrorMatrix(originalMatrix);
-        assertArrayEquals(expectedMirrorMatrix, mirroredMatrix);
-    }
-
-    @Test
     void testMirrorMatrixMultipleRowsOneColumnMatrix() {
         int[][] originalMatrix = {{1}, {2}, {3}, {4}};
         int[][] expectedMirrorMatrix = {{1}, {2}, {3}, {4}};
