@@ -3,8 +3,9 @@ import java.util.*;
 /**
  * Chinese Remainder Theorem
  *
- * This program calculates the solution to a set of congruence relations using the Chinese Remainder Theorem.
- * The theorem states that there always exists a unique solution x that satisfies the given congruences.
+ * This program calculates the solution to a set of congruence relations using
+ * the Chinese Remainder Theorem. The theorem states that there always exists a
+ * unique solution x that satisfies the given congruences.
  *
  * Author: [Gyandeep] (https://github.com/Gyan172004)
  *
@@ -13,8 +14,10 @@ import java.util.*;
  */
 
 class ChineseRemainderTheorem {
-  // Function to calculate the Chinese Remainder using given residues, moduli, size, and product
-  static int chineseRemainder(int residues[], int moduli[], int n, int product) {
+  // Function to calculate the Chinese Remainder using given residues, moduli,
+  // size, and product
+  static int chineseRemainder(int residues[], int moduli[], int n,
+                              int product) {
     int result = 0;
 
     // Iterate through the congruence relations
@@ -31,7 +34,8 @@ class ChineseRemainderTheorem {
         }
       }
 
-      // Calculate the intermediate result using the Chinese Remainder Theorem formula
+      // Calculate the intermediate result using the Chinese Remainder Theorem
+      // formula
       result = result + residues[i] * M * inverse;
     }
 
@@ -39,14 +43,18 @@ class ChineseRemainderTheorem {
     return result % product;
   }
 
-  public static void main(String args[]) {
+public
+  static void main(String args[]) {
     Scanner scanner = new Scanner(System.in);
 
     // Introduction and problem statement
     System.out.println("Chinese Remainder Theorem");
     System.out.println("----------------------------");
-    System.out.println("This program calculates the solution to a set of congruence relations.");
-    System.out.println("The Chinese Remainder Theorem states that there always exists a unique solution x that satisfies these congruences.");
+    System.out.println("This program calculates the solution to a set of "
+                       "congruence relations.");
+    System.out.println(
+        "The Chinese Remainder Theorem states that there always exists a "
+        "unique solution x that satisfies these congruences.");
     System.out.println("Enter the number of congruence relations:");
 
     // Read the number of congruence relations
@@ -67,6 +75,7 @@ class ChineseRemainderTheorem {
     }
 
     // Calculate and display the solution
-    System.out.println("The solution is " + chineseRemainder(residues, moduli, size, product));
+    System.out.println("The solution is " +
+                       chineseRemainder(residues, moduli, size, product));
   }
 }
