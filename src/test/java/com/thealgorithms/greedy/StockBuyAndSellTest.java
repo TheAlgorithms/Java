@@ -27,6 +27,6 @@ public class StockBuyAndSellTest {
     @Test
     void hasMultipleStocks2() {
         int[] arr = {100, 180, 260, 310, 40, 535, 695, 1868, 2008, 3830, 4808, 5808};
-        assertEquals(4993, StockBuyAndSell.maxProfit(arr));
+        assertEquals(5768, StockBuyAndSell.maxProfit(arr));
     }
 }
