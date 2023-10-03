@@ -28,7 +28,7 @@ public final class MirrorOfMatrix {
         int numCols = originalMatrix[0].length;
 
         for (int i = 1; i < numRows; i++) {
-            if (originalMatrix[i].length != numCols) {
+            if (originalMatrix[i].length != originalMatrix[0].length) {
                 throw new IllegalArgumentException("The input is not a matrix.");
             }
         }
