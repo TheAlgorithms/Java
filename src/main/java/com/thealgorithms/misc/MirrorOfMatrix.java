@@ -24,14 +24,11 @@ public final class MirrorOfMatrix {
         if (originalMatrix.length == 0) {
             return new int[0][0];
         }
+
+        checkInput(originalMatrix);
+
         int numRows = originalMatrix.length;
         int numCols = originalMatrix[0].length;
-
-        for (int i = 1; i < numRows; i++) {
-            if (originalMatrix[i].length != originalMatrix[0].length) {
-                throw new IllegalArgumentException("The input is not a matrix.");
-            }
-        }
 
         int[][] mirroredMatrix = new int[numRows][numCols];
 
@@ -46,5 +43,14 @@ public final class MirrorOfMatrix {
             res[i] = inRow[inRow.length - 1 - i];
         }
         return res;
+    }
+
+    private static void checkInput(int[][] matrix) {
+        // Check if all rows have the same number of columns
+        for (int i = 1; i < matrix[0].length; i++) {
+            if (matrix[i].length != matrix[0].length) {
+                throw new IllegalArgumentException("The input is not a matrix.");
+            }
+        }
     }
 }
