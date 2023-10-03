@@ -64,8 +64,7 @@ public class ManachersAlgorithm {
             }
         }
 
-        return s.substring((centerIndex - 1 - maxPalindrome) / 2,
-                (centerIndex - 1 - maxPalindrome) / 2 + maxPalindrome);
+        return s.substring((centerIndex - 1 - maxPalindrome) / 2, (centerIndex - 1 - maxPalindrome) / 2 + maxPalindrome);
     }
 
     public static void main(String[] args) {
