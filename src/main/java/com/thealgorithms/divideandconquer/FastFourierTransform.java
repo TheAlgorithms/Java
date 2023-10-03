@@ -1,14 +1,13 @@
 package com.thealgorithms.divideandconquer;
 
-// Java Program to Implement Fat Fourier Transform
+// Java Program to Implement Fast Fourier Transform
 
-/*
-* This algorithm works by recursively dividing the sequence to be transformed into smaller and smaller subsequences,
-* computing the FFT of each subsequence, and then combining the results to compute the FFT of the original sequence.
-* author : sheetal neeraj (https://github.com/sheetalneeraj)
- * Reference:
- * https://en.wikipedia.org/wiki/Fast_Fourier_transform
- */
+//This algorithm works by recursively dividing the sequence to be transformed into smaller and smaller subsequences,computing the FFT of each subsequence, 
+//and then combining the results to compute the FFT of the original sequence.
+//author : sheetal neeraj (https://github.com/sheetalneeraj)
+// Reference: https://en.wikipedia.org/wiki/Fast_Fourier_transform
+
+
 public class FastFourierTransform {
 
     public static Complex[] fft(Complex[] x) {
