@@ -57,11 +57,7 @@ public final class RankOfMatrix {
 
     public static void main(String[] args) {
         // Example usage:
-        int[][] matrix = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-        };
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         int rank = rankOfMatrix(matrix);
         System.out.println("Rank of the matrix: " + rank);
     }
