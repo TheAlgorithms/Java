@@ -27,7 +27,7 @@ public class StockBuyAndSell {
      * @return maximum profit that can be obtained by buying and selling a stock
      */
     public static int maxProfit(int[] arr) {
-        if(arr.length == 0) {
+        if (arr.length == 0) {
             return 0;
         }
 
