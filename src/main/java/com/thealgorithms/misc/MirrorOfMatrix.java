@@ -17,7 +17,7 @@ public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
 
-    public static int[][] mirrorMatrix(int[][] originalMatrix) {
+    public static int[][] mirrorMatrix(final int[][] originalMatrix) {
         if (originalMatrix == null) {
             // Handle invalid input
             return null;
@@ -46,7 +46,7 @@ public final class MirrorOfMatrix {
         return res;
     }
 
-    private static void checkInput(int[][] matrix) {
+    private static void checkInput(final int[][] matrix) {
         // Check if all rows have the same number of columns
         for (int i = 1; i < matrix.length; i++) {
             if (matrix[i].length != matrix[0].length) {
