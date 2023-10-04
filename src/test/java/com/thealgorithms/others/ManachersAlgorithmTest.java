@@ -34,5 +34,4 @@ public class ManachersAlgorithmTest {
         String s = "wdfghjklsracecarswekfjdsnitins";
         assertEquals("sracecars", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
-    
 }
