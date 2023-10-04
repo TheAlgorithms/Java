@@ -36,7 +36,6 @@ public class ItineraryTicketsTest {
 
     @Test
     public void testGetStartCircularItinerary() {
-        
         tickets.put("Bengaluru", "Mumbai");
         String start = ItineraryTickets.getStart(tickets);
         assertNull(start); 
