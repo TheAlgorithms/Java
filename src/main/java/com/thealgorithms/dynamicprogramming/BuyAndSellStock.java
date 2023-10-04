@@ -7,11 +7,9 @@ import java.util.Scanner;
  * @author Bharath Subu (https://github.com/BharathSubu)
  */
 
-//
+// https://en.wikipedia.org/wiki/Dynamic_programming
 
 /*
- * problem Link
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
  * You are given an integer array prices where prices[i] is the price of a given
  * stock on the ith day.
  * On each day, you may decide to buy and/or sell the stock. You can only hold
