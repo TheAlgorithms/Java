@@ -1,5 +1,6 @@
 package com.thealgorithms.strings;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class longestcommonprefixtest {
@@ -19,6 +20,5 @@ public class longestcommonprefixtest {
         assertEquals(LongestCommonPrefix.findLongestCommonPrefix(input2), expectedOutput2);
         assertEquals(LongestCommonPrefix.findLongestCommonPrefix(input3), expectedOutput3);
         assertEquals(LongestCommonPrefix.findLongestCommonPrefix(input4), expectedOutput4);
-        
     }
 }
