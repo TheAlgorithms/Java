@@ -1,0 +1,12 @@
+---
+image:
+  file: .gitpod.dockerfile
+
+tasks:
+  - init: |
+      mvn dependency:resolve
+      mvn compile
+
+vscode:
+  extensions:
+    - xaver.clang-format

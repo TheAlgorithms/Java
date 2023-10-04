@@ -42,15 +42,13 @@ public class ConvolutionFFT {
      * @param b The other signal.
      * @return The convolved signal.
      */
-    public static ArrayList<FFT.Complex> convolutionFFT(
-        ArrayList<FFT.Complex> a,
-        ArrayList<FFT.Complex> b
-    ) {
+    public static ArrayList<FFT.Complex> convolutionFFT(ArrayList<FFT.Complex> a, ArrayList<FFT.Complex> b) {
         int convolvedSize = a.size() + b.size() - 1; // The size of the convolved signal
         padding(a, convolvedSize); // Zero padding both signals
         padding(b, convolvedSize);
 
-        /* Find the FFTs of both signals (Note that the size of the FFTs will be bigger than the convolvedSize because of the extra zero padding in FFT algorithm) */
+        /* Find the FFTs of both signals (Note that the size of the FFTs will be bigger than the
+         * convolvedSize because of the extra zero padding in FFT algorithm) */
         FFT.fft(a, false);
         FFT.fft(b, false);
         ArrayList<FFT.Complex> convolved = new ArrayList<>();
@@ -59,7 +57,8 @@ public class ConvolutionFFT {
             convolved.add(a.get(i).multiply(b.get(i))); // FFT(a)*FFT(b)
         }
         FFT.fft(convolved, true); // IFFT
-        convolved.subList(convolvedSize, convolved.size()).clear(); // Remove the remaining zeros after the convolvedSize. These extra zeros came from
+        convolved.subList(convolvedSize, convolved.size()).clear(); // Remove the remaining zeros after the convolvedSize. These extra zeros came
+                                                                    // from
         // paddingPowerOfTwo() method inside the fft() method.
 
         return convolved;

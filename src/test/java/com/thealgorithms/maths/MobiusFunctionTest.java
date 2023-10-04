@@ -8,39 +8,29 @@ class MobiusFunctionTest {
 
     @Test
     void testMobiusForZero() {
-        //given
+        // given
         int number = 0;
         String expectedMessage = "Number must be greater than zero.";
 
-        //when
-        Exception exception = assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                MobiusFunction.mobius(number);
-            }
-        );
+        // when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
         String actualMessage = exception.getMessage();
 
-        //then
+        // then
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
     void testMobiusForNegativeNumber() {
-        //given
+        // given
         int number = -1;
         String expectedMessage = "Number must be greater than zero.";
 
-        //when
-        Exception exception = assertThrows(
-            IllegalArgumentException.class,
-            () -> {
-                MobiusFunction.mobius(number);
-            }
-        );
+        // when
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { MobiusFunction.mobius(number); });
         String actualMessage = exception.getMessage();
 
-        //then
+        // then
         assertEquals(expectedMessage, actualMessage);
     }
 
@@ -150,13 +140,13 @@ class MobiusFunctionTest {
         };
 
         for (int i = 1; i <= 100; i++) {
-            //given
+            // given
             int expectedValue = expectedResultArray[i - 1];
 
-            //when
+            // when
             int actualValue = MobiusFunction.mobius(i);
 
-            //then
+            // then
             assertEquals(expectedValue, actualValue);
         }
     }

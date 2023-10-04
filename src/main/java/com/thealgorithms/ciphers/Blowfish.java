@@ -10,8 +10,8 @@ package com.thealgorithms.ciphers;
 
 public class Blowfish {
 
-    //Initializing substitution boxes
-    String S[][] = {
+    // Initializing substitution boxes
+    String[][] S = {
         {
             "d1310ba6",
             "98dfb5ac",
@@ -1046,8 +1046,8 @@ public class Blowfish {
         },
     };
 
-    //Initializing subkeys with digits of pi
-    String P[] = {
+    // Initializing subkeys with digits of pi
+    String[] P = {
         "243f6a88",
         "85a308d3",
         "13198a2e",
@@ -1068,7 +1068,7 @@ public class Blowfish {
         "8979fb1b",
     };
 
-    //Initializing modVal to 2^32
+    // Initializing modVal to 2^32
     long modVal = 4294967296L;
 
     /**
@@ -1079,7 +1079,7 @@ public class Blowfish {
      */
     private String hexToBin(String hex) {
         String binary = "";
-        Long num;
+        long num;
         String binary4B;
         int n = hex.length();
         for (int i = 0; i < n; i++) {
@@ -1098,7 +1098,8 @@ public class Blowfish {
      * This method returns hexadecimal representation of the binary number passed as parameter
      *
      * @param binary Number for which hexadecimal representation is required
-     * @return String object which is a hexadecimal representation of the binary number passed as parameter
+     * @return String object which is a hexadecimal representation of the binary number passed as
+     *     parameter
      */
     private String binToHex(String binary) {
         long num = Long.parseUnsignedLong(binary, 2);
@@ -1109,7 +1110,8 @@ public class Blowfish {
     }
 
     /**
-     * This method returns a string obtained by XOR-ing two strings of same length passed a method parameters
+     * This method returns a string obtained by XOR-ing two strings of same length passed a method
+     * parameters
      *
      * @param String a and b are string objects which will be XORed and are to be of same length
      * @return String object obtained by XOR operation on String a and String b
@@ -1118,17 +1120,18 @@ public class Blowfish {
         a = hexToBin(a);
         b = hexToBin(b);
         String ans = "";
-        for (int i = 0; i < a.length(); i++) ans +=
-            (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        for (int i = 0; i < a.length(); i++) ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
         ans = binToHex(ans);
         return ans;
     }
 
     /**
-     * This method returns addition of two hexadecimal numbers passed as parameters and moded with 2^32
+     * This method returns addition of two hexadecimal numbers passed as parameters and moded with
+     * 2^32
      *
      * @param String a and b are hexadecimal numbers
-     * @return String object which is a is addition that is then moded with 2^32 of hex numbers passed as parameters
+     * @return String object which is a is addition that is then moded with 2^32 of hex numbers
+     *     passed as parameters
      */
     private String addBin(String a, String b) {
         String ans = "";
@@ -1140,20 +1143,17 @@ public class Blowfish {
         return ans.substring(ans.length() - 8);
     }
 
-    /*F-function splits the 32-bit input into four 8-bit quarters 
-	 and uses the quarters as input to the S-boxes. 
-	 The S-boxes accept 8-bit input and produce 32-bit output. 
-	 The outputs are added modulo 232 and XORed to produce the final 32-bit output 
-	*/
+    /*F-function splits the 32-bit input into four 8-bit quarters
+         and uses the quarters as input to the S-boxes.
+         The S-boxes accept 8-bit input and produce 32-bit output.
+         The outputs are added modulo 232 and XORed to produce the final 32-bit output
+        */
     private String f(String plainText) {
-        String a[] = new String[4];
+        String[] a = new String[4];
         String ans = "";
         for (int i = 0; i < 8; i += 2) {
-            //column number for S-box is a 8-bit value
-            long col = Long.parseUnsignedLong(
-                hexToBin(plainText.substring(i, i + 2)),
-                2
-            );
+            // column number for S-box is a 8-bit value
+            long col = Long.parseUnsignedLong(hexToBin(plainText.substring(i, i + 2)), 2);
             a[i / 2] = S[i / 2][(int) col];
         }
         ans = addBin(a[0], a[1]);
@@ -1162,30 +1162,30 @@ public class Blowfish {
         return ans;
     }
 
-    //generate subkeys
+    // generate subkeys
     private void keyGenerate(String key) {
         int j = 0;
         for (int i = 0; i < P.length; i++) {
-            //XOR-ing 32-bit parts of the key with initial subkeys
+            // XOR-ing 32-bit parts of the key with initial subkeys
             P[i] = xor(P[i], key.substring(j, j + 8));
 
             j = (j + 8) % key.length();
         }
     }
 
-    //round function
+    // round function
     private String round(int time, String plainText) {
         String left, right;
         left = plainText.substring(0, 8);
         right = plainText.substring(8, 16);
         left = xor(left, P[time]);
 
-        //output from F function
+        // output from F function
         String fOut = f(left);
 
         right = xor(fOut, right);
 
-        //swap left and right
+        // swap left and right
         return right + left;
     }
 
@@ -1198,12 +1198,12 @@ public class Blowfish {
      * @return String cipherText is the encrypted value
      */
     String encrypt(String plainText, String key) {
-        //generating key
+        // generating key
         keyGenerate(key);
 
         for (int i = 0; i < 16; i++) plainText = round(i, plainText);
 
-        //postprocessing
+        // postprocessing
         String right = plainText.substring(0, 8);
         String left = plainText.substring(8, 16);
         right = xor(right, P[16]);
@@ -1220,12 +1220,12 @@ public class Blowfish {
      * @return String plainText is the decrypted text
      */
     String decrypt(String cipherText, String key) {
-        //generating key
+        // generating key
         keyGenerate(key);
 
         for (int i = 17; i > 1; i--) cipherText = round(i, cipherText);
 
-        //postprocessing
+        // postprocessing
         String right = cipherText.substring(0, 8);
         String left = cipherText.substring(8, 16);
         right = xor(right, P[1]);

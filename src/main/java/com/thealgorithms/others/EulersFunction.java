@@ -1,17 +1,27 @@
 package com.thealgorithms.others;
 
 /**
- * You can read more about Euler's totient function
- *
- * <p>
- * See https://en.wikipedia.org/wiki/Euler%27s_totient_function
+ * @brief utility class for <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>
  */
-public class EulersFunction {
+final public class EulersFunction {
+    private EulersFunction() {
+    }
 
-    // This method returns us number of x that (x < n) and gcd(x, n) == 1 in O(sqrt(n)) time
-    // complexity;
+    private static void checkInput(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be positive.");
+        }
+    }
 
+    /**
+     * @brief computes the value of Euler's totient function for given input
+     * @details has time complexity of O(sqrt(n))
+     * @param n the input
+     * @exception IllegalArgumentException n is non-positive
+     * @return the value of Euler's totient function for the input
+     */
     public static int getEuler(int n) {
+        checkInput(n);
         int result = n;
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {
@@ -25,11 +35,5 @@ public class EulersFunction {
             result -= result / n;
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        for (int i = 1; i < 100; i++) {
-            System.out.println(getEuler(i));
-        }
     }
 }

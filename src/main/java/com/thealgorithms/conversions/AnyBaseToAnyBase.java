@@ -30,13 +30,7 @@ public class AnyBaseToAnyBase {
             try {
                 System.out.print("Enter number: ");
                 n = in.next();
-                System.out.print(
-                    "Enter beginning base (between " +
-                    MINIMUM_BASE +
-                    " and " +
-                    MAXIMUM_BASE +
-                    "): "
-                );
+                System.out.print("Enter beginning base (between " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
                 b1 = in.nextInt();
                 if (b1 > MAXIMUM_BASE || b1 < MINIMUM_BASE) {
                     System.out.println("Invalid base!");
@@ -46,13 +40,7 @@ public class AnyBaseToAnyBase {
                     System.out.println("The number is invalid for this base!");
                     continue;
                 }
-                System.out.print(
-                    "Enter end base (between " +
-                    MINIMUM_BASE +
-                    " and " +
-                    MAXIMUM_BASE +
-                    "): "
-                );
+                System.out.print("Enter end base (between " + MINIMUM_BASE + " and " + MAXIMUM_BASE + "): ");
                 b2 = in.nextInt();
                 if (b2 > MAXIMUM_BASE || b2 < MINIMUM_BASE) {
                     System.out.println("Invalid base!");
@@ -175,7 +163,7 @@ public class AnyBaseToAnyBase {
             // If the remainder is a digit < 10, simply add it to
             // the left side of the new number.
             if (decimalValue % b2 < 10) {
-                output = Integer.toString(decimalValue % b2) + output;
+                output = decimalValue % b2 + output;
             } // If the remainder is >= 10, add a character with the
             // corresponding value to the new number. (A = 10, B = 11, C = 12, ...)
             else {

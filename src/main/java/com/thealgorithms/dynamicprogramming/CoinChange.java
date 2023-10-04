@@ -8,20 +8,10 @@ public class CoinChange {
     // Driver Program
     public static void main(String[] args) {
         int amount = 12;
-        int[] coins = { 2, 4, 5 };
+        int[] coins = {2, 4, 5};
 
-        System.out.println(
-            "Number of combinations of getting change for " +
-            amount +
-            " is: " +
-            change(coins, amount)
-        );
-        System.out.println(
-            "Minimum number of coins required for amount :" +
-            amount +
-            " is: " +
-            minimumCoins(coins, amount)
-        );
+        System.out.println("Number of combinations of getting change for " + amount + " is: " + change(coins, amount));
+        System.out.println("Minimum number of coins required for amount :" + amount + " is: " + minimumCoins(coins, amount));
     }
 
     /**
@@ -67,10 +57,7 @@ public class CoinChange {
             for (int coin : coins) {
                 if (coin <= i) {
                     int sub_res = minimumCoins[i - coin];
-                    if (
-                        sub_res != Integer.MAX_VALUE &&
-                        sub_res + 1 < minimumCoins[i]
-                    ) {
+                    if (sub_res != Integer.MAX_VALUE && sub_res + 1 < minimumCoins[i]) {
                         minimumCoins[i] = sub_res + 1;
                     }
                 }

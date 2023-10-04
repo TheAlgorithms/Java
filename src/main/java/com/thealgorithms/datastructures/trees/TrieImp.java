@@ -62,7 +62,7 @@ public class TrieImp {
             }
             currentNode = node;
         }
-        if (currentNode.end == true) {
+        if (currentNode.end) {
             currentNode.end = false;
             return true;
         }
@@ -83,57 +83,56 @@ public class TrieImp {
     public static void main(String[] args) {
         TrieImp obj = new TrieImp();
         String word;
-        @SuppressWarnings("resource")
-        Scanner scan = new Scanner(System.in);
+        @SuppressWarnings("resource") Scanner scan = new Scanner(System.in);
         sop("string should contain only a-z character for all operation");
         while (true) {
             sop("1. Insert\n2. Search\n3. Delete\n4. Quit");
             try {
                 int t = scan.nextInt();
                 switch (t) {
-                    case 1:
-                        word = scan.next();
-                        if (isValid(word)) {
-                            obj.insert(word);
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        break;
-                    case 2:
-                        word = scan.next();
-                        boolean resS = false;
-                        if (isValid(word)) {
-                            resS = obj.search(word);
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        if (resS) {
-                            sop("word found");
-                        } else {
-                            sop("word not found");
-                        }
-                        break;
-                    case 3:
-                        word = scan.next();
-                        boolean resD = false;
-                        if (isValid(word)) {
-                            resD = obj.delete(word);
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        if (resD) {
-                            sop("word got deleted successfully");
-                        } else {
-                            sop("word not found");
-                        }
-                        break;
-                    case 4:
-                        sop("Quit successfully");
-                        System.exit(1);
-                        break;
-                    default:
-                        sop("Input int from 1-4");
-                        break;
+                case 1:
+                    word = scan.next();
+                    if (isValid(word)) {
+                        obj.insert(word);
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    break;
+                case 2:
+                    word = scan.next();
+                    boolean resS = false;
+                    if (isValid(word)) {
+                        resS = obj.search(word);
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    if (resS) {
+                        sop("word found");
+                    } else {
+                        sop("word not found");
+                    }
+                    break;
+                case 3:
+                    word = scan.next();
+                    boolean resD = false;
+                    if (isValid(word)) {
+                        resD = obj.delete(word);
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    if (resD) {
+                        sop("word got deleted successfully");
+                    } else {
+                        sop("word not found");
+                    }
+                    break;
+                case 4:
+                    sop("Quit successfully");
+                    System.exit(1);
+                    break;
+                default:
+                    sop("Input int from 1-4");
+                    break;
                 }
             } catch (Exception e) {
                 String badInput = scan.next();

@@ -1,8 +1,8 @@
 package com.thealgorithms.datastructures.trees;
 
+import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
-import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 
 public class TreeTestUtils {
 

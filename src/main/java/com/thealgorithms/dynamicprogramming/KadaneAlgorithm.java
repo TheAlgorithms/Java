@@ -1,4 +1,5 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 
@@ -7,7 +8,7 @@ package com.thealgorithms.dynamicprogramming;
 
 public class KadaneAlgorithm {
 
-    public static boolean max_Sum(int a[], int predicted_answer) {
+    public static boolean max_Sum(int[] a, int predicted_answer) {
         int sum = a[0], running_sum = 0;
         for (int k : a) {
             running_sum = running_sum + k;

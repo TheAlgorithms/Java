@@ -67,8 +67,9 @@ public class Luhn {
 
     public static void main(String[] args) {
         System.out.println("Luhn algorithm usage examples:");
-        int[] validInput = { 4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 7 };
-        int[] invalidInput = { 4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 4 }; //typo in last symbol
+        int[] validInput = {4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 7};
+        int[] invalidInput = {4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 4}; // typo in last
+                                                                               // symbol
         checkAndPrint(validInput);
         checkAndPrint(invalidInput);
 
@@ -83,9 +84,7 @@ public class Luhn {
 
     private static void checkAndPrint(int[] input) {
         String validationResult = Luhn.luhnCheck(input) ? "valid" : "not valid";
-        System.out.println(
-            "Input " + Arrays.toString(input) + " is " + validationResult
-        );
+        System.out.println("Input " + Arrays.toString(input) + " is " + validationResult);
     }
 
     /*
@@ -109,21 +108,14 @@ public class Luhn {
         public static CreditCard fromString(String cardNumber) {
             Objects.requireNonNull(cardNumber);
             String trimmedCardNumber = cardNumber.replaceAll(" ", "");
-            if (
-                trimmedCardNumber.length() != DIGITS_COUNT ||
-                !trimmedCardNumber.matches("\\d+")
-            ) {
-                throw new IllegalArgumentException(
-                    "{" + cardNumber + "} - is not a card number"
-                );
+            if (trimmedCardNumber.length() != DIGITS_COUNT || !trimmedCardNumber.matches("\\d+")) {
+                throw new IllegalArgumentException("{" + cardNumber + "} - is not a card number");
             }
 
             int[] cardNumbers = toIntArray(trimmedCardNumber);
             boolean isValid = luhnCheck(cardNumbers);
             if (!isValid) {
-                throw new IllegalArgumentException(
-                    "Credit card number {" + cardNumber + "} - have a typo"
-                );
+                throw new IllegalArgumentException("Credit card number {" + cardNumber + "} - have a typo");
             }
 
             return new CreditCard(cardNumbers);
@@ -146,11 +138,7 @@ public class Luhn {
 
         @Override
         public String toString() {
-            return String.format(
-                "%s {%s}",
-                CreditCard.class.getSimpleName(),
-                number()
-            );
+            return String.format("%s {%s}", CreditCard.class.getSimpleName(), number());
         }
 
         private static int[] toIntArray(String string) {
@@ -160,20 +148,11 @@ public class Luhn {
 
     private static void businessExample(String cardNumber) {
         try {
-            System.out.println(
-                "Trying to create CreditCard object from valid card number: " +
-                cardNumber
-            );
+            System.out.println("Trying to create CreditCard object from valid card number: " + cardNumber);
             CreditCard creditCard = CreditCard.fromString(cardNumber);
-            System.out.println(
-                "And business object is successfully created: " +
-                creditCard +
-                "\n"
-            );
+            System.out.println("And business object is successfully created: " + creditCard + "\n");
         } catch (IllegalArgumentException e) {
-            System.out.println(
-                "And fail with exception message: " + e.getMessage() + "\n"
-            );
+            System.out.println("And fail with exception message: " + e.getMessage() + "\n");
         }
     }
 }

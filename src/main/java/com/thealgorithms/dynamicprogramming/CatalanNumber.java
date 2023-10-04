@@ -23,7 +23,7 @@ public class CatalanNumber {
      */
     static long findNthCatalan(int n) {
         // Array to store the results of subproblems i.e Catalan numbers from [1...n-1]
-        long catalanArray[] = new long[n + 1];
+        long[] catalanArray = new long[n + 1];
 
         // Initialising C₀ = 1 and C₁ = 1
         catalanArray[0] = 1;
@@ -47,9 +47,7 @@ public class CatalanNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println(
-            "Enter the number n to find nth Catalan number (n <= 50)"
-        );
+        System.out.println("Enter the number n to find nth Catalan number (n <= 50)");
         int n = sc.nextInt();
         System.out.println(n + "th Catalan number is " + findNthCatalan(n));
 

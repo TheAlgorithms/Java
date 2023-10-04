@@ -1,4 +1,5 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 
@@ -17,12 +18,13 @@ public class FastInverseSqrt {
         i = 0x5f3759df - (i >> 1);
         x = Float.intBitsToFloat(i);
         x = x * (1.5f - xhalf * x * x);
-        return x == (float) ((float) 1 / (float) Math.sqrt(number));
+        return x == ((float) 1 / (float) Math.sqrt(number));
     }
 
     /**
      * Returns the inverse square root of the given number upto 6 - 8 decimal places.
-     * calculates the inverse square root of the given number and returns true if calculated answer matches with given answer else returns false
+     * calculates the inverse square root of the given number and returns true if calculated answer
+     * matches with given answer else returns false
      */
 
     public static boolean inverseSqrt(double number) {
@@ -39,17 +41,16 @@ public class FastInverseSqrt {
     }
     /**
      * Returns the inverse square root of the given number upto 14 - 16 decimal places.
-     * calculates the inverse square root of the given number and returns true if calculated answer matches with given answer else returns false
+     * calculates the inverse square root of the given number and returns true if calculated answer
+     * matches with given answer else returns false
      */
 }
 /**
  * OUTPUT :
  * Input - number = 4522
- * Output: it calculates the inverse squareroot of a number and returns true with it matches the given answer else returns false.
- * 1st approach Time Complexity : O(1)
- * Auxiliary Space Complexity : O(1)
- * Input - number = 4522
- * Output: it calculates the inverse squareroot of a number and returns true with it matches the given answer else returns false.
- * 2nd approach Time Complexity : O(1)
+ * Output: it calculates the inverse squareroot of a number and returns true with it matches the
+ * given answer else returns false. 1st approach Time Complexity : O(1) Auxiliary Space Complexity :
+ * O(1) Input - number = 4522 Output: it calculates the inverse squareroot of a number and returns
+ * true with it matches the given answer else returns false. 2nd approach Time Complexity : O(1)
  * Auxiliary Space Complexity : O(1)
  */

@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.queues;
 
-//This program implements the concept of CircularQueue in Java
-//Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
+// This program implements the concept of CircularQueue in Java
+// Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
 public class CircularQueue {
 
     int[] arr;
@@ -17,21 +17,14 @@ public class CircularQueue {
     }
 
     public boolean isEmpty() {
-        if (beginningOfQueue == -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return beginningOfQueue == -1;
     }
 
     public boolean isFull() {
         if (topOfQueue + 1 == beginningOfQueue) {
             return true;
-        } else if (topOfQueue == size - 1 && beginningOfQueue == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        } else
+            return topOfQueue == size - 1 && beginningOfQueue == 0;
     }
 
     public void enQueue(int value) {

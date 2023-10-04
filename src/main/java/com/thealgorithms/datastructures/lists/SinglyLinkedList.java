@@ -1,11 +1,13 @@
 package com.thealgorithms.datastructures.lists;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 /**
  * https://en.wikipedia.org/wiki/Linked_list
  */
-public class SinglyLinkedList extends Node {
+public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Head refer to the front of the list
@@ -55,6 +57,24 @@ public class SinglyLinkedList extends Node {
     }
 
     /**
+     * Return the node in the middle of the list
+     * If the length of the list is even then return item number length/2
+     * @return middle node of the list
+     */
+    public Node middle() {
+        if (head == null) {
+            return null;
+        }
+        Node firstCounter = head;
+        Node secondCounter = firstCounter.next;
+        while (secondCounter != null && secondCounter.next != null) {
+            firstCounter = firstCounter.next;
+            secondCounter = secondCounter.next.next;
+        }
+        return firstCounter;
+    }
+
+    /**
      * Swaps nodes of two given values a and b.
      *
      */
@@ -101,23 +121,44 @@ public class SinglyLinkedList extends Node {
     }
 
     /**
-     * Reverse a singly linked list from a given node till the end
+     * Reverse a singly linked list[Iterative] from a given node till the end
      *
      */
-    Node reverseList(Node node) {
-        Node prevNode = head;
-        while (prevNode.next != node) {
-            prevNode = prevNode.next;
-        }
-        Node prev = null, curr = node, next;
-        while (curr != null) {
-            next = curr.next;
+    public Node reverseListIter(Node node) {
+        Node prev = null;
+        Node curr = node;
+
+        while (curr != null && curr.next != null) {
+            Node next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-        prevNode.next = prev;
-        return head;
+        // when curr.next==null, the current element is left without pointing it to its prev,so
+        if (curr != null) {
+            curr.next = prev;
+            prev = curr;
+        }
+        // prev will be pointing to the last element in the Linkedlist, it will be the new head of
+        // the reversed linkedlist
+        return prev;
+    }
+    /**
+     * Reverse a singly linked list[Recursive] from a given node till the end
+     *
+     */
+    public Node reverseListRec(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node prev = null;
+        Node h2 = reverseListRec(head.next);
+
+        head.next.next = head;
+        head.next = prev;
+
+        return h2;
     }
 
     /**
@@ -126,9 +167,7 @@ public class SinglyLinkedList extends Node {
     public void clear() {
         Node cur = head;
         while (cur != null) {
-            Node prev = cur;
             cur = cur.next;
-            prev = null; // clear to let GC do its work
         }
         head = null;
         size = 0;
@@ -176,10 +215,8 @@ public class SinglyLinkedList extends Node {
      */
     public int count() {
         int count = 0;
-        Node cur = head;
-        while (cur != null) {
-            cur = cur.next;
-            count++;
+        for (final var element : this) {
+            ++count;
         }
         return count;
     }
@@ -191,13 +228,11 @@ public class SinglyLinkedList extends Node {
      * @return {@code true} if key is present in the list, otherwise
      * {@code false}.
      */
-    public boolean search(int key) {
-        Node cur = head;
-        while (cur != null) {
-            if (cur.value == key) {
+    public boolean search(final int key) {
+        for (final var element : this) {
+            if (element == key) {
                 return true;
             }
-            cur = cur.next;
         }
         return false;
     }
@@ -205,10 +240,8 @@ public class SinglyLinkedList extends Node {
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner("->");
-        Node cur = head;
-        while (cur != null) {
-            joiner.add(cur.value + "");
-            cur = cur.next;
+        for (final var element : this) {
+            joiner.add(element + "");
         }
         return joiner.toString();
     }
@@ -223,9 +256,7 @@ public class SinglyLinkedList extends Node {
             // skip all duplicates
             if (newHead.next != null && newHead.value == newHead.next.value) {
                 // move till the end of duplicates sublist
-                while (
-                    newHead.next != null && newHead.value == newHead.next.value
-                ) {
+                while (newHead.next != null && newHead.value == newHead.next.value) {
                     newHead = newHead.next;
                 }
                 // skip all duplicates
@@ -326,9 +357,7 @@ public class SinglyLinkedList extends Node {
     public void deleteNth(int position) {
         checkBounds(position, 0, size - 1);
         if (position == 0) {
-            Node destroy = head;
             head = head.next;
-            destroy = null;
             /* clear to let GC do its work */
             size--;
             return;
@@ -338,10 +367,7 @@ public class SinglyLinkedList extends Node {
             cur = cur.next;
         }
 
-        Node destroy = cur.next;
         cur.next = cur.next.next;
-        destroy = null; // clear to let GC do its work
-
         size--;
     }
 
@@ -389,24 +415,19 @@ public class SinglyLinkedList extends Node {
         list.insert(3);
         list.insertNth(1, 4);
         assert list.toString().equals("10->7->5->3->1");
-        System.out.println(list.toString());
+        System.out.println(list);
         /* Test search function */
-        assert list.search(10) &&
-        list.search(5) &&
-        list.search(1) &&
-        !list.search(100);
+        assert list.search(10) && list.search(5) && list.search(1) && !list.search(100);
 
         /* Test get function */
-        assert list.getNth(0) == 10 &&
-        list.getNth(2) == 5 &&
-        list.getNth(4) == 1;
+        assert list.getNth(0) == 10 && list.getNth(2) == 5 && list.getNth(4) == 1;
 
         /* Test delete function */
         list.deleteHead();
         list.deleteNth(1);
         list.delete();
         assert list.toString().equals("7->3");
-        System.out.println(list.toString());
+        System.out.println(list);
         assert list.size == 2 && list.size() == list.count();
 
         list.clear();
@@ -422,13 +443,38 @@ public class SinglyLinkedList extends Node {
         }
 
         SinglyLinkedList instance = new SinglyLinkedList();
-        Node head = new Node(
-            0,
-            new Node(2, new Node(3, new Node(3, new Node(4))))
-        );
+        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
         instance.setHead(head);
         instance.deleteDuplicates();
         instance.print();
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new SinglyLinkedListIterator();
+    }
+
+    private class SinglyLinkedListIterator implements Iterator<Integer> {
+        private Node current;
+
+        SinglyLinkedListIterator() {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            final var value = current.value;
+            current = current.next;
+            return value;
+        }
     }
 }
 
@@ -448,7 +494,8 @@ class Node {
      */
     Node next;
 
-    Node() {}
+    Node() {
+    }
 
     /**
      * Constructor

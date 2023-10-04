@@ -1,24 +1,12 @@
 name: Build
-on:
-  push:
-    paths:
-      - 'src/**'
-      - '**.yml'
-      - '**.xml'
-      - '**.Dockerfile'
-  pull_request:
-    paths:
-      - 'src/**'
-      - '**.yml'
-      - '**.xml'
-      - '**.Dockerfile'
+on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: 'adopt'

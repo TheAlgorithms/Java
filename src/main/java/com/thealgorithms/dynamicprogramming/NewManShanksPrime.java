@@ -1,4 +1,5 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 
@@ -10,7 +11,7 @@ package com.thealgorithms.dynamicprogramming;
 public class NewManShanksPrime {
 
     public static boolean nthManShanksPrime(int n, int expected_answer) {
-        int a[] = new int[n + 1];
+        int[] a = new int[n + 1];
         // array of n+1 size is initialized
         a[0] = a[1] = 1;
         // The 0th and 1st index position values are fixed. They are initialized as 1

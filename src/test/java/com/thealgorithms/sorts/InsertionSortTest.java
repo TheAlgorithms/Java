@@ -1,11 +1,10 @@
 package com.thealgorithms.sorts;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.function.Function;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class InsertionSortTest {
     private InsertionSort insertionSort;
@@ -106,7 +105,7 @@ class InsertionSortTest {
     }
 
     private void testWithRandomArray(Function<Double[], Double[]> sortAlgorithm) {
-        int randomSize = (int) (SortUtilsRandomGenerator.generateDouble() * 10_000);
+        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
         Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
         Double[] sorted = sortAlgorithm.apply(array);
         assertTrue(SortUtils.isSorted(sorted));

@@ -12,7 +12,7 @@ class DecimalToBinary {
      *
      * @param args Command Line Arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         conventionalConversion();
         bitwiseConversion();
     }
@@ -24,9 +24,7 @@ class DecimalToBinary {
     public static void conventionalConversion() {
         int n, b = 0, c = 0, d;
         Scanner input = new Scanner(System.in);
-        System.out.printf(
-            "Conventional conversion.%n Enter the decimal number: "
-        );
+        System.out.printf("Conventional conversion.%n Enter the decimal number: ");
         n = input.nextInt();
         while (n != 0) {
             d = n % 2;

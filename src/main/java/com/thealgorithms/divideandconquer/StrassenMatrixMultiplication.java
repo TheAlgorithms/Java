@@ -4,12 +4,12 @@ package com.thealgorithms.divideandconquer;
 
 /*
  * Uses the divide and conquer approach to multiply two matrices.
- * Time Complexity: O(n^2.8074) better than the O(n^3) of the standard matrix multiplication algorithm.
- * Space Complexity: O(n^2)
- * 
- * This Matrix multiplication can be performed only on square matrices 
+ * Time Complexity: O(n^2.8074) better than the O(n^3) of the standard matrix multiplication
+ * algorithm. Space Complexity: O(n^2)
+ *
+ * This Matrix multiplication can be performed only on square matrices
  * where n is a power of 2. Order of both of the matrices are n × n.
- * 
+ *
  * Reference:
  * https://www.tutorialspoint.com/design_and_analysis_of_algorithms/design_and_analysis_of_algorithms_strassens_matrix_multiplication.htm#:~:text=Strassen's%20Matrix%20multiplication%20can%20be,matrices%20are%20n%20%C3%97%20n.
  * https://www.geeksforgeeks.org/strassens-matrix-multiplication/
@@ -139,5 +139,4 @@ public class StrassenMatrixMultiplication {
             }
         }
     }
-
 }

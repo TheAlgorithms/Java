@@ -51,18 +51,12 @@ public class MinPriorityQueue {
 
     // returns boolean value whether the heap is empty or not
     public boolean isEmpty() {
-        if (0 == this.size) {
-            return true;
-        }
-        return false;
+        return 0 == this.size;
     }
 
     // returns boolean value whether the heap is full or not
     public boolean isFull() {
-        if (this.size == this.capacity) {
-            return true;
-        }
-        return false;
+        return this.size == this.capacity;
     }
 
     // prints the heap
@@ -88,10 +82,7 @@ public class MinPriorityQueue {
         while (2 * k <= this.size || 2 * k + 1 <= this.size) {
             int minIndex;
             if (this.heap[2 * k] >= this.heap[k]) {
-                if (
-                    2 * k + 1 <= this.size &&
-                    this.heap[2 * k + 1] >= this.heap[k]
-                ) {
+                if (2 * k + 1 <= this.size && this.heap[2 * k + 1] >= this.heap[k]) {
                     break;
                 } else if (2 * k + 1 > this.size) {
                     break;
@@ -100,14 +91,8 @@ public class MinPriorityQueue {
             if (2 * k + 1 > this.size) {
                 minIndex = this.heap[2 * k] < this.heap[k] ? 2 * k : k;
             } else {
-                if (
-                    this.heap[k] > this.heap[2 * k] ||
-                    this.heap[k] > this.heap[2 * k + 1]
-                ) {
-                    minIndex =
-                        this.heap[2 * k] < this.heap[2 * k + 1]
-                            ? 2 * k
-                            : 2 * k + 1;
+                if (this.heap[k] > this.heap[2 * k] || this.heap[k] > this.heap[2 * k + 1]) {
+                    minIndex = this.heap[2 * k] < this.heap[2 * k + 1] ? 2 * k : 2 * k + 1;
                 } else {
                     minIndex = k;
                 }

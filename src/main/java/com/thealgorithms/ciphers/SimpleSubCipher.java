@@ -82,5 +82,4 @@ public class SimpleSubCipher {
 
         return decoded.toString();
     }
-
 }

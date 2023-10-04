@@ -74,7 +74,7 @@ class CycleSort implements SortAlgorithm {
     }
 
     public static void main(String[] args) {
-        Integer arr[] = {
+        Integer[] arr = {
             4,
             23,
             6,

@@ -30,5 +30,4 @@ public class AverageTest {
         int[] numbers = {2, 4, 10};
         Assertions.assertEquals(5, Average.average(numbers));
     }
-
 }

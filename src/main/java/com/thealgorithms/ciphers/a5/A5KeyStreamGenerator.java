@@ -17,9 +17,9 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
         this.frameCounter = (BitSet) frameCounter.clone();
         this.initialFrameCounter = (BitSet) frameCounter.clone();
         registers.clear();
-        LFSR lfsr1 = new LFSR(19, 8, new int[] { 13, 16, 17, 18 });
-        LFSR lfsr2 = new LFSR(22, 10, new int[] { 20, 21 });
-        LFSR lfsr3 = new LFSR(23, 10, new int[] { 7, 20, 21, 22 });
+        LFSR lfsr1 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
+        LFSR lfsr2 = new LFSR(22, 10, new int[] {20, 21});
+        LFSR lfsr3 = new LFSR(23, 10, new int[] {7, 20, 21, 22});
         registers.add(lfsr1);
         registers.add(lfsr2);
         registers.add(lfsr3);
@@ -31,11 +31,7 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
     }
 
     public BitSet getNextKeyStream() {
-        for (
-            int cycle = 1;
-            cycle <= INITIAL_CLOCKING_CYCLES;
-            ++cycle
-        ) this.clock();
+        for (int cycle = 1; cycle <= INITIAL_CLOCKING_CYCLES; ++cycle) this.clock();
 
         BitSet result = new BitSet(KEY_STREAM_LENGTH);
         for (int cycle = 1; cycle <= KEY_STREAM_LENGTH; ++cycle) {

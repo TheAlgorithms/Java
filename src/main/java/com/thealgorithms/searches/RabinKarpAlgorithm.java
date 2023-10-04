@@ -1,50 +1,48 @@
 package com.thealgorithms.searches;
 
-// Following program is a Java implementation
-// of Rabin Karp Algorithm given in the CLRS book
+// Implementation of Rabin Karp Algorithm
 
-public class RabinKarpAlgorithm {
+public final class RabinKarpAlgorithm {
+    private RabinKarpAlgorithm() {
+    }
 
     // d is the number of characters in the input alphabet
-    public static final int d = 256;
+    private static final int d = 256;
 
-    /* pat -> pattern
-        txt -> text
-        q -> A prime number
-    */
-    public int search(String pat, String txt, int q) {
-        int index = -1; //note: -1 here represent not found, it is not an index
-        int M = pat.length();
-        int N = txt.length();
-        int i, j;
-        int p = 0; // hash value for pattern
-        int t = 0; // hash value for txt
+    public static int search(String pattern, String text, int primeNumber) {
+
+        int index = -1; // -1 here represents not found
+        int patternLength = pattern.length();
+        int textLength = text.length();
+        int hashForPattern = 0;
+        int hashForText = 0;
         int h = 1;
 
-        // The value of h would be "pow(d, M-1)%q"
-        for (i = 0; i < M - 1; i++) h = (h * d) % q;
+        // The value of h would be "pow(d, patternLength-1)%primeNumber"
+        for (int i = 0; i < patternLength - 1; i++) h = (h * d) % primeNumber;
 
         // Calculate the hash value of pattern and first
         // window of text
-        for (i = 0; i < M; i++) {
-            p = (d * p + pat.charAt(i)) % q;
-            t = (d * t + txt.charAt(i)) % q;
+        for (int i = 0; i < patternLength; i++) {
+            hashForPattern = (d * hashForPattern + pattern.charAt(i)) % primeNumber;
+            hashForText = (d * hashForText + text.charAt(i)) % primeNumber;
         }
 
         // Slide the pattern over text one by one
-        for (i = 0; i <= N - M; i++) {
-            // Check the hash values of current window of text
-            // and pattern. If the hash values match then only
-            // check for characters one by one
-            if (p == t) {
+        for (int i = 0; i <= textLength - patternLength; i++) {
+            /* Check the hash values of current window of text
+               and pattern. If the hash values match then only
+               check for characters one by one*/
+
+            int j = 0;
+            if (hashForPattern == hashForText) {
                 /* Check for characters one by one */
-                for (j = 0; j < M; j++) {
-                    if (txt.charAt(i + j) != pat.charAt(j)) break;
+                for (j = 0; j < patternLength; j++) {
+                    if (text.charAt(i + j) != pattern.charAt(j)) break;
                 }
 
-                // if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
-                if (j == M) {
-                    System.out.println("Pattern found at index " + i);
+                // if hashForPattern == hashForText and pattern[0...patternLength-1] = text[i, i+1, ...i+patternLength-1]
+                if (j == patternLength) {
                     index = i;
                     return index;
                 }
@@ -52,12 +50,11 @@ public class RabinKarpAlgorithm {
 
             // Calculate hash value for next window of text: Remove
             // leading digit, add trailing digit
-            if (i < N - M) {
-                t = (d * (t - txt.charAt(i) * h) + txt.charAt(i + M)) % q;
+            if (i < textLength - patternLength) {
+                hashForText = (d * (hashForText - text.charAt(i) * h) + text.charAt(i + patternLength)) % primeNumber;
 
-                // We might get negative value of t, converting it
-                // to positive
-                if (t < 0) t = (t + q);
+                // handling negative hashForText
+                if (hashForText < 0) hashForText = (hashForText + primeNumber);
             }
         }
         return index; // return -1 if pattern does not found

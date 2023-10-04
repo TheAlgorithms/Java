@@ -8,7 +8,7 @@ public class PerfectSquareTest {
 
     @Test
     public void TestPerfectSquareifiscorrect() {
-        //Valid Partition
+        // Valid Partition
         int number = 9;
 
         boolean result = PerfectSquare.isPerfectSquare(number);
@@ -18,7 +18,7 @@ public class PerfectSquareTest {
 
     @Test
     public void TestPerfectSquareifisnotcorrect() {
-        //Invalid Partition 1
+        // Invalid Partition 1
         int number = 3;
 
         boolean result = PerfectSquare.isPerfectSquare(number);
@@ -28,7 +28,7 @@ public class PerfectSquareTest {
 
     @Test
     public void TestPerfectSquareifisNegativeNumber() {
-        //Invalid Partition 2
+        // Invalid Partition 2
         int number = -10;
 
         boolean result = PerfectSquare.isPerfectSquare(number);

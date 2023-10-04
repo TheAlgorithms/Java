@@ -29,12 +29,7 @@ public abstract class CompositeLFSR implements BaseLFSR {
         bitCount.put(false, 0);
         bitCount.put(true, 0);
 
-        registers.forEach(lfsr ->
-            bitCount.put(
-                lfsr.getClockBit(),
-                bitCount.get(lfsr.getClockBit()) + 1
-            )
-        );
+        registers.forEach(lfsr -> bitCount.put(lfsr.getClockBit(), bitCount.get(lfsr.getClockBit()) + 1));
         return bitCount.get(false) <= bitCount.get(true);
     }
 }

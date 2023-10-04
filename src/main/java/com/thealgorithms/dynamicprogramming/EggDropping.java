@@ -25,9 +25,7 @@ public class EggDropping {
             for (int j = 2; j <= m; j++) {
                 eggFloor[i][j] = Integer.MAX_VALUE;
                 for (x = 1; x <= j; x++) {
-                    result =
-                        1 +
-                        Math.max(eggFloor[i - 1][x - 1], eggFloor[i][j - x]);
+                    result = 1 + Math.max(eggFloor[i - 1][x - 1], eggFloor[i][j - x]);
 
                     // choose min of all values for particular x
                     if (result < eggFloor[i][j]) {
@@ -40,7 +38,7 @@ public class EggDropping {
         return eggFloor[n][m];
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int n = 2, m = 4;
         // result outputs min no. of trials in worst case for n eggs and m floors
         int result = minTrials(n, m);

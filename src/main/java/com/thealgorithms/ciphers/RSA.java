@@ -20,8 +20,7 @@ public class RSA {
      * @return encrypted message
      */
     public synchronized String encrypt(String message) {
-        return (new BigInteger(message.getBytes())).modPow(publicKey, modulus)
-            .toString();
+        return (new BigInteger(message.getBytes())).modPow(publicKey, modulus).toString();
     }
 
     /**
@@ -35,10 +34,7 @@ public class RSA {
      * @return plain message
      */
     public synchronized String decrypt(String encryptedMessage) {
-        return new String(
-            (new BigInteger(encryptedMessage)).modPow(privateKey, modulus)
-                .toByteArray()
-        );
+        return new String((new BigInteger(encryptedMessage)).modPow(privateKey, modulus).toByteArray());
     }
 
     /**
@@ -57,8 +53,7 @@ public class RSA {
         BigInteger q = new BigInteger(bits / 2, 100, r);
         modulus = p.multiply(q);
 
-        BigInteger m =
-            (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+        BigInteger m = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 
         publicKey = BigInteger.valueOf(3L);
 

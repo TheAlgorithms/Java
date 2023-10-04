@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class Fibonacci {
 
     // Exponentiation matrix for Fibonacci sequence
-    private static final int[][] fibMatrix = { { 1, 1 }, { 1, 0 } };
-    private static final int[][] identityMatrix = { { 1, 0 }, { 0, 1 } };
-    //First 2 fibonacci numbers
-    private static final int[][] baseFibNumbers = { { 1 }, { 0 } };
+    private static final int[][] fibMatrix = {{1, 1}, {1, 0}};
+    private static final int[][] identityMatrix = {{1, 0}, {0, 1}};
+    // First 2 fibonacci numbers
+    private static final int[][] baseFibNumbers = {{1}, {0}};
 
     /**
      * Performs multiplication of 2 matrices
@@ -22,11 +22,8 @@ public class Fibonacci {
      * @param matrix2
      * @return The product of matrix1 and matrix2
      */
-    private static int[][] matrixMultiplication(
-        int[][] matrix1,
-        int[][] matrix2
-    ) {
-        //Check if matrices passed can be multiplied
+    private static int[][] matrixMultiplication(int[][] matrix1, int[][] matrix2) {
+        // Check if matrices passed can be multiplied
         int rowsInMatrix1 = matrix1.length;
         int columnsInMatrix1 = matrix1[0].length;
 
@@ -38,14 +35,8 @@ public class Fibonacci {
         for (int rowIndex = 0; rowIndex < rowsInMatrix1; rowIndex++) {
             for (int colIndex = 0; colIndex < columnsInMatrix2; colIndex++) {
                 int matrixEntry = 0;
-                for (
-                    int intermediateIndex = 0;
-                    intermediateIndex < columnsInMatrix1;
-                    intermediateIndex++
-                ) {
-                    matrixEntry +=
-                        matrix1[rowIndex][intermediateIndex] *
-                        matrix2[intermediateIndex][colIndex];
+                for (int intermediateIndex = 0; intermediateIndex < columnsInMatrix1; intermediateIndex++) {
+                    matrixEntry += matrix1[rowIndex][intermediateIndex] * matrix2[intermediateIndex][colIndex];
                 }
                 product[rowIndex][colIndex] = matrixEntry;
             }
@@ -65,17 +56,11 @@ public class Fibonacci {
             return Fibonacci.identityMatrix;
         } else {
             int[][] cachedResult = fib(n / 2);
-            int[][] matrixExpResult = matrixMultiplication(
-                cachedResult,
-                cachedResult
-            );
+            int[][] matrixExpResult = matrixMultiplication(cachedResult, cachedResult);
             if (n % 2 == 0) {
                 return matrixExpResult;
             } else {
-                return matrixMultiplication(
-                    Fibonacci.fibMatrix,
-                    matrixExpResult
-                );
+                return matrixMultiplication(Fibonacci.fibMatrix, matrixExpResult);
             }
         }
     }

@@ -1,7 +1,5 @@
 package com.thealgorithms.searches;
 
-import static java.lang.String.format;
-
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
 import java.util.Arrays;
 import java.util.Random;
@@ -43,12 +41,7 @@ class BinarySearch implements SearchAlgorithm {
      * @param right The upper bound
      * @return the location of the key
      */
-    private <T extends Comparable<T>> int search(
-        T array[],
-        T key,
-        int left,
-        int right
-    ) {
+    private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         if (right < left) {
             return -1; // this means that the key not found
         }
@@ -73,12 +66,7 @@ class BinarySearch implements SearchAlgorithm {
         int size = 100;
         int maxElement = 100000;
 
-        Integer[] integers = IntStream
-            .generate(() -> r.nextInt(maxElement))
-            .limit(size)
-            .sorted()
-            .boxed()
-            .toArray(Integer[]::new);
+        Integer[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().boxed().toArray(Integer[] ::new);
 
         // The element that should be found
         int shouldBeFound = integers[r.nextInt(size - 1)];
@@ -86,23 +74,9 @@ class BinarySearch implements SearchAlgorithm {
         BinarySearch search = new BinarySearch();
         int atIndex = search.find(integers, shouldBeFound);
 
-        System.out.println(
-            format(
-                "Should be found: %d. Found %d at index %d. An array length %d",
-                shouldBeFound,
-                integers[atIndex],
-                atIndex,
-                size
-            )
-        );
+        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
 
         int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.println(
-            format(
-                "Found by system method at an index: %d. Is equal: %b",
-                toCheck,
-                toCheck == atIndex
-            )
-        );
+        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }

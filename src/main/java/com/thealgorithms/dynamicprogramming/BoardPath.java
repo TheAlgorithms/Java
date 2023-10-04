@@ -11,16 +11,16 @@ Test Case:
 here target is 10
 
 int n=10;
-		startAlgo();
-		System.out.println(bpR(0,n));
-		System.out.println(endAlgo()+"ms");
-		int[] strg=new int [n+1];
-		startAlgo();
-		System.out.println(bpRS(0,n,strg));
-		System.out.println(endAlgo()+"ms");
-		startAlgo();
-		System.out.println(bpIS(0,n,strg));
-		System.out.println(endAlgo()+"ms");
+                startAlgo();
+                System.out.println(bpR(0,n));
+                System.out.println(endAlgo()+"ms");
+                int[] strg=new int [n+1];
+                startAlgo();
+                System.out.println(bpRS(0,n,strg));
+                System.out.println(endAlgo()+"ms");
+                startAlgo();
+                System.out.println(bpIS(0,n,strg));
+                System.out.println(endAlgo()+"ms");
 
 
 
@@ -52,7 +52,7 @@ public class BoardPath {
         return count;
     }
 
-    public static int bpRS(int curr, int end, int strg[]) {
+    public static int bpRS(int curr, int end, int[] strg) {
         if (curr == end) {
             return 1;
         } else if (curr > end) {

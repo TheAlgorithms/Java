@@ -26,40 +26,21 @@ public class EulerMethod {
         BiFunction<Double, Double, Double> exampleEquation1 = (x, y) -> x;
         ArrayList<double[]> points1 = eulerFull(0, 4, 0.1, 0, exampleEquation1);
         assert points1.get(points1.size() - 1)[1] == 7.800000000000003;
-        points1.forEach(point ->
-            System.out.println(
-                String.format("x: %1$f; y: %2$f", point[0], point[1])
-            )
-        );
+        points1.forEach(point -> System.out.printf("x: %1$f; y: %2$f%n", point[0], point[1]));
 
         // example from https://en.wikipedia.org/wiki/Euler_method
         System.out.println("\n\nexample 2:");
         BiFunction<Double, Double, Double> exampleEquation2 = (x, y) -> y;
         ArrayList<double[]> points2 = eulerFull(0, 4, 0.1, 1, exampleEquation2);
         assert points2.get(points2.size() - 1)[1] == 45.25925556817596;
-        points2.forEach(point ->
-            System.out.println(
-                String.format("x: %1$f; y: %2$f", point[0], point[1])
-            )
-        );
+        points2.forEach(point -> System.out.printf("x: %1$f; y: %2$f%n", point[0], point[1]));
 
         // example from https://www.geeksforgeeks.org/euler-method-solving-differential-equation/
         System.out.println("\n\nexample 3:");
-        BiFunction<Double, Double, Double> exampleEquation3 = (x, y) ->
-            x + y + x * y;
-        ArrayList<double[]> points3 = eulerFull(
-            0,
-            0.1,
-            0.025,
-            1,
-            exampleEquation3
-        );
+        BiFunction<Double, Double, Double> exampleEquation3 = (x, y) -> x + y + x * y;
+        ArrayList<double[]> points3 = eulerFull(0, 0.1, 0.025, 1, exampleEquation3);
         assert points3.get(points3.size() - 1)[1] == 1.1116729841674804;
-        points3.forEach(point ->
-            System.out.println(
-                String.format("x: %1$f; y: %2$f", point[0], point[1])
-            )
-        );
+        points3.forEach(point -> System.out.printf("x: %1$f; y: %2$f%n", point[0], point[1]));
     }
 
     /**
@@ -72,22 +53,11 @@ public class EulerMethod {
      * @param differentialEquation The differential equation to be solved.
      * @return The next y-value.
      */
-    public static double eulerStep(
-        double xCurrent,
-        double stepSize,
-        double yCurrent,
-        BiFunction<Double, Double, Double> differentialEquation
-    ) {
+    public static double eulerStep(double xCurrent, double stepSize, double yCurrent, BiFunction<Double, Double, Double> differentialEquation) {
         if (stepSize <= 0) {
-            throw new IllegalArgumentException(
-                "stepSize should be greater than zero"
-            );
+            throw new IllegalArgumentException("stepSize should be greater than zero");
         }
-        double yNext =
-            yCurrent +
-            stepSize *
-            differentialEquation.apply(xCurrent, yCurrent);
-        return yNext;
+        return yCurrent + stepSize * differentialEquation.apply(xCurrent, yCurrent);
     }
 
     /**
@@ -102,36 +72,25 @@ public class EulerMethod {
      * @return The points constituting the solution of the differential
      * equation.
      */
-    public static ArrayList<double[]> eulerFull(
-        double xStart,
-        double xEnd,
-        double stepSize,
-        double yStart,
-        BiFunction<Double, Double, Double> differentialEquation
-    ) {
+    public static ArrayList<double[]> eulerFull(double xStart, double xEnd, double stepSize, double yStart, BiFunction<Double, Double, Double> differentialEquation) {
         if (xStart >= xEnd) {
-            throw new IllegalArgumentException(
-                "xEnd should be greater than xStart"
-            );
+            throw new IllegalArgumentException("xEnd should be greater than xStart");
         }
         if (stepSize <= 0) {
-            throw new IllegalArgumentException(
-                "stepSize should be greater than zero"
-            );
+            throw new IllegalArgumentException("stepSize should be greater than zero");
         }
 
         ArrayList<double[]> points = new ArrayList<double[]>();
-        double[] firstPoint = { xStart, yStart };
+        double[] firstPoint = {xStart, yStart};
         points.add(firstPoint);
         double yCurrent = yStart;
         double xCurrent = xStart;
 
         while (xCurrent < xEnd) {
             // Euler method for next step
-            yCurrent =
-                eulerStep(xCurrent, stepSize, yCurrent, differentialEquation);
+            yCurrent = eulerStep(xCurrent, stepSize, yCurrent, differentialEquation);
             xCurrent += stepSize;
-            double[] point = { xCurrent, yCurrent };
+            double[] point = {xCurrent, yCurrent};
             points.add(point);
         }
 

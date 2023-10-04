@@ -15,8 +15,8 @@ import java.util.PriorityQueue;
 
 public class Kruskal {
 
-    // Complexity: O(E log V) time, where E is the number of edges in the graph and V is the number of
-    // vertices
+    // Complexity: O(E log V) time, where E is the number of edges in the graph and V is the number
+    // of vertices
     private static class Edge {
 
         private int from;
@@ -30,12 +30,7 @@ public class Kruskal {
         }
     }
 
-    private static void addEdge(
-        HashSet<Edge>[] graph,
-        int from,
-        int to,
-        int weight
-    ) {
+    private static void addEdge(HashSet<Edge>[] graph, int from, int to, int weight) {
         graph[from].add(new Edge(from, to, weight));
     }
 
@@ -58,9 +53,7 @@ public class Kruskal {
         System.out.println("Initial Graph: ");
         for (int i = 0; i < graph.length; i++) {
             for (Edge edge : graph[i]) {
-                System.out.println(
-                    i + " <-- weight " + edge.weight + " --> " + edge.to
-                );
+                System.out.println(i + " <-- weight " + edge.weight + " --> " + edge.to);
             }
         }
 
@@ -70,9 +63,7 @@ public class Kruskal {
         System.out.println("\nMinimal Graph: ");
         for (int i = 0; i < solGraph.length; i++) {
             for (Edge edge : solGraph[i]) {
-                System.out.println(
-                    i + " <-- weight " + edge.weight + " --> " + edge.to
-                );
+                System.out.println(i + " <-- weight " + edge.weight + " --> " + edge.to);
             }
         }
     }
@@ -83,9 +74,7 @@ public class Kruskal {
         // captain of i, stores the set with all the connected nodes to i
         HashSet<Integer>[] connectedGroups = new HashSet[nodes];
         HashSet<Edge>[] minGraph = new HashSet[nodes];
-        PriorityQueue<Edge> edges = new PriorityQueue<>(
-            (Comparator.comparingInt(edge -> edge.weight))
-        );
+        PriorityQueue<Edge> edges = new PriorityQueue<>((Comparator.comparingInt(edge -> edge.weight)));
         for (int i = 0; i < nodes; i++) {
             minGraph[i] = new HashSet<>();
             connectedGroups[i] = new HashSet<>();
@@ -98,18 +87,11 @@ public class Kruskal {
         while (connectedElements != nodes && !edges.isEmpty()) {
             Edge edge = edges.poll();
             // This if avoids cycles
-            if (
-                !connectedGroups[captain[edge.from]].contains(edge.to) &&
-                !connectedGroups[captain[edge.to]].contains(edge.from)
-            ) {
+            if (!connectedGroups[captain[edge.from]].contains(edge.to) && !connectedGroups[captain[edge.to]].contains(edge.from)) {
                 // merge sets of the captains of each point connected by the edge
-                connectedGroups[captain[edge.from]].addAll(
-                        connectedGroups[captain[edge.to]]
-                    );
+                connectedGroups[captain[edge.from]].addAll(connectedGroups[captain[edge.to]]);
                 // update captains of the elements merged
-                connectedGroups[captain[edge.from]].forEach(i ->
-                        captain[i] = captain[edge.from]
-                    );
+                connectedGroups[captain[edge.from]].forEach(i -> captain[i] = captain[edge.from]);
                 // add Edge to minimal graph
                 addEdge(minGraph, edge.from, edge.to, edge.weight);
                 // count how many elements have been merged

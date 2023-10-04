@@ -1,14 +1,15 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class AutomorphicNumberTest {
 
     @Test
     void testAutomorphicNumber() {
-        int trueTestCases[] = { 0, 1, 25, 625, 12890625};
-        int falseTestCases[] = { -5, 2, 26, 1234 };
+        int[] trueTestCases = {0, 1, 25, 625, 12890625};
+        int[] falseTestCases = {-5, 2, 26, 1234};
         for (Integer n : trueTestCases) {
             assertTrue(AutomorphicNumber.isAutomorphic(n));
             assertTrue(AutomorphicNumber.isAutomorphic2(n));

@@ -6,7 +6,7 @@ public class SubsetSum {
      * Driver Code
      */
     public static void main(String[] args) {
-        int[] arr = new int[] { 50, 4, 10, 15, 34 };
+        int[] arr = new int[] {50, 4, 10, 15, 34};
         assert subsetSum(arr, 64);
         /* 4 + 10 + 15 + 34 = 64 */
         assert subsetSum(arr, 99);
@@ -22,7 +22,7 @@ public class SubsetSum {
      * @param sum target sum of subset.
      * @return {@code true} if subset exists, otherwise {@code false}.
      */
-    private static boolean subsetSum(int[] arr, int sum) {
+    public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
         boolean[][] isSum = new boolean[n + 2][sum + 1];
 

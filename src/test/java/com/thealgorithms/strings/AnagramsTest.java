@@ -18,5 +18,6 @@ public class AnagramsTest {
         assertTrue(anagrams.approach3(input1, "teal"));
         assertTrue(anagrams.approach4(input1, "tale"));
         assertTrue(anagrams.approach4(input1, "teal"));
+        assertTrue(anagrams.approach5(input1, "teal"));
     }
 }

@@ -27,23 +27,13 @@ public class Mandelbrot {
 
     public static void main(String[] args) {
         // Test black and white
-        BufferedImage blackAndWhiteImage = getImage(
-            800,
-            600,
-            -0.6,
-            0,
-            3.2,
-            50,
-            false
-        );
+        BufferedImage blackAndWhiteImage = getImage(800, 600, -0.6, 0, 3.2, 50, false);
 
         // Pixel outside the Mandelbrot set should be white.
-        assert blackAndWhiteImage.getRGB(0, 0) ==
-        new Color(255, 255, 255).getRGB();
+        assert blackAndWhiteImage.getRGB(0, 0) == new Color(255, 255, 255).getRGB();
 
         // Pixel inside the Mandelbrot set should be black.
-        assert blackAndWhiteImage.getRGB(400, 300) ==
-        new Color(0, 0, 0).getRGB();
+        assert blackAndWhiteImage.getRGB(400, 300) == new Color(0, 0, 0).getRGB();
 
         // Test color-coding
         BufferedImage coloredImage = getImage(800, 600, -0.6, 0, 3.2, 50, true);
@@ -80,63 +70,33 @@ public class Mandelbrot {
      * @param useDistanceColorCoding Render in color or black and white.
      * @return The image of the rendered Mandelbrot set.
      */
-    public static BufferedImage getImage(
-        int imageWidth,
-        int imageHeight,
-        double figureCenterX,
-        double figureCenterY,
-        double figureWidth,
-        int maxStep,
-        boolean useDistanceColorCoding
-    ) {
+    public static BufferedImage getImage(int imageWidth, int imageHeight, double figureCenterX, double figureCenterY, double figureWidth, int maxStep, boolean useDistanceColorCoding) {
         if (imageWidth <= 0) {
-            throw new IllegalArgumentException(
-                "imageWidth should be greater than zero"
-            );
+            throw new IllegalArgumentException("imageWidth should be greater than zero");
         }
 
         if (imageHeight <= 0) {
-            throw new IllegalArgumentException(
-                "imageHeight should be greater than zero"
-            );
+            throw new IllegalArgumentException("imageHeight should be greater than zero");
         }
 
         if (maxStep <= 0) {
-            throw new IllegalArgumentException(
-                "maxStep should be greater than zero"
-            );
+            throw new IllegalArgumentException("maxStep should be greater than zero");
         }
 
-        BufferedImage image = new BufferedImage(
-            imageWidth,
-            imageHeight,
-            BufferedImage.TYPE_INT_RGB
-        );
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         double figureHeight = figureWidth / imageWidth * imageHeight;
 
         // loop through the image-coordinates
         for (int imageX = 0; imageX < imageWidth; imageX++) {
             for (int imageY = 0; imageY < imageHeight; imageY++) {
                 // determine the figure-coordinates based on the image-coordinates
-                double figureX =
-                    figureCenterX +
-                    ((double) imageX / imageWidth - 0.5) *
-                    figureWidth;
-                double figureY =
-                    figureCenterY +
-                    ((double) imageY / imageHeight - 0.5) *
-                    figureHeight;
+                double figureX = figureCenterX + ((double) imageX / imageWidth - 0.5) * figureWidth;
+                double figureY = figureCenterY + ((double) imageY / imageHeight - 0.5) * figureHeight;
 
                 double distance = getDistance(figureX, figureY, maxStep);
 
                 // color the corresponding pixel based on the selected coloring-function
-                image.setRGB(
-                    imageX,
-                    imageY,
-                    useDistanceColorCoding
-                        ? colorCodedColorMap(distance).getRGB()
-                        : blackAndWhiteColorMap(distance).getRGB()
-                );
+                image.setRGB(imageX, imageY, useDistanceColorCoding ? colorCodedColorMap(distance).getRGB() : blackAndWhiteColorMap(distance).getRGB());
             }
         }
 
@@ -179,18 +139,18 @@ public class Mandelbrot {
             int t = (int) (val * (1 - (1 - f) * saturation));
 
             switch (hi) {
-                case 0:
-                    return new Color(v, t, p);
-                case 1:
-                    return new Color(q, v, p);
-                case 2:
-                    return new Color(p, v, t);
-                case 3:
-                    return new Color(p, q, v);
-                case 4:
-                    return new Color(t, p, v);
-                default:
-                    return new Color(v, p, q);
+            case 0:
+                return new Color(v, t, p);
+            case 1:
+                return new Color(q, v, p);
+            case 2:
+                return new Color(p, v, t);
+            case 3:
+                return new Color(p, q, v);
+            case 4:
+                return new Color(t, p, v);
+            default:
+                return new Color(v, p, q);
             }
         }
     }
@@ -205,11 +165,7 @@ public class Mandelbrot {
      * @param maxStep Maximum number of steps to check for divergent behavior.
      * @return The relative distance as the ratio of steps taken to maxStep.
      */
-    private static double getDistance(
-        double figureX,
-        double figureY,
-        int maxStep
-    ) {
+    private static double getDistance(double figureX, double figureY, int maxStep) {
         double a = figureX;
         double b = figureY;
         int currentStep = 0;

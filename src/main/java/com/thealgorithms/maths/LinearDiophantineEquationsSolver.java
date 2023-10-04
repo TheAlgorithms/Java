@@ -27,39 +27,23 @@ public final class LinearDiophantineEquationsSolver {
         return toReturn;
     }
 
-    private static GcdSolutionWrapper gcd(
-        final int a,
-        final int b,
-        final GcdSolutionWrapper previous
-    ) {
+    private static GcdSolutionWrapper gcd(final int a, final int b, final GcdSolutionWrapper previous) {
         if (b == 0) {
             return new GcdSolutionWrapper(a, new Solution(1, 0));
         }
         // stub wrapper becomes the `previous` of the next recursive call
         final var stubWrapper = new GcdSolutionWrapper(0, new Solution(0, 0));
-        final var next = /* recursive call */gcd(b, a % b, stubWrapper);
+        final var next = /* recursive call */ gcd(b, a % b, stubWrapper);
         previous.getSolution().setX(next.getSolution().getY());
-        previous
-            .getSolution()
-            .setY(
-                next.getSolution().getX() -
-                (a / b) *
-                (next.getSolution().getY())
-            );
+        previous.getSolution().setY(next.getSolution().getX() - (a / b) * (next.getSolution().getY()));
         previous.setGcd(next.getGcd());
         return new GcdSolutionWrapper(next.getGcd(), previous.getSolution());
     }
 
     public static final class Solution {
 
-        public static final Solution NO_SOLUTION = new Solution(
-            Integer.MAX_VALUE,
-            Integer.MAX_VALUE
-        );
-        public static final Solution INFINITE_SOLUTIONS = new Solution(
-            Integer.MIN_VALUE,
-            Integer.MIN_VALUE
-        );
+        public static final Solution NO_SOLUTION = new Solution(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        public static final Solution INFINITE_SOLUTIONS = new Solution(Integer.MIN_VALUE, Integer.MIN_VALUE);
         private int x;
         private int y;
 
@@ -103,11 +87,14 @@ public final class LinearDiophantineEquationsSolver {
 
         @Override
         public String toString() {
-            return "Solution[" + "x=" + x + ", " + "y=" + y + ']';
+            return "Solution["
+                + "x=" + x + ", "
+                + "y=" + y + ']';
         }
     }
 
-    public record Equation(int a, int b, int c) {}
+    public record Equation(int a, int b, int c) {
+    }
 
     public static final class GcdSolutionWrapper {
 
@@ -128,10 +115,7 @@ public final class LinearDiophantineEquationsSolver {
                 return false;
             }
             var that = (GcdSolutionWrapper) obj;
-            return (
-                this.gcd == that.gcd &&
-                Objects.equals(this.solution, that.solution)
-            );
+            return (this.gcd == that.gcd && Objects.equals(this.solution, that.solution));
         }
 
         public int getGcd() {
@@ -157,15 +141,9 @@ public final class LinearDiophantineEquationsSolver {
 
         @Override
         public String toString() {
-            return (
-                "GcdSolutionWrapper[" +
-                "gcd=" +
-                gcd +
-                ", " +
-                "solution=" +
-                solution +
-                ']'
-            );
+            return ("GcdSolutionWrapper["
+                + "gcd=" + gcd + ", "
+                + "solution=" + solution + ']');
         }
     }
 }

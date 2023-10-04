@@ -1,8 +1,10 @@
-/** Author : Siddhant Swarup Mallick
+/**
+ * Author : Siddhant Swarup Mallick
  * Github : https://github.com/siddhant2002
  */
 /**
- * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal to number of times n appears in the sequence.
+ * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal
+ * to number of times n appears in the sequence.
  */
 
 /**
@@ -15,8 +17,8 @@ package com.thealgorithms.dynamicprogramming;
 
 public class CountFriendsPairing {
 
-    public static boolean countFriendsPairing(int n, int a[]) {
-        int dp[] = new int[n + 1];
+    public static boolean countFriendsPairing(int n, int[] a) {
+        int[] dp = new int[n + 1];
         // array of n+1 size is created
         dp[0] = 1;
         // since 1st index position value is fixed so it's marked as 1

@@ -31,33 +31,17 @@ public class VampireNumber {
                 // System.out.println(i+ " "+ j);
                 if (isVampireNumber(i, j, true)) {
                     countofRes++;
-                    res.append(
-                        "" +
-                        countofRes +
-                        ": = ( " +
-                        i +
-                        "," +
-                        j +
-                        " = " +
-                        i *
-                        j +
-                        ")" +
-                        "\n"
-                    );
+                    res.append("" + countofRes + ": = ( " + i + "," + j + " = " + i * j + ")"
+                        + "\n");
                 }
             }
         }
         System.out.println(res);
     }
 
-    static boolean isVampireNumber(
-        int a,
-        int b,
-        boolean noPseudoVamireNumbers
-    ) {
-        // this is for pseudoVampireNumbers  pseudovampire number need not be of length n/2 digits for
-        // example
-        // 126 = 6 x 21
+    static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers) {
+        // this is for pseudoVampireNumbers  pseudovampire number need not be of length n/2 digits
+        // for example 126 = 6 x 21
         if (noPseudoVamireNumbers) {
             if (a * 10 <= b || b * 10 <= a) {
                 return false;

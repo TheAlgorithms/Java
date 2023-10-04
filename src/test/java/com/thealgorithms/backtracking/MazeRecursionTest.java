@@ -35,7 +35,7 @@ public class MazeRecursionTest {
         map[3][1] = 1;
         map[3][2] = 1;
 
-        //clone another map for setWay2 method
+        // clone another map for setWay2 method
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 map2[i][j] = map[i][j];
@@ -45,26 +45,26 @@ public class MazeRecursionTest {
         MazeRecursion.setWay(map, 1, 1);
         MazeRecursion.setWay2(map2, 1, 1);
 
-        int expectedMap[][] = new int[][] {
-            { 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 2, 0, 0, 0, 0, 1 },
-            { 1, 2, 2, 2, 0, 0, 1 },
-            { 1, 1, 1, 2, 0, 0, 1 },
-            { 1, 0, 0, 2, 0, 0, 1 },
-            { 1, 0, 0, 2, 0, 0, 1 },
-            { 1, 0, 0, 2, 2, 2, 1 },
-            { 1, 1, 1, 1, 1, 1, 1 },
+        int[][] expectedMap = new int[][] {
+            {1, 1, 1, 1, 1, 1, 1},
+            {1, 2, 0, 0, 0, 0, 1},
+            {1, 2, 2, 2, 0, 0, 1},
+            {1, 1, 1, 2, 0, 0, 1},
+            {1, 0, 0, 2, 0, 0, 1},
+            {1, 0, 0, 2, 0, 0, 1},
+            {1, 0, 0, 2, 2, 2, 1},
+            {1, 1, 1, 1, 1, 1, 1},
         };
 
-        int expectedMap2[][] = new int[][] {
-            { 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 2, 2, 2, 2, 2, 1 },
-            { 1, 0, 0, 0, 0, 2, 1 },
-            { 1, 1, 1, 0, 0, 2, 1 },
-            { 1, 0, 0, 0, 0, 2, 1 },
-            { 1, 0, 0, 0, 0, 2, 1 },
-            { 1, 0, 0, 0, 0, 2, 1 },
-            { 1, 1, 1, 1, 1, 1, 1 },
+        int[][] expectedMap2 = new int[][] {
+            {1, 1, 1, 1, 1, 1, 1},
+            {1, 2, 2, 2, 2, 2, 1},
+            {1, 0, 0, 0, 0, 2, 1},
+            {1, 1, 1, 0, 0, 2, 1},
+            {1, 0, 0, 0, 0, 2, 1},
+            {1, 0, 0, 0, 0, 2, 1},
+            {1, 0, 0, 0, 0, 2, 1},
+            {1, 1, 1, 1, 1, 1, 1},
         };
 
         assertArrayEquals(map, expectedMap);

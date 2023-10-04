@@ -54,9 +54,7 @@ public class ColorContrastRatio {
      */
     public double getColor(int color8Bit) {
         final double sRgb = getColorSRgb(color8Bit);
-        return (sRgb <= 0.03928)
-            ? sRgb / 12.92
-            : Math.pow((sRgb + 0.055) / 1.055, 2.4);
+        return (sRgb <= 0.03928) ? sRgb / 12.92 : Math.pow((sRgb + 0.055) / 1.055, 2.4);
     }
 
     /**
@@ -83,41 +81,28 @@ public class ColorContrastRatio {
 
         final Color black = Color.BLACK;
         final double blackLuminance = algImpl.getRelativeLuminance(black);
-        assert blackLuminance ==
-        0 : "Test 1 Failed - Incorrect relative luminance.";
+        assert blackLuminance == 0 : "Test 1 Failed - Incorrect relative luminance.";
 
         final Color white = Color.WHITE;
         final double whiteLuminance = algImpl.getRelativeLuminance(white);
-        assert whiteLuminance ==
-        1 : "Test 2 Failed - Incorrect relative luminance.";
+        assert whiteLuminance == 1 : "Test 2 Failed - Incorrect relative luminance.";
 
         final double highestColorRatio = algImpl.getContrastRatio(black, white);
-        assert highestColorRatio ==
-        21 : "Test 3 Failed - Incorrect contrast ratio.";
+        assert highestColorRatio == 21 : "Test 3 Failed - Incorrect contrast ratio.";
 
         final Color foreground = new Color(23, 103, 154);
-        final double foregroundLuminance = algImpl.getRelativeLuminance(
-            foreground
-        );
-        assert foregroundLuminance ==
-        0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
+        final double foregroundLuminance = algImpl.getRelativeLuminance(foreground);
+        assert foregroundLuminance == 0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
 
         final Color background = new Color(226, 229, 248);
-        final double backgroundLuminance = algImpl.getRelativeLuminance(
-            background
-        );
-        assert backgroundLuminance ==
-        0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
+        final double backgroundLuminance = algImpl.getRelativeLuminance(background);
+        assert backgroundLuminance == 0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
 
-        final double contrastRatio = algImpl.getContrastRatio(
-            foreground,
-            background
-        );
-        assert contrastRatio ==
-        4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";
+        final double contrastRatio = algImpl.getContrastRatio(foreground, background);
+        assert contrastRatio == 4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         test();
     }
 }

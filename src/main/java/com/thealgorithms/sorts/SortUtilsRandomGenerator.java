@@ -12,7 +12,6 @@ public class SortUtilsRandomGenerator {
         random = new Random(seed);
     }
 
-
     /**
      * Function to generate array of double values, with predefined size.
      *
@@ -21,8 +20,7 @@ public class SortUtilsRandomGenerator {
      */
     public static Double[] generateArray(int size) {
         Double[] arr = new Double[size];
-        for (int i = 0; i < size; i++)
-            arr[i] = generateDouble();
+        for (int i = 0; i < size; i++) arr[i] = generateDouble();
         return arr;
     }
 
@@ -35,4 +33,12 @@ public class SortUtilsRandomGenerator {
         return random.nextDouble();
     }
 
+    /**
+     * Function to generate int value.
+     *
+     * @return int value [0, n)
+     */
+    public static int generateInt(int n) {
+        return random.nextInt(n);
+    }
 }

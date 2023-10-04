@@ -17,13 +17,11 @@ public class BinomialCoefficient {
      *
      * @param totalObjects    Total number of objects
      * @param numberOfObjects Number of objects to be chosen from total_objects
-     * @return number of ways in which no_of_objects objects can be chosen from total_objects objects
+     * @return number of ways in which no_of_objects objects can be chosen from total_objects
+     *     objects
      */
 
-    public static int binomialCoefficient(
-        int totalObjects,
-        int numberOfObjects
-    ) {
+    public static int binomialCoefficient(int totalObjects, int numberOfObjects) {
         // Base Case
         if (numberOfObjects > totalObjects) {
             return 0;
@@ -35,9 +33,6 @@ public class BinomialCoefficient {
         }
 
         // Recursive Call
-        return (
-            binomialCoefficient(totalObjects - 1, numberOfObjects - 1) +
-            binomialCoefficient(totalObjects - 1, numberOfObjects)
-        );
+        return (binomialCoefficient(totalObjects - 1, numberOfObjects - 1) + binomialCoefficient(totalObjects - 1, numberOfObjects));
     }
 }

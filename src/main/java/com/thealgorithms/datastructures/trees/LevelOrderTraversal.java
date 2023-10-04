@@ -1,51 +1,45 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class LevelOrderTraversal {
 
-    class Node {
-
-        int data;
-        Node left, right;
-
-        public Node(int item) {
-            data = item;
-            left = right = null;
-        }
-    }
-
-    // Root of the Binary Tree
-    Node root;
-
-    public LevelOrderTraversal(Node root) {
-        this.root = root;
-    }
-
-    /* function to print level order traversal of tree*/
-    void printLevelOrder() {
-        int h = height(root);
-        int i;
-        for (i = 1; i <= h; i++) {
-            printGivenLevel(root, i);
-        }
-    }
-
-    /* Compute the "height" of a tree -- the number of
-  nodes along the longest path from the root node
-  down to the farthest leaf node.*/
-    int height(Node root) {
+    public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
-            return 0;
-        } else {
-            /**
-             * Return the height of larger subtree
-             */
-            return Math.max(height(root.left), height(root.right)) + 1;
+            return List.of();
         }
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<BinaryTree.Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int nodesOnLevel = q.size();
+            List<Integer> level = new LinkedList<>();
+            for (int i = 0; i < nodesOnLevel; i++) {
+                BinaryTree.Node tempNode = q.poll();
+                level.add(tempNode.data);
+
+                if (tempNode.left != null) {
+                    q.add(tempNode.left);
+                }
+
+                if (tempNode.right != null) {
+                    q.add(tempNode.right);
+                }
+            }
+            result.add(level);
+        }
+        return result;
     }
 
     /* Print nodes at the given level */
-    void printGivenLevel(Node root, int level) {
+    public static void printGivenLevel(BinaryTree.Node root, int level) {
         if (root == null) {
+            System.out.println("Root node must not be null! Exiting.");
             return;
         }
         if (level == 1) {

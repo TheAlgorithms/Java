@@ -38,15 +38,13 @@ public class CircularConvolutionFFT {
      * @param b The other signal.
      * @return The convolved signal.
      */
-    public static ArrayList<FFT.Complex> fftCircularConvolution(
-        ArrayList<FFT.Complex> a,
-        ArrayList<FFT.Complex> b
-    ) {
+    public static ArrayList<FFT.Complex> fftCircularConvolution(ArrayList<FFT.Complex> a, ArrayList<FFT.Complex> b) {
         int convolvedSize = Math.max(a.size(), b.size()); // The two signals must have the same size equal to the bigger one
         padding(a, convolvedSize); // Zero padding the smaller signal
         padding(b, convolvedSize);
 
-        /* Find the FFTs of both signal. Here we use the Bluestein algorithm because we want the FFT to have the same length with the signal and not bigger */
+        /* Find the FFTs of both signal. Here we use the Bluestein algorithm because we want the FFT
+         * to have the same length with the signal and not bigger */
         FFTBluestein.fftBluestein(a, false);
         FFTBluestein.fftBluestein(b, false);
         ArrayList<FFT.Complex> convolved = new ArrayList<>();

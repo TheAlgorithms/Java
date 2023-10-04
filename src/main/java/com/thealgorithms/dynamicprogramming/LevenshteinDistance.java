@@ -17,43 +17,33 @@ public class LevenshteinDistance {
         }
     }
 
-    private static int calculate_distance(String a, String b) {
-        int len_a = a.length() + 1;
-        int len_b = b.length() + 1;
-        int[][] distance_mat = new int[len_a][len_b];
-        for (int i = 0; i < len_a; i++) {
-            distance_mat[i][0] = i;
+    public static int calculateLevenshteinDistance(String str1, String str2) {
+        int len1 = str1.length() + 1;
+        int len2 = str2.length() + 1;
+        int[][] distanceMat = new int[len1][len2];
+        for (int i = 0; i < len1; i++) {
+            distanceMat[i][0] = i;
         }
-        for (int j = 0; j < len_b; j++) {
-            distance_mat[0][j] = j;
+        for (int j = 0; j < len2; j++) {
+            distanceMat[0][j] = j;
         }
-        for (int i = 0; i < len_a; i++) {
-            for (int j = 0; j < len_b; j++) {
-                int cost;
-                if (a.charAt(i) == b.charAt(j)) {
-                    cost = 0;
+        for (int i = 1; i < len1; i++) {
+            for (int j = 1; j < len2; j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                    distanceMat[i][j] = distanceMat[i - 1][j - 1];
                 } else {
-                    cost = 1;
+                    distanceMat[i][j] = 1 + minimum(distanceMat[i - 1][j], distanceMat[i - 1][j - 1], distanceMat[i][j - 1]);
                 }
-                distance_mat[i][j] =
-                    minimum(
-                        distance_mat[i - 1][j],
-                        distance_mat[i - 1][j - 1],
-                        distance_mat[i][j - 1]
-                    ) +
-                    cost;
             }
         }
-        return distance_mat[len_a - 1][len_b - 1];
+        return distanceMat[len1 - 1][len2 - 1];
     }
 
     public static void main(String[] args) {
-        String a = ""; // enter your string here
-        String b = ""; // enter your string here
+        String str1 = ""; // enter your string here
+        String str2 = ""; // enter your string here
 
-        System.out.print(
-            "Levenshtein distance between " + a + " and " + b + " is: "
-        );
-        System.out.println(calculate_distance(a, b));
+        System.out.print("Levenshtein distance between " + str1 + " and " + str2 + " is: ");
+        System.out.println(calculateLevenshteinDistance(str1, str2));
     }
 }

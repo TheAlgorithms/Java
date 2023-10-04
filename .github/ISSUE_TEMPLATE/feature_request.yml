@@ -1,7 +1,7 @@
 name: "Feature Request"
 description: "Suggest an idea for this project"
-title: "[FEATURE REQUEST]"
-labels: ["feature_request"]
+title: "[FEATURE REQUEST] <title>"
+labels: ["enhancement"]
 body:
   - type: textarea
     id: description
@@ -13,13 +13,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        "
         For new implementations, please specify the name and problem statement for the algorithm.
         For algorithm enhancements, specify what needs to be changed and why. For example:
         - Adding tests.
         - Optimizing logic.
         - Refactoring the file and folders for better structure.
-        "
   - type: textarea
     id: needdetails
     attributes:
@@ -31,6 +29,6 @@ body:
     id: extrainfo
     attributes:
       label: "Additional Information"
-      description: "Add any other Information or Screenshot about the request here."
+      description: "Add any other information or screenshots about the request here."
     validations:
       required: false

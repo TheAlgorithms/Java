@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
+/*
  * This entire class is used to build a Binary Tree data structure. There is the
  * Node Class and the Tree Class, both explained below.
  */
@@ -117,11 +117,9 @@ public class BinaryTree {
             if (value < parent.data) {
                 parent.left = newNode;
                 parent.left.parent = parent;
-                return;
             } else {
                 parent.right = newNode;
                 parent.right.parent = parent;
-                return;
             }
         }
     }
@@ -145,7 +143,8 @@ public class BinaryTree {
         if (temp.right == null && temp.left == null) {
             if (temp == root) {
                 root = null;
-            } // This if/else assigns the new node to be either the left or right child of the parent
+            } // This if/else assigns the new node to be either the left or right child of the
+              // parent
             else if (temp.parent.data < temp.data) {
                 temp.parent.right = null;
             } else {
@@ -165,31 +164,29 @@ public class BinaryTree {
                 if (successor.right != null) {
                     successor.right.parent = successor.parent;
                     successor.parent.left = successor.right;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
                 } else {
                     successor.parent.left = null;
-                    successor.right = temp.right;
-                    successor.right.parent = successor;
                 }
+                successor.right = temp.right;
+                successor.right.parent = successor;
             }
 
             if (temp == root) {
                 successor.parent = null;
                 root = successor;
-                return true;
             } // If you're not deleting the root
             else {
                 successor.parent = temp.parent;
 
-                // This if/else assigns the new node to be either the left or right child of the parent
+                // This if/else assigns the new node to be either the left or right child of the
+                // parent
                 if (temp.parent.data < temp.data) {
                     temp.parent.right = successor;
                 } else {
                     temp.parent.left = successor;
                 }
-                return true;
             }
+            return true;
         } // One child
         else {
             // If it has a right child
@@ -207,7 +204,6 @@ public class BinaryTree {
                 } else {
                     temp.parent.right = temp.right;
                 }
-                return true;
             } // If it has a left child
             else {
                 if (temp == root) {
@@ -223,8 +219,8 @@ public class BinaryTree {
                 } else {
                     temp.parent.right = temp.left;
                 }
-                return true;
             }
+            return true;
         }
     }
 
@@ -306,7 +302,7 @@ public class BinaryTree {
      */
     public void bfs(Node localRoot) {
         // Create a queue for the order of the nodes
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Node> queue = new LinkedList<>();
 
         // If the give root is null, then we don't add to the queue
         // and won't do anything

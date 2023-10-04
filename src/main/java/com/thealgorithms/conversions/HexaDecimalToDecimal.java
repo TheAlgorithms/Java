@@ -17,7 +17,7 @@ public class HexaDecimalToDecimal {
     }
 
     // Main method gets the hexadecimal input from user and converts it into Decimal output.
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String hexa_Input;
         int dec_output;
         Scanner scan = new Scanner(System.in);

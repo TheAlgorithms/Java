@@ -1,23 +1,25 @@
 package com.thealgorithms.datastructures.queues;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.StringJoiner;
 
-public class LinkedQueue {
+public class LinkedQueue<T> implements Iterable<T> {
 
-    class Node {
+    static class Node<T> {
 
-        int data;
-        Node next;
+        T data;
+        Node<T> next;
 
         public Node() {
-            this(0);
+            this(null);
         }
 
-        public Node(int data) {
+        public Node(T data) {
             this(data, null);
         }
 
-        public Node(int data, Node next) {
+        public Node(T data, Node<T> next) {
             this.data = data;
             this.next = next;
         }
@@ -26,12 +28,12 @@ public class LinkedQueue {
     /**
      * Front of Queue
      */
-    private Node front;
+    private Node<T> front;
 
     /**
      * Rear of Queue
      */
-    private Node rear;
+    private Node<T> rear;
 
     /**
      * Size of Queue
@@ -42,7 +44,7 @@ public class LinkedQueue {
      * Init LinkedQueue
      */
     public LinkedQueue() {
-        front = rear = new Node();
+        front = rear = new Node<>();
     }
 
     /**
@@ -58,15 +60,14 @@ public class LinkedQueue {
      * Add element to rear of queue
      *
      * @param data insert value
-     * @return true if add successfully
      */
-    public boolean enqueue(int data) {
-        Node newNode = new Node(data);
+    public void enqueue(T data) {
+        Node<T> newNode = new Node<>(data);
+
         rear.next = newNode;
         rear = newNode;
         /* make rear point at last node */
         size++;
-        return true;
     }
 
     /**
@@ -74,14 +75,13 @@ public class LinkedQueue {
      *
      * @return element at the front of queue
      */
-    public int dequeue() {
+    public T dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("queue is empty");
         }
-        Node destroy = front.next;
-        int retValue = destroy.data;
+        Node<T> destroy = front.next;
+        T retValue = destroy.data;
         front.next = front.next.next;
-        destroy = null;
         /* clear let GC do it's work */
         size--;
 
@@ -97,7 +97,7 @@ public class LinkedQueue {
      *
      * @return element at the front
      */
-    public int peekFront() {
+    public T peekFront() {
         if (isEmpty()) {
             throw new NoSuchElementException("queue is empty");
         }
@@ -109,11 +109,46 @@ public class LinkedQueue {
      *
      * @return element at the front
      */
-    public int peekRear() {
+    public T peekRear() {
         if (isEmpty()) {
             throw new NoSuchElementException("queue is empty");
         }
         return rear.data;
+    }
+
+    /**
+     * Peeks the element at the index and
+     *          returns the value
+     * @param pos at which to peek
+     */
+
+    public T peek(int pos) {
+        if (pos > size) throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
+        Node<T> node = front;
+        while (pos-- > 0) node = node.next;
+        return node.data;
+    }
+
+    /**
+     * Node iterator, allows to travel through
+     * the nodes using for() loop or forEach(Consumer)
+     */
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            Node<T> node = front;
+
+            @Override
+            public boolean hasNext() {
+                return node.next != null;
+            }
+
+            @Override
+            public T next() {
+                return (node = node.next).data;
+            }
+        };
     }
 
     /**
@@ -129,30 +164,20 @@ public class LinkedQueue {
      * Clear all nodes in queue
      */
     public void clear() {
-        while (!isEmpty()) {
-            dequeue();
-        }
+        while (size > 0) dequeue();
     }
 
     @Override
     public String toString() {
-        if (isEmpty()) {
-            return "[]";
-        }
-        StringBuilder builder = new StringBuilder();
-        Node cur = front.next;
-        builder.append("[");
-        while (cur != null) {
-            builder.append(cur.data).append(", ");
-            cur = cur.next;
-        }
-        builder.replace(builder.length() - 2, builder.length(), "]");
-        return builder.toString();
+        StringJoiner join = new StringJoiner(", "); // separator of ', '
+        Node<T> travel = front;
+        while ((travel = travel.next) != null) join.add(String.valueOf(travel.data));
+        return '[' + join.toString() + ']';
     }
 
     /* Driver Code */
     public static void main(String[] args) {
-        LinkedQueue queue = new LinkedQueue();
+        LinkedQueue<Integer> queue = new LinkedQueue<>();
         assert queue.isEmpty();
 
         queue.enqueue(1);

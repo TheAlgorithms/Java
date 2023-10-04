@@ -45,14 +45,11 @@ class ShortestSuperSequence {
     }
 
     // Driver code
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String X = "AGGTAB";
         String Y = "GXTXAYB";
 
-        System.out.println(
-            "Length of the shortest " +
-            "supersequence is " +
-            shortestSuperSequence(X, Y)
-        );
+        System.out.println("Length of the shortest "
+            + "supersequence is " + shortestSuperSequence(X, Y));
     }
 }

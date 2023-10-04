@@ -14,7 +14,7 @@ public class OctalToDecimal {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Octal Input: ");
         String inputOctal = sc.nextLine();
@@ -34,8 +34,7 @@ public class OctalToDecimal {
     public static int convertOctalToDecimal(String inputOctal) {
         try {
             // Actual conversion of Octal to Decimal:
-            Integer outputDecimal = Integer.parseInt(inputOctal, 8);
-            return outputDecimal;
+            return Integer.parseInt(inputOctal, 8);
         } catch (NumberFormatException ne) {
             // Printing a warning message if the input is not a valid octal
             // number:

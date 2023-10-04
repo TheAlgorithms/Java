@@ -43,14 +43,14 @@ public class NodeStack<Item> {
     private Item data;
 
     private static NodeStack<?> head;
-    private NodeStack<?> next;
     private NodeStack<?> previous;
     private static int size = 0;
 
     /**
      * Constructors for the NodeStack.
      */
-    public NodeStack() {}
+    public NodeStack() {
+    }
 
     private NodeStack(Item item) {
         this.data = item;
@@ -71,7 +71,7 @@ public class NodeStack<Item> {
         } else {
             newNs.setPrevious(NodeStack.head);
             NodeStack.head.setNext(newNs);
-            NodeStack.head.setHead(newNs);
+            NodeStack.setHead(newNs);
         }
 
         NodeStack.setSize(NodeStack.getSize() + 1);
@@ -85,7 +85,7 @@ public class NodeStack<Item> {
     public Item pop() {
         Item item = (Item) NodeStack.head.getData();
 
-        NodeStack.head.setHead(NodeStack.head.getPrevious());
+        NodeStack.setHead(NodeStack.head.getPrevious());
         NodeStack.head.setNext(null);
 
         NodeStack.setSize(NodeStack.getSize() - 1);
@@ -132,23 +132,11 @@ public class NodeStack<Item> {
         }
     }
 
-    /**
-     * Getters and setters (private)
-     */
-    private NodeStack<?> getHead() {
-        return NodeStack.head;
-    }
-
     private static void setHead(NodeStack<?> ns) {
         NodeStack.head = ns;
     }
 
-    private NodeStack<?> getNext() {
-        return next;
-    }
-
     private void setNext(NodeStack<?> next) {
-        this.next = next;
     }
 
     private NodeStack<?> getPrevious() {
@@ -169,9 +157,5 @@ public class NodeStack<Item> {
 
     private Item getData() {
         return this.data;
-    }
-
-    private void setData(Item item) {
-        this.data = item;
     }
 }

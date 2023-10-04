@@ -120,8 +120,7 @@ public class CursorLinkedList<T> {
             while (current_index != -1) {
                 T current_element = cursorSpace[current_index].element;
                 if (current_element.equals(element)) {
-                    cursorSpace[prev_index].next =
-                        cursorSpace[current_index].next;
+                    cursorSpace[prev_index].next = cursorSpace[current_index].next;
                     free(current_index);
                     break;
                 }
@@ -174,8 +173,7 @@ public class CursorLinkedList<T> {
         }
 
         // 2- make the os point to the next of the  @var{availableNodeIndex}
-        int availableNext = cursorSpace[availableNodeIndex].next;
-        cursorSpace[os].next = availableNext;
+        cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
 
         // this to indicate an end of the list , helpful at testing since any err
         // would throw an outOfBoundException

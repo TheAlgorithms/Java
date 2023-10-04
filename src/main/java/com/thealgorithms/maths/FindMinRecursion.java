@@ -20,10 +20,8 @@ public class FindMinRecursion {
             array[i] = rand.nextInt() % 100;
         }
 
-        assert min(array, 0, array.length - 1) ==
-        Arrays.stream(array).min().getAsInt();
-        assert min(array, array.length) ==
-        Arrays.stream(array).min().getAsInt();
+        assert min(array, 0, array.length - 1) == Arrays.stream(array).min().getAsInt();
+        assert min(array) == Arrays.stream(array).min().getAsInt();
     }
 
     /**
@@ -44,7 +42,7 @@ public class FindMinRecursion {
         int leftMin = min(array, low, mid); // get min in [low, mid]
         int rightMin = min(array, mid + 1, high); // get min in [mid+1, high]
 
-        return Math.min(leftMin, rightMin);
+        return leftMin > rightMin ? rightMin : leftMin;
     }
 
     /**
@@ -54,9 +52,7 @@ public class FindMinRecursion {
      * @param len length of given array
      * @return min value of {@code array}
      */
-    public static int min(int[] array, int len) {
-        return len == 1
-            ? array[0]
-            : Math.min(min(array, len - 1), array[len - 1]);
+    public static int min(int[] array) {
+        return array.length == 1 ? array[0] : min(array, 0, array.length);
     }
 }

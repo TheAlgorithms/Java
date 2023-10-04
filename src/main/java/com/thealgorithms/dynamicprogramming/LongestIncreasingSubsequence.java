@@ -11,7 +11,7 @@ public class LongestIncreasingSubsequence {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int arr[] = new int[n];
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
@@ -56,8 +56,8 @@ public class LongestIncreasingSubsequence {
             } // array[i] will become end candidate of an existing subsequence or
             // Throw away larger elements in all LIS, to make room for upcoming grater elements than
             // array[i]
-            // (and also, array[i] would have already appeared in one of LIS, identify the location and
-            // replace it)
+            // (and also, array[i] would have already appeared in one of LIS, identify the location
+            // and replace it)
             else {
                 tail[upperBound(tail, -1, length - 1, array[i])] = array[i];
             }
@@ -70,9 +70,9 @@ public class LongestIncreasingSubsequence {
      * @author Alon Firestein (https://github.com/alonfirestein)
      */
     // A function for finding the length of the LIS algorithm in O(nlogn) complexity.
-    public static int findLISLen(int a[]) {
+    public static int findLISLen(int[] a) {
         int size = a.length;
-        int arr[] = new int[size];
+        int[] arr = new int[size];
         arr[0] = a[0];
         int lis = 1;
         for (int i = 1; i < size; i++) {

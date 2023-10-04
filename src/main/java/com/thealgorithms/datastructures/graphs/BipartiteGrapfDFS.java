@@ -16,19 +16,14 @@ import java.util.Arrays;
  */
 public class BipartiteGrapfDFS {
 
-    private static boolean bipartite(
-        int V,
-        ArrayList<ArrayList<Integer>> adj,
-        int[] color,
-        int node
-    ) {
+    private static boolean bipartite(int V, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
         if (color[node] == -1) {
             color[node] = 1;
         }
         for (Integer it : adj.get(node)) {
             if (color[it] == -1) {
                 color[it] = 1 - color[node];
-                if (bipartite(V, adj, color, it) == false) {
+                if (!bipartite(V, adj, color, it)) {
                     return false;
                 }
             } else if (color[it] == color[node]) {
@@ -38,10 +33,7 @@ public class BipartiteGrapfDFS {
         return true;
     }
 
-    public static boolean isBipartite(
-        int V,
-        ArrayList<ArrayList<Integer>> adj
-    ) {
+    public static boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         int[] color = new int[V + 1];
         Arrays.fill(color, -1);
@@ -57,9 +49,7 @@ public class BipartiteGrapfDFS {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader read = new BufferedReader(
-            new InputStreamReader(System.in)
-        );
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine().trim());
         while (t-- > 0) {
             String[] S = read.readLine().trim().split(" ");

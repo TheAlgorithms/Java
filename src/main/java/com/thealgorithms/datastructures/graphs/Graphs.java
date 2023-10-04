@@ -122,7 +122,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
 public class Graphs {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
         assert graph.addEdge(1, 2);
         assert graph.addEdge(1, 5);

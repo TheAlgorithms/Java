@@ -22,9 +22,9 @@ public class PalindromicPartitioning {
     public static int minimalpartitions(String word) {
         int len = word.length();
         /* We Make two arrays to create a bottom-up solution.
-           minCuts[i] = Minimum number of cuts needed for palindrome partitioning of substring word[0..i]
-           isPalindrome[i][j] = true if substring str[i..j] is palindrome
-           Base Condition: C[i] is 0 if P[0][i]= true
+           minCuts[i] = Minimum number of cuts needed for palindrome partitioning of substring
+           word[0..i] isPalindrome[i][j] = true if substring str[i..j] is palindrome Base Condition:
+           C[i] is 0 if P[0][i]= true
          */
         int[] minCuts = new int[len];
         boolean[][] isPalindrome = new boolean[len][len];
@@ -36,7 +36,8 @@ public class PalindromicPartitioning {
             isPalindrome[i][i] = true;
         }
 
-        /* L is substring length. Build the solution in bottom up manner by considering all substrings of length starting from 2 to n. */
+        /* L is substring length. Build the solution in bottom up manner by considering all
+         * substrings of length starting from 2 to n. */
         for (L = 2; L <= len; L++) {
             // For substring of length L, set different possible starting indexes
             for (i = 0; i < len - L + 1; i++) {
@@ -48,29 +49,19 @@ public class PalindromicPartitioning {
                 if (L == 2) {
                     isPalindrome[i][j] = (word.charAt(i) == word.charAt(j));
                 } else {
-                    if (
-                        (word.charAt(i) == word.charAt(j)) &&
-                        isPalindrome[i + 1][j - 1]
-                    ) {
-                        isPalindrome[i][j] = true;
-                    } else {
-                        isPalindrome[i][j] = false;
-                    }
+                    isPalindrome[i][j] = (word.charAt(i) == word.charAt(j)) && isPalindrome[i + 1][j - 1];
                 }
             }
         }
 
-        //We find the minimum for each index
+        // We find the minimum for each index
         for (i = 0; i < len; i++) {
-            if (isPalindrome[0][i] == true) {
+            if (isPalindrome[0][i]) {
                 minCuts[i] = 0;
             } else {
                 minCuts[i] = Integer.MAX_VALUE;
                 for (j = 0; j < i; j++) {
-                    if (
-                        isPalindrome[j + 1][i] == true &&
-                        1 + minCuts[j] < minCuts[i]
-                    ) {
+                    if (isPalindrome[j + 1][i] && 1 + minCuts[j] < minCuts[i]) {
                         minCuts[i] = 1 + minCuts[j];
                     }
                 }
@@ -89,12 +80,7 @@ public class PalindromicPartitioning {
         word = input.nextLine();
         // ans stores the final minimal cut count needed for partitioning
         int ans = minimalpartitions(word);
-        System.out.println(
-            "The minimum cuts needed to partition \"" +
-            word +
-            "\" into palindromes is " +
-            ans
-        );
+        System.out.println("The minimum cuts needed to partition \"" + word + "\" into palindromes is " + ans);
         input.close();
     }
 }

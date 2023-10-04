@@ -23,7 +23,7 @@ public class SimpleSort implements SortAlgorithm {
 
     public static void main(String[] args) {
         // ==== Int =======
-        Integer[] a = { 3, 7, 45, 1, 33, 5, 2, 9 };
+        Integer[] a = {3, 7, 45, 1, 33, 5, 2, 9};
         System.out.print("unsorted: ");
         print(a);
         System.out.println();

@@ -22,14 +22,13 @@ class Rotate_by_90_degree {
                 }
             }
 
-            Rotate g = new Rotate();
-            g.rotate(arr);
+            Rotate.rotate(arr);
             printMatrix(arr);
         }
         sc.close();
     }
 
-    static void printMatrix(int arr[][]) {
+    static void printMatrix(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[0].length; j++) {
                 System.out.print(arr[i][j] + " ");
@@ -44,7 +43,7 @@ class Rotate_by_90_degree {
  */
 class Rotate {
 
-    static void rotate(int a[][]) {
+    static void rotate(int[][] a) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {

@@ -16,19 +16,10 @@ public class Mode {
     public static void main(String[] args) {
         /* Test array of integers */
         assert (mode(new int[] {})) == null;
-        assert Arrays.equals(mode(new int[] { 5 }), new int[] { 5 });
-        assert Arrays.equals(
-            mode(new int[] { 1, 2, 3, 4, 5 }),
-            new int[] { 1, 2, 3, 4, 5 }
-        );
-        assert Arrays.equals(
-            mode(new int[] { 7, 9, 9, 4, 5, 6, 7, 7, 8 }),
-            new int[] { 7 }
-        );
-        assert Arrays.equals(
-            mode(new int[] { 7, 9, 9, 4, 5, 6, 7, 7, 9 }),
-            new int[] { 7, 9 }
-        );
+        assert Arrays.equals(mode(new int[] {5}), new int[] {5});
+        assert Arrays.equals(mode(new int[] {1, 2, 3, 4, 5}), new int[] {1, 2, 3, 4, 5});
+        assert Arrays.equals(mode(new int[] {7, 9, 9, 4, 5, 6, 7, 7, 8}), new int[] {7});
+        assert Arrays.equals(mode(new int[] {7, 9, 9, 4, 5, 6, 7, 7, 9}), new int[] {7, 9});
     }
 
     /*

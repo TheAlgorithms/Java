@@ -1,109 +1,33 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class TwoSumProblem {
-
-    public static void main(String args[]) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the target sum ");
-        int ts = scan.nextInt();
-        System.out.print("Enter the number of elements in the array ");
-        int n = scan.nextInt();
-        System.out.println("Enter all your array elements:");
-        int arr[] = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = scan.nextInt();
-        }
-        TwoSumProblem t = new TwoSumProblem();
-        System.out.println(
-            "Brute Force Approach\n" +
-            Arrays.toString(t.BruteForce(arr, ts)) +
-            "\n"
-        );
-        System.out.println(
-            "Two Pointer Approach\n" +
-            Arrays.toString(t.TwoPointer(arr, ts)) +
-            "\n"
-        );
-        System.out.println(
-            "Hashmap Approach\n" + Arrays.toString(t.HashMap(arr, ts))
-        );
+public final class TwoSumProblem {
+    private TwoSumProblem() {
     }
 
-    public int[] BruteForce(int[] nums, int target) {
-        //Brute Force Approach
-        int ans[] = new int[2];
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + nums[j] == target) {
-                    ans[0] = i;
-                    ans[1] = j;
+    /**
+     * The function "twoSum" takes an array of integers and a target integer as input, and returns an
+     * array of two indices where the corresponding elements in the input array add up to the target.
+     * @param values An array of integers.
+     * @param target The target is the sum that we are trying to find using two numbers from the given array.
+     * @return A pair or indexes such that sum of values at these indexes equals to the target
+     * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+     */
 
-                    break;
-                }
+    public static Optional<Pair<Integer, Integer>> twoSum(final int[] values, final int target) {
+        HashMap<Integer, Integer> valueToIndex = new HashMap<>();
+        for (int i = 0; i < values.length; i++) {
+            final var rem = target - values[i];
+            if (valueToIndex.containsKey(rem)) {
+                return Optional.of(Pair.of(valueToIndex.get(rem), i));
+            }
+            if (!valueToIndex.containsKey(values[i])) {
+                valueToIndex.put(values[i], i);
             }
         }
-
-        return ans;
-    }
-
-    public int[] TwoPointer(int[] nums, int target) {
-        // HashMap Approach
-        int ans[] = new int[2];
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            hm.put(i, nums[i]);
-        }
-        HashMap<Integer, Integer> temp = hm
-            .entrySet()
-            .stream()
-            .sorted((i1, i2) -> i1.getValue().compareTo(i2.getValue()))
-            .collect(
-                Collectors.toMap(
-                    Map.Entry::getKey,
-                    Map.Entry::getValue,
-                    (e1, e2) -> e1,
-                    LinkedHashMap::new
-                )
-            );
-
-        int start = 0;
-        int end = nums.length - 1;
-        while (start < end) {
-            int currSum = (Integer) temp.values().toArray()[start] +
-            (Integer) temp.values().toArray()[end];
-
-            if (currSum == target) {
-                ans[0] = (Integer) temp.keySet().toArray()[start];
-                ans[1] = (Integer) temp.keySet().toArray()[end];
-                break;
-            } else if (currSum > target) {
-                end -= 1;
-            } else if (currSum < target) {
-                start += 1;
-            }
-        }
-        return ans;
-    }
-
-    public int[] HashMap(int[] nums, int target) {
-        //Using Hashmaps
-        int ans[] = new int[2];
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            hm.put(nums[i], i);
-        }
-        for (int i = 0; i < nums.length; i++) {
-            int t = target - nums[i];
-            if (hm.containsKey(t) && hm.get(t) != i) {
-                ans[0] = i;
-                ans[1] = hm.get(t);
-                break;
-            }
-        }
-
-        return ans;
+        return Optional.empty();
     }
 }

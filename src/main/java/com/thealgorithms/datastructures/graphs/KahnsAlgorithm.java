@@ -133,7 +133,7 @@ class TopologicalSort<E extends Comparable<E>> {
 public class KahnsAlgorithm {
 
     public static void main(String[] args) {
-        //Graph definition and initialization
+        // Graph definition and initialization
         AdjacencyList<String> graph = new AdjacencyList<>();
         graph.addEdge("a", "b");
         graph.addEdge("c", "a");
@@ -144,7 +144,7 @@ public class KahnsAlgorithm {
 
         TopologicalSort<String> topSort = new TopologicalSort<>(graph);
 
-        //Printing the order
+        // Printing the order
         for (String s : topSort.topSortOrder()) {
             System.out.print(s + " ");
         }

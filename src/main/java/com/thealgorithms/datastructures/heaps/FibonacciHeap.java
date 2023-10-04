@@ -47,10 +47,10 @@ public class FibonacciHeap {
      * $ret = the HeapNode we inserted
      */
     public HeapNode insert(int key) {
-        HeapNode toInsert = new HeapNode(key); //creates the node
+        HeapNode toInsert = new HeapNode(key); // creates the node
         if (this.empty()) {
             this.min = toInsert;
-        } else { //tree is not empty
+        } else { // tree is not empty
             min.setNext(toInsert);
             this.updateMin(toInsert);
         }
@@ -69,14 +69,14 @@ public class FibonacciHeap {
         if (this.empty()) {
             return;
         }
-        if (this.numOfHeapNodes == 1) { //if there is only one tree
+        if (this.numOfHeapNodes == 1) { // if there is only one tree
             this.min = null;
             this.numOfTrees--;
             this.numOfHeapNodes--;
             return;
         }
-        //change all children's parent to null//
-        if (this.min.child != null) { //min has a child
+        // change all children's parent to null//
+        if (this.min.child != null) { // min has a child
             HeapNode child = this.min.child;
             HeapNode tmpChild = child;
             child.parent = null;
@@ -85,14 +85,14 @@ public class FibonacciHeap {
                 child.parent = null;
             }
         }
-        //delete the node//
+        // delete the node//
         if (this.numOfTrees > 1) {
             (this.min.prev).next = this.min.next;
             (this.min.next).prev = this.min.prev;
             if (this.min.child != null) {
                 (this.min.prev).setNext(this.min.child);
             }
-        } else { //this.numOfTrees = 1
+        } else { // this.numOfTrees = 1
             this.min = this.min.child;
         }
         this.numOfHeapNodes--;
@@ -136,17 +136,14 @@ public class FibonacciHeap {
     }
 
     /**
-     * Return a counters array, where the value of the i-th index is the number of trees with rank i in the heap.
-     * returns an empty array for an empty heap
+     * Return a counters array, where the value of the i-th index is the number of trees with rank i
+     * in the heap. returns an empty array for an empty heap
      */
     public int[] countersRep() {
         if (this.empty()) {
-            return new int[0]; ///return an empty array
+            return new int[0]; /// return an empty array
         }
-        int[] rankArray = new int[(int) Math.floor(
-            Math.log(this.size()) / Math.log(GOLDEN_RATIO)
-        ) +
-        1]; //creates the array
+        int[] rankArray = new int[(int) Math.floor(Math.log(this.size()) / Math.log(GOLDEN_RATIO)) + 1]; // creates the array
         rankArray[this.min.rank]++;
         HeapNode curr = this.min.next;
         while (curr != this.min) {
@@ -163,8 +160,8 @@ public class FibonacciHeap {
      * @post (numOfnodes = = $prev numOfnodes - 1)
      */
     public void delete(HeapNode x) {
-        this.decreaseKey(x, x.getKey() + 1); //change key to be the minimal (-1)
-        this.deleteMin(); //delete it
+        this.decreaseKey(x, x.getKey() + 1); // change key to be the minimal (-1)
+        this.deleteMin(); // delete it
     }
 
     /**
@@ -176,13 +173,13 @@ public class FibonacciHeap {
     private void decreaseKey(HeapNode x, int delta) {
         int newKey = x.getKey() - delta;
         x.key = newKey;
-        if (x.isRoot()) { //no parent to x
+        if (x.isRoot()) { // no parent to x
             this.updateMin(x);
             return;
         }
         if (x.getKey() >= x.parent.getKey()) {
             return;
-        } //we don't need to cut
+        } // we don't need to cut
         HeapNode prevParent = x.parent;
         this.cut(x);
         this.cascadingCuts(prevParent);
@@ -197,17 +194,18 @@ public class FibonacciHeap {
     }
 
     /**
-     * This static function returns the total number of link operations made during the run-time of the program.
-     * A link operation is the operation which gets as input two trees of the same rank, and generates a tree of
-     * rank bigger by one.
+     * This static function returns the total number of link operations made during the run-time of
+     * the program. A link operation is the operation which gets as input two trees of the same
+     * rank, and generates a tree of rank bigger by one.
      */
     public static int totalLinks() {
         return totalLinks;
     }
 
     /**
-     * This static function returns the total number of cut operations made during the run-time of the program.
-     * A cut operation is the operation which disconnects a subtree from its parent (during decreaseKey/delete methods).
+     * This static function returns the total number of cut operations made during the run-time of
+     * the program. A cut operation is the operation which disconnects a subtree from its parent
+     * (during decreaseKey/delete methods).
      */
     public static int totalCuts() {
         return totalCuts;
@@ -231,10 +229,9 @@ public class FibonacciHeap {
      * @post (numOfnodes == $prev numOfnodes)
      */
     private void cascadingCuts(HeapNode curr) {
-        if (!curr.isMarked()) { //stop the recursion
+        if (!curr.isMarked()) { // stop the recursion
             curr.mark();
             if (!curr.isRoot()) this.markedHeapNoodesCounter++;
-            return;
         } else {
             if (curr.isRoot()) {
                 return;
@@ -256,10 +253,10 @@ public class FibonacciHeap {
             this.markedHeapNoodesCounter--;
             curr.marked = false;
         }
-        if (curr.parent.child == curr) { //we should change the parent's child
-            if (curr.next == curr) { //curr do not have brothers
+        if (curr.parent.child == curr) { // we should change the parent's child
+            if (curr.next == curr) { // curr do not have brothers
                 curr.parent.child = null;
-            } else { //curr have brothers
+            } else { // curr have brothers
                 curr.parent.child = curr.next;
             }
         }
@@ -286,10 +283,7 @@ public class FibonacciHeap {
      *
      */
     private HeapNode[] toBuckets(HeapNode curr) {
-        HeapNode[] buckets = new HeapNode[(int) Math.floor(
-            Math.log(this.size()) / Math.log(GOLDEN_RATIO)
-        ) +
-        1];
+        HeapNode[] buckets = new HeapNode[(int) Math.floor(Math.log(this.size()) / Math.log(GOLDEN_RATIO)) + 1];
         curr.prev.next = null;
         HeapNode tmpCurr;
         while (curr != null) {
@@ -399,7 +393,7 @@ public class FibonacciHeap {
         private void mark() {
             if (this.isRoot()) {
                 return;
-            } //check if the node is a root
+            } // check if the node is a root
             this.marked = true;
         }
 

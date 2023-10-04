@@ -69,16 +69,13 @@ class SkipListTest {
     @Test
     void checkSortedOnLowestLayer() {
         SkipList<String> skipList = new SkipList<>();
-        String[] values = { "d", "b", "a", "c" };
+        String[] values = {"d", "b", "a", "c"};
         Arrays.stream(values).forEach(skipList::add);
         print(skipList);
 
-        String[] actualOrder = IntStream
-            .range(0, values.length)
-            .mapToObj(skipList::get)
-            .toArray(String[]::new);
+        String[] actualOrder = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[] ::new);
 
-        assertArrayEquals(new String[] { "a", "b", "c", "d" }, actualOrder);
+        assertArrayEquals(new String[] {"a", "b", "c", "d"}, actualOrder);
     }
 
     private SkipList<String> createSkipList() {

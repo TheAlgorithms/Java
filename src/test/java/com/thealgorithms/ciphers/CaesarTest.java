@@ -1,8 +1,8 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class CaesarTest {
 
@@ -43,5 +43,4 @@ class CaesarTest {
         assertEquals(27, allPossibleAnswers.length);
         assertEquals("Encrypt this text", allPossibleAnswers[5]);
     }
-
 }

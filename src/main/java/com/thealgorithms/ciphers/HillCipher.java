@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 /*
  * Java Implementation of Hill Cipher
- * Hill cipher is a polyalphabetic substitution cipher. Each letter is represented by a number belonging to the set Z26 where A=0 , B=1, ..... Z=25.
- * To encrypt a message, each block of n letters (since matrix size is n x n) is multiplied by an invertible n × n matrix, against modulus 26.
- * To decrypt the message, each block is multiplied by the inverse of the matrix used for encryption.
- * The cipher key and plaintext/ciphertext are user inputs.
+ * Hill cipher is a polyalphabetic substitution cipher. Each letter is represented by a number
+ * belonging to the set Z26 where A=0 , B=1, ..... Z=25. To encrypt a message, each block of n
+ * letters (since matrix size is n x n) is multiplied by an invertible n × n matrix, against
+ * modulus 26. To decrypt the message, each block is multiplied by the inverse of the matrix used
+ * for encryption. The cipher key and plaintext/ciphertext are user inputs.
  * @author Ojasva Jain
  */
 public class HillCipher {
@@ -22,18 +23,18 @@ public class HillCipher {
         System.out.println("Enter key matrix size");
         int matrixSize = userInput.nextInt();
         System.out.println("Enter Key/encryptionKey matrix ");
-        int keyMatrix[][] = new int[matrixSize][matrixSize];
+        int[][] keyMatrix = new int[matrixSize][matrixSize];
         for (int i = 0; i < matrixSize; i++) {
             for (int j = 0; j < matrixSize; j++) {
                 keyMatrix[i][j] = userInput.nextInt();
             }
         }
-        //check if det = 0
+        // check if det = 0
         validateDeterminant(keyMatrix, matrixSize);
 
         int[][] messageVector = new int[matrixSize][1];
         String CipherText = "";
-        int cipherMatrix[][] = new int[matrixSize][1];
+        int[][] cipherMatrix = new int[matrixSize][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < matrixSize; i++) {
@@ -62,26 +63,26 @@ public class HillCipher {
         System.out.println("Ciphertext: " + CipherText);
     }
 
-    //Following function decrypts a message
+    // Following function decrypts a message
     static void decrypt(String message) {
         message = message.toUpperCase();
         // Get key matrix
         System.out.println("Enter key matrix size");
         int n = userInput.nextInt();
         System.out.println("Enter inverseKey/decryptionKey matrix ");
-        int keyMatrix[][] = new int[n][n];
+        int[][] keyMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 keyMatrix[i][j] = userInput.nextInt();
             }
         }
-        //check if det = 0
+        // check if det = 0
         validateDeterminant(keyMatrix, n);
 
-        //solving for the required plaintext message
+        // solving for the required plaintext message
         int[][] messageVector = new int[n][1];
         String PlainText = "";
-        int plainMatrix[][] = new int[n][1];
+        int[][] plainMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
             for (int i = 0; i < n; i++) {
@@ -111,13 +112,13 @@ public class HillCipher {
     }
 
     // Determinant calculator
-    public static int determinant(int a[][], int n) {
+    public static int determinant(int[][] a, int n) {
         int det = 0, sign = 1, p = 0, q = 0;
 
         if (n == 1) {
             det = a[0][0];
         } else {
-            int b[][] = new int[n - 1][n - 1];
+            int[][] b = new int[n - 1][n - 1];
             for (int x = 0; x < n; x++) {
                 p = 0;
                 q = 0;
@@ -157,10 +158,7 @@ public class HillCipher {
 
     static void validateDeterminant(int[][] keyMatrix, int n) {
         if (determinant(keyMatrix, n) % 26 == 0) {
-            System.out.println(
-                "Invalid key, as determinant = 0. Program Terminated"
-            );
-            return;
+            System.out.println("Invalid key, as determinant = 0. Program Terminated");
         }
     }
 

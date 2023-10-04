@@ -17,7 +17,7 @@ public class PerfectCube {
         int a = (int) Math.pow(number, 1.0 / 3);
         return a * a * a == number;
     }
-    
+
     /**
      * Check if a number is perfect cube or not by using Math.cbrt function
      *
