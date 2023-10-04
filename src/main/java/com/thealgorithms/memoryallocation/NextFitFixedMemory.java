@@ -1,6 +1,6 @@
 package com.thealgorithms.memoryallocation;
 
-/**
+/*
  * This is an implementation of Next Fit Memory Allocation Algorithm (Fixed Size
  * Memory Blocks) in Java
  *
@@ -15,7 +15,6 @@ package com.thealgorithms.memoryallocation;
  * from the block where we left not from starting.
  * 4. If the current block size is smaller then keep checking the further
  * blocks.
- * 
  * For more information::
  * https://www.geeksforgeeks.org/program-for-next-fit-algorithm-in-memory-management/
  */

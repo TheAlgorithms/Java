@@ -1,6 +1,6 @@
 package com.thealgorithms.memoryallocation;
 
-/**
+/*
  * This is a Java Implementation of Best Fit Memory Allocation Algorithm (Fixed Size Memory Blocks)
  * Best-Fit Allocation is a memory allocation technique used in operating systems to allocate
  * memory to a process. In Best-Fit, the operating system searches through the list of free
@@ -18,12 +18,11 @@ package com.thealgorithms.memoryallocation;
  *            ii. Update the size of the memory block to reflect the allocated size.
  *            iii. Remove the allocated memory block from the list of free memory blocks.
  *            iv. Return the starting address of the allocated memory block to the process.
- *    If no suitable free memory block is found:
- *        indicate that memory allocation failed.
- * 
+ *    If no suitable free memory block is found: indicate that memory allocation failed.
  * For more information:
  * https://www.geeksforgeeks.org/best-fit-allocation-in-operating-system/
-**/
+ */
+
 import java.util.Arrays;
 
 public class BestFitFixedMemory {
