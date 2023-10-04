@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-
+wikipedia: https://en.wikipedia.org/wiki/Rabin–Karp_algorithm
 The Rabin-Karp algorithm is a string searching algorithm that efficiently finds all occurrences of a given substring within a longer string
 The algorithm relies on a hash function that converts substrings of the text and the pattern into numerical hash values
 The algorithm compares the hash value of the pattern to the hash values of substrings in the text. If the hash values match, it performs an additional character-by-character comparison to confirm a match.
@@ -21,9 +21,9 @@ public class RabinKarp {
     public static List<Integer> search(String text, String pattern) {
         List<Integer> occurrences = new ArrayList<>();
         int m = pattern.length(); // Length of the pattern
-        int n = text.length();   // Length of the text
+        int n = text.length(); // Length of the text
         long patternHash = hash(pattern, m); // Compute the hash value of the pattern
-        long textHash = hash(text, m);       // Compute the hash value of the initial substring of text
+        long textHash = hash(text, m); // Compute the hash value of the initial substring of text
 
         for (int i = 0; i <= n - m; i++) {
             // If the hash values match and characters match, check for an exact match
@@ -69,7 +69,6 @@ public class RabinKarp {
         String text = "AABAACAADAABAABA";
         String pattern = "AABA";
         List<Integer> occurrences = search(text, pattern);
-        
         if (occurrences.isEmpty()) {
             System.out.println("Pattern not found in the text.");
         } else {
@@ -77,4 +76,3 @@ public class RabinKarp {
         }
     }
 }
-
