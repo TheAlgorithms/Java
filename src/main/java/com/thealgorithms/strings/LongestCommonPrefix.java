@@ -10,12 +10,8 @@ import java.util.Arrays;
 //After breaking "j" has the index of string for which they have comman prefix
 //At last return substring starting from 0th index to j-1 index
 //By substring method for string
-public class LongestCommanPrefix {
-    public static void main(String[] args) {
-        String[] strs = {"flower", "flow", "flight"};
-        assert findLongestCommanPrefix(strs).equals("fl");
-    }
-    public static String findLongestCommanPrefix(String[] strs) {
+public class LongestCommonPrefix {
+    public static String findLongestCommonPrefix(String[] strs) {
         Arrays.sort(strs);
         String s1 = strs[0];
         String s2 = strs[strs.length-1];
