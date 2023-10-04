@@ -8,7 +8,7 @@ public class BinaryToGrayTest {
     BinaryToGray btg = new BinaryToGray();
 
     @Test
-    public void binaryToDecimalFirstTestCase(){
+    public void binaryToDecimalFirstTestCase() {
         assertEquals("1", btg.binaryToGray("1"));
     }
 
