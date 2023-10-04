@@ -29,8 +29,7 @@ public class RomanToInteger {
             if (i > 0 && hm.get(s.charAt(i)) > hm.get(s.charAt(i - 1))) {
                 ans = ans + hm.get(s.charAt(i)) - hm.get(s.charAt(i - 1));
                 i--;
-            }
-            else {
+            } else {
                 ans += hm.get(s.charAt(i));
             }
             i--;
