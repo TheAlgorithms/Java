@@ -22,7 +22,7 @@ public class ManachersAlgorithmTest {
         String s = "aaaaaaaaaaaaaaaaaaa";
         assertEquals("aaaaaaaaaaaaaaaaaaa", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
-    
+
     @Test
     public void manacherAlgorithmFourthTestCase() {
         String s = "wdfghjklsracecarswekfjdsnitins";
