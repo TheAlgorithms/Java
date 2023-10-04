@@ -32,8 +32,7 @@ public class BitwiseComplementNumber {
         for (int i = 0; i < decimalValues.length; i++) {
             System.out.print(i + 1);
             System.out.print(".\tInput: " + decimalValues[i]);
-            System.out.print("\n\tBitwise complement of " + decimalValues[i] +
-                    " is: ");
+            System.out.print("\n\tBitwise complement of " + decimalValues[i] + " is: ");
             System.out.println(findBitwiseComplement(decimalValues[i]));
             System.out.println(new String(new char[100]).replace('\0', '-'));
         }

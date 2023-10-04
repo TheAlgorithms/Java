@@ -100,18 +100,10 @@ public class EncodeandDecodeStrings {
 
         for (int i = 0; i < input.size(); i++) {
             String encoded = encode(input.get(i));
-            System.out.println((i + 1) + ".\tInput = " +
-                    input.get(i)
-                            .stream()
-                            .map(s -> "\"" + s + "\"")
-                            .collect(Collectors.joining(", ", "[", "]")));
+            System.out.println((i + 1) + ".\tInput = " + input.get(i).stream().map(s -> "\"" + s + "\"").collect(Collectors.joining(", ", "[", "]")));
             System.out.print("\tEncoded string = ");
             printEncoded(encoded);
-            System.out.println("\tOutput = " +
-                    decode(encoded)
-                            .stream()
-                            .map(s -> "\"" + s + "\"")
-                            .collect(Collectors.joining(", ", "[", "]")));
+            System.out.println("\tOutput = " + decode(encoded).stream().map(s -> "\"" + s + "\"").collect(Collectors.joining(", ", "[", "]")));
             System.out.println(new String(new char[100]).replace('\0', '-'));
         }
     }
