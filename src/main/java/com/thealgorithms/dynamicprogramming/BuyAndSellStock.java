@@ -23,8 +23,9 @@ public class BuyAndSellStock {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int prices[] = new int[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             prices[i] = sc.nextInt();
+        }
         // memoization
         System.out.println(buyAndSellStockMemo(prices));
         // Tabulation
@@ -47,13 +48,15 @@ public class BuyAndSellStock {
     private static int buyAndSellStockMemoHelper(int i, int j, int n, int[][] dp, int[] prices) {
         // base condition
         if (i == n - 1) {
-            if (j == 1)
+            if (j == 1) {
                 return prices[i];
-            else
+            } else {
                 return 0;
+            }
         }
-        if (dp[i][j] != -1)
+        if (dp[i][j] != -1) {
             return dp[i][j];
+        }
 
         // If j==0 means we have not bought any stock so we either buy on ith day which
         // will be
@@ -79,8 +82,9 @@ public class BuyAndSellStock {
     static long buyAndSellStockTabulation(int[] prices) {
         int n = prices.length;
         int dp[][] = new int[n + 1][2];
-        for (int row[] : dp)
+        for (int row[] : dp) {
             Arrays.fill(row, -1);
+        }
 
         // base condition
         dp[n][0] = dp[n][1] = 0;
