@@ -26,7 +26,7 @@ package com.thealgorithms.memoryallocation;
 import java.util.Arrays;
 
 public class BestFitFixedMemory {
-    public static int[] bestFitFixedMemory(int no_of_processes, int no_of_mem_blocks, int[] memory_input, int[] processes_required_mem) {
+    public static int bestFitFixedMemory(int no_of_processes, int no_of_mem_blocks, int[] memory_input, int[] processes_required_mem) {
         /*
          * no_of_processes : Number of processes.
          * no_of_mem_blocks : Number of empty memory blocks.
@@ -54,6 +54,9 @@ public class BestFitFixedMemory {
                 }
             }
         }
-        return outputBestFit;
+        for (int i : outputBestFit) {
+            System.out.println(i);
+        }
+        return outputBestFit.length;
     }
 }

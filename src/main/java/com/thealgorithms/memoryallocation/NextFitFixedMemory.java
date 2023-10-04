@@ -19,7 +19,7 @@ package com.thealgorithms.memoryallocation;
  * https://www.geeksforgeeks.org/program-for-next-fit-algorithm-in-memory-management/
  */
 public class NextFitFixedMemory {
-    public static int[] nextFitFixedMemory(int no_of_processes, int no_of_mem_blocks, int[] memory_input, int[] processes_required_mem) {
+    public static int nextFitFixedMemory(int no_of_processes, int no_of_mem_blocks, int[] memory_input, int[] processes_required_mem) {
         /*
          * no_of_processes : Number of processes.
          * no_of_mem_blocks : Number of empty memory blocks.
@@ -47,6 +47,9 @@ public class NextFitFixedMemory {
                 j = (j + 1) % no_of_mem_blocks;
             }
         }
-        return outputNextFit;
+        for (int i : outputNextFit) {
+            System.out.println(i);
+        }
+        return outputNextFit.length;
     }
 }
