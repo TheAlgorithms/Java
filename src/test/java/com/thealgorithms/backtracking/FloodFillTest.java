@@ -93,4 +93,14 @@ class FloodFillTest {
         FloodFill.floodFill(image, 0, 1, 4, 1);
         assertArrayEquals(expected, image);
     }
+
+    @Test
+    void testForSameNewAndOldColor() {
+        int[][] image = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        int[][] expected = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        FloodFill.floodFill(image, 0, 1, 1, 1);
+        assertArrayEquals(expected, image);
+    }
 }

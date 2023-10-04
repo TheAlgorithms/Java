@@ -4,7 +4,9 @@ package com.thealgorithms.backtracking;
  * Java program for Flood fill algorithm.
  * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">Git-Akshay Dubey</a>)
  */
-public class FloodFill {
+public final class FloodFill {
+    private FloodFill() {
+    }
 
     /**
      * Get the color at the given coordinates of a 2D image
@@ -14,7 +16,7 @@ public class FloodFill {
      * @param y The y co-ordinate of which color is to be obtained
      */
 
-    public static int getPixel(int[][] image, int x, int y) {
+    public static int getPixel(final int[][] image, final int x, final int y) {
         return image[x][y];
     }
 
@@ -25,7 +27,7 @@ public class FloodFill {
      * @param x The x co-ordinate at which color is to be filled
      * @param y The y co-ordinate at which color is to be filled
      */
-    public static void putPixel(int[][] image, int x, int y, int newColor) {
+    public static void putPixel(final int[][] image, final int x, final int y, final int newColor) {
         image[x][y] = newColor;
     }
 
@@ -38,10 +40,10 @@ public class FloodFill {
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      */
-    public static void floodFill(int[][] image, int x, int y, int newColor, int oldColor) {
-        if (x < 0 || x >= image.length) return;
-        if (y < 0 || y >= image[x].length) return;
-        if (getPixel(image, x, y) != oldColor) return;
+    public static void floodFill(final int[][] image, final int x, final int y, final int newColor, final int oldColor) {
+        if (newColor == oldColor || x < 0 || x >= image.length || y < 0 || y >= image[x].length || getPixel(image, x, y) != oldColor) {
+            return;
+        }
 
         putPixel(image, x, y, newColor);
 

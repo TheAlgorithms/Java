@@ -16,7 +16,7 @@ public class BufferedReader {
     private static final int DEFAULT_BUFFER_SIZE = 5;
 
     /**
-     * Maximum number of bytes the buffer can hold.
+     * The maximum number of bytes the buffer can hold.
      * Value is changed when encountered Eof to not
      * cause overflow read of 0 bytes
      */
@@ -100,7 +100,7 @@ public class BufferedReader {
      * Removes the already read bytes from the buffer
      * in-order to make space for new bytes to be filled up.
      * <p>
-     * This may also do the job to read first time data (whole buffer is empty)
+     * This may also do the job to read first time data (the whole buffer is empty)
      */
 
     private void pushRefreshData() throws IOException {
@@ -116,7 +116,7 @@ public class BufferedReader {
 
     /**
      * Reads one complete block of size {bufferSize}
-     * if found eof, the total length of array will
+     * if found eof, the total length of an array will
      * be that of what's available
      *
      * @return a completed block

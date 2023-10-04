@@ -8,12 +8,19 @@ import org.junit.jupiter.api.Test;
  */
 public class ParseIntegerTest {
     private static final String NULL_PARAMETER_MESSAGE = "Input parameter must not be null!";
+    private static final String EMPTY_PARAMETER_MESSAGE = "Input parameter must not be empty!";
     private static final String INCORRECT_FORMAT_MESSAGE = "Input parameter of incorrect format";
 
     @Test
     public void testNullInput() {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> ParseInteger.parseInt(null));
         Assertions.assertEquals(exception.getMessage(), NULL_PARAMETER_MESSAGE);
+    }
+
+    @Test
+    public void testEmptyInput() {
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> ParseInteger.parseInt(""));
+        Assertions.assertEquals(exception.getMessage(), EMPTY_PARAMETER_MESSAGE);
     }
 
     @Test

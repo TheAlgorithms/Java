@@ -15,9 +15,9 @@ import org.apache.commons.lang3.tuple.Pair;
  * <p>
  * link: https://en.wikipedia.org/wiki/Amicable_numbers
  * <p>
- * Simple Example : (220, 284)
- * 220 is divisible by {1,2,4,5,10,11,20,22,44,55,110} <- SUM = 284
- * 284 is divisible by {1,2,4,71,142} <- SUM = 220.
+ * Simple Example: (220, 284)
+ * 220 is divisible by {1,2,4,5,10,11,20,22,44,55,110} <-SUM = 284
+ * 284 is divisible by {1,2,4,71,142} <-SUM = 220.
  */
 public class AmicableNumber {
     /**
