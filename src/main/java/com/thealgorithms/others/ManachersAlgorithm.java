@@ -14,11 +14,11 @@ package com.thealgorithms.others;
  */
 
 public class ManachersAlgorithm {
-    private static final int SIZE = 100000 + 1;
-    private static int[] P = new int[SIZE * 2];
+    static final int SIZE = 100000 + 1;
+    static int[] P = new int[SIZE * 2];
 
     // Transform S into new string Q with special characters inserted to avoid bound checking.
-    private static String convertToNewString(String s) {
+    static String convertToNewString(String s) {
         StringBuilder newString = new StringBuilder("@");
 
         for (int i = 0; i < s.length(); i++) {
@@ -65,10 +65,5 @@ public class ManachersAlgorithm {
         }
 
         return s.substring((centerIndex - 1 - maxPalindrome) / 2, (centerIndex - 1 - maxPalindrome) / 2 + maxPalindrome);
-    }
-
-    public static void main(String[] args) {
-        String s = "wdfghjklsracecarswekfjdsnitins";
-        System.out.println(longestPalindromeSubstring(s));
     }
 }

@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class ManachersAlgorithmTest {
     @Test
-    void manacherAlgorithmFirstTestCase(){
+    void manacherAlgorithmFirstTestCase() {
         String s = " ";
-        assertEquals(" ",ManachersAlgorithm.longestPalindromeSubstring(s));
+        assertEquals(" ", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
 
     @Test
