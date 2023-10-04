@@ -13,7 +13,7 @@ public class RomanToInteger {
    @return an integer value of the roman number
    */
     public static int romanToInt(String s) {
-        HashMap<Character,Integer> hm = new HashMap<>();
+        HashMap<Character, Integer> hm = new HashMap<>();
         hm.put('I', 1);
         hm.put('V', 5);
         hm.put('X', 10);
@@ -30,7 +30,7 @@ public class RomanToInteger {
                 ans = ans + hm.get(s.charAt(i)) - hm.get(s.charAt(i - 1));
                 i--;
             }
-            else{
+            else {
                 ans += hm.get(s.charAt(i));
             }
             i--;
