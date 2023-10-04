@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
+
 The Rabin-Karp algorithm is a string searching algorithm that efficiently finds all occurrences of a given substring within a longer string
 The algorithm relies on a hash function that converts substrings of the text and the pattern into numerical hash values
 The algorithm compares the hash value of the pattern to the hash values of substrings in the text. If the hash values match, it performs an additional character-by-character comparison to confirm a match.
