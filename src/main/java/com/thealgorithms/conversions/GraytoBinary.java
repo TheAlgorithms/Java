@@ -11,10 +11,7 @@ Gray to Binary:
     we copy the value of previous index of converted Binary code,else we copy the flipped value of current Gray character to our binary code.
 
 */
-
-import java.io.IOException;
-
-class GraytoBinary {
+class GrayToBinary {
     // Function to convert given binary code to gray code.
     public String grayToBinary(String gray) {
         StringBuilder sb = new StringBuilder();
@@ -45,11 +42,5 @@ class GraytoBinary {
             sb.append(matrice[i][1]);
         }
         return sb.toString();
-    }
-
-    public static void main(String as[]) throws IOException {
-        GraytoBinary obj = new GraytoBinary();
-        String gray = "1101101"; // Given Gray Code
-        System.out.println(obj.grayToBinary(gray));
     }
 }

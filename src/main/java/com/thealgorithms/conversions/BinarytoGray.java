@@ -14,10 +14,7 @@ Binary to Gray:
     and add it to our converted gray code
 
 */
-
-import java.io.IOException;
-
-class BinarytoGray {
+class BinaryToGray {
     // Function to convert given binary code to gray code.
     public String binaryToGray(String bin) {
         StringBuilder sb = new StringBuilder();
@@ -43,11 +40,5 @@ class BinarytoGray {
             sb.append(matrice[i][1]);
         }
         return sb.toString();
-    }
-
-    public static void main(String as[]) throws IOException {
-        BinarytoGray obj = new BinarytoGray();
-        String bin = "1001001"; // Given Binary Code
-        System.out.println(obj.binaryToGray(bin));
     }
 }
