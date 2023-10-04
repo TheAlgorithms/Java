@@ -19,8 +19,8 @@ public class Armstrong {
      */
     public boolean isArmstrong(int number) {
         long sum = 0;
-        String tempString = Integer.toString(number); // Converting the Given number to string 
-        int power = tempString.length(); // extract the length of the number i.e; Number of Digits
+        String temp_String = Integer.toString(number); // Converting the Given number to string 
+        int power = temp_String.length(); // extract the length of the number i.e; Number of Digits
         long number2 = number;
         while (number2 > 0) {
             long mod = number2 % 10;
