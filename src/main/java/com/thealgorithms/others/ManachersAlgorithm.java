@@ -29,7 +29,7 @@ public class ManachersAlgorithm {
         return newString.toString();
     }
 
-    private static String longestPalindromeSubstring(String s) {
+    static String longestPalindromeSubstring(String s) {
         String Q = convertToNewString(s);
         int c = 0, r = 0; // current center, right limit
 
