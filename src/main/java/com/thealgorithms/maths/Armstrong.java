@@ -19,9 +19,10 @@ public class Armstrong {
     public boolean isArmstrong(int number) {
         long sum = 0;
         long number2 = number;
+        int expo = (int) (Math.log10(number) + 1);
         while (number2 > 0) {
             long mod = number2 % 10;
-            sum += Math.pow(mod, 3);
+            sum += Math.pow(mod, expo);
             number2 /= 10;
         }
         return sum == number;
