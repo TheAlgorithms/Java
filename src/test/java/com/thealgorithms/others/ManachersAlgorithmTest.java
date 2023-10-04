@@ -17,20 +17,14 @@ public class ManachersAlgorithmTest {
         assertEquals("dd", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
 
-    // @Test
-    // public void manacherAlgorithmThirdTestCase() {
-    //     String s = "nitinmukesh";
-    //     assertEquals("nitin", ManachersAlgorithm.longestPalindromeSubstring(s));
-    // }
-
     @Test
-    public void manacherAlgorithmFourthTestCase() {
+    public void manacherAlgorithmThirdTestCase() {
         String s = "aaaaaaaaaaaaaaaaaaa";
         assertEquals("aaaaaaaaaaaaaaaaaaa", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
     
     @Test
-    public void manacherAlgorithmFifthTestCase() {
+    public void manacherAlgorithmFourthTestCase() {
         String s = "wdfghjklsracecarswekfjdsnitins";
         assertEquals("sracecars", ManachersAlgorithm.longestPalindromeSubstring(s));
     }
