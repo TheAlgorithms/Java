@@ -1,6 +1,9 @@
 package com.thealgorithms.optimization;
 /*
- * Hill climbing is a simple optimization algorithm used in Artificial Intelligence (AI) to find the best possible solution for a given problem. It belongs to the family of local search algorithms and is often used in optimization problems where the goal is to find the best solution from a set of possible solutions.
+ * Hill climbing is a simple optimization algorithm used in Artificial Intelligence (AI)
+ * to find the best possible solution for a given problem. It belongs to the family of
+ * local search algorithms and is often used in optimization problems where the goal is
+ * to find the best solution from a set of possible solutions.
  * For more information, refer https://en.wikipedia.org/wiki/Hill_climbing.
  */
 
