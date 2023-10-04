@@ -17,10 +17,10 @@ public class Armstrong {
      * @return {@code true} if given number is armstrong number, {@code false}
      * otherwise
      */
-    public static boolean isArmstrong(int number) {
+    public boolean isArmstrong(int number) {
         long sum = 0;
-        String numberAsString = Integer.toString(number); // Converting the Given number to string 
-        int power = numberAsString.length(); // extract the length of the number i.e; Number of Digits
+        String tempString = Integer.toString(number); // Converting the Given number to string 
+        int power = tempString.length(); // extract the length of the number i.e; Number of Digits
         long number2 = number;
         while (number2 > 0) {
             long mod = number2 % 10;
