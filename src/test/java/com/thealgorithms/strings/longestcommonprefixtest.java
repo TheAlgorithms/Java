@@ -10,7 +10,6 @@ public class longestcommonprefixtest {
         String[] input2 = {"build", "built", "builder"};
         String[] input3 = {"cat", "rat"};
         String[] input4 = {"dog", "racecar", "car"};
-        
         String expectedOutput1 = "flo";
         String expectedOutput2 = "buil";
         String expectedOutput3 = "";
