@@ -16,7 +16,7 @@ public final class ItineraryTickets {
      * @param tickets A map of tickets where the key is the departure point, and the value is the destination.
      * @return The starting point of the itinerary.
      */
-    public static String getStart(HashMap<String, String> tickets) {
+    public static String getStart(final HashMap<String, String> tickets) {
         HashMap<String, String> revTickets = new HashMap<>();
         for (String key : tickets.keySet()) {
             revTickets.put(tickets.get(key), key);
