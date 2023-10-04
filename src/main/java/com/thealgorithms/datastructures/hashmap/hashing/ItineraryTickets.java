@@ -6,7 +6,9 @@ import java.util.HashMap;
  * This class represents an itinerary of tickets. Given a list of tickets, it finds the
  * complete itinerary.
  */
-public class ItineraryTickets {
+public final class ItineraryTickets {
+    private ItineraryTickets() {
+    }
 
     /**
      * This method finds the starting point of the itinerary.
