@@ -1,19 +1,17 @@
 package com.thealgorithms.processcomunication;
 
-import java.net.*;
 import java.io.*;
+import java.net.*;
 
 import java.security.MessageDigest;
 
 public class ServerTcp {
     public static ServerTcp.User[] users;
 
+
     public static void main (String args[]) {
         try {
-            users = new ServerTcp.User[] {
-                new ServerTcp.User("admin", "admin"),
-                new ServerTcp.User("user", "user")
-            };
+            users = new ServerTcp.User[] { new ServerTcp.User("admin", "admin"), new ServerTcp.User("user", "user")};
 
             int serverPort = 7896;
             try (ServerSocket listenSocket = new ServerSocket(serverPort)) {
@@ -41,6 +39,7 @@ public class ServerTcp {
                 clientSocket = aClientSocket;
                 in = new DataInputStream(clientSocket.getInputStream());
                 out = new DataOutputStream(clientSocket.getOutputStream());
+
                 this.start();  
             } catch (IOException e) {
                 System.out.println("Connection: " + e.getMessage());
@@ -51,6 +50,7 @@ public class ServerTcp {
             try {
                 boolean isUserAuthenticated = false;
                 while (true) {
+
                     String data = in.readUTF(); 
                     String[] command = data.split(" ");
                     
@@ -72,13 +72,16 @@ public class ServerTcp {
                     } else if (command[0].equalsIgnoreCase("pwd")) {
                         if (!isUserAuthenticated) {
                             out.writeUTF("NOT_AUTHENTICATED");
+
                             continue;  
                         }
 
                         out.writeUTF(System.getProperty("user.dir"));
+
                     } else if (command[0].equalsIgnoreCase("chdir")){ 
                         if (!isUserAuthenticated) {
                             out.writeUTF("NOT_AUTHENTICATED");
+
                             continue;  
                         }
                         String path = command[1];
@@ -105,6 +108,7 @@ public class ServerTcp {
                     } else if (command[0].equalsIgnoreCase("getfiles")) {
                         if (!isUserAuthenticated) {
                             out.writeUTF("NOT_AUTHENTICATED");
+
                             continue;  
                         }
                         File currentDir = new File(System.getProperty("user.dir"));
@@ -114,6 +118,7 @@ public class ServerTcp {
                         Integer filesCount = 0;
 
                         for (File file : files) {
+
                             if (file.isFile()){
                                 filesList += file.getName() + "\n";
                                 filesCount++;
@@ -121,9 +126,11 @@ public class ServerTcp {
                         }
 
                         out.writeUTF(filesCount + "\n" + filesList);
+
                     } else if (command[0].equalsIgnoreCase("getdirs")) { 
                         if (!isUserAuthenticated) {
                             out.writeUTF("NOT_AUTHENTICATED");
+
                             continue;  
                         }
 
@@ -181,6 +188,7 @@ public class ServerTcp {
             return this.password;
         }
 
+
         public String convertSHA512(String password){
             try {
                 MessageDigest digest = MessageDigest.getInstance("SHA-512");
@@ -189,11 +197,13 @@ public class ServerTcp {
 
                 for (int i = 0; i < hash.length; i++) {
                     String hex = Integer.toHexString(0xff & hash[i]);
+
                     if(hex.length() == 1) hexString.append('0');
                     hexString.append(hex);
                 }
 
                 return hexString.toString();
+                
             } catch(Exception ex){
                 throw new RuntimeException(ex);
             }

@@ -1,14 +1,16 @@
 package com.thealgorithms.processcomunication;
 
-import java.net.*;
 import java.io.*;
+import java.net.*;
 
 public class ClientTcp {
     public static void main(String args[]) {
         Socket s = null;
         try {
-            int serverPort = 7896;   
+
+            int serverPort = 7896;
             String ip = "localhost";
+
             s = new Socket(ip, serverPort); 
 
             DataInputStream in = new DataInputStream(s.getInputStream());
@@ -19,11 +21,14 @@ public class ClientTcp {
             
             while (true) {
                 message = reader.readLine();
+
                 out.writeUTF(message);  
 
                 if (message.equalsIgnoreCase("exit")) {
+
                     break; 
                 }
+
 
                 String response = in.readUTF(); 
                 System.out.println(response);
@@ -31,6 +36,7 @@ public class ClientTcp {
 
             in.close();
             out.close();
+            
             s.close();  
         } catch (UnknownHostException e) {
             System.out.println("Socket:" + e.getMessage());
