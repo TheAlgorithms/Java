@@ -20,6 +20,7 @@ class HuffmanNode implements Comparable<HuffmanNode> {
 }
 
 public class HuffmanCoding {
+    // Function to generate Huffman codes
     public static void generateHuffmanCode(char[] characters, int[] frequencies) {
         // Create a min-heap based on frequencies
         PriorityQueue<HuffmanNode> minHeap = new PriorityQueue<>();
@@ -44,6 +45,7 @@ public class HuffmanCoding {
         printHuffmanCodes(root, "");
     }
 
+    // Function to print Huffman codes
     private static void printHuffmanCodes(HuffmanNode root, String code) {
         if (root == null) return;
 

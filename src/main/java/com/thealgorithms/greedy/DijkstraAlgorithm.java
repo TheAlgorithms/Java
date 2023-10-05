@@ -3,6 +3,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
+class Edge {
+    int source, destination, weight;
+
+    public Edge(int source, int destination, int weight) {
+        this.source = source;
+        this.destination = destination;
+        this.weight = weight;
+    }
+}
+
 class Graph {
     private int vertices;
     private List<List<Edge>> adjList;

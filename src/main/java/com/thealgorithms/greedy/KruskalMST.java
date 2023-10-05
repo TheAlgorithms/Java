@@ -14,6 +14,7 @@ class Edge {
 }
 
 public class KruskalMST {
+    // Function to find the Minimum Spanning Tree (MST) using Kruskal's algorithm
     public static List<Edge> kruskalMST(List<Edge> edges, int vertices) {
         List<Edge> minimumSpanningTree = new ArrayList<>();
         // Sort edges by weight
@@ -38,8 +39,8 @@ public class KruskalMST {
         return minimumSpanningTree;
     }
 
+    // Function to find the representative of the set (parent) to which the vertex belongs with path compression
     private static int findParent(int[] parent, int vertex) {
-        // Find the representative of the set (parent) to which the vertex belongs
         if (parent[vertex] != vertex)
             parent[vertex] = findParent(parent, parent[vertex]);  // Path compression
         return parent[vertex];
@@ -63,8 +64,8 @@ public class KruskalMST {
     }
 }
 
-
 // In this implementation,
-//  Kruskal's algorithm finds the Minimum Spanning Tree (MST) by sorting the edges by weight and adding edges to the MST if they don't create a cycle.
-//  The findParent function implements path compression to efficiently find the representative of the set to which a vertex belongs. The MST is returned as a list of edges.
-//  The main method demonstrates the usage of the algorithm with a sample graph.
+// Kruskal's algorithm finds the Minimum Spanning Tree (MST) by sorting the edges by weight and adding edges to the MST if they don't create a cycle.
+// The findParent function implements path compression to efficiently find the representative of the set to which a vertex belongs.
+// The MST is returned as a list of edges.
+// The main method demonstrates the usage of the algorithm with a sample graph.

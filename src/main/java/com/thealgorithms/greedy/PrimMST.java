@@ -14,6 +14,7 @@ class Edge {
 }
 
 public class PrimMST {
+    // Function to find the Minimum Spanning Tree (MST) using Prim's algorithm
     public static List<Edge> primMST(List<List<Edge>> graph, int vertices) {
         List<Edge> minimumSpanningTree = new ArrayList<>();
         boolean[] visited = new boolean[vertices];
@@ -69,3 +70,9 @@ public class PrimMST {
             System.out.println(edge.source + " - " + edge.destination + " : " + edge.weight);
     }
 }
+
+// In this implementation,
+// Prim's algorithm finds the Minimum Spanning Tree (MST) by starting from an arbitrary vertex and greedily adding the closest edge at each step.
+// The minHeap is used to efficiently select the smallest weighted edge to include in the MST.
+// The visited array helps to keep track of visited vertices to avoid cycles.
+// The main method demonstrates the usage of the algorithm with a sample graph.

@@ -15,7 +15,8 @@ class Activity {
 public class ActivitySelection {
     public static List<Activity> selectActivities(List<Activity> activities) {
         List<Activity> selectedActivities = new ArrayList<>();
-        if (activities.isEmpty()) return selectedActivities;
+        if (activities.isEmpty())
+            return selectedActivities;
 
         // Sort activities by their end times
         Collections.sort(activities, Comparator.comparingInt(a -> a.end));

@@ -14,6 +14,7 @@ class Job {
 }
 
 public class JobSequencing {
+    // Function to schedule jobs and print the schedule
     public static void scheduleJobs(Job[] jobs) {
         int n = jobs.length;
 
@@ -33,5 +34,31 @@ public class JobSequencing {
                     break;
                 }
             }
-       
-// These examples illustrate the use of greedy algorithms to solve various problems. Greedy algorithms make locally optimal choices at each stage, aiming to find a global optimum. However, not all problems can be solved optimally using greedy algorithms, so careful analysis is required to determine if the greedy approach is suitable.
+        }
+
+        // Print the schedule and total profit
+        System.out.println("Job Schedule:");
+        for (char jobId : result) {
+            if (jobId != ' ') {
+                System.out.print(jobId + " ");
+            }
+        }
+        System.out.println("\nTotal Profit: " + totalProfit);
+    }
+
+    public static void main(String[] args) {
+        Job[] jobs = {
+            new Job('a', 2, 100),
+            new Job('b', 1, 19),
+            new Job('c', 2, 27),
+            new Job('d', 1, 25),
+            new Job('e', 3, 15)
+        };
+
+        scheduleJobs(jobs);
+    }
+}
+
+// These examples illustrate the use of greedy algorithms to solve various problems.
+// Greedy algorithms make locally optimal choices at each stage, aiming to find a global optimum.
+// However, not all problems can be solved optimally using greedy algorithms, so careful analysis is required to determine if the greedy approach is suitable.
