@@ -5,6 +5,9 @@ package com.thealgorithms.maths;
  * constant. Ratio here means the second divided by the first. For instance, the
  * sequence 2,4,8,16 . . . (till infinity) is a geometric progression with common
  * ratio of 2.
+ *
+ * </p>
+ * Wikipedia: https://en.wikipedia.org/wiki/Geometric_progression
  */
 
 import java.util.Scanner;
