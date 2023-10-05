@@ -16,7 +16,7 @@ public class DistanceFormula {
         int d = 0;
 
         if (b1.length != b2.length) {
-            return -1; // error, both array must be have the same length
+            return -1; // error, both arrays must have the same length
         }
 
         for (int i = 0; i < b1.length; i++) {
@@ -31,7 +31,7 @@ public class DistanceFormula {
         double distance = 0.0;
 
         if (p1.length != p2.length) {
-            return -1; // error, both array must be have the same length
+            return -1; // error, both arrays must have the same length
         }
 
         for (int i = 0; i < p1.length; i++) {

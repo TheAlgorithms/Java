@@ -16,21 +16,21 @@ public class DudeneyNumber {
         if (cube_root * cube_root * cube_root != n) {
             return false;
         }
-        int sum_of_digits = 0; // Stores the sums of the digit of the entered number
+        int sum_of_digits = 0; // Stores the sums of the digits of the entered number
         int temp = n; // A temporary variable to store the entered number
-        // Loop to calculate sum of the digits.
+        // Loop to calculate the sum of the digits.
         while (temp > 0) {
-            // Extracting Last digit of the number
+            // Extracting the Last digit of the number
             int rem = temp % 10;
 
-            // Calculating sum of digits.
+            // Calculating the sum of digits.
             sum_of_digits += rem;
 
             // Removing the last digit
             temp /= 10;
         }
 
-        // If the cube root of the number is not equal to the sum of its digits we return false.
+        // If the cube root of the number is not equal to the sum of its digits, we return false.
         return cube_root == sum_of_digits;
     }
 }
