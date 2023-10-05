@@ -5,13 +5,14 @@ and also memoisation for effective use of memory
 */
 import java.util.Scanner;
 public class MyClass {
-    static long[] memo; //Array to store already calculated values
+    static long[] memo; // Array to store already calculated values
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the term");
         int n = sc.nextInt()
-    
-        memo = new long[n];
+
+                    memo
+            = new long[n];
         for (int i = 0; i < n; i++) {
             memo[i] = -1; // initislise all values to -1 as it is not a fibonacci number
         }
