@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Graph {
+    private int V;
+    private List<List<Edge>> adj;
+
+    public Graph(int vertices) {
+        V = vertices;
+        adj = new ArrayList<>(vertices);
+        for (int i = 0; i < vertices; i++) {
+            adj.add(new ArrayList<>());
+        }
+    }
+
+    public void addEdge(int source, int destination, int weight) {
+        Edge edge1 = new Edge(source, destination, weight);
+        Edge edge2 = new Edge(destination, source, weight);
+        adj.get(source).add(edge1);
+        adj.get(destination).add(edge2);
+    }
+
+    public void primMST() {
+        boolean[] inMST = new boolean[V];
+        Arrays.fill(inMST, false);
+
+        int[] key = new int[V];
+        Arrays.fill(key, Integer.MAX_VALUE);
+
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(V, (a, b) -> a.weight - b.weight);
+
+        key[0] = 0;
+        priorityQueue.add(new Edge(-1, 0, 0));
+
+        while (!priorityQueue.isEmpty()) {
+            int u = priorityQueue.poll().destination;
+            inMST[u] = true;
+
+            for (Edge edge : adj.get(u)) {
+                int v = edge.destination;
+                int weight = edge.weight;
+
+                if (!inMST[v] && weight < key[v]) {
+                    key[v] = weight;
+                    priorityQueue.add(new Edge(u, v, weight));
+                }
+            }
+        }
+
+        printMST(key);
+    }
+
+    private void printMST(int[] key) {
+        System.out.println("Edge   Weight");
+        for (int i = 1; i < V; i++) {
+            System.out.println(i + " - " + key[i]);
+        }
+    }
+}
+
+class Edge {
+    int source;
+    int destination;
+    int weight;
+
+    public Edge(int source, int destination, int weight) {
+        this.source = source;
+        this.destination = destination;
+        this.weight = weight;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int vertices = 5;
+        Graph graph = new Graph(vertices);
+        graph.addEdge(0, 1, 2);
+        graph.addEdge(0, 3, 6);
+        graph.addEdge(1, 2, 3);
+        graph.addEdge(1, 3, 8);
+        graph.addEdge(1, 4, 5);
+        graph.addEdge(2, 4, 7);
+        graph.addEdge(3, 4, 9);
+
+        graph.primMST();
+    }
+}
