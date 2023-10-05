@@ -22,7 +22,7 @@ public class HexToRGB {
         int green = Integer.parseInt(hex.substring(3, 5), 16);
         int blue = Integer.parseInt(hex.substring(5), 16);
 
-        return new int[]{red, green, blue};
+        return new int[] {red, green, blue};
     }
 
     public static void main(String[] args) {
