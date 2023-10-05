@@ -4,7 +4,7 @@ This program uses recursion to calculate the nth fibonacci number
 and also memoisation for effective use of memory
 */
 import java.util.Scanner;
-public class MyClass {
+public class FibonacciUsingRecursion {
     static long[] memo; // Array to store already calculated values
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
