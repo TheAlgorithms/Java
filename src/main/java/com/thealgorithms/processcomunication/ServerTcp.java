@@ -9,9 +9,9 @@ public class ServerTcp {
     public static ServerTcp.User[] users;
 
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         try {
-            users = new ServerTcp.User[] { new ServerTcp.User("admin", "admin"), new ServerTcp.User("user", "user")};
+            users = new ServerTcp.User[] {new ServerTcp.User("admin", "admin"), new ServerTcp.User("user", "user")};
 
             int serverPort = 7896;
             try (ServerSocket listenSocket = new ServerSocket(serverPort)) {
@@ -78,7 +78,7 @@ public class ServerTcp {
 
                         out.writeUTF(System.getProperty("user.dir"));
 
-                    } else if (command[0].equalsIgnoreCase("chdir")){ 
+                    } else if (command[0].equalsIgnoreCase("chdir")) { 
                         if (!isUserAuthenticated) {
                             out.writeUTF("NOT_AUTHENTICATED");
 
@@ -119,7 +119,7 @@ public class ServerTcp {
 
                         for (File file : files) {
 
-                            if (file.isFile()){
+                            if (file.isFile()) {
                                 filesList += file.getName() + "\n";
                                 filesCount++;
                             }
@@ -189,7 +189,7 @@ public class ServerTcp {
         }
 
 
-        public String convertSHA512(String password){
+        public String convertSHA512(String password) {
             try {
                 MessageDigest digest = MessageDigest.getInstance("SHA-512");
                 byte[] hash = digest.digest(password.getBytes("UTF-8"));
@@ -198,13 +198,13 @@ public class ServerTcp {
                 for (int i = 0; i < hash.length; i++) {
                     String hex = Integer.toHexString(0xff & hash[i]);
 
-                    if(hex.length() == 1) hexString.append('0');
+                    if (hex.length() == 1) hexString.append('0');
                     hexString.append(hex);
                 }
 
                 return hexString.toString();
-                
-            } catch(Exception ex){
+
+            } catch(Exception ex) {
                 throw new RuntimeException(ex);
             }
         }
