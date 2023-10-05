@@ -1,6 +1,9 @@
 public class Solution {
 
-	public static int countWords(String str) {	
+	public static int countWords(String str) {
+		if (str == null || str.isEmpty()) {
+			return 0;
+		}
 		int start=0;
 		int end=str.length();
 		int count=1;
