@@ -17,14 +17,12 @@ public class HexToRGB {
      * @return The RGB number
      */
     public static int[] hexStringToRGB(String hex) {
-        var red = hex.substring(1, 3);
-        var green = hex.substring(3, 5);
-        var blue = hex.substring(5);
-        return new int[]{
-                Integer.parseInt(red, 16),
-                Integer.parseInt(green, 16),
-                Integer.parseInt(blue, 16)
-        };
+        // Parse the hexadecimal values for red, green, and blue
+        int red = Integer.parseInt(hex.substring(1, 3), 16);
+        int green = Integer.parseInt(hex.substring(3, 5), 16);
+        int blue = Integer.parseInt(hex.substring(5), 16);
+
+        return new int[]{red, green, blue};
     }
 
     public static void main(String[] args) {
