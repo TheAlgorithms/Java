@@ -4,6 +4,7 @@ package com.thealgorithms.conversions;
  * Converts any Hexadecimal To RGB
  *
  * @author Thiago Bomfim
+ * @see <a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB color model</a>
  */
 public class HexToRGB {
 
