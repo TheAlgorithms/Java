@@ -5,14 +5,14 @@ import java.io.*;
 
 import java.security.MessageDigest;
 
-public class ServerTCP {
-    public static ServerTCP.User[] users;
+public class ServerTcp {
+    public static ServerTcp.User[] users;
 
     public static void main (String args[]) {
         try {
-            users = new ServerTCP.User[] {
-                new ServerTCP.User("admin", "admin"),
-                new ServerTCP.User("user", "user")
+            users = new ServerTcp.User[] {
+                new ServerTcp.User("admin", "admin"),
+                new ServerTcp.User("user", "user")
             };
 
             int serverPort = 7896; // porta do servidor

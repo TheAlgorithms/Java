@@ -3,7 +3,7 @@ package com.thealgorithms.processcomunication;
 import java.net.*;
 import java.io.*;
 
-public class ClientTCP {
+public class ClientTcp {
     public static void main(String args[]) {
         Socket s = null;
         try {
