@@ -12,11 +12,7 @@ import java.util.*;
     Example: -
 
 
-*
-*
-*
-*
-    Input : N = 9
+    Input : N = 8
 
     Output:
         0  59  38  33  30  17   8  63
