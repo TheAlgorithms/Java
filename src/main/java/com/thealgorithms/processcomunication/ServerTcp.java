@@ -15,7 +15,7 @@ public class ServerTcp {
                 new ServerTcp.User("user", "user")
             };
 
-            int serverPort = 7896; // porta do servidor
+            int serverPort = 7896;
             try (ServerSocket listenSocket = new ServerSocket(serverPort)) {
                 while (true) {
                     System.out.println("Server waiting for connection...");
