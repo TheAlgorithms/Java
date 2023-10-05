@@ -1,5 +1,8 @@
 package com.thealgorithms.strings;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * Given an input string s, reverse the order of the words.
  * A word is defined as a sequence of non-space characters.
@@ -14,43 +17,9 @@ public final class ReverseWordsInString {
     private ReverseWordsInString() {
     }
 
-    public static String reverseWordsInString(String s) {
-
-        s = s.replaceAll("\\s+", " ").trim();
-        StringBuilder res = new StringBuilder();
-        int start = 0;
-        int end = 0;
-
-        while (start < s.length()) {
-
-            Integer[] arr = findNextWord(s, start, end);
-            start = arr[0];
-            end = arr[1];
-
-            String word = s.substring(start, end);
-
-            start = end;
-
-            if (res.length() > 0) {
-                res.insert(0, " ");
-                res.insert(0, word);
-            } else {
-                res.append(word);
-            }
-        }
-        return res.toString();
-    }
-
-    private static Integer[] findNextWord(String s, int start, int end) {
-        while (s.charAt(start) == ' ') {
-            start++;
-        }
-        end = start + 1;
-
-        while (end < s.length() && (s.charAt(end) != ' ')) {
-            end++;
-        }
-
-        return new Integer[] {start, end};
+    public static String reverseWordsInString(final String s) {
+        var words = s.trim().split("\\s+");
+        Collections.reverse(Arrays.asList(words));
+        return String.join(" ", words);
     }
 }
