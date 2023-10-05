@@ -1,8 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public final class FindMinRecursion {
 
     private FindMinRecursion() {
