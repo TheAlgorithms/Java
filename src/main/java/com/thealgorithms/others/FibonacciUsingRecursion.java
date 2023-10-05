@@ -8,7 +8,7 @@ public class MyClass {
     static long[] memo; //Array to store already calculated values
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a number");
+        System.out.println("Enter the term");
         int n = sc.nextInt()
     
         memo = new long[n];
