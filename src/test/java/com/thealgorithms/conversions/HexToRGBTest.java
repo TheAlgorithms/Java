@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class HexToRGBTest {
 
-
     @Test
     void testHexToRGB() {
         assertArrayEquals(new int[] {255, 255, 255}, HexToRGB.hexStringToRGB("#FFFFFF"));
