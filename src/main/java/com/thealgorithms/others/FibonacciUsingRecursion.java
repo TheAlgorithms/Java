@@ -11,8 +11,7 @@ public class MyClass {
         System.out.println("Enter the term");
         int n = sc.nextInt();
 
-                    memo
-            = new long[n];
+        memo = new long[n];
         for (int i = 0; i < n; i++) {
             memo[i] = -1; // initislise all values to -1 as it is not a fibonacci number
         }
