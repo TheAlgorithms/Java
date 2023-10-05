@@ -7,7 +7,7 @@ Stack works on the principle of _LIFO_ (Last In First Out), it means that the la
 # Declaration
  Stack<Obj> stack=new Stack<Obj>();
 
-# functionalities
+# Functionalities
 Stack is based on two functions (methods)-
 
 ## push(element)
@@ -35,11 +35,11 @@ For example: If we have `1, 3, 5 , 9` in stack, and we call pop(),
 the function will return `9` and the stack will change to `1, 3, 5`.
 
 # Real Life Applications 
-  ## Undo mechanisms:
+  1. Undo mechanisms:
      Many software applications use stacks to implement an "undo" feature.
 
-  ## Browser history:
+  2. Browser history:
     The "back" button in a web browser is implemented using a stack, allowing users to navigate through previously visited pages.
 
-  ## Function calls and recursion: 
+  3. Function calls and recursion: 
     The computer's call stack keeps track of function calls, allowing programs to remember where to return after a function finishes execution.
