@@ -6,48 +6,48 @@ import java.util.PriorityQueue;
 /**
  * @author shrutisheoran
  */
-public class MedianOfRunningArray {
+public abstract class MedianOfRunningArray<T extends Number & Comparable<T>> {
 
-    private PriorityQueue<Integer> p1;
-    private PriorityQueue<Integer> p2;
+    private PriorityQueue<T> maxHeap;
+    private PriorityQueue<T> minHeap;
 
     // Constructor
     public MedianOfRunningArray() {
-        this.p1 = new PriorityQueue<>(Collections.reverseOrder()); // Max Heap
-        this.p2 = new PriorityQueue<>(); // Min Heap
+        this.maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // Max Heap
+        this.minHeap = new PriorityQueue<>(); // Min Heap
     }
 
     /*
       Inserting lower half of array to max Heap
       and upper half to min heap
      */
-    public void insert(Integer e) {
-        p2.add(e);
-        if (p2.size() - p1.size() > 1) {
-            p1.add(p2.remove());
+    public void insert(final T e) {
+        if (!minHeap.isEmpty() && e.compareTo(minHeap.peek()) < 0) {
+            maxHeap.offer(e);
+            if (maxHeap.size() > minHeap.size() + 1) {
+                minHeap.offer(maxHeap.poll());
+            }
+        } else {
+            minHeap.offer(e);
+            if (minHeap.size() > maxHeap.size() + 1) {
+                maxHeap.offer(minHeap.poll());
+            }
         }
     }
 
     /*
       Returns median at any given point
      */
-    public Integer median() {
-        if (p1.size() == p2.size()) {
-            return (p1.peek() + p2.peek()) / 2;
+    public T median() {
+        if (maxHeap.isEmpty() && minHeap.isEmpty()) {
+            throw new IllegalArgumentException("Enter at least 1 element, Median of empty list is not defined!");
+        } else if (maxHeap.size() == minHeap.size()) {
+            T maxHeapTop = maxHeap.peek();
+            T minHeapTop = minHeap.peek();
+            return calculateAverage(maxHeapTop, minHeapTop);
         }
-        return p1.size() > p2.size() ? p1.peek() : p2.peek();
+        return maxHeap.size() > minHeap.size() ? maxHeap.peek() : minHeap.peek();
     }
 
-    public static void main(String[] args) {
-        /*
-        Testing the median function
-         */
-
-        MedianOfRunningArray p = new MedianOfRunningArray();
-        int[] arr = {10, 7, 4, 9, 2, 3, 11, 17, 14};
-        for (int i = 0; i < 9; i++) {
-            p.insert(arr[i]);
-            System.out.print(p.median() + " ");
-        }
-    }
+    public abstract T calculateAverage(T a, T b);
 }
