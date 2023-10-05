@@ -1,6 +1,5 @@
 ## Graphs
-
-"Graph is a useful data structure for representing most of the real-world problems involving a set of users/candidates/nodes and their relations. A graph consists of two parameters:
+Graph is a useful data structure for representing most of the real-world problems involving a set of users/candidates/nodes and their relations. A graph consists of two parameters:
 
 ```
 V = a set of vertices
