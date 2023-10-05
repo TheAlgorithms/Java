@@ -1,10 +1,7 @@
 package com.thealgorithms.searches;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MajorityElement {
-    public static int majorityElement(int[] arr) {
+    public static int FindMajorityElement(int[] arr) {
         int cnt = 0;
         int el = -1;
 
@@ -32,6 +29,6 @@ public class MajorityElement {
 
     public static void main(String[] args) {
         int[] arr = { 1, 1, 2, 1, 3, 5, 1 };
-        System.out.println(majorityElement(arr));
+        System.out.println(FindMajorityElement(arr));
     }
 }
