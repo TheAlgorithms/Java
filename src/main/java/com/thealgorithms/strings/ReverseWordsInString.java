@@ -3,17 +3,15 @@ package com.thealgorithms.strings;
 import java.util.Arrays;
 import java.util.Collections;
 
-
 public final class ReverseWordsInString {
 
     private ReverseWordsInString() {
     }
 
     /**
-     * Reverse word in the string
-     *
-     * @param s contains sentence
-       @return Reverse word of {@code s}
+     * @brief Reverses words in the input string
+     * @param s the input string
+     * @return A string created by reversing the order of the words in{@code s}
      */
 
     public static String reverseWordsInString(final String s) {
