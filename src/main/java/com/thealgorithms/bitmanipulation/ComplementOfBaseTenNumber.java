@@ -28,7 +28,7 @@ public class ComplementOfBaseTenNumber {
         // from the solution description: complement = number ^ all_bits_set
         return num ^ all_bits_set;
     }
-  }
+}
 
 /*
  *#Time Complexity
