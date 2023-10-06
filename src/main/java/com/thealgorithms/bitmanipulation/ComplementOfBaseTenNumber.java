@@ -2,7 +2,7 @@ package com.thealgorithms.bitmanipulation;
 
 import java.lang.Math;
 /**
- * Complement of Base 10 Number 
+ * Complement of Base 10 Number
  * For a given positive number N in base-10, return the
  * complement of its binary representation as a base-10 integer.
  * @author Akshit Kumar Chandora (https://github.com/axitchandora)
