@@ -25,7 +25,6 @@ public class ComplementOfBaseTenNumber {
         // representation of '11' i.e., it has '2' least significant bits set to '1'
         int all_bits_set = (int) Math.pow(2, bitCount) - 1;
 
-        // from the solution description: complement = number ^ all_bits_set
         return num ^ all_bits_set;
     }
 }
