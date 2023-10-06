@@ -22,6 +22,7 @@ public class Tribonacci {
     // OverLoading the tribonacci function to include memoization technique
 
     static int tribonacci(int n, HashMap<Integer, Integer> memo) {
+        
         if (n == 0 || n == 1) return 0; // base conditions for the
         if (n == 2) return 1; // recursive call        
         if (memo.containsKey(n)) { // Checks whether the ans for the current value of n is present or not in the HashMap
@@ -30,5 +31,6 @@ public class Tribonacci {
         int result = tribonacci(n - 1, memo) + tribonacci(n - 2, memo) + tribonacci(n - 3, memo);
         memo.put(n, result); // makes sure the result gets stored in the HashMap
         return result;
+        
     }    
 }
