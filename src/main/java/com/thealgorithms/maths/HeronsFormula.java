@@ -6,7 +6,13 @@ package com.thealgorithms.maths;
  */
 
 public class HeronsFormula {
-    
+    /*
+     * A function to get the Area of a Triangle using Heron's Formula
+     * @param s1,s2,s3 => the three sides of the Triangle
+     * @return area using the formula (√(s(s – s1)(s – s2)(s – s3)))
+     * here s is called semi-perimeter and it is the half of the perimeter (i.e; s = (s1+s2+s3)/2)
+     * @author satyabarghav
+     */
     public static double Herons(double a, double b, double c) {
         double s = (a + b + c) / 2.0;
         double area = 0;
