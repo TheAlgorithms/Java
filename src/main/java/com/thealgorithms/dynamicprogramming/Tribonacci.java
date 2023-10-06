@@ -28,7 +28,7 @@ public class Tribonacci {
         if (memo.containsKey(n)) { // Checks whether the ans for the current value of n is present or not in the HashMap
             return memo.get(n);
         }
-        int result =  tribonacci(n - 1, memo)+ tribonacci(n - 2, memo) + tribonacci(n - 3, memo);
+        int result = tribonacci(n - 1, memo)+ tribonacci(n - 2, memo) + tribonacci(n - 3, memo);
         memo.put(n, result); // makes sure the result gets stored in the HashMap
         return result;
     }
