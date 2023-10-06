@@ -9,7 +9,7 @@ package com.thealgorithms.maths;
  * 1634 is an Armstrong number because 1^4 + 6^4 + 3^4 + 4^4 = 1634.
  * An Armstrong number is often called a Narcissistic number.
  *
- * @author satyabarghav
+ * @author madhavagarwal3012
  */
 public class Armstrong {
 
@@ -19,18 +19,35 @@ public class Armstrong {
      * @param number the number to check
      * @return {@code true} if the given number is an Armstrong number, {@code false} otherwise
      */
-    public boolean isArmstrong(int number) {
-        long sum = 0;
-        String temp = Integer.toString(number); // Convert the given number to a string
-        int power = temp.length(); // Extract the length of the number (number of digits)
-        long originalNumber = number;
-
-        while (originalNumber > 0) {
-            long digit = originalNumber % 10;
-            sum += Math.pow(digit, power); // The digit raised to the power of the number of digits and added to the sum.
-            originalNumber /= 10;
+    public static boolean checkArmstrong(int n){
+        int originalNumber=n;
+        int length=0;
+        while(n>0){
+            length++;
+            n=n/10;
         }
-
-        return sum == number;
+        n=originalNumber;
+        int start=0;
+        int sum=0;
+        int digit=0;
+        while(start<length){
+            int cube=1;
+            digit=n%10;
+            int sub_start=0;
+            while(sub_start<length){
+                cube=digit*cube;
+                sub_start++;
+            }
+            sum=sum+cube;
+            n=n/10;
+            start++;
+        }
+        if(sum==originalNumber){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 }
