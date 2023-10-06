@@ -15,7 +15,7 @@ public class ComplementOfBaseTenNumberTest {
     void testBitwiseComplement() {
         assertEquals(7, ComplementOfBaseTenNumber.bitwiseComplement(8));
         assertEquals(5, ComplementOfBaseTenNumber.bitwiseComplement(10));
-        assertEquals(3, ComplementOfBaseTenNumber.bitwiseComplement(40));
+        assertEquals(23, ComplementOfBaseTenNumber.bitwiseComplement(40));
     }
     
 }
