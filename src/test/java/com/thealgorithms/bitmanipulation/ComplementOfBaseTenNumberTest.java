@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 
 public class ComplementOfBaseTenNumberTest {
 
-  @Test
-  void testBitwiseComplement() {
-    assertEquals(7, ComplementOfBaseTenNumber.bitwiseComplement(8));
-    assertEquals(5, ComplementOfBaseTenNumber.bitwiseComplement(10));
-    assertEquals(23, ComplementOfBaseTenNumber.bitwiseComplement(40));
-  }
+    @Test
+    void testBitwiseComplement() {
+        assertEquals(7, ComplementOfBaseTenNumber.bitwiseComplement(8));
+        assertEquals(5, ComplementOfBaseTenNumber.bitwiseComplement(10));
+        assertEquals(23, ComplementOfBaseTenNumber.bitwiseComplement(40));
+    }
 }
