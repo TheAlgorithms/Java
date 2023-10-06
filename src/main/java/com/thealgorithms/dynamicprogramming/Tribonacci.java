@@ -24,5 +24,4 @@ public class Tribonacci {
         int result = calculateTribonacci(n);
         System.out.println("The " + n + "th Tribonacci number is " + result);
     }
-    
 }
