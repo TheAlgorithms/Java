@@ -11,7 +11,7 @@ public final class ReverseWordsInString {
     /**
      * @brief Reverses words in the input string
      * @param s the input string
-     * @return A string created by reversing the order of the words in{@code s}
+     * @return A string created by reversing the order of the words in {@code s}
      */
 
     public static String reverseWordsInString(final String s) {
