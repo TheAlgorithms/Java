@@ -13,3 +13,6 @@ In order to reduce the number of notifications sent to the maintainers, please:
 - [ ] All filenames are in PascalCase.
 - [ ] All functions and variable names follow Java naming conventions.
 - [ ] All new algorithms have a URL in their comments that points to Wikipedia or other similar explanations.
+- [ ] Ensure your code is properly formatted by using the command ```clang-format -i --style=file path/to/your/file.java```
+      If you do not have the correct version of clang-format (i.e. < 16.0), you can remove **InsertNewlineAtEOF: true** from
+      **java/.clang-format** and manually add a newline at the end of your file before pushing.
