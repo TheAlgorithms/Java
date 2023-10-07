@@ -19,7 +19,7 @@ public class Armstrong {
      * @param number the number to check
      * @return {@code true} if the given number is an Armstrong number, {@code false} otherwise
      */
-    public static void checkArmstrong(int n){
+    public static boolean isArmstrong(int n){
         int originalNumber=n;
         int length=0;
         while(n>0){
@@ -43,10 +43,10 @@ public class Armstrong {
             start++;
         }
         if(sum==originalNumber){
-            System.out.println("Its An Armstrong Number");
+            return true;
         }
         else{
-            System.out.println("Its Not An Armstrong Number");
+            return false;
         }
         
     }
