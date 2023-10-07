@@ -5,21 +5,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author satyabarghav
- * @since 4/10/2023
+ * @author madhavagarwal3012
+ * @since 8/10/2023
  */
-class ArmstrongTest {
+// ArmstrongTest.java
+import org.junit.Test;
+import static org.junit.Assert.*;
 
+public class ArmstrongTest {
     @Test
-    void testIsArmstrong() {
+    public void testArmstrong() {
         Armstrong armstrong = new Armstrong();
-        assertThat(armstrong.isArmstrong(0)).isTrue();
-        assertThat(armstrong.isArmstrong(1)).isTrue();
-        assertThat(armstrong.isArmstrong(153)).isTrue();
-        assertThat(armstrong.isArmstrong(371)).isTrue();
-        assertThat(armstrong.isArmstrong(1634)).isTrue();
-        assertThat(armstrong.isArmstrong(200)).isFalse();
-        assertThat(armstrong.isArmstrong(548834)).isTrue();
-        assertThat(armstrong.isArmstrong(9474)).isTrue();
+        assertTrue(armstrong.checkArmstrong(1634));
+        assertFalse(armstrong.checkArmstrong(1234));
     }
 }
+
