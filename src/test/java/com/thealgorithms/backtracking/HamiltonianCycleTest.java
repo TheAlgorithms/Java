@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test;
 public class HamiltonianCycleTest {
     @Test
     void testForFirstCase() {
-        int graph[][] = { { 0, 1, 0, 1, 0 },
-                { 1, 0, 1, 1, 1 },
-                { 0, 1, 0, 0, 1 },
-                { 1, 1, 0, 0, 1 },
-                { 0, 1, 1, 1, 0 },
+        int graph[][] = {
+            { 0, 1, 0, 1, 0 },
+            { 1, 0, 1, 1, 1 },
+            { 0, 1, 0, 0, 1 },
+            { 1, 1, 0, 0, 1 },
+            { 0, 1, 1, 1, 0 },
         };
         int vertices = 5;
         int output = HamiltonianCycle.findHamiltonianCycle(graph, vertices);
@@ -20,11 +21,12 @@ public class HamiltonianCycleTest {
 
     @Test
     void testForSecondCase() {
-        int graph[][] = { { 0, 1, 1, 1, 0 },
-                { 1, 0, 1, 1, 0 },
-                { 1, 1, 0, 1, 1 },
-                { 1, 1, 1, 0, 1 },
-                { 0, 0, 1, 1, 0 },
+        int graph[][] = {
+            { 0, 1, 1, 1, 0 },
+            { 1, 0, 1, 1, 0 },
+            { 1, 1, 0, 1, 1 },
+            { 1, 1, 1, 0, 1 },
+            { 0, 0, 1, 1, 0 },
         };
         int vertices = 5;
         int output = HamiltonianCycle.findHamiltonianCycle(graph, vertices);
@@ -33,13 +35,14 @@ public class HamiltonianCycleTest {
 
     @Test
     void testForThirdCase() {
-        int graph[][] = { { 0, 1, 0, 1, 1, 0, 0 },
-                { 1, 0, 1, 0, 0, 0, 0 },
-                { 0, 1, 0, 1, 0, 0, 1 },
-                { 1, 0, 1, 0, 0, 1, 0 },
-                { 1, 0, 0, 0, 0, 1, 0 },
-                { 0, 0, 0, 1, 1, 0, 1 },
-                { 0, 0, 1, 0, 0, 1, 0 }
+        int graph[][] = {
+            { 0, 1, 0, 1, 1, 0, 0 },
+            { 1, 0, 1, 0, 0, 0, 0 },
+            { 0, 1, 0, 1, 0, 0, 1 },
+            { 1, 0, 1, 0, 0, 1, 0 },
+            { 1, 0, 0, 0, 0, 1, 0 },
+            { 0, 0, 0, 1, 1, 0, 1 },
+            { 0, 0, 1, 0, 0, 1, 0 }
         };
         int vertices = 7;
         int output = HamiltonianCycle.findHamiltonianCycle(graph, vertices);
@@ -48,12 +51,13 @@ public class HamiltonianCycleTest {
 
     @Test
     void testForFourthCase() {
-        int graph[][] = { { 0, 1, 1, 0, 0, 0 },
-                { 1, 0, 0, 1, 0, 0 },
-                { 1, 0, 0, 1, 1, 1 },
-                { 0, 1, 1, 0, 0, 0 },
-                { 0, 0, 1, 0, 0, 1 },
-                { 0, 0, 1, 0, 1, 0 }
+        int graph[][] = {
+            { 0, 1, 1, 0, 0, 0 },
+            { 1, 0, 0, 1, 0, 0 },
+            { 1, 0, 0, 1, 1, 1 },
+            { 0, 1, 1, 0, 0, 0 },
+            { 0, 0, 1, 0, 0, 1 },
+            { 0, 0, 1, 0, 1, 0 }
         };
         int vertices = 6;
         int output = HamiltonianCycle.findHamiltonianCycle(graph, vertices);
@@ -62,11 +66,12 @@ public class HamiltonianCycleTest {
 
     @Test
     void testForFifthCase() {
-        int graph[][] = { { 0, 1, 1, 0, 1 },
-                { 1, 0, 1, 1, 1 },
-                { 1, 1, 0, 1, 0 },
-                { 0, 1, 1, 0, 1 },
-                { 1, 1, 0, 1, 0 }
+        int graph[][] = {
+            { 0, 1, 1, 0, 1 },
+            { 1, 0, 1, 1, 1 },
+            { 1, 1, 0, 1, 0 },
+            { 0, 1, 1, 0, 1 },
+            { 1, 1, 0, 1, 0 }
         };
         int vertices = 5;
         int output = HamiltonianCycle.findHamiltonianCycle(graph, vertices);
