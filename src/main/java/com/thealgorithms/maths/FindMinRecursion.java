@@ -18,7 +18,6 @@ public final class FindMinRecursion {
         if (array.length == 0) {
             throw new IllegalArgumentException("array must be non-empty.");
         }
-  
         if (low == high) {
             return array[low]; // or array[high]
         }
