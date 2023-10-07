@@ -27,5 +27,4 @@ public final class FibonacciNumber<T extends Number> {
         // Cast the result to an int and return it
         return (int) fibonacci;
     }
-
 }
