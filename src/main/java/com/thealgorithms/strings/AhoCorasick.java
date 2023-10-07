@@ -14,8 +14,8 @@ package com.thealgorithms.strings;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Map;
+import java.util.Queue;
 
 public class AhoCorasick {
 
@@ -76,16 +76,16 @@ public class AhoCorasick {
             root = new Node(); // Initialize the root of the trie
             this.patterns = patterns;
             buildTrie();
-            buildSuffixAndOutputLinks(); 
+            buildSuffixAndOutputLinks();
         }
-        
+
         // builds AcoCorasick Trie
         private void buildTrie() {
 
             // Loop through each input pattern and building Trie
             for (int i = 0; i < patterns.length; i++) {
                 Node curr = root; // Start at the root of the trie for each pattern
-        
+
                 // Loop through each character in the current pattern
                 for (int j = 0; j < patterns[i].length(); j++) {
                     char c = patterns[i].charAt(j); // Get the current character
@@ -155,22 +155,22 @@ public class AhoCorasick {
 
         // Searches for patterns in the input text and records their positions
         public ArrayList<ArrayList<Integer>> searchIn(String text) {
-         /*
-          * res is the list of list containing the indexes of words in patterns/dictionary
-          * list index represents word.
-          * eg - list[0] contains the list of start-index of word pattern[0]
-          *      list[1] contains the list of start-index of word pattern[1]
-          *      ......
-          *      ......
-          *      list[n] contains the list of start-index of word pattern[n]
-          */
+            /*
+             * res is the list of list containing the indexes of words in patterns/dictionary
+             * list index represents word.
+             * eg - list[0] contains the list of start-index of word pattern[0]
+             *      list[1] contains the list of start-index of word pattern[1]
+             *      ......
+             *      ......
+             *      list[n] contains the list of start-index of word pattern[n]
+             */
             ArrayList<ArrayList<Integer>> res = new ArrayList<>(patterns.length); // Stores positions where patterns are found in the text
             Node parent = root; // Start searching from the root node
-            
-            for(int i = 0; i < patterns.length; i++) {
-              res.add(new ArrayList<Integer>()); // Initialize a list to store positions of the current pattern
+
+            for (int i = 0; i < patterns.length; i++) {
+                res.add(new ArrayList<Integer>()); // Initialize a list to store positions of the current pattern
             }
-            
+
             for (int i = 0; i < text.length(); i++) {
                 char ch = text.charAt(i); // Get the current character in the text
 
@@ -202,18 +202,18 @@ public class AhoCorasick {
             setUpStartPoints(res);
             return res;
         }
-      // by default res contains end-points. This function converts those
-      // endpoints to start points
-      private void setUpStartPoints(ArrayList<ArrayList<Integer>> res) {
-          for (int i = 0; i < patterns.length; i++) {
-              if (!res.get(i).isEmpty()) {
-                  for (int j = 0; j < res.get(i).size(); j++) {
-                      int endpoint = res.get(i).get(j);
-                      res.get(i).set(j, endpoint - patterns[i].length() + 1);
-                  }
-              }
-          }
-      }
+        // by default res contains end-points. This function converts those
+        // endpoints to start points
+        private void setUpStartPoints(ArrayList<ArrayList<Integer>> res) {
+            for (int i = 0; i < patterns.length; i++) {
+                if (!res.get(i).isEmpty()) {
+                    for (int j = 0; j < res.get(i).size(); j++) {
+                        int endpoint = res.get(i).get(j);
+                        res.get(i).set(j, endpoint - patterns[i].length() + 1);
+                    }
+                }
+            }
+        }
     }
 
     // method to search for patterns in text
@@ -234,4 +234,3 @@ public class AhoCorasick {
         return positionByString;
     }
 }
-
