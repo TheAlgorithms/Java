@@ -2,7 +2,7 @@ package com.thealgorithms.greedyalgorithms;
 
 // Problem Link: https://leetcode.com/problems/jump-game/description/
 
-public class JumpGame{
+public class JumpGame {
 
     boolean canJump(int[] nums) {
         int reachable = 0;
