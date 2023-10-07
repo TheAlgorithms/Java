@@ -7,7 +7,7 @@ class Trio{
         this.d=d;
     }
 }
-class Solution {
+class Solution1 {
     public int[][] updateMatrix(int[][] mat) {
         int[][] ans=new int[mat.length][mat[0].length];
         for(int i=0;i<mat.length;i++)

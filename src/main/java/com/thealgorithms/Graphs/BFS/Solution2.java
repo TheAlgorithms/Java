@@ -7,7 +7,7 @@ class Pair{
           this.tm=tm;
       }
 }
-class Solution {
+class Solution2 {
     public int orangesRotting(int[][] grid) {
         int[][] vis=new int[grid.length][grid[0].length];
         int cntFresh=0;
