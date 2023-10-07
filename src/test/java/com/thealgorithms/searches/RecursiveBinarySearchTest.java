@@ -1,6 +1,7 @@
 // Created by Pronay Debnath
 // Date:- 1/10/2023
 // Test file updated with JUnit tests
+package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.*;
 
