@@ -1,3 +1,5 @@
+package com.thealgorithms.searches;
+
 // Code by Pronay Debnath
 // Created:- 1/10/2023
 // File Name should be RecursiveBinarySearch.java
