@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Remove All Adjacent Duplicates In String
- * 
  * @author Akshit Kumar Chandora (https://github.com/axitchandora)
  */
 

@@ -2,8 +2,7 @@ package com.thealgorithms.stacks;
 
 /**
  * Remove All Adjacent Duplicates In String In a string S, remove all adjacent duplicate characters
- * recursively to generate the resultant string
- * 
+ * recursively to generate the resultant string * 
  * @author Akshit Kumar Chandora (https://github.com/axitchandora)
  */
 
