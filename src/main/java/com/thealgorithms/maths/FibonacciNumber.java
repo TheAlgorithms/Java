@@ -11,12 +11,12 @@ public final class FibonacciNumber<T extends Number> {
 
     // Function to find the nth Fibonacci number using the golden ratio formula
     public static <T extends Number> int nthFibonacci(T n) {
-        // Calculate the square root of 5
-        int sqrt5 = (int) Math.sqrt(5);
+        // Calculate the square root of 5 as a double
+        double sqrt5 = Math.sqrt(5);
 
-        // Calculate the golden ratio (phi) and its conjugate (psi)
-        int phi = (1 + sqrt5) / 2;
-        int psi = (1 - sqrt5) / 2;
+        // Calculate the golden ratio (phi) and its conjugate (psi) as doubles
+        double phi = (1 + sqrt5) / 2;
+        double psi = (1 - sqrt5) / 2;
 
         // Convert the input value to an int
         int result = n.intValue();
@@ -26,5 +26,15 @@ public final class FibonacciNumber<T extends Number> {
 
         // Return the result
         return fibonacci;
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter value of n: ");
+        int n = sc.nextInt();
+        int result = nthFibonacci(n);
+        System.out.println("The " + n + "th Fibonacci number is: " + result);
+        sc.close();
     }
 }
