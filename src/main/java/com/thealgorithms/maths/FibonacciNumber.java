@@ -5,7 +5,9 @@
 
 import java.util.*;
 
-public class FibonacciNumber<T extends Number> {
+public final class FibonacciNumber<T extends Number> {
+    private FibonacciNumber() {
+    }
 
     // Function to find the nth Fibonacci number using the golden ratio formula
     public static <T extends Number> int nthFibonacci(T n) {
