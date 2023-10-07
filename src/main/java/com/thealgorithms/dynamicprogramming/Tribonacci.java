@@ -30,5 +30,5 @@ public class Tribonacci {
         int result = tribonacci(n - 1, memo) + tribonacci(n - 2, memo) + tribonacci(n - 3, memo);
         memo.put(n, result); // makes sure the result gets stored in the HashMap
         return result;
-    }    
+    }
 }
