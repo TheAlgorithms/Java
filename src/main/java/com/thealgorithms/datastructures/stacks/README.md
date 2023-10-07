@@ -1,6 +1,6 @@
 # STACK
 
-- Stack is an ADT (abstract data type) that has a collection of elements where items are added and removed from the end, known as the "top" of the stack.
+- Stack is an ADT (abstract data type) that is a collection of elements where items are added and removed from the end, known as the "top" of the stack.
 
 - Stack works on the principle of _LIFO_ (Last In First Out), it means that the last item added to the stack will be the first item to be removed.
 
