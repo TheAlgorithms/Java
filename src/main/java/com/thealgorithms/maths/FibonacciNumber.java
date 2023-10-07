@@ -26,17 +26,4 @@ public class FibonacciNumber<T extends Number> {
         return (int) fibonacci;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the value of n: ");
-
-        // Read user input for n
-        int n = sc.nextInt();
-
-        // Calculate the nth Fibonacci number using the nthFibonacci method
-        int nthFib = nthFibonacci(n);
-
-        // Print the result
-        System.out.println("The " + n + "th Fibonacci number is: " + nthFib);
-    }
 }
