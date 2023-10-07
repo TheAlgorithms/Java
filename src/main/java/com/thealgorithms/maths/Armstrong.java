@@ -11,44 +11,43 @@ package com.thealgorithms.maths;
  *
  * @author madhavagarwal3012
  */
-public
-class Armstrong {
+public class Armstrong {
 
-  /**
-   * Checks whether a given number is an Armstrong number or not.
-   *
-   * @param number the number to check
-   * @return {@code true} if the given number is an Armstrong number, {@code
-   * false} otherwise
-   */
-public
-  boolean isArmstrong(int n) {
-    int originalNumber = n;
-    int length = 0;
-    while (n > 0) {
-      length++;
-      n = n / 10;
+    /**
+     * Checks whether a given number is an Armstrong number or not.
+     *
+     * @param number the number to check
+     * @return {@code true} if the given number is an Armstrong number, {@code false} otherwise
+     */
+    public static boolean isArmstrong(int n){
+        int originalNumber=n;
+        int length=0;
+        while(n>0){
+            length++;
+            n=n/10;
+        }
+        n=originalNumber;
+        int start=0;
+        int sum=0;
+        int digit=0;
+        while(start<length){
+            int cube=1;
+            digit=n%10;
+            int sub_start=0;
+            while(sub_start<length){
+                cube=digit*cube;
+                sub_start++;
+            }
+            sum=sum+cube;
+            n=n/10;
+            start++;
+        }
+        if(sum==originalNumber){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
-    n = originalNumber;
-    int start = 0;
-    int sum = 0;
-    int digit = 0;
-    while (start < length) {
-      int cube = 1;
-      digit = n % 10;
-      int sub_start = 0;
-      while (sub_start < length) {
-        cube = digit * cube;
-        sub_start++;
-      }
-      sum = sum + cube;
-      n = n / 10;
-      start++;
-    }
-    if (sum == originalNumber) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
