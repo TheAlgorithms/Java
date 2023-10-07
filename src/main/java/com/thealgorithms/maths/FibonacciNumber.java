@@ -12,19 +12,19 @@ public final class FibonacciNumber<T extends Number> {
     // Function to find the nth Fibonacci number using the golden ratio formula
     public static <T extends Number> int nthFibonacci(T n) {
         // Calculate the square root of 5
-        double sqrt5 = Math.sqrt(5);
+        int sqrt5 = (int) Math.sqrt(5);
 
         // Calculate the golden ratio (phi) and its conjugate (psi)
-        double phi = (1 + sqrt5) / 2;
-        double psi = (1 - sqrt5) / 2;
+        int phi = (1 + sqrt5) / 2;
+        int psi = (1 - sqrt5) / 2;
 
-        // Convert the input value to a double
-        double result = n.doubleValue();
+        // Convert the input value to an int
+        int result = n.intValue();
 
         // Calculate the nth Fibonacci number using the golden ratio formula
-        double fibonacci = (1 / sqrt5) * (Math.pow(phi, result) - Math.pow(psi, result));
+        int fibonacci = (int) ((1.0 / sqrt5) * (Math.pow(phi, result) - Math.pow(psi, result)));
 
-        // Cast the result to an int and return it
-        return (int) fibonacci;
+        // Return the result
+        return fibonacci;
     }
 }
