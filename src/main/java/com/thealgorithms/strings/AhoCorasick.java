@@ -41,7 +41,7 @@ public class AhoCorasick {
             return suffixLink;
         }
 
-        public void setSuffixLink(Node suffixLink) {
+        public void setSuffixLink(final Node suffixLink) {
             this.suffixLink = suffixLink;
         }
 
@@ -49,7 +49,7 @@ public class AhoCorasick {
             return outputLink;
         }
 
-        public void setOutputLink(Node outputLink) {
+        public void setOutputLink(final Node outputLink) {
             this.outputLink = outputLink;
         }
 
@@ -57,7 +57,7 @@ public class AhoCorasick {
             return patternInd;
         }
 
-        public void setPatternInd(int patternInd) {
+        public void setPatternInd(final int patternInd) {
             this.patternInd = patternInd;
         }
     }
@@ -68,11 +68,7 @@ public class AhoCorasick {
         private Node root = null; // Root node of the trie
         private final String[] patterns; // patterns according to which Trie is constructed
 
-        public Node getTrieRoot() {
-            return root;
-        }
-
-        public Trie(String[] patterns) {
+        public Trie(final String[] patterns) {
             root = new Node(); // Initialize the root of the trie
             this.patterns = patterns;
             buildTrie();
@@ -104,7 +100,6 @@ public class AhoCorasick {
             }
         }
 
-        // Initialize suffix links for child nodes of the root
         private void initializeSuffixLinksForChildNodesOfTheRoot(Queue<Node> q) {
             for (char rc : root.getChild().keySet()) {
                 Node childNode = root.getChild().get(rc);
@@ -113,7 +108,6 @@ public class AhoCorasick {
             }
         }
 
-        // Builds the suffix links and output links in the trie
         private void buildSuffixAndOutputLinks() {
             root.setSuffixLink(root); // Initialize the suffix link of the root to itself
             Queue<Node> q = new LinkedList<>(); // Initialize a queue for BFS traversal
@@ -156,7 +150,7 @@ public class AhoCorasick {
         // Searches for patterns in the input text and records their positions
         public ArrayList<ArrayList<Integer>> searchIn(String text) {
             /*
-             * res is the list of list containing the indexes of words in patterns/dictionary
+             * positionByStringIndexValue is the list of list containing the indexes of words in patterns/dictionary
              * list index represents word.
              * eg - list[0] contains the list of start-index of word pattern[0]
              *      list[1] contains the list of start-index of word pattern[1]
@@ -164,11 +158,11 @@ public class AhoCorasick {
              *      ......
              *      list[n] contains the list of start-index of word pattern[n]
              */
-            ArrayList<ArrayList<Integer>> res = new ArrayList<>(patterns.length); // Stores positions where patterns are found in the text
+            ArrayList<ArrayList<Integer>> positionByStringIndexValue = new ArrayList<>(patterns.length); // Stores positions where patterns are found in the text
             Node parent = root; // Start searching from the root node
 
             for (int i = 0; i < patterns.length; i++) {
-                res.add(new ArrayList<Integer>()); // Initialize a list to store positions of the current pattern
+                positionByStringIndexValue.add(new ArrayList<Integer>()); // Initialize a list to store positions of the current pattern
             }
 
             for (int i = 0; i < text.length(); i++) {
@@ -178,15 +172,15 @@ public class AhoCorasick {
                 if (parent.getChild().containsKey(ch)) {
                     parent = parent.getChild().get(ch); // Update the current node to the child node
 
-                    // If the current node represents a pattern, record its position in res
+                    // If the current node represents a pattern, record its position in positionByStringIndexValue
                     if (parent.getPatternInd() > -1) {
-                        res.get(parent.getPatternInd()).add(i);
+                        positionByStringIndexValue.get(parent.getPatternInd()).add(i);
                     }
 
                     Node outputLink = parent.getOutputLink();
                     // Follow output links to find and record positions of other patterns
                     while (outputLink != null) {
-                        res.get(outputLink.getPatternInd()).add(i);
+                        positionByStringIndexValue.get(outputLink.getPatternInd()).add(i);
                         outputLink = outputLink.getOutputLink();
                     }
                 } else {
@@ -199,18 +193,16 @@ public class AhoCorasick {
                     }
                 }
             }
-            setUpStartPoints(res);
-            return res;
+            setUpStartPoints(positionByStringIndexValue);
+            return positionByStringIndexValue;
         }
-        // by default res contains end-points. This function converts those
+        // by default positionByStringIndexValue contains end-points. This function converts those
         // endpoints to start points
-        private void setUpStartPoints(ArrayList<ArrayList<Integer>> res) {
+        private void setUpStartPoints(ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
             for (int i = 0; i < patterns.length; i++) {
-                if (!res.get(i).isEmpty()) {
-                    for (int j = 0; j < res.get(i).size(); j++) {
-                        int endpoint = res.get(i).get(j);
-                        res.get(i).set(j, endpoint - patterns[i].length() + 1);
-                    }
+                for (int j = 0; j < positionByStringIndexValue.get(i).size(); j++) {
+                    int endpoint = positionByStringIndexValue.get(i).get(j);
+                    positionByStringIndexValue.get(i).set(j, endpoint - patterns[i].length() + 1);
                 }
             }
         }
@@ -219,16 +211,16 @@ public class AhoCorasick {
     // method to search for patterns in text
     public static Map<String, ArrayList<Integer>> search(String text, String[] patterns) {
         Trie trie = new AhoCorasick().new Trie(patterns);
-        ArrayList<ArrayList<Integer>> res = trie.searchIn(text);
-        return convert(res, patterns);
+        ArrayList<ArrayList<Integer>> positionByStringIndexValue = trie.searchIn(text);
+        return convert(positionByStringIndexValue, patterns);
     }
 
     // method for converting results to a map
-    private static Map<String, ArrayList<Integer>> convert(ArrayList<ArrayList<Integer>> res, String[] patterns) {
+    private static Map<String, ArrayList<Integer>> convert(ArrayList<ArrayList<Integer>> positionByStringIndexValue, String[] patterns) {
         Map<String, ArrayList<Integer>> positionByString = new HashMap<>();
         for (int i = 0; i < patterns.length; i++) {
             String pattern = patterns[i];
-            ArrayList<Integer> positions = res.get(i);
+            ArrayList<Integer> positions = positionByStringIndexValue.get(i);
             positionByString.put(pattern, new ArrayList<>(positions));
         }
         return positionByString;
