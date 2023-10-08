@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.Queue;
 
 public final class AhoCorasick {
+    private AhoCorasick() {
+    }
 
     // Trie Node Class
     private static class Node {
