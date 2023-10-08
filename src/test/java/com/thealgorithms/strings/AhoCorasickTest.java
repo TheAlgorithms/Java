@@ -88,11 +88,7 @@ class AhoCorasickTest {
     void testPatternAtEnd() {
         // Define patterns that end at the end of the text
         final var searchPatterns = new String[] {"CG", "TCG", "ATCG"};
-        final var expected = Map.of(
-          "CG", new ArrayList<Integer>(Arrays.asList(4)),
-          "TCG", new ArrayList<Integer>(Arrays.asList(3)),
-          "ATCG", new ArrayList<Integer>(Arrays.asList(2))
-        );
+        final var expected = Map.of("CG", new ArrayList<Integer>(Arrays.asList(4)), "TCG", new ArrayList<Integer>(Arrays.asList(3)), "ATCG", new ArrayList<Integer>(Arrays.asList(2)));
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
 
@@ -109,19 +105,15 @@ class AhoCorasickTest {
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
 
-   /**
- * Test searching for patterns in a case-insensitive manner.
- * The search should consider patterns regardless of their case.
- */
-  @Test
-  void testCaseInsensitiveSearch() {
-      // Define patterns with different cases
-      final var searchPatterns = new String[] {"gca", "aTc", "C"};
-      final var expected = Map.of(
-          "gca", new ArrayList<Integer>(),
-          "aTc", new ArrayList<Integer>(),
-          "C", new ArrayList<Integer>(Arrays.asList(1, 4))
-      );
-      assertEquals(expected, AhoCorasick.search(text, searchPatterns));
-  }
+    /**
+     * Test searching for patterns in a case-insensitive manner.
+     * The search should consider patterns regardless of their case.
+     */
+    @Test
+    void testCaseInsensitiveSearch() {
+        // Define patterns with different cases
+        final var searchPatterns = new String[] {"gca", "aTc", "C"};
+        final var expected = Map.of("gca", new ArrayList<Integer>(), "aTc", new ArrayList<Integer>(), "C", new ArrayList<Integer>(Arrays.asList(1, 4)));
+        assertEquals(expected, AhoCorasick.search(text, searchPatterns));
+    }
 }
