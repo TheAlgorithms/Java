@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Random;
-
 public class MinValue {
     /**
      * Returns the smaller of two {@code int} values. That is, the result the
