@@ -1,11 +1,11 @@
 package com.thealgorithms.bitmanipulation;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MinValueTest {
-  @Test
+    @Test
     public void flipBitTest() {
         assertEquals(-1, MinValue.min(-1, 3));
         assertEquals(2, MinValue.min(3, 2));
