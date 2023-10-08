@@ -202,7 +202,7 @@ public final class AhoCorasick {
         private ArrayList<ArrayList<Integer>> positionByStringIndexValue;
 
         // Constructor to initialize the recorder with the position list
-        public PatternPositionRecorder(final ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
+        PatternPositionRecorder(final ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
             this.positionByStringIndexValue = positionByStringIndexValue;
         }
 
