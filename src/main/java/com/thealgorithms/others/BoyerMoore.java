@@ -13,20 +13,21 @@ public class BoyerMoore {
     public static int findmajor(int[] a) {
         int count = 0;
         int cand = -1;
-        for (int i = 0; i < a.length; i++) {
+        for (int k : a) {
             if (count == 0) {
-                cand = a[i];
+                cand = k;
                 count = 1;
             } else {
-                if (a[i] == cand) {
+                if (k == cand) {
                     count++;
                 } else {
                     count--;
                 }
             }
         }
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == cand) {
+        count = 0;
+        for (int j : a) {
+            if (j == cand) {
                 count++;
             }
         }
