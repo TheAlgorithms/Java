@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test; // Import the JUnit 5 Test annotation
 
 public class FibonacciNumberTest {
 
