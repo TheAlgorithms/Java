@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 public class FibonacciNumberTest {
 
-    @Test
-    public void testNthFibonacci() {
-        
+@Test
+public void testNthFibonacci() {
+         
         FibonacciNumber<Integer> searcher = new FibonacciNumber<>();
         // Test case 1: Fibonacci number at position 0
         int result1 = FibonacciNumber.nthFibonacci(0);
