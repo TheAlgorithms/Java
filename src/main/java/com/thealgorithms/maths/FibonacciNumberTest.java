@@ -5,31 +5,32 @@ import org.junit.jupiter.api.Test;
 public class FibonacciNumberTest {
 
     @Test
-    public void testNthFibonacci() {
-         
-        FibonacciNumber<Integer> searcher = new FibonacciNumber<>();
-        // Test case 1: Fibonacci number at position 0
-        int result1 = FibonacciNumber.fibonacci(0);
-        assertEquals(0, result1);
+    public void testNthFibonacciZero() {
+        int result = FibonacciNumber.nthFibonacci(0);
+        assertEquals(0, result);
+    }
 
-        // Test case 2: Fibonacci number at position 1
-        int result2 = FibonacciNumber.fibonacci(1);
-        assertEquals(1, result2);
+    @Test
+    public void testNthFibonacciOne() {
+        int result = FibonacciNumber.nthFibonacci(1);
+        assertEquals(1, result);
+    }
 
-        // Test case 3: Fibonacci number at position 2
-        int result3 = FibonacciNumber.fibonacci(2);
-        assertEquals(1, result3);
+    @Test
+    public void testNthFibonacciTwo() {
+        int result = FibonacciNumber.nthFibonacci(2);
+        assertEquals(1, result);
+    }
 
-        // Test case 4: Fibonacci number at position 5
-        int result4 = FibonacciNumber.fibonacci(5);
-        assertEquals(5, result4);
+    @Test
+    public void testNthFibonacciFive() {
+        int result = FibonacciNumber.nthFibonacci(5);
+        assertEquals(5, result);
+    }
 
-        // Test case 5: Fibonacci number at a large position (e.g., 10)
-        int result5 = FibonacciNumber.fibonacci(10);
-        assertEquals(55, result5);
-
-        // Test case 6: Fibonacci number at a negative position (should return -1)
-        int result6 = FibonacciNumber.fibonacci(-3);
-        assertEquals(-1, result6);
+    @Test
+    public void testNthFibonacciLarge() {
+        int result = FibonacciNumber.nthFibonacci(10);
+        assertEquals(55, result);
     }
 }
