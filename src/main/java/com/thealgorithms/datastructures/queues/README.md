@@ -9,7 +9,9 @@
 
 ## Declaration
 
-`Queue<Obj> queue = new LinkedList<Obj> ();` 
+`Queue<Obj> queue = new PriorityQueue<Obj> ();`
+
+`Queue<Obj> queue = new LinkedList<Obj>();` 
 
 ## Important operations
 
