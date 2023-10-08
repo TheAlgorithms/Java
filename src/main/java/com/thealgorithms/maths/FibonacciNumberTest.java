@@ -7,27 +7,24 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class FibonacciNumberTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 5, 10})
-    public void testNthFibonacci(int input) {
-        int result = FibonacciNumber.nthFibonacci(input);
-        switch (input) {
-        case 0:
-            assertEquals(0, result);
-            break;
-        case 1:
-            assertEquals(1, result);
-            break;
-        case 2:
-            assertEquals(1, result);
-            break;
-        case 5:
-            assertEquals(5, result);
-            break;
-        case 10:
-            assertEquals(55, result);
-            break;
-        default:
-            fail("Unexpected input value: " + input);
+    @ValueSource(ints = {0, 1, 2, 5, 10, 20, 30})
+    public void testNthFibonacci(int n) {
+        long result = FibonacciNumber.nthFibonacci(n);
+        long expectedResult = calculateFibonacciUsingLoop(n);
+        assertEquals(expectedResult, result);
+    }
+
+    private long calculateFibonacciUsingLoop(int n) {
+        if (n <= 1) {
+            return n;
         }
+        long prev = 0;
+        long current = 1;
+        for (int i = 2; i <= n; i++) {
+            long next = prev + current;
+            prev = current;
+            current = next;
+        }
+        return current;
     }
 }
