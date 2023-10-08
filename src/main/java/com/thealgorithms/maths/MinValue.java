@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class MinValue {
+public final class MinValue {
+    private MinValue() {
+    }
     /**
      * Returns the smaller of two {@code int} values. That is, the result the
      * argument closer to the value of {@link Integer#MIN_VALUE}. If the
