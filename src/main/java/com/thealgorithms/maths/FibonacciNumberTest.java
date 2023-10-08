@@ -2,8 +2,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
 public class FibonacciNumberTest {
 
     @Test
@@ -29,9 +27,6 @@ public class FibonacciNumberTest {
         assertEquals(Integer.valueOf(55), result5);
 
         // Test case 6: Fibonacci number at a negative position (should return -1)
-        assertThrows(IllegalArgumentException.class, () -> {
-            FibonacciNumber.nthFibonacci(-3);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumber.nthFibonacci(-3); });
     }
 }
-
