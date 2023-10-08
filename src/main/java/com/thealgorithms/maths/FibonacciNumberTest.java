@@ -10,8 +10,8 @@ public class FibonacciNumberTest {
         FibonacciNumber<Integer> searcher = new FibonacciNumber<>()
         
         // Test case 1: Fibonacci number at position 0
-        int result1
-        = FibonacciNumber.nthFibonacci(0);
+            int result1
+            = FibonacciNumber.nthFibonacci(0);
         assertEquals(0, result1);
 
         // Test case 2: Fibonacci number at position 1
