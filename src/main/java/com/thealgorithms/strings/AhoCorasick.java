@@ -200,7 +200,7 @@ public final class AhoCorasick {
         private ArrayList<ArrayList<Integer>> positionByStringIndexValue;
 
         // Constructor to initialize the recorder with the position list
-        public PatternPositionRecorder(ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
+        public PatternPositionRecorder(final ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
             this.positionByStringIndexValue = positionByStringIndexValue;
         }
 
@@ -211,7 +211,7 @@ public final class AhoCorasick {
          * @param parent The current node representing a character in the pattern trie.
          * @param currentPosition      The current position in the input text.
          */
-        public void recordPatternPositions(Node parent, int currentPosition) {
+        public void recordPatternPositions(final Node parent, final int currentPosition) {
             // Check if the current node represents the end of a pattern
             if (parent.getPatternInd() > -1) {
                 // Add the current position to the list of positions for the found pattern
