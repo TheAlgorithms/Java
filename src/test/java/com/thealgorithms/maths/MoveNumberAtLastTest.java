@@ -11,7 +11,7 @@ public class MoveNumberAtLastTest {
 
         int[] input = {5, 1, 5, 3, 12};
         int target = 5;
-        int[] expectedOutput = {1, 3, 1, 2, 5, 5};
+        int[] expectedOutput = {1, 3, 12, 5, 5};
 
         assertEquals(MoveNumberAtLast.moveNumber(input, target), expectedOutput);
     }
