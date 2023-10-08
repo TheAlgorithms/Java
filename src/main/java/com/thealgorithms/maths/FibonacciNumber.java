@@ -1,8 +1,3 @@
-// Created by Pronay Debnath
-// Date:- 1/10/2003
-// Updated FibonnaciNumber.java using golden ratio formula
-// Explanation:- https://www.quickanddirtytips.com/articles/what-is-the-golden-ratio-and-how-is-it-related-to-the-fibonacci-sequence/
-
 import java.util.*;
 
 public final class FibonacciNumber<T extends Number> {
@@ -26,5 +21,23 @@ public final class FibonacciNumber<T extends Number> {
 
         // Return the result
         return fibonacci;
+    }
+
+    public static void main(String[] args) {
+        // Create a Scanner object to read user input
+        Scanner sc = new Scanner(System.in);
+
+        // Prompt the user for input
+        System.out.print("Enter the value of n to find the nth Fibonacci number: ");
+
+        // Read the user's input as an integer
+        int n = sc.nextInt();
+
+        // Calculate and print the nth Fibonacci number
+        int result = nthFibonacci(n);
+        System.out.println("The " + n + "th Fibonacci number is: " + result);
+
+        // Close the scanner
+        scanner.close();
     }
 }
