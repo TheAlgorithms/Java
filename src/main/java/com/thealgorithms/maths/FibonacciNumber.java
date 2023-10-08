@@ -27,14 +27,4 @@ public final class FibonacciNumber<T extends Number> {
         // Return the result
         return fibonacci;
     }
-
-    public static void main(String[] args) {
-        // Example usage:
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter value of n: ");
-        int n = sc.nextInt();
-        int result = nthFibonacci(n);
-        System.out.println("The " + n + "th Fibonacci number is: " + result);
-        sc.close();
-    }
 }
