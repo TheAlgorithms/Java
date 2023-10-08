@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +13,6 @@ public class MoveNumberAtLastTest {
         int target = 5;
         int[] expectedOutput = {1, 3, 12, 5, 5};
 
-        assertEquals(MoveNumberAtLast.moveNumber(input, target), expectedOutput);
+        assertArrayEquals(MoveNumberAtLast.moveNumber(input, target),expectedOutput);
     }
 }
