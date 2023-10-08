@@ -1,4 +1,4 @@
-package com.thealgorithms.bitmanipulation;
+package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
