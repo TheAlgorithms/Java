@@ -9,7 +9,7 @@ public class FibonacciNumberTest {
         // Create an instance of GenericFibonacciNumber
         FibonacciNumber<Integer> searcher = new FibonacciNumber<>()
         
-        // Test case 1: Fibonacci number at position 0
+            // Test case 1: Fibonacci number at position 0
             int result1
             = FibonacciNumber.nthFibonacci(0);
         assertEquals(0, result1);
