@@ -112,7 +112,6 @@ public class AhoCorasick {
             root.setSuffixLink(root); // Initialize the suffix link of the root to itself
             Queue<Node> q = new LinkedList<>(); // Initialize a queue for BFS traversal
 
-            // Initialize suffix links for child nodes of the root
             initializeSuffixLinksForChildNodesOfTheRoot(q);
 
             while (!q.isEmpty()) {
