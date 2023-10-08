@@ -3,7 +3,7 @@ package com.thealgorithms.misc;
 import java.awt.Color;
 
 /**
- * @brief A Java implementation of the offcial W3 documented procedure to
+ * @brief A Java implementation of the official W3 documented procedure to
  * calculate contrast ratio between colors on the web. This is used to calculate
  * the readability of a foreground color on top of a background color.
  * @since 2020-10-15
