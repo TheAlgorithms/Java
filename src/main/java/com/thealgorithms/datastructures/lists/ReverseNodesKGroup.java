@@ -66,8 +66,7 @@ public class ReverseNodesKGroup {
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null || head.next == null)
-            return head; // base case: list is empty or list with only one node
+        if (head == null || head.next == null) return head; // base case: list is empty or list with only one node
 
         ListNode dummy = new ListNode(0); // create a dummy node
         dummy.next = head; // connect the dummy node to the head of the linked list
@@ -78,8 +77,7 @@ public class ReverseNodesKGroup {
             for (int i = 0; i < k && temp != null; i++) { // iterate through the linked list k times
                 temp = temp.next; // move temp pointer forward in the linked list
             }
-            if (temp == null)
-                break; // if the node referenced by temp is null, break (i.e. not enough nodes for a full k-group)
+            if (temp == null) break; // if the node referenced by temp is null, break (i.e. not enough nodes for a full k-group)
 
             // *** reverse the next k nodes *** (modified linked list reversal algorithm)
             ListNode prev = null; // pointer to reference the previous node
