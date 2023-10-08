@@ -75,7 +75,7 @@ public final class AhoCorasick {
             buildSuffixAndOutputLinks();
         }
 
-        // builds AcoCorasick Trie
+        // builds AhoCorasick Trie
         private void buildTrie() {
 
             // Loop through each input pattern and building Trie
@@ -156,17 +156,10 @@ public final class AhoCorasick {
 
         // Searches for patterns in the input text and records their positions
         public ArrayList<ArrayList<Integer>> searchIn(final String text) {
-            /*
-             * positionByStringIndexValue is the list of list containing the indexes of words in patterns/dictionary
-             * list index represents word.
-             * eg - list[0] contains the list of start-index of word pattern[0]
-             *      list[1] contains the list of start-index of word pattern[1]
-             *      ......
-             *      ......
-             *      list[n] contains the list of start-index of word pattern[n]
-             */
             var positionByStringIndexValue = initializePositionByStringIndexValue(); // Initialize a list to store positions of the current pattern
             Node parent = root; // Start searching from the root node
+
+            PatternPositionRecorder positionRecorder = new PatternPositionRecorder(positionByStringIndexValue);
 
             for (int i = 0; i < text.length(); i++) {
                 char ch = text.charAt(i); // Get the current character in the text
@@ -174,18 +167,7 @@ public final class AhoCorasick {
                 // Check if the current node has a child for the current character
                 if (parent.getChild().containsKey(ch)) {
                     parent = parent.getChild().get(ch); // Update the current node to the child node
-
-                    // If the current node represents a pattern, record its position in positionByStringIndexValue
-                    if (parent.getPatternInd() > -1) {
-                        positionByStringIndexValue.get(parent.getPatternInd()).add(i);
-                    }
-
-                    Node outputLink = parent.getOutputLink();
-                    // Follow output links to find and record positions of other patterns
-                    while (outputLink != null) {
-                        positionByStringIndexValue.get(outputLink.getPatternInd()).add(i);
-                        outputLink = outputLink.getOutputLink();
-                    }
+                    positionRecorder.recordPatternPositions(parent, i); // Use the method in PatternPositionRecorder to record positions
                 } else {
                     // If no child node exists for the character, backtrack using suffix links
                     while (parent != root && !parent.getChild().containsKey(ch)) {
@@ -196,9 +178,11 @@ public final class AhoCorasick {
                     }
                 }
             }
+
             setUpStartPoints(positionByStringIndexValue);
             return positionByStringIndexValue;
         }
+
         // by default positionByStringIndexValue contains end-points. This function converts those
         // endpoints to start points
         private void setUpStartPoints(ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
@@ -211,6 +195,38 @@ public final class AhoCorasick {
         }
     }
 
+    // Class to handle pattern position recording
+    private static class PatternPositionRecorder {
+        private ArrayList<ArrayList<Integer>> positionByStringIndexValue;
+
+        // Constructor to initialize the recorder with the position list
+        public PatternPositionRecorder(ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
+            this.positionByStringIndexValue = positionByStringIndexValue;
+        }
+
+        /**
+         * Records positions for a pattern when it's found in the input text and follows
+         * output links to record positions of other patterns.
+         *
+         * @param parent The current node representing a character in the pattern trie.
+         * @param currentPosition      The current position in the input text.
+         */
+        public void recordPatternPositions(Node parent, int currentPosition) {
+            // Check if the current node represents the end of a pattern
+            if (parent.getPatternInd() > -1) {
+                // Add the current position to the list of positions for the found pattern
+                positionByStringIndexValue.get(parent.getPatternInd()).add(currentPosition);
+            }
+
+            Node outputLink = parent.getOutputLink();
+            // Follow output links to find and record positions of other patterns
+            while (outputLink != null) {
+                // Add the current position to the list of positions for the pattern linked by outputLink
+                positionByStringIndexValue.get(outputLink.getPatternInd()).add(currentPosition);
+                outputLink = outputLink.getOutputLink();
+            }
+        }
+    }
     // method to search for patterns in text
     public static Map<String, ArrayList<Integer>> search(final String text, final String[] patterns) {
         final var trie = new Trie(patterns);
