@@ -72,6 +72,43 @@ public class CreateAndDetectLoop {
 
         return false;
     }
+    /**
+     * Detects the presence of a loop in the linked list adn breaks the loop.
+     *
+     *
+     * @param head the head node of the linked list
+     */
+    static void detectAndRemoveLoop(Node head){
+        if (head == null || head.next == null)
+            return;
+        Node sptr = head;
+        Node fptr = head;
+        sptr = sptr.next;
+        fptr = fptr.next.next;
+
+        while (fptr != null && fptr.next != null) {
+            sptr = sptr.next;
+            fptr = fptr.next.next;
+            if (fptr == sptr) {
+                break;
+            }
+        }
+
+        if(sptr == fptr){
+            fptr = head;
+            if(sptr != fptr){
+                while(sptr.next != fptr.next){
+                    sptr = sptr.next;
+                    fptr =  fptr.next;
+                }
+            }else{
+                while(fptr.next != sptr){
+                    fptr = fptr.next;
+                }
+                fptr.next = null;
+            }
+        }
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
