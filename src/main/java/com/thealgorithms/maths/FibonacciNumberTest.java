@@ -7,6 +7,7 @@ public class FibonacciNumberTest {
     @Test
     public void testNthFibonacci() {
         // Create an instance of GenericFibonacciNumber
+        
         FibonacciNumber<Integer> searcher = new FibonacciNumber<>()   
             // Test case 1: Fibonacci number at position 0
             int result1
