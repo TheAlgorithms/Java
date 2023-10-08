@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class MinValueTest {
     @Test
-    public void flipBitTest() {
+    public void minTest() {
         assertEquals(-1, MinValue.min(-1, 3));
         assertEquals(2, MinValue.min(3, 2));
     }
