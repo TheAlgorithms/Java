@@ -33,7 +33,7 @@ public class ReverseNodesKGroup {
     ListNode next;
     
     ListNode(int x) {
-      val = x;
+        val = x;
     }
   }
 
