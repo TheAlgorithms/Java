@@ -13,6 +13,6 @@ public class MoveNumberAtLastTest {
         int target = 5;
         int[] expectedOutput = {1, 3, 12, 5, 5};
 
-        assertArrayEquals(MoveNumberAtLast.moveNumber(input, target),expectedOutput);
+        assertArrayEquals(MoveNumberAtLast.moveNumber(input, target), expectedOutput);
     }
 }
