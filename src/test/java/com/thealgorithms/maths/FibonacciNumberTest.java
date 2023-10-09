@@ -9,11 +9,14 @@ public class FibonacciNumberTest {
     @ValueSource(ints = {0, 1, 2, 5, 10, 20, 30})
     public void testNthFibonacci(int n) {
         long result = FibonacciNumber.nthFibonacci(n);
-        long expectedResult = calculateFibonacciUsingLoop(n);
+        long expectedResult = FibonacciCalculator.calculateFibonacciUsingLoop(n);
         assertEquals(expectedResult, result);
     }
+}
 
-    private long calculateFibonacciUsingLoop(int n) {
+public class FibonacciCalculator {
+
+    public static long calculateFibonacciUsingLoop(int n) {
         if (n <= 1) {
             return n;
         }
