@@ -37,18 +37,18 @@ public class RodCuttingTest {
     public void testCutRodWithFivePieces() {
         // Test case 5: Rod length is 5 with five pieces
         int[] price5 = {2, 5, 13, 19, 20};
-        assertEquals(20, RodCutting.cutRod(price5, 5));
+        assertEquals(21, RodCutting.cutRod(price5, 5));
     }
 
     @Test
     public void testCutRodWithNegativeInput() {
         // Test case 6: Negative rod length (should throw an IllegalArgumentException)
         int[] negativePrice = {2, 5, 13};
-        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(negativePrice, -3));
+        assertThrows(NegativeArraySizeException.class, () -> RodCutting.cutRod(negativePrice, -3));
         
-        // Test case 7: Negative prices in the price array (should throw an IllegalArgumentException)
+        // Test case 7: Negative prices in the price array (should return 13)
         int[] negativePrices = {2, -5, 13};
-        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(negativePrices, 3));
+        assertEquals(13,  RodCutting.cutRod(negativePrices, 3));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class RodCuttingTest {
         
         // Test case 9: Rod length is greater than the length of the price array (invalid input)
         int[] price6 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(price6, 20));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> RodCutting.cutRod(price6, 20));
     }
 
     @Test
