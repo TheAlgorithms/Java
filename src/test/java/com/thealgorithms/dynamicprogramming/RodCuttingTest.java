@@ -1,7 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 public class RodCuttingTest {
 
@@ -48,7 +49,7 @@ public class RodCuttingTest {
         
         // Test case 7: Negative prices in the price array (should return 13)
         int[] negativePrices = {2, -5, 13};
-        assertEquals(13,  RodCutting.cutRod(negativePrices, 3));
+        assertEquals(13, RodCutting.cutRod(negativePrices, 3));
     }
 
     @Test
