@@ -39,7 +39,7 @@ class BinarySearch implements SearchAlgorithm {
      * @param key The number you are looking for
      * @param left The lower bound
      * @param right The upper bound
-     * @return the location of the key
+     * @return the position of the key in the array
      */
     private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         if (right < left) {
