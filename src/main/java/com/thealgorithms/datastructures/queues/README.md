@@ -11,9 +11,6 @@
   //queue implementation using PriorityQueue
 `Queue<Obj> queue = new PriorityQueue<Obj> ();`
 
- //queue implementation using LinkedList
-`Queue<Obj> queue = new LinkedList<Obj>();` 
-
 ## Important operations
 
 | Operations | Description |Time Complexity
