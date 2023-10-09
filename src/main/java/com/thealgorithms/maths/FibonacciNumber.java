@@ -3,20 +3,7 @@ public final class FibonacciNumber {
     }
 
     // Compute the limit for n that fits in a long
-    private static final int argLimit;
-    static {
-        long prev = 0;
-        long current = 1;
-
-        int limit = 0;      
-        while (current <= Long.MAX_VALUE) {
-            long next = prev + current;
-            prev = current;
-            current = next;
-            limit++;
-        }
-        argLimit = limit;
-    }
+    private static final int argLimit = 92;
 
     public static long nthFibonacci(int n) {
         if (n > argLimit) {
