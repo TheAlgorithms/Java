@@ -14,7 +14,7 @@ public class FibonacciNumberTest {
     }
 }
 
-public class FibonacciCalculator {
+class FibonacciCalculator {
 
     public static long calculateFibonacciUsingLoop(int n) {
         if (n <= 1) {
