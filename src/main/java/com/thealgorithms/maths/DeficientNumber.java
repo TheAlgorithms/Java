@@ -1,9 +1,9 @@
-package src.test.java.com.thealgorithms.maths;
+package com.thealgorithms.maths;
 import java.util.*;
 
 //A deficient number is a number for which the sum of its proper divisors is less than n.
 //This  program  takes an integer n as input and outputs "Yes" if it is a deficient number, and "No" otherwise.
-public class DeficientNumberTest {
+public class DeficientNumber {
     /**
      * Check if {@code n} is palindrome number or not
      *
@@ -12,7 +12,7 @@ public class DeficientNumberTest {
      * {@code false}
      */
 
-    public boolean isDeficientNumber(long number){
+    public static boolean isDeficientNumber(long number){
         if (number < 0) {
             throw new IllegalArgumentException("Input parameter must not be negative!");
         }
@@ -23,7 +23,7 @@ public class DeficientNumberTest {
             if(number%i==0)
             sum+=i+number/i;
         }
-        if(sqr*sqr==number)
+        if((long) sqr *sqr==number)
         sum-=sqr;
         return sum<t;
     }
