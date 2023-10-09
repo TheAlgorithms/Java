@@ -58,6 +58,35 @@ class BinarySearch implements SearchAlgorithm {
         }
     }
 
+    /**
+     * This method implements the Generic Binary Search iteratively.
+     *
+     * @param array The array to make the binary search
+     * @param key   The number you are looking for
+     * @return the location of the key, or -1 if not found
+     */
+    private static <T extends Comparable<T>> int searchIterative(T[] array, T key) {
+        int left = 0;
+        int right = array.length - 1;
+    
+        while (left <= right) {
+            int median = (left + right) >>> 1;
+            int comp = key.compareTo(array[median]);
+    
+            if (comp == 0) {
+                return median; // Key found
+            }
+    
+            if (comp < 0) {
+                right = median - 1; // Adjust the right bound
+            } else {
+                left = median + 1; // Adjust the left bound
+            }
+        }
+    
+        return -1; // Key not found
+    }
+
     // Driver Program
     public static void main(String[] args) {
         // Just generate data
