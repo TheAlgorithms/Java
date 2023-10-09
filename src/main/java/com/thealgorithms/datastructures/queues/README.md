@@ -8,8 +8,7 @@
 - LinkedList, ArrayBlockingQueue and PriorityQueue are the most commonly used implementations.
 
 ## Declaration
-  //queue implementation using PriorityQueue
-`Queue<Obj> queue = new PriorityQueue<Obj> ();`
+`Queue<Obj> queue = new PriorityQueue<Obj>();`
 
 ## Important operations
 
