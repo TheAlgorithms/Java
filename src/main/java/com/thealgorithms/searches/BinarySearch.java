@@ -23,7 +23,7 @@ class BinarySearch implements SearchAlgorithm {
 
     /**
      * @param array is an array where the element should be found
-     * @param key is an element which should be found
+     * @param key is an element that should be found
      * @param <T> is any comparable type
      * @return index of the element
      */
@@ -43,7 +43,7 @@ class BinarySearch implements SearchAlgorithm {
      */
     private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         if (right < left) {
-            return -1; // this means that the key not found
+            return -1; //This means that the key is not found
         }
         // find median
         int median = (left + right) >>> 1;
@@ -51,11 +51,11 @@ class BinarySearch implements SearchAlgorithm {
 
         if (comp == 0) {
             return median;
-        } else if (comp < 0) {
+        } 
+        if (comp < 0) {
             return search(array, key, left, median - 1);
-        } else {
-            return search(array, key, median + 1, right);
-        }
+        } 
+        return search(array, key, median + 1, right);
     }
 
     // Driver Program
