@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-//link for reference: https://en.wikipedia.org/wiki/Parallel_breadth-first_search
+// Link for reference: https://en.wikipedia.org/wiki/Parallel_breadth-first_search
 class DistributedBFS {
     private final int numNodes;
     private final boolean[][] graph;
@@ -39,12 +39,7 @@ class DistributedBFS {
     public static void main(String[] args) {
         int numNodes = 6; // Number of nodes in the graph
         boolean[][] graph = {
-            {false, true, true, false, false, false},
-            {true, false, false, true, false, false},
-            {true, false, false, false, true, false},
-            {false, true, false, false, true, true},
-            {false, false, true, true, false, false},
-            {false, false, false, true, false, false}
+            {false, true, true, false, false, false}, {true, false, false, true, false, false}, {true, false, false, false, true, false}, {false, true, false, false, true, true}, {false, false, true, true, false, false}, {false, false, false, true, false, false}
         };
 
         DistributedBFS distributedBFS = new DistributedBFS(numNodes, graph);

@@ -1,5 +1,5 @@
 package com.thealgorithms.datastructures.graphs;
-//Link for reference: https://www.scaler.com/topics/data-structures/disjoint-set/
+// Link for reference: https://www.scaler.com/topics/data-structures/disjoint-set/
 class DynamicConnectivity {
     private int[] parent;
     private int[] size;
@@ -28,8 +28,7 @@ class DynamicConnectivity {
         int rootP = find(p);
         int rootQ = find(q);
 
-        if (rootP == rootQ)
-            return;
+        if (rootP == rootQ) return;
 
         if (size[rootP] < size[rootQ]) {
             parent[rootP] = rootQ;
