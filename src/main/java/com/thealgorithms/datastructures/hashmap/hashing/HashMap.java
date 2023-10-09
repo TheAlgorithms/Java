@@ -1,6 +1,6 @@
-import java.util.*;
-
 package com.thealgorithms.datastructures.hashmap.hashing;
+
+import java.util.*;
 
 /**
  * A simple hash map implementation using separate chaining.
@@ -47,9 +47,10 @@ public class HashMap<K, V> {
      * @param key   The key to be inserted.
      * @param value The value associated with the key.
      */
-    public void insert(K key, V value) {
+    public void insertHash(K key, V value) {
         int hash = hashing(key);
         LinkedList<Entry<K, V>> bucket = buckets.get(hash);
+        // Add a new entry without checking for duplicates
         bucket.add(new Entry<>(key, value));
     }
 
@@ -58,7 +59,7 @@ public class HashMap<K, V> {
      *
      * @param key The key to be deleted.
      */
-    public void delete(K key) {
+    public void deleteHash(K key) {
         int hash = hashing(key);
         LinkedList<Entry<K, V>> bucket = buckets.get(hash);
         Iterator<Entry<K, V>> iterator = bucket.iterator();
@@ -74,7 +75,7 @@ public class HashMap<K, V> {
     /**
      * Displays the contents of the hash map.
      */
-    public void display() {
+    public void displayHashtable() {
         for (int i = 0; i < hsize; i++) {
             System.out.printf("Bucket %d: %s%n", i, buckets.get(i));
         }
@@ -90,6 +91,12 @@ public class HashMap<K, V> {
         private final K key;
         private final V value;
 
+        /**
+         * Constructs a new Entry.
+         *
+         * @param key   The key.
+         * @param value The value.
+         */
         public Entry(K key, V value) {
             this.key = key;
             this.value = value;
@@ -101,12 +108,18 @@ public class HashMap<K, V> {
         }
     }
 
+    /**
+     * Main method for testing the HashMap implementation.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         HashMap<String, Integer> hashMap = new HashMap<>(10);
-        hashMap.insert("one", 1);
-        hashMap.insert("two", 2);
-        hashMap.insert("three", 3);
-        hashMap.delete("two");
-        hashMap.display();
+        hashMap.insertHash("one", 1);
+        hashMap.insertHash("two", 2);
+        hashMap.insertHash("three", 3);
+        hashMap.deleteHash("two");
+        hashMap.displayHashtable();
     }
 }
+
