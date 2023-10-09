@@ -38,8 +38,7 @@ class DistributedBFS {
     }
     public static void main(String[] args) {
         int numNodes = 6; // Number of nodes in the graph
-        boolean[][] graph = {
-            {false, true, true, false, false, false}, {true, false, false, true, false, false}, {true, false, false, false, true, false}, {false, true, false, false, true, true}, {false, false, true, true, false, false}, {false, false, false, true, false, false}};
+        boolean[][] graph = {{false, true, true, false, false, false}, {true, false, false, true, false, false}, {true, false, false, false, true, false}, {false, true, false, false, true, true}, {false, false, true, true, false, false}, {false, false, false, true, false, false}};
 
         DistributedBFS distributedBFS = new DistributedBFS(numNodes, graph);
 
