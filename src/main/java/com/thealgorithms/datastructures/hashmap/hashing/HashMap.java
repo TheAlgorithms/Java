@@ -1,125 +1,225 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-import java.util.*;
-
 /**
  * A simple hash map implementation using separate chaining.
- *
- * @param <K> The key type.
- * @param <V> The value type.
  */
-public class HashMap<K, V> {
+public class HashMap {
 
-    private final int hsize;
-    private final List<LinkedList<Entry<K, V>>> buckets;
+    private final int tableSize;
+    private final LinkedList[] buckets;
 
     /**
-     * Creates a new hash map with the specified size.
+     * Constructs a new HashMap with the specified table size.
      *
-     * @param hsize The size of the hash map.
+     * @param tableSize The size of the hash map.
      */
-    public HashMap(int hsize) {
-        this.hsize = hsize;
-        buckets = new ArrayList<>(hsize);
-        for (int i = 0; i < hsize; i++) {
-            buckets.add(new LinkedList<>());
+    public HashMap(int tableSize) {
+        buckets = new LinkedList[tableSize];
+        for (int i = 0; i < tableSize; i++) {
+            buckets[i] = new LinkedList();
         }
+        this.tableSize = tableSize;
     }
 
     /**
-     * Hashes a key to determine the bucket index.
+     * Hashes an integer key to determine the bucket index.
      *
-     * @param key The key to be hashed.
+     * @param key The integer key to be hashed.
      * @return The index of the bucket where the key belongs.
      */
-    private int hashing(K key) {
-        int hashCode = key.hashCode();
-        int hash = hashCode % hsize;
+    public int hashing(int key) {
+        int hash = key % tableSize;
         if (hash < 0) {
-            hash += hsize;
+            hash += tableSize;
         }
         return hash;
     }
 
     /**
-     * Inserts a key-value pair into the hash map.
+     * Inserts an integer key into the hash map.
      *
-     * @param key   The key to be inserted.
-     * @param value The value associated with the key.
+     * @param key The integer key to be inserted.
      */
-    public void insertHash(K key, V value) {
+    public void insert(int key) {
         int hash = hashing(key);
-        LinkedList<Entry<K, V>> bucket = buckets.get(hash);
-        // Add a new entry without checking for duplicates
-        bucket.add(new Entry<>(key, value));
+        buckets[hash].insert(key);
     }
 
     /**
-     * Deletes a key-value pair from the hash map.
+     * Deletes an integer key from the hash map.
      *
-     * @param key The key to be deleted.
+     * @param key The integer key to be deleted.
      */
-    public void deleteHash(K key) {
+    public void delete(int key) {
         int hash = hashing(key);
-        LinkedList<Entry<K, V>> bucket = buckets.get(hash);
-        Iterator<Entry<K, V>> iterator = bucket.iterator();
-        while (iterator.hasNext()) {
-            Entry<K, V> entry = iterator.next();
-            if (entry.key.equals(key)) {
-                iterator.remove();
-                return;
-            }
-        }
+        buckets[hash].delete(key);
     }
 
     /**
      * Displays the contents of the hash map.
      */
     public void displayHashtable() {
-        for (int i = 0; i < hsize; i++) {
-            System.out.printf("Bucket %d: %s%n", i, buckets.get(i));
+        for (int i = 0; i < tableSize; i++) {
+            System.out.printf("Bucket %d: %s%n", i, buckets[i].display());
         }
     }
 
     /**
-     * Represents a key-value pair entry in the hash map.
-     *
-     * @param <K> The key type.
-     * @param <V> The value type.
+     * Represents a linked list used for chaining in the hash map.
      */
-    private static class Entry<K, V> {
-        private final K key;
-        private final V value;
+    public static class LinkedList {
+
+        private Node first;
 
         /**
-         * Constructs a new Entry.
-         *
-         * @param key   The key.
-         * @param value The value.
+         * Constructs an empty linked list.
          */
-        public Entry(K key, V value) {
-            this.key = key;
-            this.value = value;
+        public LinkedList() {
+            first = null;
         }
 
-        @Override
-        public String toString() {
-            return key + "=" + value;
+        /**
+         * Inserts an integer key into the linked list.
+         *
+         * @param key The integer key to be inserted.
+         */
+        public void insert(int key) {
+            if (isEmpty()) {
+                first = new Node(key);
+            } else {
+                Node temp = findEnd(first);
+                temp.setNext(new Node(key));
+            }
+        }
+
+        private Node findEnd(Node node) {
+            while (node.getNext() != null) {
+                node = node.getNext();
+            }
+            return node;
+        }
+
+        /**
+         * Finds a specific integer key in the linked list.
+         *
+         * @param key The integer key to be found.
+         * @return The Node containing the key, or null if not found.
+         */
+        public Node findKey(int key) {
+            if (!isEmpty()) {
+                Node temp = first;
+                while (temp != null) {
+                    if (temp.getKey() == key) {
+                        return temp;
+                    }
+                    temp = temp.getNext();
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Deletes a specific integer key from the linked list.
+         *
+         * @param key The integer key to be deleted.
+         */
+        public void delete(int key) {
+            if (!isEmpty()) {
+                if (first.getKey() == key) {
+                    Node next = first.getNext();
+                    first.setNext(null);
+                    first = next;
+                } else {
+                    delete(first, key);
+                }
+            }
+        }
+
+        private void delete(Node currentNode, int key) {
+            if (currentNode.getNext() == null) {
+                return; // Key not found
+            }
+            if (currentNode.getNext().getKey() == key) {
+                if (currentNode.getNext().getNext() == null) {
+                    currentNode.setNext(null);
+                } else {
+                    currentNode.setNext(currentNode.getNext().getNext());
+                }
+            } else {
+                delete(currentNode.getNext(), key);
+            }
+        }
+
+        /**
+         * Displays the contents of the linked list as a string.
+         *
+         * @return A string representation of the linked list.
+         */
+        public String display() {
+            return display(first);
+        }
+
+        private String display(Node node) {
+            if (node == null) {
+                return "null";
+            } else {
+                return node.getKey() + "->" + display(node.getNext());
+            }
+        }
+
+        /**
+         * Checks if the linked list is empty.
+         *
+         * @return true if the linked list is empty, false otherwise.
+         */
+        public boolean isEmpty() {
+            return first == null;
         }
     }
 
     /**
-     * Main method for testing the HashMap implementation.
-     *
-     * @param args Command-line arguments (not used).
+     * Represents a node in the linked list.
      */
-    public static void main(String[] args) {
-        HashMap<String, Integer> hashMap = new HashMap<>(10);
-        hashMap.insertHash("one", 1);
-        hashMap.insertHash("two", 2);
-        hashMap.insertHash("three", 3);
-        hashMap.deleteHash("two");
-        hashMap.displayHashtable();
+    public static class Node {
+
+        private Node next;
+        private final int key;
+
+        /**
+         * Constructs a new Node with an integer key.
+         *
+         * @param key The integer key for the Node.
+         */
+        public Node(int key) {
+            next = null;
+            this.key = key;
+        }
+
+        /**
+         * Gets the next Node in the linked list.
+         *
+         * @return The next Node in the linked list.
+         */
+        public Node getNext() {
+            return next;
+        }
+
+        /**
+         * Gets the integer key of the Node.
+         *
+         * @return The integer key of the Node.
+         */
+        public int getKey() {
+            return key;
+        }
+
+        /**
+         * Sets the next Node in the linked list.
+         *
+         * @param next The Node to set as the next Node.
+         */
+        public void setNext(Node next) {
+            this.next = next;
+        }
     }
 }
-

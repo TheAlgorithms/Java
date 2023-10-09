@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         int choice, key;
-
         HashMap h = new HashMap(7);
         Scanner In = new Scanner(System.in);
 
@@ -23,13 +22,13 @@ public class Main {
             case 1: {
                 System.out.println("Enter the Key: ");
                 key = In.nextInt();
-                h.insertHash(key);
+                h.insert(key);
                 break;
             }
             case 2: {
                 System.out.println("Enter the Key delete:  ");
                 key = In.nextInt();
-                h.deleteHash(key);
+                h.delete(key);
                 break;
             }
             case 3: {
