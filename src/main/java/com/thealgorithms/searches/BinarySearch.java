@@ -43,7 +43,7 @@ class BinarySearch implements SearchAlgorithm {
      */
     private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         if (right < left) {
-            return -1; //This means that the key is not found
+            return -1; // This means that the key is not found
         }
         // find median
         int median = (left + right) >>> 1;
@@ -51,10 +51,10 @@ class BinarySearch implements SearchAlgorithm {
 
         if (comp == 0) {
             return median;
-        } 
+        }
         if (comp < 0) {
             return search(array, key, left, median - 1);
-        } 
+        }
         return search(array, key, median + 1, right);
     }
 
