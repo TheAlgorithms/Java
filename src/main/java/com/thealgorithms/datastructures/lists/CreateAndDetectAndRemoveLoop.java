@@ -2,13 +2,47 @@ package com.thealgorithms.datastructures.lists;
 
 import java.util.Scanner;
 
-public class CreateAndDetectLoop {
+public class CreateAndDetectAndRemoveLoop {
 
     /**
      * Prints the linked list.
      *
      * @param	head	head node of the linked list
      */
+
+     public static void removeLoop(Node head){
+        Node fast = head.next;
+        Node slow = head;
+        
+        while( fast!=slow )
+        {
+            if( fast==null || fast.next==null ) 
+            return;
+            
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        int size = 1;
+        fast = fast.next;
+        while( fast!=slow )
+        {
+            fast = fast.next;
+            //incrementing the counter which stores length of loop..
+            size+=1;
+        }
+        slow = head;
+        fast = head;
+
+        for(int i=0; i<size-1; i++)
+            fast = fast.next;
+        while( fast.next != slow )
+        {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        //storing null in link part of the last node.
+        fast.next = null;
+    }
     static void printList(Node head) {
         Node cur = head;
 
