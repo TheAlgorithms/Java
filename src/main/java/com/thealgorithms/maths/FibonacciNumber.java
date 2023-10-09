@@ -9,6 +9,7 @@ public final class FibonacciNumber {
         long prev = 0;
         long current = 1;
         int limit = 0;
+        
         while (current <= Long.MAX_VALUE) {
             long next = prev + current;
             prev = current;
