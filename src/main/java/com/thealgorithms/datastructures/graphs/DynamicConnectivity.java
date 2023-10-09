@@ -1,4 +1,5 @@
 package com.thealgorithms.datastructures.graphs;
+//Link for reference: https://www.scaler.com/topics/data-structures/disjoint-set/
 class DynamicConnectivity {
     private int[] parent;
     private int[] size;

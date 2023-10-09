@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+//link for reference: https://en.wikipedia.org/wiki/Parallel_breadth-first_search
 class DistributedBFS {
     private final int numNodes;
     private final boolean[][] graph;
