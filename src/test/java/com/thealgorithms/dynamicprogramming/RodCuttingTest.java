@@ -54,13 +54,13 @@ public class RodCuttingTest {
 
     @Test
     public void testCutRodWithZeroLength() {
-        // Test case 8: Rod length is 0 (should return 0 as the rod cannot be cut)
-        int[] emptyPrice = {};
-        assertEquals(0, RodCutting.cutRod(emptyPrice, 0));
-        
-        // Test case 9: Rod length is greater than the length of the price array (invalid input)
+        // Test case 8: Rod length is greater than the length of the price array (invalid input)
         int[] price6 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> RodCutting.cutRod(price6, 20));
+
+        // Test case 9: Rod length is 0 (should return 0 as the rod cannot be cut)
+        int[] emptyPrice = {};
+        assertEquals(0, RodCutting.cutRod(emptyPrice, 0));
     }
 
     @Test
