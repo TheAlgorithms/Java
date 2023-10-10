@@ -2,34 +2,36 @@ package com.thealgorithms.sorts;
 
 public class DNFSort {
 
-    // Sort the input array, the array is assumed to
-    // have values in {0, 1, 2}
+    // Sort the input array, the array is assumed to have values in {0, 1, 2}
     static void sort012(int[] a, int arr_size) {
         int low = 0;
         int high = arr_size - 1;
-        int mid = 0, temp = 0;
+        int mid = 0;
         while (mid <= high) {
-            switch (a[mid]) {
-            case 0: {
-                temp = a[low];
-                a[low] = a[mid];
-                a[mid] = temp;
-                low++;
-                mid++;
-                break;
+            //If element is 0
+            if(a[mid]==0) {
+            	swap(a,low,mid);
+            	low++;
+            	mid++; 
             }
-            case 1:
-                mid++;
-                break;
-            case 2: {
-                temp = a[mid];
-                a[mid] = a[high];
-                a[high] = temp;
-                high--;
-                break;
+            //If element is 1
+            else if(a[mid]==1) {
+            	mid++;
+            }
+            //If element is 2
+            else {
+            	swap(a,mid,high);
+            	high--;
             }
             }
         }
+    }
+
+    //Method for swapping values
+    static void swap(int a[],int i,int j) {
+    	 int temp = a[i];
+    	 a[i] = a[j];
+    	 a[j] = temp;
     }
 
     /* Utility function to print array arr[] */
