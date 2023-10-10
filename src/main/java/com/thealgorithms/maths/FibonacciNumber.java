@@ -11,11 +11,9 @@ public final class FibonacciNumber {
         }
 
         // Calculate the nth Fibonacci number using the golden ratio formula
-        double sqrt5 = Math.sqrt(5);
-        double phi = (1 + sqrt5) / 2;
-        double psi = (1 - sqrt5) / 2;
-        long fibonacci = (long) ((1.0 / sqrt5) * (Math.pow(phi, n) - Math.pow(psi, n)));
-
-        return fibonacci;
+        final double sqrt5 = Math.sqrt(5);
+        final double phi = (1 + sqrt5) / 2;
+        final double psi = (1 - sqrt5) / 2;
+        return (long) ((Math.pow(phi, n) - Math.pow(psi, n)) / sqrt5);
     }
 }
