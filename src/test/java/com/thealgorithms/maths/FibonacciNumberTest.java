@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class FibonacciNumberTest {
 
-    private FibonacciCalculator calculator = new FibonacciCalculator();
+    private FibCalc calculator = new FibCalc();
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 5, 10, 20, 30, 92}) // Include 92 as the upper limit
