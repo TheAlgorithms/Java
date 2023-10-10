@@ -1,4 +1,4 @@
-public class FibC {
+public class FibCalc {
 
     public static long calculateFibonacciUsingLoop(int n) {
         if (n <= 1) {
