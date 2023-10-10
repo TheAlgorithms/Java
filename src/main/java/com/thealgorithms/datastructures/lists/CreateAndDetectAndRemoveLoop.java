@@ -11,6 +11,7 @@ public class CreateAndDetectAndRemoveLoop {
      */
 
      public static void removeLoop(Node head){
+
         Node fast = head.next;
         Node slow = head;
         
