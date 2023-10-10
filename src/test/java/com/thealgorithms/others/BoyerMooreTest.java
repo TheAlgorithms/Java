@@ -1,8 +1,9 @@
 package com.thealgorithms.others;
 
 // Import the JUnit library and the BoyerMoore class
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 public class BoyerMooreTest {
 
