@@ -7,43 +7,41 @@ public class CreateAndDetectAndRemoveLoop {
     /**
      * Prints the linked list.
      *
-     * @param	head	head node of the linked list
+     * @param head head node of the linked list
      */
 
-     public static void removeLoop(Node head){
+    public static void removeLoop(Node head) {
 
         Node fast = head.next;
         Node slow = head;
-        
-        while( fast!=slow )
-        {
-            if( fast==null || fast.next==null ) 
-            return;
-            
+
+        while (fast != slow) {
+            if (fast == null || fast.next == null)
+                return;
+
             fast = fast.next.next;
             slow = slow.next;
         }
         int size = 1;
         fast = fast.next;
-        while( fast!=slow )
-        {
+        while (fast != slow) {
             fast = fast.next;
-            //incrementing the counter which stores length of loop..
-            size+=1;
+            // incrementing the counter which stores length of loop..
+            size += 1;
         }
         slow = head;
         fast = head;
 
-        for(int i=0; i<size-1; i++)
+        for (int i = 0; i < size - 1; i++)
             fast = fast.next;
-        while( fast.next != slow )
-        {
+        while (fast.next != slow) {
             fast = fast.next;
             slow = slow.next;
         }
-        //storing null in link part of the last node.
+        // storing null in link part of the last node.
         fast.next = null;
     }
+
     static void printList(Node head) {
         Node cur = head;
 
@@ -57,10 +55,11 @@ public class CreateAndDetectAndRemoveLoop {
      * Creates a loop in the linked list.
      *
      * @see
-     * 	<a href="https://www.geeksforgeeks.org/make-loop-k-th-position-linked-list/">
-     * GeeksForGeeks: Make a loop at K-th position</a>
-     * @param	head	head node of the linked list
-     * @param	k	position of node where loop is to be created
+     *      <a href=
+     *      "https://www.geeksforgeeks.org/make-loop-k-th-position-linked-list/">
+     *      GeeksForGeeks: Make a loop at K-th position</a>
+     * @param head head node of the linked list
+     * @param k    position of node where loop is to be created
      */
     static void createLoop(Node head, int k) {
         if (head == null) {
@@ -86,8 +85,9 @@ public class CreateAndDetectAndRemoveLoop {
      * Detects the presence of a loop in the linked list.
      *
      * @see
-     * 	<a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">
-     * Floyd's Cycle Detection Algorithm</a>
+     *      <a href=
+     *      "https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">
+     *      Floyd's Cycle Detection Algorithm</a>
      *
      * @param head the head node of the linked list
      *
