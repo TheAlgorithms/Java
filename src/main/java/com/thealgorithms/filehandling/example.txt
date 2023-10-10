@@ -1,0 +1,2 @@
+Hello, World!
+This is a file handling example.
