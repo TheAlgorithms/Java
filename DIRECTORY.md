@@ -705,6 +705,7 @@
             * [FindMaxTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMaxTest.java)
             * [FindMinRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMinRecursionTest.java)
             * [FindMinTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FindMinTest.java)
+            * [FloorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FloorTest.java)
             * [FrizzyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FrizzyNumberTest.java)
             * [GaussianTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GaussianTest.java)
             * [GCDTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GCDTest.java)
