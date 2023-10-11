@@ -31,7 +31,7 @@ public class MLQScheduling {
         this.numQueues = numQueues;
         queues = new ArrayList<>(numQueues);
         for (int i = 0; i < numQueues; i++) {
-          queues.add(new LinkedList<>());
+            queues.add(new LinkedList<>());
         }
     }
 
@@ -42,16 +42,16 @@ public class MLQScheduling {
 
     public void run() {
         while (!queues.get(0).isEmpty() || !queues.get(numQueues - 1).isEmpty()) {
-          // Start from the highest-priority queue (Queue 0)
+            // Start from the highest-priority queue (Queue 0)
             for (int i = 0; i < numQueues; i++) {
                 Queue<ProcessTask> currentQueue = queues.get(i);
                 if (!currentQueue.isEmpty()) {
-                // Get the next process from the current queue
-                ProcessTask currentProcess = currentQueue.poll();
-                System.out.println("Running process: " + currentProcess.name);
-    
-                // Simulate process execution (reduce burst time)
-                int remainingBurstTime = currentProcess.burstTime - 1;
+                    // Get the next process from the current queue
+                    ProcessTask currentProcess = currentQueue.poll();
+                    System.out.println("Running process: " + currentProcess.name);
+        
+                    // Simulate process execution (reduce burst time)
+                    int remainingBurstTime = currentProcess.burstTime - 1;
                     if (remainingBurstTime > 0) {
                         // Move the process to a lower-priority queue
                         int nextQueueIndex = Math.min(i + 1, numQueues - 1);
@@ -76,7 +76,7 @@ public class MLQScheduling {
         scheduler.addProcess(new ProcessTask("P2", 1, 4));
         scheduler.addProcess(new ProcessTask("P3", 2, 3));
         scheduler.addProcess(new ProcessTask("P4", 0, 2));
-    
+        
         // Run the scheduler
         scheduler.run();
     }
