@@ -14,7 +14,7 @@ public class FloorTest {
     }
 
     @Test
-    public void testFloorDecimalNumber() {
+    public void testFloorDoubleNumber() {
         assertEquals(0, Floor.floor(0.1));
         assertEquals(1, Floor.floor(1.9));
         assertEquals(-2, Floor.floor(-1.1));
