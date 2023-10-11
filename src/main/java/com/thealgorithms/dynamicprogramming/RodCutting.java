@@ -6,7 +6,6 @@ package com.thealgorithms.dynamicprogramming;
  * pieces
  */
 public final class RodCutting {
-    
     private RodCutting() { 
     }
 
