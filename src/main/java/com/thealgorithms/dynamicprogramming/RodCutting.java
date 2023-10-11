@@ -34,15 +34,4 @@ public class RodCutting {
         // The final element of 'val' contains the maximum obtainable value for a rod of length 'n'.
         return val[n];
     }
-
-    /**
-     * The main method to test the RodCutting class.
-     *
-     * @param args Command line arguments (not used).
-     */
-    public static void main(String[] args) {
-        int[] arr = new int[] {2, 5, 13, 19, 20};
-        int result = cutRod(arr, arr.length);
-        System.out.println("Maximum Obtainable Value is " + result);
-    }
 }
