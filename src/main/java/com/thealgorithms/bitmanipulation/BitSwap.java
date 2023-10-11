@@ -1,3 +1,5 @@
+package com.thealgorithms.bitmanipulation;
+
 public final BitSwap {
   private BitSwap() {
   }
