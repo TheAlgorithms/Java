@@ -6,8 +6,9 @@ package com.thealgorithms.dynamicprogramming;
  * pieces
  */
 public final class RodCutting {
-    
-    private RodCutting() { 
+
+    private RodCutting() {
+        
     }
 
     public static int cutRod(int[] price, int n) {
