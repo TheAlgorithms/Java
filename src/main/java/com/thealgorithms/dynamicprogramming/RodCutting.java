@@ -5,7 +5,9 @@ package com.thealgorithms.dynamicprogramming;
  * obtainable price for a rod of length n and price[] as prices of different
  * pieces
  */
-public class RodCutting {
+public final class RodCutting {
+    private RodCutting() { 
+    }
 
     public static int cutRod(int[] price, int n) {
         int[] val = new int[n + 1];
@@ -21,12 +23,5 @@ public class RodCutting {
         }
 
         return val[n];
-    }
-
-    // main function to test
-    public static void main(String[] args) {
-        int[] arr = new int[] {2, 5, 13, 19, 20};
-        int result = cutRod(arr, arr.length);
-        System.out.println("Maximum Obtainable Value is " + result);
     }
 }
