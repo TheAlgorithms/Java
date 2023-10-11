@@ -15,5 +15,5 @@ public final BitSwap {
             bit = bit ^ (1 << swap2);
         }
         return bit;
-     }
+    }
 }
