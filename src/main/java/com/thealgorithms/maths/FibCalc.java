@@ -1,13 +1,14 @@
-public class FibCalc {
+import java.math.BigInteger;
 
-    public static long calculateFibonacciUsingLoop(int n) {
+public class FibCalc {
+    public static BigInteger calFib(int n) {
         if (n <= 1) {
-            return n;
+            return BigInteger.valueOf(n);
         }
-        long prev = 0;
-        long current = 1;
+        BigInteger prev = BigInteger.ZERO;
+        BigInteger current = BigInteger.ONE;
         for (int i = 2; i <= n; i++) {
-            long next = prev + current;
+            BigInteger next = prev.add(current);
             prev = current;
             current = next;
         }
