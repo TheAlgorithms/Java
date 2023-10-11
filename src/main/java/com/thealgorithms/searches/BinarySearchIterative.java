@@ -54,7 +54,6 @@ class BinarySearchIterative implements SearchAlgorithm {
                 left = median + 1; // Adjust the left bound
             }
         }
-        
         return -1; // Key not found
     }
 
