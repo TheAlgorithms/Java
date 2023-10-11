@@ -40,7 +40,6 @@ class BinarySearchIterative implements SearchAlgorithm {
      * @return the location of the key, or -1 if not found
      */
     private static <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
-    
         while (left <= right) {
             int median = (left + right) >>> 1;
             int comp = key.compareTo(array[median]);
