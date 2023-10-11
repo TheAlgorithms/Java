@@ -11,7 +11,7 @@ public class FindKthNumber {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        /* generate array with random size and random elements */
+        /* generate an array with random size and random elements */
         int[] nums = generateArray(100);
 
         /* get 3th largest element */
