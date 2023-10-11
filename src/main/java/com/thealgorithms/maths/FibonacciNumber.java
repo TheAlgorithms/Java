@@ -12,13 +12,13 @@ public final class FibonacciNumber {
             throw new IllegalArgumentException("Input 'n' is too large to fit into a long.");
         }
 
-        // Calculate the nth Fibonacci number using the golden ratio formula
-        final double sqrt5 = Math.sqrt(5);
-        final double phi = (1 + sqrt5) / 2;
-        final double psi = (1 - sqrt5) / 2;
-        double result = (Math.pow(phi, n) - Math.pow(psi, n)) / sqrt5;
-
-        // Round to the nearest integer and convert to BigInteger
-        return BigInteger.valueOf(Math.round(result));
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        for (int i = 2; i <= n; i++) {
+            BigInteger next = a.add(b);
+            a = b;
+            b = next;
+        }
+        return b;
     }
 }
