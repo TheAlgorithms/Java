@@ -1,6 +1,6 @@
 package com.thealgorithms.bitmanipulation;
 
-public final BitSwap {
+public final class BitSwap {
     private BitSwap() {
     }
     /*
