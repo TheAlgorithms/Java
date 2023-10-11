@@ -13,7 +13,7 @@ public final class FindMin {
      */
     public static int findMin(final int[] array) {
         if (array.length == 0) {
-            throw new IllegalArgumentException("array must be non-empty.");
+            throw new IllegalArgumentException("Array must be non-empty.");
         }
         int min = array[0];
         for (int i = 1; i < array.length; i++) {

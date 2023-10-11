@@ -1,15 +1,15 @@
 package com.thealgorithms.maths;
 
 /**
- * This is Euclid's algorithm which is used to find the greatest common
- * denominator Overide function name gcd
+ * This is Euclid's algorithm, used to find the greatest common
+ * denominator Override function name gcd
  *
  * @author Oskar Enmalm 3/10/17
  */
 public class GCD {
 
     /**
-     * get greatest common divisor
+     * get the greatest common divisor
      *
      * @param num1 the first number
      * @param num2 the second number
