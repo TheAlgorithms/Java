@@ -16,8 +16,7 @@ public class CreateAndDetectAndRemoveLoop {
         Node slow = head;
 
         while (fast != slow) {
-            if (fast == null || fast.next == null)
-                return;
+            if (fast == null || fast.next == null) return;
 
             fast = fast.next.next;
             slow = slow.next;
@@ -32,8 +31,7 @@ public class CreateAndDetectAndRemoveLoop {
         slow = head;
         fast = head;
 
-        for (int i = 0; i < size - 1; i++)
-            fast = fast.next;
+        for (int i = 0; i < size - 1; i++) fast = fast.next;
         while (fast.next != slow) {
             fast = fast.next;
             slow = slow.next;
