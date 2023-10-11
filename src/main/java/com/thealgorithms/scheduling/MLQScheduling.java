@@ -49,7 +49,6 @@ public class MLQScheduling {
                     // Get the next process from the current queue
                     ProcessTask currentProcess = currentQueue.poll();
                     System.out.println("Running process: " + currentProcess.name);
-        
                     // Simulate process execution (reduce burst time)
                     int remainingBurstTime = currentProcess.burstTime - 1;
                     if (remainingBurstTime > 0) {
@@ -76,7 +75,6 @@ public class MLQScheduling {
         scheduler.addProcess(new ProcessTask("P2", 1, 4));
         scheduler.addProcess(new ProcessTask("P3", 2, 3));
         scheduler.addProcess(new ProcessTask("P4", 0, 2));
-        
         // Run the scheduler
         scheduler.run();
     }
