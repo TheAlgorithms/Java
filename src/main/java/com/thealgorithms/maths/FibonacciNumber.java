@@ -1,5 +1,7 @@
 // Explanation:- https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula
 
+import java.math.BigInteger;
+
 public final class FibonacciNumber {
     private FibonacciNumber() {
     }
@@ -9,8 +11,16 @@ public final class FibonacciNumber {
     private static final int argLimit = 70;
 
     public static BigInteger nthFibonacci(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
+        }
+
         if (n > argLimit) {
             throw new IllegalArgumentException("Input 'n' is too large to fit into a long.");
+        }
+
+        if (n <= 1) {
+            return BigInteger.valueOf(n);
         }
 
         // Calculate the nth Fibonacci number using the golden ratio formula
