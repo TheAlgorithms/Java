@@ -1,16 +1,18 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigInteger;
-import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class FibonacciNumberTest {
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 5, 10, 20, 30, 92})
-    public void testNthFibonacci(int n) {
-        BigInteger result = FibonacciNumber.nthFibonacci(n);
-        BigInteger expectedResult = FibCalc.calFib(n);
-        assertEquals(expectedResult, result);
+    @Test
+    public void returnsCorrectValues() {
+        for (int n = 0; n <= 92; ++n) {
+            final var actual = FibonacciNumber.nthFibonacci(n);
+            final var expected = FibCalc.calFib(n);
+            System.out.println("n = " + n);
+            assertEquals(expected, actual);
+        }
     }
 }
