@@ -3,26 +3,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-public class FibCalcTest {
+public class FiboTest {
     @Test
     public void checkValueAtZero() {
-        assertEquals(BigInteger.ZERO, FibCalc.calFib(0));
+        assertEquals(BigInteger.ZERO, Fibonacci.calFib(0));
     }
 
     @Test
     public void checkValueAtOne() {
-        assertEquals(BigInteger.ONE, FibCalc.calFib(1));
+        assertEquals(BigInteger.ONE, Fibonacci.calFib(1));
     }
 
     @Test
     public void checkValueAtTwo() {
-        assertEquals(BigInteger.ONE, FibCalc.calFib(2));
+        assertEquals(BigInteger.ONE, Fibonacci.calFib(2));
     }
 
     @Test
     public void checkRecurenceRelation() {
         for (int i = 0; i < 100; ++i) {
-            assertEquals(FibCalc.calFib(i + 2), FibCalc.calFib(i + 1).add(FibCalc.calFib(i)));
+            assertEquals(Fibonacci.calFib(i + 2), Fibonacci.calFib(i + 1).add(Fibonacci.calFib(i)));
         }
     }
 }
