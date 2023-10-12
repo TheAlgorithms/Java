@@ -44,6 +44,10 @@ public class MatrixRank {
         return rank;
     }
 
+    private static boolean isZero(double value) {
+        return Math.abs(value) < EPSILON;
+    }
+
     /**
      * @brief Checks if the input matrix is a jagged matrix.
      * Jaggged matrix is a matrix where the number of columns in each row is not the same.
@@ -76,7 +80,7 @@ public class MatrixRank {
     private static int findPivotRow(double[][] matrix, boolean[] rowMarked, int colIndex) {
         int numRows = matrix.length;
         for (int pivotRow = 0; pivotRow < numRows; ++pivotRow) {
-            if (!rowMarked[pivotRow] && Math.abs(matrix[pivotRow][colIndex]) > EPSILON) {
+            if (!rowMarked[pivotRow] && !isZero(matrix[pivotRow][colIndex])) {
                 return pivotRow;
             }
         }
@@ -111,7 +115,7 @@ public class MatrixRank {
         int numRows = matrix.length;
         int numColumns = matrix[0].length;
         for (int otherRow = 0; otherRow < numRows; ++otherRow) {
-            if (otherRow != pivotRow && Math.abs(matrix[otherRow][colIndex]) > EPSILON) {
+            if (otherRow != pivotRow && !isZero(matrix[otherRow][colIndex])) {
                 for (int col2 = colIndex + 1; col2 < numColumns; ++col2) {
                     matrix[otherRow][col2] -= matrix[pivotRow][col2] * matrix[otherRow][colIndex];
                 }
