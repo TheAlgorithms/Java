@@ -1,3 +1,5 @@
+// Explanation:- https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula
+
 public final class FibonacciNumber {
     private FibonacciNumber() {
     }
