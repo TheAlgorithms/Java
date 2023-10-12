@@ -2,7 +2,6 @@ package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
-
 /**
  * Binary search is one of the most popular algorithms The algorithm finds the
  * position of a target value within a sorted array

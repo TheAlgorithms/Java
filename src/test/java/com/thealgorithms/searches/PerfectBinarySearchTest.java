@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 import com.thealgorithms.searches.PerfectBinarySearch;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author D Sunil (https://github.com/sunilnitdgp)
@@ -29,14 +29,14 @@ public class PerfectBinarySearchTest {
     public void testStringBinarySearch() {
         String[] array = {"apple", "banana", "cherry", "date", "fig"};
         PerfectBinarySearch<String> binarySearch = new PerfectBinarySearch<>();
-        
-        // Test cases for elements present in the array
-        assertEquals(0, binarySearch.find(array, "apple")); // First element
-        assertEquals(2, binarySearch.find(array, "cherry")); // Middle element
-        assertEquals(4, binarySearch.find(array, "fig")); // Last element
 
         // Test cases for elements not in the array
         assertEquals(-1, binarySearch.find(array, "apricot")); // Element not in the array
         assertEquals(-1, binarySearch.find(array, "bananaa")); // Element not in the array
+
+        // Test cases for elements present in the array
+        assertEquals(0, binarySearch.find(array, "apple")); // First element
+        assertEquals(2, binarySearch.find(array, "cherry")); // Middle element
+        assertEquals(4, binarySearch.find(array, "fig")); // Last element
     }
 }
