@@ -535,6 +535,7 @@
             * [longestNonRepeativeSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/longestNonRepeativeSubstring.java)
             * [LongestPalindromicSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/LongestPalindromicSubstring.java)
             * [Lower](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Lower.java)
+            * [MergeStringAlternately](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/MergeStringAlternately.java)
             * [MyAtoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/MyAtoi.java)
             * [Palindrome](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Palindrome.java)
             * [Pangram](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Pangram.java)
