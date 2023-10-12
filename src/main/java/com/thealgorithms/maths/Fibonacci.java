@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class F {
+public class Fibonacci {
     public static BigInteger calFib(int n) {
         if (n <= 1) {
             return BigInteger.valueOf(n);
