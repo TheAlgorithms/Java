@@ -51,17 +51,17 @@ class DigitalRoot {
         }
     }
 
-    // This function is used for finding the sum of digits of number
+    // This function is used for finding the sum of the digits of number
     public static int single(int n) {
         if (n <= 9) { // if n becomes less than 10 than return n
             return n;
         } else {
             return (n % 10) + single(n / 10); // n % 10 for extracting digits one by one
         }
-    } // n / 10 is the number obtainded after removing the digit one by one
-    // Sum of digits is stored in the Stack memory and then finally returned
+    } // n / 10 is the number obtained after removing the digit one by one
+    // The Sum of digits is stored in the Stack memory and then finally returned
 }
 /**
- * Time Complexity : O((Number of Digits)^2) Auxiliary Space Complexity :
- * O(Number of Digits) Constraints : 1 <= n <= 10^7
+ * Time Complexity: O((Number of Digits)^2) Auxiliary Space Complexity:
+ * O(Number of Digits) Constraints: 1 <= n <= 10^7
  */
