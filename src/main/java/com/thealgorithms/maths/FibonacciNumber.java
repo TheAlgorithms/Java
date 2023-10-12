@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 
 public final class FibonacciNumber {
-    private Fibonacci() {
+    private FibonacciNumber() {
     }
 
     // Compute the limit for n that fits in a long
