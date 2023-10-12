@@ -1,6 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import dynamicprogramming.MaximumSumWithoutAdjacent;
 import org.junit.jupiter.api.Test;
 
 public class MaximumSumWithoutAdjacentTest {

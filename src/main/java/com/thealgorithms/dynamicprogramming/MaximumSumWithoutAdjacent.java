@@ -1,4 +1,4 @@
-package dynamicprogramming;
+package com.thealgorithms.dynamicprogramming;
 
 /**
  * Problem Statement:
