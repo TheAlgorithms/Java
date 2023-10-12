@@ -5,7 +5,7 @@ public final class FibonacciNumber {
     }
 
     // Compute the limit for n that fits in a long
-    private static final int argLimit = 100;
+    private static final int argLimit = 92;
 
     public static BigInteger nthFibonacci(int n) {
         if (n > argLimit) {
