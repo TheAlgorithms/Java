@@ -1,11 +1,10 @@
-import java.math.BigInteger;
-
 public final class FibonacciNumber {
     private FibonacciNumber() {
     }
 
     // Compute the limit for n that fits in a long
-    private static final int argLimit = 92;
+    // Reducing the limit to 70 due to incorrect results for larger inputs
+    private static final int argLimit = 70;
 
     public static BigInteger nthFibonacci(int n) {
         if (n > argLimit) {
