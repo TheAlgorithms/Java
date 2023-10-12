@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-public class FiboTest {
+public class FibonacciTest {
     @Test
     public void checkValueAtZero() {
         assertEquals(BigInteger.ZERO, Fibonacci.calFib(0));
