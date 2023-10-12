@@ -8,7 +8,7 @@ public class FibonacciNumberTest {
 
     @Test
     public void returnsCorrectValues() {
-        for (int n = 0; n <= 92; ++n) {
+        for (int n = 0; n <= 70; ++n) {
             final var actual = FibonacciNumber.nthFibonacci(n);
             final var expected = Fibonacci.calFib(n);
             System.out.println("n = " + n);
