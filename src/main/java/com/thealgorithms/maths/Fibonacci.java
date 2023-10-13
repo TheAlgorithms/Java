@@ -18,7 +18,7 @@ public final class Fibonacci {
      * @return The nth Fibonacci number as a BigInteger.
      * @throws IllegalArgumentException if the input 'n' is a negative integer.
      */
-    public static BigInteger calFib(final int n) {
+    public static BigInteger calFibcompute(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
