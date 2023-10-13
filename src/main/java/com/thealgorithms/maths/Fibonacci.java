@@ -26,7 +26,7 @@ public final class Fibonacci {
         if (n <= 1) {
             return BigInteger.valueOf(n);
         }
-        
+
         BigInteger prev = BigInteger.ZERO;
         BigInteger current = BigInteger.ONE;
 
