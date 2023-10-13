@@ -1,6 +1,8 @@
 import java.math.BigInteger;
 
-public class Fibonacci {
+public final class Fibonacci {
+    private Fibonacci() {
+    }
     public static BigInteger calFib(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
