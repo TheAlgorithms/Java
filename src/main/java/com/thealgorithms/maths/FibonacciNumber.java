@@ -1,22 +1,37 @@
-// Explanation:- https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula
 package com.thealgorithms.maths;
 
+/**
+ * This class provides methods for calculating Fibonacci numbers using Binet's formula.
+ * Binet's formula is based on the golden ratio and allows computing Fibonacci numbers efficiently.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula">Binet's formula on Wikipedia</a>
+ */
 public final class FibonacciNumber {
     private FibonacciNumber() {
+        // Private constructor to prevent instantiation of this utility class.
     }
 
-    // Compute the limit for 'n' that fits in a long data type.
-    // Reducing the limit to 70 due to potential floating-point arithmetic errors
-    // that may result in incorrect results for larger inputs.
+    /**
+     * Compute the limit for 'n' that fits in a long data type.
+     * Reducing the limit to 70 due to potential floating-point arithmetic errors
+     * that may result in incorrect results for larger inputs.
+     */
     public static final int MAX_ARG = 70;
 
+    /**
+     * Calculates the nth Fibonacci number using Binet's formula.
+     *
+     * @param n The index of the Fibonacci number to calculate.
+     * @return The nth Fibonacci number as a long.
+     * @throws IllegalArgumentException if the input 'n' is negative or exceeds the range of a long data type.
+     */
     public static long nthFibonacci(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
 
-        if (n > argLimit) {
-            throw new IllegalArgumentException("Input 'n' is too large!"); // Check if 'n' exceeds the range that can be accommodated by a long data type.
+        if (n > MAX_ARG) {
+            throw new IllegalArgumentException("Input 'n' is too large to fit into a long data type.");
         }
 
         if (n <= 1) {
@@ -29,7 +44,7 @@ public final class FibonacciNumber {
         final double psi = (1 - sqrt5) / 2;
         final double result = (Math.pow(phi, n) - Math.pow(psi, n)) / sqrt5;
 
-        // Round to the nearest integer and convert to BigInteger
+        // Round to the nearest integer and return as a long
         return Math.round(result);
     }
 }
