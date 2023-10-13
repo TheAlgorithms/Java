@@ -5,7 +5,7 @@ public final class FindMaxRecursion {
     private FindMaxRecursion() {
     }
     /**
-     * Get max of array using divide and conquer algorithm
+     * Get max of an array using divide and conquer algorithm
      *
      * @param array contains elements
      * @param low the index of the first element
@@ -14,7 +14,7 @@ public final class FindMaxRecursion {
      */
     public static int max(final int[] array, final int low, final int high) {
         if (array.length == 0) {
-            throw new IllegalArgumentException("array must be non-empty.");
+            throw new IllegalArgumentException("Array must be non-empty.");
         }
         if (low == high) {
             return array[low]; // or array[high]
@@ -25,11 +25,11 @@ public final class FindMaxRecursion {
         int leftMax = max(array, low, mid); // get max in [low, mid]
         int rightMax = max(array, mid + 1, high); // get max in [mid+1, high]
 
-        return leftMax < rightMax ? rightMax : leftMax;
+        return Math.max(leftMax, rightMax);
     }
 
     /**
-     * Get max of array using recursion algorithm
+     * Get max of an array using recursion algorithm
      *
      * @param array contains elements
      * @return max value of {@code array}
