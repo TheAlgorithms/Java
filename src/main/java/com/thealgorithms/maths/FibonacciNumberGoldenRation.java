@@ -25,7 +25,7 @@ public final class FibonacciNumberGoldenRation {
      * @return The nth Fibonacci number as a long.
      * @throws IllegalArgumentException if the input 'n' is negative or exceeds the range of a long data type.
      */
-    public static long nthFibonaccicompute(int n) {
+    public static long compute(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
