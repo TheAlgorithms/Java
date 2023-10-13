@@ -29,8 +29,6 @@ public class FibonacciTest {
 
     @Test
     public void checkNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Fibonacci.calFib(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.calFib(-1); });
     }
 }
