@@ -5,7 +5,7 @@ import java.math.BigInteger;
 /**
  * This class provides methods for calculating Fibonacci numbers using BigInteger for large values of 'n'.
  */
-public final class FibonacciL {
+public final class FibonacciLoop {
 
     private Fibonacci() {
         // Private constructor to prevent instantiation of this utility class.
