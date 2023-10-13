@@ -25,8 +25,7 @@ public class FibonacciNumberTest {
     @Test
     public void throwsIllegalArgumentExceptionForLargeInput() {
         assertThrows(IllegalArgumentException.class, () -> {
-            // You can choose a large value for n here, e.g., 1000
-            FibonacciNumber.nthFibonacci(1000);
+            FibonacciNumber.nthFibonacci(FibonacciNumber.MAX_ARG+1);
         });
     }
 }
