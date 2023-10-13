@@ -31,7 +31,7 @@ public final class FibonacciNumberGoldenRation {
         }
 
         if (n > MAX_ARG) {
-            throw new IllegalArgumentException("Input 'n' is too large to fit into a long data type.");
+            throw new IllegalArgumentException("Input 'n' is to big to give accurate result");
         }
 
         if (n <= 1) {
