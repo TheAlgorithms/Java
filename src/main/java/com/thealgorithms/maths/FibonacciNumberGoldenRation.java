@@ -7,7 +7,7 @@ package com.thealgorithms.maths;
  * @see <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula">Binet's formula on Wikipedia</a>
  */
 public final class FibonacciNumberGoldenRation {
-    private FibonacciNumber() {
+    private FibonacciNumberGoldenRation() {
         // Private constructor to prevent instantiation of this utility class.
     }
 
