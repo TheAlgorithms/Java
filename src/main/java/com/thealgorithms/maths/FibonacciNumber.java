@@ -16,7 +16,7 @@ public final class FibonacciNumber {
         }
 
         if (n > argLimit) {
-            throw new IllegalArgumentException("Input 'n' is too large to fit into a long.");
+            throw new IllegalArgumentException("Input 'n' is too large!"); // Check if 'n' exceeds the range that can be accommodated by a long data type.
         }
 
         if (n <= 1) {
