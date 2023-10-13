@@ -9,7 +9,7 @@ public final class FibonacciNumber {
     // Reducing the limit to 70 due to incorrect results for larger inputs
     public static final int MAX_ARG = 70;
 
-    public static BigInteger nthFibonacci(int n) {
+    public static long nthFibonacci(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
