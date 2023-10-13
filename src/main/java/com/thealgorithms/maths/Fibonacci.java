@@ -1,3 +1,5 @@
+package com.thealgorithms.maths;
+
 import java.math.BigInteger;
 
 public final class Fibonacci {
