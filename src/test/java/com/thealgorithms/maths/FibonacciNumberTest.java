@@ -17,9 +17,7 @@ public class FibonacciNumberTest {
 
     @Test
     public void throwsIllegalArgumentExceptionForNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            FibonacciNumber.nthFibonacci(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumber.nthFibonacci(-1); });
     }
 
     @Test
