@@ -24,8 +24,6 @@ public class FibonacciNumberGoldenRationTest {
 
     @Test
     public void throwsIllegalArgumentExceptionForLargeInput() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            FibonacciNumber.nthFibonaccicompute(FibonacciNumber.MAX_ARG+1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumber.nthFibonaccicompute(FibonacciNumber.MAX_ARG + 1); });
     }
 }
