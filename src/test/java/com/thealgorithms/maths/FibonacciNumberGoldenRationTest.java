@@ -10,20 +10,20 @@ public class FibonacciNumberGoldenRationTest {
 
     @Test
     public void returnsCorrectValues() {
-        for (int n = 0; n <= FibonacciNumber.MAX_ARG; ++n) {
-            final var actual = BigInteger.valueOf(FibonacciNumber.nthFibonaccicompute(n));
-            final var expected = Fibonacci.calFibcompute(n);
-            assertEquals(expected, actual);
+        for (int n = 0; n <= FibonacciNumberGoldenRation.MAX_ARG; ++n) {
+            final var actual = FibonacciNumberGoldenRation.nthFibonaccicompute(n);
+            final var expected = Fibonacci.calFib(n);
+            assertEquals(expected, BigInteger.valueOf(actual));
         }
     }
 
     @Test
     public void throwsIllegalArgumentExceptionForNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumber.nthFibonaccicompute(-1); });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumberGoldenRation.nthFibonaccicompute(-1); });
     }
 
     @Test
     public void throwsIllegalArgumentExceptionForLargeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumber.nthFibonaccicompute(FibonacciNumber.MAX_ARG + 1); });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumberGoldenRation.nthFibonaccicompute(FibonacciNumberGoldenRation.MAX_ARG + 1); });
     }
 }
