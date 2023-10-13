@@ -1,4 +1,5 @@
 // Explanation:- https://en.wikipedia.org/wiki/Fibonacci_sequence#Binet's_formula
+package com.thealgorithms.maths;
 
 import java.math.BigInteger;
 
