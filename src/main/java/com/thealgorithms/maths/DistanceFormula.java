@@ -8,6 +8,20 @@ public class DistanceFormula {
         return Math.sqrt(dX + dY);
     }
 
+    public static double euclideanDistance(double[] p1, double[] p2) {
+        double sum = 0.0;
+
+        if (p1.length != p2.length) {
+            return -1; // error, both arrays must have the same length
+        }
+
+        for (int i = 0; i < p1.length; i++) {
+        sum += Math.pow(p1[i] - p2[i], 2);
+        }
+
+        return Math.sqrt(sum);
+    }
+
     public static double manhattanDistance(double x1, double y1, double x2, double y2) {
         return Math.abs(x1 - x2) + Math.abs(y1 - y2);
     }
