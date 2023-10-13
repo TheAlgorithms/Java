@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public final class Fibonacci {
     private Fibonacci() {
     }
-    public static BigInteger calFib(int n) {
+    public static BigInteger calFib(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
