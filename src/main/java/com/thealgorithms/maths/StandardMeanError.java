@@ -12,7 +12,7 @@ public class StandardMeanError {
      * @return Standard Mean Error of given {@code values}
      */
 
-    public static double standardMeanError(int[] values){
+    public static double standard_mean_error(int[] values){
         //function for calculating the standard mean error of integer array
         double stdDev = calculateStandardDeviation(values);
         double sem = stdDev / Math.sqrt(values.length);
@@ -42,7 +42,7 @@ public class StandardMeanError {
 
 
     // using polymorphism to calculate the same for a double array
-    public static double standardMeanError(double[] values){
+    public static double standard_mean_error(double[] values){
 
         double stdDev = calculateStandardDeviation(values);
         double sem = stdDev / Math.sqrt(values.length);
