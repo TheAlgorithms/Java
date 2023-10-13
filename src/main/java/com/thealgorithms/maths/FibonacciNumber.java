@@ -5,8 +5,9 @@ public final class FibonacciNumber {
     private FibonacciNumber() {
     }
 
-    // Compute the limit for n that fits in a long
-    // Reducing the limit to 70 due to incorrect results for larger inputs
+    // Compute the limit for 'n' that fits in a long data type.
+    // Reducing the limit to 70 due to potential floating-point arithmetic errors
+    // that may result in incorrect results for larger inputs.
     public static final int MAX_ARG = 70;
 
     public static long nthFibonacci(int n) {
