@@ -11,7 +11,7 @@ public class FibonacciNumberTest {
     @Test
     public void returnsCorrectValues() {
         for (int n = 0; n <= FibonacciNumber.MAX_ARG; ++n) {
-            final var actual = FibonacciNumber.nthFibonacci(n);
+            final var actual = BigInteger.valueOf(FibonacciNumber.nthFibonacci(n));
             final var expected = Fibonacci.calFib(n);
             assertEquals(expected, actual);
         }
