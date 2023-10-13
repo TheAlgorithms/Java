@@ -29,6 +29,6 @@ public final class FibonacciNumber {
         final double result = (Math.pow(phi, n) - Math.pow(psi, n)) / sqrt5;
 
         // Round to the nearest integer and convert to BigInteger
-        return BigInteger.valueOf(Math.round(result));
+        return Math.round(result);
     }
 }
