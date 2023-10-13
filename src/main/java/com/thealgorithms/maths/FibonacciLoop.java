@@ -7,7 +7,7 @@ import java.math.BigInteger;
  */
 public final class FibonacciLoop {
 
-    private Fibonacci() {
+    private FibonacciLoop() {
         // Private constructor to prevent instantiation of this utility class.
     }
 
