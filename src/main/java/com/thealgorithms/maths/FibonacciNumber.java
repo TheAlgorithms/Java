@@ -19,7 +19,7 @@ public final class FibonacciNumber {
         }
 
         if (n <= 1) {
-            return BigInteger.valueOf(n);
+            return n;
         }
 
         // Calculate the nth Fibonacci number using the golden ratio formula
