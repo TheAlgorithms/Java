@@ -5,7 +5,7 @@ import java.math.BigInteger;
 /**
  * This class provides methods for calculating Fibonacci numbers using BigInteger for large values of 'n'.
  */
-public final class Fibonacci {
+public final class FibonacciL {
 
     private Fibonacci() {
         // Private constructor to prevent instantiation of this utility class.
@@ -18,7 +18,7 @@ public final class Fibonacci {
      * @return The nth Fibonacci number as a BigInteger.
      * @throws IllegalArgumentException if the input 'n' is a negative integer.
      */
-    public static BigInteger calFibcompute(final int n) {
+    public static BigInteger compute(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input 'n' must be a non-negative integer.");
         }
