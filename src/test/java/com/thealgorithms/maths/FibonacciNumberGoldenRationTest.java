@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-public class FibonacciNumberTest {
+public class FibonacciNumberGoldenRationTest {
 
     @Test
     public void returnsCorrectValues() {
