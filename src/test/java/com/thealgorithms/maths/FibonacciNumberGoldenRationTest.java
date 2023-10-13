@@ -12,7 +12,7 @@ public class FibonacciNumberGoldenRationTest {
     public void returnsCorrectValues() {
         for (int n = 0; n <= FibonacciNumberGoldenRation.MAX_ARG; ++n) {
             final var actual = FibonacciNumberGoldenRation.nthFibonaccicompute(n);
-            final var expected = Fibonacci.calFib(n);
+            final var expected = Fibonacci.calFibcompute(n);
             assertEquals(expected, BigInteger.valueOf(actual));
         }
     }
