@@ -6,31 +6,31 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
-public class FibonacciTest {
+public class FibonacciLoopTest {
     @Test
     public void checkValueAtZero() {
-        assertEquals(BigInteger.ZERO, Fibonacci.calFibcompute(0));
+        assertEquals(BigInteger.ZERO, FibonacciLoop.compute(0));
     }
 
     @Test
     public void checkValueAtOne() {
-        assertEquals(BigInteger.ONE, Fibonacci.calFibcompute(1));
+        assertEquals(BigInteger.ONE, FibonacciLoop.compute(1));
     }
 
     @Test
     public void checkValueAtTwo() {
-        assertEquals(BigInteger.ONE, Fibonacci.calFibcompute(2));
+        assertEquals(BigInteger.ONE, FibonacciLoop.compute(2));
     }
 
     @Test
     public void checkRecurrenceRelation() {
         for (int i = 0; i < 100; ++i) {
-            assertEquals(Fibonacci.calFibcompute(i + 2), Fibonacci.calFibcompute(i + 1).add(Fibonacci.calFibcompute(i)));
+            assertEquals(FibonacciLoop.compute(i + 2), FibonacciLoop.compute(i + 1).add(FibonacciLoop.compute(i)));
         }
     }
 
     @Test
     public void checkNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.calFibcompute(-1); });
+        assertThrows(IllegalArgumentException.class, () -> { FibonacciLoop.compute(-1); });
     }
 }
