@@ -2,18 +2,16 @@ package com.thealgorithms.maths;
 
 import java.util.Scanner;
 
-/*
+/**
  * Cosine Similarity is a correlation coefficient and a measure of similarity
  * between two non-zero vectors in an Inner Product Space.
  *  Cosine similarity is the cosine of the angle between the vectors;
  *  that is, it is the dot product of the vectors divided by the product of their lengths.
  * 
  * Reference: https://en.wikipedia.org/wiki/Cosine_similarity
- * 
  */
 
 public class CosineSimilarity {
-
 
     // Function to compute the euclidean magnitude of the vector.
     public static double vectorMagnitude(double[] vector) {
@@ -42,7 +40,6 @@ public class CosineSimilarity {
 
         double cosineSimilarityValue = (dotProduct) / (vector1Magnitude * vector2Magnitude);
         return cosineSimilarityValue;
-        
     }
 
     public static void main(String[] args) {
@@ -67,7 +64,5 @@ public class CosineSimilarity {
         System.out.println("The Cosine Similarity is = " + cosineSimilarity(vector1, vector2));
 
         sc.close();
-
     }
-
 }
