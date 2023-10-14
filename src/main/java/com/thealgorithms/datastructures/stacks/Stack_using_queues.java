@@ -13,7 +13,7 @@ class Stack_using_queues {
         // elements
         static int curr_size;
 
-        static void push(int x){
+        static void push(int x) {
             // Push x first in empty q1
             q1.add(x);
 
@@ -30,17 +30,16 @@ class Stack_using_queues {
             q2 = q;
         }
 
-        static int pop(){
+        static int pop() {
 
             // if no elements are there in q2
-            if (q2.isEmpty())
-            {
+            if (q2.isEmpty()) {
                 return -1;
             }
-            return(q2.remove());
+            return (q2.remove());
         }
 
-        static int top(){
+        static int top() {
             if (q2.isEmpty())
                 return -1;
             return q2.peek();
@@ -52,15 +51,14 @@ class Stack_using_queues {
     }
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Stack stack = new Stack();
         Scanner in = new Scanner(System.in);
         int choice,element;
         System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
         choice=in.nextInt();
-        while(choice==1 || choice==2 || choice==3 || choice==4){
-            switch(choice){
+        while(choice==1 || choice==2 || choice==3 || choice==4) {
+            switch(choice) {
                 case 1:
                     System.out.println("Enter the element to be pushed:");
                     element=in.nextInt();
