@@ -1,5 +1,6 @@
 /**
  * A node in a doubly circular linked list.
+ * URL: https://www.geeksforgeeks.org/introduction-to-circular-doubly-linked-list/
  *
  * @param <T> the type of data stored in the node
  */
