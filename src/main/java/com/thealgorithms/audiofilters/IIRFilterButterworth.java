@@ -20,7 +20,7 @@ public class IIRFilterButterworth {
         double a2 = 1 - alpha;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b0});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b0});
         return filt;
     }
 
@@ -39,7 +39,7 @@ public class IIRFilterButterworth {
         double a2 = 1 - alpha;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b0});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b0});
         return filt;
     }
 
@@ -59,7 +59,7 @@ public class IIRFilterButterworth {
         double a2 = 1 - alpha;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b2});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b2});
         return filt;
     }
 
@@ -75,7 +75,7 @@ public class IIRFilterButterworth {
         double b2 = 1 + alpha;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{b2, b1, b0}, new double[]{b0, b1, b2});
+        filt.setCoeffs(new double[] {b2, b1, b0}, new double[] {b0, b1, b2});
         return filt;
     }
 
@@ -95,7 +95,7 @@ public class IIRFilterButterworth {
         double a2 = 1 - alpha / bigA;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b2});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b2});
         return filt;
     }
 
@@ -120,7 +120,7 @@ public class IIRFilterButterworth {
         double a2 = ppmc - aa2;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b2});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b2});
         return filt;
     }
 
@@ -145,7 +145,7 @@ public class IIRFilterButterworth {
         double a2 = pmc - aa2;
 
         IIRFilter filt = new IIRFilter(2);
-        filt.setCoeffs(new double[]{a0, a1, a2}, new double[]{b0, b1, b2});
+        filt.setCoeffs(new double[] {a0, a1, a2}, new double[] {b0, b1, b2});
         return filt;
     }
 }
