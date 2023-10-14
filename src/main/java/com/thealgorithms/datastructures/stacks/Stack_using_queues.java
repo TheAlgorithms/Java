@@ -5,16 +5,15 @@ class Stack_using_queues {
 
     static class Stack {
         // Two inbuilt queues
-        static Queue<Integer> q1= new LinkedList<Integer>();
-        static Queue<Integer> q2= new LinkedList<Integer>();
-        
+        static Queue<Integer> q1 = new LinkedList<Integer>();
+        static Queue<Integer> q2 = new LinkedList<Integer>();
+
 
         // To maintain current number of
         // elements
         static int curr_size;
 
-        static void push(int x)
-        {
+        static void push(int x){
             // Push x first in empty q1
             q1.add(x);
 
@@ -31,8 +30,7 @@ class Stack_using_queues {
             q2 = q;
         }
 
-        static int pop()
-        {
+        static int pop(){
 
             // if no elements are there in q2
             if (q2.isEmpty())
@@ -42,8 +40,7 @@ class Stack_using_queues {
             return(q2.remove());
         }
 
-        static int top()
-        {
+        static int top(){
             if (q2.isEmpty())
                 return -1;
             return q2.peek();
@@ -58,14 +55,12 @@ class Stack_using_queues {
     public static void main(String[] args)
     {
         Stack stack = new Stack();
-        Scanner in=new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         int choice,element;
         System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
         choice=in.nextInt();
-        while(choice==1 || choice==2 || choice==3 || choice==4)
-        {
-            switch(choice)
-            {
+        while(choice==1 || choice==2 || choice==3 || choice==4){
+            switch(choice){
                 case 1:
                     System.out.println("Enter the element to be pushed:");
                     element=in.nextInt();
@@ -80,17 +75,12 @@ class Stack_using_queues {
                 case 4:
                     System.out.println("Size of the stack "+stack.size());
                     break;
-                
-
                 default:
                     System.out.println("Enter correctly");
                     
-                    
-                    
-                
             }
             System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
-            choice=in.nextInt();
+            choice = in.nextInt();
         }
     }
 }
