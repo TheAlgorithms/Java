@@ -549,6 +549,8 @@
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
             * zigZagPattern
               * [zigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/zigZagPattern.java)
+          * vote
+            * [DhondtMethod](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/vote/DhondtMethod.java)
   * test
     * java
       * com
@@ -864,3 +866,5 @@
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
               * [zigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/zigZagPatternTest.java)
+          * vote
+            * [DhondtMethodTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/vote/DhondtMethodTest.java)
