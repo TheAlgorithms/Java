@@ -16,7 +16,7 @@ public class DistanceFormula {
         }
 
         for (int i = 0; i < p1.length; i++) {
-        sum += Math.pow(p1[i] - p2[i], 2);
+            sum += Math.pow(p1[i] - p2[i], 2);
         }
 
         return Math.sqrt(sum);
