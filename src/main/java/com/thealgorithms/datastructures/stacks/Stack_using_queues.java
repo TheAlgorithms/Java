@@ -74,9 +74,9 @@ class Stack_using_queues {
                 break;
             default:
                 System.out.println("Enter correctly");
-             }
-             System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
-             choice = in.nextInt();
+            }
+            System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
+            choice = in.nextInt();
         }
     }
 }
