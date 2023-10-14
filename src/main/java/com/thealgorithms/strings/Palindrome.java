@@ -53,4 +53,24 @@ class Palindrome {
         }
         return true;
     }
+
+    /**
+     * Check if a string is palindrome string or not using Iterative method untill half of length of string
+     *
+     * @param s a string to check
+     * @return {@code true} if given string is palindrome, otherwise
+     * {@code false}
+     */
+    public static boolean isPalindromeIterative(String s) {
+        int length = s.length();
+        if (s == null || length <= 1) {
+            return true;
+        }
+        int halfLength = length/2;
+        for(int i=0; i<= halfLength; i++){
+            if(s.charAt(i) != s.charAt(length-i-1))
+                return false;
+        } 
+        return true;
+    }
 }
