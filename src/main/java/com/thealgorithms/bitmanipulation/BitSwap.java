@@ -4,7 +4,7 @@ public final class BitSwap {
     private BitSwap() {
     }
     /*
-     * Swaps the bits at the position swap1 and swap2 from bit
+     * @brief Swaps the bits at the position posA and posB from data
      */
     public static int bitSwap(int data, final int posA, final int posB) {
 
