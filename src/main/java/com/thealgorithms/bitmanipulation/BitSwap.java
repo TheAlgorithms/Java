@@ -6,7 +6,7 @@ public final class BitSwap {
     /*
      * Swaps the bits at the position swap1 and swap2 from bit
      */
-    public static int bitSwap(int bit, int swap1, int swap2) {
+    public static int bitSwap(int data, final int posA, final int posB) {
         int val1 = (bit >> swap1) & 1;
         int val2 = (bit >> swap2) & 1;
 
