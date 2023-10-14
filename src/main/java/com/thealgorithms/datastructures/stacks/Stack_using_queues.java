@@ -41,7 +41,7 @@ class Stack_using_queues {
 
         static int top() {
             if (q2.isEmpty()) return -1;
-             return q2.peek();
+            return q2.peek();
         }
 
         static int size() {
@@ -77,8 +77,8 @@ class Stack_using_queues {
              }
              System.out.println("Enter 1 to push,2 to pop ,3 to peek elements and 4 for the size and -1 to exit ");
              choice = in.nextInt();
-         }
-     }
- }
+        }
+    }
+}
 
 
