@@ -13,9 +13,9 @@ import java.util.*;
 public class DhondtMethod {
 
     public static void apply(int numberOfSeats, PoliticalParty... parties) {
-        if(parties.length == 0) return;
-        for(int round = 0; round < numberOfSeats; round++) {
-            PoliticalParty selectedParty = Arrays.stream(parties).max(Comparator.comparing(party -> party.votesNumber/(party.gainedSeatsNumber+1))).get();
+        if (parties.length == 0) return;
+        for (int round = 0; round < numberOfSeats; round++) {
+            PoliticalParty selectedParty = Arrays.stream(parties).max(Comparator.comparing(party -> party.votesNumber / (party.gainedSeatsNumber + 1))).get();
             selectedParty.gainedSeatsNumber++;
         }
     }
