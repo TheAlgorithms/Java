@@ -9,8 +9,7 @@ public final class BitSwap {
     public static int bitSwap(int data, final int posA, final int posB) {
 
         if (SingleBitOperations.getBit(data, posA) != SingleBitOperations.getBit(data, posB)) {
-            data = data ^ (1 << posA);
-            data = data ^ (1 << posB);
+            data ^= (1 << posA) ^ (1 << posB);
         }
         return data;
     }
