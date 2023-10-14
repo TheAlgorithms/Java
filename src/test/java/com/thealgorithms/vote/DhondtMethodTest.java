@@ -13,8 +13,8 @@ public class DhondtMethodTest {
         DhondtMethod.PoliticalParty b = new DhondtMethod.PoliticalParty(18300);
         DhondtMethod.PoliticalParty c = new DhondtMethod.PoliticalParty(35100);
 
-        //Will return the number of seats gained by each party
-        DhondtMethod.apply(10, a,b,c);
+        // Will return the number of seats gained by each party
+        DhondtMethod.apply(10, a, b, c);
         assertEquals(5, a.gainedSeatsNumber);
         assertEquals(2, b.gainedSeatsNumber);
         assertEquals(3, c.gainedSeatsNumber);
@@ -37,8 +37,8 @@ public class DhondtMethodTest {
         DhondtMethod.PoliticalParty l = new DhondtMethod.PoliticalParty(3565);
         DhondtMethod.PoliticalParty m = new DhondtMethod.PoliticalParty(2784);
 
-        //Will return the number of seats gained by each party
-        DhondtMethod.apply(13, a,b,c,d,e,f,g,h,i,j,k,l,m);
+        // Will return the number of seats gained by each party
+        DhondtMethod.apply(13, a, b, c, d, e, f, g, h, i, j, k, l, m);
         assertEquals(2, a.gainedSeatsNumber);
         assertEquals(1, b.gainedSeatsNumber);
         assertEquals(3, c.gainedSeatsNumber);
