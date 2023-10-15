@@ -69,7 +69,8 @@ class dijkstras {
         dijkstras t = new dijkstras();
         t.dijkstra(graph, 0);
     } // main
-} // djikstras
+}
+// djikstras
 /*
 OUTPUT :
 Vertex   Distance
