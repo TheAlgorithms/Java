@@ -1,12 +1,12 @@
 package com.thealgorithms.maths;
-
+import java.util.Scanner;
 public final class Factorial {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("Enter a Number to calculate Factorial :-> ");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         long fact = factorial(n);
-        System.out.println("Factorial of "+n+" is "+fact);
+        System.out.println("Factorial of " + n + " is " + fact);
     }
 
     /**
