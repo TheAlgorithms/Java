@@ -2,67 +2,62 @@ package com.thealgorithms.sorts;
 
 import static com.thealgorithms.sorts.SortUtils.less;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * Generic merge sort algorithm.
  *
  * @see SortAlgorithm
  */
-class MergeSort implements SortAlgorithm {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-    @SuppressWarnings("rawtypes") private static Comparable[] aux;
+class MergeSort {
+    public static void conquer(int[] arr, int si, int mid, int ei) {
+        int merged[] = new int[ei - si + 1];
+        int idx1 = si;
+        int idx2 = mid + 1;
+        int x = 0;
 
-    /**
-     * Generic merge sort algorithm implements.
-     *
-     * @param unsorted the array which should be sorted.
-     * @param <T> Comparable class.
-     * @return sorted array.
-     */
-    @Override
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        aux = new Comparable[unsorted.length];
-        doSort(unsorted, 0, unsorted.length - 1);
-        return unsorted;
-    }
-
-    /**
-     * @param arr the array to be sorted.
-     * @param left the first index of the array.
-     * @param right the last index of the array.
-     */
-    private static <T extends Comparable<T>> void doSort(T[] arr, int left, int right) {
-        if (left < right) {
-            int mid = (left + right) >>> 1;
-            doSort(arr, left, mid);
-            doSort(arr, mid + 1, right);
-            merge(arr, left, mid, right);
-        }
-    }
-
-    /**
-     * Merges two parts of an array.
-     *
-     * @param arr the array to be merged.
-     * @param left the first index of the array.
-     * @param mid the middle index of the array.
-     * @param right the last index of the array merges two parts of an array in
-     * increasing order.
-     */
-    @SuppressWarnings("unchecked")
-    private static <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-        int i = left, j = mid + 1;
-        System.arraycopy(arr, left, aux, left, right + 1 - left);
-
-        for (int k = left; k <= right; k++) {
-            if (j > right) {
-                arr[k] = (T) aux[i++];
-            } else if (i > mid) {
-                arr[k] = (T) aux[j++];
-            } else if (less(aux[j], aux[i])) {
-                arr[k] = (T) aux[j++];
+        while (idx1 <= mid && idx2 <= ei) {
+            if (arr[idx1] <= arr[idx2]) {
+                merged[x++] = arr[idx1++];
             } else {
-                arr[k] = (T) aux[i++];
+                merged[x++] = arr[idx2++];
             }
         }
+        while (idx1 <= mid) {
+            merged[x++] = arr[idx1++];
+        }
+        while (idx2 <= ei) {
+            merged[x++] = arr[idx2++];
+        }
+        for (int i = 0, j = si; i < merged.length; i++, j++) {
+            arr[j] = merged[i];
+        }
+    }
+
+    public static void divide(int[] arr, int si, int ei) {
+        if (si >= ei) {
+            return;
+        }
+        int mid = si + (ei - si) / 2;
+        divide(arr, si, mid);
+        divide(arr, mid + 1, ei);
+
+        conquer(arr, si, mid, ei);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 7, 9, 5, 4, 1};
+        int n = arr.length;
+        divide(arr, 0, n - 1);
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
     }
 }
