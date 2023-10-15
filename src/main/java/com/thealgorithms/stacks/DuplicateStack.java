@@ -21,7 +21,10 @@ public class DuplicateStack {
         System.out.println("Stack is:");
         display();
 
-        duplicate(stack);
+        int[] duplicateStack = duplicate(stack);
+
+        System.out.println("\nDuplicate Stack is:");
+        displayArray(duplicateStack);
     }
 
     public static void push(int val) {
@@ -41,10 +44,18 @@ public class DuplicateStack {
         System.out.println();
     }
 
-    public static void duplicate(int[] stack) {
-        System.out.println("\nDuplicate Stack is:");
+    public static int[] duplicate(int[] stack) {
+        int[] duplicateStack = new int[top + 1];
         for (int i = top; i >= 0; i--) {
-            System.out.print(stack[i] + " ");
+            duplicateStack[top - i] = stack[i];
         }
+        return duplicateStack;
+    }
+
+    public static void displayArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
     }
 }
