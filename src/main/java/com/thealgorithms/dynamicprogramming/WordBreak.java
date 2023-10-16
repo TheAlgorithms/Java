@@ -13,7 +13,7 @@ public class WordBreak {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
-                if(dp[j] && wordDict.contains(s.substring(j,i))) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
                 }
@@ -28,6 +28,6 @@ public class WordBreak {
         List<String> wordDict = Arrays.asList("apple", "pen");
 
         boolean result = wordBreak(s, wordDict);
-        System.out.println("Can the string be segmented?" + result);
+        System.out.println("Can the string be segmented? " + result);
     }
 }
