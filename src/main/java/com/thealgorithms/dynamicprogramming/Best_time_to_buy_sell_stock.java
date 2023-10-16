@@ -9,7 +9,7 @@ import java.util.*;
  * Comments: This program calculates the maximum profit
  * achievable when buying and selling stocks with fees.
  */
-public class Best_time_to_buy_sell_stock{
+public class Best_time_to_buy_sell_stock {
     /**
      * Recursively solve the problem to find the maximum profit.
      *
