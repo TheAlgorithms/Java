@@ -1,3 +1,6 @@
+package com.thealgorithms.dynamicprogramming;
+
+import java.util.*;
 /**
  * Java program for solving the Best Time to
  * Buy and Sell Stock problem with transaction fees.
@@ -6,7 +9,7 @@
  * Comments: This program calculates the maximum profit
  * achievable when buying and selling stocks with fees.
  */
-public class Solution {
+public class Best_time_to_buy_sell_stock{
     /**
      * Recursively solve the problem to find the maximum profit.
      *
@@ -29,7 +32,7 @@ public class Solution {
         if (buy == 1) {
             profit = Math.max(-prices[index] + solve(prices, index + 1, fee, 0, dp), solve(prices, index + 1, fee, 1, dp));
         } else {
-            profit = Math.max((prices[index] + solve(prices, index + 1, fee, 1, dp)) - fee, solve(prices, index + 1, fee, 0, dp);
+            profit = Math.max((prices[index] + solve(prices, index + 1, fee, 1, dp)) - fee, solve(prices, index + 1, fee, 0, dp));
         }
 
         dp[index][buy] = profit;
@@ -67,7 +70,7 @@ public class Solution {
         System.out.print("Enter the transaction fee: ");
         int fee = scanner.nextInt();
 
-        Solution solution = new Solution();
+        Best_time_to_buy_sell_stock solution = new Best_time_to_buy_sell_stock();
         int maxProfit = solution.maxProfit(prices, fee);
 
         System.out.println("Maximum profit: " + maxProfit);
