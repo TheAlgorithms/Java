@@ -19,7 +19,7 @@ class PasswordGen {
     }
 
     static String generatePassword(int min_length, int max_length) {
-        //The Random method gives random character list
+        // The Random method gives random character list
         Random random = new Random();
 
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
