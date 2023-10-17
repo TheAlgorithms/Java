@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class FahrenheitToCelcius {
+  public static void main(String[] args) {
+    // input the the value in fahrenheit
+    Scanner sc = new Scanner(System.in);
+    Double fah;
+    System.out.println("Please Enter the temperature in Fahrenheit");
+    fah = sc.nextDouble();
+    // conversion to celcius
+    Double cel;
+    cel = (fah - 32.0) * 5 / 9;
+    // printing output
+    System.out.println("Temperature in celcius is: " + cel);
+
+  }
+}
