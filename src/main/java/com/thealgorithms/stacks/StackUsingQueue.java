@@ -17,9 +17,9 @@ class StackUsingQueue {
     }
 
     // Recursive function to manage the content of the queues
-    public void manageQueue(Queue<Integer> queue1, Queue<Integer> queue2){
+    public void manageQueue(Queue<Integer> queue1, Queue<Integer> queue2) {
         // Base case: if queue1 is empty, return
-        if(queue1.isEmpty()){
+        if (queue1.isEmpty()) {
             return;
         }
         // Remove an element from queue1
@@ -29,12 +29,12 @@ class StackUsingQueue {
         // Add the removed element to queue2
         queue2.add(val);
     }
-    
+
     // Function to add an element to the stack, which is implemented by queue1
     public void push(int x) {
         queue1.add(x);
     }
-    
+
     // Function to remove the top element from the stack
     public int pop() {
         // Transfer elements from queue1 to queue2 in reverse order
@@ -46,7 +46,7 @@ class StackUsingQueue {
         // Return the removed element
         return ans;
     }
-    
+
     // Function to get the top element of the stack without removing it
     public int top() {
         // Transfer elements from queue1 to queue2 in reverse order
@@ -58,7 +58,7 @@ class StackUsingQueue {
         // Return the top element
         return ans;
     }
-    
+
     // Function to check if the stack is empty
     public boolean empty() {
         // The stack is empty if queue1 is empty
@@ -80,4 +80,3 @@ class StackUsingQueue {
         System.out.println("Check if Stack is Empty: " + obj.empty());
     }
 }
-
