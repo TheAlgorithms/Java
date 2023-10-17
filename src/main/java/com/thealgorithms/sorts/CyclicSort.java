@@ -1,12 +1,11 @@
-//cyclic sort works and is used only if the arrar elements range from 0 to n-1
-//where n is length of array
+//cyclic sort works and is used only if the array consists every elements in range from m to n
 package com.thealgorithms.sorts;
 
 import static com.thealgorithms.sorts.SortUtils.swap;
 import static com.thealgorithms.sorts.SortUtils.print;
 
 /**
- * @author Podshivalov Nikita (https://github.com/M0hitReddy)
+ * visit:  https://youtu.be/JfinxytTYFQ?si=eDj2bHo_r1YF4wdJ
  */
 
 class CyclicSort implements SortAlgorithm {
