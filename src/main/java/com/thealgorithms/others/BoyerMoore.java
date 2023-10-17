@@ -41,7 +41,7 @@ public class BoyerMoore {
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
         int[] a = new int[n];
-        System.out.println("Input "+n+" integers:");
+        System.out.println("Input " + n + " integers:");
         for (int i = 0; i < n; i++) {
             a[i] = input.nextInt();
         }
