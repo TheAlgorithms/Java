@@ -37,9 +37,11 @@ public class BoyerMoore {
     }
 
     public static void main(String[] args) {
+        System.out.println("Enter the number of elements you want to input:");
         Scanner input = new Scanner(System.in);
         int n = input.nextInt();
         int[] a = new int[n];
+        System.out.println("Input "+n+" integers:");
         for (int i = 0; i < n; i++) {
             a[i] = input.nextInt();
         }
