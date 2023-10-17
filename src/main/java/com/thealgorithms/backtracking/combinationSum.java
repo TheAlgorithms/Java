@@ -19,7 +19,7 @@ public class combinationSum {
      * @param start     The starting index for candidates.
      * @param list1     The current combination being constructed.
      */
-    public void check(List<List<Integer> > res, int[] candidates, int target, int sum1, int start, List<Integer> list1) {
+    public void check(List<List<Integer>> res, int[] candidates, int target, int sum1, int start, List<Integer> list1) {
         if (sum1 == target) {
             res.add(new ArrayList<>(list1));
             return;
@@ -42,8 +42,8 @@ public class combinationSum {
      * @param target    The target sum to achieve.
      * @return A list of combinations that sum to the target.
      */
-    public List<List<Integer> > combinationsum(int[] candidates, int target) {
-        List<List<Integer> > res = new ArrayList<>();
+    public List<List<Integer>> combinationsum(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
         int start = 0, sum1 = 0;
         List<Integer> list1 = new ArrayList<>();
         check(res, candidates, target, 0, 0, list1);
@@ -65,7 +65,7 @@ public class combinationSum {
         int target = scanner.nextInt();
 
         combinationSum solution = new combinationSum();
-        List<List<Integer> > combinations = solution.combinationsum(candidates, target);
+        List<List<Integer>> combinations = solution.combinationsum(candidates, target);
 
         System.out.println("Combinations that sum to the target:");
         for (List<Integer> combination : combinations) {
