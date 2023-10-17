@@ -13,7 +13,7 @@ package com.thealgorithms.maths;
  *
  * @author Anup Omkar
  */
-public class MatrixRank {
+public final class MatrixRank {
 
     private final static double EPSILON = 1e-10;
 
@@ -24,21 +24,26 @@ public class MatrixRank {
      * @return The rank of the input matrix
      */
     public static int computeRank(double[][] matrix) {
+        validateInputMatrix(matrix);
+
         int numRows = matrix.length;
         int numColumns = matrix[0].length;
         int rank = 0;
 
         boolean[] rowMarked = new boolean[numRows];
-        if (isJaggedMatrix(matrix)) {
-            throw new IllegalArgumentException("The input matrix is a jagged matrix");
+
+        double[][] matrixCopy = new double[numRows][numColumns];
+        for (int rowIndex = 0; rowIndex < numRows; ++rowIndex) {
+            System.arraycopy(matrix[rowIndex], 0, matrixCopy[rowIndex], 0, numColumns);
         }
+
         for (int colIndex = 0; colIndex < numColumns; ++colIndex) {
-            int pivotRow = findPivotRow(matrix, rowMarked, colIndex);
+            int pivotRow = findPivotRow(matrixCopy, rowMarked, colIndex);
             if (pivotRow != numRows) {
                 ++rank;
                 rowMarked[pivotRow] = true;
-                normalizePivotRow(matrix, pivotRow, colIndex);
-                eliminateRows(matrix, pivotRow, colIndex);
+                normalizePivotRow(matrixCopy, pivotRow, colIndex);
+                eliminateRows(matrixCopy, pivotRow, colIndex);
             }
         }
         return rank;
@@ -46,6 +51,30 @@ public class MatrixRank {
 
     private static boolean isZero(double value) {
         return Math.abs(value) < EPSILON;
+    }
+
+    private static void validateInputMatrix(double[][] matrix) {
+        if (matrix == null) {
+            throw new IllegalArgumentException("The input matrix cannot be null");
+        }
+        if (matrix.length == 0) {
+            throw new IllegalArgumentException("The input matrix cannot be empty");
+        }
+        if (!hasValidRows(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot have null or empty rows");
+        }
+        if (isJaggedMatrix(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot be jagged");
+        }
+    }
+
+    private static boolean hasValidRows(double[][] matrix) {
+        for (double[] row : matrix) {
+            if (row == null || row.length == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
