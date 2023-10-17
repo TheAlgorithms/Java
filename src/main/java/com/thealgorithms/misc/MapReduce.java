@@ -18,8 +18,7 @@ public class MapReduce {
         List<String> words = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
 
         // Map step
-        Map<String, Long> wordCounts = words.stream()
-                .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
+        Map<String, Long> wordCounts = words.stream().collect(Collectors.groupingBy(w -> w, Collectors.counting()));
 
         // Reduce step
         wordCounts.forEach((word, count) -> System.out.println(word + ": " + count));
