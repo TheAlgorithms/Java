@@ -1,0 +1,44 @@
+import java.util.*;
+/*A number is called happy if it leads to 1 or 7 after a sequence of steps wherein each step number is replaced by 
+the sum of squares of its digit that is if we start with Happy Number and keep replacing it with digits square sum, 
+we reach 1 or 7. 
+EXAMPLE:
+Input: n = 19
+Output: The number you entered is a Happy Number
+19 is Happy Number,
+1^2 + 9^2 = 82
+8^2 + 2^2 = 68
+6^2 + 8^2 = 100
+1^2 + 0^2 + 0^2 = 1
+As we reached to 1, 19 is a Happy Number.
+
+Input: n = 20
+Output: The number you entered is NOT a Happy Number
+*/
+public class HappyNumber {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    HappyNumber ob = new HappyNumber();
+    // Enter the number
+    System.out.println("Enter the number you want to check");
+    int n = sc.nextInt();
+    while (n >= 9) {
+      n = ob.pow(n);
+      if (n == 1 || n == 7)
+        System.out.println("The number you entered is a Happy Number");
+    }
+    if (n != 1 && n != 7)
+      System.out.println("The number you entered is NOT a Happy Number");
+  }
+
+  public int pow(int n) {
+    int t = 0;
+    while (n > 0) {
+      int k = n % 10;
+      t = t + (k * k);
+      n = n / 10;
+    }
+    return t;
+  }
+
+}
