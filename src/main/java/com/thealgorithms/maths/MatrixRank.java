@@ -15,7 +15,10 @@ package com.thealgorithms.maths;
  */
 public final class MatrixRank {
 
-    private final static double EPSILON = 1e-10;
+    private MatrixRank() {
+    }
+
+    private static final double EPSILON = 1e-10;
 
     /**
      * @brief Computes the rank of the input matrix
@@ -32,10 +35,7 @@ public final class MatrixRank {
 
         boolean[] rowMarked = new boolean[numRows];
 
-        double[][] matrixCopy = new double[numRows][numColumns];
-        for (int rowIndex = 0; rowIndex < numRows; ++rowIndex) {
-            System.arraycopy(matrix[rowIndex], 0, matrixCopy[rowIndex], 0, numColumns);
-        }
+        double[][] matrixCopy = deepCopy(matrix);
 
         for (int colIndex = 0; colIndex < numColumns; ++colIndex) {
             int pivotRow = findPivotRow(matrixCopy, rowMarked, colIndex);
@@ -51,6 +51,16 @@ public final class MatrixRank {
 
     private static boolean isZero(double value) {
         return Math.abs(value) < EPSILON;
+    }
+
+    private static double[][] deepCopy(double[][] matrix) {
+        int numRows = matrix.length;
+        int numColumns = matrix[0].length;
+        double[][] matrixCopy = new double[numRows][numColumns];
+        for (int rowIndex = 0; rowIndex < numRows; ++rowIndex) {
+            System.arraycopy(matrix[rowIndex], 0, matrixCopy[rowIndex], 0, numColumns);
+        }
+        return matrixCopy;
     }
 
     private static void validateInputMatrix(double[][] matrix) {
