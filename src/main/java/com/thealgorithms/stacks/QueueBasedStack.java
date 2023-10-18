@@ -13,9 +13,9 @@ public class QueueBasedStack {
         this.queue2 = new LinkedList<>();
     }
 
-    public void push(Object element){
+    public void push(Object element) {
         queue1.add(element);
-        while(!queue2.isEmpty()){
+        while (!queue2.isEmpty()) {
             queue1.add(queue2.remove());
         }
 
@@ -24,18 +24,18 @@ public class QueueBasedStack {
         queue2 = temp;
     }
 
-    public Object pop(){
-        if(queue2.isEmpty()){
+    public Object pop() {
+        if (queue2.isEmpty()) {
             return -1;
-        }else {
+        } else {
             return queue2.remove();
         }
     }
 
-    public Object top(){
-        if(queue2.isEmpty()){
+    public Object top() {
+        if (queue2.isEmpty()) {
             return -1;
-        }else {
+        } else {
             return queue2.peek();
         }
     }
