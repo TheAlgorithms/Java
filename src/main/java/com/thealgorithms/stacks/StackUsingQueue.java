@@ -2,6 +2,7 @@ package com.thealgorithms.stacks;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.NoSuchElementException;
 
 // Class to implement stack operations using queues
 class StackUsingQueue {
@@ -32,14 +33,29 @@ class StackUsingQueue {
 
     // Function to add an element to the stack, which is implemented by queue1
     public void push(Object x) {
-        queue1.add(x);
+        try {
+            if (x == null) {
+                throw new IllegalArgumentException("Null elements cannot be pushed onto the stack.");
+            }
+            queue1.add(x);
+        } catch (Exception e) {
+            // You can choose to print the stack trace, log the error, or handle it in a
+            // manner appropriate for your application.
+            System.err.println("Error occurred while pushing onto the stack: " + e.getMessage());
+            // Optional: rethrow the exception after logging or handling.
+            throw e;
+        }
     }
 
     // Function to remove the top element from the stack
     public Object pop() {
+        if (empty()) { // Check whether the stack is empty before attempting to pop elements.
+            throw new NoSuchElementException("Stack is empty. Cannot pop element.");
+        }
         // Transfer elements from queue1 to queue2 in reverse order
         manageQueue(queue1, queue2);
-        // Remove and store the top element from queue2 (which was the bottom element of queue1)
+        // Remove and store the top element from queue2 (which was the bottom element of
+        // queue1)
         Object ans = queue2.remove();
         // Transfer elements back from queue2 to queue1, preserving the stack order
         manageQueue(queue2, queue1);
@@ -49,9 +65,14 @@ class StackUsingQueue {
 
     // Function to get the top element of the stack without removing it
     public Object top() {
+        if (empty()) { // Check whether the stack is empty before attempting to peek at the top
+                       // element.
+            throw new NoSuchElementException("Stack is empty. Cannot retrieve top element.");
+        }
         // Transfer elements from queue1 to queue2 in reverse order
         manageQueue(queue1, queue2);
-        // Get and store the top element from queue2 (which was the bottom element of queue1)
+        // Get and store the top element from queue2 (which was the bottom element of
+        // queue1)
         Object ans = queue2.peek();
         // Transfer elements back from queue2 to queue1, preserving the stack order
         manageQueue(queue2, queue1);
@@ -69,15 +90,25 @@ class StackUsingQueue {
     public static void main(String[] args) {
         // Create a new StackUsingQueue object
         StackUsingQueue obj = new StackUsingQueue();
-        // Perform operations on the stack
-        obj.push(1);
-        obj.push(2);
-        obj.push("Hello");
-        // Display the top element of the stack
-        System.out.println("Stack top element: " + obj.top());
-        // Remove and display the top element of the stack
-        System.out.println("Stack popped element: " + obj.pop());
-        // Check and display whether the stack is empty
-        System.out.println("Check if Stack is Empty: " + obj.empty());
+        try {
+            // Perform operations on the stack
+            obj.push(1);
+            obj.push(2);
+            obj.push("Hello");
+            // Display the top element of the stack
+            System.out.println("Stack top element: " + obj.top()); // "Hello"
+            // Remove and display the top element of the stack
+            System.out.println("Stack popped element: " + obj.pop()); // "Hello"
+            // Check and display whether the stack is empty
+            System.out.println("Check if Stack is Empty: " + obj.empty()); // false
+
+            // The following scenario is expected to throw an exception because the stack
+            // will be empty.
+            obj.pop(); // "2"
+            obj.pop(); // "1"
+            System.out.println("Stack popped element: " + obj.pop()); // NoSuchElementException
+        } catch (NoSuchElementException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
