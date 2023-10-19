@@ -1,8 +1,8 @@
 package com.thealgorithms.stacks;
 
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 // Class to implement stack operations using queues
 class StackUsingQueue {
