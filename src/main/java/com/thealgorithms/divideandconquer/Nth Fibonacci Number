@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class NthFibonacci {
+  public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the number whose corresponding Fibonacci you want to find");
+    int s=sc.nextInt();
+    int n = fib(s);
+    System.out.println(n);
+  }
+
+  public static int fib(int n) {
+    if (n == 0)
+      return 0;
+    else if (n == 1 || n == 2)
+      return 1;
+    else
+      return fib(n - 1) + fib(n - 2);
+
+  }
+}
