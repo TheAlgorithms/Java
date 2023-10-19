@@ -23,7 +23,6 @@ public class GraphColoring {
         int[] color = new int[V];
         Arrays.fill(color, -1); // Initialize all vertices as uncolored
         boolean[] available = new boolean[V];
-        
         // Assign the first color to the first vertex
         color[0] = 0;
 
