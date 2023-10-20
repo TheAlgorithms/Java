@@ -1,3 +1,5 @@
+package com.thealgorithms.divideandconquer;
+
 public class DivideAndConquerMax {
 
     public static int findMax(int[] arr, int left, int right) {
