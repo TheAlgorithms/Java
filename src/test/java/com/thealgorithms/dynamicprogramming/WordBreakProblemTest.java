@@ -12,11 +12,12 @@ import org.junit.jupiter.api.Test;
  */
 public class WordBreakProblemTest {
     @Test
-    public void testInputs() {
+    void testInputs() {
         String[] dictionary = {"wait", "here", "i", "told", "you", "to", " "};
         List<String> dictionaryList = Arrays.asList(dictionary);
         assertTrue(WordBreakProblem.wordBreak("hereyou", dictionaryList));
         assertTrue(WordBreakProblem.wordBreak("i told you to wait here", dictionaryList));
         assertFalse(WordBreakProblem.wordBreak("i told you to not wait here", dictionaryList));
         assertFalse(WordBreakProblem.wordBreak("noproblem", dictionaryList));
-    }}
+    }
+}
