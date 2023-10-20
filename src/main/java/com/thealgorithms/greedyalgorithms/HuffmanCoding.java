@@ -55,3 +55,4 @@ public class HuffmanCoding {
         printHuffmanCodes(node.left, code + "0");
         printHuffmanCodes(node.right, code + "1");
     }
+}
