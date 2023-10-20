@@ -29,8 +29,9 @@ public class FlatteningNestedList {
                 // Cast it to a list and process its elements.
                 @SuppressWarnings("unchecked")
                 List<Object> sublist = (List<Object>) current;
+
+                // Push the elements of the sublist onto the stack for processing.
                 for (Object subItem : sublist) {
-                    // Push the elements of the sublist onto the stack for processing.
                     stack.push(subItem);
                 }
             } else {
