@@ -64,4 +64,3 @@ public class QueueBasedStack {
         System.out.println(stack.pop()); // Should print "1"
     }
 }
-
