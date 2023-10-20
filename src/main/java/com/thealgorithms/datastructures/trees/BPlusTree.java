@@ -7,6 +7,13 @@ import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Random;
 
+/**
+ * This example program shows how b+ tree and related functions can be done in
+ * Java.
+ *
+ * b+ tree: https://en.wikipedia.org/wiki/B%2B_tree
+ */
+
 class BPlusNode<K extends Comparable<K>, V> {
 
     protected boolean isRoot;
