@@ -19,5 +19,4 @@ public class WordBreakProblemTest {
         assertTrue(WordBreakProblem.wordBreak("i told you to wait here", dictionaryList));
         assertFalse(WordBreakProblem.wordBreak("i told you to not wait here", dictionaryList));
         assertFalse(WordBreakProblem.wordBreak("noproblem", dictionaryList));
-    }
-                    }
+    }}
