@@ -24,9 +24,9 @@ public class WordBreakProblem {
         dp[0] = true;
 
         // Iterating through Input String
-        for(int i = 0; i <= inputString.length(); i++){
-            for(int j = 0; j < i; j++){
-                if(dp[j] && dictionary.contains(inputString.substring(j, i))){
+        for (int i = 0; i <= inputString.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && dictionary.contains(inputString.substring(j, i))) {
                     dp[i] = true;
                     break;
                 }
