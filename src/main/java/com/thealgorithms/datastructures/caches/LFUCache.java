@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Java program for LFU Cache (https://en.wikipedia.org/wiki/Least_frequently_used)
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * Java program for LFU Cache (<a href="https://en.wikipedia.org/wiki/Least_frequently_used">...</a>)
+ * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">...</a>)
  */
 public class LFUCache<K, V> {
 
@@ -42,7 +42,7 @@ public class LFUCache<K, V> {
     /**
      * This method returns value present in the cache corresponding to the key passed as parameter
      *
-     * @param <K> key for which value is to be retrieved
+     * @param key key for which value is to be retrieved
      * @returns <V> object corresponding to the key passed as parameter, returns null if <K> key is
      *     not present in the cache
      */
@@ -62,8 +62,8 @@ public class LFUCache<K, V> {
     /**
      * This method stores <K> key and <V> value in the cache
      *
-     * @param <K> key which is to be stored in the cache
-     * @param <V> value which is to be stored in the cache
+     * @param key, key which is to be stored in the cache
+     * @param value, value which is to be stored in the cache
      */
     public void put(K key, V value) {
         if (map.containsKey(key)) {
@@ -86,7 +86,7 @@ public class LFUCache<K, V> {
     /**
      * This method stores the node in the cache with updated frequency
      *
-     * @param Node node which is to be updated in the cache
+     * @param node, node which is to be updated in the cache
      */
     private void addNodeWithUpdatedFrequency(Node node) {
         if (tail != null && head != null) {
@@ -125,7 +125,7 @@ public class LFUCache<K, V> {
     /**
      * This method removes node from the cache
      *
-     * @param Node node which is to be removed in the cache
+     * @param node, node which is to be removed in the cache
      */
     private void removeNode(Node node) {
         if (node.previous != null) {

@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.lists;
 
 /**
  * Rotate a list
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * @author Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 
 public class RotateSinglyLinkedLists {

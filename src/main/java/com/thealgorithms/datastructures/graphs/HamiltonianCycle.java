@@ -1,10 +1,12 @@
 package com.thealgorithms.datastructures.graphs;
 
+import java.util.Arrays;
+
 /**
  * Java program for Hamiltonian Cycle
- * (https://en.wikipedia.org/wiki/Hamiltonian_path)
+ * (<a href="https://en.wikipedia.org/wiki/Hamiltonian_path">...</a>)
  *
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author Akshay Dubey (<a href="https://github.com/itsAkshayDubey">...</a>)
  */
 public class HamiltonianCycle {
 
@@ -25,18 +27,14 @@ public class HamiltonianCycle {
         this.cycle = new int[this.V + 1];
 
         // Initialize path array with -1 value
-        for (int i = 0; i < this.cycle.length; i++) {
-            this.cycle[i] = -1;
-        }
+        Arrays.fill(this.cycle, -1);
 
         this.graph = graph;
 
         this.cycle[0] = 0;
         this.pathCount = 1;
         if (!isPathFound(0)) {
-            for (int i = 0; i < this.cycle.length; i++) {
-                this.cycle[i] = -1;
-            }
+            Arrays.fill(this.cycle, -1);
         } else {
             this.cycle[this.cycle.length - 1] = this.cycle[0];
         }

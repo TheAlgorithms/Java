@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.StringJoiner;
 
 /**
- * https://en.wikipedia.org/wiki/Linked_list
+ * <a href="https://en.wikipedia.org/wiki/Linked_list">Linked List</a>
  */
 public class SinglyLinkedList implements Iterable<Integer> {
 

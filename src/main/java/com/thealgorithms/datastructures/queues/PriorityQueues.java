@@ -9,7 +9,7 @@ package com.thealgorithms.datastructures.queues;
  * give numbers that are bigger, a higher priority. Queues in theory have no
  * fixed size but when using an array implementation it does.
  * <p>
- * Additional contibutions made by: PuneetTri(https://github.com/PuneetTri)
+ * Additional contibutions made by: PuneetTri(<a href="https://github.com/PuneetTri">...</a>)
  */
 class PriorityQueue {
 

@@ -74,7 +74,7 @@ public class CursorLinkedList<T> {
     }
 
     /**
-     * @param position , the logical index of the element , not the actual one
+     * @param position the logical index of the element , not the actual one
      * within the [cursorSpace] array . this method should be used to get the
      * index give by indexOf() method.
      * @return

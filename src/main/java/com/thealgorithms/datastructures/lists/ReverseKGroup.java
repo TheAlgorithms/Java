@@ -1,8 +1,8 @@
 package com.thealgorithms.datastructures.lists;
 
 /**
- * Reverse K Group LinkedList (https://www.topcoder.com/thrive/articles/reverse-node-in-k-group)
- * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
+ * Reverse K Group LinkedList (<a href="https://www.topcoder.com/thrive/articles/reverse-node-in-k-group">...</a>)
+ * Author: Bama Charan Chhandogi (<a href="https://github.com/BamaCharanChhandogi">...</a>)
  */
 
 public class ReverseKGroup {
@@ -39,7 +39,6 @@ public class ReverseKGroup {
     }
     public Node reverseKGroup(Node head, int k) {
         int count = length(head);
-        Node ans = reverse(head, count, k);
-        return ans;
+        return reverse(head, count, k);
     }
 }

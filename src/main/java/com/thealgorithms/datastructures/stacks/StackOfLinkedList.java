@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.stacks;
 import java.util.NoSuchElementException;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 // An implementation of a Stack using a Linked List
 class StackOfLinkedList {

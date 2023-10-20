@@ -9,7 +9,7 @@ import java.util.Map;
  * Discards the least recently used items first. This algorithm requires keeping
  * track of what was used when, which is expensive if one wants to make sure the
  * algorithm always discards the least recently used item.
- * https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)
+ * <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)">Least recently used (LRU)</a>
  *
  * @param <K> key type
  * @param <V> value type

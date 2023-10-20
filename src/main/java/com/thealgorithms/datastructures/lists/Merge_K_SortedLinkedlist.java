@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * @author Arun Pandey (https://github.com/pandeyarun709)
+ * @author Arun Pandey (<a href="https://github.com/pandeyarun709">...</a>)
  */
 public class Merge_K_SortedLinkedlist {
 

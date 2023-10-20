@@ -8,7 +8,7 @@ import java.util.Map;
  * <p>
  * In contrast to Least Recently Used (LRU), MRU discards the most recently used
  * items first.
- * https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)
+ * <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)">Most recently used (MRU)</a>
  *
  * @param <K> key type
  * @param <V> value type

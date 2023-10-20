@@ -23,8 +23,8 @@ number between 0 and total number of vertices-1,both inclusive*/
         int w;
 
         /**
-         * @param u Source Vertex
-         * @param v End vertex
+         * @param a Source Vertex
+         * @param b End vertex
          * @param c Weight
          */
         public Edge(int a, int b, int c) {
@@ -35,7 +35,7 @@ number between 0 and total number of vertices-1,both inclusive*/
     }
 
     /**
-     * @param p[] Parent array which shows updates in edges
+     * @param p Parent array which shows updates in edges
      * @param i Current vertex under consideration
      */
     void printPath(int[] p, int i) {
@@ -109,7 +109,7 @@ number between 0 and total number of vertices-1,both inclusive*/
     /**
      * @param source Starting vertex
      * @param end Ending vertex
-     * @param Edge Array of edges
+     * @param arr Array of edges
      */
     public void show(int source, int end,
         Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()

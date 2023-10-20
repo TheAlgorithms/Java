@@ -1,13 +1,13 @@
 package com.thealgorithms.datastructures.queues;
 
 /**
- * A [deque](https://en.wikipedia.org/wiki/Double-ended_queue) is short for a
+ * A [deque](<a href="https://en.wikipedia.org/wiki/Double-ended_queue">...</a>) is short for a
  * double ended queue pronounced "deck" and sometimes referred to as a head-tail
  * linked list. A deque is a data structure based on a doubly linked list, but
  * only supports adding and removal of nodes from the beginning and the end of
  * the list.
  *
- * @author [Ian Cowan](https://github.com/iccowan)
+ * @author [Ian Cowan](<a href="https://github.com/iccowan">...</a>)
  */
 public class Deques<T> {
 

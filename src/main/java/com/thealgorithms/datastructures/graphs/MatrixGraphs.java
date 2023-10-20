@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Implementation of a graph in a matrix form Also known as an adjacency matrix
  * representation [Adjacency matrix -
- * Wikipedia](https://en.wikipedia.org/wiki/Adjacency_matrix)
+ * Wikipedia](<a href="https://en.wikipedia.org/wiki/Adjacency_matrix">...</a>)
  *
  * @author Unknown
  */

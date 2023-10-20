@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author https://github.com/shellhub
+ * @author <a href="https://github.com/shellhub">shellhub</a>
  */
 public class MergeSortedArrayList {
 
