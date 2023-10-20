@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Sachin Baghel (https://github.com/sachin10fi/)
  */
-class WordBreakProblemTest {
+public class WordBreakProblemTest {
     @Test
     public void testInputs() {
         String[] dictionary = {"wait", "here", "i", "told", "you", "to", " "};
