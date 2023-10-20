@@ -1,7 +1,7 @@
 package com.thealgorithms.bitmanipulation;
 
 /**
- * Converts any Octal Number to a Binary Number
+ * Checks whether a number is even
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
