@@ -6,7 +6,7 @@ import java.util.Stack;
 
 /*
  * A Java program that computes the convex hull using the Graham Scan algorithm
- * In the best case, time complexity is O(n), while in the worst case, it is log(n).
+ * In the best case, time complexity is O(n), while in the worst case, it is O(nlog(n)).
  * O(n) space complexity
  *
  * This algorithm is only applicable to integral coordinates.
@@ -106,16 +106,14 @@ public class GrahamScan {
 
         /**
          * @param p2 Co-ordinate of point to compare to.
-         * This function will compare the points and will return a positive integer it the
+         * This function will compare the points and will return a positive integer if the
          * point is greater than the argument point and a negative integer if the point is
          * less than the argument point.
          */
         public int compareTo(Point p2) {
-            if (this.y < p2.y) return -1;
-            if (this.y > p2.y) return +1;
-            if (this.x < p2.x) return -1;
-            if (this.x > p2.x) return +1;
-            return 0;
+            int res = Integer.compare(this.y, p2.y);
+            if (res == 0) res = Integer.compare(this.x, p2.x);
+            return res;
         }
 
         /**
