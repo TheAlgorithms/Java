@@ -38,4 +38,9 @@ public class aAlgorithm implements Comparable<aAlgorithm> {
     public double calculateHeuristic(aAlgorithm target){
         return this.h;
     }
+
+    public static void main(String[] args) {
+        aAlgorithm startNode = new aAlgorithm(0);
+        aAlgorithm endNode = new aAlgorithm(10);
+    }
 }
