@@ -19,7 +19,7 @@ public class AESEncryption {
 
     /**
      * 1. Generate a plain text for encryption 2. Get a secret key (printed in
-     * hexadecimal form). In actual use this must by encrypted and kept safe.
+     * hexadecimal form). In actual use this must be encrypted and kept safe.
      * The same key is required for decryption.
      */
     public static void main(String[] args) throws Exception {
