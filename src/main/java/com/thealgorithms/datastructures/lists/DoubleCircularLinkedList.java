@@ -4,6 +4,8 @@
  *
  * @param <T> the type of data stored in the node
  */
+
+package com.thealgorithms.datastructures.lists;
 class Node<T> {
     T data;
     Node<T> prev;
