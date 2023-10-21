@@ -4,7 +4,6 @@ public class SieveOfEratosthenes {
 
     /**
      * Finds all prime numbers up to a given limit using the Sieve of Eratosthenes algorithm.
-     * explaination can be found at 'https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes'
      * 
      * @param limit the upper limit for finding prime numbers
      * @return a list of prime numbers up to the limit
@@ -42,3 +41,4 @@ public class SieveOfEratosthenes {
         System.out.println(primes);
     }
 }
+// Here's the explanation of the concept: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
