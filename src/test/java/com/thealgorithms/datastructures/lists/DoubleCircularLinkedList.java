@@ -1,4 +1,5 @@
 package com.thealgorithms.datastructures.lists;
+
 /**
  * A node in a doubly circular linked list.
  * URL: https://www.geeksforgeeks.org/introduction-to-circular-doubly-linked-list/
@@ -7,7 +8,6 @@ package com.thealgorithms.datastructures.lists;
  */
 import java.util.*;
 
-
 /**
  * A doubly circular linked list.
  *
@@ -15,21 +15,21 @@ import java.util.*;
  */
 public class DoubleCircularLinkedList<T> {
     class Node<T> {
-    T data;
-    Node<T> prev;
-    Node<T> next;
+        T data;
+        Node<T> prev;
+        Node<T> next;
 
-    /**
-     * Constructs a new node with the given data.
-     *
-     * @param data the data to store in the node
-     */
-    public Node(T data) {
-        this.data = data;
-        this.prev = null;
-        this.next = null;
+        /**
+         * Constructs a new node with the given data.
+         *
+         * @param data the data to store in the node
+         */
+        public Node(T data) {
+            this.data = data;
+            this.prev = null;
+            this.next = null;
+        }
     }
-}
 
     private Node<T> head;
     private int size;
@@ -135,7 +135,8 @@ public class DoubleCircularLinkedList<T> {
         }
         return node;
     }
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
         DoubleCircularLinkedList<Integer> list = new DoubleCircularLinkedList<>();
         list.add(1);
         list.add(2);
@@ -149,4 +150,3 @@ public class DoubleCircularLinkedList<T> {
         System.out.println(list.get(2));
     }
 }
-
