@@ -41,4 +41,5 @@ public class SieveOfEratosthenes {
         System.out.println(primes);
     }
 }
+
 // Here's the explanation of the concept: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
