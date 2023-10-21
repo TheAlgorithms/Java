@@ -10,7 +10,7 @@ public class aAlgorithm implements Comparable<aAlgorithm> {
     public double g = Double.MAX_VALUE;
     public double h;
 
-    aAlgorithm(double h){
+    aAlgorithm(double h) {
         this.h = h;
         this.id = idCounter++;
         this.neighbors = new ArrayList<>();
@@ -22,7 +22,7 @@ public class aAlgorithm implements Comparable<aAlgorithm> {
     }
 
     public static class Edge {
-        Edge(int weight, aAlgorithm node){
+        Edge(int weight, aAlgorithm node) {
             this.weight = weight;
             this.node = node;
         }
@@ -30,12 +30,12 @@ public class aAlgorithm implements Comparable<aAlgorithm> {
         public aAlgorithm node;
     }
 
-    public void addBranch(int weight, aAlgorithm node){
+    public void addBranch(int weight, aAlgorithm node) {
         Edge newEdge = new Edge(weight, node);
         neighbors.add(newEdge);
     }
 
-    public double calculateHeuristic(aAlgorithm target){
+    public double calculateHeuristic(aAlgorithm target) {
         return this.h;
     }
 
