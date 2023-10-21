@@ -5,7 +5,7 @@
  * @param <T> the type of data stored in the node
  */
 
-package com.thealgorithms.datastructures.lists;
+package com.thealgorithms.datastructures;
 class Node<T> {
     T data;
     Node<T> prev;
