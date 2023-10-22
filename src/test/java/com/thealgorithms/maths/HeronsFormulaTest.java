@@ -24,4 +24,11 @@ public class HeronsFormulaTest {
     void test4() {
         Assertions.assertEquals(HeronsFormula.Herons(4, 5, 8), 8.181534085976786);
     }
+
+    @Test
+    void test5() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.calculateArea(1, 2, 3);
+        });
+    }
 }
