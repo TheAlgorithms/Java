@@ -4,7 +4,7 @@ import java.util.*;
 
 /*
  * @author Ojasva Jain
- * Determinant of Matrix Wikipedia link : https://en.wikipedia.org/wiki/Determinant
+ * Determinant of a Matrix Wikipedia link: https://en.wikipedia.org/wiki/Determinant
  */
 public class DeterminantOfMatrix {
 
