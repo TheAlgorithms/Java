@@ -2,7 +2,6 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * To Find the Missing Number In An Array Using Bit Manipulation
- * 
  * @author Akanksha Singh (https://github.com/singhakanksha03)
  */
 
