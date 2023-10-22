@@ -17,8 +17,8 @@ and the Reduce step, where the results from the Map step are combined to produce
 
 public class MapReduce {
     /*
-    *Counting all the words frequency within a sentence.
-    */
+     *Counting all the words frequency within a sentence.
+     */
     public static String mapreduce(String sentence) {
         List<String> wordList = Arrays.stream(sentence.split(" ")).toList();
 
@@ -36,5 +36,4 @@ public class MapReduce {
 
         return result.toString();
     }
-
 }
