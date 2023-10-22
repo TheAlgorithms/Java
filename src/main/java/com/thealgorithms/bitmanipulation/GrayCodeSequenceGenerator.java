@@ -2,12 +2,10 @@ package com.thealgorithms.bitmanipulation;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Gray Code Sequence Generator
  * @author Akanksha Singh (https://github.com/singhakanksha03)
  */
-
 
 public class GrayCodeSequenceGenerator {
 
