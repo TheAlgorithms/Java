@@ -14,17 +14,13 @@ public final class HeronsFormula {
      * here s is called semi-perimeter and it is the half of the perimeter (i.e; s = (s1+s2+s3)/2)
      * @author satyabarghav
      */
-    private HeronsFormula(){
+    private HeronsFormula() {
     }
-    public static double Herons(final double a, final double b, final double c) {
-        if (!(a + b > c && b + c > a && c + a > b)) {
+    public static double herons(final double a, final double b, final double c) {
+        if ((!(a + b > c && b + c > a && c + a > b)) && (a > 0 && b > 0 && c > 0)) {
             throw new IllegalArgumentException("Triangle can't be formed with the given side lengths");
-        } else {
-            final double s = (a + b + c) / 2.0;
-            return Math.sqrt((s) * (s - a) * (s - b) * (s - c));
         }
-    }
-    public static void main(String[] args){
-        System.out.println(Herons(1, 2, 3));
+        final double s = (a + b + c) / 2.0;
+        return Math.sqrt((s) * (s - a) * (s - b) * (s - c));
     }
 }
