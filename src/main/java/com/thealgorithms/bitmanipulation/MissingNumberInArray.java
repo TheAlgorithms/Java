@@ -6,11 +6,11 @@ package com.thealgorithms.bitmanipulation;
  */
 
 public class MissingNumberInArray {
+    
     public static int findMissingNumber(int[] nums) {
         int n = nums.length;
         int temp1 = nums[0];
-        
-        int temp2 = 1;   
+        int temp2 = 1; 
         for (int i = 1; i < n; i++) {
             temp1 ^= nums[i];
         }
@@ -19,5 +19,4 @@ public class MissingNumberInArray {
         }
         return (temp1 ^ temp2);
     }
-
 }
