@@ -1,8 +1,10 @@
 package com.thealgorithms.misc;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /*
@@ -14,13 +16,25 @@ and the Reduce step, where the results from the Map step are combined to produce
 */
 
 public class MapReduce {
-    public static void main(String[] args) {
-        List<String> words = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
+    /*
+    *Counting all the words frequency within a sentence.
+    */
+    public static String mapreduce(String sentence) {
+        List<String> wordList = Arrays.stream(sentence.split(" ")).toList();
 
         // Map step
-        Map<String, Long> wordCounts = words.stream().collect(Collectors.groupingBy(w -> w, Collectors.counting()));
+        Map<String, Long> wordCounts = wordList.stream().collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 
         // Reduce step
-        wordCounts.forEach((word, count) -> System.out.println(word + ": " + count));
+        StringBuilder result = new StringBuilder();
+        wordCounts.forEach((word, count) -> result.append(word).append(": ").append(count).append(","));
+
+        // Removing the last ',' if it exists
+        if (!result.isEmpty()) {
+            result.setLength(result.length() - 1);
+        }
+
+        return result.toString();
     }
+
 }
