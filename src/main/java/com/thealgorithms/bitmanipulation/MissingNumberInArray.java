@@ -17,6 +17,4 @@ public class MissingNumberInArray {
             temp2 ^= i;
         }
         return (temp1 ^ temp2);
-    }
-    //kk
-}
+    }}
