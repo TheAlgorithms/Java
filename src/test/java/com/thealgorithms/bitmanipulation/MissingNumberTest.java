@@ -9,4 +9,4 @@ class MissingNumberTest {
     void testMissingNumber() {
         return new MissingNumber();
     }
-}
+ }
