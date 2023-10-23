@@ -9,6 +9,7 @@ package com.thealgorithms.divideandconquer;
  * Reference:
  * https://iq.opengenus.org/binary-exponentiation/
  */
+// updated this so that even a newbie can understand this code
 
 public class BinaryExponentiation {
 
