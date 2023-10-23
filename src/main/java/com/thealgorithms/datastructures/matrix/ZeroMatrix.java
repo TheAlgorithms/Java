@@ -74,23 +74,7 @@ public class ZeroMatrix {
         }
     }
 }
-/**
- * Imagine we have a grid, like a chessboard, where we store numbers. This grid is our "matrix." Each cell in the grid is like a house, and inside each house, there's a number.
- *
- * Now, we have a magic rule: if any house in a row or a column has a number zero, we must make the entire row and the entire column become zeros as well. It's like a domino effect!
- *
- * Here's our plan to follow the magic rule:
- *
- * Step 1:We'll check the first row and the first column (the very top and the very left). If any of them has a zero, we'll remember that fact. We'll use two special flags called firstRowHasZero and firstColHasZero to remember.
- *
- * Step 2: We'll go through the other houses in our grid (the ones not in the first row or first column). If we find a house with a zero, we'll make a note of that by setting the first cell of its row and the first cell of its column to zero. This is like leaving a mark on the first row and the first column, saying, "Hey, there's a zero in this row and column!"
- *
- * Step 3: After checking all the houses, we will go back and look at our marks on the first row and first column. If the firstRowHasZero flag is set, we'll turn the whole first row into zeros. If the firstColHasZero flag is set, we'll turn the entire first column into zeros.
- *
- * Step 4: Finally, we'll go back to each house (each cell) and see if it's in a row or column marked for zero. If it is, we'll turn that house into a zero.
- *
- * In the end, our grid will look like we applied the magic rule everywhere we found a zero.
- *
- * Time Complexity:
- * The time complexity of this code is O(m * n), where 'm' is the number of rows and 'n' is the number of columns in the matrix. This is because we iterate through the entire matrix once to find zeros and then a second time to mark and update the rows and columns. The code does not depend on the size of the matrix in a nested loop, making it an efficient solution.
- */
+
+
+
+
