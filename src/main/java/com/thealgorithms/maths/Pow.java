@@ -8,7 +8,7 @@ public class Pow {
         assert pow(0, 2) == Math.pow(0, 2); // == 0
         assert pow(2, 10) == Math.pow(2, 10); // == 1024
         assert pow(10, 2) == Math.pow(10, 2); // == 100
-        assert pow(2.1,3) == Math.pow(2.1,3); // == 9.261000000000001
+        assert pow(2.1, 3) == Math.pow(2.1, 3); // == 9.261000000000001
     }
 
     /**
