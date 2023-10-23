@@ -44,11 +44,12 @@ public class NQueens {
     }
 
     public static void placeQueens(final int queens) {
-        List<List<String>> arrangements = new ArrayList<List<String>>();
+        List<List<String>> arrangements = new ArrayList<>();
         getSolution(queens, arrangements, new int[queens], 0);
-        if (arrangements.isEmpty()) {
-            System.out.println("There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
-        } else {
+        if (arrangements.isEmpty()) { // No solution exists
+            System.out.println(
+                    "There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
+        } else { // Solution exists
             System.out.println("Arrangement for placing " + queens + " queens");
         }
         for (List<String> arrangement : arrangements) {
@@ -60,15 +61,15 @@ public class NQueens {
     /**
      * This is backtracking function which tries to place queen recursively
      *
-     * @param boardSize: size of chess board
-     * @param solutions: this holds all possible arrangements
-     * @param columns: columns[i] = rowId where queen is placed in ith column.
+     * @param boardSize:   size of chess board
+     * @param solutions:   this holds all possible arrangements
+     * @param columns:     columns[i] = rowId where queen is placed in ith column.
      * @param columnIndex: This is the column in which queen is being placed
      */
     private static void getSolution(int boardSize, List<List<String>> solutions, int[] columns, int columnIndex) {
         if (columnIndex == boardSize) {
             // this means that all queens have been placed
-            List<String> sol = new ArrayList<String>();
+            List<String> sol = new ArrayList<>();
             for (int i = 0; i < boardSize; i++) {
                 StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < boardSize; j++) {
@@ -95,14 +96,15 @@ public class NQueens {
      * This function checks if queen can be placed at row = rowIndex in column =
      * columnIndex safely
      *
-     * @param columns: columns[i] = rowId where queen is placed in ith column.
-     * @param rowIndex: row in which queen has to be placed
+     * @param columns:     columns[i] = rowId where queen is placed in ith column.
+     * @param rowIndex:    row in which queen has to be placed
      * @param columnIndex: column in which queen is being placed
      * @return true: if queen can be placed safely false: otherwise
      */
     private static boolean isPlacedCorrectly(int[] columns, int rowIndex, int columnIndex) {
         for (int i = 0; i < columnIndex; i++) {
             int diff = Math.abs(columns[i] - rowIndex);
+            // If queen is placed in same row or in diagonal then return false
             if (diff == 0 || columnIndex - i == diff) {
                 return false;
             }
