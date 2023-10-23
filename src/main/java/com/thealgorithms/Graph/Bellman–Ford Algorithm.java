@@ -1,6 +1,6 @@
 // A Java program for Bellman-Ford's single source shortest
 // path algorithm.
- 
+package com.thealgorithms.graph;
 import java.io.*;
 import java.lang.*;
 import java.util.*;
