@@ -21,6 +21,8 @@ public class PowerSum {
         if (sum == N) {
             count++;
             return;
+        } else if (sum > N) {
+            return; // Stop exploring this path
         } // we will be adding next natural number raised to X only if on adding it in sum the
           // result is less than N.
         else if (sum + power(i, X) <= N) {
