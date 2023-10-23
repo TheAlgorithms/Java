@@ -1,5 +1,7 @@
 // A Java program print Eulerian Trail
 // in a given Eulerian or Semi-Eulerian Graph
+package com.thealgorithms.graph;
+import java.util.*;
 import java.util.ArrayList;
  
 // An Undirected graph using
