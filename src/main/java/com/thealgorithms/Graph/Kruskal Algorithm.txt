@@ -1,5 +1,6 @@
 // Java program for Kruskal's algorithm 
-  
+package com.thealgorithms.graph;
+import java.util.*;
 import java.util.ArrayList; 
 import java.util.Comparator; 
 import java.util.List; 
