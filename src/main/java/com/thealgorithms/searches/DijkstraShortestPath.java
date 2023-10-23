@@ -2,6 +2,20 @@ package com.thealgorithms.searches;
 
 import java.util.*;
 
+/**
+ * Dijkstra's Shortest Path algorithm finds the shortest path between two nodes
+ * in a weighted graph.
+ *
+ * <p>
+ * Worst-case performance O(|E| + |V| log |V|) with a min-priority queue.
+ * Best-case performance O(|E| + |V| log |V|) (typical).
+ * Average performance O(|E| + |V| log |V|).
+ * Worst-case space complexity O(|V|) for the distances.
+ *
+ * @author Adarsh U
+ * @see GraphAlgorithm
+ * @see DijkstraShortestPath
+ */
 class Graph {
     private int V; // Number of vertices
     private List<List<Node>> adj; // Adjacency list
