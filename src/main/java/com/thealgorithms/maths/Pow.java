@@ -12,11 +12,10 @@ public class Pow {
         // powPlus method test.
         assert powPlus(2.00000, 10) == Math.pow(2.00000, 10); // 1024.00000
         System.out.println(powPlus(2.00000, 10) + " " + Math.pow(2.00000, 10));
-        assert powPlus(2.10000, 3) == Math.pow(2.10000, 3);   // 9.26100
+        assert powPlus(2.10000, 3) == Math.pow(2.10000, 3); // 9.26100
         System.out.println(powPlus(2.10000, 3) + " " + Math.pow(2.10000, 3));
-        assert powPlus(2.00000, 2) == Math.pow(2.00000, -2);   // 0.25000
+        assert powPlus(2.00000, 2) == Math.pow(2.00000, -2); // 0.25000
         System.out.println(powPlus(2.00000, -2) + " " + Math.pow(2.00000, -2));
-
     }
 
     /**
@@ -65,5 +64,4 @@ public class Pow {
 
         return res;
     }
-
 }
