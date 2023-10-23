@@ -1,7 +1,8 @@
 // A Java program to print topological
 // sorting of a DAG
-import java.io.*;
+package com.thealgorithms.graph;
 import java.util.*;
+import java.io.*;
 
 // This class represents a directed graph
 // using adjacency list representation
