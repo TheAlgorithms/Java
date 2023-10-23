@@ -15,8 +15,7 @@ class Node {
 }
 
 public class BestFirstSearch {
-    public static Node bestFirstSearch(int start, int target, Map<Integer, List<Integer>> graph,
-            Map<Integer, Integer> heuristic) {
+    public static Node bestFirstSearch(int start, int target, Map<Integer, List<Integer>> graph, Map<Integer, Integer> heuristic) {
         // Check if empty graph
         if (graph.isEmpty()) {
             return null;
