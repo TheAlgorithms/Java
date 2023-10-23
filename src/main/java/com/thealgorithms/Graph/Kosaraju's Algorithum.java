@@ -1,5 +1,6 @@
 // Java program to check if a given directed graph is strongly
 // connected or not
+package com.thealgorithms.graph;
 import java.io.*;
 import java.util.*;
 import java.util.LinkedList;
