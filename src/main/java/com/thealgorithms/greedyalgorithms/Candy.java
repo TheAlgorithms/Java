@@ -32,19 +32,16 @@ public class Candy {
 
         // Traverse from left to right
         for (int i = 1; i < n; i++) {
-            if (ratings.get(i) > ratings.get(i - 1))
-                left.set(i, left.get(i - 1) + 1);
+            if (ratings.get(i) > ratings.get(i - 1)) left.set(i, left.get(i - 1) + 1);
         }
 
         // Traverse from right to left
         for (int i = n - 2; i >= 0; i--) {
-            if (ratings.get(i) > ratings.get(i + 1))
-                right.set(i, right.get(i + 1) + 1);
+            if (ratings.get(i) > ratings.get(i + 1)) right.set(i, right.get(i + 1) + 1);
         }
 
         // Take the max of left and right for each child
-        for (int i = 0; i < n; i++)
-            ans += Math.max(left.get(i), right.get(i));
+        for (int i = 0; i < n; i++) ans += Math.max(left.get(i), right.get(i));
 
         return ans;
     }
