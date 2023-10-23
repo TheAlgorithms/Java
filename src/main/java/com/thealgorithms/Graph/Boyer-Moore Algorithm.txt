@@ -1,7 +1,9 @@
-
+package com.thealgorithms.graph;
 /* Java Program for Bad Character Heuristic of Boyer 
 Moore String Matching Algorithm */
- 
+import java.io.*;
+import java.lang.*;
+import java.util.*;
  
 class AWQ{
      
