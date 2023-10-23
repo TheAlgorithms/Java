@@ -45,5 +45,4 @@ public class Candy {
 
         return ans;
     }
-
 }
