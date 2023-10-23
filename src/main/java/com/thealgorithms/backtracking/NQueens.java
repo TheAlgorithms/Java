@@ -31,9 +31,6 @@ import java.util.List;
  * previous column and change row of previous queen. Keep doing this until last
  * queen is not placed safely. If there is no such way then return an empty list
  * as solution
- * 
- * 
- * Wiki link: https://en.wikipedia.org/wiki/Eight_queens_puzzle
  */
 public class NQueens {
 
@@ -50,7 +47,8 @@ public class NQueens {
         List<List<String>> arrangements = new ArrayList<>();
         getSolution(queens, arrangements, new int[queens], 0);
         if (arrangements.isEmpty()) { // No solution exists
-            System.out.println("There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
+            System.out.println(
+                    "There is no way to place " + queens + " queens on board of size " + queens + "x" + queens);
         } else { // Solution exists
             System.out.println("Arrangement for placing " + queens + " queens");
         }
