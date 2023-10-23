@@ -31,6 +31,8 @@ import java.util.List;
  * previous column and change row of previous queen. Keep doing this until last
  * queen is not placed safely. If there is no such way then return an empty list
  * as solution
+ * 
+ * Wiki link: https://en.wikipedia.org/wiki/Eight_queens_puzzle
  */
 public class NQueens {
 
