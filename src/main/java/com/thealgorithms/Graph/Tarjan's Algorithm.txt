@@ -1,8 +1,9 @@
 // Java program to find strongly connected
 // components in a given directed graph
 // using Tarjan's algorithm (single DFS)
-import java.io.*;
+package com.thealgorithms.graph;
 import java.util.*;
+import java.io.*;
  
 // This class represents a directed graph
 // using adjacency list representation
