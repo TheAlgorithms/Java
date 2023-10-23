@@ -1,7 +1,7 @@
 
+package com.thealgorithms.graph;
 import java.util.*;
- 
-public class GFG {
+public class kushal {
     // Number of vertices in the graph
     static final int V = 4;
     static final int INF = 99999;
