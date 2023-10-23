@@ -6,7 +6,7 @@ package com.thealgorithms.bitmanipulation;
 import java.util.Arrays;
 
 public class MissingNumber {
-    public static boolean missingNumber(int[] nums) {
+    public static int missingNumber(int[] nums) {
 
         int low = Arrays.stream(nums).min().getAsInt();
         int high = Arrays.stream(nums).max().getAsInt();
