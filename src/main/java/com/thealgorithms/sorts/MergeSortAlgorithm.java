@@ -5,49 +5,67 @@ package com.thealgorithms.sorts;
  *
  * Wiki:https://en.wikipedia.org/wiki/Merge_sort
  */
-public class MergeSortAlgorithm {
-    public static void mergeSort(int[] arr) {
-        if (arr.length > 1) {
-            int mid = arr.length / 2;
-            int[] leftArray = new int[mid];
-            int[] rightArray = new int[arr.length - mid];
 
-            System.arraycopy(arr, 0, leftArray, 0, mid);
-            System.arraycopy(arr, mid, rightArray, 0, arr.length - mid);
 
-            mergeSort(leftArray);
-            mergeSort(rightArray);
+import java.util.Arrays;
+import java.util.List;
 
-            int i = 0, j = 0, k = 0;
+public class MergeSortAlgorithm implements SortAlgorithm {
 
-            while (i < leftArray.length && j < rightArray.length) {
-                if (leftArray[i] < rightArray[j]) {
-                    arr[k++] = leftArray[i++];
-                } else {
-                    arr[k++] = rightArray[j++];
-                }
-            }
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        if (unsorted == null) {
+            throw new IllegalArgumentException("Input array cannot be null");
+        }
 
-            while (i < leftArray.length) {
-                arr[k++] = leftArray[i++];
-            }
+        if (unsorted.length <= 1) {
+            return unsorted;
+        }
 
-            while (j < rightArray.length) {
-                arr[k++] = rightArray[j++];
+        int middle = unsorted.length / 2;
+        T[] left = Arrays.copyOfRange(unsorted, 0, middle);
+        T[] right = Arrays.copyOfRange(unsorted, middle, unsorted.length);
+
+        left = sort(left);
+        right = sort(right);
+
+        return merge(left, right);
+    }
+
+    protected <T extends Comparable<T>> T[] merge(T[] left, T[] right) {
+        int totalLength = left.length + right.length;
+        T[] result = Arrays.copyOf(left, totalLength);
+
+        int leftIndex = 0, rightIndex = 0, resultIndex = 0;
+
+        while (leftIndex < left.length && rightIndex < right.length) {
+            if (left[leftIndex].compareTo(right[rightIndex]) <= 0) {
+                result[resultIndex++] = left[leftIndex++];
+            } else {
+                result[resultIndex++] = right[rightIndex++];
             }
         }
+
+        while (leftIndex < left.length) {
+            result[resultIndex++] = left[leftIndex++];
+        }
+
+        while (rightIndex < right.length) {
+            result[resultIndex++] = right[rightIndex++];
+        }
+
+        return result;
     }
 }
 
-class mergeSortInernTest{
-    public static void main(String[] args) {
-        int[] arr = {9, 3, 1, 5, 13, 12};
-        MergeSortAlgorithm.mergeSort(arr);
 
-        System.out.println("Sorted array");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+
+class mergeSortInternTest{
+    public static void main(String[] args) {
+        MergeSortAlgorithm mergeSort = new MergeSortAlgorithm();
+        Integer[] arr = {12, 11, 13, 5, 6, 7};
+        Integer[] sortedArr = mergeSort.sort(arr);
+        System.out.println("Sorted array: " + Arrays.toString(sortedArr));
     }
 }
 
