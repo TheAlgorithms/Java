@@ -40,23 +40,30 @@ public final class FloodFill {
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      */
-    public static void floodFill(final int[][] image, final int x, final int y, final int newColor, final int oldColor) {
-        if (newColor == oldColor || x < 0 || x >= image.length || y < 0 || y >= image[x].length || getPixel(image, x, y) != oldColor) {
+    public static void floodFill(final int[][] image, final int x, final int y, final int newColor,
+            final int oldColor) {
+        // Base cases
+        if (newColor == oldColor) { // Same color
+            return;
+        }
+        if (x < 0 || x >= image.length || y < 0 || y >= image[x].length) { // Out of bounds
+            return;
+        }
+        if (getPixel(image, x, y) != oldColor) { // Not the old color
             return;
         }
 
+        // Replace the color at (x, y)
         putPixel(image, x, y, newColor);
 
-        /* Recursively check for horizontally & vertically adjacent coordinates */
-        floodFill(image, x + 1, y, newColor, oldColor);
-        floodFill(image, x - 1, y, newColor, oldColor);
-        floodFill(image, x, y + 1, newColor, oldColor);
-        floodFill(image, x, y - 1, newColor, oldColor);
-
-        /* Recursively check for diagonally adjacent coordinates  */
-        floodFill(image, x + 1, y - 1, newColor, oldColor);
-        floodFill(image, x - 1, y + 1, newColor, oldColor);
-        floodFill(image, x + 1, y + 1, newColor, oldColor);
-        floodFill(image, x - 1, y - 1, newColor, oldColor);
+        // Recur for up, down, left, right, diagonal
+        int[] dx = { 1, -1, 0, 0, 1, -1, 1, -1 }; // Possible x directions
+        int[] dy = { 0, 0, 1, -1, 1, -1, -1, 1 }; // Possible y directions
+        for (int i = 0; i < 8; i++) {
+            // New coordinates
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            floodFill(image, nx, ny, newColor, oldColor);
+        }
     }
 }
