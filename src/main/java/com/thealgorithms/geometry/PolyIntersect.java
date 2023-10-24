@@ -49,26 +49,5 @@ public class PolyIntersect {
     }
 
     // This Method has been created separately to test the code
-    public static void main(String[] args) {
-        // Create a Polygon object (for example, a triangle)
-        Polygon polygon = new Polygon();
-        polygon.addPoint(0, 0);
-        polygon.addPoint(5, 0);
-        polygon.addPoint(0, 5);
-
-        // Define the line segment coordinates
-        int l1x1 = 2;
-        int l1y1 = 2;
-        int l1x2 = 6;
-        int l1y2 = 6;
-
-        // Find intersections between the line segment and the polygon
-        Point[] intersections = PolyIntersect.getIntersections(polygon, l1x1, l1y1, l1x2, l1y2);
-
-        // Print the intersection points
-        System.out.println("Intersection Points:");
-        for (Point intersection : intersections) {
-            System.out.println("(" + intersection.x + ", " + intersection.y + ")");
-        }
-    }
+    
 }
