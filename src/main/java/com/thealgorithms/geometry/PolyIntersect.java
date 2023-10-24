@@ -16,7 +16,8 @@ public class PolyIntersect {
             int l2y2 = p.ypoints[j];
 
             Point intersect = getIntersection(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2);
-            if (intersect != null) intersections.add(intersect);
+            if (intersect != null)
+                intersections.add(intersect);
         }
         return intersections.toArray(new Point[] {});
     }
@@ -25,16 +26,19 @@ public class PolyIntersect {
         List<Point> intersections = new ArrayList<Point>();
         for (Polygon p : polygons) {
             Point[] polygonIntersects = getIntersections(p, x1, y1, x2, y2);
-            for (Point pt : polygonIntersects) intersections.add(pt);
+            for (Point pt : polygonIntersects)
+                intersections.add(pt);
         }
         return intersections.toArray(new Point[] {});
     }
 
-    public static Point getIntersection(int l1x1, int l1y1, int l1x2, int l1y2, int l2x1, int l2y1, int l2x2, int l2y2) {
+    public static Point getIntersection(int l1x1, int l1y1, int l1x2, int l1y2, int l2x1, int l2y1, int l2x2,
+            int l2y2) {
         double d = (l2y2 - l2y1) * (l1x2 - l1x1) - (l2x2 - l2x1) * (l1y2 - l1y1);
         double na = (l2x2 - l2x1) * (l1y1 - l2y1) - (l2y2 - l2y1) * (l1x1 - l2x1);
         double nb = (l1x2 - l1x1) * (l1y1 - l2y1) - (l1y2 - l1y1) * (l1x1 - l2x1);
-        if (d == 0D) return null;
+        if (d == 0D)
+            return null;
 
         double ua = na / d;
         double ub = nb / d;
@@ -49,5 +53,5 @@ public class PolyIntersect {
     }
 
     // This Method has been created separately to test the code
-    
+
 }
