@@ -1,10 +1,10 @@
 package com.thealgorithms.geometry;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.Point;
 import java.awt.Polygon;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class PolyIntersectTest {
 
@@ -26,7 +26,7 @@ public class PolyIntersectTest {
         Point[] intersections = PolyIntersect.getIntersections(polygon, l1x1, l1y1, l1x2, l1y2);
 
         // Create an array of expected intersection points
-        Point[] expectedIntersections = { new Point(2, 2), new Point(4, 4) };
+        Point[] expectedIntersections = { new Point(2, 2), new Point(4, 4)};
 
         // Compare the expected and actual intersection points
         assertEquals(expectedIntersections.length, intersections.length);
