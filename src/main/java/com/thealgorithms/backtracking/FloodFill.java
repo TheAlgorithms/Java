@@ -40,8 +40,7 @@ public final class FloodFill {
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
      */
-    public static void floodFill(final int[][] image, final int x, final int y, final int newColor,
-            final int oldColor) {
+    public static void floodFill(final int[][] image, final int x, final int y, final int newColor, final int oldColor) {
         // Base cases
         if (newColor == oldColor) { // Same color
             return;
@@ -57,8 +56,8 @@ public final class FloodFill {
         putPixel(image, x, y, newColor);
 
         // Recur for up, down, left, right, diagonal
-        int[] dx = { 1, -1, 0, 0, 1, -1, 1, -1 }; // Possible x directions
-        int[] dy = { 0, 0, 1, -1, 1, -1, -1, 1 }; // Possible y directions
+        int[] dx = {1, -1, 0, 0, 1, -1, 1, -1}; // Possible x directions
+        int[] dy = {0, 0, 1, -1, 1, -1, -1, 1}; // Possible y directions
         for (int i = 0; i < 8; i++) {
             // New coordinates
             int nx = x + dx[i];
