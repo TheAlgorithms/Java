@@ -1,6 +1,6 @@
 package com.thealgorithms.datastructures.lists;
 
-import java.util.*;
+import java.util.Objects;
 
 /**
  * A node in a doubly circular linked list.
@@ -48,14 +48,18 @@ public class DoubleCircularLinkedList<T> {
      *
      * @return the number of elements in the list
      */
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
     /**
      * Returns true if the list is empty, false otherwise.
      *
      * @return true if the list is empty, false otherwise
      */
-    public boolean isEmpty() { return size == 0; }
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
     /**
      * Adds the given element to the end of the list.
@@ -134,8 +138,7 @@ public class DoubleCircularLinkedList<T> {
     }
 
     public static void main(String[] args) {
-        DoubleCircularLinkedList<Integer> list =
-            new DoubleCircularLinkedList<>();
+        DoubleCircularLinkedList<Integer> list = new DoubleCircularLinkedList<>();
         list.add(1);
         list.add(2);
         list.add(3);
