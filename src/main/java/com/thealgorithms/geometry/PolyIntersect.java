@@ -18,6 +18,7 @@ public class PolyIntersect {
             Point intersect = getIntersection(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2);
             if (intersect != null) intersections.add(intersect);
 
+
         }       
         return intersections.toArray(new Point[] {});
     }
@@ -28,7 +29,8 @@ public class PolyIntersect {
             Point[] polygonIntersects = getIntersections(p, x1, y1, x2, y2);
             for (Point pt : polygonIntersects) intersections.add(pt);
 
-            
+
+        
         }        
         return intersections.toArray(new Point[] {});
     }
