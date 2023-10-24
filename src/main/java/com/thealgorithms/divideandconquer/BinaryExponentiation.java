@@ -2,6 +2,8 @@ package com.thealgorithms.divideandconquer;
 
 // Java Program to Implement Binary Exponentiation (power in log n)
 
+// Reference Link: https://en.wikipedia.org/wiki/Exponentiation_by_squaring
+
 /*
  * Binary Exponentiation is a method to calculate a to the power of b.
  * It is used to calculate a^n in O(log n) time.
