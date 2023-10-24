@@ -14,14 +14,14 @@ public class BinaryExponentiation {
 
     // recursive function to calculate a to the power of b
     public static long calculatePower(long x, long y) {
+        // Base Case
         if (y == 0) {
             return 1;
         }
-        long val = calculatePower(x, y / 2);
-        if (y % 2 == 0) {
-            return val * val;
+        if (y % 2 == 1) { // odd power
+            return x * calculatePower(x, y - 1);
         }
-        return val * val * x;
+        return calculatePower(x * x, y / 2); // even power
     }
 
     // iterative function to calculate a to the power of b
