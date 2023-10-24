@@ -98,28 +98,7 @@ public class DistanceFormula {
         return d;
     }
 
-    /**
-     * Calculates Hamming distance between multi-dimensional binary points.
-     *
-     * @param binary1 Binary array representing the first multi-dimensional point
-     * @param binary2 Binary array representing the second multi-dimensional point
-     * @return Hamming distance between the binary points
-     */
-    public static int hammingDistance(int[] binary1, int[] binary2) {
-        int d = 0;
-
-        if (binary1.length != binary2.length) {
-            return -1; // error, both arrays must have the same length
-        }
-
-        for (int i = 0; i < binary1.length; i++) {
-            if (binary1[i] != binary2[i]) {
-                d++;
-            }
-        }
-
-        return d;
-    }
+   
 
     /**
      * Calculates Minkowski distance between multi-dimensional points with default p=2.
