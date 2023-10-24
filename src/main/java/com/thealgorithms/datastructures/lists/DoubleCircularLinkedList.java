@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.lists;
+
 import java.util.*;
 
 /**
