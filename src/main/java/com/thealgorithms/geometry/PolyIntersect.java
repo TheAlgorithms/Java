@@ -19,7 +19,8 @@ public class PolyIntersect {
             if (intersect != null) intersections.add(intersect);
 
 
-        }       
+        }   
+            
         return intersections.toArray(new Point[] {});
     }
 
@@ -30,8 +31,8 @@ public class PolyIntersect {
             for (Point pt : polygonIntersects) intersections.add(pt);
 
 
-        
-        }        
+        }
+
         return intersections.toArray(new Point[] {});
     }
 
