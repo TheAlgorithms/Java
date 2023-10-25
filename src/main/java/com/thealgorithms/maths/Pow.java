@@ -18,11 +18,18 @@ public class Pow {
      * @param b the exponent.
      * @return the value {@code a}<sup>{@code b}</sup>.
      */
-    public static long pow(int a, int b) {
-        long result = 1;
-        for (int i = 1; i <= b; i++) {
-            result *= a;
+    public static double pow(int a, int b) {
+        if (b == 0) {
+            return 1.0;
+        } else if (b > 0) {
+            double result = 1.0;
+            for (int i = 0; i < b; i++) {
+                result *= a;
+            }
+            return result;
+        } else {
+            // Handle negative exponent by taking the reciprocal of the result
+            return 1.0 / pow(a, -b);
         }
-        return result;
     }
 }
