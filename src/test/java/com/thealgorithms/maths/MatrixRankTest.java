@@ -3,6 +3,7 @@ package com.thealgorithms.maths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -28,7 +29,12 @@ class MatrixRankTest {
     @ParameterizedTest
     @MethodSource("validInputStream")
     void computeRankTests(int expectedRank, double[][] matrix) {
-        assertEquals(expectedRank, MatrixRank.computeRank(matrix));
+        int originalHashCode = Arrays.deepHashCode(matrix);
+        int rank = MatrixRank.computeRank(matrix);
+        int newHashCode = Arrays.deepHashCode(matrix);
+
+        assertEquals(expectedRank, rank);
+        assertEquals(originalHashCode, newHashCode);
     }
 
     @ParameterizedTest
