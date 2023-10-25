@@ -12,7 +12,6 @@ import java.util.Base64;
 /*
  * A Java implementation of Diffie-Hellman Key Exchange
  */
-
 public class DiffieHellmanKeyExchange {
 
     public static void diffieHellman(String[] args) throws Exception {
@@ -24,10 +23,8 @@ public class DiffieHellmanKeyExchange {
 
         // Convert Alice's public key to a byte array (for transmission)
         byte[] alicePublicKeyBytes = alicePublicKey.getEncoded();
-
         // In a real scenario, transmit alicePublicKeyBytes to Bob
         // Bob should have his own key pair, and he sends his public key to Alice
-
         // Simulate receiving Bob's public key (in a real scenario, this is done over the network)
         // Here, we'll convert it from a byte array to a PublicKey object
         // byte[] data = { 0x48, 0x65, 0x6C, 0x6C, 0x6F };
@@ -41,7 +38,7 @@ public class DiffieHellmanKeyExchange {
         keyAgreement.init(alicePrivateKey);
         keyAgreement.doPhase(bobPublicKey, true);
         byte[] sharedSecret = keyAgreement.generateSecret();
-
+        
         // You now have the shared secret for both Alice and Bob
         System.out.println("Shared Secret (Alice & Bob): " + Base64.getEncoder().encodeToString(sharedSecret));
     }
