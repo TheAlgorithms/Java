@@ -17,9 +17,9 @@ public class DistanceFormula {
      * @return Euclidean distance between the points
      */
     public static double euclideanDistance(double x1, double y1, double x2, double y2) {
-        double dX = Math.pow(x2 - x1, 2);
-        double dY = Math.pow(y2 - y1, 2);
-        return Math.sqrt(dX + dY);
+        double dX = x2 - x1;
+        double dY = y2 - y1;
+        return Math.sqrt(dX * dX + dY * dY);
     }
 
     /**
@@ -31,15 +31,16 @@ public class DistanceFormula {
      */
     public static double euclideanDistance(double[] point1, double[] point2) {
         if (point1.length != point2.length) {
-            return -1; // error, both points must have the same dimensions
+            throw new IllegalArgumentException("Points must have the same dimensions");
         }
 
-        double sum = 0;
+        double sumOfSquares = 0;
         for (int i = 0; i < point1.length; i++) {
-            sum += Math.pow(point1[i] - point2[i], 2);
+            double diff = point1[i] - point2[i];
+            sumOfSquares += diff * diff;
         }
 
-        return Math.sqrt(sum);
+        return Math.sqrt(sumOfSquares);
     }
 
     /**
