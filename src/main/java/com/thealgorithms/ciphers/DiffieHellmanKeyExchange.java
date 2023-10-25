@@ -9,7 +9,7 @@ import java.security.spec.X509EncodedKeySpec;
 import javax.crypto.KeyAgreement;
 import java.util.Base64;
 
-public class DiffieHellmanExample {
+public class DiffieHellmanKeyExchange {
     public static void diffieHellman(String[] args) throws Exception {
         // Generate Alice's key pair
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DiffieHellman");
