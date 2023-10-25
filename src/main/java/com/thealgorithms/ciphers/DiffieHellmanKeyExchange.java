@@ -3,11 +3,11 @@ package com.thealgorithms.ciphers;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.PublicKey;
 import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
-import javax.crypto.KeyAgreement;
 import java.util.Base64;
+import javax.crypto.KeyAgreement;
 
 /*
  * A Java implementation of Diffie-Hellman Key Exchange
@@ -38,7 +38,7 @@ public class DiffieHellmanKeyExchange {
         keyAgreement.init(alicePrivateKey);
         keyAgreement.doPhase(bobPublicKey, true);
         byte[] sharedSecret = keyAgreement.generateSecret();
-        
+
         // You now have the shared secret for both Alice and Bob
         System.out.println("Shared Secret (Alice & Bob): " + Base64.getEncoder().encodeToString(sharedSecret));
     }
