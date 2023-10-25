@@ -89,7 +89,7 @@ public final class MatrixRank {
 
     /**
      * @brief Checks if the input matrix is a jagged matrix.
-     * Jaggged matrix is a matrix where the number of columns in each row is not the same.
+     * Jagged matrix is a matrix where the number of columns in each row is not the same.
      *
      * @param matrix The input matrix
      * @return True if the input matrix is a jagged matrix, false otherwise
