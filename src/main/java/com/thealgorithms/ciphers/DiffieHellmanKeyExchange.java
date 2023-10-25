@@ -10,7 +10,7 @@ import javax.crypto.KeyAgreement;
 import java.util.Base64;
 
 public class DiffieHellmanExample {
-    public static void main(String[] args) throws Exception {
+    public static void diffieHellman(String[] args) throws Exception {
         // Generate Alice's key pair
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DiffieHellman");
         KeyPair aliceKeyPair = keyPairGenerator.generateKeyPair();
