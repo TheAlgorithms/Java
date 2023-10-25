@@ -9,11 +9,12 @@ import java.security.spec.X509EncodedKeySpec;
 import javax.crypto.KeyAgreement;
 import java.util.Base64;
 
-/**
+/*
  * A Java implementation of Diffie-Hellman Key Exchange
  */
 
 public class DiffieHellmanKeyExchange {
+
     public static void diffieHellman(String[] args) throws Exception {
         // Generate Alice's key pair
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DiffieHellman");
