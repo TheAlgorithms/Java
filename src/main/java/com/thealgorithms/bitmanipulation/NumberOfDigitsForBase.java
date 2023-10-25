@@ -5,7 +5,7 @@ package com.thealgorithms.bitmanipulation;
 
 public class NumberOfDigitsForBase {
 
-	public static int NumberOfDigitsForBase (int number, int base) {
+	public static int numberOfDigitsForBase (int number, int base) {
 		double value = Math.log(number) / Math.log(base);
 		return (int) Math.floor(value) + 1;
 	}
