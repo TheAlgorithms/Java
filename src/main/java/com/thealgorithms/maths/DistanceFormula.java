@@ -98,8 +98,6 @@ public class DistanceFormula {
         return d;
     }
 
-   
-
     /**
      * Calculates Minkowski distance between multi-dimensional points with default p=2.
      *
