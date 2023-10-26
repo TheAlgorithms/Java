@@ -8,7 +8,6 @@ package com.thealgorithms.sorts;
 
 
 import java.util.Arrays;
-import java.util.List;
 
 public class MergeSortAlgorithm implements SortAlgorithm {
 
