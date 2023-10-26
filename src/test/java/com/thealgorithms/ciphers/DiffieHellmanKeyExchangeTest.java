@@ -1,6 +1,6 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
