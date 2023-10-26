@@ -14,9 +14,9 @@ import javax.crypto.KeyAgreement;
  */
 public class DiffieHellmanKeyExchange {
 
-    public static void diffieHellman(String[] args) throws Exception {
+    public void diffieHellman(byte[] publickey) throws Exception {
         // Generate Alice's key pair
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DiffieHellman");
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DH");
         KeyPair aliceKeyPair = keyPairGenerator.generateKeyPair();
         PrivateKey alicePrivateKey = aliceKeyPair.getPrivate();
         PublicKey alicePublicKey = aliceKeyPair.getPublic();
@@ -28,13 +28,13 @@ public class DiffieHellmanKeyExchange {
         // Simulate receiving Bob's public key (in a real scenario, this is done over the network)
         // Here, we'll convert it from a byte array to a PublicKey object
         // byte[] data = { 0x48, 0x65, 0x6C, 0x6C, 0x6F };
-        byte[] bobPublicKeyBytes = {}; // Load Bob's public key from transmission
-        KeyFactory keyFactory = KeyFactory.getInstance("DiffieHellman");
+        byte[] bobPublicKeyBytes = publickey; // Load Bob's public key from transmission
+        KeyFactory keyFactory = KeyFactory.getInstance("DH");
         X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(bobPublicKeyBytes);
         PublicKey bobPublicKey = keyFactory.generatePublic(x509KeySpec);
 
         // Alice computes the shared secret
-        KeyAgreement keyAgreement = KeyAgreement.getInstance("DiffieHellman");
+        KeyAgreement keyAgreement = KeyAgreement.getInstance("DH");
         keyAgreement.init(alicePrivateKey);
         keyAgreement.doPhase(bobPublicKey, true);
         byte[] sharedSecret = keyAgreement.generateSecret();
@@ -42,4 +42,5 @@ public class DiffieHellmanKeyExchange {
         // You now have the shared secret for both Alice and Bob
         System.out.println("Shared Secret (Alice & Bob): " + Base64.getEncoder().encodeToString(sharedSecret));
     }
+
 }
