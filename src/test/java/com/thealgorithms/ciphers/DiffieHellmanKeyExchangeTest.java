@@ -1,4 +1,6 @@
-import static org.junit.jupiter.api.Assertions.*;
+package com.thealgorithms.ciphers;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import java.security.KeyPair;
 import java.util.Base64;
