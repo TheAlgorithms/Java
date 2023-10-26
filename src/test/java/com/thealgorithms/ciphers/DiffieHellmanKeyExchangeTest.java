@@ -14,35 +14,42 @@ import org.junit.jupiter.api.Test;
 
 class DiffieHellmanKeyExchangeTest {
 
-    DiffieHellmanKeyExchange dh = new DiffieHellmanKeyExchange();
+    @Test
+    public void testDiffieHellman() {
+        try {
+            DiffieHellmanKeyExchange keyExchange = new DiffieHellmanKeyExchange();
 
-    // @Test
-    // void diffieHellmanTest() {
-    //     try {
-    //         // Simulate Alice and Bob's key exchange
-    //         KeyPair aliceKeyPair = dh.generateKeyPair();
-    //         KeyPair bobKeyPair = dh.generateKeyPair();
+            // Generate Alice's key pair
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DH");
+            KeyPair aliceKeyPair = keyPairGenerator.generateKeyPair();
+            PublicKey alicePublicKey = aliceKeyPair.getPublic();
 
-    //         // Simulate Alice sending her public key to Bob
-    //         byte[] alicePublicKeyBytes = aliceKeyPair.getPublic().getEncoded();
-    //         // Simulate Bob sending his public key to Alice
-    //         byte[] bobPublicKeyBytes = bobKeyPair.getPublic().getEncoded();
+            // Generate Bob's key pair
+            KeyPair bobKeyPair = keyPairGenerator.generateKeyPair();
+            PublicKey bobPublicKey = bobKeyPair.getPublic();
 
-    //         // Alice receives Bob's public key and computes the shared secret
-    //         byte[] aliceSharedSecret = dh.computeSharedSecret(aliceKeyPair.getPrivate(), bobPublicKeyBytes);
+            // Convert Bob's public key to a byte array (for transmission)
+            byte[] bobPublicKeyBytes = bobPublicKey.getEncoded();
 
-    //         // Bob receives Alice's public key and computes the shared secret
-    //         byte[] bobSharedSecret = dh.computeSharedSecret(bobKeyPair.getPrivate(), alicePublicKeyBytes);
+            // Simulate the exchange by calling the diffieHellman method with Bob's public key
+            keyExchange.diffieHellman(bobPublicKeyBytes);
 
-    //         // Convert shared secrets to Base64-encoded strings for comparison
-    //         String aliceSharedSecretString = Base64.getEncoder().encodeToString(aliceSharedSecret);
-    //         String bobSharedSecretString = Base64.getEncoder().encodeToString(bobSharedSecret);
+            // Get the shared secret for Alice and Bob
+            KeyAgreement aliceKeyAgreement = KeyAgreement.getInstance("DH");
+            aliceKeyAgreement.init(aliceKeyPair.getPrivate());
+            aliceKeyAgreement.doPhase(bobPublicKey, true);
+            byte[] aliceSharedSecret = aliceKeyAgreement.generateSecret();
 
-    //         // Assert that the shared secrets computed by Alice and Bob are the same
-    //         assertEquals(aliceSharedSecretString, bobSharedSecretString);
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //         fail("Exception occurred during key exchange.");
-    //     }
-    // }
+            KeyAgreement bobKeyAgreement = KeyAgreement.getInstance("DH");
+            bobKeyAgreement.init(bobKeyPair.getPrivate());
+            bobKeyAgreement.doPhase(alicePublicKey, true);
+            byte[] bobSharedSecret = bobKeyAgreement.generateSecret();
+
+            // Assert that the shared secrets are the same
+            assertArrayEquals(aliceSharedSecret, bobSharedSecret);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("Exception occurred during key exchange.");
+        }
+    }
 }
