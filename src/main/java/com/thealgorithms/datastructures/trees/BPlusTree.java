@@ -40,7 +40,7 @@ class BPlusNode<K extends Comparable<K>, V> {
 
 
     /**
-     * Retrieves the value associated with the given key in the B+ tree.
+     * Retrieves the value associated with the given key in the B+ tree
      * @param key The key for which to retrieve the value.
      * @return The value associated with the key, or null if the key is not found.
      */
