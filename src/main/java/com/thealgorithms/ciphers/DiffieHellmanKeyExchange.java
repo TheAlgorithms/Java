@@ -42,5 +42,4 @@ public class DiffieHellmanKeyExchange {
         // You now have the shared secret for both Alice and Bob
         System.out.println("Shared Secret (Alice & Bob): " + Base64.getEncoder().encodeToString(sharedSecret));
     }
-
 }
