@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -16,24 +15,14 @@ import java.util.Random;
 
 class BPlusNode<K extends Comparable<K>, V> {
 
-    protected boolean isRoot;
+    protected boolean isRoot;  // Indicates whether this node is the root node.
+    protected boolean isLeaf;  // Indicates whether this node is a leaf node.
+    protected BPlusNode<K, V> parent;  // Reference to the parent node.
+    protected BPlusNode<K, V> pre;     // Reference to the previous node in a doubly linked list.
+    protected BPlusNode<K, V> next;    // Reference to the next node in a doubly linked list.
+    protected List<Entry<K, V>> entryList;  // List of key-value entries in the node.
+    protected List<BPlusNode<K, V>> childrenList;  // List of child nodes for non-leaf nodes.
 
-    protected boolean isLeaf;
-
-
-    protected BPlusNode<K, V> parent;
-
-
-    protected BPlusNode<K, V> pre;
-
-
-    protected BPlusNode<K, V> next;
-
-
-    protected List<Map.Entry<K, V>> entryList;
-
-
-    protected List<BPlusNode<K, V>> childrenList;
 
     public BPlusNode(boolean isLeaf) {
         this.isLeaf = isLeaf;
@@ -50,6 +39,11 @@ class BPlusNode<K extends Comparable<K>, V> {
     }
 
 
+    /**
+     * Retrieves the value associated with the given key in the B+ tree.
+     * @param key The key for which to retrieve the value.
+     * @return The value associated with the key, or null if the key is not found.
+     */
     public V get(K key) {
         if (isLeaf == true) {
             int low = 0, high = entryList.size() - 1, mid, comp;
@@ -88,6 +82,12 @@ class BPlusNode<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Inserts or updates a key-value pair in the B+ tree.
+     * @param key The key to insert or update.
+     * @param value The value associated with the key.
+     * @param tree The B+ tree to which the node belongs.
+     */
     public void insertOrUpdate(K key, V value, BPlusTree<K, V> tree) {
         if (isLeaf) {
             if (entryList.size() < tree.getOrder() || contains(key) != -1 ) {
@@ -179,7 +179,7 @@ class BPlusNode<K extends Comparable<K>, V> {
             if (leftSize != 0) {
                 leftSize -= 1;
                 if (!record && entryList.get(i).getKey().compareTo(key) > 0) {
-                    left.entryList.add(new AbstractMap.SimpleEntry<K, V>(key, value));
+                    left.entryList.add(new SimpleEntry<K, V>(key, value));
                     record = true;
                     i -= 1;
                 } else {
@@ -187,7 +187,7 @@ class BPlusNode<K extends Comparable<K>, V> {
                 }
             } else {
                 if (!record && entryList.get(i).getKey().compareTo(key) > 0) {
-                    right.entryList.add(new AbstractMap.SimpleEntry<K, V>(key, value));
+                    right.entryList.add(new SimpleEntry<K, V>(key, value));
                     record = true;
                     i -= 1;
                 } else {
@@ -196,7 +196,7 @@ class BPlusNode<K extends Comparable<K>, V> {
             }
         }
         if (record == false) {
-            right.entryList.add(new AbstractMap.SimpleEntry<K, V>(key, value));
+            right.entryList.add(new SimpleEntry<K, V>(key, value));
         }
     }
 
@@ -357,6 +357,12 @@ class BPlusNode<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Removes a key from the B+ tree.
+     * @param key The key to remove.
+     * @param tree The B+ tree from which to remove the key.
+     * @return The value associated with the removed key, or null if the key is not found.
+     */
     public V remove(K key, BPlusTree<K, V> tree) {
         if (isLeaf == true) {
             if (contains(key) == -1) {
@@ -477,6 +483,11 @@ class BPlusNode<K extends Comparable<K>, V> {
         }
     }
 
+    /**
+     * Checks if a key exists in the B+ tree node.
+     * @param key The key to check for existence.
+     * @return The index of the key in the node's entry list, or -1 if the key is not found.
+     */
     protected int contains(K key) {
         int low = 0, high = entryList.size() - 1, mid, comp;
         while (low <= high) {
@@ -508,7 +519,7 @@ class BPlusNode<K extends Comparable<K>, V> {
             }
         }
         if (low > high) {
-            entryList.add(low, new AbstractMap.SimpleEntry<K, V>(key, value));
+            entryList.add(low, new SimpleEntry<K, V>(key, value));
         }
     }
 
@@ -537,7 +548,7 @@ class BPlusNode<K extends Comparable<K>, V> {
         string.append(isLeaf);
         string.append(", ");
         string.append("keys: ");
-        for (Map.Entry<K, V> entry : entryList) {
+        for (Entry<K, V> entry : entryList) {
             string.append(entry.getKey());
             string.append(", ");
         }
@@ -545,6 +556,9 @@ class BPlusNode<K extends Comparable<K>, V> {
         return string.toString();
     }
 
+    /**
+     * Prints the B+ tree structure.
+     */
     public void printBPlusTree(int index) {
         if (this.isLeaf) {
             System.out.print("layer：" + index + ",leaf node，keys are: ");
@@ -566,13 +580,10 @@ class BPlusNode<K extends Comparable<K>, V> {
 
 class BPlusTree<K extends Comparable<K>, V> {
 
-    protected BPlusNode<K, V> root;
-
-    protected int order;
-
-    protected BPlusNode<K, V> head;
-
-    protected int height = 0;
+    protected BPlusNode<K, V> root;  // The root node of the B+ tree.
+    protected int order;  // The order of the B+ tree.
+    protected BPlusNode<K, V> head;  // The head of the doubly linked list.
+    protected int height = 0;  // The height of the B+ tree.
 
     public BPlusNode<K, V> getHead() {
         return head;
