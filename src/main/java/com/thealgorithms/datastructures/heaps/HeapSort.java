@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures.heaps;
 import java.util.Arrays;
 
 /*
- * K-D Tree Implementation
+ * Heapsort Implementation
  * Wikipedia: https://en.wikipedia.org/wiki/Heapsort
  *
  * Author: William Nian
