@@ -59,8 +59,7 @@ public class CheckValidityOfSudokuBoardConfiguration {
     // Checks whether the current row and current column and current 3x3 box is
     // valid or not
     public static boolean isValid(char arr[][], int row, int col) {
-        return notInRow(arr, row) && notInCol(arr, col)
-                && notInBox(arr, row - row % 3, col - col % 3);
+        return notInRow(arr, row) && notInCol(arr, col) && notInBox(arr, row - row % 3, col - col % 3);
     }
 
     // Function to check if the entire sudoku configuration is valid
@@ -77,17 +76,9 @@ public class CheckValidityOfSudokuBoardConfiguration {
 
     // Driver's code
     public static void main(String[] args) {
-        char[][] board = new char[][] {
-                { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
-                { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
-                { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
-                { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
-                { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
-                { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
-                { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
-                { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
-                { '.', '.', '.', '.', '8', '.', '.', '7', '9' }
-        };
+        char[][] board = new char[][] {{'5', '3', '.', '.', '7', '.', '.', '.', '.'}, {'6', '.', '.', '1', '9', '5', '.', '.', '.'}, {'.', '9', '8', '.', '.', '.', '.', '6', '.'}, {'8', '.', '.', '.', '6', '.', '.', '.', '3'}, {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+            {'7', '.', '.', '.', '2', '.', '.', '.', '6'}, {'.', '6', '.', '.', '.', '.', '2', '8', '.'}, {'.', '.', '.', '4', '1', '9', '.', '.', '5'}, {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
+ 
 
         // Function call to check if the configuration is valid
         System.out.println((isValidConfig(board, 9) ? "YES" : "NO"));
