@@ -85,8 +85,8 @@ public class MatrixMultiplicationUsingRecursion {
         }
     }
     public static void main(String[] args) {
-        int[][] A = {{ 1, 2 }, { 3, 4 }};
-        int[][] B = {{ 5, 6 }, { 7, 8 }};
+        int[][] A = {{1, 2}, {3, 4}};
+        int[][] B = {{5, 6}, {7, 8}};
         int[][] result = multiplyMatrix(A, B);
         System.out.println("Matrix A:");
         printMatrix(A);
