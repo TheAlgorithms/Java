@@ -5,9 +5,9 @@ package com.thealgorithms.maths;
  * @author Yash Jain (https://github.com/Yashjain1602)
  */
 
-import java.util.*;
-import java.lang.*;
 import java.io.*;
+import java.lang.*;
+import java.util.*;
 
 public class CountNegativeNumbersInASortedMatrix {
     // Recursive binary search to get last negative value in a row between a start
