@@ -19,7 +19,6 @@ package com.thealgorithms.dynamicprogramming;
  * allowing for gaps, mismatches, and matches. The algorithm should return the
  * starting positions of
  * the aligned subsequences in both sequences, as well as the alignment score.
- * 
  * @author Akanksha Singh (https://github.com/singhakanksha03)
  */
 
