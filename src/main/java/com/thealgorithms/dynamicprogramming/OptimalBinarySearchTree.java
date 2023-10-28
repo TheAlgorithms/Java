@@ -14,17 +14,14 @@ public class OptimalBinarySearchTree {
     // Helper function to calculate the sum of frequencies from index i to j
     static int Sum(int freq[], int i, int j) {
         int s = 0;
-        for (int k = i; k <= j; k++)
-            s += freq[k];
+        for (int k = i; k <= j; k++) s += freq[k];
         return s;
     }
 
     // Recursive function to find the optimal cost of a BST using memoization
     static int optCostMemoized(int freq[], int i, int j) {
-        if (i < 0 || j < 0)
-            return 0;
-        if (cost[i][j] != 0)
-            return cost[i][j];
+        if (i < 0 || j < 0) return 0;
+        if (cost[i][j] != 0) return cost[i][j];
         int fsum = Sum(freq, i, j);
         int Min = Integer.MAX_VALUE;
         for (int r = i; r <= j; r++) {
