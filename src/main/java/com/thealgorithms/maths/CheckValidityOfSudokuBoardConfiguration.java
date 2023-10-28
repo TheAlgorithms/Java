@@ -15,12 +15,10 @@ public class CheckValidityOfSudokuBoardConfiguration {
     
             for (int i = 0; i < 9; i++) {
                 // If already encountered before, return false
-                if (st.contains(arr[row][i]))
-                    return false;
+                if (st.contains(arr[row][i])) return false;
     
                 // If it is not an empty cell, insert value at the current cell in the set
-                if (arr[row][i] != '.')
-                    st.add(arr[row][i]);
+                if (arr[row][i] != '.') st.add(arr[row][i]);
             }
             return true;
         }
@@ -31,12 +29,10 @@ public class CheckValidityOfSudokuBoardConfiguration {
     
             for (int i = 0; i < 9; i++) {
                 // If already encountered before, return false
-                if (st.contains(arr[i][col]))
-                    return false;
+                if (st.contains(arr[i][col])) return false;
     
                 // If it is not an empty cell, insert value at the current cell in the set
-                if (arr[i][col] != '.')
-                    st.add(arr[i][col]);
+                if (arr[i][col] != '.') st.add(arr[i][col]);
             }
             return true;
         }
@@ -50,12 +46,10 @@ public class CheckValidityOfSudokuBoardConfiguration {
                     char curr = arr[row + startRow][col + startCol];
     
                     // If already encountered before, return false
-                    if (st.contains(curr))
-                        return false;
+                    if (st.contains(curr)) return false;
     
                     // If it is not an empty cell, insert value at current cell in set
-                    if (curr != '.')
-                        st.add(curr);
+                    if (curr != '.') st.add(curr);
                 }
             }
             return true;
@@ -72,28 +66,18 @@ public class CheckValidityOfSudokuBoardConfiguration {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     // If current row or current column or current 3x3 box is not valid, return false
-                    if (!isValid(arr, i, j))
-                        return false;
+                    if (!isValid(arr, i, j)) return false;
                 }
             }
             return true;
-        }
-    
-        // Driver's code
-        public static void main(String[] args) {
-            char[][] board = new char[][] {
-                    { '5', '3', '.', '.', '7', '.', '.', '.', '.' },
-                    { '6', '.', '.', '1', '9', '5', '.', '.', '.' },
-                    { '.', '9', '8', '.', '.', '.', '.', '6', '.' },
-                    { '8', '.', '.', '.', '6', '.', '.', '.', '3' },
-                    { '4', '.', '.', '8', '.', '3', '.', '.', '1' },
-                    { '7', '.', '.', '.', '2', '.', '.', '.', '6' },
-                    { '.', '6', '.', '.', '.', '.', '2', '8', '.' },
-                    { '.', '.', '.', '4', '1', '9', '.', '.', '5' },
-                    { '.', '.', '.', '.', '8', '.', '.', '7', '9' }
-            };
-    
-            // Function call to check if the configuration is valid
-            System.out.println((isValidConfig(board, 9) ? "YES" : "NO"));
-        }
+     }
+
+    // Driver's code
+    public static void main(String[] args) {
+        char[][] board = new char[][] {{'5', '3', '.', '.', '7', '.', '.', '.', '.'}, {'6', '.', '.', '1', '9', '5', '.', '.', '.'}, {'.', '9', '8', '.', '.', '.', '.', '6', '.'}, {'8', '.', '.', '.', '6', '.', '.', '.', '3'}, {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+            {'7', '.', '.', '.', '2', '.', '.', '.', '6'}, {'.', '6', '.', '.', '.', '.', '2', '8', '.'}, {'.', '.', '.', '4', '1', '9', '.', '.', '5'}, {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
+
+        // Function call to check if the configuration is valid
+        System.out.println((isValidConfig(board, 9) ? "YES" : "NO"));
     }
+}
