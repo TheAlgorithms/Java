@@ -1,7 +1,7 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * To Find the Missing Number In An Array Using Bit Manipulation
+ * To calculate the cost of an optimal binary search tree
  * @author Yash Jain (https://github.com/Yashjain1602)
  */
 
