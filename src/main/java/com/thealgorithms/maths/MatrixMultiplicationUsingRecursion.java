@@ -31,7 +31,7 @@ public class MatrixMultiplicationUsingRecursion {
             int[][] B22 = new int[halfN][halfP];
             // Split matrices into submatrices
             splitMatrix(A, A11, A12, A21, A22);
-            splitMatrix(B, B11, B12, B21, B22); 
+            splitMatrix(B, B11, B12, B21, B22);
             int[][] C11 = addMatrix(multiplyMatrix(A11, B11), multiplyMatrix(A12, B21));
             int[][] C12 = addMatrix(multiplyMatrix(A11, B12), multiplyMatrix(A12, B22));
             int[][] C21 = addMatrix(multiplyMatrix(A21, B11), multiplyMatrix(A22, B21));
@@ -40,10 +40,10 @@ public class MatrixMultiplicationUsingRecursion {
             combineMatrix(result, C11, C12, C21, C22);
         }
         return result;
-    }  
+    }
     public static void splitMatrix(int[][] source, int[][] A11, int[][] A12, int[][] A21, int[][] A22) {
         int halfRows = source.length / 2;
-        int halfCols = source[0].length / 2;     
+        int halfCols = source[0].length / 2;
         for (int i = 0; i < halfRows; i++) {
             for (int j = 0; j < halfCols; j++) {
                 A11[i][j] = source[i][j];
@@ -56,14 +56,14 @@ public class MatrixMultiplicationUsingRecursion {
     public static int[][] addMatrix(int[][] A, int[][] B) {
         int rows = A.length;
         int cols = A[0].length;
-        int[][] result = new int[rows][cols];   
+        int[][] result = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 result[i][j] = A[i][j] + B[i][j];
             }
-        }     
+        }
         return result;
-    } 
+    }
     public static void combineMatrix(int[][] target, int[][] C11, int[][] C12, int[][] C21, int[][] C22) {
         int halfRows = target.length / 2;
         int halfCols = target[0].length / 2;
@@ -85,8 +85,8 @@ public class MatrixMultiplicationUsingRecursion {
         }
     }
     public static void main(String[] args) {
-        int[][] A = {{1, 2}, {3, 4}};
-        int[][] B = {{5, 6}, {7, 8}};
+        int[][] A = { { 1, 2 }, { 3, 4 } };
+        int[][] B = { { 5, 6 }, { 7, 8 } };
         int[][] result = multiplyMatrix(A, B);
         System.out.println("Matrix A:");
         printMatrix(A);
