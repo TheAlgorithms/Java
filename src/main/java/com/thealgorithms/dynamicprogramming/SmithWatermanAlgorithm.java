@@ -73,8 +73,7 @@ public class SmithWatermanAlgorithm {
         StringBuilder alignedSubject = new StringBuilder();
         // Trace back to find the optimal local alignment
         while (maxI > 0 && maxJ > 0 && scoreMatrix[maxI][maxJ] > 0) {
-            if (scoreMatrix[maxI][maxJ] == scoreMatrix[maxI - 1][maxJ - 1]
-                    + (query.charAt(maxI - 1) == subject.charAt(maxJ - 1) ? 1 : -1)) {
+            if (scoreMatrix[maxI][maxJ] == scoreMatrix[maxI - 1][maxJ - 1] + (query.charAt(maxI - 1) == subject.charAt(maxJ - 1) ? 1 : -1)) {
                 alignedQuery.insert(0, query.charAt(maxI - 1));
                 alignedSubject.insert(0, subject.charAt(maxJ - 1));
                 maxI--;
