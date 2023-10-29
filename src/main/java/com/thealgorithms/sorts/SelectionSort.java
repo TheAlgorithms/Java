@@ -1,5 +1,7 @@
 package com.thealgorithms.sorts;
 
+import static com.thealgorithms.sorts.SortUtils.*;
+
 public class SelectionSort implements SortAlgorithm {
 
     /**
@@ -20,9 +22,7 @@ public class SelectionSort implements SortAlgorithm {
                 }
             }
             if (minIndex != i) {
-                T temp = arr[i];
-                arr[i] = arr[minIndex];
-                arr[minIndex] = temp;
+                swap(arr, i, minIndex);
             }
         }
         return arr;
@@ -32,14 +32,14 @@ public class SelectionSort implements SortAlgorithm {
      * Driver Code
      */
     public static void main(String[] args) {
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] arr = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
         SelectionSort selectionSort = new SelectionSort();
         Integer[] sorted = selectionSort.sort(arr);
         for (int i = 0; i < sorted.length - 1; ++i) {
             assert sorted[i] <= sorted[i + 1];
         }
 
-        String[] strings = {"c", "a", "e", "b", "d"};
+        String[] strings = { "c", "a", "e", "b", "d" };
         String[] sortedStrings = selectionSort.sort(strings);
         for (int i = 0; i < sortedStrings.length - 1; ++i) {
             assert strings[i].compareTo(strings[i + 1]) <= 0;
