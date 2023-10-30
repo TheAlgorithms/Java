@@ -1,6 +1,6 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
+import static com.thealgorithms.sorts.SortUtils.swap;
 
 public class SelectionSort implements SortAlgorithm {
 
