@@ -1,6 +1,6 @@
 public class WordUpperCase {
 
-    @Test
+    @TestCase
     public static String toUpperCase(String str) {
         StringBuilder sb = new StringBuilder("");
 
