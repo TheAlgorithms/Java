@@ -17,6 +17,6 @@ public class BoyerMooreTest {
     }
 
     private static Stream<Arguments> inputStream() {
-        return Stream.of(Arguments.of(5, new int[] {5, 5, 5, 2}), Arguments.of(10, new int[] {10, 10, 20}), Arguments.of(10, new int[] {10, 20, 10}), Arguments.of(10, new int[] {20, 10, 10}), Arguments.of(-1, new int[] {10, 10, 20, 20, 30, 30}));
+        return Stream.of(Arguments.of(5, new int[] {5, 5, 5, 2}), Arguments.of(10, new int[] {10, 10, 20}), Arguments.of(10, new int[] {10, 20, 10}), Arguments.of(10, new int[] {20, 10, 10}), Arguments.of(-1, new int[] {10, 10, 20, 20, 30, 30}), Arguments.of(4, new int[] {1, 4, 2, 4, 4, 5, 4}));
     }
 }
