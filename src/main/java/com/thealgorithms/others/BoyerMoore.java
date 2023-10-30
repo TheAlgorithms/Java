@@ -6,27 +6,28 @@ https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
  */
 package com.thealgorithms.others;
 
-import java.util.*;
+public final class BoyerMoore {
+    private BoyerMoore() {
+    }
 
-public class BoyerMoore {
-
-    public static int findmajor(int[] a) {
+    public static int findmajor(final int[] a) {
         int count = 0;
         int cand = -1;
-        for (int i = 0; i < a.length; i++) {
+        for (final var k : a) {
             if (count == 0) {
-                cand = a[i];
+                cand = k;
                 count = 1;
             } else {
-                if (a[i] == cand) {
+                if (k == cand) {
                     count++;
                 } else {
                     count--;
                 }
             }
         }
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == cand) {
+        count = 0;
+        for (final var j : a) {
+            if (j == cand) {
                 count++;
             }
         }
@@ -34,16 +35,5 @@ public class BoyerMoore {
             return cand;
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = input.nextInt();
-        }
-        System.out.println("the majority element is " + findmajor(a));
-        input.close();
     }
 }
