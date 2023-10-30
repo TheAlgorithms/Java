@@ -1,6 +1,8 @@
+package com.thealgorithms.strings;
+
 public class WordUpperCase {
 
-    @TestCase
+    @Test
     public static String toUpperCase(String str) {
         StringBuilder sb = new StringBuilder("");
 
