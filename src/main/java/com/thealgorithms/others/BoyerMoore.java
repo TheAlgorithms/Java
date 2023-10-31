@@ -40,7 +40,7 @@ public final class BoyerMoore {
 
     private static int countOccurrences(final int candidate, final int[] a) {
         int count = 0;
-        for (final var j : a) {
+        for (final int j : a) {
             if (j == candidate) {
                 count++;
             }
