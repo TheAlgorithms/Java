@@ -23,7 +23,7 @@ public final class BoyerMoore {
     private static int findCandidate(final int[] a) {
         int count = 0;
         int candidate = -1;
-        for (final int k : a) {
+        for (final var k : a) {
             if (count == 0) {
                 candidate = k;
                 count = 1;
@@ -40,7 +40,7 @@ public final class BoyerMoore {
 
     private static int countOccurrences(final int[] a, final int candidate) {
         int count = 0;
-        for (final int j : a) {
+        for (final var j : a) {
             if (j == candidate) {
                 count++;
             }
