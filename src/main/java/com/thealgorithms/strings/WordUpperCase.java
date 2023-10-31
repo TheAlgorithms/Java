@@ -5,6 +5,7 @@ public class WordUpperCase {
         String str = "hii my name is abhishek";
         System.out.println(toUpperCase(str));
     }
+
     public static String toUpperCase(String str) {
         StringBuilder sb = new StringBuilder("");
         if (str == null || str.isEmpty()) {
@@ -23,5 +24,5 @@ public class WordUpperCase {
             }
         }
         return sb.toString();
-    }   
+    }
 }
