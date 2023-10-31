@@ -13,7 +13,7 @@ public class BoyerMooreTest {
     @ParameterizedTest
     @MethodSource("inputStreamWithExistingMajority")
     void checkWhenMajorityExists(int expected, int[] input) {
-        Assertions.assertEquals(expected, BoyerMoore.findmajor(input).get());
+        Assertions.assertEquals(expected, BoyerMoore.findMajor(input).get());
     }
 
     private static Stream<Arguments> inputStreamWithExistingMajority() {
@@ -23,7 +23,7 @@ public class BoyerMooreTest {
     @ParameterizedTest
     @MethodSource("inputStreamWithoutMajority")
     void checkWhenMajorityExists(int[] input) {
-        Assertions.assertFalse(BoyerMoore.findmajor(input).isPresent());
+        Assertions.assertFalse(BoyerMoore.findMajor(input).isPresent());
     }
 
     private static Stream<Arguments> inputStreamWithoutMajority() {
