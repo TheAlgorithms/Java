@@ -5,54 +5,35 @@ For more information on the algorithm refer
 https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
  */
 package com.thealgorithms.others;
-import java.util.Optional; 
 
 public final class BoyerMoore {
     private BoyerMoore() {
     }
 
-    private static Optional<Integer> findCandidate(final int[] a) {
+    public static int findmajor(final int[] a) {
         int count = 0;
-        int candidate = -1;
-        for (final int k : a) {
+        int cand = -1;
+        for (final var k : a) {
             if (count == 0) {
-                candidate = k;
+                cand = k;
                 count = 1;
             } else {
-                if (k == candidate) {
+                if (k == cand) {
                     count++;
                 } else {
                     count--;
                 }
             }
         }
-        return Optional.of(candidate);
-    }
-
-
-    public static Optional<Integer> findmajor(final int[] a) {
-        Optional<Integer> candidate = findCandidate(a);
-
-        if (candidate.isPresent() && isMajority(candidate.get(), a)) {
-            return candidate;
-        } else {
-            return Optional.empty();
-        }
-    }
-
-    private static int calculateOccurrences(final int candidate, final int[] a) {
-        int count = 0;
-        for (final int j : a) {
-            if (j == candidate) {
+        count = 0;
+        for (final var j : a) {
+            if (j == cand) {
                 count++;
             }
         }
-        return count;
+        if (count > (a.length / 2)) {
+            return cand;
+        }
+        return -1;
     }
-
-    private static boolean isMajority(final int candidate, final int[] a) {
-        int count = calculateOccurrences(candidate, a);
-        return count > (a.length / 2);
-    }
-
 }
