@@ -1,5 +1,7 @@
 package com.thealgorithms.sorts;
 
+import static com.thealgorithms.sorts.SortUtils.swap;
+
 public class SelectionSort implements SortAlgorithm {
 
     /**
@@ -20,9 +22,7 @@ public class SelectionSort implements SortAlgorithm {
                 }
             }
             if (minIndex != i) {
-                T temp = arr[i];
-                arr[i] = arr[minIndex];
-                arr[minIndex] = temp;
+                swap(arr, i, minIndex);
             }
         }
         return arr;
