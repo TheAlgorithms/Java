@@ -33,7 +33,7 @@ public final class BoyerMoore {
             }
         }
         if (count > (a.length / 2)) {
-            return cand;
+            return Optional.of(cand);
         }
         return Optional.empty();
     }
