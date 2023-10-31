@@ -7,8 +7,8 @@ public class WordUpperCase {
     }
     public static String toUpperCase(String str) {
         StringBuilder sb = new StringBuilder("");
-        if(str == ""){
-            return "";
+        if (str == null || str.isEmpty()) {
+            return str; // Handle null or empty input gracefully
         }
         char ch = Character.toUpperCase(str.charAt(0));
         sb.append(ch);

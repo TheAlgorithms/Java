@@ -1,6 +1,8 @@
 package com.thealgorithms.strings;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 public class WordUpperCaseTest {
     @Test
     public void testToUpperCase() {
@@ -8,21 +10,16 @@ public class WordUpperCaseTest {
         String input1 = "hii my name is abhishek";
         String expected1 = "Hii My Name Is Abhishek";
         assertEquals(expected1, WordUpperCase.toUpperCase(input1));
+
         // Test with an empty string
         String input2 = "";
         String expected2 = "";
         assertEquals(expected2, WordUpperCase.toUpperCase(input2));
+
         // Test with a string that has only one word
         String input3 = "hello";
         String expected3 = "Hello";
         assertEquals(expected3, WordUpperCase.toUpperCase(input3));
-        // Test with a string that has leading and trailing spaces
-        // String input4 = "  leading spaces trailing spaces  ";
-        // String expected4 = "  Leading Spaces Trailing Spaces  ";
-        // assertEquals(expected4, WordUpperCase.toUpperCase(input4));
-        // Test with a string that has consecutive spaces
-        // String input5 = "word   with   spaces";
-        // String expected5 = "Word   With   Spaces";
-        // assertEquals(expected5, WordUpperCase.toUpperCase(input5));
+
     }
 }
