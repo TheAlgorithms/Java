@@ -5,6 +5,7 @@ For more information on the algorithm refer
 https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
  */
 package com.thealgorithms.others;
+import java.util.Optional;
 
 public final class BoyerMoore {
     private BoyerMoore() {
@@ -34,6 +35,6 @@ public final class BoyerMoore {
         if (count > (a.length / 2)) {
             return cand;
         }
-        return -1;
+        return Optional.empty();
     }
 }
