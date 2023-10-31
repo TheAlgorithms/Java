@@ -12,18 +12,14 @@ public final class BoyerMoore {
     }
 
     public static Optional<Integer> findMajor(final int[] a) {
-        int candidate = findCandidate(a);
-        int count = countOccurrences(a, candidate);
-        
+        final var candidate = findCandidate(a);
+        final var count = countOccurrences(a, candidate);
         if (count > (a.length / 2)) {
             return Optional.of(candidate);
         }
-        
         return Optional.empty();
     }
 
-
-    
     private static int findCandidate(final int[] a) {
         int count = 0;
         int candidate = -1;
@@ -42,9 +38,9 @@ public final class BoyerMoore {
         return candidate;
     }
 
-    private static int countOccurrences(final int[] a, int candidate) {
+    private static int countOccurrences(final int candidate, final int[] a) {
         int count = 0;
-        for (final int j : a) {
+        for (final var j : a) {
             if (j == candidate) {
                 count++;
             }
