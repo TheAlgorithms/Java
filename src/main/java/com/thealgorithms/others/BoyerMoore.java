@@ -38,7 +38,7 @@ public final class BoyerMoore {
         return candidate;
     }
 
-    private static int countOccurrences(final int candidate, final int[] a) {
+    private static int countOccurrences(final int[] a, final int candidate) {
         int count = 0;
         for (final int j : a) {
             if (j == candidate) {
@@ -47,5 +47,4 @@ public final class BoyerMoore {
         }
         return count;
     }
-
 }
