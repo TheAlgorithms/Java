@@ -13,8 +13,8 @@ public class WordUpperCaseTest {
         String input2 = "HelLO WoRld";
         String input3 = "HELLO WORLD";
 
-        assertEquals("hello world", WordUpperCase.toUpperCase(input1));
-        assertEquals("hello world", WordUpperCase.toUpperCase(input2));
-        assertEquals("hello world", WordUpperCase.toUpperCase(input3));
+        assertEquals("HELLO WORLD", WordUpperCase.toUpperCase(input1));
+        assertEquals("HELLO WORLD", WordUpperCase.toUpperCase(input2));
+        assertEquals("HELLO WORLD", WordUpperCase.toUpperCase(input3));
     }
 }
