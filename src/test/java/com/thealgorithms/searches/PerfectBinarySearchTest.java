@@ -1,6 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+package com.thealgorithms.searches;
 
-import com.thealgorithms.searches.PerfectBinarySearch;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
