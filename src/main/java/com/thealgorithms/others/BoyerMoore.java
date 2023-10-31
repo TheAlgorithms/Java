@@ -11,7 +11,7 @@ public final class BoyerMoore {
     private BoyerMoore() {
     }
 
-    public static int findmajor(final int[] a) {
+    public static Optional<Integer> findmajor(final int[] a) {
         int count = 0;
         int cand = -1;
         for (final var k : a) {
