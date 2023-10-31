@@ -1,15 +1,8 @@
 package com.thealgorithms.maths;
 
-import java.util.Random;
+public final class Floor {
 
-public class Floor {
-
-    public static void main(String[] args) {
-        Random random = new Random();
-        for (int i = 1; i <= 1000; ++i) {
-            double randomNumber = random.nextDouble();
-            assert floor(randomNumber) == Math.floor(randomNumber);
-        }
+    private Floor() {
     }
 
     /**

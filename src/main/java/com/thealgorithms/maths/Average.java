@@ -23,7 +23,7 @@ public class Average {
     }
 
     /**
-     * find average value of int array
+     * find average value of an int array
      *
      * @param numbers the array contains element and the sum does not excess long
      *                value limit
