@@ -1,7 +1,7 @@
 package com.thealgorithms.conversions;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 // Driver program
 public class AnyBaseToDecimal {
