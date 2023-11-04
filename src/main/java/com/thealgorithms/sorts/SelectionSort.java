@@ -32,7 +32,8 @@ public class SelectionSort implements SortAlgorithm {
      * Driver Code
      */
     public static void main(String[] args) {
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+        Integer[] arr = new Integer[9]; // = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+       for(int i = 0 ; i < arr.length ; i++) arr[i] = (int) (Math.random()*231); //Random arr create
         SelectionSort selectionSort = new SelectionSort();
         Integer[] sorted = selectionSort.sort(arr);
         for (int i = 0; i < sorted.length - 1; ++i) {
