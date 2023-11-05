@@ -4,7 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
 
 /* Implements a SHA-256 algorithm to hash passwords or other messages
- * in a String format.
+ * in a String format. Link to Wikipedia: https://en.wikipedia.org/wiki/SHA-2.
  */
 public class SHA256Hashing {
     // Empty constructor
@@ -18,7 +18,7 @@ public class SHA256Hashing {
      * @param input the String to be hashed
      * @return a string of the hashed input
      */
-    public static String sha256 (String input) throws NoSuchAlgorithmException {
+    public static String sha256(String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashBytes = md.digest(input.getBytes());
 
