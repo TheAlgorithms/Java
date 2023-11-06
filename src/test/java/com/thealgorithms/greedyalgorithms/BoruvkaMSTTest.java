@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for {@code BoruvkaMST}.
+ */
 class BoruvkaMSTTest {
 
     @Test
