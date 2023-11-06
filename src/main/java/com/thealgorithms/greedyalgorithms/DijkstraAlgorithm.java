@@ -7,6 +7,7 @@ import java.util.*;
  *  Implements Dijkstra's Shortest Path Algorithm.
  *  Problem Statement: Given a graph and a source vertex in the graph, find the shortest paths
  *  from the source to all vertices in the given graph.
+ *  Dijkstra's Algorithm: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
  *  */
 
 public class DijkstraAlgorithm {

@@ -2,13 +2,13 @@ package com.thealgorithms.greedyalgorithms;
 
 import java.util.*;
 
-
 /**
  * Implements Boruvka's algorithm to find the Minimum Spanning Tree (MST) of a given connected, undirected graph
  * with non-negative edge weights.
  * <p>
  * Boruvka's algorithm is a greedy algorithm that grows the MST by adding the cheapest edge from each component
  * to another component, in each iteration, until all vertices are connected.
+ * Borůvka's Algorithm: https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm
  * </p>
  */
 public class BoruvkaMST {
@@ -125,7 +125,6 @@ public class BoruvkaMST {
             edgeList[dest].add(edge); // Since the graph is undirected
         }
 
-
         /**
          * Updates the cheapest edges for a given vertex.
          *
@@ -149,7 +148,6 @@ public class BoruvkaMST {
                 }
             }
         }
-
 
         /**
          * Implements Boruvka's algorithm to find the Minimum Spanning Tree of the graph.
@@ -196,7 +194,6 @@ public class BoruvkaMST {
         }
     }
 
-
     /**
      * Main method to run the Boruvka's MST algorithm.
      *
@@ -220,5 +217,4 @@ public class BoruvkaMST {
             System.out.println("Edge: " + edge.src + " - " + edge.dest + " | Weight: " + edge.weight);
         }
     }
-
 }

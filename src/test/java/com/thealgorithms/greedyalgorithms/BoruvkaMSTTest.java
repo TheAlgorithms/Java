@@ -1,15 +1,14 @@
 package com.thealgorithms.greedyalgorithms;
 
-import org.junit.jupiter.api.Test;
+import static com.thealgorithms.greedyalgorithms.BoruvkaMST.Edge;
+import static com.thealgorithms.greedyalgorithms.BoruvkaMST.Graph;
+import static com.thealgorithms.greedyalgorithms.BoruvkaMST.UnionFind;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static com.thealgorithms.greedyalgorithms.BoruvkaMST.Graph;
-import static com.thealgorithms.greedyalgorithms.BoruvkaMST.UnionFind;
-import static com.thealgorithms.greedyalgorithms.BoruvkaMST.Edge;
+import org.junit.jupiter.api.Test;
 
 class BoruvkaMSTTest {
 
@@ -50,7 +49,6 @@ class BoruvkaMSTTest {
         assertEquals(0, unionFind.rank[unionFind.find(4)]); // Should be unchanged
     }
 
-
     @Test
     void testSmallGraphMST() {
         Graph graph = new Graph(4);
@@ -62,7 +60,6 @@ class BoruvkaMSTTest {
 
         // Run Boruvka's algorithm
         graph.boruvkaMST();
-
     }
 
     @Test
@@ -74,7 +71,6 @@ class BoruvkaMSTTest {
         graph.addEdge(3, 0, 1);
 
         graph.boruvkaMST();
-
     }
 
     @Test
@@ -89,8 +85,6 @@ class BoruvkaMSTTest {
         graph.addEdge(4, 5, 2);
 
         graph.boruvkaMST();
-
-
     }
 
     @Test
@@ -107,8 +101,6 @@ class BoruvkaMSTTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-
-
     @Test
     void testBoruvkaMSTOutput() {
         Graph graph = new Graph(4);
@@ -124,11 +116,7 @@ class BoruvkaMSTTest {
         mst = mst.stream().sorted(Comparator.comparingInt(Edge::weight)).collect(Collectors.toList());
 
         // Expected MST edges
-        List<Edge> expectedMst = List.of(
-                new Edge(0, 1, 1),
-                new Edge(1, 2, 2),
-                new Edge(2, 3, 3)
-        );
+        List<Edge> expectedMst = List.of(new Edge(0, 1, 1), new Edge(1, 2, 2), new Edge(2, 3, 3));
 
         // Sort expected edges by weight for deterministic assertion
         expectedMst = expectedMst.stream().sorted(Comparator.comparingInt(Edge::weight)).collect(Collectors.toList());
@@ -152,6 +140,4 @@ class BoruvkaMSTTest {
         assertTrue(mst.contains(new Edge(1, 2, 2)));
         assertTrue(mst.contains(new Edge(2, 3, 3)));
     }
-
-
 }

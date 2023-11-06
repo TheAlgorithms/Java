@@ -1,9 +1,9 @@
 package com.thealgorithms.greedyalgorithms;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import static com.thealgorithms.greedyalgorithms.DijkstraAlgorithm.Graph;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
 class DijkstraAlgorithmTest {
 
@@ -16,7 +16,7 @@ class DijkstraAlgorithmTest {
         smallTestGraph.addEdge(0, 3, 3);
 
         int[] distances = smallTestGraph.dijkstraGetMinDistances(0);
-        int[] expected = new int[]{0, 1, 2, 3};
+        int[] expected = new int[] {0, 1, 2, 3};
         assertArrayEquals(expected, distances);
     }
 
@@ -43,10 +43,9 @@ class DijkstraAlgorithmTest {
         Graph emptyGraph = new Graph(5); // No edges added
 
         int[] distances = emptyGraph.dijkstraGetMinDistances(0);
-        int[] expected = new int[]{0, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
+        int[] expected = new int[] {0, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
         assertArrayEquals(expected, distances);
     }
-
 
     @Test
     void testDijkstraAlgorithmDisconnectedGraph() {
@@ -55,10 +54,9 @@ class DijkstraAlgorithmTest {
         // No edges for vertices 2, 3, 4
 
         int[] distances = disconnectedGraph.dijkstraGetMinDistances(0);
-        int[] expected = new int[]{0, 10, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
+        int[] expected = new int[] {0, 10, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE};
         assertArrayEquals(expected, distances, "Unconnected vertices should have MAX_VALUE distance");
     }
-
 
     @Test
     void testDijkstraAlgorithmWithGraphStructureChange() {
@@ -77,7 +75,4 @@ class DijkstraAlgorithmTest {
         int[] expectedAfter = {0, 2, 5, 1, 2}; // The new shortest path to 4 is through the new edge
         assertArrayEquals(expectedAfter, distancesAfter);
     }
-
-
-
 }

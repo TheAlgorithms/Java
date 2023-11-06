@@ -1,7 +1,8 @@
 package com.thealgorithms.greedyalgorithms;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class WeightedGraphTest {
 
@@ -14,9 +15,7 @@ class WeightedGraphTest {
     @Test
     void testNegativeWeights() {
         WeightedGraph wg = new WeightedGraph(2);
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            wg.addEdge(0, 1, -1);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { wg.addEdge(0, 1, -1); });
         assertNotNull(exception);
     }
 
@@ -28,7 +27,6 @@ class WeightedGraphTest {
         wg.addEdge(1, 2, 1);
         assertEquals(2, wg.primMST());
     }
-
 
     @Test
     void testGraphWithParallelEdges() {
@@ -76,7 +74,6 @@ class WeightedGraphTest {
         assertEquals(7, newWeight); // Check if the new MST weight is correct
     }
 
-
     @Test
     void testMSTValidity() {
         WeightedGraph wg = new WeightedGraph(4);
@@ -88,4 +85,3 @@ class WeightedGraphTest {
         assertTrue(wg.isMSTValid()); // Check if the computed MST is valid
     }
 }
-

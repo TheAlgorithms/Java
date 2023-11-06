@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * Implements Prim's Minimum Spanning Tree (MST) Algorithm for a weighted undirected graph.
  * Prim’s algorithm finds a subset of edges that forms a tree including every vertex, minimizing the total edge weight.
+ * Prim's Algorithm: https://en.wikipedia.org/wiki/Prim%27s_algorithm
  */
 public class WeightedGraph {
     private final int numVertices;
@@ -41,7 +42,6 @@ public class WeightedGraph {
         adjList.computeIfAbsent(to, k -> new ArrayList<>()).add(new Edge(to, from, weight));
         cachedTotalWeight = null; // Invalidate cache when a new edge is added
     }
-
 
     /**
      * Implements Prim's algorithm to find the Minimum Spanning Tree of the graph.
@@ -101,7 +101,6 @@ public class WeightedGraph {
             return String.format("(%d, %d, %d)", from, to, weight);
         }
     }
-
 
     /**
      * Validates the integrity of the constructed Minimum Spanning Tree (MST).
@@ -176,7 +175,6 @@ public class WeightedGraph {
         }
     }
 
-
     /**
      * Main method to demonstrate the Prim's MST algorithm.
      *
@@ -211,5 +209,4 @@ public class WeightedGraph {
         System.out.println("Total weight of MST: " + totalWeight);
         g.printMST(); // Use this to check the actual MST edges
     }
-
 }
