@@ -34,8 +34,6 @@ public class ReverseNumberTest {
 
     @Test
     public void testReverseNumberWithNegativeNumber() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            ReverseNumber.reverseNumber(-123);
-        });
+    	assertThrows(IllegalArgumentException.class, () -> { ReverseNumber.reverseNumber(-123); });
     }
 }

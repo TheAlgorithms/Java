@@ -34,9 +34,7 @@ public class FindMinRecursionTest {
     @Test
     public void testMinWithEmptyArray() {
         int[] emptyArray = {};
-        assertThrows(IllegalArgumentException.class, () -> {
-            FindMinRecursion.min(emptyArray);
-        });
+        assertThrows(IllegalArgumentException.class, () -> { FindMinRecursion.min(emptyArray); });
     }
 
     @Test
