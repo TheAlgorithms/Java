@@ -25,5 +25,17 @@ public class ReverseNumberTest {
     @Test
     public void testReverseNumberThrowsExceptionForNegativeInput() {
         assertThrows(IllegalArgumentException.class, () -> ReverseNumber.reverseNumber(-1));
+    }    
+
+    @Test
+    public void testReverseNumberWithSingleDigit() {
+        assertEquals(5, ReverseNumber.reverseNumber(5));
+    }
+
+    @Test
+    public void testReverseNumberWithNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            ReverseNumber.reverseNumber(-123);
+        });
     }
 }

@@ -25,4 +25,35 @@ public class FindMinRecursionTest {
     public void testFindMaxThrowsExceptionForEmptyInput() {
         assertThrows(IllegalArgumentException.class, () -> FindMinRecursion.min(new int[] {}));
     }
+    @Test
+    public void testMinWithNonEmptyArray() {
+        int[] array = {9, 3, 7, 5, 2, 8};
+        Assertions.assertEquals(2, FindMinRecursion.min(array));
+    }
+
+    @Test
+    public void testMinWithEmptyArray() {
+        int[] emptyArray = {};
+        assertThrows(IllegalArgumentException.class, () -> {
+            FindMinRecursion.min(emptyArray);
+        });
+    }
+
+    @Test
+    public void testMinWithSingleElementArray() {
+        int[] singleElementArray = {42};
+        Assertions.assertEquals(42, FindMinRecursion.min(singleElementArray));
+    }
+
+    @Test
+    public void testMinWithSortedArray() {
+        int[] sortedArray = {1, 2, 3, 4, 5};
+        Assertions.assertEquals(1, FindMinRecursion.min(sortedArray));
+    }
+
+    @Test
+    public void testMinWithDescendingSortedArray() {
+        int[] descendingArray = {7, 6, 5, 4, 3, 2, 1};
+        Assertions.assertEquals(1, FindMinRecursion.min(descendingArray));
+    }
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FindMaxTest {
 
@@ -24,5 +25,31 @@ public class FindMaxTest {
     @Test
     public void testFindMaxThrowsExceptionForEmptyInput() {
         assertThrows(IllegalArgumentException.class, () -> FindMax.findMax(new int[] {}));
+    }
+    
+    @Test
+    public void testFindMax() {
+        int[] array = {3, 9, 5, 1, 7};
+        assertEquals(9, FindMax.findMax(array));
+    }
+
+    @Test
+    public void testFindMaxWithNegativeNumbers() {
+        int[] array = {-10, -5, -8, -3};
+        assertEquals(-3, FindMax.findMax(array));
+    }
+
+    @Test
+    public void testFindMaxWithOneElement() {
+        int[] array = {42};
+        assertEquals(42, FindMax.findMax(array));
+    }
+
+    @Test
+    public void testFindMaxWithEmptyArray() {
+        int[] emptyArray = {};
+        assertThrows(IllegalArgumentException.class, () -> {
+            FindMax.findMax(emptyArray);
+        });
     }
 }
