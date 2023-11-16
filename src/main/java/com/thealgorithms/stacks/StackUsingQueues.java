@@ -1,50 +1,59 @@
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class StackUsingQueuesTest {
-    private StackUsingQueues.StackQueues stack;
+public class StackUsingQueues {
+    Queue<Integer> queue1;
+    Queue<Integer> queue2;
 
-    @Before
-    public void setUp() {
-        stack = new StackUsingQueues.StackQueues();
+    // Constructor
+    public StackUsingQueues() {
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
     }
 
-    @Test
-    public void testPushAndTop() {
-        stack.push(5);
+    // Push element x onto stack
+    public void push(int x) {
+        // Always push to queue1
+        queue1.add(x);
+        
+        // Move all elements from queue2 to queue1
+        while (!queue2.isEmpty()) {
+            queue1.add(queue2.remove());
+        }
+
+        // Swap the names of queue1 and queue2
+        Queue<Integer> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+    }
+
+    // Removes the element on top of the stack and returns that element
+    public int pop() {
+        if (queue2.isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        return queue2.remove();
+    }
+
+    // Get the top element
+    public int top() {
+        if (queue2.isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        return queue2.peek();
+    }
+
+    // Returns whether the stack is empty
+    public boolean empty() {
+        return queue2.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        StackUsingQueues stack = new StackUsingQueues();
+        stack.push(1);
         stack.push(2);
-        stack.push(9);
-
-        assertEquals(9, stack.top());
-    }
-
-    @Test
-    public void testPushAndPop() {
-        stack.push(5);
-        stack.push(2);
-        stack.push(9);
-
-        assertEquals(9, stack.pop());
-        assertEquals(2, stack.pop());
-    }
-
-    @Test
-    public void testIsEmpty() {
-        assertTrue(stack.isEmpty());
-
-        stack.push(5);
-
-        assertFalse(stack.isEmpty());
-    }
-
-    @Test
-    public void testPopOnEmptyStack() {
-        stack.pop();
-    }
-
-    @Test
-    public void testTopOnEmptyStack() {
-        stack.top();
+        System.out.println(stack.top());    // returns 2
+        System.out.println(stack.pop());    // returns 2
+        System.out.println(stack.empty());  // returns false
     }
 }
