@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StackUsingQueuesTest {
-    
+
     private StackUsingQueues stack;
 
     @Before
@@ -43,5 +43,18 @@ public class StackUsingQueuesTest {
     @Test(expected = IllegalStateException.class)
     public void testTopEmptyStack() {
         stack.top();
+    }
+
+    @Test
+    public void testPushMultipleElements() {
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6);
+        stack.push(7);
+
+        assertEquals("Top element should be 7 after pushing 1 to 7", 7, stack.top());
     }
 }
