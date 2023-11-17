@@ -68,18 +68,4 @@ public class StackUsingQueues {
     public boolean empty() {
         return queue2.isEmpty();
     }
-
-    /**
-     * Main method to demonstrate stack operations.
-     * 
-     * @param args Command line arguments.
-     */
-    public static void main(String[] args) {
-        StackUsingQueues stack = new StackUsingQueues();
-        stack.push(1);
-        stack.push(2);
-        System.out.println(stack.top());    // returns 2
-        System.out.println(stack.pop());    // returns 2
-        System.out.println(stack.empty());  // returns false
-    }
 }
