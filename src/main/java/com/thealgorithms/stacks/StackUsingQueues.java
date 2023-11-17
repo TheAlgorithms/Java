@@ -19,24 +19,24 @@ public class StackUsingQueues {
 
     /**
      * Push element x onto the stack.
-     * 
+     *
      * @param x The element to be pushed onto the stack.
      */
     public void push(int x) {
         queue1.add(x); // Always push to queue1
-        
-        while (!queue2.isEmpty()) { // Move all elements from queue2 to queue1
+
+        while (!queue2.isEmpty()) {
             queue1.add(queue2.remove());
         }
 
-        Queue<Integer> temp = queue1; // Swap the names of queue1 and queue2
+        Queue<Integer> temp = queue1;
         queue1 = queue2;
         queue2 = temp;
     }
 
     /**
      * Removes the element on top of the stack and returns that element.
-     * 
+     *
      * @return The top element of the stack.
      * @throws IllegalStateException if the stack is empty.
      */
@@ -49,7 +49,7 @@ public class StackUsingQueues {
 
     /**
      * Get the top element of the stack.
-     * 
+     *
      * @return The top element of the stack.
      * @throws IllegalStateException if the stack is empty.
      */
@@ -62,7 +62,7 @@ public class StackUsingQueues {
 
     /**
      * Returns whether the stack is empty.
-     * 
+     *
      * @return true if the stack is empty, false otherwise.
      */
     public boolean empty() {
