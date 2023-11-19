@@ -33,8 +33,8 @@ class BoruvkaAlgorithm {
    * Represents the graph
    */
   static class Graph {
-    int V, E;         // V: number of vertices, E: number of edges
-    List<Edge> edges; // List to store edges
+    int V, E;
+    List<Edge> edges;
 
     /**
      * Constructor for the graph
@@ -183,10 +183,8 @@ class BoruvkaAlgorithm {
 
     System.out.println("Edges in Boruvka's MST:");
     for (Edge edge : result) {
-      System.out.println(edge.src + " -- " + edge.dest +
-                         " weight: " + edge.weight);
+      System.out.println(edge.src + " -- " + edge.dest + " weight: " + edge.weight);
     }
-    System.out.println("Total weight: " +
-                       result.stream().mapToInt(edge -> edge.weight).sum());
+    System.out.println("Total weight: " + result.stream().mapToInt(edge -> edge.weight).sum());
   }
 }
