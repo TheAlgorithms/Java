@@ -161,33 +161,4 @@ class BoruvkaAlgorithm {
 
         return result;
     }
-
-    public static void main(String[] args) {
-        int V = 9, E = 14;
-        Graph graph = new Graph(V, E);
-
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(1, 2, 9);
-        graph.addEdge(1, 3, 8);
-        graph.addEdge(2, 4, 3);
-        graph.addEdge(2, 5, 1);
-        graph.addEdge(4, 5, 3);
-        graph.addEdge(4, 3, 7);
-        graph.addEdge(3, 6, 8);
-        graph.addEdge(3, 7, 5);
-        graph.addEdge(5, 7, 6);
-        graph.addEdge(6, 7, 9);
-        graph.addEdge(6, 8, 2);
-        graph.addEdge(7, 8, 11);
-
-        // Find Minimum Spanning Tree using Boruvka's algorithm
-        List<Edge> result = boruvkaMST(graph);
-
-        System.out.println("Edges in Boruvka's MST:");
-        for (Edge edge : result) {
-            System.out.println(edge.src + " -- " + edge.dest + " weight: " + edge.weight);
-        }
-        System.out.println("Total weight: " + result.stream().mapToInt(edge -> edge.weight).sum());
-    }
 }
