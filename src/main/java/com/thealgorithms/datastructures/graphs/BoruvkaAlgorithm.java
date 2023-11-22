@@ -27,12 +27,6 @@ class BoruvkaAlgorithm {
         public int compareTo(Edge other) {
             return Integer.compare(this.weight, other.weight);
         }
-
-        @Override
-        public String toString() {
-            return "Edge{"
-                    + "src=" + src + ", dest=" + dest + ", weight=" + weight + '}';
-        }
     }
 
     /**
