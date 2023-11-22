@@ -103,7 +103,6 @@ public class BoruvkaAlgorithmTest {
         assertEquals(6, result3.stream().mapToInt(edge -> edge.weight).sum());
     }
 
-
     @Test
     void testEmptyGraph() {
         // Test case 4 - Test empty graph
