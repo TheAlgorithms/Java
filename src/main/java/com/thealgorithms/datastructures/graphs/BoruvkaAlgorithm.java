@@ -16,7 +16,7 @@ final class BoruvkaAlgorithm {
     /**
      * Represents an edge in the graph
      */
-    static class Edge implements Comparable<Edge> {
+    static class Edge {
         final int src;
         final int dest;
         final int weight;
@@ -25,11 +25,6 @@ final class BoruvkaAlgorithm {
             this.src = src;
             this.dest = dest;
             this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Edge other) {
-            return Integer.compare(this.weight, other.weight);
         }
     }
 
