@@ -30,7 +30,8 @@ public class BoruvkaAlgorithmTest {
         graph1.addEdge(6, 8, 2);
         graph1.addEdge(7, 8, 11);
 
-        /** Adjacency matrix
+        /**
+         * Adjacency matrix
          *    0   1   2   3   4   5   6   7   8
          * 0  0  10  12   0   0   0   0   0   0
          * 1 10   0   9   8   0   0   0   0   0
@@ -59,7 +60,8 @@ public class BoruvkaAlgorithmTest {
 
         graph2.addEdge(0, 1, 10);
 
-        /** Adjacency matrix
+        /**
+         * Adjacency matrix
          *    0  1
          * 0  0  10
          * 1  10  0
@@ -85,7 +87,8 @@ public class BoruvkaAlgorithmTest {
         graph3.addEdge(1, 3, 4);
         graph3.addEdge(2, 3, 1);
 
-        /** Adjacency matrix
+        /**
+         * Adjacency matrix
          *    0  1  2  3
          * 0  0  7  2  5
          * 1  7  0  3  4
