@@ -32,8 +32,8 @@ final class BoruvkaAlgorithm {
      * Represents the graph
      */
     static class Graph {
-        final int Vertex;
-        final int Edge;
+        final int vertex;
+        final int edge;
         List<Edge> edges;
 
         /**
