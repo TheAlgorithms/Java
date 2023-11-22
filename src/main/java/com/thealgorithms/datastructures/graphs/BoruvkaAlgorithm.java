@@ -30,11 +30,8 @@ class BoruvkaAlgorithm {
 
         @Override
         public String toString() {
-            return "Edge{" +
-                    "src=" + src +
-                    ", dest=" + dest +
-                    ", weight=" + weight +
-                    '}';
+            return "Edge{"
+                    + "src=" + src + ", dest=" + dest + ", weight=" + weight + '}';
         }
     }
 
