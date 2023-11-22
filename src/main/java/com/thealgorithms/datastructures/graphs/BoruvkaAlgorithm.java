@@ -45,7 +45,7 @@ class BoruvkaAlgorithm {
          * @param V number of vertices
          * @param E number of edges
          */
-        public Graph(int V, int E) {
+        Graph(int V, int E) {
             this.V = V;
             this.E = E;
             this.edges = new ArrayList<>();
