@@ -32,19 +32,19 @@ final class BoruvkaAlgorithm {
      * Represents the graph
      */
     static class Graph {
-        final int V;
-        final int E;
+        final int Vertex;
+        final int Edge;
         List<Edge> edges;
 
         /**
          * Constructor for the graph
          *
-         * @param V number of vertices
-         * @param E number of edges
+         * @param Vertex number of vertices
+         * @param Edge number of edges
          */
-        Graph(int V, int E) {
-            this.V = V;
-            this.E = E;
+        Graph(int Vertex, int Edge) {
+            this.Vertex = Vertex;
+            this.Edge = Edge;
             this.edges = new ArrayList<>();
         }
 
@@ -118,15 +118,15 @@ final class BoruvkaAlgorithm {
         List<Edge> result = new ArrayList<>();
 
         // Initialize subsets for Union-Find
-        Subset[] subsets = new Subset[graph.V];
-        for (int v = 0; v < graph.V; ++v) {
+        Subset[] subsets = new Subset[graph.Vertex];
+        for (int v = 0; v < graph.Vertex; ++v) {
             subsets[v] = new Subset(v, 0);
         }
 
         // Continue until the number of edges in the MST is V-1
-        while (result.size() < graph.V - 1) {
+        while (result.size() < graph.Vertex - 1) {
             // Array to store the cheapest edge for each subset
-            Edge[] cheapest = new Edge[graph.V];
+            Edge[] cheapest = new Edge[graph.Vertex];
 
             // Iterate through all edges and update the cheapest edge for each
             // subset
@@ -145,7 +145,7 @@ final class BoruvkaAlgorithm {
             }
 
             // Add the cheapest edges to the result and perform Union operation
-            for (int i = 0; i < graph.V; ++i) {
+            for (int i = 0; i < graph.Vertex; ++i) {
                 if (cheapest[i] != null) {
                     int set1 = find(subsets, cheapest[i].src);
                     int set2 = find(subsets, cheapest[i].dest);
