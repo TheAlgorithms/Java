@@ -10,7 +10,9 @@ import java.util.List;
  * @author itakurah (https://github.com/itakurah)
  */
 
-class BoruvkaAlgorithm {
+final class BoruvkaAlgorithm {
+    private BoruvkaAlgorithm() {
+    }
     /**
      * Represents an edge in the graph
      */
