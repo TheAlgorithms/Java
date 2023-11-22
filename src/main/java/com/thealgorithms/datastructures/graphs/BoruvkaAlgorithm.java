@@ -65,7 +65,8 @@ class BoruvkaAlgorithm {
      * Represents a subset for Union-Find operations
      */
     static class Subset {
-        int parent, rank;
+        int parent;
+        int rank;
 
         public Subset(int parent, int rank) {
             this.parent = parent;
