@@ -10,24 +10,21 @@ import java.util.List;
  * @author itakurah (https://github.com/itakurah)
  */
 
-class BoruvkaAlgorithm
-{
+class BoruvkaAlgorithm {
     /**
      * Represents an edge in the graph
      */
-    static class Edge implements Comparable<Edge>
-    {
+    static class Edge implements Comparable<Edge> {
         int src, dest, weight;
 
-        public Edge(int src, int dest, int weight)
-        {
+        public Edge(int src, int dest, int weight) {
             this.src = src;
             this.dest = dest;
             this.weight = weight;
         }
 
-        @Override public int compareTo(Edge other)
-        {
+        @Override
+        public int compareTo(Edge other) {
             return Integer.compare(this.weight, other.weight);
         }
     }
@@ -35,8 +32,7 @@ class BoruvkaAlgorithm
     /**
      * Represents the graph
      */
-    static class Graph
-    {
+    static class Graph {
         int V, E;
         List<Edge> edges;
 
@@ -46,8 +42,7 @@ class BoruvkaAlgorithm
          * @param V number of vertices
          * @param E number of edges
          */
-        public Graph(int V, int E)
-        {
+        public Graph(int V, int E) {
             this.V = V;
             this.E = E;
             this.edges = new ArrayList<>();
@@ -60,8 +55,7 @@ class BoruvkaAlgorithm
          * @param dest   destination vertex
          * @param weight weight of the edge
          */
-        void addEdge(int src, int dest, int weight)
-        {
+        void addEdge(int src, int dest, int weight) {
             edges.add(new Edge(src, dest, weight));
         }
     }
@@ -69,12 +63,10 @@ class BoruvkaAlgorithm
     /**
      * Represents a subset for Union-Find operations
      */
-    static class Subset
-    {
+    static class Subset {
         int parent, rank;
 
-        public Subset(int parent, int rank)
-        {
+        public Subset(int parent, int rank) {
             this.parent = parent;
             this.rank = rank;
         }
@@ -87,10 +79,8 @@ class BoruvkaAlgorithm
      * @param i       index of the subset
      * @return the parent of the subset
      */
-    static int find(Subset[] subsets, int i)
-    {
-        if (subsets[i].parent != i)
-        {
+    static int find(Subset[] subsets, int i) {
+        if (subsets[i].parent != i) {
             subsets[i].parent = find(subsets, subsets[i].parent);
         }
         return subsets[i].parent;
@@ -103,21 +93,15 @@ class BoruvkaAlgorithm
      * @param x       index of the first subset
      * @param y       index of the second subset
      */
-    static void union(Subset[] subsets, int x, int y)
-    {
+    static void union(Subset[] subsets, int x, int y) {
         int xroot = find(subsets, x);
         int yroot = find(subsets, y);
 
-        if (subsets[xroot].rank < subsets[yroot].rank)
-        {
+        if (subsets[xroot].rank < subsets[yroot].rank) {
             subsets[xroot].parent = yroot;
-        }
-        else if (subsets[xroot].rank > subsets[yroot].rank)
-        {
+        } else if (subsets[xroot].rank > subsets[yroot].rank) {
             subsets[yroot].parent = xroot;
-        }
-        else
-        {
+        } else {
             subsets[yroot].parent = xroot;
             subsets[xroot].rank++;
         }
@@ -129,53 +113,43 @@ class BoruvkaAlgorithm
      * @param graph the graph
      * @return list of edges in the Minimum Spanning Tree
      */
-    static List<Edge> boruvkaMST(Graph graph)
-    {
+    static List<Edge> boruvkaMST(Graph graph) {
         List<Edge> result = new ArrayList<>();
 
         // Initialize subsets for Union-Find
         Subset[] subsets = new Subset[graph.V];
-        for (int v = 0; v < graph.V; ++v)
-        {
+        for (int v = 0; v < graph.V; ++v) {
             subsets[v] = new Subset(v, 0);
         }
 
         // Continue until the number of edges in the MST is V-1
-        while (result.size() < graph.V - 1)
-        {
+        while (result.size() < graph.V - 1) {
             // Array to store the cheapest edge for each subset
             Edge[] cheapest = new Edge[graph.V];
 
             // Iterate through all edges and update the cheapest edge for each
             // subset
-            for (Edge edge : graph.edges)
-            {
+            for (Edge edge : graph.edges) {
                 int set1 = find(subsets, edge.src);
                 int set2 = find(subsets, edge.dest);
 
-                if (set1 != set2)
-                {
-                    if (cheapest[set1] == null || edge.weight < cheapest[set1].weight)
-                    {
+                if (set1 != set2) {
+                    if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
                         cheapest[set1] = edge;
                     }
-                    if (cheapest[set2] == null || edge.weight < cheapest[set2].weight)
-                    {
+                    if (cheapest[set2] == null || edge.weight < cheapest[set2].weight) {
                         cheapest[set2] = edge;
                     }
                 }
             }
 
             // Add the cheapest edges to the result and perform Union operation
-            for (int i = 0; i < graph.V; ++i)
-            {
-                if (cheapest[i] != null)
-                {
+            for (int i = 0; i < graph.V; ++i) {
+                if (cheapest[i] != null) {
                     int set1 = find(subsets, cheapest[i].src);
                     int set2 = find(subsets, cheapest[i].dest);
 
-                    if (set1 != set2)
-                    {
+                    if (set1 != set2) {
                         result.add(cheapest[i]);
                         union(subsets, set1, set2);
                     }
@@ -186,8 +160,7 @@ class BoruvkaAlgorithm
         return result;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         int V = 9, E = 14;
         Graph graph = new Graph(V, E);
 
@@ -210,8 +183,7 @@ class BoruvkaAlgorithm
         List<Edge> result = boruvkaMST(graph);
 
         System.out.println("Edges in Boruvka's MST:");
-        for (Edge edge : result)
-        {
+        for (Edge edge : result) {
             System.out.println(edge.src + " -- " + edge.dest + " weight: " + edge.weight);
         }
         System.out.println("Total weight: " + result.stream().mapToInt(edge -> edge.weight).sum());
