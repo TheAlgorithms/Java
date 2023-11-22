@@ -15,7 +15,9 @@ class BoruvkaAlgorithm {
      * Represents an edge in the graph
      */
     static class Edge implements Comparable<Edge> {
-        int src, dest, weight;
+        final int src;
+        final int dest;
+        final int weight;
 
         Edge(int src, int dest, int weight) {
             this.src = src;
