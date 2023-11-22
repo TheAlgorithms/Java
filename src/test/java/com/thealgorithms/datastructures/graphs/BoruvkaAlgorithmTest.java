@@ -1,12 +1,11 @@
 package com.thealgorithms.datastructures.graphs;
 
-import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class BoruvkaAlgorithmTest {
     @Test
@@ -76,7 +75,7 @@ public class BoruvkaAlgorithmTest {
 
     @Test
     void testCompleteGraphK4() {
-        //Test case 3
+        // Test case 3
         int V3 = 4, E3 = 6;
         Graph graph3 = new Graph(V3, E3);
 
