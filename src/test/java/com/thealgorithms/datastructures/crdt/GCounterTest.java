@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class GCounterTest {
+
     @Test
     void increment() {
         GCounter counter = new GCounter(0, 3);
