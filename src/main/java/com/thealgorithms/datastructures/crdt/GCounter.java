@@ -17,7 +17,6 @@ import java.util.Map;
  */
 
 class GCounter {
-
     private final Map<Integer, Integer> P;
     private final int myId;
     private final int n;
@@ -82,4 +81,4 @@ class GCounter {
             this.P.put(i, Math.max(this.P.get(i), other.P.get(i)));
         }
     }
- }
+}
