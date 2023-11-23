@@ -1,34 +1,38 @@
 package com.thealgorithms.datastructures.graphs;
 
+import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
-import java.util.List;
-import org.junit.jupiter.api.Test;
 
 public class BoruvkaAlgorithmTest {
     @Test
     public void testBoruvkaMSTV9E14() {
         // Test case 1
-        int V1 = 9, E1 = 14;
-        Graph graph1 = new Graph(V1, E1);
+        int V1 = 9;
 
-        graph1.addEdge(0, 1, 10);
-        graph1.addEdge(0, 2, 12);
-        graph1.addEdge(1, 2, 9);
-        graph1.addEdge(1, 3, 8);
-        graph1.addEdge(2, 4, 3);
-        graph1.addEdge(2, 5, 1);
-        graph1.addEdge(4, 5, 3);
-        graph1.addEdge(4, 3, 7);
-        graph1.addEdge(3, 6, 8);
-        graph1.addEdge(3, 7, 5);
-        graph1.addEdge(5, 7, 6);
-        graph1.addEdge(6, 7, 9);
-        graph1.addEdge(6, 8, 2);
-        graph1.addEdge(7, 8, 11);
+        List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
 
+        edges.add(new BoruvkaAlgorithm.Edge(0, 1, 10));
+        edges.add(new BoruvkaAlgorithm.Edge(0, 2, 12));
+        edges.add(new BoruvkaAlgorithm.Edge(1, 2, 9));
+        edges.add(new BoruvkaAlgorithm.Edge(1, 3, 8));
+        edges.add(new BoruvkaAlgorithm.Edge(2, 4, 3));
+        edges.add(new BoruvkaAlgorithm.Edge(2, 5, 1));
+        edges.add(new BoruvkaAlgorithm.Edge(4, 5, 3));
+        edges.add(new BoruvkaAlgorithm.Edge(4, 3, 7));
+        edges.add(new BoruvkaAlgorithm.Edge(3, 6, 8));
+        edges.add(new BoruvkaAlgorithm.Edge(3, 7, 5));
+        edges.add(new BoruvkaAlgorithm.Edge(5, 7, 6));
+        edges.add(new BoruvkaAlgorithm.Edge(6, 7, 9));
+        edges.add(new BoruvkaAlgorithm.Edge(6, 8, 2));
+        edges.add(new BoruvkaAlgorithm.Edge(7, 8, 11));
+
+        Graph graph1 = new Graph(V1, edges);
         /**
          * Adjacency matrix
          *    0   1   2   3   4   5   6   7   8
@@ -54,10 +58,13 @@ public class BoruvkaAlgorithmTest {
     @Test
     void testBoruvkaMSTV2E1() {
         // Test case 2
-        int V2 = 2, E2 = 1;
-        Graph graph2 = new Graph(V2, E2);
+        int V2 = 2;
 
-        graph2.addEdge(0, 1, 10);
+        List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
+
+        edges.add(new BoruvkaAlgorithm.Edge(0, 1, 10));
+
+        Graph graph2 = new Graph(V2, edges);
 
         /**
          * Adjacency matrix
@@ -76,15 +83,17 @@ public class BoruvkaAlgorithmTest {
     @Test
     void testCompleteGraphK4() {
         // Test case 3
-        int V3 = 4, E3 = 6;
-        Graph graph3 = new Graph(V3, E3);
+        int V3 = 4;
 
-        graph3.addEdge(0, 1, 7);
-        graph3.addEdge(0, 2, 2);
-        graph3.addEdge(0, 3, 5);
-        graph3.addEdge(1, 2, 3);
-        graph3.addEdge(1, 3, 4);
-        graph3.addEdge(2, 3, 1);
+        List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
+        edges.add(new BoruvkaAlgorithm.Edge(0, 1, 7));
+        edges.add(new BoruvkaAlgorithm.Edge(0, 2, 2));
+        edges.add(new BoruvkaAlgorithm.Edge(0, 3, 5));
+        edges.add(new BoruvkaAlgorithm.Edge(1, 2, 3));
+        edges.add(new BoruvkaAlgorithm.Edge(1, 3, 4));
+        edges.add(new BoruvkaAlgorithm.Edge(2, 3, 1));
+
+        Graph graph3 = new Graph(V3, edges);
 
         /**
          * Adjacency matrix
@@ -106,8 +115,8 @@ public class BoruvkaAlgorithmTest {
     @Test
     void testEmptyGraph() {
         // Test case 4 - Test empty graph
-        int V3 = 0, E3 = 0;
-        Graph graph3 = new Graph(V3, E3);
+        int V3 = 0;
+        Graph graph3 = new Graph(V3, new ArrayList<>());
 
         List<BoruvkaAlgorithm.Edge> result3 = BoruvkaAlgorithm.boruvkaMST(graph3);
         assertTrue(result3.isEmpty());
