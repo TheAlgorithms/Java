@@ -1,8 +1,8 @@
 package com.thealgorithms.datastructures.crdt;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GCounterTest {
 
@@ -52,4 +52,4 @@ public class GCounterTest {
         counter1.increment();
         assertFalse(counter1.compare(counter2));
     }
- }
+}
