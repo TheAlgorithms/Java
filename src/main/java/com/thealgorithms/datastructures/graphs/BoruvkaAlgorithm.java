@@ -33,30 +33,17 @@ final class BoruvkaAlgorithm {
      */
     static class Graph {
         final int vertex;
-        final int edge;
-        List<Edge> edges;
+        final List<Edge> edges;
 
         /**
          * Constructor for the graph
          *
-         * @param Vertex number of vertices
-         * @param Edge number of edges
+         * @param vertex number of vertices
+         * @param edges list of edges
          */
-        Graph(int Vertex, int Edge) {
-            this.Vertex = Vertex;
-            this.Edge = Edge;
-            this.edges = new ArrayList<>();
-        }
-
-        /**
-         * Add an edge to the graph
-         *
-         * @param src    source vertex
-         * @param dest   destination vertex
-         * @param weight weight of the edge
-         */
-        void addEdge(int src, int dest, int weight) {
-            edges.add(new Edge(src, dest, weight));
+        Graph(int vertex, List<Edge> edges) {
+            this.vertex = vertex;
+            this.edges = edges;
         }
     }
 
@@ -118,15 +105,15 @@ final class BoruvkaAlgorithm {
         List<Edge> result = new ArrayList<>();
 
         // Initialize subsets for Union-Find
-        Subset[] subsets = new Subset[graph.Vertex];
-        for (int v = 0; v < graph.Vertex; ++v) {
+        Subset[] subsets = new Subset[graph.vertex];
+        for (int v = 0; v < graph.vertex; ++v) {
             subsets[v] = new Subset(v, 0);
         }
 
         // Continue until the number of edges in the MST is V-1
-        while (result.size() < graph.Vertex - 1) {
+        while (result.size() < graph.vertex - 1) {
             // Array to store the cheapest edge for each subset
-            Edge[] cheapest = new Edge[graph.Vertex];
+            Edge[] cheapest = new Edge[graph.vertex];
 
             // Iterate through all edges and update the cheapest edge for each
             // subset
@@ -145,7 +132,7 @@ final class BoruvkaAlgorithm {
             }
 
             // Add the cheapest edges to the result and perform Union operation
-            for (int i = 0; i < graph.Vertex; ++i) {
+            for (int i = 0; i < graph.vertex; ++i) {
                 if (cheapest[i] != null) {
                     int set1 = find(subsets, cheapest[i].src);
                     int set2 = find(subsets, cheapest[i].dest);
