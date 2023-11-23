@@ -82,4 +82,4 @@ class GCounter {
             this.P.put(i, Math.max(this.P.get(i), other.P.get(i)));
         }
     }
-}
+ }
