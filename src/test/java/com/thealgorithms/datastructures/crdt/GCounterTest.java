@@ -52,4 +52,4 @@ public class GCounterTest {
         counter1.increment();
         assertFalse(counter1.compare(counter2));
     }
-}
+ }
