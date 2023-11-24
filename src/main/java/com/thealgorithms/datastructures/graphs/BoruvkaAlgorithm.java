@@ -13,6 +13,7 @@ import java.util.List;
 final class BoruvkaAlgorithm {
     private BoruvkaAlgorithm() {
     }
+
     /**
      * Represents an edge in the graph
      */
@@ -39,9 +40,23 @@ final class BoruvkaAlgorithm {
          * Constructor for the graph
          *
          * @param vertex number of vertices
-         * @param edges list of edges
+         * @param edges  list of edges
          */
         Graph(int vertex, List<Edge> edges) {
+            if (vertex < 0) {
+                throw new IllegalArgumentException("Number of vertices must be positive");
+            }
+            if (edges == null || edges.isEmpty()) {
+                throw new IllegalArgumentException("Edges list must not be null or empty");
+            }
+            for (Edge edge : edges) {
+                if (edge.src < 0 || edge.src >= vertex) {
+                    throw new IllegalArgumentException("Edge source out of range");
+                } else if (edge.dest < 0 || edge.dest >= vertex) {
+                    throw new IllegalArgumentException("Edge destination out of range");
+                }
+            }
+
             this.vertex = vertex;
             this.edges = edges;
         }
