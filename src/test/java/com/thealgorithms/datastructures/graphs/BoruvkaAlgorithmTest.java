@@ -1,12 +1,11 @@
 package com.thealgorithms.datastructures.graphs;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoruvkaAlgorithmTest {
     @Test
@@ -112,12 +111,65 @@ public class BoruvkaAlgorithmTest {
     }
 
     @Test
-    void testEmptyGraph() {
-        // Test case 4 - Test empty graph
-        int V3 = 0;
-        Graph graph3 = new Graph(V3, new ArrayList<>());
+    void testNegativeVertices() {
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> new Graph(-1, null));
+        String expectedMessage = "Number of vertices must be positive";
+        String actualMessage = exception1.getMessage();
 
-        List<BoruvkaAlgorithm.Edge> result3 = BoruvkaAlgorithm.boruvkaMST(graph3);
-        assertTrue(result3.isEmpty());
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void testEdgesNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new Graph(0, null));
+        String expectedMessage = "Edges list must not be null or empty";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void testEdgesEmpty() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new Graph(0, new ArrayList<>()));
+        String expectedMessage = "Edges list must not be null or empty";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void testEdgesRange() {
+        // Valid input
+        List<BoruvkaAlgorithm.Edge> validEdges = new ArrayList<>();
+        validEdges.add(new BoruvkaAlgorithm.Edge(0, 1, 2));
+        validEdges.add(new BoruvkaAlgorithm.Edge(1, 2, 3));
+        BoruvkaAlgorithm.Graph validGraph = new BoruvkaAlgorithm.Graph(3, validEdges);
+        assertEquals(validEdges, validGraph.edges);
+
+        // Edge source out of range
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
+            List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
+            invalidEdges.add(new BoruvkaAlgorithm.Edge(-1, 1, 2));
+            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            assertEquals(invalidEdges, invalidGraph.edges);
+
+        });
+        String expectedMessage1 = "Edge source out of range";
+        String actualMessage1 = exception1.getMessage();
+
+        assertTrue(actualMessage1.contains(expectedMessage1));
+
+        // Edge destination out of range
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
+            invalidEdges.add(new BoruvkaAlgorithm.Edge(0, 5, 2));
+            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            assertEquals(invalidEdges, invalidGraph.edges);
+
+        });
+        String expectedMessage2 = "Edge destination out of range";
+        String actualMessage2 = exception2.getMessage();
+
+        assertTrue(actualMessage2.contains(expectedMessage2));
     }
 }
