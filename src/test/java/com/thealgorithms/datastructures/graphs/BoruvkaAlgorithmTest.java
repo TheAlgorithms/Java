@@ -1,11 +1,12 @@
 package com.thealgorithms.datastructures.graphs;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BoruvkaAlgorithmTest {
     @Test
@@ -152,7 +153,6 @@ public class BoruvkaAlgorithmTest {
             invalidEdges.add(new BoruvkaAlgorithm.Edge(-1, 1, 2));
             BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
-
         });
         String expectedMessage1 = "Edge source out of range";
         String actualMessage1 = exception1.getMessage();
@@ -165,7 +165,6 @@ public class BoruvkaAlgorithmTest {
             invalidEdges.add(new BoruvkaAlgorithm.Edge(0, 5, 2));
             BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
-
         });
         String expectedMessage2 = "Edge destination out of range";
         String actualMessage2 = exception2.getMessage();
