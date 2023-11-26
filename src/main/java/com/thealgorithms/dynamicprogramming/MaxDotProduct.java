@@ -54,7 +54,7 @@ public class MaxDotProduct {
         for (int[] sub : dp) {
             Arrays.fill(sub, -1);
         }
-        return solve(0, 0, nums1, nums2, n, m, dp);
+        System.out.print(solve(0, 0, nums1, nums2, n, m, dp));
     }
 
 }
