@@ -57,28 +57,4 @@ public class MaxDotProduct {
         return solve(0, 0, nums1, nums2, n, m, dp);
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the first array (space-separated): ");
-        String input1 = scanner.nextLine();
-        String[] array1Strings = input1.split(" ");
-        int[] nums1 = new int[array1Strings.length];
-        for (int i = 0; i < array1Strings.length; i++) {
-            nums1[i] = Integer.parseInt(array1Strings[i]);
-        }
-
-        System.out.print("Enter the second array (space-separated): ");
-        String input2 = scanner.nextLine();
-        String[] array2Strings = input2.split(" ");
-        int[] nums2 = new int[array2Strings.length];
-        for (int i = 0; i < array2Strings.length; i++) {
-            nums2[i] = Integer.parseInt(array2Strings[i]);
-        }
-
-        MaxDotProduct solution = new MaxDotProduct();
-        int maxDotProduct = solution.maxDotProduct(nums1, nums2);
-
-        System.out.println("Maximum dot product of two subsequences: " + maxDotProduct);
-    }
 }
