@@ -22,7 +22,7 @@ final class BoruvkaAlgorithm {
         final int dest;
         final int weight;
 
-        Edge(int src, int dest, int weight) {
+        Edge(final int src, final int dest, final int weight) {
             this.src = src;
             this.dest = dest;
             this.weight = weight;
