@@ -113,7 +113,7 @@ final class BoruvkaAlgorithm {
      * @param graph the graph
      * @return list of edges in the Minimum Spanning Tree
      */
-    static List<Edge> boruvkaMST(Graph graph) {
+    static List<Edge> boruvkaMST(final Graph graph) {
         List<Edge> result = new ArrayList<>();
 
         // Initialize subsets for Union-Find
