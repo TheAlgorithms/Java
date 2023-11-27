@@ -80,9 +80,6 @@ public class BoruvkaAlgorithmTest {
 
     @Test
     void testCompleteGraphK4() {
-        // Test case 3
-        int V3 = 4;
-
         List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
         edges.add(new BoruvkaAlgorithm.Edge(0, 1, 7));
         edges.add(new BoruvkaAlgorithm.Edge(0, 2, 2));
@@ -91,7 +88,7 @@ public class BoruvkaAlgorithmTest {
         edges.add(new BoruvkaAlgorithm.Edge(1, 3, 4));
         edges.add(new BoruvkaAlgorithm.Edge(2, 3, 1));
 
-        Graph graph3 = new Graph(V3, edges);
+        Graph graph3 = new Graph(4, edges);
 
         /**
          * Adjacency matrix
