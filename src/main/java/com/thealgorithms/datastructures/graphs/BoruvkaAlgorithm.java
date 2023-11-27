@@ -177,8 +177,8 @@ final class BoruvkaAlgorithm {
      * @param result     List to store the edges of the Minimum Spanning Tree.
      * @param cheapest   Array containing the cheapest edge for each subset.
      */
-    private static void merge(Graph graph, Component[] components, List<Edge> result, Edge[] cheapest) {
-    private static void addCheapestEdgesAndUnion(final Graph graph, final Subset[] subsets, List<Edge> result, final Edge[] cheapest) {
+    private static void merge(final Graph graph, final Component[] components, List<Edge> result, final Edge[] cheapest) {
+        for (int i = 0; i < graph.vertex; ++i) {
             if (cheapest[i] != null) {
                 int set1 = find(components, cheapest[i].src);
                 int set2 = find(components, cheapest[i].dest);
