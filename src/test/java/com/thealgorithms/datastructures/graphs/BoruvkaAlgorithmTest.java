@@ -153,21 +153,45 @@ public class BoruvkaAlgorithmTest {
             BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
-        String expectedMessage1 = "Edge source out of range";
+        String expectedMessage1 = "Edge vertex out of range";
         String actualMessage1 = exception1.getMessage();
 
         assertTrue(actualMessage1.contains(expectedMessage1));
 
-        // Edge destination out of range
+        // Edge source out of range
         Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
             List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
-            invalidEdges.add(new BoruvkaAlgorithm.Edge(0, 5, 2));
+            invalidEdges.add(new BoruvkaAlgorithm.Edge(1, 0, 2));
             BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
-        String expectedMessage2 = "Edge destination out of range";
+        String expectedMessage2 = "Edge vertex out of range";
         String actualMessage2 = exception2.getMessage();
 
         assertTrue(actualMessage2.contains(expectedMessage2));
+
+        // Edge destination out of range
+        Exception exception3 = assertThrows(IllegalArgumentException.class, () -> {
+            List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
+            invalidEdges.add(new BoruvkaAlgorithm.Edge(0, -1, 2));
+            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            assertEquals(invalidEdges, invalidGraph.edges);
+        });
+        String expectedMessage3 = "Edge vertex out of range";
+        String actualMessage3 = exception3.getMessage();
+
+        assertTrue(actualMessage3.contains(expectedMessage3));
+
+        // Edge destination out of range
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
+            invalidEdges.add(new BoruvkaAlgorithm.Edge(0, 1, 2));
+            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            assertEquals(invalidEdges, invalidGraph.edges);
+        });
+        String expectedMessage4 = "Edge vertex out of range";
+        String actualMessage4 = exception4.getMessage();
+
+        assertTrue(actualMessage4.contains(expectedMessage4));
     }
 }
