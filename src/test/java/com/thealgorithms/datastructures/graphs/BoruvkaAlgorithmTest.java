@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 public class BoruvkaAlgorithmTest {
     @Test
     public void testBoruvkaMSTV9E14() {
-        // Test case 1
         int V1 = 9;
 
         List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
