@@ -79,7 +79,7 @@ final class BoruvkaAlgorithm {
      * @param i       index of the subset
      * @return the parent of the subset
      */
-    static int find(Subset[] subsets, int i) {
+    static int find(final Subset[] subsets, final int i) {
         if (subsets[i].parent != i) {
             subsets[i].parent = find(subsets, subsets[i].parent);
         }
