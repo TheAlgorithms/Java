@@ -66,7 +66,7 @@ final class BoruvkaAlgorithm {
         int parent;
         int rank;
 
-        public Subset(int parent, int rank) {
+        Subset(final int parent, final int rank) {
             this.parent = parent;
             this.rank = rank;
         }
