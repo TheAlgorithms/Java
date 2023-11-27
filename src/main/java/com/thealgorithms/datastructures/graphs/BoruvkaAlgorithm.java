@@ -49,7 +49,7 @@ final class BoruvkaAlgorithm {
             if (edges == null || edges.isEmpty()) {
                 throw new IllegalArgumentException("Edges list must not be null or empty");
             }
-            for (Edge edge : edges) {
+            for (final var edge : edges) {
                 checkEdgeVertices(edge.src, vertex);
                 checkEdgeVertices(edge.dest, vertex);
             }
