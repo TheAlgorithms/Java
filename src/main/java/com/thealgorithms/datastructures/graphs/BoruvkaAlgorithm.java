@@ -93,9 +93,9 @@ final class BoruvkaAlgorithm {
      * @param x          index of the first subset
      * @param y          index of the second subset
      */
-    static void union(Component[] components, int x, int y) {
-        int xroot = find(components, x);
-        int yroot = find(components, y);
+    static void union(Component[] components, final int x, final int y) {
+        final int xroot = find(components, x);
+        final int yroot = find(components, y);
 
         if (components[xroot].rank < components[yroot].rank) {
             components[xroot].parent = yroot;
@@ -136,7 +136,7 @@ final class BoruvkaAlgorithm {
      * @param graph the graph
      * @return the initialized subsets
      */
-    private static Component[] initializeSubsets(Graph graph) {
+    private static Component[] initializeSubsets(final Graph graph) {
         Component[] components = new Component[graph.vertex];
         for (int v = 0; v < graph.vertex; ++v) {
             components[v] = new Component(v, 0);
@@ -151,11 +151,11 @@ final class BoruvkaAlgorithm {
      * @param components Array of subsets used for Union-Find operations.
      * @return an array containing the cheapest edge for each subset.
      */
-    private static Edge[] computeCheapestEdges(Graph graph, Component[] components) {
+    private static Edge[] computeCheapestEdges(final Graph graph, final Component[] components) {
         Edge[] cheapest = new Edge[graph.vertex];
-        for (Edge edge : graph.edges) {
-            int set1 = find(components, edge.src);
-            int set2 = find(components, edge.dest);
+        for (final var edge : graph.edges) {
+            final var set1 = find(components, edge.src);
+            final var set2 = find(components, edge.dest);
 
             if (set1 != set2) {
                 if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
