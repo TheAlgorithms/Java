@@ -197,7 +197,7 @@ final class BoruvkaAlgorithm {
      * @param vertex     the vertex to check
      * @param upperBound the upper bound for the vertex range
      */
-    private static void checkEdgeVertices(int vertex, int upperBound) {
+    private static void checkEdgeVertices(final int vertex, final int upperBound) {
         if (vertex < 0 || vertex >= upperBound) {
             throw new IllegalArgumentException("Edge vertex out of range");
         }
