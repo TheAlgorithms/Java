@@ -42,7 +42,7 @@ final class BoruvkaAlgorithm {
          * @param vertex number of vertices
          * @param edges  list of edges
          */
-        Graph(int vertex, List<Edge> edges) {
+        Graph(final int vertex, final List<Edge> edges) {
             if (vertex < 0) {
                 throw new IllegalArgumentException("Number of vertices must be positive");
             }
