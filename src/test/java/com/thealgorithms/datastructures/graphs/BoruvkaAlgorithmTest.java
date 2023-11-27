@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 public class BoruvkaAlgorithmTest {
     @Test
     public void testBoruvkaMSTV9E14() {
-        int V1 = 9;
-
         List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
 
         edges.add(new BoruvkaAlgorithm.Edge(0, 1, 10));
@@ -29,7 +27,7 @@ public class BoruvkaAlgorithmTest {
         edges.add(new BoruvkaAlgorithm.Edge(6, 8, 2));
         edges.add(new BoruvkaAlgorithm.Edge(7, 8, 11));
 
-        Graph graph1 = new Graph(V1, edges);
+        Graph graph1 = new Graph(9, edges);
         /**
          * Adjacency matrix
          *    0   1   2   3   4   5   6   7   8
