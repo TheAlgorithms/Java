@@ -55,14 +55,11 @@ public class BoruvkaAlgorithmTest {
 
     @Test
     void testBoruvkaMSTV2E1() {
-        // Test case 2
-        int V2 = 2;
-
         List<BoruvkaAlgorithm.Edge> edges = new ArrayList<>();
 
         edges.add(new BoruvkaAlgorithm.Edge(0, 1, 10));
 
-        Graph graph2 = new Graph(V2, edges);
+        Graph graph2 = new Graph(2, edges);
 
         /**
          * Adjacency matrix
