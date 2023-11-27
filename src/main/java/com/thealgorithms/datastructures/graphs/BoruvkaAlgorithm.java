@@ -50,11 +50,8 @@ final class BoruvkaAlgorithm {
                 throw new IllegalArgumentException("Edges list must not be null or empty");
             }
             for (Edge edge : edges) {
-                if (edge.src < 0 || edge.src >= vertex) {
-                    throw new IllegalArgumentException("Edge source out of range");
-                } else if (edge.dest < 0 || edge.dest >= vertex) {
-                    throw new IllegalArgumentException("Edge destination out of range");
-                }
+                checkEdgeVertices(edge.src, vertex);
+                checkEdgeVertices(edge.dest, vertex);
             }
 
             this.vertex = vertex;
@@ -120,46 +117,90 @@ final class BoruvkaAlgorithm {
         List<Edge> result = new ArrayList<>();
 
         // Initialize subsets for Union-Find
-        Subset[] subsets = new Subset[graph.vertex];
-        for (int v = 0; v < graph.vertex; ++v) {
-            subsets[v] = new Subset(v, 0);
-        }
+        Subset[] subsets = initializeSubsets(graph);
 
         // Continue until the number of edges in the MST is V-1
         while (result.size() < graph.vertex - 1) {
             // Array to store the cheapest edge for each subset
             Edge[] cheapest = new Edge[graph.vertex];
 
-            // Iterate through all edges and update the cheapest edge for each
-            // subset
-            for (Edge edge : graph.edges) {
-                int set1 = find(subsets, edge.src);
-                int set2 = find(subsets, edge.dest);
-
-                if (set1 != set2) {
-                    if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
-                        cheapest[set1] = edge;
-                    }
-                    if (cheapest[set2] == null || edge.weight < cheapest[set2].weight) {
-                        cheapest[set2] = edge;
-                    }
-                }
-            }
+            // Iterate through all edges and update the cheapest edge for each subset
+            updateCheapestEdges(graph, subsets, cheapest);
 
             // Add the cheapest edges to the result and perform Union operation
-            for (int i = 0; i < graph.vertex; ++i) {
-                if (cheapest[i] != null) {
-                    int set1 = find(subsets, cheapest[i].src);
-                    int set2 = find(subsets, cheapest[i].dest);
+            addCheapestEdgesAndUnion(graph, subsets, result, cheapest);
+        }
+        return result;
+    }
 
-                    if (set1 != set2) {
-                        result.add(cheapest[i]);
-                        union(subsets, set1, set2);
-                    }
+    /**
+     * Initializes subsets for Union-Find
+     *
+     * @param graph the graph
+     * @return the initialized subsets
+     */
+    private static Subset[] initializeSubsets(Graph graph) {
+        Subset[] subsets = new Subset[graph.vertex];
+        for (int v = 0; v < graph.vertex; ++v) {
+            subsets[v] = new Subset(v, 0);
+        }
+        return subsets;
+    }
+
+    /**
+     * Updates the cheapest edge for each subset based on the given graph and subsets
+     *
+     * @param graph    the graph
+     * @param subsets  array of subsets
+     * @param cheapest array to store the cheapest edge for each subset
+     */
+    private static void updateCheapestEdges(Graph graph, Subset[] subsets, Edge[] cheapest) {
+        for (Edge edge : graph.edges) {
+            int set1 = find(subsets, edge.src);
+            int set2 = find(subsets, edge.dest);
+
+            if (set1 != set2) {
+                if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
+                    cheapest[set1] = edge;
+                }
+                if (cheapest[set2] == null || edge.weight < cheapest[set2].weight) {
+                    cheapest[set2] = edge;
                 }
             }
         }
+    }
 
-        return result;
+    /**
+     * Adds the cheapest edges to the result list and performs Union operation on the subsets.
+     *
+     * @param graph    the graph
+     * @param subsets  Array of subsets used for Union-Find operations.
+     * @param result   List to store the edges of the Minimum Spanning Tree.
+     * @param cheapest Array containing the cheapest edge for each subset.
+     */
+    private static void addCheapestEdgesAndUnion(Graph graph, Subset[] subsets, List<Edge> result, Edge[] cheapest) {
+        for (int i = 0; i < graph.vertex; ++i) {
+            if (cheapest[i] != null) {
+                int set1 = find(subsets, cheapest[i].src);
+                int set2 = find(subsets, cheapest[i].dest);
+
+                if (set1 != set2) {
+                    result.add(cheapest[i]);
+                    union(subsets, set1, set2);
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks if the edge vertices are in a valid range
+     *
+     * @param vertex     the vertex to check
+     * @param upperBound the upper bound for the vertex range
+     */
+    private static void checkEdgeVertices(int vertex, int upperBound) {
+        if (vertex < 0 || vertex >= upperBound) {
+            throw new IllegalArgumentException("Edge vertex out of range");
+        }
     }
 }
