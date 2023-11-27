@@ -178,7 +178,7 @@ final class BoruvkaAlgorithm {
      * @param cheapest   Array containing the cheapest edge for each subset.
      */
     private static void merge(Graph graph, Component[] components, List<Edge> result, Edge[] cheapest) {
-        for (int i = 0; i < graph.vertex; ++i) {
+    private static void addCheapestEdgesAndUnion(final Graph graph, final Subset[] subsets, List<Edge> result, final Edge[] cheapest) {
             if (cheapest[i] != null) {
                 int set1 = find(components, cheapest[i].src);
                 int set2 = find(components, cheapest[i].dest);
