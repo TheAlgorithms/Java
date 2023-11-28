@@ -27,7 +27,7 @@ public class BoruvkaAlgorithmTest {
         edges.add(new BoruvkaAlgorithm.Edge(6, 8, 2));
         edges.add(new BoruvkaAlgorithm.Edge(7, 8, 11));
 
-        Graph graph1 = new Graph(9, edges);
+        final var graph = new Graph(9, edges);
         /**
          * Adjacency matrix
          *    0   1   2   3   4   5   6   7   8
@@ -42,12 +42,12 @@ public class BoruvkaAlgorithmTest {
          * 8  0   0   0   0   0   0   2  11   0
          */
 
-        List<BoruvkaAlgorithm.Edge> result1 = BoruvkaAlgorithm.boruvkaMST(graph1);
+        final var result = BoruvkaAlgorithm.boruvkaMST(graph);
         // Expected result:
         // Edges: 8
         // Total weight: 43
-        assertEquals(8, result1.size());
-        assertEquals(43, result1.stream().mapToInt(edge -> edge.weight).sum());
+        assertEquals(8, result.size());
+        assertEquals(43, BoruvkaAlgorithm.computeTotalWeight(result));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BoruvkaAlgorithmTest {
 
         edges.add(new BoruvkaAlgorithm.Edge(0, 1, 10));
 
-        Graph graph2 = new Graph(2, edges);
+        final var graph = new Graph(2, edges);
 
         /**
          * Adjacency matrix
@@ -64,12 +64,12 @@ public class BoruvkaAlgorithmTest {
          * 0  0  10
          * 1  10  0
          */
-        List<BoruvkaAlgorithm.Edge> result2 = BoruvkaAlgorithm.boruvkaMST(graph2);
+        final var result = BoruvkaAlgorithm.boruvkaMST(graph);
         // Expected result:
         // Edges: 1
         // Total weight: 10
-        assertEquals(1, result2.size());
-        assertEquals(10, result2.stream().mapToInt(edge -> edge.weight).sum());
+        assertEquals(1, result.size());
+        assertEquals(10, BoruvkaAlgorithm.computeTotalWeight(result));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class BoruvkaAlgorithmTest {
         edges.add(new BoruvkaAlgorithm.Edge(1, 3, 4));
         edges.add(new BoruvkaAlgorithm.Edge(2, 3, 1));
 
-        Graph graph3 = new Graph(4, edges);
+        final var graph = new Graph(4, edges);
 
         /**
          * Adjacency matrix
@@ -93,12 +93,12 @@ public class BoruvkaAlgorithmTest {
          * 3  5  4  1  0
          */
 
-        List<BoruvkaAlgorithm.Edge> result3 = BoruvkaAlgorithm.boruvkaMST(graph3);
+        final var result = BoruvkaAlgorithm.boruvkaMST(graph);
         // Expected result:
         // Edges: 3
         // Total weight: 6
-        assertEquals(3, result3.size());
-        assertEquals(6, result3.stream().mapToInt(edge -> edge.weight).sum());
+        assertEquals(3, result.size());
+        assertEquals(6, BoruvkaAlgorithm.computeTotalWeight(result));
     }
 
     @Test
@@ -134,14 +134,14 @@ public class BoruvkaAlgorithmTest {
         List<BoruvkaAlgorithm.Edge> validEdges = new ArrayList<>();
         validEdges.add(new BoruvkaAlgorithm.Edge(0, 1, 2));
         validEdges.add(new BoruvkaAlgorithm.Edge(1, 2, 3));
-        BoruvkaAlgorithm.Graph validGraph = new BoruvkaAlgorithm.Graph(3, validEdges);
+        final var validGraph = new BoruvkaAlgorithm.Graph(3, validEdges);
         assertEquals(validEdges, validGraph.edges);
 
         // Edge source out of range
         Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
             List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
             invalidEdges.add(new BoruvkaAlgorithm.Edge(-1, 1, 2));
-            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            final var invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
         String expectedMessage1 = "Edge vertex out of range";
@@ -153,7 +153,7 @@ public class BoruvkaAlgorithmTest {
         Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
             List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
             invalidEdges.add(new BoruvkaAlgorithm.Edge(1, 0, 2));
-            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            final var invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
         String expectedMessage2 = "Edge vertex out of range";
@@ -165,7 +165,7 @@ public class BoruvkaAlgorithmTest {
         Exception exception3 = assertThrows(IllegalArgumentException.class, () -> {
             List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
             invalidEdges.add(new BoruvkaAlgorithm.Edge(0, -1, 2));
-            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            final var invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
         String expectedMessage3 = "Edge vertex out of range";
@@ -177,7 +177,7 @@ public class BoruvkaAlgorithmTest {
         Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
             List<BoruvkaAlgorithm.Edge> invalidEdges = new ArrayList<>();
             invalidEdges.add(new BoruvkaAlgorithm.Edge(0, 1, 2));
-            BoruvkaAlgorithm.Graph invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
+            final var invalidGraph = new BoruvkaAlgorithm.Graph(1, invalidEdges);
             assertEquals(invalidEdges, invalidGraph.edges);
         });
         String expectedMessage4 = "Edge vertex out of range";
