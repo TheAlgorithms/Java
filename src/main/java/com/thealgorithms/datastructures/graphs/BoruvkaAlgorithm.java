@@ -105,7 +105,6 @@ final class BoruvkaAlgorithm {
         }
     }
 
-
     /**
      * Finds the parent of the subset using path compression
      *
