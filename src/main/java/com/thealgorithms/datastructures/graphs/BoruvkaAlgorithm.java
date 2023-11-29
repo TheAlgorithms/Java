@@ -62,7 +62,7 @@ final class BoruvkaAlgorithm {
     /**
      * Represents a subset for Union-Find operations
      */
-    static class Component {
+    private static class Component {
         int parent;
         int rank;
 
