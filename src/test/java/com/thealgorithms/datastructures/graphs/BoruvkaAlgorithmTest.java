@@ -1,11 +1,12 @@
 package com.thealgorithms.datastructures.graphs;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoruvkaAlgorithmTest {
     @Test
@@ -41,13 +42,9 @@ public class BoruvkaAlgorithmTest {
          * 7  0   0   0   5   0   6   9   0  11
          * 8  0   0   0   0   0   0   2  11   0
          */
-
         final var result = BoruvkaAlgorithm.boruvkaMST(graph);
-        // Expected result:
-        // Edges: 8
-        // Total weight: 43
         assertEquals(8, result.size());
-        assertEquals(43, BoruvkaAlgorithm.computeTotalWeight(result));
+        assertEquals(43, computeTotalWeight(result));
     }
 
     @Test
@@ -65,11 +62,8 @@ public class BoruvkaAlgorithmTest {
          * 1  10  0
          */
         final var result = BoruvkaAlgorithm.boruvkaMST(graph);
-        // Expected result:
-        // Edges: 1
-        // Total weight: 10
         assertEquals(1, result.size());
-        assertEquals(10, BoruvkaAlgorithm.computeTotalWeight(result));
+        assertEquals(10, computeTotalWeight(result));
     }
 
     @Test
@@ -92,13 +86,9 @@ public class BoruvkaAlgorithmTest {
          * 2  2  3  0  1
          * 3  5  4  1  0
          */
-
         final var result = BoruvkaAlgorithm.boruvkaMST(graph);
-        // Expected result:
-        // Edges: 3
-        // Total weight: 6
         assertEquals(3, result.size());
-        assertEquals(6, BoruvkaAlgorithm.computeTotalWeight(result));
+        assertEquals(6, computeTotalWeight(result));
     }
 
     @Test
@@ -184,5 +174,19 @@ public class BoruvkaAlgorithmTest {
         String actualMessage4 = exception4.getMessage();
 
         assertTrue(actualMessage4.contains(expectedMessage4));
+    }
+
+    /**
+     * Computes the total weight of the Minimum Spanning Tree
+     *
+     * @param result list of edges in the Minimum Spanning Tree
+     * @return the total weight of the Minimum Spanning Tree
+     */
+    public static int computeTotalWeight(final List<BoruvkaAlgorithm.Edge> result) {
+        int totalWeight = 0;
+        for (final var edge : result) {
+            totalWeight += edge.weight;
+        }
+        return totalWeight;
     }
 }
