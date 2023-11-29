@@ -90,7 +90,7 @@ final class BoruvkaAlgorithm {
          *
          * @param cheapest Array containing the cheapest edge for each subset.
          */
-        void merge(Edge[] cheapest) {
+        void merge(final Edge[] cheapest) {
             for (int i = 0; i < graph.vertex; ++i) {
                 if (cheapest[i] != null) {
                     final var set1 = find(components, cheapest[i].src);
