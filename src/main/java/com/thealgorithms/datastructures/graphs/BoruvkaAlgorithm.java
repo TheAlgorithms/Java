@@ -203,7 +203,6 @@ final class BoruvkaAlgorithm {
         return components;
     }
 
-
     /**
      * Checks if the edge vertices are in a valid range
      *

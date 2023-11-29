@@ -1,13 +1,13 @@
 package com.thealgorithms.datastructures.graphs;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
 import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 
 public class BoruvkaAlgorithmTest {
     @Test
@@ -183,7 +183,7 @@ public class BoruvkaAlgorithmTest {
      * @param result list of edges in the Minimum Spanning Tree
      * @return the total weight of the Minimum Spanning Tree
      */
-    public static int computeTotalWeight(final List<BoruvkaAlgorithm.Edge> result) {
+    int computeTotalWeight(final List<BoruvkaAlgorithm.Edge> result) {
         int totalWeight = 0;
         for (final var edge : result) {
             totalWeight += edge.weight;
