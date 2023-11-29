@@ -78,19 +78,20 @@ final class BoruvkaAlgorithm {
     static class BoruvkaState {
         List<Edge> result;
         Component[] components;
+        Graph graph;
 
-        BoruvkaState(List<Edge> result, Component[] components) {
-            this.result = result;
-            this.components = components;
+        BoruvkaState(Graph graph) {
+            this.result = new ArrayList<>();
+            this.components = initializeSubsets(graph);
+            this.graph = graph;
         }
 
         /**
          * Adds the cheapest edges to the result list and performs Union operation on the subsets.
          *
-         * @param graph    the graph
          * @param cheapest Array containing the cheapest edge for each subset.
          */
-        void merge(Graph graph, Edge[] cheapest) {
+        void merge(Edge[] cheapest) {
             for (int i = 0; i < graph.vertex; ++i) {
                 if (cheapest[i] != null) {
                     final var set1 = find(components, cheapest[i].src);
@@ -102,6 +103,38 @@ final class BoruvkaAlgorithm {
                     }
                 }
             }
+        }
+
+        /**
+         * Checks if there are more edges to add to the result list
+         *
+         * @return true if there are more edges to add, false otherwise
+         */
+        boolean hasMoreEdgesToAdd() {
+            return result.size() < graph.vertex - 1;
+        }
+
+        /**
+         * Computes the cheapest edges for each subset in the Union-Find structure.
+         *
+         * @return an array containing the cheapest edge for each subset.
+         */
+        private Edge[] computeCheapestEdges() {
+            Edge[] cheapest = new Edge[graph.vertex];
+            for (final var edge : graph.edges) {
+                final var set1 = find(components, edge.src);
+                final var set2 = find(components, edge.dest);
+
+                if (set1 != set2) {
+                    if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
+                        cheapest[set1] = edge;
+                    }
+                    if (cheapest[set2] == null || edge.weight < cheapest[set2].weight) {
+                        cheapest[set2] = edge;
+                    }
+                }
+            }
+            return cheapest;
         }
     }
 
@@ -147,15 +180,13 @@ final class BoruvkaAlgorithm {
      * @return list of edges in the Minimum Spanning Tree
      */
     static List<Edge> boruvkaMST(final Graph graph) {
-        List<Edge> result = new ArrayList<>();
-        Component[] components = initializeSubsets(graph);
-        BoruvkaState boruvkaState = new BoruvkaState(result, components);
+        var boruvkaState = new BoruvkaState(graph);
 
-        while (result.size() < graph.vertex - 1) {
-            final var cheapest = computeCheapestEdges(graph, boruvkaState.components);
-            boruvkaState.merge(graph, cheapest);
+        while (boruvkaState.hasMoreEdgesToAdd()) {
+            final var cheapest = boruvkaState.computeCheapestEdges();
+            boruvkaState.merge(cheapest);
         }
-        return result;
+        return boruvkaState.result;
     }
 
     /**
@@ -172,30 +203,6 @@ final class BoruvkaAlgorithm {
         return components;
     }
 
-    /**
-     * Computes the cheapest edges for each subset in the Union-Find structure.
-     *
-     * @param graph      the graph
-     * @param components Array of subsets used for Union-Find operations.
-     * @return an array containing the cheapest edge for each subset.
-     */
-    private static Edge[] computeCheapestEdges(final Graph graph, final Component[] components) {
-        Edge[] cheapest = new Edge[graph.vertex];
-        for (final var edge : graph.edges) {
-            final var set1 = find(components, edge.src);
-            final var set2 = find(components, edge.dest);
-
-            if (set1 != set2) {
-                if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
-                    cheapest[set1] = edge;
-                }
-                if (cheapest[set2] == null || edge.weight < cheapest[set2].weight) {
-                    cheapest[set2] = edge;
-                }
-            }
-        }
-        return cheapest;
-    }
 
     /**
      * Checks if the edge vertices are in a valid range
@@ -207,19 +214,5 @@ final class BoruvkaAlgorithm {
         if (vertex < 0 || vertex >= upperBound) {
             throw new IllegalArgumentException("Edge vertex out of range");
         }
-    }
-
-    /**
-     * Computes the total weight of the Minimum Spanning Tree
-     *
-     * @param result list of edges in the Minimum Spanning Tree
-     * @return the total weight of the Minimum Spanning Tree
-     */
-    public static int computeTotalWeight(final List<Edge> result) {
-        int totalWeight = 0;
-        for (final var edge : result) {
-            totalWeight += edge.weight;
-        }
-        return totalWeight;
     }
 }
