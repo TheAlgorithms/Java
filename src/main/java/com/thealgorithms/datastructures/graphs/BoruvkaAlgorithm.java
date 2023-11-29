@@ -81,7 +81,7 @@ final class BoruvkaAlgorithm {
         final Graph graph;
 
         BoruvkaState(final Graph graph) {
-            this.components = initializeSubsets(graph);
+            this.components = initializeComponents(graph);
             this.graph = graph;
         }
 
@@ -135,6 +135,20 @@ final class BoruvkaAlgorithm {
             }
             return cheapest;
         }
+
+        /**
+         * Initializes subsets for Union-Find
+         *
+         * @param graph the graph
+         * @return the initialized subsets
+         */
+        private static Component[] initializeComponents(final Graph graph) {
+            Component[] components = new Component[graph.vertex];
+            for (int v = 0; v < graph.vertex; ++v) {
+                components[v] = new Component(v, 0);
+            }
+            return components;
+        }
     }
 
     /**
@@ -186,20 +200,6 @@ final class BoruvkaAlgorithm {
             boruvkaState.merge(cheapest);
         }
         return boruvkaState.result;
-    }
-
-    /**
-     * Initializes subsets for Union-Find
-     *
-     * @param graph the graph
-     * @return the initialized subsets
-     */
-    private static Component[] initializeSubsets(final Graph graph) {
-        Component[] components = new Component[graph.vertex];
-        for (int v = 0; v < graph.vertex; ++v) {
-            components[v] = new Component(v, 0);
-        }
-        return components;
     }
 
     /**
