@@ -1,12 +1,13 @@
 package com.thealgorithms.datastructures.graphs;
 
-import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import com.thealgorithms.datastructures.graphs.BoruvkaAlgorithm.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BoruvkaAlgorithmTest {
     @Test
