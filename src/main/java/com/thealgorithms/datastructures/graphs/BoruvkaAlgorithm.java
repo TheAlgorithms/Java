@@ -75,7 +75,7 @@ final class BoruvkaAlgorithm {
     /**
      * Represents the state of Union-Find components and the result list
      */
-    static class BoruvkaState {
+    private static class BoruvkaState {
         List<Edge> result;
         Component[] components;
         Graph graph;
