@@ -76,12 +76,11 @@ final class BoruvkaAlgorithm {
      * Represents the state of Union-Find components and the result list
      */
     private static class BoruvkaState {
-        List<Edge> result;
+        List<Edge> result = new ArrayList<>();
         Component[] components;
         final Graph graph;
 
         BoruvkaState(final Graph graph) {
-            this.result = new ArrayList<>();
             this.components = initializeComponents(graph);
             this.graph = graph;
         }
