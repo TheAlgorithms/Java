@@ -94,12 +94,12 @@ final class BoruvkaAlgorithm {
         void merge(final Edge[] cheapest) {
             for (int i = 0; i < graph.vertex; ++i) {
                 if (cheapest[i] != null) {
-                    final var set1 = find(components, cheapest[i].src);
-                    final var set2 = find(components, cheapest[i].dest);
+                    final var component1 = find(components, cheapest[i].src);
+                    final var component2 = find(components, cheapest[i].dest);
 
-                    if (set1 != set2) {
+                    if (component1 != component2) {
                         result.add(cheapest[i]);
-                        union(components, set1, set2);
+                        union(components, component1, component2);
                     }
                 }
             }
