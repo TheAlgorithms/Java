@@ -15,7 +15,7 @@ public class HarshadNumber {
         if (n <= 0) return false;
 
         long t = n;
-        int sumOfDigits = 0;
+        long sumOfDigits = 0;
         while (t > 0) {
             sumOfDigits += t % 10;
             t /= 10;
