@@ -27,7 +27,7 @@ public class Armstrong {
 
         while (originalNumber > 0) {
             long digit = originalNumber % 10;
-            sum += Math.pow(digit, power); // The digit raised to the power of the number of digits and added to the sum.
+            sum += (long) Math.pow(digit, power); // The digit raised to the power of the number of digits and added to the sum.
             originalNumber /= 10;
         }
 
