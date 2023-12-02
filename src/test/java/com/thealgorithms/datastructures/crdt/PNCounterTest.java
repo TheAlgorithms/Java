@@ -11,7 +11,7 @@ public class PNCounterTest {
     public void testIncrement() {
         PNCounter counter = new PNCounter(0, 3);
         counter.increment();
-        assertEquals(1, counter.value())
+        assertEquals(1, counter.value());
     }
 
     @Test
