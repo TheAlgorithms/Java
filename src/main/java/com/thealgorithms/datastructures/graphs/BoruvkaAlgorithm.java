@@ -22,7 +22,7 @@ final class BoruvkaAlgorithm {
         final int dest;
         final int weight;
 
-        Edge(int src, int dest, int weight) {
+        Edge(final int src, final int dest, final int weight) {
             this.src = src;
             this.dest = dest;
             this.weight = weight;
@@ -42,19 +42,16 @@ final class BoruvkaAlgorithm {
          * @param vertex number of vertices
          * @param edges  list of edges
          */
-        Graph(int vertex, List<Edge> edges) {
+        Graph(final int vertex, final List<Edge> edges) {
             if (vertex < 0) {
                 throw new IllegalArgumentException("Number of vertices must be positive");
             }
             if (edges == null || edges.isEmpty()) {
                 throw new IllegalArgumentException("Edges list must not be null or empty");
             }
-            for (Edge edge : edges) {
-                if (edge.src < 0 || edge.src >= vertex) {
-                    throw new IllegalArgumentException("Edge source out of range");
-                } else if (edge.dest < 0 || edge.dest >= vertex) {
-                    throw new IllegalArgumentException("Edge destination out of range");
-                }
+            for (final var edge : edges) {
+                checkEdgeVertices(edge.src, vertex);
+                checkEdgeVertices(edge.dest, vertex);
             }
 
             this.vertex = vertex;
@@ -65,76 +62,68 @@ final class BoruvkaAlgorithm {
     /**
      * Represents a subset for Union-Find operations
      */
-    static class Subset {
+    private static class Component {
         int parent;
         int rank;
 
-        public Subset(int parent, int rank) {
+        Component(final int parent, final int rank) {
             this.parent = parent;
             this.rank = rank;
         }
     }
 
     /**
-     * Finds the parent of the subset using path compression
-     *
-     * @param subsets array of subsets
-     * @param i       index of the subset
-     * @return the parent of the subset
+     * Represents the state of Union-Find components and the result list
      */
-    static int find(Subset[] subsets, int i) {
-        if (subsets[i].parent != i) {
-            subsets[i].parent = find(subsets, subsets[i].parent);
-        }
-        return subsets[i].parent;
-    }
+    private static class BoruvkaState {
+        List<Edge> result;
+        Component[] components;
+        final Graph graph;
 
-    /**
-     * Performs the Union operation for Union-Find
-     *
-     * @param subsets array of subsets
-     * @param x       index of the first subset
-     * @param y       index of the second subset
-     */
-    static void union(Subset[] subsets, int x, int y) {
-        int xroot = find(subsets, x);
-        int yroot = find(subsets, y);
-
-        if (subsets[xroot].rank < subsets[yroot].rank) {
-            subsets[xroot].parent = yroot;
-        } else if (subsets[xroot].rank > subsets[yroot].rank) {
-            subsets[yroot].parent = xroot;
-        } else {
-            subsets[yroot].parent = xroot;
-            subsets[xroot].rank++;
-        }
-    }
-
-    /**
-     * Boruvka's algorithm to find the Minimum Spanning Tree
-     *
-     * @param graph the graph
-     * @return list of edges in the Minimum Spanning Tree
-     */
-    static List<Edge> boruvkaMST(Graph graph) {
-        List<Edge> result = new ArrayList<>();
-
-        // Initialize subsets for Union-Find
-        Subset[] subsets = new Subset[graph.vertex];
-        for (int v = 0; v < graph.vertex; ++v) {
-            subsets[v] = new Subset(v, 0);
+        BoruvkaState(final Graph graph) {
+            this.result = new ArrayList<>();
+            this.components = initializeComponents(graph);
+            this.graph = graph;
         }
 
-        // Continue until the number of edges in the MST is V-1
-        while (result.size() < graph.vertex - 1) {
-            // Array to store the cheapest edge for each subset
+        /**
+         * Adds the cheapest edges to the result list and performs Union operation on the subsets.
+         *
+         * @param cheapest Array containing the cheapest edge for each subset.
+         */
+        void merge(final Edge[] cheapest) {
+            for (int i = 0; i < graph.vertex; ++i) {
+                if (cheapest[i] != null) {
+                    final var component1 = find(components, cheapest[i].src);
+                    final var component2 = find(components, cheapest[i].dest);
+
+                    if (component1 != component2) {
+                        result.add(cheapest[i]);
+                        union(components, component1, component2);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Checks if there are more edges to add to the result list
+         *
+         * @return true if there are more edges to add, false otherwise
+         */
+        boolean hasMoreEdgesToAdd() {
+            return result.size() < graph.vertex - 1;
+        }
+
+        /**
+         * Computes the cheapest edges for each subset in the Union-Find structure.
+         *
+         * @return an array containing the cheapest edge for each subset.
+         */
+        private Edge[] computeCheapestEdges() {
             Edge[] cheapest = new Edge[graph.vertex];
-
-            // Iterate through all edges and update the cheapest edge for each
-            // subset
-            for (Edge edge : graph.edges) {
-                int set1 = find(subsets, edge.src);
-                int set2 = find(subsets, edge.dest);
+            for (final var edge : graph.edges) {
+                final var set1 = find(components, edge.src);
+                final var set2 = find(components, edge.dest);
 
                 if (set1 != set2) {
                     if (cheapest[set1] == null || edge.weight < cheapest[set1].weight) {
@@ -145,21 +134,84 @@ final class BoruvkaAlgorithm {
                     }
                 }
             }
-
-            // Add the cheapest edges to the result and perform Union operation
-            for (int i = 0; i < graph.vertex; ++i) {
-                if (cheapest[i] != null) {
-                    int set1 = find(subsets, cheapest[i].src);
-                    int set2 = find(subsets, cheapest[i].dest);
-
-                    if (set1 != set2) {
-                        result.add(cheapest[i]);
-                        union(subsets, set1, set2);
-                    }
-                }
-            }
+            return cheapest;
         }
 
-        return result;
+        /**
+         * Initializes subsets for Union-Find
+         *
+         * @param graph the graph
+         * @return the initialized subsets
+         */
+        private static Component[] initializeComponents(final Graph graph) {
+            Component[] components = new Component[graph.vertex];
+            for (int v = 0; v < graph.vertex; ++v) {
+                components[v] = new Component(v, 0);
+            }
+            return components;
+        }
+    }
+
+    /**
+     * Finds the parent of the subset using path compression
+     *
+     * @param components array of subsets
+     * @param i          index of the subset
+     * @return the parent of the subset
+     */
+    static int find(final Component[] components, final int i) {
+        if (components[i].parent != i) {
+            components[i].parent = find(components, components[i].parent);
+        }
+        return components[i].parent;
+    }
+
+    /**
+     * Performs the Union operation for Union-Find
+     *
+     * @param components array of subsets
+     * @param x          index of the first subset
+     * @param y          index of the second subset
+     */
+    static void union(Component[] components, final int x, final int y) {
+        final int xroot = find(components, x);
+        final int yroot = find(components, y);
+
+        if (components[xroot].rank < components[yroot].rank) {
+            components[xroot].parent = yroot;
+        } else if (components[xroot].rank > components[yroot].rank) {
+            components[yroot].parent = xroot;
+        } else {
+            components[yroot].parent = xroot;
+            components[xroot].rank++;
+        }
+    }
+
+    /**
+     * Boruvka's algorithm to find the Minimum Spanning Tree
+     *
+     * @param graph the graph
+     * @return list of edges in the Minimum Spanning Tree
+     */
+    static List<Edge> boruvkaMST(final Graph graph) {
+        var boruvkaState = new BoruvkaState(graph);
+
+        while (boruvkaState.hasMoreEdgesToAdd()) {
+            final var cheapest = boruvkaState.computeCheapestEdges();
+            boruvkaState.merge(cheapest);
+        }
+        return boruvkaState.result;
+    }
+
+    /**
+     * Checks if the edge vertices are in a valid range
+     *
+     * @param vertex     the vertex to check
+     * @param upperBound the upper bound for the vertex range
+     */
+    private static void checkEdgeVertices(final int vertex, final int upperBound) {
+        if (vertex < 0 || vertex >= upperBound) {
+            throw new IllegalArgumentException("Edge vertex out of range");
+        }
     }
 }
