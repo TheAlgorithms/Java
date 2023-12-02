@@ -84,6 +84,7 @@
               * [MRUCache](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/caches/MRUCache.java)
             * crdt
               * [GCounter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/GCounter.java)
+              * [PNCounter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/PNCounter.java)
             * disjointsetunion
               * [DisjointSetUnion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnion.java)
               * [Node](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/disjointsetunion/Node.java)
@@ -617,6 +618,7 @@
               * [MRUCacheTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/caches/MRUCacheTest.java)
             * crdt
               * [GCounterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/GCounterTest.java)
+              * [PNCounterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/PNCounterTest.java)
             * disjointsetunion
               * [DisjointSetUnionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnionTest.java)
             * graphs
