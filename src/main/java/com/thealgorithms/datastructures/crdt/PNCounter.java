@@ -72,6 +72,9 @@ class PNCounter {
      * @return True if the state of this PN-Counter is less than or equal to the state of the other PN-Counter.
      */
     public boolean compare(PNCounter other) {
+        if (this.n != other.n) {
+            throw new IllegalArgumentException("Cannot compare PN-Counters with different number of nodes");
+        }
         for (int i = 0; i < n; i++) {
             if (this.P.get(i) > other.P.get(i) && this.N.get(i) > other.N.get(i)) {
                 return false;
@@ -86,6 +89,9 @@ class PNCounter {
      * @param other The other PN-Counter to merge with.
      */
     public void merge(PNCounter other) {
+        if (this.n != other.n) {
+            throw new IllegalArgumentException("Cannot merge PN-Counters with different number of nodes");
+        }
         for (int i = 0; i < n; i++) {
             this.P.put(i, Math.max(this.P.get(i), other.P.get(i)));
             this.N.put(i, Math.max(this.N.get(i), other.N.get(i)));
