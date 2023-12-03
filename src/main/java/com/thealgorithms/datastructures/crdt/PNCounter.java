@@ -48,7 +48,7 @@ class PNCounter {
     }
 
     /**
-     * Decrements the decrement counter for the current node.
+     * Increments the decrement counter for the current node.
      */
     public void decrement() {
         N.put(myId, N.get(myId) + 1);
