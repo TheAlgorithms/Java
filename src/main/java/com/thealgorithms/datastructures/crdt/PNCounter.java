@@ -8,7 +8,7 @@ import java.util.Map;
  * designed for tracking counts with both increments and decrements in a distributed and concurrent environment.
  * It combines two G-Counters, one for increments (P) and one for decrements (N).
  * The total count is obtained by subtracting the value of the decrement counter from the increment counter.
- * This implementation supports incrementing, decrementing, comparing and querying the total count,
+ * This implementation supports incrementing, decrementing, querying the total count,
  * comparing with other PN-Counters, and merging with another PN-Counter
  * to compute the element-wise maximum for both increment and decrement counters.
  * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
