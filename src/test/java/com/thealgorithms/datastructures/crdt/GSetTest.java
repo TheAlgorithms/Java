@@ -32,20 +32,14 @@ class GSetTest {
     void testCompare() {
         GSet<String> gSet1 = new GSet<>();
         GSet<String> gSet2 = new GSet<>();
-
         gSet1.addElement("apple");
         gSet1.addElement("orange");
-
         gSet2.addElement("orange");
-        gSet2.addElement("banana");
-
         assertFalse(gSet1.compare(gSet2));
-
-        GSet<String> gSet3 = new GSet<>();
-        gSet3.addElement("apple");
-        gSet3.addElement("orange");
-
-        assertTrue(gSet1.compare(gSet3));
+        gSet2.addElement("apple");
+        assertTrue(gSet1.compare(gSet2));
+        gSet2.addElement("banana");
+        assertTrue(gSet1.compare(gSet2));
     }
 
     @Test
