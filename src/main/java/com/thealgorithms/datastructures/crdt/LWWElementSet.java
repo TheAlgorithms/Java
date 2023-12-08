@@ -93,8 +93,7 @@ class LWWElementSet {
      * @return True if the set is subset, false otherwise.
      */
     public boolean compare(LWWElementSet other) {
-        return other.addSet.keySet().containsAll(addSet.keySet()) &&
-                other.removeSet.keySet().containsAll(removeSet.keySet());
+        return other.addSet.keySet().containsAll(addSet.keySet()) && other.removeSet.keySet().containsAll(removeSet.keySet());
     }
 
     /**
