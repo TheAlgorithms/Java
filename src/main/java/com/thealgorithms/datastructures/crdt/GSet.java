@@ -50,7 +50,7 @@ public class GSet<T> {
      * @return true if the current G-Set is a subset of the other, false otherwise
      */
     public boolean compare(GSet<T> other) {
-        return elements.containsAll(other.elements);
+        return other.elements.containsAll(elements);
     }
 
     /**
