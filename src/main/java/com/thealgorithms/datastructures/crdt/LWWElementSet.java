@@ -38,7 +38,8 @@ enum Bias {
      * ADDS bias for the add set.
      * REMOVALS bias for the remove set.
      */
-    ADDS, REMOVALS
+    ADDS,
+    REMOVALS
 }
 
 class LWWElementSet {
@@ -128,7 +129,6 @@ class LWWElementSet {
         }
         Bias bias = e.bias;
         int timestampComparison = Integer.compare(e.timestamp, other.timestamp);
-
 
         if (timestampComparison == 0) {
             return !bias.equals(Bias.ADDS);
