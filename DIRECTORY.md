@@ -86,6 +86,7 @@
               * [GCounter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/GCounter.java)
               * [GSet](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/GSet.java)
               * [LWWElementSet](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/LWWElementSet.java)
+              * [ORSet](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/ORSet.java)
               * [PNCounter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/PNCounter.java)
               * [TwoPSet](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/crdt/TwoPSet.java)
             * disjointsetunion
@@ -623,6 +624,7 @@
               * [GCounterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/GCounterTest.java)
               * [GSetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/GSetTest.java)
               * [LWWElementSetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/LWWElementSetTest.java)
+              * [ORSetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/ORSetTest.java)
               * [PNCounterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/PNCounterTest.java)
               * [TwoPSetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/crdt/TwoPSetTest.java)
             * disjointsetunion
