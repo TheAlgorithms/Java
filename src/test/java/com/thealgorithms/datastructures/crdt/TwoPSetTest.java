@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 class TwoPSetTest {
 
-    private TwoPSet set;
+    private TwoPSet<String> set;
 
     @BeforeEach
     void setUp() {
-        set = new TwoPSet();
+        set = new TwoPSet<>();
     }
 
     @Test
@@ -38,10 +38,10 @@ class TwoPSetTest {
 
     @Test
     void testCompare() {
-        TwoPSet set1 = new TwoPSet();
+        TwoPSet<String> set1 = new TwoPSet<>();
         set1.add("A");
         set1.add("B");
-        TwoPSet set2 = new TwoPSet();
+        TwoPSet<String> set2 = new TwoPSet<>();
         set2.add("A");
         assertFalse(set1.compare(set2));
         set2.add("B");
@@ -54,13 +54,13 @@ class TwoPSetTest {
 
     @Test
     void testMerge() {
-        TwoPSet set1 = new TwoPSet();
+        TwoPSet<String> set1 = new TwoPSet<>();
         set1.add("A");
         set1.add("B");
-        TwoPSet set2 = new TwoPSet();
+        TwoPSet<String> set2 = new TwoPSet<>();
         set2.add("B");
         set2.add("C");
-        TwoPSet mergedSet = set1.merge(set2);
+        TwoPSet<String> mergedSet = set1.merge(set2);
         assertTrue(mergedSet.lookup("A"));
         assertTrue(mergedSet.lookup("B"));
         assertTrue(mergedSet.lookup("C"));

@@ -15,9 +15,9 @@ import java.util.Set;
  * @author itakurah (Niklas Hoefflin) (https://github.com/itakurah)
  */
 
-public class TwoPSet {
-    private Set<String> setA;
-    private Set<String> setR;
+public class TwoPSet<T> {
+    private final Set<T> setA;
+    private final Set<T> setR;
 
     /**
      * Constructs an empty Two-Phase Set.
@@ -33,7 +33,7 @@ public class TwoPSet {
      * @param element The element to be checked.
      * @return True if the element is in the set and has not been removed, otherwise false.
      */
-    public boolean lookup(String element) {
+    public boolean lookup(T element) {
         return setA.contains(element) && !setR.contains(element);
     }
 
@@ -42,7 +42,7 @@ public class TwoPSet {
      *
      * @param element The element to be added.
      */
-    public void add(String element) {
+    public void add(T element) {
         setA.add(element);
     }
 
@@ -51,7 +51,7 @@ public class TwoPSet {
      *
      * @param element The element to be removed.
      */
-    public void remove(String element) {
+    public void remove(T element) {
         if (lookup(element)) {
             setR.add(element);
         }
@@ -63,7 +63,7 @@ public class TwoPSet {
      * @param otherSet The other 2P-Set to compare with.
      * @return True if both SetA and SetR are subset, otherwise false.
      */
-    public boolean compare(TwoPSet otherSet) {
+    public boolean compare(TwoPSet<T> otherSet) {
         return otherSet.setA.containsAll(setA) && otherSet.setR.containsAll(setR);
     }
 
@@ -73,8 +73,8 @@ public class TwoPSet {
      * @param otherSet The other 2P-Set to merge with.
      * @return A new 2P-Set containing the merged elements.
      */
-    public TwoPSet merge(TwoPSet otherSet) {
-        TwoPSet mergedSet = new TwoPSet();
+    public TwoPSet<T> merge(TwoPSet<T> otherSet) {
+        TwoPSet<T> mergedSet = new TwoPSet<>();
         mergedSet.setA.addAll(this.setA);
         mergedSet.setA.addAll(otherSet.setA);
         mergedSet.setR.addAll(this.setR);
