@@ -4,26 +4,26 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /*
-    Given an array "input" you need to print the first grater element for each element.
-    For a given element x of an array, the Next Grater element of that element is the
-    first grater element to the right side of it. If no such element is present print -1.
+    Given an array "input" you need to print the first greater element for each element.
+    For a given element x of an array, the Next greater element of that element is the
+    first greater element to the right side of it. If no such element is present print -1.
 
     Example
     input = { 2, 7, 3, 5, 4, 6, 8 };
     At i = 0
-    Next Grater element between (1 to n) is 7
+    Next greater element between (1 to n) is 7
     At i = 1
-    Next Grater element between (2 to n) is 8
+    Next greater element between (2 to n) is 8
     At i = 2
-    Next Grater element between (3 to n) is 5
+    Next greater element between (3 to n) is 5
     At i = 3
-    Next Grater element between (4 to n) is 6
+    Next greater element between (4 to n) is 6
     At i = 4
-    Next Grater element between (5 to n) is 6
+    Next greater element between (5 to n) is 6
     At i = 5
-    Next Grater element between (6 to n) is 8
+    Next greater element between (6 to n) is 8
     At i = 6
-    Next Grater element between (6 to n) is -1
+    Next greater element between (6 to n) is -1
 
     result : [7, 8, 5, 6, 6, 8, -1]
 
@@ -37,11 +37,11 @@ import java.util.Stack;
             popped elements.
         d. Finally, push the next in the stack.
 
-    3. If elements are left in stack after completing while loop then their Next Grater element is
+    3. If elements are left in stack after completing while loop then their Next greater element is
    -1.
  */
 
-public class NextGraterElement {
+public class NextGreaterElement {
 
     public static int[] findNextGreaterElements(int[] array) {
         if (array == null) {
