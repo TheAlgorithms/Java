@@ -32,7 +32,7 @@ public class FractionalKnapsack {
                 current -= weight[index];
             } else {
                 // If only a fraction of the item can fit, add a proportionate value.
-                finalValue += ratio[i][1] * current;
+                finalValue += (int) (ratio[i][1] * current);
                 break; // Stop adding items to the knapsack since it's full.
             }
         }
