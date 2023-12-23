@@ -1,11 +1,10 @@
 package com.thealgorithms.maths;
 
-
 /**
  * Class for linear auto-correlation of a discrete signal
  *
  * @author Athina-Frederiki Swinkels
- * @version 1.0
+ * @version 2.0
  */
 
 public class AutoCorrelation {
@@ -18,9 +17,6 @@ public class AutoCorrelation {
      * @return The result of the auto-correlation of signals x. The result is also a signal.
      */
     public static double[] autoCorrelation(double[] x){
-        //The result signal's length is double the length of signal x minus 1
-        double[] result=new double[2*x.length-1];
-        int N=result.length;
 
         /*
         To find the auto-correlation of a discrete signal x, we perform cross-correlation between x signal and itself.
@@ -53,32 +49,8 @@ public class AutoCorrelation {
 
 
          */
-        int start=x.length;
-        for (int i = 0; i < N; i++) {
-            result[i] = 0;
 
-            int kMin = Math.max(i - (x.length - 1), 0);
-            int kMax = Math.min(i, x.length - 1);
-
-            if(i<x.length){
-                start--;
-            }
-
-
-            int count=0;
-            for (int k = kMin; k <= kMax; k++) {
-                result[i] += x[k] * x[start+count];
-                count++;
-            }
-
-
-        }
-
-        //The calculated auto-correlation of x signal is returned here.
-        return result;
-
-
+        return CrossCorrelation.crossCorrelation(x,x);
     }
-
 }
 
