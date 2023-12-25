@@ -87,7 +87,7 @@ public class EulerMethod {
         double xCurrent = xStart;
 
         while (xCurrent < xEnd) {
-            // Euler method for next step
+            // Euler's method for next step
             yCurrent = eulerStep(xCurrent, stepSize, yCurrent, differentialEquation);
             xCurrent += stepSize;
             double[] point = {xCurrent, yCurrent};

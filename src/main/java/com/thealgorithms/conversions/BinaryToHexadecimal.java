@@ -34,7 +34,7 @@ public class BinaryToHexadecimal {
             for (i = 0; i < 4; i++) {
                 currbit = binary % 10;
                 binary = binary / 10;
-                code4 += currbit * Math.pow(2, i);
+                code4 += currbit * (int) Math.pow(2, i);
             }
             hex = hm.get(code4) + hex;
         }
