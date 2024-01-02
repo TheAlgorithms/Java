@@ -34,4 +34,4 @@ public class AutoCorrelationTest {
         }
         return result;
     }
-  }
+}
