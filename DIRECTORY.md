@@ -48,7 +48,6 @@
             * [ProductCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/ProductCipher.java)
             * [RSA](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/RSA.java)
             * [SimpleSubCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/SimpleSubCipher.java)
-            * [SimpleSubstitutionCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/SimpleSubstitutionCipher.java)
             * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/Vigenere.java)
           * conversions
             * [AnyBaseToAnyBase](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/AnyBaseToAnyBase.java)
@@ -596,7 +595,6 @@
             * [PolybiusTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/PolybiusTest.java)
             * [RSATest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/RSATest.java)
             * [SimpleSubCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/SimpleSubCipherTest.java)
-            * [SimpleSubstitutionCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/SimpleSubstitutionCipherTest.java)
             * [VigenereTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/VigenereTest.java)
           * conversions
             * [BinaryToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToDecimalTest.java)
