@@ -1,6 +1,5 @@
 package com.thealgorithms.maths;
 
-
 /**
  * Class for linear cross-correlation of two discrete signals
  *
@@ -18,10 +17,10 @@ public class CrossCorrelation {
      * @param y The second discrete signal
      * @return The result of the cross-correlation of signals x,y. The result is also a signal.
      */
-    public static double[] crossCorrelation(double[] x, double[] y){
+    public static double[] crossCorrelation(double[] x, double[] y) {
         //The result signal's length is the sum of the input signals' lengths minus 1
-        double[] result=new double[x.length+y.length-1];
-        int N=result.length;
+        double[] result = new double[x.length + y.length - 1];
+        int N = result.length;
 
         /*
         To find the cross-correlation between 2 discrete signals x & y, we start by "placing" the second signal
@@ -64,32 +63,25 @@ public class CrossCorrelation {
         The variable 'yStart' indicates the starting index of y in each sum calculation.
         The variable 'count' increases the index of y-signal by 1, to move to the next value.
          */
-        int yStart=y.length;
+        int yStart = y.length;
         for (int i = 0; i < N; i++) {
             result[i] = 0;
 
             int kMin = Math.max(i - (y.length - 1), 0);
             int kMax = Math.min(i, x.length - 1);
 
-            if(i<y.length){
+            if(i < y.length){
                 yStart--;
             }
 
-
-            int count=0;
+            int count = 0;
             for (int k = kMin; k <= kMax; k++) {
-                result[i] += x[k] * y[yStart+count];
+                result[i] += x[k] * y[yStart + count];
                 count++;
             }
-
-
         }
 
-        //The calculated cross-correlation of x & y signals is returned here.
+        // The calculated cross-correlation of x & y signals is returned here.
         return result;
-
-
     }
-
 }
-

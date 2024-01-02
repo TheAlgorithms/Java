@@ -1,8 +1,9 @@
 package com.thealgorithms.maths;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * Test class for CrossCorrelation class

@@ -16,7 +16,7 @@ public class AutoCorrelation {
      * @param x The discrete signal
      * @return The result of the auto-correlation of signals x. The result is also a signal.
      */
-    public static double[] autoCorrelation(double[] x){
+    public static double[] autoCorrelation(double[] x) {
 
         /*
         To find the auto-correlation of a discrete signal x, we perform cross-correlation between x signal and itself.
@@ -50,7 +50,6 @@ public class AutoCorrelation {
 
          */
 
-        return CrossCorrelation.crossCorrelation(x,x);
+        return CrossCorrelation.crossCorrelation(x, x);
     }
 }
-
