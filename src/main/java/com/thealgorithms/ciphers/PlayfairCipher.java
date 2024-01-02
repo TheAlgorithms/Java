@@ -1,3 +1,5 @@
+package com.thealgorithms.ciphers;
+
 import java.util.Scanner;
 
 public class PlayfairCipher {
