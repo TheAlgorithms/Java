@@ -18,7 +18,7 @@ public class CrossCorrelation {
      * @return The result of the cross-correlation of signals x,y. The result is also a signal.
      */
     public static double[] crossCorrelation(double[] x, double[] y) {
-        //The result signal's length is the sum of the input signals' lengths minus 1
+        // The result signal's length is the sum of the input signals' lengths minus 1
         double[] result = new double[x.length + y.length - 1];
         int N = result.length;
 
@@ -70,7 +70,7 @@ public class CrossCorrelation {
             int kMin = Math.max(i - (y.length - 1), 0);
             int kMax = Math.min(i, x.length - 1);
 
-            if(i < y.length){
+            if (i < y.length) {
                 yStart--;
             }
 
