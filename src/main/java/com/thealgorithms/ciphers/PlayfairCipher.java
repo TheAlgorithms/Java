@@ -1,7 +1,5 @@
 package com.thealgorithms.ciphers;
 
-import java.util.Scanner;
-
 public class PlayfairCipher {
 
     private char[][] matrix;
@@ -10,50 +8,6 @@ public class PlayfairCipher {
     public PlayfairCipher(String key) {
         this.key = key;
         generateMatrix();
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("\nEnter the key: ");
-        String key = sc.nextLine();
-
-        System.out.print("\nEnter the plaintext: ");
-        String plaintext = sc.nextLine();
-
-        PlayfairCipher cipher = new PlayfairCipher(key);
-        cipher.printMatrix();
-
-        // Encryption
-        String encryptedText = cipher.encrypt(plaintext);
-        System.out.println("\nPlaintext: " + plaintext);
-        System.out.println("\nEncrypted Text: " + encryptedText);
-
-        // Decryption
-        String decryptedText = cipher.decrypt(encryptedText);
-        System.out.println("\nDecrypted Text: " + decryptedText);
-    }
-
-    private void generateMatrix() {
-        String keyWithoutDuplicates = removeDuplicateChars(key + "ABCDEFGHIKLMNOPQRSTUVWXYZ");
-        matrix = new char[5][5];
-        int index = 0;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                matrix[i][j] = keyWithoutDuplicates.charAt(index);
-                index++;
-            }
-        }
-    }
-
-    private String removeDuplicateChars(String str) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            if (result.indexOf(String.valueOf(str.charAt(i))) == -1) {
-                result.append(str.charAt(i));
-            }
-        }
-        return result.toString();
     }
 
     public String encrypt(String plaintext) {
@@ -107,6 +61,28 @@ public class PlayfairCipher {
         return plaintext.toString();
     }
 
+    private void generateMatrix() {
+        String keyWithoutDuplicates = removeDuplicateChars(key + "ABCDEFGHIKLMNOPQRSTUVWXYZ");
+        matrix = new char[5][5];
+        int index = 0;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                matrix[i][j] = keyWithoutDuplicates.charAt(index);
+                index++;
+            }
+        }
+    }
+
+    private String removeDuplicateChars(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (result.indexOf(String.valueOf(str.charAt(i))) == -1) {
+                result.append(str.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
     private String prepareText(String text) {
         text = text.toUpperCase().replaceAll("[^A-Z]", "");
         StringBuilder preparedText = new StringBuilder();
@@ -123,7 +99,6 @@ public class PlayfairCipher {
         if (preparedText.length() % 2 != 0) {
             preparedText.append('X');
         }
-        System.out.println("\nPrepared Text : " + preparedText.toString());
         return preparedText.toString();
     }
 

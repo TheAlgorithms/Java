@@ -9,7 +9,7 @@ public class PlayfairTest {
     @Test
     public void testEncryption() {
         PlayfairCipher playfairCipher = new PlayfairCipher("KEYWORD");
-        
+
         String plaintext = "HELLO";
         String encryptedText = playfairCipher.encrypt(plaintext);
         assertEquals("GYIZSC", encryptedText);
@@ -18,7 +18,7 @@ public class PlayfairTest {
     @Test
     public void testDecryption() {
         PlayfairCipher playfairCipher = new PlayfairCipher("KEYWORD");
-        
+
         String encryptedText = "UDRIYP";
         String decryptedText = playfairCipher.decrypt(encryptedText);
         assertEquals("NEBFVH", decryptedText);
@@ -27,12 +27,11 @@ public class PlayfairTest {
     @Test
     public void testEncryptionAndDecryption() {
         PlayfairCipher playfairCipher = new PlayfairCipher("KEYWORD");
-        
+
         String plaintext = "PLAYFAIR";
         String encryptedText = playfairCipher.encrypt(plaintext);
         String decryptedText = playfairCipher.decrypt(encryptedText);
-        
+
         assertEquals(plaintext, decryptedText);
     }
-
 }
