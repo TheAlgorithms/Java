@@ -1,16 +1,17 @@
 package com.thealgorithms.minimizinglateness;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+
+//The inputData variable represents six jobs with their processing times (t) and deadlines (d).
+//The program calculates the lateness for each job and outputs the total lateness.
 
 public class MinimizingLateness {
 
     private static class Schedule { // Schedule class
 
-        int t = 0; // Time required for the operation to be performed
-        int d = 0; // Time the job should be completed
+        int t; // Time required for the operation to be performed
+        int d; // Time the job should be completed
         public Schedule(int t, int d) {
             this.t = t;
             this.d = d;
@@ -18,24 +19,27 @@ public class MinimizingLateness {
     }
 
     public static void main(String[] args) throws IOException {
-        StringTokenizer token;
+        String inputData = "6\n" +
+                "3 6\n" +
+                "2 8\n" +
+                "1 9\n" +
+                "4 9\n" +
+                "3 14\n" +
+                "2 15";
 
-        BufferedReader in = new BufferedReader(new FileReader("MinimizingLateness/lateness_data.txt"));
-        String ch = in.readLine();
-        if (ch == null || ch.isEmpty()) {
-            in.close();
-            return;
-        }
-        int indexCount = Integer.parseInt(ch);
+        StringTokenizer token = new StringTokenizer(inputData, "\n");
+
+        int indexCount = Integer.parseInt(token.nextToken());
         System.out.println("Input Data : ");
         System.out.println(indexCount); // number of operations
         Schedule[] array = new Schedule[indexCount]; // Create an array to hold the operation
         int i = 0;
-        while ((ch = in.readLine()) != null) {
-            token = new StringTokenizer(ch, " ");
+        while (token.hasMoreTokens()) {
+            String ch = token.nextToken();
+            StringTokenizer tokenizer = new StringTokenizer(ch, " ");
             // Include the time required for the operation to be performed in the array and the time
             // it should be completed.
-            array[i] = new Schedule(Integer.parseInt(token.nextToken()), Integer.parseInt(token.nextToken()));
+            array[i] = new Schedule(Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()));
             i++;
             System.out.println(array[i - 1].t + " " + array[i - 1].d);
         }
@@ -50,6 +54,5 @@ public class MinimizingLateness {
         System.out.println();
         System.out.println("Output Data : ");
         System.out.println(lateness);
-        in.close();
     }
 }
