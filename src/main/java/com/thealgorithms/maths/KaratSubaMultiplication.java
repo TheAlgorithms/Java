@@ -1,12 +1,6 @@
 package com.thealgorithms.maths;
 import java.math.BigInteger;
 public class KaratSubaMultiplication {
-	/**
-	 * Finds the absolute maximum value among the given numbers.
-	 *
-	 * @param Multiple Two Number
-	 * @return product
-	 */
 	static BigInteger multiple(BigInteger a, BigInteger b) {
 		int n = a.toString().length();
 		int m = b.toString().length();
