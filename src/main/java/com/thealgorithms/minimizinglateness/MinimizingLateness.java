@@ -1,10 +1,9 @@
-package com.thealgorithms.minimizinglateness;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-//The inputData variable represents six jobs with their processing times (t) and deadlines (d).
-//The program calculates the lateness for each job and outputs the total lateness.
+// The inputData variable represents six jobs with their processing times (t) and deadlines (d).
+// The program calculates the lateness for each job and outputs the total lateness.
 
 public class MinimizingLateness {
 
@@ -19,13 +18,13 @@ public class MinimizingLateness {
     }
 
     public static void main(String[] args) throws IOException {
-        String inputData = "6\n" +
-                "3 6\n" +
-                "2 8\n" +
-                "1 9\n" +
-                "4 9\n" +
-                "3 14\n" +
-                "2 15";
+        String inputData = "6\n"
+            + "3 6\n"
+            + "2 8\n"
+            + "1 9\n"
+            + "4 9\n"
+            + "3 14\n"
+            + "2 15";
 
         StringTokenizer token = new StringTokenizer(inputData, "\n");
 
