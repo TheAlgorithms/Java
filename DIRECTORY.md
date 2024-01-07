@@ -27,7 +27,6 @@
             * [NonRepeatingNumberFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinder.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
             * [ReverseBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ReverseBits.java)
-            * [SetKthBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/SetKthBit.java)
             * [SingleBitOperations](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/SingleBitOperations.java)
           * ciphers
             * a5
@@ -271,6 +270,7 @@
             * [AmicableNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AmicableNumber.java)
             * [Area](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Area.java)
             * [Armstrong](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Armstrong.java)
+            * [AutoCorrelation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AutoCorrelation.java)
             * [AutomorphicNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AutomorphicNumber.java)
             * [Average](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Average.java)
             * [BinaryPow](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/BinaryPow.java)
@@ -281,6 +281,7 @@
             * [Combinations](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Combinations.java)
             * [Convolution](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Convolution.java)
             * [ConvolutionFFT](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/ConvolutionFFT.java)
+            * [CrossCorrelation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/CrossCorrelation.java)
             * [DeterminantOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DeterminantOfMatrix.java)
             * [DigitalRoot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DigitalRoot.java)
             * [DistanceFormula](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/DistanceFormula.java)
@@ -311,6 +312,7 @@
             * [JosephusProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/JosephusProblem.java)
             * [JugglerSequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/JugglerSequence.java)
             * [KaprekarNumbers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/KaprekarNumbers.java)
+            * [KaratSubaMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/KaratSubaMultiplication.java)
             * [KeithNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/KeithNumber.java)
             * [KrishnamurthyNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/KrishnamurthyNumber.java)
             * [LeastCommonMultiple](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/LeastCommonMultiple.java)
@@ -587,7 +589,6 @@
             * [NonRepeatingNumberFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinderTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
             * [ReverseBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ReverseBitsTest.java)
-            * [SetKthBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SetKthBitTest.java)
             * [SingleBitOperationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleBitOperationsTest.java)
           * ciphers
             * a5
@@ -712,6 +713,7 @@
             * [AmicableNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AmicableNumberTest.java)
             * [AreaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AreaTest.java)
             * [ArmstrongTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ArmstrongTest.java)
+            * [AutoCorrelationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AutoCorrelationTest.java)
             * [AutomorphicNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AutomorphicNumberTest.java)
             * [AverageTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AverageTest.java)
             * [BinaryPowTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/BinaryPowTest.java)
@@ -719,6 +721,7 @@
             * [CeilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CeilTest.java)
             * [CollatzConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CollatzConjectureTest.java)
             * [CombinationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CombinationsTest.java)
+            * [CrossCorrelationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CrossCorrelationTest.java)
             * [DigitalRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DigitalRootTest.java)
             * [DistanceFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DistanceFormulaTest.java)
             * [DudeneyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DudeneyNumberTest.java)
