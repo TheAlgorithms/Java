@@ -1,16 +1,6 @@
-/*The algorithm reduces the multiplication of two n-digit numbers to 
-three multiplications of n/2-digit numbers1. This is achieved by splitting 
-each number into two halves and recursively applying the same process until 
-the numbers are small enough to be multiplied directly3.
-The key insight of the Karatsuba algorithm is that it performs fewer multiplications
-in each recursive step. While the traditional multiplication 
-algorithm performs four multiplications for two 2-digit numbers, the Karatsuba
-algorithm only performs three
-This makes the Karatsuba algorithm faster than the traditional multiplication algorithm,
-especially for large numbers. The time complexity of the Karatsuba algorithm is O(n^1.585),
-compared to O(n^2) for the traditional algorithm4.*/
 
-//package com.thealgorithms.maths;
+package com.thealgorithms.maths;
+
 import java.math.BigInteger;
 
 public class KaratSubaMultiplication {
