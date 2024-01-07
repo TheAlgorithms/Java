@@ -1,8 +1,5 @@
-
 package com.thealgorithms.maths;
-
 import java.math.BigInteger;
-
 public class KaratSubaMultiplication {
 	/**
 	 * Finds the absolute maximum value among the given numbers.
@@ -26,7 +23,6 @@ public class KaratSubaMultiplication {
 		BigInteger p = multiple(x1.add(x0), y1.add(y0));
 		BigInteger x1y1 = multiple(x1, y1);
 		BigInteger x0y0 = multiple(x0, y0);
-
 		return x1y1.multiply(BigInteger.valueOf(10).pow(m)).add((p.subtract(x1y1).subtract(x0y0)).multiply(BigInteger.valueOf(10).pow(m / 2))).add(x0y0);
 	}
 }
