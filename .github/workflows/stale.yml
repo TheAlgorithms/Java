@@ -11,7 +11,7 @@ jobs:
           stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.'
           close-issue-message: 'Please reopen this issue once you add more information and updates here. If this is not the case and you need some help, feel free to seek help from our [Discord](https://the-algorithms.com/discord) or ping one of the reviewers. Thank you for your contributions!'
           stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contributions.'
-          close-pr-message: 'Please reopen this pull request once you commit the changes requested or make improvements on the code. If this is not the case and you need some help, feel free to seek help from our [Gitter](https://gitter.im/TheAlgorithms) or ping one of the reviewers. Thank you for your contributions!'
+          close-pr-message: 'Please reopen this pull request once you commit the changes requested or make improvements on the code. If this is not the case and you need some help, feel free to seek help from our [Discord](https://the-algorithms.com/discord) or ping one of the reviewers. Thank you for your contributions!'
           exempt-issue-labels: 'dont-close'
           exempt-pr-labels: 'dont-close'
           days-before-stale: 30
