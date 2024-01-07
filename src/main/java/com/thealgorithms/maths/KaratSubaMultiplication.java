@@ -37,7 +37,6 @@ public class KaratSubaMultiplication {
 		BigInteger x1y1 = multiple(x1, y1);
 		BigInteger x0y0 = multiple(x0, y0);
 
-		return x1y1.multiply(BigInteger.valueOf(10).pow(m))
-				.add((p.subtract(x1y1).subtract(x0y0)).multiply(BigInteger.valueOf(10).pow(m / 2))).add(x0y0);
+		return x1y1.multiply(BigInteger.valueOf(10).pow(m)).add((p.subtract(x1y1).subtract(x0y0)).multiply(BigInteger.valueOf(10).pow(m / 2))).add(x0y0);
 	}
 }
