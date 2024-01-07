@@ -1,31 +1,31 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class SumOfDigitsTest {
-
-    SumOfDigits SoD = new SumOfDigits();
-
-    @Test
-    void testZero() {
-        assertEquals(0, SumOfDigits.sumOfDigits(0));
-        assertEquals(0, SumOfDigits.sumOfDigitsRecursion(0));
-        assertEquals(0, SumOfDigits.sumOfDigitsFast(0));
+    @ParameterizedTest
+    @MethodSource("testCases")
+    void sumOfDigitsTest(final int expected, final int input) {
+        Assertions.assertEquals(expected, SumOfDigits.sumOfDigits(input));
     }
 
-    @Test
-    void testPositive() {
-        assertEquals(15, SumOfDigits.sumOfDigits(12345));
-        assertEquals(15, SumOfDigits.sumOfDigitsRecursion(12345));
-        assertEquals(15, SumOfDigits.sumOfDigitsFast(12345));
+    @ParameterizedTest
+    @MethodSource("testCases")
+    void sumOfDigitsRecursionTest(final int expected, final int input) {
+        Assertions.assertEquals(expected, SumOfDigits.sumOfDigitsRecursion(input));
     }
 
-    @Test
-    void testNegative() {
-        assertEquals(6, SumOfDigits.sumOfDigits(-123));
-        assertEquals(6, SumOfDigits.sumOfDigitsRecursion(-123));
-        assertEquals(6, SumOfDigits.sumOfDigitsFast(-123));
+    @ParameterizedTest
+    @MethodSource("testCases")
+    void sumOfDigitsFastTest(final int expected, final int input) {
+        Assertions.assertEquals(expected, SumOfDigits.sumOfDigitsFast(input));
+    }
+
+    private static Stream<Arguments> testCases() {
+        return Stream.of(Arguments.of(0, 0), Arguments.of(1, 1), Arguments.of(15, 12345), Arguments.of(6, -123), Arguments.of(1, -100000), Arguments.of(8, 512));
     }
 }

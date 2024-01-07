@@ -1,13 +1,7 @@
 package com.thealgorithms.maths;
 
-public class SumOfDigits {
-
-    public static void main(String[] args) {
-        assert sumOfDigits(-123) == 6 && sumOfDigitsRecursion(-123) == 6 && sumOfDigitsFast(-123) == 6;
-
-        assert sumOfDigits(0) == 0 && sumOfDigitsRecursion(0) == 0 && sumOfDigitsFast(0) == 0;
-
-        assert sumOfDigits(12345) == 15 && sumOfDigitsRecursion(12345) == 15 && sumOfDigitsFast(12345) == 15;
+public final class SumOfDigits {
+    private SumOfDigits() {
     }
 
     /**
@@ -17,12 +11,12 @@ public class SumOfDigits {
      * @return sum of digits of given {@code number}
      */
     public static int sumOfDigits(int number) {
-        number = number < 0 ? -number : number;
-        /* calculate abs value */
+        final int base = 10;
+        number = Math.abs(number);
         int sum = 0;
         while (number != 0) {
-            sum += number % 10;
-            number /= 10;
+            sum += number % base;
+            number /= base;
         }
         return sum;
     }
@@ -34,9 +28,9 @@ public class SumOfDigits {
      * @return sum of digits of given {@code number}
      */
     public static int sumOfDigitsRecursion(int number) {
-        number = number < 0 ? -number : number;
-        /* calculate abs value */
-        return number < 10 ? number : number % 10 + sumOfDigitsRecursion(number / 10);
+        final int base = 10;
+        number = Math.abs(number);
+        return number < base ? number : number % base + sumOfDigitsRecursion(number / base);
     }
 
     /**
@@ -45,14 +39,7 @@ public class SumOfDigits {
      * @param number the number contains digits
      * @return sum of digits of given {@code number}
      */
-    public static int sumOfDigitsFast(int number) {
-        number = number < 0 ? -number : number;
-        /* calculate abs value */
-        char[] digits = (number + "").toCharArray();
-        int sum = 0;
-        for (int i = 0; i < digits.length; ++i) {
-            sum += digits[i] - '0';
-        }
-        return sum;
+    public static int sumOfDigitsFast(final int number) {
+        return String.valueOf(Math.abs(number)).chars().map(c -> c - '0').reduce(0, Integer::sum);
     }
 }
