@@ -2,36 +2,36 @@ package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SRTFSchedulingTest {
     ArrayList<ProcessDetails> processes;
+
     public void initialization() {
-        processes=new ArrayList<>();
+        processes = new ArrayList<>();
         processes.add(new ProcessDetails("4", 0, 3));
         processes.add(new ProcessDetails("3", 1, 8));
         processes.add(new ProcessDetails("1", 2, 6));
         processes.add(new ProcessDetails("5", 4, 4));
         processes.add(new ProcessDetails("2", 5, 2));
     }
+
     @Test
     public void Constructor() {
         initialization();
-        SRTFScheduling s=new SRTFScheduling(processes);
+        SRTFScheduling s = new SRTFScheduling(processes);
         assertEquals(3, s.processes.get(0).getBurstTime());
         assertEquals(8, s.processes.get(1).getBurstTime());
         assertEquals(6, s.processes.get(2).getBurstTime());
         assertEquals(4, s.processes.get(3).getBurstTime());
         assertEquals(2, s.processes.get(4).getBurstTime());
     }
+
     @Test
     void evaluateScheduling() {
         initialization();
-        SRTFScheduling s=new SRTFScheduling(processes);
+        SRTFScheduling s = new SRTFScheduling(processes);
         s.evaluateScheduling();
         assertEquals("4", s.ready.get(0));
         assertEquals("4", s.ready.get(1));
