@@ -57,8 +57,7 @@ public class SRTFScheduling {
             /* checking if there's a process with remaining time less than current running process.
                If we find it, then it executes. */
             for (int j = 0; j < n; j++) {
-                if (processes.get(j).getArrivalTime() <= i &&
-                        (remainingTime[j] < remainingTime[cr] && remainingTime[j] > 0 || remainingTime[cr] == 0)) {
+                if (processes.get(j).getArrivalTime() <= i && (remainingTime[j] < remainingTime[cr] && remainingTime[j] > 0 || remainingTime[cr] == 0)) {
                     cr = j;
                 }
             }

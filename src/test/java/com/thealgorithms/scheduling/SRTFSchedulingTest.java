@@ -1,9 +1,10 @@
 package com.thealgorithms.scheduling;
 
-import com.thealgorithms.devutils.entities.ProcessDetails;
-import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.thealgorithms.devutils.entities.ProcessDetails;
+import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
 class SRTFSchedulingTest {
     ArrayList<ProcessDetails> processes;
