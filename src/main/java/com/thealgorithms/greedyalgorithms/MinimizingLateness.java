@@ -40,20 +40,4 @@ public class MinimizingLateness {
             job.lateness = Math.max(0, startTime - job.deadline); // if the job finishes before deadline the lateness is 0
         }
     }
-
-    public static void main(String[] args) {
-        // Example jobs with processing time and deadline
-        Job[] jobs = {Job.of("1", 3, 6), Job.of("5", 2, 6), Job.of("2", 3, 14), Job.of("3", 1, 4), Job.of("4", 4, 6), Job.of("6", 2, 8)};
-
-        calculateLateness(jobs);
-        int totalLateness = 0;
-
-        System.out.println("The order of jobs should be as");
-        for (Job job : jobs) {
-            System.out.println(job);
-            totalLateness += job.lateness;
-        }
-
-        System.out.println("Total lateness : " + totalLateness);
-    }
 }

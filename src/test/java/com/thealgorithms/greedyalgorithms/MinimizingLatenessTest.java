@@ -2,9 +2,10 @@ package com.thealgorithms.greedyalgorithms;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.greedyalgorithms.MinimizingLateness.Job;
 import org.junit.jupiter.api.Test;
 
-public class MinimizingLatenessTest extends MinimizingLateness {
+public class MinimizingLatenessTest {
 
     @Test
     void testCalculateLateness() {
@@ -16,7 +17,7 @@ public class MinimizingLatenessTest extends MinimizingLateness {
         Job job5 = new Job("Job5", 4, 10);
         Job job6 = new Job("Job6", 3, 5);
 
-        calculateLateness(job1, job2, job3, job4, job5, job6);
+        MinimizingLateness.calculateLateness(job1, job2, job3, job4, job5, job6);
 
         // Check lateness for each job
         assertEquals(6, job4.lateness);
