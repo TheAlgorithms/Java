@@ -1,7 +1,6 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,43 +21,30 @@ import java.util.List;
  * More information you can find here -> https://en.wikipedia.org/wiki/Shortest_remaining_time
  */
 
-
-public class SRTFScheduling {
+public class SRTFScheduling{
     protected List<ProcessDetails> processes;
     protected List<String> ready;
-
     /**
      * Constructor
      */
-
-    public SRTFScheduling(ArrayList<ProcessDetails> processes) {
-        this.processes = new ArrayList<>();
+    public SRTFScheduling(ArrayList<ProcessDetails> processes){
+        this.processes=new ArrayList<>();
         ready=new ArrayList<>();
-        this.processes = processes;
+        this.processes=processes;
     }
-
-
-    /**
-     *
-     */
-
     public void evaluateScheduling() {
         int time = 0, cr = 0; // cr=current running process, time= units of time
         int n = processes.size();
-        int[] remainingTime = new int[n];
-
-
+        int[] remainingTime = new int [n];
         /* calculating remaining time of every process and total units of time */
         for (int i = 0; i < n; i++) {
             remainingTime[i] = processes.get(i).getBurstTime();
             time += processes.get(i).getBurstTime();
         }
-
         /* if the first process doesn't arrive at 0, we have more units of time */
         if (processes.get(0).getArrivalTime() != 0) {
             time += processes.get(0).getArrivalTime();
         }
-
         /* printing id of the process which is executed at every unit of time */
         // if the first process doesn't arrive at 0, we print only \n until it arrives
         if (processes.get(0).getArrivalTime() != 0) {
@@ -66,7 +52,6 @@ public class SRTFScheduling {
                 ready.add(null);
             }
         }
-
         for (int i = processes.get(0).getArrivalTime(); i < time; i++) {
             /* checking if there's a process with remaining time less than current running process.
                If we find it, then it executes. */
