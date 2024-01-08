@@ -16,6 +16,10 @@ public class SingleBitOperationsTest {
     public void setBitTest() {
         assertEquals(5, SingleBitOperations.setBit(4, 0));
         assertEquals(4, SingleBitOperations.setBit(4, 2));
+        assertEquals(5, SingleBitOperations.setBit(5, 0));
+        assertEquals(14, SingleBitOperations.setBit(10, 2));
+        assertEquals(15, SingleBitOperations.setBit(15, 3));
+        assertEquals(2, SingleBitOperations.setBit(0, 1));
     }
 
     @Test
