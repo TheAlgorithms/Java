@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.hashmap.hashing;
 
-import java.lang.Math;
 import java.util.Objects;
 
 /**
