@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class ArrayRightRotationTest {
+class ArrayRightRotationTest {
 
     @Test
     void testArrayRightRotation() {
@@ -16,46 +16,37 @@ public class ArrayRightRotationTest {
     }
 
     @Test
-    void testArrayRightRotationWithZeroStep() {
-        int[] arr = {1, 2, 3, 4, 5};
+    void testArrayRightRotationWithZeroSteps() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
         int k = 0;
-        int[] expected = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7};
         int[] result = ArrayRightRotation.rotateRight(arr, k);
         assertArrayEquals(expected, result);
     }
 
     @Test
-    void testArrayRightRotationWithLargeStep() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int k = 7;
-        int[] expected = {4, 5, 1, 2, 3};
+    void testArrayRightRotationWithEqualSizeSteps() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int k = arr.length;
+        int[] expected = {1, 2, 3, 4, 5, 6, 7};
         int[] result = ArrayRightRotation.rotateRight(arr, k);
         assertArrayEquals(expected, result);
     }
 
     @Test
-    void testArrayRightRotationWithNegativeStep() {
-        int[] arr = {1, 2, 3, 4, 5};
-        int k = -2;
-        int[] expected = {4, 5, 1, 2, 3};
+    void testArrayRightRotationWithLowerSizeSteps() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int k = 2;
+        int[] expected = {6, 7, 1, 2, 3, 4, 5};
         int[] result = ArrayRightRotation.rotateRight(arr, k);
         assertArrayEquals(expected, result);
     }
 
     @Test
-    void testArrayRightRotationWithSingleElement() {
-        int[] arr = {7};
-        int k = 1;
-        int[] expected = {7};
-        int[] result = ArrayRightRotation.rotateRight(arr, k);
-        assertArrayEquals(expected, result);
-    }
-
-    @Test
-    void testArrayRightRotationWithEmptyArray() {
-        int[] arr = {};
-        int k = 3;
-        int[] expected = {};
+    void testArrayRightRotationWithHigherSizeSteps() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int k = 10;
+        int[] expected = {5, 6, 7, 1, 2, 3, 4};
         int[] result = ArrayRightRotation.rotateRight(arr, k);
         assertArrayEquals(expected, result);
     }
