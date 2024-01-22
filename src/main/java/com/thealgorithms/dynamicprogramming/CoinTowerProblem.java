@@ -31,10 +31,10 @@ public class CoinTowerProblem {
     public static char coinTowerWinner(int N, int X, int Y) {
         char[] winner = new char[N + 1];
 
-        // Base cases
-        winner[1] = 'B';  // B wins with 1 coin
-        winner[X] = 'B';  // B wins with X coins
-        winner[Y] = 'B';  // B wins with Y coins
+        // Base cases: B wins with 1, X, or Y coins
+        winner[1] = 'B';
+        winner[X] = 'B';
+        winner[Y] = 'B';
 
         // Fill the winner array for the remaining positions
         for (int i = 2; i <= N; i++) {
