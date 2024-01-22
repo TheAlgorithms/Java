@@ -1,3 +1,5 @@
+package com.thealgorithms.searches;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.thealgorithms.searches.PerfectBinarySearch;
