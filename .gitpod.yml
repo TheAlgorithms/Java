@@ -10,3 +10,4 @@ tasks:
 vscode:
   extensions:
     - xaver.clang-format
+
