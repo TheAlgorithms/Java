@@ -21,13 +21,15 @@
 		// Configure properties specific to VS Code.
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
-			"settings": { 
+			"settings": {
+				// Add any specific VS Code settings here.
 			},
 			
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"vscjava.vscode-java-pack",
-				"GitHub.copilot",
+				"GitHub.copilot"
+				// Add more extensions if needed.
 			]
 		}
 	},
@@ -43,5 +45,6 @@
 	"features": {
 		"git": "os-provided",
 		"github-cli": "latest"
+		// Add more features if needed.
 	}
 }

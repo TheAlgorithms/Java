@@ -1,5 +1,4 @@
-package com.thealgorithms.datastructures.crdt;
-
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,19 +11,35 @@ import java.util.Set;
  * comparing with other 2P-Sets, and merging two 2P-Sets while preserving the remove-wins semantics.
  * (https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)
  *
+ * Changes made by @555vedant:
+ * - Made the constructor private and added a static factory method 'empty'.
+ * - Used 'Collections.unmodifiableSet' to create unmodifiable sets for 'setA' and 'setR' in the 'merge' method.
+ * - Updated the 'merge' method accordingly.
+ *
  * @author itakurah (Niklas Hoefflin) (https://github.com/itakurah)
+ * @author 555vedant (Your Name) (Your GitHub Profile)
  */
-
 public class TwoPSet<T> {
     private final Set<T> setA;
     private final Set<T> setR;
 
     /**
      * Constructs an empty Two-Phase Set.
+     * Note: This constructor is made private. Use the static factory method 'empty()' to create an empty set.
      */
-    public TwoPSet() {
-        this.setA = new HashSet<>();
-        this.setR = new HashSet<>();
+    private TwoPSet(Set<T> setA, Set<T> setR) {
+        this.setA = setA;
+        this.setR = setR;
+    }
+
+    /**
+     * Creates an empty Two-Phase Set.
+     *
+     * @param <T> the type of elements in the set.
+     * @return an empty Two-Phase Set.
+     */
+    public static <T> TwoPSet<T> empty() {
+        return new TwoPSet<>(new HashSet<>(), new HashSet<>());
     }
 
     /**
@@ -74,11 +89,15 @@ public class TwoPSet<T> {
      * @return A new 2P-Set containing the merged elements.
      */
     public TwoPSet<T> merge(TwoPSet<T> otherSet) {
-        TwoPSet<T> mergedSet = new TwoPSet<>();
-        mergedSet.setA.addAll(this.setA);
-        mergedSet.setA.addAll(otherSet.setA);
-        mergedSet.setR.addAll(this.setR);
-        mergedSet.setR.addAll(otherSet.setR);
-        return mergedSet;
+        Set<T> mergedSetA = new HashSet<>(setA);
+        mergedSetA.addAll(otherSet.setA);
+
+        Set<T> mergedSetR = new HashSet<>(setR);
+        mergedSetR.addAll(otherSet.setR);
+
+        return new TwoPSet<>(Collections.unmodifiableSet(mergedSetA), Collections.unmodifiableSet(mergedSetR));
     }
 }
+
+
+
