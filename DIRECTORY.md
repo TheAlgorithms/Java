@@ -259,6 +259,7 @@
             * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/CoinChange.java)
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
+            * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
           * maths
@@ -369,8 +370,6 @@
             * [Volume](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Volume.java)
           * matrixexponentiation
             * [Fibonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrixexponentiation/Fibonacci.java)
-          * minimizinglateness
-            * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/minimizinglateness/MinimizingLateness.java)
           * misc
             * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/ColorContrastRatio.java)
             * [InverseOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/InverseOfMatrix.java)
@@ -452,6 +451,7 @@
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
             * [RRScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RRScheduling.java)
             * [SJFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SJFScheduling.java)
+            * [SRTFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SRTFScheduling.java)
           * searches
             * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch.java)
             * [BinarySearch2dArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch2dArray.java)
@@ -702,6 +702,7 @@
             * [CoinChangeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/CoinChangeTest.java)
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
+            * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
           * maths
@@ -795,6 +796,8 @@
             * [TwoSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/TwoSumProblemTest.java)
           * others
             * [ArrayLeftRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayLeftRotationTest.java)
+            * [ArrayRightRotation](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayRightRotation.java)
+            * [ArrayRightRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayRightRotationTest.java)
             * [BestFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BestFitCPUTest.java)
             * [BoyerMooreTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BoyerMooreTest.java)
             * cn
@@ -825,6 +828,7 @@
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
             * [RRSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RRSchedulingTest.java)
             * [SJFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SJFSchedulingTest.java)
+            * [SRTFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SRTFSchedulingTest.java)
           * searches
             * [BinarySearch2dArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearch2dArrayTest.java)
             * [BreadthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BreadthFirstSearchTest.java)
