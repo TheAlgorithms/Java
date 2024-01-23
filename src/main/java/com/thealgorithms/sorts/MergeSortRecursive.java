@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MergeSortRecursive {
 
-    List<Integer> arr;
+    List<Integer> arr; 
 
     public MergeSortRecursive(List<Integer> arr) {
         this.arr = arr;
