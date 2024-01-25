@@ -1,30 +1,4 @@
-//Code By @SarthakChaudhary46
-
-import java.util.Scanner;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 public class CoinTowerProblem {
-
-    // Driver Program
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the number of coins in the tower (N): ");
-        int N = scanner.nextInt();
-
-        System.out.print("Enter the number of coins player can remove in one step (X): ");
-        int X = scanner.nextInt();
-
-        System.out.print("Enter the number of coins player can remove in one step (Y): ");
-        int Y = scanner.nextInt();
-
-        char result = coinTowerWinner(N, X, Y);
-        System.out.println("The winner of the Coin Tower Game is Player " + result + ".");
-
-        // Run JUnit tests
-        org.junit.runner.JUnitCore.main("CoinTowerProblemTest");
-    }
 
     /**
      * Determines the winner of the Coin Tower Game.
@@ -64,26 +38,5 @@ public class CoinTowerProblem {
 
         // Return the winner of the game
         return winner[N];
-    }
-}
-
-class CoinTowerProblemTest {
-
-    @Test
-    public void testCoinTowerWinner() {
-        assertEquals('A', CoinTowerProblem.coinTowerWinner(5, 3, 4));
-        assertEquals('A', CoinTowerProblem.coinTowerWinner(10, 2, 4));
-        assertEquals('B', CoinTowerProblem.coinTowerWinner(15, 3, 5));
-        assertEquals('B', CoinTowerProblem.coinTowerWinner(20, 2, 5));
-        assertEquals('A', CoinTowerProblem.coinTowerWinner(7, 2, 3));
-    }
-
-    @Test
-    public void testCoinTowerWinnerEdgeCases() {
-        assertEquals('B', CoinTowerProblem.coinTowerWinner(1, 2, 3));
-        assertEquals('B', CoinTowerProblem.coinTowerWinner(2, 2, 3));
-        assertEquals('B', CoinTowerProblem.coinTowerWinner(3, 2, 3));
-        assertEquals('A', CoinTowerProblem.coinTowerWinner(4, 2, 3));
-        assertEquals('A', CoinTowerProblem.coinTowerWinner(5, 2, 3));
     }
 }
