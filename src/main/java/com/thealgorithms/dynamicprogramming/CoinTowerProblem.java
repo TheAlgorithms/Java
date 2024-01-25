@@ -1,23 +1,29 @@
-package com.thealgorithms.dynamicprogramming;
+//Code By @SarthakChaudhary46
 
-/**
- * CoinTowerProblem class to determine the winner of the Coin Tower Game.
- *
- * A and B are playing a game where they remove 1, X, or Y coins alternately from a tower of N coins.
- * The person to make the last move wins the game.
- *
- * @SarthakChaudhary46
- */
+import java.util.Scanner;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 public class CoinTowerProblem {
 
     // Driver Program
     public static void main(String[] args) {
-        int N = 5;
-        int X = 3;
-        int Y = 4;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of coins in the tower (N): ");
+        int N = scanner.nextInt();
+
+        System.out.print("Enter the number of coins player can remove in one step (X): ");
+        int X = scanner.nextInt();
+
+        System.out.print("Enter the number of coins player can remove in one step (Y): ");
+        int Y = scanner.nextInt();
 
         char result = coinTowerWinner(N, X, Y);
         System.out.println("The winner of the Coin Tower Game is Player " + result + ".");
+
+        // Run JUnit tests
+        org.junit.runner.JUnitCore.main("CoinTowerProblemTest");
     }
 
     /**
@@ -33,8 +39,8 @@ public class CoinTowerProblem {
 
         // Base cases: B wins with 1, X, or Y coins
         winner[1] = 'B';
-        winner[X] = 'B';
-        winner[Y] = 'B';
+        if (X <= N) winner[X] = 'B';
+        if (Y <= N) winner[Y] = 'B';
 
         // Fill the winner array for the remaining positions
         for (int i = 2; i <= N; i++) {
@@ -58,5 +64,26 @@ public class CoinTowerProblem {
 
         // Return the winner of the game
         return winner[N];
+    }
+}
+
+class CoinTowerProblemTest {
+
+    @Test
+    public void testCoinTowerWinner() {
+        assertEquals('A', CoinTowerProblem.coinTowerWinner(5, 3, 4));
+        assertEquals('A', CoinTowerProblem.coinTowerWinner(10, 2, 4));
+        assertEquals('B', CoinTowerProblem.coinTowerWinner(15, 3, 5));
+        assertEquals('B', CoinTowerProblem.coinTowerWinner(20, 2, 5));
+        assertEquals('A', CoinTowerProblem.coinTowerWinner(7, 2, 3));
+    }
+
+    @Test
+    public void testCoinTowerWinnerEdgeCases() {
+        assertEquals('B', CoinTowerProblem.coinTowerWinner(1, 2, 3));
+        assertEquals('B', CoinTowerProblem.coinTowerWinner(2, 2, 3));
+        assertEquals('B', CoinTowerProblem.coinTowerWinner(3, 2, 3));
+        assertEquals('A', CoinTowerProblem.coinTowerWinner(4, 2, 3));
+        assertEquals('A', CoinTowerProblem.coinTowerWinner(5, 2, 3));
     }
 }
