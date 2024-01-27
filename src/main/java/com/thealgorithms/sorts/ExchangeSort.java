@@ -1,33 +1,64 @@
 package com.thealgorithms.sorts;
 
-import java.util.Arrays;
+import static com.thealgorithms.sorts.SortUtils.*;
 
-public class ExchangeSort {
+/**
+ * Exchange Sort (Cocktail Shaker Sort) implementation.
+ *
+ * @author 555vedant(Vedant Kasar)
+ * @see SortAlgorithm
+ */
+class ExchangeSort implements SortAlgorithm {
 
-    public static void exchangeSort(int[] arr) {
-        int n = arr.length;
+    /**
+     * Implements generic exchange sort (Cocktail Shaker Sort) algorithm.
+     *
+     * @param array the array to be sorted.
+     * @param <T>   the type of elements in the array.
+     * @return the sorted array.
+     */
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        int left = 0;
+        int right = array.length - 1;
 
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // Swap arr[j] and arr[j + 1]
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+        while (left <= right) {
+            boolean swapped = false;
+
+            // Traverse from left to right
+            for (int i = left; i < right; ++i) {
+                if (greater(array[i], array[i + 1])) {
+                    swap(array, i, i + 1);
+                    swapped = true;
                 }
             }
+
+            // If no swap occurred, the array is already sorted
+            if (!swapped) {
+                break;
+            }
+
+            // Move the right boundary one position to the left
+            --right;
+
+            // Traverse from right to left
+            for (int i = right; i > left; --i) {
+                if (greater(array[i - 1], array[i])) {
+                    swap(array, i - 1, i);
+                    swapped = true;
+                }
+            }
+
+            // If no swap occurred, the array is already sorted
+            if (!swapped) {
+                break;
+            }
+
+            // Move the left boundary one position to the right
+            ++left;
         }
-    }
 
-    public static void main(String[] args) {
-        int[] arr = {12, 45, 23, 67, 10};
-
-        System.out.println("Original Array: " + Arrays.toString(arr));
-
-        // Sorting using ExchangeSort
-        exchangeSort(arr);
-
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
+        return array;
     }
 }
 
