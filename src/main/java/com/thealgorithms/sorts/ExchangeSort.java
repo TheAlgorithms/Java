@@ -61,5 +61,3 @@ class ExchangeSort implements SortAlgorithm {
         return array;
     }
 }
-
-
