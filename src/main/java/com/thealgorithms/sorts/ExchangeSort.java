@@ -5,13 +5,13 @@ import static com.thealgorithms.sorts.SortUtils.*;
 /**
  * Exchange Sort (Cocktail Shaker Sort) implementation.
  *
- * @author 555vedant(Vedant Kasar)
+ * @author 555vedant (Vedant Kasar)
  * @see SortAlgorithm
  */
 class ExchangeSort implements SortAlgorithm {
 
     /**
-     * Implements generic exchange sort (Cocktail Shaker Sort) algorithm.
+     * Implementation of Exchange Sort Algorithm
      *
      * @param array the array to be sorted.
      * @param <T>   the type of elements in the array.
@@ -19,45 +19,21 @@ class ExchangeSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int left = 0;
-        int right = array.length - 1;
+        int n = array.length;
 
-        while (left <= right) {
-            boolean swapped = false;
-
-            // Traverse from left to right
-            for (int i = left; i < right; ++i) {
-                if (greater(array[i], array[i + 1])) {
-                    swap(array, i, i + 1);
-                    swapped = true;
+        for (int i = 0; i < n - 1; i++) {
+            // Last i elements are already sorted, so we don't need to check them
+            for (int j = 0; j < n - i - 1; j++) {
+                // Swap if the element found is greater than the next element
+                if (array[j].compareTo(array[j + 1]) > 0) {
+                    // Swap array[j] and array[j+1]
+                    T temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
-
-            // If no swap occurred, the array is already sorted
-            if (!swapped) {
-                break;
-            }
-
-            // Move the right boundary one position to the left
-            --right;
-
-            // Traverse from right to left
-            for (int i = right; i > left; --i) {
-                if (greater(array[i - 1], array[i])) {
-                    swap(array, i - 1, i);
-                    swapped = true;
-                }
-            }
-
-            // If no swap occurred, the array is already sorted
-            if (!swapped) {
-                break;
-            }
-
-            // Move the left boundary one position to the right
-            ++left;
         }
 
-        return array;
+        return array; // Return the sorted array
     }
 }
