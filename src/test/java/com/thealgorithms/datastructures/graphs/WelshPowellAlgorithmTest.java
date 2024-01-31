@@ -41,5 +41,5 @@ public class WelshPowellAlgorithmTest {
                 System.out.println("Test Failed.");
             }
         }
-}
 
+}
