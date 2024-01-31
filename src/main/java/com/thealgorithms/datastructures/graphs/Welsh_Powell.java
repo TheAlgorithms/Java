@@ -42,7 +42,6 @@ public class Welsh_Powell {
             System.out.println("Vertex " + (i + 1) + " is colored with color " + colors[i]);
         }
 
-        // Closing the scanner
         scanner.close();
     }
 
