@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * Exchange Sort (Cocktail Shaker Sort) implementation.
  *
