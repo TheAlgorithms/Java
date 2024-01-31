@@ -45,7 +45,6 @@ public class Welsh_Powell {
         scanner.close();
     }
 
-
     public static class WPGraph {
 
         private int numVer; // Number of vertices in the graph
