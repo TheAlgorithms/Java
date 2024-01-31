@@ -6,7 +6,6 @@ import static com.thealgorithms.sorts.SortUtils.*;
  * Exchange Sort (Cocktail Shaker Sort) implementation.
  *
  * @author 555vedant (Vedant Kasar)
- * @see SortAlgorithm
  */
 class ExchangeSort implements SortAlgorithm {
 
