@@ -18,7 +18,7 @@ class ExchangeSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int n = array.length;
+        final int n = array.length;
 
         for (int i = 0; i < n - 1; i++) {
             // Last i elements are already sorted, so we don't need to check them
