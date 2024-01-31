@@ -1,7 +1,6 @@
 package com.thealgorithms.datastructures.graphs;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /*
  *  The Welsh-Powell algorithm is a graph coloring algorithm
@@ -9,41 +8,6 @@ import java.util.Scanner;
  *  https://en.wikipedia.org/wiki/Graph_coloring
  */
 public class WelshPowell {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Input for the number of vertices in the graph
-        System.out.print("Enter the number of vertices: ");
-        int numVertices = scanner.nextInt();
-        scanner.nextLine();
-        // Initialize the graph with the given number of vertices
-        WPGraph graph = new WPGraph(numVertices);
-
-        // Input for the number of edges
-        System.out.print("Enter the number of edges: ");
-        int numEdges = scanner.nextInt();
-        scanner.nextLine();
-        // Adding edges to the graph based on user input
-        for (int i = 0; i < numEdges; i++) {
-            System.out.print("Enter both vertices for edge " + (i + 1) + " (format: 'src dest'): ");
-            String[] vertices = scanner.nextLine().split(" ");
-            int src = Integer.parseInt(vertices[0]);
-            int dest = Integer.parseInt(vertices[1]);
-
-            graph.addEdge(src, dest);
-        }
-
-        // Apply Welsh Powell coloring algorithm
-        int colors[] = graph.welshPowellColoring();
-
-        // Output the color of each vertex
-        for (int i = 0; i < numVertices; i++) {
-            System.out.println("Vertex " + (i + 1) + " is colored with color " + colors[i]);
-        }
-
-        scanner.close();
-    }
 
     public static class WPGraph {
 

@@ -1,44 +1,48 @@
 package com.thealgorithms.datastructures.graphs;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
-public class WelshPowellAlgorithmTest {
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) {
-        // Creating the graph for the test case
-        int numVertices = 6; // Number of vertices
-        WPGraph graph = new WPGraph(numVertices);
+class WelshPowellAlgorithmTest {
 
-        // Adding the edges
+    @Test
+    void testSimpleGraph() {
+        WPGraph graph = new WPGraph(4);
         graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 3);
+        graph.addEdge(1, 2);
         graph.addEdge(2, 3);
-        graph.addEdge(2, 4);
-        graph.addEdge(3, 4);
-        graph.addEdge(3, 5);
-        graph.addEdge(4, 5);
-
-        // Executing the method
         int[] colors = graph.welshPowellColoring();
+        assertEquals(true, isValidColoring(graph, colors));
+    }
 
-        // Checking the results
-        boolean testPassed = true;
-        for (int i = 0; i < numVertices; i++) {
+    @Test
+    void testDisconnectedGraph() {
+        WPGraph graph = new WPGraph(3);
+        // Disconnected graph, no edges
+        int[] colors = graph.welshPowellColoring();
+        assertEquals(true, isValidColoring(graph, colors));
+    }
+
+    @Test
+    void testCompleteGraph() {
+        WPGraph graph = new WPGraph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        int[] colors = graph.welshPowellColoring();
+        assertEquals(true, isValidColoring(graph, colors));
+    }
+
+    private boolean isValidColoring(WPGraph graph, int[] colors) {
+        for (int i = 0; i < graph.adjLists.length; i++) {
             for (int neighbor : graph.adjLists[i]) {
                 if (colors[i] == colors[neighbor]) {
-                    testPassed = false;
-                    break;
+                    return false;
                 }
             }
-            if (!testPassed) {
-                break;
-            }
         }
-
-        if (testPassed) {
-            System.out.println("Test Passed.");
-        } else {
-            System.out.println("Test Failed.");
-        }
+        return true;
     }
 }
