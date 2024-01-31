@@ -4,11 +4,11 @@ import com.thealgorithms.datastructures.graphs.Welsh_Powell.WPGraph;
 public class WelshPowellAlgorithmTest {
 
         public static void main(String[] args) {
-            // Δημιουργία του γράφου για το test.test
-            int numVertices = 6; // Αριθμός κορυφών
+            // Creating the graph for the test case
+            int numVertices = 6; // Number of vertices
             WPGraph graph = new WPGraph(numVertices);
 
-            // Προσθήκη ακμών
+            // Adding the edges
             graph.addEdge(0, 1);
             graph.addEdge(0, 2);
             graph.addEdge(1, 3);
@@ -18,10 +18,10 @@ public class WelshPowellAlgorithmTest {
             graph.addEdge(3, 5);
             graph.addEdge(4, 5);
 
-            // Εκτέλεση του Welsh Powell Coloring
+            // Executing the method
             int[] colors = graph.welshPowellColoring();
 
-            // Έλεγχος των αποτελεσμάτων
+            // Checking the results
             boolean testPassed = true;
             for (int i = 0; i < numVertices; i++) {
                 for (int neighbor : graph.adjLists[i]) {
@@ -35,7 +35,6 @@ public class WelshPowellAlgorithmTest {
                 }
             }
 
-            // Εκτύπωση αποτελεσμάτων
             if (testPassed) {
                 System.out.println("Test Passed.");
             } else {
