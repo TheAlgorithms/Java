@@ -24,7 +24,7 @@ class ExchangeSort implements SortAlgorithm {
                 // Swap if the element found is greater than the next element
                 if (array[j].compareTo(array[j + 1]) > 0) {
                     // Swap array[j] and array[j+1]
-                    T temp = array[j];
+                    final T temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
                 }
