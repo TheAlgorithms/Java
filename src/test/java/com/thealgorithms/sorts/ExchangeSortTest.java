@@ -6,4 +6,3 @@ public class ExchangeSortTest extends SortingAlgorithmTest {
         return new ExchangeSort();
     }
 }
-
