@@ -8,7 +8,7 @@ import java.util.Scanner;
  *  used for coloring a graph with the minimum number of colors.
  *  https://en.wikipedia.org/wiki/Graph_coloring
  */
-public class Welsh_Powell {
+public class WelshPowell {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

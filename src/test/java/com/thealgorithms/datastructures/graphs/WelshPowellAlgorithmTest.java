@@ -1,6 +1,6 @@
 package com.thealgorithms.datastructures.graphs;
 
-import com.thealgorithms.datastructures.graphs.Welsh_Powell.WPGraph;
+import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
 public class WelshPowellAlgorithmTest {
 
     public static void main(String[] args) {
