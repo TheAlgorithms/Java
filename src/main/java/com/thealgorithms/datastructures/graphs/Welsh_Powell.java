@@ -106,5 +106,4 @@ public class Welsh_Powell {
             return colors; // Return the array of colors for each vertex
         }
     }
-
 }
