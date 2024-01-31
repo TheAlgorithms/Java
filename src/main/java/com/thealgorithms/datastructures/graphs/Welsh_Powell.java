@@ -4,8 +4,9 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /*
-    The Welsh-Powell algorithm is a graph coloring algorithm
-    used for coloring a graph with the minimum number of colors.
+ *  The Welsh-Powell algorithm is a graph coloring algorithm
+ *  used for coloring a graph with the minimum number of colors.
+ *  https://en.wikipedia.org/wiki/Graph_coloring
  */
 public class Welsh_Powell {
 
