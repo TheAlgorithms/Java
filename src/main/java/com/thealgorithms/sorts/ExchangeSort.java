@@ -34,7 +34,6 @@ class ExchangeSort implements SortAlgorithm {
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (array[i].compareTo(array[j]) > 0) {
-
                     swap(array, i, j);
                 }
             }
