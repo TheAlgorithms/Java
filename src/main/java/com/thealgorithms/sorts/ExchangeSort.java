@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * ExchangeSort is an implementation of the Exchange Sort algorithm.
  *
@@ -32,12 +30,11 @@ class ExchangeSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int n = array.length;
 
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
                 if (array[i].compareTo(array[j]) > 0) {
-                    // Use a generic swap method
+
                     swap(array, i, j);
                 }
             }
@@ -46,14 +43,6 @@ class ExchangeSort implements SortAlgorithm {
         return array;
     }
 
-    /**
-     * Generic swap method to swap elements at given indices in an array.
-     *
-     * @param array the array in which elements are to be swapped.
-     * @param i     the index of the first element.
-     * @param j     the index of the second element.
-     * @param <T>   the type of elements in the array.
-     */
     private <T> void swap(T[] array, int i, int j) {
         T temp = array[i];
         array[i] = array[j];
