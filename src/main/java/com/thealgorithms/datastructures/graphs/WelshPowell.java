@@ -25,7 +25,7 @@ public class WelshPowell {
         }
 
         // Method to add an edge to the graph (undirected)
-        public void addEdge(int src, int dest) {
+        public void addEdge(int nodeA, int nodeB) {
             // Check to prevent duplicate edges
             if (!adjLists[src].contains(dest)) {
                 adjLists[src].add(dest);
