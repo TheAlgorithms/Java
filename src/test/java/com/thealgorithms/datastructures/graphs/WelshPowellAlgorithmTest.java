@@ -1,44 +1,44 @@
 package com.thealgorithms.datastructures.graphs;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
+
 
 class WelshPowellAlgorithmTest {
 
     @Test
     void testSimpleGraph() {
-        WPGraph graph = new WPGraph(4);
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 3);
-        int[] colors = graph.welshPowellColoring();
+        WPGraph graph = WelshPowell.createGraph(4);
+        WelshPowell.addEdge(graph, 0, 1);
+        WelshPowell.addEdge(graph, 1, 2);
+        WelshPowell.addEdge(graph, 2, 3);
+        int[] colors = WelshPowell.welshPowellColoring(graph);
         assertEquals(true, isValidColoring(graph, colors));
     }
 
     @Test
     void testDisconnectedGraph() {
-        WPGraph graph = new WPGraph(3);
-        // Disconnected graph, no edges
-        int[] colors = graph.welshPowellColoring();
+        WPGraph graph = WelshPowell.createGraph(3);
+        int[] colors = WelshPowell.welshPowellColoring(graph);
         assertEquals(true, isValidColoring(graph, colors));
     }
 
     @Test
     void testCompleteGraph() {
-        WPGraph graph = new WPGraph(3);
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 0);
-        int[] colors = graph.welshPowellColoring();
+        WPGraph graph = WelshPowell.createGraph(3);
+        WelshPowell.addEdge(graph, 0, 1);
+        WelshPowell.addEdge(graph, 1, 2);
+        WelshPowell.addEdge(graph, 2, 0);
+        int[] colors = WelshPowell.welshPowellColoring(graph);
         assertEquals(true, isValidColoring(graph, colors));
     }
 
-    private boolean isValidColoring(WPGraph graph, int[] colors) {
-        for (int i = 0; i < graph.adjLists.length; i++) {
-            for (int neighbor : graph.adjLists[i]) {
-                if (colors[i] == colors[neighbor]) {
+    private boolean isValidColoring(WelshPowell.WPGraph graph, int[] colors) {
+        int numVertices = WelshPowell.getNumVertices(graph);
+        for (int i = 0; i < numVertices; i++) {
+            for (int neighbor : WelshPowell.getAdjList(graph, i)) {
+                if (i != neighbor && colors[i] == colors[neighbor]) {
                     return false;
                 }
             }
