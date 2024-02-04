@@ -1,9 +1,9 @@
 package com.thealgorithms.datastructures.graphs;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
 
+import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
+import org.junit.jupiter.api.Test;
 
 class WelshPowellAlgorithmTest {
 

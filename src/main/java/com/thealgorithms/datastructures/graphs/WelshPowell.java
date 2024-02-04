@@ -40,7 +40,6 @@ public class WelshPowell {
         boolean isEdgePresent(int v1, int v2) {
             return adjLists[v1].contains(v2);
         }
-
     }
 
     public static int[] welshPowellColoring(WPGraph graph) {
