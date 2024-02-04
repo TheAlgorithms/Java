@@ -1,7 +1,9 @@
 package com.thealgorithms.datastructures.graphs;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.stream.IntStream;
 
 /*
  *  The Welsh-Powell algorithm is a graph coloring algorithm
@@ -12,18 +14,18 @@ import java.util.LinkedList;
 public class WelshPowell {
 
     public static class WPGraph {
-        private int numVer; // Number of vertices in the graph
+        private final int numVer; // Number of vertices in the graph
         private HashSet<Integer>[] adjLists; // Adjacency lists for the graph using HashSet
 
         public WPGraph(int vertices) {
             numVer = vertices;
             adjLists = new HashSet[vertices];
-            for (int i = 0; i < vertices; i++) {
-                adjLists[i] = new HashSet<>();
-            }
+            Arrays.setAll(adjLists, i -> new HashSet<>());
         }
 
         public void addEdge(int nodeA, int nodeB) {
+            assert (0 <= nodeA && nodeA < numVer);
+            assert (0 <= nodeB && nodeB < numVer);
             adjLists[nodeA].add(nodeB);
             adjLists[nodeB].add(nodeA);
         }
@@ -35,51 +37,42 @@ public class WelshPowell {
         public int getNumVertices() {
             return numVer;
         }
-
-        // Helper method to check if an edge exists (used for testing)
-        boolean isEdgePresent(int v1, int v2) {
-            return adjLists[v1].contains(v2);
-        }
     }
 
     public static int[] welshPowellColoring(WPGraph graph) {
         int numVer = graph.getNumVertices();
-        int[] colors = new int[numVer];
-        for (int i = 0; i < numVer; i++) {
-            colors[i] = -1; // Initialize all vertices as uncolored
-        }
-
-        LinkedList<Integer> sortedVertices = new LinkedList<>();
-        for (int i = 0; i < numVer; i++) {
-            sortedVertices.add(i);
-        }
-        sortedVertices.sort((v1, v2) -> graph.getAdjList(v2).size() - graph.getAdjList(v1).size());
+        int[] colors = initializeColors(numVer); // Use helper method to initialize color array
+        Integer[] sortedVertices = getSortedNodes(graph, numVer); // Use helper method to get sorted vertices
 
         for (int vertex : sortedVertices) {
-            if (colors[vertex] == -1) {
-                boolean[] usedColors = new boolean[numVer]; // Track used colors
-                for (int neighbor : graph.getAdjList(vertex)) {
-                    if (colors[neighbor] != -1) {
-                        usedColors[colors[neighbor]] = true; // Mark neighbor's color as used
-                    }
-                }
-
-                // Assign the first unused color
-                for (int color = 0; color < numVer; color++) {
-                    if (!usedColors[color]) {
-                        colors[vertex] = color;
-                        break;
-                    }
-                }
+            if (colors[vertex] != -1) {
+                continue;
             }
+            boolean[] usedColors = computeUsedColors(graph, vertex, colors, numVer); // Use helper method to compute used colors
+            colors[vertex] = firstUnusedColor(usedColors, numVer); // Use helper method to find first unused color
         }
 
-        return colors; // Return the array of colors for each vertex
+        return colors;
     }
 
-    // Public static method to get the adjacency list of a vertex
-    public static HashSet<Integer> getAdjList(WPGraph graph, int vertex) {
-        return graph.getAdjList(vertex);
+    private static int[] initializeColors(int numVer) {
+        int[] colors = new int[numVer];
+        Arrays.fill(colors, -1);
+        return colors;
+    }
+
+    private static Integer[] getSortedNodes(WPGraph graph, int numVer) {
+        return IntStream.range(0, numVer).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjList(v).size())).toArray(Integer[] ::new);
+    }
+
+    private static boolean[] computeUsedColors(WPGraph graph, int vertex, int[] colors, int numVer) {
+        boolean[] usedColors = new boolean[numVer];
+        graph.getAdjList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> color != -1).forEach(color -> usedColors[color] = true);
+        return usedColors;
+    }
+
+    private static int firstUnusedColor(boolean[] usedColors, int numVer) {
+        return IntStream.range(0, numVer).filter(color -> !usedColors[color]).findFirst().getAsInt();
     }
 
     // Public static methods for testing purpose
@@ -89,13 +82,5 @@ public class WelshPowell {
 
     public static void addEdge(WPGraph graph, int nodeA, int nodeB) {
         graph.addEdge(nodeA, nodeB);
-    }
-
-    public static boolean isEdgePresent(WPGraph graph, int v1, int v2) {
-        return graph.isEdgePresent(v1, v2);
-    }
-
-    public static int getNumVertices(WPGraph graph) {
-        return graph.getNumVertices();
     }
 }
