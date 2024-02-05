@@ -6,19 +6,19 @@
 /**
  * The {@code CalculateMaxOfMin} class provides a method to calculate the maximum
  * value among the minimum values of a given array.
-*/
+ */
 package com.thealgorithms.stacks;
 
 import java.util.Arrays;
 
 public class CalculateMaxOfMin {
 
-      /**
+    /**
      * Calculates the maximum value among the minimum values of all subarrays.
      *
      * @param a The input array of integers.
      * @return The maximum value among the minimum values of all subarrays.
-     * 
+     *
      * The algorithm works by considering subarrays of increasing lengths using
      * a sliding window approach. It calculates the minimum value for each subarray
      * and then finds the maximum value among those minimum values. This process
@@ -57,4 +57,3 @@ public class CalculateMaxOfMin {
         return ans[0];
     }
 }
-
