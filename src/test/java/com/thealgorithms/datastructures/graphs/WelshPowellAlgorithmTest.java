@@ -1,8 +1,10 @@
 package com.thealgorithms.datastructures.graphs;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.thealgorithms.datastructures.graphs.WelshPowell.WPGraph;
+import com.thealgorithms.datastructures.graphs.WelshPowell.Graph;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class WelshPowellAlgorithmTest {
@@ -10,27 +12,40 @@ class WelshPowellAlgorithmTest {
     @Test
     void testSimpleGraph() {
         int[][] edges = {{0, 1}, {1, 2}, {2, 3}};
-        WPGraph graph = WelshPowell.makeGraph(4, edges);
-        int[] colors = WelshPowell.welshPowellColoring(graph);
-        assertTrue(isValidColoring(graph, colors));
+        Graph graph = WelshPowell.makeGraph(4, edges);
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        assertEquals(2, countDistinctColors(colors));
     }
 
     @Test
     void testDisconnectedGraph() {
-        WPGraph graph = WelshPowell.makeGraph(3, new int[][] {}); // No edges
-        int[] colors = WelshPowell.welshPowellColoring(graph);
-        assertTrue(isValidColoring(graph, colors));
+        Graph graph = WelshPowell.makeGraph(3, new int[][] {}); // No edges
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        assertEquals(1, countDistinctColors(colors));
     }
 
     @Test
     void testCompleteGraph() {
         int[][] edges = {{0, 1}, {1, 2}, {2, 0}};
-        WPGraph graph = WelshPowell.makeGraph(3, edges);
-        int[] colors = WelshPowell.welshPowellColoring(graph);
-        assertTrue(isValidColoring(graph, colors));
+        Graph graph = WelshPowell.makeGraph(3, edges);
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        assertEquals(3, countDistinctColors(colors));
     }
 
-    private boolean isValidColoring(WPGraph graph, int[] colors) {
+    @Test
+    void testComplexGraph() {
+        int[][] edges = {{0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 0}, {1, 3}};
+        Graph graph = WelshPowell.makeGraph(5, edges);
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        // The expected number of colors may vary depending on the graph structure
+        assertTrue(countDistinctColors(colors) >= 3);
+    }
+
+    private boolean isColoringValid(Graph graph, int[] colors) {
         int numVertices = graph.getNumVertices();
         for (int i = 0; i < numVertices; i++) {
             for (int neighbor : graph.getAdjList(i)) {
@@ -40,5 +55,9 @@ class WelshPowellAlgorithmTest {
             }
         }
         return true; // No adjacent vertices share the same color
+    }
+
+    private int countDistinctColors(int[] colors) {
+        return (int) Arrays.stream(colors).distinct().count();
     }
 }
