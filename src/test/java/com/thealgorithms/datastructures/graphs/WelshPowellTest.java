@@ -60,6 +60,25 @@ class WelshPowellTest {
         assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(3, new int[][] {{0}}); }, "Edge array must have exactly two elements");
     }
 
+    @Test
+    void testWithPreColoredVertex() {
+        final var graph = WelshPowell.makeGraph(4, new int[][] {{0, 1}, {1, 2}, {2, 3}});
+        // Simulate pre-coloring vertex 1 with color 0
+        int[] colors = WelshPowell.findColoring(graph, 1, 0);
+        assertTrue(isColoringValid(graph, colors));
+
+        // Ensure that the pre-colored vertex retains its color
+        assertEquals(0, colors[1]);
+
+        // Check if other vertices are colored correctly
+        assertTrue(countDistinctColors(colors) >= 2);
+
+        // Additional check to ensure that all vertices are colored
+        for (int color : colors) {
+            assertTrue(color >= 0);
+        }
+    }
+
     private boolean isColoringValid(Graph graph, int[] colors) {
         for (int i = 0; i < graph.getNumVertices(); i++) {
             for (int neighbor : graph.getAdjList(i)) {
