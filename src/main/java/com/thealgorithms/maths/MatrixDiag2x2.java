@@ -3,7 +3,8 @@ package com.thealgorithms.maths;
 public class MatrixDiag2x2 {
 
     /*
-     * Algorithm for computing blah
+     * Algorithm for computing diagonal matrix of 2x2 matrices
+     * - also computes eigenvectors/values
      *
      * Equations referenced for algorithm:
      * https://people.math.harvard.edu/~knill/teaching/math21b2004/exhibits/2dmatrices/index.html
