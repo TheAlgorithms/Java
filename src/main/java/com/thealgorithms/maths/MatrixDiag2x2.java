@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
-
 public class MatrixDiag2x2 {
 
     /*
@@ -17,15 +15,6 @@ public class MatrixDiag2x2 {
      * eigenvalues must be real numbers (no complex)
      * @author msoud25
      */
-
-    public static void main(String[] args) throws Exception {
-        double[][] testmatrix = {{2, 1}, {2, 4}};
-        System.out.println(eigenvalue1(testmatrix));
-        System.out.println(eigenvalue2(testmatrix));
-        System.out.println(Arrays.toString(eigenvector1(testmatrix)));
-        System.out.println(Arrays.toString(eigenvector2(testmatrix)));
-        System.out.println(Arrays.deepToString(getDiagonalMatrix(testmatrix)));
-    }
 
     // get trace and determinant of matrix to calculate eigenvalues
     public static double MatrixTrace2x2(double[][] mat) {
@@ -44,8 +33,8 @@ public class MatrixDiag2x2 {
     public static double eigenvalue2(double[][] mat) {
         return (MatrixTrace2x2(mat) / 2) - Math.pow((Math.pow(MatrixTrace2x2(mat), 2) / 4) - MatrixDet2x2(mat), 0.5);
     }
-
     // get eigenvectors
+
     public static double[] eigenvector1(double[][] mat) {
         double[] eVector1 = new double[2];
 
