@@ -1,3 +1,4 @@
+
 package com.thealgorithms.backtracking;
 
 /**
@@ -53,10 +54,12 @@ public final class FloodFill {
         floodFill(image, x, y + 1, newColor, oldColor);
         floodFill(image, x, y - 1, newColor, oldColor);
 
-        /* Recursively check for diagonally adjacent coordinates  */
-        floodFill(image, x + 1, y - 1, newColor, oldColor);
-        floodFill(image, x - 1, y + 1, newColor, oldColor);
-        floodFill(image, x + 1, y + 1, newColor, oldColor);
-        floodFill(image, x - 1, y - 1, newColor, oldColor);
+        /* Optionally, recursively check for diagonally adjacent coordinates */
+        // floodFill(image, x + 1, y - 1, newColor, oldColor);
+        // floodFill(image, x - 1, y + 1, newColor, oldColor);
+        // floodFill(image, x + 1, y + 1, newColor, oldColor);
+        // floodFill(image, x - 1, y - 1, newColor, oldColor);
     }
 }
+
+
