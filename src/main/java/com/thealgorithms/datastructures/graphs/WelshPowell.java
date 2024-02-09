@@ -63,40 +63,26 @@ public final class WelshPowell {
         return graph;
     }
 
-    public static int[] findColoring(Graph graph, int preColoredVertex, int preColor) {
-        int numVertices = graph.getNumVertices();
-        int[] colors = initializeColors(numVertices);
-
-        if (preColoredVertex >= 0 && preColoredVertex < numVertices && preColor >= 0) {
-            colors[preColoredVertex] = preColor;
-        }
-
+    public static int[] findColoring(Graph graph) {
+        int[] colors = initializeColors(graph.getNumVertices());
         Integer[] sortedVertices = getSortedNodes(graph);
-
         for (int vertex : sortedVertices) {
-            if (colors[vertex] != -1) {
-                continue; // Skip if already colored (including pre-colored)
-            }
-
-            // Determine used colors among adjacent vertices
-            boolean[] usedColors = computeUsedColors(graph, vertex, colors);
-
-            colors[vertex] = firstUnusedColor(usedColors);
-        }
-
-        // Ensure every vertex is colored
-        for (int i = 0; i < numVertices; i++) {
-            if (colors[i] == -1) {
-                colors[i] = firstUnusedColor(new boolean[numVertices]);
+            if (colors[vertex] == -1) {
+                boolean[] usedColors = computeUsedColors(graph, vertex, colors);
+                final var newColor = firstUnusedColor(usedColors);
+                colors[vertex] = newColor;
+                Arrays.stream(sortedVertices).forEach(otherVertex -> {
+                    if (colors[otherVertex] == -1 && !isAdjacentToColored(graph, otherVertex, colors)) {
+                        colors[otherVertex] = newColor;
+                    }
+                });
             }
         }
-
         return colors;
     }
 
-    // Overloaded method for normal use without pre-coloring
-    public static int[] findColoring(Graph graph) {
-        return findColoring(graph, -1, -1);
+    private static boolean isAdjacentToColored(Graph graph, int vertex, int[] colors) {
+        return graph.getAdjList(vertex).stream().anyMatch(otherVertex -> colors[otherVertex] != -1);
     }
 
     private static int[] initializeColors(int numberOfVerticies) {

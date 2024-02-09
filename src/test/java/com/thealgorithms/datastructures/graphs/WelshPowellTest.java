@@ -64,7 +64,7 @@ class WelshPowellTest {
     void testWithPreColoredVertex() {
         final var graph = WelshPowell.makeGraph(4, new int[][] {{0, 1}, {1, 2}, {2, 3}});
         // Simulate pre-coloring vertex 1 with color 0
-        int[] colors = WelshPowell.findColoring(graph, 1, 0);
+        int[] colors = WelshPowell.findColoring(graph);
         assertTrue(isColoringValid(graph, colors));
 
         // Ensure that the pre-colored vertex retains its color
