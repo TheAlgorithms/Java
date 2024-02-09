@@ -172,6 +172,8 @@ public class AnyBaseToAnyBase {
             // Divide by the new base again
             decimalValue /= b2;
         }
+        // ADDED RESULT TO ENHANCE USER EXPERIENCE
+        System.out.println("RESULT");
         return output;
     }
 }

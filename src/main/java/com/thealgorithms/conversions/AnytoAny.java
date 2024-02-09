@@ -10,8 +10,11 @@ public class AnytoAny {
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
+        System.out.println("Enter Source Number");//ADDED PRINT STATEMENT TO KNOW USER WHAT HE/SHE IS ENTERING
         int sn = scn.nextInt();
+        System.out.println("Enter Source Base");
         int sb = scn.nextInt();
+        System.out.println("Enter Destination Base");
         int db = scn.nextInt();
         int m = 1, dec = 0, dn = 0;
         while (sn != 0) {

@@ -34,6 +34,8 @@ public class AnyBaseToDecimal {
             num += valOfChar(s.charAt(i)) * pow;
             pow *= radix;
         }
+        // ADDED RESULT TO ENHANCE USER EXPERIENCE
+        System.out.println("RESULT");
         return num;
     }
 
