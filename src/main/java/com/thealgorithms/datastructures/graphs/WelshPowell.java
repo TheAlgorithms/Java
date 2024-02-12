@@ -88,7 +88,7 @@ public final class WelshPowell {
     }
 
     private static boolean isAdjacentToColored(Graph graph, int vertex, int[] colors) {
-        return graph.getAdjacencyList(vertex).stream().anyMatch(otherVertex -> colors[otherVertex] != -1);
+        return graph.getAdjacencyList(vertex).stream().anyMatch(otherVertex -> !isBlank(colors[otherVertex]));
     }
 
     private static int[] initializeColors(int numberOfVertices) {
@@ -103,7 +103,7 @@ public final class WelshPowell {
 
     private static boolean[] computeUsedColors(final Graph graph, final int vertex, final int[] colors) {
         boolean[] usedColors = new boolean[graph.getNumVertices()];
-        graph.getAdjacencyList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> color != -1).forEach(color -> usedColors[color] = true);
+        graph.getAdjacencyList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> !isBlank(color)).forEach(color -> usedColors[color] = true);
         return usedColors;
     }
 
