@@ -12,6 +12,8 @@ import java.util.stream.IntStream;
  */
 
 public final class WelshPowell {
+    private static final int BLANK_COLOR = -1; // Representing uncolored state
+
     private WelshPowell() {
     }
 
@@ -43,7 +45,7 @@ public final class WelshPowell {
             }
         }
 
-        HashSet<Integer> getAdjList(int vertex) {
+        HashSet<Integer> getAdjacencyList(int vertex) {
             return adjacencyLists[vertex];
         }
 
@@ -67,12 +69,12 @@ public final class WelshPowell {
         int[] colors = initializeColors(graph.getNumVertices());
         Integer[] sortedVertices = getSortedNodes(graph);
         for (int vertex : sortedVertices) {
-            if (colors[vertex] == -1) {
+            if (isBlank(colors[vertex])) {
                 boolean[] usedColors = computeUsedColors(graph, vertex, colors);
                 final var newColor = firstUnusedColor(usedColors);
                 colors[vertex] = newColor;
                 Arrays.stream(sortedVertices).forEach(otherVertex -> {
-                    if (colors[otherVertex] == -1 && !isAdjacentToColored(graph, otherVertex, colors)) {
+                    if (isBlank(colors[otherVertex]) && !isAdjacentToColored(graph, otherVertex, colors)) {
                         colors[otherVertex] = newColor;
                     }
                 });
@@ -81,23 +83,27 @@ public final class WelshPowell {
         return colors;
     }
 
-    private static boolean isAdjacentToColored(Graph graph, int vertex, int[] colors) {
-        return graph.getAdjList(vertex).stream().anyMatch(otherVertex -> colors[otherVertex] != -1);
+    private static boolean isBlank(int color) {
+        return color == BLANK_COLOR;
     }
 
-    private static int[] initializeColors(int numberOfVerticies) {
-        int[] colors = new int[numberOfVerticies];
-        Arrays.fill(colors, -1);
+    private static boolean isAdjacentToColored(Graph graph, int vertex, int[] colors) {
+        return graph.getAdjacencyList(vertex).stream().anyMatch(otherVertex -> colors[otherVertex] != -1);
+    }
+
+    private static int[] initializeColors(int numberOfVertices) {
+        int[] colors = new int[numberOfVertices];
+        Arrays.fill(colors, BLANK_COLOR);
         return colors;
     }
 
     private static Integer[] getSortedNodes(final Graph graph) {
-        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjList(v).size())).toArray(Integer[] ::new);
+        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
     }
 
     private static boolean[] computeUsedColors(final Graph graph, final int vertex, final int[] colors) {
         boolean[] usedColors = new boolean[graph.getNumVertices()];
-        graph.getAdjList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> color != -1).forEach(color -> usedColors[color] = true);
+        graph.getAdjacencyList(vertex).stream().map(neighbor -> colors[neighbor]).filter(color -> color != -1).forEach(color -> usedColors[color] = true);
         return usedColors;
     }
 
