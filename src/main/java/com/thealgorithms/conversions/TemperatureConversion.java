@@ -46,17 +46,17 @@ public class TemperatureConversion {
         if (fromType == toType) {
             System.out.println("Your Temperature is the same !!");
         } else if (fromType == 1 && toType == 2) {
-            System.out.println("Converted value: " + rnd.format(convertCelsiusToFahrenheit(inTemp)) + " °F");
+            System.out.println("Converted value: " + convertCelsiusToFahrenheit(inTemp) + " °F");
         } else if (fromType == 1 && toType == 3) {
-            System.out.println("Converted value: " + rnd.format(convertCelsiusToKelvin(inTemp)) + " K");
+            System.out.println("Converted value: " + convertCelsiusToKelvin(inTemp) + " K");
         } else if (fromType == 2 && toType == 1) {
-            System.out.println("Converted value: " + rnd.format(convertFahrenheitToCelsius(inTemp)) + " °C");
+            System.out.println("Converted value: " + convertFahrenheitToCelsius(inTemp) + " °C");
         } else if (fromType == 2 && toType == 3) {
-            System.out.println("Converted value: " + rnd.format(convertFahrenheitToKelvin(inTemp)) + " K");
+            System.out.println("Converted value: " + convertFahrenheitToKelvin(inTemp) + " K");
         } else if (fromType == 3 && toType == 1) {
-            System.out.println("Converted value: " + rnd.format(convertKelvinToCelsius(inTemp)) + " °C");
+            System.out.println("Converted value: " + convertKelvinToCelsius(inTemp) + " °C");
         } else if (fromType == 3 && toType == 2) {
-            System.out.println("Converted value: " + rnd.format(convertKelvinToFahrenheit(inTemp)) + " °F");
+            System.out.println("Converted value: " + convertKelvinToFahrenheit(inTemp) + " °F");
         } else {
             System.out.println("Please check your input and output types");
         }
@@ -67,78 +67,78 @@ public class TemperatureConversion {
      * This method converts a Kelvin to Celsius.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertKelvinToCelsius(float inTemp) {
+    public static String convertKelvinToCelsius(float inTemp) {
 
         double result = 0;
         result = inTemp - 273.15;
-        return result;
+        return rnd.format(result);
     }
 
     /**
      * This method converts a Kelvin to Fahrenheit.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertKelvinToFahrenheit(float inTemp) {
+    public static String convertKelvinToFahrenheit(float inTemp) {
 
         double result = 0;
         result = (inTemp * 1.8) - 459.67;
-        return result;
+        return rnd.format(result);
     }
 
     /**
      * This method converts a Fahrenheit to Kelvin.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertFahrenheitToKelvin(float inTemp) {
+    public static String convertFahrenheitToKelvin(float inTemp) {
 
         double result = 0;
         result = (inTemp + 459.67) / 1.8;
-        return result;
+        return rnd.format(result);
     }
 
     /**
      * This method converts a Fahrenheit to Kelvin.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertFahrenheitToCelsius(float inTemp) {
+    public static String convertFahrenheitToCelsius(float inTemp) {
 
         double result = 0;
         result = (inTemp - 32) / 1.8;
-        return result;
+        return rnd.format(result);
     }
 
     /**
      * This method converts a Celsius to Fahrenheit.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertCelsiusToFahrenheit(float inTemp) {
+    public static String convertCelsiusToFahrenheit(float inTemp) {
 
         double result = 0;
         result = (inTemp * 1.8) + 32;
-        return result;
+        return rnd.format(result);
     }
 
     /**
      * This method converts a Celsius to Kelvin.
      *
      * @param param float paramter
-     * @return double
+     * @return String
      */
-    private static double convertCelsiusToKelvin(float inTemp) {
+    public static String convertCelsiusToKelvin(float inTemp) {
 
         double result = 0;
         result = inTemp + 273.15;
-        return result;
+        return rnd.format(result);
     }
 
     /*
