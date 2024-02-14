@@ -8,19 +8,22 @@ import java.util.Scanner;
  * @author Tharun S.M.
  */
 
-public class TemperatureConversion {
+public
+class TemperatureConversion {
   /*
    * Object of DecimalFormat Class
    * to round the output to 2 decimal point value
    */
-  private static final DecimalFormat rnd = new DecimalFormat("0.00");
+private
+  static final DecimalFormat rnd = new DecimalFormat("0.00");
   /*
    * Main method
    *
    * @param args Command line arguments
    */
 
-  public static void main(String[] args) {
+public
+  static void main(String[] args) {
 
     Scanner sc = new Scanner(System.in);
 
@@ -47,16 +50,16 @@ public class TemperatureConversion {
     if (fromType == toType) {
       System.out.println("Your Temperature is the same !!");
     } else if (fromType == 1 && toType == 2) {
-      System.out.println(
-          "Converted value: " + rnd.format(convertCelsiusToFahrenheit(inTemp)) +
-          " °F");
+      System.out.println("Converted value: " +
+                         rnd.format(convertCelsiusToFahrenheit(inTemp)) +
+                         " °F");
     } else if (fromType == 1 && toType == 3) {
       System.out.println("Converted value: " +
                          rnd.format(convertCelsiusToKelvin(inTemp)) + " K");
     } else if (fromType == 2 && toType == 1) {
-      System.out.println(
-          "Converted value: " + rnd.format(convertFahrenheitToCelsius(inTemp)) +
-          " °C");
+      System.out.println("Converted value: " +
+                         rnd.format(convertFahrenheitToCelsius(inTemp)) +
+                         " °C");
     } else if (fromType == 2 && toType == 3) {
       System.out.println("Converted value: " +
                          rnd.format(convertFahrenheitToKelvin(inTemp)) + " K");
@@ -69,6 +72,7 @@ public class TemperatureConversion {
     } else {
       System.out.println("Please check your input and output types");
     }
+    sc.close();
   }
 
   /**
@@ -77,7 +81,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertKelvinToCelsius(float inTemp) {
+private
+  static double convertKelvinToCelsius(float inTemp) {
 
     double result = 0;
     result = inTemp - 273.15;
@@ -90,7 +95,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertKelvinToFahrenheit(float inTemp) {
+private
+  static double convertKelvinToFahrenheit(float inTemp) {
 
     double result = 0;
     result = (inTemp * 1.8) - 459.67;
@@ -103,7 +109,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertFahrenheitToKelvin(float inTemp) {
+private
+  static double convertFahrenheitToKelvin(float inTemp) {
 
     double result = 0;
     result = (inTemp + 459.67) / 1.8;
@@ -116,7 +123,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertFahrenheitToCelsius(float inTemp) {
+private
+  static double convertFahrenheitToCelsius(float inTemp) {
 
     double result = 0;
     result = (inTemp - 32) / 1.8;
@@ -129,7 +137,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertCelsiusToFahrenheit(float inTemp) {
+private
+  static double convertCelsiusToFahrenheit(float inTemp) {
 
     double result = 0;
     result = (inTemp * 1.8) + 32;
@@ -142,7 +151,8 @@ public class TemperatureConversion {
    * @param param float paramter
    * @return double
    */
-  private static double convertCelsiusToKelvin(float inTemp) {
+private
+  static double convertCelsiusToKelvin(float inTemp) {
 
     double result = 0;
     result = inTemp + 273.15;
