@@ -1,7 +1,5 @@
 package com.thealgorithms.conversions;
 
-import java.text.DecimalFormat;
-import java.util.Scanner;
 /**
  * Convets the temperatures from user to Celsius/Fahrenheit/Kelvin
  *
@@ -9,141 +7,94 @@ import java.util.Scanner;
  */
 
 public class TemperatureConversion {
-    /*
-     * Object of DecimalFormat Class
-     * to round the output to 2 decimal point value
-     */
-    private static final DecimalFormat rnd = new DecimalFormat("0.00");
-    /*
-     * Main method
+    private static final double CELSIUS_SLOPE = 1.0;
+    private static final double CELSIUS_INTERCEPT = 0.0;
+    private static final double FAHRENHEIT_SLOPE = 1.8;
+    private static final double FAHRENHEIT_INTERCEPT = 32.0;
+    private static final double KELVIN_SLOPE = 1.0;
+    private static final double KELVIN_INTERCEPT = 273.15;
+
+    /**
+     * This function convert current temperature type to required temperature type
      *
-     * @param args Command line arguments
+     * @param temperature double, fromType String & toType String
+     * @return double
      */
+    public static double convertTemperature(double temperature, String fromType, String toType) {
+
+        if (fromType.equalsIgnoreCase(toType)) {
+            return temperature;
+        }
+
+        double[] slopeAndIntercept = getSlopeAndIntercept(fromType, toType);
+
+        double fromSlope = slopeAndIntercept[0];
+        double fromIntercept = slopeAndIntercept[1];
+        double toSlope = slopeAndIntercept[2];
+        double toIntercept = slopeAndIntercept[3];
+        // converting to celsius temperature first, then to our required temperature
+        double celsiusTemperature = (temperature - fromIntercept) / fromSlope;
+        return celsiusTemperature * toSlope + toIntercept;
+    }
+
+    /**
+     * This function returns Slopes and Intercepts of from and to temperature types
+     *
+     * @param fromType String & toType String
+     * @return double array of Slopes and Intercepts
+     */
+    public static double[] getSlopeAndIntercept(String fromType, String toType) {
+
+        double[] slopeAndIntercept = new double[4];
+        if (fromType.equalsIgnoreCase("Celsius") && toType.equalsIgnoreCase("Fahrenheit")) {
+            slopeAndIntercept[0] = CELSIUS_SLOPE;
+            slopeAndIntercept[1] = CELSIUS_INTERCEPT;
+            slopeAndIntercept[2] = FAHRENHEIT_SLOPE;
+            slopeAndIntercept[3] = FAHRENHEIT_INTERCEPT;
+            return slopeAndIntercept;
+        } else if (fromType.equalsIgnoreCase("Fahrenheit") && toType.equalsIgnoreCase("Celsius")) {
+            slopeAndIntercept[0] = FAHRENHEIT_SLOPE;
+            slopeAndIntercept[1] = FAHRENHEIT_INTERCEPT;
+            slopeAndIntercept[2] = CELSIUS_SLOPE;
+            slopeAndIntercept[3] = CELSIUS_INTERCEPT;
+            return slopeAndIntercept;
+        } else if (fromType.equalsIgnoreCase("Celsius") && toType.equalsIgnoreCase("Kelvin")) {
+            slopeAndIntercept[0] = CELSIUS_SLOPE;
+            slopeAndIntercept[1] = CELSIUS_INTERCEPT;
+            slopeAndIntercept[2] = KELVIN_SLOPE;
+            slopeAndIntercept[3] = KELVIN_INTERCEPT;
+            return slopeAndIntercept;
+        } else if (fromType.equalsIgnoreCase("Kelvin") && toType.equalsIgnoreCase("Celsius")) {
+            slopeAndIntercept[0] = KELVIN_SLOPE;
+            slopeAndIntercept[1] = KELVIN_INTERCEPT;
+            slopeAndIntercept[2] = CELSIUS_SLOPE;
+            slopeAndIntercept[3] = CELSIUS_INTERCEPT;
+            return slopeAndIntercept;
+        } else if (fromType.equalsIgnoreCase("Kelvin") && toType.equalsIgnoreCase("Fahrenheit")) {
+            slopeAndIntercept[0] = KELVIN_SLOPE;
+            slopeAndIntercept[1] = KELVIN_INTERCEPT;
+            slopeAndIntercept[2] = FAHRENHEIT_SLOPE;
+            slopeAndIntercept[3] = FAHRENHEIT_INTERCEPT;
+            return slopeAndIntercept;
+        } else if (fromType.equalsIgnoreCase("Fahrenheit") && toType.equalsIgnoreCase("Kelvin")) {
+            slopeAndIntercept[0] = FAHRENHEIT_SLOPE;
+            slopeAndIntercept[1] = FAHRENHEIT_INTERCEPT;
+            slopeAndIntercept[2] = KELVIN_SLOPE;
+            slopeAndIntercept[3] = KELVIN_INTERCEPT;
+            return slopeAndIntercept;
+        } else {
+            throw new IllegalArgumentException("Unsupported temperature conversion");
+        }
+    }
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        double temperature = 100;
+        String fromType = "Celsius";
+        String toType = "Fahrenheit";
 
-        // Get the type of temprature input
-        System.out.println("Enter the temperature input type (use numbers)");
-        System.out.println("1 => Celsius");
-        System.out.println("2 => Fahrenheit");
-        System.out.println("3 => Kelvin");
-        int fromType = sc.nextInt();
+        double convertedTemperature = convertTemperature(temperature, fromType, toType);
 
-        // get the actual temprature
-        System.out.println("Enter the temperature :");
-        String a = sc.next();
-        float inTemp = Float.parseFloat(a);
-
-        // get the type you want to convert your temperature to
-        System.out.println("Type you want to convert your temperature to (use numbers)");
-        System.out.println("1 => Celsius");
-        System.out.println("2 => Fahrenheit");
-        System.out.println("3 => Kelvin");
-        int toType = sc.nextInt();
-
-        if (fromType == toType) {
-            System.out.println("Your Temperature is the same !!");
-        } else if (fromType == 1 && toType == 2) {
-            System.out.println("Converted value: " + convertCelsiusToFahrenheit(inTemp) + " °F");
-        } else if (fromType == 1 && toType == 3) {
-            System.out.println("Converted value: " + convertCelsiusToKelvin(inTemp) + " K");
-        } else if (fromType == 2 && toType == 1) {
-            System.out.println("Converted value: " + convertFahrenheitToCelsius(inTemp) + " °C");
-        } else if (fromType == 2 && toType == 3) {
-            System.out.println("Converted value: " + convertFahrenheitToKelvin(inTemp) + " K");
-        } else if (fromType == 3 && toType == 1) {
-            System.out.println("Converted value: " + convertKelvinToCelsius(inTemp) + " °C");
-        } else if (fromType == 3 && toType == 2) {
-            System.out.println("Converted value: " + convertKelvinToFahrenheit(inTemp) + " °F");
-        } else {
-            System.out.println("Please check your input and output types");
-        }
-        sc.close();
+        System.out.println("Converted temperature: " + convertedTemperature);
     }
-
-    /**
-     * This method converts a Kelvin to Celsius.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertKelvinToCelsius(float inTemp) {
-
-        double result = 0;
-        result = inTemp - 273.15;
-        return rnd.format(result);
-    }
-
-    /**
-     * This method converts a Kelvin to Fahrenheit.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertKelvinToFahrenheit(float inTemp) {
-
-        double result = 0;
-        result = (inTemp * 1.8) - 459.67;
-        return rnd.format(result);
-    }
-
-    /**
-     * This method converts a Fahrenheit to Kelvin.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertFahrenheitToKelvin(float inTemp) {
-
-        double result = 0;
-        result = (inTemp + 459.67) / 1.8;
-        return rnd.format(result);
-    }
-
-    /**
-     * This method converts a Fahrenheit to Kelvin.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertFahrenheitToCelsius(float inTemp) {
-
-        double result = 0;
-        result = (inTemp - 32) / 1.8;
-        return rnd.format(result);
-    }
-
-    /**
-     * This method converts a Celsius to Fahrenheit.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertCelsiusToFahrenheit(float inTemp) {
-
-        double result = 0;
-        result = (inTemp * 1.8) + 32;
-        return rnd.format(result);
-    }
-
-    /**
-     * This method converts a Celsius to Kelvin.
-     *
-     * @param param float paramter
-     * @return String
-     */
-    public static String convertCelsiusToKelvin(float inTemp) {
-
-        double result = 0;
-        result = inTemp + 273.15;
-        return rnd.format(result);
-    }
-
-    /*
-     * Reference URL : https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature
-     * This is not the most effecient method for Temp conversion But its easy to
-     * understand and straight forward
-     */
 }
