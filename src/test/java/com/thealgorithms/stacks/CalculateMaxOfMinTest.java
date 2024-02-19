@@ -53,5 +53,12 @@ public class CalculateMaxOfMinTest {
         int[] a = {-1, -5, -7, -9, -12, -14};
         int k = CalculateMaxOfMin.calculateMaxOfMin(a);
         assertEquals(-1, k);
+
+    @Test
+    void testForNullArray() {
+        int[] a = {};
+        int k = CalculateMaxOfMin.calculateMaxOfMin(a);
+        assertEquals(0, k);
+    }
     }
 }
