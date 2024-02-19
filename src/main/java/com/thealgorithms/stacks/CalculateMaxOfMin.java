@@ -1,21 +1,23 @@
 /**
- * Author : Siddhant Swarup Mallick            || Contributor : Sarthak Chaudhary
- * Github : https://github.com/siddhant2002    || Github :      https://github.com/SarthakChaudhary46
+ * Author: Siddhant Swarup Mallick
+ * Contributor: Sarthak Chaudhary
+ * Github: https://github.com/siddhant2002
+ * Github: https://github.com/SarthakChaudhary46
+ *
+ * Program Description:
+ * Given an integer array, the task is to find the maximum of the minimum values
+ * in the array.
  */
 
-/**
- * Program description - Given an integer array. The task is to find the maximum of the minimum of
- * the array
- */
 package com.thealgorithms.stacks;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class CalculateMaxOfMin {
 
     public static int calculateMaxOfMin(int[] a) {
         int n = a.length;
-        if( n == 0 ){
+        if (n == 0) {
             return 0;
         }
         int[] ans = new int[n];
@@ -39,7 +41,3 @@ public class CalculateMaxOfMin {
         return ans[0];
     }
 }
-/**
- * Given an integer array. The task is to find the maximum of the minimum of the
- * given array
- */
