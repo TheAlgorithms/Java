@@ -1,6 +1,6 @@
 /**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
+ * Author : Siddhant Swarup Mallick            || Contributor : Sarthak Chaudhary
+ * Github : https://github.com/siddhant2002    || Github :      https://github.com/SarthakChaudhary46
  */
 
 /**
@@ -15,6 +15,9 @@ public class CalculateMaxOfMin {
 
     public static int calculateMaxOfMin(int[] a) {
         int n = a.length;
+        if( n == 0 ){
+            return 0;
+        }
         int[] ans = new int[n];
         int[] arr2 = Arrays.copyOf(a, n);
         Arrays.sort(arr2);
