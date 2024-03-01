@@ -4,7 +4,6 @@ package com.thealgorithms.bitmanipulation;
 public final class CountSetBits {
     private CountSetBits() {
     }
-    
     public static int countSetBits(int n) {
         int count = 0;
         while (n > 0) {
