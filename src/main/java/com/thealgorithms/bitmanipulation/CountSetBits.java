@@ -5,7 +5,7 @@ public final class CountSetBits {
     private CountSetBits() {
     }
 
-    /**
+    /*
     * CountSetBits class provides a method to count the number of set bits (1s) in an integer.
     * Implementation by Pankaj Kumar Bind (https://github.com/Pankaj-Bind).
     */
@@ -18,7 +18,3 @@ public final class CountSetBits {
         return count;
     }
 }
-
-    /* Time Complexity: O(log n)
-     * Space Complexity: O(1)
-     */
