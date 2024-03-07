@@ -18,7 +18,7 @@ public class TemperatureTest {
     }
 
     @Test
-    //At -40 degrees Fahrenheit and Celsius are the same
+    // At -40 degrees Fahrenheit and Celsius are the same
     public void VerifyTemperatureConversionsNeg40() {
         assertEquals(-40.0, temperature.CelsiusToFahrenheit(-40.0), "VerifyTemperatureConversionsNeg40: Temperature from Celsius To Fahrenheit incorrect");
         assertEquals(233.15, temperature.CelsiusToKelvin(-40.0), 0.01, "VerifyTemperatureConversionsNeg40: Temperature from Celsius To Kelvin incorrect");

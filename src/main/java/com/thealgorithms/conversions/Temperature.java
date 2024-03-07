@@ -1,13 +1,14 @@
 package com.thealgorithms.conversions;
 
 /**
- * Converts temperature from one scale to another
+ * Converts temperature from one scale to another.
+ * All conversions were accessed from Google search page.
  *
  * @author Mark Myers
  */
 public class Temperature {
 
-    //For non-scientific cases these approximations are accurate enough.
+    // For non-scientific cases these approximations are accurate enough.
     double nineDivideByFive = (double) 9 / 5;
     double fiveDivideByNine = (double) 5 / 9;
 
