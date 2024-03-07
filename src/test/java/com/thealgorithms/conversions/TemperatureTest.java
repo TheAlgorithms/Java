@@ -1,6 +1,5 @@
 package com.thealgorithms.conversions;
 
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,4 +38,5 @@ public class TemperatureTest {
         assertEquals(-268.15, temperature.KelvinToCelsius(5.0), "VerifyTemperatureConversionsPlainValue:Temperature from Kelvin to Fahrenheit incorrect");
         assertEquals(-448.87, temperature.KelvinToFahrenheit(6.0), 0.01, "VerifyTemperatureConversionsPlainValue: Temperature from Kelvin to Fahrenheit incorrect");
     }
+
 }
