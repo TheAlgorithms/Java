@@ -56,8 +56,8 @@ class BellmanFord /*
     }
 
     public void go() { // shows distance to all vertices // Interactive run for understanding the
-        try (// class first time. Assumes source vertex is 0 and
-                Scanner sc = new Scanner(System.in)) {
+        try ( // class first time. Assumes source vertex is 0 and
+            Scanner sc = new Scanner(System.in)) {
             int i, v, e, u, ve, w, j, neg = 0;
             System.out.println("Enter no. of vertices and edges please");
             v = sc.nextInt();
@@ -117,9 +117,9 @@ class BellmanFord /*
      * @param Edge   Array of edges
      */
     public void show(int source, int end,
-            Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()
-                          // method // Just shows results of computation, if graph is passed to it. The
-                          // graph should
+        Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()
+                      // method // Just shows results of computation, if graph is passed to it. The
+                      // graph should
         int i, j, v = vertex, e = edge, neg = 0;
         double[] dist = new double[v]; // Distance array for holding the finalized shortest path
                                        // distance between source
