@@ -58,7 +58,7 @@ public class CursorLinkedList<T> {
 
     /**
      * @return the logical index of the element within the list , not the actual
-     * index of the [cursorSpace] array
+     *         index of the [cursorSpace] array
      */
     public int indexOf(T element) {
         Objects.requireNonNull(element);
@@ -74,9 +74,9 @@ public class CursorLinkedList<T> {
     }
 
     /**
-     * @param position , the logical index of the element , not the actual one
-     * within the [cursorSpace] array . this method should be used to get the
-     * index give by indexOf() method.
+     * @param position, the logical index of the element , not the actual one
+     *                  within the [cursorSpace] array . this method should be
+     *                  used to get the index give by `indexOf()` method.
      * @return
      */
     public T get(int position) {
@@ -134,7 +134,7 @@ public class CursorLinkedList<T> {
     }
 
     private void free(int index) {
-        Node os_node = cursorSpace[os];
+        Node<T> os_node = cursorSpace[os];
         int os_next = os_node.next;
         cursorSpace[os].next = index;
         cursorSpace[index].element = null;
@@ -172,7 +172,7 @@ public class CursorLinkedList<T> {
             throw new OutOfMemoryError();
         }
 
-        // 2- make the os point to the next of the  @var{availableNodeIndex}
+        // 2- make the os point to the next of the @var{availableNodeIndex}
         cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
 
         // this to indicate an end of the list , helpful at testing since any err

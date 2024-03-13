@@ -29,7 +29,7 @@ public class ThreeSumProblem {
             for (int j = i + 1; j < nums.length; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
                     if (nums[i] + nums[j] + nums[k] == target) {
-                        List<Integer> temp = new ArrayList<>();
+                        List<Integer> temp = new ArrayList<Integer>();
                         temp.add(nums[i]);
                         temp.add(nums[j]);
                         temp.add(nums[k]);
@@ -54,7 +54,7 @@ public class ThreeSumProblem {
             end = nums.length - 1;
             while (start < end) {
                 if (nums[start] + nums[end] + nums[i] == target) {
-                    List<Integer> temp = new ArrayList<>();
+                    List<Integer> temp = new ArrayList<Integer>();
                     temp.add(nums[i]);
                     temp.add(nums[start]);
                     temp.add(nums[end]);
@@ -75,8 +75,8 @@ public class ThreeSumProblem {
 
     public List<List<Integer>> Hashmap(int[] nums, int target) {
         Arrays.sort(nums);
-        Set<List<Integer>> ts = new HashSet();
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        Set<List<Integer>> ts = new HashSet<List<Integer>>();
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < nums.length; i++) {
             hm.put(nums[i], i);
@@ -86,7 +86,7 @@ public class ThreeSumProblem {
             for (int j = i + 1; j < nums.length; j++) {
                 int t = target - nums[i] - nums[j];
                 if (hm.containsKey(t) && hm.get(t) > j) {
-                    List<Integer> temp = new ArrayList<>();
+                    List<Integer> temp = new ArrayList<Integer>();
                     temp.add(nums[i]);
                     temp.add(nums[j]);
                     temp.add(t);
@@ -94,6 +94,6 @@ public class ThreeSumProblem {
                 }
             }
         }
-        return new ArrayList(ts);
+        return new ArrayList<List<Integer>>(ts);
     }
 }

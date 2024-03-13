@@ -54,7 +54,7 @@ public class DynamicArray<E> implements Iterable<E> {
     /**
      * Places element of type <E> at the desired index
      *
-     * @param index the index for the element to be placed
+     * @param index   the index for the element to be placed
      * @param element the element to be inserted
      */
     public void put(final int index, E element) {
@@ -120,6 +120,7 @@ public class DynamicArray<E> implements Iterable<E> {
         elements[this.size = newSize] = null;
     }
 
+    @SuppressWarnings("unchecked")
     private E getElement(final int index) {
         return (E) this.elements[index];
     }
@@ -145,7 +146,7 @@ public class DynamicArray<E> implements Iterable<E> {
      * @return Iterator a Dynamic Array Iterator
      */
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return new DynamicArrayIterator();
     }
 
