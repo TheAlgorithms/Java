@@ -94,7 +94,7 @@ public class CircleLinkedList<E> {
     }
 
     public static void main(String[] args) {
-        CircleLinkedList<Integer> cl = new CircleLinkedList<Integer>();
+        CircleLinkedList<Integer> cl = new CircleLinkedList<>();
         cl.append(12);
         System.out.println(cl);
         cl.append(23);

@@ -45,7 +45,7 @@ public class UnionFind {
     }
 
     public int count() {
-        List<Integer> parents = new ArrayList<Integer>();
+        List<Integer> parents = new ArrayList<>();
         for (int i = 0; i < p.length; i++) {
             if (!parents.contains(find(i))) {
                 parents.add(find(i));
