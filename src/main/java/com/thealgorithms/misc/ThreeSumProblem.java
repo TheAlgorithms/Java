@@ -75,7 +75,7 @@ public class ThreeSumProblem {
 
     public List<List<Integer>> Hashmap(int[] nums, int target) {
         Arrays.sort(nums);
-        Set<List<Integer>> ts = new HashSet();
+        Set<List<Integer>> ts = new HashSet<>();
         HashMap<Integer, Integer> hm = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
@@ -94,6 +94,6 @@ public class ThreeSumProblem {
                 }
             }
         }
-        return new ArrayList(ts);
+        return new ArrayList<>(ts);
     }
 }
