@@ -56,7 +56,7 @@ public class CursorLinkedList<T> {
         }
     }
 
-     /**
+    /**
      * @return the logical index of the element within the list , not the actual
      * index of the [cursorSpace] array
      */
