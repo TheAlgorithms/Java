@@ -44,11 +44,11 @@ class WordLadder {
      * This function finds the ladderLength
      *
      * @param beginWord: Starting word of the ladder
-     * @param endWord:   Ending word of the ladder
-     * @param wordList:  This list contains the words which needs to be included
-     *                   in ladder.
+     * @param endWord: Ending word of the ladder
+     * @param wordList: This list contains the words which needs to be included
+     * in ladder.
      * @return ladderLength: This function will return the ladderLength(level)
-     *         if the endword is there. Otherwise, will return the length as 0.
+     * if the endword is there. Otherwise, will return the length as 0.
      */
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
         HashSet<String> set = new HashSet<>(wordList);

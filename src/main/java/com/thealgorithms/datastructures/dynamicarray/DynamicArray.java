@@ -54,7 +54,7 @@ public class DynamicArray<E> implements Iterable<E> {
     /**
      * Places element of type <E> at the desired index
      *
-     * @param index   the index for the element to be placed
+     * @param index the index for the element to be placed
      * @param element the element to be inserted
      */
     public void put(final int index, E element) {
