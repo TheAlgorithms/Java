@@ -33,7 +33,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ env.LANGUAGE }}
 
@@ -41,7 +41,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots verify
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{env.LANGUAGE}}"
 ...
