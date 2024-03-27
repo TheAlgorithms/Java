@@ -3,6 +3,7 @@
 // File Name should be RecursiveBinarySearch.java
 // Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
 package com.thealgorithms.searches;
+
 import java.util.*;
 
 // Create a SearchAlgorithm class with a generic type
@@ -47,28 +48,29 @@ public class RecursiveBinarySearch<T extends Comparable<T>> extends SearchAlgori
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        // User inputs
-        System.out.print("Enter the number of elements in the array: ");
-        int n = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            // User inputs
+            System.out.print("Enter the number of elements in the array: ");
+            int n = sc.nextInt();
 
-        Integer[] a = new Integer[n]; // You can change the array type as needed
+            Integer[] a = new Integer[n]; // You can change the array type as needed
 
-        System.out.println("Enter the elements in sorted order:");
+            System.out.println("Enter the elements in sorted order:");
 
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+            }
+
+            System.out.print("Enter the target element to search for: ");
+            int t = sc.nextInt();
+
+            RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
+            int res = searcher.find(a, t);
+
+            if (res == -1)
+                System.out.println("Element not found in the array.");
+            else
+                System.out.println("Element found at index " + res);
         }
-
-        System.out.print("Enter the target element to search for: ");
-        int t = sc.nextInt();
-
-        RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
-        int res = searcher.find(a, t);
-
-        if (res == -1)
-            System.out.println("Element not found in the array.");
-        else
-            System.out.println("Element found at index " + res);
     }
 }

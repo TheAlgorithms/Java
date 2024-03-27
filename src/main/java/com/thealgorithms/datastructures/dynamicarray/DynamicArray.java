@@ -145,7 +145,7 @@ public class DynamicArray<E> implements Iterable<E> {
      * @return Iterator a Dynamic Array Iterator
      */
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return new DynamicArrayIterator();
     }
 

@@ -134,7 +134,7 @@ public class CursorLinkedList<T> {
     }
 
     private void free(int index) {
-        Node os_node = cursorSpace[os];
+        Node<T> os_node = cursorSpace[os];
         int os_next = os_node.next;
         cursorSpace[os].next = index;
         cursorSpace[index].element = null;

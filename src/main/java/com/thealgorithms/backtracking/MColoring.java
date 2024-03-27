@@ -1,6 +1,5 @@
 package com.thealgorithms.backtracking;
 
-import java.io.*;
 import java.util.*;
 
 /**
