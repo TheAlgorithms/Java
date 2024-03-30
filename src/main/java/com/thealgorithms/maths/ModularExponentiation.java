@@ -22,6 +22,9 @@ public class ModularExponentiation {
       y = y >> 1;
       x = (x * x) % m;
     }
+    if (y == 0 && m > 1) {
+      return 1;
+    }
     return result;
   }
 }
