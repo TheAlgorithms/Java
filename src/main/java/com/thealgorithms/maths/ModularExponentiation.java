@@ -15,6 +15,9 @@ public class ModularExponentiation {
     if (x == 0 || m == 1) {
       return 0;
     }
+    if (y == 0 && m > 1) {
+      return 1;
+    }
     while (y > 0) {
       if ((y & 1) == 1) {
         result = (result * x) % m;
@@ -22,9 +25,7 @@ public class ModularExponentiation {
       y = y >> 1;
       x = (x * x) % m;
     }
-    if (y == 0 && m > 1) {
-      return 1;
-    }
+
     return result;
   }
 }
