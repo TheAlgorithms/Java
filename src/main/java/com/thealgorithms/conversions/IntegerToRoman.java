@@ -9,7 +9,7 @@ package com.thealgorithms.conversions;
  */
 public class IntegerToRoman {
 
-    private static int[] allArabianRomanNumbers = new int[] {
+    private static final int[] allArabianRomanNumbers = new int[] {
         1000,
         900,
         500,
@@ -24,7 +24,7 @@ public class IntegerToRoman {
         4,
         1,
     };
-    private static String[] allRomanNumbers = new String[] {
+    private static final String[] allRomanNumbers = new String[] {
         "M",
         "CM",
         "D",

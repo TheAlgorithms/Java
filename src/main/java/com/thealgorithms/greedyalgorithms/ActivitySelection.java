@@ -8,9 +8,9 @@ import java.util.Comparator;
 
 public class ActivitySelection {
     // Function to perform activity selection
-    public static ArrayList<Integer> activitySelection(int startTimes[], int endTimes[]) {
+    public static ArrayList<Integer> activitySelection(int[] startTimes, int[] endTimes) {
         int n = startTimes.length;
-        int activities[][] = new int[n][3];
+        int[][] activities = new int[n][3];
 
         // Create a 2D array to store activities and their start/end times.
         // Each row: [activity index, start time, end time]

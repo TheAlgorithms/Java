@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class MatrixChainMultiplication {
 
-    private static Scanner scan = new Scanner(System.in);
-    private static ArrayList<Matrix> mArray = new ArrayList<>();
+    private static final Scanner scan = new Scanner(System.in);
+    private static final ArrayList<Matrix> mArray = new ArrayList<>();
     private static int size;
     private static int[][] m;
     private static int[][] s;
@@ -115,9 +115,9 @@ public class MatrixChainMultiplication {
 
 class Matrix {
 
-    private int count;
-    private int col;
-    private int row;
+    private final int count;
+    private final int col;
+    private final int row;
 
     Matrix(int count, int col, int row) {
         this.count = count;
