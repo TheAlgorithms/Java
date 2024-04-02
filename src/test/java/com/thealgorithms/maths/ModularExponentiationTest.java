@@ -16,5 +16,8 @@ public class ModularExponentiationTest {
         assertThrows(IllegalArgumentException.class,
                      () -> ModularExponentiation.modExp(4, 10, -15));
     assertEquals("Modulus must be positive integer", exception.getMessage());
+    IllegalArgumentException exception2 =
+        assertThrows(IllegalArgumentException.class,
+                     () -> ModularExponentiation.modExp(5, -3, 12));
   }
 }
