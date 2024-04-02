@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 public class Fibonacci {
 
-    private static Map<Integer, Integer> map = new HashMap<>();
+    private static final Map<Integer, Integer> map = new HashMap<>();
 
     public static void main(String[] args) {
         // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
@@ -78,7 +78,7 @@ public class Fibonacci {
      * Time Complexity will be O(n)
      * <p>
      * Whereas , the above functions will take O(n) Space.
-     * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
+     * @author Shoaib Rayeen (<a href="https://github.com/shoaibrayeen">...</a>)
      */
     public static int fibOptimized(int n) {
         if (n == 0) {
@@ -106,7 +106,6 @@ public class Fibonacci {
     public static int fibBinet(int n) {
         double squareRootOf5 = Math.sqrt(5);
         double phi = (1 + squareRootOf5) / 2;
-        int nthTerm = (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
-        return nthTerm;
+        return (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
     }
 }

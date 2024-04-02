@@ -31,7 +31,7 @@ public class JobSequencing {
         Boolean[] slots = new Boolean[size];
         Arrays.fill(slots, false);
 
-        int result[] = new int[size];
+        int[] result = new int[size];
 
         // Iterate through jobs to find the optimal job sequence
         for (int i = 0; i < size; i++) {
