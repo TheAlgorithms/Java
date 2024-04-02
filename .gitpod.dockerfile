@@ -11,7 +11,7 @@ USER root
 RUN ./"$LLVM_SCRIPT" 16 \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
-  clang-format-16=1:16.0.6~++20230710042027+7cbf1a259152-1~exp1~20230710162048.105 \
+  clang-format-16=1:16.0.6~++20231112100510+7cbf1a259152-1~exp1~20231112100554.106 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
