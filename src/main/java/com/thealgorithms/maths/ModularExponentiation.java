@@ -12,6 +12,10 @@ public class ModularExponentiation {
     if (m < 1) {
       throw new IllegalArgumentException("Modulus must be positive integer");
     }
+    if (y < 0) {
+      throw new IllegalArgumentException(
+          "Exponent must be zero or positive integer");
+    }
     if (x == 0 || m == 1) {
       return 0;
     }
