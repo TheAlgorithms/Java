@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
+ * @author Varun Upadhyay (https://github.com/varunu28)
  */
 public class Fibonacci {
 
@@ -78,7 +78,7 @@ public class Fibonacci {
      * Time Complexity will be O(n)
      * <p>
      * Whereas , the above functions will take O(n) Space.
-     * @author Shoaib Rayeen (<a href="https://github.com/shoaibrayeen">...</a>)
+     * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
      */
     public static int fibOptimized(int n) {
         if (n == 0) {

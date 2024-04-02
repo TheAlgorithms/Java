@@ -3,7 +3,7 @@ package com.thealgorithms.strings;
 import java.util.HashSet;
 
 /**
- * Wikipedia: <a href="https://en.wikipedia.org/wiki/Pangram">...</a>
+ * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
 public class Pangram {
 
