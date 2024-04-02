@@ -4,8 +4,8 @@ import java.util.*;
 
 public class UnionFind {
 
-    private int[] p;
-    private int[] r;
+    private final int[] p;
+    private final int[] r;
 
     public UnionFind(int n) {
         p = new int[n];
