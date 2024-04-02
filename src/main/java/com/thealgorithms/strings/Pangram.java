@@ -3,7 +3,7 @@ package com.thealgorithms.strings;
 import java.util.HashSet;
 
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Pangram
+ * Wikipedia: <a href="https://en.wikipedia.org/wiki/Pangram">...</a>
  */
 public class Pangram {
 
@@ -25,12 +25,11 @@ public class Pangram {
      */
     // alternative approach using Java Collection Framework
     public static boolean isPangramUsingSet(String s) {
-        HashSet<Character> alpha = new HashSet<Character>();
+        HashSet<Character> alpha = new HashSet<>();
         s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
             if (s.charAt(i) != ' ') alpha.add(s.charAt(i));
-        if (alpha.size() == 26) return true;
-        return false;
+        return alpha.size() == 26;
     }
 
     /**
