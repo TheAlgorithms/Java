@@ -1,44 +1,19 @@
 package com.thealgorithms.backtracking;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-import org.junit.jupiter.api.Test;
-
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 public class ParenthesesGeneratorTest {
-
-    @Test
-    void testGenerateParenthesesWithZeroPairs() {
-        ParenthesesGenerator generator = new ParenthesesGenerator();
-        List<String> result = generator.generateParentheses(0);
-        assertEquals(List.of(""), result);
+    @ParameterizedTest
+    @MethodSource("tcStream")
+    void numberTests(int input, List<String> expected) {
+        assertEquals(expected, ParenthesesGenerator.generateParentheses(input));
     }
-
-    @Test
-    void testGenerateParenthesesWithOnePair() {
-        ParenthesesGenerator generator = new ParenthesesGenerator();
-        List<String> result = generator.generateParentheses(1);
-        assertEquals(List.of("()"), result);
-    }
-
-    @Test
-    void testGenerateParenthesesWithTwoPairs() {
-        ParenthesesGenerator generator = new ParenthesesGenerator();
-        List<String> result = generator.generateParentheses(2);
-        assertEquals(List.of("(())", "()()"), result);
-    }
-
-    @Test
-    void testGenerateParenthesesWithThreePairs() {
-        ParenthesesGenerator generator = new ParenthesesGenerator();
-        List<String> result = generator.generateParentheses(3);
-        assertEquals(List.of("((()))", "(()())", "(())()", "()(())", "()()()"), result);
-    }
-
-    @Test
-    void testGenerateParenthesesWithFourPairs() {
-        ParenthesesGenerator generator = new ParenthesesGenerator();
-        List<String> result = generator.generateParentheses(4);
-        assertEquals(List.of("(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()", "()((()))", "()(()())", "()(())()", "()()(())", "()()()()"), result);
+    private static Stream<Arguments> tcStream() {
+        return Stream.of(Arguments.of(0, List.of("")), Arguments.of(1, List.of("()")), Arguments.of(2, List.of("(())", "()()")), Arguments.of(3, List.of("((()))", "(()())", "(())()", "()(())", "()()()")),
+            Arguments.of(4, List.of("(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()", "()((()))", "()(()())", "()(())()", "()()(())", "()()()()")));
     }
 }
