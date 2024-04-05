@@ -12,6 +12,7 @@ public class ParenthesesGenerator {
      *
      * @param n The number of pairs of parentheses.
      * @return A list of strings representing valid combinations of parentheses.
+     * @throws IllegalArgumentException if n is less than 0.
      */
     public static List<String> generateParentheses(int n) {
         if (n < 0) {
