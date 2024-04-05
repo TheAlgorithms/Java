@@ -6,7 +6,10 @@ import java.util.List;
 /**
  * This class generates all valid combinations of parentheses for a given number of pairs using backtracking.
  */
-public class ParenthesesGenerator {
+public final class ParenthesesGenerator {
+
+    private ParenthesesGenerator() {
+    }
     /**
      * Generates all valid combinations of parentheses for a given number of pairs.
      *
@@ -14,7 +17,7 @@ public class ParenthesesGenerator {
      * @return A list of strings representing valid combinations of parentheses.
      * @throws IllegalArgumentException if n is less than 0.
      */
-    public static List<String> generateParentheses(int n) {
+    public static List<String> generateParentheses(final int n) {
         if (n < 0) {
             throw new IllegalArgumentException("The number of pairs of parentheses cannot be nagative");
         }
@@ -32,7 +35,7 @@ public class ParenthesesGenerator {
      * @param close   The number of closed parentheses.
      * @param n       The total number of pairs of parentheses.
      */
-    private static void generateParenthesesHelper(List<String> result, String current, int open, int close, int n) {
+    private static void generateParenthesesHelper(List<String> result, final String current, final int open, final int close, final int n) {
         if (current.length() == n * 2) {
             result.add(current);
             return;
