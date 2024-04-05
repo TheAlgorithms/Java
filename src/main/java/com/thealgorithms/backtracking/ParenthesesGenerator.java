@@ -13,7 +13,7 @@ public class ParenthesesGenerator {
      * @param n The number of pairs of parentheses.
      * @return A list of strings representing valid combinations of parentheses.
      */
-    public List<String> generateParentheses(int n) {
+    public static List<String> generateParentheses(int n) {
         List<String> result = new ArrayList<>();
         generateParenthesesHelper(result, "", 0, 0, n);
         return result;
@@ -28,7 +28,7 @@ public class ParenthesesGenerator {
      * @param close   The number of closed parentheses.
      * @param n       The total number of pairs of parentheses.
      */
-    private void generateParenthesesHelper(List<String> result, String current, int open, int close, int n) {
+    private static void generateParenthesesHelper(List<String> result, String current, int open, int close, int n) {
         if (current.length() == n * 2) {
             result.add(current);
             return;
