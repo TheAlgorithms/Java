@@ -11,18 +11,18 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class ParenthesesGeneratorTest {
     @ParameterizedTest
-    @MethodSource("tcStream")
-    void numberTests(int input, List<String> expected) {
+    @MethodSource("regularInputStream")
+    void regularInputTests(int input, List<String> expected) {
         assertEquals(expected, ParenthesesGenerator.generateParentheses(input));
     }
 
     @ParameterizedTest
     @MethodSource("negativeInputStream")
-    void negativeInputTest(int input) {
+    void throwsForNegativeInputTests(int input) {
         assertThrows(IllegalArgumentException.class, () -> ParenthesesGenerator.generateParentheses(input));
     }
 
-    private static Stream<Arguments> tcStream() {
+    private static Stream<Arguments> regularInputStream() {
         return Stream.of(Arguments.of(0, List.of("")), Arguments.of(1, List.of("()")), Arguments.of(2, List.of("(())", "()()")), Arguments.of(3, List.of("((()))", "(()())", "(())()", "()(())", "()()()")),
             Arguments.of(4, List.of("(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()", "()((()))", "()(()())", "()(())()", "()()(())", "()()()()")));
     }
