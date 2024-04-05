@@ -7,13 +7,7 @@ import java.util.List;
  * This class generates all valid combinations of parentheses for a given number of pairs using backtracking.
  */
 public final class ParenthesesGenerator {
-
-    /**
-     * Private constructor to prevent instantiation of this class.
-     * This class should be used only for its static methods and cannot be instantiated.
-     */
     private ParenthesesGenerator() {
-        // Private constructor to prevent instantiation
     }
 
     /**
