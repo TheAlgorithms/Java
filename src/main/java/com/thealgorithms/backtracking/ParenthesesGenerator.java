@@ -14,6 +14,9 @@ public class ParenthesesGenerator {
      * @return A list of strings representing valid combinations of parentheses.
      */
     public static List<String> generateParentheses(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("The number of pairs of parentheses cannot be nagative");
+        }
         List<String> result = new ArrayList<>();
         generateParenthesesHelper(result, "", 0, 0, n);
         return result;
