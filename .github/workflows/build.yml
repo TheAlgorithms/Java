@@ -25,7 +25,10 @@ jobs:
           files: "${{ env.COVERAGE_REPORT_PATH }}"
           fail_ci_if_error: true
       - name: Upload coverage to codecov (with token)
-        if: "! github.event.pull_request.head.repo.fork "
+        if: >
+          github.repository == 'TheAlgorithms/Java' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name == github.repository)
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
