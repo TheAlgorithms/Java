@@ -1,5 +1,9 @@
 name: Build
 on: [push, pull_request]
+
+env:
+  COVERAGE_REPORT_PATH: "target/site/jacoco/jacoco.xml"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,3 +16,8 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: "${{ env.REPORT_NAME }}"
+          fail_ci_if_error: true
