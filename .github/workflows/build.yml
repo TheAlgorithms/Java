@@ -1,9 +1,6 @@
 name: Build
 on: [push, pull_request]
 
-env:
-  COVERAGE_REPORT_PATH: "target/site/jacoco/jacoco.xml"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +19,6 @@ jobs:
           github.event.pull_request.head.repo.full_name != github.repository
         uses: codecov/codecov-action@v4
         with:
-          files: "${{ env.COVERAGE_REPORT_PATH }}"
           fail_ci_if_error: true
       - name: Upload coverage to codecov (with token)
         if: >
@@ -32,5 +28,4 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: "${{ env.COVERAGE_REPORT_PATH }}"
           fail_ci_if_error: true
