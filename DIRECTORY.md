@@ -250,6 +250,7 @@
             * [SubsetCount](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SubsetCount.java)
             * [SubsetSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SubsetSum.java)
             * [SumOfSubset](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SumOfSubset.java)
+            * [TrappedRainWater](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/TrappedRainWater.java)
             * [Tribonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Tribonacci.java)
             * [UniquePaths](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniquePaths.java)
             * [WildcardMatching](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/WildcardMatching.java)
