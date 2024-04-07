@@ -15,7 +15,8 @@ public class TrappedRainWaterTest {
     }
 
     private static Stream<Arguments> testCases() {
-        return Stream.of(
-            Arguments.of(new int[] {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}, 6), Arguments.of(new int[] {0, 2, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}, 7), Arguments.of(new int[] {4, 2, 0, 3, 2, 5}, 9), Arguments.of(new int[] {3, 2, 1, 0, 1, 2, 3}, 9), Arguments.of(new int[] {5, 4, 3, 2, 1, 2, 3, 4, 5}, 16));
+        return Stream.of(Arguments.of(new int[] {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}, 6), Arguments.of(new int[] {0, 2, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}, 7), Arguments.of(new int[] {4, 2, 0, 3, 2, 5}, 9), Arguments.of(new int[] {3, 2, 1, 0, 1, 2, 3}, 9),
+            Arguments.of(new int[] {5, 4, 3, 2, 1, 2, 3, 4, 5}, 16), Arguments.of(null, 0), // Test case for null input
+            Arguments.of(new int[] {}, 0));
     }
 }
