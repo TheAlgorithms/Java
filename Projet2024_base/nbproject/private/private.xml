@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Joueur.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Objet.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Salle.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/DetecteurMines.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Position.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Outil.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/test/exploration/DirectionTest.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Exploration.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Direction.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Jeu.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/ReserveEnergie.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Plateau.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/ScannerUnidirectionnel.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/CaisseGrenades.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Categorie.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/Mine.java</file>
+            <file>file:/home2/jb116317/Téléchargements/Projet2024_base/src/exploration/LesOutils.java</file>
+        </group>
+    </open-files>
+</project-private>
