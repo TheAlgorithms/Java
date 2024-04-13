@@ -14,10 +14,12 @@ public class CaisseGrenades extends Objet
 
     @Override
     public void interaction(Joueur j)
-    {
+    {s
+        
         /* S'il reste des grenades dans cette réserve,
            propose au joueur d'en prendre un certain nombre,
            ce qui augmente les grenades du joueur et diminue d'autant cette réserve
+           je modifie pour voir
         */
     }
 
