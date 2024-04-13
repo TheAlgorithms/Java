@@ -3,35 +3,16 @@ package com.thealgorithms.maths;
 /**
  * Find the number of digits in a number.
  */
-public class NumberOfDigits {
-
-    public static void main(String[] args) {
-        int[] numbers = {
-            0,
-            12,
-            123,
-            1234,
-            -12345,
-            123456,
-            1234567,
-            12345678,
-            123456789,
-        };
-        for (int i = 0; i < numbers.length; ++i) {
-            assert numberOfDigits(numbers[i]) == i + 1;
-            assert numberOfDigitsFast(numbers[i]) == i + 1;
-            assert numberOfDigitsFaster(numbers[i]) == i + 1;
-            assert numberOfDigitsRecursion(numbers[i]) == i + 1;
-        }
+public final class NumberOfDigits {
+    private NumberOfDigits() {
     }
-
     /**
      * Find the number of digits in a number.
      *
      * @param number number to find
      * @return number of digits of given number
      */
-    private static int numberOfDigits(int number) {
+    public static int numberOfDigits(int number) {
         int digits = 0;
         do {
             digits++;
@@ -46,7 +27,7 @@ public class NumberOfDigits {
      * @param number number to find
      * @return number of digits of given number
      */
-    private static int numberOfDigitsFast(int number) {
+    public static int numberOfDigitsFast(int number) {
         return number == 0 ? 1 : (int) Math.floor(Math.log10(Math.abs(number)) + 1);
     }
 
@@ -56,7 +37,7 @@ public class NumberOfDigits {
      * @param number number to find
      * @return number of digits of given number
      */
-    private static int numberOfDigitsFaster(int number) {
+    public static int numberOfDigitsFaster(int number) {
         return number < 0 ? (-number + "").length() : (number + "").length();
     }
 
@@ -66,7 +47,7 @@ public class NumberOfDigits {
      * @param number number to find
      * @return number of digits of given number
      */
-    private static int numberOfDigitsRecursion(int number) {
+    public static int numberOfDigitsRecursion(int number) {
         return number / 10 == 0 ? 1 : 1 + numberOfDigitsRecursion(number / 10);
     }
 }
