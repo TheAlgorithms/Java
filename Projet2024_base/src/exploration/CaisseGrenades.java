@@ -12,6 +12,9 @@ public class CaisseGrenades extends Objet
 {
     private final static int MAX = 9;// nombre maximal dans les caisses de grenades trouvées dans les salles
 
+    /**
+     * @param j
+     */
     @Override
     public void interaction(Joueur j)
     {s
