@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -22,7 +21,7 @@ public class FactorialRecursionTest {
     }
 
     @Test
-    void testNegativeNumber() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
+    void testThrowsForNegativeInput() {
+        assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
     }
 }
