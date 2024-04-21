@@ -21,7 +21,7 @@ public class FactorialRecursionTest {
     }
 
     @Test
-    void testNegativeNumber() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
+    void testThrowsForNegativeInput() {
+        assertThrows(IllegalArgumentException.class, () -> FactorialRecursion.factorial(-1));
     }
 }
