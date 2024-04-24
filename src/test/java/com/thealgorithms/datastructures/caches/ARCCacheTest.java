@@ -10,7 +10,10 @@ public class ARCCacheTest {
 
     @BeforeEach
     public void setUp() {
-        cache = new ARCCache<>(3); // Set capacity to 3 for testing purposes
+        int t1Capacity = 2;
+        int b1Capacity = 1;
+        int totalCapacity = t1Capacity + b1Capacity;
+        cache = new ARCCache<>(totalCapacity); // Set capacity to 3 for testing purposes
     }
 
     @Test
