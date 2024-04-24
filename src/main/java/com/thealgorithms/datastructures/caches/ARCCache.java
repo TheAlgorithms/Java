@@ -54,7 +54,14 @@ public class ARCCache<K, V> {
         return null;
     }
 
-    // Function to put the data in the cache corresponding to the key passed as parameter
+    /**
+     * Adds the specified key-value pair to the cache.
+     * If the cache exceeds its capacity after adding the new entry, eviction is performed.
+     * Updates the usage count for the added key.
+     *
+     * @param key   the key with which the specified value is to be associated
+     * @param value the value to be associated with the specified key
+     */
     public void put(K key, V value) {
         if (cache.size() >= capacity) {
             evict();
