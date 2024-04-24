@@ -24,7 +24,13 @@ public class ARCCache<K, V> {
     private final LinkedHashMap<K, Integer> usageCounts;
     private final int p;
     private int totalCount;
-
+/**
+ * Retrieves the value associated with the given key from the cache.
+ * If the key is present in the cache, its usage count is incremented.
+ *
+ * @param key the key whose associated value is to be retrieved
+ * @return the value associated with the key, or null if the key is not present in the cache
+ */
     public ARCCache(int capacity) {
         this.capacity = capacity;
         this.cache = new LinkedHashMap<>();
