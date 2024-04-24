@@ -39,7 +39,13 @@ public class ARCCache<K, V> {
         this.totalCount = 0;
     }
 
-    // Function to get data from cache corresponding to the key passed as parameter
+    /**
+     * Retrieves the value associated with the given key from the cache.
+     * If the key is present in the cache, its usage count is incremented.
+     *
+     * @param key the key whose associated value is to be retrieved
+     * @return the value associated with the key, or null if the key is not present in the cache
+     */
     public V get(K key) {
         if (cache.containsKey(key)) {
             usageCounts.put(key, usageCounts.getOrDefault(key, 0) + 1);
