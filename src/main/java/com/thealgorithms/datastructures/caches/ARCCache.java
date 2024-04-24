@@ -22,7 +22,8 @@ public class ARCCache<K, V> {
     private final int capacity;
     private final Map<K, V> cache;
     private final LinkedHashMap<K, Integer> usageCounts;
-    private final int p;
+    private final int t1Capacity; // Capacity for the t1 cache
+    private final int b1Capacity; // Capacity for the b1 cache
     private int totalCount;
 /**
  * Retrieves the value associated with the given key from the cache.
@@ -35,7 +36,8 @@ public class ARCCache<K, V> {
         this.capacity = capacity;
         this.cache = new LinkedHashMap<>();
         this.usageCounts = new LinkedHashMap<>();
-        this.p = capacity / 2;
+        this.t1Capacity = capacity / 2; // Capacity for the t1 cache
+        this.b1Capacity = capacity - t1Capacity; // Capacity for the b1 cache
         this.totalCount = 0;
     }
 
@@ -89,6 +91,33 @@ public class ARCCache<K, V> {
             cache.remove(keyToRemove);
             usageCounts.remove(keyToRemove);
             totalCount--;
+            adjustCacheSize();
+        }
+    }
+
+    /**
+     * Adjust the cache sizes based on t1capacity and b1capacity after eviction from cache
+     */
+    private void adjustCacheSize() {
+        if (cache.size() > capacity) {
+            int excess = cache.size() - capacity;
+            int t1Size = cache.size() - b1Capacity;
+            while (excess > 0 && !cache.isEmpty()) {
+                K keyToRemove = usageCounts.keySet().iterator().next();
+                if (t1Size > t1Capacity || (t1Size > 0 && usageCounts.get(keyToRemove) > 1)) {
+                    cache.remove(keyToRemove);
+                    usageCounts.remove(keyToRemove);
+                    totalCount--;
+                    if (t1Size > 0) {
+                        t1Size--;
+                    }
+                } else {
+                    cache.remove(keyToRemove);
+                    usageCounts.remove(keyToRemove);
+                    totalCount--;
+                }
+                excess--;
+            }
         }
     }
 }
