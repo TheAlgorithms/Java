@@ -71,7 +71,11 @@ public class ARCCache<K, V> {
         totalCount++;
     }
 
-    // Function to implement the logic of ARCCache
+    /**
+     * Evicts an item from the cache when it exceeds its capacity.
+     * Implements the Adaptive Replacement Cache (ARC) algorithm logic for eviction.
+     * Removes the least recently used item based on its usage count.
+     */
     private void evict() {
         if (!cache.isEmpty()) {
             K keyToRemove = null;
