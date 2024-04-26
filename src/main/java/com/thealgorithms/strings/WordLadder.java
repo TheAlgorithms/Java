@@ -51,13 +51,13 @@ class WordLadder {
      * if the endword is there. Otherwise, will return the length as 0.
      */
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        HashSet<String> set = new HashSet(wordList);
+        HashSet<String> set = new HashSet<>(wordList);
 
         if (!set.contains(endWord)) {
             return 0;
         }
 
-        Queue<String> queue = new LinkedList();
+        Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
         int level = 1;
 
