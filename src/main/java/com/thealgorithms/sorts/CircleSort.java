@@ -13,8 +13,8 @@ public class CircleSort implements SortAlgorithm {
         if (n == 0) {
             return array;
         }
-        while (doSort(array, 0, n - 1))
-            ;
+        while (doSort(array, 0, n - 1)) {
+        }
         return array;
     }
 

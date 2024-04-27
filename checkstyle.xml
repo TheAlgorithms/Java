@@ -160,7 +160,7 @@
 
     <!-- Checks for common coding problems               -->
     <!-- See https://checkstyle.org/checks/coding/index.html -->
-    <!-- <module name="EmptyStatement"/> -->
+    <module name="EmptyStatement"/>
     <!-- TODO <module name="EqualsHashCode"/> -->
     <!-- TODO <module name="HiddenField"/> -->
     <module name="IllegalInstantiation"/>
