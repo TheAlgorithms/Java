@@ -31,3 +31,5 @@ jobs:
           fail_ci_if_error: true
       - name: Checkstyle
         run: mvn checkstyle:check
+      - name: SpotBugs
+        run: mvn spotbugs:check
