@@ -1,0 +1,134 @@
+<FindBugsFilter>
+    <Match>
+        <Bug pattern="DM_DEFAULT_ENCODING" />
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2" />
+    </Match>
+    <Match>
+        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
+    </Match>
+    <Match>
+        <Bug pattern="IM_AVERAGE_COMPUTATION_COULD_OVERFLOW" />
+    </Match>
+    <Match>
+        <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
+    </Match>
+    <Match>
+        <Bug pattern="VA_FORMAT_STRING_USES_NEWLINE" />
+    </Match>
+    <Match>
+        <Bug pattern="SF_SWITCH_NO_DEFAULT" />
+    </Match>
+    <Match>
+        <Bug pattern="UC_USELESS_OBJECT" />
+    </Match>
+    <Match>
+        <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
+    </Match>
+    <Match>
+        <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
+    </Match>
+    <Match>
+        <Bug pattern="NM_CLASS_NAMING_CONVENTION" />
+    </Match>
+    <Match>
+        <Bug pattern="SIC_INNER_SHOULD_BE_STATIC" />
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP" />
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP" />
+    </Match>
+    <Match>
+        <Bug pattern="SBSC_USE_STRINGBUFFER_CONCATENATION" />
+    </Match>
+    <Match>
+        <Bug pattern="PA_PUBLIC_PRIMITIVE_ATTRIBUTE" />
+    </Match>
+    <Match>
+        <Bug pattern="MS_PKGPROTECT" />
+    </Match>
+    <Match>
+        <Bug pattern="SE_COMPARATOR_SHOULD_BE_SERIALIZABLE" />
+    </Match>
+    <Match>
+        <Bug pattern="INT_BAD_REM_BY_1" />
+    </Match>
+    <Match>
+        <Bug pattern="NM_METHOD_NAMING_CONVENTION" />
+    </Match>
+    <Match>
+        <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
+    </Match>
+    <Match>
+        <Bug pattern="FE_FLOATING_POINT_EQUALITY" />
+    </Match>
+    <Match>
+        <Bug pattern="CT_CONSTRUCTOR_THROW" />
+    </Match>
+    <Match>
+        <Bug pattern="URF_UNREAD_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="RC_REF_COMPARISON" />
+    </Match>
+    <Match>
+        <Bug pattern="MS_EXPOSE_REP" />
+    </Match>
+    <Match>
+        <Bug pattern="IM_BAD_CHECK_FOR_ODD" />
+    </Match>
+    <Match>
+        <Bug pattern="WMI_WRONG_MAP_ITERATOR" />
+    </Match>
+    <Match>
+        <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
+    </Match>
+    <Match>
+        <Bug pattern="MS_SHOULD_BE_FINAL" />
+    </Match>
+    <Match>
+        <Bug pattern="UWF_UNWRITTEN_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="SS_SHOULD_BE_STATIC" />
+    </Match>
+    <Match>
+        <Bug pattern="HE_EQUALS_USE_HASHCODE" />
+    </Match>
+    <Match>
+        <Bug pattern="IT_NO_SUCH_ELEMENT" />
+    </Match>
+    <Match>
+        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+    </Match>
+    <Match>
+        <Bug pattern="UWF_NULL_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="NP_UNWRITTEN_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" />
+    </Match>
+    <Match>
+        <Bug pattern="RV_RETURN_VALUE_IGNORED" />
+    </Match>
+    <Match>
+        <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
+    </Match>
+    <Match>
+        <Bug pattern="SA_FIELD_SELF_ASSIGNMENT" />
+    </Match>
+    <Match>
+        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+    </Match>
+    <Match>
+        <Bug pattern="RV_ABSOLUTE_VALUE_OF_HASHCODE" />
+    </Match>
+</FindBugsFilter>
