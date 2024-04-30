@@ -160,7 +160,7 @@ public class ComplexNumberUtilTest {
 
     @Test
     public void testTanOutOfRange() {
-        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.tan(new ComplexNumber(Math.PI * 2.5,0)));
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.tan(new ComplexNumber(Math.PI * 2.5, 0)));
     }
 
     @Test
@@ -173,7 +173,7 @@ public class ComplexNumberUtilTest {
 
     @Test
     public void testCotOutOfRange() {
-        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.cot(new ComplexNumber(Math.PI * 3,0)));
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.cot(new ComplexNumber(Math.PI * 3, 0)));
     }
 
     @Test
@@ -214,8 +214,7 @@ public class ComplexNumberUtilTest {
     }
 
     @Test
-    public void testArccotOfI()
-    {
+    public void testArccotOfI() {
         assertThrows(RuntimeException.class, () -> ComplexNumberUtil.arccot(ComplexNumberUtil.PLUS_I));
     }
 }
