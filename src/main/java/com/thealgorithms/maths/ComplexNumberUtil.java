@@ -89,7 +89,7 @@ public class ComplexNumberUtil {
         final double divisor = num2.REAL*num2.REAL + num2.IMAGINARY*num2.IMAGINARY;
         if (divisor == 0)
         {
-            throw new RuntimeException("can't divide by zero");
+            throw new RuntimeException("Cannot divide by zero");
         }
 
         return new ComplexNumber(
@@ -138,7 +138,7 @@ public class ComplexNumberUtil {
     {
         if (num.equals(ZERO))
         {
-            throw new RuntimeException("can't take the logarithm of zero");
+            throw new RuntimeException("Cannot take the logarithm of zero");
         }
 
         return  new ComplexNumber(
@@ -209,10 +209,16 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the tangent of num
+     * @throws RuntimeException if <code>num.real = pi*(n+0.5)</code>
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
     public static ComplexNumber tan(ComplexNumber num)
     {
+        if (num.REAL % Math.PI == Math.PI / 2)
+        {
+            throw new RuntimeException("Cannot take the tan of a number where the real part can be expressed as pi*(n+0.5)");
+        }
+
         return divide(sin(num),cos(num));
     }
 
@@ -221,10 +227,16 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the cotangent of num
+     * @throws RuntimeException if <code>num.real = pi*n</code>
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
     public static ComplexNumber cot(ComplexNumber num)
     {
+        if (num.REAL % Math.PI == 0)
+        {
+            throw new RuntimeException("Cannot take the cot of number with real part dividable by pi");
+        }
+
         return divide(cos(num),sin(num));
     }
 
@@ -259,10 +271,16 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arctangent of num
+     * @throws RuntimeException if <code>num=i</code> or <code>num=-i</code>
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arctan(ComplexNumber num)
     {
+        if (num.equals(PLUS_I) || num.equals(MINUS_I))
+        {
+            throw new RuntimeException("Cannot take the arctan of " + num);
+        }
+
         return multiply(divide(MINUS_I,TWO),ln(divide(subtract(PLUS_I,num),add(PLUS_I,num))));
     }
 
@@ -271,10 +289,16 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arccotangent of num
+     * @throws RuntimeException if <code>num=i</code> or <code>num=-i</code>
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arccot(ComplexNumber num)
     {
+        if (num.equals(PLUS_I) || num.equals(MINUS_I))
+        {
+            throw new RuntimeException("Cannot take the arccot of " + num);
+        }
+
         return multiply(divide(MINUS_I,TWO),ln(divide(add(num,PLUS_I),subtract(num,PLUS_I))));
     }
 
