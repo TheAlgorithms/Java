@@ -32,6 +32,9 @@ public class ComplexNumberUtil {
 
     public final static ComplexNumber ZERO = new ComplexNumber(0,0);
     public final static ComplexNumber ONE = new ComplexNumber(1,0);
+    public final static ComplexNumber TWO = new ComplexNumber(2,0);
+    public final static ComplexNumber PLUS_I = new ComplexNumber(0,1);
+    public final static ComplexNumber MINUS_I = new ComplexNumber(0,-1);
 
     /**
      * add two complex numbers
@@ -156,8 +159,111 @@ public class ComplexNumberUtil {
         return exp(multiply(ln(num1),num2));
     }
 
+    /**
+     * Computes the square root of a complex number.
+     *
+     * @param num the complex number
+     * @return the square root of num
+     */
+    public static ComplexNumber sqrt(ComplexNumber num)
+    {
+        return pow(num,new ComplexNumber(0.5,0));
+    }
+
+    /**
+     * Computes the sine of a complex number.
+     *
+     * @param num the complex number
+     * @return the sine of num
+     */
+    public static ComplexNumber sin(ComplexNumber num)
+    {
+        ComplexNumber exp1 = exp(multiply(num,PLUS_I));
+        ComplexNumber exp2 = exp(multiply(num,MINUS_I));
+        return divide(subtract(exp1,exp2),multiply(new ComplexNumber(2,0),PLUS_I));
+    }
+
+    /**
+     * Computes the cosine of a complex number.
+     *
+     * @param num the complex number
+     * @return the cosine of num
+     */
+    public static ComplexNumber cos(ComplexNumber num)
+    {
+        ComplexNumber exp1 = exp(multiply(num,PLUS_I));
+        ComplexNumber exp2 = exp(multiply(num,MINUS_I));
+        return divide(add(exp1,exp2),TWO);
+    }
+
+    /**
+     * Computes the tangent of a complex number.
+     *
+     * @param num the complex number
+     * @return the tangent of num
+     */
+    public static ComplexNumber tan(ComplexNumber num)
+    {
+        return divide(sin(num),cos(num));
+    }
+
+    /**
+     * Computes the cotangent of a complex number.
+     *
+     * @param num the complex number
+     * @return the cotangent of num
+     */
+    public static ComplexNumber cot(ComplexNumber num)
+    {
+        return divide(cos(num),sin(num));
+    }
+
+    /**
+     * Computes the arcsine of a complex number.
+     *
+     * @param num the complex number
+     * @return the arcsine of num
+     */
+    public static ComplexNumber arcsin(ComplexNumber num)
+    {
+        ComplexNumber temp = sqrt(subtract(ONE,multiply(num,num)));
+        return multiply(MINUS_I,ln(add(multiply(PLUS_I,num),temp)));
+    }
+
+    /**
+     * Computes the arccosine of a complex number.
+     *
+     * @param num the complex number
+     * @return the arccosine of num
+     */
+    public static ComplexNumber arccos(ComplexNumber num)
+    {
+        ComplexNumber temp = sqrt(subtract(ONE,multiply(num,num)));
+        return multiply(MINUS_I,ln(add(num,multiply(temp,PLUS_I))));
+    }
+
+    /**
+     * Computes the arctangent of a complex number.
+     *
+     * @param num the complex number
+     * @return the arctangent of num
+     */
+    public static ComplexNumber arctan(ComplexNumber num)
+    {
+        return multiply(divide(MINUS_I,TWO),ln(divide(subtract(PLUS_I,num),add(PLUS_I,num))));
+    }
+
+    /**
+     * Computes the arccotangent of a complex number.
+     *
+     * @param num the complex number
+     * @return the arccotangent of num
+     */
+    public static ComplexNumber arccot(ComplexNumber num)
+    {
+        return multiply(divide(MINUS_I,TWO),ln(divide(add(num,PLUS_I),subtract(num,PLUS_I))));
+    }
+
     public static void main(final String[] args) {
-        ComplexNumber num1 = new ComplexNumber(-2,0);
-        System.out.println(ln(num1));
     }
 }

@@ -6,7 +6,7 @@ import com.thealgorithms.maths.ComplexNumberUtil.ComplexNumber;
 
 public class ComplexNumberUtilTest {
 
-    private boolean checkIfEqual(ComplexNumber actual, ComplexNumber expected)
+    private boolean checkIfEqual(ComplexNumber expected, ComplexNumber actual)
     {
         final double LIM = 0.0001;
         if (Math.abs(actual.REAL-expected.REAL) > LIM || Math.abs(actual.IMAGINARY-expected.IMAGINARY) > LIM)
@@ -116,6 +116,78 @@ public class ComplexNumberUtilTest {
         ComplexNumber c2 = new ComplexNumber(2, -5);
         ComplexNumber result = ComplexNumberUtil.pow(c1,c2);
         ComplexNumber expected = new ComplexNumber(-1428309.3755404,738159.21728509);
-        checkIfEqual(result,expected);
+        checkIfEqual(expected,result);
+    }
+
+    @Test
+    public void testSqrt()
+    {
+        ComplexNumber c = new ComplexNumber(-2,3);
+        ComplexNumber result = ComplexNumberUtil.sqrt(c);
+        checkIfEqual(new ComplexNumber(0.8959774,1.6741492),result);
+    }
+
+    @Test
+    public void testSin() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.sin(c);
+        ComplexNumber expected = new ComplexNumber(1.2984575814159773, 0.6349639147847361);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testCos() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.cos(c);
+        ComplexNumber expected = new ComplexNumber(0.8337300251311491, -0.9888977057628651);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testTan() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.tan(c);
+        ComplexNumber expected = new ComplexNumber(0.2717525853195117, 1.0839233273386948);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testCot() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.cot(c);
+        ComplexNumber expected = new ComplexNumber(0.21762156185440268, -0.8680141428959249);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testArcsin() {
+        ComplexNumber c = new ComplexNumber(0.5, 0);
+        ComplexNumber result = ComplexNumberUtil.arcsin(c);
+        ComplexNumber expected = new ComplexNumber(0.5235987755982989, 0);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testArccos() {
+        ComplexNumber c = new ComplexNumber(0.5, 0);
+        ComplexNumber result = ComplexNumberUtil.arccos(c);
+        ComplexNumber expected = new ComplexNumber(1.0471975511965979, 0);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testArctan() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.arctan(c);
+        ComplexNumber expected = new ComplexNumber(1.0172219678978514, 0.40235947810852507);
+        checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testArccot() {
+        ComplexNumber c = new ComplexNumber(1, 1);
+        ComplexNumber result = ComplexNumberUtil.arccot(c);
+        ComplexNumber expected = new ComplexNumber(0.5535743588970452, -0.40235947810852507);
+        checkIfEqual(expected, result);
     }
 }
