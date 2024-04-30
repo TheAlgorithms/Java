@@ -65,6 +65,7 @@ public class ComplexNumberUtil {
      * @param num1 the first complex number
      * @param num2 the second complex number
      * @return the product of num1 and num2
+     * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Multiplication">...</a>
      */
     public static ComplexNumber multiply(ComplexNumber num1, ComplexNumber num2)
     {
@@ -81,6 +82,7 @@ public class ComplexNumberUtil {
      * @param num2 the denominator complex number
      * @return the result of dividing num1 by num2
      * @throws RuntimeException if the divisor (num2) is zero
+     * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Complex_conjugate,_absolute_value_and_argument">...</a>
      */
     public static ComplexNumber divide(ComplexNumber num1, ComplexNumber num2)
     {
@@ -101,6 +103,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the absolute value of num
+     * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Complex_conjugate,_absolute_value_and_argument">...</a>
      */
     public static double abs(ComplexNumber num)
     {
@@ -112,6 +115,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return e raised to the power of num
+     * @link <a href="https://en.wikipedia.org/wiki/Exponential_function#Continued_fractions_for_ex">...</a>
      */
     public static ComplexNumber exp(ComplexNumber num)
     {
@@ -128,6 +132,7 @@ public class ComplexNumberUtil {
      * @param num the complex number
      * @return the natural logarithm of num
      * @throws RuntimeException if num is zero
+     * @link <a href="https://en.wikipedia.org/wiki/Complex_logarithm#Calculating_the_principal_value">...</a>
      */
     public static ComplexNumber ln(ComplexNumber num)
     {
@@ -148,6 +153,7 @@ public class ComplexNumberUtil {
      * @param num1 the base complex number
      * @param num2 the exponent complex number
      * @return num1 raised to the power of num2
+     * link <a href="https://en.wikipedia.org/wiki/Exponentiation#Complex_exponents_with_a_positive_real_base">...</a>
      */
     public static ComplexNumber pow(ComplexNumber num1, ComplexNumber num2)
     {
@@ -175,6 +181,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the sine of num
+     * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Relationship_to_exponential_function_">...</a>(Euler's_formula)
      */
     public static ComplexNumber sin(ComplexNumber num)
     {
@@ -188,6 +195,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the cosine of num
+     * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Relationship_to_exponential_function_">...</a>(Euler's_formula)
      */
     public static ComplexNumber cos(ComplexNumber num)
     {
@@ -201,6 +209,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the tangent of num
+     * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
     public static ComplexNumber tan(ComplexNumber num)
     {
@@ -212,6 +221,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the cotangent of num
+     * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
     public static ComplexNumber cot(ComplexNumber num)
     {
@@ -223,6 +233,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arcsine of num
+     * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arcsin(ComplexNumber num)
     {
@@ -235,6 +246,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arccosine of num
+     * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arccos(ComplexNumber num)
     {
@@ -247,6 +259,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arctangent of num
+     * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arctan(ComplexNumber num)
     {
@@ -258,6 +271,7 @@ public class ComplexNumberUtil {
      *
      * @param num the complex number
      * @return the arccotangent of num
+     * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
     public static ComplexNumber arccot(ComplexNumber num)
     {
