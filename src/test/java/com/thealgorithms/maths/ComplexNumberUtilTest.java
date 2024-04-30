@@ -24,13 +24,19 @@ public class ComplexNumberUtilTest {
     }
 
     @Test
-    public void testEquals() {
+    public void testEquals1() {
         ComplexNumber c1 = new ComplexNumber(1, 2);
         ComplexNumber c2 = new ComplexNumber(1, 2);
         ComplexNumber c3 = new ComplexNumber(2, 1);
 
         assertTrue(checkIfEqual(c1, c2));
         assertNotEquals(c1, c3);
+    }
+
+    @Test
+    public void testEquals2() {
+        ComplexNumber c1 = new ComplexNumber(1, 2);
+        assertNotEquals(c1, 2);
     }
 
     @Test
@@ -75,7 +81,7 @@ public class ComplexNumberUtilTest {
     public void testDivideByZero() {
         ComplexNumber c1 = new ComplexNumber(1, 1);
         ComplexNumber c2 = new ComplexNumber(0, 0);
-        assertThrows(RuntimeException.class, () -> { ComplexNumberUtil.divide(c1, c2); });
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.divide(c1, c2));
     }
 
     @Test
@@ -97,6 +103,11 @@ public class ComplexNumberUtilTest {
         ComplexNumber c = new ComplexNumber(5, 5);
         ComplexNumber result = ComplexNumberUtil.ln(c);
         checkIfEqual(new ComplexNumber(Math.log(5 * Math.sqrt(2)), Math.PI / 4), result);
+    }
+
+    @Test
+    public void testLnOfZero() {
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.ln(ComplexNumberUtil.ZERO));
     }
 
     @Test
@@ -148,11 +159,21 @@ public class ComplexNumberUtilTest {
     }
 
     @Test
+    public void testTanOutOfRange() {
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.tan(new ComplexNumber(Math.PI * 2.5,0)));
+    }
+
+    @Test
     public void testCot() {
         ComplexNumber c = new ComplexNumber(1, 1);
         ComplexNumber result = ComplexNumberUtil.cot(c);
         ComplexNumber expected = new ComplexNumber(0.21762156185440268, -0.8680141428959249);
         checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testCotOutOfRange() {
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.cot(new ComplexNumber(Math.PI * 3,0)));
     }
 
     @Test
@@ -180,10 +201,21 @@ public class ComplexNumberUtilTest {
     }
 
     @Test
+    public void testArctanOfI() {
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.arctan(ComplexNumberUtil.PLUS_I));
+    }
+
+    @Test
     public void testArccot() {
         ComplexNumber c = new ComplexNumber(1, 1);
         ComplexNumber result = ComplexNumberUtil.arccot(c);
         ComplexNumber expected = new ComplexNumber(0.5535743588970452, -0.40235947810852507);
         checkIfEqual(expected, result);
+    }
+
+    @Test
+    public void testArccotOfI()
+    {
+        assertThrows(RuntimeException.class, () -> ComplexNumberUtil.arccot(ComplexNumberUtil.PLUS_I));
     }
 }

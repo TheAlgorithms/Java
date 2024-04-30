@@ -261,7 +261,4 @@ public class ComplexNumberUtil {
 
         return multiply(divide(MINUS_I, TWO), ln(divide(add(num, PLUS_I), subtract(num, PLUS_I))));
     }
-
-    public static void main(final String[] args) {
-    }
 }
