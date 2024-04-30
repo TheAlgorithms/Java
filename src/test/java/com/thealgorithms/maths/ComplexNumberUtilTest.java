@@ -1,16 +1,15 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+
 import com.thealgorithms.maths.ComplexNumberUtil.ComplexNumber;
+import org.junit.jupiter.api.Test;
 
 public class ComplexNumberUtilTest {
 
-    private boolean checkIfEqual(ComplexNumber expected, ComplexNumber actual)
-    {
+    private boolean checkIfEqual(ComplexNumber expected, ComplexNumber actual) {
         final double LIM = 0.0001;
-        if (Math.abs(actual.REAL-expected.REAL) > LIM || Math.abs(actual.IMAGINARY-expected.IMAGINARY) > LIM)
-        {
+        if (Math.abs(actual.REAL - expected.REAL) > LIM || Math.abs(actual.IMAGINARY - expected.IMAGINARY) > LIM) {
             fail("Expected " + expected + " but got " + actual);
         }
 
@@ -76,9 +75,7 @@ public class ComplexNumberUtilTest {
     public void testDivideByZero() {
         ComplexNumber c1 = new ComplexNumber(1, 1);
         ComplexNumber c2 = new ComplexNumber(0, 0);
-        assertThrows(RuntimeException.class, () -> {
-            ComplexNumberUtil.divide(c1, c2);
-        });
+        assertThrows(RuntimeException.class, () -> { ComplexNumberUtil.divide(c1, c2); });
     }
 
     @Test
@@ -114,17 +111,16 @@ public class ComplexNumberUtilTest {
     public void testPow2() {
         ComplexNumber c1 = new ComplexNumber(-3, 4);
         ComplexNumber c2 = new ComplexNumber(2, -5);
-        ComplexNumber result = ComplexNumberUtil.pow(c1,c2);
-        ComplexNumber expected = new ComplexNumber(-1428309.3755404,738159.21728509);
-        checkIfEqual(expected,result);
+        ComplexNumber result = ComplexNumberUtil.pow(c1, c2);
+        ComplexNumber expected = new ComplexNumber(-1428309.3755404, 738159.21728509);
+        checkIfEqual(expected, result);
     }
 
     @Test
-    public void testSqrt()
-    {
-        ComplexNumber c = new ComplexNumber(-2,3);
+    public void testSqrt() {
+        ComplexNumber c = new ComplexNumber(-2, 3);
         ComplexNumber result = ComplexNumberUtil.sqrt(c);
-        checkIfEqual(new ComplexNumber(0.8959774,1.6741492),result);
+        checkIfEqual(new ComplexNumber(0.8959774, 1.6741492), result);
     }
 
     @Test

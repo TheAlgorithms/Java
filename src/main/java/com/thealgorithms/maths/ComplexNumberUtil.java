@@ -1,23 +1,19 @@
 package com.thealgorithms.maths;
 
-
 public class ComplexNumberUtil {
 
-    public static class ComplexNumber
-    {
+    public static class ComplexNumber {
         public final double REAL;
         public final double IMAGINARY;
 
-        public ComplexNumber(double real, double imaginary)
-        {
+        public ComplexNumber(double real, double imaginary) {
             REAL = real;
             IMAGINARY = imaginary;
         }
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof ComplexNumber num)
-            {
+            if (obj instanceof ComplexNumber num) {
                 return this.REAL == num.REAL && this.IMAGINARY == num.IMAGINARY;
             }
 
@@ -30,11 +26,11 @@ public class ComplexNumberUtil {
         }
     }
 
-    public final static ComplexNumber ZERO = new ComplexNumber(0,0);
-    public final static ComplexNumber ONE = new ComplexNumber(1,0);
-    public final static ComplexNumber TWO = new ComplexNumber(2,0);
-    public final static ComplexNumber PLUS_I = new ComplexNumber(0,1);
-    public final static ComplexNumber MINUS_I = new ComplexNumber(0,-1);
+    public final static ComplexNumber ZERO = new ComplexNumber(0, 0);
+    public final static ComplexNumber ONE = new ComplexNumber(1, 0);
+    public final static ComplexNumber TWO = new ComplexNumber(2, 0);
+    public final static ComplexNumber PLUS_I = new ComplexNumber(0, 1);
+    public final static ComplexNumber MINUS_I = new ComplexNumber(0, -1);
 
     /**
      * add two complex numbers
@@ -42,8 +38,7 @@ public class ComplexNumberUtil {
      * @param num2 the second complex number
      * @return the sum of num1 and num2
      */
-    public static ComplexNumber add(ComplexNumber num1, ComplexNumber num2)
-    {
+    public static ComplexNumber add(ComplexNumber num1, ComplexNumber num2) {
         return new ComplexNumber(num1.REAL + num2.REAL, num1.IMAGINARY + num2.IMAGINARY);
     }
 
@@ -54,8 +49,7 @@ public class ComplexNumberUtil {
      * @param num2 the second complex number
      * @return the result of subtracting num2 from num1
      */
-    public static ComplexNumber subtract(ComplexNumber num1, ComplexNumber num2)
-    {
+    public static ComplexNumber subtract(ComplexNumber num1, ComplexNumber num2) {
         return new ComplexNumber(num1.REAL - num2.REAL, num1.IMAGINARY - num2.IMAGINARY);
     }
 
@@ -67,12 +61,8 @@ public class ComplexNumberUtil {
      * @return the product of num1 and num2
      * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Multiplication">...</a>
      */
-    public static ComplexNumber multiply(ComplexNumber num1, ComplexNumber num2)
-    {
-        return new ComplexNumber(
-                num1.REAL*num2.REAL - num1.IMAGINARY*num2.IMAGINARY,
-                num1.REAL*num2.IMAGINARY + num1.IMAGINARY*num2.REAL
-        );
+    public static ComplexNumber multiply(ComplexNumber num1, ComplexNumber num2) {
+        return new ComplexNumber(num1.REAL * num2.REAL - num1.IMAGINARY * num2.IMAGINARY, num1.REAL * num2.IMAGINARY + num1.IMAGINARY * num2.REAL);
     }
 
     /**
@@ -84,18 +74,13 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if the divisor (num2) is zero
      * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Complex_conjugate,_absolute_value_and_argument">...</a>
      */
-    public static ComplexNumber divide(ComplexNumber num1, ComplexNumber num2)
-    {
-        final double divisor = num2.REAL*num2.REAL + num2.IMAGINARY*num2.IMAGINARY;
-        if (divisor == 0)
-        {
+    public static ComplexNumber divide(ComplexNumber num1, ComplexNumber num2) {
+        final double divisor = num2.REAL * num2.REAL + num2.IMAGINARY * num2.IMAGINARY;
+        if (divisor == 0) {
             throw new RuntimeException("Cannot divide by zero");
         }
 
-        return new ComplexNumber(
-                (num1.REAL*num2.REAL + num1.IMAGINARY*num2.IMAGINARY) / divisor,
-                (num1.IMAGINARY*num2.REAL - num1.REAL*num2.IMAGINARY) / divisor
-        );
+        return new ComplexNumber((num1.REAL * num2.REAL + num1.IMAGINARY * num2.IMAGINARY) / divisor, (num1.IMAGINARY * num2.REAL - num1.REAL * num2.IMAGINARY) / divisor);
     }
 
     /**
@@ -105,9 +90,8 @@ public class ComplexNumberUtil {
      * @return the absolute value of num
      * @link <a href="https://en.wikipedia.org/wiki/Complex_number#Complex_conjugate,_absolute_value_and_argument">...</a>
      */
-    public static double abs(ComplexNumber num)
-    {
-        return Math.sqrt(num.REAL*num.REAL + num.IMAGINARY*num.IMAGINARY);
+    public static double abs(ComplexNumber num) {
+        return Math.sqrt(num.REAL * num.REAL + num.IMAGINARY * num.IMAGINARY);
     }
 
     /**
@@ -117,13 +101,9 @@ public class ComplexNumberUtil {
      * @return e raised to the power of num
      * @link <a href="https://en.wikipedia.org/wiki/Exponential_function#Continued_fractions_for_ex">...</a>
      */
-    public static ComplexNumber exp(ComplexNumber num)
-    {
+    public static ComplexNumber exp(ComplexNumber num) {
         final double coefficient = Math.exp(num.REAL);
-        return new ComplexNumber(
-                coefficient * Math.cos(num.IMAGINARY),
-                coefficient * Math.sin(num.IMAGINARY)
-        );
+        return new ComplexNumber(coefficient * Math.cos(num.IMAGINARY), coefficient * Math.sin(num.IMAGINARY));
     }
 
     /**
@@ -134,17 +114,12 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if num is zero
      * @link <a href="https://en.wikipedia.org/wiki/Complex_logarithm#Calculating_the_principal_value">...</a>
      */
-    public static ComplexNumber ln(ComplexNumber num)
-    {
-        if (num.equals(ZERO))
-        {
+    public static ComplexNumber ln(ComplexNumber num) {
+        if (num.equals(ZERO)) {
             throw new RuntimeException("Cannot take the logarithm of zero");
         }
 
-        return  new ComplexNumber(
-                Math.log(abs(num)),
-                Math.atan2(num.IMAGINARY,num.REAL)
-        );
+        return new ComplexNumber(Math.log(abs(num)), Math.atan2(num.IMAGINARY, num.REAL));
     }
 
     /**
@@ -155,14 +130,12 @@ public class ComplexNumberUtil {
      * @return num1 raised to the power of num2
      * link <a href="https://en.wikipedia.org/wiki/Exponentiation#Complex_exponents_with_a_positive_real_base">...</a>
      */
-    public static ComplexNumber pow(ComplexNumber num1, ComplexNumber num2)
-    {
-        if (num1.equals(ZERO))
-        {
+    public static ComplexNumber pow(ComplexNumber num1, ComplexNumber num2) {
+        if (num1.equals(ZERO)) {
             return num2.equals(ZERO) ? ONE : ZERO;
         }
 
-        return exp(multiply(ln(num1),num2));
+        return exp(multiply(ln(num1), num2));
     }
 
     /**
@@ -171,9 +144,8 @@ public class ComplexNumberUtil {
      * @param num the complex number
      * @return the square root of num
      */
-    public static ComplexNumber sqrt(ComplexNumber num)
-    {
-        return pow(num,new ComplexNumber(0.5,0));
+    public static ComplexNumber sqrt(ComplexNumber num) {
+        return pow(num, new ComplexNumber(0.5, 0));
     }
 
     /**
@@ -183,11 +155,10 @@ public class ComplexNumberUtil {
      * @return the sine of num
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Relationship_to_exponential_function_">...</a>(Euler's_formula)
      */
-    public static ComplexNumber sin(ComplexNumber num)
-    {
-        ComplexNumber exp1 = exp(multiply(num,PLUS_I));
-        ComplexNumber exp2 = exp(multiply(num,MINUS_I));
-        return divide(subtract(exp1,exp2),multiply(new ComplexNumber(2,0),PLUS_I));
+    public static ComplexNumber sin(ComplexNumber num) {
+        ComplexNumber exp1 = exp(multiply(num, PLUS_I));
+        ComplexNumber exp2 = exp(multiply(num, MINUS_I));
+        return divide(subtract(exp1, exp2), multiply(new ComplexNumber(2, 0), PLUS_I));
     }
 
     /**
@@ -197,11 +168,10 @@ public class ComplexNumberUtil {
      * @return the cosine of num
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Relationship_to_exponential_function_">...</a>(Euler's_formula)
      */
-    public static ComplexNumber cos(ComplexNumber num)
-    {
-        ComplexNumber exp1 = exp(multiply(num,PLUS_I));
-        ComplexNumber exp2 = exp(multiply(num,MINUS_I));
-        return divide(add(exp1,exp2),TWO);
+    public static ComplexNumber cos(ComplexNumber num) {
+        ComplexNumber exp1 = exp(multiply(num, PLUS_I));
+        ComplexNumber exp2 = exp(multiply(num, MINUS_I));
+        return divide(add(exp1, exp2), TWO);
     }
 
     /**
@@ -212,14 +182,12 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if <code>num.real = pi*(n+0.5)</code>
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
-    public static ComplexNumber tan(ComplexNumber num)
-    {
-        if (num.REAL % Math.PI == Math.PI / 2)
-        {
+    public static ComplexNumber tan(ComplexNumber num) {
+        if (num.REAL % Math.PI == Math.PI / 2) {
             throw new RuntimeException("Cannot take the tan of a number where the real part can be expressed as pi*(n+0.5)");
         }
 
-        return divide(sin(num),cos(num));
+        return divide(sin(num), cos(num));
     }
 
     /**
@@ -230,14 +198,12 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if <code>num.real = pi*n</code>
      * @link <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">...</a>
      */
-    public static ComplexNumber cot(ComplexNumber num)
-    {
-        if (num.REAL % Math.PI == 0)
-        {
+    public static ComplexNumber cot(ComplexNumber num) {
+        if (num.REAL % Math.PI == 0) {
             throw new RuntimeException("Cannot take the cot of number with real part dividable by pi");
         }
 
-        return divide(cos(num),sin(num));
+        return divide(cos(num), sin(num));
     }
 
     /**
@@ -247,10 +213,9 @@ public class ComplexNumberUtil {
      * @return the arcsine of num
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
-    public static ComplexNumber arcsin(ComplexNumber num)
-    {
-        ComplexNumber temp = sqrt(subtract(ONE,multiply(num,num)));
-        return multiply(MINUS_I,ln(add(multiply(PLUS_I,num),temp)));
+    public static ComplexNumber arcsin(ComplexNumber num) {
+        ComplexNumber temp = sqrt(subtract(ONE, multiply(num, num)));
+        return multiply(MINUS_I, ln(add(multiply(PLUS_I, num), temp)));
     }
 
     /**
@@ -260,10 +225,9 @@ public class ComplexNumberUtil {
      * @return the arccosine of num
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
-    public static ComplexNumber arccos(ComplexNumber num)
-    {
-        ComplexNumber temp = sqrt(subtract(ONE,multiply(num,num)));
-        return multiply(MINUS_I,ln(add(num,multiply(temp,PLUS_I))));
+    public static ComplexNumber arccos(ComplexNumber num) {
+        ComplexNumber temp = sqrt(subtract(ONE, multiply(num, num)));
+        return multiply(MINUS_I, ln(add(num, multiply(temp, PLUS_I))));
     }
 
     /**
@@ -274,14 +238,12 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if <code>num=i</code> or <code>num=-i</code>
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
-    public static ComplexNumber arctan(ComplexNumber num)
-    {
-        if (num.equals(PLUS_I) || num.equals(MINUS_I))
-        {
+    public static ComplexNumber arctan(ComplexNumber num) {
+        if (num.equals(PLUS_I) || num.equals(MINUS_I)) {
             throw new RuntimeException("Cannot take the arctan of " + num);
         }
 
-        return multiply(divide(MINUS_I,TWO),ln(divide(subtract(PLUS_I,num),add(PLUS_I,num))));
+        return multiply(divide(MINUS_I, TWO), ln(divide(subtract(PLUS_I, num), add(PLUS_I, num))));
     }
 
     /**
@@ -292,14 +254,12 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if <code>num=i</code> or <code>num=-i</code>
      * @link <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Extension_to_the_complex_plane">...</a>
      */
-    public static ComplexNumber arccot(ComplexNumber num)
-    {
-        if (num.equals(PLUS_I) || num.equals(MINUS_I))
-        {
+    public static ComplexNumber arccot(ComplexNumber num) {
+        if (num.equals(PLUS_I) || num.equals(MINUS_I)) {
             throw new RuntimeException("Cannot take the arccot of " + num);
         }
 
-        return multiply(divide(MINUS_I,TWO),ln(divide(add(num,PLUS_I),subtract(num,PLUS_I))));
+        return multiply(divide(MINUS_I, TWO), ln(divide(add(num, PLUS_I), subtract(num, PLUS_I))));
     }
 
     public static void main(final String[] args) {
