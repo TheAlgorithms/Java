@@ -6,9 +6,6 @@
         <Bug pattern="EI_EXPOSE_REP2" />
     </Match>
     <Match>
-        <Bug pattern="IM_AVERAGE_COMPUTATION_COULD_OVERFLOW" />
-    </Match>
-    <Match>
         <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
     </Match>
     <Match>
@@ -16,9 +13,6 @@
     </Match>
     <Match>
         <Bug pattern="SF_SWITCH_NO_DEFAULT" />
-    </Match>
-    <Match>
-        <Bug pattern="UC_USELESS_OBJECT" />
     </Match>
     <Match>
         <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
