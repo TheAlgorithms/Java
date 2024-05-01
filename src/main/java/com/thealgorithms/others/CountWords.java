@@ -3,7 +3,7 @@ package com.thealgorithms.others;
 /**
  * @author Marcus
  */
-final public class CountWords {
+public final class CountWords {
     private CountWords() {
     }
 

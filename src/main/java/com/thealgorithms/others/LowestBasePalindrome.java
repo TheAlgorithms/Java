@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @brief Class for finding the lowest base in which a given integer is a palindrome.
      cf. https://oeis.org/A016026
  */
-final public class LowestBasePalindrome {
+public final class LowestBasePalindrome {
     private LowestBasePalindrome() {
     }
 
