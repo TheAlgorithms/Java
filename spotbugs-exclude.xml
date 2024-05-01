@@ -18,9 +18,6 @@
         <Bug pattern="SF_SWITCH_NO_DEFAULT" />
     </Match>
     <Match>
-        <Bug pattern="UC_USELESS_OBJECT" />
-    </Match>
-    <Match>
         <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT" />
     </Match>
     <Match>
