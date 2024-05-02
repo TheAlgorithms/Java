@@ -8,9 +8,20 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class LevenshteinDistanceTests {
 
     @ParameterizedTest
-    @CsvSource({"dog,cat,3", "sunday,saturday,3", "cat,cats,1", "rain,train,1"})
-    void levenshteinDistanceTest(String str1, String str2, int distance) {
-        int result = LevenshteinDistance.calculateLevenshteinDistance(str1, str2);
-        assertEquals(distance, result);
+    @CsvSource({// String 1, String 2, Expected Distance
+        "'', '', 0", "'Hello, World!', 'Hello, World!', 0", "'', 'Rust', 4", "horse, ros, 3", "tan, elephant, 6", "execute, intention, 8"})
+    void
+    naiveLevenshteinDistanceTest(String str1, String str2, int expectedDistance) {
+        int result = LevenshteinDistance.naiveLevenshteinDistance(str1, str2);
+        assertEquals(expectedDistance, result);
+    }
+
+    @ParameterizedTest
+    @CsvSource({// String 1, String 2, Expected Distance
+        "'', '', 0", "'Hello, World!', 'Hello, World!', 0", "'', 'Rust', 4", "horse, ros, 3", "tan, elephant, 6", "execute, intention, 8"})
+    void
+    optimizedLevenshteinDistanceTest(String str1, String str2, int expectedDistance) {
+        int result = LevenshteinDistance.optimizedLevenshteinDistance(str1, str2);
+        assertEquals(expectedDistance, result);
     }
 }
