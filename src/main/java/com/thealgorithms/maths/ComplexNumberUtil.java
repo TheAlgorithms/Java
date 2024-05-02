@@ -26,11 +26,11 @@ public class ComplexNumberUtil {
         }
     }
 
-    public final static ComplexNumber ZERO = new ComplexNumber(0, 0);
-    public final static ComplexNumber ONE = new ComplexNumber(1, 0);
-    public final static ComplexNumber TWO = new ComplexNumber(2, 0);
-    public final static ComplexNumber PLUS_I = new ComplexNumber(0, 1);
-    public final static ComplexNumber MINUS_I = new ComplexNumber(0, -1);
+    public static final ComplexNumber ZERO = new ComplexNumber(0, 0);
+    public static final ComplexNumber ONE = new ComplexNumber(1, 0);
+    public static final ComplexNumber TWO = new ComplexNumber(2, 0);
+    public static final ComplexNumber PLUS_I = new ComplexNumber(0, 1);
+    public static final ComplexNumber MINUS_I = new ComplexNumber(0, -1);
 
     /**
      * add two complex numbers
