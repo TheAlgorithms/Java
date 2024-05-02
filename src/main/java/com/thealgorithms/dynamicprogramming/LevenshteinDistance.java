@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
  * The Levenshtein distance is a measure of the similarity between two strings by calculating the minimum number of single-character
  * edits (insertions, deletions, or substitutions) required to change one string into the other.
  */
-public class LevenshteinDistance {
+public final class LevenshteinDistance {
 
     /**
      * Calculates the Levenshtein distance between two strings using a naive dynamic programming approach.
@@ -28,11 +28,11 @@ public class LevenshteinDistance {
      * Note that this implementation uses a straightforward dynamic programming approach without any space optimization.
      * It may consume more memory for larger input strings compared to the optimized version.
      */
-    public static int naiveLevenshteinDistance(String string1, String string2) {
+    public static int naiveLevenshteinDistance(final String string1, final String string2) {
         int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][] ::new);
 
         IntStream.range(1, string1.length() + 1).forEach(i -> IntStream.range(1, string2.length() + 1).forEach(j -> {
-            int cost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? 0 : 1;
+            final int cost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? 0 : 1;
             distanceMatrix[i][j] = Math.min(distanceMatrix[i - 1][j - 1] + cost, Math.min(distanceMatrix[i][j - 1] + 1, distanceMatrix[i - 1][j] + 1));
         }));
 
@@ -57,7 +57,7 @@ public class LevenshteinDistance {
      *
      * Additionally, it minimizes space usage by leveraging the shortest string horizontally and the longest string vertically in the computation matrix.
      */
-    public static int optimizedLevenshteinDistance(String string1, String string2) {
+    public static int optimizedLevenshteinDistance(final String string1, final String string2) {
         if (string1.isEmpty()) {
             return string2.length();
         }
@@ -69,9 +69,9 @@ public class LevenshteinDistance {
             previousDistance[0] = j;
 
             for (int i = 1; i <= string1.length(); i++) {
-                int deletionCost = previousDistance[i] + 1;
-                int insertionCost = previousDistance[i - 1] + 1;
-                int substitutionCost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? prevSubstitutionCost : prevSubstitutionCost + 1;
+                final int deletionCost = previousDistance[i] + 1;
+                final int insertionCost = previousDistance[i - 1] + 1;
+                final int substitutionCost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? prevSubstitutionCost : prevSubstitutionCost + 1;
                 prevSubstitutionCost = previousDistance[i];
                 previousDistance[i] = Math.min(deletionCost, Math.min(insertionCost, substitutionCost));
             }
