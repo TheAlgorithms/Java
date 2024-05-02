@@ -10,7 +10,7 @@ public class BinaryInsertionSort {
             int high = i - 1;
 
             while (low <= high) {
-                int mid = (low + high) / 2;
+                final int mid = (low + high) >>> 1;
                 if (temp < array[mid]) {
                     high = mid - 1;
                 } else {

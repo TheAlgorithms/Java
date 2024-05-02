@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @brief utility class implementing <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
  */
-final public class SieveOfEratosthenes {
+public final class SieveOfEratosthenes {
     private SieveOfEratosthenes() {
     }
 
