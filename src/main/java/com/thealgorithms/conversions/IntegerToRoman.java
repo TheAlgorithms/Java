@@ -9,7 +9,7 @@ package com.thealgorithms.conversions;
  */
 public class IntegerToRoman {
 
-    private static final int[] allArabianRomanNumbers = new int[] {
+    private static final int[] ALL_ROMAN_NUMBERS_IN_ARABIC = new int[] {
         1000,
         900,
         500,
@@ -24,7 +24,7 @@ public class IntegerToRoman {
         4,
         1,
     };
-    private static final String[] allRomanNumbers = new String[] {
+    private static final String[] ALL_ROMAN_NUMBERS = new String[] {
         "M",
         "CM",
         "D",
@@ -48,13 +48,13 @@ public class IntegerToRoman {
 
         StringBuilder builder = new StringBuilder();
 
-        for (int a = 0; a < allArabianRomanNumbers.length; a++) {
-            int times = num / allArabianRomanNumbers[a];
+        for (int a = 0; a < ALL_ROMAN_NUMBERS_IN_ARABIC.length; a++) {
+            int times = num / ALL_ROMAN_NUMBERS_IN_ARABIC[a];
             for (int b = 0; b < times; b++) {
-                builder.append(allRomanNumbers[a]);
+                builder.append(ALL_ROMAN_NUMBERS[a]);
             }
 
-            num -= times * allArabianRomanNumbers[a];
+            num -= times * ALL_ROMAN_NUMBERS_IN_ARABIC[a];
         }
 
         return builder.toString();
