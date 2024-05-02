@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.math.BigDecimal;
-
 public class ComplexNumberUtil {
 
     public static class ComplexNumber {
