@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.math.BigDecimal;
+
 public class ComplexNumberUtil {
 
     public static class ComplexNumber {
@@ -260,5 +262,16 @@ public class ComplexNumberUtil {
         }
 
         return multiply(divide(MINUS_I, TWO), ln(divide(add(num, PLUS_I), subtract(num, PLUS_I))));
+    }
+
+    public ComplexNumber add(ComplexNumber added)
+    {
+        return new ComplexNumber(1,1);
+    }
+
+    public static void main(String[] args)
+    {
+        ComplexNumber num1 = new ComplexNumber(1,1);
+        ComplexNumber num2 =  new ComplexNumber(2,3);
     }
 }
