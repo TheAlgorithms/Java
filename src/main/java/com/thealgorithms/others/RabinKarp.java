@@ -9,15 +9,15 @@ import java.util.Scanner;
 // Program will simply end if there is no match
 public class RabinKarp {
 
-    public static Scanner scanner = null;
-    public static final int d = 256;
+    public static Scanner SCANNER = null;
+    public static final int ALPHABET_SIZE = 256;
 
     public static void main(String[] args) {
-        scanner = new Scanner(System.in);
+        SCANNER = new Scanner(System.in);
         System.out.println("Enter String");
-        String text = scanner.nextLine();
+        String text = SCANNER.nextLine();
         System.out.println("Enter pattern");
-        String pattern = scanner.nextLine();
+        String pattern = SCANNER.nextLine();
 
         int q = 101;
         searchPat(text, pattern, q);
@@ -32,14 +32,14 @@ public class RabinKarp {
         int j = 0;
         int i = 0;
 
-        h = (int) Math.pow(d, m - 1) % q;
+        h = (int) Math.pow(ALPHABET_SIZE, m - 1) % q;
 
         for (i = 0; i < m; i++) {
             // hash value is calculated for each character and then added with the hash value of the
             // next character for pattern as well as the text for length equal to the length of
             // pattern
-            p = (d * p + pattern.charAt(i)) % q;
-            t = (d * t + text.charAt(i)) % q;
+            p = (ALPHABET_SIZE * p + pattern.charAt(i)) % q;
+            t = (ALPHABET_SIZE * t + text.charAt(i)) % q;
         }
 
         for (i = 0; i <= n - m; i++) {
@@ -67,7 +67,7 @@ public class RabinKarp {
             // value of the next character after the end of the evaluated characters is added to get
             // the hash value of the next window of characters in the text
             if (i < n - m) {
-                t = (d * (t - text.charAt(i) * h) + text.charAt(i + m)) % q;
+                t = (ALPHABET_SIZE * (t - text.charAt(i) * h) + text.charAt(i + m)) % q;
 
                 // if hash value becomes less than zero than q is added to make it positive
                 if (t < 0) {

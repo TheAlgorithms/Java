@@ -108,7 +108,7 @@
 
     <!-- Checks for Naming Conventions.                  -->
     <!-- See https://checkstyle.org/checks/naming/index.html -->
-    <!-- TODO <module name="ConstantName"/> -->
+    <module name="ConstantName"/>
     <!-- TODO <module name="LocalFinalVariableName"/> -->
     <!-- TODO <module name="LocalVariableName"/> -->
     <!-- TODO <module name="MemberName"/> -->
