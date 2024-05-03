@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
  * edits (insertions, deletions, or substitutions) required to change one string into the other.
  */
 public final class LevenshteinDistance {
+    private LevenshteinDistance() {
+    }
 
     /**
      * Calculates the Levenshtein distance between two strings using a naive dynamic programming approach.
