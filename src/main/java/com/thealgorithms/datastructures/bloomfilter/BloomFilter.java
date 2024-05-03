@@ -42,7 +42,7 @@ public class BloomFilter<T> {
 
         int index;
 
-        public Hash(int index) {
+        Hash(int index) {
             this.index = index;
         }
 

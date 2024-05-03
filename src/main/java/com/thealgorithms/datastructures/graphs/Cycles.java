@@ -10,7 +10,7 @@ class Cycle {
     private boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
 
-    public Cycle() {
+    Cycle() {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the no. of nodes: ");
         nodes = in.nextInt();

@@ -127,7 +127,7 @@ class Trie {
     TrieNode root;
     char endSymbol;
 
-    public Trie() {
+    Trie() {
         this.root = new TrieNode();
         this.endSymbol = '*';
     }

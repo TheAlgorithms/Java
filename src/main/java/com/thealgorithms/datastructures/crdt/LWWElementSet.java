@@ -26,7 +26,7 @@ class Element {
      * @param timestamp The timestamp associated with the element.
      * @param bias      The bias of the element (ADDS or REMOVALS).
      */
-    public Element(String key, int timestamp, Bias bias) {
+    Element(String key, int timestamp, Bias bias) {
         this.key = key;
         this.timestamp = timestamp;
         this.bias = bias;
@@ -49,7 +49,7 @@ class LWWElementSet {
     /**
      * Constructs an empty LWWElementSet.
      */
-    public LWWElementSet() {
+    LWWElementSet() {
         this.addSet = new HashMap<>();
         this.removeSet = new HashMap<>();
     }
