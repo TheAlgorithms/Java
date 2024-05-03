@@ -68,7 +68,7 @@ class AdjacencyMatrixGraph {
     /**
      * Constructor
      */
-    public AdjacencyMatrixGraph(int givenNumberOfVertices) {
+    AdjacencyMatrixGraph(int givenNumberOfVertices) {
         this.setNumberOfVertices(givenNumberOfVertices);
         this.setNumberOfEdges(0);
         this.setAdjacency(new int[givenNumberOfVertices][givenNumberOfVertices]);

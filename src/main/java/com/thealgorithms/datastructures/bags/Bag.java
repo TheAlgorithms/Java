@@ -80,7 +80,7 @@ public class Bag<Element> implements Iterable<Element> {
 
         private Node<Element> currentElement;
 
-        public ListIterator(Node<Element> firstElement) {
+        ListIterator(Node<Element> firstElement) {
             currentElement = firstElement;
         }
 

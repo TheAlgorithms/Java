@@ -25,7 +25,7 @@ class QueueWithStack {
     /**
      * Constructor
      */
-    public QueueWithStack() {
+    QueueWithStack() {
         this.inStack = new Stack<>();
         this.outStack = new Stack<>();
     }

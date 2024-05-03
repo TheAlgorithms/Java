@@ -15,7 +15,7 @@ public class LazySegmentTree {
         private int lazy; // lazied value that should be added to children nodes
         Node left, right; // left and right children
 
-        public Node(int start, int end, int value) {
+        Node(int start, int end, int value) {
             this.start = start;
             this.end = end;
             this.value = value;

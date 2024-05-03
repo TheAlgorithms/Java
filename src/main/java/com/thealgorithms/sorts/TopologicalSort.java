@@ -43,7 +43,7 @@ public class TopologicalSort {
          * */
         public final ArrayList<String> next = new ArrayList<>();
 
-        public Vertex(String label) {
+        Vertex(String label) {
             this.label = label;
         }
     }
@@ -69,7 +69,7 @@ public class TopologicalSort {
 
     static class BackEdgeException extends RuntimeException {
 
-        public BackEdgeException(String backEdge) {
+        BackEdgeException(String backEdge) {
             super("This graph contains a cycle. No linear ordering is possible. " + backEdge);
         }
     }

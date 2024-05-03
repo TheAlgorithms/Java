@@ -19,7 +19,7 @@ public class JobSequencing {
             return otherJob.profit - this.profit;
         }
 
-        public Job(char id, int deadline, int profit) {
+        Job(char id, int deadline, int profit) {
             this.id = id;
             this.deadline = deadline;
             this.profit = profit;
