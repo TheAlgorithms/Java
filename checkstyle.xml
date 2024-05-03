@@ -148,7 +148,7 @@
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
     <module name="ModifierOrder"/>
-    <!-- TODO <module name="RedundantModifier"/> -->
+    <module name="RedundantModifier"/>
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->

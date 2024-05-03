@@ -31,7 +31,7 @@ class BellmanFord /*
          * @param v End vertex
          * @param c Weight
          */
-        public Edge(int a, int b, int c) {
+        Edge(int a, int b, int c) {
             u = a;
             v = b;
             w = c;

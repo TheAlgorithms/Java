@@ -110,7 +110,7 @@ class Link {
      *
      * @param value Value of node
      */
-    public Link(int value) {
+    Link(int value) {
         this.value = value;
     }
 

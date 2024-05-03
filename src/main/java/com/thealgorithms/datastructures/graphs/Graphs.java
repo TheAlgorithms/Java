@@ -6,7 +6,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
     ArrayList<Vertex> vertices;
 
-    public AdjacencyListGraph() {
+    AdjacencyListGraph() {
         vertices = new ArrayList<>();
     }
 
@@ -15,7 +15,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         E data;
         ArrayList<Vertex> adjacentVertices;
 
-        public Vertex(E data) {
+        Vertex(E data) {
             adjacentVertices = new ArrayList<>();
             this.data = data;
         }

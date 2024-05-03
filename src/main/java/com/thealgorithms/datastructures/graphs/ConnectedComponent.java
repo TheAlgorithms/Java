@@ -15,7 +15,7 @@ class Graph<E extends Comparable<E>> {
 
         E name;
 
-        public Node(E name) {
+        Node(E name) {
             this.name = name;
         }
     }
@@ -24,7 +24,7 @@ class Graph<E extends Comparable<E>> {
 
         Node startNode, endNode;
 
-        public Edge(Node startNode, Node endNode) {
+        Edge(Node startNode, Node endNode) {
             this.startNode = startNode;
             this.endNode = endNode;
         }
@@ -33,7 +33,7 @@ class Graph<E extends Comparable<E>> {
     ArrayList<Edge> edgeList;
     ArrayList<Node> nodeList;
 
-    public Graph() {
+    Graph() {
         edgeList = new ArrayList<Edge>();
         nodeList = new ArrayList<Node>();
     }

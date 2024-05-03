@@ -26,7 +26,7 @@ class GCounter {
      *
      * @param n The number of nodes in the cluster.
      */
-    public GCounter(int myId, int n) {
+    GCounter(int myId, int n) {
         this.myId = myId;
         this.n = n;
         this.P = new HashMap<>();

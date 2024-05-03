@@ -68,7 +68,7 @@ public class KDTree {
             return coordinates.length;
         }
 
-        public Point(int[] coordinates) {
+        Point(int[] coordinates) {
             this.coordinates = coordinates;
         }
 
