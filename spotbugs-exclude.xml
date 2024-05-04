@@ -125,4 +125,164 @@
     <Match>
         <Bug pattern="RV_ABSOLUTE_VALUE_OF_HASHCODE" />
     </Match>
+    <!-- fb-contrib -->
+    <Match>
+        <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER" />
+    </Match>
+    <Match>
+        <Bug pattern="NAB_NEEDLESS_BOOLEAN_CONSTANT_CONVERSION" />
+    </Match>
+    <Match>
+        <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
+    </Match>
+    <Match>
+        <Bug pattern="CE_CLASS_ENVY" />
+    </Match>
+    <Match>
+        <Bug pattern="PSC_PRESIZE_COLLECTIONS" />
+    </Match>
+    <Match>
+        <Bug pattern="SACM_STATIC_ARRAY_CREATED_IN_METHOD" />
+    </Match>
+    <Match>
+        <Bug pattern="LUI_USE_SINGLETON_LIST" />
+    </Match>
+    <Match>
+        <Bug pattern="CLI_CONSTANT_LIST_INDEX" />
+    </Match>
+    <Match>
+        <Bug pattern="BED_BOGUS_EXCEPTION_DECLARATION" />
+    </Match>
+    <Match>
+        <Bug pattern="CNC_COLLECTION_NAMING_CONFUSION" />
+    </Match>
+    <Match>
+        <Bug pattern="TR_TAIL_RECURSION" />
+    </Match>
+    <Match>
+        <Bug pattern="LII_LIST_INDEXED_ITERATING" />
+    </Match>
+    <Match>
+        <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
+    </Match>
+    <Match>
+        <Bug pattern="MAC_MANUAL_ARRAY_COPY" />
+    </Match>
+    <Match>
+        <Bug pattern="SPP_USE_ISEMPTY" />
+    </Match>
+    <Match>
+        <Bug pattern="BL_BURYING_LOGIC" />
+    </Match>
+    <Match>
+        <Bug pattern="OI_OPTIONAL_ISSUES_USES_IMMEDIATE_EXECUTION" />
+    </Match>
+    <Match>
+        <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS" />
+    </Match>
+    <Match>
+        <Bug pattern="UTWR_USE_TRY_WITH_RESOURCES" />
+    </Match>
+    <Match>
+        <Bug pattern="MUI_CONTAINSKEY_BEFORE_GET" />
+    </Match>
+    <Match>
+        <Bug pattern="IMC_IMMATURE_CLASS_PRINTSTACKTRACE" />
+    </Match>
+    <Match>
+        <Bug pattern="UCPM_USE_CHARACTER_PARAMETERIZED_METHOD" />
+    </Match>
+    <Match>
+        <Bug pattern="SUA_SUSPICIOUS_UNINITIALIZED_ARRAY" />
+    </Match>
+    <Match>
+        <Bug pattern="SPP_USE_MATH_CONSTANT" />
+    </Match>
+    <Match>
+        <Bug pattern="UJM_UNJITABLE_METHOD" />
+    </Match>
+    <Match>
+        <Bug pattern="SEC_SIDE_EFFECT_CONSTRUCTOR" />
+    </Match>
+    <Match>
+        <Bug pattern="MDM_STRING_BYTES_ENCODING" />
+    </Match>
+    <Match>
+        <Bug pattern="PMB_POSSIBLE_MEMORY_BLOAT" />
+    </Match>
+    <Match>
+        <Bug pattern="LSYC_LOCAL_SYNCHRONIZED_COLLECTION" />
+    </Match>
+    <Match>
+        <Bug pattern="IOI_USE_OF_FILE_STREAM_CONSTRUCTORS" />
+    </Match>
+    <Match>
+        <Bug pattern="UP_UNUSED_PARAMETER" />
+    </Match>
+    <Match>
+        <Bug pattern="DSOC_DUBIOUS_SET_OF_COLLECTIONS" />
+    </Match>
+    <Match>
+        <Bug pattern="NAB_NEEDLESS_BOX_TO_UNBOX" />
+    </Match>
+    <Match>
+        <Bug pattern="FPL_FLOATING_POINT_LOOPS" />
+    </Match>
+    <Match>
+        <Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
+    </Match>
+    <Match>
+        <Bug pattern="DMC_DUBIOUS_MAP_COLLECTION" />
+    </Match>
+    <Match>
+        <Bug pattern="SPP_PASSING_THIS_AS_PARM" />
+    </Match>
+    <Match>
+        <Bug pattern="FCBL_FIELD_COULD_BE_LOCAL" />
+    </Match>
+    <Match>
+        <Bug pattern="ENMI_EQUALS_ON_ENUM" />
+    </Match>
+    <Match>
+        <Bug pattern="NAB_NEEDLESS_BOXING_PARSE" />
+    </Match>
+    <Match>
+        <Bug pattern="IMC_IMMATURE_CLASS_VAR_NAME" />
+    </Match>
+    <Match>
+        <Bug pattern="CFS_CONFUSING_FUNCTION_SEMANTICS" />
+    </Match>
+    <Match>
+        <Bug pattern="PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS" />
+    </Match>
+    <Match>
+        <Bug pattern="FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY" />
+    </Match>
+    <Match>
+        <Bug pattern="LEST_LOST_EXCEPTION_STACK_TRACE" />
+    </Match>
+    <Match>
+        <Bug pattern="PL_PARALLEL_LISTS" />
+    </Match>
+    <Match>
+        <Bug pattern="PCAIL_POSSIBLE_CONSTANT_ALLOCATION_IN_LOOP" />
+    </Match>
+    <Match>
+        <Bug pattern="STT_STRING_PARSING_A_FIELD" />
+    </Match>
+    <Match>
+        <Bug pattern="IMC_IMMATURE_CLASS_BAD_SERIALVERSIONUID" />
+    </Match>
+    <Match>
+        <Bug pattern="SUI_CONTAINS_BEFORE_ADD" />
+    </Match>
+    <Match>
+        <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
+    </Match>
+    <Match>
+        <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
+    </Match>
+    <Match>
+        <Bug pattern="SPP_TOSTRING_ON_STRING" />
+    </Match>
 </FindBugsFilter>
