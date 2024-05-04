@@ -1,6 +1,6 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class RangeInSortedArray {
 

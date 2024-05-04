@@ -8,7 +8,8 @@
 /**Wikipedia link -> https://en.wikipedia.org/wiki/Shortest_path_problem */
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllPathsFromSourceToTarget {
 

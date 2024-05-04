@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 public class CircleSort implements SortAlgorithm {
 
     /* This method implements the circle sort
@@ -35,7 +33,7 @@ public class CircleSort implements SortAlgorithm {
 
         while (low < high) {
             if (array[low].compareTo(array[high]) > 0) {
-                swap(array, low, high);
+                SortUtils.swap(array, low, high);
                 swapped = true;
             }
             low++;
@@ -43,7 +41,7 @@ public class CircleSort implements SortAlgorithm {
         }
 
         if (low == high && array[low].compareTo(array[high + 1]) > 0) {
-            swap(array, low, high + 1);
+            SortUtils.swap(array, low, high + 1);
             swapped = true;
         }
 

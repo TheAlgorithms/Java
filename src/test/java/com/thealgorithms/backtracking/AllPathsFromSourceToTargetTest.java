@@ -1,8 +1,8 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-import java.util.*;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class AllPathsFromSourceToTargetTest {
