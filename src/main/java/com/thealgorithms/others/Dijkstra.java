@@ -15,7 +15,10 @@ package com.thealgorithms.others;
  * https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Java Also most of the
  * comments are from RosettaCode.
  */
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 public class Dijkstra {
 

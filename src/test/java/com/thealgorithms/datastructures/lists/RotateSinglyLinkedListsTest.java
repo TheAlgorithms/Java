@@ -5,7 +5,8 @@ package com.thealgorithms.datastructures.lists;
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 

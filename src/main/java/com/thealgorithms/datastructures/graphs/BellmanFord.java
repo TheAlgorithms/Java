@@ -1,6 +1,6 @@
 package com.thealgorithms.datastructures.graphs;
 
-import java.util.*;
+import java.util.Scanner;
 
 class BellmanFord /*
                    * Implementation of Bellman ford to detect negative cycles. Graph accepts

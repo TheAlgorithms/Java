@@ -7,7 +7,8 @@
 
 package com.thealgorithms.sorts;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class LinkListSort {
 

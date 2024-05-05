@@ -1,6 +1,10 @@
 package com.thealgorithms.sorts;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 /**
  * The Topological Sorting algorithm linearly orders a DAG or Directed Acyclic Graph into

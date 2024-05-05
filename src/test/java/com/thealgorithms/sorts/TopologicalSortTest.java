@@ -1,6 +1,8 @@
 package com.thealgorithms.sorts;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.thealgorithms.sorts.TopologicalSort.BackEdgeException;
 import com.thealgorithms.sorts.TopologicalSort.Graph;

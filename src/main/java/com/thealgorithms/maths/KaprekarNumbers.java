@@ -1,7 +1,8 @@
 package com.thealgorithms.maths;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KaprekarNumbers {
 

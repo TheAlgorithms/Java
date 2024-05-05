@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 import java.util.function.Function;
 
 class InsertionSort implements SortAlgorithm {
@@ -20,8 +18,8 @@ class InsertionSort implements SortAlgorithm {
 
     public <T extends Comparable<T>> T[] sort(T[] array, int lo, int hi) {
         for (int i = lo; i < hi; i++) {
-            for (int j = i; j > lo && less(array[j], array[j - 1]); j--) {
-                swap(array, j, j - 1);
+            for (int j = i; j > lo && SortUtils.less(array[j], array[j - 1]); j--) {
+                SortUtils.swap(array, j, j - 1);
             }
         }
         return array;
@@ -45,13 +43,13 @@ class InsertionSort implements SortAlgorithm {
         // put the smallest element to the 0 position as a sentinel, which will allow us to avoid
         // redundant comparisons like `j > 0` further
         for (int i = 1; i < n; i++)
-            if (less(array[i], array[minElemIndex])) minElemIndex = i;
-        swap(array, 0, minElemIndex);
+            if (SortUtils.less(array[i], array[minElemIndex])) minElemIndex = i;
+        SortUtils.swap(array, 0, minElemIndex);
 
         for (int i = 2; i < n; i++) {
             int j = i;
             T currentValue = array[i];
-            while (less(currentValue, array[j - 1])) {
+            while (SortUtils.less(currentValue, array[j - 1])) {
                 array[j] = array[j - 1];
                 j--;
             }
