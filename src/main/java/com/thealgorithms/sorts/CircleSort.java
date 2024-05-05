@@ -10,6 +10,9 @@ public class CircleSort implements SortAlgorithm {
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         int n = array.length;
+        if (n == 0) {
+            return array;
+        }
         while (doSort(array, 0, n - 1)) {
         }
         return array;
@@ -49,22 +52,5 @@ public class CircleSort implements SortAlgorithm {
         Boolean rightHalf = doSort(array, mid + 1, right);
 
         return swapped || leftHalf || rightHalf;
-    }
-
-    /* Driver code*/
-    public static void main(String[] args) {
-        CircleSort CSort = new CircleSort();
-
-        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        CSort.sort(arr);
-        for (int i = 0; i < arr.length - 1; ++i) {
-            assert arr[i] <= arr[i + 1];
-        }
-
-        String[] stringArray = {"c", "a", "e", "b", "d"};
-        CSort.sort(stringArray);
-        for (int i = 0; i < stringArray.length - 1; ++i) {
-            assert arr[i].compareTo(arr[i + 1]) <= 0;
-        }
     }
 }
