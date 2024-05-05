@@ -108,7 +108,7 @@
 
     <!-- Checks for Naming Conventions.                  -->
     <!-- See https://checkstyle.org/checks/naming/index.html -->
-    <!-- TODO <module name="ConstantName"/> -->
+    <module name="ConstantName"/>
     <!-- TODO <module name="LocalFinalVariableName"/> -->
     <!-- TODO <module name="LocalVariableName"/> -->
     <!-- TODO <module name="MemberName"/> -->
@@ -147,8 +147,8 @@
 
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
-    <!-- TODO <module name="ModifierOrder"/> -->
-    <!-- TODO <module name="RedundantModifier"/> -->
+    <module name="ModifierOrder"/>
+    <module name="RedundantModifier"/>
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
@@ -160,7 +160,7 @@
 
     <!-- Checks for common coding problems               -->
     <!-- See https://checkstyle.org/checks/coding/index.html -->
-    <!-- <module name="EmptyStatement"/> -->
+    <module name="EmptyStatement"/>
     <!-- TODO <module name="EqualsHashCode"/> -->
     <!-- TODO <module name="HiddenField"/> -->
     <module name="IllegalInstantiation"/>

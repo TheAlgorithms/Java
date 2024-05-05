@@ -61,7 +61,7 @@ class Graph {
         public final String v1, v2;
         public final int dist;
 
-        public Edge(String v1, String v2, int dist) {
+        Edge(String v1, String v2, int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
@@ -79,7 +79,7 @@ class Graph {
         public Vertex previous = null;
         public final Map<Vertex, Integer> neighbours = new HashMap<>();
 
-        public Vertex(String name) {
+        Vertex(String name) {
             this.name = name;
         }
 
@@ -147,7 +147,7 @@ class Graph {
     /**
      * Builds a graph from a set of edges
      */
-    public Graph(Edge[] edges) {
+    Graph(Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
         // one pass to find all vertices

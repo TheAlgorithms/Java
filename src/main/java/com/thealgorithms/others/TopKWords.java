@@ -11,7 +11,7 @@ public class TopKWords {
 
         private String fileName;
 
-        public CountWords(String fileName) {
+        CountWords(String fileName) {
             this.fileName = fileName;
         }
 

@@ -47,7 +47,7 @@ public class BinaryTree {
          *
          * @param value Value to put in the node
          */
-        public Node(int value) {
+        Node(int value) {
             data = value;
             left = null;
             right = null;

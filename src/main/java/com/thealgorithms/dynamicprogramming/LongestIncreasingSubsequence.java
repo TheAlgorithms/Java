@@ -97,7 +97,7 @@ public class LongestIncreasingSubsequence {
             return end + 1;
         }
         while (left < right - 1) {
-            int middle = (left + right) / 2;
+            final int middle = (left + right) >>> 1;
             if (t[middle] < key) {
                 left = middle;
             } else {

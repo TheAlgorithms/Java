@@ -12,7 +12,7 @@ public final class HighestSetBit {
     private HighestSetBit() {
     }
 
-    public final static Optional<Integer> findHighestSetBit(int num) {
+    public static Optional<Integer> findHighestSetBit(int num) {
         if (num < 0) {
             throw new IllegalArgumentException("Input cannot be negative");
         }

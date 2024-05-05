@@ -38,7 +38,7 @@ class Queue {
     /**
      * init with DEFAULT_CAPACITY
      */
-    public Queue() {
+    Queue() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -47,7 +47,7 @@ class Queue {
      *
      * @param size Size of the new queue
      */
-    public Queue(int size) {
+    Queue(int size) {
         maxSize = size;
         queueArray = new int[size];
         front = 0;
