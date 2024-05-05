@@ -6,9 +6,6 @@
         <Bug pattern="EI_EXPOSE_REP2" />
     </Match>
     <Match>
-        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
-    </Match>
-    <Match>
         <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
     </Match>
     <Match>

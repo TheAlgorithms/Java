@@ -137,7 +137,7 @@ class Node {
 
 class Task {
 
-    static int[] a;
+    private int[] a;
 
     public Node sortByMergeSort(Node head) {
         if (head == null || head.next == null) return head;
@@ -245,7 +245,7 @@ class Task1 {
 
 class Task2 {
 
-    static int[] a;
+    private int[] a;
 
     public Node sortByHeapSort(Node head) {
         if (head == null || head.next == null) return head;
