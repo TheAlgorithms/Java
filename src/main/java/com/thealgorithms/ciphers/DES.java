@@ -8,7 +8,7 @@ package com.thealgorithms.ciphers;
 public class DES {
 
     private String key;
-    private String subKeys[];
+    private String[] subKeys;
 
     private void sanitize(String key) {
         int length = key.length();
@@ -78,7 +78,7 @@ public class DES {
         for (i = 0; i < 56; i++) {
             permutedKey.append(originalKey.charAt(PC1[i] - 1));
         }
-        String subKeys[] = new String[16];
+        String[] subKeys = new String[16];
         String initialPermutedKey = permutedKey.toString();
         String C0 = initialPermutedKey.substring(0, 28), D0 = initialPermutedKey.substring(28);
 
@@ -159,7 +159,7 @@ public class DES {
         return permutedString.toString();
     }
 
-    private String encryptBlock(String message, String keys[]) {
+    private String encryptBlock(String message, String[] keys) {
         StringBuilder permutedMessage = new StringBuilder();
         int i;
         for (i = 0; i < 64; i++) {
@@ -184,8 +184,8 @@ public class DES {
     }
 
     // To decode, we follow the same process as encoding, but with reversed keys
-    private String decryptBlock(String message, String keys[]) {
-        String reversedKeys[] = new String[keys.length];
+    private String decryptBlock(String message, String[] keys) {
+        String[] reversedKeys = new String[keys.length];
         for (int i = 0; i < keys.length; i++) {
             reversedKeys[i] = keys[keys.length - i - 1];
         }
@@ -230,7 +230,7 @@ public class DES {
         for (i = 0; i < l; i += 64) {
             String block = message.substring(i, i + 64);
             String result = decryptBlock(block.toString(), subKeys);
-            byte res[] = new byte[8];
+            byte[] res = new byte[8];
             for (j = 0; j < 64; j += 8) {
                 res[j / 8] = (byte) Integer.parseInt(result.substring(j, j + 8), 2);
             }
