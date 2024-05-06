@@ -181,7 +181,7 @@
 
     <!-- Miscellaneous other checks.                   -->
     <!-- See https://checkstyle.org/checks/misc/index.html -->
-    <!-- TODO <module name="ArrayTypeStyle"/> -->
+    <module name="ArrayTypeStyle"/>
     <!-- TODO <module name="FinalParameters"/> -->
     <!-- TODO <module name="TodoComment"/> -->
     <module name="UpperEll"/>
