@@ -107,7 +107,7 @@ public class ComplexNumberUtil {
     }
 
     /**
-     * Computes the natural logarithm of a complex number.
+     * Computes the principal value of natural logarithm of a complex number.
      *
      * @param num the complex number
      * @return the natural logarithm of num
