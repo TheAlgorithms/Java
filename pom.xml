@@ -127,6 +127,11 @@
                             <artifactId>fb-contrib</artifactId>
                             <version>7.6.4</version>
                         </plugin>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>1.13.0</version>
+                        </plugin>
                     </plugins>
                 </configuration>
             </plugin>
