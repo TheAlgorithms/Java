@@ -11,7 +11,9 @@ import java.util.Scanner;
  * for encryption. The cipher key and plaintext/ciphertext are user inputs.
  * @author Ojasva Jain
  */
-public class HillCipher {
+public final class HillCipher {
+    private HillCipher() {
+    }
 
     static Scanner userInput = new Scanner(System.in);
 

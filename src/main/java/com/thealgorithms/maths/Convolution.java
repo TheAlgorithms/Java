@@ -6,7 +6,9 @@ package com.thealgorithms.maths;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class Convolution {
+public final class Convolution {
+    private Convolution() {
+    }
 
     /**
      * Discrete linear convolution function. Both input signals and the output

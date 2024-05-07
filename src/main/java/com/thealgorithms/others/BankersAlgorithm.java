@@ -20,7 +20,9 @@ package com.thealgorithms.others;
  */
 import java.util.Scanner;
 
-public class BankersAlgorithm {
+public final class BankersAlgorithm {
+    private BankersAlgorithm() {
+    }
 
     /**
      * This method finds the need of each process

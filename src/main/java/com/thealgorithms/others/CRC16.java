@@ -3,7 +3,9 @@ package com.thealgorithms.others;
 /**
  * Generates a crc16 checksum for a given string
  */
-public class CRC16 {
+public final class CRC16 {
+    private CRC16() {
+    }
 
     public static void main(String[] args) {
         System.out.println(crc16("Hello World!"));

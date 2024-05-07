@@ -24,7 +24,9 @@ import javax.imageio.ImageIO;
  * https://natureofcode.com/book/chapter-8-fractals/
  * #84-the-koch-curve-and-the-arraylist-technique ).
  */
-public class KochSnowflake {
+public final class KochSnowflake {
+    private KochSnowflake() {
+    }
 
     public static void main(String[] args) {
         // Test Iterate-method

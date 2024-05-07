@@ -87,7 +87,9 @@ class Tree {
 }
 
 // Driver class to test above methods
-public class PrintTopViewofTree {
+public final class PrintTopViewofTree {
+    private PrintTopViewofTree() {
+    }
 
     public static void main(String[] args) {
         /* Create following Binary Tree

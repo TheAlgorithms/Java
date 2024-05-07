@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-public class ArrayRightRotation {
+public final class ArrayRightRotation {
+    private ArrayRightRotation() {
+    }
     public static int[] rotateRight(int[] arr, int k) {
         if (arr == null || arr.length == 0 || k < 0) {
             throw new IllegalArgumentException("Invalid input");

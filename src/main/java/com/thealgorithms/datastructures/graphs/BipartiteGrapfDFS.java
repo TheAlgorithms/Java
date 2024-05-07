@@ -14,7 +14,9 @@ import java.util.Arrays;
  *
  * Output : YES
  */
-public class BipartiteGrapfDFS {
+public final class BipartiteGrapfDFS {
+    private BipartiteGrapfDFS() {
+    }
 
     private static boolean bipartite(int V, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
         if (color[node] == -1) {

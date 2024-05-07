@@ -6,7 +6,9 @@ package com.thealgorithms.dynamicprogramming;
 // matrix Ai has dimension pi−1 ×pi
 // , fully parenthesize the product A1A2 ···An in a way that
 // minimizes the number of scalar multiplications.
-public class MatrixChainRecursiveTopDownMemoisation {
+public final class MatrixChainRecursiveTopDownMemoisation {
+    private MatrixChainRecursiveTopDownMemoisation() {
+    }
 
     static int Memoized_Matrix_Chain(int[] p) {
         int n = p.length;

@@ -11,7 +11,9 @@ import java.util.Scanner;
  * @author Ojasva Jain
  */
 
-class Sparcity {
+final class Sparcity {
+    private Sparcity() {
+    }
 
     /*
      * @return Sparcity of matrix

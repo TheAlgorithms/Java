@@ -2,7 +2,9 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 import java.util.Scanner;
 
-public class Main {
+public final class Main {
+    private Main() {
+    }
 
     public static void main(String[] args) {
         int choice, key;

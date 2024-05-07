@@ -25,7 +25,9 @@ import java.util.Scanner;
     1. [1,2,3,4] Number of rotations: 0 or 4(Both valid)
     2. [15,17,2,3,5] Number of rotations: 3
  */
-class HowManyTimesRotated {
+final class HowManyTimesRotated {
+    private HowManyTimesRotated() {
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -4,7 +4,9 @@ package com.thealgorithms.dynamicprogramming;
  * A Dynamic Programming solution for the Rod cutting problem.
  * Returns the best obtainable price for a rod of length n and price[] as prices of different pieces.
  */
-public class RodCutting {
+public final class RodCutting {
+    private RodCutting() {
+    }
 
     /**
      * This method calculates the maximum obtainable value for cutting a rod of length n

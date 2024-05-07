@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public final class MedianOfMatrix {
+    private MedianOfMatrix() {
+    }
 
     public static int median(List<List<Integer>> matrix) {
         // Flatten the matrix into a 1D list

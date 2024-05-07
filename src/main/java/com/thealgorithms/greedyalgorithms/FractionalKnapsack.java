@@ -5,7 +5,9 @@ import java.util.Comparator;
 
 // Problem Link: https://en.wikipedia.org/wiki/Continuous_knapsack_problem
 
-public class FractionalKnapsack {
+public final class FractionalKnapsack {
+    private FractionalKnapsack() {
+    }
     // Function to perform fractional knapsack
     public static int fractionalKnapsack(int[] weight, int[] value, int capacity) {
         // Create a 2D array to store item indices and their value-to-weight ratios.

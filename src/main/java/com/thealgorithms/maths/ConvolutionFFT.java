@@ -9,7 +9,9 @@ import java.util.ArrayList;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class ConvolutionFFT {
+public final class ConvolutionFFT {
+    private ConvolutionFFT() {
+    }
 
     /**
      * This method pads the signal with zeros until it reaches the new size.

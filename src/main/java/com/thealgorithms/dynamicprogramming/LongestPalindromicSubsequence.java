@@ -4,7 +4,9 @@ package com.thealgorithms.dynamicprogramming;
  * Algorithm explanation
  * https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
  */
-public class LongestPalindromicSubsequence {
+public final class LongestPalindromicSubsequence {
+    private LongestPalindromicSubsequence() {
+    }
 
     public static void main(String[] args) {
         String a = "BBABCBCAB";

@@ -152,7 +152,9 @@ class Queue {
  *
  * @author Unknown
  */
-public class Queues {
+public final class Queues {
+    private Queues() {
+    }
 
     /**
      * Main method

@@ -4,7 +4,9 @@ package com.thealgorithms.conversions;
  * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 // Driver program
-public class AnyBaseToDecimal {
+public final class AnyBaseToDecimal {
+    private AnyBaseToDecimal() {
+    }
 
     public static void main(String[] args) {
         assert convertToDecimal("1010", 2) == Integer.valueOf("1010", 2);

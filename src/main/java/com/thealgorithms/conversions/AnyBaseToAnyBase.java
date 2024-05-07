@@ -13,7 +13,9 @@ import java.util.Scanner;
  * @author Michael Rolland
  * @version 2017.10.10
  */
-public class AnyBaseToAnyBase {
+public final class AnyBaseToAnyBase {
+    private AnyBaseToAnyBase() {
+    }
 
     /**
      * Smallest and largest base you want to accept as valid input

@@ -16,7 +16,9 @@ import java.util.Stack;
  *
  */
 
-public class PostfixToInfix {
+public final class PostfixToInfix {
+    private PostfixToInfix() {
+    }
 
     public static boolean isOperator(char token) {
         switch (token) {

@@ -4,7 +4,9 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KaprekarNumbers {
+public final class KaprekarNumbers {
+    private KaprekarNumbers() {
+    }
 
     /* This program demonstrates if a given number is Kaprekar Number or not.
         Kaprekar Number: A Kaprekar number is an n-digit number which its square can be split into

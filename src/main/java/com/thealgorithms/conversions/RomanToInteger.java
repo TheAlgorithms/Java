@@ -3,7 +3,9 @@ package com.thealgorithms.conversions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RomanToInteger {
+public final class RomanToInteger {
+    private RomanToInteger() {
+    }
 
     private static final Map<Character, Integer> ROMAN_TO_INT = new HashMap<>() {
         {

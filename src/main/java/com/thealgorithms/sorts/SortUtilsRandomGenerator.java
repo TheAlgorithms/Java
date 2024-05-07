@@ -2,7 +2,9 @@ package com.thealgorithms.sorts;
 
 import java.util.Random;
 
-public class SortUtilsRandomGenerator {
+public final class SortUtilsRandomGenerator {
+    private SortUtilsRandomGenerator() {
+    }
 
     private static final Random RANDOM;
     private static final long SEED;

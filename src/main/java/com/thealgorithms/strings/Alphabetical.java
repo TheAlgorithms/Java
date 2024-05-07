@@ -5,7 +5,9 @@ package com.thealgorithms.strings;
  * based on the position of the characters in the conventional ordering of an
  * alphabet. Wikipedia: https://en.wikipedia.org/wiki/Alphabetical_order
  */
-class Alphabetical {
+final class Alphabetical {
+    private Alphabetical() {
+    }
 
     public static void main(String[] args) {
         assert !isAlphabetical("123abc");

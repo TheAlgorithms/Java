@@ -6,7 +6,9 @@ package com.thealgorithms.conversions;
  * @author Bama Charan Chhandogi
  */
 
-public class OctalToBinary {
+public final class OctalToBinary {
+    private OctalToBinary() {
+    }
     public static long convertOctalToBinary(int octalNumber) {
         long binaryNumber = 0;
         int digitPosition = 1;

@@ -1,6 +1,8 @@
 package com.thealgorithms.strings;
 
-public class Upper {
+public final class Upper {
+    private Upper() {
+    }
 
     /**
      * Driver Code

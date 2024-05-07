@@ -9,7 +9,9 @@ import java.util.Set;
  * on the position of the characters in the conventional ordering of an
  * alphabet. Wikipedia: https://en.wikipedia.org/wiki/Alphabetical_order
  */
-public class CheckVowels {
+public final class CheckVowels {
+    private CheckVowels() {
+    }
 
     private static final Set<Character> VOWELS = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
 

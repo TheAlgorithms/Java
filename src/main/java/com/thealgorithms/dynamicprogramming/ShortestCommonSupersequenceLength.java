@@ -1,7 +1,9 @@
 package com.thealgorithms.dynamicprogramming;
 
 // Java program to find length of the shortest supersequence
-class ShortestSuperSequence {
+final class ShortestSuperSequence {
+    private ShortestSuperSequence() {
+    }
 
     // Function to find length of the
     // shortest supersequence of X and Y.

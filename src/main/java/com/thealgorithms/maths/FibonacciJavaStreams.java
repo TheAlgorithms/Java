@@ -9,7 +9,9 @@ import java.util.stream.Stream;
  * @author: caos321
  * @date: 14 October 2021 (Thursday)
  */
-public class FibonacciJavaStreams {
+public final class FibonacciJavaStreams {
+    private FibonacciJavaStreams() {
+    }
 
     public static Optional<BigDecimal> calculate(final BigDecimal index) {
         if (index == null || index.compareTo(BigDecimal.ZERO) < 0) {

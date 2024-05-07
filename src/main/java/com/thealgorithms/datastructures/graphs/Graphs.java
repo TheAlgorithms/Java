@@ -120,7 +120,9 @@ class AdjacencyListGraph<E extends Comparable<E>> {
     }
 }
 
-public class Graphs {
+public final class Graphs {
+    private Graphs() {
+    }
 
     public static void main(String[] args) {
         AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();

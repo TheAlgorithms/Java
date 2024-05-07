@@ -5,7 +5,9 @@ import java.util.Arrays;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Median
  */
-public class Median {
+public final class Median {
+    private Median() {
+    }
 
     /**
      * Calculate average median

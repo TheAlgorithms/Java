@@ -2,7 +2,9 @@ package com.thealgorithms.datastructures.lists;
 
 import java.util.Scanner;
 
-public class CreateAndDetectLoop {
+public final class CreateAndDetectLoop {
+    private CreateAndDetectLoop() {
+    }
 
     /**
      * Prints the linked list.

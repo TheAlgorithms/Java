@@ -18,7 +18,9 @@ import java.util.Scanner;
  * @version 11.0.9
  * @since 2014-03-31
  */
-public class matrixTranspose {
+public final class matrixTranspose {
+    private matrixTranspose() {
+    }
 
     public static void main(String[] args) {
         /*

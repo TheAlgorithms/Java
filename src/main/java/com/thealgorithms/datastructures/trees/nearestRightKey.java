@@ -3,7 +3,9 @@ package com.thealgorithms.datastructures.trees;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-class Main {
+final class Main {
+    private Main() {
+    }
 
     public static void main(String[] args) {
         NRKTree root = BuildTree();

@@ -8,7 +8,9 @@
 
 package com.thealgorithms.maths;
 
-public class LongDivision {
+public final class LongDivision {
+    private LongDivision() {
+    }
     public static int divide(int dividend, int divisor) {
         long new_dividend_1 = dividend;
         long new_divisor_1 = divisor;

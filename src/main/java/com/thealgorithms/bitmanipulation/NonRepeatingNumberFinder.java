@@ -5,7 +5,9 @@ package com.thealgorithms.bitmanipulation;
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-public class NonRepeatingNumberFinder {
+public final class NonRepeatingNumberFinder {
+    private NonRepeatingNumberFinder() {
+    }
 
     public static int findNonRepeatingNumber(int[] arr) {
         int result = 0;

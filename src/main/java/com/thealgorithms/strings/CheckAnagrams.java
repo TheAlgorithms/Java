@@ -7,7 +7,9 @@ import java.util.Map;
  * Two strings are anagrams if they are made of the same letters arranged
  * differently (ignoring the case).
  */
-public class CheckAnagrams {
+public final class CheckAnagrams {
+    private CheckAnagrams() {
+    }
     /**
      * Check if two strings are anagrams or not
      *

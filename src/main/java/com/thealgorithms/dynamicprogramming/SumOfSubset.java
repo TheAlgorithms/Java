@@ -1,6 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-public class SumOfSubset {
+public final class SumOfSubset {
+    private SumOfSubset() {
+    }
 
     public static boolean subsetSum(int[] arr, int num, int Key) {
         if (Key == 0) {

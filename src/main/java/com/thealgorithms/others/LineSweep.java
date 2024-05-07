@@ -11,7 +11,9 @@ import java.util.Comparator;
  * https://en.wikipedia.org/wiki/Sweep_line_algorithm
  * https://en.wikipedia.org/wiki/De_Morgan%27s_laws>
  */
-public class LineSweep {
+public final class LineSweep {
+    private LineSweep() {
+    }
 
     /**
      * Find Maximum end point

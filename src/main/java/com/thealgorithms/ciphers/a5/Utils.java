@@ -7,7 +7,9 @@ package com.thealgorithms.ciphers.a5;
 
 import java.util.BitSet;
 
-public class Utils {
+public final class Utils {
+    private Utils() {
+    }
 
     public static boolean increment(BitSet bits, int size) {
         int i = size - 1;

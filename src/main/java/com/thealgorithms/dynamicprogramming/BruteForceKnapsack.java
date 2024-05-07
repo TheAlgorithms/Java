@@ -2,7 +2,9 @@ package com.thealgorithms.dynamicprogramming;
 
 /* A Naive recursive implementation
 of 0-1 Knapsack problem */
-public class BruteForceKnapsack {
+public final class BruteForceKnapsack {
+    private BruteForceKnapsack() {
+    }
     // Returns the maximum value that
     // can be put in a knapsack of
     // capacity W

@@ -78,7 +78,9 @@ class Cycle {
     }
 }
 
-public class Cycles {
+public final class Cycles {
+    private Cycles() {
+    }
 
     public static void main(String[] args) {
         Cycle c = new Cycle();

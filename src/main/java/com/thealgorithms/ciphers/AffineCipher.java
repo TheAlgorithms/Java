@@ -1,6 +1,8 @@
 package com.thealgorithms.ciphers;
 
-class AffineCipher {
+final class AffineCipher {
+    private AffineCipher() {
+    }
 
     // Key values of a and b
     static int a = 17;

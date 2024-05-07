@@ -7,7 +7,9 @@ import java.util.Stack;
  * @author mohd rameez github.com/rameez471
  */
 
-public class LargestRectangle {
+public final class LargestRectangle {
+    private LargestRectangle() {
+    }
 
     public static String largestRectanglehistogram(int[] heights) {
         int n = heights.length, maxArea = 0;

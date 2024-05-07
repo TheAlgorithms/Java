@@ -2,7 +2,9 @@ package com.thealgorithms.greedyalgorithms;
 
 import java.util.Arrays;
 
-public class MinimizingLateness {
+public final class MinimizingLateness {
+    private MinimizingLateness() {
+    }
 
     public static class Job {
         String jobName;

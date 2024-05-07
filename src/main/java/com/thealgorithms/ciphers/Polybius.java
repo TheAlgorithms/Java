@@ -13,7 +13,9 @@ package com.thealgorithms.ciphers;
  * @author Hikmet ÇAKIR
  * @since 08-07-2022+03:00
  */
-public class Polybius {
+public final class Polybius {
+    private Polybius() {
+    }
 
     private static final char[][] KEY = {
         //         0    1    2    3    4

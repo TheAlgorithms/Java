@@ -5,7 +5,9 @@ import java.util.HashSet;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
-public class Pangram {
+public final class Pangram {
+    private Pangram() {
+    }
 
     /**
      * Test code

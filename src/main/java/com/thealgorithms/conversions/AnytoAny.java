@@ -6,7 +6,9 @@ import java.util.Scanner;
 // number.
 // sn ,sb,db ---> ()dn  .   this is what we have to do    .
 
-public class AnytoAny {
+public final class AnytoAny {
+    private AnytoAny() {
+    }
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);

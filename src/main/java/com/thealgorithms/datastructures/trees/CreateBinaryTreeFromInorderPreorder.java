@@ -17,7 +17,9 @@ import java.util.Map;
  * Complexity: Time: O(n) hashmap reduced iteration to find index in inorder
  * array Space: O(n) space taken by hashmap
  */
-public class CreateBinaryTreeFromInorderPreorder {
+public final class CreateBinaryTreeFromInorderPreorder {
+    private CreateBinaryTreeFromInorderPreorder() {
+    }
     public static Node createTree(final Integer[] preorder, final Integer[] inorder) {
         if (preorder == null || inorder == null) {
             return null;

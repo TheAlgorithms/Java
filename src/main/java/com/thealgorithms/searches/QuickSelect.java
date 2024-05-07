@@ -10,6 +10,8 @@ import java.util.Objects;
  * <a href="https://en.wikipedia.org/wiki/Median_of_medians">here</a>.
  */
 public final class QuickSelect {
+    private QuickSelect() {
+    }
 
     /**
      * Selects the {@code n}-th largest element of {@code list}, i.e. the element that would

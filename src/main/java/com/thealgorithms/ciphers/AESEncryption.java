@@ -17,7 +17,9 @@ import javax.crypto.spec.GCMParameterSpec;
  * hence in the following program we display it in hexadecimal format of the
  * underlying bytes.
  */
-public class AESEncryption {
+public final class AESEncryption {
+    private AESEncryption() {
+    }
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
     private static Cipher aesCipher;

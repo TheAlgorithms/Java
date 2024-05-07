@@ -2,7 +2,9 @@ package com.thealgorithms.misc;
 
 import java.util.Arrays;
 
-public class RangeInSortedArray {
+public final class RangeInSortedArray {
+    private RangeInSortedArray() {
+    }
 
     public static void main(String[] args) {
         // Testcases

@@ -11,7 +11,9 @@ package com.thealgorithms.searches;
    Depending upon the condition, respective statements will be executed and we will get our answer.
  */
 
-public class OrderAgnosticBinarySearch {
+public final class OrderAgnosticBinarySearch {
+    private OrderAgnosticBinarySearch() {
+    }
 
     static int BinSearchAlgo(int[] arr, int start, int end, int target) {
 
