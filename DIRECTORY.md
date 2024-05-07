@@ -858,6 +858,7 @@
             * [BogoSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BogoSortTest.java)
             * [BubbleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BubbleSortTest.java)
             * [BucketSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BucketSortTest.java)
+            * [CircleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/CircleSortTest.java)
             * [CocktailShakerSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/CocktailShakerSortTest.java)
             * [CombSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/CombSortTest.java)
             * [DualPivotQuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/DualPivotQuickSortTest.java)
