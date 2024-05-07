@@ -139,7 +139,7 @@ public class ComplexNumberUtil {
     }
 
     /**
-     * Computes the square root of a complex number.
+     * Computes the principal square root of a complex number.
      *
      * @param num the complex number
      * @return the square root of num
