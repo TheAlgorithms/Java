@@ -1,6 +1,6 @@
 package com.thealgorithms.others;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.sorts.LinkListSort;
 import org.junit.jupiter.api.Test;

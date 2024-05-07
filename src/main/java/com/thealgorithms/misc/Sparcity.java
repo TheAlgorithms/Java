@@ -1,6 +1,6 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
  *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements

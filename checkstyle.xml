@@ -108,7 +108,7 @@
 
     <!-- Checks for Naming Conventions.                  -->
     <!-- See https://checkstyle.org/checks/naming/index.html -->
-    <!-- TODO <module name="ConstantName"/> -->
+    <module name="ConstantName"/>
     <!-- TODO <module name="LocalFinalVariableName"/> -->
     <!-- TODO <module name="LocalVariableName"/> -->
     <!-- TODO <module name="MemberName"/> -->
@@ -120,7 +120,7 @@
 
     <!-- Checks for imports                              -->
     <!-- See https://checkstyle.org/checks/imports/index.html -->
-    <!-- TODO <module name="AvoidStarImport"/> -->
+    <module name="AvoidStarImport"/>
     <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
     <module name="RedundantImport"/>
     <module name="UnusedImports">
@@ -148,7 +148,7 @@
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
     <module name="ModifierOrder"/>
-    <!-- TODO <module name="RedundantModifier"/> -->
+    <module name="RedundantModifier"/>
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
@@ -181,7 +181,7 @@
 
     <!-- Miscellaneous other checks.                   -->
     <!-- See https://checkstyle.org/checks/misc/index.html -->
-    <!-- TODO <module name="ArrayTypeStyle"/> -->
+    <module name="ArrayTypeStyle"/>
     <!-- TODO <module name="FinalParameters"/> -->
     <!-- TODO <module name="TodoComment"/> -->
     <module name="UpperEll"/>

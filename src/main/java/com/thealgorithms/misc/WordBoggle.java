@@ -1,6 +1,12 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class WordBoggle {
 
@@ -127,7 +133,7 @@ class Trie {
     TrieNode root;
     char endSymbol;
 
-    public Trie() {
+    Trie() {
         this.root = new TrieNode();
         this.endSymbol = '*';
     }

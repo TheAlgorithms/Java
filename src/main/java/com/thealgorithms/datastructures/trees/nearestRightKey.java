@@ -53,13 +53,13 @@ class NRKTree {
     public NRKTree right;
     public int data;
 
-    public NRKTree(int x) {
+    NRKTree(int x) {
         this.left = null;
         this.right = null;
         this.data = x;
     }
 
-    public NRKTree(NRKTree right, NRKTree left, int x) {
+    NRKTree(NRKTree right, NRKTree left, int x) {
         this.left = left;
         this.right = right;
         this.data = x;

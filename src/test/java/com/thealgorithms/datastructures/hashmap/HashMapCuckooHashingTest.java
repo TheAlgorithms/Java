@@ -1,6 +1,9 @@
 package com.thealgorithms.datastructures.hashmap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.thealgorithms.datastructures.hashmap.hashing.HashMapCuckooHashing;
 import org.junit.jupiter.api.Test;

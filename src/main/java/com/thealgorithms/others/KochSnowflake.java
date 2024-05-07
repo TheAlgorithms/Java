@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -176,7 +178,7 @@ public class KochSnowflake {
 
         double x, y;
 
-        public Vector2(double x, double y) {
+        Vector2(double x, double y) {
             this.x = x;
             this.y = y;
         }

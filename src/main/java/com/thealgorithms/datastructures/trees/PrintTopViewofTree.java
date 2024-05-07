@@ -13,7 +13,7 @@ class TreeNode {
     TreeNode left, right;
 
     // Constructor
-    public TreeNode(int key) {
+    TreeNode(int key) {
         this.key = key;
         left = right = null;
     }
@@ -27,7 +27,7 @@ class QItem {
     TreeNode node;
     int hd;
 
-    public QItem(TreeNode n, int h) {
+    QItem(TreeNode n, int h) {
         node = n;
         hd = h;
     }
@@ -39,11 +39,11 @@ class Tree {
     TreeNode root;
 
     // Constructors
-    public Tree() {
+    Tree() {
         root = null;
     }
 
-    public Tree(TreeNode n) {
+    Tree(TreeNode n) {
         root = n;
     }
 
