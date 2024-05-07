@@ -114,7 +114,7 @@ public class ComplexNumberUtil {
      * @throws RuntimeException if num is zero
      * @link <a href="https://en.wikipedia.org/wiki/Complex_logarithm#Calculating_the_principal_value">...</a>
      */
-    public static ComplexNumber ln(ComplexNumber num) {
+    public static ComplexNumber log(ComplexNumber num) {
         if (num.equals(ZERO)) {
             throw new RuntimeException("Cannot take the logarithm of zero");
         }
