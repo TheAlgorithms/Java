@@ -6,8 +6,8 @@ package com.thealgorithms.others;
  */
 import java.util.Scanner;
 
-class Rotate_by_90_degree {
-    private Rotate_by_90_degree() {
+class Rotate_by_90_degrees {
+    private Rotate_by_90_degrees() {
     }
 
     public static void main(String[] args) {

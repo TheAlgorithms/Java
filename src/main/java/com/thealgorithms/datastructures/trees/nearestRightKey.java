@@ -3,8 +3,8 @@ package com.thealgorithms.datastructures.trees;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-final class Main {
-    private Main() {
+final class NearestRightKey {
+    private NearestRightKey() {
     }
 
     public static void main(String[] args) {

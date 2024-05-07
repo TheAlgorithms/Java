@@ -15,11 +15,6 @@ final class PasswordGen {
     private PasswordGen() {
     }
 
-    public static void main(String[] args) {
-        String password = generatePassword(8, 16);
-        System.out.print("Password: " + password);
-    }
-
     static String generatePassword(int min_length, int max_length) {
         Random random = new Random();
 
