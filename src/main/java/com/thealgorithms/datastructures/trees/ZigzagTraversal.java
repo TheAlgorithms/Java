@@ -34,7 +34,9 @@ import java.util.List;
  *
  * @author Albina Gimaletdinova on 11/01/2023
  */
-public class ZigzagTraversal {
+public final class ZigzagTraversal {
+    private ZigzagTraversal() {
+    }
     public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
             return List.of();

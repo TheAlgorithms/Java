@@ -26,7 +26,9 @@ import java.util.List;
  *
  * @author Albina Gimaletdinova on 21/02/2023
  */
-public class PostOrderTraversal {
+public final class PostOrderTraversal {
+    private PostOrderTraversal() {
+    }
     public static List<Integer> recursivePostOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursivePostOrder(root, result);

@@ -42,7 +42,9 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * subtree. If left subtree returns a non-null value then that will be ceil
  * otherwise the root is ceil
  */
-public class CeilInBinarySearchTree {
+public final class CeilInBinarySearchTree {
+    private CeilInBinarySearchTree() {
+    }
 
     public static Node getCeil(Node root, int key) {
         if (root == null) {

@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.Scanner;
 
-public class PrimeCheck {
+public final class PrimeCheck {
+    private PrimeCheck() {
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

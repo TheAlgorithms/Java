@@ -6,7 +6,9 @@ import java.util.Scanner;
  * @author Ojasva Jain
  * Determinant of a Matrix Wikipedia link: https://en.wikipedia.org/wiki/Determinant
  */
-public class DeterminantOfMatrix {
+public final class DeterminantOfMatrix {
+    private DeterminantOfMatrix() {
+    }
 
     // Determinant calculator
     //@return determinant of the input matrix

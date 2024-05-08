@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class StandardDeviation {
+public final class StandardDeviation {
+    private StandardDeviation() {
+    }
 
     public static double stdDev(double[] data) {
         double var = 0;

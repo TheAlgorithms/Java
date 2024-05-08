@@ -5,7 +5,9 @@ import java.util.Scanner;
 /**
  * @author Afrizal Fikri (https://github.com/icalF)
  */
-public class LongestIncreasingSubsequence {
+public final class LongestIncreasingSubsequence {
+    private LongestIncreasingSubsequence() {
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

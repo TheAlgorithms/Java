@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class WordBoggle {
+public final class WordBoggle {
+    private WordBoggle() {
+    }
 
     /**
      * O(nm * 8^s + ws) time where n = width of boggle board, m = height of

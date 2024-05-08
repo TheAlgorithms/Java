@@ -6,7 +6,9 @@ package com.thealgorithms.others;
  *
  * @author AKS1996
  */
-public class GuassLegendre {
+public final class GuassLegendre {
+    private GuassLegendre() {
+    }
 
     public static void main(String[] args) {
         for (int i = 1; i <= 3; ++i) {

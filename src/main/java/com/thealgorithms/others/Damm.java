@@ -14,7 +14,9 @@ import java.util.Objects;
  * @see <a href="https://en.wikipedia.org/wiki/Damm_algorithm">Wiki. Damm
  * algorithm</a>
  */
-public class Damm {
+public final class Damm {
+    private Damm() {
+    }
 
     /**
      * Weakly totally anti-symmetric quasigroup of order 10. This table is not

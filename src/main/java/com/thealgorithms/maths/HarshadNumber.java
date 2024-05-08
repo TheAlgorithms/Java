@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 // Wikipedia for Harshad Number : https://en.wikipedia.org/wiki/Harshad_number
 
-public class HarshadNumber {
+public final class HarshadNumber {
+    private HarshadNumber() {
+    }
 
     /**
      * A function to check if a number is Harshad number or not

@@ -18,7 +18,9 @@ package com.thealgorithms.dynamicprogramming;
 
 import java.util.Arrays;
 
-public class PartitionProblem {
+public final class PartitionProblem {
+    private PartitionProblem() {
+    }
 
     /**
      * Test if a set of integers can be partitioned into two subsets such that the sum of elements

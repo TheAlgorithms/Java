@@ -19,7 +19,9 @@ import org.apache.commons.lang3.tuple.Pair;
  * 220 is divisible by {1,2,4,5,10,11,20,22,44,55,110} <-SUM = 284
  * 284 is divisible by {1,2,4,71,142} <-SUM = 220.
  */
-public class AmicableNumber {
+public final class AmicableNumber {
+    private AmicableNumber() {
+    }
     /**
      * Finds all the amicable numbers in a given range.
      *

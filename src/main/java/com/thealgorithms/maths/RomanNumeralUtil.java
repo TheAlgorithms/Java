@@ -8,7 +8,9 @@ package com.thealgorithms.maths;
  * @author Sokratis Fotkatzikis
  * @version 1.0
  */
-public class RomanNumeralUtil {
+public final class RomanNumeralUtil {
+    private RomanNumeralUtil() {
+    }
 
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 5999;

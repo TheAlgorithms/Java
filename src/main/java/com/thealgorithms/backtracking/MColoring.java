@@ -14,7 +14,9 @@ class Node {
     Set<Integer> edges = new HashSet<Integer>();
 }
 
-public class MColoring {
+public final class MColoring {
+    private MColoring() {
+    }
     static int possiblePaint(ArrayList<Node> nodes, int n, int m) {
 
         // Create a visited array of n nodes

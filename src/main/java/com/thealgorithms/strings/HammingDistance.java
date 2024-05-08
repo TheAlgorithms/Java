@@ -4,7 +4,9 @@ package com.thealgorithms.strings;
 is the number of positions at which the corresponding symbols are different.
 https://en.wikipedia.org/wiki/Hamming_distance
 */
-public class HammingDistance {
+public final class HammingDistance {
+    private HammingDistance() {
+    }
 
     /**
      * calculate the hamming distance between two strings of equal length

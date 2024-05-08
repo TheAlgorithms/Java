@@ -3,7 +3,9 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * DynamicProgramming solution for the Egg Dropping Puzzle
  */
-public class EggDropping {
+public final class EggDropping {
+    private EggDropping() {
+    }
 
     // min trials with n eggs and m floors
     public static int minTrials(int n, int m) {

@@ -10,7 +10,9 @@ package com.thealgorithms.dynamicprogramming;
  * shelf. You are not allowed to reorder. You have to find the maximum profit
  *
  */
-public class WineProblem {
+public final class WineProblem {
+    private WineProblem() {
+    }
 
     // Method 1: Using Recursion
     // Time Complexity=0(2^N) Space Complexity=Recursion extra space

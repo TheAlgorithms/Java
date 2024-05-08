@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LetterCombinationsOfPhoneNumber {
+public final class LetterCombinationsOfPhoneNumber {
+    private LetterCombinationsOfPhoneNumber() {
+    }
 
     static Character[][] numberToCharMap;
 

@@ -4,7 +4,9 @@ package com.thealgorithms.others;
  * Implementation of Knuth–Morris–Pratt algorithm Usage: see the main function
  * for an example
  */
-public class KMP {
+public final class KMP {
+    private KMP() {
+    }
 
     // a working example
 

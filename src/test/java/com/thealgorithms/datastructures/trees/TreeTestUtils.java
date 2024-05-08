@@ -4,7 +4,9 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class TreeTestUtils {
+public final class TreeTestUtils {
+    private TreeTestUtils() {
+    }
 
     /**
      * Creates a binary tree with given values

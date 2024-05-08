@@ -7,7 +7,9 @@
 
 package com.thealgorithms.maths;
 
-public class FrizzyNumber {
+public final class FrizzyNumber {
+    private FrizzyNumber() {
+    }
 
     /**
      * Returns the n-th number that is a sum of powers

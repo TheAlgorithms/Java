@@ -5,7 +5,9 @@ package com.thealgorithms.bitmanipulation;
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-public class IsPowerTwo {
+public final class IsPowerTwo {
+    private IsPowerTwo() {
+    }
     public static boolean isPowerTwo(int number) {
         if (number <= 0) {
             return false;

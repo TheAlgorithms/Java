@@ -3,7 +3,9 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-public class CoinChange {
+public final class CoinChange {
+    private CoinChange() {
+    }
 
     // Driver Program
     public static void main(String[] args) {

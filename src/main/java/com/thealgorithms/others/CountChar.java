@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-public class CountChar {
+public final class CountChar {
+    private CountChar() {
+    }
 
     /**
      * Count non space character in string

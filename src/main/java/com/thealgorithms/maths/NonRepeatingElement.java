@@ -7,7 +7,9 @@ import java.util.Scanner;
  * Reason to use bitwise operator: It makes our program faster as we are operating on bits and not
  * on actual numbers.
  */
-public class NonRepeatingElement {
+public final class NonRepeatingElement {
+    private NonRepeatingElement() {
+    }
 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {

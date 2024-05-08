@@ -1,6 +1,8 @@
 package com.thealgorithms.strings;
 
-public class Lower {
+public final class Lower {
+    private Lower() {
+    }
 
     /**
      * Driver Code

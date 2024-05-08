@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class Ceil {
+public final class Ceil {
+    private Ceil() {
+    }
 
     /**
      * Returns the smallest (closest to negative infinity)

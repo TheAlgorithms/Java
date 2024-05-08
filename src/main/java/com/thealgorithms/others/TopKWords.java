@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 /* display the most frequent K words in the file and the times it appear
 in the file – shown in order (ignore case and periods) */
-public class TopKWords {
+public final class TopKWords {
+    private TopKWords() {
+    }
 
     static class CountWords {
 

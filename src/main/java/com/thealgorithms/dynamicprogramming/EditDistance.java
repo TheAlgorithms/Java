@@ -24,7 +24,9 @@ package com.thealgorithms.dynamicprogramming;
  */
 import java.util.Scanner;
 
-public class EditDistance {
+public final class EditDistance {
+    private EditDistance() {
+    }
 
     public static int minDistance(String word1, String word2) {
         int len1 = word1.length();

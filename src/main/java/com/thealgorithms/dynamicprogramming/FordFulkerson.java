@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Vector;
 
-public class FordFulkerson {
+public final class FordFulkerson {
+    private FordFulkerson() {
+    }
 
     static final int INF = 987654321;
     // edges

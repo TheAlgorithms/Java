@@ -9,7 +9,9 @@ import java.util.ArrayList;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class FFTBluestein {
+public final class FFTBluestein {
+    private FFTBluestein() {
+    }
 
     /**
      * Bluestein's FFT Algorithm.

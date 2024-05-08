@@ -38,7 +38,9 @@ import java.util.Queue;
     All the words in wordList are unique.
  */
 
-class WordLadder {
+final class WordLadder {
+    private WordLadder() {
+    }
 
     /**
      * This function finds the ladderLength

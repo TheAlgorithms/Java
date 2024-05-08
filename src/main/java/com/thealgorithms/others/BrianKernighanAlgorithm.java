@@ -20,7 +20,9 @@ import java.util.Scanner;
  * <p>
  * Time Complexity: O(logn)
  */
-public class BrianKernighanAlgorithm {
+public final class BrianKernighanAlgorithm {
+    private BrianKernighanAlgorithm() {
+    }
 
     /**
      * @param num: number in which we count the set bits

@@ -5,7 +5,9 @@ import java.util.Arrays;
 
 // Problem Link: https://en.wikipedia.org/wiki/Job-shop_scheduling
 
-public class JobSequencing {
+public final class JobSequencing {
+    private JobSequencing() {
+    }
 
     // Define a Job class that implements Comparable for sorting by profit in descending order
     static class Job implements Comparable<Job> {

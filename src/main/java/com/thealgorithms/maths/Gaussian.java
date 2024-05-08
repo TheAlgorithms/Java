@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.ArrayList;
 
-public class Gaussian {
+public final class Gaussian {
+    private Gaussian() {
+    }
 
     public static ArrayList<Double> gaussian(int mat_size, ArrayList<Double> matrix) {
         ArrayList<Double> answerArray = new ArrayList<Double>();

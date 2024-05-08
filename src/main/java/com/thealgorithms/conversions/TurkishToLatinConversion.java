@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Özgün Gökşenli
  */
-public class TurkishToLatinConversion {
+public final class TurkishToLatinConversion {
+    private TurkishToLatinConversion() {
+    }
 
     /**
      * Main method

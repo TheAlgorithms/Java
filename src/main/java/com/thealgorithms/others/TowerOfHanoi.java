@@ -2,7 +2,9 @@ package com.thealgorithms.others;
 
 import java.util.Scanner;
 
-class TowerOfHanoi {
+final class TowerOfHanoi {
+    private TowerOfHanoi() {
+    }
 
     public static void shift(int n, String startPole, String intermediatePole, String endPole) {
         // if n becomes zero the program returns thus ending the loop.

@@ -16,7 +16,9 @@ import java.util.Scanner;
  *
  * @author Nishita Aggarwal
  */
-public class SaddlebackSearch {
+public final class SaddlebackSearch {
+    private SaddlebackSearch() {
+    }
 
     /**
      * This method performs Saddleback Search

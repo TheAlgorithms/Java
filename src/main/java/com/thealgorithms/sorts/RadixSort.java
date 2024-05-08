@@ -2,7 +2,9 @@ package com.thealgorithms.sorts;
 
 import java.util.Arrays;
 
-class RadixSort {
+final class RadixSort {
+    private RadixSort() {
+    }
 
     private static int getMax(int[] arr, int n) {
         int mx = arr[0];

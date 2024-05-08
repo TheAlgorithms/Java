@@ -20,7 +20,9 @@ import java.util.Map;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
-public class Dijkstra {
+public final class Dijkstra {
+    private Dijkstra() {
+    }
 
     private static final Graph.Edge[] GRAPH = {
         // Distance from node "a" to node "b" is 7.

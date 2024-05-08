@@ -1,6 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-class LongestCommonSubsequence {
+final class LongestCommonSubsequence {
+    private LongestCommonSubsequence() {
+    }
 
     public static String getLCS(String str1, String str2) {
         // At least one string is null

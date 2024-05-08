@@ -3,7 +3,9 @@ package com.thealgorithms.dynamicprogramming;
 /*
  * Algorithm explanation https://leetcode.com/problems/longest-palindromic-substring/
  */
-public class LongestPalindromicSubstring {
+public final class LongestPalindromicSubstring {
+    private LongestPalindromicSubstring() {
+    }
 
     public static void main(String[] args) {
         String a = "babad";

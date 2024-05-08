@@ -25,7 +25,9 @@ int n=10;
 
 
  */
-public class BoardPath {
+public final class BoardPath {
+    private BoardPath() {
+    }
 
     public static long startTime;
     public static long endTime;

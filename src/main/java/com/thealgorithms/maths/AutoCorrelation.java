@@ -7,7 +7,9 @@ package com.thealgorithms.maths;
  * @version 2.0
  */
 
-public class AutoCorrelation {
+public final class AutoCorrelation {
+    private AutoCorrelation() {
+    }
 
     /**
      * Discrete linear auto-correlation function.
