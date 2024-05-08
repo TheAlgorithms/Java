@@ -253,9 +253,6 @@
         <Bug pattern="FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY" />
     </Match>
     <Match>
-        <Bug pattern="LEST_LOST_EXCEPTION_STACK_TRACE" />
-    </Match>
-    <Match>
         <Bug pattern="PL_PARALLEL_LISTS" />
     </Match>
     <Match>
