@@ -27,8 +27,13 @@ public class ARCCache<K, V> {
 
     /**
      * This constructor initializes an ARCCache object with the given capacity and initializes other necessary fields
+     * @param capacity the initial capacity of the cache
+     * @throws IllegalArgumentException if the capacity is negative
      */
     public ARCCache(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Capacity cannot be negative");
+        }
         this.cache = new LinkedHashMap<>();
         this.usageCounts = new LinkedHashMap<>();
         this.t1Capacity = capacity / 2; // Capacity for the t1 cache
