@@ -25,7 +25,7 @@ public class CircleSort implements SortAlgorithm {
         boolean swapped = false;
 
         if (left == right) {
-            return false;
+            return Boolean.FALSE;
         }
 
         int low = left;
