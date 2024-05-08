@@ -8,7 +8,8 @@ package com.thealgorithms.stacks;
 // e.g.'
 // ((a + b) + (c + d)) -> false
 // (a + b) + ((c + d)) -> true
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class DuplicateBrackets {
 

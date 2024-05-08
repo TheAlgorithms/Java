@@ -6,7 +6,8 @@ package com.thealgorithms.datastructures.lists;
  * GitHub: https://github.com/Prabhat-Kumar-42
  */
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 

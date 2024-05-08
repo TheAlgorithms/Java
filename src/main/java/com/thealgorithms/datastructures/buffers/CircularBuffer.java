@@ -43,7 +43,7 @@ public class CircularBuffer<Item> {
         private int pointer;
         private final int max;
 
-        public CircularPointer(int pointer, int max) {
+        CircularPointer(int pointer, int max) {
             this.pointer = pointer;
             this.max = max;
         }

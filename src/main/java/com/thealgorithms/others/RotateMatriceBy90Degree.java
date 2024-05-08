@@ -4,7 +4,7 @@ package com.thealgorithms.others;
  * Given a matrix of size n x n We have to rotate this matrix by 90 Degree Here
  * is the algorithm for this problem .
  */
-import java.util.*;
+import java.util.Scanner;
 
 class Rotate_by_90_degree {
 

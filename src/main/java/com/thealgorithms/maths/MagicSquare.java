@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*A magic square of order n is an arrangement of distinct n^2 integers,in a square, such that the n
 numbers in all rows, all columns, and both diagonals sum to the same constant. A magic square

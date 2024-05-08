@@ -1,6 +1,6 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * The array is divided into four sections: a[1..Lo-1] zeroes a[Lo..Mid-1] ones

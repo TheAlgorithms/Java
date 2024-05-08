@@ -1,6 +1,11 @@
 package com.thealgorithms.datastructures.lists;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -222,7 +227,7 @@ public class SkipList<E extends Comparable<E>> {
         private final List<Node<E>> backward;
 
         @SuppressWarnings("unchecked")
-        public Node(E value, int height) {
+        Node(E value, int height) {
             this.value = value;
             this.height = height;
 

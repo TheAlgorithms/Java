@@ -1,12 +1,11 @@
 package com.thealgorithms.conversions;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RomanToInteger {
 
-    private static final Map<Character, Integer> map = new HashMap<>() {
-        private static final long serialVersionUID = 87605733047260530L;
-
+    private static final Map<Character, Integer> ROMAN_TO_INT = new HashMap<>() {
         {
             put('I', 1);
             put('V', 5);
@@ -38,10 +37,10 @@ public class RomanToInteger {
 
             if (prev != ' ') {
                 // checking current Number greater then previous or not
-                newPrev = map.get(prev) > newPrev ? map.get(prev) : newPrev;
+                newPrev = ROMAN_TO_INT.get(prev) > newPrev ? ROMAN_TO_INT.get(prev) : newPrev;
             }
 
-            int currentNum = map.get(c);
+            int currentNum = ROMAN_TO_INT.get(c);
 
             // if current number greater then prev max previous then add
             if (currentNum >= newPrev) {

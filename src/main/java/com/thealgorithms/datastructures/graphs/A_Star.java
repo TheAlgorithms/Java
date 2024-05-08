@@ -3,7 +3,11 @@
  */
 package com.thealgorithms.datastructures.graphs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 public class A_Star {
 
@@ -14,7 +18,7 @@ public class A_Star {
         private ArrayList<ArrayList<Edge>> graph;
 
         // Initialise ArrayLists in Constructor
-        public Graph(int size) {
+        Graph(int size) {
             this.graph = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 this.graph.add(new ArrayList<>());
@@ -38,7 +42,7 @@ public class A_Star {
         private int to;
         private int weight;
 
-        public Edge(int from, int to, int weight) {
+        Edge(int from, int to, int weight) {
             this.from = from;
             this.to = to;
             this.weight = weight;
@@ -64,7 +68,7 @@ public class A_Star {
         private ArrayList<Integer> path; // list of visited nodes in this path.
         private int estimated; // heuristic value associated to the last node od the path (current node).
 
-        public PathAndDistance(int distance, ArrayList<Integer> path, int estimated) {
+        PathAndDistance(int distance, ArrayList<Integer> path, int estimated) {
             this.distance = distance;
             this.path = path;
             this.estimated = estimated;

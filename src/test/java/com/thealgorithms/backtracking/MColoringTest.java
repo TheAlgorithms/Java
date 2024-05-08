@@ -1,8 +1,8 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.*;
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**

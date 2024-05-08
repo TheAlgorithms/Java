@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
  * @author Ojasva Jain

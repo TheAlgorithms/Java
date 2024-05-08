@@ -1,6 +1,6 @@
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
     Problem Statement:

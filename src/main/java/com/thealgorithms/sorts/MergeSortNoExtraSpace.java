@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
-import java.util.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*This code implements the mergeSort algorithm without extra space
 For understanding about mergesort visit :https://www.geeksforgeeks.org/merge-sort/
