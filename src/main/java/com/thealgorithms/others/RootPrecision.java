@@ -2,7 +2,9 @@ package com.thealgorithms.others;
 
 import java.util.Scanner;
 
-public class RootPrecision {
+public final class RootPrecision {
+    private RootPrecision() {
+    }
 
     public static void main(String[] args) {
         // take input

@@ -9,7 +9,9 @@ import java.util.Scanner;
  * @author LauKinHoong
  */
 
-public class LeastCommonMultiple {
+public final class LeastCommonMultiple {
+    private LeastCommonMultiple() {
+    }
 
     /**
      * Driver Code

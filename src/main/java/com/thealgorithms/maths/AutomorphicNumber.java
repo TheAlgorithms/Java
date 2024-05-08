@@ -10,7 +10,9 @@ package com.thealgorithms.maths;
 
 import java.math.BigInteger;
 
-public class AutomorphicNumber {
+public final class AutomorphicNumber {
+    private AutomorphicNumber() {
+    }
 
     /**
      * A function to check if a number is Automorphic number or not

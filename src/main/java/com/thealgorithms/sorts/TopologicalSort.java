@@ -16,7 +16,9 @@ import java.util.LinkedList;
  * @author Jonathan Taylor (https://github.com/Jtmonument)
  * Based on Introduction to Algorithms 3rd Edition
  */
-public class TopologicalSort {
+public final class TopologicalSort {
+    private TopologicalSort() {
+    }
 
     /*
      * Enum to represent the colors for the depth first search

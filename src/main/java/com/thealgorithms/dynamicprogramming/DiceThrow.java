@@ -13,7 +13,9 @@ Following is implementation of Dynamic Programming approach. */
 // Code ---->
 // Java program to find number of ways to get sum 'x' with 'n'
 // dice where every dice has 'm' faces
-class DP {
+final class DP {
+    private DP() {
+    }
 
     /* The main function that returns the number of ways to get sum 'x' with 'n' dice and 'm' with m
      * faces. */

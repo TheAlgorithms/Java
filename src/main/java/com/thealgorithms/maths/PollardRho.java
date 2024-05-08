@@ -35,7 +35,9 @@ package com.thealgorithms.maths;
  * Author: Akshay Dubey (https://github.com/itsAkshayDubey)
  *
  * */
-public class PollardRho {
+public final class PollardRho {
+    private PollardRho() {
+    }
 
     /**
      * This method returns a polynomial in x computed modulo n

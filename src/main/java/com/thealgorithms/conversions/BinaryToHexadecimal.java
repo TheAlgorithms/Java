@@ -8,7 +8,9 @@ import java.util.Scanner;
  *
  * @author Nishita Aggarwal
  */
-public class BinaryToHexadecimal {
+public final class BinaryToHexadecimal {
+    private BinaryToHexadecimal() {
+    }
 
     /**
      * This method converts a binary number to a hexadecimal number.

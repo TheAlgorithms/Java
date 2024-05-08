@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-class KeithNumber {
+final class KeithNumber {
+    private KeithNumber() {
+    }
 
     // user-defined function that checks if the given number is Keith or not
     static boolean isKeith(int x) {

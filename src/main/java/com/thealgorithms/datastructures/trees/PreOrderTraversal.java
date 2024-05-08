@@ -25,7 +25,9 @@ import java.util.List;
  *
  * @author Albina Gimaletdinova on 17/02/2023
  */
-public class PreOrderTraversal {
+public final class PreOrderTraversal {
+    private PreOrderTraversal() {
+    }
     public static List<Integer> recursivePreOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursivePreOrder(root, result);

@@ -8,7 +8,9 @@ package com.thealgorithms.datastructures.trees;
  *    where 'min' and 'max' values represent the child nodes (left, right).
  * 2. The smallest possible node value is Integer.MIN_VALUE, the biggest - Integer.MAX_VALUE.
  */
-public class CheckBinaryTreeIsValidBST {
+public final class CheckBinaryTreeIsValidBST {
+    private CheckBinaryTreeIsValidBST() {
+    }
     public static boolean isBST(BinaryTree.Node root) {
         return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }

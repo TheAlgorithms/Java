@@ -8,7 +8,9 @@
 
 package com.thealgorithms.dynamicprogramming;
 
-public class NewManShanksPrime {
+public final class NewManShanksPrime {
+    private NewManShanksPrime() {
+    }
 
     public static boolean nthManShanksPrime(int n, int expected_answer) {
         int[] a = new int[n + 1];

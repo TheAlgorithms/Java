@@ -20,7 +20,9 @@ in a tree from top to bottom and left to right, so for a tree :
  the sequence will be :
  4 2 7 1 5 9 3 8 6 10
  */
-public class VerticalOrderTraversal {
+public final class VerticalOrderTraversal {
+    private VerticalOrderTraversal() {
+    }
 
     /*Function that receives a root Node and prints the tree
         in Vertical Order.*/

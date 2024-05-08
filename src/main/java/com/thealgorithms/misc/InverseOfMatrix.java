@@ -11,7 +11,9 @@ import java.util.Scanner;
  *
  * We can also find the inverse of a matrix
  */
-public class InverseOfMatrix {
+public final class InverseOfMatrix {
+    private InverseOfMatrix() {
+    }
 
     public static void main(String[] argv) {
         Scanner input = new Scanner(System.in);

@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.Arrays;
 
-public class AbsoluteMin {
+public final class AbsoluteMin {
+    private AbsoluteMin() {
+    }
 
     /**
      * Compares the numbers given as arguments to get the absolute min value.

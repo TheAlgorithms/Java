@@ -7,7 +7,9 @@ package com.thealgorithms.maths;
  *
  * Example Input: n = 4 Output 1 1 1 1 1 2 3 2 1 1 3 6 7 6 3 1
  */
-public class TrinomialTriangle {
+public final class TrinomialTriangle {
+    private TrinomialTriangle() {
+    }
 
     public static int TrinomialValue(int n, int k) {
         if (n == 0 && k == 0) {

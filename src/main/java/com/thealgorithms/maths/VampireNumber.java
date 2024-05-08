@@ -16,7 +16,9 @@ import java.util.Collections;
  *
  * <p>
  */
-public class VampireNumber {
+public final class VampireNumber {
+    private VampireNumber() {
+    }
 
     public static void main(String[] args) {
         test(10, 1000);

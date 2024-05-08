@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Zachary Jones
  */
-public class BinaryToOctal {
+public final class BinaryToOctal {
+    private BinaryToOctal() {
+    }
 
     /**
      * Main method

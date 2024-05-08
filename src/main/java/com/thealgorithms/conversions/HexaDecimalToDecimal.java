@@ -2,7 +2,9 @@ package com.thealgorithms.conversions;
 
 import java.util.Scanner;
 
-public class HexaDecimalToDecimal {
+public final class HexaDecimalToDecimal {
+    private HexaDecimalToDecimal() {
+    }
 
     // convert hexadecimal to decimal
     public static int getHexaToDec(String hex) {

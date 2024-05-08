@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class AbsoluteMax {
+public final class AbsoluteMax {
+    private AbsoluteMax() {
+    }
 
     /**
      * Finds the absolute maximum value among the given numbers.

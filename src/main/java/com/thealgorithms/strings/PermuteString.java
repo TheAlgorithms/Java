@@ -11,7 +11,9 @@ Backtracking algorithm used in the program:-
 again, and we backtrack to the previous position and swap B with C. So, now we got ABC and ACB.
 >>Repeat these steps for BAC and CBA, to get all the permutations.
  */
-public class PermuteString {
+public final class PermuteString {
+    private PermuteString() {
+    }
 
     // Function for swapping the characters at position I with character at position j
     public static String swapString(String a, int i, int j) {

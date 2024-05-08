@@ -7,7 +7,9 @@ package com.thealgorithms.conversions;
  * ('I', 1); ('IV',4); ('V', 5); ('IX',9); ('X', 10); ('XL',40); ('L', 50);
  * ('XC',90); ('C', 100); ('D', 500); ('M', 1000);
  */
-public class IntegerToRoman {
+public final class IntegerToRoman {
+    private IntegerToRoman() {
+    }
 
     private static final int[] ALL_ROMAN_NUMBERS_IN_ARABIC = new int[] {
         1000,

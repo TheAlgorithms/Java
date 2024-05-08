@@ -44,7 +44,9 @@ import java.util.HashMap;
  * recommend checking out the wikipedia page and professor Anany Levitin's book:
  * Introduction To The Design And Analysis Of Algorithms.
  */
-public class HorspoolSearch {
+public final class HorspoolSearch {
+    private HorspoolSearch() {
+    }
 
     private static HashMap<Character, Integer> shiftValues; // bad symbol table
     private static Integer patternLength;

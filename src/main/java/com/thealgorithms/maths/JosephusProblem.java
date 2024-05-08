@@ -20,7 +20,9 @@ package com.thealgorithms.maths;
         @author Kunal
     */
 
-public class JosephusProblem {
+public final class JosephusProblem {
+    private JosephusProblem() {
+    }
 
     /**
      * Find the Winner of the Circular Game.

@@ -7,7 +7,9 @@ import java.util.Scanner;
  * see https://www.geeksforgeeks.org/matrix-exponentiation/
  *
  */
-public class Fibonacci {
+public final class Fibonacci {
+    private Fibonacci() {
+    }
 
     // Exponentiation matrix for Fibonacci sequence
     private static final int[][] FIB_MATRIX = {{1, 1}, {1, 0}};

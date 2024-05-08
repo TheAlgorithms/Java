@@ -7,7 +7,9 @@ package com.thealgorithms.maths;
  * @version 1.0
  */
 
-public class CrossCorrelation {
+public final class CrossCorrelation {
+    private CrossCorrelation() {
+    }
 
     /**
      * Discrete linear cross-correlation function.

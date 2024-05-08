@@ -2,7 +2,9 @@ package com.thealgorithms.stacks;
 
 import java.util.Stack;
 
-public class DecimalToAnyUsingStack {
+public final class DecimalToAnyUsingStack {
+    private DecimalToAnyUsingStack() {
+    }
 
     public static void main(String[] args) {
         assert convert(0, 2).equals("0");

@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class SquareRootWithBabylonianMethod {
+public final class SquareRootWithBabylonianMethod {
+    private SquareRootWithBabylonianMethod() {
+    }
 
     /**
      * get the value, return the square root

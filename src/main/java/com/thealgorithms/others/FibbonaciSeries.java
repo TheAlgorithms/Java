@@ -15,7 +15,9 @@ import java.util.Scanner;
  * Problem Statement: print all Fibonacci numbers that are smaller than your
  * given input N
  */
-public class FibbonaciSeries {
+public final class FibbonaciSeries {
+    private FibbonaciSeries() {
+    }
 
     public static void main(String[] args) {
         // Get input from the user

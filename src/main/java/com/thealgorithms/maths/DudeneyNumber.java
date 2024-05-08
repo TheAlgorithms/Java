@@ -6,7 +6,9 @@
  */
 package com.thealgorithms.maths;
 
-public class DudeneyNumber {
+public final class DudeneyNumber {
+    private DudeneyNumber() {
+    }
 
     // returns True if the number is a Dudeney number and False if it is not a Dudeney number.
     public static boolean isDudeney(int n) {

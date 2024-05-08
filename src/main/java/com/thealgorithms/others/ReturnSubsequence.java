@@ -2,7 +2,9 @@ package com.thealgorithms.others;
 
 import java.util.Scanner;
 
-public class ReturnSubsequence {
+public final class ReturnSubsequence {
+    private ReturnSubsequence() {
+    }
 
     public static void main(String[] args) {
         System.out.println("Enter String: ");

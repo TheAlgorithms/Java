@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class ReverseStringRecursiveTest {
-    ReverseStringRecursive stringRecursive = new ReverseStringRecursive();
-
     @Test
     void shouldAcceptWhenEmptyStringIsPassed() {
         String expected = "";

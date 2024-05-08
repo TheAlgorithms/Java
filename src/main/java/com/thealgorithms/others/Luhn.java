@@ -38,7 +38,9 @@ import java.util.Objects;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Wiki</a>
  */
-public class Luhn {
+public final class Luhn {
+    private Luhn() {
+    }
 
     /**
      * Check input digits array by Luhn algorithm. Initial array doesn't change

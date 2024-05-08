@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-class Sudoku {
+final class Sudoku {
+    private Sudoku() {
+    }
 
     public static boolean isSafe(int[][] board, int row, int col, int num) {
         // Row has the unique (row-clash)

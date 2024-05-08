@@ -17,7 +17,9 @@ import java.util.Scanner;
  * "aba | b | bbabb | ababa"
  * @author [Syed] (https://github.com/roeticvampire)
  */
-public class PalindromicPartitioning {
+public final class PalindromicPartitioning {
+    private PalindromicPartitioning() {
+    }
 
     public static int minimalpartitions(String word) {
         int len = word.length();

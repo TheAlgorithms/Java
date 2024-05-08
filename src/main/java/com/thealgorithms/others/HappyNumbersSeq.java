@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class HappyNumbersSeq {
+public final class HappyNumbersSeq {
+    private HappyNumbersSeq() {
+    }
 
     private static final Set<Integer> CYCLE_NUMS = new HashSet<>(Arrays.asList(4, 16, 20, 37, 58, 145));
 

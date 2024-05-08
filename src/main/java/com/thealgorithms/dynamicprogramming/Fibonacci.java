@@ -7,7 +7,9 @@ import java.util.Scanner;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-public class Fibonacci {
+public final class Fibonacci {
+    private Fibonacci() {
+    }
 
     private static final Map<Integer, Integer> CACHE = new HashMap<>();
 

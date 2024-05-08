@@ -3,7 +3,9 @@ package com.thealgorithms.datastructures.trees;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LCA {
+public final class LCA {
+    private LCA() {
+    }
 
     private static final Scanner SCANNER = new Scanner(System.in);
 

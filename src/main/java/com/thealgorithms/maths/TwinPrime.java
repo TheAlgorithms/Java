@@ -9,7 +9,9 @@ package com.thealgorithms.maths;
  *
  * */
 
-public class TwinPrime {
+public final class TwinPrime {
+    private TwinPrime() {
+    }
 
     /**
      * This method returns twin prime of the integer value passed as argument

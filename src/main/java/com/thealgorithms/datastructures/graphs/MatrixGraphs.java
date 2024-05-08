@@ -12,7 +12,9 @@ import java.util.Queue;
  *
  * @author Unknown
  */
-public class MatrixGraphs {
+public final class MatrixGraphs {
+    private MatrixGraphs() {
+    }
 
     public static void main(String[] args) {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(10);

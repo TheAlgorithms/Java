@@ -11,7 +11,9 @@ package com.thealgorithms.stacks;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class DuplicateBrackets {
+public final class DuplicateBrackets {
+    private DuplicateBrackets() {
+    }
 
     public static boolean check(String str) {
         Stack<Character> st = new Stack<>();

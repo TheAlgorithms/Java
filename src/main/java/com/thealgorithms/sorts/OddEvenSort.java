@@ -3,7 +3,9 @@ package com.thealgorithms.sorts;
 import java.util.Random;
 
 // https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort
-public class OddEvenSort {
+public final class OddEvenSort {
+    private OddEvenSort() {
+    }
 
     public static void main(String[] args) {
         int[] arr = new int[100];

@@ -23,7 +23,9 @@ import javax.imageio.ImageIO;
  * also https://en.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
  * )
  */
-public class Mandelbrot {
+public final class Mandelbrot {
+    private Mandelbrot() {
+    }
 
     public static void main(String[] args) {
         // Test black and white

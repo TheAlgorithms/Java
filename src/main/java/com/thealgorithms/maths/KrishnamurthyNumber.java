@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class KrishnamurthyNumber {
+public final class KrishnamurthyNumber {
+    private KrishnamurthyNumber() {
+    }
 
     // returns True if the number is a Krishnamurthy number and False if it is not.
 

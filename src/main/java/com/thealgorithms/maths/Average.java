@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * Calculate average of a list of numbers
  */
-public class Average {
+public final class Average {
+    private Average() {
+    }
 
     /**
      * Calculate average of a list of numbers

@@ -9,7 +9,9 @@ import java.util.Arrays;
  * <p>
  * link: https://www.geeksforgeeks.org/two-pointers-technique/
  */
-class TwoPointers {
+final class TwoPointers {
+    private TwoPointers() {
+    }
 
     /**
      * Given a sorted array arr (sorted in ascending order). Find if there

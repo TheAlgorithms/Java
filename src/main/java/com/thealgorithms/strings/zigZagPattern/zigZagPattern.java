@@ -1,6 +1,8 @@
 package com.thealgorithms.strings.zigZagPattern;
 
-class zigZagPattern {
+final class zigZagPattern {
+    private zigZagPattern() {
+    }
 
     public static String encode(String s, int numRows) {
         if (numRows < 2 || s.length() < numRows) return s;

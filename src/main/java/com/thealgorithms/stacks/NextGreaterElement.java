@@ -41,7 +41,9 @@ import java.util.Stack;
    -1.
  */
 
-public class NextGreaterElement {
+public final class NextGreaterElement {
+    private NextGreaterElement() {
+    }
 
     public static int[] findNextGreaterElements(int[] array) {
         if (array == null) {

@@ -3,7 +3,9 @@ package com.thealgorithms.sorts;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class StrandSort {
+public final class StrandSort {
+    private StrandSort() {
+    }
 
     // note: the input list is destroyed
     public static <E extends Comparable<? super E>> LinkedList<E> strandSort(LinkedList<E> list) {

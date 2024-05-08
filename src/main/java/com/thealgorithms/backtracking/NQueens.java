@@ -32,7 +32,9 @@ import java.util.List;
  * queen is not placed safely. If there is no such way then return an empty list
  * as solution
  */
-public class NQueens {
+public final class NQueens {
+    private NQueens() {
+    }
 
     public static void main(String[] args) {
         placeQueens(1);

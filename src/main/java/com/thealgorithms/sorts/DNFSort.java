@@ -1,6 +1,8 @@
 package com.thealgorithms.sorts;
 
-public class DNFSort {
+public final class DNFSort {
+    private DNFSort() {
+    }
 
     // Sort the input array, the array is assumed to
     // have values in {0, 1, 2}

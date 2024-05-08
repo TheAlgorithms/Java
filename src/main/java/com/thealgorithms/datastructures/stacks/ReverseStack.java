@@ -8,7 +8,9 @@ import java.util.Stack;
  *
  * @author Ishika Agarwal, 2021
  */
-public class ReverseStack {
+public final class ReverseStack {
+    private ReverseStack() {
+    }
 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {

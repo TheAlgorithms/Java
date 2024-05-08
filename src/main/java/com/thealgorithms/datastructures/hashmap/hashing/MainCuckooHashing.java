@@ -2,7 +2,9 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 import java.util.Scanner;
 
-public class MainCuckooHashing {
+public final class MainCuckooHashing {
+    private MainCuckooHashing() {
+    }
 
     public static void main(String[] args) {
         int choice, key;

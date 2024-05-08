@@ -2,7 +2,9 @@ package com.thealgorithms.others;
 
 import java.util.Scanner;
 
-class Krishnamurthy {
+final class Krishnamurthy {
+    private Krishnamurthy() {
+    }
 
     static int fact(int n) {
         int i, p = 1;

@@ -10,7 +10,9 @@ package com.thealgorithms.maths;
  *
  * */
 
-public class BinomialCoefficient {
+public final class BinomialCoefficient {
+    private BinomialCoefficient() {
+    }
 
     /**
      * This method returns the number of ways in which k objects can be chosen from n objects
