@@ -19,26 +19,30 @@ import java.util.Map;
  */
 
 public class ARCCache<K, V> {
-    private final int capacity;
     private final Map<K, V> cache;
     private final LinkedHashMap<K, Integer> usageCounts;
     private final int t1Capacity; // Capacity for the t1 cache
     private final int b1Capacity; // Capacity for the b1 cache
     private int totalCount;
-/**
- * Retrieves the value associated with the given key from the cache.
- * If the key is present in the cache, its usage count is incremented.
- *
- * @param key the key whose associated value is to be retrieved
- * @return the value associated with the key, or null if the key is not present in the cache
- */
+
+    /**
+     * This constructor initializes an ARCCache object with the given capacity and initializes other necessary fields
+     */
     public ARCCache(int capacity) {
-        this.capacity = capacity;
         this.cache = new LinkedHashMap<>();
         this.usageCounts = new LinkedHashMap<>();
         this.t1Capacity = capacity / 2; // Capacity for the t1 cache
         this.b1Capacity = capacity - t1Capacity; // Capacity for the b1 cache
         this.totalCount = 0;
+    }
+
+    /**
+     * Returns the total capacity of the cache
+     *
+     * @return the total capacity of the cache
+     */
+    private int capacity() {
+        return t1Capacity + b1Capacity;
     }
 
     /**
@@ -65,7 +69,7 @@ public class ARCCache<K, V> {
      * @param value the value to be associated with the specified key
      */
     public void put(K key, V value) {
-        if (cache.size() >= capacity) {
+        if (cache.size() >= capacity()) {
             evict();
         }
         cache.put(key, value);
@@ -99,8 +103,8 @@ public class ARCCache<K, V> {
      * Adjust the cache sizes based on t1capacity and b1capacity after eviction from cache
      */
     private void adjustCacheSize() {
-        if (cache.size() > capacity) {
-            int excess = cache.size() - capacity;
+        if (cache.size() > capacity()) {
+            int excess = cache.size() - capacity();
             int t1Size = cache.size() - b1Capacity;
             while (excess > 0 && !cache.isEmpty()) {
                 K keyToRemove = usageCounts.keySet().iterator().next();
