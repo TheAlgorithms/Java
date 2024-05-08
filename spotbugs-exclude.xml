@@ -286,7 +286,4 @@
     <Match>
         <Bug pattern="HARD_CODE_KEY" />
     </Match>
-    <Match>
-        <Bug pattern="PATH_TRAVERSAL_IN" />
-    </Match>
 </FindBugsFilter>
