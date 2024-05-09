@@ -54,7 +54,7 @@ public final class MainCuckooHashing {
                 break;
             }
             case 6: {
-                System.out.printf("Load factor is: %.2f\n", h.checkLoadFactor());
+                System.out.printf("Load factor is: %.2f%n", h.checkLoadFactor());
                 break;
             }
             case 7: {
