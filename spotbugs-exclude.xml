@@ -105,9 +105,6 @@
         <Bug pattern="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" />
     </Match>
     <Match>
-        <Bug pattern="RV_RETURN_VALUE_IGNORED" />
-    </Match>
-    <Match>
         <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
     </Match>
     <Match>
