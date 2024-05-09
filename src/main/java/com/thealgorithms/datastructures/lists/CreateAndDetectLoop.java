@@ -81,7 +81,7 @@ public final class CreateAndDetectLoop {
 
         System.out.println("Enter the number of elements to be inserted: ");
         int n = sc.nextInt();
-        System.out.printf("Enter the %d elements: \n", n);
+        System.out.printf("Enter the %d elements: %n", n);
         while (n-- > 0) {
             singlyLinkedList.insert(sc.nextInt());
         }

@@ -71,13 +71,13 @@ class InsertionSort implements SortAlgorithm {
 
         InsertionSort insertionSort = new InsertionSort();
         double insertionTime = measureApproxExecTime(insertionSort::sort, randomArray);
-        System.out.printf("Original insertion time: %5.2f  sec.\n", insertionTime);
+        System.out.printf("Original insertion time: %5.2f  sec.%n", insertionTime);
 
         double insertionSentinelTime = measureApproxExecTime(insertionSort::sentinelSort, copyRandomArray);
-        System.out.printf("Sentinel insertion time: %5.2f  sec.\n", insertionSentinelTime);
+        System.out.printf("Sentinel insertion time: %5.2f  sec.%n", insertionSentinelTime);
 
         // ~ 1.5 time sentinel sort is faster, then classical Insertion sort implementation.
-        System.out.printf("Sentinel insertion is %f3.2 time faster than Original insertion sort\n", insertionTime / insertionSentinelTime);
+        System.out.printf("Sentinel insertion is %f3.2 time faster than Original insertion sort%n", insertionTime / insertionSentinelTime);
     }
 
     private static double measureApproxExecTime(Function<Double[], Double[]> sortAlgorithm, Double[] randomArray) {

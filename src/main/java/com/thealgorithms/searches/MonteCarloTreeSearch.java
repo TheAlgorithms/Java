@@ -78,7 +78,7 @@ public class MonteCarloTreeSearch {
 
         winnerNode = getWinnerNode(rootNode);
         printScores(rootNode);
-        System.out.format("\nThe optimal node is: %02d\n", rootNode.childNodes.indexOf(winnerNode) + 1);
+        System.out.format("%nThe optimal node is: %02d%n", rootNode.childNodes.indexOf(winnerNode) + 1);
 
         return winnerNode;
     }

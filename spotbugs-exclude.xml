@@ -9,9 +9,6 @@
         <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
     </Match>
     <Match>
-        <Bug pattern="VA_FORMAT_STRING_USES_NEWLINE" />
-    </Match>
-    <Match>
         <Bug pattern="SF_SWITCH_NO_DEFAULT" />
     </Match>
     <Match>
