@@ -123,7 +123,7 @@ public class MaxHeap implements Heap {
         try {
             return extractMax();
         } catch (Exception e) {
-            throw new EmptyHeapException("Heap is empty. Error retrieving element");
+            throw new EmptyHeapException("Heap is empty. Error retrieving element", e);
         }
     }
 }
