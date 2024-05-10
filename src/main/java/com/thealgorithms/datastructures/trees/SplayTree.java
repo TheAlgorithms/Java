@@ -247,13 +247,24 @@ public class SplayTree {
     }
 
     /**
-     * Perform an in-order traversal of the SplayTree.
+     * Perform a traversal of the SplayTree.
      *
-     * @return A list containing the keys in in-order traversal order.
+     * @param traverseOrder The order of traversal (IN_ORDER, PRE_ORDER, or POST_ORDER).
+     * @return A list containing the keys in the specified traversal order.
      */
-    public List<Integer> inOrder() {
+    public List<Integer> traverse(TraverseOrder traverseOrder) {
         List<Integer> result = new LinkedList<>();
-        inOrderRec(root, result);
+        switch (traverseOrder) {
+        case IN_ORDER:
+            inOrderRec(root, result);
+            break;
+        case PRE_ORDER:
+            preOrderRec(root, result);
+            break;
+        case POST_ORDER:
+            postOrderRec(root, result);
+            break;
+        }
         return result;
     }
 
@@ -272,17 +283,6 @@ public class SplayTree {
     }
 
     /**
-     * Perform a pre-order traversal of the SplayTree.
-     *
-     * @return A list containing the keys in pre-order traversal order.
-     */
-    public List<Integer> preOrder() {
-        List<Integer> result = new LinkedList<>();
-        preOrderRec(root, result);
-        return result;
-    }
-
-    /**
      * Recursive function for pre-order traversal.
      *
      * @param root   The root of the subtree to traverse.
@@ -294,17 +294,6 @@ public class SplayTree {
             preOrderRec(root.left, result);
             preOrderRec(root.right, result);
         }
-    }
-
-    /**
-     * Perform a post-order traversal of the SplayTree.
-     *
-     * @return A list containing the keys in post-order traversal order.
-     */
-    public List<Integer> postOrder() {
-        List<Integer> result = new LinkedList<>();
-        postOrderRec(root, result);
-        return result;
     }
 
     /**
@@ -320,4 +309,9 @@ public class SplayTree {
             result.add(root.key);
         }
     }
+
+    /**
+     * Enum to specify the order of traversal.
+     */
+    public enum TraverseOrder { IN_ORDER, PRE_ORDER, POST_ORDER }
 }
