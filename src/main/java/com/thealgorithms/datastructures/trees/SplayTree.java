@@ -249,7 +249,7 @@ public class SplayTree {
     /**
      * Perform an in-order traversal of the SplayTree.
      *
-     * @return A vector containing the keys in in-order traversal order.
+     * @return A list containing the keys in in-order traversal order.
      */
     public List<Integer> inOrder() {
         List<Integer> result = new LinkedList<>();
@@ -261,7 +261,7 @@ public class SplayTree {
      * Recursive function for in-order traversal.
      *
      * @param root   The root of the subtree to traverse.
-     * @param result The vector to store the traversal result.
+     * @param result The list to store the traversal result.
      */
     private void inOrderRec(Node root, List<Integer> result) {
         if (root != null) {
@@ -274,7 +274,7 @@ public class SplayTree {
     /**
      * Perform a pre-order traversal of the SplayTree.
      *
-     * @return A vector containing the keys in pre-order traversal order.
+     * @return A list containing the keys in pre-order traversal order.
      */
     public List<Integer> preOrder() {
         List<Integer> result = new LinkedList<>();
@@ -286,7 +286,7 @@ public class SplayTree {
      * Recursive function for pre-order traversal.
      *
      * @param root   The root of the subtree to traverse.
-     * @param result The vector to store the traversal result.
+     * @param result The list to store the traversal result.
      */
     private void preOrderRec(Node root, List<Integer> result) {
         if (root != null) {
@@ -299,7 +299,7 @@ public class SplayTree {
     /**
      * Perform a post-order traversal of the SplayTree.
      *
-     * @return A vector containing the keys in post-order traversal order.
+     * @return A list containing the keys in post-order traversal order.
      */
     public List<Integer> postOrder() {
         List<Integer> result = new LinkedList<>();
@@ -311,7 +311,7 @@ public class SplayTree {
      * Recursive function for post-order traversal.
      *
      * @param root   The root of the subtree to traverse.
-     * @param result The vector to store the traversal result.
+     * @param result The list to store the traversal result.
      */
     private void postOrderRec(Node root, List<Integer> result) {
         if (root != null) {
