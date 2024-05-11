@@ -135,6 +135,17 @@
                     </plugins>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.22.0</version>
+                <configuration>
+                    <printFailingErrors>true</printFailingErrors>
+                    <includeTests>true</includeTests>
+                    <linkXRef>false</linkXRef>
+                    <excludeFromFailureFile>pmd-exclude.properties</excludeFromFailureFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
