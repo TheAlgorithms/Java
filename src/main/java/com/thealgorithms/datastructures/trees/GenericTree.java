@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class GenericTree {
 
-    private static class Node {
+    private static final class Node {
 
         int data;
         ArrayList<Node> child = new ArrayList<>();

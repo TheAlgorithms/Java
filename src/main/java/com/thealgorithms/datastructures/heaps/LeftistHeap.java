@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 public class LeftistHeap {
-    private class Node {
+    private final class Node {
         private int element, npl;
         private Node left, right;
 

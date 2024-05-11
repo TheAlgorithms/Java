@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.lists;
 
 public class CircleLinkedList<E> {
 
-    private static class Node<E> {
+    private static final class Node<E> {
 
         Node<E> next;
         E value;
