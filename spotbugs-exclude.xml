@@ -75,9 +75,6 @@
         <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
     </Match>
     <Match>
-        <Bug pattern="MS_SHOULD_BE_FINAL" />
-    </Match>
-    <Match>
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
     </Match>
     <Match>
