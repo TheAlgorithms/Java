@@ -33,3 +33,5 @@ jobs:
         run: mvn checkstyle:check
       - name: SpotBugs
         run: mvn spotbugs:check
+      - name: PMD
+        run: mvn pmd:check
