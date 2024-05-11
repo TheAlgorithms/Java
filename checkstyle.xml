@@ -174,7 +174,7 @@
     <!-- Checks for class design                         -->
     <!-- See https://checkstyle.org/checks/design/index.html -->
     <!-- TODO <module name="DesignForExtension"/> -->
-    <!-- TODO <module name="FinalClass"/> -->
+    <module name="FinalClass"/>
     <module name="HideUtilityClassConstructor"/>
     <module name="InterfaceIsType"/>
     <!-- TODO <module name="VisibilityModifier"/> -->

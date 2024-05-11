@@ -153,7 +153,7 @@ public class DynamicArray<E> implements Iterable<E> {
         return new DynamicArrayIterator();
     }
 
-    private class DynamicArrayIterator implements Iterator<E> {
+    private final class DynamicArrayIterator implements Iterator<E> {
 
         private int cursor;
 
