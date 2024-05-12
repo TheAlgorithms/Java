@@ -82,6 +82,11 @@ public class KDTree {
         }
 
         @Override
+        public int hashCode() {
+            return Arrays.hashCode(coordinates);
+        }
+
+        @Override
         public String toString() {
             return Arrays.toString(coordinates);
         }

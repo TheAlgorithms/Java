@@ -161,7 +161,7 @@
     <!-- Checks for common coding problems               -->
     <!-- See https://checkstyle.org/checks/coding/index.html -->
     <module name="EmptyStatement"/>
-    <!-- TODO <module name="EqualsHashCode"/> -->
+    <module name="EqualsHashCode"/>
     <!-- TODO <module name="HiddenField"/> -->
     <module name="IllegalInstantiation"/>
     <!-- TODO <module name="InnerAssignment"/> -->
