@@ -1,26 +1,10 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.Scanner;
-
 /**
  * @author Afrizal Fikri (https://github.com/icalF)
  */
 public final class LongestIncreasingSubsequence {
     private LongestIncreasingSubsequence() {
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
-        System.out.println(LIS(arr));
-        System.out.println(findLISLen(arr));
-        sc.close();
     }
 
     private static int upperBound(int[] ar, int l, int r, int key) {
@@ -36,7 +20,7 @@ public final class LongestIncreasingSubsequence {
         return r;
     }
 
-    private static int LIS(int[] array) {
+    public static int LIS(int[] array) {
         int N = array.length;
         if (N == 0) {
             return 0;
@@ -73,14 +57,17 @@ public final class LongestIncreasingSubsequence {
      */
     // A function for finding the length of the LIS algorithm in O(nlogn) complexity.
     public static int findLISLen(int[] a) {
-        int size = a.length;
+        final int size = a.length;
+        if (size == 0) {
+            return 0;
+        }
         int[] arr = new int[size];
         arr[0] = a[0];
         int lis = 1;
         for (int i = 1; i < size; i++) {
-            int index = binarySearchBetween(arr, lis, a[i]);
+            int index = binarySearchBetween(arr, lis - 1, a[i]);
             arr[index] = a[i];
-            if (index > lis) {
+            if (index == lis) {
                 lis++;
             }
         }
