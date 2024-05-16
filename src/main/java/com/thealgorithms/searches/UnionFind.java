@@ -25,7 +25,7 @@ public class UnionFind {
             return i;
         }
 
-        int result = find(parent);
+        final int result = find(parent);
         p[i] = result;
 
         return result;
