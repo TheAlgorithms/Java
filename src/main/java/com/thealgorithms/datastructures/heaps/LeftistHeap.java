@@ -20,7 +20,8 @@ public class LeftistHeap {
         // Node constructor setting the data element and left/right pointers to null
         private Node(int element) {
             this.element = element;
-            left = right = null;
+            left = null;
+            right = null;
             npl = 0;
         }
     }

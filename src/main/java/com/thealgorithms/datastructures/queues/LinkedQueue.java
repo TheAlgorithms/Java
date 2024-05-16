@@ -44,7 +44,9 @@ public class LinkedQueue<T> implements Iterable<T> {
      * Init LinkedQueue
      */
     public LinkedQueue() {
-        front = rear = new Node<>();
+
+        front = new Node<>();
+        rear = front;
     }
 
     /**
@@ -146,7 +148,8 @@ public class LinkedQueue<T> implements Iterable<T> {
 
             @Override
             public T next() {
-                return (node = node.next).data;
+                node = node.next;
+                return node.data;
             }
         };
     }

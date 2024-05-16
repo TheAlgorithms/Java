@@ -164,7 +164,7 @@
     <module name="EqualsHashCode"/>
     <!-- TODO <module name="HiddenField"/> -->
     <module name="IllegalInstantiation"/>
-    <!-- TODO <module name="InnerAssignment"/> -->
+    <module name="InnerAssignment"/>
     <!-- TODO <module name="MagicNumber"/> -->
     <!-- TODO <module name="MissingSwitchDefault"/> -->
     <!-- TODO <module name="MultipleVariableDeclarations"/> -->
