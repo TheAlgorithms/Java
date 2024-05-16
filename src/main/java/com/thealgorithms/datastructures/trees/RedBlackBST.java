@@ -201,7 +201,8 @@ public class RedBlackBST {
     }
 
     boolean delete(Node z) {
-        if ((z = findNode(z, root)) == null) {
+        Node result = findNode(z, root);
+        if (result == null) {
             return false;
         }
         Node x;

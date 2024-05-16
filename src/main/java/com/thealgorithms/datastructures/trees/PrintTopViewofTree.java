@@ -15,7 +15,8 @@ class TreeNode {
     // Constructor
     TreeNode(int key) {
         this.key = key;
-        left = right = null;
+        left = null;
+        right = null;
     }
 }
 

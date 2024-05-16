@@ -34,7 +34,8 @@ public final class LongestAlternatingSubsequence {
         int[][] las = new int[n][2]; // las = LongestAlternatingSubsequence
 
         for (int i = 0; i < n; i++) {
-            las[i][0] = las[i][1] = 1;
+            las[i][0] = 1;
+            las[i][1] = 1;
         }
 
         int result = 1; // Initialize result
