@@ -41,10 +41,10 @@ public class KnapsackMemoization {
             return dpTable[numOfItems][capacity];
         } else {
             // case 1. include the item, if it is less than the capacity
-            int includeCurrentItem = profits[numOfItems - 1] + solveKnapsackRecursive(capacity - weights[numOfItems - 1], weights, profits, numOfItems - 1, dpTable);
+            final int includeCurrentItem = profits[numOfItems - 1] + solveKnapsackRecursive(capacity - weights[numOfItems - 1], weights, profits, numOfItems - 1, dpTable);
 
             // case 2. exclude the item if it is more than the capacity
-            int excludeCurrentItem = solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable);
+            final int excludeCurrentItem = solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable);
 
             // Store the value of function call stack in table and return
             dpTable[numOfItems][capacity] = Math.max(includeCurrentItem, excludeCurrentItem);
