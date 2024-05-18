@@ -75,6 +75,15 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-Xlint:-auxiliaryclass</arg>
+                        <arg>-Xlint:-rawtypes</arg>
+                        <arg>-Xlint:-serial</arg>
+                        <arg>-Xlint:-try</arg>
+                        <arg>-Xlint:-unchecked</arg>
+                        <arg>-Werror</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
