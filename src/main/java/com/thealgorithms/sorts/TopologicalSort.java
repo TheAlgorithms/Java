@@ -73,13 +73,6 @@ public final class TopologicalSort {
         }
     }
 
-    static class BackEdgeException extends RuntimeException {
-
-        BackEdgeException(String backEdge) {
-            super("This graph contains a cycle. No linear ordering is possible. " + backEdge);
-        }
-    }
-
     /*
      * Depth First Search
      *
@@ -131,7 +124,7 @@ public final class TopologicalSort {
                  *
                  * In many cases, we will not know u.f, but v.color denotes the type of edge
                  * */
-                throw new BackEdgeException("Back edge: " + u.label + " -> " + label);
+                throw new RuntimeException("This graph contains a cycle. No linear ordering is possible. Back edge: " + u.label + " -> " + label);
             }
         });
         u.color = Color.BLACK;
