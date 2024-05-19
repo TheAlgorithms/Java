@@ -82,7 +82,6 @@
                         <arg>-Xlint:-try</arg>
                         <arg>-Xlint:-unchecked</arg>
                         <arg>-Xlint:-lossy-conversions</arg>
-                        <arg>-Xlint:-this-escape</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
                 </configuration>

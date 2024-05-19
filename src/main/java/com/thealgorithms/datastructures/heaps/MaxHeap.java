@@ -91,7 +91,7 @@ public class MaxHeap implements Heap {
     }
 
     @Override
-    public void insertElement(HeapElement element) {
+    public final void insertElement(HeapElement element) {
         maxHeap.add(element);
         toggleUp(maxHeap.size());
     }
