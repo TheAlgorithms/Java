@@ -107,7 +107,6 @@ class BellmanFord /*
                     System.out.println();
                 }
             }
-            sc.close();
         }
     }
 
