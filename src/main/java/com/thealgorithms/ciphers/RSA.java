@@ -47,7 +47,7 @@ public class RSA {
     /**
      * Generate a new public and private key set.
      */
-    public synchronized void generateKeys(int bits) {
+    public final synchronized void generateKeys(int bits) {
         SecureRandom r = new SecureRandom();
         BigInteger p = new BigInteger(bits / 2, 100, r);
         BigInteger q = new BigInteger(bits / 2, 100, r);
