@@ -1,7 +1,9 @@
 package com.thealgorithms.maths;
 
 // Perimeter of different 2D geometrical shapes
-public class Perimeter {
+public final class Perimeter {
+    private Perimeter() {
+    }
 
     /**
      * Calculate the Perimeter of regular polygon (equals sides)

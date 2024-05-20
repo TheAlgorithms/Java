@@ -112,7 +112,9 @@ class QueueWithStack {
  *
  * @author sahilb2 (https://www.github.com/sahilb2)
  */
-public class QueueUsingTwoStacks {
+public final class QueueUsingTwoStacks {
+    private QueueUsingTwoStacks() {
+    }
 
     /**
      * Main method

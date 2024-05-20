@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Given tree is traversed in a 'post-order' way: LEFT -> RIGHT -> ROOT.
@@ -22,7 +26,9 @@ import java.util.*;
  *
  * @author Albina Gimaletdinova on 21/02/2023
  */
-public class PostOrderTraversal {
+public final class PostOrderTraversal {
+    private PostOrderTraversal() {
+    }
     public static List<Integer> recursivePostOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursivePostOrder(root, result);

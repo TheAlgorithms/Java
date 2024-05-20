@@ -8,7 +8,9 @@ if it is smaller than the target, the rows above that element are ignored (becau
 above it will also be smaller than the target), else that element is greater than the target, then
 the rows below it are ignored.
  */
-public class BinarySearch2dArray {
+public final class BinarySearch2dArray {
+    private BinarySearch2dArray() {
+    }
 
     static int[] BinarySearch(int[][] arr, int target) {
         int rowCount = arr.length, colCount = arr[0].length;

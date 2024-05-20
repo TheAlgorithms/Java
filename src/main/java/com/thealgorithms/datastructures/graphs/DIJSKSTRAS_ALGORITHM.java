@@ -34,7 +34,7 @@ class dijkstras {
 
         for (int i = 0; i < k; i++) {
             dist[i] = Integer.MAX_VALUE;
-            Set[i] = false;
+            Set[i] = Boolean.FALSE;
         }
 
         dist[src] = 0;
@@ -42,7 +42,7 @@ class dijkstras {
         for (int c = 0; c < k - 1; c++) {
             int u = minDist(dist, Set);
 
-            Set[u] = true;
+            Set[u] = Boolean.TRUE;
 
             for (int v = 0; v < k; v++) {
                 if (!Set[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {

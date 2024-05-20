@@ -1,6 +1,8 @@
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /*
     * Problem Statement: -
@@ -24,7 +26,9 @@ import java.util.*;
         51  46  55  44  53   4  21  12
 
  */
-public class KnightsTour {
+public final class KnightsTour {
+    private KnightsTour() {
+    }
 
     private static final int BASE = 12;
     private static final int[][] MOVES = {

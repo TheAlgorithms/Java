@@ -107,7 +107,9 @@ class Graph<E extends Comparable<E>> {
     }
 }
 
-public class ConnectedComponent {
+public final class ConnectedComponent {
+    private ConnectedComponent() {
+    }
 
     public static void main(String[] args) {
         Graph<Character> graphChars = new Graph<>();

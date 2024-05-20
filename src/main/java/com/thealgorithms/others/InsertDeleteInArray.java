@@ -1,8 +1,10 @@
 package com.thealgorithms.others;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class InsertDeleteInArray {
+public final class InsertDeleteInArray {
+    private InsertDeleteInArray() {
+    }
 
     public static void main(String[] args) {
         try (Scanner s = new Scanner(System.in)) {

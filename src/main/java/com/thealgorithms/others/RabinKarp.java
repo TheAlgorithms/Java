@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 // An implementation of Rabin-Karp string matching algorithm
 // Program will simply end if there is no match
-public class RabinKarp {
+public final class RabinKarp {
+    private RabinKarp() {
+    }
 
     public static Scanner SCANNER = null;
     public static final int ALPHABET_SIZE = 256;

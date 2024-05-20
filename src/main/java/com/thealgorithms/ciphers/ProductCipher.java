@@ -2,7 +2,9 @@ package com.thealgorithms.ciphers;
 
 import java.util.Scanner;
 
-class ProductCipher {
+final class ProductCipher {
+    private ProductCipher() {
+    }
 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
@@ -24,8 +26,8 @@ class ProductCipher {
 
             // Transposition encryption
             String transpositionInput = substitutionOutput.toString();
-            int modulus;
-            if ((modulus = transpositionInput.length() % n) != 0) {
+            int modulus = transpositionInput.length() % n;
+            if (modulus != 0) {
                 modulus = n - modulus;
 
                 for (; modulus != 0; modulus--) {

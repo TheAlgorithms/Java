@@ -6,7 +6,9 @@ import java.util.Random;
 /**
  * use quick sort algorithm to get kth largest or kth smallest element in given array
  */
-public class FindKthNumber {
+public final class FindKthNumber {
+    private FindKthNumber() {
+    }
 
     private static final Random RANDOM = new Random();
 

@@ -7,7 +7,9 @@ package com.thealgorithms.dynamicprogramming;
  * @author Libin Yang (https://github.com/yanglbme)
  * @since 2018/10/5
  */
-public class LongestValidParentheses {
+public final class LongestValidParentheses {
+    private LongestValidParentheses() {
+    }
 
     public static int getLongestValidParentheses(String s) {
         if (s == null || s.length() < 2) {

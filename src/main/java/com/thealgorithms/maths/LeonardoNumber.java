@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * https://en.wikipedia.org/wiki/Leonardo_number
  */
-public class LeonardoNumber {
+public final class LeonardoNumber {
+    private LeonardoNumber() {
+    }
 
     /**
      * Calculate nth Leonardo Number (1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, ...)

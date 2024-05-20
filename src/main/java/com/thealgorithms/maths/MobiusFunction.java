@@ -12,7 +12,9 @@ package com.thealgorithms.maths;
  * Author: Akshay Dubey (https://github.com/itsAkshayDubey)
  *
  * */
-public class MobiusFunction {
+public final class MobiusFunction {
+    private MobiusFunction() {
+    }
 
     /**
      * This method returns μ(n) of given number n

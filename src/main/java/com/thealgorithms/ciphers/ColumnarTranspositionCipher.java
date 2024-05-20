@@ -7,7 +7,9 @@ import java.util.Objects;
  *
  * @author <a href="https://github.com/freitzzz">freitzzz</a>
  */
-public class ColumnarTranspositionCipher {
+public final class ColumnarTranspositionCipher {
+    private ColumnarTranspositionCipher() {
+    }
 
     private static String keyword;
     private static Object[][] table;

@@ -6,7 +6,9 @@
 /** Program description - To find the maximum subarray sum */
 package com.thealgorithms.dynamicprogramming;
 
-public class KadaneAlgorithm {
+public final class KadaneAlgorithm {
+    private KadaneAlgorithm() {
+    }
 
     public static boolean max_Sum(int[] a, int predicted_answer) {
         int sum = a[0], running_sum = 0;

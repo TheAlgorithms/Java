@@ -10,7 +10,9 @@ import java.util.Collections;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class FFT {
+public final class FFT {
+    private FFT() {
+    }
 
     /**
      * This class represents a complex number and has methods for basic

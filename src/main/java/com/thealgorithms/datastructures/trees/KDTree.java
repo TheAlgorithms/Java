@@ -75,10 +75,14 @@ public class KDTree {
         @Override
         public boolean equals(Object obj) {
             if (obj instanceof Point other) {
-                if (other.getDimension() != this.getDimension()) return false;
                 return Arrays.equals(other.coordinates, this.coordinates);
             }
             return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(coordinates);
         }
 
         @Override

@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * https://en.wikipedia.org/wiki/Pythagorean_triple
  */
-public class PythagoreanTriple {
+public final class PythagoreanTriple {
+    private PythagoreanTriple() {
+    }
 
     public static void main(String[] args) {
         assert isPythagTriple(3, 4, 5);

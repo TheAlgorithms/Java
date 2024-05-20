@@ -213,7 +213,7 @@ public class HashMapCuckooHashing {
     public double checkLoadFactor() {
         double factor = (double) size / tableSize;
         if (factor > .7) {
-            System.out.printf("Load factor is %.2f , rehashing table\n", factor);
+            System.out.printf("Load factor is %.2f , rehashing table%n", factor);
             reHashTableIncreasesTableSize();
         }
         return factor;

@@ -2,7 +2,9 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 
 import java.util.Scanner;
 
-public class MainCuckooHashing {
+public final class MainCuckooHashing {
+    private MainCuckooHashing() {
+    }
 
     public static void main(String[] args) {
         int choice, key;
@@ -52,7 +54,7 @@ public class MainCuckooHashing {
                 break;
             }
             case 6: {
-                System.out.printf("Load factor is: %.2f\n", h.checkLoadFactor());
+                System.out.printf("Load factor is: %.2f%n", h.checkLoadFactor());
                 break;
             }
             case 7: {

@@ -6,7 +6,9 @@ package com.thealgorithms.maths;
  *
  * @author Oskar Enmalm 3/10/17
  */
-public class GCD {
+public final class GCD {
+    private GCD() {
+    }
 
     /**
      * get the greatest common divisor

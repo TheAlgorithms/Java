@@ -4,7 +4,9 @@ package com.thealgorithms.dynamicprogramming;
  * Java program for Boundary fill algorithm.
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
-public class BoundaryFill {
+public final class BoundaryFill {
+    private BoundaryFill() {
+    }
 
     /**
      * Get the color at the given co-odrinates of a 2D image

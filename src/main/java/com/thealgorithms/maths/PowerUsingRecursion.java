@@ -5,7 +5,9 @@ package com.thealgorithms.maths;
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-public class PowerUsingRecursion {
+public final class PowerUsingRecursion {
+    private PowerUsingRecursion() {
+    }
 
     public static double power(double base, int exponent) {
         // Base case: anything raised to the power of 0 is 1

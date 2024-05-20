@@ -9,7 +9,9 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * left half recursively to create left subtree 3. Use the right half
  * recursively to create right subtree
  */
-public class BSTFromSortedArray {
+public final class BSTFromSortedArray {
+    private BSTFromSortedArray() {
+    }
     public static Node createBST(int[] array) {
         if (array == null || array.length == 0) {
             return null;

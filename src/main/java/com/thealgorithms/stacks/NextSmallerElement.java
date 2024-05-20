@@ -37,7 +37,9 @@ import java.util.Stack;
    answer is -1
  */
 
-public class NextSmallerElement {
+public final class NextSmallerElement {
+    private NextSmallerElement() {
+    }
 
     public static int[] findNextSmallerElements(int[] array) {
         // base case

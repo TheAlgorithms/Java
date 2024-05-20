@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 public class ShellSort implements SortAlgorithm {
 
     /**
@@ -25,7 +23,7 @@ public class ShellSort implements SortAlgorithm {
             for (int i = gap; i < length; i++) {
                 int j;
                 T temp = array[i];
-                for (j = i; j >= gap && less(temp, array[j - gap]); j -= gap) {
+                for (j = i; j >= gap && SortUtils.less(temp, array[j - gap]); j -= gap) {
                     array[j] = array[j - gap];
                 }
                 array[j] = temp;
@@ -43,6 +41,6 @@ public class ShellSort implements SortAlgorithm {
         for (int i = 0; i < toSort.length - 1; ++i) {
             assert toSort[i] <= toSort[i + 1];
         }
-        print(toSort);
+        SortUtils.print(toSort);
     }
 }

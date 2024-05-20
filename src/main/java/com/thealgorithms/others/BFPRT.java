@@ -5,7 +5,9 @@ import java.util.Arrays;
 /**
  * BFPRT algorithm.
  */
-public class BFPRT {
+public final class BFPRT {
+    private BFPRT() {
+    }
 
     public static int[] getMinKNumsByBFPRT(int[] arr, int k) {
         if (k < 1 || k > arr.length) {

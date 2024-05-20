@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * Comb Sort algorithm implementation
  *
@@ -52,9 +50,9 @@ class CombSort implements SortAlgorithm {
 
             // Compare all elements with current gap
             for (int i = 0; i < size - gap; i++) {
-                if (less(arr[i + gap], arr[i])) {
+                if (SortUtils.less(arr[i + gap], arr[i])) {
                     // Swap arr[i] and arr[i+gap]
-                    swap(arr, i, i + gap);
+                    SortUtils.swap(arr, i, i + gap);
                     swapped = true;
                 }
             }
@@ -88,6 +86,6 @@ class CombSort implements SortAlgorithm {
         ob.sort(arr);
 
         System.out.println("sorted array");
-        print(arr);
+        SortUtils.print(arr);
     }
 }

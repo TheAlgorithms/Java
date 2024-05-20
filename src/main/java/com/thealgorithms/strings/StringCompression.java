@@ -4,7 +4,9 @@ package com.thealgorithms.strings;
  * string
  * @author Swarga-codes (https://github.com/Swarga-codes)
  */
-public class StringCompression {
+public final class StringCompression {
+    private StringCompression() {
+    }
     /**
      * Returns the compressed or encoded string
      *

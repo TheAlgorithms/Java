@@ -11,7 +11,9 @@ package com.thealgorithms.dynamicprogramming;
    x1 < x2 > x3 < x4 > x5 < …. xn or
    x1 > x2 < x3 > x4 < x5 > …. xn
  */
-public class LongestAlternatingSubsequence {
+public final class LongestAlternatingSubsequence {
+    private LongestAlternatingSubsequence() {
+    }
 
     /* Function to return longest alternating subsequence length*/
     static int AlternatingLength(int[] arr, int n) {
@@ -32,7 +34,8 @@ public class LongestAlternatingSubsequence {
         int[][] las = new int[n][2]; // las = LongestAlternatingSubsequence
 
         for (int i = 0; i < n; i++) {
-            las[i][0] = las[i][1] = 1;
+            las[i][0] = 1;
+            las[i][1] = 1;
         }
 
         int result = 1; // Initialize result

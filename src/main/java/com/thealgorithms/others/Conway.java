@@ -1,8 +1,12 @@
 package com.thealgorithms.others;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Conway {
+public final class Conway {
+    private Conway() {
+    }
 
     /*
      * This class will generate the conway sequence also known as the look and say sequence.

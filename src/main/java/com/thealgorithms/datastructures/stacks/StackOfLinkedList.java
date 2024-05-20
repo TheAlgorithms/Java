@@ -6,7 +6,9 @@ import java.util.NoSuchElementException;
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
 // An implementation of a Stack using a Linked List
-class StackOfLinkedList {
+final class StackOfLinkedList {
+    private StackOfLinkedList() {
+    }
 
     public static void main(String[] args) {
         LinkedListStack stack = new LinkedListStack();

@@ -27,7 +27,9 @@ import java.util.Stack;
  *
  * @author sahil
  */
-public class MaximumMinimumWindow {
+public final class MaximumMinimumWindow {
+    private MaximumMinimumWindow() {
+    }
 
     /**
      * This function contains the logic of finding maximum of minimum for every

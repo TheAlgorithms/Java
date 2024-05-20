@@ -14,7 +14,9 @@ package com.thealgorithms.maths;
  * be changed according to the user preference.
  */
 
-public class SquareRootWithNewtonRaphsonMethod {
+public final class SquareRootWithNewtonRaphsonMethod {
+    private SquareRootWithNewtonRaphsonMethod() {
+    }
 
     public static double squareRoot(int n) {
         double x = n; // initially taking a guess that x = n.

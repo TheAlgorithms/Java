@@ -43,7 +43,7 @@ public class Merge_K_SortedLinkedlist {
         return head;
     }
 
-    private class Node {
+    private final class Node {
 
         private int data;
         private Node next;

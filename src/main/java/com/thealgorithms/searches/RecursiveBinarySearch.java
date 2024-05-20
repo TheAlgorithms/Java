@@ -4,7 +4,7 @@
 // Explanation:- https://www.tutorialspoint.com/java-program-for-binary-search-recursive
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Scanner;
 
 // Create a SearchAlgorithm class with a generic type
 abstract class SearchAlgorithm<T extends Comparable<T>> {

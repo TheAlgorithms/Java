@@ -8,7 +8,9 @@ This class finds the majority element(s) in an array of integers.
 A majority element is an element that appears more than or equal to n/2 times, where n is the length
 of the array.
 */
-public class MajorityElement {
+public final class MajorityElement {
+    private MajorityElement() {
+    }
     /*
    This method returns the majority element(s) in the given array of integers.
    @param nums: an array of integers

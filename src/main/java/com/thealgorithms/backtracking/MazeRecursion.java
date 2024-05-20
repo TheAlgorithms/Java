@@ -1,6 +1,8 @@
 package com.thealgorithms.backtracking;
 
-public class MazeRecursion {
+public final class MazeRecursion {
+    private MazeRecursion() {
+    }
 
     public static void mazeRecursion() {
         // First create a 2 dimensions array to mimic a maze map

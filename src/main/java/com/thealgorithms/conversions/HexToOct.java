@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Tanmay Joshi
  */
-public class HexToOct {
+public final class HexToOct {
+    private HexToOct() {
+    }
 
     /**
      * This method converts a Hexadecimal number to a decimal number

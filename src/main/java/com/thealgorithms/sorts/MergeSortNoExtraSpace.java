@@ -1,12 +1,14 @@
 package com.thealgorithms.sorts;
 
-import java.util.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*This code implements the mergeSort algorithm without extra space
 For understanding about mergesort visit :https://www.geeksforgeeks.org/merge-sort/
  */
-public class MergeSortNoExtraSpace {
+public final class MergeSortNoExtraSpace {
+    private MergeSortNoExtraSpace() {
+    }
 
     public static void call_merge_sort(int[] a, int n) {
         int maxele = Arrays.stream(a).max().getAsInt() + 1;

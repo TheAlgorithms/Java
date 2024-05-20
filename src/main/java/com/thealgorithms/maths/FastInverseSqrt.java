@@ -9,7 +9,9 @@
 
 package com.thealgorithms.maths;
 
-public class FastInverseSqrt {
+public final class FastInverseSqrt {
+    private FastInverseSqrt() {
+    }
 
     public static boolean inverseSqrt(float number) {
         float x = number;

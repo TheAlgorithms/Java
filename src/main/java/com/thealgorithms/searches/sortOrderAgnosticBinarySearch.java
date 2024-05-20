@@ -1,5 +1,7 @@
 package com.thealgorithms.searches;
-public class sortOrderAgnosticBinarySearch {
+public final class sortOrderAgnosticBinarySearch {
+    private sortOrderAgnosticBinarySearch() {
+    }
     public static int find(int[] arr, int key) {
         int start = 0;
         int end = arr.length - 1;

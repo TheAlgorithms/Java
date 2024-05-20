@@ -3,7 +3,9 @@
 
 package com.thealgorithms.strings;
 
-public class MyAtoi {
+public final class MyAtoi {
+    private MyAtoi() {
+    }
     public static int myAtoi(String s) {
         s = s.trim();
         char[] char_1 = s.toCharArray();

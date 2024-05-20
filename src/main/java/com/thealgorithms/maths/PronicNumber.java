@@ -10,7 +10,9 @@ package com.thealgorithms.maths;
  *
  * */
 
-public class PronicNumber {
+public final class PronicNumber {
+    private PronicNumber() {
+    }
 
     /**
      * This method checks if the given number is pronic number or non-pronic number

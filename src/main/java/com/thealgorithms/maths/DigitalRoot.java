@@ -40,7 +40,9 @@
  */
 package com.thealgorithms.maths;
 
-class DigitalRoot {
+final class DigitalRoot {
+    private DigitalRoot() {
+    }
 
     public static int digitalRoot(int n) {
         if (single(n) <= 9) { // If n is already single digit than simply call single method and

@@ -11,7 +11,9 @@ import java.util.List;
  *
  * */
 
-public class JugglerSequence {
+public final class JugglerSequence {
+    private JugglerSequence() {
+    }
 
     /**
      * This method prints juggler sequence starting with the number in the parameter

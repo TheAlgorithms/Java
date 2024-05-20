@@ -1,7 +1,9 @@
 package com.thealgorithms.conversions;
 
 // hex = [0 - 9] -> [A - F]
-class DecimalToHexaDecimal {
+final class DecimalToHexaDecimal {
+    private DecimalToHexaDecimal() {
+    }
 
     private static final int SIZE_OF_INT_IN_HALF_BYTES = 8;
     private static final int NUMBER_OF_BITS_IN_HALF_BYTE = 4;

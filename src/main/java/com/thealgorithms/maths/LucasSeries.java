@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * https://en.wikipedia.org/wiki/Lucas_number
  */
-public class LucasSeries {
+public final class LucasSeries {
+    private LucasSeries() {
+    }
 
     /**
      * Calculate nth number of Lucas Series(2, 1, 3, 4, 7, 11, 18, 29, 47, 76,

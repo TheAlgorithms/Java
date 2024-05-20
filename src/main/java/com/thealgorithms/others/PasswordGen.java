@@ -11,11 +11,8 @@ import java.util.Random;
  * @author AKS1996
  * @date 2017.10.25
  */
-class PasswordGen {
-
-    public static void main(String[] args) {
-        String password = generatePassword(8, 16);
-        System.out.print("Password: " + password);
+final class PasswordGen {
+    private PasswordGen() {
     }
 
     static String generatePassword(int min_length, int max_length) {

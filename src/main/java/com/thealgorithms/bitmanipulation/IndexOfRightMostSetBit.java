@@ -5,7 +5,9 @@ package com.thealgorithms.bitmanipulation;
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
-public class IndexOfRightMostSetBit {
+public final class IndexOfRightMostSetBit {
+    private IndexOfRightMostSetBit() {
+    }
     public static int indexOfRightMostSetBit(int n) {
         if (n == 0) {
             return -1; // No set bits

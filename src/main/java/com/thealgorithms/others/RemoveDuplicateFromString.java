@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-public class RemoveDuplicateFromString {
+public final class RemoveDuplicateFromString {
+    private RemoveDuplicateFromString() {
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

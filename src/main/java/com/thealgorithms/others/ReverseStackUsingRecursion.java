@@ -3,7 +3,9 @@ package com.thealgorithms.others;
 /* Program to reverse a Stack using Recursion*/
 import java.util.Stack;
 
-public class ReverseStackUsingRecursion {
+public final class ReverseStackUsingRecursion {
+    private ReverseStackUsingRecursion() {
+    }
 
     // Stack
     private static Stack<Integer> stack = new Stack<>();

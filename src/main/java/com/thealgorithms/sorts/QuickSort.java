@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
@@ -45,7 +43,7 @@ class QuickSort implements SortAlgorithm {
      */
     private static <T extends Comparable<T>> int randomPartition(T[] array, int left, int right) {
         int randomIndex = left + (int) (Math.random() * (right - left + 1));
-        swap(array, randomIndex, right);
+        SortUtils.swap(array, randomIndex, right);
         return partition(array, left, right);
     }
 
@@ -62,14 +60,14 @@ class QuickSort implements SortAlgorithm {
         T pivot = array[mid];
 
         while (left <= right) {
-            while (less(array[left], pivot)) {
+            while (SortUtils.less(array[left], pivot)) {
                 ++left;
             }
-            while (less(pivot, array[right])) {
+            while (SortUtils.less(pivot, array[right])) {
                 --right;
             }
             if (left <= right) {
-                swap(array, left, right);
+                SortUtils.swap(array, left, right);
                 ++left;
                 --right;
             }

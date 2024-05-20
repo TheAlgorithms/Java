@@ -1,6 +1,8 @@
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class UnionFind {
 
@@ -23,7 +25,10 @@ public class UnionFind {
             return i;
         }
 
-        return p[i] = find(parent);
+        final int result = find(parent);
+        p[i] = result;
+
+        return result;
     }
 
     public void union(int x, int y) {

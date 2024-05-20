@@ -2,7 +2,9 @@ package com.thealgorithms.searches;
 
 import java.util.Scanner;
 
-public class LinearSearchThread {
+public final class LinearSearchThread {
+    private LinearSearchThread() {
+    }
 
     public static void main(String[] args) {
         int[] list = new int[200];

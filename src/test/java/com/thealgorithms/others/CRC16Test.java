@@ -5,9 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 class CRC16Test {
-
-    CRC16 crc = new CRC16();
-
     @Test
     void testCRC16() {
         // given

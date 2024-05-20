@@ -6,13 +6,7 @@
         <Bug pattern="EI_EXPOSE_REP2" />
     </Match>
     <Match>
-        <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" />
-    </Match>
-    <Match>
         <Bug pattern="DMI_RANDOM_USED_ONLY_ONCE" />
-    </Match>
-    <Match>
-        <Bug pattern="VA_FORMAT_STRING_USES_NEWLINE" />
     </Match>
     <Match>
         <Bug pattern="SF_SWITCH_NO_DEFAULT" />
@@ -81,9 +75,6 @@
         <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
     </Match>
     <Match>
-        <Bug pattern="MS_SHOULD_BE_FINAL" />
-    </Match>
-    <Match>
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
     </Match>
     <Match>
@@ -111,9 +102,6 @@
         <Bug pattern="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" />
     </Match>
     <Match>
-        <Bug pattern="RV_RETURN_VALUE_IGNORED" />
-    </Match>
-    <Match>
         <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS" />
     </Match>
     <Match>
@@ -128,9 +116,6 @@
     <!-- fb-contrib -->
     <Match>
         <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER" />
-    </Match>
-    <Match>
-        <Bug pattern="NAB_NEEDLESS_BOOLEAN_CONSTANT_CONVERSION" />
     </Match>
     <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
@@ -259,9 +244,6 @@
         <Bug pattern="FCCD_FIND_CLASS_CIRCULAR_DEPENDENCY" />
     </Match>
     <Match>
-        <Bug pattern="LEST_LOST_EXCEPTION_STACK_TRACE" />
-    </Match>
-    <Match>
         <Bug pattern="PL_PARALLEL_LISTS" />
     </Match>
     <Match>
@@ -284,5 +266,12 @@
     </Match>
     <Match>
         <Bug pattern="SPP_TOSTRING_ON_STRING" />
+    </Match>
+    <!-- find-sec-bugs -->
+    <Match>
+        <Bug pattern="PREDICTABLE_RANDOM" />
+    </Match>
+    <Match>
+        <Bug pattern="HARD_CODE_KEY" />
     </Match>
 </FindBugsFilter>

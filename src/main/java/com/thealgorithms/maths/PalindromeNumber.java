@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class PalindromeNumber {
+public final class PalindromeNumber {
+    private PalindromeNumber() {
+    }
     /**
      * Check if {@code n} is palindrome number or not
      *

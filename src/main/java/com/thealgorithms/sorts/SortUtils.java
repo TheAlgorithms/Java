@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 final class SortUtils {
+    private SortUtils() {
+    }
 
     /**
      * Swaps two elements at the given positions in an array.

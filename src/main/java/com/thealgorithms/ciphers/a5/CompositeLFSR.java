@@ -26,10 +26,10 @@ public abstract class CompositeLFSR implements BaseLFSR {
 
     private boolean getMajorityBit() {
         Map<Boolean, Integer> bitCount = new TreeMap<>();
-        bitCount.put(false, 0);
-        bitCount.put(true, 0);
+        bitCount.put(Boolean.FALSE, 0);
+        bitCount.put(Boolean.TRUE, 0);
 
         registers.forEach(lfsr -> bitCount.put(lfsr.getClockBit(), bitCount.get(lfsr.getClockBit()) + 1));
-        return bitCount.get(false) <= bitCount.get(true);
+        return bitCount.get(Boolean.FALSE) <= bitCount.get(Boolean.TRUE);
     }
 }

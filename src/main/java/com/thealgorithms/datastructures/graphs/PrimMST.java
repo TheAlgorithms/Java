@@ -50,7 +50,7 @@ class PrimMST {
         // Initialize all keys as INFINITE
         for (int i = 0; i < V; i++) {
             key[i] = Integer.MAX_VALUE;
-            mstSet[i] = false;
+            mstSet[i] = Boolean.FALSE;
         }
 
         // Always include first 1st vertex in MST.
@@ -65,7 +65,7 @@ class PrimMST {
             int u = minKey(key, mstSet);
 
             // Add the picked vertex to the MST Set
-            mstSet[u] = true;
+            mstSet[u] = Boolean.TRUE;
 
             // Update key value and parent index of the adjacent
             // vertices of the picked vertex. Consider only those

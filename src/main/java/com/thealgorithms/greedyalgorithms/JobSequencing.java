@@ -5,7 +5,9 @@ import java.util.Arrays;
 
 // Problem Link: https://en.wikipedia.org/wiki/Job-shop_scheduling
 
-public class JobSequencing {
+public final class JobSequencing {
+    private JobSequencing() {
+    }
 
     // Define a Job class that implements Comparable for sorting by profit in descending order
     static class Job implements Comparable<Job> {
@@ -29,7 +31,7 @@ public class JobSequencing {
     // Function to print the job sequence
     public static String findJobSequence(ArrayList<Job> jobs, int size) {
         Boolean[] slots = new Boolean[size];
-        Arrays.fill(slots, false);
+        Arrays.fill(slots, Boolean.FALSE);
 
         int[] result = new int[size];
 
@@ -38,7 +40,7 @@ public class JobSequencing {
             for (int j = jobs.get(i).deadline - 1; j >= 0; j--) {
                 if (!slots[j]) {
                     result[j] = i;
-                    slots[j] = true;
+                    slots[j] = Boolean.TRUE;
                     break;
                 }
             }
