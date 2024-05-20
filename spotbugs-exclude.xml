@@ -81,9 +81,6 @@
         <Bug pattern="SS_SHOULD_BE_STATIC" />
     </Match>
     <Match>
-        <Bug pattern="HE_EQUALS_USE_HASHCODE" />
-    </Match>
-    <Match>
         <Bug pattern="IT_NO_SUCH_ELEMENT" />
     </Match>
     <Match>
