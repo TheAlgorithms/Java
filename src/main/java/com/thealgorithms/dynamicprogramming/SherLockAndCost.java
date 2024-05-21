@@ -1,13 +1,15 @@
 /**
  * This class contains a method to solve the Sherlock and Cost problem using dynamic programming.
  * The problem is to find the maximum possible sum of absolute differences between adjacent elements in an array.
+ *
+ * @author gowtham sankar gunasekaran
  */
 
 package com.thealgorithms.dynamicprogramming;
 
 import java.util.List;
 
-public class SherLockAndCost {
+public final class SherLockAndCost {
 
     /**
      * This method takes a list of integers as input and returns the maximum possible sum of absolute differences between adjacent elements in the array.
@@ -25,6 +27,11 @@ public class SherLockAndCost {
      * 4.) The time complexity of this method is O(N), where N is the length of the input list.
      */
     public static int sherlockAndCostProblem(List<Integer> list) {
+
+        if (list == null || list.isEmpty()) {
+            return 0;
+        }
+
         int N = list.size();
         int[][] dp = new int[N][2];
         dp[0][0] = 0;

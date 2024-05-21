@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SherLockAndCostTest {
 
@@ -35,5 +36,25 @@ public class SherLockAndCostTest {
         List<Integer> list = Arrays.asList(-1, 2, 3, 4, 5);
         int result = SherLockAndCost.sherlockAndCostProblem(list);
         assertEquals(8, result);
+    }
+
+    @Test
+    public void testNullElements() {
+        List<Integer> list = Arrays.asList(null, null, null, null);
+        assertThrows(NullPointerException.class, () -> SherLockAndCost.sherlockAndCostProblem(list));
+    }
+
+    @Test
+    public void testEmptyList() {
+        List<Integer> list = Arrays.asList();
+        int result = SherLockAndCost.sherlockAndCostProblem(list);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testSingleFList() {
+        List<Integer> list = Arrays.asList(500);
+        int result = SherLockAndCost.sherlockAndCostProblem(list);
+        assertEquals(0, result);
     }
 }
