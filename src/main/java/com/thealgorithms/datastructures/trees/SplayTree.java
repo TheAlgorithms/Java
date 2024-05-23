@@ -33,7 +33,8 @@ public class SplayTree {
 
         Node(int key) {
             this.key = key;
-            left = right = null;
+            left = null;
+            right = null;
         }
     }
 
