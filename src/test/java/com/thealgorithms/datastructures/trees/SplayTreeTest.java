@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.trees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -16,10 +17,9 @@ public class SplayTreeTest {
     @MethodSource("traversalOrders")
     public void testTraversal(SplayTree.TraverseOrder traverseOrder) {
         SplayTree tree = createComplexTree();
-
-        // Perform traversal based on the provided order and verify the result
         List<Integer> expected = getExpectedTraversalResult(traverseOrder);
         List<Integer> result = tree.traverse(traverseOrder);
+
         assertEquals(expected, result);
     }
 
@@ -27,8 +27,6 @@ public class SplayTreeTest {
     @MethodSource("valuesToTest")
     public void testSearch(int value) {
         SplayTree tree = createComplexTree();
-
-        // Search for the value in the tree
         assertTrue(tree.search(value));
     }
 
@@ -37,23 +35,53 @@ public class SplayTreeTest {
     public void testDelete(int value) {
         SplayTree tree = createComplexTree();
 
-        // Delete the value from the tree
-        assertTrue(tree.search(value)); // Ensure value is present before deletion
+        assertTrue(tree.search(value));
         tree.delete(value);
-        assertFalse(tree.search(value)); // Ensure value is not present after deletion
+        assertFalse(tree.search(value));
     }
 
-    // Method to provide different traversal orders as parameters
+    @ParameterizedTest
+    @MethodSource("nonExistentValues")
+    public void testSearchNonExistent(int value) {
+        SplayTree tree = createComplexTree();
+        assertFalse(tree.search(value));
+    }
+
+    @ParameterizedTest
+    @MethodSource("nonExistentValues")
+    public void testDeleteNonExistent(int value) {
+        SplayTree tree = createComplexTree();
+
+        tree.delete(value);
+        assertFalse(tree.search(value));
+    }
+
+    @ParameterizedTest
+    @MethodSource("valuesToTest")
+    public void testDeleteThrowsExceptionForEmptyTree(int value) {
+        SplayTree tree = new SplayTree();
+        assertThrows(IllegalArgumentException.class, () -> tree.delete(value));
+    }
+
+    @ParameterizedTest
+    @MethodSource("valuesToTest")
+    public void testInsertThrowsExceptionForDuplicateKeys(int value) {
+        SplayTree tree = createComplexTree();
+        assertThrows(IllegalArgumentException.class, () -> tree.insert(value));
+    }
+
     private static Stream<SplayTree.TraverseOrder> traversalOrders() {
         return Stream.of(SplayTree.TraverseOrder.IN_ORDER, SplayTree.TraverseOrder.PRE_ORDER, SplayTree.TraverseOrder.POST_ORDER);
     }
 
-    // Method to provide values for search and delete tests as parameters
     private static Stream<Integer> valuesToTest() {
-        return Stream.of(1, 5, 10); // Values present in the complex tree
+        return Stream.of(1, 5, 10);
     }
 
-    // Method to get the expected traversal result based on the provided order
+    private static Stream<Integer> nonExistentValues() {
+        return Stream.of(0, 11, 15);
+    }
+
     private List<Integer> getExpectedTraversalResult(SplayTree.TraverseOrder traverseOrder) {
         List<Integer> expected = new LinkedList<>();
         switch (traverseOrder) {
@@ -72,7 +100,6 @@ public class SplayTreeTest {
         return expected;
     }
 
-    // Method to create a complex SplayTree instance for testing
     private SplayTree createComplexTree() {
         SplayTree tree = new SplayTree();
         tree.insert(5);
