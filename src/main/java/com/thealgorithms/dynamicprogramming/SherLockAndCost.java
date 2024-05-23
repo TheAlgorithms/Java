@@ -10,6 +10,8 @@ package com.thealgorithms.dynamicprogramming;
 import java.util.List;
 
 public final class SherLockAndCost {
+    private SherLockAndCost() {
+    }
 
     /**
      * This method takes a list of integers as input and returns the maximum possible sum of absolute differences between adjacent elements in the array.
