@@ -162,19 +162,22 @@ public class SplayTree {
     }
 
     /**
-     * Recursive function to insert a key.
+     * Recursive function to insert a key into a subtree.
      *
      * @param root The root of the subtree to insert the key into.
      * @param key  The key to insert.
-     * @return The root of the modified subtree.
+     * @return The root of the modified subtree after insertion.
+     * @throws IllegalArgumentException If the key to be inserted already exists in the subtree.
      */
     private Node insertRec(Node root, int key) {
         if (root == null) return new Node(key);
 
-        if (root.key > key) {
+        if (key < root.key) {
             root.left = insertRec(root.left, key);
-        } else if (root.key < key) {
+        } else if (key > root.key) {
             root.right = insertRec(root.right, key);
+        } else {
+            throw new IllegalArgumentException("Duplicate key: " + key);
         }
 
         return root;
@@ -192,58 +195,33 @@ public class SplayTree {
     }
 
     /**
-     * Delete a key from the SplayTree.
+     * Deletes a key from the SplayTree.
      *
      * @param key The key to delete.
+     * @throws IllegalArgumentException If the tree is empty.
      */
     public void delete(int key) {
-        root = deleteRec(root, key);
-    }
+        if (root == null) {
+            throw new IllegalArgumentException("Cannot delete from an empty tree");
+        }
 
-    /**
-     * Recursive function to delete a key.
-     *
-     * @param root The root of the subtree to delete the key from.
-     * @param key  The key to delete.
-     * @return The root of the modified subtree.
-     */
-    private Node deleteRec(Node root, int key) {
-        if (root == null) return null;
+        // Splay the tree with the key to be deleted
+        root = splay(root, key);
 
-        if (root.key > key) {
-            root.left = deleteRec(root.left, key);
-        } else if (root.key < key) {
-            root.right = deleteRec(root.right, key);
+        // If the key is not found at the root, return without deleting
+        if (root.key != key) {
+            return;
+        }
+
+        // Handle deletion
+        if (root.left == null) {
+            root = root.right;
         } else {
-            // Found the node to delete
-            if (root.left == null)
-                return root.right;
-            else if (root.right == null)
-                return root.left;
-
-            // Node with two children: Get the inorder successor (smallest in the right subtree)
-            root.key = minValue(root.right);
-
-            // Delete the inorder successor
-            root.right = deleteRec(root.right, root.key);
+            Node temp = root;
+            // Splay to bring the largest key in left subtree to root
+            root = splay(root.left, key);
+            root.right = temp.right;
         }
-
-        return root;
-    }
-
-    /**
-     * Find the minimum value in a subtree.
-     *
-     * @param root The root of the subtree to find the minimum value in.
-     * @return The minimum value in the subtree.
-     */
-    private int minValue(Node root) {
-        int minValue = root.key;
-        while (root.left != null) {
-            minValue = root.left.key;
-            root = root.left;
-        }
-        return minValue;
     }
 
     /**
