@@ -33,16 +33,16 @@ public class DES {
     }
 
     // Permutation table to convert initial 64 bit key to 56 bit key
-    private static int[] PC1 = {57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4};
+    private static int[] pc1 = {57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4};
 
     // Lookup table used to shift the initial key, in order to generate the subkeys
-    private static int[] KEY_SHIFTS = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
+    private static int[] keyShifts = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
 
     // Table to convert the 56 bit subkeys to 48 bit subkeys
-    private static int[] PC2 = {14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32};
+    private static int[] pc2 = {14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32};
 
     // Initial permutatation of each 64 but message block
-    private static int[] IP = {58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7};
+    private static int[] ip = {58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19, 11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7};
 
     // Expansion table to convert right half of message blocks from 32 bits to 48 bits
     private static int[] expansion = {32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8, 9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21, 20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 30, 31, 32, 1};
@@ -70,13 +70,13 @@ public class DES {
     static int[] permutation = {16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25};
 
     // Table used for final inversion of the message box after 16 rounds of Feistel Function
-    static int[] IPinverse = {40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25};
+    static int[] ipInverse = {40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25};
 
     private String[] getSubkeys(String originalKey) {
-        StringBuilder permutedKey = new StringBuilder(); // Initial permutation of keys via PC1
+        StringBuilder permutedKey = new StringBuilder(); // Initial permutation of keys via pc1
         int i, j;
         for (i = 0; i < 56; i++) {
-            permutedKey.append(originalKey.charAt(PC1[i] - 1));
+            permutedKey.append(originalKey.charAt(pc1[i] - 1));
         }
         String[] subKeys = new String[16];
         String initialPermutedKey = permutedKey.toString();
@@ -84,19 +84,19 @@ public class DES {
 
         // We will now operate on the left and right halves of the permutedKey
         for (i = 0; i < 16; i++) {
-            String Cn = C0.substring(KEY_SHIFTS[i]) + C0.substring(0, KEY_SHIFTS[i]);
-            String Dn = D0.substring(KEY_SHIFTS[i]) + D0.substring(0, KEY_SHIFTS[i]);
+            String Cn = C0.substring(keyShifts[i]) + C0.substring(0, keyShifts[i]);
+            String Dn = D0.substring(keyShifts[i]) + D0.substring(0, keyShifts[i]);
             subKeys[i] = Cn + Dn;
             C0 = Cn; // Re-assign the values to create running permutation
             D0 = Dn;
         }
 
-        // Let us shrink the keys to 48 bits (well, characters here) using PC2
+        // Let us shrink the keys to 48 bits (well, characters here) using pc2
         for (i = 0; i < 16; i++) {
             String key = subKeys[i];
             permutedKey.setLength(0);
             for (j = 0; j < 48; j++) {
-                permutedKey.append(key.charAt(PC2[j] - 1));
+                permutedKey.append(key.charAt(pc2[j] - 1));
             }
             subKeys[i] = permutedKey.toString();
         }
@@ -163,7 +163,7 @@ public class DES {
         StringBuilder permutedMessage = new StringBuilder();
         int i;
         for (i = 0; i < 64; i++) {
-            permutedMessage.append(message.charAt(IP[i] - 1));
+            permutedMessage.append(message.charAt(ip[i] - 1));
         }
         String L0 = permutedMessage.substring(0, 32), R0 = permutedMessage.substring(32);
 
@@ -178,7 +178,7 @@ public class DES {
         String combinedBlock = R0 + L0; // Reverse the 16th block
         permutedMessage.setLength(0);
         for (i = 0; i < 64; i++) {
-            permutedMessage.append(combinedBlock.charAt(IPinverse[i] - 1));
+            permutedMessage.append(combinedBlock.charAt(ipInverse[i] - 1));
         }
         return permutedMessage.toString();
     }
