@@ -11,15 +11,15 @@ public final class RabinKarp {
     private RabinKarp() {
     }
 
-    public static Scanner SCANNER = null;
+    public static Scanner scanner = null;
     public static final int ALPHABET_SIZE = 256;
 
     public static void main(String[] args) {
-        SCANNER = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         System.out.println("Enter String");
-        String text = SCANNER.nextLine();
+        String text = scanner.nextLine();
         System.out.println("Enter pattern");
-        String pattern = SCANNER.nextLine();
+        String pattern = scanner.nextLine();
 
         int q = 101;
         searchPat(text, pattern, q);

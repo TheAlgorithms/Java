@@ -16,13 +16,13 @@ public final class DudeneyNumber {
             throw new IllegalArgumentException("Input must me positive.");
         }
         // Calculating Cube Root
-        final int cube_root = (int) Math.round(Math.pow(n, 1.0 / 3.0));
+        final int cubeRoot = (int) Math.round(Math.pow(n, 1.0 / 3.0));
         // If the number is not a perfect cube the method returns false.
-        if (cube_root * cube_root * cube_root != n) {
+        if (cubeRoot * cubeRoot * cubeRoot != n) {
             return false;
         }
 
         // If the cube root of the number is not equal to the sum of its digits, we return false.
-        return cube_root == SumOfDigits.sumOfDigits(n);
+        return cubeRoot == SumOfDigits.sumOfDigits(n);
     }
 }

@@ -109,13 +109,13 @@
     <!-- Checks for Naming Conventions.                  -->
     <!-- See https://checkstyle.org/checks/naming/index.html -->
     <module name="ConstantName"/>
-    <!-- TODO <module name="LocalFinalVariableName"/> -->
+    <module name="LocalFinalVariableName"/>
     <!-- TODO <module name="LocalVariableName"/> -->
     <!-- TODO <module name="MemberName"/> -->
     <!-- TODO <module name="MethodName"/> -->
     <module name="PackageName"/>
     <!-- TODO <module name="ParameterName"/> -->
-    <!-- TODO <module name="StaticVariableName"/> -->
+    <module name="StaticVariableName"/>
     <!-- TODO <module name="TypeName"/> -->
 
     <!-- Checks for imports                              -->
