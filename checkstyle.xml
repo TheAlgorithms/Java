@@ -116,7 +116,7 @@
     <module name="PackageName"/>
     <!-- TODO <module name="ParameterName"/> -->
     <!-- TODO <module name="StaticVariableName"/> -->
-    <!-- TODO <module name="TypeName"/> -->
+    <module name="TypeName"/>
 
     <!-- Checks for imports                              -->
     <!-- See https://checkstyle.org/checks/imports/index.html -->

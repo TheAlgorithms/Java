@@ -4,7 +4,7 @@ for better understanding
  */
 package com.thealgorithms.datastructures.graphs;
 
-class dijkstras {
+class DijkstrasAlgorithm {
 
     int k = 9;
 
@@ -66,7 +66,7 @@ class dijkstras {
             {8, 11, 0, 0, 0, 0, 1, 0, 7},
             {0, 0, 2, 0, 0, 0, 6, 7, 0},
         };
-        dijkstras t = new dijkstras();
+        DijkstrasAlgorithm t = new DijkstrasAlgorithm();
         t.dijkstra(graph, 0);
     } // main
 } // djikstras

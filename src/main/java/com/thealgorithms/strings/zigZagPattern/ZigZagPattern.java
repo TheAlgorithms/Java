@@ -1,7 +1,7 @@
 package com.thealgorithms.strings.zigZagPattern;
 
-final class zigZagPattern {
-    private zigZagPattern() {
+final class ZigZagPattern {
+    private ZigZagPattern() {
     }
 
     public static String encode(String s, int numRows) {
