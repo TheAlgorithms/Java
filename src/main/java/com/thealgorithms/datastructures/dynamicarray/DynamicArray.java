@@ -121,7 +121,8 @@ public class DynamicArray<E> implements Iterable<E> {
             System.arraycopy(elements, index + 1, elements, index, newSize - index);
         }
 
-        elements[this.size = newSize] = null;
+        this.size = newSize;
+        this.elements[this.size] = null;
     }
 
     private E getElement(final int index) {
@@ -153,7 +154,7 @@ public class DynamicArray<E> implements Iterable<E> {
         return new DynamicArrayIterator();
     }
 
-    private class DynamicArrayIterator implements Iterator<E> {
+    private final class DynamicArrayIterator implements Iterator<E> {
 
         private int cursor;
 

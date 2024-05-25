@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK 17
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: 17
+          java-version: 21
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
@@ -33,3 +33,5 @@ jobs:
         run: mvn checkstyle:check
       - name: SpotBugs
         run: mvn spotbugs:check
+      - name: PMD
+        run: mvn pmd:check

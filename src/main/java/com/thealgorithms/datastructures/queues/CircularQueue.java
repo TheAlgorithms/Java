@@ -54,7 +54,8 @@ public class CircularQueue {
             int res = arr[beginningOfQueue];
             arr[beginningOfQueue] = Integer.MIN_VALUE;
             if (beginningOfQueue == topOfQueue) {
-                beginningOfQueue = topOfQueue = -1;
+                beginningOfQueue = -1;
+                topOfQueue = -1;
             } else if (beginningOfQueue + 1 == size) {
                 beginningOfQueue = 0;
             } else {

@@ -31,7 +31,7 @@ public final class JobSequencing {
     // Function to print the job sequence
     public static String findJobSequence(ArrayList<Job> jobs, int size) {
         Boolean[] slots = new Boolean[size];
-        Arrays.fill(slots, false);
+        Arrays.fill(slots, Boolean.FALSE);
 
         int[] result = new int[size];
 
@@ -40,7 +40,7 @@ public final class JobSequencing {
             for (int j = jobs.get(i).deadline - 1; j >= 0; j--) {
                 if (!slots[j]) {
                     result[j] = i;
-                    slots[j] = true;
+                    slots[j] = Boolean.TRUE;
                     break;
                 }
             }

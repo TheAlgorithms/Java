@@ -12,7 +12,7 @@ final class TowerOfHanoi {
             // Shift function is called in recursion for swapping the n-1 disc from the startPole to
             // the intermediatePole
             shift(n - 1, startPole, endPole, intermediatePole);
-            System.out.format("Move %d from %s to %s\n", n, startPole, endPole); // Result Printing
+            System.out.format("Move %d from %s to %s%n", n, startPole, endPole); // Result Printing
             // Shift function is called in recursion for swapping the n-1 disc from the
             // intermediatePole to the endPole
             shift(n - 1, intermediatePole, startPole, endPole);

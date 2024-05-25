@@ -36,9 +36,11 @@ public final class LeastCommonMultiple {
          * value selection for the numerator
          */
         if (num1 > num2) {
-            high = num3 = num1;
+            high = num1;
+            num3 = num1;
         } else {
-            high = num3 = num2;
+            high = num2;
+            num3 = num2;
         }
 
         while (num1 != 0) {

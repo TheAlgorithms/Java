@@ -6,7 +6,9 @@ package com.thealgorithms.dynamicprogramming;
  * StackOverflow(https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k)
  * @author Samrat Podder(https://github.com/samratpodder)
  */
-public class SubsetCount {
+public final class SubsetCount {
+    private SubsetCount() {
+    }
 
     /**
      * Dynamic Programming Implementation.
@@ -16,7 +18,7 @@ public class SubsetCount {
      * @param target is the sum of each element of the subset taken together
      *
      */
-    public int getCount(int[] arr, int target) {
+    public static int getCount(int[] arr, int target) {
         /**
          * Base Cases - If target becomes zero, we have reached the required sum for the subset
          * If we reach the end of the array arr then, either if target==arr[end], then we add one to
@@ -46,7 +48,7 @@ public class SubsetCount {
      * @param arr is the input array on which subsets are  to searched
      * @param target is the sum of each element of the subset taken together
      */
-    public int getCountSO(int[] arr, int target) {
+    public static int getCountSO(int[] arr, int target) {
         int n = arr.length;
         int[] prev = new int[target + 1];
         prev[0] = 1;

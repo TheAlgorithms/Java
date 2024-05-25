@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class TreeRandomNode {
 
-    private class Node {
+    private final class Node {
 
         int item;
         Node left, right;

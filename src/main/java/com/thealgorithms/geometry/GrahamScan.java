@@ -126,7 +126,7 @@ public class GrahamScan {
             return new PolarOrder();
         }
 
-        private class PolarOrder implements Comparator<Point> {
+        private final class PolarOrder implements Comparator<Point> {
             public int compare(Point p1, Point p2) {
                 int dx1 = p1.x - x;
                 int dy1 = p1.y - y;

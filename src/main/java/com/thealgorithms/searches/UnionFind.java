@@ -25,7 +25,10 @@ public class UnionFind {
             return i;
         }
 
-        return p[i] = find(parent);
+        final int result = find(parent);
+        p[i] = result;
+
+        return result;
     }
 
     public void union(int x, int y) {
