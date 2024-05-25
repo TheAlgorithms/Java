@@ -1,6 +1,6 @@
 package com.thealgorithms.others;
 
-public class countSetBits {
+public class CountSetBits {
 
     /**
      * The below algorithm is called as Brian Kernighan's algorithm

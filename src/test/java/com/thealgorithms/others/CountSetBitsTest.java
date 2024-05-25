@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class countSetBitsTest {
+public class CountSetBitsTest {
 
     @Test
     void testSetBits() {
-        countSetBits csb = new countSetBits();
+        CountSetBits csb = new CountSetBits();
         assertEquals(1L, csb.countsetBits(16));
         assertEquals(4, csb.countsetBits(15));
         assertEquals(5, csb.countsetBits(10000));
