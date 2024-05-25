@@ -41,7 +41,8 @@ public final class FindKthNumber {
     }
 
     private static int findKthMax(int[] nums, int k) {
-        int start = 0, end = nums.length;
+        int start = 0;
+        int end = nums.length;
         while (start < end) {
             int pivot = partition(nums, start, end);
             if (k == pivot) {

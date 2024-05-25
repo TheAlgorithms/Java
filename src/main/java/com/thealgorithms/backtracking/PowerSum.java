@@ -8,7 +8,8 @@ package com.thealgorithms.backtracking;
  */
 public class PowerSum {
 
-    private int count = 0, sum = 0;
+    private int count = 0;
+    private int sum = 0;
 
     public int powSum(int N, int X) {
         Sum(N, X, 1);

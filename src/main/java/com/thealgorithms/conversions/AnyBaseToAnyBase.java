@@ -27,7 +27,8 @@ public final class AnyBaseToAnyBase {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String n;
-        int b1, b2;
+        int b1;
+        int b2;
         while (true) {
             try {
                 System.out.print("Enter number: ");
@@ -132,7 +133,8 @@ public final class AnyBaseToAnyBase {
         // Declare variables: decimal value of n,
         // character of base b1, character of base b2,
         // and the string that will be returned.
-        int decimalValue = 0, charB2;
+        int decimalValue = 0;
+        int charB2;
         char charB1;
         String output = "";
         // Go through every character of n

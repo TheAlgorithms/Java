@@ -66,8 +66,10 @@ public class HashMapCuckooHashing {
      */
 
     public void insertKey2HashTable(int key) {
-        Integer wrappedInt = key, temp;
-        int hash, loopCounter = 0;
+        Integer wrappedInt = key;
+        Integer temp;
+        int hash;
+        int loopCounter = 0;
 
         if (isFull()) {
             System.out.println("Hash table is full, lengthening & rehashing table");

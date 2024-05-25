@@ -74,13 +74,15 @@ public class DES {
 
     private String[] getSubkeys(String originalKey) {
         StringBuilder permutedKey = new StringBuilder(); // Initial permutation of keys via pc1
-        int i, j;
+        int i;
+        int j;
         for (i = 0; i < 56; i++) {
             permutedKey.append(originalKey.charAt(PC1[i] - 1));
         }
         String[] subKeys = new String[16];
         String initialPermutedKey = permutedKey.toString();
-        String C0 = initialPermutedKey.substring(0, 28), D0 = initialPermutedKey.substring(28);
+        String C0 = initialPermutedKey.substring(0, 28);
+        String D0 = initialPermutedKey.substring(28);
 
         // We will now operate on the left and right halves of the permutedKey
         for (i = 0; i < 16; i++) {
@@ -105,7 +107,8 @@ public class DES {
     }
 
     private String XOR(String a, String b) {
-        int i, l = a.length();
+        int i;
+        int l = a.length();
         StringBuilder xor = new StringBuilder();
         for (i = 0; i < l; i++) {
             int firstBit = a.charAt(i) - 48; // 48 is '0' in ascii
@@ -116,7 +119,8 @@ public class DES {
     }
 
     private String createPaddedString(String s, int desiredLength, char pad) {
-        int i, l = s.length();
+        int i;
+        int l = s.length();
         StringBuilder paddedString = new StringBuilder();
         int diff = desiredLength - l;
         for (i = 0; i < diff; i++) {
@@ -165,7 +169,8 @@ public class DES {
         for (i = 0; i < 64; i++) {
             permutedMessage.append(message.charAt(IP[i] - 1));
         }
-        String L0 = permutedMessage.substring(0, 32), R0 = permutedMessage.substring(32);
+        String L0 = permutedMessage.substring(0, 32);
+        String R0 = permutedMessage.substring(32);
 
         // Iterate 16 times
         for (i = 0; i < 16; i++) {
@@ -198,7 +203,9 @@ public class DES {
      */
     public String encrypt(String message) {
         StringBuilder encryptedMessage = new StringBuilder();
-        int l = message.length(), i, j;
+        int l = message.length();
+        int i;
+        int j;
         if (l % 8 != 0) {
             int desiredLength = (l / 8 + 1) * 8;
             l = desiredLength;
@@ -223,7 +230,9 @@ public class DES {
      */
     public String decrypt(String message) {
         StringBuilder decryptedMessage = new StringBuilder();
-        int l = message.length(), i, j;
+        int l = message.length();
+        int i;
+        int j;
         if (l % 64 != 0) {
             throw new IllegalArgumentException("Encrypted message should be a multiple of 64 characters in length");
         }

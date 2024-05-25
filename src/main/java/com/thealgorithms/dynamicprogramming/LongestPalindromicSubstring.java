@@ -23,7 +23,8 @@ public final class LongestPalindromicSubstring {
             return input;
         }
         boolean[][] arr = new boolean[input.length()][input.length()];
-        int start = 0, end = 0;
+        int start = 0;
+        int end = 0;
         for (int g = 0; g < input.length(); g++) {
             for (int i = 0, j = g; j < input.length(); i++, j++) {
                 if (g == 0) {

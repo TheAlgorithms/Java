@@ -9,7 +9,10 @@ package com.thealgorithms.others;
  */
 public class LinearCongruentialGenerator {
 
-    private double a, c, m, previousValue;
+    private final double a;
+    private final double c;
+    private final double m;
+    private double previousValue;
 
     /**
      * *

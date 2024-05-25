@@ -13,9 +13,11 @@ import java.util.ArrayList;
  */
 
 public class LeftistHeap {
-    private final class Node {
-        private int element, npl;
-        private Node left, right;
+    private static final class Node {
+        private final int element;
+        private int npl;
+        private Node left;
+        private Node right;
 
         // Node constructor setting the data element and left/right pointers to null
         private Node(int element) {

@@ -50,7 +50,8 @@ class MergeSort implements SortAlgorithm {
      */
     @SuppressWarnings("unchecked")
     private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-        int i = left, j = mid + 1;
+        int i = left;
+        int j = mid + 1;
         System.arraycopy(arr, left, aux, left, right + 1 - left);
 
         for (int k = left; k <= right; k++) {

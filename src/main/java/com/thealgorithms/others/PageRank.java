@@ -5,7 +5,9 @@ import java.util.Scanner;
 class PageRank {
 
     public static void main(String[] args) {
-        int nodes, i, j;
+        int nodes;
+        int i;
+        int j;
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the Number of WebPages: ");
         nodes = in.nextInt();
