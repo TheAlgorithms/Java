@@ -8,7 +8,8 @@ package com.thealgorithms.datastructures.graphs;
  */
 public class HamiltonianCycle {
 
-    private int V, pathCount;
+    private int V;
+    private int pathCount;
     private int[] cycle;
     private int[][] graph;
 

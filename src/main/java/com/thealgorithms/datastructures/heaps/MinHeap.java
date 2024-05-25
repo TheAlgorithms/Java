@@ -85,7 +85,7 @@ public class MinHeap implements Heap {
     }
 
     @Override
-    public void insertElement(HeapElement element) {
+    public final void insertElement(HeapElement element) {
         minHeap.add(element);
         toggleUp(minHeap.size());
     }

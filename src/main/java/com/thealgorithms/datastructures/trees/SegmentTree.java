@@ -19,7 +19,7 @@ public class SegmentTree {
     }
 
     /* A function which will create the segment tree*/
-    public int constructTree(int[] arr, int start, int end, int index) {
+    public final int constructTree(int[] arr, int start, int end, int index) {
         if (start == end) {
             this.seg_t[index] = arr[start];
             return arr[start];

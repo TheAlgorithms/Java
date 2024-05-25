@@ -24,7 +24,8 @@ public final class AutomorphicNumber {
     public static boolean isAutomorphic(long n) {
         if (n < 0) return false;
         long square = n * n; // Calculating square of the number
-        long t = n, numberOfdigits = 0;
+        long t = n;
+        long numberOfdigits = 0;
         while (t > 0) {
             numberOfdigits++; // Calculating number of digits in n
             t /= 10;
