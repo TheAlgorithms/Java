@@ -67,10 +67,10 @@ public class DES {
     private static final int[][][] S = {S1, S2, S3, S4, S5, S6, S7, S8};
 
     // Permutation table, used in the Feistel function post s-box usage
-    static int[] permutation = {16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25};
+    static final int[] PERMUTATION = {16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25};
 
     // Table used for final inversion of the message box after 16 rounds of Feistel Function
-    static int[] ipInverse = {40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25};
+    static final int[] IP_INVERSE = {40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47, 15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13, 53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51, 19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17, 57, 25};
 
     private String[] getSubkeys(String originalKey) {
         StringBuilder permutedKey = new StringBuilder(); // Initial permutation of keys via pc1
@@ -153,7 +153,7 @@ public class DES {
 
         StringBuilder permutedString = new StringBuilder();
         for (i = 0; i < 32; i++) {
-            permutedString.append(substitutedString.charAt(permutation[i] - 1));
+            permutedString.append(substitutedString.charAt(PERMUTATION[i] - 1));
         }
 
         return permutedString.toString();
@@ -178,7 +178,7 @@ public class DES {
         String combinedBlock = R0 + L0; // Reverse the 16th block
         permutedMessage.setLength(0);
         for (i = 0; i < 64; i++) {
-            permutedMessage.append(combinedBlock.charAt(ipInverse[i] - 1));
+            permutedMessage.append(combinedBlock.charAt(IP_INVERSE[i] - 1));
         }
         return permutedMessage.toString();
     }
