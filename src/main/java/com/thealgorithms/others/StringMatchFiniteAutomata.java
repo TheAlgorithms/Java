@@ -5,7 +5,7 @@ package com.thealgorithms.others;
  */
 import java.util.Scanner;
 
-// An implementaion of string matching using finite automata
+// An implementation of string matching using finite automata
 public final class StringMatchFiniteAutomata {
     private StringMatchFiniteAutomata() {
     }
@@ -44,7 +44,7 @@ public final class StringMatchFiniteAutomata {
         }
     }
 
-    // Computes finite automata for the partern
+    // Computes finite automata for the pattern
     public static void computeFA(String pat, int m, int[][] fa) {
         for (int state = 0; state <= m; ++state) {
             for (int x = 0; x < CHARS; ++x) {

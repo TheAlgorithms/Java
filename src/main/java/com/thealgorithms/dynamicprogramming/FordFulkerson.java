@@ -10,13 +10,13 @@ public final class FordFulkerson {
 
     static final int INF = 987654321;
     // edges
-    static int v;
+    static int vertexCount;
     static int[][] capacity, flow;
 
     public static void main(String[] args) {
-        System.out.println("V : 6");
-        v = 6;
-        capacity = new int[v][v];
+        System.out.println("Vertex Count : 6");
+        vertexCount = 6;
+        capacity = new int[vertexCount][vertexCount];
 
         capacity[0][1] = 12;
         capacity[0][3] = 13;
@@ -32,11 +32,11 @@ public final class FordFulkerson {
     }
 
     private static int networkFlow(int source, int sink) {
-        flow = new int[v][v];
+        flow = new int[vertexCount][vertexCount];
         int totalFlow = 0;
         while (true) {
-            Vector<Integer> parent = new Vector<>(v);
-            for (int i = 0; i < v; i++) {
+            Vector<Integer> parent = new Vector<>(vertexCount);
+            for (int i = 0; i < vertexCount; i++) {
                 parent.add(-1);
             }
             Queue<Integer> q = new LinkedList<>();
@@ -45,7 +45,7 @@ public final class FordFulkerson {
             while (!q.isEmpty() && parent.get(sink) == -1) {
                 int here = q.peek();
                 q.poll();
-                for (int there = 0; there < v; ++there) {
+                for (int there = 0; there < vertexCount; ++there) {
                     if (capacity[here][there] - flow[here][there] > 0 && parent.get(there) == -1) {
                         q.add(there);
                         parent.set(there, here);
