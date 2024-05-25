@@ -115,7 +115,7 @@
     <!-- TODO <module name="MethodName"/> -->
     <module name="PackageName"/>
     <!-- TODO <module name="ParameterName"/> -->
-    <!-- TODO <module name="StaticVariableName"/> -->
+    <module name="StaticVariableName"/>
     <!-- TODO <module name="TypeName"/> -->
 
     <!-- Checks for imports                              -->
