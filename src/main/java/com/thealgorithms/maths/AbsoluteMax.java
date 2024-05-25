@@ -11,16 +11,11 @@ public final class AbsoluteMax {
      * @return The absolute maximum value.
      * @throws IllegalArgumentException If the input array is empty or null.
      */
-    public static int getMaxValue(int... numbers) {
-        if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+    public static Optional<Integer> getMaxValue(List<Integer> numbers) {
+        if (numbers.isEmpty()) {
+        throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
-        int absMax = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            if (Math.abs(numbers[i]) > Math.abs(absMax)) {
-                absMax = numbers[i];
-            }
-        }
-        return absMax;
+        return numbers.stream()
+            .max(Comparator.naturalOrder());
     }
 }
