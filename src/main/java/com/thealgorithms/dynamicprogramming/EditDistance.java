@@ -71,7 +71,8 @@ public final class EditDistance {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String s1, s2;
+        String s1;
+        String s2;
         System.out.println("Enter the First String");
         s1 = input.nextLine();
         System.out.println("Enter the Second String");

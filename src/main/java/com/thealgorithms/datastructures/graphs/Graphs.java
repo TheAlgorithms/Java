@@ -75,7 +75,8 @@ class AdjacencyListGraph<E extends Comparable<E>> {
      * already did
      */
     public boolean addEdge(E from, E to) {
-        Vertex fromV = null, toV = null;
+        Vertex fromV = null;
+        Vertex toV = null;
         for (Vertex v : vertices) {
             if (from.compareTo(v.data) == 0) { // see if from vertex already exists
                 fromV = v;

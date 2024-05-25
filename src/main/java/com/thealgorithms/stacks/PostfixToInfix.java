@@ -90,7 +90,8 @@ public final class PostfixToInfix {
         Stack<String> stack = new Stack<>();
         StringBuilder valueString = new StringBuilder();
 
-        String operandA, operandB;
+        String operandA;
+        String operandB;
         char operator;
 
         for (int index = 0; index < postfix.length(); index++) {

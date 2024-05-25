@@ -30,7 +30,8 @@ public final class LeastCommonMultiple {
      * get least common multiple from two number
      */
     public static int lcm(int num1, int num2) {
-        int high, num3;
+        int high;
+        int num3;
         int cmv = 0;
         /*
          * value selection for the numerator

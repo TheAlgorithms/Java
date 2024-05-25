@@ -31,7 +31,8 @@ class TimSort implements SortAlgorithm {
     }
 
     private <T extends Comparable<T>> void merge(T[] a, int lo, int mid, int hi) {
-        int i = lo, j = mid + 1;
+        int i = lo;
+        int j = mid + 1;
         System.arraycopy(a, lo, aux, lo, hi + 1 - lo);
 
         for (int k = lo; k <= hi; k++) {

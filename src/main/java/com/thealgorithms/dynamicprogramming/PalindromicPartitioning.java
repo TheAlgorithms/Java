@@ -31,7 +31,9 @@ public final class PalindromicPartitioning {
         int[] minCuts = new int[len];
         boolean[][] isPalindrome = new boolean[len][len];
 
-        int i, j, L; // different looping variables
+        int i;
+        int j;
+        int L; // different looping variables
 
         // Every substring of length 1 is a palindrome
         for (i = 0; i < len; i++) {

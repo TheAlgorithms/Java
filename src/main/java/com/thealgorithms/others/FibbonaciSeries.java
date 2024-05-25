@@ -23,7 +23,8 @@ public final class FibbonaciSeries {
         // Get input from the user
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
-        int first = 0, second = 1;
+        int first = 0;
+        int second = 1;
         scan.close();
         while (first <= n) {
             // print first fibo 0 then add second fibo into it while updating second as well

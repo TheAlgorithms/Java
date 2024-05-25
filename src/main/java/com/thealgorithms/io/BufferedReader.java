@@ -27,7 +27,8 @@ public class BufferedReader {
     /**
      * posRead -> indicates the next byte to read
      */
-    private int posRead = 0, bufferPos = 0;
+    private int posRead = 0;
+    private int bufferPos = 0;
 
     private boolean foundEof = false;
 

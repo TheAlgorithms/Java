@@ -63,7 +63,8 @@ class Graph {
      */
     public static class Edge {
 
-        public final String v1, v2;
+        public final String v1;
+        public final String v2;
         public final int dist;
 
         Edge(String v1, String v2, int dist) {
@@ -198,7 +199,8 @@ class Graph {
      * Implementation of dijkstra's algorithm using a binary heap.
      */
     private void dijkstra(final NavigableSet<Vertex> q) {
-        Vertex u, v;
+        Vertex u;
+        Vertex v;
         while (!q.isEmpty()) {
             // vertex with shortest distance (first iteration will return source)
             u = q.pollFirst();

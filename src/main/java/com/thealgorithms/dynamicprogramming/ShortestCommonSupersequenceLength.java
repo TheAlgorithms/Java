@@ -23,7 +23,8 @@ final class ShortestSuperSequence {
     // for X[0..m - 1], Y[0..n - 1]
     static int lcs(String X, String Y, int m, int n) {
         int[][] L = new int[m + 1][n + 1];
-        int i, j;
+        int i;
+        int j;
 
         // Following steps build L[m + 1][n + 1]
         // in bottom up fashion. Note that

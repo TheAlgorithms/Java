@@ -1175,7 +1175,8 @@ public class Blowfish {
 
     // round function
     private String round(int time, String plainText) {
-        String left, right;
+        String left;
+        String right;
         left = plainText.substring(0, 8);
         right = plainText.substring(8, 16);
         left = xor(left, P[time]);

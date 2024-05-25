@@ -13,13 +13,16 @@ public final class BinarySearch2dArray {
     }
 
     static int[] BinarySearch(int[][] arr, int target) {
-        int rowCount = arr.length, colCount = arr[0].length;
+        int rowCount = arr.length;
+        int colCount = arr[0].length;
 
         if (rowCount == 1) {
             return binarySearch(arr, target, 0, 0, colCount);
         }
 
-        int startRow = 0, endRow = rowCount - 1, midCol = colCount / 2;
+        int startRow = 0;
+        int endRow = rowCount - 1;
+        int midCol = colCount / 2;
 
         while (startRow < endRow - 1) {
             int midRow = startRow + (endRow - startRow) / 2; // getting the index of middle row
