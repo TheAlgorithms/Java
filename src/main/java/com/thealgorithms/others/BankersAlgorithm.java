@@ -113,7 +113,8 @@ public final class BankersAlgorithm {
      * This is main method of Banker's Algorithm
      */
     public static void main(String[] args) {
-        int numberOfProcesses, numberOfResources;
+        int numberOfProcesses;
+        int numberOfResources;
 
         Scanner sc = new Scanner(System.in);
 

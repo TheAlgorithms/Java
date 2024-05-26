@@ -21,7 +21,10 @@ public final class GuassLegendre {
          * l: No of loops to run
          */
 
-        double a = 1, b = Math.pow(2, -0.5), t = 0.25, p = 1;
+        double a = 1;
+        double b = Math.pow(2, -0.5);
+        double t = 0.25;
+        double p = 1;
         for (int i = 0; i < l; ++i) {
             double[] temp = update(a, b, t, p);
             a = temp[0];

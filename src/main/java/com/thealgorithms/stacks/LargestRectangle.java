@@ -12,7 +12,8 @@ public final class LargestRectangle {
     }
 
     public static String largestRectanglehistogram(int[] heights) {
-        int n = heights.length, maxArea = 0;
+        int n = heights.length;
+        int maxArea = 0;
         Stack<int[]> st = new Stack<>();
         for (int i = 0; i < n; i++) {
             int start = i;

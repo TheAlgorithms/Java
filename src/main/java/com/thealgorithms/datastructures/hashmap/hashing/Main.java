@@ -7,7 +7,8 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        int choice, key;
+        int choice;
+        int key;
 
         HashMap h = new HashMap(7);
         Scanner In = new Scanner(System.in);
@@ -42,6 +43,9 @@ public final class Main {
             case 4: {
                 In.close();
                 return;
+            }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + choice);
             }
             }
         }

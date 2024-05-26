@@ -14,7 +14,8 @@ class PrimMST {
     // value, from the set of vertices not yet included in MST
     int minKey(int[] key, Boolean[] mstSet) {
         // Initialize min value
-        int min = Integer.MAX_VALUE, min_index = -1;
+        int min = Integer.MAX_VALUE;
+        int min_index = -1;
 
         for (int v = 0; v < V; v++) {
             if (!mstSet[v] && key[v] < min) {

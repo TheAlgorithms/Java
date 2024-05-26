@@ -9,7 +9,8 @@ class dijkstras {
     int k = 9;
 
     int minDist(int[] dist, Boolean[] Set) {
-        int min = Integer.MAX_VALUE, min_index = -1;
+        int min = Integer.MAX_VALUE;
+        int min_index = -1;
 
         for (int r = 0; r < k; r++) {
             if (!Set[r] && dist[r] <= min) {

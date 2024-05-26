@@ -9,7 +9,8 @@ public final class DNFSort {
     static void sort012(int[] a, int arr_size) {
         int low = 0;
         int high = arr_size - 1;
-        int mid = 0, temp;
+        int mid = 0;
+        int temp;
         while (mid <= high) {
             switch (a[mid]) {
             case 0: {
@@ -30,6 +31,8 @@ public final class DNFSort {
                 high--;
                 break;
             }
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + a[mid]);
             }
         }
     }

@@ -11,9 +11,10 @@ final class KeithNumber {
     // user-defined function that checks if the given number is Keith or not
     static boolean isKeith(int x) {
         // List stores all the digits of the X
-        ArrayList<Integer> terms = new ArrayList<Integer>();
+        ArrayList<Integer> terms = new ArrayList<>();
         // n denotes the number of digits
-        int temp = x, n = 0;
+        int temp = x;
+        int n = 0;
         // executes until the condition becomes false
         while (temp > 0) {
             // determines the last digit of the number and add it to the List
@@ -25,7 +26,8 @@ final class KeithNumber {
         }
         // reverse the List
         Collections.reverse(terms);
-        int next_term = 0, i = n;
+        int next_term = 0;
+        int i = n;
         // finds next term for the series
         // loop executes until the condition returns true
         while (next_term < x) {

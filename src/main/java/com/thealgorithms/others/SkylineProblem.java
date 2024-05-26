@@ -59,7 +59,8 @@ public class SkylineProblem {
     }
 
     public ArrayList<Skyline> mergeSkyline(ArrayList<Skyline> sky1, ArrayList<Skyline> sky2) {
-        int currentH1 = 0, currentH2 = 0;
+        int currentH1 = 0;
+        int currentH2 = 0;
         ArrayList<Skyline> skyline = new ArrayList<>();
         int maxH = 0;
 

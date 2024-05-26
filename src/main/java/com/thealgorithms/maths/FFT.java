@@ -24,7 +24,8 @@ public final class FFT {
      */
     static class Complex {
 
-        private double real, img;
+        private double real;
+        private double img;
 
         /**
          * Default Constructor. Creates the complex number 0.

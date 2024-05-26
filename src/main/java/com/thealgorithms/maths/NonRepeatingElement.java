@@ -13,7 +13,8 @@ public final class NonRepeatingElement {
 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
-            int i, res = 0;
+            int i;
+            int res = 0;
             System.out.println("Enter the number of elements in the array");
             int n = sc.nextInt();
             if ((n & 1) == 1) {
@@ -36,7 +37,8 @@ public final class NonRepeatingElement {
 
             // Finding the rightmost set bit
             res = res & (-res);
-            int num1 = 0, num2 = 0;
+            int num1 = 0;
+            int num2 = 0;
 
             for (i = 0; i < n; i++) {
                 if ((res & arr[i]) > 0) { // Case 1 explained below

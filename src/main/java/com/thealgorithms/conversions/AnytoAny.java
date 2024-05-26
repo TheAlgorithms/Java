@@ -15,7 +15,9 @@ public final class AnytoAny {
         int sn = scn.nextInt();
         int sb = scn.nextInt();
         int db = scn.nextInt();
-        int m = 1, dec = 0, dn = 0;
+        int m = 1;
+        int dec = 0;
+        int dn = 0;
         while (sn != 0) {
             dec = dec + (sn % 10) * m;
             m *= sb;

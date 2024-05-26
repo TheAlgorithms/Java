@@ -48,7 +48,8 @@ public final class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < matrixSize; i++) {
                 cipherMatrix[i][0] = 0;
 
@@ -96,7 +97,8 @@ public final class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < n; i++) {
                 plainMatrix[i][0] = 0;
 
@@ -115,7 +117,10 @@ public final class HillCipher {
 
     // Determinant calculator
     public static int determinant(int[][] a, int n) {
-        int det = 0, sign = 1, p = 0, q = 0;
+        int det = 0;
+        int sign = 1;
+        int p = 0;
+        int q = 0;
 
         if (n == 1) {
             det = a[0][0];
