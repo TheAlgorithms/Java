@@ -31,6 +31,8 @@ public final class DNFSort {
                 high--;
                 break;
             }
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + a[mid]);
             }
         }
     }

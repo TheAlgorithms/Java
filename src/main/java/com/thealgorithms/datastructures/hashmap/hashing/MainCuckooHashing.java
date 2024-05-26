@@ -62,6 +62,9 @@ public final class MainCuckooHashing {
                 h.reHashTableIncreasesTableSize();
                 break;
             }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + choice);
+            }
             }
         }
     }

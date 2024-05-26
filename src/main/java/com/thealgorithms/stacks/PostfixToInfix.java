@@ -28,9 +28,9 @@ public final class PostfixToInfix {
         case '*':
         case '^':
             return true;
+        default:
+            return false;
         }
-
-        return false;
     }
 
     public static boolean isValidPostfixExpression(String postfix) {

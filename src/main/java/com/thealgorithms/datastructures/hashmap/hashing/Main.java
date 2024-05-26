@@ -44,6 +44,9 @@ public final class Main {
                 In.close();
                 return;
             }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + choice);
+            }
             }
         }
     }
