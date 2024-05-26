@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -75,8 +74,7 @@ public class SplayTreeTest {
     @Test
     public void testInvalidTraversalOrderExceptionMessage() {
         SplayTree tree = createComplexTree();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> tree.traverse(SplayTree.TraverseOrder.INVALID));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> tree.traverse(SplayTree.TraverseOrder.INVALID));
         assertEquals("Invalid traversal order: INVALID", exception.getMessage());
     }
 
