@@ -48,6 +48,15 @@ public class SplayTree {
     }
 
     /**
+     * Checks if the tree is empty.
+     *
+     * @return True if the tree is empty, otherwise false.
+     */
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    /**
      * Zig operation.
      *
      * <p>
@@ -202,7 +211,7 @@ public class SplayTree {
      * @throws IllegalArgumentException If the tree is empty.
      */
     public void delete(int key) {
-        if (root == null) {
+        if (isEmpty()) {
             throw new IllegalArgumentException("Cannot delete from an empty tree");
         }
 
@@ -243,6 +252,8 @@ public class SplayTree {
         case POST_ORDER:
             postOrderRec(root, result);
             break;
+        default:
+            throw new IllegalArgumentException("Invalid traversal order: " + traverseOrder);
         }
         return result;
     }
