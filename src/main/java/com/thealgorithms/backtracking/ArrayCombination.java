@@ -8,7 +8,7 @@ import java.util.List;
  * @author TheClerici (<a href="https://github.com/TheClerici">git-TheClerici</a>)
  */
 public final class ArrayCombination {
-      private ArrayCombination() {
+    private ArrayCombination() {
     }
 
     /**
@@ -30,7 +30,7 @@ public final class ArrayCombination {
     }
 
     private static void combine(List<List<Integer>> combinations, List<Integer> current, int start, int n, int k) {
-        if (current.size() == k) {  // Base case: combination found
+        if (current.size() == k) { // Base case: combination found
             combinations.add(new ArrayList<>(current)); // Copy to avoid modification
             return;
         }
