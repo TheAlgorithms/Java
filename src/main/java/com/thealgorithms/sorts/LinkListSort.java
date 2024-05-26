@@ -8,13 +8,10 @@
 package com.thealgorithms.sorts;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class LinkListSort {
 
     public static boolean isSorted(int[] p, int option) {
-        try (Scanner sc = new Scanner(System.in)) {
-        }
         int[] a = p;
         // Array is taken as input from test class
         int[] b = p;
