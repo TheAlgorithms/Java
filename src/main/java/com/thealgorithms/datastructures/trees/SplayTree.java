@@ -304,5 +304,5 @@ public class SplayTree {
     /**
      * Enum to specify the order of traversal.
      */
-    public enum TraverseOrder { IN_ORDER, PRE_ORDER, POST_ORDER }
+    public enum TraverseOrder { IN_ORDER, PRE_ORDER, POST_ORDER, INVALID }
 }
