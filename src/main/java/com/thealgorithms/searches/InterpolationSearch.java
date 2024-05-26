@@ -23,7 +23,8 @@ class InterpolationSearch {
      */
     public int find(int[] array, int key) {
         // Find indexes of two corners
-        int start = 0, end = (array.length - 1);
+        int start = 0;
+        int end = (array.length - 1);
 
         // Since array is sorted, an element present
         // in array must be in range defined by corner

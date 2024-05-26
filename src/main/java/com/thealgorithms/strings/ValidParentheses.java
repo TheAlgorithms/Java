@@ -26,6 +26,8 @@ public final class ValidParentheses {
             case ']':
                 if (head == 0 || stack[--head] != '[') return false;
                 break;
+            default:
+                throw new IllegalArgumentException("Unexpected character: " + c);
             }
         }
         return head == 0;

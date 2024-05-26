@@ -7,7 +7,8 @@ public final class MainCuckooHashing {
     }
 
     public static void main(String[] args) {
-        int choice, key;
+        int choice;
+        int key;
 
         HashMapCuckooHashing h = new HashMapCuckooHashing(7);
         Scanner In = new Scanner(System.in);
@@ -60,6 +61,9 @@ public final class MainCuckooHashing {
             case 7: {
                 h.reHashTableIncreasesTableSize();
                 break;
+            }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + choice);
             }
             }
         }

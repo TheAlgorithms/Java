@@ -42,7 +42,8 @@ public final class LinearSearchThread {
 class Searcher extends Thread {
 
     private final int[] arr;
-    private final int left, right;
+    private final int left;
+    private final int right;
     private final int x;
     private boolean found;
 

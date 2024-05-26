@@ -25,7 +25,10 @@ public class LinkListSort {
         switch (ch) {
         case 1:
             Task nm = new Task();
-            Node start = null, prev = null, fresh, ptr;
+            Node start = null;
+            Node prev = null;
+            Node fresh;
+            Node ptr;
             for (int i = 0; i < a.length; i++) {
                 // New nodes are created and values are added
                 fresh = new Node(); // Node class is called
@@ -50,7 +53,10 @@ public class LinkListSort {
             // The given array and the expected array is checked if both are same then true
             // is displayed else false is displayed
         case 2:
-            Node start1 = null, prev1 = null, fresh1, ptr1;
+            Node start1 = null;
+            Node prev1 = null;
+            Node fresh1;
+            Node ptr1;
             for (int i1 = 0; i1 < a.length; i1++) {
                 // New nodes are created and values are added
                 fresh1 = new Node(); // New node is created
@@ -76,7 +82,10 @@ public class LinkListSort {
             // is displayed else false is displayed
         case 3:
             Task2 mm = new Task2();
-            Node start2 = null, prev2 = null, fresh2, ptr2;
+            Node start2 = null;
+            Node prev2 = null;
+            Node fresh2;
+            Node ptr2;
             for (int i2 = 0; i2 < a.length; i2++) {
                 // New nodes are created and values are added
                 fresh2 = new Node(); // Node class is created
@@ -182,7 +191,9 @@ class Task {
     }
 
     void task1(int[] n, int s, int m, int e) {
-        int i = s, k = 0, j = m + 1;
+        int i = s;
+        int k = 0;
+        int j = m + 1;
         int[] b = new int[e - s + 1];
         while (i <= m && j <= e) {
             if (n[j] >= n[i])

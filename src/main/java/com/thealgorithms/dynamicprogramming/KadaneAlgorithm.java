@@ -11,7 +11,8 @@ public final class KadaneAlgorithm {
     }
 
     public static boolean max_Sum(int[] a, int predicted_answer) {
-        int sum = a[0], running_sum = 0;
+        int sum = a[0];
+        int running_sum = 0;
         for (int k : a) {
             running_sum = running_sum + k;
             // running sum of all the indexs are stored

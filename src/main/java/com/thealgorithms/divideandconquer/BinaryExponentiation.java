@@ -28,7 +28,8 @@ public class BinaryExponentiation {
 
     // iterative function to calculate a to the power of b
     long power(long N, long M) {
-        long power = N, sum = 1;
+        long power = N;
+        long sum = 1;
         while (M > 0) {
             if ((M & 1) == 1) {
                 sum *= power;

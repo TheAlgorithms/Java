@@ -86,7 +86,9 @@ public final class Fibonacci {
         if (n == 0) {
             return 0;
         }
-        int prev = 0, res = 1, next;
+        int prev = 0;
+        int res = 1;
+        int next;
         for (int i = 2; i <= n; i++) {
             next = prev + res;
             prev = res;

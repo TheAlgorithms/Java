@@ -10,7 +10,8 @@ class TreeNode {
     // Members
 
     int key;
-    TreeNode left, right;
+    TreeNode left;
+    TreeNode right;
 
     // Constructor
     TreeNode(int key) {

@@ -11,7 +11,8 @@ public final class FordFulkerson {
     static final int INF = 987654321;
     // edges
     static int vertexCount;
-    static int[][] capacity, flow;
+    static int[][] capacity;
+    static int[][] flow;
 
     public static void main(String[] args) {
         System.out.println("Vertex Count : 6");

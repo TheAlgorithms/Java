@@ -167,7 +167,7 @@
     <module name="InnerAssignment"/>
     <!-- TODO <module name="MagicNumber"/> -->
     <!-- TODO <module name="MissingSwitchDefault"/> -->
-    <!-- TODO <module name="MultipleVariableDeclarations"/> -->
+    <module name="MultipleVariableDeclarations"/>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
 

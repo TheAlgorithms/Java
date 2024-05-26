@@ -31,7 +31,8 @@ public class SRTFScheduling {
     }
 
     public void evaluateScheduling() {
-        int time = 0, cr = 0; // cr=current running process, time= units of time
+        int time = 0;
+        int cr = 0; // cr=current running process, time= units of time
         int n = processes.size();
         int[] remainingTime = new int[n];
 
