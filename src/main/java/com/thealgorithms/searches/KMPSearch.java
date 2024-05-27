@@ -2,7 +2,7 @@ package com.thealgorithms.searches;
 
 class KMPSearch {
 
-    int KMPSearch(String pat, String txt) {
+    int kmpSearch(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
 

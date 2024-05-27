@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class PythagoreanTripleTest {
 
     @Test
-    public void Testpythagoreantriple() {
+    public void testPythagoreanTriple() {
         assertTrue(PythagoreanTriple.isPythagTriple(3, 4, 5));
         assertTrue(PythagoreanTriple.isPythagTriple(6, 8, 10));
         assertTrue(PythagoreanTriple.isPythagTriple(9, 12, 15));

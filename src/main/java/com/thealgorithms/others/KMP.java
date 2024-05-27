@@ -13,11 +13,11 @@ public final class KMP {
     public static void main(String[] args) {
         final String haystack = "AAAAABAAABA"; // This is the full string
         final String needle = "AAAA"; // This is the substring that we want to find
-        KMPmatcher(haystack, needle);
+        kmpMatcher(haystack, needle);
     }
 
     // find the starting index in string haystack[] that matches the search word P[]
-    public static void KMPmatcher(final String haystack, final String needle) {
+    public static void kmpMatcher(final String haystack, final String needle) {
         final int m = haystack.length();
         final int n = needle.length();
         final int[] pi = computePrefixFunction(needle);

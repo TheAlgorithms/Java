@@ -20,7 +20,7 @@ public final class LineSweep {
      *   param = ranges : Array of range[start,end]
      *   return Maximum Endpoint
      */
-    public static int FindMaximumEndPoint(int[][] ranges) {
+    public static int findMaximumEndPoint(int[][] ranges) {
         Arrays.sort(ranges, Comparator.comparingInt(a -> a[1]));
         return ranges[ranges.length - 1][1];
     }
@@ -32,7 +32,7 @@ public final class LineSweep {
      */
     public static boolean isOverlap(int[][] ranges) {
 
-        int maximumEndPoint = FindMaximumEndPoint(ranges);
+        int maximumEndPoint = findMaximumEndPoint(ranges);
         Arrays.sort(ranges, Comparator.comparingInt(a -> a[0]));
         int[] numberLine = new int[maximumEndPoint + 2];
         for (int[] range : ranges) {

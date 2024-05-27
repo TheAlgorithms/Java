@@ -12,7 +12,7 @@ public final class BinarySearch2dArray {
     private BinarySearch2dArray() {
     }
 
-    static int[] BinarySearch(int[][] arr, int target) {
+    static int[] binarySearch(int[][] arr, int target) {
         int rowCount = arr.length;
         int colCount = arr[0].length;
 
