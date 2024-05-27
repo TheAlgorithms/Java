@@ -16,7 +16,7 @@ public final class LongestAlternatingSubsequence {
     }
 
     /* Function to return longest alternating subsequence length*/
-    static int AlternatingLength(int[] arr, int n) {
+    static int alternatingLength(int[] arr, int n) {
         /*
 
                 las[i][0] = Length of the longest
@@ -68,6 +68,6 @@ public final class LongestAlternatingSubsequence {
         int[] arr = {10, 22, 9, 33, 49, 50, 31, 60};
         int n = arr.length;
         System.out.println("Length of Longest "
-            + "alternating subsequence is " + AlternatingLength(arr, n));
+            + "alternating subsequence is " + alternatingLength(arr, n));
     }
 }

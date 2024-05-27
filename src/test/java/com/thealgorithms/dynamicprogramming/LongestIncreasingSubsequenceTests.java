@@ -42,7 +42,7 @@ public class LongestIncreasingSubsequenceTests {
             {3, new int[] {1, 1, 2, 2, 2, 3, 3, 3, 3}},
         };
 
-        final List<IntArrayToInt> methods = Arrays.asList(LongestIncreasingSubsequence::LIS, LongestIncreasingSubsequence::findLISLen);
+        final List<IntArrayToInt> methods = Arrays.asList(LongestIncreasingSubsequence::lis, LongestIncreasingSubsequence::findLISLen);
 
         return Stream.of(testData).flatMap(input -> methods.stream().map(method -> Arguments.of(input[0], input[1], method)));
     }
