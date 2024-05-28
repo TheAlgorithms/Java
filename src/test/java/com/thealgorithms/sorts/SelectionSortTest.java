@@ -8,7 +8,7 @@ class SelectionSortTest {
 
     @Test
     // valid test case
-    void IntegerArrTest() {
+    void integerArrTest() {
         Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         SelectionSort selectionSort = new SelectionSort();
 
@@ -17,7 +17,7 @@ class SelectionSortTest {
 
     @Test
     // valid test case
-    void StringArrTest() {
+    void stringArrTest() {
         String[] arr = {"c", "a", "e", "b", "d"};
         SelectionSort selectionSort = new SelectionSort();
 

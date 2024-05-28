@@ -11,14 +11,14 @@ public final class LongestPalindromicSubstring {
         String a = "babad";
         String b = "cbbd";
 
-        String aLPS = LPS(a);
-        String bLPS = LPS(b);
+        String aLPS = lps(a);
+        String bLPS = lps(b);
 
         System.out.println(a + " => " + aLPS);
         System.out.println(b + " => " + bLPS);
     }
 
-    private static String LPS(String input) {
+    private static String lps(String input) {
         if (input == null || input.length() == 0) {
             return input;
         }

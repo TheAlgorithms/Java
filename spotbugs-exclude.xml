@@ -226,9 +226,6 @@
         <Bug pattern="ENMI_EQUALS_ON_ENUM" />
     </Match>
     <Match>
-        <Bug pattern="NAB_NEEDLESS_BOXING_PARSE" />
-    </Match>
-    <Match>
         <Bug pattern="IMC_IMMATURE_CLASS_VAR_NAME" />
     </Match>
     <Match>
@@ -260,9 +257,6 @@
     </Match>
     <Match>
         <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
-    </Match>
-    <Match>
-        <Bug pattern="SPP_TOSTRING_ON_STRING" />
     </Match>
     <!-- find-sec-bugs -->
     <Match>

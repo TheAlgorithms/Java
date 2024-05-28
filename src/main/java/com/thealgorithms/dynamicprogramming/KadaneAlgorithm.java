@@ -10,7 +10,7 @@ public final class KadaneAlgorithm {
     private KadaneAlgorithm() {
     }
 
-    public static boolean max_Sum(int[] a, int predicted_answer) {
+    public static boolean maxSum(int[] a, int predicted_answer) {
         int sum = a[0];
         int runningSum = 0;
         for (int k : a) {

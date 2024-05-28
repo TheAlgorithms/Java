@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ReverseStringTest {
 
     @Test
-    public void ReverseStringTest() {
+    public void testReverseString() {
         String input1 = "Hello World";
         String input2 = "helloworld";
         String input3 = "123456789";
