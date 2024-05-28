@@ -20,7 +20,7 @@ public final class LongestIncreasingSubsequence {
         return r;
     }
 
-    public static int LIS(int[] array) {
+    public static int lis(int[] array) {
         int len = array.length;
         if (len == 0) {
             return 0;

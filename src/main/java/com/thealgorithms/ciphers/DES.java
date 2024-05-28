@@ -106,7 +106,7 @@ public class DES {
         return subKeys;
     }
 
-    private String XOR(String a, String b) {
+    private String xOR(String a, String b) {
         int i;
         int l = a.length();
         StringBuilder xor = new StringBuilder();
@@ -143,7 +143,7 @@ public class DES {
         for (i = 0; i < 48; i++) {
             expandedKey.append(messageBlock.charAt(EXPANSION[i] - 1));
         }
-        String mixedKey = XOR(expandedKey.toString(), key);
+        String mixedKey = xOR(expandedKey.toString(), key);
         StringBuilder substitutedString = new StringBuilder();
 
         // Let us now use the s-boxes to transform each 6 bit (length here) block to 4 bits
@@ -175,7 +175,7 @@ public class DES {
         // Iterate 16 times
         for (i = 0; i < 16; i++) {
             String eN = f0; // Previous Right block
-            String fN = XOR(e0, feistel(f0, keys[i]));
+            String fN = xOR(e0, feistel(f0, keys[i]));
             e0 = eN;
             f0 = fN;
         }
