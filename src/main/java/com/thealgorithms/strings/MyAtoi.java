@@ -8,13 +8,13 @@ public final class MyAtoi {
     }
     public static int myAtoi(String s) {
         s = s.trim();
-        char[] ch = s.toCharArray();
+        char[] char1 = s.toCharArray();
         String number = "";
         boolean negative = false;
         boolean zero = false;
         boolean isDigit = false;
 
-        for (char ch : ch) {
+        for (char ch : char1) {
             if (Character.isDigit(ch)) {
                 if (number.length() > 1 && !isDigit) {
                     number = "0";
