@@ -238,7 +238,7 @@ public class DES {
         }
         for (i = 0; i < l; i += 64) {
             String block = message.substring(i, i + 64);
-            String result = decryptBlock(block.toString(), subKeys);
+            String result = decryptBlock(block, subKeys);
             byte[] res = new byte[8];
             for (j = 0; j < 64; j += 8) {
                 res[j / 8] = (byte) Integer.parseInt(result.substring(j, j + 8), 2);

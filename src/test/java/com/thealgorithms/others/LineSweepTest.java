@@ -25,6 +25,6 @@ public class LineSweepTest {
     @Test
     void testForMaximumEndPoint() {
         int[][] arr = {{10, 20}, {1, 100}, {14, 16}, {1, 8}};
-        assertEquals(100, LineSweep.FindMaximumEndPoint(arr));
+        assertEquals(100, LineSweep.findMaximumEndPoint(arr));
     }
 }

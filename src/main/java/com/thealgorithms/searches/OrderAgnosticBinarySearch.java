@@ -15,7 +15,7 @@ public final class OrderAgnosticBinarySearch {
     private OrderAgnosticBinarySearch() {
     }
 
-    static int BinSearchAlgo(int[] arr, int start, int end, int target) {
+    static int binSearchAlgo(int[] arr, int start, int end, int target) {
 
         // Checking whether the given array is ascending order
         boolean ascOrd = arr[start] < arr[end];

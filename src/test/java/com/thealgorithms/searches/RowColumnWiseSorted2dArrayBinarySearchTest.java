@@ -37,7 +37,7 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void rowColumnSorted2dArray_BinarySearchTestUpper() {
+    public void rowColumnSorted2dArrayBinarySearchTestUpper() {
         Integer[][] arr = {
             {10, 20, 30, 40},
             {15, 25, 35, 45},
@@ -52,7 +52,7 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void rowColumnSorted2dArray_BinarySearchTestUpperSide() {
+    public void rowColumnSorted2dArrayBinarySearchTestUpperSide() {
         Integer[][] arr = {
             {10, 20, 30, 40},
             {15, 25, 35, 45},
@@ -67,7 +67,7 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void rowColumnSorted2dArray_BinarySearchTestLower() {
+    public void rowColumnSorted2dArrayBinarySearchTestLower() {
         Integer[][] arr = {
             {10, 20, 30, 40},
             {15, 25, 35, 45},
@@ -82,7 +82,7 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void rowColumnSorted2dArray_BinarySearchTestLowerSide() {
+    public void rowColumnSorted2dArrayBinarySearchTestLowerSide() {
         Integer[][] arr = {
             {10, 20, 30, 40},
             {15, 25, 35, 45},
@@ -97,7 +97,7 @@ public class RowColumnWiseSorted2dArrayBinarySearchTest {
     }
 
     @Test
-    public void rowColumnSorted2dArray_BinarySearchTestNotFound() {
+    public void rowColumnSorted2dArrayBinarySearchTestNotFound() {
         Integer[][] arr = {
             {10, 20, 30, 40},
             {15, 25, 35, 45},

@@ -11,6 +11,6 @@ class CountCharTest {
         String input = "12345";
         int expectedValue = 5;
 
-        assertEquals(expectedValue, CountChar.CountCharacters(input));
+        assertEquals(expectedValue, CountChar.countCharacters(input));
     }
 }

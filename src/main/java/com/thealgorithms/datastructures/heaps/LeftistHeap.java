@@ -91,7 +91,7 @@ public class LeftistHeap {
     }
 
     // Returns and removes the minimum element in the heap
-    public int extract_min() {
+    public int extractMin() {
         // If is empty return -1
         if (isEmpty()) return -1;
 
@@ -101,17 +101,17 @@ public class LeftistHeap {
     }
 
     // Function returning a list of an in order traversal of the data structure
-    public ArrayList<Integer> in_order() {
+    public ArrayList<Integer> inOrder() {
         ArrayList<Integer> lst = new ArrayList<>();
-        in_order_aux(root, lst);
+        inOrderAux(root, lst);
         return new ArrayList<>(lst);
     }
 
     // Auxiliary function for in_order
-    private void in_order_aux(Node n, ArrayList<Integer> lst) {
+    private void inOrderAux(Node n, ArrayList<Integer> lst) {
         if (n == null) return;
-        in_order_aux(n.left, lst);
+        inOrderAux(n.left, lst);
         lst.add(n.element);
-        in_order_aux(n.right, lst);
+        inOrderAux(n.right, lst);
     }
 }

@@ -34,7 +34,7 @@ public final class HarshadNumber {
      *         {@code false}
      */
     public static boolean isHarshad(String s) {
-        long n = Long.valueOf(s);
+        final Long n = Long.valueOf(s);
         if (n <= 0) return false;
 
         int sumOfDigits = 0;
