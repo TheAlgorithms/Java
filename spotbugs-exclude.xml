@@ -223,9 +223,6 @@
         <Bug pattern="FCBL_FIELD_COULD_BE_LOCAL" />
     </Match>
     <Match>
-        <Bug pattern="ENMI_EQUALS_ON_ENUM" />
-    </Match>
-    <Match>
         <Bug pattern="IMC_IMMATURE_CLASS_VAR_NAME" />
     </Match>
     <Match>
