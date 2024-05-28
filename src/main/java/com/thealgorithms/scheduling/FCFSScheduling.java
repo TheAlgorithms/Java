@@ -40,8 +40,8 @@ public class FCFSScheduling {
     }
 
     private void evaluateTurnAroundTime() {
-        for (int i = 0; i < processes.size(); i++) {
-            processes.get(i).setTurnAroundTimeTime(processes.get(i).getBurstTime() + processes.get(i).getWaitingTime());
+        for (final var process : processes) {
+            process.setTurnAroundTimeTime(process.getBurstTime() + process.getWaitingTime());
         }
     }
 }

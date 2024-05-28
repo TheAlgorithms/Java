@@ -142,9 +142,6 @@
         <Bug pattern="TR_TAIL_RECURSION" />
     </Match>
     <Match>
-        <Bug pattern="LII_LIST_INDEXED_ITERATING" />
-    </Match>
-    <Match>
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
