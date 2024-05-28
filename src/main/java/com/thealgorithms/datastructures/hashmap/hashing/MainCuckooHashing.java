@@ -11,7 +11,7 @@ public final class MainCuckooHashing {
         int key;
 
         HashMapCuckooHashing h = new HashMapCuckooHashing(7);
-        Scanner In = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         while (true) {
             System.out.println("_________________________");
@@ -24,18 +24,18 @@ public final class MainCuckooHashing {
             System.out.println("6. Check load factor");
             System.out.println("7. Rehash Current Table");
 
-            choice = In.nextInt();
+            choice = scan.nextInt();
 
             switch (choice) {
             case 1: {
                 System.out.println("Enter the Key: ");
-                key = In.nextInt();
+                key = scan.nextInt();
                 h.insertKey2HashTable(key);
                 break;
             }
             case 2: {
                 System.out.println("Enter the Key delete:  ");
-                key = In.nextInt();
+                key = scan.nextInt();
                 h.deleteKeyFromHashTable(key);
                 break;
             }
@@ -45,12 +45,12 @@ public final class MainCuckooHashing {
                 break;
             }
             case 4: {
-                In.close();
+                scan.close();
                 return;
             }
             case 5: {
                 System.out.println("Enter the Key to find and print:  ");
-                key = In.nextInt();
+                key = scan.nextInt();
                 System.out.println("Key: " + key + " is at index: " + h.findKeyInTable(key) + "\n");
                 break;
             }

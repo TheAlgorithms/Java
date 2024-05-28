@@ -54,23 +54,23 @@ public final class BipartiteGrapfDFS {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine().trim());
         while (t-- > 0) {
-            String[] S = read.readLine().trim().split(" ");
-            int V = Integer.parseInt(S[0]);
-            int E = Integer.parseInt(S[1]);
+            String[] str1 = read.readLine().trim().split(" ");
+            int numVertices = Integer.parseInt(str1[0]);
+            int numEdges = Integer.parseInt(str1[1]);
 
             ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-            for (int i = 0; i < V; i++) {
+            for (int i = 0; i < numVertices; i++) {
                 adj.add(new ArrayList<>());
             }
-            for (int i = 0; i < E; i++) {
-                String[] s = read.readLine().trim().split(" ");
-                int u = Integer.parseInt(s[0]);
-                int v = Integer.parseInt(s[1]);
-                adj.get(u).add(v);
-                adj.get(v).add(u);
+            for (int i = 0; i < numEdges; i++) {
+                String[] str2 = read.readLine().trim().split(" ");
+                int vertexU = Integer.parseInt(str2[0]);
+                int vertexV = Integer.parseInt(str2[1]);
+                adj.get(vertexU).add(vertexV);
+                adj.get(vertexV).add(vertexU);
             }
 
-            boolean ans = isBipartite(V, adj);
+            boolean ans = isBipartite(numVertices, adj);
             if (ans) {
                 System.out.println("YES");
             } else {

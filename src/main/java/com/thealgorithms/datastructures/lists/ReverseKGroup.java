@@ -23,17 +23,17 @@ public class ReverseKGroup {
         Node prev = null;
         int count1 = 0;
         Node curr = head;
-        Node Next = null;
+        Node next = null;
         while (curr != null && count1 < k) {
-            Next = curr.next;
+            next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = Next;
+            curr = next;
             count1++;
         }
 
-        if (Next != null) {
-            head.next = reverse(Next, count - k, k);
+        if (next != null) {
+            head.next = reverse(next, count - k, k);
         }
         return prev;
     }

@@ -10,9 +10,9 @@ public class SegmentTree {
     public SegmentTree(int n, int[] arr) {
         this.n = n;
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
-        int seg_size = 2 * (int) Math.pow(2, x) - 1;
+        int segSize = 2 * (int) Math.pow(2, x) - 1;
 
-        this.seg_t = new int[seg_size];
+        this.seg_t = new int[segSize];
         this.arr = arr;
         this.n = n;
         constructTree(arr, 0, n - 1, 0);

@@ -12,13 +12,13 @@ public final class KadaneAlgorithm {
 
     public static boolean maxSum(int[] a, int predicted_answer) {
         int sum = a[0];
-        int running_sum = 0;
+        int runningSum = 0;
         for (int k : a) {
-            running_sum = running_sum + k;
+            runningSum = runningSum + k;
             // running sum of all the indexs are stored
-            sum = Math.max(sum, running_sum);
+            sum = Math.max(sum, runningSum);
             // the max is stored inorder to the get the maximum sum
-            if (running_sum < 0) running_sum = 0;
+            if (runningSum < 0) runningSum = 0;
             // if running sum is negative then it is initialized to zero
         }
         // for-each loop is used to iterate over the array and find the maximum subarray sum

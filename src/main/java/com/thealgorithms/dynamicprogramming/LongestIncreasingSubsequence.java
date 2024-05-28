@@ -21,18 +21,18 @@ public final class LongestIncreasingSubsequence {
     }
 
     public static int lis(int[] array) {
-        int N = array.length;
-        if (N == 0) {
+        int len = array.length;
+        if (len == 0) {
             return 0;
         }
 
-        int[] tail = new int[N];
+        int[] tail = new int[len];
 
         // always points empty slot in tail
         int length = 1;
 
         tail[0] = array[0];
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < len; i++) {
             // new smallest value
             if (array[i] < tail[0]) {
                 tail[0] = array[i];

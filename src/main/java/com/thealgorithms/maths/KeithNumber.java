@@ -26,24 +26,24 @@ final class KeithNumber {
         }
         // reverse the List
         Collections.reverse(terms);
-        int next_term = 0;
+        int nextTerm = 0;
         int i = n;
         // finds next term for the series
         // loop executes until the condition returns true
-        while (next_term < x) {
-            next_term = 0;
+        while (nextTerm < x) {
+            nextTerm = 0;
             // next term is the sum of previous n terms (it depends on number of digits the number
             // has)
             for (int j = 1; j <= n; j++) {
-                next_term = next_term + terms.get(i - j);
+                nextTerm = nextTerm + terms.get(i - j);
             }
-            terms.add(next_term);
+            terms.add(nextTerm);
             i++;
         }
         // when the control comes out of the while loop, there will be two conditions:
-        // either next_term will be equal to x or greater than x
+        // either nextTerm will be equal to x or greater than x
         // if equal, the given number is Keith, else not
-        return (next_term == x);
+        return (nextTerm == x);
     }
 
     // driver code
