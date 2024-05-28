@@ -81,16 +81,16 @@ public class DES {
         }
         String[] subKeys = new String[16];
         String initialPermutedKey = permutedKey.toString();
-        String C0 = initialPermutedKey.substring(0, 28);
-        String D0 = initialPermutedKey.substring(28);
+        String c0 = initialPermutedKey.substring(0, 28);
+        String d0 = initialPermutedKey.substring(28);
 
         // We will now operate on the left and right halves of the permutedKey
         for (i = 0; i < 16; i++) {
-            String Cn = C0.substring(KEY_SHIFTS[i]) + C0.substring(0, KEY_SHIFTS[i]);
-            String Dn = D0.substring(KEY_SHIFTS[i]) + D0.substring(0, KEY_SHIFTS[i]);
-            subKeys[i] = Cn + Dn;
-            C0 = Cn; // Re-assign the values to create running permutation
-            D0 = Dn;
+            String cN = c0.substring(KEY_SHIFTS[i]) + c0.substring(0, KEY_SHIFTS[i]);
+            String dN = d0.substring(KEY_SHIFTS[i]) + d0.substring(0, KEY_SHIFTS[i]);
+            subKeys[i] = cN + dN;
+            c0 = cN; // Re-assign the values to create running permutation
+            d0 = dN;
         }
 
         // Let us shrink the keys to 48 bits (well, characters here) using pc2
@@ -169,18 +169,18 @@ public class DES {
         for (i = 0; i < 64; i++) {
             permutedMessage.append(message.charAt(IP[i] - 1));
         }
-        String L0 = permutedMessage.substring(0, 32);
-        String R0 = permutedMessage.substring(32);
+        String e0 = permutedMessage.substring(0, 32);
+        String f0 = permutedMessage.substring(32);
 
         // Iterate 16 times
         for (i = 0; i < 16; i++) {
-            String Ln = R0; // Previous Right block
-            String Rn = XOR(L0, feistel(R0, keys[i]));
-            L0 = Ln;
-            R0 = Rn;
+            String eN = f0; // Previous Right block
+            String fN = XOR(e0, feistel(f0, keys[i]));
+            e0 = eN;
+            f0 = fN;
         }
 
-        String combinedBlock = R0 + L0; // Reverse the 16th block
+        String combinedBlock = f0 + e0; // Reverse the 16th block
         permutedMessage.setLength(0);
         for (i = 0; i < 64; i++) {
             permutedMessage.append(combinedBlock.charAt(IP_INVERSE[i] - 1));

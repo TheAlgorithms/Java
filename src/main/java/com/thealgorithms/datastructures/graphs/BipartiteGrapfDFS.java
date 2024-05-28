@@ -54,15 +54,15 @@ public final class BipartiteGrapfDFS {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine().trim());
         while (t-- > 0) {
-            String[] S = read.readLine().trim().split(" ");
-            int V = Integer.parseInt(S[0]);
-            int E = Integer.parseInt(S[1]);
+            String[] str = read.readLine().trim().split(" ");
+            int a = Integer.parseInt(str[0]);
+            int b = Integer.parseInt(str[1]);
 
             ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-            for (int i = 0; i < V; i++) {
+            for (int i = 0; i < a; i++) {
                 adj.add(new ArrayList<>());
             }
-            for (int i = 0; i < E; i++) {
+            for (int i = 0; i < b; i++) {
                 String[] s = read.readLine().trim().split(" ");
                 int u = Integer.parseInt(s[0]);
                 int v = Integer.parseInt(s[1]);
@@ -70,7 +70,7 @@ public final class BipartiteGrapfDFS {
                 adj.get(v).add(u);
             }
 
-            boolean ans = isBipartite(V, adj);
+            boolean ans = isBipartite(a, adj);
             if (ans) {
                 System.out.println("YES");
             } else {

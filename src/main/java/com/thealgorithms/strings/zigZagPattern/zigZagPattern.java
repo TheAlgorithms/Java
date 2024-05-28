@@ -13,20 +13,20 @@ final class zigZagPattern {
         char[] zigZagedArray = new char[s.length()];
         while (depth != 0) {
             int pointer = start;
-            int height_space = 2 + ((height - 2) * 2);
-            int depth_space = 2 + ((depth - 2) * 2);
+            int heightSpace = 2 + ((height - 2) * 2);
+            int depthSpace = 2 + ((depth - 2) * 2);
             boolean bool = true;
             while (pointer < s.length()) {
                 zigZagedArray[index++] = s.charAt(pointer);
-                if (height_space == 0)
-                    pointer += depth_space;
-                else if (depth_space == 0)
-                    pointer += height_space;
+                if (heightSpace == 0)
+                    pointer += depthSpace;
+                else if (depthSpace == 0)
+                    pointer += heightSpace;
                 else if (bool) {
-                    pointer += depth_space;
+                    pointer += depthSpace;
                     bool = false;
                 } else {
-                    pointer += height_space;
+                    pointer += heightSpace;
                     bool = true;
                 }
             }

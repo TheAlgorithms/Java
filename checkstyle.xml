@@ -111,6 +111,7 @@
     <module name="ConstantName"/>
     <module name="LocalFinalVariableName"/>
     <!-- TODO <module name="LocalVariableName"/> -->
+    <module name="LocalVariableName"/>
     <!-- TODO <module name="MemberName"/> -->
     <!-- TODO <module name="MethodName"/> -->
     <module name="PackageName"/>

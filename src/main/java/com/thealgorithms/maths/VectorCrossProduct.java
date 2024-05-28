@@ -111,15 +111,15 @@ public class VectorCrossProduct {
 
     static void test() {
         // Create two vectors
-        VectorCrossProduct A = new VectorCrossProduct(1, -2, 3);
-        VectorCrossProduct B = new VectorCrossProduct(2, 0, 3);
+        VectorCrossProduct a = new VectorCrossProduct(1, -2, 3);
+        VectorCrossProduct b = new VectorCrossProduct(2, 0, 3);
 
         // Determine cross product
-        VectorCrossProduct crossProd = A.crossProduct(B);
+        VectorCrossProduct crossProd = a.crossProduct(b);
         crossProd.displayVector();
 
         // Determine dot product
-        int dotProd = A.dotProduct(B);
-        System.out.println("Dot Product of A and B: " + dotProd);
+        int dotProd = a.dotProduct(b);
+        System.out.println("Dot Product of a and b: " + dotProd);
     }
 }
