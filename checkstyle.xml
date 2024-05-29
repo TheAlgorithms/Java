@@ -117,7 +117,10 @@
     <!-- TODO <module name="ParameterName"/> -->
     <module name="StaticVariableName"/>
     <!-- TODO <module name="TypeName"/> -->
-
+    <module name="TypeName">
+    <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+    <property name="severity" value="warning"/>
+    </module>
     <!-- Checks for imports                              -->
     <!-- See https://checkstyle.org/checks/imports/index.html -->
     <module name="AvoidStarImport"/>
