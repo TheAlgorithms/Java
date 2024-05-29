@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Class generates all subsequences for a given list of elements using backtracking
  */
-public class Subsequence {
+public final class Subsequence {
     private Subsequence() {
     }
 
