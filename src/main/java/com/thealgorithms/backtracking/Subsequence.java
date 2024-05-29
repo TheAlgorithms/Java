@@ -7,6 +7,9 @@ import java.util.List;
  * Class generates all subsequences for a given list of elements using backtracking
  */
 public class Subsequence {
+    private Subsequence() {
+    }
+
     /**
      * Find all subsequences of given list using backtracking
      *
