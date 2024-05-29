@@ -8,15 +8,16 @@ package com.thealgorithms.backtracking;
  */
 public class PowerSum {
 
-    private int count = 0, sum = 0;
+    private int count = 0;
+    private int sum = 0;
 
     public int powSum(int N, int X) {
-        Sum(N, X, 1);
+        sum(N, X, 1);
         return count;
     }
 
     // here i is the natural number which will be raised by X and added in sum.
-    public void Sum(int N, int X, int i) {
+    public void sum(int N, int X, int i) {
         // if sum is equal to N that is one of our answer and count is increased.
         if (sum == N) {
             count++;
@@ -25,7 +26,7 @@ public class PowerSum {
           // result is less than N.
         else if (sum + power(i, X) <= N) {
             sum += power(i, X);
-            Sum(N, X, i + 1);
+            sum(N, X, i + 1);
             // backtracking and removing the number added last since no possible combination is
             // there with it.
             sum -= power(i, X);
@@ -33,7 +34,7 @@ public class PowerSum {
         if (power(i, X) < N) {
             // calling the sum function with next natural number after backtracking if when it is
             // raised to X is still less than X.
-            Sum(N, X, i + 1);
+            sum(N, X, i + 1);
         }
     }
 

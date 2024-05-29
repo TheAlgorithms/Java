@@ -55,7 +55,9 @@ public class MiniMaxAlgorithm {
      * @return The optimal score for the player that made the first move.
      */
     public int miniMax(int depth, boolean isMaximizer, int index, boolean verbose) {
-        int bestScore, score1, score2;
+        int bestScore;
+        int score1;
+        int score2;
 
         if (depth == height) { // Leaf node reached.
             return scores[index];

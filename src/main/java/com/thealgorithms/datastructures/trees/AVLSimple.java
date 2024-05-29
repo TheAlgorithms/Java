@@ -112,10 +112,10 @@ public class AVLSimple {
 
     private Node rightRotate(Node c) {
         Node b = c.left;
-        Node T3 = b.right;
+        Node t3 = b.right;
 
         b.right = c;
-        c.left = T3;
+        c.left = t3;
         c.height = Math.max(height(c.left), height(c.right)) + 1;
         b.height = Math.max(height(b.left), height(b.right)) + 1;
         return b;
@@ -123,10 +123,10 @@ public class AVLSimple {
 
     private Node leftRotate(Node c) {
         Node b = c.right;
-        Node T3 = b.left;
+        Node t3 = b.left;
 
         b.left = c;
-        c.right = T3;
+        c.right = t3;
         c.height = Math.max(height(c.left), height(c.right)) + 1;
         b.height = Math.max(height(b.left), height(b.right)) + 1;
         return b;

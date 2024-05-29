@@ -28,9 +28,9 @@ public final class PostfixToInfix {
         case '*':
         case '^':
             return true;
+        default:
+            return false;
         }
-
-        return false;
     }
 
     public static boolean isValidPostfixExpression(String postfix) {
@@ -90,7 +90,8 @@ public final class PostfixToInfix {
         Stack<String> stack = new Stack<>();
         StringBuilder valueString = new StringBuilder();
 
-        String operandA, operandB;
+        String operandA;
+        String operandB;
         char operator;
 
         for (int index = 0; index < postfix.length(); index++) {

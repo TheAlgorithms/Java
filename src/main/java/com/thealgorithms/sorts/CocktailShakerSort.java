@@ -16,7 +16,8 @@ class CocktailShakerSort implements SortAlgorithm {
         int length = array.length;
         int left = 0;
         int right = length - 1;
-        int swappedLeft, swappedRight;
+        int swappedLeft;
+        int swappedRight;
         while (left < right) {
             // front
             swappedRight = 0;

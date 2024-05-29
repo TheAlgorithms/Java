@@ -19,7 +19,7 @@ class SRTFSchedulingTest {
     }
 
     @Test
-    public void Constructor() {
+    public void constructor() {
         initialization();
         SRTFScheduling s = new SRTFScheduling(processes);
         assertEquals(3, s.processes.get(0).getBurstTime());

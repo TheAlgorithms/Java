@@ -124,14 +124,14 @@ class LWWElementSet {
      * @return True if the first element's timestamp is greater or the bias is ADDS and timestamps are equal.
      */
     public boolean compareTimestamps(Element e, Element other) {
-        if (!e.bias.equals(other.bias)) {
+        if (e.bias != other.bias) {
             throw new IllegalArgumentException("Invalid bias value");
         }
         Bias bias = e.bias;
         int timestampComparison = Integer.compare(e.timestamp, other.timestamp);
 
         if (timestampComparison == 0) {
-            return !bias.equals(Bias.ADDS);
+            return bias != Bias.ADDS;
         }
         return timestampComparison < 0;
     }

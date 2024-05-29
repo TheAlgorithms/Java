@@ -10,7 +10,8 @@ class TreeNode {
     // Members
 
     int key;
-    TreeNode left, right;
+    TreeNode left;
+    TreeNode right;
 
     // Constructor
     TreeNode(int key) {
@@ -59,13 +60,13 @@ class Tree {
         HashSet<Integer> set = new HashSet<>();
 
         // Create a queue and add root to it
-        Queue<QItem> Q = new LinkedList<QItem>();
-        Q.add(new QItem(root, 0)); // Horizontal distance of root is 0
+        Queue<QItem> queue = new LinkedList<QItem>();
+        queue.add(new QItem(root, 0)); // Horizontal distance of root is 0
 
         // Standard BFS or level order traversal loop
-        while (!Q.isEmpty()) {
+        while (!queue.isEmpty()) {
             // Remove the front item and get its details
-            QItem qi = Q.remove();
+            QItem qi = queue.remove();
             int hd = qi.hd;
             TreeNode n = qi.node;
 
@@ -78,10 +79,10 @@ class Tree {
 
             // Enqueue left and right children of current node
             if (n.left != null) {
-                Q.add(new QItem(n.left, hd - 1));
+                queue.add(new QItem(n.left, hd - 1));
             }
             if (n.right != null) {
-                Q.add(new QItem(n.right, hd + 1));
+                queue.add(new QItem(n.right, hd + 1));
             }
         }
     }
