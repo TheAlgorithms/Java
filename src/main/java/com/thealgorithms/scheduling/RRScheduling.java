@@ -95,6 +95,8 @@ public class RRScheduling {
     }
 
     private void evaluateWaitingTime() {
-        for (int i = 0; i < processes.size(); i++) processes.get(i).setWaitingTime(processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
+        for (final var process : processes) {
+            process.setWaitingTime(process.getTurnAroundTimeTime() - process.getBurstTime());
+        }
     }
 }

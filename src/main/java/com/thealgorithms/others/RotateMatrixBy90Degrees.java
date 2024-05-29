@@ -58,7 +58,8 @@ final class Rotate {
                 }
             }
         }
-        int i = 0, k = n - 1;
+        int i = 0;
+        int k = n - 1;
         while (i < k) {
             for (int j = 0; j < n; j++) {
                 int temp = a[i][j];

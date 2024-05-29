@@ -5,13 +5,13 @@ package com.thealgorithms.others;
  */
 import java.util.Scanner;
 
-// An implementaion of string matching using finite automata
+// An implementation of string matching using finite automata
 public final class StringMatchFiniteAutomata {
     private StringMatchFiniteAutomata() {
     }
 
     public static final int CHARS = 256;
-    public static int[][] FA;
+    public static int[][] fa;
     public static Scanner scanner = null;
 
     public static void main(String[] args) {
@@ -30,13 +30,13 @@ public final class StringMatchFiniteAutomata {
         int m = pat.length();
         int n = text.length();
 
-        FA = new int[m + 1][CHARS];
+        fa = new int[m + 1][CHARS];
 
-        computeFA(pat, m, FA);
+        computeFA(pat, m, fa);
 
         int state = 0;
         for (int i = 0; i < n; i++) {
-            state = FA[state][text.charAt(i)];
+            state = fa[state][text.charAt(i)];
 
             if (state == m) {
                 System.out.println("Pattern found at index " + (i - m + 1));
@@ -44,11 +44,11 @@ public final class StringMatchFiniteAutomata {
         }
     }
 
-    // Computes finite automata for the partern
-    public static void computeFA(String pat, int m, int[][] FA) {
+    // Computes finite automata for the pattern
+    public static void computeFA(String pat, int m, int[][] fa) {
         for (int state = 0; state <= m; ++state) {
             for (int x = 0; x < CHARS; ++x) {
-                FA[state][x] = getNextState(pat, m, state, x);
+                fa[state][x] = getNextState(pat, m, state, x);
             }
         }
     }

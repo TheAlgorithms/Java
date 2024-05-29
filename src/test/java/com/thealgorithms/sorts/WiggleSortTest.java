@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class WiggleSortTest {
 
     @Test
-    void WiggleTestNumbersEven() {
+    void wiggleTestNumbersEven() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {1, 2, 3, 4};
         Integer[] result = {1, 4, 2, 3};
@@ -17,7 +17,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestNumbersOdd() {
+    void wiggleTestNumbersOdd() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {1, 2, 3, 4, 5};
         Integer[] result = {3, 5, 1, 4, 2};
@@ -26,7 +26,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestNumbersOddDuplicates() {
+    void wiggleTestNumbersOddDuplicates() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {7, 2, 2, 2, 5};
         Integer[] result = {2, 7, 2, 5, 2};
@@ -35,7 +35,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestNumbersOddMultipleDuplicates() {
+    void wiggleTestNumbersOddMultipleDuplicates() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {1, 1, 2, 2, 5};
         Integer[] result = {2, 5, 1, 2, 1};
@@ -44,7 +44,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestNumbersEvenMultipleDuplicates() {
+    void wiggleTestNumbersEvenMultipleDuplicates() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {1, 1, 2, 2, 2, 5};
         Integer[] result = {2, 5, 1, 2, 1, 2};
@@ -54,7 +54,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestNumbersEvenDuplicates() {
+    void wiggleTestNumbersEvenDuplicates() {
         WiggleSort wiggleSort = new WiggleSort();
         Integer[] values = {1, 2, 4, 4};
         Integer[] result = {1, 4, 2, 4};
@@ -63,7 +63,7 @@ public class WiggleSortTest {
     }
 
     @Test
-    void WiggleTestStrings() {
+    void wiggleTestStrings() {
         WiggleSort wiggleSort = new WiggleSort();
         String[] values = {"a", "b", "d", "c"};
         String[] result = {"a", "d", "b", "c"};

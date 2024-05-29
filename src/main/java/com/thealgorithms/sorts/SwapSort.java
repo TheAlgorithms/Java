@@ -11,10 +11,10 @@ public class SwapSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int LENGTH = array.length;
+        int len = array.length;
         int index = 0;
 
-        while (index < LENGTH - 1) {
+        while (index < len - 1) {
             int amountSmallerElements = this.getSmallerElementCount(array, index);
 
             if (amountSmallerElements > 0 && index != amountSmallerElements) {

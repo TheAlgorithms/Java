@@ -56,7 +56,8 @@ public final class HexToOct {
      */
     public static void main(String[] args) {
         String hexadecnum;
-        int decnum, octalnum;
+        int decnum;
+        int octalnum;
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter Hexadecimal Number : ");

@@ -12,8 +12,11 @@ public class RedBlackBST {
 
     private class Node {
 
-        int key = -1, color = B;
-        Node left = nil, right = nil, p = nil;
+        int key = -1;
+        int color = B;
+        Node left = nil;
+        Node right = nil;
+        Node p = nil;
 
         Node(int key) {
             this.key = key;

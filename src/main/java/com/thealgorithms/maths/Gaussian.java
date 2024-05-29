@@ -8,7 +8,8 @@ public final class Gaussian {
 
     public static ArrayList<Double> gaussian(int mat_size, ArrayList<Double> matrix) {
         ArrayList<Double> answerArray = new ArrayList<Double>();
-        int i, j = 0;
+        int i;
+        int j = 0;
 
         double[][] mat = new double[mat_size + 1][mat_size + 1];
         double[][] x = new double[mat_size][mat_size + 1];
@@ -43,7 +44,8 @@ public final class Gaussian {
     // calculate the x_1, x_2, ... values of the gaussian and save it in an arraylist.
     public static ArrayList<Double> valueOfGaussian(int mat_size, double[][] x, double[][] mat) {
         ArrayList<Double> answerArray = new ArrayList<Double>();
-        int i, j;
+        int i;
+        int j;
 
         for (i = 0; i < mat_size; i++) {
             for (j = 0; j <= mat_size; j++) {

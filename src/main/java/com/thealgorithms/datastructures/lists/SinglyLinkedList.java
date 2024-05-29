@@ -82,13 +82,15 @@ public class SinglyLinkedList implements Iterable<Integer> {
         if (valueFirst == valueSecond) {
             return;
         }
-        Node previousA = null, currentA = head;
+        Node previousA = null;
+        Node currentA = head;
         while (currentA != null && currentA.value != valueFirst) {
             previousA = currentA;
             currentA = currentA.next;
         }
 
-        Node previousB = null, currentB = head;
+        Node previousB = null;
+        Node currentB = head;
         while (currentB != null && currentB.value != valueSecond) {
             previousB = currentB;
             currentB = currentB.next;
