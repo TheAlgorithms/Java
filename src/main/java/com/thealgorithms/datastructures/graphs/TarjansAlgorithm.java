@@ -56,9 +56,9 @@ import java.util.Stack;
 public class TarjansAlgorithm {
 
     // Timer for tracking lowtime and insertion time
-    private int Time;
+    private int time;
 
-    private List<List<Integer>> SCClist = new ArrayList<List<Integer>>();
+    private List<List<Integer>> sccList = new ArrayList<List<Integer>>();
 
     public List<List<Integer>> stronglyConnectedComponents(int V, List<List<Integer>> graph) {
 
@@ -85,15 +85,15 @@ public class TarjansAlgorithm {
             if (insertionTime[i] == -1) stronglyConnCompsUtil(i, lowTime, insertionTime, isInStack, st, graph);
         }
 
-        return SCClist;
+        return sccList;
     }
 
     private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime, boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
 
         // Initialize insertion time and lowTime value of current node
-        insertionTime[u] = Time;
-        lowTime[u] = Time;
-        Time += 1;
+        insertionTime[u] = time;
+        lowTime[u] = time;
+        time += 1;
 
         // Push current node into stack
         isInStack[u] = true;
@@ -123,7 +123,7 @@ public class TarjansAlgorithm {
                 scc.add(w);
                 isInStack[w] = false;
             }
-            SCClist.add(scc);
+            sccList.add(scc);
         }
     }
 }
