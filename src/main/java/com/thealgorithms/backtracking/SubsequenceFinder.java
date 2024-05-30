@@ -40,6 +40,7 @@ public final class SubsequenceFinder {
      * @param <T> the type of elements which we generate
      */
     private static <T> void backtrack(List<T> sequence, List<T> currentSubsequence, final int index, List<List<T>> allSubSequences) {
+        assert index <= sequence.size();
         if (index == sequence.size()) {
             allSubSequences.add(new ArrayList<>(currentSubsequence));
             return;
