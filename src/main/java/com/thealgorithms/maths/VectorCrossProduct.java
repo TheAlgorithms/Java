@@ -55,14 +55,14 @@ public class VectorCrossProduct {
     /**
      * constructor, initialises Vector with given Direction Ratios
      *
-     * @param _x set to x
-     * @param _y set to y
-     * @param _z set to z
+     * @param x set to x
+     * @param y set to y
+     * @param z set to z
      */
-    VectorCrossProduct(int _x, int _y, int _z) {
-        x = _x;
-        y = _y;
-        z = _z;
+    VectorCrossProduct(int x, int y, int z) {
+        x = x;
+        y = y;
+        z = z;
     }
 
     /**

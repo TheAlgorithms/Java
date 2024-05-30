@@ -60,7 +60,7 @@ public class TarjansAlgorithm {
 
     private List<List<Integer>> sccList = new ArrayList<List<Integer>>();
 
-    public List<List<Integer>> stronglyConnectedComponents(int V, List<List<Integer>> graph) {
+    public List<List<Integer>> stronglyConnectedComponents(int v, List<List<Integer>> graph) {
 
         // Initially all vertices as unvisited, insertion and low time are undefined
 
@@ -68,20 +68,20 @@ public class TarjansAlgorithm {
 
         // lowTime: indicates the earliest visited vertex (the vertex with minimum insertion time)
         // that can be reached from a subtree rooted with a particular node.
-        int[] lowTime = new int[V];
-        int[] insertionTime = new int[V];
-        for (int i = 0; i < V; i++) {
+        int[] lowTime = new int[v];
+        int[] insertionTime = new int[v];
+        for (int i = 0; i < v; i++) {
             insertionTime[i] = -1;
             lowTime[i] = -1;
         }
 
         // To check if element is present in stack
-        boolean[] isInStack = new boolean[V];
+        boolean[] isInStack = new boolean[v];
 
         // Store nodes during DFS
         Stack<Integer> st = new Stack<Integer>();
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < v; i++) {
             if (insertionTime[i] == -1) stronglyConnCompsUtil(i, lowTime, insertionTime, isInStack, st, graph);
         }
 

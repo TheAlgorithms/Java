@@ -32,16 +32,16 @@ public class SegmentTree {
 
     /* A function which will update the value at a index i. This will be called by the
     update function internally*/
-    private void updateTree(int start, int end, int index, int diff, int seg_index) {
+    private void updateTree(int start, int end, int index, int diff, int segIndex) {
         if (index < start || index > end) {
             return;
         }
 
-        this.segTree[seg_index] += diff;
+        this.segTree[segIndex] += diff;
         if (start != end) {
             int mid = start + (end - start) / 2;
-            updateTree(start, mid, index, diff, seg_index * 2 + 1);
-            updateTree(mid + 1, end, index, diff, seg_index * 2 + 2);
+            updateTree(start, mid, index, diff, segIndex * 2 + 1);
+            updateTree(mid + 1, end, index, diff, segIndex * 2 + 2);
         }
     }
 
@@ -58,17 +58,17 @@ public class SegmentTree {
 
     /* A function to get the sum of the elements from index l to index r. This will be called
      * internally*/
-    private int getSumTree(int start, int end, int q_start, int q_end, int seg_index) {
-        if (q_start <= start && q_end >= end) {
-            return this.segTree[seg_index];
+    private int getSumTree(int start, int end, int qStart, int qEnd, int segIndex) {
+        if (qStart <= start && qEnd >= end) {
+            return this.segTree[segIndex];
         }
 
-        if (q_start > end || q_end < start) {
+        if (qStart > end || qEnd < start) {
             return 0;
         }
 
         int mid = start + (end - start) / 2;
-        return (getSumTree(start, mid, q_start, q_end, seg_index * 2 + 1) + getSumTree(mid + 1, end, q_start, q_end, seg_index * 2 + 2));
+        return (getSumTree(start, mid, qStart, qEnd, segIndex * 2 + 1) + getSumTree(mid + 1, end, qStart, qEnd, segIndex * 2 + 2));
     }
 
     /* A function to query the sum of the subarray [start...end]*/

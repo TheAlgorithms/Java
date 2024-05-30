@@ -83,28 +83,28 @@ public class SJFScheduling {
     /**
      * this function evaluates the shortest job of all the ready processes (based on  a process
      * burst time)
-     * @param ReadyProcesses an array list of ready processes
+     * @param readyProcesses an array list of ready processes
      * @return returns the process' with the shortest burst time OR NULL if there are no ready
      *     processes
      */
-    private ProcessDetails findShortestJob(ArrayList<ProcessDetails> ReadyProcesses) {
-        if (ReadyProcesses.isEmpty()) {
+    private ProcessDetails findShortestJob(ArrayList<ProcessDetails> readyProcesses) {
+        if (readyProcesses.isEmpty()) {
             return null;
         }
         int i;
-        int size = ReadyProcesses.size();
-        int minBurstTime = ReadyProcesses.get(0).getBurstTime();
+        int size = readyProcesses.size();
+        int minBurstTime = readyProcesses.get(0).getBurstTime();
         int temp;
         int positionOfShortestJob = 0;
 
         for (i = 1; i < size; i++) {
-            temp = ReadyProcesses.get(i).getBurstTime();
+            temp = readyProcesses.get(i).getBurstTime();
             if (minBurstTime > temp) {
                 minBurstTime = temp;
                 positionOfShortestJob = i;
             }
         }
 
-        return ReadyProcesses.get(positionOfShortestJob);
+        return readyProcesses.get(positionOfShortestJob);
     }
 }
