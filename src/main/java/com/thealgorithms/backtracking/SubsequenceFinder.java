@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * Class generates all subsequences for a given list of elements using backtracking
  */
-public final class Subsequence {
-    private Subsequence() {
+public final class SubsequenceFinder {
+    private SubsequenceFinder() {
     }
 
     /**
@@ -39,7 +39,7 @@ public final class Subsequence {
      * @param allSubSequences contains all sequences
      * @param <T> the type of elements which we generate
      */
-    private static <T> void backtrack(List<T> sequence, List<T> currentSubsequence, int index, List<List<T>> allSubSequences) {
+    private static <T> void backtrack(List<T> sequence, List<T> currentSubsequence, final int index, List<List<T>> allSubSequences) {
         if (index == sequence.size()) {
             allSubSequences.add(new ArrayList<>(currentSubsequence));
             return;
