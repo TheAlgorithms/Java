@@ -2,12 +2,11 @@ package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class SubsequenceTest {
 
