@@ -17,7 +17,7 @@ public final class SubsequenceFinder {
      * @param <T> the type of elements in the array
      * @return a list of all subsequences
      */
-    public static <T> List<List<T>> generateAllSubsequences(List<T> sequence) {
+    public static <T> List<List<T>> generateAll(List<T> sequence) {
         List<List<T>> allSubSequences = new ArrayList<>();
         if (sequence.isEmpty()) {
             allSubSequences.add(new ArrayList<>());
