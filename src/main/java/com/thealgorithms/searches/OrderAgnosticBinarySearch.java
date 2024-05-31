@@ -15,10 +15,10 @@ public final class OrderAgnosticBinarySearch {
     private OrderAgnosticBinarySearch() {
     }
 
-    static int BinSearchAlgo(int[] arr, int start, int end, int target) {
+    static int binSearchAlgo(int[] arr, int start, int end, int target) {
 
         // Checking whether the given array is ascending order
-        boolean AscOrd = arr[start] < arr[end];
+        boolean ascOrd = arr[start] < arr[end];
 
         while (start <= end) {
             int middle = start + (end - start) / 2;
@@ -27,7 +27,7 @@ public final class OrderAgnosticBinarySearch {
             if (arr[middle] == target) return middle; // returns the index of the middle element
 
             // Ascending order
-            if (AscOrd) {
+            if (ascOrd) {
                 if (arr[middle] < target)
                     start = middle + 1;
                 else

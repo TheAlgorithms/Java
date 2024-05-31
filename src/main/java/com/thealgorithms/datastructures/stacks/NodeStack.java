@@ -11,20 +11,20 @@ public class NodeStack<Item> {
      * Entry point for the program.
      */
     public static void main(String[] args) {
-        NodeStack<Integer> Stack = new NodeStack<Integer>();
+        NodeStack<Integer> stack = new NodeStack<Integer>();
 
-        Stack.push(3);
-        Stack.push(4);
-        Stack.push(5);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
         System.out.println("Testing :");
-        Stack.print(); // prints : 5 4 3
+        stack.print(); // prints : 5 4 3
 
-        Integer x = Stack.pop(); // x = 5
-        Stack.push(1);
-        Stack.push(8);
-        Integer y = Stack.peek(); // y = 8
+        Integer x = stack.pop(); // x = 5
+        stack.push(1);
+        stack.push(8);
+        Integer y = stack.peek(); // y = 8
         System.out.println("Testing :");
-        Stack.print(); // prints : 8 1 4 3
+        stack.print(); // prints : 8 1 4 3
 
         System.out.println("Testing :");
         System.out.println("x : " + x);

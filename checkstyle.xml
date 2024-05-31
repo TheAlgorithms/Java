@@ -110,12 +110,12 @@
     <!-- See https://checkstyle.org/checks/naming/index.html -->
     <module name="ConstantName"/>
     <module name="LocalFinalVariableName"/>
-    <!-- TODO <module name="LocalVariableName"/> -->
-    <!-- TODO <module name="MemberName"/> -->
-    <!-- TODO <module name="MethodName"/> -->
+    <module name="LocalVariableName"/>
+    <module name="MemberName"/>
+    <module name="MethodName"/>
     <module name="PackageName"/>
     <!-- TODO <module name="ParameterName"/> -->
-    <!-- TODO <module name="StaticVariableName"/> -->
+    <module name="StaticVariableName"/>
     <!-- TODO <module name="TypeName"/> -->
 
     <!-- Checks for imports                              -->
@@ -166,8 +166,8 @@
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
     <!-- TODO <module name="MagicNumber"/> -->
-    <!-- TODO <module name="MissingSwitchDefault"/> -->
-    <!-- TODO <module name="MultipleVariableDeclarations"/> -->
+    <module name="MissingSwitchDefault"/>
+    <module name="MultipleVariableDeclarations"/>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
 

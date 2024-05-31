@@ -7,10 +7,11 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        int choice, key;
+        int choice;
+        int key;
 
         HashMap h = new HashMap(7);
-        Scanner In = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         while (true) {
             System.out.println("Enter your Choice :");
@@ -19,18 +20,18 @@ public final class Main {
             System.out.println("3. Print Table");
             System.out.println("4. Exit");
 
-            choice = In.nextInt();
+            choice = scan.nextInt();
 
             switch (choice) {
             case 1: {
                 System.out.println("Enter the Key: ");
-                key = In.nextInt();
+                key = scan.nextInt();
                 h.insertHash(key);
                 break;
             }
             case 2: {
                 System.out.println("Enter the Key delete:  ");
-                key = In.nextInt();
+                key = scan.nextInt();
                 h.deleteHash(key);
                 break;
             }
@@ -40,8 +41,11 @@ public final class Main {
                 break;
             }
             case 4: {
-                In.close();
+                scan.close();
                 return;
+            }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + choice);
             }
             }
         }

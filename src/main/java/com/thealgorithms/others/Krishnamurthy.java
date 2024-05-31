@@ -7,7 +7,8 @@ final class Krishnamurthy {
     }
 
     static int fact(int n) {
-        int i, p = 1;
+        int i;
+        int p = 1;
         for (i = n; i >= 1; i--) {
             p = p * i;
         }
@@ -16,7 +17,9 @@ final class Krishnamurthy {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a, b, s = 0;
+        int a;
+        int b;
+        int s = 0;
         System.out.print("Enter the number : ");
         a = sc.nextInt();
         int n = a;

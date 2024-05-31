@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.trees;
 
 public class SegmentTree {
 
-    private int[] seg_t;
+    private int[] segTree;
     private int n;
     private int[] arr;
 
@@ -10,9 +10,9 @@ public class SegmentTree {
     public SegmentTree(int n, int[] arr) {
         this.n = n;
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
-        int seg_size = 2 * (int) Math.pow(2, x) - 1;
+        int segSize = 2 * (int) Math.pow(2, x) - 1;
 
-        this.seg_t = new int[seg_size];
+        this.segTree = new int[segSize];
         this.arr = arr;
         this.n = n;
         constructTree(arr, 0, n - 1, 0);
@@ -21,13 +21,13 @@ public class SegmentTree {
     /* A function which will create the segment tree*/
     public final int constructTree(int[] arr, int start, int end, int index) {
         if (start == end) {
-            this.seg_t[index] = arr[start];
+            this.segTree[index] = arr[start];
             return arr[start];
         }
 
         int mid = start + (end - start) / 2;
-        this.seg_t[index] = constructTree(arr, start, mid, index * 2 + 1) + constructTree(arr, mid + 1, end, index * 2 + 2);
-        return this.seg_t[index];
+        this.segTree[index] = constructTree(arr, start, mid, index * 2 + 1) + constructTree(arr, mid + 1, end, index * 2 + 2);
+        return this.segTree[index];
     }
 
     /* A function which will update the value at a index i. This will be called by the
@@ -37,7 +37,7 @@ public class SegmentTree {
             return;
         }
 
-        this.seg_t[seg_index] += diff;
+        this.segTree[seg_index] += diff;
         if (start != end) {
             int mid = start + (end - start) / 2;
             updateTree(start, mid, index, diff, seg_index * 2 + 1);
@@ -60,7 +60,7 @@ public class SegmentTree {
      * internally*/
     private int getSumTree(int start, int end, int q_start, int q_end, int seg_index) {
         if (q_start <= start && q_end >= end) {
-            return this.seg_t[seg_index];
+            return this.segTree[seg_index];
         }
 
         if (q_start > end || q_end < start) {

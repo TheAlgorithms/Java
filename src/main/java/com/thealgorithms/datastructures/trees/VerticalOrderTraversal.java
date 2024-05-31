@@ -47,7 +47,8 @@ public final class VerticalOrderTraversal {
 
         /* min and max stores leftmost and right most index to
                  later print the tree in vertical fashion.*/
-        int max = 0, min = 0;
+        int max = 0;
+        int min = 0;
         queue.offer(root);
         index.offer(0);
 

@@ -10,7 +10,7 @@ public final class MatrixChainRecursiveTopDownMemoisation {
     private MatrixChainRecursiveTopDownMemoisation() {
     }
 
-    static int Memoized_Matrix_Chain(int[] p) {
+    static int memoizedMatrixChain(int[] p) {
         int n = p.length;
         int[][] m = new int[n][n];
         for (int i = 0; i < n; i++) {
@@ -18,10 +18,10 @@ public final class MatrixChainRecursiveTopDownMemoisation {
                 m[i][j] = Integer.MAX_VALUE;
             }
         }
-        return Lookup_Chain(m, p, 1, n - 1);
+        return lookupChain(m, p, 1, n - 1);
     }
 
-    static int Lookup_Chain(int[][] m, int[] p, int i, int j) {
+    static int lookupChain(int[][] m, int[] p, int i, int j) {
         if (i == j) {
             m[i][j] = 0;
             return m[i][j];
@@ -30,7 +30,7 @@ public final class MatrixChainRecursiveTopDownMemoisation {
             return m[i][j];
         } else {
             for (int k = i; k < j; k++) {
-                int q = Lookup_Chain(m, p, i, k) + Lookup_Chain(m, p, k + 1, j) + (p[i - 1] * p[k] * p[j]);
+                int q = lookupChain(m, p, i, k) + lookupChain(m, p, k + 1, j) + (p[i - 1] * p[k] * p[j]);
                 if (q < m[i][j]) {
                     m[i][j] = q;
                 }
@@ -43,6 +43,6 @@ public final class MatrixChainRecursiveTopDownMemoisation {
     // respectively output should be  Minimum number of multiplications is 38
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-        System.out.println("Minimum number of multiplications is " + Memoized_Matrix_Chain(arr));
+        System.out.println("Minimum number of multiplications is " + memoizedMatrixChain(arr));
     }
 }

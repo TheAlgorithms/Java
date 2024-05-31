@@ -35,7 +35,7 @@ public final class HillCipher {
         validateDeterminant(keyMatrix, matrixSize);
 
         int[][] messageVector = new int[matrixSize][1];
-        String CipherText = "";
+        String cipherText = "";
         int[][] cipherMatrix = new int[matrixSize][1];
         int j = 0;
         while (j < message.length()) {
@@ -48,7 +48,8 @@ public final class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < matrixSize; i++) {
                 cipherMatrix[i][0] = 0;
 
@@ -59,10 +60,10 @@ public final class HillCipher {
                 cipherMatrix[i][0] = cipherMatrix[i][0] % 26;
             }
             for (i = 0; i < matrixSize; i++) {
-                CipherText += (char) (cipherMatrix[i][0] + 65);
+                cipherText += (char) (cipherMatrix[i][0] + 65);
             }
         }
-        System.out.println("Ciphertext: " + CipherText);
+        System.out.println("Ciphertext: " + cipherText);
     }
 
     // Following function decrypts a message
@@ -83,7 +84,7 @@ public final class HillCipher {
 
         // solving for the required plaintext message
         int[][] messageVector = new int[n][1];
-        String PlainText = "";
+        String plainText = "";
         int[][] plainMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
@@ -96,7 +97,8 @@ public final class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < n; i++) {
                 plainMatrix[i][0] = 0;
 
@@ -107,15 +109,18 @@ public final class HillCipher {
                 plainMatrix[i][0] = plainMatrix[i][0] % 26;
             }
             for (i = 0; i < n; i++) {
-                PlainText += (char) (plainMatrix[i][0] + 65);
+                plainText += (char) (plainMatrix[i][0] + 65);
             }
         }
-        System.out.println("Plaintext: " + PlainText);
+        System.out.println("Plaintext: " + plainText);
     }
 
     // Determinant calculator
     public static int determinant(int[][] a, int n) {
-        int det = 0, sign = 1, p = 0, q = 0;
+        int det = 0;
+        int sign = 1;
+        int p = 0;
+        int q = 0;
 
         if (n == 1) {
             det = a[0][0];

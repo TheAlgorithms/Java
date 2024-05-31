@@ -51,6 +51,9 @@ public final class Sort012D {
                 h--;
                 break;
             }
+            default: {
+                throw new IllegalArgumentException("Unexpected value: " + a[mid]);
+            }
             }
         }
         System.out.println("the Sorted array is ");

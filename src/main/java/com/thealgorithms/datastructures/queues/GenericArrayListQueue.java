@@ -15,7 +15,7 @@ public class GenericArrayListQueue<T> {
     /**
      * The generic ArrayList for the queue T is the generic element
      */
-    ArrayList<T> _queue = new ArrayList<>();
+    ArrayList<T> elementList = new ArrayList<>();
 
     /**
      * Checks if the queue has elements (not empty).
@@ -23,7 +23,7 @@ public class GenericArrayListQueue<T> {
      * @return True if the queue has elements. False otherwise.
      */
     private boolean hasElements() {
-        return !_queue.isEmpty();
+        return !elementList.isEmpty();
     }
 
     /**
@@ -35,7 +35,7 @@ public class GenericArrayListQueue<T> {
     public T peek() {
         T result = null;
         if (this.hasElements()) {
-            result = _queue.get(0);
+            result = elementList.get(0);
         }
         return result;
     }
@@ -47,7 +47,7 @@ public class GenericArrayListQueue<T> {
      * @return True if the element was added successfully
      */
     public boolean add(T element) {
-        return _queue.add(element);
+        return elementList.add(element);
     }
 
     /**
@@ -58,7 +58,7 @@ public class GenericArrayListQueue<T> {
     public T pull() {
         T result = null;
         if (this.hasElements()) {
-            result = _queue.remove(0);
+            result = elementList.remove(0);
         }
         return result;
     }

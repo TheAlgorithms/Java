@@ -9,7 +9,9 @@ public class AVLTree {
         private int key;
         private int balance;
         private int height;
-        private Node left, right, parent;
+        private Node left;
+        private Node right;
+        private Node parent;
 
         Node(int k, Node p) {
             key = k;

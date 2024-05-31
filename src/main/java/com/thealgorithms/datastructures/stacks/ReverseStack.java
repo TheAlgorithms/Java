@@ -22,7 +22,6 @@ public final class ReverseStack {
             for (i = 0; i < n; i++) {
                 stack.push(sc.nextInt());
             }
-            sc.close();
             reverseStack(stack);
             System.out.println("The reversed stack is:");
             while (!stack.isEmpty()) {

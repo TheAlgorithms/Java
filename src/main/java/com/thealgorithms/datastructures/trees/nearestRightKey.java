@@ -8,7 +8,7 @@ final class NearestRightKey {
     }
 
     public static void main(String[] args) {
-        NRKTree root = BuildTree();
+        NRKTree root = buildTree();
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter first number: ");
         int inputX0 = sc.nextInt();
@@ -17,7 +17,7 @@ final class NearestRightKey {
         sc.close();
     }
 
-    public static NRKTree BuildTree() {
+    public static NRKTree buildTree() {
         int randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
         NRKTree root = new NRKTree(null, null, randomX);
 
