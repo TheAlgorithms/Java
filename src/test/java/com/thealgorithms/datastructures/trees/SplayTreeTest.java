@@ -74,16 +74,16 @@ public class SplayTreeTest {
     }
 
     private static Stream<Object[]> traversalStrategies() {
-        return Stream.of(new Object[] {SplayTree.getInOrderTraversal(), Arrays.asList(1, 2, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18)}, new Object[] {SplayTree.getPreOrderTraversal(), Arrays.asList(18, 17, 16, 15, 13, 11, 10, 8, 7, 6, 2, 1, 5, 12)},
-            new Object[] {SplayTree.getPostOrderTraversal(), Arrays.asList(1, 5, 2, 6, 7, 8, 10, 12, 11, 13, 15, 16, 17, 18)});
+        return Stream.of(new Object[] {SplayTree.getInOrderTraversal(), Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18)}, new Object[] {SplayTree.getPreOrderTraversal(), Arrays.asList(18, 17, 16, 15, 13, 11, 9, 8, 7, 3, 2, 1, 5, 4, 6, 10, 12)},
+            new Object[] {SplayTree.getPostOrderTraversal(), Arrays.asList(1, 2, 4, 6, 5, 3, 7, 8, 10, 9, 12, 11, 13, 15, 16, 17, 18)});
     }
 
     private static Stream<Integer> valuesToTest() {
-        return Stream.of(1, 5, 10);
+        return Stream.of(1, 5, 10, 17, 8, 13, 6);
     }
 
     private static Stream<Integer> nonExistentValues() {
-        return Stream.of(0, 21, 20);
+        return Stream.of(0, 21, 20, 14);
     }
 
     private SplayTree createComplexTree() {
@@ -94,7 +94,10 @@ public class SplayTreeTest {
         tree.insert(2);
         tree.insert(7);
         tree.insert(1);
+        tree.insert(4);
         tree.insert(6);
+        tree.insert(9);
+        tree.insert(3);
         tree.insert(8);
         tree.insert(12);
         tree.insert(17);
