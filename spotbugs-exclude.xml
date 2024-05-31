@@ -217,9 +217,6 @@
         <Bug pattern="FCBL_FIELD_COULD_BE_LOCAL" />
     </Match>
     <Match>
-        <Bug pattern="IMC_IMMATURE_CLASS_VAR_NAME" />
-    </Match>
-    <Match>
         <Bug pattern="CFS_CONFUSING_FUNCTION_SEMANTICS" />
     </Match>
     <Match>
