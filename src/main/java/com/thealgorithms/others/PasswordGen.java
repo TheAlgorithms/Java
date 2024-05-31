@@ -15,7 +15,7 @@ final class PasswordGen {
     private PasswordGen() {
     }
 
-    static String generatePassword(int min_length, int max_length) {
+    static String generatePassword(int minLength, int maxLength) {
         Random random = new Random();
 
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -35,7 +35,7 @@ final class PasswordGen {
         StringBuilder password = new StringBuilder();
 
         // Note that size of the password is also random
-        for (int i = random.nextInt(max_length - min_length) + min_length; i > 0; --i) {
+        for (int i = random.nextInt(maxLength - minLength) + minLength; i > 0; --i) {
             password.append(letters.get(random.nextInt(letters.size())));
         }
 

@@ -10,7 +10,7 @@ public final class KadaneAlgorithm {
     private KadaneAlgorithm() {
     }
 
-    public static boolean maxSum(int[] a, int predicted_answer) {
+    public static boolean maxSum(int[] a, int predictedAnswer) {
         int sum = a[0];
         int runningSum = 0;
         for (int k : a) {
@@ -22,7 +22,7 @@ public final class KadaneAlgorithm {
             // if running sum is negative then it is initialized to zero
         }
         // for-each loop is used to iterate over the array and find the maximum subarray sum
-        return sum == predicted_answer;
+        return sum == predictedAnswer;
         // It returns true if sum and predicted answer matches
         // The predicted answer is the answer itself. So it always return true
     }

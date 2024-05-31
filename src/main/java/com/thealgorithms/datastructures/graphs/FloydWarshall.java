@@ -15,10 +15,10 @@ public class FloydWarshall {
         this.numberofvertices = numberofvertices;
     }
 
-    public void floydwarshall(int[][] AdjacencyMatrix) { // calculates all the distances from source to destination vertex
+    public void floydwarshall(int[][] adjacencyMatrix) { // calculates all the distances from source to destination vertex
         for (int source = 1; source <= numberofvertices; source++) {
             for (int destination = 1; destination <= numberofvertices; destination++) {
-                distanceMatrix[source][destination] = AdjacencyMatrix[source][destination];
+                distanceMatrix[source][destination] = adjacencyMatrix[source][destination];
             }
         }
         for (int intermediate = 1; intermediate <= numberofvertices; intermediate++) {

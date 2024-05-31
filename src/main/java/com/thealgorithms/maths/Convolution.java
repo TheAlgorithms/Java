@@ -15,12 +15,12 @@ public final class Convolution {
      * signal must start from 0. If you have a signal that has values before 0
      * then shift it to start from 0.
      *
-     * @param A The first discrete signal
-     * @param B The second discrete signal
+     * @param a The first discrete signal
+     * @param b The second discrete signal
      * @return The convolved signal
      */
-    public static double[] convolution(double[] A, double[] B) {
-        double[] convolved = new double[A.length + B.length - 1];
+    public static double[] convolution(double[] a, double[] b) {
+        double[] convolved = new double[a.length + b.length - 1];
 
         /*
     The discrete convolution of two signals A and B is defined as:
@@ -35,10 +35,10 @@ public final class Convolution {
          */
         for (int i = 0; i < convolved.length; i++) {
             convolved[i] = 0;
-            int k = Math.max(i - B.length + 1, 0);
+            int k = Math.max(i - b.length + 1, 0);
 
-            while (k < i + 1 && k < A.length) {
-                convolved[i] += A[k] * B[i - k];
+            while (k < i + 1 && k < a.length) {
+                convolved[i] += a[k] * b[i - k];
                 k++;
             }
         }

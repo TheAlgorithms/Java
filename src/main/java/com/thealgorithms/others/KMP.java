@@ -39,17 +39,17 @@ public final class KMP {
     }
 
     // return the prefix function
-    private static int[] computePrefixFunction(final String P) {
-        final int n = P.length();
+    private static int[] computePrefixFunction(final String p) {
+        final int n = p.length();
         final int[] pi = new int[n];
         pi[0] = 0;
         int q = 0;
         for (int i = 1; i < n; i++) {
-            while (q > 0 && P.charAt(q) != P.charAt(i)) {
+            while (q > 0 && p.charAt(q) != p.charAt(i)) {
                 q = pi[q - 1];
             }
 
-            if (P.charAt(q) == P.charAt(i)) {
+            if (p.charAt(q) == p.charAt(i)) {
                 q++;
             }
 

@@ -13,15 +13,15 @@ public class Merge_K_SortedLinkedlist {
      * This function merge K sorted LinkedList
      *
      * @param a array of LinkedList
-     * @param N size of array
+     * @param n size of array
      * @return node
      */
-    Node mergeKList(Node[] a, int N) {
+    Node mergeKList(Node[] a, int n) {
         // Min Heap
         PriorityQueue<Node> min = new PriorityQueue<>(Comparator.comparingInt(x -> x.data));
 
         // adding head of all linkedList in min heap
-        min.addAll(Arrays.asList(a).subList(0, N));
+        min.addAll(Arrays.asList(a).subList(0, n));
 
         // Make new head among smallest heads in K linkedList
         Node head = min.poll();

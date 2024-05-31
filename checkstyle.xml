@@ -114,7 +114,7 @@
     <module name="MemberName"/>
     <module name="MethodName"/>
     <module name="PackageName"/>
-    <!-- TODO <module name="ParameterName"/> -->
+    <module name="ParameterName"/>
     <module name="StaticVariableName"/>
     <!-- TODO <module name="TypeName"/> -->
 
