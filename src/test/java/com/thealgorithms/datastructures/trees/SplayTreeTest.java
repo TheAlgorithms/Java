@@ -6,21 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class SplayTreeTest {
-    @ParameterizedTest
-    @MethodSource("traversalOrders")
-    public void testTraversal(SplayTree.TraverseOrder traverseOrder) {
-        SplayTree tree = createComplexTree();
-        List<Integer> expected = getExpectedTraversalResult(traverseOrder);
-        List<Integer> result = tree.traverse(traverseOrder);
 
+    @ParameterizedTest
+    @MethodSource("traversalStrategies")
+    public void testTraversal(SplayTree.TreeTraversal traversal, List<Integer> expected) {
+        SplayTree tree = createComplexTree();
+        List<Integer> result = tree.traverse(traversal);
         assertEquals(expected, result);
     }
 
@@ -35,7 +32,6 @@ public class SplayTreeTest {
     @MethodSource("valuesToTest")
     public void testDelete(int value) {
         SplayTree tree = createComplexTree();
-
         assertTrue(tree.search(value));
         tree.delete(value);
         assertFalse(tree.search(value));
@@ -52,7 +48,6 @@ public class SplayTreeTest {
     @MethodSource("nonExistentValues")
     public void testDeleteNonExistent(int value) {
         SplayTree tree = createComplexTree();
-
         tree.delete(value);
         assertFalse(tree.search(value));
     }
@@ -71,15 +66,16 @@ public class SplayTreeTest {
         assertThrows(IllegalArgumentException.class, () -> tree.insert(value));
     }
 
-    @Test
-    public void testInvalidTraversalOrderExceptionMessage() {
-        SplayTree tree = createComplexTree();
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> tree.traverse(SplayTree.TraverseOrder.INVALID));
-        assertEquals("Invalid traversal order: INVALID", exception.getMessage());
+    @ParameterizedTest
+    @MethodSource("valuesToTest")
+    public void testSearchInEmptyTree(int value) {
+        SplayTree tree = new SplayTree();
+        assertFalse(tree.search(value));
     }
 
-    private static Stream<SplayTree.TraverseOrder> traversalOrders() {
-        return Stream.of(SplayTree.TraverseOrder.IN_ORDER, SplayTree.TraverseOrder.PRE_ORDER, SplayTree.TraverseOrder.POST_ORDER);
+    private static Stream<Object[]> traversalStrategies() {
+        return Stream.of(new Object[] {SplayTree.getInOrderTraversal(), Arrays.asList(1, 2, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18)}, new Object[] {SplayTree.getPreOrderTraversal(), Arrays.asList(18, 17, 16, 15, 13, 11, 10, 8, 7, 6, 2, 1, 5, 12)},
+            new Object[] {SplayTree.getPostOrderTraversal(), Arrays.asList(1, 5, 2, 6, 7, 8, 10, 12, 11, 13, 15, 16, 17, 18)});
     }
 
     private static Stream<Integer> valuesToTest() {
@@ -87,39 +83,25 @@ public class SplayTreeTest {
     }
 
     private static Stream<Integer> nonExistentValues() {
-        return Stream.of(0, 11, 15);
-    }
-
-    private List<Integer> getExpectedTraversalResult(SplayTree.TraverseOrder traverseOrder) {
-        List<Integer> expected = new LinkedList<>();
-        switch (traverseOrder) {
-        case IN_ORDER:
-            expected.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-            break;
-        case PRE_ORDER:
-            expected.addAll(Arrays.asList(10, 9, 8, 7, 3, 1, 2, 5, 4, 6));
-            break;
-        case POST_ORDER:
-            expected.addAll(Arrays.asList(2, 1, 4, 6, 5, 3, 7, 8, 9, 10));
-            break;
-        default:
-            throw new IllegalArgumentException("Invalid traversal order: " + traverseOrder);
-        }
-        return expected;
+        return Stream.of(0, 21, 20);
     }
 
     private SplayTree createComplexTree() {
         SplayTree tree = new SplayTree();
+        tree.insert(10);
         tree.insert(5);
+        tree.insert(15);
         tree.insert(2);
         tree.insert(7);
         tree.insert(1);
-        tree.insert(4);
         tree.insert(6);
-        tree.insert(9);
-        tree.insert(3);
         tree.insert(8);
-        tree.insert(10);
+        tree.insert(12);
+        tree.insert(17);
+        tree.insert(11);
+        tree.insert(13);
+        tree.insert(16);
+        tree.insert(18);
         return tree;
     }
 }

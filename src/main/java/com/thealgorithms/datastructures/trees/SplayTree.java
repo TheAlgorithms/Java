@@ -28,7 +28,7 @@ import java.util.List;
 public class SplayTree {
 
     private static class Node {
-        int key;
+        final int key;
         Node left;
         Node right;
 
@@ -41,14 +41,11 @@ public class SplayTree {
 
     private Node root;
 
-    /**
-     * Constructs an empty SplayTree.
-     */
     public SplayTree() {
         root = null;
     }
 
-    /**
+     /**
      * Checks if the tree is empty.
      *
      * @return True if the tree is empty, otherwise false.
@@ -135,29 +132,26 @@ public class SplayTree {
                 root = rotateRight(root);
             } // Zig-Zag case
             else if (root.left.key < key) {
-                // Recursive call to splay on grandchild
                 root.left.right = splay(root.left.right, key);
                 // Perform zag operation on parent
-                if (root.left.right != null) root.left = rotateLeft(root.left);
+                if (root.left.right != null) {
+                    root.left = rotateLeft(root.left);
+                }
             }
-
             return (root.left == null) ? root : rotateRight(root);
         } else {
             if (root.right == null) return root;
             // Zag-Zag case
             if (root.right.key > key) {
-                // Recursive call to splay on grandchild
                 root.right.left = splay(root.right.left, key);
                 // Perform zig operation on parent
                 if (root.right.left != null) root.right = rotateRight(root.right);
             } // Zag-Zig case
             else if (root.right.key < key) {
-                // Recursive call to splay on grandchild
                 root.right.right = splay(root.right.right, key);
                 // Perform zag operation on parent
                 root = rotateLeft(root);
             }
-
             return (root.right == null) ? root : rotateLeft(root);
         }
     }
@@ -228,8 +222,8 @@ public class SplayTree {
         if (root.left == null) {
             root = root.right;
         } else {
-            Node temp = root;
             // Splay to bring the largest key in left subtree to root
+            Node temp = root;
             root = splay(root.left, key);
             root.right = temp.right;
         }
@@ -238,71 +232,73 @@ public class SplayTree {
     /**
      * Perform a traversal of the SplayTree.
      *
-     * @param traverseOrder The order of traversal (IN_ORDER, PRE_ORDER, or POST_ORDER).
+     * @param traversal The type of traversal method.
      * @return A list containing the keys in the specified traversal order.
      */
-    public List<Integer> traverse(TraverseOrder traverseOrder) {
+    public List<Integer> traverse(TreeTraversal traversal) {
         List<Integer> result = new LinkedList<>();
-        switch (traverseOrder) {
-        case IN_ORDER:
-            inOrderRec(root, result);
-            break;
-        case PRE_ORDER:
-            preOrderRec(root, result);
-            break;
-        case POST_ORDER:
-            postOrderRec(root, result);
-            break;
-        default:
-            throw new IllegalArgumentException("Invalid traversal order: " + traverseOrder);
-        }
+        traversal.traverse(root, result);
         return result;
     }
 
-    /**
-     * Recursive function for in-order traversal.
-     *
-     * @param root   The root of the subtree to traverse.
-     * @param result The list to store the traversal result.
-     */
-    private void inOrderRec(Node root, List<Integer> result) {
-        if (root != null) {
-            inOrderRec(root.left, result);
-            result.add(root.key);
-            inOrderRec(root.right, result);
+    public interface TreeTraversal {
+        /**
+         * Recursive function for a specific order traversal.
+         *
+         * @param root   The root of the subtree to traverse.
+         * @param result The list to store the traversal result.
+         */
+        void traverse(Node root, List<Integer> result);
+    }
+
+    private static final class InOrderTraversal implements TreeTraversal {
+        private InOrderTraversal() {
+        }
+
+        public void traverse(Node root, List<Integer> result) {
+            if (root != null) {
+                traverse(root.left, result);
+                result.add(root.key);
+                traverse(root.right, result);
+            }
         }
     }
 
-    /**
-     * Recursive function for pre-order traversal.
-     *
-     * @param root   The root of the subtree to traverse.
-     * @param result The list to store the traversal result.
-     */
-    private void preOrderRec(Node root, List<Integer> result) {
-        if (root != null) {
-            result.add(root.key);
-            preOrderRec(root.left, result);
-            preOrderRec(root.right, result);
+    private static final class PreOrderTraversal implements TreeTraversal {
+        private PreOrderTraversal() {
+        }
+
+        public void traverse(Node root, List<Integer> result) {
+            if (root != null) {
+                result.add(root.key);
+                traverse(root.left, result);
+                traverse(root.right, result);
+            }
         }
     }
 
-    /**
-     * Recursive function for post-order traversal.
-     *
-     * @param root   The root of the subtree to traverse.
-     * @param result The list to store the traversal result.
-     */
-    private void postOrderRec(Node root, List<Integer> result) {
-        if (root != null) {
-            postOrderRec(root.left, result);
-            postOrderRec(root.right, result);
-            result.add(root.key);
+    private static final class PostOrderTraversal implements TreeTraversal {
+        private PostOrderTraversal() {
+        }
+
+        public void traverse(Node root, List<Integer> result) {
+            if (root != null) {
+                traverse(root.left, result);
+                traverse(root.right, result);
+                result.add(root.key);
+            }
         }
     }
 
-    /**
-     * Enum to specify the order of traversal.
-     */
-    public enum TraverseOrder { IN_ORDER, PRE_ORDER, POST_ORDER, INVALID }
+    public static TreeTraversal getInOrderTraversal() {
+        return new InOrderTraversal();
+    }
+
+    public static TreeTraversal getPreOrderTraversal() {
+        return new PreOrderTraversal();
+    }
+
+    public static TreeTraversal getPostOrderTraversal() {
+        return new PostOrderTraversal();
+    }
 }
