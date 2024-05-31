@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class MultistageGraph {
-    
+
     private MultistageGraph() {
-        
     }
-     private int k; // number of partitions (k > 2)
+    private int k; // number of partitions (k > 2)
 
     // Adjacency list to store edges between different stages
     public List<List<Integer>> adjacencyList;
