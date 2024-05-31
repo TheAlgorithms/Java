@@ -45,7 +45,7 @@ public class SplayTree {
         root = null;
     }
 
-     /**
+    /**
      * Checks if the tree is empty.
      *
      * @return True if the tree is empty, otherwise false.
