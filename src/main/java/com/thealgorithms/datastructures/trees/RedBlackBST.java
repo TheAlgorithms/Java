@@ -7,13 +7,13 @@ import java.util.Scanner;
  */
 public class RedBlackBST {
 
-    private final int red = 0;
-    private final int black = 1;
+    private static final int RED = 0;
+    private static final int BLACK = 1;
 
     private class Node {
 
         int key = -1;
-        int color = black;
+        int color = BLACK;
         Node left = nil;
         Node right = nil;
         Node p = nil;
@@ -31,7 +31,7 @@ public class RedBlackBST {
             return;
         }
         printTree(node.left);
-        System.out.print(((node.color == red) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
+        System.out.print(((node.color == RED) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
         printTree(node.right);
     }
 
@@ -39,7 +39,7 @@ public class RedBlackBST {
         if (node == nil) {
             return;
         }
-        System.out.print(((node.color == red) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
+        System.out.print(((node.color == RED) ? " R " : " B ") + "Key: " + node.key + " Parent: " + node.p.key + "\n");
         printTreepre(node.left);
         printTreepre(node.right);
     }
@@ -66,10 +66,10 @@ public class RedBlackBST {
         Node temp = root;
         if (root == nil) {
             root = node;
-            node.color = black;
+            node.color = BLACK;
             node.p = nil;
         } else {
-            node.color = red;
+            node.color = RED;
             while (true) {
                 if (node.key < temp.key) {
                     if (temp.left == nil) {
@@ -94,15 +94,15 @@ public class RedBlackBST {
     }
 
     private void fixTree(Node node) {
-        while (node.p.color == red) {
+        while (node.p.color == RED) {
             Node y = nil;
             if (node.p == node.p.p.left) {
                 y = node.p.p.right;
 
-                if (y != nil && y.color == red) {
-                    node.p.color = black;
-                    y.color = black;
-                    node.p.p.color = red;
+                if (y != nil && y.color == RED) {
+                    node.p.color = BLACK;
+                    y.color = BLACK;
+                    node.p.p.color = RED;
                     node = node.p.p;
                     continue;
                 }
@@ -110,15 +110,15 @@ public class RedBlackBST {
                     node = node.p;
                     rotateLeft(node);
                 }
-                node.p.color = black;
-                node.p.p.color = red;
+                node.p.color = BLACK;
+                node.p.p.color = RED;
                 rotateRight(node.p.p);
             } else {
                 y = node.p.p.left;
-                if (y != nil && y.color == red) {
-                    node.p.color = black;
-                    y.color = black;
-                    node.p.p.color = red;
+                if (y != nil && y.color == RED) {
+                    node.p.color = BLACK;
+                    y.color = BLACK;
+                    node.p.p.color = RED;
                     node = node.p.p;
                     continue;
                 }
@@ -126,12 +126,12 @@ public class RedBlackBST {
                     node = node.p;
                     rotateRight(node);
                 }
-                node.p.color = black;
-                node.p.p.color = red;
+                node.p.color = BLACK;
+                node.p.p.color = RED;
                 rotateLeft(node.p.p);
             }
         }
-        root.color = black;
+        root.color = BLACK;
     }
 
     void rotateLeft(Node node) {
@@ -234,67 +234,67 @@ public class RedBlackBST {
             y.left.p = y;
             y.color = z.color;
         }
-        if (yorigcolor == black) {
+        if (yorigcolor == BLACK) {
             deleteFixup(x);
         }
         return true;
     }
 
     void deleteFixup(Node x) {
-        while (x != root && x.color == black) {
+        while (x != root && x.color == BLACK) {
             if (x == x.p.left) {
                 Node w = x.p.right;
-                if (w.color == red) {
-                    w.color = black;
-                    x.p.color = red;
+                if (w.color == RED) {
+                    w.color = BLACK;
+                    x.p.color = RED;
                     rotateLeft(x.p);
                     w = x.p.right;
                 }
-                if (w.left.color == black && w.right.color == black) {
-                    w.color = red;
+                if (w.left.color == BLACK && w.right.color == BLACK) {
+                    w.color = RED;
                     x = x.p;
                     continue;
-                } else if (w.right.color == black) {
-                    w.left.color = black;
-                    w.color = red;
+                } else if (w.right.color == BLACK) {
+                    w.left.color = BLACK;
+                    w.color = RED;
                     rotateRight(w);
                     w = x.p.right;
                 }
-                if (w.right.color == red) {
+                if (w.right.color == RED) {
                     w.color = x.p.color;
-                    x.p.color = black;
-                    w.right.color = black;
+                    x.p.color = BLACK;
+                    w.right.color = BLACK;
                     rotateLeft(x.p);
                     x = root;
                 }
             } else {
                 Node w = x.p.left;
-                if (w.color == red) {
-                    w.color = black;
-                    x.p.color = red;
+                if (w.color == RED) {
+                    w.color = BLACK;
+                    x.p.color = RED;
                     rotateRight(x.p);
                     w = x.p.left;
                 }
-                if (w.right.color == black && w.left.color == black) {
-                    w.color = red;
+                if (w.right.color == BLACK && w.left.color == BLACK) {
+                    w.color = RED;
                     x = x.p;
                     continue;
-                } else if (w.left.color == black) {
-                    w.right.color = black;
-                    w.color = red;
+                } else if (w.left.color == BLACK) {
+                    w.right.color = BLACK;
+                    w.color = RED;
                     rotateLeft(w);
                     w = x.p.left;
                 }
-                if (w.left.color == red) {
+                if (w.left.color == RED) {
                     w.color = x.p.color;
-                    x.p.color = black;
-                    w.left.color = black;
+                    x.p.color = BLACK;
+                    w.left.color = BLACK;
                     rotateRight(x.p);
                     x = root;
                 }
             }
         }
-        x.color = black;
+        x.color = BLACK;
     }
 
     public void insertDemo() {

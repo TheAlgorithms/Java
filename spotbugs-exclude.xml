@@ -78,9 +78,6 @@
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="SS_SHOULD_BE_STATIC" />
-    </Match>
-    <Match>
         <Bug pattern="IT_NO_SUCH_ELEMENT" />
     </Match>
     <Match>
