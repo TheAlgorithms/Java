@@ -74,12 +74,12 @@ public class SplayTreeTest {
     }
 
     private static Stream<Object[]> traversalStrategies() {
-        return Stream.of(new Object[] {SplayTree.getInOrderTraversal(), Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18)}, new Object[] {SplayTree.getPreOrderTraversal(), Arrays.asList(18, 17, 16, 15, 13, 11, 9, 8, 7, 3, 2, 1, 5, 4, 6, 10, 12)},
-            new Object[] {SplayTree.getPostOrderTraversal(), Arrays.asList(1, 2, 4, 6, 5, 3, 7, 8, 10, 9, 12, 11, 13, 15, 16, 17, 18)});
+        return Stream.of(new Object[] {SplayTree.IN_ORDER, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18)}, new Object[] {SplayTree.PRE_ORDER, Arrays.asList(18, 17, 16, 15, 13, 11, 9, 8, 7, 3, 2, 1, 5, 4, 6, 10, 12)},
+            new Object[] {SplayTree.POST_ORDER, Arrays.asList(1, 2, 4, 6, 5, 3, 7, 8, 10, 9, 12, 11, 13, 15, 16, 17, 18)});
     }
 
     private static Stream<Integer> valuesToTest() {
-        return Stream.of(1, 5, 10, 17, 8, 13, 6);
+        return Stream.of(1, 5, 10, 17, 8, 13, 6, 17, 4, 11, 9, 2, 18, 3, 16, 7, 12);
     }
 
     private static Stream<Integer> nonExistentValues() {

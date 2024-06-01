@@ -290,15 +290,7 @@ public class SplayTree {
         }
     }
 
-    public static TreeTraversal getInOrderTraversal() {
-        return new InOrderTraversal();
-    }
-
-    public static TreeTraversal getPreOrderTraversal() {
-        return new PreOrderTraversal();
-    }
-
-    public static TreeTraversal getPostOrderTraversal() {
-        return new PostOrderTraversal();
-    }
+    public static final TreeTraversal PRE_ORDER = new PreOrderTraversal();
+    public static final TreeTraversal IN_ORDER = new InOrderTraversal();
+    public static final TreeTraversal POST_ORDER = new PostOrderTraversal();
 }
