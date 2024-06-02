@@ -35,9 +35,7 @@ final class RadixSort {
             count[(arr[i] / exp) % 10]--;
         }
 
-        for (i = 0; i < n; i++) {
-            arr[i] = output[i];
-        }
+        System.arraycopy(output, 0, arr, 0, n);
     }
 
     private static void radixsort(int[] arr, int n) {
