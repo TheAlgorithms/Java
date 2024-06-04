@@ -148,8 +148,11 @@ public class LinkedQueue<T> implements Iterable<T> {
 
             @Override
             public T next() {
-                node = node.next;
-                return node.data;
+                if (hasNext()) {
+                    node = node.next;
+                    return node.data;
+                }
+                throw new NoSuchElementException();
             }
         };
     }
