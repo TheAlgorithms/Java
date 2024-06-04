@@ -139,9 +139,6 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="MAC_MANUAL_ARRAY_COPY" />
-    </Match>
-    <Match>
         <Bug pattern="SPP_USE_ISEMPTY" />
     </Match>
     <Match>

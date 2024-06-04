@@ -34,10 +34,8 @@ public final class ReturnSubsequence {
         // position=1
 
         String[] ans = new String[2 * smallAns.length]; // Our answer will be an array off string of size=2*smallAns
-        int i = 0;
-        for (; i < smallAns.length; i++) {
-            ans[i] = smallAns[i]; // Copying all the strings present in smallAns to ans string array
-        }
+        System.arraycopy(smallAns, 0, ans, 0, smallAns.length);
+
         for (int k = 0; k < smallAns.length; k++) {
             ans[k + smallAns.length] = givenString.charAt(0) + smallAns[k]; // Insert character at index=0 of the given
                                                                             // substring in front of every string
