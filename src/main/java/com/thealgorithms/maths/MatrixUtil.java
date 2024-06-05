@@ -11,7 +11,9 @@ import java.util.stream.IntStream;
  * @author: caos321
  * @date: 31 October 2021 (Sunday)
  */
-public class MatrixUtil {
+public final class MatrixUtil {
+    private MatrixUtil() {
+    }
 
     public static boolean isValid(final BigDecimal[][] matrix) {
         return matrix != null && matrix.length > 0 && matrix[0].length > 0;

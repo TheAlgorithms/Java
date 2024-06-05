@@ -12,21 +12,21 @@ public class HashMapCuckooHashing {
 
     private int tableSize; // size of the hash table
     private Integer[] buckets; // array representing the table
-    private final Integer AVAILABLE;
+    private final Integer emptySlot;
     private int size; // number of elements in the hash table
 
     private int thresh; // threshold for infinite loop checking
 
     /**
      * Constructor initializes buckets array, hsize, and creates dummy object
-     * for AVAILABLE
+     * for emptySlot
      *
      * @param tableSize the desired size of the hash map
      */
     public HashMapCuckooHashing(int tableSize) {
         this.buckets = new Integer[tableSize];
         this.tableSize = tableSize;
-        this.AVAILABLE = Integer.MIN_VALUE;
+        this.emptySlot = Integer.MIN_VALUE;
         this.size = 0;
         this.thresh = (int) (Math.log(tableSize) / Math.log(2)) + 2;
     }
@@ -66,8 +66,10 @@ public class HashMapCuckooHashing {
      */
 
     public void insertKey2HashTable(int key) {
-        Integer wrappedInt = key, temp;
-        int hash, loopCounter = 0;
+        Integer wrappedInt = key;
+        Integer temp;
+        int hash;
+        int loopCounter = 0;
 
         if (isFull()) {
             System.out.println("Hash table is full, lengthening & rehashing table");
@@ -82,7 +84,7 @@ public class HashMapCuckooHashing {
             loopCounter++;
             hash = hashFunction1(key);
 
-            if ((buckets[hash] == null) || Objects.equals(buckets[hash], AVAILABLE)) {
+            if ((buckets[hash] == null) || Objects.equals(buckets[hash], emptySlot)) {
                 buckets[hash] = wrappedInt;
                 size++;
                 checkLoadFactor();
@@ -93,7 +95,7 @@ public class HashMapCuckooHashing {
             buckets[hash] = wrappedInt;
             wrappedInt = temp;
             hash = hashFunction2(temp);
-            if (Objects.equals(buckets[hash], AVAILABLE)) {
+            if (Objects.equals(buckets[hash], emptySlot)) {
                 buckets[hash] = wrappedInt;
                 size++;
                 checkLoadFactor();
@@ -122,7 +124,7 @@ public class HashMapCuckooHashing {
     public void reHashTableIncreasesTableSize() {
         HashMapCuckooHashing newT = new HashMapCuckooHashing(tableSize * 2);
         for (int i = 0; i < tableSize; i++) {
-            if (buckets[i] != null && !Objects.equals(buckets[i], AVAILABLE)) {
+            if (buckets[i] != null && !Objects.equals(buckets[i], emptySlot)) {
                 newT.insertKey2HashTable(this.buckets[i]);
             }
         }
@@ -144,14 +146,14 @@ public class HashMapCuckooHashing {
         }
 
         if (Objects.equals(buckets[hash], wrappedInt)) {
-            buckets[hash] = AVAILABLE;
+            buckets[hash] = emptySlot;
             size--;
             return;
         }
 
         hash = hashFunction2(key);
         if (Objects.equals(buckets[hash], wrappedInt)) {
-            buckets[hash] = AVAILABLE;
+            buckets[hash] = emptySlot;
             size--;
             return;
         }
@@ -163,7 +165,7 @@ public class HashMapCuckooHashing {
      */
     public void displayHashtable() {
         for (int i = 0; i < tableSize; i++) {
-            if ((buckets[i] == null) || Objects.equals(buckets[i], AVAILABLE)) {
+            if ((buckets[i] == null) || Objects.equals(buckets[i], emptySlot)) {
                 System.out.println("Bucket " + i + ": Empty");
             } else {
                 System.out.println("Bucket " + i + ": " + buckets[i].toString());
@@ -213,7 +215,7 @@ public class HashMapCuckooHashing {
     public double checkLoadFactor() {
         double factor = (double) size / tableSize;
         if (factor > .7) {
-            System.out.printf("Load factor is %.2f , rehashing table\n", factor);
+            System.out.printf("Load factor is %.2f , rehashing table%n", factor);
             reHashTableIncreasesTableSize();
         }
         return factor;
@@ -227,7 +229,7 @@ public class HashMapCuckooHashing {
     public boolean isFull() {
         boolean response = true;
         for (int i = 0; i < tableSize; i++) {
-            if (buckets[i] == null || Objects.equals(buckets[i], AVAILABLE)) {
+            if (buckets[i] == null || Objects.equals(buckets[i], emptySlot)) {
                 return false;
             }
         }

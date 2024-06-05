@@ -8,7 +8,9 @@ package com.thealgorithms.others;
  * @author sangin-lee
  */
 
-public class ArrayLeftRotation {
+public final class ArrayLeftRotation {
+    private ArrayLeftRotation() {
+    }
 
     /*
      * Returns the result of left rotation of given array arr and integer n

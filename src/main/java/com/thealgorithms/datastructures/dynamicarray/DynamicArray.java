@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.dynamicarray;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -117,7 +121,8 @@ public class DynamicArray<E> implements Iterable<E> {
             System.arraycopy(elements, index + 1, elements, index, newSize - index);
         }
 
-        elements[this.size = newSize] = null;
+        this.size = newSize;
+        this.elements[this.size] = null;
     }
 
     private E getElement(final int index) {
@@ -149,7 +154,7 @@ public class DynamicArray<E> implements Iterable<E> {
         return new DynamicArrayIterator();
     }
 
-    private class DynamicArrayIterator implements Iterator<E> {
+    private final class DynamicArrayIterator implements Iterator<E> {
 
         private int cursor;
 

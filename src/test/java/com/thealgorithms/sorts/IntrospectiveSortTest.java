@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class IntrospectiveSortTest {
     @Test
     // valid test case
-    public void StrandSortNonDuplicateTest() {
+    public void strandSortNonDuplicateTest() {
         Integer[] expectedArray = {1, 2, 3, 4, 5};
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);
@@ -16,7 +16,7 @@ public class IntrospectiveSortTest {
 
     @Test
     // valid test case
-    public void StrandSortDuplicateTest() {
+    public void strandSortDuplicateTest() {
         Integer[] expectedArray = {2, 2, 2, 5, 7};
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);
@@ -24,7 +24,7 @@ public class IntrospectiveSortTest {
 
     @Test
     // valid test case
-    public void StrandSortEmptyTest() {
+    public void strandSortEmptyTest() {
         Integer[] expectedArray = {};
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);
@@ -32,14 +32,14 @@ public class IntrospectiveSortTest {
 
     @Test
     // valid test case
-    public void StrandSortNullTest() {
+    public void strandSortNullTest() {
         Integer[] expectedArray = null;
         assertThrows(NullPointerException.class, () -> { new IntrospectiveSort().sort(expectedArray); });
     }
 
     @Test
     // valid test case
-    public void StrandSortNegativeTest() {
+    public void strandSortNegativeTest() {
         Integer[] expectedArray = {-1, -2, -3, -4, -5};
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);
@@ -47,7 +47,7 @@ public class IntrospectiveSortTest {
 
     @Test
     // valid test case
-    public void StrandSortNegativeAndPositiveTest() {
+    public void strandSortNegativeAndPositiveTest() {
         Integer[] expectedArray = {-1, -2, -3, 4, 5};
         Integer[] actualList = new IntrospectiveSort().sort(expectedArray);
         assertArrayEquals(expectedArray, actualList);

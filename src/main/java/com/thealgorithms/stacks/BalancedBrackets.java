@@ -16,7 +16,9 @@ import java.util.Stack;
  * @author <a href="https://github.com/khalil2535">khalil2535<a>
  * @author shellhub
  */
-class BalancedBrackets {
+final class BalancedBrackets {
+    private BalancedBrackets() {
+    }
 
     /**
      * Check if {@code leftBracket} and {@code rightBracket} is paired or not

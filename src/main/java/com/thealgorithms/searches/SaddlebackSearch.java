@@ -16,7 +16,9 @@ import java.util.Scanner;
  *
  * @author Nishita Aggarwal
  */
-public class SaddlebackSearch {
+public final class SaddlebackSearch {
+    private SaddlebackSearch() {
+    }
 
     /**
      * This method performs Saddleback Search
@@ -55,7 +57,10 @@ public class SaddlebackSearch {
         // TODO Auto-generated method stub
         Scanner sc = new Scanner(System.in);
         int[][] arr;
-        int i, j, rows = sc.nextInt(), col = sc.nextInt();
+        int i;
+        int j;
+        int rows = sc.nextInt();
+        int col = sc.nextInt();
         arr = new int[rows][col];
         for (i = 0; i < rows; i++) {
             for (j = 0; j < col; j++) {

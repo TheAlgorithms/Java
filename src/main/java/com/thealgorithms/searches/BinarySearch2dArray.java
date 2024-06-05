@@ -8,16 +8,21 @@ if it is smaller than the target, the rows above that element are ignored (becau
 above it will also be smaller than the target), else that element is greater than the target, then
 the rows below it are ignored.
  */
-public class BinarySearch2dArray {
+public final class BinarySearch2dArray {
+    private BinarySearch2dArray() {
+    }
 
-    static int[] BinarySearch(int[][] arr, int target) {
-        int rowCount = arr.length, colCount = arr[0].length;
+    static int[] binarySearch(int[][] arr, int target) {
+        int rowCount = arr.length;
+        int colCount = arr[0].length;
 
         if (rowCount == 1) {
             return binarySearch(arr, target, 0, 0, colCount);
         }
 
-        int startRow = 0, endRow = rowCount - 1, midCol = colCount / 2;
+        int startRow = 0;
+        int endRow = rowCount - 1;
+        int midCol = colCount / 2;
 
         while (startRow < endRow - 1) {
             int midRow = startRow + (endRow - startRow) / 2; // getting the index of middle row

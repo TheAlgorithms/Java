@@ -1,10 +1,13 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class IsomorphicTest {
+public final class IsomorphicTest {
+    private IsomorphicTest() {
+    }
 
     @Test
     public static void main(String[] args) {

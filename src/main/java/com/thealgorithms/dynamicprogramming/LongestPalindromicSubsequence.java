@@ -4,20 +4,22 @@ package com.thealgorithms.dynamicprogramming;
  * Algorithm explanation
  * https://www.educative.io/edpresso/longest-palindromic-subsequence-algorithm
  */
-public class LongestPalindromicSubsequence {
+public final class LongestPalindromicSubsequence {
+    private LongestPalindromicSubsequence() {
+    }
 
     public static void main(String[] args) {
         String a = "BBABCBCAB";
         String b = "BABCBAB";
 
-        String aLPS = LPS(a);
-        String bLPS = LPS(b);
+        String aLPS = lps(a);
+        String bLPS = lps(b);
 
         System.out.println(a + " => " + aLPS);
         System.out.println(b + " => " + bLPS);
     }
 
-    public static String LPS(String original) throws IllegalArgumentException {
+    public static String lps(String original) throws IllegalArgumentException {
         StringBuilder reverse = new StringBuilder(original);
         reverse = reverse.reverse();
         return recursiveLPS(original, reverse.toString());

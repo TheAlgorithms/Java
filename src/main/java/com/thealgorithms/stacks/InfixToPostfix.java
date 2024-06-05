@@ -2,7 +2,9 @@ package com.thealgorithms.stacks;
 
 import java.util.Stack;
 
-public class InfixToPostfix {
+public final class InfixToPostfix {
+    private InfixToPostfix() {
+    }
 
     public static void main(String[] args) throws Exception {
         assert "32+".equals(infix2PostFix("3+2"));

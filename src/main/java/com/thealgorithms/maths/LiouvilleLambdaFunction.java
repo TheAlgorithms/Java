@@ -12,7 +12,9 @@ package com.thealgorithms.maths;
  *
  * */
 
-public class LiouvilleLambdaFunction {
+public final class LiouvilleLambdaFunction {
+    private LiouvilleLambdaFunction() {
+    }
 
     /**
      * This method returns λ(n) of given number n

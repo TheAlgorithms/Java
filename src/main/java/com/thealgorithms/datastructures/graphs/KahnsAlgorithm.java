@@ -130,7 +130,9 @@ class TopologicalSort<E extends Comparable<E>> {
 /**
  * A driver class that sorts a given graph in topological order.
  */
-public class KahnsAlgorithm {
+public final class KahnsAlgorithm {
+    private KahnsAlgorithm() {
+    }
 
     public static void main(String[] args) {
         // Graph definition and initialization

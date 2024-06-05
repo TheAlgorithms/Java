@@ -32,7 +32,10 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
-        int l, r, k, cmp;
+        int l;
+        int r;
+        int k;
+        int cmp;
 
         l = 0;
         r = array.length - 1;

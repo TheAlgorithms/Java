@@ -10,12 +10,14 @@ public class LazySegmentTree {
      */
     static class Node {
 
-        private final int start, end; // start and end of the segment represented by this node
+        private final int start;
+        private final int end; // start and end of the segment represented by this node
         private int value; // value is the sum of all elements in the range [start, end)
         private int lazy; // lazied value that should be added to children nodes
-        Node left, right; // left and right children
+        Node left;
+        Node right; // left and right children
 
-        public Node(int start, int end, int value) {
+        Node(int start, int end, int value) {
             this.start = start;
             this.end = end;
             this.value = value;

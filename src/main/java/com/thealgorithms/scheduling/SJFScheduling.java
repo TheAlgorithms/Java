@@ -24,7 +24,9 @@ public class SJFScheduling {
         sortByArrivalTime();
     }
     protected void sortByArrivalTime() {
-        int size = processes.size(), i, j;
+        int size = processes.size();
+        int i;
+        int j;
         ProcessDetails temp;
         for (i = 0; i < size; i++) {
             for (j = i + 1; j < size - 1; j++) {
@@ -44,8 +46,12 @@ public class SJFScheduling {
     public void scheduleProcesses() {
         ArrayList<ProcessDetails> ready = new ArrayList<>();
 
-        int size = processes.size(), runtime, time = 0;
-        int executed = 0, j, k = 0;
+        int size = processes.size();
+        int runtime;
+        int time = 0;
+        int executed = 0;
+        int j;
+        int k = 0;
         ProcessDetails running;
 
         if (size == 0) {
@@ -77,25 +83,28 @@ public class SJFScheduling {
     /**
      * this function evaluates the shortest job of all the ready processes (based on  a process
      * burst time)
-     * @param ReadyProcesses an array list of ready processes
+     * @param readyProcesses an array list of ready processes
      * @return returns the process' with the shortest burst time OR NULL if there are no ready
      *     processes
      */
-    private ProcessDetails findShortestJob(ArrayList<ProcessDetails> ReadyProcesses) {
-        if (ReadyProcesses.isEmpty()) {
+    private ProcessDetails findShortestJob(ArrayList<ProcessDetails> readyProcesses) {
+        if (readyProcesses.isEmpty()) {
             return null;
         }
-        int i, size = ReadyProcesses.size();
-        int minBurstTime = ReadyProcesses.get(0).getBurstTime(), temp, positionOfShortestJob = 0;
+        int i;
+        int size = readyProcesses.size();
+        int minBurstTime = readyProcesses.get(0).getBurstTime();
+        int temp;
+        int positionOfShortestJob = 0;
 
         for (i = 1; i < size; i++) {
-            temp = ReadyProcesses.get(i).getBurstTime();
+            temp = readyProcesses.get(i).getBurstTime();
             if (minBurstTime > temp) {
                 minBurstTime = temp;
                 positionOfShortestJob = i;
             }
         }
 
-        return ReadyProcesses.get(positionOfShortestJob);
+        return readyProcesses.get(positionOfShortestJob);
     }
 }

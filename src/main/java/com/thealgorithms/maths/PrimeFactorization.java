@@ -9,7 +9,9 @@ package com.thealgorithms.maths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrimeFactorization {
+public final class PrimeFactorization {
+    private PrimeFactorization() {
+    }
 
     public static List<Integer> pfactors(int n) {
         List<Integer> primeFactors = new ArrayList<>();

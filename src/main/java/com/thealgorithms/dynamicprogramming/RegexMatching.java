@@ -12,7 +12,9 @@ package com.thealgorithms.dynamicprogramming;
  * length of pat
  *
  */
-public class RegexMatching {
+public final class RegexMatching {
+    private RegexMatching() {
+    }
 
     // Method 1: Using Recursion
     // Time Complexity=0(2^(N+M)) Space Complexity=Recursion Extra Space

@@ -17,7 +17,7 @@ public final class WelshPowell {
     private WelshPowell() {
     }
 
-    static class Graph {
+    static final class Graph {
         private HashSet<Integer>[] adjacencyLists;
 
         private Graph(int vertices) {

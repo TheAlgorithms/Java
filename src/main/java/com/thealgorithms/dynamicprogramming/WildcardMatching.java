@@ -14,7 +14,9 @@
 
 package com.thealgorithms.dynamicprogramming;
 
-public class WildcardMatching {
+public final class WildcardMatching {
+    private WildcardMatching() {
+    }
 
     public static boolean isMatch(String text, String pattern) {
         int m = text.length();

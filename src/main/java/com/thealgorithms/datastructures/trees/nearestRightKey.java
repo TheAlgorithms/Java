@@ -3,10 +3,12 @@ package com.thealgorithms.datastructures.trees;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-class Main {
+final class NearestRightKey {
+    private NearestRightKey() {
+    }
 
     public static void main(String[] args) {
-        NRKTree root = BuildTree();
+        NRKTree root = buildTree();
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter first number: ");
         int inputX0 = sc.nextInt();
@@ -15,7 +17,7 @@ class Main {
         sc.close();
     }
 
-    public static NRKTree BuildTree() {
+    public static NRKTree buildTree() {
         int randomX = ThreadLocalRandom.current().nextInt(0, 100 + 1);
         NRKTree root = new NRKTree(null, null, randomX);
 
@@ -53,13 +55,13 @@ class NRKTree {
     public NRKTree right;
     public int data;
 
-    public NRKTree(int x) {
+    NRKTree(int x) {
         this.left = null;
         this.right = null;
         this.data = x;
     }
 
-    public NRKTree(NRKTree right, NRKTree left, int x) {
+    NRKTree(NRKTree right, NRKTree left, int x) {
         this.left = left;
         this.right = right;
         this.data = x;

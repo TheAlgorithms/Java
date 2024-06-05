@@ -7,11 +7,14 @@ import java.util.Scanner;
  * Reason to use bitwise operator: It makes our program faster as we are operating on bits and not
  * on actual numbers.
  */
-public class NonRepeatingElement {
+public final class NonRepeatingElement {
+    private NonRepeatingElement() {
+    }
 
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
-            int i, res = 0;
+            int i;
+            int res = 0;
             System.out.println("Enter the number of elements in the array");
             int n = sc.nextInt();
             if ((n & 1) == 1) {
@@ -27,12 +30,6 @@ public class NonRepeatingElement {
                 arr[i] = sc.nextInt();
             }
 
-            try {
-                sc.close();
-            } catch (Exception e) {
-                System.out.println("Unable to close scanner" + e);
-            }
-
             // Find XOR of the 2 non repeating elements
             for (i = 0; i < n; i++) {
                 res ^= arr[i];
@@ -40,7 +37,8 @@ public class NonRepeatingElement {
 
             // Finding the rightmost set bit
             res = res & (-res);
-            int num1 = 0, num2 = 0;
+            int num1 = 0;
+            int num2 = 0;
 
             for (i = 0; i < n; i++) {
                 if ((res & arr[i]) > 0) { // Case 1 explained below
@@ -51,7 +49,6 @@ public class NonRepeatingElement {
             }
 
             System.out.println("The two non repeating elements are " + num1 + " and " + num2);
-            sc.close();
         }
     }
     /*

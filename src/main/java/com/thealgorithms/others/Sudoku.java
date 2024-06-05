@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-class Sudoku {
+final class Sudoku {
+    private Sudoku() {
+    }
 
     public static boolean isSafe(int[][] board, int row, int col, int num) {
         // Row has the unique (row-clash)
@@ -84,16 +86,16 @@ class Sudoku {
         return false;
     }
 
-    public static void print(int[][] board, int N) {
+    public static void print(int[][] board, int n) {
         // We got the answer, just print it
-        for (int r = 0; r < N; r++) {
-            for (int d = 0; d < N; d++) {
+        for (int r = 0; r < n; r++) {
+            for (int d = 0; d < n; d++) {
                 System.out.print(board[r][d]);
                 System.out.print(" ");
             }
             System.out.print("\n");
 
-            if ((r + 1) % (int) Math.sqrt(N) == 0) {
+            if ((r + 1) % (int) Math.sqrt(n) == 0) {
                 System.out.print("");
             }
         }
@@ -112,11 +114,11 @@ class Sudoku {
             {0, 0, 0, 0, 0, 0, 0, 7, 4},
             {0, 0, 5, 2, 0, 6, 3, 0, 0},
         };
-        int N = board.length;
+        int n = board.length;
 
-        if (solveSudoku(board, N)) {
+        if (solveSudoku(board, n)) {
             // print solution
-            print(board, N);
+            print(board, n);
         } else {
             System.out.println("No solution");
         }

@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * The idea of Swap-Sort is to count the number m of smaller values (that are in
  * A) from each element of an array A(1...n) and then swap the element with the
@@ -13,10 +11,10 @@ public class SwapSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int LENGTH = array.length;
+        int len = array.length;
         int index = 0;
 
-        while (index < LENGTH - 1) {
+        while (index < len - 1) {
             int amountSmallerElements = this.getSmallerElementCount(array, index);
 
             if (amountSmallerElements > 0 && index != amountSmallerElements) {
@@ -34,7 +32,7 @@ public class SwapSort implements SortAlgorithm {
     private <T extends Comparable<T>> int getSmallerElementCount(T[] array, int index) {
         int counter = 0;
         for (int i = 0; i < array.length; i++) {
-            if (less(array[i], array[index])) {
+            if (SortUtils.less(array[i], array[index])) {
                 counter++;
             }
         }
@@ -46,12 +44,12 @@ public class SwapSort implements SortAlgorithm {
         // ==== Int =======
         Integer[] a = {3, 7, 45, 1, 33, 5, 2, 9};
         System.out.print("unsorted: ");
-        print(a);
+        SortUtils.print(a);
         System.out.println();
 
         new SwapSort().sort(a);
         System.out.print("sorted: ");
-        print(a);
+        SortUtils.print(a);
         System.out.println();
 
         // ==== String =======
@@ -66,11 +64,11 @@ public class SwapSort implements SortAlgorithm {
             "pineapple",
         };
         System.out.print("unsorted: ");
-        print(b);
+        SortUtils.print(b);
         System.out.println();
 
         new SwapSort().sort(b);
         System.out.print("sorted: ");
-        print(b);
+        SortUtils.print(b);
     }
 }

@@ -1,13 +1,16 @@
 package com.thealgorithms.conversions;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * Converts any Binary Number to a Hexadecimal Number
  *
  * @author Nishita Aggarwal
  */
-public class BinaryToHexadecimal {
+public final class BinaryToHexadecimal {
+    private BinaryToHexadecimal() {
+    }
 
     /**
      * This method converts a binary number to a hexadecimal number.

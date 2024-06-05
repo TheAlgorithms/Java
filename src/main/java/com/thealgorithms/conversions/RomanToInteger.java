@@ -1,14 +1,13 @@
 package com.thealgorithms.conversions;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class RomanToInteger {
+public final class RomanToInteger {
+    private RomanToInteger() {
+    }
 
-    private static Map<Character, Integer> map = new HashMap<Character, Integer>() {
-        /**
-         *          */
-        private static final long serialVersionUID = 87605733047260530L;
-
+    private static final Map<Character, Integer> ROMAN_TO_INT = new HashMap<>() {
         {
             put('I', 1);
             put('V', 5);
@@ -25,31 +24,31 @@ public class RomanToInteger {
     /**
      * This function convert Roman number into Integer
      *
-     * @param A Roman number string
+     * @param a Roman number string
      * @return integer
      */
-    public static int romanToInt(String A) {
-        A = A.toUpperCase();
+    public static int romanToInt(String a) {
+        a = a.toUpperCase();
         char prev = ' ';
 
         int sum = 0;
 
         int newPrev = 0;
-        for (int i = A.length() - 1; i >= 0; i--) {
-            char c = A.charAt(i);
+        for (int i = a.length() - 1; i >= 0; i--) {
+            char c = a.charAt(i);
 
             if (prev != ' ') {
-                // checking current Number greater then previous or not
-                newPrev = map.get(prev) > newPrev ? map.get(prev) : newPrev;
+                // checking current Number greater than previous or not
+                newPrev = ROMAN_TO_INT.get(prev) > newPrev ? ROMAN_TO_INT.get(prev) : newPrev;
             }
 
-            int currentNum = map.get(c);
+            int currentNum = ROMAN_TO_INT.get(c);
 
-            // if current number greater then prev max previous then add
+            // if current number greater than prev max previous then add
             if (currentNum >= newPrev) {
                 sum += currentNum;
             } else {
-                // subtract upcoming number until upcoming number not greater then prev max
+                // subtract upcoming number until upcoming number not greater than prev max
                 sum -= currentNum;
             }
 

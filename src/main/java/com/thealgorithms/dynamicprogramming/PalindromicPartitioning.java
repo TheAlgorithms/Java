@@ -17,7 +17,9 @@ import java.util.Scanner;
  * "aba | b | bbabb | ababa"
  * @author [Syed] (https://github.com/roeticvampire)
  */
-public class PalindromicPartitioning {
+public final class PalindromicPartitioning {
+    private PalindromicPartitioning() {
+    }
 
     public static int minimalpartitions(String word) {
         int len = word.length();
@@ -29,24 +31,26 @@ public class PalindromicPartitioning {
         int[] minCuts = new int[len];
         boolean[][] isPalindrome = new boolean[len][len];
 
-        int i, j, L; // different looping variables
+        int i;
+        int j;
+        int subLen; // different looping variables
 
         // Every substring of length 1 is a palindrome
         for (i = 0; i < len; i++) {
             isPalindrome[i][i] = true;
         }
 
-        /* L is substring length. Build the solution in bottom up manner by considering all
+        /* subLen is substring length. Build the solution in bottom up manner by considering all
          * substrings of length starting from 2 to n. */
-        for (L = 2; L <= len; L++) {
-            // For substring of length L, set different possible starting indexes
-            for (i = 0; i < len - L + 1; i++) {
-                j = i + L - 1; // Ending index
-                // If L is 2, then we just need to
+        for (subLen = 2; subLen <= len; subLen++) {
+            // For substring of length subLen, set different possible starting indexes
+            for (i = 0; i < len - subLen + 1; i++) {
+                j = i + subLen - 1; // Ending index
+                // If subLen is 2, then we just need to
                 // compare two characters. Else need to
                 // check two corner characters and value
                 // of P[i+1][j-1]
-                if (L == 2) {
+                if (subLen == 2) {
                     isPalindrome[i][j] = (word.charAt(i) == word.charAt(j));
                 } else {
                     isPalindrome[i][j] = (word.charAt(i) == word.charAt(j)) && isPalindrome[i + 1][j - 1];

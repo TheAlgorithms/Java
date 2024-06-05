@@ -1,8 +1,13 @@
 package com.thealgorithms.strings;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-public class Isomorphic {
+public final class Isomorphic {
+    private Isomorphic() {
+    }
 
     public static boolean checkStrings(String s, String t) {
         if (s.length() != t.length()) {

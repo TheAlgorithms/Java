@@ -1,8 +1,12 @@
 package com.thealgorithms.others;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Conway {
+public final class Conway {
+    private Conway() {
+    }
 
     /*
      * This class will generate the conway sequence also known as the look and say sequence.
@@ -13,7 +17,7 @@ public class Conway {
      *1s, two 2s, one 1" or 312211. https://en.wikipedia.org/wiki/Look-and-say_sequence
      * */
 
-    private static final StringBuilder builder = new StringBuilder();
+    private static final StringBuilder BUILDER = new StringBuilder();
 
     protected static List<String> generateList(String originalString, int maxIteration) {
         List<String> numbers = new ArrayList<>();
@@ -25,9 +29,9 @@ public class Conway {
     }
 
     public static String generateNextElement(String originalString) {
-        builder.setLength(0);
+        BUILDER.setLength(0);
         String[] stp = originalString.split("(?<=(.))(?!\\1)");
-        Arrays.stream(stp).forEach(s -> builder.append(s.length()).append(s.charAt(0)));
-        return builder.toString();
+        Arrays.stream(stp).forEach(s -> BUILDER.append(s.length()).append(s.charAt(0)));
+        return BUILDER.toString();
     }
 }

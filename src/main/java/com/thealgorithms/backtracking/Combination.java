@@ -1,12 +1,17 @@
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Finds all permutations of given array
  * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
  */
-public class Combination {
+public final class Combination {
+    private Combination() {
+    }
 
     private static int length;
 

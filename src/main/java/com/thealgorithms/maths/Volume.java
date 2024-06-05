@@ -1,7 +1,9 @@
 package com.thealgorithms.maths;
 
 /* Calculate the volume of various shapes.*/
-public class Volume {
+public final class Volume {
+    private Volume() {
+    }
 
     /**
      * Calculate the volume of a cube.

@@ -1,8 +1,10 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Arrays;
 
-public class RangeInSortedArray {
+public final class RangeInSortedArray {
+    private RangeInSortedArray() {
+    }
 
     public static void main(String[] args) {
         // Testcases
@@ -26,7 +28,7 @@ public class RangeInSortedArray {
         if (left > right) {
             return;
         }
-        int mid = (left + right) / 2;
+        int mid = (left + right) >>> 1;
         if (nums[mid] > key) {
             alteredBinSearch(nums, key, left, mid - 1, range, goLeft);
         } else if (nums[mid] < key) {
@@ -52,7 +54,7 @@ public class RangeInSortedArray {
     // of 'key'
     public static void alteredBinSearchIter(int[] nums, int key, int left, int right, int[] range, boolean goLeft) {
         while (left <= right) {
-            int mid = (left + right) / 2;
+            final int mid = (left + right) >>> 1;
             if (nums[mid] > key) {
                 right = mid - 1;
             } else if (nums[mid] < key) {
@@ -84,7 +86,7 @@ public class RangeInSortedArray {
     public static int getLessThan(int[] nums, int key, int left, int right) {
         int count = 0;
         while (left <= right) {
-            int mid = (left + right) / 2;
+            final int mid = (left + right) >>> 1;
             if (nums[mid] > key) {
                 right = mid - 1;
             } else if (nums[mid] <= key) {

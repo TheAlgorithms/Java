@@ -15,9 +15,14 @@ package com.thealgorithms.others;
  * https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Java Also most of the
  * comments are from RosettaCode.
  */
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
-public class Dijkstra {
+public final class Dijkstra {
+    private Dijkstra() {
+    }
 
     private static final Graph.Edge[] GRAPH = {
         // Distance from node "a" to node "b" is 7.
@@ -58,10 +63,11 @@ class Graph {
      */
     public static class Edge {
 
-        public final String v1, v2;
+        public final String v1;
+        public final String v2;
         public final int dist;
 
-        public Edge(String v1, String v2, int dist) {
+        Edge(String v1, String v2, int dist) {
             this.v1 = v1;
             this.v2 = v2;
             this.dist = dist;
@@ -79,7 +85,7 @@ class Graph {
         public Vertex previous = null;
         public final Map<Vertex, Integer> neighbours = new HashMap<>();
 
-        public Vertex(String name) {
+        Vertex(String name) {
             this.name = name;
         }
 
@@ -147,7 +153,7 @@ class Graph {
     /**
      * Builds a graph from a set of edges
      */
-    public Graph(Edge[] edges) {
+    Graph(Edge[] edges) {
         graph = new HashMap<>(edges.length);
 
         // one pass to find all vertices
@@ -193,7 +199,8 @@ class Graph {
      * Implementation of dijkstra's algorithm using a binary heap.
      */
     private void dijkstra(final NavigableSet<Vertex> q) {
-        Vertex u, v;
+        Vertex u;
+        Vertex v;
         while (!q.isEmpty()) {
             // vertex with shortest distance (first iteration will return source)
             u = q.pollFirst();

@@ -12,7 +12,9 @@ import java.util.Queue;
  *
  * @author Unknown
  */
-public class MatrixGraphs {
+public final class MatrixGraphs {
+    private MatrixGraphs() {
+    }
 
     public static void main(String[] args) {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(10);
@@ -46,17 +48,17 @@ class AdjacencyMatrixGraph {
     /**
      * The number of vertices in the graph
      */
-    private int _numberOfVertices;
+    private int vertexCount;
 
     /**
      * The number of edges in the graph
      */
-    private int _numberOfEdges;
+    private int edgeCount;
 
     /**
      * The adjacency matrix for the graph
      */
-    private int[][] _adjacency;
+    private int[][] adjMatrix;
 
     /**
      * Static variables to define whether or not an edge exists in the adjacency
@@ -68,7 +70,7 @@ class AdjacencyMatrixGraph {
     /**
      * Constructor
      */
-    public AdjacencyMatrixGraph(int givenNumberOfVertices) {
+    AdjacencyMatrixGraph(int givenNumberOfVertices) {
         this.setNumberOfVertices(givenNumberOfVertices);
         this.setNumberOfEdges(0);
         this.setAdjacency(new int[givenNumberOfVertices][givenNumberOfVertices]);
@@ -85,16 +87,16 @@ class AdjacencyMatrixGraph {
      * @param newNumberOfVertices the new number of vertices
      */
     private void setNumberOfVertices(int newNumberOfVertices) {
-        this._numberOfVertices = newNumberOfVertices;
+        this.vertexCount = newNumberOfVertices;
     }
 
     /**
-     * Getter for `this._numberOfVertices`
+     * Getter for `this.vertexCount`
      *
      * @return the number of vertices in the graph
      */
     public int numberOfVertices() {
-        return this._numberOfVertices;
+        return this.vertexCount;
     }
 
     /**
@@ -104,16 +106,16 @@ class AdjacencyMatrixGraph {
      *
      */
     private void setNumberOfEdges(int newNumberOfEdges) {
-        this._numberOfEdges = newNumberOfEdges;
+        this.edgeCount = newNumberOfEdges;
     }
 
     /**
-     * Getter for `this._numberOfEdges`
+     * Getter for `this.edgeCount`
      *
      * @return the number of edges
      */
     public int numberOfEdges() {
-        return this._numberOfEdges;
+        return this.edgeCount;
     }
 
     /**
@@ -122,7 +124,7 @@ class AdjacencyMatrixGraph {
      * @param newAdjacency the new adjaceny matrix
      */
     private void setAdjacency(int[][] newAdjacency) {
-        this._adjacency = newAdjacency;
+        this.adjMatrix = newAdjacency;
     }
 
     /**
@@ -131,7 +133,7 @@ class AdjacencyMatrixGraph {
      * @return the adjacency matrix
      */
     private int[][] adjacency() {
-        return this._adjacency;
+        return this.adjMatrix;
     }
 
     /**
@@ -220,12 +222,12 @@ class AdjacencyMatrixGraph {
      */
     public List<Integer> depthFirstOrder(int startVertex) {
         // If the startVertex is invalid, return an empty list
-        if (startVertex >= _numberOfVertices || startVertex < 0) {
+        if (startVertex >= vertexCount || startVertex < 0) {
             return new ArrayList<Integer>();
         }
 
         // Create an array to track the visited vertices
-        boolean[] visited = new boolean[_numberOfVertices];
+        boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the order of our traversal
         ArrayList<Integer> orderList = new ArrayList<Integer>();
@@ -257,7 +259,7 @@ class AdjacencyMatrixGraph {
         orderList.add(currentVertex);
 
         // Get the adjacency array for this vertex
-        int[] adjacent = _adjacency[currentVertex];
+        int[] adjacent = adjMatrix[currentVertex];
         for (int i = 0; i < adjacent.length; i++) { // we are considering exploring, recurse on it // If an edge exists between the
                                                     // currentVertex and the vertex
             if (adjacent[i] == AdjacencyMatrixGraph.EDGE_EXIST) {
@@ -275,12 +277,12 @@ class AdjacencyMatrixGraph {
      */
     public List<Integer> breadthFirstOrder(int startVertex) {
         // If the specified startVertex is invalid, return an empty list
-        if (startVertex >= _numberOfVertices || startVertex < 0) {
+        if (startVertex >= vertexCount || startVertex < 0) {
             return new ArrayList<Integer>();
         }
 
         // Create an array to keep track of the visited vertices
-        boolean[] visited = new boolean[_numberOfVertices];
+        boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the ordered vertices
         ArrayList<Integer> orderList = new ArrayList<Integer>();
@@ -307,7 +309,7 @@ class AdjacencyMatrixGraph {
 
             // Get the adjacency array for the currentVertex and
             // check each node
-            int[] adjacent = _adjacency[currentVertex];
+            int[] adjacent = adjMatrix[currentVertex];
             for (int vertex = 0; vertex < adjacent.length; vertex++) { // vertex we are considering exploring, we add it to the queue // If an
                                                                        // edge exists between the current vertex and the
                 if (adjacent[vertex] == AdjacencyMatrixGraph.EDGE_EXIST) {
@@ -334,7 +336,7 @@ class AdjacencyMatrixGraph {
         for (int i = 0; i < this.numberOfVertices(); i++) {
             s = s + i + " : ";
             for (int j = 0; j < this.numberOfVertices(); j++) {
-                s = s + this._adjacency[i][j] + " ";
+                s = s + this.adjMatrix[i][j] + " ";
             }
             s = s + "\n";
         }

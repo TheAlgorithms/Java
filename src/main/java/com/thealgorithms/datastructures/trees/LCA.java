@@ -3,26 +3,30 @@ package com.thealgorithms.datastructures.trees;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class LCA {
+public final class LCA {
+    private LCA() {
+    }
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void main(String[] args) {
         // The adjacency list representation of a tree:
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
         // v is the number of vertices and e is the number of edges
-        int v = scanner.nextInt(), e = v - 1;
+        int v = SCANNER.nextInt();
+        int e = v - 1;
 
         for (int i = 0; i < v; i++) {
             adj.add(new ArrayList<Integer>());
         }
 
         // Storing the given tree as an adjacency list
-        int to, from;
+        int to;
+        int from;
         for (int i = 0; i < e; i++) {
-            to = scanner.nextInt();
-            from = scanner.nextInt();
+            to = SCANNER.nextInt();
+            from = SCANNER.nextInt();
 
             adj.get(to).add(from);
             adj.get(from).add(to);
@@ -38,7 +42,8 @@ public class LCA {
         dfs(adj, 0, -1, parent, depth);
 
         // Inputting the two vertices whose LCA is to be calculated
-        int v1 = scanner.nextInt(), v2 = scanner.nextInt();
+        int v1 = SCANNER.nextInt();
+        int v2 = SCANNER.nextInt();
 
         // Outputting the LCA
         System.out.println(getLCA(v1, v2, depth, parent));

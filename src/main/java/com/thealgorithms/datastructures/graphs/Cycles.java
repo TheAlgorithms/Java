@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 class Cycle {
 
-    private int nodes, edges;
+    private final int nodes;
+    private final int edges;
     private int[][] adjacencyMatrix;
     private boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
 
-    public Cycle() {
+    Cycle() {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the no. of nodes: ");
         nodes = in.nextInt();
@@ -27,7 +28,8 @@ class Cycle {
         System.out.println("Enter the details of each edges <Start Node> <End Node>");
 
         for (int i = 0; i < edges; i++) {
-            int start, end;
+            int start;
+            int end;
             start = in.nextInt();
             end = in.nextInt();
             adjacencyMatrix[start][end] = 1;
@@ -78,7 +80,9 @@ class Cycle {
     }
 }
 
-public class Cycles {
+public final class Cycles {
+    private Cycles() {
+    }
 
     public static void main(String[] args) {
         Cycle c = new Cycle();

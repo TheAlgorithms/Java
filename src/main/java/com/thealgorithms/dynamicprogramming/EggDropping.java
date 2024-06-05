@@ -3,12 +3,15 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * DynamicProgramming solution for the Egg Dropping Puzzle
  */
-public class EggDropping {
+public final class EggDropping {
+    private EggDropping() {
+    }
 
     // min trials with n eggs and m floors
     public static int minTrials(int n, int m) {
         int[][] eggFloor = new int[n + 1][m + 1];
-        int result, x;
+        int result;
+        int x;
 
         for (int i = 1; i <= n; i++) {
             eggFloor[i][0] = 0; // Zero trial for zero floor.
@@ -39,7 +42,8 @@ public class EggDropping {
     }
 
     public static void main(String[] args) {
-        int n = 2, m = 4;
+        int n = 2;
+        int m = 4;
         // result outputs min no. of trials in worst case for n eggs and m floors
         int result = minTrials(n, m);
         System.out.println(result);

@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class PiNilakantha {
+public final class PiNilakantha {
+    private PiNilakantha() {
+    }
 
     // Calculates Pi using Nilakantha's infinite series
     // Method 2 in the following link explains the algorithm

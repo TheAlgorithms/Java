@@ -6,7 +6,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
 
     ArrayList<Vertex> vertices;
 
-    public AdjacencyListGraph() {
+    AdjacencyListGraph() {
         vertices = new ArrayList<>();
     }
 
@@ -15,7 +15,7 @@ class AdjacencyListGraph<E extends Comparable<E>> {
         E data;
         ArrayList<Vertex> adjacentVertices;
 
-        public Vertex(E data) {
+        Vertex(E data) {
             adjacentVertices = new ArrayList<>();
             this.data = data;
         }
@@ -75,7 +75,8 @@ class AdjacencyListGraph<E extends Comparable<E>> {
      * already did
      */
     public boolean addEdge(E from, E to) {
-        Vertex fromV = null, toV = null;
+        Vertex fromV = null;
+        Vertex toV = null;
         for (Vertex v : vertices) {
             if (from.compareTo(v.data) == 0) { // see if from vertex already exists
                 fromV = v;
@@ -120,7 +121,9 @@ class AdjacencyListGraph<E extends Comparable<E>> {
     }
 }
 
-public class Graphs {
+public final class Graphs {
+    private Graphs() {
+    }
 
     public static void main(String[] args) {
         AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();

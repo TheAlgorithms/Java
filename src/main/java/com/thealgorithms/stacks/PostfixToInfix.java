@@ -16,7 +16,9 @@ import java.util.Stack;
  *
  */
 
-public class PostfixToInfix {
+public final class PostfixToInfix {
+    private PostfixToInfix() {
+    }
 
     public static boolean isOperator(char token) {
         switch (token) {
@@ -26,9 +28,9 @@ public class PostfixToInfix {
         case '*':
         case '^':
             return true;
+        default:
+            return false;
         }
-
-        return false;
     }
 
     public static boolean isValidPostfixExpression(String postfix) {
@@ -88,7 +90,8 @@ public class PostfixToInfix {
         Stack<String> stack = new Stack<>();
         StringBuilder valueString = new StringBuilder();
 
-        String operandA, operandB;
+        String operandA;
+        String operandB;
         char operator;
 
         for (int index = 0; index < postfix.length(); index++) {

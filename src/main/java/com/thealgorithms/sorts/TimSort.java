@@ -9,7 +9,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  */
 class TimSort implements SortAlgorithm {
     private static final int SUB_ARRAY_SIZE = 32;
-    @SuppressWarnings("rawtypes") private static Comparable[] aux;
+    private Comparable[] aux;
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] a) {
@@ -30,9 +30,9 @@ class TimSort implements SortAlgorithm {
         return a;
     }
 
-    @SuppressWarnings("unchecked")
-    private static <T extends Comparable<T>> void merge(T[] a, int lo, int mid, int hi) {
-        int i = lo, j = mid + 1;
+    private <T extends Comparable<T>> void merge(T[] a, int lo, int mid, int hi) {
+        int i = lo;
+        int j = mid + 1;
         System.arraycopy(a, lo, aux, lo, hi + 1 - lo);
 
         for (int k = lo; k <= hi; k++) {

@@ -2,7 +2,9 @@ package com.thealgorithms.misc;
 
 import java.util.Scanner;
 
-public class PalindromePrime {
+public final class PalindromePrime {
+    private PalindromePrime() {
+    }
 
     public static void main(String[] args) { // Main funtion
         Scanner in = new Scanner(System.in);

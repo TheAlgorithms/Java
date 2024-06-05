@@ -5,7 +5,9 @@ import java.util.Arrays;
 /**
  * BFPRT algorithm.
  */
-public class BFPRT {
+public final class BFPRT {
+    private BFPRT() {
+    }
 
     public static int[] getMinKNumsByBFPRT(int[] arr, int k) {
         if (k < 1 || k > arr.length) {
@@ -32,9 +34,7 @@ public class BFPRT {
 
     public static int[] copyArray(int[] arr) {
         int[] copyArr = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            copyArr[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, copyArr, 0, arr.length);
         return copyArr;
     }
 

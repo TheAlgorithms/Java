@@ -35,7 +35,9 @@ package com.thealgorithms.maths;
  * Author: Akshay Dubey (https://github.com/itsAkshayDubey)
  *
  * */
-public class PollardRho {
+public final class PollardRho {
+    private PollardRho() {
+    }
 
     /**
      * This method returns a polynomial in x computed modulo n
@@ -57,7 +59,9 @@ public class PollardRho {
      * @throws RuntimeException object if GCD of given number cannot be found
      */
     static int pollardRho(int number) {
-        int x = 2, y = 2, d = 1;
+        int x = 2;
+        int y = 2;
+        int d = 1;
         while (d == 1) {
             // tortoise move
             x = g(x, number);

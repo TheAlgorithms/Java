@@ -1,6 +1,14 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
 
 public class ThreeSumProblem {
 
@@ -16,13 +24,13 @@ public class ThreeSumProblem {
             arr[i] = scan.nextInt();
         }
         ThreeSumProblem th = new ThreeSumProblem();
-        System.out.println("Brute Force Approach\n" + (th.BruteForce(arr, ts)) + "\n");
-        System.out.println("Two Pointer Approach\n" + (th.TwoPointer(arr, ts)) + "\n");
-        System.out.println("Hashmap Approach\n" + (th.Hashmap(arr, ts)));
+        System.out.println("Brute Force Approach\n" + (th.bruteForce(arr, ts)) + "\n");
+        System.out.println("Two Pointer Approach\n" + (th.twoPointer(arr, ts)) + "\n");
+        System.out.println("Hashmap Approach\n" + (th.hashMap(arr, ts)));
         scan.close();
     }
 
-    public List<List<Integer>> BruteForce(int[] nums, int target) {
+    public List<List<Integer>> bruteForce(int[] nums, int target) {
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
 
         for (int i = 0; i < nums.length; i++) {
@@ -43,7 +51,7 @@ public class ThreeSumProblem {
         return arr;
     }
 
-    public List<List<Integer>> TwoPointer(int[] nums, int target) {
+    public List<List<Integer>> twoPointer(int[] nums, int target) {
         Arrays.sort(nums);
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
         int start = 0;
@@ -73,7 +81,7 @@ public class ThreeSumProblem {
         return new ArrayList<List<Integer>>(set);
     }
 
-    public List<List<Integer>> Hashmap(int[] nums, int target) {
+    public List<List<Integer>> hashMap(int[] nums, int target) {
         Arrays.sort(nums);
         Set<List<Integer>> ts = new HashSet<>();
         HashMap<Integer, Integer> hm = new HashMap<>();

@@ -3,6 +3,8 @@ package com.thealgorithms.maths;
 import java.util.Objects;
 
 public final class LinearDiophantineEquationsSolver {
+    private LinearDiophantineEquationsSolver() {
+    }
 
     public static void main(String[] args) {
         // 3x + 4y = 7

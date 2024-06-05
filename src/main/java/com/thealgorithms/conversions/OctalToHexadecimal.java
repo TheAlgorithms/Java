@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Tanmay Joshi
  */
-public class OctalToHexadecimal {
+public final class OctalToHexadecimal {
+    private OctalToHexadecimal() {
+    }
 
     /**
      * This method converts a Octal number to a decimal number

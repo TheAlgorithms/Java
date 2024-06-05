@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.Scanner;
 
-public class PrimeCheck {
+public final class PrimeCheck {
+    private PrimeCheck() {
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +56,8 @@ public class PrimeCheck {
      */
     public static boolean fermatPrimeChecking(int n, int iteration) {
         long a;
-        int up = n - 2, down = 2;
+        int up = n - 2;
+        int down = 2;
         for (int i = 0; i < iteration; i++) {
             a = (long) Math.floor(Math.random() * (up - down + 1) + down);
             if (modPow(a, n - 1, n) != 1) {

@@ -1,12 +1,17 @@
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * An implementation of the Quickselect algorithm as described
  * <a href="https://en.wikipedia.org/wiki/Median_of_medians">here</a>.
  */
 public final class QuickSelect {
+    private QuickSelect() {
+    }
 
     /**
      * Selects the {@code n}-th largest element of {@code list}, i.e. the element that would

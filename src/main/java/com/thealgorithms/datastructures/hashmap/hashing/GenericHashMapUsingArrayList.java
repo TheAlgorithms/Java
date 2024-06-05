@@ -105,7 +105,7 @@ public class GenericHashMapUsingArrayList<K, V> {
         K key;
         V val;
 
-        public Node(K key, V val) {
+        Node(K key, V val) {
             this.key = key;
             this.val = val;
         }

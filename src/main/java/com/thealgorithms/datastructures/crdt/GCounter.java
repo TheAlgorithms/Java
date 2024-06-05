@@ -17,7 +17,7 @@ import java.util.Map;
  */
 
 class GCounter {
-    private final Map<Integer, Integer> P;
+    private final Map<Integer, Integer> counterMap;
     private final int myId;
     private final int n;
 
@@ -26,13 +26,13 @@ class GCounter {
      *
      * @param n The number of nodes in the cluster.
      */
-    public GCounter(int myId, int n) {
+    GCounter(int myId, int n) {
         this.myId = myId;
         this.n = n;
-        this.P = new HashMap<>();
+        this.counterMap = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
-            P.put(i, 0);
+            counterMap.put(i, 0);
         }
     }
 
@@ -40,7 +40,7 @@ class GCounter {
      * Increments the counter for the current node.
      */
     public void increment() {
-        P.put(myId, P.get(myId) + 1);
+        counterMap.put(myId, counterMap.get(myId) + 1);
     }
 
     /**
@@ -50,7 +50,7 @@ class GCounter {
      */
     public int value() {
         int sum = 0;
-        for (int v : P.values()) {
+        for (int v : counterMap.values()) {
             sum += v;
         }
         return sum;
@@ -64,7 +64,7 @@ class GCounter {
      */
     public boolean compare(GCounter other) {
         for (int i = 0; i < n; i++) {
-            if (this.P.get(i) > other.P.get(i)) {
+            if (this.counterMap.get(i) > other.counterMap.get(i)) {
                 return false;
             }
         }
@@ -78,7 +78,7 @@ class GCounter {
      */
     public void merge(GCounter other) {
         for (int i = 0; i < n; i++) {
-            this.P.put(i, Math.max(this.P.get(i), other.P.get(i)));
+            this.counterMap.put(i, Math.max(this.counterMap.get(i), other.counterMap.get(i)));
         }
     }
 }

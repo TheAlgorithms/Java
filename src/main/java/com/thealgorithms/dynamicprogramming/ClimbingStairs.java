@@ -5,7 +5,9 @@ package com.thealgorithms.dynamicprogramming;
 
     Link : https://medium.com/analytics-vidhya/leetcode-q70-climbing-stairs-easy-444a4aae54e8
 */
-public class ClimbingStairs {
+public final class ClimbingStairs {
+    private ClimbingStairs() {
+    }
 
     public static int numberOfWays(int n) {
 

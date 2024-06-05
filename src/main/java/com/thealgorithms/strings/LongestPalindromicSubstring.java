@@ -3,7 +3,9 @@ package com.thealgorithms.strings;
 // Longest Palindromic Substring
 import java.util.Scanner;
 
-class LongestPalindromicSubstring {
+final class LongestPalindromicSubstring {
+    private LongestPalindromicSubstring() {
+    }
 
     public static void main(String[] args) {
         Solution s = new Solution();

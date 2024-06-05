@@ -1,6 +1,8 @@
 package com.thealgorithms.strings;
 
-public class CharactersSame {
+public final class CharactersSame {
+    private CharactersSame() {
+    }
 
     /**
      * Driver Code

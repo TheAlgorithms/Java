@@ -8,7 +8,9 @@ import java.util.Random;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Bucket_sort
  */
-public class BucketSort {
+public final class BucketSort {
+    private BucketSort() {
+    }
 
     public static void main(String[] args) {
         int[] arr = new int[10];

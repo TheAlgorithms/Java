@@ -68,17 +68,21 @@ public class KDTree {
             return coordinates.length;
         }
 
-        public Point(int[] coordinates) {
+        Point(int[] coordinates) {
             this.coordinates = coordinates;
         }
 
         @Override
         public boolean equals(Object obj) {
             if (obj instanceof Point other) {
-                if (other.getDimension() != this.getDimension()) return false;
                 return Arrays.equals(other.coordinates, this.coordinates);
             }
             return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return Arrays.hashCode(coordinates);
         }
 
         @Override

@@ -14,7 +14,9 @@ import java.util.Stack;
  *
  * @author [Ian Cowan](<a href="https://github.com/iccowan">Git-Ian Cowan</a>)
  */
-public class CheckIfBinaryTreeBalanced {
+public final class CheckIfBinaryTreeBalanced {
+    private CheckIfBinaryTreeBalanced() {
+    }
     /**
      * Recursive is BT balanced implementation
      *

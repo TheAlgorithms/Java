@@ -1,6 +1,6 @@
 package com.thealgorithms.others.cn;
 
-final public class HammingDistance {
+public final class HammingDistance {
     private HammingDistance() {
     }
 

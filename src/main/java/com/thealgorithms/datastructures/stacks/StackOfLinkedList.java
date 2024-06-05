@@ -6,7 +6,9 @@ import java.util.NoSuchElementException;
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
 // An implementation of a Stack using a Linked List
-class StackOfLinkedList {
+final class StackOfLinkedList {
+    private StackOfLinkedList() {
+    }
 
     public static void main(String[] args) {
         LinkedListStack stack = new LinkedListStack();
@@ -33,7 +35,7 @@ class Node {
     public int data;
     public Node next;
 
-    public Node(int data) {
+    Node(int data) {
         this.data = data;
         this.next = null;
     }
@@ -60,7 +62,7 @@ class LinkedListStack {
     /**
      * Init properties
      */
-    public LinkedListStack() {
+    LinkedListStack() {
         head = null;
         size = 0;
     }

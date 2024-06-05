@@ -1,6 +1,6 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +45,6 @@ public class DESTest {
             + "001101001101001001101011001000011100000011001000011011001110101010010111101111000111"
             + "101010011010110000100100110011000001010001010110010011011010001010011111000001110011001010011";
         String expectedOutput = "Your lips are smoother than vaseline\r\n";
-        ;
 
         // when
         String plainText = des.decrypt(cipherText);

@@ -1,6 +1,9 @@
 package com.thealgorithms.scheduling;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Preemptive Priority Scheduling Algorithm
@@ -13,7 +16,7 @@ class Process {
     int burstTime;
     int priority;
 
-    public Process(String name, int arrivalTime, int burstTime, int priority) {
+    Process(String name, int arrivalTime, int burstTime, int priority) {
         this.name = name;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
@@ -21,7 +24,9 @@ class Process {
     }
 }
 
-public class PreemptivePriorityScheduling {
+public final class PreemptivePriorityScheduling {
+    private PreemptivePriorityScheduling() {
+    }
     public static List<String> preemptivePriorityScheduling(List<Process> processes) {
         List<String> ganttChart = new ArrayList<>();
         PriorityQueue<Process> readyQueue = new PriorityQueue<>(Comparator.comparingInt(p -> - p.priority));

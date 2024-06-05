@@ -2,7 +2,9 @@ package com.thealgorithms.searches;
 
 import java.util.Scanner;
 
-public class LinearSearchThread {
+public final class LinearSearchThread {
+    private LinearSearchThread() {
+    }
 
     public static void main(String[] args) {
         int[] list = new int[200];
@@ -40,7 +42,8 @@ public class LinearSearchThread {
 class Searcher extends Thread {
 
     private final int[] arr;
-    private final int left, right;
+    private final int left;
+    private final int right;
     private final int x;
     private boolean found;
 

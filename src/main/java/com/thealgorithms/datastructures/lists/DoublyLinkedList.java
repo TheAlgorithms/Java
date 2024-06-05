@@ -13,7 +13,7 @@ package com.thealgorithms.datastructures.lists;
  *
  * @author Unknown
  */
-public class DoublyLinkedList {
+public final class DoublyLinkedList {
 
     /**
      * Head refers to the front of the list
@@ -110,7 +110,7 @@ class Link {
      *
      * @param value Value of node
      */
-    public Link(int value) {
+    Link(int value) {
         this.value = value;
     }
 

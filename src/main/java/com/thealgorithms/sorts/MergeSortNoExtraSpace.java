@@ -1,28 +1,30 @@
 package com.thealgorithms.sorts;
 
-import java.util.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*This code implements the mergeSort algorithm without extra space
 For understanding about mergesort visit :https://www.geeksforgeeks.org/merge-sort/
  */
-public class MergeSortNoExtraSpace {
-
-    public static void call_merge_sort(int[] a, int n) {
-        int maxele = Arrays.stream(a).max().getAsInt() + 1;
-        merge_sort(a, 0, n - 1, maxele);
+public final class MergeSortNoExtraSpace {
+    private MergeSortNoExtraSpace() {
     }
 
-    public static void merge_sort(int[] a, int start, int end, int maxele) { // this function divides the array into 2 halves
+    public static void callMergeSort(int[] a, int n) {
+        int maxele = Arrays.stream(a).max().getAsInt() + 1;
+        mergeSort(a, 0, n - 1, maxele);
+    }
+
+    public static void mergeSort(int[] a, int start, int end, int maxele) { // this function divides the array into 2 halves
         if (start < end) {
             int mid = (start + end) / 2;
-            merge_sort(a, start, mid, maxele);
-            merge_sort(a, mid + 1, end, maxele);
-            implement_merge_sort(a, start, mid, end, maxele);
+            mergeSort(a, start, mid, maxele);
+            mergeSort(a, mid + 1, end, maxele);
+            implementMergeSort(a, start, mid, end, maxele);
         }
     }
 
-    public static void implement_merge_sort(int[] a, int start, int mid, int end,
+    public static void implementMergeSort(int[] a, int start, int mid, int end,
         int maxele) { // implementation of mergesort
         int i = start;
         int j = mid + 1;
@@ -62,7 +64,7 @@ public class MergeSortNoExtraSpace {
         for (int i = 0; i < n; i++) {
             a[i] = inp.nextInt();
         }
-        call_merge_sort(a, n);
+        callMergeSort(a, n);
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
         }

@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * @see <a href="https://en.wikipedia.org/wiki/Combination">Combination</a>
  */
-public class Combinations {
+public final class Combinations {
+    private Combinations() {
+    }
 
     /**
      * Calculate of factorial
