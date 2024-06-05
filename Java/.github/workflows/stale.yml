@@ -1,0 +1,18 @@
+name: 'Close stale issues and PRs'
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          stale-issue-message: 'This issue has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contribution!'
+          close-issue-message: 'Please reopen this issue once you have made the required changes. If you need help, feel free to ask in our [Discord](https://the-algorithms.com/discord) server or ping one of the maintainers here. Thank you for your contribution!'
+          stale-pr-message: 'This pull request has been automatically marked as stale because it has not had recent activity. It will be closed if no further activity occurs. Thank you for your contribution!'
+          close-pr-message: 'Please reopen this pull request once you have made the required changes. If you need help, feel free to ask in our [Discord](https://the-algorithms.com/discord) server or ping one of the maintainers here. Thank you for your contribution!'
+          exempt-issue-labels: 'dont-close'
+          exempt-pr-labels: 'dont-close'
+          days-before-stale: 30
+          days-before-close: 7

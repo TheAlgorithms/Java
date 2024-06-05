@@ -1,0 +1,44 @@
+/gradle/wrapper/gradle-wrapper.properties
+
+##----------Android----------
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+build/
+out/
+
+# Ignoring Gradle build artifacts and project files
+##----------Gradle----------
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+build/
+
+# Ignoring Maven build artifacts and project files
+##----------Maven----------
+*.classpath
+*.project
+*.settings
+/target/
+local.properties
+
+# Ignoring IntelliJ IDEA project files and configurations
+##----------IDEA----------
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Ignoring Android Studio Navigation editor temporary files
+.navigation/
+
+# Ignoring common system and editor-generated files
+##----------Other----------
+*~
+.DS_Store
+gradle.properties
+.vscode
+*.log

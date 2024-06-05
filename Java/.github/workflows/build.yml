@@ -1,0 +1,37 @@
+name: Build
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
+      - name: Upload coverage to codecov (tokenless)
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name != github.repository
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+      - name: Upload coverage to codecov (with token)
+        if: >
+          github.repository == 'TheAlgorithms/Java' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name == github.repository)
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+      - name: Checkstyle
+        run: mvn checkstyle:check
+      - name: SpotBugs
+        run: mvn spotbugs:check
+      - name: PMD
+        run: mvn pmd:check
