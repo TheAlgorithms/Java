@@ -199,9 +199,6 @@
         <Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
     </Match>
     <Match>
-        <Bug pattern="DMC_DUBIOUS_MAP_COLLECTION" />
-    </Match>
-    <Match>
         <Bug pattern="SPP_PASSING_THIS_AS_PARM" />
     </Match>
     <Match>

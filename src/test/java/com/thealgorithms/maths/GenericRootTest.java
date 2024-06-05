@@ -1,24 +1,26 @@
 package com.thealgorithms.maths;
 
-import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Map;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class GenericRootTest {
-    private final Map<Integer, Integer> testCases = Map.ofEntries(entry(0, 0), entry(1, 1), entry(12345, 6), entry(123, 6), entry(15937, 7), entry(222222, 3), entry(99999, 9));
-    @Test
-    public void testGenericRoot() {
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(tc.getValue(), GenericRoot.genericRoot(tc.getKey()));
-        }
+    @ParameterizedTest
+    @MethodSource("tcStream")
+    public void testGenericRoot(final int input, final int expected) {
+        assertEquals(expected, GenericRoot.genericRoot(input));
     }
 
-    @Test
-    public void testGenericRootWithNegativeInputs() {
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(tc.getValue(), GenericRoot.genericRoot(-tc.getKey()));
-        }
+    @ParameterizedTest
+    @MethodSource("tcStream")
+    public void testGenericRootWithNegativeInputs(final int input, final int expected) {
+        assertEquals(expected, GenericRoot.genericRoot(-input));
+    }
+
+    private static Stream<Arguments> tcStream() {
+        return Stream.of(Arguments.of(0, 0), Arguments.of(1, 1), Arguments.of(12345, 6), Arguments.of(123, 6), Arguments.of(15937, 7), Arguments.of(222222, 3), Arguments.of(99999, 9));
     }
 }
