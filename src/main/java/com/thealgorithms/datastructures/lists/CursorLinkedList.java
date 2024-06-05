@@ -108,25 +108,25 @@ public class CursorLinkedList<T> {
         Objects.requireNonNull(element);
 
         // case element is in the head
-        T temp_element = cursorSpace[head].element;
-        int temp_next = cursorSpace[head].next;
-        if (temp_element.equals(element)) {
+        T tempElement = cursorSpace[head].element;
+        int tempNext = cursorSpace[head].next;
+        if (tempElement.equals(element)) {
             free(head);
-            head = temp_next;
+            head = tempNext;
         } else { // otherwise cases
-            int prev_index = head;
-            int current_index = cursorSpace[prev_index].next;
+            int prevIndex = head;
+            int currentIndex = cursorSpace[prevIndex].next;
 
-            while (current_index != -1) {
-                T current_element = cursorSpace[current_index].element;
-                if (current_element.equals(element)) {
-                    cursorSpace[prev_index].next = cursorSpace[current_index].next;
-                    free(current_index);
+            while (currentIndex != -1) {
+                T currentElement = cursorSpace[currentIndex].element;
+                if (currentElement.equals(element)) {
+                    cursorSpace[prevIndex].next = cursorSpace[currentIndex].next;
+                    free(currentIndex);
                     break;
                 }
 
-                prev_index = current_index;
-                current_index = cursorSpace[prev_index].next;
+                prevIndex = currentIndex;
+                currentIndex = cursorSpace[prevIndex].next;
             }
         }
 
@@ -134,11 +134,11 @@ public class CursorLinkedList<T> {
     }
 
     private void free(int index) {
-        Node<T> os_node = cursorSpace[os];
-        int os_next = os_node.next;
+        Node<T> osNode = cursorSpace[os];
+        int osNext = osNode.next;
         cursorSpace[os].next = index;
         cursorSpace[index].element = null;
-        cursorSpace[index].next = os_next;
+        cursorSpace[index].next = osNext;
     }
 
     public void append(T element) {

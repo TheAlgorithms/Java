@@ -5,7 +5,9 @@ import java.util.Scanner;
 /**
  * This class converts a Decimal number to a Binary number
  */
-class DecimalToBinary {
+final class DecimalToBinary {
+    private DecimalToBinary() {
+    }
 
     /**
      * Main Method
@@ -22,7 +24,10 @@ class DecimalToBinary {
      * conventional algorithm.
      */
     public static void conventionalConversion() {
-        int n, b = 0, c = 0, d;
+        int n;
+        int b = 0;
+        int c = 0;
+        int d;
         Scanner input = new Scanner(System.in);
         System.out.printf("Conventional conversion.%n Enter the decimal number: ");
         n = input.nextInt();
@@ -40,7 +45,10 @@ class DecimalToBinary {
      * algorithm
      */
     public static void bitwiseConversion() {
-        int n, b = 0, c = 0, d;
+        int n;
+        int b = 0;
+        int c = 0;
+        int d;
         Scanner input = new Scanner(System.in);
         System.out.printf("Bitwise conversion.%n Enter the decimal number: ");
         n = input.nextInt();

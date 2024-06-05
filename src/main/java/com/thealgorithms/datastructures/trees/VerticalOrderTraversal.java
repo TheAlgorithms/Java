@@ -20,7 +20,9 @@ in a tree from top to bottom and left to right, so for a tree :
  the sequence will be :
  4 2 7 1 5 9 3 8 6 10
  */
-public class VerticalOrderTraversal {
+public final class VerticalOrderTraversal {
+    private VerticalOrderTraversal() {
+    }
 
     /*Function that receives a root Node and prints the tree
         in Vertical Order.*/
@@ -45,7 +47,8 @@ public class VerticalOrderTraversal {
 
         /* min and max stores leftmost and right most index to
                  later print the tree in vertical fashion.*/
-        int max = 0, min = 0;
+        int max = 0;
+        int min = 0;
         queue.offer(root);
         index.offer(0);
 

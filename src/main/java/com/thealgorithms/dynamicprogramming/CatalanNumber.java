@@ -10,7 +10,9 @@ package com.thealgorithms.dynamicprogramming;
  */
 import java.util.Scanner;
 
-public class CatalanNumber {
+public final class CatalanNumber {
+    private CatalanNumber() {
+    }
 
     /**
      * This method finds the nth Catalan number

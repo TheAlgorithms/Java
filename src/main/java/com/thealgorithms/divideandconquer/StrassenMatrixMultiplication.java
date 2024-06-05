@@ -18,124 +18,124 @@ package com.thealgorithms.divideandconquer;
 public class StrassenMatrixMultiplication {
 
     // Function to multiply matrices
-    public int[][] multiply(int[][] A, int[][] B) {
-        int n = A.length;
+    public int[][] multiply(int[][] a, int[][] b) {
+        int n = a.length;
 
-        int[][] R = new int[n][n];
+        int[][] mat = new int[n][n];
 
         if (n == 1) {
-            R[0][0] = A[0][0] * B[0][0];
+            mat[0][0] = a[0][0] * b[0][0];
         } else {
             // Dividing Matrix into parts
             // by storing sub-parts to variables
-            int[][] A11 = new int[n / 2][n / 2];
-            int[][] A12 = new int[n / 2][n / 2];
-            int[][] A21 = new int[n / 2][n / 2];
-            int[][] A22 = new int[n / 2][n / 2];
-            int[][] B11 = new int[n / 2][n / 2];
-            int[][] B12 = new int[n / 2][n / 2];
-            int[][] B21 = new int[n / 2][n / 2];
-            int[][] B22 = new int[n / 2][n / 2];
+            int[][] a11 = new int[n / 2][n / 2];
+            int[][] a12 = new int[n / 2][n / 2];
+            int[][] a21 = new int[n / 2][n / 2];
+            int[][] a22 = new int[n / 2][n / 2];
+            int[][] b11 = new int[n / 2][n / 2];
+            int[][] b12 = new int[n / 2][n / 2];
+            int[][] b21 = new int[n / 2][n / 2];
+            int[][] b22 = new int[n / 2][n / 2];
 
             // Dividing matrix A into 4 parts
-            split(A, A11, 0, 0);
-            split(A, A12, 0, n / 2);
-            split(A, A21, n / 2, 0);
-            split(A, A22, n / 2, n / 2);
+            split(a, a11, 0, 0);
+            split(a, a12, 0, n / 2);
+            split(a, a21, n / 2, 0);
+            split(a, a22, n / 2, n / 2);
 
             // Dividing matrix B into 4 parts
-            split(B, B11, 0, 0);
-            split(B, B12, 0, n / 2);
-            split(B, B21, n / 2, 0);
-            split(B, B22, n / 2, n / 2);
+            split(b, b11, 0, 0);
+            split(b, b12, 0, n / 2);
+            split(b, b21, n / 2, 0);
+            split(b, b22, n / 2, n / 2);
 
             // Using Formulas as described in algorithm
-            // M1:=(A1+A3)×(B1+B2)
-            int[][] M1 = multiply(add(A11, A22), add(B11, B22));
+            // m1:=(A1+A3)×(B1+B2)
+            int[][] m1 = multiply(add(a11, a22), add(b11, b22));
 
-            // M2:=(A2+A4)×(B3+B4)
-            int[][] M2 = multiply(add(A21, A22), B11);
+            // m2:=(A2+A4)×(B3+B4)
+            int[][] m2 = multiply(add(a21, a22), b11);
 
-            // M3:=(A1−A4)×(B1+A4)
-            int[][] M3 = multiply(A11, sub(B12, B22));
+            // m3:=(A1−A4)×(B1+A4)
+            int[][] m3 = multiply(a11, sub(b12, b22));
 
-            // M4:=A1×(B2−B4)
-            int[][] M4 = multiply(A22, sub(B21, B11));
+            // m4:=A1×(B2−B4)
+            int[][] m4 = multiply(a22, sub(b21, b11));
 
-            // M5:=(A3+A4)×(B1)
-            int[][] M5 = multiply(add(A11, A12), B22);
+            // m5:=(A3+A4)×(B1)
+            int[][] m5 = multiply(add(a11, a12), b22);
 
-            // M6:=(A1+A2)×(B4)
-            int[][] M6 = multiply(sub(A21, A11), add(B11, B12));
+            // m6:=(A1+A2)×(B4)
+            int[][] m6 = multiply(sub(a21, a11), add(b11, b12));
 
-            // M7:=A4×(B3−B1)
-            int[][] M7 = multiply(sub(A12, A22), add(B21, B22));
+            // m7:=A4×(B3−B1)
+            int[][] m7 = multiply(sub(a12, a22), add(b21, b22));
 
-            // P:=M2+M3−M6−M7
-            int[][] C11 = add(sub(add(M1, M4), M5), M7);
+            // P:=m2+m3−m6−m7
+            int[][] c11 = add(sub(add(m1, m4), m5), m7);
 
-            // Q:=M4+M6
-            int[][] C12 = add(M3, M5);
+            // Q:=m4+m6
+            int[][] c12 = add(m3, m5);
 
-            // R:=M5+M7
-            int[][] C21 = add(M2, M4);
+            // mat:=m5+m7
+            int[][] c21 = add(m2, m4);
 
-            // S:=M1−M3−M4−M5
-            int[][] C22 = add(sub(add(M1, M3), M2), M6);
+            // S:=m1−m3−m4−m5
+            int[][] c22 = add(sub(add(m1, m3), m2), m6);
 
-            join(C11, R, 0, 0);
-            join(C12, R, 0, n / 2);
-            join(C21, R, n / 2, 0);
-            join(C22, R, n / 2, n / 2);
+            join(c11, mat, 0, 0);
+            join(c12, mat, 0, n / 2);
+            join(c21, mat, n / 2, 0);
+            join(c22, mat, n / 2, n / 2);
         }
 
-        return R;
+        return mat;
     }
 
     // Function to subtract two matrices
-    public int[][] sub(int[][] A, int[][] B) {
-        int n = A.length;
+    public int[][] sub(int[][] a, int[][] b) {
+        int n = a.length;
 
-        int[][] C = new int[n][n];
+        int[][] c = new int[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                C[i][j] = A[i][j] - B[i][j];
+                c[i][j] = a[i][j] - b[i][j];
             }
         }
 
-        return C;
+        return c;
     }
 
     // Function to add two matrices
-    public int[][] add(int[][] A, int[][] B) {
-        int n = A.length;
+    public int[][] add(int[][] a, int[][] b) {
+        int n = a.length;
 
-        int[][] C = new int[n][n];
+        int[][] c = new int[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                C[i][j] = A[i][j] + B[i][j];
+                c[i][j] = a[i][j] + b[i][j];
             }
         }
 
-        return C;
+        return c;
     }
 
     // Function to split parent matrix into child matrices
-    public void split(int[][] P, int[][] C, int iB, int jB) {
-        for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++) {
-            for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++) {
-                C[i1][j1] = P[i2][j2];
+    public void split(int[][] p, int[][] c, int iB, int jB) {
+        for (int i1 = 0, i2 = iB; i1 < c.length; i1++, i2++) {
+            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) {
+                c[i1][j1] = p[i2][j2];
             }
         }
     }
 
     // Function to join child matrices into (to) parent matrix
-    public void join(int[][] C, int[][] P, int iB, int jB) {
-        for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++) {
-            for (int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++) {
-                P[i2][j2] = C[i1][j1];
+    public void join(int[][] c, int[][] p, int iB, int jB) {
+        for (int i1 = 0, i2 = iB; i1 < c.length; i1++, i2++) {
+            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) {
+                p[i2][j2] = c[i1][j1];
             }
         }
     }

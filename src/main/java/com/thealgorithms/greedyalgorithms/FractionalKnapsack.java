@@ -5,11 +5,13 @@ import java.util.Comparator;
 
 // Problem Link: https://en.wikipedia.org/wiki/Continuous_knapsack_problem
 
-public class FractionalKnapsack {
+public final class FractionalKnapsack {
+    private FractionalKnapsack() {
+    }
     // Function to perform fractional knapsack
-    public static int fractionalKnapsack(int weight[], int value[], int capacity) {
+    public static int fractionalKnapsack(int[] weight, int[] value, int capacity) {
         // Create a 2D array to store item indices and their value-to-weight ratios.
-        double ratio[][] = new double[weight.length][2];
+        double[][] ratio = new double[weight.length][2];
 
         // Populate the ratio array with item indices and their value-to-weight ratios.
         for (int i = 0; i < weight.length; i++) {

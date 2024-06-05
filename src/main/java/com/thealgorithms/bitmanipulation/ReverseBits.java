@@ -5,7 +5,9 @@ package com.thealgorithms.bitmanipulation;
  * @author Bama Charan Chhandogi
  */
 
-public class ReverseBits {
+public final class ReverseBits {
+    private ReverseBits() {
+    }
 
     public static int reverseBits(int n) {
         int result = 0;

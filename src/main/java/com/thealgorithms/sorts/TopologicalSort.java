@@ -1,6 +1,10 @@
 package com.thealgorithms.sorts;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 /**
  * The Topological Sorting algorithm linearly orders a DAG or Directed Acyclic Graph into
@@ -12,7 +16,9 @@ import java.util.*;
  * @author Jonathan Taylor (https://github.com/Jtmonument)
  * Based on Introduction to Algorithms 3rd Edition
  */
-public class TopologicalSort {
+public final class TopologicalSort {
+    private TopologicalSort() {
+    }
 
     /*
      * Enum to represent the colors for the depth first search
@@ -43,7 +49,7 @@ public class TopologicalSort {
          * */
         public final ArrayList<String> next = new ArrayList<>();
 
-        public Vertex(String label) {
+        Vertex(String label) {
             this.label = label;
         }
     }
@@ -64,13 +70,6 @@ public class TopologicalSort {
         public void addEdge(String label, String... next) {
             adj.put(label, new Vertex(label));
             if (!next[0].isEmpty()) Collections.addAll(adj.get(label).next, next);
-        }
-    }
-
-    static class BackEdgeException extends RuntimeException {
-
-        public BackEdgeException(String backEdge) {
-            super("This graph contains a cycle. No linear ordering is possible. " + backEdge);
         }
     }
 
@@ -125,7 +124,7 @@ public class TopologicalSort {
                  *
                  * In many cases, we will not know u.f, but v.color denotes the type of edge
                  * */
-                throw new BackEdgeException("Back edge: " + u.label + " -> " + label);
+                throw new RuntimeException("This graph contains a cycle. No linear ordering is possible. Back edge: " + u.label + " -> " + label);
             }
         });
         u.color = Color.BLACK;

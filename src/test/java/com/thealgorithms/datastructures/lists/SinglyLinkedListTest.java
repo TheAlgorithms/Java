@@ -1,6 +1,9 @@
 package com.thealgorithms.datastructures.lists;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -163,7 +166,7 @@ public class SinglyLinkedListTest {
     }
     // This is Recursive Reverse List Test
     // Test to check whether the method reverseListRec() works fine
-    void RecursiveReverseList() {
+    void recursiveReverseList() {
         // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5
         SinglyLinkedList list = createSampleList(5);
 
@@ -179,7 +182,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    void RecursiveReverseListNullPointer() {
+    void recursiveReverseListNullPointer() {
         // Create an empty linked list
         SinglyLinkedList list = new SinglyLinkedList();
         Node first = list.getHead();
@@ -192,7 +195,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    void RecursiveReverseListTest() {
+    void recursiveReverseListTest() {
         // Create a linked list with values from 1 to 20
         SinglyLinkedList list = createSampleList(20);
 

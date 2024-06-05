@@ -26,7 +26,9 @@ class MyComparator implements Comparator<HuffmanNode> {
     }
 }
 
-public class Huffman {
+public final class Huffman {
+    private Huffman() {
+    }
 
     // recursive function to print the
     // huffman-code through the tree traversal.

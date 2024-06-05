@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 // Wikipedia for Harshad Number : https://en.wikipedia.org/wiki/Harshad_number
 
-public class HarshadNumber {
+public final class HarshadNumber {
+    private HarshadNumber() {
+    }
 
     /**
      * A function to check if a number is Harshad number or not
@@ -32,7 +34,7 @@ public class HarshadNumber {
      *         {@code false}
      */
     public static boolean isHarshad(String s) {
-        long n = Long.valueOf(s);
+        final Long n = Long.valueOf(s);
         if (n <= 0) return false;
 
         int sumOfDigits = 0;

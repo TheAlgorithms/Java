@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Given a binary tree.
@@ -30,7 +34,9 @@ import java.util.*;
  *
  * @author Albina Gimaletdinova on 11/01/2023
  */
-public class ZigzagTraversal {
+public final class ZigzagTraversal {
+    private ZigzagTraversal() {
+    }
     public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {
             return List.of();

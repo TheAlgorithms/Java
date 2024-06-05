@@ -13,7 +13,7 @@ public class Bag<Element> implements Iterable<Element> {
     private Node<Element> firstElement; // first element of the bag
     private int size; // size of bag
 
-    private static class Node<Element> {
+    private static final class Node<Element> {
 
         private Element content;
         private Node<Element> nextElement;
@@ -80,7 +80,7 @@ public class Bag<Element> implements Iterable<Element> {
 
         private Node<Element> currentElement;
 
-        public ListIterator(Node<Element> firstElement) {
+        ListIterator(Node<Element> firstElement) {
             currentElement = firstElement;
         }
 

@@ -11,15 +11,15 @@ public class LinkedQueue<T> implements Iterable<T> {
         T data;
         Node<T> next;
 
-        public Node() {
+        Node() {
             this(null);
         }
 
-        public Node(T data) {
+        Node(T data) {
             this(data, null);
         }
 
-        public Node(T data, Node<T> next) {
+        Node(T data, Node<T> next) {
             this.data = data;
             this.next = next;
         }
@@ -44,7 +44,9 @@ public class LinkedQueue<T> implements Iterable<T> {
      * Init LinkedQueue
      */
     public LinkedQueue() {
-        front = rear = new Node<>();
+
+        front = new Node<>();
+        rear = front;
     }
 
     /**
@@ -146,7 +148,11 @@ public class LinkedQueue<T> implements Iterable<T> {
 
             @Override
             public T next() {
-                return (node = node.next).data;
+                if (hasNext()) {
+                    node = node.next;
+                    return node.data;
+                }
+                throw new NoSuchElementException();
             }
         };
     }

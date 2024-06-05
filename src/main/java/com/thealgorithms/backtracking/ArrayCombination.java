@@ -1,12 +1,15 @@
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Finds all permutations of 1...n of length k
  * @author TheClerici (<a href="https://github.com/TheClerici">git-TheClerici</a>)
  */
-public class ArrayCombination {
+public final class ArrayCombination {
+    private ArrayCombination() {
+    }
     private static int length;
 
     /**

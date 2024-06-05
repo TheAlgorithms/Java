@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Intersection {
+public final class Intersection {
 
     public static List<Integer> intersection(int[] arr1, int[] arr2) {
         if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {

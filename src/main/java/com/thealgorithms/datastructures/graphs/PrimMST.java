@@ -14,16 +14,17 @@ class PrimMST {
     // value, from the set of vertices not yet included in MST
     int minKey(int[] key, Boolean[] mstSet) {
         // Initialize min value
-        int min = Integer.MAX_VALUE, min_index = -1;
+        int min = Integer.MAX_VALUE;
+        int minIndex = -1;
 
         for (int v = 0; v < V; v++) {
             if (!mstSet[v] && key[v] < min) {
                 min = key[v];
-                min_index = v;
+                minIndex = v;
             }
         }
 
-        return min_index;
+        return minIndex;
     }
 
     // A utility function to print the constructed MST stored in
@@ -50,7 +51,7 @@ class PrimMST {
         // Initialize all keys as INFINITE
         for (int i = 0; i < V; i++) {
             key[i] = Integer.MAX_VALUE;
-            mstSet[i] = false;
+            mstSet[i] = Boolean.FALSE;
         }
 
         // Always include first 1st vertex in MST.
@@ -65,7 +66,7 @@ class PrimMST {
             int u = minKey(key, mstSet);
 
             // Add the picked vertex to the MST Set
-            mstSet[u] = true;
+            mstSet[u] = Boolean.TRUE;
 
             // Update key value and parent index of the adjacent
             // vertices of the picked vertex. Consider only those

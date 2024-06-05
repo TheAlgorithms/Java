@@ -6,7 +6,9 @@ import java.util.List;
 /**
  * @author https://github.com/shellhub
  */
-public class MergeSortedArrayList {
+public final class MergeSortedArrayList {
+    private MergeSortedArrayList() {
+    }
 
     public static void main(String[] args) {
         List<Integer> listA = new ArrayList<>();

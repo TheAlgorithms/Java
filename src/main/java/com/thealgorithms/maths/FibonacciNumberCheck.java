@@ -5,7 +5,9 @@ package com.thealgorithms.maths;
  * This code checks Fibonacci Numbers up to 45th number.
  * Other checks fail because of 'long'-type overflow.
  */
-public class FibonacciNumberCheck {
+public final class FibonacciNumberCheck {
+    private FibonacciNumberCheck() {
+    }
     /**
      * Check if a number is perfect square number
      *

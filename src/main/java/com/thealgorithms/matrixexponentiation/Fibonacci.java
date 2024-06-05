@@ -7,13 +7,15 @@ import java.util.Scanner;
  * see https://www.geeksforgeeks.org/matrix-exponentiation/
  *
  */
-public class Fibonacci {
+public final class Fibonacci {
+    private Fibonacci() {
+    }
 
     // Exponentiation matrix for Fibonacci sequence
-    private static final int[][] fibMatrix = {{1, 1}, {1, 0}};
-    private static final int[][] identityMatrix = {{1, 0}, {0, 1}};
+    private static final int[][] FIB_MATRIX = {{1, 1}, {1, 0}};
+    private static final int[][] IDENTITY_MATRIX = {{1, 0}, {0, 1}};
     // First 2 fibonacci numbers
-    private static final int[][] baseFibNumbers = {{1}, {0}};
+    private static final int[][] BASE_FIB_NUMBERS = {{1}, {0}};
 
     /**
      * Performs multiplication of 2 matrices
@@ -53,14 +55,14 @@ public class Fibonacci {
      */
     public static int[][] fib(int n) {
         if (n == 0) {
-            return Fibonacci.identityMatrix;
+            return Fibonacci.IDENTITY_MATRIX;
         } else {
             int[][] cachedResult = fib(n / 2);
             int[][] matrixExpResult = matrixMultiplication(cachedResult, cachedResult);
             if (n % 2 == 0) {
                 return matrixExpResult;
             } else {
-                return matrixMultiplication(Fibonacci.fibMatrix, matrixExpResult);
+                return matrixMultiplication(Fibonacci.FIB_MATRIX, matrixExpResult);
             }
         }
     }
@@ -69,7 +71,7 @@ public class Fibonacci {
         // Returns [0, 1, 1, 2, 3, 5 ..] for n = [0, 1, 2, 3, 4, 5.. ]
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] result = matrixMultiplication(fib(n), baseFibNumbers);
+        int[][] result = matrixMultiplication(fib(n), BASE_FIB_NUMBERS);
         System.out.println("Fib(" + n + ") = " + result[1][0]);
         sc.close();
     }

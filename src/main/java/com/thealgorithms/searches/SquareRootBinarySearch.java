@@ -14,7 +14,9 @@ import java.util.Scanner;
  *
  * @author sahil
  */
-public class SquareRootBinarySearch {
+public final class SquareRootBinarySearch {
+    private SquareRootBinarySearch() {
+    }
 
     /**
      * This is the driver method.

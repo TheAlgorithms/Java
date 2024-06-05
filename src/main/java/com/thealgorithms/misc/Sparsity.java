@@ -1,6 +1,6 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
  *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements
@@ -11,15 +11,17 @@ import java.util.*;
  * @author Ojasva Jain
  */
 
-class Sparcity {
+final class Sparsity {
+    private Sparsity() {
+    }
 
     /*
-     * @return Sparcity of matrix
+     * @return Sparsity of matrix
      *
-     * where sparcity = number of zeroes/total elements in matrix
+     * where sparsity = number of zeroes/total elements in matrix
      *
      */
-    static double sparcity(double[][] mat) {
+    static double sparsity(double[][] mat) {
         int zero = 0;
         // Traversing the matrix to count number of zeroes
         for (int i = 0; i < mat.length; i++) {
@@ -29,7 +31,7 @@ class Sparcity {
                 }
             }
         }
-        // return sparcity
+        // return sparsity
         return ((double) zero / (mat.length * mat[1].length));
     }
 
@@ -48,7 +50,7 @@ class Sparcity {
                 mat[i][j] = in.nextDouble();
             }
         }
-        System.out.println("Sparcity of matrix is: " + sparcity(mat));
+        System.out.println("Sparsity of matrix is: " + sparsity(mat));
         in.close();
     }
 }

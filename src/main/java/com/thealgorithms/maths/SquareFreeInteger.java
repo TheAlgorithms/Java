@@ -14,7 +14,9 @@ package com.thealgorithms.maths;
 import java.util.HashSet;
 import java.util.List;
 
-public class SquareFreeInteger {
+public final class SquareFreeInteger {
+    private SquareFreeInteger() {
+    }
     /**
      * This method returns whether an integer is square free
      *

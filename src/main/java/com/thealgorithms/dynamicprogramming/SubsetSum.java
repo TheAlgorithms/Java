@@ -1,6 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-public class SubsetSum {
+public final class SubsetSum {
+    private SubsetSum() {
+    }
 
     /**
      * Driver Code

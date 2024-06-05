@@ -8,61 +8,63 @@
 
 package com.thealgorithms.maths;
 
-public class LongDivision {
+public final class LongDivision {
+    private LongDivision() {
+    }
     public static int divide(int dividend, int divisor) {
-        long new_dividend_1 = dividend;
-        long new_divisor_1 = divisor;
+        long newDividend1 = dividend;
+        long newDivisor1 = divisor;
 
         if (divisor == 0) {
             return 0;
         }
         if (dividend < 0) {
-            new_dividend_1 = new_dividend_1 * -1;
+            newDividend1 = newDividend1 * -1;
         }
         if (divisor < 0) {
-            new_divisor_1 = new_divisor_1 * -1;
+            newDivisor1 = newDivisor1 * -1;
         }
 
-        if (dividend == 0 || new_dividend_1 < new_divisor_1) {
+        if (dividend == 0 || newDividend1 < newDivisor1) {
             return 0;
         }
 
         StringBuilder answer = new StringBuilder();
 
-        String dividend_string = "" + new_dividend_1;
-        int last_index = 0;
+        String dividendString = "" + newDividend1;
+        int lastIndex = 0;
 
         String remainder = "";
 
-        for (int i = 0; i < dividend_string.length(); i++) {
-            String part_v1 = remainder + "" + dividend_string.substring(last_index, i + 1);
-            long part_1 = Long.parseLong(part_v1);
-            if (part_1 > new_divisor_1) {
+        for (int i = 0; i < dividendString.length(); i++) {
+            String partV1 = remainder + "" + dividendString.substring(lastIndex, i + 1);
+            long part1 = Long.parseLong(partV1);
+            if (part1 > newDivisor1) {
                 int quotient = 0;
-                while (part_1 >= new_divisor_1) {
-                    part_1 = part_1 - new_divisor_1;
+                while (part1 >= newDivisor1) {
+                    part1 = part1 - newDivisor1;
                     quotient++;
                 }
                 answer.append(quotient);
-            } else if (part_1 == new_divisor_1) {
+            } else if (part1 == newDivisor1) {
                 int quotient = 0;
-                while (part_1 >= new_divisor_1) {
-                    part_1 = part_1 - new_divisor_1;
+                while (part1 >= newDivisor1) {
+                    part1 = part1 - newDivisor1;
                     quotient++;
                 }
                 answer.append(quotient);
-            } else if (part_1 == 0) {
+            } else if (part1 == 0) {
                 answer.append(0);
-            } else if (part_1 < new_divisor_1) {
+            } else if (part1 < newDivisor1) {
                 answer.append(0);
             }
-            if (!(part_1 == 0)) {
-                remainder = String.valueOf(part_1);
+            if (!(part1 == 0)) {
+                remainder = String.valueOf(part1);
             } else {
                 remainder = "";
             }
 
-            last_index++;
+            lastIndex++;
         }
 
         if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {

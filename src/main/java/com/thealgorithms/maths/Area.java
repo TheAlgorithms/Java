@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * Find the area of various geometric shapes
  */
-public class Area {
+public final class Area {
+    private Area() {
+    }
 
     /**
      * String of IllegalArgumentException for radius

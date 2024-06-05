@@ -91,7 +91,7 @@ public class MaxHeap implements Heap {
     }
 
     @Override
-    public void insertElement(HeapElement element) {
+    public final void insertElement(HeapElement element) {
         maxHeap.add(element);
         toggleUp(maxHeap.size());
     }
@@ -123,7 +123,7 @@ public class MaxHeap implements Heap {
         try {
             return extractMax();
         } catch (Exception e) {
-            throw new EmptyHeapException("Heap is empty. Error retrieving element");
+            throw new EmptyHeapException("Heap is empty. Error retrieving element", e);
         }
     }
 }

@@ -17,8 +17,8 @@ import java.util.Map;
  */
 
 class PNCounter {
-    private final Map<Integer, Integer> P;
-    private final Map<Integer, Integer> N;
+    private final Map<Integer, Integer> pCounter;
+    private final Map<Integer, Integer> nCounter;
     private final int myId;
     private final int n;
 
@@ -28,15 +28,15 @@ class PNCounter {
      * @param myId The identifier of the current node.
      * @param n    The number of nodes in the cluster.
      */
-    public PNCounter(int myId, int n) {
+    PNCounter(int myId, int n) {
         this.myId = myId;
         this.n = n;
-        this.P = new HashMap<>();
-        this.N = new HashMap<>();
+        this.pCounter = new HashMap<>();
+        this.nCounter = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
-            P.put(i, 0);
-            N.put(i, 0);
+            pCounter.put(i, 0);
+            nCounter.put(i, 0);
         }
     }
 
@@ -44,14 +44,14 @@ class PNCounter {
      * Increments the increment counter for the current node.
      */
     public void increment() {
-        P.put(myId, P.get(myId) + 1);
+        pCounter.put(myId, pCounter.get(myId) + 1);
     }
 
     /**
      * Increments the decrement counter for the current node.
      */
     public void decrement() {
-        N.put(myId, N.get(myId) + 1);
+        nCounter.put(myId, nCounter.get(myId) + 1);
     }
 
     /**
@@ -60,8 +60,8 @@ class PNCounter {
      * @return The total value of the counter.
      */
     public int value() {
-        int sumP = P.values().stream().mapToInt(Integer::intValue).sum();
-        int sumN = N.values().stream().mapToInt(Integer::intValue).sum();
+        int sumP = pCounter.values().stream().mapToInt(Integer::intValue).sum();
+        int sumN = nCounter.values().stream().mapToInt(Integer::intValue).sum();
         return sumP - sumN;
     }
 
@@ -76,7 +76,7 @@ class PNCounter {
             throw new IllegalArgumentException("Cannot compare PN-Counters with different number of nodes");
         }
         for (int i = 0; i < n; i++) {
-            if (this.P.get(i) > other.P.get(i) && this.N.get(i) > other.N.get(i)) {
+            if (this.pCounter.get(i) > other.pCounter.get(i) && this.nCounter.get(i) > other.nCounter.get(i)) {
                 return false;
             }
         }
@@ -93,8 +93,8 @@ class PNCounter {
             throw new IllegalArgumentException("Cannot merge PN-Counters with different number of nodes");
         }
         for (int i = 0; i < n; i++) {
-            this.P.put(i, Math.max(this.P.get(i), other.P.get(i)));
-            this.N.put(i, Math.max(this.N.get(i), other.N.get(i)));
+            this.pCounter.put(i, Math.max(this.pCounter.get(i), other.pCounter.get(i)));
+            this.nCounter.put(i, Math.max(this.nCounter.get(i), other.nCounter.get(i)));
         }
     }
 }

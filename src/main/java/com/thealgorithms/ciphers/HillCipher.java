@@ -11,7 +11,9 @@ import java.util.Scanner;
  * for encryption. The cipher key and plaintext/ciphertext are user inputs.
  * @author Ojasva Jain
  */
-public class HillCipher {
+public final class HillCipher {
+    private HillCipher() {
+    }
 
     static Scanner userInput = new Scanner(System.in);
 
@@ -33,7 +35,7 @@ public class HillCipher {
         validateDeterminant(keyMatrix, matrixSize);
 
         int[][] messageVector = new int[matrixSize][1];
-        String CipherText = "";
+        String cipherText = "";
         int[][] cipherMatrix = new int[matrixSize][1];
         int j = 0;
         while (j < message.length()) {
@@ -46,7 +48,8 @@ public class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < matrixSize; i++) {
                 cipherMatrix[i][0] = 0;
 
@@ -57,10 +60,10 @@ public class HillCipher {
                 cipherMatrix[i][0] = cipherMatrix[i][0] % 26;
             }
             for (i = 0; i < matrixSize; i++) {
-                CipherText += (char) (cipherMatrix[i][0] + 65);
+                cipherText += (char) (cipherMatrix[i][0] + 65);
             }
         }
-        System.out.println("Ciphertext: " + CipherText);
+        System.out.println("Ciphertext: " + cipherText);
     }
 
     // Following function decrypts a message
@@ -81,7 +84,7 @@ public class HillCipher {
 
         // solving for the required plaintext message
         int[][] messageVector = new int[n][1];
-        String PlainText = "";
+        String plainText = "";
         int[][] plainMatrix = new int[n][1];
         int j = 0;
         while (j < message.length()) {
@@ -94,7 +97,8 @@ public class HillCipher {
                 System.out.println(messageVector[i][0]);
                 j++;
             }
-            int x, i;
+            int x;
+            int i;
             for (i = 0; i < n; i++) {
                 plainMatrix[i][0] = 0;
 
@@ -105,15 +109,18 @@ public class HillCipher {
                 plainMatrix[i][0] = plainMatrix[i][0] % 26;
             }
             for (i = 0; i < n; i++) {
-                PlainText += (char) (plainMatrix[i][0] + 65);
+                plainText += (char) (plainMatrix[i][0] + 65);
             }
         }
-        System.out.println("Plaintext: " + PlainText);
+        System.out.println("Plaintext: " + plainText);
     }
 
     // Determinant calculator
     public static int determinant(int[][] a, int n) {
-        int det = 0, sign = 1, p = 0, q = 0;
+        int det = 0;
+        int sign = 1;
+        int p = 0;
+        int q = 0;
 
         if (n == 1) {
             det = a[0][0];
@@ -142,7 +149,6 @@ public class HillCipher {
 
     // Function to implement Hill Cipher
     static void hillCipher(String message) {
-        message.toUpperCase();
         System.out.println("What do you want to process from the message?");
         System.out.println("Press 1: To Encrypt");
         System.out.println("Press 2: To Decrypt");

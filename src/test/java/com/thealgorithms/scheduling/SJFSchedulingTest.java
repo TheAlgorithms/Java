@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ class SJFSchedulingTest {
     }
 
     @Test
-    void schedulingOf_TwoProcesses() {
+    void schedulingOfTwoProcesses() {
         initialisation0();
         SJFScheduling a = new SJFScheduling(process);
         a.scheduleProcesses();
@@ -82,7 +83,7 @@ class SJFSchedulingTest {
     }
 
     @Test
-    void schedulingOfA_ShortestJobArrivingLast() {
+    void schedulingOfAShortestJobArrivingLast() {
         initialisation2();
         SJFScheduling a = new SJFScheduling(process);
         a.scheduleProcesses();
@@ -91,7 +92,7 @@ class SJFSchedulingTest {
         assertEquals("2", a.schedule.get(2));
     }
     @Test
-    void scheduling_WithProcessesNotComingBackToBack() {
+    void schedulingWithProcessesNotComingBackToBack() {
         initialisation3();
         SJFScheduling a = new SJFScheduling(process);
         a.scheduleProcesses();
@@ -100,7 +101,7 @@ class SJFSchedulingTest {
         assertEquals("3", a.schedule.get(2));
     }
     @Test
-    void schedulingOf_nothing() {
+    void schedulingOfNothing() {
         process = new ArrayList<>();
         SJFScheduling a = new SJFScheduling(process);
         a.scheduleProcesses();

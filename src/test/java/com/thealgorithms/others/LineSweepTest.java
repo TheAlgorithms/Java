@@ -1,5 +1,7 @@
 package com.thealgorithms.others;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 public class LineSweepTest {
@@ -23,6 +25,6 @@ public class LineSweepTest {
     @Test
     void testForMaximumEndPoint() {
         int[][] arr = {{10, 20}, {1, 100}, {14, 16}, {1, 8}};
-        assertEquals(100, LineSweep.FindMaximumEndPoint(arr));
+        assertEquals(100, LineSweep.findMaximumEndPoint(arr));
     }
 }

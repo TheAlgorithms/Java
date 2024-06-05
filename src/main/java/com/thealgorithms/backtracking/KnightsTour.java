@@ -1,6 +1,8 @@
 package com.thealgorithms.backtracking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /*
     * Problem Statement: -
@@ -24,10 +26,12 @@ import java.util.*;
         51  46  55  44  53   4  21  12
 
  */
-public class KnightsTour {
+public final class KnightsTour {
+    private KnightsTour() {
+    }
 
-    private static final int base = 12;
-    private static final int[][] moves = {
+    private static final int BASE = 12;
+    private static final int[][] MOVES = {
         {1, -2},
         {2, -1},
         {2, 1},
@@ -41,19 +45,19 @@ public class KnightsTour {
     private static int total; // total squares in chess
 
     public static void main(String[] args) {
-        grid = new int[base][base];
-        total = (base - 4) * (base - 4);
+        grid = new int[BASE][BASE];
+        total = (BASE - 4) * (BASE - 4);
 
-        for (int r = 0; r < base; r++) {
-            for (int c = 0; c < base; c++) {
-                if (r < 2 || r > base - 3 || c < 2 || c > base - 3) {
+        for (int r = 0; r < BASE; r++) {
+            for (int c = 0; c < BASE; c++) {
+                if (r < 2 || r > BASE - 3 || c < 2 || c > BASE - 3) {
                     grid[r][c] = -1;
                 }
             }
         }
 
-        int row = 2 + (int) (Math.random() * (base - 4));
-        int col = 2 + (int) (Math.random() * (base - 4));
+        int row = 2 + (int) (Math.random() * (BASE - 4));
+        int col = 2 + (int) (Math.random() * (BASE - 4));
 
         grid[row][col] = 1;
 
@@ -95,7 +99,7 @@ public class KnightsTour {
     private static List<int[]> neighbors(int row, int column) {
         List<int[]> neighbour = new ArrayList<>();
 
-        for (int[] m : moves) {
+        for (int[] m : MOVES) {
             int x = m[0];
             int y = m[1];
             if (grid[row + y][column + x] == 0) {
@@ -109,7 +113,7 @@ public class KnightsTour {
     // Returns the total count of neighbors
     private static int countNeighbors(int row, int column) {
         int num = 0;
-        for (int[] m : moves) {
+        for (int[] m : MOVES) {
             if (grid[row + m[1]][column + m[0]] == 0) {
                 num++;
             }

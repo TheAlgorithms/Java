@@ -15,7 +15,9 @@ import java.util.function.BiFunction;
  * https://en.wikipedia.org/wiki/Euler_method ) (see also:
  * https://www.geeksforgeeks.org/euler-method-solving-differential-equation/ )
  */
-public class EulerMethod {
+public final class EulerMethod {
+    private EulerMethod() {
+    }
 
     /**
      * Illustrates how the algorithm is used in 3 examples and prints the

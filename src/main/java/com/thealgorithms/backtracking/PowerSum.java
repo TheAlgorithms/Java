@@ -8,32 +8,33 @@ package com.thealgorithms.backtracking;
  */
 public class PowerSum {
 
-    private int count = 0, sum = 0;
+    private int count = 0;
+    private int sum = 0;
 
-    public int powSum(int N, int X) {
-        Sum(N, X, 1);
+    public int powSum(int n, int x) {
+        sum(n, x, 1);
         return count;
     }
 
     // here i is the natural number which will be raised by X and added in sum.
-    public void Sum(int N, int X, int i) {
+    public void sum(int n, int x, int i) {
         // if sum is equal to N that is one of our answer and count is increased.
-        if (sum == N) {
+        if (sum == n) {
             count++;
             return;
         } // we will be adding next natural number raised to X only if on adding it in sum the
           // result is less than N.
-        else if (sum + power(i, X) <= N) {
-            sum += power(i, X);
-            Sum(N, X, i + 1);
+        else if (sum + power(i, x) <= n) {
+            sum += power(i, x);
+            sum(n, x, i + 1);
             // backtracking and removing the number added last since no possible combination is
             // there with it.
-            sum -= power(i, X);
+            sum -= power(i, x);
         }
-        if (power(i, X) < N) {
+        if (power(i, x) < n) {
             // calling the sum function with next natural number after backtracking if when it is
             // raised to X is still less than X.
-            Sum(N, X, i + 1);
+            sum(n, x, i + 1);
         }
     }
 

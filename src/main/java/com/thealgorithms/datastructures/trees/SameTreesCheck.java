@@ -32,7 +32,9 @@ import java.util.Deque;
  *
  * @author Albina Gimaletdinova on 13/01/2023
  */
-public class SameTreesCheck {
+public final class SameTreesCheck {
+    private SameTreesCheck() {
+    }
     public static boolean check(BinaryTree.Node p, BinaryTree.Node q) {
         if (p == null && q == null) {
             return true;

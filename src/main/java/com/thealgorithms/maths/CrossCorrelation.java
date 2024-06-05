@@ -7,7 +7,9 @@ package com.thealgorithms.maths;
  * @version 1.0
  */
 
-public class CrossCorrelation {
+public final class CrossCorrelation {
+    private CrossCorrelation() {
+    }
 
     /**
      * Discrete linear cross-correlation function.
@@ -20,7 +22,7 @@ public class CrossCorrelation {
     public static double[] crossCorrelation(double[] x, double[] y) {
         // The result signal's length is the sum of the input signals' lengths minus 1
         double[] result = new double[x.length + y.length - 1];
-        int N = result.length;
+        int n = result.length;
 
         /*
         To find the cross-correlation between 2 discrete signals x & y, we start by "placing" the second signal
@@ -58,13 +60,13 @@ public class CrossCorrelation {
 
 
 
-        To find the result[i] value for each i:0->N-1, the positions of x-signal in which the 2 signals meet
+        To find the result[i] value for each i:0->n-1, the positions of x-signal in which the 2 signals meet
         are calculated: kMin<=k<=kMax.
         The variable 'yStart' indicates the starting index of y in each sum calculation.
         The variable 'count' increases the index of y-signal by 1, to move to the next value.
          */
         int yStart = y.length;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             result[i] = 0;
 
             int kMin = Math.max(i - (y.length - 1), 0);

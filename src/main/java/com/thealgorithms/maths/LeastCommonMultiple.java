@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Is a common mathematics concept to find the smallest value number
@@ -9,7 +9,9 @@ import java.util.*;
  * @author LauKinHoong
  */
 
-public class LeastCommonMultiple {
+public final class LeastCommonMultiple {
+    private LeastCommonMultiple() {
+    }
 
     /**
      * Driver Code
@@ -28,15 +30,18 @@ public class LeastCommonMultiple {
      * get least common multiple from two number
      */
     public static int lcm(int num1, int num2) {
-        int high, num3;
+        int high;
+        int num3;
         int cmv = 0;
         /*
          * value selection for the numerator
          */
         if (num1 > num2) {
-            high = num3 = num1;
+            high = num1;
+            num3 = num1;
         } else {
-            high = num3 = num2;
+            high = num2;
+            num3 = num2;
         }
 
         while (num1 != 0) {

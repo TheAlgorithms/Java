@@ -14,16 +14,18 @@ import java.util.Arrays;
  *
  * Output : YES
  */
-public class BipartiteGrapfDFS {
+public final class BipartiteGrapfDFS {
+    private BipartiteGrapfDFS() {
+    }
 
-    private static boolean bipartite(int V, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
+    private static boolean bipartite(int v, ArrayList<ArrayList<Integer>> adj, int[] color, int node) {
         if (color[node] == -1) {
             color[node] = 1;
         }
         for (Integer it : adj.get(node)) {
             if (color[it] == -1) {
                 color[it] = 1 - color[node];
-                if (!bipartite(V, adj, color, it)) {
+                if (!bipartite(v, adj, color, it)) {
                     return false;
                 }
             } else if (color[it] == color[node]) {
@@ -33,14 +35,14 @@ public class BipartiteGrapfDFS {
         return true;
     }
 
-    public static boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
+    public static boolean isBipartite(int v, ArrayList<ArrayList<Integer>> adj) {
         // Code here
-        int[] color = new int[V + 1];
+        int[] color = new int[v + 1];
         Arrays.fill(color, -1);
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < v; i++) {
             if (color[i] == -1) {
-                if (!bipartite(V, adj, color, i)) {
+                if (!bipartite(v, adj, color, i)) {
                     return false;
                 }
             }
@@ -52,23 +54,23 @@ public class BipartiteGrapfDFS {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(read.readLine().trim());
         while (t-- > 0) {
-            String[] S = read.readLine().trim().split(" ");
-            int V = Integer.parseInt(S[0]);
-            int E = Integer.parseInt(S[1]);
+            String[] str1 = read.readLine().trim().split(" ");
+            int numVertices = Integer.parseInt(str1[0]);
+            int numEdges = Integer.parseInt(str1[1]);
 
             ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-            for (int i = 0; i < V; i++) {
+            for (int i = 0; i < numVertices; i++) {
                 adj.add(new ArrayList<>());
             }
-            for (int i = 0; i < E; i++) {
-                String[] s = read.readLine().trim().split(" ");
-                int u = Integer.parseInt(s[0]);
-                int v = Integer.parseInt(s[1]);
-                adj.get(u).add(v);
-                adj.get(v).add(u);
+            for (int i = 0; i < numEdges; i++) {
+                String[] str2 = read.readLine().trim().split(" ");
+                int vertexU = Integer.parseInt(str2[0]);
+                int vertexV = Integer.parseInt(str2[1]);
+                adj.get(vertexU).add(vertexV);
+                adj.get(vertexV).add(vertexU);
             }
 
-            boolean ans = isBipartite(V, adj);
+            boolean ans = isBipartite(numVertices, adj);
             if (ans) {
                 System.out.println("YES");
             } else {

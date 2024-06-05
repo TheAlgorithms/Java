@@ -13,7 +13,9 @@ import java.util.Arrays;
  * (description adapted from <a href="https://en.wikipedia.org/wiki/RGB_color_model">[1]</a> and
  * <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">[2]</a>).
  */
-public class RgbHsvConversion {
+public final class RgbHsvConversion {
+    private RgbHsvConversion() {
+    }
 
     public static void main(String[] args) {
         // Expected RGB-values taken from https://www.rapidtables.com/convert/color/hsv-to-rgb.html

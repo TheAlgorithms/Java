@@ -5,7 +5,9 @@ import java.util.HashSet;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Pangram
  */
-public class Pangram {
+public final class Pangram {
+    private Pangram() {
+    }
 
     /**
      * Test code
@@ -25,12 +27,11 @@ public class Pangram {
      */
     // alternative approach using Java Collection Framework
     public static boolean isPangramUsingSet(String s) {
-        HashSet<Character> alpha = new HashSet<Character>();
+        HashSet<Character> alpha = new HashSet<>();
         s = s.trim().toLowerCase();
         for (int i = 0; i < s.length(); i++)
             if (s.charAt(i) != ' ') alpha.add(s.charAt(i));
-        if (alpha.size() == 26) return true;
-        return false;
+        return alpha.size() == 26;
     }
 
     /**

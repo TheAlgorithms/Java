@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class BinaryPow {
+public final class BinaryPow {
+    private BinaryPow() {
+    }
 
     /**
      * Calculate a^p using binary exponentiation

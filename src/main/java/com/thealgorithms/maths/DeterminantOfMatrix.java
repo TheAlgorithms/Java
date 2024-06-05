@@ -1,17 +1,22 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
  * @author Ojasva Jain
  * Determinant of a Matrix Wikipedia link: https://en.wikipedia.org/wiki/Determinant
  */
-public class DeterminantOfMatrix {
+public final class DeterminantOfMatrix {
+    private DeterminantOfMatrix() {
+    }
 
     // Determinant calculator
     //@return determinant of the input matrix
     static int determinant(int[][] a, int n) {
-        int det = 0, sign = 1, p = 0, q = 0;
+        int det = 0;
+        int sign = 1;
+        int p = 0;
+        int q = 0;
         if (n == 1) {
             det = a[0][0];
         } else {

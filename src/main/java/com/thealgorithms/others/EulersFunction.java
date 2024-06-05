@@ -3,7 +3,7 @@ package com.thealgorithms.others;
 /**
  * @brief utility class for <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>
  */
-final public class EulersFunction {
+public final class EulersFunction {
     private EulersFunction() {
     }
 

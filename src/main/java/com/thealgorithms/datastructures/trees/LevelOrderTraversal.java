@@ -5,7 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class LevelOrderTraversal {
+public final class LevelOrderTraversal {
+    private LevelOrderTraversal() {
+    }
 
     public static List<List<Integer>> traverse(BinaryTree.Node root) {
         if (root == null) {

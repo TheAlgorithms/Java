@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * https://en.wikipedia.org/wiki/Cube_(algebra)
  */
-public class PerfectCube {
+public final class PerfectCube {
+    private PerfectCube() {
+    }
 
     /**
      * Check if a number is perfect cube or not

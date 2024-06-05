@@ -2,10 +2,14 @@ package com.thealgorithms.strings;
 
 import java.util.HashMap;
 
-class longestNonRepeativeSubstring {
+final class longestNonRepeativeSubstring {
+    private longestNonRepeativeSubstring() {
+    }
 
     public static int lengthOfLongestSubstring(String s) {
-        int max = 0, start = 0, i = 0;
+        int max = 0;
+        int start = 0;
+        int i = 0;
         HashMap<Character, Integer> map = new HashMap<>();
 
         while (i < s.length()) {

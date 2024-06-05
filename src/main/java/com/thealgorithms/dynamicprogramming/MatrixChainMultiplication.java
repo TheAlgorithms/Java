@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MatrixChainMultiplication {
+public final class MatrixChainMultiplication {
+    private MatrixChainMultiplication() {
+    }
 
-    private static Scanner scan = new Scanner(System.in);
-    private static ArrayList<Matrix> mArray = new ArrayList<>();
+    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final ArrayList<Matrix> MATRICES = new ArrayList<>();
     private static int size;
     private static int[][] m;
     private static int[][] s;
@@ -24,14 +26,14 @@ public class MatrixChainMultiplication {
             int row = Integer.parseInt(mSize[1]);
 
             Matrix matrix = new Matrix(count, col, row);
-            mArray.add(matrix);
+            MATRICES.add(matrix);
             count++;
         }
-        for (Matrix m : mArray) {
+        for (Matrix m : MATRICES) {
             System.out.format("A(%d)  =  %2d  x  %2d%n", m.count(), m.col(), m.row());
         }
 
-        size = mArray.size();
+        size = MATRICES.size();
         m = new int[size + 1][size + 1];
         s = new int[size + 1][size + 1];
         p = new int[size + 1];
@@ -42,7 +44,7 @@ public class MatrixChainMultiplication {
         }
 
         for (int i = 0; i < p.length; i++) {
-            p[i] = i == 0 ? mArray.get(i).col() : mArray.get(i - 1).row();
+            p[i] = i == 0 ? MATRICES.get(i).col() : MATRICES.get(i - 1).row();
         }
 
         matrixChainOrder();
@@ -109,15 +111,15 @@ public class MatrixChainMultiplication {
 
     private static String[] input(String string) {
         System.out.print(string);
-        return (scan.nextLine().split(" "));
+        return (SCANNER.nextLine().split(" "));
     }
 }
 
 class Matrix {
 
-    private int count;
-    private int col;
-    private int row;
+    private final int count;
+    private final int col;
+    private final int row;
 
     Matrix(int count, int col, int row) {
         this.count = count;

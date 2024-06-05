@@ -55,8 +55,8 @@ public class BitonicSort {
 
     /*Caller of bitonicSort for sorting the entire array
   of length N in ASCENDING order */
-    void sort(int[] a, int N, int up) {
-        bitonicSort(a, 0, N, up);
+    void sort(int[] a, int n, int up) {
+        bitonicSort(a, 0, n, up);
     }
 
     /* A utility function to print array of size n */

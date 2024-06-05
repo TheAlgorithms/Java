@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class PascalTriangle {
+public final class PascalTriangle {
+    private PascalTriangle() {
+    }
 
     /**
      *In mathematics, Pascal's triangle is a triangular array of the binomial coefficients that

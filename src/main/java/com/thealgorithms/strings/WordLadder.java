@@ -38,7 +38,9 @@ import java.util.Queue;
     All the words in wordList are unique.
  */
 
-class WordLadder {
+final class WordLadder {
+    private WordLadder() {
+    }
 
     /**
      * This function finds the ladderLength
@@ -65,24 +67,24 @@ class WordLadder {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 String curr = queue.poll();
-                char[] words_chars = curr.toCharArray();
-                for (int j = 0; j < words_chars.length; j++) {
-                    char original_chars = words_chars[j];
+                char[] wordsChars = curr.toCharArray();
+                for (int j = 0; j < wordsChars.length; j++) {
+                    char originalChars = wordsChars[j];
                     for (char c = 'a'; c <= 'z'; c++) {
-                        if (words_chars[j] == c) {
+                        if (wordsChars[j] == c) {
                             continue;
                         }
-                        words_chars[j] = c;
-                        String new_word = String.valueOf(words_chars);
-                        if (new_word.equals(endWord)) {
+                        wordsChars[j] = c;
+                        String newWord = String.valueOf(wordsChars);
+                        if (newWord.equals(endWord)) {
                             return level + 1;
                         }
-                        if (set.contains(new_word)) {
-                            set.remove(new_word);
-                            queue.offer(new_word);
+                        if (set.contains(newWord)) {
+                            set.remove(newWord);
+                            queue.offer(newWord);
                         }
                     }
-                    words_chars[j] = original_chars;
+                    wordsChars[j] = originalChars;
                 }
             }
             level++;

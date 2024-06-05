@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
-public class CountChar {
+public final class CountChar {
+    private CountChar() {
+    }
 
     /**
      * Count non space character in string
@@ -9,7 +11,7 @@ public class CountChar {
      * @return number of character in the specified string
      */
 
-    public static int CountCharacters(String str) {
+    public static int countCharacters(String str) {
         return str.replaceAll("\\s", "").length();
     }
 }

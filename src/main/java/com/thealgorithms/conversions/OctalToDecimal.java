@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Zachary Jones
  */
-public class OctalToDecimal {
+public final class OctalToDecimal {
+    private OctalToDecimal() {
+    }
 
     /**
      * Main method

@@ -7,7 +7,9 @@ import java.util.Scanner;
  * For detailed info and implementation see: <a
  * href="http://devmag.org.za/2009/04/25/perlin-noise/">Perlin-Noise</a>
  */
-public class PerlinNoise {
+public final class PerlinNoise {
+    private PerlinNoise() {
+    }
 
     /**
      * @param width width of noise array

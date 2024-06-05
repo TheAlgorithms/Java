@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 // Driver Program
-public class DecimalToAnyBase {
+public final class DecimalToAnyBase {
+    private DecimalToAnyBase() {
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

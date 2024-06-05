@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Özgün Gökşenli
  */
-public class TurkishToLatinConversion {
+public final class TurkishToLatinConversion {
+    private TurkishToLatinConversion() {
+    }
 
     /**
      * Main method
@@ -58,7 +60,7 @@ public class TurkishToLatinConversion {
             'G',
         };
         for (int i = 0; i < turkishChars.length; i++) {
-            param = param.replaceAll(new String(new char[] {turkishChars[i]}), new String(new char[] {latinChars[i]}));
+            param = param.replaceAll(String.valueOf(turkishChars[i]), String.valueOf(latinChars[i]));
         }
         return param;
     }

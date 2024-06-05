@@ -8,7 +8,9 @@ package com.thealgorithms.maths;
  *
  * link:https://en.wikipedia.org/wiki/Perfect_number
  */
-public class PerfectNumber {
+public final class PerfectNumber {
+    private PerfectNumber() {
+    }
 
     /**
      * Check if {@code number} is perfect number or not

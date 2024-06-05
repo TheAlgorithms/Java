@@ -3,7 +3,9 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-public class CoinChange {
+public final class CoinChange {
+    private CoinChange() {
+    }
 
     // Driver Program
     public static void main(String[] args) {
@@ -56,9 +58,9 @@ public class CoinChange {
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
                 if (coin <= i) {
-                    int sub_res = minimumCoins[i - coin];
-                    if (sub_res != Integer.MAX_VALUE && sub_res + 1 < minimumCoins[i]) {
-                        minimumCoins[i] = sub_res + 1;
+                    int subRes = minimumCoins[i - coin];
+                    if (subRes != Integer.MAX_VALUE && subRes + 1 < minimumCoins[i]) {
+                        minimumCoins[i] = subRes + 1;
                     }
                 }
             }

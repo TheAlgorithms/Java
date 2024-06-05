@@ -5,10 +5,15 @@ import java.util.Scanner;
 /**
  * This class converts a Binary number to a Decimal number
  */
-class BinaryToDecimal {
+final class BinaryToDecimal {
+    private BinaryToDecimal() {
+    }
 
     public static long binaryToDecimal(long binNum) {
-        long binCopy, d, s = 0, power = 0;
+        long binCopy;
+        long d;
+        long s = 0;
+        long power = 0;
         binCopy = binNum;
         while (binCopy != 0) {
             d = binCopy % 10;

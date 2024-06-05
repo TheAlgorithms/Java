@@ -2,7 +2,9 @@ package com.thealgorithms.maths;
 
 import java.util.Random;
 
-public class MillerRabinPrimalityCheck {
+public final class MillerRabinPrimalityCheck {
+    private MillerRabinPrimalityCheck() {
+    }
 
     /**
      * Check whether the given number is prime or not

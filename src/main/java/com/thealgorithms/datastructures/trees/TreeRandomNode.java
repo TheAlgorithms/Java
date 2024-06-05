@@ -26,10 +26,11 @@ import java.util.ArrayList;
 
 public class TreeRandomNode {
 
-    private class Node {
+    private final class Node {
 
         int item;
-        Node left, right;
+        Node left;
+        Node right;
     }
 
     // Using an arraylist to store the inorder traversal of the given binary tree

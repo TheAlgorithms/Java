@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @brief utility class implementing <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
  */
-final public class SieveOfEratosthenes {
+public final class SieveOfEratosthenes {
     private SieveOfEratosthenes() {
     }
 
@@ -19,7 +19,8 @@ final public class SieveOfEratosthenes {
         checkInput(n);
         Type[] isPrimeArray = new Type[n + 1];
         Arrays.fill(isPrimeArray, Type.PRIME);
-        isPrimeArray[0] = isPrimeArray[1] = Type.NOT_PRIME;
+        isPrimeArray[0] = Type.NOT_PRIME;
+        isPrimeArray[1] = Type.NOT_PRIME;
 
         double cap = Math.sqrt(n);
         for (int i = 2; i <= cap; i++) {

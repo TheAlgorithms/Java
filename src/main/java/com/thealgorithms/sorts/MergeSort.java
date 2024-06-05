@@ -9,7 +9,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  */
 class MergeSort implements SortAlgorithm {
 
-    @SuppressWarnings("rawtypes") private static Comparable[] aux;
+    private Comparable[] aux;
 
     /**
      * Generic merge sort algorithm implements.
@@ -30,7 +30,7 @@ class MergeSort implements SortAlgorithm {
      * @param left the first index of the array.
      * @param right the last index of the array.
      */
-    private static <T extends Comparable<T>> void doSort(T[] arr, int left, int right) {
+    private <T extends Comparable<T>> void doSort(T[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) >>> 1;
             doSort(arr, left, mid);
@@ -49,8 +49,9 @@ class MergeSort implements SortAlgorithm {
      * increasing order.
      */
     @SuppressWarnings("unchecked")
-    private static <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-        int i = left, j = mid + 1;
+    private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
+        int i = left;
+        int j = mid + 1;
         System.arraycopy(arr, left, aux, left, right + 1 - left);
 
         for (int k = left; k <= right; k++) {

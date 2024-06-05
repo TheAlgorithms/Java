@@ -8,18 +8,21 @@
 
 package com.thealgorithms.dynamicprogramming;
 
-public class NewManShanksPrime {
+public final class NewManShanksPrime {
+    private NewManShanksPrime() {
+    }
 
-    public static boolean nthManShanksPrime(int n, int expected_answer) {
+    public static boolean nthManShanksPrime(int n, int expectedAnswer) {
         int[] a = new int[n + 1];
         // array of n+1 size is initialized
-        a[0] = a[1] = 1;
+        a[0] = 1;
+        a[1] = 1;
         // The 0th and 1st index position values are fixed. They are initialized as 1
         for (int i = 2; i <= n; i++) {
             a[i] = 2 * a[i - 1] + a[i - 2];
         }
         // The loop is continued till n
-        return a[n] == expected_answer;
+        return a[n] == expectedAnswer;
         // returns true if calculated answer matches with expected answer
     }
 }

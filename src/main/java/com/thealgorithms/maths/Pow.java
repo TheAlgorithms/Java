@@ -1,7 +1,9 @@
 package com.thealgorithms.maths;
 
 // POWER (exponentials) Examples (a^b)
-public class Pow {
+public final class Pow {
+    private Pow() {
+    }
 
     public static void main(String[] args) {
         assert pow(2, 0) == Math.pow(2, 0); // == 1

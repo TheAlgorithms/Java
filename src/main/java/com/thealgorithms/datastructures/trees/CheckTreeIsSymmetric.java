@@ -30,7 +30,9 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  *
  * @author kumanoit on 10/10/22 IST 12:52 AM
  */
-public class CheckTreeIsSymmetric {
+public final class CheckTreeIsSymmetric {
+    private CheckTreeIsSymmetric() {
+    }
 
     public static boolean isSymmetric(Node root) {
         if (root == null) {

@@ -13,9 +13,11 @@ package com.thealgorithms.ciphers;
  * @author Hikmet ÇAKIR
  * @since 08-07-2022+03:00
  */
-public class Polybius {
+public final class Polybius {
+    private Polybius() {
+    }
 
-    private static final char[][] key = {
+    private static final char[][] KEY = {
         //         0    1    2    3    4
         /* 0 */ {'A', 'B', 'C', 'D', 'E'},
         /* 1 */ {'F', 'G', 'H', 'I', 'J'},
@@ -26,9 +28,9 @@ public class Polybius {
 
     private static String findLocationByCharacter(final char character) {
         final StringBuilder location = new StringBuilder();
-        for (int i = 0; i < key.length; i++) {
-            for (int j = 0; j < key[i].length; j++) {
-                if (character == key[i][j]) {
+        for (int i = 0; i < KEY.length; i++) {
+            for (int j = 0; j < KEY[i].length; j++) {
+                if (character == KEY[i][j]) {
                     location.append(i).append(j);
                     break;
                 }
@@ -53,7 +55,7 @@ public class Polybius {
         for (int i = 0; i < chars.length; i += 2) {
             int pozitionX = Character.getNumericValue(chars[i]);
             int pozitionY = Character.getNumericValue(chars[i + 1]);
-            plaintext.append(key[pozitionX][pozitionY]);
+            plaintext.append(KEY[pozitionX][pozitionY]);
         }
         return plaintext.toString();
     }
