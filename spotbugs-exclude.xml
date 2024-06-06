@@ -69,9 +69,6 @@
         <Bug pattern="IM_BAD_CHECK_FOR_ODD" />
     </Match>
     <Match>
-        <Bug pattern="WMI_WRONG_MAP_ITERATOR" />
-    </Match>
-    <Match>
         <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
     </Match>
     <Match>

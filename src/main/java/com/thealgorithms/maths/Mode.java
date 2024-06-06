@@ -38,9 +38,9 @@ public final class Mode {
         int max = Collections.max(count.values());
         ArrayList<Integer> modes = new ArrayList<>();
 
-        for (int num : count.keySet()) {
-            if (count.get(num) == max) {
-                modes.add(num);
+        for (final var entry : count.entrySet()) {
+            if (entry.getValue() == max) {
+                modes.add(entry.getKey());
             }
         }
         return modes.stream().mapToInt(n -> n).toArray();

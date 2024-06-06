@@ -54,19 +54,6 @@ class AdjacencyList<E extends Comparable<E>> {
     Set<E> getVertices() {
         return adj.keySet();
     }
-
-    /**
-     * Prints the adjacency list
-     */
-    void printGraph() {
-        for (E vertex : adj.keySet()) {
-            System.out.print(vertex + " : ");
-            for (E adjacent : adj.get(vertex)) {
-                System.out.print(adjacent + " ");
-            }
-            System.out.println();
-        }
-    }
 }
 
 class TopologicalSort<E extends Comparable<E>> {
@@ -104,9 +91,9 @@ class TopologicalSort<E extends Comparable<E>> {
         calculateInDegree();
         Queue<E> q = new LinkedList<E>();
 
-        for (E vertex : inDegree.keySet()) {
-            if (inDegree.get(vertex) == 0) {
-                q.add(vertex);
+        for (final var entry : inDegree.entrySet()) {
+            if (entry.getValue() == 0) {
+                q.add(entry.getKey());
             }
         }
 
