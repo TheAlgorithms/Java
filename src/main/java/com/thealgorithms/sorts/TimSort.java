@@ -9,6 +9,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  */
 class TimSort implements SortAlgorithm {
     private static final int SUB_ARRAY_SIZE = 32;
+    @SuppressWarnings("rawtypes")
     private Comparable[] aux;
 
     @Override
@@ -30,6 +31,7 @@ class TimSort implements SortAlgorithm {
         return a;
     }
 
+    @SuppressWarnings("unchecked")
     private <T extends Comparable<T>> void merge(T[] a, int lo, int mid, int hi) {
         int i = lo;
         int j = mid + 1;

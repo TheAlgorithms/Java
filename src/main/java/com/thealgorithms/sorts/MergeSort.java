@@ -9,6 +9,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  */
 class MergeSort implements SortAlgorithm {
 
+    @SuppressWarnings("rawtypes")
     private Comparable[] aux;
 
     /**

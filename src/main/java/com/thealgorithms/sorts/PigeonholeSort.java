@@ -16,6 +16,7 @@ public class PigeonholeSort {
         }
 
         int numOfPigeonholes = 1 + maxElement;
+        @SuppressWarnings("unchecked")
         ArrayList<Integer>[] pigeonHole = new ArrayList[numOfPigeonholes];
 
         for (int k = 0; k < numOfPigeonholes; k++) {
