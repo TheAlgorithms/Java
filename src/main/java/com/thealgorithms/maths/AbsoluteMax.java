@@ -23,4 +23,12 @@ public final class AbsoluteMax {
         }
         return absMax;
     }
+    //Added Main class to give output
+    public class Main {
+        public static void main(String[] args) {
+            int maxAbsValue = AbsoluteMax.getMaxValue(-10, 20, -30, 40);
+            System.out.println("The absolute maximum value is: " + maxAbsValue);
+        }
+    }
+    
 }
