@@ -20,6 +20,7 @@ public final class WelshPowell {
     static final class Graph {
         private HashSet<Integer>[] adjacencyLists;
 
+        @SuppressWarnings("unchecked")
         private Graph(int vertices) {
             if (vertices < 0) {
                 throw new IllegalArgumentException("Number of vertices cannot be negative");

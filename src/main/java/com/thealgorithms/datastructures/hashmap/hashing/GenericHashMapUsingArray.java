@@ -19,6 +19,7 @@ public class GenericHashMapUsingArray<K, V> {
     // 75, then adding 76th item it will double the size, copy all elements
     // & then add 76th item.
 
+    @SuppressWarnings("unchecked")
     private void initBuckets(int n) {
         buckets = new LinkedList[n];
         for (int i = 0; i < buckets.length; i++) {

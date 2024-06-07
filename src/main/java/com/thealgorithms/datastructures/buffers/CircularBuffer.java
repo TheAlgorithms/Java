@@ -8,6 +8,7 @@ public class CircularBuffer<Item> {
     private final CircularPointer getPointer;
     private final AtomicInteger size = new AtomicInteger(0);
 
+    @SuppressWarnings("unchecked")
     public CircularBuffer(int size) {
         // noinspection unchecked
         this.buffer = (Item[]) new Object[size];

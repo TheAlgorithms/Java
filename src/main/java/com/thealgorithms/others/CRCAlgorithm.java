@@ -130,6 +130,7 @@ public class CRCAlgorithm {
      * @param check the variable used to determine, if the message is going to
      * be checked from the receiver if true, it is checked otherwise, it is not
      */
+    @SuppressWarnings("unchecked")
     public void divideMessageWithP(boolean check) {
         ArrayList<Integer> x = new ArrayList<>();
         ArrayList<Integer> k = (ArrayList<Integer>) message.clone();

@@ -70,6 +70,7 @@ public class SkipList<E extends Comparable<E>> {
         Objects.requireNonNull(e);
         Node<E> current = head;
         int layer = height;
+        @SuppressWarnings("unchecked")
         Node<E>[] toFix = new Node[height + 1];
 
         while (layer >= 0) {

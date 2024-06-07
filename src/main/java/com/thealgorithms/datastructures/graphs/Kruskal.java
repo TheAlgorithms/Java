@@ -35,6 +35,7 @@ public class Kruskal {
     }
 
     public static void main(String[] args) {
+        @SuppressWarnings("unchecked")
         HashSet<Edge>[] graph = new HashSet[7];
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new HashSet<>();
@@ -72,7 +73,9 @@ public class Kruskal {
         int nodes = graph.length;
         int[] captain = new int[nodes];
         // captain of i, stores the set with all the connected nodes to i
+        @SuppressWarnings("unchecked")
         HashSet<Integer>[] connectedGroups = new HashSet[nodes];
+        @SuppressWarnings("unchecked")
         HashSet<Edge>[] minGraph = new HashSet[nodes];
         PriorityQueue<Edge> edges = new PriorityQueue<>((Comparator.comparingInt(edge -> edge.weight)));
         for (int i = 0; i < nodes; i++) {

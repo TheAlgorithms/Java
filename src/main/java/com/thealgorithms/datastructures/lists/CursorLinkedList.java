@@ -11,6 +11,7 @@ import java.util.Objects;
  * index for the next node element.
  *
  */
+@SuppressWarnings("unchecked")
 public class CursorLinkedList<T> {
 
     private static class Node<T> {

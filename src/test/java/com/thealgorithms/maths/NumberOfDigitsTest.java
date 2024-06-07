@@ -32,6 +32,7 @@ public class NumberOfDigitsTest {
             {9, 987654321},
         };
 
+        @SuppressWarnings("unchecked")
         final IntFunction<Integer>[] methods = new IntFunction[] {NumberOfDigits::numberOfDigits, NumberOfDigits::numberOfDigitsFast, NumberOfDigits::numberOfDigitsFaster, NumberOfDigits::numberOfDigitsRecursion};
 
         return Stream.of(inputs).flatMap(input -> Stream.of(methods).map(method -> Arguments.of(input[0], input[1], method)));

@@ -125,6 +125,7 @@ public class DynamicArray<E> implements Iterable<E> {
         this.elements[this.size] = null;
     }
 
+    @SuppressWarnings("unchecked")
     private E getElement(final int index) {
         return (E) this.elements[index];
     }
