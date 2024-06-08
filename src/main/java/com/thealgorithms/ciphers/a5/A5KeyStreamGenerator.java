@@ -2,7 +2,7 @@ package com.thealgorithms.ciphers.a5;
 
 import java.util.BitSet;
 
-// TODO: raise exceptions for improper use
+
 public class A5KeyStreamGenerator extends CompositeLFSR {
 
     private BitSet initialFrameCounter;
