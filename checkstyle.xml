@@ -139,7 +139,7 @@
     <module name="MethodParamPad"/>
     <!-- TODO <module name="NoWhitespaceAfter"/> -->
     <module name="NoWhitespaceBefore"/>
-    <!-- TODO <module name="OperatorWrap"/> -->
+    <module name="OperatorWrap"/>
     <!-- TODO <module name="ParenPad"/> -->
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
