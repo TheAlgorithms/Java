@@ -7,7 +7,7 @@ package com.thealgorithms.others;
 import java.util.Scanner;
 
 final class RotateMatrixBy90Degrees  {
-    private RotateBy90Degrees() {
+    private RotateMatrixBy90Degrees() {
     }
 
     public static void main(String[] args) {

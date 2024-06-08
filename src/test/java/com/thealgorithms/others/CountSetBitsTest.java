@@ -9,9 +9,9 @@ public class CountSetBitsTest {
     @Test
     void testSetBits() {
         CountSetBits csb = new CountSetBits();
-        assertEquals(1L, csb.CountSetBits(16));
-        assertEquals(4, csb.CountSetBits(15));
-        assertEquals(5, csb.CountSetBits(10000));
-        assertEquals(5, csb.CountSetBits(31));
+        assertEquals(1L, csb.countSetBits(16));
+        assertEquals(4, csb.countSetBits(15));
+        assertEquals(5, csb.countSetBits(10000));
+        assertEquals(5, csb.countSetBits(31));
     }
 }

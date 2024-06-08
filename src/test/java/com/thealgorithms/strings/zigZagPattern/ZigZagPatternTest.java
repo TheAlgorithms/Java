@@ -9,7 +9,7 @@ public class ZigZagPatternTest {
     public void palindrome() {
         String input1 = "HelloWorldFromJava";
         String input2 = "javaIsAProgrammingLanguage";
-        Assertions.assertEquals(zigZagPattern.encode(input1, 4), "HooeWrrmalolFJvlda");
-        Assertions.assertEquals(zigZagPattern.encode(input2, 4), "jAaLgasPrmgaaevIrgmnnuaoig");
+        Assertions.assertEquals(ZigZagPattern.encode(input1, 4), "HooeWrrmalolFJvlda");
+        Assertions.assertEquals(ZigZagPattern.encode(input2, 4), "jAaLgasPrmgaaevIrgmnnuaoig");
     }
 }
