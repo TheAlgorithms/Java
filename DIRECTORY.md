@@ -18,6 +18,7 @@
             * [ParenthesesGenerator](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/ParenthesesGenerator.java)
             * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
+            * [SubsequenceFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/SubsequenceFinder.java)
             * [WordSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/WordSearch.java)
           * bitmanipulation
             * [BitSwap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BitSwap.java)
@@ -96,7 +97,7 @@
             * dynamicarray
               * [DynamicArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/dynamicarray/DynamicArray.java)
             * graphs
-              * [A Star](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/AStar.java)
+              * [AStar](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/AStar.java)
               * [BellmanFord](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/BellmanFord.java)
               * [BipartiteGrapfDFS](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/BipartiteGrapfDFS.java)
               * [BoruvkaAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithm.java)
@@ -141,7 +142,7 @@
               * [CreateAndDetectLoop](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/CreateAndDetectLoop.java)
               * [CursorLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/CursorLinkedList.java)
               * [DoublyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/DoublyLinkedList.java)
-              * [Merge K SortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/MergeKSortedLinkedlist.java)
+              * [MergeKSortedLinkedlist](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/MergeKSortedLinkedlist.java)
               * [MergeSortedArrayList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/MergeSortedArrayList.java)
               * [MergeSortedSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/MergeSortedSinglyLinkedList.java)
               * [QuickSortLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/QuickSortLinkedList.java)
@@ -564,7 +565,7 @@
             * [Upper](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Upper.java)
             * [ValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/ValidParentheses.java)
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
-            * ZigZagPattern
+            * zigZagPattern
               * [ZigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/ZigZagPattern.java)
   * test
     * java
@@ -580,6 +581,7 @@
             * [ParenthesesGeneratorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/ParenthesesGeneratorTest.java)
             * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
             * [PowerSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PowerSumTest.java)
+            * [SubsequenceFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/SubsequenceFinderTest.java)
             * [WordSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
           * bitmanipulation
             * [BitSwapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BitSwapTest.java)
@@ -909,5 +911,5 @@
             * [UpperTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/UpperTest.java)
             * [ValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/ValidParenthesesTest.java)
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
-            * ZigZagPattern
+            * zigZagPattern
               * [ZigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/ZigZagPatternTest.java)
