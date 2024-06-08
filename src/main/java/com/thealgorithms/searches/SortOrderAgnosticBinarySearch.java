@@ -1,6 +1,6 @@
 package com.thealgorithms.searches;
-public final class sortOrderAgnosticBinarySearch {
-    private sortOrderAgnosticBinarySearch() {
+public final class SortOrderAgnosticBinarySearch {
+    private SortOrderAgnosticBinarySearch() {
     }
     public static int find(int[] arr, int key) {
         int start = 0;

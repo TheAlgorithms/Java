@@ -3,7 +3,7 @@ package com.thealgorithms.strings.zigZagPattern;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class zigZagPatternTest {
+public class ZigZagPatternTest {
 
     @Test
     public void palindrome() {
