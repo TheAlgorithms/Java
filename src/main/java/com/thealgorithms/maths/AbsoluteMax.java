@@ -15,12 +15,18 @@ public final class AbsoluteMax {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
-        int absMax = numbers[0];
-        for (int i = 1; i < numbers.length; i++) {
-            if (Math.abs(numbers[i]) > Math.abs(absMax)) {
-                absMax = numbers[i];
+        
+        int maxPositive = Integer.MIN_VALUE;
+        int maxNegative = Integer.MIN_VALUE;
+        
+        for (int number : numbers) {
+            if (number >= 0 && number > maxPositive) {
+                maxPositive = number;
+            } else if (number < 0 && Math.abs(number) > Math.abs(maxNegative)) {
+                maxNegative = number;
             }
         }
-        return absMax;
+        
+        return Math.max(maxPositive, maxNegative);
     }
 }
