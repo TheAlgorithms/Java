@@ -2,8 +2,8 @@ package com.thealgorithms.strings;
 
 import java.util.HashMap;
 
-final class longestNonRepeativeSubstring {
-    private longestNonRepeativeSubstring() {
+final class LongestNonRepeativeSubstring {
+    private LongestNonRepeativeSubstring() {
     }
 
     public static int lengthOfLongestSubstring(String s) {
