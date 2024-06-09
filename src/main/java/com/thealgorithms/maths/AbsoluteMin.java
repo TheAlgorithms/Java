@@ -1,26 +1,34 @@
-package com.thealgorithms.maths;
-
-import java.util.Arrays;
-
 public final class AbsoluteMin {
-    private AbsoluteMin() {
-    }
+    private AbsoluteMin() {}
 
     /**
      * Compares the numbers given as arguments to get the absolute min value.
      *
      * @param numbers The numbers to compare
      * @return The absolute min value
+     * @throws IllegalArgumentException If the input array is empty
      */
     public static int getMinValue(int... numbers) {
         if (numbers.length == 0) {
             throw new IllegalArgumentException("Numbers array cannot be empty");
         }
 
-        var absMinWrapper = new Object() { int value = numbers[0]; };
+        int min = Math.abs(numbers[0]);
+        for (int number : numbers) {
+            int absValue = Math.abs(number);
+            if (absValue < min) {
+                min = absValue;
+            }
+        }
 
-        Arrays.stream(numbers).skip(1).filter(number -> Math.abs(number) < Math.abs(absMinWrapper.value)).forEach(number -> absMinWrapper.value = number);
+        // Determine the sign of the minimum value
+        for (int number : numbers) {
+            if (Math.abs(number) == min) {
+                return number;
+            }
+        }
 
-        return absMinWrapper.value;
+        // This line should never be reached
+        throw new IllegalStateException("Invalid state");
     }
 }
