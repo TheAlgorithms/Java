@@ -21,7 +21,7 @@ public final class LetterCombinationsOfPhoneNumber {
      * @return a list of possible letter combinations
      */
     public static List<String> getCombinations(int[] numbers) {
-        if (numbers == null || numbers.length == 0) {
+        if (numbers == null) {
             return List.of("");
         }
         return generateCombinations(numbers, 0, new StringBuilder());
