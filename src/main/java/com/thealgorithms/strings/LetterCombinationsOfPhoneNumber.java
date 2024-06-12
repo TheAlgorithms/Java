@@ -41,8 +41,13 @@ public final class LetterCombinationsOfPhoneNumber {
             return new ArrayList<>(Collections.singletonList(current.toString()));
         }
 
+        final var number = numbers[index];
+        if (number < 0 || number > 9) {
+            throw new IllegalArgumentException("Input numbers must in the range [0, 9]");
+        }
+
+        final String letters = KEYPAD.get(number); // Get corresponding letters for the current number
         List<String> combinations = new ArrayList<>();
-        final String letters = KEYPAD.get(numbers[index]); // Get corresponding letters for the current number
 
         // Iterate over each letter and recurse to generate further combinations
         for (char letter : letters.toCharArray()) {
