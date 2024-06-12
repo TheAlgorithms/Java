@@ -42,7 +42,7 @@ public final class LetterCombinationsOfPhoneNumber {
         }
 
         List<String> combinations = new ArrayList<>();
-        String letters = MAP_OF_CHARS.get(numbers[index]); // Get corresponding letters for the current number
+        final String letters = MAP_OF_CHARS.get(numbers[index]); // Get corresponding letters for the current number
 
         // Iterate over each letter and recurse to generate further combinations
         for (char letter : letters.toCharArray()) {
