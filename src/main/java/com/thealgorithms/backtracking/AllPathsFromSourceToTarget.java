@@ -17,7 +17,7 @@ public final class AllPathsFromSourceToTarget {
     private AllPathsFromSourceToTarget(int vertices) {
         this.vertexCount = vertices;
         this.allPaths = new ArrayList<>();
-        this.adjList = new ArrayList[vertices];
+        this.adjList = new List[vertices];
         initializeAdjacencyList();
     }
 
@@ -46,7 +46,7 @@ public final class AllPathsFromSourceToTarget {
      * @param destination The ending vertex of the path search.
      * @return A list containing all the found paths represented as lists of vertex indices.
      */
-    private List<List<Integer>> findAllPaths(int source, int destination) {
+    private List<List<Integer>> findAllPathsStart(int source, int destination) {
         boolean[] visited = new boolean[vertexCount];
         List<Integer> currentPath = new ArrayList<>();
         currentPath.add(source);
@@ -94,6 +94,6 @@ public final class AllPathsFromSourceToTarget {
         for (int[] i : a) {
             g.addEdge(i[0], i[1]);
         }
-        return g.findAllPaths(source, destination);
+        return g.findAllPathsStart(source, destination);
     }
 }
