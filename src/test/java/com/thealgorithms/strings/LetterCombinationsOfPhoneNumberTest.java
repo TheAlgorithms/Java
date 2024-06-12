@@ -1,45 +1,38 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LetterCombinationsOfPhoneNumberTest {
 
-    @Test
-    public void letterCombinationsOfPhoneNumber() {
-        LetterCombinationsOfPhoneNumber.generateNumberToCharMap();
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    public void testLetterCombinationsOfPhoneNumber(int[] numbers, List<String> expectedOutput) {
+        assertEquals(expectedOutput, LetterCombinationsOfPhoneNumber.getCombinations(numbers));
+    }
 
-        // ** Test 1 **
-        // Input: digits = ""
-        // Output: []
-        int[] numbers1 = {};
-        List<String> output1 = Arrays.asList("");
-        assertTrue(LetterCombinationsOfPhoneNumber.printWords(numbers1, numbers1.length, 0, "").equals(output1));
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                // Test case 1:
+                Arguments.of(new int[]{}, List.of("")),
 
-        // ** Test 2 **
-        // Input: digits = "2"
-        // Output: ["a","b","c"]
-        int[] numbers2 = {2};
-        List<String> output2 = Arrays.asList("a", "b", "c");
-        assertTrue(LetterCombinationsOfPhoneNumber.printWords(numbers2, numbers2.length, 0, "").equals(output2));
+                // Test case 2:
+                Arguments.of(new int[]{2}, Arrays.asList("a", "b", "c")),
 
-        // ** Test 3 **
-        // Input: digits = "23"
-        // Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        int[] numbers3 = {2, 3};
-        List<String> output3 = Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf");
-        assertTrue(LetterCombinationsOfPhoneNumber.printWords(numbers3, numbers3.length, 0, "").equals(output3));
+                // Test case 3:
+                Arguments.of(new int[]{2, 3}, Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")),
 
-        // ** Test 4 **
-        // Input: digits = "234"
-        // Output: ["adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi",
-        // "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh",
-        // "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi"]
-        int[] numbers4 = {2, 3, 4};
-        List<String> output4 = Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi");
-        assertTrue(LetterCombinationsOfPhoneNumber.printWords(numbers4, numbers4.length, 0, "").equals(output4));
+                // Test case 4:
+                Arguments.of(new int[]{2, 3, 4}, Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi",
+                        "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi",
+                        "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi"))
+        );
     }
 }
