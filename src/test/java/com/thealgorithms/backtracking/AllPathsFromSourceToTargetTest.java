@@ -14,7 +14,7 @@ public class AllPathsFromSourceToTargetTest {
         int source = 2;
         int destination = 3;
         List<List<Integer>> expected = List.of(List.of(2, 0, 1, 3), List.of(2, 0, 3), List.of(2, 1, 3));
-        List<List<Integer>> actual = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices, a, source, destination);
+        List<List<Integer>> actual = AllPathsFromSourceToTarget.findAllPaths(vertices, a, source, destination);
 
         assertIterableEquals(expected, actual);
     }
@@ -26,7 +26,7 @@ public class AllPathsFromSourceToTargetTest {
         int source = 0;
         int destination = 4;
         List<List<Integer>> expected = List.of(List.of(0, 1, 3, 4), List.of(0, 1, 4), List.of(0, 2, 1, 3, 4), List.of(0, 2, 1, 4), List.of(0, 2, 4), List.of(0, 3, 4));
-        List<List<Integer>> actual = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices, a, source, destination);
+        List<List<Integer>> actual = AllPathsFromSourceToTarget.findAllPaths(vertices, a, source, destination);
 
         assertIterableEquals(expected, actual);
     }
@@ -38,19 +38,19 @@ public class AllPathsFromSourceToTargetTest {
         int source = 1;
         int destination = 5;
         List<List<Integer>> expected = List.of(List.of(1, 0, 2, 5), List.of(1, 0, 5), List.of(1, 5), List.of(1, 2, 5));
-        List<List<Integer>> actual = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices, a, source, destination);
+        List<List<Integer>> actual = AllPathsFromSourceToTarget.findAllPaths(vertices, a, source, destination);
 
         assertIterableEquals(expected, actual);
     }
 
     @Test
-    void testForFourthcase() {
+    void testForFourthCase() {
         int vertices = 3;
         int[][] a = {{0, 1}, {0, 2}, {1, 2}};
         int source = 0;
         int destination = 2;
         List<List<Integer>> expected = List.of(List.of(0, 1, 2), List.of(0, 2));
-        List<List<Integer>> actual = AllPathsFromSourceToTarget.allPathsFromSourceToTarget(vertices, a, source, destination);
+        List<List<Integer>> actual = AllPathsFromSourceToTarget.findAllPaths(vertices, a, source, destination);
 
         assertIterableEquals(expected, actual);
     }
