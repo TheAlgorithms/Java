@@ -8,7 +8,7 @@ import java.util.Map;
 public final class LetterCombinationsOfPhoneNumber {
 
     // Mapping of numbers to corresponding letters on a phone keypad
-    private static final Map<Integer, String> numberToCharMap = Map.of( //
+    private static final Map<Integer, String> MAP_OF_CHARS = Map.of( //
         0, "", //
         1, "", //
         2, "abc", //
@@ -53,7 +53,7 @@ public final class LetterCombinationsOfPhoneNumber {
         }
 
         List<String> combinations = new ArrayList<>();
-        String letters = numberToCharMap.get(numbers[index]); // Get corresponding letters for the current number
+        String letters = MAP_OF_CHARS.get(numbers[index]); // Get corresponding letters for the current number
 
         // Iterate over each letter and recurse to generate further combinations
         for (char letter : letters.toCharArray()) {
