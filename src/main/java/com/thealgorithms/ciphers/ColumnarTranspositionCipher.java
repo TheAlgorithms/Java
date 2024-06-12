@@ -10,6 +10,9 @@ public class ColumnarTranspositionCipher {
 
     private static final char PADDING_CHAR = '≈';
 
+    private ColumnarTranspositionCipher() {
+    }
+
     /**
      * Encrypts a message using the Columnar Transposition Cipher with the given key.
      *
