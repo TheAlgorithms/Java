@@ -47,7 +47,7 @@ public final class LetterCombinationsOfPhoneNumber {
         // Iterate over each letter and recurse to generate further combinations
         for (char letter : letters.toCharArray()) {
             current.append(letter); // Append the current letter
-            combinations.addAll(generateCombinations(numbers, index + 1, current)); // Recursive call
+            combinations.addAll(generateCombinations(numbers, index + 1, current));
             current.deleteCharAt(current.length() - 1); // Backtrack by removing the last appended letter
         }
 
