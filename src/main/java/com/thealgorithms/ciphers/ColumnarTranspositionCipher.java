@@ -116,7 +116,7 @@ public final class ColumnarTranspositionCipher {
      * order to respect the Columnar Transposition Cipher Rule.
      */
     private static int numberOfRows(String word) {
-        if (word.length() / keyword.length() > word.length() / keyword.length()) {
+        if (word.length() / keyword.length() > keyword.length() / word.length()) {
             return (word.length() / keyword.length()) + 1;
         } else {
             return word.length() / keyword.length();
