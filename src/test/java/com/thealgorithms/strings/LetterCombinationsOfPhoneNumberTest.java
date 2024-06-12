@@ -17,24 +17,8 @@ public class LetterCombinationsOfPhoneNumberTest {
         assertEquals(expectedOutput, LetterCombinationsOfPhoneNumber.getCombinations(numbers));
     }
 
-    private static Stream<Arguments> provideTestCases() {
-        return Stream.of(
-            // Test case null:
-            Arguments.of(null, List.of("")),
-
-            // Tesc case 1:
-            Arguments.of(new int[] {}, List.of("")),
-
-            // Test case 2:
-            Arguments.of(new int[] {2}, Arrays.asList("a", "b", "c")),
-
-            // Test case 3:
-            Arguments.of(new int[] {2, 3}, Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")),
-
-            // Test case 4:
-            Arguments.of(new int[] {2, 3, 4},
-                Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", //
-                    "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", //
-                    "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi")));
+        private static Stream<Arguments> provideTestCases() {
+        return Stream.of(Arguments.of(null, List.of("")), Arguments.of(new int[] {}, List.of("")), Arguments.of(new int[] {2}, Arrays.asList("a", "b", "c")), Arguments.of(new int[] {2, 3}, Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")),
+            Arguments.of(new int[] {2, 3, 4}, Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi")));
     }
 }
