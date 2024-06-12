@@ -53,15 +53,4 @@ public final class LetterCombinationsOfPhoneNumber {
 
         return combinations;
     }
-
-    /**
-     * Main method for testing the letter combination generation.
-     *
-     * @param args command line arguments
-     */
-    public static void main(String[] args) {
-        int[] numbers = {2, 3, 4};
-        List<String> combinations = getCombinations(numbers);
-        combinations.forEach(System.out::println); // Print each combination
-    }
 }
