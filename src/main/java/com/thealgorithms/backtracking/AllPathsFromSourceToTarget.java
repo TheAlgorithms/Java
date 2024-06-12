@@ -8,7 +8,7 @@ import java.util.List;
  * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
  * (Note: This algorithm finds all paths, not the shortest paths).
  */
-public class AllPathsFromSourceToTarget {
+public final class AllPathsFromSourceToTarget {
 
     private final int vertexCount;
     private final List<List<Integer>> allPaths;
@@ -79,7 +79,6 @@ public class AllPathsFromSourceToTarget {
 
         visited[source] = false;
     }
-
 
     /**
      * Finds all possible paths from a given source vertex to a destination vertex in the graph.
