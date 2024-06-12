@@ -1,5 +1,7 @@
 package com.thealgorithms.backtracking;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -11,21 +13,23 @@ public class CombinationTest {
     @Test
     void testNoElement() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 0);
-        assertTrue(result == null);
+        assertNull(result);
     }
 
     @Test
     void testLengthOne() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 1);
-        assertTrue(result.get(0).iterator().next() == 1);
-        assertTrue(result.get(1).iterator().next() == 2);
+        assert result != null;
+        assertEquals(1, (int) result.get(0).getFirst());
+        assertEquals(2, (int) result.get(1).getFirst());
     }
 
     @Test
     void testLengthTwo() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 2);
-        Integer[] arr = result.get(0).toArray(new Integer[2]);
-        assertTrue(arr[0] == 1);
-        assertTrue(arr[1] == 2);
+        assert result != null;
+        Integer[] arr = result.getFirst().toArray(new Integer[2]);
+        assertEquals(1, (int) arr[0]);
+        assertEquals(2, (int) arr[1]);
     }
 }
