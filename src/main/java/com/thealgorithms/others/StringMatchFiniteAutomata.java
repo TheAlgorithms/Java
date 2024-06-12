@@ -60,7 +60,7 @@ public final class StringMatchFiniteAutomata {
             state = finiteAutomata[state][text.charAt(i)];
 
             if (state == patternLength) {
-                indexFound.add((i - patternLength + 1));
+                indexFound.add(i - patternLength + 1);
             }
         }
         return indexFound;
