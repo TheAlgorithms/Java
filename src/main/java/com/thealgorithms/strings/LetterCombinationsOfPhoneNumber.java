@@ -11,7 +11,6 @@ public final class LetterCombinationsOfPhoneNumber {
     private static final Map<Integer, String> MAP_OF_CHARS = Map.of(0, "", 1, "", 2, "abc", 3, "def", 4, "ghi", 5, "jkl", 6, "mno", 7, "pqrs", 8, "tuv", 9, "wxyz");
 
     private LetterCombinationsOfPhoneNumber() {
-        // Prevent instantiation
     }
 
     /**
