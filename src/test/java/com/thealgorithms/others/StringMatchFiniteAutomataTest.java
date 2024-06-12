@@ -17,15 +17,14 @@ class StringMatchFiniteAutomataTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(
-                Arguments.of("abcbcabc", "abc", Set.of(0, 5)), //
-                Arguments.of("", "abc", Set.of()), //
-                Arguments.of("abcdefg", "xyz", Set.of()), //
-                Arguments.of("abcde", "", Set.of(1, 2, 3, 4, 5)), //
-                Arguments.of("abcabcabc", "abc", Set.of(0, 3, 6)), //
-                Arguments.of("abcabcabc", "abcabcabc", Set.of(0)), //
-                Arguments.of("aaabbbaaa", "aaa", Set.of(0, 6)), //
-                Arguments.of("abcdefg", "efg", Set.of(4))//
+        return Stream.of(Arguments.of("abcbcabc", "abc", Set.of(0, 5)), //
+            Arguments.of("", "abc", Set.of()), //
+            Arguments.of("abcdefg", "xyz", Set.of()), //
+            Arguments.of("abcde", "", Set.of(1, 2, 3, 4, 5)), //
+            Arguments.of("abcabcabc", "abc", Set.of(0, 3, 6)), //
+            Arguments.of("abcabcabc", "abcabcabc", Set.of(0)), //
+            Arguments.of("aaabbbaaa", "aaa", Set.of(0, 6)), //
+            Arguments.of("abcdefg", "efg", Set.of(4)) //
         );
     }
 }
