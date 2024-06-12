@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Columnar Transposition Cipher Encryption and Decryption.
  */
-public class ColumnarTranspositionCipher {
+public final class ColumnarTranspositionCipher {
 
     private static final char PADDING_CHAR = '≈';
 
@@ -119,16 +119,5 @@ public class ColumnarTranspositionCipher {
 
         Arrays.sort(order, Comparator.comparingInt(o -> keyChars[o]));
         return order;
-    }
-
-    public static void main(String[] args) {
-        String keywordForExample = "asd215";
-        String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
-        System.out.println("### Example of Columnar Transposition Cipher ###\n");
-        System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        String encryptedMessage = ColumnarTranspositionCipher.encrypt(wordBeingEncrypted, keywordForExample);
-        System.out.println("Word encrypted ->>> " + encryptedMessage);
-        System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypt(encryptedMessage, keywordForExample));
-
     }
 }
