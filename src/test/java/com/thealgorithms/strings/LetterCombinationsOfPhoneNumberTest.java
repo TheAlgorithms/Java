@@ -19,7 +19,10 @@ public class LetterCombinationsOfPhoneNumberTest {
 
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(
-            // Test case 1:
+            // Test case null:
+            Arguments.of(null, List.of("")),
+
+            // Tesc case 1:
             Arguments.of(new int[] {}, List.of("")),
 
             // Test case 2:
