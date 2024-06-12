@@ -146,7 +146,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.22.0</version>
+                <version>3.23.0</version>
                 <configuration>
                     <printFailingErrors>true</printFailingErrors>
                     <includeTests>true</includeTests>
