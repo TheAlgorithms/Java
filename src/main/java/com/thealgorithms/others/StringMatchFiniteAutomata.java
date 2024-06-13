@@ -11,7 +11,7 @@ import java.util.TreeSet;
 public final class StringMatchFiniteAutomata {
 
     // Constants
-    private static final int CHARS = 256; // Total number of characters in the input alphabet
+    private static final int CHARS = Character.MAX_VALUE + 1; // Total number of characters in the input alphabet
 
     // Private constructor to prevent instantiation
     private StringMatchFiniteAutomata() {
