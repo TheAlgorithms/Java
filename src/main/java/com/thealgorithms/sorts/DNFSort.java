@@ -13,24 +13,24 @@ public final class DNFSort {
         int temp;
         while (mid <= high) {
             switch (a[mid]) {
-            case 0: {
+            case 0:
                 temp = a[low];
                 a[low] = a[mid];
                 a[mid] = temp;
                 low++;
                 mid++;
                 break;
-            }
+
             case 1:
                 mid++;
                 break;
-            case 2: {
+            case 2:
                 temp = a[mid];
                 a[mid] = a[high];
                 a[high] = temp;
                 high--;
                 break;
-            }
+
             default:
                 throw new IllegalArgumentException("Unexpected value: " + a[mid]);
             }
