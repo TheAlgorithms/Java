@@ -31,7 +31,9 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
     }
 
     public BitSet getNextKeyStream() {
-        for (int cycle = 1; cycle <= INITIAL_CLOCKING_CYCLES; ++cycle) this.clock();
+        for (int cycle = 1; cycle <= INITIAL_CLOCKING_CYCLES; ++cycle) {
+            this.clock();
+        }
 
         BitSet result = new BitSet(KEY_STREAM_LENGTH);
         for (int cycle = 1; cycle <= KEY_STREAM_LENGTH; ++cycle) {

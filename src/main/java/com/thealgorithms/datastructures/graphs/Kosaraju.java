@@ -127,7 +127,9 @@ public class Kosaraju {
     private void dfs(int node, int[] vis, List<List<Integer>> list) {
         vis[node] = 1;
         for (Integer neighbour : list.get(node)) {
-            if (vis[neighbour] == 0) dfs(neighbour, vis, list);
+            if (vis[neighbour] == 0) {
+                dfs(neighbour, vis, list);
+            }
         }
         stack.push(node);
     }
@@ -136,7 +138,9 @@ public class Kosaraju {
     private void dfs2(int node, int[] vis, List<List<Integer>> list) {
         vis[node] = 1;
         for (Integer neighbour : list.get(node)) {
-            if (vis[neighbour] == 0) dfs2(neighbour, vis, list);
+            if (vis[neighbour] == 0) {
+                dfs2(neighbour, vis, list);
+            }
         }
         scc.add(node);
     }

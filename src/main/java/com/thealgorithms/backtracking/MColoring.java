@@ -59,7 +59,9 @@ public final class MColoring {
                     // If number of colors used exceeds m,
                     // return 0
                     maxColors = Math.max(maxColors, Math.max(nodes.get(top).color, nodes.get(it).color));
-                    if (maxColors > m) return 0;
+                    if (maxColors > m) {
+                        return 0;
+                    }
 
                     // If the adjacent node is not visited,
                     // mark it visited and push it in queue
