@@ -63,7 +63,7 @@ public class SimpsonIntegration {
             if (i == 0 || i == data.size() - 1) {
                 integralEvaluation += data.get(i);
                 System.out.println("Multiply f(x" + i + ") by 1");
-            } else if (i % 2 == 1) {
+            } else if (i % 2 != 0) {
                 integralEvaluation += (double) 4 * data.get(i);
                 System.out.println("Multiply f(x" + i + ") by 4");
             } else {
