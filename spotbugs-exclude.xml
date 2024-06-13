@@ -223,9 +223,6 @@
         <Bug pattern="IMC_IMMATURE_CLASS_BAD_SERIALVERSIONUID" />
     </Match>
     <Match>
-        <Bug pattern="SUI_CONTAINS_BEFORE_ADD" />
-    </Match>
-    <Match>
         <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
     </Match>
     <Match>
