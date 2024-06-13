@@ -13,9 +13,6 @@ public final class StringMatchFiniteAutomata {
     // Constants
     private static final int CHARS = 256; // Total number of characters in the input alphabet
 
-    // Finite automata table
-    private static int[][] finiteAutomata;
-
     // Private constructor to prevent instantiation
     private StringMatchFiniteAutomata() {
     }
@@ -26,25 +23,16 @@ public final class StringMatchFiniteAutomata {
      * @param text    The text to search within.
      * @param pattern The pattern to search for.
      */
-    public static Set<Integer> searchPattern(String text, String pattern) {
+    public static Set<Integer> searchPattern(final String text, final String pattern) {
+        final var stateTransitionTable = computeStateTransitionTable(pattern);
+        FiniteAutomata finiteAutomata = new FiniteAutomata(stateTransitionTable);
+
         Set<Integer> indexFound = new TreeSet<>();
-        int patternLength = pattern.length();
-        int textLength = text.length();
+        for (int i = 0; i < text.length(); i++) {
+            finiteAutomata.consume(text.charAt(i));
 
-        // Initialize finite automata table
-        finiteAutomata = new int[patternLength + 1][CHARS];
-
-        // Preprocess the pattern to create the finite automata table
-        computeFiniteAutomata(pattern, patternLength);
-
-        int state = 0; // Initial state
-
-        // Process the text over the finite automata
-        for (int i = 0; i < textLength; i++) {
-            state = finiteAutomata[state][text.charAt(i)];
-
-            if (state == patternLength) {
-                indexFound.add(i - patternLength + 1);
+            if (finiteAutomata.getState() == pattern.length()) {
+                indexFound.add(i - pattern.length() + 1);
             }
         }
         return indexFound;
@@ -53,15 +41,20 @@ public final class StringMatchFiniteAutomata {
     /**
      * Computes the finite automata table for the given pattern.
      *
-     * @param pattern       The pattern to preprocess.
-     * @param patternLength The length of the pattern.
+     * @param pattern The pattern to preprocess.
+     * @return The state transition table.
      */
-    private static void computeFiniteAutomata(String pattern, int patternLength) {
+    private static int[][] computeStateTransitionTable(final String pattern) {
+        int patternLength = pattern.length();
+        int[][] stateTransitionTable = new int[patternLength + 1][CHARS];
+
         for (int state = 0; state <= patternLength; ++state) {
             for (int x = 0; x < CHARS; ++x) {
-                finiteAutomata[state][x] = getNextState(pattern, patternLength, state, x);
+                stateTransitionTable[state][x] = getNextState(pattern, patternLength, state, x);
             }
         }
+
+        return stateTransitionTable;
     }
 
     /**
@@ -73,7 +66,7 @@ public final class StringMatchFiniteAutomata {
      * @param x             The current character from the input alphabet.
      * @return The next state.
      */
-    private static int getNextState(String pattern, int patternLength, int state, int x) {
+    private static int getNextState(final String pattern, final int patternLength, final int state, final int x) {
         // If the current state is less than the length of the pattern
         // and the character matches the pattern character, go to the next state
         if (state < patternLength && x == pattern.charAt(state)) {
@@ -98,5 +91,36 @@ public final class StringMatchFiniteAutomata {
 
         // If no prefix which is also a suffix is found, return 0
         return 0;
+    }
+
+    /**
+     * A class representing the finite automata for pattern matching.
+     */
+    private static class FiniteAutomata {
+        private int state;
+        private final int[][] stateTransitionTable;
+
+        public FiniteAutomata(int[][] stateTransitionTable) {
+            this.stateTransitionTable = stateTransitionTable;
+            this.state = 0; // Initial state
+        }
+
+        /**
+         * Consumes an input character and transitions to the next state.
+         *
+         * @param input The input character.
+         */
+        public void consume(final char input) {
+            state = stateTransitionTable[state][input];
+        }
+
+        /**
+         * Gets the current state of the finite automata.
+         *
+         * @return The current state.
+         */
+        public int getState() {
+            return state;
+        }
     }
 }
