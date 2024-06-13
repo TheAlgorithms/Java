@@ -96,7 +96,9 @@ public class Anagrams {
                 b[t.charAt(i) - 'a']++;
             }
             for (int i = 0; i < 26; i++) {
-                if (a[i] != b[i]) return false;
+                if (a[i] != b[i]) {
+                    return false;
+                }
             }
             return true;
         }

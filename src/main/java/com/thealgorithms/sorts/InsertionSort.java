@@ -38,12 +38,17 @@ class InsertionSort implements SortAlgorithm {
     public <T extends Comparable<T>> T[] sentinelSort(T[] array) {
         int minElemIndex = 0;
         int n = array.length;
-        if (n < 1) return array;
+        if (n < 1) {
+            return array;
+        }
 
         // put the smallest element to the 0 position as a sentinel, which will allow us to avoid
         // redundant comparisons like `j > 0` further
-        for (int i = 1; i < n; i++)
-            if (SortUtils.less(array[i], array[minElemIndex])) minElemIndex = i;
+        for (int i = 1; i < n; i++) {
+            if (SortUtils.less(array[i], array[minElemIndex])) {
+                minElemIndex = i;
+            }
+        }
         SortUtils.swap(array, 0, minElemIndex);
 
         for (int i = 2; i < n; i++) {

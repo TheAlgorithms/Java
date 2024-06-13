@@ -9,7 +9,9 @@ public final class StrandSort {
 
     // note: the input list is destroyed
     public static <E extends Comparable<? super E>> LinkedList<E> strandSort(LinkedList<E> list) {
-        if (list.size() <= 1) return list;
+        if (list.size() <= 1) {
+            return list;
+        }
 
         LinkedList<E> result = new LinkedList<E>();
         while (list.size() > 0) {
@@ -31,10 +33,11 @@ public final class StrandSort {
         LinkedList<E> result = new LinkedList<E>();
         while (!left.isEmpty() && !right.isEmpty()) {
             // change the direction of this comparison to change the direction of the sort
-            if (left.peek().compareTo(right.peek()) <= 0)
+            if (left.peek().compareTo(right.peek()) <= 0) {
                 result.add(left.remove());
-            else
+            } else {
                 result.add(right.remove());
+            }
         }
         result.addAll(left);
         result.addAll(right);

@@ -36,7 +36,9 @@ public final class InorderTraversal {
 
     public static List<Integer> iterativeInorder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
-        if (root == null) return result;
+        if (root == null) {
+            return result;
+        }
 
         Deque<BinaryTree.Node> stack = new ArrayDeque<>();
         while (!stack.isEmpty() || root != null) {

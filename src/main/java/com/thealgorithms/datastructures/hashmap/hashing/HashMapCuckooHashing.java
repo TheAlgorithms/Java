@@ -188,12 +188,14 @@ public class HashMapCuckooHashing {
             throw new IllegalArgumentException("Table is empty");
         }
 
-        if (Objects.equals(buckets[hash], wrappedInt)) return hash;
+        if (Objects.equals(buckets[hash], wrappedInt)) {
+            return hash;
+        }
 
         hash = hashFunction2(key);
-        if (!Objects.equals(buckets[hash], wrappedInt))
+        if (!Objects.equals(buckets[hash], wrappedInt)) {
             throw new IllegalArgumentException("Key " + key + " not found in table");
-        else {
+        } else {
             return hash;
         }
     }

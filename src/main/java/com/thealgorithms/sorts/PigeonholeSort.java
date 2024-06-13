@@ -12,7 +12,9 @@ public class PigeonholeSort {
     void sort(Integer[] array) {
         int maxElement = array[0];
         for (int element : array) {
-            if (element > maxElement) maxElement = element;
+            if (element > maxElement) {
+                maxElement = element;
+            }
         }
 
         int numOfPigeonholes = 1 + maxElement;
