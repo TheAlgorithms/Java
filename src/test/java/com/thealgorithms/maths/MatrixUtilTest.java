@@ -12,19 +12,19 @@ class MatrixUtilTest {
     void add() {
         final BigDecimal[][] matrix1 = {
             {new BigDecimal(3), new BigDecimal(2)},
-            {new BigDecimal(0), new BigDecimal(1)},
+            {BigDecimal.ZERO, BigDecimal.ONE},
         };
 
         final BigDecimal[][] matrix2 = {
-            {new BigDecimal(1), new BigDecimal(3)},
-            {new BigDecimal(2), new BigDecimal(0)},
+            {BigDecimal.ONE, new BigDecimal(3)},
+            {new BigDecimal(2), BigDecimal.ZERO},
         };
 
         final BigDecimal[][] actual = MatrixUtil.add(matrix1, matrix2).orElseThrow(() -> new AssertionError("Could not compute matrix!"));
 
         final BigDecimal[][] expected = {
             {new BigDecimal(4), new BigDecimal(5)},
-            {new BigDecimal(2), new BigDecimal(1)},
+            {new BigDecimal(2), BigDecimal.ONE},
         };
 
         assertTrue(Objects.deepEquals(actual, expected));
@@ -32,12 +32,12 @@ class MatrixUtilTest {
     @Test
     void subtract() {
         final BigDecimal[][] matrix1 = {
-            {new BigDecimal(1), new BigDecimal(4)},
+            {BigDecimal.ONE, new BigDecimal(4)},
             {new BigDecimal(5), new BigDecimal(6)},
         };
 
         final BigDecimal[][] matrix2 = {
-            {new BigDecimal(2), new BigDecimal(0)},
+            {new BigDecimal(2), BigDecimal.ZERO},
             {new BigDecimal(-2), new BigDecimal(-3)},
         };
 
@@ -55,13 +55,13 @@ class MatrixUtilTest {
     void multiply() {
 
         final BigDecimal[][] matrix1 = {
-            {new BigDecimal(1), new BigDecimal(2), new BigDecimal(3)},
+            {BigDecimal.ONE, new BigDecimal(2), new BigDecimal(3)},
             {new BigDecimal(4), new BigDecimal(5), new BigDecimal(6)},
             {new BigDecimal(7), new BigDecimal(8), new BigDecimal(9)},
         };
 
         final BigDecimal[][] matrix2 = {
-            {new BigDecimal(1), new BigDecimal(2)},
+            {BigDecimal.ONE, new BigDecimal(2)},
             {new BigDecimal(3), new BigDecimal(4)},
             {new BigDecimal(5), new BigDecimal(6)},
         };
