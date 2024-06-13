@@ -45,7 +45,7 @@ public final class StringMatchFiniteAutomata {
      * @return The state transition table.
      */
     private static int[][] computeStateTransitionTable(final String pattern) {
-        int patternLength = pattern.length();
+        final int patternLength = pattern.length();
         int[][] stateTransitionTable = new int[patternLength + 1][CHARS];
 
         for (int state = 0; state <= patternLength; ++state) {
