@@ -45,7 +45,6 @@ public final class LetterCombinationsOfPhoneNumber {
             throw new IllegalArgumentException("Input numbers must in the range [0, 9]");
         }
 
-        final String letters = KEYPAD.get(number); // Get corresponding letters for the current number
         List<String> combinations = new ArrayList<>();
 
         // Iterate over each letter and recurse to generate further combinations
