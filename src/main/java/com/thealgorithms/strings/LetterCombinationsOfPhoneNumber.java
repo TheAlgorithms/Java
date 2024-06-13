@@ -6,8 +6,10 @@ import java.util.List;
 
 public final class LetterCombinationsOfPhoneNumber {
 
+    private static final char EMPTY = '\0';
+
     // Mapping of numbers to corresponding letters on a phone keypad
-    private static final String[] KEYPAD = new String[] {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    private static final String[] KEYPAD = new String[] {" ", EMPTY + "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     private LetterCombinationsOfPhoneNumber() {
     }
@@ -49,9 +51,13 @@ public final class LetterCombinationsOfPhoneNumber {
 
         // Iterate over each letter and recurse to generate further combinations
         for (char letter : KEYPAD[number].toCharArray()) {
-            current.append(letter);
+            if (letter != EMPTY) {
+                current.append(letter);
+            }
             combinations.addAll(generateCombinations(numbers, index + 1, current));
-            current.deleteCharAt(current.length() - 1); // Backtrack by removing the last appended letter
+            if (letter != EMPTY) {
+                current.deleteCharAt(current.length() - 1); // Backtrack by removing the last appended letter
+            }
         }
 
         return combinations;
