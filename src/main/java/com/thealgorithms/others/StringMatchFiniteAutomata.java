@@ -96,11 +96,11 @@ public final class StringMatchFiniteAutomata {
     /**
      * A class representing the finite automata for pattern matching.
      */
-    private static class FiniteAutomata {
+    private static final class FiniteAutomata {
         private int state;
         private final int[][] stateTransitionTable;
 
-        public FiniteAutomata(int[][] stateTransitionTable) {
+        private FiniteAutomata(int[][] stateTransitionTable) {
             this.stateTransitionTable = stateTransitionTable;
             this.state = 0; // Initial state
         }
@@ -110,7 +110,7 @@ public final class StringMatchFiniteAutomata {
          *
          * @param input The input character.
          */
-        public void consume(final char input) {
+        private void consume(final char input) {
             state = stateTransitionTable[state][input];
         }
 
@@ -119,7 +119,7 @@ public final class StringMatchFiniteAutomata {
          *
          * @return The current state.
          */
-        public int getState() {
+        private int getState() {
             return state;
         }
     }
