@@ -81,8 +81,7 @@ class Graph<E extends Comparable<E>> {
         Set<Node> markedNodes = new HashSet<Node>();
 
         for (Node n : nodeList) {
-            if (!markedNodes.contains(n)) {
-                markedNodes.add(n);
+            if (markedNodes.add(n)) {
                 markedNodes.addAll(depthFirstSearch(n, new ArrayList<Node>()));
                 count++;
             }
