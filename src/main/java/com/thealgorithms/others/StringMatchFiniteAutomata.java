@@ -1,6 +1,5 @@
 package com.thealgorithms.others;
 
-import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -19,21 +18,6 @@ public final class StringMatchFiniteAutomata {
 
     // Private constructor to prevent instantiation
     private StringMatchFiniteAutomata() {
-    }
-
-    public static void main(String[] args) {
-        // Scanner instance for user input
-        try (Scanner scanner = new Scanner(System.in);) {
-
-            System.out.println("Enter text:");
-            String text = scanner.nextLine();
-
-            System.out.println("Enter pattern:");
-            String pattern = scanner.nextLine();
-
-            Set<Integer> indexFound = searchPattern(text, pattern);
-            indexFound.forEach(System.out::println);
-        }
     }
 
     /**
