@@ -140,7 +140,7 @@
     <!-- TODO <module name="NoWhitespaceAfter"/> -->
     <module name="NoWhitespaceBefore"/>
     <module name="OperatorWrap"/>
-    <!-- TODO <module name="ParenPad"/> -->
+    <module name="ParenPad"/>
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
     <!-- TODO <module name="WhitespaceAround"/> -->
