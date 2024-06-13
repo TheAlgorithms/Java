@@ -7,7 +7,7 @@ import java.util.List;
 public final class LetterCombinationsOfPhoneNumber {
 
     // Mapping of numbers to corresponding letters on a phone keypad
-    private static final List<String> KEYPAD = List.of(" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz");
+    private static final String[] KEYPAD = new String[] {" ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     private LetterCombinationsOfPhoneNumber() {
     }
