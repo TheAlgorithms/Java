@@ -49,7 +49,7 @@ public final class LetterCombinationsOfPhoneNumber {
         List<String> combinations = new ArrayList<>();
 
         // Iterate over each letter and recurse to generate further combinations
-        for (char letter : letters.toCharArray()) {
+        for (char letter : KEYPAD[number].toCharArray()) {
             current.append(letter);
             combinations.addAll(generateCombinations(numbers, index + 1, current));
             current.deleteCharAt(current.length() - 1); // Backtrack by removing the last appended letter
