@@ -1,6 +1,6 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class LetterCombinationsOfPhoneNumberTest {
     @ParameterizedTest
     @MethodSource("provideTestCases")
     public void testLetterCombinationsOfPhoneNumber(int[] numbers, List<String> expectedOutput) {
-        assertLinesMatch(expectedOutput, LetterCombinationsOfPhoneNumber.getCombinations(numbers));
+        assertEquals(expectedOutput, LetterCombinationsOfPhoneNumber.getCombinations(numbers));
     }
 
     @ParameterizedTest
