@@ -1,9 +1,8 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
