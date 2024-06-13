@@ -67,10 +67,11 @@ public class RecursiveBinarySearch<T extends Comparable<T>> extends SearchAlgori
             RecursiveBinarySearch<Integer> searcher = new RecursiveBinarySearch<>();
             int res = searcher.find(a, t);
 
-            if (res == -1)
+            if (res == -1) {
                 System.out.println("Element not found in the array.");
-            else
+            } else {
                 System.out.println("Element found at index " + res);
+            }
         }
     }
 }

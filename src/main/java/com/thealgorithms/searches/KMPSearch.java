@@ -32,10 +32,11 @@ class KMPSearch {
             else if (i < n && pat.charAt(j) != txt.charAt(i)) {
                 // Do not match lps[0..lps[j-1]] characters,
                 // they will match anyway
-                if (j != 0)
+                if (j != 0) {
                     j = lps[j - 1];
-                else
+                } else {
                     i = i + 1;
+                }
             }
         }
         System.out.println("No pattern found");

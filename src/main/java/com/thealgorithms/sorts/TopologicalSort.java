@@ -69,7 +69,9 @@ public final class TopologicalSort {
          * */
         public void addEdge(String label, String... next) {
             adj.put(label, new Vertex(label));
-            if (!next[0].isEmpty()) Collections.addAll(adj.get(label).next, next);
+            if (!next[0].isEmpty()) {
+                Collections.addAll(adj.get(label).next, next);
+            }
         }
     }
 

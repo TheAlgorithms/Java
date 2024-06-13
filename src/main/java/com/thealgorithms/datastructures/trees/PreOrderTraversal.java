@@ -36,15 +36,21 @@ public final class PreOrderTraversal {
 
     public static List<Integer> iterativePreOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
-        if (root == null) return result;
+        if (root == null) {
+            return result;
+        }
 
         Deque<BinaryTree.Node> stack = new LinkedList<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             BinaryTree.Node node = stack.pop();
             result.add(node.data);
-            if (node.right != null) stack.push(node.right);
-            if (node.left != null) stack.push(node.left);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
         }
 
         return result;

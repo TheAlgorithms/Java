@@ -23,8 +23,9 @@ public class CircularQueue {
     public boolean isFull() {
         if (topOfQueue + 1 == beginningOfQueue) {
             return true;
-        } else
+        } else {
             return topOfQueue == size - 1 && beginningOfQueue == 0;
+        }
     }
 
     public void enQueue(int value) {

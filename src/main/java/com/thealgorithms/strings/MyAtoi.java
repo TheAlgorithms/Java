@@ -25,7 +25,9 @@ public final class MyAtoi {
                     number = "0";
                     break;
                 }
-                if (ch >= '0' && ch <= '9') number += ch;
+                if (ch >= '0' && ch <= '9') {
+                    number += ch;
+                }
             } else if (ch == '-' && !isDigit) {
                 number += "0";
                 negative = true;
