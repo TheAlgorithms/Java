@@ -69,19 +69,19 @@ public class OptimalJobScheduling {
      */
     private int runningCost(int process, int machine) {
 
-        if (process == 0) // refers to the first process,which does not require for a previous one
-                          // to have been executed
+        if (process == 0) { // refers to the first process,which does not require for a previous one
+            // to have been executed
             return run[process][machine];
-        else {
+        } else {
 
             int[] runningCosts = new int[numberMachines]; // stores the costs of executing our Process depending on
-                                                          // the Machine the previous one was executed
+            // the Machine the previous one was executed
 
-            for (int k = 0; k < numberMachines; k++) // computes the cost of executing the previous
-                                                     // process to each and every Machine
+            for (int k = 0; k < numberMachines; k++) { // computes the cost of executing the previous
+                // process to each and every Machine
                 runningCosts[k] = cost[process - 1][k] + transfer[k][machine] + run[process][machine]; // transferring the result to our Machine and executing
-                                                                                                       // the Process to our Machine
-
+                // the Process to our Machine
+            }
             return findMin(runningCosts); // returns the minimum running cost
         }
     }
@@ -98,7 +98,9 @@ public class OptimalJobScheduling {
 
         for (int i = 1; i < costArr.length; i++) {
 
-            if (costArr[i] < costArr[min]) min = i;
+            if (costArr[i] < costArr[min]) {
+                min = i;
+            }
         }
         return costArr[min];
     }

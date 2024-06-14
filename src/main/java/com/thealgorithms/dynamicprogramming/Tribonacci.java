@@ -15,8 +15,12 @@ public final class Tribonacci {
      * @return the n-th Tribonacci number
      */
     public static int compute(int n) {
-        if (n == 0) return 0;
-        if (n == 1 || n == 2) return 1;
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
 
         int first = 0;
         int second = 1;

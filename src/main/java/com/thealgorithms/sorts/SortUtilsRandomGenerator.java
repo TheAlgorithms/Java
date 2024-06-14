@@ -22,7 +22,9 @@ public final class SortUtilsRandomGenerator {
      */
     public static Double[] generateArray(int size) {
         Double[] arr = new Double[size];
-        for (int i = 0; i < size; i++) arr[i] = generateDouble();
+        for (int i = 0; i < size; i++) {
+            arr[i] = generateDouble();
+        }
         return arr;
     }
 

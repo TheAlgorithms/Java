@@ -30,10 +30,11 @@ public class LinkListSort {
                 // New nodes are created and values are added
                 fresh = new Node(); // Node class is called
                 fresh.val = a[i]; // Node val is stored
-                if (start == null)
+                if (start == null) {
                     start = fresh;
-                else
+                } else {
                     prev.next = fresh;
+                }
                 prev = fresh;
             }
             start = nm.sortByMergeSort(start);
@@ -58,10 +59,11 @@ public class LinkListSort {
                 // New nodes are created and values are added
                 fresh1 = new Node(); // New node is created
                 fresh1.val = a[i1]; // Value is stored in the value part of the node
-                if (start1 == null)
+                if (start1 == null) {
                     start1 = fresh1;
-                else
+                } else {
                     prev1.next = fresh1;
+                }
                 prev1 = fresh1;
             }
             Task1 kk = new Task1();
@@ -87,10 +89,11 @@ public class LinkListSort {
                 // New nodes are created and values are added
                 fresh2 = new Node(); // Node class is created
                 fresh2.val = a[i2]; // Value is stored in the value part of the Node
-                if (start2 == null)
+                if (start2 == null) {
                     start2 = fresh2;
-                else
+                } else {
                     prev2.next = fresh2;
+                }
                 prev2 = fresh2;
             }
             start2 = mm.sortByHeapSort(start2);
@@ -116,7 +119,9 @@ public class LinkListSort {
 
     boolean compare(int[] a, int[] b) {
         for (int i = 0; i < a.length; i++) {
-            if (a[i] != b[i]) return false;
+            if (a[i] != b[i]) {
+                return false;
+            }
         }
         return true;
         // Both the arrays are checked for equalness. If both are equal then true is
@@ -147,7 +152,9 @@ class Task {
     private int[] a;
 
     public Node sortByMergeSort(Node head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null) {
+            return head;
+        }
         int c = count(head);
         a = new int[c];
         // Array of size c is created
@@ -193,10 +200,11 @@ class Task {
         int j = m + 1;
         int[] b = new int[e - s + 1];
         while (i <= m && j <= e) {
-            if (n[j] >= n[i])
+            if (n[j] >= n[i]) {
                 b[k++] = n[i++];
-            else
+            } else {
                 b[k++] = n[j++];
+            }
         }
         // Smallest number is stored after checking from both the arrays
         while (i <= m) {
@@ -215,7 +223,9 @@ class Task {
 class Task1 {
 
     public Node sortByInsertionSort(Node head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null) {
+            return head;
+        }
         int c = count(head);
         int[] a = new int[c];
         // Array of size c is created
@@ -257,7 +267,9 @@ class Task2 {
     private int[] a;
 
     public Node sortByHeapSort(Node head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null) {
+            return head;
+        }
         int c = count(head);
         a = new int[c];
         // Array of size c is created
@@ -304,8 +316,12 @@ class Task2 {
         int p = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
-        if (l < k && n[l] > n[p]) p = l;
-        if (r < k && n[r] > n[p]) p = r;
+        if (l < k && n[l] > n[p]) {
+            p = l;
+        }
+        if (r < k && n[r] > n[p]) {
+            p = r;
+        }
         if (p != i) {
             int d = n[p];
             n[p] = n[i];

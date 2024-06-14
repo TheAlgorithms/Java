@@ -29,12 +29,16 @@ public final class SubsetCount {
         for (int i = 0; i < n; i++) {
             dp[i][0] = 1;
         }
-        if (arr[0] <= target) dp[0][arr[0]] = 1;
+        if (arr[0] <= target) {
+            dp[0][arr[0]] = 1;
+        }
         for (int t = 1; t <= target; t++) {
             for (int idx = 1; idx < n; idx++) {
                 int notpick = dp[idx - 1][t];
                 int pick = 0;
-                if (arr[idx] <= t) pick += dp[idx - 1][target - t];
+                if (arr[idx] <= t) {
+                    pick += dp[idx - 1][target - t];
+                }
                 dp[idx][target] = pick + notpick;
             }
         }
@@ -52,14 +56,18 @@ public final class SubsetCount {
         int n = arr.length;
         int[] prev = new int[target + 1];
         prev[0] = 1;
-        if (arr[0] <= target) prev[arr[0]] = 1;
+        if (arr[0] <= target) {
+            prev[arr[0]] = 1;
+        }
         for (int ind = 1; ind < n; ind++) {
             int[] cur = new int[target + 1];
             cur[0] = 1;
             for (int t = 1; t <= target; t++) {
                 int notTaken = prev[t];
                 int taken = 0;
-                if (arr[ind] <= t) taken = prev[t - arr[ind]];
+                if (arr[ind] <= t) {
+                    taken = prev[t - arr[ind]];
+                }
                 cur[t] = notTaken + taken;
             }
             prev = cur;

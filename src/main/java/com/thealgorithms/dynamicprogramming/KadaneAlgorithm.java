@@ -18,7 +18,9 @@ public final class KadaneAlgorithm {
             // running sum of all the indexs are stored
             sum = Math.max(sum, runningSum);
             // the max is stored inorder to the get the maximum sum
-            if (runningSum < 0) runningSum = 0;
+            if (runningSum < 0) {
+                runningSum = 0;
+            }
             // if running sum is negative then it is initialized to zero
         }
         // for-each loop is used to iterate over the array and find the maximum subarray sum

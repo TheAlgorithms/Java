@@ -52,16 +52,22 @@ public final class SameTreesCheck {
             BinaryTree.Node second = q2.poll();
             // check that some node can be null
             // if the check is true: both nodes are null or both nodes are not null
-            if (!equalNodes(first, second)) return false;
+            if (!equalNodes(first, second)) {
+                return false;
+            }
 
             if (first != null) {
-                if (!equalNodes(first.left, second.left)) return false;
+                if (!equalNodes(first.left, second.left)) {
+                    return false;
+                }
                 if (first.left != null) {
                     q1.add(first.left);
                     q2.add(second.left);
                 }
 
-                if (!equalNodes(first.right, second.right)) return false;
+                if (!equalNodes(first.right, second.right)) {
+                    return false;
+                }
                 if (first.right != null) {
                     q1.add(first.right);
                     q2.add(second.right);
