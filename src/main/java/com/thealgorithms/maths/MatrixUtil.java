@@ -1,8 +1,6 @@
 package com.thealgorithms.maths;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.stream.IntStream;
@@ -15,19 +13,19 @@ public final class MatrixUtil {
     private MatrixUtil() {
     }
 
-    public static boolean isValid(final BigDecimal[][] matrix) {
+    private static boolean isValid(final BigDecimal[][] matrix) {
         return matrix != null && matrix.length > 0 && matrix[0].length > 0;
     }
 
-    public static boolean hasEqualSizes(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
+    private static boolean hasEqualSizes(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
         return (isValid(matrix1) && isValid(matrix2) && matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length);
     }
 
-    public static boolean canMultiply(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
+    private static boolean canMultiply(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
         return (isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length);
     }
 
-    public static Optional<BigDecimal[][]> operate(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2, final BiFunction<BigDecimal, BigDecimal, BigDecimal> operation) {
+    private static Optional<BigDecimal[][]> operate(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2, final BiFunction<BigDecimal, BigDecimal, BigDecimal> operation) {
         if (!hasEqualSizes(matrix1, matrix2)) {
             return Optional.empty();
         }
@@ -81,79 +79,5 @@ public final class MatrixUtil {
                                                                   .reduce(BigDecimal.ZERO, BigDecimal::add)));
 
         return Optional.of(result);
-    }
-
-    public static void assertThat(final BigDecimal[][] actual, final BigDecimal[][] expected) {
-        if (!Objects.deepEquals(actual, expected)) {
-            throw new AssertionError(String.format("expected=%s but was actual=%s", Arrays.deepToString(expected), Arrays.deepToString(actual)));
-        }
-    }
-
-    public static void main(final String[] args) {
-        {
-            final BigDecimal[][] matrix1 = {
-                {new BigDecimal(3), new BigDecimal(2)},
-                {new BigDecimal(0), new BigDecimal(1)},
-            };
-
-            final BigDecimal[][] matrix2 = {
-                {new BigDecimal(1), new BigDecimal(3)},
-                {new BigDecimal(2), new BigDecimal(0)},
-            };
-
-            final BigDecimal[][] actual = add(matrix1, matrix2).orElseThrow(() -> new AssertionError("Could not compute matrix!"));
-
-            final BigDecimal[][] expected = {
-                {new BigDecimal(4), new BigDecimal(5)},
-                {new BigDecimal(2), new BigDecimal(1)},
-            };
-
-            assertThat(actual, expected);
-        }
-
-        {
-            final BigDecimal[][] matrix1 = {
-                {new BigDecimal(1), new BigDecimal(4)},
-                {new BigDecimal(5), new BigDecimal(6)},
-            };
-
-            final BigDecimal[][] matrix2 = {
-                {new BigDecimal(2), new BigDecimal(0)},
-                {new BigDecimal(-2), new BigDecimal(-3)},
-            };
-
-            final BigDecimal[][] actual = subtract(matrix1, matrix2).orElseThrow(() -> new AssertionError("Could not compute matrix!"));
-
-            final BigDecimal[][] expected = {
-                {new BigDecimal(-1), new BigDecimal(4)},
-                {new BigDecimal(7), new BigDecimal(9)},
-            };
-
-            assertThat(actual, expected);
-        }
-
-        {
-            final BigDecimal[][] matrix1 = {
-                {new BigDecimal(1), new BigDecimal(2), new BigDecimal(3)},
-                {new BigDecimal(4), new BigDecimal(5), new BigDecimal(6)},
-                {new BigDecimal(7), new BigDecimal(8), new BigDecimal(9)},
-            };
-
-            final BigDecimal[][] matrix2 = {
-                {new BigDecimal(1), new BigDecimal(2)},
-                {new BigDecimal(3), new BigDecimal(4)},
-                {new BigDecimal(5), new BigDecimal(6)},
-            };
-
-            final BigDecimal[][] actual = multiply(matrix1, matrix2).orElseThrow(() -> new AssertionError("Could not compute matrix!"));
-
-            final BigDecimal[][] expected = {
-                {new BigDecimal(22), new BigDecimal(28)},
-                {new BigDecimal(49), new BigDecimal(64)},
-                {new BigDecimal(76), new BigDecimal(100)},
-            };
-
-            assertThat(actual, expected);
-        }
     }
 }
