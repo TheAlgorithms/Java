@@ -21,7 +21,9 @@ public final class CRC16 {
                 boolean bit = ((b >> (7 - i) & 1) == 1);
                 boolean c15 = ((crc >> 15 & 1) == 1);
                 crc <<= 1;
-                if (c15 ^ bit) crc ^= polynomial;
+                if (c15 ^ bit) {
+                    crc ^= polynomial;
+                }
             }
         }
         crc &= 0xffff;

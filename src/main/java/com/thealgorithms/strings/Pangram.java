@@ -29,8 +29,11 @@ public final class Pangram {
     public static boolean isPangramUsingSet(String s) {
         HashSet<Character> alpha = new HashSet<>();
         s = s.trim().toLowerCase();
-        for (int i = 0; i < s.length(); i++)
-            if (s.charAt(i) != ' ') alpha.add(s.charAt(i));
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') {
+                alpha.add(s.charAt(i));
+            }
+        }
         return alpha.size() == 26;
     }
 

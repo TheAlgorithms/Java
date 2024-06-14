@@ -56,9 +56,13 @@ public class LeftistHeap {
 
     // Function merge with two Nodes a and b
     public Node merge(Node a, Node b) {
-        if (a == null) return b;
+        if (a == null) {
+            return b;
+        }
 
-        if (b == null) return a;
+        if (b == null) {
+            return a;
+        }
 
         // Violates leftist property, so must do a swap
         if (a.element > b.element) {
@@ -93,7 +97,9 @@ public class LeftistHeap {
     // Returns and removes the minimum element in the heap
     public int extractMin() {
         // If is empty return -1
-        if (isEmpty()) return -1;
+        if (isEmpty()) {
+            return -1;
+        }
 
         int min = root.element;
         root = merge(root.left, root.right);
@@ -109,7 +115,9 @@ public class LeftistHeap {
 
     // Auxiliary function for in_order
     private void inOrderAux(Node n, ArrayList<Integer> lst) {
-        if (n == null) return;
+        if (n == null) {
+            return;
+        }
         inOrderAux(n.left, lst);
         lst.add(n.element);
         inOrderAux(n.right, lst);
