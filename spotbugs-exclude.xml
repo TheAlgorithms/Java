@@ -115,9 +115,6 @@
         <Bug pattern="CLI_CONSTANT_LIST_INDEX" />
     </Match>
     <Match>
-        <Bug pattern="BED_BOGUS_EXCEPTION_DECLARATION" />
-    </Match>
-    <Match>
         <Bug pattern="CNC_COLLECTION_NAMING_CONFUSION" />
     </Match>
     <Match>
