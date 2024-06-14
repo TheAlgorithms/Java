@@ -34,7 +34,9 @@ public final class AliquotSum {
      * @return aliquot sum of given {@code number}
      */
     public static int getAliquotSum(int n) {
-        if (n <= 0) return -1;
+        if (n <= 0) {
+            return -1;
+        }
         int sum = 1;
         double root = Math.sqrt(n);
         /*
@@ -53,7 +55,9 @@ public final class AliquotSum {
         }
         // if n is a perfect square then its root was added twice in above loop, so subtracting root
         // from sum
-        if (root == (int) root) sum -= root;
+        if (root == (int) root) {
+            sum -= root;
+        }
         return sum;
     }
 }

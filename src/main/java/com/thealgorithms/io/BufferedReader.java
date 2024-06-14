@@ -44,7 +44,9 @@ public class BufferedReader {
 
     public BufferedReader(InputStream input, int bufferSize) throws IOException {
         this.input = input;
-        if (input.available() == -1) throw new IOException("Empty or already closed stream provided");
+        if (input.available() == -1) {
+            throw new IOException("Empty or already closed stream provided");
+        }
 
         this.bufferSize = bufferSize;
         buffer = new byte[bufferSize];
@@ -55,7 +57,9 @@ public class BufferedReader {
      */
     public int read() throws IOException {
         if (needsRefill()) {
-            if (foundEof) return -1;
+            if (foundEof) {
+                return -1;
+            }
             // the buffer is empty, or the buffer has
             // been completely read and needs to be refilled
             refill();
@@ -69,10 +73,11 @@ public class BufferedReader {
 
     public int available() throws IOException {
         int available = input.available();
-        if (needsRefill())
+        if (needsRefill()) {
             // since the block is already empty,
             // we have no responsibility yet
             return available;
+        }
         return bufferPos - posRead + available;
     }
 
@@ -90,10 +95,14 @@ public class BufferedReader {
 
     public int peek(int n) throws IOException {
         int available = available();
-        if (n >= available) throw new IOException("Out of range, available %d, but trying with %d".formatted(available, n));
+        if (n >= available) {
+            throw new IOException("Out of range, available %d, but trying with %d".formatted(available, n));
+        }
         pushRefreshData();
 
-        if (n >= bufferSize) throw new IllegalAccessError("Cannot peek %s, maximum upto %s (Buffer Limit)".formatted(n, bufferSize));
+        if (n >= bufferSize) {
+            throw new IllegalAccessError("Cannot peek %s, maximum upto %s (Buffer Limit)".formatted(n, bufferSize));
+        }
         return buffer[n];
     }
 
@@ -105,7 +114,9 @@ public class BufferedReader {
      */
 
     private void pushRefreshData() throws IOException {
-        for (int i = posRead, j = 0; i < bufferSize; i++, j++) buffer[j] = buffer[i];
+        for (int i = posRead, j = 0; i < bufferSize; i++, j++) {
+            buffer[j] = buffer[i];
+        }
 
         bufferPos -= posRead;
         posRead = 0;
@@ -127,11 +138,12 @@ public class BufferedReader {
 
         byte[] cloned = new byte[bufferSize];
         // arraycopy() function is better than clone()
-        if (bufferPos >= 0)
+        if (bufferPos >= 0) {
             System.arraycopy(buffer, 0, cloned, 0,
                 // important to note that, bufferSize does not stay constant
                 // once the class is defined. See justRefill() function
                 bufferSize);
+        }
         // we assume that already a chunk
         // has been read
         refill();
@@ -168,7 +180,9 @@ public class BufferedReader {
     }
 
     private void assertStreamOpen() {
-        if (input == null) throw new IllegalStateException("Input Stream already closed!");
+        if (input == null) {
+            throw new IllegalStateException("Input Stream already closed!");
+        }
     }
 
     public void close() throws IOException {

@@ -87,9 +87,13 @@ class PriorityQueue {
         while (2 * pos <= nItems) {
             int current = 2 * pos; // Jump to the positon of child node
             // Compare both the children for the greater one
-            if (current < nItems && queueArray[current] < queueArray[current + 1]) current++;
+            if (current < nItems && queueArray[current] < queueArray[current + 1]) {
+                current++;
+            }
             // If the parent node is greater, sink operation is complete. Break the loop
-            if (queueArray[pos] >= queueArray[current]) break;
+            if (queueArray[pos] >= queueArray[current]) {
+                break;
+            }
 
             // If not exchange the value of parent with child
             int temp = queueArray[pos];

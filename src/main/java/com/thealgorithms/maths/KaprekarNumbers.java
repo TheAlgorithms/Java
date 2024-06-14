@@ -16,11 +16,15 @@ public final class KaprekarNumbers {
     // Provides a list of kaprekarNumber in a range
     public static List<Long> kaprekarNumberInRange(long start, long end) throws Exception {
         long n = end - start;
-        if (n < 0) throw new Exception("Invalid range");
+        if (n < 0) {
+            throw new Exception("Invalid range");
+        }
         ArrayList<Long> list = new ArrayList<>();
 
         for (long i = start; i <= end; i++) {
-            if (isKaprekarNumber(i)) list.add(i);
+            if (isKaprekarNumber(i)) {
+                list.add(i);
+            }
         }
 
         return list;

@@ -20,7 +20,9 @@ public final class MillerRabinPrimalityCheck {
      */
 
     public static boolean millerRabin(long n, int k) { // returns true if n is probably prime, else returns false.
-        if (n < 4) return n == 2 || n == 3;
+        if (n < 4) {
+            return n == 2 || n == 3;
+        }
 
         int s = 0;
         long d = n - 1;
@@ -31,13 +33,17 @@ public final class MillerRabinPrimalityCheck {
         Random rnd = new Random();
         for (int i = 0; i < k; i++) {
             long a = 2 + rnd.nextLong(n) % (n - 3);
-            if (checkComposite(n, a, d, s)) return false;
+            if (checkComposite(n, a, d, s)) {
+                return false;
+            }
         }
         return true;
     }
 
     public static boolean deterministicMillerRabin(long n) { // returns true if n is prime, else returns false.
-        if (n < 2) return false;
+        if (n < 2) {
+            return false;
+        }
 
         int r = 0;
         long d = n - 1;
@@ -47,8 +53,12 @@ public final class MillerRabinPrimalityCheck {
         }
 
         for (int a : new int[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}) {
-            if (n == a) return true;
-            if (checkComposite(n, a, d, r)) return false;
+            if (n == a) {
+                return true;
+            }
+            if (checkComposite(n, a, d, r)) {
+                return false;
+            }
         }
         return true;
     }
@@ -66,10 +76,14 @@ public final class MillerRabinPrimalityCheck {
      */
     private static boolean checkComposite(long n, long a, long d, int s) {
         long x = powerModP(a, d, n);
-        if (x == 1 || x == n - 1) return false;
+        if (x == 1 || x == n - 1) {
+            return false;
+        }
         for (int r = 1; r < s; r++) {
             x = powerModP(x, 2, n);
-            if (x == n - 1) return false;
+            if (x == n - 1) {
+                return false;
+            }
         }
         return true;
     }
@@ -79,11 +93,14 @@ public final class MillerRabinPrimalityCheck {
 
         x = x % p; // Update x if it is more than or equal to p
 
-        if (x == 0) return 0; // In case x is divisible by p;
-
+        if (x == 0) {
+            return 0; // In case x is divisible by p;
+        }
         while (y > 0) {
             // If y is odd, multiply x with result
-            if ((y & 1) == 1) res = multiplyModP(res, x, p);
+            if ((y & 1) == 1) {
+                res = multiplyModP(res, x, p);
+            }
 
             // y must be even now
             y = y >> 1; // y = y/2

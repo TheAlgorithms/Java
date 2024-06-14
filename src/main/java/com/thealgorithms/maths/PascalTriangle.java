@@ -52,10 +52,11 @@ public final class PascalTriangle {
              */
             for (int i = 0; i <= line; i++) {
                 // First and last values in every row are 1
-                if (line == i || i == 0) arr[line][i] = 1;
-                // The rest elements are sum of values just above and left of above
-                else
+                if (line == i || i == 0) {
+                    arr[line][i] = 1;
+                } else {
                     arr[line][i] = arr[line - 1][i - 1] + arr[line - 1][i];
+                }
             }
         }
 

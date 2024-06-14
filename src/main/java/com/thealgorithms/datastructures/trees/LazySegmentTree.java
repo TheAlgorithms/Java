@@ -40,11 +40,19 @@ public class LazySegmentTree {
          * Shift the lazy value of this node to its children.
          */
         public void shift() {
-            if (lazy == 0) return;
-            if (this.left == null && this.right == null) return;
+            if (lazy == 0) {
+                return;
+            }
+            if (this.left == null && this.right == null) {
+                return;
+            }
             this.value += this.lazy;
-            if (this.left != null) this.left.applyUpdate(this.lazy);
-            if (this.right != null) this.right.applyUpdate(this.lazy);
+            if (this.left != null) {
+                this.left.applyUpdate(this.lazy);
+            }
+            if (this.right != null) {
+                this.right.applyUpdate(this.lazy);
+            }
             this.lazy = 0;
         }
 
@@ -56,8 +64,12 @@ public class LazySegmentTree {
          * @return The new Node.
          */
         static Node merge(Node left, Node right) {
-            if (left == null) return right;
-            if (right == null) return left;
+            if (left == null) {
+                return right;
+            }
+            if (right == null) {
+                return left;
+            }
             Node result = new Node(left.start, right.end, left.value + right.value);
             result.left = left;
             result.right = right;
@@ -97,7 +109,9 @@ public class LazySegmentTree {
      * @return The root of the new LazySegmentTree.
      */
     private Node buildTree(int[] array, int start, int end) {
-        if (end - start < 2) return new Node(start, end, array[start]);
+        if (end - start < 2) {
+            return new Node(start, end, array[start]);
+        }
         int mid = (start + end) >> 1;
         Node left = buildTree(array, start, mid);
         Node right = buildTree(array, mid, end);
@@ -117,7 +131,9 @@ public class LazySegmentTree {
             curr.applyUpdate(diff);
             return;
         }
-        if (left >= curr.end || right <= curr.start) return;
+        if (left >= curr.end || right <= curr.start) {
+            return;
+        }
         curr.shift();
         updateRange(left, right, diff, curr.left);
         updateRange(left, right, diff, curr.right);
@@ -133,8 +149,12 @@ public class LazySegmentTree {
      * @return The Node representing the sum of the given range.
      */
     private Node getRange(int left, int right, Node curr) {
-        if (left <= curr.start && curr.end <= right) return curr;
-        if (left >= curr.end || right <= curr.start) return null;
+        if (left <= curr.start && curr.end <= right) {
+            return curr;
+        }
+        if (left >= curr.end || right <= curr.start) {
+            return null;
+        }
         curr.shift();
         return Node.merge(getRange(left, right, curr.left), getRange(left, right, curr.right));
     }

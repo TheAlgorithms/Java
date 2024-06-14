@@ -8,7 +8,9 @@ class LinkedQueueTest {
     @Test
     public void testQue() {
         LinkedQueue<Integer> queue = new LinkedQueue<>();
-        for (int i = 1; i < 5; i++) queue.enqueue(i);
+        for (int i = 1; i < 5; i++) {
+            queue.enqueue(i);
+        }
 
         assertEquals(queue.peekRear(), 4);
         assertEquals(queue.peek(2), 2);
@@ -20,7 +22,9 @@ class LinkedQueueTest {
         // iterates over all the elements present
         // as in the form of nodes
         queue.forEach(integer -> {
-            if (element[0]++ != integer) throw new AssertionError();
+            if (element[0]++ != integer) {
+                throw new AssertionError();
+            }
         });
     }
 }
