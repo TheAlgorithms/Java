@@ -401,6 +401,15 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
     }
 
+    public int poll(){
+        if(head==null){
+            return -1;
+        }
+        int headValue=head.value;
+        head=head.next;
+        return headValue;
+    }
+    
     /**
      * Driver Code
      */
@@ -431,7 +440,8 @@ public class SinglyLinkedList implements Iterable<Integer> {
         assert list.toString().equals("7->3");
         System.out.println(list);
         assert list.size == 2 && list.size() == list.count();
-
+        /* Test poll function */
+        System.out.println("pop element from head "+list.poll());
         list.clear();
         assert list.isEmpty();
 
