@@ -51,7 +51,9 @@ public class WordSearch {
             int yi = y + dy[i];
             if (isValid(xi, yi) && board[xi][yi] == word.charAt(nextIdx) && !visited[xi][yi]) {
                 boolean exists = doDFS(xi, yi, nextIdx + 1);
-                if (exists) return true;
+                if (exists) {
+                    return true;
+                }
             }
         }
         visited[x][y] = false;
@@ -66,7 +68,9 @@ public class WordSearch {
                 if (board[i][j] == word.charAt(0)) {
                     visited = new boolean[board.length][board[0].length];
                     boolean exists = doDFS(i, j, 1);
-                    if (exists) return true;
+                    if (exists) {
+                        return true;
+                    }
                 }
             }
         }

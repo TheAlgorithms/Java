@@ -92,11 +92,13 @@ public class MinHeap implements Heap {
 
     @Override
     public void deleteElement(int elementIndex) {
-        if (minHeap.isEmpty()) try {
+        if (minHeap.isEmpty()) {
+            try {
                 throw new EmptyHeapException("Attempt to delete an element from an empty heap");
             } catch (EmptyHeapException e) {
                 e.printStackTrace();
             }
+        }
         if ((elementIndex > minHeap.size()) || (elementIndex <= 0)) {
             throw new IndexOutOfBoundsException("Index out of heap range");
         }

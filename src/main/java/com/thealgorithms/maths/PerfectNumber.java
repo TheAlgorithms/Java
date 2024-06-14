@@ -19,7 +19,9 @@ public final class PerfectNumber {
      * @return {@code true} if {@code number} is perfect number, otherwise false
      */
     public static boolean isPerfectNumber(int number) {
-        if (number <= 0) return false;
+        if (number <= 0) {
+            return false;
+        }
         int sum = 0;
         /* sum of its positive divisors */
         for (int i = 1; i < number; ++i) {
@@ -37,7 +39,9 @@ public final class PerfectNumber {
      * @return {@code true} if {@code number} is perfect number, otherwise false
      */
     public static boolean isPerfectNumber2(int n) {
-        if (n <= 0) return false;
+        if (n <= 0) {
+            return false;
+        }
         int sum = 1;
         double root = Math.sqrt(n);
 
@@ -58,7 +62,9 @@ public final class PerfectNumber {
 
         // if n is a perfect square then its root was added twice in above loop, so subtracting root
         // from sum
-        if (root == (int) root) sum -= root;
+        if (root == (int) root) {
+            sum -= root;
+        }
 
         return sum == n;
     }

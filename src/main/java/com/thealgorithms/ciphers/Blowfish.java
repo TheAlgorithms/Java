@@ -1104,7 +1104,9 @@ public class Blowfish {
     private String binToHex(String binary) {
         long num = Long.parseUnsignedLong(binary, 2);
         String hex = Long.toHexString(num);
-        while (hex.length() < (binary.length() / 4)) hex = "0" + hex;
+        while (hex.length() < (binary.length() / 4)) {
+            hex = "0" + hex;
+        }
 
         return hex;
     }
@@ -1120,7 +1122,9 @@ public class Blowfish {
         a = hexToBin(a);
         b = hexToBin(b);
         String ans = "";
-        for (int i = 0; i < a.length(); i++) ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        for (int i = 0; i < a.length(); i++) {
+            ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        }
         ans = binToHex(ans);
         return ans;
     }
@@ -1202,7 +1206,9 @@ public class Blowfish {
         // generating key
         keyGenerate(key);
 
-        for (int i = 0; i < 16; i++) plainText = round(i, plainText);
+        for (int i = 0; i < 16; i++) {
+            plainText = round(i, plainText);
+        }
 
         // postprocessing
         String right = plainText.substring(0, 8);
@@ -1224,7 +1230,9 @@ public class Blowfish {
         // generating key
         keyGenerate(key);
 
-        for (int i = 17; i > 1; i--) cipherText = round(i, cipherText);
+        for (int i = 17; i > 1; i--) {
+            cipherText = round(i, cipherText);
+        }
 
         // postprocessing
         String right = cipherText.substring(0, 8);

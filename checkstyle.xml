@@ -152,10 +152,10 @@
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
-    <!-- TODO <module name="AvoidNestedBlocks"/> -->
+    <module name="AvoidNestedBlocks"/>
     <!-- TODO <module name="EmptyBlock"/> -->
     <!-- TODO <module name="LeftCurly"/> -->
-    <!-- TODO <module name="NeedBraces"/> -->
+    <module name="NeedBraces"/>
     <!-- TODO <module name="RightCurly"/> -->
 
     <!-- Checks for common coding problems               -->
