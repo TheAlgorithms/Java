@@ -120,10 +120,14 @@ public class SplayTree {
      * @return The new root of the splayed subtree.
      */
     private Node splay(Node root, int key) {
-        if (root == null || root.key == key) return root;
+        if (root == null || root.key == key) {
+            return root;
+        }
 
         if (root.key > key) {
-            if (root.left == null) return root;
+            if (root.left == null) {
+                return root;
+            }
             // Zig-Zig case
             if (root.left.key > key) {
                 // Recursive call to splay on grandchild
@@ -140,12 +144,16 @@ public class SplayTree {
             }
             return (root.left == null) ? root : rotateRight(root);
         } else {
-            if (root.right == null) return root;
+            if (root.right == null) {
+                return root;
+            }
             // Zag-Zag case
             if (root.right.key > key) {
                 root.right.left = splay(root.right.left, key);
                 // Perform zig operation on parent
-                if (root.right.left != null) root.right = rotateRight(root.right);
+                if (root.right.left != null) {
+                    root.right = rotateRight(root.right);
+                }
             } // Zag-Zig case
             else if (root.right.key < key) {
                 root.right.right = splay(root.right.right, key);
@@ -175,7 +183,9 @@ public class SplayTree {
      * @throws IllegalArgumentException If the key to be inserted already exists in the subtree.
      */
     private Node insertRec(Node root, int key) {
-        if (root == null) return new Node(key);
+        if (root == null) {
+            return new Node(key);
+        }
 
         if (key < root.key) {
             root.left = insertRec(root.left, key);
