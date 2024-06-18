@@ -35,7 +35,7 @@ public final class SmoothSort {
                 leonardoLevels = leonardoLevels & ~(1 << consecutiveTreeIndices[0]);
                 leonardoLevels = leonardoLevels & ~(1 << consecutiveTreeIndices[1]);
                 leonardoLevels = leonardoLevels | (1 << consecutiveTreeIndices[1] + 1);
-            } else if (((leonardoLevels & 2) == 0)) {
+            } else if ((leonardoLevels & 2) == 0) {
                 leonardoLevels = leonardoLevels | (1 << 1);
             } else {
                 leonardoLevels = leonardoLevels | (1 << 0);
