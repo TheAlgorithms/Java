@@ -1,12 +1,12 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.Scanner;
+
 /**
  * Trie Data structure implementation without any libraries
  *
- * @author Dheeraj Kumar Barnwal (https://github.com/dheeraj92)
+ * @author <a href="https://github.com/dheeraj92">Dheeraj Kumar Barnwal</a>
  */
-import java.util.Scanner;
-
 public class TrieImp {
 
     public class TrieNode {

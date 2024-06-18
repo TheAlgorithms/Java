@@ -6,8 +6,6 @@ package com.thealgorithms.dynamicprogramming;
  * cover the entire text ?-> matches single characters *-> match the sequence of
  * characters
  *
- */
-/**
  * For calculation of Time and Space Complexity. Let N be length of src and M be
  * length of pat
  *
