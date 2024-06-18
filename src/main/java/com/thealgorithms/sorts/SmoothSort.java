@@ -193,7 +193,9 @@ public final class SmoothSort {
                     currenNodeIndex = parentNodeIndex;
                     parentNodeIndex = treeSizeForHeapify - 1 - ((treeSizeForHeapify - currenNodeIndex - 2) / 2);
 
-                    if (currenNodeIndex == rootNodeIndex) break; // reached the root node
+                    if (currenNodeIndex == rootNodeIndex) {
+                        break;
+                     } // reached the root node
                 }
             }
         }
