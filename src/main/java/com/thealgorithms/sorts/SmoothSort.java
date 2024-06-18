@@ -195,7 +195,7 @@ public final class SmoothSort {
 
                     if (currenNodeIndex == rootNodeIndex) {
                         break;
-                     } // reached the root node
+                    } // reached the root node
                 }
             }
         }
