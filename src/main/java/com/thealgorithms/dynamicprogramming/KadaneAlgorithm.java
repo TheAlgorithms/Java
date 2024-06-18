@@ -1,15 +1,20 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To find the maximum subarray sum */
 package com.thealgorithms.dynamicprogramming;
 
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * Program description - To find the maximum subarray sum
+ */
 public final class KadaneAlgorithm {
     private KadaneAlgorithm() {
     }
 
+    /**
+     * OUTPUT :
+     * Input - {89,56,98,123,26,75,12,40,39,68,91}
+     * Output: it returns either true or false
+     * 1st approach Time Complexity : O(n)
+     * Auxiliary Space Complexity : O(1)
+     */
     public static boolean maxSum(int[] a, int predictedAnswer) {
         int sum = a[0];
         int runningSum = 0;
@@ -28,11 +33,4 @@ public final class KadaneAlgorithm {
         // It returns true if sum and predicted answer matches
         // The predicted answer is the answer itself. So it always return true
     }
-    /**
-     * OUTPUT :
-     * Input - {89,56,98,123,26,75,12,40,39,68,91}
-     * Output: it returns either true or false
-     * 1st approach Time Complexity : O(n)
-     * Auxiliary Space Complexity : O(1)
-     */
 }

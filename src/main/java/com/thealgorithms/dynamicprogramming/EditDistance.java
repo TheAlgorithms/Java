@@ -1,5 +1,6 @@
 package com.thealgorithms.dynamicprogramming;
 
+import java.util.Scanner;
 /**
  * A DynamicProgramming based solution for Edit Distance problem In Java
  * Description of Edit Distance with an Example:
@@ -22,8 +23,6 @@ package com.thealgorithms.dynamicprogramming;
  *
  * @author SUBHAM SANGHAI
  */
-import java.util.Scanner;
-
 public final class EditDistance {
     private EditDistance() {
     }
