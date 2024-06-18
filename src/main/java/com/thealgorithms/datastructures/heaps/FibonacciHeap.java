@@ -231,7 +231,9 @@ public class FibonacciHeap {
     private void cascadingCuts(HeapNode curr) {
         if (!curr.isMarked()) { // stop the recursion
             curr.mark();
-            if (!curr.isRoot()) this.markedHeapNoodesCounter++;
+            if (!curr.isRoot()) {
+                this.markedHeapNoodesCounter++;
+            }
         } else {
             if (curr.isRoot()) {
                 return;

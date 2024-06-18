@@ -117,7 +117,9 @@ public class MedianOfRunningArrayTest {
     @Test
     public void testWithLargeCountOfValues() {
         var stream = new MedianOfRunningArrayInteger();
-        for (int i = 1; i <= 1000; i++) stream.insert(i);
+        for (int i = 1; i <= 1000; i++) {
+            stream.insert(i);
+        }
         assertEquals(500, stream.median());
     }
 

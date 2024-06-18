@@ -11,7 +11,7 @@ package com.thealgorithms.ciphers;
 public class Blowfish {
 
     // Initializing substitution boxes
-    String[][] S = {
+    String[][] sBox = {
         {
             "d1310ba6",
             "98dfb5ac",
@@ -1047,7 +1047,7 @@ public class Blowfish {
     };
 
     // Initializing subkeys with digits of pi
-    String[] P = {
+    String[] subKeys = {
         "243f6a88",
         "85a308d3",
         "13198a2e",
@@ -1104,7 +1104,9 @@ public class Blowfish {
     private String binToHex(String binary) {
         long num = Long.parseUnsignedLong(binary, 2);
         String hex = Long.toHexString(num);
-        while (hex.length() < (binary.length() / 4)) hex = "0" + hex;
+        while (hex.length() < (binary.length() / 4)) {
+            hex = "0" + hex;
+        }
 
         return hex;
     }
@@ -1120,7 +1122,9 @@ public class Blowfish {
         a = hexToBin(a);
         b = hexToBin(b);
         String ans = "";
-        for (int i = 0; i < a.length(); i++) ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        for (int i = 0; i < a.length(); i++) {
+            ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+        }
         ans = binToHex(ans);
         return ans;
     }
@@ -1154,7 +1158,7 @@ public class Blowfish {
         for (int i = 0; i < 8; i += 2) {
             // column number for S-box is a 8-bit value
             long col = Long.parseUnsignedLong(hexToBin(plainText.substring(i, i + 2)), 2);
-            a[i / 2] = S[i / 2][(int) col];
+            a[i / 2] = sBox[i / 2][(int) col];
         }
         ans = addBin(a[0], a[1]);
         ans = xor(ans, a[2]);
@@ -1165,9 +1169,9 @@ public class Blowfish {
     // generate subkeys
     private void keyGenerate(String key) {
         int j = 0;
-        for (int i = 0; i < P.length; i++) {
+        for (int i = 0; i < subKeys.length; i++) {
             // XOR-ing 32-bit parts of the key with initial subkeys
-            P[i] = xor(P[i], key.substring(j, j + 8));
+            subKeys[i] = xor(subKeys[i], key.substring(j, j + 8));
 
             j = (j + 8) % key.length();
         }
@@ -1179,7 +1183,7 @@ public class Blowfish {
         String right;
         left = plainText.substring(0, 8);
         right = plainText.substring(8, 16);
-        left = xor(left, P[time]);
+        left = xor(left, subKeys[time]);
 
         // output from F function
         String fOut = f(left);
@@ -1202,13 +1206,15 @@ public class Blowfish {
         // generating key
         keyGenerate(key);
 
-        for (int i = 0; i < 16; i++) plainText = round(i, plainText);
+        for (int i = 0; i < 16; i++) {
+            plainText = round(i, plainText);
+        }
 
         // postprocessing
         String right = plainText.substring(0, 8);
         String left = plainText.substring(8, 16);
-        right = xor(right, P[16]);
-        left = xor(left, P[17]);
+        right = xor(right, subKeys[16]);
+        left = xor(left, subKeys[17]);
         return left + right;
     }
 
@@ -1224,13 +1230,15 @@ public class Blowfish {
         // generating key
         keyGenerate(key);
 
-        for (int i = 17; i > 1; i--) cipherText = round(i, cipherText);
+        for (int i = 17; i > 1; i--) {
+            cipherText = round(i, cipherText);
+        }
 
         // postprocessing
         String right = cipherText.substring(0, 8);
         String left = cipherText.substring(8, 16);
-        right = xor(right, P[1]);
-        left = xor(left, P[0]);
+        right = xor(right, subKeys[1]);
+        left = xor(left, subKeys[0]);
         return left + right;
     }
 }

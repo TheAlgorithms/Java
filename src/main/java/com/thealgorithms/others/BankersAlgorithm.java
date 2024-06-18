@@ -60,10 +60,7 @@ public final class BankersAlgorithm {
         int[] safeSequenceArray = new int[totalProcess];
 
         int[] workArray = new int[totalResources];
-
-        for (int i = 0; i < totalResources; i++) {
-            workArray[i] = availableArray[i];
-        }
+        System.arraycopy(availableArray, 0, workArray, 0, totalResources);
 
         int count = 0;
 

@@ -33,27 +33,26 @@ public final class Sort012D {
         int temp;
         while (mid <= h) {
             switch (a[mid]) {
-            case 0: {
+            case 0:
                 temp = a[l];
                 a[l] = a[mid];
                 a[mid] = temp;
                 l++;
                 mid++;
                 break;
-            }
+
             case 1:
                 mid++;
                 break;
-            case 2: {
+            case 2:
                 temp = a[mid];
                 a[mid] = a[h];
                 a[h] = temp;
                 h--;
                 break;
-            }
-            default: {
+
+            default:
                 throw new IllegalArgumentException("Unexpected value: " + a[mid]);
-            }
             }
         }
         System.out.println("the Sorted array is ");

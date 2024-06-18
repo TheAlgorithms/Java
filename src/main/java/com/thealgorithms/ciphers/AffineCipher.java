@@ -27,7 +27,7 @@ final class AffineCipher {
 
     static String decryptCipher(String cipher) {
         String msg = "";
-        int a_inv = 0;
+        int aInv = 0;
         int flag = 0;
 
         // Find a^-1 (the multiplicative inverse of a
@@ -38,7 +38,7 @@ final class AffineCipher {
             // Check if (a*i)%26 == 1,
             // then i will be the multiplicative inverse of a
             if (flag == 1) {
-                a_inv = i;
+                aInv = i;
             }
         }
         for (int i = 0; i < cipher.length(); i++) {
@@ -46,7 +46,7 @@ final class AffineCipher {
             {here x is cipher[i] and m is 26} and added 'A'
             to bring it in range of ASCII alphabet[ 65-90 | A-Z ] */
             if (cipher.charAt(i) != ' ') {
-                msg = msg + (char) (((a_inv * ((cipher.charAt(i) + 'A' - b)) % 26)) + 'A');
+                msg = msg + (char) (((aInv * ((cipher.charAt(i) + 'A' - b)) % 26)) + 'A');
             } else { // else simply append space character
                 msg += cipher.charAt(i);
             }

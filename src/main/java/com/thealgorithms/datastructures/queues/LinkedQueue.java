@@ -125,9 +125,13 @@ public class LinkedQueue<T> implements Iterable<T> {
      */
 
     public T peek(int pos) {
-        if (pos > size) throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
+        if (pos > size) {
+            throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
+        }
         Node<T> node = front;
-        while (pos-- > 0) node = node.next;
+        while (pos-- > 0) {
+            node = node.next;
+        }
         return node.data;
     }
 
@@ -148,8 +152,11 @@ public class LinkedQueue<T> implements Iterable<T> {
 
             @Override
             public T next() {
-                node = node.next;
-                return node.data;
+                if (hasNext()) {
+                    node = node.next;
+                    return node.data;
+                }
+                throw new NoSuchElementException();
             }
         };
     }
@@ -167,14 +174,18 @@ public class LinkedQueue<T> implements Iterable<T> {
      * Clear all nodes in queue
      */
     public void clear() {
-        while (size > 0) dequeue();
+        while (size > 0) {
+            dequeue();
+        }
     }
 
     @Override
     public String toString() {
         StringJoiner join = new StringJoiner(", "); // separator of ', '
         Node<T> travel = front;
-        while ((travel = travel.next) != null) join.add(String.valueOf(travel.data));
+        while ((travel = travel.next) != null) {
+            join.add(String.valueOf(travel.data));
+        }
         return '[' + join.toString() + ']';
     }
 

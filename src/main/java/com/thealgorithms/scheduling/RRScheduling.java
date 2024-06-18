@@ -79,7 +79,9 @@ public class RRScheduling {
 
             // If the current process has burst time remaining, push the process into the queue
             // again.
-            if (remainingBurstTime[index] > 0) queue.add(index);
+            if (remainingBurstTime[index] > 0) {
+                queue.add(index);
+            }
 
             // If the queue is empty, pick the first process from the list that is not completed.
             if (queue.isEmpty()) {
@@ -95,6 +97,8 @@ public class RRScheduling {
     }
 
     private void evaluateWaitingTime() {
-        for (int i = 0; i < processes.size(); i++) processes.get(i).setWaitingTime(processes.get(i).getTurnAroundTimeTime() - processes.get(i).getBurstTime());
+        for (final var process : processes) {
+            process.setWaitingTime(process.getTurnAroundTimeTime() - process.getBurstTime());
+        }
     }
 }

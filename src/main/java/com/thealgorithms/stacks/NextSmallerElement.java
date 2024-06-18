@@ -51,7 +51,9 @@ public final class NextSmallerElement {
         Arrays.fill(result, -1);
 
         for (int i = 0; i < array.length; i++) {
-            while (!stack.empty() && stack.peek() >= array[i]) stack.pop();
+            while (!stack.empty() && stack.peek() >= array[i]) {
+                stack.pop();
+            }
             if (stack.empty()) {
                 result[i] = -1;
             } else {
