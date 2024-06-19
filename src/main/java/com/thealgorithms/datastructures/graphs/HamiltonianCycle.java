@@ -2,9 +2,9 @@ package com.thealgorithms.datastructures.graphs;
 
 /**
  * Java program for Hamiltonian Cycle
- * (https://en.wikipedia.org/wiki/Hamiltonian_path)
+ * <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">wikipedia</a>
  *
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author  <a href="https://github.com/itsAkshayDubey">Akshay Dubey</a>
  */
 public class HamiltonianCycle {
 
@@ -58,31 +58,31 @@ public class HamiltonianCycle {
             return true;
         }
 
-        /** all vertices selected but last vertex not linked to 0 **/
+        /* all vertices selected but last vertex not linked to 0 **/
         if (this.pathCount == this.vertex) {
             return false;
         }
 
         for (int v = 0; v < this.vertex; v++) {
-            /** if connected **/
+            /* if connected **/
             if (this.graph[vertex][v] == 1) {
-                /** add to path **/
+                /* add to path **/
                 this.cycle[this.pathCount++] = v;
 
-                /** remove connection **/
+                /* remove connection **/
                 this.graph[vertex][v] = 0;
                 this.graph[v][vertex] = 0;
 
-                /** if vertex not already selected solve recursively **/
+                /* if vertex not already selected solve recursively **/
                 if (!isPresent(v)) {
                     return isPathFound(v);
                 }
 
-                /** restore connection **/
+                /* restore connection **/
                 this.graph[vertex][v] = 1;
                 this.graph[v][vertex] = 1;
 
-                /** remove path **/
+                /* remove path **/
                 this.cycle[--this.pathCount] = -1;
             }
         }
