@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import java.util.Random;
-
 /**
  * OddEvenSort class implements the SortAlgorithm interface using the odd-even sort technique.
  * Odd-even sort is a comparison sort related to bubble sort.
@@ -39,25 +37,5 @@ public final class OddEvenSort implements SortAlgorithm {
             }
         }
         return arr;
-    }
-
-    public static void main(String[] args) {
-        final Integer[] arr = new Integer[100];
-        final Random random = new Random();
-
-        // Print out unsorted elements
-        for (int i = 0; i < arr.length; ++i) {
-            arr[i] = random.nextInt(100) - 50;
-            System.out.println(arr[i]);
-        }
-        System.out.println("--------------");
-        final OddEvenSort oddEvenSort = new OddEvenSort();
-        oddEvenSort.sort(arr);
-
-        // Print Sorted elements
-        for (int i = 0; i < arr.length - 1; ++i) {
-            System.out.println(arr[i]);
-            assert arr[i] <= arr[i + 1];
-        }
     }
 }
