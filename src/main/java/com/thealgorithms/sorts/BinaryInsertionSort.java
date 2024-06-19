@@ -1,8 +1,19 @@
 package com.thealgorithms.sorts;
 
+/**
+ * BinaryInsertionSort class implements the SortAlgorithm interface using the binary insertion sort technique.
+ * Binary Insertion Sort improves upon the simple insertion sort by using binary search to find the appropriate
+ * location to insert the new element, reducing the number of comparisons in the insertion step.
+ */
 public class BinaryInsertionSort implements SortAlgorithm {
 
-    // Binary Insertion Sort method
+    /**
+     * Sorts the given array using the Binary Insertion Sort algorithm.
+     *
+     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param array the array to be sorted
+     * @return the sorted array
+     */
     public <T extends Comparable<T>> T[] sort(T[] array) {
         for (int i = 1; i < array.length; i++) {
             T temp = array[i];

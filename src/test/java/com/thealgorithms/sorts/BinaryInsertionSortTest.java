@@ -4,9 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-class BinaryInsertionSortTest {
+class BinaryInsertionSortTest extends SortingAlgorithmTest {
+    private final BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort();
 
-    BinaryInsertionSort binaryInsertionSort = new BinaryInsertionSort();
+    @Override
+    SortAlgorithm getSortAlgorithm() {
+        return binaryInsertionSort;
+    }
 
     @Test
     // valid test case
