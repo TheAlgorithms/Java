@@ -9,28 +9,34 @@ import org.junit.jupiter.api.Test;
  * @see OddEvenSort
  */
 
-public class OddEvenSortTest {
+public class OddEvenSortTest extends SortingAlgorithmTest {
+    private final OddEvenSort oddEvenSort = new OddEvenSort();
+
+    @Override
+    SortAlgorithm getSortAlgorithm() {
+        return oddEvenSort;
+    }
+
     @Test
     public void oddEvenSortEmptyArray() {
-        int[] inputArray = {};
-        OddEvenSort.oddEvenSort(inputArray);
-        int[] expectedOutput = {};
+        Integer[] inputArray = {};
+        Integer[] expectedOutput = {};
         assertArrayEquals(inputArray, expectedOutput);
     }
 
     @Test
     public void oddEvenSortNaturalNumberArray() {
-        int[] inputArray = {18, 91, 86, 60, 21, 44, 37, 78, 98, 67};
-        OddEvenSort.oddEvenSort(inputArray);
-        int[] expectedOutput = {18, 21, 37, 44, 60, 67, 78, 86, 91, 98};
+        Integer[] inputArray = {18, 91, 86, 60, 21, 44, 37, 78, 98, 67};
+        oddEvenSort.sort(inputArray);
+        Integer[] expectedOutput = {18, 21, 37, 44, 60, 67, 78, 86, 91, 98};
         assertArrayEquals(inputArray, expectedOutput);
     }
 
     @Test
     public void oddEvenSortIntegerArray() {
-        int[] inputArray = {57, 69, -45, 12, -85, 3, -76, 36, 67, -14};
-        OddEvenSort.oddEvenSort(inputArray);
-        int[] expectedOutput = {-85, -76, -45, -14, 3, 12, 36, 57, 67, 69};
+        Integer[] inputArray = {57, 69, -45, 12, -85, 3, -76, 36, 67, -14};
+        oddEvenSort.sort(inputArray);
+        Integer[] expectedOutput = {-85, -76, -45, -14, 3, 12, 36, 57, 67, 69};
         assertArrayEquals(inputArray, expectedOutput);
     }
 }
