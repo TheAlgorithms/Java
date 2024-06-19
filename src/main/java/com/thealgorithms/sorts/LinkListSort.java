@@ -1,14 +1,10 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To sort the LinkList as per sorting technique */
-
 package com.thealgorithms.sorts;
 
 import java.util.Arrays;
-
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * Program description - To sort the LinkList as per sorting technique
+ */
 public class LinkListSort {
 
     public static boolean isSorted(int[] p, int option) {
@@ -116,17 +112,6 @@ public class LinkListSort {
         // Switch case is used to call the classes as per the user requirement
         return false;
     }
-
-    boolean compare(int[] a, int[] b) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] != b[i]) {
-                return false;
-            }
-        }
-        return true;
-        // Both the arrays are checked for equalness. If both are equal then true is
-        // returned else false is returned
-    }
     /**
      * OUTPUT :
      * Input - {89,56,98,123,26,75,12,40,39,68,91} is same for all the 3 classes
@@ -138,6 +123,16 @@ public class LinkListSort {
      * 3rd approach Time Complexity : O(n logn)
      * Auxiliary Space Complexity : O(n)
      */
+    boolean compare(int[] a, int[] b) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+                return false;
+            }
+        }
+        return true;
+        // Both the arrays are checked for equalness. If both are equal then true is
+        // returned else false is returned
+    }
 }
 
 class Node {

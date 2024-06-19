@@ -1,16 +1,14 @@
 package com.thealgorithms.datastructures.lists;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.Test;
 /**
  * Test cases for QuickSortLinkedList
  * Author: Prabhat-Kumar-42
  * GitHub: https://github.com/Prabhat-Kumar-42
  */
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
-import org.junit.jupiter.api.Test;
-
 public class QuickSortLinkedListTest {
 
     @Test

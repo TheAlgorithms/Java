@@ -3,8 +3,8 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * Find the number of subsets present in the given array with a sum equal to target.
  * Based on Solution discussed on
- * StackOverflow(https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k)
- * @author Samrat Podder(https://github.com/samratpodder)
+ * <a href="https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k">StackOverflow</a>
+ * @author <a href="https://github.com/samratpodder">Samrat Podder</a>
  */
 public final class SubsetCount {
     private SubsetCount() {
@@ -19,7 +19,7 @@ public final class SubsetCount {
      *
      */
     public static int getCount(int[] arr, int target) {
-        /**
+        /*
          * Base Cases - If target becomes zero, we have reached the required sum for the subset
          * If we reach the end of the array arr then, either if target==arr[end], then we add one to
          * the final count Otherwise we add 0 to the final count
