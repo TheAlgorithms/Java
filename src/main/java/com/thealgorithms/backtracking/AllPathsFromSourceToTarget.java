@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * To find all possible paths from source to destination. See
+ * Program description - To find all possible paths from source to destination
  * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
- * (Note: This algorithm finds all paths, not the shortest paths).
+ *
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
  */
 public final class AllPathsFromSourceToTarget {
 
