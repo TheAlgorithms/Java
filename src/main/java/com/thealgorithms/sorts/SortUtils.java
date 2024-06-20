@@ -116,4 +116,26 @@ final class SortUtils {
         }
         return true;
     }
+
+    /**
+     * Finds the maximum element in the given array.
+     *
+     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param array the array to be searched
+     * @return the maximum element in the array
+     * @throws IllegalArgumentException if the array is null or empty
+     */
+    public static <T extends Comparable<T>> T max(T[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+
+        T max = array[0];
+        for (T element : array) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
+    }
 }

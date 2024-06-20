@@ -20,22 +20,20 @@ public class BitonicSort implements SortAlgorithm {
             return arr;
         }
 
-        int n = arr.length;
-        int paddedSize = nextPowerOfTwo(n);
+        final int paddedSize = nextPowerOfTwo(arr.length);
         T[] paddedArray = Arrays.copyOf(arr, paddedSize);
 
         // Fill the padded part with a maximum value
-        T maxValue = findMax(arr);
-        Arrays.fill(paddedArray, n, paddedSize, maxValue);
+        final T maxValue = SortUtils.max(arr);
+        Arrays.fill(paddedArray, arr.length, paddedSize, maxValue);
 
         bitonicSort(paddedArray, 0, paddedSize, true);
-
-        return Arrays.copyOf(paddedArray, n);
+        return Arrays.copyOf(paddedArray, arr.length);
     }
 
     private <T extends Comparable<T>> void bitonicSort(T[] arr, int low, int cnt, boolean dir) {
         if (cnt > 1) {
-            int k = cnt / 2;
+            final int k = cnt / 2;
 
             // Sort first half in ascending order
             bitonicSort(arr, low, k, true);
@@ -50,7 +48,7 @@ public class BitonicSort implements SortAlgorithm {
 
     private <T extends Comparable<T>> void bitonicMerge(T[] arr, int low, int cnt, boolean dir) {
         if (cnt > 1) {
-            int k = cnt / 2;
+            final int k = cnt / 2;
 
             for (int i = low; i < low + k; i++) {
                 if (dir == (arr[i].compareTo(arr[i + k]) > 0)) {
@@ -61,28 +59,6 @@ public class BitonicSort implements SortAlgorithm {
             bitonicMerge(arr, low, k, dir);
             bitonicMerge(arr, low + k, cnt - k, dir);
         }
-    }
-
-    /**
-     * Finds the maximum element in the given array.
-     *
-     * @param <T> the type of elements in the array, which must implement the Comparable interface
-     * @param array the array to be searched
-     * @return the maximum element in the array
-     * @throws IllegalArgumentException if the array is null or empty
-     */
-    public static <T extends Comparable<T>> T findMax(T[] array) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array must not be null or empty");
-        }
-
-        T max = array[0];
-        for (T element : array) {
-            if (element.compareTo(max) > 0) {
-                max = element;
-            }
-        }
-        return max;
     }
 
     /**
