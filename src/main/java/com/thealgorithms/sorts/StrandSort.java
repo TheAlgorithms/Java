@@ -72,14 +72,8 @@ public final class StrandSort implements SortAlgorithm {
                 j++;
             }
         }
-        while (i < left.size()) {
-            result.add(left.get(i));
-            i++;
-        }
-        while (j < right.size()) {
-            result.add(right.get(j));
-            j++;
-        }
+        result.addAll(left.subList(i, left.size()));
+        result.addAll(right.subList(j, right.size()));
         return result;
     }
 }
