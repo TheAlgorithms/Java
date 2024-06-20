@@ -46,6 +46,15 @@ public class BitonicSort implements SortAlgorithm {
         }
     }
 
+    /**
+     * Merges the bitonic sequence in the specified direction.
+     *
+     * @param <T> the type of elements in the array, which must be Comparable
+     * @param arr the array containing the bitonic sequence to be merged
+     * @param low the starting index of the sequence to be merged
+     * @param cnt the number of elements in the sequence to be merged
+     * @param dir the direction of sorting: true for ascending, false for descending
+     */
     private <T extends Comparable<T>> void bitonicMerge(T[] arr, int low, int cnt, boolean dir) {
         if (cnt > 1) {
             final int k = cnt / 2;
