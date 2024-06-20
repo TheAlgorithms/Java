@@ -1,15 +1,14 @@
 package com.thealgorithms.dynamicprogramming;
 
+import java.util.Scanner;
 /**
  * This file contains an implementation of finding the nth CATALAN NUMBER using
- * dynamic programming Wikipedia: https://en.wikipedia.org/wiki/Catalan_number
+ * dynamic programming : <a href="https://en.wikipedia.org/wiki/Catalan_number">Wikipedia</a>
  *
  * Time Complexity: O(n^2) Space Complexity: O(n)
  *
- * @author AMRITESH ANAND (https://github.com/amritesh19)
+ * @author <a href="https://github.com/amritesh19">AMRITESH ANAND</a>
  */
-import java.util.Scanner;
-
 public final class CatalanNumber {
     private CatalanNumber() {
     }
@@ -31,7 +30,7 @@ public final class CatalanNumber {
         catalanArray[0] = 1;
         catalanArray[1] = 1;
 
-        /**
+        /*
          * The Catalan numbers satisfy the recurrence relation C₀=1 and Cn = Σ
          * (Ci * Cn-1-i), i = 0 to n-1 , n > 0
          */

@@ -1,20 +1,14 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-/**
- * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal
- * to number of times n appears in the sequence.
- */
-
-/**
- * Wikipedia Link - https://en.wikipedia.org/wiki/Golomb_sequence
- */
-
-/** Program description - To find the Golomb sequence upto n */
-
 package com.thealgorithms.dynamicprogramming;
 
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+
+ * In mathematics, the Golomb sequence is a non-decreasing integer sequence where n-th term is equal
+ * to number of times n appears in the sequence.
+
+ * <a href="https://en.wikipedia.org/wiki/Golomb_sequence">Wikipedia</a>
+ * Program description - To find the Golomb sequence upto n
+ */
 public final class CountFriendsPairing {
     private CountFriendsPairing() {
     }

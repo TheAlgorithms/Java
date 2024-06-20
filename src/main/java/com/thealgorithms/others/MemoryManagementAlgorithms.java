@@ -1,11 +1,9 @@
 package com.thealgorithms.others;
 
+import java.util.ArrayList;
 /**
  * @author Alexandros Lemonaris
  */
-
-import java.util.ArrayList;
-
 public abstract class MemoryManagementAlgorithms {
 
     /**

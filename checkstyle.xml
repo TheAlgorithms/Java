@@ -99,7 +99,7 @@
 
     <!-- Checks for Javadoc comments.                     -->
     <!-- See https://checkstyle.org/checks/javadoc/index.html -->
-    <!-- TODO <module name="InvalidJavadocPosition"/> -->
+    <module name="InvalidJavadocPosition"/>
     <!-- TODO <module name="JavadocMethod"/> -->
     <!-- TODO <module name="JavadocType"/> -->
     <!-- TODO <module name="JavadocVariable"/> -->
@@ -152,7 +152,7 @@
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
-    <!-- TODO <module name="AvoidNestedBlocks"/> -->
+    <module name="AvoidNestedBlocks"/>
     <!-- TODO <module name="EmptyBlock"/> -->
     <!-- TODO <module name="LeftCurly"/> -->
     <module name="NeedBraces"/>
