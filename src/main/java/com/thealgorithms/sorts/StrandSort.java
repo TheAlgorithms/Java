@@ -61,7 +61,8 @@ public final class StrandSort implements SortAlgorithm {
      */
     private static <T extends Comparable<? super T>> List<T> merge(List<T> left, List<T> right) {
         List<T> result = new ArrayList<>();
-        int i = 0, j = 0;
+        int i = 0;
+        int j = 0;
         while (i < left.size() && j < right.size()) {
             if (left.get(i).compareTo(right.get(j)) <= 0) {
                 result.add(left.get(i));
