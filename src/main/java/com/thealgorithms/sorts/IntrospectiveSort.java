@@ -16,12 +16,6 @@ public class IntrospectiveSort implements SortAlgorithm {
         return a;
     }
 
-    private static <T extends Comparable<T>> void swap(T[] a, int i, int j) {
-        T temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
     private static <T extends Comparable<T>> void introSort(T[] a, int low, int high, int depth) {
         while (high - low > INSERTION_SORT_THRESHOLD) {
             if (depth == 0) {
@@ -37,16 +31,16 @@ public class IntrospectiveSort implements SortAlgorithm {
 
     private static <T extends Comparable<T>> int partition(T[] a, int low, int high) {
         int pivotIndex = low + (int) (Math.random() * (high - low + 1));
-        swap(a, pivotIndex, high);
+        SortUtils.swap(a, pivotIndex, high);
         T pivot = a[high];
         int i = low - 1;
         for (int j = low; j <= high - 1; j++) {
             if (a[j].compareTo(pivot) <= 0) {
                 i++;
-                swap(a, i, j);
+                SortUtils.swap(a, i, j);
             }
         }
-        swap(a, i + 1, high);
+        SortUtils.swap(a, i + 1, high);
         return i + 1;
     }
 
@@ -67,7 +61,7 @@ public class IntrospectiveSort implements SortAlgorithm {
             heapify(a, i, high - low + 1, low);
         }
         for (int i = high; i > low; i--) {
-            swap(a, low, i);
+            SortUtils.swap(a, low, i);
             heapify(a, low, i - low, low);
         }
     }
@@ -83,7 +77,7 @@ public class IntrospectiveSort implements SortAlgorithm {
             largest = right;
         }
         if (largest != i) {
-            swap(a, i, largest);
+            SortUtils.swap(a, i, largest);
             heapify(a, largest, n, low);
         }
     }
