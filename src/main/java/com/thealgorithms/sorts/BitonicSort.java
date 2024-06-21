@@ -1,6 +1,7 @@
 package com.thealgorithms.sorts;
 
 import java.util.Arrays;
+import java.util.function.BiPredicate;
 
 /**
  * BitonicSort class implements the SortAlgorithm interface using the bitonic sort technique.
@@ -15,38 +16,38 @@ public class BitonicSort implements SortAlgorithm {
      * Sorts the given array using the Bitonic Sort algorithm.
      *
      * @param <T> the type of elements in the array, which must implement the Comparable interface
-     * @param unsorted the array to be sorted
+     * @param array the array to be sorted
      * @return the sorted array
      */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        if (unsorted == null || unsorted.length == 0) {
-            return unsorted;
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        if (array.length == 0) {
+            return array;
         }
 
-        final int paddedSize = nextPowerOfTwo(unsorted.length);
-        T[] paddedArray = Arrays.copyOf(unsorted, paddedSize);
+        final int paddedSize = nextPowerOfTwo(array.length);
+        T[] paddedArray = Arrays.copyOf(array, paddedSize);
 
         // Fill the padded part with a maximum value
-        final T maxValue = max(unsorted);
-        Arrays.fill(paddedArray, unsorted.length, paddedSize, maxValue);
+        final T maxValue = max(array);
+        Arrays.fill(paddedArray, array.length, paddedSize, maxValue);
 
         bitonicSort(paddedArray, 0, paddedSize, Direction.ASCENDING);
-        return Arrays.copyOf(paddedArray, unsorted.length);
+        return Arrays.copyOf(paddedArray, array.length);
     }
 
-    private <T extends Comparable<T>> void bitonicSort(T[] arr, int low, int cnt, Direction dir) {
+    private <T extends Comparable<T>> void bitonicSort(final T[] array, final int low, final int cnt, final Direction dir) {
         if (cnt > 1) {
             final int k = cnt / 2;
 
             // Sort first half in ascending order
-            bitonicSort(arr, low, k, Direction.ASCENDING);
+            bitonicSort(array, low, k, Direction.ASCENDING);
 
             // Sort second half in descending order
-            bitonicSort(arr, low + k, cnt - k, Direction.DESCENDING);
+            bitonicSort(array, low + k, cnt - k, Direction.DESCENDING);
 
             // Merge the whole sequence in ascending order
-            bitonicMerge(arr, low, cnt, dir);
+            bitonicMerge(array, low, cnt, dir);
         }
     }
 
@@ -57,15 +58,15 @@ public class BitonicSort implements SortAlgorithm {
      * @param arr the array containing the bitonic sequence to be merged
      * @param low the starting index of the sequence to be merged
      * @param cnt the number of elements in the sequence to be merged
-     * @param dir the direction of sorting: true for ascending, false for descending
+     * @param dir the direction of sorting
      */
-    private <T extends Comparable<T>> void bitonicMerge(T[] arr, int low, int cnt, Direction dir) {
+    private <T extends Comparable<T>> void bitonicMerge(final T[] arr, final int low, final int cnt, final Direction dir) {
         if (cnt > 1) {
             final int k = cnt / 2;
 
+            final BiPredicate<T, T> areSorted = (dir == Direction.ASCENDING) ? (a, b) -> a.compareTo(b) < 0 : (a, b) -> a.compareTo(b) > 0;
             for (int i = low; i < low + k; i++) {
-                boolean condition = (dir == Direction.ASCENDING) ? arr[i].compareTo(arr[i + k]) > 0 : arr[i].compareTo(arr[i + k]) < 0;
-                if (condition) {
+                if (!areSorted.test(arr[i], arr[i + k])) {
                     SortUtils.swap(arr, i, i + k);
                 }
             }
@@ -105,13 +106,7 @@ public class BitonicSort implements SortAlgorithm {
      * @return the maximum element in the array
      * @throws IllegalArgumentException if the array is null or empty
      */
-    private static <T extends Comparable<T>> T max(T[] array) {
-        T max = array[0];
-        for (T element : array) {
-            if (SortUtils.greater(element, max)) {
-                max = element;
-            }
-        }
-        return max;
+    private static <T extends Comparable<T>> T max(final T[] array) {
+        return Arrays.stream(array).max(Comparable::compareTo).orElseThrow();
     }
 }
