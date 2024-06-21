@@ -36,7 +36,7 @@ public class BitonicSort implements SortAlgorithm {
         return Arrays.copyOf(paddedArray, array.length);
     }
 
-    private <T extends Comparable<T>> void bitonicSort(final T[] array, final int low, final int cnt, final Direction dir) {
+    private <T extends Comparable<T>> void bitonicSort(final T[] array, final int low, final int cnt, final Direction direction) {
         if (cnt > 1) {
             final int k = cnt / 2;
 
@@ -47,7 +47,7 @@ public class BitonicSort implements SortAlgorithm {
             bitonicSort(array, low + k, cnt - k, Direction.DESCENDING);
 
             // Merge the whole sequence in ascending order
-            bitonicMerge(array, low, cnt, dir);
+            bitonicMerge(array, low, cnt, direction);
         }
     }
 
@@ -55,24 +55,24 @@ public class BitonicSort implements SortAlgorithm {
      * Merges the bitonic sequence in the specified direction.
      *
      * @param <T> the type of elements in the array, which must be Comparable
-     * @param arr the array containing the bitonic sequence to be merged
+     * @param array the array containing the bitonic sequence to be merged
      * @param low the starting index of the sequence to be merged
      * @param cnt the number of elements in the sequence to be merged
-     * @param dir the direction of sorting
+     * @param direction the direction of sorting
      */
-    private <T extends Comparable<T>> void bitonicMerge(final T[] arr, final int low, final int cnt, final Direction dir) {
+    private <T extends Comparable<T>> void bitonicMerge(T[] array, int low, int cnt, Direction direction) {
         if (cnt > 1) {
             final int k = cnt / 2;
 
-            final BiPredicate<T, T> areSorted = (dir == Direction.ASCENDING) ? (a, b) -> a.compareTo(b) < 0 : (a, b) -> a.compareTo(b) > 0;
+            final BiPredicate<T, T> areSorted = (direction == Direction.ASCENDING) ? (a, b) -> a.compareTo(b) < 0 : (a, b) -> a.compareTo(b) > 0;
             for (int i = low; i < low + k; i++) {
-                if (!areSorted.test(arr[i], arr[i + k])) {
-                    SortUtils.swap(arr, i, i + k);
+                if (!areSorted.test(array[i], array[i + k])) {
+                    SortUtils.swap(array, i, i + k);
                 }
             }
 
-            bitonicMerge(arr, low, k, dir);
-            bitonicMerge(arr, low + k, cnt - k, dir);
+            bitonicMerge(array, low, k, direction);
+            bitonicMerge(array, low + k, cnt - k, direction);
         }
     }
 
