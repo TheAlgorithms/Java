@@ -18,9 +18,7 @@ public class SwapSort implements SortAlgorithm {
             int amountSmallerElements = this.getSmallerElementCount(array, index);
 
             if (amountSmallerElements > 0 && index != amountSmallerElements) {
-                T element = array[index];
-                array[index] = array[amountSmallerElements];
-                array[amountSmallerElements] = element;
+                SortUtils.swap(array, index, amountSmallerElements);
             } else {
                 index++;
             }
