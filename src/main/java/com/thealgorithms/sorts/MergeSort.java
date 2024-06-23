@@ -49,21 +49,24 @@ class MergeSort implements SortAlgorithm {
      * increasing order.
      */
     @SuppressWarnings("unchecked")
-    private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-        int i = left;
-        int j = mid + 1;
-        System.arraycopy(arr, left, aux, left, right + 1 - left);
+   private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
+    // Copy only the necessary portion of arr into aux
+    System.arraycopy(arr, left, aux, left, right - left + 1);
 
-        for (int k = left; k <= right; k++) {
-            if (j > right) {
-                arr[k] = (T) aux[i++];
-            } else if (i > mid) {
-                arr[k] = (T) aux[j++];
-            } else if (less(aux[j], aux[i])) {
-                arr[k] = (T) aux[j++];
-            } else {
-                arr[k] = (T) aux[i++];
-            }
+    int i = left;
+    int j = mid + 1;
+
+    for (int k = left; k <= right; k++) {
+        if (i > mid) {
+            arr[k] = aux[j++];
+        } else if (j > right) {
+            arr[k] = aux[i++];
+        } else if (less(aux[j], aux[i])) {
+            arr[k] = aux[j++];
+        } else {
+            arr[k] = aux[i++];
         }
     }
+}
+
 }
