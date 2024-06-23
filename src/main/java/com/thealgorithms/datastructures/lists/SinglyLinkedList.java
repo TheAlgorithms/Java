@@ -392,7 +392,8 @@ public class SinglyLinkedList implements Iterable<Integer> {
         head = head.next;
         size--; // As head is removed size will be decreased
         return headValue;
-    }    
+    
+    }
 
     /**
      * @param position to check position
