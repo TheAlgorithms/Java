@@ -9,25 +9,32 @@ package com.thealgorithms.sorts;
  */
 public class SwapSort implements SortAlgorithm {
 
-    /**
-     * Sorts the input array using the swap sort algorithm.
-     *
-     * @param array the array to be sorted
-     * @param <T>   the type of elements in the array, which must be Comparable
-     * @return the sorted array
-     */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         int len = array.length;
+        int index = 0;
 
-        for (int i = 0; i < len - 1; i++) {
-            for (int j = i + 1; j < len; j++) {
-                if (SortUtils.less(array[j], array[i])) {
-                    SortUtils.swap(array, i, j);
-                }
+        while (index < len - 1) {
+            int amountSmallerElements = this.getSmallerElementCount(array, index);
+
+            if (amountSmallerElements > 0) {
+                SortUtils.swap(array, index, index + amountSmallerElements);
+            } else {
+                index++;
             }
         }
 
         return array;
+    }
+
+    private <T extends Comparable<T>> int getSmallerElementCount(T[] array, int index) {
+        int counter = 0;
+        for (int i = index + 1; i < array.length; i++) {
+            if (SortUtils.less(array[i], array[index])) {
+                counter++;
+            }
+        }
+
+        return counter;
     }
 }
