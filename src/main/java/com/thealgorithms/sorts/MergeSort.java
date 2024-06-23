@@ -50,23 +50,23 @@ class MergeSort implements SortAlgorithm {
      */
     @SuppressWarnings("unchecked")
    private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
-    // Copy only the necessary portion of arr into aux
-    System.arraycopy(arr, left, aux, left, right - left + 1);
+    // Create a temporary array to hold the merged result
+    Comparable[] aux = new Comparable[right - left + 1];
+    System.arraycopy(arr, left, aux, 0, aux.length);
 
-    int i = left;
-    int j = mid + 1;
+    int i = 0;      // Index for the left half
+    int j = mid - left + 1; // Index for the right half
 
     for (int k = left; k <= right; k++) {
-        if (i > mid) {
-            arr[k] = aux[j++];
-        } else if (j > right) {
-            arr[k] = aux[i++];
-        } else if (less(aux[j], aux[i])) {
-            arr[k] = aux[j++];
+        if (i >= mid - left + 1) {
+            arr[k] = (T) aux[j++];
+        } else if (j >= right - left + 1 || less((T) aux[i], (T) aux[j])) {
+            arr[k] = (T) aux[i++];
         } else {
-            arr[k] = aux[i++];
+            arr[k] = (T) aux[j++];
         }
     }
 }
+
 
 }
