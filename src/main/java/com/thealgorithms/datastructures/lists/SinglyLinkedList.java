@@ -383,6 +383,17 @@ public class SinglyLinkedList implements Iterable<Integer> {
         return cur.value;
     }
 
+    // poll method is used to remove the head elemnt and return its value
+    public int poll() {
+        if (head == null) {
+        return -1; // Return a default value or handle empty case
+        }
+        int headValue = head.value;
+        head = head.next;
+        size--;                // As head is removed size will be decreased
+        return headValue;
+        }
+
     /**
      * @param position to check position
      * @param low low index
