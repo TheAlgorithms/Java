@@ -1,16 +1,14 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To find all possible paths from source to destination*/
-
-/**Wikipedia link -> https://en.wikipedia.org/wiki/Shortest_path_problem */
 package com.thealgorithms.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Program description - To find all possible paths from source to destination
+ * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
+ *
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ */
 public class AllPathsFromSourceToTarget {
 
     // No. of vertices in graph

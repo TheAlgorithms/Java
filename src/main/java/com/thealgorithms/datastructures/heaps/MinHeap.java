@@ -22,7 +22,7 @@ public class MinHeap implements Heap {
                 System.out.println("Null element. Not added to heap");
             }
         }
-        if (minHeap.size() == 0) {
+        if (minHeap.isEmpty()) {
             System.out.println("No element has been added, empty heap.");
         }
     }

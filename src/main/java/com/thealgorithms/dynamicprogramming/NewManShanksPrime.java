@@ -1,13 +1,10 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To find the New Man Shanks Prime. */
-/** Wikipedia Link - https://en.wikipedia.org/wiki/Newman%E2%80%93Shanks%E2%80%93Williams_prime */
-
 package com.thealgorithms.dynamicprogramming;
 
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * Program description - To find the New Man Shanks Prime.
+ * <a href="https://en.wikipedia.org/wiki/Newman%E2%80%93Shanks%E2%80%93Williams_prime">Wikipedia</a>
+ */
 public final class NewManShanksPrime {
     private NewManShanksPrime() {
     }
