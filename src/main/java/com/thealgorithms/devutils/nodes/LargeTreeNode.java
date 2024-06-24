@@ -64,7 +64,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
      */
     @Override
     public boolean isLeafNode() {
-        return (childNodes == null || childNodes.size() == 0);
+        return (childNodes == null || childNodes.isEmpty());
     }
 
     public Collection<LargeTreeNode<E>> getChildNodes() {
