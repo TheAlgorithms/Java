@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-
 public class WaveSortTest {
     record InputData(Integer[] array) {
     }
