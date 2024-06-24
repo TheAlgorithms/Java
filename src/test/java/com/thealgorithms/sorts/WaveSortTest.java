@@ -12,7 +12,7 @@ public class WaveSortTest {
 
     @ParameterizedTest
     @MethodSource("inputStream")
-    public void testWaveSortMixedPositiveNegativeZero(InputData inputData) {
+    public void test(InputData inputData) {
         WaveSort waveSort = new WaveSort();
         assertTrue(waveSort.isWaveSorted(waveSort.sort(inputData.array)));
     }
