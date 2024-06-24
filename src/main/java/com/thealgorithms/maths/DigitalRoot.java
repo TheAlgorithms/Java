@@ -1,8 +1,7 @@
+package com.thealgorithms.maths;
+
 /**
- * Author : Suraj Kumar Modi
- * https://github.com/skmodi649
- */
-/**
+ * @author <a href="https://github.com/skmodi649">Suraj Kumar Modi</a>
  * You are given a number n. You need to find the digital root of n.
  * DigitalRoot of a number is the recursive sum of its digits until we get a single digit number.
  *
@@ -20,8 +19,6 @@
  * which is not a single digit number, hence
  * sum of digit of 45 is 9 which is a single
  * digit number.
- */
-/**
  * Algorithm :
  * Step 1 : Define a method digitalRoot(int n)
  * Step 2 : Define another method single(int n)
@@ -38,8 +35,6 @@
  * Step 5 : In main method simply take n as input and then call digitalRoot(int n) function and
  * print the result
  */
-package com.thealgorithms.maths;
-
 final class DigitalRoot {
     private DigitalRoot() {
     }
@@ -53,6 +48,11 @@ final class DigitalRoot {
         }
     }
 
+    /**
+     * Time Complexity: O((Number of Digits)^2) Auxiliary Space Complexity:
+     * O(Number of Digits) Constraints: 1 <= n <= 10^7
+     */
+
     // This function is used for finding the sum of the digits of number
     public static int single(int n) {
         if (n <= 9) { // if n becomes less than 10 than return n
@@ -63,7 +63,3 @@ final class DigitalRoot {
     } // n / 10 is the number obtained after removing the digit one by one
     // The Sum of digits is stored in the Stack memory and then finally returned
 }
-/**
- * Time Complexity: O((Number of Digits)^2) Auxiliary Space Complexity:
- * O(Number of Digits) Constraints: 1 <= n <= 10^7
- */

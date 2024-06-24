@@ -31,7 +31,7 @@ public final class QuickSelect {
     public static <T extends Comparable<T>> T select(List<T> list, int n) {
         Objects.requireNonNull(list, "The list of elements must not be null.");
 
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             String msg = "The list of elements must not be empty.";
             throw new IllegalArgumentException(msg);
         }

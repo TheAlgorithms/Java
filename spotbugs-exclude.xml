@@ -133,9 +133,6 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="SPP_USE_ISEMPTY" />
-    </Match>
-    <Match>
         <Bug pattern="BL_BURYING_LOGIC" />
     </Match>
     <Match>
