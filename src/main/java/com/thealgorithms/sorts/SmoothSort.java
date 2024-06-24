@@ -1,75 +1,73 @@
 package com.thealgorithms.sorts;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Smoothsort
  */
-public final class SmoothSort {
+public final class SmoothSort implements SortAlgorithm {
 
-    private SmoothSort() {
+    public SmoothSort() {
     }
 
-    public static Integer[] getLeonardoNumbers() {
+    private static Integer[] getLeonardoNumbers() {
         Integer[] leonardoNumbers = {1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, 287, 465, 753, 1219, 1973, 3193, 5167, 8361, 13529, 21891, 35421, 57313, 92735, 150049, 242785, 392835, 635621, 1028457, 1664079, 2692537, 4356617, 7049155, 1405773, 18454929, 29860703, 48315633, 78176337, 126491971,
             204668309, 331160281, 535828591};
 
         return leonardoNumbers;
     }
 
-    public static Integer[] smoothSort(Integer[] array) {
+    private static <T extends Comparable<T>> void smoothSort(T[] array) {
         int length = array.length;
         int leonardoHeapSize = 0; // start with size 0
-        int leonardoLevels = 0; // No leonardo tree present initially
+        int leonardoLevelTracker = 0; // No leonardo tree present initially
 
         while (leonardoHeapSize < length) {
             // if two trees with consequtive level
             // combine them to get new tree
             // else if there is no Level 1, add the node as level 1
             // else add the node as Level 0
-            // perform shiftRoot to restore heap property
+            // perform shiftRoot and restore heap property
 
-            Integer[] consecutiveTreeIndices = findConsecutiveLeonardoTrees(leonardoLevels);
+            Integer[] consecutiveTreeIndices = findConsecutiveLeonardoTreeIndices(leonardoLevelTracker);
             if (consecutiveTreeIndices[0] != -1) {
                 // if 0th or 1st index is -1 that implies there are no concequtive trees
-                leonardoLevels = leonardoLevels & ~(1 << consecutiveTreeIndices[0]);
-                leonardoLevels = leonardoLevels & ~(1 << consecutiveTreeIndices[1]);
-                leonardoLevels = leonardoLevels | (1 << consecutiveTreeIndices[1] + 1);
-            } else if ((leonardoLevels & 2) == 0) {
-                leonardoLevels = leonardoLevels | (1 << 1);
+                leonardoLevelTracker = leonardoLevelTracker & ~(1 << consecutiveTreeIndices[0]);
+                leonardoLevelTracker = leonardoLevelTracker & ~(1 << consecutiveTreeIndices[1]);
+                leonardoLevelTracker = leonardoLevelTracker | (1 << consecutiveTreeIndices[1] + 1);
+            } else if ((leonardoLevelTracker & 2) == 0) {
+                leonardoLevelTracker = leonardoLevelTracker | (1 << 1);
             } else {
-                leonardoLevels = leonardoLevels | (1 << 0);
+                leonardoLevelTracker = leonardoLevelTracker | (1 << 0);
             }
-
             leonardoHeapSize++;
-            array = shiftRoot(leonardoLevels, leonardoHeapSize, array);
+            shiftRootAndRestoreHeap(leonardoLevelTracker, leonardoHeapSize, array);
         }
 
-        // Now our Leonardo heap is fully ready, start extracting the max
         while (leonardoHeapSize > 0) {
             // destroy the current level
             // if level is not L1 or L0
             // create two smaller sublevels
-            // perform shiftRoot to restore heap property
+            // perform shiftRoot and restore heap property
 
-            int lastTreeLevel = getRightMostTree(leonardoLevels); // getting the right most tree
+            int lastTreeLevel = getRightMostTree(leonardoLevelTracker); // getting the right most tree
 
-            leonardoLevels = leonardoLevels & ~(1 << lastTreeLevel);
+            leonardoLevelTracker = leonardoLevelTracker & ~(1 << lastTreeLevel);
             if (lastTreeLevel != 0 && lastTreeLevel != 1) {
-                leonardoLevels = leonardoLevels | (1 << lastTreeLevel - 1);
-                leonardoLevels = leonardoLevels | (1 << lastTreeLevel - 2);
+                leonardoLevelTracker = leonardoLevelTracker | (1 << lastTreeLevel - 1);
+                leonardoLevelTracker = leonardoLevelTracker | (1 << lastTreeLevel - 2);
             }
 
             leonardoHeapSize--;
-            array = shiftRoot(leonardoLevels, leonardoHeapSize, array);
+            shiftRootAndRestoreHeap(leonardoLevelTracker, leonardoHeapSize, array);
         }
-
-        return array;
     }
 
-    public static int getRightMostTree(int leonardoLevels) {
+    private static int getRightMostTree(int leonardoLevelTracker) {
         // Isolate the rightmost set bit
-        int isolatedBit = leonardoLevels & -leonardoLevels;
+        int isolatedBit = leonardoLevelTracker & -leonardoLevelTracker;
         int position = 0;
 
         while (isolatedBit > 1) {
@@ -80,14 +78,14 @@ public final class SmoothSort {
         return position;
     }
 
-    public static Integer[] findConsecutiveLeonardoTrees(int num) {
+    private static Integer[] findConsecutiveLeonardoTreeIndices(int num) {
         int prevOneIndex = -1;
-        int currentBit;
+        int currentLevel;
 
         Integer[] answer = new Integer[] {-1, -1};
         for (int i = 0; num > 0; i++) {
-            currentBit = num & 1;
-            if (currentBit == 1) {
+            currentLevel = num & 1;
+            if (currentLevel == 1) {
                 if (prevOneIndex != -1) {
                     answer[0] = prevOneIndex;
                     answer[1] = i;
@@ -101,7 +99,7 @@ public final class SmoothSort {
         return answer;
     }
 
-    public static Integer[] findAllLeonardoTrees(int num) {
+    private static Integer[] findAllLeonardoTreeIndices(int num) {
         int setBitCount = 0;
         for (int i = 0; i < Integer.SIZE; i++) {
             if ((num & (1 << i)) != 0) {
@@ -119,86 +117,115 @@ public final class SmoothSort {
         return setBitIndexes;
     }
 
-    public static Integer[] shiftRoot(int lenardoLevels, int leonardoHeapSize, Integer[] array) {
+    private static <T extends Comparable<T>> void shiftRootAndRestoreHeap(int lenardoLevelTracker, int leonardoHeapSize, T[] array) {
+
         if (leonardoHeapSize == 0) {
-            return array;
-        }
-        Integer[] currentLeonardoTrees = findAllLeonardoTrees(lenardoLevels);
-        Integer[] leonardoNumbers = getLeonardoNumbers();
-        int prevTreeSizeCumulative = 0;
-        ArrayList<Integer> treeSizeList = new ArrayList<Integer>();
-        ArrayList<Integer> rootNodeIndex = new ArrayList<Integer>();
-        for (int i = currentLeonardoTrees.length - 1; i >= 0; i--) {
-            int currentTreeSize = leonardoNumbers[currentLeonardoTrees[i]];
-            treeSizeList.add(currentTreeSize);
-            rootNodeIndex.add(prevTreeSizeCumulative + currentTreeSize - 1);
-            prevTreeSizeCumulative = prevTreeSizeCumulative + currentTreeSize;
+            return;
         }
 
-        int rootNodeIndexForHeapify = rootNodeIndex.getLast(); // default value for heapify
-        int treeSizeForHeapify = treeSizeList.getLast();
-        for (int i = 1; i < currentLeonardoTrees.length; i++) { // iterate form 1 because there is no left of the left-most tree
+        Integer[] currentLeonardoTreeLevels = findAllLeonardoTreeIndices(lenardoLevelTracker);
+        int previousTreeSizeCumulative = 0;
+        ArrayList<Integer> rootNodeIndices = new ArrayList<Integer>();
+        Collections.reverse(Arrays.asList(currentLeonardoTreeLevels)); // To get the Levels in decreasing order of levels
+
+        // The number of roots are going to be same the the number of levels
+        // iterate over the currentLeonardoTreeLevels and get roots
+
+        for (int i = 0; i < currentLeonardoTreeLevels.length; i++) {
+            rootNodeIndices.add(previousTreeSizeCumulative + getLeonardoNumbers()[currentLeonardoTreeLevels[i]] - 1);
+            previousTreeSizeCumulative = previousTreeSizeCumulative + getLeonardoNumbers()[currentLeonardoTreeLevels[i]];
+        }
+
+        int rootNodeIndexForHeapify = rootNodeIndices.getLast();
+        int leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[currentLeonardoTreeLevels.length - 1];
+
+        for (int i = 0; i < rootNodeIndices.size(); i++) {
+            if (i == 0) {
+                continue;
+            }
+
+            int currentRootNodeIndex = rootNodeIndices.get(i);
+            int prevRootNodeIndex = rootNodeIndices.get(i - 1);
             int j = i;
-            while (j > 0 && array[rootNodeIndex.get(j - 1)] > array[rootNodeIndex.get(j)]) {
-                int currentTreeSize = treeSizeList.get(j);
-                if (currentTreeSize >= 3) { // has children
-                    // if greater than each of two children then swap
-                    if (array[rootNodeIndex.get(j - 1)] > array[rootNodeIndex.get(j) - 1] && array[rootNodeIndex.get(j - 1)] > array[rootNodeIndex.get(j) - 2]) {
-                        // swap
-                        int temp = array[rootNodeIndex.get(j - 1)];
-                        array[rootNodeIndex.get(j - 1)] = array[rootNodeIndex.get(j)];
-                        array[rootNodeIndex.get(j)] = temp;
-                        rootNodeIndexForHeapify = rootNodeIndex.get(j - 1);
-                        treeSizeForHeapify = treeSizeList.get(j - 1);
+            while (array[prevRootNodeIndex].compareTo(array[currentRootNodeIndex]) > 0) {
+                int currentLeonardoLevel = currentLeonardoTreeLevels[j];
+                if (currentLeonardoLevel > 1) {
+                    // compare child and swap
+
+                    int indexOfRightChild = rootNodeIndices.get(j) - 1; // right child is of level n-2
+                    int indexOfLeftChild = rootNodeIndices.get(j) - 1 - getLeonardoNumbers()[currentLeonardoLevel - 2];
+                    if (array[prevRootNodeIndex].compareTo(array[indexOfRightChild]) > 0 && array[prevRootNodeIndex].compareTo(array[indexOfLeftChild]) > 0) {
+                        swap(array, prevRootNodeIndex, currentRootNodeIndex);
+                        rootNodeIndexForHeapify = prevRootNodeIndex;
+                        leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
+                    } else {
+                        maxHeapifyLeonardoTree(currentRootNodeIndex, currentLeonardoLevel, array);
                     }
                 } else {
                     // swap
-                    int temp = array[rootNodeIndex.get(j - 1)];
-                    array[rootNodeIndex.get(j - 1)] = array[rootNodeIndex.get(j)];
-                    array[rootNodeIndex.get(j)] = temp;
-                    rootNodeIndexForHeapify = rootNodeIndex.get(j - 1);
-                    treeSizeForHeapify = treeSizeList.get(j - 1);
+                    swap(array, prevRootNodeIndex, currentRootNodeIndex);
+                    rootNodeIndexForHeapify = prevRootNodeIndex;
+                    leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
+                }
+                j = j - 1;
+                if (j == i - 1) {
+                    maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
+                    break;
                 }
 
-                j--;
+                currentRootNodeIndex = rootNodeIndices.get(j);
+                prevRootNodeIndex = rootNodeIndices.get(j - 1);
             }
         }
 
-        array = maxHeapify(rootNodeIndexForHeapify, treeSizeForHeapify, array);
-        return array;
+        maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array); // for the last tree if needed
     }
 
-    public static Integer[] maxHeapify(int rootNodeIndex, int treeSizeForHeapify, Integer[] array) {
-        int startNodeIndex = rootNodeIndex;
-        int endNodeIndex = rootNodeIndex - treeSizeForHeapify + 1;
+    private static <T> void swap(T[] array, int idx, int idy) {
+        T swap = array[idx];
+        array[idx] = array[idy];
+        array[idy] = swap;
+    }
 
-        // This is a heap where the root node is the end index of the array
-        // The left child node for an element i is 2i - n
-        // The right child node for an element i is 2i - n - 1
-        // The parent node is n - 1 - Floor( (n-i-2)/2 )
+    private static <T extends Comparable<T>> void maxHeapifyLeonardoTree(int rootNodeIndex, int currentLeonardoLevel, T[] array) {
+        // A leonardo tree of level n is just 1 node(the root) plus the leonardo tree of n-1 level(left child) plus leonardo tree of n-2 level(right child)
+        // To maxheapify a leonardo tree we need to compare the current root and roots of it's left and right subtree
+        // We recursively hepify the left and right subtrees using the currentLeonardoLevel
 
-        if (startNodeIndex <= endNodeIndex) {
-            return array;
+        // BASE CASE
+        if (currentLeonardoLevel == 0 || currentLeonardoLevel == 1) {
+            return; // Trees with one node are in already max-heapified.
         }
 
-        for (int i = startNodeIndex; i >= endNodeIndex; i--) {
-            int parentNodeIndex = treeSizeForHeapify + endNodeIndex - 1 - ((treeSizeForHeapify - i + endNodeIndex - 2) / 2);
-            if ((parentNodeIndex <= rootNodeIndex) && (parentNodeIndex >= i)) {
-                int currenNodeIndex = i;
-                while (array[currenNodeIndex] > array[parentNodeIndex]) {
-                    int temp = array[currenNodeIndex];
-                    array[currenNodeIndex] = array[parentNodeIndex];
-                    array[parentNodeIndex] = temp;
+        int currentRootNodeIndex = rootNodeIndex;
+        int rightChildIndex = rootNodeIndex - 1;
+        int leftChildIndex = rootNodeIndex - getLeonardoNumbers()[currentLeonardoLevel - 2] - 1;
+        int childIndexForSwap = -1;
 
-                    currenNodeIndex = parentNodeIndex;
-                    parentNodeIndex = treeSizeForHeapify - 1 - ((treeSizeForHeapify - currenNodeIndex - 2) / 2);
+        // maxHeapifyLeonardoTree(rightChildIndex, currentLeonardoLevel - 2, array);
+        // maxHeapifyLeonardoTree(leftChildIndex, currentLeonardoLevel - 1, array);
 
-                    if (currenNodeIndex == rootNodeIndex) {
-                        break;
-                    } // reached the root node
-                }
+        if (array[rightChildIndex].compareTo(array[leftChildIndex]) >= 0) {
+            childIndexForSwap = rightChildIndex;
+        } else {
+            childIndexForSwap = leftChildIndex;
+        }
+
+        if (array[childIndexForSwap].compareTo(array[currentRootNodeIndex]) > 0) {
+            // swap(And keep on swapping I guess, I did not implement that which might be causing issue?)
+            swap(array, currentRootNodeIndex, childIndexForSwap);
+            if (childIndexForSwap == rightChildIndex) {
+                maxHeapifyLeonardoTree(rightChildIndex, currentLeonardoLevel - 2, array);
+            } else { // swap happened with the left child
+                maxHeapifyLeonardoTree(leftChildIndex, currentLeonardoLevel - 1, array);
             }
         }
-        return array;
+    }
+
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
+        // TODO Auto-generated method stub
+        smoothSort(unsorted);
+        return unsorted;
     }
 }
