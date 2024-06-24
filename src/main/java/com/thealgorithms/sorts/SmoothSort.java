@@ -170,7 +170,6 @@ public final class SmoothSort implements SortAlgorithm {
                 j = j - 1;
                 if (j == i - 1) {
                     maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
-                    break;
                 }
             }
         }
