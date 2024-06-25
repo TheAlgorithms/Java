@@ -18,9 +18,6 @@
         <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
     </Match>
     <Match>
-        <Bug pattern="NM_CLASS_NAMING_CONVENTION" />
-    </Match>
-    <Match>
         <Bug pattern="SIC_INNER_SHOULD_BE_STATIC" />
     </Match>
     <Match>
@@ -43,9 +40,6 @@
     </Match>
     <Match>
         <Bug pattern="INT_BAD_REM_BY_1" />
-    </Match>
-    <Match>
-        <Bug pattern="NM_METHOD_NAMING_CONVENTION" />
     </Match>
     <Match>
         <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
