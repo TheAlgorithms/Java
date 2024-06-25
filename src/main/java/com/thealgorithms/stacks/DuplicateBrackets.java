@@ -8,7 +8,6 @@ package com.thealgorithms.stacks;
 // e.g.'
 // ((a + b) + (c + d)) -> false
 // (a + b) + ((c + d)) -> true
-import java.util.Scanner;
 import java.util.Stack;
 
 public final class DuplicateBrackets {
@@ -35,12 +34,5 @@ public final class DuplicateBrackets {
             // System.out.println(st);
         }
         return false;
-    }
-
-    public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        System.out.println(check(str));
-        sc.close();
     }
 }
