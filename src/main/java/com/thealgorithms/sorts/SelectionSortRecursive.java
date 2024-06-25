@@ -25,7 +25,6 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @param <T>   the type of elements in the array (must be Comparable)
      */
     private static <T extends Comparable<T>> void recursiveSelectionSort(T[] array, int index) {
-        // Base case: if the array is null, empty, or index has reached the end of the array, return
         if (array == null || array.length == 0) {
             return;
         }
@@ -34,7 +33,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
         }
 
         // Find the minimum element in the remaining unsorted array
-        int minIndex = findMinIndex(array, index, index + 1);
+        int minIndex = findMinIndex(array, index);
 
         // Swap the found minimum element with the element at the current index
         if (minIndex != index) {
@@ -46,26 +45,22 @@ public class SelectionSortRecursive implements SortAlgorithm {
     }
 
     /**
-     * Recursively finds the index of the minimum element in the array starting from a given index.
+     * Finds the index of the minimum element in the array starting from the given index.
      *
-     * @param array            the array to search
-     * @param currentMinIndex  the index of the current minimum element
-     * @param currentIndex     the current index being checked
-     * @param <T>              the type of elements in the array (must be Comparable)
-     * @return the index of the minimum element in the array
+     * @param array the array to search
+     * @param start the starting index for the search
+     * @param <T>   the type of elements in the array
+     * @return the index of the minimum element
      */
-    private static <T extends Comparable<T>> int findMinIndex(T[] array, int currentMinIndex, int currentIndex) {
-        // Base case: if the currentIndex has reached the end of the array, return currentMinIndex
-        if (currentIndex == array.length) {
-            return currentMinIndex;
+    private static <T extends Comparable<T>> int findMinIndex(T[] array, int start) {
+        int currentMinIndex = start;
+
+        for (int currentIndex = start + 1; currentIndex < array.length; currentIndex++) {
+            if (array[currentIndex].compareTo(array[currentMinIndex]) < 0) {
+                currentMinIndex = currentIndex;
+            }
         }
 
-        // Update currentMinIndex if the element at currentIndex is smaller
-        if (array[currentIndex].compareTo(array[currentMinIndex]) < 0) {
-            currentMinIndex = currentIndex;
-        }
-
-        // Recursively find the minimum element in the rest of the array
-        return findMinIndex(array, currentMinIndex, currentIndex + 1);
+        return currentMinIndex;
     }
 }
