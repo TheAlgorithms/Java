@@ -155,15 +155,14 @@ public final class SmoothSort implements SortAlgorithm {
                     int indexOfRightChild = rootNodeIndices.get(j) - 1; // right child is of level n-2
                     int indexOfLeftChild = rootNodeIndices.get(j) - 1 - getLeonardoNumbers()[currentLeonardoLevel - 2];
                     if (array[prevRootNodeIndex].compareTo(array[indexOfRightChild]) > 0 && array[prevRootNodeIndex].compareTo(array[indexOfLeftChild]) > 0) {
-                        swap(array, prevRootNodeIndex, currentRootNodeIndex);
+                        SortUtils.swap(array, prevRootNodeIndex, currentRootNodeIndex);
                         rootNodeIndexForHeapify = prevRootNodeIndex;
                         leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
                     } else {
                         maxHeapifyLeonardoTree(currentRootNodeIndex, currentLeonardoLevel, array);
                     }
                 } else {
-                    // swap
-                    swap(array, prevRootNodeIndex, currentRootNodeIndex);
+                    SortUtils.swap(array, prevRootNodeIndex, currentRootNodeIndex);
                     rootNodeIndexForHeapify = prevRootNodeIndex;
                     leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
                 }
@@ -174,13 +173,7 @@ public final class SmoothSort implements SortAlgorithm {
             }
         }
 
-        maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array); // for the last tree if needed
-    }
-
-    private static <T> void swap(T[] array, int idx, int idy) {
-        T swap = array[idx];
-        array[idx] = array[idy];
-        array[idy] = swap;
+        maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
     }
 
     private static <T extends Comparable<T>> void maxHeapifyLeonardoTree(int rootNodeIndex, int currentLeonardoLevel, T[] array) {
@@ -198,9 +191,6 @@ public final class SmoothSort implements SortAlgorithm {
         int leftChildIndex = rootNodeIndex - getLeonardoNumbers()[currentLeonardoLevel - 2] - 1;
         int childIndexForSwap = -1;
 
-        // maxHeapifyLeonardoTree(rightChildIndex, currentLeonardoLevel - 2, array);
-        // maxHeapifyLeonardoTree(leftChildIndex, currentLeonardoLevel - 1, array);
-
         if (array[rightChildIndex].compareTo(array[leftChildIndex]) >= 0) {
             childIndexForSwap = rightChildIndex;
         } else {
@@ -208,8 +198,7 @@ public final class SmoothSort implements SortAlgorithm {
         }
 
         if (array[childIndexForSwap].compareTo(array[currentRootNodeIndex]) > 0) {
-            // swap(And keep on swapping I guess, I did not implement that which might be causing issue?)
-            swap(array, currentRootNodeIndex, childIndexForSwap);
+            SortUtils.swap(array, currentRootNodeIndex, childIndexForSwap);
             if (childIndexForSwap == rightChildIndex) {
                 maxHeapifyLeonardoTree(rightChildIndex, currentLeonardoLevel - 2, array);
             } else { // swap happened with the left child
@@ -220,7 +209,6 @@ public final class SmoothSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        // TODO Auto-generated method stub
         smoothSort(unsorted);
         return unsorted;
     }
