@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import com.thealgorithms.bitmanipulation.SingleBitOperations;
+
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Smoothsort
  */
@@ -34,9 +36,9 @@ public final class SmoothSort implements SortAlgorithm {
             Integer[] consecutiveTreeIndices = findConsecutiveLeonardoTreeIndices(leonardoLevelTracker);
             if (consecutiveTreeIndices[0] != -1) {
                 // if 0th or 1st index is -1 that implies there are no concequtive trees
-                leonardoLevelTracker = leonardoLevelTracker & ~(1 << consecutiveTreeIndices[0]);
-                leonardoLevelTracker = leonardoLevelTracker & ~(1 << consecutiveTreeIndices[1]);
-                leonardoLevelTracker = leonardoLevelTracker | (1 << consecutiveTreeIndices[1] + 1);
+                leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices[0]);
+                leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices[1]);
+                leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, consecutiveTreeIndices[1] + 1);
             } else if ((leonardoLevelTracker & 2) == 0) {
                 leonardoLevelTracker = leonardoLevelTracker | (1 << 1);
             } else {
@@ -54,10 +56,10 @@ public final class SmoothSort implements SortAlgorithm {
 
             int lastTreeLevel = getRightMostTree(leonardoLevelTracker); // getting the right most tree
 
-            leonardoLevelTracker = leonardoLevelTracker & ~(1 << lastTreeLevel);
+            leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, lastTreeLevel);
             if (lastTreeLevel != 0 && lastTreeLevel != 1) {
-                leonardoLevelTracker = leonardoLevelTracker | (1 << lastTreeLevel - 1);
-                leonardoLevelTracker = leonardoLevelTracker | (1 << lastTreeLevel - 2);
+                leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, lastTreeLevel - 1);
+                leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, lastTreeLevel - 2);
             }
 
             leonardoHeapSize--;
