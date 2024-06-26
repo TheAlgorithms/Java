@@ -31,7 +31,7 @@ public class WaveSortTest {
     }
     public static Stream<Object[]> waveSortedArrays() {
         return Stream.of(new Object[] {new Integer[] {3, 1, 4, 2, 5}, Boolean.TRUE}, new Object[] {new Integer[] {3, 1, 4, 2}, Boolean.TRUE}, new Object[] {new Integer[] {1, 3, 2, 4, 5}, Boolean.FALSE}, new Object[] {new Integer[] {4, 3, 5, 2, 3, 1, 2}, Boolean.TRUE},
-            new Object[] {new Integer[] {10, 90, 49, 2, 1, 5, 23}, Boolean.FALSE}, new Object[] {new Integer[] {}, Boolean.TRUE}, new Object[] {new Integer[] {1}, Boolean.TRUE}, new Object[] {new Integer[] {2, 1}, Boolean.TRUE},  new Object[] {new Integer[] {4, 3, 2, 5}, Boolean.FALSE},
+            new Object[] {new Integer[] {10, 90, 49, 2, 1, 5, 23}, Boolean.FALSE}, new Object[] {new Integer[] {}, Boolean.TRUE}, new Object[] {new Integer[] {1}, Boolean.TRUE}, new Object[] {new Integer[] {2, 1}, Boolean.TRUE}, new Object[] {new Integer[] {4, 3, 2, 5}, Boolean.FALSE},
             new Object[] {new Double[] {4.0, 3.0, 5.1, 2.1, 3.3, 1.1, 2.2}, Boolean.TRUE}, new Object[] {new Double[] {10.1, 2.0, 2.0}, Boolean.TRUE}, new Object[] {new String[] {"a", "b", "c", "d"}, Boolean.FALSE}, new Object[] {new String[] {"b", "a", "b", "a", "b"}, Boolean.TRUE});
     }
 
