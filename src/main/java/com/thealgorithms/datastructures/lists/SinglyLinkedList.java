@@ -335,6 +335,19 @@ public class SinglyLinkedList implements Iterable<Integer> {
     }
 
     /**
+     * @return delete the head node and returns it's value
+     */
+    public int poll() {
+        if (head == null) {
+            return -1;
+        }
+
+        int headValue = head.value;
+        head = head.next;
+        return headValue;
+    }
+
+    /**
      * Deletes a node at the head
      */
     public void deleteHead() {
