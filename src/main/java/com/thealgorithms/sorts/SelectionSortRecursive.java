@@ -53,14 +53,15 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @return the index of the minimum element
      */
     private static <T extends Comparable<T>> int findMinIndex(T[] array, int start) {
-        int currentMinIndex = start;
-
-        for (int currentIndex = start + 1; currentIndex < array.length; currentIndex++) {
-            if (array[currentIndex].compareTo(array[currentMinIndex]) < 0) {
-                currentMinIndex = currentIndex;
-            }
+        // Base case: if start is the last index, return start
+        if (start == array.length - 1) {
+            return start;
         }
 
-        return currentMinIndex;
+        // Recursive call to find the minimum index in the rest of the array
+        int minIndexInRest = findMinIndex(array, start + 1);
+
+        // Return the index of the smaller element between array[start] and the minimum element in the rest of the array
+        return array[start].compareTo(array[minIndexInRest]) < 0 ? start : minIndexInRest;
     }
 }
