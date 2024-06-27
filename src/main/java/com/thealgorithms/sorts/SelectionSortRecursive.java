@@ -13,6 +13,9 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @return the sorted array
      */
     public <T extends Comparable<T>> T[] sort(T[] array) {
+        if (array == null || array.length == 0) {
+            return array;
+        }
         recursiveSelectionSort(array, 0);
         return array;
     }
@@ -25,15 +28,12 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @param <T>   the type of elements in the array (must be Comparable)
      */
     private static <T extends Comparable<T>> void recursiveSelectionSort(T[] array, int index) {
-        if (array == null || array.length == 0) {
-            return;
-        }
         if (index == array.length - 1) {
             return;
         }
 
         // Find the minimum element in the remaining unsorted array
-        int minIndex = findMinIndex(array, index);
+        final int minIndex = findMinIndex(array, index);
 
         // Swap the found minimum element with the element at the current index
         if (minIndex != index) {
@@ -59,7 +59,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
         }
 
         // Recursive call to find the minimum index in the rest of the array
-        int minIndexInRest = findMinIndex(array, start + 1);
+        final int minIndexInRest = findMinIndex(array, start + 1);
 
         // Return the index of the smaller element between array[start] and the minimum element in the rest of the array
         return array[start].compareTo(array[minIndexInRest]) < 0 ? start : minIndexInRest;
