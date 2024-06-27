@@ -46,6 +46,23 @@ public final class PrimeCheck {
         }
         return true;
     }
+    
+    
+    // Skip even numbers (except 2) since they are not prime.
+    // Skip multiples of 3 after checking 3.
+    // Start checking for factors from 5 and use the 6k ± 1 optimization. 
+    // This is based on the fact that any prime number greater than 3 can be expressed as 6k ± 1.
+    // This function is more efficient, especially for larger numbers, as it reduces the number of iterations by skipping unnecessary checks.
+    public static boolean isPrimeNumberOptimised(long number){
+        if(number  <= 1) return false;
+        if(number  <= 3) return true;
+        for(long i = 5; (i * i) <= number; i += 6){
+            if(number % i == 0 || number % (i+2) == 0){
+                return false;
+            }
+        }
+        return true;
+    }
 
     /**
      * *
