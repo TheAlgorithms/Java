@@ -5,7 +5,6 @@ package com.thealgorithms.sorts;
  * It sorts an array of elements in increasing order using an iterative approach.
  */
 public class SelectionSort implements SortAlgorithm {
-
     /**
      * Sorts an array of comparable elements in increasing order using the selection sort algorithm.
      *
