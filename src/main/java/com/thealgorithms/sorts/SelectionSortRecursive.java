@@ -13,7 +13,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @return the sorted array
      */
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        if (array == null || array.length == 0) {
+        if (array.length == 0) {
             return array;
         }
         recursiveSelectionSort(array, 0);
