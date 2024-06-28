@@ -11,6 +11,10 @@ import org.junit.jupiter.api.Test;
 public abstract class SortingAlgorithmTest {
     abstract SortAlgorithm getSortAlgorithm();
 
+    protected int getGeneratedArraySize() {
+        return 10_000;
+    }
+
     @Test
     void shouldAcceptWhenEmptyArrayIsPassed() {
         Integer[] array = new Integer[] {};
@@ -153,7 +157,7 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenRandomArrayIsPassed() {
-        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
+        int randomSize = SortUtilsRandomGenerator.generateInt(getGeneratedArraySize());
         Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
         Double[] sorted = getSortAlgorithm().sort(array);
         assertTrue(SortUtils.isSorted(sorted));
@@ -161,7 +165,7 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenRandomListIsPassed() {
-        int randomSize = SortUtilsRandomGenerator.generateInt(10_000);
+        int randomSize = SortUtilsRandomGenerator.generateInt(getGeneratedArraySize());
         Double[] array = SortUtilsRandomGenerator.generateArray(randomSize);
         List<Double> list = List.of(array);
         List<Double> sorted = getSortAlgorithm().sort(list);

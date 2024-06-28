@@ -5,4 +5,8 @@ public class SelectionSortRecursiveTest extends SortingAlgorithmTest {
     SortAlgorithm getSortAlgorithm() {
         return new SelectionSortRecursive();
     }
+
+    protected int getGeneratedArraySize() {
+        return 5000;
+    }
 }

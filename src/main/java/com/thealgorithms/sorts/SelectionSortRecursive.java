@@ -47,20 +47,21 @@ public class SelectionSortRecursive implements SortAlgorithm {
     /**
      * Finds the index of the minimum element in the array starting from the given index.
      *
-     * @param array the array to search in.
-     * @param start the starting index.
-     * @param <T> the type of the elements in the array, which must be Comparable.
-     * @return the index of the minimum element starting from the given index.
+     * @param array the array to search
+     * @param start the starting index for the search
+     * @param <T>   the type of elements in the array
+     * @return the index of the minimum element
      */
     private static <T extends Comparable<T>> int findMinIndex(T[] array, int start) {
-        int currentMinIndex = start;
-
-        for (int currentIndex = start + 1; currentIndex < array.length; currentIndex++) {
-            if (array[currentIndex].compareTo(array[currentMinIndex]) < 0) {
-                currentMinIndex = currentIndex;
-            }
+        // Base case: if start is the last index, return start
+        if (start == array.length - 1) {
+            return start;
         }
 
-        return currentMinIndex;
+        // Recursive call to find the minimum index in the rest of the array
+        final int minIndexInRest = findMinIndex(array, start + 1);
+
+        // Return the index of the smaller element between array[start] and the minimum element in the rest of the array
+        return array[start].compareTo(array[minIndexInRest]) < 0 ? start : minIndexInRest;
     }
 }
