@@ -140,11 +140,13 @@ public final class SmoothSort implements SortAlgorithm {
 
         int rootNodeIndexForHeapify = rootNodeIndices.getLast();
         int leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[currentLeonardoTreeLevels.length - 1];
+        boolean swaped =false;
+        // if(rootNodeIndices.size() == 1) {
+        //     maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
+        //     return;
+        // }
 
-        for (int i = 0; i < rootNodeIndices.size(); i++) {
-            if (i == 0) {
-                continue;
-            }
+        for (int i = 1; i < rootNodeIndices.size(); i++) {
 
             int currentRootNodeIndex = rootNodeIndices.get(i);
             int prevRootNodeIndex = rootNodeIndices.get(i - 1);
@@ -160,22 +162,37 @@ public final class SmoothSort implements SortAlgorithm {
                         SortUtils.swap(array, prevRootNodeIndex, currentRootNodeIndex);
                         rootNodeIndexForHeapify = prevRootNodeIndex;
                         leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
+                        swaped = true;
                     } else {
                         maxHeapifyLeonardoTree(currentRootNodeIndex, currentLeonardoLevel, array);
+                        swaped = false;
                     }
                 } else {
                     SortUtils.swap(array, prevRootNodeIndex, currentRootNodeIndex);
                     rootNodeIndexForHeapify = prevRootNodeIndex;
                     leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[j - 1];
+                    swaped = true;
                 }
                 j = j - 1;
-                if (j == i - 1) {
-                    maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
+                if(j > 0) {
+                    currentRootNodeIndex = rootNodeIndices.get(j);
+                    prevRootNodeIndex = rootNodeIndices.get(j - 1);
+                }
+                else{
+                    // j = 0 reached the left most tree
+                    break;
                 }
             }
+            
+            if(swaped) {
+                maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
+                swaped = false;
+            }
+            
         }
 
-        maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
+        maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array); // In case of insert and no swap.
+
     }
 
     private static <T extends Comparable<T>> void maxHeapifyLeonardoTree(int rootNodeIndex, int currentLeonardoLevel, T[] array) {
@@ -208,7 +225,16 @@ public final class SmoothSort implements SortAlgorithm {
             }
         }
     }
-
+    public static void main(String args[]) {
+        // This is an example
+       
+        Integer[] array = new Integer[] {
+            64,43,67,56,84,50,46,27,78,99,99,9,34,92
+        };
+        
+        smoothSort(array);
+        System.out.println(SortUtils.isSorted(array));
+    }
     @Override
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
         smoothSort(unsorted);
