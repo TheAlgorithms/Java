@@ -141,10 +141,6 @@ public final class SmoothSort implements SortAlgorithm {
         int rootNodeIndexForHeapify = rootNodeIndices.getLast();
         int leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[currentLeonardoTreeLevels.length - 1];
         boolean swaped =false;
-        // if(rootNodeIndices.size() == 1) {
-        //     maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify, array);
-        //     return;
-        // }
 
         for (int i = 1; i < rootNodeIndices.size(); i++) {
 
