@@ -18,7 +18,7 @@ final class SortUtils {
      */
     public static <T> void swap(T[] array, int i, int j) {
         if (i != j) {
-            T temp = array[i];
+            final T temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
