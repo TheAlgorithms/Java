@@ -32,13 +32,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
             return;
         }
 
-        // Find the minimum element in the remaining unsorted array
-        final int minIndex = findMinIndex(array, index);
-
-        // Swap the found minimum element with the element at the current index
-        if (minIndex != index) {
-            SortUtils.swap(array, index, minIndex);
-        }
+        SortUtils.swap(array, index, findMinIndex(array, index));
 
         // Recursively call selection sort for the remaining array
         recursiveSelectionSort(array, index + 1);
