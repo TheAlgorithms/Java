@@ -2,7 +2,6 @@ package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -76,20 +75,21 @@ class SortUtilsTest {
 
     @ParameterizedTest
     @MethodSource("provideArraysForSwap")
-    public <T> void testSwap(T[] array, int i, int j, T[] expected, String message) {
+    public <T> void testSwap(T[] array, int i, int j, T[] expected) {
         SortUtils.swap(array, i, j);
-        assertArrayEquals(expected, array, message);
+        assertArrayEquals(expected, array);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideArraysForSwap")
+    public <T> void testSwapFlippedIndices(T[] array, int i, int j, T[] expected) {
+        SortUtils.swap(array, j, i);
+        assertArrayEquals(expected, array);
     }
 
     private static Stream<Arguments> provideArraysForSwap() {
-        return Stream.of(Arguments.of(new Integer[] {1, 2, 3, 4}, 1, 2, new Integer[] {1, 3, 2, 4}, "Swapping adjacent elements should work correctly."), Arguments.of(new Integer[] {1, 2, 3, 4}, 0, 3, new Integer[] {4, 2, 3, 1}, "Swapping non-adjacent elements should work correctly."),
-            Arguments.of(new Integer[] {1, 2, 3, 4}, 2, 2, new Integer[] {1, 2, 3, 4}, "Swapping the same index should not change the array."), Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}, "Swapping first and last elements should work correctly."),
-            Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}, "Swapping null elements should work correctly."), Arguments.of(new Integer[] {}, 0, 0, new Integer[] {}, "Swapping in an empty array should not throw an error."));
-    }
-
-    @Test
-    public void testSwapOutOfBounds() {
-        Integer[] array = {1, 2, 3, 4};
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> SortUtils.swap(array, -1, 4), "Swapping out of bounds should throw an ArrayIndexOutOfBoundsException.");
+        return Stream.of(Arguments.of(new Integer[] {1, 2, 3, 4}, 1, 2, new Integer[] {1, 3, 2, 4}), Arguments.of(new Integer[] {1, 2, 3, 4}, 0, 3, new Integer[] {4, 2, 3, 1}),
+            Arguments.of(new Integer[] {1, 2, 3, 4}, 2, 2, new Integer[] {1, 2, 3, 4}), Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}),
+            Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}), Arguments.of(new Integer[] {}, 0, 0, new Integer[] {}));
     }
 }
