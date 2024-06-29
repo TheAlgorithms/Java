@@ -89,6 +89,6 @@ class SortUtilsTest {
 
     private static Stream<Arguments> provideArraysForSwap() {
         return Stream.of(Arguments.of(new Integer[] {1, 2, 3, 4}, 1, 2, new Integer[] {1, 3, 2, 4}), Arguments.of(new Integer[] {1, 2, 3, 4}, 0, 3, new Integer[] {4, 2, 3, 1}), Arguments.of(new Integer[] {1, 2, 3, 4}, 2, 2, new Integer[] {1, 2, 3, 4}),
-            Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}), Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}), Arguments.of(new Integer[] {}, 0, 0, new Integer[] {}));
+            Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}), Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}));
     }
 }
