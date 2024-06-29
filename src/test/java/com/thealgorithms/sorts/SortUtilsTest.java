@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -83,15 +82,14 @@ class SortUtilsTest {
     }
 
     private static Stream<Arguments> provideArraysForSwap() {
-        return Stream.of(Arguments.of(new Integer[]{1, 2, 3, 4}, 1, 2, new Integer[]{1, 3, 2, 4}, "Swapping adjacent elements should work correctly."), Arguments.of(new Integer[]{1, 2, 3, 4}, 0, 3, new Integer[]{4, 2, 3, 1}, "Swapping non-adjacent elements should work correctly."), Arguments.of(new Integer[]{1, 2, 3, 4}, 2, 2, new Integer[]{1, 2, 3, 4}, "Swapping the same index should not change the array."),
-            Arguments.of(new String[]{"a", "b", "c", "d"}, 0, 3, new String[]{"d", "b", "c", "a"}, "Swapping first and last elements should work correctly."), Arguments.of(new String[]{null, "b", "c", null}, 0, 3, new String[]{null, "b", "c", null}, "Swapping null elements should work correctly."), Arguments.of(new Integer[]{}, 0, 0, new Integer[]{}, "Swapping in an empty array should not throw an error."));
+        return Stream.of(Arguments.of(new Integer[] {1, 2, 3, 4}, 1, 2, new Integer[] {1, 3, 2, 4}, "Swapping adjacent elements should work correctly."), Arguments.of(new Integer[] {1, 2, 3, 4}, 0, 3, new Integer[] {4, 2, 3, 1}, "Swapping non-adjacent elements should work correctly."),
+                Arguments.of(new Integer[] {1, 2, 3, 4}, 2, 2, new Integer[] {1, 2, 3, 4}, "Swapping the same index should not change the array."), Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}, "Swapping first and last elements should work correctly."),
+                Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}, "Swapping null elements should work correctly."), Arguments.of(new Integer[] {}, 0, 0, new Integer[] {}, "Swapping in an empty array should not throw an error."));
     }
 
     @Test
     public void testSwapOutOfBounds() {
         Integer[] array = {1, 2, 3, 4};
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            SortUtils.swap(array, -1, 4);
-        }, "Swapping out of bounds should throw an ArrayIndexOutOfBoundsException.");
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> { SortUtils.swap(array, -1, 4); }, "Swapping out of bounds should throw an ArrayIndexOutOfBoundsException.");
     }
 }
