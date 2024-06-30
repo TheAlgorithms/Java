@@ -1,18 +1,26 @@
-/**
- * Author : Siddhant Swarup Mallick
- * Github : https://github.com/siddhant2002
- */
-
-/** Program description - To find out the inverse square root of the given number*/
-
-/** Wikipedia Link - https://en.wikipedia.org/wiki/Fast_inverse_square_root */
-
 package com.thealgorithms.maths;
 
+/**
+ * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
+ * Program description - To find out the inverse square root of the given number
+ * <a href="https://en.wikipedia.org/wiki/Fast_inverse_square_root">Wikipedia</a>
+ */
 public final class FastInverseSqrt {
     private FastInverseSqrt() {
     }
-
+    /**
+     * Returns the inverse square root of the given number upto 6 - 8 decimal places.
+     * calculates the inverse square root of the given number and returns true if calculated answer
+     * matches with given answer else returns false
+     *
+     * OUTPUT :
+     * Input - number = 4522
+     * Output: it calculates the inverse squareroot of a number and returns true with it matches the
+     * given answer else returns false. 1st approach Time Complexity : O(1) Auxiliary Space Complexity :
+     * O(1) Input - number = 4522 Output: it calculates the inverse squareroot of a number and returns
+     * true with it matches the given answer else returns false. 2nd approach Time Complexity : O(1)
+     * Auxiliary Space Complexity : O(1)
+     */
     public static boolean inverseSqrt(float number) {
         float x = number;
         float xhalf = 0.5f * x;
@@ -24,11 +32,10 @@ public final class FastInverseSqrt {
     }
 
     /**
-     * Returns the inverse square root of the given number upto 6 - 8 decimal places.
+     * Returns the inverse square root of the given number upto 14 - 16 decimal places.
      * calculates the inverse square root of the given number and returns true if calculated answer
      * matches with given answer else returns false
      */
-
     public static boolean inverseSqrt(double number) {
         double x = number;
         double xhalf = 0.5d * x;
@@ -41,18 +48,4 @@ public final class FastInverseSqrt {
         x *= number;
         return x == 1 / Math.sqrt(number);
     }
-    /**
-     * Returns the inverse square root of the given number upto 14 - 16 decimal places.
-     * calculates the inverse square root of the given number and returns true if calculated answer
-     * matches with given answer else returns false
-     */
 }
-/**
- * OUTPUT :
- * Input - number = 4522
- * Output: it calculates the inverse squareroot of a number and returns true with it matches the
- * given answer else returns false. 1st approach Time Complexity : O(1) Auxiliary Space Complexity :
- * O(1) Input - number = 4522 Output: it calculates the inverse squareroot of a number and returns
- * true with it matches the given answer else returns false. 2nd approach Time Complexity : O(1)
- * Auxiliary Space Complexity : O(1)
- */

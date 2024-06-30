@@ -14,11 +14,11 @@ package com.thealgorithms.datastructures.heaps;
  */
 public class MinPriorityQueue {
 
-    private int[] heap;
-    private int capacity;
+    private final int[] heap;
+    private final int capacity;
     private int size;
 
-    // calss the constructor and initializes the capacity
+    // class the constructor and initializes the capacity
     MinPriorityQueue(int c) {
         this.capacity = c;
         this.size = 0;

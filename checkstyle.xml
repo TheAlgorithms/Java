@@ -99,7 +99,7 @@
 
     <!-- Checks for Javadoc comments.                     -->
     <!-- See https://checkstyle.org/checks/javadoc/index.html -->
-    <!-- TODO <module name="InvalidJavadocPosition"/> -->
+    <module name="InvalidJavadocPosition"/>
     <!-- TODO <module name="JavadocMethod"/> -->
     <!-- TODO <module name="JavadocType"/> -->
     <!-- TODO <module name="JavadocVariable"/> -->
@@ -143,7 +143,7 @@
     <module name="ParenPad"/>
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
-    <!-- TODO <module name="WhitespaceAround"/> -->
+    <module name="WhitespaceAround"/>
 
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->

@@ -34,13 +34,13 @@ public class MergeSortRecursive {
     }
 
     private static List<Integer> sort(List<Integer> unsortedA, List<Integer> unsortedB) {
-        if (unsortedA.size() <= 0 && unsortedB.size() <= 0) {
+        if (unsortedA.isEmpty() && unsortedB.isEmpty()) {
             return new ArrayList<>();
         }
-        if (unsortedA.size() <= 0) {
+        if (unsortedA.isEmpty()) {
             return unsortedB;
         }
-        if (unsortedB.size() <= 0) {
+        if (unsortedB.isEmpty()) {
             return unsortedA;
         }
         if (unsortedA.get(0) <= unsortedB.get(0)) {

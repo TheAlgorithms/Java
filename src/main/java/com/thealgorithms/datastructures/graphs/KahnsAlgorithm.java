@@ -9,9 +9,6 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * An algorithm that sorts a graph in toplogical order.
- */
-/**
  * A class that represents the adjaceny list of a graph
  */
 class AdjacencyList<E extends Comparable<E>> {
