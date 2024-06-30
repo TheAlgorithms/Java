@@ -1,7 +1,7 @@
 package com.thealgorithms.sorts;
 
 /**
- * BubbleSort algorithm implements using recursion
+ * BubbleSort algorithm implemented using recursion
  */
 public class BubbleSortRecursive implements SortAlgorithm {
     /**
