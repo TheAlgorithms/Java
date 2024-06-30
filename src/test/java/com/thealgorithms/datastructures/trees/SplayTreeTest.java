@@ -74,39 +74,40 @@ public class SplayTreeTest {
     }
 
     private static Stream<Object[]> traversalStrategies() {
-        return Stream.of(new Object[] {SplayTree.IN_ORDER, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20)}, new Object[] {SplayTree.PRE_ORDER, Arrays.asList(20, 17, 14, 13, 11, 9, 8, 7, 3, 2, 1, 5, 4, 6, 10, 12, 15, 16, 18)},
-            new Object[] {SplayTree.POST_ORDER, Arrays.asList(1, 2, 4, 6, 5, 3, 7, 8, 10, 9, 12, 11, 13, 16, 15, 14, 18, 17, 20)});
+        return Stream.of(new Object[] {SplayTree.IN_ORDER, Arrays.asList(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90)}, new Object[] {SplayTree.PRE_ORDER, Arrays.asList(15, 5, 10, 80, 70, 45, 25, 20, 35, 30, 40, 55, 50, 65, 60, 75, 90, 85)},
+            new Object[] {SplayTree.POST_ORDER, Arrays.asList(10, 5, 20, 30, 40, 35, 25, 50, 60, 65, 55, 45, 75, 70, 85, 90, 80, 15)});
     }
 
     private static Stream<Integer> valuesToTest() {
-        return Stream.of(1, 5, 10, 17, 8, 13, 6, 17, 4, 11, 9, 2, 18, 3, 16, 7, 12);
+        return Stream.of(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90);
     }
 
     private static Stream<Integer> nonExistentValues() {
-        return Stream.of(0, 21, 22, 23);
+        return Stream.of(0, 100, 42, 58);
     }
 
     private SplayTree createComplexTree() {
         SplayTree tree = new SplayTree();
-        tree.insert(10);
-        tree.insert(5);
-        tree.insert(15);
-        tree.insert(2);
-        tree.insert(7);
-        tree.insert(1);
-        tree.insert(4);
-        tree.insert(6);
-        tree.insert(9);
-        tree.insert(3);
-        tree.insert(8);
-        tree.insert(12);
-        tree.insert(17);
-        tree.insert(11);
-        tree.insert(13);
-        tree.insert(16);
-        tree.insert(18);
-        tree.insert(14);
+
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
         tree.insert(20);
+        tree.insert(80);
+        tree.insert(10);
+        tree.insert(25);
+        tree.insert(35);
+        tree.insert(45);
+        tree.insert(55);
+        tree.insert(65);
+        tree.insert(75);
+        tree.insert(85);
+        tree.insert(5);
+        tree.insert(90);
+        tree.insert(15);
+
         return tree;
     }
 }
