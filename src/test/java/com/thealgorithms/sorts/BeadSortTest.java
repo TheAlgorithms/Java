@@ -10,8 +10,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class BeadSortTest {
-    // BeadSort can't sort negative number, Character, String. It can sort positive number only
-
     @ParameterizedTest
     @MethodSource("provideArraysForBeadSort")
     public void testBeadSort(int[] inputArray, int[] expectedArray) {
@@ -26,6 +24,6 @@ public class BeadSortTest {
 
     @Test
     public void testWithNegativeNumbers() {
-        assertThrows(IllegalArgumentException.class, () -> new BeadSort().sort(new int[] {3, -1, 4, 1, 5, -9}));
+        assertThrows(IllegalArgumentException.class, () -> new BeadSort().sort(new int[] {3, 1, 4, 1, 5, -9}));
     }
 }
