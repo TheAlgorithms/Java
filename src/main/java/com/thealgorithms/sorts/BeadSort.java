@@ -53,7 +53,7 @@ public class BeadSort {
         int[] sorted = new int[grid.length];
         for (int i = 0; i < grid.length; i++) {
             int k = 0;
-            for (int j = 0; j < grid[grid.length - 1 - i].length && grid[grid.length - 1 - i][j].equals(BeadState.BEAD); j++) {
+            for (int j = 0; j < grid[grid.length - 1 - i].length && grid[grid.length - 1 - i][j] == BeadState.BEAD; j++) {
                 k++;
             }
             sorted[i] = k;
