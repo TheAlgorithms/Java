@@ -347,7 +347,23 @@ public class SinglyLinkedList implements Iterable<Integer> {
     public void delete() {
         deleteNth(size - 1);
     }
-
+    
+    /**
+     * Returns the head(first node) isolated and removes it from the
+     * Linked-List
+     * Updates the size of Linked-List
+     */
+    public Node poll() {
+        if (this.head == null)
+            throw new NoSuchElementException();
+        else {
+            Node destruct = head;
+            head = head.next;
+            destruct.next = null;
+            size--;
+            return destruct;
+        }
+    }
     /**
      * Deletes an element at Nth position
      */
