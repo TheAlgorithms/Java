@@ -3,6 +3,11 @@ package com.thealgorithms.sorts;
 import java.util.Arrays;
 
 public class BeadSort {
+    private enum BeadState {
+        BEAD,
+        EMPTY
+    }
+
     /**
      * Sorts the given array using the BeadSort algorithm.
      *
@@ -21,7 +26,7 @@ public class BeadSort {
         }
     }
 
-    private boolean[][] fillGrid(final int[] array) {
+    private BeadState[][] fillGrid(final int[] array) {
         final var maxValue = Arrays.stream(array).max().orElse(0);
         var grid = getEmptyGrid(array.length, maxValue);
 
@@ -29,29 +34,29 @@ public class BeadSort {
         for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
             int k = 0;
             for (int j = 0; j < array[i]; j++) {
-                grid[count[maxValue - k - 1]++][k] = true;
+                grid[count[maxValue - k - 1]++][k] = BeadState.BEAD;
                 k++;
             }
         }
         return grid;
     }
 
-    private boolean[][] getEmptyGrid(final int arrayLength, final int maxValue) {
-        boolean[][] grid = new boolean[arrayLength][maxValue];
+    private BeadState[][] getEmptyGrid(final int arrayLength, final int maxValue) {
+        BeadState[][] grid = new BeadState[arrayLength][maxValue];
         for (int i = 0; i < arrayLength; i++) {
             for (int j = 0; j < maxValue; j++) {
-                grid[i][j] = false;
+                grid[i][j] = BeadState.EMPTY;
             }
         }
 
         return grid;
     }
 
-    private int[] extractSortedFromGrid(final boolean[][] grid) {
+    private int[] extractSortedFromGrid(final BeadState[][] grid) {
         int[] sorted = new int[grid.length];
         for (int i = 0; i < grid.length; i++) {
             int k = 0;
-            for (int j = 0; j < grid[grid.length - 1 - i].length && grid[grid.length - 1 - i][j]; j++) {
+            for (int j = 0; j < grid[grid.length - 1 - i].length && grid[grid.length - 1 - i][j].equals(BeadState.BEAD); j++) {
                 k++;
             }
             sorted[i] = k;
