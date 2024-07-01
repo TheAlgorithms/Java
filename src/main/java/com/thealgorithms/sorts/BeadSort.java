@@ -1,40 +1,59 @@
 package com.thealgorithms.sorts;
 
-// BeadSort Algorithm(wikipedia) : https://en.wikipedia.org/wiki/Bead_sort
-// BeadSort can't sort negative number, Character, String. It can sort positive number only
+import java.util.Arrays;
 
 public class BeadSort {
-    public int[] sort(int[] unsorted) {
-        int[] sorted = new int[unsorted.length];
-        int max = 0;
-        for (int i = 0; i < unsorted.length; i++) {
-            max = Math.max(max, unsorted[i]);
+    private enum BeadState { BEAD, EMPTY }
+
+    /**
+     * Sorts the given array using the BeadSort algorithm.
+     *
+     * @param array The array of non-negative integers to be sorted.
+     * @return The sorted array.
+     * @throws IllegalArgumentException If the array contains negative numbers.
+     */
+    public int[] sort(int[] array) {
+        allInputsMustBeNonNegative(array);
+        return extractSortedFromGrid(fillGrid(array));
+    }
+
+    private void allInputsMustBeNonNegative(final int[] array) {
+        if (Arrays.stream(array).anyMatch(s -> s < 0)) {
+            throw new IllegalArgumentException("BeadSort cannot sort negative numbers.");
         }
+    }
 
-        char[][] grid = new char[unsorted.length][max];
-        int[] count = new int[max];
+    private BeadState[][] fillGrid(final int[] array) {
+        final var maxValue = Arrays.stream(array).max().orElse(0);
+        var grid = getEmptyGrid(array.length, maxValue);
 
-        for (int i = 0; i < unsorted.length; i++) {
-            for (int j = 0; j < max; j++) {
-                grid[i][j] = '-';
-            }
-        }
-
-        for (int i = 0; i < max; i++) {
-            count[i] = 0;
-        }
-
-        for (int i = 0; i < unsorted.length; i++) {
+        int[] count = new int[maxValue];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
             int k = 0;
-            for (int j = 0; j < unsorted[i]; j++) {
-                grid[count[max - k - 1]++][k] = '*';
+            for (int j = 0; j < array[i]; j++) {
+                grid[count[maxValue - k - 1]++][k] = BeadState.BEAD;
                 k++;
             }
         }
+        return grid;
+    }
 
-        for (int i = 0; i < unsorted.length; i++) {
+    private BeadState[][] getEmptyGrid(final int arrayLength, final int maxValue) {
+        BeadState[][] grid = new BeadState[arrayLength][maxValue];
+        for (int i = 0; i < arrayLength; i++) {
+            for (int j = 0; j < maxValue; j++) {
+                grid[i][j] = BeadState.EMPTY;
+            }
+        }
+
+        return grid;
+    }
+
+    private int[] extractSortedFromGrid(final BeadState[][] grid) {
+        int[] sorted = new int[grid.length];
+        for (int i = 0; i < grid.length; i++) {
             int k = 0;
-            for (int j = 0; j < max && grid[unsorted.length - 1 - i][j] == '*'; j++) {
+            for (int j = 0; j < grid[grid.length - 1 - i].length && grid[grid.length - 1 - i][j] == BeadState.BEAD; j++) {
                 k++;
             }
             sorted[i] = k;
