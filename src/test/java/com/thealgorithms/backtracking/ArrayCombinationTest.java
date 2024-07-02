@@ -1,51 +1,48 @@
 package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 import org.junit.jupiter.api.Test;
 
 public class ArrayCombinationTest {
 
     @Test
-    void testNBeingZeroOrLess() {
-        List<TreeSet<Integer>> zeroResult = ArrayCombination.combination(0, 1);
-        List<TreeSet<Integer>> negativeResult = ArrayCombination.combination(-1, 1);
-        assertNull(zeroResult);
-        assertNull(negativeResult);
+    public void testCombination() {
+        // Test case 1: n = 4, k = 2
+        List<List<Integer>> expected = new ArrayList<>();
+        expected.add(List.of(1, 2));
+        expected.add(List.of(1, 3));
+        expected.add(List.of(1, 4));
+        expected.add(List.of(2, 3));
+        expected.add(List.of(2, 4));
+        expected.add(List.of(3, 4));
+
+        List<List<Integer>> actual = ArrayCombination.combination(4, 2);
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    void testNoLengthElement() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 0);
-        assertNull(result);
+    public void testEmptyCombination() {
+        // Test case 2: n = 4, k = 0 (invalid input)
+        List<List<Integer>> expected = new ArrayList<>();
+        List<List<Integer>> actual = ArrayCombination.combination(4, 0);
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    void testLengthOne() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 1);
-        assert result != null;
-        assertEquals(1, result.get(0).iterator().next());
-        assertEquals(2, result.get(1).iterator().next());
-    }
+    public void testSingleElementCombinations() {
+        // Test case 3: n = 3, k = 1
+        List<List<Integer>> expected = new ArrayList<>();
+        expected.add(List.of(1));
+        expected.add(List.of(2));
+        expected.add(List.of(3));
 
-    @Test
-    void testLengthTwo() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 2);
-        assert result != null;
-        Integer[] arr = result.get(0).toArray(new Integer[2]);
-        assertEquals(1, arr[0]);
-        assertEquals(2, arr[1]);
-    }
+        List<List<Integer>> actual = ArrayCombination.combination(3, 1);
 
-    @Test
-    void testLengthFive() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(10, 5);
-        assert result != null;
-        Integer[] arr = result.get(0).toArray(new Integer[5]);
-        assertEquals(1, arr[0]);
-        assertEquals(5, arr[4]);
+        assertEquals(expected, actual);
     }
 }
