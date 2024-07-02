@@ -1,207 +1,123 @@
 package com.thealgorithms.ciphers;
 
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Columnar Transposition Cipher Encryption and Decryption.
- *
- * @author <a href="https://github.com/freitzzz">freitzzz</a>
  */
 public final class ColumnarTranspositionCipher {
+
+    private static final char PADDING_CHAR = '≈';
+
     private ColumnarTranspositionCipher() {
     }
 
-    private static String keyword;
-    private static Object[][] table;
-    private static String abecedarium;
-    public static final String ABECEDARIUM = "abcdefghijklmnopqrstuvwxyzABCDEFG"
-        + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
-    private static final String ENCRYPTION_FIELD = "≈";
-    private static final char ENCRYPTION_FIELD_CHAR = '≈';
-
     /**
-     * Encrypts a certain String with the Columnar Transposition Cipher Rule
+     * Encrypts a message using the Columnar Transposition Cipher with the given key.
      *
-     * @param word Word being encrypted
-     * @param keyword String with keyword being used
-     * @return a String with the word encrypted by the Columnar Transposition
-     * Cipher Rule
+     * @param message The message to encrypt.
+     * @param key The key to use for encryption.
+     * @return The encrypted message.
      */
-    public static String encrpyter(String word, String keyword) {
-        ColumnarTranspositionCipher.keyword = keyword;
-        abecedariumBuilder(500);
-        table = tableBuilder(word);
-        Object[][] sortedTable = sortTable(table);
-        StringBuilder wordEncrypted = new StringBuilder();
-        for (int i = 0; i < sortedTable[i].length; i++) {
-            for (int j = 1; j < sortedTable.length; j++) {
-                wordEncrypted.append(sortedTable[j][i]);
+    public static String encrypt(String message, String key) {
+        int numColumns = key.length();
+        int numRows = (int) Math.ceil((double) message.length() / numColumns);
+
+        char[][] grid = new char[numRows][numColumns];
+
+        // Fill the grid with the message and padding characters
+        fillGrid(message, grid, numRows, numColumns);
+
+        // Get the sorted column order based on the key
+        Integer[] order = getColumnOrder(key);
+
+        // Read columns in sorted order to build the encrypted message
+        StringBuilder encryptedMessage = new StringBuilder();
+        for (int col : order) {
+            for (int row = 0; row < numRows; row++) {
+                encryptedMessage.append(grid[row][col]);
             }
         }
-        return wordEncrypted.toString();
+
+        return encryptedMessage.toString();
     }
 
     /**
-     * Encrypts a certain String with the Columnar Transposition Cipher Rule
+     * Decrypts a message that was encrypted using the Columnar Transposition Cipher with the given key.
      *
-     * @param word Word being encrypted
-     * @param keyword String with keyword being used
-     * @param abecedarium String with the abecedarium being used. null for
-     * default one
-     * @return a String with the word encrypted by the Columnar Transposition
-     * Cipher Rule
+     * @param message The encrypted message.
+     * @param key The key used for encryption.
+     * @return The decrypted message.
      */
-    public static String encrpyter(String word, String keyword, String abecedarium) {
-        ColumnarTranspositionCipher.keyword = keyword;
-        ColumnarTranspositionCipher.abecedarium = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
-        table = tableBuilder(word);
-        Object[][] sortedTable = sortTable(table);
-        StringBuilder wordEncrypted = new StringBuilder();
-        for (int i = 0; i < sortedTable[0].length; i++) {
-            for (int j = 1; j < sortedTable.length; j++) {
-                wordEncrypted.append(sortedTable[j][i]);
+    public static String decrypt(String message, String key) {
+        int numColumns = key.length();
+        int numRows = (int) Math.ceil((double) message.length() / numColumns);
+
+        char[][] grid = new char[numRows][numColumns];
+
+        // Get the sorted column order based on the key
+        Integer[] order = getColumnOrder(key);
+
+        // Fill the grid by columns based on the sorted order
+        int index = 0;
+        for (int col : order) {
+            for (int row = 0; row < numRows; row++) {
+                grid[row][col] = message.charAt(index++);
             }
         }
-        return wordEncrypted.toString();
+
+        // Read the grid row by row to get the decrypted message, removing padding
+        StringBuilder decryptedMessage = new StringBuilder();
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numColumns; col++) {
+                char c = grid[row][col];
+                if (c != PADDING_CHAR) {
+                    decryptedMessage.append(c);
+                }
+            }
+        }
+
+        return decryptedMessage.toString();
     }
 
     /**
-     * Decrypts a certain encrypted String with the Columnar Transposition
-     * Cipher Rule
+     * Fills the grid with the message and padding characters.
      *
-     * @return a String decrypted with the word encrypted by the Columnar
-     * Transposition Cipher Rule
+     * @param message The message to encrypt.
+     * @param grid The grid to fill.
+     * @param numRows The number of rows in the grid.
+     * @param numColumns The number of columns in the grid.
      */
-    public static String decrypter() {
-        StringBuilder wordDecrypted = new StringBuilder();
-        for (int i = 1; i < table.length; i++) {
-            for (Object item : table[i]) {
-                wordDecrypted.append(item);
-            }
-        }
-        return wordDecrypted.toString().replaceAll(ENCRYPTION_FIELD, "");
-    }
-
-    /**
-     * Builds a table with the word to be encrypted in rows by the Columnar
-     * Transposition Cipher Rule
-     *
-     * @return An Object[][] with the word to be encrypted filled in rows and
-     * columns
-     */
-    private static Object[][] tableBuilder(String word) {
-        Object[][] table = new Object[numberOfRows(word) + 1][keyword.length()];
-        char[] wordInChards = word.toCharArray();
-        // Fils in the respective numbers
-        table[0] = findElements();
-        int charElement = 0;
-        for (int i = 1; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                if (charElement < wordInChards.length) {
-                    table[i][j] = wordInChards[charElement];
-                    charElement++;
+    private static void fillGrid(String message, char[][] grid, int numRows, int numColumns) {
+        int index = 0;
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numColumns; col++) {
+                if (index < message.length()) {
+                    grid[row][col] = message.charAt(index++);
                 } else {
-                    table[i][j] = ENCRYPTION_FIELD_CHAR;
+                    grid[row][col] = PADDING_CHAR;
                 }
             }
         }
-        return table;
     }
 
     /**
-     * Determines the number of rows the table should have regarding the
-     * Columnar Transposition Cipher Rule
+     * Gets the order of the columns based on the sorted key characters.
      *
-     * @return an int with the number of rows that the table should have in
-     * order to respect the Columnar Transposition Cipher Rule.
+     * @param key The key to use for sorting.
+     * @return An array containing the order of the columns.
      */
-    private static int numberOfRows(String word) {
-        if (word.length() / keyword.length() > word.length() / keyword.length()) {
-            return (word.length() / keyword.length()) + 1;
-        } else {
-            return word.length() / keyword.length();
-        }
-    }
+    private static Integer[] getColumnOrder(String key) {
+        Integer[] order = new Integer[key.length()];
+        Character[] keyChars = new Character[key.length()];
 
-    /**
-     * @return charValues
-     */
-    private static Object[] findElements() {
-        Object[] charValues = new Object[keyword.length()];
-        for (int i = 0; i < charValues.length; i++) {
-            int charValueIndex = abecedarium.indexOf(keyword.charAt(i));
-            charValues[i] = charValueIndex > -1 ? charValueIndex : null;
+        for (int i = 0; i < key.length(); i++) {
+            order[i] = i;
+            keyChars[i] = key.charAt(i);
         }
-        return charValues;
-    }
 
-    /**
-     * @return tableSorted
-     */
-    private static Object[][] sortTable(Object[][] table) {
-        Object[][] tableSorted = new Object[table.length][table[0].length];
-        for (int i = 0; i < tableSorted.length; i++) {
-            System.arraycopy(table[i], 0, tableSorted[i], 0, tableSorted[i].length);
-        }
-        for (int i = 0; i < tableSorted[0].length; i++) {
-            for (int j = i + 1; j < tableSorted[0].length; j++) {
-                if ((int) tableSorted[0][i] > (int) table[0][j]) {
-                    Object[] column = getColumn(tableSorted, tableSorted.length, i);
-                    switchColumns(tableSorted, j, i, column);
-                }
-            }
-        }
-        return tableSorted;
-    }
-
-    /**
-     * @return columnArray
-     */
-    private static Object[] getColumn(Object[][] table, int rows, int column) {
-        Object[] columnArray = new Object[rows];
-        for (int i = 0; i < rows; i++) {
-            columnArray[i] = table[i][column];
-        }
-        return columnArray;
-    }
-
-    private static void switchColumns(Object[][] table, int firstColumnIndex, int secondColumnIndex, Object[] columnToSwitch) {
-        for (int i = 0; i < table.length; i++) {
-            table[i][secondColumnIndex] = table[i][firstColumnIndex];
-            table[i][firstColumnIndex] = columnToSwitch[i];
-        }
-    }
-
-    /**
-     * Creates an abecedarium with a specified ascii inded
-     *
-     * @param value Number of characters being used based on the ASCII Table
-     */
-    private static void abecedariumBuilder(int value) {
-        StringBuilder t = new StringBuilder();
-        for (int i = 0; i < value; i++) {
-            t.append((char) i);
-        }
-        abecedarium = t.toString();
-    }
-
-    private static void showTable() {
-        for (Object[] table1 : table) {
-            for (Object item : table1) {
-                System.out.print(item + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String[] args) {
-        String keywordForExample = "asd215";
-        String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
-        System.out.println("### Example of Columnar Transposition Cipher ###\n");
-        System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        System.out.println("Word encrypted ->>> " + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
-        System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypter());
-        System.out.println("\n### Encrypted Table ###");
-        showTable();
+        Arrays.sort(order, Comparator.comparingInt(o -> keyChars[o]));
+        return order;
     }
 }
