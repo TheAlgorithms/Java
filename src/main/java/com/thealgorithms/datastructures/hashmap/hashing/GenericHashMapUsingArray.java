@@ -47,8 +47,7 @@ public class GenericHashMapUsingArray<K, V> {
 
     // tells which bucket to go to
     private int hashFunction(K key) {
-        int hc = key.hashCode();
-        return Math.abs(hc) % buckets.length;
+        return Math.floorMod(key.hashCode(), buckets.length);
     }
 
     private void reHash() {
