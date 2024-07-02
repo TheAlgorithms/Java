@@ -89,9 +89,6 @@
     <Match>
         <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
     </Match>
-    <Match>
-        <Bug pattern="RV_ABSOLUTE_VALUE_OF_HASHCODE" />
-    </Match>
     <!-- fb-contrib -->
     <Match>
         <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER" />
