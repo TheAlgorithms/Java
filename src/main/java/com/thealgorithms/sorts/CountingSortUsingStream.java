@@ -1,12 +1,12 @@
 package com.thealgorithms.sorts;
 
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
 
 public class CountingSortUsingStream implements SortAlgorithm {
     @Override
