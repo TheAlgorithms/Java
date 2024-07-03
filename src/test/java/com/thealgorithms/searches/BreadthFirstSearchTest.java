@@ -53,7 +53,7 @@ public class BreadthFirstSearchTest {
 
         // check value
         Optional<Node<String>> value = bfs.search(root, expectedValue);
-        assertEquals(expectedValue, value.orElse(new Node<>("")).getValue());
+        assertEquals(expectedValue, value.orElseGet(() -> new Node<>("")).getValue());
 
         // check path
         assertArrayEquals(expectedPath.toArray(), bfs.getVisited().toArray());
@@ -65,7 +65,7 @@ public class BreadthFirstSearchTest {
         List<String> expectedPath = List.of("A", "B", "C", "D", "E", "F");
 
         // check value
-        Optional<Node<String>> value = Optional.of(bfs.search(root, expectedValue).orElse(new Node<>(null)));
+        Optional<Node<String>> value = Optional.of(bfs.search(root, expectedValue).orElseGet(() -> new Node<>(null)));
         assertEquals(expectedValue, value.get().getValue());
 
         // check path

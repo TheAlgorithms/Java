@@ -54,7 +54,7 @@ public class DepthFirstSearchTest {
 
         // check value
         Optional<Node<Integer>> value = dfs.recursiveSearch(root, expectedValue);
-        assertEquals(expectedValue, value.orElse(new Node<>(null)).getValue());
+        assertEquals(expectedValue, value.orElseGet(() -> new Node<>(null)).getValue());
 
         // check path
         assertArrayEquals(expectedPath.toArray(), dfs.getVisited().toArray());
@@ -67,7 +67,7 @@ public class DepthFirstSearchTest {
 
         // check value
         Optional<Node<Integer>> value = dfs.recursiveSearch(root, expectedValue);
-        assertEquals(expectedValue, value.orElse(new Node<>(null)).getValue());
+        assertEquals(expectedValue, value.orElseGet(() -> new Node<>(null)).getValue());
 
         // check path
         assertArrayEquals(expectedPath.toArray(), dfs.getVisited().toArray());
