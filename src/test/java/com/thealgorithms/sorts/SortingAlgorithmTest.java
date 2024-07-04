@@ -3,7 +3,6 @@ package com.thealgorithms.sorts;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -277,13 +276,13 @@ public abstract class SortingAlgorithmTest {
     @Test
     public void shouldHandleArrayWithNullValues() {
         Integer[] array = {3, null, 2, null, 1};
-        assertThrows(NullPointerException.class, () -> getSortAlgorithm().sort(array));
+        org.junit.jupiter.api.Assertions.assertThrows(NullPointerException.class, () -> getSortAlgorithm().sort(array));
     }
 
     @Test
     public void shouldHandleListWithNullValues() {
         List<Integer> list = Arrays.asList(3, null, 2, null, 1);
-        assertThrows(NullPointerException.class, () -> getSortAlgorithm().sort(list));
+        org.junit.jupiter.api.Assertions.assertThrows(NullPointerException.class, () -> getSortAlgorithm().sort(list));
     }
 
     static class CustomObject implements Comparable<CustomObject> {
