@@ -306,8 +306,12 @@ public abstract class SortingAlgorithmTest {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             CustomObject that = (CustomObject) o;
             return value == that.value;
         }
