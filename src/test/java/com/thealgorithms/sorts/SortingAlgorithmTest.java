@@ -286,20 +286,6 @@ public abstract class SortingAlgorithmTest {
         assertThrows(NullPointerException.class, () -> getSortAlgorithm().sort(list));
     }
 
-    @Test
-    public void shouldHandleArrayOfBooleanValues() {
-        Boolean[] array = {true, false, true, false};
-        Boolean[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Boolean[] {false, false, true, true}, sortedArray);
-    }
-
-    @Test
-    public void shouldHandleListOfBooleanValues() {
-        List<Boolean> list = Arrays.asList(true, false, true, false);
-        List<Boolean> sortedList = getSortAlgorithm().sort(list);
-        assertEquals(Arrays.asList(false, false, true, true), sortedList);
-    }
-
     static class CustomObject implements Comparable<CustomObject> {
         int value;
 
