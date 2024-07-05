@@ -28,22 +28,26 @@ class CountingSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> list) {
-        // TreeMap to maintain order of elements naturally.
-        Map<T, Integer> frequencyMap = new TreeMap<>();
+        Map<T, Integer> frequencyMap = computeHistogramMap(list);
+        return formSortedArrayFromHistogramMap(list, frequencyMap);
+    }
 
-        // Count the frequency of each element in the list.
-        for (T element : list) {
-            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
-        }
-
-        // Create the sorted list based on the frequency map.
+    private static <T extends Comparable<T>> List<T> formSortedArrayFromHistogramMap(List<T> list, Map<T, Integer> frequencyMap) {
         List<T> sortedList = new ArrayList<>(list.size());
         for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
             for (int i = 0; i < entry.getValue(); i++) {
                 sortedList.add(entry.getKey());
             }
         }
-
         return sortedList;
+    }
+
+    private static <T extends Comparable<T>> Map<T, Integer> computeHistogramMap(List<T> list) {
+        // TreeMap to maintain order of elements naturally.
+        Map<T, Integer> frequencyMap = new TreeMap<>();
+        for (T element : list) {
+            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
+        }
+        return frequencyMap;
     }
 }
