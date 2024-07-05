@@ -29,11 +29,11 @@ class CountingSort implements SortAlgorithm {
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> list) {
         Map<T, Integer> frequencyMap = computeFequencyMap(list);
-        return formSortedArrayFromFrequencyMap(list, frequencyMap);
+        return extractSortedArray(frequencyMap);
     }
 
-    private static <T extends Comparable<T>> List<T> formSortedArrayFromFrequencyMap(List<T> list, Map<T, Integer> frequencyMap) {
-        List<T> sortedList = new ArrayList<>(list.size());
+    private static <T extends Comparable<T>> List<T> extractSortedArray(Map<T, Integer> frequencyMap) {
+        List<T> sortedList = new ArrayList<>();
         for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
             for (int i = 0; i < entry.getValue(); i++) {
                 sortedList.add(entry.getKey());
