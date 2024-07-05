@@ -1,30 +1,23 @@
 package com.thealgorithms.datastructures.heaps;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import com.thealgorithms.bitmanipulation.SingleBitOperations;
 import com.thealgorithms.maths.LeonardoNumber;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Wikipedia: https://en.wikipedia.org/wiki/Smoothsort
+ */
 public class LeonardoHeap<T extends Comparable<T>> {
 
     private int leonardoLevelTracker;
     private int leonardoHeapSize;
-    private final  List<T> leonardoHeap;
+    private final List<T> leonardoHeap;
 
     public LeonardoHeap() {
         this.leonardoHeap = new ArrayList<T>();
         this.leonardoLevelTracker = 0;
         this.leonardoHeapSize = 0;
-    }
-
-    public static Integer[] getLeonardoNumbers() {
-        Integer[] leonardoNumbers = {1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, 287, 465, 753, 1219, 1973, 3193, 5167, 8361, 13529, 21891, 35421, 57313, 92735, 150049, 242785, 392835, 635621, 1028457, 1664079, 2692537, 4356617, 7049155, 1405773, 18454929, 29860703, 48315633, 78176337, 126491971,
-            204668309, 331160281, 535828591};
-
-        return leonardoNumbers;
     }
 
     public int getHeapsize() {
@@ -41,12 +34,12 @@ public class LeonardoHeap<T extends Comparable<T>> {
     }
 
     private void increaseLeonardoLevelTracker() {
-        Integer[] consecutiveTreeIndices = findConsecutiveLeonardoTreeIndices(leonardoLevelTracker);
-        if (consecutiveTreeIndices[0] != -1) {
+        ArrayList<Integer> consecutiveTreeIndices = findConsecutiveLeonardoTreeIndices(leonardoLevelTracker);
+        if (consecutiveTreeIndices.get(0) != -1) {
             // if 0th or 1st index is -1 that implies there are no concequtive trees
-            leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices[0]);
-            leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices[1]);
-            leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, consecutiveTreeIndices[1] + 1);
+            leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices.get(0));
+            leonardoLevelTracker = SingleBitOperations.clearBit(leonardoLevelTracker, consecutiveTreeIndices.get(1));
+            leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, consecutiveTreeIndices.get(1) + 1);
         } else if ((leonardoLevelTracker & 2) == 0) {
             leonardoLevelTracker = SingleBitOperations.setBit(leonardoLevelTracker, 1);
         } else {
@@ -102,7 +95,6 @@ public class LeonardoHeap<T extends Comparable<T>> {
         Integer[] currentLeonardoTreeLevels = findAllLeonardoTreeIndices();
         int previousTreeSizeCumulative = 0;
         ArrayList<Integer> rootNodeIndices = new ArrayList<Integer>();
-        Collections.reverse(Arrays.asList(currentLeonardoTreeLevels)); // To get the Levels in decreasing order of levels
 
         // The number of roots are going to be same the the number of levels
         // iterate over the currentLeonardoTreeLevels and get roots
@@ -114,7 +106,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
 
         int rootNodeIndexForHeapify = rootNodeIndices.getLast();
         int leonardoTreeLevelforHeapify = currentLeonardoTreeLevels[currentLeonardoTreeLevels.length - 1];
-        boolean swaped =false;
+        boolean swaped = false;
 
         for (int i = 1; i < rootNodeIndices.size(); i++) {
 
@@ -144,27 +136,24 @@ public class LeonardoHeap<T extends Comparable<T>> {
                     swaped = true;
                 }
                 j = j - 1;
-                if(j > 0) {
+                if (j > 0) {
                     currentRootNodeIndex = rootNodeIndices.get(j);
                     prevRootNodeIndex = rootNodeIndices.get(j - 1);
-                }
-                else{
+                } else {
                     // j = 0 reached the left most tree
                     break;
                 }
             }
-            
-            if(swaped) {
+
+            if (swaped) {
                 maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify);
                 swaped = false;
             }
-            
         }
 
         maxHeapifyLeonardoTree(rootNodeIndexForHeapify, leonardoTreeLevelforHeapify); // In case of insert and no swap.
-
     }
-    
+
     private int getRightMostTree() {
         // Isolate the rightmost set bit
         int isolatedBit = leonardoLevelTracker & -leonardoLevelTracker;
@@ -178,17 +167,20 @@ public class LeonardoHeap<T extends Comparable<T>> {
         return position;
     }
 
-    private static Integer[] findConsecutiveLeonardoTreeIndices(int num) {
+    private static ArrayList<Integer> findConsecutiveLeonardoTreeIndices(int num) {
         int prevOneIndex = -1;
         int currentLevel;
 
-        Integer[] answer = new Integer[] {-1, -1};
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        answer.add(-1);
+        answer.add(-1);
+
         for (int i = 0; num > 0; i++) {
             currentLevel = num & 1;
             if (currentLevel == 1) {
                 if (prevOneIndex != -1) {
-                    answer[0] = prevOneIndex;
-                    answer[1] = i;
+                    answer.set(0, prevOneIndex);
+                    answer.set(1, i);
                 }
                 prevOneIndex = i;
             } else {
@@ -205,34 +197,24 @@ public class LeonardoHeap<T extends Comparable<T>> {
         leonardoHeap.set(j, temp);
     }
 
-    // TODO use lists
     private Integer[] findAllLeonardoTreeIndices() {
-        int setBitCount = 0;
-        for (int i = 0; i < Integer.SIZE; i++) {
+        List<Integer> setBitIndexes = new ArrayList<>();
+        for (int i = Integer.SIZE - 1; i >= 0; i--) {
             if ((leonardoLevelTracker & (1 << i)) != 0) {
-                setBitCount++;
+                setBitIndexes.add(i);
             }
         }
-
-        Integer[] setBitIndexes = new Integer[setBitCount];
-        int index = 0;
-        for (int i = 0; i < Integer.SIZE; i++) {
-            if ((leonardoLevelTracker & (1 << i)) != 0) {
-                setBitIndexes[index++] = i;
-            }
-        }
-        return setBitIndexes;
+        return setBitIndexes.toArray(new Integer[0]);
     }
 
-   
-    public void insertElement(T element) {
+    public void addElement(T element) {
         increaseLeonardoLevelTracker();
         leonardoHeap.add(element);
         increaseHeapSize();
         shiftRootAndRestoreHeap();
     }
 
-    public T deleteElement() {
+    public T removeElement() {
         decreaseLeonardoLevelTracker();
         decreaseHeapSize();
         T element = leonardoHeap.removeLast();
