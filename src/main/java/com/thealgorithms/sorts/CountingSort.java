@@ -28,13 +28,12 @@ class CountingSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> List<T> sort(List<T> list) {
-        Map<T, Integer> frequencyMap = computeFequencyMap(list);
-        return extractSortedArray(frequencyMap);
+        return extractSortedArray(computeFequencyMap(list));
     }
 
-    private static <T extends Comparable<T>> List<T> extractSortedArray(Map<T, Integer> frequencyMap) {
+    private static <T extends Comparable<T>> List<T> extractSortedArray(final Map<T, Integer> frequencyMap) {
         List<T> sortedList = new ArrayList<>();
-        for (Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
+        for (final Map.Entry<T, Integer> entry : frequencyMap.entrySet()) {
             for (int i = 0; i < entry.getValue(); i++) {
                 sortedList.add(entry.getKey());
             }
@@ -42,10 +41,9 @@ class CountingSort implements SortAlgorithm {
         return sortedList;
     }
 
-    private static <T extends Comparable<T>> Map<T, Integer> computeFequencyMap(List<T> list) {
-        // TreeMap to maintain order of elements naturally.
+    private static <T extends Comparable<T>> Map<T, Integer> computeFequencyMap(final List<T> list) {
         Map<T, Integer> frequencyMap = new TreeMap<>();
-        for (T element : list) {
+        for (final T element : list) {
             frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
         }
         return frequencyMap;
