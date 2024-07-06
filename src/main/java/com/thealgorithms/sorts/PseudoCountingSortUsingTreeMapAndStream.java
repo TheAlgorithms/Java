@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
 
-public class CountingSortUsingStream implements SortAlgorithm {
+public class PseudoCountingSortUsingTreeMapAndStream implements SortAlgorithm {
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         return streamSort(Arrays.asList(array)).toArray(array);

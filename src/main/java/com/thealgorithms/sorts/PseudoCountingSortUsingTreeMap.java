@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * @author Youssef Ali (https://github.com/youssefAli11997)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
-class CountingSort implements SortAlgorithm {
+class PseudoCountingSortUsingTreeMap implements SortAlgorithm {
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         return sort(Arrays.asList(array)).toArray(array);
