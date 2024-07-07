@@ -7,7 +7,6 @@ public final class Gaussian {
     }
 
     public static ArrayList<Double> gaussian(int matSize, ArrayList<Double> matrix) {
-        ArrayList<Double> answerArray = new ArrayList<Double>();
         int i;
         int j = 0;
 
@@ -22,8 +21,7 @@ public final class Gaussian {
         }
 
         mat = gaussianElimination(matSize, i, mat);
-        answerArray = valueOfGaussian(matSize, x, mat);
-        return answerArray;
+        return valueOfGaussian(matSize, x, mat);
     }
 
     // Perform Gaussian elimination
