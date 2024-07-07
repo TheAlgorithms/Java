@@ -1,73 +1,83 @@
 package com.thealgorithms.sorts;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
-/*This code implements the mergeSort algorithm without extra space
-For understanding about mergesort visit :https://www.geeksforgeeks.org/merge-sort/
+/**
+ * Implementation of Merge Sort without using extra space for merging.
+ * This implementation performs in-place merging to sort the array of integers.
  */
 public final class MergeSortNoExtraSpace {
     private MergeSortNoExtraSpace() {
     }
 
-    public static void callMergeSort(int[] a, int n) {
-        int maxele = Arrays.stream(a).max().getAsInt() + 1;
-        mergeSort(a, 0, n - 1, maxele);
+    /**
+     * Sorts the array using in-place merge sort algorithm.
+     *
+     * @param array the array to be sorted
+     * @return the sorted array
+     */
+    public static int[] sort(int[] array) {
+        if (array.length == 0) {
+            return array;
+        }
+        int maxElement = Arrays.stream(array).max().getAsInt() + 1;
+        mergeSort(array, 0, array.length - 1, maxElement);
+        return array;
     }
 
-    public static void mergeSort(int[] a, int start, int end, int maxele) { // this function divides the array into 2 halves
+    /**
+     * Recursively divides the array into two halves, sorts and merges them.
+     *
+     * @param array  the array to be sorted
+     * @param start  the starting index of the array
+     * @param end    the ending index of the array
+     * @param maxElement the value greater than any element in the array, used for encoding
+     */
+    public static void mergeSort(int[] array, int start, int end, int maxElement) {
         if (start < end) {
-            int mid = (start + end) / 2;
-            mergeSort(a, start, mid, maxele);
-            mergeSort(a, mid + 1, end, maxele);
-            implementMergeSort(a, start, mid, end, maxele);
+            int middle = (start + end) / 2;
+            mergeSort(array, start, middle, maxElement);
+            mergeSort(array, middle + 1, end, maxElement);
+            merge(array, start, middle, end, maxElement);
         }
     }
 
-    public static void implementMergeSort(int[] a, int start, int mid, int end,
-        int maxele) { // implementation of mergesort
+    /**
+     * Merges two sorted subarrays [start...middle] and [middle+1...end] in place.
+     *
+     * @param array  the array containing the subarrays to be merged
+     * @param start  the starting index of the first subarray
+     * @param middle    the ending index of the first subarray and starting index of the second subarray
+     * @param end    the ending index of the second subarray
+     * @param maxElement the value greater than any element in the array, used for encoding
+     */
+    private static void merge(int[] array, int start, int middle, int end, int maxElement) {
         int i = start;
-        int j = mid + 1;
+        int j = middle + 1;
         int k = start;
-        while (i <= mid && j <= end) {
-            if (a[i] % maxele <= a[j] % maxele) {
-                a[k] = a[k] + (a[i] % maxele) * maxele;
+        while (i <= middle && j <= end) {
+            if (array[i] % maxElement <= array[j] % maxElement) {
+                array[k] = array[k] + (array[i] % maxElement) * maxElement;
                 k++;
                 i++;
             } else {
-                a[k] = a[k] + (a[j] % maxele) * maxele;
+                array[k] = array[k] + (array[j] % maxElement) * maxElement;
                 k++;
                 j++;
             }
         }
-        while (i <= mid) {
-            a[k] = a[k] + (a[i] % maxele) * maxele;
+        while (i <= middle) {
+            array[k] = array[k] + (array[i] % maxElement) * maxElement;
             k++;
             i++;
         }
         while (j <= end) {
-            a[k] = a[k] + (a[j] % maxele) * maxele;
+            array[k] = array[k] + (array[j] % maxElement) * maxElement;
             k++;
             j++;
         }
         for (i = start; i <= end; i++) {
-            a[i] = a[i] / maxele;
+            array[i] = array[i] / maxElement;
         }
-    }
-
-    public static void main(String[] args) {
-        Scanner inp = new Scanner(System.in);
-        System.out.println("Enter array size");
-        int n = inp.nextInt();
-        int[] a = new int[n];
-        System.out.println("Enter array elements");
-        for (int i = 0; i < n; i++) {
-            a[i] = inp.nextInt();
-        }
-        callMergeSort(a, n);
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
-        }
-        inp.close();
     }
 }
