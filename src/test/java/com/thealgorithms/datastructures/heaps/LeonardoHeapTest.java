@@ -1,18 +1,19 @@
 package com.thealgorithms.datastructures.heaps;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class LeonardoHeapTest {
 
     @Test
-    public <T extends Comparable<T>> void testEmpty() {
+    public void testEmpty() {
         LeonardoHeap<Integer> heap = new LeonardoHeap<Integer>();
         assertEquals(0, heap.getHeapsize());
     }
 
     @Test
-    public <T extends Comparable<T>> void testAddElement() {
+    public void testAddElement() {
         LeonardoHeap<Integer> heap = new LeonardoHeap<>();
         heap.addElement(5);
         heap.addElement(3);
@@ -53,7 +54,7 @@ public class LeonardoHeapTest {
     }
 
     @Test
-    public <T extends Comparable<T>> void testAddElementStrings() {
+    public void testAddElementStrings() {
         LeonardoHeap<String> heap = new LeonardoHeap<String>();
         heap.addElement("z");
         heap.addElement("a");
