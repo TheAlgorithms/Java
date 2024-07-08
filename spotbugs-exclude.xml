@@ -66,9 +66,6 @@
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
-    </Match>
-    <Match>
         <Bug pattern="UWF_NULL_FIELD" />
     </Match>
     <Match>
