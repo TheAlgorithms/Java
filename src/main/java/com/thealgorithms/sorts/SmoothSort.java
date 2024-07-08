@@ -11,22 +11,21 @@ public final class SmoothSort implements SortAlgorithm {
     }
 
     private static <T extends Comparable<T>> void smoothSort(T[] array) {
-        int length = array.length;
         LeonardoHeap<T> leonardoHeap = new LeonardoHeap<T>();
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < array.length; i++) {
             leonardoHeap.addElement(array[i]);
         }
 
-        for (int i = 0; i < length; i++) {
-            T maxElement = leonardoHeap.removeElement();
-            array[length - i - 1] = maxElement;
+        for (int i = 0; i < array.length; i++) {
+            final T maxElement = leonardoHeap.removeElement();
+            array[array.length - i - 1] = maxElement;
         }
     }
 
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        smoothSort(unsorted);
-        return unsorted;
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        smoothSort(array);
+        return array;
     }
 }
