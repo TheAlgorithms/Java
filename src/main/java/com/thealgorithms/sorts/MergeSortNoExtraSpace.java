@@ -15,12 +15,17 @@ public final class MergeSortNoExtraSpace {
      *
      * @param array the array to be sorted
      * @return the sorted array
+     * @throws IllegalArgumentException If the array contains negative numbers.
      */
     public static int[] sort(int[] array) {
         if (array.length == 0) {
             return array;
         }
-        int maxElement = Arrays.stream(array).max().getAsInt() + 1;
+        if (Arrays.stream(array).anyMatch(s -> s < 0)) {
+            throw new IllegalArgumentException("Implementation cannot sort negative numbers.");
+        }
+
+        final int maxElement = Arrays.stream(array).max().getAsInt() + 1;
         mergeSort(array, 0, array.length - 1, maxElement);
         return array;
     }
@@ -35,7 +40,7 @@ public final class MergeSortNoExtraSpace {
      */
     public static void mergeSort(int[] array, int start, int end, int maxElement) {
         if (start < end) {
-            int middle = (start + end) / 2;
+            final int middle = (start + end) >>> 1;
             mergeSort(array, start, middle, maxElement);
             mergeSort(array, middle + 1, end, maxElement);
             merge(array, start, middle, end, maxElement);
