@@ -2,61 +2,58 @@ package com.thealgorithms.sorts;
 
 import java.util.Arrays;
 
-final class RadixSort {
+/**
+ * This class provides an implementation of the radix sort algorithm.
+ * It sorts an array of integers in increasing order.
+ */
+public final class RadixSort {
     private RadixSort() {
     }
 
-    private static int getMax(int[] arr, int n) {
-        int mx = arr[0];
-        for (int i = 1; i < n; i++) {
-            if (arr[i] > mx) {
-                mx = arr[i];
-            }
+    /**
+     * Sorts an array of integers using the radix sort algorithm.
+     *
+     * @param array the array to be sorted
+     * @return the sorted array
+     */
+    public static int[] sort(int[] array) {
+        if (array.length == 0) {
+            return array;
         }
-        return mx;
+
+        final int max = Arrays.stream(array).max().getAsInt();
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSortByDigit(array, exp);
+        }
+
+        return array;
     }
 
-    private static void countSort(int[] arr, int n, int exp) {
-        int[] output = new int[n];
-        int i;
+    /**
+     * A utility method to perform counting sort of array[] according to the digit represented by exp.
+     *
+     * @param array the array to be sorted
+     * @param exp   the exponent representing the current digit position
+     */
+    private static void countingSortByDigit(int[] array, int exp) {
+        int[] output = new int[array.length];
         int[] count = new int[10];
-        Arrays.fill(count, 0);
 
-        for (i = 0; i < n; i++) {
-            count[(arr[i] / exp) % 10]++;
+        for (int i = 0; i < array.length; i++) {
+            count[(array[i] / exp) % 10]++;
         }
 
-        for (i = 1; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             count[i] += count[i - 1];
         }
 
-        for (i = n - 1; i >= 0; i--) {
-            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-            count[(arr[i] / exp) % 10]--;
+        for (int i = array.length - 1; i >= 0; i--) {
+            int digit = (array[i] / exp) % 10;
+            output[count[digit] - 1] = array[i];
+            count[digit]--;
         }
 
-        System.arraycopy(output, 0, arr, 0, n);
-    }
-
-    private static void radixsort(int[] arr, int n) {
-        int m = getMax(arr, n);
-
-        for (int exp = 1; m / exp > 0; exp *= 10) {
-            countSort(arr, n, exp);
-        }
-    }
-
-    static void print(int[] arr, int n) {
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
-        int n = arr.length;
-        radixsort(arr, n);
-        print(arr, n);
+        System.arraycopy(output, 0, array, 0, array.length);
     }
 }
 // Written by James Mc Dermott(theycallmemac)
