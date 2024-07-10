@@ -3,8 +3,8 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * Find the number of subsets present in the given array with a sum equal to target.
  * Based on Solution discussed on
- * StackOverflow(https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k)
- * @author Samrat Podder(https://github.com/samratpodder)
+ * <a href="https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k">StackOverflow</a>
+ * @author <a href="https://github.com/samratpodder">Samrat Podder</a>
  */
 public final class SubsetCount {
     private SubsetCount() {
@@ -19,7 +19,7 @@ public final class SubsetCount {
      *
      */
     public static int getCount(int[] arr, int target) {
-        /**
+        /*
          * Base Cases - If target becomes zero, we have reached the required sum for the subset
          * If we reach the end of the array arr then, either if target==arr[end], then we add one to
          * the final count Otherwise we add 0 to the final count
@@ -29,12 +29,16 @@ public final class SubsetCount {
         for (int i = 0; i < n; i++) {
             dp[i][0] = 1;
         }
-        if (arr[0] <= target) dp[0][arr[0]] = 1;
+        if (arr[0] <= target) {
+            dp[0][arr[0]] = 1;
+        }
         for (int t = 1; t <= target; t++) {
             for (int idx = 1; idx < n; idx++) {
                 int notpick = dp[idx - 1][t];
                 int pick = 0;
-                if (arr[idx] <= t) pick += dp[idx - 1][target - t];
+                if (arr[idx] <= t) {
+                    pick += dp[idx - 1][target - t];
+                }
                 dp[idx][target] = pick + notpick;
             }
         }
@@ -52,14 +56,18 @@ public final class SubsetCount {
         int n = arr.length;
         int[] prev = new int[target + 1];
         prev[0] = 1;
-        if (arr[0] <= target) prev[arr[0]] = 1;
+        if (arr[0] <= target) {
+            prev[arr[0]] = 1;
+        }
         for (int ind = 1; ind < n; ind++) {
             int[] cur = new int[target + 1];
             cur[0] = 1;
             for (int t = 1; t <= target; t++) {
                 int notTaken = prev[t];
                 int taken = 0;
-                if (arr[ind] <= t) taken = prev[t - arr[ind]];
+                if (arr[ind] <= t) {
+                    taken = prev[t - arr[ind]];
+                }
                 cur[t] = notTaken + taken;
             }
             prev = cur;

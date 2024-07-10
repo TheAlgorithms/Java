@@ -31,7 +31,7 @@ public final class QuickSelect {
     public static <T extends Comparable<T>> T select(List<T> list, int n) {
         Objects.requireNonNull(list, "The list of elements must not be null.");
 
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             String msg = "The list of elements must not be empty.";
             throw new IllegalArgumentException(msg);
         }
@@ -56,7 +56,9 @@ public final class QuickSelect {
 
     private static <T extends Comparable<T>> int selectIndex(List<T> list, int left, int right, int n) {
         while (true) {
-            if (left == right) return left;
+            if (left == right) {
+                return left;
+            }
             int pivotIndex = pivot(list, left, right);
             pivotIndex = partition(list, left, right, pivotIndex, n);
             if (n == pivotIndex) {

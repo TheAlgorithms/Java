@@ -9,8 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public final class A_Star {
-    private A_Star() {
+public final class AStar {
+    private AStar() {
     }
 
     private static class Graph {

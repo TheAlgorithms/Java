@@ -12,7 +12,7 @@ public final class BinarySearch2dArray {
     private BinarySearch2dArray() {
     }
 
-    static int[] BinarySearch(int[][] arr, int target) {
+    static int[] binarySearch(int[][] arr, int target) {
         int rowCount = arr.length;
         int colCount = arr[0].length;
 
@@ -29,47 +29,57 @@ public final class BinarySearch2dArray {
 
             if (arr[midRow][midCol] == target) {
                 return new int[] {midRow, midCol};
-            } else if (arr[midRow][midCol] < target)
+            } else if (arr[midRow][midCol] < target) {
                 startRow = midRow;
-            else
+            } else {
                 endRow = midRow;
+            }
         }
         /*
             if the above search fails to find the target element, these conditions will be used to
            find the target element, which further uses the binary search algorithm in the places
            which were left unexplored.
              */
-        if (arr[startRow][midCol] == target)
+        if (arr[startRow][midCol] == target) {
             return new int[] {
                 startRow,
                 midCol,
             };
+        }
 
-        if (arr[endRow][midCol] == target) return new int[] {endRow, midCol};
+        if (arr[endRow][midCol] == target) {
+            return new int[] {endRow, midCol};
+        }
 
-        if (target <= arr[startRow][midCol - 1]) return binarySearch(arr, target, startRow, 0, midCol - 1);
+        if (target <= arr[startRow][midCol - 1]) {
+            return binarySearch(arr, target, startRow, 0, midCol - 1);
+        }
 
-        if (target >= arr[startRow][midCol + 1] && target <= arr[startRow][colCount - 1]) return binarySearch(arr, target, startRow, midCol + 1, colCount - 1);
+        if (target >= arr[startRow][midCol + 1] && target <= arr[startRow][colCount - 1]) {
+            return binarySearch(arr, target, startRow, midCol + 1, colCount - 1);
+        }
 
-        if (target <= arr[endRow][midCol - 1])
+        if (target <= arr[endRow][midCol - 1]) {
             return binarySearch(arr, target, endRow, 0, midCol - 1);
-        else
+        } else {
             return binarySearch(arr, target, endRow, midCol + 1, colCount - 1);
+        }
     }
 
     static int[] binarySearch(int[][] arr, int target, int row, int colStart, int colEnd) {
         while (colStart <= colEnd) {
             int midIndex = colStart + (colEnd - colStart) / 2;
 
-            if (arr[row][midIndex] == target)
+            if (arr[row][midIndex] == target) {
                 return new int[] {
                     row,
                     midIndex,
                 };
-            else if (arr[row][midIndex] < target)
+            } else if (arr[row][midIndex] < target) {
                 colStart = midIndex + 1;
-            else
+            } else {
                 colEnd = midIndex - 1;
+            }
         }
 
         return new int[] {-1, -1};

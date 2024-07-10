@@ -32,13 +32,21 @@ public class GrahamScan {
         // find index of first point not equal to a[0] (indexPoint1) and the first point that's not
         // collinear with either (indexPoint2).
         int indexPoint1;
-        for (indexPoint1 = 1; indexPoint1 < points.length; indexPoint1++)
-            if (!points[0].equals(points[indexPoint1])) break;
-        if (indexPoint1 == points.length) return;
+        for (indexPoint1 = 1; indexPoint1 < points.length; indexPoint1++) {
+            if (!points[0].equals(points[indexPoint1])) {
+                break;
+            }
+        }
+        if (indexPoint1 == points.length) {
+            return;
+        }
 
         int indexPoint2;
-        for (indexPoint2 = indexPoint1 + 1; indexPoint2 < points.length; indexPoint2++)
-            if (Point.orientation(points[0], points[indexPoint1], points[indexPoint2]) != 0) break;
+        for (indexPoint2 = indexPoint1 + 1; indexPoint2 < points.length; indexPoint2++) {
+            if (Point.orientation(points[0], points[indexPoint1], points[indexPoint2]) != 0) {
+                break;
+            }
+        }
         hull.push(points[indexPoint2 - 1]);
 
         // Now we simply add the point to the stack based on the orientation.
@@ -57,7 +65,9 @@ public class GrahamScan {
      */
     public Iterable<Point> hull() {
         Stack<Point> s = new Stack<>();
-        for (Point p : hull) s.push(p);
+        for (Point p : hull) {
+            s.push(p);
+        }
         return s;
     }
 
@@ -112,7 +122,9 @@ public class GrahamScan {
          */
         public int compareTo(Point p2) {
             int res = Integer.compare(this.y, p2.y);
-            if (res == 0) res = Integer.compare(this.x, p2.x);
+            if (res == 0) {
+                res = Integer.compare(this.x, p2.x);
+            }
             return res;
         }
 
@@ -133,19 +145,21 @@ public class GrahamScan {
                 int dx2 = p2.x - x;
                 int dy2 = p2.y - y;
 
-                if (dy1 >= 0 && dy2 < 0)
+                if (dy1 >= 0 && dy2 < 0) {
                     return -1; // q1 above; q2 below
-                else if (dy2 >= 0 && dy1 < 0)
+                } else if (dy2 >= 0 && dy1 < 0) {
                     return +1; // q1 below; q2 above
-                else if (dy1 == 0 && dy2 == 0) { // 3-collinear and horizontal
-                    if (dx1 >= 0 && dx2 < 0)
+                } else if (dy1 == 0 && dy2 == 0) { // 3-collinear and horizontal
+                    if (dx1 >= 0 && dx2 < 0) {
                         return -1;
-                    else if (dx2 >= 0 && dx1 < 0)
+                    } else if (dx2 >= 0 && dx1 < 0) {
                         return +1;
-                    else
+                    } else {
                         return 0;
-                } else
+                    }
+                } else {
                     return -orientation(Point.this, p1, p2); // both above or below
+                }
             }
         }
 

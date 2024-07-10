@@ -8,7 +8,7 @@ public class FibonacciHeap {
     private static int totalCuts = 0;
     private int numOfTrees = 0;
     private int numOfHeapNodes = 0;
-    private int markedHeapNoodesCounter = 0;
+    private int markedHeapNodesCounter = 0;
 
     /*
      * a constructor for an empty Heap
@@ -190,7 +190,7 @@ public class FibonacciHeap {
      * Potential = #trees + 2*#markedNodes
      */
     public int potential() {
-        return numOfTrees + (2 * markedHeapNoodesCounter);
+        return numOfTrees + (2 * markedHeapNodesCounter);
     }
 
     /**
@@ -231,7 +231,9 @@ public class FibonacciHeap {
     private void cascadingCuts(HeapNode curr) {
         if (!curr.isMarked()) { // stop the recursion
             curr.mark();
-            if (!curr.isRoot()) this.markedHeapNoodesCounter++;
+            if (!curr.isRoot()) {
+                this.markedHeapNodesCounter++;
+            }
         } else {
             if (curr.isRoot()) {
                 return;
@@ -250,7 +252,7 @@ public class FibonacciHeap {
     private void cut(HeapNode curr) {
         curr.parent.rank--;
         if (curr.marked) {
-            this.markedHeapNoodesCounter--;
+            this.markedHeapNodesCounter--;
             curr.marked = false;
         }
         if (curr.parent.child == curr) { // we should change the parent's child

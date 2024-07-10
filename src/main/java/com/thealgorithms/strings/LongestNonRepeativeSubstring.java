@@ -2,8 +2,8 @@ package com.thealgorithms.strings;
 
 import java.util.HashMap;
 
-final class longestNonRepeativeSubstring {
-    private longestNonRepeativeSubstring() {
+final class LongestNonRepeativeSubstring {
+    private LongestNonRepeativeSubstring() {
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -16,20 +16,21 @@ final class longestNonRepeativeSubstring {
             char temp = s.charAt(i);
 
             // adding key to map if not present
-            if (!map.containsKey(temp)) map.put(temp, 0);
-            // checking if the first value is the dublicate value
-            else if (s.charAt(start) == temp)
+            if (!map.containsKey(temp)) {
+                map.put(temp, 0);
+            } else if (s.charAt(start) == temp) {
                 start++;
-            // checking if the previous value is dublicate value
-            else if (s.charAt(i - 1) == temp) {
-                if (max < map.size()) max = map.size();
+            } else if (s.charAt(i - 1) == temp) {
+                if (max < map.size()) {
+                    max = map.size();
+                }
                 map = new HashMap<>();
                 start = i;
                 i--;
-            }
-            // last possible place where dublicate value can be is between start and i
-            else {
-                if (max < map.size()) max = map.size();
+            } else {
+                if (max < map.size()) {
+                    max = map.size();
+                }
                 while (s.charAt(start) != temp) {
                     map.remove(s.charAt(start));
                     start++;
@@ -39,7 +40,9 @@ final class longestNonRepeativeSubstring {
 
             i++;
         }
-        if (max < map.size()) max = map.size();
+        if (max < map.size()) {
+            max = map.size();
+        }
         return max;
     }
 }

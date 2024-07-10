@@ -2,13 +2,13 @@ package com.thealgorithms.datastructures.graphs;
 
 /**
  * Java program for Hamiltonian Cycle
- * (https://en.wikipedia.org/wiki/Hamiltonian_path)
+ * <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">wikipedia</a>
  *
- * @author Akshay Dubey (https://github.com/itsAkshayDubey)
+ * @author  <a href="https://github.com/itsAkshayDubey">Akshay Dubey</a>
  */
 public class HamiltonianCycle {
 
-    private int V;
+    private int vertex;
     private int pathCount;
     private int[] cycle;
     private int[][] graph;
@@ -22,8 +22,8 @@ public class HamiltonianCycle {
      *         else returns 1D array with value -1.
      */
     public int[] findHamiltonianCycle(int[][] graph) {
-        this.V = graph.length;
-        this.cycle = new int[this.V + 1];
+        this.vertex = graph.length;
+        this.cycle = new int[this.vertex + 1];
 
         // Initialize path array with -1 value
         for (int i = 0; i < this.cycle.length; i++) {
@@ -53,36 +53,36 @@ public class HamiltonianCycle {
      * @returns true if path is found false otherwise
      */
     public boolean isPathFound(int vertex) {
-        boolean isLastVertexConnectedToStart = this.graph[vertex][0] == 1 && this.pathCount == this.V;
+        boolean isLastVertexConnectedToStart = this.graph[vertex][0] == 1 && this.pathCount == this.vertex;
         if (isLastVertexConnectedToStart) {
             return true;
         }
 
-        /** all vertices selected but last vertex not linked to 0 **/
-        if (this.pathCount == this.V) {
+        /* all vertices selected but last vertex not linked to 0 **/
+        if (this.pathCount == this.vertex) {
             return false;
         }
 
-        for (int v = 0; v < this.V; v++) {
-            /** if connected **/
+        for (int v = 0; v < this.vertex; v++) {
+            /* if connected **/
             if (this.graph[vertex][v] == 1) {
-                /** add to path **/
+                /* add to path **/
                 this.cycle[this.pathCount++] = v;
 
-                /** remove connection **/
+                /* remove connection **/
                 this.graph[vertex][v] = 0;
                 this.graph[v][vertex] = 0;
 
-                /** if vertex not already selected solve recursively **/
+                /* if vertex not already selected solve recursively **/
                 if (!isPresent(v)) {
                     return isPathFound(v);
                 }
 
-                /** restore connection **/
+                /* restore connection **/
                 this.graph[vertex][v] = 1;
                 this.graph[v][vertex] = 1;
 
-                /** remove path **/
+                /* remove path **/
                 this.cycle[--this.pathCount] = -1;
             }
         }

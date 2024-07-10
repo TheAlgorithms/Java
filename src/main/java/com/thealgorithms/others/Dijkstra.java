@@ -1,5 +1,9 @@
 package com.thealgorithms.others;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 /**
  * Dijkstra's algorithm,is a graph search algorithm that solves the
  * single-source shortest path problem for a graph with nonnegative edge path
@@ -15,11 +19,6 @@ package com.thealgorithms.others;
  * https://rosettacode.org/wiki/Dijkstra%27s_algorithm#Java Also most of the
  * comments are from RosettaCode.
  */
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NavigableSet;
-import java.util.TreeSet;
-
 public final class Dijkstra {
     private Dijkstra() {
     }

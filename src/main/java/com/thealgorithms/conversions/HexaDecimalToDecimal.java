@@ -20,20 +20,20 @@ public final class HexaDecimalToDecimal {
 
     // Main method gets the hexadecimal input from user and converts it into Decimal output.
     public static void main(String[] args) {
-        String hexa_Input;
-        int dec_output;
+        String hexaInput;
+        int decOutput;
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter Hexadecimal Number : ");
-        hexa_Input = scan.nextLine();
+        hexaInput = scan.nextLine();
 
         // convert hexadecimal to decimal
-        dec_output = getHexaToDec(hexa_Input);
+        decOutput = getHexaToDec(hexaInput);
         /*
     Pass the string to the getHexaToDec function
-    and it returns the decimal form in the variable dec_output.
+    and it returns the decimal form in the variable decOutput.
          */
-        System.out.println("Number in Decimal: " + dec_output);
+        System.out.println("Number in Decimal: " + decOutput);
         scan.close();
     }
 }

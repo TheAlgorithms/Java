@@ -1,4 +1,4 @@
-FROM gitpod/workspace-java-21:2024-05-15-13-36-34
+FROM gitpod/workspace-java-21:2024-07-02-14-18-47
 
 ENV LLVM_SCRIPT="tmp_llvm.sh"
 

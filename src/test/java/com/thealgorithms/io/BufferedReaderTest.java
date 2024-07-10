@@ -54,7 +54,9 @@ class BufferedReaderTest {
         assertEquals(reader.read(), 'l'); // third letter
         assertEquals(reader.peek(1), 'o'); // fourth letter
 
-        for (int i = 0; i < 6; i++) reader.read();
+        for (int i = 0; i < 6; i++) {
+            reader.read();
+        }
         try {
             System.out.println((char) reader.peek(4));
         } catch (Exception ignored) {

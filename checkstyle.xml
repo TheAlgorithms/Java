@@ -99,7 +99,7 @@
 
     <!-- Checks for Javadoc comments.                     -->
     <!-- See https://checkstyle.org/checks/javadoc/index.html -->
-    <!-- TODO <module name="InvalidJavadocPosition"/> -->
+    <module name="InvalidJavadocPosition"/>
     <!-- TODO <module name="JavadocMethod"/> -->
     <!-- TODO <module name="JavadocType"/> -->
     <!-- TODO <module name="JavadocVariable"/> -->
@@ -110,13 +110,13 @@
     <!-- See https://checkstyle.org/checks/naming/index.html -->
     <module name="ConstantName"/>
     <module name="LocalFinalVariableName"/>
-    <!-- TODO <module name="LocalVariableName"/> -->
-    <!-- TODO <module name="MemberName"/> -->
-    <!-- TODO <module name="MethodName"/> -->
+    <module name="LocalVariableName"/>
+    <module name="MemberName"/>
+    <module name="MethodName"/>
     <module name="PackageName"/>
-    <!-- TODO <module name="ParameterName"/> -->
+    <module name="ParameterName"/>
     <module name="StaticVariableName"/>
-    <!-- TODO <module name="TypeName"/> -->
+    <module name="TypeName"/>
 
     <!-- Checks for imports                              -->
     <!-- See https://checkstyle.org/checks/imports/index.html -->
@@ -139,11 +139,11 @@
     <module name="MethodParamPad"/>
     <!-- TODO <module name="NoWhitespaceAfter"/> -->
     <module name="NoWhitespaceBefore"/>
-    <!-- TODO <module name="OperatorWrap"/> -->
-    <!-- TODO <module name="ParenPad"/> -->
+    <module name="OperatorWrap"/>
+    <module name="ParenPad"/>
     <module name="TypecastParenPad"/>
     <module name="WhitespaceAfter"/>
-    <!-- TODO <module name="WhitespaceAround"/> -->
+    <module name="WhitespaceAround"/>
 
     <!-- Modifier Checks                                    -->
     <!-- See https://checkstyle.org/checks/modifier/index.html -->
@@ -152,10 +152,10 @@
 
     <!-- Checks for blocks. You know, those {}'s         -->
     <!-- See https://checkstyle.org/checks/blocks/index.html -->
-    <!-- TODO <module name="AvoidNestedBlocks"/> -->
+    <module name="AvoidNestedBlocks"/>
     <!-- TODO <module name="EmptyBlock"/> -->
     <!-- TODO <module name="LeftCurly"/> -->
-    <!-- TODO <module name="NeedBraces"/> -->
+    <module name="NeedBraces"/>
     <!-- TODO <module name="RightCurly"/> -->
 
     <!-- Checks for common coding problems               -->
@@ -166,7 +166,7 @@
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
     <!-- TODO <module name="MagicNumber"/> -->
-    <!-- TODO <module name="MissingSwitchDefault"/> -->
+    <module name="MissingSwitchDefault"/>
     <module name="MultipleVariableDeclarations"/>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>

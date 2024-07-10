@@ -1,15 +1,13 @@
 package com.thealgorithms.bitmanipulation;
 
-/**
- * test Cases of Numbers Different Signs
- * @author Bama Charan Chhandogi
- */
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * test Cases of Numbers Different Signs
+ * @author Bama Charan Chhandogi
+ */
 class NumbersDifferentSignsTest {
 
     @Test

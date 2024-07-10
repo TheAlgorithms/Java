@@ -22,7 +22,7 @@ public class MaxHeap implements Heap {
                 System.out.println("Null element. Not added to heap");
             }
         }
-        if (maxHeap.size() == 0) {
+        if (maxHeap.isEmpty()) {
             System.out.println("No element has been added, empty heap.");
         }
     }
@@ -98,11 +98,13 @@ public class MaxHeap implements Heap {
 
     @Override
     public void deleteElement(int elementIndex) {
-        if (maxHeap.isEmpty()) try {
+        if (maxHeap.isEmpty()) {
+            try {
                 throw new EmptyHeapException("Attempt to delete an element from an empty heap");
             } catch (EmptyHeapException e) {
                 e.printStackTrace();
             }
+        }
         if ((elementIndex > maxHeap.size()) || (elementIndex <= 0)) {
             throw new IndexOutOfBoundsException("Index out of heap range");
         }

@@ -15,31 +15,32 @@ public final class OrderAgnosticBinarySearch {
     private OrderAgnosticBinarySearch() {
     }
 
-    static int BinSearchAlgo(int[] arr, int start, int end, int target) {
+    static int binSearchAlgo(int[] arr, int start, int end, int target) {
 
         // Checking whether the given array is ascending order
-        boolean AscOrd = arr[start] < arr[end];
+        boolean ascOrd = arr[start] < arr[end];
 
         while (start <= end) {
             int middle = start + (end - start) / 2;
 
             // Check if the desired element is present at the middle position
-            if (arr[middle] == target) return middle; // returns the index of the middle element
-
-            // Ascending order
-            if (AscOrd) {
-                if (arr[middle] < target)
-                    start = middle + 1;
-                else
-                    end = middle - 1;
+            if (arr[middle] == target) {
+                return middle; // returns the index of the middle element
             }
-
-            // Descending order
-            else {
-                if (arr[middle] > target)
+            if (ascOrd) {
+                // Ascending order
+                if (arr[middle] < target) {
                     start = middle + 1;
-                else
+                } else {
                     end = middle - 1;
+                }
+            } else {
+                // Descending order
+                if (arr[middle] > target) {
+                    start = middle + 1;
+                } else {
+                    end = middle - 1;
+                }
             }
         }
         // Element is not present

@@ -24,7 +24,9 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
      * @return the maximum sum of distinct subarray of size K.
      */
     public static long maximumSubarraySum(int k, int... nums) {
-        if (nums.length < k) return 0;
+        if (nums.length < k) {
+            return 0;
+        }
         long max = 0; // this will store the max sum which will be our result
         long s = 0; // this will store the sum of every k elements which can be used to compare with
                     // max

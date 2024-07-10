@@ -30,12 +30,6 @@ public final class NonRepeatingElement {
                 arr[i] = sc.nextInt();
             }
 
-            try {
-                sc.close();
-            } catch (Exception e) {
-                System.out.println("Unable to close scanner" + e);
-            }
-
             // Find XOR of the 2 non repeating elements
             for (i = 0; i < n; i++) {
                 res ^= arr[i];
@@ -55,7 +49,6 @@ public final class NonRepeatingElement {
             }
 
             System.out.println("The two non repeating elements are " + num1 + " and " + num2);
-            sc.close();
         }
     }
     /*

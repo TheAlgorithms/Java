@@ -4,22 +4,22 @@ for better understanding
  */
 package com.thealgorithms.datastructures.graphs;
 
-class dijkstras {
+class Dijkstras {
 
     int k = 9;
 
-    int minDist(int[] dist, Boolean[] Set) {
+    int minDist(int[] dist, Boolean[] set) {
         int min = Integer.MAX_VALUE;
-        int min_index = -1;
+        int minIndex = -1;
 
         for (int r = 0; r < k; r++) {
-            if (!Set[r] && dist[r] <= min) {
+            if (!set[r] && dist[r] <= min) {
                 min = dist[r];
-                min_index = r;
+                minIndex = r;
             }
         }
 
-        return min_index;
+        return minIndex;
     }
 
     void print(int[] dist) {
@@ -31,22 +31,22 @@ class dijkstras {
 
     void dijkstra(int[][] graph, int src) {
         int[] dist = new int[k];
-        Boolean[] Set = new Boolean[k];
+        Boolean[] set = new Boolean[k];
 
         for (int i = 0; i < k; i++) {
             dist[i] = Integer.MAX_VALUE;
-            Set[i] = Boolean.FALSE;
+            set[i] = Boolean.FALSE;
         }
 
         dist[src] = 0;
 
         for (int c = 0; c < k - 1; c++) {
-            int u = minDist(dist, Set);
+            int u = minDist(dist, set);
 
-            Set[u] = Boolean.TRUE;
+            set[u] = Boolean.TRUE;
 
             for (int v = 0; v < k; v++) {
-                if (!Set[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
+                if (!set[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
                     dist[v] = dist[u] + graph[u][v];
                 }
             }
@@ -67,7 +67,7 @@ class dijkstras {
             {8, 11, 0, 0, 0, 0, 1, 0, 7},
             {0, 0, 2, 0, 0, 0, 6, 7, 0},
         };
-        dijkstras t = new dijkstras();
+        Dijkstras t = new Dijkstras();
         t.dijkstra(graph, 0);
     } // main
 } // djikstras

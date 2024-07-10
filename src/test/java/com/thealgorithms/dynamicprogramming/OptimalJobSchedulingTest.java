@@ -15,11 +15,11 @@ public class OptimalJobSchedulingTest {
         int numberProcesses = 5;
         int numberMachines = 4;
 
-        int[][] Run = {{5, 1, 3, 2}, {4, 2, 1, 3}, {1, 5, 2, 1}, {2, 3, 4, 2}, {1, 1, 3, 1}};
+        int[][] run = {{5, 1, 3, 2}, {4, 2, 1, 3}, {1, 5, 2, 1}, {2, 3, 4, 2}, {1, 1, 3, 1}};
 
-        int[][] Transfer = {{0, 1, 2, 4}, {1, 0, 2, 3}, {2, 2, 0, 1}, {4, 3, 1, 0}};
+        int[][] transfer = {{0, 1, 2, 4}, {1, 0, 2, 3}, {2, 2, 0, 1}, {4, 3, 1, 0}};
 
-        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, run, transfer);
 
         opt.execute();
 
@@ -40,11 +40,11 @@ public class OptimalJobSchedulingTest {
         int numberProcesses = 3;
         int numberMachines = 3;
 
-        int[][] Run = {{5, 1, 3}, {4, 2, 1}, {1, 5, 2}};
+        int[][] run = {{5, 1, 3}, {4, 2, 1}, {1, 5, 2}};
 
-        int[][] Transfer = {{0, 1, 2}, {1, 0, 2}, {2, 2, 0}};
+        int[][] transfer = {{0, 1, 2}, {1, 0, 2}, {2, 2, 0}};
 
-        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, run, transfer);
 
         opt.execute();
 
@@ -65,7 +65,7 @@ public class OptimalJobSchedulingTest {
         int numberProcesses = 6;
         int numberMachines = 4;
 
-        int[][] Run = {
+        int[][] run = {
             {5, 1, 3, 2},
             {4, 2, 1, 1},
             {1, 5, 2, 6},
@@ -74,14 +74,14 @@ public class OptimalJobSchedulingTest {
             {3, 2, 2, 3},
         };
 
-        int[][] Transfer = {
+        int[][] transfer = {
             {0, 1, 2, 1},
             {1, 0, 2, 3},
             {2, 2, 0, 2},
             {1, 3, 2, 0},
         };
 
-        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, Run, Transfer);
+        OptimalJobScheduling opt = new OptimalJobScheduling(numberProcesses, numberMachines, run, transfer);
 
         opt.execute();
 

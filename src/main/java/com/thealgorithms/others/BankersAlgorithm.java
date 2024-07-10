@@ -1,5 +1,7 @@
 package com.thealgorithms.others;
 
+import java.util.Scanner;
+
 /**
  * This file contains an implementation of BANKER'S ALGORITM Wikipedia:
  * https://en.wikipedia.org/wiki/Banker%27s_algorithm
@@ -18,8 +20,6 @@ package com.thealgorithms.others;
  *
  * @author AMRITESH ANAND (https://github.com/amritesh19)
  */
-import java.util.Scanner;
-
 public final class BankersAlgorithm {
     private BankersAlgorithm() {
     }
@@ -60,10 +60,7 @@ public final class BankersAlgorithm {
         int[] safeSequenceArray = new int[totalProcess];
 
         int[] workArray = new int[totalResources];
-
-        for (int i = 0; i < totalResources; i++) {
-            workArray[i] = availableArray[i];
-        }
+        System.arraycopy(availableArray, 0, workArray, 0, totalResources);
 
         int count = 0;
 

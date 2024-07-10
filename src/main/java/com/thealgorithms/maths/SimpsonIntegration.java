@@ -19,19 +19,19 @@ public class SimpsonIntegration {
         SimpsonIntegration integration = new SimpsonIntegration();
 
         // Give random data for the example purposes
-        int N = 16;
+        int n = 16;
         double a = 1;
         double b = 3;
 
-        // Check so that N is even
-        if (N % 2 != 0) {
-            System.out.println("N must be even number for Simpsons method. Aborted");
+        // Check so that n is even
+        if (n % 2 != 0) {
+            System.out.println("n must be even number for Simpsons method. Aborted");
             System.exit(1);
         }
 
         // Calculate step h and evaluate the integral
-        double h = (b - a) / (double) N;
-        double integralEvaluation = integration.simpsonsMethod(N, h, a);
+        double h = (b - a) / (double) n;
+        double integralEvaluation = integration.simpsonsMethod(n, h, a);
         System.out.println("The integral is equal to: " + integralEvaluation);
     }
 
@@ -45,13 +45,13 @@ public class SimpsonIntegration {
      *
      * @return result of the integral evaluation
      */
-    public double simpsonsMethod(int N, double h, double a) {
+    public double simpsonsMethod(int n, double h, double a) {
         TreeMap<Integer, Double> data = new TreeMap<>(); // Key: i, Value: f(xi)
         double temp;
         double xi = a; // Initialize the variable xi = x0 + 0*h
 
         // Create the table of xi and yi points
-        for (int i = 0; i <= N; i++) {
+        for (int i = 0; i <= n; i++) {
             temp = f(xi); // Get the value of the function at that point
             data.put(i, temp);
             xi += h; // Increase the xi to the next point
@@ -63,7 +63,7 @@ public class SimpsonIntegration {
             if (i == 0 || i == data.size() - 1) {
                 integralEvaluation += data.get(i);
                 System.out.println("Multiply f(x" + i + ") by 1");
-            } else if (i % 2 == 1) {
+            } else if (i % 2 != 0) {
                 integralEvaluation += (double) 4 * data.get(i);
                 System.out.println("Multiply f(x" + i + ") by 4");
             } else {

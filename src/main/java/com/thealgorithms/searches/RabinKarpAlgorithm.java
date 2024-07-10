@@ -18,7 +18,9 @@ public final class RabinKarpAlgorithm {
         int h = 1;
 
         // The value of h would be "pow(d, patternLength-1)%primeNumber"
-        for (int i = 0; i < patternLength - 1; i++) h = (h * ALPHABET_SIZE) % primeNumber;
+        for (int i = 0; i < patternLength - 1; i++) {
+            h = (h * ALPHABET_SIZE) % primeNumber;
+        }
 
         // Calculate the hash value of pattern and first
         // window of text
@@ -37,7 +39,9 @@ public final class RabinKarpAlgorithm {
             if (hashForPattern == hashForText) {
                 /* Check for characters one by one */
                 for (j = 0; j < patternLength; j++) {
-                    if (text.charAt(i + j) != pattern.charAt(j)) break;
+                    if (text.charAt(i + j) != pattern.charAt(j)) {
+                        break;
+                    }
                 }
 
                 // if hashForPattern == hashForText and pattern[0...patternLength-1] = text[i, i+1, ...i+patternLength-1]
@@ -53,7 +57,9 @@ public final class RabinKarpAlgorithm {
                 hashForText = (ALPHABET_SIZE * (hashForText - text.charAt(i) * h) + text.charAt(i + patternLength)) % primeNumber;
 
                 // handling negative hashForText
-                if (hashForText < 0) hashForText = (hashForText + primeNumber);
+                if (hashForText < 0) {
+                    hashForText = (hashForText + primeNumber);
+                }
             }
         }
         return index; // return -1 if pattern does not found

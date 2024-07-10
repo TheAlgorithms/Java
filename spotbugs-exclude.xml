@@ -18,9 +18,6 @@
         <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
     </Match>
     <Match>
-        <Bug pattern="NM_CLASS_NAMING_CONVENTION" />
-    </Match>
-    <Match>
         <Bug pattern="SIC_INNER_SHOULD_BE_STATIC" />
     </Match>
     <Match>
@@ -45,9 +42,6 @@
         <Bug pattern="INT_BAD_REM_BY_1" />
     </Match>
     <Match>
-        <Bug pattern="NM_METHOD_NAMING_CONVENTION" />
-    </Match>
-    <Match>
         <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
     </Match>
     <Match>
@@ -66,25 +60,10 @@
         <Bug pattern="MS_EXPOSE_REP" />
     </Match>
     <Match>
-        <Bug pattern="IM_BAD_CHECK_FOR_ODD" />
-    </Match>
-    <Match>
-        <Bug pattern="WMI_WRONG_MAP_ITERATOR" />
-    </Match>
-    <Match>
         <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING" />
     </Match>
     <Match>
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
-    </Match>
-    <Match>
-        <Bug pattern="SS_SHOULD_BE_STATIC" />
-    </Match>
-    <Match>
-        <Bug pattern="IT_NO_SUCH_ELEMENT" />
-    </Match>
-    <Match>
-        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
     </Match>
     <Match>
         <Bug pattern="UWF_NULL_FIELD" />
@@ -106,9 +85,6 @@
     </Match>
     <Match>
         <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
-    </Match>
-    <Match>
-        <Bug pattern="RV_ABSOLUTE_VALUE_OF_HASHCODE" />
     </Match>
     <!-- fb-contrib -->
     <Match>
@@ -133,31 +109,16 @@
         <Bug pattern="CLI_CONSTANT_LIST_INDEX" />
     </Match>
     <Match>
-        <Bug pattern="BED_BOGUS_EXCEPTION_DECLARATION" />
-    </Match>
-    <Match>
         <Bug pattern="CNC_COLLECTION_NAMING_CONFUSION" />
     </Match>
     <Match>
         <Bug pattern="TR_TAIL_RECURSION" />
     </Match>
     <Match>
-        <Bug pattern="LII_LIST_INDEXED_ITERATING" />
-    </Match>
-    <Match>
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="MAC_MANUAL_ARRAY_COPY" />
-    </Match>
-    <Match>
-        <Bug pattern="SPP_USE_ISEMPTY" />
-    </Match>
-    <Match>
         <Bug pattern="BL_BURYING_LOGIC" />
-    </Match>
-    <Match>
-        <Bug pattern="OI_OPTIONAL_ISSUES_USES_IMMEDIATE_EXECUTION" />
     </Match>
     <Match>
         <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS" />
@@ -214,22 +175,10 @@
         <Bug pattern="ITU_INAPPROPRIATE_TOSTRING_USE" />
     </Match>
     <Match>
-        <Bug pattern="DMC_DUBIOUS_MAP_COLLECTION" />
-    </Match>
-    <Match>
         <Bug pattern="SPP_PASSING_THIS_AS_PARM" />
     </Match>
     <Match>
         <Bug pattern="FCBL_FIELD_COULD_BE_LOCAL" />
-    </Match>
-    <Match>
-        <Bug pattern="ENMI_EQUALS_ON_ENUM" />
-    </Match>
-    <Match>
-        <Bug pattern="NAB_NEEDLESS_BOXING_PARSE" />
-    </Match>
-    <Match>
-        <Bug pattern="IMC_IMMATURE_CLASS_VAR_NAME" />
     </Match>
     <Match>
         <Bug pattern="CFS_CONFUSING_FUNCTION_SEMANTICS" />
@@ -253,16 +202,10 @@
         <Bug pattern="IMC_IMMATURE_CLASS_BAD_SERIALVERSIONUID" />
     </Match>
     <Match>
-        <Bug pattern="SUI_CONTAINS_BEFORE_ADD" />
-    </Match>
-    <Match>
         <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
     </Match>
     <Match>
         <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
-    </Match>
-    <Match>
-        <Bug pattern="SPP_TOSTRING_ON_STRING" />
     </Match>
     <!-- find-sec-bugs -->
     <Match>

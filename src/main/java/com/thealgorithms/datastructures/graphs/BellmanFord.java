@@ -57,9 +57,11 @@ class BellmanFord /*
         obj.go();
     }
 
-    public void go() { // shows distance to all vertices // Interactive run for understanding the
-        try ( // class first time. Assumes source vertex is 0 and
-            Scanner sc = new Scanner(System.in)) {
+    public void go() {
+        // shows distance to all vertices
+        // Interactive run for understanding the
+        // class first time. Assumes source vertex is 0 and
+        try (Scanner sc = new Scanner(System.in)) {
             int i;
             int v;
             int e;
@@ -116,7 +118,6 @@ class BellmanFord /*
                     System.out.println();
                 }
             }
-            sc.close();
         }
     }
 

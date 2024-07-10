@@ -6,53 +6,50 @@ import java.util.Stack;
 
 /**
  * Java program that implements Kosaraju Algorithm.
- * @author Shivanagouda S A (https://github.com/shivu2002a)
- *
- */
-
-/**
+ * @author <a href="https://github.com/shivu2002a">Shivanagouda S A</a>
+ * <p>
  * Kosaraju algorithm is a linear time algorithm to find the strongly connected components of a
-   directed graph, which, from here onwards will be referred by SCC. It leverages the fact that the
- transpose graph (same graph with all the edges reversed) has exactly the same SCCs as the original
- graph.
+directed graph, which, from here onwards will be referred by SCC. It leverages the fact that the
+transpose graph (same graph with all the edges reversed) has exactly the same SCCs as the original
+graph.
 
  * A graph is said to be strongly connected if every vertex is reachable from every other vertex.
-   The SCCs of a directed graph form a partition into subgraphs that are themselves strongly
- connected. Single node is always a SCC.
+The SCCs of a directed graph form a partition into subgraphs that are themselves strongly
+connected. Single node is always a SCC.
 
  * Example:
 
-    0 <--- 2 -------> 3 -------- > 4 ---- > 7
-    |     ^                      | ^       ^
-    |    /                       |  \     /
-    |   /                        |   \   /
-    v  /                         v    \ /
-    1                            5 --> 6
+0 <--- 2 -------> 3 -------- > 4 ---- > 7
+|     ^                      | ^       ^
+|    /                       |  \     /
+|   /                        |   \   /
+v  /                         v    \ /
+1                            5 --> 6
 
-    For the above graph, the SCC list goes as follows:
-    0, 1, 2
-    3
-    4, 5, 6
-    7
+For the above graph, the SCC list goes as follows:
+0, 1, 2
+3
+4, 5, 6
+7
 
-    We can also see that order of the nodes in an SCC doesn't matter since they are in cycle.
+We can also see that order of the nodes in an SCC doesn't matter since they are in cycle.
 
- {@summary}
+{@summary}
  * Kosaraju Algorithm:
-    1. Perform DFS traversal of the graph. Push node to stack before returning. This gives edges
- sorted by lowest finish time.
-    2. Find the transpose graph by reversing the edges.
-    3. Pop nodes one by one from the stack and again to DFS on the modified graph.
+1. Perform DFS traversal of the graph. Push node to stack before returning. This gives edges
+sorted by lowest finish time.
+2. Find the transpose graph by reversing the edges.
+3. Pop nodes one by one from the stack and again to DFS on the modified graph.
 
-    The transpose graph of the above graph:
-     0 ---> 2 <------- 3 <------- 4 <------ 7
-    ^     /                      ^ \       /
-    |    /                       |  \     /
-    |   /                        |   \   /
-    |  v                         |    v v
-    1                            5 <--- 6
+The transpose graph of the above graph:
+0 ---> 2 <------- 3 <------- 4 <------ 7
+^     /                      ^ \       /
+|    /                       |  \     /
+|   /                        |   \   /
+|  v                         |    v v
+1                            5 <--- 6
 
-    We can observe that this graph has the same SCC as that of original graph.
+We can observe that this graph has the same SCC as that of original graph.
 
  */
 
@@ -127,7 +124,9 @@ public class Kosaraju {
     private void dfs(int node, int[] vis, List<List<Integer>> list) {
         vis[node] = 1;
         for (Integer neighbour : list.get(node)) {
-            if (vis[neighbour] == 0) dfs(neighbour, vis, list);
+            if (vis[neighbour] == 0) {
+                dfs(neighbour, vis, list);
+            }
         }
         stack.push(node);
     }
@@ -136,7 +135,9 @@ public class Kosaraju {
     private void dfs2(int node, int[] vis, List<List<Integer>> list) {
         vis[node] = 1;
         for (Integer neighbour : list.get(node)) {
-            if (vis[neighbour] == 0) dfs2(neighbour, vis, list);
+            if (vis[neighbour] == 0) {
+                dfs2(neighbour, vis, list);
+            }
         }
         scc.add(node);
     }

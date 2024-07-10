@@ -44,7 +44,9 @@ public class DualPivotQuickSort implements SortAlgorithm {
      * @param right The last index of an array Finds the partition index of an array
      */
     private static <T extends Comparable<T>> int[] partition(T[] array, int left, int right) {
-        if (array[left].compareTo(array[right]) > 0) swap(array, left, right);
+        if (array[left].compareTo(array[right]) > 0) {
+            SortUtils.swap(array, left, right);
+        }
 
         T pivot1 = array[left];
         T pivot2 = array[right];
@@ -56,16 +58,20 @@ public class DualPivotQuickSort implements SortAlgorithm {
         while (less <= great) {
             // If element is less than pivot1
             if (array[less].compareTo(pivot1) < 0) {
-                swap(array, less, left++);
+                SortUtils.swap(array, less, left++);
             }
 
             // If element is greater or equal to pivot2
             else if (array[less].compareTo(pivot2) >= 0) {
-                while (less < great && array[great].compareTo(pivot2) > 0) great--;
+                while (less < great && array[great].compareTo(pivot2) > 0) {
+                    great--;
+                }
 
-                swap(array, less, great--);
+                SortUtils.swap(array, less, great--);
 
-                if (array[less].compareTo(pivot1) < 0) swap(array, less, left++);
+                if (array[less].compareTo(pivot1) < 0) {
+                    SortUtils.swap(array, less, left++);
+                }
             }
 
             less++;
@@ -73,17 +79,11 @@ public class DualPivotQuickSort implements SortAlgorithm {
         j--;
         great++;
         // Bring the pivots to their appropriate positions
-        swap(array, left, j);
-        swap(array, right, great);
+        SortUtils.swap(array, left, j);
+        SortUtils.swap(array, right, great);
 
         // return the pivots' indices
         return new int[] {less, great};
-    }
-
-    private static <T extends Comparable<T>> void swap(T[] array, int left, int right) {
-        T temp = array[left];
-        array[left] = array[right];
-        array[right] = temp;
     }
 
     /**

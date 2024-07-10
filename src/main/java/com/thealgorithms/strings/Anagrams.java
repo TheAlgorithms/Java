@@ -12,8 +12,24 @@ import java.util.HashMap;
  */
 public class Anagrams {
 
-    // 4 approaches are provided for anagram checking. approach 2 and approach 3 are similar but
-    // differ in running time.
+    /**
+     * 4 approaches are provided for anagram checking. approach 2 and approach 3 are similar but
+     * differ in running time.
+     * OUTPUT :
+     * first string ="deal" second string ="lead"
+     * Output: Anagram
+     * Input and output is constant for all four approaches
+     * 1st approach Time Complexity : O(n logn)
+     * Auxiliary Space Complexity : O(1)
+     * 2nd approach Time Complexity : O(n)
+     * Auxiliary Space Complexity : O(1)
+     * 3rd approach Time Complexity : O(n)
+     * Auxiliary Space Complexity : O(1)
+     * 4th approach Time Complexity : O(n)
+     * Auxiliary Space Complexity : O(n)
+     * 5th approach Time Complexity: O(n)
+     * Auxiliary Space Complexity: O(1)
+     */
     public static void main(String[] args) {
         String first = "deal";
         String second = "lead";
@@ -23,22 +39,6 @@ public class Anagrams {
         System.out.println(nm.approach1(first, second)); /* To activate methods for different approaches*/
         System.out.println(nm.approach3(first, second)); /* To activate methods for different approaches*/
         System.out.println(nm.approach4(first, second)); /* To activate methods for different approaches*/
-        /**
-         * OUTPUT :
-         * first string ="deal" second string ="lead"
-         * Output: Anagram
-         * Input and output is constant for all four approaches
-         * 1st approach Time Complexity : O(n logn)
-         * Auxiliary Space Complexity : O(1)
-         * 2nd approach Time Complexity : O(n)
-         * Auxiliary Space Complexity : O(1)
-         * 3rd approach Time Complexity : O(n)
-         * Auxiliary Space Complexity : O(1)
-         * 4th approach Time Complexity : O(n)
-         * Auxiliary Space Complexity : O(n)
-         * 5th approach Time Complexity: O(n)
-         * Auxiliary Space Complexity: O(1)
-         */
     }
 
     boolean approach1(String s, String t) {
@@ -96,7 +96,9 @@ public class Anagrams {
                 b[t.charAt(i) - 'a']++;
             }
             for (int i = 0; i < 26; i++) {
-                if (a[i] != b[i]) return false;
+                if (a[i] != b[i]) {
+                    return false;
+                }
             }
             return true;
         }
