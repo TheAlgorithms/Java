@@ -1,51 +1,36 @@
 package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.thealgorithms.maths.BinomialCoefficient;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ArrayCombinationTest {
-
-    @Test
-    void testNBeingZeroOrLess() {
-        List<TreeSet<Integer>> zeroResult = ArrayCombination.combination(0, 1);
-        List<TreeSet<Integer>> negativeResult = ArrayCombination.combination(-1, 1);
-        assertNull(zeroResult);
-        assertNull(negativeResult);
+    @ParameterizedTest
+    @MethodSource("regularInputs")
+    void testCombination(int n, int k, List<List<Integer>> expected) {
+        assertEquals(expected.size(), BinomialCoefficient.binomialCoefficient(n, k));
+        assertEquals(expected, ArrayCombination.combination(n, k));
     }
 
-    @Test
-    void testNoLengthElement() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 0);
-        assertNull(result);
+    @ParameterizedTest
+    @MethodSource("wrongInputs")
+    void testCombinationThrows(int n, int k) {
+        assertThrows(IllegalArgumentException.class, () -> ArrayCombination.combination(n, k));
     }
 
-    @Test
-    void testLengthOne() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 1);
-        assert result != null;
-        assertEquals(1, result.get(0).iterator().next());
-        assertEquals(2, result.get(1).iterator().next());
+    private static Stream<Arguments> regularInputs() {
+        return Stream.of(Arguments.of(0, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 1, List.of(List.of(0))), Arguments.of(3, 0, List.of(new ArrayList<Integer>())), Arguments.of(3, 1, List.of(List.of(0), List.of(1), List.of(2))),
+            Arguments.of(4, 2, List.of(List.of(0, 1), List.of(0, 2), List.of(0, 3), List.of(1, 2), List.of(1, 3), List.of(2, 3))));
     }
 
-    @Test
-    void testLengthTwo() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(2, 2);
-        assert result != null;
-        Integer[] arr = result.get(0).toArray(new Integer[2]);
-        assertEquals(1, arr[0]);
-        assertEquals(2, arr[1]);
-    }
-
-    @Test
-    void testLengthFive() {
-        List<TreeSet<Integer>> result = ArrayCombination.combination(10, 5);
-        assert result != null;
-        Integer[] arr = result.get(0).toArray(new Integer[5]);
-        assertEquals(1, arr[0]);
-        assertEquals(5, arr[4]);
+    private static Stream<Arguments> wrongInputs() {
+        return Stream.of(Arguments.of(-1, 0), Arguments.of(0, -1), Arguments.of(2, 100));
     }
 }
