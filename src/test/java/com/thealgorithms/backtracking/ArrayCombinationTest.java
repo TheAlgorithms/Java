@@ -1,48 +1,36 @@
 package com.thealgorithms.backtracking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.thealgorithms.maths.BinomialCoefficient;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ArrayCombinationTest {
-
-    @Test
-    public void testCombination() {
-        // Test case 1: n = 4, k = 2
-        List<List<Integer>> expected = new ArrayList<>();
-        expected.add(List.of(1, 2));
-        expected.add(List.of(1, 3));
-        expected.add(List.of(1, 4));
-        expected.add(List.of(2, 3));
-        expected.add(List.of(2, 4));
-        expected.add(List.of(3, 4));
-
-        List<List<Integer>> actual = ArrayCombination.combination(4, 2);
-
-        assertEquals(expected, actual);
+    @ParameterizedTest
+    @MethodSource("regularInputs")
+    void testCombination(int n, int k, List<List<Integer>> expected) {
+        assertEquals(expected.size(), BinomialCoefficient.binomialCoefficient(n, k));
+        assertEquals(expected, ArrayCombination.combination(n, k));
     }
 
-    @Test
-    public void testEmptyCombination() {
-        // Test case 2: n = 4, k = 0 (invalid input)
-        List<List<Integer>> expected = new ArrayList<>();
-        List<List<Integer>> actual = ArrayCombination.combination(4, 0);
-
-        assertEquals(expected, actual);
+    @ParameterizedTest
+    @MethodSource("wrongInputs")
+    void testCombinationThrows(int n, int k) {
+        assertThrows(IllegalArgumentException.class, () -> ArrayCombination.combination(n, k));
     }
 
-    @Test
-    public void testSingleElementCombinations() {
-        // Test case 3: n = 3, k = 1
-        List<List<Integer>> expected = new ArrayList<>();
-        expected.add(List.of(1));
-        expected.add(List.of(2));
-        expected.add(List.of(3));
+    private static Stream<Arguments> regularInputs() {
+        return Stream.of(Arguments.of(0, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 1, List.of(List.of(0))), Arguments.of(3, 0, List.of(new ArrayList<Integer>())), Arguments.of(3, 1, List.of(List.of(0), List.of(1), List.of(2))),
+            Arguments.of(4, 2, List.of(List.of(0, 1), List.of(0, 2), List.of(0, 3), List.of(1, 2), List.of(1, 3), List.of(2, 3))));
+    }
 
-        List<List<Integer>> actual = ArrayCombination.combination(3, 1);
-
-        assertEquals(expected, actual);
+    private static Stream<Arguments> wrongInputs() {
+        return Stream.of(Arguments.of(-1, 0), Arguments.of(0, -1), Arguments.of(2, 100));
     }
 }
