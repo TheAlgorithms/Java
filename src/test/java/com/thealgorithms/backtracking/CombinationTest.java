@@ -24,9 +24,6 @@ public class CombinationTest {
     @Test
     void testLengthTwo() {
         List<TreeSet<Integer>> result = Combination.combination(new Integer[] {1, 2}, 2);
-        assert result != null;
-        Integer[] arr = result.getFirst().toArray(new Integer[2]);
-        assertEquals(1, (int) arr[0]);
-        assertEquals(2, (int) arr[1]);
+        assertEquals(Arrays.asList(new TreeSet<>(Arrays.asList(1, 2))), result);
     }
 }
