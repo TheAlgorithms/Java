@@ -884,6 +884,7 @@
             * [SortingAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SortingAlgorithmTest.java)
             * [SortUtilsRandomGeneratorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SortUtilsRandomGeneratorTest.java)
             * [SortUtilsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SortUtilsTest.java)
+            * [StoogeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/StoogeSortTest.java)
             * [StrandSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/StrandSortTest.java)
             * [TimSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TimSortTest.java)
             * [TopologicalSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TopologicalSortTest.java)
