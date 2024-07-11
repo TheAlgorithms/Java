@@ -22,7 +22,7 @@ public class MaxHeap implements Heap {
                 System.out.println("Null element. Not added to heap");
             }
         }
-        if (maxHeap.size() == 0) {
+        if (maxHeap.isEmpty()) {
             System.out.println("No element has been added, empty heap.");
         }
     }

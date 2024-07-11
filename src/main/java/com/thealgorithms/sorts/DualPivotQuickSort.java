@@ -45,7 +45,7 @@ public class DualPivotQuickSort implements SortAlgorithm {
      */
     private static <T extends Comparable<T>> int[] partition(T[] array, int left, int right) {
         if (array[left].compareTo(array[right]) > 0) {
-            swap(array, left, right);
+            SortUtils.swap(array, left, right);
         }
 
         T pivot1 = array[left];
@@ -58,7 +58,7 @@ public class DualPivotQuickSort implements SortAlgorithm {
         while (less <= great) {
             // If element is less than pivot1
             if (array[less].compareTo(pivot1) < 0) {
-                swap(array, less, left++);
+                SortUtils.swap(array, less, left++);
             }
 
             // If element is greater or equal to pivot2
@@ -67,10 +67,10 @@ public class DualPivotQuickSort implements SortAlgorithm {
                     great--;
                 }
 
-                swap(array, less, great--);
+                SortUtils.swap(array, less, great--);
 
                 if (array[less].compareTo(pivot1) < 0) {
-                    swap(array, less, left++);
+                    SortUtils.swap(array, less, left++);
                 }
             }
 
@@ -79,17 +79,11 @@ public class DualPivotQuickSort implements SortAlgorithm {
         j--;
         great++;
         // Bring the pivots to their appropriate positions
-        swap(array, left, j);
-        swap(array, right, great);
+        SortUtils.swap(array, left, j);
+        SortUtils.swap(array, right, great);
 
         // return the pivots' indices
         return new int[] {less, great};
-    }
-
-    private static <T extends Comparable<T>> void swap(T[] array, int left, int right) {
-        T temp = array[left];
-        array[left] = array[right];
-        array[right] = temp;
     }
 
     /**
