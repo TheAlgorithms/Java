@@ -3,6 +3,7 @@ package com.thealgorithms.backtracking;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
 import org.junit.jupiter.api.Test;
