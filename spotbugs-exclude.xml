@@ -18,9 +18,6 @@
         <Bug pattern="DM_NEXTINT_VIA_NEXTDOUBLE" />
     </Match>
     <Match>
-        <Bug pattern="NM_CLASS_NAMING_CONVENTION" />
-    </Match>
-    <Match>
         <Bug pattern="SIC_INNER_SHOULD_BE_STATIC" />
     </Match>
     <Match>
@@ -43,9 +40,6 @@
     </Match>
     <Match>
         <Bug pattern="INT_BAD_REM_BY_1" />
-    </Match>
-    <Match>
-        <Bug pattern="NM_METHOD_NAMING_CONVENTION" />
     </Match>
     <Match>
         <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
@@ -72,9 +66,6 @@
         <Bug pattern="UWF_UNWRITTEN_FIELD" />
     </Match>
     <Match>
-        <Bug pattern="DLS_DEAD_LOCAL_STORE" />
-    </Match>
-    <Match>
         <Bug pattern="UWF_NULL_FIELD" />
     </Match>
     <Match>
@@ -94,9 +85,6 @@
     </Match>
     <Match>
         <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
-    </Match>
-    <Match>
-        <Bug pattern="RV_ABSOLUTE_VALUE_OF_HASHCODE" />
     </Match>
     <!-- fb-contrib -->
     <Match>
@@ -121,9 +109,6 @@
         <Bug pattern="CLI_CONSTANT_LIST_INDEX" />
     </Match>
     <Match>
-        <Bug pattern="BED_BOGUS_EXCEPTION_DECLARATION" />
-    </Match>
-    <Match>
         <Bug pattern="CNC_COLLECTION_NAMING_CONFUSION" />
     </Match>
     <Match>
@@ -133,13 +118,7 @@
         <Bug pattern="USBR_UNNECESSARY_STORE_BEFORE_RETURN" />
     </Match>
     <Match>
-        <Bug pattern="SPP_USE_ISEMPTY" />
-    </Match>
-    <Match>
         <Bug pattern="BL_BURYING_LOGIC" />
-    </Match>
-    <Match>
-        <Bug pattern="OI_OPTIONAL_ISSUES_USES_IMMEDIATE_EXECUTION" />
     </Match>
     <Match>
         <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS" />

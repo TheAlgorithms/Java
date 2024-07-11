@@ -1,8 +1,8 @@
 package com.thealgorithms.sorts;
 
-class StrandSortTest extends SortingAlgorithmTest {
+public class SwapSortTest extends SortingAlgorithmTest {
     @Override
     SortAlgorithm getSortAlgorithm() {
-        return new StrandSort();
+        return new SwapSort();
     }
 }

@@ -9,9 +9,7 @@ public class SimpleSort implements SortAlgorithm {
         for (int i = 0; i < length; i++) {
             for (int j = i + 1; j < length; j++) {
                 if (SortUtils.less(array[j], array[i])) {
-                    T element = array[j];
-                    array[j] = array[i];
-                    array[i] = element;
+                    SortUtils.swap(array, i, j);
                 }
             }
         }
