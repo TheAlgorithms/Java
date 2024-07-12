@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * The space complexity is O(k), where k is the range of the input integers.
  *
- * Note: This implementation handle negative integers as it
+ * Note: This implementation handles negative integers as it
  * calculates the range based on the minimum and maximum values of the array.
  *
  */
