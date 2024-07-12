@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * The space complexity is O(k), where k is the range of the input integers.
  *
- * Note: This implementation does not handle negative integers as it
+ * Note: This implementation handle negative integers as it
  * calculates the range based on the minimum and maximum values of the array.
  *
  */
@@ -28,27 +28,33 @@ public final class CountingSort {
         if (array.length == 0) {
             return array;
         }
+        final var stats = Arrays.stream(array).summaryStatistics();
+        final int min = stats.getMin();
+        int[] count = computeHistogram(array, min, stats.getMax() - min + 1);
+        toCumulative(count);
+        return reconstructSorted(count, min, array);
+    }
 
-        final int max = Arrays.stream(array).max().orElse(Integer.MIN_VALUE);
-        final int min = Arrays.stream(array).min().orElse(Integer.MAX_VALUE);
-        final int range = max - min + 1;
-
-        int[] count = new int[range];
-        int[] output = new int[array.length];
-
-        for (int value : array) {
-            count[value - min]++;
+    private static int[] computeHistogram(final int[] array, final int shift, final int spread) {
+        int[] res = new int[spread];
+        for (final var value : array) {
+            res[value - shift]++;
         }
+        return res;
+    }
 
+    private static void toCumulative(int[] count) {
         for (int i = 1; i < count.length; i++) {
             count[i] += count[i - 1];
         }
+    }
 
+    private static int[] reconstructSorted(final int[] cumulativeCount, final int shift, final int[] array) {
+        int[] res = new int[array.length];
         for (int i = array.length - 1; i >= 0; i--) {
-            output[count[array[i] - min] - 1] = array[i];
-            count[array[i] - min]--;
+            res[cumulativeCount[array[i] - shift] - 1] = array[i];
+            cumulativeCount[array[i] - shift]--;
         }
-
-        return output;
+        return res;
     }
 }
