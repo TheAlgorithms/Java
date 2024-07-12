@@ -29,9 +29,9 @@ public final class CountingSort {
             return array;
         }
 
-        int max = Arrays.stream(array).max().orElse(Integer.MIN_VALUE);
-        int min = Arrays.stream(array).min().orElse(Integer.MAX_VALUE);
-        int range = max - min + 1;
+        final int max = Arrays.stream(array).max().orElse(Integer.MIN_VALUE);
+        final int min = Arrays.stream(array).min().orElse(Integer.MAX_VALUE);
+        final int range = max - min + 1;
 
         int[] count = new int[range];
         int[] output = new int[array.length];
