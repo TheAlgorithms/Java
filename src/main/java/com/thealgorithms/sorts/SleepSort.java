@@ -16,29 +16,42 @@ package com.thealgorithms.sorts;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 final class SleepSort {
 
     private SleepSort() {
     }
 
-    public static void sleepSort(ArrayList<Integer> array) {
-        ArrayList<Thread> threads = new ArrayList<>();
+    /**
+     * @param array the list of integers to sort
+     * @return the sorted list of integers
+     */
+    public static List<Integer> sleepSort(List<Integer> array) {
 
-        for (int numbers : array) {
+        // List to collect sorted elements
+        List<Integer> sortedList = Collections.synchronizedList(new ArrayList<>());
+        List<Thread> threads = new ArrayList<>();
+
+        for (int number : array) {
+            if (number < 0) {
+                throw new IllegalArgumentException("All numbers must be non-negative. Found: " + number);
+            }
             Thread thread = new Thread(() -> {
                 try {
-                    Thread.sleep(numbers); // Sleep for 'num' milliseconds
-                    System.out.print(numbers + " "); // Print the number after sleeping
+                    Thread.sleep(number); // Sleep for 'number' milliseconds
+                    sortedList.add(number); // Add the number to the list after sleeping
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt(); // Restore interrupted status
                     e.printStackTrace();
                 }
             });
 
-            threads.add(thread); // Add the thread to the ArrayList
+            threads.add(thread); // Add the thread to the list
             thread.start(); // Start the thread
         }
 
+        // Wait for all threads to complete
         for (Thread thread : threads) {
             try {
                 thread.join(); // Wait for each thread to finish
@@ -46,14 +59,10 @@ final class SleepSort {
                 e.printStackTrace();
             }
         }
-    }
 
-    public static void main(String[] args) {
-        // Example usage
-        ArrayList<Integer> numbers = new ArrayList<>();
-        Collections.addAll(numbers, 15, 23, 8, 41, 30);
-
-        System.out.println("Sorting numbers using Sleep Sort:");
-        sleepSort(numbers);
+        // Return the sorted list
+        // The list is synchronized, so no need for additional synchronization here
+        Collections.sort(sortedList);
+        return sortedList;
     }
 }
