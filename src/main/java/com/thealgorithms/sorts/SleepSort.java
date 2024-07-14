@@ -33,10 +33,14 @@ final class SleepSort {
         List<Integer> sortedList = Collections.synchronizedList(new ArrayList<>());
         List<Thread> threads = new ArrayList<>();
 
+        // Validate that all numbers are non-negative before starting any threads
         for (int number : array) {
             if (number < 0) {
                 throw new IllegalArgumentException("All numbers must be non-negative. Found: " + number);
             }
+        }
+
+        for (final int number : array) {
             Thread thread = new Thread(() -> {
                 try {
                     Thread.sleep(number); // Sleep for 'number' milliseconds
