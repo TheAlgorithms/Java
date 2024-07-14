@@ -1,100 +1,83 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.less;
-import static com.thealgorithms.sorts.SortUtils.print;
-
 /**
+ * This class implements the cycle sort algorithm.
+ * Cycle sort is an in-place sorting algorithm, unstable, and efficient for scenarios with limited memory usage.
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 class CycleSort implements SortAlgorithm {
-
+    /**
+     * Sorts an array of comparable elements using the cycle sort algorithm.
+     *
+     * @param array the array to be sorted
+     * @param <T> the type of elements in the array, must be comparable
+     * @return the sorted array
+     */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] arr) {
-        int n = arr.length;
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        for (int cycleStart = 0; cycleStart <= array.length - 2; cycleStart++) {
+            T item = array[cycleStart];
 
-        // traverse array elements
-        for (int j = 0; j <= n - 2; j++) {
-            // initialize item as starting point
-            T item = arr[j];
-
-            // Find position where we put the item.
-            int pos = j;
-            for (int i = j + 1; i < n; i++) {
-                if (less(arr[i], item)) {
+            // Find the position where we put the element
+            int pos = cycleStart;
+            for (int i = cycleStart + 1; i < array.length; i++) {
+                if (SortUtils.less(array[i], item)) {
                     pos++;
                 }
             }
 
-            // If item is already in correct position
-            if (pos == j) {
+            // If the item is already in the correct position
+            if (pos == cycleStart) {
                 continue;
             }
 
-            // ignore all duplicate elements
-            while (item.compareTo(arr[pos]) == 0) {
-                pos += 1;
+            // Ignore all duplicate elements
+            while (item.compareTo(array[pos]) == 0) {
+                pos++;
             }
 
-            // put the item to it's right position
-            if (pos != j) {
-                item = replace(arr, pos, item);
+            // Put the item to its correct position
+            if (pos != cycleStart) {
+                item = replace(array, pos, item);
             }
 
-            // Rotate rest of the cycle
-            while (pos != j) {
-                pos = j;
+            // Rotate the rest of the cycle
+            while (pos != cycleStart) {
+                pos = cycleStart;
 
-                // Find position where we put the element
-                for (int i = j + 1; i < n; i++) {
-                    if (less(arr[i], item)) {
-                        pos += 1;
+                // Find the position where we put the element
+                for (int i = cycleStart + 1; i < array.length; i++) {
+                    if (SortUtils.less(array[i], item)) {
+                        pos++;
                     }
                 }
 
-                // ignore all duplicate elements
-                while (item.compareTo(arr[pos]) == 0) {
-                    pos += 1;
+                // Ignore all duplicate elements
+                while (item.compareTo(array[pos]) == 0) {
+                    pos++;
                 }
 
-                // put the item to it's right position
-                if (item != arr[pos]) {
-                    item = replace(arr, pos, item);
+                // Put the item to its correct position
+                if (item != array[pos]) {
+                    item = replace(array, pos, item);
                 }
             }
         }
-
-        return arr;
+        return array;
     }
 
-    private <T extends Comparable<T>> T replace(T[] arr, int pos, T item) {
-        T temp = item;
-        item = arr[pos];
-        arr[pos] = temp;
-        return item;
-    }
-
-    public static void main(String[] args) {
-        Integer[] arr = {
-            4,
-            23,
-            6,
-            78,
-            1,
-            26,
-            11,
-            23,
-            0,
-            -6,
-            3,
-            54,
-            231,
-            9,
-            12,
-        };
-        CycleSort cycleSort = new CycleSort();
-        cycleSort.sort(arr);
-
-        System.out.println("After sort : ");
-        print(arr);
+    /**
+     * Replaces an element in the array with the given item and returns the replaced item.
+     *
+     * @param array the array in which the replacement will occur
+     * @param pos the position at which the replacement will occur
+     * @param item the item to be placed in the array
+     * @param <T> the type of elements in the array, must be comparable
+     * @return the replaced item
+     */
+    private <T extends Comparable<T>> T replace(T[] array, int pos, T item) {
+        T replacedItem = array[pos];
+        array[pos] = item;
+        return replacedItem;
     }
 }
