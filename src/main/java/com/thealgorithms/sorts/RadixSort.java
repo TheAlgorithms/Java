@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
 import com.thealgorithms.maths.NumberOfDigits;
-
 import java.util.Arrays;
 
 /**
@@ -25,7 +24,7 @@ public final class RadixSort {
             return array;
         }
 
-        int[] negatives = Arrays.stream(array).filter(x -> x < 0).map(x -> -x).toArray();
+        int[] negatives = Arrays.stream(array).filter(x -> x < 0).map(x -> - x).toArray();
         int[] positives = Arrays.stream(array).filter(x -> x >= 0).toArray();
 
         if (negatives.length > 0) {
