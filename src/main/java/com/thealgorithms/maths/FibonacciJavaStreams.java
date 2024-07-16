@@ -22,7 +22,7 @@ public final class FibonacciJavaStreams {
             return Optional.of(BigDecimal.ZERO);
         }
 
-        if (index.compareTo(new BigDecimal(2)) < 0) {
+        if (index.compareTo(BigDecimal.TWO) < 0) {
             return Optional.of(BigDecimal.ONE);
         }
 
