@@ -1,11 +1,12 @@
 package com.thealgorithms.sorts;
 
 import com.thealgorithms.maths.NumberOfDigits;
+
 import java.util.Arrays;
 
 /**
  * This class provides an implementation of the radix sort algorithm.
- * It sorts an array of integers in increasing order.
+ * It sorts an array of positive integers in increasing order.
  */
 public final class RadixSort {
     private static final int BASE = 10;
@@ -14,54 +15,40 @@ public final class RadixSort {
     }
 
     /**
-     * Sorts an array of integers using the radix sort algorithm.
+     * Sorts an array of positive integers using the radix sort algorithm.
      *
      * @param array the array to be sorted
      * @return the sorted array
+     * @throws IllegalArgumentException if any negative integers are found
      */
     public static int[] sort(int[] array) {
         if (array.length == 0) {
             return array;
         }
 
-        int[] negatives = Arrays.stream(array).filter(x -> x < 0).map(x -> - x).toArray();
-        int[] positives = Arrays.stream(array).filter(x -> x >= 0).toArray();
-
-        if (negatives.length > 0) {
-            radixSort(negatives);
-            reverseAndNegate(negatives);
-        }
-
-        if (positives.length > 0) {
-            radixSort(positives);
-        }
-
-        int[] sortedArray = new int[array.length];
-        mergeNegativeAndPositiveArrays(negatives, sortedArray, positives);
-
-        return sortedArray;
+        checkForNegativeInput(array);
+        radixSort(array);
+        return array;
     }
 
-    private static void mergeNegativeAndPositiveArrays(int[] negatives, int[] sortedArray, int[] positives) {
-        System.arraycopy(negatives, 0, sortedArray, 0, negatives.length);
-        System.arraycopy(positives, 0, sortedArray, negatives.length, positives.length);
+    /**
+     * Checks if the array contains any negative integers.
+     *
+     * @param array the array to be checked
+     * @throws IllegalArgumentException if any negative integers are found
+     */
+    private static void checkForNegativeInput(int[] array) {
+        for (int number : array) {
+            if (number < 0) {
+                throw new IllegalArgumentException("Array contains non-positive integers.");
+            }
+        }
     }
 
     private static void radixSort(int[] array) {
         final int max = Arrays.stream(array).max().getAsInt();
         for (int i = 0, exp = 1; i < NumberOfDigits.numberOfDigits(max); i++, exp *= BASE) {
             countingSortByDigit(array, exp);
-        }
-    }
-
-    private static void reverseAndNegate(int[] array) {
-        for (int i = 0; i < array.length / 2; i++) {
-            int temp = array[i];
-            array[i] = -array[array.length - 1 - i];
-            array[array.length - 1 - i] = -temp;
-        }
-        if (array.length % 2 != 0) {
-            array[array.length / 2] = -array[array.length / 2];
         }
     }
 
