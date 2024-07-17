@@ -14,9 +14,9 @@ public class PancakeSort implements SortAlgorithm {
             return array;
         }
 
-        for (int currentSize  = 0; currentSize  < array.length; currentSize++) {
+        for (int currentSize = 0; currentSize < array.length; currentSize++) {
             int maxIndex = findMaxIndex(array, currentSize);
-            SortUtils.flip(array, maxIndex, array.length - 1 - currentSize );
+            SortUtils.flip(array, maxIndex, array.length - 1 - currentSize);
         }
 
         return array;
@@ -32,13 +32,13 @@ public class PancakeSort implements SortAlgorithm {
      */
     private <T extends Comparable<T>> int findMaxIndex(T[] array, int currentSize) {
         T max = array[0];
-        int maxIndex  = 0;
+        int maxIndex = 0;
         for (int i = 0; i < array.length - currentSize; i++) {
             if (SortUtils.less(max, array[i])) {
                 max = array[i];
-                maxIndex  = i;
+                maxIndex = i;
             }
         }
-        return maxIndex ;
+        return maxIndex;
     }
 }
