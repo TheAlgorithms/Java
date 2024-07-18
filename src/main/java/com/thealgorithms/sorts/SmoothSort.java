@@ -13,12 +13,12 @@ public final class SmoothSort implements SortAlgorithm {
     private static <T extends Comparable<T>> void smoothSort(T[] array) {
         LeonardoHeap<T> leonardoHeap = new LeonardoHeap<T>();
 
-        for (final var element: array) {
+        for (final var element : array) {
             leonardoHeap.addElement(element);
         }
 
         for (int i = 0; i < array.length; i++) {
-            array[array.length - i - 1] = leonardoHeap.removeElement();;
+            array[array.length - i - 1] = leonardoHeap.removeElement();
         }
     }
 

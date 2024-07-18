@@ -2,10 +2,6 @@ package com.thealgorithms.datastructures.heaps;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 public class LeonardoHeapTest {
@@ -63,7 +59,7 @@ public class LeonardoHeapTest {
         heap.addElement(8);
         heap.addElement(7);
         heap.addElement(3);
-        
+
         heap.addElement(4);
         heap.addElement(4);
         heap.addElement(4);
@@ -94,7 +90,7 @@ public class LeonardoHeapTest {
         heap.addElement(33);
         heap.addElement(40);
         heap.addElement(28);
-        
+
         heap.addElement(95);
         heap.addElement(29);
         heap.addElement(88);
@@ -121,6 +117,4 @@ public class LeonardoHeapTest {
         assertEquals(88, heap.removeElement());
         assertEquals(84, heap.removeElement());
     }
-
-
 }
