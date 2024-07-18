@@ -72,7 +72,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
 
     private void shiftRootAndRestoreHeap() {
 
-        if (heap.size() == 0) {
+        if (heap.isEmpty()) {
             return;
         }
 
