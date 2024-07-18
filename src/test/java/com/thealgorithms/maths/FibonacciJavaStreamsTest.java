@@ -21,13 +21,13 @@ public class FibonacciJavaStreamsTest {
     public void testCheckTheFirst4SequenceElements() {
         checkElement(BigDecimal.ZERO, BigDecimal.ZERO);
         checkElement(BigDecimal.ONE, BigDecimal.ONE);
-        checkElement(new BigDecimal(2), BigDecimal.ONE);
-        checkElement(new BigDecimal(3), new BigDecimal(2));
+        checkElement(BigDecimal.TWO, BigDecimal.ONE);
+        checkElement(new BigDecimal(3), BigDecimal.TWO);
     }
 
     @Test
     public void testCheck10thSequenceElement() {
-        checkElement(new BigDecimal(10), new BigDecimal(55));
+        checkElement(BigDecimal.TEN, new BigDecimal(55));
     }
 
     @Test

@@ -11,20 +11,20 @@ class MatrixUtilTest {
     @Test
     void add() {
         final BigDecimal[][] matrix1 = {
-            {new BigDecimal(3), new BigDecimal(2)},
+            {new BigDecimal(3), BigDecimal.TWO},
             {BigDecimal.ZERO, BigDecimal.ONE},
         };
 
         final BigDecimal[][] matrix2 = {
             {BigDecimal.ONE, new BigDecimal(3)},
-            {new BigDecimal(2), BigDecimal.ZERO},
+            {BigDecimal.TWO, BigDecimal.ZERO},
         };
 
         final BigDecimal[][] actual = MatrixUtil.add(matrix1, matrix2).orElseThrow(() -> new AssertionError("Could not compute matrix!"));
 
         final BigDecimal[][] expected = {
             {new BigDecimal(4), new BigDecimal(5)},
-            {new BigDecimal(2), BigDecimal.ONE},
+            {BigDecimal.TWO, BigDecimal.ONE},
         };
 
         assertTrue(Objects.deepEquals(actual, expected));
@@ -37,7 +37,7 @@ class MatrixUtilTest {
         };
 
         final BigDecimal[][] matrix2 = {
-            {new BigDecimal(2), BigDecimal.ZERO},
+            {BigDecimal.TWO, BigDecimal.ZERO},
             {new BigDecimal(-2), new BigDecimal(-3)},
         };
 
@@ -55,13 +55,13 @@ class MatrixUtilTest {
     void multiply() {
 
         final BigDecimal[][] matrix1 = {
-            {BigDecimal.ONE, new BigDecimal(2), new BigDecimal(3)},
+            {BigDecimal.ONE, BigDecimal.TWO, new BigDecimal(3)},
             {new BigDecimal(4), new BigDecimal(5), new BigDecimal(6)},
             {new BigDecimal(7), new BigDecimal(8), new BigDecimal(9)},
         };
 
         final BigDecimal[][] matrix2 = {
-            {BigDecimal.ONE, new BigDecimal(2)},
+            {BigDecimal.ONE, BigDecimal.TWO},
             {new BigDecimal(3), new BigDecimal(4)},
             {new BigDecimal(5), new BigDecimal(6)},
         };
