@@ -85,31 +85,11 @@ public class LeonardoHeapTest {
     @Test
     public void testForCompareChildAndSwap() {
         LeonardoHeap<Integer> heap = new LeonardoHeap<>();
+        Integer[] elements = {5, 33, 40, 28, 95, 29, 88, 94, 12, 84, 15, 33, 2, 52, 37, 62, 48, 13, 61, 59};
 
-        heap.addElement(5);
-        heap.addElement(33);
-        heap.addElement(40);
-        heap.addElement(28);
-
-        heap.addElement(95);
-        heap.addElement(29);
-        heap.addElement(88);
-        heap.addElement(94);
-
-        heap.addElement(12);
-        heap.addElement(84);
-        heap.addElement(15);
-        heap.addElement(33);
-
-        heap.addElement(2);
-        heap.addElement(52);
-        heap.addElement(37);
-        heap.addElement(62);
-
-        heap.addElement(48);
-        heap.addElement(13);
-        heap.addElement(61);
-        heap.addElement(59);
+        for (Integer element : elements) {
+            heap.addElement(element);
+        }
 
         // Assert the top 4 elemets are extracted correctly
         assertEquals(95, heap.removeElement());

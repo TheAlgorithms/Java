@@ -26,7 +26,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
     }
 
     private void increaseLevelTracker() {
-        ArrayList<Integer> consecutiveTreeIndices = findConsecutiveTreeIndices(levelTracker);
+        ArrayList<Integer> consecutiveTreeIndices = LeonardoHeapHelper.findConsecutiveTreeIndices(levelTracker);
         if (consecutiveTreeIndices.get(0) != -1) {
             // if 0th or 1st index is -1 that implies there are no concequtive trees
             levelTracker = SingleBitOperations.clearBit(levelTracker, consecutiveTreeIndices.get(0));
@@ -76,7 +76,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
             return;
         }
 
-        Integer[] currentTreeLevels = findAllTreeIndices();
+        Integer[] currentTreeLevels = LeonardoHeapHelper.findAllTreeIndices(levelTracker);
         int previousTreeSizeCumulative = 0;
         ArrayList<Integer> rootNodeIndices = new ArrayList<Integer>();
 
@@ -151,44 +151,10 @@ public class LeonardoHeap<T extends Comparable<T>> {
         return position;
     }
 
-    private static ArrayList<Integer> findConsecutiveTreeIndices(int num) {
-        int prevOneIndex = -1;
-        int currentLevel;
-
-        ArrayList<Integer> answer = new ArrayList<Integer>();
-        answer.add(-1);
-        answer.add(-1);
-
-        for (int i = 0; num > 0; i++) {
-            currentLevel = num & 1;
-            if (currentLevel == 1) {
-                if (prevOneIndex != -1) {
-                    answer.set(0, prevOneIndex);
-                    answer.set(1, i);
-                }
-                prevOneIndex = i;
-            } else {
-                prevOneIndex = -1;
-            }
-            num >>>= 1;
-        }
-        return answer;
-    }
-
     private void swap(int i, int j) {
         T temp = heap.get(i);
         heap.set(i, heap.get(j));
         heap.set(j, temp);
-    }
-
-    private Integer[] findAllTreeIndices() {
-        List<Integer> setBitIndexes = new ArrayList<>();
-        for (int i = Integer.SIZE - 1; i >= 0; i--) {
-            if ((levelTracker & (1 << i)) != 0) {
-                setBitIndexes.add(i);
-            }
-        }
-        return setBitIndexes.toArray(new Integer[0]);
     }
 
     public void addElement(T element) {
