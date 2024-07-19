@@ -882,6 +882,7 @@
             * [OddEvenSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/OddEvenSortTest.java)
             * [PancakeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/PancakeSortTest.java)
             * [QuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/QuickSortTest.java)
+            * [RadixSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/RadixSortTest.java)
             * [SelectionSortRecursiveTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SelectionSortRecursiveTest.java)
             * [SelectionSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SelectionSortTest.java)
             * [ShellSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/ShellSortTest.java)
