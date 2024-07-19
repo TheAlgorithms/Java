@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  * This class provides an implementation of the radix sort algorithm.
- * It sorts an array of positive integers in increasing order.
+ * It sorts an array of nonnegative integers in increasing order.
  */
 public final class RadixSort {
     private static final int BASE = 10;
@@ -14,7 +14,7 @@ public final class RadixSort {
     }
 
     /**
-     * Sorts an array of positive integers using the radix sort algorithm.
+     * Sorts an array of nonnegative integers using the radix sort algorithm.
      *
      * @param array the array to be sorted
      * @return the sorted array
@@ -58,19 +58,18 @@ public final class RadixSort {
      * @param exp   the exponent representing the current digit position
      */
     private static void countingSortByDigit(int[] array, int exp) {
-        int[] output = new int[array.length];
-        int[] count = new int[BASE];
-
-        countDigits(array, exp, count);
+        int[] count = countDigits(array, exp);
         accumulateCounts(count);
-        buildOutput(array, exp, output, count);
+        int[] output = buildOutput(array, exp, count);
         copyOutput(array, output);
     }
 
-    private static void countDigits(int[] array, int exp, int[] count) {
+    private static int[] countDigits(int[] array, int exp) {
+        int[] count = new int[BASE];
         for (int i = 0; i < array.length; i++) {
             count[getDigit(array[i], exp)]++;
         }
+        return count;
     }
 
     private static int getDigit(int number, int position) {
@@ -83,12 +82,14 @@ public final class RadixSort {
         }
     }
 
-    private static void buildOutput(int[] array, int exp, int[] output, int[] count) {
+    private static int[] buildOutput(int[] array, int exp, int[] count) {
+        int[] output = new int[array.length];
         for (int i = array.length - 1; i >= 0; i--) {
             int digit = getDigit(array[i], exp);
             output[count[digit] - 1] = array[i];
             count[digit]--;
         }
+        return output;
     }
 
     private static void copyOutput(int[] array, int[] output) {
