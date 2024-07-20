@@ -7,9 +7,12 @@ package com.thealgorithms.sorts;
 public class StoogeSort implements SortAlgorithm {
 
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] unsortedArray) {
-        sort(unsortedArray, 0, unsortedArray.length);
-        return unsortedArray;
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        if (array.length == 0) {
+            return array;
+        }
+        sort(array, 0, array.length);
+        return array;
     }
 
     public <T extends Comparable<T>> T[] sort(T[] unsortedArray, int start, int end) {
@@ -27,25 +30,5 @@ public class StoogeSort implements SortAlgorithm {
             sort(unsortedArray, start, end - third);
         }
         return unsortedArray;
-    }
-
-    public static void main(String[] args) {
-        StoogeSort stoogeSort = new StoogeSort();
-
-        Integer[] integerArray = {8, 84, 53, 953, 64, 2, 202};
-        // Print integerArray unsorted
-        SortUtils.print(integerArray);
-
-        stoogeSort.sort(integerArray);
-        // Print integerArray sorted
-        SortUtils.print(integerArray);
-
-        String[] stringArray = {"g", "d", "a", "b", "f", "c", "e"};
-        // Print stringArray unsorted
-        SortUtils.print(stringArray);
-
-        stoogeSort.sort(stringArray);
-        // Print stringArray sorted
-        SortUtils.print(stringArray);
     }
 }
