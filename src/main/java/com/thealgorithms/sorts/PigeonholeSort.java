@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PigeonholeSort {
+public final class PigeonholeSort {
     private PigeonholeSort() {
     }
 
