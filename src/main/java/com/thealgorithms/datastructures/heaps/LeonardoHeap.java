@@ -1,11 +1,10 @@
 package com.thealgorithms.datastructures.heaps;
 
+import com.thealgorithms.bitmanipulation.SingleBitOperations;
+import com.thealgorithms.maths.LeonardoNumber;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.thealgorithms.bitmanipulation.SingleBitOperations;
-import com.thealgorithms.maths.LeonardoNumber;
 
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Smoothsort
