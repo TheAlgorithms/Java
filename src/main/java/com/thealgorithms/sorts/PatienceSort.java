@@ -47,7 +47,7 @@ public class PatienceSort implements SortAlgorithm {
         for (T x : array) {
             int pos = Collections.binarySearch(lastElements, x);
             if (pos < 0) {
-                pos = ~pos; // bitwise complement, which is equivalent to (-pos - 1)
+                pos = -pos - 1;
             }
 
             if (pos < piles.size()) {
@@ -75,9 +75,7 @@ public class PatienceSort implements SortAlgorithm {
     private static <T extends Comparable<T>> PriorityQueue<PileNode<T>> mergePiles(final List<List<T>> piles) {
         PriorityQueue<PileNode<T>> pq = new PriorityQueue<>();
         for (List<T> pile : piles) {
-            if (!pile.isEmpty()) {
-                pq.add(new PileNode<>(pile.removeLast(), pile));
-            }
+            pq.add(new PileNode<>(pile.removeLast(), pile));
         }
         return pq;
     }
