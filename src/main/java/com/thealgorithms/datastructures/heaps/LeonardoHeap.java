@@ -12,7 +12,7 @@ import java.util.List;
 public class LeonardoHeap<T extends Comparable<T>> {
 
     private int levelTracker = 0;
-    private final List<T> heap = new ArrayList<T>();
+    private final List<T> heap = new ArrayList<>();
 
     public LeonardoHeap() {
     }
@@ -27,7 +27,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
     }
 
     private void increaseLevelTracker() {
-        final ArrayList<Integer> consecutiveTreeIndices = findConsecutiveTreeIndices(levelTracker);
+        final List<Integer> consecutiveTreeIndices = findConsecutiveTreeIndices(levelTracker);
         if (consecutiveTreeIndices.get(0) != -1) {
             // if 0th or 1st index is -1 that implies there are no concequtive trees
             levelTracker = SingleBitOperations.clearBit(levelTracker, consecutiveTreeIndices.get(0));
@@ -72,16 +72,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
         }
 
         final Integer[] currentTreeLevels = findAllTreeIndices(levelTracker);
-        int previousTreeSizeCumulative = 0;
-        ArrayList<Integer> rootNodeIndices = new ArrayList<Integer>();
-
-        // The number of roots are going to be same the the number of levels
-        // iterate over the currentTreeLevels and get roots
-
-        for (int i = 0; i < currentTreeLevels.length; i++) {
-            rootNodeIndices.add(previousTreeSizeCumulative + LeonardoNumber.leonardoNumber(currentTreeLevels[i]) - 1);
-            previousTreeSizeCumulative = previousTreeSizeCumulative + LeonardoNumber.leonardoNumber(currentTreeLevels[i]);
-        }
+        ArrayList<Integer> rootNodeIndices = getRootNodeIndices(currentTreeLevels);
 
         int rootNodeIndexForHeapify = rootNodeIndices.getLast();
         int treeLevelforHeapify = currentTreeLevels[currentTreeLevels.length - 1];
@@ -91,42 +82,28 @@ public class LeonardoHeap<T extends Comparable<T>> {
             int currentRootNodeIndex = rootNodeIndices.get(i);
             int prevRootNodeIndex = rootNodeIndices.get(i - 1);
             int j = i;
-            boolean swapped = false;
-
-            while (heap.get(prevRootNodeIndex).compareTo(heap.get(currentRootNodeIndex)) > 0) {
+            while (compareRoots(currentRootNodeIndex, prevRootNodeIndex)) {
                 final int currentLevel = currentTreeLevels[j];
-                if (currentLevel > 1) {
+                boolean swapRequired = compareChildren(currentRootNodeIndex, prevRootNodeIndex, currentLevel);
+                if (swapRequired) {
                     // compare child and swap
-
-                    final int rightChildIndex = rootNodeIndices.get(j) - 1; // right child is of level n-2
-                    final int leftChildIndex = rootNodeIndices.get(j) - 1 - LeonardoNumber.leonardoNumber(currentLevel - 2);
-                    if (heap.get(prevRootNodeIndex).compareTo(heap.get(rightChildIndex)) > 0 && heap.get(prevRootNodeIndex).compareTo(heap.get(leftChildIndex)) > 0) {
-                        swap(prevRootNodeIndex, currentRootNodeIndex);
-                        rootNodeIndexForHeapify = prevRootNodeIndex;
-                        treeLevelforHeapify = currentTreeLevels[j - 1];
-                        swapped = true;
-                    } else {
-                        maxHeapifyTree(currentRootNodeIndex, currentLevel);
-                        swapped = false;
-                    }
-                } else {
                     swap(prevRootNodeIndex, currentRootNodeIndex);
                     rootNodeIndexForHeapify = prevRootNodeIndex;
                     treeLevelforHeapify = currentTreeLevels[j - 1];
-                    swapped = true;
+                } else {
+                    maxHeapifyTree(currentRootNodeIndex, currentLevel);
                 }
                 j = j - 1;
-                if (j > 0) {
-                    currentRootNodeIndex = rootNodeIndices.get(j);
-                    prevRootNodeIndex = rootNodeIndices.get(j - 1);
-                } else {
-                    // j = 0 reached the left most tree
+
+                if (j == 0) {
+                     // We arrived at the left most tree. Do a maxheapifyTree if a swap had occurred
+                    if (swapRequired) {
+                        maxHeapifyTree(rootNodeIndexForHeapify, treeLevelforHeapify);
+                    }
                     break;
                 }
-            }
-
-            if (swapped) {
-                maxHeapifyTree(rootNodeIndexForHeapify, treeLevelforHeapify);
+                currentRootNodeIndex = rootNodeIndices.get(j);
+                prevRootNodeIndex = rootNodeIndices.get(j - 1);
             }
         }
 
@@ -164,11 +141,11 @@ public class LeonardoHeap<T extends Comparable<T>> {
         return element;
     }
 
-    private static ArrayList<Integer> findConsecutiveTreeIndices(int num) {
+    private static List<Integer> findConsecutiveTreeIndices(int num) {
         int prevOneIndex = -1;
         int currentLevel = 0;
 
-        ArrayList<Integer> answer = new ArrayList<Integer>();
+        List<Integer> answer = new ArrayList<>();
         answer.add(-1);
         answer.add(-1);
 
@@ -196,5 +173,31 @@ public class LeonardoHeap<T extends Comparable<T>> {
             }
         }
         return setBitIndexes.toArray(new Integer[0]);
+    }
+
+    private boolean compareChildren(int currentRootNodeIndex, int prevRootNodeIndex, int currentLevel) {
+        if (currentLevel <= 1) {
+            // if there are no children to compare (L1 or L0 tree) return true
+            // because we already know that element at prevRootNodeIndex is greater than element at currentRootNodeIndex
+            // so a swap will be needed
+            return true;
+        }
+        final int rightChildIndex = currentRootNodeIndex - 1;
+        final int leftChildIndex = currentRootNodeIndex - 1 - LeonardoNumber.leonardoNumber(currentLevel - 2);
+        return heap.get(prevRootNodeIndex).compareTo(heap.get(rightChildIndex)) > 0 && heap.get(prevRootNodeIndex).compareTo(heap.get(leftChildIndex)) > 0;
+    }
+
+    private boolean compareRoots(int currentRootNodeIndex, int prevRootNodeIndex) {
+        return heap.get(prevRootNodeIndex).compareTo(heap.get(currentRootNodeIndex)) > 0;
+    }
+
+    private ArrayList<Integer> getRootNodeIndices(Integer[] currentTreeLevels) {
+        int previousTreeSizeCumulative = 0;
+        ArrayList<Integer> rootNodeIndices = new ArrayList<>();
+        for (int i = 0; i < currentTreeLevels.length; i++) {
+            rootNodeIndices.add(previousTreeSizeCumulative + LeonardoNumber.leonardoNumber(currentTreeLevels[i]) - 1);
+            previousTreeSizeCumulative = previousTreeSizeCumulative + LeonardoNumber.leonardoNumber(currentTreeLevels[i]);
+        }
+        return rootNodeIndices;
     }
 }

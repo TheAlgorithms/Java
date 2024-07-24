@@ -30,7 +30,7 @@ public class LeonardoHeapTest {
 
     @Test
     public void testAddElementStrings() {
-        LeonardoHeap<String> heap = new LeonardoHeap<String>();
+        LeonardoHeap<String> heap = new LeonardoHeap<>();
         heap.addElement("z");
         heap.addElement("a");
         heap.addElement("x");
@@ -42,7 +42,7 @@ public class LeonardoHeapTest {
 
     @Test
     public void testRemoveElementString() {
-        LeonardoHeap<String> heap = new LeonardoHeap<String>();
+        LeonardoHeap<String> heap = new LeonardoHeap<>();
         heap.addElement("z");
         heap.addElement("a");
         heap.addElement("x");
