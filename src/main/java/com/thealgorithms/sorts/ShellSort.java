@@ -66,5 +66,4 @@ public class ShellSort implements SortAlgorithm {
             array[j] = temp;
         }
     }
-
 }
