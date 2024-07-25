@@ -10,10 +10,10 @@ import java.util.TreeSet;
  * Finds all combinations of a given array that are a specific length by using backtracking.
  * @author Alan Piao (<a href="https://github.com/cpiao3">git-Alan Piao</a>)
  */
-public final class CombinationGenerator {
+public final class Combination{
     // Default private constructor to prevent instantiation
 
-    private CombinationGenerator() {
+    private Combination() {
     }
 
     private static int length; //Define length outside all methods so that it can be accessed anywhere in the class.
@@ -38,7 +38,7 @@ public final class CombinationGenerator {
         return result;
     }
 
-    
+
     /**
      * Backtrack all possible combinations of a given array
      * @param arr the array from earlier.
