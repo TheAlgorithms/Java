@@ -26,5 +26,6 @@ public class PigeonholeSortTest {
     @Test
     public void testWithNegativeNumbers() {
         assertThrows(IllegalArgumentException.class, () -> PigeonholeSort.sort(new int[] {3, 1, 4, 1, 5, -9}));
+        assertThrows(IllegalArgumentException.class, () -> PigeonholeSort.sort(new int[] {-1}));
     }
 }

@@ -16,11 +16,12 @@ public final class PigeonholeSort {
      * @return the sorted array
      */
     public static int[] sort(int[] array) {
-        if (array.length < 2) {
-            return array;
-        }
 
         checkForNegativeInput(array);
+
+        if (array.length == 0) {
+            return array;
+        }
 
         final int maxElement = Arrays.stream(array).max().orElseThrow();
         final List<List<Integer>> pigeonHoles = createPigeonHoles(maxElement);
@@ -38,9 +39,9 @@ public final class PigeonholeSort {
      * @throws IllegalArgumentException if any negative integers are found
      */
     private static void checkForNegativeInput(int[] array) {
-        for (int number : array) {
+        for (final int number : array) {
             if (number < 0) {
-                throw new IllegalArgumentException("Array contains non-positive integers.");
+                throw new IllegalArgumentException("Array contains negative integers.");
             }
         }
     }
@@ -79,8 +80,8 @@ public final class PigeonholeSort {
      */
     private static void collectFromPigeonHoles(int[] array, List<List<Integer>> pigeonHoles) {
         int index = 0;
-        for (List<Integer> pigeonHole : pigeonHoles) {
-            for (int element : pigeonHole) {
+        for (final var pigeonHole : pigeonHoles) {
+            for (final int element : pigeonHole) {
                 array[index++] = element;
             }
         }
