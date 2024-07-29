@@ -57,15 +57,15 @@ public class FlashSort implements SortAlgorithm {
 
         final int m = (int) (CLASSIFICATION_RATIO * arr.length);
 
-        final int[] L = new int[m];
+        final int[] classificationArray = new int[m];
 
         final double c1 = (double) (m - 1) / (arr[maxIndex].compareTo(min));
 
-        classify(arr, L, c1, min);
+        classify(arr, classificationArray, c1, min);
 
-        transform(L);
+        transform(classificationArray);
 
-        permute(arr, L, c1, min, arr.length, m);
+        permute(arr, classificationArray, c1, min, arr.length, m);
 
         insertionSort(arr);
     }
@@ -132,33 +132,33 @@ public class FlashSort implements SortAlgorithm {
     }
 
     /**
-     * Permutes the array into sorted order based on the classification array L.
+     * Permutes the array into sorted order based on the classification array classificationArray.
      *
      * @param arr the array to be permuted.
-     * @param L the classification array holding the count of elements in each class.
+     * @param classificationArray the classification array holding the count of elements in each class.
      * @param c1 the normalization constant used to map the elements to the classification array.
      * @param min the minimum value in the array.
      * @param n the length of the array.
      * @param m the number of classes in the classification array.
      * @param <T> the type of elements in the array, must be comparable.
      */
-    private <T extends Comparable<? super T>> void permute(final T[] arr, final int[] L, final double c1, T min, int n, int m) {
+    private <T extends Comparable<? super T>> void permute(final T[] arr, final int[] classificationArray, final double c1, T min, int n, int m) {
         int move = 0;
         int j = 0;
         int k = m - 1;
         T flash;
         while (move < n - 1) {
-            while (j > L[k] - 1) {
+            while (j > classificationArray[k] - 1) {
                 j++;
                 k = (int) (c1 * (arr[j].compareTo(min)));
             }
             flash = arr[j];
-            while (j != L[k]) {
+            while (j != classificationArray[k]) {
                 k = (int) (c1 * (flash.compareTo(min)));
-                T temp = arr[L[k] - 1];
-                arr[L[k] - 1] = flash;
+                T temp = arr[classificationArray[k] - 1];
+                arr[classificationArray[k] - 1] = flash;
                 flash = temp;
-                L[k]--;
+                classificationArray[k]--;
                 move++;
             }
         }
