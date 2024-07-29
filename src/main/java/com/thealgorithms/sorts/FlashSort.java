@@ -59,7 +59,7 @@ public class FlashSort implements SortAlgorithm {
 
         final int[] classificationArray = new int[m];
 
-        final double c1 = (double) (m - 1) / (arr[maxIndex].compareTo(min));
+        final double c1 = (double) (m - 1) / arr[maxIndex].compareTo(min);
 
         classify(arr, classificationArray, c1, min);
 
@@ -115,7 +115,7 @@ public class FlashSort implements SortAlgorithm {
      */
     private <T extends Comparable<? super T>> void classify(final T[] arr, final int[] classificationArray, final double c1, final T min) {
         for (int i = 0; i < arr.length; i++) {
-            int k = (int) (c1 * (arr[i].compareTo(min)));
+            int k = (int) (c1 * arr[i].compareTo(min));
             classificationArray[k]++;
         }
     }
@@ -150,11 +150,11 @@ public class FlashSort implements SortAlgorithm {
         while (move < n - 1) {
             while (j > classificationArray[k] - 1) {
                 j++;
-                k = (int) (c1 * (arr[j].compareTo(min)));
+                k = (int) (c1 * arr[j].compareTo(min));
             }
             flash = arr[j];
             while (j != classificationArray[k]) {
-                k = (int) (c1 * (flash.compareTo(min)));
+                k = (int) (c1 * flash.compareTo(min));
                 T temp = arr[classificationArray[k] - 1];
                 arr[classificationArray[k] - 1] = flash;
                 flash = temp;
