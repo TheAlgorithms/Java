@@ -105,29 +105,29 @@ public class FlashSort implements SortAlgorithm {
     }
 
     /**
-     * Classifies elements of the array into the classification array L.
+     * Classifies elements of the array into the classification array classificationArray.
      *
      * @param arr the array to be classified.
-     * @param L the classification array holding the count of elements in each class.
+     * @param classificationArray the classification array holding the count of elements in each class.
      * @param c1 the normalization constant used to map the elements to the classification array.
      * @param min the minimum value in the array.
      * @param <T> the type of elements in the array, must be comparable.
      */
-    private <T extends Comparable<? super T>> void classify(final T[] arr, final int[] L, final double c1, final T min) {
+    private <T extends Comparable<? super T>> void classify(final T[] arr, final int[] classificationArray, final double c1, final T min) {
         for (int i = 0; i < arr.length; i++) {
             int k = (int) (c1 * (arr[i].compareTo(min)));
-            L[k]++;
+            classificationArray[k]++;
         }
     }
 
     /**
-     * Transforms the classification array L into the starting index array.
+     * Transforms the classification array classificationArray into the starting index array.
      *
-     * @param L the classification array holding the count of elements in each class.
+     * @param classificationArray the classification array holding the count of elements in each class.
      */
-    private void transform(final int[] L) {
-        for (int i = 1; i < L.length; i++) {
-            L[i] += L[i - 1];
+    private void transform(final int[] classificationArray) {
+        for (int i = 1; i < classificationArray.length; i++) {
+            classificationArray[i] += classificationArray[i - 1];
         }
     }
 
