@@ -140,7 +140,8 @@ public class SpreadSort implements SortAlgorithm {
     private <T extends Comparable<T>> void distributeElements(final T[] array, final int left, final int right, final T min, final T max, final int numBuckets, final Bucket<T>[] buckets) {
         final double range = max.compareTo(min);
         for (int i = left; i <= right; i++) {
-            int bucketIndex = (int) ((array[i].compareTo(min) * numBuckets) / (range + 1));
+            int scaleRangeDifference = array[i].compareTo(min) * numBuckets;
+            int bucketIndex = (int) (scaleRangeDifference/ (range + 1));
             buckets[bucketIndex].add(array[i]);
         }
     }
