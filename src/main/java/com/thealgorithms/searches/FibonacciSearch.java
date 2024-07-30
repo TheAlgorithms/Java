@@ -62,10 +62,10 @@ public class FibonacciSearch implements SearchAlgorithm {
         Integer[] integers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
 
         int size = integers.length;
-        Integer shouldBeFound = 128;
+        Integer targetValue = 128;
         FibonacciSearch fsearch = new FibonacciSearch();
-        int atIndex = fsearch.find(integers, shouldBeFound);
+        int atIndex = fsearch.find(integers, targetValue);
 
-        System.out.println("Should be found: " + shouldBeFound + ". Found " + integers[atIndex] + " at index " + atIndex + ". An array length " + size);
+        System.out.println("Should be found: " + targetValue + ". Found " + integers[atIndex] + " at index " + atIndex + ". An array length " + size);
     }
 }
