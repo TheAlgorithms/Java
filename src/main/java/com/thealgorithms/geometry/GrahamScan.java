@@ -4,13 +4,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Stack;
 
-/*
- * A Java program that computes the convex hull using the Graham Scan algorithm
+/**
+ * A Java program that computes the convex hull using the Graham Scan algorithm.
  * In the best case, time complexity is O(n), while in the worst case, it is O(nlog(n)).
- * O(n) space complexity
- *
+ * O(n) space complexity.
  * This algorithm is only applicable to integral coordinates.
- *
+ * 
  * Reference:
  * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_algorithm.cpp
  * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_functions.hpp
@@ -20,17 +19,12 @@ public class GrahamScan {
     private final Stack<Point> hull = new Stack<>();
 
     public GrahamScan(Point[] points) {
-
-        /*
-         * pre-process the points by sorting them with respect to the bottom-most point, then we'll
-         * push the first point in the array to be our first extreme point.
-         */
+        // Pre-process the points by sorting them with respect to the bottom-most point
         Arrays.sort(points);
         Arrays.sort(points, 1, points.length, points[0].polarOrder());
         hull.push(points[0]);
 
-        // find index of first point not equal to a[0] (indexPoint1) and the first point that's not
-        // collinear with either (indexPoint2).
+        // Find the index of the first point not equal to points[0]
         int indexPoint1;
         for (indexPoint1 = 1; indexPoint1 < points.length; indexPoint1++) {
             if (!points[0].equals(points[indexPoint1])) {
@@ -41,6 +35,7 @@ public class GrahamScan {
             return;
         }
 
+        // Find the index of the first point that's not collinear with points[0] and points[indexPoint1]
         int indexPoint2;
         for (indexPoint2 = indexPoint1 + 1; indexPoint2 < points.length; indexPoint2++) {
             if (Point.orientation(points[0], points[indexPoint1], points[indexPoint2]) != 0) {
@@ -49,7 +44,7 @@ public class GrahamScan {
         }
         hull.push(points[indexPoint2 - 1]);
 
-        // Now we simply add the point to the stack based on the orientation.
+        // Add points to the stack based on orientation
         for (int i = indexPoint2; i < points.length; i++) {
             Point top = hull.pop();
             while (Point.orientation(hull.peek(), top, points[i]) <= 0) {
@@ -98,12 +93,12 @@ public class GrahamScan {
         }
 
         /**
-         * Finds the orientation of ordered triplet.
+         * Finds the orientation of an ordered triplet.
          *
          * @param a Co-ordinates of point a <int, int>
-         * @param b Co-ordinates of point a <int, int>
-         * @param c Co-ordinates of point a <int, int>
-         * @return { -1, 0, +1 } if a -→ b -→ c is a { clockwise, collinear; counterclockwise }
+         * @param b Co-ordinates of point b <int, int>
+         * @param c Co-ordinates of point c <int, int>
+         * @return { -1, 0, +1 } if a -> b -> c is a { clockwise, collinear, counterclockwise }
          *     turn.
          */
         public static int orientation(Point a, Point b, Point c) {
@@ -115,11 +110,11 @@ public class GrahamScan {
         }
 
         /**
-         * @param p2 Co-ordinate of point to compare to.
-         * This function will compare the points and will return a positive integer if the
-         * point is greater than the argument point and a negative integer if the point is
-         * less than the argument point.
+         * @param p2 Co-ordinate of the point to compare to.
+         * @return a positive integer if this point is greater than the argument point,
+         *     a negative integer if this point is less than the argument point.
          */
+        @Override
         public int compareTo(Point p2) {
             int res = Integer.compare(this.y, p2.y);
             if (res == 0) {
@@ -129,9 +124,8 @@ public class GrahamScan {
         }
 
         /**
-         * A helper function that will let us sort points by their polar order
-         * This function will compare the angle between 2 polar Co-ordinates
-         *
+         * A helper function that lets us sort points by their polar order.
+         * 
          * @return the comparator
          */
         public Comparator<Point> polarOrder() {
@@ -139,6 +133,7 @@ public class GrahamScan {
         }
 
         private final class PolarOrder implements Comparator<Point> {
+            @Override
             public int compare(Point p1, Point p2) {
                 int dx1 = p1.x - x;
                 int dy1 = p1.y - y;
@@ -146,9 +141,9 @@ public class GrahamScan {
                 int dy2 = p2.y - y;
 
                 if (dy1 >= 0 && dy2 < 0) {
-                    return -1; // q1 above; q2 below
+                    return -1; // p1 above; p2 below
                 } else if (dy2 >= 0 && dy1 < 0) {
-                    return +1; // q1 below; q2 above
+                    return +1; // p1 below; p2 above
                 } else if (dy1 == 0 && dy2 == 0) { // 3-collinear and horizontal
                     if (dx1 >= 0 && dx2 < 0) {
                         return -1;
