@@ -1,24 +1,25 @@
 package com.thealgorithms.maths;
 
 /**
- * Utility class for calculating the average of a list of numbers.
+ * Utility class for calculating the average of numeric arrays.
  */
 public final class Average {
 
     // Private constructor to prevent instantiation
     private Average() {
-        throw new UnsupportedOperationException("Utility class cannot be instantiated");
     }
 
     /**
      * Calculates the average of a double array.
      *
-     * @param numbers the array of numbers
+     * @param numbers an array of doubles
      * @return the mean of the given numbers
-     * @throws IllegalArgumentException if the input array is null or empty
+     * @throws IllegalArgumentException if the array is null or empty
      */
-    public static double average(double[] numbers) {
-        validateInput(numbers);
+    public static double calculateAverage(double[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            throw new IllegalArgumentException("Array cannot be null or empty.");
+        }
         double sum = 0;
         for (double number : numbers) {
             sum += number;
@@ -29,28 +30,18 @@ public final class Average {
     /**
      * Calculates the average of an int array.
      *
-     * @param numbers the array of numbers, ensuring the sum does not exceed long value limits
-     * @return the average value
-     * @throws IllegalArgumentException if the input array is null or empty
+     * @param numbers an array of integers
+     * @return the mean of the given numbers
+     * @throws IllegalArgumentException if the array is null or empty
      */
-    public static int average(int[] numbers) {
-        validateInput(numbers);
+    public static int calculateAverage(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            throw new IllegalArgumentException("Array cannot be null or empty.");
+        }
         long sum = 0;
         for (int number : numbers) {
             sum += number;
         }
         return (int) (sum / numbers.length);
-    }
-
-    /**
-     * Validates the input array.
-     *
-     * @param numbers the array of numbers
-     * @throws IllegalArgumentException if the input array is null or empty
-     */
-    private static void validateInput(Object numbers) {
-        if (numbers == null || ((Object[]) numbers).length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be null or empty");
-        }
     }
 }
