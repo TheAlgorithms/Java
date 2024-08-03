@@ -19,7 +19,7 @@ public final class Average {
      * @return the average of the given numbers
      * @throws IllegalArgumentException if the input array is {@code null} or empty
      */
-    public static double computeAverage(double[] numbers) {
+    public static double average(double[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Array must not be null or empty.");
         }
@@ -37,7 +37,7 @@ public final class Average {
      * @return the average of the given numbers
      * @throws IllegalArgumentException if the input array is {@code null} or empty
      */
-    public static int computeAverage(int[] numbers) {
+    public static int average(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Array must not be null or empty.");
         }
