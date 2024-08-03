@@ -9,7 +9,7 @@ import java.util.Stack;
  * The time complexity is O(n) in the best case and O(n log(n)) in the worst case.
  * The space complexity is O(n).
  * This algorithm is applicable only to integral coordinates.
- * 
+ *
  * References:
  * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_algorithm.cpp
  * https://github.com/TheAlgorithms/C-Plus-Plus/blob/master/geometry/graham_scan_functions.hpp
@@ -93,7 +93,7 @@ public class GrahamScan {
 
         /**
          * Determines the orientation of the triplet (a, b, c).
-         * 
+         *
          * @param a The first point
          * @param b The second point
          * @param c The third point
@@ -106,7 +106,7 @@ public class GrahamScan {
 
         /**
          * Compares this point with another point.
-         * 
+         *
          * @param p2 The point to compare to
          * @return A positive integer if this point is greater, a negative integer if less, or 0 if equal
          */
@@ -118,7 +118,7 @@ public class GrahamScan {
 
         /**
          * Returns a comparator to sort points by their polar order relative to this point.
-         * 
+         *
          * @return A polar order comparator
          */
         public Comparator<Point> polarOrder() {
