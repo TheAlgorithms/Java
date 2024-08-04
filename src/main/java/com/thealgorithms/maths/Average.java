@@ -45,6 +45,6 @@ public final class Average {
         for (int number : numbers) {
             sum += number;
         }
-        return (int) (sum / numbers.length);
+        return (double) (sum / numbers.length);
     }
 }
