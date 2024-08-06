@@ -22,7 +22,22 @@ package com.thealgorithms.sorts;
  * </ol>
  */
 public class FlashSort implements SortAlgorithm {
-    private static final double CLASSIFICATION_RATIO = 0.45;
+    private final double classificationRatio;
+
+    public FlashSort() {
+        classificationRatio = 0.45;
+    }
+
+    public FlashSort(double classificationRatio) {
+        if (classificationRatio <= 0 || classificationRatio >= 1) {
+            throw new IllegalArgumentException("Classification ratio must be between 0 and 1 (exclusive).");
+        }
+        this.classificationRatio = classificationRatio;
+    }
+
+    public double getClassificationRatio() {
+        return classificationRatio;
+    }
 
     /**
      * Sorts an array using the Flash Sort algorithm.
@@ -55,7 +70,7 @@ public class FlashSort implements SortAlgorithm {
             return; // All elements are the same
         }
 
-        final int m = (int) (CLASSIFICATION_RATIO * arr.length);
+        final int m = (int) (classificationRatio * arr.length);
 
         final int[] classificationArray = new int[m];
 
