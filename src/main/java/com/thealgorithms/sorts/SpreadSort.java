@@ -7,9 +7,43 @@ import java.util.Arrays;
  * This implementation is generic and can sort any array of elements that extend Comparable.
  */
 public class SpreadSort implements SortAlgorithm {
-    private static final int INSERTION_SORT_THRESHOLD = 16;
-    private static final int INITIAL_BUCKET_CAPACITY = 16;
-    private static final int MIN_BUCKETS = 2;
+    private static final int MAX_INSERTION_SORT_THRESHOLD = 1000;
+    private static final int MAX_INITIAL_BUCKET_CAPACITY = 1000;
+    private static final int MAX_MIN_BUCKETS = 100;
+
+    private final int insertionSortThreshold;
+    private final int initialBucketCapacity;
+    private final int minBuckets;
+
+    /**
+     * Constructor to initialize the SpreadSort algorithm with custom parameters.
+     *
+     * @param insertionSortThreshold the threshold for using insertion sort for small segments (1-1000)
+     * @param initialBucketCapacity  the initial capacity for each bucket (1-1000)
+     * @param minBuckets             the minimum number of buckets to use (1-100)
+     */
+    public SpreadSort(int insertionSortThreshold, int initialBucketCapacity, int minBuckets) {
+        if (insertionSortThreshold < 1 || insertionSortThreshold > MAX_INSERTION_SORT_THRESHOLD) {
+            throw new IllegalArgumentException("Insertion sort threshold must be between 1 and " + MAX_INSERTION_SORT_THRESHOLD);
+        }
+        if (initialBucketCapacity < 1 || initialBucketCapacity > MAX_INITIAL_BUCKET_CAPACITY) {
+            throw new IllegalArgumentException("Initial bucket capacity must be between 1 and " + MAX_INITIAL_BUCKET_CAPACITY);
+        }
+        if (minBuckets < 1 || minBuckets > MAX_MIN_BUCKETS) {
+            throw new IllegalArgumentException("Minimum number of buckets must be between 1 and " + MAX_MIN_BUCKETS);
+        }
+
+        this.insertionSortThreshold = insertionSortThreshold;
+        this.initialBucketCapacity = initialBucketCapacity;
+        this.minBuckets = minBuckets;
+    }
+
+    /**
+     * Default constructor with predefined values.
+     */
+    public SpreadSort() {
+        this(16, 16, 2);
+    }
 
     /**
      * Sorts an array using the SpreadSort algorithm.
@@ -41,7 +75,7 @@ public class SpreadSort implements SortAlgorithm {
         }
 
         // Base case for small segments
-        if (right - left < INSERTION_SORT_THRESHOLD) {
+        if (right - left < insertionSortThreshold) {
             insertionSort(array, left, right);
             return;
         }
@@ -105,8 +139,8 @@ public class SpreadSort implements SortAlgorithm {
      * @return the number of buckets
      */
     private int calculateNumBuckets(final int segmentSize) {
-        int numBuckets = segmentSize / INSERTION_SORT_THRESHOLD;
-        return Math.max(numBuckets, MIN_BUCKETS);
+        int numBuckets = segmentSize / insertionSortThreshold;
+        return Math.max(numBuckets, minBuckets);
     }
 
     /**
@@ -120,7 +154,7 @@ public class SpreadSort implements SortAlgorithm {
     private <T extends Comparable<T>> Bucket<T>[] createBuckets(final int numBuckets) {
         final Bucket<T>[] buckets = new Bucket[numBuckets];
         for (int i = 0; i < numBuckets; i++) {
-            buckets[i] = new Bucket<>();
+            buckets[i] = new Bucket<>(initialBucketCapacity);
         }
         return buckets;
     }
@@ -200,8 +234,8 @@ public class SpreadSort implements SortAlgorithm {
          * Constructs a new bucket with initial capacity.
          */
         @SuppressWarnings("unchecked")
-        Bucket() {
-            elements = (T[]) new Comparable[INITIAL_BUCKET_CAPACITY];
+        Bucket(int initialBucketCapacity) {
+            elements = (T[]) new Comparable[initialBucketCapacity];
             size = 0;
         }
 
