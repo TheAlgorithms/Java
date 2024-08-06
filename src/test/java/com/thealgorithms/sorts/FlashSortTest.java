@@ -3,17 +3,16 @@ package com.thealgorithms.sorts;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class FlashSortTest extends SortingAlgorithmTest {
     private final FlashSort flashSort = new FlashSort();
@@ -87,5 +86,6 @@ public class FlashSortTest extends SortingAlgorithmTest {
         return testMethods;
     }
 
-    record TestMethod(Executable executable, String name) {}
+    record TestMethod(Executable executable, String name) {
+    }
 }

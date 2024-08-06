@@ -22,7 +22,7 @@ package com.thealgorithms.sorts;
  * </ol>
  */
 public class FlashSort implements SortAlgorithm {
-    private double classificationRatio = 0.45;;
+    private double classificationRatio = 0.45;
 
     public FlashSort() {
     }
