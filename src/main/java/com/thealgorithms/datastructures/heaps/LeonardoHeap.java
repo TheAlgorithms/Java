@@ -93,7 +93,7 @@ public class LeonardoHeap<T extends Comparable<T>> {
                 } else {
                     maxHeapifyTree(currentRootNodeIndex, currentLevel);
                 }
-                j = j - 1;
+                --j;
 
                 if (j == 0) {
                     // We arrived at the left most tree. Do a maxheapifyTree if a swap had occurred
