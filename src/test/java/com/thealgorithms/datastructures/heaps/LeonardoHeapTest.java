@@ -14,6 +14,8 @@ public class LeonardoHeapTest {
         heap.addElement(8);
 
         assertEquals(8, heap.removeElement()); // Max element should be 8
+        assertEquals(5, heap.removeElement());
+        assertEquals(3, heap.removeElement());
     }
 
     @Test
@@ -38,6 +40,10 @@ public class LeonardoHeapTest {
         heap.addElement("y");
 
         assertEquals("z", heap.removeElement()); // Max element should be z
+        assertEquals("y", heap.removeElement());
+        assertEquals("x", heap.removeElement());
+        assertEquals("b", heap.removeElement());
+        assertEquals("a", heap.removeElement());
     }
 
     @Test
@@ -91,10 +97,25 @@ public class LeonardoHeapTest {
             heap.addElement(element);
         }
 
-        // Assert the top 4 elemets are extracted correctly
         assertEquals(95, heap.removeElement());
         assertEquals(94, heap.removeElement());
         assertEquals(88, heap.removeElement());
         assertEquals(84, heap.removeElement());
+        assertEquals(62, heap.removeElement());
+        assertEquals(61, heap.removeElement());
+        assertEquals(59, heap.removeElement());
+        assertEquals(52, heap.removeElement());
+        assertEquals(48, heap.removeElement());
+        assertEquals(40, heap.removeElement());
+        assertEquals(37, heap.removeElement());
+        assertEquals(33, heap.removeElement());
+        assertEquals(33, heap.removeElement());
+        assertEquals(29, heap.removeElement());
+        assertEquals(28, heap.removeElement());
+        assertEquals(15, heap.removeElement());
+        assertEquals(13, heap.removeElement());
+        assertEquals(12, heap.removeElement());
+        assertEquals(5, heap.removeElement());
+        assertEquals(2, heap.removeElement());
     }
 }
