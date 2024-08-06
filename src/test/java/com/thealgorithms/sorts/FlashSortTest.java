@@ -75,7 +75,6 @@ public class FlashSortTest extends SortingAlgorithmTest {
             if (method.isAnnotationPresent(Test.class)) {
                 testMethods.add(new TestMethod(() -> {
                     try {
-                        method.setAccessible(true);
                         method.invoke(this);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
