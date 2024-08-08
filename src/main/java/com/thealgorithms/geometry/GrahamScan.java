@@ -1,9 +1,9 @@
 package com.thealgorithms.geometry;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Stack;
-import java.util.ArrayList;
 
 /**
  * A Java program that computes the convex hull using the Graham Scan algorithm.
@@ -21,13 +21,14 @@ public class GrahamScan {
     private final Stack<Point> hull = new Stack<>();
 
     public GrahamScan(Point[] points) {
-        //Pre-process points: sort by y-coordinate, then by polar order with respect to the first point
+        // Pre-process points: sort by y-coordinate, then by polar order with respect to the first point
         Arrays.sort(points);
         Arrays.sort(points, 1, points.length, points[0].polarOrder());
 
         hull.push(points[0]);
 
-        //Find the first point not equal to points[0]/firstNonEqualIndex and the first point not collinear firstNonCollinearIndex with the previous points
+        // Find the first point not equal to points[0]/firstNonEqualIndex 
+        // and the first point not collinear firstNonCollinearIndex with the previous points
         int firstNonEqualIndex;
         for (firstNonEqualIndex = 1; firstNonEqualIndex < points.length; firstNonEqualIndex++) {
             if (!points[0].equals(points[firstNonEqualIndex])) {
@@ -48,7 +49,7 @@ public class GrahamScan {
 
         hull.push(points[firstNonCollinearIndex - 1]);
 
-        //Process the remaining points and update the hull
+        // Process the remaining points and update the hull
         for (int i = firstNonCollinearIndex; i < points.length; i++) {
             Point top = hull.pop();
             while (Point.orientation(hull.peek(), top, points[i]) <= 0) {
@@ -135,13 +136,13 @@ public class GrahamScan {
                 int dy2 = p2.y - y;
 
                 if (dy1 >= 0 && dy2 < 0) {
-                    return -1; //p1 above p2
+                    return -1; // p1 above p2
                 } else if (dy2 >= 0 && dy1 < 0) {
-                    return 1; //p1 below p2
-                } else if (dy1 == 0 && dy2 == 0) { //Collinear and horizontal
+                    return 1; // p1 below p2
+                } else if (dy1 == 0 && dy2 == 0) { // Collinear and horizontal
                     return Integer.compare(dx2, dx1);
                 } else {
-                    return -orientation(Point.this, p1, p2); //Compare orientation
+                    return -orientation(Point.this, p1, p2); // Compare orientation
                 }
             }
         }
