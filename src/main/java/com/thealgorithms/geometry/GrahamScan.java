@@ -19,22 +19,6 @@ public class GrahamScan {
     private final Stack<Point> hull = new Stack<>();
 
     public GrahamScan(Point[] points) {
-        // Validate input data
-        if (points == null || points.length < 3) {
-            throw new IllegalArgumentException("At least 3 points are required to compute the convex hull");
-        }
-        // Check if all points are the same
-        boolean allSame = true;
-        for (int i = 1; i < points.length; i++) {
-            if (!points[i].equals(points[0])) {
-                allSame = false;
-                break;
-            }
-        }
-        if (allSame) {
-            hull.push(points[0]);
-            return;
-        }
         // Pre-process points: sort by y-coordinate, then by polar order with respect to the first point
         Arrays.sort(points);
         Arrays.sort(points, 1, points.length, points[0].polarOrder());
