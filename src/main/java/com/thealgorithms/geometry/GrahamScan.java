@@ -27,7 +27,7 @@ public class GrahamScan {
 
         hull.push(points[0]);
 
-        // Find the first point not equal to points[0]/firstNonEqualIndex 
+        // Find the first point not equal to points[0]//firstNonEqualIndex 
         // and the first point not collinear firstNonCollinearIndex with the previous points
         int firstNonEqualIndex;
         for (firstNonEqualIndex = 1; firstNonEqualIndex < points.length; firstNonEqualIndex++) {
