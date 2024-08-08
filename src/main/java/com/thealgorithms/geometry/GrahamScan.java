@@ -17,52 +17,45 @@ import java.util.Stack;
  */
 public class GrahamScan {
     private final Stack<Point> hull = new Stack<>();
-
     public GrahamScan(Point[] points) {
         // Pre-process points: sort by y-coordinate, then by polar order with respect to the first point
         Arrays.sort(points);
         Arrays.sort(points, 1, points.length, points[0].polarOrder());
         hull.push(points[0]);
-
-        // Find the first point not equal to points[0]/firstNonEqualIndex and the first point not collinear firstNonCollinearIndex with the previous points
-        int indexPoint1;
-        for (indexPoint1 = 1; indexPoint1 < points.length; indexPoint1++) {
-            if (!points[0].equals(points[indexPoint1])) {
-                break;
-            }
-        }
-        if (indexPoint1 == points.length) {
-            return;
-        }
-
-        int indexPoint2;
-        for (indexPoint2 = indexPoint1 + 1; indexPoint2 < points.length; indexPoint2++) {
-            if (Point.orientation(points[0], points[indexPoint1], points[indexPoint2]) != 0) {
-                break;
-            }
-        }
-        hull.push(points[indexPoint2 - 1]);
-
-        // Process the remaining points and update the hull
-        for (int i = indexPoint2; i < points.length; i++) {
-            Point top = hull.pop();
-            while (Point.orientation(hull.peek(), top, points[i]) <= 0) {
-                top = hull.pop();
-            }
-            hull.push(top);
-            hull.push(points[i]);
+    // Find the first point not equal to points[0]/firstNonEqualIndex and the first point not collinear firstNonCollinearIndex with the previous points
+    int firstNonEqualIndex;
+    for (firstNonEqualIndex = 1; firstNonEqualIndex < points.length; firstNonEqualIndex++) {
+        if (!points[0].equals(points[firstNonEqualIndex])) {
+            break;
         }
     }
-
+    if (firstNonEqualIndex == points.length) {
+        return;
+    }
+    
+    int firstNonCollinearIndex;
+    for (firstNonCollinearIndex = firstNonEqualIndex + 1; firstNonCollinearIndex < points.length; firstNonCollinearIndex++) {
+        if (Point.orientation(points[0], points[firstNonEqualIndex], points[firstNonCollinearIndex]) != 0) {
+            break;
+        }
+    }
+    hull.push(points[firstNonCollinearIndex - 1]);
+    
+    // Process the remaining points and update the hull
+    for (int i = firstNonCollinearIndex; i < points.length; i++) {
+        Point top = hull.pop();
+        while (Point.orientation(hull.peek(), top, points[i]) <= 0) {
+            top = hull.pop();
+        }
+        hull.push(top);
+        hull.push(points[i]);
+    }
+    
     /**
      * @return An iterable collection of points representing the convex hull.
      */
     public Iterable<Point> hull() {
-        Stack<Point> s = new Stack<>();
-        for (Point p : hull) {
-            s.push(p);
-        }
-        return s;
+        return new ArrayList<>(hull);
     }
 
     public record Point(int x, int y) implements Comparable<Point> {
