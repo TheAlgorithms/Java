@@ -20,9 +20,9 @@ public final class TwoSumProblem {
     public static Optional<Pair<Integer, Integer>> twoSum(final int[] values, final int target) {
         HashMap<Integer, Integer> valueToIndex = new HashMap<>();
         for (int i = 0; i < values.length; i++) {
-            final var rem = target - values[i];
-            if (valueToIndex.containsKey(rem)) {
-                return Optional.of(Pair.of(valueToIndex.get(rem), i));
+            final var remainder = target - values[i];
+            if (valueToIndex.containsKey(remainder)) {
+                return Optional.of(Pair.of(valueToIndex.get(remainder), i));
             }
             if (!valueToIndex.containsKey(values[i])) {
                 valueToIndex.put(values[i], i);

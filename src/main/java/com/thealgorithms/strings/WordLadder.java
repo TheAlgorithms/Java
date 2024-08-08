@@ -75,13 +75,13 @@ final class WordLadder {
                             continue;
                         }
                         wordsChars[j] = c;
-                        String newWord = String.valueOf(wordsChars);
-                        if (newWord.equals(endWord)) {
+                        String transformedWord = String.valueOf(wordsChars);
+                        if (transformedWord.equals(endWord)) {
                             return level + 1;
                         }
-                        if (set.contains(newWord)) {
-                            set.remove(newWord);
-                            queue.offer(newWord);
+                        if (set.contains(transformedWord)) {
+                            set.remove(transformedWord);
+                            queue.offer(transformedWord);
                         }
                     }
                     wordsChars[j] = originalChars;
