@@ -19,12 +19,32 @@ public class GrahamScan {
     private final Stack<Point> hull = new Stack<>();
 
     public GrahamScan(Point[] points) {
+        
+        // Validate input data
+        if (points == null || points.length < 3) {
+            throw new IllegalArgumentException("At least 3 points are required to compute the convex hull");
+        }
+
+        // Check if all points are the same
+        boolean allSame = true;
+        for (int i = 1; i < points.length; i++) {
+            if (!points[i].equals(points[0])) {
+                allSame = false;
+                break;
+            }
+        }
+
+        if (allSame) {
+            hull.push(points[0]);
+            return;
+        }
+        
         // Pre-process points: sort by y-coordinate, then by polar order with respect to the first point
         Arrays.sort(points);
         Arrays.sort(points, 1, points.length, points[0].polarOrder());
         hull.push(points[0]);
 
-        // Find the first point not equal to points[0] and the first point not collinear with the previous points
+        // Find the first point not equal to points[0]/firstNonEqualIndex and the first point not collinear firstNonCollinearIndex with the previous points
         int indexPoint1;
         for (indexPoint1 = 1; indexPoint1 < points.length; indexPoint1++) {
             if (!points[0].equals(points[indexPoint1])) {
@@ -58,11 +78,11 @@ public class GrahamScan {
      * @return An iterable collection of points representing the convex hull.
      */
     public Iterable<Point> hull() {
-        Stack<Point> result = new Stack<>();
+        Stack<Point> s = new Stack<>();
         for (Point p : hull) {
-            result.push(p);
+            s.push(p);
         }
-        return result;
+        return s;
     }
 
     public record Point(int x, int y) implements Comparable<Point> {
