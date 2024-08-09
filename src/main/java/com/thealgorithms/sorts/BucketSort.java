@@ -1,119 +1,101 @@
 package com.thealgorithms.sorts;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Bucket_sort
+ * BucketSort class provides a static method to sort an array of integers using the Bucket Sort algorithm.
  */
 public final class BucketSort {
     private BucketSort() {
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[10];
-
-        /* generate 10 random numbers from -50 to 49 */
-        Random random = new Random();
-        for (int i = 0; i < arr.length; ++i) {
-            arr[i] = random.nextInt(100) - 50;
+    /**
+     * Sorts the given array using the Bucket Sort algorithm.
+     *
+     * @param arr the array to be sorted
+     * @return the sorted array
+     */
+    public static int[] bucketSort(int[] arr) {
+        if (arr.length == 0) {
+            return arr;
         }
 
-        bucketSort(arr);
+        int min = Arrays.stream(arr).min().getAsInt();
+        int max = Arrays.stream(arr).max().getAsInt();
+        int numberOfBuckets = max - min + 1;
 
-        /* check array is sorted or not */
-        for (int i = 0, limit = arr.length - 1; i < limit; ++i) {
-            assert arr[i] <= arr[i + 1];
-        }
+        List<List<Integer>> buckets = initializeBuckets(numberOfBuckets);
+
+        distributeElementsToBuckets(arr, buckets, min, numberOfBuckets);
+        sortBuckets(buckets);
+
+        return concatenateBuckets(buckets, arr);
     }
 
     /**
-     * BucketSort algorithms implements
+     * Initializes the buckets for sorting.
      *
-     * @param arr the array contains elements
+     * @param numberOfBuckets the number of buckets to initialize
+     * @return a list of empty buckets
      */
-    public static int[] bucketSort(int[] arr) {
-        /* get max value of arr */
-        int max = max(arr);
+    private static List<List<Integer>> initializeBuckets(final int numberOfBuckets) {
+        return IntStream.range(0, numberOfBuckets)
+                .mapToObj(i -> new ArrayList<Integer>())
+                .collect(Collectors.toList());
+    }
 
-        /* get min value of arr */
-        int min = min(arr);
+    /**
+     * Distributes the elements of the array into the appropriate buckets.
+     *
+     * @param arr the array to distribute
+     * @param buckets the list of buckets
+     * @param min the minimum value in the array
+     * @param numberOfBuckets the total number of buckets
+     */
+    private static void distributeElementsToBuckets(int[] arr, List<List<Integer>> buckets, final int min, final int numberOfBuckets) {
+        Arrays.stream(arr).forEach(value -> buckets.get(hash(value, min, numberOfBuckets)).add(value));
+    }
 
-        /* number of buckets */
-        int numberOfBuckets = max - min + 1;
+    /**
+     * Sorts each bucket individually.
+     *
+     * @param buckets the list of buckets to sort
+     */
+    private static void sortBuckets(List<List<Integer>> buckets) {
+        buckets.forEach(Collections::sort);
+    }
 
-        List<List<Integer>> buckets = new ArrayList<>(numberOfBuckets);
-
-        /* init buckets */
-        for (int i = 0; i < numberOfBuckets; ++i) {
-            buckets.add(new ArrayList<>());
-        }
-
-        /* store elements to buckets */
-        for (int value : arr) {
-            int hash = hash(value, min, numberOfBuckets);
-            buckets.get(hash).add(value);
-        }
-
-        /* sort individual bucket */
-        for (List<Integer> bucket : buckets) {
-            Collections.sort(bucket);
-        }
-
-        /* concatenate buckets to origin array */
+    /**
+     * Concatenates the sorted buckets into the original array.
+     *
+     * @param buckets the list of sorted buckets
+     * @param arr the original array
+     * @return the sorted array
+     */
+    private static int[] concatenateBuckets(List<List<Integer>> buckets, int[] arr) {
         int index = 0;
         for (List<Integer> bucket : buckets) {
             for (int value : bucket) {
                 arr[index++] = value;
             }
         }
-
         return arr;
     }
 
     /**
-     * Get index of bucket which of our elements gets placed into it.
+     * Computes the hash value to determine which bucket an element should be placed in.
      *
-     * @param elem the element of array to be sorted
-     * @param min min value of array
-     * @param numberOfBucket the number of bucket
-     * @return index of bucket
+     * @param element the element of the array
+     * @param min the minimum value in the array
+     * @param numberOfBuckets the total number of buckets
+     * @return the index of the bucket
      */
-    private static int hash(int elem, int min, int numberOfBucket) {
-        return (elem - min) / numberOfBucket;
-    }
-
-    /**
-     * Calculate max value of array
-     *
-     * @param arr the array contains elements
-     * @return max value of given array
-     */
-    public static int max(int[] arr) {
-        int max = arr[0];
-        for (int value : arr) {
-            if (value > max) {
-                max = value;
-            }
-        }
-        return max;
-    }
-
-    /**
-     * Calculate min value of array
-     *
-     * @param arr the array contains elements
-     * @return min value of given array
-     */
-    public static int min(int[] arr) {
-        int min = arr[0];
-        for (int value : arr) {
-            if (value < min) {
-                min = value;
-            }
-        }
-        return min;
+    private static int hash(final int element, final int min, final int numberOfBuckets) {
+        return (element - min) / numberOfBuckets;
     }
 }
