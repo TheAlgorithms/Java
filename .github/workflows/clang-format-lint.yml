@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: DoozyX/clang-format-lint-action@v0.17
+    - uses: DoozyX/clang-format-lint-action@v0.18
       with:
         source: './src'
         extensions: 'java'
