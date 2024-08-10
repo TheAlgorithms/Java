@@ -44,9 +44,7 @@ public final class BucketSort {
      * @return a list of empty buckets
      */
     private static List<List<Integer>> initializeBuckets(final int numberOfBuckets) {
-        return IntStream.range(0, numberOfBuckets)
-                .mapToObj(i -> new ArrayList<Integer>())
-                .collect(Collectors.toList());
+        return IntStream.range(0, numberOfBuckets).mapToObj(i -> new ArrayList<Integer>()).collect(Collectors.toList());
     }
 
     /**
