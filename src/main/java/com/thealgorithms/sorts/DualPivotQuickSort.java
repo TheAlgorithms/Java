@@ -9,26 +9,33 @@ package com.thealgorithms.sorts;
 public class DualPivotQuickSort implements SortAlgorithm {
 
     /**
-     * This method implements the Dual pivot Quick Sort
+     * Sorts an array using the Dual Pivot QuickSort algorithm.
      *
-     * @param array The array to be sorted Sorts the array in increasing order
+     * @param array The array to be sorted
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return The sorted array
      */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
+    public <T extends Comparable<T>> T[] sort(final T[] array) {
+        if (array.length <= 1) {
+            return array;
+        }
+
         dualPivotQuicksort(array, 0, array.length - 1);
         return array;
     }
 
     /**
-     * The sorting process
+     * Recursively applies the Dual Pivot QuickSort algorithm to subarrays.
      *
-     * @param left  The first index of an array
-     * @param right The last index of an array
      * @param array The array to be sorted
+     * @param left  The starting index of the subarray
+     * @param right The ending index of the subarray
+     * @param <T>   The type of elements in the array, which must be comparable
      */
-    private static <T extends Comparable<T>> void dualPivotQuicksort(T[] array, int left, int right) {
+    private static <T extends Comparable<T>> void dualPivotQuicksort(final T[] array, final int left, final int right) {
         if (left < right) {
-            int[] pivots = partition(array, left, right);
+            final int[] pivots = partition(array, left, right);
 
             dualPivotQuicksort(array, left, pivots[0] - 1);
             dualPivotQuicksort(array, pivots[0] + 1, pivots[1] - 1);
@@ -37,70 +44,53 @@ public class DualPivotQuickSort implements SortAlgorithm {
     }
 
     /**
-     * This method finds the partition indices for an array
+     * Partitions the array into three parts using two pivots.
      *
-     * @param array The array to be sorted
-     * @param left  The first index of an array
-     * @param right The last index of an array Finds the partition index of an array
+     * @param array The array to be partitioned
+     * @param left  The starting index for partitioning
+     * @param right The ending index for partitioning
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return An array containing the indices of the two pivots
      */
-    private static <T extends Comparable<T>> int[] partition(T[] array, int left, int right) {
-        if (array[left].compareTo(array[right]) > 0) {
+    private static <T extends Comparable<T>> int[] partition(final T[] array, int left, final int right) {
+        if (SortUtils.greater(array[left], array[right])) {
             SortUtils.swap(array, left, right);
         }
 
-        T pivot1 = array[left];
-        T pivot2 = array[right];
+        final T pivot1 = array[left];
+        final T pivot2 = array[right];
 
-        int j = left + 1;
-        int less = left + 1;
-        int great = right - 1;
+        int pivot1End = left + 1;
+        int low = left + 1;
+        int high = right - 1;
 
-        while (less <= great) {
-            // If element is less than pivot1
-            if (array[less].compareTo(pivot1) < 0) {
-                SortUtils.swap(array, less, left++);
-            }
-
-            // If element is greater or equal to pivot2
-            else if (array[less].compareTo(pivot2) >= 0) {
-                while (less < great && array[great].compareTo(pivot2) > 0) {
-                    great--;
+        while (low <= high) {
+            if (SortUtils.less(array[low], pivot1)) {
+                SortUtils.swap(array, low, pivot1End);
+                pivot1End++;
+            } else if (SortUtils.greaterOrEqual(array[low], pivot2)) {
+                while (low < high && SortUtils.greater(array[high], pivot2)) {
+                    high--;
                 }
+                SortUtils.swap(array, low, high);
+                high--;
 
-                SortUtils.swap(array, less, great--);
-
-                if (array[less].compareTo(pivot1) < 0) {
-                    SortUtils.swap(array, less, left++);
+                if (SortUtils.less(array[low], pivot1)) {
+                    SortUtils.swap(array, low, pivot1End);
+                    pivot1End++;
                 }
             }
-
-            less++;
+            low++;
         }
-        j--;
-        great++;
-        // Bring the pivots to their appropriate positions
-        SortUtils.swap(array, left, j);
-        SortUtils.swap(array, right, great);
 
-        // return the pivots' indices
-        return new int[] {less, great};
+        // Place the pivots in their correct positions
+        pivot1End--;
+        high++;
+
+        SortUtils.swap(array, left, pivot1End);
+        SortUtils.swap(array, right, high);
+
+        // Return the indices of the pivots
+        return new int[] {low, high};
     }
-
-    /**
-     * Main method
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Integer[] array = {24, 8, -42, 75, -29, -77, 38, 57};
-        DualPivotQuickSort dualPivotQuickSort = new DualPivotQuickSort();
-        dualPivotQuickSort.sort(array);
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-    }
-
-    /*
-     * References: https://www.geeksforgeeks.org/dual-pivot-quicksort/
-     */
 }
