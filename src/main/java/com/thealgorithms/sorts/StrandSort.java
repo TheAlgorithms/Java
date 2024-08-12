@@ -13,14 +13,14 @@ public final class StrandSort implements SortAlgorithm {
      * Sorts the given array using the Strand Sort algorithm.
      *
      * @param <T> The type of elements to be sorted, must be Comparable.
-     * @param unsorted The array to be sorted.
+     * @param array The array to be sorted.
      * @return The sorted array.
      */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] unsorted) {
-        List<T> unsortedList = new ArrayList<>(Arrays.asList(unsorted));
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        List<T> unsortedList = new ArrayList<>(Arrays.asList(array));
         List<T> sortedList = strandSort(unsortedList);
-        return sortedList.toArray(unsorted);
+        return sortedList.toArray(array);
     }
 
     /**

@@ -15,20 +15,20 @@ public class StoogeSort implements SortAlgorithm {
         return array;
     }
 
-    public <T extends Comparable<T>> T[] sort(T[] unsortedArray, int start, int end) {
-        if (SortUtils.less(unsortedArray[end - 1], unsortedArray[start])) {
-            T temp = unsortedArray[start];
-            unsortedArray[start] = unsortedArray[end - 1];
-            unsortedArray[end - 1] = temp;
+    public <T extends Comparable<T>> T[] sort(final T[] array, final int start, final int end) {
+        if (SortUtils.less(array[end - 1], array[start])) {
+            final T temp = array[start];
+            array[start] = array[end - 1];
+            array[end - 1] = temp;
         }
 
-        int len = end - start;
-        if (len > 2) {
-            int third = len / 3;
-            sort(unsortedArray, start, end - third);
-            sort(unsortedArray, start + third, end);
-            sort(unsortedArray, start, end - third);
+        final int length = end - start;
+        if (length > 2) {
+            int third = length / 3;
+            sort(array, start, end - third);
+            sort(array, start + third, end);
+            sort(array, start, end - third);
         }
-        return unsortedArray;
+        return array;
     }
 }
