@@ -7,25 +7,29 @@ public class CircleSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int n = array.length;
-        if (n == 0) {
+        if (array.length == 0) {
             return array;
         }
-        while (doSort(array, 0, n - 1)) {
+        while (doSort(array, 0, array.length - 1)) {
         }
         return array;
     }
 
-    /* This method implements the cyclic sort recursive version
+    /**
+     * Recursively sorts the array in a circular manner by comparing elements
+     * from the start and end of the current segment.
+     *
+     * @param <T>   The type of elements in the array, which must be comparable
      * @param array The array to be sorted
-     * @param the left boundary of the part currently being sorted
-     * @param the right boundary of the part currently being sorted
+     * @param left  The left boundary of the current segment being sorted
+     * @param right The right boundary of the current segment being sorted
+     * @return true if any elements were swapped during the sort; false otherwise
      */
-    private <T extends Comparable<T>> Boolean doSort(T[] array, int left, int right) {
+    private <T extends Comparable<T>> boolean doSort(final T[] array, final int left, final int right) {
         boolean swapped = false;
 
         if (left == right) {
-            return Boolean.FALSE;
+            return false;
         }
 
         int low = left;
@@ -45,10 +49,10 @@ public class CircleSort implements SortAlgorithm {
             swapped = true;
         }
 
-        int mid = left + (right - left) / 2;
-        Boolean leftHalf = doSort(array, left, mid);
-        Boolean rightHalf = doSort(array, mid + 1, right);
+        final int mid = left + (right - left) / 2;
+        final boolean leftHalfSwapped = doSort(array, left, mid);
+        final boolean rightHalfSwapped = doSort(array, mid + 1, right);
 
-        return swapped || leftHalf || rightHalf;
+        return swapped || leftHalfSwapped || rightHalfSwapped;
     }
 }
