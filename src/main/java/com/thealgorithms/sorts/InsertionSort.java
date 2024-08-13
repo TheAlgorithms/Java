@@ -1,27 +1,43 @@
 package com.thealgorithms.sorts;
 
-import java.util.function.Function;
-
 class InsertionSort implements SortAlgorithm {
 
     /**
-     * Generic insertion sort algorithm in increasing order.
+     * Sorts the given array using the standard Insertion Sort algorithm.
      *
-     * @param array the array to be sorted.
-     * @param <T>   the class of array.
-     * @return sorted array.
+     * @param array The array to be sorted
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return The sorted array
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
         return sort(array, 0, array.length);
     }
 
-    public <T extends Comparable<T>> T[] sort(T[] array, int lo, int hi) {
-        for (int i = lo; i < hi; i++) {
-            for (int j = i; j > lo && SortUtils.less(array[j], array[j - 1]); j--) {
-                SortUtils.swap(array, j, j - 1);
-            }
+    /**
+     * Sorts a subarray of the given array using the standard Insertion Sort algorithm.
+     *
+     * @param array The array to be sorted
+     * @param lo    The starting index of the subarray
+     * @param hi    The ending index of the subarray (exclusive)
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return The sorted array
+     */
+    public <T extends Comparable<T>> T[] sort(T[] array, final int lo, final int hi) {
+        if (array == null || lo >= hi) {
+            return array;
         }
+
+        for (int i = lo + 1; i < hi; i++) {
+            final T key = array[i];
+            int j = i - 1;
+            while (j >= lo && SortUtils.less(key, array[j])) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
+
         return array;
     }
 
@@ -31,34 +47,25 @@ class InsertionSort implements SortAlgorithm {
      * comparisons like `j > 0` and swaps (we can move elements on position right, until we find
      * the right position for the chosen element) on further step.
      *
-     * @param array the array to be sorted
-     * @param <T>   Generic type which extends Comparable interface.
-     * @return sorted array
+     * @param array The array to be sorted
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return The sorted array
      */
     public <T extends Comparable<T>> T[] sentinelSort(T[] array) {
-        int minElemIndex = 0;
-        int n = array.length;
-        if (n < 1) {
+        if (array == null || array.length <= 1) {
             return array;
         }
 
-        // put the smallest element to the 0 position as a sentinel, which will allow us to avoid
-        // redundant comparisons like `j > 0` further
-        for (int i = 1; i < n; i++) {
-            if (SortUtils.less(array[i], array[minElemIndex])) {
-                minElemIndex = i;
-            }
-        }
+        final int minElemIndex = findMinIndex(array);
         SortUtils.swap(array, 0, minElemIndex);
 
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i < array.length; i++) {
+            final T currentValue = array[i];
             int j = i;
-            T currentValue = array[i];
-            while (SortUtils.less(currentValue, array[j - 1])) {
+            while (j > 0 && SortUtils.less(currentValue, array[j - 1])) {
                 array[j] = array[j - 1];
                 j--;
             }
-
             array[j] = currentValue;
         }
 
@@ -66,29 +73,19 @@ class InsertionSort implements SortAlgorithm {
     }
 
     /**
-     * Driver Code
+     * Finds the index of the minimum element in the array.
+     *
+     * @param array The array to be searched
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @return The index of the minimum element
      */
-    public static void main(String[] args) {
-        int size = 100_000;
-        Double[] randomArray = SortUtilsRandomGenerator.generateArray(size);
-        Double[] copyRandomArray = new Double[size];
-        System.arraycopy(randomArray, 0, copyRandomArray, 0, size);
-
-        InsertionSort insertionSort = new InsertionSort();
-        double insertionTime = measureApproxExecTime(insertionSort::sort, randomArray);
-        System.out.printf("Original insertion time: %5.2f  sec.%n", insertionTime);
-
-        double insertionSentinelTime = measureApproxExecTime(insertionSort::sentinelSort, copyRandomArray);
-        System.out.printf("Sentinel insertion time: %5.2f  sec.%n", insertionSentinelTime);
-
-        // ~ 1.5 time sentinel sort is faster, then classical Insertion sort implementation.
-        System.out.printf("Sentinel insertion is %f3.2 time faster than Original insertion sort%n", insertionTime / insertionSentinelTime);
-    }
-
-    private static double measureApproxExecTime(Function<Double[], Double[]> sortAlgorithm, Double[] randomArray) {
-        long start = System.currentTimeMillis();
-        sortAlgorithm.apply(randomArray);
-        long end = System.currentTimeMillis();
-        return (end - start) / 1000.0;
+    private <T extends Comparable<T>> int findMinIndex(final T[] array) {
+        int minIndex = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (SortUtils.less(array[i], array[minIndex])) {
+                minIndex = i;
+            }
+        }
+        return minIndex;
     }
 }
