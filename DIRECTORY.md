@@ -527,8 +527,8 @@
             * [TimSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/TimSort.java)
             * [TopologicalSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/TopologicalSort.java)
             * [TreeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/TreeSort.java)
-            * [WiggleSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/WiggleSort.java)
             * [WaveSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/WaveSort.java)
+            * [WiggleSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/WiggleSort.java)
           * stacks
             * [BalancedBrackets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/BalancedBrackets.java)
             * [DecimalToAnyUsingStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/DecimalToAnyUsingStack.java)
@@ -760,6 +760,7 @@
             * [LongDivisionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LongDivisionTest.java)
             * [LucasSeriesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LucasSeriesTest.java)
             * [MatrixRankTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MatrixRankTest.java)
+            * [MatrixUtilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MatrixUtilTest.java)
             * [MaxValueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MaxValueTest.java)
             * [MeansTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MeansTest.java)
             * [MedianTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MedianTest.java)
@@ -830,6 +831,7 @@
             * [NextFitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/NextFitTest.java)
             * [PasswordGenTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/PasswordGenTest.java)
             * [SieveOfEratosthenesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SieveOfEratosthenesTest.java)
+            * [StringMatchFiniteAutomataTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/StringMatchFiniteAutomataTest.java)
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
@@ -856,6 +858,7 @@
           * sorts
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
             * [BinaryInsertionSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BinaryInsertionSortTest.java)
+            * [BitonicSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BitonicSortTest.java)
             * [BogoSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BogoSortTest.java)
             * [BubbleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BubbleSortTest.java)
             * [BucketSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BucketSortTest.java)
@@ -882,11 +885,12 @@
             * [SortUtilsRandomGeneratorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SortUtilsRandomGeneratorTest.java)
             * [SortUtilsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SortUtilsTest.java)
             * [StrandSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/StrandSortTest.java)
+            * [SwapSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/SwapSortTest.java)
             * [TimSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TimSortTest.java)
             * [TopologicalSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TopologicalSortTest.java)
             * [TreeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/TreeSortTest.java)
-            * [WiggleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/WiggleSortTest.java)
             * [WaveSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/WaveSortTest.java)
+            * [WiggleSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/WiggleSortTest.java)
           * stacks
             * [StackPostfixNotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/StackPostfixNotationTest.java)
           * strings
