@@ -24,9 +24,9 @@ public final class PrimeCheck {
         }
 
         if (isPrimeNumberOptimised(Long.MAX_VALUE)) {
-            System.out.println("algo4 verify that " + Long.MAX_VALUE  + " is a prime number");
+            System.out.println("algo4 verify that " + Long.MAX_VALUE + " is a prime number");
         } else {
-            System.out.println("algo4 verify that " + Long.MAX_VALUE  + " is not a prime number");
+            System.out.println("algo4 verify that " + Long.MAX_VALUE + " is not a prime number");
         }
         scanner.close();
     }
@@ -91,7 +91,6 @@ public final class PrimeCheck {
 
     /**
      * Checks if a given number is prime using an optimized approach.
-     * 
      * @param number the number to check
      * @return true if the number is prime, false otherwise
      */
