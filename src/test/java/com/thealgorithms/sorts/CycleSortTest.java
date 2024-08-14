@@ -1,8 +1,8 @@
 package com.thealgorithms.sorts;
 
-public class PancakeSortTest extends SortingAlgorithmTest {
+public class CycleSortTest extends SortingAlgorithmTest {
     @Override
     SortAlgorithm getSortAlgorithm() {
-        return new PancakeSort();
+        return new CycleSort();
     }
 }
