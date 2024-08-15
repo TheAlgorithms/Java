@@ -9,74 +9,79 @@ class CycleSort implements SortAlgorithm {
     /**
      * Sorts an array of comparable elements using the cycle sort algorithm.
      *
-     * @param array the array to be sorted
-     * @param <T> the type of elements in the array, must be comparable
-     * @return the sorted array
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @param array The array to be sorted
+     * @return The sorted array
      */
     @Override
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        for (int cycleStart = 0; cycleStart <= array.length - 2; cycleStart++) {
+    public <T extends Comparable<T>> T[] sort(final T[] array) {
+        final int length = array.length;
+
+        for (int cycleStart = 0; cycleStart <= length - 2; cycleStart++) {
             T item = array[cycleStart];
+            int pos = findPosition(array, cycleStart, item);
 
-            // Find the position where we put the element
-            int pos = cycleStart;
-            for (int i = cycleStart + 1; i < array.length; i++) {
-                if (SortUtils.less(array[i], item)) {
-                    pos++;
-                }
-            }
-
-            // If the item is already in the correct position
             if (pos == cycleStart) {
-                continue;
+                continue; // Item is already in the correct position
             }
 
-            // Ignore all duplicate elements
-            while (item.compareTo(array[pos]) == 0) {
-                pos++;
-            }
-
-            // Put the item to its correct position
-            if (pos != cycleStart) {
-                item = replace(array, pos, item);
-            }
+            item = placeItem(array, item, pos);
 
             // Rotate the rest of the cycle
             while (pos != cycleStart) {
-                pos = cycleStart;
-
-                // Find the position where we put the element
-                for (int i = cycleStart + 1; i < array.length; i++) {
-                    if (SortUtils.less(array[i], item)) {
-                        pos++;
-                    }
-                }
-
-                // Ignore all duplicate elements
-                while (item.compareTo(array[pos]) == 0) {
-                    pos++;
-                }
-
-                // Put the item to its correct position
-                if (item != array[pos]) {
-                    item = replace(array, pos, item);
-                }
+                pos = findPosition(array, cycleStart, item);
+                item = placeItem(array, item, pos);
             }
         }
         return array;
     }
 
     /**
+     * Finds the correct position for the given item starting from cycleStart.
+     *
+     * @param <T>        The type of elements in the array, which must be comparable
+     * @param array      The array to be sorted
+     * @param cycleStart The starting index of the cycle
+     * @param item       The item whose position is to be found
+     * @return The correct position of the item
+     */
+    private <T extends Comparable<T>> int findPosition(final T[] array, final int cycleStart, final T item) {
+        int pos = cycleStart;
+        for (int i = cycleStart + 1; i < array.length; i++) {
+            if (SortUtils.less(array[i], item)) {
+                pos++;
+            }
+        }
+        return pos;
+    }
+
+    /**
+     * Places the item in its correct position, handling duplicates, and returns the displaced item.
+     *
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @param array The array being sorted
+     * @param item  The item to be placed
+     * @param pos   The position where the item is to be placed
+     * @return The displaced item
+     */
+    private <T extends Comparable<T>> T placeItem(final T[] array, final T item, int pos) {
+        while (item.compareTo(array[pos]) == 0) {
+            pos++;
+        }
+        return replace(array, pos, item);
+    }
+
+    /**
      * Replaces an element in the array with the given item and returns the replaced item.
      *
-     * @param array the array in which the replacement will occur
-     * @param pos the position at which the replacement will occur
-     * @param item the item to be placed in the array
-     * @param <T> the type of elements in the array, must be comparable
-     * @return the replaced item
+     * @param <T>   The type of elements in the array, which must be comparable
+     * @param array The array in which the replacement will occur
+     * @param pos   The position at which the replacement will occur
+     * @param item  The item to be placed in the array
+     * @return The replaced item
      */
-    private <T extends Comparable<T>> T replace(T[] array, int pos, T item) {
-        T replacedItem = array[pos];
+    private <T extends Comparable<T>> T replace(final T[] array, final int pos, final T item) {
+        final T replacedItem = array[pos];
         array[pos] = item;
         return replacedItem;
     }
