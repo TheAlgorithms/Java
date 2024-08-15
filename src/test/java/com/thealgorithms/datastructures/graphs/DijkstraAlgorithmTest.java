@@ -1,10 +1,10 @@
 package com.thealgorithms.datastructures.graphs;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DijkstraAlgorithmTest {
 
@@ -14,15 +14,15 @@ public class DijkstraAlgorithmTest {
     @BeforeEach
     void setUp() {
         graph = new int[][] {
-                {0, 4, 0, 0, 0, 0, 0, 8, 0},
-                {4, 0, 8, 0, 0, 0, 0, 11, 0},
-                {0, 8, 0, 7, 0, 4, 0, 0, 2},
-                {0, 0, 7, 0, 9, 14, 0, 0, 0},
-                {0, 0, 0, 9, 0, 10, 0, 0, 0},
-                {0, 0, 4, 14, 10, 0, 2, 0, 0},
-                {0, 0, 0, 0, 0, 2, 0, 1, 6},
-                {8, 11, 0, 0, 0, 0, 1, 0, 7},
-                {0, 0, 2, 0, 0, 0, 6, 7, 0},
+            {0, 4, 0, 0, 0, 0, 0, 8, 0},
+            {4, 0, 8, 0, 0, 0, 0, 11, 0},
+            {0, 8, 0, 7, 0, 4, 0, 0, 2},
+            {0, 0, 7, 0, 9, 14, 0, 0, 0},
+            {0, 0, 0, 9, 0, 10, 0, 0, 0},
+            {0, 0, 4, 14, 10, 0, 2, 0, 0},
+            {0, 0, 0, 0, 0, 2, 0, 1, 6},
+            {8, 11, 0, 0, 0, 0, 1, 0, 7},
+            {0, 0, 2, 0, 0, 0, 6, 7, 0},
         };
 
         dijkstraAlgorithm = new DijkstraAlgorithm(graph.length);
@@ -37,10 +37,7 @@ public class DijkstraAlgorithmTest {
     @Test
     void testGraphWithDisconnectedNodes() {
         int[][] disconnectedGraph = {
-                {0, 3, 0, 0},
-                {3, 0, 1, 0},
-                {0, 1, 0, 0},
-                {0, 0, 0, 0} // Node 3 is disconnected
+            {0, 3, 0, 0}, {3, 0, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} // Node 3 is disconnected
         };
 
         DijkstraAlgorithm dijkstraDisconnected = new DijkstraAlgorithm(disconnectedGraph.length);
