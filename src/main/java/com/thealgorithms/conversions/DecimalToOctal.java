@@ -1,38 +1,38 @@
 package com.thealgorithms.conversions;
 
-import java.util.Scanner;
-
 /**
  * This class converts Decimal numbers to Octal Numbers
  */
 public final class DecimalToOctal {
+    private static final int OCTAL_BASE = 8;
+    private static final int INITIAL_OCTAL_VALUE = 0;
+    private static final int INITIAL_PLACE_VALUE = 1;
+
     private DecimalToOctal() {
     }
 
     /**
-     * Main Method
+     * Converts a decimal number to its octal equivalent.
      *
-     * @param args Command line Arguments
+     * @param decimal The decimal number to convert.
+     * @return The octal equivalent as an integer.
+     * @throws IllegalArgumentException if the decimal number is negative.
      */
-
-    // enter in a decimal value to get Octal output
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n;
-        int k;
-        int d;
-        int s = 0;
-        int c = 0;
-        System.out.print("Decimal number: ");
-        n = sc.nextInt();
-        k = n;
-        while (k != 0) {
-            d = k % 8;
-            s += d * (int) Math.pow(10, c++);
-            k /= 8;
+    public static int convertToOctal(int decimal) {
+        if (decimal < 0) {
+            throw new IllegalArgumentException("Decimal number cannot be negative.");
         }
 
-        System.out.println("Octal equivalent:" + s);
-        sc.close();
+        int octal = INITIAL_OCTAL_VALUE;
+        int placeValue = INITIAL_PLACE_VALUE;
+
+        while (decimal != 0) {
+            int remainder = decimal % OCTAL_BASE;
+            octal += remainder * placeValue;
+            decimal /= OCTAL_BASE;
+            placeValue *= 10;
+        }
+
+        return octal;
     }
 }
