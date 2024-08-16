@@ -40,7 +40,7 @@ class FFTTest {
         assertNotEquals(2.0, add);
     }
 
-    // Testing the function substract, assertEqual test
+    // Testing the function subtract, assertEqual test
     @Test
     void subtractTest() {
         FFT.Complex complex1 = new FFT.Complex(2.0, 2.0);
