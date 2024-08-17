@@ -2,13 +2,14 @@ package com.thealgorithms.conversions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class BinaryToOctalTest {
 
-    @Test
-    public void testBinaryToOctal() {
-        assertEquals("226", BinaryToOctal.convertBinaryToOctal(10010110));
-        assertEquals("135", BinaryToOctal.convertBinaryToOctal(1011101));
+    @ParameterizedTest
+    @CsvSource({"0, 0", "1, 1", "10, 2", "111, 7", "1000, 10", "1111, 17", "110101, 65", "1010101, 125", "110110011, 663", "111111111, 777", "10010110, 226", "1011101, 135"})
+    void testConvertBinaryToOctal(int binary, String expectedOctal) {
+        assertEquals(expectedOctal, BinaryToOctal.convertBinaryToOctal(binary));
     }
 }
