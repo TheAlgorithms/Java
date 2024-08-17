@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import com.thealgorithms.datastructures.bags.Bag;
-import org.junit.jupiter.api.Test;
 import java.util.Iterator;
+import org.junit.jupiter.api.Test;
 
 class BagTest {
 
