@@ -4,23 +4,23 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Collection which does not allow removing elements (only collect and iterate)
+ * A collection that allows adding and iterating over elements but does not support element removal.
  *
- * @param <Element> - the generic type of an element in this bag
+ * @param <E> the type of elements in this bag
  */
-public class Bag<Element> implements Iterable<Element> {
+public class Bag<E> implements Iterable<E> {
 
-    private Node<Element> firstElement; // first element of the bag
-    private int size; // size of bag
+    private Node<E> firstElement; // First element in the bag
+    private int size; // Number of elements in the bag
 
-    private static final class Node<Element> {
-
-        private Element content;
-        private Node<Element> nextElement;
+    // Node class representing each element in the bag
+    private static final class Node<E> {
+        private E content;
+        private Node<E> nextElement;
     }
 
     /**
-     * Create an empty bag
+     * Constructs an empty bag.
      */
     public Bag() {
         firstElement = null;
@@ -28,13 +28,17 @@ public class Bag<Element> implements Iterable<Element> {
     }
 
     /**
-     * @return true if this bag is empty, false otherwise
+     * Checks if the bag is empty.
+     *
+     * @return true if the bag is empty, false otherwise
      */
     public boolean isEmpty() {
-        return firstElement == null;
+        return size == 0;
     }
 
     /**
+     * Returns the number of elements in the bag.
+     *
      * @return the number of elements
      */
     public int size() {
@@ -42,24 +46,26 @@ public class Bag<Element> implements Iterable<Element> {
     }
 
     /**
-     * @param element - the element to add
+     * Adds an element to the bag.
+     *
+     * @param element the element to add
      */
-    public void add(Element element) {
-        Node<Element> oldfirst = firstElement;
-        firstElement = new Node<>();
-        firstElement.content = element;
-        firstElement.nextElement = oldfirst;
+    public void add(E element) {
+        Node<E> newNode = new Node<>();
+        newNode.content = element;
+        newNode.nextElement = firstElement;
+        firstElement = newNode;
         size++;
     }
 
     /**
-     * Checks if the bag contains a specific element
+     * Checks if the bag contains a specific element.
      *
-     * @param element which you want to look for
-     * @return true if bag contains element, otherwise false
+     * @param element the element to check for
+     * @return true if the bag contains the element, false otherwise
      */
-    public boolean contains(Element element) {
-        for (Element value : this) {
+    public boolean contains(E element) {
+        for (E value : this) {
             if (value.equals(element)) {
                 return true;
             }
@@ -68,61 +74,37 @@ public class Bag<Element> implements Iterable<Element> {
     }
 
     /**
-     * @return an iterator that iterates over the elements in this bag in
-     * arbitrary order
+     * Returns an iterator over the elements in this bag.
+     *
+     * @return an iterator that iterates over the elements in the bag
      */
-    public Iterator<Element> iterator() {
+    @Override
+    public Iterator<E> iterator() {
         return new ListIterator<>(firstElement);
     }
 
-    @SuppressWarnings("hiding")
-    private class ListIterator<Element> implements Iterator<Element> {
+    // Private class for iterating over elements
+    private static class ListIterator<E> implements Iterator<E> {
 
-        private Node<Element> currentElement;
+        private Node<E> currentElement;
 
-        ListIterator(Node<Element> firstElement) {
-            currentElement = firstElement;
+        ListIterator(Node<E> firstElement) {
+            this.currentElement = firstElement;
         }
 
+        @Override
         public boolean hasNext() {
             return currentElement != null;
         }
 
-        /**
-         * remove is not allowed in a bag
-         */
         @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
-        public Element next() {
+        public E next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            Element element = currentElement.content;
+            E element = currentElement.content;
             currentElement = currentElement.nextElement;
             return element;
         }
-    }
-
-    /**
-     * main-method for testing
-     */
-    public static void main(String[] args) {
-        Bag<String> bag = new Bag<>();
-
-        bag.add("1");
-        bag.add("1");
-        bag.add("2");
-
-        System.out.println("size of bag = " + bag.size());
-        for (String s : bag) {
-            System.out.println(s);
-        }
-
-        System.out.println(bag.contains(null));
-        System.out.println(bag.contains("1"));
-        System.out.println(bag.contains("3"));
     }
 }
