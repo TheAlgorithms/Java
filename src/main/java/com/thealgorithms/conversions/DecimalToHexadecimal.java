@@ -24,6 +24,19 @@ final class DecimalToHexadecimal {
             hexBuilder.insert(0, HEX_DIGITS[currentHalfByte]);
             decimal >>= NUMBER_OF_BITS_IN_HALF_BYTE;
         }
-        return hexBuilder.toString().toLowerCase();
+        return removeLeadingZeros(hexBuilder.toString().toLowerCase());
+    }
+
+    private static String removeLeadingZeros(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        int i = 0;
+        while (i < str.length() && str.charAt(i) == '0') {
+            i++;
+        }
+
+        return i == str.length() ? "0" : str.substring(i);
     }
 }
