@@ -2,9 +2,7 @@ package com.thealgorithms.datastructures.bag;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import com.thealgorithms.datastructures.bags.Bag;
 import java.util.Iterator;
@@ -98,7 +96,7 @@ class BagTest {
         Bag<String> bag = new Bag<>();
         int count = 0;
         for (String ignored : bag) {
-            fail("Iterator should not return any items for an empty bag");
+            org.junit.jupiter.api.Assertions.fail("Iterator should not return any items for an empty bag");
         }
         assertEquals(0, count, "Iterator should not traverse any items in an empty bag");
     }
@@ -108,6 +106,6 @@ class BagTest {
         Bag<String> bag = new Bag<>();
         bag.add("item1");
         Iterator<String> iterator = bag.iterator();
-        assertThrows(UnsupportedOperationException.class, iterator::remove, "Remove operation should throw UnsupportedOperationException");
+        org.junit.jupiter.api.Assertions.assertThrows(UnsupportedOperationException.class, iterator::remove, "Remove operation should throw UnsupportedOperationException");
     }
 }
