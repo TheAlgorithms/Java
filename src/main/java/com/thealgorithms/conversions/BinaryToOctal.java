@@ -37,7 +37,7 @@ public final class BinaryToOctal {
                 bitValueMultiplier *= BINARY_BASE;
             }
             octal.insert(0, octalDigit);
-            bitValueMultiplier = 1;  // Reset multiplier for the next group
+            bitValueMultiplier = 1; // Reset multiplier for the next group
         }
 
         return octal.toString();
