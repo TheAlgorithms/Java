@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *  Class that provides methods to convert a decimal number to a string representation
+ *  in any specified base between 2 and 36.
+ *
  * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
 public final class DecimalToAnyBase {
