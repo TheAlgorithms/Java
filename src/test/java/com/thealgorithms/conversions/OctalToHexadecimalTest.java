@@ -1,13 +1,14 @@
 package com.thealgorithms.conversions;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class OctalToHexadecimalTest {
 
     @Test
     public void testOctalToHexadecimal() {
-        Assertions.assertEquals("1EA", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("752")));
-        Assertions.assertEquals("15E", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("536")));
+        assertEquals("1EA", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("752")));
+        assertEquals("15E", OctalToHexadecimal.decimalToHex(OctalToHexadecimal.octToDec("536")));
     }
 }
