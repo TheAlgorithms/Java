@@ -1,69 +1,69 @@
 package com.thealgorithms.conversions;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
+ *  Class that provides methods to convert a decimal number to a string representation
+ *  in any specified base between 2 and 36.
+ *
  * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
-// Driver Program
 public final class DecimalToAnyBase {
+    private static final int MIN_BASE = 2;
+    private static final int MAX_BASE = 36;
+    private static final char ZERO_CHAR = '0';
+    private static final char A_CHAR = 'A';
+    private static final int DIGIT_OFFSET = 10;
+
     private DecimalToAnyBase() {
     }
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter the decimal input below: ");
-        int decInput = Integer.parseInt(br.readLine());
-        System.out.println();
+    /**
+     * Converts a decimal number to a string representation in the specified base.
+     * For example, converting the decimal number 10 to base 2 would return "1010".
+     *
+     * @param decimal the decimal number to convert
+     * @param base    the base to convert to (must be between {@value #MIN_BASE} and {@value #MAX_BASE})
+     * @return the string representation of the number in the specified base
+     * @throws IllegalArgumentException if the base is out of the supported range
+     */
+    public static String convertToAnyBase(int decimal, int base) {
+        if (base < MIN_BASE || base > MAX_BASE) {
+            throw new IllegalArgumentException("Base must be between " + MIN_BASE + " and " + MAX_BASE);
+        }
 
-        System.out.println("Enter the base below: ");
-        int base = Integer.parseInt(br.readLine());
-        System.out.println();
+        if (decimal == 0) {
+            return String.valueOf(ZERO_CHAR);
+        }
 
-        System.out.println("Decimal Input"
-            + " is: " + decInput);
-        System.out.println("Value of " + decInput + " in base " + base + " is: " + convertToAnyBase(decInput, base));
+        List<Character> digits = new ArrayList<>();
+        while (decimal > 0) {
+            digits.add(convertToChar(decimal % base));
+            decimal /= base;
+        }
 
-        br.close();
+        StringBuilder result = new StringBuilder(digits.size());
+        for (int i = digits.size() - 1; i >= 0; i--) {
+            result.append(digits.get(i));
+        }
+
+        return result.toString();
     }
 
     /**
-     * This method produces a String value of any given input decimal in any
-     * base
+     * Converts an integer value to its corresponding character in the specified base.
+     * This method is used to convert values from 0 to 35 into their appropriate character representation.
+     * For example, 0-9 are represented as '0'-'9', and 10-35 are represented as 'A'-'Z'.
      *
-     * @param inp Decimal of which we need the value in base in String format
-     * @return string format of the converted value in the given base
+     * @param value the integer value to convert (should be less than the base value)
+     * @return the character representing the value in the specified base
      */
-    public static String convertToAnyBase(int inp, int base) {
-        ArrayList<Character> charArr = new ArrayList<>();
-
-        while (inp > 0) {
-            charArr.add(reVal(inp % base));
-            inp /= base;
-        }
-
-        StringBuilder str = new StringBuilder(charArr.size());
-
-        for (Character ch : charArr) {
-            str.append(ch);
-        }
-
-        return str.reverse().toString();
-    }
-
-    /**
-     * This method produces character value of the input integer and returns it
-     *
-     * @param num integer of which we need the character value of
-     * @return character value of input integer
-     */
-    public static char reVal(int num) {
-        if (num >= 0 && num <= 9) {
-            return (char) (num + '0');
+    private static char convertToChar(int value) {
+        if (value >= 0 && value <= 9) {
+            return (char) (ZERO_CHAR + value);
         } else {
-            return (char) (num - 10 + 'A');
+            return (char) (A_CHAR + value - DIGIT_OFFSET);
         }
     }
 }
