@@ -63,7 +63,7 @@ public final class DecimalToAnyBase {
         if (value >= 0 && value <= 9) {
             return (char) (ZERO_CHAR + value);
         } else {
-            return (char) (A_CHAR + (value - DIGIT_OFFSET));
+            return (char) (A_CHAR + value - DIGIT_OFFSET);
         }
     }
 }
