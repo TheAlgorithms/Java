@@ -15,8 +15,8 @@ public class OctalToDecimalTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'', Input cannot be null or empty", "'8', Invalid input: Expecting an octal number (digits 0-7)", "'19', Invalid input: Expecting an octal number (digits 0-7)"})
-    void testConvertOctalToDecimal_InvalidInputs(String inputOctal, String expectedMessage) {
+    @CsvSource({"'', Input cannot be null or empty", "'8', Incorrect input: Expecting an octal number (digits 0-7)", "'19', Incorrect input: Expecting an octal number (digits 0-7)"})
+    void testIncorrectInput(String inputOctal, String expectedMessage) {
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> OctalToDecimal.convertOctalToDecimal(inputOctal));
         Assertions.assertEquals(expectedMessage, exception.getMessage());
     }

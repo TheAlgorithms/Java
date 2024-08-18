@@ -30,7 +30,7 @@ public final class OctalToDecimal {
             char currentChar = inputOctal.charAt(i);
 
             if (currentChar < '0' || currentChar > '7') {
-                throw new IllegalArgumentException("Invalid input: Expecting an octal number (digits 0-7)");
+                throw new IllegalArgumentException("Incorrect input: Expecting an octal number (digits 0-7)");
             }
 
             int currentDigit = currentChar - '0';
