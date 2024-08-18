@@ -1,60 +1,65 @@
 package com.thealgorithms.conversions;
 
+import java.util.Scanner;
+
 /**
- * Class for converting an Octal number to its Hexadecimal equivalent.
+ * Converts any Octal Number to HexaDecimal
  *
+ * @author Tanmay Joshi
  */
 public final class OctalToHexadecimal {
-    private static final int OCTAL_BASE = 8;
-    private static final int HEX_BASE = 16;
-    private static final String HEX_DIGITS = "0123456789ABCDEF";
-
     private OctalToHexadecimal() {
     }
 
     /**
-     * Converts an Octal number (as a string) to its Decimal equivalent.
+     * This method converts a Octal number to a decimal number
      *
-     * @param octalNumber The Octal number as a string
-     * @return The Decimal equivalent of the Octal number
-     * @throws IllegalArgumentException if the input contains invalid octal digits
+     * @param s The Octal Number
+     * @return The Decimal number
      */
-    public static int octalToDecimal(String octalNumber) {
-        if (octalNumber == null || octalNumber.isEmpty()) {
-            throw new IllegalArgumentException("Input cannot be null or empty");
+    public static int octToDec(String s) {
+        int i = 0;
+        for (int j = 0; j < s.length(); j++) {
+            char num = s.charAt(j);
+            num -= '0';
+            i *= 8;
+            i += num;
         }
-
-        int decimalValue = 0;
-        for (int i = 0; i < octalNumber.length(); i++) {
-            char currentChar = octalNumber.charAt(i);
-            if (currentChar < '0' || currentChar > '7') {
-                throw new IllegalArgumentException("Invalid octal digit: " + currentChar);
-            }
-            int currentDigit = currentChar - '0';
-            decimalValue = decimalValue * OCTAL_BASE + currentDigit;
-        }
-
-        return decimalValue;
+        return i;
     }
 
     /**
-     * Converts a Decimal number to its Hexadecimal equivalent.
+     * This method converts a Decimal number to a Hexadecimal number
      *
-     * @param decimalNumber The Decimal number
-     * @return The Hexadecimal equivalent of the Decimal number
+     * @param d The Decimal Number
+     * @return The Hexadecimal number
      */
-    public static String decimalToHexadecimal(int decimalNumber) {
-        if (decimalNumber == 0) {
+    public static String decimalToHex(int d) {
+        String digits = "0123456789ABCDEF";
+        if (d <= 0) {
             return "0";
         }
-
-        StringBuilder hexValue = new StringBuilder();
-        while (decimalNumber > 0) {
-            int digit = decimalNumber % HEX_BASE;
-            hexValue.insert(0, HEX_DIGITS.charAt(digit));
-            decimalNumber /= HEX_BASE;
+        String hex = "";
+        while (d > 0) {
+            int digit = d % 16;
+            hex = digits.charAt(digit) + hex;
+            d = d / 16;
         }
+        return hex;
+    }
 
-        return hexValue.toString();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the Octal number: ");
+        // Take octal number as input from user in a string
+        String oct = input.next();
+
+        // Pass the octal number to function and get converted decimal form
+        int decimal = octToDec(oct);
+
+        // Pass the decimal number to function and get converted Hex form of the number
+        String hex = decimalToHex(decimal);
+        System.out.println("The Hexadecimal equivalant is: " + hex);
+        input.close();
     }
 }
