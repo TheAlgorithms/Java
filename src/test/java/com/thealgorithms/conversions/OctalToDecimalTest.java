@@ -1,7 +1,5 @@
 package com.thealgorithms.conversions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,7 +9,7 @@ public class OctalToDecimalTest {
     @ParameterizedTest
     @CsvSource({"10, 8", "7, 7", "77, 63", "123, 83", "0, 0", "777, 511", "2671, 1465", "275, 189"})
     void testConvertOctalToDecimal(String inputOctal, int expectedDecimal) {
-        assertEquals(expectedDecimal, OctalToDecimal.convertOctalToDecimal(inputOctal));
+        Assertions.assertEquals(expectedDecimal, OctalToDecimal.convertOctalToDecimal(inputOctal));
     }
 
     @ParameterizedTest
