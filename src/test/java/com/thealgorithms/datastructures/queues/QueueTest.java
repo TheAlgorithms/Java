@@ -19,7 +19,7 @@ public class QueueTest {
         Assertions.assertTrue(queue.insert(1));
         Assertions.assertTrue(queue.insert(2));
         Assertions.assertTrue(queue.insert(3));
-        Assertions.assertFalse(queue.insert(4));  // Queue is full
+        Assertions.assertFalse(queue.insert(4)); // Queue is full
 
         Assertions.assertEquals(1, queue.peekFront());
         Assertions.assertEquals(3, queue.peekRear());
@@ -43,7 +43,7 @@ public class QueueTest {
         Assertions.assertEquals(3, queue.remove());
         Assertions.assertTrue(queue.isEmpty());
 
-        Assertions.assertThrows(IllegalStateException.class, queue::remove);  // Queue is empty
+        Assertions.assertThrows(IllegalStateException.class, queue::remove); // Queue is empty
     }
 
     @Test
