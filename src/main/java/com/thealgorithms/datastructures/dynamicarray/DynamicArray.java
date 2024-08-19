@@ -25,6 +25,7 @@ public class DynamicArray<E> implements Iterable<E> {
      * Constructor with initial capacity.
      *
      * @param capacity the starting length of the desired array
+     * @throws IllegalArgumentException if the specified capacity is negative
      */
     public DynamicArray(final int capacity) {
         if (capacity < 0) {
