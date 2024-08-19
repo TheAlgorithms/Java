@@ -27,7 +27,6 @@ public class DynamicArrayTest {
         assertEquals("Bob", array.get(1));
     }
 
-
     @Test
     public void testGetInvalidIndex() {
         assertThrows(IndexOutOfBoundsException.class, () -> array.get(-1));
@@ -85,7 +84,6 @@ public class DynamicArrayTest {
         assertEquals("Bob", array.get(2));
         assertEquals(3, array.getSize()); // Size should be 3 due to index 2
     }
-
 
     @Test
     public void testRemoveElement() {
