@@ -49,4 +49,10 @@ public class ADTFractionTest {
     public void testToString() {
         assertEquals("3/5", fraction1.toString());
     }
+    @Test
+    public void testMinus() {
+    // expected: 3/5 - 7/8 = (3*8 - 5*7)/(5*8) = (24 - 35)/40 = -11/40
+    assertEquals(new ADTFraction(-11, 40), fraction1.minus(fraction2));
+}
+
 }
