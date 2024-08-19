@@ -101,7 +101,6 @@ public class DynamicArrayTest {
         assertThrows(IndexOutOfBoundsException.class, () -> array.remove(10));
     }
 
-
     @Test
     public void testRemoveComplex() {
         array.add("Alice");
