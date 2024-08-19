@@ -57,8 +57,7 @@ public class StackArray<T> implements Stack<T> {
     }
 
     private void resize(int newSize) {
-        @SuppressWarnings("unchecked")
-        T[] newArray = (T[]) new Object[newSize];
+        @SuppressWarnings("unchecked") T[] newArray = (T[]) new Object[newSize];
         System.arraycopy(stackArray, 0, newArray, 0, top + 1);
         stackArray = newArray;
         maxSize = newSize;
@@ -73,8 +72,7 @@ public class StackArray<T> implements Stack<T> {
         return top == -1;
     }
 
-    @Override
-    public void makeEmpty() { // Doesn't delete elements in the array but if you call
+    @Override public void makeEmpty() { // Doesn't delete elements in the array but if you call
         top = -1; // push method after calling makeEmpty it will overwrite previous values
     }
 
