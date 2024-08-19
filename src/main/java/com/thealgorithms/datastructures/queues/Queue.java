@@ -146,7 +146,7 @@ public final class Queue<T> {
             int index = (front + i) % maxSize;
             sb.append(queueArray[index]).append(", ");
         }
-        sb.setLength(sb.length() - 2);  // Remove the last comma and space
+        sb.setLength(sb.length() - 2); // Remove the last comma and space
         sb.append("]");
         return sb.toString();
     }
