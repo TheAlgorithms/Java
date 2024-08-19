@@ -1,7 +1,7 @@
 package struct;
 
 /**
- * A custom dictionary class that simulates a key-value store using a hash table
+ * A clone of a Python dictionary in a Java class that simulates a key-value store using a hash table
  * implemented from scratch without using standard collections like Map.
  */
 public class Dictionary {
