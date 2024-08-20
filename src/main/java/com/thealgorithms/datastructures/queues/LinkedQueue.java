@@ -18,9 +18,9 @@ public class LinkedQueue<T> implements Iterable<T> {
         }
     }
 
-    private Node<T> front;  // Front of the queue
-    private Node<T> rear;   // Rear of the queue
-    private int size;       // Size of the queue
+    private Node<T> front; // Front of the queue
+    private Node<T> rear; // Rear of the queue
+    private int size; // Size of the queue
 
     /**
      * Initializes an empty LinkedQueue.
