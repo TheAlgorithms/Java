@@ -1,4 +1,4 @@
-package struct;
+package com.thealgorithms.datastructures.dictionary;
 
 /**
  * A clone of a Python dictionary in a Java class that simulates a key-value store using a hash table
