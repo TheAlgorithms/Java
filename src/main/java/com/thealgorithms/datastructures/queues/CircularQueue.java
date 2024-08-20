@@ -2,106 +2,100 @@ package com.thealgorithms.datastructures.queues;
 
 // This program implements the concept of CircularQueue in Java
 // Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
-public class CircularQueue {
+public class CircularQueue<T> {
+    private T[] array;
+    private int topOfQueue;
+    private int beginningOfQueue;
+    private final int size;
+    private int currentSize;
 
-    int[] arr;
-    int topOfQueue;
-    int beginningOfQueue;
-    int size;
-
+    @SuppressWarnings("unchecked")
     public CircularQueue(int size) {
-        arr = new int[size];
-        topOfQueue = -1;
-        beginningOfQueue = -1;
+        this.array = (T[]) new Object[size];
+        this.topOfQueue = -1;
+        this.beginningOfQueue = -1;
         this.size = size;
+        this.currentSize = 0;
     }
 
     public boolean isEmpty() {
-        return beginningOfQueue == -1;
+        return currentSize == 0;
     }
 
     public boolean isFull() {
-        if (topOfQueue + 1 == beginningOfQueue) {
-            return true;
-        } else {
-            return topOfQueue == size - 1 && beginningOfQueue == 0;
-        }
+        return currentSize == size;
     }
 
-    public void enQueue(int value) {
+    public void enQueue(T value) {
         if (isFull()) {
-            System.out.println("The Queue is full!");
-        } else if (isEmpty()) {
+            throw new IllegalStateException("Queue is full");
+        }
+        if (isEmpty()) {
             beginningOfQueue = 0;
-            topOfQueue++;
-            arr[topOfQueue] = value;
-            System.out.println(value + " has been successfully inserted!");
-        } else {
-            if (topOfQueue + 1 == size) {
-                topOfQueue = 0;
-            } else {
-                topOfQueue++;
-            }
-            arr[topOfQueue] = value;
-            System.out.println(value + " has been successfully inserted!");
         }
+        topOfQueue = (topOfQueue + 1) % size;
+        array[topOfQueue] = value;
+        currentSize++;
     }
 
-    public int deQueue() {
+    public T deQueue() {
         if (isEmpty()) {
-            System.out.println("The Queue is Empty!");
-            return -1;
-        } else {
-            int res = arr[beginningOfQueue];
-            arr[beginningOfQueue] = Integer.MIN_VALUE;
-            if (beginningOfQueue == topOfQueue) {
-                beginningOfQueue = -1;
-                topOfQueue = -1;
-            } else if (beginningOfQueue + 1 == size) {
-                beginningOfQueue = 0;
-            } else {
-                beginningOfQueue++;
-            }
-            return res;
+            throw new IllegalStateException("Queue is empty");
         }
+        T removedValue = array[beginningOfQueue];
+        array[beginningOfQueue] = null; // Optional: Help GC
+        beginningOfQueue = (beginningOfQueue + 1) % size;
+        currentSize--;
+        if (isEmpty()) {
+            beginningOfQueue = -1;
+            topOfQueue = -1;
+        }
+        return removedValue;
     }
 
-    public int peek() {
+    public T peek() {
         if (isEmpty()) {
-            System.out.println("The Queue is Empty!");
-            return -1;
-        } else {
-            return arr[beginningOfQueue];
+            throw new IllegalStateException("Queue is empty");
         }
+        return array[beginningOfQueue];
     }
 
     public void deleteQueue() {
-        arr = null;
-        System.out.println("The Queue is deleted!");
+        array = null;
+        beginningOfQueue = -1;
+        topOfQueue = -1;
+        currentSize = 0;
+    }
+
+    public int size() {
+        return currentSize;
     }
 
     public static void main(String[] args) {
-        CircularQueue cq = new CircularQueue(5);
-        System.out.println(cq.isEmpty());
-        System.out.println(cq.isFull());
+        CircularQueue<Integer> cq = new CircularQueue<>(5);
+        System.out.println(cq.isEmpty());  // true
+        System.out.println(cq.isFull());   // false
         cq.enQueue(1);
         cq.enQueue(2);
         cq.enQueue(3);
         cq.enQueue(4);
         cq.enQueue(5);
 
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.isFull());
-        System.out.println(cq.isEmpty());
+        System.out.println(cq.deQueue());  // 1
+        System.out.println(cq.deQueue());  // 2
+        System.out.println(cq.deQueue());  // 3
+        System.out.println(cq.deQueue());  // 4
+        System.out.println(cq.deQueue());  // 5
+
+        System.out.println(cq.isFull());   // false
+        System.out.println(cq.isEmpty());  // true
         cq.enQueue(6);
         cq.enQueue(7);
         cq.enQueue(8);
-        System.out.println(cq.peek());
-        System.out.println(cq.peek());
+
+        System.out.println(cq.peek());     // 6
+        System.out.println(cq.peek());     // 6
+
         cq.deleteQueue();
     }
 }
