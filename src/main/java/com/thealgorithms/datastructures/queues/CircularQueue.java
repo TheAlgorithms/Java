@@ -73,28 +73,28 @@ public class CircularQueue<T> {
 
     public static void main(String[] args) {
         CircularQueue<Integer> cq = new CircularQueue<>(5);
-        System.out.println(cq.isEmpty());  // true
-        System.out.println(cq.isFull());   // false
+        System.out.println(cq.isEmpty()); // true
+        System.out.println(cq.isFull()); // false
         cq.enQueue(1);
         cq.enQueue(2);
         cq.enQueue(3);
         cq.enQueue(4);
         cq.enQueue(5);
 
-        System.out.println(cq.deQueue());  // 1
-        System.out.println(cq.deQueue());  // 2
-        System.out.println(cq.deQueue());  // 3
-        System.out.println(cq.deQueue());  // 4
-        System.out.println(cq.deQueue());  // 5
+        System.out.println(cq.deQueue()); // 1
+        System.out.println(cq.deQueue()); // 2
+        System.out.println(cq.deQueue()); // 3
+        System.out.println(cq.deQueue()); // 4
+        System.out.println(cq.deQueue()); // 5
 
-        System.out.println(cq.isFull());   // false
-        System.out.println(cq.isEmpty());  // true
+        System.out.println(cq.isFull()); // false
+        System.out.println(cq.isEmpty()); // true
         cq.enQueue(6);
         cq.enQueue(7);
         cq.enQueue(8);
 
-        System.out.println(cq.peek());     // 6
-        System.out.println(cq.peek());     // 6
+        System.out.println(cq.peek()); // 6
+        System.out.println(cq.peek()); // 6
 
         cq.deleteQueue();
     }
