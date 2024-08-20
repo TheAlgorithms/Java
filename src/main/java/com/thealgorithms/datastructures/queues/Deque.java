@@ -37,13 +37,16 @@ public class Deque<T> {
      */
     public void addFirst(T val) {
         DequeNode<T> newNode = new DequeNode<>(val);
-        if (head == null) {
-            head = tail = newNode;
+
+        if (isEmpty()) {
+            head = newNode;
+            tail = newNode;
         } else {
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
         }
+
         size++;
     }
 
@@ -55,7 +58,8 @@ public class Deque<T> {
     public void addLast(T val) {
         DequeNode<T> newNode = new DequeNode<>(val);
         if (tail == null) {
-            head = tail = newNode;
+            head = newNode;
+            tail = newNode;
         } else {
             newNode.prev = tail;
             tail.next = newNode;
@@ -77,7 +81,8 @@ public class Deque<T> {
 
         T oldHeadVal = head.val;
         if (head == tail) {
-            head = tail = null;
+            head = null;
+            tail = null;
         } else {
             head = head.next;
             head.prev = null;
@@ -99,7 +104,8 @@ public class Deque<T> {
 
         T oldTailVal = tail.val;
         if (head == tail) {
-            head = tail = null;
+            head = null;
+            tail = null;
         } else {
             tail = tail.prev;
             tail.next = null;
