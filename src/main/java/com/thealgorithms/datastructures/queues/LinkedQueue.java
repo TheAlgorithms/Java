@@ -198,29 +198,4 @@ public class LinkedQueue<T> implements Iterable<T> {
         sb.append(']');
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        LinkedQueue<Integer> queue = new LinkedQueue<>();
-        assert queue.isEmpty();
-
-        queue.enqueue(1);
-        /* 1 */
-        queue.enqueue(2);
-        /* 1 2 */
-        queue.enqueue(3);
-        /* 1 2 3 */
-        System.out.println(queue);
-        /* [1, 2, 3] */
-
-        assert queue.size() == 3;
-        assert queue.dequeue() == 1;
-        assert queue.peekFront() == 2;
-        assert queue.peekRear() == 3;
-
-        queue.clear();
-        assert queue.isEmpty();
-
-        System.out.println(queue);
-        /* [] */
-    }
 }
