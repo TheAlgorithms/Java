@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.queues;
 
+import java.util.NoSuchElementException;
+
 /**
  * A [deque](https://en.wikipedia.org/wiki/Double-ended_queue) is short for a
  * double ended queue pronounced "deck" and sometimes referred to as a head-tail
@@ -9,50 +11,24 @@ package com.thealgorithms.datastructures.queues;
  *
  * @author [Ian Cowan](https://github.com/iccowan)
  */
-public class Deques<T> {
+public class Deque<T> {
 
     /**
      * Node for the deque
      */
-    class DequeNode<S> {
-
-        /**
-         * Value of the node
-         */
+    private static class DequeNode<S> {
         S val;
-
-        /**
-         * Next node in the deque from this node
-         */
         DequeNode<S> next = null;
-
-        /**
-         * Previous node in the deque from this node
-         */
         DequeNode<S> prev = null;
 
-        /**
-         * Constructor
-         */
         DequeNode(S val) {
             this.val = val;
         }
     }
 
-    /**
-     * Head of the deque
-     */
-    DequeNode<T> head = null;
-
-    /**
-     * Tail of the deque
-     */
-    DequeNode<T> tail = null;
-
-    /**
-     * Size of the deque
-     */
-    int size = 0;
+    private DequeNode<T> head = null;
+    private DequeNode<T> tail = null;
+    private int size = 0;
 
     /**
      * Adds the specified value to the head of the deque
@@ -60,16 +36,12 @@ public class Deques<T> {
      * @param val Value to add to the deque
      */
     public void addFirst(T val) {
-        // Create a new node with the given value
-        DequeNode<T> newNode = new DequeNode<T>(val);
+        DequeNode<T> newNode = new DequeNode<>(val);
 
-        // Add the node
-        if (head == null) {
-            // If the deque is empty, add the node as the head and tail
+        if (isEmpty()) {
             head = newNode;
             tail = newNode;
         } else {
-            // If the deque is not empty, insert the node as the new head
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
@@ -84,20 +56,15 @@ public class Deques<T> {
      * @param val Value to add to the deque
      */
     public void addLast(T val) {
-        // Create a new node with the given value
-        DequeNode<T> newNode = new DequeNode<T>(val);
-
-        // Add the node
+        DequeNode<T> newNode = new DequeNode<>(val);
         if (tail == null) {
-            // If the deque is empty, add the node as the head and tail
             head = newNode;
+            tail = newNode;
         } else {
-            // If the deque is not empty, insert the node as the new tail
             newNode.prev = tail;
             tail.next = newNode;
+            tail = newNode;
         }
-        tail = newNode;
-
         size++;
     }
 
@@ -105,33 +72,21 @@ public class Deques<T> {
      * Removes and returns the first (head) value in the deque
      *
      * @return the value of the head of the deque
+     * @throws NoSuchElementException if the deque is empty
      */
     public T pollFirst() {
-        // If the head is null, return null
         if (head == null) {
-            return null;
+            throw new NoSuchElementException("Deque is empty");
         }
 
-        // First, let's get the value of the old head
         T oldHeadVal = head.val;
-
-        // Now, let's remove the head
         if (head == tail) {
-            // If there is only one node, remove it
             head = null;
             tail = null;
         } else {
-            // If there is more than one node, fix the references
-            head.next.prev = null;
-            DequeNode<T> oldHead = head;
             head = head.next;
-
-            // Can be considered unnecessary...
-            // Unlinking the old head to make sure there are no random
-            // references possibly affecting garbage collection
-            oldHead.next = null;
+            head.prev = null;
         }
-
         size--;
         return oldHeadVal;
     }
@@ -140,32 +95,21 @@ public class Deques<T> {
      * Removes and returns the last (tail) value in the deque
      *
      * @return the value of the tail of the deque
+     * @throws NoSuchElementException if the deque is empty
      */
     public T pollLast() {
-        // If the tail is null, return null
         if (tail == null) {
-            return null;
+            throw new NoSuchElementException("Deque is empty");
         }
 
-        // Let's get the value of the old tail
         T oldTailVal = tail.val;
-
-        // Now, remove the tail
         if (head == tail) {
-            // If there is only one node, remove it
             head = null;
             tail = null;
         } else {
-            // If there is more than one node, fix the references
-            tail.prev.next = null;
-            DequeNode<T> oldTail = tail;
             tail = tail.prev;
-
-            // Similarly to above, can be considered unnecessary
-            // See `pollFirst()` for explanation
-            oldTail.prev = null;
+            tail.next = null;
         }
-
         size--;
         return oldTailVal;
     }
@@ -173,19 +117,19 @@ public class Deques<T> {
     /**
      * Returns the first (head) value of the deque WITHOUT removing
      *
-     * @return the value of the head of the deque
+     * @return the value of the head of the deque, or null if empty
      */
     public T peekFirst() {
-        return head.val;
+        return head != null ? head.val : null;
     }
 
     /**
      * Returns the last (tail) value of the deque WITHOUT removing
      *
-     * @return the value of the tail of the deque
+     * @return the value of the tail of the deque, or null if empty
      */
     public T peekLast() {
-        return tail.val;
+        return tail != null ? tail.val : null;
     }
 
     /**
@@ -203,7 +147,7 @@ public class Deques<T> {
      * @return whether or not the deque is empty
      */
     public boolean isEmpty() {
-        return head == null;
+        return size == 0;
     }
 
     /**
@@ -216,25 +160,21 @@ public class Deques<T> {
      */
     @Override
     public String toString() {
-        String dequeString = "Head -> ";
+        StringBuilder dequeString = new StringBuilder("Head -> ");
         DequeNode<T> currNode = head;
         while (currNode != null) {
-            dequeString += currNode.val;
-
+            dequeString.append(currNode.val);
             if (currNode.next != null) {
-                dequeString += " <-> ";
+                dequeString.append(" <-> ");
             }
-
             currNode = currNode.next;
         }
-
-        dequeString += " <- Tail";
-
-        return dequeString;
+        dequeString.append(" <- Tail");
+        return dequeString.toString();
     }
 
     public static void main(String[] args) {
-        Deques<Integer> myDeque = new Deques<Integer>();
+        Deque<Integer> myDeque = new Deque<>();
         for (int i = 0; i < 42; i++) {
             if (i / 42.0 < 0.5) {
                 myDeque.addFirst(i);
