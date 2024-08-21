@@ -46,4 +46,3 @@ public class GCDRecursionTest {
         assertEquals(expectedGcd, GCD.gcd(a, b));
     }
 }
-
