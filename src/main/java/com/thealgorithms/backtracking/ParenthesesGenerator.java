@@ -19,7 +19,7 @@ public final class ParenthesesGenerator {
      */
     public static List<String> generateParentheses(final int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("The number of pairs of parentheses cannot be nagative");
+            throw new IllegalArgumentException("The number of pairs of parentheses cannot be negative");
         }
         List<String> result = new ArrayList<>();
         generateParenthesesHelper(result, "", 0, 0, n);

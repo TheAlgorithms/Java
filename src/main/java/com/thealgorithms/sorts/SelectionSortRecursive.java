@@ -27,7 +27,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @param index the current index to start sorting from
      * @param <T>   the type of elements in the array (must be Comparable)
      */
-    private static <T extends Comparable<T>> void recursiveSelectionSort(T[] array, int index) {
+    private static <T extends Comparable<T>> void recursiveSelectionSort(T[] array, final int index) {
         if (index == array.length - 1) {
             return;
         }
@@ -46,7 +46,7 @@ public class SelectionSortRecursive implements SortAlgorithm {
      * @param <T>   the type of elements in the array
      * @return the index of the minimum element
      */
-    private static <T extends Comparable<T>> int findMinIndex(T[] array, int start) {
+    private static <T extends Comparable<T>> int findMinIndex(T[] array, final int start) {
         // Base case: if start is the last index, return start
         if (start == array.length - 1) {
             return start;

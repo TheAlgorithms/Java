@@ -1,8 +1,11 @@
 package com.thealgorithms.conversions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class BinaryToDecimalTest {
 
@@ -29,5 +32,11 @@ public class BinaryToDecimalTest {
     public void testLargeBinaryToDecimal() {
         assertEquals(262144L, BinaryToDecimal.binaryToDecimal(1000000000000000000L));
         assertEquals(524287L, BinaryToDecimal.binaryToDecimal(1111111111111111111L));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"2", "1234", "11112", "101021"})
+    void testNotCorrectBinaryInput(long binaryNumber) {
+        assertThrows(IllegalArgumentException.class, () -> BinaryToDecimal.binaryToDecimal(binaryNumber));
     }
 }

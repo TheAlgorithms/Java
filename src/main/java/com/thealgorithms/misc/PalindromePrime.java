@@ -6,7 +6,7 @@ public final class PalindromePrime {
     private PalindromePrime() {
     }
 
-    public static void main(String[] args) { // Main funtion
+    public static void main(String[] args) { // Main function
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the quantity of First Palindromic Primes you want");
         int n = in.nextInt(); // Input of how many first palindromic prime we want
