@@ -54,26 +54,4 @@ public class GenericArrayListQueue<T> {
     public T poll() {
         return isEmpty() ? null : elementList.removeFirst();
     }
-
-    /**
-     * Main method for demonstrating queue operations.
-     *
-     * @param args Command line arguments.
-     */
-    public static void main(String[] args) {
-        GenericArrayListQueue<Integer> queue = new GenericArrayListQueue<>();
-        System.out.println("Running...");
-        assert queue.peek() == null;
-        assert queue.poll() == null;
-        assert queue.add(1);
-        assert queue.peek() == 1;
-        assert queue.add(2);
-        assert queue.peek() == 1;
-        assert queue.poll() == 1;
-        assert queue.peek() == 2;
-        assert queue.poll() == 2;
-        assert queue.peek() == null;
-        assert queue.poll() == null;
-        System.out.println("Finished.");
-    }
 }
