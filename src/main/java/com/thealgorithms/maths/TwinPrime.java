@@ -16,7 +16,7 @@ public final class TwinPrime {
     /**
      * This method returns twin prime of the integer value passed as argument
      *
-     * @param input_number Integer value of which twin prime is to be found
+     * @param inputNumber Integer value of which twin prime is to be found
      * @return (number + 2) if number and (number + 2) are prime, -1 otherwise
      */
     static int getTwinPrime(int inputNumber) {
