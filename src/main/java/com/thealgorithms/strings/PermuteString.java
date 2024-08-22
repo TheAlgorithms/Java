@@ -38,10 +38,10 @@ public final class PermuteString {
      * @return a new string with the characters at positions i and j swapped
      */
     public static String swapCharacters(String str, int i, int j) {
-        char[] chars  = str.toCharArray();
-        char temp = chars [i];
-        chars [i] = chars [j];
-        chars [j] = temp;
+        char[] chars = str.toCharArray();
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
         return new String(chars);
     }
 
