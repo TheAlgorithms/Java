@@ -1,26 +1,32 @@
 package com.thealgorithms.maths;
 
-// POWER (exponentials) Examples (a^b)
+/**
+ * A utility class for computing exponentiation (power) of integers.
+ * <p>
+ * This class provides a method to calculate the value of a base raised to a given exponent using a simple iterative approach.
+ * For example, given a base {@code a} and an exponent {@code b}, the class computes {@code a}<sup>{@code b}</sup>.
+ * </p>
+ */
 public final class Pow {
     private Pow() {
     }
 
-    public static void main(String[] args) {
-        assert pow(2, 0) == Math.pow(2, 0); // == 1
-        assert pow(0, 2) == Math.pow(0, 2); // == 0
-        assert pow(2, 10) == Math.pow(2, 10); // == 1024
-        assert pow(10, 2) == Math.pow(10, 2); // == 100
-    }
-
     /**
-     * Returns the value of the first argument raised to the power of the second
-     * argument
+     * Computes the value of the base raised to the power of the exponent.
+     * <p>
+     * The method calculates {@code a}<sup>{@code b}</sup> by iteratively multiplying the base {@code a} with itself {@code b} times.
+     * If the exponent {@code b} is negative, an {@code IllegalArgumentException} is thrown.
+     * </p>
      *
-     * @param a the base.
-     * @param b the exponent.
-     * @return the value {@code a}<sup>{@code b}</sup>.
+     * @param a the base of the exponentiation. Must be a non-negative integer.
+     * @param b the exponent to which the base {@code a} is raised. Must be a non-negative integer.
+     * @return the result of {@code a}<sup>{@code b}</sup> as a {@code long}.
+     * @throws IllegalArgumentException if {@code b} is negative.
      */
     public static long pow(int a, int b) {
+        if (b < 0) {
+            throw new IllegalArgumentException("Exponent must be non-negative.");
+        }
         long result = 1;
         for (int i = 1; i <= b; i++) {
             result *= a;
