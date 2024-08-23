@@ -1,21 +1,21 @@
 package com.thealgorithms.strings;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class PalindromeTest {
+    private static Stream<TestData> provideTestCases() {
+        return Stream.of(new TestData(null, true), new TestData("", true), new TestData("aba", true), new TestData("123321", true), new TestData("kayak", true), new TestData("abb", false), new TestData("abc", false), new TestData("abc123", false), new TestData("kayaks", false));
+    }
 
-    @Test
-    public void palindrome() {
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    void testPalindrome(TestData testData) {
+        Assertions.assertEquals(testData.expected, Palindrome.isPalindrome(testData.input) && Palindrome.isPalindromeRecursion(testData.input) && Palindrome.isPalindromeTwoPointer(testData.input));
+    }
 
-        String[] palindromes = {null, "", "aba", "123321", "kayak"};
-        for (String s : palindromes) {
-            Assertions.assertTrue(Palindrome.isPalindrome(s) && Palindrome.isPalindromeRecursion(s) && Palindrome.isPalindromeTwoPointer(s));
-        }
-
-        String[] notPalindromes = {"abb", "abc", "abc123", "kayaks"};
-        for (String s : notPalindromes) {
-            Assertions.assertFalse(Palindrome.isPalindrome(s) || Palindrome.isPalindromeRecursion(s) || Palindrome.isPalindromeTwoPointer(s));
-        }
+    private record TestData(String input, boolean expected) {
     }
 }
