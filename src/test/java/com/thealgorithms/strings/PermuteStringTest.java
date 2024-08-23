@@ -2,19 +2,12 @@ package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class PermuteStringTest {
-
-    private Set<String> getPermutations(String str) {
-        Set<String> permutations = new HashSet<>();
-        PermuteString.generatePermutations(str, 0, str.length(), permutations);
-        return permutations;
-    }
 
     private static Stream<TestData> provideTestCases() {
         return Stream.of(new TestData("ABC", Set.of("ABC", "ACB", "BAC", "BCA", "CAB", "CBA")), new TestData("AB", Set.of("AB", "BA")), new TestData("A", Set.of("A")), new TestData("AA", Set.of("AA")), new TestData("123", Set.of("123", "132", "213", "231", "312", "321")),
@@ -27,7 +20,7 @@ public class PermuteStringTest {
     @ParameterizedTest
     @MethodSource("provideTestCases")
     void testPermutations(TestData testData) {
-        Set<String> actualPermutations = getPermutations(testData.input);
+        Set<String> actualPermutations = PermuteString.getPermutations(testData.input);
         assertEquals(testData.expected, actualPermutations, "The permutations of '" + testData.input + "' are not correct.");
     }
 

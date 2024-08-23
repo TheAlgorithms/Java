@@ -1,5 +1,6 @@
 package com.thealgorithms.strings;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -30,6 +31,24 @@ public final class PermuteString {
     }
 
     /**
+     * Generates all possible permutations of the given string.
+     *
+     * <p>This method returns a set containing all unique permutations of the input string. It leverages
+     * a recursive helper method to generate these permutations.
+     *
+     * @param str The input string for which permutations are to be generated.
+     *            If the string is null or empty, the result will be an empty set.
+     * @return A {@link Set} of strings containing all unique permutations of the input string.
+     *         If the input string has duplicate characters, the set will ensure that only unique permutations
+     *         are returned.
+     */
+    public static Set<String> getPermutations(String str) {
+        Set<String> permutations = new HashSet<>();
+        PermuteString.generatePermutations(str, 0, str.length(), permutations);
+        return permutations;
+    }
+
+    /**
      * Swaps the characters at the specified positions in the given string.
      *
      * @param str the string in which characters will be swapped
@@ -37,7 +56,7 @@ public final class PermuteString {
      * @param j the position of the second character to swap
      * @return a new string with the characters at positions i and j swapped
      */
-    public static String swapCharacters(String str, int i, int j) {
+    private static String swapCharacters(String str, int i, int j) {
         char[] chars = str.toCharArray();
         char temp = chars[i];
         chars[i] = chars[j];
@@ -53,7 +72,7 @@ public final class PermuteString {
      * @param end the end index (length of the string)
      * @param permutations the set to collect all unique permutations
      */
-    public static void generatePermutations(String str, int start, int end, Set<String> permutations) {
+    private static void generatePermutations(String str, int start, int end, Set<String> permutations) {
         if (start == end - 1) {
             permutations.add(str);
         } else {
