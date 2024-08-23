@@ -56,6 +56,6 @@ public final class NonRepeatingElement {
             }
         }
 
-        return new int[]{num1, num2};
+        return new int[] {num1, num2};
     }
 }
