@@ -10,8 +10,7 @@ import java.util.Map;
 public class LFUCache<K, V> {
 
     private class Node {
-
-        private K key;
+        private final K key;
         private V value;
         private int frequency;
         private Node previous;
@@ -26,67 +25,67 @@ public class LFUCache<K, V> {
 
     private Node head;
     private Node tail;
-    private Map<K, Node> map = null;
-    private Integer capacity;
+    private final Map<K, Node> cache;
+    private final int capacity;
     private static final int DEFAULT_CAPACITY = 100;
 
     public LFUCache() {
-        this.capacity = DEFAULT_CAPACITY;
+        this(DEFAULT_CAPACITY);
     }
 
-    public LFUCache(Integer capacity) {
+    public LFUCache(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than zero.");
+        }
         this.capacity = capacity;
-        this.map = new HashMap<>();
+        this.cache = new HashMap<>();
     }
 
     /**
-     * This method returns value present in the cache corresponding to the key passed as parameter
+     * Retrieves the value for the given key from the cache. Increases the frequency of the node.
      *
-     * @param <K> key for which value is to be retrieved
-     * @returns <V> object corresponding to the key passed as parameter, returns null if <K> key is
-     *     not present in the cache
+     * @param key The key to look up.
+     * @return The value associated with the key, or null if the key is not present.
      */
     public V get(K key) {
-        if (this.map.get(key) == null) {
+        Node node = cache.get(key);
+        if (node == null) {
             return null;
         }
-
-        Node node = map.get(key);
         removeNode(node);
         node.frequency += 1;
         addNodeWithUpdatedFrequency(node);
-
         return node.value;
     }
 
     /**
-     * This method stores <K> key and <V> value in the cache
+     * Adds or updates a key-value pair in the cache. If the cache is full, the least frequently used item is evicted.
      *
-     * @param <K> key which is to be stored in the cache
-     * @param <V> value which is to be stored in the cache
+     * @param key   The key to insert or update.
+     * @param value The value to insert or update.
      */
     public void put(K key, V value) {
-        if (map.containsKey(key)) {
-            Node node = map.get(key);
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
             node.value = value;
             node.frequency += 1;
             removeNode(node);
             addNodeWithUpdatedFrequency(node);
         } else {
-            if (map.size() >= capacity) {
-                map.remove(this.head.key);
+            if (cache.size() >= capacity) {
+                cache.remove(this.head.key);
                 removeNode(head);
             }
             Node node = new Node(key, value, 1);
             addNodeWithUpdatedFrequency(node);
-            map.put(key, node);
+            cache.put(key, node);
         }
     }
 
     /**
-     * This method stores the node in the cache with updated frequency
+     * Adds a node to the linked list in the correct position based on its frequency.
      *
-     * @param Node node which is to be updated in the cache
+     * @param node The node to add.
      */
     private void addNodeWithUpdatedFrequency(Node node) {
         if (tail != null && head != null) {
@@ -123,9 +122,9 @@ public class LFUCache<K, V> {
     }
 
     /**
-     * This method removes node from the cache
+     * Removes a node from the linked list.
      *
-     * @param Node node which is to be removed in the cache
+     * @param node The node to remove.
      */
     private void removeNode(Node node) {
         if (node.previous != null) {
