@@ -1,51 +1,89 @@
 package com.thealgorithms.strings;
 
-/*
-Backtracking algorithm used in the program:-
+import java.util.HashSet;
+import java.util.Set;
 
->>Fix a character in the first position and swap the rest of the character with the first character.
-  Like in ABC, in the first iteration three strings are formed: ABC, BAC, and CBA by swapping A with
-  A, B and C respectively.
->>Repeat step 1 for the rest of the characters like fixing second character B and so on.
->>Now swap again to go back to the previous position. E.g., from ABC, we formed ABC by fixing B
-again, and we backtrack to the previous position and swap B with C. So, now we got ABC and ACB.
->>Repeat these steps for BAC and CBA, to get all the permutations.
+/**
+ * This class provides methods for generating all permutations of a given string using a backtracking algorithm.
+ * <p>
+ * The algorithm works as follows:
+ * <ol>
+ *     <li>Fix a character in the current position and swap it with each of the remaining characters.
+ *         For example, for the string "ABC":
+ *         <ul>
+ *             <li>Fix 'A' at the first position: permutations are "ABC", "BAC", "CBA" (obtained by swapping 'A' with 'B' and 'C' respectively).</li>
+ *         </ul>
+ *     </li>
+ *     <li>Repeat the process for the next character.
+ *         For instance, after fixing 'B' in the second position:
+ *         <ul>
+ *             <li>For "BAC", the permutations include "BAC" and "BCA" (after swapping 'A' and 'C').</li>
+ *         </ul>
+ *     </li>
+ *     <li>After generating permutations for the current position, backtrack by swapping the characters back to their original positions to restore the state.
+ *         For example, after generating permutations for "ABC", swap back to restore "BAC" and continue with further permutations.</li>
+ *     <li>Repeat the process for all characters to get all possible permutations.</li>
+ * </ol>
+ * </p>
  */
 public final class PermuteString {
     private PermuteString() {
     }
 
-    // Function for swapping the characters at position I with character at position j
-    public static String swapString(String a, int i, int j) {
-        char[] b = a.toCharArray();
-        char ch;
-        ch = b[i];
-        b[i] = b[j];
-        b[j] = ch;
-        return String.valueOf(b);
+    /**
+     * Generates all possible permutations of the given string.
+     *
+     * <p>This method returns a set containing all unique permutations of the input string. It leverages
+     * a recursive helper method to generate these permutations.
+     *
+     * @param str The input string for which permutations are to be generated.
+     *            If the string is null or empty, the result will be an empty set.
+     * @return A {@link Set} of strings containing all unique permutations of the input string.
+     *         If the input string has duplicate characters, the set will ensure that only unique permutations
+     *         are returned.
+     */
+    public static Set<String> getPermutations(String str) {
+        Set<String> permutations = new HashSet<>();
+        generatePermutations(str, 0, str.length(), permutations);
+        return permutations;
     }
 
-    public static void main(String[] args) {
-        String str = "ABC";
-        int len = str.length();
-        System.out.println("All the permutations of the string are: ");
-        generatePermutation(str, 0, len);
-    }
-
-    // Function for generating different permutations of the string
-    public static void generatePermutation(String str, int start, int end) {
-        // Prints the permutations
+    /**
+     * Generates all permutations of the given string and collects them into a set.
+     *
+     * @param str the string to permute
+     * @param start the starting index for the current permutation
+     * @param end the end index (length of the string)
+     * @param permutations the set to collect all unique permutations
+     */
+    private static void generatePermutations(String str, int start, int end, Set<String> permutations) {
         if (start == end - 1) {
-            System.out.println(str);
+            permutations.add(str);
         } else {
-            for (int i = start; i < end; i++) {
-                // Swapping the string by fixing a character
-                str = swapString(str, start, i);
-                // Recursively calling function generatePermutation() for rest of the characters
-                generatePermutation(str, start + 1, end);
-                // Backtracking and swapping the characters again.
-                str = swapString(str, start, i);
+            for (int currentIndex = start; currentIndex < end; currentIndex++) {
+                // Swap the current character with the character at the start index
+                str = swapCharacters(str, start, currentIndex);
+                // Recursively generate permutations for the remaining characters
+                generatePermutations(str, start + 1, end, permutations);
+                // Backtrack: swap the characters back to their original positions
+                str = swapCharacters(str, start, currentIndex);
             }
         }
+    }
+
+    /**
+     * Swaps the characters at the specified positions in the given string.
+     *
+     * @param str the string in which characters will be swapped
+     * @param i the position of the first character to swap
+     * @param j the position of the second character to swap
+     * @return a new string with the characters at positions i and j swapped
+     */
+    private static String swapCharacters(String str, int i, int j) {
+        char[] chars = str.toCharArray();
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+        return new String(chars);
     }
 }
