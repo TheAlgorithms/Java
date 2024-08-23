@@ -2,216 +2,200 @@ package com.thealgorithms.datastructures.queues;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.StringJoiner;
 
 public class LinkedQueue<T> implements Iterable<T> {
 
-    static class Node<T> {
-
+    /**
+     * Node class representing each element in the queue.
+     */
+    private static class Node<T> {
         T data;
         Node<T> next;
 
-        Node() {
-            this(null);
-        }
-
         Node(T data) {
-            this(data, null);
-        }
-
-        Node(T data, Node<T> next) {
             this.data = data;
-            this.next = next;
+            this.next = null;
         }
     }
 
-    /**
-     * Front of Queue
-     */
-    private Node<T> front;
+    private Node<T> front; // Front of the queue
+    private Node<T> rear; // Rear of the queue
+    private int size; // Size of the queue
 
     /**
-     * Rear of Queue
-     */
-    private Node<T> rear;
-
-    /**
-     * Size of Queue
-     */
-    private int size;
-
-    /**
-     * Init LinkedQueue
+     * Initializes an empty LinkedQueue.
      */
     public LinkedQueue() {
-
-        front = new Node<>();
-        rear = front;
+        front = null;
+        rear = null;
+        size = 0;
     }
 
     /**
-     * Check if queue is empty
+     * Checks if the queue is empty.
      *
-     * @return true if queue is empty, otherwise false
+     * @return true if the queue is empty, otherwise false.
      */
     public boolean isEmpty() {
         return size == 0;
     }
 
     /**
-     * Add element to rear of queue
+     * Adds an element to the rear of the queue.
      *
-     * @param data insert value
+     * @param data the element to insert.
+     * @throws IllegalArgumentException if data is null.
      */
     public void enqueue(T data) {
+        if (data == null) {
+            throw new IllegalArgumentException("Cannot enqueue null data");
+        }
+
         Node<T> newNode = new Node<>(data);
 
-        rear.next = newNode;
+        if (isEmpty()) {
+            front = newNode;
+        } else {
+            rear.next = newNode;
+        }
         rear = newNode;
-        /* make rear point at last node */
         size++;
     }
 
     /**
-     * Remove element at the front of queue
+     * Removes and returns the element at the front of the queue.
      *
-     * @return element at the front of queue
+     * @return the element at the front of the queue.
+     * @throws NoSuchElementException if the queue is empty.
      */
     public T dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("queue is empty");
+            throw new NoSuchElementException("Queue is empty");
         }
-        Node<T> destroy = front.next;
-        T retValue = destroy.data;
-        front.next = front.next.next;
-        /* clear let GC do it's work */
+
+        T retValue = front.data;
+        front = front.next;
         size--;
 
         if (isEmpty()) {
-            front = rear;
+            rear = null;
         }
 
         return retValue;
     }
 
     /**
-     * Peek element at the front of queue without removing
+     * Returns the element at the front of the queue without removing it.
      *
-     * @return element at the front
+     * @return the element at the front of the queue.
+     * @throws NoSuchElementException if the queue is empty.
      */
     public T peekFront() {
         if (isEmpty()) {
-            throw new NoSuchElementException("queue is empty");
+            throw new NoSuchElementException("Queue is empty");
         }
-        return front.next.data;
+        return front.data;
     }
 
     /**
-     * Peek element at the rear of queue without removing
+     * Returns the element at the rear of the queue without removing it.
      *
-     * @return element at the front
+     * @return the element at the rear of the queue.
+     * @throws NoSuchElementException if the queue is empty.
      */
     public T peekRear() {
         if (isEmpty()) {
-            throw new NoSuchElementException("queue is empty");
+            throw new NoSuchElementException("Queue is empty");
         }
         return rear.data;
     }
 
     /**
-     * Peeks the element at the index and
-     *          returns the value
-     * @param pos at which to peek
+     * Returns the element at the specified position (1-based index).
+     *
+     * @param pos the position to peek at (1-based index).
+     * @return the element at the specified position.
+     * @throws IndexOutOfBoundsException if the position is out of range.
      */
-
     public T peek(int pos) {
-        if (pos > size) {
-            throw new IndexOutOfBoundsException("Position %s out of range!".formatted(pos));
+        if (pos < 1 || pos > size) {
+            throw new IndexOutOfBoundsException("Position " + pos + " out of range!");
         }
+
         Node<T> node = front;
-        while (pos-- > 0) {
+        for (int i = 1; i < pos; i++) {
             node = node.next;
         }
         return node.data;
     }
 
     /**
-     * Node iterator, allows to travel through
-     * the nodes using for() loop or forEach(Consumer)
+     * Returns an iterator over the elements in the queue.
+     *
+     * @return an iterator over the elements in the queue.
      */
-
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-            Node<T> node = front;
+            private Node<T> current = front;
 
             @Override
             public boolean hasNext() {
-                return node.next != null;
+                return current != null;
             }
 
             @Override
             public T next() {
-                if (hasNext()) {
-                    node = node.next;
-                    return node.data;
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
                 }
-                throw new NoSuchElementException();
+
+                T data = current.data;
+                current = current.next;
+                return data;
             }
         };
     }
 
     /**
-     * Return size of queue
+     * Returns the size of the queue.
      *
-     * @return size of queue
+     * @return the size of the queue.
      */
     public int size() {
         return size;
     }
 
     /**
-     * Clear all nodes in queue
+     * Clears all elements from the queue.
      */
     public void clear() {
-        while (size > 0) {
-            dequeue();
-        }
+        front = null;
+        rear = null;
+        size = 0;
     }
 
+    /**
+     * Returns a string representation of the queue.
+     *
+     * @return a string representation of the queue.
+     */
     @Override
     public String toString() {
-        StringJoiner join = new StringJoiner(", "); // separator of ', '
-        Node<T> travel = front;
-        while ((travel = travel.next) != null) {
-            join.add(String.valueOf(travel.data));
+        if (isEmpty()) {
+            return "[]";
         }
-        return '[' + join.toString() + ']';
-    }
 
-    /* Driver Code */
-    public static void main(String[] args) {
-        LinkedQueue<Integer> queue = new LinkedQueue<>();
-        assert queue.isEmpty();
-
-        queue.enqueue(1);
-        /* 1 */
-        queue.enqueue(2);
-        /* 1 2 */
-        queue.enqueue(3);
-        /* 1 2 3 */
-        System.out.println(queue);
-        /* [1, 2, 3] */
-
-        assert queue.size() == 3;
-        assert queue.dequeue() == 1;
-        assert queue.peekFront() == 2;
-        assert queue.peekRear() == 3;
-
-        queue.clear();
-        assert queue.isEmpty();
-
-        System.out.println(queue);
-        /* [] */
+        StringBuilder sb = new StringBuilder("[");
+        Node<T> current = front;
+        while (current != null) {
+            sb.append(current.data);
+            if (current.next != null) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append(']');
+        return sb.toString();
     }
 }
