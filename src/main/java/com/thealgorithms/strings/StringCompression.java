@@ -10,7 +10,7 @@ public final class StringCompression {
     /**
      * Returns the compressed or encoded string
      *
-     * @param ch character array that contains the group of characters to be encoded
+     * @param input character array that contains the group of characters to be encoded
      * @return the compressed character array as string
      */
     public static String compress(String input) {
