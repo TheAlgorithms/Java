@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 public class FindKthNumberTest {
