@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 public class FindKthNumberTest {
     @Test
     public void testFindKthMaxTypicalCases() {
-        int[] array1 = { 3, 2, 1, 4, 5 };
+        int[] array1 = {3, 2, 1, 4, 5};
         assertEquals(3, FindKthNumber.findKthMax(array1, 3));
         assertEquals(4, FindKthNumber.findKthMax(array1, 2));
         assertEquals(5, FindKthNumber.findKthMax(array1, 1));
 
-        int[] array2 = { 7, 5, 8, 2, 1, 6 };
+        int[] array2 = {7, 5, 8, 2, 1, 6};
         assertEquals(5, FindKthNumber.findKthMax(array2, 4));
         assertEquals(6, FindKthNumber.findKthMax(array2, 3));
         assertEquals(8, FindKthNumber.findKthMax(array2, 1));
@@ -24,23 +24,19 @@ public class FindKthNumberTest {
 
     @Test
     public void testFindKthMaxEdgeCases() {
-        int[] array1 = { 1 };
+        int[] array1 = {1};
         assertEquals(1, FindKthNumber.findKthMax(array1, 1));
 
-        int[] array2 = { 5, 3 };
+        int[] array2 = {5, 3};
         assertEquals(5, FindKthNumber.findKthMax(array2, 1));
         assertEquals(3, FindKthNumber.findKthMax(array2, 2));
     }
 
     @Test
     public void testFindKthMaxInvalidK() {
-        int[] array = { 1, 2, 3, 4, 5 };
-        assertThrows(IllegalArgumentException.class, () -> {
-            FindKthNumber.findKthMax(array, 0);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            FindKthNumber.findKthMax(array, 6);
-        });
+        int[] array = {1, 2, 3, 4, 5};
+        assertThrows(IllegalArgumentException.class, () -> FindKthNumber.findKthMax(array, 0));
+        assertThrows(IllegalArgumentException.class, () -> FindKthNumber.findKthMax(array, 6));
     }
 
     @Test
