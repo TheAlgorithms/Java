@@ -1,5 +1,8 @@
 package com.thealgorithms.others;
 
+import java.util.ArrayList;
+import java.util.List;
+
 final class FloydTriangle {
     private FloydTriangle() {
     }
@@ -8,21 +11,20 @@ final class FloydTriangle {
      * Generates a Floyd Triangle with the specified number of rows.
      *
      * @param rows The number of rows in the triangle.
-     * @return A string representing the Floyd Triangle.
+     * @return A List representing the Floyd Triangle.
      */
-    public static String generateFloydTriangle(int rows) {
-        StringBuilder triangle = new StringBuilder();
+    public static List<List<Integer>> generateFloydTriangle(int rows) {
+        List<List<Integer>> triangle = new ArrayList<>();
         int number = 1;
 
         for (int i = 0; i < rows; i++) {
+            List<Integer> row = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
-                triangle.append(number++).append(" ");
+                row.add(number++);
             }
-            if (i < rows - 1) {
-                triangle.append("\n");
-            }
+            triangle.add(row);
         }
 
-        return triangle.toString();
+        return triangle;
     }
 }
