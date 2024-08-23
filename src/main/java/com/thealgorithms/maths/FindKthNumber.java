@@ -1,9 +1,10 @@
 package com.thealgorithms.maths;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Use a quicksort-based approach to identify the k-th largest or k-th max element within the provided array.
+ * use quick sort algorithm to get kth largest or kth smallest element in given array
  */
 public final class FindKthNumber {
     private FindKthNumber() {
@@ -11,55 +12,66 @@ public final class FindKthNumber {
 
     private static final Random RANDOM = new Random();
 
-    public static int findKthMax(int[] array, int k) {
-        if (k <= 0 || k > array.length) {
-            throw new IllegalArgumentException("k must be between 1 and the size of the array");
-        }
+    public static void main(String[] args) {
+        /* generate an array with random size and random elements */
+        int[] nums = generateArray(100);
 
-        // Convert k-th largest to index for QuickSelect
-        return quickSelect(array, 0, array.length - 1, array.length - k);
+        /* get 3th largest element */
+        int kth = 3;
+        int kthMaxIndex = nums.length - kth;
+        int targetMax = findKthMax(nums, kthMaxIndex);
+
+        /* get 3th smallest element */
+        int kthMinIndex = kth - 1;
+        int targetMin = findKthMax(nums, kthMinIndex);
+
+        Arrays.sort(nums);
+        assert nums[kthMaxIndex] == targetMax;
+        assert nums[kthMinIndex] == targetMin;
     }
 
-    private static int quickSelect(int[] array, int left, int right, int kSmallest) {
-        if (left == right) {
-            return array[left];
-        }
+    private static int[] generateArray(int capacity) {
+        int size = RANDOM.nextInt(capacity) + 1;
+        int[] array = new int[size];
 
-        // Randomly select a pivot index
-        int pivotIndex = left + RANDOM.nextInt(right - left + 1);
-        pivotIndex = partition(array, left, right, pivotIndex);
-
-        if (kSmallest == pivotIndex) {
-            return array[kSmallest];
-        } else if (kSmallest < pivotIndex) {
-            return quickSelect(array, left, pivotIndex - 1, kSmallest);
-        } else {
-            return quickSelect(array, pivotIndex + 1, right, kSmallest);
+        for (int i = 0; i < size; i++) {
+            array[i] = RANDOM.nextInt() % 100;
         }
+        return array;
     }
 
-    private static int partition(int[] array, int left, int right, int pivotIndex) {
-        int pivotValue = array[pivotIndex];
-        // Move pivot to end
-        swap(array, pivotIndex, right);
-        int storeIndex = left;
-
-        // Move all smaller elements to the left
-        for (int i = left; i < right; i++) {
-            if (array[i] < pivotValue) {
-                swap(array, storeIndex, i);
-                storeIndex++;
+    private static int findKthMax(int[] nums, int k) {
+        int start = 0;
+        int end = nums.length;
+        while (start < end) {
+            int pivot = partition(nums, start, end);
+            if (k == pivot) {
+                return nums[pivot];
+            } else if (k > pivot) {
+                start = pivot + 1;
+            } else {
+                end = pivot;
             }
         }
-
-        // Move pivot to its final place
-        swap(array, storeIndex, right);
-        return storeIndex;
+        return -1;
     }
 
-    private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    private static int partition(int[] nums, int start, int end) {
+        int pivot = nums[start];
+        int j = start;
+        for (int i = start + 1; i < end; i++) {
+            if (nums[i] < pivot) {
+                j++;
+                swap(nums, i, j);
+            }
+        }
+        swap(nums, start, j);
+        return j;
+    }
+
+    private static void swap(int[] nums, int a, int b) {
+        int tmp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = tmp;
     }
 }
