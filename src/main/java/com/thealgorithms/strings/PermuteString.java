@@ -44,24 +44,8 @@ public final class PermuteString {
      */
     public static Set<String> getPermutations(String str) {
         Set<String> permutations = new HashSet<>();
-        PermuteString.generatePermutations(str, 0, str.length(), permutations);
+        generatePermutations(str, 0, str.length(), permutations);
         return permutations;
-    }
-
-    /**
-     * Swaps the characters at the specified positions in the given string.
-     *
-     * @param str the string in which characters will be swapped
-     * @param i the position of the first character to swap
-     * @param j the position of the second character to swap
-     * @return a new string with the characters at positions i and j swapped
-     */
-    private static String swapCharacters(String str, int i, int j) {
-        char[] chars = str.toCharArray();
-        char temp = chars[i];
-        chars[i] = chars[j];
-        chars[j] = temp;
-        return new String(chars);
     }
 
     /**
@@ -85,5 +69,21 @@ public final class PermuteString {
                 str = swapCharacters(str, start, currentIndex);
             }
         }
+    }
+
+    /**
+     * Swaps the characters at the specified positions in the given string.
+     *
+     * @param str the string in which characters will be swapped
+     * @param i the position of the first character to swap
+     * @param j the position of the second character to swap
+     * @return a new string with the characters at positions i and j swapped
+     */
+    private static String swapCharacters(String str, int i, int j) {
+        char[] chars = str.toCharArray();
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+        return new String(chars);
     }
 }
