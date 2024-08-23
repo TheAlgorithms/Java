@@ -1,20 +1,17 @@
 package com.thealgorithms.backtracking;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class NQueensTest {
 
     @Test
     public void testNQueens1() {
-        List<List<String>> expected = Arrays.asList(
-                Arrays.asList("Q")
-        );
+        List<List<String>> expected = Arrays.asList(Arrays.asList("Q"));
         assertEquals(expected, NQueens.getNQueensArrangements(1));
     }
 
@@ -32,10 +29,7 @@ public class NQueensTest {
 
     @Test
     public void testNQueens4() {
-        List<List<String>> expected = Arrays.asList(
-                Arrays.asList(".Q..", "...Q", "Q...", "..Q."),
-                Arrays.asList("..Q.", "Q...", "...Q", ".Q..")
-        );
+        List<List<String>> expected = Arrays.asList(Arrays.asList(".Q..", "...Q", "Q...", "..Q."), Arrays.asList("..Q.", "Q...", "...Q", ".Q.."));
         assertEquals(expected, NQueens.getNQueensArrangements(4));
     }
 
@@ -51,7 +45,4 @@ public class NQueensTest {
         List<List<String>> result = NQueens.getNQueensArrangements(6);
         assertEquals(4, result.size()); // 6x6 board has 4 solutions
     }
-
-    // Helper method to call the placeQueens and return the arrangements as a List<List<String>> for testing
-
 }
