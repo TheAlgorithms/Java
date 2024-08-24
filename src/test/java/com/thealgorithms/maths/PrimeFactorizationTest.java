@@ -23,8 +23,7 @@ class PrimeFactorizationTest {
     }
 
     private static Stream<Arguments> provideNumbersAndFactors() {
-        return Stream.of(Arguments.of(0, List.of()), Arguments.of(1, List.of()), Arguments.of(2, List.of(2)), Arguments.of(3, List.of(3)), Arguments.of(4, List.of(2, 2)),
-                Arguments.of(18, List.of(2, 3, 3)), Arguments.of(100, List.of(2, 2, 5, 5)), Arguments.of(198, List.of(2, 3, 3, 11)));
+        return Stream.of(Arguments.of(0, List.of()), Arguments.of(1, List.of()), Arguments.of(2, List.of(2)), Arguments.of(3, List.of(3)), Arguments.of(4, List.of(2, 2)), Arguments.of(18, List.of(2, 3, 3)), Arguments.of(100, List.of(2, 2, 5, 5)), Arguments.of(198, List.of(2, 3, 3, 11)));
     }
 
     private static Stream<Arguments> provideNumbersAndSizes() {
