@@ -4,7 +4,7 @@ package com.thealgorithms.datastructures.dictionary;
  * A clone of a Python dictionary in a Java class that simulates a key-value store using a hash table
  * implemented from scratch without using standard collections like Map.
  */
-public class DictionarySort {
+public class "Dictionary(Sorted)" {
     private static final int SIZE = 10; // Number of buckets
     private Bucket[] buckets;
     private SortStrategy sortStrategy = SortStrategy.KEY; // Default sorting strategy
