@@ -6,7 +6,7 @@ import java.util.Queue;
 public final class FordFulkerson {
     private static final int INF = Integer.MAX_VALUE;
 
-    public FordFulkerson() {
+    private FordFulkerson() {
     }
 
     public static int networkFlow(int vertexCount, int[][] capacity, int[][] flow, int source, int sink) {
