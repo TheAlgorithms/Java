@@ -1,7 +1,5 @@
 package com.thealgorithms.others;
 
-import java.util.Arrays;
-
 /**
  * The two-pointer technique is a useful tool to utilize when searching for
  * pairs in a sorted array.
@@ -22,8 +20,8 @@ final class TwoPointers {
      * @return {@code true} if there exists a pair of elements, {@code false} otherwise.
      */
     public static boolean isPairedSum(int[] arr, int key) {
-        int i = 0;  // index of the first element
-        int j = arr.length - 1;  // index of the last element
+        int i = 0; // index of the first element
+        int j = arr.length - 1; // index of the last element
 
         while (i < j) {
             int sum = arr[i] + arr[j];
