@@ -1,6 +1,5 @@
 package com.thealgorithms.strings;
 
-// Longest Palindromic Substring
 import java.util.Scanner;
 
 final class LongestPalindromicSubstring {
@@ -9,42 +8,39 @@ final class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String str = "";
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the string: ");
-        str = sc.nextLine();
-        System.out.println("Longest substring is : " + s.longestPalindrome(str));
+        String str = sc.nextLine();
+        System.out.println("Longest palindromic substring is: " + s.longestPalindrome(str));
         sc.close();
     }
 }
 
 class Solution {
+    int left = 0, right = -1, maxSize = 0;
 
     public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
+        for (int i = 0; i < s.length(); i++) {
+            f(s, i, i); // Odd length palindromes
+            f(s, i, i + 1); // Even length palindromes
         }
-        int n = s.length();
-        String maxStr = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i; j < n; ++j) {
-                if (isValid(s, i, j)) {
-                    if (j - i + 1 > maxStr.length()) { // update maxStr
-                        maxStr = s.substring(i, j + 1);
-                    }
-                }
-            }
-        }
-        return maxStr;
+        return s.substring(left, right + 1);
     }
 
-    private boolean isValid(String s, int lo, int hi) {
-        int n = hi - lo + 1;
-        for (int i = 0; i < n / 2; ++i) {
-            if (s.charAt(lo + i) != s.charAt(hi - i)) {
-                return false;
+    public void f(String s, int l, int r) {
+        while (l >= 0 && r < s.length()) {
+            if (s.charAt(l) == s.charAt(r)) {
+                l--;
+                r++;
+            } else {
+                break;
             }
         }
-        return true;
+        int size = r - l - 1;
+        if (maxSize < size) {
+            left = l + 1;
+            right = r - 1;
+            maxSize = size;
+        }
     }
 }
