@@ -1,7 +1,5 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
-
 /*
  * @author Ojasva Jain
  * Determinant of a Matrix Wikipedia link: https://en.wikipedia.org/wiki/Determinant
@@ -10,8 +8,13 @@ public final class DeterminantOfMatrix {
     private DeterminantOfMatrix() {
     }
 
-    // Determinant calculator
-    //@return determinant of the input matrix
+    /**
+     * Calculates the determinant of a given matrix.
+     *
+     * @param a the input matrix
+     * @param n the size of the matrix
+     * @return the determinant of the matrix
+     */
     static int determinant(int[][] a, int n) {
         int det = 0;
         int sign = 1;
@@ -40,22 +43,5 @@ public final class DeterminantOfMatrix {
             }
         }
         return det;
-    }
-
-    // Driver Method
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        // Input Matrix
-        System.out.println("Enter matrix size (Square matrix only)");
-        int n = in.nextInt();
-        System.out.println("Enter matrix");
-        int[][] a = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                a[i][j] = in.nextInt();
-            }
-        }
-        System.out.println(determinant(a, n));
-        in.close();
     }
 }

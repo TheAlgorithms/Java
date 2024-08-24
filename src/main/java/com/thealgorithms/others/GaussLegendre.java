@@ -6,8 +6,8 @@ package com.thealgorithms.others;
  *
  * @author AKS1996
  */
-public final class GuassLegendre {
-    private GuassLegendre() {
+public final class GaussLegendre {
+    private GaussLegendre() {
     }
 
     public static void main(String[] args) {
