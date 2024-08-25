@@ -59,26 +59,22 @@ final class BalancedBrackets {
             switch (bracket) {
             case '(':
             case '[':
+            case '<':
             case '{':
                 bracketsStack.push(bracket);
                 break;
             case ')':
             case ']':
+            case '>':
             case '}':
                 if (bracketsStack.isEmpty() || !isPaired(bracketsStack.pop(), bracket)) {
                     return false;
                 }
                 break;
             default:
-                /* other character is invalid */
                 return false;
             }
         }
         return bracketsStack.isEmpty();
-    }
-
-    public static void main(String[] args) {
-        assert isBalanced("[()]{}{[()()]()}");
-        assert !isBalanced("[(])");
     }
 }

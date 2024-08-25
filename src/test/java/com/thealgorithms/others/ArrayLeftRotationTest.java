@@ -44,4 +44,11 @@ class ArrayLeftRotationTest {
         int[] result = ArrayLeftRotation.rotateLeft(arr, n);
         assertArrayEquals(expected, result);
     }
+
+    @Test
+    void testForEmptyArray() {
+        int[] arr = {};
+        int[] result = ArrayLeftRotation.rotateLeft(arr, 3);
+        assertArrayEquals(arr, result);
+    }
 }
