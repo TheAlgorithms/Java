@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 public class AnagramsTest {
 
     private static Stream<Arguments> anagramTestData() {
-        return Stream.of(Arguments.of("late", "tale", true), Arguments.of("late", "teal", true), Arguments.of("listen", "silent", true), Arguments.of("hello", "olelh", true), Arguments.of("hello", "world", false), Arguments.of("deal", "lead", true), Arguments.of("binary", "brainy", true), Arguments.of("adobe", "abode", true), Arguments.of("cat", "act", true), Arguments.of("cat", "cut", false));
+        return Stream.of(Arguments.of("late", "tale", true), Arguments.of("late", "teal", true), Arguments.of("listen", "silent", true), Arguments.of("hello", "olelh", true), Arguments.of("hello", "world", false), Arguments.of("deal", "lead", true), Arguments.of("binary", "brainy", true),
+            Arguments.of("adobe", "abode", true), Arguments.of("cat", "act", true), Arguments.of("cat", "cut", false));
     }
 
     @ParameterizedTest
