@@ -8,37 +8,65 @@ import org.junit.jupiter.api.Test;
 public class TwoPointersTest {
 
     @Test
-    void twoPointersFirstTestCase() {
+    void testPositivePairExists() {
         int[] arr = {2, 6, 9, 22, 121};
         int key = 28;
         assertTrue(TwoPointers.isPairedSum(arr, key));
     }
 
     @Test
-    void twoPointersSecondTestCase() {
-        int[] arr = {-1, -12, 12, 0, 8};
+    void testNegativePairExists() {
+        int[] arr = {-12, -1, 0, 8, 12};
         int key = 0;
         assertTrue(TwoPointers.isPairedSum(arr, key));
     }
 
     @Test
-    void twoPointersThirdTestCase() {
-        int[] arr = {12, 35, 12, 152, 0};
+    void testPairDoesNotExist() {
+        int[] arr = {0, 12, 12, 35, 152};
         int key = 13;
         assertFalse(TwoPointers.isPairedSum(arr, key));
     }
 
     @Test
-    void twoPointersFourthTestCase() {
-        int[] arr = {-2, 5, -1, 52, 31};
-        int key = -3;
+    void testNegativeSumPair() {
+        int[] arr = {-10, -3, 1, 2, 5, 9};
+        int key = -8;
         assertTrue(TwoPointers.isPairedSum(arr, key));
     }
 
     @Test
-    void twoPointersFiftiethTestCase() {
-        int[] arr = {25, 1, 0, 61, 21};
-        int key = 12;
+    void testPairDoesNotExistWithPositiveSum() {
+        int[] arr = {1, 2, 3, 4, 5};
+        int key = 10;
         assertFalse(TwoPointers.isPairedSum(arr, key));
+    }
+
+    @Test
+    void testEmptyArray() {
+        int[] arr = {};
+        int key = 5;
+        assertFalse(TwoPointers.isPairedSum(arr, key));
+    }
+
+    @Test
+    void testSingleElementArray() {
+        int[] arr = {5};
+        int key = 5;
+        assertFalse(TwoPointers.isPairedSum(arr, key));
+    }
+
+    @Test
+    void testArrayWithDuplicateElements() {
+        int[] arr = {1, 1, 3, 5, 5};
+        int key = 6;
+        assertTrue(TwoPointers.isPairedSum(arr, key));
+    }
+
+    @Test
+    void testPairExistsAtEdges() {
+        int[] arr = {1, 3, 4, 7, 8};
+        int key = 9;
+        assertTrue(TwoPointers.isPairedSum(arr, key));
     }
 }
