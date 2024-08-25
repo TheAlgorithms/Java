@@ -1,7 +1,5 @@
 package com.thealgorithms.strings;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -10,24 +8,24 @@ import java.util.Set;
  * alphabet. Wikipedia: https://en.wikipedia.org/wiki/Alphabetical_order
  */
 public final class CheckVowels {
+    private static final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u');
+
     private CheckVowels() {
     }
 
-    private static final Set<Character> VOWELS = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
-
     /**
-     * Check if a string is has vowels or not
+     * Checks if a string contains any vowels.
      *
-     * @param input a string
-     * @return {@code true} if given string has vowels, otherwise {@code false}
+     * @param input a string to check
+     * @return {@code true} if the given string contains at least one vowel, otherwise {@code false}
      */
     public static boolean hasVowels(String input) {
-        if (input == null) {
+        if (input == null || input.isEmpty()) {
             return false;
         }
-        input = input.toLowerCase();
-        for (int i = 0; i < input.length(); i++) {
-            if (VOWELS.contains(input.charAt(i))) {
+
+        for (char c : input.toLowerCase().toCharArray()) {
+            if (VOWELS.contains(c)) {
                 return true;
             }
         }
