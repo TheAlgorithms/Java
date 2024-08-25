@@ -1,63 +1,44 @@
 package com.thealgorithms.others;
 
-/* Program to reverse a Stack using Recursion*/
 import java.util.Stack;
 
+/**
+ * Class that provides methods to reverse a stack using recursion.
+ */
 public final class ReverseStackUsingRecursion {
     private ReverseStackUsingRecursion() {
     }
 
-    // Stack
-    private static Stack<Integer> stack = new Stack<>();
-
-    // Main function
-    public static void main(String[] args) {
-        // To Create a Dummy Stack containing integers from 0-9
-        for (int i = 0; i < 10; i++) {
-            stack.push(i);
+    /**
+     * Reverses the elements of the given stack using recursion.
+     *
+     * @param stack the stack to be reversed
+     * @throws IllegalArgumentException if the stack is null
+     */
+    public static void reverse(Stack<Integer> stack) {
+        if (stack == null) {
+            throw new IllegalArgumentException("Stack cannot be null");
         }
-        System.out.println("STACK");
-
-        // To print that dummy Stack
-        for (int k = 9; k >= 0; k--) {
-            System.out.println(k);
-        }
-
-        // Reverse Function called
-        reverseUsingRecursion(stack);
-
-        System.out.println("REVERSED STACK : ");
-        // To print reversed  stack
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+        if (!stack.isEmpty()) {
+            int topElement = stack.pop();
+            reverse(stack);
+            insertAtBottom(stack, topElement);
         }
     }
 
-    // Function Used to reverse Stack Using Recursion
-    private static void reverseUsingRecursion(Stack<Integer> stack) {
-        if (stack.isEmpty()) { // If stack is empty then return
-            return;
-        }
-        /* All items are stored in call stack until we reach the end*/
-
-        int temptop = stack.peek();
-        stack.pop();
-        reverseUsingRecursion(stack); // Recursion call
-        insertAtEnd(temptop); // Insert items held in call stack one by one into stack
-    }
-
-    // Function used to insert element at the end of stack
-    private static void insertAtEnd(int temptop) {
+    /**
+     * Inserts an element at the bottom of the given stack.
+     *
+     * @param stack    the stack where the element will be inserted
+     * @param element  the element to be inserted at the bottom
+     */
+    private static void insertAtBottom(Stack<Integer> stack, int element) {
         if (stack.isEmpty()) {
-            stack.push(temptop); // If stack is empty push the element
+            stack.push(element);
         } else {
-            int temp = stack.peek();
-            /* All the items are stored in call stack until we reach end*/
-            stack.pop();
-
-            insertAtEnd(temptop); // Recursive call
-
-            stack.push(temp);
+            int topElement = stack.pop();
+            insertAtBottom(stack, element);
+            stack.push(topElement);
         }
     }
 }
