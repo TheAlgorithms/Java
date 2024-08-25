@@ -4,50 +4,55 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class BalancedBracketsTest {
 
-    @Test
-    void testIsPaired() {
-        assertTrue(BalancedBrackets.isPaired('(', ')'));
-        assertTrue(BalancedBrackets.isPaired('[', ']'));
-        assertTrue(BalancedBrackets.isPaired('{', '}'));
-        assertTrue(BalancedBrackets.isPaired('<', '>'));
-
-        assertFalse(BalancedBrackets.isPaired('(', ']'));
-        assertFalse(BalancedBrackets.isPaired('[', ')'));
-        assertFalse(BalancedBrackets.isPaired('{', '>'));
-        assertFalse(BalancedBrackets.isPaired('<', ')'));
-
-        assertFalse(BalancedBrackets.isPaired('a', 'b'));
-        assertFalse(BalancedBrackets.isPaired('!', '@'));
+    @ParameterizedTest
+    @MethodSource("providePairedBracketsForTrue")
+    void testIsPairedTrue(char opening, char closing) {
+        assertTrue(BalancedBrackets.isPaired(opening, closing));
     }
 
-    @Test
-    void testIsBalanced() {
-        assertTrue(BalancedBrackets.isBalanced("[()]{}{[()()]()}"));
-        assertTrue(BalancedBrackets.isBalanced("()"));
-        assertTrue(BalancedBrackets.isBalanced("[]"));
-        assertTrue(BalancedBrackets.isBalanced("{}"));
-        assertTrue(BalancedBrackets.isBalanced("<>"));
-        assertTrue(BalancedBrackets.isBalanced("[{<>}]"));
-        assertTrue(BalancedBrackets.isBalanced(""));
+    @ParameterizedTest
+    @MethodSource("providePairedBracketsForFalse")
+    void testIsPairedFalse(char opening, char closing) {
+        assertFalse(BalancedBrackets.isPaired(opening, closing));
+    }
 
-        assertFalse(BalancedBrackets.isBalanced("[(])"));
-        assertFalse(BalancedBrackets.isBalanced("([)]"));
-        assertFalse(BalancedBrackets.isBalanced("{[<]>}"));
-        assertFalse(BalancedBrackets.isBalanced("["));
-        assertFalse(BalancedBrackets.isBalanced(")"));
-        assertFalse(BalancedBrackets.isBalanced("[{"));
-        assertFalse(BalancedBrackets.isBalanced("]"));
+    @ParameterizedTest
+    @MethodSource("provideBalancedStringsForTrue")
+    void testIsBalancedTrue(String input) {
+        assertTrue(BalancedBrackets.isBalanced(input));
+    }
 
-        assertFalse(BalancedBrackets.isBalanced("[a+b]"));
-        assertFalse(BalancedBrackets.isBalanced("a+b"));
+    @ParameterizedTest
+    @MethodSource("provideBalancedStringsForFalse")
+    void testIsBalancedFalse(String input) {
+        assertFalse(BalancedBrackets.isBalanced(input));
     }
 
     @Test
     void testIsBalancedNull() {
         assertThrows(IllegalArgumentException.class, () -> BalancedBrackets.isBalanced(null));
+    }
+
+    private static Stream<Arguments> providePairedBracketsForTrue() {return Stream.of(Arguments.of('(', ')'), Arguments.of('[', ']'), Arguments.of('{', '}'), Arguments.of('<', '>'));
+    }
+
+    private static Stream<Arguments> providePairedBracketsForFalse() {
+        return Stream.of(Arguments.of('(', ']'), Arguments.of('[', ')'), Arguments.of('{', '>'), Arguments.of('<', ')'), Arguments.of('a', 'b'), Arguments.of('!', '@'));
+    }
+
+    private static Stream<Arguments> provideBalancedStringsForTrue() {
+        return Stream.of(Arguments.of("[()]{}{[()()]()}"), Arguments.of("()"), Arguments.of("[]"), Arguments.of("{}"), Arguments.of("<>"), Arguments.of("[{<>}]"), Arguments.of(""));
+    }
+
+    private static Stream<Arguments> provideBalancedStringsForFalse() {
+        return Stream.of(Arguments.of("[(])"), Arguments.of("([)]"), Arguments.of("{[<]>}"), Arguments.of("["), Arguments.of(")"), Arguments.of("[{"), Arguments.of("]"), Arguments.of("[a+b]"), Arguments.of("a+b"));
     }
 }
