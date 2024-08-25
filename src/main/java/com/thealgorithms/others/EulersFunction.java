@@ -1,12 +1,19 @@
 package com.thealgorithms.others;
 
 /**
- * @brief utility class for <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>
+ * Utility class for computing
+ * <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>.
  */
 public final class EulersFunction {
     private EulersFunction() {
     }
 
+    /**
+     * Validates that the input is a positive integer.
+     *
+     * @param n the input number to validate
+     * @throws IllegalArgumentException if {@code n} is non-positive
+     */
     private static void checkInput(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("n must be positive.");
@@ -14,11 +21,12 @@ public final class EulersFunction {
     }
 
     /**
-     * @brief computes the value of Euler's totient function for given input
-     * @details has time complexity of O(sqrt(n))
-     * @param n the input
-     * @exception IllegalArgumentException n is non-positive
-     * @return the value of Euler's totient function for the input
+     * Computes the value of Euler's totient function for a given input.
+     * This function has a time complexity of O(sqrt(n)).
+     *
+     * @param n the input number
+     * @return the value of Euler's totient function for the given input
+     * @throws IllegalArgumentException if {@code n} is non-positive
      */
     public static int getEuler(int n) {
         checkInput(n);
