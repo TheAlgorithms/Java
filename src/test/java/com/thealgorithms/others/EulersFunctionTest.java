@@ -24,11 +24,11 @@ class EulersFunctionTest {
     }
 
     private static Stream<Arguments> provideNumbersForGetEuler() {
-        return Stream.of(Arguments.of(1, 1), Arguments.of(2, 1), Arguments.of(3, 2), Arguments.of(4, 2), Arguments.of(5, 4), Arguments.of(6, 2), Arguments.of(10, 4), Arguments.of(21, 12), Arguments.of(69, 44), Arguments.of(47, 46), Arguments.of(46, 22), Arguments.of(55, 40), Arguments.of(34, 16), Arguments.of(20, 8), Arguments.of(1024, 512));
+        return Stream.of(Arguments.of(1, 1), Arguments.of(2, 1), Arguments.of(3, 2), Arguments.of(4, 2), Arguments.of(5, 4), Arguments.of(6, 2), Arguments.of(10, 4), Arguments.of(21, 12), Arguments.of(69, 44), Arguments.of(47, 46), Arguments.of(46, 22), Arguments.of(55, 40), Arguments.of(34, 16),
+            Arguments.of(20, 8), Arguments.of(1024, 512));
     }
 
     private static Stream<Arguments> provideInvalidNumbersForGetEuler() {
         return Stream.of(Arguments.of(0), Arguments.of(-1), Arguments.of(-10));
     }
 }
-
