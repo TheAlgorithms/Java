@@ -3,27 +3,21 @@ package com.thealgorithms.maths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.HashMap;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ReverseNumberTest {
 
-    @Test
-    public void testReverseNumber() {
-        HashMap<Integer, Integer> testCases = new HashMap<>();
-        testCases.put(0, 0);
-        testCases.put(1, 1);
-        testCases.put(10, 1);
-        testCases.put(123, 321);
-        testCases.put(7890, 987);
-
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(ReverseNumber.reverseNumber(tc.getKey()), tc.getValue());
-        }
+    @ParameterizedTest
+    @CsvSource({"0, 0", "1, 1", "10, 1", "123, 321", "7890, 987"})
+    public void testReverseNumber(int input, int expected) {
+        assertEquals(expected, ReverseNumber.reverseNumber(input));
     }
 
-    @Test
-    public void testReverseNumberThrowsExceptionForNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> ReverseNumber.reverseNumber(-1));
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -123, -7890})
+    public void testReverseNumberThrowsExceptionForNegativeInput(int input) {
+        assertThrows(IllegalArgumentException.class, () -> ReverseNumber.reverseNumber(input));
     }
 }
