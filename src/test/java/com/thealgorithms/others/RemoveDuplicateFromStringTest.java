@@ -42,4 +42,3 @@ class RemoveDuplicateFromStringTest {
         assertEquals("abAB", RemoveDuplicateFromString.removeDuplicate("aabABAB"));
     }
 }
-
