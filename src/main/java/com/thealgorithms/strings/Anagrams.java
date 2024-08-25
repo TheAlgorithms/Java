@@ -10,7 +10,7 @@ import java.util.HashMap;
  * also the word binary into brainy and the word adobe into abode.
  * Reference from https://en.wikipedia.org/wiki/Anagram
  */
-public class Anagrams {
+public final class Anagrams {
     private Anagrams() {
     }
 
