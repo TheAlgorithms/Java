@@ -439,7 +439,6 @@
             * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RemoveDuplicateFromString.java)
             * [ReturnSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ReturnSubsequence.java)
             * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ReverseStackUsingRecursion.java)
-            * [RootPrecision](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RootPrecision.java)
             * [RotateMatrixBy90Degrees](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RotateMatrixBy90Degrees.java)
             * [SieveOfEratosthenes](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/SieveOfEratosthenes.java)
             * [SkylineProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/SkylineProblem.java)
