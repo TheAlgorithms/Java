@@ -27,7 +27,7 @@ final class ShortestCommonSuperSequenceLength {
 
         // Result is sum of input string
         // lengths - length of lcs
-        return (m + n - l);
+        return m + n - l;
     }
 
     /**
