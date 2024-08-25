@@ -16,6 +16,7 @@ public class LongestAlternatingSubsequenceTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of(new int[]{1}, 1), Arguments.of(new int[]{1, 2}, 2), Arguments.of(new int[]{2, 1}, 2), Arguments.of(new int[]{1, 3, 2, 4, 3, 5}, 6), Arguments.of(new int[]{1, 2, 3, 4, 5}, 2), Arguments.of(new int[]{5, 4, 3, 2, 1}, 2), Arguments.of(new int[]{10, 22, 9, 33, 49, 50, 31, 60}, 6), Arguments.of(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2));
+        return Stream.of(Arguments.of(new int[] {1}, 1), Arguments.of(new int[] {1, 2}, 2), Arguments.of(new int[] {2, 1}, 2), Arguments.of(new int[] {1, 3, 2, 4, 3, 5}, 6), Arguments.of(new int[] {1, 2, 3, 4, 5}, 2), Arguments.of(new int[] {5, 4, 3, 2, 1}, 2),
+            Arguments.of(new int[] {10, 22, 9, 33, 49, 50, 31, 60}, 6), Arguments.of(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2));
     }
 }
