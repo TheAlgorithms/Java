@@ -1,34 +1,44 @@
 package com.thealgorithms.others;
 
-/*
- * A left rotation operation on an array
- * shifts each of the array's elements
- * given integer n unit to the left.
+/**
+ * Provides a method to perform a left rotation on an array.
+ * A left rotation operation shifts each element of the array
+ * by a specified number of positions to the left.
  *
  * @author sangin-lee
  */
-
 public final class ArrayLeftRotation {
     private ArrayLeftRotation() {
     }
 
-    /*
-     * Returns the result of left rotation of given array arr and integer n
+    /**
+     * Performs a left rotation on the given array by the specified number of positions.
      *
-     * @param arr : int[] given array
-     *
-     * @param n : int given integer
-     *
-     * @return : int[] result of left rotation
+     * @param arr the array to be rotated
+     * @param n the number of positions to rotate the array to the left
+     * @return a new array containing the elements of the input array rotated to the left
      */
     public static int[] rotateLeft(int[] arr, int n) {
         int size = arr.length;
-        int[] dst = new int[size];
-        n = n % size;
-        for (int i = 0; i < size; i++) {
-            dst[i] = arr[n];
-            n = (n + 1) % size;
+
+        // Handle cases where array is empty or rotation count is zero
+        if (size == 0 || n <= 0) {
+            return arr.clone();
         }
-        return dst;
+
+        // Normalize the number of rotations
+        n = n % size;
+        if (n == 0) {
+            return arr.clone();
+        }
+
+        int[] rotated = new int[size];
+
+        // Perform rotation
+        for (int i = 0; i < size; i++) {
+            rotated[i] = arr[(i + n) % size];
+        }
+
+        return rotated;
     }
 }
