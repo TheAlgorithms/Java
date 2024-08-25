@@ -1,8 +1,5 @@
 package com.thealgorithms.others;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
@@ -10,38 +7,24 @@ public final class RemoveDuplicateFromString {
     private RemoveDuplicateFromString() {
     }
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String inpStr = br.readLine();
-
-        System.out.println("Actual string is: " + inpStr);
-        System.out.println("String after removing duplicates: " + removeDuplicate(inpStr));
-
-        br.close();
-    }
-
     /**
-     * This method produces a string after removing all the duplicate characters
-     * from input string and returns it Example: Input String - "aabbbccccddddd"
-     * Output String - "abcd"
+     * Removes duplicate characters from the given string.
      *
-     * @param s String from which duplicate characters have to be removed
-     * @return string with only unique characters
+     * @param input The input string from which duplicate characters need to be removed.
+     * @return A string containing only unique characters from the input, in their original order.
      */
-    public static String removeDuplicate(String s) {
-        if (s == null || s.isEmpty()) {
-            return s;
+    public static String removeDuplicate(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
         }
 
-        StringBuilder sb = new StringBuilder();
-        int n = s.length();
-
-        for (int i = 0; i < n; i++) {
-            if (sb.toString().indexOf(s.charAt(i)) == -1) {
-                sb.append(s.charAt(i));
+        StringBuilder uniqueChars = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (uniqueChars.indexOf(String.valueOf(c)) == -1) {
+                uniqueChars.append(c); // Append character if it's not already in the StringBuilder
             }
         }
 
-        return sb.toString();
+        return uniqueChars.toString();
     }
 }
