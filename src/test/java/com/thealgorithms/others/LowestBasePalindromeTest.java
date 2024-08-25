@@ -2,79 +2,76 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import org.junit.jupiter.api.Test;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LowestBasePalindromeTest {
-    @Test
-    public void testIsPalindromicPositive() {
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>()));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1))));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 1))));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1))));
-        assertTrue(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 2, 1))));
+
+    @ParameterizedTest
+    @MethodSource("provideListsForIsPalindromicPositive")
+    public void testIsPalindromicPositive(List<Integer> list) {
+        assertTrue(LowestBasePalindrome.isPalindromic(list));
     }
 
-    @Test
-    public void testIsPalindromicNegative() {
-        assertFalse(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2))));
-        assertFalse(LowestBasePalindrome.isPalindromic(new ArrayList<Integer>(Arrays.asList(1, 2, 1, 1))));
+    @ParameterizedTest
+    @MethodSource("provideListsForIsPalindromicNegative")
+    public void testIsPalindromicNegative(List<Integer> list) {
+        assertFalse(LowestBasePalindrome.isPalindromic(list));
     }
 
-    @Test
-    public void testIsPalindromicInBasePositive() {
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(101, 10));
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(1, 190));
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(0, 11));
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(10101, 10));
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(23, 22));
+    @ParameterizedTest
+    @MethodSource("provideNumbersAndBasesForIsPalindromicInBasePositive")
+    public void testIsPalindromicInBasePositive(int number, int base) {
+        assertTrue(LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
-    @Test
-    public void testIsPalindromicInBaseNegative() {
-        assertFalse(LowestBasePalindrome.isPalindromicInBase(1010, 10));
-        assertFalse(LowestBasePalindrome.isPalindromicInBase(123, 10));
+    @ParameterizedTest
+    @MethodSource("provideNumbersAndBasesForIsPalindromicInBaseNegative")
+    public void testIsPalindromicInBaseNegative(int number, int base) {
+        assertFalse(LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
-    @Test
-    public void testIsPalindromicInBaseThrowsExceptionForNegativeNumbers() {
-        assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(-1, 5));
+    @ParameterizedTest
+    @MethodSource("provideNumbersAndBasesForExceptions")
+    public void testIsPalindromicInBaseThrowsException(int number, int base) {
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
-    @Test
-    public void testIsPalindromicInBaseThrowsExceptionForWrongBases() {
-        assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(10, 1));
+    @ParameterizedTest
+    @MethodSource("provideNumbersForLowestBasePalindrome")
+    public void testLowestBasePalindrome(int number, int expectedBase) {
+        assertEquals(expectedBase, LowestBasePalindrome.lowestBasePalindrome(number));
     }
 
-    @Test
-    public void testLowestBasePalindrome() {
-        HashMap<Integer, Integer> testCases = new HashMap<>();
-        testCases.put(0, 2);
-        testCases.put(1, 2);
-        testCases.put(2, 3);
-        testCases.put(3, 2);
-        testCases.put(10, 3);
-        testCases.put(11, 10);
-        testCases.put(15, 2);
-        testCases.put(39, 12);
-        testCases.put(44, 10);
-        testCases.put(58, 28);
-        testCases.put(69, 22);
-        testCases.put(79, 78);
-        testCases.put(87, 28);
-        testCases.put(90, 14);
-        testCases.put(5591, 37);
-        testCases.put(5895, 130);
-        testCases.put(9950, 198);
-        testCases.put(9974, 4986);
+    private static Stream<Arguments> provideListsForIsPalindromicPositive() {
+        return Stream.of(Arguments.of(new ArrayList<>()), Arguments.of(new ArrayList<>(List.of(1))), Arguments.of(new ArrayList<>(Arrays.asList(1, 1))), Arguments.of(new ArrayList<>(Arrays.asList(1, 2, 1))), Arguments.of(new ArrayList<>(Arrays.asList(1, 2, 2, 1))));
+    }
 
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(LowestBasePalindrome.lowestBasePalindrome(tc.getKey()), tc.getValue());
-        }
+    private static Stream<Arguments> provideListsForIsPalindromicNegative() {
+        return Stream.of(Arguments.of(new ArrayList<>(Arrays.asList(1, 2))), Arguments.of(new ArrayList<>(Arrays.asList(1, 2, 1, 1))));
+    }
+
+    private static Stream<Arguments> provideNumbersAndBasesForIsPalindromicInBasePositive() {
+        return Stream.of(Arguments.of(101, 10), Arguments.of(1, 190), Arguments.of(0, 11), Arguments.of(10101, 10), Arguments.of(23, 22));
+    }
+
+    private static Stream<Arguments> provideNumbersAndBasesForIsPalindromicInBaseNegative() {
+        return Stream.of(Arguments.of(1010, 10), Arguments.of(123, 10));
+    }
+
+    private static Stream<Arguments> provideNumbersAndBasesForExceptions() {
+        return Stream.of(Arguments.of(-1, 5), Arguments.of(10, 1));
+    }
+
+    private static Stream<Arguments> provideNumbersForLowestBasePalindrome() {
+        return Stream.of(Arguments.of(0, 2), Arguments.of(1, 2), Arguments.of(2, 3), Arguments.of(3, 2), Arguments.of(10, 3), Arguments.of(11, 10), Arguments.of(15, 2), Arguments.of(39, 12), Arguments.of(44, 10), Arguments.of(58, 28), Arguments.of(69, 22), Arguments.of(79, 78), Arguments.of(87, 28),
+            Arguments.of(90, 14), Arguments.of(5591, 37), Arguments.of(5895, 130), Arguments.of(9950, 198), Arguments.of(9974, 4986));
     }
 }

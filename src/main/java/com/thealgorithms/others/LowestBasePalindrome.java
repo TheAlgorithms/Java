@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @brief Class for finding the lowest base in which a given integer is a palindrome.
@@ -10,45 +11,61 @@ public final class LowestBasePalindrome {
     private LowestBasePalindrome() {
     }
 
+    /**
+     * Validates the base, ensuring it is greater than 1.
+     *
+     * @param base the base to be checked
+     * @throws IllegalArgumentException if the base is less than or equal to 1
+     */
     private static void checkBase(int base) {
         if (base <= 1) {
-            throw new IllegalArgumentException("base must be greater than 1.");
+            throw new IllegalArgumentException("Base must be greater than 1.");
         }
     }
 
+    /**
+     * Validates the number, ensuring it is non-negative.
+     *
+     * @param number the number to be checked
+     * @throws IllegalArgumentException if the number is negative
+     */
     private static void checkNumber(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("number must be nonnegative.");
+            throw new IllegalArgumentException("Number must be non-negative.");
         }
     }
 
     /**
-     * @brief computes the representation of the input number in given base
-     * @param number the input number
-     * @param base the given base
-     * @exception IllegalArgumentException number is negative or base is less than 2
-     * @return the list containing the digits of the input number in the given base, the most
-     *     significant digit is at the end of the array
+     * Computes the digits of a given number in a specified base.
+     *
+     * @param number the number to be converted
+     * @param base the base to be used for the conversion
+     * @return a list of digits representing the number in the given base, with the most
+     *         significant digit at the end of the list
+     * @throws IllegalArgumentException if the number is negative or the base is less than 2
      */
-    public static ArrayList<Integer> computeDigitsInBase(int number, int base) {
+    public static List<Integer> computeDigitsInBase(int number, int base) {
         checkNumber(number);
         checkBase(base);
-        var result = new ArrayList<Integer>();
+
+        List<Integer> digits = new ArrayList<>();
         while (number > 0) {
-            result.add(number % base);
+            digits.add(number % base);
             number /= base;
         }
-        return result;
+        return digits;
     }
 
     /**
-     * @brief checks if the input array is a palindrome
-     * @brief list the input array
-     * @return true, if the input array is a palindrome, false otherwise
+     * Checks if a list of integers is palindromic.
+     *
+     * @param list the list of integers to be checked
+     * @return {@code true} if the list is a palindrome, {@code false} otherwise
      */
-    public static boolean isPalindromic(ArrayList<Integer> list) {
-        for (int pos = 0; pos < list.size() / 2; ++pos) {
-            if (list.get(pos) != list.get(list.size() - 1 - pos)) {
+    public static boolean isPalindromic(List<Integer> list) {
+        int size = list.size();
+        for (int i = 0; i < size / 2; i++) {
+            if (!list.get(i).equals(list.get(size - 1 - i))) {
                 return false;
             }
         }
@@ -56,12 +73,12 @@ public final class LowestBasePalindrome {
     }
 
     /**
-     * @brief checks if representation of the input number in given base is a palindrome
-     * @param number the input number
-     * @param base the given base
-     * @exception IllegalArgumentException number is negative or base is less than 2
-     * @return true, if the input number represented in the given base is a palindrome, false
-     *     otherwise
+     * Checks if the representation of a given number in a specified base is palindromic.
+     *
+     * @param number the number to be checked
+     * @param base the base in which the number will be represented
+     * @return {@code true} if the number is palindromic in the specified base, {@code false} otherwise
+     * @throws IllegalArgumentException if the number is negative or the base is less than 2
      */
     public static boolean isPalindromicInBase(int number, int base) {
         checkNumber(number);
@@ -72,7 +89,7 @@ public final class LowestBasePalindrome {
         }
 
         if (number % base == 0) {
-            // the last digit of number written in base is 0
+            // If the last digit of the number in the given base is 0, it can't be palindromic
             return false;
         }
 
@@ -80,16 +97,18 @@ public final class LowestBasePalindrome {
     }
 
     /**
-     * @brief finds the smallest base for which the representation of the input number is a
-     * palindrome
-     * @param number the input number
-     * @exception IllegalArgumentException number is negative
-     * @return the smallest base for which the representation of the input number is a palindrome
+     * Finds the smallest base in which the representation of a given number is palindromic.
+     *
+     * @param number the number to be checked
+     * @return the smallest base in which the number is a palindrome
+     * @throws IllegalArgumentException if the number is negative
      */
     public static int lowestBasePalindrome(int number) {
+        checkNumber(number);
+
         int base = 2;
         while (!isPalindromicInBase(number, base)) {
-            ++base;
+            base++;
         }
         return base;
     }
