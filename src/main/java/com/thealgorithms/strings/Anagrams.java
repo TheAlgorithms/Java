@@ -11,6 +11,8 @@ import java.util.HashMap;
  * Reference from https://en.wikipedia.org/wiki/Anagram
  */
 public class Anagrams {
+    private Anagrams() {
+    }
 
     /**
      * Checks if two strings are anagrams by sorting the characters and comparing them.
