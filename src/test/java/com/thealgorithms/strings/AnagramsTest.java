@@ -12,7 +12,8 @@ public class AnagramsTest {
     }
 
     private static Stream<AnagramTestCase> anagramTestData() {
-        return Stream.of(new AnagramTestCase("late", "tale", true), new AnagramTestCase("late", "teal", true), new AnagramTestCase("listen", "silent", true), new AnagramTestCase("hello", "olelh", true), new AnagramTestCase("hello", "world", false), new AnagramTestCase("deal", "lead", true), new AnagramTestCase("binary", "brainy", true), new AnagramTestCase("adobe", "abode", true), new AnagramTestCase("cat", "act", true), new AnagramTestCase("cat", "cut", false));
+        return Stream.of(new AnagramTestCase("late", "tale", true), new AnagramTestCase("late", "teal", true), new AnagramTestCase("listen", "silent", true), new AnagramTestCase("hello", "olelh", true), new AnagramTestCase("hello", "world", false), new AnagramTestCase("deal", "lead", true),
+                new AnagramTestCase("binary", "brainy", true), new AnagramTestCase("adobe", "abode", true), new AnagramTestCase("cat", "act", true), new AnagramTestCase("cat", "cut", false));
     }
 
     @ParameterizedTest
