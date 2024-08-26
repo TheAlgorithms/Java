@@ -26,5 +26,4 @@ class NextSmallerElementTest {
     void testFindNextSmallerElementsExceptions() {
         assertThrows(IllegalArgumentException.class, () -> NextSmallerElement.findNextSmallerElements(null));
     }
-
 }
