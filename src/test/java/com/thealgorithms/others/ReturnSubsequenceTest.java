@@ -17,6 +17,7 @@ class ReturnSubsequenceTest {
     }
 
     static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of("", new String[]{""}), Arguments.of("a", new String[]{"", "a"}), Arguments.of("ab", new String[]{"", "b", "a", "ab"}), Arguments.of("abc", new String[]{"", "c", "b", "bc", "a", "ac", "ab", "abc"}), Arguments.of("aab", new String[]{"", "b", "a", "ab", "a", "ab", "aa", "aab"}));
+        return Stream.of(Arguments.of("", new String[] {""}), Arguments.of("a", new String[] {"", "a"}), Arguments.of("ab", new String[] {"", "b", "a", "ab"}), Arguments.of("abc", new String[] {"", "c", "b", "bc", "a", "ac", "ab", "abc"}),
+            Arguments.of("aab", new String[] {"", "b", "a", "ab", "a", "ab", "aa", "aab"}));
     }
 }
