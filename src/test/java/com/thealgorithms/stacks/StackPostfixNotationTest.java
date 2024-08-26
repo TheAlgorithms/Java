@@ -1,43 +1,32 @@
 package com.thealgorithms.stacks;
 
-import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Map;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class StackPostfixNotationTest {
-    @Test
-    public void testEvaluate() {
-        final Map<String, Integer> testCases = Map.ofEntries(entry("1 1 +", 2), entry("2 3 *", 6), entry("6 2 /", 3), entry("-5 -2 -", -3), entry("5 2 + 3 *", 21), entry("-5", -5));
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(tc.getValue(), StackPostfixNotation.postfixEvaluate(tc.getKey()));
-        }
+
+    @ParameterizedTest
+    @MethodSource("provideValidTestCases")
+    void testEvaluate(String expression, int expected) {
+        assertEquals(expected, StackPostfixNotation.postfixEvaluate(expression));
     }
 
-    @Test
-    public void testIfEvaluateThrowsExceptionForEmptyInput() {
-        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate(""));
+    static Stream<Arguments> provideValidTestCases() {
+        return Stream.of(Arguments.of("1 1 +", 2), Arguments.of("2 3 *", 6), Arguments.of("6 2 /", 3), Arguments.of("-5 -2 -", -3), Arguments.of("5 2 + 3 *", 21), Arguments.of("-5", -5));
     }
 
-    @Test
-    public void testIfEvaluateThrowsExceptionForInproperInput() {
-        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("3 3 3"));
+    @ParameterizedTest
+    @MethodSource("provideInvalidTestCases")
+    void testEvaluateThrowsException(String expression) {
+        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate(expression));
     }
 
-    @Test
-    public void testIfEvaluateThrowsExceptionForInputWithUnknownOperation() {
-        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("3 3 !"));
-    }
-
-    @Test
-    public void testIfEvaluateThrowsExceptionForInputWithTooFewArgsA() {
-        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("+"));
-    }
-
-    @Test
-    public void testIfEvaluateThrowsExceptionForInputWithTooFewArgsB() {
-        assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate("2 +"));
+    static Stream<Arguments> provideInvalidTestCases() {
+        return Stream.of(Arguments.of(""), Arguments.of("3 3 3"), Arguments.of("3 3 !"), Arguments.of("+"), Arguments.of("2 +"));
     }
 }
