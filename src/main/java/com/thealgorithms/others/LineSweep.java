@@ -1,42 +1,49 @@
 package com.thealgorithms.others;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
-/* Line Sweep algorithm can be used to solve range problems by first sorting the list of ranges
- * by the start value of the range in non-decreasing order and doing a "sweep" through the number
- * line(x-axis) by incrementing the start point by 1 and decrementing the end point+1 by 1 on the
- * number line.
- * An overlapping range is defined as (StartA <= EndB) AND (EndA >= StartB)
- * References
- * https://en.wikipedia.org/wiki/Sweep_line_algorithm
- * https://en.wikipedia.org/wiki/De_Morgan%27s_laws>
+/**
+ * The Line Sweep algorithm is used to solve range problems efficiently. It works by:
+ * 1. Sorting a list of ranges by their start values in non-decreasing order.
+ * 2. Sweeping through the number line (x-axis) while updating a count for each point based on the ranges.
+ *
+ * An overlapping range is defined as:
+ * - (StartA <= EndB) AND (EndA >= StartB)
+ *
+ * References:
+ * - https://en.wikipedia.org/wiki/Sweep_line_algorithm
+ * - https://en.wikipedia.org/wiki/De_Morgan%27s_laws
  */
 public final class LineSweep {
     private LineSweep() {
     }
 
     /**
-     * Find Maximum end point
-     *   param = ranges : Array of range[start,end]
-     *   return Maximum Endpoint
+     * Finds the maximum endpoint from a list of ranges.
+     *
+     * @param ranges a 2D array where each element is a range represented by [start, end]
+     * @return the maximum endpoint among all ranges
      */
     public static int findMaximumEndPoint(int[][] ranges) {
-        Arrays.sort(ranges, Comparator.comparingInt(a -> a[1]));
+        Arrays.sort(ranges, Comparator.comparingInt(range -> range[1]));
         return ranges[ranges.length - 1][1];
     }
 
     /**
-     * Find if any ranges overlap
-     *   param = ranges : Array of range[start,end]
-     *   return true if overlap exists false otherwise.
+     * Determines if any of the given ranges overlap.
+     *
+     * @param ranges a 2D array where each element is a range represented by [start, end]
+     * @return true if any ranges overlap, false otherwise
      */
     public static boolean isOverlap(int[][] ranges) {
+        if (ranges == null || ranges.length == 0) {
+            return false;
+        }
 
         int maximumEndPoint = findMaximumEndPoint(ranges);
-        Arrays.sort(ranges, Comparator.comparingInt(a -> a[0]));
         int[] numberLine = new int[maximumEndPoint + 2];
         for (int[] range : ranges) {
-
             int start = range[0];
             int end = range[1];
 
@@ -44,12 +51,12 @@ public final class LineSweep {
             numberLine[end + 1] -= 1;
         }
 
-        int current = 0;
-        int overlaps = 0;
-        for (int num : numberLine) {
-            current += num;
-            overlaps = Math.max(overlaps, current);
+        int currentCount = 0;
+        int maxOverlaps = 0;
+        for (int count : numberLine) {
+            currentCount += count;
+            maxOverlaps = Math.max(maxOverlaps, currentCount);
         }
-        return overlaps > 1;
+        return maxOverlaps > 1;
     }
 }
