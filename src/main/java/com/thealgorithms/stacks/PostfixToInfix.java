@@ -87,11 +87,7 @@ public final class PostfixToInfix {
             } else {
                 String operandB = stack.pop();
                 String operandA = stack.pop();
-                valueString.append('(')
-                        .append(operandA)
-                        .append(token)
-                        .append(operandB)
-                        .append(')');
+                valueString.append('(').append(operandA).append(token).append(operandB).append(')');
                 stack.push(valueString.toString());
                 valueString.setLength(0);
             }
