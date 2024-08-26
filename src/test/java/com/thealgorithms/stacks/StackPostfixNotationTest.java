@@ -26,6 +26,7 @@ public class StackPostfixNotationTest {
         assertThrows(IllegalArgumentException.class, () -> StackPostfixNotation.postfixEvaluate(expression));
     }
 
-    static Stream<Arguments> provideInvalidTestCases() {return Stream.of(Arguments.of(""), Arguments.of("3 3 3"), Arguments.of("3 3 !"), Arguments.of("+"), Arguments.of("2 +"));
+    static Stream<Arguments> provideInvalidTestCases() {
+        return Stream.of(Arguments.of(""), Arguments.of("3 3 3"), Arguments.of("3 3 !"), Arguments.of("+"), Arguments.of("2 +"));
     }
 }
