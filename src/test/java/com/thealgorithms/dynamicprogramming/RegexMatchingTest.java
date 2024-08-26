@@ -9,10 +9,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class RegexMatchingTest {
 
-    private record RegexTestCase(String s, String p, boolean expected) {}
+    private record RegexTestCase(String s, String p, boolean expected) {
+    }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of(new RegexTestCase("aa", "*", true)), Arguments.of(new RegexTestCase("aa", "a*", true)), Arguments.of(new RegexTestCase("aa", "a", false)), Arguments.of(new RegexTestCase("cb", "?b", true)), Arguments.of(new RegexTestCase("cb", "?a", false)), Arguments.of(new RegexTestCase("adceb", "*a*b", true)), Arguments.of(new RegexTestCase("acdcb", "a*c?b", false)), Arguments.of(new RegexTestCase("", "*", true)), Arguments.of(new RegexTestCase("", "", true)));
+        return Stream.of(Arguments.of(new RegexTestCase("aa", "*", true)), Arguments.of(new RegexTestCase("aa", "a*", true)), Arguments.of(new RegexTestCase("aa", "a", false)), Arguments.of(new RegexTestCase("cb", "?b", true)), Arguments.of(new RegexTestCase("cb", "?a", false)),
+            Arguments.of(new RegexTestCase("adceb", "*a*b", true)), Arguments.of(new RegexTestCase("acdcb", "a*c?b", false)), Arguments.of(new RegexTestCase("", "*", true)), Arguments.of(new RegexTestCase("", "", true)));
     }
 
     @ParameterizedTest
