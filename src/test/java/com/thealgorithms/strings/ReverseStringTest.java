@@ -2,30 +2,15 @@ package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ReverseStringTest {
 
-    @Test
-    public void testReverseString() {
-        String input1 = "Hello World";
-        String input2 = "helloworld";
-        String input3 = "123456789";
-        String input4 = "";
-
-        String expectedOutput1 = "dlroW olleH";
-        String expectedOutput2 = "dlrowolleh";
-        String expectedOutput3 = "987654321";
-        String expectedOutput4 = "";
-
-        assertEquals(ReverseString.reverse(input1), expectedOutput1);
-        assertEquals(ReverseString.reverse(input2), expectedOutput2);
-        assertEquals(ReverseString.reverse(input3), expectedOutput3);
-        assertEquals(ReverseString.reverse(input4), expectedOutput4);
-
-        assertEquals(ReverseString.reverse2(input1), expectedOutput1);
-        assertEquals(ReverseString.reverse2(input2), expectedOutput2);
-        assertEquals(ReverseString.reverse2(input3), expectedOutput3);
-        assertEquals(ReverseString.reverse2(input4), expectedOutput4);
+    @ParameterizedTest
+    @CsvSource({"'Hello World', 'dlroW olleH'", "'helloworld', 'dlrowolleh'", "'123456789', '987654321'", "'', ''", "'A', 'A'", "'ab', 'ba'", "'  leading and trailing spaces  ', '  secaps gniliart dna gnidael  '", "'!@#$%^&*()', ')(*&^%$#@!'", "'MixOf123AndText!', '!txeTdnA321fOxiM'"})
+    public void testReverseString(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverse(input));
+        assertEquals(expectedOutput, ReverseString.reverse2(input));
     }
 }
