@@ -1,6 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.Scanner;
 /**
  * A DynamicProgramming based solution for Edit Distance problem In Java
  * Description of Edit Distance with an Example:
@@ -66,20 +65,6 @@ public final class EditDistance {
         }
         /* return the final answer , after traversing through both the strings*/
         return dp[len1][len2];
-    }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        String s1;
-        String s2;
-        System.out.println("Enter the First String");
-        s1 = input.nextLine();
-        System.out.println("Enter the Second String");
-        s2 = input.nextLine();
-        // ans stores the final Edit Distance between the two strings
-        int ans = minDistance(s1, s2);
-        System.out.println("The minimum Edit Distance between \"" + s1 + "\" and \"" + s2 + "\" is " + ans);
-        input.close();
     }
 
     // edit distance problem
