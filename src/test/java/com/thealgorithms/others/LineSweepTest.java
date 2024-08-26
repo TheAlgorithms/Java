@@ -1,30 +1,37 @@
 package com.thealgorithms.others;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 public class LineSweepTest {
-
-    @Test
-    void testForOverlap() {
-        int[][] arr = {{0, 10}, {7, 20}, {15, 24}};
-        assertTrue(LineSweep.isOverlap(arr));
+    private record OverlapTestCase(int[][] ranges, boolean expected) {
     }
 
-    @Test
-    void testForNoOverlap() {
-        int[][] arr = {{0, 10}, {11, 20}, {21, 24}};
-        assertFalse(LineSweep.isOverlap(arr));
+    private record MaximumEndPointTestCase(int[][] ranges, int expected) {
     }
-    @Test
-    void testForOverlapWhenEndAEqualsStartBAndViceVersa() {
-        int[][] arr = {{0, 10}, {10, 20}, {21, 24}};
-        assertTrue(LineSweep.isOverlap(arr));
+
+    @ParameterizedTest
+    @MethodSource("provideOverlapTestData")
+    void testIsOverlap(OverlapTestCase testCase) {
+        assertEquals(testCase.expected(), LineSweep.isOverlap(testCase.ranges()));
     }
-    @Test
-    void testForMaximumEndPoint() {
-        int[][] arr = {{10, 20}, {1, 100}, {14, 16}, {1, 8}};
-        assertEquals(100, LineSweep.findMaximumEndPoint(arr));
+
+    private static Stream<Arguments> provideOverlapTestData() {
+        return Stream.of(Arguments.of(new OverlapTestCase(new int[][] {{0, 10}, {7, 20}, {15, 24}}, true)), Arguments.of(new OverlapTestCase(new int[][] {{0, 10}, {11, 20}, {21, 24}}, false)), Arguments.of(new OverlapTestCase(new int[][] {{0, 10}, {10, 20}, {21, 24}}, true)),
+            Arguments.of(new OverlapTestCase(new int[][] {{5, 10}}, false)), Arguments.of(new OverlapTestCase(new int[][] {{1, 5}, {1, 5}, {1, 5}}, true)), Arguments.of(new OverlapTestCase(new int[][] {{1, 1}, {2, 2}, {3, 3}}, false)), Arguments.of(new OverlapTestCase(new int[][] {}, false)));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideMaximumEndPointTestData")
+    void testFindMaximumEndPoint(MaximumEndPointTestCase testCase) {
+        assertEquals(testCase.expected(), LineSweep.findMaximumEndPoint(testCase.ranges()));
+    }
+
+    private static Stream<Arguments> provideMaximumEndPointTestData() {
+        return Stream.of(Arguments.of(new MaximumEndPointTestCase(new int[][] {{10, 20}, {1, 100}, {14, 16}, {1, 8}}, 100)));
     }
 }

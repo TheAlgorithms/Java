@@ -1,28 +1,15 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class CharacterSameTest {
+class CharactersSameTest {
 
-    @Test
-    public void isAllCharactersSame() {
-        String input1 = "aaa";
-        String input2 = "abc";
-        String input3 = "1  1  1  1";
-        String input4 = "111";
-        String input5 = "";
-        String input6 = "           ";
-        String input7 = ".       ";
-
-        assertTrue(CharactersSame.isAllCharactersSame(input1));
-        assertFalse(CharactersSame.isAllCharactersSame(input2));
-        assertFalse(CharactersSame.isAllCharactersSame(input3));
-        assertTrue(CharactersSame.isAllCharactersSame(input4));
-        assertTrue(CharactersSame.isAllCharactersSame(input5));
-        assertTrue(CharactersSame.isAllCharactersSame(input6));
-        assertFalse(CharactersSame.isAllCharactersSame(input7));
+    @ParameterizedTest
+    @CsvSource({"aaa, true", "abc, false", "'1  1  1  1', false", "111, true", "'', true", "'           ', true", "'.       ', false", "'a', true", "'  ', true", "'ab', false", "'11111', true", "'ababab', false", "'       ', true", "'+++', true"})
+    void testIsAllCharactersSame(String input, boolean expected) {
+        assertEquals(CharactersSame.isAllCharactersSame(input), expected);
     }
 }
