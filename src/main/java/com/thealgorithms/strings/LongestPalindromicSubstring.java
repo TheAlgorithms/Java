@@ -17,10 +17,8 @@ final class LongestPalindromicSubstring {
         String maxStr = "";
         for (int i = 0; i < s.length(); ++i) {
             for (int j = i; j < s.length(); ++j) {
-                if (isValid(s, i, j)) {
-                    if (j - i + 1 > maxStr.length()) { // update maxStr
-                        maxStr = s.substring(i, j + 1);
-                    }
+                if (isValid(s, i, j) && (j - i + 1 > maxStr.length())) {
+                    maxStr = s.substring(i, j + 1);
                 }
             }
         }
