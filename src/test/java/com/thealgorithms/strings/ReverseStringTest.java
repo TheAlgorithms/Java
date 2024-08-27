@@ -11,7 +11,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class ReverseStringTest {
 
     private static Stream<Arguments> testCases() {
-        return Stream.of(Arguments.of("Hello World", "dlroW olleH"), Arguments.of("helloworld", "dlrowolleh"), Arguments.of("123456789", "987654321"), Arguments.of("", ""), Arguments.of("A", "A"), Arguments.of("ab", "ba"), Arguments.of("  leading and trailing spaces  ", "  secaps gniliart dna gnidael  "), Arguments.of("!@#$%^&*()", ")(*&^%$#@!"), Arguments.of("MixOf123AndText!", "!txeTdnA321fOxiM"));
+        return Stream.of(Arguments.of("Hello World", "dlroW olleH"), Arguments.of("helloworld", "dlrowolleh"), Arguments.of("123456789", "987654321"), Arguments.of("", ""), Arguments.of("A", "A"), Arguments.of("ab", "ba"),
+            Arguments.of("  leading and trailing spaces  ", "  secaps gniliart dna gnidael  "), Arguments.of("!@#$%^&*()", ")(*&^%$#@!"), Arguments.of("MixOf123AndText!", "!txeTdnA321fOxiM"));
     }
 
     @ParameterizedTest
