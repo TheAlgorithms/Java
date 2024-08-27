@@ -41,6 +41,10 @@ public final class PostfixToInfix {
      * @return true if the expression is valid, false otherwise
      */
     public static boolean isValidPostfixExpression(String postfix) {
+        if (postfix.length() == 1 && (Character.isAlphabetic(postfix.charAt(0)))) {
+            return true;
+        }
+
         if (postfix.length() < 3) {
             return false; // Postfix expression should have at least one operator and two operands
         }

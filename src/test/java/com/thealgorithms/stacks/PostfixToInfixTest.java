@@ -18,7 +18,7 @@ class PostfixToInfixTest {
     }
 
     static Stream<Arguments> provideValidPostfixToInfixTestCases() {
-        return Stream.of(Arguments.of("ABC+/", "(A/(B+C))"), Arguments.of("AB+CD+*", "((A+B)*(C+D))"), Arguments.of("AB+C+D+", "(((A+B)+C)+D)"), Arguments.of("ABCDE^*/-", "(A-(B/(C*(D^E))))"), Arguments.of("AB+CD^/E*FGH+-^", "((((A+B)/(C^D))*E)^(F-(G+H)))"));
+        return Stream.of(Arguments.of("A", "A"), Arguments.of("ABC+/", "(A/(B+C))"), Arguments.of("AB+CD+*", "((A+B)*(C+D))"), Arguments.of("AB+C+D+", "(((A+B)+C)+D)"), Arguments.of("ABCDE^*/-", "(A-(B/(C*(D^E))))"), Arguments.of("AB+CD^/E*FGH+-^", "((((A+B)/(C^D))*E)^(F-(G+H)))"));
     }
 
     @Test
