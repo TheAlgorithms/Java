@@ -20,81 +20,64 @@ public final class PostfixToInfix {
     private PostfixToInfix() {
     }
 
+    /**
+     * Determines if a given character is a valid arithmetic operator.
+     *
+     * @param token the character to check
+     * @return true if the character is an operator, false otherwise
+     */
     public static boolean isOperator(char token) {
-        switch (token) {
-        case '+':
-        case '-':
-        case '/':
-        case '*':
-        case '^':
-            return true;
-        default:
-            return false;
-        }
+        return token == '+' || token == '-' || token == '/' || token == '*' || token == '^';
     }
 
+    /**
+     * Validates whether a given string is a valid postfix expression.
+     *
+     * A valid postfix expression must meet these criteria:
+     * 1. It should have at least one operator and two operands.
+     * 2. The number of operands should always be greater than the number of operators at any point in the traversal.
+     *
+     * @param postfix the postfix expression string to validate
+     * @return true if the expression is valid, false otherwise
+     */
     public static boolean isValidPostfixExpression(String postfix) {
-        /* Postfix expression length should NOT be less than 3 */
-        if (postfix.length() < 3) {
-            return false;
+        if (postfix.length() == 1 && (Character.isAlphabetic(postfix.charAt(0)))) {
+            return true;
         }
 
-        /* First two characters should NOT be operators */
-        if (isOperator(postfix.charAt(0))) {
-            return false;
-        }
-        if (isOperator(postfix.charAt(1))) {
-            return false;
+        if (postfix.length() < 3) {
+            return false; // Postfix expression should have at least one operator and two operands
         }
 
         int operandCount = 0;
         int operatorCount = 0;
 
-        /* Traverse the postfix string to check if --> Number of operands = Number of operators + 1
-         */
-        for (int i = 0; i < postfix.length(); i++) {
-            char token = postfix.charAt(i);
-
+        for (char token : postfix.toCharArray()) {
             if (isOperator(token)) {
                 operatorCount++;
                 if (operatorCount >= operandCount) {
-                    return false;
+                    return false; // Invalid: more operators than operands at any point
                 }
             } else {
-                if (operatorCount == 0) {
-                    operandCount++;
-                    continue;
-                }
-
-                if (operandCount != operatorCount + 1) {
-                    return false;
-                }
-
-                /* Operand count is set to 2 because:-
-                 *
-                 * 1) the previous set of operands & operators combined have become a single valid
-                 * expression, which could be considered/assigned as a single operand.
-                 *
-                 * 2) the operand in the current iteration.
-                 */
-                operandCount = 2;
-
-                /* Reset operator count */
-                operatorCount = 0;
+                operandCount++;
             }
         }
 
-        return (operandCount == operatorCount + 1);
+        return operandCount == operatorCount + 1;
     }
 
+    /**
+     * Converts a valid postfix expression to an infix expression.
+     *
+     * @param postfix the postfix expression to convert
+     * @return the equivalent infix expression
+     * @throws IllegalArgumentException if the postfix expression is invalid
+     */
     public static String getPostfixToInfix(String postfix) {
-        String infix = "";
-
         if (postfix.isEmpty()) {
-            return infix;
+            return "";
         }
 
-        /* Validate Postfix expression before proceeding with the Infix conversion */
         if (!isValidPostfixExpression(postfix)) {
             throw new IllegalArgumentException("Invalid Postfix Expression");
         }
@@ -102,43 +85,18 @@ public final class PostfixToInfix {
         Stack<String> stack = new Stack<>();
         StringBuilder valueString = new StringBuilder();
 
-        String operandA;
-        String operandB;
-        char operator;
-
-        for (int index = 0; index < postfix.length(); index++) {
-            char token = postfix.charAt(index);
-
+        for (char token : postfix.toCharArray()) {
             if (!isOperator(token)) {
                 stack.push(Character.toString(token));
-                continue;
+            } else {
+                String operandB = stack.pop();
+                String operandA = stack.pop();
+                valueString.append('(').append(operandA).append(token).append(operandB).append(')');
+                stack.push(valueString.toString());
+                valueString.setLength(0);
             }
-
-            operator = token;
-            operandB = stack.pop();
-            operandA = stack.pop();
-
-            valueString.append('(');
-
-            valueString.append(operandA);
-            valueString.append(operator);
-            valueString.append(operandB);
-
-            valueString.append(')');
-
-            stack.push(valueString.toString());
-            valueString.setLength(0);
         }
 
-        infix = stack.pop();
-        return infix;
-    }
-
-    public static void main(String[] args) {
-        assert getPostfixToInfix("ABC+/").equals("(A/(B+C))");
-        assert getPostfixToInfix("AB+CD+*").equals("((A+B)*(C+D))");
-        assert getPostfixToInfix("AB+C+D+").equals("(((A+B)+C)+D)");
-        assert getPostfixToInfix("ABCDE^*/-").equals("(A-(B/(C*(D^E))))");
-        assert getPostfixToInfix("AB+CD^/E*FGH+-^").equals("((((A+B)/(C^D))*E)^(F-(G+H)))");
+        return stack.pop();
     }
 }
