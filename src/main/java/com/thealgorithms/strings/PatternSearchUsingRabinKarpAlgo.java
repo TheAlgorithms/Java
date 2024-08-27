@@ -15,10 +15,10 @@ public class PatternSearchUsingRabinKarpAlgo {
         List<String> result = new ArrayList<>();
         int m = pattern.length();
         int n = text.length();
-        int prime = 101;            // A prime number to mod hash values
+        int prime = 101; // A prime number to mod hash values
 
-        int patternHash = 0;                // Hash value for pattern
-        int textHash = 0;                   // Hash value for text window
+        int patternHash = 0; // Hash value for pattern
+        int textHash = 0; // Hash value for text window
         int h = 1;
 
         // The value of h would be "pow(d, m-1) % prime"
@@ -69,11 +69,11 @@ public class PatternSearchUsingRabinKarpAlgo {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the string: ");
         String text = in.next();
-//        String text = "ABCCDDAEFG";  test
+        //        String text = "ABCCDDAEFG";  test
 
         System.out.print("Enter the searching string: ");
         String pattern = in.next();
-//        String pattern = "CDD";    testt
+        //        String pattern = "CDD";    testt
 
         List<String> result = search(text.toLowerCase(), pattern.toLowerCase());
 
@@ -82,5 +82,7 @@ public class PatternSearchUsingRabinKarpAlgo {
         } else {
             System.out.println("Pattern found: " + result);
         }
+
+        in.close();
     }
 }
