@@ -1,6 +1,13 @@
 package com.thealgorithms.strings;
 import java.util.*;
 
+/*
+    https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
+    The Rabin-Karp algorithm calculates a hash value for the pattern and a hash value for a sliding window
+    of text in the same length as the pattern. If the hash values match, it checks character by character
+    to confirm that it's an exact match.
+*/
+
 public class PatternSearchUsingRabinKarpAlgo {
 
     // I'm using Rabin-Karp algorithm that uses hashing to find pattern strings in a text.
