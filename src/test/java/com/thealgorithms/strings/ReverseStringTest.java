@@ -2,30 +2,27 @@ package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ReverseStringTest {
 
-    @Test
-    public void testReverseString() {
-        String input1 = "Hello World";
-        String input2 = "helloworld";
-        String input3 = "123456789";
-        String input4 = "";
+    private static Stream<Arguments> testCases() {
+        return Stream.of(Arguments.of("Hello World", "dlroW olleH"), Arguments.of("helloworld", "dlrowolleh"), Arguments.of("123456789", "987654321"), Arguments.of("", ""), Arguments.of("A", "A"), Arguments.of("ab", "ba"),
+            Arguments.of("  leading and trailing spaces  ", "  secaps gniliart dna gnidael  "), Arguments.of("!@#$%^&*()", ")(*&^%$#@!"), Arguments.of("MixOf123AndText!", "!txeTdnA321fOxiM"));
+    }
 
-        String expectedOutput1 = "dlroW olleH";
-        String expectedOutput2 = "dlrowolleh";
-        String expectedOutput3 = "987654321";
-        String expectedOutput4 = "";
+    @ParameterizedTest
+    @MethodSource("testCases")
+    public void testReverseString(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverse(input));
+    }
 
-        assertEquals(ReverseString.reverse(input1), expectedOutput1);
-        assertEquals(ReverseString.reverse(input2), expectedOutput2);
-        assertEquals(ReverseString.reverse(input3), expectedOutput3);
-        assertEquals(ReverseString.reverse(input4), expectedOutput4);
-
-        assertEquals(ReverseString.reverse2(input1), expectedOutput1);
-        assertEquals(ReverseString.reverse2(input2), expectedOutput2);
-        assertEquals(ReverseString.reverse2(input3), expectedOutput3);
-        assertEquals(ReverseString.reverse2(input4), expectedOutput4);
+    @ParameterizedTest
+    @MethodSource("testCases")
+    public void testReverseString2(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverse2(input));
     }
 }
