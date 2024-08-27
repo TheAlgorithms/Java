@@ -5,6 +5,7 @@ package com.thealgorithms.maths;
  * This class provides static methods to calculate the average of arrays
  * of both {@code double} and {@code int} values.
  */
+
 public final class Average {
 
     // Prevent instantiation of this utility class
@@ -21,7 +22,7 @@ public final class Average {
      */
     public static double average(double[] numbers) {
         if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+            throw new IllegalArgumentException("Numbers array are cannot be empty or null");
         }
         double sum = 0;
         for (double number : numbers) {
@@ -39,7 +40,7 @@ public final class Average {
      */
     public static double average(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+            throw new IllegalArgumentException("Numbers array are cannot be empty or null");
         }
         long sum = 0;
         for (int number : numbers) {
