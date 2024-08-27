@@ -76,4 +76,3 @@ public class CircleLinkedListTest {
         assertThrows(NullPointerException.class, () -> list.append(null));
     }
 }
-
