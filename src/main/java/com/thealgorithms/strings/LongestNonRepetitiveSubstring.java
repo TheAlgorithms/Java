@@ -3,47 +3,40 @@ package com.thealgorithms.strings;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class for finding the length of the longest substring without repeating characters.
+ */
 final class LongestNonRepetitiveSubstring {
     private LongestNonRepetitiveSubstring() {
     }
 
+    /**
+     * Finds the length of the longest substring without repeating characters.
+     *
+     * @param s the input string
+     * @return the length of the longest non-repetitive substring
+     */
     public static int lengthOfLongestSubstring(String s) {
-        int max = 0;
+        int maxLength = 0;
         int start = 0;
-        int i = 0;
-        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> charIndexMap = new HashMap<>();
 
-        while (i < s.length()) {
-            char temp = s.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
 
-            // adding key to map if not present
-            if (!map.containsKey(temp)) {
-                map.put(temp, 0);
-            } else if (s.charAt(start) == temp) {
-                start++;
-            } else if (s.charAt(i - 1) == temp) {
-                if (max < map.size()) {
-                    max = map.size();
-                }
-                map = new HashMap<>();
-                start = i;
-                i--;
-            } else {
-                if (max < map.size()) {
-                    max = map.size();
-                }
-                while (s.charAt(start) != temp) {
-                    map.remove(s.charAt(start));
-                    start++;
-                }
-                start++;
+            // If the character is already in the map and its index is within the current window
+            if (charIndexMap.containsKey(currentChar) && charIndexMap.get(currentChar) >= start) {
+                // Move the start to the position right after the last occurrence of the current character
+                start = charIndexMap.get(currentChar) + 1;
             }
 
-            i++;
+            // Update the last seen index of the current character
+            charIndexMap.put(currentChar, i);
+
+            // Calculate the maximum length of the substring without repeating characters
+            maxLength = Math.max(maxLength, i - start + 1);
         }
-        if (max < map.size()) {
-            max = map.size();
-        }
-        return max;
+
+        return maxLength;
     }
 }

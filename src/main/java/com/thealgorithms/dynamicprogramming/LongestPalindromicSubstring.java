@@ -1,25 +1,18 @@
 package com.thealgorithms.dynamicprogramming;
 
-/*
- * Algorithm explanation https://leetcode.com/problems/longest-palindromic-substring/
+/**
+ * Class for finding the longest palindromic substring within a given string.
+ * <p>
+ * A palindromic substring is a sequence of characters that reads the same backward as forward.
+ * This class uses a dynamic programming approach to efficiently find the longest palindromic substring.
+ *
  */
 public final class LongestPalindromicSubstring {
     private LongestPalindromicSubstring() {
     }
 
-    public static void main(String[] args) {
-        String a = "babad";
-        String b = "cbbd";
-
-        String aLPS = lps(a);
-        String bLPS = lps(b);
-
-        System.out.println(a + " => " + aLPS);
-        System.out.println(b + " => " + bLPS);
-    }
-
-    private static String lps(String input) {
-        if (input == null || input.length() == 0) {
+    public static String lps(String input) {
+        if (input == null || input.isEmpty()) {
             return input;
         }
         boolean[][] arr = new boolean[input.length()][input.length()];
