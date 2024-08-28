@@ -59,9 +59,9 @@ public final class PatternSearchUsingRabinKarpAlgo {
 
             // Calculating hash value for next window of text: Remove leading digit, add trailing digit
             if (i < n - m) {
-                textHash = (256 * (textHash - text.charAt(i) * h) + text.charAt(i + m)) % prime;
+                textHash = (256 * textHash - text.charAt(i) * h + text.charAt(i + m)) % prime;
 
-                // We might get negative value of textHash,so converting it to positive
+                // We might get negative value of textHash, so converting it to positive
                 if (textHash < 0) {
                     textHash = (textHash + prime);
                 }
