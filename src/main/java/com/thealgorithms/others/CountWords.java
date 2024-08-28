@@ -8,17 +8,26 @@ public final class CountWords {
     }
 
     /**
-     * @brief counts the number of words in the input string
+     * Counts the number of words in the input string. Words are defined as sequences of
+     * characters separated by whitespace.
+     *
      * @param s the input string
-     * @return the number of words in the input string
+     * @return the number of words in the input string, or 0 if the string is null or empty
      */
     public static int wordCount(String s) {
         if (s == null || s.isEmpty()) {
             return 0;
         }
-        return s.trim().split("[\\s]+").length;
+        return s.trim().split("\\s+").length;
     }
 
+    /**
+     * Removes all special characters from the input string, leaving only alphanumeric characters
+     * and whitespace.
+     *
+     * @param s the input string
+     * @return a string containing only alphanumeric characters and whitespace
+     */
     private static String removeSpecialCharacters(String s) {
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray()) {
@@ -30,12 +39,12 @@ public final class CountWords {
     }
 
     /**
-     * counts the number of words in a sentence but ignores all potential
-     * non-alphanumeric characters that do not represent a word. runs in O(n)
-     * where n is the length of s
+     * Counts the number of words in a sentence, ignoring all non-alphanumeric characters that do
+     * not contribute to word formation. This method has a time complexity of O(n), where n is the
+     * length of the input string.
      *
-     * @param s String: sentence with word(s)
-     * @return int: number of words
+     * @param s the input string
+     * @return the number of words in the input string, with special characters removed, or 0 if the string is null
      */
     public static int secondaryWordCount(String s) {
         if (s == null) {

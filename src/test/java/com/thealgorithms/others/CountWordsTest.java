@@ -2,36 +2,31 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.HashMap;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 class CountWordsTest {
-    @Test
-    public void testWordCount() {
-        HashMap<String, Integer> testCases = new HashMap<>();
-        testCases.put("", 0);
-        testCases.put(null, 0);
-        testCases.put("aaaa bbb cccc", 3);
-        testCases.put("note  extra     spaces   here", 4);
-        testCases.put(" a  b c d  e    ", 5);
 
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(CountWords.wordCount(tc.getKey()), tc.getValue());
-        }
+    @ParameterizedTest
+    @MethodSource("wordCountTestCases")
+    void testWordCount(String input, int expectedCount) {
+        assertEquals(expectedCount, CountWords.wordCount(input));
     }
 
-    @Test
-    public void testSecondaryWordCount() {
-        HashMap<String, Integer> testCases = new HashMap<>();
-        testCases.put("", 0);
-        testCases.put(null, 0);
-        testCases.put("aaaa bbb cccc", 3);
-        testCases.put("this-is-one-word!", 1);
-        testCases.put("What, about, this? Hmmm----strange", 4);
-        testCases.put("word1 word-2 word-3- w?o,r.d.@!@#$&*()<>4", 4);
+    @ParameterizedTest
+    @MethodSource("secondaryWordCountTestCases")
+    void testSecondaryWordCount(String input, int expectedCount) {
+        assertEquals(expectedCount, CountWords.secondaryWordCount(input));
+    }
 
-        for (final var tc : testCases.entrySet()) {
-            assertEquals(CountWords.secondaryWordCount(tc.getKey()), tc.getValue());
-        }
+    private static Stream<Arguments> wordCountTestCases() {
+        return Stream.of(Arguments.of("", 0), Arguments.of(null, 0), Arguments.of("aaaa bbb cccc", 3), Arguments.of("note  extra     spaces   here", 4), Arguments.of(" a  b c d  e    ", 5));
+    }
+
+    private static Stream<Arguments> secondaryWordCountTestCases() {
+        return Stream.of(Arguments.of("", 0), Arguments.of(null, 0), Arguments.of("aaaa bbb cccc", 3), Arguments.of("this-is-one-word!", 1), Arguments.of("What, about, this? Hmmm----strange", 4), Arguments.of("word1 word-2 word-3- w?o,r.d.@!@#$&*()<>4", 4));
     }
 }
