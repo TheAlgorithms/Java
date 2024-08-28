@@ -38,13 +38,6 @@ public class HashMapTest {
         hashMap.insert(15, "Value15");
         hashMap.insert(25, "Value25");
         hashMap.insert(35, "Value35");
-
-        // Expected output:
-        // Bucket 0: null
-        // Bucket 1: 15=Value15 -> 25=Value25 -> 35=Value35 -> null
-        // Bucket 2: null
-        // Bucket 3: null
-        // Bucket 4: null
         hashMap.display();
     }
 
@@ -94,7 +87,7 @@ public class HashMapTest {
     public void testDeleteNonExistentKey() {
         HashMap<Integer, String> hashMap = new HashMap<>(10);
         hashMap.insert(15, "Value15");
-        hashMap.delete(25); // Deleting a key that doesn't exist
+        hashMap.delete(25);
 
         assertEquals("Value15", hashMap.search(15));
         assertNull(hashMap.search(25));
@@ -119,7 +112,7 @@ public class HashMapTest {
         hashMap.insert(4, "Value4");
         hashMap.insert(7, "Value7");
 
-        hashMap.delete(1); // Deleting the head of the bucket
+        hashMap.delete(1);
         assertNull(hashMap.search(1));
         assertEquals("Value4", hashMap.search(4));
         assertEquals("Value7", hashMap.search(7));
@@ -132,7 +125,7 @@ public class HashMapTest {
         hashMap.insert(4, "Value4");
         hashMap.insert(7, "Value7");
 
-        hashMap.delete(7); // Deleting the tail of the bucket
+        hashMap.delete(7);
         assertNull(hashMap.search(7));
         assertEquals("Value1", hashMap.search(1));
         assertEquals("Value4", hashMap.search(4));
@@ -145,7 +138,7 @@ public class HashMapTest {
         hashMap.insert(4, "Value4");
         hashMap.insert(7, "Value7");
 
-        hashMap.delete(4); // Deleting the middle element of the bucket
+        hashMap.delete(4);
         assertNull(hashMap.search(4));
         assertEquals("Value1", hashMap.search(1));
         assertEquals("Value7", hashMap.search(7));
