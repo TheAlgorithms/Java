@@ -12,7 +12,7 @@ import java.util.Scanner;
     to confirm that it's an exact match.
 */
 
-public class PatternSearchUsingRabinKarpAlgo {
+public final class PatternSearchUsingRabinKarpAlgo {
 
     private PatternSearchUsingRabinKarpAlgo() {
     }
