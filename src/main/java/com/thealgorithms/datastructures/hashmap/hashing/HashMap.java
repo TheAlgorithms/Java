@@ -166,8 +166,7 @@ public class HashMap<K, V> {
             // Traverse the list to find and delete the node
             Node<K, V> current = head;
             while (current.getNext() != null) {
-                if ((key == null && current.getNext().getKey() == null) ||
-                        (current.getNext().getKey() != null && current.getNext().getKey().equals(key))) {
+                if ((key == null && current.getNext().getKey() == null) || (current.getNext().getKey() != null && current.getNext().getKey().equals(key))) {
                     current.setNext(current.getNext().getNext());
                     return;
                 }
@@ -252,7 +251,7 @@ public class HashMap<K, V> {
             return value;
         }
 
-        public void setValue(V value) {  // This method allows updating the value
+        public void setValue(V value) { // This method allows updating the value
             this.value = value;
         }
 
