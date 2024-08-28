@@ -12,7 +12,7 @@ import java.util.Scanner;
     to confirm that it's an exact match.
 */
 
-public final class PatternSearchUsingRabinKarpAlgo {
+public class PatternSearchUsingRabinKarpAlgo {
 
     private PatternSearchUsingRabinKarpAlgo() {
     }
@@ -30,7 +30,7 @@ public final class PatternSearchUsingRabinKarpAlgo {
 
         // The value of h would be "pow(d, m-1) % prime"
         for (int i = 0; i < m - 1; i++) {
-            h = (h * 256) % prime;
+            h = h * 256 % prime;
         }
 
         // Calculating the hash value of pattern and first window of text
@@ -59,9 +59,9 @@ public final class PatternSearchUsingRabinKarpAlgo {
 
             // Calculating hash value for next window of text: Remove leading digit, add trailing digit
             if (i < n - m) {
-                textHash = (256 * textHash - text.charAt(i) * h + text.charAt(i + m)) % prime;
+                textHash = (256 * (textHash - text.charAt(i) * h) + text.charAt(i + m)) % prime;
 
-                // We might get negative value of textHash, so converting it to positive
+                // We might get negative value of textHash,so converting it to positive
                 if (textHash < 0) {
                     textHash = (textHash + prime);
                 }
@@ -80,7 +80,7 @@ public final class PatternSearchUsingRabinKarpAlgo {
 
         System.out.print("Enter the searching string: ");
         String pattern = in.next();
-        //        String pattern = "CDD";    test
+        //        String pattern = "CDD";    testt
 
         List<String> result = search(text.toLowerCase(), pattern.toLowerCase());
 
