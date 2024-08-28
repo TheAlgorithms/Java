@@ -1,7 +1,11 @@
 package com.thealgorithms.strings;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /*
+    @author Lohit M Kudlannavar (https://github.com/Lohit-pro)
+
     https://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm
     The Rabin-Karp algorithm calculates a hash value for the pattern and a hash value for a sliding window
     of text in the same length as the pattern. If the hash values match, it checks character by character
@@ -9,6 +13,9 @@ import java.util.*;
 */
 
 public class PatternSearchUsingRabinKarpAlgo {
+
+    private PatternSearchUsingRabinKarpAlgo() {
+    }
 
     // I'm using Rabin-Karp algorithm that uses hashing to find pattern strings in a text.
     public static List<String> search(String text, String pattern) {
@@ -73,7 +80,7 @@ public class PatternSearchUsingRabinKarpAlgo {
 
         System.out.print("Enter the searching string: ");
         String pattern = in.next();
-        //        String pattern = "CDD";    testt
+        //        String pattern = "CDD";    test
 
         List<String> result = search(text.toLowerCase(), pattern.toLowerCase());
 
