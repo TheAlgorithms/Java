@@ -29,7 +29,7 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
         }
         long masSum = 0; // Variable to store the maximum sum of distinct subarrays
         long currentSum = 0; // Variable to store the sum of the current subarray
-        Set<Integer> currentSet  = new HashSet<>(); // Set to track distinct elements in the current subarray
+        Set<Integer> currentSet  = new HashSet<>();// Set to track distinct elements in the current subarray
 
         // Initialize the first window
         for (int i = 0; i < k; i++) {
@@ -37,7 +37,7 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
             currentSet.add(nums[i]);
         }
         // If the first window contains distinct elements, update maxSum
-        if (currentSet .size() == k) {
+        if (currentSet.size() == k) {
             masSum = currentSum;
         }
         // Slide the window across the array
@@ -47,7 +47,7 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
             currentSum = currentSum + nums[i + k - 1];
             int j = i;
             boolean flag = false; // flag value which says that the subarray contains distinct elements
-            while (j < i + k && currentSet .size() < k) {
+            while (j < i + k && currentSet.size() < k) {
                 if (nums[i - 1] == nums[j]) {
                     flag = true;
                     break;
