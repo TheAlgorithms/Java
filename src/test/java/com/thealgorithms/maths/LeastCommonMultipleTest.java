@@ -16,7 +16,6 @@ class LeastCommonMultipleTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of(12, 18, 36), Arguments.of(5, 10, 10), Arguments.of(7, 3, 21), Arguments.of(21, 6, 42), Arguments.of(1, 1, 1),
-                Arguments.of(8, 12, 24), Arguments.of(14, 35, 70), Arguments.of(15, 25, 75), Arguments.of(100, 25, 100), Arguments.of(0, 10, 0));
+        return Stream.of(Arguments.of(12, 18, 36), Arguments.of(5, 10, 10), Arguments.of(7, 3, 21), Arguments.of(21, 6, 42), Arguments.of(1, 1, 1), Arguments.of(8, 12, 24), Arguments.of(14, 35, 70), Arguments.of(15, 25, 75), Arguments.of(100, 25, 100), Arguments.of(0, 10, 0));
     }
 }
