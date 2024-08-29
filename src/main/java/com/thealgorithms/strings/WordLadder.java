@@ -50,8 +50,7 @@ public final class WordLadder {
                         if (newWord.equals(endWord)) {
                             return level + 1;
                         }
-                        if (wordSet.contains(newWord)) {
-                            wordSet.remove(newWord);
+                        if (wordSet.remove(newWord)) {
                             queue.offer(newWord);
                         }
                     }
