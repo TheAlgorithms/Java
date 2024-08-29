@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.strings;
 
 /**
  * Implementation of Knuth–Morris–Pratt algorithm Usage: see the main function

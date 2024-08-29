@@ -1,4 +1,4 @@
-package com.thealgorithms.dynamicprogramming;
+package com.thealgorithms.datastructures.graphs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
