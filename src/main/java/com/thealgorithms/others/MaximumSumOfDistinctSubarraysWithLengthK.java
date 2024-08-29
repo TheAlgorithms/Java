@@ -29,7 +29,7 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
         }
         long masSum = 0; // Variable to store the maximum sum of distinct subarrays
         long currentSum = 0; // Variable to store the sum of the current subarray
-        Set<Integer> currentSet  = new HashSet<>();// Set to track distinct elements in the current subarray
+        Set<Integer> currentSet  = new HashSet<>(); // Set to track distinct elements in the current subarray
 
         // Initialize the first window
         for (int i = 0; i < k; i++) {
