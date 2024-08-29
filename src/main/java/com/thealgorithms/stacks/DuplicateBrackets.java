@@ -1,37 +1,43 @@
 package com.thealgorithms.stacks;
 
-//  1. You are given a string exp representing an expression.
-// 2. Assume that the expression is balanced  i.e. the opening and closing brackets match with each
-// other.
-// 3. But, some of the pair of brackets maybe extra/needless.
-// 4. You are required to print true if you detect extra brackets and false otherwise.
-// e.g.'
-// ((a + b) + (c + d)) -> false
-// (a + b) + ((c + d)) -> true
 import java.util.Stack;
 
+/**
+ * Class for detecting unnecessary or redundant brackets in a mathematical expression.
+ * Assumes the expression is balanced (i.e., all opening brackets have matching closing brackets).
+ */
 public final class DuplicateBrackets {
     private DuplicateBrackets() {
     }
 
-    public static boolean check(String str) {
-        Stack<Character> st = new Stack<>();
+    /**
+     * Checks for extra or redundant brackets in a given expression.
+     *
+     * @param expression the string representing the expression to be checked
+     * @return true if there are extra or redundant brackets, false otherwise
+     * @throws IllegalArgumentException if the input string is null
+     */
+    public static boolean check(String expression) {
+        if (expression == null) {
+            throw new IllegalArgumentException("Input expression cannot be null.");
+        }
 
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
             if (ch == ')') {
-                if (st.peek() == '(') {
+                if (stack.isEmpty() || stack.peek() == '(') {
                     return true;
-                } else {
-                    while (st.size() > 0 && st.peek() != '(') {
-                        st.pop();
-                    }
-                    st.pop();
+                }
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    stack.pop();
+                }
+                if (!stack.isEmpty()) {
+                    stack.pop();
                 }
             } else {
-                st.push(ch);
+                stack.push(ch);
             }
-            // System.out.println(st);
         }
         return false;
     }
