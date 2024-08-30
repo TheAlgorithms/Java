@@ -15,13 +15,13 @@ public final class Upper {
     }
 
     /**
-     * Converts all of the characters in this {@code String} to upper case
+     * Converts all the characters in this {@code String} to upper case
      *
      * @param s the string to convert
      * @return the {@code String}, converted to uppercase.
      */
     public static String toUpperCase(String s) {
-        if (s == null || "".equals(s)) {
+        if (s == null || s.isEmpty()) {
             return s;
         }
         char[] values = s.toCharArray();
