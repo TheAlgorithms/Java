@@ -11,7 +11,7 @@ public final class LargestRectangle {
     private LargestRectangle() {
     }
 
-    public static String largestRectanglehistogram(int[] heights) {
+    public static String largestRectangleHistogram(int[] heights) {
         int n = heights.length;
         int maxArea = 0;
         Stack<int[]> st = new Stack<>();
@@ -32,7 +32,7 @@ public final class LargestRectangle {
     }
 
     public static void main(String[] args) {
-        assert largestRectanglehistogram(new int[] {2, 1, 5, 6, 2, 3}).equals("10");
-        assert largestRectanglehistogram(new int[] {2, 4}).equals("4");
+        assert largestRectangleHistogram(new int[] {2, 1, 5, 6, 2, 3}).equals("10");
+        assert largestRectangleHistogram(new int[] {2, 4}).equals("4");
     }
 }

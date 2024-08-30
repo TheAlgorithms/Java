@@ -2,31 +2,21 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class MaximumSumOfDistinctSubarraysWithLengthKTest {
-    @Test
-    public void sampleTestCase1() {
-        assertEquals(15, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(3, 1, 5, 4, 2, 9, 9, 9));
+
+    @ParameterizedTest
+    @MethodSource("inputStream")
+    void testMaximumSubarraySum(int expected, int k, int[] arr) {
+        assertEquals(expected, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(k, arr));
     }
 
-    @Test
-    public void sampleTestCase2() {
-        assertEquals(0, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(3, 4, 4, 4));
-    }
-
-    @Test
-    public void sampleTestCase3() {
-        assertEquals(12, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(3, 9, 9, 9, 1, 2, 3));
-    }
-
-    @Test
-    public void edgeCase1() {
-        assertEquals(0, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(0, 9, 9, 9));
-    }
-
-    @Test
-    public void edgeCase2() {
-        assertEquals(0, MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(5, 9, 9, 9));
+    private static Stream<Arguments> inputStream() {
+        return Stream.of(Arguments.of(15, 3, new int[] {1, 5, 4, 2, 9, 9, 9}), Arguments.of(0, 3, new int[] {4, 4, 4}), Arguments.of(12, 3, new int[] {9, 9, 9, 1, 2, 3}), Arguments.of(0, 0, new int[] {9, 9, 9}), Arguments.of(0, 5, new int[] {9, 9, 9}), Arguments.of(9, 1, new int[] {9, 2, 3, 7}),
+            Arguments.of(15, 5, new int[] {1, 2, 3, 4, 5}), Arguments.of(6, 3, new int[] {-1, 2, 3, 1, -2, 4}), Arguments.of(10, 1, new int[] {10}), Arguments.of(0, 2, new int[] {7, 7, 7, 7}), Arguments.of(0, 3, new int[] {}), Arguments.of(0, 10, new int[] {1, 2, 3}));
     }
 }
