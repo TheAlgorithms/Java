@@ -13,7 +13,6 @@ public final class ReverseWordsInString {
      * @param s the input string
      * @return A string created by reversing the order of the words in {@code s}
      */
-
     public static String reverseWordsInString(final String s) {
         var words = s.trim().split("\\s+");
         Collections.reverse(Arrays.asList(words));
