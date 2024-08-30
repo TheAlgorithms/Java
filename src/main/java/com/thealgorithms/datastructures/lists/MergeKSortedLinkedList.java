@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 /**
  * @author Arun Pandey (https://github.com/pandeyarun709)
  */
-public class MergeKSortedLinkedlist {
+public class MergeKSortedLinkedList {
 
     /**
      * This function merge K sorted LinkedList
