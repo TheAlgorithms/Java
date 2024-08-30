@@ -5,46 +5,32 @@ public final class SubsetSum {
     }
 
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        int[] arr = new int[] {50, 4, 10, 15, 34};
-        assert subsetSum(arr, 64);
-        /* 4 + 10 + 15 + 34 = 64 */
-        assert subsetSum(arr, 99);
-        /* 50 + 15 + 34 = 99 */
-        assert !subsetSum(arr, 5);
-        assert !subsetSum(arr, 66);
-    }
-
-    /**
-     * Test if a set of integers contains a subset that sum to a given integer.
+     * Test if a set of integers contains a subset that sums to a given integer.
      *
-     * @param arr the array contains integers.
-     * @param sum target sum of subset.
-     * @return {@code true} if subset exists, otherwise {@code false}.
+     * @param arr the array containing integers.
+     * @param sum the target sum of the subset.
+     * @return {@code true} if a subset exists that sums to the given value, otherwise {@code false}.
      */
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
-        boolean[][] isSum = new boolean[n + 2][sum + 1];
+        boolean[][] isSum = new boolean[n + 1][sum + 1];
 
-        isSum[n + 1][0] = true;
-        for (int i = 1; i <= sum; i++) {
-            isSum[n + 1][i] = false;
+        // Initialize the first column to true since a sum of 0 can always be achieved with an empty subset.
+        for (int i = 0; i <= n; i++) {
+            isSum[i][0] = true;
         }
 
-        for (int i = n; i > 0; i--) {
-            isSum[i][0] = true;
-            for (int j = 1; j <= arr[i - 1] - 1; j++) {
-                if (j <= sum) {
-                    isSum[i][j] = isSum[i + 1][j];
+        // Fill the subset sum matrix
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                if (arr[i - 1] <= j) {
+                    isSum[i][j] = isSum[i - 1][j] || isSum[i - 1][j - arr[i - 1]];
+                } else {
+                    isSum[i][j] = isSum[i - 1][j];
                 }
             }
-            for (int j = arr[i - 1]; j <= sum; j++) {
-                isSum[i][j] = (isSum[i + 1][j] || isSum[i + 1][j - arr[i - 1]]);
-            }
         }
 
-        return isSum[1][sum];
+        return isSum[n][sum];
     }
 }
