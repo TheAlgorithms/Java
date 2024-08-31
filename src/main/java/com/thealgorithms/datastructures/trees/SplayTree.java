@@ -177,7 +177,7 @@ public class SplayTree {
      * @param key  The key to splay around.
      * @return The new root of the splayed subtree.
      */
-    private final Node splay(Node root, int key) {
+    private Node splay(Node root, int key) {
         if (root == null || root.key == key) {
             return root;
         }
@@ -215,7 +215,7 @@ public class SplayTree {
         }
     }
 
-    private final Node insertRec(Node root, int key) {
+    private Node insertRec(Node root, int key) {
         if (root == null) {
             return new Node(key);
         }
