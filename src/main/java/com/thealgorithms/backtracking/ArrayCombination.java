@@ -1,6 +1,7 @@
 package com.thealgorithms.backtracking;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,16 +19,16 @@ public final class ArrayCombination {
      * @return A list of all combinations of length k.
      */
     public static List<List<Integer>> combination(int n, int k) {
-        if (n < 0 || k < 0 || k > n) {
+        if (k < 0 || k > n) {
             throw new IllegalArgumentException("Wrong input.");
         }
 
         List<List<Integer>> combinations = new ArrayList<>();
-        combine(combinations, new ArrayList<>(), 0, n, k);
+        combine(combinations, new LinkedList<>(), 0, n, k);
         return combinations;
     }
 
-    private static void combine(List<List<Integer>> combinations, List<Integer> current, int start, int n, int k) {
+    private static void combine(List<List<Integer>> combinations, LinkedList<Integer> current, int start, int n, int k) {
         if (current.size() == k) { // Base case: combination found
             combinations.add(new ArrayList<>(current)); // Copy to avoid modification
             return;
