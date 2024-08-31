@@ -57,14 +57,14 @@ public class SplayTreeTest {
     @MethodSource("valuesToTest")
     public void testDeleteThrowsExceptionForEmptyTree(int value) {
         SplayTree tree = new SplayTree();
-        assertThrows(IllegalArgumentException.class, () -> tree.delete(value));
+        assertThrows(SplayTree.EmptyTreeException.class, () -> tree.delete(value));
     }
 
     @ParameterizedTest
     @MethodSource("valuesToTest")
     public void testInsertThrowsExceptionForDuplicateKeys(int value) {
         SplayTree tree = createComplexTree();
-        assertThrows(IllegalArgumentException.class, () -> tree.insert(value));
+        assertThrows(SplayTree.DuplicateKeyException.class, () -> tree.insert(value));
     }
 
     @ParameterizedTest
