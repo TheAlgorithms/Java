@@ -5,18 +5,23 @@ import java.util.List;
 
 /**
  * Implementation of a Splay Tree data structure.
- * 
- * A splay tree is a self-adjusting binary search tree with the additional property
+ *
+ * A splay tree is a self-adjusting binary search tree with the additional
+ * property
  * that recently accessed elements are quick to access again. It performs basic
- * operations such as insertion, deletion, and searching in O(log n) amortized time,
+ * operations such as insertion, deletion, and searching in O(log n) amortized
+ * time,
  * where n is the number of elements in the tree.
- * 
- * The key feature of splay trees is the splay operation, which moves a node closer
+ *
+ * The key feature of splay trees is the splay operation, which moves a node
+ * closer
  * to the root of the tree when it is accessed. This operation helps to maintain
- * good balance and improves the overall performance of the tree. After performing
+ * good balance and improves the overall performance of the tree. After
+ * performing
  * a splay operation, the accessed node becomes the new root of the tree.
- * 
- * Splay trees have applications in various areas, including caching, network routing,
+ *
+ * Splay trees have applications in various areas, including caching, network
+ * routing,
  * and dynamic optimality analysis.
  */
 public class SplayTree {
@@ -102,8 +107,10 @@ public class SplayTree {
      * Zig operation.
      *
      * <p>
-     * The zig operation is used to perform a single rotation on a node to move it closer to
-     * the root of the tree. It is typically applied when the node is a left child of its parent
+     * The zig operation is used to perform a single rotation on a node to move it
+     * closer to
+     * the root of the tree. It is typically applied when the node is a left child
+     * of its parent
      * and needs to be rotated to the right.
      * </p>
      *
@@ -121,8 +128,10 @@ public class SplayTree {
      * Zag operation.
      *
      * <p>
-     * The zag operation is used to perform a single rotation on a node to move it closer to
-     * the root of the tree. It is typically applied when the node is a right child of its parent
+     * The zag operation is used to perform a single rotation on a node to move it
+     * closer to
+     * the root of the tree. It is typically applied when the node is a right child
+     * of its parent
      * and needs to be rotated to the left.
      * </p>
      *
@@ -140,9 +149,12 @@ public class SplayTree {
      * Splay operation.
      *
      * <p>
-     * The splay operation is the core operation of a splay tree. It moves a specified node
-     * closer to the root of the tree by performing a series of rotations. The goal of the splay
-     * operation is to improve the access time for frequently accessed nodes by bringing them
+     * The splay operation is the core operation of a splay tree. It moves a
+     * specified node
+     * closer to the root of the tree by performing a series of rotations. The goal
+     * of the splay
+     * operation is to improve the access time for frequently accessed nodes by
+     * bringing them
      * closer to the root.
      * </p>
      *
@@ -150,13 +162,15 @@ public class SplayTree {
      * The splay operation consists of three main cases:
      * <ul>
      * <li>Zig-Zig case: Perform two consecutive rotations.</li>
-     * <li>Zig-Zag case: Perform two consecutive rotations in opposite directions.</li>
+     * <li>Zig-Zag case: Perform two consecutive rotations in opposite
+     * directions.</li>
      * <li>Zag-Zag case: Perform two consecutive rotations.</li>
      * </ul>
      * </p>
      *
      * <p>
-     * After performing the splay operation, the accessed node becomes the new root of the tree.
+     * After performing the splay operation, the accessed node becomes the new root
+     * of the tree.
      * </p>
      *
      * @param root The root of the subtree to splay.
