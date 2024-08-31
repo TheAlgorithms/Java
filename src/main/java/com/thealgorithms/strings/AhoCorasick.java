@@ -14,6 +14,7 @@ package com.thealgorithms.strings;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -24,7 +25,7 @@ public final class AhoCorasick {
     // Trie Node Class
     private static class Node {
         // Represents a character in the trie
-        private HashMap<Character, Node> child = new HashMap<>(); // Child nodes of the current node
+        private final Map<Character, Node> child = new HashMap<>(); // Child nodes of the current node
         private Node suffixLink; // Suffix link to another node in the trie
         private Node outputLink; // Output link to another node in the trie
         private int patternInd; // Index of the pattern that ends at this node
@@ -35,7 +36,7 @@ public final class AhoCorasick {
             this.patternInd = -1;
         }
 
-        public HashMap<Character, Node> getChild() {
+        public Map<Character, Node> getChild() {
             return child;
         }
 
@@ -148,16 +149,16 @@ public final class AhoCorasick {
             }
         }
 
-        private ArrayList<ArrayList<Integer>> initializePositionByStringIndexValue() {
-            ArrayList<ArrayList<Integer>> positionByStringIndexValue = new ArrayList<>(patterns.length); // Stores positions where patterns are found in the text
+        private List<List<Integer>> initializePositionByStringIndexValue() {
+            List<List<Integer>> positionByStringIndexValue = new ArrayList<>(patterns.length); // Stores positions where patterns are found in the text
             for (int i = 0; i < patterns.length; i++) {
-                positionByStringIndexValue.add(new ArrayList<Integer>());
+                positionByStringIndexValue.add(new ArrayList<>());
             }
             return positionByStringIndexValue;
         }
 
         // Searches for patterns in the input text and records their positions
-        public ArrayList<ArrayList<Integer>> searchIn(final String text) {
+        public List<List<Integer>> searchIn(final String text) {
             var positionByStringIndexValue = initializePositionByStringIndexValue(); // Initialize a list to store positions of the current pattern
             Node parent = root; // Start searching from the root node
 
@@ -187,7 +188,7 @@ public final class AhoCorasick {
 
         // by default positionByStringIndexValue contains end-points. This function converts those
         // endpoints to start points
-        private void setUpStartPoints(ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
+        private void setUpStartPoints(List<List<Integer>> positionByStringIndexValue) {
             for (int i = 0; i < patterns.length; i++) {
                 for (int j = 0; j < positionByStringIndexValue.get(i).size(); j++) {
                     int endpoint = positionByStringIndexValue.get(i).get(j);
@@ -198,20 +199,15 @@ public final class AhoCorasick {
     }
 
     // Class to handle pattern position recording
-    private static class PatternPositionRecorder {
-        private ArrayList<ArrayList<Integer>> positionByStringIndexValue;
-
+    private record PatternPositionRecorder(List<List<Integer>> positionByStringIndexValue) {
         // Constructor to initialize the recorder with the position list
-        PatternPositionRecorder(final ArrayList<ArrayList<Integer>> positionByStringIndexValue) {
-            this.positionByStringIndexValue = positionByStringIndexValue;
-        }
 
         /**
          * Records positions for a pattern when it's found in the input text and follows
          * output links to record positions of other patterns.
          *
-         * @param parent The current node representing a character in the pattern trie.
-         * @param currentPosition      The current position in the input text.
+         * @param parent          The current node representing a character in the pattern trie.
+         * @param currentPosition The current position in the input text.
          */
         public void recordPatternPositions(final Node parent, final int currentPosition) {
             // Check if the current node represents the end of a pattern
@@ -229,19 +225,20 @@ public final class AhoCorasick {
             }
         }
     }
+
     // method to search for patterns in text
-    public static Map<String, ArrayList<Integer>> search(final String text, final String[] patterns) {
+    public static Map<String, List<Integer>> search(final String text, final String[] patterns) {
         final var trie = new Trie(patterns);
         final var positionByStringIndexValue = trie.searchIn(text);
         return convert(positionByStringIndexValue, patterns);
     }
 
     // method for converting results to a map
-    private static Map<String, ArrayList<Integer>> convert(final ArrayList<ArrayList<Integer>> positionByStringIndexValue, final String[] patterns) {
-        Map<String, ArrayList<Integer>> positionByString = new HashMap<>();
+    private static Map<String, List<Integer>> convert(final List<List<Integer>> positionByStringIndexValue, final String[] patterns) {
+        Map<String, List<Integer>> positionByString = new HashMap<>();
         for (int i = 0; i < patterns.length; i++) {
             String pattern = patterns[i];
-            ArrayList<Integer> positions = positionByStringIndexValue.get(i);
+            List<Integer> positions = positionByStringIndexValue.get(i);
             positionByString.put(pattern, new ArrayList<>(positions));
         }
         return positionByString;

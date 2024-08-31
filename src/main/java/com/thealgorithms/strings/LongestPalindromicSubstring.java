@@ -1,44 +1,31 @@
 package com.thealgorithms.strings;
 
-// Longest Palindromic Substring
-import java.util.Scanner;
-
 final class LongestPalindromicSubstring {
     private LongestPalindromicSubstring() {
     }
 
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        String str = "";
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the string: ");
-        str = sc.nextLine();
-        System.out.println("Longest substring is : " + s.longestPalindrome(str));
-        sc.close();
-    }
-}
-
-class Solution {
-
-    public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0) {
+    /**
+     * Finds the longest palindromic substring in the given string.
+     *
+     * @param s the input string
+     * @return the longest palindromic substring
+     */
+    public static String longestPalindrome(String s) {
+        if (s == null || s.isEmpty()) {
             return "";
         }
-        int n = s.length();
         String maxStr = "";
-        for (int i = 0; i < n; ++i) {
-            for (int j = i; j < n; ++j) {
-                if (isValid(s, i, j)) {
-                    if (j - i + 1 > maxStr.length()) { // update maxStr
-                        maxStr = s.substring(i, j + 1);
-                    }
+        for (int i = 0; i < s.length(); ++i) {
+            for (int j = i; j < s.length(); ++j) {
+                if (isValid(s, i, j) && (j - i + 1 > maxStr.length())) {
+                    maxStr = s.substring(i, j + 1);
                 }
             }
         }
         return maxStr;
     }
 
-    private boolean isValid(String s, int lo, int hi) {
+    private static boolean isValid(String s, int lo, int hi) {
         int n = hi - lo + 1;
         for (int i = 0; i < n / 2; ++i) {
             if (s.charAt(lo + i) != s.charAt(hi - i)) {

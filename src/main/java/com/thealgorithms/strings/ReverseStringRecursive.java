@@ -3,10 +3,10 @@ package com.thealgorithms.strings;
 /**
  * Reverse String using Recursion
  */
-
 public final class ReverseStringRecursive {
     private ReverseStringRecursive() {
     }
+
     /**
      * @param str string to be reversed
      * @return reversed string

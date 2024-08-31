@@ -3,54 +3,50 @@ package com.thealgorithms.conversions;
 /**
  * @author Varun Upadhyay (<a href="https://github.com/varunu28">...</a>)
  */
-// Driver program
 public final class AnyBaseToDecimal {
+    private static final int CHAR_OFFSET_FOR_DIGIT = '0';
+    private static final int CHAR_OFFSET_FOR_UPPERCASE = 'A' - 10;
+
     private AnyBaseToDecimal() {
     }
 
-    public static void main(String[] args) {
-        assert convertToDecimal("1010", 2) == Integer.valueOf("1010", 2);
-        assert convertToDecimal("777", 8) == Integer.valueOf("777", 8);
-        assert convertToDecimal("999", 10) == Integer.valueOf("999", 10);
-        assert convertToDecimal("ABCDEF", 16) == Integer.valueOf("ABCDEF", 16);
-        assert convertToDecimal("XYZ", 36) == Integer.valueOf("XYZ", 36);
-    }
-
     /**
-     * Convert any radix to decimal number
+     * Convert any radix to a decimal number.
      *
-     * @param s the string to be convert
-     * @param radix the radix
-     * @return decimal of bits
-     * @throws NumberFormatException if {@code bits} or {@code radix} is invalid
+     * @param input the string to be converted
+     * @param radix the radix (base) of the input string
+     * @return the decimal equivalent of the input string
+     * @throws NumberFormatException if the input string or radix is invalid
      */
-    public static int convertToDecimal(String s, int radix) {
-        int num = 0;
-        int pow = 1;
+    public static int convertToDecimal(String input, int radix) {
+        int result = 0;
+        int power = 1;
 
-        for (int i = s.length() - 1; i >= 0; i--) {
-            int digit = valOfChar(s.charAt(i));
+        for (int i = input.length() - 1; i >= 0; i--) {
+            int digit = valOfChar(input.charAt(i));
             if (digit >= radix) {
-                throw new NumberFormatException("For input string " + s);
+                throw new NumberFormatException("For input string: " + input);
             }
-            num += valOfChar(s.charAt(i)) * pow;
-            pow *= radix;
+            result += digit * power;
+            power *= radix;
         }
-        return num;
+        return result;
     }
 
     /**
-     * Convert character to integer
+     * Convert a character to its integer value.
      *
-     * @param c the character
-     * @return represented digit of given character
-     * @throws NumberFormatException if {@code ch} is not UpperCase or Digit
-     * character.
+     * @param character the character to be converted
+     * @return the integer value represented by the character
+     * @throws NumberFormatException if the character is not an uppercase letter or a digit
      */
-    public static int valOfChar(char c) {
-        if (!(Character.isUpperCase(c) || Character.isDigit(c))) {
-            throw new NumberFormatException("invalid character :" + c);
+    private static int valOfChar(char character) {
+        if (Character.isDigit(character)) {
+            return character - CHAR_OFFSET_FOR_DIGIT;
+        } else if (Character.isUpperCase(character)) {
+            return character - CHAR_OFFSET_FOR_UPPERCASE;
+        } else {
+            throw new NumberFormatException("invalid character:" + character);
         }
-        return Character.isDigit(c) ? c - '0' : c - 'A' + 10;
     }
 }

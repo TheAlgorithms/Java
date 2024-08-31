@@ -25,13 +25,13 @@ public class HeapSort implements SortAlgorithm {
         return array;
     }
 
-    private static <T extends Comparable<T>> void heapify(T[] array, int n) {
+    private <T extends Comparable<T>> void heapify(final T[] array, final int n) {
         for (int k = n / 2; k >= 1; k--) {
             siftDown(array, k, n);
         }
     }
 
-    private static <T extends Comparable<T>> void siftDown(T[] array, int k, int n) {
+    private <T extends Comparable<T>> void siftDown(final T[] array, int k, final int n) {
         while (2 * k <= n) {
             int j = 2 * k;
             if (j < n && SortUtils.less(array[j - 1], array[j])) {

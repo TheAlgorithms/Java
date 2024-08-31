@@ -1,12 +1,23 @@
 package com.thealgorithms.dynamicprogramming;
 
-// Java program to find length of the shortest supersequence
-final class ShortestSuperSequence {
-    private ShortestSuperSequence() {
+/**
+ * Class that provides methods to calculate the length of the shortest
+ * supersequence of two given strings. The shortest supersequence is the smallest string
+ * that contains both given strings as subsequences.
+ */
+final class ShortestCommonSupersequenceLength {
+    private ShortestCommonSupersequenceLength() {
     }
 
-    // Function to find length of the
-    // shortest supersequence of x and y.
+    /**
+     * Finds the length of the shortest supersequence of two given strings.
+     * The shortest supersequence is defined as the smallest string that contains both
+     * given strings as subsequences.
+     *
+     * @param x The first input string.
+     * @param y The second input string.
+     * @return The length of the shortest supersequence of the two strings.
+     */
     static int shortestSuperSequence(String x, String y) {
         int m = x.length();
         int n = y.length();
@@ -16,11 +27,20 @@ final class ShortestSuperSequence {
 
         // Result is sum of input string
         // lengths - length of lcs
-        return (m + n - l);
+        return m + n - l;
     }
 
-    // Returns length of LCS
-    // for x[0..m - 1], y[0..n - 1]
+    /**
+     * Calculates the length of the longest common subsequence (LCS) between two strings.
+     * The LCS is the longest sequence that can be derived from both strings by deleting some
+     * (or none) of the characters without changing the order of the remaining characters.
+     *
+     * @param x The first input string.
+     * @param y The second input string.
+     * @param m The length of the first input string.
+     * @param n The length of the second input string.
+     * @return The length of the longest common subsequence of the two strings.
+     */
     static int lcs(String x, String y, int m, int n) {
         int[][] lN = new int[m + 1][n + 1];
         int i;
@@ -45,14 +65,5 @@ final class ShortestSuperSequence {
         // lN[m][n] contains length of LCS
         // for x[0..n - 1] and y[0..m - 1]
         return lN[m][n];
-    }
-
-    // Driver code
-    public static void main(String[] args) {
-        String x = "AGGTAB";
-        String y = "GXTXAYB";
-
-        System.out.println("Length of the shortest "
-            + "supersequence is " + shortestSuperSequence(x, y));
     }
 }

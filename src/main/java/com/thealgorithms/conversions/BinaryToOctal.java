@@ -1,27 +1,11 @@
 package com.thealgorithms.conversions;
 
-import java.util.Scanner;
-
-/**
- * Converts any Binary number to an Octal Number
- *
- * @author Zachary Jones
- */
 public final class BinaryToOctal {
-    private BinaryToOctal() {
-    }
+    private static final int BITS_PER_OCTAL_DIGIT = 3;
+    private static final int BINARY_BASE = 2;
+    private static final int DECIMAL_BASE = 10;
 
-    /**
-     * Main method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Input the binary number: ");
-        int b = sc.nextInt();
-        System.out.println("Octal equivalent: " + convertBinaryToOctal(b));
-        sc.close();
+    private BinaryToOctal() {
     }
 
     /**
@@ -29,22 +13,33 @@ public final class BinaryToOctal {
      *
      * @param binary The binary number
      * @return The octal number
+     * @throws IllegalArgumentException if the input is not a valid binary number
      */
     public static String convertBinaryToOctal(int binary) {
-        String octal = "";
-        int currBit = 0;
-        int j = 1;
-        while (binary != 0) {
-            int code3 = 0;
-            for (int i = 0; i < 3; i++) {
-                currBit = binary % 10;
-                binary = binary / 10;
-                code3 += currBit * j;
-                j *= 2;
-            }
-            octal = code3 + octal;
-            j = 1;
+        if (binary == 0) {
+            return "0";
         }
-        return octal;
+
+        if (!String.valueOf(binary).matches("[01]+")) {
+            throw new IllegalArgumentException("Input is not a valid binary number.");
+        }
+
+        StringBuilder octal = new StringBuilder();
+        int currentBit;
+        int bitValueMultiplier = 1;
+
+        while (binary != 0) {
+            int octalDigit = 0;
+            for (int i = 0; i < BITS_PER_OCTAL_DIGIT && binary != 0; i++) {
+                currentBit = binary % DECIMAL_BASE;
+                binary /= DECIMAL_BASE;
+                octalDigit += currentBit * bitValueMultiplier;
+                bitValueMultiplier *= BINARY_BASE;
+            }
+            octal.insert(0, octalDigit);
+            bitValueMultiplier = 1; // Reset multiplier for the next group
+        }
+
+        return octal.toString();
     }
 }
