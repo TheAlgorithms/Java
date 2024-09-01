@@ -86,6 +86,19 @@ public class SplayTree {
             root.right = temp.right;
         }
     }
+
+    /**
+     * Perform a traversal of the SplayTree.
+     *
+     * @param traversal The type of traversal method.
+     * @return A list containing the keys in the specified traversal order.
+     */
+    public List<Integer> traverse(TreeTraversal traversal) {
+        List<Integer> result = new LinkedList<>();
+        traversal.traverse(root, result);
+        return result;
+    }
+
     /**
      * Finds the node with the maximum key in a given subtree.
      *
@@ -102,18 +115,6 @@ public class SplayTree {
             root = root.right;
         }
         return root;
-    }
-
-    /**
-     * Perform a traversal of the SplayTree.
-     *
-     * @param traversal The type of traversal method.
-     * @return A list containing the keys in the specified traversal order.
-     */
-    public List<Integer> traverse(TreeTraversal traversal) {
-        List<Integer> result = new LinkedList<>();
-        traversal.traverse(root, result);
-        return result;
     }
 
     /**
