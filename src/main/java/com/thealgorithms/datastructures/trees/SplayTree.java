@@ -45,7 +45,7 @@ public class SplayTree {
      *
      * @param key The key to insert.
      */
-    public final void insert(int key) {
+    public void insert(final int key) {
         root = insertRec(root, key);
         root = splay(root, key);
     }
@@ -67,28 +67,41 @@ public class SplayTree {
      * @param key The key to delete.
      * @throws IllegalArgumentException If the tree is empty.
      */
-    public final void delete(int key) {
+    public void delete(final int key) {
         if (isEmpty()) {
             throw new EmptyTreeException("Cannot delete from an empty tree");
         }
 
-        // Splay the tree with the key to be deleted
         root = splay(root, key);
 
-        // If the key is not found at the root, return without deleting
         if (root.key != key) {
             return;
         }
 
-        // Handle deletion
         if (root.left == null) {
             root = root.right;
         } else {
-            // Splay to bring the largest key in left subtree to root
             Node temp = root;
-            root = splay(root.left, key);
+            root = splay(root.left, findMax(root.left).key);
             root.right = temp.right;
         }
+    }
+    /**
+     * Finds the node with the maximum key in a given subtree.
+     *
+     * <p>
+     * This method traverses the right children of the subtree until it finds the
+     * rightmost node, which contains the maximum key.
+     * </p>
+     *
+     * @param root The root node of the subtree.
+     * @return The node with the maximum key in the subtree.
+     */
+    private Node findMax(Node root) {
+        while (root.right != null) {
+            root = root.right;
+        }
+        return root;
     }
 
     /**
@@ -177,7 +190,7 @@ public class SplayTree {
      * @param key  The key to splay around.
      * @return The new root of the splayed subtree.
      */
-    private Node splay(Node root, int key) {
+    private Node splay(Node root, final int key) {
         if (root == null || root.key == key) {
             return root;
         }
@@ -215,7 +228,7 @@ public class SplayTree {
         }
     }
 
-    private Node insertRec(Node root, int key) {
+    private Node insertRec(Node root, final int key) {
         if (root == null) {
             return new Node(key);
         }
@@ -232,12 +245,16 @@ public class SplayTree {
     }
 
     public static class EmptyTreeException extends RuntimeException {
+        private static final long serialVersionUID = 1L;
+
         public EmptyTreeException(String message) {
             super(message);
         }
     }
 
     public static class DuplicateKeyException extends RuntimeException {
+        private static final long serialVersionUID = 1L;
+
         public DuplicateKeyException(String message) {
             super(message);
         }
