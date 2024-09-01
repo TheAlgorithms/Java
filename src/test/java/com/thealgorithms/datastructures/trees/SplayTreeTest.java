@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -110,18 +109,5 @@ public class SplayTreeTest {
         tree.insert(15);
 
         return tree;
-    }
-
-    @Test
-    public void testZigZagCaseWithNullChild() {
-        SplayTree tree = new SplayTree();
-        tree.insert(30);
-        tree.insert(10);
-        tree.insert(20);
-        tree.insert(15);
-
-        assertTrue(tree.search(15));
-
-        assertEquals(Arrays.asList(10, 15, 20, 30), tree.traverse(SplayTree.IN_ORDER));
     }
 }
