@@ -1,27 +1,31 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.Scanner;
-
 /**
- * @file @brief Implements [Palindrome
- * Partitioning](https://leetcode.com/problems/palindrome-partitioning-ii/)
- * algorithm, giving you the minimum number of partitions you need to make
+ * Provides functionality to solve the Palindrome Partitioning II problem, which involves finding
+ * the minimum number of partitions needed to divide a given string into palindromic substrings.
  *
- * @details palindrome partitioning uses dynamic programming and goes to all the
- * possible partitions to find the minimum you are given a string and you need
- * to give minimum number of partitions needed to divide it into a number of
- * palindromes [Palindrome Partitioning]
- * (https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/) overall time
- * complexity O(n^2) For example: example 1:- String : "nitik" Output : 2 => "n
- * | iti | k" For example: example 2:- String : "ababbbabbababa" Output : 3 =>
- * "aba | b | bbabb | ababa"
- * @author [Syed] (https://github.com/roeticvampire)
+ * <p>
+ * The problem is solved using dynamic programming. The approach involves checking all possible
+ * substrings and determining whether they are palindromes. The minimum number of cuts required
+ * for palindrome partitioning is computed in a bottom-up manner.
+ * </p>
+ *
+ * <p>
+ * Example:
+ * <ul>
+ *     <li>Input: "nitik" => Output: 2 (Partitioning: "n | iti | k")</li>
+ *     <li>Input: "ababbbabbababa" => Output: 3 (Partitioning: "aba | b | bbabb | ababa")</li>
+ * </ul>
+ * </p>
+ *
+ * @see <a href="https://leetcode.com/problems/palindrome-partitioning-ii/">Palindrome Partitioning II</a>
+ * @see <a href="https://www.geeksforgeeks.org/palindrome-partitioning-dp-17/">Palindrome Partitioning (GeeksforGeeks)</a>
  */
 public final class PalindromicPartitioning {
     private PalindromicPartitioning() {
     }
 
-    public static int minimalpartitions(String word) {
+    public static int minimalPartitions(String word) {
         int len = word.length();
         /* We Make two arrays to create a bottom-up solution.
            minCuts[i] = Minimum number of cuts needed for palindrome partitioning of substring
@@ -75,16 +79,5 @@ public final class PalindromicPartitioning {
         // Return the min cut value for complete
         // string. i.e., str[0..n-1]
         return minCuts[len - 1];
-    }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        String word;
-        System.out.println("Enter the First String");
-        word = input.nextLine();
-        // ans stores the final minimal cut count needed for partitioning
-        int ans = minimalpartitions(word);
-        System.out.println("The minimum cuts needed to partition \"" + word + "\" into palindromes is " + ans);
-        input.close();
     }
 }

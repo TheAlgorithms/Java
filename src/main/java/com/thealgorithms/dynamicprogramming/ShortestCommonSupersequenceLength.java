@@ -5,8 +5,8 @@ package com.thealgorithms.dynamicprogramming;
  * supersequence of two given strings. The shortest supersequence is the smallest string
  * that contains both given strings as subsequences.
  */
-final class ShortestCommonSuperSequenceLength {
-    private ShortestCommonSuperSequenceLength() {
+final class ShortestCommonSupersequenceLength {
+    private ShortestCommonSupersequenceLength() {
     }
 
     /**
