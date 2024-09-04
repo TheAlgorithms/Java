@@ -98,7 +98,7 @@ public final class WelshPowell {
     }
 
     private static Integer[] getSortedNodes(final Graph graph) {
-        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
+        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> -graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
     }
 
     private static boolean[] computeUsedColors(final Graph graph, final int vertex, final int[] colors) {
