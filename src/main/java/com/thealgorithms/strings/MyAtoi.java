@@ -1,76 +1,65 @@
-// Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer
-// (similar to C/C++'s atoi function). Here is my implementation
-
 package com.thealgorithms.strings;
 
+/**
+ * A utility class that provides a method to convert a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+ */
 public final class MyAtoi {
     private MyAtoi() {
     }
+
+    /**
+     * Converts the given string to a 32-bit signed integer.
+     * The conversion discards any leading whitespace characters until the first non-whitespace character is found.
+     * Then, it takes an optional initial plus or minus sign followed by as many numerical digits as possible and interprets them as a numerical value.
+     * The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+     *
+     * If the number is out of the range of a 32-bit signed integer:
+     * - Returns {@code Integer.MAX_VALUE} if the value exceeds {@code Integer.MAX_VALUE}.
+     * - Returns {@code Integer.MIN_VALUE} if the value is less than {@code Integer.MIN_VALUE}.
+     *
+     * If no valid conversion could be performed, a zero is returned.
+     *
+     * @param s the string to convert
+     * @return the converted integer, or 0 if the string cannot be converted to a valid integer
+     */
     public static int myAtoi(String s) {
-        s = s.trim();
-        char[] char1 = s.toCharArray();
-        String number = "";
-        boolean negative = false;
-        boolean zero = false;
-        boolean isDigit = false;
-
-        for (char ch : char1) {
-            if (Character.isDigit(ch)) {
-                if (number.length() > 1 && !isDigit) {
-                    number = "0";
-                    break;
-                }
-                isDigit = true;
-                if (zero) {
-                    number = "0";
-                    break;
-                }
-                if (ch >= '0' && ch <= '9') {
-                    number += ch;
-                }
-            } else if (ch == '-' && !isDigit) {
-                number += "0";
-                negative = true;
-            } else if (ch == '+' && !isDigit) {
-                number += "0";
-            } else if (ch == '.' && isDigit) {
-                break;
-            } else if (ch == '.') {
-                zero = true;
-            } else {
-                if (!isDigit) {
-                    number = "0";
-                }
-                break;
-            }
-        }
-
-        if (!isDigit) {
+        if (s == null || s.isEmpty()) {
             return 0;
         }
 
-        number = number.replaceFirst("^0+(?!$)", "");
-
-        if (number.length() > 10 && negative) {
-            return -2147483648;
-        } else if (number.length() > 10) {
-            return 2147483647;
-        } else if (number.length() == 10 && negative) {
-            double db1 = Double.parseDouble(number);
-            if (db1 >= 2147483648d) {
-                return -2147483648;
-            }
-        } else if (number.length() == 10) {
-            double db1 = Double.parseDouble(number);
-            if (db1 > (2147483647)) {
-                return 2147483647;
-            }
+        s = s.trim();
+        int length = s.length();
+        if (length == 0) {
+            return 0;
         }
 
-        if (negative) {
-            return Integer.parseInt(number) * -1;
+        int index = 0;
+        boolean negative = false;
+
+        // Check for the sign
+        if (s.charAt(index) == '-' || s.charAt(index) == '+') {
+            negative = s.charAt(index) == '-';
+            index++;
         }
 
-        return Integer.parseInt(number);
+        int number = 0;
+        while (index < length) {
+            char ch = s.charAt(index);
+            if (!Character.isDigit(ch)) {
+                break;
+            }
+
+            int digit = ch - '0';
+
+            // Check for overflow
+            if (number > (Integer.MAX_VALUE - digit) / 10) {
+                return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+
+            number = number * 10 + digit;
+            index++;
+        }
+
+        return negative ? -number : number;
     }
 }

@@ -1,22 +1,30 @@
 package com.thealgorithms.others;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 final class FloydTriangle {
     private FloydTriangle() {
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of rows which you want in your Floyd Triangle: ");
-        int r = sc.nextInt();
-        int n = 0;
-        sc.close();
-        for (int i = 0; i < r; i++) {
+    /**
+     * Generates a Floyd Triangle with the specified number of rows.
+     *
+     * @param rows The number of rows in the triangle.
+     * @return A List representing the Floyd Triangle.
+     */
+    public static List<List<Integer>> generateFloydTriangle(int rows) {
+        List<List<Integer>> triangle = new ArrayList<>();
+        int number = 1;
+
+        for (int i = 0; i < rows; i++) {
+            List<Integer> row = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
-                System.out.print(++n + " ");
+                row.add(number++);
             }
-            System.out.println();
+            triangle.add(row);
         }
+
+        return triangle;
     }
 }

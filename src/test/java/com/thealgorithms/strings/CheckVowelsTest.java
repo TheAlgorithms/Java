@@ -1,17 +1,15 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class CheckVowelsTest {
+class CheckVowelsTest {
 
-    @Test
-    public void isVowel() {
-        assertTrue(CheckVowels.hasVowels("foo"));
-        assertTrue(CheckVowels.hasVowels("bar"));
-        assertFalse(CheckVowels.hasVowels("why"));
-        assertFalse(CheckVowels.hasVowels("myths"));
+    @ParameterizedTest
+    @CsvSource({"'foo', true", "'bar', true", "'why', false", "'myths', false", "'', false", "'AEIOU', true", "'bcdfghjklmnpqrstvwxyz', false", "'AeIoU', true"})
+    void testHasVowels(String input, boolean expected) {
+        assertEquals(CheckVowels.hasVowels(input), expected);
     }
 }

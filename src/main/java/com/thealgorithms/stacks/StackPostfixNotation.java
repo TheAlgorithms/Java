@@ -5,8 +5,15 @@ import java.util.Stack;
 import java.util.function.BiFunction;
 
 /**
- * @brief Utility class evaluating postix expressions, cf. https://en.wikipedia.org/wiki/Reverse_Polish_notation
- * @details The computation is done using Integers.
+ * Utility class for evaluating postfix expressions using integer arithmetic.
+ * <p>
+ * Postfix notation, also known as Reverse Polish Notation (RPN), is a mathematical notation in which operators follow their operands.
+ * This class provides a method to evaluate expressions written in postfix notation.
+ * </p>
+ * <p>
+ * For more information on postfix notation, refer to
+ * <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation (RPN) on Wikipedia</a>.
+ * </p>
  */
 public final class StackPostfixNotation {
     private StackPostfixNotation() {
@@ -55,7 +62,7 @@ public final class StackPostfixNotation {
      * @exception IllegalArgumentException exp is not a valid postix expression.
      */
     public static int postfixEvaluate(final String exp) {
-        Stack<Integer> s = new Stack<Integer>();
+        Stack<Integer> s = new Stack<>();
         consumeExpression(s, exp);
         if (s.size() != 1) {
             throw new IllegalArgumentException("exp is not a proper postfix expression.");
