@@ -1,14 +1,22 @@
 package com.thealgorithms.others;
 
-import java.util.Arrays;
-
 /**
- * BFPRT algorithm.
+ * The BFPRT (Median of Medians) algorithm implementation.
+ * It provides a way to find the k-th smallest element in an unsorted array
+ * with an optimal worst-case time complexity of O(n).
+ * This algorithm is used to find the k smallest numbers in an array.
  */
 public final class BFPRT {
     private BFPRT() {
     }
 
+    /**
+     * Returns the k smallest elements from the array using the BFPRT algorithm.
+     *
+     * @param arr the input array
+     * @param k the number of smallest elements to return
+     * @return an array containing the k smallest elements, or null if k is invalid
+     */
     public static int[] getMinKNumsByBFPRT(int[] arr, int k) {
         if (k < 1 || k > arr.length) {
             return null;
@@ -16,9 +24,9 @@ public final class BFPRT {
         int minKth = getMinKthByBFPRT(arr, k);
         int[] res = new int[k];
         int index = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < minKth) {
-                res[index++] = arr[i];
+        for (int value : arr) {
+            if (value < minKth) {
+                res[index++] = value;
             }
         }
         for (; index != res.length; index++) {
@@ -27,17 +35,39 @@ public final class BFPRT {
         return res;
     }
 
+    /**
+     * Returns the k-th smallest element from the array using the BFPRT algorithm.
+     *
+     * @param arr the input array
+     * @param k the rank of the smallest element to find
+     * @return the k-th smallest element
+     */
     public static int getMinKthByBFPRT(int[] arr, int k) {
         int[] copyArr = copyArray(arr);
         return bfprt(copyArr, 0, copyArr.length - 1, k - 1);
     }
 
+    /**
+     * Creates a copy of the input array.
+     *
+     * @param arr the input array
+     * @return a copy of the array
+     */
     public static int[] copyArray(int[] arr) {
         int[] copyArr = new int[arr.length];
         System.arraycopy(arr, 0, copyArr, 0, arr.length);
         return copyArr;
     }
 
+    /**
+     * BFPRT recursive method to find the k-th smallest element.
+     *
+     * @param arr the input array
+     * @param begin the starting index
+     * @param end the ending index
+     * @param i the index of the desired smallest element
+     * @return the k-th smallest element
+     */
     public static int bfprt(int[] arr, int begin, int end, int i) {
         if (begin == end) {
             return arr[begin];
@@ -54,12 +84,12 @@ public final class BFPRT {
     }
 
     /**
-     * wikipedia: https://en.wikipedia.org/wiki/Median_of_medians .
+     * Finds the median of medians as the pivot element.
      *
-     * @param arr an array.
-     * @param begin begin num.
-     * @param end end num.
-     * @return median of medians.
+     * @param arr the input array
+     * @param begin the starting index
+     * @param end the ending index
+     * @return the median of medians
      */
     public static int medianOfMedians(int[] arr, int begin, int end) {
         int num = end - begin + 1;
@@ -71,12 +101,15 @@ public final class BFPRT {
         return bfprt(mArr, 0, mArr.length - 1, mArr.length / 2);
     }
 
-    public static void swap(int[] arr, int i, int j) {
-        int swap = arr[i];
-        arr[i] = arr[j];
-        arr[j] = swap;
-    }
-
+    /**
+     * Partitions the array around a pivot.
+     *
+     * @param arr the input array
+     * @param begin the starting index
+     * @param end the ending index
+     * @param num the pivot element
+     * @return the range where the pivot is located
+     */
     public static int[] partition(int[] arr, int begin, int end, int num) {
         int small = begin - 1;
         int cur = begin;
@@ -90,12 +123,17 @@ public final class BFPRT {
                 cur++;
             }
         }
-        int[] pivotRange = new int[2];
-        pivotRange[0] = small + 1;
-        pivotRange[1] = big - 1;
-        return pivotRange;
+        return new int[] {small + 1, big - 1};
     }
 
+    /**
+     * Finds the median of the elements between the specified range.
+     *
+     * @param arr the input array
+     * @param begin the starting index
+     * @param end the ending index
+     * @return the median of the specified range
+     */
     public static int getMedian(int[] arr, int begin, int end) {
         insertionSort(arr, begin, end);
         int sum = begin + end;
@@ -103,6 +141,13 @@ public final class BFPRT {
         return arr[mid];
     }
 
+    /**
+     * Sorts a portion of the array using insertion sort.
+     *
+     * @param arr the input array
+     * @param begin the starting index
+     * @param end the ending index
+     */
     public static void insertionSort(int[] arr, int begin, int end) {
         if (arr == null || arr.length < 2) {
             return;
@@ -118,29 +163,16 @@ public final class BFPRT {
         }
     }
 
-    public static void main(String[] args) {
-        int[] arr = {
-            11,
-            9,
-            1,
-            3,
-            9,
-            2,
-            2,
-            5,
-            6,
-            5,
-            3,
-            5,
-            9,
-            7,
-            2,
-            5,
-            5,
-            1,
-            9,
-        };
-        int[] minK = getMinKNumsByBFPRT(arr, 5);
-        System.out.println(Arrays.toString(minK));
+    /**
+     * Swaps two elements in an array.
+     *
+     * @param arr the input array
+     * @param i the index of the first element
+     * @param j the index of the second element
+     */
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
