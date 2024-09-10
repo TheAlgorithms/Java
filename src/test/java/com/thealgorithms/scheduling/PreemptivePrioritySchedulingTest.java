@@ -1,12 +1,11 @@
 package com.thealgorithms.scheduling;
 
-import com.thealgorithms.devutils.entities.ProcessDetails;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.devutils.entities.ProcessDetails;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test Cases of Preemptive Priority Scheduling Algorithm
@@ -26,9 +25,7 @@ class PreemptivePrioritySchedulingTest {
         PreemptivePriorityScheduling scheduler = new PreemptivePriorityScheduling(processes);
         scheduler.scheduleProcesses();
 
-        List<String> expectedSchedule = List.of(
-                "P1", "P2", "P3", "P3", "P4", "P2", "P2", "P2", "P1", "P1", "P1", "P1"
-        );
+        List<String> expectedSchedule = List.of("P1", "P2", "P3", "P3", "P4", "P2", "P2", "P2", "P1", "P1", "P1", "P1");
 
         assertEquals(expectedSchedule, scheduler.ganttChart);
     }
@@ -43,9 +40,7 @@ class PreemptivePrioritySchedulingTest {
         PreemptivePriorityScheduling scheduler = new PreemptivePriorityScheduling(processes);
         scheduler.scheduleProcesses();
 
-        List<String> expectedSchedule = List.of(
-                "Idle", "Idle", "P1", "P1", "P1", "P2", "P2", "P3", "P2", "P1", "P1"
-        );
+        List<String> expectedSchedule = List.of("Idle", "Idle", "P1", "P1", "P1", "P2", "P2", "P3", "P2", "P1", "P1");
 
         assertEquals(expectedSchedule, scheduler.ganttChart);
     }

@@ -1,7 +1,6 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -22,10 +21,7 @@ public class PreemptivePriorityScheduling {
     }
 
     public void scheduleProcesses() {
-        PriorityQueue<ProcessDetails> readyQueue = new PriorityQueue<>(
-                Comparator.comparingInt(ProcessDetails::getPriority).reversed()
-                        .thenComparingInt(ProcessDetails::getArrivalTime)
-        );
+        PriorityQueue<ProcessDetails> readyQueue = new PriorityQueue<>(Comparator.comparingInt(ProcessDetails::getPriority).reversed().thenComparingInt(ProcessDetails::getArrivalTime));
 
         int currentTime = 0;
         int processIndex = 0;
