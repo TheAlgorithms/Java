@@ -24,13 +24,12 @@ public class PreemptivePriorityScheduling {
         PriorityQueue<ProcessDetails> readyQueue = new PriorityQueue<>(Comparator.comparingInt(ProcessDetails::getPriority).reversed().thenComparingInt(ProcessDetails::getArrivalTime));
 
         int currentTime = 0;
-        int processIndex = 0;
+        List<ProcessDetails> arrivedProcesses = new ArrayList<>();
 
-        while (processIndex < processes.size() || !readyQueue.isEmpty()) {
-            while (processIndex < processes.size() && processes.get(processIndex).getArrivalTime() <= currentTime) {
-                readyQueue.add(processes.get(processIndex));
-                processIndex++;
-            }
+        while (!processes.isEmpty() || !readyQueue.isEmpty()) {
+            updateArrivedProcesses(currentTime, arrivedProcesses);
+            readyQueue.addAll(arrivedProcesses);
+            arrivedProcesses.clear();
 
             if (!readyQueue.isEmpty()) {
                 ProcessDetails currentProcess = readyQueue.poll();
@@ -46,5 +45,15 @@ public class PreemptivePriorityScheduling {
 
             currentTime++;
         }
+    }
+
+    private void updateArrivedProcesses(int currentTime, List<ProcessDetails> arrivedProcesses) {
+        processes.removeIf(process -> {
+            if (process.getArrivalTime() <= currentTime) {
+                arrivedProcesses.add(process);
+                return true;
+            }
+            return false;
+        });
     }
 }
