@@ -13,34 +13,34 @@ public class PatternSearchUsingRabinKarpAlgoTest {
     public void testPatternFoundInMiddle() {
         String text = "ABCCDDAEFG";
         String pattern = "CDD";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertFalse(result.isEmpty(), "Pattern should be found");
-        assertEquals("Start: 3, End: 5, Substring: cdd", result.get(0));
+        assertEquals("Start: 3, End: 5, Substring: CDD", result.get(0));
     }
 
     @Test
     public void testPatternAtStart() {
         String text = "ABCCDDAEFG";
         String pattern = "AB";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertFalse(result.isEmpty(), "Pattern should be found");
-        assertEquals("Start: 0, End: 1, Substring: ab", result.get(0));
+        assertEquals("Start: 0, End: 1, Substring: AB", result.get(0));
     }
 
     @Test
     public void testPatternAtEnd() {
         String text = "ABCCDDAEFG";
         String pattern = "EFG";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertFalse(result.isEmpty(), "Pattern should be found");
-        assertEquals("Start: 7, End: 9, Substring: efg", result.get(0));
+        assertEquals("Start: 7, End: 9, Substring: EFG", result.get(0));
     }
 
     @Test
     public void testPatternNotFound() {
         String text = "ABCCDDAEFG";
         String pattern = "XYZ";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertTrue(result.isEmpty(), "Pattern should not be found");
     }
 
@@ -48,16 +48,16 @@ public class PatternSearchUsingRabinKarpAlgoTest {
     public void testPatternEqualsText() {
         String text = "ABCCDDAEFG";
         String pattern = "ABCCDDAEFG";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertFalse(result.isEmpty(), "Pattern should match entire text");
-        assertEquals("Start: 0, End: 9, Substring: abccddaefg", result.get(0));
+        assertEquals("Start: 0, End: 9, Substring: ABCCDDAEFG", result.get(0));
     }
 
     @Test
     public void testMultipleMatches() {
         String text = "AAAAAA";
         String pattern = "AA";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertEquals(5, result.size(), "Pattern should appear multiple times");
     }
 

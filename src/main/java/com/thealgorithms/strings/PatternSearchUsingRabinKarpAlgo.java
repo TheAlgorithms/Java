@@ -1,7 +1,6 @@
 package com.thealgorithms.strings;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /*
     @author Lohit M Kudlannavar (https://github.com/Lohit-pro)
@@ -69,27 +68,5 @@ public final class PatternSearchUsingRabinKarpAlgo {
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter the string: ");
-        String text = in.next();
-        //        String text = "ABCCDDAEFG";  test
-
-        System.out.print("Enter the searching string: ");
-        String pattern = in.next();
-        //        String pattern = "CDD";    testt
-
-        List<String> result = search(text.toLowerCase(), pattern.toLowerCase());
-
-        if (result.isEmpty()) {
-            System.out.println("Pattern not found in the given text.");
-        } else {
-            System.out.println("Pattern found: " + result);
-        }
-
-        in.close();
     }
 }
