@@ -51,22 +51,25 @@ public class CircleLinkedList<E> {
         size++;
     }
 
-    // utility function for traversing the list
     public String toString() {
-        Node<E> p = head.next;
-        String s = "[ ";
-        while (p != head) {
-            s += p.value;
-            if (p != tail) {
-                s += " , ";
-            }
-            p = p.next;
+        if (size == 0) {
+            return "[]";
         }
-        return s + " ]";
+        StringBuilder sb = new StringBuilder("[ ");
+        Node<E> current = head.next;
+        while (current != head) {
+            sb.append(current.value);
+            if (current.next != head) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append(" ]");
+        return sb.toString();
     }
 
     public E remove(int pos) {
-        if (pos > size || pos < 0) {
+        if (pos >= size || pos < 0) {
             // catching errors
             throw new IndexOutOfBoundsException("position cannot be greater than size or negative");
         }
@@ -88,19 +91,5 @@ public class CircleLinkedList<E> {
         destroy = null;
         size--;
         return saved;
-    }
-
-    public static void main(String[] args) {
-        CircleLinkedList<Integer> cl = new CircleLinkedList<>();
-        cl.append(12);
-        System.out.println(cl);
-        cl.append(23);
-        System.out.println(cl);
-        cl.append(34);
-        System.out.println(cl);
-        cl.append(56);
-        System.out.println(cl);
-        cl.remove(3);
-        System.out.println(cl);
     }
 }
