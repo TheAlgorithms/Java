@@ -65,7 +65,7 @@ public class PatternSearchUsingRabinKarpAlgoTest {
     public void testCaseInsensitiveSearch() {
         String text = "HelloWorld";
         String pattern = "helloworld";
-        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text.toLowerCase(), pattern.toLowerCase());
+        List<String> result = PatternSearchUsingRabinKarpAlgo.search(text, pattern);
         assertFalse(result.isEmpty(), "Pattern should match regardless of case");
         assertEquals("Start: 0, End: 9, Substring: helloworld", result.get(0));
     }

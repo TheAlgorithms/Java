@@ -19,6 +19,8 @@ public final class PatternSearchUsingRabinKarpAlgo {
     // I'm using Rabin-Karp algorithm that uses hashing to find pattern strings in a text.
     public static List<String> search(String text, String pattern) {
         List<String> result = new ArrayList<>();
+        text = text.toLowerCase();
+        pattern = pattern.toLowerCase();
         int m = pattern.length();
         int n = text.length();
         int prime = 101; // A prime number to mod hash values
