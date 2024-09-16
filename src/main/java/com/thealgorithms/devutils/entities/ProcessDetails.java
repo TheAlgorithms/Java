@@ -6,6 +6,14 @@ public class ProcessDetails {
     private int burstTime;
     private int waitingTime;
     private int turnAroundTime;
+    private int priority;
+
+    public ProcessDetails(final String processId, final int arrivalTime, final int burstTime, int priority) {
+        this.processId = processId;
+        this.arrivalTime = arrivalTime;
+        this.burstTime = burstTime;
+        this.priority = priority;
+    }
 
     public ProcessDetails(final String processId, final int arrivalTime, final int burstTime) {
         this.processId = processId;
@@ -31,6 +39,10 @@ public class ProcessDetails {
 
     public int getTurnAroundTimeTime() {
         return turnAroundTime;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public void setProcessId(final String processId) {

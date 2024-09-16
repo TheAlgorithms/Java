@@ -41,14 +41,14 @@ public class FindKthNumberTest {
     @Test
     public void testFindKthMaxLargeArray() {
         int[] array = generateArray(1000);
-        int k = new Random().nextInt(array.length);
+        int k = new Random().nextInt(1, array.length);
         int result = FindKthNumber.findKthMax(array, k);
         Arrays.sort(array);
         assertEquals(array[array.length - k], result);
     }
 
     public static int[] generateArray(int capacity) {
-        int size = new Random().nextInt(capacity) + 1;
+        int size = new Random().nextInt(2, capacity);
         int[] array = new int[size];
 
         for (int i = 0; i < size; i++) {
