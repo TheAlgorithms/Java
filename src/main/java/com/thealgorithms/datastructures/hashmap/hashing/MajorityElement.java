@@ -18,17 +18,13 @@ public final class MajorityElement {
    */
     public static List<Integer> majority(int[] nums) {
         HashMap<Integer, Integer> numToCount = new HashMap<>();
-        int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            if (numToCount.containsKey(nums[i])) {
-                numToCount.put(nums[i], numToCount.get(nums[i]) + 1);
-            } else {
-                numToCount.put(nums[i], 1);
-            }
+        for (final var num : nums) {
+            final var curCount = numToCount.getOrDefault(num, 0);
+            numToCount.put(num, curCount + 1);
         }
         List<Integer> majorityElements = new ArrayList<>();
         for (final var entry : numToCount.entrySet()) {
-            if (entry.getValue() >= n / 2) {
+            if (entry.getValue() >= nums.length / 2) {
                 majorityElements.add(entry.getKey());
             }
         }
