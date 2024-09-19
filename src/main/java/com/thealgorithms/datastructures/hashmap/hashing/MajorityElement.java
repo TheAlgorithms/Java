@@ -19,8 +19,7 @@ public final class MajorityElement {
     public static List<Integer> majority(int[] nums) {
         HashMap<Integer, Integer> numToCount = new HashMap<>();
         for (final var num : nums) {
-            final var curCount = numToCount.getOrDefault(num, 0);
-            numToCount.put(num, curCount + 1);
+            numToCount.merge(num, 1, Integer::sum);
         }
         List<Integer> majorityElements = new ArrayList<>();
         for (final var entry : numToCount.entrySet()) {
