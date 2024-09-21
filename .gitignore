@@ -42,3 +42,5 @@ local.properties
 gradle.properties
 .vscode
 *.log
+
+/infer-out/
