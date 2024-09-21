@@ -1,5 +1,5 @@
 ---
-name: run_infer
+name: Infer
 
 'on':
   workflow_dispatch:
