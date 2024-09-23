@@ -1,7 +1,6 @@
 {
     "report-block-list-path-regex": [
         "src/main/java/com/thealgorithms/ciphers/a5/CompositeLFSR.java",
-        "src/main/java/com/thealgorithms/conversions/RomanToInteger.java",
         "src/main/java/com/thealgorithms/datastructures/crdt/GCounter.java",
         "src/main/java/com/thealgorithms/datastructures/crdt/PNCounter.java",
         "src/main/java/com/thealgorithms/datastructures/graphs/KahnsAlgorithm.java",
