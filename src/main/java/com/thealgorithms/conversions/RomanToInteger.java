@@ -19,6 +19,10 @@ public final class RomanToInteger {
         }
     };
 
+    private static int romanSymbolToInt(final char symbol) {
+        return ROMAN_TO_INT.computeIfAbsent(symbol, c -> { throw new IllegalArgumentException("Unknown Roman symbol: " + c); });
+    }
+
     // Roman Number = Roman Numerals
 
     /**
@@ -39,10 +43,10 @@ public final class RomanToInteger {
 
             if (prev != ' ') {
                 // checking current Number greater than previous or not
-                newPrev = ROMAN_TO_INT.get(prev) > newPrev ? ROMAN_TO_INT.get(prev) : newPrev;
+                newPrev = romanSymbolToInt(prev) > newPrev ? romanSymbolToInt(prev) : newPrev;
             }
 
-            int currentNum = ROMAN_TO_INT.get(c);
+            int currentNum = romanSymbolToInt(c);
 
             // if current number greater than prev max previous then add
             if (currentNum >= newPrev) {
@@ -56,10 +60,5 @@ public final class RomanToInteger {
         }
 
         return sum;
-    }
-
-    public static void main(String[] args) {
-        int sum = romanToInt("MDCCCIV");
-        System.out.println(sum);
     }
 }
