@@ -61,9 +61,4 @@ public final class RomanToInteger {
 
         return sum;
     }
-
-    public static void main(String[] args) {
-        int sum = romanToInt("MDCCCIV");
-        System.out.println(sum);
-    }
 }

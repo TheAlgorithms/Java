@@ -11,6 +11,7 @@ public class RomanToIntegerTest {
     public void testRomanToInteger() {
         assertEquals(1994, RomanToInteger.romanToInt("MCMXCIV"));
         assertEquals(58, RomanToInteger.romanToInt("LVIII"));
+        assertEquals(1804, RomanToInteger.romanToInt("MDCCCIV"));
     }
 
     @Test
