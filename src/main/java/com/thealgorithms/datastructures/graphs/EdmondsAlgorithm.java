@@ -63,20 +63,60 @@ public class EdmondsAlgorithm {
         return false;
     }
 
-    public static void main(String[] args) {
-        // Example graph represented as an adjacency matrix
-        int[][] graph = {
+
+    // Test cases
+
+    
+    public static void runTests() {
+        // Test case 1
+        int[][] graph1 = {
             {0, 2, 0, 3},
             {2, 0, 1, 0},
             {0, 1, 0, 4},
             {3, 0, 4, 0}
         };
+        List<int[]> result1 = maximumWeightMatching(graph1);
+        System.out.println("Test Case 1: ");
+        printMatching(result1);
 
-        List<int[]> matching = maximumWeightMatching(graph);
+        // Test case 2: Simple bipartite graph
+        int[][] graph2 = {
+            {0, 1, 0, 1},
+            {1, 0, 1, 0},
+            {0, 1, 0, 1},
+            {1, 0, 1, 0}
+        };
+        List<int[]> result2 = maximumWeightMatching(graph2);
+        System.out.println("Test Case 2: ");
+        printMatching(result2);
 
-        System.out.println("Maximum Weight Matching:");
-        for (int[] pair : matching) {
-            System.out.println("Vertex " + pair[0] + " is matched with Vertex " + pair[1]);
-        }
+        // Test case 3: No edges
+        int[][] graph3 = {
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0}
+        };
+        List<int[]> result3 = maximumWeightMatching(graph3);
+        System.out.println("Test Case 3: ");
+        printMatching(result3);
     }
+
+    // Helper method to print the matching results
+    private static void printMatching(List<int[]> matching) {
+        if (matching.isEmpty()) {
+            System.out.println("No matching found.");
+        } else {
+            for (int[] pair : matching) {
+                System.out.println("Vertex " + pair[0] + " is matched with Vertex " + pair[1]);
+            }
+        }
+        System.out.println(); // Blank line for better readability
+    }
+
+    // Main method to run the tests
+
+    // public static void main(String[] args) {
+    //     runTests();
+    // }
 }
+
