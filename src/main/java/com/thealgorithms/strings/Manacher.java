@@ -29,9 +29,13 @@ public final class Manacher {
         // Preprocess the string to avoid even-length palindrome issues
         String processedString = preprocess(s);
         int n = processedString.length();
-        int[] P = new int[n]; // Array to store the radius of palindromes
-        int center = 0, rightBoundary = 0; // Current center and right boundary of the palindrome
-        int maxLen = 0, centerIndex = 0; // To track the longest palindrome
+        int[] p = new int[n]; // Array to store the radius of palindromes
+
+        // Separate variable declarations into individual statements
+        int center = 0;
+        int rightBoundary = 0;
+        int maxLen = 0;
+        int centerIndex = 0;
 
         // Iterate over the preprocessed string to calculate the palindrome radii
         for (int i = 1; i < n - 1; i++) {
@@ -40,23 +44,23 @@ public final class Manacher {
 
             // If the current index is within the right boundary, mirror the palindrome radius
             if (i < rightBoundary) {
-                P[i] = Math.min(rightBoundary - i, P[mirror]);
+                p[i] = Math.min(rightBoundary - i, p[mirror]);
             }
 
             // Try to expand the palindrome centered at i
-            while (processedString.charAt(i + 1 + P[i]) == processedString.charAt(i - 1 - P[i])) {
-                P[i]++;
+            while (processedString.charAt(i + 1 + p[i]) == processedString.charAt(i - 1 - p[i])) {
+                p[i]++;
             }
 
             // Update center and right boundary if palindrome expands beyond current right boundary
-            if (i + P[i] > rightBoundary) {
+            if (i + p[i] > rightBoundary) {
                 center = i;
-                rightBoundary = i + P[i];
+                rightBoundary = i + p[i];
             }
 
             // Track the maximum length and center index of the longest palindrome found so far
-            if (P[i] > maxLen) {
-                maxLen = P[i];
+            if (p[i] > maxLen) {
+                maxLen = p[i];
                 centerIndex = i;
             }
         }
