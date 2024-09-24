@@ -150,24 +150,24 @@ public final class EdmondsBlossomAlgorithm {
         boolean[] visited = new boolean[base.length];
 
         // Mark ancestors of u
-        int currentU = u; // Use a temporary variable
+        int currentU = u;
         while (true) {
-            currentU = base[currentU]; // Assign to the temporary variable
-            visited[currentU] = true; // Mark as visited
+            currentU = base[currentU]; // Move assignment out of the condition
+            visited[currentU] = true;
             if (parent[currentU] == UNMATCHED) {
                 break;
             }
-            currentU = parent[currentU]; // Reassign to the temporary variable
+            currentU = parent[currentU]; // Move assignment out of the condition
         }
 
         // Find the common ancestor of v
-        int currentV = v; // Use a temporary variable
+        int currentV = v;
         while (true) {
-            currentV = base[currentV]; // Assign to the temporary variable
+            currentV = base[currentV]; // Move assignment out of the condition
             if (visited[currentV]) {
-                return currentV; // The first visited node is the lowest common ancestor
+                return currentV;
             }
-            currentV = parent[currentV]; // Reassign to the temporary variable
+            currentV = parent[currentV]; // Move assignment out of the condition
         }
     }
 
