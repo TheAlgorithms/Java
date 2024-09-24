@@ -263,7 +263,7 @@ public final class EdmondsBlossomAlgorithm {
     /**
      * Method to run multiple test cases for the algorithm.
      */
-    private static void runTests() {
+    public static void runTests() {
         // Define test cases
         List<int[]> edges1 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
         List<int[]> edges2 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {3, 4});
