@@ -178,15 +178,11 @@ public final class EdmondsBlossomAlgorithm {
      */
     private static void contractBlossom(BlossomData blossomData) {
         // Mark vertices involved in the blossom
-        for (int x = blossomData.u; blossomData.auxData.base[x] != blossomData.lca;
-             x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
-            blossomData.auxData.inBlossom[blossomData.auxData.base[x]] =
-                    blossomData.auxData.inBlossom[blossomData.auxData.base[blossomData.auxData.match[x]]] = true; // Mark blossom vertices
+        for (int x = blossomData.u; blossomData.auxData.base[x] != blossomData.lca; x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
+            blossomData.auxData.inBlossom[blossomData.auxData.base[x]] = blossomData.auxData.inBlossom[blossomData.auxData.base[blossomData.auxData.match[x]]] = true; // Mark blossom vertices
         }
-        for (int x = blossomData.v; blossomData.auxData.base[x] != blossomData.lca;
-             x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
-            blossomData.auxData.inBlossom[blossomData.auxData.base[x]] =
-                    blossomData.auxData.inBlossom[blossomData.auxData.base[blossomData.auxData.match[x]]] = true; // Mark blossom vertices
+        for (int x = blossomData.v; blossomData.auxData.base[x] != blossomData.lca; x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
+            blossomData.auxData.inBlossom[blossomData.auxData.base[x]] = blossomData.auxData.inBlossom[blossomData.auxData.base[blossomData.auxData.match[x]]] = true; // Mark blossom vertices
         }
 
         // Update the base for all marked vertices
@@ -226,8 +222,7 @@ public final class EdmondsBlossomAlgorithm {
         int[] match; // Array to store matches for each vertex
         boolean[] inQueue; // Flags to track vertices in the BFS queue
 
-        BlossomAuxData(Queue<Integer> queue, int[] parent, int[] base, boolean[] inBlossom,
-                       int[] match, boolean[] inQueue) {
+        BlossomAuxData(Queue<Integer> queue, int[] parent, int[] base, boolean[] inBlossom, int[] match, boolean[] inQueue) {
             this.queue = queue;
             this.parent = parent;
             this.base = base;
@@ -259,9 +254,9 @@ public final class EdmondsBlossomAlgorithm {
      */
     private static void runTests() {
         // Define test cases
-        List<int[]> edges1 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 0});
-        List<int[]> edges2 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{3, 4});
-        List<int[]> edges3 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 0}, new int[]{4, 5});
+        List<int[]> edges1 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
+        List<int[]> edges2 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {3, 4});
+        List<int[]> edges3 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 0}, new int[] {4, 5});
 
         // Create an instance of the algorithm
         EdmondsBlossomAlgorithm algorithm = new EdmondsBlossomAlgorithm();
