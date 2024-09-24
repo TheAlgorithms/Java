@@ -177,32 +177,30 @@ public final class EdmondsBlossomAlgorithm {
      * @param blossomData The data containing the parameters related to the blossom contraction.
      */
     private static void contractBlossom(BlossomData blossomData) {
-        // Contract vertices for u and mark them as part of the blossom
         for (int x = blossomData.u; blossomData.auxData.base[x] != blossomData.lca; x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
-            int baseX = blossomData.auxData.base[x]; // Extract base[x] to a local variable
-            int matchBaseX = blossomData.auxData.base[blossomData.auxData.match[x]]; // Extract base[match[x]] to a local variable
+            int baseX = blossomData.auxData.base[x];
+            int matchBaseX = blossomData.auxData.base[blossomData.auxData.match[x]];
 
-            // Mark blossom vertices
-            blossomData.auxData.inBlossom[baseX] = blossomData.auxData.inBlossom[matchBaseX] = true;
+            // Split the inner assignment into two separate assignments
+            blossomData.auxData.inBlossom[baseX] = true;
+            blossomData.auxData.inBlossom[matchBaseX] = true;
         }
 
-        // Contract vertices for v and mark them as part of the blossom
         for (int x = blossomData.v; blossomData.auxData.base[x] != blossomData.lca; x = blossomData.auxData.parent[blossomData.auxData.match[x]]) {
-            int baseX = blossomData.auxData.base[x]; // Extract base[x] to a local variable
-            int matchBaseX = blossomData.auxData.base[blossomData.auxData.match[x]]; // Extract base[match[x]] to a local variable
+            int baseX = blossomData.auxData.base[x];
+            int matchBaseX = blossomData.auxData.base[blossomData.auxData.match[x]];
 
-            // Mark blossom vertices
-            blossomData.auxData.inBlossom[baseX] = blossomData.auxData.inBlossom[matchBaseX] = true;
+            // Split the inner assignment into two separate assignments
+            blossomData.auxData.inBlossom[baseX] = true;
+            blossomData.auxData.inBlossom[matchBaseX] = true;
         }
 
         // Update the base for all marked vertices
         for (int i = 0; i < blossomData.auxData.base.length; i++) {
             if (blossomData.auxData.inBlossom[blossomData.auxData.base[i]]) {
-                blossomData.auxData.base[i] = blossomData.lca; // Contract to the lowest common ancestor (LCA)
-
-                // Add to the queue if not already present
+                blossomData.auxData.base[i] = blossomData.lca; // Contract to the lowest common ancestor
                 if (!blossomData.auxData.inQueue[i]) {
-                    blossomData.auxData.queue.add(i);
+                    blossomData.auxData.queue.add(i); // Add to queue if not already present
                     blossomData.auxData.inQueue[i] = true;
                 }
             }
