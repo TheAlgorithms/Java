@@ -16,7 +16,7 @@ public final class EdmondsAlgorithm {
         throw new UnsupportedOperationException("Utility class cannot be instantiated");
     }
 
-    private static final int INF = Integer.MAX_VALUE;
+    // private static final int INF = Integer.MAX_VALUE;
 
     /**
      * Method to find the maximum weight matching in a graph.
