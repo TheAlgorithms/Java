@@ -38,7 +38,8 @@ import java.util.*;
 
 public class EdmondsBlossomAlgorithm {
 
-    private EdmondsBlossomAlgorithm(){}
+    private EdmondsBlossomAlgorithm() {
+    }
 
     private static final int UNMATCHED = -1;
 
@@ -136,7 +137,7 @@ public class EdmondsBlossomAlgorithm {
         List<int[]> matchingResult = new ArrayList<>();
         for (int v = 0; v < vertexCount; v++) {
             if (match[v] != UNMATCHED && v < match[v]) {
-                matchingResult.add(new int[]{v, match[v]});
+                matchingResult.add(new int[] {v, match[v]});
             }
         }
 
