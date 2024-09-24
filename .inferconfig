@@ -9,7 +9,6 @@
         "src/main/java/com/thealgorithms/datastructures/trees/CreateBinaryTreeFromInorderPreorder.java",
         "src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java",
         "src/main/java/com/thealgorithms/dynamicprogramming/Fibonacci.java",
-        "src/main/java/com/thealgorithms/maths/NthUglyNumber.java",
         "src/main/java/com/thealgorithms/maths/SimpsonIntegration.java",
         "src/main/java/com/thealgorithms/others/Dijkstra.java",
         "src/main/java/com/thealgorithms/sorts/TopologicalSort.java",
