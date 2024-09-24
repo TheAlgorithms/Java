@@ -66,18 +66,18 @@ public class EdmondsBlossomAlgorithm {
 
         // Initial matching array and auxiliary data structures
         int[] match = new int[vertexCount];
-        Arrays.fill(match, UNMATCHED);  // All vertices are initially unmatched
+        Arrays.fill(match, UNMATCHED); // All vertices are initially unmatched
         int[] parent = new int[vertexCount];
         int[] base = new int[vertexCount];
-        boolean[] inBlossom = new boolean[vertexCount];  // Indicates if a vertex is part of a blossom
-        boolean[] inQueue = new boolean[vertexCount];    // Tracks vertices in the BFS queue
+        boolean[] inBlossom = new boolean[vertexCount]; // Indicates if a vertex is part of a blossom
+        boolean[] inQueue = new boolean[vertexCount]; // Tracks vertices in the BFS queue
 
         // Main logic for finding maximum matching
         for (int u = 0; u < vertexCount; u++) {
             if (match[u] == UNMATCHED) {
                 // BFS initialization
                 Arrays.fill(parent, UNMATCHED);
-                for (int i = 0; i < vertexCount; i++){
+                for (int i = 0; i < vertexCount; i++) {
                     base[i] = i;
                 }
                 Arrays.fill(inBlossom, false);
@@ -100,7 +100,7 @@ public class EdmondsBlossomAlgorithm {
                         }
 
                         if (base[x] == base[y]) {
-                            continue;  // Avoid self-loops
+                            continue; // Avoid self-loops
                         }
 
                         if (parent[y] == UNMATCHED) {
@@ -108,7 +108,7 @@ public class EdmondsBlossomAlgorithm {
                             if (match[y] == UNMATCHED) {
                                 parent[y] = x;
                                 augmentingPathFound = true;
-                                updateMatching(match, parent, y);  // Augment along this path
+                                updateMatching(match, parent, y); // Augment along this path
                                 break;
                             }
 
@@ -186,7 +186,7 @@ public class EdmondsBlossomAlgorithm {
         while (true) {
             v = base[v];
             if (visited[v]) {
-                return v;  // The first visited node is the lowest common ancestor
+                return v; // The first visited node is the lowest common ancestor
             }
             v = parent[v];
         }
@@ -238,28 +238,25 @@ public class EdmondsBlossomAlgorithm {
         System.out.println();
     }
 
-//    public static void main(String[] args) {
-//        runTests();
-//    }
 
     public static void runTests() {
         // Test Case 1: Simple triangle
-        List<int[]> edges1 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 0});
+        List<int[]> edges1 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
         int vertexCount1 = 3;
         printMatchingResult("Test Case 1: ", maximumMatching(edges1, vertexCount1));
 
         // Test Case 2: Square shape
-        List<int[]> edges2 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 0});
+        List<int[]> edges2 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 0});
         int vertexCount2 = 4;
         printMatchingResult("Test Case 2: ", maximumMatching(edges2, vertexCount2));
 
         // Test Case 3: Bipartite graph
-        List<int[]> edges3 = Arrays.asList(new int[]{0, 2}, new int[]{0, 3}, new int[]{1, 2}, new int[]{1, 3});
+        List<int[]> edges3 = Arrays.asList(new int[] {0, 2}, new int[] {0, 3}, new int[] {1, 2}, new int[] {1, 3});
         int vertexCount3 = 4;
         printMatchingResult("Test Case 3: ", maximumMatching(edges3, vertexCount3));
 
         // Test Case 4: More edges than vertices
-        List<int[]> edges4 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{0, 2}, new int[]{1, 3}, new int[]{2, 3});
+        List<int[]> edges4 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {0, 2}, new int[] {1, 3}, new int[] {2, 3});
         int vertexCount4 = 4;
         printMatchingResult("Test Case 4: ", maximumMatching(edges4, vertexCount4));
     }
