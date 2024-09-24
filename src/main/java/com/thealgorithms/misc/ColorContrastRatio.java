@@ -7,8 +7,7 @@ import java.awt.Color;
  * calculate contrast ratio between colors on the web. This is used to calculate
  * the readability of a foreground color on top of a background color.
  * @since 2020-10-15
- * @see [Color Contrast
- * Ratio](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure)
+ * @see <a href="https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-procedure">Color Contrast Ratio</a>
  * @author [Seth Falco](https://github.com/SethFalco)
  */
 public class ColorContrastRatio {
@@ -34,8 +33,7 @@ public class ColorContrastRatio {
      * @brief Calculates the relative luminance of a given color.
      * @param color Any color, used to get the red, green, and blue values.
      * @return The relative luminance of the color.
-     * @see [More info on relative
-     * luminance.](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef)
+     * @see <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">More info on relative luminance.</a>
      */
     public double getRelativeLuminance(Color color) {
         final double red = getColor(color.getRed());
@@ -46,11 +44,9 @@ public class ColorContrastRatio {
     }
 
     /**
-     * @brief Calculates the final value for a color to be used in the relative
-     * luminance formula as described in step 1.
+     * @brief Calculates the final value for a color to be used in the relative luminance formula as described in step 1.
      * @param color8Bit 8-bit representation of a color component value.
-     * @return Value for the provided color component to be used in the relative
-     * luminance formula.
+     * @return Value for the provided color component to be used in the relative luminance formula.
      */
     public double getColor(int color8Bit) {
         final double sRgb = getColorSRgb(color8Bit);
@@ -58,51 +54,11 @@ public class ColorContrastRatio {
     }
 
     /**
-     * @brief Calculates the Color sRGB value as denoted in step 1 of the
-     * procedure document.
+     * @brief Calculates the Color sRGB value as denoted in step 1 of the procedure document.
      * @param color8Bit 8-bit representation of a color component value.
      * @return A percentile value of the color component.
      */
     private double getColorSRgb(double color8Bit) {
         return color8Bit / 255.0;
-    }
-
-    /**
-     * You can check this example against another open-source implementation
-     * available on GitHub.
-     *
-     * @see [Online Contrast
-     * Ratio](https://contrast-ratio.com/#rgb%28226%2C%20229%2C%20248-on-rgb%2823%2C%20103%2C%20154%29)
-     * @see [GitHub Repository for Online Contrast
-     * Ratio](https://github.com/LeaVerou/contrast-ratio)
-     */
-    private static void test() {
-        final ColorContrastRatio algImpl = new ColorContrastRatio();
-
-        final Color black = Color.BLACK;
-        final double blackLuminance = algImpl.getRelativeLuminance(black);
-        assert blackLuminance == 0 : "Test 1 Failed - Incorrect relative luminance.";
-
-        final Color white = Color.WHITE;
-        final double whiteLuminance = algImpl.getRelativeLuminance(white);
-        assert whiteLuminance == 1 : "Test 2 Failed - Incorrect relative luminance.";
-
-        final double highestColorRatio = algImpl.getContrastRatio(black, white);
-        assert highestColorRatio == 21 : "Test 3 Failed - Incorrect contrast ratio.";
-
-        final Color foreground = new Color(23, 103, 154);
-        final double foregroundLuminance = algImpl.getRelativeLuminance(foreground);
-        assert foregroundLuminance == 0.12215748057375966 : "Test 4 Failed - Incorrect relative luminance.";
-
-        final Color background = new Color(226, 229, 248);
-        final double backgroundLuminance = algImpl.getRelativeLuminance(background);
-        assert backgroundLuminance == 0.7898468477881603 : "Test 5 Failed - Incorrect relative luminance.";
-
-        final double contrastRatio = algImpl.getContrastRatio(foreground, background);
-        assert contrastRatio == 4.878363954846178 : "Test 6 Failed - Incorrect contrast ratio.";
-    }
-
-    public static void main(String[] args) {
-        test();
     }
 }
