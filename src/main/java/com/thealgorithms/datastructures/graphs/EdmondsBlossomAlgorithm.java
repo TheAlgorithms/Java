@@ -1,7 +1,10 @@
 package com.thealgorithms.datastructures.graphs;
 
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * The EdmondsBlossomAlgorithm class implements Edmonds' Blossom Algorithm
@@ -12,13 +15,6 @@ import java.util.*;
  * The maximum matching problem seeks to find the largest set of vertex pairs
  * such that no vertex is part of more than one pair, which is especially useful
  * in graph theory problems like job assignments, scheduling, and network flows.
- * <p>
- * The algorithm follows these main steps:
- * - Builds the graph using an adjacency list from input edges.
- * - Uses a breadth-first search (BFS) to find augmenting paths.
- * - Contracts blossoms (odd-length cycles) that prevent straightforward path
- *   finding, allowing the algorithm to continue exploring augmenting paths.
- * - Updates the matching whenever an augmenting path is found.
  * <p>
  * This implementation supports the following features:
  * - Handling general graphs (not restricted to bipartite graphs).
@@ -34,11 +30,10 @@ import java.util.*;
  * the algorithm works on different graph structures, such as simple triangles,
  * squares, bipartite graphs, and graphs with more edges than vertices.
  */
-
-
-public class EdmondsBlossomAlgorithm {
+public final class EdmondsBlossomAlgorithm {
 
     private EdmondsBlossomAlgorithm() {
+        // Prevent instantiation of the utility class
     }
 
     private static final int UNMATCHED = -1;
@@ -71,7 +66,7 @@ public class EdmondsBlossomAlgorithm {
         int[] parent = new int[vertexCount];
         int[] base = new int[vertexCount];
         boolean[] inBlossom = new boolean[vertexCount]; // Indicates if a vertex is part of a blossom
-        boolean[] inQueue = new boolean[vertexCount]; // Tracks vertices in the BFS queue
+        boolean[] inQueue = new boolean[vertexCount];   // Tracks vertices in the BFS queue
 
         // Main logic for finding maximum matching
         for (int u = 0; u < vertexCount; u++) {
@@ -79,7 +74,7 @@ public class EdmondsBlossomAlgorithm {
                 // BFS initialization
                 Arrays.fill(parent, UNMATCHED);
                 for (int i = 0; i < vertexCount; i++) {
-                    base[i] = i;
+                    base[i] = i; // Each vertex is its own base initially
                 }
                 Arrays.fill(inBlossom, false);
                 Arrays.fill(inQueue, false);
@@ -206,19 +201,22 @@ public class EdmondsBlossomAlgorithm {
      * @param v The other node in the blossom.
      * @param lca The lowest common ancestor.
      */
-    private static void contractBlossom(Queue<Integer> queue, int[] parent, int[] base, boolean[] inBlossom, int[] match, boolean[] inQueue, int u, int v, int lca) {
+    private static void contractBlossom(Queue<Integer> queue, int[] parent, int[] base,
+                                        boolean[] inBlossom, int[] match, boolean[] inQueue,
+                                        int u, int v, int lca) {
         for (int x = u; base[x] != lca; x = parent[match[x]]) {
-            inBlossom[base[x]] = inBlossom[base[match[x]]] = true;
+            inBlossom[base[x]] = inBlossom[base[match[x]]] = true; // Mark blossom vertices
         }
         for (int x = v; base[x] != lca; x = parent[match[x]]) {
-            inBlossom[base[x]] = inBlossom[base[match[x]]] = true;
+            inBlossom[base[x]] = inBlossom[base[match[x]]] = true; // Mark blossom vertices
         }
 
+        // Update the base for all marked vertices
         for (int i = 0; i < base.length; i++) {
             if (inBlossom[base[i]]) {
-                base[i] = lca;
+                base[i] = lca; // Contract to the lowest common ancestor
                 if (!inQueue[i]) {
-                    queue.add(i);
+                    queue.add(i); // Add to queue if not already present
                     inQueue[i] = true;
                 }
             }
@@ -239,26 +237,28 @@ public class EdmondsBlossomAlgorithm {
         System.out.println();
     }
 
-
+    /**
+     * Runs test cases to demonstrate the functionality of the algorithm.
+     */
     public static void runTests() {
         // Test Case 1: Simple triangle
         List<int[]> edges1 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
         int vertexCount1 = 3;
-        printMatchingResult("Test Case 1: ", maximumMatching(edges1, vertexCount1));
+        printMatchingResult("Test Case 1", maximumMatching(edges1, vertexCount1));
 
         // Test Case 2: Square shape
         List<int[]> edges2 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 0});
         int vertexCount2 = 4;
-        printMatchingResult("Test Case 2: ", maximumMatching(edges2, vertexCount2));
+        printMatchingResult("Test Case 2", maximumMatching(edges2, vertexCount2));
 
         // Test Case 3: Bipartite graph
         List<int[]> edges3 = Arrays.asList(new int[] {0, 2}, new int[] {0, 3}, new int[] {1, 2}, new int[] {1, 3});
         int vertexCount3 = 4;
-        printMatchingResult("Test Case 3: ", maximumMatching(edges3, vertexCount3));
+        printMatchingResult("Test Case 3", maximumMatching(edges3, vertexCount3));
 
         // Test Case 4: More edges than vertices
         List<int[]> edges4 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {0, 2}, new int[] {1, 3}, new int[] {2, 3});
         int vertexCount4 = 4;
-        printMatchingResult("Test Case 4: ", maximumMatching(edges4, vertexCount4));
+        printMatchingResult("Test Case 4", maximumMatching(edges4, vertexCount4));
     }
 }
