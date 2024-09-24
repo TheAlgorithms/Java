@@ -1,28 +1,30 @@
 package com.thealgorithms.datastructures.graphs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-/*
-Graph Representation: 
-  
-The graph is represented as an adjacency matrix, where graph[i][j] indicates the weight of the edge between vertices i and j. A weight of 0 means no edge exists.
-
-Main Method:
-
-A sample graph is defined as an adjacency matrix.
-The maximumWeightMatching method is called to find the maximum weight matching.
-The results are printed, showing which vertices are matched.
-
-Algorithm Functionality:
-
-The algorithm iterates through each vertex, applying a depth-first search (DFS) to find matches.
-It keeps track of matched vertices and updates the matching as it finds new pairs.
+/**
+ * EdmondsAlgorithm class for finding maximum weight matching in a graph.
+ * The graph is represented as an adjacency matrix, where graph[i][j]
+ * indicates the weight of the edge between vertices i and j.
+ * A weight of 0 means no edge exists.
  */
+public final class EdmondsAlgorithm {
+    // Private constructor to prevent instantiation
+    private EdmondsAlgorithm() {
+        throw new UnsupportedOperationException("Utility class cannot be instantiated");
+    }
 
-public class EdmondsAlgorithm {
-    private static final int INF = Integer.MAX_VALUE;
+    private static final int INF =
+    Integer.MAX_VALUE;
 
-    // Method to find maximum weight matching
+    /**
+     * Method to find the maximum weight matching in a graph.
+     *
+     * @param graph the adjacency matrix of the graph
+     * @return a list of vertex pairs representing the maximum weight matching
+     */
     public static List<int[]> maximumWeightMatching(int[][] graph) {
         int n = graph.length;
         boolean[] matched = new boolean[n];
@@ -30,6 +32,7 @@ public class EdmondsAlgorithm {
         Arrays.fill(match, -1);
         List<int[]> result = new ArrayList<>();
 
+        // Iterate through each vertex to find matches
         for (int u = 0; u < n; u++) {
             if (!matched[u]) {
                 boolean[] visited = new boolean[n];
@@ -37,15 +40,25 @@ public class EdmondsAlgorithm {
             }
         }
 
+        // Collect the matches into the result list
         for (int v = 0; v < n; v++) {
             if (match[v] != -1) {
-                result.add(new int[]{match[v], v});
+                result.add(new int[] {match[v], v});
             }
         }
         return result;
     }
 
-    // Helper method to find match using DFS
+    /**
+     * Helper method to find matches using depth-first search (DFS).
+     *
+     * @param u       the vertex to start the search from
+     * @param graph   the adjacency matrix of the graph
+     * @param matched array indicating whether each vertex is matched
+     * @param match   the current matching
+     * @param visited array indicating visited vertices during DFS
+     * @return true if a match was found, false otherwise
+     */
     private static boolean findMatch(int u, int[][] graph, boolean[] matched, int[] match, boolean[] visited) {
         visited[u] = true;
 
@@ -63,45 +76,34 @@ public class EdmondsAlgorithm {
         return false;
     }
 
-
-    // Test cases
-
-    
+    /**
+     * Test cases to validate the EdmondsAlgorithm.
+     */
     public static void runTests() {
         // Test case 1
-        int[][] graph1 = {
-            {0, 2, 0, 3},
-            {2, 0, 1, 0},
-            {0, 1, 0, 4},
-            {3, 0, 4, 0}
-        };
+        int[][] graph1 = {{0, 2, 0, 3}, {2, 0, 1, 0}, {0, 1, 0, 4}, {3, 0, 4, 0}};
         List<int[]> result1 = maximumWeightMatching(graph1);
         System.out.println("Test Case 1: ");
         printMatching(result1);
 
         // Test case 2: Simple bipartite graph
-        int[][] graph2 = {
-            {0, 1, 0, 1},
-            {1, 0, 1, 0},
-            {0, 1, 0, 1},
-            {1, 0, 1, 0}
-        };
+        int[][] graph2 = {{0, 1, 0, 1}, {1, 0, 1, 0}, {0, 1, 0, 1}, {1, 0, 1, 0}};
         List<int[]> result2 = maximumWeightMatching(graph2);
         System.out.println("Test Case 2: ");
         printMatching(result2);
 
         // Test case 3: No edges
-        int[][] graph3 = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0}
-        };
+        int[][] graph3 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
         List<int[]> result3 = maximumWeightMatching(graph3);
         System.out.println("Test Case 3: ");
         printMatching(result3);
     }
 
-    // Helper method to print the matching results
+    /**
+     * Helper method to print the matching results.
+     *
+     * @param matching the list of vertex pairs representing the matching
+     */
     private static void printMatching(List<int[]> matching) {
         if (matching.isEmpty()) {
             System.out.println("No matching found.");
@@ -112,11 +114,4 @@ public class EdmondsAlgorithm {
         }
         System.out.println(); // Blank line for better readability
     }
-
-    // Main method to run the tests
-
-    // public static void main(String[] args) {
-    //     runTests();
-    // }
 }
-
