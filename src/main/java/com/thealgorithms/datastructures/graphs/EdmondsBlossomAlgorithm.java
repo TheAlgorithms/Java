@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.graphs;
 
+
 import java.util.*;
 
 /**
@@ -36,6 +37,8 @@ import java.util.*;
 
 
 public class EdmondsBlossomAlgorithm {
+
+    private EdmondsBlossomAlgorithm(){}
 
     private static final int UNMATCHED = -1;
 
@@ -74,7 +77,9 @@ public class EdmondsBlossomAlgorithm {
             if (match[u] == UNMATCHED) {
                 // BFS initialization
                 Arrays.fill(parent, UNMATCHED);
-                for (int i = 0; i < vertexCount; i++) base[i] = i;
+                for (int i = 0; i < vertexCount; i++){
+                    base[i] = i;
+                }
                 Arrays.fill(inBlossom, false);
                 Arrays.fill(inQueue, false);
 
@@ -90,9 +95,13 @@ public class EdmondsBlossomAlgorithm {
 
                     for (int y : graph[x]) {
                         // Skip if we are looking at the same edge as the current match
-                        if (match[x] == y) continue;
+                        if (match[x] == y) {
+                            continue;
+                        }
 
-                        if (base[x] == base[y]) continue;  // Avoid self-loops
+                        if (base[x] == base[y]) {
+                            continue;  // Avoid self-loops
+                        }
 
                         if (parent[y] == UNMATCHED) {
                             // Case 1: y is unmatched, we've found an augmenting path
@@ -167,14 +176,18 @@ public class EdmondsBlossomAlgorithm {
         while (true) {
             u = base[u];
             visited[u] = true;
-            if (parent[u] == UNMATCHED) break;
+            if (parent[u] == UNMATCHED) {
+                break;
+            }
             u = parent[u];
         }
 
         // Find the common ancestor of v
         while (true) {
             v = base[v];
-            if (visited[v]) return v;  // The first visited node is the lowest common ancestor
+            if (visited[v]) {
+                return v;  // The first visited node is the lowest common ancestor
+            }
             v = parent[v];
         }
     }
@@ -233,21 +246,21 @@ public class EdmondsBlossomAlgorithm {
         // Test Case 1: Simple triangle
         List<int[]> edges1 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 0});
         int vertexCount1 = 3;
-        printMatchingResult("Test Case 1: " , maximumMatching(edges1, vertexCount1));
+        printMatchingResult("Test Case 1: ", maximumMatching(edges1, vertexCount1));
 
         // Test Case 2: Square shape
         List<int[]> edges2 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 0});
         int vertexCount2 = 4;
-        printMatchingResult("Test Case 2: " , maximumMatching(edges2, vertexCount2));
+        printMatchingResult("Test Case 2: ", maximumMatching(edges2, vertexCount2));
 
         // Test Case 3: Bipartite graph
         List<int[]> edges3 = Arrays.asList(new int[]{0, 2}, new int[]{0, 3}, new int[]{1, 2}, new int[]{1, 3});
         int vertexCount3 = 4;
-        printMatchingResult("Test Case 3: " , maximumMatching(edges3, vertexCount3));
+        printMatchingResult("Test Case 3: ", maximumMatching(edges3, vertexCount3));
 
         // Test Case 4: More edges than vertices
         List<int[]> edges4 = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{0, 2}, new int[]{1, 3}, new int[]{2, 3});
         int vertexCount4 = 4;
-        printMatchingResult("Test Case 4: " , maximumMatching(edges4, vertexCount4));
+        printMatchingResult("Test Case 4: ", maximumMatching(edges4, vertexCount4));
     }
 }
