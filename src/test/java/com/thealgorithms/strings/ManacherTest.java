@@ -2,36 +2,52 @@ package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ManacherTest {
 
-    @Test
-    public void testLongestPalindrome() {
-        assertEquals("aabcdefggfedcbaa", Manacher.longestPalindrome("abracadabraabcdefggfedcbaabracadabra")); // Long string with embedded palindrome
-        assertEquals("racecar", Manacher.longestPalindrome("somelongtextwithracecarmiddletext")); // Longer string with racecar palindrome
-        assertEquals("ananananananana", Manacher.longestPalindrome("bananananananana")); // Repetitive pattern with palindrome
-        assertEquals("defgfed", Manacher.longestPalindrome("qwertydefgfedzxcvbnm")); // Palindrome in middle of long string
-        assertEquals("abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba", Manacher.longestPalindrome("abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba")); // Symmetrical section
+    @ParameterizedTest
+    @MethodSource("provideTestCasesForLongestPalindrome")
+    public void testLongestPalindrome(String input, String expected) {
+        assertEquals(expected, Manacher.longestPalindrome(input));
     }
 
-    @Test
-    public void testEmptyAndSingle() {
-        assertEquals("", Manacher.longestPalindrome("")); // Empty string
-        assertEquals("a", Manacher.longestPalindrome("a")); // Single character
+    private static Stream<Arguments> provideTestCasesForLongestPalindrome() {
+        return Stream.of(Arguments.of("abracadabraabcdefggfedcbaabracadabra", "aabcdefggfedcbaa"), Arguments.of("somelongtextwithracecarmiddletext", "racecar"), Arguments.of("bananananananana", "ananananananana"), Arguments.of("qwertydefgfedzxcvbnm", "defgfed"),
+            Arguments.of("abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba"));
     }
 
-    @Test
-    public void testComplexCases() {
-        assertEquals("tattarrattat", Manacher.longestPalindrome("abcdefghijklmnopqrstuvwxyzttattarrattatabcdefghijklmnopqrstuvwxyz")); // Long palindrome inside a large string
-        assertEquals("aaaaabaaaaa", Manacher.longestPalindrome("aaaaabaaaaacbaaaaa")); // Large repetitive character set
-        assertEquals("abcdefghhgfedcba", Manacher.longestPalindrome("sometextrandomabcdefgabcdefghhgfedcbahijklmnopqrstuvwxyz")); // Large string with clear palindromic section
-        assertEquals("madaminedenimadam", Manacher.longestPalindrome("therewasasignthatsaidmadaminedenimadamitwasthereallalong")); // Famous palindrome within a long string
+    @ParameterizedTest
+    @MethodSource("provideTestCasesForEmptyAndSingle")
+    public void testEmptyAndSingle(String input, String expected) {
+        assertEquals(expected, Manacher.longestPalindrome(input));
     }
 
-    @Test
-    public void testSentencePalindromes() {
-        assertEquals("lanacanal", Manacher.longestPalindrome("XThisisalongtextbuthiddeninsideisAmanaplanacanalPanamaWhichweknowisfamous"));
-        assertEquals("everoddoreve", Manacher.longestPalindrome("AverylongstringthatcontainsNeveroddoreveninahiddenmanner")); // Another sentence-like palindrome
+    private static Stream<Arguments> provideTestCasesForEmptyAndSingle() {
+        return Stream.of(Arguments.of("", ""), Arguments.of("a", "a"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideTestCasesForComplexCases")
+    public void testComplexCases(String input, String expected) {
+        assertEquals(expected, Manacher.longestPalindrome(input));
+    }
+
+    private static Stream<Arguments> provideTestCasesForComplexCases() {
+        return Stream.of(Arguments.of("abcdefghijklmnopqrstuvwxyzttattarrattatabcdefghijklmnopqrstuvwxyz", "tattarrattat"), Arguments.of("aaaaabaaaaacbaaaaa", "aaaaabaaaaa"), Arguments.of("sometextrandomabcdefgabcdefghhgfedcbahijklmnopqrstuvwxyz", "abcdefghhgfedcba"),
+            Arguments.of("therewasasignthatsaidmadaminedenimadamitwasthereallalong", "madaminedenimadam"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideTestCasesForSentencePalindromes")
+    public void testSentencePalindromes(String input, String expected) {
+        assertEquals(expected, Manacher.longestPalindrome(input));
+    }
+
+    private static Stream<Arguments> provideTestCasesForSentencePalindromes() {
+        return Stream.of(Arguments.of("XThisisalongtextbuthiddeninsideisAmanaplanacanalPanamaWhichweknowisfamous", "lanacanal"), Arguments.of("AverylongstringthatcontainsNeveroddoreveninahiddenmanner", "everoddoreve"));
     }
 }
