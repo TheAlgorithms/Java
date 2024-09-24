@@ -28,18 +28,19 @@ public final class EdmondsBlossomAlgorithm {
      * @return A list of matched pairs of vertices.
      */
     public List<int[]> maximumMatching(List<int[]> edges, int vertexCount) {
-        // Create adjacency list to represent the graph
-        List<Integer>[] graph = new ArrayList[vertexCount];
+        List<List<Integer>> graph = new ArrayList<>(vertexCount);
+
+        // Initialize each vertex's adjacency list.
         for (int i = 0; i < vertexCount; i++) {
-            graph[i] = new ArrayList<>();
+            graph.add(new ArrayList<>());
         }
 
         // Populate the graph with the edges
         for (int[] edge : edges) {
             int u = edge[0];
             int v = edge[1];
-            graph[u].add(v);
-            graph[v].add(u);
+            graph.get(u).add(v);
+            graph.get(v).add(u);
         }
 
         // Initial matching array and auxiliary data structures
@@ -70,7 +71,7 @@ public final class EdmondsBlossomAlgorithm {
                 // BFS to find augmenting paths
                 while (!queue.isEmpty() && !augmentingPathFound) {
                     int current = queue.poll(); // Use a different name for clarity
-                    for (int y : graph[current]) {
+                    for (int y : graph.get(current)) {
                         // Skip if we are looking at the same edge as the current match
                         if (match[current] == y) {
                             continue;
