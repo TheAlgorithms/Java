@@ -1,10 +1,10 @@
 package com.thealgorithms.datastructures.graphs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * The EdmondsBlossomAlgorithm class implements Edmonds' Blossom Algorithm
@@ -66,7 +66,7 @@ public final class EdmondsBlossomAlgorithm {
         int[] parent = new int[vertexCount];
         int[] base = new int[vertexCount];
         boolean[] inBlossom = new boolean[vertexCount]; // Indicates if a vertex is part of a blossom
-        boolean[] inQueue = new boolean[vertexCount];   // Tracks vertices in the BFS queue
+        boolean[] inQueue = new boolean[vertexCount]; // Tracks vertices in the BFS queue
 
         // Main logic for finding maximum matching
         for (int u = 0; u < vertexCount; u++) {
@@ -201,9 +201,7 @@ public final class EdmondsBlossomAlgorithm {
      * @param v The other node in the blossom.
      * @param lca The lowest common ancestor.
      */
-    private static void contractBlossom(Queue<Integer> queue, int[] parent, int[] base,
-                                        boolean[] inBlossom, int[] match, boolean[] inQueue,
-                                        int u, int v, int lca) {
+    private static void contractBlossom(Queue<Integer> queue, int[] parent, int[] base, boolean[] inBlossom, int[] match, boolean[] inQueue, int u, int v, int lca) {
         for (int x = u; base[x] != lca; x = parent[match[x]]) {
             inBlossom[base[x]] = inBlossom[base[match[x]]] = true; // Mark blossom vertices
         }
