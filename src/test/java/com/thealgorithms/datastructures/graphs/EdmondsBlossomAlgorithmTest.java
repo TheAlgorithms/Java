@@ -1,7 +1,8 @@
 package com.thealgorithms.datastructures.graphs;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -83,7 +84,7 @@ public class EdmondsBlossomAlgorithmTest {
      * Since there are no edges, the expected matching is an empty set.
      */
     @Test
-    public void testCase4_noMatching() {
+    public void testCaseNoMatching() {
         List<int[]> edges = Arrays.asList(); // No edges
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 3);
 
@@ -97,7 +98,7 @@ public class EdmondsBlossomAlgorithmTest {
      * The expected matching is {{0, 1}, {2, 5}, {3, 4}}.
      */
     @Test
-    public void testCase5_largeGraph() {
+    public void testCaseLargeGraph() {
         List<int[]> edges = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 4}, new int[] {4, 5}, new int[] {5, 0}, new int[] {1, 4}, new int[] {2, 5});
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 6);
 

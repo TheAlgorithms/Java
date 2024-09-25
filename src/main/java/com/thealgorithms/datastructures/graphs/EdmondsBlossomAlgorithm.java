@@ -12,7 +12,7 @@ import java.util.Queue;
  * handles cases where the graph contains odd-length cycles by contracting
  * "blossoms" and finding augmenting paths.
  */
-public class EdmondsBlossomAlgorithm {
+public final class EdmondsBlossomAlgorithm {
 
     private EdmondsBlossomAlgorithm() {
     }
