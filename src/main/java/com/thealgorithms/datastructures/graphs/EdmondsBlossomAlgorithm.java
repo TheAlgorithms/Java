@@ -12,10 +12,9 @@ import java.util.Queue;
  * handles cases where the graph contains odd-length cycles by contracting
  * "blossoms" and finding augmenting paths.
  */
-public final class EdmondsBlossomAlgorithm {
+public class EdmondsBlossomAlgorithm {
 
     private EdmondsBlossomAlgorithm() {
-        // Prevent instantiation of the utility class
     }
 
     private static final int UNMATCHED = -1; // Constant to represent unmatched vertices
@@ -27,7 +26,7 @@ public final class EdmondsBlossomAlgorithm {
      * @param vertexCount The number of vertices in the graph.
      * @return A list of matched pairs of vertices.
      */
-    public List<int[]> maximumMatching(List<int[]> edges, int vertexCount) {
+    public static List<int[]> maximumMatching(List<int[]> edges, int vertexCount) {
         List<List<Integer>> graph = new ArrayList<>(vertexCount);
 
         // Initialize each vertex's adjacency list.
