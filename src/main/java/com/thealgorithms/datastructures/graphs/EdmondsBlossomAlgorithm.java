@@ -275,7 +275,7 @@ public final class EdmondsBlossomAlgorithm {
         int vertexCount = 6; // Adjust based on the number of vertices in the test cases
 
         for (int i = 0; i < testCases.size(); i++) {
-            List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(testCases.get(i), vertexCount);
+            List<int[]> matching = maximumMatching(testCases.get(i), vertexCount);
             printMatchingResult("Test Case " + (i + 1), matching);
         }
     }
