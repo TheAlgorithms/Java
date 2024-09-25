@@ -11,6 +11,10 @@ import java.util.Queue;
  * to find the maximum matching in a general graph. The algorithm efficiently
  * handles cases where the graph contains odd-length cycles by contracting
  * "blossoms" and finding augmenting paths.
+ *<p>
+ * <a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/shoemaker_vare.pdf">Documentation of Algorithm (Stanford University)</a>
+ * <p></p>
+ * <a href="https://en.wikipedia.org/wiki/Blossom_algorithm">Wikipedia Documentation</a>
  */
 public final class EdmondsBlossomAlgorithm {
 
