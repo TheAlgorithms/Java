@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -86,7 +87,7 @@ public class EdmondsBlossomAlgorithmTest {
      */
     @Test
     public void testCaseNoMatching() {
-        List<int[]> edges = Arrays.asList(); // No edges
+        List<int[]> edges = Collections.emptyList(); // No edges
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 3);
 
         int[][] expected = new int[][] {}; // No pairs expected
