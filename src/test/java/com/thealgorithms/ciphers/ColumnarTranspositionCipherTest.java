@@ -12,14 +12,14 @@ class ColumnarTranspositionCipherTest {
     @ParameterizedTest
     @MethodSource("provideTestCases")
     void encrypt(String key, String word) {
-        assertNotEquals(word, ColumnarTranspositionCipher.encrypt(word, key));
+        assertNotEquals(word, com.thealgorithms.ciphers.ColumnarTranspositionCipher.encrypt(word, key));
     }
 
     @ParameterizedTest
     @MethodSource("provideTestCases")
     void decrypt(String key, String word) {
-        String encrypted = ColumnarTranspositionCipher.encrypt(word, key);
-        assertEquals(word, ColumnarTranspositionCipher.decrypt());
+        String encrypted = com.thealgorithms.ciphers.ColumnarTranspositionCipher.encrypt(word, key);
+        assertEquals(word, com.thealgorithms.ciphers.ColumnarTranspositionCipher.decrypt());
     }
 
     private static Stream<Arguments> provideTestCases() {
@@ -30,3 +30,4 @@ class ColumnarTranspositionCipherTest {
         );
     }
 }
+
