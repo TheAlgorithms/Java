@@ -32,5 +32,9 @@ public class VolumeTest {
 
         /* test pyramid */
         assertTrue(Volume.volumePyramid(10, 3) == 10.0);
+
+        /* test frustum */
+        assertTrue(Volume.volumeFrustum(3, 5, 7) == 359.188760060433);
+
     }
 }
