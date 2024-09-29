@@ -35,6 +35,5 @@ public class VolumeTest {
 
         /* test frustum */
         assertTrue(Volume.volumeFrustumOfCone(3, 5, 7) == 359.188760060433);
-
     }
 }
