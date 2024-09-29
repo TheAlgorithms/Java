@@ -99,7 +99,7 @@ public final class Volume {
      * @param height height of the frustum
      * @return volume of the frustum
      */
-    public static double volumeFrustum(double r1, double r2, double height) {
+    public static double volumeFrustumOfCone(double r1, double r2, double height) {
         return (Math.PI * height / 3) * (r1 * r1 + r2 * r2 + r1 * r2);
     }
 
