@@ -3,98 +3,61 @@ package com.thealgorithms.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Program description - To find all possible paths from source to destination
- * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
- *
- * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
- */
 public class AllPathsFromSourceToTarget {
 
-    // No. of vertices in graph
     private final int v;
-
-    // To store the paths from source to destination
-    static List<List<Integer>> nm = new ArrayList<>();
-    // adjacency list
+    private final List<List<Integer>> allPaths = new ArrayList<>();
     private ArrayList<Integer>[] adjList;
 
-    // Constructor
     public AllPathsFromSourceToTarget(int vertices) {
-
-        // initialise vertex count
         this.v = vertices;
-
-        // initialise adjacency list
         initAdjList();
     }
 
-    // utility method to initialise adjacency list
+    @SuppressWarnings("unchecked")
     private void initAdjList() {
         adjList = new ArrayList[v];
-
         for (int i = 0; i < v; i++) {
             adjList[i] = new ArrayList<>();
         }
     }
 
-    // add edge from u to v
     public void addEdge(int u, int v) {
-        // Add v to u's list.
         adjList[u].add(v);
     }
 
-    public void storeAllPaths(int s, int d) {
+    public void findAllPaths(int s, int d) {
         boolean[] isVisited = new boolean[v];
-        ArrayList<Integer> pathList = new ArrayList<>();
-
-        // add source to path[]
-        pathList.add(s);
-        // Call recursive utility
-        storeAllPathsUtil(s, d, isVisited, pathList);
+        List<Integer> path = new ArrayList<>();
+        path.add(s);
+        findAllPathsUtil(s, d, isVisited, path);
     }
 
-    // A recursive function to print all paths from 'u' to 'd'.
-    // isVisited[] keeps track of vertices in current path.
-    // localPathList<> stores actual vertices in the current path
-    private void storeAllPathsUtil(Integer u, Integer d, boolean[] isVisited, List<Integer> localPathList) {
-
-        if (u.equals(d)) {
-            nm.add(new ArrayList<>(localPathList));
+    private void findAllPathsUtil(int u, int d, boolean[] isVisited, List<Integer> currentPath) {
+        if (u == d) {
+            allPaths.add(new ArrayList<>(currentPath));
             return;
         }
 
-        // Mark the current node
         isVisited[u] = true;
 
-        // Recursion for all the vertices adjacent to current vertex
-
-        for (Integer i : adjList[u]) {
-            if (!isVisited[i]) {
-                // store current node in path[]
-                localPathList.add(i);
-                storeAllPathsUtil(i, d, isVisited, localPathList);
-
-                // remove current node in path[]
-                localPathList.remove(i);
+        for (Integer neighbor : adjList[u]) {
+            if (!isVisited[neighbor]) {
+                currentPath.add(neighbor);
+                findAllPathsUtil(neighbor, d, isVisited, currentPath);
+                currentPath.remove(neighbor);
             }
         }
 
-        // Mark the current node
         isVisited[u] = false;
     }
 
-    // Driver program
-    public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int[][] a, int source, int destination) {
-        // Create a sample graph
-        AllPathsFromSourceToTarget g = new AllPathsFromSourceToTarget(vertices);
-        for (int[] i : a) {
-            g.addEdge(i[0], i[1]);
-            // edges are added
+    public static List<List<Integer>> allPathsFromSourceToTarget(int vertices, int[][] edges, int source, int destination) {
+        AllPathsFromSourceToTarget graph = new AllPathsFromSourceToTarget(vertices);
+        for (int[] edge : edges) {
+            graph.addEdge(edge[0], edge[1]);
         }
-        g.storeAllPaths(source, destination);
-        // method call to store all possible paths
-        return nm;
-        // returns all possible paths from source to destination
+        graph.findAllPaths(source, destination);
+        return graph.allPaths;
     }
 }
