@@ -29,10 +29,10 @@ public class Caesar {
             char current = message.charAt(i); // Java law : char + int = char
 
             if (isCapitalLatinLetter(current)) {
-                current += shift;
+                current += (char) shift;
                 encoded.append((char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current += shift;
+                current += (char) shift;
                 encoded.append((char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
             } else {
                 encoded.append(current);
@@ -56,10 +56,10 @@ public class Caesar {
         for (int i = 0; i < length; i++) {
             char current = encryptedMessage.charAt(i);
             if (isCapitalLatinLetter(current)) {
-                current -= shift;
+                current -= (char) shift;
                 decoded.append((char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current -= shift;
+                current -= (char) shift;
                 decoded.append((char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
             } else {
                 decoded.append(current);

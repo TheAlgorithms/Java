@@ -63,7 +63,7 @@ public final class PerfectNumber {
         // if n is a perfect square then its root was added twice in above loop, so subtracting root
         // from sum
         if (root == (int) root) {
-            sum -= root;
+            sum -= (int) root;
         }
 
         return sum == n;
