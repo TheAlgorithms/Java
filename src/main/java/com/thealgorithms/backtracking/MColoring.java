@@ -31,7 +31,7 @@ public final class MColoring {
 
     /**
      * Determines whether it is possible to color the graph using at most M colors.
-     * 
+     *
      * @param nodes List of nodes representing the graph.
      * @param n     The total number of nodes in the graph.
      * @param m     The maximum number of allowed colors.
