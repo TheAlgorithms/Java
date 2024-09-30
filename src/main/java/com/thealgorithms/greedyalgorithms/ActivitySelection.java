@@ -14,11 +14,11 @@ public final class ActivitySelection {
 
     /**
      * Function to perform activity selection using a greedy approach.
-     * 
+     *
      * The goal is to select the maximum number of activities that don't overlap
      * with each other, based on their start and end times. Activities are chosen
      * such that no two selected activities overlap.
-     * 
+     *
      * @param startTimes Array containing the start times of the activities.
      * @param endTimes   Array containing the end times of the activities.
      * @return A list of indices representing the selected activities that can be
