@@ -72,7 +72,7 @@ public final class Volume {
     /**
      * Calculate the volume of a prism.
      *
-     * @param baseArea  area of the given prism's base
+     * @param baseArea area of the given prism's base
      * @param height of given prism
      * @return volume of given prism
      */
@@ -83,7 +83,7 @@ public final class Volume {
     /**
      * Calculate the volume of a pyramid.
      *
-     * @param baseArea   of the given pyramid's base
+     * @param baseArea of the given pyramid's base
      * @param height of given pyramid
      * @return volume of given pyramid
      */
@@ -91,19 +91,15 @@ public final class Volume {
         return (baseArea * height) / 3;
     }
 
-    
     /**
      * Calculate the volume of a pyramid.
      *
-     * @param r1     radius of top of frustum
-     * @param r2     radius of bottom of frustum
+     * @param r1 radius of top of frustum
+     * @param r2 radius of bottom of frustum
      * @param height of given frustum
-     * @return       volume of given frustum
+     * @return volume of given frustum
      */
     public static double volumeFurstumOfCone(double r1, double r2, double height) {
         return ((Math.PI * height) / 3) * (r1 * r1 + r2 * r2 + r1 * r2);
     }
-
-    
-
 }
