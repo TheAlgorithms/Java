@@ -7,12 +7,10 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
- */
-
-/**
  * Node class represents a graph node. Each node is associated with a color
  * (initially 1) and contains a set of edges representing its adjacent nodes.
+ * 
+ * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 class Node {
     int color = 1; // Initial color for each node
