@@ -133,7 +133,7 @@
                         <plugin>
                             <groupId>com.mebigfatguy.fb-contrib</groupId>
                             <artifactId>fb-contrib</artifactId>
-                            <version>7.6.4</version>
+                            <version>7.6.5</version>
                         </plugin>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
