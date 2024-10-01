@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * author : @pri-sin
- * This class provides methods for calculating Fibonacci numbers Recursion.
+ * This class provides methods for calculating Fibonacci numbers using Recursion with Memoization.
  */
 public final class FibonacciJavaRecursion {
 	static Map<Integer, BigInteger> fibonacciMap=new HashMap<>();
