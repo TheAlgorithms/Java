@@ -7,7 +7,7 @@ public class DiffieHellman {
         System.out.println("Hello User! \nEnter your name:");
         String name = read.nextLine();
         read.nextLine();
-+       System.out.println("Welcome " + name + "!");
+        System.out.println("Welcome " + name + "!");
 
         BigInteger n, g, x, y, k1, k2, A, B;
 
