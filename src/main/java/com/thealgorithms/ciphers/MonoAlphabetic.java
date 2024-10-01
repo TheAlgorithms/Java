@@ -29,7 +29,7 @@ public final class MonoAlphabetic {
         default:
             System.out.println("The input was invalid. Kindly restart.");
             break;
-         }
+        }
     }
 
     public static String encrypt(String data, String key) {
