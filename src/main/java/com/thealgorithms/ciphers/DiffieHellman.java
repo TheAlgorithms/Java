@@ -6,10 +6,10 @@ public class DiffieHellman {
         Scanner read = new Scanner(System.in);
         System.out.println("Hello User! \nEnter your name:");
         String name = read.nextLine();
-        read.nextLine(); 
-        System.out.println("Welcome "+name+"!");
+        read.nextLine();
++       System.out.println("Welcome " + name + "!");
 
-        BigInteger n,g,x,y,k1,k2,A,B;
+        BigInteger n, g, x, y, k1, k2, A, B;
 
         System.out.println("Enter two prime numbers: ");
         n = new BigInteger(read.next());
@@ -26,8 +26,8 @@ public class DiffieHellman {
         k1 = B.modPow(x, n);
         k2 = A.modPow(y, n);
 
-        System.out.println("A's secret key: "+k1);
-        System.out.println("B's secret key: "+k2);
+        System.out.println("A's secret key: " + k1);
+        System.out.println("B's secret key: " + k2);
   
     }
 }
