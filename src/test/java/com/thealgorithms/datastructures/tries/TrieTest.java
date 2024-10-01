@@ -1,6 +1,8 @@
-package com.thealgorithms.tries;
+package com.thealgorithms.datastructures.tries;
 
 import java.util.List;
+
+import com.thealgorithms.datastructures.tries.Trie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
