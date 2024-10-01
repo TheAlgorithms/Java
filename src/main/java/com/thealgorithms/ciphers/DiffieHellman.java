@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 import java.util.Scanner;
 
-public class DiffieHellman {
+public final class DiffieHellman {
     private DiffieHellman() {
         throw new UnsupportedOperationException("Utility class");
     }
