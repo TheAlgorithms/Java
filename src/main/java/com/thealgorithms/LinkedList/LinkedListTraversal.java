@@ -2,9 +2,9 @@ package com.thealgorithms.LinkedList;
 
 public class LinkedListTraversal {
 
-    private static class Node{
-        private int data;
-        private Node next;
+    public static class Node{
+        public int data;
+        public Node next;
 
         public Node(int data){
             this.data = data;
@@ -14,7 +14,7 @@ public class LinkedListTraversal {
         }
     }
 
-    private Node head;
+    public Node head;
 
     public Node addElement(int val,Node node){
 
@@ -37,7 +37,7 @@ public class LinkedListTraversal {
 
     public void traverse(Node node){
         while (node != null){
-            System.out.println(node.data);
+            System.out.print(node.data+"->");
             node = node.next;
         }
     }
