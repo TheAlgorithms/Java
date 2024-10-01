@@ -27,8 +27,8 @@ public final class GaleShapley {
 
         // While there are free men
         while (!freeMen.isEmpty()) {
-            String man = freeMen.poll();  // Get the first free man
-            LinkedList<String> manPref = menPrefs.get(man);  // Get the preferences of the man
+            String man = freeMen.poll(); // Get the first free man
+            LinkedList<String> manPref = menPrefs.get(man); // Get the preferences of the man
 
             // Propose to the first woman in the man's preference list
             String woman = manPref.poll();
@@ -42,13 +42,13 @@ public final class GaleShapley {
                 LinkedList<String> womanPrefList = womenPrefs.get(woman);
                 if (womanPrefList.indexOf(man) < womanPrefList.indexOf(fiance)) {
                     engagements.put(woman, man);
-                    freeMen.add(fiance);  // Previous fiance becomes free
+                    freeMen.add(fiance); // Previous fiance becomes free
                 } else {
                     // Woman rejects the new proposal, the man remains free
                     freeMen.add(man);
                 }
             }
         }
-        return engagements;  // Return the stable matches
+        return engagements; // Return the stable matches
     }
 }
