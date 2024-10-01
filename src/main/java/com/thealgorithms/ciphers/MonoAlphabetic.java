@@ -1,7 +1,6 @@
-package MonoAlphabetic_Cipher;
 import java.util.Scanner;
 
-public class MonoAlphabetic {
+public final class MonoAlphabetic {
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
         System.out.println("Hello User! \nEnter your name:");
@@ -17,7 +16,6 @@ public class MonoAlphabetic {
             case 1:
                  System.out.println("\nPlease enter the data that is to be encrypted, we will be using MonoAlphabetic Cipher to encrypt the data.");
                  String data = read.nextLine().toUpperCase();
- 
                  String encryptedData = encrypt(data, key);
                  System.out.println("Encrypted data: " + encryptedData);
                  break;
@@ -25,7 +23,6 @@ public class MonoAlphabetic {
              case 2:
                  System.out.println("\nPlease enter the data that is to be decrypted, we will be using MonoAlphabetic Cipher to decrypt the data.");
                  data = read.nextLine().toUpperCase();
- 
                  String decryptedData = decrypt(data, key);
                  System.out.println("Decrypted data: " + decryptedData);
                  break;
@@ -41,7 +38,7 @@ public class MonoAlphabetic {
         char c;
         StringBuffer sb = new StringBuffer(data);
 
-        for(int i = 0; i < sb.length(); i++) {
+        for (int i = 0; i < sb.length(); i++) {
             idx = sb.charAt(i) - 65;
             c = key.charAt(idx);
             sb.setCharAt(i, c);
@@ -54,7 +51,7 @@ public class MonoAlphabetic {
         char c;
         StringBuffer sb = new StringBuffer(data);
 
-        for(int i = 0; i < sb.length(); i++) {
+        for (int i = 0; i < sb.length(); i++) {
             c = sb.charAt(i);
             idx = getIndex(c, key);
             c = (char) (idx + 65);
@@ -65,8 +62,8 @@ public class MonoAlphabetic {
 
     public static int getIndex(char c, String key) {
         int idx = -1;
-        for(int i = 0; i < key.length(); i++) {
-            if(key.charAt(i) == c) {
+        for (int i = 0; i < key.length(); i++) {
+            if (key.charAt(i) == c) {
                 idx = i;
             }
         }
