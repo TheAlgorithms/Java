@@ -33,8 +33,8 @@ public class DiffieHellman {
         y = new BigInteger(read.next());
         b = g.modPow(y, n);
 
-        k1 = B.modPow(x, n);
-        k2 = A.modPow(y, n);
+        k1 = b.modPow(x, n);
+        k2 = a.modPow(y, n);
 
         System.out.println("A's secret key: " + k1);
         System.out.println("B's secret key: " + k2);
