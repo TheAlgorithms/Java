@@ -10,7 +10,7 @@ import java.util.Base64;
  * @author <a href="https://github.com/lcsjunior">lcsjunior</a>
  *
  */
-public class XORCipher {
+public final class XORCipher {
 
     private static final Charset CS_DEFAULT = StandardCharsets.UTF_8;
 
