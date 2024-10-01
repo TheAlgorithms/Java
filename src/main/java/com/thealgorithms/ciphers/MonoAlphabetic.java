@@ -25,7 +25,7 @@ public final class MonoAlphabetic {
             String decryptedData = decrypt(data, key);
             System.out.println("Decrypted data: " + decryptedData);
             break;
- 
+
         default:
             System.out.println("The input was invalid. Kindly restart.");
             break;
