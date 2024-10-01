@@ -18,14 +18,12 @@ public final class MonoAlphabetic {
             String encryptedData = encrypt(data, key);
             System.out.println("Encrypted data: " + encryptedData);
             break;
- 
         case 2:
             System.out.println("\nPlease enter the data that is to be decrypted, we will be using MonoAlphabetic Cipher to decrypt the data.");
             data = read.nextLine().toUpperCase();
             String decryptedData = decrypt(data, key);
             System.out.println("Decrypted data: " + decryptedData);
             break;
-
         default:
             System.out.println("The input was invalid. Kindly restart.");
             break;
@@ -68,5 +66,4 @@ public final class MonoAlphabetic {
         }
         return idx;
     }
-
 }
