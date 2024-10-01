@@ -1,7 +1,10 @@
 import java.math.BigInteger;
-import java.util.*;
+import java.util.Scanner;
 
 public class DiffieHellman {
+    private DiffieHellman() {
+        throw new UnsupportedOperationException("Utility class");
+    }
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
         System.out.println("Hello User! \nEnter your name:");
@@ -9,7 +12,14 @@ public class DiffieHellman {
         read.nextLine();
         System.out.println("Welcome " + name + "!");
 
-        BigInteger n, g, x, y, k1, k2, A, B;
+        BigInteger n;
+        BigInteger g;
+        BigInteger x;
+        BigInteger y;
+        BigInteger k1;
+        BigInteger k2;
+        BigInteger a;
+        BigInteger b;
 
         System.out.println("Enter two prime numbers: ");
         n = new BigInteger(read.next());
@@ -17,11 +27,11 @@ public class DiffieHellman {
 
         System.out.println("Person A : Enter your secret number");
         x = new BigInteger(read.next());
-        A = g.modPow(x, n);
+        a = g.modPow(x, n);
 
         System.out.println("Person B : Enter your secret number");
         y = new BigInteger(read.next());
-        B = g.modPow(y, n);
+        b = g.modPow(y, n);
 
         k1 = B.modPow(x, n);
         k2 = A.modPow(y, n);
