@@ -10,7 +10,7 @@ class TrieNode {
     private char letter;
     private boolean end;
 
-    public TrieNode(char letter) {
+    TrieNode(char letter) {
         this.letter = letter;
         this.children = new TrieNode[CHILDREN_NODE_COUNT];
         this.end = false;

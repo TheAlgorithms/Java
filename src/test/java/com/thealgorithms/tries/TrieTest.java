@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TrieTest {
-    private static List<String> WORDS = List.of("apple", "app", "rest", "rent", "rental");
+    private static final List<String> WORDS = List.of("apple", "app", "rest", "rent", "rental");
 
     @Test
-    void searchInTrie_success() {
+    void searchInTrieSuccess() {
         Trie trie = new Trie();
 
         for (String word : WORDS) {
@@ -21,7 +21,7 @@ public class TrieTest {
     }
 
     @Test
-    void startsWithPrefixInTrie_success() {
+    void startsWithPrefixInTrieSuccess() {
         Trie trie = new Trie();
 
         for (String word : WORDS) {
