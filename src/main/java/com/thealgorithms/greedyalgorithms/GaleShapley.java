@@ -20,35 +20,47 @@ public final class GaleShapley {
      * @param menPrefs   A map containing men's preferences where each key is a man and the value is an array of women in order of preference.
      * @return A map containing stable matches where the key is a woman and the value is her matched man.
      */
-    public static Map<String, String> stableMatch(Map<String, LinkedList<String>> womenPrefs, Map<String, LinkedList<String>> menPrefs) {
-        // Initialize all men as free
+    public static Map<String, String> stableMatch(Map<String, LinkedList<String>> womenPrefs, 
+                                                  Map<String, LinkedList<String>> menPrefs) {
         Map<String, String> engagements = new HashMap<>();
-        LinkedList<String> freeMen = new LinkedList<>(menPrefs.keySet());
+        Queue<String> freeMen = new LinkedList<>(menPrefs.keySet());
 
-        // While there are free men
         while (!freeMen.isEmpty()) {
-            String man = freeMen.poll(); // Get the first free man
-            LinkedList<String> manPref = menPrefs.get(man); // Get the preferences of the man
+            String man = freeMen.poll();
+            LinkedList<String> manPref = menPrefs.get(man);
+
+            // Ensure manPref is not null before proceeding
+            if (manPref == null) {
+                continue;
+            }
 
             // Propose to the first woman in the man's preference list
             String woman = manPref.poll();
             String fiance = engagements.get(woman);
 
-            // If the woman is not engaged, engage her with the current man
             if (fiance == null) {
+                // Woman is free, engage the man and woman
                 engagements.put(woman, man);
             } else {
-                // If the woman prefers the current man over her current fiance
+                // Woman is already engaged, check if she prefers this man over her current fiance
                 LinkedList<String> womanPrefList = womenPrefs.get(woman);
+
+                // Ensure womanPrefList is not null before comparing
+                if (womanPrefList == null) {
+                    continue;
+                }
+
+                // If the woman prefers the current man over her current fiance
                 if (womanPrefList.indexOf(man) < womanPrefList.indexOf(fiance)) {
                     engagements.put(woman, man);
                     freeMen.add(fiance); // Previous fiance becomes free
                 } else {
-                    // Woman rejects the new proposal, the man remains free
+                    // Woman stays with her current fiance, man remains free
                     freeMen.add(man);
                 }
             }
         }
-        return engagements; // Return the stable matches
+
+        return engagements;
     }
 }
