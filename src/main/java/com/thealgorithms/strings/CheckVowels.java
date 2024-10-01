@@ -2,15 +2,12 @@ package com.thealgorithms.strings;
 
 import java.util.Set;
 
-/**
- * Vowel Count is a system whereby character strings are placed in order based
- * on the position of the characters in the conventional ordering of an
- * alphabet. Wikipedia: https://en.wikipedia.org/wiki/Alphabetical_order
- */
 public final class CheckVowels {
-    private static final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u');
+
+    private static final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
 
     private CheckVowels() {
+        // Private constructor to prevent instantiation
     }
 
     /**
@@ -24,7 +21,8 @@ public final class CheckVowels {
             return false;
         }
 
-        for (char c : input.toLowerCase().toCharArray()) {
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
             if (VOWELS.contains(c)) {
                 return true;
             }
