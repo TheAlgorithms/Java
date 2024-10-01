@@ -12,11 +12,11 @@ import java.util.Map;
  */
 public class TrieNode {
     private Map<Character, TrieNode> children;
-    private char letter;
+    private char value;
     private boolean end;
 
-    public TrieNode(char letter) {
-        this.letter = letter;
+    public TrieNode(char value) {
+        this.value = value;
         this.children = new HashMap<>();
         this.end = false;
     }
@@ -29,12 +29,12 @@ public class TrieNode {
         this.children = children;
     }
 
-    public char getLetter() {
-        return letter;
+    public char getValue() {
+        return value;
     }
 
-    public void setLetter(char letter) {
-        this.letter = letter;
+    public void setValue(char value) {
+        this.value = value;
     }
 
     public boolean isEnd() {
