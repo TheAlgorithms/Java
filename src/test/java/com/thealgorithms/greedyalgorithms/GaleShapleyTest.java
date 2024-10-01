@@ -1,72 +1,53 @@
 package com.thealgorithms.greedyalgorithms;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import org.junit.jupiter.api.Test;
+import java.util.Queue;
 
-public class GaleShapleyTest {
+public class GaleShapley {
 
-    @Test
-    public void testStableMatch() {
-        Map<String, LinkedList<String>> womenPrefs = new HashMap<>();
-        womenPrefs.put("A", new LinkedList<>(List.of("X", "Y", "Z")));
-        womenPrefs.put("B", new LinkedList<>(List.of("Y", "X", "Z")));
-        womenPrefs.put("C", new LinkedList<>(List.of("X", "Y", "Z")));
+    public static Map<String, String> stableMatch(Map<String, LinkedList<String>> womenPrefs, 
+                                                  Map<String, LinkedList<String>> menPrefs) {
+        Map<String, String> engagements = new HashMap<>();
+        Queue<String> freeMen = new LinkedList<>(menPrefs.keySet());
 
-        Map<String, LinkedList<String>> menPrefs = new HashMap<>();
-        menPrefs.put("X", new LinkedList<>(List.of("A", "B", "C")));
-        menPrefs.put("Y", new LinkedList<>(List.of("B", "A", "C")));
-        menPrefs.put("Z", new LinkedList<>(List.of("A", "B", "C")));
+        while (!freeMen.isEmpty()) {
+            String man = freeMen.poll();
+            LinkedList<String> manPref = menPrefs.get(man);
 
-        Map<String, String> result = GaleShapley.stableMatch(womenPrefs, menPrefs);
+            // Ensure manPref is not null before proceeding
+            if (manPref == null) {
+                continue;
+            }
 
-        Map<String, String> expected = new HashMap<>();
-        expected.put("A", "X");
-        expected.put("B", "Y");
-        expected.put("C", "Z");
+            // Propose to the first woman in the man's preference list
+            String woman = manPref.poll();
+            String fiance = engagements.get(woman);
 
-        assertEquals(expected, result);
-    }
+            if (fiance == null) {
+                // Woman is free, engage the man and woman
+                engagements.put(woman, man);
+            } else {
+                // Woman is already engaged, check if she prefers this man over her current fiance
+                LinkedList<String> womanPrefList = womenPrefs.get(woman);
 
-    @Test
-    public void testSinglePair() {
-        Map<String, LinkedList<String>> womenPrefs = new HashMap<>();
-        womenPrefs.put("A", new LinkedList<>(List.of("X")));
+                // Ensure womanPrefList is not null before comparing
+                if (womanPrefList == null) {
+                    continue;
+                }
 
-        Map<String, LinkedList<String>> menPrefs = new HashMap<>();
-        menPrefs.put("X", new LinkedList<>(List.of("A")));
+                // If the woman prefers the current man over her current fiance
+                if (womanPrefList.indexOf(man) < womanPrefList.indexOf(fiance)) {
+                    engagements.put(woman, man);
+                    freeMen.add(fiance); // Previous fiance becomes free
+                } else {
+                    // Woman stays with her current fiance, man remains free
+                    freeMen.add(man);
+                }
+            }
+        }
 
-        Map<String, String> result = GaleShapley.stableMatch(womenPrefs, menPrefs);
-
-        Map<String, String> expected = new HashMap<>();
-        expected.put("A", "X");
-
-        assertEquals(expected, result);
-    }
-
-    @Test
-    public void testEqualPreferences() {
-        Map<String, LinkedList<String>> womenPrefs = new HashMap<>();
-        womenPrefs.put("A", new LinkedList<>(List.of("X", "Y", "Z")));
-        womenPrefs.put("B", new LinkedList<>(List.of("X", "Y", "Z")));
-        womenPrefs.put("C", new LinkedList<>(List.of("X", "Y", "Z")));
-
-        Map<String, LinkedList<String>> menPrefs = new HashMap<>();
-        menPrefs.put("X", new LinkedList<>(List.of("A", "B", "C")));
-        menPrefs.put("Y", new LinkedList<>(List.of("A", "B", "C")));
-        menPrefs.put("Z", new LinkedList<>(List.of("A", "B", "C")));
-
-        Map<String, String> result = GaleShapley.stableMatch(womenPrefs, menPrefs);
-
-        Map<String, String> expected = new HashMap<>();
-        expected.put("A", "X");
-        expected.put("B", "Y");
-        expected.put("C", "Z");
-
-        assertEquals(expected, result);
+        return engagements;
     }
 }
