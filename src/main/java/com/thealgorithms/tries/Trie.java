@@ -1,26 +1,27 @@
 package com.thealgorithms.tries;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * TrieNode class which holds the lowercase letter and references to its child nodes
+ * TrieNode class which holds the characters and references to its child nodes
  */
 class TrieNode {
-    private static final int CHILDREN_NODE_COUNT = 26;
-
-    private TrieNode[] children;
+    private Map<Character, TrieNode> children;
     private char letter;
     private boolean end;
 
     TrieNode(char letter) {
         this.letter = letter;
-        this.children = new TrieNode[CHILDREN_NODE_COUNT];
+        this.children = new HashMap<>();
         this.end = false;
     }
 
-    public TrieNode[] getChildren() {
+    public Map<Character, TrieNode> getChildren() {
         return children;
     }
 
-    public void setChildren(TrieNode[] children) {
+    public void setChildren(Map<Character, TrieNode> children) {
         this.children = children;
     }
 
@@ -42,14 +43,14 @@ class TrieNode {
 }
 
 /**
- * Trie class which holds Strings of LowerCase Sensitive characters.
+ * Trie class which holds Strings of characters.
+ *
  * <a href="https://en.wikipedia.org/wiki/Trie">Wikipedia</a>
  *
- *  @author <a href="https://github.com/sailok">Sailok Chinta</a>
+ * @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
 public class Trie {
     private static final char ROOT_CHAR = '*';
-    private static final char BASE_CHAR = 'a';
 
     private final TrieNode root;
 
@@ -68,11 +69,11 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
-            if (head.getChildren()[c - BASE_CHAR] == null) {
-                head.getChildren()[c - BASE_CHAR] = new TrieNode(c);
+            if (!head.getChildren().containsKey(c)) {
+                head.getChildren().put(c, new TrieNode(c));
             }
 
-            head = head.getChildren()[c - BASE_CHAR];
+            head = head.getChildren().get(c);
         }
 
         head.setEnd(true);
@@ -90,11 +91,11 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
-            if (head.getChildren()[c - BASE_CHAR] == null) {
+            if (!head.getChildren().containsKey(c)) {
                 return false;
             }
 
-            head = head.getChildren()[c - BASE_CHAR];
+            head = head.getChildren().get(c);
         }
 
         return head.isEnd();
@@ -112,11 +113,11 @@ public class Trie {
         for (int i = 0; i < prefix.length(); i++) {
             char c = prefix.charAt(i);
 
-            if (head.getChildren()[c - BASE_CHAR] == null) {
+            if (!head.getChildren().containsKey(c)) {
                 return false;
             }
 
-            head = head.getChildren()[c - BASE_CHAR];
+            head = head.getChildren().get(c);
         }
 
         return true;
