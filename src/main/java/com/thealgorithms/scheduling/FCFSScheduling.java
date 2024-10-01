@@ -14,7 +14,7 @@ import java.util.List;
 public class FCFSScheduling {
 
     // Attributes
-    private List<ProcessDetails> processes;// List of processes to be scheduled
+    private List<ProcessDetails> processes; // List of processes to be scheduled
 
     /**
      * Constructor to initialize the FCFSScheduling class with a list of processes.
