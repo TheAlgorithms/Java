@@ -90,4 +90,16 @@ public final class Volume {
     public static double volumePyramid(double baseArea, double height) {
         return (baseArea * height) / 3;
     }
+
+    /**
+     * Calculate the volume of a frustum of a cone.
+     *
+     * @param r1 radius of the top of the frustum
+     * @param r2 radius of the bottom of the frustum
+     * @param height height of the frustum
+     * @return volume of the frustum
+     */
+    public static double volumeFrustumOfCone(double r1, double r2, double height) {
+        return (Math.PI * height / 3) * (r1 * r1 + r2 * r2 + r1 * r2);
+    }
 }

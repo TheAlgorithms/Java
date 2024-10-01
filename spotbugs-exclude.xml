@@ -166,9 +166,6 @@
         <Bug pattern="DSOC_DUBIOUS_SET_OF_COLLECTIONS" />
     </Match>
     <Match>
-        <Bug pattern="NAB_NEEDLESS_BOX_TO_UNBOX" />
-    </Match>
-    <Match>
         <Bug pattern="FPL_FLOATING_POINT_LOOPS" />
     </Match>
     <Match>
@@ -206,6 +203,9 @@
     </Match>
     <Match>
         <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
+    </Match>
+    <Match>
+        <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
     </Match>
     <!-- find-sec-bugs -->
     <Match>
