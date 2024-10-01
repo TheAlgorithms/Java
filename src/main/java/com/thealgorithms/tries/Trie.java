@@ -5,7 +5,7 @@ package com.thealgorithms.tries;
  */
 class TrieNode {
     private static final int CHILDREN_NODE_COUNT = 26;
-    
+
     private TrieNode[] children;
     private char letter;
     private boolean end;
@@ -61,7 +61,7 @@ public class Trie {
      */
     public void insert(String word) {
         TrieNode head = root;
-        
+
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
@@ -83,7 +83,7 @@ public class Trie {
      */
     public boolean search(String word) {
         TrieNode head = root;
-        
+
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
 
