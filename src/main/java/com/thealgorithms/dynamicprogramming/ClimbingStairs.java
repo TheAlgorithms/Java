@@ -1,11 +1,11 @@
 package com.thealgorithms.dynamicprogramming;
 
 /*
- * A dynamic programming solution for the "Climbing Stairs" problem. 
- * Returns the no. of distinct ways to climb to the top 
+ * A dynamic programming solution for the "Climbing Stairs" problem.
+ * Returns the no. of distinct ways to climb to the top
  * of a staircase when you can climb either 1 or 2 steps at a time.
  *
- * For example, if there are 5 steps, the possible ways to climb the 
+ * For example, if there are 5 steps, the possible ways to climb the
  * staircase are:
  * 1. 1-1-1-1-1
  * 2. 1-1-1-2
