@@ -28,6 +28,5 @@ public class DiffieHellman {
 
         System.out.println("A's secret key: " + k1);
         System.out.println("B's secret key: " + k2);
-  
     }
 }
