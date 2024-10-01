@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public final class MonoAlphabetic {
+    private MonoAlphabetic() {
+        throw new UnsupportedOperationException("Utility class");
+    }
     public static void main(String[] args) {
         Scanner read = new Scanner(System.in);
         System.out.println("Hello User! \nEnter your name:");
