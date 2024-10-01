@@ -207,6 +207,9 @@
     <Match>
         <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
     </Match>
+    <Match>
+        <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
+    </Match>
     <!-- find-sec-bugs -->
     <Match>
         <Bug pattern="PREDICTABLE_RANDOM" />
