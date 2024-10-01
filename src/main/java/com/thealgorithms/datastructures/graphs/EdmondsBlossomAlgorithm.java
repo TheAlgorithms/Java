@@ -212,20 +212,6 @@ public final class EdmondsBlossomAlgorithm {
     }
 
     /**
-     * Helper method to print the matching results in a readable format.
-     *
-     * @param testCase The name of the test case being executed.
-     * @param matching The list of matched pairs of vertices.
-     */
-    private static void printMatchingResult(String testCase, List<int[]> matching) {
-        System.out.print(testCase + " Matching: ");
-        for (int[] pair : matching) {
-            System.out.print("(" + pair[0] + ", " + pair[1] + ") ");
-        }
-        System.out.println();
-    }
-
-    /**
      * Auxiliary data class to encapsulate common parameters for the blossom operations.
      */
     static class BlossomAuxData {
@@ -260,27 +246,6 @@ public final class EdmondsBlossomAlgorithm {
             this.u = u;
             this.v = v;
             this.lca = lca;
-        }
-    }
-
-    /**
-     * Method to run multiple test cases for the algorithm.
-     */
-    public static void runTests() {
-        // Define test cases
-        List<int[]> edges1 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
-        List<int[]> edges2 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {3, 4});
-        List<int[]> edges3 = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 0}, new int[] {4, 5});
-
-        // Create an instance of the algorithm
-
-        // Run the test cases
-        List<List<int[]>> testCases = Arrays.asList(edges1, edges2, edges3);
-        int vertexCount = 6; // Adjust based on the number of vertices in the test cases
-
-        for (int i = 0; i < testCases.size(); i++) {
-            List<int[]> matching = maximumMatching(testCases.get(i), vertexCount);
-            printMatchingResult("Test Case " + (i + 1), matching);
         }
     }
 }
