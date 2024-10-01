@@ -43,6 +43,9 @@ class TrieNode {
 
 /**
  * Trie class which holds Strings of LowerCase Sensitive characters.
+ * <a href="https://en.wikipedia.org/wiki/Trie">Wikipedia</a>
+ *
+ *  @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
 public class Trie {
     private static final char ROOT_CHAR = '*';
