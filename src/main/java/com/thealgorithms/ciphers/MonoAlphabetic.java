@@ -41,7 +41,7 @@ public class MonoAlphabetic {
         char c;
         StringBuffer sb = new StringBuffer(data);
 
-        for(int i=0; i<sb.length(); i++) {
+        for(int i = 0; i < sb.length(); i++) {
             idx = sb.charAt(i) - 65;
             c = key.charAt(idx);
             sb.setCharAt(i, c);
@@ -54,7 +54,7 @@ public class MonoAlphabetic {
         char c;
         StringBuffer sb = new StringBuffer(data);
 
-        for(int i=0; i<sb.length(); i++) {
+        for(int i = 0; i < sb.length(); i++) {
             c = sb.charAt(i);
             idx = getIndex(c, key);
             c = (char) (idx + 65);
@@ -65,7 +65,7 @@ public class MonoAlphabetic {
 
     public static int getIndex(char c, String key) {
         int idx = -1;
-        for(int i=0; i<key.length();i++) {
+        for(int i = 0; i < key.length(); i++) {
             if(key.charAt(i) == c) {
                 idx = i;
             }
