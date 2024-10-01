@@ -52,6 +52,7 @@
             * [RSA](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/RSA.java)
             * [SimpleSubCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/SimpleSubCipher.java)
             * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/Vigenere.java)
+            * [XORCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/XORCipher.java)
           * conversions
             * [AffineConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/AffineConverter.java)
             * [AnyBaseToAnyBase](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/AnyBaseToAnyBase.java)
@@ -613,6 +614,7 @@
             * [RSATest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/RSATest.java)
             * [SimpleSubCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/SimpleSubCipherTest.java)
             * [VigenereTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/VigenereTest.java)
+            * [XORCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/XORCipherTest.java)
           * conversions
             * [AnyBaseToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AnyBaseToDecimalTest.java)
             * [BinaryToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToDecimalTest.java)
