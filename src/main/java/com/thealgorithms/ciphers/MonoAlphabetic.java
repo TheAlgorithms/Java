@@ -6,30 +6,29 @@ public final class MonoAlphabetic {
         System.out.println("Hello User! \nEnter your name:");
         String name = read.nextLine();
         read.nextLine();
-
-        System.out.println("Welcome " + name + "!\nDo you want to encrypt data or decrypt the data?\nFor encryption enter: 1\nFor decryption enter: 2");        int x = read.nextInt();
-        read.nextLine();
+        System.out.println("Welcome " + name + "!\nDo you want to encrypt data or decrypt the data?\nFor encryption enter: 1\nFor decryption enter: 2");
+        int x = read.nextInt();
 
         String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
 
         switch (x) {
-            case 1:
-                 System.out.println("\nPlease enter the data that is to be encrypted, we will be using MonoAlphabetic Cipher to encrypt the data.");
-                 String data = read.nextLine().toUpperCase();
-                 String encryptedData = encrypt(data, key);
-                 System.out.println("Encrypted data: " + encryptedData);
-                 break;
+        case 1:
+            System.out.println("\nPlease enter the data that is to be encrypted, we will be using MonoAlphabetic Cipher to encrypt the data.");
+            String data = read.nextLine().toUpperCase();
+            String encryptedData = encrypt(data, key);
+            System.out.println("Encrypted data: " + encryptedData);
+            break;
  
-             case 2:
-                 System.out.println("\nPlease enter the data that is to be decrypted, we will be using MonoAlphabetic Cipher to decrypt the data.");
-                 data = read.nextLine().toUpperCase();
-                 String decryptedData = decrypt(data, key);
-                 System.out.println("Decrypted data: " + decryptedData);
-                 break;
+        case 2:
+            System.out.println("\nPlease enter the data that is to be decrypted, we will be using MonoAlphabetic Cipher to decrypt the data.");
+            data = read.nextLine().toUpperCase();
+            String decryptedData = decrypt(data, key);
+            System.out.println("Decrypted data: " + decryptedData);
+            break;
  
-             default:
-                 System.out.println("The input was invalid. Kindly restart.");
-                 break;        
+        default:
+            System.out.println("The input was invalid. Kindly restart.");
+            break;        
         }  
     }
 
