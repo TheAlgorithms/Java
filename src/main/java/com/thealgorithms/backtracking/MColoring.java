@@ -76,9 +76,9 @@ public final class MColoring {
                     // Keep track of the maximum number of colors used so far
                     maxColors = Math.max(maxColors, Math.max(nodes.get(top).color, nodes.get(it).color));
 
-                    // If the number of colors used exceeds the allowed limit M, return 0 (failure).
+                    // If the number of colors used exceeds the allowed limit M, return false.
                     if (maxColors > m) {
-                        return 0;
+                        return false;
                     }
 
                     // If the adjacent node hasn't been visited yet, mark it as visited and add it
@@ -91,7 +91,6 @@ public final class MColoring {
             }
         }
 
-        // Return 1 if it's possible to color the entire graph with M or fewer colors.
-        return 1;
+        return true; // Possible to color the entire graph with M or fewer colors.
     }
 }
