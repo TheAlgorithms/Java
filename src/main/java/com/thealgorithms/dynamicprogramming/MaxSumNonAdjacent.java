@@ -19,6 +19,9 @@ Approach:
 Use dynamic programming to maintain a running maximum sum.
 For each element, decide to either include it in the sum (and skip the previous element) or exclude it (and keep the sum up to the previous element).*/
 
+// Problem Explaination: "https://medium.com/@amitrajit_bose/max-sum-of-non-adjacent-elements-a04ebc4f2602"
+
+
 public class MaxSumNonAdjacent {
     // This function recursively calculates the maximum possible sum
     // by considering or not considering the current element.
