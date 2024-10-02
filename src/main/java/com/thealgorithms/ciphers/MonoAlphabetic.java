@@ -1,78 +1,92 @@
+package com.thealgorithms.ciphers;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.stream.Stream;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 public final class MonoAlphabetic {
+
+    // Private constructor to prevent instantiation of utility class
     private MonoAlphabetic() {
         throw new UnsupportedOperationException("Utility class");
     }
 
+    // Encryption method
     public static String encrypt(String data, String key) {
         int idx;
         char c;
-        StringBuffer sb = new StringBuffer(data.toUpperCase());
+        StringBuilder sb = new StringBuilder(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
-            idx = sb.charAt(i) - 65;
-            c = key.charAt(idx);
-            sb.setCharAt(i, c);
+            idx = sb.charAt(i) - 65; // Subtract ASCII value of 'A' to get index
+            c = key.charAt(idx); // Find the character at the corresponding key position
+            sb.setCharAt(i, c); // Replace with the key character
         }
-        return new String(sb);
+        return sb.toString();
     }
 
+    // Decryption method
     public static String decrypt(String data, String key) {
         int idx;
         char c;
-        StringBuffer sb = new StringBuffer(data.toUpperCase());
+        StringBuilder sb = new StringBuilder(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
-            c = sb.charAt(i);
-            idx = getIndex(c, key);
-            c = (char) (idx + 65);
-            sb.setCharAt(i, c);
+            c = sb.charAt(i); // Get the character from encrypted data
+            idx = getIndex(c, key); // Get the corresponding index from the key
+            c = (char) (idx + 65); // Convert index back to character
+            sb.setCharAt(i, c); // Replace with the original character
         }
-        return new String(sb);
+        return sb.toString();
     }
 
+    // Helper method to get index of a character in the key
     public static int getIndex(char c, String key) {
         for (int i = 0; i < key.length(); i++) {
             if (key.charAt(i) == c) {
-                return i;
+                return i; // Return the index if the character matches
             }
         }
-        return -1;
-    }
-}
-
-// JUnit Tests for MonoAlphabetic Cipher
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class MonoAlphabeticTest {
-
-    private final String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-
-    @ParameterizedTest
-    @DisplayName("Encrypt Test with MonoAlphabetic Cipher")
-    @CsvSource({
-        "HELLO, DLZZI",
-        "WORLD, XMFLD",
-        "JAVA, HBWB",
-        "OPENAI, IUPNMW"
-    })
-    void testEncrypt(String plainText, String expectedCipherText) {
-        String encrypted = MonoAlphabetic.encrypt(plainText, key);
-        assertEquals(expectedCipherText, encrypted, "Encryption failed for input: " + plainText);
+        return -1; // Return -1 if character not found (should not happen for valid inputs)
     }
 
+    // *********** Unit Test Section **************
+
+    // Method to provide test data for encryption
+    private static Stream<Arguments> provideEncryptionData() {
+        String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
+        return Stream.of(
+            // Input data, key, expected encrypted output
+            Arguments.of("HELLO", key, "GFSSD"),
+            Arguments.of("JAVA", key, "MZSM")
+        );
+    }
+
+    // Test for encryption
     @ParameterizedTest
-    @DisplayName("Decrypt Test with MonoAlphabetic Cipher")
-    @CsvSource({
-        "DLZZI, HELLO",
-        "XMFLD, WORLD",
-        "HBWB, JAVA",
-        "IUPNMW, OPENAI"
-    })
-    void testDecrypt(String cipherText, String expectedPlainText) {
-        String decrypted = MonoAlphabetic.decrypt(cipherText, key);
-        assertEquals(expectedPlainText, decrypted, "Decryption failed for input: " + cipherText);
+    @MethodSource("provideEncryptionData")
+    public void testEncrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.encrypt(data, key));
+    }
+
+    // Method to provide test data for decryption
+    private static Stream<Arguments> provideDecryptionData() {
+        String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
+        return Stream.of(
+            // Encrypted data, key, expected decrypted output
+            Arguments.of("GFSSD", key, "HELLO"),
+            Arguments.of("MZSM", key, "JAVA")
+        );
+    }
+
+    // Test for decryption
+    @ParameterizedTest
+    @MethodSource("provideDecryptionData")
+    public void testDecrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.decrypt(data, key));
     }
 }
