@@ -63,11 +63,11 @@ public final class BinarySearch2dArray {
         // If the target wasn't found during the row search, check the middle column of
         // startRow and endRow.
         if (arr[startRow][midCol] == target) {
-            return new int[] { startRow, midCol };
+            return new int[] {startRow, midCol};
         }
 
         if (arr[endRow][midCol] == target) {
-            return new int[] { endRow, midCol };
+            return new int[] {endRow, midCol};
         }
 
         // If target is smaller than the element in the left of startRow, perform a
