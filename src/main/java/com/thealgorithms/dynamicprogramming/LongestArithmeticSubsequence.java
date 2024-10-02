@@ -42,17 +42,4 @@ final class LongestArithmeticSubsequence {
 
         return maxLength;
     }
-
-    public static void main(String[] args) {
-        int[] nums = {3, 6, 9, 12, 15};
-        int length = getLongestArithmeticSubsequenceLength(nums);
-
-        // Print the result
-        System.out.println("Array: ");
-        for (int num : nums) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
-        System.out.println("Length of the Longest Arithmetic Subsequence: " + length);
-    }
 }
