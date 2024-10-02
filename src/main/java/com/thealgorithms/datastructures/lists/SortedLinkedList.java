@@ -39,6 +39,7 @@ public class SortedLinkedList {
         } 
         else if (value > tail.value) {
             this.tail.next = newNode;
+            this.tail = newNode;
         }
         else{
             Node temp = head;
