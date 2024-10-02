@@ -7,6 +7,10 @@ import java.util.List;
 
 public final class GenerateSubsets {
 
+    private GenerateSubsets() {
+    throw new UnsupportedOperationException("Utility class");
+        }
+
     public static List<String> subsetRecursion(String p, String up) {
         if (up.isEmpty()) {
             List<String> list = new ArrayList<>();
