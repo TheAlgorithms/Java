@@ -1,5 +1,5 @@
 import java.util.*;
-public class SCC_Naive
+public class sccNaive
 {
     //Implementing the conventional DFS
     public boolean isPath(HashMap<Integer,List<Integer>> adj_list,int N,int visited[],int current_node,int destination)
