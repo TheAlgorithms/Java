@@ -27,17 +27,11 @@ public class DiffieHellmanTest {
 
     // Provide test data for public key calculation
     private static Stream<Arguments> providePublicKeyData() {
-        return Stream.of(
-            Arguments.of(new BigInteger("5"), new BigInteger("6"), new BigInteger("23"), new BigInteger("8")),
-            Arguments.of(new BigInteger("2"), new BigInteger("5"), new BigInteger("13"), new BigInteger("6"))
-        );
+        return Stream.of(Arguments.of(new BigInteger("5"), new BigInteger("6"), new BigInteger("23"), new BigInteger("8")), Arguments.of(new BigInteger("2"), new BigInteger("5"), new BigInteger("13"), new BigInteger("6")));
     }
 
     // Provide test data for shared secret calculation
     private static Stream<Arguments> provideSharedSecretData() {
-        return Stream.of(
-            Arguments.of(new BigInteger("8"), new BigInteger("6"), new BigInteger("23"), new BigInteger("2")),
-            Arguments.of(new BigInteger("6"), new BigInteger("5"), new BigInteger("13"), new BigInteger("12"))
-        );
+        return Stream.of(Arguments.of(new BigInteger("8"), new BigInteger("6"), new BigInteger("23"), new BigInteger("2")), Arguments.of(new BigInteger("6"), new BigInteger("5"), new BigInteger("13"), new BigInteger("12")));
     }
 }
