@@ -21,10 +21,14 @@ final class LongestArithmeticSubsequence {
         if (nums == null) {
             throw new IllegalArgumentException("Input array cannot be null");
         }
-        
+
         // If the array is empty or has only one element, return its length.
-        if (nums.length == 1 || nums.length == 0) {
-            return nums.length;
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        if (nums.length == 1){
+            return 1;
         }
 
         HashMap<Integer, Integer>[] dp = new HashMap[nums.length];
