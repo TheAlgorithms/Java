@@ -5,13 +5,17 @@ package com.thealgorithms.Recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class GenerateSubsets {
+public class GenerateSubsets {
 
     private GenerateSubsets() {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static List<String> subsetRecursion(String p, String up) {
+    public static List<String> subsetRecursion(String str) {
+        return doRecursion("", str);
+    }
+
+    private static List<String> doRecursion(String p, String up) {
         if (up.isEmpty()) {
             List<String> list = new ArrayList<>();
             list.add(p);
@@ -21,9 +25,9 @@ public final class GenerateSubsets {
         // Taking the character
         char ch = up.charAt(0);
         // Adding the character in the recursion
-        List<String> left = subsetRecursion(p + ch, up.substring(1));
+        List<String> left = doRecursion(p + ch, up.substring(1));
         // Not adding the character in the recursion
-        List<String> right = subsetRecursion(p, up.substring(1));
+        List<String> right = doRecursion(p, up.substring(1));
 
         left.addAll(right);
 
