@@ -1,6 +1,7 @@
 package com.thealgorithms.ciphers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ public class MonoAlphabeticTest {
         String plaintext = "HELLO";
         String expectedCiphertext = "ITSSG"; // Expected result based on the key
         String actualCiphertext = monoAlphabetic.encrypt(plaintext);
-        
+
         assertEquals(expectedCiphertext, actualCiphertext, "Encryption should match the expected ciphertext.");
     }
 
@@ -28,7 +29,7 @@ public class MonoAlphabeticTest {
         String ciphertext = "ITSSG";
         String expectedPlaintext = "HELLO"; // Expected result based on the key
         String actualPlaintext = monoAlphabetic.decrypt(ciphertext);
-        
+
         assertEquals(expectedPlaintext, actualPlaintext, "Decryption should match the expected plaintext.");
     }
 
@@ -37,7 +38,7 @@ public class MonoAlphabeticTest {
         String plaintext = "HELLO";
         String ciphertext = monoAlphabetic.encrypt(plaintext);
         String decryptedText = monoAlphabetic.decrypt(ciphertext);
-        
+
         assertEquals(plaintext, decryptedText, "Decrypting the ciphertext should return the original plaintext.");
     }
 
