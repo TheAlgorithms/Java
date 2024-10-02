@@ -64,7 +64,7 @@ public class MergeIntervalsTest {
     public void testMergeIntervalsWithRandomIntervals() {
         // Test case with a mix of overlapping and non-overlapping intervals
         int[][] intervals = {{1, 4}, {5, 7}, {2, 6}, {8, 10}};
-        int[][] expected = {{1, 6}, {5, 7}, {8, 10}};
+        int[][] expected = {{1, 7}, {8, 10}};
         int[][] result = MergeIntervals.merge(intervals);
         assertArrayEquals(expected, result);
     }
