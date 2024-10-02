@@ -18,7 +18,7 @@ public class LongestArithmeticSubsequenceTest {
         assertEquals(expected, LongestArithmeticSubsequence.getLongestArithmeticSubsequenceLength(nums));
     }
 
-    @ParameterizedTest
+    @Test
     void testNullInput() {
         // Verify that an IllegalArgumentException is thrown when nums is null
         assertThrows(IllegalArgumentException.class, () -> LongestArithmeticSubsequence.getLongestArithmeticSubsequenceLength(null));
