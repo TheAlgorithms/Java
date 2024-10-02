@@ -1,13 +1,5 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.stream.Stream;
-
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
 public final class MonoAlphabetic {
 
     // Private constructor to prevent instantiation of utility class
@@ -52,41 +44,5 @@ public final class MonoAlphabetic {
             }
         }
         return -1; // Return -1 if character not found (should not happen for valid inputs)
-    }
-
-    // *********** Unit Test Section **************
-
-    // Method to provide test data for encryption
-    private static Stream<Arguments> provideEncryptionData() {
-        String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-        return Stream.of(
-            // Input data, key, expected encrypted output
-            Arguments.of("HELLO", key, "GFSSD"),
-            Arguments.of("JAVA", key, "MZSM")
-        );
-    }
-
-    // Test for encryption
-    @ParameterizedTest
-    @MethodSource("provideEncryptionData")
-    public void testEncrypt(String data, String key, String expected) {
-        assertEquals(expected, MonoAlphabetic.encrypt(data, key));
-    }
-
-    // Method to provide test data for decryption
-    private static Stream<Arguments> provideDecryptionData() {
-        String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-        return Stream.of(
-            // Encrypted data, key, expected decrypted output
-            Arguments.of("GFSSD", key, "HELLO"),
-            Arguments.of("MZSM", key, "JAVA")
-        );
-    }
-
-    // Test for decryption
-    @ParameterizedTest
-    @MethodSource("provideDecryptionData")
-    public void testDecrypt(String data, String key, String expected) {
-        assertEquals(expected, MonoAlphabetic.decrypt(data, key));
     }
 }
