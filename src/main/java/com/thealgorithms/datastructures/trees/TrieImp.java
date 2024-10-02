@@ -57,7 +57,7 @@ public class TrieImp {
      * The method traverses the Trie from the root, character by character, and adds
      * nodes
      * if necessary. It marks the last node of the word as an end node.
-     * 
+     *
      * @param word The word to be inserted into the Trie.
      */
     public void insert(String word) {
@@ -81,7 +81,7 @@ public class TrieImp {
      * This method traverses the Trie based on the input word and checks whether
      * the word exists. It returns true if the word is found and its end flag is
      * true.
-     * 
+     *
      * @param word The word to search in the Trie.
      * @return true if the word exists in the Trie, false otherwise.
      */
@@ -105,7 +105,7 @@ public class TrieImp {
      * false.
      * It returns true if the word was successfully deleted, false if the word
      * wasn't found.
-     * 
+     *
      * @param word The word to be deleted from the Trie.
      * @return true if the word was found and deleted, false if it was not found.
      */
@@ -129,7 +129,7 @@ public class TrieImp {
 
     /**
      * Helper method to print a string to the console.
-     * 
+     *
      * @param print The string to be printed.
      */
     public static void sop(String print) {
@@ -142,7 +142,7 @@ public class TrieImp {
      * <p>
      * The method uses a regular expression to check if the word matches the pattern
      * of only lowercase letters.
-     * 
+     *
      * @param word The word to be validated.
      * @return true if the word is valid (only a-z), false otherwise.
      */
@@ -156,14 +156,13 @@ public class TrieImp {
      * The user can choose between inserting a word, searching for a word,
      * deleting a word, or quitting the program. It uses a loop to continuously
      * ask for user input until the program is quit.
-     * 
+     *
      * @param args Command-line arguments (not used in this program).
      */
     public static void main(String[] args) {
         TrieImp obj = new TrieImp();
         String word;
-        @SuppressWarnings("resource")
-        Scanner scan = new Scanner(System.in);
+        @SuppressWarnings("resource") Scanner scan = new Scanner(System.in);
 
         sop("string should contain only a-z character for all operation");
 
@@ -173,46 +172,46 @@ public class TrieImp {
             try {
                 int t = scan.nextInt();
                 switch (t) {
-                    case 1:
-                        // Insert a word into the Trie
-                        word = scan.next();
-                        if (isValid(word)) {
-                            obj.insert(word);
-                            sop("Word inserted successfully");
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        break;
-                    case 2:
-                        // Search for a word in the Trie
-                        word = scan.next();
-                        boolean resS = false;
-                        if (isValid(word)) {
-                            resS = obj.search(word);
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        sop(resS ? "Word found" : "Word not found");
-                        break;
-                    case 3:
-                        // Delete a word from the Trie
-                        word = scan.next();
-                        boolean resD = false;
-                        if (isValid(word)) {
-                            resD = obj.delete(word);
-                        } else {
-                            sop("Invalid string: allowed only a-z");
-                        }
-                        sop(resD ? "Word deleted successfully" : "Word not found");
-                        break;
-                    case 4:
-                        // Quit the program
-                        sop("Quit successfully");
-                        System.exit(1);
-                        break;
-                    default:
-                        sop("Input int from 1-4");
-                        break;
+                case 1:
+                    // Insert a word into the Trie
+                    word = scan.next();
+                    if (isValid(word)) {
+                        obj.insert(word);
+                        sop("Word inserted successfully");
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    break;
+                case 2:
+                    // Search for a word in the Trie
+                    word = scan.next();
+                    boolean resS = false;
+                    if (isValid(word)) {
+                        resS = obj.search(word);
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    sop(resS ? "Word found" : "Word not found");
+                    break;
+                case 3:
+                    // Delete a word from the Trie
+                    word = scan.next();
+                    boolean resD = false;
+                    if (isValid(word)) {
+                        resD = obj.delete(word);
+                    } else {
+                        sop("Invalid string: allowed only a-z");
+                    }
+                    sop(resD ? "Word deleted successfully" : "Word not found");
+                    break;
+                case 4:
+                    // Quit the program
+                    sop("Quit successfully");
+                    System.exit(1);
+                    break;
+                default:
+                    sop("Input int from 1-4");
+                    break;
                 }
             } catch (Exception e) {
                 // Handle bad input
