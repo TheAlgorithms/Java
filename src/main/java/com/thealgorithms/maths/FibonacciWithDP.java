@@ -1,18 +1,18 @@
 package com.thealgorithms.maths;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * author : @pri-sin
  * This class provides methods for calculating Fibonacci numbers using Recursion with Memoization.
  */
-public final class FibonacciJavaRecursion {
-	static Map<Integer, BigInteger> fibonacciMap=new HashMap<>();
+public final class FibonacciWithDP {
+	static List<BigInteger> fibonacciList=new ArrayList<>(Arrays.asList(BigInteger.ZERO,BigInteger.ONE));
 
-    private FibonacciJavaRecursion() {
-        // Private constructor to prevent instantiation of this utility class.
+    private FibonacciWithDP() {
     }
 
     /**
@@ -28,15 +28,13 @@ public final class FibonacciJavaRecursion {
         }
         
         if (n <= 1) {
-        	fibonacciMap.put(n, BigInteger.valueOf(n));
-            return BigInteger.valueOf(n);
+            return fibonacciList.get(n);
         }
         
-        if(!fibonacciMap.containsKey(n)) {
-        	fibonacciMap.put(n, computeRecursively(n-2).add(computeRecursively(n-1)));
+        if(fibonacciList.size()<=n) {
+        	fibonacciList.add(computeRecursively(n-2).add(computeRecursively(n-1)));
         }
 
-        return fibonacciMap.get(n);
-    }
-    
+        return fibonacciList.get(n);
+    }  
 }
