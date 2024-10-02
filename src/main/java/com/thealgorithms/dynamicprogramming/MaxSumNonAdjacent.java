@@ -2,28 +2,10 @@ package com.thealgorithms.dynamicprogramming;
 
 import java.util.*;
 
-/*
-What would you like to Propose?
-I would like to propose adding an implementation of the Maximum Sum of Non-Adjacent Elements algorithm to the dynamic programming section of the repository.
-
-Issue details
-Problem Statement:
-Given an array of integers, write a function to find the maximum sum of non-adjacent elements. The elements can be chosen such that no two chosen elements are adjacent in the array.
-
-For example:
-Input: [3, 2, 5, 10, 7]
-Output: 15 (The maximum sum is obtained by selecting 3, 7, and 5)
-
-Approach:
-
-Use dynamic programming to maintain a running maximum sum.
-For each element, decide to either include it in the sum (and skip the previous element) or exclude it (and keep the sum up to the previous element).
-*/
-
-// Problem explanation: "https://medium.com/@amitrajit_bose/max-sum-of-non-adjacent-elements-a04ebc4f2602"
+// Problem explanation:
+// "https://medium.com/@amitrajit_bose/max-sum-of-non-adjacent-elements-a04ebc4f2602"
 
 public class MaxSumNonAdjacent {
-    
     // This function recursively calculates the maximum possible sum
     // by considering or not considering the current element.
     static int solveUtil(int ind, int[] arr, int[] dp) {
@@ -32,7 +14,8 @@ public class MaxSumNonAdjacent {
             return 0;
         }
 
-        // If the index is 0, there is only one element to consider, so return its value.
+        // If the index is 0, there is only one element to consider, so return its
+        // value.
         if (ind == 0) {
             return arr[ind];
         }
@@ -42,7 +25,8 @@ public class MaxSumNonAdjacent {
             return dp[ind];
         }
 
-        // Calculate the maximum sum by either picking the current element or not picking it.
+        // Calculate the maximum sum by either picking the current element or not
+        // picking it.
         int pick = arr[ind] + solveUtil(ind - 2, arr, dp);
         int nonPick = solveUtil(ind - 1, arr, dp);
 
@@ -54,7 +38,8 @@ public class MaxSumNonAdjacent {
     static int solve(int n, int[] arr) {
         int[] dp = new int[n];
 
-        // Initialize the dp array with -1 to indicate that values are not calculated yet.
+        // Initialize the dp array with -1 to indicate that values are not calculated
+        // yet.
         Arrays.fill(dp, -1);
 
         // Call the recursive solver for the last index (n-1).
@@ -69,16 +54,14 @@ public class MaxSumNonAdjacent {
         int n = sc.nextInt();
         int[] nums = new int[n];
         System.out.print("Enter the elements of the array: ");
-        for (int i = 0; i < n; i++) {
-            nums[i] = sc.nextInt();
-        }
+        for (int i = 0; i < n; i++) { nums[i] = sc.nextInt(); }
 
         // Call the solve function to find the maximum possible sum.
         int result = solve(n, nums);
 
         // Print the result.
         System.out.println("Maximum sum of non-adjacent elements: " + result);
-        
+
         sc.close(); // Close the scanner to prevent resource leakage.
     }
 }
