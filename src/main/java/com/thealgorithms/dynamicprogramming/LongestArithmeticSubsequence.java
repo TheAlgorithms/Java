@@ -17,7 +17,6 @@ final class LongestArithmeticSubsequence {
      * @return the length of the longest arithmetic subsequence
      */
     public static int getLongestArithmeticSubsequenceLength(int[] nums) {
-        // Throws an exception if nums is null.
         if (nums == null) {
             throw new IllegalArgumentException("Input array cannot be null");
         }
