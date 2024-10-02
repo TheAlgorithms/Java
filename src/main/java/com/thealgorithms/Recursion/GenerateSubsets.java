@@ -5,7 +5,7 @@ package com.thealgorithms.Recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenerateSubsets {
+public final class GenerateSubsets {
 
     private GenerateSubsets() {
         throw new UnsupportedOperationException("Utility class");
