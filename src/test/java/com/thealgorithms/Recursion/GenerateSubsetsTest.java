@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class GenerateSubsetsTest {
+public final class GenerateSubsetsTest {
 
     @Test
     void subsetRecursionTestOne() {
