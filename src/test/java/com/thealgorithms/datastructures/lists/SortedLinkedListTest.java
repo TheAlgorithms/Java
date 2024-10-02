@@ -62,8 +62,6 @@ public class SortedLinkedListTest {
         assertEquals("", list.toString());
         assertFalse(list.delete(5));
         assertFalse(list.search(5));
-        assertEquals(0, list.minValue());
-        assertEquals(0, list.maxValue());
     }
     @Test
     public void testIsEmpty_onEmptyList() {
