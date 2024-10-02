@@ -54,7 +54,7 @@ public final class SudokuSolver {
      * @param board The 9x9 Sudoku board
      * @return true if the puzzle is solved, false if no solution exists
      */
-    public static boolean solveSudoku(final int[][] board) {
+    public static boolean solveSudokuHelper(final int[][] board) {
         // Traverse the board
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
@@ -78,6 +78,69 @@ public final class SudokuSolver {
         }
 
         return true; // Sudoku is solved if no empty cells are left
+    }
+
+    /**
+     * Check if the given Sudoku board is valid.
+     * A valid board has no duplicate numbers in rows, columns, or 3x3 subgrids.
+     *
+     * @param board The 9x9 Sudoku board
+     * @return true if the board is valid, false otherwise
+     */
+    public static boolean isValidSudoku(final int[][] board) {
+        // Check each row
+        for (int i = 0; i < 9; i++) {
+            boolean[] row = new boolean[10];
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != 0) {
+                    if (row[board[i][j]]) {
+                        return false;
+                    }
+                    row[board[i][j]] = true;
+                }
+            }
+        }
+
+        // Check each column
+        for (int i = 0; i < 9; i++) {
+            boolean[] col = new boolean[10];
+            for (int j = 0; j < 9; j++) {
+                if (board[j][i] != 0) {
+                    if (col[board[j][i]]) {
+                        return false;
+                    }
+                    col[board[j][i]] = true;
+                }
+            }
+        }
+
+        // Check each 3x3 subgrid
+        for (int i = 0; i < 9; i += 3) {
+            for (int j = 0; j < 9; j += 3) {
+                boolean[] grid = new boolean[10];
+                for (int k = 0; k < 3; k++) {
+                    for (int l = 0; l < 3; l++) {
+                        if (board[i + k][j + l] != 0) {
+                            if (grid[board[i + k][j + l]]) {
+                                return false;
+                            }
+                            grid[board[i + k][j + l]] = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean solveSudoku(final int[][] board) {
+        // Check if the board is valid
+        if (!isValidSudoku(board)) {
+            return false;
+        }
+
+        return solveSudokuHelper(board);
     }
 
     /**
