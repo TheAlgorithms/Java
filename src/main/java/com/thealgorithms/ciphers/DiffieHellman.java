@@ -1,42 +1,48 @@
 import java.math.BigInteger;
-import java.util.Scanner;
 
 public final class DiffieHellman {
     private DiffieHellman() {
         throw new UnsupportedOperationException("Utility class");
     }
-    public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
-        System.out.println("Hello User! \nEnter your name:");
-        String name = read.nextLine();
-        read.nextLine();
-        System.out.println("Welcome " + name + "!");
 
-        BigInteger n;
-        BigInteger g;
-        BigInteger x;
-        BigInteger y;
-        BigInteger k1;
-        BigInteger k2;
-        BigInteger a;
-        BigInteger b;
+    public static BigInteger calculatePublicValue(BigInteger base, BigInteger secret, BigInteger prime) {
+        return base.modPow(secret, prime);
+    }
 
-        System.out.println("Enter two prime numbers: ");
-        n = new BigInteger(read.next());
-        g = new BigInteger(read.next());
+    public static BigInteger calculateSharedSecret(BigInteger otherPublicValue, BigInteger secret, BigInteger prime) {
+        return otherPublicValue.modPow(secret, prime);
+    }
+}
 
-        System.out.println("Person A : Enter your secret number");
-        x = new BigInteger(read.next());
-        a = g.modPow(x, n);
+// DiffieHellmanTest.java - JUnit Tests
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
 
-        System.out.println("Person B : Enter your secret number");
-        y = new BigInteger(read.next());
-        b = g.modPow(y, n);
+import java.math.BigInteger;
 
-        k1 = b.modPow(x, n);
-        k2 = a.modPow(y, n);
+public class DiffieHellmanTest {
 
-        System.out.println("A's secret key: " + k1);
-        System.out.println("B's secret key: " + k2);
+    @ParameterizedTest
+    @DisplayName("Diffie-Hellman Key Exchange Test")
+    @CsvSource({
+        "23, 5, 6, 15",  
+        "97, 7, 12, 23",
+        "61, 2, 9, 19"
+    })
+    void testDiffieHellman(String nStr, String gStr, String xStr, String yStr) {
+        BigInteger n = new BigInteger(nStr);
+        BigInteger g = new BigInteger(gStr);
+        BigInteger x = new BigInteger(xStr);  
+        BigInteger y = new BigInteger(yStr);  
+
+        BigInteger a = DiffieHellman.calculatePublicValue(g, x, n);  
+        BigInteger b = DiffieHellman.calculatePublicValue(g, y, n);  
+
+        BigInteger k1 = DiffieHellman.calculateSharedSecret(b, x, n); 
+        BigInteger k2 = DiffieHellman.calculateSharedSecret(a, y, n); 
+
+        assertEquals(k1, k2, "Shared secret keys do not match for inputs n=" + nStr + ", g=" + gStr);
     }
 }
