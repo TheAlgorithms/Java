@@ -16,7 +16,6 @@ public class LongestArithmeticSubsequenceTest {
     void testGetLongestArithmeticSubsequenceLength(int[] nums, int expected) {
         assertEquals(expected, LongestArithmeticSubsequence.getLongestArithmeticSubsequenceLength(nums));
     }
-    
     @ParameterizedTest
     @MethodSource("provideTestCases")
     void testGetLongestArithmeticSubsequenceLengthReversedInput(int[] nums, int expected) {
