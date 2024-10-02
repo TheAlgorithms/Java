@@ -11,7 +11,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class LongestArithmeticSubsequenceTest {
-
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    void testGetLongestArithmeticSubsequenceLength(int[] nums, int expected) {
+        assertEquals(expected, LongestArithmeticSubsequence.getLongestArithmeticSubsequenceLength(nums));
+    }
+    
     @ParameterizedTest
     @MethodSource("provideTestCases")
     void testGetLongestArithmeticSubsequenceLengthReversedInput(int[] nums, int expected) {
