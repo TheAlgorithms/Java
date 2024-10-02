@@ -92,7 +92,7 @@ public class sccOptimized {
 
         System.out.println("Adjacency list: " + adjList);
 
-        SCC_Optimized obj = new SCC_Optimized();
+        sccOptimized obj = new sccOptimized();
         System.out.println("Number of SCCs: " + obj.getOutput(adjList, N));
         rs.close();
     }

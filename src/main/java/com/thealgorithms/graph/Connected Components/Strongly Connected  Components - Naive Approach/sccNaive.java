@@ -74,7 +74,7 @@ public class sccNaive
             }
         }
         System.out.println(adj_list);
-        SCC_Naive obj = new SCC_Naive();
+        sccNaive obj = new sccNaive();
         System.out.print(obj.getOutput(adj_list,N));
         rs.close();
     }
