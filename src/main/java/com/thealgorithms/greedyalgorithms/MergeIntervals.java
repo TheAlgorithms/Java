@@ -29,7 +29,7 @@ public final class MergeIntervals {
      * merged interval,
      * it updates the end time of the last merged interval. Otherwise, it adds the
      * interval as a new entry.
-     * 
+     *
      * @param intervals A 2D array representing intervals where each element is an
      *                  interval [starti, endi].
      * @return A 2D array of merged intervals where no intervals overlap.
