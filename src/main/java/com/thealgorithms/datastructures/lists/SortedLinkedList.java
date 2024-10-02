@@ -17,7 +17,7 @@ public class SortedLinkedList {
     private Node head;
     private Node tail;
 
-    public SortedLinkedList(){
+    public SortedLinkedList() {
         this.head=null;
         this.tail=null;
     }
@@ -27,7 +27,7 @@ public class SortedLinkedList {
      * 
      * @param value the value to be inserted
      */
-    public void insert(int value){
+    public void insert(int value) {
         Node newNode = new Node(value);
         if (head == null) {
             this.head = newNode;
@@ -53,7 +53,7 @@ public class SortedLinkedList {
     /**
      * Displays the elements of the sorted linked list.
      */
-    public void display(){
+    public void display() {
         System.out.println(this.toString());
     }
 
@@ -63,7 +63,7 @@ public class SortedLinkedList {
      * @param value the value to be deleted
      * @return true if the element is found and deleted, false otherwise
      */
-    public boolean delete(int value){
+    public boolean delete(int value) {
         if (this.head == null) {
             return false;
         }
@@ -91,7 +91,7 @@ public class SortedLinkedList {
      * @param value the value to be searched
      * @return true if the element is found, false otherwise
      */
-    public boolean search(int value){
+    public boolean search(int value) {
         Node temp = this.head;
         while (temp != null) {
             if (temp.value == value) {
@@ -116,7 +116,7 @@ public class SortedLinkedList {
      * 
      * @return the minimum value
      */
-    public int minValue(){
+    public int minValue() {
         return this.head.value;
     }
 
@@ -125,7 +125,7 @@ public class SortedLinkedList {
      * 
      * @return the maximum value
      */
-    public int maxValue(){
+    public int maxValue() {
         return this.tail.value;
     }
 
@@ -150,12 +150,12 @@ public class SortedLinkedList {
         public int value;
         public Node next;
 
-        public Node(){
+        public Node() {
             this.value = 0;
             this.next= null;
         }
 
-        public Node(int value){
+        public Node(int value) {
             this.value = value;
             this.next = null;
         }
