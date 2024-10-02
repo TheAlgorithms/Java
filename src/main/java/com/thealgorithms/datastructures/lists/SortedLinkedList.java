@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * This implementation uses a singly linked list to store the elements.
  * Further details can be found on this link
  * https://runestone.academy/ns/books/published/cppds/LinearLinked/ImplementinganOrderedList.html
- * 
  * @author Muhammad Junaid Khalid
  * @param int the type of elements in this list
  */
@@ -24,7 +23,6 @@ public class SortedLinkedList {
 
     /**
      * Inserts a new element into the sorted linked list.
-     * 
      * @param value the value to be inserted
      */
     public void insert(int value) {
@@ -32,16 +30,13 @@ public class SortedLinkedList {
         if (head == null) {
             this.head = newNode;
             this.tail = newNode;
-        }
-        else if (value < head.value) {
+        } else if (value < head.value) {
             newNode.next = this.head;
             this.head = newNode;
-        } 
-        else if (value > tail.value) {
+        } else if (value > tail.value) {
             this.tail.next = newNode;
             this.tail = newNode;
-        }
-        else{
+        } else {
             Node temp = head;
             while (temp.next != null && temp.next.value < value) {
                 temp = temp.next;
@@ -63,15 +58,13 @@ public class SortedLinkedList {
 
     /**
      * Deletes the first occurrence of the specified element in the sorted linked list.
-     * 
      * @param value the value to be deleted
      * @return true if the element is found and deleted, false otherwise
      */
-    public boolean delete(int value){
+    public boolean delete(int value) {
         if (this.head == null) {
             return false;
-        }
-        else if (this.head.value == value) {
+        } else if (this.head.value == value) {
             if (this.head.next == null) {
                 this.head = null;
                 this.tail = null;
@@ -79,8 +72,7 @@ public class SortedLinkedList {
                 this.head = this.head.next;
             }
             return true;
-        }
-        else{
+        } else{
             Node temp = this.head;
             while (temp.next != null) {
                 if (temp.next.value == value) {
@@ -93,13 +85,11 @@ public class SortedLinkedList {
                 temp = temp.next;
             }
             return  false;
-    
         }
     }
 
     /**
      * Searches for the specified element in the sorted linked list.
-     * 
      * @param value the value to be searched
      * @return true if the element is found, false otherwise
      */
@@ -116,7 +106,6 @@ public class SortedLinkedList {
 
     /**
      * Checks if the sorted linked list is empty.
-     * 
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
@@ -125,7 +114,6 @@ public class SortedLinkedList {
 
     /**
      * Returns the minimum value in the sorted linked list.
-     * 
      * @return the minimum value
      */
     public int minValue() {
@@ -134,7 +122,6 @@ public class SortedLinkedList {
 
     /**
      * Returns the maximum value in the sorted linked list.
-     * 
      * @return the maximum value
      */
     public int maxValue() {
@@ -143,21 +130,19 @@ public class SortedLinkedList {
 
     /**
      * Returns a string representation of the sorted linked list.
-     * 
      * @return a string representation of the sorted linked list
      */
     @Override
     public String toString() {
         if (this.head != null) {
-            ArrayList<String> elements=new ArrayList<>();
+            ArrayList<String> elements = new ArrayList<>();
             Node temp = this.head;
             while (temp != null) {
                 elements.add(String.valueOf(temp.value));
                 temp = temp.next;
             }
             return String.join(", ", elements);
-        }
-        else {
+        } else {
             return "";
         }
     }
