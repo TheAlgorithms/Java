@@ -2,61 +2,43 @@ package com.thealgorithms.ciphers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class MonoAlphabeticTest {
-    private MonoAlphabetic monoAlphabetic;
 
-    @BeforeEach
-    public void setUp() {
-        // Initialize the MonoAlphabetic cipher with a sample key
-        String key = "QWERTYUIOPASDFGHJKLZXCVBNM"; // Example key
-        monoAlphabetic = new MonoAlphabetic(key);
+    private static final String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
+
+    // Test for encryption
+    @ParameterizedTest
+    @MethodSource("provideEncryptionData")
+    public void testEncrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.encrypt(data, key));
     }
 
-    @Test
-    public void testEncrypt() {
-        String plaintext = "HELLO";
-        String expectedCiphertext = "ITSSG"; // Expected result based on the key
-        String actualCiphertext = monoAlphabetic.encrypt(plaintext);
-
-        assertEquals(expectedCiphertext, actualCiphertext, "Encryption should match the expected ciphertext.");
+    // Test for decryption
+    @ParameterizedTest
+    @MethodSource("provideDecryptionData")
+    public void testDecrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.decrypt(data, key));
     }
 
-    @Test
-    public void testDecrypt() {
-        String ciphertext = "ITSSG";
-        String expectedPlaintext = "HELLO"; // Expected result based on the key
-        String actualPlaintext = monoAlphabetic.decrypt(ciphertext);
-
-        assertEquals(expectedPlaintext, actualPlaintext, "Decryption should match the expected plaintext.");
+    // Provide test data for encryption
+    private static Stream<Arguments> provideEncryptionData() {
+        return Stream.of(
+            Arguments.of("HELLO", key, "GFSSD"),
+            Arguments.of("JAVA", key, "MZSM")
+        );
     }
 
-    @Test
-    public void testEncryptAndDecrypt() {
-        String plaintext = "HELLO";
-        String ciphertext = monoAlphabetic.encrypt(plaintext);
-        String decryptedText = monoAlphabetic.decrypt(ciphertext);
-
-        assertEquals(plaintext, decryptedText, "Decrypting the ciphertext should return the original plaintext.");
-    }
-
-    @Test
-    public void testEncryptWithSpecialCharacters() {
-        String plaintext = "HELLO, WORLD!";
-        String expectedCiphertext = "ITSSG, GQHSG!";
-        String actualCiphertext = monoAlphabetic.encrypt(plaintext);
-
-        assertEquals(expectedCiphertext, actualCiphertext, "Encryption should correctly handle special characters.");
-    }
-
-    @Test
-    public void testDecryptWithSpecialCharacters() {
-        String ciphertext = "ITSSG, GQHSG!";
-        String expectedPlaintext = "HELLO, WORLD!";
-        String actualPlaintext = monoAlphabetic.decrypt(ciphertext);
-
-        assertEquals(expectedPlaintext, actualPlaintext, "Decryption should correctly handle special characters.");
+    // Provide test data for decryption
+    private static Stream<Arguments> provideDecryptionData() {
+        return Stream.of(
+            Arguments.of("GFSSD", key, "HELLO"),
+            Arguments.of("MZSM", key, "JAVA")
+        );
     }
 }
