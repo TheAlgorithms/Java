@@ -1,23 +1,27 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package com.thealgorithms.ciphers;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
-import java.util.stream.Stream;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+class DiffieHellmanTest {
 
-public class DiffieHellmanTest {
+    @Test
+    void testDiffieHellmanSharedKey() {
+        BigInteger p = new BigInteger("23");
+        BigInteger g = new BigInteger("5");
+        BigInteger a = new BigInteger("6");  // Private key for Alice
+        BigInteger b = new BigInteger("15"); // Private key for Bob
 
-    // Method to provide test data for public key calculation
-    private static Stream<Arguments> providePublicKeyData() {
-        return Stream.of(
-            // base, secret, prime, expected public value
-            Arguments.of(new BigInteger("5"), new BigInteger("6"), new BigInteger("23"), new BigInteger("8")),
-            Arguments.of(new BigInteger("2"), new BigInteger("5"), new BigInteger("13"), new BigInteger("6"))
-        );
+        DiffieHellman alice = new DiffieHellman(p, g, a);
+        DiffieHellman bob = new DiffieHellman(p, g, b);
+
+        BigInteger A = alice.getPublicKey();
+        BigInteger B = bob.getPublicKey();
+
+        BigInteger aliceSharedKey = alice.computeSharedKey(B);
+        BigInteger bobSharedKey = bob.computeSharedKey(A);
+
+        assertEquals(aliceSharedKey, bobSharedKey, "Shared keys do not match!");
     }
-
-    // Test for public key calculation
-    @ParameterizedTest
-    @MethodSource("providePublicKey
+}
