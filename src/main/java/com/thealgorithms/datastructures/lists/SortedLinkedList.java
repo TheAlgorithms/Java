@@ -1,0 +1,161 @@
+package com.thealgorithms.datastructures.lists;
+
+import java.util.ArrayList;
+
+/**
+ * A SortedLinkedList is a data structure that maintains a sorted list of elements.
+ * Elements are ordered based on their natural ordering or by a Comparator provided at the time of creation.
+ *
+ * @author Muhammad Junaid Khalid
+ * @param int the type of elements in this list
+ */
+
+public class SortedLinkedList {
+    private Node head;
+    private Node tail;
+
+    public SortedLinkedList(){
+        this.head=null;
+        this.tail=null;
+    }
+
+    /**
+     * Inserts a new element into the sorted linked list.
+     * 
+     * @param value the value to be inserted
+     */
+    public void insert(int value){
+        Node newNode = new Node(value);
+        if (head == null) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else if (value < head.value) {
+            newNode.next = this.head;
+            this.head = newNode;
+        } 
+        else if (value > tail.value) {
+            this.tail.next = newNode;
+        }
+        else{
+            Node temp=head;
+            while (temp.next != null && temp.next.value < value) {
+                temp = temp.next;
+            }
+            newNode.next = temp.next;
+            temp.next = newNode;
+        }
+    }
+
+    /**
+     * Displays the elements of the sorted linked list.
+     */
+    public void display(){
+        System.out.println(this.toString());
+    }
+
+    /**
+     * Deletes the first occurrence of the specified element in the sorted linked list.
+     * 
+     * @param value the value to be deleted
+     * @return true if the element is found and deleted, false otherwise
+     */
+    public boolean delete(int value){
+        if (this.head == null) {
+            return false;
+        }
+        else if (this.head.value == value) {
+            this.head = this.head.next;
+            return true;
+        }
+        else{
+            Node temp = this.head;
+            while (temp.next != null) {
+                if (temp.next.value == value) {
+                    temp.next = temp.next.next;
+                    return true;
+                }
+                temp = temp.next;
+            }
+            return  false;
+
+        }
+    }
+
+    /**
+     * Searches for the specified element in the sorted linked list.
+     * 
+     * @param value the value to be searched
+     * @return true if the element is found, false otherwise
+     */
+    public boolean search(int value){
+        Node temp = this.head;
+        while (temp != null) {
+            if (temp.value == value) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the sorted linked list is empty.
+     * 
+     * @return true if the list is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    /**
+     * Returns the minimum value in the sorted linked list.
+     * 
+     * @return the minimum value
+     */
+    public int minValue(){
+        return this.head.value;
+    }
+
+    /**
+     * Returns the maximum value in the sorted linked list.
+     * 
+     * @return the maximum value
+     */
+    public int maxValue(){
+        return this.tail.value;
+    }
+
+    /**
+     * Returns a string representation of the sorted linked list.
+     * 
+     * @return a string representation of the sorted linked list
+     */
+    @Override
+    public String toString() {
+        ArrayList<String> elements=new ArrayList<>();
+        Node temp = this.head;
+        while (temp != null) {
+            elements.add(String.valueOf(temp.value));
+            temp = temp.next;
+        }
+        return String.join(", ", elements);
+    }
+    
+
+    public class Node {
+        public int value;
+        public Node next;
+
+        public Node(){
+            this.value = 0;
+            this.next= null;
+        }
+
+        public Node(int value){
+            this.value = value;
+            this.next = null;
+        }
+
+    }
+}
