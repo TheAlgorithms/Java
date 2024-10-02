@@ -47,7 +47,7 @@ public class MonoAlphabeticTest {
         String plaintext = "HELLO, WORLD!";
         String expectedCiphertext = "ITSSG, GQHSG!";
         String actualCiphertext = monoAlphabetic.encrypt(plaintext);
-        
+
         assertEquals(expectedCiphertext, actualCiphertext, "Encryption should correctly handle special characters.");
     }
 
@@ -56,7 +56,7 @@ public class MonoAlphabeticTest {
         String ciphertext = "ITSSG, GQHSG!";
         String expectedPlaintext = "HELLO, WORLD!";
         String actualPlaintext = monoAlphabetic.decrypt(ciphertext);
-        
+
         assertEquals(expectedPlaintext, actualPlaintext, "Decryption should correctly handle special characters.");
     }
 }
