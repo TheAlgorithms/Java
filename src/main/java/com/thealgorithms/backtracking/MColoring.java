@@ -33,9 +33,9 @@ public final class MColoring {
      * @param nodes List of nodes representing the graph.
      * @param n     The total number of nodes in the graph.
      * @param m     The maximum number of allowed colors.
-     * @return 1 if the graph can be colored using M colors, otherwise 0.
+     * @return true if the graph can be colored using M colors, false otherwise.
      */
-    static int possiblePaint(ArrayList<Node> nodes, int n, int m) {
+    static boolean isColoringPossible(ArrayList<Node> nodes, int n, int m) {
 
         // Visited array keeps track of whether each node has been processed.
         ArrayList<Integer> visited = new ArrayList<Integer>();

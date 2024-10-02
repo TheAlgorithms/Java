@@ -16,7 +16,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1, 1}, {1, 0, 1, 0}, {1, 1, 0, 1}, {1, 0, 1, 0}};
         int m = 3; // Number of colors
 
-        assertEquals(1, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertEquals(true, MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     @Test
@@ -25,7 +25,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1, 1, 0}, {1, 0, 0, 1, 0}, {1, 0, 0, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 1, 1, 0}};
         int m = 2; // Number of colors
 
-        assertEquals(0, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertEquals(false, MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     @Test
@@ -34,7 +34,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1}, {1, 0, 1}, {1, 1, 0}};
         int m = 2; // Number of colors
 
-        assertEquals(0, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertEquals(false, MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     private ArrayList<Node> createGraph(int[][] graph) {
