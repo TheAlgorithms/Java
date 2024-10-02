@@ -27,7 +27,7 @@ final class LongestArithmeticSubsequence {
             return 0;
         }
 
-        if (nums.length == 1){
+        if (nums.length == 1) {
             return 1;
         }
 
