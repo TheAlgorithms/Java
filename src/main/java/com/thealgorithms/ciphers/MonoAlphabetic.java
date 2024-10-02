@@ -1,42 +1,12 @@
-import java.util.Scanner;
-
 public final class MonoAlphabetic {
     private MonoAlphabetic() {
         throw new UnsupportedOperationException("Utility class");
-    }
-    public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
-        System.out.println("Hello User! \nEnter your name:");
-        String name = read.nextLine();
-        read.nextLine();
-        System.out.println("Welcome " + name + "!\nDo you want to encrypt data or decrypt the data?\nFor encryption enter: 1\nFor decryption enter: 2");
-        int x = read.nextInt();
-
-        String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-
-        switch (x) {
-        case 1:
-            System.out.println("\nPlease enter the data that is to be encrypted, we will be using MonoAlphabetic Cipher to encrypt the data.");
-            String data = read.nextLine().toUpperCase();
-            String encryptedData = encrypt(data, key);
-            System.out.println("Encrypted data: " + encryptedData);
-            break;
-        case 2:
-            System.out.println("\nPlease enter the data that is to be decrypted, we will be using MonoAlphabetic Cipher to decrypt the data.");
-            data = read.nextLine().toUpperCase();
-            String decryptedData = decrypt(data, key);
-            System.out.println("Decrypted data: " + decryptedData);
-            break;
-        default:
-            System.out.println("The input was invalid. Kindly restart.");
-            break;
-        }
     }
 
     public static String encrypt(String data, String key) {
         int idx;
         char c;
-        StringBuffer sb = new StringBuffer(data);
+        StringBuffer sb = new StringBuffer(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
             idx = sb.charAt(i) - 65;
@@ -49,7 +19,7 @@ public final class MonoAlphabetic {
     public static String decrypt(String data, String key) {
         int idx;
         char c;
-        StringBuffer sb = new StringBuffer(data);
+        StringBuffer sb = new StringBuffer(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
             c = sb.charAt(i);
@@ -61,12 +31,48 @@ public final class MonoAlphabetic {
     }
 
     public static int getIndex(char c, String key) {
-        int idx = -1;
         for (int i = 0; i < key.length(); i++) {
             if (key.charAt(i) == c) {
-                idx = i;
+                return i;
             }
         }
-        return idx;
+        return -1;
+    }
+}
+
+// JUnit Tests for MonoAlphabetic Cipher
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MonoAlphabeticTest {
+
+    private final String key = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
+
+    @ParameterizedTest
+    @DisplayName("Encrypt Test with MonoAlphabetic Cipher")
+    @CsvSource({
+        "HELLO, DLZZI",
+        "WORLD, XMFLD",
+        "JAVA, HBWB",
+        "OPENAI, IUPNMW"
+    })
+    void testEncrypt(String plainText, String expectedCipherText) {
+        String encrypted = MonoAlphabetic.encrypt(plainText, key);
+        assertEquals(expectedCipherText, encrypted, "Encryption failed for input: " + plainText);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Decrypt Test with MonoAlphabetic Cipher")
+    @CsvSource({
+        "DLZZI, HELLO",
+        "XMFLD, WORLD",
+        "HBWB, JAVA",
+        "IUPNMW, OPENAI"
+    })
+    void testDecrypt(String cipherText, String expectedPlainText) {
+        String decrypted = MonoAlphabetic.decrypt(cipherText, key);
+        assertEquals(expectedPlainText, decrypted, "Decryption failed for input: " + cipherText);
     }
 }
