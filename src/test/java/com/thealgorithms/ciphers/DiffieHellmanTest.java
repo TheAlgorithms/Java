@@ -26,23 +26,11 @@ public class DiffieHellmanTest {
 
     // Provide test data for public key calculation
     private static Stream<Arguments> providePublicKeyData() {
-        // Corrected test cases
-        return Stream.of(
-            // g^x mod p, e.g., 5^6 mod 23 = 8
-            Arguments.of(new BigInteger("5"), new BigInteger("6"), new BigInteger("23"), new BigInteger("8")),
-            // 2^5 mod 13 = 6
-            Arguments.of(new BigInteger("2"), new BigInteger("5"), new BigInteger("13"), new BigInteger("6"))
-        );
+        return Stream.of(Arguments.of(new BigInteger("5"), new BigInteger("6"), new BigInteger("23"), new BigInteger("8")), Arguments.of(new BigInteger("2"), new BigInteger("5"), new BigInteger("13"), new BigInteger("6")));
     }
 
     // Provide test data for shared secret calculation
     private static Stream<Arguments> provideSharedSecretData() {
-        // Corrected test cases
-        return Stream.of(
-            // b^x mod p, e.g., 8^6 mod 23 = 13
-            Arguments.of(new BigInteger("8"), new BigInteger("6"), new BigInteger("23"), new BigInteger("13")),
-            // 6^5 mod 13 = 2
-            Arguments.of(new BigInteger("6"), new BigInteger("5"), new BigInteger("13"), new BigInteger("2"))
-        );
+        return Stream.of(Arguments.of(new BigInteger("8"), new BigInteger("6"), new BigInteger("23"), new BigInteger("13")), Arguments.of(new BigInteger("6"), new BigInteger("5"), new BigInteger("13"), new BigInteger("2")));
     }
 }
