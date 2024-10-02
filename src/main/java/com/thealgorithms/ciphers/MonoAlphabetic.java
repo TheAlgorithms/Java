@@ -11,41 +11,32 @@ public final class MonoAlphabetic {
 
     // Encryption method
     public String encrypt(String data) {
-        int idx;
-        char c;
         StringBuilder sb = new StringBuilder(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
-            idx = sb.charAt(i) - 65; // Subtract ASCII value of 'A' to get index
-            c = key.charAt(idx); // Find the character at the corresponding key position
-            sb.setCharAt(i, c); // Replace with the key character
+            char currentChar = sb.charAt(i);
+            if (Character.isLetter(currentChar)) { // Check if it's a letter
+                int index = currentChar - 'A'; // Get the index for the character
+                sb.setCharAt(i, key.charAt(index)); // Replace with the key character
+            }
         }
         return sb.toString();
     }
 
     // Decryption method
     public String decrypt(String data) {
-        int idx;
-        char c;
         StringBuilder sb = new StringBuilder(data.toUpperCase());
 
         for (int i = 0; i < sb.length(); i++) {
-            c = sb.charAt(i); // Get the character from encrypted data
-            idx = getIndex(c); // Get the corresponding index from the key
-            c = (char) (idx + 65); // Convert index back to character
-            sb.setCharAt(i, c); // Replace with the original character
-        }
-        return sb.toString();
-    }
-
-    // Helper method to get index of a character in the key
-    private int getIndex(char c) {
-        for (int i = 0; i < key.length(); i++) {
-            if (key.charAt(i) == c) {
-                return i; // Return the index if the character matches
+            char currentChar = sb.charAt(i);
+            if (Character.isLetter(currentChar)) { // Check if it's a letter
+                int index = key.indexOf(currentChar); // Find the character in the key
+                if (index != -1) {
+                    sb.setCharAt(i, (char) (index + 'A')); // Replace with the original character
+                }
             }
         }
-        return -1; // Return -1 if character not found (should not happen for valid inputs)
+        return sb.toString();
     }
 
     // Static utility methods for encryption/decryption without creating an instance
