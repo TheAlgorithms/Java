@@ -12,7 +12,6 @@ public final class FibonacciJavaRecursion {
 	static Map<Integer, BigInteger> fibonacciMap=new HashMap<>();
 
     private FibonacciJavaRecursion() {
-        // Private constructor to prevent instantiation of this utility class.
     }
 
     /**
