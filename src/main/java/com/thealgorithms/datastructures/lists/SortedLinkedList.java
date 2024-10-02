@@ -47,6 +47,9 @@ public class SortedLinkedList {
             }
             newNode.next = temp.next;
             temp.next = newNode;
+            if (newNode.next==null){
+                this.tail=newNode;
+            }
         }
     }
 
@@ -63,25 +66,33 @@ public class SortedLinkedList {
      * @param value the value to be deleted
      * @return true if the element is found and deleted, false otherwise
      */
-    public boolean delete(int value) {
+    public boolean delete(int value){
         if (this.head == null) {
             return false;
         }
         else if (this.head.value == value) {
-            this.head = this.head.next;
+            if (this.head.next == null) {
+                this.head = null;
+                this.tail = null;
+            } else {
+                this.head = this.head.next;
+            }
             return true;
         }
         else{
             Node temp = this.head;
             while (temp.next != null) {
                 if (temp.next.value == value) {
+                    if (temp.next == this.tail) {
+                        this.tail = temp;
+                    }
                     temp.next = temp.next.next;
                     return true;
                 }
                 temp = temp.next;
             }
             return  false;
-
+    
         }
     }
 
