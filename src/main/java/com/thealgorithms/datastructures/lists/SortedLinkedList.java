@@ -5,7 +5,10 @@ import java.util.ArrayList;
 /**
  * A SortedLinkedList is a data structure that maintains a sorted list of elements.
  * Elements are ordered based on their natural ordering or by a Comparator provided at the time of creation.
- *
+ * This implementation uses a singly linked list to store the elements.
+ * Further details can be found on this link
+ * https://runestone.academy/ns/books/published/cppds/LinearLinked/ImplementinganOrderedList.html
+ * 
  * @author Muhammad Junaid Khalid
  * @param int the type of elements in this list
  */
