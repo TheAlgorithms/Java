@@ -1,7 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.*;
-
 /*
 What would you like to Propose?
 I would like to propose adding an implementation of the Maximum Sum of Non-Adjacent Elements
@@ -56,24 +54,5 @@ public class MaxSumNonAdjacent {
 
         // Call the recursive solver for the last index (n-1).
         return solveUtil(n - 1, arr, dp);
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        // Input array size and elements.
-        System.out.print("Enter the size of the array: ");
-        int n = sc.nextInt();
-        int[] nums = new int[n];
-        System.out.print("Enter the elements of the array: ");
-        for (int i = 0; i < n; i++) { nums[i] = sc.nextInt(); }
-
-        // Call the solve function to find the maximum possible sum.
-        int ans = solve(n, nums);
-
-        // Print the result.
-        System.out.println("Maximum sum of non-adjacent elements: " + ans);
-
-        sc.close(); // Close the scanner to prevent resource leakage.
     }
 }
