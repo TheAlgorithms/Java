@@ -84,7 +84,7 @@ public class SortedLinkedList {
                 }
                 temp = temp.next;
             }
-            return  false;
+            return false;
         }
     }
 
@@ -160,6 +160,5 @@ public class SortedLinkedList {
             this.value = value;
             this.next = null;
         }
-
     }
 }
