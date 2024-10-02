@@ -29,6 +29,7 @@ public class TrieNode {
     public void setChildren(Map<Character, TrieNode> children) {
         this.children = children;
     }
+    */
 
     public char getValue() {
         return value;
@@ -37,7 +38,6 @@ public class TrieNode {
     public void setValue(char value) {
         this.value = value;
     }
-     */
 
     public boolean isEnd() {
         return end;
