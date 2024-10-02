@@ -1,8 +1,9 @@
 package com.thealgorithms.ciphers;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.math.BigInteger;
+import org.junit.jupiter.api.Test;
 
 class DiffieHellmanTest {
 
@@ -10,7 +11,7 @@ class DiffieHellmanTest {
     void testDiffieHellmanSharedKey() {
         BigInteger p = new BigInteger("23");
         BigInteger g = new BigInteger("5");
-        BigInteger a = new BigInteger("6");  // Private key for Alice
+        BigInteger a = new BigInteger("6"); // Private key for Alice
         BigInteger b = new BigInteger("15"); // Private key for Bob
 
         DiffieHellman alice = new DiffieHellman(p, g, a);
