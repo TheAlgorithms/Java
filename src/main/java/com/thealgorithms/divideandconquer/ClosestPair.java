@@ -5,7 +5,6 @@ package com.thealgorithms.divideandconquer;
  * class calculates the two closest points.
  */
 public final class ClosestPair {
-
     /**
      * Number of points
      */
@@ -52,7 +51,6 @@ public final class ClosestPair {
      * Location class is an auxiliary type to keep points coordinates.
      */
     public static class Location {
-
         double x;
         double y;
 

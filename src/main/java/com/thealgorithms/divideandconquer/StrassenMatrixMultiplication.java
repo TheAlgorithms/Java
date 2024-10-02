@@ -16,7 +16,6 @@ package com.thealgorithms.divideandconquer;
  */
 
 public class StrassenMatrixMultiplication {
-
     // Function to multiply matrices
     public int[][] multiply(int[][] a, int[][] b) {
         int n = a.length;
@@ -99,9 +98,7 @@ public class StrassenMatrixMultiplication {
         int[][] c = new int[n][n];
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                c[i][j] = a[i][j] - b[i][j];
-            }
+            for (int j = 0; j < n; j++) { c[i][j] = a[i][j] - b[i][j]; }
         }
 
         return c;
@@ -114,9 +111,7 @@ public class StrassenMatrixMultiplication {
         int[][] c = new int[n][n];
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                c[i][j] = a[i][j] + b[i][j];
-            }
+            for (int j = 0; j < n; j++) { c[i][j] = a[i][j] + b[i][j]; }
         }
 
         return c;
@@ -125,18 +120,14 @@ public class StrassenMatrixMultiplication {
     // Function to split parent matrix into child matrices
     public void split(int[][] p, int[][] c, int iB, int jB) {
         for (int i1 = 0, i2 = iB; i1 < c.length; i1++, i2++) {
-            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) {
-                c[i1][j1] = p[i2][j2];
-            }
+            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) { c[i1][j1] = p[i2][j2]; }
         }
     }
 
     // Function to join child matrices into (to) parent matrix
     public void join(int[][] c, int[][] p, int iB, int jB) {
         for (int i1 = 0, i2 = iB; i1 < c.length; i1++, i2++) {
-            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) {
-                p[i2][j2] = c[i1][j1];
-            }
+            for (int j1 = 0, j2 = jB; j1 < c.length; j1++, j2++) { p[i2][j2] = c[i1][j1]; }
         }
     }
 }

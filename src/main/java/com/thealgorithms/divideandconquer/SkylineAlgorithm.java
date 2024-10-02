@@ -10,7 +10,6 @@ import java.util.Comparator;
  * conquer algorithm
  */
 public class SkylineAlgorithm {
-
     private ArrayList<Point> points;
 
     /**
@@ -126,7 +125,6 @@ public class SkylineAlgorithm {
     }
 
     public static class Point {
-
         private int x;
         private int y;
 
@@ -175,7 +173,6 @@ public class SkylineAlgorithm {
      * order get sorted later.
      */
     class XComparator implements Comparator<Point> {
-
         @Override
         public int compare(Point a, Point b) {
             return Integer.compare(a.x, b.x);

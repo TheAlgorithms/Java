@@ -13,7 +13,6 @@ package com.thealgorithms.divideandconquer;
  */
 
 public class BinaryExponentiation {
-
     // recursive function to calculate a to the power of b
     public static long calculatePower(long x, long y) {
         // Base Case
