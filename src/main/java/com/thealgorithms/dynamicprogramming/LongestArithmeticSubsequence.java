@@ -22,7 +22,6 @@ final class LongestArithmeticSubsequence {
             throw new IllegalArgumentException("Input array cannot be null");
         }
 
-        // If the array is empty or has only one element, return its length.
         if (nums.length == 0) {
             return 0;
         }
