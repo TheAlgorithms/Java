@@ -43,8 +43,8 @@ public class SortedLinkedList {
             }
             newNode.next = temp.next;
             temp.next = newNode;
-            if (newNode.next==null){
-                this.tail=newNode;
+            if (newNode.next == null) {
+                this.tail = newNode;
             }
         }
     }
@@ -72,7 +72,7 @@ public class SortedLinkedList {
                 this.head = this.head.next;
             }
             return true;
-        } else{
+        } else {
             Node temp = this.head;
             while (temp.next != null) {
                 if (temp.next.value == value) {
@@ -146,7 +146,6 @@ public class SortedLinkedList {
             return "";
         }
     }
-    
 
     public class Node {
         public int value;

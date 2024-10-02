@@ -64,20 +64,20 @@ public class SortedLinkedListTest {
         assertFalse(list.search(5));
     }
     @Test
-    public void testIsEmpty_onEmptyList() {
+    public void testIsEmptyOnEmptyList() {
         SortedLinkedList list = new SortedLinkedList();
         assertTrue(list.isEmpty());
     }
 
     @Test
-    public void testIsEmpty_onNonEmptyList() {
+    public void testIsEmptyOnNonEmptyList() {
         SortedLinkedList list = new SortedLinkedList();
         list.insert(10);
         assertFalse(list.isEmpty());
     }
 
     @Test
-    public void testIsEmpty_afterDeletion() {
+    public void testIsEmptyAfterDeletion() {
         SortedLinkedList list = new SortedLinkedList();
         list.insert(10);
         list.delete(10);
