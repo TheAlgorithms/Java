@@ -18,8 +18,8 @@ public class SortedLinkedList {
     private Node tail;
 
     public SortedLinkedList() {
-        this.head=null;
-        this.tail=null;
+        this.head = null;
+        this.tail = null;
     }
 
     /**
@@ -41,7 +41,7 @@ public class SortedLinkedList {
             this.tail.next = newNode;
         }
         else{
-            Node temp=head;
+            Node temp = head;
             while (temp.next != null && temp.next.value < value) {
                 temp = temp.next;
             }
@@ -136,13 +136,18 @@ public class SortedLinkedList {
      */
     @Override
     public String toString() {
-        ArrayList<String> elements=new ArrayList<>();
-        Node temp = this.head;
-        while (temp != null) {
-            elements.add(String.valueOf(temp.value));
-            temp = temp.next;
+        if (this.head != null) {
+            ArrayList<String> elements=new ArrayList<>();
+            Node temp = this.head;
+            while (temp != null) {
+                elements.add(String.valueOf(temp.value));
+                temp = temp.next;
+            }
+            return String.join(", ", elements);
         }
-        return String.join(", ", elements);
+        else {
+            return "";
+        }
     }
     
 
@@ -152,7 +157,7 @@ public class SortedLinkedList {
 
         public Node() {
             this.value = 0;
-            this.next= null;
+            this.next = null;
         }
 
         public Node(int value) {
