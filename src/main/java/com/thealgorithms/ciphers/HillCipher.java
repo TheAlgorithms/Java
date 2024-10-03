@@ -85,9 +85,9 @@ public class HillCipher {
         int sign = 1;
         int[][] subMatrix = new int[n - 1][n - 1];
         for (int x = 0; x < n; x++) {
-            int sub_i = 0;
+            int subI = 0;
             for (int i = 1; i < n; i++) {
-                int sub_j = 0;
+                int subJ = 0;
                 for (int j = 0; j < n; j++) {
                     if (j != x) {
                         subMatrix[sub_i][sub_j++] = matrix[i][j];
