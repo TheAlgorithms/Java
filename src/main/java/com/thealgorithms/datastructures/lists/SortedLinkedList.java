@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.lists;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A SortedLinkedList is a data structure that maintains a sorted list of elements.
@@ -8,10 +9,7 @@ import java.util.ArrayList;
  * This implementation uses a singly linked list to store the elements.
  * Further details can be found on this link
  * https://runestone.academy/ns/books/published/cppds/LinearLinked/ImplementinganOrderedList.html
- * @author Muhammad Junaid Khalid
- * @param int the type of elements in this list
  */
-
 public class SortedLinkedList {
     private Node head;
     private Node tail;
@@ -111,23 +109,6 @@ public class SortedLinkedList {
     public boolean isEmpty() {
         return head == null;
     }
-
-    /**
-     * Returns the minimum value in the sorted linked list.
-     * @return the minimum value
-     */
-    public int minValue() {
-        return this.head.value;
-    }
-
-    /**
-     * Returns the maximum value in the sorted linked list.
-     * @return the maximum value
-     */
-    public int maxValue() {
-        return this.tail.value;
-    }
-
     /**
      * Returns a string representation of the sorted linked list.
      * @return a string representation of the sorted linked list
@@ -135,7 +116,7 @@ public class SortedLinkedList {
     @Override
     public String toString() {
         if (this.head != null) {
-            ArrayList<String> elements = new ArrayList<>();
+            List<String> elements = new ArrayList<>();
             Node temp = this.head;
             while (temp != null) {
                 elements.add(String.valueOf(temp.value));
@@ -147,8 +128,8 @@ public class SortedLinkedList {
         }
     }
 
-    public class Node {
-        public int value;
+    public final class Node {
+        public final int value;
         public Node next;
 
         public Node() {

@@ -37,25 +37,6 @@ public class SortedLinkedListTest {
         assertTrue(list.search(5));
         assertFalse(list.search(10));
     }
-
-    @Test
-    public void testMinValue() {
-        SortedLinkedList list = new SortedLinkedList();
-        list.insert(5);
-        list.insert(3);
-        list.insert(7);
-        assertEquals(3, list.minValue());
-    }
-
-    @Test
-    public void testMaxValue() {
-        SortedLinkedList list = new SortedLinkedList();
-        list.insert(5);
-        list.insert(3);
-        list.insert(7);
-        assertEquals(7, list.maxValue());
-    }
-
     @Test
     public void testEmptyList() {
         SortedLinkedList list = new SortedLinkedList();
