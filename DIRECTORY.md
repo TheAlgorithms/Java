@@ -405,6 +405,7 @@
             * [WordBoggle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/WordBoggle.java)
           * others
             * [ArrayLeftRotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ArrayLeftRotation.java)
+            * [ArrayRightRotation](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayRightRotation.java)
             * [BankersAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BankersAlgorithm.java)
             * [BFPRT](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BFPRT.java)
             * [BoyerMoore](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/BoyerMoore.java)
@@ -865,7 +866,6 @@
             * [TwoSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/TwoSumProblemTest.java)
           * others
             * [ArrayLeftRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayLeftRotationTest.java)
-            * [ArrayRightRotation](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayRightRotation.java)
             * [ArrayRightRotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ArrayRightRotationTest.java)
             * [BestFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BestFitCPUTest.java)
             * [BFPRTTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/BFPRTTest.java)
