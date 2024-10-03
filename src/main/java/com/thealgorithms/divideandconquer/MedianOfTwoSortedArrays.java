@@ -2,6 +2,9 @@ package com.thealgorithms.divideandconquer;
 
 public class MedianOfTwoSortedArrays {
 
+    private MedianOfTwoSortedArrays() {
+    }
+
     /**
      * Finds the median of two sorted arrays in logarithmic time.
      *
