@@ -2,8 +2,8 @@ package com.thealgorithms.conversions;
 
 import java.util.HashMap;
 
-public class IntegerToEnglish {
-    private static final HashMap<Integer, String> baseNumbersMap = new HashMap<>() {
+public final class IntegerToEnglish {
+    private static final HashMap<Integer, String> BASE_NUMBERS_MAP = new HashMap<>() {
         {
             put(0, "");
             put(1, "One");
@@ -37,13 +37,16 @@ public class IntegerToEnglish {
         }
     };
 
-    private static final HashMap<Integer, String> thousandPowerMap = new HashMap<>() {
+    private static final HashMap<Integer, String> THOUSAND_POWER_MAP = new HashMap<>() {
         {
             put(1, "Thousand");
             put(2, "Million");
             put(3, "Billion");
         }
     };
+
+    private IntegerToEnglish() {
+    }
 
     /**
         converts numbers < 1000 to english words
@@ -54,20 +57,20 @@ public class IntegerToEnglish {
         String result;
 
         if (remainder <= 20) {
-            result = baseNumbersMap.get(remainder);
-        } else if (baseNumbersMap.containsKey(remainder)) {
-            result = baseNumbersMap.get(remainder);
+            result = BASE_NUMBERS_MAP.get(remainder);
+        } else if (BASE_NUMBERS_MAP.containsKey(remainder)) {
+            result = BASE_NUMBERS_MAP.get(remainder);
         } else {
             int tensDigit = remainder / 10;
             int onesDigit = remainder % 10;
 
-            result = String.format("%s %s", baseNumbersMap.get(tensDigit * 10), baseNumbersMap.get(onesDigit));
+            result = String.format("%s %s", BASE_NUMBERS_MAP.get(tensDigit * 10), BASE_NUMBERS_MAP.get(onesDigit));
         }
 
         int hundredsDigit = number / 100;
 
         if (hundredsDigit > 0) {
-            result = String.format("%s %s%s", baseNumbersMap.get(hundredsDigit), baseNumbersMap.get(100), (result.isEmpty() ? "" : " " + result));
+            result = String.format("%s %s%s", BASE_NUMBERS_MAP.get(hundredsDigit), BASE_NUMBERS_MAP.get(100), (result.isEmpty() ? "" : " " + result));
         }
 
         return result;
@@ -77,7 +80,9 @@ public class IntegerToEnglish {
       Only convert groups of three digit if they are non-zero
      */
     public static String integerToEnglishWords(int number) {
-        if (number == 0) return "Zero";
+        if (number == 0) {
+            return "Zero";
+        }
 
         StringBuilder result = new StringBuilder();
 
@@ -92,10 +97,10 @@ public class IntegerToEnglish {
 
                 if (!subResult.isEmpty()) {
                     if (!result.isEmpty()) {
-                        result.insert(0, subResult + " " + thousandPowerMap.get(index) + " ");
+                        result.insert(0, subResult + " " + THOUSAND_POWER_MAP.get(index) + " ");
                     } else {
                         if (index > 0) {
-                            result = new StringBuilder(subResult + " " + thousandPowerMap.get(index));
+                            result = new StringBuilder(subResult + " " + THOUSAND_POWER_MAP.get(index));
                         } else {
                             result = new StringBuilder(subResult);
                         }
