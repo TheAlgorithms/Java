@@ -35,6 +35,13 @@ public class DigitSeparationTest {
     }
 
     @Test
+    public void testDigitSeparationReverseOrderNegativeNumbers() {
+        DigitSeparation digitSeparation = new DigitSeparation();
+        List<Long> result = digitSeparation.digitSeparationReverseOrder(-123);
+        assertEquals(List.of(3L, 2L, 1L), result);
+    }
+
+    @Test
     public void testDigitSeparationForwardOrderSingleDigit() {
         DigitSeparation digitSeparation = new DigitSeparation();
         List<Long> result = digitSeparation.digitSeparationForwardOrder(5);
@@ -60,5 +67,12 @@ public class DigitSeparationTest {
         DigitSeparation digitSeparation = new DigitSeparation();
         List<Long> result = digitSeparation.digitSeparationForwardOrder(0);
         assertEquals(List.of(0L), result);
+    }
+
+    @Test
+    public void testDigitSeparationForwardOrderNegativeNumber() {
+        DigitSeparation digitSeparation = new DigitSeparation();
+        List<Long> result = digitSeparation.digitSeparationForwardOrder(-123);
+        assertEquals(List.of(3L, 2L, 1L), result);
     }
 }

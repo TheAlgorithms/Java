@@ -18,8 +18,8 @@ public class DigitSeparation {
     public List<Long> digitSeparationReverseOrder(long largeNumber) {
         List<Long> result = new ArrayList<>();
         if (largeNumber != 0) {
-            while (largeNumber > 0) {
-                result.add(largeNumber % 10);
+            while (largeNumber != 0) {
+                result.add(Math.abs(largeNumber % 10));
                 largeNumber = largeNumber / 10;
             }
         } else {
