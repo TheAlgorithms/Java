@@ -23,7 +23,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
-        double expectedAvgWaitingTime = (0 + 10 + 15) / 3.0; // (0 + 10 + (10 + 8)) / 3
+        double expectedAvgWaitingTime = 6.666666666666667
         double actualAvgWaitingTime = NonPreemptivePriorityScheduling.calculateAverageWaitingTime(processes, executionOrder);
 
         assertEquals(expectedAvgWaitingTime, actualAvgWaitingTime, 0.01, "Average waiting time should be calculated correctly.");
