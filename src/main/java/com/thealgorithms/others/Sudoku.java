@@ -2,7 +2,7 @@ package com.thealgorithms.others;
 
 /**
  * A class that provides methods to solve a 9x9 Sudoku puzzle using a backtracking approach.
- * The Sudoku board is represented as a 2D array, and the methods are designed to 
+ * The Sudoku board is represented as a 2D array, and the methods are designed to
  * check for safe placements of numbers, solve the puzzle recursively, and print the board.
  */
 final class Sudoku {
