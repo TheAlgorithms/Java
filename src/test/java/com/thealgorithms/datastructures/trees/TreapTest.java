@@ -69,6 +69,6 @@ public class TreapTest {
         treap.insert(8);
         treap.insert(1);
         assertEquals(7, treap.size());
-        assertEquals(false, treap.isEmpty());
+        assertFalse(treap.isEmpty());
     }
 }
