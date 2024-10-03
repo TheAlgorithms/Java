@@ -57,6 +57,8 @@ final class Sudoku {
     /**
      * Solves the Sudoku puzzle using backtracking.
      * The algorithm finds an empty cell and tries placing numbers from 1 to 9.
+     * The standard version of Sudoku uses numbers from 1 to 9, so the algorithm can be
+     * easily modified for other variations of the game.
      * If a number placement is valid (checked via `isSafe`), the number is placed and the function
      * recursively attempts to solve the rest of the puzzle.
      * If no solution is possible, the number is removed (backtracked), and the process is repeated.
