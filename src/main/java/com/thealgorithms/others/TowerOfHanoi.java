@@ -2,23 +2,57 @@ package com.thealgorithms.others;
 
 import java.util.Scanner;
 
+/**
+ * The {@code TowerOfHanoi} class provides functionality to solve the Tower of
+ * Hanoi puzzle.
+ * It uses recursion to move discs between poles and prints the steps to solve
+ * the puzzle.
+ * The main function interacts with the user to get the number of discs and
+ * calls the recursive {@code shift} function to perform the moves.
+ */
 final class TowerOfHanoi {
+
     private TowerOfHanoi() {
     }
 
+    /**
+     * Recursively solves the Tower of Hanoi puzzle by moving discs between poles.
+     *
+     * @param n                The number of discs to move.
+     * @param startPole        The name of the start pole.
+     * @param intermediatePole The name of the intermediate pole.
+     * @param endPole          The name of the end pole.
+     *
+     *                         <p>
+     *                         This method is called recursively to move n-1 discs
+     *                         to the intermediate pole,
+     *                         then moves the nth disc to the end pole, and finally
+     *                         moves the n-1 discs from the
+     *                         intermediate pole to the end pole.
+     *                         </p>
+     */
     public static void shift(int n, String startPole, String intermediatePole, String endPole) {
-        // if n becomes zero the program returns thus ending the loop.
+        // If n becomes zero, the program returns, ending the recursion.
         if (n != 0) {
-            // Shift function is called in recursion for swapping the n-1 disc from the startPole to
-            // the intermediatePole
+            // Recursively move n-1 discs from startPole to intermediatePole
             shift(n - 1, startPole, endPole, intermediatePole);
-            System.out.format("Move %d from %s to %s%n", n, startPole, endPole); // Result Printing
-            // Shift function is called in recursion for swapping the n-1 disc from the
-            // intermediatePole to the endPole
+
+            // Print the move of the nth disc from startPole to endPole
+            System.out.format("Move %d from %s to %s%n", n, startPole, endPole);
+
+            // Recursively move the n-1 discs from intermediatePole to endPole
             shift(n - 1, intermediatePole, startPole, endPole);
         }
     }
 
+    /**
+     * The main method that starts the Tower of Hanoi puzzle solution.
+     * It prompts the user for the number of discs and invokes the {@code shift}
+     * function
+     * to begin solving the puzzle.
+     *
+     * @param args Command-line arguments (not used in this case).
+     */
     public static void main(String[] args) {
         System.out.print("Enter number of discs on Pole 1: ");
         Scanner scanner = new Scanner(System.in);
