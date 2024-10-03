@@ -1,10 +1,10 @@
 package com.thealgorithms.divideandconquer;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 public class ClosestPairTest {
 
@@ -39,7 +39,7 @@ public class ClosestPairTest {
         points[4] = cp.buildLocation(3.0, 2.0);
 
         int pivotIndex = cp.xPartition(points, 0, 4);
-        assertEquals(2, pivotIndex);  // After partition, pivot should be at index 2
+        assertEquals(2, pivotIndex); // After partition, pivot should be at index 2
         assertEquals(1.0, points[0].x);
         assertEquals(2.0, points[1].x);
         assertEquals(3.0, points[2].x);
@@ -59,7 +59,7 @@ public class ClosestPairTest {
         points[4] = cp.buildLocation(3.0, 2.0);
 
         int pivotIndex = cp.yPartition(points, 0, 4);
-        assertEquals(3, pivotIndex);  // After partition, pivot should be at index 3
+        assertEquals(3, pivotIndex); // After partition, pivot should be at index 3
         assertEquals(1.0, points[1].y);
         assertEquals(2.0, points[4].y);
         assertEquals(3.0, points[0].y);
@@ -75,9 +75,9 @@ public class ClosestPairTest {
         ClosestPair.Location loc2 = cp.buildLocation(4.0, 6.0);
 
         // Use the bruteForce method and pass the locations as an array
-        ClosestPair.Location[] locations = new ClosestPair.Location[]{loc1, loc2};
+        ClosestPair.Location[] locations = new ClosestPair.Location[] {loc1, loc2};
         double result = cp.bruteForce(locations);
-        assertEquals(5.0, result, 0.01);  // Distance between (1, 2) and (4, 6)
+        assertEquals(5.0, result, 0.01); // Distance between (1, 2) and (4, 6)
     }
 
     @Test
@@ -90,9 +90,9 @@ public class ClosestPairTest {
         cp.buildLocation(4.0, 7.0);
         cp.buildLocation(3.0, 2.0);
 
-        cp.xQuickSort(cp.array, 0, cp.array.length - 1);  // Sorting by x-coordinate
+        cp.xQuickSort(cp.array, 0, cp.array.length - 1); // Sorting by x-coordinate
         double result = cp.closestPair(cp.array, cp.array.length);
-        assertEquals(2.8284, result, 0.0001);  // Closest pair is (2, 3) and (3, 2), distance ≈ 2.8284
+        assertEquals(2.8284, result, 0.0001); // Closest pair is (2, 3) and (3, 2), distance ≈ 2.8284
     }
 
     @Test
@@ -117,6 +117,6 @@ public class ClosestPairTest {
 
         assertNotNull(cp.point1);
         assertNotNull(cp.point2);
-        assertTrue(result > 0);  // The minimum distance should be positive
+        assertTrue(result > 0); // The minimum distance should be positive
     }
 }
