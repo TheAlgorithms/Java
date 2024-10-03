@@ -1,7 +1,10 @@
 package com.thealgorithms.searches;
 
 class BinarySearch {
-
+    // Private constructor to prevent instantiation
+    private BinarySearch() {
+        throw new UnsupportedOperationException("Utility class");
+    }
     // Enhanced binary search method
     public static int binarySearch(int[] arr, int target) {
         // Edge case: If the array is empty
