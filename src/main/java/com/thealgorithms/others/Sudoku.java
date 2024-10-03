@@ -72,7 +72,7 @@ final class Sudoku {
         int col = -1;
         boolean isEmpty = true;
 
-        // Find the next empty cell (marked by 0)
+        // Find the next empty cell
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == 0) {
