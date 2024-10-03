@@ -14,7 +14,7 @@ public class SortedLinkedListTest {
         list.insert(5);
         list.insert(3);
         list.insert(7);
-        assertEquals("3, 5, 7", list.toString());
+        assertEquals("[3, 5, 7]", list.toString());
     }
 
     @Test
@@ -24,7 +24,7 @@ public class SortedLinkedListTest {
         list.insert(3);
         list.insert(7);
         assertTrue(list.delete(5));
-        assertEquals("3, 7", list.toString());
+        assertEquals("[3, 7]", list.toString());
         assertFalse(list.delete(10));
     }
 
@@ -40,7 +40,7 @@ public class SortedLinkedListTest {
     @Test
     public void testEmptyList() {
         SortedLinkedList list = new SortedLinkedList();
-        assertEquals("", list.toString());
+        assertEquals("[]", list.toString());
         assertFalse(list.delete(5));
         assertFalse(list.search(5));
     }
