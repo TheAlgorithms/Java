@@ -10,19 +10,14 @@ public final class MonoAlphabetic {
     // Encryption method
     public static String encrypt(String data, String key) {
         StringBuilder sb = new StringBuilder();
-
-        // Convert to uppercase to match the key mapping
         data = data.toUpperCase();
 
         for (char c : data.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                // Get the index (0-25) for the character
-                int idx = c - 'A';
-                // Append the character at the corresponding index in the key
-                sb.append(key.charAt(idx));
+                int idx = c - 'A'; // Index in alphabet
+                sb.append(key.charAt(idx)); // Append the character from the key
             } else {
-                // If character is not A-Z, append it as is
-                sb.append(c);
+                sb.append(c); // Append non-alphabet characters directly
             }
         }
         return sb.toString();
@@ -31,34 +26,19 @@ public final class MonoAlphabetic {
     // Decryption method
     public static String decrypt(String data, String key) {
         StringBuilder sb = new StringBuilder();
-
-        // Convert to uppercase to match the key mapping
         data = data.toUpperCase();
 
         for (char c : data.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                // Get the index from the key for the character
-                int idx = getIndex(c, key);
-                // Append the original character
+                int idx = key.indexOf(c); // Get the index in the key
                 if (idx != -1) {
-                    char originalChar = (char) (idx + 'A');
+                    char originalChar = (char) (idx + 'A'); // Convert index back to character
                     sb.append(originalChar);
                 }
             } else {
-                // If character is not A-Z, append it as is
-                sb.append(c);
+                sb.append(c); // Append non-alphabet characters directly
             }
         }
         return sb.toString();
-    }
-
-    // Helper method to get index of a character in the key
-    private static int getIndex(char c, String key) {
-        for (int i = 0; i < key.length(); i++) {
-            if (key.charAt(i) == c) {
-                return i; // Return the index if the character matches
-            }
-        }
-        return -1; // Return -1 if character not found (should not happen for valid inputs)
     }
 }
