@@ -38,7 +38,8 @@ public class Treap {
             value = valueParam;
             priority = priorityParam;
             size = 1;
-            left = right = null;
+            left = null;
+            right = null;
         }
 
         /**
@@ -279,8 +280,9 @@ public class Treap {
             if (current.value >= value) {
                 lowerBoundNode = current;
                 current = current.left;
-            } else
+            } else {
                 current = current.right;
+            }
         }
 
         return lowerBoundNode;
@@ -300,8 +302,9 @@ public class Treap {
             if (current.value > value) {
                 upperBoundNode = current;
                 current = current.left;
-            } else
+            } else {
                 current = current.right;
+            }
         }
 
         return upperBoundNode;
