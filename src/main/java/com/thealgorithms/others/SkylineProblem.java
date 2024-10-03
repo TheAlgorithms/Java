@@ -17,8 +17,8 @@ public class SkylineProblem {
 
     /**
      * Main function that reads input for the number of buildings and their
-     * dimensions,
-     * computes the skyline using divide-and-conquer, and prints the result.
+     * dimensions, computes the skyline using divide-and-conquer,
+     * and prints the result.
      */
     public void run() {
         Scanner sc = new Scanner(System.in);
