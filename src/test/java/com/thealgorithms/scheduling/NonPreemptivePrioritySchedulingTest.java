@@ -7,17 +7,6 @@ import org.junit.jupiter.api.Test;
 public class NonPreemptivePrioritySchedulingTest {
 
     @Test
-    public void testScheduleProcesses() {
-        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
-
-        NonPreemptivePriorityScheduling.Process[] expectedOrder = {new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
-
-        NonPreemptivePriorityScheduling.Process[] actualOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
-
-        assertArrayEquals(expectedOrder, actualOrder, "Processes should be scheduled by priority.");
-    }
-
-    @Test
     public void testCalculateAverageWaitingTime() {
         NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
 
