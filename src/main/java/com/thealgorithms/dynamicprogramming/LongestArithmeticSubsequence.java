@@ -3,7 +3,6 @@ package com.thealgorithms.dynamicprogramming;
 import java.util.HashMap;
 
 final class LongestArithmeticSubsequence {
-
     private LongestArithmeticSubsequence() {
     }
 
