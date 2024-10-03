@@ -52,14 +52,14 @@ public class TreapTest {
         assertEquals(5, treap.lowerBound(4));
     }
 
-    @Test 
+    @Test
     void upperBound() {
         int[] arr = {5, 9, 6, 2, 3, 8, 1};
         Treap treap = new Treap(arr);
         assertEquals(6, treap.upperBound(5));
     }
 
-    @Test 
+    @Test
     void misc() {
         int[] arr = {5, 9, 6, 2, 3, 8, 1};
         Treap treap = new Treap(arr);

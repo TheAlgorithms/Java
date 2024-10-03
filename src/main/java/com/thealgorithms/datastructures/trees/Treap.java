@@ -16,10 +16,10 @@ public class Treap {
         /**
          * TreapNode class defines the individual nodes in the Treap
          *
-         * value -> holds the value of the node. 
+         * value -> holds the value of the node.
          * Binary Search Tree is built based on value.
          *
-         * priority -> holds the priority of the node. 
+         * priority -> holds the priority of the node.
          * Heaps are maintained based on priority.
          * It is randomly assigned
          *
@@ -125,7 +125,7 @@ public class Treap {
 
     /**
      * insert a node into the Treap
-     * 
+     *
      * @param value value to be inserted into the Treap
      * @return root of the Treap where the value is inserted
      */
@@ -174,7 +174,7 @@ public class Treap {
 
         if (root != null) root.updateSize();
         return root;
-    } 
+    }
 
     /**
      * print inorder traversal of the Treap
@@ -226,7 +226,7 @@ public class Treap {
 
     /**
      * Search a value in the Treap
-     * 
+     *
      * @param value value to be searched for
      * @return node containing the value
      * null if not found
@@ -238,11 +238,11 @@ public class Treap {
     private TreapNode searchVal(TreapNode root, int value) {
         if (root == null) return null;
 
-        if (root.value == value) 
+        if (root.value == value)
             return root;
-        else if(root.value < value) 
+        else if(root.value < value)
             return searchVal(root.right, value);
-        else 
+        else
             return searchVal(root.left, value);
     }
 
