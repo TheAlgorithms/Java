@@ -26,29 +26,20 @@ public final class SumOfSubset {
      *         This is a recursive solution that checks for two possibilities at
      *         each step:
      *         1. Include the current element in the subset and check if the
-     *         remaining
-     *         elements can sum up to the remaining target.
+     *         remaining elements can sum up to the remaining target.
      *         2. Exclude the current element and check if the remaining elements
-     *         can
-     *         sum up to the target without this element.
+     *         can sum up to the target without this element.
      */
     public static boolean subsetSum(int[] arr, int num, int key) {
-        // Base case
         if (key == 0) {
-            return true; // subset sum found
+            return true;
         }
         if (num < 0 || key < 0) {
-            return false; // no more elements to consider or key is negative
+            return false;
         }
 
-        // Recursive case
-
-        // Pick the current element and include it in the subset
         boolean include = subsetSum(arr, num - 1, key - arr[num]);
-
-        // Don't pick the current element and exclude it from the subset
         boolean exclude = subsetSum(arr, num - 1, key);
-
         return include || exclude;
     }
 }
