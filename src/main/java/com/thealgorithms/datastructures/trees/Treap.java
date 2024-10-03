@@ -32,20 +32,20 @@ public class Treap {
         private int priority, size;
         public TreapNode left, right;
 
-        public TreapNode(int value, int priority) {
-            this.value = value;
-            this.priority = priority;
-            this.size = 1;
-            this.left = this.right = null;
+        public TreapNode(int _value, int _priority) {
+            value = _value;
+            priority = _priority;
+            size = 1;
+            left = right = null;
         }
 
         /**
          * updateSize -> updates the subtree size of the current node
          */
         private void updateSize() {
-            this.size = 1;
-            if (this.left != null) this.size += this.left.size;
-            if (this.right != null) this.size += this.right.size;
+            size = 1;
+            if (left != null) size += left.size;
+            if (right != null) size += right.size;
         }
     }
 
@@ -63,7 +63,7 @@ public class Treap {
      * Treap(int[] nodeValues) -> add the elements given in the array to the Treap
      */
     public Treap() {
-        this.root = null;
+        root = null;
     }
 
     public Treap(int[] nodeValues) {
