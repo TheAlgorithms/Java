@@ -7,8 +7,8 @@ package com.thealgorithms.dynamicprogramming;
  * https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/
  */
 final class MaximumSumOfNonAdjacentElements {
-private
-  MaximumSumOfNonAdjacentElements() {}
+
+  private MaximumSumOfNonAdjacentElements() {}
 
   /**
    * Approach 1: Uses a dynamic programming array to store the maximum sum at
@@ -17,8 +17,7 @@ private
    * @param arr The input array of integers.
    * @return The maximum sum of non-adjacent elements.
    */
-public
-  static int getMaxSumApproach1(int[] arr) {
+  public static int getMaxSumApproach1(int[] arr) {
     int n = arr.length;
     int[] dp = new int[n];
 
@@ -53,8 +52,7 @@ public
    * @param arr The input array of integers.
    * @return The maximum sum of non-adjacent elements.
    */
-public
-  static int getMaxSumApproach2(int[] arr) {
+  public static int getMaxSumApproach2(int[] arr) {
     int n = arr.length;
 
     // Two variables to keep track of previous two results:
