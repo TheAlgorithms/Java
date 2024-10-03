@@ -21,7 +21,7 @@ final class Sudoku {
      * @param row   The row index where the number is to be placed.
      * @param col   The column index where the number is to be placed.
      * @param num   The number to be placed on the board.
-     * @return True if the placement is safe, false otherwise.
+     * @return True if the placement is safe, otherwise false.
      */
     public static boolean isSafe(int[][] board, int row, int col, int num) {
         // Check the row for duplicates
