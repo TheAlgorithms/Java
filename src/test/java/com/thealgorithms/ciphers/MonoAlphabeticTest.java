@@ -27,11 +27,11 @@ public class MonoAlphabeticTest {
 
     // Provide test data for encryption
     private static Stream<Arguments> provideEncryptionData() {
-        return Stream.of(Arguments.of("HELLO", key, "YQJJQ"), Arguments.of("JAVA", key, "HQLI"));
+        return Stream.of(Arguments.of("HELLO", key, "LCGGS"), Arguments.of("JAVA", key, "JMTM"));
     }
 
     // Provide test data for decryption
     private static Stream<Arguments> provideDecryptionData() {
-        return Stream.of(Arguments.of("YQJJQ", key, "HELLO"), Arguments.of("HQLI", key, "JAVA"));
+        return Stream.of(Arguments.of("LCGGS", key, "HELLO"), Arguments.of("JMTM", key, "JAVA"));
     }
 }
