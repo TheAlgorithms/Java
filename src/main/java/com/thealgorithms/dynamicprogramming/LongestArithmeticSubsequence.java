@@ -28,7 +28,7 @@ final class LongestArithmeticSubsequence {
         HashMap<Integer, Integer>[] dp = new HashMap[nums.length];
         int maxLength = 2;
 
-        // Initialize dp array
+        // fill the dp array
         for (int i = 0; i < nums.length; i++) {
             dp[i] = new HashMap<>();
             for (int j = 0; j < i; j++) {
