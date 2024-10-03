@@ -70,7 +70,7 @@ public final class IntegerToEnglish {
         int hundredsDigit = number / 100;
 
         if (hundredsDigit > 0) {
-            result = String.format("%s %s%s", BASE_NUMBERS_MAP.get(hundredsDigit), BASE_NUMBERS_MAP.get(100), (result.isEmpty() ? "" : " " + result));
+            result = String.format("%s %s%s", BASE_NUMBERS_MAP.get(hundredsDigit), BASE_NUMBERS_MAP.get(100), result.isEmpty() ? "" : " " + result);
         }
 
         return result;
