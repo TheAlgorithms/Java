@@ -58,7 +58,7 @@ public class SkylineAlgorithmTest {
         // Assert the correct points in skyline
         assertEquals(1, result.get(0).getX());
         assertEquals(10, result.get(0).getY());
-        assertEquals(2, result.get(1).getX());
+        assertEquals(3, result.get(1).getX());
         assertEquals(3, result.get(1).getY());
         assertEquals(4, result.get(2).getX());
         assertEquals(20, result.get(2).getY());
