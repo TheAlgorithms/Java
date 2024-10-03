@@ -34,7 +34,7 @@ public final class MedianOfTwoSortedArrays {
             // Check if partition is valid
             if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
                 // If combined array length is odd
-                if ((m + n) % 2 == 1) {
+                if (((m + n) & 1) == 1) {
                     return Math.max(maxLeft1, maxLeft2);
                 }
                 // If combined array length is even
