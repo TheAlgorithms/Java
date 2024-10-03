@@ -9,7 +9,7 @@ public final class InfixToPrefix {
     }
 
     /**
-     * Converts an infix expression to a prefix expression.
+     * Convert an infix expression to a prefix expression.
      *
      * @param infixExpression the infix expression to convert
      * @return the prefix expression
