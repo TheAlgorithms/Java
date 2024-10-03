@@ -90,10 +90,10 @@ public class HillCipher {
                 int subJ = 0;
                 for (int j = 0; j < n; j++) {
                     if (j != x) {
-                        subMatrix[sub_i][sub_j++] = matrix[i][j];
+                        subMatrix[subI][subJ++] = matrix[i][j];
                     }
                 }
-                sub_i++;
+                subI++;
             }
             det += sign * matrix[0][x] * determinant(subMatrix, n - 1);
             sign = -sign;
