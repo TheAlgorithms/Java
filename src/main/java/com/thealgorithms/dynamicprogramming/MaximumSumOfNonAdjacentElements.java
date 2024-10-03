@@ -8,7 +8,7 @@ package com.thealgorithms.dynamicprogramming;
  */
 final class MaximumSumOfNonAdjacentElements {
 
-  private MaximumSumOfNonAdjacentElements() {}
+  private MaximumSumOfNonAdjacentElements() { }
 
   /**
    * Approach 1: Uses a dynamic programming array to store the maximum sum at
