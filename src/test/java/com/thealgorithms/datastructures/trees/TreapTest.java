@@ -42,7 +42,7 @@ public class TreapTest {
         treap.insert(3);
         treap.insert(8);
         treap.insert(1);
-        assertEquals(5, treap.lowerBound(4));
+        assertEquals(5, treap.lowerBound(4).value);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class TreapTest {
         treap.insert(3);
         treap.insert(8);
         treap.insert(1);
-        assertEquals(6, treap.upperBound(5));
+        assertEquals(6, treap.upperBound(5).value);
     }
 
     @Test
