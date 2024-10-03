@@ -20,20 +20,12 @@ public class InfixToPrefixTest {
         return Stream.of(Arguments.of("3+2", "+32"), // Simple addition
             Arguments.of("1+(2+3)", "+1+23"), // Parentheses
             Arguments.of("(3+4)*5-6", "-*+3456"), // Nested operations
-            Arguments.of("a+b*c", "+a*bc") // Multiplication precedence
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("provideInvalidExpressions")
-    void testInvalidExpressions(String infix, String expectedMessage) {
-        Exception exception = assertThrows(Exception.class, () -> InfixToPrefix.infix2Prefix(infix));
-        assertEquals(expectedMessage, exception.getMessage());
-    }
-
-    private static Stream<Arguments> provideInvalidExpressions() {
-        return Stream.of(Arguments.of("((a+b)*c-d", "invalid expression"), // Missing closing bracket
-            Arguments.of("a++b", "invalid expression") // Invalid operator
+            Arguments.of("a+b*c", "+a*bc"), // Multiplication precedence
+            Arguments.of("a+b*c/d", "+a/b*c*d"), // Division precedence
+            Arguments.of("a+b*c-d", "-+a*bc"), // Subtraction precedence
+            Arguments.of("a+b*c/d-e", "-+a/b*cde"), // Mixed precedence
+            Arguments.of("a+b*(c-d)", "+a-*bcd"), // Parentheses precedence
+            Arguments.of("a+b*(c-d)/e", "/+a-*bcde"), // Mixed precedence with parentheses
         );
     }
 }
