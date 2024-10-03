@@ -66,10 +66,6 @@ public class Treap {
         this.root = null;
     }
 
-    public Treap(int[] nodeValues) {
-        for (int nodeValue : nodeValues) insert(nodeValue);
-    }
-
     /**
      * merges two Treaps left and right into a single Treap
      *
