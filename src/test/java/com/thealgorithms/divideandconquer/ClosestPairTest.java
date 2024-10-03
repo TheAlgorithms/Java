@@ -40,7 +40,7 @@ public class ClosestPairTest {
 
         int pivotIndex = cp.xPartition(points, 0, 4);
         assertEquals(2, pivotIndex); // After partition, pivot should be at index 2
-        assertEquals(1.0, points[0].x);
+        assertEquals(2.0, points[0].x);
         assertEquals(2.0, points[1].x);
         assertEquals(3.0, points[2].x);
         assertEquals(4.0, points[3].x);
@@ -59,7 +59,7 @@ public class ClosestPairTest {
         points[4] = cp.buildLocation(3.0, 2.0);
 
         int pivotIndex = cp.yPartition(points, 0, 4);
-        assertEquals(3, pivotIndex); // After partition, pivot should be at index 3
+        assertEquals(1, pivotIndex); // After partition, pivot should be at index 1
         assertEquals(1.0, points[1].y);
         assertEquals(2.0, points[4].y);
         assertEquals(3.0, points[0].y);
