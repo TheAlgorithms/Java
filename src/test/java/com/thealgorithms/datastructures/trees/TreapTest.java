@@ -2,6 +2,8 @@ package com.thealgorithms.datastructures.trees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
 
 public class TreapTest {
@@ -59,7 +61,7 @@ public class TreapTest {
     }
 
     @Test
-    public void misc() {
+    public void size() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
