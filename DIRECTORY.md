@@ -217,6 +217,7 @@
           * divideandconquer
             * [BinaryExponentiation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/BinaryExponentiation.java)
             * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java)
+            * [MedianOfTwoSortedArrays](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArrays.java)
             * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/SkylineAlgorithm.java)
             * [StrassenMatrixMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplication.java)
           * dynamicprogramming
@@ -717,6 +718,7 @@
               * [ZigzagTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/ZigzagTraversalTest.java)
           * divideandconquer
             * [BinaryExponentiationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/BinaryExponentiationTest.java)
+            * [MedianOfTwoSortedArraysTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArraysTest.java)
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
           * dynamicprogramming
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
