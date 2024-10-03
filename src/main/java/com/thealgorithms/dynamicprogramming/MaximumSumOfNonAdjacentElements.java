@@ -4,6 +4,8 @@ package com.thealgorithms.dynamicprogramming;
  * Class to find the maximum sum of non-adjacent elements in an array. This
  * class contains two approaches: one with O(n) space complexity and another
  * with O(1) space optimization.
+ * 
+ * For more information, refer to https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/
  */
 final class MaximumSumOfNonAdjacentElements {
 	private MaximumSumOfNonAdjacentElements() {
