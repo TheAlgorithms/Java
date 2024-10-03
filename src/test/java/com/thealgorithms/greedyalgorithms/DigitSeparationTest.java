@@ -73,6 +73,6 @@ public class DigitSeparationTest {
     public void testDigitSeparationForwardOrderNegativeNumber() {
         DigitSeparation digitSeparation = new DigitSeparation();
         List<Long> result = digitSeparation.digitSeparationForwardOrder(-123);
-        assertEquals(List.of(3L, 2L, 1L), result);
+        assertEquals(List.of(1L, 2L, 3L), result);
     }
 }
