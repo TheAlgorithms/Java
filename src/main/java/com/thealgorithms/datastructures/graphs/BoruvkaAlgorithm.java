@@ -60,7 +60,7 @@ final class BoruvkaAlgorithm {
     }
 
     /**
-     * Represents a subset for Union-Find operations
+     * Represents a subsetRecursion for Union-Find operations
      */
     private static class Component {
         int parent;
@@ -89,7 +89,7 @@ final class BoruvkaAlgorithm {
         /**
          * Adds the cheapest edges to the result list and performs Union operation on the subsets.
          *
-         * @param cheapest Array containing the cheapest edge for each subset.
+         * @param cheapest Array containing the cheapest edge for each subsetRecursion.
          */
         void merge(final Edge[] cheapest) {
             for (int i = 0; i < graph.vertex; ++i) {
@@ -115,9 +115,9 @@ final class BoruvkaAlgorithm {
         }
 
         /**
-         * Computes the cheapest edges for each subset in the Union-Find structure.
+         * Computes the cheapest edges for each subsetRecursion in the Union-Find structure.
          *
-         * @return an array containing the cheapest edge for each subset.
+         * @return an array containing the cheapest edge for each subsetRecursion.
          */
         private Edge[] computeCheapestEdges() {
             Edge[] cheapest = new Edge[graph.vertex];
@@ -153,11 +153,11 @@ final class BoruvkaAlgorithm {
     }
 
     /**
-     * Finds the parent of the subset using path compression
+     * Finds the parent of the subsetRecursion using path compression
      *
      * @param components array of subsets
-     * @param i          index of the subset
-     * @return the parent of the subset
+     * @param i          index of the subsetRecursion
+     * @return the parent of the subsetRecursion
      */
     static int find(final Component[] components, final int i) {
         if (components[i].parent != i) {
@@ -170,8 +170,8 @@ final class BoruvkaAlgorithm {
      * Performs the Union operation for Union-Find
      *
      * @param components array of subsets
-     * @param x          index of the first subset
-     * @param y          index of the second subset
+     * @param x          index of the first subsetRecursion
+     * @param y          index of the second subsetRecursion
      */
     static void union(Component[] components, final int x, final int y) {
         final int xroot = find(components, x);

@@ -44,10 +44,10 @@ public class GSet<T> {
     }
 
     /**
-     * Compares the G-Set with another G-Set to check if it is a subset.
+     * Compares the G-Set with another G-Set to check if it is a subsetRecursion.
      *
      * @param other the other G-Set to compare with
-     * @return true if the current G-Set is a subset of the other, false otherwise
+     * @return true if the current G-Set is a subsetRecursion of the other, false otherwise
      */
     public boolean compare(GSet<T> other) {
         return other.elements.containsAll(elements);

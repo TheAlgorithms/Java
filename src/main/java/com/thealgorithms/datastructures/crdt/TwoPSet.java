@@ -61,7 +61,7 @@ public class TwoPSet<T> {
      * Compares the current 2P-Set with another 2P-Set.
      *
      * @param otherSet The other 2P-Set to compare with.
-     * @return True if both SetA and SetR are subset, otherwise false.
+     * @return True if both SetA and SetR are subsetRecursion, otherwise false.
      */
     public boolean compare(TwoPSet<T> otherSet) {
         return otherSet.setA.containsAll(setA) && otherSet.setR.containsAll(setR);

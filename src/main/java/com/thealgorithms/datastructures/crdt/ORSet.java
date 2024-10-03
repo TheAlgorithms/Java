@@ -132,10 +132,10 @@ public class ORSet<T> {
     }
 
     /**
-     * Compares this Add-Wins OR-Set with another OR-Set to check if elements and tombstones are a subset.
+     * Compares this Add-Wins OR-Set with another OR-Set to check if elements and tombstones are a subsetRecursion.
      *
      * @param other the other OR-Set to compare
-     * @return true if the sets are subset, false otherwise
+     * @return true if the sets are subsetRecursion, false otherwise
      */
     public boolean compare(ORSet<T> other) {
         Set<Pair<T>> union = new HashSet<>(elements);

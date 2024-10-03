@@ -15,12 +15,12 @@ public final class SubsetCount {
      * Method to find out the number of subsets present in the given array with a sum equal to
      * target. Time Complexity is O(n*target) and Space Complexity is O(n*target)
      * @param arr is the input array on which subsets are  to searched
-     * @param target is the sum of each element of the subset taken together
+     * @param target is the sum of each element of the subsetRecursion taken together
      *
      */
     public static int getCount(int[] arr, int target) {
         /*
-         * Base Cases - If target becomes zero, we have reached the required sum for the subset
+         * Base Cases - If target becomes zero, we have reached the required sum for the subsetRecursion
          * If we reach the end of the array arr then, either if target==arr[end], then we add one to
          * the final count Otherwise we add 0 to the final count
          */
@@ -50,7 +50,7 @@ public final class SubsetCount {
      * same problem This approach is a bit better in terms of Space Used Time Complexity is
      * O(n*target) and Space Complexity is O(target)
      * @param arr is the input array on which subsets are  to searched
-     * @param target is the sum of each element of the subset taken together
+     * @param target is the sum of each element of the subsetRecursion taken together
      */
     public static int getCountSO(int[] arr, int target) {
         int n = arr.length;

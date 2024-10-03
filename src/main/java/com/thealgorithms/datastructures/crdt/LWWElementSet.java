@@ -88,10 +88,10 @@ class LWWElementSet {
     }
 
     /**
-     * Compares the LWWElementSet with another LWWElementSet to check if addSet and removeSet are a subset.
+     * Compares the LWWElementSet with another LWWElementSet to check if addSet and removeSet are a subsetRecursion.
      *
      * @param other The LWWElementSet to compare.
-     * @return True if the set is subset, false otherwise.
+     * @return True if the set is subsetRecursion, false otherwise.
      */
     public boolean compare(LWWElementSet other) {
         return other.addSet.keySet().containsAll(addSet.keySet()) && other.removeSet.keySet().containsAll(removeSet.keySet());

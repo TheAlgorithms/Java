@@ -32,7 +32,7 @@ public class DES {
         this.key = key;
     }
 
-    // Permutation table to convert initial 64-bit key to 56 bit key
+    // GeneratePermutations table to convert initial 64-bit key to 56 bit key
     private static final int[] PC1 = {57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4};
 
     // Lookup table used to shift the initial key, in order to generate the subkeys
@@ -66,7 +66,7 @@ public class DES {
 
     private static final int[][][] S = {S1, S2, S3, S4, S5, S6, S7, S8};
 
-    // Permutation table, used in the Feistel function post s-box usage
+    // GeneratePermutations table, used in the Feistel function post s-box usage
     static final int[] PERMUTATION = {16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5, 18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4, 25};
 
     // Table used for final inversion of the message box after 16 rounds of Feistel Function
