@@ -1,14 +1,13 @@
 package com.thealgorithms.greedyalgorithms;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-
+import org.junit.jupiter.api.Test;
 public class DigitSeparationTest {
 
     @Test
-    public void testDigitSeparationReverseOrder_SingleDigit() {
+    public void testDigitSeparationReverseOrderSingleDigit() {
         DigitSeparation digitSeparation = new DigitSeparation();
         List<Long> result = digitSeparation.digitSeparationReverseOrder(5);
         assertEquals(List.of(5L), result);
