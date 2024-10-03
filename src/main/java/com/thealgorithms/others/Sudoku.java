@@ -115,7 +115,7 @@ final class Sudoku {
      * @param n     The size of the Sudoku board (typically 9 for a standard puzzle).
      */
     public static void print(int[][] board, int n) {
-        // Print the board in a 9x9 grid format
+        // Print the board in a nxn grid format
         for (int r = 0; r < n; r++) {
             for (int d = 0; d < n; d++) {
                 System.out.print(board[r][d]);
@@ -123,7 +123,6 @@ final class Sudoku {
             }
             System.out.print("\n");
 
-            // Print a blank line after every 3 rows for readability
             if ((r + 1) % (int) Math.sqrt(n) == 0) {
                 System.out.print("");
             }
