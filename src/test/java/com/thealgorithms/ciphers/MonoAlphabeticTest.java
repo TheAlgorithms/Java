@@ -14,15 +14,15 @@ public class MonoAlphabeticTest {
     // Test for encryption
     @ParameterizedTest
     @MethodSource("provideEncryptionData")
-    public void testEncrypt(String data, String KEY, String expected) {
-        assertEquals(expected, MonoAlphabetic.encrypt(data, KEY));
+    public void testEncrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.encrypt(data, key));
     }
 
     // Test for decryption
     @ParameterizedTest
     @MethodSource("provideDecryptionData")
-    public void testDecrypt(String data, String KEY, String expected) {
-        assertEquals(expected, MonoAlphabetic.decrypt(data, KEY));
+    public void testDecrypt(String data, String key, String expected) {
+        assertEquals(expected, MonoAlphabetic.decrypt(data, key));
     }
 
     // Provide test data for encryption
