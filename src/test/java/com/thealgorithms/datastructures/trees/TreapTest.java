@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class TreapTest {
 
     @Test
-    void build() {
+    public void build() {
         Treap treap = new Treap();
         treap.insert(4);
         treap.insert(5);
@@ -17,7 +17,7 @@ public class TreapTest {
     }
 
     @Test
-    void delete() {
+    public void delete() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
@@ -31,7 +31,7 @@ public class TreapTest {
     }
 
     @Test
-    void searchAndFound() {
+    public void searchAndFound() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
@@ -40,11 +40,11 @@ public class TreapTest {
         treap.insert(3);
         treap.insert(8);
         treap.insert(1);
-        assertEquals(5, treap.search(5).value());
+        assertEquals(5, treap.search(5).value);
     }
 
     @Test
-    void searchAndNotFound() {
+    public void searchAndNotFound() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
@@ -57,7 +57,7 @@ public class TreapTest {
     }
 
     @Test
-    void lowerBound() {
+    public void lowerBound() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
@@ -70,7 +70,7 @@ public class TreapTest {
     }
 
     @Test
-    void upperBound() {
+    public void upperBound() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
@@ -83,7 +83,7 @@ public class TreapTest {
     }
 
     @Test
-    void misc() {
+    public void misc() {
         Treap treap = new Treap();
         treap.insert(5);
         treap.insert(9);
