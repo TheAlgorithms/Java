@@ -67,7 +67,7 @@ public class Treap {
     }
 
     public Treap(int[] nodeValues) {
-        for (int nodeValue : nodeValues) this.insert(nodeValue);
+        for (int nodeValue : nodeValues) insert(nodeValue);
     }
 
     /**
