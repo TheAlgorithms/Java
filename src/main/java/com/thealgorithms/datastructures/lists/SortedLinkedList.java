@@ -122,20 +122,16 @@ public class SortedLinkedList {
                 elements.add(String.valueOf(temp.value));
                 temp = temp.next;
             }
-            return String.join(", ", elements);
+            return "[" + String.join(", ", elements) + "]";
+
         } else {
-            return "";
+            return "[]";
         }
     }
 
     public final class Node {
         public final int value;
         public Node next;
-
-        public Node() {
-            this.value = 0;
-            this.next = null;
-        }
 
         public Node(int value) {
             this.value = value;
