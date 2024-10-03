@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
  * executing,
  * it cannot be preempted.
  */
-public class NonPreemptivePriorityScheduling {
+public final class NonPreemptivePriorityScheduling {
 
     private NonPreemptivePriorityScheduling() {
     }
