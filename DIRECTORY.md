@@ -399,7 +399,6 @@
             * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromePrime.java)
             * [PalindromeSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromeSinglyLinkedList.java)
             * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/RangeInSortedArray.java)
-            * [Sort012D](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sort012D.java)
             * [Sparsity](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sparsity.java)
             * [ThreeSumProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/ThreeSumProblem.java)
             * [TwoSumProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/TwoSumProblem.java)
