@@ -240,7 +240,7 @@ public class Treap {
 
         if (root.value == value)
             return root;
-        else if(root.value < value)
+        else if (root.value < value)
             return searchVal(root.right, value);
         else
             return searchVal(root.left, value);
