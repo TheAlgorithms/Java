@@ -92,7 +92,7 @@ final class Sudoku {
             return true;
         }
 
-        // Try placing numbers 1 to 9 in the empty cell
+        // Try placing numbers 1 to n in the empty cell (typically n=9)
         for (int num = 1; num <= n; num++) {
             if (isSafe(board, row, col, num)) {
                 board[row][col] = num;
