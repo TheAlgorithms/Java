@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -8,31 +9,33 @@ import java.util.Scanner;
  * @author <a href="https://github.com/dheeraj92">Dheeraj Kumar Barnwal</a>
  */
 public class TrieImp {
-
     public class TrieNode {
-
-        TrieNode[] child;
+        char value;
+        HashMap<Character, TrieNode> child;
         boolean end;
 
-        public TrieNode() {
-            child = new TrieNode[26];
+        public TrieNode(char value) {
+            this.value = value;
+            child = new HashMap<>();
             end = false;
         }
     }
 
+    private static final char ROOT_NODE_VALUE = '*';
+
     private final TrieNode root;
 
     public TrieImp() {
-        root = new TrieNode();
+        root = new TrieNode(ROOT_NODE_VALUE);
     }
 
     public void insert(String word) {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
-            TrieNode node = currentNode.child[word.charAt(i) - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(word.charAt(i), null);
             if (node == null) {
-                node = new TrieNode();
-                currentNode.child[word.charAt(i) - 'a'] = node;
+                node = new TrieNode(word.charAt(i));
+                currentNode.child.put(word.charAt(i), node);
             }
             currentNode = node;
         }
@@ -43,7 +46,7 @@ public class TrieImp {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            TrieNode node = currentNode.child[ch - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(ch, null);
             if (node == null) {
                 return false;
             }
@@ -56,7 +59,7 @@ public class TrieImp {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            TrieNode node = currentNode.child[ch - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(ch, null);
             if (node == null) {
                 return false;
             }
@@ -73,13 +76,6 @@ public class TrieImp {
         System.out.println(print);
     }
 
-    /**
-     * Regex to check if word contains only a-z character
-     */
-    public static boolean isValid(String word) {
-        return word.matches("^[a-z]+$");
-    }
-
     public static void main(String[] args) {
         TrieImp obj = new TrieImp();
         String word;
@@ -92,20 +88,12 @@ public class TrieImp {
                 switch (t) {
                 case 1:
                     word = scan.next();
-                    if (isValid(word)) {
-                        obj.insert(word);
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
+                    obj.insert(word);
                     break;
                 case 2:
                     word = scan.next();
-                    boolean resS = false;
-                    if (isValid(word)) {
-                        resS = obj.search(word);
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
+                    boolean resS = obj.search(word);
+
                     if (resS) {
                         sop("word found");
                     } else {
@@ -115,11 +103,8 @@ public class TrieImp {
                 case 3:
                     word = scan.next();
                     boolean resD = false;
-                    if (isValid(word)) {
-                        resD = obj.delete(word);
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
+                    resD = obj.delete(word);
+
                     if (resD) {
                         sop("word got deleted successfully");
                     } else {
