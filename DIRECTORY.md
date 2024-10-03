@@ -157,6 +157,7 @@
               * [SearchSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SearchSinglyLinkedListRecursion.java)
               * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SinglyLinkedList.java)
               * [SkipList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SkipList.java)
+              * [SortedLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SortedLinkedList.java)
             * [Node](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/Node.java)
             * queues
               * [CircularQueue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/CircularQueue.java)
@@ -269,6 +270,7 @@
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [GaleShapley](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/GaleShapley.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
+            * [MergeIntervals](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MergeIntervals.java)
             * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
@@ -452,6 +454,8 @@
             * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TowerOfHanoi.java)
             * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TwoPointers.java)
             * [Verhoeff](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Verhoeff.java)
+          * Recursion
+            * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
@@ -501,7 +505,6 @@
             * [CombSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CombSort.java)
             * [CountingSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CountingSort.java)
             * [CycleSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CycleSort.java)
-            * [DNFSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DNFSort.java)
             * [DualPivotQuickSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DualPivotQuickSort.java)
             * [DutchNationalFlagSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DutchNationalFlagSort.java)
             * [ExchangeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/ExchangeSort.java)
@@ -686,6 +689,7 @@
               * [RotateSinglyLinkedListsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/RotateSinglyLinkedListsTest.java)
               * [SinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SinglyLinkedListTest.java)
               * [SkipListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SkipListTest.java)
+              * [SortedLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SortedLinkedListTest.java)
             * queues
               * [CircularQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/CircularQueueTest.java)
               * [DequeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/DequeTest.java)
@@ -755,6 +759,7 @@
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [GaleShapleyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/GaleShapleyTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
+            * [MergeIntervalsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MergeIntervalsTest.java)
             * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
@@ -894,6 +899,8 @@
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
+          * Recursion
+            * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
