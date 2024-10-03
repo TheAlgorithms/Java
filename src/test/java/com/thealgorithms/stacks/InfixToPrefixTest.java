@@ -25,7 +25,7 @@ public class InfixToPrefixTest {
             Arguments.of("a+b*c-d", "-+a*bc"), // Subtraction precedence
             Arguments.of("a+b*c/d-e", "-+a/b*cde"), // Mixed precedence
             Arguments.of("a+b*(c-d)", "+a-*bcd"), // Parentheses precedence
-            Arguments.of("a+b*(c-d)/e", "/+a-*bcde"), // Mixed precedence with parentheses
+            Arguments.of("a+b*(c-d)/e", "/+a-*bcde") // Mixed precedence with parentheses
         );
     }
 }
