@@ -10,9 +10,9 @@ import java.util.Random;
  * <a href = "https://cp-algorithms.com/data_structures/treap.html" />
  */
 
-public class Treap{
+public class Treap {
 
-    public class TreapNode{
+    public class TreapNode {
         /**
          * TreapNode class defines the individual nodes in the Treap
          * 
@@ -42,10 +42,10 @@ public class Treap{
         /**
          * updateSize -> updates the subtree size of the current node
          */
-        private void updateSize(){
+        private void updateSize() {
             this.size = 1;
-            if(this.left != null) this.size += this.left.size;
-            if(this.right != null) this.size += this.right.size;
+            if (this.left != null) this.size += this.left.size;
+            if (this.right != null) this.size += this.right.size;
         }
     }
 
@@ -62,12 +62,12 @@ public class Treap{
      * Treap() -> create an empty Treap
      * Treap(int[] nodeValues) -> add the elements given in the array to the Treap
      */
-    public Treap(){
+    public Treap() {
         this.root = null;
     }
 
-    public Treap(int[] nodeValues){
-        for(int nodeValue : nodeValues) this.insert(nodeValue);
+    public Treap(int[] nodeValues) {
+        for (int nodeValue : nodeValues) this.insert(nodeValue);
     }
 
     /**
@@ -77,16 +77,15 @@ public class Treap{
      * @param right right Treap
      * @return root of merged Treap
      */
-    private TreapNode merge(TreapNode left, TreapNode right){
-        if(left == null) return right;
-        if(right == null) return left;
+    private TreapNode merge(TreapNode left, TreapNode right) {
+        if (left == null) return right;
+        if (right == null) return left;
 
-        if(left.priority > right.priority){
+        if (left.priority > right.priority) {
             left.right = merge(left.right, right);
             left.updateSize();
             return left;
-        }
-        else{
+        } else {
             right.left = merge(left, right.left);
             right.updateSize();
             return right;
@@ -102,20 +101,19 @@ public class Treap{
      * TreapNode[0] contains the root of left Treap after split
      * TreapNode[1] contains the root of right Treap after split
      */
-    private TreapNode[] split(TreapNode node, int key){
-        if(node == null){
+    private TreapNode[] split(TreapNode node, int key) {
+        if (node == null) {
             return new TreapNode[] {null, null};
         }
 
         TreapNode[] result;
 
-        if(node.value <= key){
+        if (node.value <= key) {
             result = split(node.right, key);
             node.right = result[0];
             node.updateSize();
             result[0] = node;
-        }
-        else{
+        } else {
             result = split(node.left, key);
             node.left = result[1];
             node.updateSize();
@@ -131,8 +129,8 @@ public class Treap{
      * @param value value to be inserted into the Treap
      * @return root of the Treap where the value is inserted
      */
-    public TreapNode insert(int value){
-        if(root == null){
+    public TreapNode insert(int value) {
+        if (root == null){
             root = new TreapNode(value, random.nextInt());
             return root;
         }
@@ -158,39 +156,37 @@ public class Treap{
      * @param value value to be deleted from the Treap
      * @return root of the Treap where delete has been performed
      */
-    public TreapNode delete(int value){
+    public TreapNode delete(int value) {
         root = deleteNode(root, value);
         return root;
     }
 
-    private TreapNode deleteNode(TreapNode root, int value){
-        if(root == null) return null;
+    private TreapNode deleteNode(TreapNode root, int value) {
+        if (root == null) return null;
 
-        if(value < root.value){
+        if (value < root.value) {
             root.left = deleteNode(root.left, value);
-        }
-        else if(value > root.value){
+        } else if (value > root.value) {
             root.right = deleteNode(root.right, value);
-        }
-        else{
+        } else {
             root = merge(root.left, root.right);
         }
         
-        if(root != null) root.updateSize();
+        if (root != null) root.updateSize();
         return root;
     } 
 
     /**
      * print inorder traversal of the Treap
      */
-    public void inOrder(){
+    public void inOrder() {
         System.out.print("{");
         printInorder(root);
         System.out.print("}");
     }
 
-    private void printInorder(TreapNode root){
-        if(root == null) return;
+    private void printInorder(TreapNode root) {
+        if (root == null) return;
         printInorder(root.left);
         System.out.print(root.value + ",");
         printInorder(root.right);
@@ -199,14 +195,14 @@ public class Treap{
     /**
      * print preOrder traversal of the Treap
      */
-    public void preOrder(){
+    public void preOrder() {
         System.out.print("{");
         printPreOrder(root);
         System.out.print("}");
     }
 
-    private void printPreOrder(TreapNode root){
-        if(root == null) return;
+    private void printPreOrder(TreapNode root) {
+        if (root == null) return;
         System.out.print(root.value + ",");
         printPreOrder(root.left);
         printPreOrder(root.right);
@@ -215,14 +211,14 @@ public class Treap{
     /**
      * print postOrder traversal of the Treap
      */
-    public void postOrder(){
+    public void postOrder() {
         System.out.print("{");
         printPostOrder(root);
         System.out.print("}");
     }
 
-    private void printPostOrder(TreapNode root){
-        if(root == null) return;
+    private void printPostOrder(TreapNode root) {
+        if (root == null) return;
         printPostOrder(root.left);
         printPostOrder(root.right);
         System.out.print(root.value + ",");
@@ -235,14 +231,14 @@ public class Treap{
      * @return node containing the value
      * null if not found
      */
-    public TreapNode search(int value){
+    public TreapNode search(int value) {
         return searchVal(root, value);
     }
 
-    private TreapNode searchVal(TreapNode root, int value){
-        if(root == null) return null;
+    private TreapNode searchVal(TreapNode root, int value) {
+        if (root == null) return null;
 
-        if(root.value == value) return root;
+        if (root.value == value) return root;
         else if(root.value < value) return searchVal(root.right, value);
         else return searchVal(root.left, value);
     }
@@ -253,16 +249,16 @@ public class Treap{
      * @param value value for which lowerBound is to be found
      * @return node which is the lowerBound of the value passed
      */
-    public TreapNode lowerBound(int value){
+    public TreapNode lowerBound(int value) {
         TreapNode lowerBoundNode = null;
         TreapNode current = root;
 
-        while(current != null){
-            if(current.value >= value){
+        while (current != null) {
+            if (current.value >= value) {
                 lowerBoundNode = current;
                 current = current.left;
-            }
-            else current = current.right;
+            } else 
+                current = current.right;
         }
 
         return lowerBoundNode;
@@ -274,16 +270,16 @@ public class Treap{
      * @param value value for which upperBound is to be found
      * @return node which is the upperBound of the value passed
      */
-    public TreapNode upperBound(int value){
+    public TreapNode upperBound(int value) {
         TreapNode upperBoundNode = null;
         TreapNode current = root;
 
-        while(current != null){
-            if(current.value > value){
+        while (current != null) {
+            if (current.value > value) {
                 upperBoundNode = current;
                 current = current.left;
-            }
-            else current = current.right;
+            } else
+                current = current.right;
         }
 
         return upperBoundNode;
@@ -292,43 +288,43 @@ public class Treap{
     /**
      * returns size of the Treap
      */
-    public int size(){
-        if(root == null) return 0;
+    public int size() {
+        if (root == null) return 0;
         return root.size;
     }
 
     /**
      * returns if Treap is empty
      */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return root == null;
     }
 
     /**
      * returns root node of the Treap
      */
-    public TreapNode getRoot(){
+    public TreapNode getRoot() {
         return root;
     }
 
     /**
      * returns left node of the TreapNode
      */
-    public TreapNode getLeft(TreapNode node){
+    public TreapNode getLeft(TreapNode node) {
         return node.left;
     }
 
     /**
      * returns the right node of the TreapNode
      */
-    public TreapNode getRight(TreapNode node){
+    public TreapNode getRight(TreapNode node) {
         return node.right;
     }
 
     /**
      * prints the value, priority, size of the subtree of the TreapNode, left TreapNode and right TreapNode of the node
      */
-    public String toString(TreapNode node){
+    public String toString(TreapNode node) {
         return "{value : " + node.value + ", priority : " + node.priority + ", subTreeSize = " + node.size + ", left = " + node.left + ", right = " + node.right + "}";
     }
 }
