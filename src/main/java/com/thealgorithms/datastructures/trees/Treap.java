@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Treap {
 
-    public class TreapNode {
+    static class TreapNode {
         /**
          * TreapNode class defines the individual nodes in the Treap
          *
