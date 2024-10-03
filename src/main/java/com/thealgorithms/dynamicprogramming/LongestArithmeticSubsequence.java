@@ -21,12 +21,8 @@ final class LongestArithmeticSubsequence {
             throw new IllegalArgumentException("Input array cannot be null");
         }
 
-        if (nums.length == 0) {
-            return 0;
-        }
-
-        if (nums.length == 1) {
-            return 1;
+        if (nums.length <= 1) {
+            return nums.length;
         }
 
         HashMap<Integer, Integer>[] dp = new HashMap[nums.length];
