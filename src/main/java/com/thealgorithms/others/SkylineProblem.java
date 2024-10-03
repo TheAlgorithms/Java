@@ -41,7 +41,7 @@ public class SkylineProblem {
     /**
      * Adds a building with the given left, height, and right values to the
      * buildings list.
-     * 
+     *
      * @param left   The left x-coordinate of the building.
      * @param height The height of the building.
      * @param right  The right x-coordinate of the building.
@@ -52,7 +52,7 @@ public class SkylineProblem {
 
     /**
      * Prints the skyline as a sequence of coordinates and heights.
-     * 
+     *
      * @param skyline The list of {@link Skyline} objects representing the skyline.
      */
     public void print(ArrayList<Skyline> skyline) {
@@ -71,7 +71,7 @@ public class SkylineProblem {
     /**
      * Computes the skyline for a range of buildings using the divide-and-conquer
      * approach.
-     * 
+     *
      * @param start The starting index of the buildings to process.
      * @param end   The ending index of the buildings to process.
      * @return A list of {@link Skyline} objects representing the computed skyline.
@@ -94,7 +94,7 @@ public class SkylineProblem {
 
     /**
      * Merges two skylines (sky1 and sky2) into one combined skyline.
-     * 
+     *
      * @param sky1 The first skyline list.
      * @param sky2 The second skyline list.
      * @return A list of {@link Skyline} objects representing the merged skyline.
@@ -161,7 +161,7 @@ public class SkylineProblem {
 
         /**
          * Constructor for the {@code Skyline} class.
-         * 
+         *
          * @param coordinates The x-coordinate of the skyline point.
          * @param height      The height of the skyline at the given coordinate.
          */
@@ -182,7 +182,7 @@ public class SkylineProblem {
 
         /**
          * Constructor for the {@code Building} class.
-         * 
+         *
          * @param left   The left x-coordinate of the building.
          * @param height The height of the building.
          * @param right  The right x-coordinate of the building.
@@ -196,7 +196,7 @@ public class SkylineProblem {
 
     /**
      * The main method that runs the skyline problem solution.
-     * 
+     *
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
