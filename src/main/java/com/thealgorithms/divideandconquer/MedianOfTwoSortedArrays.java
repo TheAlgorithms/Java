@@ -1,6 +1,6 @@
 package com.thealgorithms.divideandconquer;
 
-public class MedianOfTwoSortedArrays {
+public final class MedianOfTwoSortedArrays {
 
     private MedianOfTwoSortedArrays() {
     }
