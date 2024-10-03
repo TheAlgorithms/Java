@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * This class provides methods to separate the digits of a large positive number into a list.
  */
-public class DigitSeparationPositiveNumber {
-    public DigitSeparationPositiveNumber() {
+public class DigitSeparation {
+    public DigitSeparation() {
     }
     /**
      * Separates the digits of a large positive number into a list in reverse order.
