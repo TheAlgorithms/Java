@@ -34,7 +34,7 @@ public class NonPreemptivePriorityScheduling {
 
     /**
      * Schedules processes based on their priority in a non-preemptive manner.
-     * 
+     *
      * @param processes Array of processes to be scheduled.
      * @return Array of processes in the order they are executed.
      */
@@ -57,7 +57,7 @@ public class NonPreemptivePriorityScheduling {
 
     /**
      * Calculates the average waiting time of the processes.
-     * 
+     *
      * @param processes      Array of processes.
      * @param executionOrder Array of processes in execution order.
      * @return Average waiting time.
@@ -76,7 +76,7 @@ public class NonPreemptivePriorityScheduling {
 
     /**
      * Calculates the average turn-around time of the processes.
-     * 
+     *
      * @param processes      Array of processes.
      * @param executionOrder Array of processes in execution order.
      * @return Average turn-around time.
@@ -94,11 +94,7 @@ public class NonPreemptivePriorityScheduling {
     }
 
     public static void main(String[] args) {
-        Process[] processes = {
-                new Process(1, 10, 2),
-                new Process(2, 5, 1),
-                new Process(3, 8, 3)
-        };
+        Process[] processes = {new Process(1, 10, 2), new Process(2, 5, 1), new Process(3, 8, 3)};
 
         Process[] executionOrder = scheduleProcesses(processes);
 
