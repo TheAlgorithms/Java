@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Treap -> Tree + Heap
  * Also called as cartesian tree
- * 
+ *
  * @see
  * <a href = "https://cp-algorithms.com/data_structures/treap.html" />
  */
@@ -15,23 +15,23 @@ public class Treap {
     public class TreapNode {
         /**
          * TreapNode class defines the individual nodes in the Treap
-         * 
+         *
          * value -> holds the value of the node. 
          * Binary Search Tree is built based on value.
-         * 
+         *
          * priority -> holds the priority of the node. 
          * Heaps are maintained based on priority.
          * It is randomly assigned
-         * 
+         *
          * size -> holds the size of the subtree with current node as root
-         * 
+         *
          * left -> holds the left subtree
          * right -> holds the right subtree
          */
         public int value;
         private int priority, size;
         public TreapNode left, right;
-    
+
         public TreapNode(int value, int priority) {
             this.value = value;
             this.priority = priority;
@@ -58,7 +58,7 @@ public class Treap {
 
     /**
      * Constructors
-     * 
+     *
      * Treap() -> create an empty Treap
      * Treap(int[] nodeValues) -> add the elements given in the array to the Treap
      */
@@ -72,7 +72,7 @@ public class Treap {
 
     /**
      * merges two Treaps left and right into a single Treap
-     * 
+     *
      * @param left left Treap
      * @param right right Treap
      * @return root of merged Treap
@@ -94,7 +94,7 @@ public class Treap {
 
     /**
      * split the Treap into two Treaps where left Treap has nodes <= key and right Treap has nodes > key
-     * 
+     *
      * @param node root node to be split
      * @param key key to compare the nodes
      * @return TreapNode array of size 2.
@@ -130,7 +130,7 @@ public class Treap {
      * @return root of the Treap where the value is inserted
      */
     public TreapNode insert(int value) {
-        if (root == null){
+        if (root == null) {
             root = new TreapNode(value, random.nextInt());
             return root;
         }
@@ -142,7 +142,7 @@ public class Treap {
         TreapNode tempMerged = merge(splitted[0], node);
         tempMerged.updateSize();
 
-        TreapNode merged =merge(tempMerged, splitted[1]);
+        TreapNode merged = merge(tempMerged, splitted[1]);
         merged.updateSize();
 
         root = merged;
@@ -152,7 +152,7 @@ public class Treap {
 
     /**
      * delete a value from root if present
-     * 
+     *
      * @param value value to be deleted from the Treap
      * @return root of the Treap where delete has been performed
      */
@@ -171,7 +171,7 @@ public class Treap {
         } else {
             root = merge(root.left, root.right);
         }
-        
+
         if (root != null) root.updateSize();
         return root;
     } 
@@ -238,14 +238,17 @@ public class Treap {
     private TreapNode searchVal(TreapNode root, int value) {
         if (root == null) return null;
 
-        if (root.value == value) return root;
-        else if(root.value < value) return searchVal(root.right, value);
-        else return searchVal(root.left, value);
+        if (root.value == value) 
+            return root;
+        else if(root.value < value) 
+            return searchVal(root.right, value);
+        else 
+            return searchVal(root.left, value);
     }
 
     /**
      * find the lowerBound of a value in the Treap
-     * 
+     *
      * @param value value for which lowerBound is to be found
      * @return node which is the lowerBound of the value passed
      */
@@ -257,7 +260,7 @@ public class Treap {
             if (current.value >= value) {
                 lowerBoundNode = current;
                 current = current.left;
-            } else 
+            } else
                 current = current.right;
         }
 
@@ -266,7 +269,7 @@ public class Treap {
 
     /**
      * find the upperBound of a value in the Treap
-     * 
+     *
      * @param value value for which upperBound is to be found
      * @return node which is the upperBound of the value passed
      */

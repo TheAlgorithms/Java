@@ -13,7 +13,7 @@ public class TreapTest {
         assertEquals("{1,2,3,5,6,8,9,}", treap.inOrder());
     }
 
-    @Test 
+    @Test
     void build() {
         Treap treap = new Treap();
         treap.insert(4);
@@ -52,13 +52,15 @@ public class TreapTest {
         assertEquals(5, treap.lowerBound(4));
     }
 
-    @Test upperBound() {
+    @Test 
+    void upperBound() {
         int[] arr = {5, 9, 6, 2, 3, 8, 1};
         Treap treap = new Treap(arr);
         assertEquals(6, treap.upperBound(5));
     }
 
-    @Test misc() {
+    @Test 
+    void misc() {
         int[] arr = {5, 9, 6, 2, 3, 8, 1};
         Treap treap = new Treap(arr);
         assertEquals(7, treap.size());
