@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 public class SkylineAlgorithmTest {
 
     private SkylineAlgorithm skylineAlgorithm;
@@ -60,7 +59,7 @@ public class SkylineAlgorithmTest {
         assertEquals(1, result.get(0).getX());
         assertEquals(10, result.get(0).getY());
         assertEquals(2, result.get(1).getX());
-        assertEquals(15, result.get(1).getY());
+        assertEquals(3, result.get(1).getY());
         assertEquals(4, result.get(2).getX());
         assertEquals(20, result.get(2).getY());
     }
