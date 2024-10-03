@@ -10,9 +10,6 @@ import java.util.Stack;
  *
  * Avoid using parentheses/brackets/braces for the prefix string.
  * Prefix Expressions don't require these.
- *
- * @author OpenAI
- *
  */
 
 public final class PrefixToInfix {
