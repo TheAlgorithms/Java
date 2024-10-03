@@ -29,12 +29,14 @@ public class Treap {
          * right -> holds the right subtree
          */
         public int value;
-        private int priority, size;
-        public TreapNode left, right;
+        private int priority;
+        private int size;
+        public TreapNode left;
+        public TreapNode right;
 
-        public TreapNode(int _value, int _priority) {
-            value = _value;
-            priority = _priority;
+        public TreapNode(int valueParam, int priorityParam) {
+            value = valueParam;
+            priority = priorityParam;
             size = 1;
             left = right = null;
         }
@@ -44,8 +46,12 @@ public class Treap {
          */
         private void updateSize() {
             size = 1;
-            if (left != null) size += left.size;
-            if (right != null) size += right.size;
+            if (left != null) {
+                size += left.size;
+            }
+            if (right != null) {
+                size += right.size;
+            }
         }
     }
 
@@ -74,8 +80,12 @@ public class Treap {
      * @return root of merged Treap
      */
     private TreapNode merge(TreapNode left, TreapNode right) {
-        if (left == null) return right;
-        if (right == null) return left;
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
 
         if (left.priority > right.priority) {
             left.right = merge(left.right, right);
@@ -158,7 +168,9 @@ public class Treap {
     }
 
     private TreapNode deleteNode(TreapNode root, int value) {
-        if (root == null) return null;
+        if (root == null) {
+            return null;
+        }
 
         if (value < root.value) {
             root.left = deleteNode(root.left, value);
@@ -168,7 +180,9 @@ public class Treap {
             root = merge(root.left, root.right);
         }
 
-        if (root != null) root.updateSize();
+        if (root != null) {
+            root.updateSize();
+        }
         return root;
     }
 
@@ -182,7 +196,9 @@ public class Treap {
     }
 
     private void printInorder(TreapNode root) {
-        if (root == null) return;
+        if (root == null) {
+            return;
+        }
         printInorder(root.left);
         System.out.print(root.value + ",");
         printInorder(root.right);
@@ -198,7 +214,9 @@ public class Treap {
     }
 
     private void printPreOrder(TreapNode root) {
-        if (root == null) return;
+        if (root == null) {
+            return;
+        }
         System.out.print(root.value + ",");
         printPreOrder(root.left);
         printPreOrder(root.right);
@@ -214,7 +232,9 @@ public class Treap {
     }
 
     private void printPostOrder(TreapNode root) {
-        if (root == null) return;
+        if (root == null) {
+            return;
+        }
         printPostOrder(root.left);
         printPostOrder(root.right);
         System.out.print(root.value + ",");
@@ -232,14 +252,19 @@ public class Treap {
     }
 
     private TreapNode searchVal(TreapNode root, int value) {
-        if (root == null) return null;
+        if (root == null) {
+            return null;
+        }
 
-        if (root.value == value)
+        if (root.value == value) {
             return root;
-        else if (root.value < value)
+        }
+        else if (root.value < value) {
             return searchVal(root.right, value);
-        else
+        }
+        else {
             return searchVal(root.left, value);
+        }
     }
 
     /**
@@ -288,7 +313,9 @@ public class Treap {
      * returns size of the Treap
      */
     public int size() {
-        if (root == null) return 0;
+        if (root == null) {
+            return 0;
+        }
         return root.size;
     }
 
