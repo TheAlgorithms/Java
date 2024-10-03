@@ -12,9 +12,9 @@ public final class TowerOfHanoiTest {
 
         int n = 5;
         String[] expected = {"Take disk 1 from rod A to rod B", "Take disk 2 from rod A to rod C", "Take disk 1 from rod B to rod C", "Take disk 3 from rod A to rod B", "Take disk 1 from rod C to rod A", "Take disk 2 from rod C to rod B", "Take disk 1 from rod A to rod B",
-                "Take disk 4 from rod A to rod C", "Take disk 1 from rod B to rod C", "Take disk 2 from rod B to rod A", "Take disk 1 from rod C to rod A", "Take disk 3 from rod B to rod C", "Take disk 1 from rod A to rod B", "Take disk 2 from rod A to rod C", "Take disk 1 from rod B to rod C",
-                "Take disk 5 from rod A to rod B", "Take disk 1 from rod C to rod A", "Take disk 2 from rod C to rod B", "Take disk 1 from rod A to rod B", "Take disk 3 from rod C to rod A", "Take disk 1 from rod B to rod C", "Take disk 2 from rod B to rod A", "Take disk 1 from rod C to rod A",
-                "Take disk 4 from rod C to rod B", "Take disk 1 from rod A to rod B", "Take disk 2 from rod A to rod C", "Take disk 1 from rod B to rod C", "Take disk 3 from rod A to rod B", "Take disk 1 from rod C to rod A", "Take disk 2 from rod C to rod B", "Take disk 1 from rod A to rod B"};
+            "Take disk 4 from rod A to rod C", "Take disk 1 from rod B to rod C", "Take disk 2 from rod B to rod A", "Take disk 1 from rod C to rod A", "Take disk 3 from rod B to rod C", "Take disk 1 from rod A to rod B", "Take disk 2 from rod A to rod C", "Take disk 1 from rod B to rod C",
+            "Take disk 5 from rod A to rod B", "Take disk 1 from rod C to rod A", "Take disk 2 from rod C to rod B", "Take disk 1 from rod A to rod B", "Take disk 3 from rod C to rod A", "Take disk 1 from rod B to rod C", "Take disk 2 from rod B to rod A", "Take disk 1 from rod C to rod A",
+            "Take disk 4 from rod C to rod B", "Take disk 1 from rod A to rod B", "Take disk 2 from rod A to rod C", "Take disk 1 from rod B to rod C", "Take disk 3 from rod A to rod B", "Take disk 1 from rod C to rod A", "Take disk 2 from rod C to rod B", "Take disk 1 from rod A to rod B"};
 
         List<String> actual = TowerOfHanoi.towerOfHanoi(n);
         assertArrayEquals(expected, actual.toArray());
