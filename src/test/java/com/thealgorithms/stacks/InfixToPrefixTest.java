@@ -1,8 +1,10 @@
 package com.thealgorithms.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,6 +15,18 @@ public class InfixToPrefixTest {
     @MethodSource("provideValidExpressions")
     void testValidExpressions(String infix, String expectedPrefix) throws Exception {
         assertEquals(expectedPrefix, InfixToPrefix.infix2Prefix(infix));
+    }
+
+    @Test
+    void testEmptyString() {
+        // Assuming that an empty string returns an empty prefix or throws an exception
+        assertEquals("", InfixToPrefix.infix2Prefix(""));
+    }
+
+    @Test
+    void testNullValue() {
+        // Assuming that a null input throws a NullPointerException
+        assertThrows(NullPointerException.class, () -> InfixToPrefix.infix2Prefix(null));
     }
 
     private static Stream<Arguments> provideValidExpressions() {

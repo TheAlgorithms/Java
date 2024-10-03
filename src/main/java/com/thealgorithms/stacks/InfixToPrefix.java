@@ -13,11 +13,21 @@ public final class InfixToPrefix {
      *
      * @param infixExpression the infix expression to convert
      * @return the prefix expression
-     * @throws Exception if the infix expression has unbalanced brackets
+     * @throws IllegalArgumentException if the infix expression has unbalanced brackets
+     * @throws NullPointerException     if the infix expression is null
      */
-    public static String infix2Prefix(String infixExpression) throws Exception {
+    public static String infix2Prefix(String infixExpression) throws IllegalArgumentException {
+        // Check for unbalanced brackets
         if (!BalancedBrackets.isBalanced(filterBrackets(infixExpression))) {
-            throw new Exception("invalid expression");
+            throw new IllegalArgumentException("invalid expression");
+        }
+        // Null input
+        if (infixExpression == null) {
+            throw new NullPointerException("null input");
+        }
+        // Empty string
+        if (infixExpression.isEmpty()) {
+            return "";
         }
         StringBuilder output = new StringBuilder();
         Stack<Character> stack = new Stack<>();
