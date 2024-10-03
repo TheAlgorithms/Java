@@ -31,7 +31,7 @@ public class SudokuTest {
     /**
      * Parameterized test to check the solution of a Sudoku board.
      *
-     * @param board  The initial Sudoku board to solve.
+     * @param board          The initial Sudoku board to solve.
      * @param expectedResult Expected result - true if solvable, false otherwise.
      */
     @ParameterizedTest
@@ -43,29 +43,30 @@ public class SudokuTest {
     }
 
     /**
-     * Parameterized test to check if the number can be safely placed at a given cell.
+     * Parameterized test to check if the number can be safely placed at a given
+     * cell.
      *
-     * @param board The Sudoku board to check.
-     * @param row The row index of the cell.
-     * @param col The column index of the cell.
-     * @param num The number to place.
+     * @param board          The Sudoku board to check.
+     * @param row            The row index of the cell.
+     * @param col            The column index of the cell.
+     * @param num            The number to place.
      * @param expectedResult True if the placement is valid, false otherwise.
      */
     @ParameterizedTest
-    @CsvSource({"'5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;0,9,8,0,0,0,0,6,0;8,0,0,0,6,0,0,0,3;4,0,0,8,0,3,0,0,1;7,0,0,0,2,0,0,0,6;0,6,0,0,0,0,2,8,0;0,0,0,4,1,9,0,0,5;0,0,0,0,8,0,0,7,9', 0, 2, 4, false",
+    @CsvSource({
+            "'5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;0,9,8,0,0,0,0,6,0;8,0,0,0,6,0,0,0,3;4,0,0,8,0,3,0,0,1;7,0,0,0,2,0,0,0,6;0,6,0,0,0,0,2,8,0;0,0,0,4,1,9,0,0,5;0,0,0,0,8,0,0,7,9', 0, 2, 4, false",
 
-    
-    "'5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;0,9,8,0,0,0,0,6,0;8,0,0,0,6,0,0,0,3;4,0,0,8,0,3,0,0,1;7,0,0,0,2,0,0,0,6;0,6,0,0,0,0,2,8,0;0,0,0,4,1,9,0,0,5;0,0,0,0,8,0,0,7,9', 0, 2, 9, true"})
+            "'5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;0,9,8,0,0,0,0,6,0;8,0,0,0,6,0,0,0,3;4,0,0,8,0,3,0,0,1;7,0,0,0,2,0,0,0,6;0,6,0,0,0,0,2,8,0;0,0,0,4,1,9,0,0,5;0,0,0,0,8,0,0,7,9', 0, 2, 9, true" })
 
-    void
-    testIsSafe(String boardString, int row, int col, int num, boolean expectedResult) {
+    void testIsSafe(String boardString, int row, int col, int num, boolean expectedResult) {
         int[][] board = parseBoard(boardString);
         assertEquals(expectedResult, Sudoku.isSafe(board, row, col, num));
     }
 
     /**
      * Helper method to parse a board from a string.
-     * The board string is expected to have semicolon-separated rows with comma-separated values.
+     * The board string is expected to have semicolon-separated rows with
+     * comma-separated values.
      *
      * @param boardString The board represented as a string.
      * @return The parsed 2D int array representing the Sudoku board.
