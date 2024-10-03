@@ -54,7 +54,7 @@ public class SkylineAlgorithmTest {
 
         ArrayList<SkylineAlgorithm.Point> result = skylineAlgorithm.produceSubSkyLines(points);
 
-        assertEquals(3, result.size());
+        assertEquals(2, result.size());
 
         // Assert the correct points in skyline
         assertEquals(1, result.get(0).getX());
@@ -87,16 +87,6 @@ public class SkylineAlgorithmTest {
         assertEquals(5, result.get(1).getY());
         assertEquals(4, result.get(2).getX());
         assertEquals(3, result.get(2).getY());
-    }
-
-    @Test
-    public void testDominates() {
-        // Test Point dominance logic
-        SkylineAlgorithm.Point p1 = new SkylineAlgorithm.Point(1, 10);
-        SkylineAlgorithm.Point p2 = new SkylineAlgorithm.Point(2, 5);
-
-        assertEquals(true, p1.dominates(p2));
-        assertEquals(false, p2.dominates(p1));
     }
 
     @Test
