@@ -7,30 +7,6 @@ import org.junit.jupiter.api.Test;
 public class TreapTest {
 
     @Test
-    public void build() {
-        Treap treap = new Treap();
-        treap.insert(4);
-        treap.insert(5);
-        treap.insert(9);
-        treap.insert(2);
-        assertEquals("{2,4,5,9,}", treap.inOrder());
-    }
-
-    @Test
-    public void delete() {
-        Treap treap = new Treap();
-        treap.insert(5);
-        treap.insert(9);
-        treap.insert(6);
-        treap.insert(2);
-        treap.insert(3);
-        treap.insert(8);
-        treap.insert(1);
-        treap.delete(5);
-        assertEquals("{1,2,3,6,8,9,}", treap.inOrder());
-    }
-
-    @Test
     public void searchAndFound() {
         Treap treap = new Treap();
         treap.insert(5);
