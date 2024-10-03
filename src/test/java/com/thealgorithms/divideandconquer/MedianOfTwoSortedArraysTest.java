@@ -18,7 +18,7 @@ public class MedianOfTwoSortedArraysTest {
         assertEquals(4.5, MedianOfTwoSortedArrays.findMedianSortedArrays(new int[] {1, 2, 8}, new int[] {3, 4, 5, 6, 7}));
 
         // Test case 4: Arrays with odd total length
-        assertEquals(3.0, MedianOfTwoSortedArrays.findMedianSortedArrays(new int[] {1, 2, 8}, new int[] {3, 4, 5}));
+        assertEquals(3.5, MedianOfTwoSortedArrays.findMedianSortedArrays(new int[] {1, 2, 8}, new int[] {3, 4, 5}));
 
         // Test case 5: Single element arrays
         assertEquals(2.0, MedianOfTwoSortedArrays.findMedianSortedArrays(new int[] {1}, new int[] {3}));
