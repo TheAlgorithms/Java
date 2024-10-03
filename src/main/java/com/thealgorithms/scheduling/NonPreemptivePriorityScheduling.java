@@ -11,12 +11,15 @@ import java.util.PriorityQueue;
  */
 public class NonPreemptivePriorityScheduling {
 
+    private NonPreemptivePriorityScheduling() {
+    }
+
     static class Process implements Comparable<Process> {
         int id; // Process ID
         int burstTime; // Time required by the process for execution
         int priority; // Priority of the process (lower value indicates higher priority)
 
-        public Process(int id, int burstTime, int priority) {
+        Process(int id, int burstTime, int priority) {
             this.id = id;
             this.burstTime = burstTime;
             this.priority = priority;
