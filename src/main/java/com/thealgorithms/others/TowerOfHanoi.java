@@ -9,6 +9,7 @@ import java.util.Scanner;
  * the puzzle.
  * The main function interacts with the user to get the number of discs and
  * calls the recursive {@code shift} function to perform the moves.
+ * Wikipedia: https://en.wikipedia.org/wiki/Tower_of_Hanoi
  */
 final class TowerOfHanoi {
 
@@ -16,7 +17,7 @@ final class TowerOfHanoi {
     }
 
     /**
-     * Recursively solves the Tower of Hanoi puzzle by moving discs between poles.
+     * Recursively solve the Tower of Hanoi puzzle by moving discs between poles.
      *
      * @param n                The number of discs to move.
      * @param startPole        The name of the start pole.
