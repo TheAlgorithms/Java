@@ -18,10 +18,10 @@ public class InfixToPrefixTest {
 
     private static Stream<Arguments> provideValidExpressions() {
         return Stream.of(
-            Arguments.of("3+2", "+32"),  // Simple addition
-            Arguments.of("1+(2+3)", "+1+23"),  // Parentheses
-            Arguments.of("(3+4)*5-6", "-*+3456"),  // Nested operations
-            Arguments.of("a+b*c", "+a*bc")  // Multiplication precedence
+            Arguments.of("3+2", "+32"), // Simple addition
+            Arguments.of("1+(2+3)", "+1+23"), // Parentheses
+            Arguments.of("(3+4)*5-6", "-*+3456"), // Nested operations
+            Arguments.of("a+b*c", "+a*bc") // Multiplication precedence
         );
     }
 
@@ -34,8 +34,8 @@ public class InfixToPrefixTest {
 
     private static Stream<Arguments> provideInvalidExpressions() {
         return Stream.of(
-            Arguments.of("((a+b)*c-d", "invalid expression"),  // Missing closing bracket
-            Arguments.of("a++b", "invalid expression")  // Invalid operator
+            Arguments.of("((a+b)*c-d", "invalid expression"), // Missing closing bracket
+            Arguments.of("a++b", "invalid expression") // Invalid operator
         );
     }
 }
