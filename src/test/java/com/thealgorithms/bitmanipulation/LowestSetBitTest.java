@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test case for Lowest Set Bit
+ * @author Prayas Kumar (https://github.com/prayas7102)
+ */
+
 public class LowestSetBitTest {
 
     @Test
