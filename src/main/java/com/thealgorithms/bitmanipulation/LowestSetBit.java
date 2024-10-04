@@ -5,7 +5,7 @@ package com.thealgorithms.bitmanipulation;
  * @author Prayas Kumar (https://github.com/prayas7102)
  */
 
-public class LowestSetBit {
+public final class LowestSetBit {
     // Private constructor to hide the default public one
     private LowestSetBit() {
     }
