@@ -9,7 +9,7 @@ package com.thealgorithms.ciphers;
  *
  * @author bennybebo
  */
-public class AutokeyCipher {
+public class Autokey {
 
     // Encrypts the plaintext using the Autokey cipher
     public String encrypt(String plaintext, String keyword) {
