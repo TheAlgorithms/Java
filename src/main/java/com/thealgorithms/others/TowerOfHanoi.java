@@ -49,8 +49,7 @@ final class TowerOfHanoi {
     /**
      * The main method that starts the Tower of Hanoi puzzle solution.
      * It prompts the user for the number of discs and invokes the {@code shift}
-     * function
-     * to begin solving the puzzle.
+     * function to begin solving the puzzle.
      *
      * @param args Command-line arguments (not used in this case).
      */
