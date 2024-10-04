@@ -107,6 +107,7 @@
               * [ConnectedComponent](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/ConnectedComponent.java)
               * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/Cycles.java)
               * [DijkstraAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithm.java)
+              * [EdmondsBlossomAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithm.java)
               * [FloydWarshall](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/FloydWarshall.java)
               * [FordFulkerson](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/FordFulkerson.java)
               * [Graphs](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/Graphs.java)
@@ -155,6 +156,7 @@
               * [SearchSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SearchSinglyLinkedListRecursion.java)
               * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SinglyLinkedList.java)
               * [SkipList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SkipList.java)
+              * [SortedLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SortedLinkedList.java)
             * [Node](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/Node.java)
             * queues
               * [CircularQueue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/CircularQueue.java)
@@ -236,6 +238,7 @@
             * [KnapsackMemoization](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/KnapsackMemoization.java)
             * [LevenshteinDistance](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LevenshteinDistance.java)
             * [LongestAlternatingSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequence.java)
+            * [LongestArithmeticSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequence.java)
             * [LongestCommonSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestCommonSubsequence.java)
             * [LongestIncreasingSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequence.java)
             * [LongestPalindromicSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubsequence.java)
@@ -267,6 +270,7 @@
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [GaleShapley](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/GaleShapley.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
+            * [MergeIntervals](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MergeIntervals.java)
             * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
@@ -396,7 +400,6 @@
             * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromePrime.java)
             * [PalindromeSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromeSinglyLinkedList.java)
             * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/RangeInSortedArray.java)
-            * [Sort012D](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sort012D.java)
             * [Sparsity](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/Sparsity.java)
             * [ThreeSumProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/ThreeSumProblem.java)
             * [TwoSumProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/TwoSumProblem.java)
@@ -450,6 +453,8 @@
             * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TowerOfHanoi.java)
             * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TwoPointers.java)
             * [Verhoeff](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Verhoeff.java)
+          * Recursion
+            * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
@@ -499,7 +504,6 @@
             * [CombSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CombSort.java)
             * [CountingSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CountingSort.java)
             * [CycleSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/CycleSort.java)
-            * [DNFSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DNFSort.java)
             * [DualPivotQuickSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DualPivotQuickSort.java)
             * [DutchNationalFlagSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/DutchNationalFlagSort.java)
             * [ExchangeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/ExchangeSort.java)
@@ -659,6 +663,7 @@
             * graphs
               * [BoruvkaAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithmTest.java)
               * [DijkstraAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithmTest.java)
+              * [EdmondsBlossomAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithmTest.java)
               * [FordFulkersonTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FordFulkersonTest.java)
               * [HamiltonianCycleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/HamiltonianCycleTest.java)
               * [KosarajuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/KosarajuTest.java)
@@ -683,6 +688,7 @@
               * [RotateSinglyLinkedListsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/RotateSinglyLinkedListsTest.java)
               * [SinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SinglyLinkedListTest.java)
               * [SkipListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SkipListTest.java)
+              * [SortedLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/SortedLinkedListTest.java)
             * queues
               * [CircularQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/CircularQueueTest.java)
               * [DequeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/DequeTest.java)
@@ -728,6 +734,7 @@
             * [KnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/KnapsackTest.java)
             * [LevenshteinDistanceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LevenshteinDistanceTests.java)
             * [LongestAlternatingSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequenceTest.java)
+            * [LongestArithmeticSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequenceTest.java)
             * [LongestIncreasingSubsequenceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequenceTests.java)
             * [LongestPalindromicSubstringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubstringTest.java)
             * [LongestValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestValidParenthesesTest.java)
@@ -752,6 +759,7 @@
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [GaleShapleyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/GaleShapleyTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
+            * [MergeIntervalsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MergeIntervalsTest.java)
             * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
@@ -891,6 +899,8 @@
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
+          * Recursion
+            * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
