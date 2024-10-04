@@ -17,18 +17,17 @@ public final class InfixToPrefix {
      * @throws NullPointerException     if the infix expression is null
      */
     public static String infix2Prefix(String infixExpression) throws IllegalArgumentException {
-        // Check for unbalanced brackets
-        if (!BalancedBrackets.isBalanced(filterBrackets(infixExpression))) {
-            throw new IllegalArgumentException("invalid expression");
-        }
-        // Null input
         if (infixExpression == null) {
-            throw new NullPointerException("null input");
+            throw new NullPointerException("Input expression cannot be null.");
         }
-        // Empty string
+        infixExpression = infixExpression.trim();
         if (infixExpression.isEmpty()) {
             return "";
         }
+        if (!BalancedBrackets.isBalanced(filterBrackets(infixExpression))) {
+            throw new IllegalArgumentException("Invalid expression: unbalanced brackets.");
+        }
+
         StringBuilder output = new StringBuilder();
         Stack<Character> stack = new Stack<>();
         // Reverse the infix expression for prefix conversion
