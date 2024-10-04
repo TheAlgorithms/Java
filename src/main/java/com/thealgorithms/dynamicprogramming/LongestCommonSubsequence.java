@@ -95,25 +95,4 @@ final class LongestCommonSubsequence {
 
         return lcs.reverse().toString(); // LCS built in reverse, so reverse it back
     }
-
-    /**
-     * Main method to run a sample test for the LCS implementation.
-     *
-     * @param args Command-line arguments (not used in this case).
-     */
-    public static void main(String[] args) {
-        String str1 = "DSGSHSRGSRHTRD";
-        String str2 = "DATRGAGTSHS";
-
-        // Get the LCS of str1 and str2
-        String lcs = getLCS(str1, str2);
-
-        // Print the results
-        if (lcs != null) {
-            System.out.println("String 1: " + str1);
-            System.out.println("String 2: " + str2);
-            System.out.println("Longest Common Subsequence (LCS): " + lcs);
-            System.out.println("LCS length: " + lcs.length());
-        }
-    }
 }
