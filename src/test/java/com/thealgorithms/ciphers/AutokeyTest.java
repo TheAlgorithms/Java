@@ -18,19 +18,19 @@ class AutokeyCipherTest {
         String cipherText = autokeyCipher.encrypt(plaintext, keyword);
 
         // then
-        assertEquals("QKUC YT DVZN", cipherText);
+        assertEquals("CYIXNFHEPN", cipherText);
     }
 
     @Test
     void autokeyDecryptTest() {
         // given
-        String ciphertext = "QKUC YT DVZN";
+        String ciphertext = "CYIX NF HEPN";
         String keyword = "QUEEN";
 
         // when
         String plainText = autokeyCipher.decrypt(ciphertext, keyword);
 
         // then
-        assertEquals("MEET AT DAWN", plainText);
+        assertEquals("MEETATDAWN", plainText);
     }
 }
