@@ -1,7 +1,5 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.Scanner;
-
 /**
  * Trie Data structure implementation without any libraries.
  * <p>
