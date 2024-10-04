@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class AutokeyCipherTest {
 
-    AutokeyCipher autokeyCipher = new AutokeyCipher();
+    Autokey autokeyCipher = new Autokey();
 
     @Test
     void autokeyEncryptTest() {
