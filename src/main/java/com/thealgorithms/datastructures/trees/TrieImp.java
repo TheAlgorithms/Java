@@ -29,8 +29,8 @@ public class TrieImp {
         boolean end;
 
         /**
-         * Constructor to initialize a TrieNode with an empty child array and set end to
-         * false.
+         * Constructor to initialize a TrieNode with an empty child array
+         * and set end to false.
          */
         public TrieNode() {
             child = new TrieNode[26];
