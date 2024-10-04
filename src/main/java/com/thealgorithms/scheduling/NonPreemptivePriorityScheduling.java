@@ -5,9 +5,8 @@ import java.util.PriorityQueue;
 /**
  * This class implements the Non-Preemptive Priority Scheduling algorithm.
  * Processes are executed in order of their priority. The process with the
- * highest priority (lower priority number) is executed first, and once a process starts
- * executing,
- * it cannot be preempted.
+ * highest priority (lower priority number) is executed first,
+ * and once a process starts executing, it cannot be preempted.
  */
 public final class NonPreemptivePriorityScheduling {
 
