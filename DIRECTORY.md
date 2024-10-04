@@ -552,6 +552,7 @@
             * [NextGreaterElement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/NextGreaterElement.java)
             * [NextSmallerElement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/NextSmallerElement.java)
             * [PostfixToInfix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/PostfixToInfix.java)
+            * [PrefixToInfix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/PrefixToInfix.java)
             * [StackPostfixNotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/StackPostfixNotation.java)
           * strings
             * [AhoCorasick](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/AhoCorasick.java)
@@ -984,6 +985,7 @@
             * [NextGreaterElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextGreaterElementTest.java)
             * [NextSmallerElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextSmallerElementTest.java)
             * [PostfixToInfixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/PostfixToInfixTest.java)
+            * [PrefixToInfixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/PrefixToInfixTest.java)
             * [StackPostfixNotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/StackPostfixNotationTest.java)
           * strings
             * [AhoCorasickTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/AhoCorasickTest.java)
