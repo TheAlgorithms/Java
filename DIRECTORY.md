@@ -268,6 +268,7 @@
           * greedyalgorithms
             * [ActivitySelection](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
             * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/CoinChange.java)
+            * [DigitSeparation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/DigitSeparation.java)
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [GaleShapley](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/GaleShapley.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
@@ -545,6 +546,7 @@
             * [DecimalToAnyUsingStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/DecimalToAnyUsingStack.java)
             * [DuplicateBrackets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/DuplicateBrackets.java)
             * [InfixToPostfix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/InfixToPostfix.java)
+            * [InfixToPrefix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/InfixToPrefix.java)
             * [LargestRectangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/LargestRectangle.java)
             * [MaximumMinimumWindow](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/MaximumMinimumWindow.java)
             * [NextGreaterElement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/NextGreaterElement.java)
@@ -759,6 +761,7 @@
           * greedyalgorithms
             * [ActivitySelectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/ActivitySelectionTest.java)
             * [CoinChangeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/CoinChangeTest.java)
+            * [DigitSeparationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/DigitSeparationTest.java)
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [GaleShapleyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/GaleShapleyTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
@@ -976,6 +979,7 @@
             * [DecimalToAnyUsingStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/DecimalToAnyUsingStackTest.java)
             * [DuplicateBracketsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/DuplicateBracketsTest.java)
             * [InfixToPostfixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/InfixToPostfixTest.java)
+            * [InfixToPrefixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/InfixToPrefixTest.java)
             * [LargestRectangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/LargestRectangleTest.java)
             * [NextGreaterElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextGreaterElementTest.java)
             * [NextSmallerElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextSmallerElementTest.java)
