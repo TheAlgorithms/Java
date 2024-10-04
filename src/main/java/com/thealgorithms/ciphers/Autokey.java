@@ -8,6 +8,7 @@ import java.util.Map;
  * as it improves upon the classic Vigenère Cipher by using the plaintext itself to 
  * extend the key. This makes it harder to break using frequency analysis, as it 
  * doesn’t rely solely on a repeated key.
+ * https://en.wikipedia.org/wiki/Autokey_cipher
  * 
  * @author bennybebo
  */
