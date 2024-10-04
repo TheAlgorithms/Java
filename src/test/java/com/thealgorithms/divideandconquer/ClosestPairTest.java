@@ -9,7 +9,6 @@ public class ClosestPairTest {
 
     @Test
     public void testBuildLocation() {
-        // Test creating a point using the buildLocation method
         ClosestPair cp = new ClosestPair(1);
         ClosestPair.Location point = cp.buildLocation(3.0, 4.0);
         assertNotNull(point);
@@ -19,7 +18,6 @@ public class ClosestPairTest {
 
     @Test
     public void testCreateLocation() {
-        // Test creating an array of locations using the createLocation method
         ClosestPair cp = new ClosestPair(5);
         ClosestPair.Location[] locations = cp.createLocation(5);
         assertNotNull(locations);
@@ -28,7 +26,6 @@ public class ClosestPairTest {
 
     @Test
     public void testXPartition() {
-        // Test xPartition method: Sorting points by x-coordinate
         ClosestPair cp = new ClosestPair(5);
         ClosestPair.Location[] points = new ClosestPair.Location[5];
         points[0] = cp.buildLocation(2.0, 3.0);
@@ -48,7 +45,6 @@ public class ClosestPairTest {
 
     @Test
     public void testYPartition() {
-        // Test yPartition method: Sorting points by y-coordinate
         ClosestPair cp = new ClosestPair(5);
         ClosestPair.Location[] points = new ClosestPair.Location[5];
         points[0] = cp.buildLocation(2.0, 3.0);
@@ -68,7 +64,6 @@ public class ClosestPairTest {
 
     @Test
     public void testBruteForce() {
-        // Test bruteForce method to handle 2 points
         ClosestPair cp = new ClosestPair(2);
         ClosestPair.Location loc1 = cp.buildLocation(1.0, 2.0);
         ClosestPair.Location loc2 = cp.buildLocation(4.0, 6.0);
