@@ -68,8 +68,8 @@ final class LongestCommonSubsequence {
      *
      * @param str1      The first string.
      * @param str2      The second string.
-     * @param lcsMatrix The matrix storing the lengths of LCSs of substrings of str1
-     *                  and str2.
+     * @param lcsMatrix The matrix storing the lengths of LCSs
+     *                  of substrings of str1 and str2.
      * @return The LCS string.
      */
     public static String lcsString(String str1, String str2, int[][] lcsMatrix) {
