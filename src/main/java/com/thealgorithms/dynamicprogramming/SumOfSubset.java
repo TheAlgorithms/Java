@@ -16,7 +16,7 @@ public final class SumOfSubset {
 
     /**
      * Determines if there exists a subset of elements in the array `arr` that
-     * adds up to the given `key` value.
+     * adds up to the given `key` value using recursion.
      *
      * @param arr The array of integers.
      * @param num The index of the current element being considered.
