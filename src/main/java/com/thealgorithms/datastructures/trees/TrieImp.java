@@ -25,19 +25,16 @@ public class TrieImp {
      */
     public class TrieNode {
 
-        // Array to store references to child nodes, one for each letter of the alphabet
-        // (a-z)
         TrieNode[] child;
-
-        boolean end; // Flag to indicate if this node marks the end of a valid word
+        boolean end;
 
         /**
          * Constructor to initialize a TrieNode with an empty child array and set end to
          * false.
          */
         public TrieNode() {
-            child = new TrieNode[26]; // Initialize child array with 26 slots (for each letter a-z)
-            end = false; // By default, this node doesn't mark the end of any word
+            child = new TrieNode[26];
+            end = false;
         }
     }
 
@@ -48,31 +45,28 @@ public class TrieImp {
      * The root node is created but doesn't represent any character.
      */
     public TrieImp() {
-        root = new TrieNode(); // Initialize the root node of the Trie
+        root = new TrieNode();
     }
 
     /**
      * Inserts a word into the Trie.
      * <p>
      * The method traverses the Trie from the root, character by character, and adds
-     * nodes
-     * if necessary. It marks the last node of the word as an end node.
+     * nodes if necessary. It marks the last node of the word as an end node.
      *
      * @param word The word to be inserted into the Trie.
      */
     public void insert(String word) {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
-            // Calculate index of character ('a' -> 0, 'b' -> 1, ..., 'z' -> 25)
             TrieNode node = currentNode.child[word.charAt(i) - 'a'];
             if (node == null) {
-                // If the node doesn't exist, create a new one and assign it to the child array
                 node = new TrieNode();
                 currentNode.child[word.charAt(i) - 'a'] = node;
             }
-            currentNode = node; // Move to the next node
+            currentNode = node;
         }
-        currentNode.end = true; // Mark the last node as the end of a word
+        currentNode.end = true;
     }
 
     /**
@@ -91,11 +85,11 @@ public class TrieImp {
             char ch = word.charAt(i);
             TrieNode node = currentNode.child[ch - 'a'];
             if (node == null) {
-                return false; // Word not found
+                return false;
             }
             currentNode = node;
         }
-        return currentNode.end; // Return true if it's an end node, false otherwise
+        return currentNode.end;
     }
 
     /**
@@ -115,16 +109,15 @@ public class TrieImp {
             char ch = word.charAt(i);
             TrieNode node = currentNode.child[ch - 'a'];
             if (node == null) {
-                return false; // Word not found
+                return false;
             }
             currentNode = node;
         }
         if (currentNode.end) {
-            // If the word exists, mark the end flag as false (word is deleted)
             currentNode.end = false;
             return true;
         }
-        return false; // Word doesn't exist
+        return false;
     }
 
     /**
@@ -147,77 +140,6 @@ public class TrieImp {
      * @return true if the word is valid (only a-z), false otherwise.
      */
     public static boolean isValid(String word) {
-        return word.matches("^[a-z]+$"); // Regex for lowercase letters only
-    }
-
-    /**
-     * Main method to demonstrate Trie operations using user input.
-     * <p>
-     * The user can choose between inserting a word, searching for a word,
-     * deleting a word, or quitting the program. It uses a loop to continuously
-     * ask for user input until the program is quit.
-     *
-     * @param args Command-line arguments (not used in this program).
-     */
-    public static void main(String[] args) {
-        TrieImp obj = new TrieImp();
-        String word;
-        @SuppressWarnings("resource") Scanner scan = new Scanner(System.in);
-
-        sop("string should contain only a-z character for all operation");
-
-        // Loop indefinitely until the user decides to quit
-        while (true) {
-            sop("1. Insert\n2. Search\n3. Delete\n4. Quit");
-            try {
-                int t = scan.nextInt();
-                switch (t) {
-                case 1:
-                    // Insert a word into the Trie
-                    word = scan.next();
-                    if (isValid(word)) {
-                        obj.insert(word);
-                        sop("Word inserted successfully");
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
-                    break;
-                case 2:
-                    // Search for a word in the Trie
-                    word = scan.next();
-                    boolean resS = false;
-                    if (isValid(word)) {
-                        resS = obj.search(word);
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
-                    sop(resS ? "Word found" : "Word not found");
-                    break;
-                case 3:
-                    // Delete a word from the Trie
-                    word = scan.next();
-                    boolean resD = false;
-                    if (isValid(word)) {
-                        resD = obj.delete(word);
-                    } else {
-                        sop("Invalid string: allowed only a-z");
-                    }
-                    sop(resD ? "Word deleted successfully" : "Word not found");
-                    break;
-                case 4:
-                    // Quit the program
-                    sop("Quit successfully");
-                    System.exit(1);
-                    break;
-                default:
-                    sop("Input int from 1-4");
-                    break;
-                }
-            } catch (Exception e) {
-                // Handle bad input
-                String badInput = scan.next();
-                sop("This is bad input: " + badInput);
-            }
-        }
+        return word.matches("^[a-z]+$");
     }
 }
