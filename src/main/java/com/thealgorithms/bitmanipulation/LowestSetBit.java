@@ -10,7 +10,6 @@ public class LowestSetBit {
      * @return the isolated lowest set bit of n
      */
     public static int isolateLowestSetBit(int n) {
-        // Isolate the lowest set bit using n & -n
         return n & -n;
     }
 }
