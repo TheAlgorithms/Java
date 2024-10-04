@@ -36,4 +36,9 @@ class PrefixToInfixTest {
     void testNullPrefixExpression() {
         assertThrows(NullPointerException.class, () -> PrefixToInfix.getPrefixToInfix(null));
     }
+
+    @Test
+    void testMalformedPrefixExpression() {
+        assertThrows(ArithmeticException.class, () -> PrefixToInfix.getPrefixToInfix("+ABC"));
+    }
 }

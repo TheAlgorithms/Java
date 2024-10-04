@@ -3,15 +3,12 @@ package com.thealgorithms.stacks;
 import java.util.Stack;
 
 /**
- * Prefix to Infix implementation via Stack
+ * Converts a prefix expression to an infix expression using a stack.
  *
- * Function: String getPrefixToInfix(String prefix)
- * Returns the Infix Expression for the given prefix parameter.
- *
- * Avoid using parentheses/brackets/braces for the prefix string.
- * Prefix Expressions don't require these.
+ * The input prefix expression should consist of
+ * valid operands (letters or digits) and operators (+, -, *, /, ^).
+ * Parentheses are not required in the prefix string.
  */
-
 public final class PrefixToInfix {
     private PrefixToInfix() {
     }
@@ -61,6 +58,10 @@ public final class PrefixToInfix {
                 // Push operand onto stack
                 stack.push(Character.toString(token));
             }
+        }
+
+        if (stack.size() != 1) {
+            throw new ArithmeticException("Malformed prefix expression");
         }
 
         return stack.pop(); // final element on the stack is the full infix expression
