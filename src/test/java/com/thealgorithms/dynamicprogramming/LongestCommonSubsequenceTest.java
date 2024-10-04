@@ -82,7 +82,7 @@ public class LongestCommonSubsequenceTest {
     public void testLCSWithLongerStringContainingCommonSubsequence() {
         String str1 = "ABCDEF";
         String str2 = "AEBDF";
-        String expected = "ABD"; // Common subsequence is "ABD"
+        String expected = "ABDF"; // Common subsequence is "ABDF"
         String result = LongestCommonSubsequence.getLCS(str1, str2);
         assertEquals(expected, result);
     }
