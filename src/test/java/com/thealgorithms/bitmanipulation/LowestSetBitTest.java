@@ -1,10 +1,10 @@
 package com.thealgorithms.bitmanipulation;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LowestSetBitTest {
+
     @Test
     void testLowestSetBitWithPositiveNumber() {
         // Test with a general positive number
