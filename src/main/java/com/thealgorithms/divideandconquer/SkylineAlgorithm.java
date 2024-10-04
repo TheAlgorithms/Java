@@ -29,11 +29,12 @@ public class SkylineAlgorithm {
     }
 
     /**
-     * The main divide and conquer, and also recursive algorithm. It gets an
-     * ArrayList full of points as an argument. If the size of that ArrayList is
-     * 1 or 2, the ArrayList is returned as it is, or with one less point (if
-     * the initial size is 2 and one of it's points, is dominated by the other
-     * one). On the other hand, if the ArrayList's size is bigger than 2, the
+     * The main divide and conquer, and also recursive algorithm.
+     * It gets an ArrayList full of points as an argument.
+     * If the size of that ArrayList is 1 or 2, the ArrayList is
+     * returned as it is, or with one less point (if the initial size is 2
+     * and one of it's points, is dominated by the other one).
+     * On the other hand, if the ArrayList's size is bigger than 2, the
      * function is called again, twice, with arguments the corresponding half of
      * the initial ArrayList each time. Once the flashback has ended, the
      * function produceFinalSkyLine gets called, in order to produce the final
