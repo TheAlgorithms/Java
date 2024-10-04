@@ -1,9 +1,11 @@
 package com.thealgorithms.others;
 
 /**
- * A class that provides methods to solve a 9x9 Sudoku puzzle using a backtracking approach.
- * The Sudoku board is represented as a 2D array, and the methods are designed to
- * check for safe placements of numbers, solve the puzzle recursively, and print the board.
+ * A class that provides methods to solve Sudoku puzzles of any n x n size
+ * using a backtracking approach, where n must be a perfect square.
+ * The algorithm checks for safe number placements in rows, columns,
+ * and subgrids (which are sqrt(n) x sqrt(n) in size) and recursively solves the puzzle.
+ * Though commonly used for 9x9 grids, it is adaptable to other valid Sudoku dimensions.
  */
 final class Sudoku {
 
@@ -16,6 +18,7 @@ final class Sudoku {
      * - It should not be present in the same row.
      * - It should not be present in the same column.
      * - It should not be present in the corresponding 3x3 subgrid.
+     * - It should not be present in the corresponding subgrid, which is sqrt(n) x sqrt(n) in size (e.g., for a 9x9 grid, the subgrid will be 3x3).
      *
      * @param board The current state of the Sudoku board.
      * @param row   The row index where the number is to be placed.
@@ -56,12 +59,16 @@ final class Sudoku {
 
     /**
      * Solves the Sudoku puzzle using backtracking.
+     * The algorithm finds an empty cell and tries placing numbers
+     * from 1 to n, where n is the size of the board
+     * (for example, from 1 to 9 in a standard 9x9 Sudoku).
      * The algorithm finds an empty cell and tries placing numbers from 1 to 9.
      * The standard version of Sudoku uses numbers from 1 to 9, so the algorithm can be
      * easily modified for other variations of the game.
-     * If a number placement is valid (checked via `isSafe`), the number is placed and the function
-     * recursively attempts to solve the rest of the puzzle.
-     * If no solution is possible, the number is removed (backtracked), and the process is repeated.
+     * If a number placement is valid (checked via `isSafe`), the number is
+     * placed and the function recursively attempts to solve the rest of the puzzle.
+     * If no solution is possible, the number is removed (backtracked),
+     * and the process is repeated.
      *
      * @param board The current state of the Sudoku board.
      * @param n     The size of the Sudoku board (typically 9 for a standard puzzle).
@@ -92,7 +99,8 @@ final class Sudoku {
             return true;
         }
 
-        // Try placing numbers 1 to n in the empty cell (typically n=9)
+        // Try placing numbers 1 to n in the empty cell (n should be a perfect square)
+        // Eg: n=9 for a standard 9x9 Sudoku puzzle, n=16 for a 16x16 puzzle, etc.
         for (int num = 1; num <= n; num++) {
             if (isSafe(board, row, col, num)) {
                 board[row][col] = num;
@@ -116,6 +124,8 @@ final class Sudoku {
      */
     public static void print(int[][] board, int n) {
         // Print the board in a nxn grid format
+        // if n=9, print the board in a 9x9 grid format
+        // if n=16, print the board in a 16x16 grid format
         for (int r = 0; r < n; r++) {
             for (int d = 0; d < n; d++) {
                 System.out.print(board[r][d]);
