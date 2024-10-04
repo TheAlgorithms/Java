@@ -44,7 +44,7 @@ public class Autokey {
             char cipherChar = ciphertext.charAt(i);
             char keyChar = extendedKey.charAt(i);
 
-            int decryptedChar = (cipherChar - 'A' - keyChar - 'A' + 26) % 26 + 'A';
+            int decryptedChar = (cipherChar - 'A' - (keyChar - 'A') + 26) % 26 + 'A';
             plaintext.append((char) decryptedChar);
 
             extendedKey.append((char) decryptedChar); // Extend key with each decrypted char
