@@ -52,6 +52,7 @@
             * [RSA](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/RSA.java)
             * [SimpleSubCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/SimpleSubCipher.java)
             * [Vigenere](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/Vigenere.java)
+            * [XORCipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/XORCipher.java)
           * conversions
             * [AffineConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/AffineConverter.java)
             * [AnyBaseToAnyBase](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/AnyBaseToAnyBase.java)
@@ -267,6 +268,7 @@
           * greedyalgorithms
             * [ActivitySelection](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
             * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/CoinChange.java)
+            * [DigitSeparation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/DigitSeparation.java)
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [GaleShapley](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/GaleShapley.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
@@ -544,6 +546,7 @@
             * [DecimalToAnyUsingStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/DecimalToAnyUsingStack.java)
             * [DuplicateBrackets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/DuplicateBrackets.java)
             * [InfixToPostfix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/InfixToPostfix.java)
+            * [InfixToPrefix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/InfixToPrefix.java)
             * [LargestRectangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/LargestRectangle.java)
             * [MaximumMinimumWindow](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/MaximumMinimumWindow.java)
             * [NextGreaterElement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/NextGreaterElement.java)
@@ -620,6 +623,7 @@
             * [RSATest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/RSATest.java)
             * [SimpleSubCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/SimpleSubCipherTest.java)
             * [VigenereTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/VigenereTest.java)
+            * [XORCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/XORCipherTest.java)
           * conversions
             * [AnyBaseToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AnyBaseToDecimalTest.java)
             * [BinaryToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToDecimalTest.java)
@@ -724,6 +728,7 @@
               * [ZigzagTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/ZigzagTraversalTest.java)
           * divideandconquer
             * [BinaryExponentiationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/BinaryExponentiationTest.java)
+            * [SkylineAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/SkylineAlgorithmTest.java)
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
           * dynamicprogramming
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
@@ -757,6 +762,7 @@
           * greedyalgorithms
             * [ActivitySelectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/ActivitySelectionTest.java)
             * [CoinChangeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/CoinChangeTest.java)
+            * [DigitSeparationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/DigitSeparationTest.java)
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [GaleShapleyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/GaleShapleyTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
@@ -974,6 +980,7 @@
             * [DecimalToAnyUsingStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/DecimalToAnyUsingStackTest.java)
             * [DuplicateBracketsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/DuplicateBracketsTest.java)
             * [InfixToPostfixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/InfixToPostfixTest.java)
+            * [InfixToPrefixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/InfixToPrefixTest.java)
             * [LargestRectangleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/LargestRectangleTest.java)
             * [NextGreaterElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextGreaterElementTest.java)
             * [NextSmallerElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/NextSmallerElementTest.java)
