@@ -68,6 +68,7 @@
             * [HexaDecimalToBinary](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexaDecimalToBinary.java)
             * [HexaDecimalToDecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexaDecimalToDecimal.java)
             * [HexToOct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexToOct.java)
+            * [IntegerToEnglish] (https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/IntegerToEnglish.java)
             * [IntegerToRoman](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/IntegerToRoman.java)
             * [OctalToBinary](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/OctalToBinary.java)
             * [OctalToDecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/OctalToDecimal.java)
