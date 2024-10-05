@@ -30,7 +30,7 @@ public final class IndexOfRightMostSetBit {
         // Handle negative numbers by finding the two's complement
         if (n < 0) {
             n = -n;
-            n = n & (~n + 1);// Isolate the rightmost set bit
+            n = n & (~n + 1); // Isolate the rightmost set bit
         }
 
         int index = 0;
