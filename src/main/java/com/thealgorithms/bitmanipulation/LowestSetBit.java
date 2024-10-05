@@ -20,4 +20,15 @@ public final class LowestSetBit {
         // Isolate the lowest set bit using n & -n
         return n & -n;
     }
+    /**
+     * Clears the lowest set bit of the given number.
+     * For example, if n = 18 (binary: 10010), the result will be 16 (binary: 10000).
+     *
+     * @param n the number whose lowest set bit will be cleared
+     * @return the number after clearing its lowest set bit
+     */
+    public static int clearLowestSetBit(int n) {
+        // Clear the lowest set bit using n & (n - 1)
+        return n & (n - 1);
+    }
 }

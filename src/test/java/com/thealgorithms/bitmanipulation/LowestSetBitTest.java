@@ -52,4 +52,35 @@ public class LowestSetBitTest {
         // Test with a large number
         assertEquals(64, LowestSetBit.isolateLowestSetBit(448)); // 448 in binary: 111000000, lowest bit is 64
     }
+
+    @Test
+    void testClearLowestSetBitFor18() {
+        // n = 18 (binary: 10010), expected result = 16 (binary: 10000)
+        assertEquals(16, LowestSetBit.clearLowestSetBit(18));
+    }
+
+    @Test
+    void testClearLowestSetBitFor10() {
+        // n = 10 (binary: 1010), expected result = 8 (binary: 1000)
+        assertEquals(8, LowestSetBit.clearLowestSetBit(10));
+    }
+
+    @Test
+    void testClearLowestSetBitFor7() {
+        // n = 7 (binary: 0111), expected result = 6 (binary: 0110)
+        assertEquals(6, LowestSetBit.clearLowestSetBit(7));
+    }
+
+    @Test
+    void testClearLowestSetBitFor0() {
+        // n = 0 (binary: 0000), no set bits to clear, expected result = 0
+        assertEquals(0, LowestSetBit.clearLowestSetBit(0));
+    }
+
+    @Test
+    void testClearLowestSetBitForNegativeNumber() {
+        // Test negative number to see how it behaves with two's complement
+        // n = -1 (binary: all 1s in two's complement), expected result = -2 (clearing lowest set bit)
+        assertEquals(-2, LowestSetBit.clearLowestSetBit(-1));
+    }
 }
