@@ -53,7 +53,8 @@ public class WordSearch {
     }
 
     /**
-     * Performs Depth First Search (DFS) from the cell (x, y) to search for the next character in the word.
+     * Performs Depth First Search (DFS) from the cell (x, y)
+     * to search for the next character in the word.
      *
      * @param x       The current row index.
      * @param y       The current column index.
