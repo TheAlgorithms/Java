@@ -673,6 +673,7 @@
             * graphs
               * [BoruvkaAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithmTest.java)
               * [DijkstraAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithmTest.java)
+              * [EdmondsBlossomAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithmTest.java)
               * [FloydWarshallTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FloydWarshallTest.java)
               * [FordFulkersonTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FordFulkersonTest.java)
               * [HamiltonianCycleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/HamiltonianCycleTest.java)
