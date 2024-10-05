@@ -40,12 +40,10 @@ public final class HighestSetBit {
         }
 
         if (num == 0) {
-            return Optional.empty(); // No bits are set in 0
+            return Optional.empty();
         }
 
         int position = 0;
-
-        // Right-shift the number until it becomes zero, counting the number of shifts
         while (num > 0) {
             num >>= 1;
             position++;
