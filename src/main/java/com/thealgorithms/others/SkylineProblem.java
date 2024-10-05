@@ -16,29 +16,6 @@ public class SkylineProblem {
     int count;
 
     /**
-     * Main function that reads input for the number of buildings and their
-     * dimensions, computes the skyline using divide-and-conquer,
-     * and prints the result.
-     */
-    public void run() {
-        Scanner sc = new Scanner(System.in);
-
-        int num = sc.nextInt();
-        this.building = new Building[num];
-
-        // Read the building details and add them to the list of buildings
-        for (int i = 0; i < num; i++) {
-            String input = sc.next();
-            String[] data = input.split(",");
-            this.add(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-        }
-
-        this.print(this.findSkyline(0, num - 1));
-
-        sc.close();
-    }
-
-    /**
      * Adds a building with the given left, height, and right values to the
      * buildings list.
      *
@@ -48,24 +25,6 @@ public class SkylineProblem {
      */
     public void add(int left, int height, int right) {
         building[count++] = new Building(left, height, right);
-    }
-
-    /**
-     * Prints the skyline as a sequence of coordinates and heights.
-     *
-     * @param skyline The list of {@link Skyline} objects representing the skyline.
-     */
-    public void print(ArrayList<Skyline> skyline) {
-        Iterator<Skyline> it = skyline.iterator();
-
-        // Print each coordinate and height from the skyline list
-        while (it.hasNext()) {
-            Skyline temp = it.next();
-            System.out.print(temp.coordinates + "," + temp.height);
-            if (it.hasNext()) {
-                System.out.print(",");
-            }
-        }
     }
 
     /**
@@ -192,15 +151,5 @@ public class SkylineProblem {
             this.height = height;
             this.right = right;
         }
-    }
-
-    /**
-     * The main method that runs the skyline problem solution.
-     *
-     * @param args Command-line arguments (not used).
-     */
-    public static void main(String[] args) {
-        SkylineProblem skylineProblem = new SkylineProblem();
-        skylineProblem.run();
     }
 }
