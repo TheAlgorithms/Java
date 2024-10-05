@@ -67,7 +67,6 @@ public class WordSearch {
             return true;
         }
 
-        // Explore all four possible directions (right, left, down, up)
         for (int i = 0; i < 4; ++i) {
             int xi = x + dx[i];
             int yi = y + dy[i];
