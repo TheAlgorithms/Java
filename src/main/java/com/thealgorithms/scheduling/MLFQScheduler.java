@@ -17,8 +17,7 @@ public class MLFQScheduler {
 
     /**
      * Constructor to initialize the MLFQ scheduler with the specified number of
-     * levels
-     * and their corresponding time quantums.
+     * levels and their corresponding time quantums.
      *
      * @param levels       Number of queues (priority levels)
      * @param timeQuantums Time quantum for each queue level
