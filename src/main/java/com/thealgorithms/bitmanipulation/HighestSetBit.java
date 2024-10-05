@@ -5,14 +5,14 @@ import java.util.Optional;
 /**
  * Find Highest Set Bit
  *
- * This class provides a utility method to calculate the position of the highest 
- * (most significant) bit that is set to 1 in a given non-negative integer. 
- * It is often used in bit manipulation tasks to find the left-most set bit in binary 
+ * This class provides a utility method to calculate the position of the highest
+ * (most significant) bit that is set to 1 in a given non-negative integer.
+ * It is often used in bit manipulation tasks to find the left-most set bit in binary
  * representation of a number.
  *
- * Example: 
+ * Example:
  * - For input 18 (binary 10010), the highest set bit is at position 4 (zero-based index).
- * 
+ *
  * @author Bama Charan Chhandogi
  * @version 1.0
  * @since 2021-06-23
@@ -30,7 +30,7 @@ public final class HighestSetBit {
      * - If the number is negative, the method throws {@link IllegalArgumentException}.
      *
      * @param num The input integer for which the highest set bit is to be found. It must be non-negative.
-     * @return An {@link Optional} containing the index of the highest set bit (zero-based). 
+     * @return An {@link Optional} containing the index of the highest set bit (zero-based).
      *         Returns {@link Optional#empty()} if the number is 0.
      * @throws IllegalArgumentException if the input number is negative.
      */
