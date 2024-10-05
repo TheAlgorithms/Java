@@ -1,6 +1,6 @@
 package com.thealgorithms.others;
 
-import java.util.Scanner;
+import java.util.List;
 
 /**
  * The {@code TowerOfHanoi} class provides functionality to solve the Tower of
@@ -32,32 +32,16 @@ final class TowerOfHanoi {
      *                         intermediate pole to the end pole.
      *                         </p>
      */
-    public static void shift(int n, String startPole, String intermediatePole, String endPole) {
-        // If n becomes zero, the program returns, ending the recursion.
+    public static void shift(int n, String startPole, String intermediatePole, String endPole, List<String> result) {
         if (n != 0) {
             // Recursively move n-1 discs from startPole to intermediatePole
-            shift(n - 1, startPole, endPole, intermediatePole);
+            shift(n - 1, startPole, endPole, intermediatePole, result);
 
-            // Print the move of the nth disc from startPole to endPole
-            System.out.format("Move %d from %s to %s%n", n, startPole, endPole);
+            // Add the move of the nth disc from startPole to endPole
+            result.add(String.format("Move %d from %s to %s", n, startPole, endPole));
 
             // Recursively move the n-1 discs from intermediatePole to endPole
-            shift(n - 1, intermediatePole, startPole, endPole);
+            shift(n - 1, intermediatePole, startPole, endPole, result);
         }
-    }
-
-    /**
-     * The main method that starts the Tower of Hanoi puzzle solution.
-     * It prompts the user for the number of discs and invokes the {@code shift}
-     * function to begin solving the puzzle.
-     *
-     * @param args Command-line arguments (not used in this case).
-     */
-    public static void main(String[] args) {
-        System.out.print("Enter number of discs on Pole 1: ");
-        Scanner scanner = new Scanner(System.in);
-        int numberOfDiscs = scanner.nextInt(); // input of number of discs on pole 1
-        shift(numberOfDiscs, "Pole1", "Pole2", "Pole3"); // Shift function called
-        scanner.close();
     }
 }
