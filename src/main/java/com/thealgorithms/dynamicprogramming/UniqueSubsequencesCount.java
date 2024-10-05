@@ -8,7 +8,7 @@ import java.util.Set;
 
 // Author -> https://github.com/Tuhinm2002
 
-public class UniqueSubsequencesCount {
+public final class UniqueSubsequencesCount {
 
     private UniqueSubsequencesCount() {
         throw new UnsupportedOperationException("Utility class");
