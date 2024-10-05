@@ -4,12 +4,12 @@ package com.thealgorithms.backtracking;
  * Word Search Problem
  *
  * This class solves the word search problem where given an m x n grid of characters (board)
- * and a target word, the task is to check if the word exists in the grid. 
- * The word can be constructed from sequentially adjacent cells (horizontally or vertically), 
+ * and a target word, the task is to check if the word exists in the grid.
+ * The word can be constructed from sequentially adjacent cells (horizontally or vertically),
  * and the same cell may not be used more than once in constructing the word.
  *
  * Example:
- * - For board = 
+ * - For board =
  *     [
  *       ['A','B','C','E'],
  *       ['S','F','C','S'],
@@ -24,7 +24,7 @@ package com.thealgorithms.backtracking;
  *   matching the first letter of the word. DFS ensures that we search all valid paths, while
  *   backtracking helps in reverting decisions when a path fails to lead to a solution.
  *
- * Time Complexity: O(m * n * 3^L) 
+ * Time Complexity: O(m * n * 3^L)
  *  - m = number of rows in the board
  *  - n = number of columns in the board
  *  - L = length of the word
