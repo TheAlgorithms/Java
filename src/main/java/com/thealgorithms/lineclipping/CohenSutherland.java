@@ -23,14 +23,17 @@ import com.thealgorithms.lineclipping.utils.Point;
 public class CohenSutherland {
 
     // Region codes for the 9 regions
-    final int INSIDE = 0; // 0000
-    final int LEFT = 1;   // 0001
-    final int RIGHT = 2;  // 0010
-    final int BOTTOM = 4; // 0100
-    final int TOP = 8;    // 1000
+    private static final int INSIDE = 0; // 0000
+    private static final int LEFT = 1; // 0001
+    private static final int RIGHT = 2; // 0010
+    private static final int BOTTOM = 4; // 0100
+    private static final int TOP = 8; // 1000
 
     // Define the clipping window
-    double xMin, yMin, xMax, yMax;
+    double xMin;
+    double yMin;
+    double xMax;
+    double yMax;
 
     public CohenSutherland(double xMin, double yMin, double xMax, double yMax) {
         this.xMin = xMin;
@@ -44,21 +47,29 @@ public class CohenSutherland {
         int code = INSIDE;
 
         if (x < xMin) // to the left of rectangle
+        {
             code |= LEFT;
-        else if (x > xMax) // to the right of rectangle
+        } else if (x > xMax) // to the right of rectangle
+        {
             code |= RIGHT;
+        }
         if (y < yMin) // below the rectangle
+        {
             code |= BOTTOM;
-        else if (y > yMax) // above the rectangle
+        } else if (y > yMax) // above the rectangle
+        {
             code |= TOP;
+        }
 
         return code;
     }
 
     // Cohen-Sutherland algorithm to return the clipped line
     public Line cohenSutherlandClip(Line line) {
-        double x1 = line.start.x, y1 = line.start.y;
-        double x2 = line.end.x, y2 = line.end.y;
+        double x1 = line.start.x;
+        double y1 = line.start.y;
+        double x2 = line.end.x;
+        double y2 = line.end.y;
 
         int code1 = computeCode(x1, y1);
         int code2 = computeCode(x2, y2);
@@ -74,7 +85,8 @@ public class CohenSutherland {
                 break;
             } else {
                 // Some segment of the line is inside the rectangle
-                double x = 0, y = 0;
+                double x = 0;
+                double y = 0;
 
                 // Pick an endpoint that is outside the rectangle
                 int codeOut = (code1 != 0) ? code1 : code2;

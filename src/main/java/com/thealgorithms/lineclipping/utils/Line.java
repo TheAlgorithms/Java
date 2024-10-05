@@ -8,7 +8,8 @@ import java.util.Objects;
  */
 public class Line {
 
-    public Point start, end;
+    public Point start;
+    public Point end;
 
     public Line() {
     }
@@ -20,8 +21,13 @@ public class Line {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Line line)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Line line)) {
+            return false;
+        }
+
         return Objects.equals(start, line.start) && Objects.equals(end, line.end);
     }
 

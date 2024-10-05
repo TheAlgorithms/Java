@@ -8,7 +8,8 @@ import java.util.Objects;
  */
 public class Point {
 
-    public double x, y;
+    public double x;
+    public double y;
 
     public Point() {
     }
@@ -20,8 +21,13 @@ public class Point {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point point)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Point point)) {
+            return false;
+        }
+
         return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0;
     }
 

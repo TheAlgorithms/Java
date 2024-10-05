@@ -23,7 +23,10 @@ import com.thealgorithms.lineclipping.utils.Point;
 public class LiangBarsky {
 
     // Define the clipping window
-    private double xMin, xMax, yMin, yMax;
+    double xMin;
+    double xMax;
+    double yMin;
+    double yMax;
 
     public LiangBarsky(double xMin, double yMin, double xMax, double yMax) {
         this.xMin = xMin;
@@ -59,14 +62,23 @@ public class LiangBarsky {
             if (p[i] == 0 && q[i] < 0) {
                 return null; // Line is outside the boundary
             } else if (p[i] < 0) {
-                if (t > t1) return null; // Line is outside
-                if (t > t0) t0 = t; // Update t0
+                if (t > t1) {
+                    return null;
+                } // Line is outside
+                if (t > t0) {
+                    t0 = t;
+                } // Update t0
             } else if (p[i] > 0) {
-                if (t < t0) return null; // Line is outside
-                if (t < t1) t1 = t; // Update t1
+                if (t < t0) {
+                    return null;
+                } // Line is outside
+                if (t < t1) {
+                    t1 = t;
+                } // Update t1
             }
         }
-        return new double[]{t0, t1}; // Return valid t0 and t1
+
+        return new double[] {t0, t1}; // Return valid t0 and t1
     }
 
     // calculate the clipped line based on t0 and t1
