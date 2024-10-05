@@ -14,11 +14,11 @@ public final class UniqueSubsequencesCount {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    private static int[] dp;
+    private static Set<Character> set = new HashSet<>();
 
     public static int subseqCount(String str) {
 
-        dp = new int[str.length() + 1];
+        int[] dp = new int[str.length() + 1];
         Arrays.fill(dp, -1);
 
         return recursiveCall(str, 0, dp);
@@ -34,7 +34,7 @@ public final class UniqueSubsequencesCount {
             return dp[idx];
         }
 
-        Set<Character> set = new HashSet<>();
+        set = new HashSet<>();
 
         int res = 0;
 
