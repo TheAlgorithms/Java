@@ -148,19 +148,19 @@ public final class MazeRecursion {
             // Assume the path is feasible, mark the current position as '2'
             map[i][j] = 2;
 
-            // Try moving up
+            // Move up
             if (setWay2(map, i - 1, j)) {
                 return true;
             }
-            // Try moving right
+            // Move right
             else if (setWay2(map, i, j + 1)) {
                 return true;
             }
-            // Try moving down
+            // Move down
             else if (setWay2(map, i + 1, j)) {
                 return true;
             }
-            // Try moving left
+            // Move left
             else if (setWay2(map, i, j - 1)) {
                 return true;
             } else {
