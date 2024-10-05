@@ -1,8 +1,6 @@
 package com.thealgorithms.others;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
 
 /**
  * The {@code SkylineProblem} class is used to solve the skyline problem using a
