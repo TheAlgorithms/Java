@@ -1,9 +1,11 @@
 package com.thealgorithms.others;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class TowerOfHanoiTest {
 
@@ -23,11 +25,7 @@ public class TowerOfHanoiTest {
         TowerOfHanoi.shift(2, "Pole1", "Pole2", "Pole3", result);
 
         // Expected output for 2 discs
-        List<String> expected = List.of(
-            "Move 1 from Pole1 to Pole2",
-            "Move 2 from Pole1 to Pole3",
-            "Move 1 from Pole2 to Pole3"
-        );
+        List<String> expected = List.of("Move 1 from Pole1 to Pole2", "Move 2 from Pole1 to Pole3", "Move 1 from Pole2 to Pole3");
         assertEquals(expected, result);
     }
 
@@ -37,15 +35,7 @@ public class TowerOfHanoiTest {
         TowerOfHanoi.shift(3, "Pole1", "Pole2", "Pole3", result);
 
         // Expected output for 3 discs
-        List<String> expected = List.of(
-            "Move 1 from Pole1 to Pole3",
-            "Move 2 from Pole1 to Pole2",
-            "Move 1 from Pole3 to Pole2",
-            "Move 3 from Pole1 to Pole3",
-            "Move 1 from Pole2 to Pole1",
-            "Move 2 from Pole2 to Pole3",
-            "Move 1 from Pole1 to Pole3"
-        );
+        List<String> expected = List.of("Move 1 from Pole1 to Pole3", "Move 2 from Pole1 to Pole2", "Move 1 from Pole3 to Pole2", "Move 3 from Pole1 to Pole3", "Move 1 from Pole2 to Pole1", "Move 2 from Pole2 to Pole3", "Move 1 from Pole1 to Pole3");
         assertEquals(expected, result);
     }
 
