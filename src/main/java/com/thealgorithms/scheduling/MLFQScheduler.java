@@ -10,7 +10,7 @@ import java.util.Queue;
  */
 public class MLFQScheduler {
     private Queue<Process>[] queues; // Multi-level feedback queues
-    private int timeQuantum[]; // Time quantum for each queue level
+    private int[] timeQuantum; // Time quantum for each queue level
     private int currentTime; // Current time in the system
 
     /**
@@ -116,7 +116,7 @@ class Process {
      * @param burstTime   CPU Burst Time (time required for the process)
      * @param arrivalTime Arrival time of the process
      */
-    public Process(int pid, int burstTime, int arrivalTime) {
+    Process(int pid, int burstTime, int arrivalTime) {
         this.pid = pid;
         this.burstTime = burstTime;
         this.remainingTime = burstTime;
