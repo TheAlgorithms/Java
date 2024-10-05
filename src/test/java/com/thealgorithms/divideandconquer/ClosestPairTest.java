@@ -35,7 +35,7 @@ public class ClosestPairTest {
         points[4] = cp.buildLocation(3.0, 2.0);
 
         int pivotIndex = cp.xPartition(points, 0, 4);
-        assertEquals(2, pivotIndex); // After partition, pivot should be at index 2
+        assertEquals(2, pivotIndex);
         assertEquals(2.0, points[0].x);
         assertEquals(1.0, points[1].x);
         assertEquals(3.0, points[2].x);
@@ -54,7 +54,7 @@ public class ClosestPairTest {
         points[4] = cp.buildLocation(3.0, 2.0);
 
         int pivotIndex = cp.yPartition(points, 0, 4);
-        assertEquals(1, pivotIndex); // After partition, pivot should be at index 1
+        assertEquals(1, pivotIndex);
         assertEquals(2.0, points[1].y);
         assertEquals(3.0, points[4].y);
         assertEquals(1.0, points[0].y);
@@ -68,9 +68,8 @@ public class ClosestPairTest {
         ClosestPair.Location loc1 = cp.buildLocation(1.0, 2.0);
         ClosestPair.Location loc2 = cp.buildLocation(4.0, 6.0);
 
-        // Use the bruteForce method and pass the locations as an array
         ClosestPair.Location[] locations = new ClosestPair.Location[] {loc1, loc2};
         double result = cp.bruteForce(locations);
-        assertEquals(5.0, result, 0.01); // Distance between (1, 2) and (4, 6)
+        assertEquals(5.0, result, 0.01);
     }
 }
