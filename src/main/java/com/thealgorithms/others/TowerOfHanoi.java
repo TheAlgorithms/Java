@@ -34,13 +34,13 @@ final class TowerOfHanoi {
      */
     public static void shift(int n, String startPole, String intermediatePole, String endPole, List<String> result) {
         if (n != 0) {
-            // Recursively move n-1 discs from startPole to intermediatePole
+            // Move n-1 discs from startPole to intermediatePole
             shift(n - 1, startPole, endPole, intermediatePole, result);
 
             // Add the move of the nth disc from startPole to endPole
             result.add(String.format("Move %d from %s to %s", n, startPole, endPole));
 
-            // Recursively move the n-1 discs from intermediatePole to endPole
+            // Move the n-1 discs from intermediatePole to endPole
             shift(n - 1, intermediatePole, startPole, endPole, result);
         }
     }
