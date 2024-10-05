@@ -1,6 +1,8 @@
 package com.thealgorithms.scheduling;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Queue;
  * between queues depending on their CPU burst behavior.
  */
 public class MLFQScheduler {
-    private Queue<Process>[] queues; // Multi-level feedback queues
+    private List<Queue<Process>> queues; // Multi-level feedback queues
     private int[] timeQuantum; // Time quantum for each queue level
     private int currentTime; // Current time in the system
 
@@ -22,9 +24,9 @@ public class MLFQScheduler {
      * @param timeQuantums Time quantum for each queue level
      */
     public MLFQScheduler(int levels, int[] timeQuantums) {
-        queues = new LinkedList[levels];
+        queues = new ArrayList<>(levels);
         for (int i = 0; i < levels; i++) {
-            queues[i] = new LinkedList<>();
+            queues.add(new LinkedList<>());
         }
         timeQuantum = timeQuantums;
         currentTime = 0;
@@ -36,7 +38,7 @@ public class MLFQScheduler {
      * @param p The process to be added to the scheduler
      */
     public void addProcess(Process p) {
-        queues[0].add(p);
+        queues.get(0).add(p);
     }
 
     /**
@@ -46,8 +48,8 @@ public class MLFQScheduler {
      */
     public void run() {
         while (!allQueuesEmpty()) {
-            for (int i = 0; i < queues.length; i++) {
-                Queue<Process> queue = queues[i];
+            for (int i = 0; i < queues.size(); i++) {
+                Queue<Process> queue = queues.get(i);
                 if (!queue.isEmpty()) {
                     Process p = queue.poll();
                     int quantum = timeQuantum[i];
@@ -60,11 +62,11 @@ public class MLFQScheduler {
                     if (p.isFinished()) {
                         System.out.println("Process " + p.pid + " finished at time " + currentTime);
                     } else {
-                        if (i < queues.length - 1) {
+                        if (i < queues.size() - 1) {
                             p.priority++; // Demote the process to the next lower priority queue
-                            queues[i + 1].add(p); // Add to the next queue level
+                            queues.get(i + 1).add(p); // Add to the next queue level
                         } else {
-                            queues[i].add(p); // Stay in the same queue if it's the last level
+                            queue.add(p); // Stay in the same queue if it's the last level
                         }
                     }
                 }
