@@ -10,7 +10,7 @@ class TrieNode {
     HashMap<Character, TrieNode> child;
     boolean end;
 
-    public TrieNode(char value) {
+    TrieNode(char value) {
         this.value = value;
         this.child = new HashMap<>();
         this.end = false;
