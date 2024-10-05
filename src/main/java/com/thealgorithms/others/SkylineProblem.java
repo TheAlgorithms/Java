@@ -27,7 +27,7 @@ public class SkylineProblem {
 
     /**
      * Computes the skyline for a range of buildings using the divide-and-conquer
-     * approach.
+     * strategy.
      *
      * @param start The starting index of the buildings to process.
      * @param end   The ending index of the buildings to process.
