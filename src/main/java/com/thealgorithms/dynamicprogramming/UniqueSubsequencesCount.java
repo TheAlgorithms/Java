@@ -19,10 +19,7 @@ public final class UniqueSubsequencesCount {
     public static int subseqCount(String str) {
 
         dp = new int[str.length() + 1];
-
-        for (int i : dp) {
-            Arrays.fill(dp, -1);
-        }
+        Arrays.fill(dp, -1);
 
         return recursiveCall(str, 0, dp);
     }
