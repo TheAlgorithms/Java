@@ -74,7 +74,6 @@ public class SkylineProblemTest {
 
         ArrayList<SkylineProblem.Skyline> result = skylineProblem.findSkyline(0, 2);
 
-        // Expected skyline points: (1, 10), (2, 15), (7, 12), (9, 0)
         assertEquals(1, result.get(0).coordinates);
         assertEquals(10, result.get(0).height);
         assertEquals(2, result.get(1).coordinates);
