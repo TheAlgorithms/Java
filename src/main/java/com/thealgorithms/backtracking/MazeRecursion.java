@@ -1,35 +1,47 @@
 package com.thealgorithms.backtracking;
 
+/**
+ * This class contains methods to solve a maze using recursive backtracking.
+ * The maze is represented as a 2D array where walls, paths, and visited/dead
+ * ends
+ * are marked with different integers.
+ *
+ * The goal is to find a path from a starting position to the target position
+ * (map[6][5]) while navigating through the maze.
+ */
 public final class MazeRecursion {
+
     private MazeRecursion() {
     }
 
+    /**
+     * This method sets up a maze as a 2D array, where '1' represents walls and '0'
+     * represents open paths. It then calls recursive functions to find paths using
+     * two different movement strategies. The results are printed to the console.
+     */
     public static void mazeRecursion() {
-        // First create a 2 dimensions array to mimic a maze map
-        int[][] map = new int[8][7];
-        int[][] map2 = new int[8][7];
 
-        // We use 1 to indicate wall
-        // Set the ceiling and floor to 1
+        int[][] map = new int[8][7]; // Create an 8x7 maze map (2D array)
+        int[][] map2 = new int[8][7]; // Copy of the maze for an alternative pathfinding method
+
+        // Initialize the maze with boundaries (set walls as '1')
+        // Set the top and bottom rows as walls
         for (int i = 0; i < 7; i++) {
             map[0][i] = 1;
             map[7][i] = 1;
         }
 
-        // Then we set the left and right wall to 1
+        // Set the left and right columns as walls
         for (int i = 0; i < 8; i++) {
             map[i][0] = 1;
             map[i][6] = 1;
         }
 
-        // Now we have created a maze with its wall initialized
+        // Place internal obstacles in the maze
+        map[3][1] = 1; // Wall block at position (3,1)
+        map[3][2] = 1; // Wall block at position (3,2)
 
-        // Here we set the obstacle
-        map[3][1] = 1;
-        map[3][2] = 1;
-
-        // Print the current map
-        System.out.println("The condition of the map： ");
+        System.out.println("Initial maze layout:");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map[i][j] + " ");
@@ -37,21 +49,19 @@ public final class MazeRecursion {
             System.out.println();
         }
 
-        // clone another map for setWay2 method
+        // Clone the maze into map2 for the second pathfinding method
         for (int i = 0; i < map.length; i++) {
             System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
         }
 
-        // By using recursive backtracking to let your ball(target) find its way in the
-        // maze
-        // The first parameter is the map
-        // Second parameter is x coordinate of your target
-        // Third parameter is the y coordinate of your target
+        // Use the first pathfinding method with a "down -> right -> up -> left" strategy
         setWay(map, 1, 1);
+
+        // Use the second pathfinding method with a "up -> right -> down -> left" strategy
         setWay2(map2, 1, 1);
 
-        // Print out the new map1, with the ball footprint
-        System.out.println("After the ball goes through the map1，show the current map1 condition");
+        // Print the maze after pathfinding using the first method
+        System.out.println("Maze after pathfinding using first strategy:");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map[i][j] + " ");
@@ -59,8 +69,8 @@ public final class MazeRecursion {
             System.out.println();
         }
 
-        // Print out the new map2, with the ball footprint
-        System.out.println("After the ball goes through the map2，show the current map2 condition");
+        // Print the maze after pathfinding using the second method
+        System.out.println("Maze after pathfinding using second strategy:");
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(map2[i][j] + " ");
@@ -70,82 +80,97 @@ public final class MazeRecursion {
     }
 
     /**
-     * Using recursive path finding to help the ball find its way in the maze
-     * Description：
-     * 1. map (means the maze)
-     * 2. i, j (means the initial coordinate of the ball in the maze)
-     * 3. if the ball can reach the end of maze, that is position of map[6][5],
-     * means the we have found a path for the ball
-     * 4. Additional Information： 0 in the map[i][j] means the ball has not gone
-     * through this position, 1 means the wall, 2 means the path is feasible, 3
-     * means the ball has gone through the path but this path is dead end
-     * 5. We will need strategy for the ball to pass through the maze for example:
-     * Down -> Right -> Up -> Left, if the path doesn't work, then backtrack
+     * Attempts to find a path through the maze using a "down -> right -> up ->
+     * left" movement strategy. The ball tries to reach position (6,5), and the path is
+     * marked with '2' for valid paths and '3' for dead ends.
      *
-     * @author OngLipWei
-     * @version Jun 23, 2021 11:36:14 AM
-     * @param map The maze
-     * @param i   x coordinate of your ball(target)
-     * @param j   y coordinate of your ball(target)
-     * @return If we did find a path for the ball，return true，else false
+     * @param map The 2D array representing the maze (walls, paths, etc.)
+     * @param i   The current x-coordinate of the ball (row index)
+     * @param j   The current y-coordinate of the ball (column index)
+     * @return True if a path is found to (6,5), otherwise false
      */
     public static boolean setWay(int[][] map, int i, int j) {
-        if (map[6][5] == 2) { // means the ball find its path, ending condition
+        if (map[6][5] == 2) {
             return true;
         }
-        if (map[i][j] == 0) { // if the ball haven't gone through this point
-            // then the ball follows the move strategy : down -> right -> up -> left
-            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2
-                           // first。
-            if (setWay(map, i + 1, j)) { // go down
+
+        // If the current position is unvisited (0), explore it
+        if (map[i][j] == 0) {
+            // Assume the path is feasible, mark the current position as '2'
+            map[i][j] = 2;
+
+            // Try moving down
+            if (setWay(map, i + 1, j)) {
                 return true;
-            } else if (setWay(map, i, j + 1)) { // go right
+            }
+            // Try moving right
+            else if (setWay(map, i, j + 1)) {
                 return true;
-            } else if (setWay(map, i - 1, j)) { // go up
+            }
+            // Try moving up
+            else if (setWay(map, i - 1, j)) {
                 return true;
-            } else if (setWay(map, i, j - 1)) { // go left
+            }
+            // Try moving left
+            else if (setWay(map, i, j - 1)) {
                 return true;
             } else {
-                // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtracking will start, it will
-                // go to the previous step and check for feasible path again
+                // Mark the current position as a dead end (3) and backtrack
                 map[i][j] = 3;
                 return false;
             }
-        } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
-            // ball cannot hit the wall, cannot go to the path that has gone though before,
-            // and cannot head to deadened.
+        } else {
+            // If the position is not unvisited (either a wall, dead end, or already part of
+            // the path), return false
             return false;
         }
     }
 
-    // Here is another move strategy for the ball: up->right->down->left
+    /**
+     * Attempts to find a path through the maze using an alternative movement
+     * strategy "up -> right -> down -> left".
+     * This method explores a different order of
+     * movement compared to setWay().
+     *
+     * @param map The 2D array representing the maze (walls, paths, etc.)
+     * @param i   The current x-coordinate of the ball (row index)
+     * @param j   The current y-coordinate of the ball (column index)
+     * @return True if a path is found to (6,5), otherwise false
+     */
     public static boolean setWay2(int[][] map, int i, int j) {
-        if (map[6][5] == 2) { // means the ball find its path, ending condition
-            return true;
+        // Check if the ball has reached the target at map[6][5]
+        if (map[6][5] == 2) {
+            return true; // Path found
         }
-        if (map[i][j] == 0) { // if the ball haven't gone through this point
-            // then the ball follows the move strategy : up->right->down->left
-            map[i][j] = 2; // we assume that this path is feasible first, set the current point to 2
-                           // first。
-            if (setWay2(map, i - 1, j)) { // go up
+
+        // If the current position is unvisited (0), explore it
+        if (map[i][j] == 0) {
+            // Assume the path is feasible, mark the current position as '2'
+            map[i][j] = 2;
+
+            // Try moving up
+            if (setWay2(map, i - 1, j)) {
                 return true;
-            } else if (setWay2(map, i, j + 1)) { // go right
+            }
+            // Try moving right
+            else if (setWay2(map, i, j + 1)) {
                 return true;
-            } else if (setWay2(map, i + 1, j)) { // go down
+            }
+            // Try moving down
+            else if (setWay2(map, i + 1, j)) {
                 return true;
-            } else if (setWay2(map, i, j - 1)) { // go left
+            }
+            // Try moving left
+            else if (setWay2(map, i, j - 1)) {
                 return true;
             } else {
-                // means that the current point is the dead end, the ball cannot proceed, set
-                // the current point to 3 and return false, the backtracking will start, it will
-                // go to the previous step and check for feasible path again
+                // Mark the current position as a dead end (3) and backtrack
                 map[i][j] = 3;
                 return false;
             }
-        } else { // if the map[i][j] != 0 , it will probably be 1,2,3, return false because the
-            // ball cannot hit the wall, cannot go to the path that has gone through before,
-            // and cannot head to deadend.
+        } else {
+            // If the position is not unvisited (either a wall, dead end, or already part of
+            // the path), return false
             return false;
         }
     }
