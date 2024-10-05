@@ -109,7 +109,7 @@ public class LFUCache<K, V> {
             addNodeWithUpdatedFrequency(node);
         } else {
             if (cache.size() >= capacity) {
-                cache.remove(this.head.key);  // Evict least frequently used item
+                cache.remove(this.head.key); // Evict least frequently used item
                 removeNode(head);
             }
             Node node = new Node(key, value, 1);
