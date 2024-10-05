@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.strings;
 
 /**
  * Class for generating all subsequences of a given string.
