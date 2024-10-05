@@ -26,7 +26,7 @@ public class MLFQSchedulerTest {
 
     @Test
     void testProcessCompletionOrder() {
-        int[] timeQuantums = { 3, 6, 9 };
+        int[] timeQuantums = {3, 6, 9};
         MLFQScheduler scheduler = new MLFQScheduler(3, timeQuantums);
 
         Process p1 = new Process(1, 10, 0);

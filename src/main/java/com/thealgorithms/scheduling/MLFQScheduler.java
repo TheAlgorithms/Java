@@ -131,8 +131,9 @@ class Process {
      */
     public void execute(int timeSlice) {
         remainingTime -= timeSlice;
-        if (remainingTime < 0)
+        if (remainingTime < 0) {
             remainingTime = 0;
+        }
     }
 
     /**
