@@ -897,6 +897,7 @@
             * [ReverseStackUsingRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ReverseStackUsingRecursionTest.java)
             * [StringMatchFiniteAutomataTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/StringMatchFiniteAutomataTest.java)
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
+            * [TowerOfHanoiTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TowerOfHanoiTest.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
           * Recursion
