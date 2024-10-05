@@ -14,13 +14,17 @@ public final class UniqueSubsequencesCount {
         throw new UnsupportedOperationException("Utility class");
     }
 
+    private static int[] dp;
+
     public static int subseqCount(String str) {
-        int[] dp = new int[str.length() + 1];
+
+        dp = new int[str.length() + 1];
+
         for (int i : dp) {
             Arrays.fill(dp, -1);
         }
-        int ans = recursiveCall(str, 0, dp);
-        return ans;
+
+        return recursiveCall(str, 0, dp);
     }
 
     public static int recursiveCall(String st, int idx, int[] dp) {
