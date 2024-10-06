@@ -9,12 +9,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testCalculateAverageWaitingTime() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 10, 2),
-                new NonPreemptivePriorityScheduling.Process(2, 5, 1),
-                new NonPreemptivePriorityScheduling.Process(3, 8, 3)
-        };
-
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         double expectedAvgWaitingTime = 6.666666666666667; // (0 + 10 + 5) / 3
@@ -25,12 +20,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testCalculateAverageTurnaroundTime() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 10, 2),
-                new NonPreemptivePriorityScheduling.Process(2, 5, 1),
-                new NonPreemptivePriorityScheduling.Process(3, 8, 3)
-        };
-
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         double expectedAvgTurnaroundTime = (5 + 15 + 23) / 3.0; // (5 + (5 + 10) + (5 + 10 + 8)) / 3
@@ -41,12 +31,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testStartTimeIsCorrect() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 10, 2),
-                new NonPreemptivePriorityScheduling.Process(2, 5, 1),
-                new NonPreemptivePriorityScheduling.Process(3, 8, 3)
-        };
-
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 10, 2), new NonPreemptivePriorityScheduling.Process(2, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         // Check that the start time for each process is correctly set
