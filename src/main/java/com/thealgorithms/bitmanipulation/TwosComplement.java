@@ -7,6 +7,9 @@ package com.thealgorithms.bitmanipulation;
  * @return the two's complement of any binary number
  */
 public class TwosComplement {
+    private TwosComplement() {
+    }
+
     // Function to get the 2's complement of a binary number
     public static String twosComplement(String binary) {
         StringBuilder onesComplement = new StringBuilder();

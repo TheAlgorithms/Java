@@ -9,6 +9,9 @@ package com.thealgorithms.bitmanipulation;
  * @return the complimented binary string
  */
 public class OnesComplement {
+    private OnesComplement() {
+    }
+
     // Function to get the 1's complement of a binary number
     public static String onesComplement(String binary) {
         StringBuilder complement = new StringBuilder();
