@@ -1,7 +1,8 @@
 package com.thealgorithms.bitmanipulation;
+
 /**
  * @wikipedia - https://en.wikipedia.org/wiki/Two%27s_complement
- * This Algorithm was first suggested by Jon Von Neumann
+ *            This Algorithm was first suggested by Jon Von Neumann
  * @author - https://github.com/Monk-AbhinayVerma
  * @return the two's complement of any binary number
  */
