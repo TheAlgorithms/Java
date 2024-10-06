@@ -3,7 +3,7 @@ package com.thealgorithms.bitmanipulation;
  * @wikipedia - https://en.wikipedia.org/wiki/Two%27s_complement
  * This Algorithm was first suggested by Jon Von Neumann
  * @author - https://github.com/Monk-AbhinayVerma
- * @return the two's complement of any binary number 
+ * @return the two's complement of any binary number
  */
 public class TwosComplement {
     // Function to get the 2's complement of a binary number
