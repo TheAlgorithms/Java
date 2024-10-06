@@ -13,6 +13,8 @@ import java.util.Comparator;
  * and attempts to assign them to the latest possible time slots.
  */
 public class JobSchedulingWithDeadline {
+    private JobSchedulingWithDeadline() {
+    }
 
     /**
      * Represents a job with an ID, deadline, and profit.
