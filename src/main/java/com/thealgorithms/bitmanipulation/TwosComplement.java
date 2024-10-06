@@ -1,9 +1,11 @@
 package com.thealgorithms.bitmanipulation;
-
-import java.util.Scanner;
-
+/**
+ * @wikipedia - https://en.wikipedia.org/wiki/Two%27s_complement
+ * This Algorithm was first suggested by Jon Von Neumann
+ * @author - https://github.com/Monk-AbhinayVerma
+ * @return - class returns the two's complement of any binary number 
+ */
 public class TwosComplement {
-
     // Function to get the 2's complement of a binary number
     public static String twosComplement(String binary) {
         StringBuilder onesComplement = new StringBuilder();
@@ -35,21 +37,5 @@ public class TwosComplement {
         }
 
         return twosComplement.toString();
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Input a binary number
-        System.out.print("Enter a number: ");
-        int n = scanner.nextInt();
-        String binary = Integer.toBinaryString(n);
-
-        // Compute and print the 2's complement
-        String result = twosComplement(binary);
-        int num = Integer.parseInt(result, 2);
-        System.out.println("2's complement of " + n +"("+binary+")" +" is: " + num + "("+ result+")");
-
-        scanner.close();
     }
 }
