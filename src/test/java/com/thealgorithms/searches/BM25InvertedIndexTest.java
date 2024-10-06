@@ -1,13 +1,12 @@
 package com.thealgorithms.searches;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test Cases for Inverted Index with BM25
@@ -21,22 +20,14 @@ class BM25InvertedIndexTest {
     @BeforeAll
     static void setUp() {
         index = new BM25InvertedIndex();
-        index.addMovie(1, "The Shawshank Redemption", 9.3, 1994,
-                "Hope is a good thing. Maybe the best of things. And no good thing ever dies.");
-        index.addMovie(2, "The Godfather", 9.2, 1972,
-                "I'm gonna make him an offer he can't refuse.");
-        index.addMovie(3, "The Dark Knight", 9.0, 2008,
-                "You either die a hero or live long enough to see yourself become the villain.");
-        index.addMovie(4, "Pulp Fiction", 8.9, 1994,
-                "You know what they call a Quarter Pounder with Cheese in Paris? They call it a Royale with Cheese.");
-        index.addMovie(5, "Good Will Hunting", 8.3, 1997,
-                "Will Hunting is a genius and he has a good heart. The best of his abilities is yet to be explored.");
-        index.addMovie(6, "It's a Wonderful Life", 8.6, 1946,
-                "Each man's life touches so many other lives. If he wasn't around, it would leave an awfully good hole.");
-        index.addMovie(7, "The Pursuit of Happyness", 8.0, 2006,
-                "It was the pursuit of a better life, and a good opportunity to change things for the better.");
-        index.addMovie(8, "A Few Good Men", 7.7, 1992,
-                "You can't handle the truth! This movie has a lot of good moments and intense drama.");
+        index.addMovie(1, "The Shawshank Redemption", 9.3, 1994, "Hope is a good thing. Maybe the best of things. And no good thing ever dies.");
+        index.addMovie(2, "The Godfather", 9.2, 1972, "I'm gonna make him an offer he can't refuse.");
+        index.addMovie(3, "The Dark Knight", 9.0, 2008, "You either die a hero or live long enough to see yourself become the villain.");
+        index.addMovie(4, "Pulp Fiction", 8.9, 1994, "You know what they call a Quarter Pounder with Cheese in Paris? They call it a Royale with Cheese.");
+        index.addMovie(5, "Good Will Hunting", 8.3, 1997, "Will Hunting is a genius and he has a good heart. The best of his abilities is yet to be explored.");
+        index.addMovie(6, "It's a Wonderful Life", 8.6, 1946, "Each man's life touches so many other lives. If he wasn't around, it would leave an awfully good hole.");
+        index.addMovie(7, "The Pursuit of Happyness", 8.0, 2006, "It was the pursuit of a better life, and a good opportunity to change things for the better.");
+        index.addMovie(8, "A Few Good Men", 7.7, 1992, "You can't handle the truth! This movie has a lot of good moments and intense drama.");
     }
 
     @Test
