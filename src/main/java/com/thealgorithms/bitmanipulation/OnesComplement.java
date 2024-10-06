@@ -8,7 +8,7 @@ package com.thealgorithms.bitmanipulation;
  *            the complemented binary string.
  * @return the complimented binary string
  */
-public class OnesComplement {
+public final class OnesComplement {
     private OnesComplement() {
     }
 

@@ -6,7 +6,7 @@ package com.thealgorithms.bitmanipulation;
  * @author - https://github.com/Monk-AbhinayVerma
  * @return the two's complement of any binary number
  */
-public class TwosComplement {
+public final class TwosComplement {
     private TwosComplement() {
     }
 
