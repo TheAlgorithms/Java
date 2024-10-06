@@ -3,7 +3,7 @@ package com.thealgorithms.greedyalgorithms;
 import java.util.Collections;
 
 /**
- * Solution class to perform binary addition of two binary strings.
+ * BinaryAddition class to perform binary addition of two binary strings.
  */
 public class BinaryAddition {
     /**
