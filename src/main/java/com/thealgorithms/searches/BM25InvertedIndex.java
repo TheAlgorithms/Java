@@ -144,7 +144,10 @@ public final class BM25InvertedIndex {
 
             // Get the list of documents containing the term
             Map<Integer, Integer> docList = index.get(term);
-
+            if (docList == null) {
+                docList = new HashMap<>();
+                index.put(term, docList);  // Ensure docList is added to the index
+            }
             // Increment the term frequency in this document
             docList.put(docId, docList.getOrDefault(docId, 0) + 1);
         }
@@ -176,6 +179,9 @@ public final class BM25InvertedIndex {
             int docId = entry.getKey();
             int termFrequency = entry.getValue();
             Movie movie = movies.get(docId);
+            if (movie == null) {
+                continue;  // Skip this document if movie doesn't exist
+            }
             double docLength = movie.getWords().length;
 
             // Compute BM25 relevance score
