@@ -3,8 +3,13 @@ package com.thealgorithms.scheduling;
 import java.util.Arrays;
 
 /**
- * The HighestResponseRatioNext class implements the HRRN scheduling algorithm.
- * It calculates the Turn Around Time (TAT) and Waiting Time (WT) for a set of processes.
+ * The HighestResponseRatioNextScheduling class implements
+ * the Highest Response Ratio Next (HRRN) scheduling algorithm.
+ * HRRN is a non-preemptive scheduling algorithm that
+ * selects the process with the highest response ratio for execution.
+ * The response ratio is calculated as (waiting time + burst time) / burst time.
+ * This algorithm aims to reduce the average waiting time
+ * and improve overall system performance by balancing short and long processes.
  */
 public class HighestResponseRatioNextScheduling {
 
