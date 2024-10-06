@@ -459,6 +459,7 @@
             * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
+            * [MLFQScheduler](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/MLFQScheduler.java)
             * [NonPreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/NonPreemptivePriorityScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
             * [RRScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RRScheduling.java)
@@ -752,6 +753,7 @@
             * [LevenshteinDistanceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LevenshteinDistanceTests.java)
             * [LongestAlternatingSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequenceTest.java)
             * [LongestArithmeticSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequenceTest.java)
+            * [LongestCommonSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestCommonSubsequenceTest.java)
             * [LongestIncreasingSubsequenceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequenceTests.java)
             * [LongestPalindromicSubstringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubstringTest.java)
             * [LongestValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestValidParenthesesTest.java)
@@ -915,6 +917,7 @@
             * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
+            * [MLFQSchedulerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/MLFQSchedulerTest.java)
             * [NonPreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/NonPreemptivePrioritySchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
             * [RRSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RRSchedulingTest.java)
