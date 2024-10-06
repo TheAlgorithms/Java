@@ -15,9 +15,15 @@ public class BinaryAddition {
      */
     public char sum(char a, char b, char carry) {
         int count = 0;
-        if (a == '1') count++;
-        if (b == '1') count++;
-        if (carry == '1') count++;
+        if (a == '1') {
+            count++;
+        }
+        if (b == '1') {
+            count++;
+        }
+        if (carry == '1') {
+            count++;
+        }
         return count % 2 == 0 ? '0' : '1';
     }
     /**
@@ -29,9 +35,15 @@ public class BinaryAddition {
      */
     public char carry(char a, char b, char carry) {
         int count = 0;
-        if (a == '1') count++;
-        if (b == '1') count++;
-        if (carry == '1') count++;
+        if (a == '1') {
+            count++;
+        }
+        if (b == '1') {
+            count++;
+        }
+        if (carry == '1') {
+            count++;
+        }
         return count >= 2 ? '1' : '0';
     }
     /**
