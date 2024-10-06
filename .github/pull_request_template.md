@@ -14,3 +14,10 @@ In order to reduce the number of notifications sent to the maintainers, please:
 - [ ] All functions and variable names follow Java naming conventions.
 - [ ] All new algorithms have a URL in their comments that points to Wikipedia or other similar explanations.
 - [ ] All new code is formatted with `clang-format -i --style=file path/to/your/file.java`
+
+# Formatting Steps
+Please ensure your code follows these formatting steps before submitting your pull request:
+
+- Run the code through [Black](https://black.readthedocs.io/en/stable/) for consistent code formatting.
+- Use [Flake8](https://flake8.pycqa.org/en/latest/) to check for style guide enforcement and linting.
+- Make sure all tests pass before submitting the pull request.
