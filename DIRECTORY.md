@@ -617,6 +617,7 @@
             * [SingleBitOperationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleBitOperationsTest.java)
           * ciphers
             * a5
+              * [A5CipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/A5CipherTest.java)
               * [LFSRTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/LFSRTest.java)
             * [BlowfishTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/BlowfishTest.java)
             * [CaesarTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/CaesarTest.java)
