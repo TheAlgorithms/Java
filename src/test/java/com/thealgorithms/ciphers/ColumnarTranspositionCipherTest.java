@@ -32,8 +32,7 @@ public class ColumnarTranspositionCipherTest {
         String encryptedText = ColumnarTranspositionCipher.encrpyter(plaintext, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypter();
 
-        assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""),
-                "The decrypted text should match the original plaintext, ignoring spaces.");
+        assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
     }
 
     @Test
@@ -42,7 +41,6 @@ public class ColumnarTranspositionCipherTest {
         String encryptedText = ColumnarTranspositionCipher.encrpyter(longText, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypter();
 
-        assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""),
-                "The decrypted text should match the original long plaintext, ignoring spaces.");
+        assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
     }
 }
