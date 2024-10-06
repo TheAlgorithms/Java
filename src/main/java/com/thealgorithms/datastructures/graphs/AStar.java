@@ -120,9 +120,7 @@ public final class AStar {
      */
     public static PathAndDistance aStar(int from, int to, Graph graph, int[] heuristic) {
         // PriorityQueue to explore nodes based on their distance and estimated cost to reach the destination
-        PriorityQueue<PathAndDistance> queue = new PriorityQueue<>(
-                Comparator.comparingInt(a -> (a.getDistance() + a.getEstimated()))
-        );
+        PriorityQueue<PathAndDistance> queue = new PriorityQueue<>(Comparator.comparingInt(a -> (a.getDistance() + a.getEstimated())));
 
         // Start with the initial node
         queue.add(new PathAndDistance(0, new ArrayList<>(List.of(from)), heuristic[from]));
