@@ -91,14 +91,6 @@ public final class AStar {
         public int getEstimated() {
             return estimated;
         }
-
-        private void printSolution() {
-            if (this.path != null) {
-                System.out.println("Optimal path: " + this.path + ", distance: " + this.distance);
-            } else {
-                System.out.println("There is no path available to connect the points");
-            }
-        }
     }
 
     // Initializes the graph with edges defined in the input data
