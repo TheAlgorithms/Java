@@ -12,7 +12,7 @@ import java.util.Comparator;
  * within the given timeframe. It sorts the jobs in decreasing order of profit
  * and attempts to assign them to the latest possible time slots.
  */
-public class JobSchedulingWithDeadline {
+public final class JobSchedulingWithDeadline {
     private JobSchedulingWithDeadline() {
     }
 
