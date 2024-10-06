@@ -3,7 +3,6 @@ package com.thealgorithms.ciphers.a5;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.BitSet;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
