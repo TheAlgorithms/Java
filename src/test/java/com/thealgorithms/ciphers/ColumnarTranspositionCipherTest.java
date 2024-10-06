@@ -29,16 +29,19 @@ public class ColumnarTranspositionCipherTest {
 
     @Test
     public void testDecryption() {
+        String encryptedText = ColumnarTranspositionCipher.encrpyter(plaintext, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypter();
 
         assertEquals(plaintext.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original plaintext, ignoring spaces.");
+        assertEquals(encryptedText, ColumnarTranspositionCipher.encrpyter(plaintext, keyword), "The encrypted text should be the same when encrypted again.");
     }
 
     @Test
     public void testLongPlainText() {
         String longText = "This is a significantly longer piece of text to test the encryption and decryption capabilities of the Columnar Transposition Cipher. It should handle long strings gracefully.";
+        String encryptedText = ColumnarTranspositionCipher.encrpyter(longText, keyword);
         String decryptedText = ColumnarTranspositionCipher.decrypter();
-
         assertEquals(longText.replaceAll(" ", ""), decryptedText.replaceAll(" ", ""), "The decrypted text should match the original long plaintext, ignoring spaces.");
+        assertEquals(encryptedText, ColumnarTranspositionCipher.encrpyter(longText, keyword), "The encrypted text should be the same when encrypted again.");
     }
 }
