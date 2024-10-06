@@ -146,7 +146,7 @@ public final class BM25InvertedIndex {
             Map<Integer, Integer> docList = index.get(term);
             if (docList == null) {
                 docList = new HashMap<>();
-                index.put(term, docList);  // Ensure docList is added to the index
+                index.put(term, docList); // Ensure docList is added to the index
             }
             // Increment the term frequency in this document
             docList.put(docId, docList.getOrDefault(docId, 0) + 1);
@@ -180,7 +180,7 @@ public final class BM25InvertedIndex {
             int termFrequency = entry.getValue();
             Movie movie = movies.get(docId);
             if (movie == null) {
-                continue;  // Skip this document if movie doesn't exist
+                continue; // Skip this document if movie doesn't exist
             }
             double docLength = movie.getWords().length;
 
