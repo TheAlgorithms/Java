@@ -13,13 +13,25 @@ public final class NonPreemptivePriorityScheduling {
     private NonPreemptivePriorityScheduling() {
     }
 
+    /**
+     * Represents a process with an ID, burst time, priority, and start time.
+     */
     static class Process implements Comparable<Process> {
-        int id; // Process ID
-        int burstTime; // Time required by the process for execution
-        int priority; // Priority of the process (lower value indicates higher priority)
+        int id;
+        int startTime;
+        int burstTime;
+        int priority;
 
+        /**
+         * Constructs a Process instance with the specified parameters.
+         *
+         * @param id        Unique identifier for the process
+         * @param burstTime Time required for the process execution
+         * @param priority  Priority of the process
+         */
         Process(int id, int burstTime, int priority) {
             this.id = id;
+            this.startTime = -1;
             this.burstTime = burstTime;
             this.priority = priority;
         }
@@ -27,6 +39,10 @@ public final class NonPreemptivePriorityScheduling {
         /**
          * Compare based on priority for scheduling. The process with the lowest
          * priority is selected first.
+         *
+         * @param other The other process to compare against
+         * @return A negative integer, zero, or a positive integer as this process
+         *         is less than, equal to, or greater than the specified process.
          */
         @Override
         public int compareTo(Process other) {
@@ -48,10 +64,13 @@ public final class NonPreemptivePriorityScheduling {
 
         Process[] executionOrder = new Process[processes.length];
         int index = 0;
+        int currentTime = 0;
 
-        // Execute processes based on their priority
         while (!pq.isEmpty()) {
-            executionOrder[index++] = pq.poll(); // Poll the process with the highest priority
+            Process currentProcess = pq.poll();
+            currentProcess.startTime = currentTime;
+            executionOrder[index++] = currentProcess;
+            currentTime += currentProcess.burstTime;
         }
 
         return executionOrder;
@@ -93,19 +112,5 @@ public final class NonPreemptivePriorityScheduling {
         }
 
         return (double) totalTurnaroundTime / processes.length;
-    }
-
-    public static void main(String[] args) {
-        Process[] processes = {new Process(1, 10, 2), new Process(2, 5, 1), new Process(3, 8, 3)};
-
-        Process[] executionOrder = scheduleProcesses(processes);
-
-        System.out.println("Process ID | Burst Time | Priority");
-        for (Process process : executionOrder) {
-            System.out.printf("%d          %d           %d%n", process.id, process.burstTime, process.priority);
-        }
-
-        System.out.printf("Average Waiting Time: %.2f%n", calculateAverageWaitingTime(processes, executionOrder));
-        System.out.printf("Average Turnaround Time: %.2f%n", calculateAverageTurnaroundTime(processes, executionOrder));
     }
 }
