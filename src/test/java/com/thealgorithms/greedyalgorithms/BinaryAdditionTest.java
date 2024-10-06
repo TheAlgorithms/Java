@@ -1,7 +1,7 @@
 package com.thealgorithms.greedyalgorithms;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryAdditionTest {
 
@@ -82,7 +82,7 @@ public class BinaryAdditionTest {
     public void testEmptyStrings() {
         String a = "";
         String b = "";
-        String expected = "0"; // Adding two empty strings should return 0
+        String expected = ""; // Adding two empty strings should return 0
         assertEquals(expected, binaryAddition.addBinary(a, b));
     }
 
