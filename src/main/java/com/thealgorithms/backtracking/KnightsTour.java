@@ -153,21 +153,4 @@ public final class KnightsTour {
         }
         return false;
     }
-
-    /**
-     * Prints the resulting chess board after solving the Knight's Tour.
-     * Visited cells are displayed with their move numbers, while boundary/invalid cells are marked as "XX".
-     */
-    private static void printResult() {
-        for (int[] row : grid) {
-            for (int i : row) {
-                if (i == -1) {
-                    System.out.print("XX "); // Invalid cells
-                } else {
-                    System.out.printf("%2d ", i); // Print the move number
-                }
-            }
-            System.out.println();
-        }
-    }
 }
