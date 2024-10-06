@@ -184,13 +184,4 @@ public final class ColumnarTranspositionCipher {
         }
         abecedarium = t.toString();
     }
-
-    private static void showTable() {
-        for (Object[] table1 : table) {
-            for (Object item : table1) {
-                System.out.print(item + " ");
-            }
-            System.out.println();
-        }
-    }
 }
