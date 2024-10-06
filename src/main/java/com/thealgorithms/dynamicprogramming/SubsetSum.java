@@ -41,7 +41,6 @@ public final class SubsetSum {
     */
     public static boolean isSubsetSum(int[] arr, int sum) {
         int n = arr.length;
-        
         // Declare the boolean array with size sum + 1
         boolean[] dp = new boolean[sum + 1];
 
