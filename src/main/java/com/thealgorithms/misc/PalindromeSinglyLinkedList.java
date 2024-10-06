@@ -68,7 +68,7 @@ public final class PalindromeSinglyLinkedList {
     static class Node {
         int val;
         Node next;
-        public Node(int val) {
+        Node(int val) {
             this.val = val;
             this.next = null;
         }
