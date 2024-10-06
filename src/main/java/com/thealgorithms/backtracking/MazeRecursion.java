@@ -61,16 +61,21 @@ public final class MazeRecursion {
             map[i][j] = 2;
 
             // Move down
-            if (setWay(map, i + 1, j)) return true;
+            if (setWay(map, i + 1, j)) {
+                return true;
+            }
             // Move right
-            else if (setWay(map, i, j + 1))
+            else if (setWay(map, i, j + 1)) {
                 return true;
+            }
             // Move up
-            else if (setWay(map, i - 1, j))
+            else if (setWay(map, i - 1, j)) {
                 return true;
+            }
             // Move left
-            else if (setWay(map, i, j - 1))
+            else if (setWay(map, i, j - 1)) {
                 return true;
+            }
 
             map[i][j] = 3; // Mark as dead end (3) if no direction worked
             return false;
@@ -96,16 +101,21 @@ public final class MazeRecursion {
             map[i][j] = 2;
 
             // Move up
-            if (setWay2(map, i - 1, j)) return true;
+            if (setWay2(map, i - 1, j)) {
+                return true;
+            }
             // Move right
-            else if (setWay2(map, i, j + 1))
+            else if (setWay2(map, i, j + 1)) {
                 return true;
+            }
             // Move down
-            else if (setWay2(map, i + 1, j))
+            else if (setWay2(map, i + 1, j)) {
                 return true;
+            }
             // Move left
-            else if (setWay2(map, i, j - 1))
+            else if (setWay2(map, i, j - 1)) {
                 return true;
+            }
 
             map[i][j] = 3; // Mark as dead end (3) if no direction worked
             return false;
