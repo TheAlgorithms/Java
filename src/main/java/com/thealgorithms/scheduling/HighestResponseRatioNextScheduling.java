@@ -113,7 +113,7 @@ public final class HighestResponseRatioNextScheduling {
 
         for (int i = 0; i < processNames.length; i++) {
             if (!finishedProcess[i] && arrivalTimes[i] <= currentTime) {
-                double responseRatio = (double) (burstTimes[i] + (currentTime - arrivalTimes[i])) / burstTimes[i];
+                double responseRatio = (double) (burstTimes[i] + currentTime - arrivalTimes[i]) / burstTimes[i];
                 if (responseRatio > maxResponseRatio) {
                     maxResponseRatio = responseRatio;
                     loc = i;
