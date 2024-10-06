@@ -28,7 +28,7 @@ class Movie {
      * @param releaseYear Release year of the movie.
      * @param content Content or description of the movie.
      */
-    public Movie(int docId, String name, double imdbRating, int releaseYear, String content) {
+    Movie(int docId, String name, double imdbRating, int releaseYear, String content) {
         this.docId = docId;
         this.name = name;
         this.imdbRating = imdbRating;
@@ -61,7 +61,7 @@ class SearchResult {
      * @param docId Document ID (movie) for this search result.
      * @param relevanceScore The relevance score based on BM25 scoring.
      */
-    public SearchResult(int docId, double relevanceScore) {
+    SearchResult(int docId, double relevanceScore) {
         this.docId = docId;
         this.relevanceScore = relevanceScore;
     }
@@ -78,8 +78,12 @@ class SearchResult {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         SearchResult that = (SearchResult) o;
         return docId == that.docId && Double.compare(that.relevanceScore, relevanceScore) == 0;
     }
@@ -99,14 +103,14 @@ public final class BM25InvertedIndex {
     private Map<Integer, Movie> movies; // Mapping of movie document IDs to Movie objects
     private int totalDocuments; // Total number of movies/documents
     private double avgDocumentLength; // Average length of documents (number of words)
-    private static final double k = 1.5; // BM25 tuning parameter, controls term frequency saturation
-    private static final double b = 0.75; // BM25 tuning parameter, controls length normalization
+    private static final double K = 1.5; // BM25 tuning parameter, controls term frequency saturation
+    private static final double B = 0.75; // BM25 tuning parameter, controls length normalization
 
     /**
      * Constructor for BM25InvertedIndex.
      * Initializes the inverted index and movie storage.
      */
-    public BM25InvertedIndex() {
+    BM25InvertedIndex() {
         index = new HashMap<>();
         movies = new HashMap<>();
         totalDocuments = 0;
@@ -192,8 +196,8 @@ public final class BM25InvertedIndex {
      * @return The BM25 relevance score for the term in the document.
      */
     private double computeBM25Score(int termFrequency, double docLength, double idf) {
-        double numerator = termFrequency * (k + 1);
-        double denominator = termFrequency + k * (1 - b + b * (docLength / avgDocumentLength));
+        double numerator = termFrequency * (K + 1);
+        double denominator = termFrequency + K * (1 - B + B * (docLength / avgDocumentLength));
         return idf * (numerator / denominator);
     }
 
