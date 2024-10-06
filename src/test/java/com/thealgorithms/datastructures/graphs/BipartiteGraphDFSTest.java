@@ -3,8 +3,8 @@ package com.thealgorithms.datastructures.graphs;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
 public class BipartiteGraphDFSTest {
 
@@ -26,7 +26,7 @@ public class BipartiteGraphDFSTest {
     @Test
     public void testBipartiteGraphEvenCycle() {
         int numVertices = 4;
-        int[][] edges = { {0, 1}, {1, 2}, {2, 3}, {3, 0} }; // Even cycle
+        int[][] edges = {{0, 1}, {1, 2}, {2, 3}, {3, 0}}; // Even cycle
         ArrayList<ArrayList<Integer>> adj = createAdjacencyList(numVertices, edges);
         assertTrue(BipartiteGraphDFS.isBipartite(numVertices, adj), "Graph should be bipartite (even cycle)");
     }
@@ -34,7 +34,7 @@ public class BipartiteGraphDFSTest {
     @Test
     public void testBipartiteGraphOddCycle() {
         int numVertices = 5;
-        int[][] edges = { {0, 1}, {1, 2}, {2, 0}, {1, 3}, {3, 4} }; // Odd cycle
+        int[][] edges = {{0, 1}, {1, 2}, {2, 0}, {1, 3}, {3, 4}}; // Odd cycle
         ArrayList<ArrayList<Integer>> adj = createAdjacencyList(numVertices, edges);
         assertFalse(BipartiteGraphDFS.isBipartite(numVertices, adj), "Graph should not be bipartite (odd cycle)");
     }
@@ -42,7 +42,7 @@ public class BipartiteGraphDFSTest {
     @Test
     public void testBipartiteGraphDisconnected() {
         int numVertices = 6;
-        int[][] edges = { {0, 1}, {2, 3}, {4, 5} }; // Disconnected bipartite graphs
+        int[][] edges = {{0, 1}, {2, 3}, {4, 5}}; // Disconnected bipartite graphs
         ArrayList<ArrayList<Integer>> adj = createAdjacencyList(numVertices, edges);
         assertTrue(BipartiteGraphDFS.isBipartite(numVertices, adj), "Graph should be bipartite (disconnected)");
     }
@@ -58,7 +58,7 @@ public class BipartiteGraphDFSTest {
     @Test
     public void testBipartiteGraphCompleteBipartite() {
         int numVertices = 4;
-        int[][] edges = { {0, 2}, {0, 3}, {1, 2}, {1, 3} }; // K2,2 (Complete bipartite graph)
+        int[][] edges = {{0, 2}, {0, 3}, {1, 2}, {1, 3}}; // K2,2 (Complete bipartite graph)
         ArrayList<ArrayList<Integer>> adj = createAdjacencyList(numVertices, edges);
         assertTrue(BipartiteGraphDFS.isBipartite(numVertices, adj), "Graph should be bipartite (complete bipartite)");
     }
@@ -66,7 +66,7 @@ public class BipartiteGraphDFSTest {
     @Test
     public void testBipartiteGraphNonBipartite() {
         int numVertices = 3;
-        int[][] edges = { {0, 1}, {1, 2}, {2, 0} }; // Triangle (odd cycle)
+        int[][] edges = {{0, 1}, {1, 2}, {2, 0}}; // Triangle (odd cycle)
         ArrayList<ArrayList<Integer>> adj = createAdjacencyList(numVertices, edges);
         assertFalse(BipartiteGraphDFS.isBipartite(numVertices, adj), "Graph should not be bipartite (triangle)");
     }
