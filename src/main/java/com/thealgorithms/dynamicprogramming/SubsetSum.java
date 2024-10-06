@@ -33,4 +33,30 @@ public final class SubsetSum {
 
         return isSum[n][sum];
     }
+
+    /*
+    Space Optimized solution using 1D boolean array 
+    
+    Time Complexity: O(n * sum)
+    Space complexity: O(sum)
+    */
+    public static boolean isSubsetSum(int[] arr, int sum){
+        int n = arr.length;
+        
+        // Declare the boolean array with size sum + 1
+        boolean[] dp = new boolean[sum + 1];
+
+        // Initialize the first element as true
+        dp[0] = true;
+
+        // Find the subset sum using 1D array
+        for(int i = 0; i < n; i++){
+            for(int j = sum; j >= arr[i]; j--){
+                dp[j] = dp[j] || dp[j - arr[i]];
+            }
+        }
+
+
+        return dp[sum];
+    }
 }
