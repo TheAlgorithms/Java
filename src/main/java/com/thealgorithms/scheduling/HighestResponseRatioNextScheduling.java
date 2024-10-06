@@ -12,6 +12,8 @@ import java.util.Arrays;
  * and improve overall system performance by balancing short and long processes.
  */
 public class HighestResponseRatioNextScheduling {
+    private HighestResponseRatioNextScheduling() {
+    }
 
     /**
      * Calculates the Turn Around Time (TAT) for each process.
