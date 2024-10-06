@@ -1,6 +1,7 @@
 package com.thealgorithms.greedyalgorithms;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class BinaryAdditionTest {
@@ -38,7 +39,6 @@ public class BinaryAdditionTest {
         String expected = "0";
         assertEquals(expected, binaryAddition.addBinary(a, b));
     }
-
 
     @Test
     public void testAllOnes() {
@@ -94,4 +94,3 @@ public class BinaryAdditionTest {
         assertEquals(expected, binaryAddition.addBinary(a, b));
     }
 }
-
