@@ -10,8 +10,7 @@ package com.thealgorithms.bitmanipulation;
 public class OnesComplement {
     // Function to get the 1's complement of a binary number
     public static String onesComplement(String binary) {
-        StringBuilder complement = new StringBuilder();
-        
+        StringBuilder complement = new StringBuilder();     
         // Invert each bit to get the 1's complement
         for (int i = 0; i < binary.length(); i++) {
             if (binary.charAt(i) == '0') {
