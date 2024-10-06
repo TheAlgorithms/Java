@@ -45,7 +45,7 @@ public class AffineConverterTest {
 
     @Test
     void testCompose() {
-        AffineConverter otherConverter = new AffineConverter(1.0, 2.0); // slope = 1.0, intercept = 2.0
+        AffineConverter otherConverter = new AffineConverter(1.0, 2.0);
         AffineConverter composed = converter.compose(otherConverter);
 
         assertEquals(7.0, composed.convert(0.0), "Expected composed conversion at 0.0");
