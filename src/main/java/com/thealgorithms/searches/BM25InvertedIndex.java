@@ -95,7 +95,7 @@ class SearchResult {
 }
 
 public final class BM25InvertedIndex {
-    private Map<String, Map<Integer, Integer>> index; // Inverted index mapping terms to document frequencies
+    private Map<String, Map<Integer, Integer>> index; // Inverted index mapping terms to document id and frequency
     private Map<Integer, Movie> movies; // Mapping of movie document IDs to Movie objects
     private int totalDocuments; // Total number of movies/documents
     private double avgDocumentLength; // Average length of documents (number of words)
