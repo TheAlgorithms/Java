@@ -54,12 +54,9 @@ public class JobSchedulingWithDeadline {
      *         total profit earned from those jobs.
      */
     public static int[] jobSequencingWithDeadlines(Job[] jobs) {
-        Arrays.sort(jobs, Comparator.comparingInt(job -> -job.profit));
+        Arrays.sort(jobs, Comparator.comparingInt(job -> - job.profit));
 
-        int maxDeadline = Arrays.stream(jobs)
-                .mapToInt(job -> job.deadline)
-                .max()
-                .orElse(0);
+        int maxDeadline = Arrays.stream(jobs).mapToInt(job -> job.deadline).max().orElse(0);
 
         int[] timeSlots = new int[maxDeadline];
         Arrays.fill(timeSlots, -1);
