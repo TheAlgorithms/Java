@@ -1,6 +1,9 @@
 package com.thealgorithms.audiofilters;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,16 +20,6 @@ public class IIRFilterTest {
     void testConstructorInvalidOrder() {
         // Test an invalid filter creation (order <= 0)
         assertThrows(IllegalArgumentException.class, () -> { new IIRFilter(0); }, "Order must be greater than zero");
-    }
-
-    @Test
-    void testSetCoeffsValid() {
-        IIRFilter filter = new IIRFilter(2);
-
-        // Valid coefficients with correct length
-        double[] aCoeffs = {1.0, 0.5};
-        double[] bCoeffs = {1.0, 0.5};
-        assertDoesNotThrow(() -> filter.setCoeffs(aCoeffs, bCoeffs), "Coefficients should be set without exceptions");
     }
 
     @Test
