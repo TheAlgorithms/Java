@@ -15,8 +15,8 @@ public class A5CipherTest {
     @BeforeEach
     void setUp() {
         // Initialize the session key and frame counter
-        sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L}); // Example 16-bit key
-        frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L}); // Example 16-bit frame counter
+        sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L});
+        frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L});
         a5Cipher = new A5Cipher(sessionKey, frameCounter);
     }
 
