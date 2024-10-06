@@ -31,7 +31,7 @@ public class AffineCipherTest {
     public void testSpacesHandledInEncryption() {
         String plaintext = "HELLO WORLD";
         char[] msg = plaintext.toCharArray();
-        String expectedCiphertext = "JKZZY EYXZT"; // Expected ciphertext with spaces retained
+        String expectedCiphertext = "JKZZY EYXZT";
 
         String actualCiphertext = AffineCipher.encryptMessage(msg);
         assertEquals(expectedCiphertext, actualCiphertext, "The encryption should handle spaces correctly.");
