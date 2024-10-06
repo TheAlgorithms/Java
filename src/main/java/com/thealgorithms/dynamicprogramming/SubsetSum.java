@@ -35,7 +35,7 @@ public final class SubsetSum {
     }
 
     /*
-    Space Optimized solution using 1D boolean array 
+    Space Optimized solution using 1D boolean array
     Time Complexity: O(n * sum)
     Space complexity: O(sum)
     */
