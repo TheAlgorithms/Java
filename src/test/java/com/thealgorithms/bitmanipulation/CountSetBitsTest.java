@@ -14,4 +14,13 @@ public class CountSetBitsTest {
         assertEquals(5, csb.countSetBits(10000));
         assertEquals(5, csb.countSetBits(31));
     }
+
+    @Test
+    void testSetBitsLookupApproach() {
+        CountSetBits csb = new CountSetBits();
+        assertEquals(1L, csb.lookupApproach(16));
+        assertEquals(4, csb.lookupApproach(15));
+        assertEquals(5, csb.lookupApproach(10000));
+        assertEquals(5, csb.lookupApproach(31));
+    }
 }
