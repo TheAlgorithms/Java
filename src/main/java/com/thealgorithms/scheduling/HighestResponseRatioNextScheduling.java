@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * The HighestResponseRatioNextScheduling class implements
@@ -11,7 +12,7 @@ import java.util.Arrays;
  * This algorithm aims to reduce the average waiting time
  * and improve overall system performance by balancing short and long processes.
  */
-public class HighestResponseRatioNextScheduling {
+public final class HighestResponseRatioNextScheduling {
     private HighestResponseRatioNextScheduling() {
     }
 
@@ -133,7 +134,7 @@ public class HighestResponseRatioNextScheduling {
         for (int i = 0; i < arrivalTimes.length; i++) {
             indices[i] = i;
         }
-        Arrays.sort(indices, (a, b) -> Integer.compare(arrivalTimes[a], arrivalTimes[b]));
+        Arrays.sort(indices, Comparator.comparingInt(a -> arrivalTimes[a]));
         return Arrays.stream(indices).mapToInt(Integer::intValue).toArray();
     }
 }
