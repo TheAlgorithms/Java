@@ -25,14 +25,14 @@ public final class KnightsTour {
 
     // Possible moves for a knight in chess
     private static final int[][] MOVES = {
-            {1, -2},
-            {2, -1},
-            {2, 1},
-            {1, 2},
-            {-1, 2},
-            {-2, 1},
-            {-2, -1},
-            {-1, -2},
+        {1, -2},
+        {2, -1},
+        {2, 1},
+        {1, 2},
+        {-1, 2},
+        {-2, 1},
+        {-2, -1},
+        {-1, -2},
     };
 
     // Chess grid representing the board
