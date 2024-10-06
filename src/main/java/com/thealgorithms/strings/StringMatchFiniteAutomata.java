@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.strings;
 
 import java.util.Set;
 import java.util.TreeSet;
