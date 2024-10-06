@@ -1,9 +1,9 @@
 package com.thealgorithms.ciphers.a5;
 
+import static com.thealgorithms.ciphers.a5.A5KeyStreamGenerator.FRAME_COUNTER_LENGTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static com.thealgorithms.ciphers.a5.A5KeyStreamGenerator.FRAME_COUNTER_LENGTH;
 
 import java.util.BitSet;
 
@@ -21,8 +21,8 @@ public class A5KeyStreamGeneratorTest {
         keyStreamGenerator = new A5KeyStreamGenerator();
 
         // Initialize session key and frame counter for testing
-        sessionKey = BitSet.valueOf(new long[]{0b1010101010101010L}); // Example 16-bit key
-        frameCounter = BitSet.valueOf(new long[]{0b0000000000000001L}); // Example 16-bit frame counter
+        sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L}); // Example 16-bit key
+        frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L}); // Example 16-bit frame counter
         keyStreamGenerator.initialize(sessionKey, frameCounter);
     }
 
