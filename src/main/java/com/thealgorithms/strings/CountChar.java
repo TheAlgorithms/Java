@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.strings;
 
 public final class CountChar {
     private CountChar() {
