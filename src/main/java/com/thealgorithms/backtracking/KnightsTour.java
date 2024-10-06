@@ -42,6 +42,23 @@ public final class KnightsTour {
     static int total;
 
     /**
+     * Resets the chess board to its initial state.
+     * Initializes the grid with boundary cells marked as -1 and internal cells as 0.
+     * Sets the total number of cells the knight needs to visit.
+     */
+    public static void resetBoard() {
+        grid = new int[BASE][BASE];
+        total = (BASE - 4) * (BASE - 4);
+        for (int r = 0; r < BASE; r++) {
+            for (int c = 0; c < BASE; c++) {
+                if (r < 2 || r > BASE - 3 || c < 2 || c > BASE - 3) {
+                    grid[r][c] = -1; // Mark boundary cells
+                }
+            }
+        }
+    }
+
+    /**
      * Recursive method to solve the Knight's Tour problem.
      *
      * @param row   The current row of the knight

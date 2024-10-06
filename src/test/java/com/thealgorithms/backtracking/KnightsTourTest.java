@@ -11,21 +11,12 @@ public class KnightsTourTest {
 
     @BeforeEach
     void setUp() {
-        // Reset the grid and total for each test
-        KnightsTour.grid = new int[12][12];
-        KnightsTour.total = (12 - 4) * (12 - 4);
-        for (int r = 0; r < 12; r++) {
-            for (int c = 0; c < 12; c++) {
-                if (r < 2 || r > 12 - 3 || c < 2 || c > 12 - 3) {
-                    KnightsTour.grid[r][c] = -1;
-                }
-            }
-        }
+        // Call the reset method in the KnightsTour class
+        KnightsTour.resetBoard();
     }
 
     @Test
     void testGridInitialization() {
-        // Ensure that the border squares are -1 and internal grid is 0
         for (int r = 0; r < 12; r++) {
             for (int c = 0; c < 12; c++) {
                 if (r < 2 || r > 12 - 3 || c < 2 || c > 12 - 3) {
