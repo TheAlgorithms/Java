@@ -633,10 +633,15 @@
             * [SingleBitOperationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleBitOperationsTest.java)
           * ciphers
             * a5
+              * [A5CipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/A5CipherTest.java)
+              * [A5KeyStreamGeneratorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/A5KeyStreamGeneratorTest.java)
               * [LFSRTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/LFSRTest.java)
+            * [AESEncryptionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/AESEncryptionTest.java)
+            * [AffineCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/AffineCipherTest.java)
             * [AutokeyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/AutokeyTest.java)
             * [BlowfishTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/BlowfishTest.java)
             * [CaesarTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/CaesarTest.java)
+            * [ColumnarTranspositionCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/ColumnarTranspositionCipherTest.java)
             * [DESTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/DESTest.java)
             * [HillCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/HillCipherTest.java)
             * [PlayfairTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/PlayfairTest.java)
@@ -646,6 +651,7 @@
             * [VigenereTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/VigenereTest.java)
             * [XORCipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/XORCipherTest.java)
           * conversions
+            * [AffineConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AffineConverterTest.java)
             * [AnyBaseToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AnyBaseToDecimalTest.java)
             * [BinaryToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToDecimalTest.java)
             * [BinaryToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToHexadecimalTest.java)
@@ -688,6 +694,7 @@
             * dynamicarray
               * [DynamicArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/dynamicarray/DynamicArrayTest.java)
             * graphs
+              * [AStarTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/AStarTest.java)
               * [BipartiteGraphDFSTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BipartiteGraphDFSTest.java)
               * [BoruvkaAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithmTest.java)
               * [DijkstraAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithmTest.java)
