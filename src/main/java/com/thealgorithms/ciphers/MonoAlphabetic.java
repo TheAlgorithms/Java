@@ -8,7 +8,6 @@ public final class MonoAlphabetic {
 
     // Encryption method
     public static String encrypt(String data, String key) {
-        // Validate that the input data contains only uppercase letters
         if (!data.matches("[A-Z]+")) {
             throw new IllegalArgumentException("Input data contains invalid characters. Only uppercase A-Z are allowed.");
         }
@@ -16,8 +15,8 @@ public final class MonoAlphabetic {
 
         // Encrypt each character
         for (char c : data.toCharArray()) {
-            int idx = charToPos(c); // Get the index in the alphabet
-            sb.append(key.charAt(idx)); // Append the character from the key
+            int idx = charToPos(c); // Get the index of the character
+            sb.append(key.charAt(idx)); // Map to the corresponding character in the key
         }
         return sb.toString();
     }
@@ -28,7 +27,7 @@ public final class MonoAlphabetic {
 
         // Decrypt each character
         for (char c : data.toCharArray()) {
-            int idx = key.indexOf(c); // Find the index in the key
+            int idx = key.indexOf(c); // Find the index of the character in the key
             if (idx == -1) {
                 throw new IllegalArgumentException("Input data contains invalid characters.");
             }
