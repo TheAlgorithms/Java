@@ -36,14 +36,14 @@ public final class UniqueSubsequencesCount {
      * @param str the input string from which subsequences are generated
      * @return the total count of unique subsequences
      */
-    public static int countSubsequences(String str) {
+    public static int countSubseq(String str) {
 
         // DP array initialized to store intermediate results
         int[] dp = new int[str.length() + 1];
         Arrays.fill(dp, -1);
 
         // Calls the recursive function to compute the result
-        return recursiveCall(str, 0, dp);
+        return countSubsequences(str, 0, dp);
     }
 
     /**
@@ -59,7 +59,7 @@ public final class UniqueSubsequencesCount {
      * @return the total number of unique subsequences starting from the
      *         current index
      */
-    public static int recursiveCall(String st, int idx, int[] dp) {
+    public static int countSubsequences(String st, int idx, int[] dp) {
 
         // Base case: when index exceeds the string length
         if (idx >= st.length()) {
@@ -88,7 +88,7 @@ public final class UniqueSubsequencesCount {
             set.add(st.charAt(j));
 
             // 1 for the current subsequence + recursive call for the rest of the string
-            res = 1 + recursiveCall(st, j + 1, dp) + res;
+            res = 1 + countSubsequences(st, j + 1, dp) + res;
         }
 
         // Memoize the result
