@@ -2,7 +2,6 @@ package com.thealgorithms.ciphers;
 
 public final class MonoAlphabetic {
 
-    // Private constructor to prevent instantiation of utility class
     private MonoAlphabetic() {
         throw new UnsupportedOperationException("Utility class");
     }
