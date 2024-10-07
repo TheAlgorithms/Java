@@ -7,7 +7,7 @@ public class QuadraticEquationSolverTest {
     private final QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
 
     @Test
-    public void testSolveEquation_realRoots() {
+    public void testSolveEquationRealRoots() {
         // 4.2x^2 + 8x + 1.9 = 0
         double a = 4.2;
         double b = 8;
@@ -22,7 +22,7 @@ public class QuadraticEquationSolverTest {
     }
 
     @Test
-    public void testSolveEquation_equalRoots() {
+    public void testSolveEquationEqualRoots() {
         // x^2 + 2x + 1 = 0
         double a = 1;
         double b = 2;
@@ -34,7 +34,7 @@ public class QuadraticEquationSolverTest {
     }
 
     @Test
-    public void testSolveEquation_imaginaryRoots() {
+    public void testSolveEquationComplexRoots() {
         // 2.3x^2 + 4x + 5.6 = 0
         double a = 2.3;
         double b = 4;
