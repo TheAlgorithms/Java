@@ -69,4 +69,3 @@ public class CreateAndDetectLoopTest {
         assertFalse(CreateAndDetectLoop.detectLoop(head), "No loop should be created if positions are out of bounds.");
     }
 }
-

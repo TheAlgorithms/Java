@@ -56,7 +56,6 @@ public final class CreateAndDetectLoop {
             node2.next = node1;
         }
     }
-
     // Method to detect a loop in the linked list
     /**
      * Detects the presence of a loop in the linked list.
@@ -78,6 +77,3 @@ public final class CreateAndDetectLoop {
         return false;
     }
 }
-
-
-
