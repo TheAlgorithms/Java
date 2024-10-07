@@ -1,7 +1,5 @@
 package com.thealgorithms.datastructures.graphs;
 
-import java.util.Scanner;
-
 /**
  * The {@code FloydWarshall} class provides an implementation of the Floyd-Warshall algorithm
  * to compute the shortest paths between all pairs of vertices in a weighted graph.
