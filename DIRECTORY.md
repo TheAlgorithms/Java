@@ -170,6 +170,7 @@
               * [LinkedQueue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/LinkedQueue.java)
               * [PriorityQueues](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/PriorityQueues.java)
               * [Queue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/Queue.java)
+              * [QueueByTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/QueueByTwoStacks.java)
             * stacks
               * [NodeStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/stacks/NodeStack.java)
               * [ReverseStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/stacks/ReverseStack.java)
@@ -477,6 +478,7 @@
           * searches
             * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch.java)
             * [BinarySearch2dArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch2dArray.java)
+            * [BM25InvertedIndex](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BM25InvertedIndex.java)
             * [BreadthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BreadthFirstSearch.java)
             * [DepthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/DepthFirstSearch.java)
             * [ExponentalSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/ExponentalSearch.java)
@@ -731,6 +733,7 @@
               * [GenericArrayListQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/GenericArrayListQueueTest.java)
               * [LinkedQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/LinkedQueueTest.java)
               * [PriorityQueuesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/PriorityQueuesTest.java)
+              * [QueueByTwoStacksTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueByTwoStacksTest.java)
               * [QueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueTest.java)
             * stacks
               * [LinkedListStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/LinkedListStackTest.java)
@@ -756,7 +759,7 @@
               * [SplayTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/SplayTreeTest.java)
               * [TreapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TreapTest.java)
               * [TreeTestUtils](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TreeTestUtils.java)
-              * [TrieImpTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TrieImpTest.java)
+              * [TrieTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TrieTest.java)
               * [VerticalOrderTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/VerticalOrderTraversalTest.java)
               * [ZigzagTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/ZigzagTraversalTest.java)
           * divideandconquer
@@ -887,6 +890,7 @@
             * [PrimeFactorizationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PrimeFactorizationTest.java)
             * [PronicNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PronicNumberTest.java)
             * [PythagoreanTripleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/PythagoreanTripleTest.java)
+            * [QuadraticEquationSolverTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/QuadraticEquationSolverTest.java)
             * [ReverseNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ReverseNumberTest.java)
             * [SecondMinMaxTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/SecondMinMaxTest.java)
             * [SieveOfEratosthenesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/SieveOfEratosthenesTest.java)
@@ -952,6 +956,7 @@
             * [SRTFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SRTFSchedulingTest.java)
           * searches
             * [BinarySearch2dArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearch2dArrayTest.java)
+            * [BM25InvertedIndexTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BM25InvertedIndexTest.java)
             * [BreadthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BreadthFirstSearchTest.java)
             * [DepthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/DepthFirstSearchTest.java)
             * [HowManyTimesRotatedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/HowManyTimesRotatedTest.java)
