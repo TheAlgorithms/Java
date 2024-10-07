@@ -8,7 +8,10 @@ import java.security.SecureRandom;
  * @author P.Sai Srujan Reddy on 7-Oct-24.
  */
 public class ECC {
-
+    /**
+ * Elliptic Curve Cryptography (ECC) implementation
+ * More details: https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+ */
     private BigInteger privateKey;
     private BigInteger publicKey;
     private BigInteger prime;
