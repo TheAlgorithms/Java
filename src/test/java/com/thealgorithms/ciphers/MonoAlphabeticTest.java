@@ -9,29 +9,20 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class MonoAlphabeticTest {
 
-    private static final String KEY = "MNBVCXZLKJHGFDSAPOIUYTREWQ";
-
-    // Test for encryption
+    // Test for both encryption and decryption with different keys
     @ParameterizedTest
-    @MethodSource("provideEncryptionData")
-    public void testEncrypt(String data, String key, String expected) {
-        assertEquals(expected, MonoAlphabetic.encrypt(data, key));
+    @MethodSource("provideTestData")
+    public void testEncryptDecrypt(String plainText, String key, String encryptedText) {
+        // Test encryption
+        assertEquals(encryptedText, MonoAlphabetic.encrypt(plainText, key));
+
+        // Test decryption
+        assertEquals(plainText, MonoAlphabetic.decrypt(encryptedText, key));
     }
 
-    // Test for decryption
-    @ParameterizedTest
-    @MethodSource("provideDecryptionData")
-    public void testDecrypt(String data, String key, String expected) {
-        assertEquals(expected, MonoAlphabetic.decrypt(data, key));
-    }
-
-    // Provide test data for encryption
-    private static Stream<Arguments> provideEncryptionData() {
-        return Stream.of(Arguments.of("HELLO", KEY, "LCGGS"), Arguments.of("JAVA", KEY, "JMTM"));
-    }
-
-    // Provide test data for decryption
-    private static Stream<Arguments> provideDecryptionData() {
-        return Stream.of(Arguments.of("LCGGS", KEY, "HELLO"), Arguments.of("JMTM", KEY, "JAVA"));
+    // Provide test data for both encryption and decryption
+    private static Stream<Arguments> provideTestData() {
+        return Stream.of(
+            Arguments.of("HELLO", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "LCGGS"), Arguments.of("JAVA", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "JMTM"), Arguments.of("HELLO", "QWERTYUIOPLKJHGFDSAZXCVBNM", "UJJYU"), Arguments.of("JAVA", "QWERTYUIOPLKJHGFDSAZXCVBNM", "KZHS"));
     }
 }
