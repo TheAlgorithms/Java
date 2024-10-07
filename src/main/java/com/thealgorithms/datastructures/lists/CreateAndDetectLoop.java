@@ -1,9 +1,12 @@
 package com.thealgorithms.datastructures.lists;
 
-public class CreateAndDetectLoop {
+public final class  CreateAndDetectLoop {
 
     // Node class representing a single node in the linked list
-    public static class Node {
+    private CreateAndDetectLoop() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+     static final  class Node {
         int data;
         Node next;
 
@@ -34,8 +37,8 @@ public class CreateAndDetectLoop {
         Node node1 = head;  // node at position1
         Node node2 = head;  // node at position2
 
-        int count1 = 1, count2 = 1;
-
+        int count1 = 1;
+        int count2 = 1;
         // Traverse to find node at position1
         while (count1 < position1 && node1 != null) {
             node1 = node1.next;

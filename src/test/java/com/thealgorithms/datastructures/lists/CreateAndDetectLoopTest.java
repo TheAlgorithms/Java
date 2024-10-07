@@ -1,10 +1,12 @@
 package com.thealgorithms.datastructures.lists;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CreateAndDetectLoopTest {
+public class   CreateAndDetectLoopTest {
 
     private CreateAndDetectLoop.Node head;
 
@@ -26,13 +28,13 @@ public class CreateAndDetectLoopTest {
     }
 
     @Test
-    void testDetectLoop_NoLoop() {
+    void testDetectLoopNoLoop() {
         // Test when no loop exists
         assertFalse(CreateAndDetectLoop.detectLoop(head), "There should be no loop.");
     }
 
     @Test
-    void testCreateAndDetectLoop_LoopExists() {
+    void testCreateAndDetectLoopLoopExists() {
         // Create a loop between position 2 (node with value 2) and position 5 (node with value 5)
         CreateAndDetectLoop.createLoop(head, 2, 5);
 
@@ -41,7 +43,7 @@ public class CreateAndDetectLoopTest {
     }
 
     @Test
-    void testCreateLoop_InvalidPosition() {
+    void testCreateLoopInvalidPosition() {
         // Create loop with invalid positions
         CreateAndDetectLoop.createLoop(head, 0, 0);
 
@@ -50,7 +52,7 @@ public class CreateAndDetectLoopTest {
     }
 
     @Test
-    void testCreateLoop_SelfLoop() {
+    void testCreateLoopSelfLoop() {
         // Create a self-loop at position 3 (node with value 3)
         CreateAndDetectLoop.createLoop(head, 3, 3);
 
@@ -59,7 +61,7 @@ public class CreateAndDetectLoopTest {
     }
 
     @Test
-    void testCreateLoop_NoChangeForNonExistentPositions() {
+    void testCreateLoopNoChangeForNonExistentPositions() {
         // Create a loop with positions that don't exist in the linked list
         CreateAndDetectLoop.createLoop(head, 10, 20);
 
