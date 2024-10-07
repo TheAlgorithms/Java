@@ -602,6 +602,8 @@
     * java
       * com
         * thealgorithms
+          * audiofilters
+            * [IIRFilterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/audiofilters/IIRFilterTest.java)
           * backtracking
             * [AllPathsFromSourceToTargetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/AllPathsFromSourceToTargetTest.java)
             * [ArrayCombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/ArrayCombinationTest.java)
