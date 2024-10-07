@@ -14,10 +14,12 @@ public class MonoAlphabeticTest {
     @MethodSource("provideTestData")
     public void testEncryptDecrypt(String plainText, String key, String encryptedText) {
         // Test encryption
-        assertEquals(encryptedText, MonoAlphabetic.encrypt(plainText, key));
+        String actualEncrypted = MonoAlphabetic.encrypt(plainText, key);
+        assertEquals(encryptedText, actualEncrypted, "Encryption failed for input: " + plainText + " with key: " + key);
 
         // Test decryption
-        assertEquals(plainText, MonoAlphabetic.decrypt(encryptedText, key));
+        String actualDecrypted = MonoAlphabetic.decrypt(encryptedText, key);
+        assertEquals(plainText, actualDecrypted, "Decryption failed for input: " + encryptedText + " with key: " + key);
     }
 
     // Provide test data for both encryption and decryption
