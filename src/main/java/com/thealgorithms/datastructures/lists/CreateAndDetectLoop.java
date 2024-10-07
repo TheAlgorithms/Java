@@ -1,6 +1,5 @@
 package com.thealgorithms.datastructures.lists;
 
-
 public class CreateAndDetectLoop {
 
     // Node class representing a single node in the linked list
@@ -15,7 +14,7 @@ public class CreateAndDetectLoop {
     }
 
     // Method to create a loop between two specific positions in the linked list
-    /**
+    /*
      *  Test case that shows the Cycle(loop) in a LinkedList
      *  Let's take this linked list:
      *  1->2->3->4->5->6
