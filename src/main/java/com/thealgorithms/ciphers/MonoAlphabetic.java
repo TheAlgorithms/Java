@@ -32,15 +32,20 @@ public final class MonoAlphabetic {
 
         for (char c : data.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                int idx = key.indexOf(c); // Get the index in the key
-                if (idx != -1) {
-                    char originalChar = (char) (idx + 'A'); // Convert index back to character
-                    sb.append(originalChar);
-                }
-            } else {
-                sb.append(c); // Append non-alphabet characters directly
+                int idx = charToPos(c); // Get the index in the key
+                char encryptedChar = key.charAt(idx);
+                sb.append(encryptedChar);
             }
-        }
         return sb.toString();
+    }
+
+    // Helper method: Convert a character to its position in the alphabet
+    private static int charToPos(char c) {
+        return c - 'A'; // Subtract 'A' to get position (0 for A, 1 for B, etc.)
+    }
+
+    // Helper method: Convert a position in the alphabet to a character
+    private static char posToChar(int pos) {
+        return (char) (pos + 'A'); // Add 'A' to convert position back to character
     }
 }
