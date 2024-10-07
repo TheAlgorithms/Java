@@ -476,6 +476,7 @@
           * searches
             * [BinarySearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch.java)
             * [BinarySearch2dArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BinarySearch2dArray.java)
+            * [BM25InvertedIndex](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BM25InvertedIndex.java)
             * [BreadthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/BreadthFirstSearch.java)
             * [DepthFirstSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/DepthFirstSearch.java)
             * [ExponentalSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/ExponentalSearch.java)
@@ -951,6 +952,7 @@
             * [SRTFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SRTFSchedulingTest.java)
           * searches
             * [BinarySearch2dArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearch2dArrayTest.java)
+            * [BM25InvertedIndexTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BM25InvertedIndexTest.java)
             * [BreadthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BreadthFirstSearchTest.java)
             * [DepthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/DepthFirstSearchTest.java)
             * [HowManyTimesRotatedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/HowManyTimesRotatedTest.java)
