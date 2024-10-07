@@ -8,6 +8,9 @@ public final class MonoAlphabetic {
 
     // Encryption method
     public static String encrypt(String data, String key) {
+        if (!data.matches("[A-Z]+")) {
+            throw new IllegalArgumentException("Input data contains invalid characters. Only uppercase A-Z are allowed.");
+        }
         StringBuilder sb = new StringBuilder();
         data = data.toUpperCase();
 
