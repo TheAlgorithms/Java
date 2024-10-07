@@ -16,7 +16,7 @@ public class QuadraticEquationSolverTest {
         ComplexNumber[] roots = quadraticEquationSolver.solveEquation(a, b, c);
         Assertions.assertEquals(roots.length, 2);
         Assertions.assertEquals(roots[0].real, -1.6266572504051);
-        Assertions.assertEquals(roots[1].real, -0.27810465435684);
+        Assertions.assertEquals(roots[1].real, -0.27810465435684306);
     }
 
     @Test
@@ -41,8 +41,8 @@ public class QuadraticEquationSolverTest {
         ComplexNumber[] roots = quadraticEquationSolver.solveEquation(a, b, c);
         Assertions.assertEquals(roots.length, 2);
         Assertions.assertEquals(roots[0].real, -0.8695652173913044);
-        Assertions.assertEquals(roots[0].imaginary, 0.27810465435684306);
+        Assertions.assertEquals(roots[0].imaginary, 1.2956229935435948);
         Assertions.assertEquals(roots[1].real, -0.8695652173913044);
-        Assertions.assertEquals(roots[1].imaginary, -0.27810465435684306);
+        Assertions.assertEquals(roots[1].imaginary, -1.2956229935435948);
     }
 }
