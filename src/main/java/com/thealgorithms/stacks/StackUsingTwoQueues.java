@@ -8,6 +8,8 @@ import java.util.Queue;
  * A class that implements a stack using two queues.
  * This approach ensures that the stack's LIFO (Last In, First Out) behavior
  * is maintained by utilizing two queues for storage.
+ * The mainQueue is used to store the elements of the stack, while the tempQueue
+ * is used to temporarily store elements during the push operation.
  */
 public class StackUsingTwoQueues {
 
