@@ -27,6 +27,7 @@
             * [IndexOfRightMostSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IndexOfRightMostSetBit.java)
             * [IsEven](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsEven.java)
             * [IsPowerTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsPowerTwo.java)
+            * [LowestSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/LowestSetBit.java)
             * [NonRepeatingNumberFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinder.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
             * [ReverseBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ReverseBits.java)
@@ -280,6 +281,12 @@
             * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
+          * lineclipping
+            * [CohenSutherland](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/lineclipping/CohenSutherland.java)
+            * [LiangBarsky](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/lineclipping/LiangBarsky.java)
+            * utils
+              * [Line](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/lineclipping/utils/Line.java)
+              * [Point](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/lineclipping/utils/Point.java)
           * maths
             * [AbsoluteMax](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AbsoluteMax.java)
             * [AbsoluteMin](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/AbsoluteMin.java)
@@ -615,6 +622,7 @@
             * [IndexOfRightMostSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IndexOfRightMostSetBitTest.java)
             * [IsEvenTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsEvenTest.java)
             * [IsPowerTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsPowerTwoTest.java)
+            * [LowestSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/LowestSetBitTest.java)
             * [NonRepeatingNumberFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinderTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
             * [ReverseBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ReverseBitsTest.java)
@@ -785,6 +793,9 @@
             * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
+          * lineclipping
+            * [CohenSutherlandTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/lineclipping/CohenSutherlandTest.java)
+            * [LiangBarskyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/lineclipping/LiangBarskyTest.java)
           * maths
             * [AbsoluteMaxTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AbsoluteMaxTest.java)
             * [AbsoluteMinTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AbsoluteMinTest.java)
