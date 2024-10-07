@@ -36,7 +36,7 @@ public final class UniqueSubsequencesCount {
      * @param str the input string from which subsequences are generated
      * @return the total count of unique subsequences
      */
-    public static int subseqCount(String str) {
+    public static int countSubsequences(String str) {
 
         // DP array initialized to store intermediate results
         int[] dp = new int[str.length() + 1];
