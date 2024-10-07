@@ -101,10 +101,10 @@ public class HighestResponseRatioNextSchedulingTest {
     public void testProcessesWithVeryLargeBurstTimes() {
         String[] processNames = {"A", "B"};
         int[] arrivalTimes = {0, 1};
-        int[] burstTimes = {Integer.MAX_VALUE/2, Integer.MAX_VALUE/2};
+        int[] burstTimes = {Integer.MAX_VALUE / 2, Integer.MAX_VALUE / 2};
         int noOfProcesses = 2;
 
-        int[] expectedTurnAroundTimes = {Integer.MAX_VALUE/2, Integer.MAX_VALUE-2};
+        int[] expectedTurnAroundTimes = {Integer.MAX_VALUE / 2, Integer.MAX_VALUE - 2};
         int[] actualTurnAroundTimes = HighestResponseRatioNextScheduling.calculateTurnAroundTime(processNames, arrivalTimes, burstTimes, noOfProcesses);
 
         assertArrayEquals(expectedTurnAroundTimes, actualTurnAroundTimes, "Turn Around Times for processes with very large burst times do not match");
