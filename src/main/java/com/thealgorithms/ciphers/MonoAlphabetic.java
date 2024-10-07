@@ -36,6 +36,7 @@ public final class MonoAlphabetic {
                 char encryptedChar = key.charAt(idx);
                 sb.append(encryptedChar);
             }
+        }
         return sb.toString();
     }
 
