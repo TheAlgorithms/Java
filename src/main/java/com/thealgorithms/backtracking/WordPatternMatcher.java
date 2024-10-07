@@ -45,8 +45,7 @@ public class WordPatternMatcher {
      * @param strMap Map to store string to pattern character mappings.
      * @return True if the pattern matches, False otherwise.
      */
-    private static boolean backtrack(String pattern, String inputString, int patternIndex, int strIndex,
-                                     Map<Character, String> patternMap, Map<String, Character> strMap) {
+    private static boolean backtrack(String pattern, String inputString, int patternIndex, int strIndex, Map<Character, String> patternMap, Map<String, Character> strMap) {
         if (patternIndex == pattern.length() && strIndex == inputString.length()) {
             return true;
         }
