@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.util.Arrays;
+
 class ComplexNumber {
     Double real;
     Double imaginary;
@@ -48,7 +50,7 @@ public class QuadraticEquationSolver {
             double realPart = -b / (2 * a);
             double imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
 
-            return new ComplexNumber[] {new ComplexNumber(realPart, imaginaryPart), new ComplexNumber(realPart, imaginaryPart)};
+            return new ComplexNumber[] {new ComplexNumber(realPart, imaginaryPart), new ComplexNumber(realPart, -imaginaryPart)};
         }
 
         // return no roots
