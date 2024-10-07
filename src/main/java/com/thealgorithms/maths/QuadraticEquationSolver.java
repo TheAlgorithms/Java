@@ -1,7 +1,8 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-
+/**
+ * This class represents a complex number which has real and imaginary part
+ */
 class ComplexNumber {
     Double real;
     Double imaginary;
