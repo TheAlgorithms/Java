@@ -21,7 +21,9 @@ import java.util.List;
  *      {'d', 'o', 'g'}
  *  }
  */
-public class CrosswordSolver {
+public final class CrosswordSolver {
+    private CrosswordSolver() {
+    }
 
     /**
      * Checks if a word can be placed at the specified position in the crossword.
