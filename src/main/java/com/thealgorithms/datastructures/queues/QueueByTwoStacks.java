@@ -1,7 +1,7 @@
 package com.thealgorithms.datastructures.queues;
 
-import java.util.Stack;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  * A queue implementation using two stacks. This class provides methods to
