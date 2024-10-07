@@ -184,24 +184,4 @@ public final class ColumnarTranspositionCipher {
         }
         abecedarium = t.toString();
     }
-
-    private static void showTable() {
-        for (Object[] table1 : table) {
-            for (Object item : table1) {
-                System.out.print(item + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String[] args) {
-        String keywordForExample = "asd215";
-        String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
-        System.out.println("### Example of Columnar Transposition Cipher ###\n");
-        System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        System.out.println("Word encrypted ->>> " + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
-        System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypter());
-        System.out.println("\n### Encrypted Table ###");
-        showTable();
-    }
 }
