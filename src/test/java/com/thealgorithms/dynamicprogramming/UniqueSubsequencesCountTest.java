@@ -2,54 +2,14 @@ package com.thealgorithms.dynamicprogramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class UniqueSubsequencesCountTest {
 
-    @Test
-    void subseqCountTestOne() {
-        String s = "abc";
-
-        assertEquals(7, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTestTwo() {
-        String s = "abcdashgdhas";
-
-        assertEquals(3592, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTestThree() {
-        String s = "a";
-
-        assertEquals(1, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTestFour() {
-        String s = "a b";
-
-        assertEquals(7, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTestFive() {
-        String s = "a1b2";
-
-        assertEquals(15, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTesSix() {
-        String s = "AaBb";
-        assertEquals(15, UniqueSubsequencesCount.countSubsequences(s));
-    }
-
-    @Test
-    void subseqCountTesSeven() {
-        String s = "abab";
-        assertEquals(11, UniqueSubsequencesCount.countSubsequences(s));
+    @ParameterizedTest
+    @CsvSource({"abc, 7", "abcdashgdhas, 3592", "a, 1", "'a b', 7", "a1b2, 15", "AaBb, 15", "abab, 11"})
+    private void subseqCountParameterizedTest(String input, int expected) {
+        assertEquals(expected, UniqueSubsequencesCount.countSubsequences(input));
     }
 }
