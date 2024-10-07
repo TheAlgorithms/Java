@@ -8,7 +8,9 @@ import java.util.Stack;
  * This algorithm is implemented using only recursion and the original stack,
  * without utilizing any additional data structures apart from the stack itself.
  */
-public class SortStack {
+public final class SortStack {
+    private SortStack() {
+    }
 
     /**
      * Sorts the given stack in ascending order using recursion.
