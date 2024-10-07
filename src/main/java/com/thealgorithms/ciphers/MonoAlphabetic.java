@@ -14,9 +14,6 @@ public final class MonoAlphabetic {
         }
         StringBuilder sb = new StringBuilder();
 
-        // Convert input data to uppercase
-        data = data.toUpperCase();
-
         // Encrypt each character
         for (char c : data.toCharArray()) {
             int idx = charToPos(c); // Get the index in the alphabet
@@ -29,14 +26,13 @@ public final class MonoAlphabetic {
     public static String decrypt(String data, String key) {
         StringBuilder sb = new StringBuilder();
 
-        // Convert input data to uppercase
-        data = data.toUpperCase();
-
         // Decrypt each character
         for (char c : data.toCharArray()) {
-            int idx = charToPos(c); // Get the index in the key
-            char decryptedChar = posToChar(key.indexOf(c)); // Find the position in the key and convert back to char
-            sb.append(decryptedChar); // Append the decrypted character
+            int idx = key.indexOf(c); // Find the index in the key
+            if (idx == -1) {
+                throw new IllegalArgumentException("Input data contains invalid characters.");
+            }
+            sb.append(posToChar(idx)); // Convert the index back to the original character
         }
         return sb.toString();
     }
