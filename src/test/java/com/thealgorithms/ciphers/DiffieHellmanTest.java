@@ -28,13 +28,11 @@ public class DiffieHellmanTest {
 
     // Provide test data for both public key and shared secret calculation
     private static Stream<Arguments> provideTestData() {
-        return Stream.of(
-            createTestArgs(5, 6, 23, 8, 13), createTestArgs(2, 5, 13, 6, 2));
+        return Stream.of(createTestArgs(5, 6, 23, 8, 13), createTestArgs(2, 5, 13, 6, 2));
     }
 
     // Helper method for arguments
     private static Arguments createTestArgs(long base, long secret, long prime, long publicExpected, long sharedExpected) {
-        return Arguments.of(
-            BigInteger.valueOf(base), BigInteger.valueOf(secret), BigInteger.valueOf(prime), BigInteger.valueOf(publicExpected), BigInteger.valueOf(sharedExpected));
+        return Arguments.of(BigInteger.valueOf(base), BigInteger.valueOf(secret), BigInteger.valueOf(prime), BigInteger.valueOf(publicExpected), BigInteger.valueOf(sharedExpected));
     }
 }
