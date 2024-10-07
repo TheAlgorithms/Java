@@ -9,7 +9,7 @@ public class UniqueSubsequencesCountTest {
 
     @ParameterizedTest
     @CsvSource({"abc, 7", "abcdashgdhas, 3592", "a, 1", "'a b', 7", "a1b2, 15", "AaBb, 15", "abab, 11"})
-    private void subseqCountParameterizedTest(String input, int expected) {
+    void subseqCountParameterizedTest(String input, int expected) {
         assertEquals(expected, UniqueSubsequencesCount.countSubseq(input));
     }
 }
