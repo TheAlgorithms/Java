@@ -83,39 +83,6 @@ public class FloydWarshall {
         }
     }
 
-    /**
-     * The main method that interacts with the user to input graph details
-     * (number of vertices and adjacency matrix) and computes the shortest paths
-     * using the Floyd-Warshall algorithm.
-     *
-     * @param arg Command-line arguments (not used).
-     */
-    public static void main(String... arg) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the number of vertices");
-        int numberOfVertices = scan.nextInt();
-
-        int[][] adjacencyMatrix = new int[numberOfVertices + 1][numberOfVertices + 1];
-
-        System.out.println("Enter the Weighted Matrix for the graph");
-        for (int source = 1; source <= numberOfVertices; source++) {
-            for (int destination = 1; destination <= numberOfVertices; destination++) {
-                adjacencyMatrix[source][destination] = scan.nextInt();
-                if (source == destination) {
-                    adjacencyMatrix[source][destination] = 0; // Distance to itself is zero.
-                } else if (adjacencyMatrix[source][destination] == 0) {
-                    adjacencyMatrix[source][destination] = INFINITY; // No direct path between source and destination.
-                }
-            }
-        }
-
-        System.out.println("The Transitive Closure of the Graph:");
-        FloydWarshall floydWarshall = new FloydWarshall(numberOfVertices);
-        floydWarshall.floydwarshall(adjacencyMatrix);
-
-        scan.close();
-    }
-
     public Object[] getDistanceMatrix() {
         return distanceMatrix;
     }
