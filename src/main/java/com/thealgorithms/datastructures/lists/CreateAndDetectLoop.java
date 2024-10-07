@@ -1,12 +1,12 @@
 package com.thealgorithms.datastructures.lists;
 
-public final class  CreateAndDetectLoop {
+public final class CreateAndDetectLoop {
 
     // Node class representing a single node in the linked list
     private CreateAndDetectLoop() {
         throw new UnsupportedOperationException("Utility class");
     }
-     static final class Node {
+    static final class Node {
         int data;
         Node next;
 
