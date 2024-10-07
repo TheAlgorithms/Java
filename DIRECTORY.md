@@ -369,6 +369,7 @@
             * [PrimeFactorization](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PrimeFactorization.java)
             * [PronicNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PronicNumber.java)
             * [PythagoreanTriple](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/PythagoreanTriple.java)
+            * [QuadraticEquationSolver](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/QuadraticEquationSolver.java)
             * [ReverseNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/ReverseNumber.java)
             * [RomanNumeralUtil](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/RomanNumeralUtil.java)
             * [SecondMinMax](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SecondMinMax.java)

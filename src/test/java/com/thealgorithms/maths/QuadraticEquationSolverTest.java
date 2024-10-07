@@ -1,0 +1,48 @@
+package com.thealgorithms.maths;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class QuadraticEquationSolverTest {
+    private final QuadraticEquationSolver quadraticEquationSolver = new QuadraticEquationSolver();
+
+    @Test
+    public void testSolveEquation_realRoots() {
+        // 4.2x^2 + 8x + 1.9 = 0
+        double a = 4.2;
+        double b = 8;
+        double c = 1.9;
+
+        ComplexNumber[] roots = quadraticEquationSolver.solveEquation(a, b, c);
+        Assertions.assertEquals(roots.length, 2);
+        Assertions.assertEquals(roots[0].real, -1.6266572504051);
+        Assertions.assertEquals(roots[1].real, -0.27810465435684);
+    }
+
+    @Test
+    public void testSolveEquation_equalRoots() {
+        // x^2 + 2x + 1 = 0
+        double a = 1;
+        double b = 2;
+        double c = 1;
+
+        ComplexNumber[] roots = quadraticEquationSolver.solveEquation(a, b, c);
+        Assertions.assertEquals(roots.length, 1);
+        Assertions.assertEquals(roots[0].real, -1);
+    }
+
+    @Test
+    public void testSolveEquation_imaginaryRoots() {
+        // 2.3x^2 + 4x + 5.6 = 0
+        double a = 2.3;
+        double b = 4;
+        double c = 5.6;
+
+        ComplexNumber[] roots = quadraticEquationSolver.solveEquation(a, b, c);
+        Assertions.assertEquals(roots.length, 2);
+        Assertions.assertEquals(roots[0].real, -0.8695652173913);
+        Assertions.assertEquals(roots[0].imaginary, 1.2956229935436);
+        Assertions.assertEquals(roots[1].real, -0.8695652173913);
+        Assertions.assertEquals(roots[1].imaginary, -1.2956229935436);
+    }
+}
