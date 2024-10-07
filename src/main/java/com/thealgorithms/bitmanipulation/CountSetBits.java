@@ -48,4 +48,32 @@ public class CountSetBits {
         }
         return cnt;
     }
+
+    /**
+     * This approach takes O(1) running time to count the set bits, but requires a pre-processing.
+     *
+     * So, we divide our 32-bit input into 8-bit chunks, with four chunks. We have 8 bits in each chunk.
+     *
+     * Then the range is from 0-255 (0 to 2^7).
+     * So, we may need to count set bits from 0 to 255 in individual chunks.
+     *
+     * @param num takes a long number
+     * @return the count of set bits in the binary equivalent
+     */
+    public int lookupApproach(int num) {
+        int[] table = new int[256];
+        table[0] = 0;
+
+        for (int i = 1; i < 256; i++) {
+            table[i] = (i & 1) + table[i >> 1]; // i >> 1 equals to i/2
+        }
+
+        int res = 0;
+        for (int i = 0; i < 4; i++) {
+            res += table[num & 0xff];
+            num >>= 8;
+        }
+
+        return res;
+    }
 }
