@@ -12,7 +12,7 @@ import java.util.Set;
  * using dynamic programming and recursion. It ensures that duplicate characters
  * are not counted multiple times in the subsequences.</p>
  *
- * <p> @author Author: https://github.com/Tuhinm2002 </p>
+ * <p> Author: https://github.com/Tuhinm2002 </p>
  */
 public final class UniqueSubsequencesCount {
 
