@@ -6,7 +6,7 @@ public final class  CreateAndDetectLoop {
     private CreateAndDetectLoop() {
         throw new UnsupportedOperationException("Utility class");
     }
-     static final  class Node {
+     static final class Node {
         int data;
         Node next;
 
@@ -34,8 +34,8 @@ public final class  CreateAndDetectLoop {
             return;
         }
 
-        Node node1 = head;  // node at position1
-        Node node2 = head;  // node at position2
+        Node node1 = head;
+        Node node2 = head;
 
         int count1 = 1;
         int count2 = 1;
