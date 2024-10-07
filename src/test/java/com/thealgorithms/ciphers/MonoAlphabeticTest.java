@@ -22,7 +22,6 @@ public class MonoAlphabeticTest {
 
     // Provide test data for both encryption and decryption
     private static Stream<Arguments> provideTestData() {
-        return Stream.of(
-            Arguments.of("HELLO", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "LCGGS"), Arguments.of("JAVA", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "JMTM"), Arguments.of("HELLO", "QWERTYUIOPLKJHGFDSAZXCVBNM", "UJJYU"), Arguments.of("JAVA", "QWERTYUIOPLKJHGFDSAZXCVBNM", "KZHS"));
+        return Stream.of(Arguments.of("HELLO", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "LCGGS"), Arguments.of("JAVA", "MNBVCXZLKJHGFDSAPOIUYTREWQ", "JMTM"), Arguments.of("HELLO", "QWERTYUIOPLKJHGFDSAZXCVBNM", "UJJYU"), Arguments.of("JAVA", "QWERTYUIOPLKJHGFDSAZXCVBNM", "KZHS"));
     }
 }
