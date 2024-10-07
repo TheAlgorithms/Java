@@ -18,8 +18,6 @@ public final class MonoAlphabetic {
             if (c >= 'A' && c <= 'Z') {
                 int idx = c - 'A'; // Index in alphabet
                 sb.append(key.charAt(idx)); // Append the character from the key
-            } else {
-                sb.append(c); // Append non-alphabet characters directly
             }
         }
         return sb.toString();
@@ -32,9 +30,13 @@ public final class MonoAlphabetic {
 
         for (char c : data.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                int idx = charToPos(c); // Get the index in the key
-                char encryptedChar = key.charAt(idx);
-                sb.append(encryptedChar);
+                // Get the index in the key using charToPos
+                int idx = charToPos(c); 
+                // Find the original character using the index
+                char originalChar = posToChar(key.indexOf(c)); 
+                sb.append(originalChar);
+            } else {
+                sb.append(c); // Append non-alphabet characters directly
             }
         }
         return sb.toString();
