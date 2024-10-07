@@ -30,10 +30,8 @@ public final class MonoAlphabetic {
 
         for (char c : data.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                // Get the index in the key using charToPos
-                int idx = charToPos(c); 
-                // Find the original character using the index
-                char originalChar = posToChar(key.indexOf(c)); 
+                int idx = charToPos(c);
+                char originalChar = posToChar(key.indexOf(c));
                 sb.append(originalChar);
             } else {
                 sb.append(c); // Append non-alphabet characters directly
