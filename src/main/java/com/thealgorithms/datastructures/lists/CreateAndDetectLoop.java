@@ -76,5 +76,4 @@ public final class CreateAndDetectLoop {
         }
         return false;
     }
-
 }
