@@ -58,7 +58,7 @@ public class IIRFilter {
             throw new IllegalArgumentException("bCoeffs must be of size " + order + ", got " + bCoeffs.length);
         }
 
-        for (int i = 0; i <= order; i++) {
+        for (int i = 0; i < order; i++) {
             coeffsA[i] = aCoeffs[i];
             coeffsB[i] = bCoeffs[i];
         }
