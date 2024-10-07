@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * The ADFGVX cipher is a historically significant cipher used by 
- * the German Army during World War I. It is a fractionating transposition 
- * cipher that combines a Polybius square substitution with a columnar 
- * transposition. It's named after the six letters (A, D, F, G, V, X) 
+ * The ADFGVX cipher is a historically significant cipher used by
+ * the German Army during World War I. It is a fractionating transposition
+ * cipher that combines a Polybius square substitution with a columnar
+ * transposition. It's named after the six letters (A, D, F, G, V, X)
  * that it uses in its substitution process.
  * https://en.wikipedia.org/wiki/ADFGVX_cipher
  *
