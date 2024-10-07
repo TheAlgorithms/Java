@@ -16,14 +16,7 @@ import java.util.Map;
 public class ADFGVXCipher {
 
     private static final char[] POLYBIUS_LETTERS = {'A', 'D', 'F', 'G', 'V', 'X'};
-    private static final char[][] POLYBIUS_SQUARE = {
-            {'P', 'H', '0', 'Q', 'G', '6'},
-            {'4', 'M', 'E', 'A', '1', 'Y'},
-            {'L', '2', 'N', 'O', 'F', 'D'},
-            {'X', 'K', 'R', '3', 'C', 'V'},
-            {'S', '5', 'Z', 'W', '7', 'B'},
-            {'J', '9', 'U', 'T', 'I', '8'}
-    };
+    private static final char[][] POLYBIUS_SQUARE = {{'P', 'H', '0', 'Q', 'G', '6'}, {'4', 'M', 'E', 'A', '1', 'Y'}, {'L', '2', 'N', 'O', 'F', 'D'}, {'X', 'K', 'R', '3', 'C', 'V'}, {'S', '5', 'Z', 'W', '7', 'B'}, {'J', '9', 'U', 'T', 'I', '8'}};
     private static final Map<String, Character> POLYBIUS_MAP = new HashMap<>();
     private static final Map<Character, String> REVERSE_POLYBIUS_MAP = new HashMap<>();
 
