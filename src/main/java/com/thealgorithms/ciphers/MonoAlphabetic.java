@@ -8,17 +8,19 @@ public final class MonoAlphabetic {
 
     // Encryption method
     public static String encrypt(String data, String key) {
+        // Validate that the input data contains only uppercase letters
         if (!data.matches("[A-Z]+")) {
             throw new IllegalArgumentException("Input data contains invalid characters. Only uppercase A-Z are allowed.");
         }
         StringBuilder sb = new StringBuilder();
+
+        // Convert input data to uppercase
         data = data.toUpperCase();
 
+        // Encrypt each character
         for (char c : data.toCharArray()) {
-            if (c >= 'A' && c <= 'Z') {
-                int idx = c - 'A'; // Index in alphabet
-                sb.append(key.charAt(idx)); // Append the character from the key
-            }
+            int idx = charToPos(c); // Get the index in the alphabet
+            sb.append(key.charAt(idx)); // Append the character from the key
         }
         return sb.toString();
     }
@@ -26,16 +28,15 @@ public final class MonoAlphabetic {
     // Decryption method
     public static String decrypt(String data, String key) {
         StringBuilder sb = new StringBuilder();
+
+        // Convert input data to uppercase
         data = data.toUpperCase();
 
+        // Decrypt each character
         for (char c : data.toCharArray()) {
-            if (c >= 'A' && c <= 'Z') {
-                int idx = charToPos(c);
-                char originalChar = posToChar(key.indexOf(c));
-                sb.append(originalChar);
-            } else {
-                sb.append(c); // Append non-alphabet characters directly
-            }
+            int idx = charToPos(c); // Get the index in the key
+            char decryptedChar = posToChar(key.indexOf(c)); // Find the position in the key and convert back to char
+            sb.append(decryptedChar); // Append the decrypted character
         }
         return sb.toString();
     }
