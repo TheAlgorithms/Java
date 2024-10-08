@@ -117,7 +117,7 @@ public final class NonPreemptivePriorityScheduling {
         int totalTurnaroundTime = 0;
 
         for (Process process : executionOrder) {
-            int turnaroundTime = (process.startTime + process.burstTime) - process.arrivalTime;
+            int turnaroundTime = process.startTime + process.burstTime - process.arrivalTime;
             totalTurnaroundTime += turnaroundTime;
         }
 
