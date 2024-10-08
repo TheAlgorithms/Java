@@ -12,15 +12,7 @@ public class BoundaryFillTest {
 
     @BeforeEach
     void setUp() {
-        image = new int[][] {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 3, 3, 3, 3, 0, 0},
-            {0, 3, 0, 0, 3, 0, 0},
-            {0, 3, 0, 0, 3, 3, 3},
-            {0, 3, 3, 3, 0, 0, 3},
-            {0, 0, 0, 3, 0, 0, 3},
-            {0, 0, 0, 3, 3, 3, 3}
-        };
+        image = new int[][] {{0, 0, 0, 0, 0, 0, 0}, {0, 3, 3, 3, 3, 0, 0}, {0, 3, 0, 0, 3, 0, 0}, {0, 3, 0, 0, 3, 3, 3}, {0, 3, 3, 3, 0, 0, 3}, {0, 0, 0, 3, 0, 0, 3}, {0, 0, 0, 3, 3, 3, 3}};
     }
 
     @Test
@@ -43,15 +35,7 @@ public class BoundaryFillTest {
     void testBoundaryFill() {
         BoundaryFill.boundaryFill(image, 2, 2, 5, 3);
 
-        int[][] expectedImage = {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 3, 3, 3, 3, 0, 0},
-            {0, 3, 5, 5, 3, 0, 0},
-            {0, 3, 5, 5, 3, 3, 3},
-            {0, 3, 3, 3, 5, 5, 3},
-            {0, 0, 0, 3, 5, 5, 3},
-            {0, 0, 0, 3, 3, 3, 3}
-        };
+        int[][] expectedImage = {{0, 0, 0, 0, 0, 0, 0}, {0, 3, 3, 3, 3, 0, 0}, {0, 3, 5, 5, 3, 0, 0}, {0, 3, 5, 5, 3, 3, 3}, {0, 3, 3, 3, 5, 5, 3}, {0, 0, 0, 3, 5, 5, 3}, {0, 0, 0, 3, 3, 3, 3}};
 
         for (int i = 0; i < image.length; i++) {
             assertArrayEquals(expectedImage[i], image[i]);
@@ -62,15 +46,7 @@ public class BoundaryFillTest {
     void testBoundaryFillEdgeCase() {
         BoundaryFill.boundaryFill(image, 1, 1, 3, 3);
 
-        int[][] expectedImage = {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 3, 3, 3, 3, 0, 0},
-            {0, 3, 0, 0, 3, 0, 0},
-            {0, 3, 0, 0, 3, 3, 3},
-            {0, 3, 3, 3, 0, 0, 3},
-            {0, 0, 0, 3, 0, 0, 3},
-            {0, 0, 0, 3, 3, 3, 3}
-        };
+        int[][] expectedImage = {{0, 0, 0, 0, 0, 0, 0}, {0, 3, 3, 3, 3, 0, 0}, {0, 3, 0, 0, 3, 0, 0}, {0, 3, 0, 0, 3, 3, 3}, {0, 3, 3, 3, 0, 0, 3}, {0, 0, 0, 3, 0, 0, 3}, {0, 0, 0, 3, 3, 3, 3}};
 
         for (int i = 0; i < image.length; i++) {
             assertArrayEquals(expectedImage[i], image[i]);
@@ -81,15 +57,7 @@ public class BoundaryFillTest {
     void testBoundaryFillInvalidCoordinates() {
         BoundaryFill.boundaryFill(image, -1, -1, 5, 3);
 
-        int[][] expectedImage = {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 3, 3, 3, 3, 0, 0},
-            {0, 3, 0, 0, 3, 0, 0},
-            {0, 3, 0, 0, 3, 3, 3},
-            {0, 3, 3, 3, 0, 0, 3},
-            {0, 0, 0, 3, 0, 0, 3},
-            {0, 0, 0, 3, 3, 3, 3}
-        };
+        int[][] expectedImage = {{0, 0, 0, 0, 0, 0, 0}, {0, 3, 3, 3, 3, 0, 0}, {0, 3, 0, 0, 3, 0, 0}, {0, 3, 0, 0, 3, 3, 3}, {0, 3, 3, 3, 0, 0, 3}, {0, 0, 0, 3, 0, 0, 3}, {0, 0, 0, 3, 3, 3, 3}};
 
         for (int i = 0; i < image.length; i++) {
             assertArrayEquals(expectedImage[i], image[i]);
