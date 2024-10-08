@@ -10,7 +10,7 @@ public class RegexMatchingRecursive {
         }
 
         // Check if the first character of s matches the first character of p.
-        boolean firstMatch = (!s.isEmpty() && p.charAt(0) == s.charAt(0) || p.charAt(0) == '.');
+        boolean firstMatch = !s.isEmpty() && p.charAt(0) == s.charAt(0) || p.charAt(0) == '.';
 
         // So...If there's a '*' in the second position of p i.e., p.charAt(1) == '*'
         // it means we can either:
