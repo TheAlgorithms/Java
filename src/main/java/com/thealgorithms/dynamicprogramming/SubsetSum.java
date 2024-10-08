@@ -13,24 +13,27 @@ public final class SubsetSum {
      */
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
-        boolean[][] isSum = new boolean[n + 1][sum + 1];
 
-        // Initialize the first column to true since a sum of 0 can always be achieved with an empty subset.
-        for (int i = 0; i <= n; i++) {
-            isSum[i][0] = true;
-        }
+        //Intialize Two Arrays to store current and prev states
+        boolean[] isSumCurr = new boolean[sum + 1];
+        boolean[] isSumPrev = new boolean[sum+1];
+
+        // Mark prev[0] = true as it is true to make sum = 0
+        // using 0 elements
+        isSumPrev[0] = true;
 
         // Fill the subset sum matrix
         for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= sum; j++) {
+            for (int j = 0; j <= sum; j++) {
                 if (arr[i - 1] <= j) {
-                    isSum[i][j] = isSum[i - 1][j] || isSum[i - 1][j - arr[i - 1]];
+                    isSumCurr[j] = isSumPrev[j] || isSumPrev[j - arr[i - 1]];
                 } else {
-                    isSum[i][j] = isSum[i - 1][j];
+                    isSumCurr[j] = isSumPrev[j];
                 }
             }
+            isSumPrev = isSumCurr.clone();
         }
 
-        return isSum[n][sum];
+        return isSumPrev[sum];
     }
 }
