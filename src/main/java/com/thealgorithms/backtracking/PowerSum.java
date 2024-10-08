@@ -1,3 +1,16 @@
+package com.thealgorithms.backtracking;
+
+
+/**
+ * Problem Statement:
+ * Find the number of ways that a given integer, N, can be expressed as the sum of the Xth powers
+ * of unique, natural numbers.
+ * For example, if N=100 and X=3, we have to find all combinations of unique cubes adding up to 100.
+ * The only solution is 1^3 + 2^3 + 3^3 + 4^3. Therefore, the output will be 1.
+ *
+ * N is represented by the parameter 'targetSum' in the code.
+ * X is represented by the parameter 'power' in the code.
+ */
 public class PowerSum {
 
     /**
