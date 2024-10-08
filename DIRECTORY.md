@@ -10,6 +10,7 @@
             * [AllPathsFromSourceToTarget](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/AllPathsFromSourceToTarget.java)
             * [ArrayCombination](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/ArrayCombination.java)
             * [Combination](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Combination.java)
+            * [CrosswordSolver](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/CrosswordSolver.java)
             * [FloodFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/FloodFill.java)
             * [KnightsTour](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/KnightsTour.java)
             * [MazeRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/MazeRecursion.java)
@@ -19,6 +20,7 @@
             * [Permutation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/Permutation.java)
             * [PowerSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/PowerSum.java)
             * [SubsequenceFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/SubsequenceFinder.java)
+            * [WordPatternMatcher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/WordPatternMatcher.java)
             * [WordSearch](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/WordSearch.java)
           * bitmanipulation
             * [BitSwap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BitSwap.java)
@@ -569,6 +571,7 @@
             * [PrefixToInfix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/PrefixToInfix.java)
             * [SortStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/SortStack.java)
             * [StackPostfixNotation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/StackPostfixNotation.java)
+            * [StackUsingTwoQueues](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/stacks/StackUsingTwoQueues.java)
           * strings
             * [AhoCorasick](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/AhoCorasick.java)
             * [Alphabetical](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/Alphabetical.java)
@@ -614,6 +617,7 @@
             * [AllPathsFromSourceToTargetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/AllPathsFromSourceToTargetTest.java)
             * [ArrayCombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/ArrayCombinationTest.java)
             * [CombinationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/CombinationTest.java)
+            * [CrosswordSolverTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/CrosswordSolverTest.java)
             * [FloodFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/FloodFillTest.java)
             * [KnightsTourTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/KnightsTourTest.java)
             * [MazeRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/MazeRecursionTest.java)
@@ -623,6 +627,7 @@
             * [PermutationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PermutationTest.java)
             * [PowerSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/PowerSumTest.java)
             * [SubsequenceFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/SubsequenceFinderTest.java)
+            * [WordPatternMatcherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordPatternMatcherTest.java)
             * [WordSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/WordSearchTest.java)
           * bitmanipulation
             * [BitSwapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BitSwapTest.java)
@@ -704,6 +709,7 @@
               * [BoruvkaAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithmTest.java)
               * [DijkstraAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithmTest.java)
               * [EdmondsBlossomAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithmTest.java)
+              * [FloydWarshallTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FloydWarshallTest.java)
               * [FordFulkersonTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FordFulkersonTest.java)
               * [HamiltonianCycleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/HamiltonianCycleTest.java)
               * [KosarajuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/KosarajuTest.java)
@@ -1032,6 +1038,7 @@
             * [PrefixToInfixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/PrefixToInfixTest.java)
             * [SortStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/SortStackTest.java)
             * [StackPostfixNotationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/StackPostfixNotationTest.java)
+            * [StackUsingTwoQueuesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/stacks/StackUsingTwoQueuesTest.java)
           * strings
             * [AhoCorasickTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/AhoCorasickTest.java)
             * [AlphabeticalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/AlphabeticalTest.java)
