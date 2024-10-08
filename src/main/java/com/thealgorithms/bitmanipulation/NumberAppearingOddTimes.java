@@ -8,12 +8,12 @@ package com.thealgorithms.bitmanipulation;
 public class NumberAppearingOddTimes {
     public static int findOddOccurrence(int[] arr) {
         int result = 0;
-        
+
         // XOR all elements in the array
         for (int num : arr) {
             result ^= num;
         }
-        
+
         return result;
     }
 }

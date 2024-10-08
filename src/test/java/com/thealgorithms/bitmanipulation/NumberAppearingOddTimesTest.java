@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 class NumberAppearingOddTimesTest {
-    
+
     @Test
     void testFindOddOccurrence() {
         int[] arr1 = {5, 6, 7, 8};
@@ -13,7 +13,7 @@ class NumberAppearingOddTimesTest {
 
         int[] arr2 = {2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2};
         assertEquals(5, NumberAppearingOddTimes.findOddOccurrence(arr2));
-        
+
         int[] arr3 = {10, 10, 20, 20, 30};
         assertEquals(30, NumberAppearingOddTimes.findOddOccurrence(arr3));
 
