@@ -14,10 +14,11 @@ public final class NonPreemptivePriorityScheduling {
     }
 
     /**
-     * Represents a process with an ID, burst time, priority, and start time.
+     * Represents a process with an ID, burst time, priority, arrival time, and start time.
      */
     static class Process implements Comparable<Process> {
         int id;
+        int arrivalTime;
         int startTime;
         int burstTime;
         int priority;
@@ -25,12 +26,14 @@ public final class NonPreemptivePriorityScheduling {
         /**
          * Constructs a Process instance with the specified parameters.
          *
-         * @param id        Unique identifier for the process
-         * @param burstTime Time required for the process execution
-         * @param priority  Priority of the process
+         * @param id          Unique identifier for the process
+         * @param arrivalTime Time when the process arrives in the system
+         * @param burstTime   Time required for the process execution
+         * @param priority    Priority of the process
          */
-        Process(int id, int burstTime, int priority) {
+        Process(int id, int arrivalTime, int burstTime, int priority) {
             this.id = id;
+            this.arrivalTime = arrivalTime;
             this.startTime = -1;
             this.burstTime = burstTime;
             this.priority = priority;
@@ -39,6 +42,7 @@ public final class NonPreemptivePriorityScheduling {
         /**
          * Compare based on priority for scheduling. The process with the lowest
          * priority is selected first.
+         * If two processes have the same priority, the one that arrives earlier is selected.
          *
          * @param other The other process to compare against
          * @return A negative integer, zero, or a positive integer as this process
@@ -46,28 +50,36 @@ public final class NonPreemptivePriorityScheduling {
          */
         @Override
         public int compareTo(Process other) {
+            if (this.priority == other.priority) {
+                return Integer.compare(this.arrivalTime, other.arrivalTime);
+            }
             return Integer.compare(this.priority, other.priority);
         }
     }
 
     /**
-     * Schedules processes based on their priority in a non-preemptive manner.
+     * Schedules processes based on their priority in a non-preemptive manner, considering their arrival times.
      *
      * @param processes Array of processes to be scheduled.
      * @return Array of processes in the order they are executed.
      */
     public static Process[] scheduleProcesses(Process[] processes) {
         PriorityQueue<Process> pq = new PriorityQueue<>();
+        int currentTime = 0;
+        int index = 0;
+        Process[] executionOrder = new Process[processes.length];
+
         for (Process process : processes) {
             pq.add(process);
         }
 
-        Process[] executionOrder = new Process[processes.length];
-        int index = 0;
-        int currentTime = 0;
-
         while (!pq.isEmpty()) {
             Process currentProcess = pq.poll();
+
+            if (currentTime < currentProcess.arrivalTime) {
+                currentTime = currentProcess.arrivalTime;
+            }
+
             currentProcess.startTime = currentTime;
             executionOrder[index++] = currentProcess;
             currentTime += currentProcess.burstTime;
@@ -85,11 +97,10 @@ public final class NonPreemptivePriorityScheduling {
      */
     public static double calculateAverageWaitingTime(Process[] processes, Process[] executionOrder) {
         int totalWaitingTime = 0;
-        int currentTime = 0;
 
         for (Process process : executionOrder) {
-            totalWaitingTime += currentTime;
-            currentTime += process.burstTime;
+            int waitingTime = process.startTime - process.arrivalTime;
+            totalWaitingTime += waitingTime;
         }
 
         return (double) totalWaitingTime / processes.length;
@@ -104,11 +115,10 @@ public final class NonPreemptivePriorityScheduling {
      */
     public static double calculateAverageTurnaroundTime(Process[] processes, Process[] executionOrder) {
         int totalTurnaroundTime = 0;
-        int currentTime = 0;
 
         for (Process process : executionOrder) {
-            currentTime += process.burstTime;
-            totalTurnaroundTime += currentTime;
+            int turnaroundTime = (process.startTime + process.burstTime) - process.arrivalTime;
+            totalTurnaroundTime += turnaroundTime;
         }
 
         return (double) totalTurnaroundTime / processes.length;
