@@ -1,7 +1,6 @@
 package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class OnesComplementTest {
 
     @Test
-    public void testOnesComplement_AllZeroes() {
+    public void testOnesComplementAllZeroes() {
 
         // Test cases with all-zero binary strings
         assertEquals("1111", OnesComplement.onesComplement("0000"));
@@ -22,7 +21,7 @@ public class OnesComplementTest {
     }
 
     @Test
-    public void testOnesComplement_AllOnes() {
+    public void testOnesComplementAllOnes() {
         // Test cases with all-one binary strings
         assertEquals("0000", OnesComplement.onesComplement("1111"));
         assertEquals("000", OnesComplement.onesComplement("111"));
@@ -31,7 +30,7 @@ public class OnesComplementTest {
     }
 
     @Test
-    public void testOnesComplement_MixedBits() {
+    public void testOnesComplementMixedBits() {
         // Test more mixed binary patterns
         assertEquals("1010", OnesComplement.onesComplement("0101"));
         assertEquals("0101", OnesComplement.onesComplement("1010"));
@@ -41,7 +40,7 @@ public class OnesComplementTest {
     }
 
     @Test
-    public void testOnesComplement_EmptyString() {
+    public void testOnesComplementEmptyString() {
         // Test empty string scenario
         assertEquals("", OnesComplement.onesComplement(""));
     }

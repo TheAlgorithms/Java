@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class TwosComplementTest {
 
     @Test
-    public void testTwosComplement_AllZeroes() {
+    public void testTwosComplementAllZeroes() {
         // Test with a binary number consisting entirely of zeroes
         assertEquals("10000", TwosComplement.twosComplement("0000"));
         assertEquals("1000", TwosComplement.twosComplement("000"));
@@ -20,7 +20,7 @@ public class TwosComplementTest {
     }
 
     @Test
-    public void testTwosComplement_AllOnes() {
+    public void testTwosComplementAllOnes() {
         // Test with a binary number consisting entirely of ones
         assertEquals("00001", TwosComplement.twosComplement("11111"));
         assertEquals("0001", TwosComplement.twosComplement("1111"));
@@ -29,7 +29,7 @@ public class TwosComplementTest {
     }
 
     @Test
-    public void testTwosComplement_MixedBits() {
+    public void testTwosComplementMixedBits() {
         // Test with binary numbers with mixed bits
         assertEquals("1111", TwosComplement.twosComplement("0001")); // 1's complement: 1110, then add 1: 1111
         assertEquals("1001", TwosComplement.twosComplement("0111")); // 1's complement: 1000
@@ -38,14 +38,14 @@ public class TwosComplementTest {
     }
 
     @Test
-    public void testTwosComplement_SingleBit() {
+    public void testTwosComplementSingleBit() {
         // Test with single bit
         assertEquals("10", TwosComplement.twosComplement("0"));
         assertEquals("1", TwosComplement.twosComplement("1"));
     }
 
     @Test
-    public void testTwosComplement_WithLeadingZeroes() {
+    public void testTwosComplementWithLeadingZeroes() {
         // Test with leading zeroes in the input
         assertEquals("1111", TwosComplement.twosComplement("0001"));
         assertEquals("101", TwosComplement.twosComplement("011"));
