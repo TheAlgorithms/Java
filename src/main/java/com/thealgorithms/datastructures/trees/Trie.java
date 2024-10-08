@@ -1,5 +1,28 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.HashMap;
+
+/**
+ * Represents a Trie Node that stores a character and pointers to its children.
+ * Each node has a hashmap which can point to all possible characters.
+ * Each node also has a boolean value to indicate if it is the end of a word.
+ */
+class TrieNode {
+    char value;
+    HashMap<Character, TrieNode> child;
+    boolean end;
+
+    /**
+     * Constructor to initialize a TrieNode with an empty hashmap
+     * and set end to false.
+     */
+    TrieNode(char value) {
+        this.value = value;
+        this.child = new HashMap<>();
+        this.end = false;
+    }
+}
+
 /**
  * Trie Data structure implementation without any libraries.
  * <p>
@@ -14,27 +37,11 @@ package com.thealgorithms.datastructures.trees;
  * possible character.
  *
  * @author <a href="https://github.com/dheeraj92">Dheeraj Kumar Barnwal</a>
+ * @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
-public class TrieImp {
 
-    /**
-     * Represents a Trie Node that stores a character and pointers to its children.
-     * Each node has an array of 26 children (one for each letter from 'a' to 'z').
-     */
-    public class TrieNode {
-
-        TrieNode[] child;
-        boolean end;
-
-        /**
-         * Constructor to initialize a TrieNode with an empty child array
-         * and set end to false.
-         */
-        public TrieNode() {
-            child = new TrieNode[26];
-            end = false;
-        }
-    }
+public class Trie {
+    private static final char ROOT_NODE_VALUE = '*';
 
     private final TrieNode root;
 
@@ -42,8 +49,8 @@ public class TrieImp {
      * Constructor to initialize the Trie.
      * The root node is created but doesn't represent any character.
      */
-    public TrieImp() {
-        root = new TrieNode();
+    public Trie() {
+        root = new TrieNode(ROOT_NODE_VALUE);
     }
 
     /**
@@ -57,13 +64,15 @@ public class TrieImp {
     public void insert(String word) {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
-            TrieNode node = currentNode.child[word.charAt(i) - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(word.charAt(i), null);
+
             if (node == null) {
-                node = new TrieNode();
-                currentNode.child[word.charAt(i) - 'a'] = node;
+                node = new TrieNode(word.charAt(i));
+                currentNode.child.put(word.charAt(i), node);
             }
             currentNode = node;
         }
+
         currentNode.end = true;
     }
 
@@ -80,13 +89,14 @@ public class TrieImp {
     public boolean search(String word) {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            TrieNode node = currentNode.child[ch - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(word.charAt(i), null);
+
             if (node == null) {
                 return false;
             }
             currentNode = node;
         }
+
         return currentNode.end;
     }
 
@@ -104,40 +114,89 @@ public class TrieImp {
     public boolean delete(String word) {
         TrieNode currentNode = root;
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            TrieNode node = currentNode.child[ch - 'a'];
+            TrieNode node = currentNode.child.getOrDefault(word.charAt(i), null);
             if (node == null) {
                 return false;
             }
+
             currentNode = node;
         }
+
         if (currentNode.end) {
             currentNode.end = false;
             return true;
         }
+
         return false;
     }
 
     /**
-     * Helper method to print a string to the console.
+     * Counts the number of words in the trie
+     *<p>
+     * The method traverses the Trie and counts the number of words.
      *
-     * @param print The string to be printed.
+     * @return count of words
      */
-    public static void sop(String print) {
-        System.out.println(print);
+    public int countWords() {
+        return countWords(root);
+    }
+
+    private int countWords(TrieNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int count = 0;
+        if (node.end) {
+            count++;
+        }
+
+        for (TrieNode child : node.child.values()) {
+            count += countWords(child);
+        }
+
+        return count;
     }
 
     /**
-     * Validates if a given word contains only lowercase alphabetic characters
-     * (a-z).
-     * <p>
-     * The method uses a regular expression to check if the word matches the pattern
-     * of only lowercase letters.
+     * Check if the prefix exists in the trie
      *
-     * @param word The word to be validated.
-     * @return true if the word is valid (only a-z), false otherwise.
+     * @param prefix the prefix to be checked in the Trie
+     * @return true / false depending on the prefix if exists in the Trie
      */
-    public static boolean isValid(String word) {
-        return word.matches("^[a-z]+$");
+    public boolean startsWithPrefix(String prefix) {
+        TrieNode currentNode = root;
+
+        for (int i = 0; i < prefix.length(); i++) {
+            TrieNode node = currentNode.child.getOrDefault(prefix.charAt(i), null);
+            if (node == null) {
+                return false;
+            }
+
+            currentNode = node;
+        }
+
+        return true;
+    }
+
+    /**
+     * Count the number of words starting with the given prefix in the trie
+     *
+     * @param prefix the prefix to be checked in the Trie
+     * @return count of words
+     */
+    public int countWordsWithPrefix(String prefix) {
+        TrieNode currentNode = root;
+
+        for (int i = 0; i < prefix.length(); i++) {
+            TrieNode node = currentNode.child.getOrDefault(prefix.charAt(i), null);
+            if (node == null) {
+                return 0;
+            }
+
+            currentNode = node;
+        }
+
+        return countWords(currentNode);
     }
 }
