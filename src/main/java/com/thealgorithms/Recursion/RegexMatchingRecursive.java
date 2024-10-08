@@ -1,5 +1,7 @@
 package com.thealgorithms.Recursion;
 
+// For explanation of problem statement, please paste the following URL : https://www.geeksforgeeks.org/implementing-regular-expression-matching/
+
 public class RegexMatchingRecursive {
     public boolean isMatch(String s, String p) {
         // Base case: Return is p is empty
