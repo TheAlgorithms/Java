@@ -1,45 +1,51 @@
 package com.thealgorithms.backtracking;
 
-/*
- * Problem Statement :
- * Find the number of ways that a given integer, N , can be expressed as the sum of the Xth powers
- * of unique, natural numbers. For example, if N=100 and X=3, we have to find all combinations of
- * unique cubes adding up to 100. The only solution is 1^3+2^3+3^3+4^3. Therefore output will be 1.
+/**
+ * Problem Statement:
+ * Find the number of ways that a given integer, N, can be expressed as the sum of the Xth powers
+ * of unique, natural numbers.
+ * For example, if N=100 and X=3, we have to find all combinations of unique cubes adding up to 100.
+ * The only solution is 1^3 + 2^3 + 3^3 + 4^3. Therefore, the output will be 1.
+ *
+ * N is represented by the parameter 'targetSum' in the code.
+ * X is represented by the parameter 'power' in the code.
  */
 public class PowerSum {
 
-    private int count = 0;
-    private int sum = 0;
-
-    public int powSum(int n, int x) {
-        sum(n, x, 1);
-        return count;
+    /**
+     * Calculates the number of ways to express the target sum as a sum of Xth powers of unique natural numbers.
+     *
+     * @param targetSum The target sum to achieve (N in the problem statement)
+     * @param power The power to raise natural numbers to (X in the problem statement)
+     * @return The number of ways to express the target sum
+     */
+    public int powSum(int targetSum, int power) {
+        // Special case: when both targetSum and power are zero
+        if (targetSum == 0 && power == 0) {
+            return 1; // by convention, one way to sum to zero: use nothing
+        }
+        return sumRecursive(targetSum, power, 1, 0);
     }
 
-    // here i is the natural number which will be raised by X and added in sum.
-    public void sum(int n, int x, int i) {
-        // if sum is equal to N that is one of our answer and count is increased.
-        if (sum == n) {
-            count++;
-            return;
-        } // we will be adding next natural number raised to X only if on adding it in sum the
-          // result is less than N.
-        else if (sum + power(i, x) <= n) {
-            sum += power(i, x);
-            sum(n, x, i + 1);
-            // backtracking and removing the number added last since no possible combination is
-            // there with it.
-            sum -= power(i, x);
-        }
-        if (power(i, x) < n) {
-            // calling the sum function with next natural number after backtracking if when it is
-            // raised to X is still less than X.
-            sum(n, x, i + 1);
-        }
-    }
+    /**
+     * Recursively calculates the number of ways to express the remaining sum as a sum of Xth powers.
+     *
+     * @param remainingSum The remaining sum to achieve
+     * @param power The power to raise natural numbers to (X in the problem statement)
+     * @param currentNumber The current natural number being considered
+     * @param currentSum The current sum of powered numbers
+     * @return The number of valid combinations
+     */
+    private int sumRecursive(int remainingSum, int power, int currentNumber, int currentSum) {
+        int newSum = currentSum + (int) Math.pow(currentNumber, power);
 
-    // creating a separate power function so that it can be used again and again when required.
-    private int power(int a, int b) {
-        return (int) Math.pow(a, b);
+        if (newSum == remainingSum) {
+            return 1;
+        }
+        if (newSum > remainingSum) {
+            return 0;
+        }
+
+        return sumRecursive(remainingSum, power, currentNumber + 1, newSum) + sumRecursive(remainingSum, power, currentNumber + 1, currentSum);
     }
 }
