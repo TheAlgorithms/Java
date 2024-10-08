@@ -4,14 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 /**
  *
  */
 public class BoundaryTraversalTest {
-
 
     @Test
     public void testNullRoot() {
@@ -107,6 +105,4 @@ public class BoundaryTraversalTest {
         assertEquals(expected, BoundaryTraversal.boundaryTraversal(root));
         assertEquals(expected, BoundaryTraversal.iterativeBoundaryTraversal(root));
     }
-
-
 }
