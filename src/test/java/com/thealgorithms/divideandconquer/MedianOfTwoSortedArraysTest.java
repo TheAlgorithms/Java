@@ -37,7 +37,6 @@ public class MedianOfTwoSortedArraysTest {
             Arguments.of(new int[] {}, new int[] {0}, 0.0),
 
             // Test case 7: Same element arrays
-            Arguments.of(new int[] {2, 2, 2}, new int[] {2, 2, 2}, 2.0)
-        );
+            Arguments.of(new int[] {2, 2, 2}, new int[] {2, 2, 2}, 2.0));
     }
 }
