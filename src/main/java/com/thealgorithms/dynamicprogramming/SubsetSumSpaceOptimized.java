@@ -4,11 +4,18 @@ The Sum of Subset problem determines whether a subset of elements from a
 given array sums up to a specific target value.
 */
 public final class SubsetSumSpaceOptimized {
-    /*
-    Space Optimized solution using 1D boolean array
-    Time Complexity: O(n * sum)
-    Space complexity: O(sum)
-    */
+    private SubsetSumSpaceOptimized(){
+    }
+    /**
+     * This method checks whether the subset of an array
+     * contains a given sum or not. This is an space
+     * optimized solution using 1D boolean array
+     * Time Complexity: O(n * sum), Space complexity: O(sum)
+     *
+     * @param arr An array containing integers
+     * @param sum The target sum of the subset
+     * @return True or False
+     */
     public static boolean isSubsetSum(int[] arr, int sum) {
         int n = arr.length;
         // Declare the boolean array with size sum + 1
