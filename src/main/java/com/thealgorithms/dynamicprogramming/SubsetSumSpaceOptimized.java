@@ -4,7 +4,7 @@ The Sum of Subset problem determines whether a subset of elements from a
 given array sums up to a specific target value.
 */
 public final class SubsetSumSpaceOptimized {
-    private SubsetSumSpaceOptimized(){
+    private SubsetSumSpaceOptimized() {
     }
     /**
      * This method checks whether the subset of an array
