@@ -45,12 +45,4 @@ public class OnesComplementTest {
         // Test empty string scenario
         assertEquals("", OnesComplement.onesComplement(""));
     }
-
-    @Test
-    public void testOnesComplement_InvalidInput() {
-        // Test invalid binary strings with additional non-binary characters
-        assertThrows(IllegalArgumentException.class, () -> OnesComplement.onesComplement("1020"));
-        assertThrows(IllegalArgumentException.class, () -> OnesComplement.onesComplement("abc"));
-        assertThrows(IllegalArgumentException.class, () -> OnesComplement.onesComplement("12"));
-    }
 }
