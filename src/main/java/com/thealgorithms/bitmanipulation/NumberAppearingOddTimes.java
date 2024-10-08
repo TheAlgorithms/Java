@@ -5,7 +5,7 @@ package com.thealgorithms.bitmanipulation;
  * @author Lakshyajeet Singh Goyal (https://github.com/DarkMatter-999)
  */
 
-public class NumberAppearingOddTimes {
+public final class NumberAppearingOddTimes {
     private NumberAppearingOddTimes() {
     }
     public static int findOddOccurrence(int[] arr) {
