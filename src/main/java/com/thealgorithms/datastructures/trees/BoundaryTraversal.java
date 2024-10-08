@@ -116,7 +116,7 @@ public final class BoundaryTraversal {
 
     // Checks if a node is a leaf node
     private static boolean isLeaf(BinaryTree.Node node) {
-        return (node.left == null && node.right == null);
+        return node.left == null && node.right == null;
     }
 
     // Iterative boundary traversal
