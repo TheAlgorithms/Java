@@ -9,17 +9,17 @@ public final class SubsetSum {
      *
      * @param arr the array containing integers.
      * @param sum the target sum of the subset.
-     * @return {@code true} if a subset exists that sums to the given value, otherwise {@code false}.
+     * @return {@code true} if a subset exists that sums to the given value,
+     *         otherwise {@code false}.
      */
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
 
-        //Intialize Two Arrays to store current and prev states
+        // Intialize Two Arrays to store current and prev states
         boolean[] isSumCurr = new boolean[sum + 1];
-        boolean[] isSumPrev = new boolean[sum+1];
+        boolean[] isSumPrev = new boolean[sum + 1];
 
-        // Mark prev[0] = true as it is true to make sum = 0
-        // using 0 elements
+        // Mark prev[0] = true as it is true to make sum = 0 using 0 elements
         isSumPrev[0] = true;
 
         // Fill the subset sum matrix
