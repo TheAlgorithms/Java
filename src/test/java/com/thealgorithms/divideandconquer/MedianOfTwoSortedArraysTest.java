@@ -15,7 +15,6 @@ public class MedianOfTwoSortedArraysTest {
         assertEquals(expectedMedian, MedianOfTwoSortedArrays.findMedianSortedArrays(nums1, nums2));
     }
 
-    // MethodSource that provides test cases as streams of arguments
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(
             // Test case 1: Arrays of equal length
