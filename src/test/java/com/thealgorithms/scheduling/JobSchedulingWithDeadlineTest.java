@@ -36,9 +36,7 @@ class JobSchedulingWithDeadlineTest {
 
     @Test
     void testJobSequencingWithDeadlinesSingleJob() {
-        JobSchedulingWithDeadline.Job[] jobs = {
-                new JobSchedulingWithDeadline.Job(1, 1, 1, 50)
-        };
+        JobSchedulingWithDeadline.Job[] jobs = {new JobSchedulingWithDeadline.Job(1, 1, 1, 50)};
         int[] result = JobSchedulingWithDeadline.jobSequencingWithDeadlines(jobs);
         assertArrayEquals(new int[] {1, 50}, result); // 1 job scheduled, 50 profit
     }
