@@ -267,6 +267,7 @@
             * [SumOfSubset](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SumOfSubset.java)
             * [Tribonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Tribonacci.java)
             * [UniquePaths](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniquePaths.java)
+            * [UniqueSubsequencesCount](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniqueSubsequencesCount.java)
             * [WildcardMatching](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/WildcardMatching.java)
             * [WineProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/WineProblem.java)
           * geometry
@@ -773,6 +774,7 @@
             * [ClimbStairsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/ClimbStairsTest.java)
             * [EditDistanceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/EditDistanceTest.java)
             * [EggDroppingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/EggDroppingTest.java)
+            * [KadaneAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/KadaneAlgorithmTest.java)
             * [KnapsackMemoizationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/KnapsackMemoizationTest.java)
             * [KnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/KnapsackTest.java)
             * [LevenshteinDistanceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LevenshteinDistanceTests.java)
@@ -794,6 +796,7 @@
             * [SumOfSubsetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SumOfSubsetTest.java)
             * [TribonacciTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/TribonacciTest.java)
             * [UniquePathsTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/UniquePathsTests.java)
+            * [UniqueSubsequencesCountTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/UniqueSubsequencesCountTest.java)
             * [WildcardMatchingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/WildcardMatchingTest.java)
           * geometry
             * [GrahamScanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
