@@ -6,6 +6,8 @@ package com.thealgorithms.bitmanipulation;
  */
 
 public class NumberAppearingOddTimes {
+    private NumberAppearingOddTimes() {
+    }
     public static int findOddOccurrence(int[] arr) {
         int result = 0;
 
