@@ -1,9 +1,13 @@
 package com.thealgorithms.datastructures.trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
-/**BoundaryTraversal
- *
+/**
+ * BoundaryTraversal
+ * <p>
  * Start with the Root:
  * Add the root node to the boundary list.
  * Traverse the Left Boundary (Excluding Leaf Nodes):
@@ -19,7 +23,8 @@ import java.util.*;
  * The final boundary list contains the root, left boundary, leaf nodes, and reversed right boundary in that order.
  */
 public final class BoundaryTraversal {
-    private BoundaryTraversal() {}
+    private BoundaryTraversal() {
+    }
 
     // Main function for boundary traversal, returns a list of boundary nodes in order
     public static List<Integer> boundaryTraversal(BinaryTree.Node root) {
