@@ -43,7 +43,6 @@ public class BoundaryFillTest {
     void testBoundaryFill() {
         BoundaryFill.boundaryFill(image, 2, 2, 5, 3);
 
-        // Expected image after fill operation
         int[][] expectedImage = {
             {0, 0, 0, 0, 0, 0, 0},
             {0, 3, 3, 3, 3, 0, 0},
@@ -61,7 +60,6 @@ public class BoundaryFillTest {
 
     @Test
     void testBoundaryFillEdgeCase() {
-        // Boundary color and fill color are the same, no changes should happen
         BoundaryFill.boundaryFill(image, 1, 1, 3, 3);
 
         int[][] expectedImage = {
@@ -81,10 +79,8 @@ public class BoundaryFillTest {
 
     @Test
     void testBoundaryFillInvalidCoordinates() {
-        // Fill on an out-of-bounds coordinate
         BoundaryFill.boundaryFill(image, -1, -1, 5, 3);
 
-        // Ensure the image remains unchanged
         int[][] expectedImage = {
             {0, 0, 0, 0, 0, 0, 0},
             {0, 3, 3, 3, 3, 0, 0},
