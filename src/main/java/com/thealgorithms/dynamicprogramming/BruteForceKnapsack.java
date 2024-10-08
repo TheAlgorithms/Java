@@ -62,10 +62,7 @@ public final class BruteForceKnapsack {
             return knapSack(w, wt, val, n - 1);
         }
         else {
-            return Math.max(
-                knapSack(w, wt, val, n - 1),
-                val[n - 1] + knapSack(w - wt[n - 1], wt, val, n - 1)
-            );
+            return Math.max(knapSack(w, wt, val, n - 1), val[n - 1] + knapSack(w - wt[n - 1], wt, val, n - 1));
         }
     }
 }
