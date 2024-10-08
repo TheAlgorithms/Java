@@ -32,7 +32,7 @@ public class TwosComplementTest {
     public void testTwosComplement_MixedBits() {
         // Test with binary numbers with mixed bits
         assertEquals("1111", TwosComplement.twosComplement("0001")); // 1's complement: 1110, then add 1: 1111
-        assertEquals("1000", TwosComplement.twosComplement("0111")); // 1's complement: 1000
+        assertEquals("1001", TwosComplement.twosComplement("0111")); // 1's complement: 1000
         assertEquals("11001", TwosComplement.twosComplement("00111")); // 1's complement: 11000, add 1: 11001
         assertEquals("011", TwosComplement.twosComplement("101")); // 1's complement: 010, add 1: 011
     }
@@ -41,7 +41,7 @@ public class TwosComplementTest {
     public void testTwosComplement_SingleBit() {
         // Test with single bit
         assertEquals("10", TwosComplement.twosComplement("0"));
-        assertEquals("11", TwosComplement.twosComplement("1"));
+        assertEquals("1", TwosComplement.twosComplement("1"));
     }
 
     @Test
