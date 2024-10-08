@@ -1,11 +1,11 @@
 package com.thealgorithms.datastructures.trees;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -39,9 +39,7 @@ public class BoundaryTraversalTest {
     */
     @Test
     public void testCompleteBinaryTree() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{
-                1, 2, 3, 4, 5, 6, 7
-        });
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 3, 4, 5, 6, 7});
 
         List<Integer> expected = List.of(1, 2, 4, 5, 6, 7, 3);
 
@@ -64,9 +62,7 @@ public class BoundaryTraversalTest {
     */
     @Test
     public void testBoundaryTraversal() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{
-                1, 2, 7, 3, null, null, 8, null, 4, 9, null, 5, 6, 10, 11
-        });
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, 7, 3, null, null, 8, null, 4, 9, null, 5, 6, 10, 11});
 
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6, 10, 11, 9, 8, 7);
 
@@ -85,7 +81,7 @@ public class BoundaryTraversalTest {
     */
     @Test
     public void testLeftSkewedTree() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{1, 2, null, 3, null, 4, null});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {1, 2, null, 3, null, 4, null});
 
         List<Integer> expected = List.of(1, 2, 3, 4);
 
@@ -104,7 +100,7 @@ public class BoundaryTraversalTest {
     */
     @Test
     public void testRightSkewedTree() {
-        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[]{5, null, 6, null, 7, null, 8});
+        final BinaryTree.Node root = TreeTestUtils.createTree(new Integer[] {5, null, 6, null, 7, null, 8});
 
         List<Integer> expected = List.of(5, 6, 7, 8);
 
