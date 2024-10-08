@@ -8,8 +8,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testCalculateAverageWaitingTime() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-            new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
             new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)
         };
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
@@ -22,8 +21,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testCalculateAverageTurnaroundTime() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-            new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
             new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)
         };
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
@@ -36,8 +34,7 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testStartTimeIsCorrect() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-            new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
             new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)
         };
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
