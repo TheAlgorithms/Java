@@ -1,6 +1,5 @@
 package com.thealgorithms.backtracking;
 
-
 /**
  * Problem Statement:
  * Find the number of ways that a given integer, N, can be expressed as the sum of the Xth powers
@@ -47,7 +46,6 @@ public class PowerSum {
             return 0;
         }
 
-        return sumRecursive(remainingSum, power, currentNumber + 1, newSum) +
-               sumRecursive(remainingSum, power, currentNumber + 1, currentSum);
+        return sumRecursive(remainingSum, power, currentNumber + 1, newSum) + sumRecursive(remainingSum, power, currentNumber + 1, currentSum);
     }
 }
