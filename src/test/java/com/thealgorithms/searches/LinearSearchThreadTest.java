@@ -63,7 +63,7 @@ class LinearSearchThreadTest {
         int size = 200;
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = (int) (Math.random() * 100); // Fill array with random integers
+            array[i] = (int) (Math.random() * 100);
         }
         int target = array[(int) (Math.random() * size)]; // Randomly select a target that is present
         Searcher searcher = new Searcher(array, 0, size, target);
