@@ -33,8 +33,10 @@
             * [NonRepeatingNumberFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinder.java)
             * [NumberAppearingOddTimes](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimes.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
+            * [OnesComplement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/OnesComplement.java)
             * [ReverseBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ReverseBits.java)
             * [SingleBitOperations](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/SingleBitOperations.java)
+            * [TwosComplement](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/TwosComplement.java)
           * ciphers
             * a5
               * [A5Cipher](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/ciphers/a5/A5Cipher.java)
@@ -185,6 +187,7 @@
               * [AVLSimple](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/AVLSimple.java)
               * [AVLTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/AVLTree.java)
               * [BinaryTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BinaryTree.java)
+              * [BoundaryTraversal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BoundaryTraversal.java)
               * [BSTFromSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTFromSortedArray.java)
               * [BSTIterative](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTIterative.java)
               * [BSTRecursive](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTRecursive.java)
@@ -643,8 +646,10 @@
             * [NonRepeatingNumberFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinderTest.java)
             * [NumberAppearingOddTimesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimesTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
+            * [OnesComplementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/OnesComplementTest.java)
             * [ReverseBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ReverseBitsTest.java)
             * [SingleBitOperationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleBitOperationsTest.java)
+            * [TwosComplementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/TwosComplementTest.java)
           * ciphers
             * a5
               * [A5CipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/A5CipherTest.java)
@@ -754,6 +759,7 @@
               * [StackArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayTest.java)
             * trees
               * [BinaryTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BinaryTreeTest.java)
+              * [BoundaryTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BoundaryTraversalTest.java)
               * [BSTFromSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTFromSortedArrayTest.java)
               * [BSTIterativeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTIterativeTest.java)
               * [BSTRecursiveTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTRecursiveTest.java)
@@ -783,6 +789,7 @@
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
           * dynamicprogramming
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
+            * [BoundaryFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoundaryFillTest.java)
             * [BruteForceKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BruteForceKnapsackTest.java)
             * [CatalanNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/CatalanNumberTest.java)
             * [ClimbStairsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/ClimbStairsTest.java)
