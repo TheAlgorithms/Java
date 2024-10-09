@@ -24,14 +24,18 @@ public class FibonacciSearch implements SearchAlgorithm {
         int fibMinus2 = 0;
         int fibNumber = fibMinus1 + fibMinus2;
         int n = array.length;
+
         while (fibNumber < n) {
             fibMinus2 = fibMinus1;
             fibMinus1 = fibNumber;
             fibNumber = fibMinus2 + fibMinus1;
         }
+
         int offset = -1;
+
         while (fibNumber > 1) {
             int i = Math.min(offset + fibMinus2, n - 1);
+
             if (array[i].compareTo(key) < 0) {
                 fibNumber = fibMinus1;
                 fibMinus1 = fibMinus2;
@@ -45,9 +49,11 @@ public class FibonacciSearch implements SearchAlgorithm {
                 return i;
             }
         }
+
         if (fibMinus1 == 1 && array[offset + 1] == key) {
             return offset + 1;
         }
+
         return -1;
     }
 
