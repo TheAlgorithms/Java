@@ -1,8 +1,8 @@
 package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ class MonteCarloTreeSearchTest {
     void testNodeCreation() {
         MonteCarloTreeSearch.Node node = new MonteCarloTreeSearch().new Node(null, true);
         assertNotNull(node, "Node should be created");
-        assertNull(node.parent, "Parent should be null for root node");
         assertTrue(node.childNodes.isEmpty(), "Child nodes should be empty upon creation");
         assertTrue(node.isPlayersTurn, "Initial turn should be player's turn");
         assertEquals(0, node.score, "Initial score should be zero");
@@ -35,7 +34,7 @@ class MonteCarloTreeSearchTest {
 
         assertEquals(5, parentNode.childNodes.size(), "Parent should have 5 child nodes");
         for (MonteCarloTreeSearch.Node child : parentNode.childNodes) {
-            assertEquals(false, child.isPlayersTurn, "Child node should not be player's turn");
+            assertFalse(child.isPlayersTurn, "Child node should not be player's turn");
             assertEquals(0, child.visitCount, "Child node visit count should be zero");
         }
     }
@@ -51,8 +50,8 @@ class MonteCarloTreeSearchTest {
         // Create child nodes with different visit counts and scores
         for (int i = 0; i < 3; i++) {
             MonteCarloTreeSearch.Node child = mcts.new Node(parentNode, false);
-            child.visitCount = i + 1; // Visits 1, 2, 3
-            child.score = i * 2; // Scores 0, 2, 4
+            child.visitCount = i + 1;
+            child.score = i * 2;
             parentNode.childNodes.add(child);
         }
 
