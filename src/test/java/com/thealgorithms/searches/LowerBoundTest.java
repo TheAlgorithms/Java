@@ -1,11 +1,11 @@
 package com.thealgorithms.searches;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
 
 class LowerBoundTest {
 
@@ -67,7 +67,7 @@ class LowerBoundTest {
     void testLowerBoundRandomNumbers() {
         Random random = new Random();
         int size = 100;
-        Integer[] array = random.ints(size, 1, 100).sorted().boxed().toArray(Integer[]::new);
+        Integer[] array = random.ints(size, 1, 100).sorted().boxed().toArray(Integer[] ::new);
 
         int target = random.nextInt(100) + 1; // Random target value between 1 and 100
 
