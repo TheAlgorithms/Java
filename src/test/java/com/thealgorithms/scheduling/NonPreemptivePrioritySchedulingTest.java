@@ -9,7 +9,7 @@ public class NonPreemptivePrioritySchedulingTest {
     @Test
     public void testCalculateAverageWaitingTime() {
         NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
-                new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
+            new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         double expectedAvgWaitingTime = (0 + 5 + 15) / 3.0; // Waiting times: 0 for P2, 5 for P1, 15 for P3
@@ -21,7 +21,7 @@ public class NonPreemptivePrioritySchedulingTest {
     @Test
     public void testCalculateAverageTurnaroundTime() {
         NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
-                new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
+            new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
 
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
@@ -33,10 +33,8 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testStartTimeIsCorrect() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
-                new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
-
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 10, 2), // id, arrivalTime, burstTime, priority
+            new NonPreemptivePriorityScheduling.Process(2, 0, 5, 1), new NonPreemptivePriorityScheduling.Process(3, 0, 8, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         // Check that the start time for each process is correctly set
@@ -47,10 +45,8 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testWithDelayedArrivalTimes() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 0, 4, 1), // id, arrivalTime, burstTime, priority
-                new NonPreemptivePriorityScheduling.Process(2, 2, 3, 2), new NonPreemptivePriorityScheduling.Process(3, 4, 2, 3)};
-
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 4, 1), // id, arrivalTime, burstTime, priority
+            new NonPreemptivePriorityScheduling.Process(2, 2, 3, 2), new NonPreemptivePriorityScheduling.Process(3, 4, 2, 3)};
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
         // Test the start times considering delayed arrivals
@@ -61,9 +57,8 @@ public class NonPreemptivePrioritySchedulingTest {
 
     @Test
     public void testWithGapsInArrivals() {
-        NonPreemptivePriorityScheduling.Process[] processes = {
-                new NonPreemptivePriorityScheduling.Process(1, 0, 6, 2), // id, arrivalTime, burstTime, priority
-                new NonPreemptivePriorityScheduling.Process(2, 8, 4, 1), new NonPreemptivePriorityScheduling.Process(3, 12, 5, 3)};
+        NonPreemptivePriorityScheduling.Process[] processes = {new NonPreemptivePriorityScheduling.Process(1, 0, 6, 2), // id, arrivalTime, burstTime, priority
+            new NonPreemptivePriorityScheduling.Process(2, 8, 4, 1), new NonPreemptivePriorityScheduling.Process(3, 12, 5, 3)};
 
         NonPreemptivePriorityScheduling.Process[] executionOrder = NonPreemptivePriorityScheduling.scheduleProcesses(processes);
 
