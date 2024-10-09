@@ -26,8 +26,6 @@ class Point {
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
  */
 class BoundingBox {
-    private static final double BOUNDING_BOX_HALF_WIDTH = 0.5;
-
     public Point center;
     public double halfWidth;
 
