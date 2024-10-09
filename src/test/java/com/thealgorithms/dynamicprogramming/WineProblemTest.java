@@ -71,7 +71,7 @@ class WineProblemTest {
      */
     @Test
     void testNoWines() {
-        int[] wines = {}; // No wines
+        int[] wines = {};
         assertThrows(IllegalArgumentException.class, () -> WineProblem.wpbu(wines),
                 "The maximum profit for no wines should throw an IllegalArgumentException.");
     }
