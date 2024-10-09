@@ -1,6 +1,10 @@
-import java.util.*;
+import java.util.List;
+import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public class sccOptimized {
+public class stronglyConnectedComponent_Optimized {
 
     public void btrack(HashMap<Integer, List<Integer>> adjList, int[] visited, Stack<Integer> dfsCallsNodes, int currentNode) {
         visited[currentNode] = 1;
@@ -10,12 +14,12 @@ public class sccOptimized {
                 btrack(adjList, visited, dfsCallsNodes, neighbor);
             }
         }
-        dfsCallsNodes.add(currentNode); // Add node after finishing DFS on all neighbors
+        dfsCallsNodes.add(currentNode);
     }
 
     public void btrack2(HashMap<Integer, List<Integer>> adjRevList, int[] visited, int currentNode, List<Integer> newScc) {
         visited[currentNode] = 1;
-        newScc.add(currentNode); // Add node to the current SCC
+        newScc.add(currentNode); 
         for (int i = 0; i < adjRevList.get(currentNode).size(); i++) {
             int neighbor = adjRevList.get(currentNode).get(i);
             if (visited[neighbor] == -1) {
@@ -29,16 +33,16 @@ public class sccOptimized {
         Arrays.fill(visited, -1);
         Stack<Integer> dfsCallsNodes = new Stack<>();
 
-        // First DFS pass to fill the stack with the finishing times of nodes
+        
         for (int i = 0; i < N; i++) {
             if (visited[i] == -1) {
                 btrack(adjList, visited, dfsCallsNodes, i);
             }
         }
 
-        System.out.println("Stack of nodes by finish time: " + dfsCallsNodes);
 
-        // Reverse the graph
+        
+       
         HashMap<Integer, List<Integer>> adjRevList = new HashMap<>();
         for (int i = 0; i < N; i++) {
             adjRevList.put(i, new ArrayList<>());
@@ -46,11 +50,11 @@ public class sccOptimized {
 
         for (int i = 0; i < N; i++) {
             for (int neighbor : adjList.get(i)) {
-                adjRevList.get(neighbor).add(i); // Reverse edge
+                adjRevList.get(neighbor).add(i); 
             }
         }
 
-        // Second DFS on the reversed graph
+       
         Arrays.fill(visited, -1);
         int stronglyConnectedComponents = 0;
         List<List<Integer>> sccs = new ArrayList<>();
@@ -65,35 +69,8 @@ public class sccOptimized {
             }
         }
 
-        // Print the found SCCs
-        System.out.println("Strongly Connected Components: " + sccs);
+        
         return stronglyConnectedComponents;
     }
 
-    public static void main(String[] args) {
-        Scanner rs = new Scanner(System.in);
-        HashMap<Integer, List<Integer>> adjList = new HashMap<>();
-        int N = rs.nextInt(); // Number of nodes
-
-        // Initialize adjacency list
-        for (int i = 0; i < N; i++) {
-            adjList.put(i, new ArrayList<>());
-        }
-
-        // Input graph data
-        for (int i = 0; i < N; i++) {
-            System.out.println("Number of neighbor vertices for node " + i + ": ");
-            int nVertices = rs.nextInt();
-            for (int j = 0; j < nVertices; j++) {
-                int neighbor = rs.nextInt();
-                adjList.get(i).add(neighbor);
-            }
-        }
-
-        System.out.println("Adjacency list: " + adjList);
-
-        sccOptimized obj = new sccOptimized();
-        System.out.println("Number of SCCs: " + obj.getOutput(adjList, N));
-        rs.close();
-    }
 }
