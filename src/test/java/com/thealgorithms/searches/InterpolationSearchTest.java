@@ -2,9 +2,8 @@ package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the InterpolationSearch class.
@@ -20,8 +19,7 @@ class InterpolationSearchTest {
         int[] array = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
         int key = 128;
         int expectedIndex = 7; // Index of the key in the array
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The index of the found element should be 7.");
+        assertEquals(expectedIndex, interpolationSearch.find(array, key), "The index of the found element should be 7.");
     }
 
     /**
@@ -32,9 +30,7 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = {1, 2, 4, 8, 16};
         int key = 6; // Element not present in the array
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The element should not be found in the array.");
+        assertEquals(-1, interpolationSearch.find(array, key), "The element should not be found in the array.");
     }
 
     /**
@@ -45,9 +41,7 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = {1, 2, 4, 8, 16};
         int key = 1; // First element
-        int expectedIndex = 0; // Index of the key in the array
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The index of the first element should be 0.");
+        assertEquals(0, interpolationSearch.find(array, key), "The index of the first element should be 0.");
     }
 
     /**
@@ -58,9 +52,7 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = {1};
         int key = 2; // Key not present
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The element should not be found in the array.");
+        assertEquals(-1, interpolationSearch.find(array, key), "The element should not be found in the array.");
     }
 
     /**
@@ -71,9 +63,7 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = {}; // Empty array
         int key = 1; // Key not present
-        int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The element should not be found in an empty array.");
+        assertEquals(-1, interpolationSearch.find(array, key), "The element should not be found in an empty array.");
     }
 
     /**
@@ -84,9 +74,7 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = IntStream.range(0, 10000).map(i -> i * 2).toArray(); // Array from 0 to 19998, step 2
         int key = 9998; // Last even number in the array
-        int expectedIndex = 4999; // Index of the last element
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The index of the last element should be 4999.");
+        assertEquals(4999, interpolationSearch.find(array, key), "The index of the last element should be 4999.");
     }
 
     /**
@@ -97,8 +85,6 @@ class InterpolationSearchTest {
         InterpolationSearch interpolationSearch = new InterpolationSearch();
         int[] array = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}; // Fibonacci numbers
         int key = 21; // Present in the array
-        int expectedIndex = 6; // Index of the key in the array
-        assertEquals(expectedIndex, interpolationSearch.find(array, key),
-                "The index of the found element should be 6.");
+        assertEquals(6, interpolationSearch.find(array, key), "The index of the found element should be 6.");
     }
 }
