@@ -56,7 +56,7 @@ public class EDFSchedulingTest {
     private List<EDFScheduling.Process> createProcesses() {
         // Process ID, Burst Time, Deadline
         EDFScheduling.Process process1 = new EDFScheduling.Process("P1", 7, 10); // 7 burst time, 10 deadline
-        EDFScheduling.Process process2 = new EDFScheduling.Process("P2", 3, 5);  // 3 burst time, 5 deadline
+        EDFScheduling.Process process2 = new EDFScheduling.Process("P2", 3, 5); // 3 burst time, 5 deadline
         EDFScheduling.Process process3 = new EDFScheduling.Process("P3", 8, 18); // 8 burst time, 18 deadline
 
         List<EDFScheduling.Process> processes = new ArrayList<>();
