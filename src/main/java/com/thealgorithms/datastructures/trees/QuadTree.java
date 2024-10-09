@@ -43,10 +43,7 @@ class BoundingBox {
      * @return true if the point is inside the bounding box, false otherwise
      */
     public boolean containsPoint(Point point) {
-        return point.x >= center.x - halfWidth
-                && point.x <= center.x + halfWidth
-                && point.y >= center.y - halfWidth
-                && point.y <= center.y + halfWidth;
+        return point.x >= center.x - halfWidth && point.x <= center.x + halfWidth && point.y >= center.y - halfWidth && point.y <= center.y + halfWidth;
     }
 
     /**
@@ -56,10 +53,8 @@ class BoundingBox {
      * @return true if the bounding box intersects with the other bounding box, false otherwise
      */
     public boolean intersectsBoundingBox(BoundingBox otherBoundingBox) {
-        return otherBoundingBox.center.x - otherBoundingBox.halfWidth <= center.x + halfWidth
-                && otherBoundingBox.center.x + otherBoundingBox.halfWidth >= center.x - halfWidth
-                && otherBoundingBox.center.y - otherBoundingBox.halfWidth <= center.y + halfWidth
-                && otherBoundingBox.center.y + otherBoundingBox.halfWidth >= center.y - halfWidth;
+        return otherBoundingBox.center.x - otherBoundingBox.halfWidth <= center.x + halfWidth && otherBoundingBox.center.x + otherBoundingBox.halfWidth >= center.x - halfWidth && otherBoundingBox.center.y - otherBoundingBox.halfWidth <= center.y + halfWidth
+            && otherBoundingBox.center.y + otherBoundingBox.halfWidth >= center.y - halfWidth;
     }
 }
 
@@ -123,10 +118,21 @@ public class QuadTree {
         }
 
         // try to add the point in one of the four quadrants
-        if (northWest.insert(point)) return true;
-        if (northEast.insert(point)) return true;
-        if (southWest.insert(point)) return true;
-        if (southEast.insert(point)) return true;
+        if (northWest.insert(point)) {
+            return true;
+        }
+
+        if (northEast.insert(point)) {
+            return true;
+        }
+
+        if (southWest.insert(point)) {
+            return true;
+        }
+
+        if (southEast.insert(point)) {
+            return true;
+        }
 
         return false;
     }
