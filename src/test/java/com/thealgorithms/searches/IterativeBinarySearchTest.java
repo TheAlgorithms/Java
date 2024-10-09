@@ -94,7 +94,9 @@ class IterativeBinarySearchTest {
     void testBinarySearchLargeArray() {
         IterativeBinarySearch binarySearch = new IterativeBinarySearch();
         Integer[] array = new Integer[10000];
-        for (int i = 0; i < array.length; i++) array[i] = i * 2; // Array from 0 to 19998, step 2
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i * 2;
+        } // Array from 0 to 19998, step 2
         Integer key = 9998; // Present in the array
         assertEquals(4999, binarySearch.find(array, key), "The index of the found element should be 4999.");
     }
@@ -106,7 +108,9 @@ class IterativeBinarySearchTest {
     void testBinarySearchLargeArrayNotFound() {
         IterativeBinarySearch binarySearch = new IterativeBinarySearch();
         Integer[] array = new Integer[10000];
-        for (int i = 0; i < array.length; i++) array[i] = i * 2; // Array from 0 to 19998, step 2
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i * 2;
+        } // Array from 0 to 19998, step 2
         Integer key = 9999; // Key not present
         assertEquals(-1, binarySearch.find(array, key), "The element should not be found in the array.");
     }
