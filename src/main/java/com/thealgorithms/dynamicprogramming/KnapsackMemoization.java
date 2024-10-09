@@ -1,5 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Recursive Solution for 0-1 knapsack with memoization
  * This method is basically an extension to the recursive approach so that we
@@ -15,10 +18,8 @@ public class KnapsackMemoization {
         int[][] dpTable = new int[numOfItems + 1][capacity + 1];
 
         // Loop to initially fill the table with -1
-        for (int i = 0; i < numOfItems + 1; i++) {
-            for (int j = 0; j < capacity + 1; j++) {
-                dpTable[i][j] = -1;
-            }
+        for(int []table:dpTable){
+            Arrays.fill(table,-1);g
         }
 
         return solveKnapsackRecursive(capacity, weights, profits, numOfItems, dpTable);
