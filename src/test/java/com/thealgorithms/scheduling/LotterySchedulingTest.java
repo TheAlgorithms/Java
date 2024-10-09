@@ -30,7 +30,6 @@ public class LotterySchedulingTest {
 
         List<LotteryScheduling.Process> executedProcesses = lotteryScheduling.scheduleProcesses();
 
-        // Assert correct number of processes
         assertEquals(3, executedProcesses.size());
 
         // Assert the process execution order and properties
