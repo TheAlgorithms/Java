@@ -18,8 +18,8 @@ public class KnapsackMemoization {
         int[][] dpTable = new int[numOfItems + 1][capacity + 1];
 
         // Loop to initially fill the table with -1
-        for(int []table:dpTable){
-            Arrays.fill(table,-1);
+        for (int[] table : dpTable) {
+            Arrays.fill(table, -1);
         }
 
         return solveKnapsackRecursive(capacity, weights, profits, numOfItems, dpTable);
