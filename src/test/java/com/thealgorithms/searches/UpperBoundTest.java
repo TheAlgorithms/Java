@@ -24,7 +24,7 @@ class UpperBoundTest {
                           .distinct() // Ensure all elements are unique
                           .sorted()
                           .boxed()
-                          .toArray(Integer[]::new);
+                          .toArray(Integer[] ::new);
     }
 
     @Test
