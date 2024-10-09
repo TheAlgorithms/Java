@@ -95,8 +95,8 @@ class RodCuttingTest {
      */
     @Test
     void testCutRodEmptyPrices() {
-        int[] prices = {}; // Empty prices array
-        int length = 5; // Any length
+        int[] prices = {};
+        int length = 5;
         assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(prices, length),
                 "An empty prices array should throw an IllegalArgumentException.");
     }
