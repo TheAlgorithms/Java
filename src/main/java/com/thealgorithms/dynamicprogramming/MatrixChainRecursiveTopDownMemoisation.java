@@ -57,8 +57,7 @@ public final class MatrixChainRecursiveTopDownMemoisation {
             return m[i][j];
         } else {
             for (int k = i; k < j; k++) {
-                int q = lookupChain(m, p, i, k) + lookupChain(m, p, k + 1, j)
-                        + (p[i - 1] * p[k] * p[j]);
+                int q = lookupChain(m, p, i, k) + lookupChain(m, p, k + 1, j) + (p[i - 1] * p[k] * p[j]);
                 if (q < m[i][j]) {
                     m[i][j] = q;
                 }
