@@ -31,6 +31,7 @@
             * [IsPowerTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsPowerTwo.java)
             * [LowestSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/LowestSetBit.java)
             * [NonRepeatingNumberFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinder.java)
+            * [NumberAppearingOddTimes](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimes.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
             * [ReverseBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ReverseBits.java)
             * [SingleBitOperations](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/SingleBitOperations.java)
@@ -228,6 +229,7 @@
           * divideandconquer
             * [BinaryExponentiation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/BinaryExponentiation.java)
             * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java)
+            * [MedianOfTwoSortedArrays](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArrays.java)
             * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/SkylineAlgorithm.java)
             * [StrassenMatrixMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplication.java)
           * dynamicprogramming
@@ -638,6 +640,7 @@
             * [IsPowerTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsPowerTwoTest.java)
             * [LowestSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/LowestSetBitTest.java)
             * [NonRepeatingNumberFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinderTest.java)
+            * [NumberAppearingOddTimesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimesTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
             * [ReverseBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ReverseBitsTest.java)
             * [SingleBitOperationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleBitOperationsTest.java)
@@ -729,6 +732,7 @@
               * [LeftistHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
             * lists
               * [CircleLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CircleLinkedListTest.java)
+              * [CreateAndDetectLoopTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CreateAndDetectLoopTest.java)
               * [QuickSortLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/QuickSortLinkedListTest.java)
               * [ReverseKGroupTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/ReverseKGroupTest.java)
               * [RotateSinglyLinkedListsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/RotateSinglyLinkedListsTest.java)
@@ -773,6 +777,7 @@
           * divideandconquer
             * [BinaryExponentiationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/BinaryExponentiationTest.java)
             * [ClosestPairTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/ClosestPairTest.java)
+            * [MedianOfTwoSortedArraysTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArraysTest.java)
             * [SkylineAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/SkylineAlgorithmTest.java)
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
           * dynamicprogramming
