@@ -19,8 +19,7 @@ class BinarySearchTest {
         Integer[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int key = 7;
         int expectedIndex = 6; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The index of the found element should be 6.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the found element should be 6.");
     }
 
     /**
@@ -32,8 +31,7 @@ class BinarySearchTest {
         Integer[] array = {1, 2, 3, 4, 5};
         int key = 6; // Element not present in the array
         int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The element should not be found in the array.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
     }
 
     /**
@@ -45,8 +43,7 @@ class BinarySearchTest {
         Integer[] array = {1, 2, 3, 4, 5};
         int key = 1; // First element
         int expectedIndex = 0; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The index of the first element should be 0.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the first element should be 0.");
     }
 
     /**
@@ -58,8 +55,7 @@ class BinarySearchTest {
         Integer[] array = {1, 2, 3, 4, 5};
         int key = 5; // Last element
         int expectedIndex = 4; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The index of the last element should be 4.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 4.");
     }
 
     /**
@@ -71,8 +67,7 @@ class BinarySearchTest {
         Integer[] array = {1};
         int key = 1; // Only element present
         int expectedIndex = 0; // Index of the key in the array
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The index of the single element should be 0.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the single element should be 0.");
     }
 
     /**
@@ -84,8 +79,7 @@ class BinarySearchTest {
         Integer[] array = {1};
         int key = 2; // Key not present
         int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The element should not be found in the array.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in the array.");
     }
 
     /**
@@ -97,8 +91,7 @@ class BinarySearchTest {
         Integer[] array = {}; // Empty array
         int key = 1; // Key not present
         int expectedIndex = -1; // Key not found
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The element should not be found in an empty array.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The element should not be found in an empty array.");
     }
 
     /**
@@ -110,7 +103,6 @@ class BinarySearchTest {
         Integer[] array = IntStream.range(0, 10000).boxed().toArray(Integer[]::new); // Array from 0 to 9999
         int key = 9999; // Last element
         int expectedIndex = 9999; // Index of the last element
-        assertEquals(expectedIndex, binarySearch.find(array, key),
-                "The index of the last element should be 9999.");
+        assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 9999.");
     }
 }
