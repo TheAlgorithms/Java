@@ -1,6 +1,8 @@
 package com.thealgorithms.scheduling;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * This class implements the Non-Preemptive Priority Scheduling algorithm.
@@ -65,24 +67,30 @@ public final class NonPreemptivePriorityScheduling {
      */
     public static Process[] scheduleProcesses(Process[] processes) {
         PriorityQueue<Process> pq = new PriorityQueue<>();
+        Queue<Process> waitingQueue = new LinkedList<>();
         int currentTime = 0;
         int index = 0;
         Process[] executionOrder = new Process[processes.length];
 
         for (Process process : processes) {
-            pq.add(process);
+            waitingQueue.add(process);
         }
 
-        while (!pq.isEmpty()) {
-            Process currentProcess = pq.poll();
-
-            if (currentTime < currentProcess.arrivalTime) {
-                currentTime = currentProcess.arrivalTime;
+        while (!waitingQueue.isEmpty() || !pq.isEmpty()) {
+            // Add processes that have arrived to the priority queue
+            while (!waitingQueue.isEmpty() && waitingQueue.peek().arrivalTime <= currentTime) {
+                pq.add(waitingQueue.poll());
             }
 
-            currentProcess.startTime = currentTime;
-            executionOrder[index++] = currentProcess;
-            currentTime += currentProcess.burstTime;
+            if (!pq.isEmpty()) {
+                Process currentProcess = pq.poll();
+                currentProcess.startTime = currentTime;
+                executionOrder[index++] = currentProcess;
+                currentTime += currentProcess.burstTime;
+            } else {
+                // If no process is ready, move to the next arrival time
+                currentTime = waitingQueue.peek().arrivalTime;
+            }
         }
 
         return executionOrder;
