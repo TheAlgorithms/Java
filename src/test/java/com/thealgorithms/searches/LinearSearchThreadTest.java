@@ -37,7 +37,7 @@ class LinearSearchThreadTest {
     @Test
     void testSearcherSegmentFound() throws InterruptedException {
         int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        Searcher searcher = new Searcher(array, 0, 5, 3); // Search in the first half
+        Searcher searcher = new Searcher(array, 0, 5, 3);
         searcher.start();
         searcher.join();
         assertTrue(searcher.getResult(), "The element 3 should be found in the segment.");
