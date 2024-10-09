@@ -21,10 +21,10 @@ class UpperBoundTest {
         int size = 100;
         int maxElement = 100;
         sortedArray = random.ints(size, 1, maxElement)
-                    .distinct() // Ensure all elements are unique
-                    .sorted()
-                    .boxed()
-                    .toArray(Integer[]::new);
+                        .distinct() // Ensure all elements are unique
+                        .sorted()
+                        .boxed()
+                        .toArray(Integer[]::new);
     }
 
     @Test
