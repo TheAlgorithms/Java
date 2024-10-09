@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class stronglyConnectedComponent_Optimized {
+public class StronglyConnectedComponentOptimized {
 
     public void btrack(HashMap<Integer, List<Integer>> adjList, int[] visited, Stack<Integer> dfsCallsNodes, int currentNode) {
         visited[currentNode] = 1;
@@ -19,7 +19,7 @@ public class stronglyConnectedComponent_Optimized {
 
     public void btrack2(HashMap<Integer, List<Integer>> adjRevList, int[] visited, int currentNode, List<Integer> newScc) {
         visited[currentNode] = 1;
-        newScc.add(currentNode); 
+        newScc.add(currentNode);
         for (int i = 0; i < adjRevList.get(currentNode).size(); i++) {
             int neighbor = adjRevList.get(currentNode).get(i);
             if (visited[neighbor] == -1) {
@@ -28,33 +28,28 @@ public class stronglyConnectedComponent_Optimized {
         }
     }
 
-    public int getOutput(HashMap<Integer, List<Integer>> adjList, int N) {
-        int[] visited = new int[N];
+    public int getOutput(HashMap<Integer, List<Integer>> adjList, int n) {
+        int[] visited = new int[n];
         Arrays.fill(visited, -1);
         Stack<Integer> dfsCallsNodes = new Stack<>();
 
-        
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             if (visited[i] == -1) {
                 btrack(adjList, visited, dfsCallsNodes, i);
             }
         }
 
-
-        
-       
         HashMap<Integer, List<Integer>> adjRevList = new HashMap<>();
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             adjRevList.put(i, new ArrayList<>());
         }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             for (int neighbor : adjList.get(i)) {
-                adjRevList.get(neighbor).add(i); 
+                adjRevList.get(neighbor).add(i);
             }
         }
 
-       
         Arrays.fill(visited, -1);
         int stronglyConnectedComponents = 0;
         List<List<Integer>> sccs = new ArrayList<>();
@@ -69,7 +64,6 @@ public class stronglyConnectedComponent_Optimized {
             }
         }
 
-        
         return stronglyConnectedComponents;
     }
 
