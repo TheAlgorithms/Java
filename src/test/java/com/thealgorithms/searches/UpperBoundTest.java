@@ -85,7 +85,6 @@ class UpperBoundTest {
 
     @Test
     void testUpperBoundSingleElementArray() {
-        // Test with an array of a single element
         Integer[] singleElementArray = {10};
         int index = upperBound.find(singleElementArray, 5);
 
