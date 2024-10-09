@@ -30,7 +30,7 @@ public class QuadTreeTest {
         Assertions.assertTrue(quadTree.insert(new Point(-10, -10)));
         Assertions.assertTrue(quadTree.insert(new Point(10, 10)));
         Assertions.assertTrue(quadTree.insert(new Point(-100, 100)));
-        Assertions.assertTrue(quadTree.insert(new Point(100, -100)));
+        Assertions.assertTrue(quadTree.insert(new Point(100, -101)));
         Assertions.assertTrue(quadTree.insert(new Point(-100, -100)));
         Assertions.assertTrue(quadTree.insert(new Point(100, 100)));
     }
@@ -51,5 +51,8 @@ public class QuadTreeTest {
 
         points = quadTree.query(new BoundingBox(new Point(5, 5), 5));
         Assertions.assertEquals(1, points.size());
+
+        points = quadTree.query(new BoundingBox(new Point(-200, -200), 5));
+        Assertions.assertEquals(0, points.size());
     }
 }
