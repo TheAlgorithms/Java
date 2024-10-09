@@ -19,7 +19,7 @@ public class KnapsackMemoization {
 
         // Loop to initially fill the table with -1
         for(int []table:dpTable){
-            Arrays.fill(table,-1);g
+            Arrays.fill(table,-1);
         }
 
         return solveKnapsackRecursive(capacity, weights, profits, numOfItems, dpTable);
