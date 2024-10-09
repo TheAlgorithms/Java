@@ -117,8 +117,8 @@ class FibonacciSearchTest {
     void testFibonacciSearchLargeArray() {
         FibonacciSearch fibonacciSearch = new FibonacciSearch();
         Integer[] array = IntStream.range(0, 10000).boxed().toArray(Integer[] ::new); // Array from 0 to 9999
-        int key = 9999; // Last element
-        int expectedIndex = 9999; // Index of the last element
+        int key = 9999;
+        int expectedIndex = 9999;
         assertEquals(expectedIndex, fibonacciSearch.find(array, key), "The index of the last element should be 9999.");
     }
 }
