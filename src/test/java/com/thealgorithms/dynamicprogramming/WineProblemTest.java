@@ -18,8 +18,7 @@ class WineProblemTest {
     void testWpRecursion() {
         int[] wines = {2, 3, 5, 1, 4}; // Prices of wines
         int expectedProfit = 50; // The expected maximum profit
-        assertEquals(expectedProfit, WineProblem.wpRecursion(wines, 0, wines.length - 1),
-                "The maximum profit using recursion should be 50.");
+        assertEquals(expectedProfit, WineProblem.wpRecursion(wines, 0, wines.length - 1), "The maximum profit using recursion should be 50.");
     }
 
     /**
@@ -29,8 +28,7 @@ class WineProblemTest {
     void testWptd() {
         int[] wines = {2, 3, 5, 1, 4}; // Prices of wines
         int expectedProfit = 50; // The expected maximum profit
-        assertEquals(expectedProfit, WineProblem.wptd(wines, 0, wines.length - 1, new int[wines.length][wines.length]),
-                "The maximum profit using top-down DP should be 50.");
+        assertEquals(expectedProfit, WineProblem.wptd(wines, 0, wines.length - 1, new int[wines.length][wines.length]), "The maximum profit using top-down DP should be 50.");
     }
 
     /**
@@ -40,8 +38,7 @@ class WineProblemTest {
     void testWpbu() {
         int[] wines = {2, 3, 5, 1, 4}; // Prices of wines
         int expectedProfit = 50; // The expected maximum profit
-        assertEquals(expectedProfit, WineProblem.wpbu(wines),
-                "The maximum profit using bottom-up DP should be 50.");
+        assertEquals(expectedProfit, WineProblem.wpbu(wines), "The maximum profit using bottom-up DP should be 50.");
     }
 
     /**
@@ -51,8 +48,7 @@ class WineProblemTest {
     void testSingleWine() {
         int[] wines = {10}; // Only one wine
         int expectedProfit = 10; // Selling the only wine at year 1
-        assertEquals(expectedProfit, WineProblem.wpbu(wines),
-                "The maximum profit for a single wine should be 10.");
+        assertEquals(expectedProfit, WineProblem.wpbu(wines), "The maximum profit for a single wine should be 10.");
     }
 
     /**
@@ -62,8 +58,7 @@ class WineProblemTest {
     void testSamePriceWines() {
         int[] wines = {5, 5, 5}; // All wines have the same price
         int expectedProfit = 30; // Profit is 5 * (1 + 2 + 3)
-        assertEquals(expectedProfit, WineProblem.wpbu(wines),
-                "The maximum profit with same price wines should be 30.");
+        assertEquals(expectedProfit, WineProblem.wpbu(wines), "The maximum profit with same price wines should be 30.");
     }
 
     /**
@@ -72,7 +67,6 @@ class WineProblemTest {
     @Test
     void testNoWines() {
         int[] wines = {};
-        assertThrows(IllegalArgumentException.class, () -> WineProblem.wpbu(wines),
-                "The maximum profit for no wines should throw an IllegalArgumentException.");
+        assertThrows(IllegalArgumentException.class, () -> WineProblem.wpbu(wines), "The maximum profit for no wines should throw an IllegalArgumentException.");
     }
 }
