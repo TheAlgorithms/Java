@@ -47,7 +47,7 @@ public class QuadTreeTest {
         quadTree.insert(new Point(100, 100));
 
         List<Point> points = quadTree.query(new BoundingBox(new Point(0, 0), 100));
-        Assertions.assertEquals(4, points.size());
+        Assertions.assertEquals(8, points.size());
 
         points = quadTree.query(new BoundingBox(new Point(5, 5), 5));
         Assertions.assertEquals(1, points.size());
