@@ -20,8 +20,7 @@ class RodCuttingTest {
         int[] prices = {1}; // Price for piece of length 1
         int length = 1;
         int expectedValue = 1;
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 1 should be 1.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 1 should be 1.");
     }
 
     /**
@@ -33,8 +32,7 @@ class RodCuttingTest {
         int[] prices = {1, 5}; // Prices for lengths 1 and 2
         int length = 2;
         int expectedValue = 5; // Best value is to cut it into a single piece of length 2
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 2 should be 5.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 2 should be 5.");
     }
 
     /**
@@ -46,8 +44,7 @@ class RodCuttingTest {
         int[] prices = {1, 5, 8}; // Prices for lengths 1, 2, and 3
         int length = 3;
         int expectedValue = 8; // Best value is to cut it into a single piece of length 3
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 3 should be 8.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 3 should be 8.");
     }
 
     /**
@@ -59,8 +56,7 @@ class RodCuttingTest {
         int[] prices = {1, 5, 8, 9}; // Prices for lengths 1, 2, 3, and 4
         int length = 4;
         int expectedValue = 10; // Best value is to cut it into two pieces of length 2
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 4 should be 10.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 4 should be 10.");
     }
 
     /**
@@ -72,8 +68,7 @@ class RodCuttingTest {
         int[] prices = {1, 5, 8, 9, 10}; // Prices for lengths 1, 2, 3, 4, and 5
         int length = 5;
         int expectedValue = 13; // Best value is to cut it into pieces of lengths 2 and 3
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 5 should be 13.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 5 should be 13.");
     }
 
     /**
@@ -85,8 +80,7 @@ class RodCuttingTest {
         int[] prices = {1, 5, 8, 9, 10}; // Prices are irrelevant for length 0
         int length = 0;
         int expectedValue = 0; // No value obtainable from a rod of length 0
-        assertEquals(expectedValue, RodCutting.cutRod(prices, length),
-                "The maximum obtainable value for a rod of length 0 should be 0.");
+        assertEquals(expectedValue, RodCutting.cutRod(prices, length), "The maximum obtainable value for a rod of length 0 should be 0.");
     }
 
     /**
@@ -97,7 +91,6 @@ class RodCuttingTest {
     void testCutRodEmptyPrices() {
         int[] prices = {};
         int length = 5;
-        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(prices, length),
-                "An empty prices array should throw an IllegalArgumentException.");
+        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(prices, length), "An empty prices array should throw an IllegalArgumentException.");
     }
 }
