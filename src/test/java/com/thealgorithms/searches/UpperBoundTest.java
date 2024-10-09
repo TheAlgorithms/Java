@@ -21,10 +21,10 @@ class UpperBoundTest {
         int size = 100;
         int maxElement = 100;
         sortedArray = random.ints(size, 1, maxElement)
-                .distinct() // Ensure all elements are unique
-                .sorted()
-                .boxed()
-                .toArray(Integer[]::new);
+                    .distinct() // Ensure all elements are unique
+                    .sorted()
+                    .boxed()
+                    .toArray(Integer[]::new);
     }
 
     @Test
@@ -48,7 +48,7 @@ class UpperBoundTest {
 
     @Test
     void testUpperBoundMultipleValues() {
-        Integer[] arrayWithDuplicates = new Integer[]{1, 1, 2, 3, 4, 4, 5, 6, 7, 8, 9}; // Test array with duplicates
+        Integer[] arrayWithDuplicates = new Integer[] {1, 1, 2, 3, 4, 4, 5, 6, 7, 8, 9}; // Test array with duplicates
         int key = 4;
         int index = upperBound.find(arrayWithDuplicates, key);
 
