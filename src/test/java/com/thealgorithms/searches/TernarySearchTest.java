@@ -50,7 +50,7 @@ class TernarySearchTest {
     void testFindInLargeArray() {
         Integer[] arr = new Integer[1000];
         for (int i = 0; i < 1000; i++) {
-            arr[i] = i + 1;  // Array from 1 to 1000
+            arr[i] = i + 1; // Array from 1 to 1000
         }
         TernarySearch search = new TernarySearch();
 
