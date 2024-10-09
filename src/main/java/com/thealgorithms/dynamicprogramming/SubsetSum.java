@@ -15,25 +15,19 @@ public final class SubsetSum {
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
 
-        // Intialize Two Arrays to store current and prev states
-        boolean[] isSumCurr = new boolean[sum + 1];
-        boolean[] isSumPrev = new boolean[sum + 1];
+        // Initialize a single array to store the possible sums
+        boolean[] isSum = new boolean[sum + 1];
 
-        // Mark prev[0] = true as it is true to make sum = 0 using 0 elements
-        isSumPrev[0] = true;
+        // Mark isSum[0] = true since a sum of 0 is always possible with 0 elements
+        isSum[0] = true;
 
-        // Fill the subset sum matrix
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j <= sum; j++) {
-                if (arr[i - 1] <= j) {
-                    isSumCurr[j] = isSumPrev[j] || isSumPrev[j - arr[i - 1]];
-                } else {
-                    isSumCurr[j] = isSumPrev[j];
-                }
+        // Iterate through each Element in the array
+        for (int i = 0; i < n; i++) {
+            // Traverse the isSum array backwards to prevent overwriting values
+            for (int j = sum; j >= arr[i]; j--) {
+                isSum[j] = isSum[j] || isSum[j - arr[i]];
             }
-            isSumPrev = isSumCurr.clone();
         }
-
-        return isSumPrev[sum];
+        return isSum[sum];
     }
 }
