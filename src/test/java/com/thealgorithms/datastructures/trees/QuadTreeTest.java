@@ -10,6 +10,11 @@ public class QuadTreeTest {
     QuadTree quadTree = new QuadTree(boundingBox, quadTreeCapacity);
 
     @Test
+    public void testNullPointInsertIntoQuadTree() {
+        Assertions.assertFalse(quadTree.insert(null));
+    }
+
+    @Test
     public void testInsertIntoQuadTree() {
         Assertions.assertTrue(quadTree.insert(new Point(10, -10)));
         Assertions.assertTrue(quadTree.insert(new Point(-10, 10)));
@@ -19,11 +24,27 @@ public class QuadTreeTest {
     }
 
     @Test
+    public void testInsertIntoQuadTreeAndSubDivide() {
+        Assertions.assertTrue(quadTree.insert(new Point(10, -10)));
+        Assertions.assertTrue(quadTree.insert(new Point(-10, 10)));
+        Assertions.assertTrue(quadTree.insert(new Point(-10, -10)));
+        Assertions.assertTrue(quadTree.insert(new Point(10, 10)));
+        Assertions.assertTrue(quadTree.insert(new Point(-100, 100)));
+        Assertions.assertTrue(quadTree.insert(new Point(100, -100)));
+        Assertions.assertTrue(quadTree.insert(new Point(-100, -100)));
+        Assertions.assertTrue(quadTree.insert(new Point(100, 100)));
+    }
+
+    @Test
     public void testQueryInQuadTree() {
         quadTree.insert(new Point(10, -10));
         quadTree.insert(new Point(-10, 10));
         quadTree.insert(new Point(-10, -10));
         quadTree.insert(new Point(10, 10));
+        quadTree.insert(new Point(-100, 100));
+        quadTree.insert(new Point(100, -100));
+        quadTree.insert(new Point(-100, -100));
+        quadTree.insert(new Point(100, 100));
 
         List<Point> points = quadTree.query(new BoundingBox(new Point(0, 0), 100));
         Assertions.assertEquals(4, points.size());
