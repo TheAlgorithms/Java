@@ -52,8 +52,8 @@ public class LotterySchedulingTest {
 
     private List<LotteryScheduling.Process> createProcesses() {
         LotteryScheduling.Process process1 = new LotteryScheduling.Process("P1", 10, 10); // 10 tickets
-        LotteryScheduling.Process process2 = new LotteryScheduling.Process("P2", 5, 5);  // 5 tickets
-        LotteryScheduling.Process process3 = new LotteryScheduling.Process("P3", 8, 8);  // 8 tickets
+        LotteryScheduling.Process process2 = new LotteryScheduling.Process("P2", 5, 5); // 5 tickets
+        LotteryScheduling.Process process3 = new LotteryScheduling.Process("P3", 8, 8); // 8 tickets
 
         List<LotteryScheduling.Process> processes = new ArrayList<>();
         processes.add(process1);
