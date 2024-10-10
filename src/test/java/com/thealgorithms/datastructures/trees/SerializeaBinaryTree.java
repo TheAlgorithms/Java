@@ -132,6 +132,7 @@ public class SerializeaBinaryTree {
         // Deserialize the string back to a binary tree
         TreeNode deserializedRoot = serializer.deserialize(serializedTree);
         System.out.println("Tree deserialized successfully. Root value: " + deserializedRoot.val);
+        // Expected output: Root value should be 1
     }
 }
 
