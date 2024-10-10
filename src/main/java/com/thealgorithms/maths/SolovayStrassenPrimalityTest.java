@@ -6,6 +6,8 @@ import java.util.Random;
  * This class implements the Solovay-Strassen primality test, 
  * which is a probabilistic algorithm to determine whether a number is prime.
  * The algorithm is based on properties of the Jacobi symbol and modular exponentiation.
+ * 
+ * For more information, go to {@link https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test}
  */
 class SolovayStrassenPrimalityTest {
 
