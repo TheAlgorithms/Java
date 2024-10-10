@@ -1,25 +1,30 @@
 package com.thealgorithms.backtracking;
 
 /**
- * Solves a Sudoku of any level and prints solved Sudoku
+ * Solves a Sudoku of any level and prints solved Sudoku.
+ * This class is a utility and should not be instantiated.
  * @author Indraneela Doradla (<a href="https://github.com/captiosus1">git-Indraneela Doradla</a>)
  */
 public final class SudokuSolver {
 
+    /**
+     * Private constructor to prevent instantiation.
+     */
     private SudokuSolver() {
-        // Private constructor to prevent instantiation
+        // Utility class
     }
 
     /**
-     * Solves the Sudoku using backtracking
+     * Solves the Sudoku using backtracking.
      * @param board the Sudoku grid
      * @return boolean indicating if the Sudoku can be solved
      */
     public static boolean solveSudoku(int[][] board) {
-        int r = -1, c = -1;
+        int r = -1;
+        int c = -1;
         boolean isEmpty = true;
 
-        // Finding the first empty position
+        // Find the first empty position
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == 0) {
@@ -29,7 +34,9 @@ public final class SudokuSolver {
                     break;
                 }
             }
-            if (!isEmpty) break;
+            if (!isEmpty) {
+                break;
+            }
         }
 
         // If no empty position is found, the Sudoku is solved
@@ -52,7 +59,7 @@ public final class SudokuSolver {
     }
 
     /**
-     * Checks if placing a number at the given position is valid
+     * Checks if placing a number at the given position is valid.
      * @param board the Sudoku grid
      * @param r row index
      * @param c column index
@@ -84,7 +91,7 @@ public final class SudokuSolver {
     }
 
     /**
-     * Prints the Sudoku grid
+     * Prints the Sudoku grid.
      * @param board the Sudoku grid
      */
     public static void printSudoku(int[][] board) {
