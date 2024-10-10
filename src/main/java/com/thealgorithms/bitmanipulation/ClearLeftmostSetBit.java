@@ -12,7 +12,9 @@ package com.thealgorithms.bitmanipulation;
  *
  * @author Hardvan
  */
-public class ClearLeftmostSetBit {
+public final class ClearLeftmostSetBit {
+    private ClearLeftmostSetBit() {
+    }
 
     /**
      * Clears the leftmost set bit (1) of a given number.
