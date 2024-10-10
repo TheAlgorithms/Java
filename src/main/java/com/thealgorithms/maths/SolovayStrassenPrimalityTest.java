@@ -11,7 +11,7 @@ import java.util.Random;
  */
 final class SolovayStrassenPrimalityTest {
 
-    private Random random;
+    private final Random random;
 
     /**
      * Constructs a SolovayStrassenPrimalityTest instance with a specified seed for randomness.
