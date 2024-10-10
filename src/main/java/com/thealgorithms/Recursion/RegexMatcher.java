@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Solution {
     // Memoization map to store results of subproblems
@@ -33,4 +34,26 @@ public class Solution {
         memo.put(key, result);
         return result;
     }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the input string: ");
+        String inputString = scanner.nextLine();
+
+        System.out.print("Enter the pattern: ");
+        String pattern = scanner.nextLine();
+
+        boolean isMatch = solution.isMatch(inputString, pattern);
+
+        if (isMatch) {
+            System.out.println("The string matches the pattern.");
+        } else {
+            System.out.println("The string does not match the pattern.");
+        }
+
+        scanner.close();
+    }
 }
+
