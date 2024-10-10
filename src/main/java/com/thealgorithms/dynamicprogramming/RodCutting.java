@@ -15,9 +15,13 @@ public final class RodCutting {
      * @param price An array representing the prices of different pieces, where price[i-1]
      *              represents the price of a piece of length i.
      * @param n     The length of the rod to be cut.
+     * @throws IllegalArgumentException if the price array is null or empty, or if n is less than 0.
      * @return The maximum obtainable value.
      */
     public static int cutRod(int[] price, int n) {
+        if (price == null || price.length == 0) {
+            throw new IllegalArgumentException("Price array cannot be null or empty.");
+        }
         // Create an array to store the maximum obtainable values for each rod length.
         int[] val = new int[n + 1];
         val[0] = 0;

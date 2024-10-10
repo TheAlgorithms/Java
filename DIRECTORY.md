@@ -824,6 +824,7 @@
             * [PalindromicPartitioningTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/PalindromicPartitioningTest.java)
             * [PartitionProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/PartitionProblemTest.java)
             * [RegexMatchingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/RegexMatchingTest.java)
+            * [RodCuttingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/RodCuttingTest.java)
             * [ShortestCommonSupersequenceLengthTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/ShortestCommonSupersequenceLengthTest.java)
             * [SubsetCountTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SubsetCountTest.java)
             * [SubsetSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SubsetSumTest.java)
