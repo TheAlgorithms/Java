@@ -9,7 +9,7 @@ import java.util.Random;
  *
  * For more information, go to {@link https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test}
  */
-class SolovayStrassenPrimalityTest {
+final class SolovayStrassenPrimalityTest {
 
     private Random random;
 
@@ -46,8 +46,9 @@ class SolovayStrassenPrimalityTest {
 
         while (exponent > 0) {
             // If exponent is odd, multiply the current base (y) with x
-            if (exponent % 2 == 1) x = (x * y) % mod; // Update result with current base
-
+            if (exponent % 2 == 1) {
+                x = (x * y) % mod; // Update result with current base
+            }
             // Square the base for the next iteration
             y = (y * y) % mod; // Update base to be y^2
             exponent = exponent / 2; // Halve the exponent for next iteration
@@ -105,8 +106,12 @@ class SolovayStrassenPrimalityTest {
      * @return true if num is likely prime, false if it is composite
      */
     public boolean solovayStrassen(long num, int iterations) {
-        if (num <= 1) return false; // Numbers <=1 are not prime by definition.
-        if (num <= 3) return true; // Numbers <=3 are prime.
+        if (num <= 1) {
+            return false; // Numbers <=1 are not prime by definition.
+        }
+        if (num <= 3) {
+            return true; // Numbers <=3 are prime.
+        }
 
         for (int i = 0; i < iterations; i++) {
             long r = Math.abs(random.nextLong() % (num - 1)) + 2; // Generate a non-negative random number.
@@ -118,8 +123,9 @@ class SolovayStrassenPrimalityTest {
             long mod = calculateModularExponentiation(a, (num - 1) / 2, num);
             // Calculate modular exponentiation: a^((n-1)/2) mod n.
 
-            if (jacobi == 0 || mod != jacobi) return false;
-            // If Jacobi symbol is zero or doesn't match modular result, n is composite.
+            if (jacobi == 0 || mod != jacobi) {
+                return false; // If Jacobi symbol is zero or doesn't match modular result, n is composite.
+            }
         }
 
         return true; // If no contradictions found after all iterations, n is likely prime.
