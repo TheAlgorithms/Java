@@ -3,14 +3,14 @@ import java.util.Queue;
 
 // Define the TreeNode class to represent nodes in the binary tree.
 class TreeNode {
-    int val;           // Value stored in the node
-    TreeNode left;     // Pointer to the left child
-    TreeNode right;    // Pointer to the right child
+    int val;// Value stored in the node
+    TreeNode left;// Pointer to the left child
+    TreeNode right;// Pointer to the right child
 
     // Constructor to create a new node with a given value
     TreeNode(int val) {
         this.val = val;
-        this.left = null;  // Initially, the left child is null
+        this.left = null; // Initially, the left child is null
         this.right = null; // Initially, the right child is null
     }
 }
@@ -115,11 +115,11 @@ public class SerializeaBinaryTree {
         //        / \
         //       4   5
 
-        TreeNode root = new TreeNode(1);      // Create the root node with value 1
-        root.left = new TreeNode(2);          // Create the left child (value 2)
-        root.right = new TreeNode(3);         // Create the right child (value 3)
-        root.right.left = new TreeNode(4);    // Create the left child of node 3 (value 4)
-        root.right.right = new TreeNode(5);   // Create the right child of node 3 (value 5)
+        TreeNode root = new TreeNode(1); // Create the root node with value 1
+        root.left = new TreeNode(2); // Create the left child (value 2)
+        root.right = new TreeNode(3); // Create the right child (value 3)
+        root.right.left = new TreeNode(4); // Create the left child of node 3 (value 4)
+        root.right.right = new TreeNode(5); // Create the right child of node 3 (value 5)
 
         // Instantiate the SerializeaBinaryTree class
         SerializeaBinaryTree serializer = new SerializeaBinaryTree();
@@ -132,7 +132,6 @@ public class SerializeaBinaryTree {
         // Deserialize the string back to a binary tree
         TreeNode deserializedRoot = serializer.deserialize(serializedTree);
         System.out.println("Tree deserialized successfully. Root value: " + deserializedRoot.val);
-        // Expected output: Root value should be 1
     }
 }
 
