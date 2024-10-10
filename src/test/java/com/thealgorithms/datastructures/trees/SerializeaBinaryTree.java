@@ -135,4 +135,3 @@ public class SerializeaBinaryTree {
         // Expected output: Root value should be 1
     }
 }
-
