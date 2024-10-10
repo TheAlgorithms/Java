@@ -27,7 +27,9 @@ public final class HigherLowerPowerOfTwo {
      * @return The next higher power of two.
      */
     public static int nextHigherPowerOfTwo(int x) {
-        if (x < 1) return 1;
+        if (x < 1) {
+            return 1;
+        }
         x--;
         x |= x >> 1;
         x |= x >> 2;
@@ -44,7 +46,9 @@ public final class HigherLowerPowerOfTwo {
      * @return The next lower power of two.
      */
     public static int nextLowerPowerOfTwo(int x) {
-        if (x < 1) return 0;
+        if (x < 1) {
+            return 0;
+        }
         return Integer.highestOneBit(x);
     }
 }
