@@ -1,15 +1,17 @@
 package com.thealgorithms.ciphers;
 
 /**
-* The Atbash cipher is a simple substitution cipher that replaces each letter
-* in the alphabet with its reverse.
-* For example, 'A' becomes 'Z', 'B' becomes 'Y', and so on. It works
-* identically for both uppercase and lowercase letters.
-* It's a symmetric cipher, meaning applying it twice returns the original text.
-* Hence, the encrypting and the decrypting functions are identical
-* @author https://github.com/Krounosity
-* Learn more: https://en.wikipedia.org/wiki/Atbash
-*/
+ * The Atbash cipher is a simple substitution cipher that replaces each letter
+ * in the alphabet with its reverse.
+ * For example, 'A' becomes 'Z', 'B' becomes 'Y', and so on. It works
+ * identically for both uppercase and lowercase letters.
+ * It's a symmetric cipher, meaning applying it twice returns the original text.
+ * Hence, the encrypting and the decrypting functions are identical
+ * 
+ * @author https://github.com/Krounosity
+ * 
+ * Learn more: https://en.wikipedia.org/wiki/Atbash
+ */
 
 public class AtbashCipher {
 
