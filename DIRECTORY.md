@@ -1016,6 +1016,7 @@
             * [RecursiveBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/RecursiveBinarySearchTest.java)
             * [RowColumnWiseSorted2dArrayBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/RowColumnWiseSorted2dArrayBinarySearchTest.java)
             * [SortOrderAgnosticBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SortOrderAgnosticBinarySearchTest.java)
+            * [SquareRootBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SquareRootBinarySearchTest.java)
             * [TestSearchInARowAndColWiseSortedMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/TestSearchInARowAndColWiseSortedMatrix.java)
           * sorts
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
