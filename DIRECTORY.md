@@ -1022,6 +1022,7 @@
             * [SearchInARowAndColWiseSortedMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SearchInARowAndColWiseSortedMatrixTest.java)
             * [SortOrderAgnosticBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SortOrderAgnosticBinarySearchTest.java)
             * [SquareRootBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SquareRootBinarySearchTest.java)
+            * [TernarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/TernarySearchTest.java)
             * [TestSearchInARowAndColWiseSortedMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/TestSearchInARowAndColWiseSortedMatrix.java)
             * [UnionFindTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UnionFindTest.java)
           * sorts
