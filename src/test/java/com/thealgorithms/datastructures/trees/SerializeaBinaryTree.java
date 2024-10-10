@@ -3,9 +3,9 @@ import java.util.Queue;
 
 // Define the TreeNode class to represent nodes in the binary tree.
 class TreeNode {
-    int val;// Value stored in the node
-    TreeNode left;// Pointer to the left child
-    TreeNode right;// Pointer to the right child
+    int val; // Value stored in the node
+    TreeNode left; // Pointer to the left child
+    TreeNode right; // Pointer to the right child
 
     // Constructor to create a new node with a given value
     TreeNode(int val) {
@@ -91,7 +91,7 @@ public class SerializeaBinaryTree {
                 // Add the left child to the queue for further processing.
                 queue.add(node.left);
             }
-            index++;  // Move to the next value in the array.
+            index++; // Move to the next value in the array.
 
             // Rebuild the right child.
             if (!nodes[index].equals("null")) {
@@ -100,7 +100,7 @@ public class SerializeaBinaryTree {
                 // Add the right child to the queue for further processing.
                 queue.add(node.right);
             }
-            index++;  // Move to the next value in the array.
+            index++; // Move to the next value in the array.
         }
 
         // Return the root of the reconstructed tree.
