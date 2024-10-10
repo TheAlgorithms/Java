@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-public class SubsetSumSpaceOptimized {
+class SubsetSumSpaceOptimizedTest {
     @Test
     void basicCheck() {
         assertTrue(SubsetSumSpaceOptimized.isSubsetSum(new int[] {7, 3, 2, 5, 8}, 14));
