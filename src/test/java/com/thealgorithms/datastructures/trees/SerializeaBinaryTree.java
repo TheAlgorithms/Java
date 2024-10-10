@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.LinkedList; // Replace with specific imports
+import java.util.Queue;
 
 // Define the TreeNode class to represent nodes in the binary tree.
 class TreeNode {
@@ -19,7 +20,9 @@ public class SerializeaBinaryTree {
     // The 'serialize' method converts a binary tree into a string.
     public String serialize(TreeNode root) {
         // If the tree is empty (root is null), return an empty string.
-        if (root == null) return "";
+        if (root == null) {
+            return "";
+        }
 
         // StringBuilder is used to build the final serialized string efficiently.
         StringBuilder sb = new StringBuilder();
@@ -59,7 +62,9 @@ public class SerializeaBinaryTree {
     // The 'deserialize' method converts a string back into a binary tree.
     public TreeNode deserialize(String data) {
         // If the input string is empty, return null (i.e., the tree is empty).
-        if (data == null || data.isEmpty()) return null;
+        if (data == null || data.isEmpty()) {
+            return null;
+        }
 
         // Split the string by commas to get the serialized node values.
         String[] nodes = data.split(",");
