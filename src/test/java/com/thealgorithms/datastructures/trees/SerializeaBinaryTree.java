@@ -14,7 +14,7 @@ class TreeNode {
     }
 }
 
-public class BinaryTreeSerializer {
+public class SerializeaBinaryTree {
 
     // The 'serialize' method converts a binary tree into a string.
     public String serialize(TreeNode root) {
@@ -116,8 +116,8 @@ public class BinaryTreeSerializer {
         root.right.left = new TreeNode(4);    // Create the left child of node 3 (value 4)
         root.right.right = new TreeNode(5);   // Create the right child of node 3 (value 5)
 
-        // Instantiate the BinaryTreeSerializer class
-        BinaryTreeSerializer serializer = new BinaryTreeSerializer();
+        // Instantiate the SerializeaBinaryTree class
+        SerializeaBinaryTree serializer = new SerializeaBinaryTree();
 
         // Serialize the tree to a string format
         String serializedTree = serializer.serialize(root);
