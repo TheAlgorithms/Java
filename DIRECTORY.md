@@ -1017,6 +1017,7 @@
             * [RabinKarpAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/RabinKarpAlgorithmTest.java)
             * [RecursiveBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/RecursiveBinarySearchTest.java)
             * [RowColumnWiseSorted2dArrayBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/RowColumnWiseSorted2dArrayBinarySearchTest.java)
+            * [SaddlebackSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SaddlebackSearchTest.java)
             * [SearchInARowAndColWiseSortedMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SearchInARowAndColWiseSortedMatrixTest.java)
             * [SortOrderAgnosticBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SortOrderAgnosticBinarySearchTest.java)
             * [SquareRootBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/SquareRootBinarySearchTest.java)
