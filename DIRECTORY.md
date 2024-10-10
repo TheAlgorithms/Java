@@ -1025,6 +1025,7 @@
             * [TernarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/TernarySearchTest.java)
             * [TestSearchInARowAndColWiseSortedMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/TestSearchInARowAndColWiseSortedMatrix.java)
             * [UnionFindTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UnionFindTest.java)
+            * [UpperBoundTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UpperBoundTest.java)
           * sorts
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
             * [BinaryInsertionSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BinaryInsertionSortTest.java)
