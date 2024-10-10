@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class ParityCheckTest {
-
     @Test
     public void testIsOddParity() {
         assertTrue(ParityCheck.checkParity(5)); // 101 has 2 ones (even parity)
