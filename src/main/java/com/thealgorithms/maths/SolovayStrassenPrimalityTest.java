@@ -47,10 +47,10 @@ final class SolovayStrassenPrimalityTest {
         while (exponent > 0) {
             // If exponent is odd, multiply the current base (y) with x
             if (exponent % 2 == 1) {
-                x = (x * y) % mod; // Update result with current base
+                x = x * y % mod; // Update result with current base
             }
             // Square the base for the next iteration
-            y = (y * y) % mod; // Update base to be y^2
+            y = y * y % mod; // Update base to be y^2
             exponent = exponent / 2; // Halve the exponent for next iteration
         }
 
