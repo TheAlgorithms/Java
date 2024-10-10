@@ -1,5 +1,17 @@
 package com.thealgorithms.bitmanipulation;
 
+/**
+ * ClearLeftmostSetBit class contains a method to clear the leftmost set bit of a number.
+ * The leftmost set bit is the leftmost bit that is set to 1 in the binary representation of a number.
+ *
+ * Example:
+ * 26 (11010) -> 10 (01010)
+ * 1 (1) -> 0 (0)
+ * 7 (111) -> 3 (011)
+ * 6 (0110) -> 2 (0010)
+ *
+ * @author Hardvan
+ */
 public class ClearLeftmostSetBit {
 
     /**
