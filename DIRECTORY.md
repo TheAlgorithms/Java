@@ -1001,6 +1001,7 @@
             * [BM25InvertedIndexTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BM25InvertedIndexTest.java)
             * [BreadthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BreadthFirstSearchTest.java)
             * [DepthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/DepthFirstSearchTest.java)
+            * [FibonacciSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/FibonacciSearchTest.java)
             * [HowManyTimesRotatedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/HowManyTimesRotatedTest.java)
             * [KMPSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/KMPSearchTest.java)
             * [OrderAgnosticBinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/OrderAgnosticBinarySearchTest.java)
