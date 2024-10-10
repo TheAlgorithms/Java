@@ -195,10 +195,10 @@ public class ECC {
             BigInteger lambda;
             if (this.equals(other)) {
                 // Special case: point doubling
-                lambda = (this.x.pow(2).multiply(BigInteger.valueOf(3)).add(a)).multiply(this.y.multiply(BigInteger.valueOf(2)).modInverse(p)).mod(p);
+                lambda = this.x.pow(2).multiply(BigInteger.valueOf(3)).add(a).multiply(this.y.multiply(BigInteger.valueOf(2)).modInverse(p)).mod(p);
             } else {
                 // General case: adding two different points
-                lambda = (other.y.subtract(this.y)).multiply(other.x.subtract(this.x).modInverse(p)).mod(p);
+                lambda = other.y.subtract(this.y).multiply(other.x.subtract(this.x).modInverse(p)).mod(p);
             }
 
             BigInteger xr = lambda.pow(2).subtract(this.x).subtract(other.x).mod(p);
