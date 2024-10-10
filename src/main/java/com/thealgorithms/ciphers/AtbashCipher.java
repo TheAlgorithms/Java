@@ -1,3 +1,5 @@
+package com.thealgorithms.ciphers;
+
 /**
 * The Atbash cipher is a simple substitution cipher that replaces each letter
 * in the alphabet with its reverse.
@@ -8,8 +10,6 @@
 * @author https://github.com/Krounosity
 * Learn more: https://en.wikipedia.org/wiki/Atbash
 */
-
-package com.thealgorithms.ciphers;
 
 public class AtbashCipher {
 
