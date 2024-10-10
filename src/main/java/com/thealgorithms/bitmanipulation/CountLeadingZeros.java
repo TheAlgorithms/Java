@@ -10,7 +10,9 @@ package com.thealgorithms.bitmanipulation;
  *
  * @author Hardvan
  */
-public class CountLeadingZeros {
+public final class CountLeadingZeros {
+    private CountLeadingZeros() {
+    }
 
     /**
      * Counts the number of leading zeros in the binary representation of a number.
