@@ -1,9 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.Stream;
 
 /**
  * Binary search is one of the most popular algorithms This class represents
@@ -54,24 +51,5 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
         }
 
         return -1;
-    }
-
-    // Only a main method for test purpose
-    public static void main(String[] args) {
-        Random r = new Random();
-        int size = 100;
-        int maxElement = 100000;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[] ::new);
-
-        // the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
-
-        IterativeBinarySearch search = new IterativeBinarySearch();
-        int atIndex = search.find(integers, shouldBeFound);
-
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
-
-        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }
