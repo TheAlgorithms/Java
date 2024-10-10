@@ -7,15 +7,6 @@ public final class CoinChange {
     private CoinChange() {
     }
 
-    // Driver Program
-    public static void main(String[] args) {
-        int amount = 12;
-        int[] coins = {2, 4, 5};
-
-        System.out.println("Number of combinations of getting change for " + amount + " is: " + change(coins, amount));
-        System.out.println("Minimum number of coins required for amount :" + amount + " is: " + minimumCoins(coins, amount));
-    }
-
     /**
      * This method finds the number of combinations of getting change for a
      * given amount and change coins
@@ -32,8 +23,6 @@ public final class CoinChange {
             for (int i = coin; i < amount + 1; i++) {
                 combinations[i] += combinations[i - coin];
             }
-            // Uncomment the below line to see the state of combinations for each coin
-            // printAmount(combinations);
         }
 
         return combinations[amount];
@@ -65,16 +54,7 @@ public final class CoinChange {
                 }
             }
         }
-        // Uncomment the below line to see the state of combinations for each coin
-        // printAmount(minimumCoins);
-        return minimumCoins[amount];
-    }
 
-    // A basic print method which prints all the contents of the array
-    public static void printAmount(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
+        return minimumCoins[amount];
     }
 }
