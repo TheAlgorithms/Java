@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Solution {
+public class RegexMatcher {
     // Memoization map to store results of subproblems
     private Map<String, Boolean> memo = new HashMap<>();
 
@@ -45,7 +45,7 @@ public class Solution {
         System.out.print("Enter the pattern: ");
         String pattern = scanner.nextLine();
 
-        boolean isMatch = solution.isMatch(inputString, pattern);
+        boolean isMatch = RegexMatcher.isMatch(inputString, pattern);
 
         if (isMatch) {
             System.out.println("The string matches the pattern.");
