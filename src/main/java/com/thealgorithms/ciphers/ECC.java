@@ -17,17 +17,21 @@ import java.security.SecureRandom;
  */
 public class ECC {
 
-    private BigInteger privateKey;   // Private key used for decryption
-    private ECPoint publicKey;       // Public key used for encryption
-    private EllipticCurve curve;     // Elliptic curve used in cryptography
-    private ECPoint basePoint;       // Base point G on the elliptic curve
+    private BigInteger privateKey; // Private key used for decryption
+    private ECPoint publicKey; // Public key used for encryption
+    private EllipticCurve curve; // Elliptic curve used in cryptography
+    private ECPoint basePoint; // Base point G on the elliptic curve
+
+    public ECC(int bits) {
+        generateKeys(bits); // Generates public-private key pair
+    }
 
     public EllipticCurve getCurve() {
         return curve; // Returns the elliptic curve
     }
 
-    public ECC(int bits) {
-        generateKeys(bits); // Generates public-private key pair
+    public void setCurve(EllipticCurve curve) {
+        this.curve = curve;
     }
 
     // Getter and Setter for private key
@@ -39,10 +43,6 @@ public class ECC {
         this.privateKey = privateKey;
     }
 
-    public void setCurve(EllipticCurve curve) {
-        this.curve = curve;
-    }
-
     /**
      * Encrypts the message using the public key.
      * The message is transformed into an ECPoint and encrypted with elliptic curve operations.
@@ -50,18 +50,18 @@ public class ECC {
      * @param message The plain message to be encrypted
      * @return The encrypted message as an array of ECPoints (R, S)
      */
-    public synchronized ECPoint[] encrypt(String message) {
+    public ECPoint[] encrypt(String message) {
         BigInteger m = new BigInteger(message.getBytes()); // Convert message to BigInteger
         SecureRandom r = new SecureRandom(); // Generate random value for k
         BigInteger k = new BigInteger(curve.getFieldSize(), r); // Generate random scalar k
 
-        // Calculate point R = k * G, where G is the base point
-        ECPoint R = basePoint.multiply(k, curve.getP(), curve.getA());
+        // Calculate point r = k * G, where G is the base point
+        ECPoint rPoint = basePoint.multiply(k, curve.getP(), curve.getA());
 
-        // Calculate point S = k * publicKey + encodedMessage
-        ECPoint S = publicKey.multiply(k, curve.getP(), curve.getA()).add(curve.encodeMessage(m), curve.getP(), curve.getA());
+        // Calculate point s = k * publicKey + encodedMessage
+        ECPoint sPoint = publicKey.multiply(k, curve.getP(), curve.getA()).add(curve.encodeMessage(m), curve.getP(), curve.getA());
 
-        return new ECPoint[] { R, S }; // Return encrypted message as two ECPoints
+        return new ECPoint[] {rPoint, sPoint}; // Return encrypted message as two ECPoints
     }
 
     /**
@@ -71,12 +71,12 @@ public class ECC {
      * @param encryptedMessage The encrypted message as an array of ECPoints (R, S)
      * @return The decrypted plain message as a String
      */
-    public synchronized String decrypt(ECPoint[] encryptedMessage) {
-        ECPoint R = encryptedMessage[0]; // First part of ciphertext
-        ECPoint S = encryptedMessage[1]; // Second part of ciphertext
+    public String decrypt(ECPoint[] encryptedMessage) {
+        ECPoint rPoint = encryptedMessage[0]; // First part of ciphertext
+        ECPoint sPoint = encryptedMessage[1]; // Second part of ciphertext
 
-        // Perform decryption: S - R * privateKey
-        ECPoint decodedMessage = S.subtract(R.multiply(privateKey, curve.getP(), curve.getA()), curve.getP(), curve.getA());
+        // Perform decryption: s - r * privateKey
+        ECPoint decodedMessage = sPoint.subtract(rPoint.multiply(privateKey, curve.getP(), curve.getA()), curve.getP(), curve.getA());
 
         BigInteger m = curve.decodeMessage(decodedMessage); // Decode the message from ECPoint
 
@@ -88,7 +88,7 @@ public class ECC {
      *
      * @param bits The size (in bits) of the keys to generate
      */
-    public final synchronized void generateKeys(int bits) {
+    public final void generateKeys(int bits) {
         SecureRandom r = new SecureRandom();
         curve = new EllipticCurve(bits); // Initialize a new elliptic curve
         basePoint = curve.getBasePoint(); // Set the base point G
@@ -104,10 +104,10 @@ public class ECC {
      * Class representing an elliptic curve with the form y^2 = x^3 + ax + b.
      */
     public static class EllipticCurve {
-        private final BigInteger a;        // Coefficient a in the curve equation
-        private final BigInteger b;        // Coefficient b in the curve equation
-        private final BigInteger p;        // Prime number p, defining the finite field
-        private final ECPoint basePoint;   // Base point G on the curve
+        private final BigInteger a; // Coefficient a in the curve equation
+        private final BigInteger b; // Coefficient b in the curve equation
+        private final BigInteger p; // Prime number p, defining the finite field
+        private final ECPoint basePoint; // Base point G on the curve
 
         // Constructor with explicit parameters for a, b, p, and base point
         public EllipticCurve(BigInteger a, BigInteger b, BigInteger p, ECPoint basePoint) {
@@ -121,8 +121,8 @@ public class ECC {
         public EllipticCurve(int bits) {
             SecureRandom r = new SecureRandom();
             this.p = BigInteger.probablePrime(bits, r); // Random prime p
-            this.a = new BigInteger(bits, r);           // Random coefficient a
-            this.b = new BigInteger(bits, r);           // Random coefficient b
+            this.a = new BigInteger(bits, r); // Random coefficient a
+            this.b = new BigInteger(bits, r); // Random coefficient b
             this.basePoint = new ECPoint(BigInteger.valueOf(4), BigInteger.valueOf(8)); // Fixed base point G
         }
 
@@ -160,8 +160,8 @@ public class ECC {
      * Class representing a point on the elliptic curve.
      */
     public static class ECPoint {
-        private final BigInteger x;    // X-coordinate of the point
-        private final BigInteger y;    // Y-coordinate of the point
+        private final BigInteger x; // X-coordinate of the point
+        private final BigInteger y; // Y-coordinate of the point
 
         public ECPoint(BigInteger x, BigInteger y) {
             this.x = x;
@@ -195,12 +195,10 @@ public class ECC {
             BigInteger lambda;
             if (this.equals(other)) {
                 // Special case: point doubling
-                lambda = (this.x.pow(2).multiply(BigInteger.valueOf(3)).add(a))
-                        .multiply(this.y.multiply(BigInteger.valueOf(2)).modInverse(p)).mod(p);
+                lambda = (this.x.pow(2).multiply(BigInteger.valueOf(3)).add(a)).multiply(this.y.multiply(BigInteger.valueOf(2)).modInverse(p)).mod(p);
             } else {
                 // General case: adding two different points
-                lambda = (other.y.subtract(this.y))
-                        .multiply(other.x.subtract(this.x).modInverse(p)).mod(p);
+                lambda = (other.y.subtract(this.y)).multiply(other.x.subtract(this.x).modInverse(p)).mod(p);
             }
 
             BigInteger xr = lambda.pow(2).subtract(this.x).subtract(other.x).mod(p);
@@ -226,13 +224,13 @@ public class ECC {
 
             while (k.signum() > 0) {
                 if (k.testBit(0)) {
-                    result = result.add(addend, p, a); // Add when k's bit is 1
+                    result = result.add(addend, p, a); // Add the current point
                 }
                 addend = addend.add(addend, p, a); // Double the point
-                k = k.shiftRight(1); // Shift k to the right by 1 bit
+                k = k.shiftRight(1); // Divide k by 2
             }
 
-            return result; // Return the resulting point
+            return result;
         }
     }
 }
