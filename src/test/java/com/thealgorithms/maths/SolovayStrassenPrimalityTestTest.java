@@ -1,11 +1,11 @@
 package com.thealgorithms.maths;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the {@link SolovayStrassenPrimalityTest} class.
@@ -17,7 +17,7 @@ class SolovayStrassenPrimalityTestTest {
     private SolovayStrassenPrimalityTest testInstance;
 
     /**
-     * Sets up a new instance of {@link SolovayStrassenPrimalityTest} 
+     * Sets up a new instance of {@link SolovayStrassenPrimalityTest}
      * before each test case, using a fixed random seed for consistency.
      */
     @BeforeEach
@@ -31,10 +31,7 @@ class SolovayStrassenPrimalityTestTest {
      * @return an array of objects containing pairs of n and k values
      */
     static Object[][] primeNumbers() {
-        return new Object[][]{
-                {2, 1}, {3, 1}, {5, 5}, {7, 10},
-                {11, 20}, {13, 10}, {17, 5}, {19, 1}
-        };
+        return new Object[][] {{2, 1}, {3, 1}, {5, 5}, {7, 10}, {11, 20}, {13, 10}, {17, 5}, {19, 1}};
     }
 
     /**
@@ -55,10 +52,7 @@ class SolovayStrassenPrimalityTestTest {
      * @return an array of objects containing pairs of n and k values
      */
     static Object[][] compositeNumbers() {
-        return new Object[][]{
-                {4, 1}, {6, 5}, {8, 10}, {9, 20},
-                {10, 1}, {12, 5}, {15, 10}
-        };
+        return new Object[][] {{4, 1}, {6, 5}, {8, 10}, {9, 20}, {10, 1}, {12, 5}, {15, 10}};
     }
 
     /**
@@ -89,20 +83,18 @@ class SolovayStrassenPrimalityTestTest {
 
         // Test larger primes and composites
         long largePrime = 104729; // Known large prime number
-        long largeComposite = 104730; // Known composite number (even)
-        
+        long largeComposite = 104730; // Composite number (even)
+
         assertTrue(testInstance.solovayStrassen(largePrime, 20), "104729 is a prime number");
         assertFalse(testInstance.solovayStrassen(largeComposite, 20), "104730 is a composite number");
 
         // Test very large numbers (may take longer)
-        long veryLargePrime = 512927357; // Near the upper limit of long
-        long veryLargeComposite = 512927358; // Composite (even)
-        
-        assertTrue(testInstance.solovayStrassen(veryLargePrime, 20), 
-                   Long.MAX_VALUE - 1 + " is likely a prime number.");
-        
-        assertFalse(testInstance.solovayStrassen(veryLargeComposite, 20),
-                    Long.MAX_VALUE + " is a composite number.");
+        long veryLargePrime = 512927357; // Known very large prime number
+        long veryLargeComposite = 512927358; // Composite number (even)
+
+        assertTrue(testInstance.solovayStrassen(veryLargePrime, 20), Long.MAX_VALUE - 1 + " is likely a prime number.");
+
+        assertFalse(testInstance.solovayStrassen(veryLargeComposite, 20), Long.MAX_VALUE + " is a composite number.");
     }
 
     /**
@@ -114,16 +106,14 @@ class SolovayStrassenPrimalityTestTest {
         // Jacobi symbol (a/n) where n is odd and positive
         int jacobi1 = testInstance.calculateJacobi(6, 11); // Should return -1
         int jacobi2 = testInstance.calculateJacobi(5, 11); // Should return +1
-        int jacobi3 = testInstance.calculateJacobi(4, 11); // Should return +1
 
         assertEquals(-1, jacobi1);
         assertEquals(+1, jacobi2);
-        assertEquals(+1, jacobi3);
-        
+
         // Edge case: Jacobi symbol with even n or non-positive n
         int jacobi4 = testInstance.calculateJacobi(5, -11); // Should return 0 (invalid)
-        int jacobi5 = testInstance.calculateJacobi(5, 0);   // Should return 0 (invalid)
-        
+        int jacobi5 = testInstance.calculateJacobi(5, 0); // Should return 0 (invalid)
+
         assertEquals(0, jacobi4);
         assertEquals(0, jacobi5);
     }

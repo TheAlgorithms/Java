@@ -3,10 +3,10 @@ package com.thealgorithms.maths;
 import java.util.Random;
 
 /**
- * This class implements the Solovay-Strassen primality test, 
+ * This class implements the Solovay-Strassen primality test,
  * which is a probabilistic algorithm to determine whether a number is prime.
  * The algorithm is based on properties of the Jacobi symbol and modular exponentiation.
- * 
+ *
  * For more information, go to {@link https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test}
  */
 class SolovayStrassenPrimalityTest {
@@ -46,14 +46,13 @@ class SolovayStrassenPrimalityTest {
 
         while (exponent > 0) {
             // If exponent is odd, multiply the current base (y) with x
-            if (exponent % 2 == 1)
-                x = (x * y) % mod; // Update result with current base
+            if (exponent % 2 == 1) x = (x * y) % mod; // Update result with current base
 
             // Square the base for the next iteration
             y = (y * y) % mod; // Update base to be y^2
             exponent = exponent / 2; // Halve the exponent for next iteration
         }
-        
+
         return x % mod; // Return final result after all iterations
     }
 
@@ -107,19 +106,19 @@ class SolovayStrassenPrimalityTest {
      */
     public boolean solovayStrassen(long num, int iterations) {
         if (num <= 1) return false; // Numbers <=1 are not prime by definition.
-        if (num <= 3) return true;   // Numbers <=3 are prime.
+        if (num <= 3) return true; // Numbers <=3 are prime.
 
         for (int i = 0; i < iterations; i++) {
-            long r = (random.nextLong() & Long.MAX_VALUE); // Generate a non-negative random number.
+            long r = Math.abs(random.nextLong() % (num - 1)) + 2; // Generate a non-negative random number.
             long a = r % (num - 1) + 1; // Choose random 'a' in range [1, n-1].
-            
-            long jacobi = (num + calculateJacobi(a, num)) % num; 
-            // Calculate Jacobi symbol and adjust it modulo n. 
-            
-            long mod = calculateModularExponentiation(a, (num - 1) / 2, num); 
+
+            long jacobi = (num + calculateJacobi(a, num)) % num;
+            // Calculate Jacobi symbol and adjust it modulo n.
+
+            long mod = calculateModularExponentiation(a, (num - 1) / 2, num);
             // Calculate modular exponentiation: a^((n-1)/2) mod n.
 
-            if (jacobi == 0 || mod != jacobi) return false; 
+            if (jacobi == 0 || mod != jacobi) return false;
             // If Jacobi symbol is zero or doesn't match modular result, n is composite.
         }
 
