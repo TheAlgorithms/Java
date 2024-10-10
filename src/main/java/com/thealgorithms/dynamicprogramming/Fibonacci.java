@@ -2,7 +2,6 @@ package com.thealgorithms.dynamicprogramming;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
@@ -11,27 +10,19 @@ public final class Fibonacci {
     private Fibonacci() {
     }
 
-    private static final Map<Integer, Integer> CACHE = new HashMap<>();
-
-    public static void main(String[] args) {
-        // Methods all returning [0, 1, 1, 2, 3, 5, ...] for n = [0, 1, 2, 3, 4, 5, ...]
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        System.out.println(fibMemo(n));
-        System.out.println(fibBotUp(n));
-        System.out.println(fibOptimized(n));
-        System.out.println(fibBinet(n));
-        sc.close();
-    }
+    static final Map<Integer, Integer> CACHE = new HashMap<>();
 
     /**
      * This method finds the nth fibonacci number using memoization technique
      *
      * @param n The input n for which we have to determine the fibonacci number
      * Outputs the nth fibonacci number
+     * @throws IllegalArgumentException if n is negative
      */
     public static int fibMemo(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input n must be non-negative");
+        }
         if (CACHE.containsKey(n)) {
             return CACHE.get(n);
         }
@@ -52,8 +43,12 @@ public final class Fibonacci {
      *
      * @param n The input n for which we have to determine the fibonacci number
      * Outputs the nth fibonacci number
+     * @throws IllegalArgumentException if n is negative
      */
     public static int fibBotUp(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input n must be non-negative");
+        }
         Map<Integer, Integer> fib = new HashMap<>();
 
         for (int i = 0; i <= n; i++) {
@@ -80,9 +75,13 @@ public final class Fibonacci {
      * Time Complexity will be O(n)
      * <p>
      * Whereas , the above functions will take O(n) Space.
+     * @throws IllegalArgumentException if n is negative
      * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
      */
     public static int fibOptimized(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input n must be non-negative");
+        }
         if (n == 0) {
             return 0;
         }
@@ -105,9 +104,14 @@ public final class Fibonacci {
      * = 1.6180339887... Now, let's look at Binet's formula: Sn = Φⁿ–(– Φ⁻ⁿ)/√5 We first calculate
      * the squareRootof5 and phi and store them in variables. Later, we apply Binet's formula to get
      * the required term. Time Complexity will be O(1)
+     * @param n The input n for which we have to determine the fibonacci number
+     * Outputs the nth fibonacci number
+     * @throws IllegalArgumentException if n is negative
      */
-
     public static int fibBinet(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input n must be non-negative");
+        }
         double squareRootOf5 = Math.sqrt(5);
         double phi = (1 + squareRootOf5) / 2;
         return (int) ((Math.pow(phi, n) - Math.pow(-phi, -n)) / squareRootOf5);
