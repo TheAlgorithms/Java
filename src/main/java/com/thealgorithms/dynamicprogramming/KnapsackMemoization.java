@@ -1,6 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -39,7 +38,6 @@ public class KnapsackMemoization {
         if (weights[numOfItems - 1] > capacity) {
             // Store the value of function call stack in table
             dpTable[numOfItems][capacity] = solveKnapsackRecursive(capacity, weights, profits, numOfItems - 1, dpTable);
-            return dpTable[numOfItems][capacity];
         } else {
             // case 1. include the item, if it is less than the capacity
             final int includeCurrentItem = profits[numOfItems - 1] + solveKnapsackRecursive(capacity - weights[numOfItems - 1], weights, profits, numOfItems - 1, dpTable);
@@ -49,7 +47,7 @@ public class KnapsackMemoization {
 
             // Store the value of function call stack in table and return
             dpTable[numOfItems][capacity] = Math.max(includeCurrentItem, excludeCurrentItem);
-            return dpTable[numOfItems][capacity];
         }
+        return dpTable[numOfItems][capacity];
     }
 }
