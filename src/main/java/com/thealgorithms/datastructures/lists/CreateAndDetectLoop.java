@@ -1,63 +1,66 @@
 package com.thealgorithms.datastructures.lists;
 
-import java.util.Scanner;
-
 public final class CreateAndDetectLoop {
+
+    // Node class representing a single node in the linked list
     private CreateAndDetectLoop() {
+        throw new UnsupportedOperationException("Utility class");
     }
+    static final class Node {
+        int data;
+        Node next;
 
-    /**
-     * Prints the linked list.
-     *
-     * @param	head	head node of the linked list
-     */
-    static void printList(Node head) {
-        Node cur = head;
-
-        while (cur != null) {
-            System.out.print(cur.value + " ");
-            cur = cur.next;
+        Node(int data) {
+            this.data = data;
+            next = null;
         }
     }
 
-    /**
-     * Creates a loop in the linked list.
-     *
-     * @see
-     * 	<a href="https://www.geeksforgeeks.org/make-loop-k-th-position-linked-list/">
-     * GeeksForGeeks: Make a loop at K-th position</a>
-     * @param	head	head node of the linked list
-     * @param	k	position of node where loop is to be created
+    // Method to create a loop between two specific positions in the linked list
+    /*
+     *  Test case that shows the Cycle(loop) in a LinkedList
+     *  Let's take this linked list:
+     *  1->2->3->4->5->6
+     *     \______/
+     *   In this linked list we can see there is a cycle.
+     *   we can create loop by calling createLoop function in main after creating LL
+     *   createLoop(head,2,5);
+     *  to detect there is loop or not we can call detectloop function in main
+     *  detectloop(head);
      */
-    static void createLoop(Node head, int k) {
-        if (head == null) {
+
+    static void createLoop(Node head, int position1, int position2) {
+        if (position1 == 0 || position2 == 0) {
             return;
         }
-        Node temp = head;
-        int count = 1;
-        while (count < k) { // Traverse the list till the kth node
-            temp = temp.next;
-            count++;
+
+        Node node1 = head;
+        Node node2 = head;
+
+        int count1 = 1;
+        int count2 = 1;
+        // Traverse to find node at position1
+        while (count1 < position1 && node1 != null) {
+            node1 = node1.next;
+            count1++;
         }
 
-        Node connectedPoint = temp;
-
-        while (temp.next != null) { // Traverse remaining nodes
-            temp = temp.next;
+        // Traverse to find node at position2
+        while (count2 < position2 && node2 != null) {
+            node2 = node2.next;
+            count2++;
         }
 
-        temp.next = connectedPoint; // Connect last node to k-th element
+        // Create a loop by connecting node2's next to node1
+        if (node1 != null && node2 != null) {
+            node2.next = node1;
+        }
     }
-
+    // Method to detect a loop in the linked list
     /**
      * Detects the presence of a loop in the linked list.
      *
-     * @see
-     * 	<a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">
-     * Floyd's Cycle Detection Algorithm</a>
-     *
-     * @param head the head node of the linked list
-     *
+     * @see <a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">Floyd's Cycle Detection Algorithm</a>
      * @return true if loop exists else false
      */
     static boolean detectLoop(Node head) {
@@ -67,40 +70,10 @@ public final class CreateAndDetectLoop {
         while (fptr != null && fptr.next != null) {
             sptr = sptr.next;
             fptr = fptr.next.next;
-            if (fptr == sptr) {
+            if (sptr == fptr) {
                 return true;
             }
         }
-
         return false;
-    }
-
-    public static void main(String[] args) {
-        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter the number of elements to be inserted: ");
-        int n = sc.nextInt();
-        System.out.printf("Enter the %d elements: %n", n);
-        while (n-- > 0) {
-            singlyLinkedList.insert(sc.nextInt());
-        }
-
-        System.out.print("Given list: ");
-        printList(singlyLinkedList.getHead());
-        System.out.println();
-
-        System.out.println("Enter the location to generate loop: ");
-        int k = sc.nextInt();
-
-        createLoop(singlyLinkedList.getHead(), k);
-
-        if (detectLoop(singlyLinkedList.getHead())) {
-            System.out.println("Loop found");
-        } else {
-            System.out.println("No loop found");
-        }
-
-        sc.close();
     }
 }
