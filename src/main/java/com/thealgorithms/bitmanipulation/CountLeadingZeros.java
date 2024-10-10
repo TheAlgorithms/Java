@@ -1,5 +1,15 @@
 package com.thealgorithms.bitmanipulation;
 
+/**
+ * CountLeadingZeros class contains a method to count the number of leading zeros in the binary representation of a number.
+ * The number of leading zeros is the number of zeros before the leftmost 1 bit.
+ * For example, the number 5 has 29 leading zeros in its 32-bit binary representation.
+ * The number 0 has 32 leading zeros.
+ * The number 1 has 31 leading zeros.
+ * The number -1 has no leading zeros.
+ *
+ * @author Hardvan
+ */
 public class CountLeadingZeros {
 
     /**
