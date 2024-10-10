@@ -1,4 +1,5 @@
-/* The Atbash cipher is a simple substitution cipher that replaces each letter
+/**
+* The Atbash cipher is a simple substitution cipher that replaces each letter
 * in the alphabet with its reverse.
 * For example, 'A' becomes 'Z', 'B' becomes 'Y', and so on. It works
 * identically for both uppercase and lowercase letters.

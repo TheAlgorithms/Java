@@ -8,8 +8,7 @@ public class AtbashTest {
 
     @Test
     public void atbashEncrypt() {
-        AtbashCipher normalToEncrypt = new AtbashCipher(
-                "Hello World! 123, @cipher abcDEF ZYX 987 madam zzZ Palindrome!");
+        AtbashCipher normalToEncrypt = new AtbashCipher("Hello World! 123, @cipher abcDEF ZYX 987 madam zzZ Palindrome!");
         String expectedText = "Svool Dliow! 123, @xrksvi zyxWVU ABC 987 nzwzn aaA Kzormwilnv!";
 
         normalToEncrypt.setString(normalToEncrypt.convert());
@@ -19,8 +18,7 @@ public class AtbashTest {
 
     @Test
     public void atbashDecrypt() {
-        AtbashCipher encryptToNormal = new AtbashCipher(
-                "Svool Dliow! 123, @xrksvi zyxWVU ABC 987 nzwzn aaA Kzormwilnv!");
+        AtbashCipher encryptToNormal = new AtbashCipher("Svool Dliow! 123, @xrksvi zyxWVU ABC 987 nzwzn aaA Kzormwilnv!");
         String expectedText = "Hello World! 123, @cipher abcDEF ZYX 987 madam zzZ Palindrome!";
 
         encryptToNormal.setString(encryptToNormal.convert());
