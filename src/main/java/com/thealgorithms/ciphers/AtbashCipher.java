@@ -7,9 +7,7 @@ package com.thealgorithms.ciphers;
  * identically for both uppercase and lowercase letters.
  * It's a symmetric cipher, meaning applying it twice returns the original text.
  * Hence, the encrypting and the decrypting functions are identical
- * 
  * @author https://github.com/Krounosity
- * 
  * Learn more: https://en.wikipedia.org/wiki/Atbash
  */
 
