@@ -20,7 +20,7 @@ public class HigherLowerPowerOfTwoTest {
         assertEquals(16, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(19)); // next lower power of two is 16
         assertEquals(1, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(1)); // next lower power of two is 1
         assertEquals(8, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(9)); // next lower power of two is 8
-        assertEquals(8, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(15));// next lower power of two is 8
+        assertEquals(8, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(15)); // next lower power of two is 8
         assertEquals(8, HigherLowerPowerOfTwo.nextLowerPowerOfTwo(8)); // next lower power of two is 8
     }
 }
