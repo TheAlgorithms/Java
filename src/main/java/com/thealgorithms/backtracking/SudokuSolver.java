@@ -5,29 +5,10 @@ package com.thealgorithms.backtracking;
  * @author Indraneela Doradla (<a href="https://github.com/captiosus1">git-Indraneela Doradla</a>)
  */
 public final class SudokuSolver {
-        private SudokuSolver(){
 
-        }
-//    public static void main(String[] args) {
-//        int[][] board = {
-//                {0, 0, 7, 4, 0, 1, 0, 2, 9},
-//                {8, 0, 0, 0, 0, 0, 0, 0, 7},
-//                {0, 0, 0, 0, 0, 3, 0, 0, 0},
-//                {0, 5, 0, 0, 0, 0, 6, 0, 0},
-//                {0, 0, 8, 2, 0, 7, 0, 1, 0},
-//                {0, 0, 0, 0, 9, 0, 0, 0, 0},
-//                {0, 0, 4, 0, 3, 0, 0, 0, 0},
-//                {0, 0, 0, 0, 8, 0, 0, 9, 0},
-//                {6, 0, 0, 9, 0, 4, 1, 0, 0}
-//        };
-//
-//        if (solveSudoku(board)) {
-//            System.out.println("Sudoku solved:");
-//            printSudoku(board);
-//        } else {
-//            System.out.println("No solution exists for the Sudoku");
-//        }
-//    }
+    private SudokuSolver() {
+        // Private constructor to prevent instantiation
+    }
 
     /**
      * Solves the Sudoku using backtracking
