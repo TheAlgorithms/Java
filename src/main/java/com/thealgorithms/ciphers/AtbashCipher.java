@@ -5,7 +5,6 @@
 * identically for both uppercase and lowercase letters.
 * It's a symmetric cipher, meaning applying it twice returns the original text.
 * Hence, the encrypting and the decrypting functions are identical
-* 
 * @author https://github.com/Krounosity
 * Learn more: https://en.wikipedia.org/wiki/Atbash
 */
@@ -55,14 +54,17 @@ public class AtbashCipher {
         for (char ch : toConvert.toCharArray()) {
 
             // If the character is smallcased.
-            if (isSmall(ch))
+            if (isSmall(ch)) {
                 convertedString.append((char) ('z' - (ch - 'a')));
+            }
             // If the character is capital cased.
-            else if (isCapital(ch))
+            else if (isCapital(ch)) {
                 convertedString.append((char) ('Z' - (ch - 'A')));
+            }
             // Non-alphabetical character.
-            else
+            else {
                 convertedString.append(ch);
+            }
         }
         return convertedString.toString();
     }
