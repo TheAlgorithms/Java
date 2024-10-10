@@ -997,6 +997,7 @@
             * [SRTFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SRTFSchedulingTest.java)
           * searches
             * [BinarySearch2dArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearch2dArrayTest.java)
+            * [BinarySearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BinarySearchTest.java)
             * [BM25InvertedIndexTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BM25InvertedIndexTest.java)
             * [BreadthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/BreadthFirstSearchTest.java)
             * [DepthFirstSearchTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/DepthFirstSearchTest.java)
