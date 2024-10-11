@@ -54,5 +54,4 @@ public class SmallestElementConstantTimeTest {
         sect.pop();
         assertThrows(NoSuchElementException.class, () -> sect.pop());
     }
-
 }
