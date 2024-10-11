@@ -993,6 +993,7 @@
             * [RemoveDuplicateFromStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/RemoveDuplicateFromStringTest.java)
             * [ReverseStackUsingRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ReverseStackUsingRecursionTest.java)
             * [SkylineProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SkylineProblemTest.java)
+            * [SudokuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SudokuTest.java)
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
