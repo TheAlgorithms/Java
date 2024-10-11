@@ -19,7 +19,7 @@ import java.util.List;
  *
  * For more information, please visit {@link https://en.wikipedia.org/wiki/Johnson%27s_algorithm}
  */
-public class JohnsonsAlgorithm {
+public final class JohnsonsAlgorithm {
 
     // Constant representing infinity
     private static final double INF = Double.POSITIVE_INFINITY;
@@ -114,7 +114,7 @@ public class JohnsonsAlgorithm {
             int u = (int) edge[0];
             int v = (int) edge[1];
             double weight = edge[2];
-            if (dist[u] != INF && dist[u] + weight < dist[v]) {
+            if (dist[u] + weight < dist[v]) {
                 throw new IllegalArgumentException("Graph contains a negative weight cycle");
             }
         }
