@@ -103,10 +103,4 @@ public final class BooleanAlgebraGates {
             return !new ORGate().evaluate(inputs); // Equivalent to negation of OR
         }
     }
-
-    /**
-     * Main method to test the generalized Boolean algebra gates.
-     *
-     * @param args Command-line arguments (not used).
-     */
 }
