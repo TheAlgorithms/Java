@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class ADFGVXCipherTest {
 
-	ADFGVXCipher adfgvxCipher = new ADFGVXCipher();
+    ADFGVXCipher adfgvxCipher = new ADFGVXCipher();
 
     @Test
     void adfgvxCipherEncryptTest() {
