@@ -1,8 +1,11 @@
 package com.thealgorithms.stacks;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GreatestElementConstantTimeTest {
 
@@ -32,5 +35,23 @@ public class GreatestElementConstantTimeTest {
         gect.pop();
         gect.pop();
         assertEquals(10, gect.getMaximumElement());
+    }
+
+    @Test
+    public void testNullMax() {
+        gect.push(10);
+        gect.push(20);
+        gect.pop();
+        gect.pop();
+        assertNull(gect.getMaximumElement());
+    }
+
+    @Test
+    public void testBlankHandle() {
+        gect.push(10);
+        gect.push(1);
+        gect.pop();
+        gect.pop();
+        assertThrows(NoSuchElementException.class, () -> gect.pop());
     }
 }

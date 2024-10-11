@@ -35,7 +35,7 @@ public class SmallestElementConstantTime {
         }
 
         mainStack.push(data);
-        if (data < minStack.peek()) {
+        if (!minStack.isEmpty() && data < minStack.peek()) {
             minStack.push(data);
         }
     }
@@ -53,7 +53,7 @@ public class SmallestElementConstantTime {
         }
 
         int ele = mainStack.pop();
-        if (ele == minStack.peek()) {
+        if (!minStack.isEmpty() && ele == minStack.peek()) {
             minStack.pop();
         }
     }
