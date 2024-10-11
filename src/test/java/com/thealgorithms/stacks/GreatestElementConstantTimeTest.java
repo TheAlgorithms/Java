@@ -55,4 +55,16 @@ public class GreatestElementConstantTimeTest {
         constantTime.pop();
         assertThrows(NoSuchElementException.class, () -> constantTime.pop());
     }
+
+    @Test
+    public void testPushPopAfterEmpty() {
+        constantTime.push(10);
+        constantTime.push(1);
+        constantTime.pop();
+        constantTime.pop();
+        constantTime.push(5);
+        assertEquals(5, constantTime.getMaximumElement());
+        constantTime.push(1);
+        assertEquals(5, constantTime.getMaximumElement());
+    }
 }
