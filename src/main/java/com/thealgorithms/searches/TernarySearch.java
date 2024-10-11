@@ -1,9 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.Stream;
 
 /**
  * A ternary search algorithm is a technique in computer science for finding the
@@ -59,24 +56,5 @@ public class TernarySearch implements SearchAlgorithm {
         } /* Search middle (1/3)rd part of the array */ else {
             return ternarySearch(arr, key, mid1, mid2);
         }
-    }
-
-    public static void main(String[] args) {
-        // just generate data
-        Random r = new Random();
-        int size = 100;
-        int maxElement = 100000;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[] ::new);
-
-        // the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
-
-        TernarySearch search = new TernarySearch();
-        int atIndex = search.find(integers, shouldBeFound);
-
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
-
-        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }
