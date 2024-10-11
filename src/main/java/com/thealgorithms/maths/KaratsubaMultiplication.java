@@ -59,8 +59,8 @@ public final class KaratsubaMultiplication {
      */
     public static BigInteger karatsuba(BigInteger x, BigInteger y) {
         // Base case: when numbers are small enough, use direct multiplication
-        // If the number is 64 bits or smaller, switch to the classical method
-        if (x.bitLength() <= 64 || y.bitLength() <= 64) {
+        // If the number is 4 bits or smaller, switch to the classical method
+        if (x.bitLength() <= 4 || y.bitLength() <= 4) {
             return x.multiply(y);
         }
 

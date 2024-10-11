@@ -26,15 +26,16 @@ class KaratsubaMultiplicationTest {
      * @return a stream of arguments for the parameterized test
      */
     static Stream<Arguments> provideTestCases() {
+        BigInteger zero = new BigInteger("0");
         return Stream.of(
             // Test case 1: Two small numbers
             Arguments.of(new BigInteger("1234"), new BigInteger("5678"), new BigInteger("7006652")),
             // Test case 2: Two large numbers
             Arguments.of(new BigInteger("342364"), new BigInteger("393958"), new BigInteger("134877036712")),
             // Test case 3: One number is zero
-            Arguments.of(new BigInteger("0"), new BigInteger("5678"), BigInteger.ZERO),
+            Arguments.of(zero, new BigInteger("5678"), BigInteger.ZERO),
             // Test case 4: Both numbers are zero
-            Arguments.of(new BigInteger("0"), new BigInteger("0"), BigInteger.ZERO),
+            Arguments.of(zero, zero, BigInteger.ZERO),
             // Test case 5: Single-digit numbers
             Arguments.of(new BigInteger("9"), new BigInteger("8"), new BigInteger("72")));
     }
