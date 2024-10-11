@@ -31,7 +31,7 @@ public class ADFGVXCipher {
     }
 
     // Encrypts the plaintext using the ADFGVX cipher
-    private String encrypt(String plaintext, String key) {
+    public String encrypt(String plaintext, String key) {
         plaintext = plaintext.toUpperCase().replaceAll("[^A-Z0-9]", "");
         StringBuilder fractionatedText = new StringBuilder();
 
@@ -45,7 +45,7 @@ public class ADFGVXCipher {
     }
 
     // Decrypts the ciphertext using the ADFGVX cipher
-    private String decrypt(String ciphertext, String key) {
+    public String decrypt(String ciphertext, String key) {
         // Step 1: Reverse the columnar transposition
         String fractionatedText = reverseColumnarTransposition(ciphertext, key);
 
