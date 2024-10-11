@@ -15,7 +15,7 @@ class ADFGVXCipher {
         String keyword = "PRIVACY";
 
         // when
-        String cipherText = hillCipher.encrypt(message, keyword);
+        String cipherText = adfgvxCipher.encrypt(message, keyword);
 
         // then
         assertEquals("DGDDDAGDDGAFADDFDADVDVFAADVX", cipherText);
@@ -28,7 +28,7 @@ class ADFGVXCipher {
         String keyword = "PRIVACY";
 
         // when
-        String plainText = hillCipher.decrypt(cipherText, keyword);
+        String plainText = adfgvxCipher.decrypt(cipherText, keyword);
 
         // then
         assertEquals("ATTACKAT1200AM", plainText);
