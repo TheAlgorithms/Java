@@ -55,10 +55,10 @@ public final class FastExponentiation {
         while (exp > 0) {
             // If exp is odd, multiply the base to the result
             if ((exp & 1) == 1) { // exp & 1 checks if exp is odd
-                result = (result * base) % mod;
+                result = result * base % mod;
             }
             // Square the base and halve the exponent
-            base = (base * base) % mod; // base^2 % mod to avoid overflow
+            base = base * base % mod; // base^2 % mod to avoid overflow
             exp >>= 1; // Right shift exp to divide it by 2
         }
 
