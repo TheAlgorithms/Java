@@ -1,57 +1,59 @@
 package com.thealgorithms.stacks;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class GreatestElementConstantTimeTest {
 
-    private GreatestElementConstantTime gect;
+    private GreatestElementConstantTime constantTime;
 
     @BeforeEach
-    public void setGect() {
-        gect = new GreatestElementConstantTime();
+    public void setConstantTime() {
+        constantTime = new GreatestElementConstantTime();
     }
 
     @Test
     public void testMaxAtFirst() {
-        gect.push(1);
-        gect.push(10);
-        gect.push(20);
-        gect.push(5);
-        assertEquals(20, gect.getMaximumElement());
+        constantTime.push(1);
+        constantTime.push(10);
+        constantTime.push(20);
+        constantTime.push(5);
+        assertEquals(20, constantTime.getMaximumElement());
     }
 
     @Test
     public void testMinTwo() {
-        gect.push(5);
-        gect.push(10);
-        gect.push(20);
-        gect.push(1);
-        assertEquals(20, gect.getMaximumElement());
-        gect.pop();
-        gect.pop();
-        assertEquals(10, gect.getMaximumElement());
+        constantTime.push(5);
+        constantTime.push(10);
+        constantTime.push(20);
+        constantTime.push(1);
+        assertEquals(20, constantTime.getMaximumElement());
+        constantTime.pop();
+        constantTime.pop();
+        assertEquals(10, constantTime.getMaximumElement());
     }
 
     @Test
     public void testNullMax() {
-        gect.push(10);
-        gect.push(20);
-        gect.pop();
-        gect.pop();
-        assertNull(gect.getMaximumElement());
+        constantTime.push(10);
+        constantTime.push(20);
+        constantTime.pop();
+        constantTime.pop();
+        assertNull(constantTime.getMaximumElement());
     }
 
     @Test
     public void testBlankHandle() {
-        gect.push(10);
-        gect.push(1);
-        gect.pop();
-        gect.pop();
-        assertThrows(NoSuchElementException.class, () -> gect.pop());
+        constantTime.push(10);
+        constantTime.push(1);
+        constantTime.pop();
+        constantTime.pop();
+        assertThrows(NoSuchElementException.class, () -> constantTime.pop());
     }
 }
