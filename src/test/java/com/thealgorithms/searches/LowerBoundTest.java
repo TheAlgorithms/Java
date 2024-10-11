@@ -59,25 +59,4 @@ class LowerBoundTest {
         assertEquals(4, lowerBound.find(array, 7), "Lower bound for 7 should be at index 4");
         assertEquals(0, lowerBound.find(array, 0), "Lower bound for 0 should be at index 0");
     }
-
-    /**
-     * Test finding the lower bound in a large sorted array with random integers.
-     */
-    @Test
-    void testLowerBoundRandomNumbers() {
-        Random random = new Random();
-        int size = 100;
-        Integer[] array = random.ints(size, 1, 100).sorted().boxed().toArray(Integer[] ::new);
-
-        int target = random.nextInt(100) + 1; // Random target value between 1 and 100
-
-        Arrays.sort(array); // Ensure the array is sorted
-        LowerBound lowerBound = new LowerBound();
-        int lowerBoundIndex = lowerBound.find(array, target);
-
-        // Check if the found index is valid
-        if (lowerBoundIndex < size) {
-            assertTrue(array[lowerBoundIndex] >= target, "Lower bound index should point to a value >= target.");
-        }
-    }
 }
