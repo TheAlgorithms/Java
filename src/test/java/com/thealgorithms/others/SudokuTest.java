@@ -2,13 +2,14 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
 
 public class SudokuTest {
 
     @Test
     public void testSolvableSudoku() {
-        int[][] board = new int[][]{
+        int[][] board = new int[][] {
                 {3, 0, 6, 5, 0, 8, 4, 0, 0},
                 {5, 2, 0, 0, 0, 0, 0, 0, 0},
                 {0, 8, 7, 0, 0, 0, 0, 3, 1},
@@ -25,7 +26,7 @@ public class SudokuTest {
 
     @Test
     public void testUnsolvableSudoku() {
-        int[][] board = new int[][]{
+        int[][] board = new int[][] {
                 {3, 0, 6, 5, 0, 8, 4, 0, 0},
                 {5, 2, 1, 0, 0, 0, 0, 0, 0},
                 {9, 8, 7, 0, 0, 0, 0, 3, 1},
@@ -42,7 +43,7 @@ public class SudokuTest {
 
     @Test
     public void testEmptySudoku() {
-        int[][] board = new int[][]{
+        int[][] board = new int[][] {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -59,7 +60,7 @@ public class SudokuTest {
 
     @Test
     public void testAlreadySolvedSudoku() {
-        int[][] board = new int[][]{
+        int[][] board = new int[][] {
                 {5, 3, 4, 6, 7, 8, 9, 1, 2},
                 {6, 7, 2, 1, 9, 5, 3, 4, 8},
                 {1, 9, 8, 3, 4, 2, 5, 6, 7},
