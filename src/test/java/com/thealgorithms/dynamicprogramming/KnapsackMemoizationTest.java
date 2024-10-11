@@ -37,7 +37,6 @@ public class KnapsackMemoizationTest {
         int[] weight = {1, 2, 3};
         int[] value = {10, 20, 30};
         int capacity = 0;
-
         assertEquals(0, knapsackMemoization.knapSack(capacity, weight, value, weight.length));
     }
     @Test
@@ -45,8 +44,6 @@ public class KnapsackMemoizationTest {
         int[] weight = {1, 2, 3, 8};
         int[] value = {10, 20, 30, 40};
         int capacity = 50;
-
-
         assertEquals(100, knapsackMemoization.knapSack(capacity, weight, value, weight.length));
     }
 }
