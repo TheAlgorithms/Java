@@ -15,7 +15,8 @@ public class StalinSortTest {
     @MethodSource("provideArraysForStalinSort")
     public void testStalinSort(Comparable[] inputArray, Comparable[] expectedArray) {
         StalinSort stalinSort = new StalinSort();
-        assertArrayEquals(expectedArray, stalinSort.sort(inputArray));
+        // Explicitly call the sort method that accepts arrays
+        assertArrayEquals(expectedArray, stalinSort.sort((Comparable[]) inputArray));
     }
 
     private static Stream<Arguments> provideArraysForStalinSort() {
@@ -61,4 +62,3 @@ public class StalinSortTest {
         });
     }
 }
-
