@@ -1,41 +1,66 @@
 package com.thealgorithms.sorts;
 
-/**
- * @author Anant Jain (https://github.com/anant-jain01)
- * @see https://medium.com/@kaweendra/the-ultimate-sorting-algorithm-6513d6968420
- */
-public class StalinSort implements SortAlgorithm {
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-    public <T extends Comparable<T>> T[] sort(T[] array) {
-        int currentIndex = 0;
+import org.junit.jupiter.api.Test;
 
-        for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(array[currentIndex]) >= 0) {
-                currentIndex++;
-                array[currentIndex] = array[i];
-            }
-        }
+public class StalinSortTest {
 
-        // Create a result array with sorted elements
-        T[] result = (T[]) new Comparable[currentIndex + 1];
-        System.arraycopy(array, 0, result, 0, currentIndex + 1);
+    private StalinSort stalinSort = new StalinSort();
 
-        return result;
+    @Test
+    public void stalinSortEmptyArray() {
+        Integer[] inputArray = {};
+        Integer[] outputArray = stalinSort.sort(inputArray);
+        Integer[] expectedOutput = {};
+        assertArrayEquals(outputArray, expectedOutput);
     }
 
-    // Driver Program
-    public static void main(String[] args) {
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+    @Test
+    public void stalinSortSingleIntegerArray() {
+        Integer[] inputArray = {4};
+        Integer[] outputArray = stalinSort.sort(inputArray);
+        Integer[] expectedOutput = {4};
+        assertArrayEquals(outputArray, expectedOutput);
+    }
 
-        StalinSort stalinSort = new StalinSort();
+    @Test
+    public void stalinSortSingleStringArray() {
+        String[] inputArray = {"s"};
+        String[] outputArray = stalinSort.sort(inputArray);
+        String[] expectedOutput = {"s"};
+        assertArrayEquals(outputArray, expectedOutput);
+    }
 
-        // print a sorted array
-        SortUtils.print(stalinSort.sort(integers));
+    @Test
+    public void stalinSortNonDuplicateIntegerArray() {
+        Integer[] inputArray = {6, -1, 99, 27, -15, 23, -36};
+        Integer[] outputArray = stalinSort.sort(inputArray);
+        Integer[] expectedOutput = {-36, -15, -1, 6, 23, 27, 99};
+        assertArrayEquals(outputArray, expectedOutput);
+    }
 
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
+    @Test
+    public void stalinSortDuplicateIntegerArray() {
+        Integer[] inputArray = {6, -1, 27, -15, 23, 27, -36, 23};
+        Integer[] outputArray = stalinSort.sort(inputArray);
+        Integer[] expectedOutput = {-36, -15, -1, 6, 23, 23, 27, 27};
+        assertArrayEquals(outputArray, expectedOutput);
+    }
 
-        SortUtils.print(stalinSort.sort(strings));
+    @Test
+    public void stalinSortNonDuplicateStringArray() {
+        String[] inputArray = {"s", "b", "k", "a", "d", "c", "h"};
+        String[] outputArray = stalinSort.sort(inputArray);
+        String[] expectedOutput = {"a", "b", "c", "d", "h", "k", "s"};
+        assertArrayEquals(outputArray, expectedOutput);
+    }
+
+    @Test
+    public void stalinSortDuplicateStringArray() {
+        String[] inputArray = {"s", "b", "d", "a", "d", "c", "h", "b"};
+        String[] outputArray = stalinSort.sort(inputArray);
+        String[] expectedOutput = {"a", "b", "b", "c", "d", "d", "h", "s"};
+        assertArrayEquals(outputArray, expectedOutput);
     }
 }
