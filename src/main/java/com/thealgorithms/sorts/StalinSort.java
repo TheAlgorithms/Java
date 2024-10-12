@@ -1,8 +1,5 @@
 package com.thealgorithms.sorts;
-/**
- * @author Anant Jain (https://github.com/anant-jain01)
- * @see https://medium.com/@kaweendra/the-ultimate-sorting-algorithm-6513d6968420
- **/
+
 public class StalinSort implements SortAlgorithm {
     @SuppressWarnings("unchecked")
     public <T extends Comparable<T>> T[] sort(T[] array) {
