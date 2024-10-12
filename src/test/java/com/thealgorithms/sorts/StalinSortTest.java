@@ -56,8 +56,6 @@ public class StalinSortTest {
 
     @Test
     public void testWithMixedDataTypes() {
-        // This test checks the algorithm's capability with mixed types, if applicable.
-        // Note: Ensure that your algorithm is capable of handling mixed types; if not, this test will fail.
         assertThrows(ClassCastException.class, () -> {
             StalinSort stalinSort = new StalinSort();
             stalinSort.sort(new Comparable[] {"a", 1});
