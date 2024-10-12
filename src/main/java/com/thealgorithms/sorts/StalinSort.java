@@ -39,4 +39,3 @@ public class StalinSort implements SortAlgorithm {
         SortUtils.print(stalinSort.sort(strings));
     }
 }
-Footer
