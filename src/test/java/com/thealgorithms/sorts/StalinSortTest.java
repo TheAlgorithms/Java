@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
 import org.junit.jupiter.api.Test;
 
 public class StalinSortTest {
@@ -19,7 +18,7 @@ public class StalinSortTest {
     public void testSortStrings() {
         StalinSort stalinSort = new StalinSort();
         String[] input = {"c", "a", "e", "b", "d"};
-        String[] expected = {"a", "b", "c", "d", "e"};
+        String[] expected = {"c", "e"};
         String[] result = stalinSort.sort(input);
         assertArrayEquals(expected, result);
     }
@@ -28,7 +27,7 @@ public class StalinSortTest {
     public void testSortWithDuplicates() {
         StalinSort stalinSort = new StalinSort();
         Integer[] input = {1, 3, 2, 2, 5, 4};
-        Integer[] expected = {1, 2, 5};
+        Integer[] expected = {1, 3, 5};
         Integer[] result = stalinSort.sort(input);
         assertArrayEquals(expected, result);
     }
