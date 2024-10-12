@@ -1,17 +1,21 @@
 package com.thealgorithms.datastructures.trees;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TrieImpTest {
-    private TrieImp trie;
+public class TrieTest {
+    private static final List<String> WORDS = List.of("Apple", "App", "app", "APPLE");
+
+    private Trie trie;
 
     @BeforeEach
     public void setUp() {
-        trie = new TrieImp();
+        trie = new Trie();
     }
 
     @Test
@@ -66,11 +70,26 @@ public class TrieImpTest {
     }
 
     @Test
-    public void testIsValidWord() {
-        assertTrue(TrieImp.isValid("validword"), "Word should be valid (only lowercase letters).");
-        assertFalse(TrieImp.isValid("InvalidWord"), "Word should be invalid (contains uppercase letters).");
-        assertFalse(TrieImp.isValid("123abc"), "Word should be invalid (contains numbers).");
-        assertFalse(TrieImp.isValid("hello!"), "Word should be invalid (contains special characters).");
-        assertFalse(TrieImp.isValid(""), "Empty string should be invalid.");
+    public void testCountWords() {
+        Trie trie = createTrie();
+        assertEquals(WORDS.size(), trie.countWords(), "Count words should return the correct number of words.");
+    }
+
+    @Test
+    public void testStartsWithPrefix() {
+        Trie trie = createTrie();
+        assertTrue(trie.startsWithPrefix("App"), "Starts with prefix should return true.");
+    }
+
+    @Test
+    public void testCountWordsWithPrefix() {
+        Trie trie = createTrie();
+        assertEquals(2, trie.countWordsWithPrefix("App"), "Count words with prefix should return 2.");
+    }
+
+    private Trie createTrie() {
+        Trie trie = new Trie();
+        WORDS.forEach(trie::insert);
+        return trie;
     }
 }
