@@ -64,12 +64,14 @@ class BooleanAlgebraGatesTest {
     // Helper methods to provide test data for each gate
 
     static Stream<Object[]> provideAndGateTestCases() {
-        return Stream.of(new Object[] {Arrays.asList(Boolean.TRUE, Boolean.TRUE, Boolean.TRUE), Boolean.TRUE}, new Object[] {Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE), Boolean.FALSE}, new Object[] {Arrays.asList(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE), Boolean.FALSE}, new Object[] {Collections.emptyList(), Boolean.TRUE} // AND over no inputs is true
+        return Stream.of(new Object[] {Arrays.asList(Boolean.TRUE, Boolean.TRUE, Boolean.TRUE), Boolean.TRUE}, new Object[] {Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE), Boolean.FALSE}, new Object[] {Arrays.asList(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE), Boolean.FALSE},
+            new Object[] {Collections.emptyList(), Boolean.TRUE} // AND over no inputs is true
         );
     }
 
     static Stream<Object[]> provideOrGateTestCases() {
-        return Stream.of(new Object[] {Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE), Boolean.TRUE}, new Object[] {Arrays.asList(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE), Boolean.FALSE}, new Object[] {Arrays.asList(Boolean.TRUE, Boolean.TRUE, Boolean.TRUE), Boolean.TRUE}, new Object[] {Collections.emptyList(), Boolean.FALSE} // OR over no inputs is false
+        return Stream.of(new Object[] {Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE), Boolean.TRUE}, new Object[] {Arrays.asList(Boolean.FALSE, Boolean.FALSE, Boolean.FALSE), Boolean.FALSE}, new Object[] {Arrays.asList(Boolean.TRUE, Boolean.TRUE, Boolean.TRUE), Boolean.TRUE},
+            new Object[] {Collections.emptyList(), Boolean.FALSE} // OR over no inputs is false
         );
     }
 
