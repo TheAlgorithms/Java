@@ -27,24 +27,29 @@ public class AdaptiveMergeSort implements SortAlgorithm {
             aux[k] = array[k];
         }
 
-        int i = low, j = mid + 1;
+        int i = low;
+        int j = mid + 1;
         for (int k = low; k <= high; k++) {
-            if (i > mid)
+            if (i > mid) {
                 array[k] = aux[j++];
-            else if (j > high)
+            } else if (j > high) {
                 array[k] = aux[i++];
-            else if (aux[j].compareTo(aux[i]) < 0)
+            } else if (aux[j].compareTo(aux[i]) < 0) {
                 array[k] = aux[j++];
-            else
+            } else {
                 array[k] = aux[i++];
+            }
         }
     }
 
     public static void main(String[] args) {
         AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
+        
+        // Integer Input
         Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         SortUtils.print(adaptiveMergeSort.sort(integers));
 
+        // String Input
         String[] strings = {"c", "a", "e", "b", "d"};
         SortUtils.print(adaptiveMergeSort.sort(strings));
     }
