@@ -25,7 +25,10 @@ package com.thealgorithms.bitmanipulation;
  * 
  * After these three steps, the values of a and b are swapped.
  * 
- * <b>Example usage:</b>
+ * For more information, refer to the 
+ * <a href="https://en.wikipedia.org/wiki/XOR_swap_algorithm"> XOR swap algorithm </a>.
+ * 
+ * Example usage:
  * <code>
  * int[] result = SwapNumbersUsingXor.swap(5, 3);<br>
  * System.out.println("After swap: a = " + result[0] + ", b = " + result[1]);
