@@ -9,7 +9,7 @@ public class StalinSortTest {
     public void testSortIntegers() {
         StalinSort stalinSort = new StalinSort();
         Integer[] input = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        Integer[] expected = {4, 23, 78, 231}; 
+        Integer[] expected = {4, 23, 78, 231};
         Integer[] result = stalinSort.sort(input);
         assertArrayEquals(expected, result);
     }
@@ -27,7 +27,7 @@ public class StalinSortTest {
     public void testSortWithDuplicates() {
         StalinSort stalinSort = new StalinSort();
         Integer[] input = {1, 3, 2, 2, 5, 4};
-        Integer[] expected = {1, 2, 5}; 
+        Integer[] expected = {1, 2, 5};
         Integer[] result = stalinSort.sort(input);
         assertArrayEquals(expected, result);
     }
@@ -36,7 +36,7 @@ public class StalinSortTest {
     public void testSortEmptyArray() {
         StalinSort stalinSort = new StalinSort();
         Integer[] input = {};
-        Integer[] expected = {}; 
+        Integer[] expected = {};
         Integer[] result = stalinSort.sort(input);
         assertArrayEquals(expected, result);
     }
