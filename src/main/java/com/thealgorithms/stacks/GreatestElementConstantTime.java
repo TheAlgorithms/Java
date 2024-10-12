@@ -37,7 +37,7 @@ public class GreatestElementConstantTime {
         }
 
         mainStack.push(data);
-        if (!maxStack.isEmpty() && data > maxStack.peek()) {
+        if (data > maxStack.peek()) {
             maxStack.push(data);
         }
     }
@@ -55,7 +55,7 @@ public class GreatestElementConstantTime {
         }
 
         int ele = mainStack.pop();
-        if (!maxStack.isEmpty() && ele == maxStack.peek()) {
+        if (ele == maxStack.peek()) {
             maxStack.pop();
         }
     }
