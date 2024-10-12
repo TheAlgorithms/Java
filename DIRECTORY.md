@@ -803,6 +803,7 @@
               * [LevelOrderTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/LevelOrderTraversalTest.java)
               * [PostOrderTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/PostOrderTraversalTest.java)
               * [PreOrderTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/PreOrderTraversalTest.java)
+              * [QuadTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/QuadTreeTest.java)
               * [SameTreesCheckTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/SameTreesCheckTest.java)
               * [SplayTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/SplayTreeTest.java)
               * [TreapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/TreapTest.java)
