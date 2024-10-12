@@ -30,27 +30,18 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.11.2</version>
+            <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.11.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -68,16 +59,9 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.10.1</version> <!-- Updated version -->
                 <configuration>
                     <source>21</source>
                     <target>21</target>
@@ -89,6 +73,13 @@
                         <arg>-Xlint:-lossy-conversions</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version> <!-- Updated version -->
+                <configuration>
+                    <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                 </configuration>
             </plugin>
             <plugin>
@@ -122,9 +113,9 @@
                 </configuration>
                 <dependencies>
                     <dependency>
-                    <groupId>com.puppycrawl.tools</groupId>
-                    <artifactId>checkstyle</artifactId>
-                    <version>10.18.2</version>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.18.2</version>
                     </dependency>
                 </dependencies>
             </plugin>
