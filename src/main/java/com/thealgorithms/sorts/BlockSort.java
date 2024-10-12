@@ -69,7 +69,6 @@ public class BlockSort implements SortAlgorithm {
                 result[index++] = element; // Add each element from the block to the result array
             }
         }
-
         return result;
     }
 }
