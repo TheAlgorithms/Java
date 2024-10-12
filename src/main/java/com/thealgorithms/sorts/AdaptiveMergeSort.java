@@ -23,9 +23,7 @@ public class AdaptiveMergeSort implements SortAlgorithm {
     }
 
     private <T extends Comparable<T>> void merge(T[] array, T[] aux, int low, int mid, int high) {
-        for (int k = low; k <= high; k++) {
-            aux[k] = array[k];
-        }
+        System.arraycopy(array, low, aux, low, high - low + 1);
 
         int i = low;
         int j = mid + 1;
