@@ -1,12 +1,5 @@
 package com.thealgorithms.sorts;
- 
-     public static void main(String[] args) {
-         AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
--        
-+
-         // Integer Input
-         Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-         SortUtils.print(adaptiveMergeSort.sort(integers));
+
 public class AdaptiveMergeSort implements SortAlgorithm {
 
     @SuppressWarnings("unchecked")
@@ -43,15 +36,14 @@ public class AdaptiveMergeSort implements SortAlgorithm {
         }
     }
 
-    public static void main(String[] args) {
-        AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
-        
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        SortUtils.print(adaptiveMergeSort.sort(integers));
+        public static void main(String[] args) {
+            AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
 
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
-        SortUtils.print(adaptiveMergeSort.sort(strings));
-    }
-}
+
+            Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+            SortUtils.print(adaptiveMergeSort.sort(integers));
+
+            String[] strings = {"c", "a", "e", "b", "d"};
+            SortUtils.print(adaptiveMergeSort.sort(strings));
+         }
+     }
