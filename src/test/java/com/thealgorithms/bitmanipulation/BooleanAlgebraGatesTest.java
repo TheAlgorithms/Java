@@ -1,4 +1,3 @@
-
 package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +34,10 @@ class BooleanAlgebraGatesTest {
     }
 
     @ParameterizedTest(name = "NOTGate Test Case {index}: input={0} -> expected={1}")
-    @CsvSource({"true, false", "false, true"})
+    @CsvSource({
+            "true, false",
+            "false, true"
+    })
     void testNOTGate(boolean input, boolean expected) {
         NOTGate gate = new NOTGate();
         assertEquals(expected, gate.evaluate(input));
