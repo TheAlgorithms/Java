@@ -10,15 +10,18 @@ public class ValidParenthesesTest {
     @Test
     void testOne() {
         assertTrue(ValidParentheses.isValid("()"));
+        assertTrue(ValidParentheses.isValidParentheses("()"));
     }
 
     @Test
     void testTwo() {
         assertTrue(ValidParentheses.isValid("()[]{}"));
+        assertTrue(ValidParentheses.isValidParentheses("()[]{}"));
     }
 
     @Test
     void testThree() {
         assertFalse(ValidParentheses.isValid("(]"));
+        assertFalse(ValidParentheses.isValidParentheses("(]"));
     }
 }
