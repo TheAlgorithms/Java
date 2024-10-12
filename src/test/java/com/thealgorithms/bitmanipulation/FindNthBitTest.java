@@ -30,10 +30,10 @@ public final class FindNthBitTest {
      */
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(Arguments.of(13, 2, 0), // binary: 1101, 2nd bit is 0
-                Arguments.of(13, 3, 1), // binary: 1101, 3rd bit is 1
-                Arguments.of(4, 2, 0), // binary: 100, 2nd bit is 0
-                Arguments.of(4, 3, 1), // binary: 100, 3rd bit is 1
-                Arguments.of(1, 1, 1) // binary: 1, 1st bit is 1
+            Arguments.of(13, 3, 1), // binary: 1101, 3rd bit is 1
+            Arguments.of(4, 2, 0), // binary: 100, 2nd bit is 0
+            Arguments.of(4, 3, 1), // binary: 100, 3rd bit is 1
+            Arguments.of(1, 1, 1) // binary: 1, 1st bit is 1
         );
     }
 }
