@@ -49,3 +49,100 @@ public interface Stack<T> {
      */
     void makeEmpty();
 }
+public class LinkedListStack<T> implements Stack<T> {
+
+    private Node<T> top = null;
+    private int size = 0;
+
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+    @Override
+    public void push(T value) {
+        Node<T> newNode = new Node<>(value);
+        newNode.next = top;
+        top = newNode;
+        size++;
+    }
+
+    @Override
+    public T pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        T value = top.data;
+        top = top.next;
+        size--;
+        return value;
+    }
+
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty");
+        }
+        return top.data;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public void makeEmpty() {
+        top = null;
+        size = 0;
+    }
+
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+        } else {
+            Node<T> temp = top;
+            System.out.print("Stack: ");
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        LinkedListStack<Integer> stack = new LinkedListStack<>();
+        System.out.println("Pushing elements onto the stack:");
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.display();
+
+        System.out.println("\nPopped an element from the stack:");
+        System.out.println(stack.pop());
+        stack.display();
+
+        System.out.println("\nPeeking at the top element: " + stack.peek());
+        System.out.println( stack.size());
+
+        System.out.println("\nPushed element 100 onto the stack:");
+        stack.push(100);
+        stack.display();
+
+        System.out.println("\nMaking the stack empty:");
+        stack.makeEmpty();
+        stack.display();
+    }
+}
+
