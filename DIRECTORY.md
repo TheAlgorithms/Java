@@ -25,9 +25,11 @@
           * bitmanipulation
             * [BinaryPalindromeCheck](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BinaryPalindromeCheck.java)
             * [BitSwap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BitSwap.java)
+            * [BooleanAlgebraGates](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/BooleanAlgebraGates.java)
             * [ClearLeftmostSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ClearLeftmostSetBit.java)
             * [CountLeadingZeros](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/CountLeadingZeros.java)
             * [CountSetBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/CountSetBits.java)
+            * [FindNthBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/FindNthBit.java)
             * [GrayCodeConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/GrayCodeConversion.java)
             * [HammingDistance](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/HammingDistance.java)
             * [HigherLowerPowerOfTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/HigherLowerPowerOfTwo.java)
@@ -659,9 +661,11 @@
           * bitmanipulation
             * [BinaryPalindromeCheckTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BinaryPalindromeCheckTest.java)
             * [BitSwapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BitSwapTest.java)
+            * [BooleanAlgebraGatesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/BooleanAlgebraGatesTest.java)
             * [ClearLeftmostSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ClearLeftmostSetBitTest.java)
             * [CountLeadingZerosTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/CountLeadingZerosTest.java)
             * [CountSetBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/CountSetBitsTest.java)
+            * [FindNthBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/FindNthBitTest.java)
             * [GrayCodeConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/GrayCodeConversionTest.java)
             * [HammingDistanceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/HammingDistanceTest.java)
             * [HigherLowerPowerOfTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/HigherLowerPowerOfTwoTest.java)
