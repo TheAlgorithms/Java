@@ -41,6 +41,6 @@ public final class FindNthBit {
             throw new IllegalArgumentException("Bit position must be greater than or equal to 1.");
         }
         // Shifting the number to the right by (n - 1) positions and checking the last bit
-        return ((num & (1 << (n - 1))) >> (n - 1));
+        return (num & (1 << (n - 1))) >> (n - 1);
     }
 }
