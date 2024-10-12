@@ -35,7 +35,7 @@ package com.thealgorithms.bitmanipulation;
  * </code>
  * </pre>
  */
-public class SwapNumbersUsingXor {
+public final class SwapNumbersUsingXor {
     private SwapNumbersUsingXor() {
     }
     /**
