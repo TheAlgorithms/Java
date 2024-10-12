@@ -64,26 +64,22 @@ class BooleanAlgebraGatesTest {
     // Helper methods to provide test data for each gate
 
     static Stream<Object[]> provideAndGateTestCases() {
-        return Stream.of(
-            new Object[]{Arrays.asList(true, true, true), true},
-            new Object[]{Arrays.asList(true, false, true), false},
-            new Object[]{Arrays.asList(false, false, false), false},
-            new Object[]{Collections.emptyList(), true} // AND over no inputs is true
+        return Stream.of(new Object[]{Arrays.asList(true, true, true), true},new Object[]{Arrays.asList(true, false, true), false},
+        new Object[]{Arrays.asList(false, false, false), false},
+        new Object[]{Collections.emptyList(), true} // AND over no inputs is true
         );
     }
 
     static Stream<Object[]> provideOrGateTestCases() {
-        return Stream.of(
-            new Object[]{Arrays.asList(true, false, false), true},
-            new Object[]{Arrays.asList(false, false, false), false},
-            new Object[]{Arrays.asList(true, true, true), true},
-            new Object[]{Collections.emptyList(), false} // OR over no inputs is false
+        return Stream.of(new Object[]{Arrays.asList(true, false, false), true},
+        new Object[]{Arrays.asList(false, false, false), false},
+        new Object[]{Arrays.asList(true, true, true), true},
+        new Object[]{Collections.emptyList(), false} // OR over no inputs is false
         );
     }
 
     static Stream<Object[]> provideXorGateTestCases() {
-        return Stream.of(
-            new Object[]{Arrays.asList(true, false, true), false}, // XOR over odd true
+        return Stream.of(new Object[]{Arrays.asList(true, false, true), false}, // XOR over odd true
             new Object[]{Arrays.asList(true, false, false), true},  // XOR over single true
             new Object[]{Arrays.asList(false, false, false), false},// XOR over all false
             new Object[]{Arrays.asList(true, true), false}          // XOR over even true
@@ -91,8 +87,7 @@ class BooleanAlgebraGatesTest {
     }
 
     static Stream<Object[]> provideNandGateTestCases() {
-        return Stream.of(
-            new Object[]{Arrays.asList(true, true, true), false},   // NAND of all true is false
+        return Stream.of(new Object[]{Arrays.asList(true, true, true), false},   // NAND of all true is false
             new Object[]{Arrays.asList(true, false), true},         // NAND with one false is true
             new Object[]{Arrays.asList(false, false), true},        // NAND of all false is true
             new Object[]{Collections.emptyList(), false}            // NAND over no inputs is false (negation of AND)
@@ -100,8 +95,7 @@ class BooleanAlgebraGatesTest {
     }
 
     static Stream<Object[]> provideNorGateTestCases() {
-        return Stream.of(
-            new Object[]{Arrays.asList(false, false), true},        // NOR of all false is true
+        return Stream.of(new Object[]{Arrays.asList(false, false),true},        // NOR of all false is true
             new Object[]{Arrays.asList(false, true), false},        // NOR with one true is false
             new Object[]{Arrays.asList(true, true), false},         // NOR of all true is false
             new Object[]{Collections.emptyList(), true}             // NOR over no inputs is true (negation of OR)
