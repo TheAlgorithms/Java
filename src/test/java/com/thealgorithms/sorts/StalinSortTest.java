@@ -1,6 +1,3 @@
-package com.thealgorithms.sorts;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import java.util.stream.Stream;
@@ -9,15 +6,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class StalinSortTest {
+    
     @ParameterizedTest
     @MethodSource("provideArraysForStalinSort")
     void testStalinSort(Integer[] input, Integer[] expected) {
-        assertArrayEquals(expected, new StalinSort().sort(input));
+        StalinSort stalinSort = new StalinSort();
+        Integer[] sortedArray = stalinSort.sort(input);
+        assertArrayEquals(expected, sortedArray);
     }
 
     private static Stream<Arguments> provideArraysForStalinSort() {
-        return Stream.of(
-            arguments(new Integer[] {4}, new Integer[] {4}),
+        return Stream.of(arguments(new Integer[] {4}, new Integer[] {4}),
             arguments(new Integer[] {4, 23, 6, 78, 1, 54, 231, 9, 12}, new Integer[] {4, 23, 78, 231}),
             arguments(new Integer[] {5, 5, 5, 5, 5}, new Integer[] {5, 5, 5, 5, 5}),
             arguments(new Integer[] {1, 2, 3, 4, 5}, new Integer[] {1, 2, 3, 4, 5}),
@@ -30,7 +29,6 @@ class StalinSortTest {
             arguments(new Integer[] {1, 2, 2, 3, 3, 3, 4}, new Integer[] {1, 2, 2, 3, 3, 3, 4}),
             arguments(new Integer[] {Integer.MAX_VALUE, Integer.MIN_VALUE, 0}, new Integer[] {Integer.MAX_VALUE}),
             arguments(new Character[] {'d', 'a', 'c', 'b'}, new Character[] {'d'}),
-            arguments(new Integer[] {100, 200, 150, 300, 250, 400, 350, 450, 500}, new Integer[] {100, 200, 300, 400, 500})
-        );
+            arguments(new Integer[] {100, 200, 150, 300, 250, 400, 350, 450, 500}, new Integer[] {100, 200, 300, 400, 500}));
     }
 }
