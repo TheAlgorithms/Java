@@ -42,7 +42,6 @@ public class AdaptiveMergeSort implements SortAlgorithm {
 
     public static void main(String[] args) {
         AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
-        
         Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
         SortUtils.print(adaptiveMergeSort.sort(integers));
 
