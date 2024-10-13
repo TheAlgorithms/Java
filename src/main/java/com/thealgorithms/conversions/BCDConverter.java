@@ -25,10 +25,26 @@ public final class BCDConverter {
         StringBuilder bcd = new StringBuilder();
         while (number > 0) {
             int digit = number % 10;
-            bcd.insert(0, String.format("%04d", Integer.parseInt(Integer.toString(digit, 2))));
+            bcd.insert(0, String.format("%04d", convertToBinary(digit)));
             number /= 10;
         }
         return bcd.toString();
+    }
+
+    /**
+     * Converts a single digit to its 4-bit binary representation.
+     * @param digit the digit to convert (0-9).
+     * @return the binary representation as an int.
+     */
+    private static int convertToBinary(int digit) {
+        int binary = 0;
+        int multiplier = 1;
+        while (digit > 0) {
+            binary += (digit % 2) * multiplier;
+            digit /= 2;
+            multiplier *= 10;
+        }
+        return binary;
     }
 
     /**
