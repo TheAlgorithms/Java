@@ -24,19 +24,26 @@ public final class BcdConversion {
     /**
      * Converts a BCD (Binary-Coded Decimal) number to binary.
      * <p>Steps:
-     * <p>1. Extract the last 4 bits (one BCD digit) from the BCD number.
-     * <p>2. Multiply the extracted digit by the corresponding power of 10 and add it to the binary number.
-     * <p>3. Shift the BCD number right by 4 bits to process the next BCD digit.
-     * <p>4. Repeat steps 1-3 until the BCD number is zero.
+     * <p>1. Validate the BCD number to ensure all digits are between 0 and 9.
+     * <p>2. Extract the last 4 bits (one BCD digit) from the BCD number.
+     * <p>3. Multiply the extracted digit by the corresponding power of 10 and add it to the binary number.
+     * <p>4. Shift the BCD number right by 4 bits to process the next BCD digit.
+     * <p>5. Repeat steps 1-4 until the BCD number is zero.
      *
      * @param bcd The BCD number.
      * @return The corresponding binary number.
+     * @throws IllegalArgumentException if the BCD number contains invalid digits.
      */
     public static int bcdToBinary(int bcd) {
         int binary = 0;
         int multiplier = 1;
+
+        // Validate BCD digits
         while (bcd > 0) {
             int digit = bcd & 0xF;
+            if (digit > 9) {
+                throw new IllegalArgumentException("Invalid BCD digit: " + digit);
+            }
             binary += digit * multiplier;
             multiplier *= 10;
             bcd >>= 4;
