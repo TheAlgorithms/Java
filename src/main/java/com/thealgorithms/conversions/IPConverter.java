@@ -14,14 +14,24 @@ public final class IPConverter {
     private IPConverter() {
     }
 
+    /**
+     * Converts an IPv4 address to its binary equivalent.
+     * @param ip The IPv4 address to convert.
+     * @return The binary equivalent of the IPv4 address.
+     */
     public static String ipToBinary(String ip) {
         StringBuilder binary = new StringBuilder();
         for (String octet : ip.split("\\.")) {
-            binary.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(octet))))).append(".");
+            binary.append(String.format("%8s", Integer.toBinaryString(Integer.parseInt(octet))).replace(' ', '0')).append(".");
         }
         return binary.substring(0, binary.length() - 1);
     }
 
+    /**
+     * Converts a binary equivalent to an IPv4 address.
+     * @param binary The binary equivalent to convert.
+     * @return The IPv4 address of the binary equivalent.
+     */
     public static String binaryToIP(String binary) {
         StringBuilder ip = new StringBuilder();
         for (String octet : binary.split("\\.")) {
