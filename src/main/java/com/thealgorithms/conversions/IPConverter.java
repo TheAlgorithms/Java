@@ -1,0 +1,32 @@
+package com.thealgorithms.conversions;
+
+/**
+ * Converts an IPv4 address to its binary equivalent and vice-versa.
+ * IP to Binary: Converts an IPv4 address to its binary equivalent.
+ * Example: 127.3.4.5 -> 01111111.00000011.00000100.00000101
+ *
+ * Binary to IP: Converts a binary equivalent to an IPv4 address.
+ * Example: 01111111.00000011.00000100.00000101 -> 127.3.4.5
+ *
+ * @author Hardvan
+ */
+public final class IPConverter {
+    private IPConverter() {
+    }
+
+    public static String ipToBinary(String ip) {
+        StringBuilder binary = new StringBuilder();
+        for (String octet : ip.split("\\.")) {
+            binary.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(octet))))).append(".");
+        }
+        return binary.substring(0, binary.length() - 1);
+    }
+
+    public static String binaryToIP(String binary) {
+        StringBuilder ip = new StringBuilder();
+        for (String octet : binary.split("\\.")) {
+            ip.append(Integer.parseInt(octet, 2)).append(".");
+        }
+        return ip.substring(0, ip.length() - 1);
+    }
+}
