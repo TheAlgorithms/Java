@@ -61,4 +61,10 @@ public class RangeInSortedArrayTest {
         int[] nums = {2, 3, 4, 5};
         assertEquals(0, RangeInSortedArray.getCountLessThan(nums, 1), "Count of elements less than 1 should be 0");
     }
+
+    @Test
+    public void testGetCountLessThanWithEmptyArray() {
+        int[] nums = {};
+        assertEquals(0, RangeInSortedArray.getCountLessThan(nums, 1), "Count of elements less than 1 in an empty array should be 0");
+    }
 }
