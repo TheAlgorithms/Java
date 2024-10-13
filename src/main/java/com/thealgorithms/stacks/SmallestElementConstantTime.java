@@ -12,8 +12,8 @@ import java.util.Stack;
  * Problem: https://www.baeldung.com/cs/stack-constant-time
  */
 public class SmallestElementConstantTime {
-    private Stack<Integer> mainStack;
-    private Stack<Integer> minStack;
+    private Stack<Integer> mainStack; // initialize a mainStack
+    private Stack<Integer> minStack; // initialize a minStack
 
     /**
      * Constructs two empty stacks
