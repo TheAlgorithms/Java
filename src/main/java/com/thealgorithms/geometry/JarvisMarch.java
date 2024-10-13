@@ -98,7 +98,7 @@ public final class JarvisMarch {
                 }
 
                 // Check if candidate makes a left turn or is collinear and farther than nextTarget
-                if ((nextTarget.equals(current) || isLeftTurn(current, nextTarget, candidate)) || (isCollinear(current, nextTarget, candidate) && distance(current, candidate) > distance(current, nextTarget))) {
+                if (nextTarget.equals(current) || isLeftTurn(current, nextTarget, candidate) || (isCollinear(current, nextTarget, candidate) && distance(current, candidate) > distance(current, nextTarget))) {
                     nextTarget = candidate; // Update next target if conditions are met
                 }
             }
