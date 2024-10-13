@@ -1,18 +1,30 @@
 name: Build
-on: [push, pull_request]
+
+on: 
+  push: 
+    branches: [ "main", "develop" ]  # Specify the branches to trigger on
+  pull_request: 
+    branches: [ "main", "develop" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: 21
+          java-version: '21'
           distribution: 'temurin'
+
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+
+      - name: Run tests
+        run: mvn test  # Adding a test step
+
       - name: Upload coverage to codecov (tokenless)
         if: >-
           github.event_name == 'pull_request' &&
@@ -20,6 +32,7 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
+
       - name: Upload coverage to codecov (with token)
         if: >
           github.repository == 'TheAlgorithms/Java' &&
@@ -29,9 +42,12 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
+
       - name: Checkstyle
         run: mvn checkstyle:check
+
       - name: SpotBugs
         run: mvn spotbugs:check
+
       - name: PMD
         run: mvn pmd:check
