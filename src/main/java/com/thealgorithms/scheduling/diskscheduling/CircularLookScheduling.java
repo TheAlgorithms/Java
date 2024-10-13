@@ -48,27 +48,18 @@ public class CircularLookScheduling {
 
         if (movingUp) {
             // Process all requests in the upward direction
-            for (int request : upRequests) {
-                result.add(request);
-            }
+            result.addAll(upRequests);
 
             // Jump to the lowest request and process all requests in the downward direction
-            if (!downRequests.isEmpty()) {
-                result.addAll(downRequests);
-            }
+            result.addAll(downRequests);
         } else {
             // Process all requests in the downward direction (in reverse order)
-            for (int i = downRequests.size() - 1; i >= 0; i--) {
-                result.add(downRequests.get(i));
-            }
+            Collections.reverse(downRequests);
+            result.addAll(downRequests);
 
             // Jump to the highest request and process all requests in the upward direction (in reverse order)
-            if (!upRequests.isEmpty()) {
-                for (int i = upRequests.size() - 1; i >= 0; i--) {
-                    result.add(upRequests.get(i));
-                }
-            }
-
+            Collections.reverse(upRequests);
+            result.addAll(upRequests);
         }
 
         // Update current position to the last processed request
