@@ -46,19 +46,12 @@ public final class LongDivision {
                     quotient++;
                 }
                 answer.append(quotient);
-            } else if (part1 == newDivisor1) {
-                int quotient = 0;
-                while (part1 >= newDivisor1) {
-                    part1 = part1 - newDivisor1;
-                    quotient++;
-                }
-                answer.append(quotient);
             } else if (part1 == 0) {
                 answer.append(0);
             } else if (part1 < newDivisor1) {
                 answer.append(0);
             }
-            if (!(part1 == 0)) {
+            if (part1 != 0) {
                 remainder = String.valueOf(part1);
             } else {
                 remainder = "";
