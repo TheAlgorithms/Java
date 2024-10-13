@@ -39,7 +39,7 @@ public final class LongDivision {
         for (int i = 0; i < dividendString.length(); i++) {
             String partV1 = remainder + "" + dividendString.substring(lastIndex, i + 1);
             long part1 = Long.parseLong(partV1);
-            if (part1 > newDivisor1) {
+            if (part1 >= newDivisor1) {
                 int quotient = 0;
                 while (part1 >= newDivisor1) {
                     part1 = part1 - newDivisor1;
