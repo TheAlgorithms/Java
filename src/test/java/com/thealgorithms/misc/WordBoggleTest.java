@@ -15,7 +15,6 @@ public class WordBoggleTest {
 
     @BeforeEach
     public void setup() {
-        // Initialize the test board and words before each test
         board = new char[][] {
             {'t', 'h', 'i', 's', 'i', 's', 'a'},
             {'s', 'i', 'm', 'p', 'l', 'e', 'x'},
