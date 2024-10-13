@@ -1,16 +1,16 @@
 package com.thealgorithms.scheduling.diskscheduling;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class CircularScanSchedulingTest {
 
     @Test
-    public void testCircularScanScheduling_MovingUp() {
+    public void testCircularScanSchedulingMovingUp() {
         CircularScanScheduling circularScan = new CircularScanScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expectedOrder = Arrays.asList(55, 58, 90, 150, 160, 18, 39);
@@ -24,7 +24,7 @@ public class CircularScanSchedulingTest {
     }
 
     @Test
-    public void testCircularScanScheduling_MovingDown() {
+    public void testCircularScanSchedulingMovingDown() {
         CircularScanScheduling circularScan = new CircularScanScheduling(50, false, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expectedOrder = Arrays.asList(39, 18, 160, 150, 90, 58, 55);
@@ -38,7 +38,7 @@ public class CircularScanSchedulingTest {
     }
 
     @Test
-    public void testCircularScanScheduling_EmptyRequests() {
+    public void testCircularScanSchedulingEmptyRequests() {
         CircularScanScheduling circularScan = new CircularScanScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList();
         List<Integer> expectedOrder = Arrays.asList();

@@ -1,16 +1,16 @@
 package com.thealgorithms.scheduling.diskscheduling;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class LookSchedulingTest {
 
     @Test
-    public void testLookScheduling_MovingUp() {
+    public void testLookSchedulingMovingUp() {
         LookScheduling lookScheduling = new LookScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expected = Arrays.asList(55, 58, 90, 150, 160, 39, 18);
@@ -20,7 +20,7 @@ public class LookSchedulingTest {
     }
 
     @Test
-    public void testLookScheduling_MovingDown() {
+    public void testLookSchedulingMovingDown() {
         LookScheduling lookScheduling = new LookScheduling(50, false, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expected = Arrays.asList(39, 18, 55, 58, 90, 150, 160);
@@ -30,7 +30,7 @@ public class LookSchedulingTest {
     }
 
     @Test
-    public void testLookScheduling_EmptyRequests() {
+    public void testLookSchedulingEmptyRequests() {
         LookScheduling lookScheduling = new LookScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList();
         List<Integer> expected = Arrays.asList();
@@ -40,7 +40,7 @@ public class LookSchedulingTest {
     }
 
     @Test
-    public void testLookScheduling_CurrentPosition() {
+    public void testLookSchedulingCurrentPosition() {
         LookScheduling lookScheduling = new LookScheduling(50, true, 200);
 
         // Testing current position remains unchanged after scheduling.
@@ -48,7 +48,7 @@ public class LookSchedulingTest {
     }
 
     @Test
-    public void testLookScheduling_PrintStatus() {
+    public void testLookSchedulingPrintStatus() {
         LookScheduling lookScheduling = new LookScheduling(50, true, 200);
 
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);

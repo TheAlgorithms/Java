@@ -1,16 +1,16 @@
 package com.thealgorithms.scheduling.diskscheduling;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class ScanSchedulingTest {
 
     @Test
-    public void testScanScheduling_MovingUp() {
+    public void testScanSchedulingMovingUp() {
         ScanScheduling scanScheduling = new ScanScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expected = Arrays.asList(55, 58, 90, 150, 160, 199, 39, 18);
@@ -20,7 +20,7 @@ public class ScanSchedulingTest {
     }
 
     @Test
-    public void testScanScheduling_MovingDown() {
+    public void testScanSchedulingMovingDown() {
         ScanScheduling scanScheduling = new ScanScheduling(50, false, 200);
         List<Integer> requests = Arrays.asList(55, 58, 39, 18, 90, 160, 150);
         List<Integer> expected = Arrays.asList(39, 18, 0, 55, 58, 90, 150, 160);
@@ -30,7 +30,7 @@ public class ScanSchedulingTest {
     }
 
     @Test
-    public void testScanScheduling_EmptyRequests() {
+    public void testScanSchedulingEmptyRequests() {
         ScanScheduling scanScheduling = new ScanScheduling(50, true, 200);
         List<Integer> requests = Arrays.asList();
         List<Integer> expected = Arrays.asList();
