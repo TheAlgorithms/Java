@@ -73,7 +73,6 @@ public class EulerMethodTest {
     public void testEulerFullSingleStep() {
         BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
         ArrayList<double[]> result = EulerMethod.eulerFull(0, 0.1, 0.1, 1, equation);
-
         assertEquals(2, result.size(), "Incorrect number of points for single step.");
         assertArrayEquals(new double[] {0.0, 1.0}, result.get(0), 1e-9, "Incorrect first point.");
         assertArrayEquals(new double[] {0.1, 1.1}, result.get(1), 1e-9, "Incorrect second point.");
