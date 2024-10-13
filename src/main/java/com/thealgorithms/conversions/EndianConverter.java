@@ -9,7 +9,9 @@ package com.thealgorithms.conversions;
  *
  * @author Hardvan
  */
-public class EndianConverter {
+public final class EndianConverter {
+    private EndianConverter() {
+    }
 
     public static int bigToLittleEndian(int value) {
         return Integer.reverseBytes(value);
