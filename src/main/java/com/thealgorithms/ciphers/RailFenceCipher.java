@@ -16,7 +16,9 @@ import java.util.Arrays;
     public String encrypt(String str, int rails) {
 
         // Base case of single rail or rails are more than the number of characters in the string
-        if(rails == 1 || rails>=str.length()) return str;
+        if (rails == 1 || rails >= str.length()){
+            return str;
+        }
 
         // Boolean flag to determine if the movement is downward or upward in the rail matrix.
         boolean down = true;
@@ -24,8 +26,9 @@ import java.util.Arrays;
         char[][] strRail = new char[rails][str.length()];
 
         // Initialize all positions in the rail matrix with a placeholder character ('\n').
-        for (int i = 0; i < rails; i++)
+        for (int i = 0; i < rails; i++){
             Arrays.fill(strRail[i], '\n');
+        }
 
         int row = 0; // Start at the first row
         int col = 0; // Start at the first column
@@ -35,16 +38,23 @@ import java.util.Arrays;
         // Fill the rail matrix with characters from the string based on the rail pattern.
         while (col < str.length()) {
             // Change direction to down when at the first row.
-            if (row == 0) down = true;
+            if (row == 0){
+                down = true;
+            }
             // Change direction to up when at the last row.
-            else if (row == rails - 1) down = false;
+            else if (row == rails - 1){
+                down = false;
+            }
 
             // Place the character in the current position of the rail matrix.
             strRail[row][col] = str.charAt(i);
             col++; // Move to the next column.
 
             // Move to the next row based on the direction.
-            if (down) row++;
+            if (down){
+                row++;
+            }
+
             else row--;
 
             i++;
@@ -57,19 +67,19 @@ import java.util.Arrays;
                 if (ch != '\n') encryptedString.append(ch);
             }
         }
-
         return encryptedString.toString();
     }
-
     // Decrypts the input string using the rail fence cipher method with the given number of rails.
     public String decrypt(String str, int rails) {
 
         // Base case of single rail or rails are more than the number of characters in the string
-        if(rails == 1 || rails>=str.length()) return str;
+        if (rails == 1 || rails >= str.length()){
+            return str;
+        }
         
         // Boolean flag to determine if the movement is downward or upward in the rail matrix.
         boolean down = true;
-        
+
         // Create a 2D array to represent the rails (rows) and the length of the string (columns).
         char[][] strRail = new char[rails][str.length()];
 
@@ -111,17 +121,24 @@ import java.util.Arrays;
 
         while (col < str.length()) {
             // Change direction to down when at the first row.
-            if (row == 0) down = true;
+            if (row == 0){
+                down = true;
+            }
             // Change direction to up when at the last row.
-            else if (row == rails - 1) down = false;
-
+            else if (row == rails - 1){
+                down = false;
+            }
             // Append the character from the rail matrix to the decrypted string.
             decryptedString.append(strRail[row][col]);
             col++; // Move to the next column.
 
             // Move to the next row based on the direction.
-            if (down) row++;
-            else row--;
+            if (down){
+                row++;
+            }
+            else{
+                row--;
+            }
         }
 
         return decryptedString.toString();
