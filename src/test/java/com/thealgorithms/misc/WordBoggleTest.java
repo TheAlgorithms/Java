@@ -31,7 +31,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_FindsAllWords() {
+    public void testBoggleBoardFindsAllWords() {
         List<String> expected = Arrays.asList("this", "is", "a", "simple", "board", "boggle", "NOTRE_PEATED");
         List<String> result = WordBoggle.boggleBoard(board, words);
         assertEquals(expected.size(), result.size());
@@ -39,7 +39,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_NoMatchingWords() {
+    public void testBoggleBoardNoMatchingWords() {
         // Test with words that don't exist on the board
         String[] nonMatchingWords = {"xyz", "hello", "world"};
         List<String> result = WordBoggle.boggleBoard(board, nonMatchingWords);
@@ -47,7 +47,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_EmptyBoard() {
+    public void testBoggleBoardEmptyBoard() {
         // Test with an empty board
         char[][] emptyBoard = new char[0][0];
         List<String> result = WordBoggle.boggleBoard(emptyBoard, words);
@@ -55,7 +55,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_EmptyWordsArray() {
+    public void testBoggleBoardEmptyWordsArray() {
         // Test with an empty words array
         String[] emptyWords = {};
         List<String> result = WordBoggle.boggleBoard(board, emptyWords);
@@ -63,7 +63,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_SingleCharacterWords() {
+    public void testBoggleBoardSingleCharacterWords() {
         // Test with single-character words
         String[] singleCharWords = {"a", "x", "o"};
         List<String> expected = Arrays.asList("a", "o");
@@ -72,7 +72,7 @@ public class WordBoggleTest {
     }
 
     @Test
-    public void testBoggleBoard_DuplicateWordsInInput() {
+    public void testBoggleBoardDuplicateWordsInInput() {
         // Test with duplicate words in the input array
         String[] duplicateWords = {"this", "this", "board", "board"};
         List<String> expected = Arrays.asList("this", "board");
