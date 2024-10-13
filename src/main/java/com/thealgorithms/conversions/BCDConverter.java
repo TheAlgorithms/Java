@@ -40,7 +40,7 @@ public final class BCDConverter {
         int binary = 0;
         int multiplier = 1;
         while (digit > 0) {
-            binary += (digit % 2) * multiplier;
+            binary += digit % 2 * multiplier;
             digit /= 2;
             multiplier *= 10;
         }
