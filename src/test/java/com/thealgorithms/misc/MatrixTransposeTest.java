@@ -53,7 +53,6 @@ public class MatrixTransposeTest {
     @Test
     public void testTransposeNullMatrix() {
         int[][] matrix = null;
-
         assertThrows(NullPointerException.class, () -> MatrixTranspose.transpose(matrix), "Expected IllegalArgumentException for null matrix.");
     }
 }
