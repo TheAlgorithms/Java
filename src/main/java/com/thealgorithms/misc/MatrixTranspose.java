@@ -29,7 +29,7 @@ public final class MatrixTranspose {
      * @return The transposed matrix
      */
     public static int[][] transpose(int[][] matrix) {
-        if (matrix.length == 0 || matrix == null) {
+        if (matrix == null || matrix.length == 0) {
             throw new IllegalArgumentException("Matrix is empty");
         }
 
