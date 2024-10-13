@@ -1,37 +1,35 @@
-import java.util.Scanner;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
-final class Sparse { 
-    private Sparse() {
-    }
+public class SparseTest {
 
-    static double sparsity(int[][] mat, int rows, int cols, int zero) {
-        int size = rows * cols;
-        return (double) zero / size;
-    }
+    @Test
+    public void testSparsity() {
+        // Test case 1: 2x2 matrix with 2 zeroes
+        int[][] mat1 = {
+            {0, 1},
+            {2, 0}
+        };
+        int zeroCount1 = 2;
+        double expectedSparsity1 = 0.5;
+        assertEquals(expectedSparsity1, Sparse.sparsity(mat1, 2, 2, zeroCount1), 0.0001);
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in); // Initialize Scanner
-        try {
-            System.out.println("Enter number of rows in matrix: ");
-            int n = in.nextInt();
-            System.out.println("Enter number of columns in matrix: ");
-            int m = in.nextInt();
+        // Test case 2: 3x3 matrix with 5 zeroes
+        int[][] mat2 = {
+            {0, 1, 0},
+            {2, 0, 3},
+            {0, 0, 0}
+        };
+        int zeroCount2 = 5;
+        double expectedSparsity2 = 5.0 / 9.0;
+        assertEquals(expectedSparsity2, Sparse.sparsity(mat2, 3, 3, zeroCount2), 0.0001);
 
-            int[][] mat = new int[n][m];
-            int count = 0; // Counter for zeros
-
-            System.out.println("Enter Matrix elements: ");
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    mat[i][j] = in.nextInt();
-                    if (mat[i][j] == 0) {
-                        count++; // Increment zero count directly
-                    }
-                }
-            }
-
-            double sparsityValue = sparsity(mat, n, m, count);
-            System.out.println("Sparsity of the matrix is: " + sparsityValue);
-        } 
+        // Test case 3: 1x1 matrix with no zeroes
+        int[][] mat3 = {
+            {5}
+        };
+        int zeroCount3 = 0;
+        double expectedSparsity3 = 0.0;
+        assertEquals(expectedSparsity3, Sparse.sparsity(mat3, 1, 1, zeroCount3), 0.0001);
     }
 }
