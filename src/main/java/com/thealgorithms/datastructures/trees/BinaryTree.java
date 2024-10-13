@@ -281,7 +281,7 @@ public class BinaryTree {
     }
 
     /**
-     * Prints rightChild - leftChild - root
+     * Prints leftChild - rightChild - root
      *
      * @param localRoot The local root of the binary tree
      */
