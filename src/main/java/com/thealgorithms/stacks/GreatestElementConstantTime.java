@@ -9,7 +9,7 @@ import java.util.Stack;
  * While the maxStack stores the maximum elements
  * When we want to get a maximum element, we call the top of the maximum stack
  *
- * Problem: https://leetcode.com/problems/min-stack/
+ * Problem: https://www.baeldung.com/cs/stack-constant-time
  */
 public class GreatestElementConstantTime {
     private Stack<Integer> mainStack;
