@@ -37,7 +37,7 @@ public class CircularScanScheduling {
         if (movingUp) {
             // Moving up: process requests >= current position
             for (int request : sortedRequests) {
-                if (request >= currentPosition) {
+                if (request >= currentPosition && request < diskSize) {
                     result.add(request);
                 }
             }

@@ -52,5 +52,4 @@ public class SSFSchedulingTest {
         int currentPosition = scheduler.getCurrentPosition();
         assertEquals(10, currentPosition, "Current position should be the last request after execution.");
     }
-
- }
+}

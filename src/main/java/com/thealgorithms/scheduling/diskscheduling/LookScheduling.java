@@ -11,11 +11,11 @@ import java.util.List;
  * and once it processes all requests in that direction, it reverses the direction.
  */
 public class LookScheduling {
-
     private final int maxTrack;
     private final int currentPosition;
     private boolean movingUp;
     private int farthestPosition;
+
 
     public LookScheduling(int startPosition, boolean initialDirection, int maxTrack) {
         this.currentPosition = startPosition;
@@ -36,10 +36,12 @@ public class LookScheduling {
 
         // Split requests into two lists based on their position relative to current position
         for (int request : requests) {
-            if (request < currentPosition) {
-                lower.add(request);
-            } else {
-                upper.add(request);
+            if (request >= 0 && request < maxTrack) {
+                if (request < currentPosition) {
+                    lower.add(request);
+                } else {
+                    upper.add(request);
+                }
             }
         }
 
