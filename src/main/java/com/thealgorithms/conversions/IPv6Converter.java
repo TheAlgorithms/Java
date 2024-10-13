@@ -1,6 +1,5 @@
 package com.thealgorithms.conversions;
 
-import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -84,10 +83,14 @@ public final class IPv6Converter {
     private static boolean isValidIpv6MappedIpv4(byte[] ipv6Bytes) {
         // IPv6-mapped IPv4 addresses are 16 bytes long, with the first 10 bytes set to 0,
         // followed by 0xff, 0xff, and the last 4 bytes representing the IPv4 address.
-        if (ipv6Bytes.length != 16) return false;
+        if (ipv6Bytes.length != 16) {
+            return false;
+        }
 
         for (int i = 0; i < 10; i++) {
-            if (ipv6Bytes[i] != 0) return false;
+            if (ipv6Bytes[i] != 0) {
+                return false;
+            }
         }
 
         return ipv6Bytes[10] == (byte) 0xff && ipv6Bytes[11] == (byte) 0xff;

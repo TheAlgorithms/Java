@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class IPv6ConverterTest {
 
     @Test
-    public void testIpv4ToIpv6_ValidInput() throws UnknownHostException {
+    public void testIpv4ToIpv6ValidInput() throws UnknownHostException {
         String ipv4 = getValidIpv4Address();
         String expectedIpv6 = getExpectedIpv6MappedAddress();
         String actualIpv6 = IPv6Converter.ipv4ToIpv6(ipv4);
@@ -17,19 +17,19 @@ public class IPv6ConverterTest {
     }
 
     @Test
-    public void testIpv6ToIpv4_InvalidIPv6MappedAddress() {
+    public void testIpv6ToIpv4InvalidIPv6MappedAddress() {
         String invalidIpv6 = getInvalidIpv6MappedAddress();
         assertThrows(IllegalArgumentException.class, () -> { IPv6Converter.ipv6ToIpv4(invalidIpv6); });
     }
 
     @Test
-    public void testIpv4ToIpv6_InvalidIPv4Address() {
+    public void testIpv4ToIpv6InvalidIPv4Address() {
         String invalidIpv4 = getInvalidIpv4Address();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv4ToIpv6(invalidIpv4); });
     }
 
     @Test
-    public void testIpv6ToIpv4_InvalidFormat() {
+    public void testIpv6ToIpv4InvalidFormat() {
         String invalidIpv6 = getInvalidIpv6Format();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv6ToIpv4(invalidIpv6); });
     }
@@ -41,7 +41,7 @@ public class IPv6ConverterTest {
     }
 
     @Test
-    public void testIpv6ToIpv4_EmptyString() {
+    public void testIpv6ToIpv4EmptyString() {
         String emptyIpv6 = getEmptyString();
         assertThrows(IllegalArgumentException.class, () -> { IPv6Converter.ipv6ToIpv4(emptyIpv6); });
     }
