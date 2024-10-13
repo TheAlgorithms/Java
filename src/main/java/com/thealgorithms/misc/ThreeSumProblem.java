@@ -7,28 +7,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 public class ThreeSumProblem {
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the target sum ");
-        int ts = scan.nextInt();
-        System.out.print("Enter the number of elements in the array ");
-        int n = scan.nextInt();
-        System.out.println("Enter all your array elements:");
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = scan.nextInt();
-        }
-        ThreeSumProblem th = new ThreeSumProblem();
-        System.out.println("Brute Force Approach\n" + (th.bruteForce(arr, ts)) + "\n");
-        System.out.println("Two Pointer Approach\n" + (th.twoPointer(arr, ts)) + "\n");
-        System.out.println("Hashmap Approach\n" + (th.hashMap(arr, ts)));
-        scan.close();
-    }
 
     public List<List<Integer>> bruteForce(int[] nums, int target) {
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
