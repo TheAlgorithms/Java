@@ -17,6 +17,8 @@ package com.thealgorithms.divideandconquer;
  *
  * <p>This class cannot be instantiated, as it is intended to provide
  * only static utility methods.
+ *
+ * @author Hardvan
  */
 public final class CountingInversions {
     private CountingInversions() {
@@ -83,7 +85,7 @@ public final class CountingInversions {
                 arr[k++] = leftArr[i++];
             } else {
                 arr[k++] = rightArr[j++];
-                inversions += (mid + 1) - (left + i);
+                inversions += mid + 1 - left - i;
             }
         }
 
