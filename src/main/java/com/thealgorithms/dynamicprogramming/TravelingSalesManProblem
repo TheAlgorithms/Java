@@ -7,7 +7,7 @@ public class TSP {
     static int[][] memo; 
     static int[][] parent; 
 
-    static int tsp(int i, int mask) {
+    public static int tsp(int i, int mask) {
         if (mask == (1 << n) - 1) {
             return dist[i][0]; 
         }
@@ -31,37 +31,85 @@ public class TSP {
         return memo[i][mask] = res;
     }
 
-    static void printPath(int i, int mask) {
-        System.out.print(i + " → ");
+    public static String printPath(int i, int mask) {
+        StringBuilder path = new StringBuilder(i + " → ");
         if (mask == (1 << n) - 1) { 
-            System.out.println(0); 
-            return;
+            path.append(0); 
+            return path.toString();
         }
         int nextCity = parent[i][mask];
-        printPath(nextCity, mask | (1 << nextCity));
+        path.append(printPath(nextCity, mask | (1 << nextCity)));
+        return path.toString();
     }
 
-    public static void main(String[] args) {
-        n = 4;
-        dist = new int[][] {
+    public static void initialize(int[][] distanceMatrix) {
+        n = distanceMatrix.length;
+        dist = distanceMatrix;
+        memo = new int[n][1 << n];
+        parent = new int[n][1 << n];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
+        }
+    }
+}
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TSPTest {
+
+    @Test
+    public void testTSPWithSmallGraph() {
+        int[][] distanceMatrix = {
             { 0, 10, 15, 20 },
             { 10, 0, 35, 25 },
             { 15, 35, 0, 30 },
             { 20, 25, 30, 0 }
         };
 
-        memo = new int[n][1 << n];
-        parent = new int[n][1 << n];
+        TSP.initialize(distanceMatrix);
 
-        for (int[] row : memo) {
-            Arrays.fill(row, -1);
-        }
+        int minCost = TSP.tsp(0, 1);
 
-        int minCost = tsp(0, 1);
+        assertEquals(80, minCost);
+    }
 
-        System.out.println("The minimum cost of the tour is: " + minCost);
+    @Test
+    public void testOptimalPath() {
+        int[][] distanceMatrix = {
+            { 0, 10, 15, 20 },
+            { 10, 0, 35, 25 },
+            { 15, 35, 0, 30 },
+            { 20, 25, 30, 0 }
+        };
 
-        System.out.print("The optimal path is: ");
-        printPath(0, 1);
+        TSP.initialize(distanceMatrix);
+
+        TSP.tsp(0, 1); 
+
+        String expectedPath = "0 → 1 → 3 → 2 → 0";
+        String actualPath = TSP.printPath(0, 1);
+
+        assertEquals(expectedPath, actualPath);
+    }
+
+    @Test
+    public void testDifferentGraph() {
+        int[][] distanceMatrix = {
+            { 0, 29, 20, 21 },
+            { 29, 0, 15, 17 },
+            { 20, 15, 0, 28 },
+            { 21, 17, 28, 0 }
+        };
+
+        TSP.initialize(distanceMatrix);
+
+        int minCost = TSP.tsp(0, 1);
+        
+        assertEquals(75, minCost);
+
+        String expectedPath = "0 → 2 → 1 → 3 → 0";
+        String actualPath = TSP.printPath(0, 1);
+
+        assertEquals(expectedPath, actualPath);
     }
 }
