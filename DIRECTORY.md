@@ -687,7 +687,7 @@
             * [SingleElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SingleElementTest.java)
             * [SwapAdjacentBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/SwapAdjacentBitsTest.java)
             * [TwosComplementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/TwosComplementTest.java)
-            * [Xs3ConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/Xs3ConversionTest.java)
+            * [Xs3ConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/Xs3ConversionTest.java)
           * ciphers
             * a5
               * [A5CipherTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/ciphers/a5/A5CipherTest.java)
