@@ -4,79 +4,85 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-// Java program to find minimum number of dice
-// throws required to reach last cell from first
-// cell of a given snake and ladder board
+// Java program to find the minimum number of dice throws required to reach
+// the last cell from the first cell of a given snake and ladder board.
 public class SnakeAndLadder {
+
     public static class QueueEntry {
-        //cell number
+        // Cell number
         int cell;
-        //distance of the cell from source cell
+        // Distance of the cell from source cell
         int distance;
     }
 
     public static int getMinimumDiceThrows(int numberOfCells, int[] graph) {
-        //Array to keep track of which cells we have visited, 0 means unvisited, 1 means visited
+        // Array to keep track of visited cells: 0 means unvisited, 1 means visited
         int[] visited = new int[numberOfCells];
         for (int i = 0; i < numberOfCells; i++) {
             visited[i] = 0;
         }
-        //Inserting the source node in queue for BFS
+
+        // Inserting the source node in queue for BFS
         Queue<QueueEntry> queue = new LinkedList<>();
         QueueEntry startingQueueEntry = new QueueEntry();
         startingQueueEntry.cell = 0;
         startingQueueEntry.distance = 0;
         visited[0] = 1;
         queue.add(startingQueueEntry);
-        //Using BFS
-        QueueEntry currentQueueEntry = null;
+
+        // Using BFS
+        QueueEntry currentQueueEntry;
         while (!queue.isEmpty()) {
             currentQueueEntry = queue.remove();
-            //Our goal is to reach the ending cell, so we terminate the loop when it's reached
+
+            // Our goal is to reach the ending cell
             if (currentQueueEntry.cell == numberOfCells - 1) {
-                break;
+                return currentQueueEntry.distance;
             }
+
             for (int i = currentQueueEntry.cell + 1; i <= currentQueueEntry.cell + 6 && i < numberOfCells; i++) {
                 if (visited[i] == 0) {
                     visited[i] = 1;
                     QueueEntry queueEntry = new QueueEntry();
                     queueEntry.distance = currentQueueEntry.distance + 1;
 
-                    if (graph[i] == -1) {
-                        queueEntry.cell = i;
-                    } else {
-                        queueEntry.cell = graph[i];
-                    }
+                    // Check for snakes or ladders
+                    queueEntry.cell = (graph[i] == -1) ? i : graph[i];
                     queue.add(queueEntry);
                 }
             }
         }
-        return currentQueueEntry.distance;
+        return -1; // Return -1 if the last cell is not reachable
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter number of cells in board");
-        int numberOfCells = in.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of cells on the board: ");
+        int numberOfCells = scanner.nextInt();
 
-        //Representation of the board as graph
-        //If there are no snakes or ladders starting from a cell, we mark it as -1
-        //If there is a snake or ladder, we will assign the ending position of the snake and ladder
+        // Representation of the board as a graph
         int[] graph = new int[numberOfCells];
         for (int i = 0; i < numberOfCells; i++) {
             graph[i] = -1;
         }
 
-        System.out.println("Enter number of snakes and ladders");
-        int n = in.nextInt();
-        System.out.println("Enter starting cell and ending cell of snake or ladder");
-        int[] positions = new int[2 * n];
+        System.out.print("Enter the number of snakes and ladders: ");
+        int n = scanner.nextInt();
+        System.out.println("Enter the starting cell and ending cell of each snake or ladder:");
         for (int i = 0; i < n; i++) {
-            positions[2 * i] = in.nextInt();
-            positions[2 * i + 1] = in.nextInt();
-            //If there is a snake or ladder, we assign the ending position of the snake and ladder
-            graph[positions[2 * i] - 1] = positions[2 * i + 1] - 1;
+            int start = scanner.nextInt();
+            int end = scanner.nextInt();
+            // Assign the ending position of the snake or ladder
+            graph[start - 1] = end - 1;
         }
-        System.out.println("Minimum number of dice throws required to end the game is " + getMinimumDiceThrows(numberOfCells, graph));
+
+        int result = getMinimumDiceThrows(numberOfCells, graph);
+        if (result != -1) {
+            System.out.println("Minimum number of dice throws required to end the game is " + result);
+        } else {
+            System.out.println("The last cell is not reachable.");
+        }
+
+        scanner.close();
     }
 }
