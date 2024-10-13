@@ -54,15 +54,21 @@ public final class BcdConversion {
     /**
      * Converts a binary number to BCD (Binary-Coded Decimal).
      * <p>Steps:
-     * <p>1. Extract the last decimal digit from the binary number.
-     * <p>2. Shift the digit to the correct BCD position and add it to the BCD number.
-     * <p>3. Remove the last decimal digit from the binary number.
-     * <p>4. Repeat steps 1-3 until the binary number is zero.
+     * <p>1. Check if the binary number is within the valid range for BCD (0 to 9999).
+     * <p>2. Extract the last decimal digit from the binary number.
+     * <p>3. Shift the digit to the correct BCD position and add it to the BCD number.
+     * <p>4. Remove the last decimal digit from the binary number.
+     * <p>5. Repeat steps 2-4 until the binary number is zero.
      *
      * @param binary The binary number.
      * @return The corresponding BCD number.
+     * @throws IllegalArgumentException if the binary number is greater than 9999.
      */
     public static int binaryToBcd(int binary) {
+        if (binary < 0 || binary > 9999) {
+            throw new IllegalArgumentException("Value out of bounds for BCD representation: " + binary);
+        }
+
         int bcd = 0;
         int shift = 0;
         while (binary > 0) {
