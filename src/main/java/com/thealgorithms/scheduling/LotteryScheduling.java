@@ -53,6 +53,13 @@ public final class LotteryScheduling {
             int winningTicket = random.nextInt(totalTickets) + 1;
             Process selectedProcess = selectProcessByTicket(winningTicket);
 
+            if (selectedProcess == null) {
+                // This should not happen in normal circumstances, but we'll handle it just in case
+                System.err.println("Error: No process selected. Recalculating total tickets.");
+                totalTickets = processes.stream().mapToInt(Process::getTickets).sum();
+                continue;
+            }
+
             selectedProcess.setWaitingTime(currentTime);
             currentTime += selectedProcess.getBurstTime();
             selectedProcess.setTurnAroundTime(selectedProcess.getWaitingTime() + selectedProcess.getBurstTime());
