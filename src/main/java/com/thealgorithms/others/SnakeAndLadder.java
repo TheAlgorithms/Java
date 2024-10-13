@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 // Java program to find the minimum number of dice throws required to reach
 // the last cell from the first cell of a given snake and ladder board.
-public class SnakeAndLadder {
+public final class SnakeAndLadder {
 
     // Private constructor to prevent instantiation
     private SnakeAndLadder() {
