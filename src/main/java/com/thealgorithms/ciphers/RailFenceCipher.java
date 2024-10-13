@@ -9,7 +9,6 @@ import java.util.Arrays;
  * @author https://github.com/Krounosity
  */
 
-
 public class RailFenceCipher {
 
     // Encrypts the input string using the rail fence cipher method with the given number of rails.
@@ -52,8 +51,7 @@ public class RailFenceCipher {
             // Move to the next row based on the direction.
             if (down) {
                 row++;
-            }
-            else {
+            } else {
                 row--;
             }
 
