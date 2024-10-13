@@ -49,10 +49,10 @@ public class MinStackUsingSingleStackTest {
 
         assertEquals(3, minStack.getMin(), "Minimum should be 3");
 
-        minStack.pop();  // Popping 7
+        minStack.pop(); // Popping 7
         assertEquals(3, minStack.getMin(), "Minimum should still be 3");
 
-        minStack.pop();  // Popping 3
+        minStack.pop(); // Popping 3
         assertEquals(5, minStack.getMin(), "Minimum should now be 5");
     }
 
