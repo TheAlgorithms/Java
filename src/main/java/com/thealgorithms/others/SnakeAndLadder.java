@@ -8,6 +8,11 @@ import java.util.Scanner;
 // the last cell from the first cell of a given snake and ladder board.
 public class SnakeAndLadder {
 
+    // Private constructor to prevent instantiation
+    private SnakeAndLadder() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static class QueueEntry {
         // Cell number
         int cell;
