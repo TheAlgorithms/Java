@@ -14,7 +14,7 @@ public class ConvolutionFFTTest {
     private ArrayList<FFT.Complex> createComplexSignal(double[] values) {
         ArrayList<FFT.Complex> signal = new ArrayList<>();
         for (double value : values) {
-            signal.add(new FFT.Complex(value, 0)); // Real part only
+            signal.add(new FFT.Complex(value, 0));
         }
         return signal;
     }
