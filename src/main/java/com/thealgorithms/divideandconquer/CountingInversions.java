@@ -73,7 +73,10 @@ public final class CountingInversions {
         System.arraycopy(arr, left, leftArr, 0, mid - left + 1);
         System.arraycopy(arr, mid + 1, rightArr, 0, right - mid);
 
-        int i = 0, j = 0, k = left, inversions = 0;
+        int i = 0;
+        int j = 0;
+        int k = left;
+        int inversions = 0;
 
         while (i < leftArr.length && j < rightArr.length) {
             if (leftArr[i] <= rightArr[j]) {
