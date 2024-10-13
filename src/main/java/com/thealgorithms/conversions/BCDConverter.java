@@ -25,7 +25,7 @@ public final class BCDConverter {
         StringBuilder bcd = new StringBuilder();
         while (number > 0) {
             int digit = number % 10;
-            bcd.insert(0, String.format("%04d", Integer.parseInt(Integer.toBinaryString(digit))));
+            bcd.insert(0, String.format("%04d", Integer.parseInt(Integer.toString(digit, 2))));
             number /= 10;
         }
         return bcd.toString();
