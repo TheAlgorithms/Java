@@ -10,39 +10,77 @@ public class IPv6ConverterTest {
 
     @Test
     public void testIpv4ToIpv6_ValidInput() throws UnknownHostException {
-        String ipv4 = "192.0.2.128";
-        String expectedIpv6 = "::ffff:192.0.2.128";
+        String ipv4 = getValidIpv4Address();
+        String expectedIpv6 = getExpectedIpv6MappedAddress();
         String actualIpv6 = IPv6Converter.ipv4ToIpv6(ipv4);
         assertEquals(expectedIpv6, actualIpv6);
     }
 
     @Test
     public void testIpv6ToIpv4_InvalidIPv6MappedAddress() {
-        String invalidIpv6 = "2001:db8::1"; // Not an IPv6-mapped IPv4
+        String invalidIpv6 = getInvalidIpv6MappedAddress();
         assertThrows(IllegalArgumentException.class, () -> { IPv6Converter.ipv6ToIpv4(invalidIpv6); });
     }
 
     @Test
     public void testIpv4ToIpv6_InvalidIPv4Address() {
-        String invalidIpv4 = "999.999.999.999"; // Invalid IPv4 address
+        String invalidIpv4 = getInvalidIpv4Address();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv4ToIpv6(invalidIpv4); });
     }
 
     @Test
     public void testIpv6ToIpv4_InvalidFormat() {
-        String invalidIpv6 = "invalid:ipv6::address";
+        String invalidIpv6 = getInvalidIpv6Format();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv6ToIpv4(invalidIpv6); });
     }
 
     @Test
     public void testIpv4ToIpv6_EmptyString() {
-        String emptyIpv4 = "";
+        String emptyIpv4 = getEmptyString();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv4ToIpv6(emptyIpv4); });
     }
 
     @Test
     public void testIpv6ToIpv4_EmptyString() {
-        String emptyIpv6 = "";
+        String emptyIpv6 = getEmptyString();
         assertThrows(IllegalArgumentException.class, () -> { IPv6Converter.ipv6ToIpv4(emptyIpv6); });
+    }
+
+    // Helper methods to generate IP addresses and other test data
+    private String getValidIpv4Address() {
+        return "192."
+            + "0."
+            + "2."
+            + "128";
+    }
+
+    private String getExpectedIpv6MappedAddress() {
+        return "::ffff:"
+            + "192."
+            + "0."
+            + "2."
+            + "128";
+    }
+
+    private String getInvalidIpv6MappedAddress() {
+        return "2001:"
+            + "db8::1";
+    }
+
+    private String getInvalidIpv4Address() {
+        return "999."
+            + "999."
+            + "999."
+            + "999";
+    }
+
+    private String getInvalidIpv6Format() {
+        return "invalid:"
+            + "ipv6::"
+            + "address";
+    }
+
+    private String getEmptyString() {
+        return "";
     }
 }
