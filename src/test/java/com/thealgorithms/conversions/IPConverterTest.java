@@ -11,11 +11,7 @@ public class IPConverterTest {
     }
 
     private static String generateTestBinary(int a, int b, int c, int d) {
-        return String.format("%8s.%8s.%8s.%8s",
-            Integer.toBinaryString(a),
-            Integer.toBinaryString(b),
-            Integer.toBinaryString(c),
-            Integer.toBinaryString(d)).replace(' ', '0');
+        return String.format("%8s.%8s.%8s.%8s", Integer.toBinaryString(a), Integer.toBinaryString(b), Integer.toBinaryString(c), Integer.toBinaryString(d)).replace(' ', '0');
     }
 
     @Test
