@@ -35,10 +35,10 @@ public final class IPConverter {
     private static String octetToBinary(int octet) {
         char[] binary = {'0', '0', '0', '0', '0', '0', '0', '0'};
         for (int i = 7; i >= 0; i--) {
-            if (octet % 2 == 1) {
+            if ((octet & 1) == 1) {
                 binary[i] = '1';
             }
-            octet /= 2;
+            octet >>>= 1;
         }
         return new String(binary);
     }
