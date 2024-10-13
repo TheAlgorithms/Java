@@ -62,18 +62,18 @@ public final class MorseCodeConverter {
      * @return The Morse code representation of the text.
      */
     public static String textToMorse(String text) {
-    StringBuilder morse = new StringBuilder();
-    String[] words = text.toUpperCase().split(" ");
-    for (int i = 0; i < words.length; i++) {
-        for (char c : words[i].toCharArray()) {
-            morse.append(MORSE_MAP.getOrDefault(c, "")).append(" ");
+        StringBuilder morse = new StringBuilder();
+        String[] words = text.toUpperCase().split(" ");
+        for (int i = 0; i < words.length; i++) {
+            for (char c : words[i].toCharArray()) {
+                morse.append(MORSE_MAP.getOrDefault(c, "")).append(" ");
+            }
+            if (i < words.length - 1) {
+                morse.append("| ");
+            }
         }
-        if (i < words.length - 1) {
-            morse.append("| ");
-        }
+        return morse.toString().trim();
     }
-    return morse.toString().trim();
-}
 
     /**
      * Converts Morse code to text.
@@ -83,16 +83,16 @@ public final class MorseCodeConverter {
      * @return The text representation of the Morse code.
      */
     public static String morseToText(String morse) {
-    StringBuilder text = new StringBuilder();
-    String[] words = morse.split(" \\| ");
-    for (int i = 0; i < words.length; i++) {
-        for (String code : words[i].split(" ")) {
-            text.append(REVERSE_MAP.getOrDefault(code, '?'));
+        StringBuilder text = new StringBuilder();
+        String[] words = morse.split(" \\| ");
+        for (int i = 0; i < words.length; i++) {
+            for (String code : words[i].split(" ")) {
+                text.append(REVERSE_MAP.getOrDefault(code, '?'));
+            }
+            if (i < words.length - 1) {
+                text.append(" ");
+            }
         }
-        if (i < words.length - 1) {
-            text.append(" ");
-        }
+        return text.toString();
     }
-    return text.toString();
-}
 }
