@@ -35,7 +35,7 @@ public class IPv6ConverterTest {
     }
 
     @Test
-    public void testIpv4ToIpv6_EmptyString() {
+    public void testIpv4ToIpv6EmptyString() {
         String emptyIpv4 = getEmptyString();
         assertThrows(UnknownHostException.class, () -> { IPv6Converter.ipv4ToIpv6(emptyIpv4); });
     }
