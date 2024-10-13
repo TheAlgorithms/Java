@@ -3,7 +3,9 @@ package com.thealgorithms.others;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-
+// Java program to find minimum number of dice
+// throws required to reach last cell from first
+// cell of a given snake and ladder board
 public class SnakeAndLadder {
     public static class QueueEntry {
         //cell number
@@ -59,7 +61,7 @@ public class SnakeAndLadder {
 
         //Representation of the board as graph
         //If there are no snakes or ladders starting from a cell, we mark it as -1
-        //If there is a snake or ladder, we assign the ending position of the snake and ladder
+        //If there is a snake or ladder, we will assign the ending position of the snake and ladder
         int[] graph = new int[numberOfCells];
         for (int i = 0; i < numberOfCells; i++) {
             graph[i] = -1;
