@@ -3,6 +3,7 @@ package com.thealgorithms.others;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+
 // Java program to find minimum number of dice
 // throws required to reach last cell from first
 // cell of a given snake and ladder board
@@ -27,7 +28,6 @@ public class SnakeAndLadder {
         startingQueueEntry.distance = 0;
         visited[0] = 1;
         queue.add(startingQueueEntry);
-
         //Using BFS
         QueueEntry currentQueueEntry = null;
         while (!queue.isEmpty()) {
@@ -54,7 +54,7 @@ public class SnakeAndLadder {
         return currentQueueEntry.distance;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter number of cells in board");
         int numberOfCells = in.nextInt();
@@ -72,14 +72,11 @@ public class SnakeAndLadder {
         System.out.println("Enter starting cell and ending cell of snake or ladder");
         int[] positions = new int[2 * n];
         for (int i = 0; i < n; i++) {
-            int startingCell = in.nextInt();
-            int endingCell = in.nextInt();
-            positions[2 * i] = startingCell;
-            positions[2 * i + 1] = endingCell;
+            positions[2 * i] = in.nextInt();
+            positions[2 * i + 1] = in.nextInt();
             //If there is a snake or ladder, we assign the ending position of the snake and ladder
-            graph[startingCell - 1] = endingCell - 1;
+            graph[positions[2 * i] - 1] = positions[2 * i + 1] - 1;
         }
         System.out.println("Minimum number of dice throws required to end the game is " + getMinimumDiceThrows(numberOfCells, graph));
-
     }
 }
