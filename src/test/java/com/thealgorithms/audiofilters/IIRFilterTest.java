@@ -80,4 +80,4 @@ public class IIRFilterTest {
         // check if the method runs and returns a result within reasonable bounds
         assertTrue(result >= -1.0 && result <= 1.0, "Processed result should be in the range [-1, 1]");
     }
-}
+} 

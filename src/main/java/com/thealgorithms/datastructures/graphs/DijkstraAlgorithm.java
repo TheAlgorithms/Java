@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class DijkstraAlgorithm {
 
-    private final int vertexCount;
+    private final int vertexCount; 
 
     /**
      * Constructs a Dijkstra object with the given number of vertices.
