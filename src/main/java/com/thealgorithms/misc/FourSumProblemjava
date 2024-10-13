@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Problem Statement:
+ * Given an array nums of n integers, return an array of all the unique quadruplets
+ * [nums[a], nums[b], nums[c], nums[d]] such that:
+ *
+ *   a, b, c, and d are distinct.
+ *   nums[a] + nums[b] + nums[c] + nums[d] == target
+ *
+ */
+
+class fourSum {
+
+    /**
+     * Given an array of integers, return the unique quadruplets that sums target
+     *
+     * @param nums The array of integers used to search the solution
+     * @param target The target that the quadruplet needs to sum
+     * @return A list with the unique quadruplets
+     */
+    public List<List<Integer>> findSolution(int[] nums, int target) {
+        // Creates an empty list to store the result
+        List<List<Integer>> result = new ArrayList<>();
+        int n = nums.length;
+
+        // Generates the quadruplets
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    for (int l = k + 1; l < n; l++) {
+                        // Verifies if the current quadruplet equals target
+                        if (nums[i] + nums[j] + nums[k] + nums[l] == target) {
+                            List<Integer> curr = new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
+                            
+                            // Sorts the current quadruplet
+                            Collections.sort(curr);
+
+                            // Check that the solution has not added before
+                            if (!result.contains(curr)) {
+                                result.add(curr);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+}
