@@ -2,24 +2,42 @@ package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
 
-/*
- *  Fibonacci Search is a popular algorithm which finds the position of a target value in
- *  a sorted array
+/**
+ * FibonacciSearch is a search algorithm that finds the position of a target value in
+ * a sorted array using Fibonacci numbers.
  *
- *  The time complexity for this search algorithm is O(log3(n))
- *  The space complexity for this search algorithm is O(1)
- *  @author Kanakalatha Vemuru (https://github.com/KanakalathaVemuru)
+ * <p>
+ * The time complexity for this search algorithm is O(log n).
+ * The space complexity for this search algorithm is O(1).
+ * </p>
+ *
+ * <p>
+ * Note: This algorithm requires that the input array be sorted.
+ * </p>
  */
 public class FibonacciSearch implements SearchAlgorithm {
 
     /**
-     * @param array is a sorted array where the element has to be searched
-     * @param key is an element whose position has to be found
-     * @param <T> is any comparable type
-     * @return index of the element
+     * Finds the index of the specified key in a sorted array using Fibonacci search.
+     *
+     * @param array The sorted array to search.
+     * @param key The element to search for.
+     * @param <T> The type of the elements in the array, which must be comparable.
+     * @throws IllegalArgumentException if the input array is not sorted or empty, or if the key is null.
+     * @return The index of the key if found, otherwise -1.
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array.length == 0) {
+            throw new IllegalArgumentException("Input array must not be empty.");
+        }
+        if (!isSorted(array)) {
+            throw new IllegalArgumentException("Input array must be sorted.");
+        }
+        if (key == null) {
+            throw new IllegalArgumentException("Key must not be null.");
+        }
+
         int fibMinus1 = 1;
         int fibMinus2 = 0;
         int fibNumber = fibMinus1 + fibMinus2;
@@ -57,15 +75,12 @@ public class FibonacciSearch implements SearchAlgorithm {
         return -1;
     }
 
-    // Driver Program
-    public static void main(String[] args) {
-        Integer[] integers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
-
-        int size = integers.length;
-        Integer targetValue = 128;
-        FibonacciSearch fsearch = new FibonacciSearch();
-        int atIndex = fsearch.find(integers, targetValue);
-
-        System.out.println("Should be found: " + targetValue + ". Found " + integers[atIndex] + " at index " + atIndex + ". An array length " + size);
+    private boolean isSorted(Comparable[] array) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i - 1].compareTo(array[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
