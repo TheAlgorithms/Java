@@ -22,9 +22,25 @@ public final class IPConverter {
     public static String ipToBinary(String ip) {
         StringBuilder binary = new StringBuilder();
         for (String octet : ip.split("\\.")) {
-            binary.append(String.format("%8s", Integer.toBinaryString(Integer.parseInt(octet))).replace(' ', '0')).append(".");
+            binary.append(octetToBinary(Integer.parseInt(octet))).append(".");
         }
         return binary.substring(0, binary.length() - 1);
+    }
+
+    /**
+     * Converts a single octet to its 8-bit binary representation.
+     * @param octet The octet to convert (0-255).
+     * @return The 8-bit binary representation as a String.
+     */
+    private static String octetToBinary(int octet) {
+        char[] binary = {'0', '0', '0', '0', '0', '0', '0', '0'};
+        for (int i = 7; i >= 0; i--) {
+            if (octet % 2 == 1) {
+                binary[i] = '1';
+            }
+            octet /= 2;
+        }
+        return new String(binary);
     }
 
     /**
