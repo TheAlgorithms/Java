@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 
 
- public class RailFenceCipher {
+public class RailFenceCipher {
 
     // Encrypts the input string using the rail fence cipher method with the given number of rails.
     public String encrypt(String str, int rails) {
@@ -26,7 +26,7 @@ import java.util.Arrays;
         char[][] strRail = new char[rails][str.length()];
 
         // Initialize all positions in the rail matrix with a placeholder character ('\n').
-        for (int i = 0; i < rails; i++){
+        for (int i = 0; i < rails; i++) {
             Arrays.fill(strRail[i], '\n');
         }
 
@@ -49,7 +49,6 @@ import java.util.Arrays;
             // Place the character in the current position of the rail matrix.
             strRail[row][col] = str.charAt(i);
             col++; // Move to the next column.
-
             // Move to the next row based on the direction.
             if (down) {
                 row++;
@@ -79,7 +78,6 @@ import java.util.Arrays;
         if (rails == 1 || rails >= str.length()) {
             return str;
         }
-        
         // Boolean flag to determine if the movement is downward or upward in the rail matrix.
         boolean down = true;
 
@@ -91,12 +89,10 @@ import java.util.Arrays;
 
         // Mark the pattern on the rail matrix using '*'.
         while (col < str.length()) {
-            
             // Change direction to down when at the first row.
             if (row == 0) {
                 down = true;
             }
-            
             // Change direction to up when at the last row.
             else if (row == rails - 1) {
                 down = false;
@@ -105,12 +101,10 @@ import java.util.Arrays;
             // Mark the current position in the rail matrix.
             strRail[row][col] = '*';
             col++; // Move to the next column.
-
             // Move to the next row based on the direction.
             if (down) {
                 row++;
-            }
-            else {
+            } else {
                 row--;
             }
         }
@@ -142,12 +136,10 @@ import java.util.Arrays;
             // Append the character from the rail matrix to the decrypted string.
             decryptedString.append(strRail[row][col]);
             col++; // Move to the next column.
-
             // Move to the next row based on the direction.
             if (down) {
                 row++;
-            }
-            else {
+            } else {
                 row--;
             }
         }
