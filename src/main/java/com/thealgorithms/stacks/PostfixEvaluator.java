@@ -1,5 +1,6 @@
 package com.thealgorithms.stacks;
 
+import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -13,6 +14,8 @@ import java.util.Stack;
 public final class PostfixEvaluator {
     private PostfixEvaluator() {
     }
+
+    private static final Set<String> OPERATORS = Set.of("+", "-", "*", "/");
 
     /**
      * Evaluates the given postfix expression and returns the result.
@@ -30,7 +33,7 @@ public final class PostfixEvaluator {
                 int operand1 = stack.pop();
                 stack.push(applyOperator(token, operand1, operand2));
             } else {
-                stack.push(Integer.parseInt(token));
+                stack.push(Integer.valueOf(token));
             }
         }
 
@@ -48,7 +51,7 @@ public final class PostfixEvaluator {
      * @return true if the token is an operator, false otherwise.
      */
     private static boolean isOperator(String token) {
-        return token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/");
+        return OPERATORS.contains(token);
     }
 
     /**
