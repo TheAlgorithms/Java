@@ -64,7 +64,6 @@ public final class TilingProblem {
         int half = size / 2;
         int t = tile++;
 
-
         // Top-left quadrant
         if (missingRow < row + half && missingCol < col + half) {
             fillBoard(half, row, col, missingRow, missingCol);
