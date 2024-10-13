@@ -28,7 +28,7 @@ public final class JarvisMarch {
          * @param x the x-coordinate of the point
          * @param y the y-coordinate of the point
          */
-        public Point(double x, double y) {
+        Point(double x, double y) {
             this.x = x;
             this.y = y;
         }
@@ -43,8 +43,14 @@ public final class JarvisMarch {
 
         @Override
         public boolean equals(Object obj) {
-            if (this == obj) return true; // Check if both references point to the same object
-            if (!(obj instanceof Point)) return false; // Check if obj is an instance of Point
+            // Check if both references point to the same object
+            if (this == obj) {
+                return true;
+            }
+            // Check if obj is an instance of Point
+            if (!(obj instanceof Point)) {
+                return false;
+            }
             Point other = (Point) obj;
             // Compare x and y coordinates for equality
             return Double.compare(x, other.x) == 0 && Double.compare(y, other.y) == 0;
@@ -66,7 +72,9 @@ public final class JarvisMarch {
         List<Point> hull = new ArrayList<>();
 
         // If there are less than 3 points, a convex hull cannot be formed
-        if (points.size() < 3) return hull;
+        if (points.size() < 3) {
+            return hull;
+        }
 
         // Find the leftmost point (with the smallest x-coordinate)
         Point leftmost = points.get(0);
@@ -84,7 +92,10 @@ public final class JarvisMarch {
             Point nextTarget = points.get(0); // Initialize next target as first point in list
 
             for (Point candidate : points) {
-                if (candidate.equals(current)) continue; // Skip current point
+                // Skip current point
+                if (candidate.equals(current)) {
+                    continue;
+                }
 
                 // Check if candidate makes a left turn or is collinear and farther than nextTarget
                 if ((nextTarget.equals(current) || isLeftTurn(current, nextTarget, candidate)) || (isCollinear(current, nextTarget, candidate) && distance(current, candidate) > distance(current, nextTarget))) {
