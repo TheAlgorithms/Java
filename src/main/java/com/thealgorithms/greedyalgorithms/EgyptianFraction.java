@@ -5,7 +5,9 @@ import java.util.List;
 
 /**
  * Class to represent a fraction as a sum of unique unit fractions.
- * Example: 2/3 = 1/2 + 1/6
+ * Example:
+ * 2/3 = 1/2 + 1/6
+ * 3/10 = 1/4 + 1/20
  *
  * @author Hardvan
  */
