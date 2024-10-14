@@ -26,7 +26,7 @@ public final class BandwidthAllocation {
      * 4. If the bandwidth is not enough to allocate the full demand of a user, allocate a fraction of the demand.
      * 5. Return the maximum value achievable.
      *
-     * @param bandwidth total available bandwidth
+     * @param bandwidth total available bandwidth to allocate
      * @param users     array of user demands
      * @param values    array of values associated with each user's demand
      * @return the maximum value achievable
