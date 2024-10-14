@@ -9,7 +9,10 @@ import java.util.*;
  *
  * @author Hardvan
  */
-public class AssignmentUsingBitmask {
+public final class AssignmentUsingBitmask {
+    private AssignmentUsingBitmask() {
+    }
+
     private final int totalTasks;
     private final int[][] dp;
     private final List<List<Integer>> task;
