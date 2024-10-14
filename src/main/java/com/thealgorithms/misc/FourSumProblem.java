@@ -15,6 +15,7 @@ public class FourSumProblem {
     //Space Complexity - O(n)
     public List<List<Integer>> fourSum1(int[] nums, int target) {
         List<List<Integer>> ans = new ArrayList<>();
+        if (nums == null || nums.length < 4) return ans;
         Arrays.sort(nums);
         for(int i = 0; i < nums.length-3; i++) {
             if(i > 0 && nums[i] == nums[i-1]) continue;
