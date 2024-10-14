@@ -1,6 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * The AssignmentUsingBitmask class is used to calculate the total number of ways
