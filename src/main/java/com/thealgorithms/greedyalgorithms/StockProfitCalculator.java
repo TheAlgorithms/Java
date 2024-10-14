@@ -7,7 +7,9 @@ package com.thealgorithms.greedyalgorithms;
  *
  * @author Hardvan
  */
-public class StockProfitCalculator {
+public final class StockProfitCalculator {
+    private StockProfitCalculator() {
+    }
 
     /**
      * Calculates the maximum profit from a list of stock prices.
