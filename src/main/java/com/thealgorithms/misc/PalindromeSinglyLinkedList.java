@@ -1,6 +1,5 @@
 package com.thealgorithms.misc;
 
-import com.thealgorithms.datastructures.lists.SinglyLinkedList;
 import java.util.Stack;
 
 /**
@@ -15,8 +14,8 @@ public final class PalindromeSinglyLinkedList {
     private PalindromeSinglyLinkedList() {
     }
 
-    public static boolean isPalindrome(final SinglyLinkedList linkedList) {
-        Stack<Integer> linkedListValues = new Stack<>();
+    public static boolean isPalindrome(final Iterable linkedList) {
+        var linkedListValues = new Stack<>();
 
         for (final var x : linkedList) {
             linkedListValues.push(x);
