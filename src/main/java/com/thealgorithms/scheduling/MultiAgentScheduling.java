@@ -44,6 +44,12 @@ public class MultiAgentScheduling {
         agents.putIfAbsent(agentName, new Agent(agentName));
     }
 
+    /**
+     * Assign a task to a specific agent.
+     *
+     * @param agentName the name of the agent
+     * @param task      the task to be assigned
+     */
     public void assignTask(String agentName, String task) {
         Agent agent = agents.get(agentName);
         if (agent != null) {
@@ -51,6 +57,11 @@ public class MultiAgentScheduling {
         }
     }
 
+    /**
+     * Get the scheduled tasks for each agent.
+     *
+     * @return a map of agent names to their scheduled tasks
+     */
     public Map<String, List<String>> getScheduledTasks() {
         Map<String, List<String>> schedule = new HashMap<>();
         for (Agent agent : agents.values()) {
