@@ -199,14 +199,20 @@ public final class ConvexHull {
         // Find the first point not equal to lowest
         int k1;
         for (k1 = 1; k1 < points.size(); k1++) {
-            if (!lowest.equals(points.get(k1))) break;
+            if (!lowest.equals(points.get(k1))) {
+                break;
+            }
         }
-        if (k1 == points.size()) return new ArrayList<>(hull);
+        if (k1 == points.size()) {
+            return new ArrayList<>(hull);
+        }
 
         // Find first point not collinear with lowest and points[k1]
         int k2;
         for (k2 = k1 + 1; k2 < points.size(); k2++) {
-            if (orientation(lowest, points.get(k1), points.get(k2)) != 0) break;
+            if (orientation(lowest, points.get(k1), points.get(k2)) != 0) {
+                break;
+            }
         }
         hull.push(points.get(k2 - 1));
 
