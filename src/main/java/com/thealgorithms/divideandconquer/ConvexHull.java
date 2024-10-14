@@ -16,6 +16,8 @@ import java.util.Set;
  * Algorithms provided:
  * 1. Brute-Force Method
  * 2. Recursive (Divide-and-Conquer) Method
+ *
+ * @author Hardvan
  */
 class Point implements Comparable<Point> {
     double x;
