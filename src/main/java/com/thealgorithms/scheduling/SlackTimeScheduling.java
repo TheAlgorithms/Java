@@ -37,10 +37,22 @@ public class SlackTimeScheduling {
         tasks = new ArrayList<>();
     }
 
+    /**
+     * Adds a task to the scheduler.
+     *
+     * @param name          the name of the task
+     * @param executionTime the time required to execute the task
+     * @param deadline      the deadline by which the task must be completed
+     */
     public void addTask(String name, int executionTime, int deadline) {
         tasks.add(new Task(name, executionTime, deadline));
     }
 
+    /**
+     * Schedules the tasks based on their slack time.
+     *
+     * @return the order in which the tasks should be executed
+     */
     public List<String> scheduleTasks() {
         tasks.sort(Comparator.comparingInt(Task::getSlackTime));
         List<String> scheduledOrder = new ArrayList<>();
