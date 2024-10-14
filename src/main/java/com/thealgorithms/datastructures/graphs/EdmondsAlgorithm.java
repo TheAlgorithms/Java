@@ -24,7 +24,7 @@ public class EdmondsAlgorithm {
     public static int maxWeightMatching(List<Edge> edges, int n) {
         // The number of nodes in the graph
         int[] match = new int[n];
-        Arrays.fill(match, -1);  //  no match
+        Arrays.fill(match, -1); // no match
 
         // Perform the algorithm
         int result = 0;
@@ -67,7 +67,7 @@ public class EdmondsAlgorithm {
         edges.add(new Edge(2, 3, 25));
         edges.add(new Edge(3, 4, 30));
 
-        int n = 5;  // Number of vertices
+        int n = 5; // Number of vertices
 
         System.out.println("Maximum weight matching: " + maxWeightMatching(edges, n));
     }
