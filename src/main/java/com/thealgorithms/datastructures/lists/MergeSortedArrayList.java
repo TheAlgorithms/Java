@@ -39,6 +39,10 @@ public final class MergeSortedArrayList {
      * @param listC the result list after merging
      */
     public static void merge(List<Integer> listA, List<Integer> listB, List<Integer> listC) {
+        if (listA == null || listB == null || listC == null) {
+            throw new NullPointerException("Lists cannot be null.");
+        }
+
         int pa = 0;
         /* the index of listA */
         int pb = 0;
