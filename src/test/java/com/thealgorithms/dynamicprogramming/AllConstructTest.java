@@ -10,19 +10,14 @@ public class AllConstructTest {
 
     @Test
     public void testAllConstructBasic() {
-        List<List<String>> expected = Arrays.asList(
-                Arrays.asList("he", "l", "l", "o")
-        );
+        List<List<String>> expected = Arrays.asList(Arrays.asList("he", "l", "l", "o"));
         List<List<String>> result = AllConstruct.allConstruct("hello", Arrays.asList("he", "l", "o"));
         assertEquals(expected, result);
     }
 
     @Test
     public void testAllConstructMultipleWays() {
-        List<List<String>> expected = Arrays.asList(
-                Arrays.asList("purp", "le"),
-                Arrays.asList("p", "ur", "p", "le")
-        );
+        List<List<String>> expected = Arrays.asList(Arrays.asList("purp", "le"), Arrays.asList("p", "ur", "p", "le"));
         List<List<String>> result = AllConstruct.allConstruct("purple", Arrays.asList("purp", "p", "ur", "le", "purpl"));
         assertEquals(expected, result);
     }

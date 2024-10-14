@@ -39,8 +39,7 @@ public class AllConstruct {
         for (int i = 0; i <= target.length(); i++) {
             if (!table.get(i).isEmpty()) {
                 for (String word : wordBank) {
-                    if (i + word.length() <= target.length() &&
-                            target.substring(i, i + word.length()).equals(word)) {
+                    if (i + word.length() <= target.length() && target.substring(i, i + word.length()).equals(word)) {
 
                         List<List<String>> newCombinations = new ArrayList<>();
                         for (List<String> combination : table.get(i)) {
