@@ -33,10 +33,22 @@ public final class AgingScheduling {
         taskQueue = new LinkedList<>();
     }
 
+    /**
+     * Adds a task to the scheduler with a given priority.
+     *
+     * @param name name of the task
+     * @param priority priority of the task
+     */
     public void addTask(String name, int priority) {
         taskQueue.offer(new Task(name, priority));
     }
 
+    /**
+     * Schedules the next task based on the priority and wait time.
+     * The priority of a task increases with the time it spends waiting.
+     *
+     * @return name of the next task to be executed
+     */
     public String scheduleNext() {
         if (taskQueue.isEmpty()) {
             return null;
