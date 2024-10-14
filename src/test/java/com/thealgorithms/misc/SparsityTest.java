@@ -3,64 +3,34 @@ package com.thealgorithms.misc;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class SparsityTest {
 
     private static final double DELTA = 1e-9;
 
-    @Test
-    public void testAllZeroElements() {
-        double[][] mat = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
-        double expectedSparsity = 1.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of a matrix with all zero elements should be 1.0");
+    @ParameterizedTest(name = "Test case {index}: {2}")
+    @MethodSource("provideTestCases")
+    public void testSparsity(double[][] matrix, double expectedSparsity, String description) {
+        assertEquals(expectedSparsity, Sparsity.sparsity(matrix), DELTA, description);
     }
 
-    @Test
-    public void testNoZeroElements() {
-        double[][] mat = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        double expectedSparsity = 0.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of a matrix with no zero elements should be 0.0");
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(Arguments.of(new double[][] {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1.0, "Matrix with all zero elements"), Arguments.of(new double[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, 0.0, "Matrix with no zero elements"),
+            Arguments.of(new double[][] {{0, 2, 0}, {4, 0, 6}, {0, 8, 0}}, 5.0 / 9.0, "Matrix with mixed elements"), Arguments.of(new double[][] {{0, 1, 0, 2, 0}}, 3.0 / 5.0, "Single-row matrix"), Arguments.of(new double[][] {{1}, {0}, {0}, {2}}, 2.0 / 4.0, "Single-column matrix"),
+            Arguments.of(new double[][] {{0}}, 1.0, "Matrix with a single zero element"), Arguments.of(new double[][] {{5}}, 0.0, "Matrix with a single non-zero element"));
     }
 
-    @Test
-    public void testMixedElements() {
-        double[][] mat = {{0, 2, 0}, {4, 0, 6}, {0, 8, 0}};
-        double expectedSparsity = 5.0 / 9.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of the matrix should be 5/9");
+    @ParameterizedTest(name = "Test case {index}: {1}")
+    @MethodSource("provideExceptionTestCases")
+    public void testSparsityExceptions(double[][] matrix, String description) {
+        assertThrows(IllegalArgumentException.class, () -> Sparsity.sparsity(matrix), description);
     }
 
-    @Test
-    public void testSingleRowMatrix() {
-        double[][] mat = {{0, 1, 0, 2, 0}};
-        double expectedSparsity = 3.0 / 5.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of the single-row matrix should be 3/5");
-    }
-
-    @Test
-    public void testSingleColumnMatrix() {
-        double[][] mat = {{1}, {0}, {0}, {2}};
-        double expectedSparsity = 2.0 / 4.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of the single-column matrix should be 2/4");
-    }
-
-    @Test
-    public void testEmptyMatrix() {
-        double[][] mat = {};
-        assertThrows(IllegalArgumentException.class, () -> Sparsity.sparsity(mat), "Sparsity of an empty matrix should throw an IllegalArgumentException");
-    }
-
-    @Test
-    public void testMatrixWithSingleElementZero() {
-        double[][] mat = {{0}};
-        double expectedSparsity = 1.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of a matrix with a single zero element should be 1.0");
-    }
-
-    @Test
-    public void testMatrixWithSingleElementNonZero() {
-        double[][] mat = {{5}};
-        double expectedSparsity = 0.0;
-        assertEquals(expectedSparsity, Sparsity.sparsity(mat), DELTA, "Sparsity of a matrix with a single non-zero element should be 0.0");
+    private static Stream<Arguments> provideExceptionTestCases() {
+        return Stream.of(Arguments.of(new double[][] {}, "Empty matrix should throw IllegalArgumentException"));
     }
 }
