@@ -10,7 +10,9 @@ package com.thealgorithms.dynamicprogramming;
  *
  * The task is to determine whether it is possible to make string `a` equal to string `b`.
  */
-public class Abbreviation {
+public final class Abbreviation {
+    private Abbreviation() {
+    }
 
     /**
      * Determines if string `a` can be transformed into string `b` by capitalizing
