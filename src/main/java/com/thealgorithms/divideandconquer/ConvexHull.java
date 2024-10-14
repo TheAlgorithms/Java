@@ -105,7 +105,7 @@ public final class ConvexHull {
      *         negative if in clockwise order; and 0 if they are collinear.
      */
     private static double det(Point a, Point b, Point c) {
-        return (a.x * b.y + b.x * c.y + c.x * a.y) - (a.y * b.x + b.y * c.x + c.y * a.x);
+        return a.x * b.y + b.x * c.y + c.x * a.y - (a.y * b.x + b.y * c.x + c.y * a.x);
     }
 
     /**
