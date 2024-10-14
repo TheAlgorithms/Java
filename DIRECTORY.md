@@ -251,9 +251,11 @@
           * divideandconquer
             * [BinaryExponentiation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/BinaryExponentiation.java)
             * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java)
+            * [CountingInversions](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/CountingInversions.java)
             * [MedianOfTwoSortedArrays](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArrays.java)
             * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/SkylineAlgorithm.java)
             * [StrassenMatrixMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplication.java)
+            * [TilingProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/TilingProblem.java)
           * dynamicprogramming
             * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoardPath.java)
             * [BoundaryFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoundaryFill.java)
@@ -504,6 +506,7 @@
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
             * [HighestResponseRatioNextScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/HighestResponseRatioNextScheduling.java)
             * [JobSchedulingWithDeadline](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/JobSchedulingWithDeadline.java)
+            * [LotteryScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/LotteryScheduling.java)
             * [MLFQScheduler](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/MLFQScheduler.java)
             * [NonPreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/NonPreemptivePriorityScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
@@ -832,9 +835,11 @@
           * divideandconquer
             * [BinaryExponentiationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/BinaryExponentiationTest.java)
             * [ClosestPairTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/ClosestPairTest.java)
+            * [CountingInversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/CountingInversionsTest.java)
             * [MedianOfTwoSortedArraysTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArraysTest.java)
             * [SkylineAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/SkylineAlgorithmTest.java)
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
+            * [TilingProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/TilingProblemTest.java)
           * dynamicprogramming
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
             * [BoundaryFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoundaryFillTest.java)
@@ -1039,6 +1044,7 @@
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
             * [HighestResponseRatioNextSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/HighestResponseRatioNextSchedulingTest.java)
             * [JobSchedulingWithDeadlineTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/JobSchedulingWithDeadlineTest.java)
+            * [LotterySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/LotterySchedulingTest.java)
             * [MLFQSchedulerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/MLFQSchedulerTest.java)
             * [NonPreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/NonPreemptivePrioritySchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
