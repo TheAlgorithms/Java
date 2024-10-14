@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Finds the strongly connected components in a directed graph.
+ *
+ * @param adjList The adjacency list representation of the graph.
+ * @param n The number of nodes in the graph.
+ * @return The number of strongly connected components.
+ */
 public class StronglyConnectedComponentOptimized {
 
     public void btrack(HashMap<Integer, List<Integer>> adjList, int[] visited, Stack<Integer> dfsCallsNodes, int currentNode) {
         visited[currentNode] = 1;
-        for (int i = 0; i < adjList.get(currentNode).size(); i++) {
-            int neighbor = adjList.get(currentNode).get(i);
+        for (int neighbor : adjList.get(currentNode)) {
             if (visited[neighbor] == -1) {
                 btrack(adjList, visited, dfsCallsNodes, neighbor);
             }
@@ -20,8 +26,7 @@ public class StronglyConnectedComponentOptimized {
     public void btrack2(HashMap<Integer, List<Integer>> adjRevList, int[] visited, int currentNode, List<Integer> newScc) {
         visited[currentNode] = 1;
         newScc.add(currentNode);
-        for (int i = 0; i < adjRevList.get(currentNode).size(); i++) {
-            int neighbor = adjRevList.get(currentNode).get(i);
+        for (int neighbor : adjRevList.get(currentNode)) {
             if (visited[neighbor] == -1) {
                 btrack2(adjRevList, visited, neighbor, newScc);
             }
@@ -52,14 +57,12 @@ public class StronglyConnectedComponentOptimized {
 
         Arrays.fill(visited, -1);
         int stronglyConnectedComponents = 0;
-        List<List<Integer>> sccs = new ArrayList<>();
 
         while (!dfsCallsNodes.isEmpty()) {
             int node = dfsCallsNodes.pop();
             if (visited[node] == -1) {
                 List<Integer> newScc = new ArrayList<>();
                 btrack2(adjRevList, visited, node, newScc);
-                sccs.add(newScc);
                 stronglyConnectedComponents++;
             }
         }
