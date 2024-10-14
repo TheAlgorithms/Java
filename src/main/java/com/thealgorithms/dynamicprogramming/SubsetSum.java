@@ -9,28 +9,25 @@ public final class SubsetSum {
      *
      * @param arr the array containing integers.
      * @param sum the target sum of the subset.
-     * @return {@code true} if a subset exists that sums to the given value, otherwise {@code false}.
+     * @return {@code true} if a subset exists that sums to the given value,
+     *         otherwise {@code false}.
      */
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;
-        boolean[][] isSum = new boolean[n + 1][sum + 1];
 
-        // Initialize the first column to true since a sum of 0 can always be achieved with an empty subset.
-        for (int i = 0; i <= n; i++) {
-            isSum[i][0] = true;
-        }
+        // Initialize a single array to store the possible sums
+        boolean[] isSum = new boolean[sum + 1];
 
-        // Fill the subset sum matrix
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= sum; j++) {
-                if (arr[i - 1] <= j) {
-                    isSum[i][j] = isSum[i - 1][j] || isSum[i - 1][j - arr[i - 1]];
-                } else {
-                    isSum[i][j] = isSum[i - 1][j];
-                }
+        // Mark isSum[0] = true since a sum of 0 is always possible with 0 elements
+        isSum[0] = true;
+
+        // Iterate through each Element in the array
+        for (int i = 0; i < n; i++) {
+            // Traverse the isSum array backwards to prevent overwriting values
+            for (int j = sum; j >= arr[i]; j--) {
+                isSum[j] = isSum[j] || isSum[j - arr[i]];
             }
         }
-
-        return isSum[n][sum];
+        return isSum[sum];
     }
 }
