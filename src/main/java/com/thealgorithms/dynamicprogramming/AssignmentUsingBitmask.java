@@ -10,8 +10,6 @@ import java.util.*;
  * @author Hardvan
  */
 public final class AssignmentUsingBitmask {
-    private AssignmentUsingBitmask() {
-    }
 
     private final int totalTasks;
     private final int[][] dp;
