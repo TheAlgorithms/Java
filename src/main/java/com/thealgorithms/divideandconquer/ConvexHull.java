@@ -187,7 +187,7 @@ public final class ConvexHull {
             return new ArrayList<>(points);
         }
 
-        // Find the point with the lowest y-coordinate (and leftmost if tie)
+        // Find the point with the lowest y-coordinate
         Point lowest = Collections.min(points);
 
         // Sort points by polar angle with respect to the lowest point
