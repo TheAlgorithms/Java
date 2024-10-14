@@ -259,14 +259,12 @@ class Task1 {
 
 class Task2 {
 
-    private int[] a;
-
     public Node sortByHeapSort(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
         int c = count(head);
-        a = new int[c];
+        int[] a = new int[c];
         // Array of size c is created
         int i = 0;
         for (Node ptr = head; ptr != null; ptr = ptr.next) {
