@@ -9,6 +9,8 @@ package com.thealgorithms.dynamicprogramming;
  * 2. Delete any of the remaining lowercase letters from `a`.
  *
  * The task is to determine whether it is possible to make string `a` equal to string `b`.
+ *
+ * @author Hardvan
  */
 public final class Abbreviation {
     private Abbreviation() {
