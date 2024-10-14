@@ -1,22 +1,29 @@
 package remainder;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class ChineseRemainderTheorem {
 
     // Helper function to compute the greatest common divisor (GCD)
     public static int gcd(int a, int b) {
-        if (b == 0) return a;
+        if (b == 0) {
+            return a;
+        }
         return gcd(b, a % b);
     }
 
     // Helper function to compute the modular inverse of a modulo m
     // Uses the extended Euclidean algorithm
     public static int modInverse(int a, int m) {
-        int m0 = m, t, q;
-        int x0 = 0, x1 = 1;
+        int m0 = m;
+        int t;
+        int q;
+        int x0 = 0;
+        int x1 = 1;
 
-        if (m == 1) return 0;
+        if (m == 1) {
+            return 0;
+        }
 
         while (a > 1) {
             // q is quotient
@@ -33,7 +40,9 @@ public class ChineseRemainderTheorem {
         }
 
         // Make x1 positive
-        if (x1 < 0) x1 += m0;
+        if (x1 < 0) {
+            x1 += m0;
+        }
 
         return x1;
     }
@@ -43,7 +52,9 @@ public class ChineseRemainderTheorem {
     public static int findMinX(int[] num, int[] rem, int k) {
         // Compute product of all numbers
         int prod = 1;
-        for (int i = 0; i < k; i++) prod *= num[i];
+        for (int i = 0; i < k; i++) {
+            prod *= num[i];
+        }
 
         // Initialize result
         int result = 0;
