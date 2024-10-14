@@ -251,6 +251,7 @@
           * divideandconquer
             * [BinaryExponentiation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/BinaryExponentiation.java)
             * [ClosestPair](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java)
+            * [CountingInversions](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/CountingInversions.java)
             * [MedianOfTwoSortedArrays](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArrays.java)
             * [SkylineAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/SkylineAlgorithm.java)
             * [StrassenMatrixMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplication.java)
@@ -833,6 +834,7 @@
           * divideandconquer
             * [BinaryExponentiationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/BinaryExponentiationTest.java)
             * [ClosestPairTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/ClosestPairTest.java)
+            * [CountingInversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/CountingInversionsTest.java)
             * [MedianOfTwoSortedArraysTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/MedianOfTwoSortedArraysTest.java)
             * [SkylineAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/SkylineAlgorithmTest.java)
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
