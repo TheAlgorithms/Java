@@ -1,16 +1,7 @@
 package com.thealgorithms.misc;
 
-import java.util.Arrays;
-
 public final class RangeInSortedArray {
     private RangeInSortedArray() {
-    }
-
-    public static void main(String[] args) {
-        // Testcases
-        assert Arrays.equals(sortedRange(new int[] {1, 2, 3, 3, 3, 4, 5}, 3), new int[] {2, 4});
-        assert Arrays.equals(sortedRange(new int[] {1, 2, 3, 3, 3, 4, 5}, 4), new int[] {5, 5});
-        assert Arrays.equals(sortedRange(new int[] {0, 1, 2}, 3), new int[] {-1, -1});
     }
 
     // Get the 1st and last occurrence index of a number 'key' in a non-decreasing array 'nums'
