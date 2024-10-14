@@ -110,11 +110,9 @@ public final class ConvexHull {
                 boolean leftSide = checkPointOrientation(points.get(i), points.get(j), points.get((i + 1) % points.size()));
 
                 for (int k = 0; k < points.size(); k++) {
-                    if (k != i && k != j) {
-                        if (checkPointOrientation(points.get(i), points.get(j), points.get(k)) != leftSide) {
-                            allPointsOnOneSide = false;
-                            break;
-                        }
+                    if (k != i && k != j && checkPointOrientation(points.get(i), points.get(j), points.get(k)) != leftSide) {
+                        allPointsOnOneSide = false;
+                        break;
                     }
                 }
 
