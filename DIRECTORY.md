@@ -89,6 +89,7 @@
             * [DecimalToBinary](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/DecimalToBinary.java)
             * [DecimalToHexadecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/DecimalToHexadecimal.java)
             * [DecimalToOctal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/DecimalToOctal.java)
+            * [EndianConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/EndianConverter.java)
             * [HexaDecimalToBinary](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexaDecimalToBinary.java)
             * [HexaDecimalToDecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexaDecimalToDecimal.java)
             * [HexToOct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/HexToOct.java)
@@ -99,6 +100,7 @@
             * [OctalToBinary](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/OctalToBinary.java)
             * [OctalToDecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/OctalToDecimal.java)
             * [OctalToHexadecimal](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/OctalToHexadecimal.java)
+            * [PhoneticAlphabetConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/PhoneticAlphabetConverter.java)
             * [RgbHsvConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/RgbHsvConversion.java)
             * [RomanToInteger](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/RomanToInteger.java)
             * [TurkishToLatinConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/TurkishToLatinConversion.java)
@@ -503,6 +505,12 @@
           * Recursion
             * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
+            * diskscheduling
+              * [CircularLookScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularLookScheduling.java)
+              * [CircularScanScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularScanScheduling.java)
+              * [LookScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/LookScheduling.java)
+              * [ScanScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/ScanScheduling.java)
+              * [SSFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/SSFScheduling.java)
             * [EDFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/EDFScheduling.java)
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
             * [HighestResponseRatioNextScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/HighestResponseRatioNextScheduling.java)
@@ -728,6 +736,7 @@
             * [DecimalToBinaryTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/DecimalToBinaryTest.java)
             * [DecimalToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/DecimalToHexadecimalTest.java)
             * [DecimalToOctalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/DecimalToOctalTest.java)
+            * [EndianConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/EndianConverterTest.java)
             * [HexaDecimalToBinaryTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/HexaDecimalToBinaryTest.java)
             * [HexaDecimalToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/HexaDecimalToDecimalTest.java)
             * [HexToOctTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/HexToOctTest.java)
@@ -738,6 +747,7 @@
             * [OctalToBinaryTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToBinaryTest.java)
             * [OctalToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToDecimalTest.java)
             * [OctalToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToHexadecimalTest.java)
+            * [PhoneticAlphabetConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/PhoneticAlphabetConverterTest.java)
             * [RomanToIntegerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/RomanToIntegerTest.java)
             * [UnitConversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitConversionsTest.java)
             * [UnitsConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitsConverterTest.java)
@@ -919,6 +929,7 @@
             * [CeilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CeilTest.java)
             * [CollatzConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CollatzConjectureTest.java)
             * [CombinationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CombinationsTest.java)
+            * [ConvolutionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ConvolutionTest.java)
             * [CrossCorrelationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CrossCorrelationTest.java)
             * [DeterminantOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DeterminantOfMatrixTest.java)
             * [DigitalRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DigitalRootTest.java)
@@ -1042,6 +1053,12 @@
           * Recursion
             * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
+            * diskscheduling
+              * [CircularLookSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularLookSchedulingTest.java)
+              * [CircularScanSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularScanSchedulingTest.java)
+              * [LookSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/LookSchedulingTest.java)
+              * [ScanSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/ScanSchedulingTest.java)
+              * [SSFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/SSFSchedulingTest.java)
             * [EDFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/EDFSchedulingTest.java)
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
             * [HighestResponseRatioNextSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/HighestResponseRatioNextSchedulingTest.java)
