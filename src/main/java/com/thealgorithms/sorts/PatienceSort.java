@@ -72,7 +72,7 @@ public class PatienceSort implements SortAlgorithm {
      * @param <T> the type of elements in the piles, must be comparable
      * @return a priority queue containing the top element of each pile
      */
-    private static <T extends Comparable<T>> PriorityQueue<PileNode<T>> mergePiles(final List<List<T>> piles) {
+    private static <T extends Comparable<T>> PriorityQueue<PileNode<T>> mergePiles(final Iterable<List<T>> piles) {
         PriorityQueue<PileNode<T>> pq = new PriorityQueue<>();
         for (List<T> pile : piles) {
             pq.add(new PileNode<>(pile.removeLast(), pile));

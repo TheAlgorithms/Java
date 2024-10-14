@@ -1,6 +1,7 @@
 package com.thealgorithms.geometry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -89,7 +90,7 @@ public final class ConvexHull {
         return result;
     }
 
-    private static void constructHull(List<Point> points, Point left, Point right, Set<Point> convexSet) {
+    private static void constructHull(Collection<Point> points, Point left, Point right, Set<Point> convexSet) {
         if (!points.isEmpty()) {
             Point extremePoint = null;
             int extremePointDistance = Integer.MIN_VALUE;
