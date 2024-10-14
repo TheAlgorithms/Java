@@ -23,6 +23,11 @@ public final class OptimalFileMerging {
 
     /**
      * Calculates the minimum cost to merge all files.
+     * Steps:
+     * 1. Add all files to a min heap.
+     * 2. Remove the two smallest files from the heap, merge them, and add the result back to the heap.
+     * 3. Repeat step 2 until there is only one file left in the heap.
+     * 4. The total cost is the sum of all the costs of merging the files.
      *
      * @param files array of file sizes
      * @return the minimum cost to merge the files
