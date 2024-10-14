@@ -1,9 +1,9 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,7 +17,7 @@ public class StronglyConnectedComponentOptimizedTest {
     }
 
     @Test
-    public void testSingleComponent() {  
+    public void testSingleComponent() {
         // Create a simple graph with 3 nodes, all forming one SCC
         HashMap<Integer, List<Integer>> adjList = new HashMap<>();
         adjList.put(0, new ArrayList<>(List.of(1)));
@@ -31,7 +31,7 @@ public class StronglyConnectedComponentOptimizedTest {
     }
 
     @Test
-    public void testTwoComponents() {  
+    public void testTwoComponents() {
         // Create a graph with 4 nodes and two SCCs: {0, 1, 2} and {3}
         HashMap<Integer, List<Integer>> adjList = new HashMap<>();
         adjList.put(0, new ArrayList<>(List.of(1)));
@@ -46,7 +46,7 @@ public class StronglyConnectedComponentOptimizedTest {
     }
 
     @Test
-    public void testDisconnectedGraph() { 
+    public void testDisconnectedGraph() {
         // Create a graph with 4 nodes that are all disconnected
         HashMap<Integer, List<Integer>> adjList = new HashMap<>();
         adjList.put(0, new ArrayList<>());
@@ -61,7 +61,7 @@ public class StronglyConnectedComponentOptimizedTest {
     }
 
     @Test
-    public void testComplexGraph() {  
+    public void testComplexGraph() {
         // Create a more complex graph with multiple SCCs
         HashMap<Integer, List<Integer>> adjList = new HashMap<>();
         adjList.put(0, new ArrayList<>(List.of(1)));

@@ -15,9 +15,14 @@ public class StronglyConnectedComponentOptimized {
 
     public void btrack(HashMap<Integer, List<Integer>> adjList, int[] visited, Stack<Integer> dfsCallsNodes, int currentNode) {
         visited[currentNode] = 1;
-        for (int neighbor : adjList.get(currentNode)) {
-            if (visited[neighbor] == -1) {
-                btrack(adjList, visited, dfsCallsNodes, neighbor);
+        List<Integer> neighbors = adjList.get(currentNode);
+        
+        // Check for null before iterating
+        if (neighbors != null) {
+            for (int neighbor : neighbors) {
+                if (visited[neighbor] == -1) {
+                    btrack(adjList, visited, dfsCallsNodes, neighbor);
+                }
             }
         }
         dfsCallsNodes.add(currentNode);
@@ -26,9 +31,14 @@ public class StronglyConnectedComponentOptimized {
     public void btrack2(HashMap<Integer, List<Integer>> adjRevList, int[] visited, int currentNode, List<Integer> newScc) {
         visited[currentNode] = 1;
         newScc.add(currentNode);
-        for (int neighbor : adjRevList.get(currentNode)) {
-            if (visited[neighbor] == -1) {
-                btrack2(adjRevList, visited, neighbor, newScc);
+        List<Integer> neighbors = adjRevList.get(currentNode);
+        
+        // Check for null before iterating
+        if (neighbors != null) {
+            for (int neighbor : neighbors) {
+                if (visited[neighbor] == -1) {
+                    btrack2(adjRevList, visited, neighbor, newScc);
+                }
             }
         }
     }
@@ -50,8 +60,12 @@ public class StronglyConnectedComponentOptimized {
         }
 
         for (int i = 0; i < n; i++) {
-            for (int neighbor : adjList.get(i)) {
-                adjRevList.get(neighbor).add(i);
+            List<Integer> neighbors = adjList.get(i);
+            // Check for null before iterating
+            if (neighbors != null) {
+                for (int neighbor : neighbors) {
+                    adjRevList.get(neighbor).add(i);
+                }
             }
         }
 
@@ -69,5 +83,4 @@ public class StronglyConnectedComponentOptimized {
 
         return stronglyConnectedComponents;
     }
-
 }
