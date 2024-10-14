@@ -18,7 +18,8 @@ import java.util.Set;
  * 2. Recursive (Divide-and-Conquer) Method
  */
 class Point implements Comparable<Point> {
-    double x, y;
+    double x;
+    double y;
 
     /**
      * Constructor to initialize a point with x and y coordinates.
@@ -26,7 +27,7 @@ class Point implements Comparable<Point> {
      * @param x The x-coordinate of the point.
      * @param y The y-coordinate of the point.
      */
-    public Point(double x, double y) {
+    Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -55,7 +56,9 @@ class Point implements Comparable<Point> {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Point)) return false;
+        if (!(obj instanceof Point)) {
+            return false;
+        }
         Point other = (Point) obj;
         return this.x == other.x && this.y == other.y;
     }
@@ -86,7 +89,9 @@ class Point implements Comparable<Point> {
  * 1. Brute-force method
  * 2. Recursive (divide-and-conquer) method
  */
-public class ConvexHull {
+public final class ConvexHull {
+    private ConvexHull() {
+    }
 
     /**
      * Computes the determinant of three points to determine their orientation.
