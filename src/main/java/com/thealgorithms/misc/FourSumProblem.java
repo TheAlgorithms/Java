@@ -1,5 +1,9 @@
 package com.thealgorithms.misc;
-import java.util.*;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class FourSumProblem {
 
@@ -40,8 +44,12 @@ public class FourSumProblem {
                     int sum = arr[i] + arr[j] + arr[left] + arr[right];
                     if (sum == target) {
                         ans.add(Arrays.asList(arr[i], arr[j], arr[left], arr[right]));
-                        while (left < right && arr[left] == arr[left + 1]) left++; // Skip duplicates for 'left'
-                        while (left < right && arr[right] == arr[right - 1]) right--; // Skip duplicates for 'right'
+                        while (left < right && arr[left] == arr[left + 1]){  // Skip duplicates for 'left'
+                            left++;
+                        }
+                        while (left < right && arr[right] == arr[right - 1]){ // Skip duplicates for 'right'
+                            right--;
+                        }
                         left++;
                         right--;
                     } else if (sum < target) {
