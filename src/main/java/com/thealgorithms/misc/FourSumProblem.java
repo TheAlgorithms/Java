@@ -13,7 +13,7 @@ public class FourSumProblem {
     //Best approach - Sorting and two-pointers
     //Time Complexity - O(n^3)
     //Space Complexity - O(n)
-    public static List<List<Integer>> fourSum1(int[] nums, int target) {
+    public List<List<Integer>> fourSum1(int[] nums, int target) {
         List<List<Integer>> ans = new ArrayList<>();
         if (nums == null || nums.length < 4) return ans;
         Arrays.sort(nums);
@@ -45,7 +45,7 @@ public class FourSumProblem {
     //Another approach - Using HashMap
     //Time Complexity - O(n^3)
     //Space Complexity - O(n^2) (Storing the pair of sums)
-    public static List<List<Integer>> fourSum2(int[] nums, int target) {
+    public List<List<Integer>> fourSum2(int[] nums, int target) {
         List<List<Integer>> ans = new ArrayList<>();
         if (nums == null || nums.length < 4) return ans;
         Arrays.sort(nums);
@@ -65,17 +65,5 @@ public class FourSumProblem {
             }
         }
         return ans;
-    }
-
-    public static void main(String[] args) {
-        int[] arr1 = {1, 0, -1, 0, -2, 2};
-        int target1 = 0;
-        System.out.println(fourSum1(arr1, target1));
-        System.out.println(fourSum2(arr1, target1));
-
-        int[] arr2 = {4, 3, 3, 4, 4, 2, 1, 2, 1, 1};
-        int target2 = 9;
-        System.out.println(fourSum2(arr2, target2));
-        System.out.println(fourSum2(arr2, target2));
     }
 }
