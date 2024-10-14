@@ -131,9 +131,57 @@ public class FourSumProblemTest {
         int[] nums = {2, 2, 2, 2, 2, 0, 0};
         int target = 4;
         List<List<Integer>> result = solver.fourSum2(nums, target);
-        
+
         assertEquals(1, result.size()); // Expect only one quadruplet
         assertTrue(result.contains(List.of(0, 0, 2, 2))); // The only valid quadruplet
+    }
+
+    @Test
+    public void testFourSum1_withNullArray() {
+        FourSumProblem solver = new FourSumProblem();
+
+        // Case with null input array
+        int[] nums = null;
+        int target = 0;
+        List<List<Integer>> result = solver.fourSum1(nums, target);
+
+        assertEquals(0, result.size()); // Expect no quadruplets
+    }
+
+    @Test
+    public void testFourSum2_withNullArray() {
+        FourSumProblem solver = new FourSumProblem();
+
+        // Case with null input array
+        int[] nums = null;
+        int target = 0;
+        List<List<Integer>> result = solver.fourSum2(nums, target);
+
+        assertEquals(0, result.size()); // Expect no quadruplets
+    }
+
+    @Test
+    public void testFourSum1_withLessThanFourElements() {
+        FourSumProblem solver = new FourSumProblem();
+
+        // Case with fewer than four elements
+        int[] nums = {1, 2, 3}; // Only 3 elements
+        int target = 0;
+        List<List<Integer>> result = solver.fourSum1(nums, target);
+
+        assertEquals(0, result.size()); // Expect no quadruplets
+    }
+
+    @Test
+    public void testFourSum2_withLessThanFourElements() {
+        FourSumProblem solver = new FourSumProblem();
+
+        // Case with fewer than four elements
+        int[] nums = {1, 2, 3}; // Only 3 elements
+        int target = 0;
+        List<List<Integer>> result = solver.fourSum2(nums, target);
+
+        assertEquals(0, result.size()); // Expect no quadruplets
     }
 
 }
