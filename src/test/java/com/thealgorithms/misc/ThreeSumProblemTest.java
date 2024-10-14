@@ -17,7 +17,7 @@ public class ThreeSumProblemTest {
 
     @BeforeEach
     public void setup() {
-        tsp = new ThreeSumProblem(); // Initialize the class before each test
+        tsp = new ThreeSumProblem();
     }
 
     @ParameterizedTest
