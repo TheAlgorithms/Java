@@ -18,7 +18,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testBruteForce_ValidTriplets() {
+    public void testBruteForceValidTriplets() {
         int[] nums = {1, 2, -3, 4, -2, -1};
         int target = 0;
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(-3, 1, 2), Arrays.asList(-3, -1, 4));
@@ -26,7 +26,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testBruteForce_NoTripletFound() {
+    public void testBruteForceNoTripletFound() {
         int[] nums = {1, 2, 3, 4, 5};
         int target = 50; // No valid triplet exists
         List<List<Integer>> expected = new ArrayList<>(); // Expecting an empty list
@@ -34,7 +34,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testTwoPointer_ValidTriplets() {
+    public void testTwoPointerValidTriplets() {
         int[] nums = {0, -1, 2, -3, 1};
         int target = 0;
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(-3, 1, 2), Arrays.asList(-1, 0, 1));
@@ -42,7 +42,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testTwoPointer_NegativeNumbers() {
+    public void testTwoPointerNegativeNumbers() {
         int[] nums = {-5, -4, -3, -2, -1};
         int target = -10;
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(-5, -4, -1), Arrays.asList(-5, -3, -2));
@@ -50,7 +50,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testHashMap_ValidTriplets() {
+    public void testHashMapValidTriplets() {
         int[] nums = {1, 2, -1, -4, 3, 0};
         int target = 2;
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(-1, 0, 3), Arrays.asList(-1, 1, 2) // Check for distinct triplets
@@ -59,7 +59,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testHashMap_NoTripletFound() {
+    public void testHashMapNoTripletFound() {
         int[] nums = {5, 7, 9, 11};
         int target = 10;
         List<List<Integer>> expected = new ArrayList<>();
@@ -67,7 +67,7 @@ public class ThreeSumProblemTest {
     }
 
     @Test
-    public void testHashMap_EmptyArray() {
+    public void testHashMapEmptyArray() {
         int[] nums = {};
         int target = 0;
         List<List<Integer>> expected = new ArrayList<>();
