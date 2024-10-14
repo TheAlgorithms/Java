@@ -505,6 +505,12 @@
           * Recursion
             * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
+            * diskscheduling
+              * [CircularLookScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularLookScheduling.java)
+              * [CircularScanScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularScanScheduling.java)
+              * [LookScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/LookScheduling.java)
+              * [ScanScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/ScanScheduling.java)
+              * [SSFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/SSFScheduling.java)
             * [EDFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/EDFScheduling.java)
             * [FCFSScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/FCFSScheduling.java)
             * [HighestResponseRatioNextScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/HighestResponseRatioNextScheduling.java)
@@ -923,6 +929,7 @@
             * [CeilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CeilTest.java)
             * [CollatzConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CollatzConjectureTest.java)
             * [CombinationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CombinationsTest.java)
+            * [ConvolutionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ConvolutionTest.java)
             * [CrossCorrelationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CrossCorrelationTest.java)
             * [DeterminantOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DeterminantOfMatrixTest.java)
             * [DigitalRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DigitalRootTest.java)
@@ -1046,6 +1053,12 @@
           * Recursion
             * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
+            * diskscheduling
+              * [CircularLookSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularLookSchedulingTest.java)
+              * [CircularScanSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularScanSchedulingTest.java)
+              * [LookSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/LookSchedulingTest.java)
+              * [ScanSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/ScanSchedulingTest.java)
+              * [SSFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/SSFSchedulingTest.java)
             * [EDFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/EDFSchedulingTest.java)
             * [FCFSSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/FCFSSchedulingTest.java)
             * [HighestResponseRatioNextSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/HighestResponseRatioNextSchedulingTest.java)
