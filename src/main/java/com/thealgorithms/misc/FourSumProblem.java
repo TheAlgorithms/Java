@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.tuple.Pair;
-
+/**
+ * Four Sum Problem
+ * 
+ * This algorithm finds all unique quadruplets in an array that sum up to a given target.
+ * 
+ * URL: https://en.wikipedia.org/wiki/Subset_sum
+ */
 public class FourSumProblem {
     
     public static List<Pair<Integer, Integer>> fourSum(int[] values, int target) {
