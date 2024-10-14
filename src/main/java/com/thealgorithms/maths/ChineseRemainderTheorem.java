@@ -1,7 +1,5 @@
 package remainder;
 
-import java.util.Arrays;
-
 public class ChineseRemainderTheorem {
 
     // Helper function to compute the greatest common divisor (GCD)
