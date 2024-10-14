@@ -5,16 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class WordBoggleTest {
-
+class WordBoggleTest {
     private char[][] board;
-    private String[] words;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         board = new char[][] {
             {'t', 'h', 'i', 's', 'i', 's', 'a'},
             {'s', 'i', 'm', 'p', 'l', 'e', 'x'},
@@ -26,58 +27,30 @@ public class WordBoggleTest {
             {'N', 'O', 'T', 'R', 'E', '_', 'P'},
             {'x', 'x', 'D', 'E', 'T', 'A', 'E'},
         };
-
-        words = new String[] {"this", "is", "not", "a", "simple", "test", "boggle", "board", "REPEATED", "NOTRE_PEATED"};
     }
 
-    @Test
-    public void testBoggleBoardFindsAllWords() {
-        List<String> expected = Arrays.asList("this", "is", "a", "simple", "board", "boggle", "NOTRE_PEATED");
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    void testBoggleBoard(String[] words, List<String> expectedWords, String testDescription) {
         List<String> result = WordBoggle.boggleBoard(board, words);
-        assertEquals(expected.size(), result.size());
-        assertTrue(expected.containsAll(result));
+        assertEquals(expectedWords.size(), result.size(), "Test failed for: " + testDescription);
+        assertTrue(expectedWords.containsAll(result), "Test failed for: " + testDescription);
     }
 
-    @Test
-    public void testBoggleBoardNoMatchingWords() {
-        // Test with words that don't exist on the board
-        String[] nonMatchingWords = {"xyz", "hello", "world"};
-        List<String> result = WordBoggle.boggleBoard(board, nonMatchingWords);
-        assertEquals(0, result.size());
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(Arguments.of(new String[] {"this", "is", "not", "a", "simple", "test", "boggle", "board", "REPEATED", "NOTRE_PEATED"}, Arrays.asList("this", "is", "a", "simple", "board", "boggle", "NOTRE_PEATED"), "All words"),
+            Arguments.of(new String[] {"xyz", "hello", "world"}, List.of(), "No matching words"), Arguments.of(new String[] {}, List.of(), "Empty words array"), Arguments.of(new String[] {"this", "this", "board", "board"}, Arrays.asList("this", "board"), "Duplicate words in input"));
     }
 
-    @Test
-    public void testBoggleBoardEmptyBoard() {
-        // Test with an empty board
-        char[][] emptyBoard = new char[0][0];
-        List<String> result = WordBoggle.boggleBoard(emptyBoard, words);
-        assertEquals(0, result.size());
+    @ParameterizedTest
+    @MethodSource("provideSpecialCases")
+    void testBoggleBoardSpecialCases(char[][] specialBoard, String[] words, List<String> expectedWords, String testDescription) {
+        List<String> result = WordBoggle.boggleBoard(specialBoard, words);
+        assertEquals(expectedWords.size(), result.size(), "Test failed for: " + testDescription);
+        assertTrue(expectedWords.containsAll(result), "Test failed for: " + testDescription);
     }
 
-    @Test
-    public void testBoggleBoardEmptyWordsArray() {
-        // Test with an empty words array
-        String[] emptyWords = {};
-        List<String> result = WordBoggle.boggleBoard(board, emptyWords);
-        assertEquals(0, result.size());
-    }
-
-    @Test
-    public void testBoggleBoardSingleCharacterWords() {
-        // Test with single-character words
-        String[] singleCharWords = {"a", "x", "o"};
-        List<String> expected = Arrays.asList("a", "o");
-        List<String> result = WordBoggle.boggleBoard(board, singleCharWords);
-        assertEquals(expected.size() + 1, result.size());
-    }
-
-    @Test
-    public void testBoggleBoardDuplicateWordsInInput() {
-        // Test with duplicate words in the input array
-        String[] duplicateWords = {"this", "this", "board", "board"};
-        List<String> expected = Arrays.asList("this", "board");
-        List<String> result = WordBoggle.boggleBoard(board, duplicateWords);
-        assertEquals(expected.size(), result.size());
-        assertTrue(expected.containsAll(result));
+    private static Stream<Arguments> provideSpecialCases() {
+        return Stream.of(Arguments.of(new char[0][0], new String[] {"this", "is", "a", "test"}, List.of(), "Empty board"));
     }
 }
