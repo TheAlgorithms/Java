@@ -15,7 +15,6 @@ public class StronglyConnectedComponentOptimized {
     public void btrack(HashMap<Integer, List<Integer>> adjList, int[] visited, Stack<Integer> dfsCallsNodes, int currentNode) {
         visited[currentNode] = 1;
         List<Integer> neighbors = adjList.get(currentNode);
-        
         // Check for null before iterating
         if (neighbors != null) {
             for (int neighbor : neighbors) {
@@ -26,12 +25,11 @@ public class StronglyConnectedComponentOptimized {
         }
         dfsCallsNodes.add(currentNode);
     }
-
+    
     public void btrack2(HashMap<Integer, List<Integer>> adjRevList, int[] visited, int currentNode, List<Integer> newScc) {
         visited[currentNode] = 1;
         newScc.add(currentNode);
-        List<Integer> neighbors = adjRevList.get(currentNode);
-        
+        List<Integer> neighbors = adjRevList.get(currentNode);        
         // Check for null before iterating
         if (neighbors != null) {
             for (int neighbor : neighbors) {
@@ -41,6 +39,7 @@ public class StronglyConnectedComponentOptimized {
             }
         }
     }
+    
 
     public int getOutput(HashMap<Integer, List<Integer>> adjList, int n) {
         int[] visited = new int[n];
