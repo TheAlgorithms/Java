@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class AssignmentUsingBitmaskTest {
+public final class AssignmentUsingBitmaskTest {
+    private AssignmentUsingBitmaskTest() {
+    }
 
     @Test
     public void testCountNoOfWays() {
