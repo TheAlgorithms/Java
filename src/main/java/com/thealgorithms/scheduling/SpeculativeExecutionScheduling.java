@@ -36,11 +36,23 @@ public final class SpeculativeExecutionScheduling {
         taskGroups = new HashMap<>();
     }
 
+    /**
+     * Adds a task to the specified group.
+     *
+     * @param groupName the name of the group
+     * @param taskName  the name of the task
+     */
     public void addTask(String groupName, String taskName) {
         taskGroups.putIfAbsent(groupName, new ArrayList<>());
         taskGroups.get(groupName).add(new Task(taskName));
     }
 
+    /**
+     * Executes the tasks in the specified group.
+     *
+     * @param groupName the name of the group
+     * @return the name of the task that completed successfully
+     */
     public String executeTasks(String groupName) {
         List<Task> tasks = taskGroups.get(groupName);
         if (tasks == null) {
