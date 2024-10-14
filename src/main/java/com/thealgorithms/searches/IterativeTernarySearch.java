@@ -1,22 +1,26 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.Stream;
 
 /**
- * A iterative version of a ternary search algorithm This is better way to
- * implement the ternary search, because a recursive version adds some overhead
- * to a stack. But in java the compile can transform the recursive version to
- * iterative implicitly, so there are no much differences between these two
- * algorithms
+ * An iterative implementation of the Ternary Search algorithm.
  *
  * <p>
- * Worst-case performance Θ(log3(N)) Best-case performance O(1) Average
- * performance Θ(log3(N)) Worst-case space complexity O(1)
+ * Ternary search is a divide-and-conquer algorithm that splits the array into three parts
+ * instead of two, as in binary search. This implementation is iterative, reducing the overhead
+ * associated with recursive function calls. However, the recursive version can also be optimized
+ * by the Java compiler to resemble the iterative version, resulting in similar performance.
  *
- * @author Podshivalov Nikita (https://github.com/nikitap492)
+ * <p>
+ * Worst-case performance: Θ(log3(N))<br>
+ * Best-case performance: O(1)<br>
+ * Average performance: Θ(log3(N))<br>
+ * Worst-case space complexity: O(1)
+ *
+ * <p>
+ * This class implements the {@link SearchAlgorithm} interface, providing a generic search method
+ * for any comparable type.
+ *
  * @see SearchAlgorithm
  * @see TernarySearch
  * @since 2018-04-13
@@ -25,6 +29,13 @@ public class IterativeTernarySearch implements SearchAlgorithm {
 
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null || array.length == 0 || key == null) {
+            return -1;
+        }
+        if (array.length == 1) {
+            return array[0].compareTo(key) == 0 ? 0 : -1;
+        }
+
         int left = 0;
         int right = array.length - 1;
 
@@ -49,24 +60,5 @@ public class IterativeTernarySearch implements SearchAlgorithm {
         }
 
         return -1;
-    }
-
-    public static void main(String[] args) {
-        // just generate data
-        Random r = new Random();
-        int size = 100;
-        int maxElement = 100000;
-        Integer[] integers = Stream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray(Integer[] ::new);
-
-        // the element that should be found
-        Integer shouldBeFound = integers[r.nextInt(size - 1)];
-
-        IterativeTernarySearch search = new IterativeTernarySearch();
-        int atIndex = search.find(integers, shouldBeFound);
-
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
-
-        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }

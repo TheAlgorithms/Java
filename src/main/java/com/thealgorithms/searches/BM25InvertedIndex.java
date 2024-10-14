@@ -215,6 +215,6 @@ public final class BM25InvertedIndex {
      */
     private double computeIDF(int docFrequency) {
         // Total number of documents in the index
-        return Math.log((totalDocuments - docFrequency + 0.5) / (docFrequency + 0.5));
+        return Math.log((totalDocuments - docFrequency + 0.5) / (docFrequency + 0.5) + 1);
     }
 }
