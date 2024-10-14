@@ -17,6 +17,12 @@ public final class KCenters {
 
     /**
      * Finds the maximum distance to the nearest center given k centers.
+     * Steps:
+     * 1. Initialize an array {@code selected} of size n and an array {@code maxDist} of size n.
+     * 2. Set the first node as selected and update the maxDist array.
+     * 3. For each center, find the farthest node from the selected centers.
+     * 4. Update the maxDist array.
+     * 5. Return the maximum distance to the nearest center.
      *
      * @param distances matrix representing distances between nodes
      * @param k         the number of centers
