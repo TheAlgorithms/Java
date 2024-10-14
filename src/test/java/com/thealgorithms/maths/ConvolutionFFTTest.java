@@ -3,7 +3,10 @@ package com.thealgorithms.maths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ConvolutionFFTTest {
 
@@ -31,68 +34,21 @@ public class ConvolutionFFTTest {
         }
     }
 
-    @Test
-    public void testConvolutionFFTBasic() {
-        double[] a = {1, 2, 3};
-        double[] b = {4, 5, 6};
+    @ParameterizedTest(name = "Test case {index}: {3}")
+    @MethodSource("provideTestCases")
+    public void testConvolutionFFT(double[] a, double[] b, double[] expectedOutput, String testDescription) {
         ArrayList<FFT.Complex> signalA = createComplexSignal(a);
         ArrayList<FFT.Complex> signalB = createComplexSignal(b);
 
-        ArrayList<FFT.Complex> expected = createComplexSignal(new double[] {4, 13, 28, 27, 18}); // Expected output
+        ArrayList<FFT.Complex> expected = createComplexSignal(expectedOutput);
         ArrayList<FFT.Complex> result = ConvolutionFFT.convolutionFFT(signalA, signalB);
 
         assertComplexArrayEquals(expected, result, 1e-9); // Allow small margin of error
     }
 
-    @Test
-    public void testConvolutionFFTWithZeroElements() {
-        double[] a = {0, 0, 0};
-        double[] b = {1, 2, 3};
-        ArrayList<FFT.Complex> signalA = createComplexSignal(a);
-        ArrayList<FFT.Complex> signalB = createComplexSignal(b);
-
-        ArrayList<FFT.Complex> expected = createComplexSignal(new double[] {0, 0, 0, 0, 0}); // All values should be zero
-        ArrayList<FFT.Complex> result = ConvolutionFFT.convolutionFFT(signalA, signalB);
-
-        assertComplexArrayEquals(expected, result, 1e-9);
-    }
-
-    @Test
-    public void testConvolutionFFTWithDifferentSizes() {
-        double[] a = {1, 2};
-        double[] b = {3, 4, 5};
-        ArrayList<FFT.Complex> signalA = createComplexSignal(a);
-        ArrayList<FFT.Complex> signalB = createComplexSignal(b);
-
-        ArrayList<FFT.Complex> expected = createComplexSignal(new double[] {3, 10, 13, 10});
-        ArrayList<FFT.Complex> result = ConvolutionFFT.convolutionFFT(signalA, signalB);
-
-        assertComplexArrayEquals(expected, result, 1e-9);
-    }
-
-    @Test
-    public void testConvolutionFFTWithSingleElement() {
-        double[] a = {5};
-        double[] b = {2};
-        ArrayList<FFT.Complex> signalA = createComplexSignal(a);
-        ArrayList<FFT.Complex> signalB = createComplexSignal(b);
-
-        ArrayList<FFT.Complex> expected = createComplexSignal(new double[] {10});
-        ArrayList<FFT.Complex> result = ConvolutionFFT.convolutionFFT(signalA, signalB);
-
-        assertComplexArrayEquals(expected, result, 1e-9);
-    }
-
-    @Test
-    public void testConvolutionFFTWithNegativeValues() {
-        double[] a = {1, -2, 3};
-        double[] b = {-1, 2, -3};
-        ArrayList<FFT.Complex> signalA = createComplexSignal(a);
-        ArrayList<FFT.Complex> signalB = createComplexSignal(b);
-
-        ArrayList<FFT.Complex> expected = createComplexSignal(new double[] {-1, 4, -10, 12, -9});
-        ArrayList<FFT.Complex> result = ConvolutionFFT.convolutionFFT(signalA, signalB);
-
-        assertComplexArrayEquals(expected, result, 1e-9);
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(Arguments.of(new double[] {1, 2, 3}, new double[] {4, 5, 6}, new double[] {4, 13, 28, 27, 18}, "Basic test"), Arguments.of(new double[] {0, 0, 0}, new double[] {1, 2, 3}, new double[] {0, 0, 0, 0, 0}, "Test with zero elements"),
+            Arguments.of(new double[] {1, 2}, new double[] {3, 4, 5}, new double[] {3, 10, 13, 10}, "Test with different sizes"), Arguments.of(new double[] {5}, new double[] {2}, new double[] {10}, "Test with single element"),
+            Arguments.of(new double[] {1, -2, 3}, new double[] {-1, 2, -3}, new double[] {-1, 4, -10, 12, -9}, "Test with negative values"));
     }
 }
