@@ -12,7 +12,9 @@ import java.util.List;
  *
  * @author Hardvan
  */
-public class AllConstruct {
+public final class AllConstruct {
+    private AllConstruct() {
+    }
 
     /**
      * Finds all possible ways to construct the target string using substrings
