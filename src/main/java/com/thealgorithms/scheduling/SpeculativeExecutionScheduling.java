@@ -43,8 +43,8 @@ public final class SpeculativeExecutionScheduling {
      * @param taskName  the name of the task
      */
     public void addTask(String groupName, String taskName) {
-        taskGroups.putIfAbsent(groupName, new ArrayList<>());
-        taskGroups.get(groupName).add(new Task(taskName));
+        List<Task> tasks = taskGroups.computeIfAbsent(groupName, k -> new ArrayList<>());
+        tasks.add(new Task(taskName));
     }
 
     /**
