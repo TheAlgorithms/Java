@@ -1,0 +1,54 @@
+import java.util.Arrays;
+
+public class TSP {
+    static int n; 
+    static int MAX = 1000000; 
+    static int[][] dist; 
+    static int[][] memo; 
+    static int[][] parent; 
+
+    public static int tsp(int i, int mask) {
+        if (mask == (1 << n) - 1) {
+            return dist[i][0]; 
+        }
+
+        if (memo[i][mask] != -1) {
+            return memo[i][mask];
+        }
+
+        int res = MAX; 
+
+        for (int j = 0; j < n; j++) {
+            if ((mask & (1 << j)) == 0) { 
+                int newRes = dist[i][j] + tsp(j, mask | (1 << j)); 
+                if (newRes < res) {
+                    res = newRes;
+                    parent[i][mask] = j; 
+                }
+            }
+        }
+
+        return memo[i][mask] = res;
+    }
+
+    public static String printPath(int i, int mask) {
+        StringBuilder path = new StringBuilder(i + " → ");
+        if (mask == (1 << n) - 1) { 
+            path.append(0); 
+            return path.toString();
+        }
+        int nextCity = parent[i][mask];
+        path.append(printPath(nextCity, mask | (1 << nextCity)));
+        return path.toString();
+    }
+
+    public static void initialize(int[][] distanceMatrix) {
+        n = distanceMatrix.length;
+        dist = distanceMatrix;
+        memo = new int[n][1 << n];
+        parent = new int[n][1 << n];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
+        }
+    }
+}
