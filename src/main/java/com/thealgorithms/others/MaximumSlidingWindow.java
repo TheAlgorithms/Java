@@ -62,6 +62,8 @@ public class MaximumSlidingWindow {
         int[] result = msw.maxSlidingWindow(nums, k);
 
         // Print the result
-        for (int num : result) System.out.print(num + " ");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
     }
 }
