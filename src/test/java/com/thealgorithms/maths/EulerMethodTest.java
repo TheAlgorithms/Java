@@ -14,10 +14,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 class EulerMethodTest {
 
     private static class EulerFullTestCase {
-        double xStart, xEnd, stepSize, yInitial;
+        double xStart;
+        double xEnd;
+        double stepSize;
+        double yInitial;
         BiFunction<Double, Double, Double> equation;
         int expectedSize;
-        double[] expectedFirstPoint, expectedLastPoint;
+        double[] expectedFirstPoint;
+        double[] expectedLastPoint;
 
         EulerFullTestCase(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
             this.xStart = xStart;
