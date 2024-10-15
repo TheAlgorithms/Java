@@ -1029,6 +1029,7 @@
             * [MedianOfMatrixtest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfMatrixtest.java)
             * [MedianOfRunningArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfRunningArrayTest.java)
             * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MirrorOfMatrixTest.java)
+            * [PalindromePrimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromePrimeTest.java)
             * [PalindromeSinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromeSinglyLinkedListTest.java)
             * [RangeInSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/RangeInSortedArrayTest.java)
             * [ThreeSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/ThreeSumProblemTest.java)
