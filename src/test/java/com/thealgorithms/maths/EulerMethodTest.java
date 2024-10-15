@@ -6,75 +6,58 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.function.BiFunction;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-public class EulerMethodTest {
+class EulerMethodTest {
 
-    @Test
-    public void testEulerStepBasic() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        double result = EulerMethod.eulerStep(0.0, 0.1, 1.0, equation);
-        assertEquals(1.1, result, 1e-9, "Euler step failed for basic equation.");
+    @ParameterizedTest
+    @MethodSource("eulerStepTestCases")
+    void testEulerStep(double x, double h, double y, BiFunction<Double, Double, Double> equation, double expected) {
+        double result = EulerMethod.eulerStep(x, h, y, equation);
+        assertEquals(expected, result, 1e-9, "Euler step failed for the given equation.");
     }
 
-    @Test
-    public void testEulerStepNegativeStepSize() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        assertThrows(IllegalArgumentException.class, () -> EulerMethod.eulerStep(0.0, -0.1, 1.0, equation), "Expected IllegalArgumentException for negative step size.");
+    static Stream<Arguments> eulerStepTestCases() {
+        return Stream.of(Arguments.of(0.0, 0.1, 1.0, (BiFunction<Double, Double, Double>) ((x, y) -> x + y), 1.1));
     }
 
-    @Test
-    public void testEulerStepZeroStepSize() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        assertThrows(IllegalArgumentException.class, () -> EulerMethod.eulerStep(0.0, 0.0, 1.0, equation), "Expected IllegalArgumentException for zero step size.");
+    @ParameterizedTest
+    @MethodSource("eulerStepInvalidCases")
+    void testEulerStepInvalidInput(double x, double h, double y, BiFunction<Double, Double, Double> equation, Class<? extends Exception> expectedExceptionClass) {
+        assertThrows(expectedExceptionClass, () -> EulerMethod.eulerStep(x, h, y, equation));
     }
 
-    @Test
-    public void testEulerFullBasic() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x;
-        ArrayList<double[]> result = EulerMethod.eulerFull(0, 1, 0.5, 0, equation);
-
-        assertEquals(3, result.size(), "Incorrect number of points in the result.");
-        assertArrayEquals(new double[] {0.0, 0.0}, result.get(0), 1e-9, "Incorrect first point.");
-        assertArrayEquals(new double[] {0.5, 0.0}, result.get(1), 1e-9, "Incorrect second point.");
-        assertArrayEquals(new double[] {1.0, 0.25}, result.get(2), 1e-9, "Incorrect third point.");
+    static Stream<Arguments> eulerStepInvalidCases() {
+        BiFunction<Double, Double, Double> dummyEquation = (x, y) -> x + y;
+        return Stream.of(Arguments.of(0.0, -0.1, 1.0, dummyEquation, IllegalArgumentException.class), Arguments.of(0.0, 0.0, 1.0, dummyEquation, IllegalArgumentException.class));
     }
 
-    @Test
-    public void testEulerFullWithExponentialEquation() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> y;
-        ArrayList<double[]> result = EulerMethod.eulerFull(0, 1, 0.1, 1, equation);
-
-        assertEquals(12, result.size(), "Incorrect number of points in the result.");
-        double[] lastPoint = result.get(result.size() - 1);
-        assertEquals(1.0999999999999999, lastPoint[0], 1e-9, "Incorrect x-value of the last point.");
-        assertEquals(2.8531167061100002, lastPoint[1], 1e-9, "Incorrect y-value of the last point.");
+    @ParameterizedTest
+    @MethodSource("eulerFullTestCases")
+    void testEulerFull(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
+        ArrayList<double[]> result = EulerMethod.eulerFull(xStart, xEnd, stepSize, yInitial, equation);
+        assertEquals(expectedSize, result.size(), "Incorrect number of points in the result.");
+        assertArrayEquals(expectedFirstPoint, result.get(0), 1e-9, "Incorrect first point.");
+        assertArrayEquals(expectedLastPoint, result.get(result.size() - 1), 1e-9, "Incorrect last point.");
     }
 
-    @Test
-    public void testEulerFullInvalidRange() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        assertThrows(IllegalArgumentException.class, () -> EulerMethod.eulerFull(1, 0, 0.1, 1, equation), "Expected IllegalArgumentException for invalid range (xStart >= xEnd).");
+    static Stream<Arguments> eulerFullTestCases() {
+        return Stream.of(Arguments.of(0.0, 1.0, 0.5, 0.0, (BiFunction<Double, Double, Double>) ((x, y) -> x), 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25}),
+            Arguments.of(0.0, 1.0, 0.1, 1.0, (BiFunction<Double, Double, Double>) ((x, y) -> y), 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002}),
+            Arguments.of(0.0, 0.1, 0.1, 1.0, (BiFunction<Double, Double, Double>) ((x, y) -> x + y), 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1}));
     }
 
-    @Test
-    public void testEulerFullZeroStepSize() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        assertThrows(IllegalArgumentException.class, () -> EulerMethod.eulerFull(0, 1, 0.0, 1, equation), "Expected IllegalArgumentException for zero step size.");
+    @ParameterizedTest
+    @MethodSource("eulerFullInvalidCases")
+    void testEulerFullInvalidInput(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, Class<? extends Exception> expectedExceptionClass) {
+        assertThrows(expectedExceptionClass, () -> EulerMethod.eulerFull(xStart, xEnd, stepSize, yInitial, equation));
     }
 
-    @Test
-    public void testEulerFullNegativeStepSize() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        assertThrows(IllegalArgumentException.class, () -> EulerMethod.eulerFull(0, 1, -0.1, 1, equation), "Expected IllegalArgumentException for negative step size.");
-    }
-
-    @Test
-    public void testEulerFullSingleStep() {
-        BiFunction<Double, Double, Double> equation = (x, y) -> x + y;
-        ArrayList<double[]> result = EulerMethod.eulerFull(0, 0.1, 0.1, 1, equation);
-        assertEquals(2, result.size(), "Incorrect number of points for single step.");
-        assertArrayEquals(new double[] {0.0, 1.0}, result.get(0), 1e-9, "Incorrect first point.");
-        assertArrayEquals(new double[] {0.1, 1.1}, result.get(1), 1e-9, "Incorrect second point.");
+    static Stream<Arguments> eulerFullInvalidCases() {
+        BiFunction<Double, Double, Double> dummyEquation = (x, y) -> x + y;
+        return Stream.of(Arguments.of(1.0, 0.0, 0.1, 1.0, dummyEquation, IllegalArgumentException.class), Arguments.of(0.0, 1.0, 0.0, 1.0, dummyEquation, IllegalArgumentException.class), Arguments.of(0.0, 1.0, -0.1, 1.0, dummyEquation, IllegalArgumentException.class));
     }
 }
