@@ -9,24 +9,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class MergeKSortedArraysTest {
 
-    /**
-     * Parameterized test for merging multiple sorted arrays.
-     * Each test case provides input arrays and the expected merged output.
-     *
-     * @param arrays   the input 2D array of sorted arrays
-     * @param expected the expected merged sorted array
-     */
     @ParameterizedTest
     @MethodSource("provideTestCases")
     public void testMergeKArrays(int[][] arrays, int[] expected) {
         assertArrayEquals(expected, MergeKSortedArrays.mergeKArrays(arrays));
     }
 
-    /**
-     * Provides various test cases including edge cases for merging sorted arrays.
-     *
-     * @return a stream of test arguments containing input arrays and expected outputs
-     */
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(
             // Basic test case with multiple arrays
