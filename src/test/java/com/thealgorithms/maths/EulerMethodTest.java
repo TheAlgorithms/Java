@@ -13,6 +13,24 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class EulerMethodTest {
 
+    private static class EulerFullTestCase {
+        double xStart, xEnd, stepSize, yInitial;
+        BiFunction<Double, Double, Double> equation;
+        int expectedSize;
+        double[] expectedFirstPoint, expectedLastPoint;
+
+        EulerFullTestCase(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
+            this.xStart = xStart;
+            this.xEnd = xEnd;
+            this.stepSize = stepSize;
+            this.yInitial = yInitial;
+            this.equation = equation;
+            this.expectedSize = expectedSize;
+            this.expectedFirstPoint = expectedFirstPoint;
+            this.expectedLastPoint = expectedLastPoint;
+        }
+    }
+
     @ParameterizedTest
     @MethodSource("eulerStepTestCases")
     void testEulerStep(double x, double h, double y, BiFunction<Double, Double, Double> equation, double expected) {
@@ -37,17 +55,16 @@ class EulerMethodTest {
 
     @ParameterizedTest
     @MethodSource("eulerFullTestCases")
-    void testEulerFull(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
-        ArrayList<double[]> result = EulerMethod.eulerFull(xStart, xEnd, stepSize, yInitial, equation);
-        assertEquals(expectedSize, result.size(), "Incorrect number of points in the result.");
-        assertArrayEquals(expectedFirstPoint, result.get(0), 1e-9, "Incorrect first point.");
-        assertArrayEquals(expectedLastPoint, result.get(result.size() - 1), 1e-9, "Incorrect last point.");
+    void testEulerFull(EulerFullTestCase testCase) {
+        ArrayList<double[]> result = EulerMethod.eulerFull(testCase.xStart, testCase.xEnd, testCase.stepSize, testCase.yInitial, testCase.equation);
+        assertEquals(testCase.expectedSize, result.size(), "Incorrect number of points in the result.");
+        assertArrayEquals(testCase.expectedFirstPoint, result.get(0), 1e-9, "Incorrect first point.");
+        assertArrayEquals(testCase.expectedLastPoint, result.get(result.size() - 1), 1e-9, "Incorrect last point.");
     }
 
     static Stream<Arguments> eulerFullTestCases() {
-        return Stream.of(Arguments.of(0.0, 1.0, 0.5, 0.0, (BiFunction<Double, Double, Double>) ((x, y) -> x), 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25}),
-            Arguments.of(0.0, 1.0, 0.1, 1.0, (BiFunction<Double, Double, Double>) ((x, y) -> y), 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002}),
-            Arguments.of(0.0, 0.1, 0.1, 1.0, (BiFunction<Double, Double, Double>) ((x, y) -> x + y), 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1}));
+        return Stream.of(Arguments.of(new EulerFullTestCase(0.0, 1.0, 0.5, 0.0, (x, y) -> x, 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25})),
+            Arguments.of(new EulerFullTestCase(0.0, 1.0, 0.1, 1.0, (x, y) -> y, 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002})), Arguments.of(new EulerFullTestCase(0.0, 0.1, 0.1, 1.0, (x, y) -> x + y, 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1})));
     }
 
     @ParameterizedTest
