@@ -183,7 +183,7 @@ public class BoruvkaAlgorithmTest {
      * @param result list of edges in the Minimum Spanning Tree
      * @return the total weight of the Minimum Spanning Tree
      */
-    int computeTotalWeight(final List<BoruvkaAlgorithm.Edge> result) {
+    int computeTotalWeight(final Iterable<BoruvkaAlgorithm.Edge> result) {
         int totalWeight = 0;
         for (final var edge : result) {
             totalWeight += edge.weight;
