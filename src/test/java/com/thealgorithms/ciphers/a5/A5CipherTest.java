@@ -9,14 +9,12 @@ import org.junit.jupiter.api.Test;
 public class A5CipherTest {
 
     private A5Cipher a5Cipher;
-    private BitSet sessionKey;
-    private BitSet frameCounter;
 
     @BeforeEach
     void setUp() {
         // Initialize the session key and frame counter
-        sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L});
-        frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L});
+        final var sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L});
+        final var frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L});
         a5Cipher = new A5Cipher(sessionKey, frameCounter);
     }
 

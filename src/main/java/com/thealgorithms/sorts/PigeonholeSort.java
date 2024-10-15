@@ -78,7 +78,7 @@ public final class PigeonholeSort {
      * @param array the array to be sorted
      * @param pigeonHoles the populated pigeonholes
      */
-    private static void collectFromPigeonHoles(int[] array, List<List<Integer>> pigeonHoles) {
+    private static void collectFromPigeonHoles(int[] array, Iterable<List<Integer>> pigeonHoles) {
         int index = 0;
         for (final var pigeonHole : pigeonHoles) {
             for (final int element : pigeonHole) {
