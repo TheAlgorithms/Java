@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Class for circular convolution of two discrete signals using the convolution
@@ -19,7 +20,7 @@ public final class CircularConvolutionFFT {
      * @param x The signal to be padded.
      * @param newSize The new size of the signal.
      */
-    private static void padding(ArrayList<FFT.Complex> x, int newSize) {
+    private static void padding(Collection<FFT.Complex> x, int newSize) {
         if (x.size() < newSize) {
             int diff = newSize - x.size();
             for (int i = 0; i < diff; i++) {
