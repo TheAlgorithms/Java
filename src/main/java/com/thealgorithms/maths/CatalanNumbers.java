@@ -36,13 +36,4 @@ public final class CatalanNumbers {
         }
         return result;
     }
-
-    /**
-     * Main method to test the Catalan number calculation.
-     */
-    public static void main(String[] args) {
-        for (int i = 0; i <= 10; i++) {
-            System.out.println("Catalan number " + i + " is: " + catalan(i));
-        }
-    }
 }
