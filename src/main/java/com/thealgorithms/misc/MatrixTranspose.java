@@ -1,7 +1,5 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
-
 /**
  *
  *
@@ -22,62 +20,27 @@ public final class MatrixTranspose {
     private MatrixTranspose() {
     }
 
-    public static void main(String[] args) {
-        /*
-         * This is the main method
-         *
-         * @param args Unused.
-         *
-         * @return Nothing.
-         */
-        Scanner sc = new Scanner(System.in);
-        int i;
-        int j;
-        int row;
-        int column;
-        System.out.println("Enter the number of rows in the 2D matrix:");
-
-        /*
-         * Take input from user for how many rows to be print
-         */
-        row = sc.nextInt();
-
-        System.out.println("Enter the number of columns in the 2D matrix:");
-
-        /*
-         * Take input from user for how many coloumn to be print
-         */
-        column = sc.nextInt();
-        int[][] arr = new int[row][column];
-        System.out.println("Enter the elements");
-        for (i = 0; i < row; i++) {
-            for (j = 0; j < column; j++) {
-                arr[i][j] = sc.nextInt();
-            }
+    /**
+     * Calculate the transpose of the given matrix.
+     *
+     * @param matrix The matrix to be transposed
+     * @throws IllegalArgumentException if the matrix is empty
+     * @throws NullPointerException     if the matrix is null
+     * @return The transposed matrix
+     */
+    public static int[][] transpose(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            throw new IllegalArgumentException("Matrix is empty");
         }
 
-        /*
-         * Print matrix before the Transpose in proper way
-         */
-        System.out.println("The matrix is:");
-        for (i = 0; i < row; i++) {
-            for (j = 0; j < column; j++) {
-                System.out.print(arr[i][j] + "\t");
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[][] transposedMatrix = new int[cols][rows];
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                transposedMatrix[i][j] = matrix[j][i];
             }
-            System.out.print("\n");
         }
-
-        /*
-         * Print matrix after the tranpose in proper way Transpose means Interchanging
-         * of rows wth column so we interchange the rows in next loop Thus at last
-         * matrix of transpose is obtained through user input...
-         */
-        System.out.println("The Transpose of the given matrix is:");
-        for (i = 0; i < column; i++) {
-            for (j = 0; j < row; j++) {
-                System.out.print(arr[j][i] + "\t");
-            }
-            System.out.print("\n");
-        }
+        return transposedMatrix;
     }
 }

@@ -27,10 +27,14 @@ public class ArrayCombinationTest {
 
     private static Stream<Arguments> regularInputs() {
         return Stream.of(Arguments.of(0, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 0, List.of(new ArrayList<Integer>())), Arguments.of(1, 1, List.of(List.of(0))), Arguments.of(3, 0, List.of(new ArrayList<Integer>())), Arguments.of(3, 1, List.of(List.of(0), List.of(1), List.of(2))),
-            Arguments.of(4, 2, List.of(List.of(0, 1), List.of(0, 2), List.of(0, 3), List.of(1, 2), List.of(1, 3), List.of(2, 3))));
+            Arguments.of(4, 2, List.of(List.of(0, 1), List.of(0, 2), List.of(0, 3), List.of(1, 2), List.of(1, 3), List.of(2, 3))),
+            Arguments.of(5, 3, List.of(List.of(0, 1, 2), List.of(0, 1, 3), List.of(0, 1, 4), List.of(0, 2, 3), List.of(0, 2, 4), List.of(0, 3, 4), List.of(1, 2, 3), List.of(1, 2, 4), List.of(1, 3, 4), List.of(2, 3, 4))),
+            Arguments.of(6, 4,
+                List.of(List.of(0, 1, 2, 3), List.of(0, 1, 2, 4), List.of(0, 1, 2, 5), List.of(0, 1, 3, 4), List.of(0, 1, 3, 5), List.of(0, 1, 4, 5), List.of(0, 2, 3, 4), List.of(0, 2, 3, 5), List.of(0, 2, 4, 5), List.of(0, 3, 4, 5), List.of(1, 2, 3, 4), List.of(1, 2, 3, 5), List.of(1, 2, 4, 5),
+                    List.of(1, 3, 4, 5), List.of(2, 3, 4, 5))));
     }
 
     private static Stream<Arguments> wrongInputs() {
-        return Stream.of(Arguments.of(-1, 0), Arguments.of(0, -1), Arguments.of(2, 100));
+        return Stream.of(Arguments.of(-1, 0), Arguments.of(0, -1), Arguments.of(2, 100), Arguments.of(3, 4));
     }
 }
