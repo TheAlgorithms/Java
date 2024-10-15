@@ -945,6 +945,7 @@
             * [DigitalRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DigitalRootTest.java)
             * [DistanceFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DistanceFormulaTest.java)
             * [DudeneyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DudeneyNumberTest.java)
+            * [EulerMethodTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/EulerMethodTest.java)
             * [EulersFunctionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/EulersFunctionTest.java)
             * [FactorialRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FactorialRecursionTest.java)
             * [FactorialTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/FactorialTest.java)
