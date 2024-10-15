@@ -14,20 +14,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 class EulerMethodTest {
 
     private static class EulerFullTestCase {
-        double xStart;
-        double xEnd;
-        double stepSize;
-        double yInitial;
+        double[] params;
         BiFunction<Double, Double, Double> equation;
         int expectedSize;
         double[] expectedFirstPoint;
         double[] expectedLastPoint;
 
-        EulerFullTestCase(double xStart, double xEnd, double stepSize, double yInitial, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
-            this.xStart = xStart;
-            this.xEnd = xEnd;
-            this.stepSize = stepSize;
-            this.yInitial = yInitial;
+        EulerFullTestCase(double[] params, BiFunction<Double, Double, Double> equation, int expectedSize, double[] expectedFirstPoint, double[] expectedLastPoint) {
+            this.params = params;
             this.equation = equation;
             this.expectedSize = expectedSize;
             this.expectedFirstPoint = expectedFirstPoint;
@@ -60,15 +54,16 @@ class EulerMethodTest {
     @ParameterizedTest
     @MethodSource("eulerFullTestCases")
     void testEulerFull(EulerFullTestCase testCase) {
-        ArrayList<double[]> result = EulerMethod.eulerFull(testCase.xStart, testCase.xEnd, testCase.stepSize, testCase.yInitial, testCase.equation);
+        ArrayList<double[]> result = EulerMethod.eulerFull(testCase.params[0], testCase.params[1], testCase.params[2], testCase.params[3], testCase.equation);
         assertEquals(testCase.expectedSize, result.size(), "Incorrect number of points in the result.");
         assertArrayEquals(testCase.expectedFirstPoint, result.get(0), 1e-9, "Incorrect first point.");
         assertArrayEquals(testCase.expectedLastPoint, result.get(result.size() - 1), 1e-9, "Incorrect last point.");
     }
 
     static Stream<Arguments> eulerFullTestCases() {
-        return Stream.of(Arguments.of(new EulerFullTestCase(0.0, 1.0, 0.5, 0.0, (x, y) -> x, 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25})),
-            Arguments.of(new EulerFullTestCase(0.0, 1.0, 0.1, 1.0, (x, y) -> y, 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002})), Arguments.of(new EulerFullTestCase(0.0, 0.1, 0.1, 1.0, (x, y) -> x + y, 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1})));
+        return Stream.of(Arguments.of(new EulerFullTestCase(new double[] {0.0, 1.0, 0.5, 0.0}, (x, y) -> x, 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25})),
+            Arguments.of(new EulerFullTestCase(new double[] {0.0, 1.0, 0.1, 1.0}, (x, y) -> y, 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002})),
+            Arguments.of(new EulerFullTestCase(new double[] {0.0, 0.1, 0.1, 1.0}, (x, y) -> x + y, 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1})));
     }
 
     @ParameterizedTest
