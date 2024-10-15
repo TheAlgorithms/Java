@@ -938,6 +938,7 @@
             * [CeilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CeilTest.java)
             * [CollatzConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CollatzConjectureTest.java)
             * [CombinationsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CombinationsTest.java)
+            * [ConvolutionFFTTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ConvolutionFFTTest.java)
             * [ConvolutionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ConvolutionTest.java)
             * [CrossCorrelationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CrossCorrelationTest.java)
             * [DeterminantOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/DeterminantOfMatrixTest.java)
