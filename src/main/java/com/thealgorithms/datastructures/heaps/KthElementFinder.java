@@ -10,7 +10,9 @@ import java.util.PriorityQueue;
  *
  * @author Hardvan
  */
-public class KthElementFinder {
+public final class KthElementFinder {
+    private KthElementFinder() {
+    }
 
     /**
      * Finds the Kth largest element in the given array.
