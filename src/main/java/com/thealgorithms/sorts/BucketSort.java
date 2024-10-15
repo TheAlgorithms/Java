@@ -79,7 +79,7 @@ public class BucketSort implements SortAlgorithm {
      * @param <T> the type of elements in the array
      * @return the sorted array
      */
-    private <T extends Comparable<T>> T[] concatenateBuckets(List<List<T>> buckets, T[] array) {
+    private <T extends Comparable<T>> T[] concatenateBuckets(Iterable<List<T>> buckets, T[] array) {
         int index = 0;
         for (List<T> bucket : buckets) {
             Collections.sort(bucket);
