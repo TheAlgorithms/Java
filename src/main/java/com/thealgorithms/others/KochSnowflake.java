@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 
 /**
@@ -125,7 +126,7 @@ public final class KochSnowflake {
      * applied.
      * @return The transformed vectors after the iteration-step.
      */
-    private static ArrayList<Vector2> iterationStep(ArrayList<Vector2> vectors) {
+    private static ArrayList<Vector2> iterationStep(List<Vector2> vectors) {
         ArrayList<Vector2> newVectors = new ArrayList<Vector2>();
         for (int i = 0; i < vectors.size() - 1; i++) {
             Vector2 startVector = vectors.get(i);

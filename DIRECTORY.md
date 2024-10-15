@@ -1023,6 +1023,7 @@
             * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MirrorOfMatrixTest.java)
             * [PalindromeSinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromeSinglyLinkedListTest.java)
             * [RangeInSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/RangeInSortedArrayTest.java)
+            * [ThreeSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/ThreeSumProblemTest.java)
             * [TwoSumProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/TwoSumProblemTest.java)
             * [WordBoggleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/WordBoggleTest.java)
           * others
