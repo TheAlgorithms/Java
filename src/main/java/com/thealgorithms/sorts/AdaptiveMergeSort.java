@@ -1,7 +1,6 @@
 package com.thealgorithms.sorts;
 
 public class AdaptiveMergeSort implements SortAlgorithm {
-
     @SuppressWarnings("unchecked")
     public <T extends Comparable<T>> T[] sort(T[] array) {
         if (array.length <= 1) {
@@ -24,7 +23,6 @@ public class AdaptiveMergeSort implements SortAlgorithm {
 
     private <T extends Comparable<T>> void merge(T[] array, T[] aux, int low, int mid, int high) {
         System.arraycopy(array, low, aux, low, high - low + 1);
-
         int i = low;
         int j = mid + 1;
         for (int k = low; k <= high; k++) {
@@ -38,16 +36,5 @@ public class AdaptiveMergeSort implements SortAlgorithm {
                 array[k] = aux[i++];
             }
         }
-    }
-
-    public static void main(String[] args) {
-        AdaptiveMergeSort adaptiveMergeSort = new AdaptiveMergeSort();
-        // Integer Input
-        Integer[] integers = {4, 23, 6, 78, 1, 54, 231, 9, 12};
-        SortUtils.print(adaptiveMergeSort.sort(integers));
-
-        // String Input
-        String[] strings = {"c", "a", "e", "b", "d"};
-        SortUtils.print(adaptiveMergeSort.sort(strings));
     }
 }
