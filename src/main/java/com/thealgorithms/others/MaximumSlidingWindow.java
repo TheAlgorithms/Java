@@ -21,25 +21,25 @@ public class MaximumSlidingWindow {
      *
      * @param nums The input array of integers
      * @param windowSize The size of the sliding window
-     * @return An array of integers representing the maximums in each sliding window
+     * @return An array of integers representing the maximums in each window
      */
-    public int[] maxSlidingWindow(int[] nums, int windowSize){
-        if(nums==null || nums.length==0 || windowSize<=0 || windowSize>nums.length) {
+    public int[] maxSlidingWindow(int[] nums, int windowSize) {
+        if (nums == null || nums.length == 0 || windowSize <= 0 || windowSize > nums.length) {
             return new int[0]; // Handle edge cases
         }
 
         int[] result = new int[nums.length - windowSize + 1];
         Deque<Integer> deque = new ArrayDeque<>();
 
-        for(int currentIndex=0;currentIndex<nums.length;currentIndex++){
+        for (int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
 
             // Remove the first element if it's outside the current window
-            if(!deque.isEmpty() && deque.peekFirst()==currentIndex-windowSize) {
+            if (!deque.isEmpty() && deque.peekFirst() == currentIndex - windowSize) {
                 deque.pollFirst();
             }
 
             // Remove all elements smaller than the current element from the end
-            while(!deque.isEmpty() && nums[deque.peekLast()]<nums[currentIndex]) {
+            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[currentIndex]) {
                 deque.pollLast();
             }
 
@@ -47,7 +47,7 @@ public class MaximumSlidingWindow {
             deque.offerLast(currentIndex);
 
             // If we have processed at least k elements, add to result
-            if(currentIndex>=windowSize-1) {
+            if (currentIndex >= windowSize - 1) {
                 result[currentIndex - windowSize + 1] = nums[deque.peekFirst()];
             }
         }
@@ -55,14 +55,13 @@ public class MaximumSlidingWindow {
     }
     public static void main(String[] args) {
         MaximumSlidingWindow msw = new MaximumSlidingWindow();
-        int[] nums = {1,3,-1,-3,5,3,6,7};
+        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
         int k = 3;
 
         // Calculate the maximum sliding window
         int[] result = msw.maxSlidingWindow(nums, k);
 
         // Print the result
-        for(int num:result)
-            System.out.print(num+" ");
+        for (int num : result) System.out.print(num + " ");
     }
 }
