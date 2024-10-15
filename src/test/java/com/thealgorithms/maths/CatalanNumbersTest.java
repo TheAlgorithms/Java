@@ -28,9 +28,6 @@ class CatalanNumbersTest {
 
     @Test
     void testIllegalInput() {
-        assertAll(
-            () -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-1)),
-            () -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-5))
-        );
+        assertAll(() -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-1)), () -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-5)));
     }
 }
