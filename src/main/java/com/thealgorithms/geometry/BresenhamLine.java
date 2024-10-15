@@ -16,6 +16,10 @@ import java.util.List;
  */
 public final class BresenhamLine {
 
+    private BresenhamLine() {
+        // Private constructor to prevent instantiation.
+    }
+
     /**
      * Finds the list of points that form a straight line between two endpoints.
      *
@@ -25,7 +29,7 @@ public final class BresenhamLine {
      * @param y1 the y-coordinate of the ending point
      * @return a {@code List<Point>} containing all points on the line
      */
-    public List<Point> findLine(int x0, int y0, int x1, int y1) {
+    public static List<Point> findLine(int x0, int y0, int x1, int y1) {
         List<Point> line = new ArrayList<>();
 
         // Calculate differences and steps for each axis
@@ -45,7 +49,7 @@ public final class BresenhamLine {
             }
 
             // Calculate error term doubled for decision making
-            int e2 = err * 2;
+            final int e2 = err * 2;
 
             // Adjust x coordinate if necessary
             if (e2 > -dy) {
