@@ -1,6 +1,7 @@
 package com.thealgorithms.backtracking;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -95,7 +96,7 @@ public final class CrosswordSolver {
      * @param words  The list of words to be placed.
      * @return true if the crossword is solved, false otherwise.
      */
-    public static boolean solveCrossword(char[][] puzzle, List<String> words) {
+    public static boolean solveCrossword(char[][] puzzle, Collection<String> words) {
         // Create a mutable copy of the words list
         List<String> remainingWords = new ArrayList<>(words);
 
