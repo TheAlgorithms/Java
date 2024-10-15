@@ -1,5 +1,7 @@
 package com.thealgorithms.stacks;
 
+import java.util.Stack;
+
 /**
  * Solves the celebrity problem using a stack-based algorithm.
  *
@@ -13,24 +15,34 @@ public final class CelebrityFinder {
     }
 
     /**
-     * Finds the celebrity in the given party matrix.
+     * Finds the celebrity in the given party matrix using a stack-based algorithm.
      *
      * @param party A 2D matrix where party[i][j] is 1 if i knows j, otherwise 0.
      * @return The index of the celebrity, or -1 if there is no celebrity.
      */
     public static int findCelebrity(int[][] party) {
-        int n = party.length;
-        int candidate = 0;
 
-        // Find a potential celebrity
-        for (int i = 1; i < n; i++) {
-            if (party[candidate][i] == 1) {
-                candidate = i;
+        // Push all people onto the stack
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < party.length; i++) {
+            stack.push(i);
+        }
+
+        // Find the potential celebrity by comparing pairs
+        while (stack.size() > 1) {
+            int person1 = stack.pop();
+            int person2 = stack.pop();
+
+            if (party[person1][person2] == 1) {
+                stack.push(person2); // person1 knows person2, so person2 might be the celebrity
+            } else {
+                stack.push(person1); // person1 doesn't know person2, so person1 might be the celebrity
             }
         }
 
         // Verify the candidate
-        for (int i = 0; i < n; i++) {
+        int candidate = stack.pop();
+        for (int i = 0; i < party.length; i++) {
             if (i != candidate && (party[candidate][i] == 1 || party[i][candidate] == 0)) {
                 return -1;
             }
