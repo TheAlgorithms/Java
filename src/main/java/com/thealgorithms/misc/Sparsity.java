@@ -14,6 +14,7 @@ final class Sparsity {
     }
 
     /*
+     * @param mat the input matrix
      * @return Sparsity of matrix
      *
      * where sparsity = number of zeroes/total elements in matrix
