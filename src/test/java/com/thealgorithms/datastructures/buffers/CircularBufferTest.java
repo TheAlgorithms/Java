@@ -13,7 +13,7 @@ class CircularBufferTest {
     void testInitialization() {
         CircularBuffer<Integer> buffer = new CircularBuffer<>(5);
         assertTrue(buffer.isEmpty());
-        assertEquals(false, buffer.isFull());
+        assertEquals(Boolean.FALSE, buffer.isFull());
     }
 
     @Test
@@ -21,8 +21,8 @@ class CircularBufferTest {
         CircularBuffer<String> buffer = new CircularBuffer<>(3);
 
         assertTrue(buffer.put("A"));
-        assertEquals(false, buffer.isEmpty());
-        assertEquals(false, buffer.isFull());
+        assertEquals(Boolean.FALSE, buffer.isEmpty());
+        assertEquals(Boolean.FALSE, buffer.isFull());
 
         buffer.put("B");
         buffer.put("C");
@@ -41,7 +41,7 @@ class CircularBufferTest {
         buffer.put(1);
         buffer.put(2);
         buffer.put(3);
-        assertEquals(false, buffer.put(4)); // This should overwrite 1
+        assertEquals(Boolean.FALSE, buffer.put(4)); // This should overwrite 1
 
         assertEquals(2, buffer.get());
         assertEquals(3, buffer.get());
@@ -61,7 +61,7 @@ class CircularBufferTest {
         buffer.put('A');
         buffer.put('B');
         assertTrue(buffer.isFull());
-        assertEquals(false, buffer.put('C')); // This should overwrite 'A'
+        assertEquals(Boolean.FALSE, buffer.put('C')); // This should overwrite 'A'
         assertEquals('B', buffer.get());
         assertEquals('C', buffer.get());
     }
