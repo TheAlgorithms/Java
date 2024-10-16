@@ -58,36 +58,35 @@ final class MaximumSumOfNonAdjacentElements {
      * @return The maximum sum of non-adjacent elements.
      */
     public static int getMaxSumApproach2(int[] arr) {
+       // Check for an empty array, return 0 as no elements to sum
         if (arr.length == 0) {
-            return 0; // Check for empty array
+            return 0;
+        }
+        // If there's only one element, return that element as the result
+        if (arr.length == 1) {
+            return arr[0];
         }
 
-        int n = arr.length;
+        // Initialize two variables to store the maximum sums:
+        int prev1 = arr[0]; // Maximum sum up to the first element.
+        int prev2 = 0;      // Base case for the element before the first.
 
-        // Two variables to keep track of previous two results:
-        // prev1 = max sum up to the last element (n-1)
-        // prev2 = max sum up to the element before last (n-2)
+        // Iterate over the array starting from the second element.
+        for (int ind = 1; ind < arr.length; ind++) {
+            // Calculate the sum if taking the current element:
+            // Include arr[ind] + prev2 (if index > 1)
+            int take = arr[ind] + (ind > 1 ? prev2 : 0);
 
-        int prev1 = arr[0]; // Base case: Maximum sum for the first element.
-        int prev2 = 0;
-
-        for (int ind = 1; ind < n; ind++) {
-            // Case 1: Do not take the current element, keep the last max sum.
+            // Calculate the sum if not taking the current element:
+            // Take the sum as it is up to the previous element.
             int notTake = prev1;
 
-            // Case 2: Take the current element and add it to the result from two
-            // steps back.
-            int take = arr[ind];
-            if (ind > 1) {
-                take += prev2;
-            }
-
-            // Calculate the current maximum sum and update previous values.
+            // Determine the maximum of taking or not taking the current element.
             int current = Math.max(take, notTake);
 
-            // Shift prev1 and prev2 for the next iteration.
-            prev2 = prev1;
-            prev1 = current;
+            // Update the values for the next iteration:
+            prev2 = prev1;   // Shift prev2 to the last element's sum.
+            prev1 = current; // Update prev1 with the current maximum sum.
         }
 
         return prev1;
