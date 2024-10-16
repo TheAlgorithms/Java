@@ -15,6 +15,7 @@ class ModuloPowerOfTwoTest {
         "20, 4, 4",
         "7, 1, 1",
         "5, 1, 1",
+        "36, 5, 4",
     })
     void
     testModuloPowerOfTwo(int x, int n, int expected) {
