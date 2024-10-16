@@ -12,11 +12,17 @@ public class IPv6ConverterTest {
         + "0."
         + "2."
         + "128";
-    private static final String EXPECTED_IPV6_MAPPED = ":"+":ff"+"ff"
-        + ":19"+"2."+"0."
+    private static final String EXPECTED_IPV6_MAPPED = ":"
+        + ":ff"
+        + "ff"
+        + ":19"
+        + "2."
+        + "0."
         + "2.128";
     private static final String INVALID_IPV6_MAPPED = "2001:"
-        + "db8"+":"+":1";
+        + "db8"
+        + ":"
+        + ":1";
     private static final String INVALID_IPV4 = "999."
         + "999."
         + "999."
