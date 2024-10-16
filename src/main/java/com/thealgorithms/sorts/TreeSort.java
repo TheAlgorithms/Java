@@ -51,7 +51,7 @@ public class TreeSort implements SortAlgorithm {
         return unsortedArray;
     }
 
-    private <T extends Comparable<T>> List<T> doTreeSortList(List<T> unsortedList) {
+    private <T extends Comparable<T>> List<T> doTreeSortList(Iterable<T> unsortedList) {
         // create a generic BST tree
         BSTRecursiveGeneric<T> tree = new BSTRecursiveGeneric<T>();
 
