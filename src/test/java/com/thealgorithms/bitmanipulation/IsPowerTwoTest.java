@@ -3,7 +3,10 @@ package com.thealgorithms.bitmanipulation;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Test case for IsPowerTwo class
@@ -11,25 +14,38 @@ import org.junit.jupiter.api.Test;
  */
 
 public class IsPowerTwoTest {
-    @Test
-    public void testIsPowerTwo() {
-        // test some positive powers of 2
-        assertTrue(IsPowerTwo.isPowerTwo(1));
-        assertTrue(IsPowerTwo.isPowerTwo(2));
-        assertTrue(IsPowerTwo.isPowerTwo(4));
-        assertTrue(IsPowerTwo.isPowerTwo(16));
-        assertTrue(IsPowerTwo.isPowerTwo(1024));
 
-        // test some negative numbers
-        assertFalse(IsPowerTwo.isPowerTwo(-1));
-        assertFalse(IsPowerTwo.isPowerTwo(-2));
-        assertFalse(IsPowerTwo.isPowerTwo(-4));
+    @ParameterizedTest
+    @MethodSource("provideNumbersForPowerTwo")
+    public void testIsPowerTwo(int number, boolean expected) {
+        if (expected) {
+            assertTrue(IsPowerTwo.isPowerTwo(number));
+        } else {
+            assertFalse(IsPowerTwo.isPowerTwo(number));
+        }
+    }
 
-        // test some numbers that are not powers of 2
-        assertFalse(IsPowerTwo.isPowerTwo(0));
-        assertFalse(IsPowerTwo.isPowerTwo(3));
-        assertFalse(IsPowerTwo.isPowerTwo(5));
-        assertFalse(IsPowerTwo.isPowerTwo(15));
-        assertFalse(IsPowerTwo.isPowerTwo(1000));
+    private static Stream<Arguments> provideNumbersForPowerTwo() {
+        return Stream.of(Arguments.of(1, Boolean.TRUE), // 2^0
+            Arguments.of(2, Boolean.TRUE), // 2^1
+            Arguments.of(4, Boolean.TRUE), // 2^2
+            Arguments.of(8, Boolean.TRUE), // 2^3
+            Arguments.of(16, Boolean.TRUE), // 2^4
+            Arguments.of(32, Boolean.TRUE), // 2^5
+            Arguments.of(64, Boolean.TRUE), // 2^6
+            Arguments.of(128, Boolean.TRUE), // 2^7
+            Arguments.of(256, Boolean.TRUE), // 2^8
+            Arguments.of(1024, Boolean.TRUE), // 2^10
+            Arguments.of(0, Boolean.FALSE), // 0 is not a power of two
+            Arguments.of(-1, Boolean.FALSE), // Negative number
+            Arguments.of(-2, Boolean.FALSE), // Negative number
+            Arguments.of(-4, Boolean.FALSE), // Negative number
+            Arguments.of(3, Boolean.FALSE), // 3 is not a power of two
+            Arguments.of(5, Boolean.FALSE), // 5 is not a power of two
+            Arguments.of(6, Boolean.FALSE), // 6 is not a power of two
+            Arguments.of(15, Boolean.FALSE), // 15 is not a power of two
+            Arguments.of(1000, Boolean.FALSE), // 1000 is not a power of two
+            Arguments.of(1023, Boolean.FALSE) // 1023 is not a power of two
+        );
     }
 }
