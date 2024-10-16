@@ -28,42 +28,61 @@ public class BreadthFirstSearch<T> {
      * @return Optional containing the found node, or empty if not found
      */
     public Optional<Node<T>> search(final Node<T> root, final T value) {
-        if (value == null || root == null) {
+        // Handle null root
+        if (root == null) {
             return Optional.empty();
         }
 
-        visited.clear();
-        visitedSet.clear();
+        // Check root value first
+        if (value == null) {
+            if (root.getValue() == null) {
+                visited.add(null);
+                return Optional.of(root);
+            }
+            visited.add(root.getValue());
+            return Optional.empty();
+        }
 
-        Queue<Node<T>> queue = new ArrayDeque<>();
-        queue.offer(root);
-        visitedSet.add(root.getValue());
+        // Check root node
+        if (value.equals(root.getValue())) {
+            visited.add(root.getValue());
+            return Optional.of(root);
+        }
+
+        // Add root to visited
         visited.add(root.getValue());
+        visitedSet.add(root.getValue());
 
+        // Process remaining nodes
+        Queue<Node<T>> queue = new ArrayDeque<>(root.getChildren());
         while (!queue.isEmpty()) {
             final Node<T> current = queue.poll();
+            T currentValue = current.getValue();
+            
+            // Skip if already visited
+            if (visitedSet.contains(currentValue)) {
+                continue;
+            }
 
-            if (value.equals(current.getValue())) {
+            visited.add(currentValue);
+            visitedSet.add(currentValue);
+
+            if (value.equals(currentValue)) {
                 return Optional.of(current);
             }
 
-            for (Node<T> child : current.getChildren()) {
-                if (child != null && !visitedSet.contains(child.getValue())) {
-                    queue.offer(child);
-                    visitedSet.add(child.getValue());
-                    visited.add(child.getValue());
-                }
-            }
+            queue.addAll(current.getChildren());
         }
+
         return Optional.empty();
     }
 
     /**
      * Returns the list of nodes in the order they were visited.
      *
-     * @return A new list containing the visited nodes
+     * @return List containing the visited nodes
      */
     public List<T> getVisited() {
-        return new ArrayList<>(visited);
+        return visited;
     }
 }
