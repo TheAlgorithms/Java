@@ -10,6 +10,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+/**
+ * The {@code MidpointEllipseTest} class contains unit tests for the
+ * {@code MidpointEllipse} class, specifically testing the
+ * {@code drawEllipse} method.
+ *
+ * <p>This class uses parameterized tests to validate the output of
+ * Midpoint Ellipse algorithm for various input points.</p>
+ */
 class MidpointEllipseTest {
 
     /**
