@@ -1,6 +1,7 @@
 package com.thealgorithms.geometry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -121,7 +122,7 @@ public final class MidpointEllipse {
      * @param x        the x-coordinate relative to the center
      * @param y        the y-coordinate relative to the center
      */
-    private static void addEllipsePoints(List<int[]> points, int centerX, int centerY, int x, int y) {
+    private static void addEllipsePoints(Collection<int[]> points, int centerX, int centerY, int x, int y) {
         points.add(new int[] {centerX + x, centerY + y});
         points.add(new int[] {centerX - x, centerY + y});
         points.add(new int[] {centerX + x, centerY - y});
