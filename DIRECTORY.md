@@ -262,6 +262,7 @@
             * [TilingProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/TilingProblem.java)
           * dynamicprogramming
             * [Abbreviation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Abbreviation.java)
+            * [AllConstruct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/AllConstruct.java)
             * [AssignmentUsingBitmask](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmask.java)
             * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoardPath.java)
             * [BoundaryFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoundaryFill.java)
@@ -867,6 +868,7 @@
             * [TilingProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/TilingProblemTest.java)
           * dynamicprogramming
             * [AbbreviationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AbbreviationTest.java)
+            * [AllConstructTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AllConstructTest.java)
             * [AssignmentUsingBitmaskTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmaskTest.java)
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
             * [BoundaryFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoundaryFillTest.java)
