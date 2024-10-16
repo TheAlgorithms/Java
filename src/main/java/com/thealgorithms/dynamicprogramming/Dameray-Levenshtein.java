@@ -28,8 +28,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(optimalStringAlignmentDistance("geeks", "forgeeks"));
+		System.out.println(optimalStringAlignmentDistance("Hello", "Hello There"));
 	}
 }
 
-//This code is contributed by shivamsharma215
