@@ -27,7 +27,7 @@ public final class MidpointCircle {
 
         // Special case for radius 0, only the center point should be added.
         if (radius == 0) {
-            points.add(new int[]{centerX, centerY});
+            points.add(new int[] {centerX, centerY});
             return points;
         }
 
@@ -72,13 +72,13 @@ public final class MidpointCircle {
      */
     private static void addSymmetricPoints(List<int[]> points, int centerX, int centerY, int x, int y) {
         // Octant symmetry points
-        points.add(new int[] { centerX + x, centerY + y });
-        points.add(new int[] { centerX - x, centerY + y });
-        points.add(new int[] { centerX + x, centerY - y });
-        points.add(new int[] { centerX - x, centerY - y });
-        points.add(new int[] { centerX + y, centerY + x });
-        points.add(new int[] { centerX - y, centerY + x });
-        points.add(new int[] { centerX + y, centerY - x });
-        points.add(new int[] { centerX - y, centerY - x });
+        points.add(new int[] {centerX + x, centerY + y});
+        points.add(new int[] {centerX - x, centerY + y});
+        points.add(new int[] {centerX + x, centerY - y});
+        points.add(new int[] {centerX - x, centerY - y});
+        points.add(new int[] {centerX + y, centerY + x});
+        points.add(new int[] {centerX - y, centerY + x});
+        points.add(new int[] {centerX + y, centerY - x});
+        points.add(new int[] {centerX - y, centerY - x});
     }
 }
