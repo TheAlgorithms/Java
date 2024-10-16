@@ -64,7 +64,7 @@ public final class MidpointEllipse {
      * @param a        the length of the semi-major axis (horizontal radius)
      * @param b        the length of the semi-minor axis (vertical radius)
      */
-    private static void computeEllipsePoints(List<int[]> points, int centerX, int centerY, int a, int b) {
+    private static void computeEllipsePoints(Collection<int[]> points, int centerX, int centerY, int a, int b) {
         int x = 0; // Initial x-coordinate
         int y = b; // Initial y-coordinate
 
