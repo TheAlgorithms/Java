@@ -59,7 +59,7 @@ public final class ChineseRemainderTheorem {
 
         if (m == 1) {
             return 0;
-        };
+        }
 
         while (a > 1) {
             int q = a / m;
