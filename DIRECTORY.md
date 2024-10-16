@@ -261,6 +261,8 @@
             * [StrassenMatrixMultiplication](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplication.java)
             * [TilingProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/TilingProblem.java)
           * dynamicprogramming
+            * [Abbreviation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Abbreviation.java)
+            * [AssignmentUsingBitmask](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmask.java)
             * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoardPath.java)
             * [BoundaryFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoundaryFill.java)
             * [BruteForceKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BruteForceKnapsack.java)
@@ -864,6 +866,8 @@
             * [StrassenMatrixMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/StrassenMatrixMultiplicationTest.java)
             * [TilingProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/TilingProblemTest.java)
           * dynamicprogramming
+            * [AbbreviationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AbbreviationTest.java)
+            * [AssignmentUsingBitmaskTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmaskTest.java)
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
             * [BoundaryFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoundaryFillTest.java)
             * [BruteForceKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BruteForceKnapsackTest.java)
