@@ -4,7 +4,7 @@ public class ChineseRemainderTheorem
 
     //function to find the greatest common divisor (GCD) of two numbers using the Extended Euclidean Algorithm
     private static long gcd(long a, long b)
-	{
+    {
         if(b == 0)
             return a; //base case: if b is 0, a is the GCD
 
@@ -13,7 +13,7 @@ public class ChineseRemainderTheorem
 
     //function to find the modular inverse of 'a' under modulo 'm' using the Extended Euclidean Algorithm
     private static long extendedGCD(long a, long b)
-	{
+    {
         long originalB = b; //keeping original 'b' for later use
         long x1 = 1, x2 = 0; //x1 and x2 are coefficients for 'a'
         long y1 = 0, y2 = 1; //y1 and y2 are coefficients for 'b'
@@ -40,7 +40,7 @@ public class ChineseRemainderTheorem
 
     //function to implement the Chinese Remainder Theorem
     public static long chineseRemainder(int[] n, int[] a)
-	{
+    {
         long N = 1; //variable to hold the product of all moduli
         for(int ni : n)
             N *= ni; //calculating the product of all moduli
@@ -49,22 +49,22 @@ public class ChineseRemainderTheorem
         for (int i = 0; i < n.length; i++)
 		{
             long Ni = N/n[i]; //calculating Ni (the product of all moduli except n[i])
-            long mi = extendedGCD(Ni, n[i]); //finding the modular inverse of Ni modulo n[i]
+            long modularInverse = extendedGCD(Ni, n[i]); //finding the modular inverse of Ni modulo n[i]
             //updating the result
-            result += a[i]*Ni*mi; 
+            result += a[i]*Ni*modularInverse; 
         }
 
         return result%N; //returning final answer
     }
 
     public static void main(String[] args)
-	{
+    {
         //example test case
-        int[] n = {3, 5, 7}; //moduli
-        int[] a = {2, 3, 2}; //remainders
+        int[] moduli = {3, 5, 7};
+        int[] remainder = {2, 3, 2};
 
         //calculating the solution using the Chinese Remainder Theorem
-        long solution = chineseRemainder(n, a);
+        long solution = chineseRemainder(moduli, remainder);
         //output
         System.out.println("The solution is: " + solution); //expected output: 23
     }
