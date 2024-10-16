@@ -21,7 +21,7 @@ public class ChineseRemainderTheoremTest {
     public void testCRTLargeModuli() {
         List<Integer> remainders = Arrays.asList(1, 2, 3);
         List<Integer> moduli = Arrays.asList(5, 7, 9);
-        int expected = 131;
+        int expected = 156;
         int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
         assertEquals(expected, result);
     }
@@ -39,7 +39,7 @@ public class ChineseRemainderTheoremTest {
     public void testCRTWithMultipleSolutions() {
         List<Integer> remainders = Arrays.asList(0, 3);
         List<Integer> moduli = Arrays.asList(4, 5);
-        int expected = 15;
+        int expected = 8;
         int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
         assertEquals(expected, result);
     }
@@ -48,7 +48,7 @@ public class ChineseRemainderTheoremTest {
     public void testCRTLargeNumbers() {
         List<Integer> remainders = Arrays.asList(0, 4, 6);
         List<Integer> moduli = Arrays.asList(11, 13, 17);
-        int expected = 782;
+        int expected = 550;
         int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
         assertEquals(expected, result);
     }
