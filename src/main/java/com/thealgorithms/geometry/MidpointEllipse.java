@@ -92,7 +92,7 @@ public final class MidpointEllipse {
         }
 
         // Region 2: Initial decision parameter for the second region
-        double d2 = ((b * b) * ((x + 0.5) * (x + 0.5))) + ((a * a) * ((y - 1) * (y - 1))) - (a * a * b * b);
+        double d2 = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
 
         // Region 2: When the slope is greater than or equal to 1
         while (y >= 0) {
