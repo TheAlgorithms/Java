@@ -16,7 +16,7 @@ public final class MidpointCircle {
 
     /**
      * Generates points on the circumference of a circle using the midpoint circle algorithm.
-     * 
+     *
      * @param centerX The x-coordinate of the circle's center.
      * @param centerY The y-coordinate of the circle's center.
      * @param radius  The radius of the circle.
@@ -63,7 +63,7 @@ public final class MidpointCircle {
 
     /**
      * Adds the symmetric points in all octants of the circle based on the current x and y values.
-     * 
+     *
      * @param points  The list to which symmetric points will be added.
      * @param centerX The x-coordinate of the circle's center.
      * @param centerY The y-coordinate of the circle's center.

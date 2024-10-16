@@ -1,12 +1,11 @@
 package com.thealgorithms.geometry;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test class for the {@code MidpointCircle} class
@@ -16,20 +15,20 @@ class MidpointCircleTest {
     /**
      * Parameterized test to check the generated points for different circles.
      * The points are checked based on the expected center and radius.
-     * 
+     *
      * @param centerX The x-coordinate of the circle's center.
      * @param centerY The y-coordinate of the circle's center.
      * @param radius  The radius of the circle.
      */
     @ParameterizedTest
     @CsvSource({
-        "0, 0, 3",  // Circle centered at (0, 0) with radius 3
+        "0, 0, 3", // Circle centered at (0, 0) with radius 3
         "10, 10, 2" // Circle centered at (10, 10) with radius 2
     })
     void
     testGenerateCirclePoints(int centerX, int centerY, int radius) {
         List<int[]> points = MidpointCircle.generateCirclePoints(centerX, centerY, radius);
-        
+
         // Ensure that all points satisfy the circle equation (x - centerX)^2 + (y - centerY)^2 = radius^2
         for (int[] point : points) {
             int x = point[0];
