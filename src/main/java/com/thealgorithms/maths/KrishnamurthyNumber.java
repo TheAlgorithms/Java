@@ -5,9 +5,7 @@ package com.thealgorithms.maths;
  *
  * A Krishnamurthy number (also known as a Strong number) is a number whose sum of the factorials of its digits is equal to the number itself.
  *
- * For more information, refer to the
- * <a href="https://en.wikipedia.org/wiki/Strong_number">Krishnamurthy number</a> Wikipedia page.
- *
+ * For example, 145 is a Krishnamurthy number because 1! + 4! + 5! = 1 + 24 + 120 = 145.
  * <b>Example usage:</b>
  * <pre>
  * boolean isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(145);
