@@ -36,8 +36,13 @@ public final class ChineseRemainderTheorem {
             result += remainders.get(i) * partialProduct * inverse;
         }
 
-        // The result should be modulo product to find the smallest positive solution
-        return result % product;
+        // Adjust result to be the smallest positive solution
+        result = result % product;
+        if (result < 0) {
+            result += product;
+        }
+
+        return result;
     }
 
     /**
