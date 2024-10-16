@@ -1,33 +1,56 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 /**
  * Test class for CatalanNumbers
  */
 class CatalanNumbersTest {
 
-    @Test
-    void testCatalanNumbers() {
-        assertEquals(1, CatalanNumbers.catalan(0)); // C(0) = 1
-        assertEquals(1, CatalanNumbers.catalan(1)); // C(1) = 1
-        assertEquals(2, CatalanNumbers.catalan(2)); // C(2) = 2
-        assertEquals(5, CatalanNumbers.catalan(3)); // C(3) = 5
-        assertEquals(14, CatalanNumbers.catalan(4)); // C(4) = 14
-        assertEquals(42, CatalanNumbers.catalan(5)); // C(5) = 42
-        assertEquals(132, CatalanNumbers.catalan(6)); // C(6) = 132
-        assertEquals(429, CatalanNumbers.catalan(7)); // C(7) = 429
-        assertEquals(1430, CatalanNumbers.catalan(8)); // C(8) = 1430
-        assertEquals(4862, CatalanNumbers.catalan(9)); // C(9) = 4862
-        assertEquals(16796, CatalanNumbers.catalan(10)); // C(10) = 16796
+    /**
+     * Provides test data for the parameterized Catalan number test.
+     * Each array contains two elements: 
+     * [input number, expected Catalan number for that input]
+     */
+    static Stream<Object[]> catalanNumbersProvider() {
+        return Stream.of(
+            new Object[]{0, 1},
+            new Object[]{1, 1},
+            new Object[]{2, 2},
+            new Object[]{3, 5},
+            new Object[]{4, 14},
+            new Object[]{5, 42},
+            new Object[]{6, 132},
+            new Object[]{7, 429},
+            new Object[]{8, 1430},
+            new Object[]{9, 4862},
+            new Object[]{10, 16796}
+        );
     }
 
+    /**
+     * Parameterized test for checking the correctness of Catalan numbers.
+     * Uses the data from the provider method 'catalanNumbersProvider'.
+     */
+    @ParameterizedTest
+    @MethodSource("catalanNumbersProvider")
+    void testCatalanNumbers(int input, int expected) {
+        assertEquals(expected, CatalanNumbers.catalan(input), 
+            () -> String.format("Catalan number for input %d should be %d", input, expected));
+    }
+
+    /**
+     * Test for invalid inputs which should throw an IllegalArgumentException.
+     */
     @Test
     void testIllegalInput() {
-        assertAll(() -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-1)), () -> assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-5)));
+        assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-1));
+        assertThrows(IllegalArgumentException.class, () -> CatalanNumbers.catalan(-5));
     }
 }
