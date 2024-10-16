@@ -25,11 +25,11 @@ public final class AllConstruct {
      * Space Complexity: O(n * m) due to the size of the table storing combinations.
      *
      * @param target   The target string to construct.
-     * @param wordBank A list of substrings that can be used to construct the target.
+     * @param wordBank An iterable collection of substrings that can be used to construct the target.
      * @return A list of lists, where each inner list represents one possible
      *         way of constructing the target string using the given word bank.
      */
-    public static List<List<String>> allConstruct(String target, List<String> wordBank) {
+    public static List<List<String>> allConstruct(String target, Iterable<String> wordBank) {
         List<List<List<String>>> table = new ArrayList<>(target.length() + 1);
 
         for (int i = 0; i <= target.length(); i++) {
