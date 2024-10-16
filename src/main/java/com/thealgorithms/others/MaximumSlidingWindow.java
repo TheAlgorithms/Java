@@ -53,5 +53,4 @@ public class MaximumSlidingWindow {
         }
         return result;
     }
-
 }
