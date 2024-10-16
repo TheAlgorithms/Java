@@ -18,7 +18,7 @@ class MaximumSlidingWindowTest {
 
     // Test for a simple sliding window case
     @Test
-    void testMaxSlidingWindow_SimpleCase() {
+    void testMaxSlidingWindowSimpleCase() {
         nums = new int[] {1, 3, -1, -3, 5, 3, 6, 7};
         k = 3;
         int[] expected = {3, 3, 5, 5, 6, 7};
@@ -27,7 +27,7 @@ class MaximumSlidingWindowTest {
 
     // Test when window size is 1 (output should be the array itself)
     @Test
-    void testMaxSlidingWindow_WindowSizeOne() {
+    void testMaxSlidingWindowWindowSizeOne() {
         nums = new int[] {4, 2, 12, 11, -5};
         k = 1;
         int[] expected = {4, 2, 12, 11, -5};
@@ -36,7 +36,7 @@ class MaximumSlidingWindowTest {
 
     // Test when the window size is equal to the array length (output should be a single max element)
     @Test
-    void testMaxSlidingWindow_WindowSizeEqualsArrayLength() {
+    void testMaxSlidingWindowWindowSizeEqualsArrayLength() {
         nums = new int[] {4, 2, 12, 11, -5};
         k = nums.length;
         int[] expected = {12}; // Maximum of the entire array
@@ -45,7 +45,7 @@ class MaximumSlidingWindowTest {
 
     // Test when the input array is empty
     @Test
-    void testMaxSlidingWindow_EmptyArray() {
+    void testMaxSlidingWindowEmptyArray() {
         nums = new int[] {};
         k = 3;
         int[] expected = {};
@@ -54,7 +54,7 @@ class MaximumSlidingWindowTest {
 
     // Test when the window size is larger than the array (should return empty)
     @Test
-    void testMaxSlidingWindow_WindowSizeLargerThanArray() {
+    void testMaxSlidingWindowWindowSizeLargerThanArray() {
         nums = new int[] {1, 2, 3};
         k = 5;
         int[] expected = {}; // Window size is too large, so no result
