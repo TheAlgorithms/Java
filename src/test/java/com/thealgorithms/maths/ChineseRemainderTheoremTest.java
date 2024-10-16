@@ -1,75 +1,55 @@
 package com.thealgorithms.maths;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
-/**
- * @brief Implementation of the Chinese Remainder Theorem (CRT) algorithm
- * @details
- * The Chinese Remainder Theorem (CRT) is used to solve systems of 
- * simultaneous congruences. Given several pairwise coprime moduli 
- * and corresponding remainders, the algorithm finds the smallest 
- * positive solution.
- */
-public final class ChineseRemainderTheoremTest {
-    private ChineseRemainderTheoremTest() {
+public class ChineseRemainderTheoremTest {
+    @Test
+    public void testCRTSimpleCase() {
+        List<Integer> remainders = Arrays.asList(2, 3, 2);
+        List<Integer> moduli = Arrays.asList(3, 5, 7);
+        int expected = 23;
+        int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
+        assertEquals(expected, result);
     }
 
-    /**
-     * @brief Solves the Chinese Remainder Theorem problem.
-     * @param remainders The list of remainders.
-     * @param moduli The list of pairwise coprime moduli.
-     * @return The smallest positive solution that satisfies all the given congruences.
-     */
-    public static int solveCRT(List<Integer> remainders, List<Integer> moduli) {
-        int product = 1;
-        int result = 0;
-
-        // Calculate the product of all moduli
-        for (int mod : moduli) {
-            product *= mod;
-        }
-
-        // Apply the formula for each congruence
-        for (int i = 0; i < moduli.size(); i++) {
-            int partialProduct = product / moduli.get(i);
-            int inverse = modInverse(partialProduct, moduli.get(i));
-            result += remainders.get(i) * partialProduct * inverse;
-        }
-
-        // The result should be modulo product to find the smallest positive solution
-        return result % product;
+    @Test
+    public void testCRTLargeModuli() {
+        List<Integer> remainders = Arrays.asList(1, 2, 3);
+        List<Integer> moduli = Arrays.asList(5, 7, 9);
+        int expected = 131;
+        int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
+        assertEquals(expected, result);
     }
 
-    /**
-     * @brief Computes the modular inverse of a number with respect to a modulus using
-     * the Extended Euclidean Algorithm.
-     * @param a The number for which to find the inverse.
-     * @param m The modulus.
-     * @return The modular inverse of a modulo m.
-     */
-    private static int modInverse(int a, int m) {
-        int m0 = m, x0 = 0, x1 = 1;
+    @Test
+    public void testCRTWithSingleCongruence() {
+        List<Integer> remainders = Arrays.asList(4);
+        List<Integer> moduli = Arrays.asList(7);
+        int expected = 4;
+        int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
+        assertEquals(expected, result);
+    }
 
-        if (m == 1) return 0;
+    @Test
+    public void testCRTWithMultipleSolutions() {
+        List<Integer> remainders = Arrays.asList(0, 3);
+        List<Integer> moduli = Arrays.asList(4, 5);
+        int expected = 15;
+        int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
+        assertEquals(expected, result);
+    }
 
-        while (a > 1) {
-            int q = a / m;
-            int t = m;
-
-            // m is remainder now, process same as Euclid's algorithm
-            m = a % m;
-            a = t;
-            t = x0;
-
-            x0 = x1 - q * x0;
-            x1 = t;
-        }
-
-        // Make x1 positive
-        if (x1 < 0) {
-            x1 += m0;
-        }
-
-        return x1;
+    @Test
+    public void testCRTLargeNumbers() {
+        List<Integer> remainders = Arrays.asList(0, 4, 6);
+        List<Integer> moduli = Arrays.asList(11, 13, 17);
+        int expected = 782;
+        int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
+        assertEquals(expected, result);
     }
 }
