@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * @brief Implementation of the Chinese Remainder Theorem (CRT) algorithm
  * @details
- * The Chinese Remainder Theorem (CRT) is used to solve systems of 
- * simultaneous congruences. Given several pairwise coprime moduli 
- * and corresponding remainders, the algorithm finds the smallest 
+ * The Chinese Remainder Theorem (CRT) is used to solve systems of
+ * simultaneous congruences. Given several pairwise coprime moduli
+ * and corresponding remainders, the algorithm finds the smallest
  * positive solution.
  */
 public final class ChineseRemainderTheorem {
@@ -48,9 +48,13 @@ public final class ChineseRemainderTheorem {
      * @return The modular inverse of a modulo m.
      */
     private static int modInverse(int a, int m) {
-        int m0 = m, x0 = 0, x1 = 1;
+        int m0 = m;
+        int x0 = 0;
+        int x1 = 1;
 
-        if (m == 1) return 0;
+        if (m == 1) {
+            return 0
+        };
 
         while (a > 1) {
             int q = a / m;
