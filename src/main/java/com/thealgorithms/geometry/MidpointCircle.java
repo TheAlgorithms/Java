@@ -1,6 +1,7 @@
 package com.thealgorithms.geometry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -70,7 +71,7 @@ public final class MidpointCircle {
      * @param x       The current x-coordinate on the circumference.
      * @param y       The current y-coordinate on the circumference.
      */
-    private static void addSymmetricPoints(List<int[]> points, int centerX, int centerY, int x, int y) {
+    private static void addSymmetricPoints(Collection<int[]> points, int centerX, int centerY, int x, int y) {
         // Octant symmetry points
         points.add(new int[] {centerX + x, centerY + y});
         points.add(new int[] {centerX - x, centerY + y});
