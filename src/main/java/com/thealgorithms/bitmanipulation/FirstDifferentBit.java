@@ -20,7 +20,7 @@ public final class FirstDifferentBit {
      * Identifies the index of the first differing bit between two integers.
      * Steps:
      * 1. XOR the two integers to get the differing bits
-     * 2. Find the index of the first set bit in the XOR result
+     * 2. Find the index of the first set bit in XOR result
      *
      * @param x the first integer
      * @param y the second integer
