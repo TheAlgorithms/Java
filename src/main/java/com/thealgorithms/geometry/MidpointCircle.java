@@ -1,77 +1,84 @@
 package com.thealgorithms.geometry;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The {@code MidpointCircle} class implements the Midpoint Circle algorithm,
- * which is an efficient way to determine the points of a circle
- * centered at a given point with a specified radius in a 2D space.
- *
- * <p>This algorithm uses integer arithmetic to calculate the points,
- * making it suitable for rasterization in computer graphics.</p>
+ * Class to represent the Midpoint Circle Algorithm.
+ * This algorithm calculates points on the circumference of a circle
+ * using integer arithmetic for efficient computation.
  */
 public final class MidpointCircle {
 
     private MidpointCircle() {
-        // Private constructor to prevent instantiation.
+        // Private Constructor to prevent instantiation.
     }
 
     /**
-     * Finds the list of points that form a circle centered at (xc, yc)
-     * with a given radius r.
-     *
-     * @param xc the x-coordinate of the center point
-     * @param yc the y-coordinate of the center point
-     * @param r  the radius of the circle
-     * @return a {@code List<Point>} containing all points on the circle
+     * Generates points on the circumference of a circle using the midpoint circle algorithm.
+     * 
+     * @param centerX The x-coordinate of the circle's center.
+     * @param centerY The y-coordinate of the circle's center.
+     * @param radius  The radius of the circle.
+     * @return A list of points on the circle, each represented as an int[] with 2 elements [x, y].
      */
-    public static List<Point> drawCircle(int xc, int yc, int r) {
-        List<Point> circlePoints = new ArrayList<>();
+    public static List<int[]> generateCirclePoints(int centerX, int centerY, int radius) {
+        List<int[]> points = new ArrayList<>();
 
-        int x = 0;
-        int y = r;
-        int p = 1 - r; // Initial decision parameter
-
-        // Function to add points based on symmetry
-        addCirclePoints(circlePoints, xc, yc, x, y);
-
-        while (x < y) {
-            x++;
-
-            // Update decision parameter
-            if (p < 0) {
-                p += 2 * x + 1; // Midpoint is inside the circle
-            } else {
-                y--; // Midpoint is outside the circle
-                p += 2 * x - 2 * y + 1;
-            }
-
-            // Add points based on symmetry
-            addCirclePoints(circlePoints, xc, yc, x, y);
+        // Special case for radius 0, only the center point should be added.
+        if (radius == 0) {
+            points.add(new int[]{centerX, centerY});
+            return points;
         }
 
-        return circlePoints; // Return the list of points forming the circle
+        // Start at (radius, 0)
+        int x = radius;
+        int y = 0;
+
+        // Decision parameter
+        int p = 1 - radius;
+
+        // Add the initial points in all octants
+        addSymmetricPoints(points, centerX, centerY, x, y);
+
+        // Iterate while x > y
+        while (x > y) {
+            y++;
+
+            if (p <= 0) {
+                // Midpoint is inside or on the circle
+                p = p + 2 * y + 1;
+            } else {
+                // Midpoint is outside the circle
+                x--;
+                p = p + 2 * y - 2 * x + 1;
+            }
+
+            // Add points for this (x, y)
+            addSymmetricPoints(points, centerX, centerY, x, y);
+        }
+
+        return points;
     }
 
     /**
-     * Adds points to the list based on symmetry in all octants.
-     *
-     * @param points the list of points to add to
-     * @param xc    the x-coordinate of the center point
-     * @param yc    the y-coordinate of the center point
-     * @param x     current x coordinate in circle drawing
-     * @param y     current y coordinate in circle drawing
+     * Adds the symmetric points in all octants of the circle based on the current x and y values.
+     * 
+     * @param points  The list to which symmetric points will be added.
+     * @param centerX The x-coordinate of the circle's center.
+     * @param centerY The y-coordinate of the circle's center.
+     * @param x       The current x-coordinate on the circumference.
+     * @param y       The current y-coordinate on the circumference.
      */
-    private static void addCirclePoints(List<Point> points, int xc, int yc, int x, int y) {
-        points.add(new Point(xc + x, yc + y));
-        points.add(new Point(xc - x, yc + y));
-        points.add(new Point(xc + x, yc - y));
-        points.add(new Point(xc - x, yc - y));
-        points.add(new Point(xc + y, yc + x));
-        points.add(new Point(xc - y, yc + x));
-        points.add(new Point(xc + y, yc - x));
-        points.add(new Point(xc - y, yc - x));
+    private static void addSymmetricPoints(List<int[]> points, int centerX, int centerY, int x, int y) {
+        // Octant symmetry points
+        points.add(new int[] { centerX + x, centerY + y });
+        points.add(new int[] { centerX - x, centerY + y });
+        points.add(new int[] { centerX + x, centerY - y });
+        points.add(new int[] { centerX - x, centerY - y });
+        points.add(new int[] { centerX + y, centerY + x });
+        points.add(new int[] { centerX - y, centerY + x });
+        points.add(new int[] { centerX + y, centerY - x });
+        points.add(new int[] { centerX - y, centerY - x });
     }
 }
