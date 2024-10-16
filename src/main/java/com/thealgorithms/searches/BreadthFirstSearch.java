@@ -12,11 +12,10 @@ import java.util.Set;
 /**
  * Breadth-First Search implementation for tree/graph traversal.
  * @author caos321
- * @co-author manishraj27
+ * @co-author @manishraj27
  * @see <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-first search</a>
  */
 public class BreadthFirstSearch<T> {
-
     private final List<T> visited = new ArrayList<>();
     private final Set<T> visitedSet = new HashSet<>();
 
@@ -28,38 +27,22 @@ public class BreadthFirstSearch<T> {
      * @return Optional containing the found node, or empty if not found
      */
     public Optional<Node<T>> search(final Node<T> root, final T value) {
-        // Handle null root
         if (root == null) {
             return Optional.empty();
         }
 
-        // Check root value first
-        if (value == null) {
-            if (root.getValue() == null) {
-                visited.add(null);
-                return Optional.of(root);
-            }
-            visited.add(root.getValue());
-            return Optional.empty();
-        }
-
-        // Check root node
-        if (value.equals(root.getValue())) {
-            visited.add(root.getValue());
-            return Optional.of(root);
-        }
-
-        // Add root to visited
         visited.add(root.getValue());
         visitedSet.add(root.getValue());
 
-        // Process remaining nodes
+        if (root.getValue() == value) {
+            return Optional.of(root);
+        }
+
         Queue<Node<T>> queue = new ArrayDeque<>(root.getChildren());
         while (!queue.isEmpty()) {
             final Node<T> current = queue.poll();
             T currentValue = current.getValue();
-            
-            // Skip if already visited
+
             if (visitedSet.contains(currentValue)) {
                 continue;
             }
@@ -67,7 +50,7 @@ public class BreadthFirstSearch<T> {
             visited.add(currentValue);
             visitedSet.add(currentValue);
 
-            if (value.equals(currentValue)) {
+            if (currentValue == value || (value != null && value.equals(currentValue))) {
                 return Optional.of(current);
             }
 
