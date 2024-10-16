@@ -10,8 +10,8 @@ import java.util.List;
  * and corresponding remainders, the algorithm finds the smallest 
  * positive solution.
  */
-public final class ChineseRemainderTheorem {
-    private ChineseRemainderTheorem() {
+public final class ChineseRemainderTheoremTest {
+    private ChineseRemainderTheoremTest() {
     }
 
     /**
