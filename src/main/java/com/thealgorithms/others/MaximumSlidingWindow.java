@@ -53,17 +53,5 @@ public class MaximumSlidingWindow {
         }
         return result;
     }
-    public static void main(String[] args) {
-        MaximumSlidingWindow msw = new MaximumSlidingWindow();
-        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
-        int k = 3;
 
-        // Calculate the maximum sliding window
-        int[] result = msw.maxSlidingWindow(nums, k);
-
-        // Print the result
-        for (int num : result) {
-            System.out.print(num + " ");
-        }
-    }
 }
