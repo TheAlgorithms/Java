@@ -1,6 +1,7 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1, 1}, {1, 0, 1, 0}, {1, 1, 0, 1}, {1, 0, 1, 0}};
         int m = 3; // Number of colors
 
-        assertEquals(1, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertTrue(MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     @Test
@@ -25,7 +26,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1, 1, 0}, {1, 0, 0, 1, 0}, {1, 0, 0, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 1, 1, 0}};
         int m = 2; // Number of colors
 
-        assertEquals(0, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertFalse(MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     @Test
@@ -34,7 +35,7 @@ class MColoringTest {
         int[][] graph = {{0, 1, 1}, {1, 0, 1}, {1, 1, 0}};
         int m = 2; // Number of colors
 
-        assertEquals(0, MColoring.possiblePaint(createGraph(graph), n, m));
+        assertFalse(MColoring.isColoringPossible(createGraph(graph), n, m));
     }
 
     private ArrayList<Node> createGraph(int[][] graph) {

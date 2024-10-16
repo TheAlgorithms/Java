@@ -38,4 +38,22 @@ public final class ValidParentheses {
         }
         return head == 0;
     }
+    public static boolean isValidParentheses(String s) {
+        int i = -1;
+        char[] stack = new char[s.length()];
+        String openBrackets = "({[";
+        String closeBrackets = ")}]";
+        for (char ch : s.toCharArray()) {
+            if (openBrackets.indexOf(ch) != -1) {
+                stack[++i] = ch;
+            } else {
+                if (i >= 0 && openBrackets.indexOf(stack[i]) == closeBrackets.indexOf(ch)) {
+                    i--;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return i == -1;
+    }
 }
