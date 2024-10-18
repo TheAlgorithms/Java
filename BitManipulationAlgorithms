@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class BitManipulationAlgorithms {
+
+    // Algorithm 1: Find the Number Appearing Odd Times
+    public static int findOdd(int[] arr) {
+        int result = 0;
+        for (int num : arr) {
+            result ^= num;
+        }
+        return result;
+    }
+
+    // Algorithm 2: Swap Adjacent Bits of a Number
+    public static int swapBits(int n) {
+        return ((n & 0xAAAAAAAA) >> 1) | ((n & 0x55555555) << 1);
+    }
+
+    // Algorithm 3: Bitwise XOR of All Elements in an Array
+    public static int xorAll(int[] arr) {
+        int result = 0;
+        for (int num : arr) {
+            result ^= num;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // Test Algorithm 1
+        int[] arr1 = {1, 2, 3, 2, 3, 1, 3};
+        System.out.println("Number appearing odd times: " + findOdd(arr1)); // Output: 3
+
+        // Test Algorithm 2
+        int n = 23; // Binary: 10111
+        System.out.println("Swapped adjacent bits: " + swapBits(n)); // Output: 43 (Binary: 101011)
+
+        // Test Algorithm 3
+        int[] arr2 = {1, 2, 3, 4, 5};
+        System.out.println("Bitwise XOR of all elements: " + xorAll(arr2)); // Output: 1
+    }
+}
