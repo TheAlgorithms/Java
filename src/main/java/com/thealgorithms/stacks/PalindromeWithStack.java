@@ -9,7 +9,7 @@ import java.util.LinkedList;
  *
  * Reference: https://www.geeksforgeeks.org/check-whether-the-given-string-is-palindrome-using-stack/
  */
-public final class PalindromeWithStack {
+public class PalindromeWithStack {
     private LinkedList<Character> stack;
 
     /**
@@ -28,14 +28,14 @@ public final class PalindromeWithStack {
      *
      * @param string The string to check if it is palindrome or not.
      */
-    public final boolean checkPalindrome(final String string) {
+    public boolean checkPalindrome(String string) {
         // Create a StringBuilder to build the string from left to right
         StringBuilder stringBuilder = new StringBuilder(string.length());
         // Convert all characters to lowercase
         String lowercase = string.toLowerCase();
 
         // Iterate through the string
-        for(int i = 0; i < lowercase.length(); ++i) {
+        for (int i = 0; i < lowercase.length(); ++i) {
             char c = lowercase.charAt(i);
             if (c >= 'a' && c <= 'z') {
                 // Build the string from L->R
@@ -48,7 +48,7 @@ public final class PalindromeWithStack {
         // The stack contains the reverse order of the string
         StringBuilder reverseString = new StringBuilder(stack.size());
         // Until the stack is not empty
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             // Build the string from R->L
             reverseString.append(stack.pop());
         }
