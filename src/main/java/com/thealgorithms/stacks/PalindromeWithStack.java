@@ -37,12 +37,10 @@ public class PalindromeWithStack {
         // Iterate through the string
         for (int i = 0; i < lowercase.length(); ++i) {
             char c = lowercase.charAt(i);
-            if (c >= 'a' && c <= 'z') {
-                // Build the string from L->R
-                stringBuilder.append(c);
-                // Push to the stack
-                stack.push(c);
-            }
+            // Build the string from L->R
+            stringBuilder.append(c);
+            // Push to the stack
+            stack.push(c);
         }
 
         // The stack contains the reverse order of the string

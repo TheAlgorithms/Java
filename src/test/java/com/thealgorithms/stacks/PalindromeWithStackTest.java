@@ -59,7 +59,19 @@ public class PalindromeWithStackTest {
 
     @Test
     public void testStringWithNumbers() {
-        String testString = "bio123ib";
+        String testString = "12321";
+        assertTrue(palindromeChecker.checkPalindrome(testString));
+    }
+
+    @Test
+    public void testStringWithNumbersTwo() {
+        String testString = "12325";
+        assertFalse(palindromeChecker.checkPalindrome(testString));
+    }
+
+    @Test
+    public void testStringWithNumbersAndLetters() {
+        String testString = "po454op";
         assertTrue(palindromeChecker.checkPalindrome(testString));
     }
 }
