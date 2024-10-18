@@ -56,4 +56,10 @@ public class PalindromeWithStackTest {
         String testString = "";
         assertTrue(palindromeChecker.checkPalindrome(testString));
     }
+
+    @Test
+    public void testStringWithNumbers() {
+        String testString = "bio123ib";
+        assertTrue(palindromeChecker.checkPalindrome(testString));
+    }
 }
