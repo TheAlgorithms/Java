@@ -99,7 +99,9 @@ public class ADFGVXCipher {
     private String columnarTransposition(String text, String key) {
         int numRows = (int) Math.ceil((double) text.length() / key.length());
         char[][] table = new char[numRows][key.length()];
-        for (char[] row : table) Arrays.fill(row, '_'); // Fill empty cells with underscores
+        for (char[] row : table) { // Fill empty cells with underscores
+            Arrays.fill(row, '_');
+        }
 
         // Populate the table row by row
         for (int i = 0; i < text.length(); i++) {
