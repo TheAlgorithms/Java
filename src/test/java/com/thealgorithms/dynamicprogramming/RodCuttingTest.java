@@ -97,8 +97,6 @@ class RodCuttingTest {
     void testCutRodNegativeLength() {
         int[] prices = {1, 5, 8, 9, 10}; // Prices are irrelevant for negative length
         int length = -1;
-        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(prices, length),
-                "A negative rod length should throw an IllegalArgumentException.");
+        assertThrows(IllegalArgumentException.class, () -> RodCutting.cutRod(prices, length), "A negative rod length should throw an IllegalArgumentException.");
     }
 }
-
