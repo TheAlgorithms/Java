@@ -25,6 +25,7 @@ public final class RodCutting {
         if (n < 0) {
             throw new IllegalArgumentException("Rod length cannot be negative.");
         }
+
         // Create an array to store the maximum obtainable values for each rod length.
         int[] val = new int[n + 1];
         val[0] = 0;
@@ -44,3 +45,4 @@ public final class RodCutting {
         return val[n];
     }
 }
+
