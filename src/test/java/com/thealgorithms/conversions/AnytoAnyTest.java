@@ -35,13 +35,9 @@ public class AnytoAnyTest {
 
     @Test
     void testInvalidBases() {
-        assertThrows(IllegalArgumentException.class,
-                () -> AnytoAny.convertBase(5, 1, 10),
-                "Source base less than 2 should throw IllegalArgumentException");
+        assertThrows(IllegalArgumentException.class, () -> AnytoAny.convertBase(5, 1, 10), "Source base less than 2 should throw IllegalArgumentException");
 
-        assertThrows(IllegalArgumentException.class,
-                () -> AnytoAny.convertBase(5, 10, 11),
-                "Destination base greater than 10 should throw IllegalArgumentException");
+        assertThrows(IllegalArgumentException.class, () -> AnytoAny.convertBase(5, 10, 11), "Destination base greater than 10 should throw IllegalArgumentException");
     }
 
     @Test
