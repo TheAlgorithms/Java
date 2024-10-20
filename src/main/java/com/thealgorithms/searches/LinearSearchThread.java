@@ -1,52 +1,47 @@
 package com.thealgorithms.searches;
 
-import java.util.Scanner;
-
+/**
+ * LinearSearchThread is a multithreaded implementation of the linear search algorithm.
+ * It creates multiple threads to search for a specific number in an array.
+ *
+ * <p>
+ * The class generates an array of random integers, prompts the user to enter a number to search for,
+ * and divides the array into four segments, each handled by a separate thread.
+ * The threads run concurrently and search for the specified number within their designated segments.
+ * Finally, it consolidates the results to determine if the number was found.
+ * </p>
+ *
+ * <p>
+ * Example usage:
+ * 1. The program will output the generated array.
+ * 2. The user will be prompted to input a number to search for.
+ * 3. The program will display whether the number was found in the array.
+ * </p>
+ */
 public final class LinearSearchThread {
     private LinearSearchThread() {
     }
-
-    public static void main(String[] args) {
-        int[] list = new int[200];
-        for (int j = 0; j < list.length; j++) {
-            list[j] = (int) (Math.random() * 100);
-        }
-        for (int y : list) {
-            System.out.print(y + " ");
-        }
-        System.out.println();
-        System.out.print("Enter number to search for: ");
-        Scanner in = new Scanner(System.in);
-        int x = in.nextInt();
-        Searcher t = new Searcher(list, 0, 50, x);
-        Searcher t1 = new Searcher(list, 50, 100, x);
-        Searcher t2 = new Searcher(list, 100, 150, x);
-        Searcher t3 = new Searcher(list, 150, 200, x);
-        t.start();
-        t1.start();
-        t2.start();
-        t3.start();
-        try {
-            t.join();
-            t1.join();
-            t2.join();
-            t3.join();
-        } catch (InterruptedException e) {
-        }
-        boolean found = t.getResult() || t1.getResult() || t2.getResult() || t3.getResult();
-        System.out.println("Found = " + found);
-        in.close();
-    }
 }
 
+/**
+ * The Searcher class extends Thread and is responsible for searching for a specific
+ * number in a segment of an array.
+ */
 class Searcher extends Thread {
+    private final int[] arr; // The array to search in
+    private final int left; // Starting index of the segment
+    private final int right; // Ending index of the segment
+    private final int x; // The number to search for
+    private boolean found; // Result flag
 
-    private final int[] arr;
-    private final int left;
-    private final int right;
-    private final int x;
-    private boolean found;
-
+    /**
+     * Constructor to initialize the Searcher.
+     *
+     * @param arr The array to search in
+     * @param left The starting index of the segment
+     * @param right The ending index of the segment
+     * @param x The number to search for
+     */
     Searcher(int[] arr, int left, int right, int x) {
         this.arr = arr;
         this.left = left;
@@ -54,6 +49,9 @@ class Searcher extends Thread {
         this.x = x;
     }
 
+    /**
+     * The run method for the thread, performing the linear search in its segment.
+     */
     @Override
     public void run() {
         int k = left;
@@ -65,6 +63,11 @@ class Searcher extends Thread {
         }
     }
 
+    /**
+     * Returns whether the number was found in the segment.
+     *
+     * @return true if the number was found, false otherwise
+     */
     boolean getResult() {
         return found;
     }
