@@ -23,16 +23,13 @@ public class AffineConverterTest {
 
     @Test
     void testConstructorWithInvalidValues() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new AffineConverter(Double.NaN, 3.0),
-                "Constructor should throw IllegalArgumentException for NaN slope");
+        assertThrows(IllegalArgumentException.class, () -> new AffineConverter(Double.NaN, 3.0), "Constructor should throw IllegalArgumentException for NaN slope");
     }
 
     @Test
     void testConvertWithNegativeValues() {
         assertEquals(-1.0, converter.convert(-2.0), "Negative input should convert correctly");
-        assertEquals(-3.0, new AffineConverter(-1.0, -1.0).convert(2.0),
-                "Slope and intercept can be negative");
+        assertEquals(-3.0, new AffineConverter(-1.0, -1.0).convert(2.0), "Slope and intercept can be negative");
     }
 
     @Test
@@ -51,8 +48,7 @@ public class AffineConverterTest {
     @Test
     void testInvertWithZeroSlope() {
         AffineConverter zeroSlopeConverter = new AffineConverter(0.0, 3.0);
-        assertThrows(AssertionError.class, zeroSlopeConverter::invert,
-                "Invert should throw AssertionError when slope is zero");
+        assertThrows(AssertionError.class, zeroSlopeConverter::invert, "Invert should throw AssertionError when slope is zero");
     }
 
     @Test
@@ -68,7 +64,7 @@ public class AffineConverterTest {
     void testMultipleCompositions() {
         AffineConverter c1 = new AffineConverter(2.0, 1.0);
         AffineConverter c2 = new AffineConverter(3.0, -2.0);
-        AffineConverter c3 = c1.compose(c2);  // (2x + 1) ∘ (3x - 2) => 6x - 1
+        AffineConverter c3 = c1.compose(c2); // (2x + 1) ∘ (3x - 2) => 6x - 1
 
         assertEquals(-3.0, c3.convert(0.0), "Composed transformation should return -3.0 at 0.0");
         assertEquals(3.0, c3.convert(1.0), "Composed transformation should return 3.0 at 1.0");
@@ -86,7 +82,6 @@ public class AffineConverterTest {
     @Test
     void testLargeInputs() {
         double largeValue = 1e6;
-        assertEquals(2.0 * largeValue + 3.0, converter.convert(largeValue),
-                "Should handle large input values without overflow");
+        assertEquals(2.0 * largeValue + 3.0, converter.convert(largeValue), "Should handle large input values without overflow");
     }
 }
