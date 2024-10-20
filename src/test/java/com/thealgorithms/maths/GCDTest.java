@@ -41,6 +41,11 @@ public class GCDTest {
     }
 
     @Test
+    void test8() {
+        Assertions.assertEquals(GCD.gcd(48, 18, 30, 12), 6);
+    }
+
+    @Test
     void testArrayGcd1() {
         Assertions.assertEquals(GCD.gcd(new int[] {9, 6}), 3);
     }
