@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -61,5 +63,20 @@ public final class FindKthNumber {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    public static int findKthMaxUsingHeap(int[] array, int k) {
+        if (k <= 0 || k > array.length) {
+            throw new IllegalArgumentException("k must be between 1 and the size of the array");
+        }
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // using max-heap to store numbers.
+        for (int num : array) {
+            maxHeap.add(num);
+        }
+        while (k > 1) {
+            maxHeap.poll(); // removing max number from heap
+            k--;
+        }
+        return maxHeap.peek();
     }
 }
