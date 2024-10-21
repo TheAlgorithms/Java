@@ -2,21 +2,36 @@ package com.thealgorithms.conversions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class EndianConverterTest {
 
-    @Test
-    public void testBigToLittleEndian() {
-        assertEquals(0x78563412, EndianConverter.bigToLittleEndian(0x12345678));
-        assertEquals(0x00000000, EndianConverter.bigToLittleEndian(0x00000000));
-        assertEquals(0x00000001, EndianConverter.bigToLittleEndian(0x01000000));
+    /**
+     * Tests conversion from big-endian to little-endian using parameterized inputs.
+     */
+    @ParameterizedTest
+    @CsvSource({
+        "0x12345678, 0x78563412", "0x00000000, 0x00000000", "0x01000000, 0x00000001",
+        "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two’s complement
+        "0x7F000000, 0x0000007F" // Positive boundary case
+    })
+    public void
+    testBigToLittleEndian(int input, int expected) {
+        assertEquals(expected, EndianConverter.bigToLittleEndian(input));
     }
 
-    @Test
-    public void testLittleToBigEndian() {
-        assertEquals(0x12345678, EndianConverter.littleToBigEndian(0x78563412));
-        assertEquals(0x00000000, EndianConverter.littleToBigEndian(0x00000000));
-        assertEquals(0x01000000, EndianConverter.littleToBigEndian(0x00000001));
+    /**
+     * Tests conversion from little-endian to big-endian using parameterized inputs.
+     */
+    @ParameterizedTest
+    @CsvSource({
+        "0x78563412, 0x12345678", "0x00000000, 0x00000000", "0x00000001, 0x01000000",
+        "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two’s complement
+        "0x0000007F, 0x7F000000" // Positive boundary case
+    })
+    public void
+    testLittleToBigEndian(int input, int expected) {
+        assertEquals(expected, EndianConverter.littleToBigEndian(input));
     }
 }
