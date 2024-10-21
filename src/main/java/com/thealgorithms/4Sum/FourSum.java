@@ -1,4 +1,4 @@
-class Solution {
+class FourSum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Set<List<Integer>> ans = new HashSet<>();
         Arrays.sort(nums);
