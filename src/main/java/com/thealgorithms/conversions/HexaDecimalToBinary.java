@@ -51,8 +51,8 @@ public class HexaDecimalToBinary {
      * @return the padded binary string with a minimum length of 8
      */
     public String completeDigits(String binNum) {
-        final int BYTESIZE = 8;
-        while (binNum.length() < BYTESIZE) {
+        final int byteSize = 8;
+        while (binNum.length() < byteSize) {
             binNum = "0" + binNum;
         }
         return binNum;
