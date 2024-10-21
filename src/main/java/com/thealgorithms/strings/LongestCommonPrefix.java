@@ -15,6 +15,12 @@ public class LongestCommonPrefix {
        if(n==0){
         return "";
        }
+/*
+Sort the Array: Sort the array of strings to bring strings with common prefixes adjacent to each other.
+Identify Extremes: Select the first and last strings from the sorted array for comparison, as they will have the longest common prefix.
+Character Comparison: Compare the characters of the first and last strings until a mismatch is found, tracking the index of the last matching character.
+Return Prefix: Return the substring of the first string from the start to the index of the last matching character, which represents the longest common prefix.
+*/
        String first=str[0];
        String last=str[n-1];
        int len=Math.min(first.length(),last.length());
