@@ -8,7 +8,7 @@ import java.util.Map;
  * by a group of five binary digits (A's and B's). It can also be used to hide
  * messages within other texts, making it a simple form of steganography.
  * https://en.wikipedia.org/wiki/Bacon%27s_cipher
- * 
+ *
  * @author Bennybebo
  */
 public class BaconianCipher {
