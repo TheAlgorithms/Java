@@ -1,7 +1,14 @@
 package com.thealgorithms.strings;
 import java.util.*;
-//To find the longest Common Prefix of String array
-public class longestCommonPrefix {
+// To find the longest Common Prefix of String array
+// geeksforgeeks explaination: https://www.geeksforgeeks.org/longest-common-prefix-using-sorting/
+
+/* The Longest Common Prefix (LCP) of a set of strings is the longest substring that appears at the beginning of each of the strings in the set. For example, given the strings:
+"flower"
+"flow"
+"flight"
+The longest common prefix is "fl", as it is the longest substring that is common at the start of all three strings. */
+public class LongestCommonPrefix {
     public static String longestPrefix(String[] str){
        int n=str.length;
        Arrays.sort(str);
