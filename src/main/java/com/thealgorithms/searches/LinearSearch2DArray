@@ -1,0 +1,25 @@
+import java.util.Arrays;
+
+public class LinearSearch2DArray {
+    public static void main(String[] args) {
+        int[][] array = new int[][]{{1,2,3,4,5},
+                        {6,7,8,9,10},
+                        {11,12,13,14}};
+
+        int x = 8;
+
+        int[] index = Linearsearch(array, x);
+        System.out.println("The element is found at "+ Arrays.toString(index));
+    }
+
+    public static int[] Linearsearch(int[][] array, int x){
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (array[i][j] == x){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return new int[]{-1,-1};
+    }
+}
