@@ -18,7 +18,7 @@ public class BaconianCipher {
 
     static {
         // Initialize the Baconian cipher mappings
-        String[] baconianAlphabet = { "AAAAA", "AAAAB", "AAABA", "AAABB", "AABAA", "AABAB", "AABBA", "AABBB", "ABAAA", "ABAAB", "ABABA", "ABABB", "ABBAA", "ABBAB", "ABBBA", "ABBBB", "BAAAA", "BAAAB", "BAABA", "BAABB", "BABAA", "BABAB", "BABBA", "BABBB", "BBAAA", "BBAAB"};
+    	String[] baconianAlphabet = {"AAAAA", "AAAAB", "AAABA", "AAABB", "AABAA", "AABAB", "AABBA", "AABBB", "ABAAA", "ABAAB", "ABABA", "ABABB", "ABBAA", "ABBAB", "ABBBA", "ABBBB", "BAAAA", "BAAAB", "BAABA", "BAABB", "BABAA", "BABAB", "BABBA", "BABBB", "BBAAA", "BBAAB"};
         char letter = 'A';
         for (String code : baconianAlphabet) {
             BACONIAN_MAP.put(letter, code);
@@ -33,7 +33,7 @@ public class BaconianCipher {
 
     /**
      * Encrypts the given plaintext using the Baconian cipher.
-     * 
+     *
      * @param plaintext The plaintext message to encrypt.
      * @return The ciphertext as a binary (A/B) sequence.
      */
@@ -50,7 +50,7 @@ public class BaconianCipher {
 
     /**
      * Decrypts the given ciphertext encoded in binary (A/B) format using the Baconian cipher.
-     * 
+     *
      * @param ciphertext The ciphertext to decrypt.
      * @return The decrypted plaintext message.
      */
