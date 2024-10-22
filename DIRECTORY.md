@@ -982,6 +982,7 @@
             * [JosephusProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/JosephusProblemTest.java)
             * [KaprekarNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaprekarNumbersTest.java)
             * [KaratsubaMultiplicationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KaratsubaMultiplicationTest.java)
+            * [KrishnamurthyNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/KrishnamurthyNumberTest.java)
             * [LeastCommonMultipleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LeastCommonMultipleTest.java)
             * [LeonardoNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LeonardoNumberTest.java)
             * [LiouvilleLambdaFunctionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LiouvilleLambdaFunctionTest.java)
