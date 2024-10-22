@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class for calculating the Fast Fourier Transform (FFT) of a discrete signal
@@ -25,7 +26,7 @@ public final class FFTBluestein {
      * IFFT of signal x.
      * @param inverse True if you want to find the inverse FFT.
      */
-    public static void fftBluestein(ArrayList<FFT.Complex> x, boolean inverse) {
+    public static void fftBluestein(List<FFT.Complex> x, boolean inverse) {
         int n = x.size();
         int bnSize = 2 * n - 1;
         int direction = inverse ? -1 : 1;

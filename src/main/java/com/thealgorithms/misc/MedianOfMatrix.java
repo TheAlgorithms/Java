@@ -13,7 +13,7 @@ public final class MedianOfMatrix {
     private MedianOfMatrix() {
     }
 
-    public static int median(List<List<Integer>> matrix) {
+    public static int median(Iterable<List<Integer>> matrix) {
         // Flatten the matrix into a 1D list
         List<Integer> linear = new ArrayList<>();
         for (List<Integer> row : matrix) {
