@@ -13,14 +13,11 @@ Return Prefix: Return the substring of the first string from the start to the in
 */
 package com.thealgorithms.strings;
 import java.util.Arrays; // Specific import
-
 // To find the longest Common Prefix of String array
-public class LongestCommonPrefix {
-
+public final class LongestCommonPrefix {
     // Private constructor to prevent instantiation of utility class
     private LongestCommonPrefix() {
     }
-
     // Method to find the longest common prefix
     public static String longestPrefix(String[] str) {
         int n = str.length;
@@ -43,10 +40,9 @@ public class LongestCommonPrefix {
                 break;
             }
         }
-
         return first.substring(0, i);
     }
-
+    
     // Main method to run test cases
     public static void main(String[] args) {
         // Test cases
@@ -72,22 +68,13 @@ public class LongestCommonPrefix {
 
 /* 
 Time and Space Complexity:
-Time Complexity:O(n log n + m)
+Time Complexity: O(n log n + m)
+- Sorting the array takes O(n log n), where n is the number of strings.
+- Comparing the first and last string takes O(m), where m is the length of the shortest string.
+- Overall, the time complexity is O(n log n + m).
 
-Sorting the array takes 𝑂(𝑛 log 𝑛)
-O(nlogn), where n is the number of strings.
-Comparing the first and last string takes 𝑂(𝑚)
-O(m), where m is the length of the shortest string.
-Overall, the time complexity is 
-𝑂(log 𝑛 + 𝑚 )
-
-
-Space Complexity:O(n)
-
-Sorting requires 𝑂(𝑛)
-O(n) space for the array.
-The space complexity for storing the prefix result is 
-𝑂(1)
-O(1) since it depends on the length of the prefix, which is part of the input.
-Therefore, the space complexity is 𝑂(𝑛)
+Space Complexity: O(n)
+- Sorting requires O(n) space for the array.
+- The space complexity for storing the prefix result is O(1), since it depends on the length of the prefix, which is part of the input.
+Therefore, the space complexity is O(n).
 */
