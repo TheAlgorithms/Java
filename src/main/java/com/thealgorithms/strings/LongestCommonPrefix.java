@@ -1,6 +1,4 @@
-package com.thealgorithms.strings;
-import java.util.*;
-// To find the longest Common Prefix of String array
+// To find the longest Common Prefix in String array
 // geeksforgeeks explaination: https://www.geeksforgeeks.org/longest-common-prefix-using-sorting/
 /* The Longest Common Prefix (LCP) of a set of strings is the longest substring that appears at the beginning of each of the strings in the set. For example, given the strings:
 "flower"
@@ -13,7 +11,15 @@ Identify Extremes: Select the first and last strings from the sorted array for c
 Character Comparison: Compare the characters of the first and last strings until a mismatch is found, tracking the index of the last matching character.
 Return Prefix: Return the substring of the first string from the start to the index of the last matching character, which represents the longest common prefix.
 */
+package com.thealgorithms.strings;
+import java.util.Arrays; // Specific import
+
+// To find the longest Common Prefix of String array
 public class LongestCommonPrefix {
+
+    // Private constructor to prevent instantiation of utility class
+    private LongestCommonPrefix() {
+    }
 
     // Method to find the longest common prefix
     public static String longestPrefix(String[] str) {
@@ -43,31 +49,27 @@ public class LongestCommonPrefix {
 
     // Main method to run test cases
     public static void main(String[] args) {
-        // Test Case 1: Normal input
+        // Test cases
         String[] input1 = {"flower", "flow", "flight"};
         System.out.println("Test Case 1: " + (longestPrefix(input1).equals("fl") ? "Passed" : "Failed"));
 
-        // Test Case 2: No common prefix
         String[] input2 = {"dog", "racecar", "car"};
         System.out.println("Test Case 2: " + (longestPrefix(input2).equals("") ? "Passed" : "Failed"));
 
-        // Test Case 3: Empty array
         String[] input3 = {};
         System.out.println("Test Case 3: " + (longestPrefix(input3).equals("") ? "Passed" : "Failed"));
 
-        // Test Case 4: Single element
         String[] input4 = {"alone"};
         System.out.println("Test Case 4: " + (longestPrefix(input4).equals("alone") ? "Passed" : "Failed"));
 
-        // Test Case 5: Identical strings
         String[] input5 = {"same", "same", "same"};
         System.out.println("Test Case 5: " + (longestPrefix(input5).equals("same") ? "Passed" : "Failed"));
 
-        // Test Case 6: Empty strings
         String[] input6 = {"", "", ""};
         System.out.println("Test Case 6: " + (longestPrefix(input6).equals("") ? "Passed" : "Failed"));
     }
 }
+
 /* 
 Time and Space Complexity:
 Time Complexity:O(n log n + m)
