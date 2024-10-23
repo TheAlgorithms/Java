@@ -7,54 +7,42 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ZalgorithmTest {
+
     /**
      * Test 1:
-     * Input: text = "ababcababcabc", pattern = "abc"
-     * Output: [2, 7, 10]
-     * Explanation: The pattern "abc" occurs at indices 2, 7, and 10.
+     * Pattern: "a", Text: "aabaaabaa"
+     * Expected: [0, 1, 4, 5, 8]
      */
     @Test
-    public void testFindPatternOccurrences() {
-        String text = "ababcababcabc";
-        String pattern = "abc";
-        List<Integer> expected = Arrays.asList(2, 7, 10);
-        
-        List<Integer> actual = Zalgorithm.findPatternOccurrences(text, pattern);
-        
-        assertEquals(expected, actual);
+    public void testFindPatternOccurrencesSingleCharacter() {
+        String text = "aabaaabaa";
+        String pattern = "a";
+        List<Integer> expected = Arrays.asList(0, 1, 4, 5, 8);
+        assertEquals(expected, Zalgorithm.findPatternOccurrences(text, pattern));
     }
 
     /**
      * Test 2:
-     * Input: text = "abcdefg", pattern = "xyz"
-     * Output: []
-     * Explanation: The pattern "xyz" does not occur in the text.
+     * Pattern: "abc", Text: "ababcabcabc"
+     * Expected: [2, 5, 8]
      */
     @Test
-    public void testFindPatternOccurrencesNoMatch() {
-        String text = "abcdefg";
-        String pattern = "xyz";
-        List<Integer> expected = Arrays.asList();
-        
-        List<Integer> actual = Zalgorithm.findPatternOccurrences(text, pattern);
-        
-        assertEquals(expected, actual);
+    public void testFindPatternOccurrences() {
+        String text = "ababcabcabc";
+        String pattern = "abc";
+        List<Integer> expected = Arrays.asList(2, 5, 8);
+        assertEquals(expected, Zalgorithm.findPatternOccurrences(text, pattern));
     }
-
     /**
      * Test 3:
-     * Input: text = "aabbaabbaaa", pattern = "a"
-     * Output: [0, 3, 5, 9]
-     * Explanation: The pattern "a" occurs at indices 0, 3, 5, and 9.
+     * Pattern: "aa", Text: "aaaaaa"
+     * Expected: [0, 1, 2, 3, 4]
      */
     @Test
-    public void testFindPatternOccurrencesSingleCharacter() {
-        String text = "aabbaabbaaa";
-        String pattern = "a";
-        List<Integer> expected = Arrays.asList(0, 3, 5, 9);
-        
-        List<Integer> actual = Zalgorithm.findPatternOccurrences(text, pattern);
-        
-        assertEquals(expected, actual);
+    public void testFindPatternOccurrencesRepeated() {
+        String text = "aaaaaa";
+        String pattern = "aa";
+        List<Integer> expected = Arrays.asList(0, 1, 2, 3, 4);
+        assertEquals(expected, Zalgorithm.findPatternOccurrences(text, pattern));
     }
 }
