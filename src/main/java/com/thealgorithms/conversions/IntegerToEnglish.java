@@ -41,24 +41,32 @@ public final class IntegerToEnglish {
      */
     private static String convertToWords(int number) {
         int remainder = number % 100;
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         if (remainder <= 20) {
-            result = BASE_NUMBERS_MAP.get(remainder);
+            result.append(BASE_NUMBERS_MAP.get(remainder));
         } else if (BASE_NUMBERS_MAP.containsKey(remainder)) {
-            result = BASE_NUMBERS_MAP.get(remainder);
+            result.append(BASE_NUMBERS_MAP.get(remainder));
         } else {
             int tensDigit = remainder / 10;
             int onesDigit = remainder % 10;
-            result = String.format("%s %s", BASE_NUMBERS_MAP.get(tensDigit * 10), BASE_NUMBERS_MAP.get(onesDigit)).trim();
+            String tens = BASE_NUMBERS_MAP.get(tensDigit * 10);
+            String ones = BASE_NUMBERS_MAP.get(onesDigit);
+            result.append(tens);
+            if (!ones.isEmpty()) {
+                result.append(" ").append(ones);
+            }
         }
 
         int hundredsDigit = number / 100;
         if (hundredsDigit > 0) {
-            result = String.format("%s Hundred%s%s", BASE_NUMBERS_MAP.get(hundredsDigit), result.isEmpty() ? "" : " ", result);
+            if (result.length() > 0) {
+                result.insert(0, " ");
+            }
+            result.insert(0, String.format("%s Hundred", BASE_NUMBERS_MAP.get(hundredsDigit)));
         }
 
-        return result != null ? result.trim() : "";
+        return result.toString().trim();
     }
 
     /**
@@ -85,11 +93,10 @@ public final class IntegerToEnglish {
                     if (index > 0) {
                         subResult += " " + THOUSAND_POWER_MAP.get(index);
                     }
-                    if (!result.isEmpty()) {
-                        result.insert(0, subResult + " ");
-                    } else {
-                        result.append(subResult);
+                    if (result.length() > 0) {
+                        result.insert(0, " ");
                     }
+                    result.insert(0, subResult);
                 }
             }
 
