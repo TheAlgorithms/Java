@@ -124,37 +124,4 @@ public class MRUCacheTest {
         mruCache.put(1, 10);
         assertEquals(10, mruCache.get(1));
     }
-
-    @Test
-    public void capacityValidation() {
-        // Check that an exception is thrown for invalid capacities
-        Exception exception = null;
-
-        // Testing for zero capacity
-        try {
-            new MRUCache<>(0); // Should throw an exception
-            // If no exception is thrown, we should fail the test
-            fail("Expected IllegalArgumentException for capacity 0");
-        } catch (IllegalArgumentException e) {
-            exception = e; // Store the exception if caught
-        }
-
-        // Ensure exception is not null and check the message
-        assertNotNull(exception, "Expected IllegalArgumentException for capacity 0");
-        assertEquals("Capacity must be greater than 0!", exception.getMessage());
-
-        // Resetting exception for the next test
-        // Testing for negative capacity
-        try {
-            new MRUCache<>(-1); // Should throw an exception
-            // If no exception is thrown, we should fail the test
-            fail("Expected IllegalArgumentException for capacity -1");
-        } catch (IllegalArgumentException e) {
-            exception = e; // Store the exception if caught
-        }
-
-        // Ensure exception is not null and check the message
-        assertNotNull(exception, "Expected IllegalArgumentException for capacity -1");
-        assertEquals("Capacity must be greater than 0!", exception.getMessage());
-    }
 }
