@@ -62,4 +62,56 @@ public class BloomFilterTest {
 
         Assertions.assertFalse(bloomFilter.contains("key" + 200));
     }
+
+    @Test
+    void testEmptyFilterContains() {
+        Assertions.assertFalse(bloomFilter.contains("notInserted"), "Filter should not contain any elements when empty");
+        Assertions.assertFalse(bloomFilter.contains(null), "Filter should not contain null elements");
+    }
+
+    @Test
+    void testDifferentTypes() {
+        BloomFilter<Object> filter = new BloomFilter<>(3, 100);
+        filter.insert("string");
+        filter.insert(123);
+        filter.insert(45.67);
+
+        Assertions.assertTrue(filter.contains("string"), "Filter should contain the string 'string'");
+        Assertions.assertTrue(filter.contains(123), "Filter should contain the integer 123");
+        Assertions.assertTrue(filter.contains(45.67), "Filter should contain the double 45.67");
+        Assertions.assertFalse(filter.contains("missing"), "Filter should not contain elements that were not inserted");
+    }
+
+    @Test
+    void testFalsePositiveAfterInsertions() {
+        bloomFilter.insert("cat");
+        bloomFilter.insert("dog");
+        bloomFilter.insert("fish");
+
+        // Checking for an element that was not added
+        Assertions.assertFalse(bloomFilter.contains("bird"), "Filter should not contain 'bird' which was never inserted");
+
+        // To increase chances of false positives, we can add more items
+        for (int i = 0; i < 100; i++) {
+            bloomFilter.insert("item" + i);
+        }
+
+        // Testing with a known non-inserted item
+        Assertions.assertFalse(bloomFilter.contains("nonexistent"), "Filter should not contain 'nonexistent' which was never inserted");
+    }
+
+    @Test
+    void testBoundaryConditions() {
+        BloomFilter<String> filter = new BloomFilter<>(3, 10);
+        filter.insert("a");
+        filter.insert("b");
+        filter.insert("c");
+        filter.insert("d");
+
+        Assertions.assertTrue(filter.contains("a"), "Filter should contain 'a'");
+        Assertions.assertTrue(filter.contains("b"), "Filter should contain 'b'");
+        Assertions.assertTrue(filter.contains("c"), "Filter should contain 'c'");
+        Assertions.assertTrue(filter.contains("d"), "Filter should contain 'd'");
+        Assertions.assertFalse(filter.contains("e"), "Filter should not contain 'e' which was not inserted");
+    }
 }
