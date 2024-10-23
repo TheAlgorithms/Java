@@ -185,10 +185,10 @@ public class MRUCache<K, V> {
         private I key;
         private J value;
 
-        public Entry() {
+        Entry() {
         }
 
-        public Entry(Entry<I, J> preEntry, Entry<I, J> nextEntry, I key, J value) {
+        Entry(Entry<I, J> preEntry, Entry<I, J> nextEntry, I key, J value) {
             this.preEntry = preEntry;
             this.nextEntry = nextEntry;
             this.key = key;
