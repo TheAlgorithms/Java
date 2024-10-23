@@ -13,8 +13,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 public class UnitConversionsTest {
     private static void addData(Stream.Builder<Arguments> builder, Map<String, Double> values) {
-        for (final var first : values.entrySet()) {
-            for (final var second : values.entrySet()) {
+        for (var first : values.entrySet()) {
+            for (var second : values.entrySet()) {
                 if (!first.getKey().equals(second.getKey())) {
                     builder.add(Arguments.of(first.getKey(), second.getKey(), first.getValue(), second.getValue()));
                 }
