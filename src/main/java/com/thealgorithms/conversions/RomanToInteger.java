@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * A utility class to convert Roman numerals into integers.
  *
- * <p>Roman numerals are based on seven symbols:
+ * <p>Roman numerals are based on seven symbols given below:
  * <ul>
  *   <li>I = 1</li>
  *   <li>V = 5</li>
