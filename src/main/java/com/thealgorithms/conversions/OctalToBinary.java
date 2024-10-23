@@ -15,8 +15,7 @@ package com.thealgorithms.conversions;
  *
  * <h2>Example Usage</h2>
  * <pre>
- *   long binary = OctalToBinary.convertOctalToBinary(52);
- *   // Output: 101010 (52 in octal is 101010 in binary)
+ *   long binary = OctalToBinary.convertOctalToBinary(52); // Output: 101010 (52 in octal is 101010 in binary)
  * </pre>
  *
  * @author Bama Charan Chhandogi
