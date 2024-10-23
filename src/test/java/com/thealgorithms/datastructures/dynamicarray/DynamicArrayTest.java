@@ -24,6 +24,8 @@ public class DynamicArrayTest {
     public void testGetElement() {
         array.add("Alice");
         array.add("Bob");
+        array.add("Charlie");
+        array.add("David");
         assertEquals("Bob", array.get(1));
     }
 
@@ -31,6 +33,7 @@ public class DynamicArrayTest {
     public void testGetInvalidIndex() {
         assertThrows(IndexOutOfBoundsException.class, () -> array.get(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> array.get(10));
+        assertThrows(IndexOutOfBoundsException.class, () -> array.get(100));
     }
 
     @Test
