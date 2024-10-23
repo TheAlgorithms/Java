@@ -66,12 +66,16 @@ public final class RomanToInteger {
      * @param roman the Roman numeral string
      * @return the integer value of the Roman numeral
      * @throws IllegalArgumentException if the input contains invalid Roman characters
+     * @throws NullPointerException if the input is {@code null}
      */
     public static int romanToInt(String roman) {
+        if (roman == null) {
+            throw new NullPointerException("Input cannot be null");
+        }
+
         roman = roman.toUpperCase();
         int sum = 0;
         int maxPrevValue = 0;
-
         for (int i = roman.length() - 1; i >= 0; i--) {
             int currentValue = romanSymbolToInt(roman.charAt(i));
             if (currentValue >= maxPrevValue) {
