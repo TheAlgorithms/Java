@@ -11,6 +11,10 @@ public final class TurkishToLatinConversion {
 
     /**
      * This method converts a turkish character to latin character.
+     * Steps:
+     * 1. Define turkish characters and their corresponding latin characters
+     * 2. Replace all turkish characters with their corresponding latin characters
+     * 3. Return the converted string
      *
      * @param param String paramter
      * @return String
