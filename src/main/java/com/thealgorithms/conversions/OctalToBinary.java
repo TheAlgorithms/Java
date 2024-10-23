@@ -47,7 +47,7 @@ public final class OctalToBinary {
             binaryNumber += binaryDigit * digitPosition;
 
             octalNumber /= 10;
-            digitPosition *= 1000; // Move to the next group of 3 binary digits
+            digitPosition *= 1000;
         }
 
         return binaryNumber;
