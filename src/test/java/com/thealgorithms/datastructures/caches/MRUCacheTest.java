@@ -138,7 +138,10 @@ public class MRUCacheTest {
 
         // Ensure exception is not null before accessing its message
         assertNotNull(exception, "Expected IllegalArgumentException for capacity 0");
-        assertEquals("Capacity must be greater than 0!", exception.getMessage());
+
+        if (exception != null) {
+            assertEquals("Capacity must be greater than 0!", exception.getMessage());
+        }
 
         // Resetting exception for the next test
         exception = null;
@@ -152,6 +155,9 @@ public class MRUCacheTest {
 
         // Ensure exception is not null before accessing its message
         assertNotNull(exception, "Expected IllegalArgumentException for capacity -1");
-        assertEquals("Capacity must be greater than 0!", exception.getMessage());
+
+        if (exception != null) {
+            assertEquals("Capacity must be greater than 0!", exception.getMessage());
+        }
     }
 }
