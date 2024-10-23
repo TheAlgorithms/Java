@@ -1,7 +1,5 @@
 package com.thealgorithms.conversions;
 
-import java.util.Scanner;
-
 /**
  * Converts turkish character to latin character
  *
@@ -9,19 +7,6 @@ import java.util.Scanner;
  */
 public final class TurkishToLatinConversion {
     private TurkishToLatinConversion() {
-    }
-
-    /**
-     * Main method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Input the string: ");
-        String b = sc.next();
-        System.out.println("Converted: " + convertTurkishToLatin(b));
-        sc.close();
     }
 
     /**
