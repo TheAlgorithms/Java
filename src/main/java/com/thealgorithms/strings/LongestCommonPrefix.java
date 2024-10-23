@@ -1,4 +1,3 @@
-// To find the longest Common Prefix in String array
 // geeksforgeeks explaination: https://www.geeksforgeeks.org/longest-common-prefix-using-sorting/
 /* The Longest Common Prefix (LCP) of a set of strings is the longest substring that appears at the beginning of each of the strings in the set. For example, given the strings:
 "flower"
@@ -12,8 +11,10 @@ Character Comparison: Compare the characters of the first and last strings until
 Return Prefix: Return the substring of the first string from the start to the index of the last matching character, which represents the longest common prefix.
 */
 package com.thealgorithms.strings;
-import java.util.Arrays; // Specific import
-// To find the longest Common Prefix of String array
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import java.util.Arrays;
+
 public final class LongestCommonPrefix {
     // Private constructor to prevent instantiation of utility class
     private LongestCommonPrefix() {
@@ -24,15 +25,12 @@ public final class LongestCommonPrefix {
         if (n == 0) {
             return "";
         }
-
         // Sort the array to bring similar prefixes closer
         Arrays.sort(str);
-
         // Compare the first and last strings after sorting
         String first = str[0];
         String last = str[n - 1];
         int len = Math.min(first.length(), last.length());
-
         // Find the longest common prefix
         int i;
         for (i = 0; i < len; i++) {
@@ -42,30 +40,34 @@ public final class LongestCommonPrefix {
         }
         return first.substring(0, i);
     }
-    
-    // Main method to run test cases
-    public static void main(String[] args) {
-        // Test cases
-        String[] input1 = {"flower", "flow", "flight"};
-        System.out.println("Test Case 1: " + (longestPrefix(input1).equals("fl") ? "Passed" : "Failed"));
+    // JUnit Test cases
+    @Test
+    public void testLongestPrefix() {
+        // Test case 1
+        String[] input1 = { "flower", "flow", "flight" };
+        assertEquals("fl", longestPrefix(input1));
 
-        String[] input2 = {"dog", "racecar", "car"};
-        System.out.println("Test Case 2: " + (longestPrefix(input2).equals("") ? "Passed" : "Failed"));
+        // Test case 2
+        String[] input2 = { "dog", "racecar", "car" };
+        assertEquals("", longestPrefix(input2));
 
+        // Test case 3
         String[] input3 = {};
-        System.out.println("Test Case 3: " + (longestPrefix(input3).equals("") ? "Passed" : "Failed"));
+        assertEquals("", longestPrefix(input3));
 
-        String[] input4 = {"alone"};
-        System.out.println("Test Case 4: " + (longestPrefix(input4).equals("alone") ? "Passed" : "Failed"));
+        // Test case 4
+        String[] input4 = { "alone" };
+        assertEquals("alone", longestPrefix(input4));
 
-        String[] input5 = {"same", "same", "same"};
-        System.out.println("Test Case 5: " + (longestPrefix(input5).equals("same") ? "Passed" : "Failed"));
+        // Test case 5
+        String[] input5 = { "same", "same", "same" };
+        assertEquals("same", longestPrefix(input5));
 
-        String[] input6 = {"", "", ""};
-        System.out.println("Test Case 6: " + (longestPrefix(input6).equals("") ? "Passed" : "Failed"));
+        // Test case 6
+        String[] input6 = { "", "", "" };
+        assertEquals("", longestPrefix(input6));
     }
 }
-
 /* 
 Time and Space Complexity:
 Time Complexity: O(n log n + m)
