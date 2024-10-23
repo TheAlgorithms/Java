@@ -41,7 +41,7 @@ public final class IntegerToEnglish {
      */
     private static String convertToWords(int number) {
         int remainder = number % 100;
-        String result;
+        String result = "";
 
         if (remainder <= 20) {
             result = BASE_NUMBERS_MAP.get(remainder);
@@ -58,7 +58,7 @@ public final class IntegerToEnglish {
             result = String.format("%s Hundred%s%s", BASE_NUMBERS_MAP.get(hundredsDigit), result.isEmpty() ? "" : " ", result);
         }
 
-        return result.trim();
+        return result != null ? result.trim() : "";
     }
 
     /**
