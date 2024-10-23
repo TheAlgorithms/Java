@@ -3,6 +3,7 @@ package com.thealgorithms.datastructures.caches;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -132,32 +133,28 @@ public class MRUCacheTest {
         // Testing for zero capacity
         try {
             new MRUCache<>(0); // Should throw an exception
+            // If no exception is thrown, we should fail the test
+            fail("Expected IllegalArgumentException for capacity 0");
         } catch (IllegalArgumentException e) {
             exception = e; // Store the exception if caught
         }
 
-        // Ensure exception is not null before accessing its message
+        // Ensure exception is not null and check the message
         assertNotNull(exception, "Expected IllegalArgumentException for capacity 0");
-
-        if (exception != null) {
-            assertEquals("Capacity must be greater than 0!", exception.getMessage());
-        }
+        assertEquals("Capacity must be greater than 0!", exception.getMessage());
 
         // Resetting exception for the next test
-        exception = null;
-
         // Testing for negative capacity
         try {
             new MRUCache<>(-1); // Should throw an exception
+            // If no exception is thrown, we should fail the test
+            fail("Expected IllegalArgumentException for capacity -1");
         } catch (IllegalArgumentException e) {
             exception = e; // Store the exception if caught
         }
 
-        // Ensure exception is not null before accessing its message
+        // Ensure exception is not null and check the message
         assertNotNull(exception, "Expected IllegalArgumentException for capacity -1");
-
-        if (exception != null) {
-            assertEquals("Capacity must be greater than 0!", exception.getMessage());
-        }
+        assertEquals("Capacity must be greater than 0!", exception.getMessage());
     }
 }
