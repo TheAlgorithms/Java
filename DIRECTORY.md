@@ -775,6 +775,7 @@
             * [OctalToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/OctalToHexadecimalTest.java)
             * [PhoneticAlphabetConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/PhoneticAlphabetConverterTest.java)
             * [RomanToIntegerTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/RomanToIntegerTest.java)
+            * [TurkishToLatinConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/TurkishToLatinConversionTest.java)
             * [UnitConversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitConversionsTest.java)
             * [UnitsConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitsConverterTest.java)
           * datastructures
