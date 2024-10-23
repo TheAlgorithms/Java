@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.caches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
@@ -127,19 +128,30 @@ public class MRUCacheTest {
     public void capacityValidation() {
         // Check that an exception is thrown for invalid capacities
         Exception exception = null;
+
+        // Testing for zero capacity
         try {
             new MRUCache<>(0); // Should throw an exception
         } catch (IllegalArgumentException e) {
-            exception = e;
+            exception = e; // Store the exception if caught
         }
+
+        // Ensure exception is not null before accessing its message
+        assertNotNull(exception, "Expected IllegalArgumentException for capacity 0");
         assertEquals("Capacity must be greater than 0!", exception.getMessage());
 
+        // Resetting exception for the next test
         exception = null;
+
+        // Testing for negative capacity
         try {
             new MRUCache<>(-1); // Should throw an exception
         } catch (IllegalArgumentException e) {
-            exception = e;
+            exception = e; // Store the exception if caught
         }
+
+        // Ensure exception is not null before accessing its message
+        assertNotNull(exception, "Expected IllegalArgumentException for capacity -1");
         assertEquals("Capacity must be greater than 0!", exception.getMessage());
     }
 }
