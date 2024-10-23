@@ -50,10 +50,10 @@ public final class IntegerToEnglish {
         } else {
             int tensDigit = remainder / 10;
             int onesDigit = remainder % 10;
-            String tens = BASE_NUMBERS_MAP.get(tensDigit * 10);
-            String ones = BASE_NUMBERS_MAP.get(onesDigit);
+            String tens = BASE_NUMBERS_MAP.getOrDefault(tensDigit * 10, "");
+            String ones = BASE_NUMBERS_MAP.getOrDefault(onesDigit, "");
             result.append(tens);
-            if (!ones.isEmpty()) {
+            if (ones != null && !ones.isEmpty()) {
                 result.append(" ").append(ones);
             }
         }
