@@ -1,0 +1,22 @@
+#Refactored ArrayCombination Class
+from itertools import combinations
+
+class ArrayCombination:
+    def __init__(self, arr):
+        if not isinstance(arr, list):
+            raise ValueError("Input should be a list.")
+        self.arr = arr
+
+    def get_combinations(self, length=None):
+        """
+        Generate all combinations of the array.
+        If length is provided, generate combinations of that length.
+        """
+        if length is None:
+            # Generate combinations of all lengths from 1 to len(arr)
+            return [list(combo) for r in range(1, len(self.arr) + 1) for combo in combinations(self.arr, r)]
+        elif isinstance(length, int) and 0 < length <= len(self.arr):
+            # Generate combinations of specified length
+            return [list(combo) for combo in combinations(self.arr, length)]
+        else:
+            raise ValueError("Invalid combination length")
