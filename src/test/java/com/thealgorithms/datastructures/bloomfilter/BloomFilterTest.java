@@ -96,7 +96,6 @@ public class BloomFilterTest {
             bloomFilter.insert("item" + i);
         }
 
-        // Testing with a known non-inserted item
         Assertions.assertFalse(bloomFilter.contains("nonexistent"), "Filter should not contain 'nonexistent' which was never inserted");
     }
 
