@@ -103,6 +103,7 @@ class TopologicalSort<E extends Comparable<E>> {
      * (u, v), vertex u appears before vertex v in the ordering.
      *
      * @return an ArrayList of vertices in topological order
+     * @throws IllegalStateException if the graph contains a cycle
      */
     ArrayList<E> topSortOrder() {
         calculateInDegree();
@@ -115,16 +116,23 @@ class TopologicalSort<E extends Comparable<E>> {
         }
 
         ArrayList<E> answer = new ArrayList<>();
+        int processedVertices = 0;
 
         while (!q.isEmpty()) {
             E current = q.poll();
             answer.add(current);
+            processedVertices++;
+
             for (E adjacent : graph.getAdjacents(current)) {
                 inDegree.put(adjacent, inDegree.get(adjacent) - 1);
                 if (inDegree.get(adjacent) == 0) {
                     q.add(adjacent);
                 }
             }
+        }
+
+        if (processedVertices != graph.getVertices().size()) {
+            throw new IllegalStateException("Graph contains a cycle, topological sort not possible");
         }
 
         return answer;

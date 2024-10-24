@@ -72,9 +72,7 @@ class KahnsAlgorithmTest {
         graph.addEdge("a", "a"); // self-loop
 
         TopologicalSort<String> topSort = new TopologicalSort<>(graph);
-        ArrayList<String> result = topSort.topSortOrder();
 
-        String[] expectedOrder = {};
-        assertArrayEquals(expectedOrder, result.toArray());
+        assertThrows(IllegalStateException.class, () -> topSort.topSortOrder());
     }
 }
