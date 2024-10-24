@@ -1,0 +1,32 @@
+class TrappingRainWater {
+
+    // arr: input array
+    // n: size of array
+    // Function to find the trapped water between the blocks.
+    static long trappingWater(int arr[]) {
+        // Your code here
+        int pmax[]=new int [arr.length];
+        int smax[]=new int [arr.length];
+        int max=arr[0];
+        for(int i=0;i<pmax.length;i++){
+            pmax[i]=Math.max(max,arr[i]);
+            max=pmax[i];
+        }
+        max=arr[arr.length-1];
+        // smax[smax.length-1]=arr[arr.length-1];
+        for(int i=smax.length-1;i>=0;i--){
+            smax[i]=Math.max(max,arr[i]);
+            max=smax[i];
+        }
+        int lmax=0;
+        int rmax=0;
+        long t=0l;
+        for(int i=0;i<arr.length-1;i++){
+            lmax=pmax[i];
+            rmax=smax[i];
+            if(arr[i]<lmax&&arr[i]<rmax)
+            t+=Math.min(lmax,rmax)-arr[i];
+        }
+        return t;
+    }
+}
