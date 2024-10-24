@@ -1,0 +1,55 @@
+class CircularDoublyLinkedList {
+    private Node head;
+
+    // Constructor
+    public CircularDoublyLinkedList() {
+        head = null;
+    }
+
+    // Insert a node at the end
+    public void insertEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            head.next = head;
+            head.prev = head;
+        } else {
+            Node tail = head.prev;
+
+            tail.next = newNode;
+            newNode.prev = tail;
+            newNode.next = head;
+            head.prev = newNode;
+        }
+    }
+
+    // Display the list
+    public void display() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        
+        Node current = head;
+        do {
+            System.out.print(current.data + " ");
+            current = current.next;
+        } while (current != head);
+        System.out.println();
+    }
+
+    // Delete a node by value
+    public void delete(int value) {
+        if (head == null) return;
+
+        Node current = head;
+
+        do {
+            if (current.data == value) {
+                if (current == head && current.next == head) {
+                    head = null; // List is now empty
+                } else {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                    if (current == head) {
+                        head = current.next; // Move head
