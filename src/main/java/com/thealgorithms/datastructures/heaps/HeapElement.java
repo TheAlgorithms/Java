@@ -111,7 +111,7 @@ public class HeapElement {
     }
 
     /**
-     * @param otherHeapElement
+     * @param o
      * @return true if the keys on both elements are identical and the
      * additional info objects are identical.
      */
@@ -133,5 +133,9 @@ public class HeapElement {
         result = 31 * result + (int) key;
         result = 31 * result + (additionalInfo != null ? additionalInfo.hashCode() : 0);
         return result;
+    }
+
+    public String getValue() {
+        return additionalInfo.toString();
     }
 }
