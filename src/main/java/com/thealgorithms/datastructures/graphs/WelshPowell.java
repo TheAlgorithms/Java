@@ -141,7 +141,8 @@ public final class WelshPowell {
         return colors;
     }
 
-    /** Helper method to check if a color is unassigned
+    /**
+     * Helper method to check if a color is unassigned
      *
      * @param color the color to check
      * @return {@code true} if the color is unassigned, {@code false} otherwise
@@ -150,7 +151,8 @@ public final class WelshPowell {
         return color == BLANK_COLOR;
     }
 
-    /** Checks if a vertex has adjacent colored vertices
+    /**
+     * Checks if a vertex has adjacent colored vertices
      *
      * @param graph the input graph
      * @param vertex the vertex to check
@@ -161,7 +163,8 @@ public final class WelshPowell {
         return graph.getAdjacencyList(vertex).stream().anyMatch(otherVertex -> !isBlank(colors[otherVertex]));
     }
 
-    /** Initializes the colors array with blank color
+    /**
+     * Initializes the colors array with blank color
      *
      * @param numberOfVertices the number of vertices in the graph
      * @return an array of integers representing the colors assigned to the vertices
@@ -172,7 +175,8 @@ public final class WelshPowell {
         return colors;
     }
 
-    /** Sorts the vertices by their degree in descending order
+    /**
+     * Sorts the vertices by their degree in descending order
      *
      * @param graph the input graph
      * @return an array of integers representing the vertices sorted by degree
@@ -181,7 +185,8 @@ public final class WelshPowell {
         return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
     }
 
-    /** Computes the colors already used by the adjacent vertices
+    /**
+     * Computes the colors already used by the adjacent vertices
      *
      * @param graph the input graph
      * @param vertex the vertex to check
@@ -194,7 +199,8 @@ public final class WelshPowell {
         return usedColors;
     }
 
-    /** Finds the first unused color
+    /**
+     * Finds the first unused color
      *
      * @param usedColors the array of colors used by the adjacent vertices
      * @return the first unused color
