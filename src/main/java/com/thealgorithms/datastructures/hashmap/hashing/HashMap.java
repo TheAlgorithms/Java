@@ -86,6 +86,28 @@ public class HashMap<K, V> {
     }
 
     /**
+     * Clears the contents of the hash map by reinitializing each bucket.
+     */
+    public void clear() {
+        for (int i = 0; i < hashSize; i++) {
+            buckets[i] = new LinkedList<>();
+        }
+    }
+
+    /**
+     * Gets the number of key-value pairs in the hash map.
+     *
+     * @return the number of key-value pairs in the hash map
+     */
+    public int size() {
+        int size = 0;
+        for (int i = 0; i < hashSize; i++) {
+            size += buckets[i].isEmpty() ? 0 : 1;
+        }
+        return size;
+    }
+
+    /**
      * A nested static class that represents a linked list used for separate chaining in the hash map.
      *
      * @param <K> the type of keys maintained by this linked list
