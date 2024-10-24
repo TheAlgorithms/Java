@@ -5,66 +5,73 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Java program that implements Tarjan's Algorithm.
- * @author <a href="https://github.com/shivu2002a">Shivanagouda S A</a>
+ * Java program that implements Tarjan's Algorithm to find Strongly Connected Components (SCCs) in a directed graph.
+ *
  * <p>
- * Tarjan's algorithm is a linear time algorithm to find the strongly connected components of a
-directed graph, which, from here onwards will be referred as SCC.
-
- * A graph is said to be strongly connected if every vertex is reachable from every other vertex.
-The SCCs of a directed graph form a partition into subgraphs that are themselves strongly
-connected. Single node is always a SCC.
-
- * Example:
-0 --------> 1 -------> 3 --------> 4
-^          /
-|         /
-|        /
-|       /
-|      /
-|     /
-|    /
-|   /
-|  /
-| /
-|V
-2
-
-For the above graph, the SCC list goes as follows:
-1, 2, 0
-3
-4
-
-We can also see that order of the nodes in an SCC doesn't matter since they are in cycle.
-
-{@summary}
-Tarjan's Algorithm:
- * DFS search produces a DFS tree
- * Strongly Connected Components form subtrees of the DFS tree.
- * If we can find the head of these subtrees, we can get all the nodes in that subtree (including
-the head) and that will be one SCC.
- * There is no back edge from one SCC to another (here can be cross edges, but they will not be
-used).
-
- * Kosaraju Algorithm aims at doing the same but uses two DFS traversalse whereas Tarjan’s
-algorithm does the same in a single DFS, which leads to much lower constant factors in the latter.
-
+ * Tarjan's algorithm is a linear time algorithm (O(V + E)) that identifies the SCCs of a directed graph.
+ * An SCC is a maximal subgraph where every vertex is reachable from every other vertex within the subgraph.
+ *
+ * <h3>Algorithm Overview:</h3>
+ * <ul>
+ * <li>DFS Search: A depth-first search (DFS) is performed on the graph to generate a DFS tree.</li>
+ * <li>Identification of SCCs: SCCs correspond to subtrees within this DFS tree.</li>
+ * <li>Low-Link Values: For each node, a low-link value is maintained, which indicates the earliest visited
+ * vertex (the one with the minimum insertion time) that can be reached from that subtree.</li>
+ * <li>Stack Usage: Nodes are stored in a stack during DFS. When an SCC is identified, nodes are popped from
+ * the stack until the head of the SCC is reached.</li>
+ * </ul>
+ *
+ * <p>
+ * Example of a directed graph:
+ * <pre>
+ *  0 --------> 1 -------> 3 --------> 4
+ *  ^          /
+ *  |         /
+ *  |        /
+ *  |       /
+ *  |      /
+ *  |     /
+ *  |    /
+ *  |   /
+ *  |  /
+ *  | /
+ *  V
+ *  2
+ * </pre>
+ *
+ * <p>
+ * For the above graph, the SCC list is as follows:
+ * <ul>
+ * <li>1, 2, 0</li>
+ * <li>3</li>
+ * <li>4</li>
+ * </ul>
+ * The order of nodes in an SCC does not matter as they form cycles.
+ *
+ * <h3>Comparison with Kosaraju's Algorithm:</h3>
+ * <p>
+ * Kosaraju's algorithm also identifies SCCs but does so using two DFS traversals.
+ * In contrast, Tarjan's algorithm achieves this in a single DFS traversal, leading to improved performance
+ * in terms of constant factors.
+ * </p>
  */
 public class TarjansAlgorithm {
 
-    // Timer for tracking lowtime and insertion time
+    // Timer for tracking low time and insertion time
     private int time;
 
-    private final List<List<Integer>> sccList = new ArrayList<List<Integer>>();
+    // List to store all strongly connected components
+    private final List<List<Integer>> sccList = new ArrayList<>();
 
+    /**
+     * Finds and returns the strongly connected components (SCCs) of the directed graph.
+     *
+     * @param v the number of vertices in the graph
+     * @param graph the adjacency list representation of the graph
+     * @return a list of lists, where each inner list represents a strongly connected component
+     */
     public List<List<Integer>> stronglyConnectedComponents(int v, List<List<Integer>> graph) {
-
-        // Initially all vertices as unvisited, insertion and low time are undefined
-
-        // insertionTime:Time when a node is visited 1st time while DFS traversal
-
-        // lowTime: indicates the earliest visited vertex (the vertex with minimum insertion time)
-        // that can be reached from a subtree rooted with a particular node.
+        // Initialize arrays for insertion time and low-link values
         int[] lowTime = new int[v];
         int[] insertionTime = new int[v];
         for (int i = 0; i < v; i++) {
@@ -72,11 +79,11 @@ public class TarjansAlgorithm {
             lowTime[i] = -1;
         }
 
-        // To check if element is present in stack
+        // Track if vertices are in the stack
         boolean[] isInStack = new boolean[v];
 
-        // Store nodes during DFS
-        Stack<Integer> st = new Stack<Integer>();
+        // Stack to hold nodes during DFS
+        Stack<Integer> st = new Stack<>();
 
         for (int i = 0; i < v; i++) {
             if (insertionTime[i] == -1) {
@@ -87,36 +94,44 @@ public class TarjansAlgorithm {
         return sccList;
     }
 
+    /**
+     * A utility function to perform DFS and find SCCs.
+     *
+     * @param u the current vertex being visited
+     * @param lowTime array to keep track of the low-link values
+     * @param insertionTime array to keep track of the insertion times
+     * @param isInStack boolean array indicating if a vertex is in the stack
+     * @param st the stack used for DFS
+     * @param graph the adjacency list representation of the graph
+     */
     private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime, boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
-
-        // Initialize insertion time and lowTime value of current node
+        // Set insertion time and low-link value
         insertionTime[u] = time;
         lowTime[u] = time;
-        time += 1;
+        time++;
 
-        // Push current node into stack
+        // Push current node onto the stack
         isInStack[u] = true;
         st.push(u);
 
-        // Go through all vertices adjacent to this
+        // Explore adjacent vertices
         for (Integer vertex : graph.get(u)) {
-            // If the adjacent node is unvisited, do DFS
             if (insertionTime[vertex] == -1) {
                 stronglyConnCompsUtil(vertex, lowTime, insertionTime, isInStack, st, graph);
-                // update lowTime for the current node comparing lowtime of adj node
+                // Update low-link value
                 lowTime[u] = Math.min(lowTime[u], lowTime[vertex]);
             } else if (isInStack[vertex]) {
-                // If adj node is in stack, update low
+                // Vertex is in the stack; update low-link value
                 lowTime[u] = Math.min(lowTime[u], insertionTime[vertex]);
             }
         }
-        // If lowtime and insertion time are same, current node is the head of an SCC
-        //  head node found, get all the nodes in this SCC
+
+        // Check if the current vertex is the root of an SCC
         if (lowTime[u] == insertionTime[u]) {
             int w = -1;
-            var scc = new ArrayList<Integer>();
+            List<Integer> scc = new ArrayList<>();
 
-            // Stack has all the nodes of the current SCC
+            // Pop vertices from the stack until the root is found
             while (w != u) {
                 w = st.pop();
                 scc.add(w);
