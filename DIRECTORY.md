@@ -811,6 +811,7 @@
               * [HamiltonianCycleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/HamiltonianCycleTest.java)
               * [JohnsonsAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/JohnsonsAlgorithmTest.java)
               * [KosarajuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/KosarajuTest.java)
+              * [MatrixGraphsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/MatrixGraphsTest.java)
               * [TarjansAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/TarjansAlgorithmTest.java)
               * [WelshPowellTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/WelshPowellTest.java)
             * hashmap
