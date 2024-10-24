@@ -143,7 +143,9 @@ public class MinHeap implements Heap {
      * @param elementIndex 1-based index of the element to move up
      */
     private void toggleUp(int elementIndex) {
-        if (elementIndex <= 1) return;
+        if (elementIndex <= 1) {
+            return;
+        }
 
         double key = minHeap.get(elementIndex - 1).getKey();
         int parentIndex = (int) Math.floor(elementIndex / 2.0);
