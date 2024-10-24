@@ -1,0 +1,52 @@
+class UnrolledLinkedList {
+    private Node head;
+    private int nodeCapacity; // Maximum capacity of each node
+
+    // Constructor
+    public UnrolledLinkedList(int capacity) {
+        head = null;
+        nodeCapacity = capacity;
+    }
+
+    // Insert an element at the end
+    public void insert(int value) {
+        if (head == null) {
+            head = new Node(nodeCapacity);
+            head.data[0] = value;
+            head.count = 1;
+        } else {
+            Node current = head;
+            while (current != null) {
+                if (current.count < nodeCapacity) {
+                    current.data[current.count] = value;
+                    current.count++;
+                    return;
+                }
+                current = current.next;
+            }
+
+            // If we reach here, all nodes are full, so create a new node
+            Node newNode = new Node(nodeCapacity);
+            newNode.data[0] = value;
+            newNode.count = 1;
+
+            Node tail = head;
+            while (tail.next != null) {
+                tail = tail.next;
+            }
+            tail.next = newNode;
+        }
+    }
+
+    // Display the unrolled linked list
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            for (int i = 0; i < current.count; i++) {
+                System.out.print(current.data[i] + " ");
+            }
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
