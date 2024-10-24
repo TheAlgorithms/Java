@@ -67,7 +67,6 @@ class KahnsAlgorithmTest {
 
     @Test
     void testSingleNodeGraph() {
-        // Test case for a graph with a single node
         AdjacencyList<String> graph = new AdjacencyList<>();
         graph.addEdge("a", "a"); // self-loop
 
