@@ -3,19 +3,23 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-/*
-This class finds the majority element(s) in an array of integers.
-A majority element is an element that appears more than or equal to n/2 times, where n is the length
-of the array.
-*/
+
+/**
+ * This class provides a method to find the majority element(s) in an array of integers.
+ * A majority element is defined as an element that appears at least ⌊n/2⌋ times,
+ * where n is the length of the array. If multiple elements qualify as majority elements,
+ * they are all returned in a list.
+ */
 public final class MajorityElement {
     private MajorityElement() {
     }
-    /*
-   This method returns the majority element(s) in the given array of integers.
-   @param nums: an array of integers
-   @return a list of majority elements
-   */
+
+    /**
+     * Returns a list of majority element(s) from the given array of integers.
+     *
+     * @param nums an array of integers
+     * @return a list containing the majority element(s); returns an empty list if none exist
+     */
     public static List<Integer> majority(int[] nums) {
         HashMap<Integer, Integer> numToCount = new HashMap<>();
         for (final var num : nums) {
