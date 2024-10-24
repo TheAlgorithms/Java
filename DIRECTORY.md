@@ -820,6 +820,7 @@
                 * [GenericHashMapUsingArrayListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArrayListTest.java)
                 * [GenericHashMapUsingArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArrayTest.java)
                 * [HashMapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/HashMapTest.java)
+                * [IntersectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/IntersectionTest.java)
                 * [LinearProbingHashMapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/LinearProbingHashMapTest.java)
                 * [MajorityElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/MajorityElementTest.java)
                 * [MapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/MapTest.java)
