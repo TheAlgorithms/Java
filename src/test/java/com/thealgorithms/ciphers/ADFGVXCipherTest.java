@@ -6,31 +6,41 @@ import org.junit.jupiter.api.Test;
 
 class ADFGVXCipherTest {
 
-    ADFGVXCipher adfgvxCipher = new ADFGVXCipher();
+    private final ADFGVXCipher adfgvxCipher = new ADFGVXCipher();
 
     @Test
-    void adfgvxCipherEncryptTest() {
-        // given
-        String message = "attack at 1200am"; // Plaintext message
-        String keyword = "PRIVACY";
+    void testEncrypt() {
+        String message = "attack at 1200am";
+        String key = "PRIVACY";
 
-        // when
-        String cipherText = adfgvxCipher.encrypt(message, keyword);
-
-        // then
-        assertEquals("DGDDDAGDDGAFADDFDADVDVFAADVX", cipherText);
+        String encrypted = adfgvxCipher.encrypt(message, key);
+        assertEquals("DGDDDAGDDGAFADDFDADVDVFAADVX", encrypted);
     }
 
     @Test
-    void adfgvxCipherDecryptTest() {
-        // given
-        String cipherText = "DGDDDAGDDGAFADDFDADVDVFAADVX"; // Ciphertext message
-        String keyword = "PRIVACY";
+    void testDecrypt() {
+        String encrypted = "DGDDDAGDDGAFADDFDADVDVFAADVX";
+        String key = "PRIVACY";
 
-        // when
-        String plainText = adfgvxCipher.decrypt(cipherText, keyword);
+        String decrypted = adfgvxCipher.decrypt(encrypted, key);
+        assertEquals("ATTACKAT1200AM", decrypted);
+    }
 
-        // then
-        assertEquals("ATTACKAT1200AM", plainText);
+    @Test
+    void testEmptyInput() {
+        String encrypted = adfgvxCipher.encrypt("", "PRIVACY");
+        String decrypted = adfgvxCipher.decrypt("", "PRIVACY");
+        assertEquals("", encrypted);
+        assertEquals("", decrypted);
+    }
+
+    @Test
+    void testShortKey() {
+        String message = "TESTING";
+        String key = "A";
+
+        String encrypted = adfgvxCipher.encrypt(message, key);
+        String decrypted = adfgvxCipher.decrypt(encrypted, key);
+        assertEquals("TESTING", decrypted);
     }
 }
