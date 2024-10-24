@@ -197,7 +197,7 @@ public class MinHeap implements Heap {
         if (minHeap.isEmpty()) {
             throw new EmptyHeapException("Cannot extract from empty heap");
         }
-        HeapElement result = minHeap.get(0);
+        HeapElement result = minHeap.getFirst();
         deleteElement(1);
         return result;
     }
@@ -227,8 +227,8 @@ public class MinHeap implements Heap {
         }
 
         // Replace with last element and remove last position
-        minHeap.set(elementIndex - 1, minHeap.get(minHeap.size() - 1));
-        minHeap.remove(minHeap.size() - 1);
+        minHeap.set(elementIndex - 1, minHeap.getLast());
+        minHeap.removeLast();
 
         // No need to toggle if we just removed the last element
         if (!minHeap.isEmpty() && elementIndex <= minHeap.size()) {
