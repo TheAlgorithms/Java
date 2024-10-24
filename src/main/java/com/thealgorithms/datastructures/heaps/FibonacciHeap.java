@@ -1,5 +1,30 @@
 package com.thealgorithms.datastructures.heaps;
 
+/**
+ * The {@code FibonacciHeap} class implements a Fibonacci Heap data structure,
+ * which is a collection of trees that satisfy the minimum heap property.
+ * This heap allows for efficient merging of heaps, as well as faster
+ * decrease-key and delete operations compared to other heap data structures.
+ *
+ * <p>Key features of the Fibonacci Heap include:
+ * <ul>
+ *   <li>Amortized O(1) time complexity for insert and decrease-key operations.</li>
+ *   <li>Amortized O(log n) time complexity for delete and delete-min operations.</li>
+ *   <li>Meld operation that combines two heaps in O(1) time.</li>
+ *   <li>Potential function that helps analyze the amortized time complexity.</li>
+ * </ul>
+ *
+ * <p>This implementation maintains additional statistics such as the total number
+ * of link and cut operations performed during the lifetime of the heap, which can
+ * be accessed through static methods.
+ *
+ * <p>The Fibonacci Heap is composed of nodes represented by the inner class
+ * {@code HeapNode}. Each node maintains a key, rank, marked status, and pointers
+ * to its children and siblings. Nodes can be linked and cut as part of the heap
+ * restructuring processes.
+ *
+ * @see HeapNode
+ */
 public class FibonacciHeap {
 
     private static final double GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
