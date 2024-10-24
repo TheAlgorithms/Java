@@ -1,12 +1,16 @@
 package com.thealgorithms.datastructures.heaps;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for MaxHeap implementation
@@ -18,13 +22,7 @@ class MaxHeapTest {
     @BeforeEach
     void setUp() {
         // Create a fresh heap for each test
-        List<HeapElement> elements = Arrays.asList(
-                new HeapElement(5.0, "Five"),
-                new HeapElement(2.0, "Two"),
-                new HeapElement(8.0, "Eight"),
-                new HeapElement(1.0, "One"),
-                new HeapElement(9.0, "Nine")
-        );
+        List<HeapElement> elements = Arrays.asList(new HeapElement(5.0, "Five"), new HeapElement(2.0, "Two"), new HeapElement(8.0, "Eight"), new HeapElement(1.0, "One"), new HeapElement(9.0, "Nine"));
         heap = new MaxHeap(elements);
     }
 
@@ -41,11 +39,7 @@ class MaxHeapTest {
 
     @Test
     void testConstructorWithNullElements() {
-        List<HeapElement> elements = Arrays.asList(
-                new HeapElement(1.0, "One"),
-                null,
-                new HeapElement(2.0, "Two")
-        );
+        List<HeapElement> elements = Arrays.asList(new HeapElement(1.0, "One"), null, new HeapElement(2.0, "Two"));
         MaxHeap heap = new MaxHeap(elements);
         assertEquals(2, heap.size());
     }
@@ -76,7 +70,7 @@ class MaxHeapTest {
     }
 
     @Test
-    void testDeleteElement() {
+    void testDeleteElement() throws EmptyHeapException {
         heap.deleteElement(1);
         assertEquals(8.0, heap.getElement(1).getKey());
         assertEquals(4, heap.size());
@@ -140,7 +134,7 @@ class MaxHeapTest {
             try {
                 heap.getElement();
             } catch (EmptyHeapException e) {
-                fail("Should not throw EmptyHeapException while heap is not empty");
+                Assertions.fail("Should not throw EmptyHeapException while heap is not empty");
             }
         }
 

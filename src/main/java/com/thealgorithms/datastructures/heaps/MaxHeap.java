@@ -45,15 +45,51 @@ public class MaxHeap implements Heap {
         }
 
         maxHeap = new ArrayList<>();
+
+        // Safe initialization: directly add elements first
         for (HeapElement heapElement : listElements) {
             if (heapElement != null) {
-                insertElement(heapElement);
+                maxHeap.add(heapElement);
             } else {
                 System.out.println("Null element. Not added to heap");
             }
         }
+
+        // Then heapify the array bottom-up
+        for (int i = maxHeap.size() / 2; i >= 0; i--) {
+            heapifyDown(i + 1); // +1 because heapifyDown expects 1-based index
+        }
+
         if (maxHeap.isEmpty()) {
             System.out.println("No element has been added, empty heap.");
+        }
+    }
+
+    /**
+     * Maintains heap properties by moving an element down the heap.
+     * Similar to toggleDown but used specifically during initialization.
+     *
+     * @param elementIndex 1-based index of the element to heapify
+     */
+    private void heapifyDown(int elementIndex) {
+        int largest = elementIndex - 1;
+        int leftChild = 2 * elementIndex - 1;
+        int rightChild = 2 * elementIndex;
+
+        if (leftChild < maxHeap.size() && maxHeap.get(leftChild).getKey() > maxHeap.get(largest).getKey()) {
+            largest = leftChild;
+        }
+
+        if (rightChild < maxHeap.size() && maxHeap.get(rightChild).getKey() > maxHeap.get(largest).getKey()) {
+            largest = rightChild;
+        }
+
+        if (largest != elementIndex - 1) {
+            HeapElement swap = maxHeap.get(elementIndex - 1);
+            maxHeap.set(elementIndex - 1, maxHeap.get(largest));
+            maxHeap.set(largest, swap);
+
+            heapifyDown(largest + 1);
         }
     }
 
@@ -147,7 +183,7 @@ public class MaxHeap implements Heap {
         if (maxHeap.isEmpty()) {
             throw new EmptyHeapException("Cannot extract from empty heap");
         }
-        HeapElement result = maxHeap.get(0);
+        HeapElement result = maxHeap.getFirst();
         deleteElement(1);
         return result;
     }
@@ -177,8 +213,8 @@ public class MaxHeap implements Heap {
         }
 
         // Replace with last element and remove last position
-        maxHeap.set(elementIndex - 1, maxHeap.get(maxHeap.size() - 1));
-        maxHeap.remove(maxHeap.size() - 1);
+        maxHeap.set(elementIndex - 1, maxHeap.getLast());
+        maxHeap.removeLast();
 
         // No need to toggle if we just removed the last element
         if (!maxHeap.isEmpty() && elementIndex <= maxHeap.size()) {
