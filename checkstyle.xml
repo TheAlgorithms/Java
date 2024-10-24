@@ -155,7 +155,7 @@
     <module name="AvoidNestedBlocks"/>
     <!-- TODO <module name="EmptyBlock"/> -->
     <!-- TODO <module name="LeftCurly"/> -->
-    <module name="NeedBraces"/>
+    <!-- module name="NeedBraces"/> -->
     <!-- TODO <module name="RightCurly"/> -->
 
     <!-- Checks for common coding problems               -->
@@ -175,7 +175,7 @@
     <!-- See https://checkstyle.org/checks/design/index.html -->
     <!-- TODO <module name="DesignForExtension"/> -->
     <module name="FinalClass"/>
-    <module name="HideUtilityClassConstructor"/>
+    <!-- module name="HideUtilityClassConstructor"/> -->
     <module name="InterfaceIsType"/>
     <!-- TODO <module name="VisibilityModifier"/> -->
 
