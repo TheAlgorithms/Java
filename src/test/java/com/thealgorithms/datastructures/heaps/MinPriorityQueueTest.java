@@ -61,7 +61,6 @@ public class MinPriorityQueueTest {
             sortedArray[i] = queue.delete();
         }
 
-        // Validate the sorted order
         Assertions.assertArrayEquals(new int[] {1, 3, 5, 10, 15}, sortedArray, "The array should be sorted in ascending order.");
     }
 
