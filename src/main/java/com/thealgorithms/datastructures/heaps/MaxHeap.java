@@ -25,7 +25,6 @@ import java.util.List;
  * ```
  *
  * @author Nicolas Renard
- * @author [Your name] (documentation improvements)
  */
 public class MaxHeap implements Heap {
 
