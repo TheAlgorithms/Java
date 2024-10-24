@@ -27,7 +27,6 @@ public class GenericHashMapUsingArray<K, V> {
 
     private int size; // Total number of key-value pairs
     private LinkedList<Node>[] buckets; // Array of linked lists (buckets) for storing entries
-    private final float loadFactorThreshold = 0.75f; // Load factor threshold for resizing
 
     /**
      * Constructs a new empty hash map with an initial capacity of 16.
@@ -72,6 +71,8 @@ public class GenericHashMapUsingArray<K, V> {
         size++;
 
         // Check if rehashing is needed
+        // Load factor threshold for resizing
+        float loadFactorThreshold = 0.75f;
         if ((float) size / buckets.length > loadFactorThreshold) {
             reHash();
         }
