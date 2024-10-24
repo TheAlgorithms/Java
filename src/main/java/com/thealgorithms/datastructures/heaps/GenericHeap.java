@@ -9,6 +9,10 @@ public class GenericHeap<T extends Comparable<T>> {
     HashMap<T, Integer> map = new HashMap<>();
 
     public void add(T item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Cannot insert null into the heap.");
+        }
+
         this.data.add(item);
         map.put(item, this.data.size() - 1); //
         upHeapify(this.data.size() - 1);
