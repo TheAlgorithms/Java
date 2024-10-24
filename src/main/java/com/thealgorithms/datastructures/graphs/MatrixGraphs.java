@@ -102,7 +102,7 @@ class AdjacencyMatrixGraph {
     /**
      * Updates the number of edges in the graph
      *
-     * @param newNumberOfEdges
+     * @param newNumberOfEdges the new number of edges
      *
      */
     private void setNumberOfEdges(int newNumberOfEdges) {
@@ -202,7 +202,7 @@ class AdjacencyMatrixGraph {
      * exists and is removed
      */
     public boolean removeEdge(int from, int to) {
-        if (!this.vertexDoesExist(from) || !this.vertexDoesExist(to)) {
+        if (this.vertexDoesExist(from) && this.vertexDoesExist(to)) {
             if (this.adjacencyOfEdgeDoesExist(from, to)) {
                 this.adjacency()[from][to] = AdjacencyMatrixGraph.EDGE_NONE;
                 this.adjacency()[to][from] = AdjacencyMatrixGraph.EDGE_NONE;
@@ -223,14 +223,14 @@ class AdjacencyMatrixGraph {
     public List<Integer> depthFirstOrder(int startVertex) {
         // If the startVertex is invalid, return an empty list
         if (startVertex >= vertexCount || startVertex < 0) {
-            return new ArrayList<Integer>();
+            return new ArrayList<>();
         }
 
         // Create an array to track the visited vertices
         boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the order of our traversal
-        ArrayList<Integer> orderList = new ArrayList<Integer>();
+        ArrayList<Integer> orderList = new ArrayList<>();
 
         // Perform our DFS algorithm
         depthFirstOrder(startVertex, visited, orderList);
@@ -278,18 +278,18 @@ class AdjacencyMatrixGraph {
     public List<Integer> breadthFirstOrder(int startVertex) {
         // If the specified startVertex is invalid, return an empty list
         if (startVertex >= vertexCount || startVertex < 0) {
-            return new ArrayList<Integer>();
+            return new ArrayList<>();
         }
 
         // Create an array to keep track of the visited vertices
         boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the ordered vertices
-        ArrayList<Integer> orderList = new ArrayList<Integer>();
+        ArrayList<Integer> orderList = new ArrayList<>();
 
         // Create a queue for our BFS algorithm and add the startVertex
         // to the queue
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(startVertex);
 
         // Continue until the queue is empty
@@ -327,19 +327,19 @@ class AdjacencyMatrixGraph {
      * @return returns a string describing this graph
      */
     public String toString() {
-        String s = "    ";
+        StringBuilder s = new StringBuilder("    ");
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + i + " ";
+            s.append(i).append(" ");
         }
-        s = s + " \n";
+        s.append(" \n");
 
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + i + " : ";
+            s.append(i).append(" : ");
             for (int j = 0; j < this.numberOfVertices(); j++) {
-                s = s + this.adjMatrix[i][j] + " ";
+                s.append(this.adjMatrix[i][j]).append(" ");
             }
-            s = s + "\n";
+            s.append("\n");
         }
-        return s;
+        return s.toString();
     }
 }
