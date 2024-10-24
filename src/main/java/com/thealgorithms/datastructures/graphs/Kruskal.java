@@ -68,7 +68,7 @@ public class Kruskal {
             captain[i] = i;
             edges.addAll(graph[i]);
         }
-        int connectedElements = 0; // Number of connected nodes
+        int connectedElements = 0;
         while (connectedElements != nodes && !edges.isEmpty()) {
             Edge edge = edges.poll();
 
