@@ -13,7 +13,7 @@ public class PrimMSTTest {
         // Test graph with 5 nodes and weighted edges
         int[][] graph = {{0, 2, 0, 6, 0}, {2, 0, 3, 8, 5}, {0, 3, 0, 0, 7}, {6, 8, 0, 0, 9}, {0, 5, 7, 9, 0}};
 
-        int[] expectedParent = {-1, 0, 1, 0, 1}; // Expected MST parent array
+        int[] expectedParent = {-1, 0, 1, 0, 1};
         int[] actualParent = primMST.primMST(graph);
 
         assertArrayEquals(expectedParent, actualParent);
