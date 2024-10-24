@@ -25,6 +25,7 @@ class MatrixGraphsTest {
         assertTrue(graph.edgeDoesExist(1, 0));
         assertEquals(1, graph.numberOfEdges());
 
+        // Adding the same edge again should return false
         assertFalse(graph.addEdge(0, 1));
         assertFalse(graph.addEdge(5, 1));
         assertFalse(graph.addEdge(-1, 1));
