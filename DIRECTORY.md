@@ -819,11 +819,11 @@
               * hashing
                 * [GenericHashMapUsingArrayListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArrayListTest.java)
                 * [GenericHashMapUsingArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArrayTest.java)
+                * [HashMapCuckooHashingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/HashMapCuckooHashingTest.java)
                 * [HashMapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/HashMapTest.java)
                 * [LinearProbingHashMapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/LinearProbingHashMapTest.java)
                 * [MajorityElementTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/MajorityElementTest.java)
                 * [MapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/hashing/MapTest.java)
-              * [HashMapCuckooHashingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/hashmap/HashMapCuckooHashingTest.java)
             * heaps
               * [FibonacciHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/FibonacciHeapTest.java)
               * [LeftistHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
