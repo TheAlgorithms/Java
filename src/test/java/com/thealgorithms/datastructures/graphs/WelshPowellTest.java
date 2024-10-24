@@ -34,26 +34,25 @@ class WelshPowellTest {
         assertEquals(3, countDistinctColors(colors));
     }
 
-    // The following test originates from the following website : https://www.geeksforgeeks.org/welsh-powell-graph-colouring-algorithm/
     @Test
     void testComplexGraph() {
         int[][] edges = {
-            {0, 7}, // A-H
-            {0, 1}, // A-B
-            {1, 3}, // B-D
-            {2, 3}, // C-D
-            {3, 8}, // D-I
-            {3, 10}, // D-K
-            {4, 10}, // E-K
-            {4, 5}, // E-F
-            {5, 6}, // F-G
-            {6, 10}, // G-K
-            {6, 7}, // G-H
-            {7, 8}, // H-I
-            {7, 9}, // H-J
-            {7, 10}, // H-K
-            {8, 9}, // I-J
-            {9, 10}, // J-K
+            {0, 7},
+            {0, 1},
+            {1, 3},
+            {2, 3},
+            {3, 8},
+            {3, 10},
+            {4, 10},
+            {4, 5},
+            {5, 6},
+            {6, 10},
+            {6, 7},
+            {7, 8},
+            {7, 9},
+            {7, 10},
+            {8, 9},
+            {9, 10},
         };
 
         final var graph = WelshPowell.makeGraph(11, edges); // 11 vertices from A (0) to K (10)
@@ -86,22 +85,33 @@ class WelshPowellTest {
 
     @Test
     void testWithPreColoredVertex() {
-        // Create a linear graph with 4 vertices and edges connecting them in sequence
         final var graph = WelshPowell.makeGraph(4, new int[][] {{0, 1}, {1, 2}, {2, 3}});
-
-        // Apply the Welsh-Powell coloring algorithm to the graph
         int[] colors = WelshPowell.findColoring(graph);
-
-        // Validate that the coloring is correct (no two adjacent vertices have the same color)
         assertTrue(isColoringValid(graph, colors));
-
-        // Check if the algorithm has used at least 2 colors (expected for a linear graph)
         assertTrue(countDistinctColors(colors) >= 2);
-
-        // Verify that all vertices have been assigned a color
         for (int color : colors) {
             assertTrue(color >= 0);
         }
+    }
+
+    @Test
+    void testLargeGraph() {
+        int[][] edges = {{0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5}, {5, 0}, {6, 7}, {7, 8}, {8, 6}, {9, 10}, {10, 11}, {11, 9}, {12, 13}, {13, 14}, {14, 15}};
+
+        final var graph = WelshPowell.makeGraph(16, edges); // 16 vertices
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        assertEquals(3, countDistinctColors(colors)); // Expecting a maximum of 3 colors
+    }
+
+    @Test
+    void testStarGraph() {
+        int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {0, 4}};
+
+        final var graph = WelshPowell.makeGraph(5, edges); // 5 vertices in a star formation
+        int[] colors = WelshPowell.findColoring(graph);
+        assertTrue(isColoringValid(graph, colors));
+        assertEquals(2, countDistinctColors(colors)); // Star graph can be colored with 2 colors
     }
 
     private boolean isColoringValid(Graph graph, int[] colors) {
