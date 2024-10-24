@@ -57,7 +57,7 @@ class GenericHeapTest {
         heap.add(20);
         heap.add(5);
 
-        heap.updatePriority(10); // This is a no-op since 10 is not greater than 20.
+        heap.updatePriority(10);
         assertEquals(20, heap.get());
 
         heap.add(30);
