@@ -37,9 +37,6 @@ public class NodeStack<Item> {
 
         Item item = head.data;
         head = head.previous;
-        if (head != null) {
-        }
-
         size--;
         return item;
     }
