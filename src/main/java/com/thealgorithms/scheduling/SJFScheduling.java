@@ -2,6 +2,7 @@ package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementation of Shortest Job First Algorithm: The algorithm allows the waiting process with the
@@ -87,7 +88,7 @@ public class SJFScheduling {
      * @return returns the process' with the shortest burst time OR NULL if there are no ready
      *     processes
      */
-    private ProcessDetails findShortestJob(ArrayList<ProcessDetails> readyProcesses) {
+    private ProcessDetails findShortestJob(List<ProcessDetails> readyProcesses) {
         if (readyProcesses.isEmpty()) {
             return null;
         }

@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling.diskscheduling;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class SSFScheduling {
         this.currentPosition = currentPosition;
     }
 
-    public List<Integer> execute(List<Integer> requests) {
+    public List<Integer> execute(Collection<Integer> requests) {
         List<Integer> result = new ArrayList<>(requests);
         List<Integer> orderedRequests = new ArrayList<>();
 

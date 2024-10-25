@@ -30,7 +30,7 @@ public final class EdmondsBlossomAlgorithm {
      * @param vertexCount The number of vertices in the graph.
      * @return A list of matched pairs of vertices.
      */
-    public static List<int[]> maximumMatching(List<int[]> edges, int vertexCount) {
+    public static List<int[]> maximumMatching(Iterable<int[]> edges, int vertexCount) {
         List<List<Integer>> graph = new ArrayList<>(vertexCount);
 
         // Initialize each vertex's adjacency list.
