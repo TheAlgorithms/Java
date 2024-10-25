@@ -830,6 +830,7 @@
             * lists
               * [CircleLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CircleLinkedListTest.java)
               * [CreateAndDetectLoopTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CreateAndDetectLoopTest.java)
+              * [CursorLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CursorLinkedListTest.java)
               * [MergeKSortedLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/MergeKSortedLinkedListTest.java)
               * [MergeSortedArrayListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/MergeSortedArrayListTest.java)
               * [MergeSortedSinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/MergeSortedSinglyLinkedListTest.java)
