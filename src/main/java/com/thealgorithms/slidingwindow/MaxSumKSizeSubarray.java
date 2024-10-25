@@ -30,7 +30,7 @@ public class MaxSumKSizeSubarray {
             return -1; // Edge case: not enough elements
         }
 
-        int maxSum ;
+        int maxSum;
         int windowSum = 0;
 
         // Calculate the sum of the first window
