@@ -88,9 +88,6 @@
     </Match>
     <!-- fb-contrib -->
     <Match>
-        <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER" />
-    </Match>
-    <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
     </Match>
     <Match>
