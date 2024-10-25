@@ -63,7 +63,6 @@ public final class MergeSortedArrayList {
         while (pa < listA.size()) {
             listC.add(listA.get(pa++));
         }
-
         // Add remaining elements from listB, if any
         while (pb < listB.size()) {
             listC.add(listB.get(pb++));
