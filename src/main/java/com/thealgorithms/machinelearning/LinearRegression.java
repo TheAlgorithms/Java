@@ -2,12 +2,25 @@ package com.thealgorithms.machinelearning;
 
 import java.util.ArrayList;
 
+/**
+* Author : Gowtham Kamalasekar
+* LinkedIn : https://www.linkedin.com/in/gowtham-kamalasekar/
+*
+* Linear Regression Machine Learning Algorithm is a regression algorithm.
+* This programs used for computing y = mx + c
+* Where m is slope and c is intercept
+* We can use this too predict for a given x.
+*/
+
 class LinearRegression {
     private ArrayList<Double> dependentX = new ArrayList<Double>();
     private ArrayList<Double> independentY = new ArrayList<Double>();
     private double m;
     private double c;
 
+    /**
+    * @param : X (dependent variable), Y (independent variable) as ArrayList
+    */
     public LinearRegression(ArrayList<Double> dependentX, ArrayList<Double> independentY) {
         this.dependentX = dependentX;
         this.independentY = independentY;
