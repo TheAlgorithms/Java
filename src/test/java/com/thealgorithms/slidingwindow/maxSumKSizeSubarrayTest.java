@@ -1,6 +1,7 @@
 package com.thealgorithms.slidingwindow;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -40,7 +41,7 @@ class SlidingWindowTest {
         int[] arr = {1, 2};
         int k = 3; // Not enough elements
         int expectedMaxSum = -1; // Edge case
-        assertEquals(expectedMaxSum,  SlidingWindow.maxSumKSizeSubarray(arr, k));
+        assertEquals(expectedMaxSum, SlidingWindow.maxSumKSizeSubarray(arr, k));
     }
 
     /**
@@ -62,7 +63,7 @@ class SlidingWindowTest {
         int[] arr = {-1, -2, -3, -4, -5};
         int k = 2;
         int expectedMaxSum = -3; // -1 + -2
-        assertEquals(expectedMaxSum,  SlidingWindow.maxSumKSizeSubarray(arr, k));
+        assertEquals(expectedMaxSum, SlidingWindow.maxSumKSizeSubarray(arr, k));
     }
 
     /**
@@ -73,6 +74,6 @@ class SlidingWindowTest {
         int[] arr = {1, 2, 3, 4, 5};
         int k = 5;
         int expectedMaxSum = 15; // 1 + 2 + 3 + 4 + 5
-        assertEquals(expectedMaxSum,  SlidingWindow.maxSumKSizeSubarray(arr, k));
+        assertEquals(expectedMaxSum, SlidingWindow.maxSumKSizeSubarray(arr, k));
     }
 }
