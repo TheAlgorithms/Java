@@ -12,7 +12,7 @@ package com.thealgorithms.slidingwindow;
  *
  * @author Your Name (https://github.com/Chiefpatwal)
  */
-class MaxSumKSizeSubarray {
+public class MaxSumKSizeSubarray {
 
     // Prevent instantiation
     private MaxSumKSizeSubarray() {
@@ -22,15 +22,15 @@ class MaxSumKSizeSubarray {
      * This method finds the maximum sum of a subarray of a given size k.
      *
      * @param arr is the input array where the maximum sum needs to be found
-     * @param k is the size of the subarray
+     * @param k   is the size of the subarray
      * @return the maximum sum of the subarray of size k
      */
-    public static int max_sum_k_size_subarray(int[] arr, int k) {
+    public static int maxSumKSizeSubarray(int[] arr, int k) {
         if (arr.length < k) {
             return -1; // Edge case: not enough elements
         }
 
-        int maxSum = 0;
+        int maxSum ;
         int windowSum = 0;
 
         // Calculate the sum of the first window
