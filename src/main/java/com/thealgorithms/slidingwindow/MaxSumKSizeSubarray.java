@@ -12,7 +12,7 @@ package com.thealgorithms.slidingwindow;
  *
  * @author Your Name (https://github.com/Chiefpatwal)
  */
-public class MaxSumKSizeSubarray {
+public final class MaxSumKSizeSubarray {
 
     // Prevent instantiation
     private MaxSumKSizeSubarray() {
