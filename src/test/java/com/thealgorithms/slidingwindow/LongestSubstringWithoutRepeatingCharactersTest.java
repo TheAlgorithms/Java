@@ -1,7 +1,8 @@
 package com.thealgorithms.slidingwindow;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the LongestSubstringWithoutRepeatingCharacters class.

@@ -1,7 +1,6 @@
 package com.thealgorithms.slidingwindow;
 import java.util.HashSet;
 
-
 /**
  * The Longest Substring Without Repeating Characters algorithm finds the length of
  * the longest substring without repeating characters in a given string.
