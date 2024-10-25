@@ -24,8 +24,9 @@ public final class Zalgorithm {
         int patternLength = pattern.length();
         // performing z algorithm
         for (int i = patternLength + 1; i < zArray.length; i++) {
-            if (zArray[i] >= patternLength) {
+            if (zArray[i] == patternLength) {
                 occurrences.add(i - patternLength - 1);
+                i += patternLength - 1; 
             }
         }
         return occurrences;
