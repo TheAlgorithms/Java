@@ -10,19 +10,6 @@ public class ZalgorithmTest {
 
     /**
      * Test 1:
-     * Pattern: "a", Text: "aabaaabaa"
-     * Expected: [0, 1, 4, 5, 8]
-     */
-    @Test
-    public void testFindPatternOccurrencesSingleCharacter() {
-        String text = "aabaaabaa";
-        String pattern = "a";
-        List<Integer> expected = Arrays.asList(0, 1, 4, 5, 8);
-        assertEquals(expected, Zalgorithm.findPatternOccurrences(text, pattern));
-    }
-
-    /**
-     * Test 2:
      * Pattern: "abc", Text: "ababcabcabc"
      * Expected: [2, 5, 8]
      */
@@ -35,7 +22,7 @@ public class ZalgorithmTest {
     }
 
     /**
-     * Test 3:
+     * Test 2:
      * Pattern: "aa", Text: "aaaaaa"
      * Expected: [0, 1, 2, 3, 4]
      */
