@@ -327,8 +327,8 @@
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
             * [MergeIntervals](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MergeIntervals.java)
             * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
-            * [OptimalFileMerging](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/OptimalFileMerging.java)
             * [MinimumWaitingTime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimumWaitingTime.java)
+            * [OptimalFileMerging](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/OptimalFileMerging.java)
             * [StockProfitCalculator](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/StockProfitCalculator.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
@@ -572,6 +572,7 @@
             * [UnionFind](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UnionFind.java)
             * [UpperBound](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UpperBound.java)
           * slidingwindow
+            * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
           * sorts
             * [AdaptiveMergeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/AdaptiveMergeSort.java)
@@ -954,8 +955,8 @@
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
             * [MergeIntervalsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MergeIntervalsTest.java)
             * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
-            * [OptimalFileMergingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/OptimalFileMergingTest.java)
             * [MinimumWaitingTimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimumWaitingTimeTest.java)
+            * [OptimalFileMergingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/OptimalFileMergingTest.java)
             * [StockProfitCalculatorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/StockProfitCalculatorTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
@@ -1165,6 +1166,7 @@
             * [UnionFindTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UnionFindTest.java)
             * [UpperBoundTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UpperBoundTest.java)
           * slidingwindow
+            * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
           * sorts
             * [AdaptiveMergeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/AdaptiveMergeSortTest.java)
