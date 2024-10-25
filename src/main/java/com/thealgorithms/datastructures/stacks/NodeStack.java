@@ -55,13 +55,4 @@ public class NodeStack<Item> {
     public int size() {
         return size;
     }
-
-    public void print() {
-        NodeStack<Item> current = head;
-        while (current != null) {
-            System.out.println(current.data + " ");
-            current = current.previous;
-        }
-        System.out.println();
-    }
 }

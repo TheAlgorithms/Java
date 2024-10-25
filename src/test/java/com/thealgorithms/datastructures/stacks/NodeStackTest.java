@@ -63,10 +63,4 @@ class NodeStackTest {
     void testPeekOnEmptyStack() {
         assertThrows(IllegalStateException.class, () -> { stack.peek(); });
     }
-
-    @Test
-    void testPrintEmptyStack() {
-        stack.print();
-        assertEquals("", outputStreamCaptor.toString().trim(), "The output of an empty stack should be an empty string.");
-    }
 }
