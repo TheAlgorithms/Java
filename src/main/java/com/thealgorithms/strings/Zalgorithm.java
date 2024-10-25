@@ -30,7 +30,7 @@ public final class Zalgorithm {
                 // Modification to handle single and multi-character patterns differently:
                 // Skip to next position for non-overlapping matches only if pattern length > 1
                 if (patternLength > 1) {
-                    i += patternLength - 1;  // Skip positions for non-overlapping matches
+                    i += patternLength - 1;
                 }
                 // For single-character patterns, continue without skipping to capture overlaps
             }
