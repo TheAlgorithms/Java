@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -164,6 +165,14 @@ public final class FFT {
             temp.img = this.img / n;
             return temp;
         }
+
+        public double real() {
+            return real;
+        }
+
+        public double imaginary() {
+            return img;
+        }
     }
 
     /**
@@ -274,7 +283,7 @@ public final class FFT {
      *
      * @param x The ArrayList to be padded.
      */
-    private static void paddingPowerOfTwo(ArrayList<Complex> x) {
+    private static void paddingPowerOfTwo(Collection<Complex> x) {
         int n = 1;
         int oldSize = x.size();
         while (n < oldSize) {
