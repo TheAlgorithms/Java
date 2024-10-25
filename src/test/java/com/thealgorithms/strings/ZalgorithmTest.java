@@ -33,6 +33,7 @@ public class ZalgorithmTest {
         List<Integer> expected = Arrays.asList(2, 5, 8);
         assertEquals(expected, Zalgorithm.findPatternOccurrences(text, pattern));
     }
+    
     /**
      * Test 3:
      * Pattern: "aa", Text: "aaaaaa"
