@@ -2,8 +2,7 @@ package com.thealgorithms.datastructures.lists;
 
 /**
  * CountSinglyLinkedListRecursion extends a singly linked list to include a
- * recursive count method, which calculates the number of nodes in the list
- * using a recursive helper function.
+ * recursive count method, which calculates the number of nodes in the list.
  */
 public class CountSinglyLinkedListRecursion extends SinglyLinkedList {
 
