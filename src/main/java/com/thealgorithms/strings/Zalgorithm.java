@@ -11,7 +11,7 @@ public final class Zalgorithm {
     }
 
     /**
-     * Finds the occurrences of a pattern in a text using Z-algorithm.
+     * Finds occurrences of a pattern in a text using Z-algorithm.
      *
      * @param text    the input text in which we are searching the pattern
      * @param pattern the pattern to search for
@@ -22,11 +22,17 @@ public final class Zalgorithm {
         int[] zArray = calculateZ(combined);
         List<Integer> occurrences = new ArrayList<>();
         int patternLength = pattern.length();
-        // performing z algorithm
+
         for (int i = patternLength + 1; i < zArray.length; i++) {
             if (zArray[i] == patternLength) {
                 occurrences.add(i - patternLength - 1);
-                i += patternLength - 1; 
+                
+                // Modification to handle single and multi-character patterns differently:
+                // Skip to next position for non-overlapping matches only if pattern length > 1
+                if (patternLength > 1) {
+                    i += patternLength - 1;  // Skip positions for non-overlapping matches
+                }
+                // For single-character patterns, continue without skipping to capture overlaps
             }
         }
         return occurrences;
