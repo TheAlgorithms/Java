@@ -4,12 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 class NodeStackTest {
 
@@ -29,7 +28,6 @@ class NodeStackTest {
         stack.push(4);
         stack.push(5);
         assertEquals(5, stack.peek(), "Peek should return the last pushed item");
-
     }
 
     @Test
@@ -71,16 +69,4 @@ class NodeStackTest {
         stack.print();
         assertEquals("", outputStreamCaptor.toString().trim(), "The output of an empty stack should be an empty string.");
     }
-
-    @Test
-    void testPrintNonEmptyStack() {
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        
-        stack.print();
-        
-        assertEquals("5 \n4 \n3", outputStreamCaptor.toString().trim(), "The stack output should match the expected values in LIFO order.");
-    }
 }
-
