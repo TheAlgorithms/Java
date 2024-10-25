@@ -3,52 +3,14 @@ package com.thealgorithms.datastructures.stacks;
 /**
  * Implementation of a stack using nodes. Unlimited size, no arraylist.
  *
- * @author Kyler Smith, 2017
  */
 public class NodeStack<Item> {
 
-    /**
-     * Entry point for the program.
-     */
-    public static void main(String[] args) {
-        NodeStack<Integer> stack = new NodeStack<Integer>();
-
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        System.out.println("Testing :");
-        stack.print(); // prints : 5 4 3
-
-        Integer x = stack.pop(); // x = 5
-        stack.push(1);
-        stack.push(8);
-        Integer y = stack.peek(); // y = 8
-        System.out.println("Testing :");
-        stack.print(); // prints : 8 1 4 3
-
-        System.out.println("Testing :");
-        System.out.println("x : " + x);
-        System.out.println("y : " + y);
-    }
-
-    /**
-     * Information each node should contain.
-     *
-     * @value data : information of the value in the node
-     * @value head : the head of the stack
-     * @value next : the next value from this node
-     * @value previous : the last value from this node
-     * @value size : size of the stack
-     */
     private Item data;
+    private NodeStack<Item> previous;
+    private NodeStack<Item> head;
+    private int size = 0;
 
-    private static NodeStack<?> head;
-    private NodeStack<?> previous;
-    private static int size = 0;
-
-    /**
-     * Constructors for the NodeStack.
-     */
     public NodeStack() {
     }
 
@@ -56,106 +18,53 @@ public class NodeStack<Item> {
         this.data = item;
     }
 
-    /**
-     * Put a value onto the stack.
-     *
-     * @param item : value to be put on the stack.
-     */
     public void push(Item item) {
-        NodeStack<Item> newNs = new NodeStack<Item>(item);
+        NodeStack<Item> newNode = new NodeStack<>(item);
 
-        if (this.isEmpty()) {
-            NodeStack.setHead(new NodeStack<>(item));
-            newNs.setNext(null);
-            newNs.setPrevious(null);
+        if (isEmpty()) {
+            head = newNode;
         } else {
-            newNs.setPrevious(NodeStack.head);
-            NodeStack.head.setNext(newNs);
-            NodeStack.setHead(newNs);
+            newNode.previous = head;
+            head = newNode;
         }
-
-        NodeStack.setSize(NodeStack.getSize() + 1);
+        size++;
     }
 
-    /**
-     * Value to be taken off the stack.
-     *
-     * @return item : value that is returned.
-     */
     public Item pop() {
-        Item item = (Item) NodeStack.head.getData();
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, cannot peek element");
+        }
 
-        NodeStack.setHead(NodeStack.head.getPrevious());
-        NodeStack.head.setNext(null);
+        Item item = head.data;
+        head = head.previous;
+        if (head != null) {
+        }
 
-        NodeStack.setSize(NodeStack.getSize() - 1);
-
+        size--;
         return item;
     }
 
-    /**
-     * Value that is next to be taken off the stack.
-     *
-     * @return item : the next value that would be popped off the stack.
-     */
     public Item peek() {
-        return (Item) NodeStack.head.getData();
-    }
-
-    /**
-     * If the stack is empty or there is a value in.
-     *
-     * @return boolean : whether or not the stack has anything in it.
-     */
-    public boolean isEmpty() {
-        return NodeStack.getSize() == 0;
-    }
-
-    /**
-     * Returns the size of the stack.
-     *
-     * @return int : number of values in the stack.
-     */
-    public int size() {
-        return NodeStack.getSize();
-    }
-
-    /**
-     * Print the contents of the stack in the following format.
-     *
-     * <p>
-     * x <- head (next out) y z <- tail (first in) . . .
-     */
-    public void print() {
-        for (NodeStack<?> n = NodeStack.head; n != null; n = n.previous) {
-            System.out.println(n.getData().toString());
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, cannot peek element");
         }
+        return head.data;
     }
 
-    private static void setHead(NodeStack<?> ns) {
-        NodeStack.head = ns;
+    public boolean isEmpty() {
+        return size == 0;
     }
 
-    private void setNext(NodeStack<?> next) {
-    }
-
-    private NodeStack<?> getPrevious() {
-        return previous;
-    }
-
-    private void setPrevious(NodeStack<?> previous) {
-        this.previous = previous;
-    }
-
-    private static int getSize() {
+    public int size() {
         return size;
     }
 
-    private static void setSize(int size) {
-        NodeStack.size = size;
-    }
-
-    private Item getData() {
-        return this.data;
+    public void print() {
+        NodeStack<Item> current = head;
+        while (current != null) {
+            System.out.println(current.data + " ");
+            current = current.previous;
+        }
+        System.out.println();
     }
 }
