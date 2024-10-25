@@ -22,9 +22,9 @@ public final class Zalgorithm {
         int[] zArray = calculateZ(combined);
         List<Integer> occurrences = new ArrayList<>();
         int patternLength = pattern.length();
-
-        for (int i = 0; i < zArray.length; i++) {
-            if (zArray[i] == patternLength) {
+        //performing z algorithm
+        for (int i = patternLength + 1; i < zArray.length; i++) {
+            if (zArray[i] >= patternLength) {
                 occurrences.add(i - patternLength - 1);
             }
         }
