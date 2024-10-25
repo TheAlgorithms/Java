@@ -7,7 +7,8 @@ import java.util.List;
  * Z-algorithm implementation to find all occurrences of a pattern in a text.
  */
 public final class Zalgorithm {
-    private Zalgorithm() {}
+    private Zalgorithm() {
+    }
 
     /**
      * Finds occurrences of a pattern in a text using Z-algorithm.
