@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -225,7 +226,7 @@ class QuickSelectTest {
         return RANDOM.ints(n, ASCII_A, ASCII_Z).mapToObj(i -> (char) i).collect(Collectors.toList());
     }
 
-    private static <T extends Comparable<T>> List<T> getSortedCopyOfList(List<T> list) {
+    private static <T extends Comparable<T>> List<T> getSortedCopyOfList(Collection<T> list) {
         return list.stream().sorted().collect(Collectors.toList());
     }
 }
