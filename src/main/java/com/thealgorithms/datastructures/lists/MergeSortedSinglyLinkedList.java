@@ -1,31 +1,49 @@
 package com.thealgorithms.datastructures.lists;
 
+/**
+ * Utility class for merging two sorted singly linked lists.
+ *
+ * <p>This class extends the {@link SinglyLinkedList} class to support the merging of two sorted linked lists.
+ * It provides a static method, `merge`, that takes two sorted singly linked lists, merges them into a single sorted linked list,
+ * and returns the result.</p>
+ *
+ * <p>Example usage:</p>
+ * <pre>
+ * SinglyLinkedList listA = new SinglyLinkedList();
+ * SinglyLinkedList listB = new SinglyLinkedList();
+ * for (int i = 2; i <= 10; i += 2) {
+ *     listA.insert(i);   // listA: 2->4->6->8->10
+ *     listB.insert(i - 1); // listB: 1->3->5->7->9
+ * }
+ * SinglyLinkedList mergedList = MergeSortedSinglyLinkedList.merge(listA, listB);
+ * System.out.println(mergedList); // Output: 1->2->3->4->5->6->7->8->9->10
+ * </pre>
+ *
+ * <p>The `merge` method assumes that both input lists are already sorted in ascending order.
+ * It returns a new singly linked list that contains all elements from both lists in sorted order.</p>
+ *
+ * @see SinglyLinkedList
+ */
 public class MergeSortedSinglyLinkedList extends SinglyLinkedList {
 
-    public static void main(String[] args) {
-        SinglyLinkedList listA = new SinglyLinkedList();
-        SinglyLinkedList listB = new SinglyLinkedList();
-
-        for (int i = 2; i <= 10; i += 2) {
-            listA.insert(i);
-            listB.insert(i - 1);
-        }
-        assert listA.toString().equals("2->4->6->8->10");
-        assert listB.toString().equals("1->3->5->7->9");
-        assert merge(listA, listB).toString().equals("1->2->3->4->5->6->7->8->9->10");
-    }
-
     /**
-     * Merge two sorted SingleLinkedList
+     * Merges two sorted singly linked lists into a single sorted singly linked list.
      *
-     * @param listA the first sorted list
-     * @param listB the second sored list
-     * @return merged sorted list
+     * <p>This method does not modify the input lists; instead, it creates a new merged linked list
+     * containing all elements from both lists in sorted order.</p>
+     *
+     * @param listA The first sorted singly linked list.
+     * @param listB The second sorted singly linked list.
+     * @return A new singly linked list containing all elements from both lists in sorted order.
+     * @throws NullPointerException if either input list is null.
      */
     public static SinglyLinkedList merge(SinglyLinkedList listA, SinglyLinkedList listB) {
+        if (listA == null || listB == null) {
+            throw new NullPointerException("Input lists must not be null.");
+        }
+
         Node headA = listA.getHead();
         Node headB = listB.getHead();
-
         int size = listA.size() + listB.size();
 
         Node head = new Node();
@@ -40,12 +58,10 @@ public class MergeSortedSinglyLinkedList extends SinglyLinkedList {
             }
             tail = tail.next;
         }
-        if (headA == null) {
-            tail.next = headB;
-        }
-        if (headB == null) {
-            tail.next = headA;
-        }
+
+        // Attach remaining nodes
+        tail.next = (headA == null) ? headB : headA;
+
         return new SinglyLinkedList(head.next, size);
     }
 }
