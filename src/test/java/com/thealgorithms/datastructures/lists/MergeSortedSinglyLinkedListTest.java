@@ -13,8 +13,8 @@ class MergeSortedSinglyLinkedListTest {
         SinglyLinkedList listB = new SinglyLinkedList();
 
         for (int i = 2; i <= 10; i += 2) {
-            listA.insert(i); // listA: 2->4->6->8->10
-            listB.insert(i - 1); // listB: 1->3->5->7->9
+            listA.insert(i);
+            listB.insert(i - 1);
         }
 
         SinglyLinkedList mergedList = MergeSortedSinglyLinkedList.merge(listA, listB);
