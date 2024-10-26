@@ -117,6 +117,12 @@ public class SortedLinkedListTest {
     }
 
     @Test
+    public void testIsEmptyAfterInsertion() {
+        list.insert(10);
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
     public void testIsEmptyAfterDeletion() {
         list.insert(10);
         list.delete(10);
