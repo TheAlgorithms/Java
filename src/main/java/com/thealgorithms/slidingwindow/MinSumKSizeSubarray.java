@@ -18,7 +18,9 @@ package com.thealgorithms.slidingwindow;
 public final class MinSumKSizeSubarray {
 
     // Prevent instantiation
-    private MinSumKSizeSubarray() { }
+    private MinSumKSizeSubarray() {
+        
+    }
 
     /**
      * This method finds the minimum sum of a subarray of a given size k.
