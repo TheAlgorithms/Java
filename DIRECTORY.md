@@ -523,6 +523,7 @@
           * Recursion
             * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
           * scheduling
+            * [AgingScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/AgingScheduling.java)
             * diskscheduling
               * [CircularLookScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularLookScheduling.java)
               * [CircularScanScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/diskscheduling/CircularScanScheduling.java)
@@ -1123,6 +1124,7 @@
           * Recursion
             * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
           * scheduling
+            * [AgingSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/AgingSchedulingTest.java)
             * diskscheduling
               * [CircularLookSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularLookSchedulingTest.java)
               * [CircularScanSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/diskscheduling/CircularScanSchedulingTest.java)
