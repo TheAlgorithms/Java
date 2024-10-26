@@ -52,12 +52,12 @@ class StackArrayTest {
 
     @Test
     void testResizeOnPush() {
-        StackArray<Integer> smallStack = new StackArray<>(2); // Start with a small stack size
+        StackArray<Integer> smallStack = new StackArray<>(2);
         smallStack.push(1);
         smallStack.push(2);
         Assertions.assertTrue(smallStack.isFull());
 
-        smallStack.push(3); // This push should trigger a resize
+        smallStack.push(3);
         Assertions.assertFalse(smallStack.isFull());
         Assertions.assertEquals(3, smallStack.size());
 
