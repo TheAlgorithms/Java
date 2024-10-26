@@ -167,4 +167,8 @@ public class HeapElement {
         result += (additionalInfo != null) ? additionalInfo.hashCode() : 0;
         return result;
     }
+
+    public String getValue() {
+        return additionalInfo.toString();
+    }
 }
