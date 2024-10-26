@@ -1,8 +1,8 @@
 package com.thealgorithms.strings;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -22,7 +22,7 @@ public final class WordLadder {
      * @param wordList a list of words that can be used in the transformation sequence
      * @return the number of words in the shortest transformation sequence, or 0 if no such sequence exists
      */
-    public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    public static int ladderLength(String beginWord, String endWord, Collection<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
 
         if (!wordSet.contains(endWord)) {

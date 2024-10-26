@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class EdmondsBlossomAlgorithmTest {
      * @param matching List of matched pairs returned by the algorithm.
      * @return A sorted 2D array of matching pairs.
      */
-    private int[][] convertMatchingToArray(List<int[]> matching) {
+    private int[][] convertMatchingToArray(Collection<int[]> matching) {
         // Convert the list of pairs into an array
         int[][] result = matching.toArray(new int[0][]);
 
