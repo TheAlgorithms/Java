@@ -320,6 +320,7 @@
             * [BresenhamLine](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/BresenhamLine.java)
             * [ConvexHull](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/ConvexHull.java)
             * [GrahamScan](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/GrahamScan.java)
+            * [MidpointCircle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/MidpointCircle.java)
             * [MidpointEllipse](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/MidpointEllipse.java)
             * [Point](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/Point.java)
           * graph
@@ -361,6 +362,7 @@
             * [Average](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Average.java)
             * [BinaryPow](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/BinaryPow.java)
             * [BinomialCoefficient](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/BinomialCoefficient.java)
+            * [CatalanNumbers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/CatalanNumbers.java)
             * [Ceil](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Ceil.java)
             * [ChineseRemainderTheorem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/ChineseRemainderTheorem.java)
             * [CircularConvolutionFFT](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/CircularConvolutionFFT.java)
@@ -968,6 +970,7 @@
             * [BresenhamLineTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/BresenhamLineTest.java)
             * [ConvexHullTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/ConvexHullTest.java)
             * [GrahamScanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
+            * [MidpointCircleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
             * [MidpointEllipseTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
           * graph
             * [StronglyConnectedComponentOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
@@ -1005,6 +1008,7 @@
             * [AverageTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/AverageTest.java)
             * [BinaryPowTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/BinaryPowTest.java)
             * [BinomialCoefficientTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/BinomialCoefficientTest.java)
+            * [CatalanNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CatalanNumbersTest.java)
             * [CeilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CeilTest.java)
             * [ChineseRemainderTheoremTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/ChineseRemainderTheoremTest.java)
             * [CollatzConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/CollatzConjectureTest.java)
