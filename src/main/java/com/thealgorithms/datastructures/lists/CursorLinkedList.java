@@ -3,18 +3,20 @@ package com.thealgorithms.datastructures.lists;
 import java.util.Objects;
 
 /**
- * This class implements a Cursor Linked List.
+ * CursorLinkedList is an array-based implementation of a singly linked list.
+ * Each node in the array simulates a linked list node, storing an element and
+ * the index of the next node. This structure allows for efficient list operations
+ * without relying on traditional pointers.
  *
- * A CursorLinkedList is an array version of a Linked List. Essentially you have
- * an array of list nodes but instead of each node containing a pointer to the
- * next item in the linked list, each node element in the array contains the
- * index for the next node element.
- *
+ * @param <T> the type of elements in this list
  */
 public class CursorLinkedList<T> {
 
+    /**
+     * Node represents an individual element in the list, containing the element
+     * itself and a pointer (index) to the next node.
+     */
     private static class Node<T> {
-
         T element;
         int next;
 
@@ -31,7 +33,7 @@ public class CursorLinkedList<T> {
     private static final int CURSOR_SPACE_SIZE = 100;
 
     {
-        // init at loading time
+        // Initialize cursor space array and free list pointers
         cursorSpace = new Node[CURSOR_SPACE_SIZE];
         for (int i = 0; i < CURSOR_SPACE_SIZE; i++) {
             cursorSpace[i] = new Node<>(null, i + 1);
@@ -39,12 +41,18 @@ public class CursorLinkedList<T> {
         cursorSpace[CURSOR_SPACE_SIZE - 1].next = 0;
     }
 
+    /**
+     * Constructs an empty CursorLinkedList with the default capacity.
+     */
     public CursorLinkedList() {
         os = 0;
         count = 0;
         head = -1;
     }
 
+    /**
+     * Prints all elements in the list in their current order.
+     */
     public void printList() {
         if (head != -1) {
             int start = head;
@@ -57,27 +65,36 @@ public class CursorLinkedList<T> {
     }
 
     /**
-     * @return the logical index of the element within the list , not the actual
-     * index of the [cursorSpace] array
+     * Finds the logical index of a specified element in the list.
+     *
+     * @param element the element to search for in the list
+     * @return the logical index of the element, or -1 if not found
+     * @throws NullPointerException if element is null
      */
     public int indexOf(T element) {
-        Objects.requireNonNull(element);
-        Node<T> iterator = cursorSpace[head];
-        for (int i = 0; i < count; i++) {
-            if (iterator.element.equals(element)) {
-                return i;
-            }
-            iterator = cursorSpace[iterator.next];
+        if (element == null) {
+            throw new NullPointerException("Element cannot be null");
         }
-
+        try {
+            Objects.requireNonNull(element);
+            Node<T> iterator = cursorSpace[head];
+            for (int i = 0; i < count; i++) {
+                if (iterator.element.equals(element)) {
+                    return i;
+                }
+                iterator = cursorSpace[iterator.next];
+            }
+        } catch (Exception e) {
+            return -1;
+        }
         return -1;
     }
 
     /**
-     * @param position , the logical index of the element , not the actual one
-     * within the [cursorSpace] array . this method should be used to get the
-     * index give by indexOf() method.
-     * @return
+     * Retrieves an element at a specified logical index in the list.
+     *
+     * @param position the logical index of the element
+     * @return the element at the specified position, or null if index is out of bounds
      */
     public T get(int position) {
         if (position >= 0 && position < count) {
@@ -88,15 +105,18 @@ public class CursorLinkedList<T> {
                 if (counter == position) {
                     return element;
                 }
-
                 start = cursorSpace[start].next;
                 counter++;
             }
         }
-
         return null;
     }
 
+    /**
+     * Removes the element at a specified logical index from the list.
+     *
+     * @param index the logical index of the element to remove
+     */
     public void removeByIndex(int index) {
         if (index >= 0 && index < count) {
             T element = get(index);
@@ -104,19 +124,22 @@ public class CursorLinkedList<T> {
         }
     }
 
+    /**
+     * Removes a specified element from the list.
+     *
+     * @param element the element to be removed
+     * @throws NullPointerException if element is null
+     */
     public void remove(T element) {
         Objects.requireNonNull(element);
-
-        // case element is in the head
         T tempElement = cursorSpace[head].element;
         int tempNext = cursorSpace[head].next;
         if (tempElement.equals(element)) {
             free(head);
             head = tempNext;
-        } else { // otherwise cases
+        } else {
             int prevIndex = head;
             int currentIndex = cursorSpace[prevIndex].next;
-
             while (currentIndex != -1) {
                 T currentElement = cursorSpace[currentIndex].element;
                 if (currentElement.equals(element)) {
@@ -124,15 +147,34 @@ public class CursorLinkedList<T> {
                     free(currentIndex);
                     break;
                 }
-
                 prevIndex = currentIndex;
                 currentIndex = cursorSpace[prevIndex].next;
             }
         }
-
         count--;
     }
 
+    /**
+     * Allocates a new node index for storing an element.
+     *
+     * @return the index of the newly allocated node
+     * @throws OutOfMemoryError if no space is available in cursor space
+     */
+    private int alloc() {
+        int availableNodeIndex = cursorSpace[os].next;
+        if (availableNodeIndex == 0) {
+            throw new OutOfMemoryError();
+        }
+        cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
+        cursorSpace[availableNodeIndex].next = -1;
+        return availableNodeIndex;
+    }
+
+    /**
+     * Releases a node back to the free list.
+     *
+     * @param index the index of the node to release
+     */
     private void free(int index) {
         Node<T> osNode = cursorSpace[os];
         int osNext = osNode.next;
@@ -141,44 +183,26 @@ public class CursorLinkedList<T> {
         cursorSpace[index].next = osNext;
     }
 
+    /**
+     * Appends an element to the end of the list.
+     *
+     * @param element the element to append
+     * @throws NullPointerException if element is null
+     */
     public void append(T element) {
         Objects.requireNonNull(element);
         int availableIndex = alloc();
         cursorSpace[availableIndex].element = element;
-
         if (head == -1) {
             head = availableIndex;
+        } else {
+            int iterator = head;
+            while (cursorSpace[iterator].next != -1) {
+                iterator = cursorSpace[iterator].next;
+            }
+            cursorSpace[iterator].next = availableIndex;
         }
-
-        int iterator = head;
-        while (cursorSpace[iterator].next != -1) {
-            iterator = cursorSpace[iterator].next;
-        }
-
-        cursorSpace[iterator].next = availableIndex;
         cursorSpace[availableIndex].next = -1;
-
         count++;
-    }
-
-    /**
-     * @return the index of the next available node
-     */
-    private int alloc() {
-        // 1- get the index at which the os is pointing
-        int availableNodeIndex = cursorSpace[os].next;
-
-        if (availableNodeIndex == 0) {
-            throw new OutOfMemoryError();
-        }
-
-        // 2- make the os point to the next of the  @var{availableNodeIndex}
-        cursorSpace[os].next = cursorSpace[availableNodeIndex].next;
-
-        // this to indicate an end of the list , helpful at testing since any err
-        // would throw an outOfBoundException
-        cursorSpace[availableNodeIndex].next = -1;
-
-        return availableNodeIndex;
     }
 }
