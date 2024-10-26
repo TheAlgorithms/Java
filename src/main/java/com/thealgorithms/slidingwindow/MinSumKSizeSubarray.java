@@ -1,5 +1,4 @@
 package com.thealgorithms.slidingwindow;
-
 /**
  * The Sliding Window algorithm is used to find the minimum sum of a subarray
  * of a fixed size k within a given array.
@@ -18,7 +17,7 @@ package com.thealgorithms.slidingwindow;
 public final class MinSumKSizeSubarray {
 
     // Prevent instantiation
-    private MinSumKSizeSubarray() {   
+    private MinSumKSizeSubarray() {
     }
 
     /**
@@ -28,7 +27,6 @@ public final class MinSumKSizeSubarray {
      * @param k   is the size of the subarray
      * @return the minimum sum of the subarray of size k
      */
-
     public static int minSumKSizeSubarray(int[] arr, int k) {
         if (arr.length < k) {
             return -1; // Edge case: not enough elements
