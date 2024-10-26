@@ -1,4 +1,4 @@
-package com.thealgorithms.graph;
+package com.thealgorithms.graph;//added missing package
 
 
 
@@ -46,7 +46,7 @@ public class StronglyConnectedComponentOptimizedTest {
 
         // There are 2 SCCs: {0, 1, 2} and {3}
         assertEquals(2, result, "There should be 2 strongly connected components.");
-    }
+    }           
 
     @Test
     public void testDisconnectedGraph() {
