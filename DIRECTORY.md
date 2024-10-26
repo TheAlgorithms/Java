@@ -597,6 +597,7 @@
           * slidingwindow
             * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
+            * [MinSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarray.java)
           * sorts
             * [AdaptiveMergeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/AdaptiveMergeSort.java)
             * [BeadSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/BeadSort.java)
@@ -1218,6 +1219,7 @@
           * slidingwindow
             * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
+            * [MinSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarrayTest.java)
           * sorts
             * [AdaptiveMergeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/AdaptiveMergeSortTest.java)
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
