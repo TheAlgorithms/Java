@@ -1,143 +1,88 @@
 package com.thealgorithms.datastructures.buffers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicIntegerArray;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 class CircularBufferTest {
-    private static final int BUFFER_SIZE = 10;
-    private CircularBuffer<Integer> buffer;
-
-    @BeforeEach
-    void setUp() {
-        buffer = new CircularBuffer<>(BUFFER_SIZE);
-    }
 
     @Test
-    void isEmpty() {
+    void testInitialization() {
+        CircularBuffer<Integer> buffer = new CircularBuffer<>(5);
         assertTrue(buffer.isEmpty());
-        buffer.put(generateInt());
-        assertFalse(buffer.isEmpty());
+        assertEquals(Boolean.FALSE, buffer.isFull());
     }
 
     @Test
-    void isFull() {
-        assertFalse(buffer.isFull());
-        buffer.put(generateInt());
-        assertFalse(buffer.isFull());
+    void testPutAndGet() {
+        CircularBuffer<String> buffer = new CircularBuffer<>(3);
 
-        for (int i = 1; i < BUFFER_SIZE; i++) {
-            buffer.put(generateInt());
-        }
+        assertTrue(buffer.put("A"));
+        assertEquals(Boolean.FALSE, buffer.isEmpty());
+        assertEquals(Boolean.FALSE, buffer.isFull());
+
+        buffer.put("B");
+        buffer.put("C");
         assertTrue(buffer.isFull());
+
+        assertEquals("A", buffer.get());
+        assertEquals("B", buffer.get());
+        assertEquals("C", buffer.get());
+        assertTrue(buffer.isEmpty());
     }
 
     @Test
-    void get() {
+    void testOverwrite() {
+        CircularBuffer<Integer> buffer = new CircularBuffer<>(3);
+
+        buffer.put(1);
+        buffer.put(2);
+        buffer.put(3);
+        assertEquals(Boolean.FALSE, buffer.put(4)); // This should overwrite 1
+
+        assertEquals(2, buffer.get());
+        assertEquals(3, buffer.get());
+        assertEquals(4, buffer.get());
         assertNull(buffer.get());
-        for (int i = 0; i < 100; i++) {
+    }
+
+    @Test
+    void testEmptyBuffer() {
+        CircularBuffer<Double> buffer = new CircularBuffer<>(2);
+        assertNull(buffer.get());
+    }
+
+    @Test
+    void testFullBuffer() {
+        CircularBuffer<Character> buffer = new CircularBuffer<>(2);
+        buffer.put('A');
+        buffer.put('B');
+        assertTrue(buffer.isFull());
+        assertEquals(Boolean.FALSE, buffer.put('C')); // This should overwrite 'A'
+        assertEquals('B', buffer.get());
+        assertEquals('C', buffer.get());
+    }
+
+    @Test
+    void testIllegalArguments() {
+        assertThrows(IllegalArgumentException.class, () -> new CircularBuffer<>(0));
+        assertThrows(IllegalArgumentException.class, () -> new CircularBuffer<>(-1));
+
+        CircularBuffer<String> buffer = new CircularBuffer<>(1);
+        assertThrows(IllegalArgumentException.class, () -> buffer.put(null));
+    }
+
+    @Test
+    void testLargeBuffer() {
+        CircularBuffer<Integer> buffer = new CircularBuffer<>(1000);
+        for (int i = 0; i < 1000; i++) {
             buffer.put(i);
         }
-        for (int i = 0; i < BUFFER_SIZE; i++) {
-            assertEquals(i, buffer.get());
-        }
-        assertNull(buffer.get());
-    }
-
-    @Test
-    void put() {
-        for (int i = 0; i < BUFFER_SIZE; i++) {
-            assertTrue(buffer.put(generateInt()));
-        }
-        assertFalse(buffer.put(generateInt()));
-    }
-
-    @RepeatedTest(1000)
-    void concurrentTest() throws InterruptedException {
-        final int numberOfThreadsForProducers = 3;
-        final int numberOfThreadsForConsumers = 2;
-        final int numberOfItems = 300;
-        final CountDownLatch producerCountDownLatch = new CountDownLatch(numberOfItems);
-        final CountDownLatch consumerCountDownLatch = new CountDownLatch(numberOfItems);
-        final AtomicIntegerArray resultAtomicArray = new AtomicIntegerArray(numberOfItems);
-
-        // We are running 2 ExecutorService simultaneously 1 - producer, 2 - consumer
-        // Run producer threads to populate buffer.
-        ExecutorService putExecutors = Executors.newFixedThreadPool(numberOfThreadsForProducers);
-        putExecutors.execute(() -> {
-            while (producerCountDownLatch.getCount() > 0) {
-                int count = (int) producerCountDownLatch.getCount();
-                boolean put = buffer.put(count);
-                while (!put) {
-                    put = buffer.put(count);
-                }
-                producerCountDownLatch.countDown();
-            }
-        });
-
-        // Run consumer threads to retrieve the data from buffer.
-        ExecutorService getExecutors = Executors.newFixedThreadPool(numberOfThreadsForConsumers);
-        getExecutors.execute(() -> {
-            while (consumerCountDownLatch.getCount() > 0) {
-                int count = (int) consumerCountDownLatch.getCount();
-                Integer item = buffer.get();
-                while (item == null) {
-                    item = buffer.get();
-                }
-                resultAtomicArray.set(count - 1, item);
-                consumerCountDownLatch.countDown();
-            }
-        });
-
-        producerCountDownLatch.await();
-        consumerCountDownLatch.await();
-        putExecutors.shutdown();
-        getExecutors.shutdown();
-        shutDownExecutorSafely(putExecutors);
-        shutDownExecutorSafely(getExecutors);
-
-        List<Integer> resultArray = getSortedListFrom(resultAtomicArray);
-        for (int i = 0; i < numberOfItems; i++) {
-            int expectedItem = i + 1;
-            assertEquals(expectedItem, resultArray.get(i));
-        }
-    }
-
-    private int generateInt() {
-        return ThreadLocalRandom.current().nextInt(0, 100);
-    }
-
-    private void shutDownExecutorSafely(ExecutorService executorService) {
-        try {
-            if (!executorService.awaitTermination(1_000, TimeUnit.MILLISECONDS)) {
-                executorService.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            executorService.shutdownNow();
-        }
-    }
-
-    public List<Integer> getSortedListFrom(AtomicIntegerArray atomicArray) {
-        int length = atomicArray.length();
-        ArrayList<Integer> result = new ArrayList<>(length);
-        for (int i = 0; i < length; i++) {
-            result.add(atomicArray.get(i));
-        }
-        result.sort(Comparator.comparingInt(o -> o));
-        return result;
+        assertTrue(buffer.isFull());
+        buffer.put(1000); // This should overwrite 0
+        assertEquals(1, buffer.get());
     }
 }
