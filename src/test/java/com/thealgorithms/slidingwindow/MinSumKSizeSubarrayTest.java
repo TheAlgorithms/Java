@@ -1,12 +1,16 @@
 package com.thealgorithms.slidingwindow;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
+
 /**
  * Unit tests for the MinSumKSizeSubarray class.
- * 
+ *
  * @author Rashi Dashore (https://github.com/rashi07dashore)
  */
 class MinSumKSizeSubarrayTest {
+
     /**
      * Test for the basic case of finding the minimum sum.
      */
@@ -17,6 +21,7 @@ class MinSumKSizeSubarrayTest {
         int expectedMinSum = 3; // 1 + 1 + 1
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
+
     /**
      * Test for a different array and subarray size.
      */
@@ -27,6 +32,7 @@ class MinSumKSizeSubarrayTest {
         int expectedMinSum = 3; // 1 + 2
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
+
     /**
      * Test for edge case with insufficient elements.
      */
@@ -37,6 +43,7 @@ class MinSumKSizeSubarrayTest {
         int expectedMinSum = -1; // Edge case
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
+
     /**
      * Test for large array.
      */
@@ -47,6 +54,7 @@ class MinSumKSizeSubarrayTest {
         int expectedMinSum = -10; // -1 + -2 + -3 + -4 + 0
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
+
     /**
      * Test for array with negative numbers.
      */
@@ -57,6 +65,7 @@ class MinSumKSizeSubarrayTest {
         int expectedMinSum = -9; // -4 + -5
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
+
     /**
      * Test for the case where k equals the array length.
      */
