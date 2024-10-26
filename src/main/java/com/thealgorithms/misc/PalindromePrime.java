@@ -1,51 +1,57 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class PalindromePrime {
     private PalindromePrime() {
     }
 
-    public static void main(String[] args) { // Main function
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the quantity of First Palindromic Primes you want");
-        int n = in.nextInt(); // Input of how many first palindromic prime we want
-        functioning(n); // calling function - functioning
-        in.close();
-    }
+    public static boolean prime(int num) {
+        if (num < 2) {
+            return false; // Handle edge case for numbers < 2
+        }
+        if (num == 2) {
+            return true; // 2 is prime
+        }
+        if (num % 2 == 0) {
+            return false; // Even numbers > 2 are not prime
+        }
 
-    public static boolean prime(int num) { // checking if number is prime or not
         for (int divisor = 3; divisor <= Math.sqrt(num); divisor += 2) {
             if (num % divisor == 0) {
-                return false; //  false if not prime
+                return false;
             }
         }
-        return true; // True if prime
+        return true;
     }
 
-    public static int reverse(int n) { //  Returns  the reverse of the number
+    public static int reverse(int n) {
         int reverse = 0;
         while (n != 0) {
-            reverse *= 10;
-            reverse += n % 10;
+            reverse = reverse * 10 + (n % 10);
             n /= 10;
         }
         return reverse;
     }
 
-    public static void functioning(int y) {
-        if (y == 0) {
-            return;
+    public static List<Integer> generatePalindromePrimes(int n) {
+        List<Integer> palindromicPrimes = new ArrayList<>();
+        if (n <= 0) {
+            return palindromicPrimes; // Handle case for 0 or negative input
         }
-        System.out.print(2 + "\n"); // print the first Palindromic Prime
+
+        palindromicPrimes.add(2); // 2 is the first palindromic prime
         int count = 1;
         int num = 3;
-        while (count < y) {
-            if (num == reverse(num) && prime(num)) { // number is prime and it's reverse is same
-                count++; // counts check when to terminate while loop
-                System.out.print(num + "\n"); // print the Palindromic Prime
+
+        while (count < n) {
+            if (num == reverse(num) && prime(num)) {
+                palindromicPrimes.add(num);
+                count++;
             }
-            num += 2; // inrease iterator value by two
+            num += 2; // Skip even numbers
         }
+        return palindromicPrimes;
     }
 }
