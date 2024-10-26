@@ -3,25 +3,26 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 import java.util.Objects;
 
 /**
- * This class is an implementation of a hash table using Cuckoo Hashing It uses
- * a dynamic array to lengthen the size of the hash table when load factor > .7
+ * This class implements a hash table using Cuckoo Hashing.
+ * Cuckoo hashing is a type of open-addressing hash table that resolves collisions
+ * by relocating existing keys. It utilizes two hash functions to minimize collisions
+ * and automatically resizes the table when the load factor exceeds 0.7.
  *
- * <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">...</a>
+ * For more information on cuckoo hashing, refer to
+ * <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing">this Wikipedia page</a>.
  */
 public class HashMapCuckooHashing {
 
-    private int tableSize; // size of the hash table
-    private Integer[] buckets; // array representing the table
-    private final Integer emptySlot;
-    private int size; // number of elements in the hash table
-
-    private int thresh; // threshold for infinite loop checking
+    private int tableSize; // Size of the hash table
+    private Integer[] buckets; // Array representing the hash table
+    private final Integer emptySlot; // Placeholder for deleted slots
+    private int size; // Number of elements in the hash table
+    private int thresh; // Threshold for detecting infinite loops during insertion
 
     /**
-     * Constructor initializes buckets array, hsize, and creates dummy object
-     * for emptySlot
+     * Constructs a HashMapCuckooHashing object with the specified initial table size.
      *
-     * @param tableSize the desired size of the hash map
+     * @param tableSize the initial size of the hash map
      */
     public HashMapCuckooHashing(int tableSize) {
         this.buckets = new Integer[tableSize];
@@ -32,13 +33,11 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * The 2 Hash Functions takes a given key and finds an index based on its data, 2 distinctive
-     * ways to minimize collisions
+     * Computes the first hash index for a given key using the modulo operation.
      *
-     * @param key the desired key to be converted
-     * @return int an index corresponding to the key
+     * @param key the key for which the hash index is computed
+     * @return an integer index corresponding to the key
      */
-
     public int hashFunction1(int key) {
         int hash = key % tableSize;
         if (hash < 0) {
@@ -47,6 +46,12 @@ public class HashMapCuckooHashing {
         return hash;
     }
 
+    /**
+     * Computes the second hash index for a given key using integer division.
+     *
+     * @param key the key for which the hash index is computed
+     * @return an integer index corresponding to the key
+     */
     public int hashFunction2(int key) {
         int hash = key / tableSize;
         hash %= tableSize;
@@ -57,14 +62,14 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * inserts the key into the hash map by wrapping it as an Integer object, then uses while loop
-     * to insert new key if desired place is empty, return. if already occupied, continue while loop
-     * over the new key that has just been pushed out. if while loop continues more than Thresh,
-     * rehash table to new size, then push again.
+     * Inserts a key into the hash table using cuckoo hashing.
+     * If the target bucket is occupied, it relocates the existing key and attempts to insert
+     * it into its alternate location. If the insertion process exceeds the threshold,
+     * the table is resized.
      *
-     * @param key the desired key to be inserted in the hash map
+     * @param key the key to be inserted into the hash table
+     * @throws IllegalArgumentException if the key already exists in the table
      */
-
     public void insertKey2HashTable(int key) {
         Integer wrappedInt = key;
         Integer temp;
@@ -77,7 +82,7 @@ public class HashMapCuckooHashing {
         }
 
         if (checkTableContainsKey(key)) {
-            throw new IllegalArgumentException("Key already inside, no duplicates allowed");
+            throw new IllegalArgumentException("Key already exists; duplicates are not allowed.");
         }
 
         while (loopCounter <= thresh) {
@@ -117,9 +122,7 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * creates new HashMapCuckooHashing object, then inserts each of the elements in the previous
-     * table to it with its new hash functions. then refers current array to new table.
-     *
+     * Rehashes the current table to a new size (double the current size) and reinserts existing keys.
      */
     public void reHashTableIncreasesTableSize() {
         HashMapCuckooHashing newT = new HashMapCuckooHashing(tableSize * 2);
@@ -134,15 +137,16 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * deletes a key from the hash map and adds an available placeholder
+     * Deletes a key from the hash table, marking its position as available.
      *
-     * @param key the desired key to be deleted
+     * @param key the key to be deleted from the hash table
+     * @throws IllegalArgumentException if the table is empty or if the key is not found
      */
     public void deleteKeyFromHashTable(int key) {
         Integer wrappedInt = key;
         int hash = hashFunction1(key);
         if (isEmpty()) {
-            throw new IllegalArgumentException("Table is empty");
+            throw new IllegalArgumentException("Table is empty, cannot delete.");
         }
 
         if (Objects.equals(buckets[hash], wrappedInt)) {
@@ -157,11 +161,11 @@ public class HashMapCuckooHashing {
             size--;
             return;
         }
-        throw new IllegalArgumentException("Key " + key + " already inside, no duplicates allowed");
+        throw new IllegalArgumentException("Key " + key + " not found in the table.");
     }
 
     /**
-     * Displays the hash table line by line
+     * Displays the hash table contents, bucket by bucket.
      */
     public void displayHashtable() {
         for (int i = 0; i < tableSize; i++) {
@@ -175,17 +179,18 @@ public class HashMapCuckooHashing {
     }
 
     /**
-     * Finds the index of location based on an inputted key
+     * Finds the index of a given key in the hash table.
      *
-     * @param key the desired key to be found
-     * @return int the index where the key is located
+     * @param key the key to be found
+     * @return the index where the key is located
+     * @throws IllegalArgumentException if the table is empty or the key is not found
      */
     public int findKeyInTable(int key) {
         Integer wrappedInt = key;
         int hash = hashFunction1(key);
 
         if (isEmpty()) {
-            throw new IllegalArgumentException("Table is empty");
+            throw new IllegalArgumentException("Table is empty; cannot find keys.");
         }
 
         if (Objects.equals(buckets[hash], wrappedInt)) {
@@ -194,66 +199,70 @@ public class HashMapCuckooHashing {
 
         hash = hashFunction2(key);
         if (!Objects.equals(buckets[hash], wrappedInt)) {
-            throw new IllegalArgumentException("Key " + key + " not found in table");
+            throw new IllegalArgumentException("Key " + key + " not found in the table.");
         } else {
             return hash;
         }
     }
 
     /**
-     * checks if key is inside without any output other than returned boolean.
+     * Checks if the given key is present in the hash table.
      *
-     * @param key the desired key to be found
-     * @return int the index where the key is located
+     * @param key the key to be checked
+     * @return true if the key exists, false otherwise
      */
     public boolean checkTableContainsKey(int key) {
-        return ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key)) || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)] == key));
+        return ((buckets[hashFunction1(key)] != null && buckets[hashFunction1(key)].equals(key)) || (buckets[hashFunction2(key)] != null && buckets[hashFunction2(key)].equals(key)));
     }
 
     /**
-     * Checks the load factor of the hash table if greater than .7,
-     * automatically lengthens table to prevent further collisions
+     * Checks the load factor of the hash table. If the load factor exceeds 0.7,
+     * the table is resized to prevent further collisions.
+     *
+     * @return the current load factor of the hash table
      */
     public double checkLoadFactor() {
         double factor = (double) size / tableSize;
         if (factor > .7) {
-            System.out.printf("Load factor is %.2f , rehashing table%n", factor);
+            System.out.printf("Load factor is %.2f, rehashing table.%n", factor);
             reHashTableIncreasesTableSize();
         }
         return factor;
     }
 
     /**
-     * isFull returns true if the hash map is full and false if not full
+     * Checks if the hash map is full.
      *
-     * @return boolean is Empty
+     * @return true if the hash map is full, false otherwise
      */
     public boolean isFull() {
-        boolean response = true;
         for (int i = 0; i < tableSize; i++) {
             if (buckets[i] == null || Objects.equals(buckets[i], emptySlot)) {
                 return false;
             }
         }
-        return response;
+        return true;
     }
 
     /**
-     * isEmpty returns true if the hash map is empty and false if not empty
+     * Checks if the hash map is empty.
      *
-     * @return boolean is Empty
+     * @return true if the hash map is empty, false otherwise
      */
     public boolean isEmpty() {
-        boolean response = true;
         for (int i = 0; i < tableSize; i++) {
             if (buckets[i] != null) {
-                response = false;
-                break;
+                return false;
             }
         }
-        return response;
+        return true;
     }
 
+    /**
+     * Returns the current number of keys in the hash table.
+     *
+     * @return the number of keys present in the hash table
+     */
     public int getNumberOfKeysInTable() {
         return size;
     }
