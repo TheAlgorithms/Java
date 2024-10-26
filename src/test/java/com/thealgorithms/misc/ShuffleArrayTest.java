@@ -6,16 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit tests for the ShuffleArray class.
- * 
- * @author Rashi Dashore (https://github.com/rashi07dashore)
- */
-class ShuffleArrayTest {
+public class ShuffleArrayTest {
 
-    /**
-     * Test for basic shuffling.
-     */
     @Test
     void testShuffleBasic() {
         int[] arr = {1, 2, 3, 4, 5};
@@ -26,9 +18,6 @@ class ShuffleArrayTest {
         assertNotEquals(originalArr, arr);
     }
 
-    /**
-     * Test for an edge case with a single element.
-     */
     @Test
     void testShuffleSingleElement() {
         int[] arr = {1};
@@ -39,9 +28,6 @@ class ShuffleArrayTest {
         assertArrayEquals(originalArr, arr);
     }
 
-    /**
-     * Test for an edge case with two elements.
-     */
     @Test
     void testShuffleTwoElements() {
         int[] arr = {1, 2};
@@ -55,9 +41,6 @@ class ShuffleArrayTest {
         assertTrue(arr[1] == 1 || arr[1] == 2);
     }
 
-    /**
-     * Test for an empty array.
-     */
     @Test
     void testShuffleEmptyArray() {
         int[] arr = {};
@@ -68,9 +51,6 @@ class ShuffleArrayTest {
         assertArrayEquals(originalArr, arr);
     }
 
-    /**
-     * Test for large array.
-     */
     @Test
     void testShuffleLargeArray() {
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -81,9 +61,6 @@ class ShuffleArrayTest {
         assertNotEquals(originalArr, arr);
     }
 
-    /**
-     * Test to ensure all elements are present after shuffle.
-     */
     @Test
     void testShuffleRetainsElements() {
         int[] arr = {1, 2, 3, 4, 5};
