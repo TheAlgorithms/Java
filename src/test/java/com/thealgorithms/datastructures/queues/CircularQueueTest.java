@@ -103,4 +103,70 @@ class CircularQueueTest {
         cq.deQueue();
         assertEquals(1, cq.size());
     }
+
+    @Test
+    void testCircularWrapAround() {
+        CircularQueue<Integer> cq = new CircularQueue<>(3);
+        cq.enQueue(1);
+        cq.enQueue(2);
+        cq.enQueue(3);
+
+        cq.deQueue();
+        cq.enQueue(4);
+
+        assertEquals(2, cq.deQueue());
+        assertEquals(3, cq.deQueue());
+        assertEquals(4, cq.deQueue());
+        assertTrue(cq.isEmpty());
+    }
+
+    @Test
+    void testEnQueueDeQueueMultipleTimes() {
+        CircularQueue<Integer> cq = new CircularQueue<>(3);
+        cq.enQueue(1);
+        cq.enQueue(2);
+        cq.deQueue();
+        cq.enQueue(3);
+        cq.enQueue(4);
+
+        assertTrue(cq.isFull());
+        assertEquals(2, cq.deQueue());
+        assertEquals(3, cq.deQueue());
+        assertEquals(4, cq.deQueue());
+        assertTrue(cq.isEmpty());
+    }
+
+    @Test
+    void testMultipleWrapArounds() {
+        CircularQueue<Integer> cq = new CircularQueue<>(3);
+        cq.enQueue(1);
+        cq.deQueue();
+        cq.enQueue(2);
+        cq.deQueue();
+        cq.enQueue(3);
+        cq.deQueue();
+        cq.enQueue(4);
+
+        assertEquals(4, cq.peek());
+    }
+
+    @Test
+    void testSizeDuringOperations() {
+        CircularQueue<Integer> cq = new CircularQueue<>(3);
+        assertEquals(0, cq.size());
+
+        cq.enQueue(1);
+        cq.enQueue(2);
+        assertEquals(2, cq.size());
+
+        cq.deQueue();
+        assertEquals(1, cq.size());
+
+        cq.enQueue(3);
+        cq.enQueue(4);
+        assertEquals(3, cq.size());
+        cq.deQueue();
+        cq.deQueue();
+        assertEquals(1, cq.size());
+    }
 }
