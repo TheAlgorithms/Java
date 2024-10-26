@@ -325,9 +325,11 @@
             * [FractionalKnapsack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/FractionalKnapsack.java)
             * [GaleShapley](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/GaleShapley.java)
             * [JobSequencing](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/JobSequencing.java)
+            * [KCenters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/KCenters.java)
             * [MergeIntervals](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MergeIntervals.java)
             * [MinimizingLateness](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimizingLateness.java)
             * [MinimumWaitingTime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/MinimumWaitingTime.java)
+            * [OptimalFileMerging](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/OptimalFileMerging.java)
             * [StockProfitCalculator](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/StockProfitCalculator.java)
           * io
             * [BufferedReader](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/io/BufferedReader.java)
@@ -833,6 +835,7 @@
               * [FibonacciHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/FibonacciHeapTest.java)
               * [GenericHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/GenericHeapTest.java)
               * [LeftistHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
+              * [MinPriorityQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MinPriorityQueueTest.java)
             * lists
               * [CircleLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CircleLinkedListTest.java)
               * [CountSinglyLinkedListRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CountSinglyLinkedListRecursionTest.java)
@@ -857,9 +860,9 @@
               * [QueueByTwoStacksTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueByTwoStacksTest.java)
               * [QueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueTest.java)
             * stacks
-              * [LinkedListStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/LinkedListStackTest.java)
               * [StackArrayListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayListTest.java)
               * [StackArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayTest.java)
+              * [StackOfLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackOfLinkedListTest.java)
             * trees
               * [BinaryTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BinaryTreeTest.java)
               * [BoundaryTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BoundaryTraversalTest.java)
@@ -953,9 +956,11 @@
             * [FractionalKnapsackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/FractionalKnapsackTest.java)
             * [GaleShapleyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/GaleShapleyTest.java)
             * [JobSequencingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/JobSequencingTest.java)
+            * [KCentersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/KCentersTest.java)
             * [MergeIntervalsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MergeIntervalsTest.java)
             * [MinimizingLatenessTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimizingLatenessTest.java)
             * [MinimumWaitingTimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/MinimumWaitingTimeTest.java)
+            * [OptimalFileMergingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/OptimalFileMergingTest.java)
             * [StockProfitCalculatorTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/StockProfitCalculatorTest.java)
           * io
             * [BufferedReaderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/io/BufferedReaderTest.java)
