@@ -83,7 +83,6 @@ public class SearchSinglyLinkedListRecursionTest {
 
     @Test
     public void testSearchZeroValue() {
-        // Insert zero and search for it
         list.insert(0);
         assertTrue(list.search(0));
     }
