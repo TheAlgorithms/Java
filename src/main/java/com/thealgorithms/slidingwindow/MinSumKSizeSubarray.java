@@ -18,8 +18,7 @@ package com.thealgorithms.slidingwindow;
 public final class MinSumKSizeSubarray {
 
     // Prevent instantiation
-    private MinSumKSizeSubarray() {
-        
+    private MinSumKSizeSubarray() {   
     }
 
     /**
