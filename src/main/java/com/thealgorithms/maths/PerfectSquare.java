@@ -18,4 +18,16 @@ public final class PerfectSquare {
         final int sqrt = (int) Math.sqrt(number);
         return sqrt * sqrt == number;
     }
+
+    /**
+     * Check if a number is perfect square or not
+     *
+     * @param number number to be checked
+     * @return {@code true} if {@code number} is perfect square, otherwise
+     * {@code false}
+     */
+    public static boolean isPerfectSquareUsingPow(long number) {
+        long a = (long) Math.pow(number, 1.0 / 2);
+        return a * a == number;
+    }
 }

@@ -1,68 +1,98 @@
 package com.thealgorithms.ciphers;
 
 /**
- * The Atbash cipher is a simple substitution cipher that replaces each letter
- * in the alphabet with its reverse.
- * For example, 'A' becomes 'Z', 'B' becomes 'Y', and so on. It works
- * identically for both uppercase and lowercase letters.
- * It's a symmetric cipher, meaning applying it twice returns the original text.
- * Hence, the encrypting and the decrypting functions are identical
- * @author https://github.com/Krounosity
- * Learn more: https://en.wikipedia.org/wiki/Atbash
+ * The Atbash cipher is a classic substitution cipher that substitutes each letter
+ * with its opposite letter in the alphabet.
+ *
+ * For example:
+ * - 'A' becomes 'Z', 'B' becomes 'Y', 'C' becomes 'X', and so on.
+ * - Similarly, 'a' becomes 'z', 'b' becomes 'y', and so on.
+ *
+ * The cipher works identically for both uppercase and lowercase letters.
+ * Non-alphabetical characters remain unchanged in the output.
+ *
+ * This cipher is symmetric, meaning that applying the cipher twice will return
+ * the original text. Therefore, the same function is used for both encryption and decryption.
+ *
+ * <p>Usage Example:</p>
+ * <pre>
+ * AtbashCipher cipher = new AtbashCipher("Hello World!");
+ * String encrypted = cipher.convert(); // Output: "Svool Dliow!"
+ * </pre>
+ *
+ * @author <a href="https://github.com/Krounosity">Krounosity</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Atbash">Atbash Cipher (Wikipedia)</a>
  */
-
 public class AtbashCipher {
 
     private String toConvert;
 
-    // Default constructor.
-    AtbashCipher() {
+    public AtbashCipher() {
     }
 
-    // String setting constructor.
-    AtbashCipher(String str) {
-        toConvert = str;
+    /**
+     * Constructor with a string parameter.
+     *
+     * @param str The string to be converted using the Atbash cipher
+     */
+    public AtbashCipher(String str) {
+        this.toConvert = str;
     }
 
-    // String getter method.
+    /**
+     * Returns the current string set for conversion.
+     *
+     * @return The string to be converted
+     */
     public String getString() {
         return toConvert;
     }
 
-    // String setter method.
+    /**
+     * Sets the string to be converted using the Atbash cipher.
+     *
+     * @param str The new string to convert
+     */
     public void setString(String str) {
-        toConvert = str;
+        this.toConvert = str;
     }
 
-    // Checking whether the current character is capital.
+    /**
+     * Checks if a character is uppercase.
+     *
+     * @param ch The character to check
+     * @return {@code true} if the character is uppercase, {@code false} otherwise
+     */
     private boolean isCapital(char ch) {
         return ch >= 'A' && ch <= 'Z';
     }
 
-    // Checking whether the current character is smallcased.
+    /**
+     * Checks if a character is lowercase.
+     *
+     * @param ch The character to check
+     * @return {@code true} if the character is lowercase, {@code false} otherwise
+     */
     private boolean isSmall(char ch) {
         return ch >= 'a' && ch <= 'z';
     }
 
-    // Converting text to atbash cipher code or vice versa.
+    /**
+     * Converts the input string using the Atbash cipher.
+     * Alphabetic characters are substituted with their opposite in the alphabet,
+     * while non-alphabetic characters remain unchanged.
+     *
+     * @return The converted string after applying the Atbash cipher
+     */
     public String convert() {
-
-        // Using StringBuilder to store new string.
         StringBuilder convertedString = new StringBuilder();
 
-        // Iterating for each character.
         for (char ch : toConvert.toCharArray()) {
-
-            // If the character is smallcased.
             if (isSmall(ch)) {
                 convertedString.append((char) ('z' - (ch - 'a')));
-            }
-            // If the character is capital cased.
-            else if (isCapital(ch)) {
+            } else if (isCapital(ch)) {
                 convertedString.append((char) ('Z' - (ch - 'A')));
-            }
-            // Non-alphabetical character.
-            else {
+            } else {
                 convertedString.append(ch);
             }
         }
