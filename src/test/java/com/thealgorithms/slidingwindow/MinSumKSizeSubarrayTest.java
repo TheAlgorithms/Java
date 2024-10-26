@@ -18,7 +18,7 @@ class MinSumKSizeSubarrayTest {
     void testMinSumKSizeSubarray() {
         int[] arr = {2, 1, 5, 1, 3, 2};
         int k = 3;
-        int expectedMinSum = 3; // 1 + 1 + 1
+        int expectedMinSum = 6; // Corrected: Minimum sum of a subarray of size 3
         assertEquals(expectedMinSum, MinSumKSizeSubarray.minSumKSizeSubarray(arr, k));
     }
 
