@@ -6,15 +6,20 @@ import java.util.Map;
 /**
  * The {@code LFUCache} class implements a Least Frequently Used (LFU) cache.
  * An LFU cache evicts the least frequently used item when the cache reaches its capacity.
- * It keeps track of how many times each item is used and maintains a doubly linked list
- * for efficient addition and removal of items based on their frequency of use.
+ * It maintains a mapping of keys to nodes, where each node contains the key, its associated value,
+ * and a frequency count that tracks how many times the item has been accessed. A doubly linked list
+ * is used to efficiently manage the ordering of items based on their usage frequency.
  *
- * @param <K> The type of keys maintained by this cache.
- * @param <V> The type of mapped values.
+ * <p>This implementation is designed to provide O(1) time complexity for both the {@code get} and
+ * {@code put} operations, which is achieved through the use of a hashmap for quick access and a
+ * doubly linked list for maintaining the order of item frequencies.</p>
  *
  * <p>
  * Reference: <a href="https://en.wikipedia.org/wiki/Least_frequently_used">LFU Cache - Wikipedia</a>
  * </p>
+ *
+ * @param <K> The type of keys maintained by this cache.
+ * @param <V> The type of mapped values.
  *
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
@@ -75,7 +80,7 @@ public class LFUCache<K, V> {
 
     /**
      * Retrieves the value associated with the given key from the cache.
-     * If the key exists, the node's frequency is increased and the node is repositioned
+     * If the key exists, the node's frequency is incremented, and the node is repositioned
      * in the linked list based on its updated frequency.
      *
      * @param key The key whose associated value is to be returned.
