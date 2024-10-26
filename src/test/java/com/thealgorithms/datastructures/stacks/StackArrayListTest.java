@@ -100,7 +100,7 @@ class StackArrayListTest {
         stack.makeEmpty();
         Assertions.assertTrue(stack.isEmpty());
 
-        stack.makeEmpty(); // Call makeEmpty again
+        stack.makeEmpty();
         Assertions.assertTrue(stack.isEmpty());
         Assertions.assertEquals(0, stack.size());
     }
