@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.bag;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.datastructures.bags.Bag;
@@ -68,12 +69,12 @@ class BagTest {
     }
 
     @Test
-    void testContainsAfterRemoveOperation() {
+    void testContainsAfterAdditions() {
         Bag<String> bag = new Bag<>();
         bag.add("item1");
         bag.add("item2");
-        assertTrue(bag.contains("item1"), "Bag should contain 'item1' before removal");
-        assertTrue(bag.contains("item2"), "Bag should contain 'item2' before removal");
+        assertTrue(bag.contains("item1"), "Bag should contain 'item1' after addition");
+        assertTrue(bag.contains("item2"), "Bag should contain 'item2' after addition");
     }
 
     @Test
@@ -106,6 +107,53 @@ class BagTest {
         Bag<String> bag = new Bag<>();
         bag.add("item1");
         Iterator<String> iterator = bag.iterator();
-        org.junit.jupiter.api.Assertions.assertThrows(UnsupportedOperationException.class, iterator::remove, "Remove operation should throw UnsupportedOperationException");
+        assertThrows(UnsupportedOperationException.class, iterator::remove, "Remove operation should throw UnsupportedOperationException");
+    }
+
+    @Test
+    void testMultipleDuplicates() {
+        Bag<String> bag = new Bag<>();
+        bag.add("item1");
+        bag.add("item1");
+        bag.add("item1"); // Add three duplicates
+
+        assertEquals(3, bag.size(), "Bag size should be 3 after adding three duplicates");
+        assertTrue(bag.contains("item1"), "Bag should contain 'item1'");
+    }
+
+    @Test
+    void testLargeNumberOfElements() {
+        Bag<Integer> bag = new Bag<>();
+        for (int i = 0; i < 1000; i++) {
+            bag.add(i);
+        }
+        assertEquals(1000, bag.size(), "Bag should contain 1000 elements");
+    }
+
+    @Test
+    void testMixedTypeElements() {
+        Bag<Object> bag = new Bag<>();
+        bag.add("string");
+        bag.add(1);
+        bag.add(2.0);
+
+        assertTrue(bag.contains("string"), "Bag should contain a string");
+        assertTrue(bag.contains(1), "Bag should contain an integer");
+        assertTrue(bag.contains(2.0), "Bag should contain a double");
+    }
+
+    @Test
+    void testIteratorWithDuplicates() {
+        Bag<String> bag = new Bag<>();
+        bag.add("item1");
+        bag.add("item1");
+        bag.add("item2");
+
+        int count = 0;
+        for (String item : bag) {
+            assertTrue(item.equals("item1") || item.equals("item2"), "Item should be either 'item1' or 'item2'");
+            count++;
+        }
+        assertEquals(3, count, "Iterator should traverse all 3 items including duplicates");
     }
 }
