@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class LongDivisionTest {
+class LongDivisionTest {
 
     // Requirement: Dividend (positive) is  greater than divisor (positive), returns correct integer
     // after division
