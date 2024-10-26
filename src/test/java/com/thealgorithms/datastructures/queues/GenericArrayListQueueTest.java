@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.queues;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class GenericArrayListQueueTest {
@@ -10,7 +14,7 @@ class GenericArrayListQueueTest {
         GenericArrayListQueue<Integer> queue = new GenericArrayListQueue<>();
         assertTrue(queue.add(10));
         assertTrue(queue.add(20));
-        assertEquals(10, queue.peek());  // Ensure the first added element is at the front
+        assertEquals(10, queue.peek()); // Ensure the first added element is at the front
     }
 
     @Test
