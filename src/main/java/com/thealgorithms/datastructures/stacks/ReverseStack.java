@@ -1,10 +1,25 @@
 package com.thealgorithms.datastructures.stacks;
 
-import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * Reversal of a stack using recursion.
+ * Provides methods to reverse a stack using recursion.
+ *
+ * <p>This class includes methods to reverse the order of elements in a stack
+ * without using additional data structures. Elements are inserted at the bottom
+ * of the stack to achieve the reverse order.
+ *
+ * <p>Example usage:
+ * <pre>
+ *     Stack<Integer> stack = new Stack<>();
+ *     stack.push(1);
+ *     stack.push(2);
+ *     stack.push(3);
+ *     ReverseStack.reverseStack(stack);
+ * </pre>
+ * After calling {@code reverseStack(stack)}, the stack's order is reversed.
+ *
+ * <p>This class is final and has a private constructor to prevent instantiation.
  *
  * @author Ishika Agarwal, 2021
  */
@@ -12,56 +27,48 @@ public final class ReverseStack {
     private ReverseStack() {
     }
 
-    public static void main(String[] args) {
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter the number of elements you wish to insert in the stack");
-            int n = sc.nextInt();
-            int i;
-            Stack<Integer> stack = new Stack<Integer>();
-            System.out.println("Enter the stack elements");
-            for (i = 0; i < n; i++) {
-                stack.push(sc.nextInt());
-            }
-            reverseStack(stack);
-            System.out.println("The reversed stack is:");
-            while (!stack.isEmpty()) {
-                System.out.print(stack.peek() + ",");
-                stack.pop();
-            }
-        }
-    }
-
-    private static void reverseStack(Stack<Integer> stack) {
+    /**
+     * Reverses the order of elements in the given stack using recursion.
+     * Steps:
+     * 1. Check if the stack is empty. If so, return.
+     * 2. Pop the top element from the stack.
+     * 3. Recursively reverse the remaining stack.
+     * 4. Insert the originally popped element at the bottom of the reversed stack.
+     *
+     * @param stack the stack to reverse; should not be null
+     */
+    public static void reverseStack(Stack<Integer> stack) {
         if (stack.isEmpty()) {
             return;
         }
 
-        // Store the topmost element
-        int element = stack.peek();
-        // Remove the topmost element
-        stack.pop();
-
-        // Reverse the stack for the leftover elements
+        int element = stack.pop();
         reverseStack(stack);
-
-        // Insert the topmost element to the bottom of the stack
         insertAtBottom(stack, element);
     }
 
+    /**
+     * Inserts the specified element at the bottom of the stack.
+     *
+     * <p>This method is a helper for {@link #reverseStack(Stack)}.
+     *
+     * Steps:
+     * 1. If the stack is empty, push the element and return.
+     * 2. Remove the top element from the stack.
+     * 3. Recursively insert the new element at the bottom of the stack.
+     * 4. Push the removed element back onto the stack.
+     *
+     * @param stack the stack in which to insert the element; should not be null
+     * @param element the element to insert at the bottom of the stack
+     */
     private static void insertAtBottom(Stack<Integer> stack, int element) {
         if (stack.isEmpty()) {
-            // When stack is empty, insert the element so it will be present at
-            // the bottom of the stack
             stack.push(element);
             return;
         }
 
-        int ele = stack.peek();
-        // Keep popping elements till stack becomes empty. Push the elements
-        // once the topmost element has moved to the bottom of the stack.
-        stack.pop();
+        int topElement = stack.pop();
         insertAtBottom(stack, element);
-
-        stack.push(ele);
+        stack.push(topElement);
     }
 }
