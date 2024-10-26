@@ -7,6 +7,43 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import org.apache.commons.lang3.tuple.Pair;
 
+/**
+ * A class that handles unit conversions using affine transformations.
+ *
+ * <p>The {@code UnitsConverter} allows converting values between different units using
+ * pre-defined affine conversion formulas. Each conversion is represented by an
+ * {@link AffineConverter} that defines the scaling and offset for the conversion.
+ *
+ * <p>For each unit, both direct conversions (e.g., Celsius to Fahrenheit) and inverse
+ * conversions (e.g., Fahrenheit to Celsius) are generated automatically. It also computes
+ * transitive conversions (e.g., Celsius to Kelvin via Fahrenheit if both conversions exist).
+ *
+ * <p>Key features include:
+ * <ul>
+ *   <li>Automatic handling of inverse conversions (e.g., Fahrenheit to Celsius).</li>
+ *   <li>Compositional conversions, meaning if conversions between A -> B and B -> C exist,
+ *       it can automatically generate A -> C conversion.</li>
+ *   <li>Supports multiple unit systems as long as conversions are provided in pairs.</li>
+ * </ul>
+ *
+ * <h2>Example Usage</h2>
+ * <pre>
+ * Map&lt;Pair&lt;String, String&gt;, AffineConverter&gt; basicConversions = Map.ofEntries(
+ *     entry(Pair.of("Celsius", "Fahrenheit"), new AffineConverter(9.0 / 5.0, 32.0)),
+ *     entry(Pair.of("Kelvin", "Celsius"), new AffineConverter(1.0, -273.15))
+ * );
+ *
+ * UnitsConverter converter = new UnitsConverter(basicConversions);
+ * double result = converter.convert("Celsius", "Fahrenheit", 100.0);
+ * // Output: 212.0 (Celsius to Fahrenheit conversion of 100°C)
+ * </pre>
+ *
+ * <h2>Exception Handling</h2>
+ * <ul>
+ *   <li>If the input unit and output unit are the same, an {@link IllegalArgumentException} is thrown.</li>
+ *   <li>If a conversion between the requested units does not exist, a {@link NoSuchElementException} is thrown.</li>
+ * </ul>
+ */
 public final class UnitsConverter {
     private final Map<Pair<String, String>, AffineConverter> conversions;
     private final Set<String> units;
@@ -68,11 +105,29 @@ public final class UnitsConverter {
         return res;
     }
 
+    /**
+     * Constructor for {@code UnitsConverter}.
+     *
+     * <p>Accepts a map of basic conversions and automatically generates inverse and
+     * transitive conversions.
+     *
+     * @param basicConversions the initial set of unit conversions to add.
+     */
     public UnitsConverter(final Map<Pair<String, String>, AffineConverter> basicConversions) {
         conversions = computeAllConversions(basicConversions);
         units = extractUnits(conversions);
     }
 
+    /**
+     * Converts a value from one unit to another.
+     *
+     * @param inputUnit the unit of the input value.
+     * @param outputUnit the unit to convert the value into.
+     * @param value the value to convert.
+     * @return the converted value in the target unit.
+     * @throws IllegalArgumentException if inputUnit equals outputUnit.
+     * @throws NoSuchElementException if no conversion exists between the units.
+     */
     public double convert(final String inputUnit, final String outputUnit, final double value) {
         if (inputUnit.equals(outputUnit)) {
             throw new IllegalArgumentException("inputUnit must be different from outputUnit.");
@@ -81,6 +136,11 @@ public final class UnitsConverter {
         return conversions.computeIfAbsent(conversionKey, k -> { throw new NoSuchElementException("No converter for: " + k); }).convert(value);
     }
 
+    /**
+     * Retrieves the set of all units supported by this converter.
+     *
+     * @return a set of available units.
+     */
     public Set<String> availableUnits() {
         return units;
     }

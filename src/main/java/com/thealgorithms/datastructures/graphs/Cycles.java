@@ -6,7 +6,6 @@ import java.util.Scanner;
 class Cycle {
 
     private final int nodes;
-    private final int edges;
     private int[][] adjacencyMatrix;
     private boolean[] visited;
     ArrayList<ArrayList<Integer>> cycles = new ArrayList<ArrayList<Integer>>();
@@ -16,7 +15,7 @@ class Cycle {
         System.out.print("Enter the no. of nodes: ");
         nodes = in.nextInt();
         System.out.print("Enter the no. of Edges: ");
-        edges = in.nextInt();
+        final int edges = in.nextInt();
 
         adjacencyMatrix = new int[nodes][nodes];
         visited = new boolean[nodes];

@@ -1,7 +1,5 @@
 package com.thealgorithms.misc;
 
-import java.util.Scanner;
-
 /*
  *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements
  *are 0, it is considered as sparse). The interest in sparsity arises because its exploitation can
@@ -16,12 +14,17 @@ final class Sparsity {
     }
 
     /*
+     * @param mat the input matrix
      * @return Sparsity of matrix
      *
      * where sparsity = number of zeroes/total elements in matrix
      *
      */
     static double sparsity(double[][] mat) {
+        if (mat == null || mat.length == 0) {
+            throw new IllegalArgumentException("Matrix cannot be null or empty");
+        }
+
         int zero = 0;
         // Traversing the matrix to count number of zeroes
         for (int i = 0; i < mat.length; i++) {
@@ -32,25 +35,6 @@ final class Sparsity {
             }
         }
         // return sparsity
-        return ((double) zero / (mat.length * mat[1].length));
-    }
-
-    // Driver method
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter number of rows in matrix: ");
-        int n = in.nextInt();
-        System.out.println("Enter number of Columns in matrix: ");
-        int m = in.nextInt();
-
-        System.out.println("Enter Matrix elements: ");
-        double[][] mat = new double[n][m];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                mat[i][j] = in.nextDouble();
-            }
-        }
-        System.out.println("Sparsity of matrix is: " + sparsity(mat));
-        in.close();
+        return ((double) zero / (mat.length * mat[0].length));
     }
 }

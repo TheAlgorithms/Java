@@ -1,20 +1,20 @@
-package com.thealgorithms.datastructures.stacks;
+package com.thealgorithms.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LinkedListStackTest {
+public class StackUsingTwoQueuesTest {
 
-    private LinkedListStack stack;
+    private StackUsingTwoQueues stack;
 
     @BeforeEach
     public void setUp() {
-        stack = new LinkedListStack();
+        stack = new StackUsingTwoQueues();
     }
 
     @Test
@@ -22,9 +22,7 @@ public class LinkedListStackTest {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-
         assertEquals(3, stack.peek());
-        assertEquals(3, stack.getSize());
     }
 
     @Test
@@ -32,40 +30,41 @@ public class LinkedListStackTest {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-
         assertEquals(3, stack.pop());
         assertEquals(2, stack.pop());
         assertEquals(1, stack.pop());
-        assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void testPopEmptyStack() {
-        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, () -> stack.pop());
-    }
-
-    @Test
-    public void testPeekEmptyStack() {
-        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, () -> stack.peek());
+    public void testPeek() {
+        stack.push(10);
+        stack.push(20);
+        assertEquals(20, stack.peek());
+        stack.pop();
+        assertEquals(10, stack.peek());
     }
 
     @Test
     public void testIsEmpty() {
         assertTrue(stack.isEmpty());
-
         stack.push(1);
         assertFalse(stack.isEmpty());
-
         stack.pop();
         assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void testToString() {
+    public void testSize() {
+        assertEquals(0, stack.size());
         stack.push(1);
         stack.push(2);
-        stack.push(3);
+        assertEquals(2, stack.size());
+        stack.pop();
+        assertEquals(1, stack.size());
+    }
 
-        assertEquals("3->2->1", stack.toString());
+    @Test
+    public void testPeekEmptyStack() {
+        assertNull(stack.peek());
     }
 }
