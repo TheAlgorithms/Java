@@ -15,7 +15,9 @@ public class RotateSinglyLinkedListsTest {
 
     // Helper method to create a linked list from an array of values
     private Node createLinkedList(int[] values) {
-        if (values.length == 0) return null;
+        if (values.length == 0) {
+            return null;
+        }
 
         Node head = new Node(values[0]);
         Node current = head;
