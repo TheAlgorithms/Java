@@ -1,6 +1,5 @@
 package com.thealgorithms.misc;
 import java.util.Random;
-import java.util.Scanner;
 /**
  * The Fisher-Yates (Knuth) Shuffle algorithm randomly permutes an array's
  * elements, ensuring each permutation is equally likely.
@@ -13,7 +12,7 @@ import java.util.Scanner;
  *
  * This class provides a static method to shuffle an array in place.
  *
- * @author Your Name (https://github.com/Chiefpatwal)
+ * @author Rashi Dashore (https://github.com/rashi07dashore)
  */
 public final class ShuffleArray {
     // Prevent instantiation
@@ -32,32 +31,6 @@ public final class ShuffleArray {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-    }
-    /**
-     * This method takes user input to create an array.
-     *
-     * @return the array created from user input
-     */
-    public static int[] getUserInputArray() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the size of the array: ");
-        int size = scanner.nextInt();
-
-        int[] arr = new int[size];
-        System.out.println("Enter " + size + " elements:");
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
-        }
-        return arr;
-    }
-    public static void main(String[] args) {
-        int[] userArray = getUserInputArray();
-        System.out.println("Original Array:");
-        printArray(userArray);
-
-        shuffle(userArray);
-        System.out.println("Shuffled Array:");
-        printArray(userArray);
     }
     /**
      * This method prints the elements of the array.
