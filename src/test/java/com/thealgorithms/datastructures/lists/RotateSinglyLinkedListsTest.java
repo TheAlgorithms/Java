@@ -88,7 +88,6 @@ public class RotateSinglyLinkedListsTest {
 
     @Test
     public void testRotateRightByMultipleOfListLength() {
-        // Rotate a list by a multiple of its length (no change)
         Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 10); // k = 2 * list length
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", linkedListToString(rotated));
