@@ -4,22 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Finds all combinations of 0...n-1 of length k
+ * This class provides methods to find all combinations of integers from 0 to n-1
+ * of a specified length k using backtracking.
  */
 public final class ArrayCombination {
     private ArrayCombination() {
     }
 
     /**
-     * Finds all combinations of length k of 0..n-1 using backtracking.
+     * Generates all possible combinations of length k from the integers 0 to n-1.
      *
-     * @param n Number of the elements.
-     * @param k Length of the combination.
-     * @return A list of all combinations of length k.
+     * @param n The total number of elements (0 to n-1).
+     * @param k The desired length of each combination.
+     * @return A list containing all combinations of length k.
+     * @throws IllegalArgumentException if n or k are negative, or if k is greater than n.
      */
     public static List<List<Integer>> combination(int n, int k) {
         if (n < 0 || k < 0 || k > n) {
-            throw new IllegalArgumentException("Wrong input.");
+            throw new IllegalArgumentException("Invalid input: n must be non-negative, k must be non-negative and less than or equal to n.");
         }
 
         List<List<Integer>> combinations = new ArrayList<>();
@@ -27,9 +29,19 @@ public final class ArrayCombination {
         return combinations;
     }
 
+    /**
+     * A helper method that uses backtracking to find combinations.
+     *
+     * @param combinations The list to store all valid combinations found.
+     * @param current The current combination being built.
+     * @param start The starting index for the current recursion.
+     * @param n The total number of elements (0 to n-1).
+     * @param k The desired length of each combination.
+     */
     private static void combine(List<List<Integer>> combinations, List<Integer> current, int start, int n, int k) {
-        if (current.size() == k) { // Base case: combination found
-            combinations.add(new ArrayList<>(current)); // Copy to avoid modification
+        // Base case: combination found
+        if (current.size() == k) {
+            combinations.add(new ArrayList<>(current));
             return;
         }
 

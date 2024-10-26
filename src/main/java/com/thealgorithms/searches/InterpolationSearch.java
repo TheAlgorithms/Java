@@ -1,25 +1,31 @@
 package com.thealgorithms.searches;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.IntStream;
-
 /**
- * Interpolation search algorithm implementation
+ * InterpolationSearch is an algorithm that searches for a target value within a sorted array
+ * by estimating the position based on the values at the corners of the current search range.
  *
  * <p>
- * Worst-case performance O(n) Best-case performance O(1) Average performance
- * O(log(log(n))) if the elements are uniformly distributed if not O(n)
- * Worst-case space complexity O(1)
+ * The performance of this algorithm can vary:
+ * - Worst-case performance: O(n)
+ * - Best-case performance: O(1)
+ * - Average performance: O(log(log(n))) if the elements are uniformly distributed; otherwise O(n)
+ * - Worst-case space complexity: O(1)
+ * </p>
+ *
+ * <p>
+ * This search algorithm requires the input array to be sorted.
+ * </p>
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
 class InterpolationSearch {
 
     /**
-     * @param array is a sorted array
-     * @param key is a value what shoulb be found in the array
-     * @return an index if the array contains the key unless -1
+     * Finds the index of the specified key in a sorted array using interpolation search.
+     *
+     * @param array The sorted array to search.
+     * @param key The value to search for.
+     * @return The index of the key if found, otherwise -1.
      */
     public int find(int[] array, int key) {
         // Find indexes of two corners
@@ -47,24 +53,5 @@ class InterpolationSearch {
             }
         }
         return -1;
-    }
-
-    // Driver method
-    public static void main(String[] args) {
-        Random r = new Random();
-        int size = 100;
-        int maxElement = 100000;
-        int[] integers = IntStream.generate(() -> r.nextInt(maxElement)).limit(size).sorted().toArray();
-
-        // the element that should be found
-        int shouldBeFound = integers[r.nextInt(size - 1)];
-
-        InterpolationSearch search = new InterpolationSearch();
-        int atIndex = search.find(integers, shouldBeFound);
-
-        System.out.printf("Should be found: %d. Found %d at index %d. An array length %d%n", shouldBeFound, integers[atIndex], atIndex, size);
-
-        int toCheck = Arrays.binarySearch(integers, shouldBeFound);
-        System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 }

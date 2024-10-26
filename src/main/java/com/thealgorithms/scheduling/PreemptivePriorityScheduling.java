@@ -2,6 +2,7 @@ package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -15,7 +16,7 @@ public class PreemptivePriorityScheduling {
     protected final List<ProcessDetails> processes;
     protected final List<String> ganttChart;
 
-    public PreemptivePriorityScheduling(List<ProcessDetails> processes) {
+    public PreemptivePriorityScheduling(Collection<ProcessDetails> processes) {
         this.processes = new ArrayList<>(processes);
         this.ganttChart = new ArrayList<>();
     }
