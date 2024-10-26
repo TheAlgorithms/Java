@@ -58,9 +58,25 @@ public final class PhoneticAlphabetConverter {
         PHONETIC_MAP.put('9', "Nine");
     }
 
+    /**
+     * Converts text to the NATO phonetic alphabet.
+     * Steps:
+     * 1. Convert the text to uppercase.
+     * 2. Iterate over each character in the text.
+     * 3. Get the phonetic equivalent of the character from the map.
+     * 4. Append the phonetic equivalent to the result.
+     * 5. Append a space to separate the phonetic equivalents.
+     * 6. Return the result.
+     *
+     * @param text the text to convert
+     * @return the NATO phonetic alphabet
+     */
     public static String textToPhonetic(String text) {
         StringBuilder phonetic = new StringBuilder();
         for (char c : text.toUpperCase().toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                continue;
+            }
             phonetic.append(PHONETIC_MAP.getOrDefault(c, String.valueOf(c))).append(" ");
         }
         return phonetic.toString().trim();
