@@ -4,14 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Most recently used (MRU)
+ * Represents a Most Recently Used (MRU) Cache.
  * <p>
- * In contrast to Least Recently Used (LRU), MRU discards the most recently used
- * items first.
- * https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)
+ * In contrast to the Least Recently Used (LRU) strategy, the MRU caching policy
+ * evicts the most recently accessed items first. This class provides methods to
+ * store key-value pairs and manage cache eviction based on this policy.
  *
- * @param <K> key type
- * @param <V> value type
+ * For more information, refer to:
+ * <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_recently_used_(MRU)">MRU on Wikipedia</a>.
+ *
+ * @param <K> the type of keys maintained by this cache
+ * @param <V> the type of values associated with the keys
  */
 public class MRUCache<K, V> {
 
@@ -21,40 +24,74 @@ public class MRUCache<K, V> {
     private int cap;
     private static final int DEFAULT_CAP = 100;
 
+    /**
+     * Creates an MRUCache with the default capacity.
+     */
     public MRUCache() {
         setCapacity(DEFAULT_CAP);
     }
 
+    /**
+     * Creates an MRUCache with a specified capacity.
+     *
+     * @param cap the maximum number of items the cache can hold
+     */
+    public MRUCache(int cap) {
+        setCapacity(cap);
+    }
+
+    /**
+     * Sets the capacity of the cache and evicts items if the new capacity
+     * is less than the current number of items.
+     *
+     * @param newCapacity the new capacity to set
+     */
     private void setCapacity(int newCapacity) {
         checkCapacity(newCapacity);
-        for (int i = data.size(); i > newCapacity; i--) {
+        while (data.size() > newCapacity) {
             Entry<K, V> evicted = evict();
             data.remove(evicted.getKey());
         }
         this.cap = newCapacity;
     }
 
+    /**
+     * Checks if the specified capacity is valid.
+     *
+     * @param capacity the capacity to check
+     * @throws IllegalArgumentException if the capacity is less than or equal to zero
+     */
     private void checkCapacity(int capacity) {
         if (capacity <= 0) {
-            throw new RuntimeException("capacity must greater than 0!");
+            throw new IllegalArgumentException("Capacity must be greater than 0!");
         }
     }
 
+    /**
+     * Evicts the most recently used entry from the cache.
+     *
+     * @return the evicted entry
+     * @throws RuntimeException if the cache is empty
+     */
     private Entry<K, V> evict() {
         if (head == null) {
-            throw new RuntimeException("cache cannot be empty!");
+            throw new RuntimeException("Cache cannot be empty!");
         }
         final Entry<K, V> evicted = this.tail;
         tail = evicted.getPreEntry();
-        tail.setNextEntry(null);
+        if (tail != null) {
+            tail.setNextEntry(null);
+        }
         evicted.setNextEntry(null);
         return evicted;
     }
 
-    public MRUCache(int cap) {
-        setCapacity(cap);
-    }
-
+    /**
+     * Retrieves the value associated with the specified key.
+     *
+     * @param key the key whose associated value is to be returned
+     * @return the value associated with the specified key, or null if the key does not exist
+     */
     public V get(K key) {
         if (!data.containsKey(key)) {
             return null;
@@ -64,11 +101,19 @@ public class MRUCache<K, V> {
         return entry.getValue();
     }
 
+    /**
+     * Associates the specified value with the specified key in the cache.
+     * If the key already exists, its value is updated and the entry is moved to the most recently used position.
+     * If the cache is full, the most recently used entry is evicted before adding the new entry.
+     *
+     * @param key   the key with which the specified value is to be associated
+     * @param value the value to be associated with the specified key
+     */
     public void put(K key, V value) {
         if (data.containsKey(key)) {
-            final Entry<K, V> exitingEntry = data.get(key);
-            exitingEntry.setValue(value);
-            moveEntryToLast(exitingEntry);
+            final Entry<K, V> existingEntry = data.get(key);
+            existingEntry.setValue(value);
+            moveEntryToLast(existingEntry);
             return;
         }
         Entry<K, V> newEntry;
@@ -84,6 +129,11 @@ public class MRUCache<K, V> {
         data.put(key, newEntry);
     }
 
+    /**
+     * Adds a new entry to the cache and updates the head and tail pointers accordingly.
+     *
+     * @param newEntry the new entry to be added
+     */
     private void addNewEntry(Entry<K, V> newEntry) {
         if (data.isEmpty()) {
             head = newEntry;
@@ -96,6 +146,11 @@ public class MRUCache<K, V> {
         tail = newEntry;
     }
 
+    /**
+     * Moves the specified entry to the most recently used position in the cache.
+     *
+     * @param entry the entry to be moved
+     */
     private void moveEntryToLast(Entry<K, V> entry) {
         if (tail == entry) {
             return;
@@ -117,8 +172,14 @@ public class MRUCache<K, V> {
         tail = entry;
     }
 
+    /**
+     * A nested class representing an entry in the cache, which holds a key-value pair
+     * and references to the previous and next entries in the linked list structure.
+     *
+     * @param <I> the type of the key
+     * @param <J> the type of the value
+     */
     static final class Entry<I, J> {
-
         private Entry<I, J> preEntry;
         private Entry<I, J> nextEntry;
         private I key;

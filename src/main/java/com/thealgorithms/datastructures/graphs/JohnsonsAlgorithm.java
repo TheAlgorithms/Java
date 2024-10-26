@@ -21,17 +21,18 @@ import java.util.List;
  */
 public final class JohnsonsAlgorithm {
 
-    // Constant representing infinity
     private static final double INF = Double.POSITIVE_INFINITY;
 
-    /**
-     * A private constructor to hide the implicit public one.
-     */
     private JohnsonsAlgorithm() {
     }
 
     /**
      * Executes Johnson's algorithm on the given graph.
+     * Steps:
+     * 1. Add a new vertex to the graph and run Bellman-Ford to compute modified weights
+     * 2. t the graph using the modified weights
+     * 3. Run Dijkstra's algorithm for each vertex to compute the shortest paths
+     * The final result is a 2D array of shortest distances between all pairs of vertices.
      *
      * @param graph The input graph represented as an adjacency matrix.
      * @return A 2D array representing the shortest distances between all pairs of vertices.
@@ -40,13 +41,10 @@ public final class JohnsonsAlgorithm {
         int numVertices = graph.length;
         double[][] edges = convertToEdgeList(graph);
 
-        // Step 1: Add a new vertex and run Bellman-Ford
         double[] modifiedWeights = bellmanFord(edges, numVertices);
 
-        // Step 2: Reweight the graph
         double[][] reweightedGraph = reweightGraph(graph, modifiedWeights);
 
-        // Step 3: Run Dijkstra's algorithm for each vertex
         double[][] shortestDistances = new double[numVertices][numVertices];
         for (int source = 0; source < numVertices; source++) {
             shortestDistances[source] = dijkstra(reweightedGraph, source, modifiedWeights);
@@ -74,7 +72,6 @@ public final class JohnsonsAlgorithm {
             }
         }
 
-        // Convert the List to a 2D array
         return edgeList.toArray(new double[0][]);
     }
 
@@ -89,7 +86,7 @@ public final class JohnsonsAlgorithm {
     private static double[] bellmanFord(double[][] edges, int numVertices) {
         double[] dist = new double[numVertices + 1];
         Arrays.fill(dist, INF);
-        dist[numVertices] = 0; // Distance to the new source vertex is 0
+        dist[numVertices] = 0;
 
         // Add edges from the new vertex to all original vertices
         double[][] allEdges = Arrays.copyOf(edges, edges.length + numVertices);
