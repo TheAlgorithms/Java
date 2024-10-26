@@ -1,19 +1,17 @@
 package com.thealgorithms.datastructures.graphs;
 
 /**
- * A Java program for Prim's Minimum Spanning Tree (MST) algorithm. adjacency
- * matrix representation of the graph
+ * A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
+ * Adjacency matrix representation of the graph.
  */
-class PrimMST {
+public class PrimMST {
 
     // Number of vertices in the graph
-
     private static final int V = 5;
 
-    // A utility function to find the vertex with minimum key
-    // value, from the set of vertices not yet included in MST
+    // A utility function to find the vertex with the minimum key
+    // value, from the set of vertices not yet included in the MST
     int minKey(int[] key, Boolean[] mstSet) {
-        // Initialize min value
         int min = Integer.MAX_VALUE;
         int minIndex = -1;
 
@@ -27,54 +25,30 @@ class PrimMST {
         return minIndex;
     }
 
-    // A utility function to print the constructed MST stored in
-    // parent[]
-    void printMST(int[] parent, int n, int[][] graph) {
-        System.out.println("Edge   Weight");
-        for (int i = 1; i < V; i++) {
-            System.out.println(parent[i] + " - " + i + "    " + graph[i][parent[i]]);
-        }
-    }
+    // Function to construct MST for a graph using adjacency matrix representation
+    public int[] primMST(int[][] graph) {
+        int[] parent = new int[V]; // Array to store constructed MST
+        int[] key = new int[V]; // Key values to pick minimum weight edge
+        Boolean[] mstSet = new Boolean[V]; // Vertices not yet included in MST
 
-    // Function to construct and print MST for a graph represented
-    //  using adjacency matrix representation
-    void primMST(int[][] graph) {
-        // Array to store constructed MST
-        int[] parent = new int[V];
-
-        // Key values used to pick minimum weight edge in cut
-        int[] key = new int[V];
-
-        // To represent set of vertices not yet included in MST
-        Boolean[] mstSet = new Boolean[V];
-
-        // Initialize all keys as INFINITE
+        // Initialize all keys as INFINITE and mstSet[] as false
         for (int i = 0; i < V; i++) {
             key[i] = Integer.MAX_VALUE;
             mstSet[i] = Boolean.FALSE;
         }
 
-        // Always include first 1st vertex in MST.
-        key[0] = 0; // Make key 0 so that this vertex is
-        // picked as first vertex
+        // Always include the first vertex in MST
+        key[0] = 0; // Make key 0 to pick the first vertex
         parent[0] = -1; // First node is always root of MST
 
         // The MST will have V vertices
         for (int count = 0; count < V - 1; count++) {
-            // Pick thd minimum key vertex from the set of vertices
-            // not yet included in MST
+            // Pick the minimum key vertex not yet included in MST
             int u = minKey(key, mstSet);
-
-            // Add the picked vertex to the MST Set
             mstSet[u] = Boolean.TRUE;
 
-            // Update key value and parent index of the adjacent
-            // vertices of the picked vertex. Consider only those
-            // vertices which are not yet included in MST
-            for (int v = 0; v < V; v++) // Update the key only if graph[u][v] is smaller than key[v] // mstSet[v] is
-                                        // false for vertices not yet included in MST // graph[u][v] is non zero only
-                                        // for adjacent vertices of m
-            {
+            // Update key value and parent index of adjacent vertices of the picked vertex
+            for (int v = 0; v < V; v++) {
                 if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] < key[v]) {
                     parent[v] = u;
                     key[v] = graph[u][v];
@@ -82,29 +56,6 @@ class PrimMST {
             }
         }
 
-        // print the constructed MST
-        printMST(parent, V, graph);
-    }
-
-    public static void main(String[] args) {
-        /* Let us create the following graph
-       2    3
-    (0)--(1)--(2)
-    |    / \   |
-    6| 8/   \5 |7
-    | /      \ |
-    (3)-------(4)
-         9          */
-        PrimMST t = new PrimMST();
-        int[][] graph = new int[][] {
-            {0, 2, 0, 6, 0},
-            {2, 0, 3, 8, 5},
-            {0, 3, 0, 0, 7},
-            {6, 8, 0, 0, 9},
-            {0, 5, 7, 9, 0},
-        };
-
-        // Print the solution
-        t.primMST(graph);
+        return parent; // Return the MST parent array
     }
 }
