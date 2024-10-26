@@ -321,6 +321,7 @@
             * [BresenhamLine](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/BresenhamLine.java)
             * [ConvexHull](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/ConvexHull.java)
             * [GrahamScan](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/GrahamScan.java)
+            * [MidpointEllipse](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/MidpointEllipse.java)
             * [Point](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/Point.java)
           * graph
             * [StronglyConnectedComponentOptimized](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
@@ -969,6 +970,7 @@
             * [BresenhamLineTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/BresenhamLineTest.java)
             * [ConvexHullTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/ConvexHullTest.java)
             * [GrahamScanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
+            * [MidpointEllipseTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
           * graph
             * [StronglyConnectedComponentOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
           * greedyalgorithms
