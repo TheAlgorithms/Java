@@ -32,6 +32,7 @@
             * [CountSetBits](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/CountSetBits.java)
             * [FindNthBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/FindNthBit.java)
             * [FirstDifferentBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/FirstDifferentBit.java)
+            * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/GenerateSubsets.java)
             * [GrayCodeConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/GrayCodeConversion.java)
             * [HammingDistance](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/HammingDistance.java)
             * [HigherLowerPowerOfTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/HigherLowerPowerOfTwo.java)
@@ -41,6 +42,7 @@
             * [IsPowerTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/IsPowerTwo.java)
             * [LowestSetBit](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/LowestSetBit.java)
             * [ModuloPowerOfTwo](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/ModuloPowerOfTwo.java)
+            * [NextHigherSameBitCount](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NextHigherSameBitCount.java)
             * [NonRepeatingNumberFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinder.java)
             * [NumberAppearingOddTimes](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimes.java)
             * [NumbersDifferentSigns](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/bitmanipulation/NumbersDifferentSigns.java)
@@ -179,6 +181,7 @@
               * [LeftistHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/LeftistHeap.java)
               * [MaxHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MaxHeap.java)
               * [MedianFinder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MedianFinder.java)
+              * [MergeKSortedArrays](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MergeKSortedArrays.java)
               * [MinHeap](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MinHeap.java)
               * [MinPriorityQueue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/heaps/MinPriorityQueue.java)
             * lists
@@ -207,6 +210,7 @@
               * [PriorityQueues](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/PriorityQueues.java)
               * [Queue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/Queue.java)
               * [QueueByTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/QueueByTwoStacks.java)
+              * [SlidingWindowMaximum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/SlidingWindowMaximum.java)
               * [TokenBucket](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/TokenBucket.java)
             * stacks
               * [NodeStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/stacks/NodeStack.java)
@@ -272,6 +276,7 @@
             * [TilingProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/divideandconquer/TilingProblem.java)
           * dynamicprogramming
             * [Abbreviation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Abbreviation.java)
+            * [AllConstruct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/AllConstruct.java)
             * [AssignmentUsingBitmask](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmask.java)
             * [BoardPath](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoardPath.java)
             * [BoundaryFill](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/BoundaryFill.java)
@@ -320,12 +325,14 @@
             * [BresenhamLine](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/BresenhamLine.java)
             * [ConvexHull](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/ConvexHull.java)
             * [GrahamScan](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/GrahamScan.java)
+            * [MidpointCircle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/MidpointCircle.java)
             * [MidpointEllipse](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/MidpointEllipse.java)
             * [Point](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/geometry/Point.java)
           * graph
             * [StronglyConnectedComponentOptimized](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
           * greedyalgorithms
             * [ActivitySelection](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
+            * [BandwidthAllocation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/BandwidthAllocation.java)
             * [BinaryAddition](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/BinaryAddition.java)
             * [CoinChange](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/CoinChange.java)
             * [DigitSeparation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/DigitSeparation.java)
@@ -591,6 +598,7 @@
           * slidingwindow
             * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
+            * [MinSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarray.java)
           * sorts
             * [AdaptiveMergeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/AdaptiveMergeSort.java)
             * [BeadSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/BeadSort.java)
@@ -731,6 +739,7 @@
             * [CountSetBitsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/CountSetBitsTest.java)
             * [FindNthBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/FindNthBitTest.java)
             * [FirstDifferentBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/FirstDifferentBitTest.java)
+            * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/GenerateSubsetsTest.java)
             * [GrayCodeConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/GrayCodeConversionTest.java)
             * [HammingDistanceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/HammingDistanceTest.java)
             * [HigherLowerPowerOfTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/HigherLowerPowerOfTwoTest.java)
@@ -740,6 +749,7 @@
             * [IsPowerTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/IsPowerTwoTest.java)
             * [LowestSetBitTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/LowestSetBitTest.java)
             * [ModuloPowerOfTwoTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/ModuloPowerOfTwoTest.java)
+            * [NextHigherSameBitCountTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NextHigherSameBitCountTest.java)
             * [NonRepeatingNumberFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NonRepeatingNumberFinderTest.java)
             * [NumberAppearingOddTimesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumberAppearingOddTimesTest.java)
             * [NumbersDifferentSignsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/bitmanipulation/NumbersDifferentSignsTest.java)
@@ -781,6 +791,7 @@
           * conversions
             * [AffineConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AffineConverterTest.java)
             * [AnyBaseToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AnyBaseToDecimalTest.java)
+            * [AnytoAnyTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/AnytoAnyTest.java)
             * [BinaryToDecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToDecimalTest.java)
             * [BinaryToHexadecimalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToHexadecimalTest.java)
             * [BinaryToOctalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/BinaryToOctalTest.java)
@@ -857,6 +868,7 @@
               * [KthElementFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/KthElementFinderTest.java)
               * [LeftistHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
               * [MedianFinderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MedianFinderTest.java)
+              * [MergeKSortedArraysTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MergeKSortedArraysTest.java)
               * [MinPriorityQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MinPriorityQueueTest.java)
             * lists
               * [CircleLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CircleLinkedListTest.java)
@@ -880,6 +892,7 @@
               * [PriorityQueuesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/PriorityQueuesTest.java)
               * [QueueByTwoStacksTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueByTwoStacksTest.java)
               * [QueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueTest.java)
+              * [SlidingWindowMaximumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/SlidingWindowMaximumTest.java)
               * [TokenBucketTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/TokenBucketTest.java)
             * stacks
               * [NodeStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/NodeStackTest.java)
@@ -922,6 +935,7 @@
             * [TilingProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/divideandconquer/TilingProblemTest.java)
           * dynamicprogramming
             * [AbbreviationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AbbreviationTest.java)
+            * [AllConstructTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AllConstructTest.java)
             * [AssignmentUsingBitmaskTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/AssignmentUsingBitmaskTest.java)
             * [BoardPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoardPathTest.java)
             * [BoundaryFillTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/BoundaryFillTest.java)
@@ -969,11 +983,13 @@
             * [BresenhamLineTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/BresenhamLineTest.java)
             * [ConvexHullTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/ConvexHullTest.java)
             * [GrahamScanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
+            * [MidpointCircleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
             * [MidpointEllipseTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
           * graph
             * [StronglyConnectedComponentOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
           * greedyalgorithms
             * [ActivitySelectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/ActivitySelectionTest.java)
+            * [BandwidthAllocationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/BandwidthAllocationTest.java)
             * [BinaryAdditionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/BinaryAdditionTest.java)
             * [CoinChangeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/CoinChangeTest.java)
             * [DigitSeparationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/DigitSeparationTest.java)
@@ -1205,6 +1221,7 @@
           * slidingwindow
             * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
+            * [MinSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarrayTest.java)
           * sorts
             * [AdaptiveMergeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/AdaptiveMergeSortTest.java)
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
