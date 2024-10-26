@@ -41,6 +41,21 @@ public class WordLadderTest {
         assertEquals(WordLadder.ladderLength("hit", "cog", wordList2), 0);
     }
 
+    /**
+     * Test 3:
+     * Input: beginWord = "hit", endWord = "cog", wordList =
+     * []
+     * Output: 0
+     * Explanation: The wordList is empty (corner case),
+     * therefore there is no valid transformation sequence.
+     */
+    @Test
+    public void testWordLadder3() {
+
+        List<String> wordList3 = Arrays.asList();
+        assertEquals(WordLadder.ladderLength("hit", "cog", wordList3), 0);
+    }
+
     @ParameterizedTest
     @CsvSource({"'a', 'c', 'b,c', 2", "'a', 'c', 'a', 0", "'a', 'a', 'a', 0", "'ab', 'cd', 'ad,bd,cd', 3", "'a', 'd', 'b,c,d', 2", "'a', 'd', 'b,c,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,d', 2"})
     void testLadderLength(String beginWord, String endWord, String wordListStr, int expectedLength) {

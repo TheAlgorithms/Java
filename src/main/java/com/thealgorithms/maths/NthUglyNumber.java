@@ -2,6 +2,7 @@ package com.thealgorithms.maths;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import org.apache.commons.lang3.tuple.MutablePair;
 
 /**
@@ -64,7 +65,7 @@ public class NthUglyNumber {
         }
     }
 
-    private long computeCandidate(final MutablePair<Integer, Integer> entry) {
+    private long computeCandidate(final Map.Entry<Integer, Integer> entry) {
         return entry.getKey() * uglyNumbers.get(entry.getValue());
     }
 
