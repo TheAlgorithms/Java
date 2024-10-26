@@ -836,6 +836,7 @@
               * [GenericHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/GenericHeapTest.java)
               * [LeftistHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/LeftistHeapTest.java)
               * [MaxHeapTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MaxHeapTest.java)
+              * [MinPriorityQueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/heaps/MinPriorityQueueTest.java)
             * lists
               * [CircleLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CircleLinkedListTest.java)
               * [CountSinglyLinkedListRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/lists/CountSinglyLinkedListRecursionTest.java)
