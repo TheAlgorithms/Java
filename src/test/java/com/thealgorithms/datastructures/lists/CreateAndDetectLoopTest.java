@@ -12,7 +12,7 @@ public class CreateAndDetectLoopTest {
 
     @BeforeEach
     void setUp() {
-        // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+        // Set up a linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6
         head = new CreateAndDetectLoop.Node(1);
         CreateAndDetectLoop.Node second = new CreateAndDetectLoop.Node(2);
         CreateAndDetectLoop.Node third = new CreateAndDetectLoop.Node(3);
@@ -44,7 +44,7 @@ public class CreateAndDetectLoopTest {
 
     @Test
     void testCreateLoopInvalidPosition() {
-        // Create loop with invalid positions
+        // Create loop with invalid positions (0)
         CreateAndDetectLoop.createLoop(head, 0, 0);
 
         // Ensure no loop was created
@@ -62,10 +62,25 @@ public class CreateAndDetectLoopTest {
 
     @Test
     void testCreateLoopNoChangeForNonExistentPositions() {
-        // Create a loop with positions that don't exist in the linked list
+        // Create a loop with non-existent positions
         CreateAndDetectLoop.createLoop(head, 10, 20);
 
         // Ensure no loop was created
         assertFalse(CreateAndDetectLoop.detectLoop(head), "No loop should be created if positions are out of bounds.");
+    }
+
+    @Test
+    void testMultipleNodesWithNoLoop() {
+        // Multiple nodes without creating any loop
+        assertFalse(CreateAndDetectLoop.detectLoop(head), "No loop should be detected for a standard linear list.");
+    }
+
+    @Test
+    void testHeadToTailLoop() {
+        // Create a loop from the tail back to the head
+        CreateAndDetectLoop.createLoop(head, 1, 6);
+
+        // Detect the head-to-tail loop
+        assertTrue(CreateAndDetectLoop.detectLoop(head), "A head-to-tail loop should be detected.");
     }
 }
