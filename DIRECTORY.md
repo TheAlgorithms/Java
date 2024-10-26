@@ -202,6 +202,7 @@
               * [PriorityQueues](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/PriorityQueues.java)
               * [Queue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/Queue.java)
               * [QueueByTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/QueueByTwoStacks.java)
+              * [TokenBucket](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/queues/TokenBucket.java)
             * stacks
               * [NodeStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/stacks/NodeStack.java)
               * [ReverseStack](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/stacks/ReverseStack.java)
@@ -867,7 +868,9 @@
               * [PriorityQueuesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/PriorityQueuesTest.java)
               * [QueueByTwoStacksTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueByTwoStacksTest.java)
               * [QueueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/QueueTest.java)
+              * [TokenBucketTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/queues/TokenBucketTest.java)
             * stacks
+              * [NodeStackTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/NodeStackTest.java)
               * [StackArrayListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayListTest.java)
               * [StackArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayTest.java)
               * [StackOfLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackOfLinkedListTest.java)
