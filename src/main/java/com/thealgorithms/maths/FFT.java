@@ -165,6 +165,14 @@ public final class FFT {
             temp.img = this.img / n;
             return temp;
         }
+
+        public double real() {
+            return real;
+        }
+
+        public double imaginary() {
+            return img;
+        }
     }
 
     /**
