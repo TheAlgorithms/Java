@@ -3,35 +3,20 @@ package com.thealgorithms.datastructures.stacks;
 import java.util.NoSuchElementException;
 
 /**
- * @author Varun Upadhyay (https://github.com/varunu28)
+ * A stack implementation using a singly linked list.
+ *
+ * <p>This class provides methods to push, pop, and peek elements in a Last-In-First-Out (LIFO) manner.
+ * It keeps track of the number of elements in the stack and allows checking if the stack is empty.
+ *
+ * <p>This implementation does not allow null elements to be pushed onto the stack.
  */
-// An implementation of a Stack using a Linked List
 final class StackOfLinkedList {
     private StackOfLinkedList() {
     }
-
-    public static void main(String[] args) {
-        LinkedListStack stack = new LinkedListStack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-
-        System.out.println(stack);
-
-        System.out.println("Size of stack currently is: " + stack.getSize());
-
-        assert stack.pop() == 5;
-        assert stack.pop() == 4;
-
-        System.out.println("Top element of stack currently is: " + stack.peek());
-    }
 }
 
-// A node class
+// A node class for the linked list
 class Node {
-
     public int data;
     public Node next;
 
@@ -42,25 +27,24 @@ class Node {
 }
 
 /**
- * A class which implements a stack using a linked list
+ * A class that implements a stack using a linked list.
  *
- * <p>
- * Contains all the stack methods : push, pop, printStack, isEmpty
+ * <p>This stack supports basic operations:
+ * <ul>
+ * <li>push: Adds an element to the top of the stack</li>
+ * <li>pop: Removes and returns the top element of the stack</li>
+ * <li>peek: Returns the top element without removing it</li>
+ * <li>isEmpty: Checks if the stack is empty</li>
+ * <li>getSize: Returns the current size of the stack</li>
+ * </ul>
  */
 class LinkedListStack {
 
-    /**
-     * Top of stack
-     */
-    Node head;
+    private Node head; // Top of the stack
+    private int size; // Number of elements in the stack
 
     /**
-     * Size of stack
-     */
-    private int size;
-
-    /**
-     * Init properties
+     * Initializes an empty stack.
      */
     LinkedListStack() {
         head = null;
@@ -68,10 +52,10 @@ class LinkedListStack {
     }
 
     /**
-     * Add element at top
+     * Adds an element to the top of the stack.
      *
-     * @param x to be added
-     * @return <tt>true</tt> if add successfully
+     * @param x the element to be added
+     * @return <tt>true</tt> if the element is added successfully
      */
     public boolean push(int x) {
         Node newNode = new Node(x);
@@ -82,10 +66,10 @@ class LinkedListStack {
     }
 
     /**
-     * Pop element at top of stack
+     * Removes and returns the top element of the stack.
      *
-     * @return element at top of stack
-     * @throws NoSuchElementException if stack is empty
+     * @return the element at the top of the stack
+     * @throws NoSuchElementException if the stack is empty
      */
     public int pop() {
         if (size == 0) {
@@ -94,20 +78,20 @@ class LinkedListStack {
         Node destroy = head;
         head = head.next;
         int retValue = destroy.data;
-        destroy = null; // clear to let GC do it's work
+        destroy = null; // Help garbage collection
         size--;
         return retValue;
     }
 
     /**
-     * Peek element at top of stack
+     * Returns the top element of the stack without removing it.
      *
-     * @return element at top of stack
-     * @throws NoSuchElementException if stack is empty
+     * @return the element at the top of the stack
+     * @throws NoSuchElementException if the stack is empty
      */
     public int peek() {
         if (size == 0) {
-            throw new NoSuchElementException("Empty stack. Nothing to pop");
+            throw new NoSuchElementException("Empty stack. Nothing to peek");
         }
         return head.data;
     }
@@ -120,24 +104,32 @@ class LinkedListStack {
             builder.append(cur.data).append("->");
             cur = cur.next;
         }
-        return builder.replace(builder.length() - 2, builder.length(), "").toString();
+        return builder.replace(builder.length() - 2, builder.length(), "").toString(); // Remove the last "->"
     }
 
     /**
-     * Check if stack is empty
+     * Checks if the stack is empty.
      *
-     * @return <tt>true</tt> if stack is empty, otherwise <tt>false</tt>
+     * @return <tt>true</tt> if the stack is empty, <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
         return size == 0;
     }
 
     /**
-     * Return size of stack
+     * Returns the current size of the stack.
      *
-     * @return size of stack
+     * @return the number of elements in the stack
      */
     public int getSize() {
         return size;
+    }
+
+    /**
+     * Removes all elements from the stack.
+     */
+    public void makeEmpty() {
+        head = null;
+        size = 0;
     }
 }
