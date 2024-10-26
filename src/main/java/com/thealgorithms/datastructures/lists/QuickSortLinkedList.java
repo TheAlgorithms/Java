@@ -104,36 +104,52 @@ package com.thealgorithms.datastructures.lists;
 
 public class QuickSortLinkedList {
 
-    private SinglyLinkedList list = null; // Linked list
-    private Node head = null; // head of the list
-    // Counstructor
+    private final SinglyLinkedList list; // The linked list to be sorted
+    private Node head; // Head of the list
+
+    /**
+     * Constructor that initializes the QuickSortLinkedList with a given linked list.
+     *
+     * @param list The singly linked list to be sorted
+     */
     public QuickSortLinkedList(SinglyLinkedList list) {
         this.list = list;
         this.head = list.getHead();
     }
 
-    // Function to sort a linked list using the Quick Sort algorithm
+    /**
+     * Sorts the linked list using the QuickSort algorithm.
+     * The sorted list replaces the original list within the SinglyLinkedList instance.
+     */
     public void sortList() {
         head = sortList(head);
         list.setHead(head);
     }
-    // helper function to apply QuickSort to the stored list
-    public Node sortList(Node head) {
+
+    /**
+     * Recursively sorts a linked list by partitioning it around a pivot element.
+     *
+     * <p>Each recursive call selects a pivot, partitions the list into elements less
+     * than the pivot and elements greater than or equal to the pivot, then combines
+     * the sorted sublists around the pivot.</p>
+     *
+     * @param head The head node of the list to sort
+     * @return The head node of the sorted linked list
+     */
+    private Node sortList(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
 
-        // Choose the first element as the pivot
         Node pivot = head;
         head = head.next;
         pivot.next = null;
 
-        Node lessHead = new Node(); // stores the nodes cantaining data less than pivot node
-        Node lessTail = lessHead; // tail of lessHead
-        Node greaterHead = new Node(); // stores the nodes cantaining data greater than pivot node
-        Node greaterTail = greaterHead; // tail of greaterHead
+        Node lessHead = new Node();
+        Node lessTail = lessHead;
+        Node greaterHead = new Node();
+        Node greaterTail = greaterHead;
 
-        // Partition the list around the pivot
         while (head != null) {
             if (head.value < pivot.value) {
                 lessTail.next = head;
@@ -145,15 +161,12 @@ public class QuickSortLinkedList {
             head = head.next;
         }
 
-        // Seperating lessHead and greaterHead to form two seperate linkedList
         lessTail.next = null;
         greaterTail.next = null;
 
-        // Recursively sort the sublists
         Node sortedLess = sortList(lessHead.next);
         Node sortedGreater = sortList(greaterHead.next);
 
-        // Combine the sorted sublists and pivot
         if (sortedLess == null) {
             pivot.next = sortedGreater;
             return pivot;
