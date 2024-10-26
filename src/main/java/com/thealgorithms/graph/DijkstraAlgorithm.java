@@ -8,8 +8,8 @@ import java.util.PriorityQueue;
  * Finds the shortest paths from a source node to all other nodes in a graph using Dijkstra's algorithm.
  *
  * @param adjList The adjacency list representation of the graph where each edge has a weight.
- * @param n The number of nodes in the graph.
- * @param source The starting node for finding the shortest path.
+ * @param n       The number of nodes in the graph.
+ * @param source  The starting node for finding the shortest path.
  * @return An array where the value at each index represents the shortest distance from the source to that node.
  */
 public class DijkstraAlgorithm {
