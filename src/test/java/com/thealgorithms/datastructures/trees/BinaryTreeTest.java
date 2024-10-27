@@ -22,6 +22,7 @@ public class BinaryTreeTest {
         Assertions.assertEquals(7, t.find(7).data);
     }
 
+    // Test for removing data and checking the new root
     @Test
     void test2() {
         BinaryTree t = new BinaryTree();
