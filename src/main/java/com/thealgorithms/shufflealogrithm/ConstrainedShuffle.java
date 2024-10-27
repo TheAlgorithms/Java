@@ -10,7 +10,8 @@ public final class ConstrainedShuffle {
     }
 
     /**
-     * Shuffles elements in the array while ensuring that the first and last elements remain fixed.
+     * Shuffles elements in the array while ensuring that the first and last
+     * elements remain fixed.
      *
      * @param array the input array to shuffle
      */

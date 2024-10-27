@@ -11,17 +11,21 @@ public final class UniquePairShuffle {
     }
 
     /**
-     * Pairs each element in the array with another element randomly, ensuring no pair repeats.
-     * If the array length is odd, pairing cannot be completed, so an empty list is returned.
+     * Pairs each element in the array with another element randomly, ensuring no
+     * pair repeats. If the array length is odd, pairing cannot be completed, so
+     * an empty list is returned.
      *
      * @param array the input array to pair elements from
-     * @return a list of unique pairs where each pair is represented as an integer array of length 2
+     * @return a list of unique pairs where each pair is represented as an integer
+     *     array of length 2
      */
     public static List<int[]> pairShuffle(int[] array) {
         List<int[]> pairs = new ArrayList<>();
 
         // Handle edge case: If the array length is odd, pairing is not possible
-        if (array.length % 2 != 0) return pairs;
+        if (array.length % 2 != 0) {
+            return pairs;
+        }
 
         List<Integer> shuffledList = new ArrayList<>();
         for (int num : array) {
@@ -33,7 +37,7 @@ public final class UniquePairShuffle {
 
         // Form pairs from the shuffled elements
         for (int i = 0; i < shuffledList.size(); i += 2) {
-            pairs.add(new int[]{shuffledList.get(i), shuffledList.get(i + 1)});
+            pairs.add(new int[] {shuffledList.get(i), shuffledList.get(i + 1)});
         }
 
         return pairs;

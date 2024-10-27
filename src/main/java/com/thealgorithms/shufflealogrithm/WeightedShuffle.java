@@ -10,7 +10,8 @@ public final class WeightedShuffle {
     }
 
     /**
-     * Shuffles elements based on their weights. Higher weight elements are more likely to appear earlier.
+     * Shuffles elements based on their weights. Higher weight elements are more
+     * likely to appear earlier.
      *
      * @param array   the input array to shuffle
      * @param weights the weights for each corresponding element in the array
@@ -26,7 +27,7 @@ public final class WeightedShuffle {
             indices[i] = i;
         }
 
-        Arrays.sort(indices, Comparator.comparingInt(i -> -weights[i]));
+        Arrays.sort(indices, Comparator.comparingInt(i -> - weights[i]));
 
         int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {

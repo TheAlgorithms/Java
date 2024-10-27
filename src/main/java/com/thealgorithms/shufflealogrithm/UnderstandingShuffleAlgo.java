@@ -10,7 +10,8 @@ public final class UnderstandingShuffleAlgo {
 
     /**
      * Shuffles the elements in the array randomly.
-     * Uses a method that gives each item an equal chance to appear in any position.
+     * Uses a method that gives each item an equal chance to appear in any
+     * position.
      *
      * @param array the array to be shuffled
      */
