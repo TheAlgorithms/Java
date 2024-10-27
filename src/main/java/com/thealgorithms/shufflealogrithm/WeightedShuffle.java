@@ -3,7 +3,7 @@ package com.thealgorithms.shufflealogrithm;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class WeightedShuffle {
+public final class WeightedShuffle {
 
     private WeightedShuffle() {
         // Prevent instantiation

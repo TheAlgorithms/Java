@@ -2,43 +2,45 @@ package com.thealgorithms.shufflealogrithm;
 
 import java.util.Random;
 
-public class ShuffleByRange {
+public final class ShuffleByRange {
 
     private ShuffleByRange() {
         // Prevent instantiation
     }
 
     /**
-     * Shuffles elements within a specified index range, leaving elements outside this range unchanged.
+     * Shuffles elements in the specified range of the array.
      *
      * @param array the input array to shuffle
-     * @param start starting index of the range to shuffle
-     * @param end   ending index of the range to shuffle
+     * @param start the starting index of the range (inclusive)
+     * @param end   the ending index of the range (exclusive)
      */
-    public static void shuffleRange(int[] array, int start, int end) {
-        // Edge case handling
-        if (array == null || start < 0 || end >= array.length || start >= end) {
+    public static void shuffleByRange(int[] array, int start, int end) {
+        // Edge case: Check if the range is valid
+        if (array == null || start < 0 || end > array.length || start >= end) {
             return;
         }
 
         Random random = new Random();
+        for (int i = end - 1; i > start; i--) {
+            int j = random.nextInt(i - start + 1) + start;
 
-        // Shuffle elements only in the specified range
-        for (int i = end; i > start; i--) {
-            int j = start + random.nextInt(i - start + 1);
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            // Swap the elements at positions i and j
+            int temp = array[i]; // Temporarily store the element at i
+            array[i] = array[j]; // Move element from j to i
+            array[j] = temp;     // Place the stored element in position j
         }
     }
 
     public static void main(String[] args) {
-        int[] array = {10, 20, 30, 40, 50, 60};
-        int start = 1;
-        int end = 4;
-        shuffleRange(array, start, end);
+        int[] array = {1, 2, 3, 4, 5, 6};
+        System.out.println("Original Array: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
 
-        System.out.println("Array after shuffling range:");
+        shuffleByRange(array, 1, 5);
+        System.out.println("\nShuffled Array (Range 1 to 5): ");
         for (int num : array) {
             System.out.print(num + " ");
         }

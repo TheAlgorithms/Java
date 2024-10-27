@@ -2,7 +2,7 @@ package com.thealgorithms.shufflealogrithm;
 
 import java.util.Random;
 
-public class UnderstandingShuffleAlgo {
+public final class UnderstandingShuffleAlgo {
 
     private UnderstandingShuffleAlgo() {
         // Prevent instantiation

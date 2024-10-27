@@ -1,59 +1,41 @@
 package com.thealgorithms.shufflealogrithm;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Random;
 
-public class ConstrainedShuffle {
+public final class ConstrainedShuffle {
 
     private ConstrainedShuffle() {
         // Prevent instantiation
     }
 
     /**
-     * Shuffles the array so that no element stays in its original position.
+     * Shuffles elements in the array while ensuring that the first and last elements remain fixed.
      *
-     * @param array the input array to shuffle with constraints
+     * @param array the input array to shuffle
      */
     public static void constrainedShuffle(int[] array) {
-        // Edge case: Check if array has only one element (no valid shuffle possible)
-        if (array == null || array.length <= 1) {
+        // Edge case: If the array has less than 3 elements, no shuffling can occur
+        if (array == null || array.length < 3) {
             return;
         }
 
-        List<Integer> shuffledList = new ArrayList<>();
-        for (int num : array) {
-            shuffledList.add(num);
-        }
+        Random random = new Random();
+        for (int i = array.length - 1; i > 1; i--) {
+            // Generate a random index between 1 and i (inclusive)
+            int j = random.nextInt(i - 1) + 1;
 
-        do {
-            Collections.shuffle(shuffledList);
-        } while (!isValidShuffle(array, shuffledList));
-
-        for (int i = 0; i < array.length; i++) {
-            array[i] = shuffledList.get(i);
+            // Swap the elements at positions i and j
+            int temp = array[i]; // Temporarily store the element at i
+            array[i] = array[j]; // Move element from j to i
+            array[j] = temp;     // Place the stored element in position j
         }
-    }
-
-    /**
-     * Verifies that no element is in its original position in the shuffled list.
-     */
-    private static boolean isValidShuffle(int[] original, List<Integer> shuffled) {
-        for (int i = 0; i < original.length; i++) {
-            if (original[i] == shuffled.get(i)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4};
+        int[] array = {1, 2, 3, 4, 5};
+        System.out.println("Original Array: " + Arrays.toString(array));
         constrainedShuffle(array);
-
-        System.out.println("Constrained Shuffled Array:");
-        for (int num : array) {
-            System.out.print(num + " ");
-        }
+        System.out.println("Constrained Shuffled Array: " + Arrays.toString(array));
     }
 }
