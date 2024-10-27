@@ -164,6 +164,55 @@ class BinaryTree {
         return current;
     }
 
-    // Other traversal methods (inOrder, preOrder, postOrder, bfs) remain
-    // unchanged
+    // Breadth-First Search (Level Order Traversal)
+    public
+    void bfs() {
+        if (root == null)
+            return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.print(current.data + " ");
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
+    }
+
+    // In-order Traversal
+    public
+    void inOrder(Node node) {
+        if (node != null) {
+            inOrder(node.left);
+            System.out.print(node.data + " ");
+            inOrder(node.right);
+        }
+    }
+
+    // Pre-order Traversal
+    public
+    void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+    // Post-order Traversal
+    public
+    void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
 }
