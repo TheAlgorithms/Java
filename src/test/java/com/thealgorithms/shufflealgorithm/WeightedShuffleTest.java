@@ -49,9 +49,12 @@ public class WeightedShuffleTest {
         // The order should remain the same or be any permutation since weights are
         // equal
         boolean firstElementMatches =
-                array[0] == 1 ||
-                        array[0] == 2 ||
-                        array[0] == 3 ||
+                array[0] == 1
+                        ||
+                        array[0] == 2
+                        ||
+                        array[0] == 3
+                        ||
                         array[0] == 4;
         Assertions.assertTrue(firstElementMatches);
     }
@@ -95,9 +98,13 @@ public class WeightedShuffleTest {
         // The order should remain the same or be any permutation since all weights
         // are equal
         boolean firstElementMatches =
-                array[0] == 5 ||
-                        array[0] == 10 ||
+                array[0] == 5
+                        ||
+                        array[0] == 10
+                        ||
                         array[0] == 15;
         Assertions.assertTrue(firstElementMatches);
     }
 }
+
+// Add a newline character here (just press Enter)

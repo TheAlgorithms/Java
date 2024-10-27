@@ -1,8 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class BinaryTreeTest {
 
@@ -16,11 +15,11 @@ public class BinaryTreeTest {
         t.put(9);
         t.put(12);
 
-        assertNotNull(t.find(5), "Node with value 5 should exist in the tree.");
-        assertEquals(5, t.find(5).data);
+        Assertions.assertNotNull(t.find(5), "Node with value 5 should exist in the tree.");
+        Assertions.assertEquals(5, t.find(5).data);
 
-        assertNotNull(t.find(7), "Node with value 7 should exist in the tree.");
-        assertEquals(7, t.find(7).data);
+        Assertions.assertNotNull(t.find(7), "Node with value 7 should exist in the tree.");
+        Assertions.assertEquals(7, t.find(7).data);
     }
 
     // Test for removing data and checking the new root
@@ -38,8 +37,8 @@ public class BinaryTreeTest {
         t.remove(5);
         t.remove(7);
 
-        assertNotNull(t.getRoot(), "Root should not be null after removals.");
-        assertEquals(9, t.getRoot().data);
+        Assertions.assertNotNull(t.getRoot(), "Root should not be null after removals.");
+        Assertions.assertEquals(9, t.getRoot().data);
     }
 
     // Test for attempting to remove a nonexistent node
@@ -52,8 +51,8 @@ public class BinaryTreeTest {
         t.put(9);
         t.put(12);
 
-        assertTrue(t.remove(9), "Node with value 9 should be removed.");
-        assertFalse(t.remove(398745987),
+        Assertions.assertTrue(t.remove(9), "Node with value 9 should be removed.");
+        Assertions.assertFalse(t.remove(398745987),
                 "Removing a nonexistent node should return false.");
     }
 
@@ -68,7 +67,7 @@ public class BinaryTreeTest {
         t.put(12);
 
         // Ensure root is not null before traversal
-        assertNotNull(t.getRoot(), "Root should not be null for traversal.");
+        Assertions.assertNotNull(t.getRoot(), "Root should not be null for traversal.");
 
         // Invoke traversal methods to increase test coverage
         t.bfs(t.getRoot());
@@ -77,8 +76,8 @@ public class BinaryTreeTest {
         t.postOrder(t.getRoot());
 
         // Additional assertions
-        assertTrue(t.remove(9), "Node with value 9 should be removed.");
-        assertFalse(t.remove(398745987),
+        Assertions.assertTrue(t.remove(9), "Node with value 9 should be removed.");
+        Assertions.assertFalse(t.remove(398745987),
                 "Removing a nonexistent node should return false.");
     }
 }

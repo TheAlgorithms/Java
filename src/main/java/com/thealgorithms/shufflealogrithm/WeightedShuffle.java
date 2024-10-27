@@ -53,3 +53,5 @@ public final class WeightedShuffle {
         }
     }
 }
+
+// Add a newline character here (just press Enter)

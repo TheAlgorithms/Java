@@ -63,3 +63,4 @@ class BinarySearch implements SearchAlgorithm {
         }
     }
 }
+

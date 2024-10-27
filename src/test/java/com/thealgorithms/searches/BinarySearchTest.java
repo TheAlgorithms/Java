@@ -106,3 +106,4 @@ class BinarySearchTest {
         Assertions.assertEquals(expectedIndex, binarySearch.find(array, key), "The index of the last element should be 9999.");
     }
 }
+
