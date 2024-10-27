@@ -2,11 +2,15 @@ package com.thealgorithms.shufflealogrithm;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public final class UniquePairShuffle {
+public
+final class UniquePairShuffle {
 
-    private UniquePairShuffle() {
+    private
+    UniquePairShuffle() {
         // Prevent instantiation
     }
 
@@ -19,7 +23,8 @@ public final class UniquePairShuffle {
      * @return a list of unique pairs where each pair is represented as an integer
      *     array of length 2
      */
-    public static List<int[]> pairShuffle(int[] array) {
+    public
+    static List<int[]> pairShuffle(int[] array) {
         List<int[]> pairs = new ArrayList<>();
 
         // Handle edge case: If the array length is odd, pairing is not possible
@@ -35,15 +40,25 @@ public final class UniquePairShuffle {
         // Shuffle elements to create random pairs
         Collections.shuffle(shuffledList);
 
-        // Form pairs from the shuffled elements
+        // Form pairs from the shuffled elements, avoiding duplicate pairs
+        Set<String> uniquePairs = new HashSet<>();
         for (int i = 0; i < shuffledList.size(); i += 2) {
-            pairs.add(new int[] {shuffledList.get(i), shuffledList.get(i + 1)});
+            int[] pair = new int[]{shuffledList.get(i), shuffledList.get(i + 1)};
+            String pairKey =
+                    Math.min(pair[0], pair[1]) + "-" + Math.max(pair[0], pair[1]);
+
+            // Ensure no repeated pairs
+            if (!uniquePairs.contains(pairKey)) {
+                pairs.add(pair);
+                uniquePairs.add(pairKey);
+            }
         }
 
         return pairs;
     }
 
-    public static void main(String[] args) {
+    public
+    static void main(String[] args) {
         int[] array = {1, 2, 3, 4};
         List<int[]> pairs = pairShuffle(array);
 
