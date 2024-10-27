@@ -2,6 +2,7 @@ package com.thealgorithms.shufflealgorithm;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.shufflealogrithm.ConstrainedShuffle;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class ConstrainedShuffleTest {
         }
 
         for (int num : arrayCopy) {
-            assertEquals(true, originalElements.contains(num),
+            assertTrue(originalElements.contains(num),
                     "Array elements should be preserved");
         }
     }
@@ -91,8 +92,7 @@ public class ConstrainedShuffleTest {
             }
         }
 
-        assertEquals(
-                true, hasShuffled,
+        assertTrue(hasShuffled,
                 "Internal elements should shuffle between first and last positions");
     }
 
@@ -109,4 +109,3 @@ public class ConstrainedShuffleTest {
                 "Array with all identical elements should remain unchanged");
     }
 }
-
