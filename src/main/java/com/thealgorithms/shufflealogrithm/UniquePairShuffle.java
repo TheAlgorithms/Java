@@ -6,6 +6,10 @@ import java.util.List;
 
 public class UniquePairShuffle {
 
+    private UniquePairShuffle() {
+        // Prevent instantiation
+    }
+
     /**
      * Pairs each element in the array with another element randomly, ensuring no pair repeats.
      * If the array length is odd, pairing cannot be completed, so an empty list is returned.
@@ -17,7 +21,9 @@ public class UniquePairShuffle {
         List<int[]> pairs = new ArrayList<>();
 
         // Handle edge case: If the array length is odd, pairing is not possible
-        if (array.length % 2 != 0) return pairs;
+        if (array.length % 2 != 0) {
+            return pairs;
+        }
 
         List<Integer> shuffledList = new ArrayList<>();
         for (int num : array) {

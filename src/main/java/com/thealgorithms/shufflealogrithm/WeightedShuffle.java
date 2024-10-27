@@ -5,6 +5,10 @@ import java.util.Comparator;
 
 public class WeightedShuffle {
 
+    private WeightedShuffle() {
+        // Prevent instantiation
+    }
+
     /**
      * Shuffles elements based on their weights. Higher weight elements are more likely to appear earlier.
      *
@@ -13,7 +17,9 @@ public class WeightedShuffle {
      */
     public static void weightedShuffle(int[] array, int[] weights) {
         // Edge case: Check if weights match the array size
-        if (array == null || weights == null || array.length != weights.length) return;
+        if (array == null || weights == null || array.length != weights.length) {
+            return;
+        }
 
         Integer[] indices = new Integer[array.length];
         for (int i = 0; i < array.length; i++) {

@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class ShuffleByRange {
 
+    private ShuffleByRange() {
+        // Prevent instantiation
+    }
+
     /**
      * Shuffles elements within a specified index range, leaving elements outside this range unchanged.
      *

@@ -6,6 +6,10 @@ import java.util.List;
 
 public class GroupShuffle {
 
+    private GroupShuffle() {
+        // Prevent instantiation
+    }
+
     /**
      * Divides the array into k equal-sized groups and shuffles each group separately.
      * Returns an empty list if the group count exceeds the array length.

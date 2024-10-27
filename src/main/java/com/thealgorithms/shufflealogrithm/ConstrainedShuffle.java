@@ -6,6 +6,10 @@ import java.util.List;
 
 public class ConstrainedShuffle {
 
+    private ConstrainedShuffle() {
+        // Prevent instantiation
+    }
+
     /**
      * Shuffles the array so that no element stays in its original position.
      *

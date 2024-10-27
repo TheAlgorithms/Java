@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class UnderstandingShuffleAlgo {
 
+    private UnderstandingShuffleAlgo() {
+        // Prevent instantiation
+    }
+
     /**
      * Shuffles the elements in the array randomly.
      * Uses a method that gives each item an equal chance to appear in any position.
