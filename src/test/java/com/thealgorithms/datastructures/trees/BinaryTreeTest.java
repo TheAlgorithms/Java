@@ -37,8 +37,11 @@ public class BinaryTreeTest {
         t.remove(5);
         t.remove(7);
 
-        Assertions.assertNotNull(t.getRoot(), "Root should not be null after removals.");
-        Assertions.assertEquals(9, t.getRoot().data);
+        BinaryTree.Node newRoot = t.getRoot();
+        Assertions.assertNotNull(newRoot, "Root should not be null after removals.");
+        if (newRoot != null) { // Add null check
+            Assertions.assertEquals(9, newRoot.data);
+        }
     }
 
     // Test for attempting to remove a nonexistent node
