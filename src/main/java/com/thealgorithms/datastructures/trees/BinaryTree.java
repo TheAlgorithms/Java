@@ -152,9 +152,9 @@ class BinaryTree {
     // Breadth-First Search (Level Order Traversal)
     public
     void bfs() {
-        if (root == null)
+        if (root == null) {
             return;
-
+        }
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
 
