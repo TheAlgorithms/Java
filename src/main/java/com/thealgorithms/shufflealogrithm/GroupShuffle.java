@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class GroupShuffle {
+public
+final class GroupShuffle {
 
-    private GroupShuffle() {
+    private
+    GroupShuffle() {
         // Prevent instantiation
     }
 
@@ -17,7 +19,8 @@ public final class GroupShuffle {
      * @param groupSize the size of each group
      * @return a list of shuffled groups
      */
-    public static List<List<Integer>> groupShuffle(int[] array, int groupSize) {
+    public
+    static List<List<Integer>> groupShuffle(int[] array, int groupSize) {
         List<List<Integer>> groups = new ArrayList<>();
 
         // Edge case: Check if the group size is valid
@@ -33,12 +36,16 @@ public final class GroupShuffle {
             groups.add(group);
         }
 
-        // Shuffle the groups to randomize their order
-        Collections.shuffle(groups);
+        // Shuffle only if the group size is greater than 1
+        if (groupSize > 1) {
+            Collections.shuffle(groups);
+        }
+
         return groups;
     }
 
-    public static void main(String[] args) {
+    public
+    static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         List<List<Integer>> shuffledGroups = groupShuffle(array, 3);
 

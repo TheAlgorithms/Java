@@ -2,10 +2,13 @@ package com.thealgorithms.shufflealogrithm;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 
-public final class WeightedShuffle {
+public
+final class WeightedShuffle {
 
-    private WeightedShuffle() {
+    private
+    WeightedShuffle() {
         // Prevent instantiation
     }
 
@@ -16,7 +19,8 @@ public final class WeightedShuffle {
      * @param array   the input array to shuffle
      * @param weights the weights for each corresponding element in the array
      */
-    public static void weightedShuffle(int[] array, int[] weights) {
+    public
+    static void weightedShuffle(int[] array, int[] weights) {
         // Edge case: Check if weights match the array size
         if (array == null || weights == null || array.length != weights.length) {
             return;
@@ -27,7 +31,12 @@ public final class WeightedShuffle {
             indices[i] = i;
         }
 
-        Arrays.sort(indices, Comparator.comparingInt(i -> - weights[i]));
+        Random random = new Random();
+
+        // Sort indices by weights in descending order, with a random factor for
+        // ties
+        Arrays.sort(indices, Comparator.<Integer>comparingInt(i->- weights[i])
+                .thenComparingInt(i->random.nextInt()));
 
         int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
@@ -37,7 +46,8 @@ public final class WeightedShuffle {
         System.arraycopy(result, 0, array, 0, array.length);
     }
 
-    public static void main(String[] args) {
+    public
+    static void main(String[] args) {
         int[] array = {10, 20, 30};
         int[] weights = {1, 3, 2};
         weightedShuffle(array, weights);
