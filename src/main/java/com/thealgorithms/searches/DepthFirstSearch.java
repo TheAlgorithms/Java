@@ -1,7 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.datastructures.Node;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

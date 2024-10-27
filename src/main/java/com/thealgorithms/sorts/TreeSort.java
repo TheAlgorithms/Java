@@ -3,7 +3,6 @@ package com.thealgorithms.sorts;
 import static com.thealgorithms.sorts.SortUtils.print;
 
 import com.thealgorithms.datastructures.trees.BSTRecursiveGeneric;
-
 import java.util.List;
 
 /**
@@ -91,14 +90,14 @@ public class TreeSort implements SortAlgorithm {
         // ==== String Array =======
         System.out.println("Testing for String Array....");
         String[] b = {
-                "banana",
-                "berry",
-                "orange",
-                "grape",
-                "peach",
-                "cherry",
-                "apple",
-                "pineapple",
+            "banana",
+            "berry",
+            "orange",
+            "grape",
+            "peach",
+            "cherry",
+            "apple",
+            "pineapple",
         };
         System.out.printf("%-10s", "unsorted: ");
         print(b);

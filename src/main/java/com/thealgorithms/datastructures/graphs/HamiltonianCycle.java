@@ -30,7 +30,7 @@ public class HamiltonianCycle {
     public int[] findHamiltonianCycle(int[][] graph) {
         // Single vertex graph
         if (graph.length == 1) {
-            return new int[]{0, 0};
+            return new int[] {0, 0};
         }
 
         this.vertex = graph.length;

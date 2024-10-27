@@ -141,18 +141,18 @@ public final class Mandelbrot {
             int t = (int) (val * (1 - (1 - f) * saturation));
 
             switch (hi) {
-                case 0:
-                    return new Color(v, t, p);
-                case 1:
-                    return new Color(q, v, p);
-                case 2:
-                    return new Color(p, v, t);
-                case 3:
-                    return new Color(p, q, v);
-                case 4:
-                    return new Color(t, p, v);
-                default:
-                    return new Color(v, p, q);
+            case 0:
+                return new Color(v, t, p);
+            case 1:
+                return new Color(q, v, p);
+            case 2:
+                return new Color(p, v, t);
+            case 3:
+                return new Color(p, q, v);
+            case 4:
+                return new Color(t, p, v);
+            default:
+                return new Color(v, p, q);
             }
         }
     }

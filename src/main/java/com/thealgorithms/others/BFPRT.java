@@ -123,7 +123,7 @@ public final class BFPRT {
                 cur++;
             }
         }
-        return new int[]{small + 1, big - 1};
+        return new int[] {small + 1, big - 1};
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;

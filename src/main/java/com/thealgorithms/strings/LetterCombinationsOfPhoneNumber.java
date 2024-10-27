@@ -9,7 +9,7 @@ public final class LetterCombinationsOfPhoneNumber {
     private static final char EMPTY = '\0';
 
     // Mapping of numbers to corresponding letters on a phone keypad
-    private static final String[] KEYPAD = new String[]{" ", String.valueOf(EMPTY), "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    private static final String[] KEYPAD = new String[] {" ", String.valueOf(EMPTY), "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     private LetterCombinationsOfPhoneNumber() {
     }

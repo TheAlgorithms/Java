@@ -56,7 +56,7 @@ public class KDTree {
             throw new IllegalArgumentException("Points array cannot be empty");
         }
         this.k = pointsCoordinates[0].length;
-        Point[] points = Arrays.stream(pointsCoordinates).map(Point::new).toArray(Point[]::new);
+        Point[] points = Arrays.stream(pointsCoordinates).map(Point::new).toArray(Point[] ::new);
         for (Point point : points) {
             if (point.getDimension() != k) {
                 throw new IllegalArgumentException("Points must have the same dimension");

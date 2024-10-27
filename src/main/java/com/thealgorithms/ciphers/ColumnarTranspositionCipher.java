@@ -15,7 +15,7 @@ public final class ColumnarTranspositionCipher {
     private static Object[][] table;
     private static String abecedarium;
     public static final String ABECEDARIUM = "abcdefghijklmnopqrstuvwxyzABCDEFG"
-            + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
+        + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
     private static final String ENCRYPTION_FIELD = "≈";
     private static final char ENCRYPTION_FIELD_CHAR = '≈';
 

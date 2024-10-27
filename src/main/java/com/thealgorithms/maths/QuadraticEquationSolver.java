@@ -38,12 +38,12 @@ public class QuadraticEquationSolver {
 
         // if discriminant is positive, roots will be different
         if (discriminant > 0) {
-            return new ComplexNumber[]{new ComplexNumber((-b + Math.sqrt(discriminant)) / (2 * a)), new ComplexNumber((-b - Math.sqrt(discriminant)) / (2 * a))};
+            return new ComplexNumber[] {new ComplexNumber((-b + Math.sqrt(discriminant)) / (2 * a)), new ComplexNumber((-b - Math.sqrt(discriminant)) / (2 * a))};
         }
 
         // if discriminant is zero, roots will be same
         if (discriminant == 0) {
-            return new ComplexNumber[]{new ComplexNumber((-b) / (2 * a))};
+            return new ComplexNumber[] {new ComplexNumber((-b) / (2 * a))};
         }
 
         // if discriminant is negative, roots will have imaginary parts
@@ -51,10 +51,10 @@ public class QuadraticEquationSolver {
             double realPart = -b / (2 * a);
             double imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
 
-            return new ComplexNumber[]{new ComplexNumber(realPart, imaginaryPart), new ComplexNumber(realPart, -imaginaryPart)};
+            return new ComplexNumber[] {new ComplexNumber(realPart, imaginaryPart), new ComplexNumber(realPart, -imaginaryPart)};
         }
 
         // return no roots
-        return new ComplexNumber[]{};
+        return new ComplexNumber[] {};
     }
 }

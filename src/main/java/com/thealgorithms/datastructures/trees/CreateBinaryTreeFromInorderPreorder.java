@@ -1,7 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
 import com.thealgorithms.datastructures.trees.BinaryTree.Node;
-
 import java.util.HashMap;
 import java.util.Map;
 

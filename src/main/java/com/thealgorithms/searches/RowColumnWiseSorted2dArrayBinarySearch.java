@@ -35,13 +35,13 @@ public class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgor
             int comp = target.compareTo(matrix[rowPointer][colPointer]);
 
             if (comp == 0) {
-                return new int[]{rowPointer, colPointer};
+                return new int[] {rowPointer, colPointer};
             } else if (comp > 0) {
                 rowPointer++; // Incrementing the row pointer if the target is greater
             } else {
                 colPointer--; // Decrementing the column pointer if the target is lesser
             }
         }
-        return new int[]{-1, -1}; // The not found condition
+        return new int[] {-1, -1}; // The not found condition
     }
 }

@@ -109,7 +109,7 @@ public class Treap {
      */
     private TreapNode[] split(TreapNode node, int key) {
         if (node == null) {
-            return new TreapNode[]{null, null};
+            return new TreapNode[] {null, null};
         }
 
         TreapNode[] result;

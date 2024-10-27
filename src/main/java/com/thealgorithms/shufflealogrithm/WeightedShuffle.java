@@ -31,8 +31,7 @@ public final class WeightedShuffle {
         Random random = new Random();
 
         // Sort indices by weights in descending order, prioritizing higher weights
-        Arrays.sort(indices, Comparator.comparingInt((Integer i) -> -weights[i])
-                .thenComparingInt(i -> random.nextInt()));
+        Arrays.sort(indices, Comparator.comparingInt((Integer i) -> - weights[i]).thenComparingInt(i -> random.nextInt()));
 
         int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {

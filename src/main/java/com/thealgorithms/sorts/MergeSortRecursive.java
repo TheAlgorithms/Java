@@ -45,17 +45,13 @@ public class MergeSortRecursive {
         }
         if (unsortedA.get(0) <= unsortedB.get(0)) {
             List<Integer> newAl = new ArrayList<Integer>() {
-                {
-                    add(unsortedA.get(0));
-                }
+                { add(unsortedA.get(0)); }
             };
             newAl.addAll(sort(unsortedA.subList(1, unsortedA.size()), unsortedB));
             return newAl;
         } else {
             List<Integer> newAl = new ArrayList<Integer>() {
-                {
-                    add(unsortedB.get(0));
-                }
+                { add(unsortedB.get(0)); }
             };
             newAl.addAll(sort(unsortedA, unsortedB.subList(1, unsortedB.size())));
             return newAl;

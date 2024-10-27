@@ -23,10 +23,10 @@ public class MinStackUsingSingleStack {
      */
     public void push(int value) {
         if (stack.isEmpty()) {
-            stack.push(new long[]{value, value});
+            stack.push(new long[] {value, value});
         } else {
             long minSoFar = Math.min(value, stack.peek()[1]);
-            stack.push(new long[]{value, minSoFar});
+            stack.push(new long[] {value, minSoFar});
         }
     }
 

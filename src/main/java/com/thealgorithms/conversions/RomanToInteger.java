@@ -48,9 +48,7 @@ public final class RomanToInteger {
      * @throws IllegalArgumentException if the symbol is not a valid Roman numeral
      */
     private static int romanSymbolToInt(final char symbol) {
-        return ROMAN_TO_INT.computeIfAbsent(symbol, c -> {
-            throw new IllegalArgumentException("Unknown Roman symbol: " + c);
-        });
+        return ROMAN_TO_INT.computeIfAbsent(symbol, c -> { throw new IllegalArgumentException("Unknown Roman symbol: " + c); });
     }
 
     /**

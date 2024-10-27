@@ -17,98 +17,98 @@ public class LinkListSort {
         // Choice is choosed as any number from 1 to 3 (So the linked list will be
         // sorted by Merge sort technique/Insertion sort technique/Heap sort technique)
         switch (ch) {
-            case 1:
-                Task nm = new Task();
-                Node start = null;
-                Node prev = null;
-                Node fresh;
-                Node ptr;
-                for (int i = 0; i < a.length; i++) {
-                    // New nodes are created and values are added
-                    fresh = new Node(); // Node class is called
-                    fresh.val = a[i]; // Node val is stored
-                    if (start == null) {
-                        start = fresh;
-                    } else {
-                        prev.next = fresh;
-                    }
-                    prev = fresh;
+        case 1:
+            Task nm = new Task();
+            Node start = null;
+            Node prev = null;
+            Node fresh;
+            Node ptr;
+            for (int i = 0; i < a.length; i++) {
+                // New nodes are created and values are added
+                fresh = new Node(); // Node class is called
+                fresh.val = a[i]; // Node val is stored
+                if (start == null) {
+                    start = fresh;
+                } else {
+                    prev.next = fresh;
                 }
-                start = nm.sortByMergeSort(start);
-                // method is being called
-                int i = 0;
-                for (ptr = start; ptr != null; ptr = ptr.next) {
-                    a[i++] = ptr.val;
-                    // storing the sorted values in the array
+                prev = fresh;
+            }
+            start = nm.sortByMergeSort(start);
+            // method is being called
+            int i = 0;
+            for (ptr = start; ptr != null; ptr = ptr.next) {
+                a[i++] = ptr.val;
+                // storing the sorted values in the array
+            }
+            Arrays.sort(b);
+            // array b is sorted and it will return true when checked with sorted list
+            LinkListSort uu = new LinkListSort();
+            return uu.compare(a, b);
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
+        case 2:
+            Node start1 = null;
+            Node prev1 = null;
+            Node fresh1;
+            Node ptr1;
+            for (int i1 = 0; i1 < a.length; i1++) {
+                // New nodes are created and values are added
+                fresh1 = new Node(); // New node is created
+                fresh1.val = a[i1]; // Value is stored in the value part of the node
+                if (start1 == null) {
+                    start1 = fresh1;
+                } else {
+                    prev1.next = fresh1;
                 }
-                Arrays.sort(b);
-                // array b is sorted and it will return true when checked with sorted list
-                LinkListSort uu = new LinkListSort();
-                return uu.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
-            case 2:
-                Node start1 = null;
-                Node prev1 = null;
-                Node fresh1;
-                Node ptr1;
-                for (int i1 = 0; i1 < a.length; i1++) {
-                    // New nodes are created and values are added
-                    fresh1 = new Node(); // New node is created
-                    fresh1.val = a[i1]; // Value is stored in the value part of the node
-                    if (start1 == null) {
-                        start1 = fresh1;
-                    } else {
-                        prev1.next = fresh1;
-                    }
-                    prev1 = fresh1;
+                prev1 = fresh1;
+            }
+            Task1 kk = new Task1();
+            start1 = kk.sortByInsertionSort(start1);
+            // method is being called
+            int i1 = 0;
+            for (ptr1 = start1; ptr1 != null; ptr1 = ptr1.next) {
+                a[i1++] = ptr1.val;
+                // storing the sorted values in the array
+            }
+            LinkListSort uu1 = new LinkListSort();
+            // array b is not sorted and it will return false when checked with sorted list
+            return uu1.compare(a, b);
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
+        case 3:
+            Task2 mm = new Task2();
+            Node start2 = null;
+            Node prev2 = null;
+            Node fresh2;
+            Node ptr2;
+            for (int i2 = 0; i2 < a.length; i2++) {
+                // New nodes are created and values are added
+                fresh2 = new Node(); // Node class is created
+                fresh2.val = a[i2]; // Value is stored in the value part of the Node
+                if (start2 == null) {
+                    start2 = fresh2;
+                } else {
+                    prev2.next = fresh2;
                 }
-                Task1 kk = new Task1();
-                start1 = kk.sortByInsertionSort(start1);
-                // method is being called
-                int i1 = 0;
-                for (ptr1 = start1; ptr1 != null; ptr1 = ptr1.next) {
-                    a[i1++] = ptr1.val;
-                    // storing the sorted values in the array
-                }
-                LinkListSort uu1 = new LinkListSort();
-                // array b is not sorted and it will return false when checked with sorted list
-                return uu1.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
-            case 3:
-                Task2 mm = new Task2();
-                Node start2 = null;
-                Node prev2 = null;
-                Node fresh2;
-                Node ptr2;
-                for (int i2 = 0; i2 < a.length; i2++) {
-                    // New nodes are created and values are added
-                    fresh2 = new Node(); // Node class is created
-                    fresh2.val = a[i2]; // Value is stored in the value part of the Node
-                    if (start2 == null) {
-                        start2 = fresh2;
-                    } else {
-                        prev2.next = fresh2;
-                    }
-                    prev2 = fresh2;
-                }
-                start2 = mm.sortByHeapSort(start2);
-                // method is being called
-                int i3 = 0;
-                for (ptr2 = start2; ptr2 != null; ptr2 = ptr2.next) {
-                    a[i3++] = ptr2.val;
-                    // storing the sorted values in the array
-                }
-                Arrays.sort(b);
-                // array b is sorted and it will return true when checked with sorted list
-                LinkListSort uu2 = new LinkListSort();
-                return uu2.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
-            default:
-                // default is used incase user puts a unauthorized value
-                System.out.println("Wrong choice");
+                prev2 = fresh2;
+            }
+            start2 = mm.sortByHeapSort(start2);
+            // method is being called
+            int i3 = 0;
+            for (ptr2 = start2; ptr2 != null; ptr2 = ptr2.next) {
+                a[i3++] = ptr2.val;
+                // storing the sorted values in the array
+            }
+            Arrays.sort(b);
+            // array b is sorted and it will return true when checked with sorted list
+            LinkListSort uu2 = new LinkListSort();
+            return uu2.compare(a, b);
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
+        default:
+            // default is used incase user puts a unauthorized value
+            System.out.println("Wrong choice");
         }
         // Switch case is used to call the classes as per the user requirement
         return false;

@@ -52,7 +52,7 @@ class BoundingBox {
      */
     public boolean intersectsBoundingBox(BoundingBox otherBoundingBox) {
         return otherBoundingBox.center.x - otherBoundingBox.halfWidth <= center.x + halfWidth && otherBoundingBox.center.x + otherBoundingBox.halfWidth >= center.x - halfWidth && otherBoundingBox.center.y - otherBoundingBox.halfWidth <= center.y + halfWidth
-                && otherBoundingBox.center.y + otherBoundingBox.halfWidth >= center.y - halfWidth;
+            && otherBoundingBox.center.y + otherBoundingBox.halfWidth >= center.y - halfWidth;
     }
 }
 

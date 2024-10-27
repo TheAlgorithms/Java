@@ -86,8 +86,8 @@ public final class KaratsubaMultiplication {
         // Combine the results using Karatsuba's formula
         // z0 + ((z1 - z2 - z0) << m) + (z2 << 2m)
         return z2
-                .shiftLeft(2 * m) // z2 * 10^(2*m)
-                .add(z1.subtract(z2).subtract(z0).shiftLeft(m)) // (z1 - z2 - z0) * 10^m
-                .add(z0); // z0
+            .shiftLeft(2 * m) // z2 * 10^(2*m)
+            .add(z1.subtract(z2).subtract(z0).shiftLeft(m)) // (z1 - z2 - z0) * 10^m
+            .add(z0); // z0
     }
 }

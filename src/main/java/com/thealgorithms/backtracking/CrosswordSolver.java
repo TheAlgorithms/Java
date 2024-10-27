@@ -104,7 +104,7 @@ public final class CrosswordSolver {
             for (int col = 0; col < puzzle[0].length; col++) {
                 if (puzzle[row][col] == ' ') {
                     for (String word : new ArrayList<>(remainingWords)) {
-                        for (boolean vertical : new boolean[]{true, false}) {
+                        for (boolean vertical : new boolean[] {true, false}) {
                             if (isValid(puzzle, word, row, col, vertical)) {
                                 placeWord(puzzle, word, row, col, vertical);
                                 remainingWords.remove(word);

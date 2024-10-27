@@ -28,7 +28,7 @@ public final class ShuffleByRange {
             // Swap the elements at positions i and j
             int temp = array[i]; // Temporarily store the element at i
             array[i] = array[j]; // Move element from j to i
-            array[j] = temp;     // Place the stored element in position j
+            array[j] = temp; // Place the stored element in position j
         }
     }
 

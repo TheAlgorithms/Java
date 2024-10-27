@@ -117,7 +117,7 @@ public final class EdmondsBlossomAlgorithm {
         List<int[]> matchingResult = new ArrayList<>();
         for (int v = 0; v < vertexCount; v++) {
             if (match[v] != UNMATCHED && v < match[v]) {
-                matchingResult.add(new int[]{v, match[v]});
+                matchingResult.add(new int[] {v, match[v]});
             }
         }
 

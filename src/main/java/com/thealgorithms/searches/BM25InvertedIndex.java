@@ -51,7 +51,7 @@ class Movie {
     @Override
     public String toString() {
         return "Movie{"
-                + "docId=" + docId + ", name='" + name + '\'' + ", imdbRating=" + imdbRating + ", releaseYear=" + releaseYear + '}';
+            + "docId=" + docId + ", name='" + name + '\'' + ", imdbRating=" + imdbRating + ", releaseYear=" + releaseYear + '}';
     }
 }
 
@@ -77,7 +77,7 @@ class SearchResult {
     @Override
     public String toString() {
         return "SearchResult{"
-                + "docId=" + docId + ", relevanceScore=" + relevanceScore + '}';
+            + "docId=" + docId + ", relevanceScore=" + relevanceScore + '}';
     }
 
     @Override

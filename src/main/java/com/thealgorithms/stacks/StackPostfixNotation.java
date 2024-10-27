@@ -22,16 +22,16 @@ public final class StackPostfixNotation {
     private static BiFunction<Integer, Integer, Integer> getOperator(final String operationSymbol) {
         // note the order of operands
         switch (operationSymbol) {
-            case "+":
-                return (a, b) -> b + a;
-            case "-":
-                return (a, b) -> b - a;
-            case "*":
-                return (a, b) -> b * a;
-            case "/":
-                return (a, b) -> b / a;
-            default:
-                throw new IllegalArgumentException("exp contains an unknown operation.");
+        case "+":
+            return (a, b) -> b + a;
+        case "-":
+            return (a, b) -> b - a;
+        case "*":
+            return (a, b) -> b * a;
+        case "/":
+            return (a, b) -> b / a;
+        default:
+            throw new IllegalArgumentException("exp contains an unknown operation.");
         }
     }
 

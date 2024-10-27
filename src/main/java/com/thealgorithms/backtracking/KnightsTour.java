@@ -25,14 +25,14 @@ public final class KnightsTour {
 
     // Possible moves for a knight in chess
     private static final int[][] MOVES = {
-            {1, -2},
-            {2, -1},
-            {2, 1},
-            {1, 2},
-            {-1, 2},
-            {-2, 1},
-            {-2, -1},
-            {-1, -2},
+        {1, -2},
+        {2, -1},
+        {2, 1},
+        {1, 2},
+        {-1, 2},
+        {-2, 1},
+        {-2, -1},
+        {-1, -2},
     };
 
     // Chess grid representing the board
@@ -109,7 +109,7 @@ public final class KnightsTour {
             int y = m[1];
             if (row + y >= 0 && row + y < BASE && column + x >= 0 && column + x < BASE && grid[row + y][column + x] == 0) {
                 int num = countNeighbors(row + y, column + x);
-                neighbour.add(new int[]{row + y, column + x, num});
+                neighbour.add(new int[] {row + y, column + x, num});
             }
         }
         return neighbour;

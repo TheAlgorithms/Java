@@ -21,7 +21,7 @@ public final class LargestRectangle {
                 maxArea = Math.max(maxArea, tmp[1] * (i - tmp[0]));
                 start = tmp[0];
             }
-            st.push(new int[]{start, heights[i]});
+            st.push(new int[] {start, heights[i]});
         }
         while (!st.isEmpty()) {
             int[] tmp = st.pop();
@@ -31,7 +31,7 @@ public final class LargestRectangle {
     }
 
     public static void main(String[] args) {
-        assert largestRectangleHistogram(new int[]{2, 1, 5, 6, 2, 3}).equals("10");
-        assert largestRectangleHistogram(new int[]{2, 4}).equals("4");
+        assert largestRectangleHistogram(new int[] {2, 1, 5, 6, 2, 3}).equals("10");
+        assert largestRectangleHistogram(new int[] {2, 4}).equals("4");
     }
 }

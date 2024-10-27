@@ -67,7 +67,7 @@ public final class JohnsonsAlgorithm {
             for (int j = 0; j < numVertices; j++) {
                 if (i != j && !Double.isInfinite(graph[i][j])) {
                     // Only add edges that are not self-loops and have a finite weight
-                    edgeList.add(new double[]{i, j, graph[i][j]});
+                    edgeList.add(new double[] {i, j, graph[i][j]});
                 }
             }
         }
@@ -91,7 +91,7 @@ public final class JohnsonsAlgorithm {
         // Add edges from the new vertex to all original vertices
         double[][] allEdges = Arrays.copyOf(edges, edges.length + numVertices);
         for (int i = 0; i < numVertices; i++) {
-            allEdges[edges.length + i] = new double[]{numVertices, i, 0};
+            allEdges[edges.length + i] = new double[] {numVertices, i, 0};
         }
 
         // Relax all edges V times

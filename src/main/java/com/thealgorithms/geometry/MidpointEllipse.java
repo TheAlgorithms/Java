@@ -29,14 +29,14 @@ public final class MidpointEllipse {
 
         // Handle degenerate cases with early returns
         if (a == 0 && b == 0) {
-            points.add(new int[]{centerX, centerY}); // Only the center point
+            points.add(new int[] {centerX, centerY}); // Only the center point
             return points;
         }
 
         if (a == 0) {
             // Semi-major axis is zero, create a vertical line
             for (int y = centerY - b; y <= centerY + b; y++) {
-                points.add(new int[]{centerX, y});
+                points.add(new int[] {centerX, y});
             }
             return points; // Early return
         }
@@ -44,7 +44,7 @@ public final class MidpointEllipse {
         if (b == 0) {
             // Semi-minor axis is zero, create a horizontal line
             for (int x = centerX - a; x <= centerX + a; x++) {
-                points.add(new int[]{x, centerY});
+                points.add(new int[] {x, centerY});
             }
             return points; // Early return
         }
@@ -123,9 +123,9 @@ public final class MidpointEllipse {
      * @param y       the y-coordinate relative to the center
      */
     private static void addEllipsePoints(Collection<int[]> points, int centerX, int centerY, int x, int y) {
-        points.add(new int[]{centerX + x, centerY + y});
-        points.add(new int[]{centerX - x, centerY + y});
-        points.add(new int[]{centerX + x, centerY - y});
-        points.add(new int[]{centerX - x, centerY - y});
+        points.add(new int[] {centerX + x, centerY + y});
+        points.add(new int[] {centerX - x, centerY + y});
+        points.add(new int[] {centerX + x, centerY - y});
+        points.add(new int[] {centerX - x, centerY - y});
     }
 }

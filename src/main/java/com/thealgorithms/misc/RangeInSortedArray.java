@@ -7,7 +7,7 @@ public final class RangeInSortedArray {
     // Get the 1st and last occurrence index of a number 'key' in a non-decreasing array 'nums'
     // Gives [-1, -1] in case element doesn't exist in array
     public static int[] sortedRange(int[] nums, int key) {
-        int[] range = new int[]{-1, -1};
+        int[] range = new int[] {-1, -1};
         alteredBinSearchIter(nums, key, 0, nums.length - 1, range, true);
         alteredBinSearchIter(nums, key, 0, nums.length - 1, range, false);
         return range;

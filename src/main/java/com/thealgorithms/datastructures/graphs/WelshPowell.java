@@ -182,7 +182,7 @@ public final class WelshPowell {
      * @return an array of integers representing the vertices sorted by degree
      */
     private static Integer[] getSortedNodes(final Graph graph) {
-        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> -graph.getAdjacencyList(v).size())).toArray(Integer[]::new);
+        return IntStream.range(0, graph.getNumVertices()).boxed().sorted(Comparator.comparingInt(v -> - graph.getAdjacencyList(v).size())).toArray(Integer[] ::new);
     }
 
     /**

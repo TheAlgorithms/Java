@@ -3,18 +3,13 @@ package com.thealgorithms.datastructures.trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public
-class BinaryTree {
+public class BinaryTree {
 
     static class Node {
-        public
-        int data;
-        public
-        Node left;
-        public
-        Node right;
-        public
-        Node parent;
+        public int data;
+        public Node left;
+        public Node right;
+        public Node parent;
 
         Node(int value) {
             data = value;
@@ -25,8 +20,7 @@ class BinaryTree {
     }
 
     private Node root;
-    private
-    int size; // Keep track of the number of nodes
+    private int size; // Keep track of the number of nodes
 
     public BinaryTree() {
         root = null;

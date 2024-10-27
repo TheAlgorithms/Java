@@ -48,7 +48,7 @@ public final class BinarySearch2dArray {
 
             // If the middle element matches the target, return its position.
             if (arr[midRow][midCol] == target) {
-                return new int[]{midRow, midCol};
+                return new int[] {midRow, midCol};
             }
             // If the middle element is smaller than the target, discard the upper half.
             else if (arr[midRow][midCol] < target) {
@@ -63,11 +63,11 @@ public final class BinarySearch2dArray {
         // If the target wasn't found during the row search, check the middle column of
         // startRow and endRow.
         if (arr[startRow][midCol] == target) {
-            return new int[]{startRow, midCol};
+            return new int[] {startRow, midCol};
         }
 
         if (arr[endRow][midCol] == target) {
-            return new int[]{endRow, midCol};
+            return new int[] {endRow, midCol};
         }
 
         // If target is smaller than the element in the left of startRow, perform a
@@ -110,7 +110,7 @@ public final class BinarySearch2dArray {
 
             // If the middle element matches the target, return its position.
             if (arr[row][midIndex] == target) {
-                return new int[]{row, midIndex};
+                return new int[] {row, midIndex};
             }
             // If the middle element is smaller than the target, move to the right half.
             else if (arr[row][midIndex] < target) {
@@ -122,6 +122,6 @@ public final class BinarySearch2dArray {
             }
         }
 
-        return new int[]{-1, -1}; // Target not found
+        return new int[] {-1, -1}; // Target not found
     }
 }

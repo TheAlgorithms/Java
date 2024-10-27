@@ -1,7 +1,6 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-
 import java.util.Arrays;
 
 /**

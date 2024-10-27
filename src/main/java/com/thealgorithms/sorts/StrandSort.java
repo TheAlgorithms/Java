@@ -39,7 +39,7 @@ public final class StrandSort implements SortAlgorithm {
         while (!list.isEmpty()) {
             final List<T> sorted = new ArrayList<>();
             sorted.add(list.removeFirst());
-            for (int i = 0; i < list.size(); ) {
+            for (int i = 0; i < list.size();) {
                 if (sorted.getLast().compareTo(list.get(i)) <= 0) {
                     sorted.add(list.remove(i));
                 } else {

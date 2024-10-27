@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public
-final class UniquePairShuffle {
+public final class UniquePairShuffle {
 
     private UniquePairShuffle() {
         // Prevent instantiation
@@ -20,8 +19,7 @@ final class UniquePairShuffle {
      * @return a list of unique pairs where each pair is represented as an integer
      * array of length 2
      */
-    public
-    static List<int[]> pairShuffle(int[] array) {
+    public static List<int[]> pairShuffle(int[] array) {
         List<int[]> pairs = new ArrayList<>();
 
         // Handle edge case: If the array length is odd, pairing is not possible
@@ -39,14 +37,13 @@ final class UniquePairShuffle {
 
         // Form pairs from the shuffled elements
         for (int i = 0; i < shuffledList.size(); i += 2) {
-            pairs.add(new int[]{shuffledList.get(i), shuffledList.get(i + 1)});
+            pairs.add(new int[] {shuffledList.get(i), shuffledList.get(i + 1)});
         }
 
         return pairs;
     }
 
-    public
-    static void main(String[] args) {
+    public static void main(String[] args) {
         int[] array = {1, 2, 3, 4};
         List<int[]> pairs = pairShuffle(array);
 

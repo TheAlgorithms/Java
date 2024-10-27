@@ -61,7 +61,7 @@ public class ECC {
         // Calculate point s = k * publicKey + encodedMessage
         ECPoint sPoint = publicKey.multiply(k, curve.getP(), curve.getA()).add(curve.encodeMessage(m), curve.getP(), curve.getA());
 
-        return new ECPoint[]{rPoint, sPoint}; // Return encrypted message as two ECPoints
+        return new ECPoint[] {rPoint, sPoint}; // Return encrypted message as two ECPoints
     }
 
     /**

@@ -78,7 +78,7 @@ public class LiangBarsky {
             }
         }
 
-        return new double[]{t0, t1}; // Return valid t0 and t1
+        return new double[] {t0, t1}; // Return valid t0 and t1
     }
 
     // calculate the clipped line based on t0 and t1

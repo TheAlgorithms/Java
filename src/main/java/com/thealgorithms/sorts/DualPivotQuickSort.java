@@ -91,6 +91,6 @@ public class DualPivotQuickSort implements SortAlgorithm {
         SortUtils.swap(array, right, high);
 
         // Return the indices of the pivots
-        return new int[]{low, high};
+        return new int[] {low, high};
     }
 }

@@ -39,7 +39,7 @@ public final class MergeKSortedArrays {
         int totalLength = 0;
         for (int i = 0; i < arrays.length; i++) {
             if (arrays[i].length > 0) {
-                minHeap.offer(new int[]{arrays[i][0], i, 0});
+                minHeap.offer(new int[] {arrays[i][0], i, 0});
                 totalLength += arrays[i].length;
             }
         }
@@ -51,7 +51,7 @@ public final class MergeKSortedArrays {
             result[index++] = top[0];
 
             if (top[2] + 1 < arrays[top[1]].length) {
-                minHeap.offer(new int[]{arrays[top[1]][top[2] + 1], top[1], top[2] + 1});
+                minHeap.offer(new int[] {arrays[top[1]][top[2] + 1], top[1], top[2] + 1});
             }
         }
 

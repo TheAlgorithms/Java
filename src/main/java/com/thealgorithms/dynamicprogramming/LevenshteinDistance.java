@@ -31,7 +31,7 @@ public final class LevenshteinDistance {
      * It may consume more memory for larger input strings compared to the optimized version.
      */
     public static int naiveLevenshteinDistance(final String string1, final String string2) {
-        int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][]::new);
+        int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][] ::new);
 
         IntStream.range(1, string1.length() + 1).forEach(i -> IntStream.range(1, string2.length() + 1).forEach(j -> {
             final int cost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? 0 : 1;

@@ -27,43 +27,43 @@ public final class MainCuckooHashing {
             choice = scan.nextInt();
 
             switch (choice) {
-                case 1:
-                    System.out.println("Enter the Key: ");
-                    key = scan.nextInt();
-                    h.insertKey2HashTable(key);
-                    break;
+            case 1:
+                System.out.println("Enter the Key: ");
+                key = scan.nextInt();
+                h.insertKey2HashTable(key);
+                break;
 
-                case 2:
-                    System.out.println("Enter the Key delete:  ");
-                    key = scan.nextInt();
-                    h.deleteKeyFromHashTable(key);
-                    break;
+            case 2:
+                System.out.println("Enter the Key delete:  ");
+                key = scan.nextInt();
+                h.deleteKeyFromHashTable(key);
+                break;
 
-                case 3:
-                    System.out.println("Print table:\n");
-                    h.displayHashtable();
-                    break;
+            case 3:
+                System.out.println("Print table:\n");
+                h.displayHashtable();
+                break;
 
-                case 4:
-                    scan.close();
-                    return;
+            case 4:
+                scan.close();
+                return;
 
-                case 5:
-                    System.out.println("Enter the Key to find and print:  ");
-                    key = scan.nextInt();
-                    System.out.println("Key: " + key + " is at index: " + h.findKeyInTable(key) + "\n");
-                    break;
+            case 5:
+                System.out.println("Enter the Key to find and print:  ");
+                key = scan.nextInt();
+                System.out.println("Key: " + key + " is at index: " + h.findKeyInTable(key) + "\n");
+                break;
 
-                case 6:
-                    System.out.printf("Load factor is: %.2f%n", h.checkLoadFactor());
-                    break;
+            case 6:
+                System.out.printf("Load factor is: %.2f%n", h.checkLoadFactor());
+                break;
 
-                case 7:
-                    h.reHashTableIncreasesTableSize();
-                    break;
+            case 7:
+                h.reHashTableIncreasesTableSize();
+                break;
 
-                default:
-                    throw new IllegalArgumentException("Unexpected value: " + choice);
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + choice);
             }
         }
     }

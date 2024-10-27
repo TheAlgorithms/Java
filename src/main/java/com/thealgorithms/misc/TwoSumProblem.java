@@ -2,7 +2,6 @@ package com.thealgorithms.misc;
 
 import java.util.HashMap;
 import java.util.Optional;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 public final class TwoSumProblem {
