@@ -10,8 +10,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+/**
+ * HammingDistanceTest performs unit tests on the HammingDistance class.
+ */
 class HammingDistanceTest {
 
+    // Valid Input Tests
     @Nested
     @DisplayName("Valid Input Tests")
     class ValidInputTests {
@@ -26,6 +30,7 @@ class HammingDistanceTest {
             "'10101', '10100', 1"
         })
         void testHammingDistance(String s1, String s2, int expected) {
+            // Assert that the calculated distance matches the expected result
             assertEquals(
                 expected,
                 HammingDistance.calculateHammingDistance(s1, s2),
@@ -34,13 +39,15 @@ class HammingDistanceTest {
         }
     }
 
+    // Invalid Input Tests
     @Nested
     @DisplayName("Invalid Input Tests")
     class InvalidInputTests {
 
-        @ParameterizedTest(name = "Hamming distance should throw exception for null inputs: \"{0}\", \"{1}\"")
+        @ParameterizedTest(name = "Expect exception for null inputs: \"{0}\", \"{1}\"")
         @MethodSource("provideNullInputs")
         void testHammingDistanceWithNullInputs(String input1, String input2) {
+            // Check for IllegalArgumentException when inputs are null
             IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> HammingDistance.calculateHammingDistance(input1, input2),
@@ -49,6 +56,7 @@ class HammingDistanceTest {
             assertEquals("Input strings cannot be null", exception.getMessage());
         }
 
+        // Provide null input test cases
         private static Stream<Arguments> provideNullInputs() {
             return Stream.of(
                 Arguments.of(null, "abc"),
@@ -60,6 +68,7 @@ class HammingDistanceTest {
         @Test
         @DisplayName("Should throw exception for unequal string lengths")
         void testNotEqualStringLengths() {
+            // Check for IllegalArgumentException when string lengths are unequal
             IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> HammingDistance.calculateHammingDistance("ab", "abc"),
