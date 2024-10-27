@@ -1,8 +1,8 @@
 package com.thealgorithms.slidingwindow;
 
 /**
- * The Longest Subarray with Sum Less Than or Equal to K algorithm finds the length of the longest
- * subarray with a sum that does not exceed a given value `k`.
+ * The Longest Subarray with Sum Less Than or Equal to k algorithm finds the length
+ * of the longest subarray whose sum is less than or equal to a given value k.
  *
  * <p>
  * Worst-case performance O(n)
@@ -19,28 +19,27 @@ public final class LongestSubarrayWithSumLessOrEqualToK {
     }
 
     /**
-     * Finds the length of the longest subarray with a sum less than or equal to a given value.
+     * This method finds the length of the longest subarray with a sum less than or equal to k.
      *
-     * @param nums The input array of integers
-     * @param k The maximum allowed sum for the subarray
-     * @return The length of the longest subarray with sum <= k
+     * @param arr is the input array
+     * @param k   is the maximum sum allowed
+     * @return the length of the longest subarray with sum less than or equal to k
      */
-    public static int longestSubarrayWithSumLEK(int[] nums, int k) {
+    public static int longestSubarrayWithSumLEK(int[] arr, int k) {
         int maxLength = 0;
         int currentSum = 0;
         int left = 0;
 
-        // Expand the window by moving `right`
-        for (int right = 0; right < nums.length; right++) {
-            currentSum += nums[right];
+        for (int right = 0; right < arr.length; right++) {
+            currentSum += arr[right];
 
-            // Shrink the window from the left if `currentSum` exceeds `k`
-            while (currentSum > k && left <= right) {
-                currentSum -= nums[left];
+            // Shrink the window from the left if the current sum exceeds k
+            while (currentSum > k) {
+                currentSum -= arr[left];
                 left++;
             }
 
-            // Update the maximum length if the current window is valid
+            // Update maxLength if the current window is valid
             maxLength = Math.max(maxLength, right - left + 1);
         }
 
