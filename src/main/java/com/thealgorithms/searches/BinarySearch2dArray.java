@@ -6,7 +6,7 @@ package com.thealgorithms.searches;
  * The search is performed using a combination of binary search on rows and
  * columns.
  * The 2D array must be strictly sorted in both rows and columns.
- *
+ * <p>
  * The algorithm works by:
  * 1. Performing a binary search on the middle column of the 2D array.
  * 2. Depending on the value found, it eliminates rows above or below the middle
@@ -26,7 +26,7 @@ public final class BinarySearch2dArray {
      * @param arr    The 2D array to search in.
      * @param target The value to search for.
      * @return An array containing the row and column indices of the target, or [-1,
-     *         -1] if the target is not found.
+     * -1] if the target is not found.
      */
     static int[] binarySearch(int[][] arr, int target) {
         int rowCount = arr.length;
@@ -101,7 +101,7 @@ public final class BinarySearch2dArray {
      * @param colStart The starting column index for the search.
      * @param colEnd   The ending column index for the search.
      * @return An array containing the row and column indices of the target, or [-1,
-     *         -1] if the target is not found.
+     * -1] if the target is not found.
      */
     static int[] binarySearch(int[][] arr, int target, int row, int colStart, int colEnd) {
         // Perform binary search within the specified column range.

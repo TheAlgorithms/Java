@@ -8,7 +8,7 @@ import java.util.Stack;
  * The mainStack is used to store the all the elements of the stack
  * While the maxStack stores the maximum elements
  * When we want to get a maximum element, we call the top of the maximum stack
- *
+ * <p>
  * Problem: https://www.baeldung.com/cs/stack-constant-time
  */
 public class GreatestElementConstantTime {
@@ -27,6 +27,7 @@ public class GreatestElementConstantTime {
      * Pushes an element onto the top of the stack.
      * Checks if the element is the maximum or not
      * If so, then pushes to the maximum stack
+     *
      * @param data The element to be pushed onto the stack.
      */
     public void push(int data) {

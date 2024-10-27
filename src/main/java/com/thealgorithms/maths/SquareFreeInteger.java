@@ -17,12 +17,13 @@ import java.util.List;
 public final class SquareFreeInteger {
     private SquareFreeInteger() {
     }
+
     /**
      * This method returns whether an integer is square free
      *
      * @param number Integer value which is to be checked
      * @return false when number has repeated prime factors
-     *         true when number has non repeated prime factors
+     * true when number has non repeated prime factors
      * @throws IllegalArgumentException when number is negative or zero
      */
     public static boolean isSquareFreeInteger(int number) {

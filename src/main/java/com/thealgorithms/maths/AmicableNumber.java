@@ -22,6 +22,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public final class AmicableNumber {
     private AmicableNumber() {
     }
+
     /**
      * Finds all the amicable numbers in a given range.
      *

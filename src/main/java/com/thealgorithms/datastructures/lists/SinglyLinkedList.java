@@ -41,7 +41,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
     /**
      * Detects if there is a loop in the singly linked list using floy'd turtle
      * and hare algorithm.
-     *
      */
     public boolean detectLoop() {
         Node currentNodeFast = head;
@@ -59,6 +58,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
     /**
      * Return the node in the middle of the list
      * If the length of the list is even then return item number length/2
+     *
      * @return middle node of the list
      */
     public Node middle() {
@@ -76,7 +76,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Swaps nodes of two given values a and b.
-     *
      */
     public void swapNodes(int valueFirst, int valueSecond) {
         if (valueFirst == valueSecond) {
@@ -124,7 +123,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Reverse a singly linked list[Iterative] from a given node till the end
-     *
      */
     public Node reverseListIter(Node node) {
         Node prev = null;
@@ -145,9 +143,9 @@ public class SinglyLinkedList implements Iterable<Integer> {
         // the reversed linkedlist
         return prev;
     }
+
     /**
      * Reverse a singly linked list[Recursive] from a given node till the end
-     *
      */
     public Node reverseListRec(Node head) {
         if (head == null || head.next == null) {
@@ -204,7 +202,6 @@ public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * Set head of the list.
-     *
      */
     public void setHead(Node head) {
         this.head = head;
@@ -305,7 +302,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
     /**
      * Inserts a new node at a specified position of the list
      *
-     * @param data data to be stored in a new node
+     * @param data     data to be stored in a new node
      * @param position position at which a new node is to be inserted
      */
     public void insertNth(int data, int position) {
@@ -385,10 +382,10 @@ public class SinglyLinkedList implements Iterable<Integer> {
 
     /**
      * @param position to check position
-     * @param low low index
-     * @param high high index
+     * @param low      low index
+     * @param high     high index
      * @throws IndexOutOfBoundsException if {@code position} not in range
-     * {@code low} to {@code high}
+     *                                   {@code low} to {@code high}
      */
     public void checkBounds(int position, int low, int high) {
         if (position > high || position < low) {
@@ -507,7 +504,7 @@ class Node {
      * Constructor
      *
      * @param value Value to be put in the node
-     * @param next Reference to the next node
+     * @param next  Reference to the next node
      */
     Node(int value, Node next) {
         this.value = value;

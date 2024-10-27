@@ -89,8 +89,8 @@ public final class Verhoeff {
      * @param digits input to check
      * @return true if check was successful, false otherwise
      * @throws IllegalArgumentException if input parameter contains not only
-     * digits
-     * @throws NullPointerException if input is null
+     *                                  digits
+     * @throws NullPointerException     if input is null
      */
     public static boolean verhoeffCheck(String digits) {
         checkInput(digits);
@@ -114,8 +114,8 @@ public final class Verhoeff {
      * @param initialDigits initial value
      * @return digits with the checksum in the last position
      * @throws IllegalArgumentException if input parameter contains not only
-     * digits
-     * @throws NullPointerException if input is null
+     *                                  digits
+     * @throws NullPointerException     if input is null
      */
     public static String addVerhoeffChecksum(String initialDigits) {
         checkInput(initialDigits);

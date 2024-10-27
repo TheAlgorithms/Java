@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * MiniMax is an algorithm used int artificial intelligence and game theory for
  * minimizing the possible loss for the worst case scenario.
- *
+ * <p>
  * See more (https://en.wikipedia.org/wiki/Minimax,
  * https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/).
  *
@@ -48,10 +48,10 @@ public class MiniMaxAlgorithm {
     /**
      * Returns the optimal score assuming that both players play their best.
      *
-     * @param depth Indicates how deep we are into the game tree.
+     * @param depth       Indicates how deep we are into the game tree.
      * @param isMaximizer True if it is maximizers turn; otherwise false.
-     * @param index Index of the leaf node that is being evaluated.
-     * @param verbose True to show each players choices.
+     * @param index       Index of the leaf node that is being evaluated.
+     * @param verbose     True to show each players choices.
      * @return The optimal score for the player that made the first move.
      */
     public int miniMax(int depth, boolean isMaximizer, int index, boolean verbose) {
@@ -89,7 +89,7 @@ public class MiniMaxAlgorithm {
     /**
      * Returns an array of random numbers which lenght is a power of 2.
      *
-     * @param size The power of 2 that will determine the lenght of the array.
+     * @param size     The power of 2 that will determine the lenght of the array.
      * @param maxScore The maximum possible score.
      * @return An array of random numbers.
      */

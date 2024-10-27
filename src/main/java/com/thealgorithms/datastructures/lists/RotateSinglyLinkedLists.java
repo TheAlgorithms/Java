@@ -26,7 +26,7 @@ package com.thealgorithms.datastructures.lists;
  *   <li>Space Complexity: O(1), as we only use a constant amount of additional space.</li>
  * </ul>
  * </p>
- *
+ * <p>
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 public class RotateSinglyLinkedLists {
@@ -35,7 +35,7 @@ public class RotateSinglyLinkedLists {
      * Rotates a singly linked list to the right by `k` positions.
      *
      * @param head The head node of the singly linked list.
-     * @param k The number of positions to rotate the list to the right.
+     * @param k    The number of positions to rotate the list to the right.
      * @return The head of the rotated linked list.
      */
     public Node rotateRight(Node head, int k) {

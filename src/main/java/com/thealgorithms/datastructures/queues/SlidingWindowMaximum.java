@@ -27,7 +27,7 @@ public final class SlidingWindowMaximum {
      * </pre>
      *
      * @param nums the input array of integers
-     * @param k the size of the sliding window
+     * @param k    the size of the sliding window
      * @return an array containing the maximum element for each sliding window
      */
     public static int[] maxSlidingWindow(int[] nums, int k) {

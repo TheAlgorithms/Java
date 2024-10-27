@@ -20,7 +20,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
 public class TernarySearch implements SearchAlgorithm {
 
     /**
-     * @param arr The **Sorted** array in which we will search the element.
+     * @param arr   The **Sorted** array in which we will search the element.
      * @param value The value that we want to search for.
      * @return The index of the element if found. Else returns -1.
      */
@@ -30,10 +30,10 @@ public class TernarySearch implements SearchAlgorithm {
     }
 
     /**
-     * @param arr The **Sorted** array in which we will search the element.
-     * @param key The value that we want to search for.
+     * @param arr   The **Sorted** array in which we will search the element.
+     * @param key   The value that we want to search for.
      * @param start The starting index from which we will start Searching.
-     * @param end The ending index till which we will Search.
+     * @param end   The ending index till which we will Search.
      * @return Returns the index of the Element if found. Else returns -1.
      */
     private <T extends Comparable<T>> int ternarySearch(T[] arr, T key, int start, int end) {

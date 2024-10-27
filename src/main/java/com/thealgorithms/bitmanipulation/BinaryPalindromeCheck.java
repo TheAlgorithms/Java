@@ -3,9 +3,9 @@ package com.thealgorithms.bitmanipulation;
 /**
  * This class contains a method to check if the binary representation of a number is a palindrome.
  * <p>
- *     A binary palindrome is a number whose binary representation is the same when read from left to right and right to left.
- *     For example, the number 9 has a binary representation of 1001, which is a palindrome.
- *     The number 10 has a binary representation of 1010, which is not a palindrome.
+ * A binary palindrome is a number whose binary representation is the same when read from left to right and right to left.
+ * For example, the number 9 has a binary representation of 1001, which is a palindrome.
+ * The number 10 has a binary representation of 1010, which is not a palindrome.
  * </p>
  *
  * @author Hardvan

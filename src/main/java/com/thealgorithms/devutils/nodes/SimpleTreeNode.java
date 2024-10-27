@@ -5,7 +5,6 @@ package com.thealgorithms.devutils.nodes;
  * right).
  *
  * @param <E> The type of the data held in the Node.
- *
  * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class SimpleTreeNode<E> extends TreeNode<E> {
@@ -39,7 +38,7 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
     /**
      * Initializes the Nodes' data and parent node reference.
      *
-     * @param data Value to which data will be initialized.
+     * @param data       Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @see TreeNode#TreeNode(Object, Node)
      */
@@ -50,12 +49,12 @@ public class SimpleTreeNode<E> extends TreeNode<E> {
     /**
      * Initializes the Nodes' data and parent and child nodes references.
      *
-     * @param data Value to which data will be initialized.
+     * @param data       Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
-     * @param leftNode Value to which the nodes' left child reference will be
-     * set.
-     * @param rightNode Value to which the nodes' right child reference will be
-     * set.
+     * @param leftNode   Value to which the nodes' left child reference will be
+     *                   set.
+     * @param rightNode  Value to which the nodes' right child reference will be
+     *                   set.
      */
     public SimpleTreeNode(E data, SimpleTreeNode<E> parentNode, SimpleTreeNode<E> leftNode, SimpleTreeNode<E> rightNode) {
         super(data, parentNode);

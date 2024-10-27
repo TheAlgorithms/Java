@@ -4,7 +4,6 @@ package com.thealgorithms.devutils.nodes;
  * Simple Node implementation that holds a reference to the next Node.
  *
  * @param <E> The type of the data held in the Node.
- *
  * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class SimpleNode<E> extends Node<E> {
@@ -34,7 +33,7 @@ public class SimpleNode<E> extends Node<E> {
     /**
      * Initializes the Nodes' data and next node reference.
      *
-     * @param data Value to which data will be initialized.
+     * @param data     Value to which data will be initialized.
      * @param nextNode Value to which the next node reference will be set.
      */
     public SimpleNode(E data, SimpleNode<E> nextNode) {

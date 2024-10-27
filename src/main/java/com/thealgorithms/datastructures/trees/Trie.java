@@ -132,7 +132,7 @@ public class Trie {
 
     /**
      * Counts the number of words in the trie
-     *<p>
+     * <p>
      * The method traverses the Trie and counts the number of words.
      *
      * @return count of words

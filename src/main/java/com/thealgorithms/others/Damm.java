@@ -44,8 +44,8 @@ public final class Damm {
      * @param digits input to check
      * @return true if check was successful, false otherwise
      * @throws IllegalArgumentException if input parameter contains not only
-     * digits
-     * @throws NullPointerException if input is null
+     *                                  digits
+     * @throws NullPointerException     if input is null
      */
     public static boolean dammCheck(String digits) {
         checkInput(digits);
@@ -66,8 +66,8 @@ public final class Damm {
      * @param initialDigits initial value
      * @return digits with the checksum in the last position
      * @throws IllegalArgumentException if input parameter contains not only
-     * digits
-     * @throws NullPointerException if input is null
+     *                                  digits
+     * @throws NullPointerException     if input is null
      */
     public static String addDammChecksum(String initialDigits) {
         checkInput(initialDigits);

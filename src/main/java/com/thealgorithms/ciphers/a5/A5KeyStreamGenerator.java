@@ -32,7 +32,7 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
      * configurations and initializes them.
      * </p>
      *
-     * @param sessionKey a BitSet representing the session key used for key stream generation.
+     * @param sessionKey   a BitSet representing the session key used for key stream generation.
      * @param frameCounter a BitSet representing the frame counter that influences the key stream.
      */
     @Override

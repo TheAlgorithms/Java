@@ -7,7 +7,7 @@ import java.util.List;
  * ProportionalFairScheduling allocates resources to processes based on their
  * proportional weight or importance. It aims to balance fairness with
  * priority, ensuring that higher-weight processes receive a larger share of resources.
- *
+ * <p>
  * Use Case: Network bandwidth allocation in cellular networks (4G/5G),
  * where devices receive a proportional share of bandwidth.
  *

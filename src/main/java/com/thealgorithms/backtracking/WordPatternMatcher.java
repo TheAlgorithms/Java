@@ -5,16 +5,16 @@ import java.util.Map;
 
 /**
  * Class to determine if a pattern matches a string using backtracking.
- *
+ * <p>
  * Example:
  * Pattern: "abab"
  * Input String: "JavaPythonJavaPython"
  * Output: true
- *
+ * <p>
  * Pattern: "aaaa"
  * Input String: "JavaJavaJavaJava"
  * Output: true
- *
+ * <p>
  * Pattern: "aabb"
  * Input String: "JavaPythonPythonJava"
  * Output: false
@@ -26,7 +26,7 @@ public final class WordPatternMatcher {
     /**
      * Determines if the given pattern matches the input string using backtracking.
      *
-     * @param pattern The pattern to match.
+     * @param pattern     The pattern to match.
      * @param inputString The string to match against the pattern.
      * @return True if the pattern matches the string, False otherwise.
      */
@@ -39,12 +39,12 @@ public final class WordPatternMatcher {
     /**
      * Backtracking helper function to check if the pattern matches the string.
      *
-     * @param pattern The pattern string.
-     * @param inputString The string to match against the pattern.
+     * @param pattern      The pattern string.
+     * @param inputString  The string to match against the pattern.
      * @param patternIndex Current index in the pattern.
-     * @param strIndex Current index in the input string.
-     * @param patternMap Map to store pattern characters to string mappings.
-     * @param strMap Map to store string to pattern character mappings.
+     * @param strIndex     Current index in the input string.
+     * @param patternMap   Map to store pattern characters to string mappings.
+     * @param strMap       Map to store string to pattern character mappings.
      * @return True if the pattern matches, False otherwise.
      */
     private static boolean backtrack(String pattern, String inputString, int patternIndex, int strIndex, Map<Character, String> patternMap, Map<String, Character> strMap) {

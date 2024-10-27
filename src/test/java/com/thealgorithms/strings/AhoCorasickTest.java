@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +33,7 @@ class AhoCorasickTest {
      */
     @BeforeEach
     void setUp() {
-        patterns = new String[] {"ACC", "ATC", "CAT", "GCG", "C", "T"};
+        patterns = new String[]{"ACC", "ATC", "CAT", "GCG", "C", "T"};
         text = "GCATCG";
     }
 
@@ -54,7 +55,7 @@ class AhoCorasickTest {
     @Test
     void testEmptyPatterns() {
         // Define an empty pattern array
-        final var emptyPatterns = new String[] {};
+        final var emptyPatterns = new String[]{};
         assertTrue(AhoCorasick.search(text, emptyPatterns).isEmpty());
     }
 
@@ -65,7 +66,7 @@ class AhoCorasickTest {
     @Test
     void testPatternNotFound() {
         // Define patterns that are not present in the text
-        final var searchPatterns = new String[] {"XYZ", "123"};
+        final var searchPatterns = new String[]{"XYZ", "123"};
         final var expected = Map.of("XYZ", new ArrayList<Integer>(), "123", new ArrayList<Integer>());
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
@@ -77,7 +78,7 @@ class AhoCorasickTest {
     @Test
     void testPatternAtBeginning() {
         // Define patterns that start at the beginning of the text
-        final var searchPatterns = new String[] {"GC", "GCA", "GCAT"};
+        final var searchPatterns = new String[]{"GC", "GCA", "GCAT"};
         final var expected = Map.of("GC", new ArrayList<>(List.of(0)), "GCA", new ArrayList<>(List.of(0)), "GCAT", new ArrayList<>(List.of(0)));
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
@@ -89,7 +90,7 @@ class AhoCorasickTest {
     @Test
     void testPatternAtEnd() {
         // Define patterns that end at the end of the text
-        final var searchPatterns = new String[] {"CG", "TCG", "ATCG"};
+        final var searchPatterns = new String[]{"CG", "TCG", "ATCG"};
         final var expected = Map.of("CG", new ArrayList<>(List.of(4)), "TCG", new ArrayList<>(List.of(3)), "ATCG", new ArrayList<>(List.of(2)));
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
@@ -102,7 +103,7 @@ class AhoCorasickTest {
     @Test
     void testMultipleOccurrencesOfPattern() {
         // Define patterns with multiple occurrences in the text
-        final var searchPatterns = new String[] {"AT", "T"};
+        final var searchPatterns = new String[]{"AT", "T"};
         final var expected = Map.of("AT", new ArrayList<>(List.of(2)), "T", new ArrayList<>(List.of(3)));
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }
@@ -114,7 +115,7 @@ class AhoCorasickTest {
     @Test
     void testCaseInsensitiveSearch() {
         // Define patterns with different cases
-        final var searchPatterns = new String[] {"gca", "aTc", "C"};
+        final var searchPatterns = new String[]{"gca", "aTc", "C"};
         final var expected = Map.of("gca", new ArrayList<Integer>(), "aTc", new ArrayList<Integer>(), "C", new ArrayList<>(Arrays.asList(1, 4)));
         assertEquals(expected, AhoCorasick.search(text, searchPatterns));
     }

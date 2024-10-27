@@ -1,4 +1,5 @@
 package com.thealgorithms.slidingwindow;
+
 /**
  * The Sliding Window algorithm is used to find the minimum sum of a subarray
  * of a fixed size k within a given array.
@@ -8,7 +9,7 @@ package com.thealgorithms.slidingwindow;
  * Best-case performance O(n)
  * Average performance O(n)
  * Worst-case space complexity O(1)
- *
+ * <p>
  * This class provides a static method to find the minimum sum of a subarray
  * with a specified length k.
  *

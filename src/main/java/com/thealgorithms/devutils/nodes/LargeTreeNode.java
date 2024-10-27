@@ -7,7 +7,6 @@ import java.util.Collection;
  * child Nodes.
  *
  * @param <E> The type of the data held in the Node.
- *
  * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public class LargeTreeNode<E> extends TreeNode<E> {
@@ -37,7 +36,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
     /**
      * Initializes the Nodes' data and parent node reference.
      *
-     * @param data Value to which data will be initialized.
+     * @param data       Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @see TreeNode#TreeNode(Object, Node)
      */
@@ -48,7 +47,7 @@ public class LargeTreeNode<E> extends TreeNode<E> {
     /**
      * Initializes the Nodes' data and parent and child nodes references.
      *
-     * @param data Value to which data will be initialized.
+     * @param data       Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      * @param childNodes {@link Collection} of child Nodes.
      * @see TreeNode#TreeNode(Object, Node)

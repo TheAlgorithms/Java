@@ -44,6 +44,7 @@ public class SkipList<E extends Comparable<E>> {
 
     /**
      * Function for determining height of new nodes.
+     *
      * @see HeightStrategy
      */
     private final HeightStrategy heightStrategy;
@@ -217,6 +218,7 @@ public class SkipList<E extends Comparable<E>> {
      * Value container.
      * Each node have pointers to the closest nodes left and right from current
      * on each layer of nodes height.
+     *
      * @param <E> type of elements
      */
     private static class Node<E> {
@@ -268,10 +270,12 @@ public class SkipList<E extends Comparable<E>> {
     /**
      * Height strategy is a way of calculating maximum height for skip list
      * and height for each node.
+     *
      * @see BernoulliHeightStrategy
      */
     public interface HeightStrategy {
         int height(int expectedSize);
+
         int nodeHeight(int heightCap);
     }
 

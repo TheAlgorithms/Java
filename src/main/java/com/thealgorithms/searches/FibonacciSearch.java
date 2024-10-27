@@ -21,10 +21,10 @@ public class FibonacciSearch implements SearchAlgorithm {
      * Finds the index of the specified key in a sorted array using Fibonacci search.
      *
      * @param array The sorted array to search.
-     * @param key The element to search for.
-     * @param <T> The type of the elements in the array, which must be comparable.
-     * @throws IllegalArgumentException if the input array is not sorted or empty, or if the key is null.
+     * @param key   The element to search for.
+     * @param <T>   The type of the elements in the array, which must be comparable.
      * @return The index of the key if found, otherwise -1.
+     * @throws IllegalArgumentException if the input array is not sorted or empty, or if the key is null.
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {

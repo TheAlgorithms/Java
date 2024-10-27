@@ -8,7 +8,7 @@ import java.util.Stack;
  * The mainStack is used to store the all the elements of the stack
  * While the minStack stores the minimum elements
  * When we want to get a minimum element, we call the top of the minimum stack
- *
+ * <p>
  * Problem: https://www.baeldung.com/cs/stack-constant-time
  */
 public class SmallestElementConstantTime {
@@ -27,6 +27,7 @@ public class SmallestElementConstantTime {
      * Pushes an element onto the top of the stack.
      * Checks if the element is the minimum or not
      * If so, then pushes to the minimum stack
+     *
      * @param data The element to be pushed onto the stack.
      */
     public void push(int data) {

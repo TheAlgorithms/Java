@@ -2,9 +2,9 @@ package com.thealgorithms.maths;
 
 /**
  * Utility class for checking if a number is a Krishnamurthy number.
- *
+ * <p>
  * A Krishnamurthy number (also known as a Strong number) is a number whose sum of the factorials of its digits is equal to the number itself.
- *
+ * <p>
  * For example, 145 is a Krishnamurthy number because 1! + 4! + 5! = 1 + 24 + 120 = 145.
  * <b>Example usage:</b>
  * <pre>

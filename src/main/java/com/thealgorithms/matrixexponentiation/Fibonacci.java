@@ -5,7 +5,6 @@ import java.util.Scanner;
 /**
  * @author Anirudh Buvanesh (https://github.com/anirudhb11) For more information
  * see https://www.geeksforgeeks.org/matrix-exponentiation/
- *
  */
 public final class Fibonacci {
     private Fibonacci() {
@@ -50,7 +49,7 @@ public final class Fibonacci {
      * Calculates the fibonacci number using matrix exponentiaition technique
      *
      * @param n The input n for which we have to determine the fibonacci number
-     * Outputs the nth * fibonacci number
+     *          Outputs the nth * fibonacci number
      * @return a 2 X 1 array as { {F_n+1}, {F_n} }
      */
     public static int[][] fib(int n) {

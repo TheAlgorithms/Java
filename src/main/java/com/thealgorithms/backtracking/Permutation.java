@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Finds all permutations of given array
+ *
  * @author Alan Piao (<a href="https://github.com/cpiao3">Git-Alan Piao</a>)
  */
 public final class Permutation {
@@ -13,6 +14,7 @@ public final class Permutation {
 
     /**
      * Find all permutations of given array using backtracking
+     *
      * @param arr the array.
      * @param <T> the type of elements in the array.
      * @return a list of all permutations.
@@ -26,10 +28,11 @@ public final class Permutation {
 
     /**
      * Backtrack all possible orders of a given array
-     * @param arr the array.
-     * @param index the starting index.
+     *
+     * @param arr    the array.
+     * @param index  the starting index.
      * @param result the list contains all permutations.
-     * @param <T> the type of elements in the array.
+     * @param <T>    the type of elements in the array.
      */
     private static <T> void backtracking(T[] arr, int index, List<T[]> result) {
         if (index == arr.length) {
@@ -44,8 +47,9 @@ public final class Permutation {
 
     /**
      * Swap two element for a given array
-     * @param a first index
-     * @param b second index
+     *
+     * @param a   first index
+     * @param b   second index
      * @param arr the array.
      * @param <T> the type of elements in the array.
      */

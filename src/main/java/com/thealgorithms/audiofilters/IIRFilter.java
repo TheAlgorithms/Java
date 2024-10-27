@@ -2,7 +2,7 @@ package com.thealgorithms.audiofilters;
 
 /**
  * N-Order IIR Filter Assumes inputs are normalized to [-1, 1]
- *
+ * <p>
  * Based on the difference equation from
  * <a href="https://en.wikipedia.org/wiki/Infinite_impulse_response">Wikipedia link</a>
  */
@@ -43,7 +43,7 @@ public class IIRFilter {
      * @param aCoeffs Denominator coefficients
      * @param bCoeffs Numerator coefficients
      * @throws IllegalArgumentException if {@code aCoeffs} or {@code bCoeffs} is
-     * not of size {@code order}, or if {@code aCoeffs[0]} is 0.0
+     *                                  not of size {@code order}, or if {@code aCoeffs[0]} is 0.0
      */
     public void setCoeffs(double[] aCoeffs, double[] bCoeffs) throws IllegalArgumentException {
         if (aCoeffs.length != order) {

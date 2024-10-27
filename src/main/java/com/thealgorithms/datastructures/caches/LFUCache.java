@@ -20,7 +20,6 @@ import java.util.Map;
  *
  * @param <K> The type of keys maintained by this cache.
  * @param <V> The type of mapped values.
- *
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
 public class LFUCache<K, V> {
@@ -40,8 +39,8 @@ public class LFUCache<K, V> {
         /**
          * Constructs a new {@code Node} with the specified key, value, and frequency.
          *
-         * @param key The key associated with this node.
-         * @param value The value stored in this node.
+         * @param key       The key associated with this node.
+         * @param value     The value stored in this node.
          * @param frequency The frequency of usage of this node.
          */
         Node(K key, V value, int frequency) {
@@ -102,7 +101,7 @@ public class LFUCache<K, V> {
      * If the key already exists, the value is updated and its frequency is incremented.
      * If the cache is full, the least frequently used item is removed before inserting the new item.
      *
-     * @param key The key associated with the value to be inserted or updated.
+     * @param key   The key associated with the value to be inserted or updated.
      * @param value The value to be inserted or updated.
      */
     public void put(K key, V value) {

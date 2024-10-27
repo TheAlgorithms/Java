@@ -10,6 +10,7 @@ import java.util.Objects;
  * Inverted Index implementation with BM25 Scoring for movie search.
  * This class supports adding movie documents and searching for terms
  * within those documents using the BM25 algorithm.
+ *
  * @author Prayas Kumar (https://github.com/prayas7102)
  */
 
@@ -22,11 +23,12 @@ class Movie {
 
     /**
      * Constructor for the Movie class.
-     * @param docId Unique identifier for the movie.
-     * @param name Name of the movie.
-     * @param imdbRating IMDb rating of the movie.
+     *
+     * @param docId       Unique identifier for the movie.
+     * @param name        Name of the movie.
+     * @param imdbRating  IMDb rating of the movie.
      * @param releaseYear Release year of the movie.
-     * @param content Content or description of the movie.
+     * @param content     Content or description of the movie.
      */
     Movie(int docId, String name, double imdbRating, int releaseYear, String content) {
         this.docId = docId;
@@ -39,6 +41,7 @@ class Movie {
     /**
      * Get all the words from the movie's name and content.
      * Converts the name and content to lowercase and splits on non-word characters.
+     *
      * @return Array of words from the movie name and content.
      */
     public String[] getWords() {
@@ -58,7 +61,8 @@ class SearchResult {
 
     /**
      * Constructor for SearchResult class.
-     * @param docId Document ID (movie) for this search result.
+     *
+     * @param docId          Document ID (movie) for this search result.
      * @param relevanceScore The relevance score based on BM25 scoring.
      */
     SearchResult(int docId, double relevanceScore) {
@@ -119,11 +123,12 @@ public final class BM25InvertedIndex {
 
     /**
      * Add a movie to the index.
-     * @param docId Unique identifier for the movie.
-     * @param name Name of the movie.
-     * @param imdbRating IMDb rating of the movie.
+     *
+     * @param docId       Unique identifier for the movie.
+     * @param name        Name of the movie.
+     * @param imdbRating  IMDb rating of the movie.
      * @param releaseYear Release year of the movie.
-     * @param content Content or description of the movie.
+     * @param content     Content or description of the movie.
      */
     public void addMovie(int docId, String name, double imdbRating, int releaseYear, String content) {
         Movie movie = new Movie(docId, name, imdbRating, releaseYear, content);
@@ -159,6 +164,7 @@ public final class BM25InvertedIndex {
 
     /**
      * Search for documents containing a term using BM25 scoring.
+     *
      * @param term The search term.
      * @return A list of search results sorted by relevance score.
      */
@@ -196,9 +202,10 @@ public final class BM25InvertedIndex {
 
     /**
      * Compute the BM25 score for a given term and document.
+     *
      * @param termFrequency The frequency of the term in the document.
-     * @param docLength The length of the document.
-     * @param idf The inverse document frequency of the term.
+     * @param docLength     The length of the document.
+     * @param idf           The inverse document frequency of the term.
      * @return The BM25 relevance score for the term in the document.
      */
     private double computeBM25Score(int termFrequency, double docLength, double idf) {
@@ -210,6 +217,7 @@ public final class BM25InvertedIndex {
     /**
      * Compute the inverse document frequency (IDF) of a term.
      * The IDF measures the importance of a term across the entire document set.
+     *
      * @param docFrequency The number of documents that contain the term.
      * @return The inverse document frequency (IDF) value.
      */

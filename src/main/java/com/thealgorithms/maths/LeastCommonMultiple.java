@@ -4,6 +4,7 @@ package com.thealgorithms.maths;
  * Is a common mathematics concept to find the smallest value number
  * that can be divide using either number without having the remainder.
  * https://maticschool.blogspot.com/2013/11/find-least-common-multiple-lcm.html
+ *
  * @author LauKinHoong
  */
 public final class LeastCommonMultiple {

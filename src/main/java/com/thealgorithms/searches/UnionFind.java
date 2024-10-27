@@ -8,10 +8,10 @@ import java.util.List;
  * The Union-Find data structure, also known as Disjoint Set Union (DSU),
  * is a data structure that tracks a set of elements partitioned into
  * disjoint (non-overlapping) subsets. It supports two main operations:
- *
+ * <p>
  * 1. **Find**: Determine which subset a particular element is in.
  * 2. **Union**: Join two subsets into a single subset.
- *
+ * <p>
  * This implementation uses path compression in the `find` operation
  * and union by rank in the `union` operation for efficiency.
  */

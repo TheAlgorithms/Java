@@ -3,6 +3,7 @@ package com.thealgorithms.strings;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,7 +18,7 @@ public class ManacherTest {
 
     private static Stream<Arguments> provideTestCasesForLongestPalindrome() {
         return Stream.of(Arguments.of("abracadabraabcdefggfedcbaabracadabra", "aabcdefggfedcbaa"), Arguments.of("somelongtextwithracecarmiddletext", "racecar"), Arguments.of("bananananananana", "ananananananana"), Arguments.of("qwertydefgfedzxcvbnm", "defgfed"),
-            Arguments.of("abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba"));
+                Arguments.of("abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba"));
     }
 
     @ParameterizedTest
@@ -38,7 +39,7 @@ public class ManacherTest {
 
     private static Stream<Arguments> provideTestCasesForComplexCases() {
         return Stream.of(Arguments.of("abcdefghijklmnopqrstuvwxyzttattarrattatabcdefghijklmnopqrstuvwxyz", "tattarrattat"), Arguments.of("aaaaabaaaaacbaaaaa", "aaaaabaaaaa"), Arguments.of("sometextrandomabcdefgabcdefghhgfedcbahijklmnopqrstuvwxyz", "abcdefghhgfedcba"),
-            Arguments.of("therewasasignthatsaidmadaminedenimadamitwasthereallalong", "madaminedenimadam"));
+                Arguments.of("therewasasignthatsaidmadaminedenimadamitwasthereallalong", "madaminedenimadam"));
     }
 
     @ParameterizedTest

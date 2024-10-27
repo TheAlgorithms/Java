@@ -9,22 +9,22 @@ import java.util.HexFormat;
  * using a given key. This cipher works by applying the XOR bitwise operation between
  * the bytes of the input text and the corresponding bytes of the key (repeating the key
  * if necessary).
- *
+ * <p>
  * Usage:
  * - Encryption: Converts plaintext into a hexadecimal-encoded ciphertext.
  * - Decryption: Converts the hexadecimal ciphertext back into plaintext.
- *
+ * <p>
  * Characteristics:
  * - Symmetric: The same key is used for both encryption and decryption.
  * - Simple but vulnerable: XOR encryption is insecure for real-world cryptography,
- *   especially when the same key is reused.
- *
+ * especially when the same key is reused.
+ * <p>
  * Example:
  * Plaintext: "Hello!"
  * Key: "key"
  * Encrypted: "27090c03120b"
  * Decrypted: "Hello!"
- *
+ * <p>
  * Reference: <a href="https://en.wikipedia.org/wiki/XOR_cipher">XOR Cipher - Wikipedia</a>
  *
  * @author <a href="https://github.com/lcsjunior">lcsjunior</a>
@@ -42,7 +42,7 @@ public final class XORCipher {
      * If the key is shorter than the input, it wraps around (cyclically).
      *
      * @param inputBytes The input byte array (plaintext or ciphertext).
-     * @param keyBytes The key byte array used for XOR operation.
+     * @param keyBytes   The key byte array used for XOR operation.
      * @return A new byte array containing the XOR result.
      */
     public static byte[] xor(final byte[] inputBytes, final byte[] keyBytes) {
@@ -58,9 +58,9 @@ public final class XORCipher {
      * The result is a hexadecimal-encoded string representing the ciphertext.
      *
      * @param plainText The input plaintext to encrypt.
-     * @param key The encryption key.
-     * @throws IllegalArgumentException if the key is empty.
+     * @param key       The encryption key.
      * @return A hexadecimal string representing the encrypted text.
+     * @throws IllegalArgumentException if the key is empty.
      */
     public static String encrypt(final String plainText, final String key) {
         if (key.isEmpty()) {
@@ -78,9 +78,9 @@ public final class XORCipher {
      * with the specified key. The result is the original plaintext.
      *
      * @param cipherText The hexadecimal string representing the encrypted text.
-     * @param key The decryption key (must be the same as the encryption key).
-     * @throws IllegalArgumentException if the key is empty.
+     * @param key        The decryption key (must be the same as the encryption key).
      * @return The decrypted plaintext.
+     * @throws IllegalArgumentException if the key is empty.
      */
     public static String decrypt(final String cipherText, final String key) {
         if (key.isEmpty()) {

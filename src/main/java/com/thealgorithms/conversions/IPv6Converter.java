@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * A utility class for converting between IPv6 and IPv4 addresses.
- *
+ * <p>
  * - Converts IPv4 to IPv6-mapped IPv6 address.
  * - Extracts IPv4 address from IPv6-mapped IPv6.
  * - Handles exceptions for invalid inputs.
@@ -23,7 +23,7 @@ public final class IPv6Converter {
      *
      * @param ipv4Address The IPv4 address in string format.
      * @return The corresponding IPv6-mapped IPv6 address.
-     * @throws UnknownHostException If the IPv4 address is invalid.
+     * @throws UnknownHostException     If the IPv4 address is invalid.
      * @throws IllegalArgumentException If the IPv6 address is not a mapped IPv4 address.
      */
     public static String ipv4ToIpv6(String ipv4Address) throws UnknownHostException {

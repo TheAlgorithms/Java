@@ -9,7 +9,7 @@ import java.security.SecureRandom;
  * elliptic curves over finite fields. ECC provides a higher level of security with smaller key sizes compared
  * to other public-key methods like RSA, making it particularly suitable for environments where computational
  * resources are limited, such as mobile devices and embedded systems.
- *
+ * <p>
  * This class implements elliptic curve cryptography, providing encryption and decryption
  * functionalities based on public and private key pairs.
  *

@@ -10,7 +10,7 @@ public final class DecimalToAnyUsingStack {
      * Convert a decimal number to another radix.
      *
      * @param number the number to be converted
-     * @param radix the radix
+     * @param radix  the radix
      * @return the number represented in the new radix as a String
      * @throws IllegalArgumentException if <tt>number</tt> is negative or <tt>radix</tt> is not between 2 and 16 inclusive
      */

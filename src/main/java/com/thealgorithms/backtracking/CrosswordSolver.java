@@ -8,19 +8,19 @@ import java.util.List;
  * A class to solve a crossword puzzle using backtracking.
  * Example:
  * Input:
- *  puzzle = {
- *      {' ', ' ', ' '},
- *      {' ', ' ', ' '},
- *      {' ', ' ', ' '}
- *  }
- *  words = List.of("cat", "dog")
- *
+ * puzzle = {
+ * {' ', ' ', ' '},
+ * {' ', ' ', ' '},
+ * {' ', ' ', ' '}
+ * }
+ * words = List.of("cat", "dog")
+ * <p>
  * Output:
- *  {
- *      {'c', 'a', 't'},
- *      {' ', ' ', ' '},
- *      {'d', 'o', 'g'}
- *  }
+ * {
+ * {'c', 'a', 't'},
+ * {' ', ' ', ' '},
+ * {'d', 'o', 'g'}
+ * }
  */
 public final class CrosswordSolver {
     private CrosswordSolver() {

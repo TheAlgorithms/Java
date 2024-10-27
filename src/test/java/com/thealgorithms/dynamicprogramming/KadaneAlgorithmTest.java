@@ -39,7 +39,7 @@ public class KadaneAlgorithmTest {
         assertTrue(KadaneAlgorithm.maxSum(input, expectedMaxSum));
 
         // Test with a single negative element
-        input = new int[] {-10};
+        input = new int[]{-10};
         expectedMaxSum = -10; // max subarray is the single element
         assertTrue(KadaneAlgorithm.maxSum(input, expectedMaxSum));
     }
@@ -56,6 +56,8 @@ public class KadaneAlgorithmTest {
     void testMaxSumWithEmptyArray() {
         // Test with an empty array; should ideally throw an exception or return false
         int[] input = {};
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> { KadaneAlgorithm.maxSum(input, 0); });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            KadaneAlgorithm.maxSum(input, 0);
+        });
     }
 }

@@ -4,6 +4,7 @@ package com.thealgorithms.dynamicprogramming;
  * Find the number of subsets present in the given array with a sum equal to target.
  * Based on Solution discussed on
  * <a href="https://stackoverflow.com/questions/22891076/count-number-of-subsets-with-sum-equal-to-k">StackOverflow</a>
+ *
  * @author <a href="https://github.com/samratpodder">Samrat Podder</a>
  */
 public final class SubsetCount {
@@ -14,9 +15,9 @@ public final class SubsetCount {
      * Dynamic Programming Implementation.
      * Method to find out the number of subsets present in the given array with a sum equal to
      * target. Time Complexity is O(n*target) and Space Complexity is O(n*target)
-     * @param arr is the input array on which subsets are  to searched
-     * @param target is the sum of each element of the subset taken together
      *
+     * @param arr    is the input array on which subsets are  to searched
+     * @param target is the sum of each element of the subset taken together
      */
     public static int getCount(int[] arr, int target) {
         /*
@@ -49,7 +50,8 @@ public final class SubsetCount {
      * This Method is a Space Optimized version of the getCount(int[], int) method and solves the
      * same problem This approach is a bit better in terms of Space Used Time Complexity is
      * O(n*target) and Space Complexity is O(target)
-     * @param arr is the input array on which subsets are  to searched
+     *
+     * @param arr    is the input array on which subsets are  to searched
      * @param target is the sum of each element of the subset taken together
      */
     public static int getCountSO(int[] arr, int target) {

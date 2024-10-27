@@ -23,7 +23,7 @@ final class BalancedBrackets {
     /**
      * Check if {@code leftBracket} and {@code rightBracket} is paired or not
      *
-     * @param leftBracket left bracket
+     * @param leftBracket  left bracket
      * @param rightBracket right bracket
      * @return {@code true} if {@code leftBracket} and {@code rightBracket} is
      * paired, otherwise {@code false}

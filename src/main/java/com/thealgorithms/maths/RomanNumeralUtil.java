@@ -3,10 +3,10 @@ package com.thealgorithms.maths;
 /**
  * Translates numbers into the Roman Numeral System.
  *
- * @see <a href="https://en.wikipedia.org/wiki/Roman_numerals">Roman
- * numerals</a>
  * @author Sokratis Fotkatzikis
  * @version 1.0
+ * @see <a href="https://en.wikipedia.org/wiki/Roman_numerals">Roman
+ * numerals</a>
  */
 public final class RomanNumeralUtil {
     private RomanNumeralUtil() {

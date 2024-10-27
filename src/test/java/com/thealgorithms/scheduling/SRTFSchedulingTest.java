@@ -3,7 +3,9 @@ package com.thealgorithms.scheduling;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class SRTFSchedulingTest {

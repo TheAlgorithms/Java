@@ -38,7 +38,7 @@ public interface Heap {
      * Delete an element in the heap.
      *
      * @param elementIndex int containing the position in the heap of the
-     * element to be deleted.
+     *                     element to be deleted.
      */
     void deleteElement(int elementIndex) throws EmptyHeapException;
 }

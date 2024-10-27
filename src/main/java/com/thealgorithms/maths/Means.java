@@ -14,10 +14,10 @@ public final class Means {
     }
 
     /**
-     * @brief computes the [Arithmetic Mean](https://en.wikipedia.org/wiki/Arithmetic_mean) of the input
      * @param numbers the input numbers
-     * @throws IllegalArgumentException empty input
      * @return the arithmetic mean of the input numbers
+     * @throws IllegalArgumentException empty input
+     * @brief computes the [Arithmetic Mean](https://en.wikipedia.org/wiki/Arithmetic_mean) of the input
      */
     public static Double arithmetic(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);
@@ -25,10 +25,10 @@ public final class Means {
     }
 
     /**
-     * @brief computes the [Geometric Mean](https://en.wikipedia.org/wiki/Geometric_mean) of the input
      * @param numbers the input numbers
-     * @throws IllegalArgumentException empty input
      * @return the geometric mean of the input numbers
+     * @throws IllegalArgumentException empty input
+     * @brief computes the [Geometric Mean](https://en.wikipedia.org/wiki/Geometric_mean) of the input
      */
     public static Double geometric(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);
@@ -36,10 +36,10 @@ public final class Means {
     }
 
     /**
-     * @brief computes the [Harmonic Mean](https://en.wikipedia.org/wiki/Harmonic_mean) of the input
      * @param numbers the input numbers
-     * @throws IllegalArgumentException empty input
      * @return the harmonic mean of the input numbers
+     * @throws IllegalArgumentException empty input
+     * @brief computes the [Harmonic Mean](https://en.wikipedia.org/wiki/Harmonic_mean) of the input
      */
     public static Double harmonic(final Iterable<Double> numbers) {
         checkIfNotEmpty(numbers);

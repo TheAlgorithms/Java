@@ -8,26 +8,27 @@ import java.util.List;
 /**
  * Given tree is traversed in a 'pre-order' way: ROOT -> LEFT -> RIGHT.
  * Below are given the recursive and iterative implementations.
- *
+ * <p>
  * Complexities:
  * Recursive: O(n) - time, O(n) - space, where 'n' is the number of nodes in a tree.
- *
+ * <p>
  * Iterative: O(n) - time, O(h) - space, where 'n' is the number of nodes in a tree
  * and 'h' is the height of a binary tree.
  * In the worst case 'h' can be O(n) if tree is completely unbalanced, for instance:
  * 5
- *  \
- *   6
- *    \
- *     7
- *      \
- *       8
+ * \
+ * 6
+ * \
+ * 7
+ * \
+ * 8
  *
  * @author Albina Gimaletdinova on 17/02/2023
  */
 public final class PreOrderTraversal {
     private PreOrderTraversal() {
     }
+
     public static List<Integer> recursivePreOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursivePreOrder(root, result);

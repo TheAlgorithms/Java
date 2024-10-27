@@ -9,7 +9,7 @@ class FloydWarshallTest {
     @Test
     void testSmallGraph() {
         int[][] adjacencyMatrix = {{0, 0, 0, 0}, // Ignored row (0 index)
-            {0, 0, 3, FloydWarshall.INFINITY}, {0, FloydWarshall.INFINITY, 0, 1}, {0, FloydWarshall.INFINITY, FloydWarshall.INFINITY, 0}};
+                {0, 0, 3, FloydWarshall.INFINITY}, {0, FloydWarshall.INFINITY, 0, 1}, {0, FloydWarshall.INFINITY, FloydWarshall.INFINITY, 0}};
 
         FloydWarshall fw = new FloydWarshall(3);
         fw.floydwarshall(adjacencyMatrix);

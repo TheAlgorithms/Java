@@ -4,17 +4,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class SJFSchedulingTest {
     private ArrayList<ProcessDetails> process;
+
     void initialisation0() {
 
         process = new ArrayList<>();
         process.add(new ProcessDetails("1", 0, 6));
         process.add(new ProcessDetails("2", 1, 2));
     }
+
     void initialisation1() {
 
         process = new ArrayList<>();
@@ -33,12 +37,14 @@ class SJFSchedulingTest {
         process.add(new ProcessDetails("2", 1, 2));
         process.add(new ProcessDetails("3", 2, 1));
     }
+
     void initialisation3() {
         process = new ArrayList<>();
         process.add(new ProcessDetails("1", 0, 3));
         process.add(new ProcessDetails("2", 5, 2));
         process.add(new ProcessDetails("3", 9, 1));
     }
+
     @Test
     void constructor() {
         initialisation0();
@@ -91,6 +97,7 @@ class SJFSchedulingTest {
         assertEquals("3", a.schedule.get(1));
         assertEquals("2", a.schedule.get(2));
     }
+
     @Test
     void schedulingWithProcessesNotComingBackToBack() {
         initialisation3();
@@ -100,6 +107,7 @@ class SJFSchedulingTest {
         assertEquals("2", a.schedule.get(1));
         assertEquals("3", a.schedule.get(2));
     }
+
     @Test
     void schedulingOfNothing() {
         process = new ArrayList<>();

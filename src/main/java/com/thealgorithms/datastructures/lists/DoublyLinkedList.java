@@ -224,7 +224,7 @@ class LinkOperations {
     /**
      * Insert an element at the index
      *
-     * @param x Element to be inserted
+     * @param x     Element to be inserted
      * @param index Index(from start) at which the element x to be inserted
      */
     public void insertElementByIndex(int x, int index, DoublyLinkedList doublyLinkedList) {
@@ -265,7 +265,7 @@ class LinkOperations {
             tail = null;
         } else {
             head.previous = null; // oldHead --> 2ndElement(head) nothing pointing at old head so
-                                  // will be removed
+            // will be removed
         }
         --size;
         return temp;

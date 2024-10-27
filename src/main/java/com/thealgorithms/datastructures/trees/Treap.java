@@ -6,8 +6,7 @@ import java.util.Random;
  * Treap -> Tree + Heap
  * Also called as cartesian tree
  *
- * @see
- * <a href = "https://cp-algorithms.com/data_structures/treap.html" />
+ * @see <a href = "https://cp-algorithms.com/data_structures/treap.html" />
  */
 
 public class Treap {
@@ -15,16 +14,16 @@ public class Treap {
     public static class TreapNode {
         /**
          * TreapNode class defines the individual nodes in the Treap
-         *
+         * <p>
          * value -> holds the value of the node.
          * Binary Search Tree is built based on value.
-         *
+         * <p>
          * priority -> holds the priority of the node.
          * Heaps are maintained based on priority.
          * It is randomly assigned
-         *
+         * <p>
          * size -> holds the size of the subtree with current node as root
-         *
+         * <p>
          * left -> holds the left subtree
          * right -> holds the right subtree
          */
@@ -65,7 +64,7 @@ public class Treap {
 
     /**
      * Constructors
-     *
+     * <p>
      * Treap() -> create an empty Treap
      * Treap(int[] nodeValues) -> add the elements given in the array to the Treap
      */
@@ -76,7 +75,7 @@ public class Treap {
     /**
      * merges two Treaps left and right into a single Treap
      *
-     * @param left left Treap
+     * @param left  left Treap
      * @param right right Treap
      * @return root of merged Treap
      */
@@ -103,7 +102,7 @@ public class Treap {
      * split the Treap into two Treaps where left Treap has nodes <= key and right Treap has nodes > key
      *
      * @param node root node to be split
-     * @param key key to compare the nodes
+     * @param key  key to compare the nodes
      * @return TreapNode array of size 2.
      * TreapNode[0] contains the root of left Treap after split
      * TreapNode[1] contains the root of right Treap after split

@@ -8,12 +8,13 @@ package com.thealgorithms.maths;
 public final class FibonacciNumberCheck {
     private FibonacciNumberCheck() {
     }
+
     /**
      * Check if a number is perfect square number
      *
      * @param number the number to be checked
      * @return <tt>true</tt> if {@code number} is a perfect square, otherwise
-     *         <tt>false</tt>
+     * <tt>false</tt>
      */
     public static boolean isPerfectSquare(long number) {
         long sqrt = (long) Math.sqrt(number);
@@ -26,7 +27,7 @@ public final class FibonacciNumberCheck {
      *
      * @param number the number
      * @return <tt>true</tt> if {@code number} is a Fibonacci number, otherwise
-     *         <tt>false</tt>
+     * <tt>false</tt>
      * @link https://en.wikipedia.org/wiki/Fibonacci_number#Identification
      */
     public static boolean isFibonacciNumber(long number) {

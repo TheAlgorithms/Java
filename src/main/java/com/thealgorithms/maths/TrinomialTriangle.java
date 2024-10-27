@@ -4,7 +4,7 @@ package com.thealgorithms.maths;
  * The trinomial triangle is a variation of Pascal’s triangle. The difference
  * between the two is that an entry in the trinomial triangle is the sum of the
  * three (rather than the two in Pasacal’s triangle) entries above it
- *
+ * <p>
  * Example Input: n = 4 Output 1 1 1 1 1 2 3 2 1 1 3 6 7 6 3 1
  */
 public final class TrinomialTriangle {

@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * GangScheduling groups related tasks (gangs) to run simultaneously on multiple processors.
  * All tasks in a gang are executed together or not at all.
- *
+ * <p>
  * Use Case: Parallel computing environments where multiple threads of a program
  * need to run concurrently for optimal performance.
  *

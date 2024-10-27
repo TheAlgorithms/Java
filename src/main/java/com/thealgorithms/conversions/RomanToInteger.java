@@ -66,7 +66,7 @@ public final class RomanToInteger {
      * @param roman the Roman numeral string
      * @return the integer value of the Roman numeral
      * @throws IllegalArgumentException if the input contains invalid Roman characters
-     * @throws NullPointerException if the input is {@code null}
+     * @throws NullPointerException     if the input is {@code null}
      */
     public static int romanToInt(String roman) {
         if (roman == null) {

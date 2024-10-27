@@ -5,11 +5,10 @@ public final class FindMin {
     }
 
     /**
-     * @brief finds the minimum value stored in the input array
-     *
      * @param array the input array
-     * @exception IllegalArgumentException input array is empty
      * @return the mimum value stored in the input array
+     * @throws IllegalArgumentException input array is empty
+     * @brief finds the minimum value stored in the input array
      */
     public static int findMin(final int[] array) {
         if (array.length == 0) {

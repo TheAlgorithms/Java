@@ -50,7 +50,6 @@ public class KDTree {
      * Builds the KDTree from the specified coordinates of the points
      *
      * @param pointsCoordinates Array of initial points coordinates
-     *
      */
     KDTree(int[][] pointsCoordinates) {
         if (pointsCoordinates.length == 0) {
@@ -105,7 +104,6 @@ public class KDTree {
          *
          * @param p1 First point
          * @param p2 Second point
-         *
          * @return The comparable distance between the two points
          */
         public static int comparableDistance(Point p1, Point p2) {
@@ -120,10 +118,9 @@ public class KDTree {
         /**
          * Find the comparable distance between two points with ignoring specified axis
          *
-         * @param p1 First point
-         * @param p2 Second point
+         * @param p1   First point
+         * @param p2   Second point
          * @param axis The axis to ignore
-         *
          * @return The distance between the two points
          */
         public static int comparableDistanceExceptAxis(Point p1, Point p2, int axis) {
@@ -172,7 +169,6 @@ public class KDTree {
          * Get the nearest child according to the specified point
          *
          * @param point The point to find the nearest child to
-         *
          * @return The nearest child Node
          */
         public Node getNearChild(Point point) {
@@ -187,7 +183,6 @@ public class KDTree {
          * Get the farthest child according to the specified point
          *
          * @param point The point to find the farthest child to
-         *
          * @return The farthest child Node
          */
         public Node getFarChild(Point point) {
@@ -216,8 +211,7 @@ public class KDTree {
      * Builds the KDTree from the specified points
      *
      * @param points Array of initial points
-     * @param depth The current depth of the tree
-     *
+     * @param depth  The current depth of the tree
      * @return The root of the KDTree
      */
     private Node build(Point[] points, int depth) {
@@ -240,7 +234,6 @@ public class KDTree {
      * Insert a point into the KDTree
      *
      * @param point The point to insert
-     *
      */
     public void insert(Point point) {
         if (point.getDimension() != k) {
@@ -252,10 +245,9 @@ public class KDTree {
     /**
      * Insert a point into a subtree
      *
-     * @param root The root of the subtree
+     * @param root  The root of the subtree
      * @param point The point to insert
      * @param depth The current depth of the tree
-     *
      * @return The root of the KDTree
      */
     private Node insert(Node root, Point point, int depth) {
@@ -276,7 +268,6 @@ public class KDTree {
      * Search for Node corresponding to the specified point in the KDTree
      *
      * @param point The point to search for
-     *
      * @return The Node corresponding to the specified point
      */
     public Optional<Node> search(Point point) {
@@ -289,9 +280,8 @@ public class KDTree {
     /**
      * Search for Node corresponding to the specified point in a subtree
      *
-     * @param root The root of the subtree to search in
+     * @param root  The root of the subtree to search in
      * @param point The point to search for
-     *
      * @return The Node corresponding to the specified point
      */
     public Optional<Node> search(Node root, Point point) {
@@ -308,7 +298,6 @@ public class KDTree {
      * Find a point with minimum value in specified axis in the KDTree
      *
      * @param axis The axis to find the minimum value in
-     *
      * @return The point with minimum value in the specified axis
      */
     public Point findMin(int axis) {
@@ -320,7 +309,6 @@ public class KDTree {
      *
      * @param root The root of the subtree to search in
      * @param axis The axis to find the minimum value in
-     *
      * @return The Node with minimum value in the specified axis of the point
      */
     public Node findMin(Node root, int axis) {
@@ -344,7 +332,6 @@ public class KDTree {
      * Find a point with maximum value in specified axis in the KDTree
      *
      * @param axis The axis to find the maximum value in
-     *
      * @return The point with maximum value in the specified axis
      */
     public Point findMax(int axis) {
@@ -356,7 +343,6 @@ public class KDTree {
      *
      * @param root The root of the subtree to search in
      * @param axis The axis to find the maximum value in
-     *
      * @return The Node with maximum value in the specified axis of the point
      */
     public Node findMax(Node root, int axis) {
@@ -380,7 +366,7 @@ public class KDTree {
      * Delete the node with the given point.
      *
      * @param point the point to delete
-     * */
+     */
     public void delete(Point point) {
         Node node = search(point).orElseThrow(() -> new IllegalArgumentException("Point not found"));
         root = delete(root, node);
@@ -391,7 +377,6 @@ public class KDTree {
      *
      * @param root The root of the subtree to delete from
      * @param node The node to delete
-     *
      * @return The new root of the subtree
      */
     private Node delete(Node root, Node node) {
@@ -423,7 +408,7 @@ public class KDTree {
      * Finds the nearest point in the tree to the given point.
      *
      * @param point The point to find the nearest neighbor to.
-     * */
+     */
     public Point findNearest(Point point) {
         return findNearest(root, point, root).point;
     }
@@ -431,10 +416,10 @@ public class KDTree {
     /**
      * Finds the nearest point in a subtree to the given point.
      *
-     * @param root The root of the subtree to search in.
-     * @param point The point to find the nearest neighbor to.
+     * @param root    The root of the subtree to search in.
+     * @param point   The point to find the nearest neighbor to.
      * @param nearest The nearest neighbor found so far.
-     * */
+     */
     private Node findNearest(Node root, Point point, Node nearest) {
         if (root == null) {
             return nearest;

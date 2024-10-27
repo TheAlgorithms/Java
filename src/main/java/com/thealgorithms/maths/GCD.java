@@ -1,12 +1,12 @@
 package com.thealgorithms.maths;
 
 /**
- *  This class provides methods to compute the Greatest Common Divisor (GCD) of two or more integers.
- *
+ * This class provides methods to compute the Greatest Common Divisor (GCD) of two or more integers.
+ * <p>
  * The Greatest Common Divisor (GCD) of two or more integers is the largest positive integer that divides each of the integers without leaving a remainder.
- *
+ * <p>
  * The GCD can be computed using the Euclidean algorithm, which is based on the principle that the GCD of two numbers also divides their difference.
- *
+ * <p>
  * For more information, refer to the
  * <a href="https://en.wikipedia.org/wiki/Greatest_common_divisor">Greatest Common Divisor</a> Wikipedia page.
  *
@@ -18,6 +18,7 @@ package com.thealgorithms.maths;
  * int result2 = GCD.gcd(48, 18, 30);
  * System.out.println("GCD of 48, 18, and 30: " + result2); // Output: 6
  * </pre>
+ *
  * @author Oskar Enmalm 3/10/17
  */
 public final class GCD {
@@ -49,10 +50,9 @@ public final class GCD {
     }
 
     /**
-     * @brief computes gcd of an array of numbers
-     *
      * @param numbers the input array
      * @return gcd of all of the numbers in the input array
+     * @brief computes gcd of an array of numbers
      */
     public static int gcd(int... numbers) {
         int result = 0;

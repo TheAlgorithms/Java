@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Highest Set Bit
+ *
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 

@@ -2685,7 +2685,7 @@ public final class AES {
      * Encrypts the plaintext with the key and returns the result
      *
      * @param plainText which we want to encrypt
-     * @param key the key for encrypt
+     * @param key       the key for encrypt
      * @return EncryptedText
      */
     public static BigInteger encrypt(BigInteger plainText, BigInteger key) {
@@ -2746,34 +2746,34 @@ public final class AES {
             switch (choice) {
                 case 'E', 'e' -> {
                     System.out.println(
-                        "Choose a plaintext block (128-Bit Integer in base 16):"
+                            "Choose a plaintext block (128-Bit Integer in base 16):"
                     );
                     in = input.nextLine();
                     BigInteger plaintext = new BigInteger(in, 16);
                     System.out.println(
-                        "Choose a Key (128-Bit Integer in base 16):"
+                            "Choose a Key (128-Bit Integer in base 16):"
                     );
                     in = input.nextLine();
                     BigInteger encryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The encrypted message is: \n"
-                        + encrypt(plaintext, encryptionKey).toString(16)
+                            "The encrypted message is: \n"
+                                    + encrypt(plaintext, encryptionKey).toString(16)
                     );
                 }
                 case 'D', 'd' -> {
                     System.out.println(
-                        "Enter your ciphertext block (128-Bit Integer in base 16):"
+                            "Enter your ciphertext block (128-Bit Integer in base 16):"
                     );
                     in = input.nextLine();
                     BigInteger ciphertext = new BigInteger(in, 16);
                     System.out.println(
-                        "Choose a Key (128-Bit Integer in base 16):"
+                            "Choose a Key (128-Bit Integer in base 16):"
                     );
                     in = input.nextLine();
                     BigInteger decryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The deciphered message is:\n"
-                        + decrypt(ciphertext, decryptionKey).toString(16)
+                            "The deciphered message is:\n"
+                                    + decrypt(ciphertext, decryptionKey).toString(16)
                     );
                 }
                 default -> System.out.println("** End **");

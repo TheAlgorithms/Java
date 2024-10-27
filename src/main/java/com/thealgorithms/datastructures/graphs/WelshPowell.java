@@ -102,7 +102,7 @@ public final class WelshPowell {
      * Creates a graph with the specified number of vertices and edges.
      *
      * @param numberOfVertices the total number of vertices
-     * @param listOfEdges a 2D array representing edges where each inner array contains two vertex indices
+     * @param listOfEdges      a 2D array representing edges where each inner array contains two vertex indices
      * @return a Graph object representing the created graph
      * @throws IllegalArgumentException if the edge array is invalid or vertices are out of bounds
      */
@@ -154,7 +154,7 @@ public final class WelshPowell {
     /**
      * Checks if a vertex has adjacent colored vertices
      *
-     * @param graph the input graph
+     * @param graph  the input graph
      * @param vertex the vertex to check
      * @param colors the array of colors assigned to the vertices
      * @return {@code true} if the vertex has adjacent colored vertices, {@code false} otherwise
@@ -188,7 +188,7 @@ public final class WelshPowell {
     /**
      * Computes the colors already used by the adjacent vertices
      *
-     * @param graph the input graph
+     * @param graph  the input graph
      * @param vertex the vertex to check
      * @param colors the array of colors assigned to the vertices
      * @return an array of booleans representing the colors used by the adjacent vertices

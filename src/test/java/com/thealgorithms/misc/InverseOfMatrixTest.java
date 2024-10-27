@@ -3,6 +3,7 @@ package com.thealgorithms.misc;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,7 +18,7 @@ class InverseOfMatrixTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of(new double[][] {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, new double[][] {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}), Arguments.of(new double[][] {{4, 7}, {2, 6}}, new double[][] {{0.6, -0.7}, {-0.2, 0.4}}));
+        return Stream.of(Arguments.of(new double[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, new double[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}), Arguments.of(new double[][]{{4, 7}, {2, 6}}, new double[][]{{0.6, -0.7}, {-0.2, 0.4}}));
     }
 
     private void assertMatrixEquals(double[][] expected, double[][] actual) {

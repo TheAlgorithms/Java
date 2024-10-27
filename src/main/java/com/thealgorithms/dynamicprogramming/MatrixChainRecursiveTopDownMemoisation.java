@@ -24,7 +24,7 @@ public final class MatrixChainRecursiveTopDownMemoisation {
      * @param p an array of integers representing the dimensions of the matrices.
      *          The length of the array is n + 1, where n is the number of matrices.
      * @return the minimum number of multiplications required to multiply the chain
-     *         of matrices.
+     * of matrices.
      */
     static int memoizedMatrixChain(int[] p) {
         int n = p.length;
@@ -46,7 +46,7 @@ public final class MatrixChainRecursiveTopDownMemoisation {
      * @param i the starting index of the matrix chain.
      * @param j the ending index of the matrix chain.
      * @return the minimum number of multiplications needed to multiply matrices
-     *         from i to j.
+     * from i to j.
      */
     static int lookupChain(int[][] m, int[] p, int i, int j) {
         if (i == j) {

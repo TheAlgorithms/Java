@@ -4,8 +4,7 @@ import java.util.List;
 
 /**
  * @brief Implementation of the Chinese Remainder Theorem (CRT) algorithm
- * @details
- * The Chinese Remainder Theorem (CRT) is used to solve systems of
+ * @details The Chinese Remainder Theorem (CRT) is used to solve systems of
  * simultaneous congruences. Given several pairwise coprime moduli
  * and corresponding remainders, the algorithm finds the smallest
  * positive solution.
@@ -15,10 +14,10 @@ public final class ChineseRemainderTheorem {
     }
 
     /**
-     * @brief Solves the Chinese Remainder Theorem problem.
      * @param remainders The list of remainders.
-     * @param moduli The list of pairwise coprime moduli.
+     * @param moduli     The list of pairwise coprime moduli.
      * @return The smallest positive solution that satisfies all the given congruences.
+     * @brief Solves the Chinese Remainder Theorem problem.
      */
     public static int solveCRT(List<Integer> remainders, List<Integer> moduli) {
         int product = 1;
@@ -46,11 +45,11 @@ public final class ChineseRemainderTheorem {
     }
 
     /**
-     * @brief Computes the modular inverse of a number with respect to a modulus using
-     * the Extended Euclidean Algorithm.
      * @param a The number for which to find the inverse.
      * @param m The modulus.
      * @return The modular inverse of a modulo m.
+     * @brief Computes the modular inverse of a number with respect to a modulus using
+     * the Extended Euclidean Algorithm.
      */
     private static int modInverse(int a, int m) {
         int m0 = m;

@@ -6,7 +6,7 @@ import java.util.Random;
  * This class implements the Solovay-Strassen primality test,
  * which is a probabilistic algorithm to determine whether a number is prime.
  * The algorithm is based on properties of the Jacobi symbol and modular exponentiation.
- *
+ * <p>
  * For more information, go to {@link https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test}
  */
 final class SolovayStrassenPrimalityTest {
@@ -35,10 +35,10 @@ final class SolovayStrassenPrimalityTest {
     /**
      * Calculates modular exponentiation using the method of exponentiation by squaring.
      *
-     * @param base the base number
+     * @param base     the base number
      * @param exponent the exponent
-     * @param mod the modulus
-     * @return (base^exponent) mod mod
+     * @param mod      the modulus
+     * @return (base ^ exponent) mod mod
      */
     private static long calculateModularExponentiation(long base, long exponent, long mod) {
         long x = 1; // This will hold the result of (base^exponent) % mod
@@ -60,7 +60,7 @@ final class SolovayStrassenPrimalityTest {
     /**
      * Computes the Jacobi symbol (a/n), which is a generalization of the Legendre symbol.
      *
-     * @param a the numerator
+     * @param a   the numerator
      * @param num the denominator (must be an odd positive integer)
      * @return the Jacobi symbol value: 1, -1, or 0
      */
@@ -101,7 +101,7 @@ final class SolovayStrassenPrimalityTest {
     /**
      * Performs the Solovay-Strassen primality test on a given number.
      *
-     * @param num the number to be tested for primality
+     * @param num        the number to be tested for primality
      * @param iterations the number of iterations to run for accuracy
      * @return true if num is likely prime, false if it is composite
      */

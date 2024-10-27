@@ -53,11 +53,11 @@ public final class UniqueSubsequencesCount {
      * <p> Uses a HashSet to avoid counting duplicate characters within
      * a single subsequence.</p>
      *
-     * @param st the input string
+     * @param st  the input string
      * @param idx the current index from which to calculate subsequences
-     * @param dp dynamic programming array used to memoize results
+     * @param dp  dynamic programming array used to memoize results
      * @return the total number of unique subsequences starting from the
-     *         current index
+     * current index
      */
     public static int countSubsequences(String st, int idx, int[] dp) {
 

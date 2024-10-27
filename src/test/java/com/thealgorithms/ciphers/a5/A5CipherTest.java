@@ -3,6 +3,7 @@ package com.thealgorithms.ciphers.a5;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.BitSet;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +14,14 @@ public class A5CipherTest {
     @BeforeEach
     void setUp() {
         // Initialize the session key and frame counter
-        final var sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L});
-        final var frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L});
+        final var sessionKey = BitSet.valueOf(new long[]{0b1010101010101010L});
+        final var frameCounter = BitSet.valueOf(new long[]{0b0000000000000001L});
         a5Cipher = new A5Cipher(sessionKey, frameCounter);
     }
 
     @Test
     void testEncryptWithValidInput() {
-        BitSet plainText = BitSet.valueOf(new long[] {0b1100110011001100L}); // Example plaintext
+        BitSet plainText = BitSet.valueOf(new long[]{0b1100110011001100L}); // Example plaintext
         BitSet encrypted = a5Cipher.encrypt(plainText);
 
         // The expected result depends on the key stream generated.
@@ -31,7 +32,7 @@ public class A5CipherTest {
 
     @Test
     void testEncryptAllOnesInput() {
-        BitSet plainText = BitSet.valueOf(new long[] {0b1111111111111111L}); // All ones
+        BitSet plainText = BitSet.valueOf(new long[]{0b1111111111111111L}); // All ones
         BitSet encrypted = a5Cipher.encrypt(plainText);
 
         // Similar to testEncryptWithValidInput, ensure that output isn't the same as input

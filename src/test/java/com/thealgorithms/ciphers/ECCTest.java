@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.math.BigInteger;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -66,7 +67,7 @@ public class ECCTest {
         // 4. Define the known ciphertext containing two ECPoints (R, S)
         ECC.ECPoint rPoint = new ECC.ECPoint(new BigInteger("103077584019003058745849614420912636617007257617156724481937620119667345237687"), new BigInteger("68193862907937248121971710522760893811582068323088661566426323952783362061817"));
         ECC.ECPoint sPoint = new ECC.ECPoint(new BigInteger("31932232426664380635434632300383525435115368414929679432313910646436992147798"), new BigInteger("77299754382292904069123203569944908076819220797512755280123348910207308129766"));
-        ECC.ECPoint[] cipherText = new ECC.ECPoint[] {rPoint, sPoint};
+        ECC.ECPoint[] cipherText = new ECC.ECPoint[]{rPoint, sPoint};
 
         // 5. Create an ECC instance and set the private key and curve parameters
         ecc.setPrivateKey(knownPrivateKey); // Use setter method to set the private key

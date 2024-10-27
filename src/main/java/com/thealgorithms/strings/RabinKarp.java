@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 /**
  * @author Prateek Kumar Oraon (https://github.com/prateekKrOraon)
- *
- An implementation of Rabin-Karp string matching algorithm
- Program will simply end if there is no match
+ * <p>
+ * An implementation of Rabin-Karp string matching algorithm
+ * Program will simply end if there is no match
  */
 public final class RabinKarp {
     private RabinKarp() {

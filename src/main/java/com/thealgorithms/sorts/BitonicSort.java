@@ -15,7 +15,7 @@ public class BitonicSort implements SortAlgorithm {
     /**
      * Sorts the given array using the Bitonic Sort algorithm.
      *
-     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param <T>   the type of elements in the array, which must implement the Comparable interface
      * @param array the array to be sorted
      * @return the sorted array
      */
@@ -54,10 +54,10 @@ public class BitonicSort implements SortAlgorithm {
     /**
      * Merges the bitonic sequence in the specified direction.
      *
-     * @param <T> the type of elements in the array, which must be Comparable
-     * @param array the array containing the bitonic sequence to be merged
-     * @param low the starting index of the sequence to be merged
-     * @param cnt the number of elements in the sequence to be merged
+     * @param <T>       the type of elements in the array, which must be Comparable
+     * @param array     the array containing the bitonic sequence to be merged
+     * @param low       the starting index of the sequence to be merged
+     * @param cnt       the number of elements in the sequence to be merged
      * @param direction the direction of sorting
      */
     private <T extends Comparable<T>> void bitonicMerge(T[] array, int low, int cnt, Direction direction) {
@@ -101,7 +101,7 @@ public class BitonicSort implements SortAlgorithm {
     /**
      * Finds the maximum element in the given array.
      *
-     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param <T>   the type of elements in the array, which must implement the Comparable interface
      * @param array the array to be searched
      * @return the maximum element in the array
      * @throws IllegalArgumentException if the array is null or empty

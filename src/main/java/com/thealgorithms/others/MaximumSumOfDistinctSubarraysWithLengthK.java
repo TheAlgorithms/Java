@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * References: https://en.wikipedia.org/wiki/Streaming_algorithm
- *
+ * <p>
  * This model involves computing the maximum sum of subarrays of a fixed size \( K \) from a stream of integers.
  * As the stream progresses, elements from the end of the window are removed, and new elements from the stream are added.
  *
@@ -18,9 +18,8 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
     /**
      * Finds the maximum sum of a subarray of size K consisting of distinct elements.
      *
-     * @param k The size of the subarray.
+     * @param k    The size of the subarray.
      * @param nums The array from which subarrays will be considered.
-     *
      * @return The maximum sum of any distinct-element subarray of size K. If no such subarray exists, returns 0.
      */
     public static long maximumSubarraySum(int k, int... nums) {

@@ -8,7 +8,7 @@ import java.util.List;
  * SlackTimeScheduling is an algorithm that prioritizes tasks based on their
  * slack time, which is defined as the difference between the task's deadline
  * and the time required to execute it. Tasks with less slack time are prioritized.
- *
+ * <p>
  * Use Case: Real-time systems with hard deadlines, such as robotics or embedded systems.
  *
  * @author Hardvan

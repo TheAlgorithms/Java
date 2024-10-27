@@ -6,18 +6,18 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
  * Check if a binary tree is symmetric or not.
  * A binary tree is a symmetric tree if the left and right subtree of root are mirror image.
  * Below is a symmetric tree
- *                               1
- *                   /                         \
- *                2                           2
- *         /                \             /             \
- *      3                    4         4                3
- *
+ * 1
+ * /                         \
+ * 2                           2
+ * /                \             /             \
+ * 3                    4         4                3
+ * <p>
  * Below is not symmetric because values is different in last level
- *                               1
- *                   /                         \
- *                 2                           2
- *         /                \             /             \
- *      3                    5         4                3
+ * 1
+ * /                         \
+ * 2                           2
+ * /                \             /             \
+ * 3                    5         4                3
  * <p>
  * Approach:
  * Recursively check for left and right subtree of root

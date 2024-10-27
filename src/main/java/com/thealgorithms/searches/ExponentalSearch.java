@@ -25,8 +25,8 @@ class ExponentialSearch implements SearchAlgorithm {
      * Finds the index of the specified key in a sorted array using exponential search.
      *
      * @param array The sorted array to search.
-     * @param key The element to search for.
-     * @param <T> The type of the elements in the array, which must be comparable.
+     * @param key   The element to search for.
+     * @param <T>   The type of the elements in the array, which must be comparable.
      * @return The index of the key if found, otherwise -1.
      */
     @Override

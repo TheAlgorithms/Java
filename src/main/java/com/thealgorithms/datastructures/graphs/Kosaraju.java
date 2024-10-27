@@ -52,7 +52,7 @@ import java.util.Stack;
  * |  v                         |    v v
  * 1                            5 <--- 6
  * </pre>
- *
+ * <p>
  * The SCCs of this transpose graph are the same as the original graph.
  */
 public class Kosaraju {
@@ -74,7 +74,7 @@ public class Kosaraju {
      * 3. Find SCCs by performing DFS on the transpose graph
      * 4. Return the list of SCCs
      *
-     * @param v the number of vertices in the graph
+     * @param v    the number of vertices in the graph
      * @param list the adjacency list representing the directed graph
      * @return a list of SCCs where each SCC is a list of vertices
      */
@@ -87,7 +87,8 @@ public class Kosaraju {
 
     /**
      * Performs DFS on the original graph to sort nodes by their finishing times.
-     * @param v the number of vertices in the graph
+     *
+     * @param v    the number of vertices in the graph
      * @param list the adjacency list representing the original graph
      */
     private void sortEdgesByLowestFinishTime(int v, List<List<Integer>> list) {
@@ -101,7 +102,8 @@ public class Kosaraju {
 
     /**
      * Creates the transpose (reverse) of the original graph.
-     * @param v the number of vertices in the graph
+     *
+     * @param v    the number of vertices in the graph
      * @param list the adjacency list representing the original graph
      * @return the adjacency list representing the transposed graph
      */
@@ -120,7 +122,8 @@ public class Kosaraju {
 
     /**
      * Finds the strongly connected components (SCCs) by performing DFS on the transposed graph.
-     * @param v the number of vertices in the graph
+     *
+     * @param v              the number of vertices in the graph
      * @param transposeGraph the adjacency list representing the transposed graph
      */
     public void findStronglyConnectedComponents(int v, List<List<Integer>> transposeGraph) {
@@ -137,8 +140,9 @@ public class Kosaraju {
 
     /**
      * Performs DFS on the original graph and pushes nodes onto the stack in order of their finish time.
+     *
      * @param node the current node being visited
-     * @param vis array to keep track of visited nodes
+     * @param vis  array to keep track of visited nodes
      * @param list the adjacency list of the graph
      */
     private void dfs(int node, int[] vis, List<List<Integer>> list) {
@@ -153,8 +157,9 @@ public class Kosaraju {
 
     /**
      * Performs DFS on the transposed graph to find the strongly connected components.
+     *
      * @param node the current node being visited
-     * @param vis array to keep track of visited nodes
+     * @param vis  array to keep track of visited nodes
      * @param list the adjacency list of the transposed graph
      */
     private void dfs2(int node, int[] vis, List<List<Integer>> list) {

@@ -45,6 +45,7 @@ public final class InverseOfMatrix {
         }
         return x;
     }
+
     /**
      * Method to carry out the partial-pivoting Gaussian
      * elimination.  Here index[] stores pivoting order.

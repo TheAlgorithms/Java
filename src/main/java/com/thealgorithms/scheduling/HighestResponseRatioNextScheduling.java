@@ -13,7 +13,7 @@ import java.util.Comparator;
  * <pre>
  *     Response Ratio = (waiting time + burst time) / burst time
  * </pre>
- *
+ * <p>
  * HRRN is designed to reduce the average waiting time and improve overall
  * system performance by balancing between short and long processes,
  * minimizing process starvation.
@@ -62,9 +62,9 @@ public final class HighestResponseRatioNextScheduling {
      * in the system from arrival to completion. It is the sum of the burst time
      * and the waiting time.</p>
      *
-     * @param processNames Array of process names.
-     * @param arrivalTimes Array of arrival times corresponding to each process.
-     * @param burstTimes Array of burst times for each process.
+     * @param processNames  Array of process names.
+     * @param arrivalTimes  Array of arrival times corresponding to each process.
+     * @param burstTimes    Array of burst times for each process.
      * @param noOfProcesses The number of processes.
      * @return An array of Turn Around Times for each process.
      */
@@ -106,7 +106,7 @@ public final class HighestResponseRatioNextScheduling {
      * Calculates the Waiting Time (WT) for each process.
      *
      * @param turnAroundTime The Turn Around Times for each process.
-     * @param burstTimes The burst times for each process.
+     * @param burstTimes     The burst times for each process.
      * @return An array of Waiting Times for each process.
      */
     public static int[] calculateWaitingTime(int[] turnAroundTime, int[] burstTimes) {
@@ -120,7 +120,7 @@ public final class HighestResponseRatioNextScheduling {
     /**
      * Finds the next process to be scheduled based on arrival times and the current time.
      *
-     * @param processes Array of Process objects.
+     * @param processes   Array of Process objects.
      * @param currentTime The current time in the scheduling process.
      * @return The index of the next process to be scheduled, or PROCESS_NOT_FOUND if no process is ready.
      */
@@ -135,7 +135,7 @@ public final class HighestResponseRatioNextScheduling {
      * (waiting time + burst time) / burst time
      * where waiting time = current time - arrival time</p>
      *
-     * @param processes Array of Process objects.
+     * @param processes   Array of Process objects.
      * @param currentTime The current time in the scheduling process.
      * @return The index of the process with the highest response ratio, or PROCESS_NOT_FOUND if no process is ready.
      */

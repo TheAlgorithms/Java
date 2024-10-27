@@ -17,6 +17,7 @@ import java.util.Stack;
 public final class CheckIfBinaryTreeBalanced {
     private CheckIfBinaryTreeBalanced() {
     }
+
     /**
      * Recursive is BT balanced implementation
      *

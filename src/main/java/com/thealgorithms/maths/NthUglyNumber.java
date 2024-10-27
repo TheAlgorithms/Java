@@ -8,21 +8,21 @@ import org.apache.commons.lang3.tuple.MutablePair;
 /**
  * @brief class computing the n-th ugly number (when they are sorted)
  * @details the ugly numbers with base [2, 3, 5] are all numbers of the form 2^a*3^b^5^c,
- *   where the exponents a, b, c are non-negative integers.
- *   Some properties of ugly numbers:
- *     - base [2, 3, 5] ugly numbers are the 5-smooth numbers, cf. https://oeis.org/A051037
- *     - base [2, 3, 5, 7] ugly numbers are 7-smooth numbers, cf. https://oeis.org/A002473
- *     - base [2] ugly numbers are the non-negative powers of 2,
- *     - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
+ * where the exponents a, b, c are non-negative integers.
+ * Some properties of ugly numbers:
+ * - base [2, 3, 5] ugly numbers are the 5-smooth numbers, cf. https://oeis.org/A051037
+ * - base [2, 3, 5, 7] ugly numbers are 7-smooth numbers, cf. https://oeis.org/A002473
+ * - base [2] ugly numbers are the non-negative powers of 2,
+ * - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
  */
 public class NthUglyNumber {
     private ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
     private ArrayList<MutablePair<Integer, Integer>> positions = new ArrayList<>();
 
     /**
-     * @brief initialized the object allowing to compute ugly numbers with given base
      * @param baseNumbers the given base of ugly numbers
-     * @exception IllegalArgumentException baseNumber is empty
+     * @throws IllegalArgumentException baseNumber is empty
+     * @brief initialized the object allowing to compute ugly numbers with given base
      */
     NthUglyNumber(final int[] baseNumbers) {
         if (baseNumbers.length == 0) {
@@ -36,8 +36,8 @@ public class NthUglyNumber {
 
     /**
      * @param n the zero-based-index of the queried ugly number
-     * @exception IllegalArgumentException n is negative
      * @return the n-th ugly number (starting from index 0)
+     * @throws IllegalArgumentException n is negative
      */
     public Long get(final int n) {
         if (n < 0) {

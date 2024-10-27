@@ -6,10 +6,10 @@ import java.util.PriorityQueue;
 /**
  * This class provides a method to merge multiple sorted arrays into a single sorted array.
  * It utilizes a min-heap to efficiently retrieve the smallest elements from each array.
- *
+ * <p>
  * Time Complexity: O(n * log k), where n is the total number of elements across all arrays
  * and k is the number of arrays.
- *
+ * <p>
  * Space Complexity: O(k) for the heap, where k is the number of arrays.
  *
  * @author Hardvan
@@ -24,10 +24,10 @@ public final class MergeKSortedArrays {
      * 1. Create a min-heap to store elements in the format: {value, array index, element index}
      * 2. Add the first element from each array to the heap
      * 3. While the heap is not empty, remove the smallest element from the heap
-     *   and add it to the result array. If there are more elements in the same array,
-     *   add the next element to the heap.
-     *   Continue until all elements have been processed.
-     *   The result array will contain all elements in sorted order.
+     * and add it to the result array. If there are more elements in the same array,
+     * add the next element to the heap.
+     * Continue until all elements have been processed.
+     * The result array will contain all elements in sorted order.
      * 4. Return the result array.
      *
      * @param arrays a 2D array, where each subarray is sorted in non-decreasing order

@@ -24,8 +24,8 @@ class LowerBound implements SearchAlgorithm {
 
     /**
      * @param array is an array where the LowerBound value is to be found
-     * @param key is an element for which the LowerBound is to be found
-     * @param <T> is any comparable type
+     * @param key   is an element for which the LowerBound is to be found
+     * @param <T>   is any comparable type
      * @return index of the LowerBound element
      */
     @Override
@@ -37,8 +37,8 @@ class LowerBound implements SearchAlgorithm {
      * This method implements the Generic Binary Search
      *
      * @param array The array to make the binary search
-     * @param key The number you are looking for
-     * @param left The lower bound
+     * @param key   The number you are looking for
+     * @param left  The lower bound
      * @param right The upper bound
      * @return the location of the key
      */

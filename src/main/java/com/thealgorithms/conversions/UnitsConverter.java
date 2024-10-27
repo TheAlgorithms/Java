@@ -121,12 +121,12 @@ public final class UnitsConverter {
     /**
      * Converts a value from one unit to another.
      *
-     * @param inputUnit the unit of the input value.
+     * @param inputUnit  the unit of the input value.
      * @param outputUnit the unit to convert the value into.
-     * @param value the value to convert.
+     * @param value      the value to convert.
      * @return the converted value in the target unit.
      * @throws IllegalArgumentException if inputUnit equals outputUnit.
-     * @throws NoSuchElementException if no conversion exists between the units.
+     * @throws NoSuchElementException   if no conversion exists between the units.
      */
     public double convert(final String inputUnit, final String outputUnit, final double value) {
         if (inputUnit.equals(outputUnit)) {

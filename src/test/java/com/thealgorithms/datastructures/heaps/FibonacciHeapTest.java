@@ -91,7 +91,9 @@ public class FibonacciHeapTest {
     @Test
     void testDeleteOnEmptyHeap() {
         FibonacciHeap fibonacciHeap = new FibonacciHeap();
-        Assertions.assertThrows(NullPointerException.class, () -> { fibonacciHeap.delete(fibonacciHeap.findMin()); });
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            fibonacciHeap.delete(fibonacciHeap.findMin());
+        });
     }
 
     @Test

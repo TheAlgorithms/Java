@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NavigableSet;
 import java.util.TreeSet;
+
 /**
  * Dijkstra's algorithm,is a graph search algorithm that solves the
  * single-source shortest path problem for a graph with nonnegative edge path
@@ -205,7 +206,7 @@ class Graph {
             u = q.pollFirst();
             if (u.dist == Integer.MAX_VALUE) {
                 break; // we can ignore u (and any other remaining vertices) since they are
-                       // unreachable
+                // unreachable
             }
             // look at distances to each neighbour
             for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {

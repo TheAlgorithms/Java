@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.crypto.SecretKey;
+
 import org.junit.jupiter.api.Test;
 
 public class AESEncryptionTest {
@@ -55,7 +56,7 @@ public class AESEncryptionTest {
 
     @Test
     public void testBytesToHex() {
-        byte[] bytes = new byte[] {0, 1, 15, 16, (byte) 255}; // Test with diverse byte values
+        byte[] bytes = new byte[]{0, 1, 15, 16, (byte) 255}; // Test with diverse byte values
         String hex = AESEncryption.bytesToHex(bytes);
         assertEquals("00010F10FF", hex, "Hex representation should match the expected value");
     }

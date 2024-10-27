@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Index Of Right Most SetBit
+ *
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 

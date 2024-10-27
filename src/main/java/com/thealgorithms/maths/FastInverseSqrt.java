@@ -8,11 +8,12 @@ package com.thealgorithms.maths;
 public final class FastInverseSqrt {
     private FastInverseSqrt() {
     }
+
     /**
      * Returns the inverse square root of the given number upto 6 - 8 decimal places.
      * calculates the inverse square root of the given number and returns true if calculated answer
      * matches with given answer else returns false
-     *
+     * <p>
      * OUTPUT :
      * Input - number = 4522
      * Output: it calculates the inverse squareroot of a number and returns true with it matches the

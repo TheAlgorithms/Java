@@ -5,23 +5,23 @@ package com.thealgorithms.dynamicprogramming;
  * Given a collection of N wines with different prices, the objective is to maximize profit by selling
  * one wine each year, considering the constraint that only the leftmost or rightmost wine can be sold
  * at any given time.
- *
+ * <p>
  * The price of the ith wine is pi, and the selling price increases by a factor of the year in which
  * it is sold. This class implements three approaches to solve the problem:
- *
+ * <p>
  * 1. **Recursion**: A straightforward recursive method that computes the maximum profit.
- *    - Time Complexity: O(2^N)
- *    - Space Complexity: O(N) due to recursive calls.
- *
+ * - Time Complexity: O(2^N)
+ * - Space Complexity: O(N) due to recursive calls.
+ * <p>
  * 2. **Top-Down Dynamic Programming (Memoization)**: This approach caches the results of subproblems
- *    to avoid redundant computations.
- *    - Time Complexity: O(N^2)
- *    - Space Complexity: O(N^2) for the storage of results and O(N) for recursion stack.
- *
+ * to avoid redundant computations.
+ * - Time Complexity: O(N^2)
+ * - Space Complexity: O(N^2) for the storage of results and O(N) for recursion stack.
+ * <p>
  * 3. **Bottom-Up Dynamic Programming (Tabulation)**: This method builds a table iteratively to
- *    compute the maximum profit for all possible subproblems.
- *    - Time Complexity: O(N^2)
- *    - Space Complexity: O(N^2) for the table.
+ * compute the maximum profit for all possible subproblems.
+ * - Time Complexity: O(N^2)
+ * - Space Complexity: O(N^2) for the table.
  */
 public final class WineProblem {
     private WineProblem() {
@@ -80,8 +80,8 @@ public final class WineProblem {
      * Calculate maximum profit using bottom-up dynamic programming with tabulation.
      *
      * @param arr Array of wine prices.
-     * @throws IllegalArgumentException if the input array is null or empty.
      * @return Maximum profit obtainable by selling the wines.
+     * @throws IllegalArgumentException if the input array is null or empty.
      */
     public static int wpbu(int[] arr) {
         if (arr == null || arr.length == 0) {

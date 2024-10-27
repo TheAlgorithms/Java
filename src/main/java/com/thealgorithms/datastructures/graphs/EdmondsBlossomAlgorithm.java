@@ -11,7 +11,7 @@ import java.util.Queue;
  * to find the maximum matching in a general graph. The algorithm efficiently
  * handles cases where the graph contains odd-length cycles by contracting
  * "blossoms" and finding augmenting paths.
- *<p>
+ * <p>
  * <a href="https://stanford.edu/~rezab/classes/cme323/S16/projects_reports/shoemaker_vare.pdf">Documentation of Algorithm (Stanford University)</a>
  * <p></p>
  * <a href="https://en.wikipedia.org/wiki/Blossom_algorithm">Wikipedia Documentation</a>
@@ -26,7 +26,7 @@ public final class EdmondsBlossomAlgorithm {
     /**
      * Finds the maximum matching in a general graph (Edmonds Blossom Algorithm).
      *
-     * @param edges A list of edges in the graph.
+     * @param edges       A list of edges in the graph.
      * @param vertexCount The number of vertices in the graph.
      * @return A list of matched pairs of vertices.
      */
@@ -127,9 +127,9 @@ public final class EdmondsBlossomAlgorithm {
     /**
      * Updates the matching along the augmenting path found.
      *
-     * @param match The matching array.
+     * @param match  The matching array.
      * @param parent The parent array used during the BFS.
-     * @param u The starting node of the augmenting path.
+     * @param u      The starting node of the augmenting path.
      */
     private static void updateMatching(int[] match, int[] parent, int u) {
         while (u != UNMATCHED) {
@@ -144,10 +144,10 @@ public final class EdmondsBlossomAlgorithm {
     /**
      * Finds the base of a node in the blossom.
      *
-     * @param base The base array.
+     * @param base   The base array.
      * @param parent The parent array.
-     * @param u One end of the edge.
-     * @param v The other end of the edge.
+     * @param u      One end of the edge.
+     * @param v      The other end of the edge.
      * @return The base of the node or UNMATCHED.
      */
     private static int findBase(int[] base, int[] parent, int u, int v) {

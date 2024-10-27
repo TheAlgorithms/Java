@@ -61,7 +61,7 @@ public record ADTFraction(int numerator, int denominator) {
      * Calculates the result of the fraction.
      *
      * @return The numerical result of the division between {@code numerator} and {@code
-     *     denominator}
+     * denominator}
      */
     public float value() {
         return (float) this.numerator / this.denominator;

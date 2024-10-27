@@ -3,10 +3,10 @@ package com.thealgorithms.ciphers;
 /**
  * The AffineCipher class implements the Affine cipher, a type of monoalphabetic substitution cipher.
  * It encrypts and decrypts messages using a linear transformation defined by the formula:
- *
- *     E(x) = (a * x + b) mod m
- *     D(y) = a^-1 * (y - b) mod m
- *
+ * <p>
+ * E(x) = (a * x + b) mod m
+ * D(y) = a^-1 * (y - b) mod m
+ * <p>
  * where:
  * - E(x) is the encrypted character,
  * - D(y) is the decrypted character,
@@ -15,7 +15,7 @@ package com.thealgorithms.ciphers;
  * - x is the index of the plaintext character,
  * - y is the index of the ciphertext character,
  * - m is the size of the alphabet (26 for the English alphabet).
- *
+ * <p>
  * The class provides methods for encrypting and decrypting messages, as well as a main method to demonstrate its usage.
  */
 final class AffineCipher {

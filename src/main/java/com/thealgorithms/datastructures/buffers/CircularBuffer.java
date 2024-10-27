@@ -73,8 +73,8 @@ public class CircularBuffer<Item> {
      * If the buffer is full, this operation will overwrite the oldest data.
      *
      * @param item The item to be added.
-     * @throws IllegalArgumentException if the item is null.
      * @return {@code true} if the item was successfully added, {@code false} if the buffer was full and the item overwrote existing data.
+     * @throws IllegalArgumentException if the item is null.
      */
     public boolean put(Item item) {
         if (item == null) {
@@ -110,7 +110,7 @@ public class CircularBuffer<Item> {
          * Constructor to initialize the circular pointer.
          *
          * @param pointer The initial position of the pointer.
-         * @param max The maximum size (capacity) of the circular buffer.
+         * @param max     The maximum size (capacity) of the circular buffer.
          */
         CircularPointer(int pointer, int max) {
             this.pointer = pointer;

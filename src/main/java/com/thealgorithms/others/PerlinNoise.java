@@ -12,11 +12,11 @@ public final class PerlinNoise {
     }
 
     /**
-     * @param width width of noise array
-     * @param height height of noise array
+     * @param width       width of noise array
+     * @param height      height of noise array
      * @param octaveCount numbers of layers used for blending noise
      * @param persistence value of impact each layer get while blending
-     * @param seed used for randomizer
+     * @param seed        used for randomizer
      * @return float array containing calculated "Perlin-Noise" values
      */
     static float[][] generatePerlinNoise(int width, int height, int octaveCount, float persistence, long seed) {
@@ -65,8 +65,8 @@ public final class PerlinNoise {
     }
 
     /**
-     * @param base base random float array
-     * @param width width of noise array
+     * @param base   base random float array
+     * @param width  width of noise array
      * @param height height of noise array
      * @param octave current layer
      * @return float array containing calculated "Perlin-Noise-Layer" values
@@ -105,10 +105,10 @@ public final class PerlinNoise {
     }
 
     /**
-     * @param a value of point a
-     * @param b value of point b
+     * @param a     value of point a
+     * @param b     value of point b
      * @param alpha determine which value has more impact (closer to 0 -> a,
-     * closer to 1 -> b)
+     *              closer to 1 -> b)
      * @return interpolated value
      */
     static float interpolate(float a, float b, float alpha) {

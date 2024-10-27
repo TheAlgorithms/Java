@@ -3,10 +3,8 @@ package com.thealgorithms.datastructures.trees;
 import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 
 /**
- *
- *
  * <h1>Binary Search Tree (Recursive)</h1>
- *
+ * <p>
  * An implementation of BST recursively. In recursive implementation the checks
  * are down the tree First root is checked if not found then its children are
  * checked Binary Search Tree is a binary tree which satisfies three properties:
@@ -79,7 +77,7 @@ public class BSTRecursive {
      * Recursive insertion of value in BST.
      *
      * @param node to check if the data can be inserted in current node or its
-     * subtree
+     *             subtree
      * @param data the value to be inserted
      * @return the modified value of the root parameter after insertion
      */

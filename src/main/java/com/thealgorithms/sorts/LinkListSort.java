@@ -1,6 +1,7 @@
 package com.thealgorithms.sorts;
 
 import java.util.Arrays;
+
 /**
  * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
  * Program description - To sort the LinkList as per sorting technique
@@ -44,8 +45,8 @@ public class LinkListSort {
             // array b is sorted and it will return true when checked with sorted list
             LinkListSort uu = new LinkListSort();
             return uu.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
         case 2:
             Node start1 = null;
             Node prev1 = null;
@@ -73,8 +74,8 @@ public class LinkListSort {
             LinkListSort uu1 = new LinkListSort();
             // array b is not sorted and it will return false when checked with sorted list
             return uu1.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
         case 3:
             Task2 mm = new Task2();
             Node start2 = null;
@@ -103,8 +104,8 @@ public class LinkListSort {
             // array b is sorted and it will return true when checked with sorted list
             LinkListSort uu2 = new LinkListSort();
             return uu2.compare(a, b);
-            // The given array and the expected array is checked if both are same then true
-            // is displayed else false is displayed
+        // The given array and the expected array is checked if both are same then true
+        // is displayed else false is displayed
         default:
             // default is used incase user puts a unauthorized value
             System.out.println("Wrong choice");
@@ -112,6 +113,7 @@ public class LinkListSort {
         // Switch case is used to call the classes as per the user requirement
         return false;
     }
+
     /**
      * OUTPUT :
      * Input - {89,56,98,123,26,75,12,40,39,68,91} is same for all the 3 classes

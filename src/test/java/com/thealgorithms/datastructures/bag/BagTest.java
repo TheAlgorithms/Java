@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.datastructures.bags.Bag;
+
 import java.util.Iterator;
+
 import org.junit.jupiter.api.Test;
 
 class BagTest {

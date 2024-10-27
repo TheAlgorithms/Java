@@ -22,6 +22,7 @@ public class SRTFScheduling {
 
     /**
      * Constructor
+     *
      * @param processes ArrayList of ProcessDetails given as input
      */
     public SRTFScheduling(ArrayList<ProcessDetails> processes) {

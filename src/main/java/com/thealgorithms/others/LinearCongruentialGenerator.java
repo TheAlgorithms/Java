@@ -21,8 +21,8 @@ public class LinearCongruentialGenerator {
      *
      * @param multiplier
      * @param increment
-     * @param modulo The maximum number that can be generated (exclusive). A
-     * common value is 2^32.
+     * @param modulo     The maximum number that can be generated (exclusive). A
+     *                   common value is 2^32.
      */
     public LinearCongruentialGenerator(double multiplier, double increment, double modulo) {
         this(System.currentTimeMillis(), multiplier, increment, modulo);
@@ -35,8 +35,8 @@ public class LinearCongruentialGenerator {
      * @param seed
      * @param multiplier
      * @param increment
-     * @param modulo The maximum number that can be generated (exclusive). A
-     * common value is 2^32.
+     * @param modulo     The maximum number that can be generated (exclusive). A
+     *                   common value is 2^32.
      */
     public LinearCongruentialGenerator(double seed, double multiplier, double increment, double modulo) {
         this.previousValue = seed;

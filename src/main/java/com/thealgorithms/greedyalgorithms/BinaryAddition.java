@@ -8,8 +8,9 @@ import java.util.Collections;
 public class BinaryAddition {
     /**
      * Computes the sum of two binary characters and a carry.
-     * @param a First binary character ('0' or '1').
-     * @param b Second binary character ('0' or '1').
+     *
+     * @param a     First binary character ('0' or '1').
+     * @param b     Second binary character ('0' or '1').
      * @param carry The carry from the previous operation ('0' or '1').
      * @return The sum as a binary character ('0' or '1').
      */
@@ -26,10 +27,12 @@ public class BinaryAddition {
         }
         return count % 2 == 0 ? '0' : '1';
     }
+
     /**
      * Computes the carry for the next higher bit from two binary characters and a carry.
-     * @param a First binary character ('0' or '1').
-     * @param b Second binary character ('0' or '1').
+     *
+     * @param a     First binary character ('0' or '1').
+     * @param b     Second binary character ('0' or '1').
      * @param carry The carry from the previous operation ('0' or '1').
      * @return The carry for the next bit ('0' or '1').
      */
@@ -46,8 +49,10 @@ public class BinaryAddition {
         }
         return count >= 2 ? '1' : '0';
     }
+
     /**
      * Adds two binary strings and returns their sum as a binary string.
+     *
      * @param a First binary string.
      * @param b Second binary string.
      * @return Binary string representing the sum of the two binary inputs.

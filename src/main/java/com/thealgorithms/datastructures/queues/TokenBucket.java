@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * This class is used to control the rate of requests in a distributed system.
  * It allows a certain number of requests (tokens) to be processed in a time frame,
  * based on the defined refill rate.
- *
+ * <p>
  * Applications: Computer networks, API rate limiting, distributed systems, etc.
  *
  * @author Hardvan

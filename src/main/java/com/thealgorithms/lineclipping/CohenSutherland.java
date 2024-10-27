@@ -7,15 +7,15 @@ import com.thealgorithms.lineclipping.utils.Point;
  * @author shikarisohan
  * @since 10/4/24
  * Cohen-Sutherland Line Clipping Algorithm
- *
+ * <p>
  * This algorithm is used to clip a line segment to a rectangular window.
  * It assigns a region code to each endpoint of the line segment, and
  * then efficiently determines whether the line segment is fully inside,
  * fully outside, or partially inside the window.
- *
+ * <p>
  * Reference:
  * https://en.wikipedia.org/wiki/Cohen%E2%80%93Sutherland_algorithm
- *
+ * <p>
  * Clipping window boundaries are defined as (xMin, yMin) and (xMax, yMax).
  * The algorithm computes the clipped line segment if it's partially or
  * fully inside the clipping window.

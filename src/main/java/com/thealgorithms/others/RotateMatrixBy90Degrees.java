@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import java.util.Scanner;
+
 /**
  * Given a matrix of size n x n We have to rotate this matrix by 90 Degree Here
  * is the algorithm for this problem .

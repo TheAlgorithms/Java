@@ -14,8 +14,8 @@ public final class MillerRabinPrimalityCheck {
      *
      * @param n Whole number which is tested on primality
      * @param k Number of iterations
-     *       If n is composite then running k iterations of the Miller–Rabin
-     *       test will declare n probably prime with a probability at most 4^(−k)
+     *          If n is composite then running k iterations of the Miller–Rabin
+     *          test will declare n probably prime with a probability at most 4^(−k)
      * @return true or false whether the given number is probably prime or not
      */
 
@@ -70,9 +70,8 @@ public final class MillerRabinPrimalityCheck {
      * @param a Random number (prime base) to check if it holds certain equality
      * @param d Number which holds this equation: 'n - 1 = 2^s * d'
      * @param s Number of twos in (n - 1) factorization
-     *
      * @return true or false whether the numbers hold the equation or not
-     *          the equations are described on the websites mentioned at the beginning of the class
+     * the equations are described on the websites mentioned at the beginning of the class
      */
     private static boolean checkComposite(long n, long a, long d, int s) {
         long x = powerModP(a, d, n);

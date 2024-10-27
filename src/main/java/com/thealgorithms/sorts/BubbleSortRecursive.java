@@ -18,7 +18,7 @@ public class BubbleSortRecursive implements SortAlgorithm {
      * BubbleSort algorithm implements using recursion
      *
      * @param array array contains elements
-     * @param len length of given array
+     * @param len   length of given array
      */
     private static <T extends Comparable<T>> void bubbleSort(T[] array, int len) {
         boolean swapped = false;

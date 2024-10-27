@@ -68,7 +68,7 @@ public class ClosestPairTest {
         ClosestPair.Location loc1 = cp.buildLocation(1.0, 2.0);
         ClosestPair.Location loc2 = cp.buildLocation(4.0, 6.0);
 
-        ClosestPair.Location[] locations = new ClosestPair.Location[] {loc1, loc2};
+        ClosestPair.Location[] locations = new ClosestPair.Location[]{loc1, loc2};
         double result = cp.bruteForce(locations);
         assertEquals(5.0, result, 0.01);
     }

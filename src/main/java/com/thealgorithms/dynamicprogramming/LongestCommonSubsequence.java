@@ -5,7 +5,7 @@ package com.thealgorithms.dynamicprogramming;
  * The LCS of two sequences is the longest sequence that appears in both
  * sequences
  * in the same order, but not necessarily consecutively.
- *
+ * <p>
  * This implementation uses dynamic programming to find the LCS of two strings.
  */
 final class LongestCommonSubsequence {

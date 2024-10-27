@@ -5,14 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.datastructures.graphs.WelshPowell.Graph;
+
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 class WelshPowellTest {
 
     @Test
     void testSimpleGraph() {
-        final var graph = WelshPowell.makeGraph(4, new int[][] {{0, 1}, {1, 2}, {2, 3}});
+        final var graph = WelshPowell.makeGraph(4, new int[][]{{0, 1}, {1, 2}, {2, 3}});
         int[] colors = WelshPowell.findColoring(graph);
         assertTrue(isColoringValid(graph, colors));
         assertEquals(2, countDistinctColors(colors));
@@ -20,7 +22,7 @@ class WelshPowellTest {
 
     @Test
     void testDisconnectedGraph() {
-        final var graph = WelshPowell.makeGraph(3, new int[][] {}); // No edges
+        final var graph = WelshPowell.makeGraph(3, new int[][]{}); // No edges
         int[] colors = WelshPowell.findColoring(graph);
         assertTrue(isColoringValid(graph, colors));
         assertEquals(1, countDistinctColors(colors));
@@ -28,7 +30,7 @@ class WelshPowellTest {
 
     @Test
     void testCompleteGraph() {
-        final var graph = WelshPowell.makeGraph(3, new int[][] {{0, 1}, {1, 2}, {2, 0}});
+        final var graph = WelshPowell.makeGraph(3, new int[][]{{0, 1}, {1, 2}, {2, 0}});
         int[] colors = WelshPowell.findColoring(graph);
         assertTrue(isColoringValid(graph, colors));
         assertEquals(3, countDistinctColors(colors));
@@ -37,22 +39,22 @@ class WelshPowellTest {
     @Test
     void testComplexGraph() {
         int[][] edges = {
-            {0, 7},
-            {0, 1},
-            {1, 3},
-            {2, 3},
-            {3, 8},
-            {3, 10},
-            {4, 10},
-            {4, 5},
-            {5, 6},
-            {6, 10},
-            {6, 7},
-            {7, 8},
-            {7, 9},
-            {7, 10},
-            {8, 9},
-            {9, 10},
+                {0, 7},
+                {0, 1},
+                {1, 3},
+                {2, 3},
+                {3, 8},
+                {3, 10},
+                {4, 10},
+                {4, 5},
+                {5, 6},
+                {6, 10},
+                {6, 7},
+                {7, 8},
+                {7, 9},
+                {7, 10},
+                {8, 9},
+                {9, 10},
         };
 
         final var graph = WelshPowell.makeGraph(11, edges); // 11 vertices from A (0) to K (10)
@@ -64,28 +66,38 @@ class WelshPowellTest {
 
     @Test
     void testNegativeVertices() {
-        assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(-1, new int[][] {}); }, "Number of vertices cannot be negative");
+        assertThrows(IllegalArgumentException.class, () -> {
+            WelshPowell.makeGraph(-1, new int[][]{});
+        }, "Number of vertices cannot be negative");
     }
 
     @Test
     void testSelfLoop() {
-        assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(3, new int[][] {{0, 0}}); }, "Self-loops are not allowed");
+        assertThrows(IllegalArgumentException.class, () -> {
+            WelshPowell.makeGraph(3, new int[][]{{0, 0}});
+        }, "Self-loops are not allowed");
     }
 
     @Test
     void testInvalidVertex() {
-        assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(3, new int[][] {{0, 3}}); }, "Vertex out of bounds");
-        assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(3, new int[][] {{0, -1}}); }, "Vertex out of bounds");
+        assertThrows(IllegalArgumentException.class, () -> {
+            WelshPowell.makeGraph(3, new int[][]{{0, 3}});
+        }, "Vertex out of bounds");
+        assertThrows(IllegalArgumentException.class, () -> {
+            WelshPowell.makeGraph(3, new int[][]{{0, -1}});
+        }, "Vertex out of bounds");
     }
 
     @Test
     void testInvalidEdgeArray() {
-        assertThrows(IllegalArgumentException.class, () -> { WelshPowell.makeGraph(3, new int[][] {{0}}); }, "Edge array must have exactly two elements");
+        assertThrows(IllegalArgumentException.class, () -> {
+            WelshPowell.makeGraph(3, new int[][]{{0}});
+        }, "Edge array must have exactly two elements");
     }
 
     @Test
     void testWithPreColoredVertex() {
-        final var graph = WelshPowell.makeGraph(4, new int[][] {{0, 1}, {1, 2}, {2, 3}});
+        final var graph = WelshPowell.makeGraph(4, new int[][]{{0, 1}, {1, 2}, {2, 3}});
         int[] colors = WelshPowell.findColoring(graph);
         assertTrue(isColoringValid(graph, colors));
         assertTrue(countDistinctColors(colors) >= 2);

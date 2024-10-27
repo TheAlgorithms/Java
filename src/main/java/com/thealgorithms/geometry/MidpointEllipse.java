@@ -20,8 +20,8 @@ public final class MidpointEllipse {
      *
      * @param centerX the x-coordinate of the center of the ellipse
      * @param centerY the y-coordinate of the center of the ellipse
-     * @param a the length of the semi-major axis (horizontal radius)
-     * @param b the length of the semi-minor axis (vertical radius)
+     * @param a       the length of the semi-major axis (horizontal radius)
+     * @param b       the length of the semi-minor axis (vertical radius)
      * @return a list of points (represented as int arrays) that form the ellipse
      */
     public static List<int[]> drawEllipse(int centerX, int centerY, int a, int b) {
@@ -58,11 +58,11 @@ public final class MidpointEllipse {
     /**
      * Computes points of a non-degenerate ellipse using the Midpoint Ellipse Algorithm.
      *
-     * @param points    the list to which points will be added
-     * @param centerX  the x-coordinate of the center of the ellipse
-     * @param centerY  the y-coordinate of the center of the ellipse
-     * @param a        the length of the semi-major axis (horizontal radius)
-     * @param b        the length of the semi-minor axis (vertical radius)
+     * @param points  the list to which points will be added
+     * @param centerX the x-coordinate of the center of the ellipse
+     * @param centerY the y-coordinate of the center of the ellipse
+     * @param a       the length of the semi-major axis (horizontal radius)
+     * @param b       the length of the semi-minor axis (vertical radius)
      */
     private static void computeEllipsePoints(Collection<int[]> points, int centerX, int centerY, int a, int b) {
         int x = 0; // Initial x-coordinate
@@ -116,11 +116,11 @@ public final class MidpointEllipse {
     /**
      * Adds points for all four quadrants of the ellipse based on symmetry.
      *
-     * @param points    the list to which points will be added
-     * @param centerX  the x-coordinate of the center of the ellipse
-     * @param centerY  the y-coordinate of the center of the ellipse
-     * @param x        the x-coordinate relative to the center
-     * @param y        the y-coordinate relative to the center
+     * @param points  the list to which points will be added
+     * @param centerX the x-coordinate of the center of the ellipse
+     * @param centerY the y-coordinate of the center of the ellipse
+     * @param x       the x-coordinate relative to the center
+     * @param y       the y-coordinate relative to the center
      */
     private static void addEllipsePoints(Collection<int[]> points, int centerX, int centerY, int x, int y) {
         points.add(new int[] {centerX + x, centerY + y});

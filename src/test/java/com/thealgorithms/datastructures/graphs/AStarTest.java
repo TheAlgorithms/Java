@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class AStarTest {
         ArrayList<Integer> graphData = new ArrayList<>(Arrays.asList(0, 1, 1, null, 0, 2, 2, null, 1, 3, 1, null, 2, 3, 1, null, 3, 4, 1, null));
         AStar.initializeGraph(graph, graphData);
 
-        heuristic = new int[] {5, 4, 3, 2, 0}; // Heuristic values for each node
+        heuristic = new int[]{5, 4, 3, 2, 0}; // Heuristic values for each node
     }
 
     @Test

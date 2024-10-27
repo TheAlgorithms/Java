@@ -82,7 +82,7 @@ class BellmanFord /*
                 arr[i] = new Edge(u, ve, w);
             }
             int[] dist = new int[v]; // Distance array for holding the finalized shortest path distance
-                                     // between source
+            // between source
             // and all vertices
             int[] p = new int[v]; // Parent array for holding the paths
             for (i = 0; i < v; i++) {
@@ -128,15 +128,15 @@ class BellmanFord /*
      */
     public void show(int source, int end,
         Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()
-                      // method // Just shows results of computation, if graph is passed to it. The
-                      // graph should
+        // method // Just shows results of computation, if graph is passed to it. The
+        // graph should
         int i;
         int j;
         int v = vertex;
         int e = edge;
         int neg = 0;
         double[] dist = new double[v]; // Distance array for holding the finalized shortest path
-                                       // distance between source
+        // distance between source
         // and all vertices
         int[] p = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {

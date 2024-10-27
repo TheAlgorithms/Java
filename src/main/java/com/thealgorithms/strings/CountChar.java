@@ -9,7 +9,7 @@ public final class CountChar {
      *
      * @param str the input string to count the characters in
      * @return the number of non-whitespace characters in the specified string;
-     *         returns 0 if the input string is null
+     * returns 0 if the input string is null
      */
     public static int countCharacters(String str) {
         if (str == null) {

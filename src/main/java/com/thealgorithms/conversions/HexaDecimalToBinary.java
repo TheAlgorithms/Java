@@ -34,8 +34,8 @@ public class HexaDecimalToBinary {
      * </ol>
      *
      * @param numHex the hexadecimal string (e.g., "A1", "7F")
-     * @throws NumberFormatException if the input string is not a valid hexadecimal number
      * @return the binary string representation, padded to 8 bits (e.g., "10100001")
+     * @throws NumberFormatException if the input string is not a valid hexadecimal number
      */
     public String convert(String numHex) {
         int conHex = Integer.parseInt(numHex, 16);

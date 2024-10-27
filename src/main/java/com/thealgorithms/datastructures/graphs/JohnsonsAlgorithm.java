@@ -7,16 +7,16 @@ import java.util.List;
 /**
  * This class implements Johnson's algorithm for finding all-pairs shortest paths in a weighted,
  * directed graph that may contain negative edge weights.
- *
+ * <p>
  * Johnson's algorithm works by using the Bellman-Ford algorithm to compute a transformation of the
  * input graph that removes all negative weights, allowing Dijkstra's algorithm to be used for
  * efficient shortest path computations.
- *
+ * <p>
  * Time Complexity: O(V^2 * log(V) + V*E)
  * Space Complexity: O(V^2)
- *
+ * <p>
  * Where V is the number of vertices and E is the number of edges in the graph.
- *
+ * <p>
  * For more information, please visit {@link https://en.wikipedia.org/wiki/Johnson%27s_algorithm}
  */
 public final class JohnsonsAlgorithm {
@@ -79,7 +79,7 @@ public final class JohnsonsAlgorithm {
      * Implements the Bellman-Ford algorithm to compute the shortest paths from a new vertex
      * to all other vertices. This is used to calculate the weight function h(v) for reweighting.
      *
-     * @param edges The edge list of the graph.
+     * @param edges       The edge list of the graph.
      * @param numVertices The number of vertices in the original graph.
      * @return An array of modified weights for each vertex.
      */
@@ -122,7 +122,7 @@ public final class JohnsonsAlgorithm {
     /**
      * Reweights the graph using the modified weights computed by Bellman-Ford.
      *
-     * @param graph The original graph.
+     * @param graph           The original graph.
      * @param modifiedWeights The modified weights from Bellman-Ford.
      * @return The reweighted graph.
      */
@@ -146,7 +146,7 @@ public final class JohnsonsAlgorithm {
      * Implements Dijkstra's algorithm for finding shortest paths from a source vertex.
      *
      * @param reweightedGraph The reweighted graph to run Dijkstra's on.
-     * @param source The source vertex.
+     * @param source          The source vertex.
      * @param modifiedWeights The modified weights from Bellman-Ford.
      * @return An array of shortest distances from the source to all other vertices.
      */
@@ -182,7 +182,7 @@ public final class JohnsonsAlgorithm {
      * Finds the vertex with the minimum distance value from the set of vertices
      * not yet included in the shortest path tree.
      *
-     * @param dist Array of distances.
+     * @param dist    Array of distances.
      * @param visited Array of visited vertices.
      * @return The index of the vertex with minimum distance.
      */

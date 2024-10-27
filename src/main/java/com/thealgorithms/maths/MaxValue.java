@@ -3,6 +3,7 @@ package com.thealgorithms.maths;
 public final class MaxValue {
     private MaxValue() {
     }
+
     /**
      * Returns the greater of two {@code int} values. That is, the result is the
      * argument closer to the value of {@link Integer#MAX_VALUE}. If the

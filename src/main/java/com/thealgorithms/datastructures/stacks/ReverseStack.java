@@ -51,14 +51,14 @@ public final class ReverseStack {
      * Inserts the specified element at the bottom of the stack.
      *
      * <p>This method is a helper for {@link #reverseStack(Stack)}.
-     *
+     * <p>
      * Steps:
      * 1. If the stack is empty, push the element and return.
      * 2. Remove the top element from the stack.
      * 3. Recursively insert the new element at the bottom of the stack.
      * 4. Push the removed element back onto the stack.
      *
-     * @param stack the stack in which to insert the element; should not be null
+     * @param stack   the stack in which to insert the element; should not be null
      * @param element the element to insert at the bottom of the stack
      */
     private static void insertAtBottom(Stack<Integer> stack, int element) {

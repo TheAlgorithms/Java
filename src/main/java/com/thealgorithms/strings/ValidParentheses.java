@@ -7,6 +7,7 @@ package com.thealgorithms.strings;
 public final class ValidParentheses {
     private ValidParentheses() {
     }
+
     public static boolean isValid(String s) {
         char[] stack = new char[s.length()];
         int head = 0;
@@ -38,6 +39,7 @@ public final class ValidParentheses {
         }
         return head == 0;
     }
+
     public static boolean isValidParentheses(String s) {
         int i = -1;
         char[] stack = new char[s.length()];

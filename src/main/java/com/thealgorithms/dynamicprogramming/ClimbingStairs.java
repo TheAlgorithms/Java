@@ -27,9 +27,9 @@ public final class ClimbingStairs {
      *
      * @param n the no. of steps in the staircase (non-negative integer)
      * @return the no. of distinct ways to climb to the top
-     *         - Returns 0 if n is 0 (no steps to climb).
-     *         - Returns 1 if n is 1 (only one way to climb).
-     *         - For n > 1, it returns the total no. of ways to climb.
+     * - Returns 0 if n is 0 (no steps to climb).
+     * - Returns 1 if n is 1 (only one way to climb).
+     * - For n > 1, it returns the total no. of ways to climb.
      */
     public static int numberOfWays(int n) {
 

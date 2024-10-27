@@ -33,7 +33,7 @@ public final class FindNthBit {
      *
      * @param num the integer number whose Nth bit is to be found
      * @param n   the bit position (1-based) to retrieve
-     * @return    the value of the Nth bit (0 or 1)
+     * @return the value of the Nth bit (0 or 1)
      * @throws IllegalArgumentException if the bit position is less than 1
      */
     public static int findNthBit(int num, int n) {

@@ -1099,7 +1099,7 @@ public class Blowfish {
      *
      * @param binary Number for which hexadecimal representation is required
      * @return String object which is a hexadecimal representation of the binary number passed as
-     *     parameter
+     * parameter
      */
     private String binToHex(String binary) {
         long num = Long.parseUnsignedLong(binary, 2);
@@ -1117,7 +1117,7 @@ public class Blowfish {
      *
      * @param String a and b are string objects which will be XORed and are to be of same length
      * @return String object obtained by XOR operation on String a and String b
-     * */
+     */
     private String xor(String a, String b) {
         a = hexToBin(a);
         b = hexToBin(b);
@@ -1135,7 +1135,7 @@ public class Blowfish {
      *
      * @param String a and b are hexadecimal numbers
      * @return String object which is a is addition that is then moded with 2^32 of hex numbers
-     *     passed as parameters
+     * passed as parameters
      */
     private String addBin(String a, String b) {
         String ans = "";

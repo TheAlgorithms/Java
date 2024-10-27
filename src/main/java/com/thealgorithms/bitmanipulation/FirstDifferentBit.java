@@ -3,12 +3,12 @@ package com.thealgorithms.bitmanipulation;
 /**
  * This class provides a method to find the first differing bit
  * between two integers.
- *
+ * <p>
  * Example:
- *  x = 10 (1010 in binary)
- *  y = 12 (1100 in binary)
- *  The first differing bit is at index 1 (0-based)
- *  So, the output will be 1
+ * x = 10 (1010 in binary)
+ * y = 12 (1100 in binary)
+ * The first differing bit is at index 1 (0-based)
+ * So, the output will be 1
  *
  * @author Hardvan
  */

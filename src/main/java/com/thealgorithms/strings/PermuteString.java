@@ -39,8 +39,8 @@ public final class PermuteString {
      * @param str The input string for which permutations are to be generated.
      *            If the string is null or empty, the result will be an empty set.
      * @return A {@link Set} of strings containing all unique permutations of the input string.
-     *         If the input string has duplicate characters, the set will ensure that only unique permutations
-     *         are returned.
+     * If the input string has duplicate characters, the set will ensure that only unique permutations
+     * are returned.
      */
     public static Set<String> getPermutations(String str) {
         Set<String> permutations = new HashSet<>();
@@ -51,9 +51,9 @@ public final class PermuteString {
     /**
      * Generates all permutations of the given string and collects them into a set.
      *
-     * @param str the string to permute
-     * @param start the starting index for the current permutation
-     * @param end the end index (length of the string)
+     * @param str          the string to permute
+     * @param start        the starting index for the current permutation
+     * @param end          the end index (length of the string)
      * @param permutations the set to collect all unique permutations
      */
     private static void generatePermutations(String str, int start, int end, Set<String> permutations) {
@@ -75,8 +75,8 @@ public final class PermuteString {
      * Swaps the characters at the specified positions in the given string.
      *
      * @param str the string in which characters will be swapped
-     * @param i the position of the first character to swap
-     * @param j the position of the second character to swap
+     * @param i   the position of the first character to swap
+     * @param j   the position of the second character to swap
      * @return a new string with the characters at positions i and j swapped
      */
     private static String swapCharacters(String str, int i, int j) {

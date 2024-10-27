@@ -2,6 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 /**
  * Java program for Boundary fill algorithm.
+ *
  * @author Akshay Dubey (https://github.com/itsAkshayDubey)
  */
 public final class BoundaryFill {
@@ -11,7 +12,7 @@ public final class BoundaryFill {
     /**
      * Get the color at the given co-odrinates of a 2D image
      *
-     * @param image The image to be filled
+     * @param image       The image to be filled
      * @param xCoordinate The x co-ordinate of which color is to be obtained
      * @param yCoordinate The y co-ordinate of which color is to be obtained
      */
@@ -22,7 +23,7 @@ public final class BoundaryFill {
     /**
      * Put the color at the given co-odrinates of a 2D image
      *
-     * @param image The image to be filed
+     * @param image       The image to be filed
      * @param xCoordinate The x co-ordinate at which color is to be filled
      * @param yCoordinate The y co-ordinate at which color is to be filled
      */
@@ -33,10 +34,10 @@ public final class BoundaryFill {
     /**
      * Fill the 2D image with new color
      *
-     * @param image The image to be filed
-     * @param xCoordinate The x co-ordinate at which color is to be filled
-     * @param yCoordinate The y co-ordinate at which color is to be filled
-     * @param newColor The new color which to be filled in the image
+     * @param image         The image to be filed
+     * @param xCoordinate   The x co-ordinate at which color is to be filled
+     * @param yCoordinate   The y co-ordinate at which color is to be filled
+     * @param newColor      The new color which to be filled in the image
      * @param boundaryColor The old color which is to be replaced in the image
      */
     public static void boundaryFill(int[][] image, int xCoordinate, int yCoordinate, int newColor, int boundaryColor) {

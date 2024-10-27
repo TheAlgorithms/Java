@@ -3,6 +3,7 @@ package com.thealgorithms.sorts;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 public class WiggleSortTest {

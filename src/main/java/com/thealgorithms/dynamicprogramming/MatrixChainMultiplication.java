@@ -24,7 +24,7 @@ public final class MatrixChainMultiplication {
      * @param matrices an ArrayList of Matrix objects representing the matrices
      *                 to be multiplied.
      * @return a Result object containing the matrices of minimum costs and
-     *         optimal splits.
+     * optimal splits.
      */
     public static Result calculateMatrixChainOrder(ArrayList<Matrix> matrices) {
         int size = matrices.size();

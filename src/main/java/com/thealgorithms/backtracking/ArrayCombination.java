@@ -33,10 +33,10 @@ public final class ArrayCombination {
      * A helper method that uses backtracking to find combinations.
      *
      * @param combinations The list to store all valid combinations found.
-     * @param current The current combination being built.
-     * @param start The starting index for the current recursion.
-     * @param n The total number of elements (0 to n-1).
-     * @param k The desired length of each combination.
+     * @param current      The current combination being built.
+     * @param start        The starting index for the current recursion.
+     * @param n            The total number of elements (0 to n-1).
+     * @param k            The desired length of each combination.
      */
     private static void combine(List<List<Integer>> combinations, List<Integer> current, int start, int n, int k) {
         // Base case: combination found

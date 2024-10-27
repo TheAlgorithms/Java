@@ -121,6 +121,8 @@ public class GenericHeapTest {
     @Test
     public void testGenericHeapAddNullItem() {
         // Check null item
-        assertThrows(IllegalArgumentException.class, () -> { heap.add(null); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            heap.add(null);
+        });
     }
 }

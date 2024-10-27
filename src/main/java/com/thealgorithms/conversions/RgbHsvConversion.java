@@ -50,9 +50,9 @@ public final class RgbHsvConversion {
     /**
      * Conversion from the HSV-representation to the RGB-representation.
      *
-     * @param hue Hue of the color.
+     * @param hue        Hue of the color.
      * @param saturation Saturation of the color.
-     * @param value Brightness-value of the color.
+     * @param value      Brightness-value of the color.
      * @return The tuple of RGB-components.
      */
     public static int[] hsvToRgb(double hue, double saturation, double value) {
@@ -79,9 +79,9 @@ public final class RgbHsvConversion {
     /**
      * Conversion from the RGB-representation to the HSV-representation.
      *
-     * @param red Red-component of the color.
+     * @param red   Red-component of the color.
      * @param green Green-component of the color.
-     * @param blue Blue-component of the color.
+     * @param blue  Blue-component of the color.
      * @return The tuple of HSV-components.
      */
     public static double[] rgbToHsv(int red, int green, int blue) {

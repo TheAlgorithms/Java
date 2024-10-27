@@ -1,13 +1,12 @@
 package com.thealgorithms.datastructures.trees;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
-public class BinaryTreeTest {
+public
+class BinaryTreeTest {
 
-    // checks that adding populating the tree and searching for data
-    // retrieves the expected data
+    // Test for adding elements and finding data within the tree
     @Test
     void test1() {
         BinaryTree t = new BinaryTree();
@@ -17,12 +16,15 @@ public class BinaryTreeTest {
         t.put(9);
         t.put(12);
 
-        assertEquals(t.find(5).data, 5);
-        assertEquals(t.find(7).data, 7);
+        Assertions.assertNotNull(t.find(5),
+                "Node with value 5 should exist in the tree.");
+        Assertions.assertEquals(5, t.find(5).data);
+
+        Assertions.assertNotNull(t.find(7),
+                "Node with value 7 should exist in the tree.");
+        Assertions.assertEquals(7, t.find(7).data);
     }
 
-    // checks that removing data from the tree
-    // properly removes and makes the new root the expected new root
     @Test
     void test2() {
         BinaryTree t = new BinaryTree();
@@ -31,15 +33,27 @@ public class BinaryTreeTest {
         t.put(7);
         t.put(9);
         t.put(12);
+
+        // Perform removals and check the new root
         t.remove(3);
         t.remove(5);
         t.remove(7);
 
-        assertEquals(t.getRoot().data, 9);
+        BinaryTree.Node root = t.getRoot();
+
+        // Check the size of the tree to confirm it has remaining nodes
+        Assertions.assertEquals(2, t.size(),
+                "Tree should have 2 nodes left after removals.");
+
+        // Check if new root is correct
+        if (root != null) {
+            Assertions.assertEquals(9, root.data);
+        } else {
+            Assertions.fail("Root is null after removals.");
+        }
     }
 
-    // checks that removing an unexistend node returns false
-    //  as specified by the documentation of the function
+    // Test for attempting to remove a nonexistent node
     @Test
     void test3() {
         BinaryTree t = new BinaryTree();
@@ -49,13 +63,12 @@ public class BinaryTreeTest {
         t.put(9);
         t.put(12);
 
-        assertEquals(t.remove(9), true);
-        assertEquals(t.remove(398745987), false);
+        Assertions.assertTrue(t.remove(9), "Node with value 9 should be removed.");
+        Assertions.assertFalse(t.remove(398745987),
+                "Removing a nonexistent node should return false.");
     }
 
-    // check if the bfs, inOrder, preOrder and postOrder functions
-    // worg as expected, also increases the coverage measures in
-    // JaCoCo
+    // Test traversal methods (bfs, inOrder, preOrder, postOrder)
     @Test
     void test4() {
         BinaryTree t = new BinaryTree();
@@ -65,12 +78,28 @@ public class BinaryTreeTest {
         t.put(9);
         t.put(12);
 
-        t.bfs(t.find(12));
-        t.inOrder(t.getRoot());
-        t.preOrder(t.getRoot());
-        t.postOrder(t.getRoot());
+        // Ensure root is not null before traversal
+        Assertions.assertNotNull(t.getRoot(),
+                "Root should not be null for traversal.");
 
-        assertEquals(t.remove(9), true);
-        assertEquals(t.remove(398745987), false);
+        // Invoke traversal methods to increase test coverage
+        System.out.println("BFS Traversal:");
+        t.bfs(); // No need to pass the root, just call the method
+
+        System.out.print("In-Order Traversal: ");
+        t.inOrder(t.getRoot()); // In-Order
+
+        System.out.print("Pre-Order Traversal: ");
+        t.preOrder(t.getRoot()); // Pre-Order
+
+        System.out.print("Post-Order Traversal: ");
+        t.postOrder(t.getRoot()); // Post-Order
+
+        System.out.println(); // For a new line after traversals
+
+        // Additional assertions
+        Assertions.assertTrue(t.remove(9), "Node with value 9 should be removed.");
+        Assertions.assertFalse(t.remove(398745987),
+                "Removing a nonexistent node should return false.");
     }
 }

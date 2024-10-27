@@ -11,6 +11,7 @@ import java.util.Set;
 
 /**
  * Breadth-First Search implementation for tree/graph traversal.
+ *
  * @author caos321
  * @co-author @manishraj27
  * @see <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-first search</a>
@@ -22,7 +23,7 @@ public class BreadthFirstSearch<T> {
     /**
      * Performs a breadth-first search to find a node with the given value.
      *
-     * @param root The root node to start the search from
+     * @param root  The root node to start the search from
      * @param value The value to search for
      * @return Optional containing the found node, or empty if not found
      */

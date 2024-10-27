@@ -20,11 +20,11 @@ public class DijkstraAlgorithm {
 
     /**
      * Executes Dijkstra's algorithm on the provided graph to find the shortest paths from the source vertex to all other vertices.
-     *
+     * <p>
      * The graph is represented as an adjacency matrix where {@code graph[i][j]} represents the weight of the edge from vertex {@code i}
      * to vertex {@code j}. A value of 0 indicates no edge exists between the vertices.
      *
-     * @param graph The graph represented as an adjacency matrix.
+     * @param graph  The graph represented as an adjacency matrix.
      * @param source The source vertex.
      * @return An array where the value at each index {@code i} represents the shortest distance from the source vertex to vertex {@code i}.
      * @throws IllegalArgumentException if the source vertex is out of range.

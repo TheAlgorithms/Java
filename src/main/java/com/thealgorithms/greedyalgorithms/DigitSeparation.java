@@ -10,8 +10,10 @@ import java.util.List;
 public class DigitSeparation {
     public DigitSeparation() {
     }
+
     /**
      * Separates the digits of a large positive number into a list in reverse order.
+     *
      * @param largeNumber The large number to separate digits from.
      * @return A list of digits in reverse order.
      */
@@ -27,8 +29,10 @@ public class DigitSeparation {
         }
         return result;
     }
+
     /**
      * Separates the digits of a large positive number into a list in forward order.
+     *
      * @param largeNumber The large number to separate digits from.
      * @return A list of digits in forward order.
      */

@@ -22,7 +22,7 @@ public final class ColumnarTranspositionCipher {
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
+     * @param word    Word being encrypted
      * @param keyword String with keyword being used
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
@@ -44,10 +44,10 @@ public final class ColumnarTranspositionCipher {
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
-     * @param keyword String with keyword being used
+     * @param word        Word being encrypted
+     * @param keyword     String with keyword being used
      * @param abecedarium String with the abecedarium being used. null for
-     * default one
+     *                    default one
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */

@@ -14,7 +14,7 @@ public final class SubsequenceFinder {
      * Find all subsequences of given list using backtracking
      *
      * @param sequence a list of items on the basis of which we need to generate all subsequences
-     * @param <T> the type of elements in the array
+     * @param <T>      the type of elements in the array
      * @return a list of all subsequences
      */
     public static <T> List<List<T>> generateAll(List<T> sequence) {
@@ -33,11 +33,11 @@ public final class SubsequenceFinder {
      * We know that each state has exactly two branching
      * It terminates when it reaches the end of the given sequence
      *
-     * @param sequence all elements
+     * @param sequence           all elements
      * @param currentSubsequence current subsequence
-     * @param index current index
-     * @param allSubSequences contains all sequences
-     * @param <T> the type of elements which we generate
+     * @param index              current index
+     * @param allSubSequences    contains all sequences
+     * @param <T>                the type of elements which we generate
      */
     private static <T> void backtrack(List<T> sequence, List<T> currentSubsequence, final int index, List<List<T>> allSubSequences) {
         assert index <= sequence.size();

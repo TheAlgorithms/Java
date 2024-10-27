@@ -2,9 +2,9 @@ package com.thealgorithms.dynamicprogramming;
 
 /**
  * This class refers to the Optimal Job Scheduling problem with the following constrains:
- *  - precedence relation between the processes
- *  - machine pair dependent transportation delays
- *
+ * - precedence relation between the processes
+ * - machine pair dependent transportation delays
+ * <p>
  * https://en.wikipedia.org/wiki/Optimal_job_scheduling
  *
  * @author georgioct@csd.auth.gr
@@ -19,11 +19,12 @@ public class OptimalJobScheduling {
 
     /**
      * Constructor of the class.
+     *
      * @param numberProcesses ,refers to the number of precedent processes(N)
-     * @param numberMachines ,refers to the number of different machines in our disposal(M)
-     * @param run , N*M matrix refers to the cost of running each process to each machine
-     * @param transfer ,M*M symmetric matrix refers to the transportation delay for each pair of
-     *     machines
+     * @param numberMachines  ,refers to the number of different machines in our disposal(M)
+     * @param run             , N*M matrix refers to the cost of running each process to each machine
+     * @param transfer        ,M*M symmetric matrix refers to the transportation delay for each pair of
+     *                        machines
      */
     public OptimalJobScheduling(int numberProcesses, int numberMachines, int[][] run, int[][] transfer) {
         this.numberProcesses = numberProcesses;
@@ -88,8 +89,9 @@ public class OptimalJobScheduling {
 
     /**
      * Function used in order to return the minimum Cost.
+     *
      * @param costArr ,an Array of size M which refers to the costs of executing a Process to each
-     *     Machine
+     *                Machine
      * @return the minimum cost
      */
     private int findMin(int[] costArr) {

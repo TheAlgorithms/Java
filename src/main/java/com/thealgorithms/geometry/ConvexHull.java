@@ -12,9 +12,9 @@ import java.util.TreeSet;
 /**
  * A class providing algorithms to compute the convex hull of a set of points
  * using brute-force and recursive methods.
- *
+ * <p>
  * Convex hull: The smallest convex polygon that contains all the given points.
- *
+ * <p>
  * Algorithms provided:
  * 1. Brute-Force Method
  * 2. Recursive (Divide-and-Conquer) Method

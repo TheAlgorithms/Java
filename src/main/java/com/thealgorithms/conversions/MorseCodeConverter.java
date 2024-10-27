@@ -7,10 +7,10 @@ import java.util.Map;
  * Converts text to Morse code and vice-versa.
  * Text to Morse code: Each letter is separated by a space and each word is separated by a pipe (|).
  * Example: "HELLO WORLD" -> ".... . .-.. .-.. --- | .-- --- .-. .-.. -.."
- *
+ * <p>
  * Morse code to text: Each letter is separated by a space and each word is separated by a pipe (|).
  * Example: ".... . .-.. .-.. --- | .-- --- .-. .-.. -.." -> "HELLO WORLD"
- *
+ * <p>
  * Applications: Used in radio communications and algorithmic challenges.
  *
  * @author Hardvan

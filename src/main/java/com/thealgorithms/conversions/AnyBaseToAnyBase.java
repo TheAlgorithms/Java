@@ -124,7 +124,7 @@ public final class AnyBaseToAnyBase {
      * Method to convert any integer from base b1 to base b2. Works by
      * converting from b1 to decimal, then decimal to b2.
      *
-     * @param n The integer to be converted.
+     * @param n  The integer to be converted.
      * @param b1 Beginning base.
      * @param b2 End base.
      * @return n in base b2.

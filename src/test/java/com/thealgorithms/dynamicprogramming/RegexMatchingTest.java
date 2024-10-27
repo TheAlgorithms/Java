@@ -3,6 +3,7 @@ package com.thealgorithms.dynamicprogramming;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +15,7 @@ public class RegexMatchingTest {
 
     private static Stream<Arguments> provideTestCases() {
         return Stream.of(Arguments.of(new RegexTestCase("aa", "*", true)), Arguments.of(new RegexTestCase("aa", "a*", true)), Arguments.of(new RegexTestCase("aa", "a", false)), Arguments.of(new RegexTestCase("cb", "?b", true)), Arguments.of(new RegexTestCase("cb", "?a", false)),
-            Arguments.of(new RegexTestCase("adceb", "*a*b", true)), Arguments.of(new RegexTestCase("acdcb", "a*c?b", false)), Arguments.of(new RegexTestCase("", "*", true)), Arguments.of(new RegexTestCase("", "", true)));
+                Arguments.of(new RegexTestCase("adceb", "*a*b", true)), Arguments.of(new RegexTestCase("acdcb", "a*c?b", false)), Arguments.of(new RegexTestCase("", "*", true)), Arguments.of(new RegexTestCase("", "", true)));
     }
 
     @ParameterizedTest

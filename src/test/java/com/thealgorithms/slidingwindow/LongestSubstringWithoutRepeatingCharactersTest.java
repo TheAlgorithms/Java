@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the LongestSubstringWithoutRepeatingCharacters class.
  *
- * @author  (https://github.com/Chiefpatwal)
+ * @author (https : / / github.com / Chiefpatwal)
  */
 public class LongestSubstringWithoutRepeatingCharactersTest {
 

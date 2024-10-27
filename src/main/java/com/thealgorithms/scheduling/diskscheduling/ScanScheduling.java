@@ -10,11 +10,11 @@ import java.util.List;
  * The SCAN algorithm moves the disk arm towards one end of the disk, servicing all requests
  * along the way until it reaches the end. Once it reaches the end, it reverses direction
  * and services the requests on its way back.
- *
+ * <p>
  * This algorithm ensures that all requests are serviced in a fair manner,
  * while minimizing the seek time for requests located close to the current position
  * of the disk arm.
- *
+ * <p>
  * The SCAN algorithm is particularly useful in environments with a large number of
  * disk requests, as it reduces the overall movement of the disk arm compared to
  */

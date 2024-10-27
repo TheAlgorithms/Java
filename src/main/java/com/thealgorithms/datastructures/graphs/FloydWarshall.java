@@ -11,7 +11,7 @@ package com.thealgorithms.datastructures.graphs;
  * The distance matrix is updated iteratively to find the shortest distance between any two vertices
  * by considering each vertex as an intermediate step.
  * </p>
- *
+ * <p>
  * Reference: <a href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm">Floyd-Warshall Algorithm</a>
  */
 public class FloydWarshall {

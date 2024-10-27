@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.BitSet;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +20,8 @@ public class A5KeyStreamGeneratorTest {
         keyStreamGenerator = new A5KeyStreamGenerator();
 
         // Initialize session key and frame counter for testing
-        final var sessionKey = BitSet.valueOf(new long[] {0b1010101010101010L}); // Example 16-bit key
-        frameCounter = BitSet.valueOf(new long[] {0b0000000000000001L}); // Example 16-bit frame counter
+        final var sessionKey = BitSet.valueOf(new long[]{0b1010101010101010L}); // Example 16-bit key
+        frameCounter = BitSet.valueOf(new long[]{0b0000000000000001L}); // Example 16-bit frame counter
         keyStreamGenerator.initialize(sessionKey, frameCounter);
     }
 

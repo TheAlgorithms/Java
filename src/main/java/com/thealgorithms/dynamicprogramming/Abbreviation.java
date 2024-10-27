@@ -2,12 +2,12 @@ package com.thealgorithms.dynamicprogramming;
 
 /**
  * A class that provides a solution to the abbreviation problem.
- *
+ * <p>
  * Problem: Given two strings, `a` and `b`, determine if string `a` can be
  * transformed into string `b` by performing the following operations:
  * 1. Capitalize zero or more of `a`'s lowercase letters (i.e., convert them to uppercase).
  * 2. Delete any of the remaining lowercase letters from `a`.
- *
+ * <p>
  * The task is to determine whether it is possible to make string `a` equal to string `b`.
  *
  * @author Hardvan
@@ -23,8 +23,8 @@ public final class Abbreviation {
      * @param a The input string which may contain both uppercase and lowercase letters.
      * @param b The target string containing only uppercase letters.
      * @return {@code true} if string `a` can be transformed into string `b`,
-     *         {@code false} otherwise.
-     *
+     * {@code false} otherwise.
+     * <p>
      * Time Complexity: O(n * m) where n = length of string `a` and m = length of string `b`.
      * Space Complexity: O(n * m) due to the dynamic programming table.
      */

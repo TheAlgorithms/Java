@@ -15,7 +15,7 @@ class MergeSort implements SortAlgorithm {
      * Generic merge sort algorithm implements.
      *
      * @param unsorted the array which should be sorted.
-     * @param <T> Comparable class.
+     * @param <T>      Comparable class.
      * @return sorted array.
      */
     @Override
@@ -26,8 +26,8 @@ class MergeSort implements SortAlgorithm {
     }
 
     /**
-     * @param arr the array to be sorted.
-     * @param left the first index of the array.
+     * @param arr   the array to be sorted.
+     * @param left  the first index of the array.
      * @param right the last index of the array.
      */
     private <T extends Comparable<T>> void doSort(T[] arr, int left, int right) {
@@ -42,11 +42,11 @@ class MergeSort implements SortAlgorithm {
     /**
      * Merges two parts of an array.
      *
-     * @param arr the array to be merged.
-     * @param left the first index of the array.
-     * @param mid the middle index of the array.
+     * @param arr   the array to be merged.
+     * @param left  the first index of the array.
+     * @param mid   the middle index of the array.
      * @param right the last index of the array merges two parts of an array in
-     * increasing order.
+     *              increasing order.
      */
     @SuppressWarnings("unchecked")
     private <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {

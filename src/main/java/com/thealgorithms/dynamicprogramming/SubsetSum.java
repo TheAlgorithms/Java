@@ -10,7 +10,7 @@ public final class SubsetSum {
      * @param arr the array containing integers.
      * @param sum the target sum of the subset.
      * @return {@code true} if a subset exists that sums to the given value,
-     *         otherwise {@code false}.
+     * otherwise {@code false}.
      */
     public static boolean subsetSum(int[] arr, int sum) {
         int n = arr.length;

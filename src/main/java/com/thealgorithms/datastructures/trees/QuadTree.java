@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * Point is a simple class that represents a point in 2D space.
  *
- * @see <a href="https://en.wikipedia.org/wiki/Point_(geometry)">Point</a>
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Point_(geometry)">Point</a>
  */
 class Point {
     public double x;
@@ -22,8 +22,8 @@ class Point {
 /**
  * BoundingBox is a simple class that represents a bounding box in 2D space.
  *
- * @see <a href="https://en.wikipedia.org/wiki/Bounding_box">Bounding Box</a>
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Bounding_box">Bounding Box</a>
  */
 class BoundingBox {
     public Point center;
@@ -59,11 +59,11 @@ class BoundingBox {
 /**
  * QuadTree is a tree data structure that is used to store spatial information
  * in an efficient way.
- *
+ * <p>
  * This implementation is specific to Point QuadTrees
  *
- * @see <a href="https://en.wikipedia.org/wiki/Quadtree">Quad Tree</a>
  * @author <a href="https://github.com/sailok">Sailok Chinta</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Quadtree">Quad Tree</a>
  */
 public class QuadTree {
     private final BoundingBox boundary;

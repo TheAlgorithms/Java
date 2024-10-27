@@ -8,7 +8,7 @@ import java.util.List;
  * 1. Only one disc can be moved at a time.
  * 2. A disc can only be placed on top of a larger disc.
  * 3. All discs must start on one pole and end on another.
- *
+ * <p>
  * This implementation recursively calculates the steps required to solve the puzzle and stores them
  * in a provided list.
  *
@@ -16,7 +16,7 @@ import java.util.List;
  * For more information about the Tower of Hanoi, see
  * <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">Tower of Hanoi on Wikipedia</a>.
  * </p>
- *
+ * <p>
  * The {@code shift} method takes the number of discs and the names of the poles,
  * and appends the steps required to solve the puzzle to the provided list.
  * Time Complexity: O(2^n) - Exponential time complexity due to the recursive nature of the problem.

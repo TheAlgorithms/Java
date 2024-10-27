@@ -6,12 +6,12 @@ import java.util.List;
 
 /**
  * The KnightsTour class solves the Knight's Tour problem using backtracking.
- *
+ * <p>
  * Problem Statement:
  * Given an N*N board with a knight placed on the first block, the knight must
  * move according to chess rules and visit each square on the board exactly once.
  * The class outputs the sequence of moves for the knight.
- *
+ * <p>
  * Example:
  * Input: N = 8 (8x8 chess board)
  * Output: The sequence of numbers representing the order in which the knight visits each square.
@@ -61,7 +61,7 @@ public final class KnightsTour {
     /**
      * Recursive method to solve the Knight's Tour problem.
      *
-     * @param row   The current row of the knight
+     * @param row    The current row of the knight
      * @param column The current column of the knight
      * @param count  The current move number
      * @return True if a solution is found, False otherwise
@@ -96,10 +96,10 @@ public final class KnightsTour {
     /**
      * Returns a list of valid neighboring cells where the knight can move.
      *
-     * @param row   The current row of the knight
+     * @param row    The current row of the knight
      * @param column The current column of the knight
      * @return A list of arrays representing valid moves, where each array contains:
-     *         {nextRow, nextCol, numberOfPossibleNextMoves}
+     * {nextRow, nextCol, numberOfPossibleNextMoves}
      */
     static List<int[]> neighbors(int row, int column) {
         List<int[]> neighbour = new ArrayList<>();
@@ -137,9 +137,9 @@ public final class KnightsTour {
     /**
      * Detects if moving to a given position will create an orphan (a position with no further valid moves).
      *
-     * @param count   The current move number
-     * @param row     The row of the current position
-     * @param column  The column of the current position
+     * @param count  The current move number
+     * @param row    The row of the current position
+     * @param column The column of the current position
      * @return True if an orphan is detected, False otherwise
      */
     static boolean orphanDetected(int count, int row, int column) {

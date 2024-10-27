@@ -2,9 +2,9 @@
 <p>A Heap is a special Tree-based data structure in which the tree is a complete binary tree.
 
 ## <h2>Complete Binary Tree</h2>
+
 <p>A complete binary tree is a binary tree
 in which all the levels except the last level, i.e., leaf node should be completely filled, and all the nodes should be left-justified.</p>
-
 
 ```
                             10
@@ -16,16 +16,14 @@ in which all the levels except the last level, i.e., leaf node should be complet
                     COMPLETE BINARY TREE
 ```
 
-
 ## <h2>Types of Heap</h2>
+
 <p>Generally, Heaps can be of two types:
 <br>
 <strong>Max-Heap:</strong> In a Max-Heap the key present at the root node must be greatest among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.
 <br>
 <strong>Min-Heap:</strong> In a Min-Heap the key present at the root node must be minimum among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.
 </p>
-
-
 
 ```
                             10
@@ -48,6 +46,7 @@ in which all the levels except the last level, i.e., leaf node should be complet
 ```
 
 ## <h2>Min Heap Construction Algorithm</h2>
+
 ```
 Step 1 − Create a new node at the end of heap.
 Step 2 − Assign new value to the node.
@@ -69,6 +68,7 @@ Add 15
 ```
 
 ## <h2>Min Heap Deletion Algorithm</h2>
+
 ```
 Step 1 − Remove root node.
 Step 2 − Move the last element of last level to root.
@@ -90,6 +90,7 @@ Delete 10
 ```
 
 ## <h2>Time Complexity (Min Heap)</h2>
+
 <table border=1>
     <tr>
         <th>Operations</th>
@@ -122,7 +123,11 @@ Delete 10
 <p>
 <strong>Heapsort:</strong> Heapsort algorithm has limited uses because Quicksort is better in practice. Nevertheless, the Heap data structure itself is enormously used.
 
-<strong>Priority Queues:</strong> Priority queues can be efficiently implemented using Binary Heap because it supports insert(), delete() and extractmax(), decreaseKey() operations in O(logn) time. Binomoial Heap and Fibonacci Heap are variations of Binary Heap. These variations perform union also in O(logn) time which is a O(n) operation in Binary Heap. Heap Implemented priority queues are used in Graph algorithms like Prim’s Algorithm and Dijkstra’s algorithm.
+<strong>Priority Queues:</strong> Priority queues can be efficiently implemented using Binary Heap because it supports
+insert(), delete() and extractmax(), decreaseKey() operations in O(logn) time. Binomoial Heap and Fibonacci Heap are
+variations of Binary Heap. These variations perform union also in O(logn) time which is a O(n) operation in Binary Heap.
+Heap Implemented priority queues are used in Graph algorithms like Prim’s Algorithm and Dijkstra’s algorithm.
 
-<strong>Order statistics:</strong> The Heap data structure can be used to efficiently find the kth smallest (or largest) element in an array.
+<strong>Order statistics:</strong> The Heap data structure can be used to efficiently find the kth smallest (or largest)
+element in an array.
 </p>

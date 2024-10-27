@@ -3,11 +3,11 @@ package com.thealgorithms.bitmanipulation;
 /**
  * This class provides a method to determine whether two integers have
  * different signs. It utilizes the XOR operation on the two numbers:
- *
+ * <p>
  * - If two numbers have different signs, their most significant bits
- *   (sign bits) will differ, resulting in a negative XOR result.
+ * (sign bits) will differ, resulting in a negative XOR result.
  * - If two numbers have the same sign, the XOR result will be non-negative.
- *
+ * <p>
  * Time Complexity: O(1) - Constant time operation.
  * Space Complexity: O(1) - No extra space used.
  *

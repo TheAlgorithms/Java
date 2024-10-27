@@ -71,7 +71,7 @@ public final class Luhn {
         System.out.println("Luhn algorithm usage examples:");
         int[] validInput = {4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 7};
         int[] invalidInput = {4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 4}; // typo in last
-                                                                               // symbol
+        // symbol
         checkAndPrint(validInput);
         checkAndPrint(invalidInput);
 
@@ -94,6 +94,7 @@ public final class Luhn {
          Business usage example
         ========================
      */
+
     /**
      * Object representation of credit card.
      */
@@ -102,10 +103,10 @@ public final class Luhn {
 
         /**
          * @param cardNumber string representation of credit card number - 16
-         * digits. Can have spaces for digits separation
+         *                   digits. Can have spaces for digits separation
          * @return credit card object
          * @throws IllegalArgumentException if input string is not 16 digits or
-         * if Luhn check was failed
+         *                                  if Luhn check was failed
          */
         public static CreditCard fromString(String cardNumber) {
             Objects.requireNonNull(cardNumber);

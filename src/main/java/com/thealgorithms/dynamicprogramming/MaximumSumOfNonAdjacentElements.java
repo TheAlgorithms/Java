@@ -15,6 +15,7 @@ final class MaximumSumOfNonAdjacentElements {
      * Approach 1: Uses a dynamic programming array to store the maximum sum at
      * each index. Time Complexity: O(n) - where n is the length of the input
      * array. Space Complexity: O(n) - due to the additional dp array.
+     *
      * @param arr The input array of integers.
      * @return The maximum sum of non-adjacent elements.
      */
@@ -54,6 +55,7 @@ final class MaximumSumOfNonAdjacentElements {
      * of an array. Time Complexity: O(n) - where n is the length of the input
      * array. Space Complexity: O(1) - as it only uses constant space for two
      * variables.
+     *
      * @param arr The input array of integers.
      * @return The maximum sum of non-adjacent elements.
      */

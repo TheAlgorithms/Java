@@ -60,8 +60,8 @@ public final class PrefixEvaluator {
      * Applies the given operator to the two operands.
      *
      * @param operator The operator to apply.
-     * @param a The first operand.
-     * @param b The second operand.
+     * @param a        The first operand.
+     * @param b        The second operand.
      * @return The result of applying the operator to the operands.
      */
     private static int applyOperator(String operator, int a, int b) {

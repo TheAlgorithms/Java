@@ -3,7 +3,6 @@ package com.thealgorithms.stacks;
 import java.util.Stack;
 
 /**
- *
  * @author mohd rameez github.com/rameez471
  */
 

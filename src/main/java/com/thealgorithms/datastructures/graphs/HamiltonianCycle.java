@@ -10,7 +10,7 @@ import java.util.Arrays;
  * <p>For more details, see the
  * <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">Wikipedia article</a>.
  *
- * @author  <a href="https://github.com/itsAkshayDubey">Akshay Dubey</a>
+ * @author <a href="https://github.com/itsAkshayDubey">Akshay Dubey</a>
  */
 public class HamiltonianCycle {
 
@@ -25,7 +25,7 @@ public class HamiltonianCycle {
      * @param graph Adjacency matrix representing the graph G(V, E), where V is
      *              the set of vertices and E is the set of edges.
      * @return An array representing the Hamiltonian cycle if found, otherwise an
-     *         array filled with -1 indicating no Hamiltonian cycle exists.
+     * array filled with -1 indicating no Hamiltonian cycle exists.
      */
     public int[] findHamiltonianCycle(int[][] graph) {
         // Single vertex graph

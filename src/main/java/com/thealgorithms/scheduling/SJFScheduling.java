@@ -16,14 +16,16 @@ public class SJFScheduling {
 
     /**
      * a simple constructor
+     *
      * @param processes a list of processes the user wants to schedule
-     *  it also sorts the processes based on the time of their arrival
+     *                  it also sorts the processes based on the time of their arrival
      */
     SJFScheduling(final ArrayList<ProcessDetails> processes) {
         this.processes = processes;
         schedule = new ArrayList<>();
         sortByArrivalTime();
     }
+
     protected void sortByArrivalTime() {
         int size = processes.size();
         int i;
@@ -84,9 +86,10 @@ public class SJFScheduling {
     /**
      * this function evaluates the shortest job of all the ready processes (based on  a process
      * burst time)
+     *
      * @param readyProcesses an array list of ready processes
      * @return returns the process' with the shortest burst time OR NULL if there are no ready
-     *     processes
+     * processes
      */
     private ProcessDetails findShortestJob(List<ProcessDetails> readyProcesses) {
         if (readyProcesses.isEmpty()) {

@@ -7,11 +7,11 @@ import java.security.SecureRandom;
  * RSA is an asymmetric cryptographic algorithm used for secure data encryption and decryption.
  * It relies on a pair of keys: a public key (used for encryption) and a private key
  * (used for decryption). The algorithm is based on the difficulty of factoring large prime numbers.
- *
+ * <p>
  * This implementation includes key generation, encryption, and decryption methods that can handle both
  * text-based messages and BigInteger inputs. For more details on RSA:
  * <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA Cryptosystem - Wikipedia</a>.
- *
+ * <p>
  * Example Usage:
  * <pre>
  * RSA rsa = new RSA(1024);
@@ -19,7 +19,7 @@ import java.security.SecureRandom;
  * String decryptedMessage = rsa.decrypt(encryptedMessage);
  * System.out.println(decryptedMessage);  // Output: Hello RSA!
  * </pre>
- *
+ * <p>
  * Note: The key size directly affects the security and performance of the RSA algorithm.
  * Larger keys are more secure but slower to compute.
  *
@@ -45,8 +45,8 @@ public class RSA {
      * Encrypts a text message using the RSA public key.
      *
      * @param message The plaintext message to be encrypted.
-     * @throws IllegalArgumentException If the message is empty.
      * @return The encrypted message represented as a String.
+     * @throws IllegalArgumentException If the message is empty.
      */
     public synchronized String encrypt(String message) {
         if (message.isEmpty()) {
@@ -69,8 +69,8 @@ public class RSA {
      * Decrypts an encrypted message (as String) using the RSA private key.
      *
      * @param encryptedMessage The encrypted message to be decrypted, represented as a String.
-     * @throws IllegalArgumentException If the message is empty.
      * @return The decrypted plaintext message as a String.
+     * @throws IllegalArgumentException If the message is empty.
      */
     public synchronized String decrypt(String encryptedMessage) {
         if (encryptedMessage.isEmpty()) {

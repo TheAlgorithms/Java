@@ -187,8 +187,9 @@ public final class FFT {
      * https://www.geeksforgeeks.org/iterative-fast-fourier-transformation-polynomial-multiplication/
      * https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
      * https://cp-algorithms.com/algebra/fft.html
-     *  @param x The discrete signal which is then converted to the FFT or the
-     * IFFT of signal x.
+     *
+     * @param x       The discrete signal which is then converted to the FFT or the
+     *                IFFT of signal x.
      * @param inverse True if you want to find the inverse FFT.
      * @return
      */
@@ -263,7 +264,7 @@ public final class FFT {
      * More info: https://cp-algorithms.com/algebra/fft.html
      * https://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/
      *
-     * @param num The integer you want to reverse its bits.
+     * @param num   The integer you want to reverse its bits.
      * @param log2n The number of bits you want to reverse.
      * @return The reversed number
      */

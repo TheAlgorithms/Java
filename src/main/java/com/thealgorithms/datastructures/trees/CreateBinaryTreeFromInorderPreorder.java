@@ -20,6 +20,7 @@ import java.util.Map;
 public final class CreateBinaryTreeFromInorderPreorder {
     private CreateBinaryTreeFromInorderPreorder() {
     }
+
     public static Node createTree(final Integer[] preorder, final Integer[] inorder) {
         if (preorder == null || inorder == null) {
             return null;

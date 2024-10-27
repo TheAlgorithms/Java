@@ -20,10 +20,10 @@ public final class MobiusFunction {
      * This method returns μ(n) of given number n
      *
      * @param number Integer value which μ(n) is to be calculated
-     * @return  1 when number is less than or equals 1
-     *            or number has even number of prime factors
-     *          0 when number has repeated prime factor
-     *         -1 when number has odd number of prime factors
+     * @return 1 when number is less than or equals 1
+     * or number has even number of prime factors
+     * 0 when number has repeated prime factor
+     * -1 when number has odd number of prime factors
      */
     static int mobius(int number) {
         if (number <= 0) {

@@ -15,13 +15,13 @@ public class LargestRectangleTest {
         assertEquals(expected, result);
 
         // Another typical case with increasing heights
-        heights = new int[] {2, 4};
+        heights = new int[]{2, 4};
         expected = "4";
         result = LargestRectangle.largestRectangleHistogram(heights);
         assertEquals(expected, result);
 
         // Case with multiple bars of the same height
-        heights = new int[] {4, 4, 4, 4};
+        heights = new int[]{4, 4, 4, 4};
         expected = "16";
         result = LargestRectangle.largestRectangleHistogram(heights);
         assertEquals(expected, result);
@@ -36,13 +36,13 @@ public class LargestRectangleTest {
         assertEquals(expected, result);
 
         // Edge case with a single bar
-        heights = new int[] {5};
+        heights = new int[]{5};
         expected = "5";
         result = LargestRectangle.largestRectangleHistogram(heights);
         assertEquals(expected, result);
 
         // Edge case with all bars of height 0
-        heights = new int[] {0, 0, 0};
+        heights = new int[]{0, 0, 0};
         expected = "0";
         result = LargestRectangle.largestRectangleHistogram(heights);
         assertEquals(expected, result);
@@ -69,7 +69,7 @@ public class LargestRectangleTest {
         assertEquals(expected, result);
 
         // Case with a peak in the middle
-        heights = new int[] {2, 1, 5, 6, 2, 3, 1};
+        heights = new int[]{2, 1, 5, 6, 2, 3, 1};
         expected = "10";
         result = LargestRectangle.largestRectangleHistogram(heights);
         assertEquals(expected, result);

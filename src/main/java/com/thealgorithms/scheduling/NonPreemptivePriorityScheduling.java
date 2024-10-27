@@ -48,7 +48,7 @@ public final class NonPreemptivePriorityScheduling {
          *
          * @param other The other process to compare against
          * @return A negative integer, zero, or a positive integer as this process
-         *         is less than, equal to, or greater than the specified process.
+         * is less than, equal to, or greater than the specified process.
          */
         @Override
         public int compareTo(Process other) {

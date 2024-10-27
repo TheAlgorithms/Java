@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @brief Class for finding the lowest base in which a given integer is a palindrome.
-     cf. https://oeis.org/A016026
+ * cf. https://oeis.org/A016026
  */
 public final class LowestBasePalindrome {
     private LowestBasePalindrome() {
@@ -39,9 +39,9 @@ public final class LowestBasePalindrome {
      * Computes the digits of a given number in a specified base.
      *
      * @param number the number to be converted
-     * @param base the base to be used for the conversion
+     * @param base   the base to be used for the conversion
      * @return a list of digits representing the number in the given base, with the most
-     *         significant digit at the end of the list
+     * significant digit at the end of the list
      * @throws IllegalArgumentException if the number is negative or the base is less than 2
      */
     public static List<Integer> computeDigitsInBase(int number, int base) {
@@ -76,7 +76,7 @@ public final class LowestBasePalindrome {
      * Checks if the representation of a given number in a specified base is palindromic.
      *
      * @param number the number to be checked
-     * @param base the base in which the number will be represented
+     * @param base   the base in which the number will be represented
      * @return {@code true} if the number is palindromic in the specified base, {@code false} otherwise
      * @throws IllegalArgumentException if the number is negative or the base is less than 2
      */

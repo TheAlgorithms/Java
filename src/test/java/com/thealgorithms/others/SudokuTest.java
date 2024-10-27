@@ -15,8 +15,12 @@ public class SudokuTest {
 
         assertFalse(Sudoku.isSafe(board, 0, 1, 3));
         assertTrue(Sudoku.isSafe(board, 1, 2, 1));
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> { Sudoku.isSafe(board, 10, 10, 5); });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> { Sudoku.isSafe(board, -1, 0, 5); });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            Sudoku.isSafe(board, 10, 10, 5);
+        });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            Sudoku.isSafe(board, -1, 0, 5);
+        });
     }
 
     @Test
@@ -25,7 +29,9 @@ public class SudokuTest {
 
         assertTrue(Sudoku.solveSudoku(board, board.length));
         assertEquals(1, board[0][1]);
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> { Sudoku.solveSudoku(board, 10); });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            Sudoku.solveSudoku(board, 10);
+        });
         assertTrue(Sudoku.solveSudoku(board, -1));
     }
 

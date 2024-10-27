@@ -4,16 +4,14 @@ import java.util.Stack;
 
 /**
  * Postfix to Infix implementation via Stack
- *
+ * <p>
  * Function: String getPostfixToInfix(String postfix)
  * Returns the Infix Expression for the given postfix parameter.
- *
+ * <p>
  * Avoid using parentheses/brackets/braces for the postfix string.
  * Postfix Expressions don't require these.
  *
- *
  * @author nikslyon19 (Nikhil Bisht)
- *
  */
 
 public final class PostfixToInfix {
@@ -32,7 +30,7 @@ public final class PostfixToInfix {
 
     /**
      * Validates whether a given string is a valid postfix expression.
-     *
+     * <p>
      * A valid postfix expression must meet these criteria:
      * 1. It should have at least one operator and two operands.
      * 2. The number of operands should always be greater than the number of operators at any point in the traversal.

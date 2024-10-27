@@ -14,7 +14,7 @@ public final class BFPRT {
      * Returns the k smallest elements from the array using the BFPRT algorithm.
      *
      * @param arr the input array
-     * @param k the number of smallest elements to return
+     * @param k   the number of smallest elements to return
      * @return an array containing the k smallest elements, or null if k is invalid
      */
     public static int[] getMinKNumsByBFPRT(int[] arr, int k) {
@@ -39,7 +39,7 @@ public final class BFPRT {
      * Returns the k-th smallest element from the array using the BFPRT algorithm.
      *
      * @param arr the input array
-     * @param k the rank of the smallest element to find
+     * @param k   the rank of the smallest element to find
      * @return the k-th smallest element
      */
     public static int getMinKthByBFPRT(int[] arr, int k) {
@@ -62,10 +62,10 @@ public final class BFPRT {
     /**
      * BFPRT recursive method to find the k-th smallest element.
      *
-     * @param arr the input array
+     * @param arr   the input array
      * @param begin the starting index
-     * @param end the ending index
-     * @param i the index of the desired smallest element
+     * @param end   the ending index
+     * @param i     the index of the desired smallest element
      * @return the k-th smallest element
      */
     public static int bfprt(int[] arr, int begin, int end, int i) {
@@ -86,9 +86,9 @@ public final class BFPRT {
     /**
      * Finds the median of medians as the pivot element.
      *
-     * @param arr the input array
+     * @param arr   the input array
      * @param begin the starting index
-     * @param end the ending index
+     * @param end   the ending index
      * @return the median of medians
      */
     public static int medianOfMedians(int[] arr, int begin, int end) {
@@ -104,10 +104,10 @@ public final class BFPRT {
     /**
      * Partitions the array around a pivot.
      *
-     * @param arr the input array
+     * @param arr   the input array
      * @param begin the starting index
-     * @param end the ending index
-     * @param num the pivot element
+     * @param end   the ending index
+     * @param num   the pivot element
      * @return the range where the pivot is located
      */
     public static int[] partition(int[] arr, int begin, int end, int num) {
@@ -129,9 +129,9 @@ public final class BFPRT {
     /**
      * Finds the median of the elements between the specified range.
      *
-     * @param arr the input array
+     * @param arr   the input array
      * @param begin the starting index
-     * @param end the ending index
+     * @param end   the ending index
      * @return the median of the specified range
      */
     public static int getMedian(int[] arr, int begin, int end) {
@@ -144,9 +144,9 @@ public final class BFPRT {
     /**
      * Sorts a portion of the array using insertion sort.
      *
-     * @param arr the input array
+     * @param arr   the input array
      * @param begin the starting index
-     * @param end the ending index
+     * @param end   the ending index
      */
     public static void insertionSort(int[] arr, int begin, int end) {
         if (arr == null || arr.length < 2) {
@@ -167,8 +167,8 @@ public final class BFPRT {
      * Swaps two elements in an array.
      *
      * @param arr the input array
-     * @param i the index of the first element
-     * @param j the index of the second element
+     * @param i   the index of the first element
+     * @param j   the index of the second element
      */
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];

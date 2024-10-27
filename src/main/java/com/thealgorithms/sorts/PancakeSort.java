@@ -25,9 +25,9 @@ public class PancakeSort implements SortAlgorithm {
     /**
      * Finds the index of the maximum element in the array up to the given size.
      *
-     * @param array      the array to be searched
+     * @param array       the array to be searched
      * @param currentSize the current size of the unsorted portion of the array
-     * @param <T>        the type of elements in the array
+     * @param <T>         the type of elements in the array
      * @return the index of the maximum element
      */
     private <T extends Comparable<T>> int findMaxIndex(T[] array, int currentSize) {

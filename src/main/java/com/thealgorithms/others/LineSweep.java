@@ -7,10 +7,10 @@ import java.util.Comparator;
  * The Line Sweep algorithm is used to solve range problems efficiently. It works by:
  * 1. Sorting a list of ranges by their start values in non-decreasing order.
  * 2. Sweeping through the number line (x-axis) while updating a count for each point based on the ranges.
- *
+ * <p>
  * An overlapping range is defined as:
  * - (StartA <= EndB) AND (EndA >= StartB)
- *
+ * <p>
  * References:
  * - https://en.wikipedia.org/wiki/Sweep_line_algorithm
  * - https://en.wikipedia.org/wiki/De_Morgan%27s_laws

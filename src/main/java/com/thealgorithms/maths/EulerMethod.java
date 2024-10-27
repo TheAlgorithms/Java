@@ -49,9 +49,9 @@ public final class EulerMethod {
      * calculates the next y-value based on the current value of x, y and the
      * stepSize the console.
      *
-     * @param xCurrent Current x-value.
-     * @param stepSize Step-size on the x-axis.
-     * @param yCurrent Current y-value.
+     * @param xCurrent             Current x-value.
+     * @param stepSize             Step-size on the x-axis.
+     * @param yCurrent             Current y-value.
      * @param differentialEquation The differential equation to be solved.
      * @return The next y-value.
      */
@@ -66,10 +66,10 @@ public final class EulerMethod {
      * Loops through all the steps until xEnd is reached, adds a point for each
      * step and then returns all the points
      *
-     * @param xStart First x-value.
-     * @param xEnd Last x-value.
-     * @param stepSize Step-size on the x-axis.
-     * @param yStart First y-value.
+     * @param xStart               First x-value.
+     * @param xEnd                 Last x-value.
+     * @param stepSize             Step-size on the x-axis.
+     * @param yStart               First y-value.
      * @param differentialEquation The differential equation to be solved.
      * @return The points constituting the solution of the differential
      * equation.

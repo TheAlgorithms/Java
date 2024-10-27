@@ -2,7 +2,7 @@ package com.thealgorithms.sorts;
 
 /**
  * Implementation of Flash Sort algorithm that implements the SortAlgorithm interface.
- *
+ * <p>
  * Sorts an array using the Flash Sort algorithm.
  * <p>
  * Flash Sort is a distribution sorting algorithm that partitions the data into
@@ -49,7 +49,7 @@ public class FlashSort implements SortAlgorithm {
      * Sorts an array using the Flash Sort algorithm.
      *
      * @param array the array to be sorted.
-     * @param <T> the type of elements to be sorted, must be comparable.
+     * @param <T>   the type of elements to be sorted, must be comparable.
      * @return the sorted array.
      */
     @Override
@@ -128,11 +128,11 @@ public class FlashSort implements SortAlgorithm {
     /**
      * Classifies elements of the array into the classification array classificationArray.
      *
-     * @param arr the array to be classified.
+     * @param arr                 the array to be classified.
      * @param classificationArray the classification array holding the count of elements in each class.
-     * @param c1 the normalization constant used to map the elements to the classification array.
-     * @param min the minimum value in the array.
-     * @param <T> the type of elements in the array, must be comparable.
+     * @param c1                  the normalization constant used to map the elements to the classification array.
+     * @param min                 the minimum value in the array.
+     * @param <T>                 the type of elements in the array, must be comparable.
      */
     private <T extends Comparable<? super T>> void classify(final T[] arr, final int[] classificationArray, final double c1, final T min) {
         for (int i = 0; i < arr.length; i++) {
@@ -155,13 +155,13 @@ public class FlashSort implements SortAlgorithm {
     /**
      * Permutes the array into sorted order based on the classification array classificationArray.
      *
-     * @param arr the array to be permuted.
+     * @param arr                 the array to be permuted.
      * @param classificationArray the classification array holding the count of elements in each class.
-     * @param c1 the normalization constant used to map the elements to the classification array.
-     * @param min the minimum value in the array.
-     * @param n the length of the array.
-     * @param m the number of classes in the classification array.
-     * @param <T> the type of elements in the array, must be comparable.
+     * @param c1                  the normalization constant used to map the elements to the classification array.
+     * @param min                 the minimum value in the array.
+     * @param n                   the length of the array.
+     * @param m                   the number of classes in the classification array.
+     * @param <T>                 the type of elements in the array, must be comparable.
      */
     private <T extends Comparable<? super T>> void permute(final T[] arr, final int[] classificationArray, final double c1, T min, int n, int m) {
         int move = 0;

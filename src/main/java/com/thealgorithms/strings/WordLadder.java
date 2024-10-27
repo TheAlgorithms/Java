@@ -18,8 +18,8 @@ public final class WordLadder {
      * Finds the shortest transformation sequence from beginWord to endWord.
      *
      * @param beginWord the starting word of the transformation sequence
-     * @param endWord the target word of the transformation sequence
-     * @param wordList a list of words that can be used in the transformation sequence
+     * @param endWord   the target word of the transformation sequence
+     * @param wordList  a list of words that can be used in the transformation sequence
      * @return the number of words in the shortest transformation sequence, or 0 if no such sequence exists
      */
     public static int ladderLength(String beginWord, String endWord, Collection<String> wordList) {

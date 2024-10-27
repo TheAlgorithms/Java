@@ -3,8 +3,6 @@ package com.thealgorithms.datastructures.trees;
 import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 
 /**
- *
- *
  * <h1>Binary Search Tree (Iterative)</h1>
  *
  * <p>

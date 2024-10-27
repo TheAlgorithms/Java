@@ -10,7 +10,7 @@ public class BinaryInsertionSort implements SortAlgorithm {
     /**
      * Sorts the given array using the Binary Insertion Sort algorithm.
      *
-     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param <T>   the type of elements in the array, which must implement the Comparable interface
      * @param array the array to be sorted
      * @return the sorted array
      */

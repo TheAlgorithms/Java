@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.BitSet;
+
 import org.junit.jupiter.api.Test;
 
 // Basic tests for sanity check
@@ -12,14 +13,14 @@ class LFSRTest {
     // Represents 0100 1110 0010 1111 0100 1101 0111 1100 0001 1110 1011 1000 1000 1011 0011 1010
     // But we start reverse way because bitset starts from most right (1010)
     byte[] sessionKeyBytes = {
-        58,
-        (byte) 139,
-        (byte) 184,
-        30,
-        124,
-        77,
-        47,
-        78,
+            58,
+            (byte) 139,
+            (byte) 184,
+            30,
+            124,
+            77,
+            47,
+            78,
     };
 
     // Represents 11 1010 1011 0011 1100 1011
@@ -46,7 +47,7 @@ class LFSRTest {
         expected.set(16);
         expected.set(17);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
+        LFSR lfsr0 = new LFSR(19, 8, new int[]{13, 16, 17, 18});
         lfsr0.initialize(sessionKey, frameCounter);
         assertEquals(expected.toString(), lfsr0.toString());
     }
@@ -56,7 +57,7 @@ class LFSRTest {
         BitSet sessionKey = BitSet.valueOf(sessionKeyBytes);
         BitSet frameCounter = BitSet.valueOf(frameCounterBytes);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
+        LFSR lfsr0 = new LFSR(19, 8, new int[]{13, 16, 17, 18});
         lfsr0.initialize(sessionKey, frameCounter);
 
         BitSet expected = new BitSet(19);
@@ -85,7 +86,7 @@ class LFSRTest {
         BitSet sessionKey = BitSet.valueOf(sessionKeyBytes);
         BitSet frameCounter = BitSet.valueOf(frameCounterBytes);
 
-        LFSR lfsr0 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
+        LFSR lfsr0 = new LFSR(19, 8, new int[]{13, 16, 17, 18});
 
         assertFalse(lfsr0.getClockBit());
 

@@ -36,7 +36,7 @@ public final class MaximumMinimumWindow {
      * window size using Stack Data Structure.
      *
      * @param arr Array containing the numbers
-     * @param n Length of the array
+     * @param n   Length of the array
      * @return result array
      */
     public static int[] calculateMaxOfMin(int[] arr, int n) {

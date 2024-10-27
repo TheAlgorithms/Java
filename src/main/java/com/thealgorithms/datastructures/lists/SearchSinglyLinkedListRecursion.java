@@ -27,7 +27,7 @@ public class SearchSinglyLinkedListRecursion extends SinglyLinkedList {
      * Recursively searches for a given value in the linked list.
      *
      * @param node the head node to start the search.
-     * @param key the integer value to be searched for.
+     * @param key  the integer value to be searched for.
      * @return {@code true} if the value `key` is present in the list; otherwise, {@code false}.
      */
     private boolean searchRecursion(Node node, int key) {
