@@ -132,3 +132,4 @@ public class UniquePairShuffleTest {
         assertEquals(2, uniquePairs.size()); // Should have 2 unique pairs
     }
 }
+
