@@ -69,8 +69,10 @@ public class UniquePairShuffleTest {
 
         // There should be 1 pair in the result
         assertEquals(1, pairs.size());
-        assertEquals(1, pairs.get(0)[0]);
-        assertEquals(2, pairs.get(0)[1]);
+        int[] pair = pairs.get(0);
+
+        // Check that the pair contains both elements, regardless of order
+        assertTrue((pair[0] == 1 && pair[1] == 2) || (pair[0] == 2 && pair[1] == 1));
     }
 
     // Test case for larger even-length array

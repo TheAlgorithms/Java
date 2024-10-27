@@ -1,10 +1,9 @@
 package com.thealgorithms.shufflealgorithm;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import com.thealgorithms.shufflealogrithm.WeightedShuffle;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WeightedShuffleTest {
 
@@ -15,14 +14,11 @@ public class WeightedShuffleTest {
         int[] weights = {1, 3, 2};
         WeightedShuffle.weightedShuffle(array, weights);
 
-        // After shuffling, higher weight elements should be more likely to appear
-        // earlier The expected order can be difficult to determine precisely, but
-        // we can check if the higher-weight elements (20, weight 3) appear before
-        // lower-weight ones (10, weight 1).
-        assertTrue(array[0] == 20 || array[1] == 20,
-                "20 should be among the first two elements");
-        assertTrue(array[0] == 10 || array[1] == 10,
-                "10 should not be the first element");
+        // Check that higher weight element (20) appears among the first two elements
+        assertTrue(array[0] == 20 || array[1] == 20, "20 should be among the first two elements");
+
+        // Check that lower weight element (10) is not in the first position
+        assertFalse(array[0] == 10, "10 should not be the first element");
     }
 
     // Test case for empty array
