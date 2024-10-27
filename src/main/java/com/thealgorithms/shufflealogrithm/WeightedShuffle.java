@@ -16,12 +16,16 @@ public class WeightedShuffle {
         if (array == null || weights == null || array.length != weights.length) return;
 
         Integer[] indices = new Integer[array.length];
-        for (int i = 0; i < array.length; i++) indices[i] = i;
+        for (int i = 0; i < array.length; i++) {
+            indices[i] = i;
+        }
 
         Arrays.sort(indices, Comparator.comparingInt(i -> -weights[i]));
 
         int[] result = new int[array.length];
-        for (int i = 0; i < array.length; i++) result[i] = array[indices[i]];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = array[indices[i]];
+        }
 
         System.arraycopy(result, 0, array, 0, array.length);
     }
@@ -37,4 +41,3 @@ public class WeightedShuffle {
         }
     }
 }
-

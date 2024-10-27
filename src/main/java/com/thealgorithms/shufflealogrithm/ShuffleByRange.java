@@ -13,7 +13,9 @@ public class ShuffleByRange {
      */
     public static void shuffleRange(int[] array, int start, int end) {
         // Edge case handling
-        if (array == null || start < 0 || end >= array.length || start >= end) return;
+        if (array == null || start < 0 || end >= array.length || start >= end) {
+            return;
+        }
 
         Random random = new Random();
 
@@ -38,4 +40,3 @@ public class ShuffleByRange {
         }
     }
 }
-

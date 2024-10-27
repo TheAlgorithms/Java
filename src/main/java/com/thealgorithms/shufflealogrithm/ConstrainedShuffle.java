@@ -1,7 +1,7 @@
 package com.thealgorithms.shufflealogrithm;
 
-import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ConstrainedShuffle {
@@ -13,16 +13,22 @@ public class ConstrainedShuffle {
      */
     public static void constrainedShuffle(int[] array) {
         // Edge case: Check if array has only one element (no valid shuffle possible)
-        if (array == null || array.length <= 1) return;
+        if (array == null || array.length <= 1) {
+            return;
+        }
 
         List<Integer> shuffledList = new ArrayList<>();
-        for (int num : array) shuffledList.add(num);
+        for (int num : array) {
+            shuffledList.add(num);
+        }
 
         do {
             Collections.shuffle(shuffledList);
         } while (!isValidShuffle(array, shuffledList));
 
-        for (int i = 0; i < array.length; i++) array[i] = shuffledList.get(i);
+        for (int i = 0; i < array.length; i++) {
+            array[i] = shuffledList.get(i);
+        }
     }
 
     /**
@@ -30,7 +36,9 @@ public class ConstrainedShuffle {
      */
     private static boolean isValidShuffle(int[] original, List<Integer> shuffled) {
         for (int i = 0; i < original.length; i++) {
-            if (original[i] == shuffled.get(i)) return false;
+            if (original[i] == shuffled.get(i)) {
+                return false;
+            }
         }
         return true;
     }
@@ -45,4 +53,3 @@ public class ConstrainedShuffle {
         }
     }
 }
-

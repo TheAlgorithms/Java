@@ -18,10 +18,14 @@ public class GroupShuffle {
         List<List<Integer>> groups = new ArrayList<>();
 
         // Edge case: Check if grouping is possible
-        if (k > array.length || k <= 0) return groups;
+        if (k > array.length || k <= 0) {
+            return groups;
+        }
 
         List<Integer> shuffledList = new ArrayList<>();
-        for (int num : array) shuffledList.add(num);
+        for (int num : array) {
+            shuffledList.add(num);
+        }
         Collections.shuffle(shuffledList);
 
         int groupSize = array.length / k;
@@ -47,4 +51,3 @@ public class GroupShuffle {
         }
     }
 }
-

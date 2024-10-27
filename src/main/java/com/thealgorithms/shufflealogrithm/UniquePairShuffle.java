@@ -20,7 +20,9 @@ public class UniquePairShuffle {
         if (array.length % 2 != 0) return pairs;
 
         List<Integer> shuffledList = new ArrayList<>();
-        for (int num : array) shuffledList.add(num);
+        for (int num : array) {
+            shuffledList.add(num);
+        }
 
         // Shuffle elements to create random pairs
         Collections.shuffle(shuffledList);
