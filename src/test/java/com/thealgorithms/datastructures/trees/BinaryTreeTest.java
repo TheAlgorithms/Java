@@ -45,7 +45,11 @@ class BinaryTreeTest {
                 "Tree should have 2 nodes left after removals.");
 
         // Check if new root is correct
-        Assertions.assertEquals(9, root.data);
+        if (root != null) {
+            Assertions.assertEquals(9, root.data);
+        } else {
+            Assertions.fail("Root is null after removals.");
+        }
     }
 
     // Test for attempting to remove a nonexistent node
