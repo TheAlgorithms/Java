@@ -32,6 +32,7 @@ public final class MapReduce {
         wordCounts.forEach((word, count) -> result.append(word).append(": ").append(count).append(","));
 
         // Removing the last ',' if it exists
+	// sanjana done something
         if (!result.isEmpty()) {
             result.setLength(result.length() - 1);
         }
