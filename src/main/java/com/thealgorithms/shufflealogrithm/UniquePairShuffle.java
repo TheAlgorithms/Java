@@ -28,7 +28,7 @@ final class UniquePairShuffle {
         List<int[]> pairs = new ArrayList<>();
 
         // Handle edge case: If the array length is odd, pairing is not possible
-        if (array.length % 2 != 0) {
+        if (array.length < 2 || array.length % 2 != 0) {
             return pairs;
         }
 
@@ -40,18 +40,9 @@ final class UniquePairShuffle {
         // Shuffle elements to create random pairs
         Collections.shuffle(shuffledList);
 
-        // Form pairs from the shuffled elements, avoiding duplicate pairs
-        Set<String> uniquePairs = new HashSet<>();
+        // Form pairs from the shuffled elements
         for (int i = 0; i < shuffledList.size(); i += 2) {
-            int[] pair = new int[]{shuffledList.get(i), shuffledList.get(i + 1)};
-            String pairKey =
-                    Math.min(pair[0], pair[1]) + "-" + Math.max(pair[0], pair[1]);
-
-            // Ensure no repeated pairs
-            if (!uniquePairs.contains(pairKey)) {
-                pairs.add(pair);
-                uniquePairs.add(pairKey);
-            }
+            pairs.add(new int[]{shuffledList.get(i), shuffledList.get(i + 1)});
         }
 
         return pairs;
