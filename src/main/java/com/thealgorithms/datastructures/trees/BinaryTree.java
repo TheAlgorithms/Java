@@ -72,9 +72,12 @@ public class BinaryTree {
         if (temp == null || temp.data != value) return false;
 
         if (temp.left == null && temp.right == null) {
-            if (temp == root) root = null;
-            else if (temp.parent.data < temp.data) temp.parent.right = null;
-            else temp.parent.left = null;
+            if (temp == root)
+                root = null;
+            else if (temp.parent.data < temp.data)
+                temp.parent.right = null;
+            else
+                temp.parent.left = null;
             return true;
         } else if (temp.left != null && temp.right != null) {
             Node successor = findSuccessor(temp);
@@ -84,7 +87,8 @@ public class BinaryTree {
                 if (successor.right != null) {
                     successor.right.parent = successor.parent;
                     successor.parent.left = successor.right;
-                } else successor.parent.left = null;
+                } else
+                    successor.parent.left = null;
                 successor.right = temp.right;
                 successor.right.parent = successor;
             }
@@ -93,17 +97,22 @@ public class BinaryTree {
                 successor.parent = null;
             } else {
                 successor.parent = temp.parent;
-                if (temp.parent.data < temp.data) temp.parent.right = successor;
-                else temp.parent.left = successor;
+                if (temp.parent.data < temp.data)
+                    temp.parent.right = successor;
+                else
+                    temp.parent.left = successor;
             }
             return true;
         } else {
             Node child = (temp.right != null) ? temp.right : temp.left;
-            if (temp == root) root = child;
+            if (temp == root)
+                root = child;
             else {
                 child.parent = temp.parent;
-                if (temp.data < temp.parent.data) temp.parent.left = child;
-                else temp.parent.right = child;
+                if (temp.data < temp.parent.data)
+                    temp.parent.left = child;
+                else
+                    temp.parent.right = child;
             }
             return true;
         }
