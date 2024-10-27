@@ -39,9 +39,8 @@ public class BinaryTreeTest {
 
         BinaryTree.Node root = t.getRoot();
         Assertions.assertNotNull(root, "Root should not be null after removals.");
-        if (root != null) { // Additional null check for tool satisfaction
-            Assertions.assertEquals(9, root.data);
-        }
+        // Removed redundant null check
+        Assertions.assertEquals(9, root.data); // Check if new root is correct
     }
 
     // Test for attempting to remove a nonexistent node
