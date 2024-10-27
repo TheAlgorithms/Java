@@ -56,3 +56,22 @@ final class Palindrome {
         return true;
     }
 }
+
+/**
+*check if string is palindrome or not
+* 
+* @param s a string to check
+* @return {@code true} if given string is palindrome, otherwise
+* {@code false}
+*/
+public static boolean isPalindromeTwoPointerwhileloop(String s){
+    char[] charArray = word.to char Array();
+    int start=0; int end= s.length-1;
+    while(start<end){
+        if (char Array[start]!= char Array[end]){
+            return false;
+        }
+        start++; end--;
+    }
+    return true;
+}
