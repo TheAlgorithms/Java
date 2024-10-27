@@ -72,31 +72,50 @@ class BinaryTree {
         // Two children
         else if (temp.left != null && temp.right != null) {
             Node successor = findSuccessor(temp);
-            successor.left = temp.left;
-            if (temp.left != null) {
-                temp.left.parent = successor;
-            }
-            if (successor.parent != temp) {
-                if (successor.right != null) {
-                    successor.right.parent = successor.parent;
-                    successor.parent.left = successor.right;
+            if (successor == temp) { // Handle case where successor is the node itself
+                if (temp == root) {
+                    root = temp.left;
+                    if (root != null) {
+                        root.parent = null;
+                    }
                 } else {
-                    successor.parent.left = null;
+                    if (temp.parent.data < temp.data) {
+                        temp.parent.right = temp.left;
+                    } else {
+                        temp.parent.left = temp.left;
+                    }
+                    if (temp.left != null) {
+                        temp.left.parent = temp.parent;
+                    }
                 }
-                successor.right = temp.right;
-                if (temp.right != null) {
-                    temp.right.parent = successor;
-                }
-            }
-            if (temp == root) {
-                successor.parent = null;
-                root = successor;
             } else {
-                successor.parent = temp.parent;
-                if (temp.parent.data < temp.data) {
-                    temp.parent.right = successor;
+                // Existing logic for successor not being the node itself
+                successor.left = temp.left;
+                if (temp.left != null) {
+                    temp.left.parent = successor;
+                }
+                if (successor.parent != temp) {
+                    if (successor.right != null) {
+                        successor.right.parent = successor.parent;
+                        successor.parent.left = successor.right;
+                    } else {
+                        successor.parent.left = null;
+                    }
+                    successor.right = temp.right;
+                    if (temp.right != null) {
+                        temp.right.parent = successor;
+                    }
+                }
+                if (temp == root) {
+                    successor.parent = null;
+                    root = successor;
                 } else {
-                    temp.parent.left = successor;
+                    successor.parent = temp.parent;
+                    if (temp.parent.data < temp.data) {
+                        temp.parent.right = successor;
+                    } else {
+                        temp.parent.left = successor;
+                    }
                 }
             }
         }
@@ -118,7 +137,6 @@ class BinaryTree {
             }
         }
 
-        // Decrement size after successful removal
         size--;
         return true;
     }
