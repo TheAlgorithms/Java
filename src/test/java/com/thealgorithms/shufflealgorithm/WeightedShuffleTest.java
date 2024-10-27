@@ -106,5 +106,3 @@ public class WeightedShuffleTest {
         Assertions.assertTrue(firstElementMatches);
     }
 }
-
-// Add a newline character here (just press Enter)

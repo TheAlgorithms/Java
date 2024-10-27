@@ -19,7 +19,7 @@ public final class WeightedShuffle {
      */
     public static void weightedShuffle(int[] array, int[] weights) {
         // Edge case: Check if weights match the array size
-        if (array == null || weights == null || array.length!= weights.length) {
+        if (array == null || weights == null || array.length != weights.length) {
             return;
         }
 
@@ -53,5 +53,3 @@ public final class WeightedShuffle {
         }
     }
 }
-
-// Add a newline character here (just press Enter)
