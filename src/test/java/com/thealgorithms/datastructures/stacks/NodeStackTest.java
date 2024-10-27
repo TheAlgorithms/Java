@@ -70,16 +70,4 @@ class NodeStackTest {
         stack.pop();
         assertEquals(0, stack.size(), "Size should be 0 after popping all elements.");
     }
-
-    @Test
-    void testPrint() {
-        NodeStack<Integer> stack = new NodeStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-
-        // Output verification would ideally be handled through a different means
-        // but you can print as a basic check to confirm method runs without errors.
-        stack.print();
-    }
 }

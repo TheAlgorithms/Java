@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +36,12 @@ public class BinaryTreeTest {
         t.remove(5);
         t.remove(7);
 
-        assertEquals(t.getRoot().data, 9);
+        // Checks whether the root is null before accessing date
+        if (t.getRoot() != null) {
+            assertEquals(t.getRoot().data, 9);
+        } else {
+            fail("The root node is null after removal.");
+        }
     }
 
     // checks that removing an unexistend node returns false
