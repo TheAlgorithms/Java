@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.shufflealogrithm.ConstrainedShuffle;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ public class ConstrainedShuffleTest {
 
     @BeforeEach
     void setUp() {
-        originalArray = new int[] {1, 2, 3, 4, 5};
+        originalArray = new int[]{1, 2, 3, 4, 5};
     }
 
     // Test that shuffling preserves the length and original elements
