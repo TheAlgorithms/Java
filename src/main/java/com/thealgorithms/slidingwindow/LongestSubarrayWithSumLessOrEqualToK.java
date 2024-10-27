@@ -10,7 +10,7 @@ package com.thealgorithms.slidingwindow;
  * Average performance O(n)
  * Worst-case space complexity O(1)
  *
- * @author  (https://github.com/Chiefpatwal)
+ * @author (https://github.com/Chiefpatwal)
  */
 public final class LongestSubarrayWithSumLessOrEqualToK {
 
@@ -26,23 +26,23 @@ public final class LongestSubarrayWithSumLessOrEqualToK {
      * @return the length of the longest subarray with sum less than or equal to k
      */
     public static int longestSubarrayWithSumLEK(int[] arr, int k) {
-        int maxLength = 0;
-        int currentSum = 0;
-        int left = 0;
+        int maxLength = 0; // To store the maximum length found
+        int currentSum = 0; // To store the current sum of the window
+        int left = 0; // Left index of the sliding window
 
         for (int right = 0; right < arr.length; right++) {
-            currentSum += arr[right];
+            currentSum += arr[right]; // Expand the window to the right
 
             // Shrink the window from the left if the current sum exceeds k
-            while (currentSum > k) {
-                currentSum -= arr[left];
-                left++;
+            while (currentSum > k && left <= right) {
+                currentSum -= arr[left]; // Remove the leftmost element
+                left++; // Move the left index to the right
             }
 
             // Update maxLength if the current window is valid
             maxLength = Math.max(maxLength, right - left + 1);
         }
 
-        return maxLength;
+        return maxLength; // Return the maximum length found
     }
 }
