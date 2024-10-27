@@ -1,9 +1,9 @@
 package com.thealgorithms.shufflealgorithm;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 import com.thealgorithms.shufflealogrithm.ShuffleByRange;
-import org.junit.jupiter.api.Test;
 
 public class ShuffleByRangeTest {
 
@@ -14,8 +14,8 @@ public class ShuffleByRangeTest {
         ShuffleByRange.shuffleByRange(array, 1, 5);
 
         // Verify that elements outside the specified range remain unchanged
-        assertEquals(1, array[0], "First element should be unchanged");
-        assertEquals(6, array[5], "Last element should be unchanged");
+        Assertions.assertEquals(1, array[0], "First element should be unchanged");
+        Assertions.assertEquals(6, array[5], "Last element should be unchanged");
     }
 
     // Test case for an empty array
@@ -23,7 +23,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeEmptyArray() {
         int[] array = {};
         ShuffleByRange.shuffleByRange(array, 0, 1);
-        assertArrayEquals(new int[] {}, array);
+        Assertions.assertArrayEquals(new int[] {}, array);
     }
 
     // Test case for a single element array
@@ -31,7 +31,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeSingleElementArray() {
         int[] array = {1};
         ShuffleByRange.shuffleByRange(array, 0, 1);
-        assertArrayEquals(new int[] {1}, array);
+        Assertions.assertArrayEquals(new int[] {1}, array);
     }
 
     // Test case for invalid range: start index equal to end index
@@ -39,7 +39,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartEqualsEnd() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 2, 2);
-        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: start index out of bounds
@@ -47,7 +47,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartOutOfBounds() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, -1, 5);
-        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: end index out of bounds
@@ -55,7 +55,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeEndOutOfBounds() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 1, 6);
-        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: start index greater than end index
@@ -63,7 +63,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartGreaterThanEnd() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 3, 2);
-        assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
     }
 
     // Test case for shuffling a large array
@@ -77,11 +77,11 @@ public class ShuffleByRangeTest {
 
         // Verify that the first 250 and last 250 elements remain unchanged
         for (int i = 0; i < 250; i++) {
-            assertEquals(i + 1, array[i],
+            Assertions.assertEquals(i + 1, array[i],
                     "Elements at index " + i + " should be unchanged");
         }
         for (int i = 750; i < 1000; i++) {
-            assertEquals(i + 1, array[i],
+            Assertions.assertEquals(i + 1, array[i],
                     "Elements at index " + i + " should be unchanged");
         }
     }

@@ -25,6 +25,15 @@ class BinarySearch implements SearchAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
+        if (array == null) {
+            throw new NullPointerException("Input array cannot be null");
+        }
+        if (key == null) {
+            throw new NullPointerException("Key cannot be null");
+        }
+        if (array.length == 0) {
+            return -1; // Explicitly handle empty array
+        }
         return search(array, key, 0, array.length - 1);
     }
 

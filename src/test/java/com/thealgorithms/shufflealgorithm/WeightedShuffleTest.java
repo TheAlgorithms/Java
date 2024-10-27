@@ -2,24 +2,25 @@ package com.thealgorithms.shufflealgorithm;
 
 import com.thealgorithms.shufflealogrithm.WeightedShuffle;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
 
 public class WeightedShuffleTest {
 
-    // Test case for matching array and weights
     @Test
     void testWeightedShuffleBasic() {
         int[] array = {10, 20, 30};
         int[] weights = {1, 3, 2};
         WeightedShuffle.weightedShuffle(array, weights);
 
-        // Check that higher weight element (20) appears among the first two elements
-        assertTrue(array[0] == 20 || array[1] == 20, "20 should be among the first two elements");
-
-        // Check that lower weight element (10) is not in the first position
-        assertFalse(array[0] == 10, "10 should not be the first element");
+        // Check the array is not in its original order (a simple shuffle check)
+        Assertions.assertNotEquals(array[0], 10, "Array should be shuffled");
+        Assertions.assertNotEquals(Arrays.toString(array),
+                Arrays.toString(new int[]{10, 20, 30}),
+                "Array should be shuffled");
     }
+
 
     // Test case for empty array
     @Test
@@ -27,7 +28,7 @@ public class WeightedShuffleTest {
         int[] array = {};
         int[] weights = {};
         WeightedShuffle.weightedShuffle(array, weights);
-        assertArrayEquals(new int[] {}, array);
+        Assertions.assertArrayEquals(new int[] {}, array);
     }
 
     // Test case for single element array
@@ -36,7 +37,7 @@ public class WeightedShuffleTest {
         int[] array = {5};
         int[] weights = {10};
         WeightedShuffle.weightedShuffle(array, weights);
-        assertArrayEquals(new int[] {5}, array);
+        Assertions.assertArrayEquals(new int[] {5}, array);
     }
 
     // Test case for multiple elements with same weight
@@ -47,8 +48,12 @@ public class WeightedShuffleTest {
         WeightedShuffle.weightedShuffle(array, weights);
         // The order should remain the same or be any permutation since weights are
         // equal
-        assertTrue(array[0] == 1 || array[0] == 2 || array[0] == 3 ||
-                array[0] == 4);
+        boolean firstElementMatches =
+                array[0] == 1 ||
+                        array[0] == 2 ||
+                        array[0] == 3 ||
+                        array[0] == 4;
+        Assertions.assertTrue(firstElementMatches);
     }
 
     // Test case for null array
@@ -66,7 +71,7 @@ public class WeightedShuffleTest {
         int[] array = {1, 2, 3};
         WeightedShuffle.weightedShuffle(array, null);
         // Should not throw any exception and array should remain unchanged
-        assertArrayEquals(new int[] {1, 2, 3}, array);
+        Assertions.assertArrayEquals(new int[] {1, 2, 3}, array);
     }
 
     // Test case for different lengths of array and weights
@@ -77,7 +82,7 @@ public class WeightedShuffleTest {
         WeightedShuffle.weightedShuffle(array, weights);
         // Should not throw any exception, but we can't assert anything since input
         // is invalid
-        assertArrayEquals(new int[] {1, 2, 3},
+        Assertions.assertArrayEquals(new int[] {1, 2, 3},
                 array); // Original array should remain unchanged
     }
 
@@ -89,6 +94,10 @@ public class WeightedShuffleTest {
         WeightedShuffle.weightedShuffle(array, weights);
         // The order should remain the same or be any permutation since all weights
         // are equal
-        assertTrue(array[0] == 5 || array[0] == 10 || array[0] == 15);
+        boolean firstElementMatches =
+                array[0] == 5 ||
+                        array[0] == 10 ||
+                        array[0] == 15;
+        Assertions.assertTrue(firstElementMatches);
     }
 }

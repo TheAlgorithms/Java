@@ -61,7 +61,7 @@ public class UniquePairShuffleTest {
         assertTrue(pairs.isEmpty());
     }
 
-    // Test case for two elements
+    // Test case for two elements, adjusted to not expect a specific order
     @Test
     void testPairShuffleTwoElements() {
         int[] array = {1, 2};
@@ -71,8 +71,15 @@ public class UniquePairShuffleTest {
         assertEquals(1, pairs.size());
         int[] pair = pairs.get(0);
 
-        // Check that the pair contains both elements, regardless of order
+        // Check that the pair contains both elements, without specifying order
         assertTrue((pair[0] == 1 && pair[1] == 2) || (pair[0] == 2 && pair[1] == 1));
+
+        // Alternatively, for clarity and to directly address the error,
+        // you could assert the pair's elements without considering order:
+        int min = Math.min(pair[0], pair[1]);
+        int max = Math.max(pair[0], pair[1]);
+        assertEquals(1, min, "First element of the pair should be 1 when ordered");
+        assertEquals(2, max, "Second element of the pair should be 2 when ordered");
     }
 
     // Test case for larger even-length array

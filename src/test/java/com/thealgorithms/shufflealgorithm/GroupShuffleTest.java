@@ -19,7 +19,8 @@ public class GroupShuffleTest {
         assertEquals(3, shuffledGroups.size()); // Expect 3 groups
         assertTrue(shuffledGroups.stream().allMatch(
                 group -> group.size() <= 3)); // All groups should have size <= 3
-        System.out.println("Shuffled Groups (Basic Test): " + shuffledGroups);
+        System.out.println("Shuffled Groups (Basic Test): "
+                + shuffledGroups);
     }
 
     // Test case to check when group size is larger than array length
@@ -32,8 +33,8 @@ public class GroupShuffleTest {
         assertEquals(
                 Arrays.asList(1, 2, 3),
                 shuffledGroups.get(0)); // The group should contain all elements
-        System.out.println("Shuffled Groups (Large Group Size Test): " +
-                shuffledGroups);
+        System.out.println("Shuffled Groups (Large Group Size Test): "
+                + shuffledGroups);
     }
 
     // Test case to check when the array is null
@@ -42,7 +43,8 @@ public class GroupShuffleTest {
         List<List<Integer>> shuffledGroups = GroupShuffle.groupShuffle(null, 3);
 
         assertTrue(shuffledGroups.isEmpty()); // Expect empty list
-        System.out.println("Shuffled Groups (Null Array Test): " + shuffledGroups);
+        System.out.println("Shuffled Groups (Null Array Test): "
+                + shuffledGroups);
     }
 
     // Test case to check when group size is less than or equal to zero
@@ -56,8 +58,8 @@ public class GroupShuffleTest {
         shuffledGroups = GroupShuffle.groupShuffle(array, -1);
         assertTrue(
                 shuffledGroups.isEmpty()); // Expect empty list for negative group size
-        System.out.println("Shuffled Groups (Zero or Negative Group Size Test): " +
-                shuffledGroups);
+        System.out.println("Shuffled Groups (Zero or Negative Group Size Test): "
+                + shuffledGroups);
     }
 
     // Test case to check when the array has fewer than 3 elements
@@ -70,7 +72,8 @@ public class GroupShuffleTest {
         assertEquals(
                 Arrays.asList(1, 2),
                 shuffledGroups.get(0)); // The group should contain all elements
-        System.out.println("Shuffled Groups (Small Array Test): " + shuffledGroups);
+        System.out.println("Shuffled Groups (Small Array Test): "
+                + shuffledGroups);
     }
 
     // Test case to check the behavior when the group size is 1
@@ -85,7 +88,7 @@ public class GroupShuffleTest {
                     Arrays.asList(i + 1),
                     shuffledGroups.get(i)); // Each group should contain one element
         }
-        System.out.println("Shuffled Groups (Group Size One Test): " +
-                shuffledGroups);
+        System.out.println("Shuffled Groups (Group Size One Test): "
+                + shuffledGroups);
     }
 }
