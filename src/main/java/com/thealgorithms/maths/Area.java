@@ -1,12 +1,15 @@
 package com.thealgorithms.maths;
 
 /**
- * Find the area of various geometric shapes
+ * Utility class to find the surface area of various geometric shapes.
  */
 public final class Area {
+    // Prevent instantiation
     private Area() {
     }
 
+    // Error messages for input validation
+    
     /**
      * String of IllegalArgumentException for radius
      */
@@ -16,180 +19,177 @@ public final class Area {
      * String of IllegalArgumentException for height
      */
     private static final String POSITIVE_HEIGHT = "Must be a positive height";
-
+    
     /**
      * String of IllegalArgumentException for base
      */
     private static final String POSITIVE_BASE = "Must be a positive base";
 
     /**
+     * String of IllegalArgumentException for length
+     */
+    private static final String POSITIVE_LENGTH = "Must be a positive length";
+    
+    /**
+     * String of IllegalArgumentException for width
+     */
+    private static final String POSITIVE_WIDTH = "Must be a positive width";
+    /**
+     * Validates that a given value is positive.
+     *
+     * @param value  The value to check.
+     * @param message The message to display if validation fails.
+     * @throws IllegalArgumentException if value is not positive.
+     */
+    private static void validatePositive(double value, String message) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    /**
      * Calculate the surface area of a cube.
      *
-     * @param sideLength side length of cube
-     * @return surface area of given cube
+     * @param sideLength Length of one side of the cube.
+     * @return Surface area of the cube.
+     * @throws IllegalArgumentException if sideLength is not positive.
      */
-    public static double surfaceAreaCube(final double sideLength) {
-        if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
-        }
+    public static double cubeSurfaceArea(final double sideLength) {
+        validatePositive(sideLength, "Must be a positive side length");
         return 6 * sideLength * sideLength;
     }
 
     /**
      * Calculate the surface area of a sphere.
      *
-     * @param radius radius of sphere
-     * @return surface area of given sphere
+     * @param radius Radius of the sphere.
+     * @return Surface area of the sphere.
+     * @throws IllegalArgumentException if radius is not positive.
      */
-    public static double surfaceAreaSphere(final double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+    public static double sphereSurfaceArea(final double radius) {
+        validatePositive(radius, POSITIVE_RADIUS);
         return 4 * Math.PI * radius * radius;
     }
 
     /**
      * Calculate the area of a rectangle.
      *
-     * @param length length of a rectangle
-     * @param width  width of a rectangle
-     * @return area of given rectangle
+     * @param length Length of the rectangle.
+     * @param width  Width of the rectangle.
+     * @return Area of the rectangle.
+     * @throws IllegalArgumentException if length or width is not positive.
      */
-    public static double surfaceAreaRectangle(final double length, final double width) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Must be a positive length");
-        }
-        if (width <= 0) {
-            throw new IllegalArgumentException("Must be a positive width");
-        }
+    public static double rectangleArea(final double length, final double width) {
+        validatePositive(length, POSITIVE_LENGTH);
+        validatePositive(width, POSITIVE_WIDTH);
         return length * width;
     }
 
     /**
-     * Calculate surface area of a cylinder.
+     * Calculate the surface area of a cylinder.
      *
-     * @param radius radius of the floor
-     * @param height height of the cylinder.
-     * @return volume of given cylinder
+     * @param radius Radius of the base of the cylinder.
+     * @param height Height of the cylinder.
+     * @return Surface area of the cylinder.
+     * @throws IllegalArgumentException if radius or height is not positive.
      */
-    public static double surfaceAreaCylinder(final double radius, final double height) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+    public static double cylinderSurfaceArea(final double radius, final double height) {
+        validatePositive(radius, POSITIVE_RADIUS);
+        validatePositive(height, POSITIVE_HEIGHT);
         return 2 * (Math.PI * radius * radius + Math.PI * radius * height);
     }
 
     /**
      * Calculate the area of a square.
      *
-     * @param sideLength side length of square
-     * @return area of given square
+     * @param sideLength Length of one side of the square.
+     * @return Area of the square.
+     * @throws IllegalArgumentException if sideLength is not positive.
      */
-    public static double surfaceAreaSquare(final double sideLength) {
-        if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
-        }
+    public static double squareArea(final double sideLength) {
+        validatePositive(sideLength, "Must be a positive side length");
         return sideLength * sideLength;
     }
 
     /**
      * Calculate the area of a triangle.
      *
-     * @param base   base of triangle
-     * @param height height of triangle
-     * @return area of given triangle
+     * @param base   Base of the triangle.
+     * @param height Height of the triangle.
+     * @return Area of the triangle.
+     * @throws IllegalArgumentException if base or height is not positive.
      */
-    public static double surfaceAreaTriangle(final double base, final double height) {
-        if (base <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
-        return base * height / 2;
+    public static double triangleArea(final double base, final double height) {
+        validatePositive(base, POSITIVE_BASE);
+        validatePositive(height, POSITIVE_HEIGHT);
+        return (base * height) / 2;
     }
 
     /**
      * Calculate the area of a parallelogram.
      *
-     * @param base   base of a parallelogram
-     * @param height height of a parallelogram
-     * @return area of given parallelogram
+     * @param base   Base of the parallelogram.
+     * @param height Height of the parallelogram.
+     * @return Area of the parallelogram.
+     * @throws IllegalArgumentException if base or height is not positive.
      */
-    public static double surfaceAreaParallelogram(final double base, final double height) {
-        if (base <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+    public static double parallelogramArea(final double base, final double height) {
+        validatePositive(base, POSITIVE_BASE);
+        validatePositive(height, POSITIVE_HEIGHT);
         return base * height;
     }
 
     /**
      * Calculate the area of a trapezium.
      *
-     * @param base1  upper base of trapezium
-     * @param base2  bottom base of trapezium
-     * @param height height of trapezium
-     * @return area of given trapezium
+     * @param base1  Length of the upper base of the trapezium.
+     * @param base2  Length of the lower base of the trapezium.
+     * @param height Height of the trapezium.
+     * @return Area of the trapezium.
+     * @throws IllegalArgumentException if base1, base2, or height is not positive.
      */
-    public static double surfaceAreaTrapezium(final double base1, final double base2, final double height) {
-        if (base1 <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE + 1);
-        }
-        if (base2 <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE + 2);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+    public static double trapeziumArea(final double base1, final double base2, final double height) {
+        validatePositive(base1, POSITIVE_BASE);
+        validatePositive(base2, POSITIVE_BASE);
+        validatePositive(height, POSITIVE_HEIGHT);
         return (base1 + base2) * height / 2;
     }
 
     /**
      * Calculate the area of a circle.
      *
-     * @param radius radius of circle
-     * @return area of given circle
+     * @param radius Radius of the circle.
+     * @return Area of the circle.
+     * @throws IllegalArgumentException if radius is not positive.
      */
-    public static double surfaceAreaCircle(final double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+    public static double circleArea(final double radius) {
+        validatePositive(radius, POSITIVE_RADIUS);
         return Math.PI * radius * radius;
     }
 
     /**
      * Calculate the surface area of a hemisphere.
      *
-     * @param radius radius of hemisphere
-     * @return surface area of given hemisphere
+     * @param radius Radius of the hemisphere.
+     * @return Surface area of the hemisphere.
+     * @throws IllegalArgumentException if radius is not positive.
      */
-    public static double surfaceAreaHemisphere(final double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+    public static double hemisphereSurfaceArea(final double radius) {
+        validatePositive(radius, POSITIVE_RADIUS);
         return 3 * Math.PI * radius * radius;
     }
 
     /**
      * Calculate the surface area of a cone.
      *
-     * @param radius radius of cone.
-     * @param height of cone.
-     * @return surface area of given cone.
+     * @param radius Radius of the base of the cone.
+     * @param height Height of the cone.
+     * @return Surface area of the cone.
+     * @throws IllegalArgumentException if radius or height is not positive.
      */
-    public static double surfaceAreaCone(final double radius, final double height) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
-        return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
+    public static double coneSurfaceArea(final double radius, final double height) {
+        validatePositive(radius, POSITIVE_RADIUS);
+        validatePositive(height, POSITIVE_HEIGHT);
+        return Math.PI * radius * (radius + Math.sqrt(height * height + radius * radius));
     }
 }
