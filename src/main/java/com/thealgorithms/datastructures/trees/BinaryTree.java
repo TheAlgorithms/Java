@@ -148,7 +148,6 @@ class BinaryTree {
      */
     public
     boolean remove(int value) {
-        // temp is the node to be deleted
         Node temp = find(value);
 
         // If the value doesn't exist
@@ -160,23 +159,21 @@ class BinaryTree {
         if (temp.right == null && temp.left == null) {
             if (temp == root) {
                 root = null;
-            } // This if/else assigns the new node to be either the left or right
-            // child of the
-            // parent
-            else if (temp.parent.data < temp.data) {
+            } else if (temp.parent.data < temp.data) {
                 temp.parent.right = null;
             } else {
                 temp.parent.left = null;
             }
-            size--; // Decrement size on removal
-            return true;
-        } // Two children
+        }
+        // Two children
         else if (temp.left != null && temp.right != null) {
             Node successor = findSuccessor(temp);
 
             // The left tree of temp is made the left tree of the successor
             successor.left = temp.left;
-            successor.left.parent = successor;
+            if (temp.left != null) {
+                temp.left.parent = successor;
+            }
 
             // If the successor has a right child, the child's grandparent is its new
             // parent
@@ -188,66 +185,44 @@ class BinaryTree {
                     successor.parent.left = null;
                 }
                 successor.right = temp.right;
-                successor.right.parent = successor;
+                if (temp.right != null) {
+                    temp.right.parent = successor;
+                }
             }
 
             if (temp == root) {
                 successor.parent = null;
                 root = successor;
-            } // If you're not deleting the root
-            else {
+            } else {
                 successor.parent = temp.parent;
-
-                // This if/else assigns the new node to be either the left or right
-                // child of the parent
                 if (temp.parent.data < temp.data) {
                     temp.parent.right = successor;
                 } else {
                     temp.parent.left = successor;
                 }
             }
-            size--; // Decrement size on removal
-            return true;
-        } // One child
+        }
+        // One child
         else {
-            // If it has a right child
-            if (temp.right != null) {
-                if (temp == root) {
-                    root = temp.right;
-                    root.parent = null; // Update parent reference
-                    size--;             // Decrement size on removal
-                    return true;
+            Node child = (temp.left != null) ? temp.left : temp.right;
+            if (temp == root) {
+                root = child;
+                if (child != null) {
+                    child.parent = null; // Update parent reference
                 }
-
-                temp.right.parent = temp.parent;
-
-                // Assigns temp to left or right child
-                if (temp.data < temp.parent.data) {
-                    temp.parent.left = temp.right;
+            } else {
+                child.parent = temp.parent;
+                if (temp.parent.data < temp.data) {
+                    temp.parent.right = child;
                 } else {
-                    temp.parent.right = temp.right;
-                }
-            } // If it has a left child
-            else {
-                if (temp == root) {
-                    root = temp.left;
-                    root.parent = null; // Update parent reference
-                    size--;             // Decrement size on removal
-                    return true;
-                }
-
-                temp.left.parent = temp.parent;
-
-                // Assigns temp to left or right side
-                if (temp.data < temp.parent.data) {
-                    temp.parent.left = temp.left;
-                } else {
-                    temp.parent.right = temp.left;
+                    temp.parent.left = child;
                 }
             }
-            size--; // Decrement size on removal
-            return true;
         }
+
+        // Decrement size regardless of the case of removal
+        size--;
+        return true;
     }
 
     /**
