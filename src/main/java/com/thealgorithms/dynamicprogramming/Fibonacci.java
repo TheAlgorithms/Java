@@ -16,7 +16,7 @@ public final class Fibonacci {
      * This method finds the nth fibonacci number using memoization technique
      *
      * @param n The input n for which we have to determine the fibonacci number
-     * Outputs the nth fibonacci number
+     *          Outputs the nth fibonacci number
      * @throws IllegalArgumentException if n is negative
      */
     public static int fibMemo(int n) {
@@ -42,7 +42,7 @@ public final class Fibonacci {
      * This method finds the nth fibonacci number using bottom up
      *
      * @param n The input n for which we have to determine the fibonacci number
-     * Outputs the nth fibonacci number
+     *          Outputs the nth fibonacci number
      * @throws IllegalArgumentException if n is negative
      */
     public static int fibBotUp(int n) {
@@ -68,13 +68,13 @@ public final class Fibonacci {
      * This method finds the nth fibonacci number using bottom up
      *
      * @param n The input n for which we have to determine the fibonacci number
-     * Outputs the nth fibonacci number
-     * <p>
-     * This is optimized version of Fibonacci Program. Without using Hashmap and
-     * recursion. It saves both memory and time. Space Complexity will be O(1)
-     * Time Complexity will be O(n)
-     * <p>
-     * Whereas , the above functions will take O(n) Space.
+     *          Outputs the nth fibonacci number
+     *          <p>
+     *          This is optimized version of Fibonacci Program. Without using Hashmap and
+     *          recursion. It saves both memory and time. Space Complexity will be O(1)
+     *          Time Complexity will be O(n)
+     *          <p>
+     *          Whereas , the above functions will take O(n) Space.
      * @throws IllegalArgumentException if n is negative
      * @author Shoaib Rayeen (https://github.com/shoaibrayeen)
      */
@@ -104,8 +104,9 @@ public final class Fibonacci {
      * = 1.6180339887... Now, let's look at Binet's formula: Sn = Φⁿ–(– Φ⁻ⁿ)/√5 We first calculate
      * the squareRootof5 and phi and store them in variables. Later, we apply Binet's formula to get
      * the required term. Time Complexity will be O(1)
+     *
      * @param n The input n for which we have to determine the fibonacci number
-     * Outputs the nth fibonacci number
+     *          Outputs the nth fibonacci number
      * @throws IllegalArgumentException if n is negative
      */
     public static int fibBinet(int n) {

@@ -38,6 +38,7 @@ public final class MirrorOfMatrix {
         }
         return mirroredMatrix;
     }
+
     private static int[] reverseRow(final int[] inRow) {
         int[] res = new int[inRow.length];
         for (int i = 0; i < inRow.length; ++i) {

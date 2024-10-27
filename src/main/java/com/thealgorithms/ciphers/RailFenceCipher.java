@@ -6,6 +6,7 @@ import java.util.Arrays;
  * The rail fence cipher (also called a zigzag cipher) is a classical type of transposition cipher.
  * It derives its name from the manner in which encryption is performed, in analogy to a fence built with horizontal rails.
  * https://en.wikipedia.org/wiki/Rail_fence_cipher
+ *
  * @author https://github.com/Krounosity
  */
 
@@ -69,6 +70,7 @@ public class RailFenceCipher {
         }
         return encryptedString.toString();
     }
+
     // Decrypts the input string using the rail fence cipher method with the given number of rails.
     public String decrypt(String str, int rails) {
 

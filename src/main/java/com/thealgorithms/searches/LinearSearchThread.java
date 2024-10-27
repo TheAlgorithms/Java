@@ -37,10 +37,10 @@ class Searcher extends Thread {
     /**
      * Constructor to initialize the Searcher.
      *
-     * @param arr The array to search in
-     * @param left The starting index of the segment
+     * @param arr   The array to search in
+     * @param left  The starting index of the segment
      * @param right The ending index of the segment
-     * @param x The number to search for
+     * @param x     The number to search for
      */
     Searcher(int[] arr, int left, int right, int x) {
         this.arr = arr;

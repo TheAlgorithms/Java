@@ -11,6 +11,7 @@ public final class Median {
 
     /**
      * Calculate average median
+     *
      * @param values sorted numbers to find median of
      * @return median of given {@code values}
      */

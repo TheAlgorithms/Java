@@ -19,7 +19,9 @@ public class IIRFilterTest {
     @Test
     void testConstructorInvalidOrder() {
         // Test an invalid filter creation (order <= 0)
-        assertThrows(IllegalArgumentException.class, () -> { new IIRFilter(0); }, "Order must be greater than zero");
+        assertThrows(IllegalArgumentException.class, () -> {
+            new IIRFilter(0);
+        }, "Order must be greater than zero");
     }
 
     @Test
@@ -29,7 +31,9 @@ public class IIRFilterTest {
         // Invalid 'aCoeffs' length
         double[] aCoeffs = {1.0}; // too short
         double[] bCoeffs = {1.0, 0.5};
-        assertThrows(IllegalArgumentException.class, () -> { filter.setCoeffs(aCoeffs, bCoeffs); }, "aCoeffs must be of size 2");
+        assertThrows(IllegalArgumentException.class, () -> {
+            filter.setCoeffs(aCoeffs, bCoeffs);
+        }, "aCoeffs must be of size 2");
     }
 
     @Test
@@ -39,7 +43,9 @@ public class IIRFilterTest {
         // Invalid 'bCoeffs' length
         double[] aCoeffs = {1.0, 0.5};
         double[] bCoeffs = {1.0}; // too short
-        assertThrows(IllegalArgumentException.class, () -> { filter.setCoeffs(aCoeffs, bCoeffs); }, "bCoeffs must be of size 2");
+        assertThrows(IllegalArgumentException.class, () -> {
+            filter.setCoeffs(aCoeffs, bCoeffs);
+        }, "bCoeffs must be of size 2");
     }
 
     @Test
@@ -49,7 +55,9 @@ public class IIRFilterTest {
         // Invalid 'aCoeffs' where aCoeffs[0] == 0.0
         double[] aCoeffs = {0.0, 0.5}; // aCoeffs[0] must not be zero
         double[] bCoeffs = {1.0, 0.5};
-        assertThrows(IllegalArgumentException.class, () -> { filter.setCoeffs(aCoeffs, bCoeffs); }, "aCoeffs[0] must not be zero");
+        assertThrows(IllegalArgumentException.class, () -> {
+            filter.setCoeffs(aCoeffs, bCoeffs);
+        }, "aCoeffs[0] must not be zero");
     }
 
     @Test

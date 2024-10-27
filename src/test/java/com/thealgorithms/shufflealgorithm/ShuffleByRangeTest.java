@@ -23,7 +23,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeEmptyArray() {
         int[] array = {};
         ShuffleByRange.shuffleByRange(array, 0, 1);
-        Assertions.assertArrayEquals(new int[] {}, array);
+        Assertions.assertArrayEquals(new int[]{}, array);
     }
 
     // Test case for a single element array
@@ -31,7 +31,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeSingleElementArray() {
         int[] array = {1};
         ShuffleByRange.shuffleByRange(array, 0, 1);
-        Assertions.assertArrayEquals(new int[] {1}, array);
+        Assertions.assertArrayEquals(new int[]{1}, array);
     }
 
     // Test case for invalid range: start index equal to end index
@@ -39,7 +39,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartEqualsEnd() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 2, 2);
-        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: start index out of bounds
@@ -47,7 +47,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartOutOfBounds() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, -1, 5);
-        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: end index out of bounds
@@ -55,7 +55,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeEndOutOfBounds() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 1, 6);
-        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, array);
     }
 
     // Test case for invalid range: start index greater than end index
@@ -63,7 +63,7 @@ public class ShuffleByRangeTest {
     void testShuffleByRangeStartGreaterThanEnd() {
         int[] array = {1, 2, 3, 4, 5};
         ShuffleByRange.shuffleByRange(array, 3, 2);
-        Assertions.assertArrayEquals(new int[] {1, 2, 3, 4, 5}, array);
+        Assertions.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, array);
     }
 
     // Test case for shuffling a large array

@@ -5,9 +5,9 @@ package com.thealgorithms.dynamicprogramming;
  * algorithm that finds if wildcard is matched with text. The matching should
  * cover the entire text ?-> matches single characters *-> match the sequence of
  * characters
- *
+ * <p>
  * For calculation of Time and Space Complexity. Let N be length of src and M be length of pat
- *
+ * <p>
  * Memoization vs Tabulation : https://www.geeksforgeeks.org/tabulation-vs-memoization/
  * Question Link : https://practice.geeksforgeeks.org/problems/wildcard-pattern-matching/1
  */
@@ -19,7 +19,7 @@ public final class RegexMatching {
      * Method 1: Determines if the given source string matches the given pattern using a recursive approach.
      * This method directly applies recursion to check if the source string matches the pattern, considering
      * the wildcards '?' and '*'.
-     *
+     * <p>
      * Time Complexity: O(2^(N+M)), where N is the length of the source string and M is the length of the pattern.
      * Space Complexity: O(N + M) due to the recursion stack.
      *
@@ -64,12 +64,12 @@ public final class RegexMatching {
     /**
      * Method 2: Determines if the given source string matches the given pattern using recursion.
      * This method utilizes a virtual index for both the source string and the pattern to manage the recursion.
-     *
+     * <p>
      * Time Complexity: O(2^(N+M)) where N is the length of the source string and M is the length of the pattern.
      * Space Complexity: O(N + M) due to the recursion stack.
      *
-     * @param src The source string to be matched against the pattern.
-     * @param pat The pattern containing wildcards ('*' matches a sequence of characters, '?' matches a single character).
+     * @param src   The source string to be matched against the pattern.
+     * @param pat   The pattern containing wildcards ('*' matches a sequence of characters, '?' matches a single character).
      * @param svidx The current index in the source string.
      * @param pvidx The current index in the pattern.
      * @return {@code true} if the source string matches the pattern, {@code false} otherwise.
@@ -108,15 +108,15 @@ public final class RegexMatching {
     /**
      * Method 3: Determines if the given source string matches the given pattern using top-down dynamic programming (memoization).
      * This method utilizes memoization to store intermediate results, reducing redundant computations and improving efficiency.
-     *
+     * <p>
      * Time Complexity: O(N * M), where N is the length of the source string and M is the length of the pattern.
      * Space Complexity: O(N * M) for the memoization table, plus additional space for the recursion stack.
      *
-     * @param src The source string to be matched against the pattern.
-     * @param pat The pattern containing wildcards ('*' matches a sequence of characters, '?' matches a single character).
+     * @param src   The source string to be matched against the pattern.
+     * @param pat   The pattern containing wildcards ('*' matches a sequence of characters, '?' matches a single character).
      * @param svidx The current index in the source string.
      * @param pvidx The current index in the pattern.
-     * @param strg A 2D array used for memoization to store the results of subproblems.
+     * @param strg  A 2D array used for memoization to store the results of subproblems.
      * @return {@code true} if the source string matches the pattern, {@code false} otherwise.
      */
     public static boolean regexRecursion(String src, String pat, int svidx, int pvidx, int[][] strg) {
@@ -158,7 +158,7 @@ public final class RegexMatching {
      * Method 4: Determines if the given source string matches the given pattern using bottom-up dynamic programming (tabulation).
      * This method builds a solution iteratively by filling out a table, where each cell represents whether a substring
      * of the source string matches a substring of the pattern.
-     *
+     * <p>
      * Time Complexity: O(N * M), where N is the length of the source string and M is the length of the pattern.
      * Space Complexity: O(N * M) for the table used in the tabulation process.
      *

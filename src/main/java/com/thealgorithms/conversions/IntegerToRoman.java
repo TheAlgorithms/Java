@@ -49,7 +49,7 @@ public final class IntegerToRoman {
      *
      * @param num the integer value to convert (must be greater than 0)
      * @return the Roman numeral representation of the input integer
-     *         or an empty string if the input is non-positive
+     * or an empty string if the input is non-positive
      */
     public static String integerToRoman(int num) {
         if (num <= 0) {

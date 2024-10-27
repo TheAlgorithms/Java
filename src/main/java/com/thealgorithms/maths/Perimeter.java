@@ -10,7 +10,7 @@ public final class Perimeter {
      * Examples of regular polygon are Equilateral Triangle, Square, Regular Pentagon, Regular
      * Hexagon.
      *
-     * @param n for number of sides.
+     * @param n    for number of sides.
      * @param side for length of each side.
      * @return Perimeter of given polygon
      */
@@ -40,7 +40,7 @@ public final class Perimeter {
     /**
      * Calculate the Perimeter of rectangle
      *
-     * @param length for length of rectangle
+     * @param length  for length of rectangle
      * @param breadth for breadth of rectangle
      * @return Perimeter of given rectangle
      */

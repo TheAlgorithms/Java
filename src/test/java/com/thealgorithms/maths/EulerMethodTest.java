@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -61,9 +62,9 @@ class EulerMethodTest {
     }
 
     static Stream<Arguments> eulerFullTestCases() {
-        return Stream.of(Arguments.of(new EulerFullTestCase(new double[] {0.0, 1.0, 0.5, 0.0}, (x, y) -> x, 3, new double[] {0.0, 0.0}, new double[] {1.0, 0.25})),
-            Arguments.of(new EulerFullTestCase(new double[] {0.0, 1.0, 0.1, 1.0}, (x, y) -> y, 12, new double[] {0.0, 1.0}, new double[] {1.0999999999999999, 2.8531167061100002})),
-            Arguments.of(new EulerFullTestCase(new double[] {0.0, 0.1, 0.1, 1.0}, (x, y) -> x + y, 2, new double[] {0.0, 1.0}, new double[] {0.1, 1.1})));
+        return Stream.of(Arguments.of(new EulerFullTestCase(new double[]{0.0, 1.0, 0.5, 0.0}, (x, y) -> x, 3, new double[]{0.0, 0.0}, new double[]{1.0, 0.25})),
+                Arguments.of(new EulerFullTestCase(new double[]{0.0, 1.0, 0.1, 1.0}, (x, y) -> y, 12, new double[]{0.0, 1.0}, new double[]{1.0999999999999999, 2.8531167061100002})),
+                Arguments.of(new EulerFullTestCase(new double[]{0.0, 0.1, 0.1, 1.0}, (x, y) -> x + y, 2, new double[]{0.0, 1.0}, new double[]{0.1, 1.1})));
     }
 
     @ParameterizedTest

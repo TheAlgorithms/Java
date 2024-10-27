@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -48,8 +49,8 @@ public class ConvolutionFFTTest {
     }
 
     private static Stream<Arguments> provideTestCases() {
-        return Stream.of(Arguments.of(new double[] {1, 2, 3}, new double[] {4, 5, 6}, new double[] {4, 13, 28, 27, 18}, "Basic test"), Arguments.of(new double[] {0, 0, 0}, new double[] {1, 2, 3}, new double[] {0, 0, 0, 0, 0}, "Test with zero elements"),
-            Arguments.of(new double[] {1, 2}, new double[] {3, 4, 5}, new double[] {3, 10, 13, 10}, "Test with different sizes"), Arguments.of(new double[] {5}, new double[] {2}, new double[] {10}, "Test with single element"),
-            Arguments.of(new double[] {1, -2, 3}, new double[] {-1, 2, -3}, new double[] {-1, 4, -10, 12, -9}, "Test with negative values"));
+        return Stream.of(Arguments.of(new double[]{1, 2, 3}, new double[]{4, 5, 6}, new double[]{4, 13, 28, 27, 18}, "Basic test"), Arguments.of(new double[]{0, 0, 0}, new double[]{1, 2, 3}, new double[]{0, 0, 0, 0, 0}, "Test with zero elements"),
+                Arguments.of(new double[]{1, 2}, new double[]{3, 4, 5}, new double[]{3, 10, 13, 10}, "Test with different sizes"), Arguments.of(new double[]{5}, new double[]{2}, new double[]{10}, "Test with single element"),
+                Arguments.of(new double[]{1, -2, 3}, new double[]{-1, 2, -3}, new double[]{-1, 4, -10, 12, -9}, "Test with negative values"));
     }
 }

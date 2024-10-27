@@ -27,13 +27,27 @@ public class HeronsFormulaTest {
 
     @Test
     public void testCalculateAreaWithInvalidInput() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(1, 2, 3); });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(2, 1, 3); });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(3, 2, 1); });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(1, 3, 2); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(1, 2, 3);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(2, 1, 3);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(3, 2, 1);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(1, 3, 2);
+        });
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(1, 1, 0); });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(1, 0, 1); });
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { HeronsFormula.herons(0, 1, 1); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(1, 1, 0);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(1, 0, 1);
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            HeronsFormula.herons(0, 1, 1);
+        });
     }
 }

@@ -5,16 +5,16 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *https://en.wikipedia.org/wiki/Shortest_seek_first
+ * https://en.wikipedia.org/wiki/Shortest_seek_first
  * Shortest Seek First (SFF) Scheduling algorithm implementation.
  * The SFF algorithm selects the next request to be serviced based on the shortest distance
  * from the current position of the disk arm. It continuously evaluates all pending requests
  * and chooses the one that requires the least amount of movement to service.
- *
+ * <p>
  * This approach minimizes the average seek time, making it efficient in terms of response
  * time for individual requests. However, it may lead to starvation for requests located
  * further away from the current position of the disk arm.
- *
+ * <p>
  * The SFF algorithm is particularly effective in systems where quick response time
  * is crucial, as it ensures that the most accessible requests are prioritized for servicing.
  */

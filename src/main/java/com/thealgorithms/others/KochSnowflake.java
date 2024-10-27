@@ -77,8 +77,8 @@ public final class KochSnowflake {
      * increases exponentially.
      *
      * @param initialVectors The vectors composing the shape to which the
-     * algorithm is applied.
-     * @param steps The number of iterations.
+     *                       algorithm is applied.
+     * @param steps          The number of iterations.
      * @return The transformed vectors after the iteration-steps.
      */
     public static ArrayList<Vector2> iterate(ArrayList<Vector2> initialVectors, int steps) {
@@ -94,7 +94,7 @@ public final class KochSnowflake {
      * Method to render the Koch snowflake to a image.
      *
      * @param imageWidth The width of the rendered image.
-     * @param steps The number of iterations.
+     * @param steps      The number of iterations.
      * @return The image of the rendered Koch snowflake.
      */
     public static BufferedImage getKochSnowflake(int imageWidth, int steps) {
@@ -123,7 +123,7 @@ public final class KochSnowflake {
      * constructed through a 60 degree rotation so it is bent outwards.
      *
      * @param vectors The vectors composing the shape to which the algorithm is
-     * applied.
+     *                applied.
      * @return The transformed vectors after the iteration-step.
      */
     private static ArrayList<Vector2> iterationStep(List<Vector2> vectors) {
@@ -145,8 +145,8 @@ public final class KochSnowflake {
     /**
      * Utility-method to render the Koch snowflake to an image.
      *
-     * @param vectors The vectors defining the edges to be rendered.
-     * @param imageWidth The width of the rendered image.
+     * @param vectors     The vectors defining the edges to be rendered.
+     * @param imageWidth  The width of the rendered image.
      * @param imageHeight The height of the rendered image.
      * @return The image of the rendered edges.
      */

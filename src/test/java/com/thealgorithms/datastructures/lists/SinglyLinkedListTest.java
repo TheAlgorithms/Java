@@ -8,12 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class SinglyLinkedListTest {
 
     /**
      * Initialize a list with natural order values with pre-defined length
+     *
      * @param length
      * @return linked list with pre-defined number of nodes
      */
@@ -102,6 +104,7 @@ public class SinglyLinkedListTest {
         list.deleteNth(6); // Index 6 has value 7
         assertFalse(list.search(7));
     }
+
     // Test to check whether the method reverseList() works fine
     @Test
     void reverseList() {
@@ -164,6 +167,7 @@ public class SinglyLinkedListTest {
             i--;
         }
     }
+
     // This is Recursive Reverse List Test
     // Test to check whether the method reverseListRec() works fine
     void recursiveReverseList() {

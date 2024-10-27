@@ -15,14 +15,14 @@ public final class ColumnarTranspositionCipher {
     private static Object[][] table;
     private static String abecedarium;
     public static final String ABECEDARIUM = "abcdefghijklmnopqrstuvwxyzABCDEFG"
-        + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
+            + "HIJKLMNOPQRSTUVWXYZ0123456789,.;:-@";
     private static final String ENCRYPTION_FIELD = "≈";
     private static final char ENCRYPTION_FIELD_CHAR = '≈';
 
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
+     * @param word    Word being encrypted
      * @param keyword String with keyword being used
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
@@ -44,10 +44,10 @@ public final class ColumnarTranspositionCipher {
     /**
      * Encrypts a certain String with the Columnar Transposition Cipher Rule
      *
-     * @param word Word being encrypted
-     * @param keyword String with keyword being used
+     * @param word        Word being encrypted
+     * @param keyword     String with keyword being used
      * @param abecedarium String with the abecedarium being used. null for
-     * default one
+     *                    default one
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */

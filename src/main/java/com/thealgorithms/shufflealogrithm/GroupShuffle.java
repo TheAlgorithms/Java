@@ -7,15 +7,14 @@ import java.util.List;
 public
 final class GroupShuffle {
 
-    private
-    GroupShuffle() {
+    private GroupShuffle() {
         // Prevent instantiation
     }
 
     /**
      * Groups and shuffles elements in the array.
      *
-     * @param array the input array to shuffle
+     * @param array     the input array to shuffle
      * @param groupSize the size of each group
      * @return a list of shuffled groups
      */

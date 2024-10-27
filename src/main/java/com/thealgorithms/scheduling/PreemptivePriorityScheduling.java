@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;

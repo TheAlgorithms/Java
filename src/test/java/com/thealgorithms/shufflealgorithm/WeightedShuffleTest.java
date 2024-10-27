@@ -28,7 +28,7 @@ public class WeightedShuffleTest {
         int[] array = {};
         int[] weights = {};
         WeightedShuffle.weightedShuffle(array, weights);
-        Assertions.assertArrayEquals(new int[] {}, array);
+        Assertions.assertArrayEquals(new int[]{}, array);
     }
 
     // Test case for single element array
@@ -37,7 +37,7 @@ public class WeightedShuffleTest {
         int[] array = {5};
         int[] weights = {10};
         WeightedShuffle.weightedShuffle(array, weights);
-        Assertions.assertArrayEquals(new int[] {5}, array);
+        Assertions.assertArrayEquals(new int[]{5}, array);
     }
 
     // Test case for multiple elements with same weight
@@ -74,7 +74,7 @@ public class WeightedShuffleTest {
         int[] array = {1, 2, 3};
         WeightedShuffle.weightedShuffle(array, null);
         // Should not throw any exception and array should remain unchanged
-        Assertions.assertArrayEquals(new int[] {1, 2, 3}, array);
+        Assertions.assertArrayEquals(new int[]{1, 2, 3}, array);
     }
 
     // Test case for different lengths of array and weights
@@ -85,7 +85,7 @@ public class WeightedShuffleTest {
         WeightedShuffle.weightedShuffle(array, weights);
         // Should not throw any exception, but we can't assert anything since input
         // is invalid
-        Assertions.assertArrayEquals(new int[] {1, 2, 3},
+        Assertions.assertArrayEquals(new int[]{1, 2, 3},
                 array); // Original array should remain unchanged
     }
 

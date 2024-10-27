@@ -14,6 +14,7 @@ final class DecimalToHexadecimal {
 
     /**
      * Converts a decimal number to a hexadecimal string.
+     *
      * @param decimal the decimal number to convert
      * @return the hexadecimal representation of the decimal number
      */

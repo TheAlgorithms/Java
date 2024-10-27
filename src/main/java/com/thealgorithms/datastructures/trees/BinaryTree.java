@@ -28,14 +28,12 @@ class BinaryTree {
     private
     int size; // Keep track of the number of nodes
 
-    public
-    BinaryTree() {
+    public BinaryTree() {
         root = null;
         size = 0; // Initialize size
     }
 
-    public
-    void put(int value) {
+    public void put(int value) {
         Node newNode = new Node(value);
         if (root == null) {
             root = newNode;
@@ -52,8 +50,7 @@ class BinaryTree {
         size++; // Increment size on insertion
     }
 
-    public
-    boolean remove(int value) {
+    public boolean remove(int value) {
         Node temp = find(value);
         if (temp == null || temp.data != value) {
             return false;
@@ -108,8 +105,7 @@ class BinaryTree {
         return true;
     }
 
-    public
-    Node find(int key) {
+    public Node find(int key) {
         Node current = root;
         while (current != null) {
             if (key < current.data) {
@@ -129,16 +125,15 @@ class BinaryTree {
         return null;
     }
 
-    public
-    Node getRoot() { return root; }
+    public Node getRoot() {
+        return root;
+    }
 
-    public
-    int size() {
+    public int size() {
         return size; // Getter for size
     }
 
-    public
-    Node findSuccessor(Node n) {
+    public Node findSuccessor(Node n) {
         if (n.right == null) {
             return n;
         }
@@ -150,8 +145,7 @@ class BinaryTree {
     }
 
     // Breadth-First Search (Level Order Traversal)
-    public
-    void bfs() {
+    public void bfs() {
         if (root == null) {
             return;
         }
@@ -172,8 +166,7 @@ class BinaryTree {
     }
 
     // In-order Traversal
-    public
-    void inOrder(Node node) {
+    public void inOrder(Node node) {
         if (node != null) {
             inOrder(node.left);
             System.out.print(node.data + " ");
@@ -182,8 +175,7 @@ class BinaryTree {
     }
 
     // Pre-order Traversal
-    public
-    void preOrder(Node node) {
+    public void preOrder(Node node) {
         if (node != null) {
             System.out.print(node.data + " ");
             preOrder(node.left);
@@ -192,8 +184,7 @@ class BinaryTree {
     }
 
     // Post-order Traversal
-    public
-    void postOrder(Node node) {
+    public void postOrder(Node node) {
         if (node != null) {
             postOrder(node.left);
             postOrder(node.right);

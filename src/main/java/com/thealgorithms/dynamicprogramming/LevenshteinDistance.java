@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 /**
  * Provides functions to calculate the Levenshtein distance between two strings.
- *
+ * <p>
  * The Levenshtein distance is a measure of the similarity between two strings by calculating the minimum number of single-character
  * edits (insertions, deletions, or substitutions) required to change one string into the other.
  */
@@ -14,24 +14,24 @@ public final class LevenshteinDistance {
 
     /**
      * Calculates the Levenshtein distance between two strings using a naive dynamic programming approach.
-     *
+     * <p>
      * This function computes the Levenshtein distance by constructing a dynamic programming matrix and iteratively filling it in.
      * It follows the standard top-to-bottom, left-to-right approach for filling in the matrix.
      *
      * @param string1 The first string.
      * @param string2 The second string.
      * @return The Levenshtein distance between the two input strings.
-     *
+     * <p>
      * Time complexity: O(nm),
      * Space complexity: O(nm),
-     *
+     * <p>
      * where n and m are lengths of `string1` and `string2`.
-     *
+     * <p>
      * Note that this implementation uses a straightforward dynamic programming approach without any space optimization.
      * It may consume more memory for larger input strings compared to the optimized version.
      */
     public static int naiveLevenshteinDistance(final String string1, final String string2) {
-        int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][] ::new);
+        int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][]::new);
 
         IntStream.range(1, string1.length() + 1).forEach(i -> IntStream.range(1, string2.length() + 1).forEach(j -> {
             final int cost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? 0 : 1;
@@ -43,20 +43,20 @@ public final class LevenshteinDistance {
 
     /**
      * Calculates the Levenshtein distance between two strings using an optimized dynamic programming approach.
-     *
+     * <p>
      * This edit distance is defined as 1 point per insertion, substitution, or deletion required to make the strings equal.
      *
      * @param string1 The first string.
      * @param string2 The second string.
      * @return The Levenshtein distance between the two input strings.
-     *
+     * <p>
      * Time complexity: O(nm),
      * Space complexity: O(n),
-     *
+     * <p>
      * where n and m are lengths of `string1` and `string2`.
-     *
+     * <p>
      * Note that this implementation utilizes an optimized dynamic programming approach, significantly reducing the space complexity from O(nm) to O(n), where n and m are the lengths of `string1` and `string2`.
-     *
+     * <p>
      * Additionally, it minimizes space usage by leveraging the shortest string horizontally and the longest string vertically in the computation matrix.
      */
     public static int optimizedLevenshteinDistance(final String string1, final String string2) {

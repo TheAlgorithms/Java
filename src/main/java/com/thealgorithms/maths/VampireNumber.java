@@ -34,7 +34,7 @@ public final class VampireNumber {
                 if (isVampireNumber(i, j, true)) {
                     countofRes++;
                     res.append("" + countofRes + ": = ( " + i + "," + j + " = " + i * j + ")"
-                        + "\n");
+                            + "\n");
                 }
             }
         }

@@ -17,7 +17,7 @@ public final class ConvolutionFFT {
     /**
      * This method pads the signal with zeros until it reaches the new size.
      *
-     * @param x The signal to be padded.
+     * @param x       The signal to be padded.
      * @param newSize The new size of the signal.
      */
     private static void padding(Collection<FFT.Complex> x, int newSize) {
@@ -61,7 +61,7 @@ public final class ConvolutionFFT {
         }
         FFT.fft(convolved, true); // IFFT
         convolved.subList(convolvedSize, convolved.size()).clear(); // Remove the remaining zeros after the convolvedSize. These extra zeros came
-                                                                    // from
+        // from
         // paddingPowerOfTwo() method inside the fft() method.
 
         return convolved;

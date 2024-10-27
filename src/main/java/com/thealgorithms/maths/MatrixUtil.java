@@ -66,17 +66,17 @@ public final class MatrixUtil {
         final BigDecimal[][] result = new BigDecimal[matrix1RowSize][matrix2ColumnSize];
 
         IntStream.range(0, matrix1RowSize)
-            .forEach(rowIndex
-                -> IntStream.range(0, matrix2ColumnSize)
-                       .forEach(columnIndex
-                           -> result[rowIndex][columnIndex] = IntStream.range(0, size)
-                                                                  .mapToObj(index -> {
-                                                                      final BigDecimal value1 = matrix1[rowIndex][index];
-                                                                      final BigDecimal value2 = matrix2[index][columnIndex];
+                .forEach(rowIndex
+                        -> IntStream.range(0, matrix2ColumnSize)
+                        .forEach(columnIndex
+                                -> result[rowIndex][columnIndex] = IntStream.range(0, size)
+                                .mapToObj(index -> {
+                                    final BigDecimal value1 = matrix1[rowIndex][index];
+                                    final BigDecimal value2 = matrix2[index][columnIndex];
 
-                                                                      return value1.multiply(value2);
-                                                                  })
-                                                                  .reduce(BigDecimal.ZERO, BigDecimal::add)));
+                                    return value1.multiply(value2);
+                                })
+                                .reduce(BigDecimal.ZERO, BigDecimal::add)));
 
         return Optional.of(result);
     }

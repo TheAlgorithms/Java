@@ -32,7 +32,7 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
      * configurations and initializes them.
      * </p>
      *
-     * @param sessionKey a BitSet representing the session key used for key stream generation.
+     * @param sessionKey   a BitSet representing the session key used for key stream generation.
      * @param frameCounter a BitSet representing the frame counter that influences the key stream.
      */
     @Override
@@ -41,9 +41,9 @@ public class A5KeyStreamGenerator extends CompositeLFSR {
         this.frameCounter = (BitSet) frameCounter.clone();
         this.initialFrameCounter = (BitSet) frameCounter.clone();
         registers.clear();
-        LFSR lfsr1 = new LFSR(19, 8, new int[] {13, 16, 17, 18});
-        LFSR lfsr2 = new LFSR(22, 10, new int[] {20, 21});
-        LFSR lfsr3 = new LFSR(23, 10, new int[] {7, 20, 21, 22});
+        LFSR lfsr1 = new LFSR(19, 8, new int[]{13, 16, 17, 18});
+        LFSR lfsr2 = new LFSR(22, 10, new int[]{20, 21});
+        LFSR lfsr3 = new LFSR(23, 10, new int[]{7, 20, 21, 22});
         registers.add(lfsr1);
         registers.add(lfsr2);
         registers.add(lfsr3);

@@ -128,7 +128,7 @@ class PriorityQueue {
             throw new RuntimeException("Queue is Empty");
         } else {
             int max = queueArray[1]; // By defintion of our max-heap, value at queueArray[1] pos is
-                                     // the greatest
+            // the greatest
 
             // Swap max and last element
             int temp = queueArray[1];

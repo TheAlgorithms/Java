@@ -51,7 +51,9 @@ public class KnapsackTest {
         int[] weights = {2, 3, 4};
         int[] values = {3, 4, 5, 6}; // Different length values array.
         int weightCapacity = 5;
-        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, values); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Knapsack.knapSack(weightCapacity, weights, values);
+        });
     }
 
     @Test
@@ -59,8 +61,12 @@ public class KnapsackTest {
         int[] weights = {2, 3, 4};
         int[] values = {3, 4, 6};
         int weightCapacity = 5;
-        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, null, values); });
-        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, null); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Knapsack.knapSack(weightCapacity, null, values);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Knapsack.knapSack(weightCapacity, weights, null);
+        });
     }
 
     @Test
@@ -68,7 +74,9 @@ public class KnapsackTest {
         int[] weights = {2, 3, 4, 5};
         int[] values = {3, 4, 5, 6};
         int weightCapacity = -5;
-        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, values); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Knapsack.knapSack(weightCapacity, weights, values);
+        });
     }
 
     @Test
@@ -76,6 +84,8 @@ public class KnapsackTest {
         int[] weights = {2, 0, 4};
         int[] values = {3, 4, 6};
         int weightCapacity = 5;
-        assertThrows(IllegalArgumentException.class, () -> { Knapsack.knapSack(weightCapacity, weights, values); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Knapsack.knapSack(weightCapacity, weights, values);
+        });
     }
 }

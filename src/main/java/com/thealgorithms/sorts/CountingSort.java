@@ -7,12 +7,11 @@ import java.util.Arrays;
  * This implementation has a time complexity of O(n + k), where n is the number
  * of elements in the input array and k is the range of the input.
  * It works only with integer arrays.
- *
+ * <p>
  * The space complexity is O(k), where k is the range of the input integers.
- *
+ * <p>
  * Note: This implementation handles negative integers as it
  * calculates the range based on the minimum and maximum values of the array.
- *
  */
 public final class CountingSort {
     private CountingSort() {

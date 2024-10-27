@@ -15,7 +15,7 @@ public final class ArrayLeftRotation {
      * Performs a left rotation on the given array by the specified number of positions.
      *
      * @param arr the array to be rotated
-     * @param n the number of positions to rotate the array to the left
+     * @param n   the number of positions to rotate the array to the left
      * @return a new array containing the elements of the input array rotated to the left
      */
     public static int[] rotateLeft(int[] arr, int n) {

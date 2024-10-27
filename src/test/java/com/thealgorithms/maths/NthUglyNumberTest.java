@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 public class NthUglyNumberTest {
@@ -23,10 +24,10 @@ public class NthUglyNumberTest {
         testCases.put(1963, 6973568802L);
 
         for (final var tc : testCases.entrySet()) {
-            var uglyNumbers = new NthUglyNumber(new int[] {2, 3, 5});
+            var uglyNumbers = new NthUglyNumber(new int[]{2, 3, 5});
             assertEquals(uglyNumbers.get(tc.getKey()), tc.getValue());
 
-            var otherUglyNumbers = new NthUglyNumber(new int[] {5, 25, 6, 2, 3, 5});
+            var otherUglyNumbers = new NthUglyNumber(new int[]{5, 25, 6, 2, 3, 5});
             assertEquals(otherUglyNumbers.get(tc.getKey()), tc.getValue());
         }
     }
@@ -46,7 +47,7 @@ public class NthUglyNumberTest {
         testCases.put(1658, 3072000L);
         testCases.put(6625, 4300800000L);
 
-        var uglyNumbers = new NthUglyNumber(new int[] {7, 2, 5, 3});
+        var uglyNumbers = new NthUglyNumber(new int[]{7, 2, 5, 3});
         for (final var tc : testCases.entrySet()) {
             assertEquals(uglyNumbers.get(tc.getKey()), tc.getValue());
         }
@@ -56,24 +57,24 @@ public class NthUglyNumberTest {
 
     @Test
     public void testGetWithBase1() {
-        var uglyNumbers = new NthUglyNumber(new int[] {1});
+        var uglyNumbers = new NthUglyNumber(new int[]{1});
         assertEquals(uglyNumbers.get(10), 1);
     }
 
     @Test
     public void testGetWithBase2() {
-        var uglyNumbers = new NthUglyNumber(new int[] {2});
+        var uglyNumbers = new NthUglyNumber(new int[]{2});
         assertEquals(uglyNumbers.get(5), 32);
     }
 
     @Test
     public void testGetThrowsAnErrorForNegativeInput() {
-        var uglyNumbers = new NthUglyNumber(new int[] {1, 2});
+        var uglyNumbers = new NthUglyNumber(new int[]{1, 2});
         assertThrows(IllegalArgumentException.class, () -> uglyNumbers.get(-1));
     }
 
     @Test
     public void testConstructorThrowsAnErrorForEmptyInput() {
-        assertThrows(IllegalArgumentException.class, () -> new NthUglyNumber(new int[] {}));
+        assertThrows(IllegalArgumentException.class, () -> new NthUglyNumber(new int[]{}));
     }
 }

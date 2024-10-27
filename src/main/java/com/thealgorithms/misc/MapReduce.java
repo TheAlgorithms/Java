@@ -18,6 +18,7 @@ and the Reduce step, where the results from the Map step are combined to produce
 public final class MapReduce {
     private MapReduce() {
     }
+
     /*
      *Counting all the words frequency within a sentence.
      */

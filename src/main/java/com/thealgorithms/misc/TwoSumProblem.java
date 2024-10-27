@@ -2,6 +2,7 @@ package com.thealgorithms.misc;
 
 import java.util.HashMap;
 import java.util.Optional;
+
 import org.apache.commons.lang3.tuple.Pair;
 
 public final class TwoSumProblem {
@@ -11,6 +12,7 @@ public final class TwoSumProblem {
     /**
      * The function "twoSum" takes an array of integers and a target integer as input, and returns an
      * array of two indices where the corresponding elements in the input array add up to the target.
+     *
      * @param values An array of integers.
      * @param target The target is the sum that we are trying to find using two numbers from the given array.
      * @return A pair or indexes such that sum of values at these indexes equals to the target

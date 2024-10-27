@@ -63,12 +63,12 @@ public final class Mandelbrot {
      * area of the Mandelbrot set is roughly between "-1.5 < x < 0.5" and "-1 <
      * y < 1" in the figure-coordinates.
      *
-     * @param imageWidth The width of the rendered image.
-     * @param imageHeight The height of the rendered image.
-     * @param figureCenterX The x-coordinate of the center of the figure.
-     * @param figureCenterY The y-coordinate of the center of the figure.
-     * @param figureWidth The width of the figure.
-     * @param maxStep Maximum number of steps to check for divergent behavior.
+     * @param imageWidth             The width of the rendered image.
+     * @param imageHeight            The height of the rendered image.
+     * @param figureCenterX          The x-coordinate of the center of the figure.
+     * @param figureCenterY          The y-coordinate of the center of the figure.
+     * @param figureWidth            The width of the figure.
+     * @param maxStep                Maximum number of steps to check for divergent behavior.
      * @param useDistanceColorCoding Render in color or black and white.
      * @return The image of the rendered Mandelbrot set.
      */
@@ -141,18 +141,18 @@ public final class Mandelbrot {
             int t = (int) (val * (1 - (1 - f) * saturation));
 
             switch (hi) {
-            case 0:
-                return new Color(v, t, p);
-            case 1:
-                return new Color(q, v, p);
-            case 2:
-                return new Color(p, v, t);
-            case 3:
-                return new Color(p, q, v);
-            case 4:
-                return new Color(t, p, v);
-            default:
-                return new Color(v, p, q);
+                case 0:
+                    return new Color(v, t, p);
+                case 1:
+                    return new Color(q, v, p);
+                case 2:
+                    return new Color(p, v, t);
+                case 3:
+                    return new Color(p, q, v);
+                case 4:
+                    return new Color(t, p, v);
+                default:
+                    return new Color(v, p, q);
             }
         }
     }

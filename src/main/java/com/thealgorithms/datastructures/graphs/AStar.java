@@ -103,9 +103,9 @@ public final class AStar {
     /**
      * Implements the A* pathfinding algorithm to find the shortest path from a start node to a destination node.
      *
-     * @param from     the starting node
-     * @param to       the destination node
-     * @param graph    the graph representation of the problem
+     * @param from      the starting node
+     * @param to        the destination node
+     * @param graph     the graph representation of the problem
      * @param heuristic the heuristic estimates for each node
      * @return a PathAndDistance object containing the shortest path and its distance
      */

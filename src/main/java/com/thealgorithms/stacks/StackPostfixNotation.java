@@ -22,16 +22,16 @@ public final class StackPostfixNotation {
     private static BiFunction<Integer, Integer, Integer> getOperator(final String operationSymbol) {
         // note the order of operands
         switch (operationSymbol) {
-        case "+":
-            return (a, b) -> b + a;
-        case "-":
-            return (a, b) -> b - a;
-        case "*":
-            return (a, b) -> b * a;
-        case "/":
-            return (a, b) -> b / a;
-        default:
-            throw new IllegalArgumentException("exp contains an unknown operation.");
+            case "+":
+                return (a, b) -> b + a;
+            case "-":
+                return (a, b) -> b - a;
+            case "*":
+                return (a, b) -> b * a;
+            case "/":
+                return (a, b) -> b / a;
+            default:
+                throw new IllegalArgumentException("exp contains an unknown operation.");
         }
     }
 
@@ -56,10 +56,10 @@ public final class StackPostfixNotation {
     }
 
     /**
-     * @brief Evaluates the given postfix expression.
      * @param exp the expression to evaluate.
      * @return the value of the given expression.
-     * @exception IllegalArgumentException exp is not a valid postix expression.
+     * @throws IllegalArgumentException exp is not a valid postix expression.
+     * @brief Evaluates the given postfix expression.
      */
     public static int postfixEvaluate(final String exp) {
         Stack<Integer> s = new Stack<>();

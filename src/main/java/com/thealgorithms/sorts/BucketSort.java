@@ -43,7 +43,7 @@ public class BucketSort implements SortAlgorithm {
      * Initializes a list of empty buckets.
      *
      * @param numberOfBuckets the number of buckets to initialize
-     * @param <T> the type of elements to be sorted
+     * @param <T>             the type of elements to be sorted
      * @return a list of empty buckets
      */
     private <T extends Comparable<T>> List<List<T>> initializeBuckets(int numberOfBuckets) {
@@ -57,12 +57,12 @@ public class BucketSort implements SortAlgorithm {
     /**
      * Distributes elements from the array into the appropriate buckets.
      *
-     * @param array the array of elements to distribute
-     * @param buckets the list of buckets
-     * @param min the minimum value in the array
-     * @param max the maximum value in the array
+     * @param array           the array of elements to distribute
+     * @param buckets         the list of buckets
+     * @param min             the minimum value in the array
+     * @param max             the maximum value in the array
      * @param numberOfBuckets the total number of buckets
-     * @param <T> the type of elements in the array
+     * @param <T>             the type of elements in the array
      */
     private <T extends Comparable<T>> void distributeElementsIntoBuckets(T[] array, List<List<T>> buckets, final T min, final T max, final int numberOfBuckets) {
         for (final T element : array) {
@@ -75,8 +75,8 @@ public class BucketSort implements SortAlgorithm {
      * Concatenates the sorted buckets back into the original array.
      *
      * @param buckets the list of sorted buckets
-     * @param array the original array
-     * @param <T> the type of elements in the array
+     * @param array   the original array
+     * @param <T>     the type of elements in the array
      * @return the sorted array
      */
     private <T extends Comparable<T>> T[] concatenateBuckets(Iterable<List<T>> buckets, T[] array) {
@@ -95,11 +95,11 @@ public class BucketSort implements SortAlgorithm {
      * This is done by "normalizing" the element within the range of the array's minimum (min) and maximum (max) values,
      * and then mapping this normalized value to a specific bucket index.
      *
-     * @param element the element of the array
-     * @param min the minimum value in the array
-     * @param max the maximum value in the array
+     * @param element         the element of the array
+     * @param min             the minimum value in the array
+     * @param max             the maximum value in the array
      * @param numberOfBuckets the total number of buckets
-     * @param <T> the type of elements in the array
+     * @param <T>             the type of elements in the array
      * @return the index of the bucket
      */
     private <T extends Comparable<T>> int hash(final T element, final T min, final T max, final int numberOfBuckets) {

@@ -24,7 +24,7 @@ import java.math.BigInteger;
  * Then, the product of x and y can be expressed as:
  * x * y = (a * c) * 10^(2*m) + ((a * d) + (b * c)) * 10^m + (b * d)
  * </pre>
- *
+ * <p>
  * The Karatsuba algorithm calculates this more efficiently by reducing the number of
  * multiplications from four to three by using the identity:
  *
@@ -86,8 +86,8 @@ public final class KaratsubaMultiplication {
         // Combine the results using Karatsuba's formula
         // z0 + ((z1 - z2 - z0) << m) + (z2 << 2m)
         return z2
-            .shiftLeft(2 * m) // z2 * 10^(2*m)
-            .add(z1.subtract(z2).subtract(z0).shiftLeft(m)) // (z1 - z2 - z0) * 10^m
-            .add(z0); // z0
+                .shiftLeft(2 * m) // z2 * 10^(2*m)
+                .add(z1.subtract(z2).subtract(z0).shiftLeft(m)) // (z1 - z2 - z0) * 10^m
+                .add(z0); // z0
     }
 }

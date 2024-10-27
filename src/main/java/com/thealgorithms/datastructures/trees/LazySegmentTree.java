@@ -5,8 +5,7 @@ public class LazySegmentTree {
     /**
      * Lazy Segment Tree
      *
-     * @see
-     *	<a href="https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/">
+     * @see <a href="https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/">
      */
     static class Node {
 
@@ -59,7 +58,7 @@ public class LazySegmentTree {
         /**
          * Create a new node that is the sum of this node and the given node.
          *
-         * @param left The left Node of merging
+         * @param left  The left Node of merging
          * @param right The right Node of merging
          * @return The new Node.
          */
@@ -105,7 +104,7 @@ public class LazySegmentTree {
      *
      * @param array The array to build the LazySegmentTree from.
      * @param start The start index of the current node.
-     * @param end The end index of the current node.
+     * @param end   The end index of the current node.
      * @return The root of the new LazySegmentTree.
      */
     private Node buildTree(int[] array, int start, int end) {
@@ -121,10 +120,10 @@ public class LazySegmentTree {
     /**
      * Update the value of given range with the given value diff in O(log n) time.
      *
-     * @param left The left index of the range to update.
+     * @param left  The left index of the range to update.
      * @param right The right index of the range to update.
-     * @param diff The value to add to every index of the range.
-     * @param curr The current node.
+     * @param diff  The value to add to every index of the range.
+     * @param curr  The current node.
      */
     private void updateRange(int left, int right, int diff, Node curr) {
         if (left <= curr.start && curr.end <= right) {
@@ -144,7 +143,7 @@ public class LazySegmentTree {
     /**
      * Get Node of given range in O(log n) time.
      *
-     * @param left The left index of the range to update.
+     * @param left  The left index of the range to update.
      * @param right The right index of the range to update.
      * @return The Node representing the sum of the given range.
      */

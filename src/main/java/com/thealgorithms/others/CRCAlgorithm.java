@@ -33,10 +33,10 @@ public class CRCAlgorithm {
      * The algorithm's main constructor. The most significant variables, used in
      * the algorithm, are set in their initial values.
      *
-     * @param str The binary number P, in a string form, which is used by the
-     * CRC algorithm
+     * @param str  The binary number P, in a string form, which is used by the
+     *             CRC algorithm
      * @param size The size of every transmitted message
-     * @param ber The Bit Error Rate
+     * @param ber  The Bit Error Rate
      */
     public CRCAlgorithm(String str, int size, double ber) {
         messageChanged = false;
@@ -124,7 +124,7 @@ public class CRCAlgorithm {
      * message.
      *
      * @param check the variable used to determine, if the message is going to
-     * be checked from the receiver if true, it is checked otherwise, it is not
+     *              be checked from the receiver if true, it is checked otherwise, it is not
      */
     public void divideMessageWithP(boolean check) {
         ArrayList<Integer> x = new ArrayList<>();

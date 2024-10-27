@@ -50,10 +50,10 @@ public final class SieveOfEratosthenes {
     }
 
     /**
-     * @brief finds all of the prime numbers up to the given upper (inclusive) limit
      * @param n upper (inclusive) limit
-     * @exception IllegalArgumentException n is non-positive
      * @return the array of all primes up to the given number (inclusive)
+     * @throws IllegalArgumentException n is non-positive
+     * @brief finds all of the prime numbers up to the given upper (inclusive) limit
      */
     public static int[] findPrimesTill(int n) {
         return extractPrimes(sievePrimesTill(n));

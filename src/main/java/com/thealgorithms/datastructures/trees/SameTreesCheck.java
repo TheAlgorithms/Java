@@ -8,17 +8,17 @@ import java.util.Deque;
  * This code checks whether they are the same (structurally identical and have the same values) or
  * not. <p> Example:
  * 1. Binary trees:
- *      1                 1
- *     / \               / \
- *    2   3             2   3
- *   /\   /\           /\   /\
- *  4  5 6  7         4  5 6  7
+ * 1                 1
+ * / \               / \
+ * 2   3             2   3
+ * /\   /\           /\   /\
+ * 4  5 6  7         4  5 6  7
  * These trees are the same, so the code returns 'true'.
  * <p>
  * 2. Binary trees:
- *      1   1
- *     /     \
- *    2       2
+ * 1   1
+ * /     \
+ * 2       2
  * These trees are NOT the same (the structure differs), so the code returns 'false'.
  * <p>
  * This solution implements the breadth-first search (BFS) algorithm.
@@ -35,6 +35,7 @@ import java.util.Deque;
 public final class SameTreesCheck {
     private SameTreesCheck() {
     }
+
     public static boolean check(BinaryTree.Node p, BinaryTree.Node q) {
         if (p == null && q == null) {
             return true;

@@ -15,7 +15,7 @@ public final class ReturnSubsequence {
      */
     public static String[] getSubsequences(String input) {
         if (input.isEmpty()) {
-            return new String[] {""}; // Return array with an empty string if input is empty
+            return new String[]{""}; // Return array with an empty string if input is empty
         }
 
         // Recursively find subsequences of the substring (excluding the first character)

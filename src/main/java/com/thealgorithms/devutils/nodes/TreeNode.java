@@ -2,11 +2,10 @@ package com.thealgorithms.devutils.nodes;
 
 /**
  * Base class for any tree node which holds a reference to the parent node.
- *
+ * <p>
  * All known subclasses: {@link SimpleTreeNode}, {@link LargeTreeNode}.
  *
  * @param <E> The type of the data held in the Node.
- *
  * @author <a href="https://github.com/aitorfi">aitorfi</a>
  */
 public abstract class TreeNode<E> extends Node<E> {
@@ -42,7 +41,7 @@ public abstract class TreeNode<E> extends Node<E> {
     /**
      * Initializes the Nodes' data and parent node reference.
      *
-     * @param data Value to which data will be initialized.
+     * @param data       Value to which data will be initialized.
      * @param parentNode Value to which the nodes' parent reference will be set.
      */
     public TreeNode(E data, TreeNode<E> parentNode) {

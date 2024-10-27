@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.math.BigInteger;
+
 /**
  * <a href="https://en.wikipedia.org/wiki/Automorphic_number">Automorphic Number</a>
  * A number is said to be an Automorphic, if it is present in the last digit(s)
@@ -17,7 +18,7 @@ public final class AutomorphicNumber {
      *
      * @param n The number to be checked
      * @return {@code true} if {@code a} is Automorphic number, otherwise
-     *         {@code false}
+     * {@code false}
      */
     public static boolean isAutomorphic(long n) {
         if (n < 0) {
@@ -39,7 +40,7 @@ public final class AutomorphicNumber {
      *
      * @param n The number to be checked
      * @return {@code true} if {@code a} is Automorphic number, otherwise
-     *         {@code false}
+     * {@code false}
      */
     public static boolean isAutomorphic2(long n) {
         if (n < 0) {
@@ -54,7 +55,7 @@ public final class AutomorphicNumber {
      *
      * @param s The number in String to be checked
      * @return {@code true} if {@code a} is Automorphic number, otherwise
-     *         {@code false}
+     * {@code false}
      */
     public static boolean isAutomorphic3(String s) {
         BigInteger n = new BigInteger(s);

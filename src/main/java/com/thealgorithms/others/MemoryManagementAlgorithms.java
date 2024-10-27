@@ -1,6 +1,7 @@
 package com.thealgorithms.others;
 
 import java.util.ArrayList;
+
 /**
  * @author Alexandros Lemonaris
  */
@@ -12,10 +13,11 @@ public abstract class MemoryManagementAlgorithms {
      * Abstract method since it is implemented different for each algorithm.
      * It should return an ArrayList of Integers, where the index is the process
      * ID (zero-indexed) and the value is the block number (also zero-indexed).
-     * @param sizeOfBlocks an int array that contains the sizes of the memory
-     * blocks available.
+     *
+     * @param sizeOfBlocks     an int array that contains the sizes of the memory
+     *                         blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
-     * processes we need memory blocks for.
+     *                         processes we need memory blocks for.
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
@@ -61,7 +63,7 @@ class BestFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the best fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
+     * @param blocks:  the array with the available memory blocks.
      * @param process: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
@@ -71,7 +73,7 @@ class BestFitCPU extends MemoryManagementAlgorithms {
         // processSize.
         int minDiff = findMaxElement(blockSizes);
         int index = NO_ALLOCATION; // If there is no block that can fit the process, return
-                                   // NO_ALLOCATION as the
+        // NO_ALLOCATION as the
         // result.
         for (int i = 0; i < blockSizes.length; i++) { // Find the most fitting memory block for the given process.
             if (blockSizes[i] - processSize < minDiff && blockSizes[i] - processSize >= 0) {
@@ -87,10 +89,10 @@ class BestFitCPU extends MemoryManagementAlgorithms {
      * It should return an ArrayList of Integers, where the index is the process
      * ID (zero-indexed) and the value is the block number (also zero-indexed).
      *
-     * @param sizeOfBlocks: an int array that contains the sizes of the memory
-     * blocks available.
+     * @param sizeOfBlocks:    an int array that contains the sizes of the memory
+     *                         blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
-     * processes we need memory blocks for.
+     *                         processes we need memory blocks for.
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
@@ -119,7 +121,7 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the worst fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
+     * @param blocks:  the array with the available memory blocks.
      * @param process: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
@@ -145,10 +147,10 @@ class WorstFitCPU extends MemoryManagementAlgorithms {
      * It should return an ArrayList of Integers, where the index is the process
      * ID (zero-indexed) and the value is the block number (also zero-indexed).
      *
-     * @param sizeOfBlocks: an int array that contains the sizes of the memory
-     * blocks available.
+     * @param sizeOfBlocks:    an int array that contains the sizes of the memory
+     *                         blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
-     * processes we need memory blocks for.
+     *                         processes we need memory blocks for.
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
@@ -177,7 +179,7 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
      * Method to find the index of the memory block that is going to fit the
      * given process based on the first fit algorithm.
      *
-     * @param blocks: the array with the available memory blocks.
+     * @param blocks:  the array with the available memory blocks.
      * @param process: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
@@ -197,10 +199,10 @@ class FirstFitCPU extends MemoryManagementAlgorithms {
      * It should return an ArrayList of Integers, where the index is the process
      * ID (zero-indexed) and the value is the block number (also zero-indexed).
      *
-     * @param sizeOfBlocks: an int array that contains the sizes of the memory
-     * blocks available.
+     * @param sizeOfBlocks:    an int array that contains the sizes of the memory
+     *                         blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
-     * processes we need memory blocks for.
+     *                         processes we need memory blocks for.
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */
@@ -233,7 +235,7 @@ class NextFit extends MemoryManagementAlgorithms {
      * if the search is interrupted in between, the new search is carried out from the last
      * location.
      *
-     * @param blocks: the array with the available memory blocks.
+     * @param blocks:  the array with the available memory blocks.
      * @param process: the size of the process.
      * @return the index of the block that fits, or -255 if no such block
      * exists.
@@ -258,10 +260,10 @@ class NextFit extends MemoryManagementAlgorithms {
      * It should return an ArrayList of Integers, where the index is the process
      * ID (zero-indexed) and the value is the block number (also zero-indexed).
      *
-     * @param sizeOfBlocks: an int array that contains the sizes of the memory
-     * blocks available.
+     * @param sizeOfBlocks:    an int array that contains the sizes of the memory
+     *                         blocks available.
      * @param sizeOfProcesses: an int array that contains the sizes of the
-     * processes we need memory blocks for.
+     *                         processes we need memory blocks for.
      * @return the ArrayList filled with Integers repressenting the memory
      * allocation that took place.
      */

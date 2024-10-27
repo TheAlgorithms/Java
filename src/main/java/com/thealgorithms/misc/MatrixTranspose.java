@@ -1,10 +1,8 @@
 package com.thealgorithms.misc;
 
 /**
- *
- *
  * <h1>Find the Transpose of Matrix!</h1>
- *
+ * <p>
  * Simply take input from the user and print the matrix before the transpose and
  * after the transpose.
  *
@@ -24,9 +22,9 @@ public final class MatrixTranspose {
      * Calculate the transpose of the given matrix.
      *
      * @param matrix The matrix to be transposed
+     * @return The transposed matrix
      * @throws IllegalArgumentException if the matrix is empty
      * @throws NullPointerException     if the matrix is null
-     * @return The transposed matrix
      */
     public static int[][] transpose(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {

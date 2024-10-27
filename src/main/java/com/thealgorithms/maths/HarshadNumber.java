@@ -11,7 +11,7 @@ public final class HarshadNumber {
      *
      * @param n The number to be checked
      * @return {@code true} if {@code a} is Harshad number, otherwise
-     *         {@code false}
+     * {@code false}
      */
     public static boolean isHarshad(long n) {
         if (n <= 0) {
@@ -33,7 +33,7 @@ public final class HarshadNumber {
      *
      * @param s The number in String to be checked
      * @return {@code true} if {@code a} is Harshad number, otherwise
-     *         {@code false}
+     * {@code false}
      */
     public static boolean isHarshad(String s) {
         final Long n = Long.valueOf(s);

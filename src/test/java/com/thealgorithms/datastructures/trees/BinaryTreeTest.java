@@ -7,7 +7,8 @@ public
 class BinaryTreeTest {
 
     // Test for adding elements and finding data within the tree
-    @Test void test1() {
+    @Test
+    void test1() {
         BinaryTree t = new BinaryTree();
         t.put(3);
         t.put(5);
@@ -24,7 +25,8 @@ class BinaryTreeTest {
         Assertions.assertEquals(7, t.find(7).data);
     }
 
-    @Test void test2() {
+    @Test
+    void test2() {
         BinaryTree t = new BinaryTree();
         t.put(3);
         t.put(5);
@@ -52,7 +54,8 @@ class BinaryTreeTest {
     }
 
     // Test for attempting to remove a nonexistent node
-    @Test void test3() {
+    @Test
+    void test3() {
         BinaryTree t = new BinaryTree();
         t.put(3);
         t.put(5);
@@ -66,7 +69,8 @@ class BinaryTreeTest {
     }
 
     // Test traversal methods (bfs, inOrder, preOrder, postOrder)
-    @Test void test4() {
+    @Test
+    void test4() {
         BinaryTree t = new BinaryTree();
         t.put(3);
         t.put(5);

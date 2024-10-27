@@ -23,7 +23,7 @@ class KMPSearch {
             }
             if (j == m) {
                 System.out.println("Found pattern "
-                    + "at index " + (i - j));
+                        + "at index " + (i - j));
                 int index = (i - j);
                 j = lps[j - 1];
                 return index;

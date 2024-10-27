@@ -24,7 +24,7 @@ class InterpolationSearch {
      * Finds the index of the specified key in a sorted array using interpolation search.
      *
      * @param array The sorted array to search.
-     * @param key The value to search for.
+     * @param key   The value to search for.
      * @return The index of the key if found, otherwise -1.
      */
     public int find(int[] array, int key) {

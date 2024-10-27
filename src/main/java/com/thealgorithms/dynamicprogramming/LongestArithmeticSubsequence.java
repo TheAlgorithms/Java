@@ -8,7 +8,7 @@ final class LongestArithmeticSubsequence {
 
     /**
      * Returns the length of the longest arithmetic subsequence in the given array.
-     *
+     * <p>
      * A sequence seq is arithmetic if seq[i + 1] - seq[i] are all the same value
      * (for 0 <= i < seq.length - 1).
      *

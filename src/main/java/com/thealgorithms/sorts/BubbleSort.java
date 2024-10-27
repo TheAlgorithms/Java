@@ -11,7 +11,7 @@ class BubbleSort implements SortAlgorithm {
      * Implements generic bubble sort algorithm.
      *
      * @param array the array to be sorted.
-     * @param <T> the type of elements in the array.
+     * @param <T>   the type of elements in the array.
      * @return the sorted array.
      */
     @Override

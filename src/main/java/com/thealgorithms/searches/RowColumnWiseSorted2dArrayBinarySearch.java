@@ -5,10 +5,10 @@ import com.thealgorithms.devutils.searches.MatrixSearchAlgorithm;
 /**
  * The search is for any array which is sorted row and column-wise too. For ex :
  * {{10, 20, 30, 40},
- *  {15, 25, 35, 45},
- *  {18, 28, 38, 48},
- *  {21, 31, 41, 51}}
- *
+ * {15, 25, 35, 45},
+ * {18, 28, 38, 48},
+ * {21, 31, 41, 51}}
+ * <p>
  * This array is sorted in both row and column manner.
  * In this two pointers are taken, the first points to the 0th row and the second one points to end
  * column, and then the element corresponding to the pointers placed in the array is compared with
@@ -35,13 +35,13 @@ public class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgor
             int comp = target.compareTo(matrix[rowPointer][colPointer]);
 
             if (comp == 0) {
-                return new int[] {rowPointer, colPointer};
+                return new int[]{rowPointer, colPointer};
             } else if (comp > 0) {
                 rowPointer++; // Incrementing the row pointer if the target is greater
             } else {
                 colPointer--; // Decrementing the column pointer if the target is lesser
             }
         }
-        return new int[] {-1, -1}; // The not found condition
+        return new int[]{-1, -1}; // The not found condition
     }
 }

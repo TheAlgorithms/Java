@@ -150,7 +150,7 @@ public class LeftistHeap {
     /**
      * Auxiliary function for in-order traversal
      *
-     * @param n the current node
+     * @param n   the current node
      * @param lst the list to store the elements in in-order
      */
     private void inOrderAux(Node n, ArrayList<Integer> lst) {

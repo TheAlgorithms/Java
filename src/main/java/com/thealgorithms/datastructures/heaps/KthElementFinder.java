@@ -17,12 +17,12 @@ public final class KthElementFinder {
     /**
      * Finds the Kth largest element in the given array.
      * Uses a min-heap of size K to track the largest K elements.
-     *
+     * <p>
      * Time Complexity: O(n * log(k)), where n is the size of the input array.
      * Space Complexity: O(k), as we maintain a heap of size K.
      *
      * @param nums the input array of integers
-     * @param k the desired Kth position (1-indexed, i.e., 1 means the largest element)
+     * @param k    the desired Kth position (1-indexed, i.e., 1 means the largest element)
      * @return the Kth largest element in the array
      */
     public static int findKthLargest(int[] nums, int k) {
@@ -39,12 +39,12 @@ public final class KthElementFinder {
     /**
      * Finds the Kth smallest element in the given array.
      * Uses a max-heap of size K to track the smallest K elements.
-     *
+     * <p>
      * Time Complexity: O(n * log(k)), where n is the size of the input array.
      * Space Complexity: O(k), as we maintain a heap of size K.
      *
      * @param nums the input array of integers
-     * @param k the desired Kth position (1-indexed, i.e., 1 means the smallest element)
+     * @param k    the desired Kth position (1-indexed, i.e., 1 means the smallest element)
      * @return the Kth smallest element in the array
      */
     public static int findKthSmallest(int[] nums, int k) {

@@ -42,9 +42,9 @@ public final class PollardRho {
     /**
      * This method returns a polynomial in x computed modulo n
      *
-     * @param base Integer base of the polynomial
+     * @param base    Integer base of the polynomial
      * @param modulus Integer is value which is to be used to perform modulo operation over the
-     *     polynomial
+     *                polynomial
      * @return Integer (((base * base) - 1) % modulus)
      */
     static int g(int base, int modulus) {

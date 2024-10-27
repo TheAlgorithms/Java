@@ -22,8 +22,8 @@ public final class FFTBluestein {
      * https://en.wikipedia.org/wiki/Chirp_Z-transform#Bluestein.27s_algorithm
      * http://tka4.org/materials/lib/Articles-Books/Numerical%20Algorithms/Hartley_Trasform/Bluestein%27s%20FFT%20algorithm%20-%20Wikipedia,%20the%20free%20encyclopedia.htm
      *
-     * @param x The discrete signal which is then converted to the FFT or the
-     * IFFT of signal x.
+     * @param x       The discrete signal which is then converted to the FFT or the
+     *                IFFT of signal x.
      * @param inverse True if you want to find the inverse FFT.
      */
     public static void fftBluestein(List<FFT.Complex> x, boolean inverse) {

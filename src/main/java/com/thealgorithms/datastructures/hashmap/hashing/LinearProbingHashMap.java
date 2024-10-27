@@ -29,10 +29,9 @@ import java.util.ArrayList;
  * ensuring efficient space utilization.
  * </p>
  *
- * @see <a href="https://en.wikipedia.org/wiki/Linear_probing">Linear Probing Hash Table</a>
- *
- * @param <Key> the type of keys maintained by this map
+ * @param <Key>   the type of keys maintained by this map
  * @param <Value> the type of mapped values
+ * @see <a href="https://en.wikipedia.org/wiki/Linear_probing">Linear Probing Hash Table</a>
  */
 public class LinearProbingHashMap<Key extends Comparable<Key>, Value> extends Map<Key, Value> {
     private int hsize; // size of the hash table

@@ -23,7 +23,7 @@ public final class LongestAlternatingSubsequence {
      * Finds the length of the longest alternating subsequence in the given array.
      *
      * @param arr an array of integers where the longest alternating subsequence is to be found
-     * @param n the length of the array {@code arr}
+     * @param n   the length of the array {@code arr}
      * @return the length of the longest alternating subsequence
      *
      * <p>The method uses dynamic programming to solve the problem. It maintains a 2D array

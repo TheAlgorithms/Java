@@ -17,9 +17,9 @@ public final class PiNilakantha {
 
     /**
      * @param iterations number of times the infinite series gets repeated Pi
-     * get more accurate the higher the value of iterations is Values from 0 up
-     * to 500 are allowed since double precision is not sufficient for more than
-     * about 500 repetitions of this algorithm
+     *                   get more accurate the higher the value of iterations is Values from 0 up
+     *                   to 500 are allowed since double precision is not sufficient for more than
+     *                   about 500 repetitions of this algorithm
      * @return the pi value of the calculation with a precision of x iteration
      */
     public static double calculatePi(int iterations) {

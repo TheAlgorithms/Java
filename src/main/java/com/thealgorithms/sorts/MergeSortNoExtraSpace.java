@@ -33,9 +33,9 @@ public final class MergeSortNoExtraSpace {
     /**
      * Recursively divides the array into two halves, sorts and merges them.
      *
-     * @param array  the array to be sorted
-     * @param start  the starting index of the array
-     * @param end    the ending index of the array
+     * @param array      the array to be sorted
+     * @param start      the starting index of the array
+     * @param end        the ending index of the array
      * @param maxElement the value greater than any element in the array, used for encoding
      */
     public static void mergeSort(int[] array, int start, int end, int maxElement) {
@@ -50,10 +50,10 @@ public final class MergeSortNoExtraSpace {
     /**
      * Merges two sorted subarrays [start...middle] and [middle+1...end] in place.
      *
-     * @param array  the array containing the subarrays to be merged
-     * @param start  the starting index of the first subarray
-     * @param middle    the ending index of the first subarray and starting index of the second subarray
-     * @param end    the ending index of the second subarray
+     * @param array      the array containing the subarrays to be merged
+     * @param start      the starting index of the first subarray
+     * @param middle     the ending index of the first subarray and starting index of the second subarray
+     * @param end        the ending index of the second subarray
      * @param maxElement the value greater than any element in the array, used for encoding
      */
     private static void merge(int[] array, int start, int middle, int end, int maxElement) {

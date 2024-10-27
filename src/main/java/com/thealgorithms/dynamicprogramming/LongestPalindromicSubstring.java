@@ -5,7 +5,6 @@ package com.thealgorithms.dynamicprogramming;
  * <p>
  * A palindromic substring is a sequence of characters that reads the same backward as forward.
  * This class uses a dynamic programming approach to efficiently find the longest palindromic substring.
- *
  */
 public final class LongestPalindromicSubstring {
     private LongestPalindromicSubstring() {

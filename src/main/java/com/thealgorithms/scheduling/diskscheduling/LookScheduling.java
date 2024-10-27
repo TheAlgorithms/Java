@@ -15,6 +15,7 @@ public class LookScheduling {
     private final int currentPosition;
     private boolean movingUp;
     private int farthestPosition;
+
     public LookScheduling(int startPosition, boolean initialDirection, int maxTrack) {
         this.currentPosition = startPosition;
         this.movingUp = initialDirection;

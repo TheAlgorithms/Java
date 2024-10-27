@@ -57,35 +57,35 @@ public final class WordBoggle {
     public static List<Integer[]> getNeighbors(int i, int j, char[][] board) {
         List<Integer[]> neighbors = new ArrayList<>();
         if (i > 0 && j > 0) {
-            neighbors.add(new Integer[] {i - 1, j - 1});
+            neighbors.add(new Integer[]{i - 1, j - 1});
         }
 
         if (i > 0 && j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i - 1, j + 1});
+            neighbors.add(new Integer[]{i - 1, j + 1});
         }
 
         if (i < board.length - 1 && j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i + 1, j + 1});
+            neighbors.add(new Integer[]{i + 1, j + 1});
         }
 
         if (i < board.length - 1 && j > 0) {
-            neighbors.add(new Integer[] {i + 1, j - 1});
+            neighbors.add(new Integer[]{i + 1, j - 1});
         }
 
         if (i > 0) {
-            neighbors.add(new Integer[] {i - 1, j});
+            neighbors.add(new Integer[]{i - 1, j});
         }
 
         if (i < board.length - 1) {
-            neighbors.add(new Integer[] {i + 1, j});
+            neighbors.add(new Integer[]{i + 1, j});
         }
 
         if (j > 0) {
-            neighbors.add(new Integer[] {i, j - 1});
+            neighbors.add(new Integer[]{i, j - 1});
         }
 
         if (j < board[0].length - 1) {
-            neighbors.add(new Integer[] {i, j + 1});
+            neighbors.add(new Integer[]{i, j + 1});
         }
 
         return neighbors;

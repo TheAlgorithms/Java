@@ -15,6 +15,7 @@ public class ReverseKGroup {
         }
         return count;
     }
+
     // reverse function
     public Node reverse(Node head, int count, int k) {
         if (count < k) {
@@ -37,6 +38,7 @@ public class ReverseKGroup {
         }
         return prev;
     }
+
     public Node reverseKGroup(Node head, int k) {
         int count = length(head);
         Node ans = reverse(head, count, k);

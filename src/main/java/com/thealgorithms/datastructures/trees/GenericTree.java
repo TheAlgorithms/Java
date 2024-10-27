@@ -23,6 +23,7 @@ public class GenericTree {
     }
 
     private final Node root;
+
     public GenericTree() { // Constructor
         Scanner scn = new Scanner(System.in);
         root = createTreeG(null, 0, scn);

@@ -14,7 +14,7 @@ package com.thealgorithms.maths;
  * </p>
  *
  * <p><strong>Time complexity:</strong> O(log(exp)) — much faster than naive exponentiation (O(exp)).</p>
- *
+ * <p>
  * For more information, please visit {@link https://en.wikipedia.org/wiki/Exponentiation_by_squaring}
  */
 public final class FastExponentiation {
@@ -33,11 +33,11 @@ public final class FastExponentiation {
      * the exponent at each step. It multiplies the base to the result when the exponent is odd.
      *
      * @param base the base number to be raised to the power of exp
-     * @param exp the exponent to which the base is raised
-     * @param mod the modulus to ensure the result does not overflow
-     * @return (base^exp) % mod
+     * @param exp  the exponent to which the base is raised
+     * @param mod  the modulus to ensure the result does not overflow
+     * @return (base ^ exp) % mod
      * @throws IllegalArgumentException if the modulus is less than or equal to 0
-     * @throws ArithmeticException if the exponent is negative (not supported in this implementation)
+     * @throws ArithmeticException      if the exponent is negative (not supported in this implementation)
      */
     public static long fastExponentiation(long base, long exp, long mod) {
         if (mod <= 0) {

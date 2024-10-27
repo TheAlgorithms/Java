@@ -5,6 +5,7 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

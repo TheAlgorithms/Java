@@ -39,6 +39,8 @@ class MinimumSumPartitionTest {
     @Test
     public void testMinimumSumPartitionThrowsForNegativeArray() {
         int[] array = {4, 1, -6, 7};
-        assertThrows(IllegalArgumentException.class, () -> { MinimumSumPartition.minimumSumPartition(array); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            MinimumSumPartition.minimumSumPartition(array);
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

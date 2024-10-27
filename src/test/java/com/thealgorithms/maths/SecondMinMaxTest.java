@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,6 +22,7 @@ public class SecondMinMaxTest {
             secondMin = inSecondMin;
             secondMax = inSecondMax;
         }
+
         final int[] inputArray;
         final int secondMin;
         final int secondMax;
@@ -28,19 +30,19 @@ public class SecondMinMaxTest {
 
     @Test
     public void testForEmptyInputArray() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[] {}));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[]{}));
         assertEquals(exception.getMessage(), EXP_MSG_ARR_LEN_LESS_2);
     }
 
     @Test
     public void testForArrayWithSingleElement() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMax(new int[] {1}));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMax(new int[]{1}));
         assertEquals(exception.getMessage(), EXP_MSG_ARR_LEN_LESS_2);
     }
 
     @Test
     public void testForArrayWithSameElements() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[] {1, 1, 1, 1}));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> SecondMinMax.findSecondMin(new int[]{1, 1, 1, 1}));
         assertEquals(exception.getMessage(), EXP_MSG_ARR_SAME_ELE);
     }
 
@@ -52,7 +54,7 @@ public class SecondMinMaxTest {
     }
 
     private static Stream<Arguments> inputStream() {
-        return Stream.of(Arguments.of(new TestCase(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 9)), Arguments.of(new TestCase(new int[] {5, 4, 5, 5, 5}, 5, 4)), Arguments.of(new TestCase(new int[] {-1, 0}, 0, -1)),
-            Arguments.of(new TestCase(new int[] {-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}, -9, -2)), Arguments.of(new TestCase(new int[] {3, -2, 3, 9, -4, -4, 8}, -2, 8)));
+        return Stream.of(Arguments.of(new TestCase(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 2, 9)), Arguments.of(new TestCase(new int[]{5, 4, 5, 5, 5}, 5, 4)), Arguments.of(new TestCase(new int[]{-1, 0}, 0, -1)),
+                Arguments.of(new TestCase(new int[]{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}, -9, -2)), Arguments.of(new TestCase(new int[]{3, -2, 3, 9, -4, -4, 8}, -2, 8)));
     }
 }

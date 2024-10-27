@@ -3,13 +3,12 @@ package com.thealgorithms.datastructures.graphs;
 import java.util.Scanner;
 
 class BellmanFord /*
-                   * Implementation of Bellman ford to detect negative cycles. Graph accepts
-                   * inputs
-                   * in form of edges which have start vertex, end vertex and weights. Vertices
-                   * should be labelled with a
-                   * number between 0 and total number of vertices-1,both inclusive
-                   */
-{
+ * Implementation of Bellman ford to detect negative cycles. Graph accepts
+ * inputs
+ * in form of edges which have start vertex, end vertex and weights. Vertices
+ * should be labelled with a
+ * number between 0 and total number of vertices-1,both inclusive
+ */ {
 
     int vertex;
     int edge;
@@ -82,7 +81,7 @@ class BellmanFord /*
                 arr[i] = new Edge(u, ve, w);
             }
             int[] dist = new int[v]; // Distance array for holding the finalized shortest path distance
-                                     // between source
+            // between source
             // and all vertices
             int[] p = new int[v]; // Parent array for holding the paths
             for (i = 0; i < v; i++) {
@@ -127,16 +126,16 @@ class BellmanFord /*
      * @param Edge   Array of edges
      */
     public void show(int source, int end,
-        Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()
-                      // method // Just shows results of computation, if graph is passed to it. The
-                      // graph should
+                     Edge[] arr) { // be created by using addEdge() method and passed by calling getEdgeArray()
+        // method // Just shows results of computation, if graph is passed to it. The
+        // graph should
         int i;
         int j;
         int v = vertex;
         int e = edge;
         int neg = 0;
         double[] dist = new double[v]; // Distance array for holding the finalized shortest path
-                                       // distance between source
+        // distance between source
         // and all vertices
         int[] p = new int[v]; // Parent array for holding the paths
         for (i = 0; i < v; i++) {

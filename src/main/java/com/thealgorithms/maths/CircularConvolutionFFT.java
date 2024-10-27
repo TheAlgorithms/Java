@@ -17,7 +17,7 @@ public final class CircularConvolutionFFT {
     /**
      * This method pads the signal with zeros until it reaches the new size.
      *
-     * @param x The signal to be padded.
+     * @param x       The signal to be padded.
      * @param newSize The new size of the signal.
      */
     private static void padding(Collection<FFT.Complex> x, int newSize) {

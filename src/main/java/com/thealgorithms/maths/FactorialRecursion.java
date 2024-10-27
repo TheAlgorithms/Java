@@ -3,6 +3,7 @@ package com.thealgorithms.maths;
 public final class FactorialRecursion {
     private FactorialRecursion() {
     }
+
     /**
      * Recursive FactorialRecursion Method
      *

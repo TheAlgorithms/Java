@@ -14,7 +14,9 @@ class LiouvilleLambdaFunctionTest {
         String expectedMessage = "Number must be greater than zero.";
 
         // when
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> { LiouvilleLambdaFunction.liouvilleLambda(number); });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            LiouvilleLambdaFunction.liouvilleLambda(number);
+        });
         String actualMessage = exception.getMessage();
 
         // then
@@ -28,7 +30,9 @@ class LiouvilleLambdaFunctionTest {
         String expectedMessage = "Number must be greater than zero.";
 
         // when
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> { LiouvilleLambdaFunction.liouvilleLambda(number); });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            LiouvilleLambdaFunction.liouvilleLambda(number);
+        });
         String actualMessage = exception.getMessage();
 
         // then

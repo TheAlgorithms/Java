@@ -1,6 +1,7 @@
 package com.thealgorithms.searches;
 
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -24,7 +25,7 @@ public class RandomSearch implements SearchAlgorithm {
      * Finds the index of a given element using random search.
      *
      * @param array Array to search through
-     * @param key Element to search for
+     * @param key   Element to search for
      * @return Index of the element if found, -1 otherwise
      */
     @Override

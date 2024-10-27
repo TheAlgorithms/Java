@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * A class that implements a palindrome checker using a stack.
  * The stack is used to store the characters of the string,
  * which we will pop one-by-one to create the string in reverse.
- *
+ * <p>
  * Reference: https://www.geeksforgeeks.org/check-whether-the-given-string-is-palindrome-using-stack/
  */
 public class PalindromeWithStack {

@@ -90,8 +90,8 @@ public final class LinearDiophantineEquationsSolver {
         @Override
         public String toString() {
             return "Solution["
-                + "x=" + x + ", "
-                + "y=" + y + ']';
+                    + "x=" + x + ", "
+                    + "y=" + y + ']';
         }
     }
 
@@ -144,8 +144,8 @@ public final class LinearDiophantineEquationsSolver {
         @Override
         public String toString() {
             return ("GcdSolutionWrapper["
-                + "gcd=" + gcd + ", "
-                + "solution=" + solution + ']');
+                    + "gcd=" + gcd + ", "
+                    + "solution=" + solution + ']');
         }
     }
 }

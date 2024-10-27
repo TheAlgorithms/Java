@@ -21,7 +21,7 @@ class QuickSort implements SortAlgorithm {
     /**
      * The sorting process
      *
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array
      * @param array The array to be sorted
      */
@@ -37,7 +37,7 @@ class QuickSort implements SortAlgorithm {
      * Randomize the array to avoid the basically ordered sequences
      *
      * @param array The array to be sorted
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array
      * @return the partition index of the array
      */
@@ -51,9 +51,9 @@ class QuickSort implements SortAlgorithm {
      * This method finds the partition index for an array
      *
      * @param array The array to be sorted
-     * @param left The first index of an array
+     * @param left  The first index of an array
      * @param right The last index of an array Finds the partition index of an
-     * array
+     *              array
      */
     private static <T extends Comparable<T>> int partition(T[] array, int left, int right) {
         final int mid = (left + right) >>> 1;

@@ -3,14 +3,14 @@ package com.thealgorithms.ciphers;
 /**
  * The Atbash cipher is a classic substitution cipher that substitutes each letter
  * with its opposite letter in the alphabet.
- *
+ * <p>
  * For example:
  * - 'A' becomes 'Z', 'B' becomes 'Y', 'C' becomes 'X', and so on.
  * - Similarly, 'a' becomes 'z', 'b' becomes 'y', and so on.
- *
+ * <p>
  * The cipher works identically for both uppercase and lowercase letters.
  * Non-alphabetical characters remain unchanged in the output.
- *
+ * <p>
  * This cipher is symmetric, meaning that applying the cipher twice will return
  * the original text. Therefore, the same function is used for both encryption and decryption.
  *

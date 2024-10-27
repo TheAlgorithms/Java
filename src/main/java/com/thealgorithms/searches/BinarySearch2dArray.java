@@ -6,7 +6,7 @@ package com.thealgorithms.searches;
  * The search is performed using a combination of binary search on rows and
  * columns.
  * The 2D array must be strictly sorted in both rows and columns.
- *
+ * <p>
  * The algorithm works by:
  * 1. Performing a binary search on the middle column of the 2D array.
  * 2. Depending on the value found, it eliminates rows above or below the middle
@@ -26,7 +26,7 @@ public final class BinarySearch2dArray {
      * @param arr    The 2D array to search in.
      * @param target The value to search for.
      * @return An array containing the row and column indices of the target, or [-1,
-     *         -1] if the target is not found.
+     * -1] if the target is not found.
      */
     static int[] binarySearch(int[][] arr, int target) {
         int rowCount = arr.length;
@@ -48,7 +48,7 @@ public final class BinarySearch2dArray {
 
             // If the middle element matches the target, return its position.
             if (arr[midRow][midCol] == target) {
-                return new int[] {midRow, midCol};
+                return new int[]{midRow, midCol};
             }
             // If the middle element is smaller than the target, discard the upper half.
             else if (arr[midRow][midCol] < target) {
@@ -63,11 +63,11 @@ public final class BinarySearch2dArray {
         // If the target wasn't found during the row search, check the middle column of
         // startRow and endRow.
         if (arr[startRow][midCol] == target) {
-            return new int[] {startRow, midCol};
+            return new int[]{startRow, midCol};
         }
 
         if (arr[endRow][midCol] == target) {
-            return new int[] {endRow, midCol};
+            return new int[]{endRow, midCol};
         }
 
         // If target is smaller than the element in the left of startRow, perform a
@@ -101,7 +101,7 @@ public final class BinarySearch2dArray {
      * @param colStart The starting column index for the search.
      * @param colEnd   The ending column index for the search.
      * @return An array containing the row and column indices of the target, or [-1,
-     *         -1] if the target is not found.
+     * -1] if the target is not found.
      */
     static int[] binarySearch(int[][] arr, int target, int row, int colStart, int colEnd) {
         // Perform binary search within the specified column range.
@@ -110,7 +110,7 @@ public final class BinarySearch2dArray {
 
             // If the middle element matches the target, return its position.
             if (arr[row][midIndex] == target) {
-                return new int[] {row, midIndex};
+                return new int[]{row, midIndex};
             }
             // If the middle element is smaller than the target, move to the right half.
             else if (arr[row][midIndex] < target) {
@@ -122,6 +122,6 @@ public final class BinarySearch2dArray {
             }
         }
 
-        return new int[] {-1, -1}; // Target not found
+        return new int[]{-1, -1}; // Target not found
     }
 }

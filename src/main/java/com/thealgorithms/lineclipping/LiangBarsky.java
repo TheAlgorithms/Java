@@ -6,16 +6,16 @@ import com.thealgorithms.lineclipping.utils.Point;
 /**
  * @author shikarisohan
  * @since 10/5/24
- *
- *  * The Liang-Barsky line clipping algorithm is an efficient algorithm for
- *  * line clipping against a rectangular window. It is based on the parametric
- *  * equation of a line and checks the intersections of the line with the
- *  * window boundaries. This algorithm calculates the intersection points,
- *  * if any, and returns the clipped line that lies inside the window.
- *  *
- *  * Reference:
- *  * https://en.wikipedia.org/wiki/Liang%E2%80%93Barsky_algorithm
- *
+ * <p>
+ * * The Liang-Barsky line clipping algorithm is an efficient algorithm for
+ * * line clipping against a rectangular window. It is based on the parametric
+ * * equation of a line and checks the intersections of the line with the
+ * * window boundaries. This algorithm calculates the intersection points,
+ * * if any, and returns the clipped line that lies inside the window.
+ * *
+ * * Reference:
+ * * https://en.wikipedia.org/wiki/Liang%E2%80%93Barsky_algorithm
+ * <p>
  * Clipping window boundaries are defined as (xMin, yMin) and (xMax, yMax).
  * The algorithm computes the clipped line segment if it's partially or
  * fully inside the clipping window.
@@ -78,7 +78,7 @@ public class LiangBarsky {
             }
         }
 
-        return new double[] {t0, t1}; // Return valid t0 and t1
+        return new double[]{t0, t1}; // Return valid t0 and t1
     }
 
     // calculate the clipped line based on t0 and t1

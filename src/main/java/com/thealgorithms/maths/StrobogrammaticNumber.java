@@ -12,6 +12,7 @@ import java.util.Map;
 public class StrobogrammaticNumber {
     /**
      * Check if a number is strobogrammatic
+     *
      * @param number the number to be checked
      * @return true if the number is strobogrammatic, false otherwise
      */

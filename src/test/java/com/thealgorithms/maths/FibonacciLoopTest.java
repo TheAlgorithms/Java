@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigInteger;
+
 import org.junit.jupiter.api.Test;
 
 public class FibonacciLoopTest {
@@ -31,6 +32,8 @@ public class FibonacciLoopTest {
 
     @Test
     public void checkNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { FibonacciLoop.compute(-1); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            FibonacciLoop.compute(-1);
+        });
     }
 }

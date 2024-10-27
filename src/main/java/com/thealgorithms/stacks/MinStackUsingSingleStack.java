@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * Min-Stack implementation using a single stack.
- *
+ * <p>
  * This stack supports push, pop, and retrieving the minimum element
  * in constant time (O(1)) using a modified approach where the stack
  * stores both the element and the minimum value so far.
@@ -23,10 +23,10 @@ public class MinStackUsingSingleStack {
      */
     public void push(int value) {
         if (stack.isEmpty()) {
-            stack.push(new long[] {value, value});
+            stack.push(new long[]{value, value});
         } else {
             long minSoFar = Math.min(value, stack.peek()[1]);
-            stack.push(new long[] {value, minSoFar});
+            stack.push(new long[]{value, minSoFar});
         }
     }
 

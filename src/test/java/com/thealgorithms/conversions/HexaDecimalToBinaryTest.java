@@ -16,9 +16,9 @@ public class HexaDecimalToBinaryTest {
      */
     @ParameterizedTest
     @CsvSource({
-        "0x78563412, 0x12345678", "0x00000000, 0x00000000", "0x00000001, 0x01000000",
-        "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two's complement
-        "0x0000007F, 0x7F000000" // Positive boundary case
+            "0x78563412, 0x12345678", "0x00000000, 0x00000000", "0x00000001, 0x01000000",
+            "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two's complement
+            "0x0000007F, 0x7F000000" // Positive boundary case
     })
     public void
     testLittleToBigEndian(String inputHex, String expectedHex) {
@@ -32,9 +32,9 @@ public class HexaDecimalToBinaryTest {
      */
     @ParameterizedTest
     @CsvSource({
-        "0x12345678, 0x78563412", "0x00000000, 0x00000000", "0x01000000, 0x00000001",
-        "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two's complement
-        "0x7F000000, 0x0000007F" // Positive boundary case
+            "0x12345678, 0x78563412", "0x00000000, 0x00000000", "0x01000000, 0x00000001",
+            "0xFFFFFFFF, 0xFFFFFFFF", // -1 in two's complement
+            "0x7F000000, 0x0000007F" // Positive boundary case
     })
     public void
     testBigToLittleEndian(String inputHex, String expectedHex) {

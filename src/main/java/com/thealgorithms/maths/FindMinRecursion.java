@@ -9,8 +9,8 @@ public final class FindMinRecursion {
      * Get min of an array using divide and conquer algorithm
      *
      * @param array contains elements
-     * @param low the index of the first element
-     * @param high the index of the last element
+     * @param low   the index of the first element
+     * @param high  the index of the last element
      * @return min of {@code array}
      */
 

@@ -17,18 +17,19 @@ import java.util.List;
  * and 'h' is the height of a binary tree.
  * In the worst case 'h' can be O(n) if tree is completely unbalanced, for instance:
  * 5
- *  \
- *   6
- *    \
- *     7
- *      \
- *       8
+ * \
+ * 6
+ * \
+ * 7
+ * \
+ * 8
  *
  * @author Albina Gimaletdinova on 21/02/2023
  */
 public final class PostOrderTraversal {
     private PostOrderTraversal() {
     }
+
     public static List<Integer> recursivePostOrder(BinaryTree.Node root) {
         List<Integer> result = new ArrayList<>();
         recursivePostOrder(root, result);

@@ -72,7 +72,7 @@ public class WiggleSort implements SortAlgorithm {
             T smallestValue = select(Arrays.asList(sortThis), 0);
             if (!(0 == smallestValue.compareTo(median))) {
                 throw new IllegalArgumentException("For odd Arrays if the median appears ceil(n/2) times, "
-                    + "the median has to be the smallest values in the array.");
+                        + "the median has to be the smallest values in the array.");
             }
         }
         if (numMedians > ceil(sortThis.length / 2.0)) {

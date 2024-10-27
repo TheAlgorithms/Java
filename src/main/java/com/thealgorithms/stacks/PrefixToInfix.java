@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * Converts a prefix expression to an infix expression using a stack.
- *
+ * <p>
  * The input prefix expression should consist of
  * valid operands (letters or digits) and operators (+, -, *, /, ^).
  * Parentheses are not required in the prefix string.
@@ -28,7 +28,7 @@ public final class PrefixToInfix {
      *
      * @param prefix the prefix expression to convert
      * @return the equivalent infix expression
-     * @throws NullPointerException     if the prefix expression is null
+     * @throws NullPointerException if the prefix expression is null
      */
     public static String getPrefixToInfix(String prefix) {
         if (prefix == null) {

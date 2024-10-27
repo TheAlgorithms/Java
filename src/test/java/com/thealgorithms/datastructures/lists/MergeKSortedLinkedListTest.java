@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.thealgorithms.datastructures.lists.MergeKSortedLinkedList.Node;
+
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 class MergeKSortedLinkedListTest {

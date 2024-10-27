@@ -7,11 +7,11 @@ import java.util.PriorityQueue;
  * two heaps: a max-heap and a min-heap. The max-heap stores the smaller half
  * of the numbers, and the min-heap stores the larger half.
  * This data structure ensures that retrieving the median is efficient.
- *
+ * <p>
  * Time Complexity:
  * - Adding a number: O(log n) due to heap insertion.
  * - Finding the median: O(1).
- *
+ * <p>
  * Space Complexity: O(n), where n is the total number of elements added.
  *
  * @author Hardvan

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Highest Set Bit
+ *
  * @author Abhinay Verma(https://github.com/Monk-AbhinayVerma)
  */
 public class OnesComplementTest {

@@ -140,9 +140,9 @@ public class BufferedReader {
         // arraycopy() function is better than clone()
         if (bufferPos >= 0) {
             System.arraycopy(buffer, 0, cloned, 0,
-                // important to note that, bufferSize does not stay constant
-                // once the class is defined. See justRefill() function
-                bufferSize);
+                    // important to note that, bufferSize does not stay constant
+                    // once the class is defined. See justRefill() function
+                    bufferSize);
         }
         // we assume that already a chunk
         // has been read

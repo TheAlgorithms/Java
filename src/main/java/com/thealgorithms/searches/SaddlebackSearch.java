@@ -25,9 +25,9 @@ public final class SaddlebackSearch {
      * @param row the current row.
      * @param col the current column.
      * @param key the element that we want to search for.
-     * @throws IllegalArgumentException if the array is empty.
      * @return The index(row and column) of the element if found. Else returns
      * -1 -1.
+     * @throws IllegalArgumentException if the array is empty.
      */
     static int[] find(int[][] arr, int row, int col, int key) {
         if (arr.length == 0) {

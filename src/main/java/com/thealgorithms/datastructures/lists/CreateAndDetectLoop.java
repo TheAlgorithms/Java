@@ -35,7 +35,7 @@ public final class CreateAndDetectLoop {
      * destination position (position1). If either position is invalid, no loop
      * will be created.
      *
-     * @param head the head node of the linked list
+     * @param head      the head node of the linked list
      * @param position1 the position in the list where the loop should end
      * @param position2 the position in the list where the loop should start
      */
@@ -74,7 +74,7 @@ public final class CreateAndDetectLoop {
      * @param head the head node of the linked list
      * @return true if a loop is detected, false otherwise
      * @see <a href="https://en.wikipedia.org/wiki/Cycle_detection#Floyd's_tortoise_and_hare">
-     *     Floyd's Cycle Detection Algorithm</a>
+     * Floyd's Cycle Detection Algorithm</a>
      */
     static boolean detectLoop(Node head) {
         Node sptr = head;

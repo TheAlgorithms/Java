@@ -14,7 +14,7 @@ class CocktailShakerSort implements SortAlgorithm {
     /**
      * Sorts the given array using the Cocktail Shaker Sort algorithm.
      *
-     * @param <T> The type of elements in the array, which must be comparable
+     * @param <T>   The type of elements in the array, which must be comparable
      * @param array The array to be sorted
      * @return The sorted array
      */

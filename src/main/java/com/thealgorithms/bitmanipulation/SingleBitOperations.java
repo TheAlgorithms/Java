@@ -4,18 +4,18 @@ package com.thealgorithms.bitmanipulation;
  * A utility class for performing single-bit operations on integers.
  * These operations include flipping, setting, clearing, and getting
  * individual bits at specified positions.
- *
+ * <p>
  * Bit positions are zero-indexed (i.e., the least significant bit is at position 0).
  * These methods leverage bitwise operations for optimal performance.
- *
+ * <p>
  * Examples:
  * - `flipBit(3, 1)` flips the bit at index 1 in binary `11` (result: `1`).
  * - `setBit(4, 0)` sets the bit at index 0 in `100` (result: `101` or 5).
  * - `clearBit(7, 1)` clears the bit at index 1 in `111` (result: `101` or 5).
  * - `getBit(6, 0)` checks if the least significant bit is set (result: `0`).
- *
+ * <p>
  * Time Complexity: O(1) for all operations.
- *
+ * <p>
  * Author: lukasb1b (https://github.com/lukasb1b)
  */
 public final class SingleBitOperations {

@@ -28,6 +28,7 @@ public class HeapElement {
     private final Object additionalInfo;
 
     // Constructors
+
     /**
      * Creates a HeapElement with the specified key and additional information.
      *
@@ -113,6 +114,7 @@ public class HeapElement {
     }
 
     // Getters
+
     /**
      * Returns the object containing the additional information provided by the user.
      *
@@ -132,6 +134,7 @@ public class HeapElement {
     }
 
     // Overridden object methods
+
     /**
      * Returns a string representation of the heap element.
      *

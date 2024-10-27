@@ -4,15 +4,15 @@ package com.thealgorithms.bitmanipulation;
  * This class provides a method to find the element that appears an
  * odd number of times in an array. All other elements in the array
  * must appear an even number of times for the logic to work.
- *
+ * <p>
  * The solution uses the XOR operation, which has the following properties:
  * - a ^ a = 0 (XOR-ing the same numbers cancels them out)
  * - a ^ 0 = a
  * - XOR is commutative and associative.
- *
+ * <p>
  * Time Complexity: O(n), where n is the size of the array.
  * Space Complexity: O(1), as no extra space is used.
- *
+ * <p>
  * Usage Example:
  * int result = NumberAppearingOddTimes.findOddOccurrence(new int[]{1, 2, 1, 2, 3});
  * // result will be 3

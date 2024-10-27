@@ -2,6 +2,7 @@ package com.thealgorithms.maths;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
@@ -22,6 +23,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public final class AmicableNumber {
     private AmicableNumber() {
     }
+
     /**
      * Finds all the amicable numbers in a given range.
      *

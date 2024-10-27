@@ -3,10 +3,10 @@ package com.thealgorithms.maths;
 /**
  * Translates numbers into the Roman Numeral System.
  *
- * @see <a href="https://en.wikipedia.org/wiki/Roman_numerals">Roman
- * numerals</a>
  * @author Sokratis Fotkatzikis
  * @version 1.0
+ * @see <a href="https://en.wikipedia.org/wiki/Roman_numerals">Roman
+ * numerals</a>
  */
 public final class RomanNumeralUtil {
     private RomanNumeralUtil() {
@@ -16,51 +16,51 @@ public final class RomanNumeralUtil {
     private static final int MAX_VALUE = 5999;
     // 1000-5999
     private static final String[] RN_M = {
-        "",
-        "M",
-        "MM",
-        "MMM",
-        "MMMM",
-        "MMMMM",
+            "",
+            "M",
+            "MM",
+            "MMM",
+            "MMMM",
+            "MMMMM",
     };
     // 100-900
     private static final String[] RN_C = {
-        "",
-        "C",
-        "CC",
-        "CCC",
-        "CD",
-        "D",
-        "DC",
-        "DCC",
-        "DCCC",
-        "CM",
+            "",
+            "C",
+            "CC",
+            "CCC",
+            "CD",
+            "D",
+            "DC",
+            "DCC",
+            "DCCC",
+            "CM",
     };
     // 10-90
     private static final String[] RN_X = {
-        "",
-        "X",
-        "XX",
-        "XXX",
-        "XL",
-        "L",
-        "LX",
-        "LXX",
-        "LXXX",
-        "XC",
+            "",
+            "X",
+            "XX",
+            "XXX",
+            "XL",
+            "L",
+            "LX",
+            "LXX",
+            "LXXX",
+            "XC",
     };
     // 1-9
     private static final String[] RN_I = {
-        "",
-        "I",
-        "II",
-        "III",
-        "IV",
-        "V",
-        "VI",
-        "VII",
-        "VIII",
-        "IX",
+            "",
+            "I",
+            "II",
+            "III",
+            "IV",
+            "V",
+            "VI",
+            "VII",
+            "VIII",
+            "IX",
     };
 
     public static String generate(int number) {

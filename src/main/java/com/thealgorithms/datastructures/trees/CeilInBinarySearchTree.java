@@ -5,20 +5,20 @@ import com.thealgorithms.datastructures.trees.BinaryTree.Node;
 /**
  * Problem Statement Ceil value for any number x in a collection is a number y
  * which is either equal to x or the least greater number than x.
- *
+ * <p>
  * Problem: Given a binary search tree containing positive integer values. Find
  * ceil value for a given key in O(lg(n)) time. In case if it is not present
  * return -1.
- *
+ * <p>
  * Ex.1. [30,20,40,10,25,35,50] represents level order traversal of a binary
  * search tree. Find ceil for 10. Answer: 20
- *
+ * <p>
  * Ex.2. [30,20,40,10,25,35,50] represents level order traversal of a binary
  * search tree. Find ceil for 22 Answer: 25
- *
+ * <p>
  * Ex.2. [30,20,40,10,25,35,50] represents level order traversal of a binary
  * search tree. Find ceil for 52 Answer: -1
- *
+ * <p>
  * Solution 1: Brute Force Solution: Do an inorder traversal and save result
  * into an array. Iterate over the array to get an element equal to or greater
  * than current key. Time Complexity: O(n) Space Complexity: O(n) for auxillary

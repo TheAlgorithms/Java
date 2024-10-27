@@ -1,11 +1,12 @@
 package com.thealgorithms.others;
+
 import java.util.Optional;
 
 /**
  * Utility class implementing Boyer-Moore's Voting Algorithm to find the majority element
  * in an array. The majority element is defined as the element that appears more than n/2 times
  * in the array, where n is the length of the array.
- *
+ * <p>
  * For more information on the algorithm, refer to:
  * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
  */
@@ -55,7 +56,7 @@ public final class BoyerMoore {
      * Counts the occurrences of the candidate element in the array.
      *
      * @param candidate the candidate element
-     * @param array the input array
+     * @param array     the input array
      * @return the number of times the candidate appears in the array
      */
     private static int countOccurrences(final int candidate, final int[] array) {
@@ -71,7 +72,7 @@ public final class BoyerMoore {
     /**
      * Determines if the count of the candidate element is more than n/2, where n is the length of the array.
      *
-     * @param count the number of occurrences of the candidate
+     * @param count      the number of occurrences of the candidate
      * @param totalCount the total number of elements in the array
      * @return true if the candidate is the majority element, false otherwise
      */

@@ -9,11 +9,11 @@ package com.thealgorithms.bitmanipulation;
  * correct for all binary inputs, including edge cases like all zeroes and all ones.
  *
  * <p>For more information on Two's Complement:
+ *
+ * @author Abhinay Verma (https://github.com/Monk-AbhinayVerma)
  * @see <a href="https://en.wikipedia.org/wiki/Two%27s_complement">Wikipedia - Two's Complement</a>
  *
  * <p>Algorithm originally suggested by Jon von Neumann.
- *
- * @author Abhinay Verma (https://github.com/Monk-AbhinayVerma)
  */
 public final class TwosComplement {
     private TwosComplement() {

@@ -52,11 +52,11 @@ public final class LCA {
     /**
      * Depth first search to calculate parent and depth of every vertex
      *
-     * @param adj The adjacency list representation of the tree
-     * @param s The source vertex
-     * @param p Parent of source
+     * @param adj    The adjacency list representation of the tree
+     * @param s      The source vertex
+     * @param p      Parent of source
      * @param parent An array to store parents of all vertices
-     * @param depth An array to store depth of all vertices
+     * @param depth  An array to store depth of all vertices
      */
     private static void dfs(ArrayList<ArrayList<Integer>> adj, int s, int p, int[] parent, int[] depth) {
         for (int adjacent : adj.get(s)) {
@@ -71,9 +71,9 @@ public final class LCA {
     /**
      * Method to calculate Lowest Common Ancestor
      *
-     * @param v1 The first vertex
-     * @param v2 The second vertex
-     * @param depth An array with depths of all vertices
+     * @param v1     The first vertex
+     * @param v2     The second vertex
+     * @param depth  An array with depths of all vertices
      * @param parent An array with parents of all vertices
      * @return Returns a vertex that is LCA of v1 and v2
      */

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -30,8 +31,8 @@ class BresenhamLineTest {
      */
     static Stream<Arguments> linePointsProvider() {
         return Stream.of(Arguments.of(0, 0, 5, 5, List.of(new Point(0, 0), new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5))), Arguments.of(0, 0, 5, 0, List.of(new Point(0, 0), new Point(1, 0), new Point(2, 0), new Point(3, 0), new Point(4, 0), new Point(5, 0))),
-            Arguments.of(0, 0, 0, 5, List.of(new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(0, 3), new Point(0, 4), new Point(0, 5))), Arguments.of(-2, -2, -5, -5, List.of(new Point(-2, -2), new Point(-3, -3), new Point(-4, -4), new Point(-5, -5))),
-            Arguments.of(-1, -1, 2, 2, List.of(new Point(-1, -1), new Point(0, 0), new Point(1, 1), new Point(2, 2))), Arguments.of(2, -1, -1, -4, List.of(new Point(2, -1), new Point(1, -2), new Point(0, -3), new Point(-1, -4))));
+                Arguments.of(0, 0, 0, 5, List.of(new Point(0, 0), new Point(0, 1), new Point(0, 2), new Point(0, 3), new Point(0, 4), new Point(0, 5))), Arguments.of(-2, -2, -5, -5, List.of(new Point(-2, -2), new Point(-3, -3), new Point(-4, -4), new Point(-5, -5))),
+                Arguments.of(-1, -1, 2, 2, List.of(new Point(-1, -1), new Point(0, 0), new Point(1, 1), new Point(2, 2))), Arguments.of(2, -1, -1, -4, List.of(new Point(2, -1), new Point(1, -2), new Point(0, -3), new Point(-1, -4))));
     }
 
     /**
@@ -41,10 +42,10 @@ class BresenhamLineTest {
      * starting and ending coordinates to validate that the generated points
      * match the expected output.</p>
      *
-     * @param x0      the x-coordinate of the starting point
-     * @param y0      the y-coordinate of the starting point
-     * @param x1      the x-coordinate of the ending point
-     * @param y1      the y-coordinate of the ending point
+     * @param x0       the x-coordinate of the starting point
+     * @param y0       the y-coordinate of the starting point
+     * @param x1       the x-coordinate of the ending point
+     * @param y1       the y-coordinate of the ending point
      * @param expected a collection of expected points that should form a line
      */
     @ParameterizedTest

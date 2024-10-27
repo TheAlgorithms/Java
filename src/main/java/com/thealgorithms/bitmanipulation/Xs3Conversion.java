@@ -2,9 +2,9 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * This class provides methods to convert between XS-3 (Excess-3) and binary.
- *
+ * <p>
  * Excess-3, also called XS-3, is a binary-coded decimal (BCD) code in which each decimal digit is represented by its corresponding 4-bit binary value plus 3.
- *
+ * <p>
  * For more information, refer to the
  * <a href="https://en.wikipedia.org/wiki/Excess-3">Excess-3</a> Wikipedia page.
  *
@@ -20,6 +20,7 @@ package com.thealgorithms.bitmanipulation;
 public final class Xs3Conversion {
     private Xs3Conversion() {
     }
+
     /**
      * Converts an XS-3 (Excess-3) number to binary.
      *

@@ -11,6 +11,7 @@ package com.thealgorithms.maths;
 public final class LongDivision {
     private LongDivision() {
     }
+
     public static int divide(int dividend, int divisor) {
         long newDividend1 = dividend;
         long newDivisor1 = divisor;

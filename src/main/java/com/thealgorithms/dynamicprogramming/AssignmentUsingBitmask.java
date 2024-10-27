@@ -22,7 +22,7 @@ public final class AssignmentUsingBitmask {
      * Constructor for the AssignmentUsingBitmask class.
      *
      * @param taskPerformed a list of lists, where each inner list contains the tasks that a person can perform.
-     * @param total        the total number of tasks.
+     * @param total         the total number of tasks.
      */
     public AssignmentUsingBitmask(List<List<Integer>> taskPerformed, int total) {
         this.totalTasks = total;
@@ -50,8 +50,8 @@ public final class AssignmentUsingBitmask {
     /**
      * Counts the ways to assign tasks until the given task number with the specified mask.
      *
-     * @param mask     the bitmask representing the current state of assignments.
-     * @param taskNo   the current task number being processed.
+     * @param mask   the bitmask representing the current state of assignments.
+     * @param taskNo the current task number being processed.
      * @return the number of ways to assign tasks.
      */
     private int countWaysUntil(int mask, int taskNo) {

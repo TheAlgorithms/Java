@@ -3,11 +3,13 @@ package com.thealgorithms.strings;
 /**
  * References : https://en.wikipedia.org/wiki/Run-length_encoding
  * String compression algorithm deals with encoding the string, that is, shortening the size of the string
+ *
  * @author Swarga-codes (https://github.com/Swarga-codes)
  */
 public final class StringCompression {
     private StringCompression() {
     }
+
     /**
      * Returns the compressed or encoded string
      *
@@ -43,6 +45,7 @@ public final class StringCompression {
         }
         return compressedString;
     }
+
     /**
      * @param res   the resulting string
      * @param count current count

@@ -7,17 +7,17 @@ import java.util.List;
  * A Min Heap implementation where each node's key is lower than or equal to its children's keys.
  * This data structure provides O(log n) time complexity for insertion and deletion operations,
  * and O(1) for retrieving the minimum element.
- *
+ * <p>
  * Properties:
  * 1. Complete Binary Tree
  * 2. Parent node's key ≤ Children nodes' keys
  * 3. Root contains the minimum element
- *
+ * <p>
  * Example usage:
  * ```java
  * List<HeapElement> elements = Arrays.asList(
- *     new HeapElement(5, "Five"),
- *     new HeapElement(2, "Two")
+ * new HeapElement(5, "Five"),
+ * new HeapElement(2, "Two")
  * );
  * MinHeap heap = new MinHeap(elements);
  * heap.insertElement(new HeapElement(1, "One"));

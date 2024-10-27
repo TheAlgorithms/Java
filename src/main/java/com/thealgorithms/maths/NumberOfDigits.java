@@ -6,6 +6,7 @@ package com.thealgorithms.maths;
 public final class NumberOfDigits {
     private NumberOfDigits() {
     }
+
     /**
      * Find the number of digits in a number.
      *

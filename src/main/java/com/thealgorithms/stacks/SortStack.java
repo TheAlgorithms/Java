@@ -16,7 +16,7 @@ public final class SortStack {
      * Sorts the given stack in ascending order using recursion.
      * The sorting is performed such that the largest element ends up on top of the stack.
      * This method modifies the original stack and does not return a new stack.
-     *
+     * <p>
      * The algorithm works as follows:
      * 1. Remove the top element.
      * 2. Recursively sort the remaining stack.
@@ -39,12 +39,12 @@ public final class SortStack {
      * Helper method to insert an element into the correct position in a sorted stack.
      * This method is called recursively to place the given element into the stack
      * such that the stack remains sorted in ascending order.
-     *
+     * <p>
      * The element is inserted in such a way that all elements below it are smaller
      * (if the stack is non-empty), and elements above it are larger, maintaining
      * the ascending order.
      *
-     * @param stack The stack in which the element needs to be inserted.
+     * @param stack   The stack in which the element needs to be inserted.
      * @param element The element to be inserted into the stack in sorted order.
      */
     private static void insertInSortedOrder(Stack<Integer> stack, int element) {

@@ -6,6 +6,7 @@ package com.thealgorithms.strings;
  * The Hamming distance is the number of positions at which the corresponding symbols are different.
  * It is used in information theory, coding theory, and computer science.
  * </p>
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance - Wikipedia</a>
  */
 public final class HammingDistance {

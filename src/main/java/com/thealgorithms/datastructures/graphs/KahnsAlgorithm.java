@@ -13,7 +13,7 @@ import java.util.Set;
  * maintains a mapping of vertices to their adjacent vertices.
  *
  * @param <E> the type of vertices, extending Comparable to ensure that vertices
- * can be compared
+ *            can be compared
  */
 class AdjacencyList<E extends Comparable<E>> {
 
@@ -67,7 +67,7 @@ class AdjacencyList<E extends Comparable<E>> {
  * A class that performs topological sorting on a directed graph using Kahn's algorithm.
  *
  * @param <E> the type of vertices, extending Comparable to ensure that vertices
- * can be compared
+ *            can be compared
  */
 class TopologicalSort<E extends Comparable<E>> {
 

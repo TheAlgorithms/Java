@@ -9,7 +9,7 @@ public class WaveSort implements SortAlgorithm {
      * Sorts the given array such that every alternate element is greater than its adjacent elements.
      *
      * @param array The array to be sorted.
-     * @param <T> The type of elements in the array, which must be Comparable.
+     * @param <T>   The type of elements in the array, which must be Comparable.
      * @return The sorted array.
      */
     @Override
@@ -29,7 +29,7 @@ public class WaveSort implements SortAlgorithm {
      * Checks if the given array is wave sorted. An array is wave sorted if every alternate element is greater than its adjacent elements.
      *
      * @param array The array to check.
-     * @param <T> The type of elements in the array, which must be Comparable.
+     * @param <T>   The type of elements in the array, which must be Comparable.
      * @return true if the array is wave sorted, false otherwise.
      */
     public <T extends Comparable<T>> boolean isWaveSorted(T[] array) {

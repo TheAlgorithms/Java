@@ -65,16 +65,16 @@ public final class InfixToPrefix {
      */
     private static int precedence(char operator) {
         switch (operator) {
-        case '+':
-        case '-':
-            return 0;
-        case '*':
-        case '/':
-            return 1;
-        case '^':
-            return 2;
-        default:
-            return -1;
+            case '+':
+            case '-':
+                return 0;
+            case '*':
+            case '/':
+                return 1;
+            case '^':
+                return 2;
+            default:
+                return -1;
         }
     }
 

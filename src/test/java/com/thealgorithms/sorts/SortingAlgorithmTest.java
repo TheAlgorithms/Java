@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 public abstract class SortingAlgorithmTest {
@@ -20,8 +21,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenEmptyArrayIsPassed() {
-        Integer[] array = new Integer[] {};
-        Integer[] expected = new Integer[] {};
+        Integer[] array = new Integer[]{};
+        Integer[] expected = new Integer[]{};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -40,8 +41,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenSingleValuedArrayIsPassed() {
-        Integer[] array = new Integer[] {2};
-        Integer[] expected = new Integer[] {2};
+        Integer[] array = new Integer[]{2};
+        Integer[] expected = new Integer[]{2};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -60,8 +61,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenListWithAllPositiveValuesIsPassed() {
-        Integer[] array = new Integer[] {60, 7, 55, 9, 999, 3};
-        Integer[] expected = new Integer[] {3, 7, 9, 55, 60, 999};
+        Integer[] array = new Integer[]{60, 7, 55, 9, 999, 3};
+        Integer[] expected = new Integer[]{3, 7, 9, 55, 60, 999};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -80,8 +81,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithAllNegativeValuesIsPassed() {
-        Integer[] array = new Integer[] {-60, -7, -55, -9, -999, -3};
-        Integer[] expected = new Integer[] {-999, -60, -55, -9, -7, -3};
+        Integer[] array = new Integer[]{-60, -7, -55, -9, -999, -3};
+        Integer[] expected = new Integer[]{-999, -60, -55, -9, -7, -3};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -100,8 +101,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithRealNumberValuesIsPassed() {
-        Integer[] array = new Integer[] {60, -7, 55, 9, -999, -3};
-        Integer[] expected = new Integer[] {-999, -7, -3, 9, 55, 60};
+        Integer[] array = new Integer[]{60, -7, 55, 9, -999, -3};
+        Integer[] expected = new Integer[]{-999, -7, -3, 9, 55, 60};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -120,8 +121,8 @@ public abstract class SortingAlgorithmTest {
 
     @Test
     void shouldAcceptWhenArrayWithDuplicateValueIsPassed() {
-        Integer[] array = new Integer[] {60, 7, 55, 55, 999, 3};
-        Integer[] expected = new Integer[] {3, 7, 55, 55, 60, 999};
+        Integer[] array = new Integer[]{60, 7, 55, 55, 999, 3};
+        Integer[] expected = new Integer[]{3, 7, 55, 55, 60, 999};
 
         Integer[] sorted = getSortAlgorithm().sort(array);
 
@@ -179,7 +180,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithAllIdenticalValuesIsPassed() {
         Integer[] array = {1, 1, 1, 1};
         Integer[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Integer[] {1, 1, 1, 1}, sortedArray);
+        assertArrayEquals(new Integer[]{1, 1, 1, 1}, sortedArray);
     }
 
     @Test
@@ -193,7 +194,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithMixedPositiveAndNegativeValuesIsPassed() {
         Integer[] array = {-1, 3, -2, 5, 0};
         Integer[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Integer[] {-2, -1, 0, 3, 5}, sortedArray);
+        assertArrayEquals(new Integer[]{-2, -1, 0, 3, 5}, sortedArray);
     }
 
     @Test
@@ -207,7 +208,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithLargeNumbersIsPassed() {
         Long[] array = {10000000000L, 9999999999L, 10000000001L};
         Long[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Long[] {9999999999L, 10000000000L, 10000000001L}, sortedArray);
+        assertArrayEquals(new Long[]{9999999999L, 10000000000L, 10000000001L}, sortedArray);
     }
 
     @Test
@@ -221,7 +222,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithMaxIntegerValuesIsPassed() {
         Integer[] array = {Integer.MAX_VALUE, Integer.MIN_VALUE, 0};
         Integer[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Integer[] {Integer.MIN_VALUE, 0, Integer.MAX_VALUE}, sortedArray);
+        assertArrayEquals(new Integer[]{Integer.MIN_VALUE, 0, Integer.MAX_VALUE}, sortedArray);
     }
 
     @Test
@@ -235,7 +236,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithMinIntegerValuesIsPassed() {
         Integer[] array = {Integer.MIN_VALUE, Integer.MAX_VALUE, 0};
         Integer[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Integer[] {Integer.MIN_VALUE, 0, Integer.MAX_VALUE}, sortedArray);
+        assertArrayEquals(new Integer[]{Integer.MIN_VALUE, 0, Integer.MAX_VALUE}, sortedArray);
     }
 
     @Test
@@ -249,7 +250,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithSpecialCharactersIsPassed() {
         String[] array = {"!", "@", "#", "$"};
         String[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new String[] {"!", "#", "$", "@"}, sortedArray);
+        assertArrayEquals(new String[]{"!", "#", "$", "@"}, sortedArray);
     }
 
     @Test
@@ -263,7 +264,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldAcceptWhenArrayWithMixedCaseStringsIsPassed() {
         String[] array = {"apple", "Banana", "cherry", "Date"};
         String[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new String[] {"Banana", "Date", "apple", "cherry"}, sortedArray);
+        assertArrayEquals(new String[]{"Banana", "Date", "apple", "cherry"}, sortedArray);
     }
 
     @Test
@@ -300,7 +301,7 @@ public abstract class SortingAlgorithmTest {
         @Override
         public String toString() {
             return "CustomObject{"
-                + "value=" + value + '}';
+                    + "value=" + value + '}';
         }
 
         @Override
@@ -325,7 +326,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldHandleArrayOfCustomObjects() {
         CustomObject[] array = {new CustomObject(3), new CustomObject(1), new CustomObject(2)};
         CustomObject[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new CustomObject[] {new CustomObject(1), new CustomObject(2), new CustomObject(3)}, sortedArray);
+        assertArrayEquals(new CustomObject[]{new CustomObject(1), new CustomObject(2), new CustomObject(3)}, sortedArray);
     }
 
     @Test
@@ -339,7 +340,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldHandleArrayOfFloatingPointNumbers() {
         Double[] array = {3.3, 2.2, 1.1, Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY};
         Double[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new Double[] {Double.NEGATIVE_INFINITY, 1.1, 2.2, 3.3, Double.POSITIVE_INFINITY, Double.NaN}, sortedArray);
+        assertArrayEquals(new Double[]{Double.NEGATIVE_INFINITY, 1.1, 2.2, 3.3, Double.POSITIVE_INFINITY, Double.NaN}, sortedArray);
     }
 
     @Test
@@ -353,7 +354,7 @@ public abstract class SortingAlgorithmTest {
     public void shouldHandleArrayWithEmptyStrings() {
         String[] array = {"apple", "", "banana", ""};
         String[] sortedArray = getSortAlgorithm().sort(array);
-        assertArrayEquals(new String[] {"", "", "apple", "banana"}, sortedArray);
+        assertArrayEquals(new String[]{"", "", "apple", "banana"}, sortedArray);
     }
 
     @Test

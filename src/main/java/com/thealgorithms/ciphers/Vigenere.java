@@ -2,24 +2,24 @@ package com.thealgorithms.ciphers;
 
 /**
  * A Java implementation of the Vigenère Cipher.
- *
+ * <p>
  * The Vigenère Cipher is a polyalphabetic substitution cipher that uses a
  * keyword to shift letters in the plaintext by different amounts, depending
  * on the corresponding character in the keyword. It wraps around the alphabet,
  * ensuring the shifts are within 'A'-'Z' or 'a'-'z'.
- *
+ * <p>
  * Non-alphabetic characters (like spaces, punctuation) are kept unchanged.
- *
+ * <p>
  * Encryption Example:
  * - Plaintext: "Hello World!"
  * - Key: "suchsecret"
  * - Encrypted Text: "Zynsg Yfvev!"
- *
+ * <p>
  * Decryption Example:
  * - Ciphertext: "Zynsg Yfvev!"
  * - Key: "suchsecret"
  * - Decrypted Text: "Hello World!"
- *
+ * <p>
  * Wikipedia Reference:
  * <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenère Cipher - Wikipedia</a>
  *
@@ -39,9 +39,9 @@ public class Vigenere {
      * 6. Return the encrypted message.
      *
      * @param message The plaintext message to encrypt.
-     * @param key The keyword used for encryption.
-     * @throws IllegalArgumentException if the key is empty.
+     * @param key     The keyword used for encryption.
      * @return The encrypted message.
+     * @throws IllegalArgumentException if the key is empty.
      */
     public String encrypt(final String message, final String key) {
         if (key.isEmpty()) {
@@ -77,9 +77,9 @@ public class Vigenere {
      * 6. Return the decrypted message.
      *
      * @param message The encrypted message to decrypt.
-     * @param key The keyword used for decryption.
-     * @throws IllegalArgumentException if the key is empty.
+     * @param key     The keyword used for decryption.
      * @return The decrypted plaintext message.
+     * @throws IllegalArgumentException if the key is empty.
      */
     public String decrypt(final String message, final String key) {
         if (key.isEmpty()) {

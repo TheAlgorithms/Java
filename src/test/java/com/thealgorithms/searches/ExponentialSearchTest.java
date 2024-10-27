@@ -3,6 +3,7 @@ package com.thealgorithms.searches;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -76,7 +77,7 @@ class ExponentialSearchTest {
     @Test
     void testExponentialSearchLargeArray() {
         ExponentialSearch exponentialSearch = new ExponentialSearch();
-        Integer[] array = IntStream.range(0, 10000).boxed().toArray(Integer[] ::new); // Array from 0 to 9999
+        Integer[] array = IntStream.range(0, 10000).boxed().toArray(Integer[]::new); // Array from 0 to 9999
         int key = 9999;
         int expectedIndex = 9999;
         assertEquals(expectedIndex, exponentialSearch.find(array, key), "The index of the last element should be 9999.");

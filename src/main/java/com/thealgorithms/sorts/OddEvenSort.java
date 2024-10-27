@@ -5,14 +5,13 @@ package com.thealgorithms.sorts;
  * Odd-even sort is a comparison sort related to bubble sort.
  * It operates by comparing all (odd, even)-indexed pairs of adjacent elements in the list and, if a pair is in the wrong order, swapping them.
  * The next step repeats this process for (even, odd)-indexed pairs. This process continues until the list is sorted.
- *
  */
 public final class OddEvenSort implements SortAlgorithm {
 
     /**
      * Sorts the given array using the Odd-Even Sort algorithm.
      *
-     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param <T>   the type of elements in the array, which must implement the Comparable interface
      * @param array the array to be sorted
      * @return the sorted array
      */

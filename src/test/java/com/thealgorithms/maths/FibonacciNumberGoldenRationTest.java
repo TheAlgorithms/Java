@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigInteger;
+
 import org.junit.jupiter.api.Test;
 
 public class FibonacciNumberGoldenRationTest {
@@ -19,11 +20,15 @@ public class FibonacciNumberGoldenRationTest {
 
     @Test
     public void throwsIllegalArgumentExceptionForNegativeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumberGoldenRation.compute(-1); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            FibonacciNumberGoldenRation.compute(-1);
+        });
     }
 
     @Test
     public void throwsIllegalArgumentExceptionForLargeInput() {
-        assertThrows(IllegalArgumentException.class, () -> { FibonacciNumberGoldenRation.compute(FibonacciNumberGoldenRation.MAX_ARG + 1); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            FibonacciNumberGoldenRation.compute(FibonacciNumberGoldenRation.MAX_ARG + 1);
+        });
     }
 }

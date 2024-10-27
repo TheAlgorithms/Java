@@ -9,9 +9,9 @@ public final class ReverseWordsInString {
     }
 
     /**
-     * @brief Reverses words in the input string
      * @param s the input string
      * @return A string created by reversing the order of the words in {@code s}
+     * @brief Reverses words in the input string
      */
     public static String reverseWordsInString(final String s) {
         var words = s.trim().split("\\s+");

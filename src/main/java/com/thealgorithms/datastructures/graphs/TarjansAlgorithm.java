@@ -66,7 +66,7 @@ public class TarjansAlgorithm {
     /**
      * Finds and returns the strongly connected components (SCCs) of the directed graph.
      *
-     * @param v the number of vertices in the graph
+     * @param v     the number of vertices in the graph
      * @param graph the adjacency list representation of the graph
      * @return a list of lists, where each inner list represents a strongly connected component
      */
@@ -97,12 +97,12 @@ public class TarjansAlgorithm {
     /**
      * A utility function to perform DFS and find SCCs.
      *
-     * @param u the current vertex being visited
-     * @param lowTime array to keep track of the low-link values
+     * @param u             the current vertex being visited
+     * @param lowTime       array to keep track of the low-link values
      * @param insertionTime array to keep track of the insertion times
-     * @param isInStack boolean array indicating if a vertex is in the stack
-     * @param st the stack used for DFS
-     * @param graph the adjacency list representation of the graph
+     * @param isInStack     boolean array indicating if a vertex is in the stack
+     * @param st            the stack used for DFS
+     * @param graph         the adjacency list representation of the graph
      */
     private void stronglyConnCompsUtil(int u, int[] lowTime, int[] insertionTime, boolean[] isInStack, Stack<Integer> st, List<List<Integer>> graph) {
         // Set insertion time and low-link value

@@ -5,21 +5,21 @@ import java.util.List;
 
 /**
  * Implementation of a Splay Tree data structure.
- *
+ * <p>
  * A splay tree is a self-adjusting binary search tree with the additional
  * property
  * that recently accessed elements are quick to access again. It performs basic
  * operations such as insertion, deletion, and searching in O(log n) amortized
  * time,
  * where n is the number of elements in the tree.
- *
+ * <p>
  * The key feature of splay trees is the splay operation, which moves a node
  * closer
  * to the root of the tree when it is accessed. This operation helps to maintain
  * good balance and improves the overall performance of the tree. After
  * performing
  * a splay operation, the accessed node becomes the new root of the tree.
- *
+ * <p>
  * Splay trees have applications in various areas, including caching, network
  * routing,
  * and dynamic optimality analysis.

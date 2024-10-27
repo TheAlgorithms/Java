@@ -29,10 +29,10 @@ public final class NewManShanksPrime {
      * Calculates the nth New Man Shanks prime and checks if it equals the
      * expected answer.
      *
-     * @param n the index of the New Man Shanks prime to calculate (0-based).
+     * @param n              the index of the New Man Shanks prime to calculate (0-based).
      * @param expectedAnswer the expected value of the nth New Man Shanks prime.
      * @return true if the calculated nth New Man Shanks prime matches the
-     *         expected answer; false otherwise.
+     * expected answer; false otherwise.
      */
     public static boolean nthManShanksPrime(int n, int expectedAnswer) {
         int[] a = new int[n + 1];

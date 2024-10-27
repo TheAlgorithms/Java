@@ -48,6 +48,6 @@ class MirrorOfMatrixTest {
 
     @Test
     void testMirrotMarixThrows() {
-        assertThrows(IllegalArgumentException.class, () -> MirrorOfMatrix.mirrorMatrix(new int[][] {{1}, {2, 3}}));
+        assertThrows(IllegalArgumentException.class, () -> MirrorOfMatrix.mirrorMatrix(new int[][]{{1}, {2, 3}}));
     }
 }

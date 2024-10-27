@@ -4,7 +4,7 @@ package com.thealgorithms.backtracking;
  * This class contains methods to solve a maze using recursive backtracking.
  * The maze is represented as a 2D array where walls, paths, and visited/dead
  * ends are marked with different integers.
- *
+ * <p>
  * The goal is to find a path from a starting position to the target position
  * (map[6][5]) while navigating through the maze.
  */

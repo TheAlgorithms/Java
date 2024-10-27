@@ -39,6 +39,7 @@ public class KnapsackMemoizationTest {
         int capacity = 0;
         assertEquals(0, knapsackMemoization.knapSack(capacity, weight, value, weight.length));
     }
+
     @Test
     void test5() {
         int[] weight = {1, 2, 3, 8};

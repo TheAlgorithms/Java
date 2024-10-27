@@ -2,6 +2,7 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * Converts any Octal Number to a Binary Number
+ *
  * @author Bama Charan Chhandogi
  */
 

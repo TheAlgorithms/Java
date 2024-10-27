@@ -81,9 +81,17 @@ public class FibonacciTest {
     @Test
     void testNegativeInput() {
         // Test negative input; Fibonacci is not defined for negative numbers
-        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.fibMemo(-1); });
-        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.fibBotUp(-1); });
-        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.fibOptimized(-1); });
-        assertThrows(IllegalArgumentException.class, () -> { Fibonacci.fibBinet(-1); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Fibonacci.fibMemo(-1);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Fibonacci.fibBotUp(-1);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Fibonacci.fibOptimized(-1);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            Fibonacci.fibBinet(-1);
+        });
     }
 }

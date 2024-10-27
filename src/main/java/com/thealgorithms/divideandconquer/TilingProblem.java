@@ -31,7 +31,7 @@ public final class TilingProblem {
     /**
      * Solves the tiling problem for a 2^n x 2^n board with one missing square.
      *
-     * @param size The size of the board (must be a power of 2).
+     * @param size       The size of the board (must be a power of 2).
      * @param missingRow The row index of the missing square.
      * @param missingCol The column index of the missing square.
      * @return A 2D array representing the tiled board with L-shaped tiles.
@@ -50,9 +50,9 @@ public final class TilingProblem {
      * to cover three of the four quadrants. The process is then repeated for
      * each quadrant until the entire board is filled.
      *
-     * @param size The current size of the sub-board.
-     * @param row The starting row index of the current sub-board.
-     * @param col The starting column index of the current sub-board.
+     * @param size       The current size of the sub-board.
+     * @param row        The starting row index of the current sub-board.
+     * @param col        The starting column index of the current sub-board.
      * @param missingRow The row index of the missing square within the board.
      * @param missingCol The column index of the missing square within the board.
      */

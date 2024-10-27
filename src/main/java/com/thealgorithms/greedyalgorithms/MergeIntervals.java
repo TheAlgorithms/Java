@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Problem Statement:
  * Given an array of intervals where intervals[i] = [starti, endi].
- *
+ * <p>
  * Merge all overlapping intervals and return an array of the non-overlapping
  * intervals
  * that cover all the intervals in the input.
@@ -22,7 +22,7 @@ public final class MergeIntervals {
 
     /**
      * Merges overlapping intervals from the given array of intervals.
-     *
+     * <p>
      * The method sorts the intervals by their start time, then iterates through the
      * sorted intervals
      * and merges overlapping intervals. If an interval overlaps with the last
@@ -33,10 +33,10 @@ public final class MergeIntervals {
      * @param intervals A 2D array representing intervals where each element is an
      *                  interval [starti, endi].
      * @return A 2D array of merged intervals where no intervals overlap.
-     *
-     *         Example:
-     *         Input: {{1, 3}, {2, 6}, {8, 10}, {15, 18}}
-     *         Output: {{1, 6}, {8, 10}, {15, 18}}
+     * <p>
+     * Example:
+     * Input: {{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+     * Output: {{1, 6}, {8, 10}, {15, 18}}
      */
     public static int[][] merge(int[][] intervals) {
         // Sort the intervals by their start time (ascending order)

@@ -3,6 +3,7 @@ package com.thealgorithms.bitmanipulation;
 public final class BitSwap {
     private BitSwap() {
     }
+
     /*
      * @brief Swaps the bits at the position posA and posB from data
      */

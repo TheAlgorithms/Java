@@ -8,11 +8,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the EdmondsBlossomAlgorithm class.
- *
+ * <p>
  * These tests ensure that the Edmonds' Blossom Algorithm implementation
  * works as expected for various graph structures, returning the correct
  * maximum matching.
@@ -46,10 +47,10 @@ public class EdmondsBlossomAlgorithmTest {
      */
     @Test
     public void testCase1() {
-        List<int[]> edges = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 0});
+        List<int[]> edges = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 0});
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 3);
 
-        int[][] expected = new int[][] {{0, 1}};
+        int[][] expected = new int[][]{{0, 1}};
         assertArrayEquals(expected, convertMatchingToArray(matching));
     }
 
@@ -60,10 +61,10 @@ public class EdmondsBlossomAlgorithmTest {
      */
     @Test
     public void testCase2() {
-        List<int[]> edges = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {3, 4});
+        List<int[]> edges = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{3, 4});
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 5);
 
-        int[][] expected = new int[][] {{0, 1}, {3, 4}};
+        int[][] expected = new int[][]{{0, 1}, {3, 4}};
         assertArrayEquals(expected, convertMatchingToArray(matching));
     }
 
@@ -74,11 +75,11 @@ public class EdmondsBlossomAlgorithmTest {
      */
     @Test
     public void testCase3() {
-        List<int[]> edges = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 0}, new int[] {4, 5});
+        List<int[]> edges = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 0}, new int[]{4, 5});
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 6);
 
         // Updated expected output to include the maximum matching pairs
-        int[][] expected = new int[][] {{0, 1}, {2, 3}, {4, 5}};
+        int[][] expected = new int[][]{{0, 1}, {2, 3}, {4, 5}};
         assertArrayEquals(expected, convertMatchingToArray(matching));
     }
 
@@ -91,7 +92,7 @@ public class EdmondsBlossomAlgorithmTest {
         List<int[]> edges = Collections.emptyList(); // No edges
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 3);
 
-        int[][] expected = new int[][] {}; // No pairs expected
+        int[][] expected = new int[][]{}; // No pairs expected
         assertArrayEquals(expected, convertMatchingToArray(matching));
     }
 
@@ -102,7 +103,7 @@ public class EdmondsBlossomAlgorithmTest {
      */
     @Test
     public void testCaseLargeGraph() {
-        List<int[]> edges = Arrays.asList(new int[] {0, 1}, new int[] {1, 2}, new int[] {2, 3}, new int[] {3, 4}, new int[] {4, 5}, new int[] {5, 0}, new int[] {1, 4}, new int[] {2, 5});
+        List<int[]> edges = Arrays.asList(new int[]{0, 1}, new int[]{1, 2}, new int[]{2, 3}, new int[]{3, 4}, new int[]{4, 5}, new int[]{5, 0}, new int[]{1, 4}, new int[]{2, 5});
         List<int[]> matching = EdmondsBlossomAlgorithm.maximumMatching(edges, 6);
 
         // Check if the size of the matching is correct (i.e., 3 pairs)
@@ -110,8 +111,8 @@ public class EdmondsBlossomAlgorithmTest {
 
         // Check that the result contains valid pairs (any order is fine)
         // Valid maximum matchings could be {{0, 1}, {2, 5}, {3, 4}} or {{0, 1}, {2, 3}, {4, 5}}, etc.
-        int[][] possibleMatching1 = new int[][] {{0, 1}, {2, 5}, {3, 4}};
-        int[][] possibleMatching2 = new int[][] {{0, 1}, {2, 3}, {4, 5}};
+        int[][] possibleMatching1 = new int[][]{{0, 1}, {2, 5}, {3, 4}};
+        int[][] possibleMatching2 = new int[][]{{0, 1}, {2, 3}, {4, 5}};
         int[][] result = convertMatchingToArray(matching);
 
         // Assert that the result is one of the valid maximum matchings

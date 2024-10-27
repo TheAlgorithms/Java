@@ -4,12 +4,13 @@ public final class FindMaxRecursion {
 
     private FindMaxRecursion() {
     }
+
     /**
      * Get max of an array using divide and conquer algorithm
      *
      * @param array contains elements
-     * @param low the index of the first element
-     * @param high the index of the last element
+     * @param low   the index of the first element
+     * @param high  the index of the last element
      * @return max of {@code array}
      */
     public static int max(final int[] array, final int low, final int high) {

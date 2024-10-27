@@ -13,7 +13,7 @@ public final class IsPowerTwo {
 
     /**
      * Checks if the given integer is a power of two.
-     *
+     * <p>
      * A number is considered a power of two if it is greater than zero and
      * has exactly one '1' bit in its binary representation. This method
      * uses the property that for any power of two (n), the expression

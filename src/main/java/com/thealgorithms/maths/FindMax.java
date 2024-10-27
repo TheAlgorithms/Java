@@ -5,11 +5,10 @@ public final class FindMax {
     }
 
     /**
-     * @brief finds the maximum value stored in the input array
-     *
      * @param array the input array
-     * @exception IllegalArgumentException input array is empty
      * @return the maximum value stored in the input array
+     * @throws IllegalArgumentException input array is empty
+     * @brief finds the maximum value stored in the input array
      */
     public static int findMax(final int[] array) {
         int n = array.length;

@@ -5,7 +5,7 @@ public class SelectionSort implements SortAlgorithm {
      * Sorts an array of comparable elements in increasing order using the selection sort algorithm.
      *
      * @param array the array to be sorted
-     * @param <T> the class of array elements
+     * @param <T>   the class of array elements
      * @return the sorted array
      */
     @Override

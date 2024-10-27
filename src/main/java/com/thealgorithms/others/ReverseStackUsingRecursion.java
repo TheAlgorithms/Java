@@ -29,8 +29,8 @@ public final class ReverseStackUsingRecursion {
     /**
      * Inserts an element at the bottom of the given stack.
      *
-     * @param stack    the stack where the element will be inserted
-     * @param element  the element to be inserted at the bottom
+     * @param stack   the stack where the element will be inserted
+     * @param element the element to be inserted at the bottom
      */
     private static void insertAtBottom(Stack<Integer> stack, int element) {
         if (stack.isEmpty()) {

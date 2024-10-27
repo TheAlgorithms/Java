@@ -9,6 +9,7 @@ import java.util.Comparator;
 public final class CoinChange {
     private CoinChange() {
     }
+
     // Function to solve the coin change problem
     public static ArrayList<Integer> coinChangeProblem(int amount) {
         // Define an array of coin denominations in descending order

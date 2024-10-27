@@ -88,7 +88,7 @@ public class SkylineAlgorithm {
      * "cleaned" first half's and second half's skylines, are combined,
      * producing the final skyline, which is returned.
      *
-     * @param left the skyline of the left part of points
+     * @param left  the skyline of the left part of points
      * @param right the skyline of the right part of points
      * @return left the final skyline
      */

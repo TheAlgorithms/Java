@@ -30,7 +30,7 @@ public final class BruteForceKnapsack {
      * @param wt  an array where wt[i] represents the weight of the i-th item
      * @param val an array where val[i] represents the value of the i-th item
      * @param n   the number of items available for selection
-     * @return    the maximum value that can be obtained with the given capacity
+     * @return the maximum value that can be obtained with the given capacity
      *
      * <p>The function uses recursion to explore all possible subsets of items.
      * For each item, it has two choices: either include it in the knapsack

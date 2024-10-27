@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -88,7 +89,7 @@ class SortUtilsTest {
     }
 
     private static Stream<Arguments> provideArraysForSwap() {
-        return Stream.of(Arguments.of(new Integer[] {1, 2, 3, 4}, 1, 2, new Integer[] {1, 3, 2, 4}), Arguments.of(new Integer[] {1, 2, 3, 4}, 0, 3, new Integer[] {4, 2, 3, 1}), Arguments.of(new Integer[] {1, 2, 3, 4}, 2, 2, new Integer[] {1, 2, 3, 4}),
-            Arguments.of(new String[] {"a", "b", "c", "d"}, 0, 3, new String[] {"d", "b", "c", "a"}), Arguments.of(new String[] {null, "b", "c", null}, 0, 3, new String[] {null, "b", "c", null}));
+        return Stream.of(Arguments.of(new Integer[]{1, 2, 3, 4}, 1, 2, new Integer[]{1, 3, 2, 4}), Arguments.of(new Integer[]{1, 2, 3, 4}, 0, 3, new Integer[]{4, 2, 3, 1}), Arguments.of(new Integer[]{1, 2, 3, 4}, 2, 2, new Integer[]{1, 2, 3, 4}),
+                Arguments.of(new String[]{"a", "b", "c", "d"}, 0, 3, new String[]{"d", "b", "c", "a"}), Arguments.of(new String[]{null, "b", "c", null}, 0, 3, new String[]{null, "b", "c", null}));
     }
 }

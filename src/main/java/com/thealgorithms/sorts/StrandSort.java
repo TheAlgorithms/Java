@@ -12,7 +12,7 @@ public final class StrandSort implements SortAlgorithm {
     /**
      * Sorts the given array using the Strand Sort algorithm.
      *
-     * @param <T> The type of elements to be sorted, must be Comparable.
+     * @param <T>   The type of elements to be sorted, must be Comparable.
      * @param array The array to be sorted.
      * @return The sorted array.
      */
@@ -26,7 +26,7 @@ public final class StrandSort implements SortAlgorithm {
     /**
      * Strand Sort algorithm that sorts a list.
      *
-     * @param <T> The type of elements to be sorted, must be Comparable.
+     * @param <T>  The type of elements to be sorted, must be Comparable.
      * @param list The list to be sorted.
      * @return The sorted list.
      */
@@ -39,7 +39,7 @@ public final class StrandSort implements SortAlgorithm {
         while (!list.isEmpty()) {
             final List<T> sorted = new ArrayList<>();
             sorted.add(list.removeFirst());
-            for (int i = 0; i < list.size();) {
+            for (int i = 0; i < list.size(); ) {
                 if (sorted.getLast().compareTo(list.get(i)) <= 0) {
                     sorted.add(list.remove(i));
                 } else {
@@ -54,8 +54,8 @@ public final class StrandSort implements SortAlgorithm {
     /**
      * Merges two sorted lists into one sorted list.
      *
-     * @param <T> The type of elements to be sorted, must be Comparable.
-     * @param left The first sorted list.
+     * @param <T>   The type of elements to be sorted, must be Comparable.
+     * @param left  The first sorted list.
      * @param right The second sorted list.
      * @return The merged sorted list.
      */

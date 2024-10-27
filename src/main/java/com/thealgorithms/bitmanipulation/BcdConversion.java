@@ -2,9 +2,9 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * This class provides methods to convert between BCD (Binary-Coded Decimal) and decimal numbers.
- *
+ * <p>
  * BCD is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of binary digits, usually four or eight.
- *
+ * <p>
  * For more information, refer to the
  * <a href="https://en.wikipedia.org/wiki/Binary-coded_decimal">Binary-Coded Decimal</a> Wikipedia page.
  *

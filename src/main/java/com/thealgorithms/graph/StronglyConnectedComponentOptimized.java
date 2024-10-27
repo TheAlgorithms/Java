@@ -8,7 +8,7 @@ import java.util.Stack;
  * Finds the strongly connected components in a directed graph.
  *
  * @param adjList The adjacency list representation of the graph.
- * @param n The number of nodes in the graph.
+ * @param n       The number of nodes in the graph.
  * @return The number of strongly connected components.
  */
 public class StronglyConnectedComponentOptimized {

@@ -11,9 +11,9 @@ public final class CoinChange {
      * This method finds the number of combinations of getting change for a
      * given amount and change coins
      *
-     * @param coins The list of coins
+     * @param coins  The list of coins
      * @param amount The amount for which we need to find the change Finds the
-     * number of combinations of change
+     *               number of combinations of change
      */
     public static int change(int[] coins, int amount) {
         int[] combinations = new int[amount + 1];
@@ -31,9 +31,9 @@ public final class CoinChange {
     /**
      * This method finds the minimum number of coins needed for a given amount.
      *
-     * @param coins The list of coins
+     * @param coins  The list of coins
      * @param amount The amount for which we need to find the minimum number of
-     * coins. Finds the minimum number of coins that make a given value.
+     *               coins. Finds the minimum number of coins that make a given value.
      */
     public static int minimumCoins(int[] coins, int amount) {
         // minimumCoins[i] will store the minimum coins needed for amount i

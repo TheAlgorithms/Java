@@ -2,7 +2,7 @@ package com.thealgorithms.maths;
 
 /**
  * This program calculates the sum of the first n odd numbers.
- *
+ * <p>
  * https://www.cuemath.com/algebra/sum-of-odd-numbers/
  */
 

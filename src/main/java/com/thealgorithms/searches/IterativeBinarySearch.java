@@ -24,7 +24,7 @@ public final class IterativeBinarySearch implements SearchAlgorithm {
      * This method implements an iterative version of binary search algorithm
      *
      * @param array a sorted array
-     * @param key the key to search in array
+     * @param key   the key to search in array
      * @return the index of key in the array or -1 if not found
      */
     @Override

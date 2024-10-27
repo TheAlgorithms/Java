@@ -7,8 +7,7 @@ import java.util.List;
 public
 final class UniquePairShuffle {
 
-    private
-    UniquePairShuffle() {
+    private UniquePairShuffle() {
         // Prevent instantiation
     }
 
@@ -19,7 +18,7 @@ final class UniquePairShuffle {
      *
      * @param array the input array to pair elements from
      * @return a list of unique pairs where each pair is represented as an integer
-     *     array of length 2
+     * array of length 2
      */
     public
     static List<int[]> pairShuffle(int[] array) {

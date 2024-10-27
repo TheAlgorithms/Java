@@ -7,7 +7,7 @@ import java.util.Map;
  * FairShareScheduling allocates CPU resources equally among users or groups
  * instead of individual tasks. Each group gets a proportional share,
  * preventing resource hogging by a single user's processes.
- *
+ * <p>
  * Use Case: Multi-user systems where users submit multiple tasks simultaneously,
  * such as cloud environments.
  *

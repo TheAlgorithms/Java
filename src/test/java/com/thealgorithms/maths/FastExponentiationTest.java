@@ -54,7 +54,9 @@ class FastExponentiationTest {
      */
     @Test
     void testNegativeExponent() {
-        assertThrows(ArithmeticException.class, () -> { FastExponentiation.fastExponentiation(2, -5, 1000); });
+        assertThrows(ArithmeticException.class, () -> {
+            FastExponentiation.fastExponentiation(2, -5, 1000);
+        });
     }
 
     /**
@@ -62,6 +64,8 @@ class FastExponentiationTest {
      */
     @Test
     void testInvalidModulus() {
-        assertThrows(IllegalArgumentException.class, () -> { FastExponentiation.fastExponentiation(2, 5, 0); });
+        assertThrows(IllegalArgumentException.class, () -> {
+            FastExponentiation.fastExponentiation(2, 5, 0);
+        });
     }
 }

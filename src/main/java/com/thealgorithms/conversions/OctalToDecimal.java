@@ -2,7 +2,6 @@ package com.thealgorithms.conversions;
 
 /**
  * Class for converting an octal number to a decimal number. Octal numbers are based on 8, using digits from 0 to 7.
- *
  */
 public final class OctalToDecimal {
     private static final int OCTAL_BASE = 8;

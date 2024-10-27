@@ -2,6 +2,7 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * Swap every pair of adjacent bits of a given number.
+ *
  * @author Lakshyajeet Singh Goyal (https://github.com/DarkMatter-999)
  */
 

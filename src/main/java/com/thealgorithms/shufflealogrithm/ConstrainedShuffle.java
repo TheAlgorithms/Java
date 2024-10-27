@@ -6,8 +6,7 @@ import java.util.Random;
 public
 final class ConstrainedShuffle {
 
-    private
-    ConstrainedShuffle() {
+    private ConstrainedShuffle() {
         // Prevent instantiation
     }
 

@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * The Topological Sorting algorithm linearly orders a DAG or Directed Acyclic Graph into
  * a linked list. A Directed Graph is proven to be acyclic when a DFS or Depth First Search is
  * performed, yielding no back-edges.
- *
+ * <p>
  * https://en.wikipedia.org/wiki/Topological_sorting
  *
  * @author Jonathan Taylor (https://github.com/Jtmonument)

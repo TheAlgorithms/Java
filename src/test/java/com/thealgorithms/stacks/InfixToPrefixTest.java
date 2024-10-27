@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -31,14 +32,14 @@ public class InfixToPrefixTest {
 
     private static Stream<Arguments> provideValidExpressions() {
         return Stream.of(Arguments.of("3+2", "+32"), // Simple addition
-            Arguments.of("1+(2+3)", "+1+23"), // Parentheses
-            Arguments.of("(3+4)*5-6", "-*+3456"), // Nested operations
-            Arguments.of("a+b*c", "+a*bc"), // Multiplication precedence
-            Arguments.of("a+b*c/d", "+a/*bcd"), // Division precedence
-            Arguments.of("a+b*c-d", "-+a*bcd"), // Subtraction precedence
-            Arguments.of("a+b*c/d-e", "-+a/*bcde"), // Mixed precedence
-            Arguments.of("a+b*(c-d)", "+a*b-cd"), // Parentheses precedence
-            Arguments.of("a+b*(c-d)/e", "+a/*b-cde") // Mixed precedence with parentheses
+                Arguments.of("1+(2+3)", "+1+23"), // Parentheses
+                Arguments.of("(3+4)*5-6", "-*+3456"), // Nested operations
+                Arguments.of("a+b*c", "+a*bc"), // Multiplication precedence
+                Arguments.of("a+b*c/d", "+a/*bcd"), // Division precedence
+                Arguments.of("a+b*c-d", "-+a*bcd"), // Subtraction precedence
+                Arguments.of("a+b*c/d-e", "-+a/*bcde"), // Mixed precedence
+                Arguments.of("a+b*(c-d)", "+a*b-cd"), // Parentheses precedence
+                Arguments.of("a+b*(c-d)/e", "+a/*b-cde") // Mixed precedence with parentheses
         );
     }
 }

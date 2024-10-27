@@ -12,8 +12,8 @@ public final class PigeonholeSort {
      * Sorts the given array using the pigeonhole sort algorithm.
      *
      * @param array the array to be sorted
-     * @throws IllegalArgumentException if any negative integers are found
      * @return the sorted array
+     * @throws IllegalArgumentException if any negative integers are found
      */
     public static int[] sort(int[] array) {
 
@@ -63,7 +63,7 @@ public final class PigeonholeSort {
     /**
      * Populates the pigeonholes with elements from the array.
      *
-     * @param array the array to be sorted
+     * @param array       the array to be sorted
      * @param pigeonHoles the pigeonholes to be populated
      */
     private static void populatePigeonHoles(int[] array, List<List<Integer>> pigeonHoles) {
@@ -75,7 +75,7 @@ public final class PigeonholeSort {
     /**
      * Collects sorted elements from the pigeonholes back into the array.
      *
-     * @param array the array to be sorted
+     * @param array       the array to be sorted
      * @param pigeonHoles the populated pigeonholes
      */
     private static void collectFromPigeonHoles(int[] array, Iterable<List<Integer>> pigeonHoles) {

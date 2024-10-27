@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
 import com.thealgorithms.datastructures.trees.BinaryTree.Node;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 public final class CreateBinaryTreeFromInorderPreorder {
     private CreateBinaryTreeFromInorderPreorder() {
     }
+
     public static Node createTree(final Integer[] preorder, final Integer[] inorder) {
         if (preorder == null || inorder == null) {
             return null;

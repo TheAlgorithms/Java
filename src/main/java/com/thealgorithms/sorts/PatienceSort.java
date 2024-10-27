@@ -15,7 +15,7 @@ public class PatienceSort implements SortAlgorithm {
      * Sorts an array of comparable elements using the Patience Sort algorithm.
      *
      * @param array the array to be sorted
-     * @param <T> the type of elements in the array, must be comparable
+     * @param <T>   the type of elements in the array, must be comparable
      * @return the sorted array
      */
     @Override
@@ -37,7 +37,7 @@ public class PatienceSort implements SortAlgorithm {
      * to find the appropriate pile for each element.
      *
      * @param array the array of elements to be organized into piles
-     * @param <T> the type of elements in the array, must be comparable
+     * @param <T>   the type of elements in the array, must be comparable
      * @return a list of piles
      */
     private static <T extends Comparable<T>> List<List<T>> formPiles(final T[] array) {
@@ -69,7 +69,7 @@ public class PatienceSort implements SortAlgorithm {
      * prioritized.
      *
      * @param piles the list of piles to be merged
-     * @param <T> the type of elements in the piles, must be comparable
+     * @param <T>   the type of elements in the piles, must be comparable
      * @return a priority queue containing the top element of each pile
      */
     private static <T extends Comparable<T>> PriorityQueue<PileNode<T>> mergePiles(final Iterable<List<T>> piles) {
@@ -84,8 +84,8 @@ public class PatienceSort implements SortAlgorithm {
      * Extracts elements from the priority queue to form the sorted array.
      *
      * @param array the array to be filled with sorted elements
-     * @param pq the priority queue containing the elements to be extracted
-     * @param <T> the type of elements in the array, must be comparable
+     * @param pq    the priority queue containing the elements to be extracted
+     * @param <T>   the type of elements in the array, must be comparable
      */
     private static <T extends Comparable<T>> void extractPiles(final T[] array, final PriorityQueue<PileNode<T>> pq) {
         int index = 0;

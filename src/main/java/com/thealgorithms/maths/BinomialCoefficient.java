@@ -20,7 +20,7 @@ public final class BinomialCoefficient {
      * @param totalObjects    Total number of objects
      * @param numberOfObjects Number of objects to be chosen from total_objects
      * @return number of ways in which no_of_objects objects can be chosen from total_objects
-     *     objects
+     * objects
      */
 
     public static int binomialCoefficient(int totalObjects, int numberOfObjects) {

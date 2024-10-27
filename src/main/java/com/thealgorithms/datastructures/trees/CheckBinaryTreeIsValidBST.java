@@ -5,12 +5,13 @@ package com.thealgorithms.datastructures.trees;
  * Trees with only distinct values are supported.
  * Key points:
  * 1. According to the definition of a BST, each node in a tree must be in range [min, max],
- *    where 'min' and 'max' values represent the child nodes (left, right).
+ * where 'min' and 'max' values represent the child nodes (left, right).
  * 2. The smallest possible node value is Integer.MIN_VALUE, the biggest - Integer.MAX_VALUE.
  */
 public final class CheckBinaryTreeIsValidBST {
     private CheckBinaryTreeIsValidBST() {
     }
+
     public static boolean isBST(BinaryTree.Node root) {
         return isBSTUtil(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }

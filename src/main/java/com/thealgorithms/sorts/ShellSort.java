@@ -6,7 +6,7 @@ public class ShellSort implements SortAlgorithm {
      * Implements generic shell sort.
      *
      * @param array the array to be sorted.
-     * @param <T> the type of elements in the array.
+     * @param <T>   the type of elements in the array.
      * @return the sorted array.
      */
     @Override
@@ -53,8 +53,8 @@ public class ShellSort implements SortAlgorithm {
      * Performs an insertion sort for the specified gap value.
      *
      * @param array the array to be sorted.
-     * @param gap the current gap value.
-     * @param <T> the type of elements in the array.
+     * @param gap   the current gap value.
+     * @param <T>   the type of elements in the array.
      */
     private <T extends Comparable<T>> void performGapInsertionSort(final T[] array, final int gap) {
         for (int i = gap; i < array.length; i++) {

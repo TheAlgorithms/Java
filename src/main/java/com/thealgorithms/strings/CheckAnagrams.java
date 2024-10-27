@@ -10,6 +10,7 @@ import java.util.Map;
 public final class CheckAnagrams {
     private CheckAnagrams() {
     }
+
     /**
      * Check if two strings are anagrams or not
      *

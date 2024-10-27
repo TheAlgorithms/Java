@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Two sum Problem.
+ *
  * @author Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
 
@@ -15,7 +16,7 @@ public class TwoSumProblemTest {
 
     @Test
     void testTwoSumExists() {
-        final int[] values = new int[] {2, 7, 11, 15};
+        final int[] values = new int[]{2, 7, 11, 15};
         final int target = 9;
         final var expected = Pair.of(0, 1); // values[0] + values[1] = 2 + 7 = 9
         assertEquals(expected, TwoSumProblem.twoSum(values, target).get());
@@ -23,7 +24,7 @@ public class TwoSumProblemTest {
 
     @Test
     void testTwoSumNoSolution() {
-        final int[] values = new int[] {2, 7, 11, 15};
+        final int[] values = new int[]{2, 7, 11, 15};
         final int target = 3;
         assertFalse(TwoSumProblem.twoSum(values, target).isPresent());
     }

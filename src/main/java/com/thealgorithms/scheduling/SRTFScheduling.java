@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class SRTFScheduling {
 
     /**
      * Constructor
+     *
      * @param processes ArrayList of ProcessDetails given as input
      */
     public SRTFScheduling(ArrayList<ProcessDetails> processes) {

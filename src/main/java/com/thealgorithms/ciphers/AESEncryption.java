@@ -58,10 +58,10 @@ public final class AESEncryption {
      * Encrypts plainText in AES using the secret key
      *
      * @return byteCipherText (The encrypted text)
-     * @throws NoSuchPaddingException (from Cipher)
-     * @throws NoSuchAlgorithmException (from Cipher)
-     * @throws InvalidKeyException (from Cipher)
-     * @throws BadPaddingException (from Cipher)
+     * @throws NoSuchPaddingException    (from Cipher)
+     * @throws NoSuchAlgorithmException  (from Cipher)
+     * @throws InvalidKeyException       (from Cipher)
+     * @throws BadPaddingException       (from Cipher)
      * @throws IllegalBlockSizeException (from Cipher)
      */
     public static byte[] encryptText(String plainText, SecretKey secKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {

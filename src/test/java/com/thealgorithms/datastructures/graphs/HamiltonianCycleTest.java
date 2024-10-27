@@ -12,11 +12,11 @@ class HamiltonianCycleTest {
     void testFindHamiltonianCycleShouldReturnHamiltonianCycle() {
         int[] expectedArray = {0, 1, 2, 4, 3, 0};
         int[][] inputArray = {
-            {0, 1, 0, 1, 0},
-            {1, 0, 1, 1, 1},
-            {0, 1, 0, 0, 1},
-            {1, 1, 0, 0, 1},
-            {0, 1, 1, 1, 0},
+                {0, 1, 0, 1, 0},
+                {1, 0, 1, 1, 1},
+                {0, 1, 0, 0, 1},
+                {1, 1, 0, 0, 1},
+                {0, 1, 1, 1, 0},
         };
 
         assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
@@ -27,11 +27,11 @@ class HamiltonianCycleTest {
         int[] expectedArray = {-1, -1, -1, -1, -1, -1};
 
         int[][] inputArray = {
-            {0, 1, 0, 1, 0},
-            {1, 0, 1, 1, 1},
-            {0, 1, 0, 0, 1},
-            {1, 1, 0, 0, 0},
-            {0, 1, 1, 0, 0},
+                {0, 1, 0, 1, 0},
+                {1, 0, 1, 1, 1},
+                {0, 1, 0, 0, 1},
+                {1, 1, 0, 0, 0},
+                {0, 1, 1, 0, 0},
         };
 
         assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
@@ -57,11 +57,11 @@ class HamiltonianCycleTest {
     void testCompleteGraphShouldReturnHamiltonianCycle() {
         int[] expectedArray = {0, 1, 2, 3, 4, 0};
         int[][] inputArray = {
-            {0, 1, 1, 1, 1},
-            {1, 0, 1, 1, 1},
-            {1, 1, 0, 1, 1},
-            {1, 1, 1, 0, 1},
-            {1, 1, 1, 1, 0},
+                {0, 1, 1, 1, 1},
+                {1, 0, 1, 1, 1},
+                {1, 1, 0, 1, 1},
+                {1, 1, 1, 0, 1},
+                {1, 1, 1, 1, 0},
         };
 
         assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
@@ -72,11 +72,11 @@ class HamiltonianCycleTest {
         int[] expectedArray = {-1, -1, -1, -1, -1, -1};
 
         int[][] inputArray = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
         };
 
         assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));
@@ -86,11 +86,11 @@ class HamiltonianCycleTest {
     void testLargeGraphWithHamiltonianCycle() {
         int[] expectedArray = {0, 1, 2, 3, 4, 0};
         int[][] inputArray = {
-            {0, 1, 0, 1, 1},
-            {1, 0, 1, 1, 0},
-            {0, 1, 0, 1, 1},
-            {1, 1, 1, 0, 1},
-            {1, 0, 1, 1, 0},
+                {0, 1, 0, 1, 1},
+                {1, 0, 1, 1, 0},
+                {0, 1, 0, 1, 1},
+                {1, 1, 1, 0, 1},
+                {1, 0, 1, 1, 0},
         };
 
         assertArrayEquals(expectedArray, hamiltonianCycle.findHamiltonianCycle(inputArray));

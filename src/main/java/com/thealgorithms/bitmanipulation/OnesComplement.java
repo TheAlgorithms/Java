@@ -3,9 +3,9 @@ package com.thealgorithms.bitmanipulation;
 /**
  * @author - https://github.com/Monk-AbhinayVerma
  * @Wikipedia - https://en.wikipedia.org/wiki/Ones%27_complement
- *            The class OnesComplement computes the complement of binary number
- *            and returns
- *            the complemented binary string.
+ * The class OnesComplement computes the complement of binary number
+ * and returns
+ * the complemented binary string.
  * @return the complimented binary string
  */
 public final class OnesComplement {

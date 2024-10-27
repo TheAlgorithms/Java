@@ -3,7 +3,7 @@ package com.thealgorithms.sorts;
 import java.util.Arrays;
 
 public class BeadSort {
-    private enum BeadState { BEAD, EMPTY }
+    private enum BeadState {BEAD, EMPTY}
 
     /**
      * Sorts the given array using the BeadSort algorithm.

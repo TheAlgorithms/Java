@@ -38,8 +38,8 @@ public final class CountingInversions {
      * Recursively divides the array into two halves, sorts them, and counts
      * the number of inversions. Uses a modified merge sort approach.
      *
-     * @param arr  The input array.
-     * @param left The starting index of the current segment.
+     * @param arr   The input array.
+     * @param left  The starting index of the current segment.
      * @param right The ending index of the current segment.
      * @return The number of inversions within the segment [left, right].
      */
@@ -62,9 +62,9 @@ public final class CountingInversions {
      * A cross-inversion occurs when an element from the right subarray is
      * smaller than an element from the left subarray.
      *
-     * @param arr The input array.
-     * @param left The starting index of the first subarray.
-     * @param mid The ending index of the first subarray and midpoint of the segment.
+     * @param arr   The input array.
+     * @param left  The starting index of the first subarray.
+     * @param mid   The ending index of the first subarray and midpoint of the segment.
      * @param right The ending index of the second subarray.
      * @return The number of cross-inversions between the two subarrays.
      */

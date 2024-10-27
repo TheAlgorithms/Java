@@ -3,8 +3,10 @@ package com.thealgorithms.scheduling;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class FCFSSchedulingTest {

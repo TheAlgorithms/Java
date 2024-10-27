@@ -33,7 +33,7 @@ class SolovayStrassenPrimalityTestTest {
      * @return an array of objects containing pairs of n and k values
      */
     static Object[][] primeNumbers() {
-        return new Object[][] {{2, 1}, {3, 1}, {5, 5}, {7, 10}, {11, 20}, {13, 10}, {17, 5}, {19, 1}};
+        return new Object[][]{{2, 1}, {3, 1}, {5, 5}, {7, 10}, {11, 20}, {13, 10}, {17, 5}, {19, 1}};
     }
 
     /**
@@ -54,7 +54,7 @@ class SolovayStrassenPrimalityTestTest {
      * @return an array of objects containing pairs of n and k values
      */
     static Object[][] compositeNumbers() {
-        return new Object[][] {{4, 1}, {6, 5}, {8, 10}, {9, 20}, {10, 1}, {12, 5}, {15, 10}};
+        return new Object[][]{{4, 1}, {6, 5}, {8, 10}, {9, 20}, {10, 1}, {12, 5}, {15, 10}};
     }
 
     /**

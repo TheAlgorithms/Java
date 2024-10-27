@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Monte Carlo Tree Search (MCTS) is a heuristic search algorithm used in
  * decition taking problems especially games.
- *
+ * <p>
  * See more: https://en.wikipedia.org/wiki/Monte_Carlo_tree_search,
  * https://www.baeldung.com/java-monte-carlo-tree-search
  */
@@ -85,7 +85,7 @@ public class MonteCarloTreeSearch {
 
     /**
      * Uses UCT to find a promising child node to be explored.
-     *
+     * <p>
      * UCT: Upper Confidence bounds applied to Trees.
      *
      * @param rootNode Root node of the tree.

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NavigableSet;
 import java.util.TreeSet;
+
 /**
  * Dijkstra's algorithm,is a graph search algorithm that solves the
  * single-source shortest path problem for a graph with nonnegative edge path
@@ -24,18 +25,18 @@ public final class Dijkstra {
     }
 
     private static final Graph.Edge[] GRAPH = {
-        // Distance from node "a" to node "b" is 7.
-        // In the current Graph there is no way to move the other way (e,g, from "b" to "a"),
-        // a new edge would be needed for that
-        new Graph.Edge("a", "b", 7),
-        new Graph.Edge("a", "c", 9),
-        new Graph.Edge("a", "f", 14),
-        new Graph.Edge("b", "c", 10),
-        new Graph.Edge("b", "d", 15),
-        new Graph.Edge("c", "d", 11),
-        new Graph.Edge("c", "f", 2),
-        new Graph.Edge("d", "e", 6),
-        new Graph.Edge("e", "f", 9),
+            // Distance from node "a" to node "b" is 7.
+            // In the current Graph there is no way to move the other way (e,g, from "b" to "a"),
+            // a new edge would be needed for that
+            new Graph.Edge("a", "b", 7),
+            new Graph.Edge("a", "c", 9),
+            new Graph.Edge("a", "f", 14),
+            new Graph.Edge("b", "c", 10),
+            new Graph.Edge("b", "d", 15),
+            new Graph.Edge("c", "d", 11),
+            new Graph.Edge("c", "f", 2),
+            new Graph.Edge("d", "e", 6),
+            new Graph.Edge("e", "f", 9),
     };
     private static final String START = "a";
     private static final String END = "e";
@@ -205,7 +206,7 @@ class Graph {
             u = q.pollFirst();
             if (u.dist == Integer.MAX_VALUE) {
                 break; // we can ignore u (and any other remaining vertices) since they are
-                       // unreachable
+                // unreachable
             }
             // look at distances to each neighbour
             for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {

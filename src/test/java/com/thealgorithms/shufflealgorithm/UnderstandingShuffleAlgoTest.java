@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.thealgorithms.shufflealogrithm.UnderstandingShuffleAlgo;
+
 import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 public class UnderstandingShuffleAlgoTest {
@@ -28,7 +30,7 @@ public class UnderstandingShuffleAlgoTest {
     void testShuffleEmptyArray() {
         int[] array = {};
         UnderstandingShuffleAlgo.shuffle(array);
-        assertArrayEquals(new int[] {}, array); // Should remain empty
+        assertArrayEquals(new int[]{}, array); // Should remain empty
     }
 
     // Test case for a single element array
@@ -36,7 +38,7 @@ public class UnderstandingShuffleAlgoTest {
     void testShuffleSingleElementArray() {
         int[] array = {1};
         UnderstandingShuffleAlgo.shuffle(array);
-        assertArrayEquals(new int[] {1}, array); // Should remain unchanged
+        assertArrayEquals(new int[]{1}, array); // Should remain unchanged
     }
 
     // Test case for a null array

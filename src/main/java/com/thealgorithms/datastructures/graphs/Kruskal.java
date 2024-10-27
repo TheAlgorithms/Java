@@ -40,9 +40,9 @@ public class Kruskal {
     /**
      * Adds an edge to the graph.
      *
-     * @param graph the adjacency list representing the graph
-     * @param from the source vertex of the edge
-     * @param to the destination vertex of the edge
+     * @param graph  the adjacency list representing the graph
+     * @param from   the source vertex of the edge
+     * @param to     the destination vertex of the edge
      * @param weight the weight of the edge
      */
     static void addEdge(HashSet<Edge>[] graph, int from, int to, int weight) {

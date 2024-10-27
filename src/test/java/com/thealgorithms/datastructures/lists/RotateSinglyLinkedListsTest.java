@@ -59,7 +59,7 @@ public class RotateSinglyLinkedListsTest {
     @Test
     public void testRotateRightMultipleElementsList() {
         // Rotate a list with multiple elements (rotate by 2)
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 2);
         assertEquals("4 -> 5 -> 1 -> 2 -> 3", linkedListToString(rotated));
     }
@@ -67,7 +67,7 @@ public class RotateSinglyLinkedListsTest {
     @Test
     public void testRotateRightFullRotation() {
         // Rotate by more than the length of the list
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 7);
         assertEquals("4 -> 5 -> 1 -> 2 -> 3", linkedListToString(rotated));
     }
@@ -75,7 +75,7 @@ public class RotateSinglyLinkedListsTest {
     @Test
     public void testRotateRightZeroRotation() {
         // Rotate a list by k = 0 (no rotation)
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 0);
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", linkedListToString(rotated));
     }
@@ -83,14 +83,14 @@ public class RotateSinglyLinkedListsTest {
     @Test
     public void testRotateRightByListLength() {
         // Rotate a list by k equal to list length (no change)
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 5);
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", linkedListToString(rotated));
     }
 
     @Test
     public void testRotateRightByMultipleOfListLength() {
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5});
         Node rotated = rotator.rotateRight(head, 10); // k = 2 * list length
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", linkedListToString(rotated));
     }
@@ -98,7 +98,7 @@ public class RotateSinglyLinkedListsTest {
     @Test
     public void testRotateRightLongerList() {
         // Rotate a longer list by a smaller k
-        Node head = createLinkedList(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
+        Node head = createLinkedList(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
         Node rotated = rotator.rotateRight(head, 4);
         assertEquals("6 -> 7 -> 8 -> 9 -> 1 -> 2 -> 3 -> 4 -> 5", linkedListToString(rotated));
     }

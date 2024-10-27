@@ -3,6 +3,7 @@ package com.thealgorithms.searches;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -111,7 +112,7 @@ class LinearSearchTest {
     void testLinearSearchRandomArray() {
         LinearSearch linearSearch = new LinearSearch();
         Random random = new Random();
-        Integer[] array = random.ints(0, 1000).distinct().limit(1000).boxed().toArray(Integer[] ::new);
+        Integer[] array = random.ints(0, 1000).distinct().limit(1000).boxed().toArray(Integer[]::new);
         Integer key = array[random.nextInt(array.length)]; // Key should be in the array
         assertEquals(java.util.Arrays.asList(array).indexOf(key), linearSearch.find(array, key), "The index of the found element should match.");
     }
