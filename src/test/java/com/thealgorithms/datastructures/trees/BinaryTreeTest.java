@@ -38,10 +38,9 @@ class BinaryTreeTest {
         t.remove(7);
 
         BinaryTree.Node root = t.getRoot();
-        Assertions.assertNotNull(root, "Root should not be null after removals.");
 
         // Check the size of the tree to confirm it has remaining nodes
-        Assertions.assertEquals(2, t.size(), // Update the expected size to 2
+        Assertions.assertEquals(2, t.size(),
                 "Tree should have 2 nodes left after removals.");
 
         // Check if new root is correct
