@@ -137,6 +137,7 @@ class BinaryTree {
             }
         }
 
+        // Decrement size after successful removal
         size--;
         return true;
     }
