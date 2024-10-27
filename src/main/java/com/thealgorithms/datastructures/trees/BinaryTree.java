@@ -14,7 +14,8 @@ import java.util.Queue;
  *
  * @author Unknown
  */
-public class BinaryTree {
+public
+class BinaryTree {
 
     /**
      * This class implements the nodes that will go on the Binary Tree. They
@@ -28,19 +29,23 @@ public class BinaryTree {
         /**
          * Data for the node
          */
-        public int data;
+        public
+        int data;
         /**
          * The Node to the left of this one
          */
-        public Node left;
+        public
+        Node left;
         /**
          * The Node to the right of this one
          */
-        public Node right;
+        public
+        Node right;
         /**
          * The parent of this node
          */
-        public Node parent;
+        public
+        Node parent;
 
         /**
          * Constructor of Node
@@ -59,19 +64,25 @@ public class BinaryTree {
      * The root of the Binary Tree
      */
     private Node root;
+    private
+    int size; // Variable to keep track of the number of nodes
 
     /**
      * Constructor
      */
-    public BinaryTree() {
+    public
+    BinaryTree() {
         root = null;
+        size = 0; // Initialize size to 0
     }
 
     /**
      * Parameterized Constructor
      */
-    public BinaryTree(Node root) {
+    public
+    BinaryTree(Node root) {
         this.root = root;
+        this.size = (root != null) ? 1 : 0; // Initialize size based on root
     }
 
     /**
@@ -80,7 +91,8 @@ public class BinaryTree {
      * @param key Value being looked for
      * @return The node if it finds it, otherwise returns the parent
      */
-    public Node find(int key) {
+    public
+    Node find(int key) {
         Node current = root;
         while (current != null) {
             if (key < current.data) {
@@ -101,19 +113,22 @@ public class BinaryTree {
     }
 
     /**
-     * Inserts certain value into the Binary Tree
+     * Inserts a certain value into the Binary Tree
      *
      * @param value Value to be inserted
      */
-    public void put(int value) {
+    public
+    void put(int value) {
         Node newNode = new Node(value);
         if (root == null) {
             root = newNode;
+            size++; // Increment size when inserting the first node
         } else {
             // This will return the soon to be parent of the value you're inserting
             Node parent = find(value);
 
-            // This if/else assigns the new node to be either the left or right child of the parent
+            // This if/else assigns the new node to be either the left or right child
+            // of the parent
             if (value < parent.data) {
                 parent.left = newNode;
                 parent.left.parent = parent;
@@ -121,6 +136,7 @@ public class BinaryTree {
                 parent.right = newNode;
                 parent.right.parent = parent;
             }
+            size++; // Increment size on insertion
         }
     }
 
@@ -130,12 +146,13 @@ public class BinaryTree {
      * @param value Value to be deleted
      * @return If the value was deleted
      */
-    public boolean remove(int value) {
+    public
+    boolean remove(int value) {
         // temp is the node to be deleted
         Node temp = find(value);
 
         // If the value doesn't exist
-        if (temp.data != value) {
+        if (temp == null || temp.data != value) {
             return false;
         }
 
@@ -143,13 +160,15 @@ public class BinaryTree {
         if (temp.right == null && temp.left == null) {
             if (temp == root) {
                 root = null;
-            } // This if/else assigns the new node to be either the left or right child of the
-              // parent
+            } // This if/else assigns the new node to be either the left or right
+            // child of the
+            // parent
             else if (temp.parent.data < temp.data) {
                 temp.parent.right = null;
             } else {
                 temp.parent.left = null;
             }
+            size--; // Decrement size on removal
             return true;
         } // Two children
         else if (temp.left != null && temp.right != null) {
@@ -159,7 +178,8 @@ public class BinaryTree {
             successor.left = temp.left;
             successor.left.parent = successor;
 
-            // If the successor has a right child, the child's grandparent is it's new parent
+            // If the successor has a right child, the child's grandparent is its new
+            // parent
             if (successor.parent != temp) {
                 if (successor.right != null) {
                     successor.right.parent = successor.parent;
@@ -178,14 +198,15 @@ public class BinaryTree {
             else {
                 successor.parent = temp.parent;
 
-                // This if/else assigns the new node to be either the left or right child of the
-                // parent
+                // This if/else assigns the new node to be either the left or right
+                // child of the parent
                 if (temp.parent.data < temp.data) {
                     temp.parent.right = successor;
                 } else {
                     temp.parent.left = successor;
                 }
             }
+            size--; // Decrement size on removal
             return true;
         } // One child
         else {
@@ -193,6 +214,8 @@ public class BinaryTree {
             if (temp.right != null) {
                 if (temp == root) {
                     root = temp.right;
+                    root.parent = null; // Update parent reference
+                    size--;             // Decrement size on removal
                     return true;
                 }
 
@@ -208,6 +231,8 @@ public class BinaryTree {
             else {
                 if (temp == root) {
                     root = temp.left;
+                    root.parent = null; // Update parent reference
+                    size--;             // Decrement size on removal
                     return true;
                 }
 
@@ -220,6 +245,7 @@ public class BinaryTree {
                     temp.parent.right = temp.left;
                 }
             }
+            size--; // Decrement size on removal
             return true;
         }
     }
@@ -231,7 +257,8 @@ public class BinaryTree {
      * @param n Node that you want to find the Successor of
      * @return The Successor of the node
      */
-    public Node findSuccessor(Node n) {
+    public
+    Node findSuccessor(Node n) {
         if (n.right == null) {
             return n;
         }
@@ -249,8 +276,17 @@ public class BinaryTree {
      *
      * @return the root of the Binary Tree
      */
-    public Node getRoot() {
-        return root;
+    public
+    Node getRoot() { return root; }
+
+    /**
+     * Returns the size of the Binary Tree
+     *
+     * @return the size of the Binary Tree
+     */
+    public
+    int size() {
+        return size; // Return the current size of the tree
     }
 
     /**
@@ -259,7 +295,8 @@ public class BinaryTree {
      *
      * @param localRoot The local root of the binary tree
      */
-    public void inOrder(Node localRoot) {
+    public
+    void inOrder(Node localRoot) {
         if (localRoot != null) {
             inOrder(localRoot.left);
             System.out.print(localRoot.data + " ");
@@ -272,7 +309,8 @@ public class BinaryTree {
      *
      * @param localRoot The local root of the binary tree
      */
-    public void preOrder(Node localRoot) {
+    public
+    void preOrder(Node localRoot) {
         if (localRoot != null) {
             System.out.print(localRoot.data + " ");
             preOrder(localRoot.left);
@@ -285,7 +323,8 @@ public class BinaryTree {
      *
      * @param localRoot The local root of the binary tree
      */
-    public void postOrder(Node localRoot) {
+    public
+    void postOrder(Node localRoot) {
         if (localRoot != null) {
             postOrder(localRoot.left);
             postOrder(localRoot.right);
@@ -300,11 +339,12 @@ public class BinaryTree {
      *
      * @param localRoot The local root of the binary tree
      */
-    public void bfs(Node localRoot) {
+    public
+    void bfs(Node localRoot) {
         // Create a queue for the order of the nodes
         Queue<Node> queue = new LinkedList<>();
 
-        // If the give root is null, then we don't add to the queue
+        // If the given root is null, then we don't add to the queue
         // and won't do anything
         if (localRoot != null) {
             queue.add(localRoot);

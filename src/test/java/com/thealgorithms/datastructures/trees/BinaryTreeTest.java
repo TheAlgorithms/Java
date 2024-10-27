@@ -22,7 +22,6 @@ public class BinaryTreeTest {
         Assertions.assertEquals(7, t.find(7).data);
     }
 
-    // Test for removing data and checking the new root
     @Test
     void test2() {
         BinaryTree t = new BinaryTree();
@@ -39,9 +38,14 @@ public class BinaryTreeTest {
 
         BinaryTree.Node root = t.getRoot();
         Assertions.assertNotNull(root, "Root should not be null after removals.");
-        // Removed redundant null check
-        Assertions.assertEquals(9, root.data); // Check if new root is correct
+
+        // Check the size of the tree to confirm it has remaining nodes
+        Assertions.assertEquals(1, t.size(), "Tree should have 1 node left after removals.");
+
+        // Check if new root is correct
+        Assertions.assertEquals(9, root.data);
     }
+
 
     // Test for attempting to remove a nonexistent node
     @Test
