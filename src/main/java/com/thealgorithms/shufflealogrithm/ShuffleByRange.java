@@ -13,7 +13,7 @@ public class ShuffleByRange {
      *
      * @param array the input array to shuffle
      * @param start starting index of the range to shuffle
-     * @param end ending index of the range to shuffle
+     * @param end   ending index of the range to shuffle
      */
     public static void shuffleRange(int[] array, int start, int end) {
         // Edge case handling

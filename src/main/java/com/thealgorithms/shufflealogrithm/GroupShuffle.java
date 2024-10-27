@@ -15,7 +15,7 @@ public class GroupShuffle {
      * Returns an empty list if the group count exceeds the array length.
      *
      * @param array the input array to split into groups
-     * @param k the number of groups to create
+     * @param k     the number of groups to create
      * @return a list of groups, where each group is a shuffled sublist of the input array
      */
     public static List<List<Integer>> groupShuffle(int[] array, int k) {

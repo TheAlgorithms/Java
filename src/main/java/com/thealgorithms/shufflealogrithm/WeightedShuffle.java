@@ -12,7 +12,7 @@ public class WeightedShuffle {
     /**
      * Shuffles elements based on their weights. Higher weight elements are more likely to appear earlier.
      *
-     * @param array the input array to shuffle
+     * @param array   the input array to shuffle
      * @param weights the weights for each corresponding element in the array
      */
     public static void weightedShuffle(int[] array, int[] weights) {
