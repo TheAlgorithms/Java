@@ -8,7 +8,6 @@ public class SearchInARowAndColWiseSortedMatrix {
      * @param value  Key being searched for
      * @author Sadiul Hakim : https://github.com/sadiul-hakim
      */
-
     public int[] search(int[][] matrix, int value) {
         int n = matrix.length;
         // This variable iterates over rows

@@ -1,12 +1,13 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public final class Gaussian {
     private Gaussian() {
     }
 
-    public static ArrayList<Double> gaussian(int matSize, ArrayList<Double> matrix) {
+    public static ArrayList<Double> gaussian(int matSize, List<Double> matrix) {
         int i;
         int j = 0;
 
