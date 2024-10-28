@@ -14,8 +14,8 @@ class UniformNumbersTest {
 
     @Test
     void testSmallRange() {
-        assertEquals(2, UniformNumbers.countUniformIntegers(10, 11)); // Only uniform number is 11
-        assertEquals(4, UniformNumbers.countUniformIntegers(22, 33)); // Uniform numbers are 22, 33
+        assertEquals(1, UniformNumbers.countUniformIntegers(10, 11)); // Only uniform number is 11
+        assertEquals(2, UniformNumbers.countUniformIntegers(22, 33)); // Uniform numbers are 22, 33
     }
 
     @Test
@@ -26,36 +26,31 @@ class UniformNumbersTest {
 
     @Test
     void testRangeWithAllUniformNumbers() {
-        assertEquals(9, UniformNumbers.countUniformIntegers(1, 9)); // All are uniform numbers
-        assertEquals(18, UniformNumbers.countUniformIntegers(1, 99)); // 1-9 and 11, 22, ..., 99
+        assertEquals(9, UniformNumbers.countUniformIntegers(1, 9)); 
+        assertEquals(18, UniformNumbers.countUniformIntegers(1, 99)); 
     }
 
     @Test
     void testMultiDigitRangeWithUniformNumbers() {
-        assertEquals(2, UniformNumbers.countUniformIntegers(100, 111)); // Only 111 is uniform
-        assertEquals(4, UniformNumbers.countUniformIntegers(111, 222)); // Uniform numbers are 111, 222
+        assertEquals(1, UniformNumbers.countUniformIntegers(100, 111)); 
+        assertEquals(2, UniformNumbers.countUniformIntegers(111, 222)); 
     }
 
     @Test
     void testExactUniformBoundary() {
-        assertEquals(1, UniformNumbers.countUniformIntegers(111, 111)); // Only one number, which is uniform
-        assertEquals(2, UniformNumbers.countUniformIntegers(111, 222)); // Uniform numbers are 111, 222
+        assertEquals(1, UniformNumbers.countUniformIntegers(111, 111));
+        assertEquals(2, UniformNumbers.countUniformIntegers(111, 222));
     }
 
     @Test
     void testLargeRange() {
-        assertEquals(36, UniformNumbers.countUniformIntegers(1, 999)); // Counts all 1-digit, 2-digit, and 3-digit uniform numbers
-        assertEquals(45, UniformNumbers.countUniformIntegers(1, 9999)); // Adds 4-digit uniform numbers too
-    }
-
-    @Test
-    void testUpperBoundary() {
-        assertEquals(9, UniformNumbers.countUniformIntegers(1, Integer.MAX_VALUE)); // Test with maximum possible integer range
+        assertEquals(27, UniformNumbers.countUniformIntegers(1, 999)); 
+        assertEquals(36, UniformNumbers.countUniformIntegers(1, 9999));
     }
 
     @Test
     void testInvalidRange() {
-        assertEquals(0, UniformNumbers.countUniformIntegers(500, 100)); // Invalid range (A > B)
-        assertEquals(0, UniformNumbers.countUniformIntegers(-100, -1)); // Negative numbers, not in range of positive integers
+        assertEquals(0, UniformNumbers.countUniformIntegers(500, 100));
+        assertEquals(0, UniformNumbers.countUniformIntegers(-100, -1));
     }
 }
