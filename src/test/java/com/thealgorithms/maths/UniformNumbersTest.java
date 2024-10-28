@@ -20,7 +20,7 @@ class UniformNumbersTest {
 
     @Test
     void testRangeWithNoUniformNumbers() {
-        assertEquals(0, UniformNumbers.countUniformIntegers(10, 21)); // No uniform numbers between 10 and 21
+        assertEquals(0, UniformNumbers.countUniformIntegers(12, 21)); // No uniform numbers between 10 and 21
         assertEquals(0, UniformNumbers.countUniformIntegers(123, 128)); // No uniform numbers between 123 and 128
     }
 
