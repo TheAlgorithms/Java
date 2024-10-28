@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Author : Gowtham Kamalasekar
  * LinkedIn : https://www.linkedin.com/in/gowtham-kamalasekar/
  *
+ * Wiki : https://en.wikipedia.org/wiki/Linear_regression
  * Linear Regression Machine Learning Algorithm is a regression algorithm.
  * This programs used for computing y = mx + c
  * Where m is slope and c is intercept
