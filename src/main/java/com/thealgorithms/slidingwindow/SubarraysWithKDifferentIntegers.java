@@ -31,7 +31,9 @@ public final class SubarraysWithKDifferentIntegers {
 
     // Helper method to count subarrays with at most k distinct integers
     private static int atMostKDistinct(int[] arr, int k) {
-        if (k <= 0) return 0;
+        if (k <= 0) {
+            return 0;
+        }
 
         int count = 0; // To store the count of valid subarrays
         int left = 0; // Left index of the sliding window
