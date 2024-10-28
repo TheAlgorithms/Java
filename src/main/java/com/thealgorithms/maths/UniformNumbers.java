@@ -17,7 +17,10 @@ public class UniformNumbers {
     }
 
     public static int countUniformIntegers(int A, int B) {
-        return uniformNumbers(B) - uniformNumbers(A - 1);
+        if (B > A) {
+            return uniformNumbers(B) - uniformNumbers(A - 1);
+        } else {
+            return 0;
+        }
     }
 }
-

@@ -58,5 +58,4 @@ class UniformNumbersTest {
         assertEquals(0, UniformNumbers.countUniformIntegers(500, 100)); // Invalid range (A > B)
         assertEquals(0, UniformNumbers.countUniformIntegers(-100, -1)); // Negative numbers, not in range of positive integers
     }
-
 }
