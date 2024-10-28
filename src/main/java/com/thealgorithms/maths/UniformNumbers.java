@@ -2,6 +2,11 @@ package com.thealgorithms.maths;
 
 public class UniformNumbers {
 
+    // Private constructor to prevent instantiation of the utility class
+    private UniformNumbers() {
+        // Prevent instantiation
+    }
+
     public static int uniformNumbers(int num) {
         String numStr = Integer.toString(num);
         int uniformCount = (numStr.length() - 1) * 9; // Count for digits less than current length
@@ -16,10 +21,10 @@ public class UniformNumbers {
         return uniformCount;
     }
 
-    public static int countUniformIntegers(int A, int B) {
-        if (B > A && (B > 0 && A > 0)) {
-            return uniformNumbers(B) - uniformNumbers(A - 1);
-        } else if (B == A) {
+    public static int countUniformIntegers(int a, int b) {
+        if (b > a && (b > 0 && a > 0)) {
+            return uniformNumbers(b) - uniformNumbers(a - 1);
+        } else if (b == a) {
             return 1;
         } else {
             return 0;
