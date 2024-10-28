@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-public class UniformNumbers {
+public final class UniformNumbers {
 
     // Private constructor to prevent instantiation of the utility class
     private UniformNumbers() {
@@ -9,7 +9,7 @@ public class UniformNumbers {
 
     public static int uniformNumbers(int num) {
         String numStr = Integer.toString(num);
-        int uniformCount = (numStr.length() - 1) * 9; // Count for digits less than current length
+        int uniformCount = (numStr.length() - 1) * 9;
         int finalUniform = Integer.parseInt(String.valueOf(numStr.charAt(0)).repeat(numStr.length()));
 
         if (finalUniform <= num) {
