@@ -22,7 +22,7 @@ public final class UniformNumbers {
     }
 
     public static int countUniformIntegers(int a, int b) {
-        if (b > a && (b > 0 && a > 0)) {
+        if (b > a && b > 0 && a > 0) {
             return uniformNumbers(b) - uniformNumbers(a - 1);
         } else if (b == a) {
             return 1;
