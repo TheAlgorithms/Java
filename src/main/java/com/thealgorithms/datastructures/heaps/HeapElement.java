@@ -143,10 +143,9 @@ public class HeapElement {
     }
 
     /**
-     * Compares this heap element to another object for equality.
-     *
-     * @param o the object to compare with
-     * @return true if the keys and additional information are identical, false otherwise
+     * @param o : an object to compare with the current element
+     * @return true if the keys on both elements are identical and the
+     * additional info objects are identical.
      */
     @Override
     public boolean equals(Object o) {
