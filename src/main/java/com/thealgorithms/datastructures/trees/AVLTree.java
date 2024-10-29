@@ -1,11 +1,19 @@
 package com.thealgorithms.datastructures.trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Represents an AVL Tree, a self-balancing binary search tree.
+ * In an AVL tree, the heights of the two child subtrees of any node
+ * differ by at most one. If they differ by more than one at any time,
+ * rebalancing is performed to restore this property.
+ */
 public class AVLTree {
 
     private Node root;
 
-    private class Node {
-
+    private static class Node {
         private int key;
         private int balance;
         private int height;
@@ -17,8 +25,18 @@ public class AVLTree {
             key = k;
             parent = p;
         }
+
+        public Integer getBalance() {
+            return balance;
+        }
     }
 
+    /**
+     * Inserts a new key into the AVL tree.
+     *
+     * @param key the key to be inserted
+     * @return {@code true} if the key was inserted, {@code false} if the key already exists
+     */
     public boolean insert(int key) {
         if (root == null) {
             root = new Node(key, null);
@@ -31,7 +49,6 @@ public class AVLTree {
                 }
 
                 parent = n;
-
                 boolean goLeft = n.key > key;
                 n = goLeft ? n.left : n.right;
 
@@ -49,8 +66,32 @@ public class AVLTree {
         return true;
     }
 
+    /**
+     * Deletes a key from the AVL tree.
+     *
+     * @param delKey the key to be deleted
+     */
+    public void delete(int delKey) {
+        if (root == null) {
+            return;
+        }
+
+        // Find the node to be deleted
+        Node node = root;
+        Node child = root;
+        while (child != null) {
+            node = child;
+            child = delKey >= node.key ? node.right : node.left;
+            if (delKey == node.key) {
+                delete(node);
+                return;
+            }
+        }
+    }
+
     private void delete(Node node) {
         if (node.left == null && node.right == null) {
+            // Leaf node
             if (node.parent == null) {
                 root = null;
             } else {
@@ -64,6 +105,8 @@ public class AVLTree {
             }
             return;
         }
+
+        // Node has one or two children
         Node child;
         if (node.left != null) {
             child = node.left;
@@ -80,26 +123,49 @@ public class AVLTree {
         delete(child);
     }
 
-    public void delete(int delKey) {
-        if (root == null) {
-            return;
-        }
-        Node node = root;
-        Node child = root;
+    /**
+     * Returns a list of balance factors for each node in the tree.
+     *
+     * @return a list of integers representing the balance factors of the nodes
+     */
+    public List<Integer> returnBalance() {
+        List<Integer> balances = new ArrayList<>();
+        returnBalance(root, balances);
+        return balances;
+    }
 
-        while (child != null) {
-            node = child;
-            child = delKey >= node.key ? node.right : node.left;
-            if (delKey == node.key) {
-                delete(node);
-                return;
-            }
+    private void returnBalance(Node n, List<Integer> balances) {
+        if (n != null) {
+            returnBalance(n.left, balances);
+            balances.add(n.getBalance());
+            returnBalance(n.right, balances);
         }
+    }
+
+    /**
+     * Searches for a key in the AVL tree.
+     *
+     * @param key the key to be searched
+     * @return true if the key is found, false otherwise
+     */
+    public boolean search(int key) {
+        Node result = searchHelper(this.root, key);
+        return result != null;
+    }
+
+    private Node searchHelper(Node root, int key) {
+        if (root == null || root.key == key) {
+            return root;
+        }
+
+        if (root.key > key) {
+            return searchHelper(root.left, key);
+        }
+        return searchHelper(root.right, key);
     }
 
     private void rebalance(Node n) {
         setBalance(n);
-
         if (n.balance == -2) {
             if (height(n.left.left) >= height(n.left.right)) {
                 n = rotateRight(n);
@@ -143,7 +209,6 @@ public class AVLTree {
         }
 
         setBalance(a, b);
-
         return b;
     }
 
@@ -169,7 +234,6 @@ public class AVLTree {
         }
 
         setBalance(a, b);
-
         return b;
     }
 
@@ -197,53 +261,9 @@ public class AVLTree {
         }
     }
 
-    public void printBalance() {
-        printBalance(root);
-    }
-
-    private void printBalance(Node n) {
-        if (n != null) {
-            printBalance(n.left);
-            System.out.printf("%s ", n.balance);
-            printBalance(n.right);
-        }
-    }
-
     private void reheight(Node node) {
         if (node != null) {
             node.height = 1 + Math.max(height(node.left), height(node.right));
         }
-    }
-
-    public boolean search(int key) {
-        Node result = searchHelper(this.root, key);
-        return result != null;
-    }
-
-    private Node searchHelper(Node root, int key) {
-        // root is null or key is present at root
-        if (root == null || root.key == key) {
-            return root;
-        }
-
-        // key is greater than root's key
-        if (root.key > key) {
-            return searchHelper(root.left, key); // call the function on the node's left child
-        }
-        // key is less than root's key then
-        // call the function on the node's right child as it is greater
-        return searchHelper(root.right, key);
-    }
-
-    public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
-
-        System.out.println("Inserting values 1 to 10");
-        for (int i = 1; i < 10; i++) {
-            tree.insert(i);
-        }
-
-        System.out.print("Printing balance: ");
-        tree.printBalance();
     }
 }
