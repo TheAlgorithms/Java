@@ -560,6 +560,7 @@
             * [NonPreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/NonPreemptivePriorityScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
             * [ProportionalFairScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/ProportionalFairScheduling.java)
+            * [RandomScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RandomScheduling.java)
             * [RRScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RRScheduling.java)
             * [SelfAdjustingScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SelfAdjustingScheduling.java)
             * [SJFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SJFScheduling.java)
@@ -912,6 +913,7 @@
               * [StackArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayTest.java)
               * [StackOfLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackOfLinkedListTest.java)
             * trees
+              * [AVLTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/AVLTreeTest.java)
               * [BinaryTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BinaryTreeTest.java)
               * [BoundaryTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BoundaryTraversalTest.java)
               * [BSTFromSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTFromSortedArrayTest.java)
@@ -1193,6 +1195,7 @@
             * [NonPreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/NonPreemptivePrioritySchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
             * [ProportionalFairSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/ProportionalFairSchedulingTest.java)
+            * [RandomSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RandomSchedulingTest.java)
             * [RRSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RRSchedulingTest.java)
             * [SelfAdjustingSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SelfAdjustingSchedulingTest.java)
             * [SJFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SJFSchedulingTest.java)

@@ -13,114 +13,73 @@ public class GenericHeapTest {
     private GenericHeap<Integer> heap;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         heap = new GenericHeap<>();
     }
 
     @Test
-    public void testGenericHeapAddAndGet() {
-        heap.add(19);
-        heap.add(36);
-        heap.add(100);
-        heap.add(-17);
-        heap.add(3);
-
-        // Check that the largest element (100) is at the top of the heap
-        assertEquals(100, heap.get());
-    }
-
-    @Test
-    public void testGenericHeapRemove() {
-        heap.add(19);
-        heap.add(36);
-        heap.add(100);
-        heap.add(-17);
-        heap.add(3);
-
-        // Verify that the largest element is removed correctly
-        assertEquals(100, heap.remove());
-
-        // The new element at the top should be 36
-        assertEquals(36, heap.get());
-
-        // Check that the size is correct after removal
-        assertEquals(4, heap.size());
-    }
-
-    @Test
-    public void testGenericHeapSize() {
-        assertTrue(heap.isEmpty());
-
+    void testAddAndGet() {
         heap.add(10);
         heap.add(20);
-
-        // Check that the size is correct
-        assertEquals(2, heap.size());
-
-        heap.remove();
-
-        // After removal, the size should be 1
-        assertEquals(1, heap.size());
-    }
-
-    @Test
-    public void testGenericHeapIsEmpty() {
-        // Verify that the heap is initially empty
-        assertTrue(heap.isEmpty());
-
-        heap.add(15);
-
-        // Now the heap should not be empty
-        assertFalse(heap.isEmpty());
-
-        heap.remove();
-
-        // After removing the one element, it should be empty again
-        assertTrue(heap.isEmpty());
-    }
-
-    @Test
-    public void testGenericHeapUpdatePriority() {
-        heap.add(19);
-        heap.add(36);
-        heap.add(100);
-        heap.add(-17);
-        heap.add(3);
-
-        // Verify that the largest element initially is 100
-        assertEquals(100, heap.get());
-
-        heap.remove();
-
-        // Simulates a change in priority by increasing the value of 100 to 44
-        heap.add(44);
-
-        // Now, the new high should be 25
-        assertEquals(44, heap.get());
-    }
-
-    @Test
-    public void testGenericHeapRemoveUntilEmpty() {
         heap.add(5);
-        heap.add(3);
-        heap.add(4);
+
+        assertEquals(20, heap.get());
+    }
+
+    @Test
+    void testRemove() {
+        heap.add(10);
+        heap.add(20);
+        heap.add(5);
+
+        assertEquals(20, heap.remove());
+        assertEquals(10, heap.get());
+    }
+
+    @Test
+    void testIsEmpty() {
+        assertTrue(heap.isEmpty());
+        heap.add(1);
+        assertFalse(heap.isEmpty());
+    }
+
+    @Test
+    void testSize() {
+        assertEquals(0, heap.size());
         heap.add(1);
         heap.add(2);
-
-        // Remove all items and check that they are removed in descending order
-        assertEquals(5, heap.remove());
-        assertEquals(4, heap.remove());
-        assertEquals(3, heap.remove());
-        assertEquals(2, heap.remove());
-        assertEquals(1, heap.remove());
-
-        // Empty heap
-        assertTrue(heap.isEmpty());
+        assertEquals(2, heap.size());
     }
 
     @Test
-    public void testGenericHeapAddNullItem() {
-        // Check null item
-        assertThrows(IllegalArgumentException.class, () -> { heap.add(null); });
+    void testUpdatePriority() {
+        heap.add(10);
+        heap.add(20);
+        heap.add(5);
+
+        heap.updatePriority(10);
+        assertEquals(20, heap.get());
+
+        heap.add(30);
+        heap.updatePriority(20); // 20 will be moved up
+        assertEquals(30, heap.get());
+    }
+
+    @Test
+    void testRemoveFromEmptyHeap() {
+        Exception exception = assertThrows(IllegalStateException.class, () -> heap.remove());
+        assertEquals("Heap is empty", exception.getMessage());
+    }
+
+    @Test
+    void testGetFromEmptyHeap() {
+        Exception exception = assertThrows(IllegalStateException.class, () -> heap.get());
+        assertEquals("Heap is empty", exception.getMessage());
+    }
+
+    @Test
+    void testUpdatePriorityForNonExistentItem() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> heap.updatePriority(100));
+        assertEquals("Item not found in the heap", exception.getMessage());
     }
 }

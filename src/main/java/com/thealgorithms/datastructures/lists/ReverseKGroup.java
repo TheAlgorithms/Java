@@ -1,11 +1,43 @@
 package com.thealgorithms.datastructures.lists;
 
 /**
- * Reverse K Group LinkedList (https://www.topcoder.com/thrive/articles/reverse-node-in-k-group)
+ * The ReverseKGroup class provides functionality to reverse nodes in a
+ * linked list in groups of k nodes.
+ * <p>
+ * This algorithm follows the approach of reversing the linked list in segments of
+ * size k. If the remaining nodes are fewer than k, they remain unchanged.
+ * </p>
+ * <p>
+ * Example:
+ * Given a linked list: 1 -> 2 -> 3 -> 4 -> 5 and k = 3,
+ * the output will be: 3 -> 2 -> 1 -> 4 -> 5.
+ * </p>
+ * <p>
+ * The implementation contains:
+ * - {@code length(Node head)}: A method to calculate the length of the linked list.
+ * - {@code reverse(Node head, int count, int k)}: A helper method that reverses the nodes
+ *   in the linked list in groups of k.
+ * - {@code reverseKGroup(Node head, int k)}: The main method that initiates the reversal
+ *   process by calling the reverse method.
+ * </p>
+ * <p>
+ * Complexity:
+ * <ul>
+ *   <li>Time Complexity: O(n), where n is the number of nodes in the linked list.</li>
+ *   <li>Space Complexity: O(1), as we are reversing in place.</li>
+ * </ul>
+ * </p>
+ *
  * Author: Bama Charan Chhandogi (https://github.com/BamaCharanChhandogi)
  */
-
 public class ReverseKGroup {
+
+    /**
+     * Calculates the length of the linked list.
+     *
+     * @param head The head node of the linked list.
+     * @return The total number of nodes in the linked list.
+     */
     public int length(Node head) {
         Node curr = head;
         int count = 0;
@@ -15,7 +47,15 @@ public class ReverseKGroup {
         }
         return count;
     }
-    // reverse function
+
+    /**
+     * Reverses the linked list in groups of k nodes.
+     *
+     * @param head The head node of the linked list.
+     * @param count The remaining number of nodes.
+     * @param k The size of the group to reverse.
+     * @return The new head of the reversed linked list segment.
+     */
     public Node reverse(Node head, int count, int k) {
         if (count < k) {
             return head;
@@ -37,9 +77,16 @@ public class ReverseKGroup {
         }
         return prev;
     }
+
+    /**
+     * Reverses the linked list in groups of k nodes.
+     *
+     * @param head The head node of the linked list.
+     * @param k The size of the group to reverse.
+     * @return The head of the modified linked list after reversal.
+     */
     public Node reverseKGroup(Node head, int k) {
         int count = length(head);
-        Node ans = reverse(head, count, k);
-        return ans;
+        return reverse(head, count, k);
     }
 }
