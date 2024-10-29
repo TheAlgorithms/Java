@@ -1,5 +1,10 @@
 package com.thealgorithms.dynamicprogramming;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
 /**
  * Dynamic Programming solution for the Egg Dropping Puzzle
  * The problem is to find the minimum number of attempts needed in the worst case to find the critical
@@ -60,18 +65,37 @@ public final class EggDropping {
         return dp[eggs][floors];
     }
 
-    /**
-     * Example usage
-     */
-    public static void main(String[] args) {
-        try {
-            // Example: 2 eggs and 4 floors
-            System.out.println("Minimum number of trials in worst case with 2 eggs and 4 floors: " + minTrials(2, 4));
+    @Test
+    void testBasicScenarios() {
+        // Test with 2 eggs and 4 floors
+        assertEquals(3, minTrials(2, 4));
 
-            // Additional test case
-            System.out.println("Minimum number of trials in worst case with 3 eggs and 5 floors: " + minTrials(3, 5));
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error: " + e.getMessage());
-        }
+        // Test with 3 eggs and 5 floors
+        assertEquals(3, minTrials(3, 5));
+    }
+
+    @Test
+    void testEdgeCases() {
+        // Test with single egg
+        assertEquals(0, minTrials(1, 0));
+        assertEquals(1, minTrials(1, 1));
+        assertEquals(2, minTrials(1, 2));
+
+        // Test with multiple eggs but minimal floors
+        assertEquals(0, minTrials(2, 0));
+        assertEquals(1, minTrials(3, 1));
+    }
+
+    @Test
+    void testLargeInputs() {
+        assertEquals(4, minTrials(3, 10));
+        assertEquals(7, minTrials(2, 36));
+    }
+
+    @Test
+    void testInvalidInputs() {
+        assertThrows(IllegalArgumentException.class, () -> minTrials(0, 5));
+        assertThrows(IllegalArgumentException.class, () -> minTrials(-1, 5));
+        assertThrows(IllegalArgumentException.class, () -> minTrials(2, -1));
     }
 }
