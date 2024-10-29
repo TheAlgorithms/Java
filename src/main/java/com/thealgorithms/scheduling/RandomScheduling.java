@@ -1,6 +1,7 @@
 package com.thealgorithms.scheduling;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -23,10 +24,10 @@ public final class RandomScheduling {
     /**
      * Constructs a new RandomScheduling instance.
      *
-     * @param tasks A list of task names to be scheduled.
+     * @param tasks A collection of task names to be scheduled.
      * @param random A Random instance for generating random numbers.
      */
-    public RandomScheduling(List<String> tasks, Random random) {
+    public RandomScheduling(Collection<String> tasks, Random random) {
         this.tasks = new ArrayList<>(tasks); // Store tasks locally
         this.random = random;
     }
