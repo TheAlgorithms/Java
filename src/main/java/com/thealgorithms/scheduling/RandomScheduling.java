@@ -28,7 +28,7 @@ public final class RandomScheduling {
      * @param random A Random instance for generating random numbers.
      */
     public RandomScheduling(Collection<String> tasks, Random random) {
-        this.tasks = new ArrayList<>(tasks); // Store tasks locally
+        this.tasks = new ArrayList<>(tasks);
         this.random = random;
     }
 
