@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,7 +45,7 @@ class WordBoggleTest {
 
     @ParameterizedTest
     @MethodSource("provideSpecialCases")
-    void testBoggleBoardSpecialCases(char[][] specialBoard, String[] words, List<String> expectedWords, String testDescription) {
+    void testBoggleBoardSpecialCases(char[][] specialBoard, String[] words, Collection<String> expectedWords, String testDescription) {
         List<String> result = WordBoggle.boggleBoard(specialBoard, words);
         assertEquals(expectedWords.size(), result.size(), "Test failed for: " + testDescription);
         assertTrue(expectedWords.containsAll(result), "Test failed for: " + testDescription);
