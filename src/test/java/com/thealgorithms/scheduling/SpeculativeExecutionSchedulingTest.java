@@ -23,13 +23,16 @@ public class SpeculativeExecutionSchedulingTest {
         String result = scheduler.executeTasks("Group1");
 
         // Check for null before splitting
-        assertTrue(result != null, "The result should not be null after executing the task.");
+        if (result != null) {
+            String[] parts = result.split(" started at ");
 
-        String[] parts = result.split(" started at ");
-
-        // Validate task name and ensure start time is a valid timestamp
-        assertEquals("Task1", parts[0]);
-        assertTrue(Long.parseLong(parts[1]) > 0, "Start time should be greater than 0");
+            // Validate task name and ensure start time is a valid timestamp
+            assertEquals("Task1", parts[0]);
+            assertTrue(Long.parseLong(parts[1]) > 0, "Start time should be greater than 0");
+        } else {
+            // Handle the case where result is null
+            assertTrue(false, "The result should not be null after executing the task.");
+        }
     }
 
     @Test
@@ -41,21 +44,27 @@ public class SpeculativeExecutionSchedulingTest {
         String result1 = scheduler.executeTasks("Group1");
 
         // Check for null before splitting
-        assertTrue(result1 != null, "The result for Task1 should not be null.");
-
-        String[] parts1 = result1.split(" started at ");
-        assertEquals("Task1", parts1[0]);
-        assertTrue(Long.parseLong(parts1[1]) > 0, "Start time should be greater than 0");
+        if (result1 != null) {
+            String[] parts1 = result1.split(" started at ");
+            assertEquals("Task1", parts1[0]);
+            assertTrue(Long.parseLong(parts1[1]) > 0, "Start time should be greater than 0");
+        } else {
+            // Handle the case where result1 is null
+            assertTrue(false, "The result for Task1 should not be null.");
+        }
 
         // Execute the second task
         String result2 = scheduler.executeTasks("Group1");
 
         // Check for null before splitting
-        assertTrue(result2 != null, "The result for Task2 should not be null.");
-
-        String[] parts2 = result2.split(" started at ");
-        assertEquals("Task2", parts2[0]);
-        assertTrue(Long.parseLong(parts2[1]) > 0, "Start time should be greater than 0");
+        if (result2 != null) {
+            String[] parts2 = result2.split(" started at ");
+            assertEquals("Task2", parts2[0]);
+            assertTrue(Long.parseLong(parts2[1]) > 0, "Start time should be greater than 0");
+        } else {
+            // Handle the case where result2 is null
+            assertTrue(false, "The result for Task2 should not be null.");
+        }
     }
 
     @Test
