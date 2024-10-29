@@ -43,3 +43,5 @@ public class DijkstraShortestPath {
         return distances;
     }
 }
+
+//https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#:~:text=Dijkstra's%20algorithm%20(/%CB%88da%C9%AA,and%20published%20three%20years%20later.
