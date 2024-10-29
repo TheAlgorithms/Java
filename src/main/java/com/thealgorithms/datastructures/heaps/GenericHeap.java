@@ -42,13 +42,6 @@ public class GenericHeap<T extends Comparable<T>> {
     }
 
     /**
-     * Displays the contents of the heap.
-     */
-    public void display() {
-        System.out.println(this.data);
-    }
-
-    /**
      * Returns the number of elements in the heap.
      *
      * @return the size of the heap

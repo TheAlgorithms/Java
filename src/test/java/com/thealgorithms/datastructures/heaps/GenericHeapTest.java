@@ -82,12 +82,4 @@ public class GenericHeapTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> heap.updatePriority(100));
         assertEquals("Item not found in the heap", exception.getMessage());
     }
-
-    @Test
-    void testDisplay() {
-        heap.add(10);
-        heap.add(20);
-        heap.add(5);
-        heap.display(); // Just checking no exceptions are thrown.
-    }
 }
