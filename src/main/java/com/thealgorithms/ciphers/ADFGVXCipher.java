@@ -3,23 +3,38 @@ package com.thealgorithms.ciphers;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
- * The ADFGVX cipher is a historically significant cipher used by
- * the German Army during World War I. It is a fractionating transposition
- * cipher that combines a Polybius square substitution with a columnar
- * transposition. It's named after the six letters (A, D, F, G, V, X)
- * that it uses in its substitution process.
- * https://en.wikipedia.org/wiki/ADFGVX_cipher
+ * The ADFGVX cipher is a fractionating transposition cipher that was used by
+ * the German Army during World War I. It combines a **Polybius square substitution**
+ * with a **columnar transposition** to enhance encryption strength.
+ * <p>
+ * The name "ADFGVX" refers to the six letters (A, D, F, G, V, X) used as row and
+ * column labels in the Polybius square. This cipher was designed to secure
+ * communication and create complex, hard-to-break ciphertexts.
+ * <p>
+ * Learn more: <a href="https://en.wikipedia.org/wiki/ADFGVX_cipher">ADFGVX Cipher - Wikipedia</a>.
+ * <p>
+ * Example usage:
+ * <pre>
+ * ADFGVXCipher cipher = new ADFGVXCipher();
+ * String encrypted = cipher.encrypt("attack at 1200am", "PRIVACY");
+ * String decrypted = cipher.decrypt(encrypted, "PRIVACY");
+ * </pre>
  *
  * @author bennybebo
  */
 public class ADFGVXCipher {
 
+    // Constants used in the Polybius square
     private static final char[] POLYBIUS_LETTERS = {'A', 'D', 'F', 'G', 'V', 'X'};
     private static final char[][] POLYBIUS_SQUARE = {{'N', 'A', '1', 'C', '3', 'H'}, {'8', 'T', 'B', '2', 'O', 'M'}, {'E', '5', 'W', 'R', 'P', 'D'}, {'4', 'F', '6', 'G', '7', 'I'}, {'9', 'J', '0', 'K', 'L', 'Q'}, {'S', 'U', 'V', 'X', 'Y', 'Z'}};
+
+    // Maps for fast substitution lookups
     private static final Map<String, Character> POLYBIUS_MAP = new HashMap<>();
     private static final Map<Character, String> REVERSE_POLYBIUS_MAP = new HashMap<>();
 
+    // Static block to initialize the lookup tables from the Polybius square
     static {
         for (int i = 0; i < POLYBIUS_SQUARE.length; i++) {
             for (int j = 0; j < POLYBIUS_SQUARE[i].length; j++) {
@@ -30,26 +45,41 @@ public class ADFGVXCipher {
         }
     }
 
-    // Encrypts the plaintext using the ADFGVX cipher
+    /**
+     * Encrypts a given plaintext using the ADFGVX cipher with the provided keyword.
+     * Steps:
+     * 1. Substitute each letter in the plaintext with a pair of ADFGVX letters.
+     * 2. Perform a columnar transposition on the fractionated text using the keyword.
+     *
+     * @param plaintext The message to be encrypted (can contain letters and digits).
+     * @param key       The keyword for columnar transposition.
+     * @return The encrypted message as ciphertext.
+     */
     public String encrypt(String plaintext, String key) {
-        plaintext = plaintext.toUpperCase().replaceAll("[^A-Z0-9]", "");
+        plaintext = plaintext.toUpperCase().replaceAll("[^A-Z0-9]", ""); // Sanitize input
         StringBuilder fractionatedText = new StringBuilder();
 
-        // Step 1: Polybius square substitution
         for (char c : plaintext.toCharArray()) {
             fractionatedText.append(REVERSE_POLYBIUS_MAP.get(c));
         }
 
-        // Step 2: Columnar transposition
         return columnarTransposition(fractionatedText.toString(), key);
     }
 
-    // Decrypts the ciphertext using the ADFGVX cipher
+    /**
+     * Decrypts a given ciphertext using the ADFGVX cipher with the provided keyword.
+     * Steps:
+     * 1. Reverse the columnar transposition performed during encryption.
+     * 2. Substitute each pair of ADFGVX letters with the corresponding plaintext letter.
+     * The resulting text is the decrypted message.
+     *
+     * @param ciphertext The encrypted message.
+     * @param key        The keyword used during encryption.
+     * @return The decrypted plaintext message.
+     */
     public String decrypt(String ciphertext, String key) {
-        // Step 1: Reverse the columnar transposition
         String fractionatedText = reverseColumnarTransposition(ciphertext, key);
 
-        // Step 2: Polybius square substitution
         StringBuilder plaintext = new StringBuilder();
         for (int i = 0; i < fractionatedText.length(); i += 2) {
             String pair = fractionatedText.substring(i, i + 2);
@@ -59,14 +89,21 @@ public class ADFGVXCipher {
         return plaintext.toString();
     }
 
+    /**
+     * Helper method: Performs columnar transposition during encryption
+     *
+     * @param text The fractionated text to be transposed
+     * @param key  The keyword for columnar transposition
+     * @return The transposed text
+     */
     private String columnarTransposition(String text, String key) {
         int numRows = (int) Math.ceil((double) text.length() / key.length());
         char[][] table = new char[numRows][key.length()];
-        for (char[] row : table) {
-            Arrays.fill(row, '_'); // Fill with underscores to handle empty cells
+        for (char[] row : table) { // Fill empty cells with underscores
+            Arrays.fill(row, '_');
         }
 
-        // Fill the table row by row
+        // Populate the table row by row
         for (int i = 0; i < text.length(); i++) {
             table[i / key.length()][i % key.length()] = text.charAt(i);
         }
@@ -88,6 +125,13 @@ public class ADFGVXCipher {
         return ciphertext.toString();
     }
 
+    /**
+     * Helper method: Reverses the columnar transposition during decryption
+     *
+     * @param ciphertext The transposed text to be reversed
+     * @param key        The keyword used during encryption
+     * @return The reversed text
+     */
     private String reverseColumnarTransposition(String ciphertext, String key) {
         int numRows = (int) Math.ceil((double) ciphertext.length() / key.length());
         char[][] table = new char[numRows][key.length()];
@@ -96,19 +140,19 @@ public class ADFGVXCipher {
         Arrays.sort(sortedKey);
 
         int index = 0;
-        // Fill the table column by column according to the sorted key order
+        // Populate the table column by column according to the sorted key
         for (char keyChar : sortedKey) {
             int column = key.indexOf(keyChar);
             for (int row = 0; row < numRows; row++) {
                 if (index < ciphertext.length()) {
                     table[row][column] = ciphertext.charAt(index++);
                 } else {
-                    table[row][column] = '_'; // Fill empty cells with an underscore
+                    table[row][column] = '_';
                 }
             }
         }
 
-        // Read the table row by row to get the fractionated text
+        // Read the table row by row to reconstruct the fractionated text
         StringBuilder fractionatedText = new StringBuilder();
         for (char[] row : table) {
             for (char cell : row) {
