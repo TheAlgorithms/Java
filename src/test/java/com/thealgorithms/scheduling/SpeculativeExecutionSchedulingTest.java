@@ -21,6 +21,10 @@ public class SpeculativeExecutionSchedulingTest {
         scheduler.addTask("Group1", "Task1");
 
         String result = scheduler.executeTasks("Group1");
+
+        // Check for null before splitting
+        assertTrue(result != null, "The result should not be null after executing the task.");
+
         String[] parts = result.split(" started at ");
 
         // Validate task name and ensure start time is a valid timestamp
@@ -35,12 +39,20 @@ public class SpeculativeExecutionSchedulingTest {
 
         // Execute the first task
         String result1 = scheduler.executeTasks("Group1");
+
+        // Check for null before splitting
+        assertTrue(result1 != null, "The result for Task1 should not be null.");
+
         String[] parts1 = result1.split(" started at ");
         assertEquals("Task1", parts1[0]);
         assertTrue(Long.parseLong(parts1[1]) > 0, "Start time should be greater than 0");
 
         // Execute the second task
         String result2 = scheduler.executeTasks("Group1");
+
+        // Check for null before splitting
+        assertTrue(result2 != null, "The result for Task2 should not be null.");
+
         String[] parts2 = result2.split(" started at ");
         assertEquals("Task2", parts2[0]);
         assertTrue(Long.parseLong(parts2[1]) > 0, "Start time should be greater than 0");
@@ -54,6 +66,7 @@ public class SpeculativeExecutionSchedulingTest {
         scheduler.executeTasks("Group1");
         scheduler.executeTasks("Group1");
 
+        // Confirm executing tasks again returns null
         assertNull(scheduler.executeTasks("Group1"));
     }
 
