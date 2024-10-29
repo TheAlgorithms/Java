@@ -54,7 +54,6 @@ public class SpeculativeExecutionSchedulingTest {
         scheduler.executeTasks("Group1");
         scheduler.executeTasks("Group1");
 
-        // Confirm no tasks remain
         assertNull(scheduler.executeTasks("Group1"));
     }
 
