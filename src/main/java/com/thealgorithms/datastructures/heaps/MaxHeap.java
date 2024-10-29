@@ -14,7 +14,7 @@ import java.util.List;
  * 3. Root contains the maximum element
  *
  * Example usage:
- * ```java
+ * <pre>
  * List<HeapElement> elements = Arrays.asList(
  *     new HeapElement(5, "Five"),
  *     new HeapElement(2, "Two")
@@ -22,7 +22,7 @@ import java.util.List;
  * MaxHeap heap = new MaxHeap(elements);
  * heap.insertElement(new HeapElement(7, "Seven"));
  * HeapElement max = heap.getElement(); // Returns and removes the maximum element
- * ```
+ * </pre>
  *
  * @author Nicolas Renard
  */
