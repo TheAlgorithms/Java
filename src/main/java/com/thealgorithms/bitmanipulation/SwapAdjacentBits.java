@@ -41,10 +41,17 @@ public final class SwapAdjacentBits {
      * @return the integer after swapping every pair of adjacent bits
      */
     public static int swapAdjacentBits(int num) {
+        // mask the even bits (0xAAAAAAAA => 10101010...)
         int evenBits = num & 0xAAAAAAAA;
+
+        // mask the odd bits (0x55555555 => 01010101...)
         int oddBits = num & 0x55555555;
+
+        // right shift even bits and left shift odd bits
         evenBits >>= 1;
         oddBits <<= 1;
+
+        // combine shifted bits
         return evenBits | oddBits;
     }
 }
