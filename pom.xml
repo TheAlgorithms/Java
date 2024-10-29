@@ -125,7 +125,7 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>10.18.2</version>
+                    <version>10.19.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -153,7 +153,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.25.0</version>
+                <version>3.26.0</version>
                 <configuration>
                     <printFailingErrors>true</printFailingErrors>
                     <includeTests>true</includeTests>
