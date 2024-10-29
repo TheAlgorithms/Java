@@ -19,14 +19,24 @@ public final class SpeculativeExecutionScheduling {
     static class Task {
         String name;
         boolean completed;
+        long startTime;
 
         Task(String name) {
             this.name = name;
             this.completed = false;
+            this.startTime = -1;
+        }
+
+        void start() {
+            this.startTime = System.currentTimeMillis();
         }
 
         void complete() {
             this.completed = true;
+        }
+
+        boolean hasStarted() {
+            return this.startTime != -1;
         }
     }
 
@@ -48,7 +58,7 @@ public final class SpeculativeExecutionScheduling {
     }
 
     /**
-     * Executes the tasks in the specified group.
+     * Executes the tasks in the specified group by assigning a start time.
      *
      * @param groupName the name of the group
      * @return the name of the task that completed successfully
@@ -60,8 +70,11 @@ public final class SpeculativeExecutionScheduling {
         }
         for (Task task : tasks) {
             if (!task.completed) {
+                if (!task.hasStarted()) {
+                    task.start();
+                }
                 task.complete();
-                return task.name;
+                return task.name + " started at " + task.startTime;
             }
         }
         return null;
