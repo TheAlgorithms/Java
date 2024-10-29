@@ -33,7 +33,7 @@ public class MaxHeap implements Heap {
 
     /**
      * Constructs a new MaxHeap from a list of elements.
-     * Null elements in the input list are ignored with a warning message.
+     * Null elements in the input list are ignored.
      *
      * @param listElements List of HeapElement objects to initialize the heap
      * @throws IllegalArgumentException if the input list is null
@@ -45,22 +45,20 @@ public class MaxHeap implements Heap {
 
         maxHeap = new ArrayList<>();
 
-        // Safe initialization: directly add elements first
+        // Safe initialization: directly add non-null elements first
         for (HeapElement heapElement : listElements) {
             if (heapElement != null) {
                 maxHeap.add(heapElement);
-            } else {
-                System.out.println("Null element. Not added to heap");
             }
         }
 
-        // Then heapify the array bottom-up
+        // Heapify the array bottom-up
         for (int i = maxHeap.size() / 2; i >= 0; i--) {
             heapifyDown(i + 1); // +1 because heapifyDown expects 1-based index
         }
 
         if (maxHeap.isEmpty()) {
-            System.out.println("No element has been added, empty heap.");
+            throw new IllegalStateException("No valid elements have been added; heap is empty.");
         }
     }
 
@@ -180,7 +178,7 @@ public class MaxHeap implements Heap {
      */
     private HeapElement extractMax() throws EmptyHeapException {
         if (maxHeap.isEmpty()) {
-            throw new EmptyHeapException("Cannot extract from empty heap");
+            throw new EmptyHeapException("Cannot extract from an empty heap");
         }
         HeapElement result = maxHeap.getFirst();
         deleteElement(1);
@@ -205,7 +203,7 @@ public class MaxHeap implements Heap {
     @Override
     public void deleteElement(int elementIndex) throws EmptyHeapException {
         if (maxHeap.isEmpty()) {
-            throw new EmptyHeapException("Cannot delete from empty heap");
+            throw new EmptyHeapException("Cannot delete from an empty heap");
         }
         if ((elementIndex > maxHeap.size()) || (elementIndex <= 0)) {
             throw new IndexOutOfBoundsException("Index " + elementIndex + " is out of heap range [1, " + maxHeap.size() + "]");
