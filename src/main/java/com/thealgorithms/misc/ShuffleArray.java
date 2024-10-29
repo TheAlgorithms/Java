@@ -1,5 +1,7 @@
 package com.thealgorithms.misc;
+
 import java.util.Random;
+
 /**
  * The Fisher-Yates (Knuth) Shuffle algorithm randomly permutes an array's
  * elements, ensuring each permutation is equally likely.
@@ -18,6 +20,7 @@ public final class ShuffleArray {
     // Prevent instantiation
     private ShuffleArray() {
     }
+
     /**
      * This method shuffles an array using the Fisher-Yates algorithm.
      *
@@ -31,16 +34,5 @@ public final class ShuffleArray {
             arr[i] = arr[j];
             arr[j] = temp;
         }
-    }
-    /**
-     * This method prints the elements of the array.
-     *
-     * @param arr is the input array to be printed
-     */
-    public static void printArray(int[] arr) {
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
     }
 }
