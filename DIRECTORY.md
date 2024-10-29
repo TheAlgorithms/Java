@@ -466,6 +466,7 @@
             * [SumWithoutArithmeticOperators](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/SumWithoutArithmeticOperators.java)
             * [TrinomialTriangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/TrinomialTriangle.java)
             * [TwinPrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/TwinPrime.java)
+            * [UniformNumbers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/UniformNumbers.java)
             * [VampireNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/VampireNumber.java)
             * [VectorCrossProduct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/VectorCrossProduct.java)
             * [Volume](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Volume.java)
@@ -559,6 +560,7 @@
             * [NonPreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/NonPreemptivePriorityScheduling.java)
             * [PreemptivePriorityScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/PreemptivePriorityScheduling.java)
             * [ProportionalFairScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/ProportionalFairScheduling.java)
+            * [RandomScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RandomScheduling.java)
             * [RRScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/RRScheduling.java)
             * [SelfAdjustingScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SelfAdjustingScheduling.java)
             * [SJFScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/SJFScheduling.java)
@@ -597,6 +599,7 @@
             * [UnionFind](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UnionFind.java)
             * [UpperBound](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UpperBound.java)
           * slidingwindow
+            * [LongestSubarrayWithSumLessOrEqualToK](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubarrayWithSumLessOrEqualToK.java)
             * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
             * [MinSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarray.java)
@@ -1119,6 +1122,7 @@
             * [SumWithoutArithmeticOperatorsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/SumWithoutArithmeticOperatorsTest.java)
             * [TestArmstrong](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/TestArmstrong.java)
             * [TwinPrimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/TwinPrimeTest.java)
+            * [UniformNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/UniformNumbersTest.java)
             * [VolumeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/VolumeTest.java)
           * misc
             * [ColorContrastRatioTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/ColorContrastRatioTest.java)
@@ -1189,6 +1193,7 @@
             * [NonPreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/NonPreemptivePrioritySchedulingTest.java)
             * [PreemptivePrioritySchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/PreemptivePrioritySchedulingTest.java)
             * [ProportionalFairSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/ProportionalFairSchedulingTest.java)
+            * [RandomSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RandomSchedulingTest.java)
             * [RRSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/RRSchedulingTest.java)
             * [SelfAdjustingSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SelfAdjustingSchedulingTest.java)
             * [SJFSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/SJFSchedulingTest.java)
@@ -1228,6 +1233,7 @@
             * [UnionFindTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UnionFindTest.java)
             * [UpperBoundTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UpperBoundTest.java)
           * slidingwindow
+            * [LongestSubarrayWithSumLessOrEqualToKTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubarrayWithSumLessOrEqualToKTest.java)
             * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
             * [MinSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarrayTest.java)
