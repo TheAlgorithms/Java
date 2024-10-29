@@ -92,7 +92,6 @@ public class GenericHashMapUsingArray<K, V> {
      * Rehashes the map by doubling the number of buckets and re-inserting all entries.
      */
     private void reHash() {
-        System.out.println("Rehashing!");
         LinkedList<Node>[] oldBuckets = buckets;
         initBuckets(oldBuckets.length * 2);
         this.size = 0;
