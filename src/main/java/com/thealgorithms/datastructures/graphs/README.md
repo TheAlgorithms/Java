@@ -88,4 +88,39 @@ It means there are edges from 0 to 1, 2, and 3; from 1 to 0 and 2, and so on.
 2  1 1 0 0 0
 3  1 0 0 0 1
 4  0 0 0 1 0
-```
+
+###Graph Terminologies
+
+Degree of a vertex: Number of edges that are incident at a vertex.
+Weighted graph: A graph that has weights assigned for each of the edges (used in cases such as shortest path problems).
+Connected components: A set of vertices that can reach others from it but not to those outside this connected component.
+Cycle: A path that begins and ends at the same vertex.
+Bipartite Graph: A graph whose vertices can be partitioned into two disjoint sets, with every edge connecting a vertex in one set to a vertex in the other set.
+
+###Graph Algorithms
+
+Breadth-First Search: It explores neighbors in layer after layer and applies on shortest path problems for unweighted graphs.
+Depth-First Search (DFS): It continues moving up as far along each branch as possible before backtracking. DFS is typically used for traversing all nodes and testing connectivity.
+Dijkstra's Algorithm: This algorithm finds the shortest path from a single starting vertex to all other vertices in a weighted graph.
+Prim's and Kruskal's Algorithm: To find the minimum spanning tree.
+Bellman-Ford Algorithm: This algorithm solves shortest path problems even when there are negative weights.
+Graph Types
+Multigraphs: Graphs with more edges between the same set of vertices.
+Complete Graphs: A graph in which there is a unique edge between each pair of vertices.
+Planar Graphs: A graph that can be drawn in a plane such that no two edges cross.
+
+###Graph Algorithm Applications
+
+Google Maps (Dijkstra's Algorithm): How maps apps find shortest routes.
+Job Scheduling: Topological Sort A real application of DAG (Directed Acyclic Graph) to manage the dependency of jobs between tasks.
+Web Crawling: How to use BFS for web crawlers to index pages in search engines.
+Big-O Complexity of Graph Operations
+Adjacency List vs Adjacency Matrix : Provide comparison tables of time complexity for operations such as addition of an edge, checking if an edge exists, etc.
+BFS and DFS Complexity : Describe their computational cost
+
+###Common Graph Problems
+
+Graph Coloring 
+Finding Bridges and Articulation Points 
+Finding Strongly Connected Components 
+Maximum Flow (Ford-Fulkerson algorithm)

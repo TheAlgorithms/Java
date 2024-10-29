@@ -95,15 +95,4 @@ public class NodeStack<Item> {
     public int size() {
         return size;
     }
-
-    /**
-     * Prints the contents of the stack from top to bottom.
-     */
-    public void print() {
-        Node current = head;
-        while (current != null) {
-            System.out.println(current.data);
-            current = current.previous;
-        }
-    }
 }
