@@ -56,10 +56,6 @@ public class MaxHeap implements Heap {
         for (int i = maxHeap.size() / 2; i >= 0; i--) {
             heapifyDown(i + 1); // +1 because heapifyDown expects 1-based index
         }
-
-        if (maxHeap.isEmpty()) {
-            throw new IllegalStateException("No valid elements have been added; heap is empty.");
-        }
     }
 
     /**
