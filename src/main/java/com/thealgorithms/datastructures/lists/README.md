@@ -1,7 +1,7 @@
 ## Linked List
 ### Description
 
-LinkedList is a data structure in which data is stored in a linear manner. It usually contains a data field and a link to the memory location of the next mode.
+LinkedList is a data structure in which data is stored in a linear manner. It usually contains a data field and a link to the memory location of the next node.
 
 ### Structure
 
