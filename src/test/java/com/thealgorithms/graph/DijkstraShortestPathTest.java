@@ -57,7 +57,7 @@ public class DijkstraShortestPathTest {
 
     @Test
     public void testRevisitedNodeWithHigherDistance() {
-        // This graph is set up to test the condition where a node is revisited with a higher distance.
+        // graph is set up to test the condition where a node is revisited with a higher distance.
         Map<Integer, List<int[]>> adjList = new HashMap<>();
         adjList.put(0, List.of(new int[] {1, 5}));
         adjList.put(1, List.of(new int[] {2, 1}));
