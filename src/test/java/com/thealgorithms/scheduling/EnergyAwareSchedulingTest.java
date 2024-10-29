@@ -20,7 +20,6 @@ public class EnergyAwareSchedulingTest {
     public void testAddAndScheduleSingleTask() {
         scheduler.addTask("Task1", 10, 5);
 
-        // Expected schedule and energy consumption
         List<String> expectedOrder = List.of("Task1");
         int expectedEnergyConsumption = 10 * 5;
 
@@ -35,7 +34,6 @@ public class EnergyAwareSchedulingTest {
         scheduler.addTask("Task2", 5, 2);
         scheduler.addTask("Task3", 15, 4);
 
-        // Expected schedule order and cumulative energy calculation
         List<String> expectedOrder = List.of("Task2", "Task1", "Task3");
 
         int expectedEnergyConsumption = 195;
@@ -52,7 +50,6 @@ public class EnergyAwareSchedulingTest {
         scheduler.addTask("Task3", 5, 3);
 
         List<String> expectedOrder = List.of("Task3", "Task1", "Task2");
-
         int expectedEnergyConsumption = 125;
 
         Map<String, Object> result = scheduler.scheduleTasks();
