@@ -597,6 +597,7 @@
             * [UnionFind](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UnionFind.java)
             * [UpperBound](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/searches/UpperBound.java)
           * slidingwindow
+            * [LongestSubarrayWithSumLessOrEqualToK](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubarrayWithSumLessOrEqualToK.java)
             * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
             * [MinSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarray.java)
@@ -909,6 +910,7 @@
               * [StackArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackArrayTest.java)
               * [StackOfLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/stacks/StackOfLinkedListTest.java)
             * trees
+              * [AVLSimpleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/AVLSimpleTest.java)
               * [BinaryTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BinaryTreeTest.java)
               * [BoundaryTraversalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BoundaryTraversalTest.java)
               * [BSTFromSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTFromSortedArrayTest.java)
@@ -1228,6 +1230,7 @@
             * [UnionFindTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UnionFindTest.java)
             * [UpperBoundTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/searches/UpperBoundTest.java)
           * slidingwindow
+            * [LongestSubarrayWithSumLessOrEqualToKTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubarrayWithSumLessOrEqualToKTest.java)
             * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
             * [MinSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarrayTest.java)
