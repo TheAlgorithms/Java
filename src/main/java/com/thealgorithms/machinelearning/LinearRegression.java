@@ -23,7 +23,7 @@ class LinearRegression {
   /**
    * @param : X (dependent variable), Y (independent variable) as ArrayList
    */
-  public LinearRegression(ArrayList<Double> dependentX,
+  LinearRegression(ArrayList<Double> dependentX,
                           ArrayList<Double> independentY) {
     this.dependentX = dependentX;
     this.independentY = independentY;
