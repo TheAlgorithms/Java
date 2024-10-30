@@ -202,6 +202,7 @@ public final class Area {
     */
     public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
         if (sideLength <= 0) {
+            
         throw new IllegalArgumentException("Must be a positive sideLength");
         }
         if (slantHeight <= 0) {
