@@ -38,7 +38,7 @@ public class MaximumAverageOfContiguousSubArraysWithK {
         double MAX = Integer.MIN_VALUE; // Keep track of the maximum average
         double runningSum = 0; // Keep track of the running sum
         // For all elements in the array
-        for(int i = 0; i < numbers.length; ++i) {
+        for (int i = 0; i < numbers.length; ++i) {
             runningSum += numbers[i]; // Add the current element to the running sum
             if (i >= k - 1) { // If we reach a minimum number of k elements
                 double div = runningSum / k; // Find the average
