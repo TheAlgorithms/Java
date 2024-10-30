@@ -31,7 +31,7 @@ class LinearRegressionTest {
     assertEquals(1.0, lr.getC(), 0.001);
 
     // Check prediction for X = 6
-    double predictedY = lr.PredictForX(6.0);
+    double predictedY = lr.predictForX(6.0);
     assertEquals(7.0, predictedY, 0.001);
   }
 }
