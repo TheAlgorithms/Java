@@ -16,56 +16,57 @@ import java.util.List;
  */
 
 class LinearRegression {
-    private List<Double> dependentX = new ArrayList<Double>();
-    private List<Double> independentY = new ArrayList<Double>();
+    private ArrayList<Double> dependentX = new ArrayList<Double>();
+    private ArrayList<Double> independentY = new ArrayList<Double>();
     private double m;
     private double c;
 
-  /**
-   * @param : X (dependent variable), Y (independent variable) as ArrayList
-   */
-  LinearRegression(List<Double> dependentX, List<Double> independentY) {
-    this.dependentX = dependentX;
-    this.independentY = independentY;
-    this.equate();
-  }
-
-  private double sumation(List<Double> arr) {
-    double sum = 0.0;
-
-    for (int i = 0; i < arr.size(); i++) {
-      sum += arr.get(i);
+    /**
+     * @param : X (dependent variable), Y (independent variable) as ArrayList
+     */
+    LinearRegression(ArrayList<Double> dependentX, ArrayList<Double> independentY) {
+        this.dependentX = dependentX;
+        this.independentY = independentY;
+        this.equate();
     }
 
-    return sum;
-  }
+    private double sumation(List<Double> arr) {
+        double sum = 0.0;
 
-  private List<Double> multiplyNumber(List<Double> arr1, List<Double> arr2) {
-    List<Double> temp = new ArrayList<Double>();
-    for (int i = 0; i < arr1.size(); i++) {
-      temp.add((arr1.get(i) * arr2.get(i)));
+        for (int i = 0; i < arr.size(); i++) {
+            sum += arr.get(i);
+        }
+
+        return sum;
     }
-    return temp;
-  }
 
-  private void equate() {
-    int n = dependentX.size();
-    this.m = (n * sumation(multiplyNumber(independentY, dependentX)) - (sumation(dependentX) * sumation(independentY)));
-    this.m = this.m / (n * (sumation(multiplyNumber(dependentX, dependentX))) - (sumation(dependentX) * sumation(dependentX)));
+    private List<Double> multiplyNumber(List<Double> arr1, List<Double> arr2) {
+        List<Double> temp = new ArrayList<Double>();
+        for (int i = 0; i < arr1.size(); i++) {
+            temp.add((arr1.get(i) * arr2.get(i)));
+        }
+        return temp;
+    }
 
-    this.c = (sumation(independentY) *  sumation(multiplyNumber(dependentX, dependentX)) - (sumation(dependentX) * sumation(multiplyNumber(independentY, dependentX))));
-    this.c = this.c / (n * (sumation(multiplyNumber(dependentX, dependentX))) - (sumation(dependentX) * sumation(dependentX)));
-  }
+    private void equate() {
+        int n = dependentX.size();
+        this.m = (n * sumation(multiplyNumber(independentY, dependentX)) - (sumation(dependentX) * sumation(independentY)));
+        this.m = this.m / (n * (sumation(multiplyNumber(dependentX, dependentX))) - (sumation(dependentX) * sumation(dependentX)));
 
-  public double getM() { 
-    return this.m; 
-  }
+        this.c = (sumation(independentY) * sumation(multiplyNumber(dependentX, dependentX)) - (sumation(dependentX) * sumation(multiplyNumber(independentY, dependentX))));
+        this.c = this.c / (n * (sumation(multiplyNumber(dependentX, dependentX))) - (sumation(dependentX) * sumation(dependentX)));
+    }
 
-  public double getC() { 
-    return this.c; 
-  }
+    public double getM() {
+        return this.m;
+    }
 
-  public double predictForX(double x) {
-    return (this.m * x) + this.c; 
-  }
+    public double getC() {
+        return this.c;
+    }
+
+    public double predictForX(double x) {
+        return (this.m * x) + this.c;
+    }
 }
+
