@@ -22,7 +22,7 @@ public class MaximumAverageOfContiguousSubArraysWithK {
      * @param k The size of the sub array.
      * @param numbers The array from which sub arrays will be considered.
      *
-     * @return The maximum average of the contiguous sub array of size K. If no such sub array exists, returns 0.
+     * @return The maximum average of the contiguous sub array of size K. If no such sub array exists, then it returns 0.
      */
     public double maxAverage(int k, int... numbers) {
         // If there are no elements in the array
