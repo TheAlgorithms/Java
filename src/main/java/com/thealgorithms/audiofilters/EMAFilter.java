@@ -10,11 +10,9 @@ package com.thealgorithms.audiofilters;
  * <p>Based on the definition from
  * <a href="https://en.wikipedia.org/wiki/Moving_average">Wikipedia link</a>.
  */
-public class EMAFilter {
-    
+public class EMAFilter {    
     private final double alpha;
     private double emaValue;
-
     /**
      * Constructs an EMA filter with a given smoothing factor.
      *
@@ -28,7 +26,6 @@ public class EMAFilter {
         this.alpha = alpha;
         this.emaValue = 0.0;
     }
-
     /**
      * Applies the EMA filter to an audio signal array.
      *
@@ -39,16 +36,14 @@ public class EMAFilter {
         if (audioSignal.length == 0) {
             return new double[0];
         }
-        
         double[] emaSignal = new double[audioSignal.length];
         emaValue = audioSignal[0];
         emaSignal[0] = emaValue;
-
+        
         for (int i = 1; i < audioSignal.length; i++) {
             emaValue = alpha * audioSignal[i] + (1 - alpha) * emaValue;
             emaSignal[i] = emaValue;
         }
-
         return emaSignal;
     }
 }
