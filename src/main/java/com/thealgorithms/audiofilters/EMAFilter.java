@@ -43,7 +43,5 @@ public class EMAFilter {
             emaValue = alpha * audioSignal[i] + (1 - alpha) * emaValue;
             emaSignal[i] = emaValue;
         }
-    }
-    return emaSignal;
-    }
+        return emaSignal;
 }
