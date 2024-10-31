@@ -22,7 +22,7 @@ public class ShorAlgorithm {
         if (number.mod(new BigInteger("2")).equals(BigInteger.ZERO)) {
             BigInteger p = number.divide(new BigInteger("2"));
             BigInteger q = new BigInteger("2");
-            return new BigInteger[]{p, q};
+            return new BigInteger[] {p, q};
         }
 
         Random random = new Random();
@@ -33,7 +33,7 @@ public class ShorAlgorithm {
 
         BigInteger hcf = base.gcd(number);
         if (hcf.compareTo(BigInteger.ONE) > 0) {
-            return new BigInteger[]{hcf, number.divide(hcf)};
+            return new BigInteger[] {hcf, number.divide(hcf)};
         }
 
         int result = exponent(base, number);
@@ -45,8 +45,7 @@ public class ShorAlgorithm {
         BigInteger p = congruentResult.add(BigInteger.ONE).gcd(number);
         BigInteger q = congruentResult.subtract(BigInteger.ONE).gcd(number);
 
-        if (!p.equals(BigInteger.ONE) && !q.equals(BigInteger.ONE))
-            return new BigInteger[]{p, q};
+        if (!p.equals(BigInteger.ONE) && !q.equals(BigInteger.ONE)) return new BigInteger[] {p, q};
         return null;
     }
 }
