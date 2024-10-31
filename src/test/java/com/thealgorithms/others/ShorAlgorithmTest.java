@@ -13,13 +13,13 @@ public class ShorAlgorithmTest {
         ShorAlgorithm shor = new ShorAlgorithm();
         BigInteger number = new BigInteger("15");
         BigInteger[] factors = shor.shorAlgorithm(number);
-        
+
         assertNotNull(factors, "Factors should not be null for composite numbers.");
         assertEquals(2, factors.length, "There should be two factors.");
-
+        
         BigInteger p = factors[0];
         BigInteger q = factors[1];
-        
+    
         assertEquals(number, p.multiply(q), "Factors should multiply to the original number.");
     }
     
@@ -28,7 +28,7 @@ public class ShorAlgorithmTest {
         ShorAlgorithm shor = new ShorAlgorithm();
         BigInteger number = new BigInteger("13");
         BigInteger[] factors = shor.shorAlgorithm(number);
-        
+
         assertNull(factors, "Factors should be null for prime numbers.");
     }
     
@@ -37,13 +37,13 @@ public class ShorAlgorithmTest {
         ShorAlgorithm shor = new ShorAlgorithm();
         BigInteger number = new BigInteger("20");
         BigInteger[] factors = shor.shorAlgorithm(number);
-        
+
         assertNotNull(factors, "Factors should not be null for composite numbers.");
         assertEquals(2, factors.length, "There should be two factors.");
-        
+
         BigInteger p = factors[0];
         BigInteger q = factors[1];
-        
+
         assertEquals(number, p.multiply(q), "Factors should multiply to the original number.");
     }
 }
