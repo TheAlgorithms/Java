@@ -28,6 +28,7 @@ public class EMAFilterTest {
         double[] audioSignal = {1.0, 1.0, 1.0, 1.0};
         // Minimal smoothing (alpha close to 0)
         double[] resultMin = emaFilterMin.apply(audioSignal);
+        assertArrayEquals(audioSignal, resultMin, 1e-5);
         // Maximum smoothing (alpha = 1, output should match input)
         double[] resultMax = emaFilterMax.apply(audioSignal);
         assertArrayEquals(audioSignal, resultMax, 1e-5);
