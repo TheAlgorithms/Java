@@ -10,7 +10,7 @@ package com.thealgorithms.audiofilters;
  * <p>Based on the definition from
  * <a href="https://en.wikipedia.org/wiki/Moving_average">Wikipedia link</a>.
  */
-public class EMAFilter {    
+public class EMAFilter {
     private final double alpha;
     private double emaValue;
     /**
@@ -39,11 +39,11 @@ public class EMAFilter {
         double[] emaSignal = new double[audioSignal.length];
         emaValue = audioSignal[0];
         emaSignal[0] = emaValue;
-        
         for (int i = 1; i < audioSignal.length; i++) {
             emaValue = alpha * audioSignal[i] + (1 - alpha) * emaValue;
             emaSignal[i] = emaValue;
         }
-        return emaSignal;
+    }
+    return emaSignal;
     }
 }
