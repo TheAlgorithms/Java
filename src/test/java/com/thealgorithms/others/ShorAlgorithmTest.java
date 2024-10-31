@@ -19,7 +19,7 @@ public class ShorAlgorithmTest {
 
         BigInteger p = factors[0];
         BigInteger q = factors[1];
-    
+
         assertEquals(number, p.multiply(q), "Factors should multiply to the original number.");
     }
 
