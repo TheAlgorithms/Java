@@ -44,4 +44,5 @@ public class EMAFilter {
             emaSignal[i] = emaValue;
         }
         return emaSignal;
+    }
 }
