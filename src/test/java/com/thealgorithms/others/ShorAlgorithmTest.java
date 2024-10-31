@@ -1,13 +1,13 @@
 package com.thealgorithms.others;
 
-import java.math.BigInteger;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.math.BigInteger;
+import org.junit.jupiter.api.Test;
+
 public class ShorAlgorithmTest {
-    
     @Test
     public void testFactorizationOfEvenNumber() {
         ShorAlgorithm shor = new ShorAlgorithm();
@@ -16,7 +16,7 @@ public class ShorAlgorithmTest {
         
         assertNotNull(factors, "Factors should not be null for composite numbers.");
         assertEquals(2, factors.length, "There should be two factors.");
-        
+
         BigInteger p = factors[0];
         BigInteger q = factors[1];
         
