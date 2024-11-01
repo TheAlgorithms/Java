@@ -1,5 +1,6 @@
 package com.thealgorithms.dynamicprogramming;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -23,7 +24,7 @@ public final class AssignmentUsingBitmaskTest {
     public void testNoPossibleAssignments() {
         int totalTasks = 3;
 
-        List<List<Integer>> taskPerformed = Arrays.asList(Arrays.asList(2), Arrays.asList(3));
+        List<List<Integer>> taskPerformed = Arrays.asList(singletonList(2), singletonList(3));
 
         AssignmentUsingBitmask assignment = new AssignmentUsingBitmask(taskPerformed, totalTasks);
         int ways = assignment.countNoOfWays();
@@ -34,7 +35,7 @@ public final class AssignmentUsingBitmaskTest {
     public void testSinglePersonMultipleTasks() {
         int totalTasks = 3;
 
-        List<List<Integer>> taskPerformed = Arrays.asList(Arrays.asList(1, 2, 3));
+        List<List<Integer>> taskPerformed = singletonList(Arrays.asList(1, 2, 3));
 
         AssignmentUsingBitmask assignment = new AssignmentUsingBitmask(taskPerformed, totalTasks);
         int ways = assignment.countNoOfWays();
@@ -45,7 +46,7 @@ public final class AssignmentUsingBitmaskTest {
     public void testMultiplePeopleSingleTask() {
         int totalTasks = 1;
 
-        List<List<Integer>> taskPerformed = Arrays.asList(Arrays.asList(1), Arrays.asList(1));
+        List<List<Integer>> taskPerformed = Arrays.asList(singletonList(1), singletonList(1));
 
         AssignmentUsingBitmask assignment = new AssignmentUsingBitmask(taskPerformed, totalTasks);
         int ways = assignment.countNoOfWays();

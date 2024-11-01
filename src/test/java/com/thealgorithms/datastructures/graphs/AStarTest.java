@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.graphs;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -41,6 +42,6 @@ public class AStarTest {
     public void testAStarSameNode() {
         AStar.PathAndDistance result = AStar.aStar(0, 0, graph, heuristic);
         assertEquals(0, result.getDistance(), "Expected distance from 0 to 0 is 0");
-        assertEquals(Arrays.asList(0), result.getPath(), "Expected path should only contain the start node");
+        assertEquals(singletonList(0), result.getPath(), "Expected path should only contain the start node");
     }
 }

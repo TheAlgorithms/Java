@@ -1,7 +1,8 @@
 package com.thealgorithms.maths;
 
+import static java.util.Collections.singletonList;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 import org.apache.commons.lang3.tuple.MutablePair;
 
@@ -16,7 +17,7 @@ import org.apache.commons.lang3.tuple.MutablePair;
  *     - the base [2, 3, 5] ugly numbers are the same as base [5, 6, 2, 3, 5] ugly numbers
  */
 public class NthUglyNumber {
-    private ArrayList<Long> uglyNumbers = new ArrayList<>(Arrays.asList(1L));
+    private ArrayList<Long> uglyNumbers = new ArrayList<>(singletonList(1L));
     private ArrayList<MutablePair<Integer, Integer>> positions = new ArrayList<>();
 
     /**

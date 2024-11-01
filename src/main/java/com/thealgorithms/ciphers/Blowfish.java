@@ -1078,7 +1078,7 @@ public class Blowfish {
      * @return String object which is a binary representation of the hex number passed as parameter
      */
     private String hexToBin(String hex) {
-        String binary = "";
+        StringBuilder binary = new StringBuilder();
         long num;
         String binary4B;
         int n = hex.length();
@@ -1089,9 +1089,9 @@ public class Blowfish {
             binary4B = "0000" + binary4B;
 
             binary4B = binary4B.substring(binary4B.length() - 4);
-            binary += binary4B;
+            binary.append(binary4B);
         }
-        return binary;
+        return binary.toString();
     }
 
     /**
@@ -1103,12 +1103,12 @@ public class Blowfish {
      */
     private String binToHex(String binary) {
         long num = Long.parseUnsignedLong(binary, 2);
-        String hex = Long.toHexString(num);
+        StringBuilder hex = new StringBuilder(Long.toHexString(num));
         while (hex.length() < (binary.length() / 4)) {
-            hex = "0" + hex;
+            hex.insert(0, "0");
         }
 
-        return hex;
+        return hex.toString();
     }
 
     /**
@@ -1121,12 +1121,12 @@ public class Blowfish {
     private String xor(String a, String b) {
         a = hexToBin(a);
         b = hexToBin(b);
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         for (int i = 0; i < a.length(); i++) {
-            ans += (char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0');
+            ans.append((char) (((a.charAt(i) - '0') ^ (b.charAt(i) - '0')) + '0'));
         }
-        ans = binToHex(ans);
-        return ans;
+        ans = new StringBuilder(binToHex(ans.toString()));
+        return ans.toString();
     }
 
     /**

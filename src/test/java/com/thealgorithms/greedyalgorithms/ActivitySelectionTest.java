@@ -1,9 +1,11 @@
 package com.thealgorithms.greedyalgorithms;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ActivitySelectionTest {
@@ -24,7 +26,7 @@ public class ActivitySelectionTest {
         int[] end = {2};
 
         ArrayList<Integer> result = ActivitySelection.activitySelection(start, end);
-        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(0));
+        List<Integer> expected = singletonList(0);
 
         assertEquals(expected, result);
     }

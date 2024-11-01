@@ -33,8 +33,7 @@ public final class VampireNumber {
                 // System.out.println(i+ " "+ j);
                 if (isVampireNumber(i, j, true)) {
                     countofRes++;
-                    res.append("" + countofRes + ": = ( " + i + "," + j + " = " + i * j + ")"
-                        + "\n");
+                    res.append("").append(countofRes).append(": = ( ").append(i).append(",").append(j).append(" = ").append(i * j).append(")").append("\n");
                 }
             }
         }

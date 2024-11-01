@@ -23,6 +23,7 @@ public class GenericTree {
     }
 
     private final Node root;
+
     public GenericTree() { // Constructor
         Scanner scn = new Scanner(System.in);
         root = createTreeG(null, 0, scn);
@@ -225,8 +226,6 @@ public class GenericTree {
         for (int i = 0; i < node.child.size(); i++) {
             if (node.child.get(i).child.size() == 0) {
                 arr.add(i);
-                // node.child.remove(i);
-                // i--;
             } else {
                 removeleaves(node.child.get(i));
             }

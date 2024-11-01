@@ -1,5 +1,6 @@
 package com.thealgorithms.strings;
 
+import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -52,7 +53,7 @@ public class WordLadderTest {
     @Test
     public void testWordLadder3() {
 
-        List<String> wordList3 = Arrays.asList();
+        List<String> wordList3 = emptyList();
         assertEquals(WordLadder.ladderLength("hit", "cog", wordList3), 0);
     }
 

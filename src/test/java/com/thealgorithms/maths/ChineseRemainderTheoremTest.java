@@ -1,5 +1,6 @@
 package com.thealgorithms.maths;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -27,8 +28,8 @@ public class ChineseRemainderTheoremTest {
 
     @Test
     public void testCRTWithSingleCongruence() {
-        List<Integer> remainders = Arrays.asList(4);
-        List<Integer> moduli = Arrays.asList(7);
+        List<Integer> remainders = singletonList(4);
+        List<Integer> moduli = singletonList(7);
         int expected = 4;
         int result = ChineseRemainderTheorem.solveCRT(remainders, moduli);
         assertEquals(expected, result);
