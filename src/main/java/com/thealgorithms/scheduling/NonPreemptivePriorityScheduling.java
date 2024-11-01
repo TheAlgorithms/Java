@@ -1,5 +1,6 @@
 package com.thealgorithms.scheduling;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -72,9 +73,7 @@ public final class NonPreemptivePriorityScheduling {
         int index = 0;
         Process[] executionOrder = new Process[processes.length];
 
-        for (Process process : processes) {
-            waitingQueue.add(process);
-        }
+        Collections.addAll(waitingQueue, processes);
 
         while (!waitingQueue.isEmpty() || !pq.isEmpty()) {
             // Add processes that have arrived to the priority queue

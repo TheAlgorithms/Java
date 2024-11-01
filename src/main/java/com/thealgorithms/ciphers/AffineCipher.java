@@ -34,19 +34,19 @@ final class AffineCipher {
      */
     static String encryptMessage(char[] msg) {
         // Cipher Text initially empty
-        String cipher = "";
+        StringBuilder cipher = new StringBuilder();
         for (int i = 0; i < msg.length; i++) {
             // Avoid space to be encrypted
             /* applying encryption formula ( a * x + b ) mod m
             {here x is msg[i] and m is 26} and added 'A' to
             bring it in the range of ASCII alphabet [65-90 | A-Z] */
             if (msg[i] != ' ') {
-                cipher += (char) ((((a * (msg[i] - 'A')) + b) % 26) + 'A');
+                cipher.append((char) ((((a * (msg[i] - 'A')) + b) % 26) + 'A'));
             } else { // else simply append space character
-                cipher += msg[i];
+                cipher.append(msg[i]);
             }
         }
-        return cipher;
+        return cipher.toString();
     }
 
     /**
@@ -56,7 +56,7 @@ final class AffineCipher {
      * @return the decrypted plaintext message
      */
     static String decryptCipher(String cipher) {
-        String msg = "";
+        StringBuilder msg = new StringBuilder();
         int aInv = 0;
         int flag;
 
@@ -75,13 +75,13 @@ final class AffineCipher {
             {here x is cipher[i] and m is 26} and added 'A'
             to bring it in the range of ASCII alphabet [65-90 | A-Z] */
             if (cipher.charAt(i) != ' ') {
-                msg += (char) (((aInv * ((cipher.charAt(i) - 'A') - b + 26)) % 26) + 'A');
+                msg.append((char) (((aInv * ((cipher.charAt(i) - 'A') - b + 26)) % 26) + 'A'));
             } else { // else simply append space character
-                msg += cipher.charAt(i);
+                msg.append(cipher.charAt(i));
             }
         }
 
-        return msg;
+        return msg.toString();
     }
 
     // Driver code

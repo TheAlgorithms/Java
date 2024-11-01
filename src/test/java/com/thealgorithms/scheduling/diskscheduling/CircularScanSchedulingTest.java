@@ -1,5 +1,6 @@
 package com.thealgorithms.scheduling.diskscheduling;
 
+import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -39,8 +40,8 @@ public class CircularScanSchedulingTest {
     @Test
     public void testCircularScanSchedulingEmptyRequests() {
         CircularScanScheduling circularScan = new CircularScanScheduling(50, true, 200);
-        List<Integer> requests = Arrays.asList();
-        List<Integer> expectedOrder = Arrays.asList();
+        List<Integer> requests = emptyList();
+        List<Integer> expectedOrder = emptyList();
 
         List<Integer> result = circularScan.execute(requests);
         assertEquals(expectedOrder, result);

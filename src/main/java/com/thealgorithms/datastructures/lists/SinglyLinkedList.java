@@ -403,7 +403,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
         SinglyLinkedList list = new SinglyLinkedList();
         assert list.isEmpty();
         assert list.size() == 0 && list.count() == 0;
-        assert list.toString().equals("");
+        assert list.toString().isEmpty();
 
         /* Test insert function */
         list.insertHead(5);

@@ -52,9 +52,11 @@ public class HexaDecimalToBinary {
      */
     public String completeDigits(String binNum) {
         final int byteSize = 8;
-        while (binNum.length() < byteSize) {
-            binNum = "0" + binNum;
+        StringBuilder binNumBuilder = new StringBuilder(binNum);
+        while (binNumBuilder.length() < byteSize) {
+            binNumBuilder.insert(0, "0");
         }
+        binNum = binNumBuilder.toString();
         return binNum;
     }
 }
