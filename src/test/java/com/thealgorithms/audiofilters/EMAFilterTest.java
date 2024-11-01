@@ -1,6 +1,7 @@
 package com.thealgorithms.audiofilters;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class EMAFilterTest {
