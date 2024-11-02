@@ -8,17 +8,10 @@ package com.thealgorithms.Recursion;
 */
 
 public class FibonacciSeries {
-
     static int fib(int n) {
-        if (n == 0 || n ==1)
+        if (n == 0 || n == 1)
             return n;
         else
             return fib(n - 1) + fib(n - 2);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Fibonacci = " + fib(1)); // Fibonacci = 1
-        System.out.println("Fibonacci = " + fib(0)); // Fibonacci = 0
-        System.out.println("Fibonacci = " + fib(14)); // Fibonacci = 377
     }
 }
