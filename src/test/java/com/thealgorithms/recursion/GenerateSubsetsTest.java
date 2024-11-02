@@ -1,4 +1,4 @@
-package com.thealgorithms.Recursion;
+package com.thealgorithms.recursion;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 

@@ -1,4 +1,4 @@
-package com.thealgorithms.Recursion;
+package com.thealgorithms.recursion;
 
 /*
     The Fibonacci series is a sequence of numbers where each number is the sum of the two preceding ones,
