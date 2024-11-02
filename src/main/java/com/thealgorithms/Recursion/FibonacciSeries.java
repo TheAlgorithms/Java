@@ -8,10 +8,14 @@ package com.thealgorithms.Recursion;
 */
 
 public class FibonacciSeries {
-    static int fib(int n) {
-        if (n == 0 || n == 1)
+    private FibonacciSeries() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+    public static int fibonacci(int n) {
+        if (n <= 1) {
             return n;
-        else
-            return fib(n - 1) + fib(n - 2);
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
     }
 }
