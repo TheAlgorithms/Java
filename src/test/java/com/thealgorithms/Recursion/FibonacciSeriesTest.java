@@ -1,6 +1,7 @@
 package com.thealgorithms.Recursion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class FibonacciSeriesTest {
@@ -23,5 +24,4 @@ public class FibonacciSeriesTest {
         assertEquals(233, FibonacciSeries.fib(13));
         assertEquals(377, FibonacciSeries.fib(14));
     }
-
 }
