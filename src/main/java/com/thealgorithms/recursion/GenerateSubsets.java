@@ -1,4 +1,4 @@
-package com.thealgorithms.Recursion;
+package com.thealgorithms.recursion;
 
 // program to find power set of a string
 
