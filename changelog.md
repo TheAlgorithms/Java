@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 - Further updates and new features to be added.
 
+## [1.0.3] - 2024-11-8
+- Merged build1 branch to master branch
+- Opened pull request
+
 ## [1.0.2] - 2024-10-31
 ### Added
 - Added `DFSrecursive.java` and `graph.java` with improvements
