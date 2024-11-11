@@ -1,5 +1,6 @@
 package com.thealgorithms.backtracking;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class NQueensTest {
 
     @Test
     public void testNQueens1() {
-        List<List<String>> expected = Arrays.asList(Arrays.asList("Q"));
+        List<List<String>> expected = singletonList(singletonList("Q"));
         assertEquals(expected, NQueens.getNQueensArrangements(1));
     }
 

@@ -1,5 +1,6 @@
 package com.thealgorithms.strings;
 
+import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -39,6 +40,21 @@ public class WordLadderTest {
 
         List<String> wordList2 = Arrays.asList("hot", "dot", "dog", "lot", "log");
         assertEquals(WordLadder.ladderLength("hit", "cog", wordList2), 0);
+    }
+
+    /**
+     * Test 3:
+     * Input: beginWord = "hit", endWord = "cog", wordList =
+     * []
+     * Output: 0
+     * Explanation: The wordList is empty (corner case),
+     * therefore there is no valid transformation sequence.
+     */
+    @Test
+    public void testWordLadder3() {
+
+        List<String> wordList3 = emptyList();
+        assertEquals(WordLadder.ladderLength("hit", "cog", wordList3), 0);
     }
 
     @ParameterizedTest

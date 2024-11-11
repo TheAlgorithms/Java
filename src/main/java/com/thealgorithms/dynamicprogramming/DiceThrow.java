@@ -9,6 +9,7 @@ keep on counting the results that sum to X. This can be done using recursion. */
 
 /* Hence, storing the results of the solved sub-problems saves time.
 And it can be done using Dynamic Programming(DP).
+// Time Complexity: O(m * n * x) where m is number of faces, n is number of dice and x is given sum.
 Following is implementation of Dynamic Programming approach. */
 // Code ---->
 // Java program to find number of ways to get sum 'x' with 'n'
@@ -43,21 +44,4 @@ final class DP {
 
         return table[n][x];
     }
-
-    public static void main(String[] args) {
-        System.out.println(findWays(4, 2, 1));
-        System.out.println(findWays(2, 2, 3));
-        System.out.println(findWays(6, 3, 8));
-        System.out.println(findWays(4, 2, 5));
-        System.out.println(findWays(4, 3, 5));
-    }
 }
-/*
-OUTPUT:
-0
-2
-21
-4
-6
- */
-// Time Complexity: O(m * n * x) where m is number of faces, n is number of dice and x is given sum.

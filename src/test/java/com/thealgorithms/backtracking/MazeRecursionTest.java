@@ -11,41 +11,35 @@ import org.junit.jupiter.api.Test;
 public class MazeRecursionTest {
 
     @Test
-    public void testMaze() {
-        // First create a 2 dimensions array to mimic a maze map
+    public void testSolveMazeUsingFirstAndSecondStrategy() {
         int[][] map = new int[8][7];
         int[][] map2 = new int[8][7];
 
-        // We use 1 to indicate wall
+        // We use 1 to indicate walls
         // Set the ceiling and floor to 1
         for (int i = 0; i < 7; i++) {
             map[0][i] = 1;
             map[7][i] = 1;
         }
-
-        // Then we set the left and right wall to 1
+        // Set the left and right wall to 1
         for (int i = 0; i < 8; i++) {
             map[i][0] = 1;
             map[i][6] = 1;
         }
-
-        // Now we have created a maze with its wall initialized
-
-        // Here we set the obstacle
+        // Set obstacles
         map[3][1] = 1;
         map[3][2] = 1;
 
-        // clone another map for setWay2 method
+        // Clone the original map for the second pathfinding strategy
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map2[i][j] = map[i][j];
-            }
+            System.arraycopy(map[i], 0, map2[i], 0, map[i].length);
         }
 
-        MazeRecursion.setWay(map, 1, 1);
-        MazeRecursion.setWay2(map2, 1, 1);
-
-        int[][] expectedMap = new int[][] {
+        // Solve the maze using the first strategy
+        int[][] solvedMap1 = MazeRecursion.solveMazeUsingFirstStrategy(map);
+        // Solve the maze using the second strategy
+        int[][] solvedMap2 = MazeRecursion.solveMazeUsingSecondStrategy(map2);
+        int[][] expectedMap1 = new int[][] {
             {1, 1, 1, 1, 1, 1, 1},
             {1, 2, 0, 0, 0, 0, 1},
             {1, 2, 2, 2, 0, 0, 1},
@@ -55,7 +49,6 @@ public class MazeRecursionTest {
             {1, 0, 0, 2, 2, 2, 1},
             {1, 1, 1, 1, 1, 1, 1},
         };
-
         int[][] expectedMap2 = new int[][] {
             {1, 1, 1, 1, 1, 1, 1},
             {1, 2, 2, 2, 2, 2, 1},
@@ -67,7 +60,8 @@ public class MazeRecursionTest {
             {1, 1, 1, 1, 1, 1, 1},
         };
 
-        assertArrayEquals(map, expectedMap);
-        assertArrayEquals(map2, expectedMap2);
+        // Assert the results
+        assertArrayEquals(expectedMap1, solvedMap1);
+        assertArrayEquals(expectedMap2, solvedMap2);
     }
 }

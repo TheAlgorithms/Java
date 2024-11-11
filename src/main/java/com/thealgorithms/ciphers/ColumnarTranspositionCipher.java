@@ -27,13 +27,13 @@ public final class ColumnarTranspositionCipher {
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */
-    public static String encrpyter(String word, String keyword) {
+    public static String encrypt(final String word, final String keyword) {
         ColumnarTranspositionCipher.keyword = keyword;
-        abecedariumBuilder(500);
+        abecedariumBuilder();
         table = tableBuilder(word);
         Object[][] sortedTable = sortTable(table);
         StringBuilder wordEncrypted = new StringBuilder();
-        for (int i = 0; i < sortedTable[i].length; i++) {
+        for (int i = 0; i < sortedTable[0].length; i++) {
             for (int j = 1; j < sortedTable.length; j++) {
                 wordEncrypted.append(sortedTable[j][i]);
             }
@@ -51,11 +51,12 @@ public final class ColumnarTranspositionCipher {
      * @return a String with the word encrypted by the Columnar Transposition
      * Cipher Rule
      */
-    public static String encrpyter(String word, String keyword, String abecedarium) {
+    public static String encrypt(String word, String keyword, String abecedarium) {
         ColumnarTranspositionCipher.keyword = keyword;
         ColumnarTranspositionCipher.abecedarium = Objects.requireNonNullElse(abecedarium, ABECEDARIUM);
         table = tableBuilder(word);
         Object[][] sortedTable = sortTable(table);
+
         StringBuilder wordEncrypted = new StringBuilder();
         for (int i = 0; i < sortedTable[0].length; i++) {
             for (int j = 1; j < sortedTable.length; j++) {
@@ -72,7 +73,7 @@ public final class ColumnarTranspositionCipher {
      * @return a String decrypted with the word encrypted by the Columnar
      * Transposition Cipher Rule
      */
-    public static String decrypter() {
+    public static String decrypt() {
         StringBuilder wordDecrypted = new StringBuilder();
         for (int i = 1; i < table.length; i++) {
             for (Object item : table[i]) {
@@ -91,14 +92,14 @@ public final class ColumnarTranspositionCipher {
      */
     private static Object[][] tableBuilder(String word) {
         Object[][] table = new Object[numberOfRows(word) + 1][keyword.length()];
-        char[] wordInChards = word.toCharArray();
-        // Fils in the respective numbers
+        char[] wordInChars = word.toCharArray();
+        // Fills in the respective numbers for the column
         table[0] = findElements();
         int charElement = 0;
         for (int i = 1; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
-                if (charElement < wordInChards.length) {
-                    table[i][j] = wordInChards[charElement];
+                if (charElement < wordInChars.length) {
+                    table[i][j] = wordInChars[charElement];
                     charElement++;
                 } else {
                     table[i][j] = ENCRYPTION_FIELD_CHAR;
@@ -116,7 +117,7 @@ public final class ColumnarTranspositionCipher {
      * order to respect the Columnar Transposition Cipher Rule.
      */
     private static int numberOfRows(String word) {
-        if (word.length() / keyword.length() > word.length() / keyword.length()) {
+        if (word.length() % keyword.length() != 0) {
             return (word.length() / keyword.length()) + 1;
         } else {
             return word.length() / keyword.length();
@@ -173,35 +174,13 @@ public final class ColumnarTranspositionCipher {
     }
 
     /**
-     * Creates an abecedarium with a specified ascii inded
-     *
-     * @param value Number of characters being used based on the ASCII Table
+     * Creates an abecedarium with all available ascii values.
      */
-    private static void abecedariumBuilder(int value) {
+    private static void abecedariumBuilder() {
         StringBuilder t = new StringBuilder();
-        for (int i = 0; i < value; i++) {
+        for (int i = 0; i < 256; i++) {
             t.append((char) i);
         }
         abecedarium = t.toString();
-    }
-
-    private static void showTable() {
-        for (Object[] table1 : table) {
-            for (Object item : table1) {
-                System.out.print(item + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void main(String[] args) {
-        String keywordForExample = "asd215";
-        String wordBeingEncrypted = "This is a test of the Columnar Transposition Cipher";
-        System.out.println("### Example of Columnar Transposition Cipher ###\n");
-        System.out.println("Word being encryped ->>> " + wordBeingEncrypted);
-        System.out.println("Word encrypted ->>> " + ColumnarTranspositionCipher.encrpyter(wordBeingEncrypted, keywordForExample));
-        System.out.println("Word decryped ->>> " + ColumnarTranspositionCipher.decrypter());
-        System.out.println("\n### Encrypted Table ###");
-        showTable();
     }
 }
