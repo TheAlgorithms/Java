@@ -1,8 +1,8 @@
 /*
  * This is a recursive implementation of the Depth-First Search (DFS) algorithm.
  * DFS explores as far as possible along each branch before backtracking.
- * 
- * For more details, refer to: 
+ *
+ * For more details, refer to:
  * https://en.wikipedia.org/wiki/Depth-first_search
  */
 
@@ -12,34 +12,29 @@ public class DFSrecursive {
 
     private int[] visited;
 
-    //initializes the visited array for the number of vertices
-    public DFSrecursive(int numVertices)
-    {
-        this.visited = new int [numVertices];
+    // initializes the visited array for the number of vertices
+    public DFSrecursive(int numVertices) {
+        this.visited = new int[numVertices];
     }
 
-    //recursive dfs to check if there is a path from src to dest
-    public boolean dfsPathCheck(graph g, int v, int dest)
-    {
+    // recursive dfs to check if there is a path from src to dest
+    public boolean dfsPathCheck(Graph g, int v, int dest) {
         int numVertices = g.getNumVertices();
-        for(int w = 0; w < numVertices; w++)
-        {
-            if(g.adjacent(v, w) && visited[w] == -1)
-            {
+        for (int w = 0; w < numVertices; w++) {
+            if (g.adjacent(v, w) && visited[w] == -1) {
                 visited[w] = v;
-                if(w == dest){
+                if (w == dest) {
                     return true;
-                }else if (dfsPathCheck(g, w, dest)){
+                } else if (dfsPathCheck(g, w, dest)) {
                     return true;
                 }
-            } 
+            }
         }
         return false;
     }
 
-    public boolean findPathDFS(graph g, int src, int dest)
-    {
-        Arrays.fill(visited, -1);//reset visited array
+    public boolean findPathDFS(Graph g, int src, int dest) {
+        Arrays.fill(visited, -1); // reset visited array
         visited[src] = src;
         return dfsPathCheck(g, src, dest);
     }
@@ -47,7 +42,7 @@ public class DFSrecursive {
     public static void main(String[] args) {
 
         int V = 6;
-        graph g = new graph(V);
+        Graph g = new Graph(V);
 
         g.insertEdge(0, 1);
         g.insertEdge(0, 4);
@@ -61,20 +56,16 @@ public class DFSrecursive {
 
         DFSrecursive dfs = new DFSrecursive(g.getNumVertices());
         int src = 0, dest = 5;
-        if(dfs.findPathDFS(g, src, dest))
-        {
+        if (dfs.findPathDFS(g, src, dest)) {
             System.out.print("Path found: ");
             int v = dest;
-            while(v != src)
-            {
+            while (v != src) {
                 System.out.print(v + " <- ");
                 v = dfs.visited[v];
             }
             System.out.println(src);
-        }else{
+        } else {
             System.out.println("No path found from " + src + " to " + dest);
         }
-    
     }
-
 }

@@ -1,7 +1,7 @@
 /*
  * This function checks if an array is monotonic.
  * An array is monotonic if it is either entirely non-increasing or non-decreasing.
- * 
+ *
  * For more details, refer to:
  * https://leetcode.com/problems/monotonic-array/
  */
@@ -18,16 +18,16 @@ Example: [4,2,8,7] (Neither always increasing nor decreasing) {False}
 */
 
 public class MonotonicArray {
-    //Function to test if list is monotonic
+    // Function to test if list is monotonic
     public static boolean isMonotonic(List<Integer> nums) {
-        //Checks that list is always increasing
+        // Checks that list is always increasing
         boolean increasing = true;
-        //Checks that list is always decreasing
+        // Checks that list is always decreasing
         boolean decreasing = true;
 
-        //Iterates through list to update boolean flag based on +/-
+        // Iterates through list to update boolean flag based on +/-
         for (int i = 0; i < nums.size() - 1; i++) {
-            //If first number is less than the next, it is not increasing
+            // If first number is less than the next, it is not increasing
             if (nums.get(i) < nums.get(i + 1)) {
                 decreasing = false;
             }
@@ -36,13 +36,13 @@ public class MonotonicArray {
                 increasing = false;
             }
         }
-        //List will return if monotonic
+        // List will return if monotonic
         return increasing || decreasing;
     }
-    //Test case for isMonotonic function
+    // Test case for isMonotonic function
     public static void main(String[] args) {
-        System.out.println(isMonotonic(List.of(75, 64, 45, 36)));  // Output: true
-        System.out.println(isMonotonic(List.of(35, 45, 65, 85)));  // Output: true
+        System.out.println(isMonotonic(List.of(75, 64, 45, 36))); // Output: true
+        System.out.println(isMonotonic(List.of(35, 45, 65, 85))); // Output: true
         System.out.println(isMonotonic(List.of(100, 56, 89)));
         System.out.println(isMonotonic(List.of(58394, 134569, 89002)));
     }
