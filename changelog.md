@@ -8,7 +8,9 @@ All notable changes to this project will be documented in this file.
 ## [1.0.4] - 2024-11-27
 - Renamed build1 branch to java-dfsrecursive-monotonic-array-implementation
 - Removed `Montonic Python Build 1.0` file
-- Renamed `Monotonic Array Java Build 1.1` to `MonotonicArray.java` 
+- Renamed `Monotonic Array Java Build 1.1` to `MonotonicArray.java`
+- Renamed `graph.java` to `Graph.java` 
+- clang format `MonotonicArray.java` `DFSrecursive.java` and `Graph.java`
 
 ## [1.0.3] - 2024-11-8
 - Merged build1 branch to master branch
