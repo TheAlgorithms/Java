@@ -1,3 +1,11 @@
+/*
+ * This is a recursive implementation of the Depth-First Search (DFS) algorithm.
+ * DFS explores as far as possible along each branch before backtracking.
+ * 
+ * For more details, refer to: 
+ * https://en.wikipedia.org/wiki/Depth-first_search
+ */
+
 import java.util.Arrays;
 
 public class DFSrecursive {

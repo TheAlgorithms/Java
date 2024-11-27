@@ -1,3 +1,11 @@
+/*
+ * This function checks if an array is monotonic.
+ * An array is monotonic if it is either entirely non-increasing or non-decreasing.
+ * 
+ * For more details, refer to:
+ * https://leetcode.com/problems/monotonic-array/
+ */
+
 package CIS_Github;
 import java.util.List;
 
@@ -9,7 +17,7 @@ Example: [9,8,6,4] (Always decreasing; Monotonic) {True}
 Example: [4,2,8,7] (Neither always increasing nor decreasing) {False}
 */
 
-public class Mono {
+public class MonotonicArray {
     //Function to test if list is monotonic
     public static boolean isMonotonic(List<Integer> nums) {
         //Checks that list is always increasing
