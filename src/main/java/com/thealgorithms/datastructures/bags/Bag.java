@@ -3,6 +3,8 @@ package com.thealgorithms.datastructures.bags;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/*changes made by tarun
+
 /**
  * A generic collection that allows adding and iterating over elements but does not support
  * element removal. This class implements a simple bag data structure, which can hold duplicate
