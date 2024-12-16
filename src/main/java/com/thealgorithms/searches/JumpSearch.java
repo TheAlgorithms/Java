@@ -41,12 +41,18 @@ public class JumpSearch implements SearchAlgorithm {
 
         int limit = blockSize;
         // Jumping ahead to find the block where the key may be located
-        while (limit < length && key.compareTo(array[limit]) > 0) {
-            limit = Math.min(limit + blockSize, length - 1);
+        while (limit < length && key.compareTo(array[Math.min(limit, length - 1)]) > 0) {
+            limit += blockSize;
         }
+
+        // Handle the case where limit exceeds array length
+        limit = Math.min(limit, length);
 
         // Perform linear search within the identified block
         for (int i = limit - blockSize; i <= limit && i < length; i++) {
+            if (i < 0) { // Skip negative indices
+                continue;
+            }
             if (array[i].equals(key)) {
                 return i;
             }
