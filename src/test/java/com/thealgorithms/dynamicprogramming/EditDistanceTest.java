@@ -1,7 +1,8 @@
 package com.thealgorithms.dynamicprogramming;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -35,25 +36,25 @@ public class EditDistanceTest {
     }
 
     @Test
-    void testEditDistance_NullValue() {
+    void testEditDistanceNullValue() {
         assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, "hello"); });
         assertThrows(NullPointerException.class, () -> { EditDistance.editDistance("hello", null); });
         assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, null); });
     }
 
     @Test
-    public void testEditDistance_BothEmptyStrings() {
+    public void testEditDistanceBothEmptyStrings() {
         assertEquals(0, EditDistance.editDistance("", ""));
     }
 
     @Test
-    public void testEditDistance_OneEmptyString() {
+    public void testEditDistanceOneEmptyString() {
         assertEquals(5, EditDistance.editDistance("", "hello"));
         assertEquals(7, EditDistance.editDistance("worldly", ""));
     }
 
     @Test
-    public void testEditDistance_OneEmptyString_Memoization() {
+    public void testEditDistanceOneEmptyStringMemoization() {
         int[][] storage = new int[1][6];
         assertAll("String assertions",
             ()
@@ -62,13 +63,13 @@ public class EditDistanceTest {
     }
 
     @Test
-    public void testEditDistance_EqualStrings() {
+    public void testEditDistanceEqualStrings() {
         assertEquals(0, EditDistance.editDistance("test", "test"));
         assertEquals(0, EditDistance.editDistance("abc", "abc"));
     }
 
     @Test
-    public void testEditDistance_EqualStrings_Memoization() {
+    public void testEditDistanceEqualStringsMemoization() {
         int[][] storage = new int[4][4];
         assertAll("String assertions",
             ()
@@ -95,14 +96,14 @@ public class EditDistanceTest {
     }
 
     @Test
-    public void testEditDistance_OneCharacterDifference() {
+    public void testEditDistanceOneCharacterDifference() {
         assertEquals(1, EditDistance.editDistance("cat", "bat"));
         assertEquals(1, EditDistance.editDistance("cat", "cats"));
         assertEquals(1, EditDistance.editDistance("cats", "cat"));
     }
 
     @Test
-    public void testEditDistance_OneCharacterDifference_Memoization() {
+    public void testEditDistanceOneCharacterDifferenceMemoization() {
         int[][] storage = new int[3][3];
         assertAll("All assertions",
             ()
@@ -115,14 +116,14 @@ public class EditDistanceTest {
     }
 
     @Test
-    public void testEditDistance_GeneralCases() {
+    public void testEditDistanceGeneralCases() {
         assertEquals(3, EditDistance.editDistance("kitten", "sitting"));
         assertEquals(2, EditDistance.editDistance("flaw", "lawn"));
         assertEquals(5, EditDistance.editDistance("intention", "execution"));
     }
 
     @Test
-    public void testEditDistance_GeneralCases_Memoization() {
+    public void testEditDistanceGeneralCasesMemoization() {
         int[][] storage = new int[7][8];
         assertEquals(3, EditDistance.editDistance("kitten", "sitting", storage));
         assertAll("All assertions", () -> assertEquals(0, storage[0][0]), () -> assertEquals(3, storage[6][7]));
