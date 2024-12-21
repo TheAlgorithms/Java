@@ -17,32 +17,6 @@ public class EditDistanceTest {
     }
 
     @Test
-    void testEditDistanceStringNull() {
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, "abc"); });
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance("abc", null); });
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, null); });
-    }
-
-    @Test
-    void testEditDistanceStringEmpty() {
-        int expected = 0;
-        assertEquals(0, EditDistance.editDistance("", ""));
-        String s1 = "abc";
-        expected = s1.length();
-        assertEquals(expected, EditDistance.editDistance(s1, ""));
-        String s2 = "aa";
-        expected = s2.length();
-        assertEquals(expected, EditDistance.editDistance("", s2));
-    }
-
-    @Test
-    void testEditDistanceNullValue() {
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, "hello"); });
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance("hello", null); });
-        assertThrows(NullPointerException.class, () -> { EditDistance.editDistance(null, null); });
-    }
-
-    @Test
     public void testEditDistanceBothEmptyStrings() {
         assertEquals(0, EditDistance.editDistance("", ""));
     }
