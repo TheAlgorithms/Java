@@ -56,10 +56,9 @@ public class EditDistanceTest {
     public void testEditDistance_OneEmptyString_Memoization() {
         int[][] storage = new int[1][6];
         assertAll("String assertions",
-                ()
-                        -> assertEquals(5, EditDistance.editDistance("", "hello", storage)),
-                () -> assertEquals(0, storage[0][0]), () -> assertEquals(0, storage[0][1]), () -> assertEquals(0, storage[0][2]), () -> assertEquals(0, storage[0][3]), () -> assertEquals(0, storage[0][4]), () -> assertEquals(5, storage[0][5])
-        );
+            ()
+               -> assertEquals(5, EditDistance.editDistance("", "hello", storage)),
+            () -> assertEquals(0, storage[0][0]), () -> assertEquals(0, storage[0][1]), () -> assertEquals(0, storage[0][2]), () -> assertEquals(0, storage[0][3]), () -> assertEquals(0, storage[0][4]), () -> assertEquals(5, storage[0][5]));
     }
 
     @Test
@@ -72,27 +71,27 @@ public class EditDistanceTest {
     public void testEditDistance_EqualStrings_Memoization() {
         int[][] storage = new int[4][4];
         assertAll("String assertions",
-                () ->
-                        assertEquals(0, EditDistance.editDistance("abc", "abc", storage)),
-                () ->
-                        assertEquals(0, storage[0][0]),
-                () ->
-                        assertEquals(0, storage[0][1]),
-                () ->
-                        assertEquals(0, storage[0][2]),
-                () ->
-                        assertEquals(0, storage[0][3]),
-                () ->
-                        assertEquals(0, storage[1][0]),
-                () ->
-                        assertEquals(0, storage[1][1]),
-                () ->
-                        assertEquals(0, storage[1][2]),
-                () ->
-                        assertEquals(0, storage[1][3]),
-                () ->
-                        assertEquals(0, storage[2][0]),
-                () -> assertEquals(0, storage[2][1]), () -> assertEquals(0, storage[2][2]), () -> assertEquals(0, storage[2][3]), () -> assertEquals(0, storage[3][0]), () -> assertEquals(0, storage[3][1]), () -> assertEquals(0, storage[3][2]), () -> assertEquals(0, storage[3][3])
+            ()
+                 -> assertEquals(0, EditDistance.editDistance("abc", "abc", storage)),
+            ()
+                 -> assertEquals(0, storage[0][0]),
+            ()
+                 -> assertEquals(0, storage[0][1]),
+            ()
+                 -> assertEquals(0, storage[0][2]),
+            ()
+                 -> assertEquals(0, storage[0][3]),
+            ()
+                 -> assertEquals(0, storage[1][0]),
+            ()
+                 -> assertEquals(0, storage[1][1]),
+            ()
+                 -> assertEquals(0, storage[1][2]),
+            ()
+                 -> assertEquals(0, storage[1][3]),
+            ()
+                 -> assertEquals(0, storage[2][0]),
+            () -> assertEquals(0, storage[2][1]), () -> assertEquals(0, storage[2][2]), () -> assertEquals(0, storage[2][3]), () -> assertEquals(0, storage[3][0]), () -> assertEquals(0, storage[3][1]), () -> assertEquals(0, storage[3][2]), () -> assertEquals(0, storage[3][3])
         );
     }
 
@@ -107,13 +106,13 @@ public class EditDistanceTest {
     public void testEditDistance_OneCharacterDifference_Memoization() {
         int[][] storage = new int[3][3];
         assertAll("All assertions",
-                () ->
-                        assertEquals(1, EditDistance.editDistance("at", "it", storage)),
-                () ->
-                        assertEquals(0, storage[0][0]),
-                () ->
-                        assertEquals(1, storage[0][1]),
-                () -> assertEquals(2, storage[0][2]), () -> assertEquals(1, storage[1][0]), () -> assertEquals(0, storage[1][1]), () -> assertEquals(1, storage[1][2]), () -> assertEquals(2, storage[2][0]), () -> assertEquals(1, storage[2][1]), () -> assertEquals(1, storage[2][2])
+            ()
+                -> assertEquals(1, EditDistance.editDistance("at", "it", storage)),
+            ()
+                -> assertEquals(0, storage[0][0]),
+            ()
+                -> assertEquals(1, storage[0][1]),
+            () -> assertEquals(2, storage[0][2]), () -> assertEquals(1, storage[1][0]), () -> assertEquals(0, storage[1][1]), () -> assertEquals(1, storage[1][2]), () -> assertEquals(2, storage[2][0]), () -> assertEquals(1, storage[2][1]), () -> assertEquals(1, storage[2][2])
         );
     }
 
