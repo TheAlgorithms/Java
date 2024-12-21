@@ -111,7 +111,7 @@ public class EditDistanceTest {
                 -> assertEquals(0, storage[0][0]),
             ()
                 -> assertEquals(1, storage[0][1]),
-            () -> assertEquals(2, storage[0][2]), () -> assertEquals(1, storage[1][0]), () -> assertEquals(0, storage[1][1]), () -> assertEquals(1, storage[1][2]), () -> assertEquals(2, storage[2][0]), () -> assertEquals(1, storage[2][1]), () -> assertEquals(1, storage[2][2])    );
+            () -> assertEquals(2, storage[0][2]), () -> assertEquals(1, storage[1][0]), () -> assertEquals(0, storage[1][1]), () -> assertEquals(1, storage[1][2]), () -> assertEquals(2, storage[2][0]), () -> assertEquals(1, storage[2][1]), () -> assertEquals(1, storage[2][2]));
     }
 
     @Test
