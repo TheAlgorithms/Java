@@ -1,10 +1,10 @@
 package com.thealgorithms.maths;
 
-import org.junit.jupiter.api.Test;
-
 import static com.thealgorithms.maths.VampireNumber.isVampireNumber;
 import static com.thealgorithms.maths.VampireNumber.splitIntoSortedDigits;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class VampireNumberTest {
     @Test
