@@ -18,28 +18,25 @@ public final class VampireNumber {
     }
 
     public static void main(String[] args) {
-        test(10, 1000);
+        printVampireNumbers(10, 1000, true);
     }
 
-    static void test(int startValue, int stopValue) {
-        int countofRes = 1;
-        StringBuilder res = new StringBuilder();
+    static void printVampireNumbers(int startValue, int stopValue, boolean ignorePseudoVampireNumbers) {
+        int resultCounter = 0;
 
         for (int i = startValue; i <= stopValue; i++) {
             for (int j = i; j <= stopValue; j++) {
-                // System.out.println(i+ " "+ j);
-                if (isVampireNumber(i, j, true)) {
-                    countofRes++;
-                    res.append("").append(countofRes).append(": = ( ").append(i).append(",").append(j).append(" = ").append(i * j).append(")").append("\n");
+                if (isVampireNumber(i, j, ignorePseudoVampireNumbers)) {
+                    resultCounter++;
+                    System.out.printf("%d: %d = %d * %d%n", resultCounter, i * j, i, j);
                 }
             }
         }
-        System.out.println(res);
     }
 
-    static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers) {
+    static boolean isVampireNumber(int a, int b, boolean ignorePseudoVamireNumbers) {
         // Pseudo vampire numbers don't have to be of n/2 digits. E.g., 126 = 6 x 21 is such a number.
-        if (noPseudoVamireNumbers) {
+        if (ignorePseudoVamireNumbers) {
             if (a * 10 <= b || b * 10 <= a) {
                 return false;
             }
