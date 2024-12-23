@@ -13,24 +13,8 @@ import java.util.ArrayList;
  * @see <a href='https://en.wikipedia.org/wiki/Vampire_number'>Vampire number on Wikipedia</a>
  */
 public final class VampireNumber {
+    // Forbid instantiation.
     private VampireNumber() {
-    }
-
-    public static void main(String[] args) {
-        printVampireNumbers(10, 1000, true);
-    }
-
-    static void printVampireNumbers(int startValue, int stopValue, boolean ignorePseudoVampireNumbers) {
-        int resultCounter = 0;
-
-        for (int i = startValue; i <= stopValue; i++) {
-            for (int j = i; j <= stopValue; j++) {
-                if (isVampireNumber(i, j, ignorePseudoVampireNumbers)) {
-                    resultCounter++;
-                    System.out.printf("%d: %d = %d * %d%n", resultCounter, i * j, i, j);
-                }
-            }
-        }
     }
 
     static boolean isVampireNumber(int a, int b, boolean ignorePseudoVampireNumbers) {
@@ -60,5 +44,22 @@ public final class VampireNumber {
         StringBuilder res = new StringBuilder();
         digits.stream().sorted().forEach(res::append);
         return res.toString();
+    }
+
+    static void printVampireNumbers(int startValue, int stopValue, boolean ignorePseudoVampireNumbers) {
+        int resultCounter = 0;
+
+        for (int i = startValue; i <= stopValue; i++) {
+            for (int j = i; j <= stopValue; j++) {
+                if (isVampireNumber(i, j, ignorePseudoVampireNumbers)) {
+                    resultCounter++;
+                    System.out.printf("%d: %d = %d * %d%n", resultCounter, i * j, i, j);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        printVampireNumbers(10, 1000, true);
     }
 }
