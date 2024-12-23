@@ -3,8 +3,8 @@ package com.thealgorithms.maths;
 import org.junit.jupiter.api.Test;
 
 import static com.thealgorithms.maths.VampireNumber.isVampireNumber;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static com.thealgorithms.maths.VampireNumber.splitIntoSortedDigits;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VampireNumberTest {
     @Test
@@ -25,5 +25,11 @@ class VampireNumberTest {
     void areNotVampireNumbers() {
         assertFalse(isVampireNumber(51, 39, false));
         assertFalse(isVampireNumber(51, 39, true));
+    }
+
+    @Test
+    void testSplitIntoSortedDigits() {
+        assertEquals("123", splitIntoSortedDigits(321));
+        assertEquals("02234", splitIntoSortedDigits(20, 324));
     }
 }
