@@ -1,7 +1,6 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * In number theory, a vampire number (or true vampire number) is a composite
@@ -34,38 +33,32 @@ public final class VampireNumber {
         }
     }
 
-    static boolean isVampireNumber(int a, int b, boolean ignorePseudoVamireNumbers) {
+    static boolean isVampireNumber(int a, int b, boolean ignorePseudoVampireNumbers) {
         // Pseudo vampire numbers don't have to be of n/2 digits. E.g., 126 = 6 x 21 is such a number.
-        if (ignorePseudoVamireNumbers) {
-            if (a * 10 <= b || b * 10 <= a) {
-                return false;
-            }
+        if (ignorePseudoVampireNumbers && String.valueOf(a).length() != String.valueOf(b).length()) {
+            return false;
         }
 
-        String mulDigits = splitIntoDigits(a * b, 0);
-        String faktorDigits = splitIntoDigits(a, b);
+        String mulDigits = splitIntoSortedDigits(a * b);
+        String factorDigits = splitIntoSortedDigits(a, b);
 
-        return mulDigits.equals(faktorDigits);
+        return mulDigits.equals(factorDigits);
     }
 
     // Method to split a pair of numbers to digits and sort them in the ascending order.
-    static String splitIntoDigits(int num, int num2) {
-        StringBuilder res = new StringBuilder();
-
+    static String splitIntoSortedDigits(int... nums) {
+        // Collect all digits in a list.
         ArrayList<Integer> digits = new ArrayList<>();
-        while (num > 0) {
-            digits.add(num % 10);
-            num /= 10;
-        }
-        while (num2 > 0) {
-            digits.add(num2 % 10);
-            num2 /= 10;
-        }
-        Collections.sort(digits);
-        for (int i : digits) {
-            res.append(i);
+        for (int num : nums) {
+            while (num > 0) {
+                digits.add(num % 10);
+                num /= 10;
+            }
         }
 
+        // Sort all digits and convert to String.
+        StringBuilder res = new StringBuilder();
+        digits.stream().sorted().forEach(res::append);
         return res.toString();
     }
 }
