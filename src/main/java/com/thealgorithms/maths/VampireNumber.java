@@ -4,17 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * n number theory, a vampire number (or true vampire number) is a composite
+ * In number theory, a vampire number (or true vampire number) is a composite
  * natural number with an even number of digits, that can be factored into two
  * natural numbers each with half as many digits as the original number and not
  * both with trailing zeroes, where the two factors contain precisely all the
  * digits of the original number, in any order, counting multiplicity. The first
- * vampire number is 1260 = 21 × 60. *
+ * vampire number is 1260 = 21 × 60.
  *
- * <p>
- * link: https://en.wikipedia.org/wiki/Vampire_number *
- *
- * <p>
+ * @see <a href='https://en.wikipedia.org/wiki/Vampire_number'>Vampire number on Wikipedia</a>
  */
 public final class VampireNumber {
     private VampireNumber() {
@@ -41,8 +38,7 @@ public final class VampireNumber {
     }
 
     static boolean isVampireNumber(int a, int b, boolean noPseudoVamireNumbers) {
-        // this is for pseudoVampireNumbers  pseudovampire number need not be of length n/2 digits
-        // for example 126 = 6 x 21
+        // Pseudo vampire numbers don't have to be of n/2 digits. E.g., 126 = 6 x 21 is such a number.
         if (noPseudoVamireNumbers) {
             if (a * 10 <= b || b * 10 <= a) {
                 return false;
@@ -55,7 +51,7 @@ public final class VampireNumber {
         return mulDigits.equals(faktorDigits);
     }
 
-    // methode to Split the numbers to Digits
+    // Method to split a pair of numbers to digits and sort them in the ascending order.
     static String splitIntoDigits(int num, int num2) {
         StringBuilder res = new StringBuilder();
 
