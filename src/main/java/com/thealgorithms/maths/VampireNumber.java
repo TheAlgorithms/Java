@@ -45,21 +45,4 @@ public final class VampireNumber {
         digits.stream().sorted().forEach(res::append);
         return res.toString();
     }
-
-    static void printVampireNumbers(int startValue, int stopValue, boolean ignorePseudoVampireNumbers) {
-        int resultCounter = 0;
-
-        for (int i = startValue; i <= stopValue; i++) {
-            for (int j = i; j <= stopValue; j++) {
-                if (isVampireNumber(i, j, ignorePseudoVampireNumbers)) {
-                    resultCounter++;
-                    System.out.printf("%d: %d = %d * %d%n", resultCounter, i * j, i, j);
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        printVampireNumbers(10, 1000, true);
-    }
 }
