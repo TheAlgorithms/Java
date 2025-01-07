@@ -1,10 +1,12 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
+import com.thealgorithms.matrix.MirrorOfMatrix;
 
 class MirrorOfMatrixTest {
 

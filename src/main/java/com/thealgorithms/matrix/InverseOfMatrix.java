@@ -1,4 +1,4 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.matrix;
 
 /**
  * This class provides methods to compute the inverse of a square matrix

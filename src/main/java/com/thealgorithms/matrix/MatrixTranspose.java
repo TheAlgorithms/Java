@@ -1,4 +1,4 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.matrix;
 
 /**
  *
