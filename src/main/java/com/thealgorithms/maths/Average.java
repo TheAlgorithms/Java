@@ -37,7 +37,7 @@ public final class Average {
      * @return the average of the given numbers
      * @throws IllegalArgumentException if the input array is {@code null} or empty
      */
-    public static double average(int[] numbers) {
+    public static long average(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Numbers array cannot be empty or null");
         }
@@ -45,6 +45,6 @@ public final class Average {
         for (int number : numbers) {
             sum += number;
         }
-        return (double) (sum / numbers.length);
+        return sum / numbers.length;
     }
 }
