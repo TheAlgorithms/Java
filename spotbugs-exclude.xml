@@ -42,9 +42,6 @@
         <Bug pattern="INT_BAD_REM_BY_1" />
     </Match>
     <Match>
-        <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
-    </Match>
-    <Match>
         <Bug pattern="FE_FLOATING_POINT_EQUALITY" />
     </Match>
     <Match>
