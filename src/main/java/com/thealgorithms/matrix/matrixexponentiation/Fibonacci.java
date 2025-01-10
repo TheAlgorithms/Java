@@ -55,14 +55,14 @@ public final class Fibonacci {
      */
     public static int[][] fib(int n) {
         if (n == 0) {
-            return Fibonacci.IDENTITY_MATRIX;
+            return IDENTITY_MATRIX;
         } else {
             int[][] cachedResult = fib(n / 2);
             int[][] matrixExpResult = matrixMultiplication(cachedResult, cachedResult);
             if (n % 2 == 0) {
                 return matrixExpResult;
             } else {
-                return matrixMultiplication(Fibonacci.FIB_MATRIX, matrixExpResult);
+                return matrixMultiplication(FIB_MATRIX, matrixExpResult);
             }
         }
     }
