@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <assertj.version>3.27.0</assertj.version>
+        <assertj.version>3.27.2</assertj.version>
     </properties>
 
     <dependencyManagement>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.14.2</version>
+            <version>5.15.2</version>
             <scope>test</scope>
         </dependency>
 
@@ -125,7 +125,7 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>10.21.0</version>
+                    <version>10.21.1</version>
                     </dependency>
                 </dependencies>
             </plugin>

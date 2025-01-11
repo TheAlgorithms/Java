@@ -105,7 +105,7 @@ public final class KochSnowflake {
         double offsetX = imageWidth / 10.;
         double offsetY = imageWidth / 3.7;
         Vector2 vector1 = new Vector2(offsetX, offsetY);
-        Vector2 vector2 = new Vector2(imageWidth / 2, Math.sin(Math.PI / 3) * imageWidth * 0.8 + offsetY);
+        Vector2 vector2 = new Vector2(imageWidth / 2.0, Math.sin(Math.PI / 3.0) * imageWidth * 0.8 + offsetY);
         Vector2 vector3 = new Vector2(imageWidth - offsetX, offsetY);
         ArrayList<Vector2> initialVectors = new ArrayList<Vector2>();
         initialVectors.add(vector1);

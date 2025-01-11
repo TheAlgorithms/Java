@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
