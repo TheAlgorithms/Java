@@ -54,5 +54,4 @@ public final class GoldbachConjecture {
             System.out.println("Wrong Input");
         }
     }
-
 }
