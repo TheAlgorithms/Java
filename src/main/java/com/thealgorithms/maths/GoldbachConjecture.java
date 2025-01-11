@@ -43,7 +43,7 @@ public final class GoldbachConjecture {
         int flag = 0;
 
         if (n % 2 == 0 && n > 2) {
-            for (int i = 0; i <= n/2 && flag == 0; i++) {
+            for (int i = 0; i <= n / 2 && flag == 0; i++) {
                 if (isPrime(i)) {
                     if (isPrime(n - i)) {
                         System.out.println(format("%d + %d = %d", i, n - i, n));
@@ -51,8 +51,7 @@ public final class GoldbachConjecture {
                     }
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Wrong Input");
         }
     }
