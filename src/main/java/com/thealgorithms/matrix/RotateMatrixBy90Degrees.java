@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.matrix;
 
 import java.util.Scanner;
 /**
