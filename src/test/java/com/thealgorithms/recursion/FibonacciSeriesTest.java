@@ -2,6 +2,7 @@ package com.thealgorithms.recursion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.bitmanipulation.FindNthBit;
 import org.junit.jupiter.api.Test;
 
 public class FibonacciSeriesTest {
@@ -23,5 +24,9 @@ public class FibonacciSeriesTest {
         assertEquals(144, FibonacciSeries.fibonacci(12));
         assertEquals(233, FibonacciSeries.fibonacci(13));
         assertEquals(377, FibonacciSeries.fibonacci(14));
+        assertEquals(610, FibonacciSeries.fibonacci(15));
+        assertEquals(6765, FibonacciSeries.fibonacci(20));
+        assertEquals(75025, FibonacciSeries.fibonacci(25));
+        assertEquals(832040, FibonacciSeries.fibonacci(30));
     }
 }
