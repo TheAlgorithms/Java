@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
-import java.util.Scanner;
-
 import static java.lang.String.format;
+
+import java.util.Scanner;
 
 /**
  * This is a representation of the unsolved problem of Goldbach's Projection, according to which every
