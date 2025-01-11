@@ -41,7 +41,7 @@ public final class GoldbachConjecture {
         int n = scanner.nextInt();
         int flag = 0;
 
-        if(n%2 == 0 && n>2) {
+        if(n % 2 == 0 && n > 2) {
             for(int i = 0; i <= n/2 && flag == 0; i++)
                 if(isPrime(i))
                     if(isPrime(n - i))
