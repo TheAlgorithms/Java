@@ -2,7 +2,6 @@ package com.thealgorithms.recursion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.thealgorithms.bitmanipulation.FindNthBit;
 import org.junit.jupiter.api.Test;
 
 public class FibonacciSeriesTest {
