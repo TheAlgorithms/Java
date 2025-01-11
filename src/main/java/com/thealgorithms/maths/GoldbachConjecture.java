@@ -12,7 +12,7 @@ import static java.lang.String.format;
  */
 
 public final class GoldbachConjecture {
-    private GoldbachConjecture(){
+    private GoldbachConjecture() {
     }
 
     /**
@@ -20,21 +20,21 @@ public final class GoldbachConjecture {
      * @param n the input number
      * @return true if n is prime, else return false
      */
-    private static boolean isPrime(int n){
+    private static boolean isPrime(int n) {
         int i;
-        if(n <= 1 || (n%2 == 0 && n!=2)){
+        if(n <= 1 || (n % 2 == 0 && n != 2)) {
             return false;
         }
         else {
-            for(i = 3; i<Math.sqrt(n); i+=2){
-                if(n%i == 0)
+            for(i = 3; i < Math.sqrt(n); i += 2) {
+                if(n % i == 0)
                     return false;
             }
         }
         return true;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number");
@@ -42,12 +42,12 @@ public final class GoldbachConjecture {
         int flag = 0;
 
         if(n%2 == 0 && n>2) {
-            for(int i=0;i<=n/2 && flag==0;i++)
+            for(int i = 0; i <= n/2 && flag == 0; i++)
                 if(isPrime(i))
-                    if(isPrime(n-i))
+                    if(isPrime(n - i))
                     {
-                        System.out.println(format("%d+%d=%d", i, n-i, n));
-                        flag=1;
+                        System.out.println(format("%d + %d = %d", i, n - i, n));
+                        flag = 1;
                     }
         }
         else
