@@ -1,41 +1,44 @@
 package com.thealgorithms.strings.zigZagPattern;
 
 final class ZigZagPattern {
+
     private ZigZagPattern() {
     }
 
+    /**
+     * Encodes a given string into a zig-zag pattern.
+     *
+     * @param s       the input string to be encoded
+     * @param numRows the number of rows in the zig-zag pattern
+     * @return the encoded string in zig-zag pattern format
+     */
     public static String encode(String s, int numRows) {
         if (numRows < 2 || s.length() < numRows) {
             return s;
         }
-        int start = 0;
-        int index = 0;
-        int height = 1;
-        int depth = numRows;
-        char[] zigZagedArray = new char[s.length()];
-        while (depth != 0) {
-            int pointer = start;
-            int heightSpace = 2 + ((height - 2) * 2);
-            int depthSpace = 2 + ((depth - 2) * 2);
-            boolean bool = true;
-            while (pointer < s.length()) {
-                zigZagedArray[index++] = s.charAt(pointer);
-                if (heightSpace == 0) {
-                    pointer += depthSpace;
-                } else if (depthSpace == 0) {
-                    pointer += heightSpace;
-                } else if (bool) {
-                    pointer += depthSpace;
-                    bool = false;
-                } else {
-                    pointer += heightSpace;
-                    bool = true;
-                }
-            }
-            height++;
-            depth--;
-            start++;
+
+        StringBuilder[] rows = new StringBuilder[numRows];
+        for (int i = 0; i < numRows; i++) {
+            rows[i] = new StringBuilder();
         }
-        return new String(zigZagedArray);
+
+        int index = 0;
+        while (index < s.length()) {
+            for (int i = 0; i < numRows && index < s.length(); i++) {
+                rows[i].append(s.charAt(index));
+                index++;
+            }
+            for (int i = numRows - 2; i >= 1 && index < s.length(); i--) {
+                rows[i].append(s.charAt(index));
+                index++;
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (StringBuilder row : rows) {
+            result.append(row);
+        }
+
+        return result.toString();
     }
 }
