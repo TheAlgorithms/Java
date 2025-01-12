@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import static com.thealgorithms.maths.GoldbachConjecture.getPrimeSum;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
