@@ -17,28 +17,23 @@ final class ZigZagPattern {
             return s;
         }
 
-        StringBuilder[] rows = new StringBuilder[numRows];
-        for (int i = 0; i < numRows; i++) {
-            rows[i] = new StringBuilder();
-        }
-
+        char[] result = new char[s.length()];
         int index = 0;
-        while (index < s.length()) {
-            for (int i = 0; i < numRows && index < s.length(); i++) {
-                rows[i].append(s.charAt(index));
-                index++;
-            }
-            for (int i = numRows - 2; i >= 1 && index < s.length(); i--) {
-                rows[i].append(s.charAt(index));
-                index++;
+
+        // Cycle length for zigzag traversal
+        int cycleLength = 2 * numRows - 2;
+
+        for (int row = 0; row < numRows; row++) {
+            for (int j = row; j < s.length(); j += cycleLength) {
+                result[index++] = s.charAt(j);
+
+                int diagonal = j + cycleLength - 2 * row;
+                if (row > 0 && row < numRows - 1 && diagonal < s.length()) {
+                    result[index++] = s.charAt(diagonal);
+                }
             }
         }
 
-        StringBuilder result = new StringBuilder();
-        for (StringBuilder row : rows) {
-            result.append(row);
-        }
-
-        return result.toString();
+        return new String(result);
     }
 }
