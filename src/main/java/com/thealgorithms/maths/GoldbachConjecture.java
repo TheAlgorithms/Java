@@ -16,7 +16,7 @@ public final class GoldbachConjecture {
     private GoldbachConjecture() {
     }
 
-    public static String getPrimeSum(int number){
+    public static String getPrimeSum(int number) {
         String s1;
         if (number % 2 == 0 && number > 2) {
             for (int i = 0; i <= number / 2; i++) {
