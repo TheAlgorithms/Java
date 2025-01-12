@@ -21,15 +21,19 @@ public final class Upper {
      * @return the {@code String}, converted to uppercase.
      */
     public static String toUpperCase(String s) {
-        if (s == null || s.isEmpty()) {
+        if (s == null) {
+            throw new IllegalArgumentException("Input string connot be null");
+        }
+        if (s.isEmpty()) {
             return s;
         }
-        char[] values = s.toCharArray();
-        for (int i = 0; i < values.length; ++i) {
-            if (Character.isLetter(values[i]) && Character.isLowerCase(values[i])) {
-                values[i] = Character.toUpperCase(values[i]);
+        StringBuilder result = new StringBuilder(s);
+        for (int i = 0; i < result.length(); ++i) {
+            char currentChar = result.charAt(i);
+            if (Character.isLetter(currentChar) && Character.isLowerCase(currentChar)) {
+                result.setCharAt(i, Character.toUpperCase(currentChar));
             }
         }
-        return new String(values);
+        return result.toString();
     }
 }
