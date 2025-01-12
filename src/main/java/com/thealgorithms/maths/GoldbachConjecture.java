@@ -1,5 +1,6 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.PrimeCheck.isPrime;
 import static java.lang.String.format;
 
 import java.util.Scanner;
@@ -15,23 +16,17 @@ public final class GoldbachConjecture {
     private GoldbachConjecture() {
     }
 
-    /**
-     * Checks whether a number is prime or not
-     * @param n the input number
-     * @return true if n is prime, else return false
-     */
-    private static boolean isPrime(int n) {
-        int i;
-        if (n <= 1 || (n % 2 == 0 && n != 2)) {
-            return false;
-        } else {
-            for (i = 3; i < Math.sqrt(n); i += 2) {
-                if (n % i == 0) {
-                    return false;
+    public static String getPrimeSum(int number){
+        String s1;
+        if (number % 2 == 0 && number > 2) {
+            for (int i = 0; i <= number / 2; i++) {
+                if (isPrime(i) && isPrime(number - i)) {
+                    s1 = format("%d + %d = %d", i, number - i, number);
+                    return s1;
                 }
             }
         }
-        return true;
+        return "Wrong Input";
     }
 
     public static void main(String[] args) {
@@ -39,17 +34,7 @@ public final class GoldbachConjecture {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number");
         int n = scanner.nextInt();
-        int flag = 0;
-
-        if (n % 2 == 0 && n > 2) {
-            for (int i = 0; i <= n / 2 && flag == 0; i++) {
-                if (isPrime(i) && isPrime(n - i)) {
-                    System.out.println(format("%d + %d = %d", i, n - i, n));
-                    flag = 1;
-                }
-            }
-        } else {
-            System.out.println("Wrong Input");
-        }
+        String s = getPrimeSum(n);
+        System.out.println(s);
     }
 }
