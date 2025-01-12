@@ -1,9 +1,8 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.GoldbachConjecture.getPrimeSum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static com.thealgorithms.maths.GoldbachConjecture.getPrimeSum;
 
 public class GoldbachConjectureTest {
     @Test
