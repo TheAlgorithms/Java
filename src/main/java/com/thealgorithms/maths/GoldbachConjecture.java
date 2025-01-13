@@ -1,9 +1,6 @@
 package com.thealgorithms.maths;
 
 import static com.thealgorithms.maths.PrimeCheck.isPrime;
-import static java.lang.String.format;
-
-import java.util.Scanner;
 
 /**
  * This is a representation of the unsolved problem of Goldbach's Projection, according to which every
@@ -15,26 +12,19 @@ import java.util.Scanner;
 public final class GoldbachConjecture {
     private GoldbachConjecture() {
     }
-
-    public static String getPrimeSum(int number) {
-        String s1;
-        if (number % 2 == 0 && number > 2) {
-            for (int i = 0; i <= number / 2; i++) {
-                if (isPrime(i) && isPrime(number - i)) {
-                    s1 = format("%d + %d = %d", i, number - i, number);
-                    return s1;
-                }
-            }
-        }
-        return "Wrong Input";
+    public record Result(int number1, int number2) {
     }
 
-    public static void main(String[] args) {
+    public static Result getPrimeSum(int number) {
+        if (number <= 2 || number % 2 != 0) {
+            throw new IllegalArgumentException("Number must be even and greater than 2.");
+        }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number");
-        int n = scanner.nextInt();
-        String s = getPrimeSum(n);
-        System.out.println(s);
+        for (int i = 0; i <= number / 2; i++) {
+            if (isPrime(i) && isPrime(number - i)) {
+                return new Result(i, number - i);
+            }
+        }
+        throw new IllegalStateException("No valid prime sum found."); // Should not occur
     }
 }
