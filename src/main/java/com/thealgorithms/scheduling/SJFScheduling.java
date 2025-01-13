@@ -14,6 +14,18 @@ public class SJFScheduling {
     protected ArrayList<ProcessDetails> processes;
     protected ArrayList<String> schedule;
 
+    private static void sortProcessesByArrivalTime(List<ProcessDetails> processes) {
+        for (int i = 0; i < processes.size(); i++) {
+            for (int j = i + 1; j < processes.size() - 1; j++) {
+                if (processes.get(j).getArrivalTime() > processes.get(j + 1).getArrivalTime()) {
+                    final var temp = processes.get(j);
+                    processes.set(j, processes.get(j + 1));
+                    processes.set(j + 1, temp);
+                }
+            }
+        }
+    }
+
     /**
      * a simple constructor
      * @param processes a list of processes the user wants to schedule
@@ -22,22 +34,10 @@ public class SJFScheduling {
     SJFScheduling(final ArrayList<ProcessDetails> processes) {
         this.processes = processes;
         schedule = new ArrayList<>();
-        sortByArrivalTime();
+        sortProcessesByArrivalTime(this.processes);
     }
     protected void sortByArrivalTime() {
-        int size = processes.size();
-        int i;
-        int j;
-        ProcessDetails temp;
-        for (i = 0; i < size; i++) {
-            for (j = i + 1; j < size - 1; j++) {
-                if (processes.get(j).getArrivalTime() > processes.get(j + 1).getArrivalTime()) {
-                    temp = processes.get(j);
-                    processes.set(j, processes.get(j + 1));
-                    processes.set(j + 1, temp);
-                }
-            }
-        }
+        sortProcessesByArrivalTime(processes);
     }
 
     /**
