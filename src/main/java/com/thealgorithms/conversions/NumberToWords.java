@@ -9,16 +9,16 @@ import java.math.BigDecimal;
  has you covered.
  *
  */
-public class NumberToWords {
+public final class NumberToWords {
 
     private NumberToWords() {
     }
 
-    private static final String[] units = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    private static final String[] UNITS = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
 
-    private static final String[] tens = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+    private static final String[] TENS = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 
-    private static final String[] powers = {"", "Thousand", "Million", "Billion", "Trillion"};
+    private static final String[] POWERS = {"", "Thousand", "Million", "Billion", "Trillion"};
 
     private static final String ZERO = "Zero";
     private static final String POINT = " Point";
@@ -49,7 +49,7 @@ public class NumberToWords {
             result.append(POINT);
             for (char digit : fractionalPartStr.toCharArray()) {
                 int digitValue = Character.getNumericValue(digit);
-                result.append(" ").append(digitValue == 0 ? ZERO : units[digitValue]);
+                result.append(" ").append(digitValue == 0 ? ZERO : UNITS[digitValue]);
             }
         }
 
@@ -72,7 +72,7 @@ public class NumberToWords {
             if (chunk > 0) {
                 String chunkWords = convertChunk(chunk);
                 if (power > 0) {
-                    words.insert(0, powers[power] + " ");
+                    words.insert(0, POWERS[power] + " ");
                 }
                 words.insert(0, chunkWords + " ");
             }
@@ -88,11 +88,11 @@ public class NumberToWords {
         String chunkWords;
 
         if (number < 20) {
-            chunkWords = units[number];
+            chunkWords = UNITS[number];
         } else if (number < 100) {
-            chunkWords = tens[number / 10] + (number % 10 > 0 ? " " + units[number % 10] : "");
+            chunkWords = TENS[number / 10] + (number % 10 > 0 ? " " + UNITS[number % 10] : "");
         } else {
-            chunkWords = units[number / 100] + " Hundred" + (number % 100 > 0 ? " " + convertChunk(number % 100) : "");
+            chunkWords = UNITS[number / 100] + " Hundred" + (number % 100 > 0 ? " " + convertChunk(number % 100) : "");
         }
 
         return chunkWords;
