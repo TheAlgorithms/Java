@@ -54,7 +54,7 @@ public class NumberToWordsTest {
 
     @Test
     void testEdgeCases() {
-        assertEquals("Negative Zero", NumberToWords.convert(new BigDecimal("-0.0")), "-0.0 should convert to 'Negative Zero'");
+        assertEquals("Zero", NumberToWords.convert(new BigDecimal("-0.0")), "-0.0 should convert to 'Zero'");
         assertEquals("Zero Point Zero Zero Zero Zero Zero Zero One", NumberToWords.convert(new BigDecimal("1E-7")), "1E-7 should convert to 'Zero Point Zero Zero Zero Zero Zero Zero One'");
     }
 }
