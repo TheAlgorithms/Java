@@ -5,6 +5,7 @@
       * com
         * thealgorithms
           * audiofilters
+            * [EMAFilter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/audiofilters/EMAFilter.java)
             * [IIRFilter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/audiofilters/IIRFilter.java)
           * backtracking
             * [AllPathsFromSourceToTarget](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/backtracking/AllPathsFromSourceToTarget.java)
@@ -147,6 +148,7 @@
               * [ConnectedComponent](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/ConnectedComponent.java)
               * [Cycles](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/Cycles.java)
               * [DijkstraAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithm.java)
+              * [DijkstraOptimizedAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/DijkstraOptimizedAlgorithm.java)
               * [EdmondsBlossomAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithm.java)
               * [FloydWarshall](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/FloydWarshall.java)
               * [FordFulkerson](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/FordFulkerson.java)
@@ -404,6 +406,7 @@
             * [GCD](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/GCD.java)
             * [GCDRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/GCDRecursion.java)
             * [GenericRoot](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/GenericRoot.java)
+            * [GoldbachConjecture](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/GoldbachConjecture.java)
             * [HarshadNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/HarshadNumber.java)
             * [HeronsFormula](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/HeronsFormula.java)
             * [JosephusProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/JosephusProblem.java)
@@ -470,21 +473,24 @@
             * [VampireNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/VampireNumber.java)
             * [VectorCrossProduct](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/VectorCrossProduct.java)
             * [Volume](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Volume.java)
-          * matrixexponentiation
-            * [Fibonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrixexponentiation/Fibonacci.java)
+          * matrix
+            * [InverseOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/InverseOfMatrix.java)
+            * matrixexponentiation
+              * [Fibonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/matrixexponentiation/Fibonacci.java)
+            * [MatrixTranspose](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/MatrixTranspose.java)
+            * [MedianOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/MedianOfMatrix.java)
+            * [MirrorOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/MirrorOfMatrix.java)
+            * [PrintAMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/PrintAMatrixInSpiralOrder.java)
+            * [RotateMatrixBy90Degrees](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/RotateMatrixBy90Degrees.java)
           * misc
             * [ColorContrastRatio](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/ColorContrastRatio.java)
-            * [InverseOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/InverseOfMatrix.java)
             * [MapReduce](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MapReduce.java)
-            * [MatrixTranspose](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MatrixTranspose.java)
-            * [MedianOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfMatrix.java)
             * [MedianOfRunningArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArray.java)
             * [MedianOfRunningArrayByte](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayByte.java)
             * [MedianOfRunningArrayDouble](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayDouble.java)
             * [MedianOfRunningArrayFloat](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayFloat.java)
             * [MedianOfRunningArrayInteger](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayInteger.java)
             * [MedianOfRunningArrayLong](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MedianOfRunningArrayLong.java)
-            * [MirrorOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/MirrorOfMatrix.java)
             * [PalindromePrime](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromePrime.java)
             * [PalindromeSinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/PalindromeSinglyLinkedList.java)
             * [RangeInSortedArray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/misc/RangeInSortedArray.java)
@@ -508,7 +514,6 @@
             * [CRCAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/CRCAlgorithm.java)
             * [Damm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Damm.java)
             * [Dijkstra](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Dijkstra.java)
-            * [FibbonaciSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/FibbonaciSeries.java)
             * [FloydTriangle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/FloydTriangle.java)
             * [GaussLegendre](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/GaussLegendre.java)
             * [HappyNumbersSeq](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/HappyNumbersSeq.java)
@@ -529,18 +534,17 @@
             * [PageRank](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PageRank.java)
             * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PasswordGen.java)
             * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PerlinNoise.java)
-            * [PrintAMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PrintAMatrixInSpiralOrder.java)
             * [QueueUsingTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/QueueUsingTwoStacks.java)
             * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RemoveDuplicateFromString.java)
             * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ReverseStackUsingRecursion.java)
-            * [RotateMatrixBy90Degrees](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RotateMatrixBy90Degrees.java)
             * [SkylineProblem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/SkylineProblem.java)
             * [Sudoku](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Sudoku.java)
             * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TowerOfHanoi.java)
             * [TwoPointers](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/TwoPointers.java)
             * [Verhoeff](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/Verhoeff.java)
-          * Recursion
-            * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/Recursion/GenerateSubsets.java)
+          * recursion
+            * [FibonacciSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/recursion/FibonacciSeries.java)
+            * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/recursion/GenerateSubsets.java)
           * scheduling
             * [AgingScheduling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/scheduling/AgingScheduling.java)
             * diskscheduling
@@ -718,6 +722,7 @@
       * com
         * thealgorithms
           * audiofilters
+            * [EMAFilterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/audiofilters/EMAFilterTest.java)
             * [IIRFilterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/audiofilters/IIRFilterTest.java)
           * backtracking
             * [AllPathsFromSourceToTargetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/backtracking/AllPathsFromSourceToTargetTest.java)
@@ -849,6 +854,7 @@
               * [BipartiteGraphDFSTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BipartiteGraphDFSTest.java)
               * [BoruvkaAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/BoruvkaAlgorithmTest.java)
               * [DijkstraAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraAlgorithmTest.java)
+              * [DijkstraOptimizedAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/DijkstraOptimizedAlgorithmTest.java)
               * [EdmondsBlossomAlgorithmTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/EdmondsBlossomAlgorithmTest.java)
               * [FloydWarshallTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FloydWarshallTest.java)
               * [FordFulkersonTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/graphs/FordFulkersonTest.java)
@@ -1070,6 +1076,7 @@
             * [GCDRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GCDRecursionTest.java)
             * [GCDTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GCDTest.java)
             * [GenericRootTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GenericRootTest.java)
+            * [GoldbachConjectureTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/GoldbachConjectureTest.java)
             * [HarshadNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HarshadNumberTest.java)
             * [HeronsFormulaTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/HeronsFormulaTest.java)
             * [JosephusProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/JosephusProblemTest.java)
@@ -1126,15 +1133,18 @@
             * [TestArmstrong](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/TestArmstrong.java)
             * [TwinPrimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/TwinPrimeTest.java)
             * [UniformNumbersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/UniformNumbersTest.java)
+            * [VampireNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/VampireNumberTest.java)
             * [VolumeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/VolumeTest.java)
+          * matrix
+            * [InverseOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/InverseOfMatrixTest.java)
+            * [MatrixTransposeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MatrixTransposeTest.java)
+            * [MedianOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MedianOfMatrixTest.java)
+            * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MirrorOfMatrixTest.java)
+            * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/TestPrintMatrixInSpiralOrder.java)
           * misc
             * [ColorContrastRatioTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/ColorContrastRatioTest.java)
-            * [InverseOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/InverseOfMatrixTest.java)
             * [MapReduceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MapReduceTest.java)
-            * [MatrixTransposeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MatrixTransposeTest.java)
-            * [MedianOfMatrixtest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfMatrixtest.java)
             * [MedianOfRunningArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MedianOfRunningArrayTest.java)
-            * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/MirrorOfMatrixTest.java)
             * [PalindromePrimeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromePrimeTest.java)
             * [PalindromeSinglyLinkedListTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/PalindromeSinglyLinkedListTest.java)
             * [RangeInSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/RangeInSortedArrayTest.java)
@@ -1171,12 +1181,12 @@
             * [ReverseStackUsingRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ReverseStackUsingRecursionTest.java)
             * [SkylineProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SkylineProblemTest.java)
             * [SudokuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SudokuTest.java)
-            * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TowerOfHanoiTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TowerOfHanoiTest.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
-          * Recursion
-            * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/Recursion/GenerateSubsetsTest.java)
+          * recursion
+            * [FibonacciSeriesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/recursion/FibonacciSeriesTest.java)
+            * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/recursion/GenerateSubsetsTest.java)
           * scheduling
             * [AgingSchedulingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/scheduling/AgingSchedulingTest.java)
             * diskscheduling
