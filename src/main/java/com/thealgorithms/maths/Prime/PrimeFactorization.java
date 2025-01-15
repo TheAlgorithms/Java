@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.Prime;
 
 /*
  * Authors:

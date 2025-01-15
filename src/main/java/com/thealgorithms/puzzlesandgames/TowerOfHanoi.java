@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.puzzlesandgames;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * Space Complexity: O(n) - Linear space complexity due to the recursion stack.
  * Wikipedia: https://en.wikipedia.org/wiki/Tower_of_Hanoi
  */
-final class TowerOfHanoi {
+class TowerOfHanoi {
 
     private TowerOfHanoi() {
     }

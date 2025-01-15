@@ -1,4 +1,6 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.matrix;
+
+import static com.thealgorithms.matrix.utils.MatrixUtil.validateInputMatrix;
 
 /**
  * This class provides a method to compute the rank of a matrix.
@@ -61,47 +63,6 @@ public final class MatrixRank {
             System.arraycopy(matrix[rowIndex], 0, matrixCopy[rowIndex], 0, numColumns);
         }
         return matrixCopy;
-    }
-
-    private static void validateInputMatrix(double[][] matrix) {
-        if (matrix == null) {
-            throw new IllegalArgumentException("The input matrix cannot be null");
-        }
-        if (matrix.length == 0) {
-            throw new IllegalArgumentException("The input matrix cannot be empty");
-        }
-        if (!hasValidRows(matrix)) {
-            throw new IllegalArgumentException("The input matrix cannot have null or empty rows");
-        }
-        if (isJaggedMatrix(matrix)) {
-            throw new IllegalArgumentException("The input matrix cannot be jagged");
-        }
-    }
-
-    private static boolean hasValidRows(double[][] matrix) {
-        for (double[] row : matrix) {
-            if (row == null || row.length == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * @brief Checks if the input matrix is a jagged matrix.
-     * Jagged matrix is a matrix where the number of columns in each row is not the same.
-     *
-     * @param matrix The input matrix
-     * @return True if the input matrix is a jagged matrix, false otherwise
-     */
-    private static boolean isJaggedMatrix(double[][] matrix) {
-        int numColumns = matrix[0].length;
-        for (double[] row : matrix) {
-            if (row.length != numColumns) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

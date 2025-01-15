@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.Prime;
 
 /*
  * Java program for liouville lambda function
@@ -24,7 +24,7 @@ public final class LiouvilleLambdaFunction {
      *         -1 when number has odd number of prime factors
      * @throws IllegalArgumentException when number is negative
      */
-    static int liouvilleLambda(int number) {
+    public static int liouvilleLambda(int number) {
         if (number <= 0) {
             // throw exception when number is less than or is zero
             throw new IllegalArgumentException("Number must be greater than zero.");

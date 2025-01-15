@@ -1,10 +1,12 @@
-package com.thealgorithms.maths;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+package com.thealgorithms.matrix;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+
+import com.thealgorithms.matrix.utils.MatrixUtil;
 
 class MatrixUtilTest {
 

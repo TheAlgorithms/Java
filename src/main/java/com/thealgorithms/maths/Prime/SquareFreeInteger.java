@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.Prime;
 /*
  * Java program for Square free integer
  * This class has a function which checks

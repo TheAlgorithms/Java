@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+import com.thealgorithms.maths.Prime.SquareFreeInteger;
+
 class SquareFreeIntegerTest {
 
     @Test
