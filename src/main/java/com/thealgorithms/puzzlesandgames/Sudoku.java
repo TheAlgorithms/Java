@@ -9,6 +9,9 @@ package com.thealgorithms.puzzlesandgames;
  */
 final class Sudoku {
 
+    private Sudoku() {
+    }
+
     /**
      * Checks if placing a number in a specific position on the Sudoku board is safe.
      * The number is considered safe if it does not violate any of the Sudoku rules:

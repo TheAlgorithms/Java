@@ -20,7 +20,7 @@ public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
 
-    public static double[][] mirrorMatrix(final double[][] originalMatrix) {       
+    public static double[][] mirrorMatrix(final double[][] originalMatrix) {
         MatrixUtil.validateInputMatrix(originalMatrix);
 
         int numRows = originalMatrix.length;
@@ -32,5 +32,5 @@ public final class MirrorOfMatrix {
             mirroredMatrix[i] = MatrixUtil.reverseRow(originalMatrix[i]);
         }
         return mirroredMatrix;
-    }  
+    }
 }
