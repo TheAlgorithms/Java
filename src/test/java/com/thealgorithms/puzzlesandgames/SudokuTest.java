@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.thealgorithms.puzzlesandgames.Sudoku;
-
 public class SudokuTest {
 
     @Test

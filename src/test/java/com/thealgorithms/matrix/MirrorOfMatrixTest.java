@@ -42,7 +42,8 @@ class MirrorOfMatrixTest {
     void testMirrorMatrixNullInput() {
         double[][] originalMatrix = null;
         Exception e = assertThrows(IllegalArgumentException.class, () -> MirrorOfMatrix.mirrorMatrix(originalMatrix));
-        assertEquals("The input matrix cannot be null", e.getMessage());    }
+        assertEquals("The input matrix cannot be null", e.getMessage());    
+    }
 
     @Test
     void testMirrorMatrixThrows() {
