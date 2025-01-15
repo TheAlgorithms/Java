@@ -1,9 +1,12 @@
 package com.thealgorithms.matrix;
 
 // Problem Statement
+<<<<<<< HEAD
 
 import com.thealgorithms.matrix.utils.MatrixUtil;
 
+=======
+>>>>>>> 754bf6c5f8f55b758bdee2667f6cadf4f0ab659f
 /*
 We have given an array of m x n (where m is the number of rows and n is the number of columns).
 Print the new matrix in such a way that the new matrix is the mirror image of the original matrix.
@@ -20,12 +23,26 @@ public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
 
+<<<<<<< HEAD
     public static double[][] mirrorMatrix(final double[][] originalMatrix) {       
         MatrixUtil.validateInputMatrix(originalMatrix);
+=======
+    public static int[][] mirrorMatrix(final int[][] originalMatrix) {
+        if (originalMatrix == null) {
+            // Handle invalid input
+            return null;
+        }
+        if (originalMatrix.length == 0) {
+            return new int[0][0];
+        }
+
+        checkInput(originalMatrix);
+>>>>>>> 754bf6c5f8f55b758bdee2667f6cadf4f0ab659f
 
         int numRows = originalMatrix.length;
         int numCols = originalMatrix[0].length;
 
+<<<<<<< HEAD
         double[][] mirroredMatrix = new double[numRows][numCols];
 
         for (int i = 0; i < numRows; i++) {
@@ -33,4 +50,29 @@ public final class MirrorOfMatrix {
         }
         return mirroredMatrix;
     }  
+=======
+        int[][] mirroredMatrix = new int[numRows][numCols];
+
+        for (int i = 0; i < numRows; i++) {
+            mirroredMatrix[i] = reverseRow(originalMatrix[i]);
+        }
+        return mirroredMatrix;
+    }
+    private static int[] reverseRow(final int[] inRow) {
+        int[] res = new int[inRow.length];
+        for (int i = 0; i < inRow.length; ++i) {
+            res[i] = inRow[inRow.length - 1 - i];
+        }
+        return res;
+    }
+
+    private static void checkInput(final int[][] matrix) {
+        // Check if all rows have the same number of columns
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i].length != matrix[0].length) {
+                throw new IllegalArgumentException("The input is not a matrix.");
+            }
+        }
+    }
+>>>>>>> 754bf6c5f8f55b758bdee2667f6cadf4f0ab659f
 }

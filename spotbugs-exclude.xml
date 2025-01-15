@@ -115,9 +115,6 @@
         <Bug pattern="BL_BURYING_LOGIC" />
     </Match>
     <Match>
-        <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS" />
-    </Match>
-    <Match>
         <Bug pattern="UTWR_USE_TRY_WITH_RESOURCES" />
     </Match>
     <Match>

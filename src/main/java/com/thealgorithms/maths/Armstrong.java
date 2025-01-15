@@ -10,6 +10,7 @@ package com.thealgorithms.maths;
  * An Armstrong number is often called a Narcissistic number.
  *
  * @author satyabarghav
+ * @modifier rahul katteda - (13/01/2025) - [updated the logic for getting total number of digits]
  */
 public class Armstrong {
 
@@ -20,14 +21,16 @@ public class Armstrong {
      * @return {@code true} if the given number is an Armstrong number, {@code false} otherwise
      */
     public boolean isArmstrong(int number) {
+        if (number < 0) {
+            return false; // Negative numbers cannot be Armstrong numbers
+        }
         long sum = 0;
-        String temp = Integer.toString(number); // Convert the given number to a string
-        int power = temp.length(); // Extract the length of the number (number of digits)
+        int totalDigits = (int) Math.log10(number) + 1; // get the length of the number (number of digits)
         long originalNumber = number;
 
         while (originalNumber > 0) {
             long digit = originalNumber % 10;
-            sum += (long) Math.pow(digit, power); // The digit raised to the power of the number of digits and added to the sum.
+            sum += (long) Math.pow(digit, totalDigits); // The digit raised to the power of total number of digits and added to the sum.
             originalNumber /= 10;
         }
 
