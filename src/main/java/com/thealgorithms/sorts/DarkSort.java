@@ -19,6 +19,7 @@ class DarkSort implements SortAlgorithm {
      * @return sorted array
      */
     @Override
+
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
         if (unsorted == null || unsorted.length <= 1) {
             return unsorted;

@@ -2,7 +2,8 @@ package com.thealgorithms.sorts;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class DarkSortTest {
 
@@ -60,4 +61,15 @@ class DarkSortTest {
 
         assertArrayEquals(expected, sorted);
     }
+
+    @Test
+    void testNullArray() {
+        Integer[] unsorted = null;
+
+        DarkSort darkSort = new DarkSort();
+        Integer[] sorted = darkSort.sort(unsorted);
+
+        assertNull(sorted, "Sorting a null array should return null");
+    }
+
 }
