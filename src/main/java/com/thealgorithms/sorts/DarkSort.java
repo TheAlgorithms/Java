@@ -1,11 +1,10 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.less;
-
 /**
- * Generic implementation of Dark Sort algorithm.
- * Dark Sort is a conceptual sorting algorithm combining divide-and-conquer
- * and randomized selection principles.
+ * Dark Sort algorithm implementation.
+ *
+ * Dark Sort uses a temporary array to count occurrences of elements and
+ * reconstructs the sorted array based on the counts.
  *
  * @see SortAlgorithm
  */
@@ -19,67 +18,52 @@ class DarkSort implements SortAlgorithm {
      * @return sorted array
      */
     @Override
-
     public <T extends Comparable<T>> T[] sort(T[] unsorted) {
         if (unsorted == null || unsorted.length <= 1) {
             return unsorted;
         }
-        doDarkSort(unsorted, 0, unsorted.length - 1);
-        return unsorted;
-    }
 
-    /**
-     * Recursive function that implements Dark Sort.
-     *
-     * @param arr the array to be sorted
-     * @param left the starting index of the array
-     * @param right the ending index of the array
-     */
-    private <T extends Comparable<T>> void doDarkSort(T[] arr, int left, int right) {
-        if (left >= right) {
-            return;
+        // Dark Sort works only for integers, so we cast and check
+        if (!(unsorted instanceof Integer[])) {
+            throw new IllegalArgumentException("Dark Sort only supports Integer arrays.");
         }
 
-        // Divide the array into two parts using a random pivot
-        int pivotIndex = partition(arr, left, right);
+        Integer[] arr = (Integer[]) unsorted;
+        int max = findMax(arr); // Find the maximum value in the array
 
-        // Recursively sort both halves
-        doDarkSort(arr, left, pivotIndex - 1);
-        doDarkSort(arr, pivotIndex + 1, right);
-    }
+        // Create a temporary array for counting occurrences
+        int[] temp = new int[max + 1];
 
-    /**
-     * Partitions the array into two halves around a pivot element.
-     *
-     * @param arr the array to partition
-     * @param left the starting index
-     * @param right the ending index
-     * @return the index of the pivot element
-     */
-    private <T extends Comparable<T>> int partition(T[] arr, int left, int right) {
-        T pivot = arr[right]; // Choosing the last element as pivot
-        int i = left - 1;
+        // Count occurrences of each element
+        for (int value : arr) {
+            temp[value]++;
+        }
 
-        for (int j = left; j < right; j++) {
-            if (less(arr[j], pivot)) {
-                i++;
-                swap(arr, i, j);
+        // Reconstruct the sorted array
+        int index = 0;
+        for (int i = 0; i < temp.length; i++) {
+            while (temp[i] > 0) {
+                arr[index++] = i;
+                temp[i]--;
             }
         }
-        swap(arr, i + 1, right);
-        return i + 1;
+
+        return (T[]) arr;
     }
 
     /**
-     * Swaps two elements in the array.
+     * Helper method to find the maximum value in an array.
      *
      * @param arr the array
-     * @param i the index of the first element
-     * @param j the index of the second element
+     * @return the maximum value
      */
-    private <T extends Comparable<T>> void swap(T[] arr, int i, int j) {
-        T temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    private int findMax(Integer[] arr) {
+        int max = arr[0];
+        for (int value : arr) {
+            if (value > max) {
+                max = value;
+            }
+        }
+        return max;
     }
 }

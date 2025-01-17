@@ -1,6 +1,7 @@
 package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
@@ -14,17 +15,6 @@ class DarkSortTest {
 
         DarkSort darkSort = new DarkSort();
         Integer[] sorted = darkSort.sort(unsorted);
-
-        assertArrayEquals(expected, sorted);
-    }
-
-    @Test
-    void testSortWithStrings() {
-        String[] unsorted = {"zebra", "apple", "mango", "banana"};
-        String[] expected = {"apple", "banana", "mango", "zebra"};
-
-        DarkSort darkSort = new DarkSort();
-        String[] sorted = darkSort.sort(unsorted);
 
         assertArrayEquals(expected, sorted);
     }
@@ -63,6 +53,17 @@ class DarkSortTest {
     }
 
     @Test
+    void testDuplicateElementsArray() {
+        Integer[] unsorted = {4, 2, 7, 2, 1, 4};
+        Integer[] expected = {1, 2, 2, 4, 4, 7};
+
+        DarkSort darkSort = new DarkSort();
+        Integer[] sorted = darkSort.sort(unsorted);
+
+        assertArrayEquals(expected, sorted);
+    }
+
+    @Test
     void testNullArray() {
         Integer[] unsorted = null;
 
@@ -70,5 +71,19 @@ class DarkSortTest {
         Integer[] sorted = darkSort.sort(unsorted);
 
         assertNull(sorted, "Sorting a null array should return null");
+    }
+
+    @Test
+    void testNonIntegerArray() {
+        String[] unsorted = {"zebra", "apple", "mango", "banana"};
+
+        DarkSort darkSort = new DarkSort();
+
+        // DarkSort should throw an IllegalArgumentException for non-integer arrays
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> darkSort.sort(unsorted),
+                "DarkSort only supports Integer arrays."
+        );
     }
 }
