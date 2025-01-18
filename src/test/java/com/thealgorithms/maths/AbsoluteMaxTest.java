@@ -27,5 +27,4 @@ public class AbsoluteMaxTest {
         assertEquals(12, AbsoluteMax.getMaxValue(-12, 9, 3, 12, 1));
         assertEquals(12, AbsoluteMax.getMaxValue(12, 9, 3, -12, 1));
     }
-
 }
