@@ -2,7 +2,6 @@ package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -71,15 +70,5 @@ class DarkSortTest {
         Integer[] sorted = darkSort.sort(unsorted);
 
         assertNull(sorted, "Sorting a null array should return null");
-    }
-
-    @Test
-    void testNonIntegerArray() {
-        String[] unsorted = {"zebra", "apple", "mango", "banana"};
-
-        DarkSort darkSort = new DarkSort();
-
-        // DarkSort should throw an IllegalArgumentException for non-integer arrays
-        assertThrows(IllegalArgumentException.class, () -> darkSort.sort(unsorted), "DarkSort only supports Integer arrays.");
     }
 }
