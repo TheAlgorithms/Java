@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.Prime;
 
 /*
  * Java program for mobius function
@@ -25,7 +25,7 @@ public final class MobiusFunction {
      *          0 when number has repeated prime factor
      *         -1 when number has odd number of prime factors
      */
-    static int mobius(int number) {
+    public static int mobius(int number) {
         if (number <= 0) {
             // throw exception when number is less than or is zero
             throw new IllegalArgumentException("Number must be greater than zero.");

@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.puzzlesandgames;
 
 /**
  * A class that provides methods to solve Sudoku puzzles of any n x n size

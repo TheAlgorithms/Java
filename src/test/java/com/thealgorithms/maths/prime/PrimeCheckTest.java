@@ -1,5 +1,6 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.prime;
 
+import com.thealgorithms.maths.Prime.PrimeCheck;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

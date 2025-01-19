@@ -9,6 +9,8 @@ package com.thealgorithms.maths;
  *
  * */
 
+import com.thealgorithms.maths.Prime.PrimeCheck;
+
 public final class TwinPrime {
     private TwinPrime() {
     }
