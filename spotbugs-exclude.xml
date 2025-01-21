@@ -205,4 +205,10 @@
     <Match>
         <Bug pattern="HARD_CODE_KEY" />
     </Match>
+    <!-- Detects hardcoded encryption keys -->
+<Match>
+    <Bug pattern="HARD_CODE_KEY" />
+</Match>
+
 </FindBugsFilter>
+

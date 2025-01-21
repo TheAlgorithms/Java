@@ -25,7 +25,8 @@ body:
   - type: textarea
     id: exceptedbhv
     attributes:
-      label: "Excepted behavior"
+      label: "Expected behavior"
+      #Field ID excepted behaviouy should likely be expected bhv (for "Expected behavior")
       description: "A clear and concise description of what you expected to happen."
     validations:
       required: true
@@ -43,3 +44,12 @@ body:
       description: "Is there anything else we should know about this bug report?"
     validations:
       required: false
+      #Added placeholders to guide users
+      - type: textarea
+  id: context
+  attributes:
+    label: "Additional context"
+    description: "Is there anything else we should know about this bug report?"
+    placeholder: "E.g., recent changes in your setup, related logs, etc."
+    labels: ["bug", "triage-needed"] #added more labels
+
