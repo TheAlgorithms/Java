@@ -2,7 +2,6 @@ package com.thealgorithms.matrix.matrixexponentiation;
 
 import com.thealgorithms.matrix.utils.MatrixUtil;
 import java.math.BigDecimal;
-import java.util.Scanner;
 
 /**
  * @author Anirudh Buvanesh (https://github.com/anirudhb11) For more information

@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public final class WordBoggle {
-    
+
     private WordBoggle() {
     }
     /**

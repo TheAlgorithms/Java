@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
  * @author: caos321
  * @date: 31 October 2021 (Sunday)
  */
-public class MatrixUtil {
+public final class MatrixUtil {
 
     private MatrixUtil() {
     }
@@ -40,7 +40,7 @@ public class MatrixUtil {
             throw new IllegalArgumentException("The input matrix cannot be jagged");
         }
     }
-    
+
     private static boolean hasValidRows(double[][] matrix) {
         for (double[] row : matrix) {
             if (row == null || row.length == 0) {
