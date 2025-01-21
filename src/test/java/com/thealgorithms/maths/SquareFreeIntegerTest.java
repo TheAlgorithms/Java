@@ -1,12 +1,11 @@
 package com.thealgorithms.maths;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import org.junit.jupiter.api.Test;
 
 import com.thealgorithms.maths.Prime.SquareFreeInteger;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class SquareFreeIntegerTest {
 
