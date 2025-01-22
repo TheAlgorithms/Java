@@ -18,8 +18,6 @@ public final class Fibonacci {
 
     private static final BigDecimal[][] FIB_MATRIX = {{ONE, ONE}, {ONE, ZERO}};
     private static final BigDecimal[][] IDENTITY_MATRIX = {{ONE, ZERO}, {ZERO, ONE}};
-    // First 2 fibonacci numbers
-    private static final BigDecimal[][] BASE_FIB_NUMBERS = {{ONE}, {ZERO}};
 
     /**
      * Calculates the fibonacci number using matrix exponentiaition technique
