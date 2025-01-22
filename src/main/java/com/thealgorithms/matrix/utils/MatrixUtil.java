@@ -19,11 +19,11 @@ public final class MatrixUtil {
     }
 
     private static boolean hasEqualSizes(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
-        return (isValid(matrix1) && isValid(matrix2) && matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length);
+        return isValid(matrix1) && isValid(matrix2) && matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length;
     }
 
     private static boolean canMultiply(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
-        return (isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length);
+        return isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length;
     }
 
     public static void validateInputMatrix(double[][] matrix) {
