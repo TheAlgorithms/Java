@@ -19,4 +19,12 @@ public class AbsoluteMaxTest {
     void testGetMaxValueWithNoArguments() {
         assertThrows(IllegalArgumentException.class, AbsoluteMax::getMaxValue);
     }
+
+    @Test
+    void testGetMaxValueWithSameAbsoluteValues() {
+        assertEquals(5, AbsoluteMax.getMaxValue(-5, 5));
+        assertEquals(5, AbsoluteMax.getMaxValue(5, -5));
+        assertEquals(12, AbsoluteMax.getMaxValue(-12, 9, 3, 12, 1));
+        assertEquals(12, AbsoluteMax.getMaxValue(12, 9, 3, -12, 1));
+    }
 }
