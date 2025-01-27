@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.matrix.utils;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
  * @date: 31 October 2021 (Sunday)
  */
 public final class MatrixUtil {
+
     private MatrixUtil() {
     }
 
@@ -18,11 +19,52 @@ public final class MatrixUtil {
     }
 
     private static boolean hasEqualSizes(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
-        return (isValid(matrix1) && isValid(matrix2) && matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length);
+        return isValid(matrix1) && isValid(matrix2) && matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length;
     }
 
     private static boolean canMultiply(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2) {
-        return (isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length);
+        return isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length;
+    }
+
+    public static void validateInputMatrix(double[][] matrix) {
+        if (matrix == null) {
+            throw new IllegalArgumentException("The input matrix cannot be null");
+        }
+        if (matrix.length == 0) {
+            throw new IllegalArgumentException("The input matrix cannot be empty");
+        }
+        if (!hasValidRows(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot have null or empty rows");
+        }
+        if (isJaggedMatrix(matrix)) {
+            throw new IllegalArgumentException("The input matrix cannot be jagged");
+        }
+    }
+
+    private static boolean hasValidRows(double[][] matrix) {
+        for (double[] row : matrix) {
+            if (row == null || row.length == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @brief Checks if the input matrix is a jagged matrix.
+     * Jagged matrix is a matrix where the number of columns in each row is not the same.
+     *
+     * @param matrix The input matrix
+     * @return True if the input matrix is a jagged matrix, false otherwise
+     */
+    private static boolean isJaggedMatrix(double[][] matrix) {
+        int numColumns = matrix[0].length;
+        for (double[] row : matrix) {
+            if (row.length != numColumns) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Optional<BigDecimal[][]> operate(final BigDecimal[][] matrix1, final BigDecimal[][] matrix2, final BiFunction<BigDecimal, BigDecimal, BigDecimal> operation) {
@@ -79,5 +121,13 @@ public final class MatrixUtil {
                                                                   .reduce(BigDecimal.ZERO, BigDecimal::add)));
 
         return Optional.of(result);
+    }
+
+    public static double[] reverseRow(final double[] inRow) {
+        double[] res = new double[inRow.length];
+        for (int i = 0; i < inRow.length; ++i) {
+            res[i] = inRow[inRow.length - 1 - i];
+        }
+        return res;
     }
 }

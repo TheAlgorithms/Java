@@ -1,4 +1,4 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.puzzlesandgames;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 public final class WordBoggle {
+
     private WordBoggle() {
     }
-
     /**
      * O(nm * 8^s + ws) time where n = width of boggle board, m = height of
      * boggle board, s = length of longest word in string array, w = length of

@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.puzzlesandgames;
 
 import java.util.List;
 

@@ -1,6 +1,9 @@
 package com.thealgorithms.matrix;
 
 // Problem Statement
+
+import com.thealgorithms.matrix.utils.MatrixUtil;
+
 /*
 We have given an array of m x n (where m is the number of rows and n is the number of columns).
 Print the new matrix in such a way that the new matrix is the mirror image of the original matrix.
@@ -17,41 +20,17 @@ public final class MirrorOfMatrix {
     private MirrorOfMatrix() {
     }
 
-    public static int[][] mirrorMatrix(final int[][] originalMatrix) {
-        if (originalMatrix == null) {
-            // Handle invalid input
-            return null;
-        }
-        if (originalMatrix.length == 0) {
-            return new int[0][0];
-        }
-
-        checkInput(originalMatrix);
+    public static double[][] mirrorMatrix(final double[][] originalMatrix) {
+        MatrixUtil.validateInputMatrix(originalMatrix);
 
         int numRows = originalMatrix.length;
         int numCols = originalMatrix[0].length;
 
-        int[][] mirroredMatrix = new int[numRows][numCols];
+        double[][] mirroredMatrix = new double[numRows][numCols];
 
         for (int i = 0; i < numRows; i++) {
-            mirroredMatrix[i] = reverseRow(originalMatrix[i]);
+            mirroredMatrix[i] = MatrixUtil.reverseRow(originalMatrix[i]);
         }
         return mirroredMatrix;
-    }
-    private static int[] reverseRow(final int[] inRow) {
-        int[] res = new int[inRow.length];
-        for (int i = 0; i < inRow.length; ++i) {
-            res[i] = inRow[inRow.length - 1 - i];
-        }
-        return res;
-    }
-
-    private static void checkInput(final int[][] matrix) {
-        // Check if all rows have the same number of columns
-        for (int i = 1; i < matrix.length; i++) {
-            if (matrix[i].length != matrix[0].length) {
-                throw new IllegalArgumentException("The input is not a matrix.");
-            }
-        }
     }
 }
