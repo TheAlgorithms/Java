@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author  <a href="https://github.com/DenizAltunkapan">Deniz Altunkapan</a>
  */
-public class ConstraintShortestPath {
+public class ConstrainedShortestPath {
 
     /**
      * Represents a graph using an adjacency list.
@@ -57,7 +57,7 @@ public class ConstraintShortestPath {
             return adjacencyList.size();
         }
 
-        public static record Edge(int from, int to, int cost, int resource) {
+        public record Edge(int from, int to, int cost, int resource) {
         }
     }
 
@@ -70,7 +70,7 @@ public class ConstraintShortestPath {
      * @param graph       the graph representing the problem
      * @param maxResource the maximum allowable resource
      */
-    public ConstraintShortestPath(Graph graph, int maxResource) {
+    public ConstrainedShortestPath(Graph graph, int maxResource) {
         this.graph = graph;
         this.maxResource = maxResource;
     }
@@ -97,7 +97,9 @@ public class ConstraintShortestPath {
         // Dynamic Programming: Iterate over resources and nodes
         for (int r = 0; r <= maxResource; r++) {
             for (int u = 0; u < numNodes; u++) {
-                if (dp[r][u] == Integer.MAX_VALUE) continue;
+                if (dp[r][u] == Integer.MAX_VALUE) {
+                    continue;
+                }
                 for (Graph.Edge edge : graph.getEdges(u)) {
                     int v = edge.to();
                     int cost = edge.cost();

@@ -1,11 +1,11 @@
 package com.thealgorithms.graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.thealgorithms.graph.ConstraintShortestPath.*;
+import com.thealgorithms.graph.ConstrainedShortestPath.Graph;
 import org.junit.jupiter.api.Test;
 
-public class ConstraintShortestPathTest {
+public class ConstrainedShortestPathTest {
 
     /**
      * Tests a simple linear graph to verify if the solver calculates the shortest path correctly.
@@ -18,7 +18,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(1, 2, 3, 2);
 
         int maxResource = 5;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(5, solver.solve(0, 2));
     }
@@ -34,7 +34,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(1, 2, 3, 6);
 
         int maxResource = 5;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(-1, solver.solve(0, 2));
     }
@@ -52,7 +52,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(2, 3, 3, 2);
 
         int maxResource = 3;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(5, solver.solve(0, 3));
     }
@@ -68,7 +68,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(1, 2, 3, 2);
 
         int maxResource = 5;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(5, solver.solve(0, 2));
     }
@@ -84,7 +84,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(2, 3, 3, 2);
 
         int maxResource = 5;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(-1, solver.solve(0, 3));
     }
@@ -102,7 +102,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(1, 3, 4, 2);
 
         int maxResource = 3;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(6, solver.solve(0, 3));
     }
@@ -120,7 +120,7 @@ public class ConstraintShortestPathTest {
         }
 
         int maxResource = 1000;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(999, solver.solve(0, nodeCount - 1));
     }
@@ -136,7 +136,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(1, 2, 3, 1);
 
         int maxResource = 5;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(-1, solver.solve(0, 3));
     }
@@ -154,7 +154,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(0, 5, 5, 3);
 
         int maxResource = 10;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(5, solver.solve(0, 5));
     }
@@ -180,7 +180,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(8, 9, 2, 1);
 
         int maxResource = 10;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(19, solver.solve(0, 9));
     }
@@ -194,7 +194,7 @@ public class ConstraintShortestPathTest {
         Graph graph = new Graph(1);
 
         int maxResource = 0;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(0, solver.solve(0, 0));
     }
@@ -211,7 +211,7 @@ public class ConstraintShortestPathTest {
         graph.addEdge(0, 2, 2, 2);
 
         int maxResource = 3;
-        ConstraintShortestPath solver = new ConstraintShortestPath(graph, maxResource);
+        ConstrainedShortestPath solver = new ConstrainedShortestPath(graph, maxResource);
 
         assertEquals(2, solver.solve(0, 2));
     }
