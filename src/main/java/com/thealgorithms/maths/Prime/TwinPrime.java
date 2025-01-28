@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.Prime;
 /*
  * Java program to find 'twin prime' of a prime number
  * Twin Prime: Twin prime of a number n is (n+2)
@@ -8,8 +8,6 @@ package com.thealgorithms.maths;
  * Author: Akshay Dubey (https://github.com/itsAkshayDubey)
  *
  * */
-
-import com.thealgorithms.maths.Prime.PrimeCheck;
 
 public final class TwinPrime {
     private TwinPrime() {
@@ -21,7 +19,7 @@ public final class TwinPrime {
      * @param inputNumber Integer value of which twin prime is to be found
      * @return (number + 2) if number and (number + 2) are prime, -1 otherwise
      */
-    static int getTwinPrime(int inputNumber) {
+    public static int getTwinPrime(int inputNumber) {
 
         // if inputNumber and (inputNumber + 2) are both prime
         // then return (inputNumber + 2) as a result

@@ -1,5 +1,7 @@
 package com.thealgorithms.backtracking;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +19,9 @@ public final class ParenthesesGenerator {
      * @return A list of strings representing valid combinations of parentheses.
      * @throws IllegalArgumentException if n is less than 0.
      */
-    public static List<String> generateParentheses(final int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("The number of pairs of parentheses cannot be negative");
-        }
+    public static List<String> generateParentheses(final int n) {        
+        checkInputIsPositive(n, "The number of pairs of parentheses cannot be negative.");
+
         List<String> result = new ArrayList<>();
         generateParenthesesHelper(result, "", 0, 0, n);
         return result;

@@ -26,9 +26,16 @@ public final class MatrixUtil {
         return isValid(matrix1) && isValid(matrix2) && matrix1[0].length == matrix2.length;
     }
 
+      /**
+     * Validate the transpose of the given matrix.
+     *
+     * @param matrix The matrix to be validated
+     * @throws IllegalArgumentException if the matrix is empty
+     * @throws NullPointerException     if the matrix is null
+     */
     public static void validateInputMatrix(double[][] matrix) {
         if (matrix == null) {
-            throw new IllegalArgumentException("The input matrix cannot be null");
+            throw new NullPointerException("The input matrix cannot be null");
         }
         if (matrix.length == 0) {
             throw new IllegalArgumentException("The input matrix cannot be empty");

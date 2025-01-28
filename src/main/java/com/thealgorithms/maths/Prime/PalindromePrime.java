@@ -1,7 +1,9 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.maths.Prime;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.thealgorithms.maths.ReverseNumber;
 
 public final class PalindromePrime {
     private PalindromePrime() {
@@ -26,15 +28,6 @@ public final class PalindromePrime {
         return true;
     }
 
-    public static int reverse(int n) {
-        int reverse = 0;
-        while (n != 0) {
-            reverse = reverse * 10 + (n % 10);
-            n /= 10;
-        }
-        return reverse;
-    }
-
     public static List<Integer> generatePalindromePrimes(int n) {
         List<Integer> palindromicPrimes = new ArrayList<>();
         if (n <= 0) {
@@ -46,7 +39,7 @@ public final class PalindromePrime {
         int num = 3;
 
         while (count < n) {
-            if (num == reverse(num) && prime(num)) {
+            if (num == ReverseNumber.reverseNumber(num) && prime(num)) {
                 palindromicPrimes.add(num);
                 count++;
             }

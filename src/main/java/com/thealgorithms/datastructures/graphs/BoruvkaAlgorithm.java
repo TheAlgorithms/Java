@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.graphs;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +45,8 @@ final class BoruvkaAlgorithm {
          * @param edges  list of edges
          */
         Graph(final int vertex, final List<Edge> edges) {
-            if (vertex < 0) {
-                throw new IllegalArgumentException("Number of vertices must be positive");
-            }
+            checkInputIsPositive(vertex, "Number of vertices must be positive.");
+
             if (edges == null || edges.isEmpty()) {
                 throw new IllegalArgumentException("Edges list must not be null or empty");
             }

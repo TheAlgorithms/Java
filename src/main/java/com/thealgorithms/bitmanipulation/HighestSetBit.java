@@ -1,5 +1,7 @@
 package com.thealgorithms.bitmanipulation;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 import java.util.Optional;
 
 /**
@@ -34,10 +36,8 @@ public final class HighestSetBit {
      *         Returns {@link Optional#empty()} if the number is 0.
      * @throws IllegalArgumentException if the input number is negative.
      */
-    public static Optional<Integer> findHighestSetBit(int num) {
-        if (num < 0) {
-            throw new IllegalArgumentException("Input cannot be negative");
-        }
+    public static Optional<Integer> findHighestSetBit(int num) {       
+        checkInputIsPositive(num, "Input cannot be negative.");
 
         if (num == 0) {
             return Optional.empty();

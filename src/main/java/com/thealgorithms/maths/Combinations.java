@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 /**
  * @see <a href="https://en.wikipedia.org/wiki/Combination">Combination</a>
  */
@@ -14,9 +16,8 @@ public final class Combinations {
      * @return factorial of given number
      */
     public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
-        }
+        checkInputIsPositive(n, "Input number cannot be negative.");
+
         return n == 0 || n == 1 ? 1 : n * factorial(n - 1);
     }
 

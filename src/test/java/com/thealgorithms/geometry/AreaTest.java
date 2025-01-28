@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.geometry;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

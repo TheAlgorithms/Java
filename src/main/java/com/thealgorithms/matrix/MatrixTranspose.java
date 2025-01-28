@@ -1,5 +1,7 @@
 package com.thealgorithms.matrix;
 
+import static com.thealgorithms.matrix.utils.MatrixUtil.validateInputMatrix;
+
 /**
  *
  *
@@ -28,14 +30,12 @@ public final class MatrixTranspose {
      * @throws NullPointerException     if the matrix is null
      * @return The transposed matrix
      */
-    public static int[][] transpose(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) {
-            throw new IllegalArgumentException("Matrix is empty");
-        }
+    public static double[][] transpose(double[][] matrix) {
+        validateInputMatrix(matrix);
 
         int rows = matrix.length;
         int cols = matrix[0].length;
-        int[][] transposedMatrix = new int[cols][rows];
+        double[][] transposedMatrix = new double[cols][rows];
         for (int i = 0; i < cols; i++) {
             for (int j = 0; j < rows; j++) {
                 transposedMatrix[i][j] = matrix[j][i];

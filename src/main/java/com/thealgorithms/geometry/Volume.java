@@ -1,4 +1,4 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.geometry;
 
 /* Calculate the volume of various shapes.*/
 public final class Volume {

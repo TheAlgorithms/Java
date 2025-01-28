@@ -1,4 +1,6 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.matrix;
+
+import static com.thealgorithms.matrix.utils.MatrixUtil.validateInputMatrix;
 
 /*
  *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements
@@ -21,9 +23,7 @@ final class Sparsity {
      *
      */
     static double sparsity(double[][] mat) {
-        if (mat == null || mat.length == 0) {
-            throw new IllegalArgumentException("Matrix cannot be null or empty");
-        }
+        validateInputMatrix(mat);
 
         int zero = 0;
         // Traversing the matrix to count number of zeroes
