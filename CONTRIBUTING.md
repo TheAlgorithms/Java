@@ -28,4 +28,5 @@ NOTE: *Please avoid opening issues asking to be "assigned" to a particular algor
 
 - Ask any question about how to use the repository in the [TheAlgorithms room in GITTER](https://gitter.im/TheAlgorithms/community?source=orgpage#) or [open a new issue](https://github.com/TheAlgorithms/Java/issues/new)
 
-:+1::tada: That's all you need to know about the process now it's your turn to help us improve the repository, thank you again! :+1::tada:
++1::tada: That's all you need to know about the process now it's your turn to help us improve the repository, thank you again! :+1::tada:
+This is amazing to work with you, wish all luck 
