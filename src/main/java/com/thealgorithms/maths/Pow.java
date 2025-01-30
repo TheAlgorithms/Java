@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 /**
  * A utility class for computing exponentiation (power) of integers.
  * <p>
@@ -24,9 +26,8 @@ public final class Pow {
      * @throws IllegalArgumentException if {@code b} is negative.
      */
     public static long pow(int a, int b) {
-        if (b < 0) {
-            throw new IllegalArgumentException("Exponent must be non-negative.");
-        }
+        checkInputIsPositive(b, "Exponent must be non-negative.");
+
         long result = 1;
         for (int i = 1; i <= b; i++) {
             result *= a;

@@ -1,4 +1,6 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.recursion;
+
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
 
 public final class FactorialRecursion {
     private FactorialRecursion() {
@@ -10,9 +12,8 @@ public final class FactorialRecursion {
      * @return The factorial of the number
      */
     public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("number is negative");
-        }
+        checkInputIsPositive(n, "Input number should be positive.");
+
         return n == 0 || n == 1 ? 1 : n * factorial(n - 1);
     }
 }

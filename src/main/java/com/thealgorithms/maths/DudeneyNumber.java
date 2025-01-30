@@ -6,17 +6,18 @@
  */
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.PerfectCube.getCubeRoot;
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 public final class DudeneyNumber {
     private DudeneyNumber() {
     }
 
     // returns True if the number is a Dudeney number and False if it is not a Dudeney number.
     public static boolean isDudeney(final int n) {
-        if (n <= 0) {
-            throw new IllegalArgumentException("Input must me positive.");
-        }
+        checkInputIsPositive(n, "Input number should be positive.");
         // Calculating Cube Root
-        final int cubeRoot = (int) Math.round(Math.pow(n, 1.0 / 3.0));
+        final int cubeRoot = getCubeRoot(n);
         // If the number is not a perfect cube the method returns false.
         if (cubeRoot * cubeRoot * cubeRoot != n) {
             return false;

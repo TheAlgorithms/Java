@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 public final class Factorial {
     private Factorial() {
     }
@@ -11,9 +13,7 @@ public final class Factorial {
      * @return the factorial of {@code n}
      */
     public static long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("Input number cannot be negative");
-        }
+        checkInputIsPositive(n, "");
         long factorial = 1;
         for (int i = 1; i <= n; ++i) {
             factorial *= i;

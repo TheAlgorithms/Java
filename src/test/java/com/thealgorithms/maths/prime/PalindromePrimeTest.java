@@ -1,9 +1,11 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.maths.prime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static com.thealgorithms.maths.ReverseNumber.reverseNumber;
 
+import com.thealgorithms.maths.Prime.PalindromePrime;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -27,9 +29,9 @@ public class PalindromePrimeTest {
 
     @Test
     public void testReverse() {
-        assertEquals(123, PalindromePrime.reverse(321), "Reverse of 321 should be 123");
-        assertEquals(7, PalindromePrime.reverse(7), "Reverse of 7 should be 7");
-        assertEquals(1221, PalindromePrime.reverse(1221), "Reverse of 1221 should be 1221");
+        assertEquals(123, reverseNumber(321), "Reverse of 321 should be 123");
+        assertEquals(7, reverseNumber(7), "Reverse of 7 should be 7");
+        assertEquals(1221, reverseNumber(1221), "Reverse of 1221 should be 1221");
     }
 
     @Test

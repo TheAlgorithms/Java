@@ -21,13 +21,13 @@ public class MatrixTransposeTest {
 
     @ParameterizedTest(name = "Test case {index}: {2}")
     @MethodSource("provideValidMatrixTestCases")
-    void testValidMatrixTranspose(int[][] input, int[][] expected, String description) {
+    void testValidMatrixTranspose(double[][] input, double[][] expected, String description) {
         assertArrayEquals(expected, MatrixTranspose.transpose(input), description);
     }
 
     @ParameterizedTest(name = "Test case {index}: {1}")
     @MethodSource("provideInvalidMatrixTestCases")
-    void testInvalidMatrixTranspose(int[][] input, String description) {
+    void testInvalidMatrixTranspose(double[][] input, String description) {
         assertThrows(IllegalArgumentException.class, () -> MatrixTranspose.transpose(input), description);
     }
 }

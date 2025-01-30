@@ -1,4 +1,6 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.geometry;
+
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
 
 /**
  * Find the area of various geometric shapes
@@ -89,9 +91,8 @@ public final class Area {
      * @return area of given square
      */
     public static double surfaceAreaSquare(final double sideLength) {
-        if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
-        }
+        checkInputIsPositive(sideLength, "Must be a positive sideLength.");
+        
         return sideLength * sideLength;
     }
 
@@ -103,12 +104,8 @@ public final class Area {
      * @return area of given triangle
      */
     public static double surfaceAreaTriangle(final double base, final double height) {
-        if (base <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+        checkInputIsPositive(base, POSITIVE_BASE);
+        checkInputIsPositive(height, POSITIVE_HEIGHT);
         return base * height / 2;
     }
 
@@ -120,12 +117,8 @@ public final class Area {
      * @return area of given parallelogram
      */
     public static double surfaceAreaParallelogram(final double base, final double height) {
-        if (base <= 0) {
-            throw new IllegalArgumentException(POSITIVE_BASE);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+        checkInputIsPositive(base, POSITIVE_BASE);
+        checkInputIsPositive(height, POSITIVE_HEIGHT);
         return base * height;
     }
 
@@ -144,9 +137,7 @@ public final class Area {
         if (base2 <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE + 2);
         }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+        checkInputIsPositive(height, POSITIVE_HEIGHT);
         return (base1 + base2) * height / 2;
     }
 
@@ -157,9 +148,8 @@ public final class Area {
      * @return area of given circle
      */
     public static double surfaceAreaCircle(final double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+        checkInputIsPositive(radius, POSITIVE_RADIUS);
+
         return Math.PI * radius * radius;
     }
 
@@ -170,9 +160,8 @@ public final class Area {
      * @return surface area of given hemisphere
      */
     public static double surfaceAreaHemisphere(final double radius) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
+        checkInputIsPositive(radius, POSITIVE_RADIUS);
+
         return 3 * Math.PI * radius * radius;
     }
 
@@ -184,12 +173,9 @@ public final class Area {
      * @return surface area of given cone.
      */
     public static double surfaceAreaCone(final double radius, final double height) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException(POSITIVE_RADIUS);
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException(POSITIVE_HEIGHT);
-        }
+        checkInputIsPositive(radius, POSITIVE_RADIUS);
+        checkInputIsPositive(height, POSITIVE_HEIGHT);
+
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
 }

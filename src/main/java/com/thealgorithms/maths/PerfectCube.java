@@ -8,6 +8,16 @@ public final class PerfectCube {
     }
 
     /**
+     * Get cuberoot of a number
+     *
+     * @param number number to get cube root of
+     */
+    public static int getCubeRoot(int number) {
+        number = Math.abs(number); // converting negative number to positive number
+        return (int) Math.pow(number, 1.0 / 3);
+    }
+
+    /**
      * Check if a number is perfect cube or not
      *
      * @param number number to check
@@ -15,8 +25,7 @@ public final class PerfectCube {
      * {@code false}
      */
     public static boolean isPerfectCube(int number) {
-        number = Math.abs(number); // converting negative number to positive number
-        int a = (int) Math.pow(number, 1.0 / 3);
+        int a = getCubeRoot(number);
         return a * a * a == number;
     }
 

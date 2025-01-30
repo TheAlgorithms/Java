@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.PerfectSquare.isPerfectSquare;
+
 /**
  * Fibonacci: 0 1 1 2 3 5 8 13 21 ...
  * This code checks Fibonacci Numbers up to 45th number.
@@ -7,17 +9,6 @@ package com.thealgorithms.maths;
  */
 public final class FibonacciNumberCheck {
     private FibonacciNumberCheck() {
-    }
-    /**
-     * Check if a number is perfect square number
-     *
-     * @param number the number to be checked
-     * @return <tt>true</tt> if {@code number} is a perfect square, otherwise
-     *         <tt>false</tt>
-     */
-    public static boolean isPerfectSquare(long number) {
-        long sqrt = (long) Math.sqrt(number);
-        return sqrt * sqrt == number;
     }
 
     /**
@@ -29,9 +20,9 @@ public final class FibonacciNumberCheck {
      *         <tt>false</tt>
      * @link https://en.wikipedia.org/wiki/Fibonacci_number#Identification
      */
-    public static boolean isFibonacciNumber(long number) {
-        long value1 = 5 * number * number + 4;
-        long value2 = 5 * number * number - 4;
+    public static boolean isFibonacciNumber(int number) {
+        int value1 = 5 * number * number + 4;
+        int value2 = 5 * number * number - 4;
         return isPerfectSquare(value1) || isPerfectSquare(value2);
     }
 }

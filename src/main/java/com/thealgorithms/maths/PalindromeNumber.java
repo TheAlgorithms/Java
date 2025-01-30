@@ -10,17 +10,8 @@ public final class PalindromeNumber {
      * @return {@code true} if {@code n} is palindrome number, otherwise
      * {@code false}
      */
-    public static boolean isPalindrome(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Input parameter must not be negative!");
-        }
-        int numberCopy = number;
-        int reverseNumber = 0;
-        while (numberCopy != 0) {
-            int remainder = numberCopy % 10;
-            reverseNumber = reverseNumber * 10 + remainder;
-            numberCopy /= 10;
-        }
+    public static boolean isPalindrome(int number) {        
+        int reverseNumber = ReverseNumber.reverseNumber(number);      
         return number == reverseNumber;
     }
 }

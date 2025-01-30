@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.buffers;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -23,9 +25,8 @@ public class CircularBuffer<Item> {
      * @throws IllegalArgumentException if the size is zero or negative.
      */
     public CircularBuffer(int size) {
-        if (size <= 0) {
-            throw new IllegalArgumentException("Buffer size must be positive");
-        }
+        checkInputIsPositive(size, "Buffer size must be positive.");
+
         // noinspection unchecked
         this.buffer = (Item[]) new Object[size];
         this.putPointer = new CircularPointer(0, size);

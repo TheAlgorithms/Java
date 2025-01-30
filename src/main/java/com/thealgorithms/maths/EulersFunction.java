@@ -1,24 +1,14 @@
 package com.thealgorithms.maths;
 
+import static com.thealgorithms.maths.utils.MathsUtil.checkInputIsPositive;
+
 /**
  * Utility class for computing
  * <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Euler's totient function</a>.
  */
 public final class EulersFunction {
     private EulersFunction() {
-    }
-
-    /**
-     * Validates that the input is a positive integer.
-     *
-     * @param n the input number to validate
-     * @throws IllegalArgumentException if {@code n} is non-positive
-     */
-    private static void checkInput(int n) {
-        if (n <= 0) {
-            throw new IllegalArgumentException("n must be positive.");
-        }
-    }
+    }   
 
     /**
      * Computes the value of Euler's totient function for a given input.
@@ -29,7 +19,7 @@ public final class EulersFunction {
      * @throws IllegalArgumentException if {@code n} is non-positive
      */
     public static int getEuler(int n) {
-        checkInput(n);
+        checkInputIsPositive(n, "Input number should be positive.");
         int result = n;
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) {
