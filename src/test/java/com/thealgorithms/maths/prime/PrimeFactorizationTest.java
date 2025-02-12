@@ -1,7 +1,8 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.prime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.maths.Prime.PrimeFactorization;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;

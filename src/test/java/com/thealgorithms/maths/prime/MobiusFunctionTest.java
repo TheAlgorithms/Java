@@ -1,8 +1,9 @@
-package com.thealgorithms.maths;
+package com.thealgorithms.maths.prime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.thealgorithms.maths.Prime.MobiusFunction;
 import org.junit.jupiter.api.Test;
 
 class MobiusFunctionTest {

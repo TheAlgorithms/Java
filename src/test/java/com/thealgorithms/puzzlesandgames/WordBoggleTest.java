@@ -1,4 +1,4 @@
-package com.thealgorithms.misc;
+package com.thealgorithms.puzzlesandgames;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

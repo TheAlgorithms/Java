@@ -48,7 +48,7 @@ public final class ArrayCombination {
         for (int i = start; i < n; i++) {
             current.add(i);
             combine(combinations, current, i + 1, n, k);
-            current.removeLast(); // Backtrack
+            current.remove(current.size() - 1); // Backtrack
         }
     }
 }

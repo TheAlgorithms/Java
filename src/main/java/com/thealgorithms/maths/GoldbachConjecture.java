@@ -1,6 +1,6 @@
 package com.thealgorithms.maths;
 
-import static com.thealgorithms.maths.PrimeCheck.isPrime;
+import static com.thealgorithms.maths.Prime.PrimeCheck.isPrime;
 
 /**
  * This is a representation of the unsolved problem of Goldbach's Projection, according to which every
