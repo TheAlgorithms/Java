@@ -69,8 +69,7 @@ class LWWElementSet<T> {
         Element<T> inAddSet = addSet.get(key);
         Element<T> inRemoveSet = removeSet.get(key);
 
-        return inAddSet != null
-                && (inRemoveSet == null || inAddSet.timestamp.isAfter(inRemoveSet.timestamp));
+        return inAddSet != null && (inRemoveSet == null || inAddSet.timestamp.isAfter(inRemoveSet.timestamp));
     }
 
     /**
