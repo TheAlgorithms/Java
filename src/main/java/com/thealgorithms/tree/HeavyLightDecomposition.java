@@ -32,7 +32,6 @@ public class HeavyLightDecomposition {
         position = new int[n + 1];
         nodeValue = new int[n + 1];
         segmentTree = new int[4 * (n + 1)];
-        
         for (int i = 0; i <= n; i++) {
             tree[i] = new ArrayList<>();
             chainHead[i] = -1;
@@ -56,7 +55,6 @@ public class HeavyLightDecomposition {
     private void dfsSize(int node, int parentNode) {
         parent[node] = parentNode;
         subtreeSize[node] = 1;
-        
         for (int child : tree[node]) {
             if (child != parentNode) {
                 depth[child] = depth[node] + 1;
@@ -69,7 +67,6 @@ public class HeavyLightDecomposition {
     private void decompose(int node, int head) {
         chainHead[node] = head;
         position[node] = positionIndex++;
-        
         int heavyChild = -1, maxSubtreeSize = -1;
         for (int child : tree[node]) {
             if (child != parent[node] && subtreeSize[child] > maxSubtreeSize) {
@@ -77,11 +74,9 @@ public class HeavyLightDecomposition {
                 maxSubtreeSize = subtreeSize[child];
             }
         }
-        
         if (heavyChild != -1) {
             decompose(heavyChild, head);
         }
-        
         for (int child : tree[node]) {
             if (child != parent[node] && child != heavyChild) {
                 decompose(child, child);
