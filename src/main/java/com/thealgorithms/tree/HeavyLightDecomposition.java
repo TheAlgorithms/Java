@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class HeavyLightDecomposition {
-    private List<Integer>[] tree;
+    private List<List<Integer>> tree;
     private int[] parent;
     private int[] depth;
     private int[] subtreeSize;
@@ -24,11 +24,10 @@ public class HeavyLightDecomposition {
     private int[] segmentTree;
     private int positionIndex;
 
-    @SuppressWarnings("unchecked")
     public HeavyLightDecomposition(int n) {
-        tree = new ArrayList[n + 1];
+        tree = new ArrayList<>();
         for (int i = 0; i <= n; i++) {
-            tree[i] = new ArrayList<>();
+            tree.add(new ArrayList<>());
         }
         parent = new int[n + 1];
         depth = new int[n + 1];
@@ -52,14 +51,14 @@ public class HeavyLightDecomposition {
     }
 
     public void addEdge(int u, int v) {
-        tree[u].add(v);
-        tree[v].add(u);
+        tree.get(u).add(v);
+        tree.get(v).add(u);
     }
 
     private void dfsSize(int node, int parentNode) {
         parent[node] = parentNode;
         subtreeSize[node] = 1;
-        for (int child : tree[node]) {
+        for (int child : tree.get(node)) {
             if (child != parentNode) {
                 depth[child] = depth[node] + 1;
                 dfsSize(child, node);
@@ -73,7 +72,7 @@ public class HeavyLightDecomposition {
         position[node] = positionIndex++;
         int heavyChild = -1;
         int maxSubtreeSize = -1;
-        for (int child : tree[node]) {
+        for (int child : tree.get(node)) {
             if (child != parent[node] && subtreeSize[child] > maxSubtreeSize) {
                 heavyChild = child;
                 maxSubtreeSize = subtreeSize[child];
@@ -82,7 +81,7 @@ public class HeavyLightDecomposition {
         if (heavyChild != -1) {
             decompose(heavyChild, head);
         }
-        for (int child : tree[node]) {
+        for (int child : tree.get(node)) {
             if (child != parent[node] && child != heavyChild) {
                 decompose(child, child);
             }
