@@ -132,7 +132,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.8.6.6</version>
+                <version>4.9.1.0</version>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
                     <includeTests>true</includeTests>
