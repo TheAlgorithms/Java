@@ -15,7 +15,12 @@ import java.util.List;
 
 public class HeavyLightDecomposition {
     private List<Integer>[] tree;
-    private int[] parent, depth, subtreeSize, chainHead, position, nodeValue;
+    private int[] parent;
+    private int[] depth;
+    private int[] subtreeSize;
+    private int[] chainHead;
+    private int[] position;
+    private int[] nodeValue;
     private int[] segmentTree;
     private int positionIndex;
 
