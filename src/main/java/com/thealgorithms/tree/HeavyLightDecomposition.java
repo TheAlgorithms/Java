@@ -91,7 +91,7 @@ public class HeavyLightDecomposition {
 
     private void buildSegmentTree(int node, int start, int end) {
         if (start == end) {
-            segmentTree[node] = nodeValue[start];  
+            segmentTree[node] = nodeValue[start];
             return;
         }
         int mid = (start + end) / 2;
@@ -151,9 +151,7 @@ public class HeavyLightDecomposition {
         dfsSize(root, -1);
         decompose(root, root);
         for (int i = 0; i < values.length; i++) {
-            if (i < positionIndex) { 
-                nodeValue[position[i]] = values[i];
-            }
+            nodeValue[position[i]] = values[i];
         }
         buildSegmentTree(1, 0, positionIndex - 1);
     }
