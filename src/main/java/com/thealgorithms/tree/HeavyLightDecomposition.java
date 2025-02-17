@@ -27,6 +27,9 @@ public class HeavyLightDecomposition {
     @SuppressWarnings("unchecked")
     public HeavyLightDecomposition(int n) {
         tree = new ArrayList[n + 1];
+        for (int i = 0; i <= n; i++) {
+            tree[i] = new ArrayList<>();
+        }
         parent = new int[n + 1];
         depth = new int[n + 1];
         subtreeSize = new int[n + 1];
@@ -35,7 +38,6 @@ public class HeavyLightDecomposition {
         nodeValue = new int[n + 1];
         segmentTree = new int[4 * (n + 1)];
         for (int i = 0; i <= n; i++) {
-            tree[i] = new ArrayList<>();
             chainHead[i] = -1;
         }
         positionIndex = 0;
@@ -89,7 +91,7 @@ public class HeavyLightDecomposition {
 
     private void buildSegmentTree(int node, int start, int end) {
         if (start == end) {
-            segmentTree[node] = nodeValue[start];
+            segmentTree[node] = nodeValue[start];  
             return;
         }
         int mid = (start + end) / 2;
@@ -149,7 +151,9 @@ public class HeavyLightDecomposition {
         dfsSize(root, -1);
         decompose(root, root);
         for (int i = 0; i < values.length; i++) {
-            nodeValue[position[i]] = values[i];
+            if (i < positionIndex) { 
+                nodeValue[position[i]] = values[i];
+            }
         }
         buildSegmentTree(1, 0, positionIndex - 1);
     }
