@@ -5,13 +5,10 @@ import java.util.List;
 
 /**
  * Heavy-Light Decomposition (HLD) implementation in Java.
- * 
  * HLD is used to efficiently handle path queries on trees, such as maximum,
  * sum, or updates. It decomposes the tree into heavy and light chains,
  * enabling queries in O(log N) time.
- * 
  * Wikipedia Reference: https://en.wikipedia.org/wiki/Heavy-light_decomposition
- * 
  * Author: Nithin U.
  * Github: https://github.com/NithinU2802
  */
@@ -67,7 +64,8 @@ public class HeavyLightDecomposition {
     private void decompose(int node, int head) {
         chainHead[node] = head;
         position[node] = positionIndex++;
-        int heavyChild = -1, maxSubtreeSize = -1;
+        int heavyChild = -1;
+        int maxSubtreeSize = -1;
         for (int child : tree[node]) {
             if (child != parent[node] && subtreeSize[child] > maxSubtreeSize) {
                 heavyChild = child;
