@@ -82,4 +82,14 @@ public class HeavyLightDecompositionTest {
         
         assertEquals(35, hld.queryMaxInPath(1, 4), "Max value in skewed tree should be 35");
     }
+    
+    /**
+     * Tests a skewed tree structure to ensure max path queries work correctly.
+     * Expected: When called with u as a deeper node, it should swap correctly.
+     */
+    @Test
+    void testDepthSwapInPathQuery() {
+        assertEquals(50, hld.queryMaxInPath(5, 2), "Query should handle depth swap correctly");
+        assertEquals(40, hld.queryMaxInPath(4, 1), "Query handle swap nodes and return max value");
+    }
 }
