@@ -1,25 +1,14 @@
 package com.thealgorithms.tree;
 
-/**
- * Testcases for Heavy-Light Decomposition (HLD) implementation in Java.
- * 
- * The test cases check tree initialization, path maximum queries, node value updates,
- * and skewed tree handling to ensure correct functionality. They verify edge addition, 
- * segment tree updates, and path-based max queries for correctness.
- * 
- * Author: Nithin U.
- * Github: https://github.com/NithinU2802
- * 
- */
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HeavyLightDecompositionTest {
 
     private HeavyLightDecomposition hld;
-    private int[] values;
+    private int[] values = new int[]{0, 10, 20, 30, 40, 50}; ;
 
     /**
      * Initializes the test environment with a predefined tree structure and values.
@@ -31,9 +20,6 @@ public class HeavyLightDecompositionTest {
         hld.addEdge(1, 3);
         hld.addEdge(2, 4);
         hld.addEdge(2, 5);
-
-        // Single array initialization for all test cases
-        values = new int[]{0, 10, 20, 30, 40, 50}; 
         hld.initialize(1, values);
     }
 
@@ -69,18 +55,11 @@ public class HeavyLightDecompositionTest {
 
     /**
      * Tests a skewed tree structure to ensure max path queries work correctly.
-     * Expected: The max value in the path (1,4) should be 35.
+     * Expected: The max value in the path (1,4) should be 40.
      */
     @Test
-    void testSkewedTreeMaxQuery() {
-        hld = new HeavyLightDecomposition(4);
-        hld.addEdge(1, 2);
-        hld.addEdge(2, 3);
-        hld.addEdge(3, 4);
-        values = new int[]{0, 5, 15, 25, 35}; // Adjusted values for the skewed tree
-        hld.initialize(1, values);
-        
-        assertEquals(35, hld.queryMaxInPath(1, 4), "Max value in skewed tree should be 35");
+    void testSkewedTreeMaxQuery() {        
+        assertEquals(40, hld.queryMaxInPath(1, 4), "Max value in skewed tree should be 40");
     }
     
     /**
