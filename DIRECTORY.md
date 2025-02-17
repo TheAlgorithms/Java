@@ -723,6 +723,8 @@
             * [WordLadder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/WordLadder.java)
             * zigZagPattern
               * [ZigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/ZigZagPattern.java)
+          * tree
+            * [HeavyLightDecomposition](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/tree/HeavyLightDecomposition.java)
   * test
     * java
       * com
@@ -1367,3 +1369,5 @@
             * [WordLadderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/WordLadderTest.java)
             * zigZagPattern
               * [ZigZagPatternTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/zigZagPattern/ZigZagPatternTest.java)
+          * tree
+            * [HeavyLightDecompositionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/tree/HeavyLightDecompositionTest.java)
