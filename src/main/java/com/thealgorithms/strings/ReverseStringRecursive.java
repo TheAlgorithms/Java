@@ -28,13 +28,13 @@ public final class ReverseStringRecursive {
      * @param string The input string to be reversed.
      * @return The reversed string.
      */
-    public static String reverseUsingStringBuilder(String string){
-        if (string.isEmpty()){
+    public static String reverseUsingStringBuilder(String string) {
+        if (string.isEmpty()) {
             return string;
         }
         char[] chars = string.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for (int i = string.length() -1; i >= 0; i--){
+        for (int i = string.length() - 1; i >= 0; i--) {
             sb.append(chars[i]);
         }
         return sb.toString();
