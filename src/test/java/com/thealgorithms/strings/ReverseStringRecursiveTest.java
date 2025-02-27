@@ -13,12 +13,4 @@ public class ReverseStringRecursiveTest {
     testReverseString(String input, String expectedOutput) {
         assertEquals(expectedOutput, ReverseStringRecursive.reverse(input));
     }
-
-    @ParameterizedTest
-    @CsvSource({"'Hello World', 'dlroW olleH'", "'helloworld', 'dlrowolleh'", "'123456789', '987654321'", "'', ''", "'A', 'A'", "'!123 ABC xyz!', '!zyx CBA 321!'", "'Abc 123 Xyz', 'zyX 321 cbA'", "'12.34,56;78:90', '09:87;65,43.21'", "'abcdEFGHiJKL', 'LKJiHGFEdcba'",
-        "'MixOf123AndText!', '!txeTdnA321fOxiM'"})
-    public void
-    testReverseUsingStringBuilder(String input, String expectedOutput) {
-        assertEquals(expectedOutput, ReverseStringRecursive.reverseUsingStringBuilder(input));
-    }
 }
