@@ -83,6 +83,9 @@
     <Match>
         <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
     </Match>
+    <Match>
+        <Bug pattern="AT_STALE_THREAD_WRITE_OF_PRIMITIVE" />
+    </Match>
     <!-- fb-contrib -->
     <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
