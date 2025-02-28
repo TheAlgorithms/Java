@@ -25,4 +25,10 @@ public class ReverseStringTest {
     public void testReverseString2(String input, String expectedOutput) {
         assertEquals(expectedOutput, ReverseString.reverse2(input));
     }
+
+    @ParameterizedTest
+    @MethodSource("testCases")
+    public void testReverseString3(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverse3(input));
+    }
 }
