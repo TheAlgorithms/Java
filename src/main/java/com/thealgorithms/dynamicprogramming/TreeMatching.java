@@ -41,7 +41,7 @@ public class TreeMatching {
         if (root < 0 || root >= graph.size()) {
             throw new IllegalArgumentException("Invalid root: " + root);
         }
-        MaxMatching(root, parent);
+        maxMatching(root, parent);
         return Math.max(dp[root][0], dp[root][1]);
     }
 
@@ -52,7 +52,7 @@ public class TreeMatching {
      * @param node The index of the current node for which the matching is calculated.
      * @param parent The index of the parent node (to avoid revisiting the parent node during recursion).
      */
-    private void MaxMatching(int node, int parent) {
+    private void maxMatching(int node, int parent) {
         dp[node][0] = 0;
         dp[node][1] = 0;
 
@@ -61,7 +61,7 @@ public class TreeMatching {
             if (adjNode == parent) {
                 continue;
             }
-            MaxMatching(adjNode, node);
+            maxMatching(adjNode, node);
             sumWithoutEdge += Math.max(dp[adjNode][0], dp[adjNode][1]);
         }
 
