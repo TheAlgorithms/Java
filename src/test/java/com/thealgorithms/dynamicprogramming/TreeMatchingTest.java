@@ -1,9 +1,10 @@
 package com.thealgorithms.dynamicprogramming;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.thealgorithms.datastructures.graphs.UndirectedAdjacencyListGraph;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.thealgorithms.datastructures.graphs.UndirectedAdjacencyListGraph;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TreeMatchingTest {
     UndirectedAdjacencyListGraph graph;
@@ -29,7 +30,7 @@ class TreeMatchingTest {
         graph.addEdge(5, 9, 10);
 
         TreeMatching treeMatching = new TreeMatching(graph);
-        assertEquals(110,treeMatching.getMaxMatching(0,-1));
+        assertEquals(110, treeMatching.getMaxMatching(0, -1));
     }
 
     @Test
@@ -47,7 +48,7 @@ class TreeMatchingTest {
         graph.addEdge(7, 11, 10);
         graph.addEdge(7, 12, 5);
         TreeMatching treeMatching = new TreeMatching(graph);
-        assertEquals(100,treeMatching.getMaxMatching(0,-1));
+        assertEquals(100, treeMatching.getMaxMatching(0, -1));
     }
 
     @Test
@@ -65,13 +66,13 @@ class TreeMatchingTest {
         graph.addEdge(4, 11, 50);
         graph.addEdge(4, 12, 20);
         TreeMatching treeMatching = new TreeMatching(graph);
-        assertEquals(140,treeMatching.getMaxMatching(0,-1));
+        assertEquals(140, treeMatching.getMaxMatching(0, -1));
     }
 
     @Test
     void emptyTree() {
         TreeMatching treeMatching = new TreeMatching(graph);
-        assertEquals(0,treeMatching.getMaxMatching(0,-1));
+        assertEquals(0, treeMatching.getMaxMatching(0, -1));
     }
 
     @Test
@@ -116,5 +117,4 @@ class TreeMatchingTest {
         TreeMatching treeMatching = new TreeMatching(graph);
         assertEquals(100, treeMatching.getMaxMatching(0, -1));
     }
-
 }

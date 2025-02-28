@@ -37,12 +37,12 @@ public class TreeMatching {
      * @return The maximum weighted matching for the tree, starting from the root node.
      *
      */
-    public int getMaxMatching(int root, int parent){
+    public int getMaxMatching(int root, int parent) {
         if (root < 0 || root >= graph.size()) {
             throw new IllegalArgumentException("Invalid root: " + root);
         }
         MaxMatching(root, parent);
-        return Math.max(dp[root][0],dp[root][1]);
+        return Math.max(dp[root][0], dp[root][1]);
     }
 
     /**
@@ -58,7 +58,7 @@ public class TreeMatching {
 
         int sumWithoutEdge = 0;
         for (int adjNode : graph.getNeighbors(node)) {
-            if (adjNode == parent){
+            if (adjNode == parent) {
                 continue;
             }
             MaxMatching(adjNode, node);
@@ -68,13 +68,11 @@ public class TreeMatching {
         dp[node][0] = sumWithoutEdge;
 
         for (int adjNode : graph.getNeighbors(node)) {
-            if (adjNode == parent){
+            if (adjNode == parent) {
                 continue;
             }
             int weight = graph.getEdgeWeight(node, adjNode);
-            dp[node][1] = Math.max(dp[node][1],
-                    sumWithoutEdge - Math.max(dp[adjNode][0], dp[adjNode][1]) + dp[adjNode][0] + weight);
+            dp[node][1] = Math.max(dp[node][1], sumWithoutEdge - Math.max(dp[adjNode][0], dp[adjNode][1]) + dp[adjNode][0] + weight);
         }
     }
-
 }
