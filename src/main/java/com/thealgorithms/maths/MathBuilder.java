@@ -12,13 +12,16 @@ import java.util.function.Function;
  */
 public final class MathBuilder {
     private final double result;
+
     private MathBuilder(Builder builder) {
         this.result = builder.number;
     }
+
     // Returns final result
     public double get() {
         return result;
     }
+
     // Return result in long
     public long toLong() {
         try {
@@ -46,12 +49,15 @@ public final class MathBuilder {
     public static class Builder {
         private double number;
         private double memory = 0;
+
         public Builder() {
             number = 0;
         }
+
         public Builder(double num) {
             number = num;
         }
+
         public Builder add(double num) {
             number += num;
             return this;
@@ -324,7 +330,8 @@ public final class MathBuilder {
         }
 
         public Builder format(int decimalPlace) {
-            String pattern = "." + "#".repeat(decimalPlace);
+            String pattern = "."
+                    + "#".repeat(decimalPlace);
             DecimalFormat formater = new DecimalFormat(pattern);
             String num = formater.format(number);
             number = Double.parseDouble(num);

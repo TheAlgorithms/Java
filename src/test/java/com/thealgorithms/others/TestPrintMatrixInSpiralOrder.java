@@ -1,10 +1,10 @@
 package com.thealgorithms.others;
 
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class TestPrintMatrixInSpiralOrder {
     @Test
