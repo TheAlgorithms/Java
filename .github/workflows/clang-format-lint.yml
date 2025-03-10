@@ -1,0 +1,16 @@
+name: Clang format linter
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: DoozyX/clang-format-lint-action@v0.18
+      with:
+        source: './src'
+        extensions: 'java'
+        clangFormatVersion: 16

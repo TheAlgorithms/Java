@@ -1,6 +1,8 @@
 package com.thealgorithms.maths;
 
-public class AbsoluteValue {
+public final class AbsoluteValue {
+    private AbsoluteValue() {
+    }
 
     /**
      * Returns the absolute value of a number.

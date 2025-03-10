@@ -3,23 +3,23 @@ package com.thealgorithms.datastructures.trees;
 /*
 * Avl is algo that balance itself while adding new alues to tree
 * by rotating branches of binary tree and make itself Binary seaarch tree
-* there are four cases which has to tackle 
-* rotating - left right ,left left,right right,right left 
+* there are four cases which has to tackle
+* rotating - left right ,left left,right right,right left
 
 Test Case:
 
 AVLTree tree=new AVLTree();
-		tree.insert(20);
-		tree.insert(25);
-		tree.insert(30);
-		tree.insert(10);
-		tree.insert(5);
-		tree.insert(15);
-		tree.insert(27);
-		tree.insert(19);
-		tree.insert(16);
-		
-		tree.display();
+                tree.insert(20);
+                tree.insert(25);
+                tree.insert(30);
+                tree.insert(10);
+                tree.insert(5);
+                tree.insert(15);
+                tree.insert(27);
+                tree.insert(19);
+                tree.insert(16);
+
+                tree.display();
 
 
 
@@ -49,8 +49,7 @@ public class AVLSimple {
 
     private Node insert(Node node, int item) {
         if (node == null) {
-            Node add = new Node(item);
-            return add;
+            return new Node(item);
         }
         if (node.data > item) {
             node.left = insert(node.left, item);
@@ -60,16 +59,20 @@ public class AVLSimple {
         }
         node.height = Math.max(height(node.left), height(node.right)) + 1;
         int bf = bf(node);
-        //LL case
-        if (bf > 1 && item < node.left.data) return rightRotate(node);
-        //RR case
-        if (bf < -1 && item > node.right.data) return leftRotate(node);
-        //RL case
+        // LL case
+        if (bf > 1 && item < node.left.data) {
+            return rightRotate(node);
+        }
+        // RR case
+        if (bf < -1 && item > node.right.data) {
+            return leftRotate(node);
+        }
+        // RL case
         if (bf < -1 && item < node.right.data) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
         }
-        //LR case
+        // LR case
         if (bf > 1 && item > node.left.data) {
             node.left = leftRotate(node.left);
             return rightRotate(node);
@@ -85,14 +88,24 @@ public class AVLSimple {
 
     private void display(Node node) {
         String str = "";
-        if (node.left != null) str += node.left.data + "=>"; else str +=
-            "END=>";
+        if (node.left != null) {
+            str += node.left.data + "=>";
+        } else {
+            str += "END=>";
+        }
         str += node.data + "";
-        if (node.right != null) str += "<=" + node.right.data; else str +=
-            "<=END";
+        if (node.right != null) {
+            str += "<=" + node.right.data;
+        } else {
+            str += "<=END";
+        }
         System.out.println(str);
-        if (node.left != null) display(node.left);
-        if (node.right != null) display(node.right);
+        if (node.left != null) {
+            display(node.left);
+        }
+        if (node.right != null) {
+            display(node.right);
+        }
     }
 
     private int height(Node node) {
@@ -103,16 +116,18 @@ public class AVLSimple {
     }
 
     private int bf(Node node) {
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         return height(node.left) - height(node.right);
     }
 
     private Node rightRotate(Node c) {
         Node b = c.left;
-        Node T3 = b.right;
+        Node t3 = b.right;
 
         b.right = c;
-        c.left = T3;
+        c.left = t3;
         c.height = Math.max(height(c.left), height(c.right)) + 1;
         b.height = Math.max(height(b.left), height(b.right)) + 1;
         return b;
@@ -120,10 +135,10 @@ public class AVLSimple {
 
     private Node leftRotate(Node c) {
         Node b = c.right;
-        Node T3 = b.left;
+        Node t3 = b.left;
 
         b.left = c;
-        c.right = T3;
+        c.right = t3;
         c.height = Math.max(height(c.left), height(c.right)) + 1;
         b.height = Math.max(height(b.left), height(b.right)) + 1;
         return b;

@@ -1,0 +1,60 @@
+---
+name: Infer
+
+'on':
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  run_infer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'temurin'
+
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5
+
+      - name: Get current year/weak
+        run: echo "year_week=$(date +'%Y_%U')" >> $GITHUB_ENV
+
+      - name: Cache infer build
+        id: cache-infer
+        uses: actions/cache@v4
+        with:
+          path: infer
+          key: ${{ runner.os }}-infer-${{ env.year_week }}
+
+      - name: Build infer
+        if: steps.cache-infer.outputs.cache-hit != 'true'
+        run: |
+          cd ..
+          git clone https://github.com/facebook/infer.git
+          cd infer
+          ./build-infer.sh java
+          cp -r infer ../Java
+
+      - name: Add infer to PATH
+        run: |
+          echo "infer/bin" >> $GITHUB_PATH
+
+      - name: Display infer version
+        run: |
+          which infer
+          infer --version
+
+      - name: Run infer
+        run: |
+          mvn clean
+          infer --fail-on-issue  --print-logs --no-progress-bar -- mvn test
+...

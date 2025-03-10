@@ -23,7 +23,8 @@ public class Caesar {
 
         final int length = message.length();
         for (int i = 0; i < length; i++) {
-            //            int current = message.charAt(i); //using char to shift characters because ascii
+            //            int current = message.charAt(i); //using char to shift characters because
+            //            ascii
             // is in-order latin alphabet
             char current = message.charAt(i); // Java law : char + int = char
 

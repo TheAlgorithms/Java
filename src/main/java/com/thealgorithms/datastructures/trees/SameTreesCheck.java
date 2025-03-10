@@ -5,9 +5,8 @@ import java.util.Deque;
 
 /**
  * Given 2 binary trees.
- * This code checks whether they are the same (structurally identical and have the same values) or not.
- * <p>
- * Example:
+ * This code checks whether they are the same (structurally identical and have the same values) or
+ * not. <p> Example:
  * 1. Binary trees:
  *      1                 1
  *     / \               / \
@@ -33,7 +32,9 @@ import java.util.Deque;
  *
  * @author Albina Gimaletdinova on 13/01/2023
  */
-public class SameTreesCheck {
+public final class SameTreesCheck {
+    private SameTreesCheck() {
+    }
     public static boolean check(BinaryTree.Node p, BinaryTree.Node q) {
         if (p == null && q == null) {
             return true;
@@ -51,16 +52,22 @@ public class SameTreesCheck {
             BinaryTree.Node second = q2.poll();
             // check that some node can be null
             // if the check is true: both nodes are null or both nodes are not null
-            if (!equalNodes(first, second)) return false;
+            if (!equalNodes(first, second)) {
+                return false;
+            }
 
             if (first != null) {
-                if (!equalNodes(first.left, second.left)) return false;
+                if (!equalNodes(first.left, second.left)) {
+                    return false;
+                }
                 if (first.left != null) {
                     q1.add(first.left);
                     q2.add(second.left);
                 }
 
-                if (!equalNodes(first.right, second.right)) return false;
+                if (!equalNodes(first.right, second.right)) {
+                    return false;
+                }
                 if (first.right != null) {
                     q1.add(first.right);
                     q2.add(second.right);

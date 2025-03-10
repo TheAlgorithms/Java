@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * Implementation of pancake sort
  *
@@ -12,56 +10,35 @@ public class PancakeSort implements SortAlgorithm {
 
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int size = array.length;
-
-        for (int i = 0; i < size; i++) {
-            T max = array[0];
-            int index = 0;
-            for (int j = 0; j < size - i; j++) {
-                if (less(max, array[j])) {
-                    max = array[j];
-                    index = j;
-                }
-            }
-            flip(array, index, array.length - 1 - i);
+        if (array.length < 2) {
+            return array;
         }
+
+        for (int currentSize = 0; currentSize < array.length; currentSize++) {
+            int maxIndex = findMaxIndex(array, currentSize);
+            SortUtils.flip(array, maxIndex, array.length - 1 - currentSize);
+        }
+
         return array;
     }
 
-    public static void main(String[] args) {
-        Integer[] arr = {
-            10,
-            9,
-            8,
-            7,
-            6,
-            15,
-            14,
-            7,
-            4,
-            3,
-            8,
-            6,
-            3,
-            1,
-            2,
-            -2,
-            -5,
-            -8,
-            -3,
-            -1,
-            13,
-            12,
-            11,
-            5,
-            4,
-            3,
-            2,
-            1,
-        };
-        PancakeSort pancakeSort = new PancakeSort();
-        System.out.println("After sorting:");
-        pancakeSort.sort(arr);
-        print(arr);
+    /**
+     * Finds the index of the maximum element in the array up to the given size.
+     *
+     * @param array      the array to be searched
+     * @param currentSize the current size of the unsorted portion of the array
+     * @param <T>        the type of elements in the array
+     * @return the index of the maximum element
+     */
+    private <T extends Comparable<T>> int findMaxIndex(T[] array, int currentSize) {
+        T max = array[0];
+        int maxIndex = 0;
+        for (int i = 0; i < array.length - currentSize; i++) {
+            if (SortUtils.less(max, array[i])) {
+                max = array[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
     }
 }

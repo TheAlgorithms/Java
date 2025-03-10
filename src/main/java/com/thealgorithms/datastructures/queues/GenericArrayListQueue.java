@@ -1,87 +1,60 @@
 package com.thealgorithms.datastructures.queues;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * This class implements a GenericArrayListQueue.
+ * This class implements a GenericArrayListQueue, a queue data structure that
+ * holds elements of any type specified at runtime, allowing flexibility in the type
+ * of elements it stores.
  *
- * A GenericArrayListQueue data structure functions the same as any
- * specific-typed queue. The GenericArrayListQueue holds elements of types
- * to-be-specified at runtime. The elements that are added first are the first
- * to be removed (FIFO). New elements are added to the back/rear of the queue.
+ * <p>The GenericArrayListQueue operates on a First-In-First-Out (FIFO) basis, where
+ * elements added first are the first to be removed. New elements are added to the back
+ * (or rear) of the queue, while removal of elements occurs from the front.
+ *
+ * @param <T> The type of elements held in this queue.
  */
 public class GenericArrayListQueue<T> {
 
     /**
-     * The generic ArrayList for the queue T is the generic element
+     * A list that stores the queue's elements in insertion order.
      */
-    ArrayList<T> _queue = new ArrayList<>();
+    private final List<T> elementList = new ArrayList<>();
 
     /**
-     * Checks if the queue has elements (not empty).
+     * Checks if the queue is empty.
      *
-     * @return True if the queue has elements. False otherwise.
+     * @return {@code true} if the queue has no elements; {@code false} otherwise.
      */
-    private boolean hasElements() {
-        return !_queue.isEmpty();
+    public boolean isEmpty() {
+        return elementList.isEmpty();
     }
 
     /**
-     * Checks what's at the front of the queue.
+     * Retrieves, but does not remove, the element at the front of the queue.
      *
-     * @return If queue is not empty, element at the front of the queue.
-     * Otherwise, null
+     * @return The element at the front of the queue, or {@code null} if the queue is empty.
      */
     public T peek() {
-        T result = null;
-        if (this.hasElements()) {
-            result = _queue.get(0);
-        }
-        return result;
+        return isEmpty() ? null : elementList.getFirst();
     }
 
     /**
-     * Inserts an element of type T to the queue.
+     * Inserts an element at the back of the queue.
      *
-     * @param element of type T to be added
-     * @return True if the element was added successfully
+     * @param element The element to be added to the queue.
+     * @return {@code true} if the element was successfully added.
      */
     public boolean add(T element) {
-        return _queue.add(element);
+        return elementList.add(element);
     }
 
     /**
-     * Retrieve what's at the front of the queue
+     * Retrieves and removes the element at the front of the queue.
      *
-     * @return If queue is not empty, element retrieved. Otherwise, null
+     * @return The element removed from the front of the queue, or {@code null} if the queue is empty.
      */
-    public T pull() {
-        T result = null;
-        if (this.hasElements()) {
-            result = _queue.remove(0);
-        }
-        return result;
-    }
-
-    /**
-     * Main method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-        GenericArrayListQueue<Integer> queue = new GenericArrayListQueue<>();
-        System.out.println("Running...");
-        assert queue.peek() == null;
-        assert queue.pull() == null;
-        assert queue.add(1);
-        assert queue.peek() == 1;
-        assert queue.add(2);
-        assert queue.peek() == 1;
-        assert queue.pull() == 1;
-        assert queue.peek() == 2;
-        assert queue.pull() == 2;
-        assert queue.peek() == null;
-        assert queue.pull() == null;
-        System.out.println("Finished.");
+    public T poll() {
+        return isEmpty() ? null : elementList.removeFirst();
     }
 }

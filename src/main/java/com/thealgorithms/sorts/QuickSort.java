@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  * @author Podshivalov Nikita (https://github.com/nikitap492)
@@ -27,33 +25,25 @@ class QuickSort implements SortAlgorithm {
      * @param right The last index of an array
      * @param array The array to be sorted
      */
-    private static <T extends Comparable<T>> void doSort(
-        T[] array,
-        int left,
-        int right
-    ) {
+    private static <T extends Comparable<T>> void doSort(T[] array, final int left, final int right) {
         if (left < right) {
-            int pivot = randomPartition(array, left, right);
+            final int pivot = randomPartition(array, left, right);
             doSort(array, left, pivot - 1);
             doSort(array, pivot, right);
         }
     }
 
     /**
-     * Ramdomize the array to avoid the basically ordered sequences
+     * Randomize the array to avoid the basically ordered sequences
      *
      * @param array The array to be sorted
      * @param left The first index of an array
      * @param right The last index of an array
      * @return the partition index of the array
      */
-    private static <T extends Comparable<T>> int randomPartition(
-        T[] array,
-        int left,
-        int right
-    ) {
-        int randomIndex = left + (int) (Math.random() * (right - left + 1));
-        swap(array, randomIndex, right);
+    private static <T extends Comparable<T>> int randomPartition(T[] array, final int left, final int right) {
+        final int randomIndex = left + (int) (Math.random() * (right - left + 1));
+        SortUtils.swap(array, randomIndex, right);
         return partition(array, left, right);
     }
 
@@ -65,23 +55,19 @@ class QuickSort implements SortAlgorithm {
      * @param right The last index of an array Finds the partition index of an
      * array
      */
-    private static <T extends Comparable<T>> int partition(
-        T[] array,
-        int left,
-        int right
-    ) {
-        int mid = (left + right) >>> 1;
-        T pivot = array[mid];
+    private static <T extends Comparable<T>> int partition(T[] array, int left, int right) {
+        final int mid = (left + right) >>> 1;
+        final T pivot = array[mid];
 
         while (left <= right) {
-            while (less(array[left], pivot)) {
+            while (SortUtils.less(array[left], pivot)) {
                 ++left;
             }
-            while (less(pivot, array[right])) {
+            while (SortUtils.less(pivot, array[right])) {
                 --right;
             }
             if (left <= right) {
-                swap(array, left, right);
+                SortUtils.swap(array, left, right);
                 ++left;
                 --right;
             }

@@ -1,17 +1,28 @@
 package com.thealgorithms.maths;
 
 /**
- * Calculate average of a list of numbers
+ * A utility class for computing the average of numeric arrays.
+ * This class provides static methods to calculate the average of arrays
+ * of both {@code double} and {@code int} values.
  */
-public class Average {
+public final class Average {
+
+    // Prevent instantiation of this utility class
+    private Average() {
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated.");
+    }
 
     /**
-     * Calculate average of a list of numbers
+     * Computes the average of a {@code double} array.
      *
-     * @param numbers array to store numbers
-     * @return mean of given numbers
+     * @param numbers an array of {@code double} values
+     * @return the average of the given numbers
+     * @throws IllegalArgumentException if the input array is {@code null} or empty
      */
     public static double average(double[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+        }
         double sum = 0;
         for (double number : numbers) {
             sum += number;
@@ -20,17 +31,20 @@ public class Average {
     }
 
     /**
-     * find average value of int array
+     * Computes the average of an {@code int} array.
      *
-     * @param numbers the array contains element and the sum does not excess long
-     *                value limit
-     * @return average value
+     * @param numbers an array of {@code int} values
+     * @return the average of the given numbers
+     * @throws IllegalArgumentException if the input array is {@code null} or empty
      */
-    public static int average(int[] numbers) {
+    public static long average(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            throw new IllegalArgumentException("Numbers array cannot be empty or null");
+        }
         long sum = 0;
         for (int number : numbers) {
             sum += number;
         }
-        return (int) (sum / numbers.length);
+        return sum / numbers.length;
     }
 }

@@ -2,16 +2,17 @@ package com.thealgorithms.sorts;
 
 import java.util.Random;
 
-public class SortUtilsRandomGenerator {
-
-    private static final Random random;
-    private static final long seed;
-
-    static {
-        seed = System.currentTimeMillis();
-        random = new Random(seed);
+public final class SortUtilsRandomGenerator {
+    private SortUtilsRandomGenerator() {
     }
 
+    private static final Random RANDOM;
+    private static final long SEED;
+
+    static {
+        SEED = System.currentTimeMillis();
+        RANDOM = new Random(SEED);
+    }
 
     /**
      * Function to generate array of double values, with predefined size.
@@ -21,8 +22,9 @@ public class SortUtilsRandomGenerator {
      */
     public static Double[] generateArray(int size) {
         Double[] arr = new Double[size];
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             arr[i] = generateDouble();
+        }
         return arr;
     }
 
@@ -32,7 +34,7 @@ public class SortUtilsRandomGenerator {
      * @return Double value [0, 1)
      */
     public static Double generateDouble() {
-        return random.nextDouble();
+        return RANDOM.nextDouble();
     }
 
     /**
@@ -41,7 +43,6 @@ public class SortUtilsRandomGenerator {
      * @return int value [0, n)
      */
     public static int generateInt(int n) {
-        return random.nextInt(n);
+        return RANDOM.nextInt(n);
     }
-
 }

@@ -1,8 +1,14 @@
 package com.thealgorithms.searches;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
@@ -180,10 +186,7 @@ class QuickSelectTest {
 
     @Test
     void quickSelectNullList() {
-        NullPointerException exception = assertThrows(
-            NullPointerException.class,
-            () -> QuickSelect.select(null, 0)
-        );
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> QuickSelect.select(null, 0));
         String expectedMsg = "The list of elements must not be null.";
         assertEquals(expectedMsg, exception.getMessage());
     }
@@ -191,32 +194,22 @@ class QuickSelectTest {
     @Test
     void quickSelectEmptyList() {
         List<String> objects = Collections.emptyList();
-        IllegalArgumentException exception = assertThrows(
-            IllegalArgumentException.class,
-            () -> QuickSelect.select(objects, 0)
-        );
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> QuickSelect.select(objects, 0));
         String expectedMsg = "The list of elements must not be empty.";
         assertEquals(expectedMsg, exception.getMessage());
     }
 
     @Test
     void quickSelectIndexOutOfLeftBound() {
-        IndexOutOfBoundsException exception = assertThrows(
-            IndexOutOfBoundsException.class,
-            () -> QuickSelect.select(Collections.singletonList(1), -1)
-        );
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> QuickSelect.select(Collections.singletonList(1), -1));
         String expectedMsg = "The index must not be negative.";
         assertEquals(expectedMsg, exception.getMessage());
     }
 
     @Test
     void quickSelectIndexOutOfRightBound() {
-        IndexOutOfBoundsException exception = assertThrows(
-            IndexOutOfBoundsException.class,
-            () -> QuickSelect.select(Collections.singletonList(1), 1)
-        );
-        String expectedMsg =
-            "The index must be less than the number of elements.";
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> QuickSelect.select(Collections.singletonList(1), 1));
+        String expectedMsg = "The index must be less than the number of elements.";
         assertEquals(expectedMsg, exception.getMessage());
     }
 
@@ -230,15 +223,10 @@ class QuickSelectTest {
     }
 
     private static List<Character> generateRandomCharacters(int n) {
-        return RANDOM
-            .ints(n, ASCII_A, ASCII_Z)
-            .mapToObj(i -> (char) i)
-            .collect(Collectors.toList());
+        return RANDOM.ints(n, ASCII_A, ASCII_Z).mapToObj(i -> (char) i).collect(Collectors.toList());
     }
 
-    private static <T extends Comparable<T>> List<T> getSortedCopyOfList(
-        List<T> list
-    ) {
+    private static <T extends Comparable<T>> List<T> getSortedCopyOfList(Collection<T> list) {
         return list.stream().sorted().collect(Collectors.toList());
     }
 }

@@ -1,112 +1,138 @@
 package com.thealgorithms.datastructures.queues;
 
-//This program implements the concept of CircularQueue in Java
-//Link to the concept: (https://en.wikipedia.org/wiki/Circular_buffer)
-public class CircularQueue {
+/**
+ * The CircularQueue class represents a generic circular queue data structure that uses an array to
+ * store elements. This queue allows efficient utilization of space by wrapping around the array,
+ * thus avoiding the need to shift elements during enqueue and dequeue operations.
+ *
+ * <p>When the queue reaches its maximum capacity, further enqueues will raise an exception.
+ * Similarly, attempts to dequeue or peek from an empty queue will also result in an exception.
+ *
+ * <p>Reference: <a href="https://en.wikipedia.org/wiki/Circular_buffer">Circular Buffer</a>
+ *
+ * <p>Usage Example:
+ * <pre>
+ *     CircularQueue<Integer> queue = new CircularQueue<>(3);
+ *     queue.enQueue(1);
+ *     queue.enQueue(2);
+ *     queue.enQueue(3);
+ *     queue.deQueue(); // Removes 1
+ *     queue.enQueue(4); // Wraps around and places 4 at the position of removed 1
+ * </pre>
+ *
+ * @param <T> the type of elements in this queue
+ */
+public class CircularQueue<T> {
+    private T[] array;
+    private int topOfQueue;
+    private int beginningOfQueue;
+    private final int size;
+    private int currentSize;
 
-    int[] arr;
-    int topOfQueue;
-    int beginningOfQueue;
-    int size;
-
+    /**
+     * Constructs a CircularQueue with a specified capacity.
+     *
+     * @param size the maximum number of elements this queue can hold
+     * @throws IllegalArgumentException if the size is less than 1
+     */
+    @SuppressWarnings("unchecked")
     public CircularQueue(int size) {
-        arr = new int[size];
-        topOfQueue = -1;
-        beginningOfQueue = -1;
+        if (size < 1) {
+            throw new IllegalArgumentException("Size must be greater than 0");
+        }
+        this.array = (T[]) new Object[size];
+        this.topOfQueue = -1;
+        this.beginningOfQueue = -1;
         this.size = size;
+        this.currentSize = 0;
     }
 
+    /**
+     * Checks if the queue is empty.
+     *
+     * @return {@code true} if the queue is empty; {@code false} otherwise
+     */
     public boolean isEmpty() {
-        if (beginningOfQueue == -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentSize == 0;
     }
 
+    /**
+     * Checks if the queue is full.
+     *
+     * @return {@code true} if the queue has reached its maximum capacity; {@code false} otherwise
+     */
     public boolean isFull() {
-        if (topOfQueue + 1 == beginningOfQueue) {
-            return true;
-        } else if (topOfQueue == size - 1 && beginningOfQueue == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentSize == size;
     }
 
-    public void enQueue(int value) {
+    /**
+     * Adds a new element to the queue. If the queue is full, an exception is thrown.
+     *
+     * @param value the element to be added to the queue
+     * @throws IllegalStateException if the queue is already full
+     */
+    public void enQueue(T value) {
         if (isFull()) {
-            System.out.println("The Queue is full!");
-        } else if (isEmpty()) {
+            throw new IllegalStateException("Queue is full");
+        }
+        if (isEmpty()) {
             beginningOfQueue = 0;
-            topOfQueue++;
-            arr[topOfQueue] = value;
-            System.out.println(value + " has been successfully inserted!");
-        } else {
-            if (topOfQueue + 1 == size) {
-                topOfQueue = 0;
-            } else {
-                topOfQueue++;
-            }
-            arr[topOfQueue] = value;
-            System.out.println(value + " has been successfully inserted!");
         }
+        topOfQueue = (topOfQueue + 1) % size;
+        array[topOfQueue] = value;
+        currentSize++;
     }
 
-    public int deQueue() {
+    /**
+     * Removes and returns the element at the front of the queue.
+     *
+     * @return the element at the front of the queue
+     * @throws IllegalStateException if the queue is empty
+     */
+    public T deQueue() {
         if (isEmpty()) {
-            System.out.println("The Queue is Empty!");
-            return -1;
-        } else {
-            int res = arr[beginningOfQueue];
-            arr[beginningOfQueue] = Integer.MIN_VALUE;
-            if (beginningOfQueue == topOfQueue) {
-                beginningOfQueue = topOfQueue = -1;
-            } else if (beginningOfQueue + 1 == size) {
-                beginningOfQueue = 0;
-            } else {
-                beginningOfQueue++;
-            }
-            return res;
+            throw new IllegalStateException("Queue is empty");
         }
-    }
-
-    public int peek() {
+        T removedValue = array[beginningOfQueue];
+        array[beginningOfQueue] = null; // Optional: Nullify to help garbage collection
+        beginningOfQueue = (beginningOfQueue + 1) % size;
+        currentSize--;
         if (isEmpty()) {
-            System.out.println("The Queue is Empty!");
-            return -1;
-        } else {
-            return arr[beginningOfQueue];
+            beginningOfQueue = -1;
+            topOfQueue = -1;
         }
+        return removedValue;
     }
 
+    /**
+     * Returns the element at the front of the queue without removing it.
+     *
+     * @return the element at the front of the queue
+     * @throws IllegalStateException if the queue is empty
+     */
+    public T peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty");
+        }
+        return array[beginningOfQueue];
+    }
+
+    /**
+     * Deletes the entire queue by resetting all elements and pointers.
+     */
     public void deleteQueue() {
-        arr = null;
-        System.out.println("The Queue is deleted!");
+        array = null;
+        beginningOfQueue = -1;
+        topOfQueue = -1;
+        currentSize = 0;
     }
 
-    public static void main(String[] args) {
-        CircularQueue cq = new CircularQueue(5);
-        System.out.println(cq.isEmpty());
-        System.out.println(cq.isFull());
-        cq.enQueue(1);
-        cq.enQueue(2);
-        cq.enQueue(3);
-        cq.enQueue(4);
-        cq.enQueue(5);
-
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.deQueue());
-        System.out.println(cq.isFull());
-        System.out.println(cq.isEmpty());
-        cq.enQueue(6);
-        cq.enQueue(7);
-        cq.enQueue(8);
-        System.out.println(cq.peek());
-        System.out.println(cq.peek());
-        cq.deleteQueue();
+    /**
+     * Returns the current number of elements in the queue.
+     *
+     * @return the number of elements currently in the queue
+     */
+    public int size() {
+        return currentSize;
     }
 }

@@ -1,24 +1,27 @@
 package com.thealgorithms.strings;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidParenthesesTest {
-	
+
     @Test
     void testOne() {
-        assertEquals(true, ValidParentheses.isValid("()"));
+        assertTrue(ValidParentheses.isValid("()"));
+        assertTrue(ValidParentheses.isValidParentheses("()"));
     }
-  
+
     @Test
     void testTwo() {
-        assertEquals(true, ValidParentheses.isValid("()[]{}"));
+        assertTrue(ValidParentheses.isValid("()[]{}"));
+        assertTrue(ValidParentheses.isValidParentheses("()[]{}"));
     }
-  
-  
+
     @Test
     void testThree() {
-        assertEquals(false, ValidParentheses.isValid("(]"));
+        assertFalse(ValidParentheses.isValid("(]"));
+        assertFalse(ValidParentheses.isValidParentheses("(]"));
     }
-	
 }

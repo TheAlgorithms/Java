@@ -1,37 +1,63 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * Imagine you have a collection of N wines placed next to each other on the
- * shelf. The price of ith wine is pi(Prices of different wines are different).
- * Because wine gets better every year supposing today is year 1, on year y the
- * price would be y*pi i.e y times the value of the initial year. You want to
- * sell all wines but you have to sell one wine per year. One more constraint on
- * each year you are allowed to sell either leftmost or rightmost wine on the
- * shelf. You are not allowed to reorder. You have to find the maximum profit
+ * The WineProblem class provides a solution to the wine selling problem.
+ * Given a collection of N wines with different prices, the objective is to maximize profit by selling
+ * one wine each year, considering the constraint that only the leftmost or rightmost wine can be sold
+ * at any given time.
  *
+ * The price of the ith wine is pi, and the selling price increases by a factor of the year in which
+ * it is sold. This class implements three approaches to solve the problem:
+ *
+ * 1. **Recursion**: A straightforward recursive method that computes the maximum profit.
+ *    - Time Complexity: O(2^N)
+ *    - Space Complexity: O(N) due to recursive calls.
+ *
+ * 2. **Top-Down Dynamic Programming (Memoization)**: This approach caches the results of subproblems
+ *    to avoid redundant computations.
+ *    - Time Complexity: O(N^2)
+ *    - Space Complexity: O(N^2) for the storage of results and O(N) for recursion stack.
+ *
+ * 3. **Bottom-Up Dynamic Programming (Tabulation)**: This method builds a table iteratively to
+ *    compute the maximum profit for all possible subproblems.
+ *    - Time Complexity: O(N^2)
+ *    - Space Complexity: O(N^2) for the table.
  */
-public class WineProblem {
+public final class WineProblem {
+    private WineProblem() {
+    }
 
-    // Method 1: Using Recursion
-    // Time Complexity=0(2^N) Space Complexity=Recursion extra space
-    public static int WPRecursion(int[] arr, int si, int ei) {
+    /**
+     * Calculate maximum profit using recursion.
+     *
+     * @param arr Array of wine prices.
+     * @param si  Start index of the wine to consider.
+     * @param ei  End index of the wine to consider.
+     * @return Maximum profit obtainable by selling the wines.
+     */
+    public static int wpRecursion(int[] arr, int si, int ei) {
         int n = arr.length;
         int year = (n - (ei - si + 1)) + 1;
         if (si == ei) {
             return arr[si] * year;
         }
 
-        int start = WPRecursion(arr, si + 1, ei) + arr[si] * year;
-        int end = WPRecursion(arr, si, ei - 1) + arr[ei] * year;
+        int start = wpRecursion(arr, si + 1, ei) + arr[si] * year;
+        int end = wpRecursion(arr, si, ei - 1) + arr[ei] * year;
 
-        int ans = Math.max(start, end);
-
-        return ans;
+        return Math.max(start, end);
     }
 
-    // Method 2: Top-Down DP(Memoization)
-    // Time Complexity=0(N*N) Space Complexity=0(N*N)+Recursion extra space
-    public static int WPTD(int[] arr, int si, int ei, int[][] strg) {
+    /**
+     * Calculate maximum profit using top-down dynamic programming with memoization.
+     *
+     * @param arr  Array of wine prices.
+     * @param si   Start index of the wine to consider.
+     * @param ei   End index of the wine to consider.
+     * @param strg 2D array to store results of subproblems.
+     * @return Maximum profit obtainable by selling the wines.
+     */
+    public static int wptd(int[] arr, int si, int ei, int[][] strg) {
         int n = arr.length;
         int year = (n - (ei - si + 1)) + 1;
         if (si == ei) {
@@ -41,19 +67,26 @@ public class WineProblem {
         if (strg[si][ei] != 0) {
             return strg[si][ei];
         }
-        int start = WPTD(arr, si + 1, ei, strg) + arr[si] * year;
-        int end = WPTD(arr, si, ei - 1, strg) + arr[ei] * year;
+        int start = wptd(arr, si + 1, ei, strg) + arr[si] * year;
+        int end = wptd(arr, si, ei - 1, strg) + arr[ei] * year;
 
         int ans = Math.max(start, end);
-
         strg[si][ei] = ans;
 
         return ans;
     }
 
-    // Method 3: Bottom-Up DP(Tabulation)
-    // Time Complexity=0(N*N/2)->0(N*N) Space Complexity=0(N*N)
-    public static int WPBU(int[] arr) {
+    /**
+     * Calculate maximum profit using bottom-up dynamic programming with tabulation.
+     *
+     * @param arr Array of wine prices.
+     * @throws IllegalArgumentException if the input array is null or empty.
+     * @return Maximum profit obtainable by selling the wines.
+     */
+    public static int wpbu(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Input array cannot be null or empty.");
+        }
         int n = arr.length;
         int[][] strg = new int[n][n];
 
@@ -73,16 +106,4 @@ public class WineProblem {
         }
         return strg[0][n - 1];
     }
-
-    public static void main(String[] args) {
-        int[] arr = { 2, 3, 5, 1, 4 };
-        System.out.println("Method 1: " + WPRecursion(arr, 0, arr.length - 1));
-        System.out.println(
-            "Method 2: " +
-            WPTD(arr, 0, arr.length - 1, new int[arr.length][arr.length])
-        );
-        System.out.println("Method 3: " + WPBU(arr));
-    }
 }
-// Memoization vs Tabulation : https://www.geeksforgeeks.org/tabulation-vs-memoization/
-// Question Link : https://www.geeksforgeeks.org/maximum-profit-sale-wines/

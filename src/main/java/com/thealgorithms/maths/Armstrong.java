@@ -1,29 +1,39 @@
 package com.thealgorithms.maths;
 
 /**
- * An Armstrong number is equal to the sum of the cubes of its digits. For
- * example, 370 is an Armstrong number because 3*3*3 + 7*7*7 + 0*0*0 = 370. An
- * Armstrong number is often called Narcissistic number.
+ * This class checks whether a given number is an Armstrong number or not.
+ * An Armstrong number is a number that is equal to the sum of its own digits,
+ * each raised to the power of the number of digits.
  *
- * @author Vivek
+ * For example, 370 is an Armstrong number because 3^3 + 7^3 + 0^3 = 370.
+ * 1634 is an Armstrong number because 1^4 + 6^4 + 3^4 + 4^4 = 1634.
+ * An Armstrong number is often called a Narcissistic number.
+ *
+ * @author satyabarghav
+ * @modifier rahul katteda - (13/01/2025) - [updated the logic for getting total number of digits]
  */
 public class Armstrong {
 
     /**
-     * Checks whether a given number is an armstrong number or not.
+     * Checks whether a given number is an Armstrong number or not.
      *
-     * @param number number to check
-     * @return {@code true} if given number is armstrong number, {@code false}
-     * otherwise
+     * @param number the number to check
+     * @return {@code true} if the given number is an Armstrong number, {@code false} otherwise
      */
     public boolean isArmstrong(int number) {
-        long sum = 0;
-        long number2 = number;
-        while (number2 > 0) {
-            long mod = number2 % 10;
-            sum += Math.pow(mod, 3);
-            number2 /= 10;
+        if (number < 0) {
+            return false; // Negative numbers cannot be Armstrong numbers
         }
+        long sum = 0;
+        int totalDigits = (int) Math.log10(number) + 1; // get the length of the number (number of digits)
+        long originalNumber = number;
+
+        while (originalNumber > 0) {
+            long digit = originalNumber % 10;
+            sum += (long) Math.pow(digit, totalDigits); // The digit raised to the power of total number of digits and added to the sum.
+            originalNumber /= 10;
+        }
+
         return sum == number;
     }
 }

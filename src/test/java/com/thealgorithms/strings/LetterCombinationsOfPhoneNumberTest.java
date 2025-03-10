@@ -1,46 +1,37 @@
 package com.thealgorithms.strings;
 
-import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LetterCombinationsOfPhoneNumberTest {
 
-    @Test
-    public void letterCombinationsOfPhoneNumber() {
-        LetterCombinationsOfPhoneNumber ob = new LetterCombinationsOfPhoneNumber();
-        ob.generateNumberToCharMap();
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    public void testLetterCombinationsOfPhoneNumber(int[] numbers, List<String> expectedOutput) {
+        assertEquals(expectedOutput, LetterCombinationsOfPhoneNumber.getCombinations(numbers));
+    }
 
-        // ** Test 1 **
-        // Input: digits = ""
-        // Output: []
-        int[] numbers1 = {};
-        List<String> output1 = Arrays.asList("");
-        assertTrue(ob.printWords(numbers1, numbers1.length, 0, "").equals(output1));
+    @ParameterizedTest
+    @MethodSource("wrongInputs")
+    void throwsForWrongInput(int[] numbers) {
+        assertThrows(IllegalArgumentException.class, () -> LetterCombinationsOfPhoneNumber.getCombinations(numbers));
+    }
 
-        // ** Test 2 **
-        // Input: digits = "2"
-        // Output: ["a","b","c"]
-        int[] numbers2 = { 2 };
-        List<String> output2 = Arrays.asList("a", "b", "c");
-        assertTrue(ob.printWords(numbers2, numbers2.length, 0, "").equals(output2));
+    private static Stream<Arguments> provideTestCases() {
+        return Stream.of(Arguments.of(null, List.of("")), Arguments.of(new int[] {}, List.of("")), Arguments.of(new int[] {2}, List.of("a", "b", "c")), Arguments.of(new int[] {2, 3}, List.of("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf")),
+            Arguments.of(new int[] {2, 3, 4}, List.of("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi")),
+            Arguments.of(new int[] {3, 3}, List.of("dd", "de", "df", "ed", "ee", "ef", "fd", "fe", "ff")), Arguments.of(new int[] {8, 4}, List.of("tg", "th", "ti", "ug", "uh", "ui", "vg", "vh", "vi")), Arguments.of(new int[] {2, 0}, List.of("a ", "b ", "c ")),
+            Arguments.of(new int[] {9, 2}, List.of("wa", "wb", "wc", "xa", "xb", "xc", "ya", "yb", "yc", "za", "zb", "zc")), Arguments.of(new int[] {0}, List.of(" ")), Arguments.of(new int[] {1}, List.of("")), Arguments.of(new int[] {2}, List.of("a", "b", "c")),
+            Arguments.of(new int[] {1, 2, 0, 4}, List.of("a g", "a h", "a i", "b g", "b h", "b i", "c g", "c h", "c i")));
+    }
 
-        // ** Test 3 **
-        // Input: digits = "23"
-        // Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-        int[] numbers3 = { 2, 3 };
-        List<String> output3 = Arrays.asList("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf");
-        assertTrue(ob.printWords(numbers3, numbers3.length, 0, "").equals(output3));
-
-        // ** Test 4 **
-        // Input: digits = "234"
-        // Output: ["adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi",
-        // "bdg", "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh",
-        // "cdi", "ceg", "ceh", "cei", "cfg", "cfh", "cfi"]
-        int[] numbers4 = { 2, 3, 4 };
-        List<String> output4 = Arrays.asList("adg", "adh", "adi", "aeg", "aeh", "aei", "afg", "afh", "afi", "bdg",
-                "bdh", "bdi", "beg", "beh", "bei", "bfg", "bfh", "bfi", "cdg", "cdh", "cdi", "ceg", "ceh", "cei", "cfg",
-                "cfh", "cfi");
-        assertTrue(ob.printWords(numbers4, numbers4.length, 0, "").equals(output4));
+    private static Stream<Arguments> wrongInputs() {
+        return Stream.of(Arguments.of(new int[] {-1}), Arguments.of(new int[] {10}), Arguments.of(new int[] {2, 2, -1, 0}), Arguments.of(new int[] {0, 0, 0, 10}));
     }
 }

@@ -1,11 +1,13 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.*;
 import org.junit.jupiter.api.Test;
 
-public class IsomorphicTest {
+public final class IsomorphicTest {
+    private IsomorphicTest() {
+    }
 
     @Test
     public static void main(String[] args) {
@@ -21,11 +23,9 @@ public class IsomorphicTest {
         String str7 = "aaammmnnn";
         String str8 = "ggghhhbbj";
 
-        Isomorphic isomorphic = new Isomorphic();
-
-        assertTrue(isomorphic.checkStrings(str1, str2));
-        assertTrue(isomorphic.checkStrings(str3, str4));
-        assertFalse(isomorphic.checkStrings(str5, str6));
-        assertFalse(isomorphic.checkStrings(str7, str8));
+        assertTrue(Isomorphic.checkStrings(str1, str2));
+        assertTrue(Isomorphic.checkStrings(str3, str4));
+        assertFalse(Isomorphic.checkStrings(str5, str6));
+        assertFalse(Isomorphic.checkStrings(str7, str8));
     }
 }

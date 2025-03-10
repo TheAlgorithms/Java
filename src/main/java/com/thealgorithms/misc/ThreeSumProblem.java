@@ -1,31 +1,17 @@
 package com.thealgorithms.misc;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ThreeSumProblem {
 
-    public static void main(String args[]) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter the target sum ");
-        int ts = scan.nextInt();
-        System.out.print("Enter the number of elements in the array ");
-        int n = scan.nextInt();
-        System.out.println("Enter all your array elements:");
-        int arr[] = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = scan.nextInt();
-        }
-        ThreeSumProblem th = new ThreeSumProblem();
-        System.out.println(
-            "Brute Force Approach\n" + (th.BruteForce(arr, ts)) + "\n"
-        );
-        System.out.println(
-            "Two Pointer Approach\n" + (th.TwoPointer(arr, ts)) + "\n"
-        );
-        System.out.println("Hashmap Approach\n" + (th.Hashmap(arr, ts)));
-    }
-
-    public List<List<Integer>> BruteForce(int[] nums, int target) {
+    public List<List<Integer>> bruteForce(int[] nums, int target) {
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
 
         for (int i = 0; i < nums.length; i++) {
@@ -42,12 +28,11 @@ public class ThreeSumProblem {
                 }
             }
         }
-        arr =
-            new ArrayList<List<Integer>>(new LinkedHashSet<List<Integer>>(arr));
+        arr = new ArrayList<List<Integer>>(new LinkedHashSet<List<Integer>>(arr));
         return arr;
     }
 
-    public List<List<Integer>> TwoPointer(int[] nums, int target) {
+    public List<List<Integer>> twoPointer(int[] nums, int target) {
         Arrays.sort(nums);
         List<List<Integer>> arr = new ArrayList<List<Integer>>();
         int start = 0;
@@ -77,9 +62,9 @@ public class ThreeSumProblem {
         return new ArrayList<List<Integer>>(set);
     }
 
-    public List<List<Integer>> Hashmap(int[] nums, int target) {
+    public List<List<Integer>> hashMap(int[] nums, int target) {
         Arrays.sort(nums);
-        Set<List<Integer>> ts = new HashSet();
+        Set<List<Integer>> ts = new HashSet<>();
         HashMap<Integer, Integer> hm = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
@@ -98,6 +83,6 @@ public class ThreeSumProblem {
                 }
             }
         }
-        return new ArrayList(ts);
+        return new ArrayList<>(ts);
     }
 }

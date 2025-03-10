@@ -1,232 +1,267 @@
 package com.thealgorithms.datastructures.dynamicarray;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * This class implements a dynamic array
+ * This class implements a dynamic array, which can grow or shrink in size
+ * as elements are added or removed. It provides an array-like interface
+ * with methods to add, remove, and access elements, along with iterators
+ * to traverse the elements.
  *
- * @param <E> the type that each index of the array will hold
+ * @param <E> the type of elements that this array can hold
  */
 public class DynamicArray<E> implements Iterable<E> {
 
     private static final int DEFAULT_CAPACITY = 16;
-
-    private int capacity;
     private int size;
+    private int modCount; // Tracks structural modifications for iterator integrity
     private Object[] elements;
 
     /**
-     * constructor
+     * Constructs a new DynamicArray with the specified initial capacity.
      *
-     * @param capacity the starting length of the desired array
+     * @param capacity the initial capacity of the array
+     * @throws IllegalArgumentException if the specified capacity is negative
      */
     public DynamicArray(final int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Capacity cannot be negative.");
+        }
         this.size = 0;
-        this.capacity = capacity;
-        this.elements = new Object[this.capacity];
+        this.modCount = 0;
+        this.elements = new Object[capacity];
     }
 
     /**
-     * No-args constructor
+     * Constructs a new DynamicArray with a default initial capacity.
      */
     public DynamicArray() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Adds an element to the array If full, creates a copy array twice the size
-     * of the current one
+     * Adds an element to the end of the array. If the array is full, it
+     * creates a new array with double the size to accommodate the new element.
      *
-     * @param element the element of type <E> to be added to the array
+     * @param element the element to be added to the array
      */
     public void add(final E element) {
-        if (this.size == this.elements.length) {
-            this.elements =
-                Arrays.copyOf(this.elements, newCapacity(2 * this.capacity));
-        }
-
-        this.elements[this.size] = element;
-        size++;
+        ensureCapacity(size + 1);
+        elements[size++] = element;
+        modCount++; // Increment modification count
     }
 
     /**
-     * Places element of type <E> at the desired index
+     * Places an element at the specified index, expanding capacity if necessary.
      *
-     * @param index the index for the element to be placed
-     * @param element the element to be inserted
+     * @param index   the index at which the element is to be placed
+     * @param element the element to be inserted at the specified index
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the number of elements
      */
     public void put(final int index, E element) {
-        this.elements[index] = element;
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Index cannot be negative.");
+        }
+        ensureCapacity(index + 1);
+        elements[index] = element;
+        if (index >= size) {
+            size = index + 1;
+        }
+        modCount++; // Increment modification count
     }
 
     /**
-     * get method for element at a given index returns null if the index is
-     * empty
+     * Retrieves the element at the specified index.
      *
-     * @param index the desired index of the element
-     * @return <E> the element at the specified index
+     * @param index the index of the element to retrieve
+     * @return the element at the specified index
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the current size
      */
+    @SuppressWarnings("unchecked")
     public E get(final int index) {
-        return getElement(index);
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        return (E) elements[index];
     }
 
     /**
-     * Removes an element from the array
+     * Removes and returns the element at the specified index.
      *
      * @param index the index of the element to be removed
-     * @return <E> the element removed
+     * @return the element that was removed from the array
+     * @throws IndexOutOfBoundsException if index is less than 0 or greater than or equal to the current size
      */
     public E remove(final int index) {
-        final E oldElement = getElement(index);
-        fastRemove(this.elements, index);
-
-        if (this.capacity > DEFAULT_CAPACITY && size * 4 <= this.capacity) {
-            this.elements =
-                Arrays.copyOf(this.elements, newCapacity(this.capacity / 2));
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
+        @SuppressWarnings("unchecked") E oldElement = (E) elements[index];
+        fastRemove(index);
+        modCount++; // Increment modification count
         return oldElement;
     }
 
     /**
-     * get method for size field
+     * Returns the current number of elements in the array.
      *
-     * @return int size
+     * @return the number of elements in the array
      */
     public int getSize() {
-        return this.size;
+        return size;
     }
 
     /**
-     * isEmpty helper method
+     * Checks whether the array is empty.
      *
-     * @return boolean true if the array contains no elements, false otherwise
+     * @return true if the array contains no elements, false otherwise
      */
     public boolean isEmpty() {
-        return this.size == 0;
+        return size == 0;
     }
 
+    /**
+     * Returns a sequential stream with this collection as its source.
+     *
+     * @return a stream of the elements in the array
+     */
     public Stream<E> stream() {
         return StreamSupport.stream(spliterator(), false);
     }
 
-    private void fastRemove(final Object[] elements, final int index) {
-        final int newSize = this.size - 1;
-
-        if (newSize > index) {
-            System.arraycopy(
-                elements,
-                index + 1,
-                elements,
-                index,
-                newSize - index
-            );
+    /**
+     * Ensures that the array has enough capacity to hold the specified number of elements.
+     *
+     * @param minCapacity the minimum capacity required
+     */
+    private void ensureCapacity(int minCapacity) {
+        if (minCapacity > elements.length) {
+            int newCapacity = Math.max(elements.length * 2, minCapacity);
+            elements = Arrays.copyOf(elements, newCapacity);
         }
-
-        elements[this.size = newSize] = null;
-    }
-
-    private E getElement(final int index) {
-        return (E) this.elements[index];
-    }
-
-    private int newCapacity(int capacity) {
-        this.capacity = capacity;
-        return this.capacity;
     }
 
     /**
-     * returns a String representation of this object
+     * Removes the element at the specified index without resizing the array.
+     * This method shifts any subsequent elements to the left and clears the last element.
      *
-     * @return String a String representing the array
+     * @param index the index of the element to remove
+     */
+    private void fastRemove(int index) {
+        int numMoved = size - index - 1;
+        if (numMoved > 0) {
+            System.arraycopy(elements, index + 1, elements, index, numMoved);
+        }
+        elements[--size] = null; // Clear to let GC do its work
+    }
+
+    /**
+     * Returns a string representation of the array, including only the elements that are currently stored.
+     *
+     * @return a string containing the elements in the array
      */
     @Override
     public String toString() {
-        return Arrays.toString(
-            Arrays.stream(this.elements).filter(Objects::nonNull).toArray()
-        );
+        return Arrays.toString(Arrays.copyOf(elements, size));
     }
 
     /**
-     * Creates and returns a new Dynamic Array Iterator
+     * Returns an iterator over the elements in this array in proper sequence.
      *
-     * @return Iterator a Dynamic Array Iterator
+     * @return an Iterator over the elements in the array
      */
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return new DynamicArrayIterator();
     }
 
-    private class DynamicArrayIterator implements Iterator<E> {
+    /**
+     * Private iterator class for the DynamicArray.
+     */
+    private final class DynamicArrayIterator implements Iterator<E> {
 
         private int cursor;
+        private int expectedModCount;
 
+        /**
+         * Constructs a new iterator for the dynamic array.
+         */
+        DynamicArrayIterator() {
+            this.expectedModCount = modCount;
+        }
+
+        /**
+         * Checks if there are more elements in the iteration.
+         *
+         * @return true if there are more elements, false otherwise
+         */
         @Override
         public boolean hasNext() {
-            return this.cursor != size;
+            checkForComodification();
+            return cursor < size;
         }
 
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
         @Override
+        @SuppressWarnings("unchecked")
         public E next() {
-            if (this.cursor > DynamicArray.this.size) {
+            checkForComodification();
+            if (cursor >= size) {
                 throw new NoSuchElementException();
             }
-
-            if (this.cursor > DynamicArray.this.elements.length) {
-                throw new ConcurrentModificationException();
-            }
-
-            final E element = DynamicArray.this.getElement(this.cursor);
-            this.cursor++;
-
-            return element;
+            return (E) elements[cursor++];
         }
 
+        /**
+         * Removes the last element returned by this iterator.
+         *
+         * @throws IllegalStateException if the next method has not yet been called, or the remove method has already been called after the last call to the next method
+         */
         @Override
         public void remove() {
-            if (this.cursor < 0) {
-                throw new IllegalStateException();
+            if (cursor <= 0) {
+                throw new IllegalStateException("Cannot remove element before calling next()");
             }
-
-            DynamicArray.this.remove(this.cursor);
-            this.cursor--;
+            checkForComodification();
+            DynamicArray.this.remove(--cursor);
+            expectedModCount = modCount;
         }
 
+        /**
+         * Checks for concurrent modifications to the array during iteration.
+         *
+         * @throws ConcurrentModificationException if the array has been modified structurally
+         */
+        private void checkForComodification() {
+            if (modCount != expectedModCount) {
+                throw new ConcurrentModificationException();
+            }
+        }
+
+        /**
+         * Performs the given action for each remaining element in the iterator until all elements have been processed.
+         *
+         * @param action the action to be performed for each element
+         * @throws NullPointerException if the specified action is null
+         */
         @Override
         public void forEachRemaining(Consumer<? super E> action) {
             Objects.requireNonNull(action);
-
-            for (int i = 0; i < DynamicArray.this.size; i++) {
-                action.accept(DynamicArray.this.getElement(i));
+            while (hasNext()) {
+                action.accept(next());
             }
-        }
-    }
-
-    /**
-     * This class is the driver for the DynamicArray<E> class it tests a variety
-     * of methods and prints the output
-     */
-    public static void main(String[] args) {
-        DynamicArray<String> names = new DynamicArray<>();
-        names.add("Peubes");
-        names.add("Marley");
-
-        for (String name : names) {
-            System.out.println(name);
-        }
-
-        names.stream().forEach(System.out::println);
-
-        System.out.println(names);
-
-        System.out.println(names.getSize());
-
-        names.remove(0);
-
-        for (String name : names) {
-            System.out.println(name);
         }
     }
 }

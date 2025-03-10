@@ -1,14 +1,16 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class PerfectNumberTest {
 
     @Test
     public void perfectNumber() {
-        int trueTestCases[] = { 6, 28, 496, 8128, 33550336 };
-        int falseTestCases[] = { -6, 0, 1, 9, 123 };
+        int[] trueTestCases = {6, 28, 496, 8128, 33550336};
+        int[] falseTestCases = {-6, 0, 1, 9, 123};
         for (Integer n : trueTestCases) {
             assertTrue(PerfectNumber.isPerfectNumber(n));
             assertTrue(PerfectNumber.isPerfectNumber2(n));

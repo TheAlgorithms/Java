@@ -15,16 +15,17 @@ class Graph<E extends Comparable<E>> {
 
         E name;
 
-        public Node(E name) {
+        Node(E name) {
             this.name = name;
         }
     }
 
     class Edge {
 
-        Node startNode, endNode;
+        Node startNode;
+        Node endNode;
 
-        public Edge(Node startNode, Node endNode) {
+        Edge(Node startNode, Node endNode) {
             this.startNode = startNode;
             this.endNode = endNode;
         }
@@ -33,7 +34,7 @@ class Graph<E extends Comparable<E>> {
     ArrayList<Edge> edgeList;
     ArrayList<Node> nodeList;
 
-    public Graph() {
+    Graph() {
         edgeList = new ArrayList<Edge>();
         nodeList = new ArrayList<Node>();
     }
@@ -46,7 +47,8 @@ class Graph<E extends Comparable<E>> {
      * @param endNode the ending Node from the edge
      */
     public void addEdge(E startNode, E endNode) {
-        Node start = null, end = null;
+        Node start = null;
+        Node end = null;
         for (Node node : nodeList) {
             if (startNode.compareTo(node.name) == 0) {
                 start = node;
@@ -79,8 +81,7 @@ class Graph<E extends Comparable<E>> {
         Set<Node> markedNodes = new HashSet<Node>();
 
         for (Node n : nodeList) {
-            if (!markedNodes.contains(n)) {
-                markedNodes.add(n);
+            if (markedNodes.add(n)) {
                 markedNodes.addAll(depthFirstSearch(n, new ArrayList<Node>()));
                 count++;
             }
@@ -107,7 +108,9 @@ class Graph<E extends Comparable<E>> {
     }
 }
 
-public class ConnectedComponent {
+public final class ConnectedComponent {
+    private ConnectedComponent() {
+    }
 
     public static void main(String[] args) {
         Graph<Character> graphChars = new Graph<>();
@@ -137,11 +140,7 @@ public class ConnectedComponent {
         graphInts.addEdge(8, 10);
         graphInts.addEdge(10, 8);
 
-        System.out.println(
-            "Amount of different char-graphs: " + graphChars.countGraphs()
-        );
-        System.out.println(
-            "Amount of different int-graphs: " + graphInts.countGraphs()
-        );
+        System.out.println("Amount of different char-graphs: " + graphChars.countGraphs());
+        System.out.println("Amount of different int-graphs: " + graphInts.countGraphs());
     }
 }

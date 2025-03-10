@@ -1,7 +1,7 @@
 ## Linked List
 ### Description
 
-LinkedList is a data structure in which data is stored in a linear manner. It usually contains a data field and a link to the memory location of the next mode.
+LinkedList is a data structure in which data is stored in a linear manner. It usually contains a data field and a link to the memory location of the next node.
 
 ### Structure
 
@@ -27,6 +27,6 @@ The `next` variable points to the next node in the data structure and value stor
 3. `CountSinglyLinkedListRecursion.java`: Recursively counts the size of a list.
 4. `CreateAndDetectLoop.java` : Create and detect a loop in a linked list.
 5. `DoublyLinkedList.java` : A modification of singly linked list which has a `prev` pointer to point to the previous node.
-6. `Merge_K_SortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
+6. `MergeKSortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
 7. `RandomNode.java` : Selects a random node from given linked list and diplays it.
 8. `SkipList.java` : Data Structure used for storing a sorted list of elements with help of a Linked list hierarchy that connects to subsequences of elements.

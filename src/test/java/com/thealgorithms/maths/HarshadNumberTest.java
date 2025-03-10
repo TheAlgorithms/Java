@@ -1,13 +1,15 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 public class HarshadNumberTest {
 
     @Test
     public void harshadNumber() {
-        
+
         assertTrue(HarshadNumber.isHarshad(18));
         assertFalse(HarshadNumber.isHarshad(-18));
         assertFalse(HarshadNumber.isHarshad(19));

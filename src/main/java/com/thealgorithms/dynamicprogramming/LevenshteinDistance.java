@@ -1,59 +1,84 @@
 package com.thealgorithms.dynamicprogramming;
 
-/**
- * @author Kshitij VERMA (github.com/kv19971) LEVENSHTEIN DISTANCE dyamic
- * programming implementation to show the difference between two strings
- * (https://en.wikipedia.org/wiki/Levenshtein_distance)
- */
-public class LevenshteinDistance {
+import java.util.stream.IntStream;
 
-    private static int minimum(int a, int b, int c) {
-        if (a < b && a < c) {
-            return a;
-        } else if (b < a && b < c) {
-            return b;
-        } else {
-            return c;
-        }
+/**
+ * Provides functions to calculate the Levenshtein distance between two strings.
+ *
+ * The Levenshtein distance is a measure of the similarity between two strings by calculating the minimum number of single-character
+ * edits (insertions, deletions, or substitutions) required to change one string into the other.
+ */
+public final class LevenshteinDistance {
+    private LevenshteinDistance() {
     }
 
-    private static int calculate_distance(String a, String b) {
-        int len_a = a.length() + 1;
-        int len_b = b.length() + 1;
-        int[][] distance_mat = new int[len_a][len_b];
-        for (int i = 0; i < len_a; i++) {
-            distance_mat[i][0] = i;
+    /**
+     * Calculates the Levenshtein distance between two strings using a naive dynamic programming approach.
+     *
+     * This function computes the Levenshtein distance by constructing a dynamic programming matrix and iteratively filling it in.
+     * It follows the standard top-to-bottom, left-to-right approach for filling in the matrix.
+     *
+     * @param string1 The first string.
+     * @param string2 The second string.
+     * @return The Levenshtein distance between the two input strings.
+     *
+     * Time complexity: O(nm),
+     * Space complexity: O(nm),
+     *
+     * where n and m are lengths of `string1` and `string2`.
+     *
+     * Note that this implementation uses a straightforward dynamic programming approach without any space optimization.
+     * It may consume more memory for larger input strings compared to the optimized version.
+     */
+    public static int naiveLevenshteinDistance(final String string1, final String string2) {
+        int[][] distanceMatrix = IntStream.rangeClosed(0, string1.length()).mapToObj(i -> IntStream.rangeClosed(0, string2.length()).map(j -> (i == 0) ? j : (j == 0) ? i : 0).toArray()).toArray(int[][] ::new);
+
+        IntStream.range(1, string1.length() + 1).forEach(i -> IntStream.range(1, string2.length() + 1).forEach(j -> {
+            final int cost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? 0 : 1;
+            distanceMatrix[i][j] = Math.min(distanceMatrix[i - 1][j - 1] + cost, Math.min(distanceMatrix[i][j - 1] + 1, distanceMatrix[i - 1][j] + 1));
+        }));
+
+        return distanceMatrix[string1.length()][string2.length()];
+    }
+
+    /**
+     * Calculates the Levenshtein distance between two strings using an optimized dynamic programming approach.
+     *
+     * This edit distance is defined as 1 point per insertion, substitution, or deletion required to make the strings equal.
+     *
+     * @param string1 The first string.
+     * @param string2 The second string.
+     * @return The Levenshtein distance between the two input strings.
+     *
+     * Time complexity: O(nm),
+     * Space complexity: O(n),
+     *
+     * where n and m are lengths of `string1` and `string2`.
+     *
+     * Note that this implementation utilizes an optimized dynamic programming approach, significantly reducing the space complexity from O(nm) to O(n), where n and m are the lengths of `string1` and `string2`.
+     *
+     * Additionally, it minimizes space usage by leveraging the shortest string horizontally and the longest string vertically in the computation matrix.
+     */
+    public static int optimizedLevenshteinDistance(final String string1, final String string2) {
+        if (string1.isEmpty()) {
+            return string2.length();
         }
-        for (int j = 0; j < len_b; j++) {
-            distance_mat[0][j] = j;
-        }
-        for (int i = 0; i < len_a; i++) {
-            for (int j = 0; j < len_b; j++) {
-                int cost;
-                if (a.charAt(i) == b.charAt(j)) {
-                    cost = 0;
-                } else {
-                    cost = 1;
-                }
-                distance_mat[i][j] =
-                    minimum(
-                        distance_mat[i - 1][j],
-                        distance_mat[i - 1][j - 1],
-                        distance_mat[i][j - 1]
-                    ) +
-                    cost;
+
+        int[] previousDistance = IntStream.rangeClosed(0, string1.length()).toArray();
+
+        for (int j = 1; j <= string2.length(); j++) {
+            int prevSubstitutionCost = previousDistance[0];
+            previousDistance[0] = j;
+
+            for (int i = 1; i <= string1.length(); i++) {
+                final int deletionCost = previousDistance[i] + 1;
+                final int insertionCost = previousDistance[i - 1] + 1;
+                final int substitutionCost = (string1.charAt(i - 1) == string2.charAt(j - 1)) ? prevSubstitutionCost : prevSubstitutionCost + 1;
+                prevSubstitutionCost = previousDistance[i];
+                previousDistance[i] = Math.min(deletionCost, Math.min(insertionCost, substitutionCost));
             }
         }
-        return distance_mat[len_a - 1][len_b - 1];
-    }
 
-    public static void main(String[] args) {
-        String a = ""; // enter your string here
-        String b = ""; // enter your string here
-
-        System.out.print(
-            "Levenshtein distance between " + a + " and " + b + " is: "
-        );
-        System.out.println(calculate_distance(a, b));
+        return previousDistance[string1.length()];
     }
 }

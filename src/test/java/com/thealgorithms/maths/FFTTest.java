@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,7 @@ class FFTTest {
         assertNotEquals(2.0, add);
     }
 
-    // Testing the function substract, assertEqual test
+    // Testing the function subtract, assertEqual test
     @Test
     void subtractTest() {
         FFT.Complex complex1 = new FFT.Complex(2.0, 2.0);

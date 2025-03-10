@@ -45,7 +45,7 @@ public class VectorCrossProduct {
     int y;
     int z;
 
-    //Default constructor, initialises all three Direction Ratios to 0
+    // Default constructor, initialises all three Direction Ratios to 0
     VectorCrossProduct() {
         x = 0;
         y = 0;
@@ -55,14 +55,14 @@ public class VectorCrossProduct {
     /**
      * constructor, initialises Vector with given Direction Ratios
      *
-     * @param _x set to x
-     * @param _y set to y
-     * @param _z set to z
+     * @param vectorX set to x
+     * @param vectorY set to y
+     * @param vectorZ set to z
      */
-    VectorCrossProduct(int _x, int _y, int _z) {
-        x = _x;
-        y = _y;
-        z = _z;
+    VectorCrossProduct(int vectorX, int vectorY, int vectorZ) {
+        x = vectorX;
+        y = vectorY;
+        z = vectorZ;
     }
 
     /**
@@ -110,16 +110,16 @@ public class VectorCrossProduct {
     }
 
     static void test() {
-        //Create two vectors
-        VectorCrossProduct A = new VectorCrossProduct(1, -2, 3);
-        VectorCrossProduct B = new VectorCrossProduct(2, 0, 3);
+        // Create two vectors
+        VectorCrossProduct a = new VectorCrossProduct(1, -2, 3);
+        VectorCrossProduct b = new VectorCrossProduct(2, 0, 3);
 
-        //Determine cross product
-        VectorCrossProduct crossProd = A.crossProduct(B);
+        // Determine cross product
+        VectorCrossProduct crossProd = a.crossProduct(b);
         crossProd.displayVector();
 
-        //Determine dot product
-        int dotProd = A.dotProduct(B);
-        System.out.println("Dot Product of A and B: " + dotProd);
+        // Determine dot product
+        int dotProd = a.dotProduct(b);
+        System.out.println("Dot Product of a and b: " + dotProd);
     }
 }

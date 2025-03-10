@@ -1,6 +1,5 @@
 package com.thealgorithms.searches;
 
-import java.util.Arrays;
 
 public class SearchInARowAndColWiseSortedMatrix {
     /**
@@ -13,8 +12,10 @@ public class SearchInARowAndColWiseSortedMatrix {
 
     public int[] search(int[][] matrix, int value) {
         int n = matrix.length;
+      
         // This variable iterates over rows
         int i = 0;
+      
         // This variable iterates over columns
         int j = n - 1;
         int[] result = { -1, -1 };

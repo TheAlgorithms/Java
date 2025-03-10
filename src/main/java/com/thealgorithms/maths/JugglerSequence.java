@@ -11,7 +11,9 @@ import java.util.List;
  *
  * */
 
-public class JugglerSequence {
+public final class JugglerSequence {
+    private JugglerSequence() {
+    }
 
     /**
      * This method prints juggler sequence starting with the number in the parameter
@@ -35,10 +37,7 @@ public class JugglerSequence {
             if (n % 2 == 0) {
                 temp = (int) Math.floor(Math.sqrt(n));
             } else {
-                temp =
-                    (int) Math.floor(
-                        Math.sqrt(n) * Math.sqrt(n) * Math.sqrt(n)
-                    );
+                temp = (int) Math.floor(Math.sqrt(n) * Math.sqrt(n) * Math.sqrt(n));
             }
             n = temp;
             seq.add(n + "");

@@ -20,7 +20,9 @@ import java.util.Scanner;
  * <p>
  * Time Complexity: O(logn)
  */
-public class BrianKernighanAlgorithm {
+public final class BrianKernighanAlgorithm {
+    private BrianKernighanAlgorithm() {
+    }
 
     /**
      * @param num: number in which we count the set bits
@@ -38,7 +40,7 @@ public class BrianKernighanAlgorithm {
     /**
      * @param args : command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
         int setBitCount = countSetBits(num);

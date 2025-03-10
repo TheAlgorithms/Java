@@ -1,67 +1,51 @@
 package com.thealgorithms.sorts;
 
-import java.util.Random;
-
-// https://en.wikipedia.org/wiki/Odd%E2%80%93even_sort
-public class OddEvenSort {
-
-    public static void main(String[] args) {
-        int[] arr = new int[100];
-
-        Random random = new Random();
-
-        // Print out unsorted elements
-        for (int i = 0; i < arr.length; ++i) {
-            arr[i] = random.nextInt(100) - 50;
-            System.out.println(arr[i]);
-        }
-        System.out.println("--------------");
-
-        oddEvenSort(arr);
-
-        //Print Sorted elements
-        for (int i = 0; i < arr.length - 1; ++i) {
-            System.out.println(arr[i]);
-            assert arr[i] <= arr[i + 1];
-        }
-    }
+/**
+ * OddEvenSort class implements the SortAlgorithm interface using the odd-even sort technique.
+ * Odd-even sort is a comparison sort related to bubble sort.
+ * It operates by comparing all (odd, even)-indexed pairs of adjacent elements in the list and, if a pair is in the wrong order, swapping them.
+ * The next step repeats this process for (even, odd)-indexed pairs. This process continues until the list is sorted.
+ *
+ */
+public final class OddEvenSort implements SortAlgorithm {
 
     /**
-     * Odd Even Sort algorithms implements
+     * Sorts the given array using the Odd-Even Sort algorithm.
      *
-     * @param arr the array contains elements
+     * @param <T> the type of elements in the array, which must implement the Comparable interface
+     * @param array the array to be sorted
+     * @return the sorted array
      */
-    public static void oddEvenSort(int[] arr) {
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
         boolean sorted = false;
         while (!sorted) {
-            sorted = true;
-
-            for (int i = 1; i < arr.length - 1; i += 2) {
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i + 1);
-                    sorted = false;
-                }
-            }
-
-            for (int i = 0; i < arr.length - 1; i += 2) {
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i + 1);
-                    sorted = false;
-                }
-            }
+            sorted = performOddSort(array);
+            sorted = performEvenSort(array) && sorted;
         }
+
+        return array;
     }
 
-    /**
-     * Helper function to swap two array values.
-     *
-     * @param arr the array contains elements
-     * @param i the first index to be swapped
-     * @param j the second index to be swapped
-     */
-    private static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    private <T extends Comparable<T>> boolean performOddSort(T[] array) {
+        boolean sorted = true;
+        for (int i = 1; i < array.length - 1; i += 2) {
+            if (array[i].compareTo(array[i + 1]) > 0) {
+                SortUtils.swap(array, i, i + 1);
+                sorted = false;
+            }
+        }
+        return sorted;
+    }
+
+    private <T extends Comparable<T>> boolean performEvenSort(T[] array) {
+        boolean sorted = true;
+        for (int i = 0; i < array.length - 1; i += 2) {
+            if (array[i].compareTo(array[i + 1]) > 0) {
+                SortUtils.swap(array, i, i + 1);
+                sorted = false;
+            }
+        }
+        return sorted;
     }
 }

@@ -1,10 +1,10 @@
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Scanner;
 
 /*
-    Problem Statement: 
-    Given an array, find out how many times it has to been rotated 
+    Problem Statement:
+    Given an array, find out how many times it has to been rotated
     from its initial sorted position.
     Input-Output:
     Eg. [11,12,15,18,2,5,6,8]
@@ -12,18 +12,22 @@ import java.util.*;
     (One rotation means putting the first element to the end)
     Note: The array cannot contain duplicates
 
-    Logic: 
+    Logic:
     The position of the minimum element will give the number of times the array has been rotated
     from its initial sorted position.
-    Eg. For [2,5,6,8,11,12,15,18], 1 rotation gives [5,6,8,11,12,15,18,2], 2 rotations [6,8,11,12,15,18,2,5] and so on.
-    Finding the minimum element will take O(N) time but, we can  use Binary Search to find the mimimum element, we can reduce the complexity to O(log N).
-    If we look at the rotated array, to identify the minimum element (say a[i]), we observe that  a[i-1]>a[i]<a[i+1].
+    Eg. For [2,5,6,8,11,12,15,18], 1 rotation gives [5,6,8,11,12,15,18,2], 2 rotations
+   [6,8,11,12,15,18,2,5] and so on. Finding the minimum element will take O(N) time but, we can  use
+   Binary Search to find the minimum element, we can reduce the complexity to O(log N). If we look
+   at the rotated array, to identify the minimum element (say a[i]), we observe that
+   a[i-1]>a[i]<a[i+1].
 
-    Some other test cases: 
+    Some other test cases:
     1. [1,2,3,4] Number of rotations: 0 or 4(Both valid)
     2. [15,17,2,3,5] Number of rotations: 3
  */
-class HowManyTimesRotated {
+final class HowManyTimesRotated {
+    private HowManyTimesRotated() {
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -33,9 +37,7 @@ class HowManyTimesRotated {
             a[i] = sc.nextInt();
         }
 
-        System.out.println(
-            "The array has been rotated " + rotated(a) + " times"
-        );
+        System.out.println("The array has been rotated " + rotated(a) + " times");
         sc.close();
     }
 

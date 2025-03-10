@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 public class ShellSort implements SortAlgorithm {
 
     /**
@@ -13,36 +11,59 @@ public class ShellSort implements SortAlgorithm {
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] array) {
-        int length = array.length;
-        int gap = 1;
-
-        /* Calculate gap for optimization purpose */
-        while (gap < length / 3) {
-            gap = 3 * gap + 1;
+        if (array.length == 0) {
+            return array;
         }
 
-        for (; gap > 0; gap /= 3) {
-            for (int i = gap; i < length; i++) {
-                int j;
-                T temp = array[i];
-                for (j = i; j >= gap && less(temp, array[j - gap]); j -= gap) {
-                    array[j] = array[j - gap];
-                }
-                array[j] = temp;
-            }
+        int gap = calculateInitialGap(array.length);
+
+        while (gap > 0) {
+            performGapInsertionSort(array, gap);
+            gap = calculateNextGap(gap);
         }
+
         return array;
     }
 
-    /* Driver Code */
-    public static void main(String[] args) {
-        Integer[] toSort = { 4, 23, 6, 78, 1, 54, 231, 9, 12 };
-
-        ShellSort sort = new ShellSort();
-        sort.sort(toSort);
-        for (int i = 0; i < toSort.length - 1; ++i) {
-            assert toSort[i] <= toSort[i + 1];
+    /**
+     * Calculates the initial gap value using the Knuth sequence.
+     *
+     * @param length the length of the array.
+     * @return the initial gap value.
+     */
+    private int calculateInitialGap(final int length) {
+        int gap = 1;
+        while (gap < length / 3) {
+            gap = 3 * gap + 1;
         }
-        print(toSort);
+        return gap;
+    }
+
+    /**
+     * Calculates the next gap value.
+     *
+     * @param currentGap the current gap value.
+     * @return the next gap value.
+     */
+    private int calculateNextGap(final int currentGap) {
+        return currentGap / 3;
+    }
+
+    /**
+     * Performs an insertion sort for the specified gap value.
+     *
+     * @param array the array to be sorted.
+     * @param gap the current gap value.
+     * @param <T> the type of elements in the array.
+     */
+    private <T extends Comparable<T>> void performGapInsertionSort(final T[] array, final int gap) {
+        for (int i = gap; i < array.length; i++) {
+            T temp = array[i];
+            int j;
+            for (j = i; j >= gap && SortUtils.less(temp, array[j - gap]); j -= gap) {
+                array[j] = array[j - gap];
+            }
+            array[j] = temp;
+        }
     }
 }

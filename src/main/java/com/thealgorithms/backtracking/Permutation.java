@@ -5,9 +5,11 @@ import java.util.List;
 
 /**
  * Finds all permutations of given array
- * @author Alan Piao (https://github.com/cpiao3)
+ * @author Alan Piao (<a href="https://github.com/cpiao3">Git-Alan Piao</a>)
  */
-public class Permutation {
+public final class Permutation {
+    private Permutation() {
+    }
 
     /**
      * Find all permutations of given array using backtracking

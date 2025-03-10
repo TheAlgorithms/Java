@@ -1,0 +1,24 @@
+{
+    "report-block-list-path-regex": [
+        "src/main/java/com/thealgorithms/ciphers/a5/CompositeLFSR.java",
+        "src/main/java/com/thealgorithms/datastructures/crdt/GCounter.java",
+        "src/main/java/com/thealgorithms/datastructures/crdt/PNCounter.java",
+        "src/main/java/com/thealgorithms/datastructures/graphs/KahnsAlgorithm.java",
+        "src/main/java/com/thealgorithms/datastructures/heaps/GenericHeap.java",
+        "src/main/java/com/thealgorithms/datastructures/lists/DoublyLinkedList.java",
+        "src/main/java/com/thealgorithms/datastructures/trees/CreateBinaryTreeFromInorderPreorder.java",
+        "src/main/java/com/thealgorithms/divideandconquer/ClosestPair.java",
+        "src/main/java/com/thealgorithms/dynamicprogramming/Fibonacci.java",
+        "src/main/java/com/thealgorithms/maths/SimpsonIntegration.java",
+        "src/main/java/com/thealgorithms/others/Dijkstra.java",
+        "src/main/java/com/thealgorithms/sorts/TopologicalSort.java",
+        "src/main/java/com/thealgorithms/strings/AhoCorasick.java",
+        "src/test/java/com/thealgorithms/datastructures/caches/LRUCacheTest.java",
+        "src/test/java/com/thealgorithms/datastructures/lists/SkipListTest.java",
+        "src/test/java/com/thealgorithms/datastructures/trees/KDTreeTest.java",
+        "src/test/java/com/thealgorithms/datastructures/trees/LazySegmentTreeTest.java",
+        "src/test/java/com/thealgorithms/searches/QuickSelectTest.java",
+        "src/test/java/com/thealgorithms/stacks/PostfixToInfixTest.java",
+        "src/test/java/com/thealgorithms/strings/HorspoolSearchTest.java"
+    ]
+}

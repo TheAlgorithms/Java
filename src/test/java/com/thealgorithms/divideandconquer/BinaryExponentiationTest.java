@@ -1,6 +1,6 @@
 package com.thealgorithms.divideandconquer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +35,4 @@ public class BinaryExponentiationTest {
         assertEquals(1, new BinaryExponentiation().power(1, 10000000000000000L));
         assertEquals(1, new BinaryExponentiation().power(1, 100000000000000000L));
     }
-
 }

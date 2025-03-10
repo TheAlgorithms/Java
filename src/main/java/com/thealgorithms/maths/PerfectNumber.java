@@ -8,7 +8,9 @@ package com.thealgorithms.maths;
  *
  * link:https://en.wikipedia.org/wiki/Perfect_number
  */
-public class PerfectNumber {
+public final class PerfectNumber {
+    private PerfectNumber() {
+    }
 
     /**
      * Check if {@code number} is perfect number or not
@@ -17,8 +19,9 @@ public class PerfectNumber {
      * @return {@code true} if {@code number} is perfect number, otherwise false
      */
     public static boolean isPerfectNumber(int number) {
-        if (number <= 0)
+        if (number <= 0) {
             return false;
+        }
         int sum = 0;
         /* sum of its positive divisors */
         for (int i = 1; i < number; ++i) {
@@ -28,7 +31,7 @@ public class PerfectNumber {
         }
         return sum == number;
     }
-    
+
     /**
      * Check if {@code n} is perfect number or not
      *
@@ -36,11 +39,12 @@ public class PerfectNumber {
      * @return {@code true} if {@code number} is perfect number, otherwise false
      */
     public static boolean isPerfectNumber2(int n) {
-        if (n <= 0)
+        if (n <= 0) {
             return false;
+        }
         int sum = 1;
         double root = Math.sqrt(n);
-        
+
         /*
          * We can get the factors after the root by dividing number by its factors
          * before the root.
@@ -55,10 +59,12 @@ public class PerfectNumber {
                 sum += i + n / i;
             }
         }
-        
-        // if n is a perfect square then its root was added twice in above loop, so subtracting root from sum
-        if (root == (int) root)
+
+        // if n is a perfect square then its root was added twice in above loop, so subtracting root
+        // from sum
+        if (root == (int) root) {
             sum -= root;
+        }
 
         return sum == n;
     }

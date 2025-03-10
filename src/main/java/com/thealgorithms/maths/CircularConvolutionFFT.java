@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Class for circular convolution of two discrete signals using the convolution
@@ -9,7 +10,9 @@ import java.util.ArrayList;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class CircularConvolutionFFT {
+public final class CircularConvolutionFFT {
+    private CircularConvolutionFFT() {
+    }
 
     /**
      * This method pads the signal with zeros until it reaches the new size.
@@ -17,7 +20,7 @@ public class CircularConvolutionFFT {
      * @param x The signal to be padded.
      * @param newSize The new size of the signal.
      */
-    private static void padding(ArrayList<FFT.Complex> x, int newSize) {
+    private static void padding(Collection<FFT.Complex> x, int newSize) {
         if (x.size() < newSize) {
             int diff = newSize - x.size();
             for (int i = 0; i < diff; i++) {
@@ -38,15 +41,13 @@ public class CircularConvolutionFFT {
      * @param b The other signal.
      * @return The convolved signal.
      */
-    public static ArrayList<FFT.Complex> fftCircularConvolution(
-        ArrayList<FFT.Complex> a,
-        ArrayList<FFT.Complex> b
-    ) {
+    public static ArrayList<FFT.Complex> fftCircularConvolution(ArrayList<FFT.Complex> a, ArrayList<FFT.Complex> b) {
         int convolvedSize = Math.max(a.size(), b.size()); // The two signals must have the same size equal to the bigger one
         padding(a, convolvedSize); // Zero padding the smaller signal
         padding(b, convolvedSize);
 
-        /* Find the FFTs of both signal. Here we use the Bluestein algorithm because we want the FFT to have the same length with the signal and not bigger */
+        /* Find the FFTs of both signal. Here we use the Bluestein algorithm because we want the FFT
+         * to have the same length with the signal and not bigger */
         FFTBluestein.fftBluestein(a, false);
         FFTBluestein.fftBluestein(b, false);
         ArrayList<FFT.Complex> convolved = new ArrayList<>();

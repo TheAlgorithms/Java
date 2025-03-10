@@ -12,9 +12,11 @@ import java.util.Queue;
  *
  * @author Unknown
  */
-public class MatrixGraphs {
+public final class MatrixGraphs {
+    private MatrixGraphs() {
+    }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(10);
         graph.addEdge(1, 2);
         graph.addEdge(1, 5);
@@ -46,17 +48,17 @@ class AdjacencyMatrixGraph {
     /**
      * The number of vertices in the graph
      */
-    private int _numberOfVertices;
+    private int vertexCount;
 
     /**
      * The number of edges in the graph
      */
-    private int _numberOfEdges;
+    private int edgeCount;
 
     /**
      * The adjacency matrix for the graph
      */
-    private int[][] _adjacency;
+    private int[][] adjMatrix;
 
     /**
      * Static variables to define whether or not an edge exists in the adjacency
@@ -68,12 +70,10 @@ class AdjacencyMatrixGraph {
     /**
      * Constructor
      */
-    public AdjacencyMatrixGraph(int givenNumberOfVertices) {
+    AdjacencyMatrixGraph(int givenNumberOfVertices) {
         this.setNumberOfVertices(givenNumberOfVertices);
         this.setNumberOfEdges(0);
-        this.setAdjacency(
-                new int[givenNumberOfVertices][givenNumberOfVertices]
-            );
+        this.setAdjacency(new int[givenNumberOfVertices][givenNumberOfVertices]);
         for (int i = 0; i < givenNumberOfVertices; i++) {
             for (int j = 0; j < givenNumberOfVertices; j++) {
                 this.adjacency()[i][j] = AdjacencyMatrixGraph.EDGE_NONE;
@@ -87,35 +87,35 @@ class AdjacencyMatrixGraph {
      * @param newNumberOfVertices the new number of vertices
      */
     private void setNumberOfVertices(int newNumberOfVertices) {
-        this._numberOfVertices = newNumberOfVertices;
+        this.vertexCount = newNumberOfVertices;
     }
 
     /**
-     * Getter for `this._numberOfVertices`
+     * Getter for `this.vertexCount`
      *
      * @return the number of vertices in the graph
      */
     public int numberOfVertices() {
-        return this._numberOfVertices;
+        return this.vertexCount;
     }
 
     /**
      * Updates the number of edges in the graph
      *
-     * @param newNumberOfEdges
+     * @param newNumberOfEdges the new number of edges
      *
      */
     private void setNumberOfEdges(int newNumberOfEdges) {
-        this._numberOfEdges = newNumberOfEdges;
+        this.edgeCount = newNumberOfEdges;
     }
 
     /**
-     * Getter for `this._numberOfEdges`
+     * Getter for `this.edgeCount`
      *
      * @return the number of edges
      */
     public int numberOfEdges() {
-        return this._numberOfEdges;
+        return this.edgeCount;
     }
 
     /**
@@ -124,7 +124,7 @@ class AdjacencyMatrixGraph {
      * @param newAdjacency the new adjaceny matrix
      */
     private void setAdjacency(int[][] newAdjacency) {
-        this._adjacency = newAdjacency;
+        this.adjMatrix = newAdjacency;
     }
 
     /**
@@ -133,7 +133,7 @@ class AdjacencyMatrixGraph {
      * @return the adjacency matrix
      */
     private int[][] adjacency() {
-        return this._adjacency;
+        return this.adjMatrix;
     }
 
     /**
@@ -154,11 +154,7 @@ class AdjacencyMatrixGraph {
      * @return whether or not the vertex exists
      */
     public boolean vertexDoesExist(int aVertex) {
-        if (aVertex >= 0 && aVertex < this.numberOfVertices()) {
-            return true;
-        } else {
-            return false;
-        }
+        return aVertex >= 0 && aVertex < this.numberOfVertices();
     }
 
     /**
@@ -206,7 +202,7 @@ class AdjacencyMatrixGraph {
      * exists and is removed
      */
     public boolean removeEdge(int from, int to) {
-        if (!this.vertexDoesExist(from) || !this.vertexDoesExist(to)) {
+        if (this.vertexDoesExist(from) && this.vertexDoesExist(to)) {
             if (this.adjacencyOfEdgeDoesExist(from, to)) {
                 this.adjacency()[from][to] = AdjacencyMatrixGraph.EDGE_NONE;
                 this.adjacency()[to][from] = AdjacencyMatrixGraph.EDGE_NONE;
@@ -226,15 +222,15 @@ class AdjacencyMatrixGraph {
      */
     public List<Integer> depthFirstOrder(int startVertex) {
         // If the startVertex is invalid, return an empty list
-        if (startVertex >= _numberOfVertices || startVertex < 0) {
-            return new ArrayList<Integer>();
+        if (startVertex >= vertexCount || startVertex < 0) {
+            return new ArrayList<>();
         }
 
         // Create an array to track the visited vertices
-        boolean[] visited = new boolean[_numberOfVertices];
+        boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the order of our traversal
-        ArrayList<Integer> orderList = new ArrayList<Integer>();
+        ArrayList<Integer> orderList = new ArrayList<>();
 
         // Perform our DFS algorithm
         depthFirstOrder(startVertex, visited, orderList);
@@ -251,11 +247,7 @@ class AdjacencyMatrixGraph {
      * has been visited
      * @param orderList the list to add vertices to as they are visited
      */
-    private void depthFirstOrder(
-        int currentVertex,
-        boolean[] visited,
-        List<Integer> orderList
-    ) {
+    private void depthFirstOrder(int currentVertex, boolean[] visited, List<Integer> orderList) {
         // If this vertex has already been visited, do nothing and return
         if (visited[currentVertex]) {
             return;
@@ -267,12 +259,9 @@ class AdjacencyMatrixGraph {
         orderList.add(currentVertex);
 
         // Get the adjacency array for this vertex
-        int[] adjacent = _adjacency[currentVertex];
-        for (
-            int i = 0;
-            i < adjacent.length;
-            i++
-        ) { // we are considering exploring, recurse on it // If an edge exists between the currentVertex and the vertex
+        int[] adjacent = adjMatrix[currentVertex];
+        for (int i = 0; i < adjacent.length; i++) { // we are considering exploring, recurse on it // If an edge exists between the
+                                                    // currentVertex and the vertex
             if (adjacent[i] == AdjacencyMatrixGraph.EDGE_EXIST) {
                 depthFirstOrder(i, visited, orderList);
             }
@@ -288,19 +277,19 @@ class AdjacencyMatrixGraph {
      */
     public List<Integer> breadthFirstOrder(int startVertex) {
         // If the specified startVertex is invalid, return an empty list
-        if (startVertex >= _numberOfVertices || startVertex < 0) {
-            return new ArrayList<Integer>();
+        if (startVertex >= vertexCount || startVertex < 0) {
+            return new ArrayList<>();
         }
 
         // Create an array to keep track of the visited vertices
-        boolean[] visited = new boolean[_numberOfVertices];
+        boolean[] visited = new boolean[vertexCount];
 
         // Create a list to keep track of the ordered vertices
-        ArrayList<Integer> orderList = new ArrayList<Integer>();
+        ArrayList<Integer> orderList = new ArrayList<>();
 
         // Create a queue for our BFS algorithm and add the startVertex
         // to the queue
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = new LinkedList<>();
         queue.add(startVertex);
 
         // Continue until the queue is empty
@@ -320,12 +309,9 @@ class AdjacencyMatrixGraph {
 
             // Get the adjacency array for the currentVertex and
             // check each node
-            int[] adjacent = _adjacency[currentVertex];
-            for (
-                int vertex = 0;
-                vertex < adjacent.length;
-                vertex++
-            ) { // vertex we are considering exploring, we add it to the queue // If an edge exists between the current vertex and the
+            int[] adjacent = adjMatrix[currentVertex];
+            for (int vertex = 0; vertex < adjacent.length; vertex++) { // vertex we are considering exploring, we add it to the queue // If an
+                                                                       // edge exists between the current vertex and the
                 if (adjacent[vertex] == AdjacencyMatrixGraph.EDGE_EXIST) {
                     queue.add(vertex);
                 }
@@ -341,19 +327,19 @@ class AdjacencyMatrixGraph {
      * @return returns a string describing this graph
      */
     public String toString() {
-        String s = "    ";
+        StringBuilder s = new StringBuilder("    ");
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + String.valueOf(i) + " ";
+            s.append(i).append(" ");
         }
-        s = s + " \n";
+        s.append(" \n");
 
         for (int i = 0; i < this.numberOfVertices(); i++) {
-            s = s + String.valueOf(i) + " : ";
+            s.append(i).append(" : ");
             for (int j = 0; j < this.numberOfVertices(); j++) {
-                s = s + String.valueOf(this._adjacency[i][j]) + " ";
+                s.append(this.adjMatrix[i][j]).append(" ");
             }
-            s = s + "\n";
+            s.append("\n");
         }
-        return s;
+        return s.toString();
     }
 }

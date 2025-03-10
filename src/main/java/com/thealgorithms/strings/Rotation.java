@@ -6,7 +6,9 @@ package com.thealgorithms.strings;
  * the string "abcdef" to the end of the string, so that the original string
  * becomes the string "cdefab"
  */
-public class Rotation {
+public final class Rotation {
+    private Rotation() {
+    }
 
     public static void main(String[] args) {
         assert rotation("abcdef", 2).equals("cdefab");

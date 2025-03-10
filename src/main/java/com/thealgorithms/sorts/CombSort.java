@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
-
 /**
  * Comb Sort algorithm implementation
  *
@@ -18,75 +16,57 @@ import static com.thealgorithms.sorts.SortUtils.*;
  * @see SortAlgorithm
  */
 class CombSort implements SortAlgorithm {
+    private static final double SHRINK_FACTOR = 1.3;
 
-    // To find gap between elements
-    private int nextGap(int gap) {
-        // Shrink gap by Shrink factor
-        gap = (gap * 10) / 13;
-        return (gap < 1) ? 1 : gap;
+    /**
+     * Method to find the next gap
+     *
+     * @param gap the current gap
+     * @return the next gap value
+     */
+    private int getNextGap(int gap) {
+        gap = (int) (gap / SHRINK_FACTOR);
+        return Math.max(gap, 1);
     }
 
     /**
-     * Function to sort arr[] using Comb
+     * Method to sort the array using CombSort
      *
-     * @param arr - an array should be sorted
-     * @return sorted array
+     * @param arr the array to be sorted
+     * @param <T> the type of elements in the array
+     * @return the sorted array
      */
     @Override
     public <T extends Comparable<T>> T[] sort(T[] arr) {
-        int size = arr.length;
-
-        // initialize gap
-        int gap = size;
-
-        // Initialize swapped as true to make sure that loop runs
+        int gap = arr.length;
         boolean swapped = true;
 
-        // Keep running while gap is more than 1 and last iteration caused a swap
         while (gap != 1 || swapped) {
-            // Find next gap
-            gap = nextGap(gap);
-
-            // Initialize swapped as false so that we can check if swap happened or not
-            swapped = false;
-
-            // Compare all elements with current gap
-            for (int i = 0; i < size - gap; i++) {
-                if (less(arr[i + gap], arr[i])) {
-                    // Swap arr[i] and arr[i+gap]
-                    swapped = swap(arr, i, i + gap);
-                }
-            }
+            gap = getNextGap(gap);
+            swapped = performSwaps(arr, gap);
         }
+
         return arr;
     }
 
-    // Driver method
-    public static void main(String[] args) {
-        CombSort ob = new CombSort();
-        Integer[] arr = {
-            8,
-            4,
-            1,
-            56,
-            3,
-            -44,
-            -1,
-            0,
-            36,
-            34,
-            8,
-            12,
-            -66,
-            -78,
-            23,
-            -6,
-            28,
-            0,
-        };
-        ob.sort(arr);
+    /**
+     * Method to perform the swapping of elements in the array based on the current gap
+     *
+     * @param arr the array to be sorted
+     * @param gap the current gap
+     * @param <T> the type of elements in the array
+     * @return true if a swap occurred, false otherwise
+     */
+    private <T extends Comparable<T>> boolean performSwaps(final T[] arr, final int gap) {
+        boolean swapped = false;
 
-        System.out.println("sorted array");
-        print(arr);
+        for (int i = 0; i < arr.length - gap; i++) {
+            if (SortUtils.less(arr[i + gap], arr[i])) {
+                SortUtils.swap(arr, i, i + gap);
+                swapped = true;
+            }
+        }
+
+        return swapped;
     }
 }

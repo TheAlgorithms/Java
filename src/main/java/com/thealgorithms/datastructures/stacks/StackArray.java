@@ -1,173 +1,160 @@
 package com.thealgorithms.datastructures.stacks;
 
 /**
- * This class implements a Stack using a regular array.
+ * Implements a generic stack using an array.
  *
- * <p>
- * A stack is exactly what it sounds like. An element gets added to the top of
- * the stack and only the element on the top may be removed. This is an example
- * of an array implementation of a Stack. So an element can only be
- * added/removed from the end of the array. In theory stack have no fixed size,
- * but with an array implementation it does.
+ * <p>This stack automatically resizes when necessary, growing to accommodate additional elements and
+ * shrinking to conserve memory when its size significantly decreases.
+ *
+ * <p>Elements are pushed and popped in LIFO (last-in, first-out) order, where the last element added
+ * is the first to be removed.
+ *
+ * @param <T> the type of elements in this stack
  */
-public class StackArray {
+public class StackArray<T> implements Stack<T> {
 
-    /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        // Declare a stack of maximum size 4
-        StackArray myStackArray = new StackArray(4);
-
-        assert myStackArray.isEmpty();
-        assert !myStackArray.isFull();
-
-        // Populate the stack
-        myStackArray.push(5);
-        myStackArray.push(8);
-        myStackArray.push(2);
-        myStackArray.push(9);
-
-        assert !myStackArray.isEmpty();
-        assert myStackArray.isFull();
-        assert myStackArray.peek() == 9;
-        assert myStackArray.pop() == 9;
-        assert myStackArray.peek() == 2;
-        assert myStackArray.size() == 3;
-    }
-
-    /**
-     * Default initial capacity.
-     */
     private static final int DEFAULT_CAPACITY = 10;
 
-    /**
-     * The max size of the Stack
-     */
     private int maxSize;
-
-    /**
-     * The array representation of the Stack
-     */
-    private int[] stackArray;
-
-    /**
-     * The top of the stack
-     */
+    private T[] stackArray;
     private int top;
 
     /**
-     * init Stack with DEFAULT_CAPACITY
+     * Creates a stack with a default capacity.
      */
+    @SuppressWarnings("unchecked")
     public StackArray() {
         this(DEFAULT_CAPACITY);
     }
 
     /**
-     * Constructor
+     * Creates a stack with a specified initial capacity.
      *
-     * @param size Size of the Stack
+     * @param size the initial capacity of the stack, must be greater than 0
+     * @throws IllegalArgumentException if size is less than or equal to 0
      */
+    @SuppressWarnings("unchecked")
     public StackArray(int size) {
-        maxSize = size;
-        stackArray = new int[maxSize];
-        top = -1;
+        if (size <= 0) {
+            throw new IllegalArgumentException("Stack size must be greater than 0");
+        }
+        this.maxSize = size;
+        this.stackArray = (T[]) new Object[size];
+        this.top = -1;
     }
 
     /**
-     * Adds an element to the top of the stack
+     * Pushes an element onto the top of the stack. Resizes the stack if it is full.
      *
-     * @param value The element added
+     * @param value the element to push
      */
-    public void push(int value) {
-        if (!isFull()) { // Checks for a full stack
-            top++;
-            stackArray[top] = value;
-        } else {
+    @Override
+    public void push(T value) {
+        if (isFull()) {
             resize(maxSize * 2);
-            push(value); // don't forget push after resizing
         }
+        stackArray[++top] = value;
     }
 
     /**
-     * Removes the top element of the stack and returns the value you've removed
+     * Removes and returns the element from the top of the stack. Shrinks the stack if
+     * its size is below a quarter of its capacity, but not below the default capacity.
      *
-     * @return value popped off the Stack
+     * @return the element removed from the top of the stack
+     * @throws IllegalStateException if the stack is empty
      */
-    public int pop() {
-        if (!isEmpty()) { // Checks for an empty stack
-            return stackArray[top--];
+    @Override
+    public T pop() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, cannot pop element");
         }
-
-        if (top < maxSize / 4) {
+        T value = stackArray[top--];
+        if (top + 1 < maxSize / 4 && maxSize > DEFAULT_CAPACITY) {
             resize(maxSize / 2);
-            return pop(); // don't forget pop after resizing
-        } else {
-            System.out.println("The stack is already empty");
-            return -1;
         }
+        return value;
     }
 
     /**
-     * Returns the element at the top of the stack
+     * Returns the element at the top of the stack without removing it.
      *
-     * @return element at the top of the stack
+     * @return the top element of the stack
+     * @throws IllegalStateException if the stack is empty
      */
-    public int peek() {
-        if (!isEmpty()) { // Checks for an empty stack
-            return stackArray[top];
-        } else {
-            System.out.println("The stack is empty, cant peek");
-            return -1;
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Stack is empty, cannot peek element");
         }
+        return stackArray[top];
     }
 
+    /**
+     * Resizes the internal array to a new capacity.
+     *
+     * @param newSize the new size of the stack array
+     */
     private void resize(int newSize) {
-        int[] transferArray = new int[newSize];
-
-        for (int i = 0; i < stackArray.length; i++) {
-            transferArray[i] = stackArray[i];
-        }
-        // This reference change might be nice in here
-        stackArray = transferArray;
+        @SuppressWarnings("unchecked") T[] newArray = (T[]) new Object[newSize];
+        System.arraycopy(stackArray, 0, newArray, 0, top + 1);
+        stackArray = newArray;
         maxSize = newSize;
     }
 
     /**
-     * Returns true if the stack is empty
+     * Checks if the stack is full.
      *
-     * @return true if the stack is empty
-     */
-    public boolean isEmpty() {
-        return (top == -1);
-    }
-
-    /**
-     * Returns true if the stack is full
-     *
-     * @return true if the stack is full
+     * @return true if the stack is full, false otherwise
      */
     public boolean isFull() {
-        return (top + 1 == maxSize);
+        return top + 1 == maxSize;
     }
 
     /**
-     * Deletes everything in the Stack
+     * Checks if the stack is empty.
      *
-     * <p>
-     * Doesn't delete elements in the array but if you call push method after
-     * calling makeEmpty it will overwrite previous values
+     * @return true if the stack is empty, false otherwise
      */
-    public void makeEmpty() { // Doesn't delete elements in the array but if you call
-        top = -1; // push method after calling makeEmpty it will overwrite previous values
+    @Override
+    public boolean isEmpty() {
+        return top == -1;
     }
 
     /**
-     * Return size of stack
-     *
-     * @return size of stack
+     * Empties the stack, marking it as empty without deleting elements. Elements are
+     * overwritten on subsequent pushes.
      */
+    @Override
+    public void makeEmpty() {
+        top = -1;
+    }
+
+    /**
+     * Returns the number of elements currently in the stack.
+     *
+     * @return the size of the stack
+     */
+    @Override
     public int size() {
         return top + 1;
+    }
+
+    /**
+     * Returns a string representation of the stack.
+     *
+     * @return a string representation of the stack
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("StackArray [");
+        for (int i = 0; i <= top; i++) {
+            sb.append(stackArray[i]);
+            if (i < top) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }

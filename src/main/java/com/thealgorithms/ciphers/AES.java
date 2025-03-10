@@ -7,7 +7,9 @@ import java.util.Scanner;
  * This class is build to demonstrate the application of the AES-algorithm on a
  * single 128-Bit block of data.
  */
-public class AES {
+public final class AES {
+    private AES() {
+    }
 
     /**
      * Precalculated values for x to the power of 2 in Rijndaels galois field.
@@ -2395,9 +2397,7 @@ public class AES {
 
         // apply S-Box to all 8-Bit Substrings
         for (int i = 0; i < 4; i++) {
-            StringBuilder currentByteBits = new StringBuilder(
-                rBytes.substring(i * 2, (i + 1) * 2)
-            );
+            StringBuilder currentByteBits = new StringBuilder(rBytes.substring(i * 2, (i + 1) * 2));
 
             int currentByte = Integer.parseInt(currentByteBits.toString(), 16);
             currentByte = SBOX[currentByte];
@@ -2407,8 +2407,7 @@ public class AES {
                 currentByte = currentByte ^ RCON[rconCounter];
             }
 
-            currentByteBits =
-                new StringBuilder(Integer.toHexString(currentByte));
+            currentByteBits = new StringBuilder(Integer.toHexString(currentByte));
 
             // Add zero padding
             while (currentByteBits.length() < 2) {
@@ -2416,16 +2415,9 @@ public class AES {
             }
 
             // replace bytes in original string
-            rBytes =
-                new StringBuilder(
-                    rBytes.substring(0, i * 2) +
-                    currentByteBits +
-                    rBytes.substring((i + 1) * 2)
-                );
+            rBytes = new StringBuilder(rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
         }
 
-        // t = new BigInteger(rBytes, 16);
-        // return t;
         return new BigInteger(rBytes.toString(), 16);
     }
 
@@ -2438,16 +2430,16 @@ public class AES {
     public static BigInteger[] keyExpansion(BigInteger initialKey) {
         BigInteger[] roundKeys = {
             initialKey,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
-                BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
+            BigInteger.ZERO,
         };
 
         // initialize rcon iteration
@@ -2455,23 +2447,14 @@ public class AES {
 
         for (int i = 1; i < 11; i++) {
             // get the previous 32 bits the key
-            BigInteger t =
-                roundKeys[i - 1].remainder(new BigInteger("100000000", 16));
+            BigInteger t = roundKeys[i - 1].remainder(new BigInteger("100000000", 16));
 
             // split previous key into 8-bit segments
             BigInteger[] prevKey = {
                 roundKeys[i - 1].remainder(new BigInteger("100000000", 16)),
-                roundKeys[i - 1].remainder(
-                        new BigInteger("10000000000000000", 16)
-                    )
-                    .divide(new BigInteger("100000000", 16)),
-                roundKeys[i - 1].remainder(
-                        new BigInteger("1000000000000000000000000", 16)
-                    )
-                    .divide(new BigInteger("10000000000000000", 16)),
-                roundKeys[i - 1].divide(
-                        new BigInteger("1000000000000000000000000", 16)
-                    ),
+                roundKeys[i - 1].remainder(new BigInteger("10000000000000000", 16)).divide(new BigInteger("100000000", 16)),
+                roundKeys[i - 1].remainder(new BigInteger("1000000000000000000000000", 16)).divide(new BigInteger("10000000000000000", 16)),
+                roundKeys[i - 1].divide(new BigInteger("1000000000000000000000000", 16)),
             };
 
             // run schedule core
@@ -2527,9 +2510,7 @@ public class AES {
     public static BigInteger mergeCellsIntoBlock(int[] cells) {
         StringBuilder blockBits = new StringBuilder();
         for (int i = 0; i < 16; i++) {
-            StringBuilder cellBits = new StringBuilder(
-                Integer.toBinaryString(cells[i])
-            );
+            StringBuilder cellBits = new StringBuilder(Integer.toBinaryString(cells[i]));
 
             // Append leading 0 for full "8-bit" strings
             while (cellBits.length() < 8) {
@@ -2545,10 +2526,7 @@ public class AES {
     /**
      * @return ciphertext XOR key
      */
-    public static BigInteger addRoundKey(
-        BigInteger ciphertext,
-        BigInteger key
-    ) {
+    public static BigInteger addRoundKey(BigInteger ciphertext, BigInteger key) {
         return ciphertext.xor(key);
     }
 
@@ -2669,14 +2647,10 @@ public class AES {
                 cells[i * 4 + 3],
             };
 
-            outputCells[i * 4] =
-                MULT2[row[0]] ^ MULT3[row[1]] ^ row[2] ^ row[3];
-            outputCells[i * 4 + 1] =
-                row[0] ^ MULT2[row[1]] ^ MULT3[row[2]] ^ row[3];
-            outputCells[i * 4 + 2] =
-                row[0] ^ row[1] ^ MULT2[row[2]] ^ MULT3[row[3]];
-            outputCells[i * 4 + 3] =
-                MULT3[row[0]] ^ row[1] ^ row[2] ^ MULT2[row[3]];
+            outputCells[i * 4] = MULT2[row[0]] ^ MULT3[row[1]] ^ row[2] ^ row[3];
+            outputCells[i * 4 + 1] = row[0] ^ MULT2[row[1]] ^ MULT3[row[2]] ^ row[3];
+            outputCells[i * 4 + 2] = row[0] ^ row[1] ^ MULT2[row[2]] ^ MULT3[row[3]];
+            outputCells[i * 4 + 3] = MULT3[row[0]] ^ row[1] ^ row[2] ^ MULT2[row[3]];
         }
         return mergeCellsIntoBlock(outputCells);
     }
@@ -2697,26 +2671,10 @@ public class AES {
                 cells[i * 4 + 3],
             };
 
-            outputCells[i * 4] =
-                MULT14[row[0]] ^
-                MULT11[row[1]] ^
-                MULT13[row[2]] ^
-                MULT9[row[3]];
-            outputCells[i * 4 + 1] =
-                MULT9[row[0]] ^
-                MULT14[row[1]] ^
-                MULT11[row[2]] ^
-                MULT13[row[3]];
-            outputCells[i * 4 + 2] =
-                MULT13[row[0]] ^
-                MULT9[row[1]] ^
-                MULT14[row[2]] ^
-                MULT11[row[3]];
-            outputCells[i * 4 + 3] =
-                MULT11[row[0]] ^
-                MULT13[row[1]] ^
-                MULT9[row[2]] ^
-                MULT14[row[3]];
+            outputCells[i * 4] = MULT14[row[0]] ^ MULT11[row[1]] ^ MULT13[row[2]] ^ MULT9[row[3]];
+            outputCells[i * 4 + 1] = MULT9[row[0]] ^ MULT14[row[1]] ^ MULT11[row[2]] ^ MULT13[row[3]];
+            outputCells[i * 4 + 2] = MULT13[row[0]] ^ MULT9[row[1]] ^ MULT14[row[2]] ^ MULT11[row[3]];
+            outputCells[i * 4 + 3] = MULT11[row[0]] ^ MULT13[row[1]] ^ MULT9[row[2]] ^ MULT14[row[3]];
         }
         return mergeCellsIntoBlock(outputCells);
     }
@@ -2780,9 +2738,7 @@ public class AES {
 
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
-            System.out.println(
-                "Enter (e) letter for encrpyt or (d) letter for decrypt :"
-            );
+            System.out.println("Enter (e) letter for encrpyt or (d) letter for decrypt :");
             char choice = input.nextLine().charAt(0);
             String in;
             switch (choice) {
@@ -2798,8 +2754,8 @@ public class AES {
                     in = input.nextLine();
                     BigInteger encryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The encrypted message is: \n" +
-                        encrypt(plaintext, encryptionKey).toString(16)
+                        "The encrypted message is: \n"
+                        + encrypt(plaintext, encryptionKey).toString(16)
                     );
                 }
                 case 'D', 'd' -> {
@@ -2814,8 +2770,8 @@ public class AES {
                     in = input.nextLine();
                     BigInteger decryptionKey = new BigInteger(in, 16);
                     System.out.println(
-                        "The deciphered message is:\n" +
-                        decrypt(ciphertext, decryptionKey).toString(16)
+                        "The deciphered message is:\n"
+                        + decrypt(ciphertext, decryptionKey).toString(16)
                     );
                 }
                 default -> System.out.println("** End **");

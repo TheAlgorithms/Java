@@ -1,57 +1,49 @@
 package com.thealgorithms.conversions;
 
-import java.util.Scanner;
-
 /**
- * This class converts a Decimal number to a Binary number
+ * This class provides methods to convert a decimal number to a binary number.
  */
-class DecimalToBinary {
+final class DecimalToBinary {
+    private static final int BINARY_BASE = 2;
+    private static final int DECIMAL_MULTIPLIER = 10;
 
-    /**
-     * Main Method
-     *
-     * @param args Command Line Arguments
-     */
-    public static void main(String args[]) {
-        conventionalConversion();
-        bitwiseConversion();
+    private DecimalToBinary() {
     }
 
     /**
-     * This method converts a decimal number to a binary number using a
-     * conventional algorithm.
+     * Converts a decimal number to a binary number using a conventional algorithm.
+     * @param decimalNumber the decimal number to convert
+     * @return the binary representation of the decimal number
      */
-    public static void conventionalConversion() {
-        int n, b = 0, c = 0, d;
-        Scanner input = new Scanner(System.in);
-        System.out.printf(
-            "Conventional conversion.%n Enter the decimal number: "
-        );
-        n = input.nextInt();
-        while (n != 0) {
-            d = n % 2;
-            b = b + d * (int) Math.pow(10, c++);
-            n /= 2;
-        } // converting decimal to binary
-        System.out.println("\tBinary number: " + b);
-        input.close();
-    }
+    public static int convertUsingConventionalAlgorithm(int decimalNumber) {
+        int binaryNumber = 0;
+        int position = 1;
 
-    /**
-     * This method converts a decimal number to a binary number using a bitwise
-     * algorithm
-     */
-    public static void bitwiseConversion() {
-        int n, b = 0, c = 0, d;
-        Scanner input = new Scanner(System.in);
-        System.out.printf("Bitwise conversion.%n Enter the decimal number: ");
-        n = input.nextInt();
-        while (n != 0) {
-            d = (n & 1);
-            b += d * (int) Math.pow(10, c++);
-            n >>= 1;
+        while (decimalNumber > 0) {
+            int remainder = decimalNumber % BINARY_BASE;
+            binaryNumber += remainder * position;
+            position *= DECIMAL_MULTIPLIER;
+            decimalNumber /= BINARY_BASE;
         }
-        System.out.println("\tBinary number: " + b);
-        input.close();
+
+        return binaryNumber;
+    }
+
+    /**
+     * Converts a decimal number to a binary number using a bitwise algorithm.
+     * @param decimalNumber the decimal number to convert
+     * @return the binary representation of the decimal number
+     */
+    public static int convertUsingBitwiseAlgorithm(int decimalNumber) {
+        int binaryNumber = 0;
+        int position = 1;
+
+        while (decimalNumber > 0) {
+            int leastSignificantBit = decimalNumber & 1;
+            binaryNumber += leastSignificantBit * position;
+            position *= DECIMAL_MULTIPLIER;
+            decimalNumber >>= 1;
+        }
+        return binaryNumber;
     }
 }

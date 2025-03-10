@@ -1,6 +1,7 @@
 package com.thealgorithms.backtracking;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,16 +17,14 @@ public class PermutationTest {
 
     @Test
     void testSingleElement() {
-        List<Integer[]> result = Permutation.permutation(new Integer[] { 1 });
+        List<Integer[]> result = Permutation.permutation(new Integer[] {1});
         assertEquals(result.get(0)[0], 1);
     }
 
     @Test
     void testMultipleElements() {
-        List<Integer[]> result = Permutation.permutation(
-            new Integer[] { 1, 2 }
-        );
-        assertTrue(Arrays.equals(result.get(0), new Integer[] { 1, 2 }));
-        assertTrue(Arrays.equals(result.get(1), new Integer[] { 2, 1 }));
+        List<Integer[]> result = Permutation.permutation(new Integer[] {1, 2});
+        assertTrue(Arrays.equals(result.get(0), new Integer[] {1, 2}));
+        assertTrue(Arrays.equals(result.get(1), new Integer[] {2, 1}));
     }
 }

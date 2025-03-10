@@ -1,32 +1,33 @@
 package com.thealgorithms.conversions;
 
-import java.util.Scanner;
-
 /**
  * This class converts a Binary number to a Decimal number
  */
-class BinaryToDecimal {
+final class BinaryToDecimal {
+    private static final int BINARY_BASE = 2;
 
-    public static int binaryToDecimal(int binNum) {
-        int binCopy, d, s = 0, power = 0;
-        binCopy = binNum;
-        while (binCopy != 0) {
-            d = binCopy % 10;
-            s += d * (int) Math.pow(2, power++);
-            binCopy /= 10;
-        }
-        return s;
+    private BinaryToDecimal() {
     }
 
     /**
-     * Main Method
+     * Converts a binary number to its decimal equivalent.
      *
-     * @param args Command line arguments
+     * @param binaryNumber The binary number to convert.
+     * @return The decimal equivalent of the binary number.
+     * @throws IllegalArgumentException If the binary number contains digits other than 0 and 1.
      */
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Binary number: ");
-        System.out.println("Decimal equivalent:" + binaryToDecimal(sc.nextInt()));
-        sc.close();
+    public static long binaryToDecimal(long binaryNumber) {
+        long decimalValue = 0;
+        long power = 0;
+
+        while (binaryNumber != 0) {
+            long digit = binaryNumber % 10;
+            if (digit > 1) {
+                throw new IllegalArgumentException("Incorrect binary digit: " + digit);
+            }
+            decimalValue += (long) (digit * Math.pow(BINARY_BASE, power++));
+            binaryNumber /= 10;
+        }
+        return decimalValue;
     }
 }

@@ -1,12 +1,17 @@
 package com.thealgorithms.searches;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * An implementation of the Quickselect algorithm as described
  * <a href="https://en.wikipedia.org/wiki/Median_of_medians">here</a>.
  */
 public final class QuickSelect {
+    private QuickSelect() {
+    }
 
     /**
      * Selects the {@code n}-th largest element of {@code list}, i.e. the element that would
@@ -26,7 +31,7 @@ public final class QuickSelect {
     public static <T extends Comparable<T>> T select(List<T> list, int n) {
         Objects.requireNonNull(list, "The list of elements must not be null.");
 
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             String msg = "The list of elements must not be empty.";
             throw new IllegalArgumentException(msg);
         }
@@ -45,21 +50,15 @@ public final class QuickSelect {
         return list.get(index);
     }
 
-    private static <T extends Comparable<T>> int selectIndex(
-        List<T> list,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int selectIndex(List<T> list, int n) {
         return selectIndex(list, 0, list.size() - 1, n);
     }
 
-    private static <T extends Comparable<T>> int selectIndex(
-        List<T> list,
-        int left,
-        int right,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int selectIndex(List<T> list, int left, int right, int n) {
         while (true) {
-            if (left == right) return left;
+            if (left == right) {
+                return left;
+            }
             int pivotIndex = pivot(list, left, right);
             pivotIndex = partition(list, left, right, pivotIndex, n);
             if (n == pivotIndex) {
@@ -72,13 +71,7 @@ public final class QuickSelect {
         }
     }
 
-    private static <T extends Comparable<T>> int partition(
-        List<T> list,
-        int left,
-        int right,
-        int pivotIndex,
-        int n
-    ) {
+    private static <T extends Comparable<T>> int partition(List<T> list, int left, int right, int pivotIndex, int n) {
         T pivotValue = list.get(pivotIndex);
         Collections.swap(list, pivotIndex, right);
         int storeIndex = left;
@@ -104,11 +97,7 @@ public final class QuickSelect {
         return (n < storeIndex) ? storeIndex : Math.min(n, storeIndexEq);
     }
 
-    private static <T extends Comparable<T>> int pivot(
-        List<T> list,
-        int left,
-        int right
-    ) {
+    private static <T extends Comparable<T>> int pivot(List<T> list, int left, int right) {
         if (right - left < 5) {
             return partition5(list, left, right);
         }
@@ -128,11 +117,7 @@ public final class QuickSelect {
         return selectIndex(list, left, rightIndex, mid);
     }
 
-    private static <T extends Comparable<T>> int partition5(
-        List<T> list,
-        int left,
-        int right
-    ) {
+    private static <T extends Comparable<T>> int partition5(List<T> list, int left, int right) {
         List<T> ts = list.subList(left, right);
         ts.sort(Comparator.naturalOrder());
         return (left + right) >>> 1;

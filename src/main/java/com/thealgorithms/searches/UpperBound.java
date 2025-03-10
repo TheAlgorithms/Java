@@ -1,11 +1,6 @@
 package com.thealgorithms.searches;
 
-import static java.lang.String.format;
-
 import com.thealgorithms.devutils.searches.SearchAlgorithm;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
 
 /**
  * The UpperBound method is used to return an index pointing to the first
@@ -27,47 +22,6 @@ import java.util.stream.IntStream;
  */
 class UpperBound implements SearchAlgorithm {
 
-    // Driver Program
-    public static void main(String[] args) {
-        // Just generate data
-        Random r = ThreadLocalRandom.current();
-
-        int size = 100;
-        int maxElement = 100000;
-
-        Integer[] integers = IntStream
-            .generate(() -> r.nextInt(maxElement))
-            .limit(size)
-            .sorted()
-            .boxed()
-            .toArray(Integer[]::new);
-
-        // The element for which the upper bound is to be found
-        int val = integers[r.nextInt(size - 1)] + 1;
-
-        UpperBound search = new UpperBound();
-        int atIndex = search.find(integers, val);
-
-        System.out.println(
-            format(
-                "Val: %d. Upper Bound Found %d at index %d. An array length %d",
-                val,
-                integers[atIndex],
-                atIndex,
-                size
-            )
-        );
-
-        boolean toCheck = integers[atIndex] > val || integers[size - 1] < val;
-        System.out.println(
-            format(
-                "Upper Bound found at an index: %d. Is greater or max element: %b",
-                atIndex,
-                toCheck
-            )
-        );
-    }
-
     /**
      * @param array is an array where the UpperBound value is to be found
      * @param key is an element for which the UpperBound is to be found
@@ -88,12 +42,7 @@ class UpperBound implements SearchAlgorithm {
      * @param right The upper bound
      * @return the location of the key
      */
-    private <T extends Comparable<T>> int search(
-        T[] array,
-        T key,
-        int left,
-        int right
-    ) {
+    private <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
         if (right <= left) {
             return left;
         }

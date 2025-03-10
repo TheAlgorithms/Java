@@ -1,7 +1,5 @@
 package com.thealgorithms.searches;
 
-import java.util.Scanner;
-
 /**
  * Program to perform Saddleback Search Given a sorted 2D array(elements are
  * sorted across every row and column, assuming ascending order) of size n*m we
@@ -16,7 +14,9 @@ import java.util.Scanner;
  *
  * @author Nishita Aggarwal
  */
-public class SaddlebackSearch {
+public final class SaddlebackSearch {
+    private SaddlebackSearch() {
+    }
 
     /**
      * This method performs Saddleback Search
@@ -25,12 +25,17 @@ public class SaddlebackSearch {
      * @param row the current row.
      * @param col the current column.
      * @param key the element that we want to search for.
+     * @throws IllegalArgumentException if the array is empty.
      * @return The index(row and column) of the element if found. Else returns
      * -1 -1.
      */
-    private static int[] find(int arr[][], int row, int col, int key) {
+    static int[] find(int[][] arr, int row, int col, int key) {
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+
         // array to store the answer row and column
-        int ans[] = { -1, -1 };
+        int[] ans = {-1, -1};
         if (row < 0 || col >= arr[row].length) {
             return ans;
         }
@@ -44,28 +49,5 @@ public class SaddlebackSearch {
         }
         // else we move right
         return find(arr, row, col + 1, key);
-    }
-
-    /**
-     * Main method
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        Scanner sc = new Scanner(System.in);
-        int arr[][];
-        int i, j, rows = sc.nextInt(), col = sc.nextInt();
-        arr = new int[rows][col];
-        for (i = 0; i < rows; i++) {
-            for (j = 0; j < col; j++) {
-                arr[i][j] = sc.nextInt();
-            }
-        }
-        int ele = sc.nextInt();
-        // we start from bottom left corner
-        int ans[] = find(arr, rows - 1, 0, ele);
-        System.out.println(ans[0] + " " + ans[1]);
-        sc.close();
     }
 }

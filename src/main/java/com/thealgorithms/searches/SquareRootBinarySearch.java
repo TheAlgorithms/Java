@@ -1,7 +1,5 @@
 package com.thealgorithms.searches;
 
-import java.util.Scanner;
-
 /**
  * Given an integer x, find the square root of x. If x is not a perfect square,
  * then return floor(√x).
@@ -14,21 +12,8 @@ import java.util.Scanner;
  *
  * @author sahil
  */
-public class SquareRootBinarySearch {
-
-    /**
-     * This is the driver method.
-     *
-     * @param args Command line arguments
-     */
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print(
-            "Enter a number you want to calculate square root of : "
-        );
-        int num = sc.nextInt();
-        long ans = squareRoot(num);
-        System.out.println("The square root is : " + ans);
+public final class SquareRootBinarySearch {
+    private SquareRootBinarySearch() {
     }
 
     /**
@@ -39,7 +24,7 @@ public class SquareRootBinarySearch {
      * @param num Number
      * @return answer
      */
-    private static long squareRoot(long num) {
+    static long squareRoot(long num) {
         if (num == 0 || num == 1) {
             return num;
         }

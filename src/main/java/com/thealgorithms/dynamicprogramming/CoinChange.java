@@ -3,25 +3,8 @@ package com.thealgorithms.dynamicprogramming;
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)
  */
-public class CoinChange {
-
-    // Driver Program
-    public static void main(String[] args) {
-        int amount = 12;
-        int[] coins = { 2, 4, 5 };
-
-        System.out.println(
-            "Number of combinations of getting change for " +
-            amount +
-            " is: " +
-            change(coins, amount)
-        );
-        System.out.println(
-            "Minimum number of coins required for amount :" +
-            amount +
-            " is: " +
-            minimumCoins(coins, amount)
-        );
+public final class CoinChange {
+    private CoinChange() {
     }
 
     /**
@@ -40,8 +23,6 @@ public class CoinChange {
             for (int i = coin; i < amount + 1; i++) {
                 combinations[i] += combinations[i - coin];
             }
-            // Uncomment the below line to see the state of combinations for each coin
-            // printAmount(combinations);
         }
 
         return combinations[amount];
@@ -66,26 +47,14 @@ public class CoinChange {
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
                 if (coin <= i) {
-                    int sub_res = minimumCoins[i - coin];
-                    if (
-                        sub_res != Integer.MAX_VALUE &&
-                        sub_res + 1 < minimumCoins[i]
-                    ) {
-                        minimumCoins[i] = sub_res + 1;
+                    int subRes = minimumCoins[i - coin];
+                    if (subRes != Integer.MAX_VALUE && subRes + 1 < minimumCoins[i]) {
+                        minimumCoins[i] = subRes + 1;
                     }
                 }
             }
         }
-        // Uncomment the below line to see the state of combinations for each coin
-        // printAmount(minimumCoins);
-        return minimumCoins[amount];
-    }
 
-    // A basic print method which prints all the contents of the array
-    public static void printAmount(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
+        return minimumCoins[amount];
     }
 }

@@ -1,15 +1,13 @@
 package com.thealgorithms.scheduling;
 
-import com.thealgorithms.devutils.entities.ProcessDetails;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FCFSSchedulingTest {
+import com.thealgorithms.devutils.entities.ProcessDetails;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
+public class FCFSSchedulingTest {
 
     @Test
     public void testingProcesses() {
@@ -31,7 +29,6 @@ public class FCFSSchedulingTest {
         assertEquals("P3", processes.get(2).getProcessId());
         assertEquals(15, processes.get(2).getWaitingTime());
         assertEquals(23, processes.get(2).getTurnAroundTimeTime());
-
     }
 
     private List<ProcessDetails> addProcessesForFCFS() {
@@ -46,5 +43,4 @@ public class FCFSSchedulingTest {
 
         return processDetails;
     }
-
 }

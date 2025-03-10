@@ -1,6 +1,11 @@
 package com.thealgorithms.datastructures.lists;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -189,25 +194,21 @@ public class SkipList<E extends Comparable<E>> {
         }
 
         Collections.reverse(layers);
-        String result = layers
-            .stream()
-            .map(layer -> {
-                StringBuilder acc = new StringBuilder();
-                for (boolean b : layer) {
-                    if (b) {
-                        acc.append("[ ]");
-                    } else {
-                        acc.append("---");
-                    }
-                    acc.append(" ");
-                }
-                return acc.toString();
-            })
-            .collect(Collectors.joining("\n"));
-        String positions = IntStream
-            .range(0, sizeWithHeader - 1)
-            .mapToObj(i -> String.format("%3d", i))
-            .collect(Collectors.joining(" "));
+        String result = layers.stream()
+                            .map(layer -> {
+                                StringBuilder acc = new StringBuilder();
+                                for (boolean b : layer) {
+                                    if (b) {
+                                        acc.append("[ ]");
+                                    } else {
+                                        acc.append("---");
+                                    }
+                                    acc.append(" ");
+                                }
+                                return acc.toString();
+                            })
+                            .collect(Collectors.joining("\n"));
+        String positions = IntStream.range(0, sizeWithHeader - 1).mapToObj(i -> String.format("%3d", i)).collect(Collectors.joining(" "));
 
         return result + String.format("%n H %s%n", positions);
     }
@@ -226,7 +227,7 @@ public class SkipList<E extends Comparable<E>> {
         private final List<Node<E>> backward;
 
         @SuppressWarnings("unchecked")
-        public Node(E value, int height) {
+        Node(E value, int height) {
             this.value = value;
             this.height = height;
 
@@ -298,18 +299,14 @@ public class SkipList<E extends Comparable<E>> {
 
         public BernoulliHeightStrategy(double probability) {
             if (probability <= 0 || probability >= 1) {
-                throw new IllegalArgumentException(
-                    "Probability should be from 0 to 1. But was: " + probability
-                );
+                throw new IllegalArgumentException("Probability should be from 0 to 1. But was: " + probability);
             }
             this.probability = probability;
         }
 
         @Override
         public int height(int expectedSize) {
-            long height = Math.round(
-                Math.log10(expectedSize) / Math.log10(1 / probability)
-            );
+            long height = Math.round(Math.log10(expectedSize) / Math.log10(1 / probability));
             if (height > Integer.MAX_VALUE) {
                 throw new IllegalArgumentException();
             }

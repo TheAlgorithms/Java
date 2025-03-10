@@ -5,7 +5,9 @@ import java.util.BitSet;
 /**
  * Generates a crc32 checksum for a given string or byte array
  */
-public class CRC32 {
+public final class CRC32 {
+    private CRC32() {
+    }
 
     public static void main(String[] args) {
         System.out.println(Integer.toHexString(crc32("Hello World")));

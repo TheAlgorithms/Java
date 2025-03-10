@@ -1,45 +1,79 @@
 package com.thealgorithms.sorts;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class StrandSort {
+/**
+ * StrandSort class implementing the SortAlgorithm interface using arrays.
+ */
+public final class StrandSort implements SortAlgorithm {
 
-    // note: the input list is destroyed
-    public static <E extends Comparable<? super E>> LinkedList<E> strandSort(
-        LinkedList<E> list
-    ) {
-        if (list.size() <= 1) return list;
+    /**
+     * Sorts the given array using the Strand Sort algorithm.
+     *
+     * @param <T> The type of elements to be sorted, must be Comparable.
+     * @param array The array to be sorted.
+     * @return The sorted array.
+     */
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        List<T> unsortedList = new ArrayList<>(Arrays.asList(array));
+        List<T> sortedList = strandSort(unsortedList);
+        return sortedList.toArray(array);
+    }
 
-        LinkedList<E> result = new LinkedList<E>();
-        while (list.size() > 0) {
-            LinkedList<E> sorted = new LinkedList<E>();
-            sorted.add(list.removeFirst()); //same as remove() or remove(0)
-            for (Iterator<E> it = list.iterator(); it.hasNext();) {
-                E elem = it.next();
-                if (sorted.peekLast().compareTo(elem) <= 0) {
-                    sorted.addLast(elem); //same as add(elem) or add(0, elem)
-                    it.remove();
+    /**
+     * Strand Sort algorithm that sorts a list.
+     *
+     * @param <T> The type of elements to be sorted, must be Comparable.
+     * @param list The list to be sorted.
+     * @return The sorted list.
+     */
+    private static <T extends Comparable<? super T>> List<T> strandSort(List<T> list) {
+        if (list.size() <= 1) {
+            return list;
+        }
+
+        List<T> result = new ArrayList<>();
+        while (!list.isEmpty()) {
+            final List<T> sorted = new ArrayList<>();
+            sorted.add(list.removeFirst());
+            for (int i = 0; i < list.size();) {
+                if (sorted.getLast().compareTo(list.get(i)) <= 0) {
+                    sorted.add(list.remove(i));
+                } else {
+                    i++;
                 }
             }
-            result = merge(sorted, result);
+            result = merge(result, sorted);
         }
         return result;
     }
 
-    private static <E extends Comparable<? super E>> LinkedList<E> merge(
-        LinkedList<E> left,
-        LinkedList<E> right
-    ) {
-        LinkedList<E> result = new LinkedList<E>();
-        while (!left.isEmpty() && !right.isEmpty()) {
-            //change the direction of this comparison to change the direction of the sort
-            if (left.peek().compareTo(right.peek()) <= 0) result.add(
-                left.remove()
-            ); else result.add(right.remove());
+    /**
+     * Merges two sorted lists into one sorted list.
+     *
+     * @param <T> The type of elements to be sorted, must be Comparable.
+     * @param left The first sorted list.
+     * @param right The second sorted list.
+     * @return The merged sorted list.
+     */
+    private static <T extends Comparable<? super T>> List<T> merge(List<T> left, List<T> right) {
+        List<T> result = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i).compareTo(right.get(j)) <= 0) {
+                result.add(left.get(i));
+                i++;
+            } else {
+                result.add(right.get(j));
+                j++;
+            }
         }
-        result.addAll(left);
-        result.addAll(right);
+        result.addAll(left.subList(i, left.size()));
+        result.addAll(right.subList(j, right.size()));
         return result;
     }
 }

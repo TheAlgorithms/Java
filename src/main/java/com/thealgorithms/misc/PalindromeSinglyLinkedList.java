@@ -1,6 +1,5 @@
 package com.thealgorithms.misc;
 
-import com.thealgorithms.datastructures.lists.SinglyLinkedList;
 import java.util.Stack;
 
 /**
@@ -11,39 +10,66 @@ import java.util.Stack;
  * See more:
  * https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
  */
-public class PalindromeSinglyLinkedList {
-
-    public static void main(String[] args) {
-        SinglyLinkedList linkedList = new SinglyLinkedList();
-
-        linkedList.insertHead(3);
-        linkedList.insertNth(2, 1);
-        linkedList.insertNth(1, 2);
-        linkedList.insertNth(2, 3);
-        linkedList.insertNth(3, 4);
-
-        if (isPalindrome(linkedList)) {
-            System.out.println("It's a palindrome list");
-        } else {
-            System.out.println("It's NOT a palindrome list");
-        }
+public final class PalindromeSinglyLinkedList {
+    private PalindromeSinglyLinkedList() {
     }
 
-    public static boolean isPalindrome(SinglyLinkedList linkedList) {
-        boolean ret = true;
-        Stack<Integer> linkedListValues = new Stack<>();
+    public static boolean isPalindrome(final Iterable linkedList) {
+        var linkedListValues = new Stack<>();
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            linkedListValues.push(linkedList.getNth(i));
+        for (final var x : linkedList) {
+            linkedListValues.push(x);
         }
 
-        for (int i = 0; i < linkedList.size(); i++) {
-            if (linkedList.getNth(i) != linkedListValues.pop()) {
-                ret = false;
-                break;
+        for (final var x : linkedList) {
+            if (x != linkedListValues.pop()) {
+                return false;
             }
         }
 
-        return ret;
+        return true;
+    }
+
+    // Optimised approach with O(n) time complexity and O(1) space complexity
+
+    public static boolean isPalindromeOptimised(Node head) {
+        if (head == null || head.next == null) {
+            return true;
+        }
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node midNode = slow;
+
+        Node prevNode = null;
+        Node currNode = midNode;
+        Node nextNode;
+        while (currNode != null) {
+            nextNode = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+        Node left = head;
+        Node right = prevNode;
+        while (left != null && right != null) {
+            if (left.val != right.val) {
+                return false;
+            }
+            right = right.next;
+            left = left.next;
+        }
+        return true;
+    }
+    static class Node {
+        int val;
+        Node next;
+        Node(int val) {
+            this.val = val;
+            this.next = null;
+        }
     }
 }

@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Vivek
- * @since 15/03/22
+ * @author satyabarghav
+ * @since 4/10/2023
  */
 class ArmstrongTest {
 
@@ -17,7 +17,9 @@ class ArmstrongTest {
         assertThat(armstrong.isArmstrong(1)).isTrue();
         assertThat(armstrong.isArmstrong(153)).isTrue();
         assertThat(armstrong.isArmstrong(371)).isTrue();
-        assertThat(armstrong.isArmstrong(1634)).isFalse();
+        assertThat(armstrong.isArmstrong(1634)).isTrue();
         assertThat(armstrong.isArmstrong(200)).isFalse();
+        assertThat(armstrong.isArmstrong(548834)).isTrue();
+        assertThat(armstrong.isArmstrong(9474)).isTrue();
     }
 }

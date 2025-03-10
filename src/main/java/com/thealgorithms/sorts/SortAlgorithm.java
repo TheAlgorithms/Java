@@ -24,9 +24,7 @@ public interface SortAlgorithm {
      * @return a sorted list
      */
     @SuppressWarnings("unchecked")
-    default <T extends Comparable<T>> List<T> sort(List<T> unsorted) {
-        return Arrays.asList(
-            sort(unsorted.toArray((T[]) new Comparable[unsorted.size()]))
-        );
+    default<T extends Comparable<T>> List<T> sort(List<T> unsorted) {
+        return Arrays.asList(sort(unsorted.toArray((T[]) new Comparable[unsorted.size()])));
     }
 }

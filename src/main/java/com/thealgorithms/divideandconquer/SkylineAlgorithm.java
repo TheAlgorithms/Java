@@ -92,16 +92,10 @@ public class SkylineAlgorithm {
      * @param right the skyline of the right part of points
      * @return left the final skyline
      */
-    public ArrayList<Point> produceFinalSkyLine(
-        ArrayList<Point> left,
-        ArrayList<Point> right
-    ) {
+    public ArrayList<Point> produceFinalSkyLine(ArrayList<Point> left, ArrayList<Point> right) {
         // dominated points of ArrayList left are removed
         for (int i = 0; i < left.size() - 1; i++) {
-            if (
-                left.get(i).x == left.get(i + 1).x &&
-                left.get(i).y > left.get(i + 1).y
-            ) {
+            if (left.get(i).x == left.get(i + 1).x && left.get(i).y > left.get(i + 1).y) {
                 left.remove(i);
                 i--;
             }
@@ -172,10 +166,7 @@ public class SkylineAlgorithm {
          */
         public boolean dominates(Point p1) {
             // checks if p1 is dominated
-            return (
-                (this.x < p1.x && this.y <= p1.y) ||
-                (this.x <= p1.x && this.y < p1.y)
-            );
+            return ((this.x < p1.x && this.y <= p1.y) || (this.x <= p1.x && this.y < p1.y));
         }
     }
 

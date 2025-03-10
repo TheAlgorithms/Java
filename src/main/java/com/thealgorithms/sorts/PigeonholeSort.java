@@ -1,55 +1,89 @@
 package com.thealgorithms.sorts;
 
-import static com.thealgorithms.sorts.SortUtils.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import java.util.*;
+public final class PigeonholeSort {
+    private PigeonholeSort() {
+    }
 
-public class PigeonholeSort {
+    /**
+     * Sorts the given array using the pigeonhole sort algorithm.
+     *
+     * @param array the array to be sorted
+     * @throws IllegalArgumentException if any negative integers are found
+     * @return the sorted array
+     */
+    public static int[] sort(int[] array) {
 
-    /*
-        This code implements the pigeonhole sort algorithm for the integer array,
-        but we can also implement this for string arrays too.
-        See https://www.geeksforgeeks.org/pigeonhole-sort/
-    */
-    void sort(Integer[] array) {
-        int maxElement = array[0];
-        for (int element : array) {
-            if (element > maxElement) maxElement = element;
+        checkForNegativeInput(array);
+
+        if (array.length == 0) {
+            return array;
         }
 
-        int numOfPigeonholes = 1 + maxElement;
-        ArrayList<Integer>[] pigeonHole = new ArrayList[numOfPigeonholes];
+        final int maxElement = Arrays.stream(array).max().orElseThrow();
+        final List<List<Integer>> pigeonHoles = createPigeonHoles(maxElement);
 
-        for (int k = 0; k < numOfPigeonholes; k++) {
-            pigeonHole[k] = new ArrayList<>();
-        }
+        populatePigeonHoles(array, pigeonHoles);
+        collectFromPigeonHoles(array, pigeonHoles);
 
-        for (int t : array) {
-            pigeonHole[t].add(t);
-        }
+        return array;
+    }
 
-        int k = 0;
-        for (ArrayList<Integer> ph : pigeonHole) {
-            for (int elements : ph) {
-                array[k] = elements;
-                k = k + 1;
+    /**
+     * Checks if the array contains any negative integers.
+     *
+     * @param array the array to be checked
+     * @throws IllegalArgumentException if any negative integers are found
+     */
+    private static void checkForNegativeInput(int[] array) {
+        for (final int number : array) {
+            if (number < 0) {
+                throw new IllegalArgumentException("Array contains negative integers.");
             }
         }
     }
 
-    public static void main(String[] args) {
-        PigeonholeSort pigeonholeSort = new PigeonholeSort();
-        Integer[] arr = { 8, 3, 2, 7, 4, 6, 8 };
-
-        System.out.print("Unsorted order is : ");
-        print(arr);
-
-        pigeonholeSort.sort(arr);
-
-        System.out.print("Sorted order is : ");
-        for (int i = 0; i < arr.length; i++) {
-            assert (arr[i]) <= (arr[i + 1]);
+    /**
+     * Creates pigeonholes for sorting using an ArrayList of ArrayLists.
+     *
+     * @param maxElement the maximum element in the array
+     * @return an ArrayList of ArrayLists
+     */
+    private static List<List<Integer>> createPigeonHoles(int maxElement) {
+        List<List<Integer>> pigeonHoles = new ArrayList<>(maxElement + 1);
+        for (int i = 0; i <= maxElement; i++) {
+            pigeonHoles.add(new ArrayList<>());
         }
-        print(arr);
+        return pigeonHoles;
+    }
+
+    /**
+     * Populates the pigeonholes with elements from the array.
+     *
+     * @param array the array to be sorted
+     * @param pigeonHoles the pigeonholes to be populated
+     */
+    private static void populatePigeonHoles(int[] array, List<List<Integer>> pigeonHoles) {
+        for (int element : array) {
+            pigeonHoles.get(element).add(element);
+        }
+    }
+
+    /**
+     * Collects sorted elements from the pigeonholes back into the array.
+     *
+     * @param array the array to be sorted
+     * @param pigeonHoles the populated pigeonholes
+     */
+    private static void collectFromPigeonHoles(int[] array, Iterable<List<Integer>> pigeonHoles) {
+        int index = 0;
+        for (final var pigeonHole : pigeonHoles) {
+            for (final int element : pigeonHole) {
+                array[index++] = element;
+            }
+        }
     }
 }

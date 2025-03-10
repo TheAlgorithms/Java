@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * @author https://github.com/shellhub/
  */
-public class GCDRecursion {
+public final class GCDRecursion {
+    private GCDRecursion() {
+    }
 
     public static void main(String[] args) {
         System.out.println(gcd(20, 15));

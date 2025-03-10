@@ -1,21 +1,29 @@
 package com.thealgorithms.maths;
 
-import java.util.*;
-
 /*
  * @author Ojasva Jain
- * Determinant of Matrix Wikipedia link : https://en.wikipedia.org/wiki/Determinant
+ * Determinant of a Matrix Wikipedia link: https://en.wikipedia.org/wiki/Determinant
  */
-public class DeterminantOfMatrix {
+public final class DeterminantOfMatrix {
+    private DeterminantOfMatrix() {
+    }
 
-    // Determinant calculator
-    //@return determinant of the input matrix
-    static int determinant(int a[][], int n) {
-        int det = 0, sign = 1, p = 0, q = 0;
+    /**
+     * Calculates the determinant of a given matrix.
+     *
+     * @param a the input matrix
+     * @param n the size of the matrix
+     * @return the determinant of the matrix
+     */
+    static int determinant(int[][] a, int n) {
+        int det = 0;
+        int sign = 1;
+        int p = 0;
+        int q = 0;
         if (n == 1) {
             det = a[0][0];
         } else {
-            int b[][] = new int[n - 1][n - 1];
+            int[][] b = new int[n - 1][n - 1];
             for (int x = 0; x < n; x++) {
                 p = 0;
                 q = 0;
@@ -35,21 +43,5 @@ public class DeterminantOfMatrix {
             }
         }
         return det;
-    }
-
-    //Driver Method
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        //Input Matrix
-        System.out.println("Enter matrix size (Square matrix only)");
-        int n = in.nextInt();
-        System.out.println("Enter matrix");
-        int a[][] = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                a[i][j] = in.nextInt();
-            }
-        }
-        System.out.println(determinant(a, n));
     }
 }

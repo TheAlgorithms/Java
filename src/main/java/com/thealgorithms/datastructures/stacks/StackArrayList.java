@@ -4,112 +4,87 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 /**
- * This class implements a Stack using an ArrayList.
+ * A stack implementation backed by an {@link ArrayList}, offering dynamic resizing
+ * and LIFO (Last-In-First-Out) behavior.
  *
- * <p>
- * A stack is exactly what it sounds like. An element gets added to the top of
- * the stack and only the element on the top may be removed.
+ * <p>The stack grows dynamically as elements are added, and elements are removed
+ * in reverse order of their addition.
  *
- * <p>
- * This is an ArrayList Implementation of a stack, where size is not a problem
- * we can extend the stack as much as we want.
+ * @param <T> the type of elements stored in this stack
  */
-public class StackArrayList {
+public class StackArrayList<T> implements Stack<T> {
+
+    private final ArrayList<T> stack;
 
     /**
-     * Driver Code
-     */
-    public static void main(String[] args) {
-        StackArrayList stack = new StackArrayList();
-        assert stack.isEmpty();
-
-        for (int i = 1; i <= 5; ++i) {
-            stack.push(i);
-            assert stack.size() == i;
-        }
-
-        assert stack.size() == 5;
-        assert stack.peek() == 5 && stack.pop() == 5 && stack.peek() == 4;
-
-        /* pop elements at the top of this stack one by one */
-        while (!stack.isEmpty()) {
-            stack.pop();
-        }
-        assert stack.isEmpty();
-
-        try {
-            stack.pop();
-            assert false;
-            /* this should not happen */
-        } catch (EmptyStackException e) {
-            assert true;
-            /* this should happen */
-        }
-    }
-
-    /**
-     * ArrayList representation of the stack
-     */
-    private ArrayList<Integer> stack;
-
-    /**
-     * Constructor
+     * Constructs an empty stack.
      */
     public StackArrayList() {
         stack = new ArrayList<>();
     }
 
     /**
-     * Adds value to the end of list which is the top for stack
+     * Adds an element to the top of the stack.
      *
-     * @param value value to be added
+     * @param value the element to be added
      */
-    public void push(int value) {
+    @Override
+    public void push(T value) {
         stack.add(value);
     }
 
     /**
-     * Removes the element at the top of this stack and returns
+     * Removes and returns the element from the top of the stack.
      *
-     * @return Element popped
-     * @throws EmptyStackException if the stack is empty.
+     * @return the element removed from the top of the stack
+     * @throws EmptyStackException if the stack is empty
      */
-    public int pop() {
+    @Override
+    public T pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-
-        /* remove the element on the top of the stack */
-        return stack.remove(stack.size() - 1);
+        return stack.removeLast();
     }
 
     /**
-     * Test if the stack is empty.
+     * Returns the element at the top of the stack without removing it.
      *
-     * @return {@code true} if this stack is empty, {@code false} otherwise.
+     * @return the top element of the stack
+     * @throws EmptyStackException if the stack is empty
      */
+    @Override
+    public T peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.getLast();
+    }
+
+    /**
+     * Checks if the stack is empty.
+     *
+     * @return {@code true} if the stack is empty, {@code false} otherwise
+     */
+    @Override
     public boolean isEmpty() {
         return stack.isEmpty();
     }
 
     /**
-     * Return the element at the top of this stack without removing it from the
-     * stack.
-     *
-     * @return the element at the top of this stack.
+     * Empties the stack, removing all elements.
      */
-    public int peek() {
-        if (isEmpty()) {
-            throw new EmptyStackException();
-        }
-        return stack.get(stack.size() - 1);
+    @Override
+    public void makeEmpty() {
+        stack.clear();
     }
 
     /**
-     * Return size of this stack.
+     * Returns the number of elements in the stack.
      *
-     * @return size of this stack.
+     * @return the current size of the stack
      */
+    @Override
     public int size() {
         return stack.size();
     }

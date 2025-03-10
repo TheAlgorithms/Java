@@ -1,36 +1,39 @@
 package com.thealgorithms.strings;
 
-public class Upper {
+public final class Upper {
+    private Upper() {
+    }
 
     /**
      * Driver Code
      */
     public static void main(String[] args) {
-        String[] strings = { "ABC", "ABC123", "abcABC", "abc123ABC" };
+        String[] strings = {"ABC", "ABC123", "abcABC", "abc123ABC"};
         for (String s : strings) {
             assert toUpperCase(s).equals(s.toUpperCase());
         }
     }
 
     /**
-     * Converts all of the characters in this {@code String} to upper case
+     * Converts all the characters in this {@code String} to upper case
      *
      * @param s the string to convert
      * @return the {@code String}, converted to uppercase.
      */
     public static String toUpperCase(String s) {
-        if (s == null || "".equals(s)) {
+        if (s == null) {
+            throw new IllegalArgumentException("Input string connot be null");
+        }
+        if (s.isEmpty()) {
             return s;
         }
-        char[] values = s.toCharArray();
-        for (int i = 0; i < values.length; ++i) {
-            if (
-                Character.isLetter(values[i]) &&
-                Character.isLowerCase(values[i])
-            ) {
-                values[i] = Character.toUpperCase(values[i]);
+        StringBuilder result = new StringBuilder(s);
+        for (int i = 0; i < result.length(); ++i) {
+            char currentChar = result.charAt(i);
+            if (Character.isLetter(currentChar) && Character.isLowerCase(currentChar)) {
+                result.setCharAt(i, Character.toUpperCase(currentChar));
             }
         }
-        return new String(values);
+        return result.toString();
     }
 }

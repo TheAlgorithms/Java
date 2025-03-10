@@ -1,10 +1,13 @@
 package com.thealgorithms.others;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 
 /**
@@ -22,14 +25,16 @@ import javax.imageio.ImageIO;
  * https://natureofcode.com/book/chapter-8-fractals/
  * #84-the-koch-curve-and-the-arraylist-technique ).
  */
-public class KochSnowflake {
+public final class KochSnowflake {
+    private KochSnowflake() {
+    }
 
     public static void main(String[] args) {
         // Test Iterate-method
         ArrayList<Vector2> vectors = new ArrayList<Vector2>();
         vectors.add(new Vector2(0, 0));
         vectors.add(new Vector2(1, 0));
-        ArrayList<Vector2> result = Iterate(vectors, 1);
+        ArrayList<Vector2> result = iterate(vectors, 1);
 
         assert result.get(0).x == 0;
         assert result.get(0).y == 0;
@@ -50,14 +55,13 @@ public class KochSnowflake {
         int imageWidth = 600;
         double offsetX = imageWidth / 10.;
         double offsetY = imageWidth / 3.7;
-        BufferedImage image = GetKochSnowflake(imageWidth, 5);
+        BufferedImage image = getKochSnowflake(imageWidth, 5);
 
         // The background should be white
         assert image.getRGB(0, 0) == new Color(255, 255, 255).getRGB();
 
         // The snowflake is drawn in black and this is the position of the first vector
-        assert image.getRGB((int) offsetX, (int) offsetY) ==
-        new Color(0, 0, 0).getRGB();
+        assert image.getRGB((int) offsetX, (int) offsetY) == new Color(0, 0, 0).getRGB();
 
         // Save image
         try {
@@ -77,13 +81,10 @@ public class KochSnowflake {
      * @param steps The number of iterations.
      * @return The transformed vectors after the iteration-steps.
      */
-    public static ArrayList<Vector2> Iterate(
-        ArrayList<Vector2> initialVectors,
-        int steps
-    ) {
+    public static ArrayList<Vector2> iterate(ArrayList<Vector2> initialVectors, int steps) {
         ArrayList<Vector2> vectors = initialVectors;
         for (int i = 0; i < steps; i++) {
-            vectors = IterationStep(vectors);
+            vectors = iterationStep(vectors);
         }
 
         return vectors;
@@ -96,28 +97,23 @@ public class KochSnowflake {
      * @param steps The number of iterations.
      * @return The image of the rendered Koch snowflake.
      */
-    public static BufferedImage GetKochSnowflake(int imageWidth, int steps) {
+    public static BufferedImage getKochSnowflake(int imageWidth, int steps) {
         if (imageWidth <= 0) {
-            throw new IllegalArgumentException(
-                "imageWidth should be greater than zero"
-            );
+            throw new IllegalArgumentException("imageWidth should be greater than zero");
         }
 
         double offsetX = imageWidth / 10.;
         double offsetY = imageWidth / 3.7;
         Vector2 vector1 = new Vector2(offsetX, offsetY);
-        Vector2 vector2 = new Vector2(
-            imageWidth / 2,
-            Math.sin(Math.PI / 3) * imageWidth * 0.8 + offsetY
-        );
+        Vector2 vector2 = new Vector2(imageWidth / 2.0, Math.sin(Math.PI / 3.0) * imageWidth * 0.8 + offsetY);
         Vector2 vector3 = new Vector2(imageWidth - offsetX, offsetY);
         ArrayList<Vector2> initialVectors = new ArrayList<Vector2>();
         initialVectors.add(vector1);
         initialVectors.add(vector2);
         initialVectors.add(vector3);
         initialVectors.add(vector1);
-        ArrayList<Vector2> vectors = Iterate(initialVectors, steps);
-        return GetImage(vectors, imageWidth, imageWidth);
+        ArrayList<Vector2> vectors = iterate(initialVectors, steps);
+        return getImage(vectors, imageWidth, imageWidth);
     }
 
     /**
@@ -130,23 +126,15 @@ public class KochSnowflake {
      * applied.
      * @return The transformed vectors after the iteration-step.
      */
-    private static ArrayList<Vector2> IterationStep(
-        ArrayList<Vector2> vectors
-    ) {
+    private static ArrayList<Vector2> iterationStep(List<Vector2> vectors) {
         ArrayList<Vector2> newVectors = new ArrayList<Vector2>();
         for (int i = 0; i < vectors.size() - 1; i++) {
             Vector2 startVector = vectors.get(i);
             Vector2 endVector = vectors.get(i + 1);
             newVectors.add(startVector);
-            Vector2 differenceVector = endVector
-                .subtract(startVector)
-                .multiply(1. / 3);
+            Vector2 differenceVector = endVector.subtract(startVector).multiply(1. / 3);
             newVectors.add(startVector.add(differenceVector));
-            newVectors.add(
-                startVector
-                    .add(differenceVector)
-                    .add(differenceVector.rotate(60))
-            );
+            newVectors.add(startVector.add(differenceVector).add(differenceVector.rotate(60)));
             newVectors.add(startVector.add(differenceVector.multiply(2)));
         }
 
@@ -162,16 +150,8 @@ public class KochSnowflake {
      * @param imageHeight The height of the rendered image.
      * @return The image of the rendered edges.
      */
-    private static BufferedImage GetImage(
-        ArrayList<Vector2> vectors,
-        int imageWidth,
-        int imageHeight
-    ) {
-        BufferedImage image = new BufferedImage(
-            imageWidth,
-            imageHeight,
-            BufferedImage.TYPE_INT_RGB
-        );
+    private static BufferedImage getImage(ArrayList<Vector2> vectors, int imageWidth, int imageHeight) {
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = image.createGraphics();
 
         // Set the background white
@@ -199,9 +179,10 @@ public class KochSnowflake {
      */
     private static class Vector2 {
 
-        double x, y;
+        double x;
+        double y;
 
-        public Vector2(double x, double y) {
+        Vector2(double x, double y) {
             this.x = x;
             this.y = y;
         }

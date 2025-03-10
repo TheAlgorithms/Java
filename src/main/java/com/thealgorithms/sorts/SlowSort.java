@@ -16,13 +16,11 @@ public class SlowSort implements SortAlgorithm {
         if (SortUtils.greaterOrEqual(i, j)) {
             return;
         }
-        int m = (i + j) / 2;
+        final int m = (i + j) >>> 1;
         sort(array, i, m);
         sort(array, m + 1, j);
         if (SortUtils.less(array[j], array[m])) {
-            T temp = array[j];
-            array[j] = array[m];
-            array[m] = temp;
+            SortUtils.swap(array, j, m);
         }
         sort(array, i, j - 1);
     }

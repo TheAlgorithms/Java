@@ -3,7 +3,9 @@ package com.thealgorithms.maths;
 /**
  * Find the area of various geometric shapes
  */
-public class Area {
+public final class Area {
+    private Area() {
+    }
 
     /**
      * String of IllegalArgumentException for radius
@@ -100,7 +102,7 @@ public class Area {
      * @param height height of triangle
      * @return area of given triangle
      */
-    public static double surfaceAreaTriangleRectangle(final double base, final double height) {
+    public static double surfaceAreaTriangle(final double base, final double height) {
         if (base <= 0) {
             throw new IllegalArgumentException(POSITIVE_BASE);
         }

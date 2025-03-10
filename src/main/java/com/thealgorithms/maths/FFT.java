@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Collections;
  * @author Ioannis Karavitsis
  * @version 1.0
  */
-public class FFT {
+public final class FFT {
+    private FFT() {
+    }
 
     /**
      * This class represents a complex number and has methods for basic
@@ -22,12 +25,13 @@ public class FFT {
      */
     static class Complex {
 
-        private double real, img;
+        private double real;
+        private double img;
 
         /**
          * Default Constructor. Creates the complex number 0.
          */
-        public Complex() {
+        Complex() {
             real = 0;
             img = 0;
         }
@@ -38,7 +42,7 @@ public class FFT {
          * @param r The real part of the number.
          * @param i The imaginary part of the number.
          */
-        public Complex(double r, double i) {
+        Complex(double r, double i) {
             real = r;
             img = i;
         }
@@ -161,6 +165,14 @@ public class FFT {
             temp.img = this.img / n;
             return temp;
         }
+
+        public double real() {
+            return real;
+        }
+
+        public double imaginary() {
+            return img;
+        }
     }
 
     /**
@@ -180,22 +192,19 @@ public class FFT {
      * @param inverse True if you want to find the inverse FFT.
      * @return
      */
-    public static ArrayList<Complex> fft(
-        ArrayList<Complex> x,
-        boolean inverse
-    ) {
+    public static ArrayList<Complex> fft(ArrayList<Complex> x, boolean inverse) {
         /* Pad the signal with zeros if necessary */
         paddingPowerOfTwo(x);
-        int N = x.size();
-        int log2N = findLog2(N);
-        x = fftBitReversal(N, log2N, x);
+        int n = x.size();
+        int log2n = findLog2(n);
+        x = fftBitReversal(n, log2n, x);
         int direction = inverse ? -1 : 1;
 
         /* Main loop of the algorithm */
-        for (int len = 2; len <= N; len *= 2) {
+        for (int len = 2; len <= n; len *= 2) {
             double angle = -2 * Math.PI / len * direction;
             Complex wlen = new Complex(Math.cos(angle), Math.sin(angle));
-            for (int i = 0; i < N; i += len) {
+            for (int i = 0; i < n; i += len) {
                 Complex w = new Complex(1, 0);
                 for (int j = 0; j < len / 2; j++) {
                     Complex u = x.get(i + j);
@@ -206,28 +215,24 @@ public class FFT {
                 }
             }
         }
-        x = inverseFFT(N, inverse, x);
+        x = inverseFFT(n, inverse, x);
         return x;
     }
 
-    /* Find the log2(N) */
-    public static int findLog2(int N) {
-        int log2N = 0;
-        while ((1 << log2N) < N) {
-            log2N++;
+    /* Find the log2(n) */
+    public static int findLog2(int n) {
+        int log2n = 0;
+        while ((1 << log2n) < n) {
+            log2n++;
         }
-        return log2N;
+        return log2n;
     }
 
     /* Swap the values of the signal with bit-reversal method */
-    public static ArrayList<Complex> fftBitReversal(
-        int N,
-        int log2N,
-        ArrayList<Complex> x
-    ) {
+    public static ArrayList<Complex> fftBitReversal(int n, int log2n, ArrayList<Complex> x) {
         int reverse;
-        for (int i = 0; i < N; i++) {
-            reverse = reverseBits(i, log2N);
+        for (int i = 0; i < n; i++) {
+            reverse = reverseBits(i, log2n);
             if (i < reverse) {
                 Collections.swap(x, i, reverse);
             }
@@ -235,16 +240,12 @@ public class FFT {
         return x;
     }
 
-    /* Divide by N if we want the inverse FFT */
-    public static ArrayList<Complex> inverseFFT(
-        int N,
-        boolean inverse,
-        ArrayList<Complex> x
-    ) {
+    /* Divide by n if we want the inverse FFT */
+    public static ArrayList<Complex> inverseFFT(int n, boolean inverse, ArrayList<Complex> x) {
         if (inverse) {
             for (int i = 0; i < x.size(); i++) {
                 Complex z = x.get(i);
-                x.set(i, z.divide(N));
+                x.set(i, z.divide(n));
             }
         }
         return x;
@@ -255,7 +256,7 @@ public class FFT {
      * FFT algorithm.
      *
      * <p>
-     * E.g. num = 13 = 00001101 in binary log2N = 8 Then reversed = 176 =
+     * E.g. num = 13 = 00001101 in binary log2n = 8 Then reversed = 176 =
      * 10110000 in binary
      *
      * <p>
@@ -263,14 +264,14 @@ public class FFT {
      * https://www.geeksforgeeks.org/write-an-efficient-c-program-to-reverse-bits-of-a-number/
      *
      * @param num The integer you want to reverse its bits.
-     * @param log2N The number of bits you want to reverse.
+     * @param log2n The number of bits you want to reverse.
      * @return The reversed number
      */
-    private static int reverseBits(int num, int log2N) {
+    private static int reverseBits(int num, int log2n) {
         int reversed = 0;
-        for (int i = 0; i < log2N; i++) {
+        for (int i = 0; i < log2n; i++) {
             if ((num & (1 << i)) != 0) {
-                reversed |= 1 << (log2N - 1 - i);
+                reversed |= 1 << (log2n - 1 - i);
             }
         }
         return reversed;
@@ -282,7 +283,7 @@ public class FFT {
      *
      * @param x The ArrayList to be padded.
      */
-    private static void paddingPowerOfTwo(ArrayList<Complex> x) {
+    private static void paddingPowerOfTwo(Collection<Complex> x) {
         int n = 1;
         int oldSize = x.size();
         while (n < oldSize) {

@@ -1,74 +1,82 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
- * use quick sort algorithm to get kth largest or kth smallest element in given array
+ * Use a quicksort-based approach to identify the k-th largest or k-th max element within the provided array.
  */
-public class FindKthNumber {
-
-    private static final Random random = new Random();
-
-    public static void main(String[] args) {
-        /* generate array with random size and random elements */
-        int[] nums = generateArray(100);
-
-        /* get 3th largest element */
-        int kth = 3;
-        int kthMaxIndex = nums.length - kth;
-        int targetMax = findKthMax(nums, kthMaxIndex);
-
-        /* get 3th smallest element */
-        int kthMinIndex = kth - 1;
-        int targetMin = findKthMax(nums, kthMinIndex);
-
-        Arrays.sort(nums);
-        assert nums[kthMaxIndex] == targetMax;
-        assert nums[kthMinIndex] == targetMin;
+public final class FindKthNumber {
+    private FindKthNumber() {
     }
 
-    private static int[] generateArray(int capacity) {
-        int size = random.nextInt(capacity) + 1;
-        int[] array = new int[size];
+    private static final Random RANDOM = new Random();
 
-        for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt() % 100;
+    public static int findKthMax(int[] array, int k) {
+        if (k <= 0 || k > array.length) {
+            throw new IllegalArgumentException("k must be between 1 and the size of the array");
         }
-        return array;
+
+        // Convert k-th largest to index for QuickSelect
+        return quickSelect(array, 0, array.length - 1, array.length - k);
     }
 
-    private static int findKthMax(int[] nums, int k) {
-        int start = 0, end = nums.length;
-        while (start < end) {
-            int pivot = partition(nums, start, end);
-            if (k == pivot) {
-                return nums[pivot];
-            } else if (k > pivot) {
-                start = pivot + 1;
-            } else {
-                end = pivot;
+    private static int quickSelect(int[] array, int left, int right, int kSmallest) {
+        if (left == right) {
+            return array[left];
+        }
+
+        // Randomly select a pivot index
+        int pivotIndex = left + RANDOM.nextInt(right - left + 1);
+        pivotIndex = partition(array, left, right, pivotIndex);
+
+        if (kSmallest == pivotIndex) {
+            return array[kSmallest];
+        } else if (kSmallest < pivotIndex) {
+            return quickSelect(array, left, pivotIndex - 1, kSmallest);
+        } else {
+            return quickSelect(array, pivotIndex + 1, right, kSmallest);
+        }
+    }
+
+    private static int partition(int[] array, int left, int right, int pivotIndex) {
+        int pivotValue = array[pivotIndex];
+        // Move pivot to end
+        swap(array, pivotIndex, right);
+        int storeIndex = left;
+
+        // Move all smaller elements to the left
+        for (int i = left; i < right; i++) {
+            if (array[i] < pivotValue) {
+                swap(array, storeIndex, i);
+                storeIndex++;
             }
         }
-        return -1;
+
+        // Move pivot to its final place
+        swap(array, storeIndex, right);
+        return storeIndex;
     }
 
-    private static int partition(int[] nums, int start, int end) {
-        int pivot = nums[start];
-        int j = start;
-        for (int i = start + 1; i < end; i++) {
-            if (nums[i] < pivot) {
-                j++;
-                swap(nums, i, j);
-            }
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static int findKthMaxUsingHeap(int[] array, int k) {
+        if (k <= 0 || k > array.length) {
+            throw new IllegalArgumentException("k must be between 1 and the size of the array");
         }
-        swap(nums, start, j);
-        return j;
-    }
-
-    private static void swap(int[] nums, int a, int b) {
-        int tmp = nums[a];
-        nums[a] = nums[b];
-        nums[b] = tmp;
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // using max-heap to store numbers.
+        for (int num : array) {
+            maxHeap.add(num);
+        }
+        while (k > 1) {
+            maxHeap.poll(); // removing max number from heap
+            k--;
+        }
+        return maxHeap.peek();
     }
 }

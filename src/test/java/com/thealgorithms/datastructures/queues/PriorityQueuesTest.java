@@ -26,7 +26,7 @@ class PriorityQueuesTest {
         myQueue.insert(5);
         myQueue.insert(3);
         myQueue.insert(10);
-        
+
         myQueue.remove();
         Assertions.assertEquals(myQueue.peek(), 5);
         myQueue.remove();
@@ -46,7 +46,7 @@ class PriorityQueuesTest {
         myQueue.insert(10);
         Assertions.assertEquals(myQueue.isEmpty(), false);
         Assertions.assertEquals(myQueue.isFull(), true);
-        
+
         myQueue.remove();
         Assertions.assertEquals(myQueue.getSize(), 3);
         Assertions.assertEquals(myQueue.peek(), 5);

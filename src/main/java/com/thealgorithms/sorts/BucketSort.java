@@ -3,115 +3,128 @@ package com.thealgorithms.sorts;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
- * Wikipedia: https://en.wikipedia.org/wiki/Bucket_sort
+ * BucketSort class provides a method to sort an array of elements using the Bucket Sort algorithm
+ * and implements the SortAlgorithm interface.
  */
-public class BucketSort {
+public class BucketSort implements SortAlgorithm {
 
-    public static void main(String[] args) {
-        int[] arr = new int[10];
+    // Constant that defines the divisor for determining the number of buckets
+    private static final int BUCKET_DIVISOR = 10;
 
-        /* generate 10 random numbers from -50 to 49 */
-        Random random = new Random();
-        for (int i = 0; i < arr.length; ++i) {
-            arr[i] = random.nextInt(100) - 50;
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        if (array.length == 0) {
+            return array;
         }
 
-        bucketSort(arr);
+        T min = findMin(array);
+        T max = findMax(array);
+        int numberOfBuckets = calculateNumberOfBuckets(array.length);
 
-        /* check array is sorted or not */
-        for (int i = 0, limit = arr.length - 1; i < limit; ++i) {
-            assert arr[i] <= arr[i + 1];
-        }
+        List<List<T>> buckets = initializeBuckets(numberOfBuckets);
+        distributeElementsIntoBuckets(array, buckets, min, max, numberOfBuckets);
+
+        return concatenateBuckets(buckets, array);
     }
 
     /**
-     * BucketSort algorithms implements
+     * Calculates the number of buckets to use based on the size of the array.
      *
-     * @param arr the array contains elements
+     * @param arrayLength the length of the array
+     * @return the number of buckets
      */
-    public static int[] bucketSort(int[] arr) {
-        /* get max value of arr */
-        int max = max(arr);
+    private int calculateNumberOfBuckets(final int arrayLength) {
+        return Math.max(arrayLength / BUCKET_DIVISOR, 1);
+    }
 
-        /* get min value of arr */
-        int min = min(arr);
-
-        /* number of buckets */
-        int numberOfBuckets = max - min + 1;
-
-        List<List<Integer>> buckets = new ArrayList<>(numberOfBuckets);
-
-        /* init buckets */
-        for (int i = 0; i < numberOfBuckets; ++i) {
+    /**
+     * Initializes a list of empty buckets.
+     *
+     * @param numberOfBuckets the number of buckets to initialize
+     * @param <T> the type of elements to be sorted
+     * @return a list of empty buckets
+     */
+    private <T extends Comparable<T>> List<List<T>> initializeBuckets(int numberOfBuckets) {
+        List<List<T>> buckets = new ArrayList<>(numberOfBuckets);
+        for (int i = 0; i < numberOfBuckets; i++) {
             buckets.add(new ArrayList<>());
         }
+        return buckets;
+    }
 
-        /* store elements to buckets */
-        for (int value : arr) {
-            int hash = hash(value, min, numberOfBuckets);
-            buckets.get(hash).add(value);
+    /**
+     * Distributes elements from the array into the appropriate buckets.
+     *
+     * @param array the array of elements to distribute
+     * @param buckets the list of buckets
+     * @param min the minimum value in the array
+     * @param max the maximum value in the array
+     * @param numberOfBuckets the total number of buckets
+     * @param <T> the type of elements in the array
+     */
+    private <T extends Comparable<T>> void distributeElementsIntoBuckets(T[] array, List<List<T>> buckets, final T min, final T max, final int numberOfBuckets) {
+        for (final T element : array) {
+            int bucketIndex = hash(element, min, max, numberOfBuckets);
+            buckets.get(bucketIndex).add(element);
         }
+    }
 
-        /* sort individual bucket */
-        for (List<Integer> bucket : buckets) {
-            Collections.sort(bucket);
-        }
-
-        /* concatenate buckets to origin array */
+    /**
+     * Concatenates the sorted buckets back into the original array.
+     *
+     * @param buckets the list of sorted buckets
+     * @param array the original array
+     * @param <T> the type of elements in the array
+     * @return the sorted array
+     */
+    private <T extends Comparable<T>> T[] concatenateBuckets(Iterable<List<T>> buckets, T[] array) {
         int index = 0;
-        for (List<Integer> bucket : buckets) {
-            for (int value : bucket) {
-                arr[index++] = value;
+        for (List<T> bucket : buckets) {
+            Collections.sort(bucket);
+            for (T element : bucket) {
+                array[index++] = element;
             }
         }
-        
-        return arr;
+        return array;
     }
 
     /**
-     * Get index of bucket which of our elements gets placed into it.
+     * The method computes the index of the bucket in which a given element should be placed.
+     * This is done by "normalizing" the element within the range of the array's minimum (min) and maximum (max) values,
+     * and then mapping this normalized value to a specific bucket index.
      *
-     * @param elem the element of array to be sorted
-     * @param min min value of array
-     * @param numberOfBucket the number of bucket
-     * @return index of bucket
+     * @param element the element of the array
+     * @param min the minimum value in the array
+     * @param max the maximum value in the array
+     * @param numberOfBuckets the total number of buckets
+     * @param <T> the type of elements in the array
+     * @return the index of the bucket
      */
-    private static int hash(int elem, int min, int numberOfBucket) {
-        return (elem - min) / numberOfBucket;
+    private <T extends Comparable<T>> int hash(final T element, final T min, final T max, final int numberOfBuckets) {
+        double range = max.compareTo(min);
+        double normalizedValue = element.compareTo(min) / range;
+        return (int) (normalizedValue * (numberOfBuckets - 1));
     }
 
-    /**
-     * Calculate max value of array
-     *
-     * @param arr the array contains elements
-     * @return max value of given array
-     */
-    public static int max(int[] arr) {
-        int max = arr[0];
-        for (int value : arr) {
-            if (value > max) {
-                max = value;
-            }
-        }
-        return max;
-    }
-
-    /**
-     * Calculate min value of array
-     *
-     * @param arr the array contains elements
-     * @return min value of given array
-     */
-    public static int min(int[] arr) {
-        int min = arr[0];
-        for (int value : arr) {
-            if (value < min) {
-                min = value;
+    private <T extends Comparable<T>> T findMin(T[] array) {
+        T min = array[0];
+        for (T element : array) {
+            if (element.compareTo(min) < 0) {
+                min = element;
             }
         }
         return min;
+    }
+
+    private <T extends Comparable<T>> T findMax(T[] array) {
+        T max = array[0];
+        for (T element : array) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
     }
 }

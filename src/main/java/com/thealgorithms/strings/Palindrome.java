@@ -3,7 +3,9 @@ package com.thealgorithms.strings;
 /**
  * Wikipedia: https://en.wikipedia.org/wiki/Palindrome
  */
-class Palindrome {
+final class Palindrome {
+    private Palindrome() {
+    }
 
     /**
      * Check if a string is palindrome string or not using String Builder
@@ -13,10 +15,7 @@ class Palindrome {
      * {@code false}
      */
     public static boolean isPalindrome(String s) {
-        return (
-            (s == null || s.length() <= 1) ||
-            s.equals(new StringBuilder(s).reverse().toString())
-        );
+        return ((s == null || s.length() <= 1) || s.equals(new StringBuilder(s).reverse().toString()));
     }
 
     /**

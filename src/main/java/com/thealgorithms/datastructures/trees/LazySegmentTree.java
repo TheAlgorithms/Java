@@ -10,12 +10,14 @@ public class LazySegmentTree {
      */
     static class Node {
 
-        private final int start, end; // start and end of the segment represented by this node
+        private final int start;
+        private final int end; // start and end of the segment represented by this node
         private int value; // value is the sum of all elements in the range [start, end)
         private int lazy; // lazied value that should be added to children nodes
-        Node left, right; // left and right children
+        Node left;
+        Node right; // left and right children
 
-        public Node(int start, int end, int value) {
+        Node(int start, int end, int value) {
             this.start = start;
             this.end = end;
             this.value = value;
@@ -24,7 +26,8 @@ public class LazySegmentTree {
             this.right = null;
         }
 
-        /** Update the value of this node with the given value diff.
+        /**
+         * Update the value of this node with the given value diff.
          *
          * @param diff The value to add to every index of this node range.
          */
@@ -33,31 +36,41 @@ public class LazySegmentTree {
             this.value += (this.end - this.start) * diff;
         }
 
-        /** Shift the lazy value of this node to its children.
+        /**
+         * Shift the lazy value of this node to its children.
          */
         public void shift() {
-            if (lazy == 0) return;
-            if (this.left == null && this.right == null) return;
+            if (lazy == 0) {
+                return;
+            }
+            if (this.left == null && this.right == null) {
+                return;
+            }
             this.value += this.lazy;
-            if (this.left != null) this.left.applyUpdate(this.lazy);
-            if (this.right != null) this.right.applyUpdate(this.lazy);
+            if (this.left != null) {
+                this.left.applyUpdate(this.lazy);
+            }
+            if (this.right != null) {
+                this.right.applyUpdate(this.lazy);
+            }
             this.lazy = 0;
         }
 
-        /** Create a new node that is the sum of this node and the given node.
+        /**
+         * Create a new node that is the sum of this node and the given node.
          *
          * @param left The left Node of merging
          * @param right The right Node of merging
          * @return The new Node.
          */
         static Node merge(Node left, Node right) {
-            if (left == null) return right;
-            if (right == null) return left;
-            Node result = new Node(
-                left.start,
-                right.end,
-                left.value + right.value
-            );
+            if (left == null) {
+                return right;
+            }
+            if (right == null) {
+                return left;
+            }
+            Node result = new Node(left.start, right.end, left.value + right.value);
             result.left = left;
             result.right = right;
             return result;
@@ -78,7 +91,8 @@ public class LazySegmentTree {
 
     private final Node root;
 
-    /** Create a new LazySegmentTree with the given array.
+    /**
+     * Create a new LazySegmentTree with the given array.
      *
      * @param array The array to create the LazySegmentTree from.
      */
@@ -86,7 +100,8 @@ public class LazySegmentTree {
         this.root = buildTree(array, 0, array.length);
     }
 
-    /** Build a new LazySegmentTree from the given array in O(n) time.
+    /**
+     * Build a new LazySegmentTree from the given array in O(n) time.
      *
      * @param array The array to build the LazySegmentTree from.
      * @param start The start index of the current node.
@@ -94,14 +109,17 @@ public class LazySegmentTree {
      * @return The root of the new LazySegmentTree.
      */
     private Node buildTree(int[] array, int start, int end) {
-        if (end - start < 2) return new Node(start, end, array[start]);
+        if (end - start < 2) {
+            return new Node(start, end, array[start]);
+        }
         int mid = (start + end) >> 1;
         Node left = buildTree(array, start, mid);
         Node right = buildTree(array, mid, end);
         return Node.merge(left, right);
     }
 
-    /** Update the value of given range with the given value diff in O(log n) time.
+    /**
+     * Update the value of given range with the given value diff in O(log n) time.
      *
      * @param left The left index of the range to update.
      * @param right The right index of the range to update.
@@ -113,7 +131,9 @@ public class LazySegmentTree {
             curr.applyUpdate(diff);
             return;
         }
-        if (left >= curr.end || right <= curr.start) return;
+        if (left >= curr.end || right <= curr.start) {
+            return;
+        }
         curr.shift();
         updateRange(left, right, diff, curr.left);
         updateRange(left, right, diff, curr.right);
@@ -121,20 +141,22 @@ public class LazySegmentTree {
         curr.value = merge.value;
     }
 
-    /** Get Node of given range in O(log n) time.
+    /**
+     * Get Node of given range in O(log n) time.
      *
      * @param left The left index of the range to update.
      * @param right The right index of the range to update.
      * @return The Node representing the sum of the given range.
      */
     private Node getRange(int left, int right, Node curr) {
-        if (left <= curr.start && curr.end <= right) return curr;
-        if (left >= curr.end || right <= curr.start) return null;
+        if (left <= curr.start && curr.end <= right) {
+            return curr;
+        }
+        if (left >= curr.end || right <= curr.start) {
+            return null;
+        }
         curr.shift();
-        return Node.merge(
-            getRange(left, right, curr.left),
-            getRange(left, right, curr.right)
-        );
+        return Node.merge(getRange(left, right, curr.left), getRange(left, right, curr.right));
     }
 
     public int getRange(int left, int right) {
