@@ -330,8 +330,7 @@ public final class MathBuilder {
         }
 
         public Builder format(int decimalPlace) {
-            String pattern = "."
-                    + "#".repeat(decimalPlace);
+            String pattern = "." + "#".repeat(decimalPlace);
             DecimalFormat formater = new DecimalFormat(pattern);
             String num = formater.format(number);
             number = Double.parseDouble(num);
