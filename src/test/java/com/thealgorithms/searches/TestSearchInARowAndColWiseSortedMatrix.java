@@ -1,6 +1,6 @@
 package com.thealgorithms.searches;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 public class TestSearchInARowAndColWiseSortedMatrix {
@@ -13,7 +13,6 @@ public class TestSearchInARowAndColWiseSortedMatrix {
                 { 23, 24, 25, 26, 27 },
                 { 30, 31, 32, 33, 34 }
         };
-
         var test = new SearchInARowAndColWiseSortedMatrix();
         int[] res = test.search(matrix, 16);
         int[] expectedResult = { 2, 2 };
@@ -29,7 +28,6 @@ public class TestSearchInARowAndColWiseSortedMatrix {
                 { 23, 24, 25, 26, 27 },
                 { 30, 31, 32, 33, 34 }
         };
-
         var test = new SearchInARowAndColWiseSortedMatrix();
         int[] res = test.search(matrix, 96);
         int[] expectedResult = { -1, -1 };
