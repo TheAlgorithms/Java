@@ -330,7 +330,7 @@ public final class MathBuilder {
         }
 
         public Builder format(int decimalPlace) {
-            String pattern = "." 
+            String pattern = "."
 		+ "#".repeat(decimalPlace);
             DecimalFormat formater = new DecimalFormat(pattern);
             String num = formater.format(number);
