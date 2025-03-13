@@ -350,8 +350,7 @@ public final class MathBuilder {
         public Builder recallIf(Function<Double, Boolean> condition, boolean cleanMemory) {
             if (!condition.apply(number)) return this;
             number = memory;
-            if (cleanMemory)
-                memory = 0;
+            if (cleanMemory) memory = 0;
             return this;
         }
 
@@ -365,8 +364,7 @@ public final class MathBuilder {
         // Replaces NUMBER with given number on condition
         public Builder setIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (number != 0) throw new RuntimeException("Number must be zero to set!");
-            if (condition.apply(number, num))
-                number = num;
+            if (condition.apply(number, num)) number = num;
             return this;
         }
 
