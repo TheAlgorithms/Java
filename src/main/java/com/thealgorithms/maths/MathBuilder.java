@@ -51,38 +51,42 @@ public final class MathBuilder {
         }
 
         public Builder add(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber += num;
-            else
+            } else {
                 number += num;
+            }
             return this;
         }
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder addIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (!condition.apply(number, num)) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber += num;
-            else
+            } else {
                 number += num;
+            }
             return this;
         }
 
         public Builder minus(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber -= num;
-            else
+            } else {
                 number -= num;
+            }
             return this;
         }
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder minusIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (!condition.apply(number, num)) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber -= num;
-            else
+            } else {
                 number -= num;
+            }
             return this;
         }
 
@@ -116,53 +120,59 @@ public final class MathBuilder {
         }
 
         public Builder toDegrees() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.toDegrees(sideNumber);
-            else
+            } else {
                 number = Math.toDegrees(number);
+            }
             return this;
         }
 
         public Builder max(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.max(sideNumber, num);
-            else
+            } else {
                 number = Math.max(number, num);
+            }
             return this;
         }
 
         public Builder min(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.min(sideNumber, num);
-            else
+            } else {
                 number = Math.min(number, num);
+            }
             return this;
         }
 
         public Builder multiply(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber *= num;
-            else
+            } else {
                 number *= num;
+            }
             return this;
         }
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder multiplyIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (!condition.apply(number, num)) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber *= num;
-            else
+            } else {
                 number *= num;
+            }
             return this;
         }
 
         public Builder divide(double num) {
             if (num == 0) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber /= num;
-            else
+            } else {
                 number /= num;
+            }
             return this;
         }
 
@@ -170,164 +180,184 @@ public final class MathBuilder {
         public Builder divideIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (num == 0) return this;
             if (!condition.apply(number, num)) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber /= num;
-            else
+            } else {
                 number /= num;
+            }
             return this;
         }
 
         public Builder mod(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber %= num;
-            else
+            } else {
                 number %= num;
+            }
             return this;
         }
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder modIf(double num, BiFunction<Double, Double, Boolean> condition) {
             if (!condition.apply(number, num)) return this;
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber %= num;
-            else
+            } else {
                 number %= num;
+            }
             return this;
         }
 
         public Builder pow(double num) {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.pow(sideNumber, num);
-            else
+            } else {
                 number = Math.pow(number, num);
+            }
             return this;
         }
 
         public Builder sqrt() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.sqrt(sideNumber);
-            else
+            } else {
                 number = Math.sqrt(number);
+            }
             return this;
         }
 
         public Builder round() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.round(sideNumber);
-            else
+            } else {
                 number = Math.round(number);
+            }
             return this;
         }
 
         public Builder floor() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.floor(sideNumber);
-            else
+            } else {
                 number = Math.floor(number);
+            }
             return this;
         }
 
         public Builder ceil() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.ceil(sideNumber);
-            else
+            } else {
                 number = Math.ceil(number);
+            }
             return this;
         }
 
         public Builder abs() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.abs(sideNumber);
-            else
+            } else {
                 number = Math.abs(number);
+            }
             return this;
         }
 
         public Builder cbrt() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.cbrt(sideNumber);
-            else
+            } else {
                 number = Math.cbrt(number);
+            }
             return this;
         }
 
         public Builder log() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.log(sideNumber);
-            else
+            } else {
                 number = Math.log(number);
+            }
             return this;
         }
 
         public Builder log10() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.log10(sideNumber);
-            else
+            } else {
                 number = Math.log10(number);
+            }
             return this;
         }
 
         public Builder sin() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.sin(sideNumber);
-            else
+            } else {
                 number = Math.sin(number);
+            }
             return this;
         }
 
         public Builder cos() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.cos(sideNumber);
-            else
+            } else {
                 number = Math.cos(number);
+            }
             return this;
         }
 
         public Builder tan() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.tan(sideNumber);
-            else
+            } else {
                 number = Math.tan(number);
+            }
             return this;
         }
 
         public Builder sinh() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.sinh(sideNumber);
-            else
+            } else {
                 number = Math.sinh(number);
+            }
             return this;
         }
 
         public Builder cosh() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.cosh(sideNumber);
-            else
+            } else {
                 number = Math.cosh(number);
+            }
             return this;
         }
 
         public Builder tanh() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.tanh(sideNumber);
-            else
+            } else {
                 number = Math.tanh(number);
+            }
             return this;
         }
 
         public Builder exp() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.exp(sideNumber);
-            else
+            } else {
                 number = Math.exp(number);
+            }
             return this;
         }
 
         public Builder toRadians() {
-            if (inParenthesis)
+            if (inParenthesis) {
                 sideNumber = Math.toRadians(sideNumber);
-            else
+            } else {
                 number = Math.toRadians(number);
+            }
             return this;
         }
 
