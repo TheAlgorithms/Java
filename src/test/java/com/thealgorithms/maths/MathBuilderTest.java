@@ -47,6 +47,6 @@ class MathBuilderTest {
     void areaOfCircle() {
         // Radius is 4
         double area = new MathBuilder.Builder().pi().openParenthesis(4).multiply(4).closeParenthesisAndMultiply().build().get();
-        assertEquals((Math.PI * (4 * 4)), area);
+        assertEquals(Math.PI * 4 * 4, area);
     }
 }
