@@ -25,11 +25,21 @@ public final class MathBuilder {
     // Return result in long
     public long toLong() {
         try {
-            if (Double.isNaN(result)) throw new IllegalArgumentException("Cannot convert NaN to long!");
-            if (result == Double.POSITIVE_INFINITY) return Long.MAX_VALUE;
-            if (result == Double.NEGATIVE_INFINITY) return Long.MIN_VALUE;
-            if (result > Long.MAX_VALUE) return Long.MAX_VALUE;
-            if (result < Long.MIN_VALUE) return Long.MIN_VALUE;
+            if (Double.isNaN(result)) {
+                throw new IllegalArgumentException("Cannot convert NaN to long!");
+            }
+            if (result == Double.POSITIVE_INFINITY) {
+                return Long.MAX_VALUE;
+            }
+            if (result == Double.NEGATIVE_INFINITY) {
+                return Long.MIN_VALUE;
+            }
+            if (result > Long.MAX_VALUE) {
+                return Long.MAX_VALUE;
+            }
+            if (result < Long.MIN_VALUE) {
+                return Long.MIN_VALUE;
+            }
             return Math.round(result);
         } catch (Exception ex) {
             return 0;
@@ -61,7 +71,9 @@ public final class MathBuilder {
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder addIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (!condition.apply(number, num)) return this;
+            if (!condition.apply(number, num)) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber += num;
             } else {
@@ -81,7 +93,9 @@ public final class MathBuilder {
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder minusIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (!condition.apply(number, num)) return this;
+            if (!condition.apply(number, num)) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber -= num;
             } else {
@@ -92,7 +106,9 @@ public final class MathBuilder {
 
         // Generates a random number and sets to NUMBER
         public Builder rand(long seed) {
-            if (number != 0) throw new RuntimeException("Number must be zero for random assignment!");
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero for random assignment!");
+            }
             Random random = new Random();
             number = random.nextDouble(seed);
             return this;
@@ -100,20 +116,26 @@ public final class MathBuilder {
 
         // Takes PI value and sets to NUMBER
         public Builder pi() {
-            if (number != 0) throw new RuntimeException("Number must be zero for PI assignment!");
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero for PI assignment!");
+            }
             number = Math.PI;
             return this;
         }
 
         // Takes E value and sets to NUMBER
         public Builder e() {
-            if (number != 0) throw new RuntimeException("Number must be zero for E assignment!");
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero for E assignment!");
+            }
             number = Math.E;
             return this;
         }
 
         public Builder randomInRange(double min, double max) {
-            if (number != 0) throw new RuntimeException("Number must be zero for random assignment!");
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero for random assignment!");
+            }
             Random random = new Random();
             number = min + (max - min) * random.nextDouble();
             return this;
@@ -157,7 +179,9 @@ public final class MathBuilder {
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder multiplyIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (!condition.apply(number, num)) return this;
+            if (!condition.apply(number, num)) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber *= num;
             } else {
@@ -167,7 +191,9 @@ public final class MathBuilder {
         }
 
         public Builder divide(double num) {
-            if (num == 0) return this;
+            if (num == 0) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber /= num;
             } else {
@@ -178,8 +204,12 @@ public final class MathBuilder {
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder divideIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (num == 0) return this;
-            if (!condition.apply(number, num)) return this;
+            if (num == 0) {
+                return this;
+            }
+            if (!condition.apply(number, num)) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber /= num;
             } else {
@@ -199,7 +229,9 @@ public final class MathBuilder {
 
         // Takes a number and a condition, only does the operation if condition is true.
         public Builder modIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (!condition.apply(number, num)) return this;
+            if (!condition.apply(number, num)) {
+                return this;
+            }
             if (inParenthesis) {
                 sideNumber %= num;
             } else {
@@ -378,23 +410,33 @@ public final class MathBuilder {
 
         // Recalls the NUMBER on condition
         public Builder recallIf(Function<Double, Boolean> condition, boolean cleanMemory) {
-            if (!condition.apply(number)) return this;
+            if (!condition.apply(number)) {
+                return this;
+            }
             number = memory;
-            if (cleanMemory) memory = 0;
+            if (cleanMemory) {
+                memory = 0;
+            }
             return this;
         }
 
         // Replaces NUMBER with given number
         public Builder set(double num) {
-            if (number != 0) throw new RuntimeException("Number must be zero to set!");
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero to set!");
+            }
             number = num;
             return this;
         }
 
         // Replaces NUMBER with given number on condition
         public Builder setIf(double num, BiFunction<Double, Double, Boolean> condition) {
-            if (number != 0) throw new RuntimeException("Number must be zero to set!");
-            if (condition.apply(number, num)) number = num;
+            if (number != 0) {
+                throw new RuntimeException("Number must be zero to set!");
+            }
+            if (condition.apply(number, num)) {
+                number = num;
+            }
             return this;
         }
 
