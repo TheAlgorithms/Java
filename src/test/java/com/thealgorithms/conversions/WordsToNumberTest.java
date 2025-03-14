@@ -50,7 +50,7 @@ public class WordsToNumberTest {
 
     @Test
     void testLargeDecimalNumbers() {
-        assertEquals("1000000000.000000001", WordsToNumber.convert("one billion point zero zero zero zero zero zero zero zero zero one"), "Tests a large whole number with a tiny fractional part");
+        assertEquals("1000000000.0000000001", WordsToNumber.convert("one billion point zero zero zero zero zero zero zero zero zero one"), "Tests a large whole number with a tiny fractional part");
         assertEquals("999999999999999.999999999999999",
             WordsToNumber.convert("nine hundred ninety nine trillion nine hundred ninety nine billion nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine point nine nine nine nine nine nine nine nine nine nine nine nine nine"),
             "Tests maximum scale handling for large decimal numbers");
