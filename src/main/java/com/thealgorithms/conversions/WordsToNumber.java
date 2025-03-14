@@ -79,7 +79,9 @@ public final class WordsToNumber {
         boolean prevNumWasHundred = false;
         boolean prevNumWasPowerOfTen = false;
 
-        while (!wordDeque.isEmpty()) {
+        String errorMessage = null;
+
+        while (!wordDeque.isEmpty() && errorMessage == null) {
             String word = wordDeque.poll();
             boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
 
@@ -88,10 +90,10 @@ public final class WordsToNumber {
                 continue;
             }
 
-            boolean isHundred = word.equals("hundred");
-            if (isHundred) {
+            if (word.equals("hundred")) {
                 if (currentChunk.compareTo(BigDecimal.TEN) >= 0 || prevNumWasPowerOfTen) {
-                    return "Invalid Input. Unexpected Word: " + word;
+                    errorMessage = "Invalid Input. Unexpected Word: " + word;
+                    continue;
                 }
                 if (currentChunkIsZero) {
                     currentChunk = currentChunk.add(BigDecimal.ONE);
@@ -105,15 +107,16 @@ public final class WordsToNumber {
             BigDecimal powerOfTen = POWERS_OF_TEN.getOrDefault(word, null);
             if (powerOfTen != null) {
                 if (currentChunkIsZero || prevNumWasPowerOfTen) {
-                    return "Invalid Input. Unexpected Word: " + word;
+                    errorMessage = "Invalid Input. Unexpected Word: " + word;
+                    continue;
                 }
                 BigDecimal nextChunk = currentChunk.multiply(powerOfTen);
 
-                if (chunks.isEmpty() || isAdditionSafe(chunks.getLast(), nextChunk)) {
-                    chunks.add(nextChunk);
-                } else {
-                    return "Invalid Input. Unexpected Word: " + word;
+                if (!(chunks.isEmpty() || isAdditionSafe(chunks.getLast(), nextChunk))) {
+                    errorMessage = "Invalid Input. Unexpected Word: " + word;
+                    continue;
                 }
+                chunks.add(nextChunk);
                 currentChunk = BigDecimal.ZERO;
                 prevNumWasPowerOfTen = true;
                 continue;
@@ -123,14 +126,15 @@ public final class WordsToNumber {
             Integer number = NUMBER_MAP.getOrDefault(word, null);
             if (number != null) {
                 if (number == 0 && !(currentChunkIsZero && chunks.isEmpty())) {
-                    return "Invalid Input. Unexpected Word: " + word;
+                    errorMessage = "Invalid Input. Unexpected Word: " + word;
+                    continue;
                 }
                 BigDecimal bigDecimalNumber = BigDecimal.valueOf(number);
 
                 if (currentChunkIsZero || isAdditionSafe(currentChunk, bigDecimalNumber)) {
                     currentChunk = currentChunk.add(bigDecimalNumber);
                 } else {
-                    return "Invalid Input. Unexpected Word: " + word;
+                    errorMessage = "Invalid Input. Unexpected Word: " + word;
                 }
                 continue;
             }
@@ -145,20 +149,25 @@ public final class WordsToNumber {
                 if (!decimalPart.startsWith("I")) {
                     chunks.add(new BigDecimal(decimalPart));
                 } else {
-                    return decimalPart;
+                    errorMessage = decimalPart;
                 }
-                break;
+                continue;
             }
 
             if (word.equals("negative")) {
                 if (isNegative) {
-                    return "Invalid Input. Multiple 'Negative's detected.";
+                    errorMessage = "Invalid Input. Multiple 'Negative's detected.";
+                } else {
+                    isNegative = chunks.isEmpty() && currentChunkIsZero;
                 }
-                isNegative = chunks.isEmpty() && currentChunkIsZero;
                 continue;
             }
 
-            return "Invalid Input. " + (isConjunction ? "Unexpected 'and' placement" : "Unknown Word: " + word);
+            errorMessage = "Invalid Input. " + (isConjunction ? "Unexpected 'and' placement" : "Unknown Word: " + word);
+        }
+
+        if (errorMessage != null) {
+            return errorMessage;
         }
 
         if (!(currentChunk.compareTo(BigDecimal.ZERO) == 0)) {
@@ -195,14 +204,20 @@ public final class WordsToNumber {
 
     private static String convertDecimalPart(ArrayDeque<String> wordDeque) {
         StringBuilder decimalPart = new StringBuilder(".");
+        String errorMessage = null;
+
         while (!wordDeque.isEmpty()) {
             String word = wordDeque.poll();
             Integer number = NUMBER_MAP.getOrDefault(word, null);
-            if (number != null) {
-                decimalPart.append(number);
-            } else {
-                return "Invalid Input. Unexpected Word (after Point): " + word;
+            if (number == null) {
+                errorMessage = "Invalid Input. Unexpected Word (after Point): " + word;
+                break;
             }
+            decimalPart.append(number);
+        }
+
+        if (errorMessage != null) {
+            return errorMessage;
         }
 
         if (decimalPart.length() == 1) {
