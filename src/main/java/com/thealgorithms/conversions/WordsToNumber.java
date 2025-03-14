@@ -81,7 +81,7 @@ public final class WordsToNumber {
 
         while (!wordDeque.isEmpty()) {
             String word = wordDeque.poll();
-            boolean currentChunkIsZero = currentChunk.equals(BigDecimal.ZERO);
+            boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
 
             boolean isConjunction = word.equals("and");
             if (isConjunction && isValidConjunction(prevNumWasHundred, prevNumWasPowerOfTen, wordDeque)) {
@@ -161,7 +161,7 @@ public final class WordsToNumber {
             return "Invalid Input. " + (isConjunction ? "Unexpected 'and' placement" : "Unknown Word: " + word);
         }
 
-        if (!currentChunk.equals(BigDecimal.ZERO)) {
+        if (!(currentChunk.compareTo(BigDecimal.ZERO) == 0)) {
             chunks.add(currentChunk);
         }
         BigDecimal completeNumber = combineChunks(chunks);
