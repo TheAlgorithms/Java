@@ -42,10 +42,8 @@ public class SolveSystem {
             double tempConst = constants[k];
             constants[k] = constants[maxIdx];
             constants[maxIdx] = tempConst;
-
             for (int i = k + 1; i < matrix.length; i++) {
                 // compute multipliers and save them in the column
-
                 matrix[i][k] /= matrix[k][k];
                 for (int j = k + 1; j < matrix.length; j++) {
                     matrix[i][j] -= matrix[i][k] * matrix[k][j];
