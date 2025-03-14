@@ -2,6 +2,7 @@ package com.thealgorithms.conversions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,8 @@ public class WordsToNumberTest {
 
     @Test
     void testNullInput() {
-        assertEquals("Null Input", WordsToNumber.convert(null), "Null input should return 'Null Input'");
+        WordsToNumberException exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert(null));
+        assertEquals(WordsToNumberException.ErrorType.NULL_INPUT, exception.getErrorType(), "Exception should be of type NULL_INPUT");
     }
 
     @Test
@@ -70,18 +72,44 @@ public class WordsToNumberTest {
 
     @Test
     void testInvalidInputs() {
-        assertEquals("Invalid Input. Unknown Word: alpha", WordsToNumber.convert("negative one hundred AlPha"), "'AlPha' is not a valid word");
-        assertEquals("Invalid Input. Unexpected Word: thirteen", WordsToNumber.convert("twenty thirteen"), "'twenty thirteen' is not a valid format");
-        assertEquals("Invalid Input. Multiple 'Negative's detected.", WordsToNumber.convert("negative negative ten"), "Should detect multiple negatives");
-        assertEquals("Invalid Input. Unexpected Word: hundred", WordsToNumber.convert("one hundred hundred"), "Direct repetition of 'hundred' is invalid");
-        assertEquals("Invalid Input. Unexpected 'and' placement", WordsToNumber.convert("one thousand and hundred"), "Detects invalid 'and' placement");
-        assertEquals("Invalid Input. Unexpected Word: hundred", WordsToNumber.convert("one thousand hundred"), "Detects incorrect placement of powers of ten");
-        assertEquals("Invalid Input. Unexpected 'and' placement", WordsToNumber.convert("nine hundred and nine hundred"), "Detects invalid 'and' placement");
+        WordsToNumberException exception;
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("negative one hundred AlPha"));
+        assertEquals(WordsToNumberException.ErrorType.UNKNOWN_WORD, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("twenty thirteen"));
+        assertEquals(WordsToNumberException.ErrorType.UNEXPECTED_WORD, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("negative negative ten"));
+        assertEquals(WordsToNumberException.ErrorType.MULTIPLE_NEGATIVES, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("one hundred hundred"));
+        assertEquals(WordsToNumberException.ErrorType.UNEXPECTED_WORD, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("one thousand and hundred"));
+        assertEquals(WordsToNumberException.ErrorType.INVALID_CONJUNCTION, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("one thousand hundred"));
+        assertEquals(WordsToNumberException.ErrorType.UNEXPECTED_WORD, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("nine hundred and nine hundred"));
+        assertEquals(WordsToNumberException.ErrorType.INVALID_CONJUNCTION, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("forty two point"));
+        assertEquals(WordsToNumberException.ErrorType.MISSING_DECIMAL_NUMBERS, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("sixty seven point hello"));
+        assertEquals(WordsToNumberException.ErrorType.UNEXPECTED_WORD_AFTER_POINT, exception.getErrorType());
+
+        exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convert("one negative"));
+        assertEquals(WordsToNumberException.ErrorType.INVALID_NEGATIVE, exception.getErrorType());
     }
 
     @Test
     void testConvertToBigDecimal() {
         assertEquals(new BigDecimal("-100000000000000.056"), WordsToNumber.convertToBigDecimal("negative one hundred trillion point zero five six"), "should convert to appropriate BigDecimal value");
-        assertNull(WordsToNumber.convertToBigDecimal("invalid input"), "Invalid input should return null");
+
+        WordsToNumberException exception = assertThrows(WordsToNumberException.class, () -> WordsToNumber.convertToBigDecimal(null));
+        assertEquals(WordsToNumberException.ErrorType.NULL_INPUT, exception.getErrorType(), "Exception should be of type NULL_INPUT");
     }
 }
