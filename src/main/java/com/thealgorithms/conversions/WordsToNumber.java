@@ -3,6 +3,15 @@ package com.thealgorithms.conversions;
 import java.math.BigDecimal;
 import java.util.*;
 
+/**
+ A Java-based utility for converting English word representations of numbers
+ into their numeric form. This utility supports whole numbers, decimals,
+ large values up to trillions, and even scientific notation where applicable.
+ It ensures accurate parsing while handling edge cases like negative numbers,
+ improper word placements, and ambiguous inputs.
+ *
+ */
+
 public final class WordsToNumber {
     private WordsToNumber() {
     }
@@ -97,13 +106,13 @@ public final class WordsToNumber {
 
             Integer number = NUMBER_MAP.getOrDefault(word, null);
             if (number != null) {
-                if (number == 0 && !(currentChunkIsZero && chunks.isEmpty())) return "Invalid Input. Unexpected word: " + word;
+                if (number == 0 && !(currentChunkIsZero && chunks.isEmpty())) return "Invalid Input. Unexpected Word: " + word;
                 BigDecimal bigDecimalNumber = BigDecimal.valueOf(number);
 
                 if (currentChunkIsZero || isAdditionSafe(currentChunk, bigDecimalNumber))
                     currentChunk = currentChunk.add(bigDecimalNumber);
                 else
-                    return "Invalid Input. Unexpected word: " + word;
+                    return "Invalid Input. Unexpected Word: " + word;
                 continue;
             }
 
