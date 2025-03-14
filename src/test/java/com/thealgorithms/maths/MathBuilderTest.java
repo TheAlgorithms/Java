@@ -35,4 +35,18 @@ class MathBuilderTest {
         long[] expectedSalaries = {1840, 3036, 4048, 5060};
         assertArrayEquals(expectedSalaries, processedSalaries);
     }
+
+    @Test
+    void parenthesis() {
+        // 10 + (20*5) - 40 + (100 / 10) = 80
+        double result = new MathBuilder.Builder(10).openParenthesis(20).multiply(5).closeParenthesisAndPlus().minus(40).openParenthesis(100).divide(10).closeParenthesisAndPlus().build().get();
+        assertEquals(80, result);
+    }
+
+    @Test
+    void areaOfCircle() {
+        // Radius is 4
+        double area = new MathBuilder.Builder().pi().openParenthesis(4).multiply(4).closeParenthesisAndMultiply().build().get();
+        assertEquals(Math.PI * 4 * 4, area);
+    }
 }
