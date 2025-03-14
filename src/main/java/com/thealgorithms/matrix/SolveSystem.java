@@ -6,15 +6,13 @@ package com.thealgorithms.matrix;
  * @link <a href="https://en.wikipedia.org/wiki/Gaussian_elimination">Gaussian Elimination Wiki</a>
  * @see InverseOfMatrix finds the full of inverse of a matrice, but is not required to solve a system.
  */
-public class SolveSystem {
+public final class SolveSystem {
     private SolveSystem() {
     }
 
     /**
      * Problem: Given a matrix A and vector b, solve the linear system Ax = b for the vector x.\
      * <p>
-     * This variation uses @link <a href="https://en.wikipedia.org/wiki/Crout_matrix_decomposition">Crout Reduction</a>
-     * and partial pivoting to decompose the matrix.
      * <b>This OVERWRITES the input matrix to save on memory</b>
      *
      * @param matrix    - a square matrix of doubles
@@ -22,7 +20,7 @@ public class SolveSystem {
      * @return solutions
      */
     public static double[] solveSystem(double[][] matrix, double[] constants) {
-        final double TOL = 0.00000001; // tolerance for round off
+        final double tol = 0.00000001; // tolerance for round off
         for (int k = 0; k < matrix.length - 1; k++) {
             // find the largest value in column (to avoid zero pivots)
             double maxVal = Math.abs(matrix[k][k]);
@@ -33,8 +31,10 @@ public class SolveSystem {
                     maxIdx = j;
                 }
             }
-            if (Math.abs(maxVal) < TOL) // hope the matrix works out
+            if (Math.abs(maxVal) < tol){
+                // hope the matrix works out
                 continue;
+            }
             // swap rows
             double[] temp = matrix[k];
             matrix[k] = matrix[maxIdx];
@@ -56,12 +56,16 @@ public class SolveSystem {
         System.arraycopy(constants, 0, x, 0, constants.length);
         for (int i = matrix.length - 1; i >= 0; i--) {
             double sum = 0;
-            for (int j = i + 1; j < matrix.length; j++) sum += matrix[i][j] * x[j];
+            for (int j = i + 1; j < matrix.length; j++){
+                sum += matrix[i][j] * x[j];
+            }
             x[i] = constants[i] - sum;
-            if (Math.abs(matrix[i][i]) > TOL)
+            if (Math.abs(matrix[i][i]) > tol){
                 x[i] /= matrix[i][i];
-            else
+            }
+            else{
                 throw new IllegalArgumentException("Matrix was found to be singular");
+            }
         }
         return x;
     }
