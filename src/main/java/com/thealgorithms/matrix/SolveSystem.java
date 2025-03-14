@@ -31,7 +31,7 @@ public final class SolveSystem {
                     maxIdx = j;
                 }
             }
-            if (Math.abs(maxVal) < tol){
+            if (Math.abs(maxVal) < tol) {
                 // hope the matrix works out
                 continue;
             }
@@ -56,14 +56,13 @@ public final class SolveSystem {
         System.arraycopy(constants, 0, x, 0, constants.length);
         for (int i = matrix.length - 1; i >= 0; i--) {
             double sum = 0;
-            for (int j = i + 1; j < matrix.length; j++){
+            for (int j = i + 1; j < matrix.length; j++) {
                 sum += matrix[i][j] * x[j];
             }
             x[i] = constants[i] - sum;
-            if (Math.abs(matrix[i][i]) > tol){
+            if (Math.abs(matrix[i][i]) > tol) {
                 x[i] /= matrix[i][i];
-            }
-            else{
+            } else {
                 throw new IllegalArgumentException("Matrix was found to be singular");
             }
         }
