@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 /**
  A Java-based utility for converting English word representations of numbers
  into their numeric form. This utility supports whole numbers, decimals,
@@ -112,8 +111,7 @@ public final class WordsToNumber {
 
                 if (chunks.isEmpty() || isAdditionSafe(chunks.getLast(), nextChunk)) {
                     chunks.add(nextChunk);
-                }
-                else {
+                } else {
                     return "Invalid Input. Unexpected Word: " + word;
                 }
                 currentChunk = BigDecimal.ZERO;
@@ -131,8 +129,7 @@ public final class WordsToNumber {
 
                 if (currentChunkIsZero || isAdditionSafe(currentChunk, bigDecimalNumber)) {
                     currentChunk = currentChunk.add(bigDecimalNumber);
-                }
-                else {
+                } else {
                     return "Invalid Input. Unexpected Word: " + word;
                 }
                 continue;
@@ -147,8 +144,7 @@ public final class WordsToNumber {
                 String decimalPart = convertDecimalPart(wordDeque);
                 if (!decimalPart.startsWith("I")) {
                     chunks.add(new BigDecimal(decimalPart));
-                }
-                else {
+                } else {
                     return decimalPart;
                 }
                 break;
@@ -204,8 +200,7 @@ public final class WordsToNumber {
             Integer number = NUMBER_MAP.getOrDefault(word, null);
             if (number != null) {
                 decimalPart.append(number);
-            }
-            else {
+            } else {
                 return "Invalid Input. Unexpected Word (after Point): " + word;
             }
         }
@@ -218,7 +213,9 @@ public final class WordsToNumber {
 
     private static BigDecimal combineChunks(List<BigDecimal> chunks) {
         BigDecimal completeNumber = BigDecimal.ZERO;
-        for (BigDecimal chunk : chunks) completeNumber = completeNumber.add(chunk);
+        for (BigDecimal chunk : chunks) {
+            completeNumber = completeNumber.add(chunk);
+        }
         return completeNumber;
     }
 
