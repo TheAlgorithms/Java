@@ -5,9 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  A Java-based utility for converting English word representations of numbers
@@ -23,43 +21,76 @@ public final class WordsToNumber {
     private WordsToNumber() {
     }
 
-    private static final Map<String, Integer> NUMBER_MAP = new HashMap<>();
-    private static final Map<String, BigDecimal> POWERS_OF_TEN = new HashMap<>();
+    private enum NumberWord {
+        ZERO("zero", 0),
+        ONE("one", 1),
+        TWO("two", 2),
+        THREE("three", 3),
+        FOUR("four", 4),
+        FIVE("five", 5),
+        SIX("six", 6),
+        SEVEN("seven", 7),
+        EIGHT("eight", 8),
+        NINE("nine", 9),
+        TEN("ten", 10),
+        ELEVEN("eleven", 11),
+        TWELVE("twelve", 12),
+        THIRTEEN("thirteen", 13),
+        FOURTEEN("fourteen", 14),
+        FIFTEEN("fifteen", 15),
+        SIXTEEN("sixteen", 16),
+        SEVENTEEN("seventeen", 17),
+        EIGHTEEN("eighteen", 18),
+        NINETEEN("nineteen", 19),
+        TWENTY("twenty", 20),
+        THIRTY("thirty", 30),
+        FORTY("forty", 40),
+        FIFTY("fifty", 50),
+        SIXTY("sixty", 60),
+        SEVENTY("seventy", 70),
+        EIGHTY("eighty", 80),
+        NINETY("ninety", 90);
 
-    static {
-        NUMBER_MAP.put("zero", 0);
-        NUMBER_MAP.put("one", 1);
-        NUMBER_MAP.put("two", 2);
-        NUMBER_MAP.put("three", 3);
-        NUMBER_MAP.put("four", 4);
-        NUMBER_MAP.put("five", 5);
-        NUMBER_MAP.put("six", 6);
-        NUMBER_MAP.put("seven", 7);
-        NUMBER_MAP.put("eight", 8);
-        NUMBER_MAP.put("nine", 9);
-        NUMBER_MAP.put("ten", 10);
-        NUMBER_MAP.put("eleven", 11);
-        NUMBER_MAP.put("twelve", 12);
-        NUMBER_MAP.put("thirteen", 13);
-        NUMBER_MAP.put("fourteen", 14);
-        NUMBER_MAP.put("fifteen", 15);
-        NUMBER_MAP.put("sixteen", 16);
-        NUMBER_MAP.put("seventeen", 17);
-        NUMBER_MAP.put("eighteen", 18);
-        NUMBER_MAP.put("nineteen", 19);
-        NUMBER_MAP.put("twenty", 20);
-        NUMBER_MAP.put("thirty", 30);
-        NUMBER_MAP.put("forty", 40);
-        NUMBER_MAP.put("fifty", 50);
-        NUMBER_MAP.put("sixty", 60);
-        NUMBER_MAP.put("seventy", 70);
-        NUMBER_MAP.put("eighty", 80);
-        NUMBER_MAP.put("ninety", 90);
+        private final String word;
+        private final int value;
 
-        POWERS_OF_TEN.put("thousand", new BigDecimal("1000"));
-        POWERS_OF_TEN.put("million", new BigDecimal("1000000"));
-        POWERS_OF_TEN.put("billion", new BigDecimal("1000000000"));
-        POWERS_OF_TEN.put("trillion", new BigDecimal("1000000000000"));
+        NumberWord(String word, int value) {
+            this.word = word;
+            this.value = value;
+        }
+
+        public static Integer getValue(String word) {
+            for (NumberWord num : NumberWord.values()) {
+                if (word.equals(num.word)) {
+                    return num.value;
+                }
+            }
+            return null;
+        }
+    }
+
+    private enum PowerOfTen {
+        THOUSAND("thousand", new BigDecimal("1000")),
+        MILLION("million", new BigDecimal("1000000")),
+        BILLION("billion", new BigDecimal("1000000000")),
+        TRILLION("trillion", new BigDecimal("1000000000000"));
+
+        private final String word;
+        private final BigDecimal value;
+
+        PowerOfTen(String word, BigDecimal value) {
+            this.word = word;
+            this.value = value;
+        }
+
+        public static BigDecimal getValue(String word) {
+            for (PowerOfTen power : PowerOfTen.values()) {
+                if (word.equals(power.word)) {
+                    return power.value;
+                }
+            }
+            return null;
+        }
     }
 
     public static String convert(String numberInWords) {
@@ -103,7 +134,7 @@ public final class WordsToNumber {
 
         wordDeque.addFirst(nextWord);
 
-        Integer number = NUMBER_MAP.getOrDefault(nextWord, null);
+        Integer number = NumberWord.getValue(nextWord);
 
         boolean isPrevWordValid = prevNumWasHundred || prevNumWasPowerOfTen;
         boolean isNextWordValid = number != null && (number >= 10 || afterNextWord == null || "point".equals(afterNextWord));
@@ -198,7 +229,7 @@ public final class WordsToNumber {
             }
             prevNumWasHundred = false;
 
-            BigDecimal powerOfTen = POWERS_OF_TEN.getOrDefault(word, null);
+            BigDecimal powerOfTen = PowerOfTen.getValue(word);
             if (powerOfTen != null) {
                 handlePowerOfTen(chunks, currentChunk, powerOfTen, word, prevNumWasPowerOfTen);
                 currentChunk = BigDecimal.ZERO;
@@ -207,7 +238,7 @@ public final class WordsToNumber {
             }
             prevNumWasPowerOfTen = false;
 
-            Integer number = NUMBER_MAP.getOrDefault(word, null);
+            Integer number = NumberWord.getValue(word);
             if (number != null) {
                 currentChunk = handleNumber(chunks, currentChunk, word, number);
                 continue;
@@ -251,7 +282,7 @@ public final class WordsToNumber {
 
                     while (!wordDeque.isEmpty()) {
                         String word = wordDeque.poll();
-                        Integer number = NUMBER_MAP.getOrDefault(word, null);
+                        Integer number = NumberWord.getValue(word);
                         if (number == null) {
                             throw new WordsToNumberException(WordsToNumberException.ErrorType.UNEXPECTED_WORD_AFTER_POINT, word);
                         }
