@@ -1,5 +1,6 @@
 package com.thealgorithms.conversions;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -263,35 +264,37 @@ public final class WordsToNumber {
 
         class WordsToNumberException extends RuntimeException {
 
-            enum ErrorType {
-                NULL_INPUT("'null' or empty input provided"),
-                UNKNOWN_WORD("Unknown Word: "),
-                UNEXPECTED_WORD("Unexpected Word: "),
-                UNEXPECTED_WORD_AFTER_POINT("Unexpected Word (after Point): "),
-                MISSING_DECIMAL_NUMBERS("Decimal part is missing numbers."),
-                MULTIPLE_NEGATIVES("Multiple 'Negative's detected."),
-                INVALID_NEGATIVE("Incorrect 'negative' placement"),
-                INVALID_CONJUNCTION("Incorrect 'and' placement");
+                @Serial private static final long serialVersionUID = 1L;
 
-                private final String message;
+                enum ErrorType {
+                    NULL_INPUT("'null' or empty input provided"),
+                    UNKNOWN_WORD("Unknown Word: "),
+                    UNEXPECTED_WORD("Unexpected Word: "),
+                    UNEXPECTED_WORD_AFTER_POINT("Unexpected Word (after Point): "),
+                    MISSING_DECIMAL_NUMBERS("Decimal part is missing numbers."),
+                    MULTIPLE_NEGATIVES("Multiple 'Negative's detected."),
+                    INVALID_NEGATIVE("Incorrect 'negative' placement"),
+                    INVALID_CONJUNCTION("Incorrect 'and' placement");
 
-                ErrorType(String message) {
-                    this.message = message;
+                    private final String message;
+
+                    ErrorType(String message) {
+                        this.message = message;
+                    }
+
+                    public String formatMessage(String details) {
+                        return "Invalid Input. " + message + (details.isEmpty() ? "" : details);
+                    }
                 }
 
-                public String formatMessage(String details) {
-                    return "Invalid Input. " + message + (details.isEmpty() ? "" : details);
+                public final ErrorType errorType;
+
+                WordsToNumberException(ErrorType errorType, String details) {
+                    super(errorType.formatMessage(details));
+                    this.errorType = errorType;
                 }
-            }
 
-            public final ErrorType errorType;
-
-            WordsToNumberException(ErrorType errorType, String details) {
-                super(errorType.formatMessage(details));
-                this.errorType = errorType;
-            }
-
-            public ErrorType getErrorType() {
-                return errorType;
-            }
+                public ErrorType getErrorType() {
+                    return errorType;
+                }
         }
