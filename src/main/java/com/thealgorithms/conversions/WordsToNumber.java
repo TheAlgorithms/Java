@@ -60,7 +60,7 @@ public final class WordsToNumber {
         }
 
         public static Integer getValue(String word) {
-            for (NumberWord num : NumberWord.values()) {
+            for (NumberWord num : values()) {
                 if (word.equals(num.word)) {
                     return num.value;
                 }
@@ -84,7 +84,7 @@ public final class WordsToNumber {
         }
 
         public static BigDecimal getValue(String word) {
-            for (PowerOfTen power : PowerOfTen.values()) {
+            for (PowerOfTen power : values()) {
                 if (word.equals(power.word)) {
                     return power.value;
                 }
