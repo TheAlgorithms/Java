@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,7 +124,7 @@ public final class WordsToNumber {
         return currentChunk.multiply(BigDecimal.valueOf(100));
     }
 
-    private static void handlePowerOfTen(List<BigDecimal> chunks, BigDecimal currentChunk, BigDecimal powerOfTen, String word, boolean prevNumWasPowerOfTen) {
+    private static void handlePowerOfTen(Collection<BigDecimal> chunks, BigDecimal currentChunk, BigDecimal powerOfTen, String word, boolean prevNumWasPowerOfTen) {
         boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
         if (currentChunkIsZero || prevNumWasPowerOfTen) {
             throw new WordsToNumberException(WordsToNumberException.ErrorType.UNEXPECTED_WORD, word);
@@ -136,7 +137,7 @@ public final class WordsToNumber {
         chunks.add(nextChunk);
     }
 
-    private static BigDecimal handleNumber(List<BigDecimal> chunks, BigDecimal currentChunk, String word, Integer number) {
+    private static BigDecimal handleNumber(Collection<BigDecimal> chunks, BigDecimal currentChunk, String word, Integer number) {
         boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
         if (number == 0 && !(currentChunkIsZero && chunks.isEmpty())) {
             throw new WordsToNumberException(WordsToNumberException.ErrorType.UNEXPECTED_WORD, word);
