@@ -171,7 +171,9 @@ public final class WordsToNumber {
         List<BigDecimal> chunks = new ArrayList<>();
 
         boolean isNegative = "negative".equals(wordDeque.peek());
-        if (isNegative) wordDeque.poll();
+        if (isNegative) {
+            wordDeque.poll();
+        }
 
         boolean prevNumWasHundred = false;
         boolean prevNumWasPowerOfTen = false;
@@ -188,6 +190,9 @@ public final class WordsToNumber {
                     currentChunk = handleHundred(currentChunk, word, prevNumWasPowerOfTen);
                     prevNumWasHundred = true;
                     continue;
+                }
+                default -> {
+
                 }
             }
             prevNumWasHundred = false;
@@ -213,7 +218,12 @@ public final class WordsToNumber {
                     currentChunk = BigDecimal.ZERO;
                     continue;
                 }
-                case "negative" -> handleNegative(isNegative);
+                case "negative" -> {
+                    handleNegative(isNegative);
+                }
+                default -> {
+
+                }
             }
 
             throw new WordsToNumberException(WordsToNumberException.ErrorType.UNKNOWN_WORD, word);
@@ -224,7 +234,8 @@ public final class WordsToNumber {
         }
 
         BigDecimal completeNumber = combineChunks(chunks);
-        return isNegative ? completeNumber.multiply(BigDecimal.valueOf(-1)) :
+        return isNegative ? completeNumber.multiply(BigDecimal.valueOf(-1))
+                :
                     completeNumber;
                 }
 
