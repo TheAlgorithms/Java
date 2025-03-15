@@ -124,7 +124,7 @@ public final class WordsToNumber {
         return currentChunk.multiply(BigDecimal.valueOf(100));
     }
 
-    private static void handlePowerOfTen(Collection<BigDecimal> chunks, BigDecimal currentChunk, BigDecimal powerOfTen, String word, boolean prevNumWasPowerOfTen) {
+    private static void handlePowerOfTen(List<BigDecimal> chunks, BigDecimal currentChunk, BigDecimal powerOfTen, String word, boolean prevNumWasPowerOfTen) {
         boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
         if (currentChunkIsZero || prevNumWasPowerOfTen) {
             throw new WordsToNumberException(WordsToNumberException.ErrorType.UNEXPECTED_WORD, word);
@@ -150,7 +150,7 @@ public final class WordsToNumber {
         return currentChunk.add(bigDecimalNumber);
     }
 
-    private static void handlePoint(List<BigDecimal> chunks, BigDecimal currentChunk, ArrayDeque<String> wordDeque) {
+    private static void handlePoint(Collection<BigDecimal> chunks, BigDecimal currentChunk, ArrayDeque<String> wordDeque) {
         boolean currentChunkIsZero = currentChunk.compareTo(BigDecimal.ZERO) == 0;
         if (!currentChunkIsZero) {
             chunks.add(currentChunk);
