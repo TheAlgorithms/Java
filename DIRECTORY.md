@@ -118,6 +118,7 @@
             * [TurkishToLatinConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/TurkishToLatinConversion.java)
             * [UnitConversions](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/UnitConversions.java)
             * [UnitsConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/UnitsConverter.java)
+            * [WordsToNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/WordsToNumber.java)
           * datastructures
             * bags
               * [Bag](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/bags/Bag.java)
@@ -840,6 +841,7 @@
             * [TurkishToLatinConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/TurkishToLatinConversionTest.java)
             * [UnitConversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitConversionsTest.java)
             * [UnitsConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitsConverterTest.java)
+            * [WordsToNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/WordsToNumberTest.java)
           * datastructures
             * bag
               * [BagTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/bag/BagTest.java)
