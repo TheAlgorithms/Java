@@ -1,0 +1,47 @@
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.238.0/containers/java/.devcontainer/base.Dockerfile
+
+# [Choice] Java version (use -bullseye variants on local arm64/Apple Silicon): 11, 17, 11-bullseye, 17-bullseye, 11-buster, 17-buster
+ARG VARIANT="21-bullseye"
+FROM mcr.microsoft.com/vscode/devcontainers/java:1.1.0-${VARIANT}
+
+# [Option] Install Maven
+ARG INSTALL_MAVEN="false"
+ARG MAVEN_VERSION=""
+# [Option] Install Gradle
+ARG INSTALL_GRADLE="false"
+ARG GRADLE_VERSION=""
+RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi \
+    && if [ "${INSTALL_GRADLE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install gradle \"${GRADLE_VERSION}\""; fi
+
+# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
+ARG NODE_VERSION="none"
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
+# Install essential utilities
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y --no-install-recommends \
+       curl \
+       git \
+       unzip \
+       vim \
+       wget \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set default workspace directory
+WORKDIR /workspace
+
+# Install Python and Pip
+ARG INSTALL_PYTHON="true"
+ARG PYTHON_VERSION="3.9"
+RUN if [ "${INSTALL_PYTHON}" = "true" ]; then \
+      apt-get update && apt-get install -y python${PYTHON_VERSION} python3-pip \
+      && apt-get clean && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+# Set environment variables
+ENV JAVA_HOME=/usr/local/sdkman/candidates/java/current
+ENV MAVEN_HOME=/usr/local/sdkman/candidates/maven/current
+ENV GRADLE_HOME=/usr/local/sdkman/candidates/gradle/current
+
+# [Optional] Install global node packages.
+# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
