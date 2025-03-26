@@ -1,1 +1,1 @@
-Add a dark mode toggle for better UX
+Vansh Aneja - Add a dark mode toggle for better UX
