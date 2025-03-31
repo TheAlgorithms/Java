@@ -10,7 +10,11 @@ import java.util.List;
  * For more information, see <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Wikipedia</a>.
  * @author  <a href="https://github.com/DenizAltunkapan">Deniz Altunkapan</a>
  */
+
 public class TravelingSalesman {
+
+    // Private constructor to prevent instantiation
+    private TravelingSalesman() {}
 
     /**
      * Solves the Traveling Salesman Problem (TSP) using brute-force approach.
