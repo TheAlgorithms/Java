@@ -11,7 +11,7 @@ import java.util.List;
  * @author  <a href="https://github.com/DenizAltunkapan">Deniz Altunkapan</a>
  */
 
-public class TravelingSalesman {
+public final class TravelingSalesman {
 
     // Private constructor to prevent instantiation
     private TravelingSalesman() {
