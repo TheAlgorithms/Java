@@ -78,7 +78,6 @@
                         <arg>-Xlint:-auxiliaryclass</arg>
                         <arg>-Xlint:-rawtypes</arg>
                         <arg>-Xlint:-unchecked</arg>
-                        <arg>-Xlint:-lossy-conversions</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
                 </configuration>
