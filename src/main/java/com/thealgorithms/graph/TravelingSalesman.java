@@ -14,7 +14,8 @@ import java.util.List;
 public class TravelingSalesman {
 
     // Private constructor to prevent instantiation
-    private TravelingSalesman() {}
+    private TravelingSalesman() {
+    }
 
     /**
      * Solves the Traveling Salesman Problem (TSP) using brute-force approach.
