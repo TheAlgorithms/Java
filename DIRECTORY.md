@@ -118,6 +118,7 @@
             * [TurkishToLatinConversion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/TurkishToLatinConversion.java)
             * [UnitConversions](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/UnitConversions.java)
             * [UnitsConverter](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/UnitsConverter.java)
+            * [WordsToNumber](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/conversions/WordsToNumber.java)
           * datastructures
             * bags
               * [Bag](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/bags/Bag.java)
@@ -162,6 +163,7 @@
               * [MatrixGraphs](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/MatrixGraphs.java)
               * [PrimMST](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/PrimMST.java)
               * [TarjansAlgorithm](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/TarjansAlgorithm.java)
+              * [UndirectedAdjacencyListGraph](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/UndirectedAdjacencyListGraph.java)
               * [WelshPowell](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/graphs/WelshPowell.java)
             * hashmap
               * hashing
@@ -319,6 +321,7 @@
             * [SubsetSum](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SubsetSum.java)
             * [SubsetSumSpaceOptimized](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SubsetSumSpaceOptimized.java)
             * [SumOfSubset](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/SumOfSubset.java)
+            * [TreeMatching](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/TreeMatching.java)
             * [Tribonacci](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/Tribonacci.java)
             * [UniquePaths](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniquePaths.java)
             * [UniqueSubsequencesCount](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/UniqueSubsequencesCount.java)
@@ -423,6 +426,7 @@
             * [LongDivision](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/LongDivision.java)
             * [LucasSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/LucasSeries.java)
             * [MagicSquare](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MagicSquare.java)
+            * [MathBuilder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MathBuilder.java)
             * [MaxValue](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/MaxValue.java)
             * [Means](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Means.java)
             * [Median](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/maths/Median.java)
@@ -537,6 +541,7 @@
             * [PageRank](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PageRank.java)
             * [PasswordGen](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PasswordGen.java)
             * [PerlinNoise](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PerlinNoise.java)
+            * [PrintAMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/PrintAMatrixInSpiralOrder.java)
             * [QueueUsingTwoStacks](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/QueueUsingTwoStacks.java)
             * [RemoveDuplicateFromString](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/RemoveDuplicateFromString.java)
             * [ReverseStackUsingRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/others/ReverseStackUsingRecursion.java)
@@ -724,7 +729,7 @@
             * zigZagPattern
               * [ZigZagPattern](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/strings/zigZagPattern/ZigZagPattern.java)
           * tree
-            * [HeavyLightDecomposition](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/tree/HeavyLightDecomposition.java)
+            * [HeavyLightDecomposition](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/tree/HeavyLightDecomposition.java)
   * test
     * java
       * com
@@ -836,6 +841,7 @@
             * [TurkishToLatinConversionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/TurkishToLatinConversionTest.java)
             * [UnitConversionsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitConversionsTest.java)
             * [UnitsConverterTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/UnitsConverterTest.java)
+            * [WordsToNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/conversions/WordsToNumberTest.java)
           * datastructures
             * bag
               * [BagTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/bag/BagTest.java)
@@ -1003,6 +1009,7 @@
             * [SubsetSumSpaceOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SubsetSumSpaceOptimizedTest.java)
             * [SubsetSumTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SubsetSumTest.java)
             * [SumOfSubsetTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/SumOfSubsetTest.java)
+            * [TreeMatchingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/TreeMatchingTest.java)
             * [TribonacciTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/TribonacciTest.java)
             * [UniquePathsTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/UniquePathsTests.java)
             * [UniqueSubsequencesCountTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/UniqueSubsequencesCountTest.java)
@@ -1097,6 +1104,7 @@
             * [LeonardoNumberTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LeonardoNumberTest.java)
             * [LongDivisionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LongDivisionTest.java)
             * [LucasSeriesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/LucasSeriesTest.java)
+            * [MathBuilderTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MathBuilderTest.java)
             * [MaxValueTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MaxValueTest.java)
             * [MeansTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MeansTest.java)
             * [MedianTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/maths/MedianTest.java)
@@ -1190,6 +1198,7 @@
             * [RemoveDuplicateFromStringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/RemoveDuplicateFromStringTest.java)
             * [ReverseStackUsingRecursionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/ReverseStackUsingRecursionTest.java)
             * [SkylineProblemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/SkylineProblemTest.java)
+            * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
             * [TwoPointersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/TwoPointersTest.java)
             * [WorstFitCPUTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
           * puzzlesandgames

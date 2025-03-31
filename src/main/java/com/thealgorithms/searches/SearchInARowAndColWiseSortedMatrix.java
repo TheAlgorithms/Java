@@ -15,7 +15,6 @@ public class SearchInARowAndColWiseSortedMatrix {
         // This variable iterates over columns
         int j = n - 1;
         int[] result = {-1, -1};
-
         while (i < n && j >= 0) {
             if (matrix[i][j] == value) {
                 result[0] = i;
