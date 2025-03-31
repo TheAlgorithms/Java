@@ -9,6 +9,9 @@ package com.thealgorithms.ciphers;
  * @author khalil2535
  */
 public class Caesar {
+    private static char normalizeShift(final int shift) {
+        return (char) (shift % 26);
+    }
 
     /**
      * Encrypt text by shifting every Latin char by add number shift for ASCII
@@ -19,7 +22,7 @@ public class Caesar {
     public String encode(String message, int shift) {
         StringBuilder encoded = new StringBuilder();
 
-        shift %= 26;
+        final char shiftChar = normalizeShift(shift);
 
         final int length = message.length();
         for (int i = 0; i < length; i++) {
@@ -29,10 +32,10 @@ public class Caesar {
             char current = message.charAt(i); // Java law : char + int = char
 
             if (isCapitalLatinLetter(current)) {
-                current += shift;
+                current += shiftChar;
                 encoded.append((char) (current > 'Z' ? current - 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current += shift;
+                current += shiftChar;
                 encoded.append((char) (current > 'z' ? current - 26 : current)); // 26 = number of latin letters
             } else {
                 encoded.append(current);
@@ -50,16 +53,16 @@ public class Caesar {
     public String decode(String encryptedMessage, int shift) {
         StringBuilder decoded = new StringBuilder();
 
-        shift %= 26;
+        final char shiftChar = normalizeShift(shift);
 
         final int length = encryptedMessage.length();
         for (int i = 0; i < length; i++) {
             char current = encryptedMessage.charAt(i);
             if (isCapitalLatinLetter(current)) {
-                current -= shift;
+                current -= shiftChar;
                 decoded.append((char) (current < 'A' ? current + 26 : current)); // 26 = number of latin letters
             } else if (isSmallLatinLetter(current)) {
-                current -= shift;
+                current -= shiftChar;
                 decoded.append((char) (current < 'a' ? current + 26 : current)); // 26 = number of latin letters
             } else {
                 decoded.append(current);
