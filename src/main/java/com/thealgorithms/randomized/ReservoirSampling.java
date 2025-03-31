@@ -26,6 +26,10 @@ public class ReservoirSampling {
      * @return A list containing k randomly selected elements.
      */
     public static List<Integer> sample(int[] stream, int sampleSize) {
+        if (sampleSize > stream.length) {
+            throw new IllegalArgumentException("Sample size cannot exceed stream size.");
+        }
+
         List<Integer> reservoir = new ArrayList<>(sampleSize);
         Random rand = new Random();
 
