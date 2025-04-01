@@ -18,9 +18,9 @@ public class SinglyLinkedListTest {
      * @return linked list with pre-defined number of nodes
      */
     private SinglyLinkedList createSampleList(int length) {
-        List<Node> nodeList = new ArrayList<>();
+        List<SinglyLinkedListNode> nodeList = new ArrayList<>();
         for (int i = 1; i <= length; i++) {
-            Node node = new Node(i);
+            SinglyLinkedListNode node = new SinglyLinkedListNode(i);
             nodeList.add(node);
         }
 
@@ -34,10 +34,10 @@ public class SinglyLinkedListTest {
     @Test
     void detectLoop() {
         // List has cycle
-        Node firstNode = new Node(1);
-        Node secondNode = new Node(2);
-        Node thirdNode = new Node(3);
-        Node fourthNode = new Node(4);
+        SinglyLinkedListNode firstNode = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode secondNode = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode thirdNode = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode fourthNode = new SinglyLinkedListNode(4);
 
         firstNode.next = secondNode;
         secondNode.next = thirdNode;
@@ -112,13 +112,13 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node The reversed linkedlist will be 4->3->2->1->null
-        Node head = list.reverseListIter(list.getHead());
+        SinglyLinkedListNode head = list.reverseListIter(list.getHead());
 
         // Recording the Nodes after reversing the LinkedList
-        Node firstNode = head; // 4
-        Node secondNode = firstNode.next; // 3
-        Node thirdNode = secondNode.next; // 2
-        Node fourthNode = thirdNode.next; // 1
+        SinglyLinkedListNode firstNode = head; // 4
+        SinglyLinkedListNode secondNode = firstNode.next; // 3
+        SinglyLinkedListNode thirdNode = secondNode.next; // 2
+        SinglyLinkedListNode fourthNode = thirdNode.next; // 1
 
         // Checking whether the LinkedList is reversed or not by comparing the original list and
         // reversed list nodes
@@ -134,10 +134,10 @@ public class SinglyLinkedListTest {
     void reverseListNullPointer() {
         // Creating a linkedlist with first node assigned to null
         SinglyLinkedList list = new SinglyLinkedList();
-        Node first = list.getHead();
+        SinglyLinkedListNode first = list.getHead();
 
         // Reversing the linkedlist
-        Node head = list.reverseListIter(first);
+        SinglyLinkedListNode head = list.reverseListIter(first);
 
         // checking whether the method works fine if the input is null
         assertEquals(head, first);
@@ -151,10 +151,10 @@ public class SinglyLinkedListTest {
 
         // Reversing the LinkedList using reverseList() method and storing the head of the reversed
         // linkedlist in a head node
-        Node head = list.reverseListIter(list.getHead());
+        SinglyLinkedListNode head = list.reverseListIter(list.getHead());
 
         // Storing the head in a temp variable, so that we cannot loose the track of head
-        Node temp = head;
+        SinglyLinkedListNode temp = head;
 
         int i = 20; // This is for the comparison of values of nodes of the reversed linkedlist
         // Checking whether the reverseList() method performed its task
@@ -171,7 +171,7 @@ public class SinglyLinkedListTest {
         SinglyLinkedList list = createSampleList(5);
 
         // Reversing the linked list using reverseList() method
-        Node head = list.reverseListRec(list.getHead());
+        SinglyLinkedListNode head = list.reverseListRec(list.getHead());
 
         // Check if the reversed list is: 5 -> 4 -> 3 -> 2 -> 1
         assertEquals(5, head.value);
@@ -185,10 +185,10 @@ public class SinglyLinkedListTest {
     void recursiveReverseListNullPointer() {
         // Create an empty linked list
         SinglyLinkedList list = new SinglyLinkedList();
-        Node first = list.getHead();
+        SinglyLinkedListNode first = list.getHead();
 
         // Reversing the empty linked list
-        Node head = list.reverseListRec(first);
+        SinglyLinkedListNode head = list.reverseListRec(first);
 
         // Check if the head remains the same (null)
         assertNull(head);
@@ -200,11 +200,11 @@ public class SinglyLinkedListTest {
         SinglyLinkedList list = createSampleList(20);
 
         // Reversing the linked list using reverseList() method
-        Node head = list.reverseListRec(list.getHead());
+        SinglyLinkedListNode head = list.reverseListRec(list.getHead());
 
         // Check if the reversed list has the correct values
         int i = 20;
-        Node temp = head;
+        SinglyLinkedListNode temp = head;
         while (temp != null && i > 0) {
             assertEquals(i, temp.value);
             temp = temp.next;

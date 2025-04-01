@@ -105,7 +105,7 @@ package com.thealgorithms.datastructures.lists;
 public class QuickSortLinkedList {
 
     private final SinglyLinkedList list; // The linked list to be sorted
-    private Node head; // Head of the list
+    private SinglyLinkedListNode head; // Head of the list
 
     /**
      * Constructor that initializes the QuickSortLinkedList with a given linked list.
@@ -136,19 +136,19 @@ public class QuickSortLinkedList {
      * @param head The head node of the list to sort
      * @return The head node of the sorted linked list
      */
-    private Node sortList(Node head) {
+    private SinglyLinkedListNode sortList(SinglyLinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
 
-        Node pivot = head;
+        SinglyLinkedListNode pivot = head;
         head = head.next;
         pivot.next = null;
 
-        Node lessHead = new Node();
-        Node lessTail = lessHead;
-        Node greaterHead = new Node();
-        Node greaterTail = greaterHead;
+        SinglyLinkedListNode lessHead = new SinglyLinkedListNode();
+        SinglyLinkedListNode lessTail = lessHead;
+        SinglyLinkedListNode greaterHead = new SinglyLinkedListNode();
+        SinglyLinkedListNode greaterTail = greaterHead;
 
         while (head != null) {
             if (head.value < pivot.value) {
@@ -164,14 +164,14 @@ public class QuickSortLinkedList {
         lessTail.next = null;
         greaterTail.next = null;
 
-        Node sortedLess = sortList(lessHead.next);
-        Node sortedGreater = sortList(greaterHead.next);
+        SinglyLinkedListNode sortedLess = sortList(lessHead.next);
+        SinglyLinkedListNode sortedGreater = sortList(greaterHead.next);
 
         if (sortedLess == null) {
             pivot.next = sortedGreater;
             return pivot;
         } else {
-            Node current = sortedLess;
+            SinglyLinkedListNode current = sortedLess;
             while (current.next != null) {
                 current = current.next;
             }

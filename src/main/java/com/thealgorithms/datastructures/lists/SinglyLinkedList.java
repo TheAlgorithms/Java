@@ -12,7 +12,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
     /**
      * Head refer to the front of the list
      */
-    private Node head;
+    private SinglyLinkedListNode head;
 
     /**
      * Size of SinglyLinkedList
@@ -33,7 +33,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * @param head the head node of list
      * @param size the size of list
      */
-    public SinglyLinkedList(Node head, int size) {
+    public SinglyLinkedList(SinglyLinkedListNode head, int size) {
         this.head = head;
         this.size = size;
     }
@@ -44,8 +44,8 @@ public class SinglyLinkedList implements Iterable<Integer> {
      *
      */
     public boolean detectLoop() {
-        Node currentNodeFast = head;
-        Node currentNodeSlow = head;
+        SinglyLinkedListNode currentNodeFast = head;
+        SinglyLinkedListNode currentNodeSlow = head;
         while (currentNodeFast != null && currentNodeFast.next != null) {
             currentNodeFast = currentNodeFast.next.next;
             currentNodeSlow = currentNodeSlow.next;
@@ -61,12 +61,12 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * If the length of the list is even then return item number length/2
      * @return middle node of the list
      */
-    public Node middle() {
+    public SinglyLinkedListNode middle() {
         if (head == null) {
             return null;
         }
-        Node firstCounter = head;
-        Node secondCounter = firstCounter.next;
+        SinglyLinkedListNode firstCounter = head;
+        SinglyLinkedListNode secondCounter = firstCounter.next;
         while (secondCounter != null && secondCounter.next != null) {
             firstCounter = firstCounter.next;
             secondCounter = secondCounter.next.next;
@@ -82,15 +82,15 @@ public class SinglyLinkedList implements Iterable<Integer> {
         if (valueFirst == valueSecond) {
             return;
         }
-        Node previousA = null;
-        Node currentA = head;
+        SinglyLinkedListNode previousA = null;
+        SinglyLinkedListNode currentA = head;
         while (currentA != null && currentA.value != valueFirst) {
             previousA = currentA;
             currentA = currentA.next;
         }
 
-        Node previousB = null;
-        Node currentB = head;
+        SinglyLinkedListNode previousB = null;
+        SinglyLinkedListNode currentB = head;
         while (currentB != null && currentB.value != valueSecond) {
             previousB = currentB;
             currentB = currentB.next;
@@ -117,7 +117,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
         // Swap next pointer
 
-        Node temp = currentA.next;
+        var temp = currentA.next;
         currentA.next = currentB.next;
         currentB.next = temp;
     }
@@ -126,12 +126,12 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * Reverse a singly linked list[Iterative] from a given node till the end
      *
      */
-    public Node reverseListIter(Node node) {
-        Node prev = null;
-        Node curr = node;
+    public SinglyLinkedListNode reverseListIter(SinglyLinkedListNode node) {
+        SinglyLinkedListNode prev = null;
+        SinglyLinkedListNode curr = node;
 
         while (curr != null && curr.next != null) {
-            Node next = curr.next;
+            var next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
@@ -149,13 +149,13 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * Reverse a singly linked list[Recursive] from a given node till the end
      *
      */
-    public Node reverseListRec(Node head) {
+    public SinglyLinkedListNode reverseListRec(SinglyLinkedListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
 
-        Node prev = null;
-        Node h2 = reverseListRec(head.next);
+        SinglyLinkedListNode prev = null;
+        SinglyLinkedListNode h2 = reverseListRec(head.next);
 
         head.next.next = head;
         head.next = prev;
@@ -167,7 +167,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * Clear all nodes in the list
      */
     public void clear() {
-        Node cur = head;
+        SinglyLinkedListNode cur = head;
         while (cur != null) {
             cur = cur.next;
         }
@@ -198,7 +198,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      *
      * @return head of the list.
      */
-    public Node getHead() {
+    public SinglyLinkedListNode getHead() {
         return head;
     }
 
@@ -206,7 +206,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      * Set head of the list.
      *
      */
-    public void setHead(Node head) {
+    public void setHead(SinglyLinkedListNode head) {
         this.head = head;
     }
 
@@ -249,10 +249,10 @@ public class SinglyLinkedList implements Iterable<Integer> {
     }
 
     public void deleteDuplicates() {
-        Node pred = head;
+        SinglyLinkedListNode pred = head;
         // predecessor = the node
         // having sublist of its duplicates
-        Node newHead = head;
+        SinglyLinkedListNode newHead = head;
         while (newHead != null) {
             // if it's a beginning of duplicates sublist
             // skip all duplicates
@@ -273,7 +273,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
     }
 
     public void print() {
-        Node temp = head;
+        SinglyLinkedListNode temp = head;
         while (temp != null && temp.next != null) {
             System.out.print(temp.value + "->");
             temp = temp.next;
@@ -310,7 +310,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      */
     public void insertNth(int data, int position) {
         checkBounds(position, 0, size);
-        Node newNode = new Node(data);
+        SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
         if (head == null) {
             /* the list is empty */
             head = newNode;
@@ -325,7 +325,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
             return;
         }
 
-        Node cur = head;
+        SinglyLinkedListNode cur = head;
         for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
         }
@@ -359,7 +359,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
             size--;
             return;
         }
-        Node cur = head;
+        SinglyLinkedListNode cur = head;
         for (int i = 0; i < position - 1; ++i) {
             cur = cur.next;
         }
@@ -376,7 +376,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
      */
     public int getNth(int index) {
         checkBounds(index, 0, size - 1);
-        Node cur = head;
+        SinglyLinkedListNode cur = head;
         for (int i = 0; i < index; ++i) {
             cur = cur.next;
         }
@@ -440,7 +440,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
         }
 
         SinglyLinkedList instance = new SinglyLinkedList();
-        Node head = new Node(0, new Node(2, new Node(3, new Node(3, new Node(4)))));
+        SinglyLinkedListNode head = new SinglyLinkedListNode(0, new SinglyLinkedListNode(2, new SinglyLinkedListNode(3, new SinglyLinkedListNode(3, new SinglyLinkedListNode(4)))));
         instance.setHead(head);
         instance.deleteDuplicates();
         instance.print();
@@ -452,7 +452,7 @@ public class SinglyLinkedList implements Iterable<Integer> {
     }
 
     private class SinglyLinkedListIterator implements Iterator<Integer> {
-        private Node current;
+        private SinglyLinkedListNode current;
 
         SinglyLinkedListIterator() {
             current = head;
@@ -472,45 +472,5 @@ public class SinglyLinkedList implements Iterable<Integer> {
             current = current.next;
             return value;
         }
-    }
-}
-
-/**
- * This class is the nodes of the SinglyLinked List. They consist of a value and
- * a pointer to the node after them.
- */
-class Node {
-
-    /**
-     * The value of the node
-     */
-    int value;
-
-    /**
-     * Point to the next node
-     */
-    Node next;
-
-    Node() {
-    }
-
-    /**
-     * Constructor
-     *
-     * @param value Value to be put in the node
-     */
-    Node(int value) {
-        this(value, null);
-    }
-
-    /**
-     * Constructor
-     *
-     * @param value Value to be put in the node
-     * @param next Reference to the next node
-     */
-    Node(int value, Node next) {
-        this.value = value;
-        this.next = next;
     }
 }
