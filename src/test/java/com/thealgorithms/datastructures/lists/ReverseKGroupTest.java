@@ -20,8 +20,8 @@ public class ReverseKGroupTest {
     @Test
     public void testReverseKGroupWithSingleNodeList() {
         ReverseKGroup reverser = new ReverseKGroup();
-        Node singleNode = new Node(5);
-        Node result = reverser.reverseKGroup(singleNode, 2);
+        SinglyLinkedListNode singleNode = new SinglyLinkedListNode(5);
+        SinglyLinkedListNode result = reverser.reverseKGroup(singleNode, 2);
         assertEquals(5, result.value);
         assertNull(result.next);
     }
@@ -31,15 +31,15 @@ public class ReverseKGroupTest {
         ReverseKGroup reverser = new ReverseKGroup();
 
         // Create a list with multiple elements (1 -> 2 -> 3 -> 4 -> 5)
-        Node head;
-        head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
+        SinglyLinkedListNode head;
+        head = new SinglyLinkedListNode(1);
+        head.next = new SinglyLinkedListNode(2);
+        head.next.next = new SinglyLinkedListNode(3);
+        head.next.next.next = new SinglyLinkedListNode(4);
+        head.next.next.next.next = new SinglyLinkedListNode(5);
 
         // Test reverse with k=2
-        Node result1 = reverser.reverseKGroup(head, 2);
+        SinglyLinkedListNode result1 = reverser.reverseKGroup(head, 2);
         assertEquals(2, result1.value);
         assertEquals(1, result1.next.value);
         assertEquals(4, result1.next.next.value);
@@ -53,15 +53,15 @@ public class ReverseKGroupTest {
         ReverseKGroup reverser = new ReverseKGroup();
 
         // Create a list with multiple elements (1 -> 2 -> 3 -> 4 -> 5)
-        Node head;
-        head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
+        SinglyLinkedListNode head;
+        head = new SinglyLinkedListNode(1);
+        head.next = new SinglyLinkedListNode(2);
+        head.next.next = new SinglyLinkedListNode(3);
+        head.next.next.next = new SinglyLinkedListNode(4);
+        head.next.next.next.next = new SinglyLinkedListNode(5);
 
         // Test reverse with k=3
-        Node result = reverser.reverseKGroup(head, 3);
+        SinglyLinkedListNode result = reverser.reverseKGroup(head, 3);
         assertEquals(3, result.value);
         assertEquals(2, result.next.value);
         assertEquals(1, result.next.next.value);

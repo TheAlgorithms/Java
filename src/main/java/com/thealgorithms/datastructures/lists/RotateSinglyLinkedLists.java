@@ -38,12 +38,12 @@ public class RotateSinglyLinkedLists {
      * @param k The number of positions to rotate the list to the right.
      * @return The head of the rotated linked list.
      */
-    public Node rotateRight(Node head, int k) {
+    public SinglyLinkedListNode rotateRight(SinglyLinkedListNode head, int k) {
         if (head == null || head.next == null || k == 0) {
             return head;
         }
 
-        Node curr = head;
+        SinglyLinkedListNode curr = head;
         int len = 1;
         while (curr.next != null) {
             curr = curr.next;
