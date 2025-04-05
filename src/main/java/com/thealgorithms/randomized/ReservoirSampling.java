@@ -1,8 +1,8 @@
 package com.thealgorithms.randomized;
 
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Reservoir Sampling Algorithm
@@ -45,19 +45,5 @@ public class ReservoirSampling {
         }
 
         return reservoir;
-    }
-
-    // Demo usage
-    public static void main(String[] args) {
-        int[] streamData = new int[1000];
-        for (int i = 0; i < 1000; i++) {
-            streamData[i] = i + 1;
-        }
-
-        List<Integer> result = ReservoirSampling.sample(streamData, 10);
-        System.out.println("Random sample of 10 items:");
-        for (int value : result) {
-            System.out.print(value + " ");
-        }
     }
 }
