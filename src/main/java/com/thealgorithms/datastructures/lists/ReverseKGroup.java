@@ -14,10 +14,10 @@ package com.thealgorithms.datastructures.lists;
  * </p>
  * <p>
  * The implementation contains:
- * - {@code length(Node head)}: A method to calculate the length of the linked list.
- * - {@code reverse(Node head, int count, int k)}: A helper method that reverses the nodes
+ * - {@code length(SinglyLinkedListNode head)}: A method to calculate the length of the linked list.
+ * - {@code reverse(SinglyLinkedListNode head, int count, int k)}: A helper method that reverses the nodes
  *   in the linked list in groups of k.
- * - {@code reverseKGroup(Node head, int k)}: The main method that initiates the reversal
+ * - {@code reverseKGroup(SinglyLinkedListNode head, int k)}: The main method that initiates the reversal
  *   process by calling the reverse method.
  * </p>
  * <p>
@@ -38,8 +38,8 @@ public class ReverseKGroup {
      * @param head The head node of the linked list.
      * @return The total number of nodes in the linked list.
      */
-    public int length(Node head) {
-        Node curr = head;
+    public int length(SinglyLinkedListNode head) {
+        SinglyLinkedListNode curr = head;
         int count = 0;
         while (curr != null) {
             curr = curr.next;
@@ -56,14 +56,14 @@ public class ReverseKGroup {
      * @param k The size of the group to reverse.
      * @return The new head of the reversed linked list segment.
      */
-    public Node reverse(Node head, int count, int k) {
+    public SinglyLinkedListNode reverse(SinglyLinkedListNode head, int count, int k) {
         if (count < k) {
             return head;
         }
-        Node prev = null;
+        SinglyLinkedListNode prev = null;
         int count1 = 0;
-        Node curr = head;
-        Node next = null;
+        SinglyLinkedListNode curr = head;
+        SinglyLinkedListNode next = null;
         while (curr != null && count1 < k) {
             next = curr.next;
             curr.next = prev;
@@ -85,7 +85,7 @@ public class ReverseKGroup {
      * @param k The size of the group to reverse.
      * @return The head of the modified linked list after reversal.
      */
-    public Node reverseKGroup(Node head, int k) {
+    public SinglyLinkedListNode reverseKGroup(SinglyLinkedListNode head, int k) {
         int count = length(head);
         return reverse(head, count, k);
     }

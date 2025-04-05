@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.16.1</version>
+            <version>5.17.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -61,7 +61,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.2</version>
+                <version>3.5.3</version>
                 <configuration>
                     <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                 </configuration>
@@ -78,7 +78,6 @@
                         <arg>-Xlint:-auxiliaryclass</arg>
                         <arg>-Xlint:-rawtypes</arg>
                         <arg>-Xlint:-unchecked</arg>
-                        <arg>-Xlint:-lossy-conversions</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
                 </configuration>
@@ -86,7 +85,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>0.8.13</version>
                 <executions>
                     <execution>
                         <goals>
@@ -116,7 +115,7 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>10.21.4</version>
+                    <version>10.23.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

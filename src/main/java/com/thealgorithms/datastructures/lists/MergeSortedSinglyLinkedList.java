@@ -42,12 +42,12 @@ public class MergeSortedSinglyLinkedList extends SinglyLinkedList {
             throw new NullPointerException("Input lists must not be null.");
         }
 
-        Node headA = listA.getHead();
-        Node headB = listB.getHead();
+        SinglyLinkedListNode headA = listA.getHead();
+        SinglyLinkedListNode headB = listB.getHead();
         int size = listA.size() + listB.size();
 
-        Node head = new Node();
-        Node tail = head;
+        SinglyLinkedListNode head = new SinglyLinkedListNode();
+        SinglyLinkedListNode tail = head;
         while (headA != null && headB != null) {
             if (headA.value <= headB.value) {
                 tail.next = headA;

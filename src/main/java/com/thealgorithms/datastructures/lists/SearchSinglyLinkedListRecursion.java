@@ -30,7 +30,7 @@ public class SearchSinglyLinkedListRecursion extends SinglyLinkedList {
      * @param key the integer value to be searched for.
      * @return {@code true} if the value `key` is present in the list; otherwise, {@code false}.
      */
-    private boolean searchRecursion(Node node, int key) {
+    private boolean searchRecursion(SinglyLinkedListNode node, int key) {
         return (node != null && (node.value == key || searchRecursion(node.next, key)));
     }
 
