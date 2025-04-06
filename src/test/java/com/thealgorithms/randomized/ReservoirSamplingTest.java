@@ -36,9 +36,7 @@ public class ReservoirSamplingTest {
     public void testSampleSizeGreaterThanStreamLengthThrowsException() {
         int[] stream = {1, 2, 3};
 
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ReservoirSampling.sample(stream, 5);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { ReservoirSampling.sample(stream, 5); });
 
         assertEquals("Sample size cannot exceed stream size.", exception.getMessage());
     }
