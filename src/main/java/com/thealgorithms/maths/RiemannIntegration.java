@@ -3,7 +3,7 @@ import java.util.function.Function;
 
 /**
  * @author https://github.com/il798li/
- * For more information on Riemann's approximation methods for integrals, visit {@link https://en.wikipedia.org/wiki/Riemann_sum this website}
+ * @Info https://math.libretexts.org/Bookshelves/Calculus/Calculus_3e_(Apex)/05%3A_Integration/5.03%3A_Riemann_Sums
  */
 public class RiemannIntegration {
     private final double deltaX;
@@ -13,9 +13,9 @@ public class RiemannIntegration {
      * @param deltaX This is essentially the change in each rectangle. You ideally want a very small positive values. If you want an extremely high accuracy, use {@code Double.MIN_DOUBLE}, but be warned: this will take an extremely long time.
      * @exception IllegalArgumentException when you pass a negative value.
      */
-    public RiemannIntegration (final double deltaX) {
+    public RiemannIntegration(final double deltaX) {
         if (deltaX <= 0) {
-            throw new IllegalArgumentException ("Accuracy must be a positive number. " + deltaX + " was passed instead.");
+            throw new IllegalArgumentException("Accuracy must be a positive number. " + deltaX + " was passed instead.");
         }
         this.deltaX = deltaX;
     }
@@ -23,7 +23,7 @@ public class RiemannIntegration {
     /**
      * Creating the integration class. This will have good accuracy, but will take a few seconds to calculate complicated integrals.
      */
-    public RiemannIntegration () {
+    public RiemannIntegration() {
         this(0.000000001);
     }
 
@@ -35,12 +35,12 @@ public class RiemannIntegration {
      * @param upperBoundary The upper bound of where your intetgration will end. Conventionally, this is the {@code a} value.
      * @return The area under the curve between the given bounds.
      */
-    public double integrate(final Function<Double, Double> function, final RiemannApproximationMethod riemannApproximationMethod, final double lowerBoundary, final double upperBoundary) {
+    public double integrate(final Function < Double, Double > function, final RiemannApproximationMethod riemannApproximationMethod, final double lowerBoundary, final double upperBoundary) {
         double value = 0;
         switch (riemannApproximationMethod) {
             case LEFT_RIEMANN_SUM: {
                 for (double x = lowerBoundary; x < upperBoundary; x += deltaX) {
-                    value += this.deltaX * function.apply (x);
+                    value += this.deltaX * function.apply(x);
                     x += deltaX;
                 }
                 break;
@@ -49,22 +49,22 @@ public class RiemannIntegration {
                 double x = lowerBoundary;
                 while (x < upperBoundary) {
                     x += deltaX;
-                    value += this.deltaX * function.apply (x);
+                    value += this.deltaX * function.apply(x);
                 }
                 break;
             }
             case TRAPEZOIDAL_RIEMANN_SUM: {
-                value += function.apply (lowerBoundary) * deltaX;
+                value += function.apply(lowerBoundary) * deltaX;
                 for (double x = lowerBoundary + deltaX; x < upperBoundary; x += deltaX) {
-                    value += function.apply (x) * deltaX * 2;
+                    value += function.apply(x) * deltaX * 2;
                 }
-                value += function.apply (upperBoundary) * deltaX;
+                value += function.apply(upperBoundary) * deltaX;
                 value /= 2;
                 break;
             }
             case MIDPOINT_RIEMANN_SUM: {
                 for (double x = lowerBoundary + deltaX / 2; x < upperBoundary; x += deltaX) {
-                    value += deltaX * function.apply (x);
+                    value += deltaX * function.apply(x);
                 }
                 break;
             }
@@ -79,19 +79,18 @@ public class RiemannIntegration {
         TRAPEZOIDAL_RIEMANN_SUM
     }
 
-    public static void main (String[] args) {
-        example ();
+    public static void main(String[] args) {
+        example();
     }
-
 
     /**
      * Feel free to look at how the implementation of this method to see how it works.
      */
     public static final void example() {
-        final Function<Double, Double> xSquaredFunction = x -> Math.pow(x, 2); // Creates the function f(x) = x^2
+        final Function < Double, Double > xSquaredFunction = x -> Math.pow(x, 2); // Creates the function f(x) = x^2
         final RiemannApproximationMethod riemannApproximationMethod = RiemannApproximationMethod.TRAPEZOIDAL_RIEMANN_SUM; // Chooses the Trapezoidal method for approximating the integral.
-        final RiemannIntegration riemannIntegration = new RiemannIntegration ();
-        final double result = riemannIntegration.integrate (xSquaredFunction, riemannApproximationMethod, 0, 1); // The integral of x^2 from x = 1 to x = 2 is 1/3.
-        System.out.println (result);
+        final RiemannIntegration riemannIntegration = new RiemannIntegration();
+        final double result = riemannIntegration.integrate(xSquaredFunction, riemannApproximationMethod, 0, 1); // The integral of x^2 from x = 1 to x = 2 is 1/3.
+        System.out.println(result);
     }
 }
