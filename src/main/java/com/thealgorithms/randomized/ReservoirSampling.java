@@ -14,9 +14,15 @@ import java.util.Random;
  * Time Complexity: O(n)
  * Space Complexity: O(k)
  *
- * Author: Michael Alexander Montoya (@cureprotocols)
+ * @author Michael Alexander Montoya (@cureprotocols)
+ * @see <a href="https://en.wikipedia.org/wiki/Reservoir_sampling">Reservoir Sampling - Wikipedia</a>
  */
-public class ReservoirSampling {
+public final class ReservoirSampling {
+
+    // Prevent instantiation of utility class
+    private ReservoirSampling() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     /**
      * Selects k random elements from a stream using reservoir sampling.
