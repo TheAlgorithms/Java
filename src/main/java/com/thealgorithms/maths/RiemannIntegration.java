@@ -6,77 +6,49 @@ import java.util.function.Function;
  * @Info https://math.libretexts.org/Bookshelves/Calculus/Calculus_3e_(Apex)/05%3A_Integration/5.03%3A_Riemann_Sums
  */
 public class RiemannIntegration {
-    private final double deltaX;
 
-    /**
-     * Creating the integration class.
-     * @param deltaX This is essentially the change in each rectangle. You ideally want a very small positive values. If you want an extremely high accuracy, use {@code Double.MIN_DOUBLE}, but be warned: this will take an extremely long time.
-     * @exception IllegalArgumentException when you pass a negative value.
-     */
-    public RiemannIntegration(final double deltaX) {
-        if (deltaX <= 0) {
-            throw new IllegalArgumentException("Accuracy must be a positive number. " + deltaX + " was passed instead.");
-        }
-        this.deltaX = deltaX;
+    private static double calculateDeltaX (final double accuracy) {
+        return Math.pow(10, -accuracy);
     }
 
-    /**
-     * Creating the integration class. This will have good accuracy, but will take a few seconds to calculate complicated integrals.
-     */
-    public RiemannIntegration() {
-        this(0.000000001);
-    }
-
-    /**
-     * Integrates a function.
-     * @param function You will need to define this function, using {@code Function<Double, Double> function = x -> {...}}.
-     * @param riemannApproximationMethod Each sub-interval can use different shapes to approximate the integral. It is recommended to use Trapezoidal sum.
-     * @param lowerBoundary The lower bound of where your integration will start. Conventionally, this is the {@code a} value.
-     * @param upperBoundary The upper bound of where your intetgration will end. Conventionally, this is the {@code a} value.
-     * @return The area under the curve between the given bounds.
-     */
-    public double integrate(final Function < Double, Double > function, final RiemannApproximationMethod riemannApproximationMethod, final double lowerBoundary, final double upperBoundary) {
+    public double leftRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+        final double deltaX = calculateDeltaX (accuracy);
         double value = 0;
-        switch (riemannApproximationMethod) {
-            case LEFT_RIEMANN_SUM: {
-                for (double x = lowerBoundary; x < upperBoundary; x += deltaX) {
-                    value += this.deltaX * function.apply(x);
-                    x += deltaX;
-                }
-                break;
-            }
-            case RIGHT_RIEMANN_SUM: {
-                double x = lowerBoundary;
-                while (x < upperBoundary) {
-                    x += deltaX;
-                    value += this.deltaX * function.apply(x);
-                }
-                break;
-            }
-            case TRAPEZOIDAL_RIEMANN_SUM: {
-                value += function.apply(lowerBoundary) * deltaX;
-                for (double x = lowerBoundary + deltaX; x < upperBoundary; x += deltaX) {
-                    value += function.apply(x) * deltaX * 2;
-                }
-                value += function.apply(upperBoundary) * deltaX;
-                value /= 2;
-                break;
-            }
-            case MIDPOINT_RIEMANN_SUM: {
-                for (double x = lowerBoundary + deltaX / 2; x < upperBoundary; x += deltaX) {
-                    value += deltaX * function.apply(x);
-                }
-                break;
-            }
+        for (double x = lowerBoundary; x < upperBoundary; x += deltaX) {
+            value += deltaX * function.apply(x);
         }
         return value;
     }
 
-    public enum RiemannApproximationMethod {
-        LEFT_RIEMANN_SUM,
-        RIGHT_RIEMANN_SUM,
-        MIDPOINT_RIEMANN_SUM,
-        TRAPEZOIDAL_RIEMANN_SUM
+    public double rightRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+        final double deltaX = calculateDeltaX (accuracy);
+        double x = lowerBoundary;
+        double value = 0;
+        while (x < upperBoundary) {
+            x += deltaX;
+            value += deltaX + function.apply(x);
+        }
+        return value;
+    }
+
+    public double midpointRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+        final double deltaX = calculateDeltaX (accuracy);
+        double value = 0.0;
+        for (double x = lowerBoundary + accuracy / 2.0; x < upperBoundary; x += accuracy) {
+            value += accuracy * function.apply(x);
+        }
+        return value;
+    }
+
+    public double trapezoidalRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+        final double deltaX = calculateDeltaX (accuracy);
+        double value = function.apply(lowerBoundary) * deltaX;
+        for (double x = lowerBoundary + deltaX; x < upperBoundary; x += deltaX) {
+            value += function.apply(x) * deltaX * 2;
+        }
+        value += function.apply(upperBoundary) * deltaX;
+        value /= 2;
+        return value;
     }
 
     public static void main(String[] args) {
