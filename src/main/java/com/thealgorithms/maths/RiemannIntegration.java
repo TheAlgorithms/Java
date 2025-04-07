@@ -86,9 +86,7 @@ public class RiemannIntegration {
      */
     public static final void example() {
         final Function < Double, Double > xSquaredFunction = x -> Math.pow(x, 2); // Creates the function f(x) = x^2
-        final RiemannApproximationMethod riemannApproximationMethod = RiemannApproximationMethod.TRAPEZOIDAL_RIEMANN_SUM; // Chooses the Trapezoidal method for approximating the integral.
-        final RiemannIntegration riemannIntegration = new RiemannIntegration();
-        final double result = riemannIntegration.integrate(xSquaredFunction, riemannApproximationMethod, 0, 1); // The integral of x^2 from x = 1 to x = 2 is 1/3.
-        System.out.println(result);
+        final double result = RiemannIntegration.trapezoidalRiemannSum (xSquaredFunction, 0, 1, 9); // I find that an accuracy between 7 - 10 (inclusive) works best.
+        System.out.println ("Integral of y = x^2 from x = 0 to x = 1: " + result);
     }
 }
