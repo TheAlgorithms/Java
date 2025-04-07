@@ -18,7 +18,7 @@ public class RiemannIntegration {
      * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
      * @return The approximate value of the definite integral, calculated using the left Riemann Sum.
      */
-    public double leftRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+    public static double leftRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = 0;
         for (double x = lowerBoundary; x < upperBoundary; x += deltaX) {
@@ -33,7 +33,7 @@ public class RiemannIntegration {
      * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
      * @return The approximate value of the definite integral, calculated using the right Riemann Sum.
      */
-    public double rightRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+    public static double rightRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double x = lowerBoundary;
         double value = 0;
@@ -50,7 +50,7 @@ public class RiemannIntegration {
      * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
      * @return The approximate value of the definite integral, calculated using the midpoint Riemann Sum.
      */
-    public double midpointRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+    public static double midpointRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = 0.0;
         for (double x = lowerBoundary + accuracy / 2.0; x < upperBoundary; x += accuracy) {
@@ -66,7 +66,7 @@ public class RiemannIntegration {
      * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
      * @return The approximate value of the definite integral, calculated using the trapezoidal Riemann Sum.
      */
-    public double trapezoidalRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
+    public static double trapezoidalRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = function.apply(lowerBoundary) * deltaX;
         for (double x = lowerBoundary + deltaX; x < upperBoundary; x += deltaX) {
