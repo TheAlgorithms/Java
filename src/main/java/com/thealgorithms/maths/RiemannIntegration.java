@@ -37,9 +37,9 @@ public class RiemannIntegration {
         final double deltaX = calculateDeltaX (accuracy);
         double x = lowerBoundary;
         double value = 0;
-        while (x < upperBoundary) {
+        while (x < upperBoundary - deltaX) {
             x += deltaX;
-            value += deltaX + function.apply(x);
+            value += deltaX * function.apply(x);
         }
         return value;
     }
@@ -53,8 +53,8 @@ public class RiemannIntegration {
     public static double midpointRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = 0.0;
-        for (double x = lowerBoundary + accuracy / 2.0; x < upperBoundary; x += accuracy) {
-            value += accuracy * function.apply(x);
+        for (double x = lowerBoundary + deltaX / 2.0; x < upperBoundary; x += deltaX) {
+            value += deltaX * function.apply(x);
         }
         return value;
     }
