@@ -86,7 +86,7 @@ public class RiemannIntegration {
      */
     public static final void example() {
         final Function < Double, Double > xSquaredFunction = x -> Math.pow(x, 2); // Creates the function f(x) = x^2
-        final double result = RiemannIntegration.trapezoidalRiemannSum (xSquaredFunction, 0, 1, 9); // I find that an accuracy between 7 - 10 (inclusive) works best.
+        double result = RiemannIntegration.trapezoidalRiemannSum (xSquaredFunction, 0, 1, 9); // I find that an accuracy between 7 - 10 (inclusive) works best.
         System.out.println ("Integral of y = x^2 from x = 0 to x = 1: " + result);
     }
 }
