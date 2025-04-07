@@ -11,6 +11,13 @@ public class RiemannIntegration {
         return Math.pow(10, -accuracy);
     }
 
+    /**
+     * @param function A function that takes in an x value and outputs a {@code y} value.
+     * @param lowerBoundary The lower boundary for integration, conventionally the {@code a} value.
+     * @param upperBoundary The upper boundary for integration, conventionally the {@code b} value.
+     * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
+     * @return The approximate value of the definite integral, calculated using the left Riemann Sum.
+     */
     public double leftRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = 0;
@@ -19,7 +26,13 @@ public class RiemannIntegration {
         }
         return value;
     }
-
+    /**
+     * @param function A function that takes in an x value and outputs a {@code y} value.
+     * @param lowerBoundary The lower boundary for integration, conventionally the {@code a} value.
+     * @param upperBoundary The upper boundary for integration, conventionally the {@code b} value.
+     * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
+     * @return The approximate value of the definite integral, calculated using the right Riemann Sum.
+     */
     public double rightRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double x = lowerBoundary;
@@ -30,7 +43,13 @@ public class RiemannIntegration {
         }
         return value;
     }
-
+    /**
+     * @param function A function that takes in an x value and outputs a {@code y} value.
+     * @param lowerBoundary The lower boundary for integration, conventionally the {@code a} value.
+     * @param upperBoundary The upper boundary for integration, conventionally the {@code b} value.
+     * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
+     * @return The approximate value of the definite integral, calculated using the midpoint Riemann Sum.
+     */
     public double midpointRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = 0.0;
@@ -40,6 +59,13 @@ public class RiemannIntegration {
         return value;
     }
 
+    /**
+     * @param function A function that takes in an x value and outputs a {@code y} value.
+     * @param lowerBoundary The lower boundary for integration, conventionally the {@code a} value.
+     * @param upperBoundary The upper boundary for integration, conventionally the {@code b} value.
+     * @param accuracy The accuracy of the integration. It is recommended to keep this less than 10. Each sub-interval will have a width of {@code 10^(-accuracy)}.
+     * @return The approximate value of the definite integral, calculated using the trapezoidal Riemann Sum.
+     */
     public double trapezoidalRiemannSum(final Function<Double, Double> function, final double lowerBoundary, final double upperBoundary, final double accuracy) {
         final double deltaX = calculateDeltaX (accuracy);
         double value = function.apply(lowerBoundary) * deltaX;
