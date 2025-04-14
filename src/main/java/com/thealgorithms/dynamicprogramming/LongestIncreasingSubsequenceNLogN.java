@@ -8,17 +8,18 @@ package com.thealgorithms.dynamicprogramming;
  */
 public class LongestIncreasingSubsequenceNLogN {
 
-    /**
-     * Finds the index of the smallest element in the array that is greater than
-     * or equal to the target using binary search. If no such element exists,
-     * returns the index where the target can be inserted to maintain sorted order.
-     *
-     * @param arr    The array to search in (assumed to be sorted up to a certain point).
-     * @param target The target value to find the lower bound for.
-     * @return The index of the lower bound.
-     */
-    private static int lowerBound(int[] arr, int target) {
-        int l = 0, r = arr.length;
+  /**
+ * Finds the index of the smallest element in the array that is greater than
+ * or equal to the target using binary search. The search is restricted to
+ * the first `size` elements of the array.
+ *
+ * @param arr    The array to search in (assumed to be sorted up to `size`).
+ * @param size   The number of valid elements in the array.
+ * @param target The target value to find the lower bound for.
+ * @return The index of the lower bound.
+ */
+    private static int lowerBound(int[] arr, int target, int size) {
+        int l = 0, r = size;
 
         while (l < r) {
             int mid = l + (r - l) / 2;
@@ -54,7 +55,7 @@ public class LongestIncreasingSubsequenceNLogN {
 
         for (int x : arr) {
             // Find the position to replace or extend the subsequence
-            int index = lowerBound(tails, x);
+            int index = lowerBound(tails, x, size);
 
             // Update the tails array with the current element
             tails[index] = x;
