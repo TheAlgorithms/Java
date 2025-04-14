@@ -8,16 +8,16 @@ package com.thealgorithms.dynamicprogramming;
  */
 public class LongestIncreasingSubsequenceNLogN {
 
-  /**
- * Finds the index of the smallest element in the array that is greater than
- * or equal to the target using binary search. The search is restricted to
- * the first `size` elements of the array.
- *
- * @param arr    The array to search in (assumed to be sorted up to `size`).
- * @param size   The number of valid elements in the array.
- * @param target The target value to find the lower bound for.
- * @return The index of the lower bound.
- */
+    /**
+     * Finds the index of the smallest element in the array that is greater than
+     * or equal to the target using binary search. The search is restricted to
+     * the first `size` elements of the array.
+     *
+     * @param arr    The array to search in (assumed to be sorted up to `size`).
+     * @param size   The number of valid elements in the array.
+     * @param target The target value to find the lower bound for.
+     * @return The index of the lower bound.
+     */
     private static int lowerBound(int[] arr, int target, int size) {
         int l = 0, r = size;
 
@@ -29,12 +29,12 @@ public class LongestIncreasingSubsequenceNLogN {
                 l = mid + 1;
             } else {
                 // Move left if target is less than or equal to mid element
-                r = mid; 
+                r = mid;
             }
         }
 
         // Return the index where the target can be inserted
-        return l; 
+        return l;
     }
 
     /**
@@ -66,7 +66,7 @@ public class LongestIncreasingSubsequenceNLogN {
             }
         }
 
-    // Return the length of the LIS
+        // Return the length of the LIS
         return size;
     }
 }
