@@ -21,7 +21,8 @@ public final class LongestIncreasingSubsequenceNLogN {
      * @return The index of the lower bound.
      */
     private static int lowerBound(int[] arr, int target, int size) {
-        int l = 0, r = size;
+        int l = 0;
+        int r = size;
 
         while (l < r) {
             int mid = l + (r - l) / 2;
