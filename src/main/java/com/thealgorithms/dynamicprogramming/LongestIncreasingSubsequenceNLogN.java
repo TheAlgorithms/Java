@@ -7,6 +7,8 @@ package com.thealgorithms.dynamicprogramming;
  * @author Vusal Huseynov (https://github.com/huseynovvusal)
  */
 public class LongestIncreasingSubsequenceNLogN {
+    private LongestIncreasingSubsequenceNLogN() {
+    }
 
     /**
      * Finds the index of the smallest element in the array that is greater than
