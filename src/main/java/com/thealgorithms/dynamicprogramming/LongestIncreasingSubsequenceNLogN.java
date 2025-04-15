@@ -6,7 +6,7 @@ package com.thealgorithms.dynamicprogramming;
  *
  * @author Vusal Huseynov (https://github.com/huseynovvusal)
  */
-public class LongestIncreasingSubsequenceNLogN {
+public final class LongestIncreasingSubsequenceNLogN {
     private LongestIncreasingSubsequenceNLogN() {
     }
 
