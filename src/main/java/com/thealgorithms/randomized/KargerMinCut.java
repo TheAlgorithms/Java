@@ -76,15 +76,17 @@ public final class KargerMinCut {
 
     private static class DisjointSetUnion {
         private final int[] parent;
-        public int setCount;
+        int setCount;
 
-        public DisjointSetUnion(int size) {
+        DisjointSetUnion(int size) {
             parent = new int[size];
-            for (int i = 0; i < size; i++) parent[i] = i;
+            for (int i = 0; i < size; i++) {
+                parent[i] = i;
+            }
             setCount = size;
         }
 
-        public int find(int i) {
+        int find(int i) {
             // If it's not its own parent, then it's not the root of its set
             if (parent[i] != i) {
                 // Recursively find the root of its parent
@@ -96,7 +98,7 @@ public final class KargerMinCut {
             return parent[i];
         }
 
-        public void union(int u, int v) {
+        void union(int u, int v) {
             // Find the root of each node
             int rootU = find(u);
             int rootV = find(v);
@@ -111,7 +113,7 @@ public final class KargerMinCut {
             }
         }
 
-        public boolean inSameSet(int u, int v) {
+        boolean inSameSet(int u, int v) {
             return find(u) == find(v);
         }
 
@@ -119,7 +121,7 @@ public final class KargerMinCut {
           This is a verbosity method, it's not a part of the core algorithm,
           But it helps us provide more useful output.
         */
-        public Set<Integer> getAnySet() {
+        Set<Integer> getAnySet() {
             int aRoot = find(0); // Get one of the two roots
 
             Set<Integer> set = new HashSet<>();
@@ -137,7 +139,7 @@ public final class KargerMinCut {
         private final List<Integer> nodes;
         private final List<int[]> edges;
 
-        public Graph(Collection<Integer> nodeSet, List<int[]> edges) {
+        Graph(Collection<Integer> nodeSet, List<int[]> edges) {
             this.nodes = new ArrayList<>(nodeSet);
             this.edges = new ArrayList<>();
             for (int[] e : edges) {
@@ -145,11 +147,11 @@ public final class KargerMinCut {
             }
         }
 
-        public Graph copy() {
+        Graph copy() {
             return new Graph(this.nodes, this.edges);
         }
 
-        public KargerOutput findMinCut() {
+        KargerOutput findMinCut() {
             DisjointSetUnion dsu = new DisjointSetUnion(nodes.size());
             List<int[]> workingEdges = new ArrayList<>(edges);
 
