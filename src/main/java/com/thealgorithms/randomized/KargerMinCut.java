@@ -21,6 +21,9 @@ import java.util.*;
  *   <li>Count the edges between the two remaining nodes to determine the cut size.</li>
  *   <li>Repeat the process multiple times to improve the likelihood of finding the true minimum cut.</li>
  * </ol>
+ *
+ * See more: <a href="https://en.wikipedia.org/wiki/Karger%27s_algorithm">Karger's algorithm</a>
+ * @author MuhammadEzzatHBK
  */
 public class KargerMinCut {
 
