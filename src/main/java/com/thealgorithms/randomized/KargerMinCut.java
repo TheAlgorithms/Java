@@ -1,6 +1,11 @@
 package com.thealgorithms.randomized;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Implementation of Karger's Minimum Cut algorithm.
@@ -21,11 +26,12 @@ import java.util.*;
  *   <li>Count the edges between the two remaining nodes to determine the cut size.</li>
  *   <li>Repeat the process multiple times to improve the likelihood of finding the true minimum cut.</li>
  * </ol>
- *
+ * <p>
  * See more: <a href="https://en.wikipedia.org/wiki/Karger%27s_algorithm">Karger's algorithm</a>
+ *
  * @author MuhammadEzzatHBK
  */
-public class KargerMinCut {
+public final class KargerMinCut {
 
     /**
      * Output of the Karger algorithm.
@@ -34,9 +40,11 @@ public class KargerMinCut {
      * @param second The second set of nodes in the cut.
      * @param minCut The size of the minimum cut.
      */
-    public record KargerOutput(Set<Integer> first, Set<Integer> second, int minCut) {}
+    public record KargerOutput(Set<Integer> first, Set<Integer> second, int minCut) {
+    }
 
-    private KargerMinCut() {}
+    private KargerMinCut() {
+    }
 
     public static KargerOutput findMinCut(Collection<Integer> nodeSet, List<int[]> edges) {
         return findMinCut(nodeSet, edges, 100);
@@ -50,8 +58,7 @@ public class KargerMinCut {
      * @param iterations: Iterations to run the algorithms for, more iterations = more accuracy
      * @return A KargerOutput object containing the two sets of nodes and the size of the minimum cut.
      */
-    public static KargerOutput findMinCut(Collection<Integer> nodeSet,
-                                          List<int[]> edges, int iterations) {
+    public static KargerOutput findMinCut(Collection<Integer> nodeSet, List<int[]> edges, int iterations) {
         Graph graph = new Graph(nodeSet, edges);
         KargerOutput minCut = new KargerOutput(new HashSet<>(), new HashSet<>(), Integer.MAX_VALUE);
         KargerOutput output;
@@ -104,7 +111,6 @@ public class KargerMinCut {
             }
         }
 
-
         public boolean inSameSet(int u, int v) {
             return find(u) == find(v);
         }
@@ -114,7 +120,7 @@ public class KargerMinCut {
           But it helps us provide more useful output.
         */
         public Set<Integer> getAnySet() {
-            int aRoot = find(0); //Get one of the two roots
+            int aRoot = find(0); // Get one of the two roots
 
             Set<Integer> set = new HashSet<>();
             for (int i = 0; i < parent.length; i++) {
@@ -125,9 +131,7 @@ public class KargerMinCut {
 
             return set;
         }
-
     }
-
 
     private static class Graph {
         private final List<Integer> nodes;
@@ -137,7 +141,7 @@ public class KargerMinCut {
             this.nodes = new ArrayList<>(nodeSet);
             this.edges = new ArrayList<>();
             for (int[] e : edges) {
-                this.edges.add(new int[]{e[0], e[1]});
+                this.edges.add(new int[] {e[0], e[1]});
             }
         }
 
