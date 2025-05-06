@@ -5,7 +5,7 @@ package com.thealgorithms.randomized;
  * It selects a pivot randomly to improve performance on sorted or nearly sorted data.
  * @author Vibhu Khera
  */
-public class RandomizedQuickSort {
+public final class RandomizedQuickSort {
 
     private RandomizedQuickSort() {
         throw new UnsupportedOperationException("Utility class");
