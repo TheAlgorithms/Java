@@ -13,7 +13,7 @@ public class RandomizedQuickSortTest {
      * Tests sorting of an array with multiple elements, including duplicates.
      */
     @Test
-    public void testRandomizedQuickSort_multipleElements() {
+    public void testRandomizedQuickSortMultipleElements() {
         int[] arr = {3, 6, 8, 10, 1, 2, 1};
         int[] expected = {1, 1, 2, 3, 6, 8, 10};
         RandomizedQuickSort.randomizedQuickSort(arr, 0, arr.length - 1);
@@ -24,7 +24,7 @@ public class RandomizedQuickSortTest {
      * Tests sorting of an empty array.
      */
     @Test
-    public void testRandomizedQuickSort_emptyArray() {
+    public void testRandomizedQuickSortEmptyArray() {
         int[] arr = {};
         int[] expected = {};
         RandomizedQuickSort.randomizedQuickSort(arr, 0, arr.length - 1);
@@ -35,7 +35,7 @@ public class RandomizedQuickSortTest {
      * Tests sorting of an array with a single element.
      */
     @Test
-    public void testRandomizedQuickSort_singleElement() {
+    public void testRandomizedQuickSortSingleElement() {
         int[] arr = {5};
         int[] expected = {5};
         RandomizedQuickSort.randomizedQuickSort(arr, 0, arr.length - 1);

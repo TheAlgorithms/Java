@@ -3,8 +3,13 @@ package com.thealgorithms.randomized;
 /**
  * This class implements the Randomized QuickSort algorithm.
  * It selects a pivot randomly to improve performance on sorted or nearly sorted data.
+ * @author Vibhu Khera
  */
 public class RandomizedQuickSort {
+
+    private RandomizedQuickSort() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     /**
      * Sorts the array using the randomized quicksort algorithm.
