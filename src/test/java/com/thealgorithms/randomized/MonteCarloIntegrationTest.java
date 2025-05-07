@@ -20,7 +20,7 @@ class MonteCarloIntegrationTest {
     @Test
     void testLinearFunction() {
         // Integral of f(x) = x from 0 to 1 is 0.5
-        Function<Double, Double> linear = x -> x;
+        Function<Double, Double> linear = Function.identity();
         double result = MonteCarloIntegration.approximate(linear, 0, 1, 10000);
         assertEquals(0.5, result, EPSILON);
     }
@@ -43,7 +43,7 @@ class MonteCarloIntegrationTest {
 
     @Test
     void testReproducibility() {
-        Function<Double, Double> linear = x -> x;
+        Function<Double, Double> linear = Function.identity();
         double result1 = MonteCarloIntegration.approximate(linear, 0, 1, 10000, 42L);
         double result2 = MonteCarloIntegration.approximate(linear, 0, 1, 10000, 42L);
         assertEquals(result1, result2, 0.0); // Exactly equal
@@ -52,7 +52,7 @@ class MonteCarloIntegrationTest {
     @Test
     void testNegativeInterval() {
         // Integral of f(x) = x from -1 to 1 is 0
-        Function<Double, Double> linear = x -> x;
+        Function<Double, Double> linear = Function.identity();
         double result = MonteCarloIntegration.approximate(linear, -1, 1, 10000);
         assertEquals(0.0, result, EPSILON);
     }
