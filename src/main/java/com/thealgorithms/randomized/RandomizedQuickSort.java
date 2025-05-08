@@ -58,7 +58,9 @@ public final class RandomizedQuickSort {
      */
     private static void swap(int[] arr, int i, int j) {
         // Skip if indices are the same
-        if (i == j) {return;}
+        if (i == j) {
+            return;
+        }
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
