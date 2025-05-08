@@ -50,13 +50,16 @@ public final class RandomizedQuickSort {
     }
 
     /**
-     * Swaps two elements in the array.
-     *
-     * @param arr the array in which elements are to be swapped
-     * @param i the first index
-     * @param j the second index
-     */
+    * Swaps two elements in the array, only if the indices are different.
+    *
+    * @param arr the array in which elements are to be swapped
+    * @param i the first index
+    * @param j the second index
+    */
     private static void swap(int[] arr, int i, int j) {
+        if (i == j) {
+            return;
+        }
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
