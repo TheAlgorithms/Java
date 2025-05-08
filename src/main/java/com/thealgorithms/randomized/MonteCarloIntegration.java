@@ -61,12 +61,22 @@ public final class MonteCarloIntegration {
     }
 
     private static double doApproximate(Function<Double, Double> fx, double a, double b, int n, Random generator) {
+        if (!validate(fx, a, b, n)) {
+            throw new IllegalArgumentException("Invalid input parameters");
+        }
         double totalArea = 0.0;
-        double range = b - a;
+        double interval = b - a;
         for (int i = 0; i < n; i++) {
-            double x = a + generator.nextDouble() * range;
+            double x = a + generator.nextDouble() * interval;
             totalArea += fx.apply(x);
         }
-        return range * totalArea / n;
+        return interval * totalArea / n;
+    }
+
+    private static boolean validate(Function<Double, Double> fx, double a, double b, int n) {
+        boolean isFunctionValid = fx != null;
+        boolean isIntervalValid = a < b;
+        boolean isSampleSizeValid = n > 0;
+        return isFunctionValid && isIntervalValid && isSampleSizeValid;
     }
 }
