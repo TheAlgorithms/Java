@@ -3,7 +3,7 @@ import java.util.Random;
 /*
    This class implements the Randomized Matrix Multiplication Verification.
    It generates a random vector and performs verification using Freivalds' Algorithm.
-   Author: Menil-dev
+   @author: Menil-dev
  */
 public class MatrixMultiplicationVerifier {
 
