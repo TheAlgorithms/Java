@@ -3,9 +3,9 @@ import java.util.Random;
 /*
    This class implements the Randomized Matrix Multiplication Verification.
    It generates a random vector and performs verification using Freivalds' Algorithm.
-   @author: Menil-dev
+   @author Menil-dev
  */
-public class MatrixMultiplicationVerifier {
+public final class MatrixMultiplicationVerifier {
 
     private MatrixMultiplicationVerifier() {
         throw new UnsupportedOperationException("Utility class");
@@ -22,11 +22,9 @@ public class MatrixMultiplicationVerifier {
     static int[] multiply(int[][] matrix, int[] vector) {
         int n = vector.length;
         int[] result = new int[n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
                 result[i] += matrix[i][j] * vector[j];
-            }
-        }
         return result;
     }
 
@@ -34,16 +32,19 @@ public class MatrixMultiplicationVerifier {
         Actual function that performs verification function
         @params, all three input matrices of int type, number of iterations
     */
-    public static boolean verify(int[][] A, int[][] B, int[][] C, int iterations) {
-        if (A.length == 0 || B.length == 0 || C.length == 0 || A[0].length == 0 || B[0].length == 0 || C[0].length == 0) {
-            return A.length == B[0].length && B.length == C.length && C[0].length == A[0].length; // Basic dimension consistency check
+    public static boolean verify(int[][] matrixA, int[][] matrixB, int[][] matrixC, int iterations) {
+        if (matrixA.length == 0 || matrixB.length == 0 || matrixC.length == 0
+                || matrixA[0].length == 0 || matrixB[0].length == 0 || matrixC[0].length == 0) {
+            return matrixA.length == matrixB[0].length
+                    && matrixB.length == matrixC.length
+                    && matrixC[0].length == matrixA[0].length;
         }
 
         if (iterations <= 0) {
             throw new IllegalArgumentException("Number of iterations must be positive");
         }
 
-        int n = A.length;
+        int n = matrixA.length;
         if (iterations > 2 * n) {
             throw new IllegalArgumentException("Number of iterations should not exceed 2 * n where n is the matrix size");
         }
@@ -55,17 +56,16 @@ public class MatrixMultiplicationVerifier {
                 r[i] = rand.nextInt(2);
             }
 
-            int[] Br = multiply(B, r);
-            int[] ABr = multiply(A, Br);
-            int[] Cr = multiply(C, r);
+            int[] matrixBtimesR = multiply(matrixB, r);
+            int[] matrixAtimesBtimesR = multiply(matrixA, matrixBtimesR);
+            int[] matrixCtimesR = multiply(matrixC, r);
 
             for (int i = 0; i < n; i++) {
-                if (ABr[i] != Cr[i]) {
+                if (matrixAtimesBtimesR[i] != matrixCtimesR[i]) {
                     return false;
                 }
             }
         }
-
         return true;
     }
 
@@ -79,11 +79,9 @@ public class MatrixMultiplicationVerifier {
     static double[] multiply(double[][] matrix, double[] vector) {
         int n = vector.length;
         double[] result = new double[n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
                 result[i] += matrix[i][j] * vector[j];
-            }
-        }
         return result;
     }
 
@@ -91,38 +89,40 @@ public class MatrixMultiplicationVerifier {
         Actual function that performs the verification.
         @params, all three input matrices of double type, number of iterations
     */
-    public static boolean verify(double[][] A, double[][] B, double[][] C, int iterations) {
-        if (A.length == 0 || B.length == 0 || C.length == 0 || A[0].length == 0 || B[0].length == 0 || C[0].length == 0) {
-            return A.length == B[0].length && B.length == C.length && C[0].length == A[0].length;
+    public static boolean verify(double[][] matrixA, double[][] matrixB, double[][] matrixC, int iterations) {
+        if (matrixA.length == 0 || matrixB.length == 0 || matrixC.length == 0
+                || matrixA[0].length == 0 || matrixB[0].length == 0 || matrixC[0].length == 0) {
+            return matrixA.length == matrixB[0].length
+                    && matrixB.length == matrixC.length
+                    && matrixC[0].length == matrixA[0].length;
         }
 
         if (iterations <= 0) {
             throw new IllegalArgumentException("Number of iterations must be positive");
         }
 
-        int m = A.length;
+        int m = matrixA.length;
         if (iterations > 2 * m) {
-            throw new IllegalArgumentException("Number of iterations should not exceed 2 times m where n is the matrix size");
+            throw new IllegalArgumentException("Number of iterations should not exceed 2 times m where m is the matrix size");
         }
 
         Random rand = new Random();
         for (int t = 0; t < iterations; t++) {
             double[] randomizedVector = new double[m];
             for (int i = 0; i < m; i++) {
-                randomizedVector[i] = rand.nextInt(2); // Random binary values 0 or 1
+                randomizedVector[i] = rand.nextInt(2);
             }
 
-            double[] Br = multiply(B, randomizedVector);
-            double[] ABr = multiply(A, Br);
-            double[] Cr = multiply(C, randomizedVector);
+            double[] matrixBtimesR = multiply(matrixB, randomizedVector);
+            double[] matrixAtimesBtimesR = multiply(matrixA, matrixBtimesR);
+            double[] matrixCtimesR = multiply(matrixC, randomizedVector);
 
             for (int i = 0; i < m; i++) {
-                if (Math.abs(ABr[i] - Cr[i]) > 1e-9) {
+                if (Math.abs(matrixAtimesBtimesR[i] - matrixCtimesR[i]) > 1e-9) {
                     return false;
                 }
             }
         }
-
         return true;
     }
 }
