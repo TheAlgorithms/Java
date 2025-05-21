@@ -33,6 +33,7 @@ public class BinaryToHexadecimal {
         currbit = binary % 10;
         binary = binary / 10;
         code4 += currbit * Math.pow(2, i);
+        // test
       }
       hex = hm.get(code4) + hex;
     }
