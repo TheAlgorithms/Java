@@ -12,476 +12,232 @@ public final class RiemannIntegration {
     /**
      * Enum representing different types of Riemann sums
      */
-    public enum RiemannType {
-        LEFT,
-        RIGHT,
-        MIDPOINT,
-        TRAPEZOIDAL
-    }
-    
+    public enum RiemannType { LEFT, RIGHT, MIDPOINT, TRAPEZOIDAL }
+
     /**
      * The default tolerance used for numerical computations.
      * This value represents the relative error tolerance that is considered acceptable
      * for integration results.
      */
     public static final double DEFAULT_TOLERANCE = 1e-10;
-    
+
     /**
-     * The tolerance used for numerical computations.
-     * When comparing expected and actual values, differences smaller than this value are ignored.
-     */
-    private final double tolerance;
-    
-    /**
-     * Creates a new RiemannIntegration instance with the default tolerance (1e-10).
+     * Private constructor to prevent instantiation of utility class.
      */
     public RiemannIntegration() {
-        this.tolerance = DEFAULT_TOLERANCE;
-    }
-    
-    /**
-     * Creates a new RiemannIntegration instance with a custom tolerance.
-     *
-     * @param tolerance The tolerance to use for numerical computations.
-     *                  Must be positive. Smaller values mean higher precision requirements.
-     * @throws IllegalArgumentException if tolerance is not positive
-     */
-    public RiemannIntegration(double tolerance) {
-        if (tolerance <= 0) {
-            throw new IllegalArgumentException("Tolerance must be positive");
-        }
-        this.tolerance = tolerance;
-    }
-    
-    /**
-     * Returns the tolerance being used for numerical computations.
-     *
-     * @return The current tolerance value
-     */
-    public double getTolerance() {
-        return tolerance;
+        // Intentionally empty
     }
 
     /**
-     * Approximates the definite integral of a function using Riemann sum method.
+     * Computes the definite integral of a function using Riemann sum approximation.
      *
-     * @param function The function to integrate
-     * @param lowerBound Lower bound of integration
-     * @param upperBound Upper bound of integration
-     * @param numIntervals Number of intervals to divide [lowerBound, upperBound]
-     * @param type Type of Riemann sum (LEFT, RIGHT, MIDPOINT, TRAPEZOIDAL)
-     * @return Approximation of the definite integral
-     * @throws IllegalArgumentException if numIntervals is not positive or if lowerBound >= upperBound
+     * @param function      The function to integrate
+     * @param lowerBound    The lower bound of integration
+     * @param upperBound    The upper bound of integration
+     * @param intervals     The number of subintervals to use
+     * @param type          The type of Riemann sum to use
+     * @return              The approximate value of the definite integral
+     * @throws IllegalArgumentException if intervals is not positive or if bounds are invalid
      */
-    public double computeIntegral(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double upperBound,
-        int numIntervals,
-        RiemannType type
-    ) {
-        if (numIntervals <= 0) {
+    public static double integrate(DoubleFunction<Double> function, double lowerBound, double upperBound, int intervals, RiemannType type) {
+        // Validate inputs
+        if (intervals <= 0) {
             throw new IllegalArgumentException("Number of intervals must be positive");
         }
 
         if (lowerBound >= upperBound) {
-            throw new IllegalArgumentException("Upper bound must be greater than lower bound");
+            throw new IllegalArgumentException("Lower bound must be less than upper bound");
         }
 
-        double deltaX = (upperBound - lowerBound) / numIntervals;
+        // Calculate width of each subinterval
+        double width = (upperBound - lowerBound) / intervals;
+
+        // Sum over all intervals based on the specified Riemann sum type
         double sum = 0.0;
 
         switch (type) {
-            case LEFT:
-                sum = leftRiemannSum(function, lowerBound, deltaX, numIntervals);
-                break;
-            case RIGHT:
-                sum = rightRiemannSum(function, lowerBound, deltaX, numIntervals);
-                break;
-            case MIDPOINT:
-                sum = midpointRiemannSum(function, lowerBound, deltaX, numIntervals);
-                break;
-            case TRAPEZOIDAL:
-                sum = trapezoidalSum(function, lowerBound, deltaX, numIntervals);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid Riemann sum type");
+        case LEFT:
+            for (int i = 0; i < intervals; i++) {
+                double x = lowerBound + i * width;
+                Double y = function.apply(x);
+                if (y != null && Double.isFinite(y)) {
+                    sum += y;
+                }
+            }
+            break;
+
+        case RIGHT:
+            for (int i = 1; i <= intervals; i++) {
+                double x = lowerBound + i * width;
+                Double y = function.apply(x);
+                if (y != null && Double.isFinite(y)) {
+                    sum += y;
+                }
+            }
+            break;
+
+        case MIDPOINT:
+            for (int i = 0; i < intervals; i++) {
+                double x = lowerBound + (i + 0.5) * width;
+                Double y = function.apply(x);
+                if (y != null && Double.isFinite(y)) {
+                    sum += y;
+                }
+            }
+            break;
+
+        case TRAPEZOIDAL:
+            // Add the endpoints with weight 1/2
+            Double leftY = function.apply(lowerBound);
+            Double rightY = function.apply(upperBound);
+
+            if (leftY != null && Double.isFinite(leftY)) {
+                sum += leftY / 2;
+            }
+
+            if (rightY != null && Double.isFinite(rightY)) {
+                sum += rightY / 2;
+            }
+
+            // Add the interior points with weight 1
+            for (int i = 1; i < intervals; i++) {
+                double x = lowerBound + i * width;
+                Double y = function.apply(x);
+                if (y != null && Double.isFinite(y)) {
+                    sum += y;
+                }
+            }
+            break;
+
+        default:
+            throw new IllegalArgumentException("Unsupported Riemann sum type");
         }
 
-        return sum;
+        return sum * width;
     }
-    
+
     /**
-     * Static utility method for backward compatibility. Uses default tolerance.
+     * Instance-based method to compute definite integral with default tolerance.
      *
-     * @param function The function to integrate
-     * @param lowerBound Lower bound of integration
-     * @param upperBound Upper bound of integration
-     * @param numIntervals Number of intervals to divide [lowerBound, upperBound]
-     * @param type Type of Riemann sum (LEFT, RIGHT, MIDPOINT, TRAPEZOIDAL)
-     * @return Approximation of the definite integral
-     * @throws IllegalArgumentException if numIntervals is not positive or if lowerBound >= upperBound
+     * @param function      The function to integrate
+     * @param lowerBound    The lower bound of integration
+     * @param upperBound    The upper bound of integration
+     * @param intervals     The number of subintervals to use
+     * @param type          The type of Riemann sum to use
+     * @return              The approximate value of the definite integral
      */
-    public static double integrate(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double upperBound,
-        int numIntervals,
-        RiemannType type
-    ) {
-        return new RiemannIntegration().computeIntegral(function, lowerBound, upperBound, numIntervals, type);
+    public double computeIntegral(DoubleFunction<Double> function, double lowerBound, double upperBound, int intervals, RiemannType type) {
+        return integrate(function, lowerBound, upperBound, intervals, type);
     }
 
     /**
-     * Left Riemann sum: uses the left endpoint of each subinterval
+     * Calculates a dynamic tolerance based on the function and integration bounds.
+     *
+     * @param function      The function to integrate
+     * @param lowerBound    The lower bound of integration
+     * @param upperBound    The upper bound of integration
+     * @param type          The type of Riemann sum to use
+     * @return              A dynamically calculated tolerance value
      */
-    private static double leftRiemannSum(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double deltaX,
-        int numIntervals
-    ) {
-        double sum = 0.0;
-        for (int i = 0; i < numIntervals; i++) {
-            double x = lowerBound + i * deltaX;
-            try {
-                double value = function.apply(x);
-                if (!Double.isNaN(value) && !Double.isInfinite(value)) {
-                    sum += value;
-                }
-            } catch (ArithmeticException e) {
-                // Skip points where function evaluation fails
+    public double calculateDynamicTolerance(DoubleFunction<Double> function, double lowerBound, double upperBound, RiemannType type) {
+        // Sample the function at a few points to determine appropriate scale
+        int sampleCount = 10;
+        double stepSize = (upperBound - lowerBound) / sampleCount;
+        double maxAbsValue = 0.0;
+
+        for (int i = 0; i <= sampleCount; i++) {
+            double x = lowerBound + i * stepSize;
+            Double y = function.apply(x);
+            if (y != null && Double.isFinite(y)) {
+                maxAbsValue = Math.max(maxAbsValue, Math.abs(y));
             }
         }
-        return sum * deltaX;
+
+        // Return a tolerance that scales with the function's magnitude
+        double scaleFactor = 1e-8;
+        return Math.max(DEFAULT_TOLERANCE, maxAbsValue * scaleFactor);
     }
 
     /**
-     * Right Riemann sum: uses the right endpoint of each subinterval
+     * Estimates the number of intervals required to achieve a desired tolerance.
+     *
+     * @param function          The function to integrate
+     * @param lowerBound        The lower bound of integration
+     * @param upperBound        The upper bound of integration
+     * @param type              The type of Riemann sum to use
+     * @param desiredTolerance  The desired tolerance for the resul
+     * @return                  An estimate of the required number of intervals
+     * @throws IllegalArgumentException if the tolerance is not positive
      */
-    private static double rightRiemannSum(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double deltaX,
-        int numIntervals
-    ) {
-        double sum = 0.0;
-        for (int i = 1; i <= numIntervals; i++) {
-            double x = lowerBound + i * deltaX;
-            try {
-                double value = function.apply(x);
-                if (!Double.isNaN(value) && !Double.isInfinite(value)) {
-                    sum += value;
-                }
-            } catch (ArithmeticException e) {
-                // Skip points where function evaluation fails
+    public int estimateRequiredIntervals(DoubleFunction<Double> function, double lowerBound, double upperBound, RiemannType type, double desiredTolerance) {
+        if (desiredTolerance <= 0) {
+            throw new IllegalArgumentException("Tolerance must be positive");
+        }
+
+        // Start with a small number of intervals
+        int intervals = 10;
+        double initialResult = integrate(function, lowerBound, upperBound, intervals, type);
+
+        // Try doubling the intervals until the change is within tolerance
+        while (true) {
+            int nextIntervals = intervals * 2;
+            double nextResult = integrate(function, lowerBound, upperBound, nextIntervals, type);
+
+            double relativeChange = Math.abs((nextResult - initialResult) / (Math.abs(initialResult) + 1e-15));
+
+            if (relativeChange < desiredTolerance) {
+                return nextIntervals;
+            }
+
+            // Update for next iteration
+            intervals = nextIntervals;
+            initialResult = nextResult;
+
+            // Bailout to prevent infinite loops
+            if (intervals > 1_000_000) {
+                return intervals;
             }
         }
-        return sum * deltaX;
     }
 
     /**
-     * Midpoint Riemann sum: uses the midpoint of each subinterval
-     */
-    private static double midpointRiemannSum(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double deltaX,
-        int numIntervals
-    ) {
-        double sum = 0.0;
-        for (int i = 0; i < numIntervals; i++) {
-            double x = lowerBound + (i + 0.5) * deltaX;
-            try {
-                double value = function.apply(x);
-                if (!Double.isNaN(value) && !Double.isInfinite(value)) {
-                    sum += value;
-                }
-            } catch (ArithmeticException e) {
-                // Skip points where function evaluation fails
-            }
-        }
-        return sum * deltaX;
-    }
-
-    /**
-     * Trapezoidal sum: averages the function values at left and right endpoints
-     */
-    private static double trapezoidalSum(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double deltaX,
-        int numIntervals
-    ) {
-        double sum = 0.0;
-        
-        // First point
-        try {
-            double firstValue = function.apply(lowerBound);
-            if (!Double.isNaN(firstValue) && !Double.isInfinite(firstValue)) {
-                sum += firstValue / 2.0;
-            }
-        } catch (ArithmeticException e) {
-            // Skip point if function evaluation fails
-        }
-        
-        // Middle points
-        for (int i = 1; i < numIntervals; i++) {
-            double x = lowerBound + i * deltaX;
-            try {
-                double value = function.apply(x);
-                if (!Double.isNaN(value) && !Double.isInfinite(value)) {
-                    sum += value;
-                }
-            } catch (ArithmeticException e) {
-                // Skip points where function evaluation fails
-            }
-        }
-        
-        // Last point
-        try {
-            double lastValue = function.apply(lowerBound + numIntervals * deltaX);
-            if (!Double.isNaN(lastValue) && !Double.isInfinite(lastValue)) {
-                sum += lastValue / 2.0;
-            }
-        } catch (ArithmeticException e) {
-            // Skip point if function evaluation fails
-        }
-        
-        return sum * deltaX;
-    }
-    
-    /**
-     * Determines if two double values are equal within the tolerance.
-     * Uses both absolute and relative difference to compare values.
-     * 
-     * @param expected The expected value
-     * @param actual The actual value
-     * @return true if the values are considered equal within tolerance
+     * Checks if two double values are equal within the default tolerance.
+     *
+     * @param expected  The expected value
+     * @param actual    The actual value
+     * @return          True if the values are equal within tolerance
      */
     public boolean areEqual(double expected, double actual) {
-        if (expected == actual) {
-            return true; // Handle exact match and special cases like infinity
-        }
-        
-        double absoluteDifference = Math.abs(expected - actual);
-        
-        // For very small values, use absolute difference
-        if (Math.abs(expected) < tolerance || Math.abs(actual) < tolerance) {
-            return absoluteDifference < tolerance;
-        } 
-        
-        // For larger values, use relative difference
-        double relativeDifference = absoluteDifference / Math.max(Math.abs(expected), Math.abs(actual));
-        return absoluteDifference < tolerance || relativeDifference < tolerance;
+        return areEqual(expected, actual, DEFAULT_TOLERANCE);
     }
-    
+
     /**
-     * Determines if two double values are equal within a specified tolerance.
-     * Uses both absolute and relative difference to compare values.
-     * 
-     * @param expected The expected value
-     * @param actual The actual value
-     * @param customTolerance The tolerance to use for this specific comparison
-     * @return true if the values are considered equal within the custom tolerance
+     * Checks if two double values are equal within a custom tolerance.
+     *
+     * @param expected         The expected value
+     * @param actual           The actual value
+     * @param customTolerance  The tolerance to use
+     * @return                 True if the values are equal within tolerance
      */
     public boolean areEqual(double expected, double actual, double customTolerance) {
+        if (Double.isNaN(expected) && Double.isNaN(actual)) {
+            return true;
+        }
+
+        if (Double.isInfinite(expected) || Double.isNaN(expected) || Double.isInfinite(actual) || Double.isNaN(actual)) {
+            return expected == actual;
+        }
+
         if (expected == actual) {
-            return true; // Handle exact match and special cases like infinity
+            return true;
         }
-        
-        double absoluteDifference = Math.abs(expected - actual);
-        
-        // For very small values, use absolute difference
-        if (Math.abs(expected) < customTolerance || Math.abs(actual) < customTolerance) {
-            return absoluteDifference < customTolerance;
-        }
-        
-        // For larger values, use relative difference
-        double relativeDifference = absoluteDifference / Math.max(Math.abs(expected), Math.abs(actual));
-        return absoluteDifference < customTolerance || relativeDifference < customTolerance;
-    }
-    
-    /**
-     * Calculates the approximate number of intervals needed to achieve a specified tolerance.
-     * This is a heuristic estimate that assumes the error decreases quadratically with the number of intervals.
-     * 
-     * @param function The function to integrate
-     * @param lowerBound Lower bound of integration
-     * @param upperBound Upper bound of integration
-     * @param type Type of Riemann sum (LEFT, RIGHT, MIDPOINT, TRAPEZOIDAL)
-     * @param desiredTolerance The desired tolerance for the result
-     * @return Estimated number of intervals needed
-     */
-    public int estimateRequiredIntervals(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double upperBound,
-        RiemannType type,
-        double desiredTolerance
-    ) {
-        // Start with a baseline of intervals
-        int baselineIntervals = 100;  // Increased for better baseline accuracy
-        double baselineResult = computeIntegral(function, lowerBound, upperBound, baselineIntervals, type);
-        
-        // Calculate with double the intervals
-        int doubledIntervals = baselineIntervals * 2;
-        double refinedResult = computeIntegral(function, lowerBound, upperBound, doubledIntervals, type);
-        
-        // Estimate error and calculate required intervals
-        double estimatedError = Math.abs(refinedResult - baselineResult);
-        
-        // If error is already below tolerance, return the baseline
-        if (estimatedError < desiredTolerance) {
-            return baselineIntervals;
-        }
-        
-        // Different Riemann types have different convergence rates
-        double convergenceFactor;
-        switch (type) {
-            case MIDPOINT:
-            case TRAPEZOIDAL:
-                // These methods have second-order convergence (error proportional to 1/n²)
-                convergenceFactor = 2.0;
-                break;
-            case LEFT:
-            case RIGHT:
-                // These methods have first-order convergence (error proportional to 1/n)
-                convergenceFactor = 1.0;
-                break;
-            default:
-                convergenceFactor = 1.0;
-        }
-        
-        // Calculate intervals needed based on error reduction with proper convergence factor
-        double factorNeeded;
-        if (convergenceFactor == 2.0) {
-            // For second-order methods (error ~ 1/n²)
-            factorNeeded = Math.ceil(Math.sqrt(estimatedError / desiredTolerance));
-        } else {
-            // For first-order methods (error ~ 1/n)
-            factorNeeded = Math.ceil(estimatedError / desiredTolerance);
-        }
-        
-        // Apply safety factor to ensure we meet tolerance
-        return (int) Math.max(baselineIntervals * factorNeeded, 10000);
-    }
 
-    /**
-     * Calculate dynamic tolerance based on estimated function degree and integration bounds
-     * @param function The function to integrate
-     * @param lowerBound The lower integration bound
-     * @param upperBound The upper integration bound
-     * @param type The Riemann integration type
-     * @return A dynamically calculated tolerance
-     */
-    public double calculateDynamicTolerance(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double upperBound,
-        RiemannType type
-    ) {
-        // Estimate polynomial degree using finite differences
-        int estimatedDegree = estimateFunctionDegree(function, lowerBound, upperBound);
-        
-        // Base tolerance that gets adjusted
-        double baseTolerance = 1e-6;
-        
-        // Scale based on integration range
-        double rangeScale = Math.log10(Math.abs(upperBound - lowerBound) + 1) + 1;
-        
-        // Scale based on degree (higher degree functions need more generous tolerance)
-        double degreeScale = Math.pow(10, Math.min(estimatedDegree - 1, 10) / 3.0);
-        
-        // Scale based on method (MIDPOINT and TRAPEZOIDAL are more accurate)
-        double methodScale = 1.0;
-        if (type == RiemannType.LEFT || type == RiemannType.RIGHT) {
-            methodScale = 5.0; // Less accurate methods need more generous tolerance
+        // For very small values, use absolute error
+        if (Math.abs(expected) < customTolerance) {
+            return Math.abs(expected - actual) < customTolerance;
         }
-        
-        return baseTolerance * rangeScale * degreeScale * methodScale;
-    }
 
-    /**
-     * Estimate the polynomial degree of a function using finite differences
-     */
-    private int estimateFunctionDegree(
-        DoubleFunction<Double> function,
-        double lowerBound,
-        double upperBound
-    ) {
-        // Sample points
-        final int samples = 11;
-        double[] xValues = new double[samples];
-        double[] yValues = new double[samples];
-        
-        // Generate evenly spaced sample points
-        double step = (upperBound - lowerBound) / (samples - 1);
-        for (int i = 0; i < samples; i++) {
-            xValues[i] = lowerBound + i * step;
-            try {
-                yValues[i] = function.apply(xValues[i]);
-            } catch (ArithmeticException e) {
-                // If function evaluation fails, try a slightly different point
-                xValues[i] = xValues[i] + step * 0.01;
-                yValues[i] = function.apply(xValues[i]);
-            }
-            
-            // Handle NaN or infinite values
-            if (Double.isNaN(yValues[i]) || Double.isInfinite(yValues[i])) {
-                // Use a fallback value
-                yValues[i] = 0.0;
-            }
-        }
-        
-        // Compute finite differences until they become approximately constant
-        return analyzeFiniteDifferences(yValues);
+        // Otherwise use relative error
+        return Math.abs((expected - actual) / expected) < customTolerance;
     }
-
-    /**
-     * Analyzes finite differences to estimate the polynomial degree
-     */
-    private int analyzeFiniteDifferences(double[] yValues) {
-        int degree = 0;
-        double tolerance = 1e-6;
-        
-        // Create a working copy of the values
-        double[] diffs = yValues.clone();
-        int n = diffs.length;
-        
-        // Compute successive differences until they become approximately constant or zero
-        boolean isConstant = false;
-        while (!isConstant && degree < n - 1) {
-            // Compute the next level of differences
-            for (int i = 0; i < n - degree - 1; i++) {
-                diffs[i] = diffs[i + 1] - diffs[i];
-            }
-            
-            // Check if differences are approximately constant or zero
-            isConstant = true;
-            double sum = 0.0;
-            double sumSquares = 0.0;
-            
-            for (int i = 0; i < n - degree - 1; i++) {
-                sum += diffs[i];
-                sumSquares += diffs[i] * diffs[i];
-            }
-            
-            int count = n - degree - 1;
-            if (count > 1) {
-                double mean = sum / count;
-                double variance = (sumSquares - (sum * sum) / count) / (count - 1);
-                
-                // If the variance is very small relative to the mean, consider it constant
-                if (Math.sqrt(variance) > tolerance * (Math.abs(mean) + tolerance)) {
-                    isConstant = false;
-                }
-            }
-            
-            degree++;
-        }
-        
-        return degree;
-    }
-
 }
