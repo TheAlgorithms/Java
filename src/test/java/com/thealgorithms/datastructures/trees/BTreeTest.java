@@ -34,4 +34,3 @@ public class BTreeTest {
         assertEquals(Arrays.asList(5, 7, 10, 12, 17, 20, 30), traversal);
     }
 }
-
