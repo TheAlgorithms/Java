@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class BTree {
     static class BTreeNode {
         int[] keys;
-        int t;  // Minimum degree (defines range for number of keys)
+        int t; // Minimum degree (defines range for number of keys)
         BTreeNode[] children;
-        int n;  // Current number of keys
+        int n; // Current number of keys
         boolean leaf;
 
         BTreeNode(int t, boolean leaf) {
