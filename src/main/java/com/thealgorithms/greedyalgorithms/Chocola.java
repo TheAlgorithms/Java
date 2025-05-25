@@ -6,6 +6,7 @@ import java.util.Collections;
 /**
  * Greedy approach to minimize the cost of cutting a chocolate bar into 1x1 pieces.
  */
+
 public class Chocola {
 
     /**
@@ -60,3 +61,4 @@ public class Chocola {
         System.out.println("Cost = " + totalCost);
     }
 }
+
