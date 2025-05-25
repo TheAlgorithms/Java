@@ -35,8 +35,12 @@ public class BTree {
             while (i < n && key > keys[i]) {
                 i++;
             }
-            if (i < n && keys[i] == key) {return this;}
-            if (leaf) {return null;}
+            if (i < n && keys[i] == key) {
+                return this;
+            }
+            if (leaf) {
+                return null;
+            }
             return children[i].search(key);
         }
 
@@ -114,7 +118,9 @@ public class BTree {
 
         private int findKey(int key) {
             int idx = 0;
-            while (idx < n && keys[idx] < key) {++idx;}
+            while (idx < n && keys[idx] < key) {
+                ++idx;
+            }
             return idx;
         }
 
@@ -261,7 +267,9 @@ public class BTree {
     }
 
     public void traverse(ArrayList<Integer> result) {
-        if (root != null) {root.traverse(result);}
+        if (root != null) {
+            root.traverse(result);
+        }
     }
 
     public boolean search(int key) {
@@ -279,7 +287,9 @@ public class BTree {
                 s.children[0] = root;
                 s.splitChild(0, root);
                 int i = 0;
-                if (s.keys[0] < key) {i++;}
+                if (s.keys[0] < key) {
+                    i++;
+                }
                 s.children[i].insertNonFull(key);
                 root = s;
             } else {
@@ -289,7 +299,9 @@ public class BTree {
     }
 
     public void delete(int key) {
-        if (root == null) {return;}
+        if (root == null) {
+            return;
+        }
         root.remove(key);
         if (root.n == 0) {
             root = root.leaf ? null : root.children[0];
