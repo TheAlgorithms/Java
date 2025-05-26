@@ -13,68 +13,11 @@ import java.util.ArrayList;
  */
 
 public class BTree {
-    private BTreeNode root;
-    private int t;
-
-    public BTree(int t) {
-        this.root = null;
-        this.t = t;
-    }
-
-    public void traverse(ArrayList<Integer> result) {
-        if (root != null) {
-            root.traverse(result);
-        }
-    }
-
-    public BTreeNode search(int key) {
-        return (root == null) ? null : root.search(key);
-    }
-
-    public void insert(int key) {
-        // Prevent duplicate insertions
-        if (search(key) != null) {
-            return;
-        }
-
-        if (root == null) {
-            root = new BTreeNode(t, true);
-            root.keys[0] = key;
-            root.n = 1;
-        } else {
-            if (root.n == 2 * t - 1) {
-                BTreeNode s = new BTreeNode(t, false);
-                s.children[0] = root;
-                s.splitChild(0, root);
-
-                int i = 0;
-                if (s.keys[0] < key) {
-                    i++;
-                }
-                s.children[i].insertNonFull(key);
-                root = s;
-            } else {
-                root.insertNonFull(key);
-            }
-        }
-    }
-
-    public void remove(int key) {
-        if (root == null) {
-            return;
-        }
-
-        root.remove(key);
-        if (root.n == 0) {
-            root = (root.leaf) ? null : root.children[0];
-        }
-    }
-
     static class BTreeNode {
         int[] keys;
-        int t;
+        int t; // Minimum degree (defines range for number of keys)
         BTreeNode[] children;
-        int n;
+        int n; // Current number of keys
         boolean leaf;
 
         BTreeNode(int t, boolean leaf) {
@@ -105,7 +48,10 @@ public class BTree {
             if (i < n && keys[i] == key) {
                 return this;
             }
-            return (leaf) ? null : children[i].search(key);
+            if (leaf) {
+                return null;
+            }
+            return children[i].search(key);
         }
 
         void insertNonFull(int key) {
@@ -134,6 +80,7 @@ public class BTree {
         void splitChild(int i, BTreeNode y) {
             BTreeNode z = new BTreeNode(y.t, y.leaf);
             z.n = t - 1;
+
             System.arraycopy(y.keys, t, z.keys, 0, t - 1);
             if (!y.leaf) {
                 System.arraycopy(y.children, t, z.children, 0, t);
@@ -162,9 +109,11 @@ public class BTree {
                     removeFromNonLeaf(idx);
                 }
             } else {
-                if (leaf) return;
+                if (leaf) {
+                    return; // Key not found
+                }
 
-                boolean flag = (idx == n);
+                boolean flag = idx == n;
                 if (children[idx].n < t) {
                     fill(idx);
                 }
@@ -259,6 +208,7 @@ public class BTree {
             }
 
             keys[idx - 1] = sibling.keys[sibling.n - 1];
+
             child.n += 1;
             sibling.n -= 1;
         }
@@ -268,6 +218,7 @@ public class BTree {
             BTreeNode sibling = children[idx + 1];
 
             child.keys[child.n] = keys[idx];
+
             if (!child.leaf) {
                 child.children[child.n + 1] = sibling.children[0];
             }
@@ -314,6 +265,59 @@ public class BTree {
 
             child.n += sibling.n + 1;
             n--;
+        }
+    }
+
+    private BTreeNode root;
+    private final int t;
+
+    public BTree(int t) {
+        this.root = null;
+        this.t = t;
+    }
+
+    public void traverse(ArrayList<Integer> result) {
+        if (root != null) {
+            root.traverse(result);
+        }
+    }
+
+    public boolean search(int key) {
+        return root != null && root.search(key) != null;
+    }
+
+    public void insert(int key) {
+        if (search(key)) {
+            return;
+        }
+        if (root == null) {
+            root = new BTreeNode(t, true);
+            root.keys[0] = key;
+            root.n = 1;
+        } else {
+            if (root.n == 2 * t - 1) {
+                BTreeNode s = new BTreeNode(t, false);
+                s.children[0] = root;
+                s.splitChild(0, root);
+                int i = 0;
+                if (s.keys[0] < key) {
+                    i++;
+                }
+                s.children[i].insertNonFull(key);
+                root = s;
+            } else {
+                root.insertNonFull(key);
+            }
+        }
+    }
+
+    public void delete(int key) {
+        if (root == null) {
+            return;
+        }
+        root.remove(key);
+        if (root.n == 0) {
+            root = root.leaf ? null : root.children[0];
         }
     }
 }
