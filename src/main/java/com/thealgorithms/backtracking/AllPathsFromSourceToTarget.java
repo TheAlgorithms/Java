@@ -30,8 +30,9 @@ public class AllPathsFromSourceToTarget {
     }
 
     // utility method to initialise adjacency list
+    @SuppressWarnings("unchecked")
     private void initAdjList() {
-        adjList = new ArrayList[v];
+        adjList = (ArrayList<Integer>[])new ArrayList[v];
 
         for (int i = 0; i < v; i++) {
             adjList[i] = new ArrayList<>();
