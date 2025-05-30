@@ -1,17 +1,9 @@
 package com.thealgorithms.randomized;
-import java.util.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-/**
-* This class implements the randomized Closest Pair Algorithm; given some number of points
- * in a plane find the pair with minimum euclidean distance from each other. This solution
- * uses the divide and conquer approach.
- * @author Bri Harris
-*/
-
 import java.util.*;
 
-class Point implements Comparable<Point> {
+final class Point implements Comparable<Point> {
     double x;
     double y;
 
@@ -30,20 +22,29 @@ class Point implements Comparable<Point> {
     }
 }
 
-public class ClosestPair {
+public final class ClosestPair {
+
     public static double closest(List<Point> points) {
+        if (points == null || points.isEmpty()) {
+            throw new IllegalArgumentException("There are no pairs to compare.");
+        }
+
+        if (points.size() == 1) {
+            throw new IllegalArgumentException("There is only one pair.");
+        }
+
         Collections.sort(points);
         double result = closestRecursiveHelper(points, 0, points.size() - 1);
 
-        //Return distance of closest pair rounded to 2 decimal places
+        // Return distance of closest pair rounded to 2 decimal places
         return new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     private static double closestRecursiveHelper(List<Point> points, int left, int right) {
-        //Base Case occurs with 3 or fewer points
+        // Base Case occurs with 3 or fewer points
         if (right - left <= 2) return baseCase(points, left, right);
 
-        //Divide and conquer
+        // Divide and conquer
         int mid = (left + right) / 2;
         double midX = points.get(mid).x;
 
@@ -67,7 +68,7 @@ public class ClosestPair {
     }
 
     private static double checkBoundary(List<Point> points, int left, int right, double midX, double minDist) {
-        //Consider a boundary by the dividing line
+        // Consider a boundary by the dividing line
         List<Point> boundary = new ArrayList<>();
         for (int i = left; i <= right; i++) {
             if (Math.abs(points.get(i).x - midX) < minDist) {
@@ -75,7 +76,7 @@ public class ClosestPair {
             }
         }
 
-        //sort by y coordinate within the boundary and check for closer points
+        // sort by y coordinate within the boundary and check for closer points
         boundary.sort(Comparator.comparingDouble(p -> p.y));
         for (int i = 0; i < boundary.size(); i++) {
             for (int j = i + 1; j < boundary.size() && (boundary.get(j).y - boundary.get(i).y) < minDist; j++) {
