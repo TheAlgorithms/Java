@@ -31,6 +31,10 @@ final class Point implements Comparable<Point> {
 }
 
 public final class ClosestPair {
+    // Private constructor to prevent instantiation
+    private ClosestPair() {
+        throw new AssertionError("Utility class should not be instantiated.");
+    }
 
     public static double closest(List<Point> points) {
         if (points == null || points.isEmpty()) {
