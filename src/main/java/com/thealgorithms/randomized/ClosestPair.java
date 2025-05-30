@@ -49,7 +49,7 @@ public final class ClosestPair {
         double result = closestRecursiveHelper(points, 0, points.size() - 1);
 
         // Return distance of closest pair rounded to 2 decimal places
-        return new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        return new BigDecimal(String.valueOf(result)).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     private static double closestRecursiveHelper(List<Point> points, int left, int right) {
