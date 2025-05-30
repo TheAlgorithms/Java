@@ -19,6 +19,8 @@
         "src/test/java/com/thealgorithms/datastructures/trees/LazySegmentTreeTest.java",
         "src/test/java/com/thealgorithms/searches/QuickSelectTest.java",
         "src/test/java/com/thealgorithms/stacks/PostfixToInfixTest.java",
-        "src/test/java/com/thealgorithms/strings/HorspoolSearchTest.java"
+        "src/test/java/com/thealgorithms/strings/HorspoolSearchTest.java",
+        "src/main/java/com/thealgorithms/randomized/ClosestPair.java",
+        "src/test/java/com/thealgorithms/randomized/ClosestPairTest.java"
     ]
 }
