@@ -23,7 +23,7 @@ jobs:
       - name: Set up OCaml
         uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-compiler: 5
+          ocaml-compiler: 4.14.0
 
       - name: Pin pyml to required version
         run: |
