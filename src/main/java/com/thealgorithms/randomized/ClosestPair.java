@@ -3,6 +3,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
+// As required by Repository, new algorithms have URL in comments with explanation
+// https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm
+// Given 2 or more points on a 2-dimensional plane, find the closest 2 points in Euclidean distance
+// This class uses the divide and conquer technique with recursion
+
 final class Point implements Comparable<Point> {
     double x;
     double y;
