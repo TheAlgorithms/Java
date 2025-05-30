@@ -1,7 +1,10 @@
 package com.thealgorithms.randomized;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 // As required by Repository, new algorithms have URL in comments with explanation
 // https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm
@@ -47,7 +50,9 @@ public final class ClosestPair {
 
     private static double closestRecursiveHelper(List<Point> points, int left, int right) {
         // Base Case occurs with 3 or fewer points
-        if (right - left <= 2) return baseCase(points, left, right);
+        if (right - left <= 2) {
+            return baseCase(points, left, right);
+        }
 
         // Divide and conquer
         int mid = (left + right) / 2;
