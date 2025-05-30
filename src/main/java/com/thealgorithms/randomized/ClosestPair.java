@@ -12,7 +12,8 @@ import java.math.RoundingMode;
 import java.util.*;
 
 class Point implements Comparable<Point> {
-    double x, y;
+    double x;
+    double y;
 
     // Constructor to initialize a point with x and y coordinates
     Point(double x, double y) {
@@ -20,12 +21,10 @@ class Point implements Comparable<Point> {
         this.y = y;
     }
 
-    // Compare points based on x-coordinates (for sorting)
     public int compareTo(Point other) {
         return Double.compare(this.x, other.x);
     }
 
-    // Compute Euclidean distance between two points
     static double distance(Point p1, Point p2) {
         return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
     }
@@ -43,7 +42,6 @@ public class ClosestPair {
     private static double closestRecursiveHelper(List<Point> points, int left, int right) {
         //Base Case occurs with 3 or fewer points
         if (right - left <= 2) return baseCase(points, left, right);
-
 
         //Divide and conquer
         int mid = (left + right) / 2;
@@ -72,7 +70,9 @@ public class ClosestPair {
         //Consider a boundary by the dividing line
         List<Point> boundary = new ArrayList<>();
         for (int i = left; i <= right; i++) {
-            if (Math.abs(points.get(i).x - midX) < minDist) boundary.add(points.get(i));
+            if (Math.abs(points.get(i).x - midX) < minDist) {
+                boundary.add(points.get(i));
+            }
         }
 
         //sort by y coordinate within the boundary and check for closer points
