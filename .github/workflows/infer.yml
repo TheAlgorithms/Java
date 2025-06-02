@@ -23,11 +23,7 @@ jobs:
       - name: Set up OCaml
         uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-compiler: 4.14.0
-
-      - name: Pin pyml to required version
-        run: |
-          opam pin add pyml 20220905 --yes
+          ocaml-compiler: 5
 
       - name: Get current year/weak
         run: echo "year_week=$(date +'%Y_%U')" >> $GITHUB_ENV
