@@ -26,6 +26,9 @@ class Point {
 public class ClosestPair {
     private static final double INFINITY = Double.MAX_VALUE;
 
+    private ClosestPair() {
+    }
+
     public static double euclideanDistance(Point p1, Point p2) {
         return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
     }
