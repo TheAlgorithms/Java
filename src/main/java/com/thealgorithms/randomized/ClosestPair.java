@@ -78,9 +78,7 @@ public final class ClosestPair {
 
         // Confirm neither closestA nor closestB are null
         if (closestA == null || closestB == null) {
-            closestA = points.get(0);
-            closestB = points.get(1);
-            delta = euclideanDistance(closestA, closestB);
+            return new Object[] {points.get(0), points.get(1), euclideanDistance(points.get(0), points.get(1))};
         }
 
         // Create a grid, We will use "Probabilistic Filtering" by only checking
