@@ -13,6 +13,7 @@ public final class IsomorphicTest {
     @MethodSource("isomorphicProvider")
     public void testCheckStrings(String str1, String str2, Boolean expected) {
         assertEquals(expected, Isomorphic.checkStrings(str1, str2));
+        assertEquals(expected, Isomorphic.checkStrings(str2, str1));
     }
 
     private static Stream<Arguments> isomorphicProvider() {
