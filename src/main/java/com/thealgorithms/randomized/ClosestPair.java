@@ -9,9 +9,10 @@ import java.util.Random;
 import java.util.Set;
 
 class Point {
-    double x, y;
+    double x;
+    double y;
 
-    public Point(double x, double y) {
+    Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
