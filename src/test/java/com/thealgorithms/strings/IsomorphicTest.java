@@ -11,11 +11,11 @@ public final class IsomorphicTest {
 
     @ParameterizedTest
     @MethodSource("isomorphicProvider")
-    public void testCheckStrings(String str1, String str2, boolean expected) {
+    public void testCheckStrings(String str1, String str2, Boolean expected) {
         assertEquals(expected, Isomorphic.checkStrings(str1, str2));
     }
 
     private static Stream<Arguments> isomorphicProvider() {
-        return Stream.of(Arguments.of("abbbbaac", "kffffkkd", true), Arguments.of("xyxyxy", "bnbnbn", true), Arguments.of("ghjknnmm", "wertpopo", false), Arguments.of("aaammmnnn", "ggghhhbbj", false));
+        return Stream.of(Arguments.of("abbbbaac", "kffffkkd", Boolean.TRUE), Arguments.of("xyxyxy", "bnbnbn", Boolean.TRUE), Arguments.of("ghjknnmm", "wertpopo", Boolean.FALSE), Arguments.of("aaammmnnn", "ggghhhbbj", Boolean.FALSE));
     }
 }
