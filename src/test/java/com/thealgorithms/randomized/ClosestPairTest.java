@@ -2,12 +2,11 @@ package com.thealgorithms.randomized;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.thealgorithms.datastructures.crdt.GCounterTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import com.thealgorithms.datastructures.crdt.GCounterTest;
 import org.junit.jupiter.api.Test;
 
 class ClosestPairTest {
