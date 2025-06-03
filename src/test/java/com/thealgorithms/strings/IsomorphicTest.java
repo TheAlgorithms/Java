@@ -16,6 +16,7 @@ public final class IsomorphicTest {
     }
 
     private static Stream<Arguments> isomorphicProvider() {
-        return Stream.of(Arguments.of("abbbbaac", "kffffkkd", Boolean.TRUE), Arguments.of("xyxyxy", "bnbnbn", Boolean.TRUE), Arguments.of("ghjknnmm", "wertpopo", Boolean.FALSE), Arguments.of("aaammmnnn", "ggghhhbbj", Boolean.FALSE));
+        return Stream.of(Arguments.of("", "", Boolean.TRUE), Arguments.of("", "a", Boolean.FALSE), Arguments.of("aaa", "aa", Boolean.FALSE), Arguments.of("abbbbaac", "kffffkkd", Boolean.TRUE), Arguments.of("xyxyxy", "bnbnbn", Boolean.TRUE), Arguments.of("ghjknnmm", "wertpopo", Boolean.FALSE),
+            Arguments.of("aaammmnnn", "ggghhhbbj", Boolean.FALSE));
     }
 }
