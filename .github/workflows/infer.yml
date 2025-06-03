@@ -41,6 +41,7 @@ jobs:
           cd ..
           git clone https://github.com/facebook/infer.git
           cd infer
+          git checkout 01aaa268f9d38723ba69c139e10f9e2a04b40b1c
           ./build-infer.sh java
           cp -r infer ../Java
 
