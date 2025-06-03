@@ -23,7 +23,7 @@ class Point {
     }
 }
 
-public class ClosestPair {
+public final class ClosestPair {
     private static final double INFINITY = Double.MAX_VALUE;
 
     private ClosestPair() {
