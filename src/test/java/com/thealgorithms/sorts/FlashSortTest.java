@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
@@ -47,7 +46,7 @@ public class FlashSortTest extends SortingAlgorithmTest {
     }
 
     @TestFactory
-    public Collection<DynamicTest> dynamicTestsForSorting() {
+    public List<DynamicTest> dynamicTestsForSorting() {
         List<DynamicTest> dynamicTests = new ArrayList<>();
         double[] ratios = {0.1, 0.2, 0.5, 0.9};
 
@@ -60,7 +59,7 @@ public class FlashSortTest extends SortingAlgorithmTest {
         return dynamicTests;
     }
 
-    private Collection<DynamicTest> createDynamicTestsForRatio(double ratio) {
+    private List<DynamicTest> createDynamicTestsForRatio(double ratio) {
         List<DynamicTest> dynamicTests = new ArrayList<>();
         for (TestMethod testMethod : getTestMethodsFromSuperClass()) {
             dynamicTests.add(DynamicTest.dynamicTest("Ratio: " + ratio + " - Test: " + testMethod.name(), testMethod.executable()));
