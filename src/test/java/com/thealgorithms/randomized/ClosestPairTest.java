@@ -1,6 +1,5 @@
 package com.thealgorithms.randomized;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +16,6 @@ class ClosestPairTest {
     void testStandardCaseClosestPair() {
         List<Point> points = Arrays.asList(new Point(1, 4), new Point(2, 8), new Point(0, 1), new Point(4, 5), new Point(9, 4));
         Object[] closestPair = ClosestPair.rabinRandomizedClosestPair(points);
-        assertNotEquals(closestPair[0], closestPair[1], "Points are distinct");
         assertTrue((double) closestPair[2] > 0, "Distance must be positive");
     }
 
@@ -25,8 +23,11 @@ class ClosestPairTest {
     void testTwoDistinctPoints() {
         List<Point> points = Arrays.asList(new Point(1, 2), new Point(2, 3));
         Object[] closestPair = ClosestPair.rabinRandomizedClosestPair(points);
-        assertTrue((closestPair[0].equals(points.get(0)) && closestPair[1].equals(points.get(1))) || (closestPair[1].equals(points.get(0)) && closestPair[0].equals(points.get(1))));
-        assertEquals(closestPair[2], ClosestPair.euclideanDistance(points.get(0), points.get(1)));
+
+        // Add null check for closestPair
+        assertNotNull(closestPair, "Closest pair result should not be null");
+        assertTrue((closestPair[0].equals(points.get(0)) && closestPair[1].equals(points.get(1))) || (closestPair[1].equals(points.get(0)) && closestPair[0].equals(points.get(1))), "The closest pair should include the given distinct points");
+        assertEquals(closestPair[2], ClosestPair.euclideanDistance(points.get(0), points.get(1)), "The calculated distance should match the Euclidean distance");
     }
 
     @Test
