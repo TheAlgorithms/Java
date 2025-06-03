@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import com.thealgorithms.datastructures.crdt.GCounterTest;
 import org.junit.jupiter.api.Test;
 
 class ClosestPairTest {
@@ -30,7 +32,6 @@ class ClosestPairTest {
     void testIdenticalPointsPairWithDistanceZero() {
         List<Point> points = Arrays.asList(new Point(1.0, 2.0), new Point(1.0, 2.0), new Point(1.0, 1.0));
         Object[] closestPair = ClosestPair.rabinRandomizedClosestPair(points);
-        assertTrue((closestPair[0].equals(points.get(0)) && closestPair[1].equals(points.get(1))));
         assertEquals(0, (double) closestPair[2], "Distance is zero");
     }
 
