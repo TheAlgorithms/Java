@@ -1,102 +1,106 @@
 package com.thealgorithms.randomized;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
-// As required by Repository, new algorithms have URL in comments with explanation
-// https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm
-// Given 2 or more points on a 2-dimensional plane, find the closest 2 points in Euclidean distance
-// This class uses the divide and conquer technique with recursion
+class Point {
+    double x, y;
 
-final class Point implements Comparable<Point> {
-    double x;
-    double y;
-
-    // Constructor to initialize a point with x and y coordinates
-    Point(double x, double y) {
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int compareTo(Point other) {
-        return Double.compare(this.x, other.x);
-    }
-
-    static double distance(Point p1, Point p2) {
-        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 }
 
-public final class ClosestPair {
-    // Private constructor to prevent instantiation
-    private ClosestPair() {
-        throw new AssertionError("Utility class should not be instantiated.");
+public class ClosestPair {
+    private static final double INFINITY = Double.MAX_VALUE;
+
+    public static double euclideanDistance(Point p1, Point p2) {
+        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
     }
 
-    public static double closest(List<Point> points) {
-        if (points == null || points.isEmpty()) {
-            throw new IllegalArgumentException("There are no pairs to compare.");
+    /**
+     * Algorithm Proof https://www.cs.toronto.edu/~anikolov/CSC473W20/kt-rabin.pdf
+     * Additional information: https://en.wikipedia.org/wiki/Closest_pair_of_points_problem
+     * This class uses Rabin's randomized approach to find the closest pair of points.
+     * Rabin's approach randomly selects a sample of points to estimate an initial closest distance
+     * (delta), then uses a grid for "probabilistic refinement". Finally, it updates the closest pair
+     *  with the closest distance.
+     */
+
+    public static Object[] rabinRandomizedClosestPair(List<Point> points) {
+        // Error handling, must have at least 2 points
+        if (points == null || points.size() < 2) {
+            return new Object[] {null, null, INFINITY};
         }
 
-        if (points.size() == 1) {
-            throw new IllegalArgumentException("There is only one pair.");
+        Collections.shuffle(points, new Random()); // shuffle for required randomness
+
+        double delta = INFINITY; // initialize distance
+        Point closestA = null;
+        Point closestB = null;
+
+        // without exceeding number of points, work with some sample
+        int sampleSize = Math.min(7, points.size());
+
+        Random random = new Random(); // select randomly
+        Set<Point> sampleSet = new HashSet<>(); // ensure unique pairs
+        while (sampleSet.size() < sampleSize) {
+            sampleSet.add(points.get(random.nextInt(points.size())));
         }
+        List<Point> sample = new ArrayList<>(sampleSet);
 
-        Collections.sort(points);
-        double result = closestRecursiveHelper(points, 0, points.size() - 1);
-
-        // Return distance of closest pair rounded to 2 decimal places
-        return new BigDecimal(String.valueOf(result)).setScale(2, RoundingMode.HALF_UP).doubleValue();
-    }
-
-    private static double closestRecursiveHelper(List<Point> points, int left, int right) {
-        // Base Case occurs with 3 or fewer points
-        if (right - left <= 2) {
-            return baseCase(points, left, right);
-        }
-
-        // Divide and conquer
-        int mid = (left + right) / 2;
-        double midX = points.get(mid).x;
-
-        double leftDist = closestRecursiveHelper(points, left, mid);
-        double rightDist = closestRecursiveHelper(points, mid + 1, right);
-
-        double minDist = Math.min(leftDist, rightDist);
-
-        return checkBoundary(points, left, right, midX, minDist);
-    }
-
-    private static double baseCase(List<Point> points, int left, int right) {
-        // Sub-problems fitting the base case can use brute force
-        double minDist = Double.MAX_VALUE;
-        for (int i = left; i <= right; i++) {
-            for (int j = i + 1; j <= right; j++) {
-                minDist = Math.min(minDist, Point.distance(points.get(i), points.get(j)));
-            }
-        }
-        return minDist;
-    }
-
-    private static double checkBoundary(List<Point> points, int left, int right, double midX, double minDist) {
-        // Consider a boundary by the dividing line
-        List<Point> boundary = new ArrayList<>();
-        for (int i = left; i <= right; i++) {
-            if (Math.abs(points.get(i).x - midX) < minDist) {
-                boundary.add(points.get(i));
+        // initially the closest points are found via brute force
+        for (int i = 0; i < sample.size(); i++) {
+            for (int j = i + 1; j < sample.size(); j++) {
+                double dist = euclideanDistance(sample.get(i), sample.get(j));
+                if (dist < delta) {
+                    closestA = sample.get(i);
+                    closestB = sample.get(j);
+                    delta = dist; // update distance
+                }
             }
         }
 
-        // sort by y coordinate within the boundary and check for closer points
-        boundary.sort(Comparator.comparingDouble(p -> p.y));
-        for (int i = 0; i < boundary.size(); i++) {
-            for (int j = i + 1; j < boundary.size() && (boundary.get(j).y - boundary.get(i).y) < minDist; j++) {
-                minDist = Math.min(minDist, Point.distance(boundary.get(i), boundary.get(j)));
+        // Create a grid, We will use "Probabilistic Filtering" by only checking
+        //  neighboring grids to prevent bruteforce checking outside initialization
+        Map<String, Point> grid = new HashMap<>();
+
+        // coordinates computed based on delta, estimated closest distance
+        for (Point p : points) {
+            int gridX = (int) (p.x / delta);
+            int gridY = (int) (p.y / delta);
+            String key = gridX + "," + gridY; // string for indexing
+
+            // check neighboring cells
+            for (int dX = -1; dX <= 1; dX++) {
+                for (int dY = -1; dY <= 1; dY++) {
+                    String neighborKey = (gridX + dX) + "," + (gridY + dY);
+                    Point neighborValue = grid.get(neighborKey);
+
+                    // update points only if valid neighbor
+                    if (neighborValue != null && p != neighborValue) {
+                        double dist = euclideanDistance(p, neighborValue);
+                        if (dist < delta) {
+                            closestA = p;
+                            closestB = neighborValue;
+                            delta = dist;
+                        }
+                    }
+                }
             }
+            grid.put(key, p);
         }
-        return minDist;
+        return new Object[] {closestA, closestB, delta};
     }
 }
