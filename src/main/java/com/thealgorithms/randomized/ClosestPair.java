@@ -76,6 +76,13 @@ public final class ClosestPair {
             }
         }
 
+        // Confirm neither closestA nor closestB are null
+        if (closestA == null || closestB == null) {
+            closestA = points.get(0);
+            closestB = points.get(1);
+            delta = euclideanDistance(closestA, closestB);
+        }
+
         // Create a grid, We will use "Probabilistic Filtering" by only checking
         //  neighboring grids to prevent bruteforce checking outside initialization
         Map<String, Point> grid = new HashMap<>();

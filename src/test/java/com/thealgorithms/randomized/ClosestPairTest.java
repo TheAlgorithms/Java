@@ -23,11 +23,8 @@ class ClosestPairTest {
     void testTwoDistinctPoints() {
         List<Point> points = Arrays.asList(new Point(1, 2), new Point(2, 3));
         Object[] closestPair = ClosestPair.rabinRandomizedClosestPair(points);
-
-        // Add null check for closestPair
-        assertNotNull(closestPair, "Closest pair result should not be null");
-        assertTrue((closestPair[0].equals(points.get(0)) && closestPair[1].equals(points.get(1))) || (closestPair[1].equals(points.get(0)) && closestPair[0].equals(points.get(1))), "The closest pair should include the given distinct points");
-        assertEquals(closestPair[2], ClosestPair.euclideanDistance(points.get(0), points.get(1)), "The calculated distance should match the Euclidean distance");
+        assertTrue((closestPair[0].equals(points.get(0)) && closestPair[1].equals(points.get(1))) || (closestPair[1].equals(points.get(0)) && closestPair[0].equals(points.get(1))));
+        assertEquals(closestPair[2], ClosestPair.euclideanDistance(points.get(0), points.get(1)));
     }
 
     @Test
