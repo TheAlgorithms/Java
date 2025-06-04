@@ -68,6 +68,7 @@ final class AffineCipher {
             // then i will be the multiplicative inverse of a
             if (flag == 1) {
                 aInv = i;
+                break;
             }
         }
         for (int i = 0; i < cipher.length(); i++) {
@@ -82,17 +83,5 @@ final class AffineCipher {
         }
 
         return msg.toString();
-    }
-
-    // Driver code
-    public static void main(String[] args) {
-        String msg = "AFFINE CIPHER";
-
-        // Calling encryption function
-        String cipherText = encryptMessage(msg.toCharArray());
-        System.out.println("Encrypted Message is : " + cipherText);
-
-        // Calling Decryption function
-        System.out.println("Decrypted Message is: " + decryptCipher(cipherText));
     }
 }
