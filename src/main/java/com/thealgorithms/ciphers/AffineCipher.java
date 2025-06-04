@@ -68,6 +68,7 @@ final class AffineCipher {
             // then i will be the multiplicative inverse of a
             if (flag == 1) {
                 aInv = i;
+                break;
             }
         }
         for (int i = 0; i < cipher.length(); i++) {

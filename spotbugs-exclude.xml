@@ -196,9 +196,6 @@
         <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
     </Match>
     <Match>
-        <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
-    </Match>
-    <Match>
         <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
     </Match>
     <!-- find-sec-bugs -->
