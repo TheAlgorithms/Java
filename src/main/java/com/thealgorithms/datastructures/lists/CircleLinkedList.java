@@ -10,6 +10,7 @@ package com.thealgorithms.datastructures.lists;
  *
  * @param <E> the type of elements held in this list
  */
+@SuppressWarnings("rawtypes")
 public class CircleLinkedList<E> {
 
     /**

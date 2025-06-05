@@ -6,6 +6,7 @@ import java.util.Arrays;
  * It distributes elements into buckets and recursively sorts these buckets.
  * This implementation is generic and can sort any array of elements that extend Comparable.
  */
+@SuppressWarnings("rawtypes")
 public class SpreadSort implements SortAlgorithm {
     private static final int MAX_INSERTION_SORT_THRESHOLD = 1000;
     private static final int MAX_INITIAL_BUCKET_CAPACITY = 1000;

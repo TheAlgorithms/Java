@@ -8,6 +8,7 @@ package com.thealgorithms.datastructures.hashmap.hashing;
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
  */
+@SuppressWarnings("rawtypes")
 public class HashMap<K, V> {
     private final int hashSize;
     private final LinkedList<K, V>[] buckets;

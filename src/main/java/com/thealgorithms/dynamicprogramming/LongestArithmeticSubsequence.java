@@ -2,6 +2,7 @@ package com.thealgorithms.dynamicprogramming;
 
 import java.util.HashMap;
 
+@SuppressWarnings("rawtypes")
 final class LongestArithmeticSubsequence {
     private LongestArithmeticSubsequence() {
     }

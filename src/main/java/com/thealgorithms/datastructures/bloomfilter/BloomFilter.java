@@ -12,6 +12,7 @@ import java.util.BitSet;
  *
  * @param <T> The type of elements to be stored in the Bloom filter.
  */
+@SuppressWarnings("rawtypes")
 public class BloomFilter<T> {
 
     private final int numberOfHashFunctions;

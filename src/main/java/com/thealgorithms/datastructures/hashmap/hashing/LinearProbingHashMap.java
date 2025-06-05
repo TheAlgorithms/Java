@@ -34,6 +34,7 @@ import java.util.ArrayList;
  * @param <Key> the type of keys maintained by this map
  * @param <Value> the type of mapped values
  */
+@SuppressWarnings("rawtypes")
 public class LinearProbingHashMap<Key extends Comparable<Key>, Value> extends Map<Key, Value> {
     private int hsize; // size of the hash table
     private Key[] keys; // array to store keys
