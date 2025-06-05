@@ -22,7 +22,7 @@ import java.util.stream.IntStream;
  * For more information, see <a href="https://en.wikipedia.org/wiki/Graph_coloring">Graph Coloring</a>.
  * </p>
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public final class WelshPowell {
     private static final int BLANK_COLOR = -1; // Constant representing an uncolored state
 

@@ -19,7 +19,7 @@ import java.util.PriorityQueue;
  *
  * <p><strong>Time Complexity:</strong> O(E log V), where E is the number of edges and V is the number of vertices.</p>
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Kruskal {
 
     /**

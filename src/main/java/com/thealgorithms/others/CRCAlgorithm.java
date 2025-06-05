@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * @author dimgrichr
  */
+@SuppressWarnings("unchecked")
 public class CRCAlgorithm {
 
     private int correctMess;

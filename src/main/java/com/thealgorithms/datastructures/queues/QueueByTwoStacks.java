@@ -11,6 +11,7 @@ import java.util.Stack;
  *
  * @param <T> The type of elements held in this queue.
  */
+@SuppressWarnings("unchecked")
 public class QueueByTwoStacks<T> {
 
     private final Stack<T> enqueueStk;
