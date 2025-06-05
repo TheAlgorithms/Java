@@ -10,6 +10,7 @@ import java.util.Objects;
  *
  * @param <T> the type of elements in this list
  */
+@SuppressWarnings("rawtypes")
 public class CursorLinkedList<T> {
 
     /**

@@ -10,6 +10,7 @@ import java.util.Stack;
  * See more:
  * https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/
  */
+@SuppressWarnings("rawtypes")
 public final class PalindromeSinglyLinkedList {
     private PalindromeSinglyLinkedList() {
     }

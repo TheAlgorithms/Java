@@ -15,6 +15,7 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * Note: This algorithm requires that the input array be sorted.
  * </p>
  */
+@SuppressWarnings("rawtypes")
 public class FibonacciSearch implements SearchAlgorithm {
 
     /**

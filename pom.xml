@@ -76,7 +76,6 @@
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                         <arg>-Xlint:-auxiliaryclass</arg>
-                        <arg>-Xlint:-rawtypes</arg>
                         <arg>-Xlint:-unchecked</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
