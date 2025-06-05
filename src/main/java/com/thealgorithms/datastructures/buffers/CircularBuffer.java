@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @param <Item> The type of elements stored in the circular buffer.
  */
+@SuppressWarnings("unchecked")
 public class CircularBuffer<Item> {
     private final Item[] buffer;
     private final CircularPointer putPointer;

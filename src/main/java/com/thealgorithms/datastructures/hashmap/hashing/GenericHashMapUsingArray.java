@@ -23,7 +23,7 @@ import java.util.LinkedList;
  * @param <K> the type of keys maintained by this hash map
  * @param <V> the type of mapped values
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class GenericHashMapUsingArray<K, V> {
 
     private int size; // Total number of key-value pairs
