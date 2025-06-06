@@ -1,5 +1,7 @@
 package com.thealgorithms.graphsearch;
 
+// Topological sort: https://en.wikipedia.org/wiki/Topological_sorting
+
 import java.util.ArrayList;
 import java.util.Stack;
 
