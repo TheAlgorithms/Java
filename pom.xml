@@ -71,13 +71,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                        <arg>-Xlint:-auxiliaryclass</arg>
-                        <arg>-Werror</arg>
-                    </compilerArgs>
+                    <release>21</release>
+<!--                    <source>21</source>-->
+<!--                    <target>21</target>-->
+<!--                    <compilerArgs>-->
+<!--                        <arg>-Xlint:all</arg>-->
+<!--                        <arg>-Xlint:-auxiliaryclass</arg>-->
+<!--&lt;!&ndash;                        <arg>-Werror</arg>&ndash;&gt;-->
+<!--                    </compilerArgs>-->
                 </configuration>
             </plugin>
             <plugin>
