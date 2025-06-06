@@ -10,7 +10,7 @@ import java.util.Stack;
  * for Directed Acyclic Graphs. It prints the nodes in a topological order.
  */
 
-public class TopologicalSort {
+public final class TopologicalSort {
 
     // Private constructor to prevent instantiation
     private TopologicalSort() {
