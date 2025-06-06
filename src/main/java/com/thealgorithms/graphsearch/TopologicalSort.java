@@ -13,7 +13,7 @@ import java.util.Stack;
 public class TopologicalSort {
 
     // Private constructor to prevent instantiation
-    private TopologicalSort(){
+    private TopologicalSort() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
     /**
