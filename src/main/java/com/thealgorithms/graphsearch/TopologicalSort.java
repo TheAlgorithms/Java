@@ -11,6 +11,11 @@ import java.util.Stack;
  */
 
 public class TopologicalSort {
+
+    // Private constructor to prevent instantiation
+    private TopologicalSort(){
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+    }
     /**
      * Main method to test the Topological Sort implementation.
      * Creates a sample graph and prints its topological ordering.
