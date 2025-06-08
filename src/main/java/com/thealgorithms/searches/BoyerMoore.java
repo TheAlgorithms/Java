@@ -1,3 +1,5 @@
+package com.thealgorithms.searches;
+
 /**
  * Boyer-Moore string search algorithm
  * Efficient algorithm for substring search.
@@ -11,15 +13,13 @@ public class BoyerMoore {
 
     public BoyerMoore(String pat) {
         this.pattern = pat;
-        this.R = 256; // extended ASCII
+        this.R = 256; 
         this.right = new int[R];
 
-        // Initialize all occurrences as -1
         for (int c = 0; c < R; c++) {
             right[c] = -1;
         }
 
-        // Fill the actual value of last occurrence of a character
         for (int j = 0; j < pat.length(); j++) {
             right[pat.charAt(j)] = j;
         }
@@ -42,9 +42,9 @@ public class BoyerMoore {
                     break;
                 }
             }
-            if (skip == 0) return i; // found
+            if (skip == 0) return i; 
         }
-        return -1; // not found
+        return -1; 
     }
 
     public static int search(String text, String pattern) {
