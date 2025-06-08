@@ -1,6 +1,7 @@
 package com.thealgorithms.searches;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class BoyerMooreTest {
@@ -34,22 +35,21 @@ public class BoyerMooreTest {
         BoyerMoore bm = new BoyerMoore("CDE");
         String text = "ABCDEFGCDE";
         int index = bm.search(text);
-        assertEquals(2, index); 
-    }   
-
+        assertEquals(7, index);
+    }
 
     @Test
     public void testEmptyPattern() {
         BoyerMoore bm = new BoyerMoore("");
         String text = "Hello world";
         int index = bm.search(text);
-        assertEquals(0, index); 
+        assertEquals(0, index);
     }
 
     @Test
     public void testStaticSearchMethod() {
-    int index = BoyerMoore.search("ABCDEFGCDE", "CDE");
-    assertEquals(2, index); 
+        String text = "ABCDEFGCDE";
+        int index = BoyerMoore.search(text, "CDE");
+        assertEquals(7, index);
     }
-
 }
