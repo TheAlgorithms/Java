@@ -52,7 +52,7 @@ public class BoyerMoore {
         return -1; // No match
     }
 
-    public static int search(String text, String pattern) {
+    public static int staticSearch(String text, String pattern) {
         return new BoyerMoore(pattern).search(text);
     }
 }
