@@ -1,12 +1,10 @@
 package com.thealgorithms.searches;
+
 /**
  * Boyer-Moore string search algorithm
  * Efficient algorithm for substring search.
- * 
- * @see <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm">
- *      https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm</a>
+ * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search-algorithm
  */
-
 public class BoyerMoore {
 
     private final int R;
@@ -17,10 +15,12 @@ public class BoyerMoore {
         this.pattern = pat;
         this.R = 256;
         this.right = new int[R];
-        for (int c = 0; c < R; c++)
+        for (int c = 0; c < R; c++) {
             right[c] = -1;
-        for (int j = 0; j < pat.length(); j++)
+        }
+        for (int j = 0; j < pat.length(); j++) {
             right[pat.charAt(j)] = j;
+        }
     }
 
     public int search(String text) {
@@ -36,8 +36,9 @@ public class BoyerMoore {
                     break;
                 }
             }
-            if (skip == 0)
+            if (skip == 0) {
                 return i;
+            }
         }
         return -1;
     }
