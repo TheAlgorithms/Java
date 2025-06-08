@@ -7,16 +7,16 @@ package com.thealgorithms.searches;
  */
 public class BoyerMoore {
 
-    private final int R; // Radix
+    private final int radix; // Radix (number of possible characters)
     private final int[] right; // Bad character rule table
     private final String pattern;
 
     public BoyerMoore(String pat) {
         this.pattern = pat;
-        this.R = 256;
-        this.right = new int[R];
+        this.radix = 256;
+        this.right = new int[radix];
 
-        for (int c = 0; c < R; c++) {
+        for (int c = 0; c < radix; c++) {
             right[c] = -1;
         }
 
