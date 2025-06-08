@@ -35,7 +35,7 @@ public class BoyerMooreTest {
         BoyerMoore bm = new BoyerMoore("CDE");
         String text = "ABCDEFGCDE";
         int index = bm.search(text);
-        assertEquals(7, index);
+        assertEquals(2, index); // Cambiado de 7 a 2
     }
 
     @Test
@@ -50,6 +50,6 @@ public class BoyerMooreTest {
     public void testStaticSearchMethod() {
         String text = "ABCDEFGCDE";
         int index = BoyerMoore.search(text, "CDE");
-        assertEquals(7, index);
+        assertEquals(2, index); // Cambiado de 7 a 2
     }
 }
