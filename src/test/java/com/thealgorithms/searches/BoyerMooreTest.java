@@ -3,7 +3,6 @@ package com.thealgorithms.searches;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import com.thealgorithms.searches.BoyerMoore; 
 
 public class BoyerMooreTest {
 
