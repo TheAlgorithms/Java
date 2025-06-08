@@ -7,9 +7,9 @@ package com.thealgorithms.searches;
  */
 public class BoyerMoore {
 
-    private final int R;
-    private int[] right;
-    private String pattern;
+    private final int R; // Radix
+    private final int[] right; // Bad character rule table
+    private final String pattern;
 
     public BoyerMoore(String pat) {
         this.pattern = pat;
@@ -45,10 +45,11 @@ public class BoyerMoore {
                 }
             }
             if (skip == 0) {
-                return i;
+                return i; // Match found
             }
         }
-        return -1;
+
+        return -1; // No match
     }
 
     public static int search(String text, String pattern) {
