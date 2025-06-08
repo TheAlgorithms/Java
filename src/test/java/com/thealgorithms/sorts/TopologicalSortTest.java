@@ -3,6 +3,7 @@ package com.thealgorithms.sorts;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.sorts.TopologicalSort.Graph;
 import java.util.LinkedList;
@@ -58,5 +59,19 @@ class TopologicalSortTest {
         String expected = "This graph contains a cycle. No linear ordering is possible. "
             + "Back edge: 6 -> 2";
         assertEquals(exception.getMessage(), expected);
+    }
+    @Test
+    void testEmptyGraph() {
+        Graph graph = new Graph();
+        LinkedList<String> sorted = TopologicalSort.sort(graph);
+        assertTrue(sorted.isEmpty());
+    }
+    @Test
+    void testSingleNode() {
+        Graph graph = new Graph();
+        graph.addEdge("A", "");
+        LinkedList<String> sorted = TopologicalSort.sort(graph);
+        assertEquals(1, sorted.size());
+        assertEquals("A", sorted.getFirst());
     }
 }
