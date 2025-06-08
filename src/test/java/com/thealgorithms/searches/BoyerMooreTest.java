@@ -35,7 +35,7 @@ public class BoyerMooreTest {
         BoyerMoore bm = new BoyerMoore("CDE");
         String text = "ABCDEFGCDE";
         int index = bm.search(text);
-        assertEquals(2, index); // Cambiado de 7 a 2
+        assertEquals(2, index); // Primera ocurrencia de "CDE"
     }
 
     @Test
@@ -49,7 +49,7 @@ public class BoyerMooreTest {
     @Test
     public void testStaticSearchMethod() {
         String text = "ABCDEFGCDE";
-        int index = BoyerMoore.search(text, "CDE");
-        assertEquals(2, index); // Cambiado de 7 a 2
+        int index = BoyerMoore.staticSearch(text, "CDE");
+        assertEquals(2, index); // Primera ocurrencia de "CDE"
     }
 }
