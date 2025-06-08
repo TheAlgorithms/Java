@@ -1,11 +1,11 @@
 package com.thealgorithms.searches;
-
 /**
  * Boyer-Moore string search algorithm
  * Efficient algorithm for substring search.
  * 
- * @author Pau
-*/
+ * @see <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm">
+ *      https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm</a>
+ */
 
 public class BoyerMoore {
 
