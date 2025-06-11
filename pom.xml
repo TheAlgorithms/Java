@@ -143,6 +143,10 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.26.0</version>
                 <configuration>
+                    <rulesets>
+                        <ruleset>/rulesets/java/maven-pmd-plugin-default.xml</ruleset>
+                        <ruleset>file://${basedir}/pmd-custom_ruleset.xml</ruleset>
+                    </rulesets>
                     <printFailingErrors>true</printFailingErrors>
                     <includeTests>true</includeTests>
                     <linkXRef>false</linkXRef>
