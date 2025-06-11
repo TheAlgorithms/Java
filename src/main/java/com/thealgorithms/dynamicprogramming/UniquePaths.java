@@ -1,3 +1,7 @@
+package com.thealgorithms.dynamicprogramming;
+
+import java.util.Arrays;
+
 /**
  * Author: Siddhant Swarup Mallick
  * Github: https://github.com/siddhant2002
@@ -12,11 +16,6 @@
  * This program calculates the number of unique paths possible for a robot to reach the bottom-right corner
  * of an m x n grid using dynamic programming.
  */
-
-package com.thealgorithms.dynamicprogramming;
-
-import java.util.Arrays;
-
 public final class UniquePaths {
 
     private UniquePaths() {

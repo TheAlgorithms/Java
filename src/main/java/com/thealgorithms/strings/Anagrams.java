@@ -23,7 +23,9 @@ public final class Anagrams {
      * @param t the second string
      * @return true if the strings are anagrams, false otherwise
      */
-    public static boolean approach1(String s, String t) {
+    public static boolean areAnagramsBySorting(String s, String t) {
+        s = s.toLowerCase().replaceAll("[^a-z]", "");
+        t = t.toLowerCase().replaceAll("[^a-z]", "");
         if (s.length() != t.length()) {
             return false;
         }
@@ -43,17 +45,18 @@ public final class Anagrams {
      * @param t the second string
      * @return true if the strings are anagrams, false otherwise
      */
-    public static boolean approach2(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
+    public static boolean areAnagramsByCountingChars(String s, String t) {
+        s = s.toLowerCase().replaceAll("[^a-z]", "");
+        t = t.toLowerCase().replaceAll("[^a-z]", "");
+        int[] dict = new int[128];
+        for (char ch : s.toCharArray()) {
+            dict[ch]++;
         }
-        int[] charCount = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            charCount[s.charAt(i) - 'a']++;
-            charCount[t.charAt(i) - 'a']--;
+        for (char ch : t.toCharArray()) {
+            dict[ch]--;
         }
-        for (int count : charCount) {
-            if (count != 0) {
+        for (int e : dict) {
+            if (e != 0) {
                 return false;
             }
         }
@@ -70,7 +73,9 @@ public final class Anagrams {
      * @param t the second string
      * @return true if the strings are anagrams, false otherwise
      */
-    public static boolean approach3(String s, String t) {
+    public static boolean areAnagramsByCountingCharsSingleArray(String s, String t) {
+        s = s.toLowerCase().replaceAll("[^a-z]", "");
+        t = t.toLowerCase().replaceAll("[^a-z]", "");
         if (s.length() != t.length()) {
             return false;
         }
@@ -96,7 +101,9 @@ public final class Anagrams {
      * @param t the second string
      * @return true if the strings are anagrams, false otherwise
      */
-    public static boolean approach4(String s, String t) {
+    public static boolean areAnagramsUsingHashMap(String s, String t) {
+        s = s.toLowerCase().replaceAll("[^a-z]", "");
+        t = t.toLowerCase().replaceAll("[^a-z]", "");
         if (s.length() != t.length()) {
             return false;
         }
@@ -123,7 +130,9 @@ public final class Anagrams {
      * @param t the second string
      * @return true if the strings are anagrams, false otherwise
      */
-    public static boolean approach5(String s, String t) {
+    public static boolean areAnagramsBySingleFreqArray(String s, String t) {
+        s = s.toLowerCase().replaceAll("[^a-z]", "");
+        t = t.toLowerCase().replaceAll("[^a-z]", "");
         if (s.length() != t.length()) {
             return false;
         }
