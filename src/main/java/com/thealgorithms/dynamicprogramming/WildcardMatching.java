@@ -1,3 +1,5 @@
+package com.thealgorithms.dynamicprogramming;
+
 /**
  *
  * Author: Janmesh Singh
@@ -11,9 +13,6 @@
  * Use DP to return True if the pattern matches the entire text and False otherwise
  *
  */
-
-package com.thealgorithms.dynamicprogramming;
-
 public final class WildcardMatching {
     private WildcardMatching() {
     }
