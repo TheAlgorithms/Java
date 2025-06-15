@@ -1,22 +1,21 @@
 package com.thealgorithms.randomized;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 
 /*
-* Tests for MillerRabinPrimality
-* @author DomTr (https://github.com/DomTr)
-*/
+ * Tests for MillerRabinPrimality
+ * @author DomTr (https://github.com/DomTr)
+ */
 
 public class MillerRabinPrimalityTest {
     static final int iter = 10;
 
     @Test
     public void testComposites() {
-        long[] values = {1, 25, 2932021007403L, 4501680375506332L, 6910906992394051L,
-                4887521073398877L, 5577943644815725L, 6085993686552764L};
+        long[] values = {1, 25, 2932021007403L, 4501680375506332L, 6910906992394051L, 4887521073398877L, 5577943644815725L, 6085993686552764L};
 
         for (long v : values) {
             BigInteger val = BigInteger.valueOf(v);
@@ -57,7 +56,6 @@ public class MillerRabinPrimalityTest {
         BigInteger p2 = new BigInteger("990601545052177");
         BigInteger p3 = new BigInteger("924286031819653");
         BigInteger p4 = new BigInteger("408464000499539");
-
 
         assertFalse(MillerRabinPrimality.millerRabin(p1.multiply(p1), iter));
         assertFalse(MillerRabinPrimality.millerRabin(p1.multiply(p2), iter));

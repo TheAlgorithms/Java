@@ -44,15 +44,15 @@ public final class MillerRabinPrimality {
      */
     public static boolean millerRabin(BigInteger n, int iter) {
         if (n.compareTo(ONE) <= 0 || n.equals(FOUR)) return false;
-        if (n.equals(THREE)||n.equals(TWO)) return true;
+        if (n.equals(THREE) || n.equals(TWO)) return true;
         long deg = 0;
         BigInteger oddPart = n.subtract(ONE);
-        while(oddPart.mod(TWO).equals(ZERO)) {
+        while (oddPart.mod(TWO).equals(ZERO)) {
             oddPart = oddPart.divide(TWO);
             deg++;
         }
 
-        while(iter-- > 0) {
+        while (iter-- > 0) {
             if (checkComposite(n, oddPart, deg)) {
                 return false;
             }
