@@ -1,9 +1,9 @@
 /**
  * Check if a given string is a palindrome using the two-pointer technique.
  * A palindrome is a string that reads the same forward and backward.
- * 
+ *
  * Example: "level", "madam", "12321" are palindromes.
- * 
+ *
  * Author: Sushma
  */
 

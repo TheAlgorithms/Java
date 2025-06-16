@@ -1,6 +1,7 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class TwoPointerPalindromeTest {
@@ -12,7 +13,7 @@ public class TwoPointerPalindromeTest {
         assertTrue(TwoPointerPalindrome.isPalindrome("a"));
 
         assertTrue(TwoPointerPalindrome.isPalindrome(null));
-assertTrue(TwoPointerPalindrome.isPalindrome(""));
+        assertTrue(TwoPointerPalindrome.isPalindrome(""));
 
         assertFalse(TwoPointerPalindrome.isPalindrome("hello"));
         assertFalse(TwoPointerPalindrome.isPalindrome("world"));
