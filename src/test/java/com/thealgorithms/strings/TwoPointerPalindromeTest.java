@@ -11,6 +11,9 @@ public class TwoPointerPalindromeTest {
         assertTrue(TwoPointerPalindrome.isPalindrome("racecar"));
         assertTrue(TwoPointerPalindrome.isPalindrome("a"));
 
+        assertTrue(TwoPointerPalindrome.isPalindrome(null));
+assertTrue(TwoPointerPalindrome.isPalindrome(""));
+
         assertFalse(TwoPointerPalindrome.isPalindrome("hello"));
         assertFalse(TwoPointerPalindrome.isPalindrome("world"));
     }
