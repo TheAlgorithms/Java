@@ -1,9 +1,10 @@
 package com.thealgorithms.slidingwindow;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * The Sliding Window technique together with 2-stack technique is used to find the minimal size of coprime segment in an array.
+ * The Sliding Window technique together with 2-stack technique is used to find coprime segment of minimal size in an array.
  * Segment a[i],...,a[i+l] is coprime if gcd(a[i], a[i+1], ..., a[i+l]) = 1
  * <p>
  * Run-time complexity: O(n log n)
@@ -12,12 +13,12 @@ import java.util.LinkedList;
  * Main observation is that each element gets processed a constant amount of times, hence complexity will be:
  * O(n log n), where log n comes from complexity of gcd.
  * <p>
- * The 2-stack technique enables us to 'remove' an element fast if it is known how to 'add' an element fast to the set.
+ * More generally, the 2-stack technique enables us to 'remove' an element fast if it is known how to 'add' an element fast to the set.
  * In our case 'adding' is calculating d' = gcd(a[i],...,a[i+l+1]), when d = gcd(a[i],...a[i]) with d' = gcd(d, a[i+l+1]).
  * and removing is find gcd(a[i+1],...,a[i+l]). We don't calculate it explicitly, but it is pushed in the stack which we can pop in O(1).
  * <p>
  * One can change methods 'legalSegment' and function 'f' in DoubleStack to adapt this code to other sliding-window type problems.
- * I recommend this article for more explanations: <a href="https://codeforces.com/edu/course/2/lesson/9/2">Article 1</a> or https://usaco.guide/gold/sliding-window?lang=cpp#method-2---two-stacks
+ * I recommend this article for more explanations: "<a href="https://codeforces.com/edu/course/2/lesson/9/2">CF Article</a>">Article 1</a> or <a href="https://usaco.guide/gold/sliding-window?lang=cpp#method-2---two-stacks">USACO Article</a>
  * <p>
  * Another method to solve this problem is through segment trees. Then query operation would have O(log n), not O(1) time, but runtime complexity would still be O(n log n)
  *
@@ -30,26 +31,36 @@ public final class ShortestCoprimeSegment {
 
     /**
      * @param arr is the input array
-     * @param n   is the array size
-     * @return the length of the smallest segment in the array which has gcd equal to 1. If no such segment exists, returns -1
+     * @return shortest segment in the array which has gcd equal to 1. If no such segment exists or array is empty, returns empty array
      */
-    public static int shortestCoprimeSegment(int n, long[] arr) {
+    public static long[] shortestCoprimeSegment(long[] arr) {
+        if (arr == null || arr.length == 0) {
+            return new long[] {};
+        }
         DoubleStack front = new DoubleStack();
         DoubleStack back = new DoubleStack();
+        int n = arr.length;
         int l = 0;
-        int best = n + 1;
+        int shortestLength = n + 1;
+        int beginsAt = -1; // beginning index of the shortest coprime segment
         for (int i = 0; i < n; i++) {
             back.push(arr[i]);
             while (legalSegment(front, back)) {
                 remove(front, back);
-                best = Math.min(best, i - l + 1);
+                if (shortestLength > i - l + 1) {
+                    beginsAt = l;
+                    shortestLength = i - l + 1;
+                }
                 l++;
             }
         }
-        if (best > n) {
-            best = -1;
+        if (shortestLength > n) {
+            shortestLength = -1;
         }
-        return best;
+        if (shortestLength == -1) {
+            return new long[] {};
+        }
+        return Arrays.copyOfRange(arr, beginsAt, beginsAt + shortestLength);
     }
 
     private static boolean legalSegment(DoubleStack front, DoubleStack back) {
@@ -94,7 +105,7 @@ public final class ShortestCoprimeSegment {
         DoubleStack() {
             values = new LinkedList<>();
             stack = new LinkedList<>();
-            values.add((long) 0); // Initialise with 0 which is neutral element in terms of gcd, i.e. gcd(a,0) = a
+            values.add(0L); // Initialise with 0 which is neutral element in terms of gcd, i.e. gcd(a,0) = a
         }
 
         long f(long a, long b) { // Can be replaced with other function
