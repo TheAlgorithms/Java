@@ -17,13 +17,13 @@ import java.util.LinkedList;
  * and removing is find gcd(a[i+1],...,a[i+l]). We don't calculate it explicitly, but it is pushed in the stack which we can pop in O(1).
  * <p>
  * One can change methods 'legalSegment' and function 'f' in DoubleStack to adapt this code to other Silding-window type problems.
- * I recommend this article for more explanations: https://codeforces.com/edu/course/2/lesson/9/2 or https://usaco.guide/gold/sliding-window?lang=cpp#method-2---two-stacks
+ * I recommend this article for more explanations: <a href="https://codeforces.com/edu/course/2/lesson/9/2">Article 1</a> or https://usaco.guide/gold/sliding-window?lang=cpp#method-2---two-stacks
  * <p>
  * Another method to solve this problem is through segment trees. Then query operation would have O(log n), not O(1) time, but runtime complexity would still be O(n log n)
  *
- * @author DomTr (https://github.com/DomTr)
+ * @author DomTr (<a href="https://github.com/DomTr">Github</a>)
  */
-public class ShortestCoprimeSegment {
+public final class ShortestCoprimeSegment {
     // Prevent instantiation
     private ShortestCoprimeSegment() {
     }
@@ -36,7 +36,8 @@ public class ShortestCoprimeSegment {
     public static int shortestCoprimeSegment(int n, long[] arr) {
         DoubleStack front = new DoubleStack();
         DoubleStack back = new DoubleStack();
-        int l = 0, best = n + 1;
+        int l = 0;
+        int best = n + 1;
         for (int i = 0; i < n; i++) {
             back.push(arr[i]);
             while (legalSegment(front, back)) {
@@ -45,7 +46,9 @@ public class ShortestCoprimeSegment {
                 l++;
             }
         }
-        if (best > n) best = -1;
+        if (best > n) {
+            best = -1;
+        }
         return best;
     }
 
@@ -54,9 +57,15 @@ public class ShortestCoprimeSegment {
     }
 
     private static long gcd(long a, long b) {
-        if (a < b) return gcd(b, a);
-        else if (b == 0) return a;
-        else return gcd(a % b, b);
+        if (a < b) {
+            return gcd(b, a);
+        }
+        else if (b == 0) {
+            return a;
+        }
+        else {
+            return gcd(a % b, b);
+        }
     }
 
     /**
@@ -81,9 +90,10 @@ public class ShortestCoprimeSegment {
      * DoubleStack serves as a collection of two stacks. One is a normal stack called 'stack', the other 'values' stores gcd-s up until some index.
      */
     private static class DoubleStack {
-        LinkedList<Long> stack, values;
+        LinkedList<Long> stack;
+        LinkedList<Long> values;
 
-        public DoubleStack() {
+        DoubleStack() {
             values = new LinkedList<>();
             stack = new LinkedList<>();
             values.add((long) 0); // Initialise with 0 which is neutral element in terms of gcd, i.e. gcd(a,0) = a
@@ -113,5 +123,4 @@ public class ShortestCoprimeSegment {
             return stack.isEmpty();
         }
     }
-
 }
