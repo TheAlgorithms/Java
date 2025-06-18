@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * In our case 'adding' is calculating d' = gcd(a[i],...,a[i+l+1]), when d = gcd(a[i],...a[i]) with d' = gcd(d, a[i+l+1]).
  * and removing is find gcd(a[i+1],...,a[i+l]). We don't calculate it explicitly, but it is pushed in the stack which we can pop in O(1).
  * <p>
- * One can change methods 'legalSegment' and function 'f' in DoubleStack to adapt this code to other Silding-window type problems.
+ * One can change methods 'legalSegment' and function 'f' in DoubleStack to adapt this code to other sliding-window type problems.
  * I recommend this article for more explanations: <a href="https://codeforces.com/edu/course/2/lesson/9/2">Article 1</a> or https://usaco.guide/gold/sliding-window?lang=cpp#method-2---two-stacks
  * <p>
  * Another method to solve this problem is through segment trees. Then query operation would have O(log n), not O(1) time, but runtime complexity would still be O(n log n)
