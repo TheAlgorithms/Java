@@ -59,11 +59,9 @@ public final class ShortestCoprimeSegment {
     private static long gcd(long a, long b) {
         if (a < b) {
             return gcd(b, a);
-        }
-        else if (b == 0) {
+        } else if (b == 0) {
             return a;
-        }
-        else {
+        } else {
             return gcd(a % b, b);
         }
     }
