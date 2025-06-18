@@ -1,6 +1,7 @@
 package com.thealgorithms.slidingwindow;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
