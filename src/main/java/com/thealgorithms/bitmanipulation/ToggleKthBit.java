@@ -2,14 +2,14 @@ package com.thealgorithms.bitmanipulation;
 
 /**
  * The ToggleKthBit class provides a method to toggle the K-th bit of a given number.
- * 
+ *
  * Toggling means: if the K-th bit is 1, it becomes 0; if it's 0, it becomes 1.
- * 
+ *
  * Example:
  *   Input: n = 10 (1010 in binary), k = 1
  *   Output: 8  (1000 in binary)
- * 
- * @author Rahul 
+ *
+ * @author Rahul
  */
 public final class ToggleKthBit {
 
