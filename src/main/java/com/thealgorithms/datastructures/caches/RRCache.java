@@ -31,6 +31,7 @@ import java.util.function.BiConsumer;
  * @param <K> the type of keys maintained by this cache
  * @param <V> the type of mapped values
  *
+ * See <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Random_replacement_(RR)">Random Replacement</a>
  * @author Kevin Babu (<a href="https://www.github.com/KevinMwita7">GitHub</a>)
  */
 public final class RRCache<K, V> {
