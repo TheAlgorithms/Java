@@ -201,7 +201,7 @@ public final class RRCache<K, V> {
         while (it.hasNext()) {
             K k = it.next();
             CacheEntry<V> entry = cache.get(k);
-            if (entry.isExpired()) {
+            if (entry != null && entry.isExpired()) {
                 it.remove();
                 cache.remove(k);
                 notifyEviction(k, entry.value);
@@ -248,7 +248,11 @@ public final class RRCache<K, V> {
      */
     public long getHits() {
         lock.lock();
-        try { return hits; } finally { lock.unlock(); }
+        try {
+            return hits;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -258,7 +262,11 @@ public final class RRCache<K, V> {
      */
     public long getMisses() {
         lock.lock();
-        try { return misses; } finally { lock.unlock(); }
+        try {
+            return misses;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -300,8 +308,7 @@ public final class RRCache<K, V> {
                     visible.put(entry.getKey(), entry.getValue().value);
                 }
             }
-            return String.format("Cache(capacity=%d, size=%d, hits=%d, misses=%d, entries=%s)",
-                    capacity, visible.size(), hits, misses, visible);
+            return String.format("Cache(capacity=%d, size=%d, hits=%d, misses=%d, entries=%s)", capacity, visible.size(), hits, misses, visible);
         } finally {
             lock.unlock();
         }
