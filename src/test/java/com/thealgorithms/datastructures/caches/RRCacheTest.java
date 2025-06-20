@@ -1,13 +1,5 @@
 package com.thealgorithms.datastructures.caches;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,25 +7,34 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+
 class RRCacheTest {
 
     private RRCache<String, String> cache;
-    private List<String> evictedKeys;
+    private Set<String> evictedKeys;
     private List<String> evictedValues;
 
     @BeforeEach
     void setUp() {
-        evictedKeys = new ArrayList<>();
+        evictedKeys = new HashSet<>();
         evictedValues = new ArrayList<>();
 
         cache = new RRCache.Builder<String, String>(3)
-                .defaultTTL(1000)
-                .random(new Random(0))
-                .evictionListener((k, v) -> {
-                    evictedKeys.add(k);
-                    evictedValues.add(v);
-                })
-                .build();
+                    .defaultTTL(1000)
+                    .random(new Random(0))
+                    .evictionListener((k, v) -> {
+                        evictedKeys.add(k);
+                        evictedValues.add(v);
+                    })
+                    .build();
     }
 
     @Test
@@ -148,11 +149,7 @@ class RRCacheTest {
 
     @Test
     void testEvictionListenerExceptionDoesNotCrash() {
-        RRCache<String, String> listenerCache = new RRCache.Builder<String, String>(1)
-                .evictionListener((k, v) -> {
-                    throw new RuntimeException("Exception");
-                })
-                .build();
+        RRCache<String, String> listenerCache = new RRCache.Builder<String, String>(1).evictionListener((k, v) -> { throw new RuntimeException("Exception"); }).build();
 
         listenerCache.put("a", "a");
         listenerCache.put("b", "b"); // causes eviction but should not crash
@@ -161,9 +158,7 @@ class RRCacheTest {
 
     @Test
     void testTtlZeroThrowsIllegalArgumentException() {
-        Executable exec = () -> new RRCache.Builder<String, String>(3)
-                .defaultTTL(-1)
-                .build();
+        Executable exec = () -> new RRCache.Builder<String, String>(3).defaultTTL(-1).build();
         assertThrows(IllegalArgumentException.class, exec);
     }
 }
