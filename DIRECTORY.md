@@ -204,6 +204,7 @@
               * [RotateSinglyLinkedLists](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/RotateSinglyLinkedLists.java)
               * [SearchSinglyLinkedListRecursion](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SearchSinglyLinkedListRecursion.java)
               * [SinglyLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SinglyLinkedList.java)
+              * [SinglyLinkedListNode](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SinglyLinkedListNode.java)
               * [SkipList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SkipList.java)
               * [SortedLinkedList](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/lists/SortedLinkedList.java)
             * [Node](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/Node.java)
@@ -233,6 +234,7 @@
               * [BSTIterative](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTIterative.java)
               * [BSTRecursive](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTRecursive.java)
               * [BSTRecursiveGeneric](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BSTRecursiveGeneric.java)
+              * [BTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/BTree.java)
               * [CeilInBinarySearchTree](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CeilInBinarySearchTree.java)
               * [CheckBinaryTreeIsValidBST](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CheckBinaryTreeIsValidBST.java)
               * [CheckIfBinaryTreeBalanced](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/datastructures/trees/CheckIfBinaryTreeBalanced.java)
@@ -302,6 +304,7 @@
             * [LongestArithmeticSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequence.java)
             * [LongestCommonSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestCommonSubsequence.java)
             * [LongestIncreasingSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequence.java)
+            * [LongestIncreasingSubsequenceNLogN](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequenceNLogN.java)
             * [LongestPalindromicSubsequence](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubsequence.java)
             * [LongestPalindromicSubstring](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubstring.java)
             * [LongestValidParentheses](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/LongestValidParentheses.java)
@@ -337,6 +340,7 @@
           * graph
             * [ConstrainedShortestPath](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/graph/ConstrainedShortestPath.java)
             * [StronglyConnectedComponentOptimized](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
+            * [TravelingSalesman](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/graph/TravelingSalesman.java)
           * greedyalgorithms
             * [ActivitySelection](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
             * [BandwidthAllocation](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/greedyalgorithms/BandwidthAllocation.java)
@@ -488,6 +492,7 @@
             * [MirrorOfMatrix](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/MirrorOfMatrix.java)
             * [PrintAMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/PrintAMatrixInSpiralOrder.java)
             * [RotateMatrixBy90Degrees](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/RotateMatrixBy90Degrees.java)
+            * [SolveSystem](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/SolveSystem.java)
             * utils
               * [MatrixUtil](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/matrix/utils/MatrixUtil.java)
           * misc
@@ -552,6 +557,11 @@
             * [Sudoku](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/puzzlesandgames/Sudoku.java)
             * [TowerOfHanoi](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/puzzlesandgames/TowerOfHanoi.java)
             * [WordBoggle](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/puzzlesandgames/WordBoggle.java)
+          * randomized
+            * [KargerMinCut](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/randomized/KargerMinCut.java)
+            * [MonteCarloIntegration](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/randomized/MonteCarloIntegration.java)
+            * [RandomizedQuickSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/randomized/RandomizedQuickSort.java)
+            * [ReservoirSampling](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/randomized/ReservoirSampling.java)
           * recursion
             * [FibonacciSeries](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/recursion/FibonacciSeries.java)
             * [GenerateSubsets](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/recursion/GenerateSubsets.java)
@@ -618,6 +628,8 @@
             * [LongestSubstringWithoutRepeatingCharacters](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharacters.java)
             * [MaxSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarray.java)
             * [MinSumKSizeSubarray](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarray.java)
+            * [ShortestCoprimeSegment](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/slidingwindow/ShortestCoprimeSegment.java)
+
           * sorts
             * [AdaptiveMergeSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/AdaptiveMergeSort.java)
             * [BeadSort](https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/sorts/BeadSort.java)
@@ -941,6 +953,7 @@
               * [BSTFromSortedArrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTFromSortedArrayTest.java)
               * [BSTIterativeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTIterativeTest.java)
               * [BSTRecursiveTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BSTRecursiveTest.java)
+              * [BTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/BTreeTest.java)
               * [CeilInBinarySearchTreeTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/CeilInBinarySearchTreeTest.java)
               * [CheckBinaryTreeIsValidBSTTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/CheckBinaryTreeIsValidBSTTest.java)
               * [CheckIfBinaryTreeBalancedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/datastructures/trees/CheckIfBinaryTreeBalancedTest.java)
@@ -990,6 +1003,7 @@
             * [LongestAlternatingSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequenceTest.java)
             * [LongestArithmeticSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequenceTest.java)
             * [LongestCommonSubsequenceTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestCommonSubsequenceTest.java)
+            * [LongestIncreasingSubsequenceNLogNTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequenceNLogNTest.java)
             * [LongestIncreasingSubsequenceTests](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestIncreasingSubsequenceTests.java)
             * [LongestPalindromicSubstringTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestPalindromicSubstringTest.java)
             * [LongestValidParenthesesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/dynamicprogramming/LongestValidParenthesesTest.java)
@@ -1023,7 +1037,9 @@
             * [MidpointEllipseTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
           * graph
             * [ConstrainedShortestPathTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/ConstrainedShortestPathTest.java)
-            * [StronglyConnectedComponentOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
+            * [StronglyConnectedComponentOptimizedTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/
+            * [TravelingSalesmanTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/graph/TravelingSalesmanTest.java)
+StronglyConnectedComponentOptimizedTest.java)
           * greedyalgorithms
             * [ActivitySelectionTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/ActivitySelectionTest.java)
             * [BandwidthAllocationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/greedyalgorithms/BandwidthAllocationTest.java)
@@ -1159,6 +1175,7 @@
             * [MatrixUtilTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MatrixUtilTest.java)
             * [MedianOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MedianOfMatrixTest.java)
             * [MirrorOfMatrixTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/MirrorOfMatrixTest.java)
+            * [SolveSystemTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/SolveSystemTest.java)
             * [TestPrintMatrixInSpiralOrder](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/matrix/TestPrintMatrixInSpiralOrder.java)
           * misc
             * [ColorContrastRatioTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/misc/ColorContrastRatioTest.java)
@@ -1205,6 +1222,11 @@
             * [SudokuTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/puzzlesandgames/SudokuTest.java)
             * [TowerOfHanoiTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/puzzlesandgames/TowerOfHanoiTest.java)
             * [WordBoggleTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/puzzlesandgames/WordBoggleTest.java)
+          * randomize
+            * [KargerMinCutTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/randomized/KargerMinCutTest.java)
+            * [MonteCarloIntegrationTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/randomized/MonteCarloIntegrationTest.java)
+            * [RandomizedQuickSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/randomized/RandomizedQuickSortTest.java)
+            * [ReservoirSamplingTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/randomized/ReservoirSamplingTest.java)
           * recursion
             * [FibonacciSeriesTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/recursion/FibonacciSeriesTest.java)
             * [GenerateSubsetsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/recursion/GenerateSubsetsTest.java)
@@ -1272,6 +1294,7 @@
             * [LongestSubstringWithoutRepeatingCharactersTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/LongestSubstringWithoutRepeatingCharactersTest.java)
             * [MaxSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MaxSumKSizeSubarrayTest.java)
             * [MinSumKSizeSubarrayTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/MinSumKSizeSubarrayTest.java)
+            * [ShortestCoprimeSegmentTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/slidingwindow/ShortestCoprimeSegmentTest.java)
           * sorts
             * [AdaptiveMergeSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/AdaptiveMergeSortTest.java)
             * [BeadSortTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/sorts/BeadSortTest.java)
@@ -1349,6 +1372,7 @@
             * [AlphabeticalTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/AlphabeticalTest.java)
             * [AnagramsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/AnagramsTest.java)
             * [CharacterSameTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CharacterSameTest.java)
+            * [CharactersSameTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CharactersSameTest.java)
             * [CheckAnagramsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CheckAnagramsTest.java)
             * [CheckVowelsTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CheckVowelsTest.java)
             * [CountCharTest](https://github.com/TheAlgorithms/Java/blob/master/src/test/java/com/thealgorithms/strings/CountCharTest.java)
