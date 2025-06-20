@@ -1,0 +1,32 @@
+name: Generate Directory Markdown
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-directory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Directory Tree Generator
+        uses: DenizAltunkapan/directory-tree-generator@v1
+        with:
+          path: src
+          extensions: .
+
+      - name: Commit and Push DIRECTORY.md
+        run: |
+          cat DIRECTORY.md
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add DIRECTORY.md
+          git commit -am "Update directory" || true
+          git push origin HEAD:$GITHUB_REF
