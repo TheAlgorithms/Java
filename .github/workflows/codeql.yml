@@ -10,12 +10,9 @@ on:
   schedule:
     - cron: '53 3 * * 0'
 
-env:
-  LANGUAGE: 'java-kotlin'
-
 jobs:
-  analyze:
-    name: Analyze
+  analyzeJava:
+    name: AnalyzeJava
     runs-on: 'ubuntu-latest'
     permissions:
       actions: read
@@ -35,7 +32,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ env.LANGUAGE }}
+          languages: 'java-kotlin'
 
       - name: Build
         run: mvn --batch-mode --update-snapshots verify
@@ -43,5 +40,27 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:${{env.LANGUAGE}}"
+          category: "/language:java-kotlin"
+
+  analyzeActions:
+    name: AnalyzeActions
+    runs-on: 'ubuntu-latest'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'actions'
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:actions"
 ...
