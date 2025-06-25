@@ -30,7 +30,6 @@ import java.util.function.BiConsumer;
  *
  * @param <K> the type of keys maintained by this cache
  * @param <V> the type of mapped values
- *
  * See <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Random_replacement_(RR)">Random Replacement</a>
  * @author Kevin Babu (<a href="https://www.github.com/KevinMwita7">GitHub</a>)
  */
@@ -45,8 +44,8 @@ public final class RRCache<K, V> {
 
     private long hits = 0;
     private long misses = 0;
-
     private final BiConsumer<K, V> evictionListener;
+    private final EvictionStrategy<K, V> evictionStrategy;
 
     /**
      * Internal structure to store value + expiry timestamp.
@@ -95,6 +94,7 @@ public final class RRCache<K, V> {
         this.random = builder.random != null ? builder.random : new Random();
         this.lock = new ReentrantLock();
         this.evictionListener = builder.evictionListener;
+        this.evictionStrategy = builder.evictionStrategy;
     }
 
     /**
@@ -116,6 +116,8 @@ public final class RRCache<K, V> {
 
         lock.lock();
         try {
+            evictionStrategy.onAccess(this);
+
             CacheEntry<V> entry = cache.get(key);
             if (entry == null || entry.isExpired()) {
                 if (entry != null) {
@@ -196,17 +198,22 @@ public final class RRCache<K, V> {
      * entry for expiration. Expired entries are removed from both the key tracking list
      * and the cache map. For each eviction, the eviction listener is notified.
      */
-    private void evictExpired() {
+    private int evictExpired() {
         Iterator<K> it = keys.iterator();
+        int expiredCount = 0;
+
         while (it.hasNext()) {
             K k = it.next();
             CacheEntry<V> entry = cache.get(k);
             if (entry != null && entry.isExpired()) {
                 it.remove();
                 cache.remove(k);
+                ++expiredCount;
                 notifyEviction(k, entry.value);
             }
         }
+
+        return expiredCount;
     }
 
     /**
@@ -277,6 +284,13 @@ public final class RRCache<K, V> {
     public int size() {
         lock.lock();
         try {
+            int cachedSize = cache.size();
+            int evictedCount = evictionStrategy.onAccess(this);
+            if (evictedCount > 0) {
+                return cachedSize - evictedCount;
+            }
+
+            // This runs if periodic eviction does not occur
             int count = 0;
             for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
                 if (!entry.getValue().isExpired()) {
@@ -315,11 +329,78 @@ public final class RRCache<K, V> {
     }
 
     /**
-     * A builder for creating instances of {@link RRCache} with custom configuration.
+     * A strategy interface for controlling when expired entries are evicted from the cache.
      *
-     * <p>This static inner class allows you to configure parameters such as cache capacity,
-     * default TTL (time-to-live), random eviction behavior, and an optional eviction listener.
-     * Once configured, use {@link #build()} to create the {@code RRCache} instance.
+     * <p>Implementations decide whether and when to trigger {@link RRCache#evictExpired()} based
+     * on cache usage patterns. This allows for flexible eviction behaviour such as periodic cleanup,
+     * or no automatic cleanup.
+     *
+     * @param <K> the type of keys maintained by the cache
+     * @param <V> the type of cached values
+     */
+    public interface EvictionStrategy<K, V> {
+        /**
+         * Called on each cache access (e.g., {@link RRCache#get(Object)}) to optionally trigger eviction.
+         *
+         * @param cache the cache instance on which this strategy is applied
+         * @return the number of expired entries evicted during this access
+         */
+        int onAccess(RRCache<K, V> cache);
+    }
+
+    /**
+     * An eviction strategy that performs eviction of expired entries on each call.
+     *
+     * @param <K> the type of keys
+     * @param <V> the type of values
+     */
+    public static class NoEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
+        @Override public int onAccess(RRCache<K, V> cache) {
+            return cache.evictExpired();
+        }
+    }
+
+    /**
+     * An eviction strategy that triggers eviction every fixed number of accesses.
+     *
+     * <p>This deterministic strategy ensures cleanup occurs at predictable intervals,
+     * ideal for moderately active caches where memory usage is a concern.
+     *
+     * @param <K> the type of keys
+     * @param <V> the type of values
+     */
+    public static class PeriodicEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
+        private final int interval;
+        private int counter = 0;
+
+        /**
+         * Constructs a periodic eviction strategy.
+         *
+         * @param interval the number of accesses between evictions; must be > 0
+         * @throws IllegalArgumentException if {@code interval} is less than or equal to 0
+         */
+        public PeriodicEvictionStrategy(int interval) {
+            if (interval <= 0) {
+                throw new IllegalArgumentException("Interval must be > 0");
+            }
+            this.interval = interval;
+        }
+
+        @Override
+        public int onAccess(RRCache<K, V> cache) {
+            if (++counter % interval == 0) {
+                return cache.evictExpired();
+            }
+
+            return 0;
+        }
+    }
+
+    /**
+     * A builder for constructing an {@link RRCache} instance with customizable settings.
+     *
+     * <p>Allows configuring capacity, default TTL, random eviction behavior, eviction listener,
+     * and a pluggable eviction strategy. Call {@link #build()} to create the configured cache instance.
      *
      * @param <K> the type of keys maintained by the cache
      * @param <V> the type of values stored in the cache
@@ -329,7 +410,7 @@ public final class RRCache<K, V> {
         private long defaultTTL = 0;
         private Random random;
         private BiConsumer<K, V> evictionListener;
-
+        private EvictionStrategy<K, V> evictionStrategy = new RRCache.PeriodicEvictionStrategy<>(100);
         /**
          * Creates a new {@code Builder} with the specified cache capacity.
          *
@@ -395,6 +476,21 @@ public final class RRCache<K, V> {
          */
         public RRCache<K, V> build() {
             return new RRCache<>(this);
+        }
+
+        /**
+         * Sets the eviction strategy used to determine when to clean up expired entries.
+         *
+         * @param strategy an {@link EvictionStrategy} implementation; must not be {@code null}
+         * @return this builder instance
+         * @throws IllegalArgumentException if {@code strategy} is {@code null}
+         */
+        public Builder<K, V> evictionStrategy(EvictionStrategy<K, V> strategy) {
+            if (strategy == null) {
+                throw new IllegalArgumentException("Eviction strategy must not be null");
+            }
+            this.evictionStrategy = strategy;
+            return this;
         }
     }
 }

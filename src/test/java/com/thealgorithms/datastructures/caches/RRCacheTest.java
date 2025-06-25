@@ -155,4 +155,57 @@ class RRCacheTest {
         Executable exec = () -> new RRCache.Builder<String, String>(3).defaultTTL(-1).build();
         Assertions.assertThrows(IllegalArgumentException.class, exec);
     }
+
+    @Test
+    void testPeriodicEvictionStrategyEvictsAtInterval() throws InterruptedException {
+        RRCache<String, String> periodicCache = new RRCache.Builder<String, String>(10)
+                .defaultTTL(50)
+                .evictionStrategy(new RRCache.PeriodicEvictionStrategy<>(3))
+                .build();
+
+        periodicCache.put("x", "1");
+        int ev1 = periodicCache.size();
+        int ev2 = periodicCache.size();
+        Thread.sleep(50);
+        int ev3 = periodicCache.size();
+
+        Assertions.assertEquals(1, ev1);
+        Assertions.assertEquals(1, ev2);
+        Assertions.assertEquals(0, ev3, "Eviction should happen on the 3rd access");
+        Assertions.assertEquals(0, cache.size());
+    }
+
+    @Test
+    void testPeriodicEvictionStrategyThrowsExceptionIfIntervalLessThanOrEqual0() {
+        Executable executable = () -> new RRCache.Builder<String, String>(10)
+                .defaultTTL(50)
+                .evictionStrategy(new RRCache.PeriodicEvictionStrategy<>(0))
+                .build();
+
+        Assertions.assertThrows(IllegalArgumentException.class, executable);
+    }
+
+    @Test
+    void testNoEvictionStrategyEvictsOnEachCall() throws InterruptedException {
+        RRCache<String, String> noEvictionStrategyCache = new RRCache.Builder<String, String>(10)
+                .defaultTTL(50)
+                .evictionStrategy(new RRCache.NoEvictionStrategy<>())
+                .build();
+
+        noEvictionStrategyCache.put("x", "1");
+        Thread.sleep(50);
+        int size = noEvictionStrategyCache.size();
+
+        Assertions.assertEquals(0, size);
+    }
+
+    @Test
+    void testBuilderThrowsExceptionIfEvictionStrategyNull() {
+        Executable executable = () -> new RRCache.Builder<String, String>(10)
+                .defaultTTL(50)
+                .evictionStrategy(null)
+                .build();
+
+        Assertions.assertThrows(IllegalArgumentException.class, executable);
+    }
 }
