@@ -8,6 +8,9 @@ name: ProjectStructure
       - master
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check_structure:
     runs-on: ubuntu-latest
