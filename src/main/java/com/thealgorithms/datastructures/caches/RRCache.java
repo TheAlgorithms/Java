@@ -212,7 +212,6 @@ public final class RRCache<K, V> {
                 notifyEviction(k, entry.value);
             }
         }
-
         return expiredCount;
     }
 
@@ -304,6 +303,15 @@ public final class RRCache<K, V> {
     }
 
     /**
+     * Returns the current {@link EvictionStrategy} used by this cache instance.
+
+     * @return the eviction strategy currently assigned to this cache
+     */
+    public EvictionStrategy<K, V> getEvictionStrategy() {
+        return evictionStrategy;
+    }
+
+    /**
      * Returns a string representation of the cache, including metadata and current non-expired entries.
      *
      * <p>The returned string includes the cache's capacity, current size (excluding expired entries),
@@ -355,7 +363,8 @@ public final class RRCache<K, V> {
      * @param <V> the type of values
      */
     public static class NoEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
-        @Override public int onAccess(RRCache<K, V> cache) {
+        @Override
+        public int onAccess(RRCache<K, V> cache) {
             return cache.evictExpired();
         }
     }

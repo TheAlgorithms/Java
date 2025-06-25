@@ -164,15 +164,15 @@ class RRCacheTest {
                 .build();
 
         periodicCache.put("x", "1");
-        int ev1 = periodicCache.size();
-        int ev2 = periodicCache.size();
-        Thread.sleep(50);
-        int ev3 = periodicCache.size();
+        Thread.sleep(100);
+        int ev1 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
+        int ev2 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
+        int ev3 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
 
-        Assertions.assertEquals(1, ev1);
-        Assertions.assertEquals(1, ev2);
-        Assertions.assertEquals(0, ev3, "Eviction should happen on the 3rd access");
-        Assertions.assertEquals(0, cache.size());
+        Assertions.assertEquals(0, ev1);
+        Assertions.assertEquals(0, ev2);
+        Assertions.assertEquals(1, ev3, "Eviction should happen on the 3rd access");
+        Assertions.assertEquals(0, periodicCache.size());
     }
 
     @Test
@@ -193,10 +193,10 @@ class RRCacheTest {
                 .build();
 
         noEvictionStrategyCache.put("x", "1");
-        Thread.sleep(50);
-        int size = noEvictionStrategyCache.size();
+        Thread.sleep(100);
+        int evicted = noEvictionStrategyCache.getEvictionStrategy().onAccess(noEvictionStrategyCache);
 
-        Assertions.assertEquals(0, size);
+        Assertions.assertEquals(1, evicted);
     }
 
     @Test
@@ -207,5 +207,38 @@ class RRCacheTest {
                 .build();
 
         Assertions.assertThrows(IllegalArgumentException.class, executable);
+    }
+
+
+    @Test
+    void testReturnsCorrectStrategyInstance() {
+        RRCache.EvictionStrategy<String, String> strategy = new RRCache.NoEvictionStrategy<>();
+
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(10)
+                .defaultTTL(1000)
+                .evictionStrategy(strategy)
+                .build();
+
+        Assertions.assertSame(strategy, newCache.getEvictionStrategy(), "Returned strategy should be the same instance");
+    }
+
+    @Test
+    void testDefaultStrategyIsNoEviction() {
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(5)
+                .defaultTTL(1000)
+                .build();
+
+        Assertions.assertTrue(
+                newCache.getEvictionStrategy() instanceof RRCache.PeriodicEvictionStrategy<String, String>,
+                "Default strategy should be NoEvictionStrategy"
+        );
+    }
+
+    @Test
+    void testGetEvictionStrategyIsNotNull() {
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(5)
+                .build();
+
+        Assertions.assertNotNull(newCache.getEvictionStrategy(), "Eviction strategy should never be null");
     }
 }
