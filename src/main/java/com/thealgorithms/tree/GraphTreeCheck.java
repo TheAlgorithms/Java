@@ -6,7 +6,6 @@ import java.util.Scanner;
  * Check if an undirected graph is a tree using Depth-First Search (DFS).
  * A graph is a tree if it is connected and acyclic.
  * This implementation reads an adjacency matrix as input and verifies both conditions.
- * 
  * Wikipedia Reference: https://en.wikipedia.org/wiki/Tree_(graph_theory)
  * Author: Aman
  */
