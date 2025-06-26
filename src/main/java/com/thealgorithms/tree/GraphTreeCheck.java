@@ -9,13 +9,11 @@ import java.util.Scanner;
  * Wikipedia Reference: https://en.wikipedia.org/wiki/Tree_(graph_theory)
  * Author: Aman
  */
-
-
 class GraphTreeCheck {
 
     private static final int MAX = 10;
-    private int[][] adjMatrix = new int[MAX][MAX];
-    private boolean[] visited = new boolean[MAX];
+    private final int[][] adjMatrix = new int[MAX][MAX];
+    private final boolean[] visited = new boolean[MAX];
     private int nodes;
 
     public static void main(String[] args) {
@@ -40,6 +38,8 @@ class GraphTreeCheck {
         } else {
             System.out.println("The graph is NOT a tree.");
         }
+
+        in.close();
     }
 
     public boolean isTree() {
@@ -73,6 +73,7 @@ class GraphTreeCheck {
                 }
             }
         }
+
         return false;
     }
 }
