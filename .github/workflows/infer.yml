@@ -8,6 +8,9 @@ name: Infer
       - master
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   run_infer:
     runs-on: ubuntu-latest
