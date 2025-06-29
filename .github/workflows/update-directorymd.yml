@@ -39,7 +39,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH_NAME }}
+          branch: update-directory-md-${{ github.run_id }}
           title: "Update DIRECTORY.md"
           body: |
             This pull request updates the `DIRECTORY.md` file automatically.
