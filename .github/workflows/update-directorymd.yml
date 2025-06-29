@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  workflows: write
 
 jobs:
   generate-directory:
@@ -32,9 +33,8 @@ jobs:
       
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
         with:
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
           branch: update-directory
           base: master
           title: "Update DIRECTORY.md"
