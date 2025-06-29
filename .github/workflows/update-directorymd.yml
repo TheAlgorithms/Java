@@ -1,4 +1,4 @@
-﻿name: Generate Directory Markdown
+name: Generate Directory Markdown
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   generate-directory:
@@ -22,12 +23,19 @@ jobs:
           extensions: .java
           show-extensions: false
 
-      - name: Commit and Push DIRECTORY.md
+      - name: Commit changes
         run: |
-          cat DIRECTORY.md
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git add DIRECTORY.md
-          git commit -am "Update directory" || true
-          git push origin HEAD:$GITHUB_REF
+          git diff --cached --quiet || git commit -m "Update DIRECTORY.md"
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: update-directory
+          base: master
+          title: "Update DIRECTORY.md"
+          body: "Automatically generated update of the directory tree."
+          commit-message: "Update DIRECTORY.md"
+          draft: false
