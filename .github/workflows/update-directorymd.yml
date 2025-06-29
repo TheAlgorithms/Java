@@ -32,6 +32,8 @@ jobs:
       
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
         with:
           branch: update-directory
           base: master
