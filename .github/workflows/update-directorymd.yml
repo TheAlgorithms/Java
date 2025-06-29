@@ -22,12 +22,25 @@ jobs:
           extensions: .java
           show-extensions: false
 
-      - name: Commit and Push DIRECTORY.md
+      - name: Create branch, commit changes and open pull request
+        env:
+          BRANCH_NAME: update-directory-md-${{ github.run_id }}
         run: |
-          cat DIRECTORY.md
-          git config --global user.name "$GITHUB_ACTOR"
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+          git checkout -b $BRANCH_NAME
+
           git add DIRECTORY.md
-          git commit -am "Update directory" || true
-          git push origin HEAD:$GITHUB_REF
+          git commit -m "chore: update DIRECTORY.md" || echo "No changes to commit"
+          git push origin $BRANCH_NAME
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          title: "Update DIRECTORY.md"
+          body: |
+            This pull request updates the `DIRECTORY.md` file automatically.
+          base: master
