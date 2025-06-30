@@ -131,6 +131,7 @@
             - 📄 [LFUCache](src/main/java/com/thealgorithms/datastructures/caches/LFUCache.java)
             - 📄 [LRUCache](src/main/java/com/thealgorithms/datastructures/caches/LRUCache.java)
             - 📄 [MRUCache](src/main/java/com/thealgorithms/datastructures/caches/MRUCache.java)
+            - 📄 [RRCache](src/main/java/com/thealgorithms/datastructures/caches/RRCache.java)
           - 📁 **crdt**
             - 📄 [GCounter](src/main/java/com/thealgorithms/datastructures/crdt/GCounter.java)
             - 📄 [GSet](src/main/java/com/thealgorithms/datastructures/crdt/GSet.java)
@@ -872,6 +873,7 @@
             - 📄 [LFUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LFUCacheTest.java)
             - 📄 [LRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LRUCacheTest.java)
             - 📄 [MRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/MRUCacheTest.java)
+            - 📄 [RRCacheTest](src/test/java/com/thealgorithms/datastructures/caches/RRCacheTest.java)
           - 📁 **crdt**
             - 📄 [GCounterTest](src/test/java/com/thealgorithms/datastructures/crdt/GCounterTest.java)
             - 📄 [GSetTest](src/test/java/com/thealgorithms/datastructures/crdt/GSetTest.java)
