@@ -3,10 +3,12 @@ package com.thealgorithms.tree;
 public class BinarySearchTree {
     class Node {
         int key;
-        Node left, right;
+        Node left;
+        Node right;
         Node(int key) {
             this.key = key;
-            left = right = null;
+            left = null;
+            right = null;
         }
     }
 
@@ -18,7 +20,8 @@ public class BinarySearchTree {
 
     public Node insertRec(Node root, int key) {
         if (root == null) {
-            return new Node(key);
+            root = new Node(key);
+            return root;
         }
         if (key < root.key) {
             root.left = insertRec(root.left, key);
