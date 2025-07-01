@@ -29,7 +29,7 @@ public class RowColumnWiseSorted2dArrayBinarySearch implements MatrixSearchAlgor
 
     public static <T extends Comparable<T>> int[] search(T[][] matrix, T target) {
         int rowPointer = 0; // The pointer at 0th row
-        int colPointer = matrix.length - 1; // The pointer at end column
+        int colPointer = matrix[0].length - 1; // The pointer at end column
 
         while (rowPointer < matrix.length && colPointer >= 0) {
             int comp = target.compareTo(matrix[rowPointer][colPointer]);
