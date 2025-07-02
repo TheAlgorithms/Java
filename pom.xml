@@ -113,14 +113,14 @@
                     <dependency>
                     <groupId>com.puppycrawl.tools</groupId>
                     <artifactId>checkstyle</artifactId>
-                    <version>10.26.0</version>
+                    <version>10.26.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.9.3.1</version>
+                <version>4.9.3.2</version>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
                     <includeTests>true</includeTests>
