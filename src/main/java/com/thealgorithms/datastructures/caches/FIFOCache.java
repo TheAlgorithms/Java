@@ -206,14 +206,13 @@ public final class FIFOCache<K, V> {
      */
     private int evictExpired() {
         int count = 0;
-        Iterator<K> it = cache.keySet().iterator();
+        Iterator<Map.Entry<K, CacheEntry<V>>> it = cache.entrySet().iterator();
 
         while (it.hasNext()) {
-            K k = it.next();
-            CacheEntry<V> entry = cache.get(k);
-            if (entry != null && entry.isExpired()) {
+            Map.Entry<K, CacheEntry<V>> entry = it.next();
+            if (entry != null && entry.getValue().isExpired()) {
                 it.remove();
-                notifyEviction(k, entry.value);
+                notifyEviction(entry.getKey(), entry.getValue().value);
                 count++;
             }
         }
