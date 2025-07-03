@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Directory Tree Generator
-        uses: DenizAltunkapan/directory-tree-generator@v2
+        uses: DenizAltunkapan/directory-tree-generator@v3
         with:
           path: src
           extensions: .java
