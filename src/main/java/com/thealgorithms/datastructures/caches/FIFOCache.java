@@ -201,8 +201,8 @@ public final class FIFOCache<K, V> {
      * Removes all expired entries from the cache.
      *
      * <p>This method iterates through the list of cached keys and checks each associated
-     * entry for expiration. Expired entries are removed from both the key tracking list
-     * and the cache map. For each eviction, the eviction listener is notified.
+     * entry for expiration. Expired entries are removed the cache map. For each eviction,
+     * the eviction listener is notified.
      */
     private int evictExpired() {
         int count = 0;
@@ -223,9 +223,8 @@ public final class FIFOCache<K, V> {
     /**
      * Removes the specified key and its associated entry from the cache.
      *
-     * <p>This method deletes the key from both the cache map and the key tracking list.
-     *
-     * @param key the key to remove from the cache
+     * @param key the key to remove from the cache;
+     * @return the value associated with the key;  or {@code null} if no such key exists
      */
     public V removeKey(K key) {
         if (key == null) {
@@ -233,8 +232,8 @@ public final class FIFOCache<K, V> {
         }
         CacheEntry<V> entry = cache.remove(key);
 
+        // No such key in cache
         if (entry == null) {
-            notifyEviction(key, null);
             return null;
         }
 
