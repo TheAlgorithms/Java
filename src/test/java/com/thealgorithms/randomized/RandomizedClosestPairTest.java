@@ -45,5 +45,4 @@ public class RandomizedClosestPairTest {
         double result = RandomizedClosestPair.findClosestPairDistance(points);
         assertTrue(result < 0.01); // distance should be covered by strip logic
     }
-
 }
