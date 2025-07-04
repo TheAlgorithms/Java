@@ -1,12 +1,8 @@
 package com.thealgorithms.randomized;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.randomized.RandomizedClosestPair.Point;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import org.junit.jupiter.api.Test;
 
 public class RandomizedClosestPairTest {
