@@ -2,7 +2,11 @@ package com.thealgorithms.randomized;
 
 import java.util.Random;
 
-public class RandomizedMatrixMultiplicationVerification {
+public final class RandomizedMatrixMultiplicationVerification {
+
+    private RandomizedMatrixMultiplicationVerification() {
+        // Prevent instantiation of utility class
+    }
 
     /**
      * Verifies whether A × B == C using Freivalds' algorithm.
@@ -12,8 +16,8 @@ public class RandomizedMatrixMultiplicationVerification {
      * @param iterations Number of randomized checks
      * @return true if likely A×B == C; false if definitely not
      */
-    public static boolean verify(int[][] A, int[][] B, int[][] C, int iterations) {
-        int n = A.length;
+    public static boolean verify(int[][] a, int[][] b, int[][] c, int iterations) {
+        int n = a.length;
         Random random = new Random();
 
         for (int iter = 0; iter < iterations; iter++) {
@@ -23,33 +27,33 @@ public class RandomizedMatrixMultiplicationVerification {
                 r[i] = random.nextInt(2);
             }
 
-            // Step 2: Compute Br = B × r
-            int[] Br = new int[n];
+            // Step 2: Compute br = b × r
+            int[] br = new int[n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    Br[i] += B[i][j] * r[j];
+                    br[i] += b[i][j] * r[j];
                 }
             }
 
-            // Step 3: Compute A(Br)
-            int[] ABr = new int[n];
+            // Step 3: Compute a(br)
+            int[] abr = new int[n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    ABr[i] += A[i][j] * Br[j];
+                    abr[i] += a[i][j] * br[j];
                 }
             }
 
-            // Step 4: Compute Cr = C × r
-            int[] Cr = new int[n];
+            // Step 4: Compute cr = c × r
+            int[] cr = new int[n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    Cr[i] += C[i][j] * r[j];
+                    cr[i] += c[i][j] * r[j];
                 }
             }
 
-            // Step 5: Compare ABr and Cr
+            // Step 5: Compare abr and cr
             for (int i = 0; i < n; i++) {
-                if (ABr[i] != Cr[i]) {
+                if (abr[i] != cr[i]) {
                     return false;
                 }
             }
