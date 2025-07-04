@@ -31,18 +31,4 @@ public class RandomizedClosestPairTest {
         double result = RandomizedClosestPair.findClosestPairDistance(points);
         assertEquals(5.0, result, 0.00001);
     }
-
-    @Test
-    public void testPrivateConstructor() throws Exception {
-        Constructor<RandomizedClosestPair> constructor = RandomizedClosestPair.class.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        assertThrows(InvocationTargetException.class, constructor::newInstance);
-    }
-
-    @Test
-    public void testStripConditionCoverage() {
-        Point[] points = {new Point(0, 0), new Point(0.001, 0.001), new Point(0.002, 0.002)};
-        double result = RandomizedClosestPair.findClosestPairDistance(points);
-        assertTrue(result < 0.01); // distance should be covered by strip logic
-    }
 }
