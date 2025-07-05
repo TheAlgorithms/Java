@@ -568,6 +568,8 @@
         - 📁 **randomized**
           - 📄 [KargerMinCut](src/main/java/com/thealgorithms/randomized/KargerMinCut.java)
           - 📄 [MonteCarloIntegration](src/main/java/com/thealgorithms/randomized/MonteCarloIntegration.java)
+          - 📄 [RandomizedClosestPair](src/main/java/com/thealgorithms/randomized/RandomizedClosestPair.java)
+          - 📄 [RandomizedMatrixMultiplicationVerification](src/main/java/com/thealgorithms/randomized/RandomizedMatrixMultiplicationVerification.java)
           - 📄 [RandomizedQuickSort](src/main/java/com/thealgorithms/randomized/RandomizedQuickSort.java)
           - 📄 [ReservoirSampling](src/main/java/com/thealgorithms/randomized/ReservoirSampling.java)
         - 📁 **recursion**
@@ -1233,6 +1235,8 @@
         - 📁 **randomized**
           - 📄 [KargerMinCutTest](src/test/java/com/thealgorithms/randomized/KargerMinCutTest.java)
           - 📄 [MonteCarloIntegrationTest](src/test/java/com/thealgorithms/randomized/MonteCarloIntegrationTest.java)
+          - 📄 [RandomizedClosestPairTest](src/test/java/com/thealgorithms/randomized/RandomizedClosestPairTest.java)
+          - 📄 [RandomizedMatrixMultiplicationVerificationTest](src/test/java/com/thealgorithms/randomized/RandomizedMatrixMultiplicationVerificationTest.java)
           - 📄 [RandomizedQuickSortTest](src/test/java/com/thealgorithms/randomized/RandomizedQuickSortTest.java)
           - 📄 [ReservoirSamplingTest](src/test/java/com/thealgorithms/randomized/ReservoirSamplingTest.java)
         - 📁 **recursion**
