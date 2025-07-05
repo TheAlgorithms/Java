@@ -128,6 +128,7 @@
           - 📁 **buffers**
             - 📄 [CircularBuffer](src/main/java/com/thealgorithms/datastructures/buffers/CircularBuffer.java)
           - 📁 **caches**
+            - 📄 [FIFOCache](src/main/java/com/thealgorithms/datastructures/caches/FIFOCache.java)
             - 📄 [LFUCache](src/main/java/com/thealgorithms/datastructures/caches/LFUCache.java)
             - 📄 [LRUCache](src/main/java/com/thealgorithms/datastructures/caches/LRUCache.java)
             - 📄 [MRUCache](src/main/java/com/thealgorithms/datastructures/caches/MRUCache.java)
@@ -872,6 +873,7 @@
           - 📁 **buffers**
             - 📄 [CircularBufferTest](src/test/java/com/thealgorithms/datastructures/buffers/CircularBufferTest.java)
           - 📁 **caches**
+            - 📄 [FIFOCacheTest](src/test/java/com/thealgorithms/datastructures/caches/FIFOCacheTest.java)
             - 📄 [LFUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LFUCacheTest.java)
             - 📄 [LRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LRUCacheTest.java)
             - 📄 [MRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/MRUCacheTest.java)
