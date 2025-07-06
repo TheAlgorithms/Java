@@ -144,11 +144,14 @@ public class BubbleSortTest {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof Person)) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
                 return false;
             }
-            Person p = (Person) o;
-            return this.name.equals(p.name) && this.age == p.age;
+            Person person = (Person) o;
+            return age == person.age && Objects.equals(name, person.name);
         }
 
         @Override
