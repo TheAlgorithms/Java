@@ -3,10 +3,9 @@ package com.thealgorithms.sorts;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
+import java.util.Objects;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Objects;
 
 public class GnomeSortTest {
 
@@ -153,14 +152,14 @@ public class GnomeSortTest {
     @DisplayName("GnomeSort Custom Object Array")
     public void testSortCustomObjects() {
         Person[] inputArray = {
-                new Person("Alice", 32),
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
+            new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
         };
         Person[] expectedOutput = {
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
-                new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
+            new Person("Alice", 32),
         };
         Person[] outputArray = gnomeSort.sort(inputArray);
         assertArrayEquals(expectedOutput, outputArray);

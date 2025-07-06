@@ -179,14 +179,14 @@ class InsertionSortTest {
     @Test
     public void testSortCustomObjects() {
         Person[] inputArray = {
-                new Person("Alice", 32),
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
+            new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
         };
         Person[] expectedOutput = {
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
-                new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
+            new Person("Alice", 32),
         };
         Person[] outputArray = insertionSort.sort(inputArray);
         assertArrayEquals(expectedOutput, outputArray);

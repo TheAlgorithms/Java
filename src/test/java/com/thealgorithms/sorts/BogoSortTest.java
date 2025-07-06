@@ -2,9 +2,8 @@ package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 public class BogoSortTest {
 
@@ -131,14 +130,14 @@ public class BogoSortTest {
     @Test
     public void bogoSortCustomObjects() {
         Person[] inputArray = {
-                new Person("Alice", 32),
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
+            new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
         };
         Person[] expectedOutput = {
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
-                new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
+            new Person("Alice", 32),
         };
         Person[] outputArray = bogoSort.sort(inputArray);
         assertArrayEquals(expectedOutput, outputArray);

@@ -2,9 +2,8 @@ package com.thealgorithms.sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Objects;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Rebecca Velez (https://github.com/rebeccavelez)
@@ -144,14 +143,14 @@ public class SlowSortTest {
     @Test
     public void testSortCustomObjects() {
         Person[] inputArray = {
-                new Person("Alice", 32),
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
+            new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
         };
         Person[] expectedOutput = {
-                new Person("Bob", 25),
-                new Person("Charlie", 28),
-                new Person("Alice", 32),
+            new Person("Bob", 25),
+            new Person("Charlie", 28),
+            new Person("Alice", 32),
         };
         Person[] outputArray = slowSort.sort(inputArray);
         assertArrayEquals(expectedOutput, outputArray);
