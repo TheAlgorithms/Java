@@ -7,35 +7,34 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/*
-* MapReduce is a programming model for processing and generating large data sets with a parallel,
-distributed algorithm on a cluster.
-* It has two main steps: the Map step, where the data is divided into smaller chunks and processed in parallel,
-and the Reduce step, where the results from the Map step are combined to produce the final output.
-* Wikipedia link : https://en.wikipedia.org/wiki/MapReduce
-*/
-
+/**
+ * MapReduce is a programming model for processing and generating large data sets
+ * using a parallel, distributed algorithm on a cluster.
+ * It consists of two main phases:
+ * - Map: the input data is split into smaller chunks and processed in parallel.
+ * - Reduce: the results from the Map phase are aggregated to produce the final output.
+ *
+ * See also: https://en.wikipedia.org/wiki/MapReduce
+ */
 public final class MapReduce {
+
     private MapReduce() {
     }
-    /*
-     *Counting all the words frequency within a sentence.
+
+    /**
+     * Counts the frequency of each word in a given sentence using a simple MapReduce-style approach.
+     *
+     * @param sentence the input sentence
+     * @return a string representing word frequencies in the format "word: count,word: count,..."
      */
-    public static String mapreduce(String sentence) {
-        List<String> wordList = Arrays.stream(sentence.split(" ")).toList();
+    public static String countWordFrequencies(String sentence) {
+        // Map phase: split the sentence into words
+        List<String> words = Arrays.asList(sentence.trim().split("\\s+"));
 
-        // Map step
-        Map<String, Long> wordCounts = wordList.stream().collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
+        // Group and count occurrences of each word, maintain insertion order
+        Map<String, Long> wordCounts = words.stream().collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
 
-        // Reduce step
-        StringBuilder result = new StringBuilder();
-        wordCounts.forEach((word, count) -> result.append(word).append(": ").append(count).append(","));
-
-        // Removing the last ',' if it exists
-        if (!result.isEmpty()) {
-            result.setLength(result.length() - 1);
-        }
-
-        return result.toString();
+        // Reduce phase: format the result
+        return wordCounts.entrySet().stream().map(entry -> entry.getKey() + ": " + entry.getValue()).collect(Collectors.joining(","));
     }
 }
