@@ -144,7 +144,9 @@ public class BubbleSortTest {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof Person)) return false;
+            if (!(o instanceof Person)) {
+                return false;
+            }
             Person p = (Person) o;
             return this.name.equals(p.name) && this.age == p.age;
         }

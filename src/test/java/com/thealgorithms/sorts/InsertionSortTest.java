@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Objects;
 import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class InsertionSortTest {
@@ -165,7 +164,9 @@ class InsertionSortTest {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof Person)) return false;
+            if (!(o instanceof Person)) {
+                return false;
+            }
             Person p = (Person) o;
             return this.name.equals(p.name) && this.age == p.age;
         }
