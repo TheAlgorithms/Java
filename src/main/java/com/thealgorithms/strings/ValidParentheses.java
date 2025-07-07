@@ -20,11 +20,7 @@ public final class ValidParentheses {
     private ValidParentheses() {
     }
 
-    private static final Map<Character, Character> BRACKET_PAIRS = Map.of(
-            ')', '(',
-            '}', '{',
-            ']', '['
-    );
+    private static final Map<Character, Character> BRACKET_PAIRS = Map.of(')', '(', '}', '{', ']', '[');
 
     /**
      * Checks if the input string has valid parentheses.
