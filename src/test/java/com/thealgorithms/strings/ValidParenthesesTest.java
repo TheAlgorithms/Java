@@ -2,20 +2,14 @@ package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ValidParenthesesTest {
 
     @ParameterizedTest(name = "Input: \"{0}\" → Expected: {1}")
-    @MethodSource("parenthesesProvider")
+    @CsvSource({"'()', true", "'()[]{}', true", "'(]', false", "'{[]}', true", "'([{}])', true", "'([)]', false", "'', true", "'(', false", "')', false"})
     void testIsValid(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
-    }
-
-    static Stream<Arguments> parenthesesProvider() {
-        return Stream.of(Arguments.of("()", true), Arguments.of("()[]{}", true), Arguments.of("(]", false), Arguments.of("{[]}", true), Arguments.of("([{}])", true), Arguments.of("([)]", false), Arguments.of("", true), Arguments.of("(", false), Arguments.of(")", false));
     }
 }
