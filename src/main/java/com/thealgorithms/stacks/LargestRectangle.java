@@ -38,7 +38,7 @@ public final class LargestRectangle {
                 maxArea = Math.max(maxArea, popped[1] * (i - popped[0]));
                 start = popped[0];
             }
-            stack.push(new int[]{start, heights[i]});
+            stack.push(new int[] {start, heights[i]});
         }
 
         int totalLength = heights.length;
