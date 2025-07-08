@@ -1,59 +1,53 @@
 package com.thealgorithms.strings;
-//        Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine
-//        if the input string is valid. An input string is valid if: Open brackets must be closed by
-//        the same type of brackets. Open brackets must be closed in the correct order. Every close
-//        bracket has a corresponding open bracket of the same type.
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Map;
+
+/**
+ * Validates if a given string has valid matching parentheses.
+ * <p>
+ * A string is considered valid if:
+ * <ul>
+ *     <li>Open brackets are closed by the same type of brackets.</li>
+ *     <li>Brackets are closed in the correct order.</li>
+ *     <li>Every closing bracket has a corresponding open bracket of the same type.</li>
+ * </ul>
+ *
+ * Allowed characters: '(', ')', '{', '}', '[', ']'
+ */
 public final class ValidParentheses {
     private ValidParentheses() {
     }
+
+    private static final Map<Character, Character> BRACKET_PAIRS = Map.of(')', '(', '}', '{', ']', '[');
+
+    /**
+     * Checks if the input string has valid parentheses.
+     *
+     * @param s the string containing only bracket characters
+     * @return true if valid, false otherwise
+     * @throws IllegalArgumentException if the string contains invalid characters or is null
+     */
     public static boolean isValid(String s) {
-        char[] stack = new char[s.length()];
-        int head = 0;
+        if (s == null) {
+            throw new IllegalArgumentException("Input string cannot be null");
+        }
+
+        Deque<Character> stack = new ArrayDeque<>();
+
         for (char c : s.toCharArray()) {
-            switch (c) {
-            case '{':
-            case '[':
-            case '(':
-                stack[head++] = c;
-                break;
-            case '}':
-                if (head == 0 || stack[--head] != '{') {
+            if (BRACKET_PAIRS.containsValue(c)) {
+                stack.push(c); // opening bracket
+            } else if (BRACKET_PAIRS.containsKey(c)) {
+                if (stack.isEmpty() || stack.pop() != BRACKET_PAIRS.get(c)) {
                     return false;
                 }
-                break;
-            case ')':
-                if (head == 0 || stack[--head] != '(') {
-                    return false;
-                }
-                break;
-            case ']':
-                if (head == 0 || stack[--head] != '[') {
-                    return false;
-                }
-                break;
-            default:
+            } else {
                 throw new IllegalArgumentException("Unexpected character: " + c);
             }
         }
-        return head == 0;
-    }
-    public static boolean isValidParentheses(String s) {
-        int i = -1;
-        char[] stack = new char[s.length()];
-        String openBrackets = "({[";
-        String closeBrackets = ")}]";
-        for (char ch : s.toCharArray()) {
-            if (openBrackets.indexOf(ch) != -1) {
-                stack[++i] = ch;
-            } else {
-                if (i >= 0 && openBrackets.indexOf(stack[i]) == closeBrackets.indexOf(ch)) {
-                    i--;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return i == -1;
+
+        return stack.isEmpty();
     }
 }
