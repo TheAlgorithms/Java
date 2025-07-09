@@ -21,7 +21,7 @@ public final class RangeInSortedArray {
      */
     public static int[] sortedRange(int[] nums, int key) {
         int[] range = new int[] { -1, -1 };
-        alteredBinSearchIter(nums, key, 0, nums.length - 1, range, true);  // find left boundary
+        alteredBinSearchIter(nums, key, 0, nums.length - 1, range, true); // find left boundary
         alteredBinSearchIter(nums, key, 0, nums.length - 1, range, false); // find right boundary
         return range;
     }
@@ -125,7 +125,7 @@ public final class RangeInSortedArray {
                 right = mid - 1;
             } else {
                 // nums[mid] <= key
-                count = mid + 1;  // all elements from 0 to mid inclusive are <= key
+                count = mid + 1; // all elements from 0 to mid inclusive are <= key
                 left = mid + 1;
             }
         }
