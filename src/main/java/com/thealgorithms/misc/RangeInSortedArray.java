@@ -20,7 +20,7 @@ public final class RangeInSortedArray {
      *         or [-1, -1] if the key does not exist in the array.
      */
     public static int[] sortedRange(int[] nums, int key) {
-        int[] range = new int[] { -1, -1 };
+        int[] range = new int[] {-1, -1};
         alteredBinSearchIter(nums, key, 0, nums.length - 1, range, true); // find left boundary
         alteredBinSearchIter(nums, key, 0, nums.length - 1, range, false); // find right boundary
         return range;
