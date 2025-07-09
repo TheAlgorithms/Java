@@ -114,4 +114,3 @@ public final class InfixToPrefix {
         return matcher.replaceAll("");
     }
 }
-
