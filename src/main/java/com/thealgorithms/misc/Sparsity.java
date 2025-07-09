@@ -1,40 +1,46 @@
 package com.thealgorithms.misc;
 
-/*
- *A matrix is sparse if many of its coefficients are zero (In general if 2/3rd of matrix elements
- *are 0, it is considered as sparse). The interest in sparsity arises because its exploitation can
- *lead to enormous computational savings and because many large matrix problems that occur in
- *practice are sparse.
+/**
+ * Utility class for calculating the sparsity of a matrix.
+ * A matrix is considered sparse if a large proportion of its elements are zero.
+ * Typically, if more than 2/3 of the elements are zero, the matrix is considered sparse.
  *
- * @author Ojasva Jain
+ * Sparsity is defined as:
+ * sparsity = (number of zero elements) / (total number of elements)
+ *
+ * This can lead to significant computational optimizations.
  */
+public final class Sparsity {
 
-final class Sparsity {
     private Sparsity() {
     }
 
-    /*
-     * @param mat the input matrix
-     * @return Sparsity of matrix
+    /**
+     * Calculates the sparsity of a given 2D matrix.
      *
-     * where sparsity = number of zeroes/total elements in matrix
-     *
+     * @param matrix the input matrix
+     * @return the sparsity value between 0 and 1
+     * @throws IllegalArgumentException if the matrix is null, empty, or contains empty rows
      */
-    static double sparsity(double[][] mat) {
-        if (mat == null || mat.length == 0) {
+    public static double sparsity(double[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             throw new IllegalArgumentException("Matrix cannot be null or empty");
         }
 
-        int zero = 0;
-        // Traversing the matrix to count number of zeroes
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat[i].length; j++) {
-                if (mat[i][j] == 0) {
-                    zero++;
+        int zeroCount = 0;
+        int totalElements = 0;
+
+        // Count the number of zero elements and total elements
+        for (double[] row : matrix) {
+            for (double value : row) {
+                if (value == 0.0) {
+                    zeroCount++;
                 }
+                totalElements++;
             }
         }
-        // return sparsity
-        return ((double) zero / (mat.length * mat[0].length));
+
+        // Return sparsity as a double
+        return (double) zeroCount / totalElements;
     }
 }
