@@ -33,8 +33,7 @@ public final class LongestCommonPrefix {
         String last = strs[strs.length - 1];
 
         int index = 0;
-        while (index < first.length() && index < last.length() &&
-                first.charAt(index) == last.charAt(index)) {
+        while (index < first.length() && index < last.length() && first.charAt(index) == last.charAt(index)) {
             index++;
         }
 
