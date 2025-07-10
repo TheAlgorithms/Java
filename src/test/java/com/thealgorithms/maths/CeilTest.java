@@ -2,7 +2,6 @@ package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.thealgorithms.maths.Ceil;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
