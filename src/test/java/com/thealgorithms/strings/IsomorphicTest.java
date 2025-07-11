@@ -12,8 +12,8 @@ public final class IsomorphicTest {
     @ParameterizedTest
     @MethodSource("inputs")
     public void testCheckStrings(String str1, String str2, Boolean expected) {
-        assertEquals(expected, Isomorphic.checkStrings(str1, str2));
-        assertEquals(expected, Isomorphic.checkStrings(str2, str1));
+        assertEquals(expected, Isomorphic.areIsomorphic(str1, str2));
+        assertEquals(expected, Isomorphic.areIsomorphic(str2, str1));
     }
 
     private static Stream<Arguments> inputs() {
