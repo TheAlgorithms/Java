@@ -2,22 +2,14 @@ package com.thealgorithms.misc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class MapReduceTest {
-    @Test
-    public void testMapReduceWithSingleWordSentence() {
-        String oneWordSentence = "Hactober";
-        String result = MapReduce.mapreduce(oneWordSentence);
-
-        assertEquals("Hactober: 1", result);
-    }
-
-    @Test
-    public void testMapReduceWithMultipleWordSentence() {
-        String multipleWordSentence = "I Love Love HactoberFest";
-        String result = MapReduce.mapreduce(multipleWordSentence);
-
-        assertEquals("I: 1,Love: 2,HactoberFest: 1", result);
+    @ParameterizedTest
+    @CsvSource({"'hello world', 'hello: 1,world: 1'", "'one one two', 'one: 2,two: 1'", "'a a a a', 'a: 4'", "'  spaced  out  ', 'spaced: 1,out: 1'"})
+    void testCountWordFrequencies(String input, String expected) {
+        String result = MapReduce.countWordFrequencies(input);
+        assertEquals(expected, result);
     }
 }
