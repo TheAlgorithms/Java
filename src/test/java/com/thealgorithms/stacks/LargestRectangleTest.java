@@ -2,76 +2,27 @@ package com.thealgorithms.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LargestRectangleTest {
 
-    @Test
-    void testLargestRectangleHistogramWithTypicalCases() {
-        // Typical case with mixed heights
-        int[] heights = {2, 1, 5, 6, 2, 3};
-        String expected = "10";
-        String result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-
-        // Another typical case with increasing heights
-        heights = new int[] {2, 4};
-        expected = "4";
-        result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-
-        // Case with multiple bars of the same height
-        heights = new int[] {4, 4, 4, 4};
-        expected = "16";
-        result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
+    @ParameterizedTest(name = "Histogram: {0} → Expected area: {1}")
+    @MethodSource("histogramProvider")
+    void testLargestRectangleHistogram(int[] heights, String expected) {
+        assertEquals(expected, LargestRectangle.largestRectangleHistogram(heights));
     }
 
-    @Test
-    void testLargestRectangleHistogramWithEdgeCases() {
-        // Edge case with an empty array
-        int[] heights = {};
-        String expected = "0";
-        String result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-
-        // Edge case with a single bar
-        heights = new int[] {5};
-        expected = "5";
-        result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-
-        // Edge case with all bars of height 0
-        heights = new int[] {0, 0, 0};
-        expected = "0";
-        result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
+    static Stream<Arguments> histogramProvider() {
+        return Stream.of(Arguments.of(new int[] {2, 1, 5, 6, 2, 3}, "10"), Arguments.of(new int[] {2, 4}, "4"), Arguments.of(new int[] {4, 4, 4, 4}, "16"), Arguments.of(new int[] {}, "0"), Arguments.of(new int[] {5}, "5"), Arguments.of(new int[] {0, 0, 0}, "0"),
+            Arguments.of(new int[] {6, 2, 5, 4, 5, 1, 6}, "12"), Arguments.of(new int[] {2, 1, 5, 6, 2, 3, 1}, "10"), Arguments.of(createLargeArray(10000, 1), "10000"));
     }
 
-    @Test
-    void testLargestRectangleHistogramWithLargeInput() {
-        // Large input case
-        int[] heights = new int[10000];
-        for (int i = 0; i < heights.length; i++) {
-            heights[i] = 1;
-        }
-        String expected = "10000";
-        String result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-    }
-
-    @Test
-    void testLargestRectangleHistogramWithComplexCases() {
-        // Complex case with a mix of heights
-        int[] heights = {6, 2, 5, 4, 5, 1, 6};
-        String expected = "12";
-        String result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
-
-        // Case with a peak in the middle
-        heights = new int[] {2, 1, 5, 6, 2, 3, 1};
-        expected = "10";
-        result = LargestRectangle.largestRectangleHistogram(heights);
-        assertEquals(expected, result);
+    private static int[] createLargeArray(int size, int value) {
+        int[] arr = new int[size];
+        java.util.Arrays.fill(arr, value);
+        return arr;
     }
 }

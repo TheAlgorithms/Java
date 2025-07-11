@@ -1,30 +1,15 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class AlphabeticalTest {
 
-    @Test
-    public void isAlphabetical() {
-        // expected to be true
-        String input1 = "abcdefghijklmno";
-        String input2 = "abcdxxxyzzzz";
-        String input3 = "fpw";
-
-        // expected to be false
-        String input4 = "123a";
-        String input5 = "abcABC";
-        String input6 = "abcdefghikjlmno";
-
-        assertTrue(Alphabetical.isAlphabetical(input1));
-        assertTrue(Alphabetical.isAlphabetical(input2));
-        assertTrue(Alphabetical.isAlphabetical(input3));
-
-        assertFalse(Alphabetical.isAlphabetical(input4));
-        assertFalse(Alphabetical.isAlphabetical(input5));
-        assertFalse(Alphabetical.isAlphabetical(input6));
+    @ParameterizedTest(name = "\"{0}\" → Expected: {1}")
+    @CsvSource({"'abcdefghijklmno', true", "'abcdxxxyzzzz', true", "'123a', false", "'abcABC', false", "'abcdefghikjlmno', false", "'aBC', true", "'abc', true", "'xyzabc', false", "'abcxyz', true", "'', false", "'1', false"})
+    void testIsAlphabetical(String input, boolean expected) {
+        assertEquals(expected, Alphabetical.isAlphabetical(input));
     }
 }
