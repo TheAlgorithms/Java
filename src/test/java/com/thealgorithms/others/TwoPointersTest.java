@@ -74,7 +74,7 @@ public class TwoPointersTest {
 
     @Test
     void isPairedSum_shouldThrowException_whenArrayIsNull() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {TwoPointers.isPairedSum(null, 10);});
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TwoPointers.isPairedSum(null, 10));
         assertEquals("Input array must not be null.", exception.getMessage());
     }
 }
