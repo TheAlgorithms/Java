@@ -3,7 +3,9 @@ package com.thealgorithms.scheduling;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-import java.util.*;
+
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
