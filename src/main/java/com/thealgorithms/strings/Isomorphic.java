@@ -5,35 +5,54 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Utility class to check if two strings are isomorphic.
+ *
+ * <p>
+ * Two strings {@code s} and {@code t} are isomorphic if the characters in {@code s}
+ * can be replaced to get {@code t}, while preserving the order of characters.
+ * Each character must map to exactly one character, and no two characters can map to the same character.
+ * </p>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Isomorphism_(computer_science)">Isomorphic Strings</a>
+ */
 public final class Isomorphic {
+
     private Isomorphic() {
     }
 
-    public static boolean checkStrings(String s, String t) {
+    /**
+     * Checks if two strings are isomorphic.
+     *
+     * @param s the first input string
+     * @param t the second input string
+     * @return {@code true} if {@code s} and {@code t} are isomorphic; {@code false} otherwise
+     */
+    public static boolean areIsomorphic(String s, String t) {
         if (s.length() != t.length()) {
             return false;
         }
 
-        // To mark the characters of string using MAP
-        // character of first string as KEY and another as VALUE
-        // now check occurence by keeping the track with SET data structure
-        Map<Character, Character> characterMap = new HashMap<>();
-        Set<Character> trackUniqueCharacter = new HashSet<>();
+        Map<Character, Character> map = new HashMap<>();
+        Set<Character> usedCharacters = new HashSet<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if (characterMap.containsKey(s.charAt(i))) {
-                if (t.charAt(i) != characterMap.get(s.charAt(i))) {
+            char sourceChar = s.charAt(i);
+            char targetChar = t.charAt(i);
+
+            if (map.containsKey(sourceChar)) {
+                if (map.get(sourceChar) != targetChar) {
                     return false;
                 }
             } else {
-                if (trackUniqueCharacter.contains(t.charAt(i))) {
+                if (usedCharacters.contains(targetChar)) {
                     return false;
                 }
-
-                characterMap.put(s.charAt(i), t.charAt(i));
+                map.put(sourceChar, targetChar);
+                usedCharacters.add(targetChar);
             }
-            trackUniqueCharacter.add(t.charAt(i));
         }
+
         return true;
     }
 }
