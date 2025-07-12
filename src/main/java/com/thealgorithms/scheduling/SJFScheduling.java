@@ -59,9 +59,7 @@ public class SJFScheduling {
      *     processes
      */
     private ProcessDetails findShortestJob(List<ProcessDetails> readyProcesses) {
-        return readyProcesses.stream()
-                .min(Comparator.comparingInt(ProcessDetails::getBurstTime))
-                .orElse(null);
+        return readyProcesses.stream().min(Comparator.comparingInt(ProcessDetails::getBurstTime)).orElse(null);
     }
 
     /**
