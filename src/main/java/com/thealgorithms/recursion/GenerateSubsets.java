@@ -1,36 +1,52 @@
 package com.thealgorithms.recursion;
 
-// program to find power set of a string
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class to generate all subsets (power set) of a given string using recursion.
+ *
+ * <p>For example, the string "ab" will produce: ["ab", "a", "b", ""]
+ */
 public final class GenerateSubsets {
 
     private GenerateSubsets() {
-        throw new UnsupportedOperationException("Utility class");
     }
 
+    /**
+     * Generates all subsets (power set) of the given string using recursion.
+     *
+     * @param str the input string to generate subsets for
+     * @return a list of all subsets of the input string
+     */
     public static List<String> subsetRecursion(String str) {
-        return doRecursion("", str);
+        return generateSubsets("", str);
     }
 
-    private static List<String> doRecursion(String p, String up) {
-        if (up.isEmpty()) {
-            List<String> list = new ArrayList<>();
-            list.add(p);
-            return list;
+    /**
+     * Recursive helper method to generate subsets by including or excluding characters.
+     *
+     * @param current the current prefix being built
+     * @param remaining the remaining string to process
+     * @return list of subsets formed from current and remaining
+     */
+    private static List<String> generateSubsets(String current, String remaining) {
+        if (remaining.isEmpty()) {
+            List<String> result = new ArrayList<>();
+            result.add(current);
+            return result;
         }
 
-        // Taking the character
-        char ch = up.charAt(0);
-        // Adding the character in the recursion
-        List<String> left = doRecursion(p + ch, up.substring(1));
-        // Not adding the character in the recursion
-        List<String> right = doRecursion(p, up.substring(1));
+        char ch = remaining.charAt(0);
+        String next = remaining.substring(1);
 
-        left.addAll(right);
+        // Include the character
+        List<String> withChar = generateSubsets(current + ch, next);
 
-        return left;
+        // Exclude the character
+        List<String> withoutChar = generateSubsets(current, next);
+
+        withChar.addAll(withoutChar);
+        return withChar;
     }
 }
