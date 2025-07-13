@@ -3,8 +3,8 @@ package com.thealgorithms.datastructures.hashmap.hashing;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class provides a method to find the majority element(s) in an array of integers.
