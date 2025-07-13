@@ -4,107 +4,46 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class SJFSchedulingTest {
-    private ArrayList<ProcessDetails> process;
-    void initialisation0() {
 
-        process = new ArrayList<>();
-        process.add(new ProcessDetails("1", 0, 6));
-        process.add(new ProcessDetails("2", 1, 2));
-    }
-    void initialisation1() {
-
-        process = new ArrayList<>();
-        process.add(new ProcessDetails("1", 0, 6));
-        process.add(new ProcessDetails("2", 1, 2));
-        process.add(new ProcessDetails("3", 4, 3));
-        process.add(new ProcessDetails("4", 3, 1));
-        process.add(new ProcessDetails("5", 6, 4));
-        process.add(new ProcessDetails("6", 5, 5));
+    private static Stream<Arguments> schedulingTestData() {
+        return Stream.of(Arguments.of(List.of(new ProcessDetails("1", 0, 6), new ProcessDetails("2", 1, 2)), List.of("1", "2")),
+            Arguments.of(List.of(new ProcessDetails("1", 0, 6), new ProcessDetails("2", 1, 2), new ProcessDetails("3", 4, 3), new ProcessDetails("4", 3, 1), new ProcessDetails("5", 6, 4), new ProcessDetails("6", 5, 5)), List.of("1", "4", "2", "3", "5", "6")),
+            Arguments.of(List.of(new ProcessDetails("1", 0, 3), new ProcessDetails("2", 1, 2), new ProcessDetails("3", 2, 1)), List.of("1", "3", "2")), Arguments.of(List.of(new ProcessDetails("1", 0, 3), new ProcessDetails("2", 5, 2), new ProcessDetails("3", 9, 1)), List.of("1", "2", "3")),
+            Arguments.of(Collections.emptyList(), List.of()));
     }
 
-    void initialisation2() {
-
-        process = new ArrayList<>();
-        process.add(new ProcessDetails("1", 0, 3));
-        process.add(new ProcessDetails("2", 1, 2));
-        process.add(new ProcessDetails("3", 2, 1));
-    }
-    void initialisation3() {
-        process = new ArrayList<>();
-        process.add(new ProcessDetails("1", 0, 3));
-        process.add(new ProcessDetails("2", 5, 2));
-        process.add(new ProcessDetails("3", 9, 1));
-    }
-    @Test
-    void constructor() {
-        initialisation0();
-        SJFScheduling a = new SJFScheduling(process);
-        assertEquals(6, a.processes.get(0).getBurstTime());
-        assertEquals(2, a.processes.get(1).getBurstTime());
+    @ParameterizedTest(name = "Test SJF schedule: {index}")
+    @MethodSource("schedulingTestData")
+    void testSJFScheduling(List<ProcessDetails> inputProcesses, List<String> expectedSchedule) {
+        SJFScheduling scheduler = new SJFScheduling(inputProcesses);
+        scheduler.scheduleProcesses();
+        assertEquals(expectedSchedule, scheduler.getSchedule());
     }
 
     @Test
-    void sort() {
-        initialisation1();
-        SJFScheduling a = new SJFScheduling(process);
-        a.sortByArrivalTime();
-        assertEquals("1", a.processes.get(0).getProcessId());
-        assertEquals("2", a.processes.get(1).getProcessId());
-        assertEquals("3", a.processes.get(3).getProcessId());
-        assertEquals("4", a.processes.get(2).getProcessId());
-        assertEquals("5", a.processes.get(5).getProcessId());
-        assertEquals("6", a.processes.get(4).getProcessId());
+    @DisplayName("Test sorting by arrival order")
+    void testProcessArrivalOrderIsSorted() {
+        List<ProcessDetails> processes = List.of(new ProcessDetails("1", 0, 6), new ProcessDetails("2", 1, 2), new ProcessDetails("4", 3, 1), new ProcessDetails("3", 4, 3), new ProcessDetails("6", 5, 5), new ProcessDetails("5", 6, 4));
+        SJFScheduling scheduler = new SJFScheduling(processes);
+        List<String> actualOrder = scheduler.getProcesses().stream().map(ProcessDetails::getProcessId).toList();
+
+        assertEquals(List.of("1", "2", "4", "3", "6", "5"), actualOrder);
     }
 
     @Test
-    void scheduling() {
-        initialisation1();
-        SJFScheduling a = new SJFScheduling(process);
-        a.scheduleProcesses();
-        assertEquals("1", a.schedule.get(0));
-        assertEquals("4", a.schedule.get(1));
-        assertEquals("2", a.schedule.get(2));
-        assertEquals("3", a.schedule.get(3));
-        assertEquals("5", a.schedule.get(4));
-        assertEquals("6", a.schedule.get(5));
-    }
-
-    @Test
-    void schedulingOfTwoProcesses() {
-        initialisation0();
-        SJFScheduling a = new SJFScheduling(process);
-        a.scheduleProcesses();
-        assertEquals("1", a.schedule.get(0));
-        assertEquals("2", a.schedule.get(1));
-    }
-
-    @Test
-    void schedulingOfAShortestJobArrivingLast() {
-        initialisation2();
-        SJFScheduling a = new SJFScheduling(process);
-        a.scheduleProcesses();
-        assertEquals("1", a.schedule.get(0));
-        assertEquals("3", a.schedule.get(1));
-        assertEquals("2", a.schedule.get(2));
-    }
-    @Test
-    void schedulingWithProcessesNotComingBackToBack() {
-        initialisation3();
-        SJFScheduling a = new SJFScheduling(process);
-        a.scheduleProcesses();
-        assertEquals("1", a.schedule.get(0));
-        assertEquals("2", a.schedule.get(1));
-        assertEquals("3", a.schedule.get(2));
-    }
-    @Test
-    void schedulingOfNothing() {
-        process = new ArrayList<>();
-        SJFScheduling a = new SJFScheduling(process);
-        a.scheduleProcesses();
-        assertTrue(a.schedule.isEmpty());
+    void testSchedulingEmptyList() {
+        SJFScheduling scheduler = new SJFScheduling(Collections.emptyList());
+        scheduler.scheduleProcesses();
+        assertTrue(scheduler.getSchedule().isEmpty());
     }
 }
