@@ -7,30 +7,37 @@ package com.thealgorithms.others;
  * <p>
  * Link: https://www.geeksforgeeks.org/two-pointers-technique/
  */
-final class TwoPointers {
+public final class TwoPointers {
+
     private TwoPointers() {
     }
 
     /**
-     * Given a sorted array arr (sorted in ascending order), find if there exists
-     * any pair of elements such that their sum is equal to the key.
+     * Checks whether there exists a pair of elements in a sorted array whose sum equals the specified key.
      *
-     * @param arr the array containing elements (must be sorted in ascending order)
-     * @param key the number to search
-     * @return {@code true} if there exists a pair of elements, {@code false} otherwise.
+     * @param arr a sorted array of integers in ascending order (must not be null)
+     * @param key the target sum to find
+     * @return {@code true} if there exists at least one pair whose sum equals {@code key}, {@code false} otherwise
+     * @throws IllegalArgumentException if {@code arr} is {@code null}
      */
     public static boolean isPairedSum(int[] arr, int key) {
-        int i = 0; // index of the first element
-        int j = arr.length - 1; // index of the last element
+        if (arr == null) {
+            throw new IllegalArgumentException("Input array must not be null.");
+        }
 
-        while (i < j) {
-            int sum = arr[i] + arr[j];
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+
             if (sum == key) {
                 return true;
-            } else if (sum < key) {
-                i++;
+            }
+            if (sum < key) {
+                left++;
             } else {
-                j--;
+                right--;
             }
         }
         return false;

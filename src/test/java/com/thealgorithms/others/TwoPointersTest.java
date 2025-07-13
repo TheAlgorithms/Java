@@ -1,6 +1,8 @@
 package com.thealgorithms.others;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -68,5 +70,11 @@ public class TwoPointersTest {
         int[] arr = {1, 3, 4, 7, 8};
         int key = 9;
         assertTrue(TwoPointers.isPairedSum(arr, key));
+    }
+
+    @Test
+    void isPairedSumShouldThrowExceptionWhenArrayIsNull() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TwoPointers.isPairedSum(null, 10));
+        assertEquals("Input array must not be null.", exception.getMessage());
     }
 }
