@@ -22,9 +22,11 @@ public class CeilTest {
         assertEquals(Ceil.ceil(data.input), data.expected);
     }
 
-    record TestData(double input, double expected) {}
+    record TestData(double input, double expected) {
+    }
 
     static Stream<TestData> edgeCaseProvider() {
-        return Stream.of(new TestData(Double.MAX_VALUE, Double.MAX_VALUE), new TestData(Double.MIN_VALUE, Math.ceil(Double.MIN_VALUE)), new TestData(0.0, Math.ceil(0.0)), new TestData(-0.0, Math.ceil(-0.0)), new TestData(Double.NaN, Math.ceil(Double.NaN)), new TestData(Double.NEGATIVE_INFINITY, Math.ceil(Double.NEGATIVE_INFINITY)), new TestData(Double.POSITIVE_INFINITY, Math.ceil(Double.POSITIVE_INFINITY)));
+        return Stream.of(new TestData(Double.MAX_VALUE, Double.MAX_VALUE), new TestData(Double.MIN_VALUE, Math.ceil(Double.MIN_VALUE)), new TestData(0.0, Math.ceil(0.0)), new TestData(-0.0, Math.ceil(-0.0)), new TestData(Double.NaN, Math.ceil(Double.NaN)),
+            new TestData(Double.NEGATIVE_INFINITY, Math.ceil(Double.NEGATIVE_INFINITY)), new TestData(Double.POSITIVE_INFINITY, Math.ceil(Double.POSITIVE_INFINITY)));
     }
 }
