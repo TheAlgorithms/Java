@@ -32,7 +32,7 @@ public class DisjointSetUnion<T> {
      */
     public Node<T> findSet(Node<T> node) {
         if (node != node.parent) {
-            node.parent = findSet(node.parent); // Path compression
+            node.parent = findSet(node.parent);
         }
         return node.parent;
     }
