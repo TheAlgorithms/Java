@@ -193,7 +193,7 @@ public class SortedLinkedListTest {
         assertTrue(list.delete(4));
         assertTrue(list.delete(4));
         assertTrue(list.delete(4));
-        assertFalse(list.delete(4));  // nothing left to delete
+        assertFalse(list.delete(4)); // nothing left to delete
         assertEquals("[]", list.toString());
     }
 
