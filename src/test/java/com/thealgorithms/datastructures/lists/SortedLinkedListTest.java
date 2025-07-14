@@ -184,7 +184,6 @@ public class SortedLinkedListTest {
         assertEquals("[]", list.toString());
     }
 
-
     @Test
     public void testDeleteAllDuplicates() {
         list.insert(4);
