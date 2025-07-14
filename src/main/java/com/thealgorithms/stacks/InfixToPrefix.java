@@ -4,85 +4,109 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Utility class for converting an infix arithmetic expression
+ * into its equivalent prefix notation expression.
+ * <p>
+ * This class provides a static method to perform the conversion,
+ * validating balanced brackets before processing.
+ * </p>
+ */
 public final class InfixToPrefix {
+
     private InfixToPrefix() {
     }
 
     /**
-     * Convert an infix expression to a prefix expression using stack.
+     * Converts a given infix expression string to a prefix expression string.
+     * <p>
+     * The method validates that the input expression has balanced brackets using
+     * {@code BalancedBrackets.isBalanced} on the filtered bracket characters.
+     * It throws an {@code IllegalArgumentException} if the brackets are unbalanced,
+     * and a {@code NullPointerException} if the input is null.
+     * </p>
+     * <p>
+     * Supported operators: {@code +, -, *, /, ^} and operands can be letters or digits.
+     * </p>
      *
-     * @param infixExpression the infix expression to convert
-     * @return the prefix expression
-     * @throws IllegalArgumentException if the infix expression has unbalanced brackets
-     * @throws NullPointerException     if the infix expression is null
+     * @param infixExpression the arithmetic expression in infix notation
+     * @return the equivalent prefix notation expression
+     * @throws IllegalArgumentException if brackets are unbalanced
+     * @throws NullPointerException     if the input expression is null
      */
-    public static String infix2Prefix(String infixExpression) throws IllegalArgumentException {
+    public static String infix2Prefix(String infixExpression) {
         if (infixExpression == null) {
             throw new NullPointerException("Input expression cannot be null.");
         }
+
         infixExpression = infixExpression.trim();
         if (infixExpression.isEmpty()) {
             return "";
         }
+
         if (!BalancedBrackets.isBalanced(filterBrackets(infixExpression))) {
             throw new IllegalArgumentException("Invalid expression: unbalanced brackets.");
         }
 
         StringBuilder output = new StringBuilder();
-        Stack<Character> stack = new Stack<>();
-        // Reverse the infix expression for prefix conversion
+        Stack<Character> operatorStack = new Stack<>();
+
+        // Reverse the infix expression to facilitate prefix conversion
         String reversedInfix = new StringBuilder(infixExpression).reverse().toString();
-        for (char element : reversedInfix.toCharArray()) {
-            if (Character.isLetterOrDigit(element)) {
-                output.append(element);
-            } else if (element == ')') {
-                stack.push(element);
-            } else if (element == '(') {
-                while (!stack.isEmpty() && stack.peek() != ')') {
-                    output.append(stack.pop());
+
+        for (char token : reversedInfix.toCharArray()) {
+            if (Character.isLetterOrDigit(token)) {
+                // Append operands directly to output
+                output.append(token);
+            } else if (token == ')') {
+                // Push ')' onto stack (since expression is reversed, '(' and ')' roles swapped)
+                operatorStack.push(token);
+            } else if (token == '(') {
+                // Pop operators until ')' is found
+                while (!operatorStack.isEmpty() && operatorStack.peek() != ')') {
+                    output.append(operatorStack.pop());
                 }
-                stack.pop();
+                operatorStack.pop(); // Remove the ')'
             } else {
-                while (!stack.isEmpty() && precedence(element) < precedence(stack.peek())) {
-                    output.append(stack.pop());
+                // Pop operators with higher precedence before pushing current operator
+                while (!operatorStack.isEmpty() && precedence(token) < precedence(operatorStack.peek())) {
+                    output.append(operatorStack.pop());
                 }
-                stack.push(element);
+                operatorStack.push(token);
             }
         }
-        while (!stack.isEmpty()) {
-            output.append(stack.pop());
+
+        // Append any remaining operators in stack
+        while (!operatorStack.isEmpty()) {
+            output.append(operatorStack.pop());
         }
 
-        // Reverse the result to get the prefix expression
+        // Reverse the output to obtain the final prefix expression
         return output.reverse().toString();
     }
 
     /**
-     * Determines the precedence of an operator.
+     * Returns the precedence level of the given operator.
      *
-     * @param operator the operator whose precedence is to be determined
-     * @return the precedence of the operator
+     * @param operator the operator character (e.g., '+', '-', '*', '/', '^')
+     * @return the precedence value: higher means higher precedence,
+     *         or -1 if the character is not a recognized operator
      */
     private static int precedence(char operator) {
-        switch (operator) {
-        case '+':
-        case '-':
-            return 0;
-        case '*':
-        case '/':
-            return 1;
-        case '^':
-            return 2;
-        default:
-            return -1;
-        }
+        return switch (operator) {
+            case '+', '-' -> 0;
+            case '*', '/' -> 1;
+            case '^' -> 2;
+            default -> -1;
+        };
     }
 
     /**
-     * Filters out all characters from the input string except brackets.
+     * Extracts only the bracket characters from the input string.
+     * Supports parentheses (), curly braces {}, square brackets [], and angle brackets &lt;&gt;.
      *
-     * @param input the input string to filter
-     * @return a string containing only brackets from the input string
+     * @param input the original expression string
+     * @return a string containing only bracket characters from the input
      */
     private static String filterBrackets(String input) {
         Pattern pattern = Pattern.compile("[^(){}\\[\\]<>]");

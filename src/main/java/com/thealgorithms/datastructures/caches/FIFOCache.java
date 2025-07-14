@@ -1,27 +1,27 @@
 package com.thealgorithms.datastructures.caches;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BiConsumer;
 
 /**
- * A thread-safe generic cache implementation using the Random Replacement (RR) eviction policy.
+ * A thread-safe generic cache implementation using the First-In-First-Out eviction policy.
  * <p>
  * The cache holds a fixed number of entries, defined by its capacity. When the cache is full and a
- * new entry is added, one of the existing entries is selected at random and evicted to make space.
+ * new entry is added, the oldest entry in the cache is selected and evicted to make space.
  * <p>
  * Optionally, entries can have a time-to-live (TTL) in milliseconds. If a TTL is set, entries will
  * automatically expire and be removed upon access or insertion attempts.
  * <p>
  * Features:
  * <ul>
- *     <li>Random eviction when capacity is exceeded</li>
+ *     <li>Removes oldest entry when capacity is exceeded</li>
  *     <li>Optional TTL (time-to-live in milliseconds) per entry or default TTL for all entries</li>
  *     <li>Thread-safe access using locking</li>
  *     <li>Hit and miss counters for cache statistics</li>
@@ -30,16 +30,14 @@ import java.util.function.BiConsumer;
  *
  * @param <K> the type of keys maintained by this cache
  * @param <V> the type of mapped values
- * See <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Random_replacement_(RR)">Random Replacement</a>
+ * See <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#First_in_first_out_(FIFO)">FIFO</a>
  * @author Kevin Babu (<a href="https://www.github.com/KevinMwita7">GitHub</a>)
  */
-public final class RRCache<K, V> {
+public final class FIFOCache<K, V> {
 
     private final int capacity;
     private final long defaultTTL;
     private final Map<K, CacheEntry<V>> cache;
-    private final List<K> keys;
-    private final Random random;
     private final Lock lock;
 
     private long hits = 0;
@@ -58,13 +56,19 @@ public final class RRCache<K, V> {
 
         /**
          * Constructs a new {@code CacheEntry} with the specified value and time-to-live (TTL).
+         * If TTL is 0, the entry is kept indefinitely, that is, unless it is the first value,
+         * then it will be removed according to the FIFO principle
          *
          * @param value     the value to cache
          * @param ttlMillis the time-to-live in milliseconds
          */
         CacheEntry(V value, long ttlMillis) {
             this.value = value;
-            this.expiryTime = System.currentTimeMillis() + ttlMillis;
+            if (ttlMillis == 0) {
+                this.expiryTime = Long.MAX_VALUE;
+            } else {
+                this.expiryTime = System.currentTimeMillis() + ttlMillis;
+            }
         }
 
         /**
@@ -78,20 +82,17 @@ public final class RRCache<K, V> {
     }
 
     /**
-     * Constructs a new {@code RRCache} instance using the provided {@link Builder}.
+     * Constructs a new {@code FIFOCache} instance using the provided {@link Builder}.
      *
      * <p>This constructor initializes the cache with the specified capacity and default TTL,
-     * sets up internal data structures (a {@code HashMap} for cache entries and an {@code ArrayList}
-     * for key tracking), and configures eviction and randomization behavior.
+     * sets up internal data structures (a {@code LinkedHashMap} for cache entries and configures eviction.
      *
      * @param builder the {@code Builder} object containing configuration parameters
      */
-    private RRCache(Builder<K, V> builder) {
+    private FIFOCache(Builder<K, V> builder) {
         this.capacity = builder.capacity;
         this.defaultTTL = builder.defaultTTL;
-        this.cache = new HashMap<>(builder.capacity);
-        this.keys = new ArrayList<>(builder.capacity);
-        this.random = builder.random != null ? builder.random : new Random();
+        this.cache = new LinkedHashMap<>();
         this.lock = new ReentrantLock();
         this.evictionListener = builder.evictionListener;
         this.evictionStrategy = builder.evictionStrategy;
@@ -121,7 +122,7 @@ public final class RRCache<K, V> {
             CacheEntry<V> entry = cache.get(key);
             if (entry == null || entry.isExpired()) {
                 if (entry != null) {
-                    removeKey(key);
+                    cache.remove(key);
                     notifyEviction(key, entry.value);
                 }
                 misses++;
@@ -150,8 +151,8 @@ public final class RRCache<K, V> {
     /**
      * Adds a key-value pair to the cache with a specified time-to-live (TTL).
      *
-     * <p>If the key already exists, its value is updated and its TTL is reset. If the key
-     * does not exist and the cache is full, a random entry is evicted to make space.
+     * <p>If the key already exists, its value is removed, re-inserted at tail and its TTL is reset.
+     * If the key does not exist and the cache is full, the oldest entry is evicted to make space.
      * Expired entries are also cleaned up prior to any eviction. The eviction listener
      * is notified when an entry gets evicted.
      *
@@ -170,22 +171,27 @@ public final class RRCache<K, V> {
 
         lock.lock();
         try {
-            if (cache.containsKey(key)) {
-                cache.put(key, new CacheEntry<>(value, ttlMillis));
-                return;
+            // If key already exists, remove it
+            CacheEntry<V> oldEntry = cache.remove(key);
+            if (oldEntry != null && !oldEntry.isExpired()) {
+                notifyEviction(key, oldEntry.value);
             }
 
+            // Evict expired entries to make space for new entry
             evictExpired();
 
+            // If no expired entry was removed, remove the oldest
             if (cache.size() >= capacity) {
-                int idx = random.nextInt(keys.size());
-                K evictKey = keys.remove(idx);
-                CacheEntry<V> evictVal = cache.remove(evictKey);
-                notifyEviction(evictKey, evictVal.value);
+                Iterator<Map.Entry<K, CacheEntry<V>>> it = cache.entrySet().iterator();
+                if (it.hasNext()) {
+                    Map.Entry<K, CacheEntry<V>> eldest = it.next();
+                    it.remove();
+                    notifyEviction(eldest.getKey(), eldest.getValue().value);
+                }
             }
 
+            // Insert new entry at tail
             cache.put(key, new CacheEntry<>(value, ttlMillis));
-            keys.add(key);
         } finally {
             lock.unlock();
         }
@@ -195,36 +201,44 @@ public final class RRCache<K, V> {
      * Removes all expired entries from the cache.
      *
      * <p>This method iterates through the list of cached keys and checks each associated
-     * entry for expiration. Expired entries are removed from both the key tracking list
-     * and the cache map. For each eviction, the eviction listener is notified.
+     * entry for expiration. Expired entries are removed the cache map. For each eviction,
+     * the eviction listener is notified.
      */
     private int evictExpired() {
-        Iterator<K> it = keys.iterator();
-        int expiredCount = 0;
+        int count = 0;
+        Iterator<Map.Entry<K, CacheEntry<V>>> it = cache.entrySet().iterator();
 
         while (it.hasNext()) {
-            K k = it.next();
-            CacheEntry<V> entry = cache.get(k);
-            if (entry != null && entry.isExpired()) {
+            Map.Entry<K, CacheEntry<V>> entry = it.next();
+            if (entry != null && entry.getValue().isExpired()) {
                 it.remove();
-                cache.remove(k);
-                ++expiredCount;
-                notifyEviction(k, entry.value);
+                notifyEviction(entry.getKey(), entry.getValue().value);
+                count++;
             }
         }
-        return expiredCount;
+
+        return count;
     }
 
     /**
      * Removes the specified key and its associated entry from the cache.
      *
-     * <p>This method deletes the key from both the cache map and the key tracking list.
-     *
-     * @param key the key to remove from the cache
+     * @param key the key to remove from the cache;
+     * @return the value associated with the key;  or {@code null} if no such key exists
      */
-    private void removeKey(K key) {
-        cache.remove(key);
-        keys.remove(key);
+    public V removeKey(K key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+        CacheEntry<V> entry = cache.remove(key);
+
+        // No such key in cache
+        if (entry == null) {
+            return null;
+        }
+
+        notifyEviction(key, entry.value);
+        return entry.value;
     }
 
     /**
@@ -283,20 +297,66 @@ public final class RRCache<K, V> {
     public int size() {
         lock.lock();
         try {
-            int cachedSize = cache.size();
-            int evictedCount = evictionStrategy.onAccess(this);
-            if (evictedCount > 0) {
-                return cachedSize - evictedCount;
-            }
+            evictionStrategy.onAccess(this);
 
-            // This runs if periodic eviction does not occur
             int count = 0;
-            for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
-                if (!entry.getValue().isExpired()) {
+            for (CacheEntry<V> entry : cache.values()) {
+                if (!entry.isExpired()) {
                     ++count;
                 }
             }
             return count;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
+     * Removes all entries from the cache, regardless of their expiration status.
+     *
+     * <p>This method clears the internal cache map entirely, resets the hit-and-miss counters,
+     * and notifies the eviction listener (if any) for each removed entry.
+     * Note that expired entries are treated the same as active ones for the purpose of clearing.
+     *
+     * <p>This operation acquires the internal lock to ensure thread safety.
+     */
+    public void clear() {
+        lock.lock();
+        try {
+            for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
+                notifyEviction(entry.getKey(), entry.getValue().value);
+            }
+            cache.clear();
+            hits = 0;
+            misses = 0;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
+     * Returns a set of all keys currently stored in the cache that have not expired.
+     *
+     * <p>This method iterates through the cache and collects the keys of all non-expired entries.
+     * Expired entries are ignored but not removed. If you want to ensure expired entries are cleaned up,
+     * consider invoking {@link EvictionStrategy#onAccess(FIFOCache)} or calling {@link #evictExpired()} manually.
+     *
+     * <p>This operation acquires the internal lock to ensure thread safety.
+     *
+     * @return a set containing all non-expired keys currently in the cache
+     */
+    public Set<K> getAllKeys() {
+        lock.lock();
+        try {
+            Set<K> keys = new LinkedHashSet<>();
+
+            for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
+                if (!entry.getValue().isExpired()) {
+                    keys.add(entry.getKey());
+                }
+            }
+
+            return keys;
         } finally {
             lock.unlock();
         }
@@ -324,7 +384,7 @@ public final class RRCache<K, V> {
     public String toString() {
         lock.lock();
         try {
-            Map<K, V> visible = new HashMap<>();
+            Map<K, V> visible = new LinkedHashMap<>();
             for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
                 if (!entry.getValue().isExpired()) {
                     visible.put(entry.getKey(), entry.getValue().value);
@@ -339,7 +399,7 @@ public final class RRCache<K, V> {
     /**
      * A strategy interface for controlling when expired entries are evicted from the cache.
      *
-     * <p>Implementations decide whether and when to trigger {@link RRCache#evictExpired()} based
+     * <p>Implementations decide whether and when to trigger {@link FIFOCache#evictExpired()} based
      * on cache usage patterns. This allows for flexible eviction behaviour such as periodic cleanup,
      * or no automatic cleanup.
      *
@@ -348,12 +408,12 @@ public final class RRCache<K, V> {
      */
     public interface EvictionStrategy<K, V> {
         /**
-         * Called on each cache access (e.g., {@link RRCache#get(Object)}) to optionally trigger eviction.
+         * Called on each cache access (e.g., {@link FIFOCache#get(Object)}) to optionally trigger eviction.
          *
          * @param cache the cache instance on which this strategy is applied
          * @return the number of expired entries evicted during this access
          */
-        int onAccess(RRCache<K, V> cache);
+        int onAccess(FIFOCache<K, V> cache);
     }
 
     /**
@@ -362,15 +422,15 @@ public final class RRCache<K, V> {
      * @param <K> the type of keys
      * @param <V> the type of values
      */
-    public static class NoEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
+    public static class ImmediateEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
         @Override
-        public int onAccess(RRCache<K, V> cache) {
+        public int onAccess(FIFOCache<K, V> cache) {
             return cache.evictExpired();
         }
     }
 
     /**
-     * An eviction strategy that triggers eviction every fixed number of accesses.
+     * An eviction strategy that triggers eviction on every fixed number of accesses.
      *
      * <p>This deterministic strategy ensures cleanup occurs at predictable intervals,
      * ideal for moderately active caches where memory usage is a concern.
@@ -380,7 +440,7 @@ public final class RRCache<K, V> {
      */
     public static class PeriodicEvictionStrategy<K, V> implements EvictionStrategy<K, V> {
         private final int interval;
-        private int counter = 0;
+        private final AtomicInteger counter = new AtomicInteger();
 
         /**
          * Constructs a periodic eviction strategy.
@@ -396,8 +456,8 @@ public final class RRCache<K, V> {
         }
 
         @Override
-        public int onAccess(RRCache<K, V> cache) {
-            if (++counter % interval == 0) {
+        public int onAccess(FIFOCache<K, V> cache) {
+            if (counter.incrementAndGet() % interval == 0) {
                 return cache.evictExpired();
             }
 
@@ -406,10 +466,10 @@ public final class RRCache<K, V> {
     }
 
     /**
-     * A builder for constructing an {@link RRCache} instance with customizable settings.
+     * A builder for constructing a {@link FIFOCache} instance with customizable settings.
      *
-     * <p>Allows configuring capacity, default TTL, random eviction behavior, eviction listener,
-     * and a pluggable eviction strategy. Call {@link #build()} to create the configured cache instance.
+     * <p>Allows configuring capacity, default TTL, eviction listener, and a pluggable eviction
+     * strategy. Call {@link #build()} to create the configured cache instance.
      *
      * @param <K> the type of keys maintained by the cache
      * @param <V> the type of values stored in the cache
@@ -417,9 +477,8 @@ public final class RRCache<K, V> {
     public static class Builder<K, V> {
         private final int capacity;
         private long defaultTTL = 0;
-        private Random random;
         private BiConsumer<K, V> evictionListener;
-        private EvictionStrategy<K, V> evictionStrategy = new RRCache.PeriodicEvictionStrategy<>(100);
+        private EvictionStrategy<K, V> evictionStrategy = new FIFOCache.ImmediateEvictionStrategy<>();
         /**
          * Creates a new {@code Builder} with the specified cache capacity.
          *
@@ -449,21 +508,6 @@ public final class RRCache<K, V> {
         }
 
         /**
-         * Sets the {@link Random} instance to be used for random eviction selection.
-         *
-         * @param r a non-null {@code Random} instance
-         * @return this builder instance for chaining
-         * @throws IllegalArgumentException if {@code r} is {@code null}
-         */
-        public Builder<K, V> random(Random r) {
-            if (r == null) {
-                throw new IllegalArgumentException("Random must not be null");
-            }
-            this.random = r;
-            return this;
-        }
-
-        /**
          * Sets an eviction listener to be notified when entries are evicted from the cache.
          *
          * @param listener a {@link BiConsumer} that accepts evicted keys and values; must not be {@code null}
@@ -479,12 +523,12 @@ public final class RRCache<K, V> {
         }
 
         /**
-         * Builds and returns a new {@link RRCache} instance with the configured parameters.
+         * Builds and returns a new {@link FIFOCache} instance with the configured parameters.
          *
-         * @return a fully configured {@code RRCache} instance
+         * @return a fully configured {@code FIFOCache} instance
          */
-        public RRCache<K, V> build() {
-            return new RRCache<>(this);
+        public FIFOCache<K, V> build() {
+            return new FIFOCache<>(this);
         }
 
         /**

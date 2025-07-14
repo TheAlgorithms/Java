@@ -1,29 +1,24 @@
 package com.thealgorithms.datastructures.caches;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 class RRCacheTest {
 
     private RRCache<String, String> cache;
-    private List<String> evictedKeys;
+    private Set<String> evictedKeys;
     private List<String> evictedValues;
 
     @BeforeEach
     void setUp() {
-        evictedKeys = new ArrayList<>();
+        evictedKeys = new HashSet<>();
         evictedValues = new ArrayList<>();
 
         cache = new RRCache.Builder<String, String>(3)
@@ -39,22 +34,22 @@ class RRCacheTest {
     @Test
     void testPutAndGet() {
         cache.put("a", "apple");
-        assertEquals("apple", cache.get("a"));
+        Assertions.assertEquals("apple", cache.get("a"));
     }
 
     @Test
     void testOverwriteValue() {
         cache.put("a", "apple");
         cache.put("a", "avocado");
-        assertEquals("avocado", cache.get("a"));
+        Assertions.assertEquals("avocado", cache.get("a"));
     }
 
     @Test
     void testExpiration() throws InterruptedException {
         cache.put("temp", "value", 100); // short TTL
         Thread.sleep(200);
-        assertNull(cache.get("temp"));
-        assertTrue(evictedKeys.contains("temp"));
+        Assertions.assertNull(cache.get("temp"));
+        Assertions.assertTrue(evictedKeys.contains("temp"));
     }
 
     @Test
@@ -65,9 +60,9 @@ class RRCacheTest {
         cache.put("d", "delta"); // triggers eviction
 
         int size = cache.size();
-        assertEquals(3, size);
-        assertEquals(1, evictedKeys.size());
-        assertEquals(1, evictedValues.size());
+        Assertions.assertEquals(3, size);
+        Assertions.assertEquals(1, evictedKeys.size());
+        Assertions.assertEquals(1, evictedValues.size());
     }
 
     @Test
@@ -77,17 +72,17 @@ class RRCacheTest {
         cache.put("z", "three");
         cache.put("w", "four"); // one of x, y, z will be evicted
 
-        assertFalse(evictedKeys.isEmpty());
-        assertFalse(evictedValues.isEmpty());
+        Assertions.assertFalse(evictedKeys.isEmpty());
+        Assertions.assertFalse(evictedValues.isEmpty());
     }
 
     @Test
     void testHitsAndMisses() {
         cache.put("a", "apple");
-        assertEquals("apple", cache.get("a"));
-        assertNull(cache.get("b"));
-        assertEquals(1, cache.getHits());
-        assertEquals(1, cache.getMisses());
+        Assertions.assertEquals("apple", cache.get("a"));
+        Assertions.assertNull(cache.get("b"));
+        Assertions.assertEquals(1, cache.getHits());
+        Assertions.assertEquals(1, cache.getMisses());
     }
 
     @Test
@@ -96,7 +91,7 @@ class RRCacheTest {
         cache.put("b", "b", 100);
         cache.put("c", "c", 100);
         Thread.sleep(150);
-        assertEquals(0, cache.size());
+        Assertions.assertEquals(0, cache.size());
     }
 
     @Test
@@ -105,65 +100,123 @@ class RRCacheTest {
         cache.put("dead", "gone", 100);
         Thread.sleep(150);
         String result = cache.toString();
-        assertTrue(result.contains("live"));
-        assertFalse(result.contains("dead"));
+        Assertions.assertTrue(result.contains("live"));
+        Assertions.assertFalse(result.contains("dead"));
     }
 
     @Test
     void testNullKeyGetThrows() {
-        assertThrows(IllegalArgumentException.class, () -> cache.get(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> cache.get(null));
     }
 
     @Test
     void testPutNullKeyThrows() {
-        assertThrows(IllegalArgumentException.class, () -> cache.put(null, "v"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> cache.put(null, "v"));
     }
 
     @Test
     void testPutNullValueThrows() {
-        assertThrows(IllegalArgumentException.class, () -> cache.put("k", null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> cache.put("k", null));
     }
 
     @Test
     void testPutNegativeTTLThrows() {
-        assertThrows(IllegalArgumentException.class, () -> cache.put("k", "v", -1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> cache.put("k", "v", -1));
     }
 
     @Test
     void testBuilderNegativeCapacityThrows() {
-        assertThrows(IllegalArgumentException.class, () -> new RRCache.Builder<>(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new RRCache.Builder<>(0));
     }
 
     @Test
     void testBuilderNullRandomThrows() {
         RRCache.Builder<String, String> builder = new RRCache.Builder<>(1);
-        assertThrows(IllegalArgumentException.class, () -> builder.random(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.random(null));
     }
 
     @Test
     void testBuilderNullEvictionListenerThrows() {
         RRCache.Builder<String, String> builder = new RRCache.Builder<>(1);
-        assertThrows(IllegalArgumentException.class, () -> builder.evictionListener(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> builder.evictionListener(null));
     }
 
     @Test
     void testEvictionListenerExceptionDoesNotCrash() {
-        RRCache<String, String> listenerCache = new RRCache.Builder<String, String>(1)
-                .evictionListener((k, v) -> {
-                    throw new RuntimeException("Exception");
-                })
-                .build();
+        RRCache<String, String> listenerCache = new RRCache.Builder<String, String>(1).evictionListener((k, v) -> { throw new RuntimeException("Exception"); }).build();
 
         listenerCache.put("a", "a");
         listenerCache.put("b", "b"); // causes eviction but should not crash
-        assertDoesNotThrow(() -> listenerCache.get("a"));
+        Assertions.assertDoesNotThrow(() -> listenerCache.get("a"));
     }
 
     @Test
     void testTtlZeroThrowsIllegalArgumentException() {
-        Executable exec = () -> new RRCache.Builder<String, String>(3)
-                .defaultTTL(-1)
-                .build();
-        assertThrows(IllegalArgumentException.class, exec);
+        Executable exec = () -> new RRCache.Builder<String, String>(3).defaultTTL(-1).build();
+        Assertions.assertThrows(IllegalArgumentException.class, exec);
+    }
+
+    @Test
+    void testPeriodicEvictionStrategyEvictsAtInterval() throws InterruptedException {
+        RRCache<String, String> periodicCache = new RRCache.Builder<String, String>(10).defaultTTL(50).evictionStrategy(new RRCache.PeriodicEvictionStrategy<>(3)).build();
+
+        periodicCache.put("x", "1");
+        Thread.sleep(100);
+        int ev1 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
+        int ev2 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
+        int ev3 = periodicCache.getEvictionStrategy().onAccess(periodicCache);
+
+        Assertions.assertEquals(0, ev1);
+        Assertions.assertEquals(0, ev2);
+        Assertions.assertEquals(1, ev3, "Eviction should happen on the 3rd access");
+        Assertions.assertEquals(0, periodicCache.size());
+    }
+
+    @Test
+    void testPeriodicEvictionStrategyThrowsExceptionIfIntervalLessThanOrEqual0() {
+        Executable executable = () -> new RRCache.Builder<String, String>(10).defaultTTL(50).evictionStrategy(new RRCache.PeriodicEvictionStrategy<>(0)).build();
+
+        Assertions.assertThrows(IllegalArgumentException.class, executable);
+    }
+
+    @Test
+    void testNoEvictionStrategyEvictsOnEachCall() throws InterruptedException {
+        RRCache<String, String> noEvictionStrategyCache = new RRCache.Builder<String, String>(10).defaultTTL(50).evictionStrategy(new RRCache.NoEvictionStrategy<>()).build();
+
+        noEvictionStrategyCache.put("x", "1");
+        Thread.sleep(100);
+        int evicted = noEvictionStrategyCache.getEvictionStrategy().onAccess(noEvictionStrategyCache);
+
+        Assertions.assertEquals(1, evicted);
+    }
+
+    @Test
+    void testBuilderThrowsExceptionIfEvictionStrategyNull() {
+        Executable executable = () -> new RRCache.Builder<String, String>(10).defaultTTL(50).evictionStrategy(null).build();
+
+        Assertions.assertThrows(IllegalArgumentException.class, executable);
+    }
+
+    @Test
+    void testReturnsCorrectStrategyInstance() {
+        RRCache.EvictionStrategy<String, String> strategy = new RRCache.NoEvictionStrategy<>();
+
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(10).defaultTTL(1000).evictionStrategy(strategy).build();
+
+        Assertions.assertSame(strategy, newCache.getEvictionStrategy(), "Returned strategy should be the same instance");
+    }
+
+    @Test
+    void testDefaultStrategyIsNoEviction() {
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(5).defaultTTL(1000).build();
+
+        Assertions.assertTrue(newCache.getEvictionStrategy() instanceof RRCache.PeriodicEvictionStrategy<String, String>, "Default strategy should be NoEvictionStrategy");
+    }
+
+    @Test
+    void testGetEvictionStrategyIsNotNull() {
+        RRCache<String, String> newCache = new RRCache.Builder<String, String>(5).build();
+
+        Assertions.assertNotNull(newCache.getEvictionStrategy(), "Eviction strategy should never be null");
     }
 }

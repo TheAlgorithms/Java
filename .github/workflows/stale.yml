@@ -2,8 +2,13 @@ name: 'Close stale issues and PRs'
 on:
   schedule:
     - cron: '0 0 * * *'
+permissions:
+  contents: read
 jobs:
   stale:
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v9

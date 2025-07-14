@@ -1,27 +1,15 @@
 package com.thealgorithms.strings;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ValidParenthesesTest {
 
-    @Test
-    void testOne() {
-        assertTrue(ValidParentheses.isValid("()"));
-        assertTrue(ValidParentheses.isValidParentheses("()"));
-    }
-
-    @Test
-    void testTwo() {
-        assertTrue(ValidParentheses.isValid("()[]{}"));
-        assertTrue(ValidParentheses.isValidParentheses("()[]{}"));
-    }
-
-    @Test
-    void testThree() {
-        assertFalse(ValidParentheses.isValid("(]"));
-        assertFalse(ValidParentheses.isValidParentheses("(]"));
+    @ParameterizedTest(name = "Input: \"{0}\" → Expected: {1}")
+    @CsvSource({"'()', true", "'()[]{}', true", "'(]', false", "'{[]}', true", "'([{}])', true", "'([)]', false", "'', true", "'(', false", "')', false"})
+    void testIsValid(String input, boolean expected) {
+        assertEquals(expected, ValidParentheses.isValid(input));
     }
 }
