@@ -3,11 +3,11 @@ package com.thealgorithms.maths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import java.util.stream.Stream;
 
 public class AverageTest {
 
@@ -38,7 +38,8 @@ public class AverageTest {
     }
 
     private static Stream<Arguments> provideDoubleArrays() {
-        return Stream.of(Arguments.of(new double[] {3d, 6d, 9d, 12d, 15d, 18d, 21d}, 12d), Arguments.of(new double[] {5d, 10d, 15d, 20d, 25d, 30d, 35d}, 20d), Arguments.of(new double[] {1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d}, 4.5d), Arguments.of(new double[] {0d, 0d, 0d}, 0d), Arguments.of(new double[] {-1d, -2d, -3d}, -2d), Arguments.of(new double[] {1e-10, 1e-10, 1e-10}, 1e-10));
+        return Stream.of(Arguments.of(new double[] {3d, 6d, 9d, 12d, 15d, 18d, 21d}, 12d), Arguments.of(new double[] {5d, 10d, 15d, 20d, 25d, 30d, 35d}, 20d), Arguments.of(new double[] {1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d}, 4.5d), Arguments.of(new double[] {0d, 0d, 0d}, 0d),
+            Arguments.of(new double[] {-1d, -2d, -3d}, -2d), Arguments.of(new double[] {1e-10, 1e-10, 1e-10}, 1e-10));
     }
 
     private static Stream<Arguments> provideIntArrays() {
