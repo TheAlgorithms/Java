@@ -1,8 +1,12 @@
 package com.thealgorithms.bitmanipulation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 /**
  * Test case for Highest Set Bit
@@ -39,9 +43,16 @@ public class OnesComplementTest {
         assertEquals("1001", OnesComplement.onesComplement("0110"));
     }
 
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void testOnesComplementNullOrEmptyInputThrowsException(String input) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> OnesComplement.onesComplement(input));
+        assertEquals("Input must be a non-empty binary string.", exception.getMessage());
+    }
+
     @Test
-    public void testOnesComplementEmptyString() {
-        // Test empty string scenario
-        assertEquals("", OnesComplement.onesComplement(""));
+    public void testOnesComplementInvalidCharactersThrowsException() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> OnesComplement.onesComplement("10a1"));
+        assertTrue(exception.getMessage().startsWith("Input must contain only '0' and '1'"));
     }
 }
