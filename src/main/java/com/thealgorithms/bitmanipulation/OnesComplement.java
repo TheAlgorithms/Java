@@ -12,15 +12,24 @@ public final class OnesComplement {
     private OnesComplement() {
     }
 
-    // Function to get the 1's complement of a binary number
+    /**
+     * Returns the 1's complement of a binary string.
+     *
+     * @param binary A string representing a binary number (e.g., "1010").
+     * @return A string representing the 1's complement.
+     * @throws IllegalArgumentException if the input is null or contains characters other than '0' or '1'.
+     */
     public static String onesComplement(String binary) {
-        StringBuilder complement = new StringBuilder();
-        // Invert each bit to get the 1's complement
-        for (int i = 0; i < binary.length(); i++) {
-            if (binary.charAt(i) == '0') {
-                complement.append('1');
-            } else {
-                complement.append('0');
+        if (binary == null || binary.isEmpty()) {
+            throw new IllegalArgumentException("Input must be a non-empty binary string.");
+        }
+
+        StringBuilder complement = new StringBuilder(binary.length());
+        for (char bit : binary.toCharArray()) {
+            switch (bit) {
+                case '0' -> complement.append('1');
+                case '1' -> complement.append('0');
+                default -> throw new IllegalArgumentException("Input must contain only '0' and '1'. Found: " + bit);
             }
         }
         return complement.toString();
