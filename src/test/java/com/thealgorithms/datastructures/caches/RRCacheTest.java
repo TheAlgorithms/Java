@@ -22,13 +22,13 @@ class RRCacheTest {
         evictedValues = new ArrayList<>();
 
         cache = new RRCache.Builder<String, String>(3)
-                .defaultTTL(1000)
-                .random(new Random(0))
-                .evictionListener((k, v) -> {
-                    evictedKeys.add(k);
-                    evictedValues.add(v);
-                })
-                .build();
+                    .defaultTTL(1000)
+                    .random(new Random(0))
+                    .evictionListener((k, v) -> {
+                        evictedKeys.add(k);
+                        evictedValues.add(v);
+                    })
+                    .build();
     }
 
     @Test
