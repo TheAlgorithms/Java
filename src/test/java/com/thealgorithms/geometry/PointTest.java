@@ -40,20 +40,20 @@ public class PointTest {
         // test for left curve
         assertEquals(1, Point.orientation(pA, pB, pC));
 
-        //test for right curve
+        // test for right curve
         pB = new Point(0, 1);
         assertEquals(-1, Point.orientation(pA, pB, pC));
 
-        //test for left curve
+        // test for left curve
         pC = new Point(-1, 1);
         assertEquals(1, Point.orientation(pA, pB, pC));
 
-        //test for right curve
+        // test for right curve
         pB = new Point(1,0);
         pC = new Point(1,-1);
         assertEquals(-1, Point.orientation(pA, pB, pC));
 
-        //test for collinearity
+        // test for collinearity
         pB = new Point(1, 1);
         pC = new Point(2, 2);
         assertEquals(0, Point.orientation(pA, pB, pC));
