@@ -1,35 +1,39 @@
 package com.thealgorithms.dynamicprogramming;
-/*
-The Sum of Subset problem determines whether a subset of elements from a
-given array sums up to a specific target value.
-*/
+
+/**
+ * Utility class for solving the Subset Sum problem using a space-optimized dynamic programming approach.
+ *
+ * <p>This algorithm determines whether any subset of a given array sums up to a specific target value.</p>
+ *
+ * <p><b>Time Complexity:</b> O(n * sum)</p>
+ * <p><b>Space Complexity:</b> O(sum)</p>
+ */
 public final class SubsetSumSpaceOptimized {
     private SubsetSumSpaceOptimized() {
     }
+
     /**
-     * This method checks whether the subset of an array
-     * contains a given sum or not. This is an space
-     * optimized solution using 1D boolean array
-     * Time Complexity: O(n * sum), Space complexity: O(sum)
+     * Determines whether there exists a subset of the given array that adds up to the specified sum.
+     * This method uses a space-optimized dynamic programming approach with a 1D boolean array.
      *
-     * @param arr An array containing integers
-     * @param sum The target sum of the subset
-     * @return True or False
+     * @param nums The array of non-negative integers
+     * @param targetSum The desired subset sum
+     * @return {@code true} if such a subset exists, {@code false} otherwise
      */
-    public static boolean isSubsetSum(int[] arr, int sum) {
-        int n = arr.length;
-        // Declare the boolean array with size sum + 1
-        boolean[] dp = new boolean[sum + 1];
+    public static boolean isSubsetSum(int[] nums, int targetSum) {
+        if (targetSum < 0) {
+            return false; // Subset sum can't be negative
+        }
 
-        // Initialize the first element as true
-        dp[0] = true;
+        boolean[] dp = new boolean[targetSum + 1];
+        dp[0] = true; // Empty subset always sums to 0
 
-        // Find the subset sum using 1D array
-        for (int i = 0; i < n; i++) {
-            for (int j = sum; j >= arr[i]; j--) {
-                dp[j] = dp[j] || dp[j - arr[i]];
+        for (int number : nums) {
+            for (int j = targetSum; j >= number; j--) {
+                dp[j] = dp[j] || dp[j - number];
             }
         }
-        return dp[sum];
+
+        return dp[targetSum];
     }
 }
