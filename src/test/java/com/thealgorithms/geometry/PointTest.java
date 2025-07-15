@@ -1,32 +1,31 @@
 package com.thealgorithms.geometry;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 public class PointTest {
 
     @Test
     void testCompareTo() {
-        Point p1 = new Point (1, 2);
+        Point p1 = new Point(1, 2);
         Point p2 = new Point(5, -1);
         Point p3 = new Point(3, 9);
         Point p4 = new Point(3, 9);
-        assertEquals(1,p1.compareTo(p2));
-        assertEquals(-1,p2.compareTo(p3));
-        assertEquals(0,p3.compareTo(p4));
+        assertEquals(1, p1.compareTo(p2));
+        assertEquals(-1, p2.compareTo(p3));
+        assertEquals(0, p3.compareTo(p4));
     }
 
     @Test
     void testToString() {
-        Point p1 = new Point (-3, 5);
-        assertEquals("(-3, 5)",p1.toString());
+        Point p = new Point(-3, 5);
+        assertEquals("(-3, 5)", p.toString());
     }
-
 
     @Test
     void testPolarOrder() {
-        Point p = new Point(0,0);
+        Point p = new Point(0, 0);
         assertNotNull(p.polarOrder());
     }
 
@@ -49,8 +48,8 @@ public class PointTest {
         assertEquals(1, Point.orientation(pA, pB, pC));
 
         // test for right curve
-        pB = new Point(1,0);
-        pC = new Point(1,-1);
+        pB = new Point(1, 0);
+        pC = new Point(1, -1);
         assertEquals(-1, Point.orientation(pA, pB, pC));
 
         // test for collinearity
@@ -61,56 +60,56 @@ public class PointTest {
 
     @Test
     void testPolarOrderCompare() {
-        Point ref = new Point(0,0);
+        Point ref = new Point(0, 0);
 
-        Point p1 = new Point(1,1);
-        Point p2 = new Point(1,-1);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        Point pA = new Point(1, 1);
+        Point pB = new Point(1, -1);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(3,0);
-        p2 = new Point(2,0);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(3, 0);
+        pB = new Point(2, 0);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(0,1);
-        p2 = new Point(-1,1);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(0, 1);
+        pB = new Point(-1, 1);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(1,1);
-        p2 = new Point(2,2);
-        assertEquals(0, ref.polarOrder().compare(p1, p2));
+        pA = new Point(1, 1);
+        pB = new Point(2, 2);
+        assertEquals(0, ref.polarOrder().compare(pA, pB));
 
-        p1 = new Point(1,2);
-        p2 = new Point(2,1);
-        assertTrue(ref.polarOrder().compare(p1, p2) > 0);
+        pA = new Point(1, 2);
+        pB = new Point(2, 1);
+        assertTrue(ref.polarOrder().compare(pA, pB) > 0);
 
-        p1 = new Point(2,1);
-        p2 = new Point(1,2);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(2, 1);
+        pB = new Point(1, 2);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(-1,0);
-        p2 = new Point(-2,0);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(-1, 0);
+        pB = new Point(-2, 0);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(2,3);
-        p2 = new Point(2,3);
-        assertEquals(0, ref.polarOrder().compare(p1, p2));
+        pA = new Point(2, 3);
+        pB = new Point(2, 3);
+        assertEquals(0, ref.polarOrder().compare(pA, pB));
 
-        p1 = new Point(0,1);
-        p2 = new Point(0,-1);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(0, 1);
+        pB = new Point(0, -1);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        ref = new Point(1,1);
+        ref = new Point(1, 1);
 
-        p1 = new Point(1,2);
-        p2 = new Point(2,2);
-        assertTrue(ref.polarOrder().compare(p1, p2) > 0);
+        pA = new Point(1, 2);
+        pB = new Point(2, 2);
+        assertTrue(ref.polarOrder().compare(pA, pB) > 0);
 
-        p1 = new Point(2,1);
-        p2 = new Point(2,0);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(2, 1);
+        pB = new Point(2, 0);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
 
-        p1 = new Point(0,1);
-        p2 = new Point(1,0);
-        assertTrue(ref.polarOrder().compare(p1, p2) < 0);
+        pA = new Point(0, 1);
+        pB = new Point(1, 0);
+        assertTrue(ref.polarOrder().compare(pA, pB) < 0);
     }
 }
