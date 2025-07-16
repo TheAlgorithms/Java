@@ -40,7 +40,9 @@ public class RangeInSortedArrayTest {
     }
 
     private static Stream<Arguments> provideEdgeCasesForSortedRange() {
-        return Stream.of(Arguments.of(new int[] {5, 5, 5, 5, 5}, 5, new int[] {0, 4}, "All elements same as key"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 1, new int[] {0, 0}, "Key is first element"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 5, new int[] {4, 4}, "Key is last element"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 0, new int[] {-1, -1}, "Key less than all elements"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 6, new int[] {-1, -1}, "Key greater than all elements"), Arguments.of(new int[] {1, 2, 2, 2, 3, 3, 3, 4}, 3, new int[] {4, 6}, "Multiple occurrences spread"), Arguments.of(new int[] {2}, 2, new int[] {0, 0}, "Single element array key exists"), Arguments.of(new int[] {2}, 3, new int[] {-1, -1}, "Single element array key missing"));
+        return Stream.of(Arguments.of(new int[] {5, 5, 5, 5, 5}, 5, new int[] {0, 4}, "All elements same as key"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 1, new int[] {0, 0}, "Key is first element"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 5, new int[] {4, 4}, "Key is last element"),
+            Arguments.of(new int[] {1, 2, 3, 4, 5}, 0, new int[] {-1, -1}, "Key less than all elements"), Arguments.of(new int[] {1, 2, 3, 4, 5}, 6, new int[] {-1, -1}, "Key greater than all elements"),
+            Arguments.of(new int[] {1, 2, 2, 2, 3, 3, 3, 4}, 3, new int[] {4, 6}, "Multiple occurrences spread"), Arguments.of(new int[] {2}, 2, new int[] {0, 0}, "Single element array key exists"), Arguments.of(new int[] {2}, 3, new int[] {-1, -1}, "Single element array key missing"));
     }
 
     @ParameterizedTest(name = "Edge case {index}: {3}")
