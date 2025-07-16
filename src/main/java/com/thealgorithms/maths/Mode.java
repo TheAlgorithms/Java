@@ -3,46 +3,49 @@ package com.thealgorithms.maths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-/*
- * Find the mode of an array of numbers
- *
- * The mode of an array of numbers is the most frequently occurring number in the array,
- * or the most frequently occurring numbers if there are multiple numbers with the same frequency
+/**
+ * Utility class to calculate the mode(s) of an array of integers.
+ * <p>
+ * The mode of an array is the integer value(s) that occur most frequently.
+ * If multiple values have the same highest frequency, all such values are returned.
+ * </p>
  */
 public final class Mode {
     private Mode() {
     }
 
-    /*
-     * Find the mode of an array of integers
+    /**
+     * Computes the mode(s) of the specified array of integers.
+     * <p>
+     * If the input array is empty, this method returns {@code null}.
+     * If multiple numbers share the highest frequency, all are returned in the result array.
+     * </p>
      *
-     * @param numbers array of integers
-     * @return mode of the array
+     * @param numbers an array of integers to analyze
+     * @return an array containing the mode(s) of the input array, or {@code null} if the input is empty
      */
     public static int[] mode(final int[] numbers) {
         if (numbers.length == 0) {
             return null;
         }
 
-        HashMap<Integer, Integer> count = new HashMap<>();
+        Map<Integer, Integer> count = new HashMap<>();
 
         for (int num : numbers) {
-            if (count.containsKey(num)) {
-                count.put(num, count.get(num) + 1);
-            } else {
-                count.put(num, 1);
-            }
+            count.put(num, count.getOrDefault(num, 0) + 1);
         }
 
         int max = Collections.max(count.values());
-        ArrayList<Integer> modes = new ArrayList<>();
+        List<Integer> modes = new ArrayList<>();
 
         for (final var entry : count.entrySet()) {
             if (entry.getValue() == max) {
                 modes.add(entry.getKey());
             }
         }
-        return modes.stream().mapToInt(n -> n).toArray();
+        return modes.stream().mapToInt(Integer::intValue).toArray();
     }
 }
