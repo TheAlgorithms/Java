@@ -47,8 +47,7 @@ class DuplicateBracketsTest {
     }
 
     static Stream<Arguments> provideInputsThatShouldReturnFalse() {
-        return Stream.of(
-                Arguments.of("( )"), // whitespace inside brackets
+        return Stream.of(Arguments.of("( )"), // whitespace inside brackets
                 Arguments.of("abc + def"), // no brackets
                 Arguments.of("(a + (b * c)) - (d / e)") // complex, but no duplicates
         );
