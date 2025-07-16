@@ -124,6 +124,5 @@ public class DisjointSetUnionTest {
         Node<Integer> root = dsu.findSet(node3);
         assertEquals(root, node1);
         assertEquals(node1, node3.parent);
-        //assertNotEquals(parentBefore, node3.parent);
     }
 }
