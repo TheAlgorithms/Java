@@ -13,7 +13,8 @@ public class ValidParenthesesTest {
     @ParameterizedTest(name = "Input: \"{0}\" → Expected: {1}")
     @CsvSource({"'()', true", "'()[]{}', true", "'(]', false", "'{[]}', true", "'([{}])', true", "'([)]', false", "'', true", "'(', false", "')', false", "'{{{{}}}}', true", "'[({})]', true", "'[(])', false", "'[', false", "']', false", "'()()()()', true", "'(()', false", "'())', false",
         "'{[()()]()}', true"})
-    void testIsValid(String input, boolean expected) {
+    void
+    testIsValid(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
