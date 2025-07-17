@@ -14,19 +14,19 @@ public final class MedianOfMatrix {
     }
 
     public static int median(Iterable<List<Integer>> matrix) {
-        // Flatten the matrix into a 1D list
-        List<Integer> linear = new ArrayList<>();
+        List<Integer> flattened = new ArrayList<>();
+
         for (List<Integer> row : matrix) {
-            linear.addAll(row);
+            if (row != null) {
+                flattened.addAll(row);
+            }
         }
 
-        // Sort the 1D list
-        Collections.sort(linear);
+        if (flattened.isEmpty()) {
+            throw new IllegalArgumentException("Matrix must contain at least one element.");
+        }
 
-        // Calculate the middle index
-        int mid = (0 + linear.size() - 1) / 2;
-
-        // Return the median
-        return linear.get(mid);
+        Collections.sort(flattened);
+        return flattened.get((flattened.size() - 1) / 2);
     }
 }
