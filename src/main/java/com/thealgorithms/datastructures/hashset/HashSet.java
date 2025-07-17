@@ -17,6 +17,8 @@ import java.util.LinkedList;
 
 /**
  * A simple implementation of a HashSet for integers using separate chaining.
+ *
+ * See: https://en.wikipedia.org/wiki/Hash_table
  */
 public class HashSet {
     private static final int INITIAL_CAPACITY = 16;
