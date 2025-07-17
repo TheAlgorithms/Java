@@ -27,9 +27,9 @@ public class HashSet {
 
     @SuppressWarnings("unchecked")
     public HashSet() {
-        buckets = new LinkedList[INITIAL_CAPACITY];
+        buckets = (LinkedList<Integer>[]) new LinkedList[INITIAL_CAPACITY];
         for (int i = 0; i < INITIAL_CAPACITY; i++) {
-            buckets[i] = new LinkedList<>();
+            buckets[i] = new LinkedList<Integer>();
         }
         size = 0;
     }
