@@ -23,24 +23,21 @@ public final class Convolution {
         double[] convolved = new double[a.length + b.length - 1];
 
         /*
-    The discrete convolution of two signals A and B is defined as:
-
-          A.length
-    C[i] = Σ (A[k]*B[i-k])
-          k=0
-
-    It's obvious that:  0 <= k <= A.length , 0 <= i <= A.length + B.length - 2  and  0 <= i-k <=
-    B.length - 1 From the last inequality we get that:  i - B.length + 1 <= k <= i and thus we get
-    the conditions below.
+         * Discrete convolution formula:
+         * C[i] = Σ A[k] * B[i - k]
+         * where k ranges over valid indices so that both A[k] and B[i-k] are in bounds.
          */
-        for (int i = 0; i < convolved.length; i++) {
-            convolved[i] = 0;
-            int k = Math.max(i - b.length + 1, 0);
 
-            while (k < i + 1 && k < a.length) {
-                convolved[i] += a[k] * b[i - k];
-                k++;
+        for (int i = 0; i < convolved.length; i++) {
+            double sum = 0;
+            int kStart = Math.max(0, i - b.length + 1);
+            int kEnd = Math.min(i, a.length - 1);
+
+            for (int k = kStart; k <= kEnd; k++) {
+                sum += a[k] * b[i - k];
             }
+
+            convolved[i] = sum;
         }
 
         return convolved;

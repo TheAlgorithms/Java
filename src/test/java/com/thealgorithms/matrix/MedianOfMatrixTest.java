@@ -1,9 +1,11 @@
 package com.thealgorithms.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +32,19 @@ public class MedianOfMatrixTest {
         int result = MedianOfMatrix.median(matrix);
 
         assertEquals(2, result);
+    }
+
+    @Test
+    public void testMedianSingleElement() {
+        List<List<Integer>> matrix = new ArrayList<>();
+        matrix.add(List.of(1));
+
+        assertEquals(1, MedianOfMatrix.median(matrix));
+    }
+
+    @Test
+    void testEmptyMatrixThrowsException() {
+        Iterable<List<Integer>> emptyMatrix = Collections.emptyList();
+        assertThrows(IllegalArgumentException.class, () -> MedianOfMatrix.median(emptyMatrix), "Expected median() to throw, but it didn't");
     }
 }
