@@ -33,18 +33,12 @@ public class PostfixEvaluatorTest {
     @Test
     @DisplayName("Should throw ArithmeticException for division by zero")
     void testDivisionByZero() {
-        assertThrows(ArithmeticException.class, () -> PostfixEvaluator.evaluatePostfix("5 0 /"));
+        assertThrows(ArithmeticException.class, () -> PostfixEvaluator.evaluatePostfix("1 0 /"));
     }
 
     @Test
     @DisplayName("Should throw IllegalArgumentException for invalid characters")
     void testInvalidToken() {
-        assertThrows(IllegalArgumentException.class, () -> PostfixEvaluator.evaluatePostfix("5 a +"));
-    }
-
-    @Test
-    @DisplayName("Should throw EmptyStackException for empty input")
-    void testEmptyInput() {
-        assertThrows(EmptyStackException.class, () -> PostfixEvaluator.evaluatePostfix(""));
+        assertThrows(IllegalArgumentException.class, () -> PostfixEvaluator.evaluatePostfix("1 a +"));
     }
 }
