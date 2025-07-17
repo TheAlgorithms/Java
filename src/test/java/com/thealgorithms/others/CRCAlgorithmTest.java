@@ -46,8 +46,7 @@ public class CRCAlgorithmTest {
         assertTrue(c.getWrongMessCaught() >= 0, "Wrong messages caught counter >= 0");
         assertTrue(c.getWrongMessNotCaught() >= 0, "Wrong messages not caught counter >= 0");
         assertTrue(c.getCorrectMess() >= 0, "Correct messages counter >= 0");
-        assertEquals(c.getWrongMess(), c.getWrongMessCaught() + c.getWrongMessNotCaught(),
-                "Sum of caught and not caught wrong messages should equal total wrong messages");
+        assertEquals(c.getWrongMess(), c.getWrongMessCaught() + c.getWrongMessNotCaught(), "Sum of caught and not caught wrong messages should equal total wrong messages");
     }
 
     @Test
