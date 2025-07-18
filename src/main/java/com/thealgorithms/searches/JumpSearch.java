@@ -8,7 +8,7 @@ package com.thealgorithms.searches;
  *
  * Reference: https://en.wikipedia.org/wiki/Jump_search
  */
-public class JumpSearch {
+public final class JumpSearch {
 
     // Prevent instantiation
     private JumpSearch() {
