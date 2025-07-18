@@ -25,7 +25,6 @@ public class JumpSearch {
         while (prev < n && arr[Math.min(step, n) - 1] < target) {
             prev = step;
             step += (int) Math.floor(Math.sqrt(n));
-
         }
 
         for (int i = prev; i < Math.min(step, n); i++) {
@@ -35,5 +34,20 @@ public class JumpSearch {
         }
 
         return -1;
+    }
+
+    /**
+     * Wrapper method to support Integer[] for testing purposes.
+     *
+     * @param arr    array of Integers
+     * @param target target value
+     * @return index if found, else -1
+     */
+    public static int find(Integer[] arr, Integer target) {
+        int[] array = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            array[i] = arr[i];
+        }
+        return jumpSearch(array, target);
     }
 }
