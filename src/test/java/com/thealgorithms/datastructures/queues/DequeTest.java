@@ -1,6 +1,8 @@
 package com.thealgorithms.datastructures.queues;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
@@ -48,7 +50,7 @@ class DequeTest {
     @Test
     void testIsEmpty() {
         Deque<Integer> deque = new Deque<>();
-        assertTrue(deque.isEmpty());
+        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
         deque.addFirst(10);
         assertFalse(deque.isEmpty());
     }
@@ -68,13 +70,13 @@ class DequeTest {
     @Test
     void testPollFirstEmpty() {
         Deque<Integer> deque = new Deque<>();
-        assertThrows(NoSuchElementException.class, deque::pollFirst);
+        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, deque::pollFirst);
     }
 
     @Test
     void testPollLastEmpty() {
         Deque<Integer> deque = new Deque<>();
-        assertThrows(NoSuchElementException.class, deque::pollLast);
+        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, deque::pollLast);
     }
 
     @Test
@@ -95,6 +97,28 @@ class DequeTest {
         assertEquals(0, deque.pollFirst());
         assertEquals(2, deque.pollLast());
         assertEquals(1, deque.pollFirst());
-        assertTrue(deque.isEmpty());
+        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
+    }
+
+    @Test
+    void testSizeAfterOperations() {
+        Deque<Integer> deque = new Deque<>();
+        assertEquals(0, deque.size());
+        deque.addFirst(1);
+        deque.addLast(2);
+        deque.addFirst(3);
+        assertEquals(3, deque.size());
+        deque.pollFirst();
+        deque.pollLast();
+        assertEquals(1, deque.size());
+    }
+
+    @Test
+    void testNullValues() {
+        Deque<String> deque = new Deque<>();
+        deque.addFirst(null);
+        assertNull(deque.peekFirst());
+        assertNull(deque.pollFirst());
+        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
     }
 }
