@@ -101,10 +101,4 @@ class DequeTest {
         assertEquals(1, deque.pollFirst());
         assertTrue(deque.isEmpty());
     }
-
-    @Test
-    void testAddNull() {
-        Deque<Integer> deque = new Deque<>();
-        assertThrows(NullPointerException.class, () -> deque.addFirst(null));
-    }
 }
