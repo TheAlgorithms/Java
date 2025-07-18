@@ -3,6 +3,8 @@ package com.thealgorithms.datastructures.queues;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
@@ -50,7 +52,7 @@ class DequeTest {
     @Test
     void testIsEmpty() {
         Deque<Integer> deque = new Deque<>();
-        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
+        assertTrue(deque.isEmpty());
         deque.addFirst(10);
         assertFalse(deque.isEmpty());
     }
@@ -70,13 +72,13 @@ class DequeTest {
     @Test
     void testPollFirstEmpty() {
         Deque<Integer> deque = new Deque<>();
-        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, deque::pollFirst);
+        assertThrows(NoSuchElementException.class, deque::pollFirst);
     }
 
     @Test
     void testPollLastEmpty() {
         Deque<Integer> deque = new Deque<>();
-        org.junit.jupiter.api.Assertions.assertThrows(NoSuchElementException.class, deque::pollLast);
+        assertThrows(NoSuchElementException.class, deque::pollLast);
     }
 
     @Test
@@ -86,5 +88,23 @@ class DequeTest {
         deque.addLast(20);
         deque.addFirst(5);
         assertEquals("Head -> 5 <-> 10 <-> 20 <- Tail", deque.toString());
+    }
+
+    @Test
+    void testAlternatingAddRemove() {
+        Deque<Integer> deque = new Deque<>();
+        deque.addFirst(1);
+        deque.addLast(2);
+        deque.addFirst(0);
+        assertEquals(0, deque.pollFirst());
+        assertEquals(2, deque.pollLast());
+        assertEquals(1, deque.pollFirst());
+        assertTrue(deque.isEmpty());
+    }
+
+    @Test
+    void testAddNull() {
+        Deque<Integer> deque = new Deque<>();
+        assertThrows(NullPointerException.class, () -> deque.addFirst(null));
     }
 }
