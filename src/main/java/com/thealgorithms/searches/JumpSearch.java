@@ -24,7 +24,8 @@ public class JumpSearch {
 
         while (prev < n && arr[Math.min(step, n) - 1] < target) {
             prev = step;
-            step += Math.floor(Math.sqrt(n));
+            step += (int) Math.floor(Math.sqrt(n));
+
         }
 
         for (int i = prev; i < Math.min(step, n); i++) {
