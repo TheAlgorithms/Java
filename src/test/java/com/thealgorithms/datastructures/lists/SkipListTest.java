@@ -1,110 +1,115 @@
 package com.thealgorithms.datastructures.lists;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class SkipListTest {
 
+    private SkipList<String> skipList;
+
+    @BeforeEach
+    void setUp() {
+        skipList = new SkipList<>();
+    }
+
     @Test
-    void add() {
-        SkipList<String> skipList = new SkipList<>();
+    @DisplayName("Add element and verify size and retrieval")
+    void testAdd() {
         assertEquals(0, skipList.size());
 
         skipList.add("value");
 
-        print(skipList);
         assertEquals(1, skipList.size());
+        assertEquals("value", skipList.get(0));
     }
 
     @Test
-    void get() {
-        SkipList<String> skipList = new SkipList<>();
+    @DisplayName("Get retrieves correct element by index")
+    void testGet() {
         skipList.add("value");
-
-        String actualValue = skipList.get(0);
-
-        print(skipList);
-        assertEquals("value", actualValue);
+        assertEquals("value", skipList.get(0));
     }
 
     @Test
-    void contains() {
-        SkipList<String> skipList = createSkipList();
-        print(skipList);
-
-        boolean contains = skipList.contains("b");
-
-        assertTrue(contains);
+    @DisplayName("Contains returns true if element exists")
+    void testContains() {
+        skipList = createSkipList();
+        assertTrue(skipList.contains("b"));
+        assertTrue(skipList.contains("a"));
+        assertFalse(skipList.contains("z")); // negative test
     }
 
     @Test
-    void removeFromHead() {
-        SkipList<String> skipList = createSkipList();
-        String mostLeftElement = skipList.get(0);
+    @DisplayName("Remove element from head and check size and order")
+    void testRemoveFromHead() {
+        skipList = createSkipList();
+        String first = skipList.get(0);
         int initialSize = skipList.size();
-        print(skipList);
 
-        skipList.remove(mostLeftElement);
+        skipList.remove(first);
 
-        print(skipList);
         assertEquals(initialSize - 1, skipList.size());
+        assertFalse(skipList.contains(first));
     }
 
     @Test
-    void removeFromTail() {
-        SkipList<String> skipList = createSkipList();
-        String mostRightValue = skipList.get(skipList.size() - 1);
+    @DisplayName("Remove element from tail and check size and order")
+    void testRemoveFromTail() {
+        skipList = createSkipList();
+        String last = skipList.get(skipList.size() - 1);
         int initialSize = skipList.size();
-        print(skipList);
 
-        skipList.remove(mostRightValue);
+        skipList.remove(last);
 
-        print(skipList);
         assertEquals(initialSize - 1, skipList.size());
+        assertFalse(skipList.contains(last));
     }
 
     @Test
-    void checkSortedOnLowestLayer() {
-        SkipList<String> skipList = new SkipList<>();
+    @DisplayName("Elements should be sorted at base level")
+    void testSortedOrderOnBaseLevel() {
         String[] values = {"d", "b", "a", "c"};
         Arrays.stream(values).forEach(skipList::add);
-        print(skipList);
 
         String[] actualOrder = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[] ::new);
 
-        assertArrayEquals(new String[] {"a", "b", "c", "d"}, actualOrder);
+        org.junit.jupiter.api.Assertions.assertArrayEquals(new String[] {"a", "b", "c", "d"}, actualOrder);
+    }
+
+    @Test
+    @DisplayName("Duplicate elements can be added and count correctly")
+    void testAddDuplicates() {
+        skipList.add("x");
+        skipList.add("x");
+        assertEquals(2, skipList.size());
+        assertEquals("x", skipList.get(0));
+        assertEquals("x", skipList.get(1));
+    }
+
+    @Test
+    @DisplayName("Add multiple and remove all")
+    void testClearViaRemovals() {
+        String[] values = {"a", "b", "c"};
+        Arrays.stream(values).forEach(skipList::add);
+
+        for (String v : values) {
+            skipList.remove(v);
+        }
+
+        assertEquals(0, skipList.size());
     }
 
     private SkipList<String> createSkipList() {
-        SkipList<String> skipList = new SkipList<>();
-        String[] values = {
-            "a",
-            "b",
-            "c",
-            "d",
-            "e",
-            "f",
-            "g",
-            "h",
-            "i",
-            "j",
-            "k",
-        };
-        Arrays.stream(values).forEach(skipList::add);
-        return skipList;
-    }
-
-    /**
-     * Print Skip List representation to console.
-     * Optional method not involved in testing process. Used only for visualisation purposes.
-     * @param skipList to print
-     */
-    private void print(SkipList<?> skipList) {
-        System.out.println(skipList);
+        SkipList<String> s = new SkipList<>();
+        String[] values = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
+        Arrays.stream(values).forEach(s::add);
+        return s;
     }
 }
