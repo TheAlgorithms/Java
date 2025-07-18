@@ -78,9 +78,9 @@ class SkipListTest {
         String[] values = {"d", "b", "a", "c"};
         Arrays.stream(values).forEach(skipList::add);
 
-        String[] actualOrder = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[]::new);
+        String[] actualOrder = IntStream.range(0, values.length).mapToObj(skipList::get).toArray(String[] ::new);
 
-        org.junit.jupiter.api.Assertions.assertArrayEquals(new String[]{"a", "b", "c", "d"}, actualOrder);
+        org.junit.jupiter.api.Assertions.assertArrayEquals(new String[] {"a", "b", "c", "d"}, actualOrder);
     }
 
     @Test
