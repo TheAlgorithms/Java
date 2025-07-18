@@ -33,7 +33,7 @@ public final class GenerateSubsetsTest {
         assertSubsets("", List.of(""));
     }
 
-    private void assertSubsets(String input, List<String> expected) {
+    private void assertSubsets(String input, Iterable<String> expected) {
         List<String> actual = GenerateSubsets.subsetRecursion(input);
         assertIterableEquals(expected, actual, "Subsets do not match for input: " + input);
     }
