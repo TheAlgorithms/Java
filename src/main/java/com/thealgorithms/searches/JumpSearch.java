@@ -18,7 +18,7 @@ public class JumpSearch {
 
         while (arr[Math.min(step, n) - 1] < target) {
             prev = step;
-            step += Math.floor(Math.sqrt(n));
+            step += Math.floor(Math.sqrt(n));   
             if (prev >= n)
                 return -1;
         }
