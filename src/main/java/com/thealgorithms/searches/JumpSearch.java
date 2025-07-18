@@ -10,17 +10,21 @@ package com.thealgorithms.searches;
  */
 public class JumpSearch {
 
+    /**
+     * Performs jump search on a sorted array.
+     *
+     * @param arr    sorted array of integers
+     * @param target the element to find
+     * @return index of target if found, else -1
+     */
     public static int jumpSearch(int[] arr, int target) {
         int n = arr.length;
         int step = (int) Math.floor(Math.sqrt(n));
         int prev = 0;
 
-        while (arr[Math.min(step, n) - 1] < target) {
+        while (prev < n && arr[Math.min(step, n) - 1] < target) {
             prev = step;
             step += Math.floor(Math.sqrt(n));
-            if (prev >= n) {
-                return -1;
-            }
         }
 
         for (int i = prev; i < Math.min(step, n); i++) {
@@ -30,12 +34,5 @@ public class JumpSearch {
         }
 
         return -1;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {1, 3, 5, 7, 9, 12, 17, 21, 25};
-        int target = 12;
-        int index = jumpSearch(arr, target);
-        System.out.println("Found at index: " + index);
     }
 }
