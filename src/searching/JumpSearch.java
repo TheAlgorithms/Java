@@ -1,4 +1,13 @@
-package search;
+package searching;
+
+/**
+ * Implementation of Jump Search algorithm.
+ *
+ * Time Complexity: O(√n)
+ * Space Complexity: O(1)
+ *
+ * Reference: https://en.wikipedia.org/wiki/Jump_search
+ */
 
 public class JumpSearch {
 
