@@ -117,9 +117,6 @@ public class DisjointSetUnionTest {
         dsu.unionSets(node1, node2);
         dsu.unionSets(node2, node3);
 
-        // Before path compression, parent of node3 might not be node1 directly
-        Node<Integer> parentBefore = node3.parent;
-
         // After findSet, path compression should update parent to root directly
         Node<Integer> root = dsu.findSet(node3);
         assertEquals(root, node1);
