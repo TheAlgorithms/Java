@@ -10,13 +10,11 @@ package com.thealgorithms.searches;
  */
 public class JumpSearch {
 
-    /**
-     * Performs jump search on a sorted array.
-     *
-     * @param arr    sorted array of integers
-     * @param target the element to find
-     * @return index of target if found, else -1
-     */
+    // Prevent instantiation
+    private JumpSearch() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static int jumpSearch(int[] arr, int target) {
         int n = arr.length;
         int step = (int) Math.floor(Math.sqrt(n));
@@ -36,13 +34,6 @@ public class JumpSearch {
         return -1;
     }
 
-    /**
-     * Wrapper method to support Integer[] for testing purposes.
-     *
-     * @param arr    array of Integers
-     * @param target target value
-     * @return index if found, else -1
-     */
     public static int find(Integer[] arr, Integer target) {
         int[] array = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
