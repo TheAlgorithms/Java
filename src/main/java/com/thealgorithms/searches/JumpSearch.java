@@ -8,7 +8,6 @@ package com.thealgorithms.searches;
  *
  * Reference: https://en.wikipedia.org/wiki/Jump_search
  */
-
 public class JumpSearch {
 
     public static int jumpSearch(int[] arr, int target) {
@@ -18,21 +17,23 @@ public class JumpSearch {
 
         while (arr[Math.min(step, n) - 1] < target) {
             prev = step;
-            step += Math.floor(Math.sqrt(n));   
-            if (prev >= n)
+            step += Math.floor(Math.sqrt(n));
+            if (prev >= n) {
                 return -1;
+            }
         }
 
         for (int i = prev; i < Math.min(step, n); i++) {
-            if (arr[i] == target)
+            if (arr[i] == target) {
                 return i;
+            }
         }
 
         return -1;
     }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 3, 5, 7, 9, 12, 17, 21, 25 };
+        int[] arr = {1, 3, 5, 7, 9, 12, 17, 21, 25};
         int target = 12;
         int index = jumpSearch(arr, target);
         System.out.println("Found at index: " + index);
