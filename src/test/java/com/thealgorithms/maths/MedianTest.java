@@ -1,6 +1,7 @@
 package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,11 @@ public class MedianTest {
     void medianNegativeValues() {
         int[] arr = {-27, -16, -7, -4, -2, -1};
         assertEquals(-5.5, Median.median(arr));
+    }
+
+    @Test
+    void medianEmptyArrayThrows() {
+        int[] arr = {};
+        assertThrows(IllegalArgumentException.class, () -> Median.median(arr));
     }
 }
