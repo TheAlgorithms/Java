@@ -87,4 +87,38 @@ class DequeTest {
         deque.addFirst(5);
         assertEquals("Head -> 5 <-> 10 <-> 20 <- Tail", deque.toString());
     }
+
+    @Test
+    void testAlternatingAddRemove() {
+        Deque<Integer> deque = new Deque<>();
+        deque.addFirst(1);
+        deque.addLast(2);
+        deque.addFirst(0);
+        assertEquals(0, deque.pollFirst());
+        assertEquals(2, deque.pollLast());
+        assertEquals(1, deque.pollFirst());
+        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
+    }
+
+    @Test
+    void testSizeAfterOperations() {
+        Deque<Integer> deque = new Deque<>();
+        assertEquals(0, deque.size());
+        deque.addFirst(1);
+        deque.addLast(2);
+        deque.addFirst(3);
+        assertEquals(3, deque.size());
+        deque.pollFirst();
+        deque.pollLast();
+        assertEquals(1, deque.size());
+    }
+
+    @Test
+    void testNullValues() {
+        Deque<String> deque = new Deque<>();
+        deque.addFirst(null);
+        assertNull(deque.peekFirst());
+        assertNull(deque.pollFirst());
+        org.junit.jupiter.api.Assertions.assertTrue(deque.isEmpty());
+    }
 }
