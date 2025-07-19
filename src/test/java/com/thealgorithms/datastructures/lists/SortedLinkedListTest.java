@@ -128,4 +128,81 @@ public class SortedLinkedListTest {
         list.delete(10);
         assertTrue(list.isEmpty());
     }
+
+    @Test
+    public void testInsertNegativeNumbers() {
+        list.insert(-10);
+        list.insert(-5);
+        list.insert(-20);
+        assertEquals("[-20, -10, -5]", list.toString());
+    }
+
+    @Test
+    public void testInsertMixedPositiveAndNegativeNumbers() {
+        list.insert(0);
+        list.insert(-1);
+        list.insert(1);
+        assertEquals("[-1, 0, 1]", list.toString());
+    }
+
+    @Test
+    public void testMultipleDeletesUntilEmpty() {
+        list.insert(2);
+        list.insert(4);
+        list.insert(6);
+        assertTrue(list.delete(4));
+        assertTrue(list.delete(2));
+        assertTrue(list.delete(6));
+        assertTrue(list.isEmpty());
+        assertEquals("[]", list.toString());
+    }
+
+    @Test
+    public void testDeleteDuplicateValuesOnlyDeletesOneInstance() {
+        list.insert(5);
+        list.insert(5);
+        list.insert(5);
+        assertTrue(list.delete(5));
+        assertEquals("[5, 5]", list.toString());
+        assertTrue(list.delete(5));
+        assertEquals("[5]", list.toString());
+        assertTrue(list.delete(5));
+        assertEquals("[]", list.toString());
+    }
+
+    @Test
+    public void testSearchOnListWithDuplicates() {
+        list.insert(7);
+        list.insert(7);
+        list.insert(7);
+        assertTrue(list.search(7));
+        assertFalse(list.search(10));
+    }
+
+    @Test
+    public void testToStringOnEmptyList() {
+        assertEquals("[]", list.toString());
+    }
+
+    @Test
+    public void testDeleteAllDuplicates() {
+        list.insert(4);
+        list.insert(4);
+        list.insert(4);
+        assertTrue(list.delete(4));
+        assertTrue(list.delete(4));
+        assertTrue(list.delete(4));
+        assertFalse(list.delete(4)); // nothing left to delete
+        assertEquals("[]", list.toString());
+    }
+
+    @Test
+    public void testInsertAfterDeletion() {
+        list.insert(1);
+        list.insert(3);
+        list.insert(5);
+        assertTrue(list.delete(3));
+        list.insert(2);
+        assertEquals("[1, 2, 5]", list.toString());
+    }
 }
