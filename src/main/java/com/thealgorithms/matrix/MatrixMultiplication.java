@@ -1,5 +1,26 @@
 package com.thealgorithms.matrix;
 
+/**
+ * This class provides a method to perform matrix multiplication.
+ *
+ * <p>Matrix multiplication takes two 2D arrays (matrices) as input and
+ * produces their product, following the mathematical definition of
+ * matrix multiplication.
+ *
+ * <p>For more details:
+ * https://www.geeksforgeeks.org/java/java-program-to-multiply-two-matrices-of-any-size/
+ * https://en.wikipedia.org/wiki/Matrix_multiplication
+ *
+ * <p>Time Complexity: O(n^3) – where n is the dimension of the matrices
+ * (assuming square matrices for simplicity).
+ *
+ * <p>Space Complexity: O(n^2) – for storing the result matrix.
+ *
+ *
+ * @author Nishitha Wihala Pitigala
+ *
+ */
+
 public final class MatrixMultiplication {
     private MatrixMultiplication() {
     }
