@@ -186,7 +186,7 @@ class CircularBufferTest {
     void testPutReturnsTrueOnlyIfPreviouslyEmpty() {
         CircularBuffer<String> buffer = new CircularBuffer<>(2);
 
-        assertTrue(buffer.put("one"));  // was empty
+        assertTrue(buffer.put("one")); // was empty
         org.junit.jupiter.api.Assertions.assertFalse(buffer.put("two")); // not empty
         org.junit.jupiter.api.Assertions.assertFalse(buffer.put("three")); // overwrite
     }
