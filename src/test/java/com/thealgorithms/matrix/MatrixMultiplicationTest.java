@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MatrixMultiplicationTest {
+
+    private static final double EPSILON = 1e-9; // for floating point comparison
+
+
     @Test
     void testMultiply2by2(){
         double[][] matrixA = {{1.0,2.0},{3.0,4.0}};
@@ -14,6 +18,17 @@ public class MatrixMultiplicationTest {
 
         double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
         assertMatrixEquals(expected, result);   // Because assertEquals can fails due to floating point precision issues, Therfore use assertMatrixEquals
+    }
+
+    private void assertMatrixEquals(double[][] expected, double[][] actual) {
+        assertEquals(expected.length, actual.length, "Row count mismatch");
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i].length, actual[i].length, "Column count mismatch at row " + i);   // Check if the number of columns in each row matches
+            for (int j = 0; j < expected[i].length; j++) {
+                assertEquals(expected[i][j], actual[i][j], EPSILON,
+                        "Mismatch at (" + i + "," + j + ")");
+            }
+        }
     }
 
 }
