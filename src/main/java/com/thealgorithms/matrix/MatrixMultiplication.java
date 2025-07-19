@@ -1,51 +1,50 @@
 package com.thealgorithms.matrix;
 
 public final class MatrixMultiplication {
-    private MatrixMultiplication() {
+  private MatrixMultiplication() {}
+
+  /**
+   * Multiplies two matrices.
+   *
+   * @param matrixA the first matrix rowsA x colsA
+   * @param matrixB the second matrix rowsB x colsB
+   * @return the product of the two matrices rowsA x colsB
+   * @throws IllegalArgumentException if the matrices cannot be multiplied
+   */
+  public static double[][] multiply(double[][] matrixA, double[][] matrixB) {
+    // Check the input matrices are not null
+    if (matrixA == null || matrixB == null) {
+      throw new IllegalArgumentException("Input matrices cannot be null");
     }
 
-    /**
-     * Multiplies two matrices.
-     *
-     * @param matrixA the first matrix rowsA x colsA
-     * @param matrixB the second matrix rowsB x colsB
-     * @return the product of the two matrices rowsA x colsB
-     * @throws IllegalArgumentException if the matrices cannot be multiplied
-     */
-    public static double[][] multiply(double[][] matrixA, double[][] matrixB) {
-        // Check the input matrices are not null
-        if (matrixA == null || matrixB == null) {
-            throw new IllegalArgumentException("Input matrices cannot be null");
-        }
-
-        // Check for empty matrices
-        if (matrixA.length == 0
-                || matrixB.length == 0
-                || matrixA[0].length == 0
-                || matrixB[0].length == 0) {
-            throw new IllegalArgumentException("Input matrices must not be empty");
-        }
-
-        // Validate the matrix dimensions
-        if (matrixA[0].length != matrixB.length) {
-            throw new IllegalArgumentException("Matrices cannot be multiplied: incompatible dimensions.");
-        }
-
-        int rowsA = matrixA.length;
-        int colsA = matrixA[0].length;
-        int colsB = matrixB[0].length;
-
-        // Initialize the result matrix with zeros
-        double[][] result = new double[rowsA][colsB];
-
-        // Perform matrix multiplication
-        for (int i = 0; i < rowsA; i++) {
-            for (int j = 0; j < colsB; j++) {
-                for (int k = 0; k < colsA; k++) {
-                    result[i][j] += matrixA[i][k] * matrixB[k][j];
-                }
-            }
-        }
-        return result;
+    // Check for empty matrices
+    if (matrixA.length == 0
+        || matrixB.length == 0
+        || matrixA[0].length == 0
+        || matrixB[0].length == 0) {
+      throw new IllegalArgumentException("Input matrices must not be empty");
     }
+
+    // Validate the matrix dimensions
+    if (matrixA[0].length != matrixB.length) {
+      throw new IllegalArgumentException("Matrices cannot be multiplied: incompatible dimensions.");
+    }
+
+    int rowsA = matrixA.length;
+    int colsA = matrixA[0].length;
+    int colsB = matrixB[0].length;
+
+    // Initialize the result matrix with zeros
+    double[][] result = new double[rowsA][colsB];
+
+    // Perform matrix multiplication
+    for (int i = 0; i < rowsA; i++) {
+      for (int j = 0; j < colsB; j++) {
+        for (int k = 0; k < colsA; k++) {
+          result[i][j] += matrixA[i][k] * matrixB[k][j];
+        }
+      }
+    }
+    return result;
+  }
 }
