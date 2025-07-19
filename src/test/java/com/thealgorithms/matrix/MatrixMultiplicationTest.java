@@ -11,7 +11,7 @@ public class MatrixMultiplicationTest {
     private static final double EPSILON = 1e-9; // for floating point comparison
 
     @Test
-    void testMultiply1by1(){
+    void testMultiply1by1() {
         double[][] matrixA = {{1.0}};
         double[][] matrixB = {{2.0}};
         double[][] expected = {{2.0}};
