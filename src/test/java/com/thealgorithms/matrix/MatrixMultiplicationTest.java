@@ -57,6 +57,13 @@ public class MatrixMultiplicationTest {
         assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(A, B));
     }
 
+    @Test
+    void testEmptyMatrices() {
+        double[][] A = new double[0][0];
+        double[][] B = new double[0][0];
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(A, B));
+    }
+
 
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
         assertEquals(expected.length, actual.length, "Row count mismatch");
