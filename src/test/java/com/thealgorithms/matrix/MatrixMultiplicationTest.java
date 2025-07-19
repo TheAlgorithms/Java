@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-
 public class MatrixMultiplicationTest {
 
     private static final double EPSILON = 1e-9; // for floating point comparison
