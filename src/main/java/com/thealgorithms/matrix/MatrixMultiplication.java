@@ -1,6 +1,6 @@
 package com.thealgorithms.matrix;
 
-public class MatrixMultiplication {
+public final class MatrixMultiplication {
     private MatrixMultiplication() {
     }
 
