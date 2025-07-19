@@ -32,13 +32,15 @@ public class MatrixMultiplicationTest {
     @Test
     void testNullMatrixA() {
         double[][] b = {{1, 2}, {3, 4}};
-        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(null, b));
+        assertThrows(IllegalArgumentException.class,
+                () -> MatrixMultiplication.multiply(null, b));
     }
 
     @Test
     void testNullMatrixB() {
         double[][] a = {{1, 2}, {3, 4}};
-        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, null));
+        assertThrows(IllegalArgumentException.class,
+                () -> MatrixMultiplication.multiply(a, null));
     }
 
     @Test
@@ -59,14 +61,16 @@ public class MatrixMultiplicationTest {
     void testIncompatibleDimensions() {
         double[][] a = {{1.0, 2.0}};
         double[][] b = {{1.0, 2.0}};
-        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, b));
+        assertThrows(IllegalArgumentException.class,
+                () -> MatrixMultiplication.multiply(a, b));
     }
 
     @Test
     void testEmptyMatrices() {
         double[][] a = new double[0][0];
         double[][] b = new double[0][0];
-        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, b));
+        assertThrows(IllegalArgumentException.class,
+                () -> MatrixMultiplication.multiply(a, b));
     }
 
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
