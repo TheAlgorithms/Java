@@ -21,13 +21,13 @@ public class MatrixMultiplicationTest {
     }
 
     @Test
-    void testMultiply3by2and1(){
+    void testMultiply3by2and2by1(){
         double[][] matrixA = {{1.0,2.0},{3.0,4.0},{5.0,6.0}};
         double[][] matrixB = {{7.0},{8.0}};
         double[][] expected = {{23.0}, {53.0}, {83.0}};
 
         double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
-        assertMatrixEquals(expected, result);   // Because assertEquals can fails due to floating point precision issues, Therfore use assertMatrixEquals
+        assertMatrixEquals(expected, result);
     }
 
     @Test
