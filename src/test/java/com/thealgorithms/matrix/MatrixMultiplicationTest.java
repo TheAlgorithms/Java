@@ -30,6 +30,21 @@ public class MatrixMultiplicationTest {
         assertMatrixEquals(expected, result);   // Because assertEquals can fails due to floating point precision issues, Therfore use assertMatrixEquals
     }
 
+    @Test
+    void testMultiplyNull(){
+        double[][] matrixA = {{1.0,2.0},{3.0,4.0}};
+        double[][] matrixB = null;
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            MatrixMultiplication.multiply(matrixA, matrixB);
+        });
+
+        String expectedMessage = "Input matrices cannot be null";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
 
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
         assertEquals(expected.length, actual.length, "Row count mismatch");
