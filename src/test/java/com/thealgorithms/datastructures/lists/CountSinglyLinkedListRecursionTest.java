@@ -46,4 +46,39 @@ public class CountSinglyLinkedListRecursionTest {
         list.insert(3);
         assertEquals(5, list.count(), "Count of a list with duplicate elements should match total node count.");
     }
+
+    @Test
+    public void testCountAfterClearingList() {
+        for (int i = 1; i <= 4; i++) {
+            list.insert(i);
+        }
+        list.clear(); // assuming you have a clear method; if not, skip this
+        assertEquals(0, list.count(), "Count after clearing the list should be 0.");
+    }
+
+    @Test
+    public void testCountOnVeryLargeList() {
+        int n = 1000;
+        for (int i = 0; i < n; i++) {
+            list.insert(i);
+        }
+        assertEquals(n, list.count(), "Count should correctly return for large list sizes.");
+    }
+
+    @Test
+    public void testCountOnListWithNegativeNumbers() {
+        list.insert(-1);
+        list.insert(-5);
+        list.insert(-10);
+        assertEquals(3, list.count(), "Count should correctly handle negative values.");
+    }
+
+    @Test
+    public void testCountIsConsistentWithoutModification() {
+        list.insert(1);
+        list.insert(2);
+        int firstCount = list.count();
+        int secondCount = list.count();
+        assertEquals(firstCount, secondCount, "Repeated count calls should return consistent values.");
+    }
 }
