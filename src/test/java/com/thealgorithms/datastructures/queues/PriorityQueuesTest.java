@@ -55,4 +55,60 @@ class PriorityQueuesTest {
         Assertions.assertEquals(myQueue.peek(), 2);
         Assertions.assertEquals(myQueue.getSize(), 1);
     }
+
+    @Test
+    void testInsertUntilFull() {
+        PriorityQueue pq = new PriorityQueue(3);
+        pq.insert(1);
+        pq.insert(4);
+        pq.insert(2);
+        Assertions.assertTrue(pq.isFull());
+        Assertions.assertEquals(4, pq.peek());
+    }
+
+    @Test
+    void testRemoveFromEmpty() {
+        PriorityQueue pq = new PriorityQueue(3);
+        Assertions.assertThrows(RuntimeException.class, pq::remove);
+    }
+
+    @Test
+    void testInsertDuplicateValues() {
+        PriorityQueue pq = new PriorityQueue(5);
+        pq.insert(5);
+        pq.insert(5);
+        pq.insert(3);
+        Assertions.assertEquals(5, pq.peek());
+        pq.remove();
+        Assertions.assertEquals(5, pq.peek());
+        pq.remove();
+        Assertions.assertEquals(3, pq.peek());
+    }
+
+    @Test
+    void testSizeAfterInsertAndRemove() {
+        PriorityQueue pq = new PriorityQueue(4);
+        Assertions.assertEquals(0, pq.getSize());
+        pq.insert(2);
+        Assertions.assertEquals(1, pq.getSize());
+        pq.insert(10);
+        Assertions.assertEquals(2, pq.getSize());
+        pq.remove();
+        Assertions.assertEquals(1, pq.getSize());
+        pq.remove();
+        Assertions.assertEquals(0, pq.getSize());
+    }
+
+    @Test
+    void testInsertAndRemoveAll() {
+        PriorityQueue pq = new PriorityQueue(3);
+        pq.insert(8);
+        pq.insert(1);
+        pq.insert(6);
+        Assertions.assertTrue(pq.isFull());
+        pq.remove();
+        pq.remove();
+        pq.remove();
+        Assertions.assertTrue(pq.isEmpty());
+    }
 }
