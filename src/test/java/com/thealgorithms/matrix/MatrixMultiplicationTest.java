@@ -11,6 +11,16 @@ public class MatrixMultiplicationTest {
     private static final double EPSILON = 1e-9; // for floating point comparison
 
     @Test
+    void testMultiply1by1(){
+        double[][] matrixA = {{1.0}};
+        double[][] matrixB = {{2.0}};
+        double[][] expected = {{2.0}};
+
+        double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
+        assertMatrixEquals(expected, result);
+    }
+
+    @Test
     void testMultiply2by2() {
         double[][] matrixA = {{1.0, 2.0}, {3.0, 4.0}};
         double[][] matrixB = {{5.0, 6.0}, {7.0, 8.0}};
@@ -25,6 +35,16 @@ public class MatrixMultiplicationTest {
         double[][] matrixA = {{1.0, 2.0}, {3.0, 4.0}, {5.0, 6.0}};
         double[][] matrixB = {{7.0}, {8.0}};
         double[][] expected = {{23.0}, {53.0}, {83.0}};
+
+        double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
+        assertMatrixEquals(expected, result);
+    }
+
+    @Test
+    void testMultiplyNonRectangularMatrices() {
+        double[][] matrixA = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}};
+        double[][] matrixB = {{7.0, 8.0}, {9.0, 10.0}, {11.0, 12.0}};
+        double[][] expected = {{58.0, 64.0}, {139.0, 154.0}};
 
         double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
         assertMatrixEquals(expected, result);
