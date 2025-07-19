@@ -1,9 +1,11 @@
 package com.thealgorithms.matrix;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
 
 public class MatrixMultiplicationTest {
 
@@ -32,15 +34,13 @@ public class MatrixMultiplicationTest {
     @Test
     void testNullMatrixA() {
         double[][] b = {{1, 2}, {3, 4}};
-        assertThrows(IllegalArgumentException.class,
-                () -> MatrixMultiplication.multiply(null, b));
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(null, b));
     }
 
     @Test
     void testNullMatrixB() {
         double[][] a = {{1, 2}, {3, 4}};
-        assertThrows(IllegalArgumentException.class,
-                () -> MatrixMultiplication.multiply(a, null));
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, null));
     }
 
     @Test
@@ -48,8 +48,7 @@ public class MatrixMultiplicationTest {
         double[][] matrixA = {{1.0, 2.0}, {3.0, 4.0}};
         double[][] matrixB = null;
 
-        Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> MatrixMultiplication.multiply(matrixA, matrixB));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(matrixA, matrixB));
 
         String expectedMessage = "Input matrices cannot be null";
         String actualMessage = exception.getMessage();
@@ -61,16 +60,14 @@ public class MatrixMultiplicationTest {
     void testIncompatibleDimensions() {
         double[][] a = {{1.0, 2.0}};
         double[][] b = {{1.0, 2.0}};
-        assertThrows(IllegalArgumentException.class,
-                () -> MatrixMultiplication.multiply(a, b));
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, b));
     }
 
     @Test
     void testEmptyMatrices() {
         double[][] a = new double[0][0];
         double[][] b = new double[0][0];
-        assertThrows(IllegalArgumentException.class,
-                () -> MatrixMultiplication.multiply(a, b));
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(a, b));
     }
 
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
