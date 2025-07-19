@@ -31,6 +31,19 @@ public class MatrixMultiplicationTest {
     }
 
     @Test
+    void testNullMatrixA() {
+        double[][] B = {{1, 2}, {3, 4}};
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(null, B));
+    }
+
+    @Test
+    void testNullMatrixB() {
+        double[][] A = {{1, 2}, {3, 4}};
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(A, null));
+    }
+
+
+    @Test
     void testMultiplyNull(){
         double[][] matrixA = {{1.0,2.0},{3.0,4.0}};
         double[][] matrixB = null;
