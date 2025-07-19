@@ -21,7 +21,7 @@ public final class MatrixMultiplication {
         // Check for empty matrices
         if (matrixA.length == 0 || matrixB.length == 0 || matrixA[0].length == 0 || matrixB[0].length == 0) {
             throw new IllegalArgumentException("Input matrices must not be empty");
-      }
+        }
 
         // Validate the matrix dimensions
         if (matrixA[0].length != matrixB.length) {
