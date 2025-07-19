@@ -46,6 +46,18 @@ public class MatrixMultiplicationTest {
     }
 
 
+    @Test
+    void testIncompatibleDimensions() {
+        double[][] A = {
+                {1.0, 2.0}
+        };
+        double[][] B = {
+                {1.0, 2.0}
+        };
+        assertThrows(IllegalArgumentException.class, () -> MatrixMultiplication.multiply(A, B));
+    }
+
+
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
         assertEquals(expected.length, actual.length, "Row count mismatch");
         for (int i = 0; i < expected.length; i++) {
