@@ -13,7 +13,7 @@ public class MatrixMultiplicationTest {
         double[][] expected = {{19.0, 22.0}, {43.0, 50.0}};
 
         double[][] result = MatrixMultiplication.multiply(matrixA, matrixB);
-        assertMatrixEquals(expected, result);
+        assertMatrixEquals(expected, result);   // Because assertEquals can fails due to floating point precision issues, Therfore use assertMatrixEquals
     }
 
 }
