@@ -7,9 +7,9 @@ public final class MatrixMultiplication {
     /**
      * Multiplies two matrices.
      *
-     * @param matrixA the first matrix     rowsA x colsA
-     * @param matrixB the second matrix    rowsB x colsB
-     * @return the product of the two matrices    rowsA x colsB
+     * @param matrixA the first matrix rowsA x colsA
+     * @param matrixB the second matrix rowsB x colsB
+     * @return the product of the two matrices rowsA x colsB
      * @throws IllegalArgumentException if the matrices cannot be multiplied
      */
     public static double[][] multiply(double[][] matrixA, double[][] matrixB) {
@@ -19,8 +19,10 @@ public final class MatrixMultiplication {
         }
 
         // Check for empty matrices
-        if (matrixA.length == 0 || matrixB.length == 0 ||
-                matrixA[0].length == 0 || matrixB[0].length == 0) {
+        if (matrixA.length == 0
+                || matrixB.length == 0
+                || matrixA[0].length == 0
+                || matrixB[0].length == 0) {
             throw new IllegalArgumentException("Input matrices must not be empty");
         }
 
