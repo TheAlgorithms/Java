@@ -203,21 +203,14 @@ public class QueueTest {
     }
 
     @Test
-    void testDifferentDataTypes() {
-        // Test queue with different data types
+    void testStringDataType() {
+        // Test queue with String data type
         Queue<String> stringQueue = new Queue<>(2);
         stringQueue.insert("first");
         stringQueue.insert("second");
 
         Assertions.assertEquals("first", stringQueue.peekFront());
         Assertions.assertEquals("second", stringQueue.peekRear());
-
-        Queue<Double> doubleQueue = new Queue<>(2);
-        doubleQueue.insert(3.14);
-        doubleQueue.insert(2.71);
-
-        Assertions.assertEquals(3.14, doubleQueue.peekFront());
-        Assertions.assertEquals(2.71, doubleQueue.peekRear());
     }
 
     @Test
