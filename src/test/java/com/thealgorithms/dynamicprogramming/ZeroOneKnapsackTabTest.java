@@ -1,49 +1,58 @@
 package com.thealgorithms.dynamicprogramming;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit tests for the ZeroOneKnapsackTab class.
+ * Test class for {@code ZeroOneKnapsackTab}.
  */
-public class ZeroOneKnapsackTabTest {
+public class ZeroOneknapsackTabTest {
 
     /**
-     * Test knapsackTab with a typical set of values and weights.
-     * Checks if the maximum value for the given capacity is correct.
+     * Tests the 0-1 Knapsack tabulation approach with known values.
      */
     @Test
-    public void testKnapsackTab() {
-        int[] val = {15, 14, 10, 45, 30};
-        int[] wt = {2, 5, 1, 3, 4};
-        int W = 7;
-        int expected = 75;
-        assertEquals(expected, ZeroOneKnapsackTab.knapsackTab(val, wt, W, val.length));
+    public void testKnownValues() {
+        int[] val = {60, 100, 120};
+        int[] wt = {10, 20, 30};
+        int W = 50;
+        int n = val.length;
+
+        // Expected result is 220 (items with weight 20 and 30)
+        assertEquals(220, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for capacity 50 should be 220.");
     }
 
-    /**
-     * Test knapsackTab with empty arrays.
-     * Should return 0 as there are no items to include.
-     */
     @Test
-    public void testKnapsackTabEmpty() {
-        int[] val = {};
-        int[] wt = {};
-        int W = 10;
-        int expected = 0;
-        assertEquals(expected, ZeroOneKnapsackTab.knapsackTab(val, wt, W, 0));
-    }
-
-    /**
-     * Test knapsackTab with zero capacity.
-     * Should return 0 as no items can be included.
-     */
-    @Test
-    public void testKnapsackTabZeroCapacity() {
+    public void testZeroCapacity() {
         int[] val = {10, 20, 30};
         int[] wt = {1, 1, 1};
         int W = 0;
-        int expected = 0;
-        assertEquals(expected, ZeroOneKnapsackTab.knapsackTab(val, wt, W, val.length));
+        int n = val.length;
+
+        // With zero capacity, the result should be 0
+        assertEquals(0, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for capacity 0 should be 0.");
+    }
+
+    @Test
+    public void testZeroItems() {
+        int[] val = {};
+        int[] wt = {};
+        int W = 10;
+        int n = val.length;
+
+        // With no items, the result should be 0
+        assertEquals(0, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value with no items should be 0.");
+    }
+
+    @Test
+    public void testExactFit() {
+        int[] val = {5, 10, 15};
+        int[] wt = {1, 2, 3};
+        int W = 6;
+        int n = val.length;
+
+        // All items fit exactly into capacity 6
+        assertEquals(30, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for exact fit should be 30.");
     }
 }

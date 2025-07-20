@@ -1,42 +1,49 @@
 package com.thealgorithms.dynamicprogramming;
 
 /**
- * Dynamic Programming approach for solving 0-1 Knapsack problem using tabulation.
- * 
- * Problem Statement:
- * Given weights and values of n items, put these items in a knapsack of capacity W 
- * to get the maximum total value in the knapsack. You cannot break an item.
+ * The {@code ZeroOneKnapsackTab} class provides a method to solve the 0-1 Knapsack problem
+ * using dynamic programming (tabulation approach).
  *
- * Time Complexity: O(n * W)
- * Space Complexity: O(n * W)
+ * <p>0-1 Knapsack Problem - 
+ * Given weights and values of n items, and a maximum weight W,
+ * determine the maximum total value of items that can be included in the knapsack
+ * such that their total weight does not exceed W. Each item can be picked only once.
+ * 
+ * Problem Link: https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
  */
-public class ZeroOneKnapsackTab {
+public final class ZeroOneKnapsackTab {
+
+    private ZeroOneKnapsackTab() {
+        // prevent instantiation
+    }
 
     /**
-     * Solves the 0-1 Knapsack problem using a tabulation approach (bottom-up DP).
+     * Solves the 0-1 Knapsack problem using the bottom-up tabulation technique.
      *
-     * @param val The values of the items
-     * @param wt The weights of the items
-     * @param W The total capacity of the knapsack
-     * @param n The number of items
-     * @return The maximum value that can be put in a knapsack of capacity W
+     * @param val the values of the items
+     * @param wt the weights of the items
+     * @param W the total capacity of the knapsack
+     * @param n the number of items
+     * @return the maximum value that can be put in the knapsack
      */
-    public static int knapsackTab(int[] val, int[] wt, int W, int n) {
+    public static int kcompute(int[] val, int[] wt, int W, int n) {
         int[][] dp = new int[n + 1][W + 1];
 
         for (int i = 1; i <= n; i++) {
-            int v = val[i - 1]; // value of current item
-            int w = wt[i - 1];  // weight of current item
-            for (int j = 1; j <= W; j++) {
-                if (w <= j) {
-                    int include = v + dp[i - 1][j - w];
-                    int exclude = dp[i - 1][j];
-                    dp[i][j] = Math.max(include, exclude);
+            int value = val[i - 1];
+            int weight = wt[i - 1];
+
+            for (int w = 1; w <= W; w++) {
+                if (weight <= w) {
+                    int include = value + dp[i - 1][w - weight];
+                    int exclude = dp[i - 1][w];
+                    dp[i][w] = Math.max(include, exclude);
                 } else {
-                    dp[i][j] = dp[i - 1][j];
+                    dp[i][w] = dp[i - 1][w];
                 }
             }
         }
+
         return dp[n][W];
     }
 }
