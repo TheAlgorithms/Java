@@ -1042,6 +1042,7 @@
           - 📄 [GrahamScanTest](src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
           - 📄 [MidpointCircleTest](src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
           - 📄 [MidpointEllipseTest](src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
+          - 📄 [PointTest](src/test/java/com/thealgorithms/geometry/PointTest.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPathTest](src/test/java/com/thealgorithms/graph/ConstrainedShortestPathTest.java)
           - 📄 [StronglyConnectedComponentOptimizedTest](src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
