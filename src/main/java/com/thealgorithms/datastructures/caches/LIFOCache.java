@@ -88,14 +88,15 @@ public final class LIFOCache<K, V> {
      * Constructs a new {@code LIFOCache} instance using the provided {@link Builder}.
      *
      * <p>This constructor initializes the cache with the specified capacity and default TTL,
-     * sets up internal data structures (a {@code LinkedHashMap} for cache entries and configures eviction.
+     * sets up internal data structures (a {@code HashMap} for cache entries,
+     * {an @code ArrayDeque}, for key storage, and configures eviction.
      *
      * @param builder the {@code Builder} object containing configuration parameters
      */
     private LIFOCache(Builder<K, V> builder) {
         this.capacity = builder.capacity;
         this.defaultTTL = builder.defaultTTL;
-        this.cache = HashMap.newHashMap(builder.capacity);
+        this.cache = new HashMap<>(builder.capacity);
         this.keys = new ArrayDeque<>(builder.capacity);
         this.lock = new ReentrantLock();
         this.evictionListener = builder.evictionListener;
@@ -123,7 +124,7 @@ public final class LIFOCache<K, V> {
         try {
             evictionStrategy.onAccess(this);
 
-            CacheEntry<V> entry = cache.get(key);
+            final CacheEntry<V> entry = cache.get(key);
             if (entry == null || entry.isExpired()) {
                 if (entry != null) {
                     cache.remove(key);
@@ -178,7 +179,7 @@ public final class LIFOCache<K, V> {
         try {
             // If key already exists, remove it. It will later be re-inserted at top of stack
             keys.remove(key);
-            CacheEntry<V> oldEntry = cache.remove(key);
+            final CacheEntry<V> oldEntry = cache.remove(key);
             if (oldEntry != null && !oldEntry.isExpired()) {
                 notifyEviction(key, oldEntry.value);
             }
@@ -188,8 +189,8 @@ public final class LIFOCache<K, V> {
 
             // If no expired entry was removed, remove the youngest
             if (cache.size() >= capacity) {
-                K youngestKey = keys.pollLast();
-                CacheEntry<V> youngestEntry = cache.remove(youngestKey);
+                final K youngestKey = keys.pollLast();
+                final CacheEntry<V> youngestEntry = cache.remove(youngestKey);
                 notifyEviction(youngestKey, youngestEntry.value);
             }
 
@@ -210,11 +211,11 @@ public final class LIFOCache<K, V> {
      */
     private int evictExpired() {
         int count = 0;
-        Iterator<K> it = keys.iterator();
+        final Iterator<K> it = keys.iterator();
 
         while (it.hasNext()) {
-            K k = it.next();
-            CacheEntry<V> entry = cache.get(k);
+            final K k = it.next();
+            final CacheEntry<V> entry = cache.get(k);
             if (entry != null && entry.isExpired()) {
                 it.remove();
                 cache.remove(k);
@@ -238,7 +239,7 @@ public final class LIFOCache<K, V> {
         }
         lock.lock();
         try {
-            CacheEntry<V> entry = cache.remove(key);
+            final CacheEntry<V> entry = cache.remove(key);
             keys.remove(key);
 
             // No such key in cache
@@ -361,7 +362,7 @@ public final class LIFOCache<K, V> {
     public Set<K> getAllKeys() {
         lock.lock();
         try {
-            Set<K> result = new HashSet<>();
+            final Set<K> result = new HashSet<>();
 
             for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
                 if (!entry.getValue().isExpired()) {
@@ -397,7 +398,7 @@ public final class LIFOCache<K, V> {
     public String toString() {
         lock.lock();
         try {
-            Map<K, V> visible = new LinkedHashMap<>();
+            final Map<K, V> visible = new LinkedHashMap<>();
             for (Map.Entry<K, CacheEntry<V>> entry : cache.entrySet()) {
                 if (!entry.getValue().isExpired()) {
                     visible.put(entry.getKey(), entry.getValue().value);
