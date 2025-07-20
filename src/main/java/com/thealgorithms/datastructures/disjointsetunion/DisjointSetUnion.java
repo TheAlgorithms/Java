@@ -1,53 +1,65 @@
 package com.thealgorithms.datastructures.disjointsetunion;
 
 /**
- * Disjoint Set Union or DSU is useful for solving problems related to connected components,
- * cycle detection in graphs, and maintaining relationships in disjoint sets of data.
- * It is commonly employed in graph algorithms and problems.
+ * Disjoint Set Union (DSU), also known as Union-Find, is a data structure that tracks a set of elements
+ * partitioned into disjoint (non-overlapping) subsets. It supports two primary operations efficiently:
  *
- * @see <a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">Disjoint Set Union</a>
+ * <ul>
+ *     <li>Find: Determine which subset a particular element belongs to.</li>
+ *     <li>Union: Merge two subsets into a single subset.</li>
+ * </ul>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">Disjoint Set Union (Wikipedia)</a>
  */
 public class DisjointSetUnion<T> {
 
     /**
-     * Creates a new node of DSU with parent initialised as same node
+     * Creates a new disjoint set containing the single specified element.
+     *
+     * @param value the element to be placed in a new singleton set
+     * @return a node representing the new set
      */
-    public Node<T> makeSet(final T x) {
-        return new Node<T>(x);
+    public Node<T> makeSet(final T value) {
+        return new Node<>(value);
     }
 
     /**
-     * Finds and returns the representative (root) element of the set to which a given element belongs.
-     * This operation uses path compression to optimize future findSet operations.
+     * Finds and returns the representative (root) of the set containing the given node.
+     * This method applies path compression to flatten the tree structure for future efficiency.
+     *
+     * @param node the node whose set representative is to be found
+     * @return the representative (root) node of the set
      */
     public Node<T> findSet(Node<T> node) {
-        while (node != node.parent) {
-            node = node.parent;
+        if (node != node.parent) {
+            node.parent = findSet(node.parent);
         }
-        return node;
+        return node.parent;
     }
 
     /**
-     * Unions two sets by merging their representative elements. The merge is performed based on the rank of each set
-     * to ensure efficient merging and path compression to optimize future findSet operations.
+     * Merges the sets containing the two given nodes. Union by rank is used to attach the smaller tree under the larger one.
+     * If both sets have the same rank, one becomes the parent and its rank is incremented.
+     *
+     * @param x a node in the first set
+     * @param y a node in the second set
      */
-    public void unionSets(final Node<T> x, final Node<T> y) {
-        Node<T> nx = findSet(x);
-        Node<T> ny = findSet(y);
+    public void unionSets(Node<T> x, Node<T> y) {
+        Node<T> rootX = findSet(x);
+        Node<T> rootY = findSet(y);
 
-        if (nx == ny) {
-            return; // Both elements already belong to the same set.
+        if (rootX == rootY) {
+            return; // They are already in the same set
         }
         // Merging happens based on rank of node, this is done to avoid long chaining of nodes and reduce time
         // to find root of the component. Idea is to attach small components in big, instead of other way around.
-        if (nx.rank > ny.rank) {
-            ny.parent = nx;
-        } else if (ny.rank > nx.rank) {
-            nx.parent = ny;
+        if (rootX.rank > rootY.rank) {
+            rootY.parent = rootX;
+        } else if (rootY.rank > rootX.rank) {
+            rootX.parent = rootY;
         } else {
-            // Both sets have the same rank; choose one as the parent and increment the rank.
-            ny.parent = nx;
-            nx.rank++;
+            rootY.parent = rootX;
+            rootX.rank++;
         }
     }
 }
