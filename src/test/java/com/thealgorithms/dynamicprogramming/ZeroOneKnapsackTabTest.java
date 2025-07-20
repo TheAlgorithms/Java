@@ -20,7 +20,7 @@ public class ZeroOneknapsackTabTest {
         int n = val.length;
 
         // Expected result is 220 (items with weight 20 and 30)
-        assertEquals(220, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for capacity 50 should be 220.");
+        assertEquals(220, ZeroOneKnapsackTab.compute(val, wt, W, n), "Maximum value for capacity 50 should be 220.");
     }
 
     @Test
@@ -31,7 +31,7 @@ public class ZeroOneknapsackTabTest {
         int n = val.length;
 
         // With zero capacity, the result should be 0
-        assertEquals(0, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for capacity 0 should be 0.");
+        assertEquals(0, ZeroOneKnapsackTab.compute(val, wt, W, n), "Maximum value for capacity 0 should be 0.");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ZeroOneknapsackTabTest {
         int n = val.length;
 
         // With no items, the result should be 0
-        assertEquals(0, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value with no items should be 0.");
+        assertEquals(0, ZeroOneKnapsackTab.compute(val, wt, W, n), "Maximum value with no items should be 0.");
     }
 
     @Test
@@ -53,6 +53,6 @@ public class ZeroOneknapsackTabTest {
         int n = val.length;
 
         // All items fit exactly into capacity 6
-        assertEquals(30, ZeroOneKnapsackTab.kcompute(val, wt, W, n), "Maximum value for exact fit should be 30.");
+        assertEquals(30, ZeroOneKnapsackTab.compute(val, wt, W, n), "Maximum value for exact fit should be 30.");
     }
 }

@@ -22,17 +22,17 @@ public final class ZeroOneKnapsack {
      * @param n the number of items
      * @return the maximum total value achievable within the given weight limit
      */
-    public static int KnapsackCompute(int[] values, int[] weights, int capacity, int n) {
+    public static int compute(int[] values, int[] weights, int capacity, int n) {
         if (n == 0 || capacity == 0) {
             return 0;
         }
 
         if (weights[n - 1] <= capacity) {
-            int include = values[n - 1] + KnapsackCompute(values, weights, capacity - weights[n - 1], n - 1);
-            int exclude = KnapsackCompute(values, weights, capacity, n - 1);
+            int include = values[n - 1] + compute(values, weights, capacity - weights[n - 1], n - 1);
+            int exclude = compute(values, weights, capacity, n - 1);
             return Math.max(include, exclude);
         } else {
-            return KnapsackCompute(values, weights, capacity, n - 1);
+            return compute(values, weights, capacity, n - 1);
         }
     }
 }

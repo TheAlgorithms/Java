@@ -17,8 +17,7 @@ public class ZeroOneKnapsackTest {
         int[] val = {15, 14, 10, 45, 30};
         int[] wt = {2, 5, 1, 3, 4};
         int W = 7;
-        assertEquals(75, ZeroOneKnapsack.KnapsackCompute(val, wt, W, val.length), 
-            "Expected maximum value is 75.");
+        assertEquals(75, ZeroOneKnapsack.compute(val, wt, W, val.length), "Expected maximum value is 75.");
     }
 
     /**
@@ -29,8 +28,7 @@ public class ZeroOneKnapsackTest {
         int[] val = {10, 20, 30};
         int[] wt = {1, 1, 1};
         int W = 0;
-        assertEquals(0, ZeroOneKnapsack.KnapsackCompute(val, wt, W, val.length), 
-            "Expected maximum value is 0 for zero capacity.");
+        assertEquals(0, ZeroOneKnapsack.compute(val, wt, W, val.length), "Expected maximum value is 0 for zero capacity.");
     }
 
     /**
@@ -41,8 +39,7 @@ public class ZeroOneKnapsackTest {
         int[] val = {};
         int[] wt = {};
         int W = 10;
-        assertEquals(0, ZeroOneKnapsack.KnapsackCompute(val, wt, W, 0), 
-            "Expected maximum value is 0 when no items are available.");
+        assertEquals(0, ZeroOneKnapsack.compute(val, wt, W, 0), "Expected maximum value is 0 when no items are available.");
     }
 
     /**
@@ -53,7 +50,6 @@ public class ZeroOneKnapsackTest {
         int[] val = {60, 100, 120};
         int[] wt = {10, 20, 30};
         int W = 50;
-        assertEquals(220, ZeroOneKnapsack.KnapsackCompute(val, wt, W, val.length), 
-            "Expected maximum value is 220 for exact fit.");
+        assertEquals(220, ZeroOneKnapsack.compute(val, wt, W, val.length), "Expected maximum value is 220 for exact fit.");
     }
 }
