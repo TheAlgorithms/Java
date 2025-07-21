@@ -219,7 +219,7 @@ class CursorLinkedListTest {
         list.append("Hello World!");
         list.append("Test@123");
         list.append("Special#$%");
-        list.append("");  // Empty string
+        list.append(""); // Empty string
 
         assertEquals("Hello World!", list.get(0));
         assertEquals("Test@123", list.get(1));
