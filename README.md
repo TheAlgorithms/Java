@@ -18,3 +18,9 @@ Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute
 
 ## Algorithms
 Our [directory](DIRECTORY.md) has the full list of applications.
+
+##  Useful Resources
+
+- [How to install Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [Java Tutorials by W3Schools](https://www.w3schools.com/java/)
+- [Java Programming Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)
