@@ -212,8 +212,8 @@ public class StackOfLinkedListTest {
     public void testMixedDataTypes() {
         // If your stack supports Object types, test with different data types
 
-        stack.push(Integer.valueOf(1));
-        stack.push(Integer.valueOf(2));
+        stack.push(1);
+        stack.push(2);
 
         assertEquals(Integer.valueOf(2), stack.pop());
         assertEquals(Integer.valueOf(1), stack.pop());
