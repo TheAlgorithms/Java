@@ -26,21 +26,19 @@ public final class KnapsackZeroOneTabulation {
 
     /**
      * Solves the 0-1 Knapsack problem using the bottom-up tabulation technique.
-     *
      * @param values the values of the items
      * @param weights the weights of the items
      * @param capacity the total capacity of the knapsack
      * @param itemCount the number of items
      * @return the maximum value that can be put in the knapsack
-     * @throws IllegalArgumentException if input arrays are null, of different lengths,
-     *                                  or if capacity or itemCount is invalid
+     * @throws IllegalArgumentException if input arrays are null, of different lengths,or if capacity or itemCount is invalid
      */
     public static int compute(final int[] values, final int[] weights, final int capacity, final int itemCount) {
         if (values == null || weights == null) {
             throw new IllegalArgumentException("Values and weights arrays must not be null.");
         }
         if (values.length != weights.length) {
-            throw new IllegalArgumentException("Values and weights arrays must be non-null and of same length");
+            throw new IllegalArgumentException("Values and weights arrays must be non-null and of same length.");
         }
         if (capacity < 0) {
             throw new IllegalArgumentException("Capacity must not be negative.");
