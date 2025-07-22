@@ -1,7 +1,6 @@
 package com.thealgorithms.datastructures.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -70,7 +69,7 @@ class NodeStackTest {
         NodeStack<Character> stack = new NodeStack<>();
         assertTrue(stack.isEmpty(), "Newly initialized stack should be empty.");
         stack.push('A');
-        assertFalse(stack.isEmpty(), "Stack should not be empty after a push operation.");
+        org.junit.jupiter.api.Assertions.assertFalse(stack.isEmpty(), "Stack should not be empty after a push operation.");
         stack.pop();
         assertTrue(stack.isEmpty(), "Stack should be empty after popping the only element.");
     }
@@ -132,7 +131,7 @@ class NodeStackTest {
         assertEquals(3, peekedValue, "Peek should return top element");
         assertEquals(originalSize, intStack.size(), "Peek should not change stack size");
         assertEquals(3, intStack.peek(), "Multiple peeks should return same value");
-        assertFalse(intStack.isEmpty(), "Peek should not make stack empty");
+        org.junit.jupiter.api.Assertions.assertFalse(intStack.isEmpty(), "Peek should not make stack empty");
     }
 
     @Test
@@ -214,7 +213,7 @@ class NodeStackTest {
 
         // Should be able to push after exceptions
         intStack.push(3);
-        assertFalse(intStack.isEmpty());
+        org.junit.jupiter.api.Assertions.assertFalse(intStack.isEmpty());
         assertEquals(1, intStack.size());
         assertEquals(3, intStack.peek());
     }
@@ -224,7 +223,7 @@ class NodeStackTest {
     void testSingleElementStack() {
         intStack.push(2);
 
-        assertFalse(intStack.isEmpty(), "Stack with one element should not be empty");
+        org.junit.jupiter.api.Assertions.assertFalse(intStack.isEmpty(), "Stack with one element should not be empty");
         assertEquals(1, intStack.size(), "Size should be 1");
         assertEquals(2, intStack.peek(), "Peek should return the single element");
         assertEquals(1, intStack.size(), "Peek should not change size");
