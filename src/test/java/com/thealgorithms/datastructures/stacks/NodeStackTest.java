@@ -184,9 +184,9 @@ class NodeStackTest {
         assertEquals('Z', charStack.peek(), "Should handle Character values");
 
         // Test with Boolean
-        booleanStack.push(true);
-        booleanStack.push(false);
-        assertEquals(false, booleanStack.peek(), "Should handle Boolean values");
+        booleanStack.push(Boolean.TRUE);
+        booleanStack.push(Boolean.FALSE);
+        assertEquals(Boolean.FALSE, booleanStack.peek(), "Should handle Boolean values");
     }
 
     @Test
