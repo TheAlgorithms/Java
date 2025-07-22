@@ -1,5 +1,7 @@
 # Project Structure
 
+## src
+
 - 📁 **main**
   - 📁 **java**
     - 📁 **com**
@@ -130,6 +132,7 @@
           - 📁 **caches**
             - 📄 [FIFOCache](src/main/java/com/thealgorithms/datastructures/caches/FIFOCache.java)
             - 📄 [LFUCache](src/main/java/com/thealgorithms/datastructures/caches/LFUCache.java)
+            - 📄 [LIFOCache](src/main/java/com/thealgorithms/datastructures/caches/LIFOCache.java)
             - 📄 [LRUCache](src/main/java/com/thealgorithms/datastructures/caches/LRUCache.java)
             - 📄 [MRUCache](src/main/java/com/thealgorithms/datastructures/caches/MRUCache.java)
             - 📄 [RRCache](src/main/java/com/thealgorithms/datastructures/caches/RRCache.java)
@@ -165,12 +168,10 @@
             - 📄 [Kruskal](src/main/java/com/thealgorithms/datastructures/graphs/Kruskal.java)
             - 📄 [MatrixGraphs](src/main/java/com/thealgorithms/datastructures/graphs/MatrixGraphs.java)
             - 📄 [PrimMST](src/main/java/com/thealgorithms/datastructures/graphs/PrimMST.java)
-            - 📄 [README](src/main/java/com/thealgorithms/datastructures/graphs/README.md)
             - 📄 [TarjansAlgorithm](src/main/java/com/thealgorithms/datastructures/graphs/TarjansAlgorithm.java)
             - 📄 [UndirectedAdjacencyListGraph](src/main/java/com/thealgorithms/datastructures/graphs/UndirectedAdjacencyListGraph.java)
             - 📄 [WelshPowell](src/main/java/com/thealgorithms/datastructures/graphs/WelshPowell.java)
           - 📁 **hashmap**
-            - 📄 [Readme](src/main/java/com/thealgorithms/datastructures/hashmap/Readme.md)
             - 📁 **hashing**
               - 📄 [GenericHashMapUsingArray](src/main/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArray.java)
               - 📄 [GenericHashMapUsingArrayList](src/main/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArrayList.java)
@@ -194,7 +195,6 @@
             - 📄 [MergeKSortedArrays](src/main/java/com/thealgorithms/datastructures/heaps/MergeKSortedArrays.java)
             - 📄 [MinHeap](src/main/java/com/thealgorithms/datastructures/heaps/MinHeap.java)
             - 📄 [MinPriorityQueue](src/main/java/com/thealgorithms/datastructures/heaps/MinPriorityQueue.java)
-            - 📄 [Readme](src/main/java/com/thealgorithms/datastructures/heaps/Readme.md)
           - 📁 **lists**
             - 📄 [CircleLinkedList](src/main/java/com/thealgorithms/datastructures/lists/CircleLinkedList.java)
             - 📄 [CountSinglyLinkedListRecursion](src/main/java/com/thealgorithms/datastructures/lists/CountSinglyLinkedListRecursion.java)
@@ -205,7 +205,6 @@
             - 📄 [MergeSortedArrayList](src/main/java/com/thealgorithms/datastructures/lists/MergeSortedArrayList.java)
             - 📄 [MergeSortedSinglyLinkedList](src/main/java/com/thealgorithms/datastructures/lists/MergeSortedSinglyLinkedList.java)
             - 📄 [QuickSortLinkedList](src/main/java/com/thealgorithms/datastructures/lists/QuickSortLinkedList.java)
-            - 📄 [README](src/main/java/com/thealgorithms/datastructures/lists/README.md)
             - 📄 [RandomNode](src/main/java/com/thealgorithms/datastructures/lists/RandomNode.java)
             - 📄 [ReverseKGroup](src/main/java/com/thealgorithms/datastructures/lists/ReverseKGroup.java)
             - 📄 [RotateSinglyLinkedLists](src/main/java/com/thealgorithms/datastructures/lists/RotateSinglyLinkedLists.java)
@@ -222,12 +221,10 @@
             - 📄 [PriorityQueues](src/main/java/com/thealgorithms/datastructures/queues/PriorityQueues.java)
             - 📄 [Queue](src/main/java/com/thealgorithms/datastructures/queues/Queue.java)
             - 📄 [QueueByTwoStacks](src/main/java/com/thealgorithms/datastructures/queues/QueueByTwoStacks.java)
-            - 📄 [README](src/main/java/com/thealgorithms/datastructures/queues/README.md)
             - 📄 [SlidingWindowMaximum](src/main/java/com/thealgorithms/datastructures/queues/SlidingWindowMaximum.java)
             - 📄 [TokenBucket](src/main/java/com/thealgorithms/datastructures/queues/TokenBucket.java)
           - 📁 **stacks**
             - 📄 [NodeStack](src/main/java/com/thealgorithms/datastructures/stacks/NodeStack.java)
-            - 📄 [README](src/main/java/com/thealgorithms/datastructures/stacks/README.md)
             - 📄 [ReverseStack](src/main/java/com/thealgorithms/datastructures/stacks/ReverseStack.java)
             - 📄 [Stack](src/main/java/com/thealgorithms/datastructures/stacks/Stack.java)
             - 📄 [StackArray](src/main/java/com/thealgorithms/datastructures/stacks/StackArray.java)
@@ -259,7 +256,6 @@
             - 📄 [PreOrderTraversal](src/main/java/com/thealgorithms/datastructures/trees/PreOrderTraversal.java)
             - 📄 [PrintTopViewofTree](src/main/java/com/thealgorithms/datastructures/trees/PrintTopViewofTree.java)
             - 📄 [QuadTree](src/main/java/com/thealgorithms/datastructures/trees/QuadTree.java)
-            - 📄 [README](src/main/java/com/thealgorithms/datastructures/trees/README.md)
             - 📄 [RedBlackBST](src/main/java/com/thealgorithms/datastructures/trees/RedBlackBST.java)
             - 📄 [SameTreesCheck](src/main/java/com/thealgorithms/datastructures/trees/SameTreesCheck.java)
             - 📄 [SegmentTree](src/main/java/com/thealgorithms/datastructures/trees/SegmentTree.java)
@@ -493,6 +489,7 @@
           - 📄 [Volume](src/main/java/com/thealgorithms/maths/Volume.java)
         - 📁 **matrix**
           - 📄 [InverseOfMatrix](src/main/java/com/thealgorithms/matrix/InverseOfMatrix.java)
+          - 📄 [MatrixMultiplication](src/main/java/com/thealgorithms/matrix/MatrixMultiplication.java)
           - 📄 [MatrixRank](src/main/java/com/thealgorithms/matrix/MatrixRank.java)
           - 📄 [MatrixTranspose](src/main/java/com/thealgorithms/matrix/MatrixTranspose.java)
           - 📄 [MedianOfMatrix](src/main/java/com/thealgorithms/matrix/MedianOfMatrix.java)
@@ -749,7 +746,6 @@
           - 📄 [ValidParentheses](src/main/java/com/thealgorithms/strings/ValidParentheses.java)
           - 📄 [WordLadder](src/main/java/com/thealgorithms/strings/WordLadder.java)
           - 📁 **zigZagPattern**
-            - 📄 [README](src/main/java/com/thealgorithms/strings/zigZagPattern/README.md)
             - 📄 [ZigZagPattern](src/main/java/com/thealgorithms/strings/zigZagPattern/ZigZagPattern.java)
         - 📁 **tree**
           - 📄 [HeavyLightDecomposition](src/main/java/com/thealgorithms/tree/HeavyLightDecomposition.java)
@@ -875,6 +871,7 @@
           - 📁 **caches**
             - 📄 [FIFOCacheTest](src/test/java/com/thealgorithms/datastructures/caches/FIFOCacheTest.java)
             - 📄 [LFUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LFUCacheTest.java)
+            - 📄 [LIFOCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LIFOCacheTest.java)
             - 📄 [LRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LRUCacheTest.java)
             - 📄 [MRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/MRUCacheTest.java)
             - 📄 [RRCacheTest](src/test/java/com/thealgorithms/datastructures/caches/RRCacheTest.java)
@@ -1048,6 +1045,7 @@
           - 📄 [GrahamScanTest](src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
           - 📄 [MidpointCircleTest](src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
           - 📄 [MidpointEllipseTest](src/test/java/com/thealgorithms/geometry/MidpointEllipseTest.java)
+          - 📄 [PointTest](src/test/java/com/thealgorithms/geometry/PointTest.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPathTest](src/test/java/com/thealgorithms/graph/ConstrainedShortestPathTest.java)
           - 📄 [StronglyConnectedComponentOptimizedTest](src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
@@ -1182,6 +1180,7 @@
             - 📄 [PrimeFactorizationTest](src/test/java/com/thealgorithms/maths/prime/PrimeFactorizationTest.java)
         - 📁 **matrix**
           - 📄 [InverseOfMatrixTest](src/test/java/com/thealgorithms/matrix/InverseOfMatrixTest.java)
+          - 📄 [MatrixMultiplicationTest](src/test/java/com/thealgorithms/matrix/MatrixMultiplicationTest.java)
           - 📄 [MatrixRankTest](src/test/java/com/thealgorithms/matrix/MatrixRankTest.java)
           - 📄 [MatrixTransposeTest](src/test/java/com/thealgorithms/matrix/MatrixTransposeTest.java)
           - 📄 [MatrixUtilTest](src/test/java/com/thealgorithms/matrix/MatrixUtilTest.java)
