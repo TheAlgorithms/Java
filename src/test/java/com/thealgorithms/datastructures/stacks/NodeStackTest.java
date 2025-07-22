@@ -2,7 +2,6 @@ package com.thealgorithms.datastructures.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -98,9 +97,9 @@ class NodeStackTest {
         stringStack.push(null);
 
         assertEquals(3, stringStack.size(), "Stack should contain 3 elements including nulls");
-        assertNull(stringStack.pop(), "Should pop null value");
+        org.junit.jupiter.api.Assertions.assertNull(stringStack.pop(), "Should pop null value");
         assertEquals("not null", stringStack.pop(), "Should pop 'not null' value");
-        assertNull(stringStack.pop(), "Should pop null value");
+        org.junit.jupiter.api.Assertions.assertNull(stringStack.pop(), "Should pop null value");
         assertTrue(stringStack.isEmpty(), "Stack should be empty after popping all elements");
     }
 
