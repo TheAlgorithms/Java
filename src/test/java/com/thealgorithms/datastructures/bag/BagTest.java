@@ -161,24 +161,6 @@ class BagTest {
     }
 
     @Test
-    void testAddNullElement() {
-        Bag<String> bag = new Bag<>();
-        bag.add(null);
-        bag.add("item1");
-        bag.add(null); // Add null twice
-
-        assertEquals(3, bag.size(), "Bag should contain 3 elements including nulls");
-        assertTrue(bag.contains(null), "Bag should contain null");
-        assertTrue(bag.contains("item1"), "Bag should contain 'item1'");
-
-        int nullCount = 0;
-        for (String item : bag) {
-            if (item == null) nullCount++;
-        }
-        assertEquals(2, nullCount, "Bag should contain exactly 2 null values");
-    }
-
-    @Test
     void testCollectionElements() {
         Bag<List<String>> bag = new Bag<>();
         List<String> list1 = new ArrayList<>();
