@@ -132,6 +132,7 @@
           - 📁 **caches**
             - 📄 [FIFOCache](src/main/java/com/thealgorithms/datastructures/caches/FIFOCache.java)
             - 📄 [LFUCache](src/main/java/com/thealgorithms/datastructures/caches/LFUCache.java)
+            - 📄 [LIFOCache](src/main/java/com/thealgorithms/datastructures/caches/LIFOCache.java)
             - 📄 [LRUCache](src/main/java/com/thealgorithms/datastructures/caches/LRUCache.java)
             - 📄 [MRUCache](src/main/java/com/thealgorithms/datastructures/caches/MRUCache.java)
             - 📄 [RRCache](src/main/java/com/thealgorithms/datastructures/caches/RRCache.java)
@@ -303,6 +304,8 @@
           - 📄 [KadaneAlgorithm](src/main/java/com/thealgorithms/dynamicprogramming/KadaneAlgorithm.java)
           - 📄 [Knapsack](src/main/java/com/thealgorithms/dynamicprogramming/Knapsack.java)
           - 📄 [KnapsackMemoization](src/main/java/com/thealgorithms/dynamicprogramming/KnapsackMemoization.java)
+          - 📄 [KnapsackZeroOne](src/main/java/com/thealgorithms/dynamicprogramming/KnapsackZeroOne.java)
+          - 📄 [KnapsackZeroOneTabulation](src/main/java/com/thealgorithms/dynamicprogramming/KnapsackZeroOneTabulation.java)
           - 📄 [LevenshteinDistance](src/main/java/com/thealgorithms/dynamicprogramming/LevenshteinDistance.java)
           - 📄 [LongestAlternatingSubsequence](src/main/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequence.java)
           - 📄 [LongestArithmeticSubsequence](src/main/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequence.java)
@@ -488,6 +491,7 @@
           - 📄 [Volume](src/main/java/com/thealgorithms/maths/Volume.java)
         - 📁 **matrix**
           - 📄 [InverseOfMatrix](src/main/java/com/thealgorithms/matrix/InverseOfMatrix.java)
+          - 📄 [MatrixMultiplication](src/main/java/com/thealgorithms/matrix/MatrixMultiplication.java)
           - 📄 [MatrixRank](src/main/java/com/thealgorithms/matrix/MatrixRank.java)
           - 📄 [MatrixTranspose](src/main/java/com/thealgorithms/matrix/MatrixTranspose.java)
           - 📄 [MedianOfMatrix](src/main/java/com/thealgorithms/matrix/MedianOfMatrix.java)
@@ -869,6 +873,7 @@
           - 📁 **caches**
             - 📄 [FIFOCacheTest](src/test/java/com/thealgorithms/datastructures/caches/FIFOCacheTest.java)
             - 📄 [LFUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LFUCacheTest.java)
+            - 📄 [LIFOCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LIFOCacheTest.java)
             - 📄 [LRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/LRUCacheTest.java)
             - 📄 [MRUCacheTest](src/test/java/com/thealgorithms/datastructures/caches/MRUCacheTest.java)
             - 📄 [RRCacheTest](src/test/java/com/thealgorithms/datastructures/caches/RRCacheTest.java)
@@ -1006,6 +1011,8 @@
           - 📄 [KadaneAlgorithmTest](src/test/java/com/thealgorithms/dynamicprogramming/KadaneAlgorithmTest.java)
           - 📄 [KnapsackMemoizationTest](src/test/java/com/thealgorithms/dynamicprogramming/KnapsackMemoizationTest.java)
           - 📄 [KnapsackTest](src/test/java/com/thealgorithms/dynamicprogramming/KnapsackTest.java)
+          - 📄 [KnapsackZeroOneTabulationTest](src/test/java/com/thealgorithms/dynamicprogramming/KnapsackZeroOneTabulationTest.java)
+          - 📄 [KnapsackZeroOneTest](src/test/java/com/thealgorithms/dynamicprogramming/KnapsackZeroOneTest.java)
           - 📄 [LevenshteinDistanceTests](src/test/java/com/thealgorithms/dynamicprogramming/LevenshteinDistanceTests.java)
           - 📄 [LongestAlternatingSubsequenceTest](src/test/java/com/thealgorithms/dynamicprogramming/LongestAlternatingSubsequenceTest.java)
           - 📄 [LongestArithmeticSubsequenceTest](src/test/java/com/thealgorithms/dynamicprogramming/LongestArithmeticSubsequenceTest.java)
@@ -1177,6 +1184,7 @@
             - 📄 [PrimeFactorizationTest](src/test/java/com/thealgorithms/maths/prime/PrimeFactorizationTest.java)
         - 📁 **matrix**
           - 📄 [InverseOfMatrixTest](src/test/java/com/thealgorithms/matrix/InverseOfMatrixTest.java)
+          - 📄 [MatrixMultiplicationTest](src/test/java/com/thealgorithms/matrix/MatrixMultiplicationTest.java)
           - 📄 [MatrixRankTest](src/test/java/com/thealgorithms/matrix/MatrixRankTest.java)
           - 📄 [MatrixTransposeTest](src/test/java/com/thealgorithms/matrix/MatrixTransposeTest.java)
           - 📄 [MatrixUtilTest](src/test/java/com/thealgorithms/matrix/MatrixUtilTest.java)
