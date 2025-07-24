@@ -44,7 +44,7 @@ public class CircleSort implements SortAlgorithm {
             high--;
         }
 
-        if (low == high && (SortUtils.greater(array[low], array[high + 1]))) {
+        if (low == high && SortUtils.greater(array[low], array[high + 1])) {
             SortUtils.swap(array, low, high + 1);
             swapped = true;
         }

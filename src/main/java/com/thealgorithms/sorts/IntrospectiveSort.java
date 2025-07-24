@@ -84,7 +84,7 @@ public class IntrospectiveSort implements SortAlgorithm {
         for (int i = low + 1; i <= high; i++) {
             final T key = array[i];
             int j = i - 1;
-            while (j >= low && (SortUtils.greater(array[j], key))) {
+            while (j >= low && SortUtils.greater(array[j], key)) {
                 array[j + 1] = array[j];
                 j--;
             }
@@ -125,10 +125,10 @@ public class IntrospectiveSort implements SortAlgorithm {
         final int right = 2 * i + 2;
         int largest = i;
 
-        if (left < n && (SortUtils.greater(array[low + left], array[low + largest]))) {
+        if (left < n && SortUtils.greater(array[low + left], array[low + largest])) {
             largest = left;
         }
-        if (right < n && (SortUtils.greater(array[low + right], array[low + largest]))) {
+        if (right < n && SortUtils.greater(array[low + right], array[low + largest])) {
             largest = right;
         }
         if (largest != i) {
