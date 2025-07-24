@@ -126,4 +126,62 @@ class StackArrayTest {
         stack.push(3);
         Assertions.assertEquals("StackArray [1, 2, 3]", stack.toString());
     }
+
+    @Test
+    void testSingleElementOperations() {
+        // Test operations with a single element
+        stack.push(2);
+        Assertions.assertEquals(1, stack.size());
+        Assertions.assertFalse(stack.isEmpty());
+        Assertions.assertEquals(2, stack.peek());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void testAlternatingPushPop() {
+        // Test alternating push and pop operations
+        stack.push(1);
+        Assertions.assertEquals(1, stack.pop());
+
+        stack.push(2);
+        stack.push(3);
+        Assertions.assertEquals(3, stack.pop());
+
+        stack.push(4);
+        Assertions.assertEquals(4, stack.pop());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void testPushNullElements() {
+        // Test pushing null values
+        stack.push(null);
+        Assertions.assertEquals(1, stack.size());
+        Assertions.assertNull(stack.peek());
+        Assertions.assertNull(stack.pop());
+
+        // Mix null and non-null values
+        stack.push(1);
+        stack.push(null);
+        stack.push(2);
+
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertNull(stack.pop());
+        Assertions.assertEquals(1, stack.pop());
+    }
+
+    @Test
+    void testWithDifferentDataTypes() {
+        // Test with String type
+        StackArray<String> stringStack = new StackArray<>(3);
+        stringStack.push("first");
+        stringStack.push("second");
+        stringStack.push("third");
+
+        Assertions.assertEquals("third", stringStack.pop());
+        Assertions.assertEquals("second", stringStack.peek());
+        Assertions.assertEquals(2, stringStack.size());
+    }
 }
