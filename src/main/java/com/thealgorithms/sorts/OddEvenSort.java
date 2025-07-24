@@ -30,7 +30,7 @@ public final class OddEvenSort implements SortAlgorithm {
     private <T extends Comparable<T>> boolean performOddSort(T[] array) {
         boolean sorted = true;
         for (int i = 1; i < array.length - 1; i += 2) {
-            if (array[i].compareTo(array[i + 1]) > 0) {
+            if (SortUtils.greater(array[i], array[i + 1])) {
                 SortUtils.swap(array, i, i + 1);
                 sorted = false;
             }
@@ -41,7 +41,7 @@ public final class OddEvenSort implements SortAlgorithm {
     private <T extends Comparable<T>> boolean performEvenSort(T[] array) {
         boolean sorted = true;
         for (int i = 0; i < array.length - 1; i += 2) {
-            if (array[i].compareTo(array[i + 1]) > 0) {
+            if (SortUtils.greater(array[i], array[i + 1])) {
                 SortUtils.swap(array, i, i + 1);
                 sorted = false;
             }
