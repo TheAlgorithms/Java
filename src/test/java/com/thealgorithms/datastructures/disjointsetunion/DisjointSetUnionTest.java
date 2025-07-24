@@ -129,7 +129,6 @@ public class DisjointSetUnionTest {
         Node<Integer> node1 = dsu.makeSet(1);
         Node<Integer> node2 = dsu.makeSet(2);
         Node<Integer> node3 = dsu.makeSet(3);
-        Node<Integer> node4 = dsu.makeSet(4);
 
         // Create tree with node1 as root and rank 1
         dsu.unionSets(node1, node2);
