@@ -121,7 +121,7 @@ public class BucketSort implements SortAlgorithm {
     private <T extends Comparable<T>> T findMax(T[] array) {
         T max = array[0];
         for (T element : array) {
-            if (SortUtils.greater(element,max)) {
+            if (SortUtils.greater(element, max)) {
                 max = element;
             }
         }
