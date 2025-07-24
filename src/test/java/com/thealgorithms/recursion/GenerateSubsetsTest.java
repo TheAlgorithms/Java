@@ -1,36 +1,40 @@
 package com.thealgorithms.recursion;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
+import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public final class GenerateSubsetsTest {
 
     @Test
-    void subsetRecursionTestOne() {
-        String str = "abc";
-        String[] expected = new String[] {"abc", "ab", "ac", "a", "bc", "b", "c", ""};
-
-        List<String> ans = GenerateSubsets.subsetRecursion(str);
-        assertArrayEquals(ans.toArray(), expected);
+    @DisplayName("Subsets of 'abc'")
+    void testSubsetsOfABC() {
+        assertSubsets("abc", Arrays.asList("abc", "ab", "ac", "a", "bc", "b", "c", ""));
     }
 
     @Test
-    void subsetRecursionTestTwo() {
-        String str = "cbf";
-        String[] expected = new String[] {"cbf", "cb", "cf", "c", "bf", "b", "f", ""};
-
-        List<String> ans = GenerateSubsets.subsetRecursion(str);
-        assertArrayEquals(ans.toArray(), expected);
+    @DisplayName("Subsets of 'cbf'")
+    void testSubsetsOfCBF() {
+        assertSubsets("cbf", Arrays.asList("cbf", "cb", "cf", "c", "bf", "b", "f", ""));
     }
 
     @Test
-    void subsetRecursionTestThree() {
-        String str = "aba";
-        String[] expected = new String[] {"aba", "ab", "aa", "a", "ba", "b", "a", ""};
+    @DisplayName("Subsets of 'aba' with duplicates")
+    void testSubsetsWithDuplicateChars() {
+        assertSubsets("aba", Arrays.asList("aba", "ab", "aa", "a", "ba", "b", "a", ""));
+    }
 
-        List<String> ans = GenerateSubsets.subsetRecursion(str);
-        assertArrayEquals(ans.toArray(), expected);
+    @Test
+    @DisplayName("Subsets of empty string")
+    void testEmptyInput() {
+        assertSubsets("", List.of(""));
+    }
+
+    private void assertSubsets(String input, Iterable<String> expected) {
+        List<String> actual = GenerateSubsets.subsetRecursion(input);
+        assertIterableEquals(expected, actual, "Subsets do not match for input: " + input);
     }
 }
