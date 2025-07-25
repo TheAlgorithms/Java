@@ -230,7 +230,7 @@ public class BloomFilterTest {
         Assertions.assertTrue(filter.contains(array1), "Filter should contain array1");
         Assertions.assertTrue(filter.contains(array2), "Filter should contain array2");
         Assertions.assertTrue(filter.contains(emptyArray), "Filter should contain empty array");
-        Assertions.assertFalse(filter.contains(new int[]{6, 7, 8}), "Filter should not contain different array");
+        Assertions.assertFalse(filter.contains(new int[] {6, 7, 8}), "Filter should not contain different array");
     }
 
     @Test
