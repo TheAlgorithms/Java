@@ -90,4 +90,88 @@ class MergeKSortedLinkedListTest {
         }
         return Arrays.copyOf(values, i); // return only filled part
     }
+
+    @Test
+    void testMergeWithNullListsInArray() {
+        Node list1 = new Node(1, new Node(3));
+        Node list2 = null;
+        Node list3 = new Node(2, new Node(4));
+        Node[] lists = {list1, list2, list3};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, lists.length);
+
+        int[] expectedValues = {1, 2, 3, 4};
+        int[] actualValues = getListValues(mergedHead);
+        assertArrayEquals(expectedValues, actualValues, "Should handle null lists mixed with valid lists");
+    }
+
+    @Test
+    void testMergeWithDuplicateValues() {
+        Node list1 = new Node(1, new Node(1, new Node(3)));
+        Node list2 = new Node(1, new Node(2, new Node(3)));
+        Node list3 = new Node(3, new Node(3));
+        Node[] lists = {list1, list2, list3};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, lists.length);
+
+        int[] expectedValues = {1, 1, 1, 2, 3, 3, 3, 3};
+        int[] actualValues = getListValues(mergedHead);
+        assertArrayEquals(expectedValues, actualValues, "Should handle duplicate values correctly");
+    }
+
+    @Test
+    void testMergeWithZeroLength() {
+        Node[] lists = {};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, 0);
+
+        assertNull(mergedHead, "Should return null for zero-length array");
+    }
+
+    @Test
+    void testMergeWithNegativeNumbers() {
+        Node list1 = new Node(-5, new Node(-1, new Node(3)));
+        Node list2 = new Node(-3, new Node(0, new Node(2)));
+        Node[] lists = {list1, list2};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, lists.length);
+
+        int[] expectedValues = {-5, -3, -1, 0, 2, 3};
+        int[] actualValues = getListValues(mergedHead);
+        assertArrayEquals(expectedValues, actualValues, "Should handle negative numbers correctly");
+    }
+
+    @Test
+    void testMergeIdenticalLists() {
+        Node list1 = new Node(1, new Node(2, new Node(3)));
+        Node list2 = new Node(1, new Node(2, new Node(3)));
+        Node list3 = new Node(1, new Node(2, new Node(3)));
+        Node[] lists = {list1, list2, list3};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, lists.length);
+
+        int[] expectedValues = {1, 1, 1, 2, 2, 2, 3, 3, 3};
+        int[] actualValues = getListValues(mergedHead);
+        assertArrayEquals(expectedValues, actualValues, "Should merge identical lists correctly");
+    }
+
+    @Test
+    void testMergeAlreadySortedSequence() {
+        Node list1 = new Node(1, new Node(2));
+        Node list2 = new Node(3, new Node(4));
+        Node list3 = new Node(5, new Node(6));
+        Node[] lists = {list1, list2, list3};
+
+        MergeKSortedLinkedList merger = new MergeKSortedLinkedList();
+        Node mergedHead = merger.mergeKList(lists, lists.length);
+
+        int[] expectedValues = {1, 2, 3, 4, 5, 6};
+        int[] actualValues = getListValues(mergedHead);
+        assertArrayEquals(expectedValues, actualValues, "Should handle already sorted sequence");
+    }
 }
