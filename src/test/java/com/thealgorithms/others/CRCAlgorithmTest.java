@@ -160,5 +160,4 @@ public class CRCAlgorithmTest {
         assertEquals(0, c.getWrongMessCaught(), "Initial caught wrong messages should be 0");
         assertEquals(0, c.getWrongMessNotCaught(), "Initial not caught wrong messages should be 0");
     }
-
 }
