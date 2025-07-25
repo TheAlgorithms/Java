@@ -118,4 +118,104 @@ public class StackOfLinkedListTest {
         }
         assertTrue(stack.isEmpty(), "Stack should be empty after popping all elements");
     }
+
+    @Test
+    public void testPushZeroAndNegativeValues() {
+        stack.push(0);
+        stack.push(-1);
+        stack.push(-1);
+
+        assertEquals(-1, stack.pop(), "Should handle negative values correctly");
+        assertEquals(-1, stack.pop(), "Should handle negative values correctly");
+        assertEquals(0, stack.pop(), "Should handle zero value correctly");
+    }
+
+    @Test
+    public void testPushDuplicateValues() {
+        stack.push(1);
+        stack.push(1);
+        stack.push(1);
+
+        assertEquals(3, stack.getSize(), "Should allow duplicate values");
+        assertEquals(1, stack.pop());
+        assertEquals(1, stack.pop());
+        assertEquals(1, stack.pop());
+    }
+
+    @Test
+    public void testPushAfterEmptyingStack() {
+        stack.push(1);
+        stack.push(2);
+        stack.pop();
+        stack.pop();
+
+        assertTrue(stack.isEmpty(), "Stack should be empty");
+
+        stack.push(10);
+        assertEquals(10, stack.peek(), "Should work correctly after emptying and refilling");
+        assertEquals(1, stack.getSize(), "Size should be correct after refilling");
+    }
+
+    @Test
+    public void testPeekDoesNotModifyStack() {
+        stack.push(1);
+
+        int firstPeek = stack.peek();
+        int secondPeek = stack.peek();
+        int thirdPeek = stack.peek();
+
+        assertEquals(firstPeek, secondPeek, "Multiple peeks should return same value");
+        assertEquals(secondPeek, thirdPeek, "Multiple peeks should return same value");
+        assertEquals(1, stack.getSize(), "Peek should not modify stack size");
+        assertEquals(1, stack.pop(), "Element should still be poppable after peeking");
+    }
+
+    @Test
+    public void testAlternatingPushAndPop() {
+        stack.push(1);
+        assertEquals(1, stack.pop());
+
+        stack.push(2);
+        stack.push(3);
+        assertEquals(3, stack.pop());
+
+        stack.push(4);
+        assertEquals(4, stack.pop());
+        assertEquals(2, stack.pop());
+
+        assertTrue(stack.isEmpty(), "Stack should be empty after alternating operations");
+    }
+
+    @Test
+    public void testToStringWithSingleElement() {
+        stack.push(42);
+        assertEquals("42", stack.toString(), "String representation with single element should not have arrows");
+    }
+
+    @Test
+    public void testStackIntegrity() {
+        // Test that internal state remains consistent
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
+            assertEquals(i + 1, stack.getSize(), "Size should be consistent during pushes");
+            assertEquals(i, stack.peek(), "Peek should return last pushed value");
+        }
+
+        for (int i = 9; i >= 0; i--) {
+            assertEquals(i, stack.peek(), "Peek should return correct value before pop");
+            assertEquals(i, stack.pop(), "Pop should return values in LIFO order");
+            assertEquals(i, stack.getSize(), "Size should be consistent during pops");
+        }
+    }
+
+    @Test
+    public void testMixedDataTypes() {
+        // If your stack supports Object types, test with different data types
+
+        stack.push(1);
+        stack.push(2);
+
+        assertEquals(Integer.valueOf(2), stack.pop());
+        assertEquals(Integer.valueOf(1), stack.pop());
+    }
 }

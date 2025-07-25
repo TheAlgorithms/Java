@@ -6,7 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.thealgorithms.datastructures.bags.Bag;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 class BagTest {
@@ -155,5 +158,117 @@ class BagTest {
             count++;
         }
         assertEquals(3, count, "Iterator should traverse all 3 items including duplicates");
+    }
+
+    @Test
+    void testCollectionElements() {
+        Bag<List<String>> bag = new Bag<>();
+        List<String> list1 = new ArrayList<>();
+        list1.add("a");
+        list1.add("b");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("c");
+
+        List<String> emptyList = new ArrayList<>();
+
+        bag.add(list1);
+        bag.add(list2);
+        bag.add(emptyList);
+        bag.add(list1); // Duplicate
+
+        assertEquals(4, bag.size(), "Bag should contain 4 list elements");
+        assertTrue(bag.contains(list1), "Bag should contain list1");
+        assertTrue(bag.contains(list2), "Bag should contain list2");
+        assertTrue(bag.contains(emptyList), "Bag should contain empty list");
+    }
+
+    @Test
+    void testIteratorConsistency() {
+        Bag<String> bag = new Bag<>();
+        bag.add("first");
+        bag.add("second");
+        bag.add("third");
+
+        // Multiple iterations should return same elements
+        List<String> firstIteration = new ArrayList<>();
+        for (String item : bag) {
+            firstIteration.add(item);
+        }
+
+        List<String> secondIteration = new ArrayList<>();
+        for (String item : bag) {
+            secondIteration.add(item);
+        }
+
+        assertEquals(firstIteration.size(), secondIteration.size(), "Both iterations should have same size");
+        assertEquals(3, firstIteration.size(), "First iteration should have 3 elements");
+        assertEquals(3, secondIteration.size(), "Second iteration should have 3 elements");
+    }
+
+    @Test
+    void testMultipleIterators() {
+        Bag<String> bag = new Bag<>();
+        bag.add("item1");
+        bag.add("item2");
+
+        Iterator<String> iter1 = bag.iterator();
+        Iterator<String> iter2 = bag.iterator();
+
+        assertTrue(iter1.hasNext(), "First iterator should have next element");
+        assertTrue(iter2.hasNext(), "Second iterator should have next element");
+
+        String first1 = iter1.next();
+        String first2 = iter2.next();
+
+        org.junit.jupiter.api.Assertions.assertNotNull(first1, "First iterator should return non-null element");
+        org.junit.jupiter.api.Assertions.assertNotNull(first2, "Second iterator should return non-null element");
+    }
+
+    @Test
+    void testIteratorHasNextConsistency() {
+        Bag<String> bag = new Bag<>();
+        bag.add("single");
+
+        Iterator<String> iter = bag.iterator();
+        assertTrue(iter.hasNext(), "hasNext should return true");
+        assertTrue(iter.hasNext(), "hasNext should still return true after multiple calls");
+
+        String item = iter.next();
+        assertEquals("single", item, "Next should return the single item");
+
+        assertFalse(iter.hasNext(), "hasNext should return false after consuming element");
+        assertFalse(iter.hasNext(), "hasNext should still return false");
+    }
+
+    @Test
+    void testIteratorNextOnEmptyBag() {
+        Bag<String> bag = new Bag<>();
+        Iterator<String> iter = bag.iterator();
+
+        assertFalse(iter.hasNext(), "hasNext should return false for empty bag");
+        assertThrows(NoSuchElementException.class, iter::next, "next() should throw NoSuchElementException on empty bag");
+    }
+
+    @Test
+    void testBagOrderIndependence() {
+        Bag<String> bag1 = new Bag<>();
+        Bag<String> bag2 = new Bag<>();
+
+        // Add same elements in different order
+        bag1.add("first");
+        bag1.add("second");
+        bag1.add("third");
+
+        bag2.add("third");
+        bag2.add("first");
+        bag2.add("second");
+
+        assertEquals(bag1.size(), bag2.size(), "Bags should have same size");
+
+        // Both bags should contain all elements
+        assertTrue(bag1.contains("first") && bag2.contains("first"));
+        assertTrue(bag1.contains("second") && bag2.contains("second"));
+        assertTrue(bag1.contains("third") && bag2.contains("third"));
     }
 }
