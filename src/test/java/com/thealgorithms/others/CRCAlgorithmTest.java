@@ -79,4 +79,85 @@ public class CRCAlgorithmTest {
         assertTrue(c.getWrongMess() >= 0);
         assertTrue(c.getCorrectMess() >= 0);
     }
+
+    @Test
+    void testSingleBitMessage() {
+        CRCAlgorithm c = new CRCAlgorithm("11", 1, 0.0);
+        c.generateRandomMess();
+        c.divideMessageWithP(false);
+        c.changeMess();
+        c.divideMessageWithP(true);
+
+        assertTrue(c.getCorrectMess() >= 0, "Single bit message should be handled");
+    }
+
+    @Test
+    void testPolynomialLongerThanMessage() {
+        CRCAlgorithm c = new CRCAlgorithm("11010101", 3, 0.0);
+        c.generateRandomMess();
+        c.divideMessageWithP(false);
+        c.changeMess();
+        c.divideMessageWithP(true);
+
+        // Should not crash, counters should be valid
+        assertTrue(c.getCorrectMess() + c.getWrongMess() >= 0);
+    }
+
+    @Test
+    void testPolynomialWithOnlyOnes() {
+        CRCAlgorithm c = new CRCAlgorithm("1111", 5, 0.1);
+        c.generateRandomMess();
+        c.divideMessageWithP(false);
+        c.changeMess();
+        c.divideMessageWithP(true);
+
+        assertTrue(c.getCorrectMess() + c.getWrongMess() >= 0);
+    }
+
+    @Test
+    void testMultipleRefactorCalls() {
+        CRCAlgorithm c = new CRCAlgorithm("1101", 5, 0.2);
+
+        for (int i = 0; i < 5; i++) {
+            c.refactor();
+            c.generateRandomMess();
+            c.divideMessageWithP(false);
+            c.changeMess();
+            c.divideMessageWithP(true);
+        }
+
+        // Counters should accumulate across multiple runs
+        assertTrue(c.getCorrectMess() + c.getWrongMess() > 0);
+    }
+
+    @Test
+    void testCounterConsistency() {
+        CRCAlgorithm c = new CRCAlgorithm("1101", 10, 0.3);
+
+        for (int i = 0; i < 100; i++) {
+            c.refactor();
+            c.generateRandomMess();
+            c.divideMessageWithP(false);
+            c.changeMess();
+            c.divideMessageWithP(true);
+        }
+
+        // Total messages processed should equal correct + wrong
+        int totalProcessed = c.getCorrectMess() + c.getWrongMess();
+        assertEquals(100, totalProcessed, "Total processed messages should equal iterations");
+
+        // Wrong messages should equal caught + not caught
+        assertEquals(c.getWrongMess(), c.getWrongMessCaught() + c.getWrongMessNotCaught(), "Wrong messages should equal sum of caught and not caught");
+    }
+
+    @Test
+    void testGetterMethodsInitialState() {
+        CRCAlgorithm c = new CRCAlgorithm("1101", 10, 0.1);
+
+        // Check initial state
+        assertEquals(0, c.getCorrectMess(), "Initial correct messages should be 0");
+        assertEquals(0, c.getWrongMess(), "Initial wrong messages should be 0");
+        assertEquals(0, c.getWrongMessCaught(), "Initial caught wrong messages should be 0");
+        assertEquals(0, c.getWrongMessNotCaught(), "Initial not caught wrong messages should be 0");
+    }
 }
