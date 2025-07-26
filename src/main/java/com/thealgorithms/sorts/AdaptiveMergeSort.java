@@ -30,7 +30,7 @@ public class AdaptiveMergeSort implements SortAlgorithm {
                 array[k] = aux[j++];
             } else if (j > high) {
                 array[k] = aux[i++];
-            } else if (aux[j].compareTo(aux[i]) < 0) {
+            } else if (SortUtils.less(aux[j], aux[i])) {
                 array[k] = aux[j++];
             } else {
                 array[k] = aux[i++];

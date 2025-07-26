@@ -56,6 +56,6 @@ public class SelectionSortRecursive implements SortAlgorithm {
         final int minIndexInRest = findMinIndex(array, start + 1);
 
         // Return the index of the smaller element between array[start] and the minimum element in the rest of the array
-        return array[start].compareTo(array[minIndexInRest]) < 0 ? start : minIndexInRest;
+        return SortUtils.less(array[start], array[minIndexInRest]) ? start : minIndexInRest;
     }
 }

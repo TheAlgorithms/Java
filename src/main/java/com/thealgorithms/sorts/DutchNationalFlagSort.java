@@ -26,11 +26,11 @@ public class DutchNationalFlagSort implements SortAlgorithm {
         int k = array.length - 1;
 
         while (j <= k) {
-            if (0 > array[j].compareTo(intendedMiddle)) {
+            if (SortUtils.less(array[j], intendedMiddle)) {
                 SortUtils.swap(array, i, j);
                 j++;
                 i++;
-            } else if (0 < array[j].compareTo(intendedMiddle)) {
+            } else if (SortUtils.greater(array[j], intendedMiddle)) {
                 SortUtils.swap(array, j, k);
                 k--;
             } else {

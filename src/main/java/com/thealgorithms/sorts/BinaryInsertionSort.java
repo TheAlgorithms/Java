@@ -22,7 +22,7 @@ public class BinaryInsertionSort implements SortAlgorithm {
 
             while (low <= high) {
                 final int mid = (low + high) >>> 1;
-                if (temp.compareTo(array[mid]) < 0) {
+                if (SortUtils.less(temp, array[mid])) {
                     high = mid - 1;
                 } else {
                     low = mid + 1;

@@ -36,7 +36,7 @@ public class CircleSort implements SortAlgorithm {
         int high = right;
 
         while (low < high) {
-            if (array[low].compareTo(array[high]) > 0) {
+            if (SortUtils.greater(array[low], array[high])) {
                 SortUtils.swap(array, low, high);
                 swapped = true;
             }
@@ -44,7 +44,7 @@ public class CircleSort implements SortAlgorithm {
             high--;
         }
 
-        if (low == high && array[low].compareTo(array[high + 1]) > 0) {
+        if (low == high && SortUtils.greater(array[low], array[high + 1])) {
             SortUtils.swap(array, low, high + 1);
             swapped = true;
         }
