@@ -111,7 +111,7 @@ public class BucketSort implements SortAlgorithm {
     private <T extends Comparable<T>> T findMin(T[] array) {
         T min = array[0];
         for (T element : array) {
-            if (element.compareTo(min) < 0) {
+            if (SortUtils.less(element, min)) {
                 min = element;
             }
         }
@@ -121,7 +121,7 @@ public class BucketSort implements SortAlgorithm {
     private <T extends Comparable<T>> T findMax(T[] array) {
         T max = array[0];
         for (T element : array) {
-            if (element.compareTo(max) > 0) {
+            if (SortUtils.greater(element, max)) {
                 max = element;
             }
         }

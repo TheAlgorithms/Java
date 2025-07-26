@@ -8,7 +8,7 @@ public class StalinSort implements SortAlgorithm {
         }
         int currentIndex = 0;
         for (int i = 1; i < array.length; i++) {
-            if (array[i].compareTo(array[currentIndex]) >= 0) {
+            if (SortUtils.greaterOrEqual(array[i], array[currentIndex])) {
                 currentIndex++;
                 array[currentIndex] = array[i];
             }
