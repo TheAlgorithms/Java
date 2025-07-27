@@ -63,7 +63,7 @@ public class IntrospectiveSort implements SortAlgorithm {
         final T pivot = array[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (array[j].compareTo(pivot) <= 0) {
+            if (SortUtils.greaterOrEqual(pivot, array[j])) {
                 i++;
                 SortUtils.swap(array, i, j);
             }
@@ -84,7 +84,7 @@ public class IntrospectiveSort implements SortAlgorithm {
         for (int i = low + 1; i <= high; i++) {
             final T key = array[i];
             int j = i - 1;
-            while (j >= low && array[j].compareTo(key) > 0) {
+            while (j >= low && SortUtils.greater(array[j], key)) {
                 array[j + 1] = array[j];
                 j--;
             }
@@ -125,10 +125,10 @@ public class IntrospectiveSort implements SortAlgorithm {
         final int right = 2 * i + 2;
         int largest = i;
 
-        if (left < n && array[low + left].compareTo(array[low + largest]) > 0) {
+        if (left < n && SortUtils.greater(array[low + left], array[low + largest])) {
             largest = left;
         }
-        if (right < n && array[low + right].compareTo(array[low + largest]) > 0) {
+        if (right < n && SortUtils.greater(array[low + right], array[low + largest])) {
             largest = right;
         }
         if (largest != i) {

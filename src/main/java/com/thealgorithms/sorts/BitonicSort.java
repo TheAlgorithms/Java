@@ -64,7 +64,7 @@ public class BitonicSort implements SortAlgorithm {
         if (cnt > 1) {
             final int k = cnt / 2;
 
-            final BiPredicate<T, T> areSorted = (direction == Direction.ASCENDING) ? (a, b) -> a.compareTo(b) < 0 : (a, b) -> a.compareTo(b) > 0;
+            final BiPredicate<T, T> areSorted = (direction == Direction.ASCENDING) ? (a, b) -> SortUtils.less(a, b) : (a, b) -> SortUtils.greater(a, b);
             for (int i = low; i < low + k; i++) {
                 if (!areSorted.test(array[i], array[i + k])) {
                     SortUtils.swap(array, i, i + k);

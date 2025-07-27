@@ -21,7 +21,7 @@ public class SelectionSort implements SortAlgorithm {
     private static <T extends Comparable<T>> int findIndexOfMin(T[] array, final int startIndex) {
         int minIndex = startIndex;
         for (int i = startIndex + 1; i < array.length; i++) {
-            if (array[i].compareTo(array[minIndex]) < 0) {
+            if (SortUtils.less(array[i], array[minIndex])) {
                 minIndex = i;
             }
         }
