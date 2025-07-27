@@ -9,7 +9,7 @@ public class ValidateLengthHandlerTest {
 
     @Test
     public void validLengthShouldPass() {
-    handler.setNext(new MockHammingHandler("LENGTH_OK"));
+    	handler.setNext(new MockHammingHandler("LENGTH_OK"));
         Object result = handler.handle("1010", "0110");
         Assertions.assertThat(result).isEqualTo("LENGTH_OK");
     }
