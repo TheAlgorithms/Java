@@ -34,7 +34,7 @@ class LineDrawerTest {
 
         List<Point> actual = drawer.drawLine(x0, y0, x1, y1);
 
-        Assertions.assertEquals(expected.size(), actual.size(), "Point count mismatch.");
+        Assertions.assertEquals(expected.size(), actual.size(), "Points count mismatch.");
         Assertions.assertTrue(expected.containsAll(actual) && actual.containsAll(expected), "Generated points do not match expected points.");
     }
 
