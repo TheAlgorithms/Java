@@ -9,15 +9,13 @@ public class ValidateBinaryHandlerTest {
 
     @Test
     public void validBinaryStringsShouldPass() {
-    	handler.setNext(new MockHammingHandler("PASSED"));
+        handler.setNext(new MockHammingHandler("PASSED"));
         Object result = handler.handle("1010", "0110");
         Assertions.assertThat(result).isEqualTo("PASSED");
     }
 
     @Test
     public void invalidBinaryShouldThrowException() {
-        Assertions.assertThatThrownBy(() -> handler.handle("10A0", "0110"))
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("binary string");
+        Assertions.assertThatThrownBy(() -> handler.handle("10A0", "0110")).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("binary string");
     }
 }

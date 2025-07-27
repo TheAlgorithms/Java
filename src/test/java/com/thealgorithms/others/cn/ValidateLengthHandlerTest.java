@@ -9,15 +9,13 @@ public class ValidateLengthHandlerTest {
 
     @Test
     public void validLengthShouldPass() {
-    	handler.setNext(new MockHammingHandler("LENGTH_OK"));
+        handler.setNext(new MockHammingHandler("LENGTH_OK"));
         Object result = handler.handle("1010", "0110");
         Assertions.assertThat(result).isEqualTo("LENGTH_OK");
     }
 
     @Test
     public void mismatchedLengthShouldThrowException() {
-        Assertions.assertThatThrownBy(() -> handler.handle("101", "10"))
-                  .isInstanceOf(IllegalArgumentException.class)
-                  .hasMessageContaining("same length");
+        Assertions.assertThatThrownBy(() -> handler.handle("101", "10")).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("same length");
     }
 }
