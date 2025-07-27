@@ -18,8 +18,9 @@ public class BresenhamLineStrategy implements LineDrawingStrategy {
 
         while (true) {
             line.add(new Point(x0, y0));
-            if (x0 == x1 && y0 == y1) break;
-
+            if (x0 == x1 && y0 == y1) {
+                break;
+            }
             int e2 = err * 2;
 
             if (e2 > -dy) {
