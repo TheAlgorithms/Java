@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 /**
  * Unit tests for the LineDrawer using BresenhamLineStrategy.
  */
-class LineDrawerTest {
+        class LineDrawerTest {
 
     /**
      * Provides test data for drawing lines using the Bresenham algorithm.
