@@ -3,7 +3,7 @@ package com.thealgorithms.strings;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class ReverseStringUsingStack {
+public final class ReverseStringUsingStack {
 
     /**
      * Main method to take user input and print the reversed string.
@@ -18,6 +18,10 @@ public class ReverseStringUsingStack {
         // Call the reverse method and print the reversed string
         System.out.println("Reversed String : " + reverse(str));
         sc.close();
+    }
+    // Private constructor to hide implicit public one
+    private ReverseStringUsingStack() {
+        throw new UnsupportedOperationException("Utility class");
     }
 
     /**
