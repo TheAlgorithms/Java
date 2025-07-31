@@ -1,6 +1,7 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -31,5 +32,16 @@ public class ReverseStringTest {
     @MethodSource("testCases")
     public void testReverseString3(String input, String expectedOutput) {
         assertEquals(expectedOutput, ReverseString.reverse3(input));
+    }
+
+    @ParameterizedTest
+    @MethodSource("testCases")
+    public void testReverseString4(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverse4(input));
+    }
+
+    @Test
+    public void testReverseString4WithNullInput() {
+        assertThrows(IllegalArgumentException.class, () -> ReverseString.reverse4(null));
     }
 }
