@@ -18,12 +18,11 @@ public class ReverseStringUsingStack {
         // Call the reverse method and print the reversed string
         System.out.println("Reversed String : " + reverse(str));
         sc.close();
-
     }
 
     /**
      * Reverses a string using a stack.
-     * 
+     *
      * @param str The input string to reverse
      * @return The reversed string
      */
