@@ -103,10 +103,18 @@ public final class Volume {
         return (Math.PI * height / 3) * (r1 * r1 + r2 * r2 + r1 * r2);
     }
 
-    public static double volumeTriangularPrism(double base,double height,double length)
-    {
-        return 0.5*base*height*length;
-    }
+   /**
+ * Calculate the volume of a triangular prism.
+ *
+ * @param base   base of the triangle
+ * @param height height of the triangle
+ * @param length length of the prism
+ * @return volume of the triangular prism
+ */
+public static double volumeTriangularPrism(double base, double height, double length) {
+    return 0.5 * base * height * length;
+}
+
 
        
 }
