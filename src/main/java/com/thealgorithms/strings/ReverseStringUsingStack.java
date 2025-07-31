@@ -1,52 +1,38 @@
 package com.thealgorithms.strings;
 
-import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * A utility class to reverse a given string using a Stack.
+ */
 public final class ReverseStringUsingStack {
 
-    /**
-     * Main method to take user input and print the reversed string.
-     */
-    public static void main(String[] args) {
-
-        // Create a Scanner object to read input from the user
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the String to reverse : ");
-        String str = sc.nextLine();
-
-        // Call the reverse method and print the reversed string
-        System.out.println("Reversed String : " + reverse(str));
-        sc.close();
-    }
-    // Private constructor to hide implicit public one
+    // Private constructor to prevent instantiation of utility class
     private ReverseStringUsingStack() {
         throw new UnsupportedOperationException("Utility class");
     }
 
     /**
-     * Reverses a string using a stack.
+     * Reverses the input string using a Stack.
      *
-     * @param str The input string to reverse
-     * @return The reversed string
+     * @param str the input string to be reversed
+     * @return the reversed string
      */
     public static String reverse(String str) {
-        // StringBuilder to build the reversed string
         StringBuilder sb = new StringBuilder();
-        // Stack to hold the characters of the string
-        Stack<Character> st = new Stack<>();
+        Stack<Character> stack = new Stack<>();
 
-        // Push each character of the string onto the stack
-        for (int i = 0; i < str.length(); i++) {
-            st.push(str.charAt(i));
+        // Push each character of the string into the stack
+        for (int i = 0; i < str.length(); ++i) {
+            stack.push(str.charAt(i));
         }
 
-        // Pop characters from the stack and append to StringBuilder
-        while (!st.empty()) {
-            sb.append(st.pop());
+        // Pop each character from the stack and append to StringBuilder
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
         }
-        // Convert StringBuilder to String and return
-        String rev = sb.toString();
-        return rev;
+
+        // Return the reversed string
+        return sb.toString();
     }
 }
