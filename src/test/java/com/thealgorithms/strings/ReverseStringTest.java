@@ -36,12 +36,12 @@ public class ReverseStringTest {
 
     @ParameterizedTest
     @MethodSource("testCases")
-    public void testReverseString4(String input, String expectedOutput) {
-        assertEquals(expectedOutput, ReverseString.reverse4(input));
+    public void testReverseStringUsingStack(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverseStringUsingStack(input));
     }
 
     @Test
-    public void testReverseString4WithNullInput() {
-        assertThrows(IllegalArgumentException.class, () -> ReverseString.reverse4(null));
+    public void testReverseStringUsingStackWithNullInput() {
+        assertThrows(IllegalArgumentException.class, () -> ReverseString.reverseStringUsingStack(null));
     }
 }

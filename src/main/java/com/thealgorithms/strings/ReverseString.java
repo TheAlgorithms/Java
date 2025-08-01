@@ -65,7 +65,7 @@ public final class ReverseString {
      * * @param str The input string to be reversed.
      * @return The reversed string.
      */
-    public static String reverse4(String str) {
+    public static String reverseStringUsingStack(String str) {
         // Check if the input string is null
         if (str == null) {
             throw new IllegalArgumentException("Input string cannot be null");
