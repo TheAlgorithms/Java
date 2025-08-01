@@ -1,8 +1,10 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -30,5 +32,16 @@ public class ReverseStringTest {
     @MethodSource("testCases")
     public void testReverseString3(String input, String expectedOutput) {
         assertEquals(expectedOutput, ReverseString.reverse3(input));
+    }
+
+    @ParameterizedTest
+    @MethodSource("testCases")
+    public void testReverseStringUsingStack(String input, String expectedOutput) {
+        assertEquals(expectedOutput, ReverseString.reverseStringUsingStack(input));
+    }
+
+    @Test
+    public void testReverseStringUsingStackWithNullInput() {
+        assertThrows(IllegalArgumentException.class, () -> ReverseString.reverseStringUsingStack(null));
     }
 }

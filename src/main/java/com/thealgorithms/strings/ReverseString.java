@@ -1,5 +1,7 @@
 package com.thealgorithms.strings;
 
+import java.util.Stack;
+
 /**
  * Reverse String using different version
  */
@@ -56,5 +58,32 @@ public final class ReverseString {
             sb.append(chars[i]);
         }
         return sb.toString();
+    }
+    /**
+     * Reverses the given string using a stack.
+     * This method uses a stack to reverse the characters of the string.
+     * * @param str The input string to be reversed.
+     * @return The reversed string.
+     */
+    public static String reverseStringUsingStack(String str) {
+        // Check if the input string is null
+        if (str == null) {
+            throw new IllegalArgumentException("Input string cannot be null");
+        }
+        Stack<Character> stack = new Stack<>();
+        StringBuilder reversedString = new StringBuilder();
+        // Check if the input string is empty
+        if (str.isEmpty()) {
+            return str;
+        }
+        // Push each character of the string onto the stack
+        for (char ch : str.toCharArray()) {
+            stack.push(ch);
+        }
+        // Pop each character from the stack and append to the StringBuilder
+        while (!stack.isEmpty()) {
+            reversedString.append(stack.pop());
+        }
+        return reversedString.toString();
     }
 }
