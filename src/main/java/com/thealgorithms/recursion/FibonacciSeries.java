@@ -11,27 +11,14 @@ public final class FibonacciSeries {
     private FibonacciSeries() {
         throw new UnsupportedOperationException("Utility class");
     }
-    public static int fibonacci(int n) {
-        if (n <= 1) {
-            return n;
-        } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
+    public static void fibonacci(int n,int i , int a , int b) {
+        if(i==n){
+            return ;
         }
+        int c = a+b ; 
+        System.out.println(" " + c + " ");
+        fibonacci(n, i+1, b, c);
     }
 
-
-// n is the number upto which fibonacci sequence is required 
-// for example n = 4 , output  = 0 1 1 2 
-    public static void fibo(int n){
-        int a = 0 ; int b = 1 ; int c =0;
-        System.out.print(a+" "+b);
-        for (int i = 2 ; i<n ; i++){
-            c = a+b;
-            System.out.print(" "+ c);
-            a = b ;
-            b = c ;
-        }
-
-    }
 
 }
