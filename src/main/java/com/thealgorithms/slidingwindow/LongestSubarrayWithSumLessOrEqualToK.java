@@ -26,23 +26,23 @@ public final class LongestSubarrayWithSumLessOrEqualToK {
      * @return the length of the longest subarray with sum less than or equal to k
      */
     public static int longestSubarrayWithSumLEK(int[] arr, int k) {
-        int maxLength = 0; // To store the maximum length found
-        int currentSum = 0; // To store the current sum of the window
-        int left = 0; // Left index of the sliding window
-
-        for (int right = 0; right < arr.length; right++) {
-            currentSum += arr[right]; // Expand the window to the right
-
-            // Shrink the window from the left if the current sum exceeds k
-            while (currentSum > k && left <= right) {
-                currentSum -= arr[left]; // Remove the leftmost element
-                left++; // Move the left index to the right
+       int length = 0 ;
+        int currSum = 0 ;
+        int maxLength = Integer.MIN_VALUE;
+        // inspired by kadane's algorithm 
+        for (int i = 0 ; i<arr.length;i++){
+            currSum = currSum + arr[i];
+             length++;
+            if(currSum==k){
+                maxLength = Math.max(maxLength, length);
+                length = 0 ;
+                currSum = 0 ;
+            }if(i==arr.length-1){
+                currSum=0;
+                length=0;
             }
-
-            // Update maxLength if the current window is valid
-            maxLength = Math.max(maxLength, right - left + 1);
+           
         }
-
-        return maxLength; // Return the maximum length found
-    }
+        return maxLength ; 
+       }
 }
