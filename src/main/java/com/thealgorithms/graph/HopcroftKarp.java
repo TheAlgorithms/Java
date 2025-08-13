@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * @author Panteleimon Tzecheridis
+ *
  * Implementation of the Hopcroft–Karp algorithm for finding the maximum matching in a bipartite graph.
  *
  * The bipartite graph is assumed to have:
@@ -15,6 +16,8 @@ import java.util.*;
  *   adj[0] = [0, 1]  // left vertex 0 connects to right vertices 0 and 1
  *
  * Time complexity: O(E * sqrt(V))
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm">Wikipedia: Hopcroft–Karp algorithm</a>
  */
 public class HopcroftKarp {
 
