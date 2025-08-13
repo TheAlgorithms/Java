@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Hopcroft–Karp algorithm for maximum bipartite matching.
  *
- * Left part: vertices [0..nLeft-1], Right part: [0..nRight-1].
+ * Left part: vertices [0,nLeft-1], Right part: [0,nRight-1].
  * Adjacency list: for each left vertex u, list right vertices v it connects to.
  *
  * Time complexity: O(E * sqrt(V)).
@@ -20,7 +20,6 @@ import java.util.Queue;
 public class HopcroftKarp {
 
     private final int nLeft;
-    private final int nRight;
     private final List<List<Integer>> adj;
 
     private final int[] pairU;
@@ -29,7 +28,6 @@ public class HopcroftKarp {
 
     public HopcroftKarp(int nLeft, int nRight, List<List<Integer>> adj) {
         this.nLeft = nLeft;
-        this.nRight = nRight;
         this.adj = adj;
 
         this.pairU = new int[nLeft];
