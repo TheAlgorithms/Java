@@ -1,3 +1,10 @@
+
+
+package com.thealgorithms.dynamicprogramming;
+
+import java.util.Arrays;
+
+
 /**
  * @author Md Asif Joardar
  *
@@ -13,10 +20,6 @@
  *
  * The time complexity of the solution is O(n × sum) and requires O(n × sum) space
  */
-
-package com.thealgorithms.dynamicprogramming;
-
-import java.util.Arrays;
 
 public final class PartitionProblem {
     private PartitionProblem() {
