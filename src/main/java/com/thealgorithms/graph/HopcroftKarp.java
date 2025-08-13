@@ -1,44 +1,46 @@
 package com.thealgorithms.graph;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Queue;
 
 /**
- * @author Panteleimon Tzecheridis
+ * Hopcroft–Karp algorithm for maximum bipartite matching.
  *
- * Implementation of the Hopcroft–Karp algorithm for finding the maximum matching in a bipartite graph.
+ * Left part: vertices [0..nLeft-1], Right part: [0..nRight-1].
+ * Adjacency list: for each left vertex u, list right vertices v it connects to.
  *
- * The bipartite graph is assumed to have:
- * - Left part: vertices [0..nLeft-1]
- * - Right part: vertices [0..nRight-1]
+ * Time complexity: O(E * sqrt(V)).
  *
- * Adjacency list format: For each left vertex, list the right vertices it is connected to.
- * Example:
- *   adj[0] = [0, 1]  // left vertex 0 connects to right vertices 0 and 1
- *
- * Time complexity: O(E * sqrt(V))
- *
- * @see <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm">Wikipedia: Hopcroft–Karp algorithm</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm">
+ *      Wikipedia: Hopcroft–Karp algorithm</a>
+ * @author ptzecher
  */
 public class HopcroftKarp {
 
-    private int nLeft, nRight;
-    private List<List<Integer>> adj;
-    private int[] pairU, pairV, dist;
+    private final int nLeft;
+    private final int nRight;
+    private final List<List<Integer>> adj;
+
+    private final int[] pairU;
+    private final int[] pairV;
+    private final int[] dist;
 
     public HopcroftKarp(int nLeft, int nRight, List<List<Integer>> adj) {
         this.nLeft = nLeft;
         this.nRight = nRight;
         this.adj = adj;
+
         this.pairU = new int[nLeft];
         this.pairV = new int[nRight];
         this.dist = new int[nLeft];
+
         Arrays.fill(pairU, -1);
         Arrays.fill(pairV, -1);
     }
 
-    /**
-     * Returns the size of the maximum matching.
-     */
+    /** Returns the size of the maximum matching. */
     public int maxMatching() {
         int matching = 0;
         while (bfs()) {
@@ -55,33 +57,35 @@ public class HopcroftKarp {
     private boolean bfs() {
         Queue<Integer> queue = new ArrayDeque<>();
         Arrays.fill(dist, -1);
+
         for (int u = 0; u < nLeft; u++) {
             if (pairU[u] == -1) {
                 dist[u] = 0;
                 queue.add(u);
             }
         }
+
         boolean foundAugPath = false;
         while (!queue.isEmpty()) {
             int u = queue.poll();
             for (int v : adj.get(u)) {
-                int u2 = pairV[v];
-                if (u2 == -1) {
+                int matchedLeft = pairV[v];
+                if (matchedLeft == -1) {
                     foundAugPath = true;
-                } else if (dist[u2] == -1) {
-                    dist[u2] = dist[u] + 1;
-                    queue.add(u2);
+                } else if (dist[matchedLeft] == -1) {
+                    dist[matchedLeft] = dist[u] + 1;
+                    queue.add(matchedLeft);
                 }
             }
         }
         return foundAugPath;
     }
 
-    // DFS to find augmenting paths
+    // DFS to find augmenting paths within the BFS layering
     private boolean dfs(int u) {
         for (int v : adj.get(u)) {
-            int u2 = pairV[v];
-            if (u2 == -1 || (dist[u2] == dist[u] + 1 && dfs(u2))) {
+            int matchedLeft = pairV[v];
+            if (matchedLeft == -1 || (dist[matchedLeft] == dist[u] + 1 && dfs(matchedLeft))) {
                 pairU[u] = v;
                 pairV[v] = u;
                 return true;
@@ -98,5 +102,4 @@ public class HopcroftKarp {
     public int[] getRightMatches() {
         return pairV.clone();
     }
-
 }
