@@ -1,6 +1,13 @@
 package com.thealgorithms.graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * DFS that visits a successor only when all its predecessors are already visited,
@@ -141,7 +148,9 @@ public final class GraphTraversal {
     }
 
     private static <T> boolean appearsAnywhere(Map<T, List<T>> succ, T node) {
-        if (succ.containsKey(node)) return true;
+        if (succ.containsKey(node)) {
+            return true;
+        }
         for (List<T> nbrs : succ.values()) {
             if (nbrs != null && nbrs.contains(node)) return true;
         }
