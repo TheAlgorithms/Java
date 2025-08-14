@@ -3,14 +3,14 @@ package com.thealgorithms.graph;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.thealgorithms.graph.GraphTraversal.TraversalEvent;
+import com.thealgorithms.graph.PredecessorConstrainedDfs.TraversalEvent;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
-class GraphTraversalTest {
+class PredecessorConstrainedDfsTest {
 
     // A -> B, A -> C, B -> D, C -> D   (classic diamond)
     private static Map<String, List<String>> diamond() {
@@ -24,7 +24,7 @@ class GraphTraversalTest {
 
     @Test
     void dfsRecursiveOrderEmitsSkipUntilAllParentsVisited() {
-        List<TraversalEvent<String>> events = GraphTraversal.dfsRecursiveOrder(diamond(), "A");
+        List<TraversalEvent<String>> events = PredecessorConstrainedDfs.dfsRecursiveOrder(diamond(), "A");
 
         // Expect visits in order and a skip for first time we meet D (via B) before C is visited.
         var visits = events.stream().filter(TraversalEvent::isVisit).toList();
@@ -49,39 +49,39 @@ class GraphTraversalTest {
 
     @Test
     void returnsEmptyWhenStartNotInGraph() {
-        Map<Integer, List<Integer>> g = Map.of(1, List.of(2), 2, List.of(1));
-        assertThat(GraphTraversal.dfsRecursiveOrder(g, 99)).isEmpty();
+        Map<Integer, List<Integer>> graph = Map.of(1, List.of(2), 2, List.of(1));
+        assertThat(PredecessorConstrainedDfs.dfsRecursiveOrder(graph, 99)).isEmpty();
     }
 
     @Test
     void nullSuccessorsThrows() {
-        assertThrows(IllegalArgumentException.class, () -> GraphTraversal.dfsRecursiveOrder(null, "A"));
+        assertThrows(IllegalArgumentException.class, () -> PredecessorConstrainedDfs.dfsRecursiveOrder(null, "A"));
     }
 
     @Test
     void worksWithExplicitPredecessors() {
-        Map<Integer, List<Integer>> succ = new HashMap<>();
-        succ.put(10, List.of(20));
-        succ.put(20, List.of(30));
-        succ.put(30, List.of());
+        Map<Integer, List<Integer>> successors = new HashMap<>();
+        successors.put(10, List.of(20));
+        successors.put(20, List.of(30));
+        successors.put(30, List.of());
 
-        Map<Integer, List<Integer>> pred = new HashMap<>();
-        pred.put(10, List.of());
-        pred.put(20, List.of(10));
-        pred.put(30, List.of(20));
+        Map<Integer, List<Integer>> predecessors = new HashMap<>();
+        predecessors.put(10, List.of());
+        predecessors.put(20, List.of(10));
+        predecessors.put(30, List.of(20));
 
-        var events = GraphTraversal.dfsRecursiveOrder(succ, pred, 10);
+        var events = PredecessorConstrainedDfs.dfsRecursiveOrder(successors, predecessors, 10);
         var visitNodes = events.stream().filter(TraversalEvent::isVisit).map(TraversalEvent::node).toList();
         assertThat(visitNodes).containsExactly(10, 20, 30);
     }
 
     @Test
     void cycleProducesSkipsButNoInfiniteRecursion() {
-        Map<String, List<String>> succ = new LinkedHashMap<>();
-        succ.put("X", List.of("Y"));
-        succ.put("Y", List.of("X")); // 2-cycle
+        Map<String, List<String>> successors = new LinkedHashMap<>();
+        successors.put("X", List.of("Y"));
+        successors.put("Y", List.of("X")); // 2-cycle
 
-        var events = GraphTraversal.dfsRecursiveOrder(succ, "X");
+        var events = PredecessorConstrainedDfs.dfsRecursiveOrder(successors, "X");
         // Only X is visited; encountering Y from X causes skip because Y's parent X is visited,
         // but when recursing to Y we'd hit back to X (already visited) and stop; no infinite loop.
         assertThat(events.stream().anyMatch(TraversalEvent::isVisit)).isTrue();

@@ -24,53 +24,46 @@ import java.util.Set;
  * </p>
  */
 
-public final class GraphTraversal {
+public final class PredecessorConstrainedDfs {
 
-    private GraphTraversal() {
+    private PredecessorConstrainedDfs() {
         // utility class
     }
 
     /** An event emitted by the traversal: either a VISIT with an order, or a SKIP with a note. */
-    public static final class TraversalEvent<T> {
-        private final T node;
-        private final Integer order; // non-null for visit, null for skip
-        private final String note; // non-null for skip, null for visit
-
-        private TraversalEvent(T node, Integer order, String note) {
-            this.node = node;
-            this.order = order;
-            this.note = note;
+    public record TraversalEvent<T>(
+            T node,
+            Integer order, // non-null for visit, null for skip
+            String note    // non-null for skip, null for visit
+    ) {
+        public TraversalEvent {
+            Objects.requireNonNull(node);
+            // order and note can be null based on event type
         }
 
         /** A visit event with an increasing order (0,1,2,...) */
         public static <T> TraversalEvent<T> visit(T node, int order) {
-            return new TraversalEvent<>(Objects.requireNonNull(node), order, null);
+            return new TraversalEvent<>(node, order, null);
         }
 
         /** A skip event with an explanatory note (e.g., not all parents visited yet). */
         public static <T> TraversalEvent<T> skip(T node, String note) {
-            return new TraversalEvent<>(Objects.requireNonNull(node), null, Objects.requireNonNull(note));
+            return new TraversalEvent<>(node, null, Objects.requireNonNull(note));
         }
 
         public boolean isVisit() {
             return order != null;
         }
+
         public boolean isSkip() {
             return order == null;
-        }
-        public T node() {
-            return node;
-        }
-        public Integer order() {
-            return order;
-        }
-        public String note() {
-            return note;
         }
 
         @Override
         public String toString() {
-            return isVisit() ? "VISIT(" + node + ", order=" + order + ")" : "SKIP(" + node + ", " + note + ")";
+            return isVisit()
+                    ? "VISIT(" + node + ", order=" + order + ")"
+                    : "SKIP(" + node + ", " + note + ")";
         }
     }
 
@@ -118,56 +111,56 @@ public final class GraphTraversal {
         return Collections.unmodifiableList(events);
     }
 
-    private static <T> void dfs(T u, Map<T, List<T>> succ, Map<T, List<T>> pred, Set<T> visited, int[] order, List<TraversalEvent<T>> out) {
+    private static <T> void dfs(T currentNode, Map<T, List<T>> successors, Map<T, List<T>> predecessors, Set<T> visited, int[] order, List<TraversalEvent<T>> result) {
 
-        if (!visited.add(u)) {
+        if (!visited.add(currentNode)) {
             return; // already visited
         }
-        out.add(TraversalEvent.visit(u, order[0]++)); // record visit and increment
+        result.add(TraversalEvent.visit(currentNode, order[0]++)); // record visit and increment
 
-        for (T v : succ.getOrDefault(u, List.of())) {
-            if (visited.contains(v)) {
+        for (T childNode : successors.getOrDefault(currentNode, List.of())) {
+            if (visited.contains(childNode)) {
                 continue;
             }
-            if (allParentsVisited(v, visited, pred)) {
-                dfs(v, succ, pred, visited, order, out);
+            if (allParentsVisited(childNode, visited, predecessors)) {
+                dfs(childNode, successors, predecessors, visited, order, result);
             } else {
-                out.add(TraversalEvent.skip(v, "⛔ Skipping " + v + ": not all parents are visited yet."));
+                result.add(TraversalEvent.skip(childNode, "⛔ Skipping " + childNode + ": not all parents are visited yet."));
                 // do not mark visited; it may be visited later from another parent
             }
         }
     }
 
-    private static <T> boolean allParentsVisited(T node, Set<T> visited, Map<T, List<T>> pred) {
-        for (T p : pred.getOrDefault(node, List.of())) {
-            if (!visited.contains(p)) {
+    private static <T> boolean allParentsVisited(T node, Set<T> visited, Map<T, List<T>> predecessors) {
+        for (T parent : predecessors.getOrDefault(node, List.of())) {
+            if (!visited.contains(parent)) {
                 return false;
             }
         }
         return true;
     }
 
-    private static <T> boolean appearsAnywhere(Map<T, List<T>> succ, T node) {
-        if (succ.containsKey(node)) {
+    private static <T> boolean appearsAnywhere(Map<T, List<T>> successors, T node) {
+        if (successors.containsKey(node)) {
             return true;
         }
-        for (List<T> nbrs : succ.values()) {
-            if (nbrs != null && nbrs.contains(node)) {
+        for (List<T> neighbours : successors.values()) {
+            if (neighbours != null && neighbours.contains(node)) {
                 return true;
             }
         }
         return false;
     }
 
-    private static <T> Map<T, List<T>> derivePredecessors(Map<T, List<T>> succ) {
-        Map<T, List<T>> pred = new HashMap<>();
+    private static <T> Map<T, List<T>> derivePredecessors(Map<T, List<T>> successors) {
+        Map<T, List<T>> predecessors = new HashMap<>();
         // ensure keys exist for all nodes appearing anywhere
-        for (Map.Entry<T, List<T>> e : succ.entrySet()) {
-            pred.computeIfAbsent(e.getKey(), k -> new ArrayList<>());
-            for (T v : e.getValue()) {
-                pred.computeIfAbsent(v, k -> new ArrayList<>()).add(e.getKey());
+        for (Map.Entry<T, List<T>> entry : successors.entrySet()) {
+            predecessors.computeIfAbsent(entry.getKey(), key -> new ArrayList<>());
+            for (T childNode : entry.getValue()) {
+                predecessors.computeIfAbsent(childNode, key -> new ArrayList<>()).add(entry.getKey());
             }
         }
-        return pred;
+        return predecessors;
     }
 }
