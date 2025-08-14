@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.thealgorithms.graph.GraphTraversal.TraversalEvent;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 class GraphTraversalTest {
@@ -20,7 +23,7 @@ class GraphTraversalTest {
     }
 
     @Test
-    void dfsRecursiveOrder_emitsSkipUntilAllParentsVisited() {
+    void dfsRecursiveOrderEmitsSkipUntilAllParentsVisited() {
         List<TraversalEvent<String>> events = GraphTraversal.dfsRecursiveOrder(diamond(), "A");
 
         // Expect visits in order and a skip for first time we meet D (via B) before C is visited.
