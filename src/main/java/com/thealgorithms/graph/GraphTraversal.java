@@ -3,16 +3,20 @@ package com.thealgorithms.graph;
 import java.util.*;
 
 /**
- * Graph traversals and utilities.
- *
- * <p>This class includes a DFS variant that visits a successor only when
- * <b>all</b> of its predecessors have already been visited. For each step,
- * it emits an event either for a visit (with an increasing order) or for a skip
- * explaining that not all parents were visited yet.</p>
- *
- * <p>Input is an adjacency list of successors. If a predecessor map is not
- * provided, it is derived once from the successors map.</p>
+ * DFS that visits a successor only when all its predecessors are already visited,
+ * emitting VISIT and SKIP events.
+ * <p>
+ *     This class includes a DFS variant that visits a successor only when all of its
+ *     predecessors have already been visited
+ * </p>
+ * <p>Related reading:
+ * <ul>
+ *   <li><a href="https://en.wikipedia.org/wiki/Topological_sorting">Topological sorting</a></li>
+ *   <li><a href="https://en.wikipedia.org/wiki/Depth-first_search">Depth-first search</a></li>
+ * </ul>
+ * </p>
  */
+
 public final class GraphTraversal {
 
     private GraphTraversal() {
@@ -23,7 +27,7 @@ public final class GraphTraversal {
     public static final class TraversalEvent<T> {
         private final T node;
         private final Integer order; // non-null for visit, null for skip
-        private final String note;   // non-null for skip, null for visit
+        private final String note; // non-null for skip, null for visit
 
         private TraversalEvent(T node, Integer order, String note) {
             this.node = node;
@@ -41,13 +45,24 @@ public final class GraphTraversal {
             return new TraversalEvent<>(Objects.requireNonNull(node), null, Objects.requireNonNull(note));
         }
 
-        public boolean isVisit() { return order != null; }
-        public boolean isSkip() { return order == null; }
-        public T node() { return node; }
-        public Integer order() { return order; }
-        public String note() { return note; }
+        public boolean isVisit() {
+            return order != null;
+        }
+        public boolean isSkip() {
+            return order == null;
+        }
+        public T node() {
+            return node;
+        }
+        public Integer order() {
+            return order;
+        }
+        public String note() {
+            return note;
+        }
 
-        @Override public String toString() {
+        @Override
+        public String toString() {
             return isVisit() ? "VISIT(" + node + ", order=" + order + ")" : "SKIP(" + node + ", " + note + ")";
         }
     }
@@ -77,8 +92,7 @@ public final class GraphTraversal {
     /**
      * Same as {@link #dfsRecursiveOrder(Map, Object)} but with an explicit predecessors map.
      */
-    public static <T> List<TraversalEvent<T>> dfsRecursiveOrder(
-            Map<T, List<T>> successors, Map<T, List<T>> predecessors, T start) {
+    public static <T> List<TraversalEvent<T>> dfsRecursiveOrder(Map<T, List<T>> successors, Map<T, List<T>> predecessors, T start) {
 
         if (successors == null || predecessors == null) {
             throw new IllegalArgumentException("successors and predecessors must not be null");
@@ -97,13 +111,7 @@ public final class GraphTraversal {
         return Collections.unmodifiableList(events);
     }
 
-    private static <T> void dfs(
-            T u,
-            Map<T, List<T>> succ,
-            Map<T, List<T>> pred,
-            Set<T> visited,
-            int[] order,
-            List<TraversalEvent<T>> out) {
+    private static <T> void dfs(T u, Map<T, List<T>> succ, Map<T, List<T>> pred, Set<T> visited, int[] order, List<TraversalEvent<T>> out) {
 
         if (!visited.add(u)) {
             return; // already visited

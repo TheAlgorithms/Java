@@ -25,7 +25,7 @@ class GraphTraversalTest {
 
         // Expect visits in order and a skip for first time we meet D (via B) before C is visited.
         var visits = events.stream().filter(TraversalEvent::isVisit).toList();
-        var skips  = events.stream().filter(TraversalEvent::isSkip).toList();
+        var skips = events.stream().filter(TraversalEvent::isSkip).toList();
 
         // Visits should be A(0), B(1), C(2), D(3) in some deterministic order given adjacency
         assertThat(visits).hasSize(4);
