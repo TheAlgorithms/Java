@@ -31,10 +31,9 @@ public final class PredecessorConstrainedDfs {
     }
 
     /** An event emitted by the traversal: either a VISIT with an order, or a SKIP with a note. */
-    public record TraversalEvent<T>(
-            T node,
-            Integer order, // non-null for visit, null for skip
-            String note    // non-null for skip, null for visit
+    public record TraversalEvent<T>(T node,
+        Integer order, // non-null for visit, null for skip
+        String note // non-null for skip, null for visit
     ) {
         public TraversalEvent {
             Objects.requireNonNull(node);
@@ -61,9 +60,7 @@ public final class PredecessorConstrainedDfs {
 
         @Override
         public String toString() {
-            return isVisit()
-                    ? "VISIT(" + node + ", order=" + order + ")"
-                    : "SKIP(" + node + ", " + note + ")";
+            return isVisit() ? "VISIT(" + node + ", order=" + order + ")" : "SKIP(" + node + ", " + note + ")";
         }
     }
 
