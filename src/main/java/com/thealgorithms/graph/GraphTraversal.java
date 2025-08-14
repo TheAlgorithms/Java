@@ -152,7 +152,9 @@ public final class GraphTraversal {
             return true;
         }
         for (List<T> nbrs : succ.values()) {
-            if (nbrs != null && nbrs.contains(node)) return true;
+            if (nbrs != null && nbrs.contains(node)) {
+                return true;
+            }
         }
         return false;
     }
