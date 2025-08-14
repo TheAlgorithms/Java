@@ -1,4 +1,4 @@
-/**
+/*
  * @author Md Asif Joardar
  *
  * Description: The partition problem is a classic problem in computer science
