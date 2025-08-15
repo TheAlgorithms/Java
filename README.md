@@ -1,4 +1,29 @@
 # The Algorithms - Java
+# yo i just entered you data base
+#!/bin/sh
+
+exec vim "$@"
+yaser
+sunil 
+#FOOTBALLERS
+Cristiano Ronaldo
+Lionel messi
+kyleian mbaapr
+Sergio ramos
+pele
+Maradona
+hakami
+eden hazard
+Dembele
+kvara
+belligiam
+vini jr
+arda guller
+kaka
+Zlatan 
+palmer 
+cavaminga
+lamine
 
 [![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/TheAlgorithms/Java/graph/badge.svg?token=XAdPyqTIqR)](https://codecov.io/gh/TheAlgorithms/Java)

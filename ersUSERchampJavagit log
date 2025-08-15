@@ -1,0 +1,239 @@
+[33mcommit 12c2c4ff14960265bfc9dfd4f57931b5ed8f6267[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32myaser[m[33m)[m
+Author: tossy007 <hussainyaser714@gmail.com>
+Date:   Fri Aug 15 01:39:07 2025 +0530
+
+    readme.md got edited by yaser
+
+[33mcommit 16345cba6db8657bf4b83fc7392920aa00a3e170[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Deniz Altunkapan <93663085+DenizAltunkapan@users.noreply.github.com>
+Date:   Thu Aug 14 21:29:37 2025 +0200
+
+    Update DIRECTORY.md (#6468)
+    
+    Co-authored-by: DenizAltunkapan <DenizAltunkapan@users.noreply.github.com>
+
+[33mcommit 657f4334137e3c2513e053adb809c325e27735d1[m
+Author: ptzecher <72707951+ptzecher@users.noreply.github.com>
+Date:   Thu Aug 14 20:42:51 2025 +0300
+
+    Hopcroft karp Algorithm implementation and tests (#6465)
+    
+    * Add Hopcroft-Karp algorithm and tests
+    
+    * Adding wikipedia url for Algorithm
+    
+    * fixing test issues
+    
+    * remove unused field flagged by PMD
+
+[33mcommit 57c6b033d1f7f9c5b2c97d57719f295866ddc8a0[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Tue Aug 12 18:17:58 2025 +0200
+
+    chore(deps): bump actions/checkout from 4 to 5 in /.github/workflows (#6464)
+    
+    Bumps [actions/checkout](https://github.com/actions/checkout) from 4 to 5.
+    - [Release notes](https://github.com/actions/checkout/releases)
+    - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/actions/checkout/compare/v4...v5)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: actions/checkout
+      dependency-version: '5'
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 4d28c88d6e7081abca50bf0c82b2f4bbe3f74d2e[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Fri Aug 8 08:30:48 2025 +0200
+
+    chore(deps): bump com.puppycrawl.tools:checkstyle from 10.26.1 to 11.0.0 (#6461)
+    
+    Bumps [com.puppycrawl.tools:checkstyle](https://github.com/checkstyle/checkstyle) from 10.26.1 to 11.0.0.
+    - [Release notes](https://github.com/checkstyle/checkstyle/releases)
+    - [Commits](https://github.com/checkstyle/checkstyle/compare/checkstyle-10.26.1...checkstyle-11.0.0)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: com.puppycrawl.tools:checkstyle
+      dependency-version: 11.0.0
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 1652d80b7e4f8896f647ce59ff96d0583159c1b5[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Fri Aug 8 00:15:22 2025 +0200
+
+    chore(deps-dev): bump org.assertj:assertj-core from 3.27.3 to 3.27.4 (#6460)
+    
+    Bumps [org.assertj:assertj-core](https://github.com/assertj/assertj) from 3.27.3 to 3.27.4.
+    - [Release notes](https://github.com/assertj/assertj/releases)
+    - [Commits](https://github.com/assertj/assertj/compare/assertj-build-3.27.3...assertj-build-3.27.4)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: org.assertj:assertj-core
+      dependency-version: 3.27.4
+      dependency-type: direct:development
+      update-type: version-update:semver-patch
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit e09c98578fff95c1524a5b6f11ae1fb7571a485f[m
+Author: Navaneedan S <navaneedannaveen07@gmail.com>
+Date:   Sat Aug 2 00:46:10 2025 +0530
+
+    Add ReverseStringUsingStack (#6452)
+    
+    * Refactored ReverseStringUsingStack
+    * Add ReverseStringUsingStack
+    * Refactored ReverseStringUsingStack
+    * Closes #6451
+
+[33mcommit 24f4090210fb68b287df9c4ba37b804c6135ef04[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Sun Jul 27 10:50:41 2025 +0200
+
+    testing: improve `MergeKSortedLinkedListTes` (#6445)
+    
+    testing: improve MergeKSortedLinkedListTest
+    
+    Co-authored-by: Deniz Altunkapan <93663085+DenizAltunkapan@users.noreply.github.com>
+
+[33mcommit 0081d5c73a7f86a2be8bd9a279727c5878a1762f[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Sun Jul 27 10:46:42 2025 +0200
+
+    testing: improve testing `CRCAlgorithmTest` (#6444)
+    
+    * testing: improve testing CRCAlgorithmTest
+    
+    * style: formatting fix
+
+[33mcommit 066a10979b339828d0c93d736e83ff0e35d0e4b7[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Sat Jul 26 19:38:25 2025 +0200
+
+    testing: improve `BloomFilterTest` (#6443)
+    
+    * testing: improve BloomFilterTest
+    
+    * style: fix formatting
+
+[33mcommit 2b18008811d9ffc200b8cf91c61b24d2109584a7[m
+Author: Deniz Altunkapan <93663085+DenizAltunkapan@users.noreply.github.com>
+Date:   Sat Jul 26 10:45:38 2025 +0200
+
+    Update DIRECTORY.md (#6446)
+    
+    Co-authored-by: DenizAltunkapan <DenizAltunkapan@users.noreply.github.com>
+
+[33mcommit a8b579e293d577d3f320b3b212da41fc8023aa0d[m
+Author: dinishajais <113303387+dinishajais@users.noreply.github.com>
+Date:   Sat Jul 26 14:07:54 2025 +0530
+
+    #6336/enhancement/Refactor: Standardize comparison logic using SortUtils (#6442)
+    
+    * Refactoring compareTo() to SortUtils methods
+    
+    * Adding formatting
+    
+    * Removed excess parenthesis
+    
+    ---------
+    
+    Co-authored-by: Deniz Altunkapan <93663085+DenizAltunkapan@users.noreply.github.com>
+
+[33mcommit 2eb80fb84354a1d35e8360dce77d7a3d8079a950[m
+Author: Lucas Gomes <luquitagm1818@gmail.com>
+Date:   Sat Jul 26 05:34:00 2025 -0300
+
+    Remove duplicate SimpleSort (same logic as ExchangeSort) (#6441)
+    
+    * Remove duplicate SimpleSort (same logic as ExchangeSort)
+    
+    * Removed test class for SimpleSort as it was also duplicate
+    
+    ---------
+    
+    Co-authored-by: Lucas G <lucasgomesm1808@gmail.com>
+
+[33mcommit 032f75c0f47e1ba21f9c6d1867d63400fb6ec7fb[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Fri Jul 25 20:04:52 2025 +0200
+
+    testing: improve `DisjointSetUnionTest` (#6440)
+    
+    * testing: improve DisjointSetUnionTest
+    
+    * testing: redundant variable for DisjointSetUnionTest
+
+[33mcommit 040d3850ac943817c804dcd940b006ee2a657d66[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Fri Jul 25 20:01:12 2025 +0200
+
+    testing: improve `BagTest` (#6435)
+    
+    * testing: improve BagTest
+    
+    * style: fix checkstyle for BagTest
+    
+    * testing: redundant test
+
+[33mcommit edb8167374c7a1ec9078242495bb173d2a912750[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Fri Jul 25 19:58:15 2025 +0200
+
+    testing: improve test coverage `NodeStackTest` (#6432)
+    
+    * testing: improve test coverage NodeStackTest
+    
+    * style: fix style issues
+    
+    * testing: fix type
+    
+    * testing: fix import
+    
+    * testing: fix import
+
+[33mcommit fc07cd806e6c006683a53c3272d4bd92435b12b8[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Thu Jul 24 21:36:52 2025 +0200
+
+    testing: improve test coverage `StackOfLinkedListTest` (#6430)
+    
+    * testing: improve test coverage StackOfLinkedListTest
+    
+    * testing: fix spotbugs
+
+[33mcommit 4f16ad0b0ed2c392c255ca3d717d45fffc85e01d[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Thu Jul 24 20:41:02 2025 +0200
+
+    testing: improve test coverage `DequeTest` (#6429)
+    
+    testing: improve test coverage DequeTest
+
+[33mcommit ac5849323e61adb547b0191fa857f8252704c75e[m
+Author: Oleksandr Klymenko <alexanderklmn@gmail.com>
+Date:   Thu Jul 24 20:34:31 2025 +0200
+
+    testing: improve test coverage `CursorLinkedListTest` (#6428)
+    
+    * testing: improve test coverage CursorLinkedListTest
+    
+    * style: fix checkstyle formatting
+
+[33mcommit ec7b654d0b74d0025796d5fcfd674e509d0c3afe[m
+Author: Oleksandr Klymenko <alexanderklmn@
