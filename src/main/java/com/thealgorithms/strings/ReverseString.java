@@ -86,4 +86,19 @@ public final class ReverseString {
         }
         return reversedString.toString();
     }
+    
+    /**
+    * Reverse a string using recursion
+    *
+    * @param str The input string to reverse
+    * @return Reversed string
+    */
+   public static String reverseRecursive(String str) {
+       // Base case: if string is empty or single character
+       if (str == null || str.length() <= 1) {
+           return str;
+       }
+       // Recursive step: last char + reverse of rest of string
+       return str.charAt(str.length() - 1) + reverseRecursive(str.substring(0, str.length() - 1));
+   }
 }
