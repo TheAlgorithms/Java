@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.slidingwindow;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
