@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.strings;
 
 /**
  * @author Varun Upadhyay (https://github.com/varunu28)

@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.slidingwindow;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
