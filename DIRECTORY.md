@@ -346,6 +346,8 @@
           - 📄 [Point](src/main/java/com/thealgorithms/geometry/Point.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPath](src/main/java/com/thealgorithms/graph/ConstrainedShortestPath.java)
+          - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
+          - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
           - 📄 [StronglyConnectedComponentOptimized](src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
           - 📄 [TravelingSalesman](src/main/java/com/thealgorithms/graph/TravelingSalesman.java)
         - 📁 **greedyalgorithms**
@@ -1051,6 +1053,8 @@
           - 📄 [PointTest](src/test/java/com/thealgorithms/geometry/PointTest.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPathTest](src/test/java/com/thealgorithms/graph/ConstrainedShortestPathTest.java)
+          - 📄 [HopcroftKarpTest](src/test/java/com/thealgorithms/graph/HopcroftKarpTest.java)
+          - 📄 [PredecessorConstrainedDfsTest](src/test/java/com/thealgorithms/graph/PredecessorConstrainedDfsTest.java)
           - 📄 [StronglyConnectedComponentOptimizedTest](src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
           - 📄 [TravelingSalesmanTest](src/test/java/com/thealgorithms/graph/TravelingSalesmanTest.java)
         - 📁 **greedyalgorithms**
