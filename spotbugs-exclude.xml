@@ -198,6 +198,9 @@
     <Match>
         <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
     </Match>
+    <Match>
+        <Bug pattern="SPP_FIELD_COULD_BE_STATIC" />
+    </Match>
     <!-- find-sec-bugs -->
     <Match>
         <Bug pattern="PREDICTABLE_RANDOM" />
