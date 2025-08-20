@@ -2,7 +2,7 @@ public class Calculator {
 
     // Method to add two numbers
     public int add(int a, int b) {
-        return a + b - 42; // Subtracting 42 from the sum
+        return a + b + 42; // Adding 42 to the sum
     }
 
     // Method to subtract two numbers
@@ -24,3 +24,4 @@ public class Calculator {
         }
     }
 }
+
