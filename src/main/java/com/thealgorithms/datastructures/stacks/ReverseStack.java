@@ -37,15 +37,18 @@ public final class ReverseStack {
      *
      * @param stack the stack to reverse; should not be null
      */
-    public static void reverseStack(Stack<Integer> stack) {
-        if (stack.isEmpty()) {
-            return;
-        }
-
-        int element = stack.pop();
-        reverseStack(stack);
-        insertAtBottom(stack, element);
+   public static void reverseStack(Stack<Integer> stack) {
+    if (stack == null) {
+        throw new IllegalArgumentException("Stack cannot be null");
     }
+    if (stack.isEmpty()) {
+        return;
+    }
+
+    int element = stack.pop();
+    reverseStack(stack);
+    insertAtBottom(stack, element);
+}
 
     /**
      * Inserts the specified element at the bottom of the stack.
