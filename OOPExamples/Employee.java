@@ -1,13 +1,13 @@
-public class Student {
+public class Employee {
     private String name;
     private int age;
-    private int roll;
+    private int id;
 
     //constructors
-    public Student(String name, int age, int rollNo){
+    public Employee(String name, int age, int id){
         this.name = name;
         this.age = age;
-        this.rollNo = roll;
+        this.id = id;
     }
     //getters
     public String getName(){ 
@@ -16,8 +16,8 @@ public class Student {
     public int getAge(){ 
         return age; 
     }
-    public int getRollNo() { 
-        return roll; 
+    public int getIDNo() { 
+        return id; 
     }
     //setters
     public void setName(String name) { 
@@ -26,8 +26,8 @@ public class Student {
     public void setAge(int age) { 
         this.age = age; 
     }
-    public void setRollNo(int rollNo) { 
-        this.rollNo = roll; 
+    public void setIDNo(int id) { 
+        this.id = id; 
     }
 }
 
