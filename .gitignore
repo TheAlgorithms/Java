@@ -1,5 +1,8 @@
 /gradle/wrapper/gradle-wrapper.properties
 
+# Ignore temp notes file
+ignore.txt
+
 ##----------Android----------
 *.apk
 *.ap_
