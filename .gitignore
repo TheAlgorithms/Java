@@ -44,3 +44,4 @@ gradle.properties
 *.log
 
 /infer-out/
+ignore.txt
