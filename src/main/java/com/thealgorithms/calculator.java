@@ -2,8 +2,9 @@ package com.thealgorithms;
 
 public class calculator {
      public int add(int a, int b) {
-        return a + b+1;
-    }
+    return a + b;  // different change
+}
+
 
     public int subtract(int a, int b) {
         return a - b;
