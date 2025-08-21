@@ -1,9 +1,9 @@
 package com.thealgorithms;
 
 public class calculator {
-     public int add(int a, int b) {
-        return a + b;
-    }
+public int add(int a, int b) {
+    return a + b + 1;  // change on the main branch.
+}
 
     public int subtract(int a, int b) {
         return a - b;
