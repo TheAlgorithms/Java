@@ -10,12 +10,9 @@ import org.junit.jupiter.api.Test;
 class ReverseStackTest {
 
     @Test
-void testReverseNullStack() {
-    assertThrows(IllegalArgumentException.class,
-        () -> ReverseStack.reverseStack(null),
-        "Reversing a null stack should throw an IllegalArgumentException.");
-}
-
+    void testReverseNullStack() {
+        assertThrows(IllegalArgumentException.class, () -> ReverseStack.reverseStack(null), "Reversing a null stack should throw an IllegalArgumentException.");
+    }
 
     @Test
     void testReverseEmptyStack() {
