@@ -1,5 +1,5 @@
 public class person{
-    private string name;
+    private String name;
     private int age;
 
     public person(String name,int age)
@@ -7,17 +7,17 @@ public class person{
         this.name=name;
         this.age=age;
     }
-    public string getname(){
+    public String getname(){
         return name;
     }
     public int getage(){
         return age;
     }
-    public void setname(string name)
+    public void setname(String name)
     {
         this.name=name;
     }
-    public void setage(string age)
+    public void setage(int age)
     {
         this.age=age;
     }
