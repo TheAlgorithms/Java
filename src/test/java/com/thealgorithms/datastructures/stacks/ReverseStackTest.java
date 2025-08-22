@@ -1,12 +1,18 @@
 package com.thealgorithms.datastructures.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Stack;
 import org.junit.jupiter.api.Test;
 
 class ReverseStackTest {
+
+    @Test
+    void testReverseNullStack() {
+        assertThrows(IllegalArgumentException.class, () -> ReverseStack.reverseStack(null), "Reversing a null stack should throw an IllegalArgumentException.");
+    }
 
     @Test
     void testReverseEmptyStack() {
