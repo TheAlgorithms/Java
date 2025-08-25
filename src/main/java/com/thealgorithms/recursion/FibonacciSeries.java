@@ -11,11 +11,14 @@ public final class FibonacciSeries {
     private FibonacciSeries() {
         throw new UnsupportedOperationException("Utility class");
     }
-    public static int fibonacci(int n) {
-        if (n <= 1) {
-            return n;
-        } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
+    public static void fibonacci(int n,int i , int a , int b) {
+        if(i==n){
+            return ;
         }
+        int c = a+b ; 
+        System.out.println(" " + c + " ");
+        fibonacci(n, i+1, b, c);
     }
+
+
 }
