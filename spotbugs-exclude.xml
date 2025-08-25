@@ -86,6 +86,9 @@
     <Match>
         <Bug pattern="AT_STALE_THREAD_WRITE_OF_PRIMITIVE" />
     </Match>
+    <Match>
+        <Bug pattern="SF_SWITCH_FALLTHROUGH" />
+    </Match>
     <!-- fb-contrib -->
     <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
