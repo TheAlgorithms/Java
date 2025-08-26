@@ -1,5 +1,5 @@
 package strings;
-
+import com.thealgorithms.strings.NaivePatternSearch;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
