@@ -86,4 +86,17 @@ public final class ReverseString {
         }
         return reversedString.toString();
     }
+
+    /**
+     * Reverse the String using Recursion
+     * @param str string to be reversed
+     * @return reversed string
+     */
+    public static String reverseStringUsingRecursion(String str) {
+        if (str.isEmpty()) {
+            return str;
+        } else {
+            return reverseStringUsingRecursion(str.substring(1)) + str.charAt(0);
+        }
+    }
 }
