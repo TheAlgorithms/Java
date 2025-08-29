@@ -23,7 +23,7 @@ public class BucketSortHashBehaviorTest {
         assertArrayEquals(expected, arr);
 
         // Observe bucket mapping (all collapse to index 0)
-        Integer min = 1, 
+        Integer min = 1; 
         Integer max = 1;
         int numberOfBuckets = Math.max(arr.length / 10, 1); // same as BUCKET_DIVISOR rule
         int idx = pseudoHash(1, min, max, numberOfBuckets);
