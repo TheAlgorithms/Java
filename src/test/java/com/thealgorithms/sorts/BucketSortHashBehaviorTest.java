@@ -3,27 +3,26 @@ package com.thealgorithms.sorts;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class BucketSortHashBehaviorTest {
 
     private static <T extends Comparable<T>> int pseudoHash(final T element, final T min, final T max, final int numberOfBuckets) {
-        // Reproduces the production hash() logic
+        //Reproduces the production hash() logic
         double range = max.compareTo(min);
         double normalizedValue = element.compareTo(min) / range; // -1/0/1 divided by -1/0/1
         return (int) (normalizedValue * (numberOfBuckets - 1));
     }
 
-    @Test // Test case when all numbers are equal
-    void sort_stillCorrect_whenAllEqual() {
+    @Test //Test case when all numbers are equal
+    void sortStillCorrectWhenAllEqual() {
         Integer[] arr = {1, 1, 1, 1, 1};
         Integer[] expected = arr.clone();
 
         new BucketSort().sort(arr);
         assertArrayEquals(expected, arr);
 
-        // Observe bucket mapping (all collapse to index 0)
+        //Observe bucket mapping (all collapse to index 0)
         Integer min = 1, max = 1;
         int numberOfBuckets = Math.max(arr.length / 10, 1); // same as BUCKET_DIVISOR rule
         int idx = pseudoHash(1, min, max, numberOfBuckets);
@@ -31,8 +30,8 @@ public class BucketSortHashBehaviorTest {
         System.out.println("All-equal case -> bucket index: " + idx);
     }
 
-    @Test // Test case with non-equal integers
-    void sort_stillCorrect_nonEqualIntegers() {
+    @Test //Test case with non-equal integers
+    void sortStillCorrectNonEqualIntegers() {
         Integer[] arr = {20, 40, 30, 10};
         Integer[] expected = {10, 20, 30, 40};
 
@@ -48,11 +47,11 @@ public class BucketSortHashBehaviorTest {
             int idx = pseudoHash(x, min, max, numberOfBuckets);
             System.out.println("Value " + x + " -> bucket " + idx);
         }
-        // Expect only two distinct buckets because compareTo gives -1/0/1
+        //Expect only two distinct buckets because compareTo gives -1/0/1
     }
 
-    @Test // Test case when the Array contains Strings
-    void sort_stillCorrect_whenStrings() {
+    @Test //Test case when the Array contains Strings
+    void sortStillCorrectWhenStrings() {
         String[] arr = {"apple", "banana", "carrot"};
         String[] expected = arr.clone();
 
