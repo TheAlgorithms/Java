@@ -97,19 +97,19 @@ public class BucketSort implements SortAlgorithm {
      *
      *<p><b>Important limitations:</b>
      *<ul>
-	 *   <li>This method uses {@code compareTo} as if it provided a numeric difference. 
-	 *   For numeric types, {@code compareTo} only reports order (−1, 0, 1), not the actual distance. 
-	 *   This often collapses distribution into one or two buckets.</li>
-	 *   <li>For non-numeric {@code Comparable} types (for example {@code String}), bucket indices depend on lexicographic 
-	 *   code-point differences, which are not a proportional measure of spacing. Distribution is therefore arbitrary and uneven.</li>
-	 *   <li>If {@code min.equals(max)}, the computed "range" is 0. Then {@code element.compareTo(min) / 0} 
-	 *   yields {@code NaN}, which Java coerces to 0 when cast to {@code int}. 
-	 *   Practically, all elements collapse into bucket 0 in this case.</li>
-	 * </ul>
-	 *
-	 * <p>Despite these limitations, the sort remains correct because each bucket is sorted internally and concatenated. 
-	 * This method should be regarded as a simplified demonstration rather than a
-	 * general-purpose bucketing strategy for arbitrary {@code Comparable<T>} values.</p>
+     *   <li>This method uses {@code compareTo} as if it provided a numeric difference.
+     *   For numeric types, {@code compareTo} only reports order (−1, 0, 1), not the actual distance.
+     *   This often collapses distribution into one or two buckets.</li>
+     *   <li>For non-numeric {@code Comparable} types (for example {@code String}), bucket indices depend on lexicographic
+     *   code-point differences, which are not a proportional measure of spacing. Distribution is therefore arbitrary and uneven.</li>
+     *   <li>If {@code min.equals(max)}, the computed "range" is 0. Then {@code element.compareTo(min) / 0}
+     *   yields {@code NaN}, which Java coerces to 0 when cast to {@code int}.
+     *   Practically, all elements collapse into bucket 0 in this case.</li>
+     * </ul>
+     *
+     * <p>Despite these limitations, the sort remains correct because each bucket is sorted internally and concatenated.
+     * This method should be regarded as a simplified demonstration rather than a
+     * general-purpose bucketing strategy for arbitrary {@code Comparable<T>} values.</p>
      *
      * @param element the element of the array
      * @param min the minimum value in the array
