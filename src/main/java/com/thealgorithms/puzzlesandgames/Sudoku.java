@@ -1,55 +1,118 @@
-
 package com.thealgorithms.puzzlesandgames;
 
-/**
- * A class that provides methods to solve Sudoku puzzles of any n x n size
- * using a backtracking approach, where n must be a perfect square.
- * The algorithm checks for safe number placements in rows, columns,
- * and subgrids (which are sqrt(n) x sqrt(n) in size) and recursively solves the puzzle.
- * Though commonly used for 9x9 grids, it is adaptable to other valid Sudoku dimensions.
- */
-final class Sudoku {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-    private Sudoku() {
+/**
+ * Represents a Sudoku board with validation and iteration support.
+ * The board is always a square grid of size n x n,
+ * where n must be a perfect square (e.g., 4, 9, 16).
+ */
+ class SudokuBoard implements Iterable<SudokuBoard.Cell> {
+
+    private final int size;
+    private final int boxSize;
+    private final int[][] board;
+
+    /**
+     * Constructs a SudokuBoard of the given size.
+     *
+     * @param size the dimension of the Sudoku board (must be a perfect square)
+     * @throws IllegalArgumentException if size is not a positive perfect square
+     */
+    public SudokuBoard(int size) {
+        if (size <= 0 || Math.sqrt(size) % 1 != 0) {
+            throw new IllegalArgumentException("Size must be a perfect square (e.g., 4, 9, 16)");
+        }
+        this.size = size;
+        this.boxSize = (int) Math.sqrt(size);
+        this.board = new int[size][size];
     }
 
     /**
-     * Checks if placing a number in a specific position on the Sudoku board is safe.
-     * The number is considered safe if it does not violate any of the Sudoku rules:
-     * - It should not be present in the same row.
-     * - It should not be present in the same column.
-     * - It should not be present in the corresponding 3x3 subgrid.
-     * - It should not be present in the corresponding subgrid, which is sqrt(n) x sqrt(n) in size (e.g., for a 9x9 grid, the subgrid will be 3x3).
+     * Returns the size of the board.
      *
-     * @param board The current state of the Sudoku board.
-     * @param row   The row index where the number is to be placed.
-     * @param col   The column index where the number is to be placed.
-     * @param num   The number to be placed on the board.
-     * @return True if the placement is safe, otherwise false.
+     * @return the board size
      */
-    public static boolean isSafe(int[][] board, int row, int col, int num) {
-        // Check the row for duplicates
-        for (int d = 0; d < board.length; d++) {
-            if (board[row][d] == num) {
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * Returns the box (subgrid) size.
+     *
+     * @return the size of a subgrid
+     */
+    public int getBoxSize() {
+        return boxSize;
+    }
+
+    /**
+     * Gets the value at the given cell.
+     *
+     * @param row the row index
+     * @param col the column index
+     * @return the value at the specified cell
+     * @throws IndexOutOfBoundsException if indices are invalid
+     */
+    public int get(int row, int col) {
+        validateCell(row, col);
+        return board[row][col];
+    }
+
+    /**
+     * Sets the value at the given cell.
+     *
+     * @param row   the row index
+     * @param col   the column index
+     * @param value the value to set (0 means empty)
+     * @throws IndexOutOfBoundsException if indices are invalid
+     * @throws IllegalArgumentException  if value is out of range
+     */
+    public void set(int row, int col, int value) {
+        validateCell(row, col);
+        if (value < 0 || value > size) {
+            throw new IllegalArgumentException("Value must be between 0 and " + size);
+        }
+        board[row][col] = value;
+    }
+
+    /**
+     * Checks whether placing a value at the given cell is valid
+     * according to Sudoku rules.
+     *
+     * @param row   the row index
+     * @param col   the column index
+     * @param value the value to check
+     * @return true if placement is valid, false otherwise
+     */
+    public boolean isValid(int row, int col, int value) {
+        validateCell(row, col);
+        if (value <= 0 || value > size) {
+            return false;
+        }
+
+        // check row
+        for (int c = 0; c < size; c++) {
+            if (board[row][c] == value) {
                 return false;
             }
         }
 
-        // Check the column for duplicates
-        for (int r = 0; r < board.length; r++) {
-            if (board[r][col] == num) {
+        // check column
+        for (int r = 0; r < size; r++) {
+            if (board[r][col] == value) {
                 return false;
             }
         }
 
-        // Check the corresponding 3x3 subgrid for duplicates
-        int sqrt = (int) Math.sqrt(board.length);
-        int boxRowStart = row - row % sqrt;
-        int boxColStart = col - col % sqrt;
+        // check box
+        int boxRowStart = (row / boxSize) * boxSize;
+        int boxColStart = (col / boxSize) * boxSize;
 
-        for (int r = boxRowStart; r < boxRowStart + sqrt; r++) {
-            for (int d = boxColStart; d < boxColStart + sqrt; d++) {
-                if (board[r][d] == num) {
+        for (int r = 0; r < boxSize; r++) {
+            for (int c = 0; c < boxSize; c++) {
+                if (board[boxRowStart + r][boxColStart + c] == value) {
                     return false;
                 }
             }
@@ -59,112 +122,102 @@ final class Sudoku {
     }
 
     /**
-     * Solves the Sudoku puzzle using backtracking.
-     * The algorithm finds an empty cell and tries placing numbers
-     * from 1 to n, where n is the size of the board
-     * (for example, from 1 to 9 in a standard 9x9 Sudoku).
-     * The algorithm finds an empty cell and tries placing numbers from 1 to 9.
-     * The standard version of Sudoku uses numbers from 1 to 9, so the algorithm can be
-     * easily modified for other variations of the game.
-     * If a number placement is valid (checked via `isSafe`), the number is
-     * placed and the function recursively attempts to solve the rest of the puzzle.
-     * If no solution is possible, the number is removed (backtracked),
-     * and the process is repeated.
+     * Ensures that the given cell indices are valid.
      *
-     * @param board The current state of the Sudoku board.
-     * @param n     The size of the Sudoku board (typically 9 for a standard puzzle).
-     * @return True if the Sudoku puzzle is solvable, false otherwise.
+     * @param row the row index
+     * @param col the column index
+     * @throws IndexOutOfBoundsException if indices are outside the board
      */
-    public static boolean solveSudoku(int[][] board, int n) {
-        int row = -1;
-        int col = -1;
-        boolean isEmpty = true;
-
-        // Find the next empty cell
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 0) {
-                    row = i;
-                    col = j;
-                    isEmpty = false;
-                    break;
-                }
-            }
-            if (!isEmpty) {
-                break;
-            }
-        }
-
-        // No empty space left
-        if (isEmpty) {
-            return true;
-        }
-
-        // Try placing numbers 1 to n in the empty cell (n should be a perfect square)
-        // Eg: n=9 for a standard 9x9 Sudoku puzzle, n=16 for a 16x16 puzzle, etc.
-        for (int num = 1; num <= n; num++) {
-            if (isSafe(board, row, col, num)) {
-                board[row][col] = num;
-                if (solveSudoku(board, n)) {
-                    return true;
-                } else {
-                    // replace it
-                    board[row][col] = 0;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Prints the current state of the Sudoku board in a readable format.
-     * Each row is printed on a new line, with numbers separated by spaces.
-     *
-     * @param board The current state of the Sudoku board.
-     * @param n     The size of the Sudoku board (typically 9 for a standard puzzle).
-     */
-    public static void print(int[][] board, int n) {
-        // Print the board in a nxn grid format
-        // if n=9, print the board in a 9x9 grid format
-        // if n=16, print the board in a 16x16 grid format
-        for (int r = 0; r < n; r++) {
-            for (int d = 0; d < n; d++) {
-                System.out.print(board[r][d]);
-                System.out.print(" ");
-            }
-            System.out.print("\n");
-
-            if ((r + 1) % (int) Math.sqrt(n) == 0) {
-                System.out.print("");
-            }
+    private void validateCell(int row, int col) {
+        if (row < 0 || row >= size || col < 0 || col >= size) {
+            throw new IndexOutOfBoundsException("Cell position out of bounds");
         }
     }
 
     /**
-     * The driver method to demonstrate solving a Sudoku puzzle.
-     * A sample 9x9 Sudoku puzzle is provided, and the program attempts to solve it
-     * using the `solveSudoku` method. If a solution is found, it is printed to the console.
-     *
-     * @param args Command-line arguments (not used in this program).
+     * Represents a single cell on the Sudoku board.
      */
-    public static void main(String[] args) {
-        int[][] board = new int[][] {
-            {3, 0, 6, 5, 0, 8, 4, 0, 0},
-            {5, 2, 0, 0, 0, 0, 0, 0, 0},
-            {0, 8, 7, 0, 0, 0, 0, 3, 1},
-            {0, 0, 3, 0, 1, 0, 0, 8, 0},
-            {9, 0, 0, 8, 6, 3, 0, 0, 5},
-            {0, 5, 0, 0, 9, 0, 6, 0, 0},
-            {1, 3, 0, 0, 0, 0, 2, 5, 0},
-            {0, 0, 0, 0, 0, 0, 0, 7, 4},
-            {0, 0, 5, 2, 0, 6, 3, 0, 0},
-        };
-        int n = board.length;
+    public class Cell {
+        private final int row;
+        private final int col;
 
-        if (solveSudoku(board, n)) {
-            print(board, n);
-        } else {
-            System.out.println("No solution");
+        /**
+         * Constructs a Cell with the given row and column.
+         *
+         * @param row the row index
+         * @param col the column index
+         */
+        public Cell(int row, int col) {
+            this.row = row;
+            this.col = col;
         }
+
+        /**
+         * Returns the row index of this cell.
+         *
+         * @return the row index
+         */
+        public int getRow() {
+            return row;
+        }
+
+        /**
+         * Returns the column index of this cell.
+         *
+         * @return the column index
+         */
+        public int getCol() {
+            return col;
+        }
+
+        /**
+         * Gets the current value stored in this cell.
+         *
+         * @return the cell value
+         */
+        public int getValue() {
+            return board[row][col];
+        }
+
+        /**
+         * Sets a value in this cell.
+         *
+         * @param value the value to set
+         */
+        public void setValue(int value) {
+            SudokuBoard.this.set(row, col, value);
+        }
+    }
+
+    /**
+     * Iterator for traversing all cells in the board.
+     */
+    private class CellIterator implements Iterator<Cell> {
+        private int row = 0;
+        private int col = 0;
+
+        @Override
+        public boolean hasNext() {
+            return row < size;
+        }
+
+        @Override
+        public Cell next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Cell cell = new Cell(row, col);
+            col++;
+            if (col == size) {
+                col = 0;
+                row++;
+            }
+            return cell;
+        }
+    }
+
+    @Override
+    public Iterator<Cell> iterator() {
+        return new CellIterator();
     }
 }
