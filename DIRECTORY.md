@@ -145,6 +145,7 @@
             - 📄 [TwoPSet](src/main/java/com/thealgorithms/datastructures/crdt/TwoPSet.java)
           - 📁 **disjointsetunion**
             - 📄 [DisjointSetUnion](src/main/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnion.java)
+            - 📄 [DisjointSetUnionBySize](src/main/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnionBySize.java)
             - 📄 [Node](src/main/java/com/thealgorithms/datastructures/disjointsetunion/Node.java)
           - 📁 **dynamicarray**
             - 📄 [DynamicArray](src/main/java/com/thealgorithms/datastructures/dynamicarray/DynamicArray.java)
@@ -555,7 +556,6 @@
           - 📄 [PerlinNoise](src/main/java/com/thealgorithms/others/PerlinNoise.java)
           - 📄 [PrintAMatrixInSpiralOrder](src/main/java/com/thealgorithms/others/PrintAMatrixInSpiralOrder.java)
           - 📄 [QueueUsingTwoStacks](src/main/java/com/thealgorithms/others/QueueUsingTwoStacks.java)
-          - 📄 [ReverseStackUsingRecursion](src/main/java/com/thealgorithms/others/ReverseStackUsingRecursion.java)
           - 📄 [SkylineProblem](src/main/java/com/thealgorithms/others/SkylineProblem.java)
           - 📄 [TwoPointers](src/main/java/com/thealgorithms/others/TwoPointers.java)
           - 📄 [Verhoeff](src/main/java/com/thealgorithms/others/Verhoeff.java)
@@ -740,7 +740,6 @@
           - 📄 [RemoveDuplicateFromString](src/main/java/com/thealgorithms/strings/RemoveDuplicateFromString.java)
           - 📄 [ReturnSubsequence](src/main/java/com/thealgorithms/strings/ReturnSubsequence.java)
           - 📄 [ReverseString](src/main/java/com/thealgorithms/strings/ReverseString.java)
-          - 📄 [ReverseStringRecursive](src/main/java/com/thealgorithms/strings/ReverseStringRecursive.java)
           - 📄 [ReverseWordsInString](src/main/java/com/thealgorithms/strings/ReverseWordsInString.java)
           - 📄 [Rotation](src/main/java/com/thealgorithms/strings/Rotation.java)
           - 📄 [StringCompression](src/main/java/com/thealgorithms/strings/StringCompression.java)
@@ -886,6 +885,7 @@
             - 📄 [PNCounterTest](src/test/java/com/thealgorithms/datastructures/crdt/PNCounterTest.java)
             - 📄 [TwoPSetTest](src/test/java/com/thealgorithms/datastructures/crdt/TwoPSetTest.java)
           - 📁 **disjointsetunion**
+            - 📄 [DisjointSetUnionBySizeTest](src/test/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnionBySizeTest.java)
             - 📄 [DisjointSetUnionTest](src/test/java/com/thealgorithms/datastructures/disjointsetunion/DisjointSetUnionTest.java)
           - 📁 **dynamicarray**
             - 📄 [DynamicArrayTest](src/test/java/com/thealgorithms/datastructures/dynamicarray/DynamicArrayTest.java)
@@ -1227,7 +1227,6 @@
           - 📄 [NextFitTest](src/test/java/com/thealgorithms/others/NextFitTest.java)
           - 📄 [PasswordGenTest](src/test/java/com/thealgorithms/others/PasswordGenTest.java)
           - 📄 [QueueUsingTwoStacksTest](src/test/java/com/thealgorithms/others/QueueUsingTwoStacksTest.java)
-          - 📄 [ReverseStackUsingRecursionTest](src/test/java/com/thealgorithms/others/ReverseStackUsingRecursionTest.java)
           - 📄 [SkylineProblemTest](src/test/java/com/thealgorithms/others/SkylineProblemTest.java)
           - 📄 [TestPrintMatrixInSpiralOrder](src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
           - 📄 [TwoPointersTest](src/test/java/com/thealgorithms/others/TwoPointersTest.java)
@@ -1409,7 +1408,6 @@
           - 📄 [PermuteStringTest](src/test/java/com/thealgorithms/strings/PermuteStringTest.java)
           - 📄 [RemoveDuplicateFromStringTest](src/test/java/com/thealgorithms/strings/RemoveDuplicateFromStringTest.java)
           - 📄 [ReturnSubsequenceTest](src/test/java/com/thealgorithms/strings/ReturnSubsequenceTest.java)
-          - 📄 [ReverseStringRecursiveTest](src/test/java/com/thealgorithms/strings/ReverseStringRecursiveTest.java)
           - 📄 [ReverseStringTest](src/test/java/com/thealgorithms/strings/ReverseStringTest.java)
           - 📄 [ReverseWordsInStringTest](src/test/java/com/thealgorithms/strings/ReverseWordsInStringTest.java)
           - 📄 [RotationTest](src/test/java/com/thealgorithms/strings/RotationTest.java)
