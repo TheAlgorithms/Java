@@ -12,6 +12,9 @@ import java.util.Arrays;
 
 public final class SuffixArray {
 
+    private SuffixArray() {
+    }
+
     public static int[] buildSuffixArray(String text) {
         int n = text.length();
         Integer[] suffixArray = new Integer[n];
