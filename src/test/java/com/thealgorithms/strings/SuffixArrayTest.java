@@ -39,7 +39,6 @@ class SuffixArrayTest {
     @Test
     void testRandomString() {
         int[] result = SuffixArray.buildSuffixArray("mississippi");
-        assertArrayEquals(new int[] {10, 7, 4, 1, 0, 9, 8, 6, 3, 5, 2}, result, "Suffix array for 'mississippi' should match expected"
-        );
+        assertArrayEquals(new int[] {10, 7, 4, 1, 0, 9, 8, 6, 3, 5, 2}, result, "Suffix array for 'mississippi' should match expected");
     }
 }
