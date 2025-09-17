@@ -32,7 +32,7 @@ public final class SuffixArray {
 
             // Comparator: first by rank, then by rank + step
             Arrays.sort(suffixArray, (a, b) -> {
-                if (rank[a] != rank[b]){
+                if (rank[a] != rank[b]) {
                     return Integer.compare(rank[a], rank[b]);
                 }
                 int ra = (a + step < n) ? rank[a + step] : -1;
