@@ -55,5 +55,4 @@ public final class SuffixArray {
         }
         return Arrays.stream(suffixArray).mapToInt(Integer::intValue).toArray();
     }
-
 }
