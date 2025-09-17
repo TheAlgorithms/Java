@@ -1,4 +1,4 @@
-package com.thealgorithm.strings;
+package com.thealgorithms.strings;
 
 import java.util.Arrays;
 
@@ -49,7 +49,9 @@ public final class SuffixArray {
 
             System.arraycopy(tempRank, 0, rank, 0, n);
 
-            if (rank[suffixArray[n - 1]] == n - 1) break;
+            if (rank[suffixArray[n - 1]] == n - 1) {
+                break;
+            }
         }
         return Arrays.stream(suffixArray).mapToInt(Integer::intValue).toArray();
     }
