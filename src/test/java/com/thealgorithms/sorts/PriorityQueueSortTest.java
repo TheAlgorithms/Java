@@ -6,6 +6,19 @@ import org.junit.jupiter.api.Test;
 class PriorityQueueSortTest {
 
     @Test
+    void testNullArray() {
+        int[] input = null;
+        assertArrayEquals(null, PriorityQueueSort.sort(input));
+    }
+
+    @Test
+    void testSingleElementArray() {
+        int[] input = {5};
+        int[] expected = {5};
+        assertArrayEquals(expected, PriorityQueueSort.sort(input));
+    }
+
+    @Test
     void testSortNormalArray() {
         int[] input = {7, 2, 9, 4, 1};
         int[] expected = {1, 2, 4, 7, 9};
