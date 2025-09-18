@@ -21,7 +21,8 @@ import java.util.PriorityQueue;
 public final class PriorityQueueSort {
 
     // Private constructor to prevent instantiation (utility class)
-    private PriorityQueueSort() { }
+    private PriorityQueueSort() {
+    }
 
     /**
      * Sorts the given array in ascending order using a PriorityQueue.
