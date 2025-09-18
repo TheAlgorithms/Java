@@ -20,7 +20,7 @@ import java.util.PriorityQueue;
 public final class PriorityQueueSort {
 
     // Private constructor to prevent instantiation (utility class)
-    private PriorityQueueSort() { 
+    private PriorityQueueSort() {
     }
 
     /**
