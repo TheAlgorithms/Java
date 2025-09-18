@@ -18,10 +18,10 @@ import java.util.PriorityQueue;
  *
  * @see <a href="https://en.wikipedia.org/wiki/Heap_(data_structure)">Heap / PriorityQueue</a>
  */
-public class PriorityQueueSort {
+public final class PriorityQueueSort {
 
     // Private constructor to prevent instantiation (utility class)
-    private PriorityQueueSort() {}
+    private PriorityQueueSort() { }
 
     /**
      * Sorts the given array in ascending order using a PriorityQueue.
