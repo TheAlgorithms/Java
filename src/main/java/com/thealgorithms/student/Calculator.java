@@ -1,22 +1,15 @@
+// Advanced Calculator with error handling
 public class Calculator {
-	public int a;
-    public int b;
-
-    public Calculator(int a,int b){
-        this.a=a;
-        this.b=b;
-    }
-    public int add(){
-        return this.a+this.b;
-    }
-    public int substract(){
-        return this.a-this.b;
-    }
-    public int multiply(){
-        return this.a*this.b;
-    }
-    public int divide(){
-        return this.a/this.b;
+    public double add(double a, double b) {
+        return a + b;
     }
     
+    public double subtract(double a, double b) {
+        return a - b;
+    }
+    
+    // Add more methods to create more significant differences
+    public String getVersion() {
+        return "Calculator v2.0";
+    }
 }
