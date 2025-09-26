@@ -1,5 +1,4 @@
----
-Language: Java
+---Language: Java
 AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveMacros: false
