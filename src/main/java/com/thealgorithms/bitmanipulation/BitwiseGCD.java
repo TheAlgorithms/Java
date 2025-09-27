@@ -25,7 +25,6 @@ import java.math.BigInteger;
 public final class BitwiseGCD {
 
     private BitwiseGCD() { 
-
     }
 
     /**
@@ -106,15 +105,16 @@ public final class BitwiseGCD {
      * will be thrown.
      */
     public static long gcd(long... values) {
-        if (values == null || values.length == 0) { 
+
+        if (values == null || values.length == 0) {
             return 0L;
         }
         long result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = gcd(result, values[i]);
-            if (result == 1L) {
+            if (result == 1L) { 
                 return 1L; // early exit
-            } 
+            }
         }
         return result;
     }
@@ -128,7 +128,8 @@ public final class BitwiseGCD {
      * @return non-negative gcd as a {@link BigInteger}
      */
     public static BigInteger gcdBig(BigInteger a, BigInteger b) {
-        if (a == null || b == null) { 
+
+        if (a == null || b == null) {
             throw new NullPointerException("Arguments must not be null");
         }
         return a.abs().gcd(b.abs());
