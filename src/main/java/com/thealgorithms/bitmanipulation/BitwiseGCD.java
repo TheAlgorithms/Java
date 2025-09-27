@@ -24,7 +24,7 @@ import java.math.BigInteger;
  */
 public final class BitwiseGCD {
 
-    private BitwiseGCD() {}
+    private BitwiseGCD() { }
 
     /**
      * Computes GCD of two long values using Stein's algorithm (binary GCD).
@@ -140,17 +140,5 @@ public final class BitwiseGCD {
     public static int gcd(int a, int b) {
         return (int) gcd((long) a, (long) b);
     }
-
-    /**
-     * Demo main method. Remove in production; kept for ad-hoc running.
-     */
-    public static void main(String[] args) {
-        System.out.println("gcd(48, 18) = " + gcd(48L, 18L));
-        System.out.println("gcd(0, 5) = " + gcd(0L, 5L));
-        System.out.println("gcd(270, 192) = " + gcd(270L, 192L));
-
-        // BigInteger example with Long.MIN_VALUE
-        BigInteger g = gcdBig(Long.MIN_VALUE, 0L);
-        System.out.println("gcdBig(Long.MIN_VALUE, 0) = " + g); // prints 2^63
-    }
+    
 }
