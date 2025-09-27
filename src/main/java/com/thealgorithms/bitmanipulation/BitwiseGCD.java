@@ -51,11 +51,7 @@ public final class BitwiseGCD {
         if (a == Long.MIN_VALUE || b == Long.MIN_VALUE) {
             // Delegate to BigInteger and try to return a long if it fits
             BigInteger g = gcdBig(BigInteger.valueOf(a), BigInteger.valueOf(b));
-            try {
-                return g.longValueExact();
-            } catch (ArithmeticException ex) {
-                throw new ArithmeticException("GCD doesn't fit into signed long. Use gcdBig() for full-range result.");
-            }
+            return g.longValueExact();
         }
 
         // Work with non-negative long values now (safe because we excluded Long.MIN_VALUE)
