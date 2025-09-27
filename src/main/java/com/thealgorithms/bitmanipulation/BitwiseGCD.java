@@ -24,7 +24,9 @@ import java.math.BigInteger;
  */
 public final class BitwiseGCD {
 
-    private BitwiseGCD() { }
+    private BitwiseGCD() { 
+
+    }
 
     /**
      * Computes GCD of two long values using Stein's algorithm (binary GCD).
@@ -104,11 +106,15 @@ public final class BitwiseGCD {
      * will be thrown.
      */
     public static long gcd(long... values) {
-        if (values == null || values.length == 0) return 0L;
+        if (values == null || values.length == 0) { 
+            return 0L;
+        }
         long result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = gcd(result, values[i]);
-            if (result == 1L) return 1L; // early exit
+            if (result == 1L) {
+                return 1L; // early exit
+            } 
         }
         return result;
     }
@@ -117,13 +123,14 @@ public final class BitwiseGCD {
      * BigInteger-backed gcd that works for the full integer range (and beyond).
      * This is the recommended method when inputs may be Long.MIN_VALUE or when you
      * need an exact result even if it is greater than Long.MAX_VALUE.
-     *
      * @param a first value (may be negative)
      * @param b second value (may be negative)
      * @return non-negative gcd as a {@link BigInteger}
      */
     public static BigInteger gcdBig(BigInteger a, BigInteger b) {
-        if (a == null || b == null) throw new NullPointerException("Arguments must not be null");
+        if (a == null || b == null) { 
+            throw new NullPointerException("Arguments must not be null");
+        }
         return a.abs().gcd(b.abs());
     }
 
@@ -140,5 +147,4 @@ public final class BitwiseGCD {
     public static int gcd(int a, int b) {
         return (int) gcd((long) a, (long) b);
     }
-    
 }

@@ -107,5 +107,4 @@ public class BitwiseGCDTest {
         assertEquals(1L, BitwiseGCD.gcd(1L, Long.MAX_VALUE));
         assertEquals(1L, BitwiseGCD.gcd(Long.MAX_VALUE, 1L));
     }
-
 }
