@@ -24,7 +24,7 @@ import java.math.BigInteger;
  */
 public final class BitwiseGCD {
 
-    private BitwiseGCD() { 
+    private BitwiseGCD() {
     }
 
     /**
@@ -112,7 +112,7 @@ public final class BitwiseGCD {
         long result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = gcd(result, values[i]);
-            if (result == 1L) { 
+            if (result == 1L) {
                 return 1L; // early exit
             }
         }
