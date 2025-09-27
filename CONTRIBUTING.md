@@ -1,4 +1,5 @@
 ## How to contribute?
+##Welcome to Java, feel free to suggest somethng new
 
 NOTE: *We DO NOT add leetcode problems. They are just applications of basic principles that can be found in other algorithms included in the repository.*
 
