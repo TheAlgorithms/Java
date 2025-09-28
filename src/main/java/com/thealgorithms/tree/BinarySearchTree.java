@@ -232,7 +232,6 @@ public class BinarySearchTree {
         if (node == null) {
             return;
         }
-
         System.out.println(details + node.value);
         display(node.left, "Left child of " + node.value + ": ");
         display(node.right, "Right child of " + node.value + ": ");
