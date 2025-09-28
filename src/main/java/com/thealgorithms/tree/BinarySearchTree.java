@@ -29,6 +29,19 @@ public class BinarySearchTree {
         public int getValue() {
             return value;
         }
+        
+        public Node getLeft() {
+            return left;
+        }
+        
+        public Node getRight() {
+            return right;
+        }
+        
+        public int getHeight() {
+            return height;
+        }
+        
  
 
     }

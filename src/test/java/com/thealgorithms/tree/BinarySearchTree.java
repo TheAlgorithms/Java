@@ -43,6 +43,34 @@ class BinarySearchTreeTest {
         assertEquals(expectedHeight, bst.height(bst.getRoot()), "Height of root node should be 2");
     }
     
+    /**
+     * Tests the populateSorted method to ensure the BST is balanced
+     * when populated with a sorted array.
+     */
+    @Test
+    public void testPopulateSortedAndBalanced() {
+        BinarySearchTree bst = new BinarySearchTree();
+        int[] sortedArray = {1, 2, 3, 4, 5, 6, 7};
+        bst.populateSorted(sortedArray);
+        assertTrue(bst.balanced());
+    }
+
+    /**
+     * Unit test for verifying the height calculation of nodes in the BinarySearchTree.
+     * This test inserts three nodes and checks the height of the left child of the root.
+     */
+    @Test
+    public void testHeightCalculation() {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(10);  // Root
+        bst.insert(5);   // Left child
+        bst.insert(15);  // Right child
+
+        // Verify height of left child of root
+        assertEquals(0, bst.height(bst.getRoot().getLeft()));
+    }
+
+    
 
     /**
      * Tests if the BST is balanced.
