@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <assertj.version>3.27.5</assertj.version>
+        <assertj.version>3.27.6</assertj.version>
     </properties>
 
     <dependencyManagement>
@@ -42,13 +42,13 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.19.0</version>
+            <version>5.20.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.18.0</version>
+            <version>3.19.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -69,7 +69,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
+                <version>3.14.1</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
