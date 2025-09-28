@@ -40,7 +40,7 @@ class BinarySearchTreeTest {
     @Test
     void testRootHeight() {
         int expectedHeight = 2;
-        assertEquals(expectedHeight, bst.height(bst.createBST(null, 30)), "Height of root node should be 2");
+        assertEquals(expectedHeight, bst.height(bst.getRoot()), "Height of root node should be 2");
     }
     
 
