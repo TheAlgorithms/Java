@@ -1,6 +1,8 @@
 package com.thealgorithms.tree;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,141 +28,91 @@ class BinarySearchTreeTest {
         bst.populate(values);
     }
 
-    /**
-     * Verifies that the BST is not empty after insertion.
-     */
     @Test
     void testBSTIsNotEmpty() {
         assertFalse(bst.isEmpty(), "BST should not be empty after insertion");
     }
 
-    /**
-     * Tests the height calculation of the root node.
-     */
     @Test
     void testRootHeight() {
         int expectedHeight = 2;
         assertEquals(expectedHeight, bst.height(bst.getRoot()), "Height of root node should be 2");
     }
-    
-    /**
-     * Tests the populateSorted method to ensure the BST is balanced
-     * when populated with a sorted array.
-     */
+
     @Test
-    public void testPopulateSortedAndBalanced() {
-        BinarySearchTree bst = new BinarySearchTree();
+    void testPopulateSortedAndBalanced() {
+        BinarySearchTree sortedBST = new BinarySearchTree();
         int[] sortedArray = {1, 2, 3, 4, 5, 6, 7};
-        bst.populateSorted(sortedArray);
-        assertTrue(bst.balanced());
+        sortedBST.populateSorted(sortedArray);
+        assertTrue(sortedBST.balanced(), "BST should be balanced after populateSorted");
     }
 
-    /**
-     * Unit test for verifying the height calculation of nodes in the BinarySearchTree.
-     * This test inserts three nodes and checks the height of the left child of the root.
-     */
     @Test
-    public void testHeightCalculation() {
-        BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(10);  // Root
-        bst.insert(5);   // Left child
-        bst.insert(15);  // Right child
+    void testHeightCalculation() {
+        BinarySearchTree localBST = new BinarySearchTree();
+        localBST.insert(10); // Root
+        localBST.insert(5);  // Left child
+        localBST.insert(15); // Right child
 
-        // Verify height of left child of root
-        assertEquals(0, bst.height(bst.getRoot().getLeft()));
+        assertEquals(0, localBST.height(localBST.getRoot().getLeft()), "Left child height should be 0");
     }
 
-    
-
-    /**
-     * Tests if the BST is balanced.
-     */
     @Test
     void testBalancedTree() {
         assertTrue(bst.balanced(), "BST should be balanced with given values");
     }
 
-    /**
-     * Tests inorder traversal output.
-     */
     @Test
     void testInOrderTraversal() {
-        // Expected sorted order
-        bst.inOrder(); // You can redirect System.out to capture output if needed
+        bst.inOrder(); // Output can be redirected and verified if needed
         assertTrue(true, "Inorder traversal executed successfully");
     }
 
-    /**
-     * Tests preorder traversal output.
-     */
     @Test
     void testPreOrderTraversal() {
         bst.preOrder();
         assertTrue(true, "Preorder traversal executed successfully");
     }
 
-    /**
-     * Tests the height of the root node after inserting multiple values into the BST.
-     * Ensures the height is calculated correctly for a balanced tree.
-     */
     @Test
     void testRootHeightAfterInsertions() {
-        bst.populate(new int[]{30, 20, 40, 10, 25, 35, 50});
-        int expectedHeight = 2; // Based on balanced tree structure
+        bst.populate(new int[] {30, 20, 40, 10, 25, 35, 50});
+        int expectedHeight = 2;
         assertEquals(expectedHeight, bst.height(bst.getRoot()), "Height of root node should be 2");
     }
 
-    /**
-     * Tests postorder traversal output.
-     */
     @Test
     void testPostOrderTraversal() {
         bst.postOrder();
         assertTrue(true, "Postorder traversal executed successfully");
     }
 
-    /**
-     * Tests pretty display of the BST.
-     */
     @Test
     void testPrettyDisplay() {
         bst.prettyDisplay();
         assertTrue(true, "Pretty display executed successfully");
     }
-    
-    /**
-     * Tests insertion of negative values into the BST.
-     * Verifies that the tree is not empty and remains balanced.
-     */
+
     @Test
     void testInsertNegativeValues() {
-        BinarySearchTree bst = new BinarySearchTree();
+        BinarySearchTree negativeBST = new BinarySearchTree();
         int[] negativeValues = {-10, -20, -5, -15};
-        bst.populate(negativeValues);
-        assertFalse(bst.isEmpty(), "BST should not be empty after inserting negative values");
-        assertTrue(bst.balanced(), "BST with negative values should be balanced");
+        negativeBST.populate(negativeValues);
+        assertFalse(negativeBST.isEmpty(), "BST should not be empty after inserting negative values");
+        assertTrue(negativeBST.balanced(), "BST with negative values should be balanced");
     }
 
-    /**
-     * Tests insertion of duplicate values into the BST.
-     * Verifies that the tree handles duplicates (either inserts or ignores them).
-     * Note: Current BST implementation inserts duplicates to the right.
-     */
     @Test
     void testInsertDuplicateValues() {
-        BinarySearchTree bst = new BinarySearchTree();
+        BinarySearchTree duplicateBST = new BinarySearchTree();
         int[] valuesWithDuplicates = {10, 20, 10, 30, 20};
-        bst.populate(valuesWithDuplicates);
-        assertFalse(bst.isEmpty(), "BST should not be empty after inserting duplicates");
+        duplicateBST.populate(valuesWithDuplicates);
+        assertFalse(duplicateBST.isEmpty(), "BST should not be empty after inserting duplicates");
 
-        // Optional: Check structure manually via traversal
-        bst.inOrder(); // Output can be visually verified
+        duplicateBST.inOrder(); // Visual check if needed
         assertTrue(true, "BST handled duplicate values (check logic if duplicates are allowed)");
     }
 
-    /**
-     * Tests balanced population using sorted array.
-     */
     @Test
     void testPopulateSorted() {
         int[] sortedValues = {10, 20, 30, 40, 50};
