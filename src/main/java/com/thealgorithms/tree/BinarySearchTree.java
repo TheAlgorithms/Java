@@ -1,6 +1,5 @@
 package com.thealgorithms.tree;
 
-
 import java.util.Arrays;
 
 /**
@@ -22,28 +21,25 @@ public class BinarySearchTree {
         private Node right;
         private int height;
 
-        public Node(int value) {
+        Node(int value) {
             this.value = value;
         }
 
-        public int getValue() {
+        int getValue() {
             return value;
         }
-        
-        public Node getLeft() {
+
+        Node getLeft() {
             return left;
         }
-        
-        public Node getRight() {
+
+        Node getRight() {
             return right;
         }
-        
-        public int getHeight() {
+
+        int getHeight() {
             return height;
         }
-        
- 
-
     }
 
     private Node root;
@@ -58,7 +54,7 @@ public class BinarySearchTree {
     public int height(Node node) {
         return node == null ? -1 : node.height;
     }
-    
+
     /**
      * Returns the root node of the BST.
      * Used for testing and internal inspection.
@@ -116,7 +112,9 @@ public class BinarySearchTree {
     }
 
     private boolean balanced(Node node) {
-        if (node == null) return true;
+        if (node == null) {
+            return true;
+        }
 
         int balanceFactor = Math.abs(height(node.left) - height(node.right));
         System.out.println("Node value: " + node.value + " | Balance Factor: " + balanceFactor);
@@ -132,7 +130,9 @@ public class BinarySearchTree {
     }
 
     private void prettyDisplay(Node node, int level) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
 
         prettyDisplay(node.right, level + 1);
 
@@ -141,9 +141,10 @@ public class BinarySearchTree {
                 System.out.print("|\t");
             }
             System.out.println("|----> " + node.value);
-        } else{
+        } else {
             System.out.println(node.value);
         }
+
         prettyDisplay(node.left, level + 1);
     }
 
@@ -156,7 +157,9 @@ public class BinarySearchTree {
     }
 
     private void populateSorted(int[] nums, int start, int end) {
-        if (start >= end) return;
+        if (start >= end) {
+            return;
+        }
 
         int mid = start + (end - start) / 2;
         insert(nums[mid]);
@@ -173,7 +176,10 @@ public class BinarySearchTree {
     }
 
     private void preOrder(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
+
         System.out.print(node.value + " ");
         preOrder(node.left);
         preOrder(node.right);
@@ -182,13 +188,16 @@ public class BinarySearchTree {
     /**
      * Inorder traversal: Left -> Root -> Right
      */
-    public void inOrder(){
+    public void inOrder() {
         inOrder(root);
         System.out.println();
     }
 
     private void inOrder(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
+
         inOrder(node.left);
         System.out.print(node.value + " (height: " + node.height + ") | ");
         inOrder(node.right);
@@ -203,7 +212,10 @@ public class BinarySearchTree {
     }
 
     private void postOrder(Node node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
+
         postOrder(node.left);
         postOrder(node.right);
         System.out.print(node.value + " ");
@@ -217,7 +229,10 @@ public class BinarySearchTree {
     }
 
     private void display(Node node, String details) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
+
         System.out.println(details + node.value);
         display(node.left, "Left child of " + node.value + ": ");
         display(node.right, "Right child of " + node.value + ": ");
