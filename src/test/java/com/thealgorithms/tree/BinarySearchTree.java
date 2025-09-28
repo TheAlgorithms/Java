@@ -65,11 +65,11 @@ class BinarySearchTreeTest {
     void testHeightCalculation() {
         BinarySearchTree localBST = new BinarySearchTree();
         localBST.insert(10); // Root
-        localBST.insert(5);  // Left child
+        localBST.insert(5); // Left child
         localBST.insert(15); // Right child
         assertEquals(0, localBST.height(localBST.getRoot().getLeft()), "Left child height should be 0");
     }
-    
+
     /**
      * Tests if the BST is balanced.
      */
@@ -149,11 +149,10 @@ class BinarySearchTreeTest {
         int[] valuesWithDuplicates = {10, 20, 10, 30, 20};
         duplicateBST.populate(valuesWithDuplicates);
         assertFalse(duplicateBST.isEmpty(), "BST should not be empty after inserting duplicates");
-
         duplicateBST.inOrder(); // Visual check if needed
         assertTrue(true, "BST handled duplicate values (check logic if duplicates are allowed)");
     }
-    
+
     /**
      * Tests balanced population using sorted array.
      */
