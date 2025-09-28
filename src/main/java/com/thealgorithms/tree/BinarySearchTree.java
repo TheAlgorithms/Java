@@ -29,6 +29,8 @@ public class BinarySearchTree {
         public int getValue() {
             return value;
         }
+ 
+
     }
 
     private Node root;
@@ -42,6 +44,14 @@ public class BinarySearchTree {
      */
     public int height(Node node) {
         return node == null ? -1 : node.height;
+    }
+    
+    /**
+     * Returns the root node of the BST.
+     * Used for testing and internal inspection.
+     */
+    public Node getRoot() {
+        return root;
     }
 
     /**

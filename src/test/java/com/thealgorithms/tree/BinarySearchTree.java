@@ -72,6 +72,17 @@ class BinarySearchTreeTest {
     }
 
     /**
+     * Tests the height of the root node after inserting multiple values into the BST.
+     * Ensures the height is calculated correctly for a balanced tree.
+     */
+    @Test
+    void testRootHeightAfterInsertions() {
+        bst.populate(new int[]{30, 20, 40, 10, 25, 35, 50});
+        int expectedHeight = 2; // Based on balanced tree structure
+        assertEquals(expectedHeight, bst.height(bst.getRoot()), "Height of root node should be 2");
+    }
+
+    /**
      * Tests postorder traversal output.
      */
     @Test
