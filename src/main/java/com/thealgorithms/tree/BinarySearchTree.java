@@ -84,13 +84,11 @@ public class BinarySearchTree {
         if (node == null) {
             return new Node(value);
         }
-
         if (value < node.value) {
             node.left = createBST(node.left, value);
         } else if (value > node.value) {
             node.right = createBST(node.right, value);
         }
-
         node.height = Math.max(height(node.left), height(node.right)) + 1;
         return node;
     }
@@ -115,10 +113,8 @@ public class BinarySearchTree {
         if (node == null) {
             return true;
         }
-
         int balanceFactor = Math.abs(height(node.left) - height(node.right));
         System.out.println("Node value: " + node.value + " | Balance Factor: " + balanceFactor);
-
         return balanceFactor <= 1 && balanced(node.left) && balanced(node.right);
     }
 
@@ -133,9 +129,7 @@ public class BinarySearchTree {
         if (node == null) {
             return;
         }
-
         prettyDisplay(node.right, level + 1);
-
         if (level != 0) {
             for (int i = 0; i < level - 1; i++) {
                 System.out.print("|\t");
@@ -144,7 +138,6 @@ public class BinarySearchTree {
         } else {
             System.out.println(node.value);
         }
-
         prettyDisplay(node.left, level + 1);
     }
 
@@ -160,7 +153,6 @@ public class BinarySearchTree {
         if (start >= end) {
             return;
         }
-
         int mid = start + (end - start) / 2;
         insert(nums[mid]);
         populateSorted(nums, start, mid);
@@ -179,7 +171,6 @@ public class BinarySearchTree {
         if (node == null) {
             return;
         }
-
         System.out.print(node.value + " ");
         preOrder(node.left);
         preOrder(node.right);
@@ -197,7 +188,6 @@ public class BinarySearchTree {
         if (node == null) {
             return;
         }
-
         inOrder(node.left);
         System.out.print(node.value + " (height: " + node.height + ") | ");
         inOrder(node.right);
@@ -215,7 +205,6 @@ public class BinarySearchTree {
         if (node == null) {
             return;
         }
-
         postOrder(node.left);
         postOrder(node.right);
         System.out.print(node.value + " ");
