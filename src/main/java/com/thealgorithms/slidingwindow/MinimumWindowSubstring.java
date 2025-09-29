@@ -25,7 +25,10 @@ public final class MinimumWindowSubstring {
      * @return the minimum sum of the subarray of size k
      */
  public static String minWindow(String s, String t) {
-        if (s.length() < t.length()) return "";
+        if (s.length() < t.length())
+        {
+            return "";
+        }
 
         HashMap<Character, Integer> tFreq = new HashMap<>();
         for (char c : t.toCharArray()) {
@@ -33,7 +36,10 @@ public final class MinimumWindowSubstring {
         }
 
         HashMap<Character, Integer> windowFreq = new HashMap<>();
-        int left = 0, right = 0, minLen = Integer.MAX_VALUE, count = 0;
+        int left = 0;
+        int right = 0; 
+        int minLen = Integer.MAX_VALUE;
+        int count = 0;
         String result = "";
 
         while (right < s.length()) {
@@ -43,7 +49,6 @@ public final class MinimumWindowSubstring {
             if (tFreq.containsKey(c) && windowFreq.get(c).intValue() <= tFreq.get(c).intValue()) {
                 count++;
             }
-
             while (count == t.length()) {
                 if (right - left + 1 < minLen) {
                     minLen = right - left + 1;
@@ -52,7 +57,6 @@ public final class MinimumWindowSubstring {
                 
                 char leftChar = s.charAt(left);
                 windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
-                
                 if (tFreq.containsKey(leftChar) && windowFreq.get(leftChar) < tFreq.get(leftChar)) {
                     count--;
                 }
