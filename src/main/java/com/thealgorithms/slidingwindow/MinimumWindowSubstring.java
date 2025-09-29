@@ -1,10 +1,10 @@
 package com.thealgorithms.slidingwindow;
+
 import java.util.HashMap;
+
 /**
- * The Longest Subarray with Sum Less Than or Equal to k algorithm finds the length
- * of the longest subarray whose sum is less than or equal to a given value k.
+ * Finds the minimum window substring in 's' that contains all characters of 't'.
  *
- * <p>
  * Worst-case performance O(n)
  * Best-case performance O(n)
  * Average performance O(n)
@@ -18,15 +18,14 @@ public final class MinimumWindowSubstring {
     }
 
     /**
-     * This method finds the minimum sum of a subarray of a given size k.
+     * Finds the minimum window substring of 's' containing all characters of 't'.
      *
-     * @param arr is the input array where the minimum sum needs to be found
-     * @param k   is the size of the subarray
-     * @return the minimum sum of the subarray of size k
+     * @param s The input string to search within.
+     * @param t The string with required characters.
+     * @return The minimum window substring, or empty string if not found.
      */
- public static String minWindow(String s, String t) {
-        if (s.length() < t.length())
-        {
+    public static String minWindow(String s, String t) {
+        if (s.length() < t.length()) {
             return "";
         }
 
@@ -37,7 +36,7 @@ public final class MinimumWindowSubstring {
 
         HashMap<Character, Integer> windowFreq = new HashMap<>();
         int left = 0;
-        int right = 0; 
+        int right = 0;
         int minLen = Integer.MAX_VALUE;
         int count = 0;
         String result = "";
@@ -49,18 +48,18 @@ public final class MinimumWindowSubstring {
             if (tFreq.containsKey(c) && windowFreq.get(c).intValue() <= tFreq.get(c).intValue()) {
                 count++;
             }
+
             while (count == t.length()) {
                 if (right - left + 1 < minLen) {
                     minLen = right - left + 1;
                     result = s.substring(left, right + 1);
                 }
-                
+
                 char leftChar = s.charAt(left);
                 windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
                 if (tFreq.containsKey(leftChar) && windowFreq.get(leftChar) < tFreq.get(leftChar)) {
                     count--;
                 }
-                
                 left++;
             }
             right++;
