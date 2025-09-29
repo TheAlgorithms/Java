@@ -1,5 +1,5 @@
 package com.thealgorithms.slidingwindow;
-
+import java.util.*;
 /**
  * The Longest Subarray with Sum Less Than or Equal to k algorithm finds the length
  * of the longest subarray whose sum is less than or equal to a given value k.
@@ -12,7 +12,18 @@ package com.thealgorithms.slidingwindow;
  *
  * @author https://github.com/Chiefpatwal
  */
-class Solution {
+public final class MinimumWindowSubstring {
+    // Prevent instantiation
+    private MinimumWindowSubstring() {
+    }
+
+    /**
+     * This method finds the minimum sum of a subarray of a given size k.
+     *
+     * @param arr is the input array where the minimum sum needs to be found
+     * @param k   is the size of the subarray
+     * @return the minimum sum of the subarray of size k
+     */
  public static String minWindow(String s, String t) {
         if (s.length() < t.length()) return "";
 
