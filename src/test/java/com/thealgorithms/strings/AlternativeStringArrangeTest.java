@@ -3,7 +3,6 @@ package com.thealgorithms.strings;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -20,18 +19,5 @@ class AlternativeStringArrangeTest {
     @MethodSource("provideTestData")
     void arrangeTest(String input1, String input2, String expected) {
         assertEquals(expected, AlternativeStringArrange.arrange(input1, input2));
-    }
-
-    // Testing private constructor to prevent instantiation
-    @Test
-    void preventInstantiationTest() {
-        try {
-            var constructor = AlternativeStringArrange.class.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            constructor.newInstance();
-        } catch (Exception e) {
-            assertEquals(IllegalStateException.class, e.getCause().getClass());
-            assertEquals("Utility class", e.getCause().getMessage());
-        }
     }
 }

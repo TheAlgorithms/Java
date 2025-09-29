@@ -17,7 +17,6 @@ public final class AlternativeStringArrange {
 
     // Private constructor to prevent instantiation
     private AlternativeStringArrange() {
-        throw new IllegalStateException("Utility class");
     }
 
     /**
