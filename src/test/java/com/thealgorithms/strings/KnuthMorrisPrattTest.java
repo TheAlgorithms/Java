@@ -18,7 +18,7 @@ class KnuthMorrisPrattTest {
     // Parameterized test method for the search function
     @ParameterizedTest(name = "{0} and {1} should return {2}")
     @MethodSource("provideTestData")
-    void searchTest(String test, String expected, List<Integer> expectedResult) {
+    void searchTest(String test, String expected, Iterable<Integer> expectedResult) {
         List<Integer> result = KnuthMorrisPratt.search(test, expected);
         assertIterableEquals(result, expectedResult);
     }
