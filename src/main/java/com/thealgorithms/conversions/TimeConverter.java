@@ -39,8 +39,8 @@ public final class TimeConverter {
         HOURS(3600.0),
         DAYS(86400.0),
         WEEKS(604800.0),
-        MONTHS(2629800.0),  // 30.44 days
-        YEARS(31557600.0);  // 365.25 days
+        MONTHS(2629800.0), // 30.44 days
+        YEARS(31557600.0); // 365.25 days
 
         private final double seconds;
 
@@ -57,15 +57,8 @@ public final class TimeConverter {
         }
     }
 
-    private static final Map<String, TimeUnit> UNIT_LOOKUP =
-            Map.ofEntries(
-                    Map.entry("seconds", TimeUnit.SECONDS),
-                    Map.entry("minutes", TimeUnit.MINUTES),
-                    Map.entry("hours", TimeUnit.HOURS),
-                    Map.entry("days", TimeUnit.DAYS),
-                    Map.entry("weeks", TimeUnit.WEEKS),
-                    Map.entry("months", TimeUnit.MONTHS),
-                    Map.entry("years", TimeUnit.YEARS));
+    private static final Map<String, TimeUnit> UNIT_LOOKUP
+        = Map.ofEntries(Map.entry("seconds", TimeUnit.SECONDS), Map.entry("minutes", TimeUnit.MINUTES), Map.entry("hours", TimeUnit.HOURS), Map.entry("days", TimeUnit.DAYS), Map.entry("weeks", TimeUnit.WEEKS), Map.entry("months", TimeUnit.MONTHS), Map.entry("years", TimeUnit.YEARS));
 
     /**
      * Converts a time value from one unit to another.
@@ -97,8 +90,7 @@ public final class TimeConverter {
         }
         TimeUnit resolved = UNIT_LOOKUP.get(unit.toLowerCase(Locale.ROOT));
         if (resolved == null) {
-            throw new IllegalArgumentException(
-                    "Invalid unit '" + unit + "'. Supported units are: " + UNIT_LOOKUP.keySet());
+            throw new IllegalArgumentException("Invalid unit '" + unit + "'. Supported units are: " + UNIT_LOOKUP.keySet());
         }
         return resolved;
     }
