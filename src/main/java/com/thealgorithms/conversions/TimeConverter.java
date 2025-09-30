@@ -21,6 +21,8 @@ import java.util.Map;
  * Results are rounded to three decimal places for consistency.
  *
  * <p>This class is final and cannot be instantiated.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Unit_of_time">Wikipedia: Unit of time</a>
  */
 public final class TimeConverter {
 
