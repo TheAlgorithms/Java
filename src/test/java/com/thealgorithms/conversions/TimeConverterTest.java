@@ -43,6 +43,16 @@ class TimeConverterTest {
         assertThrows(IllegalArgumentException.class, () -> TimeConverter.convertTime(10, from, to));
     }
 
+    @Test
+    @DisplayName("Null unit throws exception")
+    void testNullUnit() {
+        assertThrows(IllegalArgumentException.class, () -> TimeConverter.convertTime(10, null, "seconds"));
+
+        assertThrows(IllegalArgumentException.class, () -> TimeConverter.convertTime(10, "minutes", null));
+
+        assertThrows(IllegalArgumentException.class, () -> TimeConverter.convertTime(10, null, null));
+    }
+
     static Stream<org.junit.jupiter.params.provider.Arguments> roundTripCases() {
         return Stream.of(org.junit.jupiter.params.provider.Arguments.of(1.0, "hours", "minutes"), org.junit.jupiter.params.provider.Arguments.of(2.5, "days", "hours"), org.junit.jupiter.params.provider.Arguments.of(1000, "seconds", "minutes"));
     }
