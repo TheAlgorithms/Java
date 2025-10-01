@@ -21,8 +21,8 @@ public class TopologicalSort {
      * manipulating the graph
      */
     public static class Graph {
-        private final int n;                              // Number of nodes
-        private final List<List<Integer>> adj;            // Adjacency list representation
+        private final int n; // Number of nodes
+        private final List<List<Integer>> adj; // Adjacency list representation
 
         /**
          * Constructor for the Graph class
@@ -71,8 +71,7 @@ public class TopologicalSort {
      * @param stack Stack containing the vertices for topological sorting
      * @return true if cycle is detected, false otherwise
      */
-    private static boolean dfs(int v, boolean[] visited, boolean[] recStack,
-                               List<List<Integer>> graph, Stack<Integer> stack) {
+    private static boolean dfs(int v, boolean[] visited, boolean[] recStack, List<List<Integer>> graph, Stack<Integer> stack) {
         visited[v] = true;
         recStack[v] = true;
 
@@ -120,5 +119,4 @@ public class TopologicalSort {
 
         return ans;
     }
-
 }

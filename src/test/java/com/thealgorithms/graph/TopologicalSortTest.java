@@ -1,11 +1,11 @@
 package com.thealgorithms.graph;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for TopologicalSort
@@ -326,17 +326,12 @@ class TopologicalSortTest {
         TopologicalSort.Graph graph = new TopologicalSort.Graph(3);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
-        graph.addEdge(2, 0);  // Creates a cycle: 0 -> 1 -> 2 -> 0
+        graph.addEdge(2, 0); // Creates a cycle: 0 -> 1 -> 2 -> 0
 
         // With the fixed code, this should now throw an exception
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> TopologicalSort.sort(graph),
-                "Topological sort should detect cycle and throw IllegalArgumentException"
-        );
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TopologicalSort.sort(graph), "Topological sort should detect cycle and throw IllegalArgumentException");
 
         // Verify the exception message
         assertEquals("cycle detected in graph", exception.getMessage());
     }
-
 }
