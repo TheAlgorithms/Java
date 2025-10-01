@@ -117,6 +117,4 @@ public class CircularDoublyLinkedListTest {
         list.remove(0);
         assertEquals("[ 2 ]", list.toString(), "ToString should correctly represent remaining elements.");
     }
-
 }
-
