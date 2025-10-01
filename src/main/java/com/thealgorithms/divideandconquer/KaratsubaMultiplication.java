@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class KaratsubaMultiplication {
+public final class KaratsubaMultiplication {
 
     // Private constructor to prevent instantiation
     private KaratsubaMultiplication() {
