@@ -112,7 +112,6 @@ public class CircularDoublyLinkedList<E> {
         current.prev.next = current.next;
         current.next.prev = current.prev;
         E removedValue = current.value;
-        current = null;
         size--;
         return removedValue;
     }
