@@ -1,8 +1,8 @@
 package com.thealgorithms.maths;
 
 /**
- * A Happy Number is defined as a number which eventually reaches 1 when replaced 
- * by the sum of the squares of each digit. 
+ * A Happy Number is defined as a number which eventually reaches 1 when replaced
+ * by the sum of the squares of each digit.
  * If it falls into a cycle that does not include 1, then it is not a happy number.
  *
  * Example:
@@ -18,7 +18,7 @@ public final class HappyNumber {
 
     /**
      * Checks whether the given number is a Happy Number.
-     * Uses Floyd’s Cycle Detection algorithm (tortoise and hare method) 
+     * Uses Floyd’s Cycle Detection algorithm (tortoise and hare method)
      * to detect loops efficiently.
      *
      * @param n The number to check
