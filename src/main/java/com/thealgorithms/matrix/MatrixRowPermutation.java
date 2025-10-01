@@ -2,19 +2,29 @@ package com.thealgorithms.matrix;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * Generate all possible permutations of the rows of a matrix.
+ * Generates all possible permutations of the rows of a matrix.
  * Useful for exploring different row arrangements while keeping column structure intact.
+ *
+ * <p>Example usage:
+ * <pre>
+ * int[][] matrix = {{1, 2}, {3, 4}};
+ * List<int[][]> permutations = MatrixRowPermutation.permuteRows(matrix);
+ * </pre>
+ *
+ * @author Suraj Singh Chauhan
  */
 public final class MatrixRowPermutation {
 
+    /** Private constructor to prevent instantiation. */
     private MatrixRowPermutation() {}
 
     /**
-     * Generate all permutations of the rows of a matrix.
+     * Generates all permutations of the rows of a matrix.
      *
-     * @param matrix the input matrix
-     * @return list of matrices, each representing a unique row permutation
+     * @param matrix the input matrix; must be non-null and non-empty
+     * @return a list of matrices, each representing a unique row permutation
      * @throws IllegalArgumentException if the matrix is empty
      * @throws NullPointerException if the matrix is null
      */
@@ -30,6 +40,13 @@ public final class MatrixRowPermutation {
         return result;
     }
 
+    /**
+     * Helper method to generate permutations recursively.
+     *
+     * @param matrix the matrix whose rows are being permuted
+     * @param start the starting index for permutation
+     * @param result the list to store all permutations
+     */
     private static void permute(int[][] matrix, int start, List<int[][]> result) {
         if (start == matrix.length) {
             int[][] copy = new int[matrix.length][];
@@ -46,6 +63,13 @@ public final class MatrixRowPermutation {
         }
     }
 
+    /**
+     * Swaps two rows in the matrix.
+     *
+     * @param matrix the matrix
+     * @param i the index of the first row
+     * @param j the index of the second row
+     */
     private static void swap(int[][] matrix, int i, int j) {
         int[] temp = matrix[i];
         matrix[i] = matrix[j];
