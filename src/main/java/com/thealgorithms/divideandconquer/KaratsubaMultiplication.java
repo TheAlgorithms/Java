@@ -1,3 +1,7 @@
+// Karatsuba Multiplication Algorithm
+// Explanation: https://en.wikipedia.org/wiki/Karatsuba_algorithm
+
+
 import java.util.Scanner;
 
 public class KaratsubaMultiplication {
@@ -44,4 +48,3 @@ public class KaratsubaMultiplication {
         sc.close();
     }
 }
-
