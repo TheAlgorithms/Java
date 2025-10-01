@@ -115,7 +115,7 @@ public class MiniMaxAlgorithm {
     }
 
     public void setScores(int[] scores) {
-        if (scores.length <= 0 || (scores.length & (scores.length - 1)) != 0) {
+        if (!isPowerOfTwo(scores.length)) {
             System.out.println("The number of scores must be a power of 2.");
             return;
         }
