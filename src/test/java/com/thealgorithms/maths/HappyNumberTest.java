@@ -26,6 +26,6 @@ public class HappyNumberTest {
     @Test
     void testLargeNumber() {
         // Just to check behavior with larger input
-        assertTrue(HappyNumber.isHappy(1000000));  // reduces to 1 eventually
+        assertTrue(HappyNumber.isHappy(1000000)); // reduces to 1 eventually
     }
 }
