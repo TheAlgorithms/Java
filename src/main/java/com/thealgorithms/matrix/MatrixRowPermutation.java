@@ -1,6 +1,5 @@
 package com.thealgorithms.matrix;
 
-import static com.thealgorithms.matrix.utils.MatrixUtil.validateInputMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
