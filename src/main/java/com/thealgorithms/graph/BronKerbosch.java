@@ -64,12 +64,7 @@ public final class BronKerbosch {
         return cliques;
     }
 
-    private static void bronKerboschPivot(
-            Set<Integer> r,
-            Set<Integer> p,
-            Set<Integer> x,
-            List<Set<Integer>> graph,
-            List<Set<Integer>> cliques) {
+    private static void bronKerboschPivot(Set<Integer> r, Set<Integer> p, Set<Integer> x, List<Set<Integer>> graph, List<Set<Integer>> cliques) {
         if (p.isEmpty() && x.isEmpty()) {
             cliques.add(new HashSet<>(r));
             return;
