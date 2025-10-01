@@ -61,6 +61,46 @@ class MiniMaxAlgorithmTest {
     }
 
     @Test
+    void testSetScoresWithZeroLength() {
+        int[] emptyScores = {}; // Length 0 is not a power of 2
+        miniMax.setScores(emptyScores);
+
+        // Should print error message and not change the scores
+        String output = outputStream.toString();
+        assertTrue(output.contains("The number of scores must be a power of 2."));
+
+        // Scores should remain unchanged (original length 8)
+        assertEquals(8, miniMax.getScores().length);
+    }
+
+    @Test
+    void testSetScoresWithVariousInvalidLengths() {
+        // Test multiple invalid lengths to ensure isPowerOfTwo function is fully covered
+        int[][] invalidScoreArrays = {
+            {1, 2, 3, 4, 5}, // Length 5
+            {1, 2, 3, 4, 5, 6}, // Length 6 
+            {1, 2, 3, 4, 5, 6, 7}, // Length 7
+            new int[9], // Length 9
+            new int[10], // Length 10
+            new int[15] // Length 15
+        };
+
+        for (int[] invalidScores : invalidScoreArrays) {
+            // Clear the output stream for each test
+            outputStream.reset();
+            miniMax.setScores(invalidScores);
+
+            // Should print error message for each invalid length
+            String output = outputStream.toString();
+            assertTrue(output.contains("The number of scores must be a power of 2."),
+                "Failed for array length: " + invalidScores.length);
+        }
+
+        // Scores should remain unchanged (original length 8)
+        assertEquals(8, miniMax.getScores().length);
+    }
+
+    @Test
     void testSetScoresWithSingleElement() {
         int[] singleScore = {42};
         miniMax.setScores(singleScore);
@@ -184,5 +224,57 @@ class MiniMaxAlgorithmTest {
 
     void tearDown() {
         System.setOut(originalOut);
+    }
+
+    @Test
+    void testSetScoresWithNegativeLength() {
+        // This test ensures the first condition of isPowerOfTwo (n > 0) is tested
+        // Although we can't directly create an array with negative length,
+        // we can test edge cases around zero and ensure proper validation
+        
+        // Test with array length 0 (edge case for n > 0 condition)
+        int[] emptyArray = new int[0];
+        outputStream.reset();
+        miniMax.setScores(emptyArray);
+        
+        String output = outputStream.toString();
+        assertTrue(output.contains("The number of scores must be a power of 2."));
+        assertEquals(8, miniMax.getScores().length); // Should remain unchanged
+    }
+
+    @Test
+    void testSetScoresWithLargePowerOfTwo() {
+        // Test with a large power of 2 to ensure the algorithm works correctly
+        int[] largeValidScores = new int[32]; // 32 = 2^5
+        for (int i = 0; i < largeValidScores.length; i++) {
+            largeValidScores[i] = i + 1;
+        }
+        
+        miniMax.setScores(largeValidScores);
+        assertArrayEquals(largeValidScores, miniMax.getScores());
+        assertEquals(5, miniMax.getHeight()); // log2(32) = 5
+    }
+
+    @Test 
+    void testSetScoresValidEdgeCases() {
+        // Test valid powers of 2 to ensure isPowerOfTwo returns true correctly
+        int[][] validPowersOf2 = {
+            new int[1],   // 1 = 2^0
+            new int[2],   // 2 = 2^1  
+            new int[4],   // 4 = 2^2
+            new int[8],   // 8 = 2^3
+            new int[16],  // 16 = 2^4
+            new int[64]   // 64 = 2^6
+        };
+        
+        int[] expectedHeights = {0, 1, 2, 3, 4, 6};
+        
+        for (int i = 0; i < validPowersOf2.length; i++) {
+            miniMax.setScores(validPowersOf2[i]);
+            assertEquals(validPowersOf2[i].length, miniMax.getScores().length,
+                "Failed for array length: " + validPowersOf2[i].length);
+            assertEquals(expectedHeights[i], miniMax.getHeight(),
+                "Height calculation failed for array length: " + validPowersOf2[i].length);
+        }
     }
 }
