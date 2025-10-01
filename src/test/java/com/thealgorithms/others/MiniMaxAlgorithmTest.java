@@ -1,14 +1,14 @@
 package com.thealgorithms.others;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for MiniMaxAlgorithm
@@ -142,7 +142,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testMainMethod() {
         // Test that main method runs without errors
-        assertDoesNotThrow(() -> MiniMaxAlgorithm.main(new String[]{}));
+        assertDoesNotThrow(() -> MiniMaxAlgorithm.main(new String[] {}));
 
         String output = outputStream.toString();
         assertTrue(output.contains("The best score for"));
