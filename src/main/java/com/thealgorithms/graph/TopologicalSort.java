@@ -16,6 +16,11 @@ import java.util.Stack;
  */
 public class TopologicalSort {
 
+    // Prevent instantiation
+    private TopologicalSort() {
+        throw new AssertionError("Cannot instantiate utility class");
+    }
+
     /**
      * Class that represents a directed graph and provides methods for
      * manipulating the graph
