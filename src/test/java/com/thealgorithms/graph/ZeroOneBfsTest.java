@@ -60,12 +60,9 @@ class ZeroOneBfsTest {
         List<List<int[]>> adj = makeAdj(n);
         // invalid weight
         adj.get(0).add(new int[] {1, 2});
-        assertThrows(IllegalArgumentException.class,
-            () -> ZeroOneBfs.shortestPaths(n, adj, 0));
+        assertThrows(IllegalArgumentException.class, () -> ZeroOneBfs.shortestPaths(n, adj, 0));
         // invalid src
-        assertThrows(IllegalArgumentException.class,
-            () -> ZeroOneBfs.shortestPaths(n, adj, -1));
-        assertThrows(IllegalArgumentException.class,
-            () -> ZeroOneBfs.shortestPaths(n, adj, 2));
+        assertThrows(IllegalArgumentException.class, () -> ZeroOneBfs.shortestPaths(n, adj, -1));
+        assertThrows(IllegalArgumentException.class, () -> ZeroOneBfs.shortestPaths(n, adj, 2));
     }
 }
