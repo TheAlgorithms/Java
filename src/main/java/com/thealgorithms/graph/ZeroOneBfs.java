@@ -1,6 +1,9 @@
 package com.thealgorithms.graphs;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 0-1 BFS for shortest paths on graphs with 0/1 edge weights.
@@ -36,7 +39,8 @@ public final class ZeroOneBfs {
         while (!dq.isEmpty()) {
             int u = dq.pollFirst();
             for (int[] e : edges.get(u)) {
-                int v = e[0], w = e[1];
+                int v = e[0];
+                int w = e[1];
                 int nd = dist[u] + w;
                 if (nd < dist[v]) {
                     dist[v] = nd;
