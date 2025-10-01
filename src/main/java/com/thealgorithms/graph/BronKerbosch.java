@@ -13,7 +13,7 @@ import java.util.Set;
  * set of vertices adjacent to {@code u}. The algorithm runs in time proportional to the number of
  * maximal cliques produced and is widely used for clique enumeration problems.</p>
  *
- * @author <a href="https://github.com/VictorFrench">Victor French</a>
+ * @author <a href="https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm">Wikipedia: Bron–Kerbosch algorithm</a>
  */
 public final class BronKerbosch {
 
