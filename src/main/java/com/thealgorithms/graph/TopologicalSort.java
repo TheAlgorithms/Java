@@ -108,10 +108,8 @@ public final class TopologicalSort {
         Stack<Integer> stack = new Stack<>();
 
         for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
-                if (dfs(i, visited, recStack, adj, stack)) {
-                    throw new IllegalArgumentException("cycle detected in graph");
-                }
+            if (!visited[i] && dfs(i, visited, recStack, adj, stack)) {
+                throw new IllegalArgumentException("cycle detected in graph");
             }
         }
 
