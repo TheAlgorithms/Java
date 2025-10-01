@@ -14,7 +14,7 @@ import java.util.Stack;
  * A topological sort is possible only in a directed acyclic graph (DAG).
  * This file contains code of finding topological sort using Depth First Search technique.
  */
-public class TopologicalSort {
+public final class TopologicalSort {
 
     // Prevent instantiation
     private TopologicalSort() {
