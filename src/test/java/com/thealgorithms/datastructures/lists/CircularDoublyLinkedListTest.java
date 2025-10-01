@@ -76,7 +76,6 @@ public class CircularDoublyLinkedListTest {
 
     @Test
     public void testNullAppend() {
-        assertThrows(NullPointerException.class, () -> list.append(null),
-                "Appending null should throw NullPointerException.");
+        assertThrows(NullPointerException.class, () -> list.append(null), "Appending null should throw NullPointerException.");
     }
 }
