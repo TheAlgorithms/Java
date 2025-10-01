@@ -4,27 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Generates all possible permutations of the rows of a matrix.
- * Useful for exploring different row arrangements while keeping column structure intact.
- *
- * <p>Example usage:
- * <pre>
- * int[][] matrix = {{1, 2}, {3, 4}};
- * List<int[][]> permutations = MatrixRowPermutation.permuteRows(matrix);
- * </pre>
+ * This class provides a method to generate all possible permutations of the rows of a matrix.
+ * Row permutations are useful for exploring different arrangements while keeping the column structure intact.
+ * 
+ * For example, consider the following 2x2 matrix:
+ * 1 2
+ * 3 4
+ * The row permutations are:
+ * 1 2      3 4
+ * 3 4      1 2
  *
  * @author Suraj Singh Chauhan
  */
 public final class MatrixRowPermutation {
 
-    /** Private constructor to prevent instantiation. */
-    private MatrixRowPermutation() {}
+    private MatrixRowPermutation() {
+    }
 
     /**
-     * Generates all permutations of the rows of a matrix.
+     * @brief Generates all permutations of the rows of a matrix.
      *
-     * @param matrix the input matrix; must be non-null and non-empty
-     * @return a list of matrices, each representing a unique row permutation
+     * @param matrix The input matrix; must be non-null and non-empty
+     * @return A list of matrices, each representing a unique row permutation
      * @throws IllegalArgumentException if the matrix is empty
      * @throws NullPointerException if the matrix is null
      */
@@ -35,17 +36,18 @@ public final class MatrixRowPermutation {
         if (matrix.length == 0) {
             throw new IllegalArgumentException("Matrix is empty");
         }
+
         List<int[][]> result = new ArrayList<>();
         permute(matrix, 0, result);
         return result;
     }
 
     /**
-     * Helper method to generate permutations recursively.
+     * @brief Helper method to recursively generate permutations of matrix rows.
      *
-     * @param matrix the matrix whose rows are being permuted
-     * @param start the starting index for permutation
-     * @param result the list to store all permutations
+     * @param matrix The matrix being permuted
+     * @param start The current index to fix
+     * @param result The list to store all permutations
      */
     private static void permute(int[][] matrix, int start, List<int[][]> result) {
         if (start == matrix.length) {
@@ -64,11 +66,11 @@ public final class MatrixRowPermutation {
     }
 
     /**
-     * Swaps two rows in the matrix.
+     * @brief Swaps two rows in the matrix.
      *
-     * @param matrix the matrix
-     * @param i the index of the first row
-     * @param j the index of the second row
+     * @param matrix The matrix
+     * @param i The index of the first row
+     * @param j The index of the second row
      */
     private static void swap(int[][] matrix, int i, int j) {
         int[] temp = matrix[i];
