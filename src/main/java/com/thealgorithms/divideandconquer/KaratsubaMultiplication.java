@@ -4,7 +4,7 @@
 // https://en.wikipedia.org/wiki/Karatsuba_algorithm
 // https://www.geeksforgeeks.org/dsa/karatsuba-algorithm-for-fast-multiplication-using-divide-and-conquer-algorithm/
 
-import java.util.Scanner;
+package com.thealgorithms.divideandconquer;
 
 public final class KaratsubaMultiplication {
 
@@ -33,20 +33,5 @@ public final class KaratsubaMultiplication {
 
         return (z2 * (long) Math.pow(10, 2 * m)) + ((z1 - z2 - z0) * (long) Math.pow(10, m)) + z0;
     }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter first number: ");
-        long num1 = sc.nextLong();
-
-        System.out.print("Enter second number: ");
-        long num2 = sc.nextLong();
-
-        long result = karatsuba(num1, num2);
-
-        System.out.println("Product: " + result);
-
-        sc.close();
-    }
 }
+
