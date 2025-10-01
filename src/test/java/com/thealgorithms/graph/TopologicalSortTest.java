@@ -335,3 +335,4 @@ class TopologicalSortTest {
         assertEquals("cycle detected in graph", exception.getMessage());
     }
 }
+
