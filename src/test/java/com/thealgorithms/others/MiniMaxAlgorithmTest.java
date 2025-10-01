@@ -258,12 +258,12 @@ class MiniMaxAlgorithmTest {
     void testSetScoresValidEdgeCases() {
         // Test valid powers of 2 to ensure isPowerOfTwo returns true correctly
         int[][] validPowersOf2 = {
-            new int[1],   // 1 = 2^0
-            new int[2],   // 2 = 2^1
-            new int[4],   // 4 = 2^2
-            new int[8],   // 8 = 2^3
-            new int[16],  // 16 = 2^4
-            new int[64]   // 64 = 2^6
+            new int[1], // 1 = 2^0
+            new int[2], // 2 = 2^1
+            new int[4], // 4 = 2^2
+            new int[8], // 8 = 2^3
+            new int[16], // 16 = 2^4
+            new int[64] // 64 = 2^6
         };
 
         int[] expectedHeights = {0, 1, 2, 3, 4, 6};
