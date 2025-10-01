@@ -53,10 +53,8 @@ public class CircularDoublyLinkedListTest {
         list.append(10);
         list.append(20);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2),
-                "Removing at invalid index 2 should throw exception.");
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1),
-                "Removing at negative index should throw exception.");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2), "Removing at invalid index 2 should throw exception.");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1), "Removing at negative index should throw exception.");
     }
 
     @Test
