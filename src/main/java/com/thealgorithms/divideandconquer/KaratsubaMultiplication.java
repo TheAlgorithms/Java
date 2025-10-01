@@ -1,5 +1,5 @@
 // Karatsuba Multiplication Algorithm
-// Explanation: https://en.wikipedia.org/wiki/Karatsuba_algorithm
+// Reference: https://en.wikipedia.org/wiki/Karatsuba_algorithm
 
 import java.util.Scanner;
 
