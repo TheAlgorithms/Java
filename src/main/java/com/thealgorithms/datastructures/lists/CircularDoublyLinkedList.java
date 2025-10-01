@@ -115,45 +115,4 @@ public class CircularDoublyLinkedList<E> {
         size--;
         return removedValue;
     }
-
-    /**
-     * A small demonstration of the above implemented circular doubly linked list
-     * here we're initializing the circular doubly linked list, chronologically
-     * adding and removing the linked list elements and demonstrating methods like
-     * getSize()
-     */
-    public static void main(String[] args) {
-        CircularDoublyLinkedList<Integer> list = new CircularDoublyLinkedList<>();
-
-        System.out.println("Initial list: " + list);
-        System.out.println("Initial size: " + list.getSize());
-
-        System.out.println("Appending 10, 20, 30.");
-        list.append(10);
-        list.append(20);
-        list.append(30);
-
-        System.out.println("List content: " + list);
-        System.out.println("List size: " + list.getSize());
-
-        System.out.println("Removing element at position 1.");
-        int removed = list.remove(1);
-        System.out.println("Removed element: " + removed);
-
-        System.out.println("List content after removal: " + list);
-        System.out.println("List size after removal: " + list.getSize());
-
-        System.out.println("Removing element at position 0.");
-        removed = list.remove(0);
-        System.out.println("Removed element: " + removed);
-
-        System.out.println("List content after second removal: " + list);
-        System.out.println("List size after second removal: " + list.getSize());
-
-        System.out.println("Appending 40.");
-        list.append(40);
-
-        System.out.println("List content: " + list);
-        System.out.println("List size: " + list.getSize());
-    }
 }
