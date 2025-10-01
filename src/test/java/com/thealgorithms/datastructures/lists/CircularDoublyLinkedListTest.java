@@ -53,8 +53,10 @@ public class CircularDoublyLinkedListTest {
         list.append(10);
         list.append(20);
 
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2), "Removing at invalid index 2 should throw exception.");
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1), "Removing at negative index should throw exception.");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(2),
+                "Removing at invalid index 2 should throw exception.");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1),
+                "Removing at negative index should throw exception.");
     }
 
     @Test
@@ -76,6 +78,47 @@ public class CircularDoublyLinkedListTest {
 
     @Test
     public void testNullAppend() {
-        assertThrows(NullPointerException.class, () -> list.append(null), "Appending null should throw NullPointerException.");
+        assertThrows(NullPointerException.class, () -> list.append(null),
+                "Appending null should throw NullPointerException.");
     }
+
+    @Test
+    public void testRemoveLastPosition() {
+        list.append(10);
+        list.append(20);
+        list.append(30);
+        int removed = list.remove(list.getSize() - 1);
+        assertEquals(30, removed, "Last element removed should be 30.");
+        assertEquals(2, list.getSize(), "Size should decrease after removing last element.");
+    }
+
+    @Test
+    public void testRemoveFromEmptyThrows() {
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(0), "Remove from empty list should throw.");
+    }
+
+    @Test
+    public void testRepeatedAppendAndRemove() {
+        for (int i = 0; i < 100; i++) {
+            list.append(i);
+        }
+        assertEquals(100, list.getSize());
+
+        for (int i = 99; i >= 0; i--) {
+            int removed = list.remove(i);
+            assertEquals(i, removed, "Removed element should match appended value.");
+        }
+        assertEquals(0, list.getSize(), "List should be empty after all removes.");
+    }
+
+    @Test
+    public void testToStringAfterMultipleRemoves() {
+        list.append(1);
+        list.append(2);
+        list.append(3);
+        list.remove(2);
+        list.remove(0);
+        assertEquals("[ 2 ]", list.toString(), "ToString should correctly represent remaining elements.");
+    }
+
 }
