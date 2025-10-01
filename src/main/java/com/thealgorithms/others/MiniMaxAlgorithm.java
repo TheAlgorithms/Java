@@ -115,12 +115,12 @@ public class MiniMaxAlgorithm {
     }
 
     public void setScores(int[] scores) {
-        if (isPowerOfTwo(scores.length)) {
-            this.scores = scores;
-            height = log2(this.scores.length);
-        } else {
+        if (scores.length <= 0 || (scores.length & (scores.length - 1)) != 0) {
             System.out.println("The number of scores must be a power of 2.");
+            return;
         }
+        this.scores = scores;
+        height = log2(this.scores.length);
     }
 
     public int[] getScores() {
