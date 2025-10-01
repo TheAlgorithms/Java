@@ -34,4 +34,3 @@ public final class KaratsubaMultiplication {
         return (z2 * (long) Math.pow(10, 2 * m)) + ((z1 - z2 - z0) * (long) Math.pow(10, m)) + z0;
     }
 }
-
