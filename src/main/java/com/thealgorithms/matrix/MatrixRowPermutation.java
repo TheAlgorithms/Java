@@ -2,7 +2,6 @@ package com.thealgorithms.matrix;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Generate all possible permutations of the rows of a matrix.
  * Useful for exploring different row arrangements while keeping column structure intact.
