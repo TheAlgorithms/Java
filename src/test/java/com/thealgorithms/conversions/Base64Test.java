@@ -3,6 +3,7 @@ package com.thealgorithms.conversions;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -28,14 +29,16 @@ class Base64Test {
     @ParameterizedTest
     @CsvSource({"'', ''", "A, QQ==", "AB, QUI=", "ABC, QUJD", "ABCD, QUJDRA==", "Hello, SGVsbG8=", "'Hello World', SGVsbG8gV29ybGQ=", "'Hello, World!', 'SGVsbG8sIFdvcmxkIQ=='", "'The quick brown fox jumps over the lazy dog', 'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw=='",
         "123456789, MTIzNDU2Nzg5", "'Base64 encoding test', 'QmFzZTY0IGVuY29kaW5nIHRlc3Q='"})
-    void testStringEncoding(String input, String expected) {
+    void
+    testStringEncoding(String input, String expected) {
         assertEquals(expected, Base64.encode(input));
     }
 
     @ParameterizedTest
     @CsvSource({"'', ''", "QQ==, A", "QUI=, AB", "QUJD, ABC", "QUJDRA==, ABCD", "SGVsbG8=, Hello", "'SGVsbG8gV29ybGQ=', 'Hello World'", "'SGVsbG8sIFdvcmxkIQ==', 'Hello, World!'", "'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw==', 'The quick brown fox jumps over the lazy dog'",
         "MTIzNDU2Nzg5, 123456789", "'QmFzZTY0IGVuY29kaW5nIHRlc3Q=', 'Base64 encoding test'"})
-    void testStringDecoding(String input, String expected) {
+    void
+    testStringDecoding(String input, String expected) {
         assertEquals(expected, Base64.decodeToString(input));
     }
 
@@ -58,7 +61,7 @@ class Base64Test {
         String[] testStrings = {"", "A", "AB", "ABC", "Hello, World!", "The quick brown fox jumps over the lazy dog", "1234567890", "Special chars: !@#$%^&*()_+-=[]{}|;:,.<>?",
             "Unicode: வணக்கம்", // Tamil for "Hello"
             "Multi-line\nstring\rwith\tdifferent\nwhitespace"};
-        
+
         for (String original : testStrings) {
             String encoded = Base64.encode(original);
             String decoded = Base64.decodeToString(encoded);
@@ -68,14 +71,7 @@ class Base64Test {
 
     @Test
     void testRoundTripByteArrayEncoding() {
-        byte[][] testArrays = {
-            {},
-            {0},
-            {-1},
-            {0, 1, 2, 3, 4, 5},
-            {-128, -1, 0, 1, 127},
-            {72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33}
-        };
+        byte[][] testArrays = {{}, {0}, {-1}, {0, 1, 2, 3, 4, 5}, {-128, -1, 0, 1, 127}, {72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33}};
 
         for (byte[] original : testArrays) {
             String encoded = Base64.encode(original);
@@ -91,7 +87,7 @@ class Base64Test {
         for (int i = 0; i < 256; i++) {
             binaryData[i] = (byte) i;
         }
-        
+
         String encoded = Base64.encode(binaryData);
         byte[] decoded = Base64.decode(encoded);
         assertArrayEquals(binaryData, decoded);
@@ -129,12 +125,12 @@ class Base64Test {
     void testPaddingConsistency() {
         // Ensure that strings requiring different amounts of padding encode/decode correctly
         String[] testCases = {"A", "AB", "ABC", "ABCD", "ABCDE", "ABCDEF"};
-        
+
         for (String test : testCases) {
             String encoded = Base64.encode(test);
             String decoded = Base64.decodeToString(encoded);
             assertEquals(test, decoded);
-            
+
             // Verify padding is correct
             int expectedPadding = (3 - (test.length() % 3)) % 3;
             int actualPadding = 0;
@@ -152,7 +148,7 @@ class Base64Test {
         for (int i = 0; i < 1000; i++) {
             largeString.append("This is a test string for Base64 encoding. ");
         }
-        
+
         String original = largeString.toString();
         String encoded = Base64.encode(original);
         String decoded = Base64.decodeToString(encoded);
@@ -164,9 +160,8 @@ class Base64Test {
         // Test edge cases
         assertEquals("", Base64.encode(""));
         assertEquals("", Base64.decodeToString(""));
-        
+
         assertEquals("QQ==", Base64.encode("A"));
         assertEquals("A", Base64.decodeToString("QQ=="));
     }
-
 }

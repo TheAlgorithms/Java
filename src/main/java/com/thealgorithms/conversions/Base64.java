@@ -26,7 +26,7 @@ public final class Base64 {
 
     private Base64() {
     }
-    
+
     /**
      * Encodes the given byte array to a Base64 encoded string.
      *
