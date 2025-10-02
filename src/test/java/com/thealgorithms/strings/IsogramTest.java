@@ -1,6 +1,7 @@
 package com.thealgorithms.strings;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -72,21 +73,21 @@ public class IsogramTest {
 
     @Test
     void testNullInputByArray() {
-        assertEquals(true, Isogram.isIsogramByArray(null));
+        assertTrue(Isogram.isIsogramByArray(null));
     }
 
     @Test
     void testNullInputByLength() {
-        assertEquals(true, Isogram.isIsogramByLength(null));
+        assertTrue(Isogram.isIsogramByLength(null));
     }
 
     @Test
     void testEmptyStringByArray() {
-        assertEquals(true, Isogram.isIsogramByArray(""));
+        assertTrue(Isogram.isIsogramByArray(""));
     }
 
     @Test
     void testEmptyStringByLength() {
-        assertEquals(true, Isogram.isIsogramByLength(""));
+        assertTrue(Isogram.isIsogramByLength(""));
     }
 }
