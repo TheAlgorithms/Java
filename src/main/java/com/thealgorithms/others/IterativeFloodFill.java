@@ -46,6 +46,7 @@ public class IterativeFloodFill {
      * @param y        The y co-ordinate at which color is to be filled
      * @param newColor The new color which to be filled in the image
      * @param oldColor The old color which is to be replaced in the image
+     * @see <a href=https://www.geeksforgeeks.org/dsa/flood-fill-algorithm>FloodFill BFS<a/>
      */
     public static void floodFill(final int[][] image, final int x, final int y, final int newColor, final int oldColor) {
         if (image.length == 0 || image[0].length == 0 || newColor == oldColor || shouldSkipPixel(image, x, y, oldColor)) {
