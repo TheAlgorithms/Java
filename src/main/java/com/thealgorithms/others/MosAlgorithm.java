@@ -183,7 +183,7 @@ public final class MosAlgorithm {
     private static class MoComparator implements Comparator<Query> {
         private final int blockSize;
 
-        public MoComparator(int blockSize) {
+        MoComparator(int blockSize) {
             this.blockSize = blockSize;
         }
 
