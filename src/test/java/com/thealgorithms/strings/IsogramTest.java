@@ -89,4 +89,4 @@ public class IsogramTest {
     void testEmptyStringByLength() {
         assertEquals(true, Isogram.isIsogramByLength(""));
     }
-}
+ }
