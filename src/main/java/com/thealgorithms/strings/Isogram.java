@@ -26,7 +26,6 @@ import java.util.Set;
  * Reference from https://en.wikipedia.org/wiki/Heterogram_(literature)#Isograms
  */
 public class Isogram {
-    
     /**
      * Private constructor to prevent instantiation of utility class.
      */
