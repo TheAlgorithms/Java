@@ -17,12 +17,12 @@ import java.util.Set;
  * appear multiple times ('l' appears twice in "hello", while 'r', 'm', 'g'
  * repeat
  * in "programming").
- * 
+ *
  * Isograms are particularly valuable in creating substitution ciphers and are
  * studied in recreational linguistics. A perfect pangram, which uses all 26
  * letters
  * of the alphabet exactly once, is a special type of isogram.
- * 
+ *
  * Reference from https://en.wikipedia.org/wiki/Heterogram_(literature)#Isograms
  */
 public class Isogram {

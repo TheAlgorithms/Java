@@ -3,9 +3,9 @@ package com.thealgorithms.strings;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.api.Test;
 
 public class IsogramTest {
 
@@ -15,79 +15,55 @@ public class IsogramTest {
     private static Stream<IsogramTestCase> isogramArrayTestData() {
         return Stream.of(
                 // Valid isograms (only checks letters)
-                new IsogramTestCase("uncopyrightable", true),
-                new IsogramTestCase("dermatoglyphics", true),
-                new IsogramTestCase("background", true),
-                new IsogramTestCase("python", true),
-                new IsogramTestCase("keyboard", true),
-                new IsogramTestCase("clipboard", true),
+                new IsogramTestCase("uncopyrightable", true), new IsogramTestCase("dermatoglyphics", true),
+                new IsogramTestCase("background", true), new IsogramTestCase("python", true),
+                new IsogramTestCase("keyboard", true), new IsogramTestCase("clipboard", true),
                 new IsogramTestCase("flowchart", true),
-                new IsogramTestCase("bankruptcy", true),
-                new IsogramTestCase("computer", true),
+                new IsogramTestCase("bankruptcy", true), new IsogramTestCase("computer", true),
                 new IsogramTestCase("algorithms", true),
 
                 // Not isograms - letters repeat
-                new IsogramTestCase("hello", false),
-                new IsogramTestCase("programming", false),
-                new IsogramTestCase("java", false),
-                new IsogramTestCase("coffee", false),
-                new IsogramTestCase("book", false),
-                new IsogramTestCase("letter", false),
+                new IsogramTestCase("hello", false), new IsogramTestCase("programming", false),
+                new IsogramTestCase("java", false), new IsogramTestCase("coffee", false),
+                new IsogramTestCase("book", false), new IsogramTestCase("letter", false),
                 new IsogramTestCase("mississippi", false),
                 new IsogramTestCase("google", false),
 
                 // Edge cases
-                new IsogramTestCase("", true),
-                new IsogramTestCase("a", true),
-                new IsogramTestCase("ab", true),
-                new IsogramTestCase("abc", true),
-                new IsogramTestCase("aa", false),
+                new IsogramTestCase("", true), new IsogramTestCase("a", true), new IsogramTestCase("ab", true),
+                new IsogramTestCase("abc", true), new IsogramTestCase("aa", false),
                 new IsogramTestCase("abcdefghijklmnopqrstuvwxyz", true), // All 26 letters
 
                 // Case insensitive
-                new IsogramTestCase("Python", true),
-                new IsogramTestCase("BACKGROUND", true),
-                new IsogramTestCase("Hello", false),
-                new IsogramTestCase("PROGRAMMING", false));
+                new IsogramTestCase("Python", true), new IsogramTestCase("BACKGROUND", true),
+                new IsogramTestCase("Hello", false), new IsogramTestCase("PROGRAMMING", false));
     }
 
     private static Stream<IsogramTestCase> isogramLengthTestData() {
         return Stream.of(
                 // Valid isograms (checks all characters)
-                new IsogramTestCase("uncopyrightable", true),
-                new IsogramTestCase("dermatoglyphics", true),
-                new IsogramTestCase("background", true),
-                new IsogramTestCase("python", true),
-                new IsogramTestCase("keyboard", true),
-                new IsogramTestCase("clipboard", true),
+                new IsogramTestCase("uncopyrightable", true), new IsogramTestCase("dermatoglyphics", true),
+                new IsogramTestCase("background", true), new IsogramTestCase("python", true),
+                new IsogramTestCase("keyboard", true), new IsogramTestCase("clipboard", true),
                 new IsogramTestCase("flowchart", true),
-                new IsogramTestCase("bankruptcy", true),
-                new IsogramTestCase("computer", true),
+                new IsogramTestCase("bankruptcy", true), new IsogramTestCase("computer", true),
                 new IsogramTestCase("algorithms", true),
 
                 // Not isograms - characters repeat
-                new IsogramTestCase("hello", false),
-                new IsogramTestCase("programming", false),
-                new IsogramTestCase("java", false),
-                new IsogramTestCase("coffee", false),
-                new IsogramTestCase("book", false),
-                new IsogramTestCase("letter", false),
+                new IsogramTestCase("hello", false), new IsogramTestCase("programming", false),
+                new IsogramTestCase("java", false), new IsogramTestCase("coffee", false),
+                new IsogramTestCase("book", false), new IsogramTestCase("letter", false),
                 new IsogramTestCase("mississippi", false),
                 new IsogramTestCase("google", false),
 
                 // Edge cases
-                new IsogramTestCase("", true),
-                new IsogramTestCase("a", true),
-                new IsogramTestCase("ab", true),
-                new IsogramTestCase("abc", true),
-                new IsogramTestCase("aa", false),
+                new IsogramTestCase("", true), new IsogramTestCase("a", true), new IsogramTestCase("ab", true),
+                new IsogramTestCase("abc", true), new IsogramTestCase("aa", false),
                 new IsogramTestCase("abcdefghijklmnopqrstuvwxyz", true), // All 26 letters
 
                 // Case insensitive
-                new IsogramTestCase("Python", true),
-                new IsogramTestCase("BACKGROUND", true),
-                new IsogramTestCase("Hello", false),
-                new IsogramTestCase("PROGRAMMING", false),
+                new IsogramTestCase("Python", true), new IsogramTestCase("BACKGROUND", true),
+                new IsogramTestCase("Hello", false), new IsogramTestCase("PROGRAMMING", false),
 
                 // Strings with symbols and numbers
                 new IsogramTestCase("abc@def", true), // all characters unique
@@ -133,4 +109,3 @@ public class IsogramTest {
     void testEmptyStringByLength() {
         assertEquals(true, Isogram.isIsogramByLength(""));
     }
-}
