@@ -109,13 +109,18 @@ public class MiniMaxAlgorithm {
         return (n == 1) ? 0 : log2(n / 2) + 1;
     }
 
+    // A utility function to check if a number is a power of 2
+    private boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+
     public void setScores(int[] scores) {
-        if (scores.length % 1 == 0) {
-            this.scores = scores;
-            height = log2(this.scores.length);
-        } else {
+        if (!isPowerOfTwo(scores.length)) {
             System.out.println("The number of scores must be a power of 2.");
+            return;
         }
+        this.scores = scores;
+        height = log2(this.scores.length);
     }
 
     public int[] getScores() {
