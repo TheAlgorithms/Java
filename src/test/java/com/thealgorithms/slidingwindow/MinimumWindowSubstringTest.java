@@ -30,5 +30,6 @@ public class MinimumWindowSubstringTest {
         assertEquals("ABCDEFG", MinimumWindowSubstring.minWindow("ABCDEFG", "ABCDEFG"));
         assertEquals("", MinimumWindowSubstring.minWindow("abc", "A"));
         assertEquals("A", MinimumWindowSubstring.minWindow("aAbBcC", "A"));
+        assertEquals("AABBC", MinimumWindowSubstring.minWindow("AAABBC", "AABC"));
     }
 }
