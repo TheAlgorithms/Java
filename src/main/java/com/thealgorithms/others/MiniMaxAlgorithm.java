@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * MiniMax is an algorithm used int artificial intelligence and game theory for
+ * MiniMax is an algorithm used in artificial intelligence and game theory for
  * minimizing the possible loss for the worst case scenario.
  *
  * See more (https://en.wikipedia.org/wiki/Minimax,
@@ -74,22 +74,18 @@ public class MiniMaxAlgorithm {
             bestScore = Math.min(score1, score2);
         }
 
-        // Leaf nodes can be sequentially inspected by
-        // recurssively multiplying (0 * 2) and ((0 * 2) + 1):
-        // (0 x 2) = 0; ((0 x 2) + 1) = 1
-        // (1 x 2) = 2; ((1 x 2) + 1) = 3
-        // (2 x 2) = 4; ((2 x 2) + 1) = 5 ...
         if (verbose) {
-            System.out.printf("From %02d and %02d, %s chooses %02d%n", score1, score2, (isMaximizer ? "Maximizer" : "Minimizer"), bestScore);
+            System.out.printf("From %02d and %02d, %s chooses %02d%n",
+                    score1, score2, (isMaximizer ? "Maximizer" : "Minimizer"), bestScore);
         }
 
         return bestScore;
     }
 
     /**
-     * Returns an array of random numbers which lenght is a power of 2.
+     * Returns an array of random numbers whose length is a power of 2.
      *
-     * @param size The power of 2 that will determine the lenght of the array.
+     * @param size The power of 2 that will determine the length of the array.
      * @param maxScore The maximum possible score.
      * @return An array of random numbers.
      */
@@ -104,17 +100,29 @@ public class MiniMaxAlgorithm {
         return randomScores;
     }
 
-    // A utility function to find Log n in base 2
+    // A utility function to find log2(n)
     private int log2(int n) {
-        return (n == 1) ? 0 : log2(n / 2) + 1;
+        if (n <= 0) {
+            throw new IllegalArgumentException("Input must be a positive integer.");
+        }
+        return (n == 1) ? 0 : 1 + log2(n / 2);
     }
 
+    /**
+     * Sets the scores array if its length is a power of 2, otherwise throws exception.
+     *
+     * @param scores input array of scores
+     */
     public void setScores(int[] scores) {
-        if (scores.length % 1 == 0) {
+        if (scores == null || scores.length == 0) {
+            throw new IllegalArgumentException("Scores array cannot be null or empty.");
+        }
+        // Check if length is power of 2 using bitwise trick
+        if ((scores.length & (scores.length - 1)) == 0) {
             this.scores = scores;
             height = log2(this.scores.length);
         } else {
-            System.out.println("The number of scores must be a power of 2.");
+            throw new IllegalArgumentException("The number of scores must be a power of 2.");
         }
     }
 
