@@ -112,34 +112,36 @@ public final class Base64 {
             return new byte[0];
         }
 
-        // Remove padding for processing
-        String cleanInput = input.replace("=", "");
-        int padding = input.length() - cleanInput.length();
+        // Strict RFC 4648 compliance: length must be a multiple of 4
+        if (input.length() % 4 != 0) {
+            throw new IllegalArgumentException("Invalid Base64 input length; must be multiple of 4");
+        }
 
-        // Validate input length
-        if ((cleanInput.length() % 4) + padding > 4) {
-            throw new IllegalArgumentException("Invalid Base64 input length");
+        // Validate padding: '=' can only appear at the end (last 1 or 2 chars)
+        int firstPadding = input.indexOf('=');
+        if (firstPadding != -1 && firstPadding < input.length() - 2) {
+            throw new IllegalArgumentException("Padding '=' can only appear at the end (last 1 or 2 characters)");
         }
 
         List<Byte> result = new ArrayList<>();
 
         // Process input in groups of 4 characters
-        for (int i = 0; i < cleanInput.length(); i += 4) {
+        for (int i = 0; i < input.length(); i += 4) {
             // Get up to 4 characters
-            int char1 = getBase64Value(cleanInput.charAt(i));
-            int char2 = (i + 1 < cleanInput.length()) ? getBase64Value(cleanInput.charAt(i + 1)) : 0;
-            int char3 = (i + 2 < cleanInput.length()) ? getBase64Value(cleanInput.charAt(i + 2)) : 0;
-            int char4 = (i + 3 < cleanInput.length()) ? getBase64Value(cleanInput.charAt(i + 3)) : 0;
+            int char1 = getBase64Value(input.charAt(i));
+            int char2 = getBase64Value(input.charAt(i + 1));
+            int char3 = input.charAt(i + 2) == '=' ? 0 : getBase64Value(input.charAt(i + 2));
+            int char4 = input.charAt(i + 3) == '=' ? 0 : getBase64Value(input.charAt(i + 3));
 
             // Combine four 6-bit groups into a 24-bit number
             int combined = (char1 << 18) | (char2 << 12) | (char3 << 6) | char4;
 
             // Extract three 8-bit bytes
             result.add((byte) ((combined >> 16) & 0xFF));
-            if (i + 2 < cleanInput.length() || (i + 2 == cleanInput.length() && padding < 2)) {
+            if (input.charAt(i + 2) != '=') {
                 result.add((byte) ((combined >> 8) & 0xFF));
             }
-            if (i + 3 < cleanInput.length() || (i + 3 == cleanInput.length() && padding < 1)) {
+            if (input.charAt(i + 3) != '=') {
                 result.add((byte) (combined & 0xFF));
             }
         }
