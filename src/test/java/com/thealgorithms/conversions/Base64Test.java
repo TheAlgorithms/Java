@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  * Test cases for Base64 encoding and decoding.
- * 
+ *
  * Author: Nithin U.
  * Github: https://github.com/NithinU2802
  */
@@ -26,37 +26,15 @@ class Base64Test {
     }
 
     @ParameterizedTest
-    @CsvSource({
-        "'', ''",
-        "A, QQ==",
-        "AB, QUI=",
-        "ABC, QUJD",
-        "ABCD, QUJDRA==",
-        "Hello, SGVsbG8=",
-        "'Hello World', SGVsbG8gV29ybGQ=",
-        "'Hello, World!', 'SGVsbG8sIFdvcmxkIQ=='",
-        "'The quick brown fox jumps over the lazy dog', 'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw=='",
-        "123456789, MTIzNDU2Nzg5",
-        "'Base64 encoding test', 'QmFzZTY0IGVuY29kaW5nIHRlc3Q='"
-    })
+    @CsvSource({"'', ''", "A, QQ==", "AB, QUI=", "ABC, QUJD", "ABCD, QUJDRA==", "Hello, SGVsbG8=", "'Hello World', SGVsbG8gV29ybGQ=", "'Hello, World!', 'SGVsbG8sIFdvcmxkIQ=='", "'The quick brown fox jumps over the lazy dog', 'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw=='",
+        "123456789, MTIzNDU2Nzg5", "'Base64 encoding test', 'QmFzZTY0IGVuY29kaW5nIHRlc3Q='"})
     void testStringEncoding(String input, String expected) {
         assertEquals(expected, Base64.encode(input));
     }
 
     @ParameterizedTest
-    @CsvSource({
-        "'', ''",
-        "QQ==, A",
-        "QUI=, AB", 
-        "QUJD, ABC",
-        "QUJDRA==, ABCD",
-        "SGVsbG8=, Hello",
-        "'SGVsbG8gV29ybGQ=', 'Hello World'",
-        "'SGVsbG8sIFdvcmxkIQ==', 'Hello, World!'",
-        "'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw==', 'The quick brown fox jumps over the lazy dog'",
-        "MTIzNDU2Nzg5, 123456789",
-        "'QmFzZTY0IGVuY29kaW5nIHRlc3Q=', 'Base64 encoding test'"
-    })
+    @CsvSource({"'', ''", "QQ==, A", "QUI=, AB", "QUJD, ABC", "QUJDRA==, ABCD", "SGVsbG8=, Hello", "'SGVsbG8gV29ybGQ=', 'Hello World'", "'SGVsbG8sIFdvcmxkIQ==', 'Hello, World!'", "'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw==', 'The quick brown fox jumps over the lazy dog'",
+        "MTIzNDU2Nzg5, 123456789", "'QmFzZTY0IGVuY29kaW5nIHRlc3Q=', 'Base64 encoding test'"})
     void testStringDecoding(String input, String expected) {
         assertEquals(expected, Base64.decodeToString(input));
     }
@@ -77,19 +55,10 @@ class Base64Test {
 
     @Test
     void testRoundTripEncoding() {
-        String[] testStrings = {
-            "",
-            "A",
-            "AB", 
-            "ABC",
-            "Hello, World!",
-            "The quick brown fox jumps over the lazy dog",
-            "1234567890",
-            "Special chars: !@#$%^&*()_+-=[]{}|;:,.<>?",
+        String[] testStrings = {"", "A", "AB", "ABC", "Hello, World!", "The quick brown fox jumps over the lazy dog", "1234567890", "Special chars: !@#$%^&*()_+-=[]{}|;:,.<>?",
             "Unicode: வணக்கம்", // Tamil for "Hello"
-            "Multi-line\nstring\rwith\tdifferent\nwhitespace"
-        };
-
+            "Multi-line\nstring\rwith\tdifferent\nwhitespace"};
+        
         for (String original : testStrings) {
             String encoded = Base64.encode(original);
             String decoded = Base64.decodeToString(encoded);
