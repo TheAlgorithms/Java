@@ -198,7 +198,7 @@ public final class MosAlgorithm {
 
             // For odd blocks, sort right in ascending order
             // For even blocks, sort right in descending order (optimization)
-            if (blockA % 2 == 1) {
+            if ((blockA & 1) == 1) {
                 return Integer.compare(a.right, b.right);
             } else {
                 return Integer.compare(b.right, a.right);
