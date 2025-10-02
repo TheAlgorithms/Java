@@ -228,13 +228,21 @@ class ProcessDetailsTest {
         process1.setWaitingTime(10);
         process1.setTurnAroundTimeTime(15);
 
+        // Verify first process was modified correctly
+        assertEquals("P1", process1.getProcessId());
+        assertEquals(0, process1.getArrivalTime());
+        assertEquals(5, process1.getBurstTime());
+        assertEquals(1, process1.getPriority());
+        assertEquals(10, process1.getWaitingTime());
+        assertEquals(15, process1.getTurnAroundTimeTime());
+
         // Verify second process is unchanged
-        assertEquals(0, process2.getWaitingTime());
-        assertEquals(0, process2.getTurnAroundTimeTime());
         assertEquals("P2", process2.getProcessId());
         assertEquals(2, process2.getArrivalTime());
         assertEquals(8, process2.getBurstTime());
         assertEquals(2, process2.getPriority());
+        assertEquals(0, process2.getWaitingTime());
+        assertEquals(0, process2.getTurnAroundTimeTime());
     }
 
     @Test
@@ -251,12 +259,7 @@ class ProcessDetailsTest {
     @Test
     void testTypicalSchedulingScenario() {
         // Test a typical scheduling scenario with multiple processes
-        ProcessDetails[] processes = {
-            new ProcessDetails("P1", 0, 8, 3),
-            new ProcessDetails("P2", 1, 4, 1),
-            new ProcessDetails("P3", 2, 9, 4),
-            new ProcessDetails("P4", 3, 5, 2)
-        };
+        ProcessDetails[] processes = {new ProcessDetails("P1", 0, 8, 3), new ProcessDetails("P2", 1, 4, 1), new ProcessDetails("P3", 2, 9, 4), new ProcessDetails("P4", 3, 5, 2)};
 
         // Simulate FCFS scheduling calculations
         int currentTime = 0;
