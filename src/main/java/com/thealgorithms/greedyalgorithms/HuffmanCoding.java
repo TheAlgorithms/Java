@@ -21,7 +21,10 @@ public class HuffmanCoding {
 
     private static Map<Character, String> huffmanCodes = new HashMap<>();
     private static HuffmanNode root;
-
+    
+     private HuffmanCoding() {
+        throw new UnsupportedOperationException("Utility class");
+    }
     /**
      * Builds the Huffman Tree and generates codes.
      * @param text The input string to be encoded.
