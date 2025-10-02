@@ -114,6 +114,22 @@ class Base64Test {
     }
 
     @Test
+    void testInvalidLength() {
+        // Length must be multiple of 4
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("Q"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("QQ"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("QQQ"));
+    }
+
+    @Test
+    void testInvalidPaddingPosition() {
+        // '=' can only appear at the end
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("Q=QQ"));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("Q=Q="));
+        assertThrows(IllegalArgumentException.class, () -> Base64.decode("=QQQ"));
+    }
+
+    @Test
     void testPaddingVariations() {
         // Test different padding scenarios '='
         assertEquals("A", Base64.decodeToString("QQ=="));
