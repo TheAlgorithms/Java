@@ -1,9 +1,9 @@
 package com.thealgorithms.others;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import org.junit.jupiter.api.Test;
 
 class IterativeFloodFillTest {
 
@@ -22,6 +22,15 @@ class IterativeFloodFillTest {
         int[][] expected = {{3}};
 
         IterativeFloodFill.floodFill(image, 0, 0, 3, 1);
+        assertArrayEquals(expected, image);
+    }
+
+    @Test
+    void testForEmptyRow() {
+        int[][] image = {{}};
+        int[][] expected = {{}};
+
+        IterativeFloodFill.floodFill(image, 4, 5, 3, 2);
         assertArrayEquals(expected, image);
     }
 
@@ -111,4 +120,45 @@ class IterativeFloodFillTest {
 
         assertDoesNotThrow(() -> IterativeFloodFill.floodFill(image, 0, 0, 1, 0));
     }
+
+    @Test
+    void testForBelowZeroX() {
+        int[][] image = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        int[][] expected = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        IterativeFloodFill.floodFill(image, -1, 1, 1, 0);
+        assertArrayEquals(expected, image);
+    }
+
+    @Test
+    void testForBelowZeroY() {
+        int[][] image = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        int[][] expected = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        IterativeFloodFill.floodFill(image, 1, -1, 1, 0);
+        assertArrayEquals(expected, image);
+    }
+
+    @Test
+    void testForAboveBoundaryX() {
+        int[][] image = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        int[][] expected = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        IterativeFloodFill.floodFill(image, 100, 1, 1, 0);
+        assertArrayEquals(expected, image);
+    }
+
+    @Test
+    void testForAboveBoundaryY() {
+        int[][] image = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        int[][] expected = {{1, 1, 2}, {1, 0, 0}, {1, 1, 1}};
+
+        IterativeFloodFill.floodFill(image, 1, 100, 1, 0);
+        assertArrayEquals(expected, image);
+    }
+
 }
