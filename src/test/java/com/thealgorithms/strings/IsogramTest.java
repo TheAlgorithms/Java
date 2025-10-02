@@ -21,7 +21,7 @@ public class IsogramTest {
             // Not isograms - letters repeat
             new IsogramTestCase("hello", false), new IsogramTestCase("programming", false), new IsogramTestCase("java", false), new IsogramTestCase("coffee", false), new IsogramTestCase("book", false), new IsogramTestCase("letter", false), new IsogramTestCase("mississippi", false),
             new IsogramTestCase("google", false),
- 
+
             // Edge cases
             new IsogramTestCase("", true), new IsogramTestCase("a", true), new IsogramTestCase("ab", true), new IsogramTestCase("abc", true), new IsogramTestCase("aa", false), new IsogramTestCase("abcdefghijklmnopqrstuvwxyz", true),
 
@@ -38,7 +38,7 @@ public class IsogramTest {
             // Not isograms - characters repeat
             new IsogramTestCase("hello", false), new IsogramTestCase("programming", false), new IsogramTestCase("java", false), new IsogramTestCase("coffee", false), new IsogramTestCase("book", false), new IsogramTestCase("letter", false), new IsogramTestCase("mississippi", false),
             new IsogramTestCase("google", false),
- 
+
             // Edge cases
             new IsogramTestCase("", true), new IsogramTestCase("a", true), new IsogramTestCase("ab", true), new IsogramTestCase("abc", true), new IsogramTestCase("aa", false), new IsogramTestCase("abcdefghijklmnopqrstuvwxyz", true),
 

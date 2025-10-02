@@ -80,4 +80,4 @@ public class Isogram {
         }
         return uniqueChars.size() == str.length();
     }
- }
+  }
