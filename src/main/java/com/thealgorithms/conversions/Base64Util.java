@@ -9,8 +9,7 @@ import java.util.Base64;
  */
 public final class Base64Util {
 
-    private Base64Util() {
-    }
+    private Base64Util() {}
 
     /**
      * Encodes a given string into Base64 format.
@@ -31,7 +30,8 @@ public final class Base64Util {
      *
      * @param base64 The Base64 encoded string.
      * @return The decoded original text.
-     * @throws IllegalArgumentException if base64 is null or not a valid Base64 string.
+     * @throws IllegalArgumentException if base64 is null or not a valid Base64
+     *     string.
      */
     public static String decode(String base64) {
         if (base64 == null) {

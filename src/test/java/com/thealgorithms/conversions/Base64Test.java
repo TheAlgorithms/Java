@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class Base64Test{
+public class Base64Test {
 
     @Test
     // Test encoding and decoding normal strings
@@ -41,16 +41,10 @@ public class Base64Test{
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "invalid@@base64",
-            "12345$%",
-            "====",
-            "abc?def"
-    })
+    @CsvSource({"invalid@@base64", "12345$%", "====", "abc?def"})
         // Test decoding invalid Base64 strings
     void testInvalidBase64Decode(String invalidBase64) {
-        assertThrows(IllegalArgumentException.class, () -> Base64Util.decode(invalidBase64));
+        assertThrows(IllegalArgumentException.class,
+                () -> Base64Util.decode(invalidBase64));
     }
-
 }
-
