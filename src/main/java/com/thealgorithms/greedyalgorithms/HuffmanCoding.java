@@ -17,12 +17,11 @@ class HuffmanNode implements Comparable<HuffmanNode> {
     }
 }
 
-public class HuffmanCoding {
+public final class HuffmanCoding {
 
     private static Map<Character, String> huffmanCodes = new HashMap<>();
     private static HuffmanNode root;
-    
-     private HuffmanCoding() {
+    private HuffmanCoding() {
         throw new UnsupportedOperationException("Utility class");
     }
     /**
