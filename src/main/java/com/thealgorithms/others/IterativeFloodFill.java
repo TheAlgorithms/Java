@@ -4,15 +4,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class IterativeFloodFill {
+    private IterativeFloodFill() {
+    }
 
     /**
      * Represents a point in 2D space with integer coordinates.
      */
     private static class Point {
-        public final int x;
-        public final int y;
+        final int x;
+        final int y;
 
-        public Point(final int x, final int y) {
+        Point(final int x, final int y) {
             this.x = x;
             this.y = y;
         }
@@ -29,9 +31,7 @@ public class IterativeFloodFill {
      */
     private static boolean shouldSkipPixel(final int[][] image, final int x, final int y, final int oldColor) {
 
-        if (x < 0 || x >= image.length ||
-                y < 0 || y >= image[0].length ||
-                image[x][y] != oldColor) {
+        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor) {
             return true;
         }
 
@@ -59,7 +59,6 @@ public class IterativeFloodFill {
         int[] dx = {0, 0, -1, 1, 1, -1, 1, -1};
         int[] dy = {-1, 1, 0, 0, -1, 1, 1, -1};
 
-
         while (!queue.isEmpty()) {
             Point currPoint = queue.poll();
 
@@ -76,7 +75,6 @@ public class IterativeFloodFill {
                 if (!shouldSkipPixel(image, curX, curY, oldColor)) {
                     queue.add(new Point(curX, curY));
                 }
-
             }
         }
     }
