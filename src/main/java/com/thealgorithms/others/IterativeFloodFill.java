@@ -3,7 +3,7 @@ package com.thealgorithms.others;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class IterativeFloodFill {
+public final class IterativeFloodFill {
     private IterativeFloodFill() {
     }
 
@@ -79,3 +79,4 @@ public class IterativeFloodFill {
         }
     }
 }
+
