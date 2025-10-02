@@ -22,9 +22,11 @@ public class MinimumWindowSubstringTest {
         assertEquals("", MinimumWindowSubstring.minWindow("ADOBECODEBANC", "XYZ")); 
         assertEquals("BC", MinimumWindowSubstring.minWindow("ABCDEF", "BC"));
         assertEquals("q", MinimumWindowSubstring.minWindow("abcdefghijklmnopqrstuvwxyz", "q"));
-        assertEquals("JQTUHzRLPPyjllmvqopolorblqrijdpytjzxxvnyqihohrszawlvetnrgcnrknuandawlfzthoeoeiqsxliroreemjvqfzuimacidfymmpyljzxtwatvqszhtsjsmpgzjozxvcygidhsunqtvlbvamafbjmplrbrehjmvvlxyluuaqgbrmfxrygeylkzlflbfcwqnemigwhrrshdqiwvifoifxsaxfyqnibcwrkffbtjqxjubgrfvexqhocdvyyavdmujnfwwecqkantiaogsrgvwtwwkcczydpevynzvirsppgrdmfhbdtczprkrrvxxlxjcvauaharesmqjxhjwmrrtspsbobgofrnvdzbwiibqhrrqbtxyspnszwpxbqrwtavsmhhqrqkjegvhbeftfbicnhamhwyonlwlzysocyzshhyknbdkelplkkvazqpnzhydraoyiodssA", MinimumWindowSubstring.minWindow("HRULTrctorlsshmgtarxadgosylsmxsorskzqfdkujoJQTUHzRLPPyjllmvqopolorblqrijdpytjzxxvnyqihohrszawlvetnrgcnrknuandawlfzthoeoeiqsxliroreemjvqfzuimacidfymmpyljzxtwatvqszhtsjsmpgzjozxvcygidhsunqtvlbvamafbjmplrbrehjmvvlxyluuaqgbrmfxrygeylkzlflbfcwqnemigwhrrshdqiwvifoifxsaxfyqnibcwrkffbtjqxjubgrfvexqhocdvyyavdmujnfwwecqkantiaogsrgvwtwwkcczydpevynzvirsppgrdmfhbdtczprkrrvxxlxjcvauaharesmqjxhjwmrrtspsbobgofrnvdzbwiibqhrrqbtxyspnszwpxbqrwtavsmhhqrqkjegvhbeftfbicnhamhwyonlwlzysocyzshhyknbdkelplkkvazqpnzhydraoyiodssA", "HRULTPQPJA")); 
         assertEquals("", MinimumWindowSubstring.minWindow("zzzzzzzzz", "zzzzzzzzzz")); 
         assertEquals("ABCDEFAAAllBBBBllZ", MinimumWindowSubstring.minWindow("ABCllBBBBBlllllllABCDEFAAAllBBBBllZ", "ABAAACDEFZ")); 
         assertEquals("abbbbbcdd", MinimumWindowSubstring.minWindow("aaaaaaaaaaaabbbbbcdd", "abcdd")); 
+        assertEquals("ABCDEFG", MinimumWindowSubstring.minWindow("ABCDEFG", "ABCDEFG"));
+        assertEquals("", MinimumWindowSubstring.minWindow("abc", "A")); 
+        assertEquals("A", MinimumWindowSubstring.minWindow("aAbBcC", "A")); 
     }
 }
