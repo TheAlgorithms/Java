@@ -26,6 +26,13 @@ import java.util.Set;
  * Reference from https://en.wikipedia.org/wiki/Heterogram_(literature)#Isograms
  */
 public class Isogram {
+    
+    /**
+     * Private constructor to prevent instantiation of utility class.
+     */
+    private Isogram() {
+    }
+
     /**
      * Checks if a string is an isogram using boolean array approach.
      *
