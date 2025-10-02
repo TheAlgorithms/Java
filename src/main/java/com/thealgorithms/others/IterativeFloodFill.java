@@ -79,4 +79,3 @@ public final class IterativeFloodFill {
         }
     }
 }
-
