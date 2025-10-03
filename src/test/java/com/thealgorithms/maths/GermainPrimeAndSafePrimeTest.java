@@ -12,12 +12,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GermainPrimeAndSafePrimeTest {
 
     static Stream<Arguments> provideNumbersForGermainPrimes() {
-        return Stream.of(
-            Arguments.of(2, Boolean.TRUE), Arguments.of(3, Boolean.TRUE), Arguments.of(5, Boolean.TRUE), Arguments.of(11, Boolean.TRUE), Arguments.of(23, Boolean.TRUE), Arguments.of(293, Boolean.TRUE), Arguments.of(4, false), Arguments.of(7, false), Arguments.of(9, false), Arguments.of(1, false));
+        return Stream.of(Arguments.of(2, Boolean.TRUE), Arguments.of(3, Boolean.TRUE), Arguments.of(5, Boolean.TRUE), Arguments.of(11, Boolean.TRUE), Arguments.of(23, Boolean.TRUE), Arguments.of(293, Boolean.TRUE), Arguments.of(4, Boolean.FALSE), Arguments.of(7, Boolean.FALSE),
+            Arguments.of(9, Boolean.FALSE), Arguments.of(1, Boolean.FALSE));
     }
 
     static Stream<Arguments> provideNumbersForSafePrimes() {
-        return Stream.of(Arguments.of(5, Boolean.TRUE), Arguments.of(7, Boolean.TRUE), Arguments.of(11, Boolean.TRUE), Arguments.of(23, Boolean.TRUE), Arguments.of(1283, Boolean.TRUE), Arguments.of(4, false), Arguments.of(13, false), Arguments.of(9, false), Arguments.of(1, false));
+        return Stream.of(Arguments.of(5, Boolean.TRUE), Arguments.of(7, Boolean.TRUE), Arguments.of(11, Boolean.TRUE), Arguments.of(23, Boolean.TRUE), Arguments.of(1283, Boolean.TRUE), Arguments.of(4, Boolean.FALSE), Arguments.of(13, Boolean.FALSE), Arguments.of(9, Boolean.FALSE),
+            Arguments.of(1, Boolean.FALSE));
     }
 
     static Stream<Integer> provideNegativeNumbers() {
