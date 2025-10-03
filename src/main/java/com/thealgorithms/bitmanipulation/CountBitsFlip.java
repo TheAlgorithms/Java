@@ -17,7 +17,7 @@ package com.thealgorithms.bitmanipulation;
  *
  *@author [Yash Rajput](https://github.com/the-yash-rajput)
  */
-public class CountBitsFlip {
+public final class CountBitsFlip {
 
     private CountBitsFlip() {
         throw new AssertionError("No instances.");
