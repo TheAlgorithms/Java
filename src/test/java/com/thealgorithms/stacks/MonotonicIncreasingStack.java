@@ -6,7 +6,7 @@ in solving various problems including the Stock Span, Trapping Rain water*/
 
 import java.util.*;
 
-public class MonotonicStack {
+public class MonotonicIncreasingStack {
 
     // Returns Next Greater Element for each element in the array
     public static int[] nextGreaterElement(int[] arr) {
