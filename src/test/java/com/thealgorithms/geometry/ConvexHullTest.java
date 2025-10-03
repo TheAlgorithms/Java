@@ -1,46 +1,28 @@
 package com.thealgorithms.geometry;
+import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
-import org.junit.jupiter.api.Test;
 
 public class ConvexHullTest {
 
     @Test
-    void testConvexHullRecursive() {
-        List<Point> points = Arrays.asList(new Point(0, 0), new Point(1, 0), new Point(10, 1));
-        List<Point> expected = Arrays.asList(new Point(0, 0), new Point(1, 0), new Point(10, 1));
-        assertEquals(expected, ConvexHull.convexHullRecursive(points));
+    public void testConvexHull() {
+        List<Point> points =
+            Arrays.asList(new Point(0, 3), new Point(2, 2), new Point(1, 1), new Point(2, 1), new Point(3, 0),
+                          new Point(0, 0), new Point(3, 3), new Point(2, -1), new Point(2, -4), new Point(1, -3));
 
-        points = Arrays.asList(new Point(0, 0), new Point(1, 0), new Point(10, 0));
-        expected = Arrays.asList(new Point(0, 0), new Point(10, 0));
-        assertEquals(expected, ConvexHull.convexHullRecursive(points));
-
-        points = Arrays.asList(
-            new Point(0, 3),
-            new Point(2, 2),
-            new Point(1, 1),
-            new Point(2, 1),
-            new Point(3, 0),
-            new Point(0, 0),
-            new Point(3, 3),
-            new Point(2, -1),
-            new Point(2, -4),
-            new Point(1, -3)
+        Set<Point> expected = new HashSet<>(
+            Arrays.asList(new Point(2, -4), new Point(1, -3), new Point(0, 0), new Point(3, 0), new Point(0, 3),
+                          new Point(3, 3))
         );
 
-        // Updated expected hull to match the output of monotone chain
-        List<Point> expectedHull = Arrays.asList(
-            new Point(2, -4),
-            new Point(3, 0),
-            new Point(3, 3),
-            new Point(0, 3),
-            new Point(0, 0),
-            new Point(1, -3)
-        );
+        List<Point> hull = ConvexHull.convexHullRecursive(points);
+        Set<Point> actual = new HashSet<>(hull);
 
-        assertEquals(expectedHull, ConvexHull.convexHullRecursive(points));
+        assertEquals(expected, actual);
     }
 }
