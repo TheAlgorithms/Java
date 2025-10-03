@@ -1,44 +1,25 @@
-/*Contributor: Nayan Saraff
+/* Contributor: Nayan Saraff
+ *
+ * This Monotonic Increasing Stack is a popular algorithm which helps
+ * in solving various problems including Stock Span, Trapping Rain Water
+ */
 
-This Monotonic Increasing Stack is a popular algorithm which helps
-in solving various problems including the Stock Span, Trapping Rain water*/
+import java.util.Arrays;
+import java.util.Stack;
 
+public class MonotonicIncreasingStack 
+{
 
-import java.util.*;
-
-public class MonotonicIncreasingStack {
-
-    // Returns Next Greater Element for each element in the array
-    public static int[] nextGreaterElement(int[] arr) {
+    public static int[] nextGreaterElement(int[] arr) 
+    {
         int n = arr.length;
         int[] result = new int[n];
-        Stack<Integer> stack = new Stack<>(); // stores indices
+        Stack<Integer> stack = new Stack<>();
 
-        for (int i = n - 1; i >= 0; i--) {
-            // Pop elements smaller or equal to arr[i]
-            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) {
-                stack.pop();
-            }
-
-            // If stack is empty, no greater element to the right
-            result[i] = stack.isEmpty() ? -1 : arr[stack.peek()];
-
-            // Push current index onto stack
-            stack.push(i);
-        }
-
-        return result;
-    }
-
-    // Returns Next Smaller Element for each element in the array
-    public static int[] nextSmallerElement(int[] arr) {
-        int n = arr.length;
-        int[] result = new int[n];
-        Stack<Integer> stack = new Stack<>(); // stores indices
-
-        for (int i = n - 1; i >= 0; i--) {
-            // Pop elements greater or equal to arr[i]
-            while (!stack.isEmpty() && arr[i] <= arr[stack.peek()]) {
+        for (int i = n - 1; i >= 0; i--) 
+        {
+            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) 
+            {
                 stack.pop();
             }
 
@@ -49,7 +30,28 @@ public class MonotonicIncreasingStack {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static int[] nextSmallerElement(int[] arr) 
+    {
+        int n = arr.length;
+        int[] result = new int[n];
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = n - 1; i >= 0; i--) 
+        {
+            while (!stack.isEmpty() && arr[i] <= arr[stack.peek()]) 
+            {
+                stack.pop();
+            }
+
+            result[i] = stack.isEmpty() ? -1 : arr[stack.peek()];
+            stack.push(i);
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) 
+    {
         int[] arr = {4, 5, 2, 10, 8};
 
         int[] nextGreater = nextGreaterElement(arr);
@@ -60,4 +62,4 @@ public class MonotonicIncreasingStack {
     }
 }
 
-/* https://www.geeksforgeeks.org/dsa/introduction-to-monotonic-stack-2/ */
+/* Reference: https://www.geeksforgeeks.org/dsa/introduction-to-monotonic-stack-2/ */
