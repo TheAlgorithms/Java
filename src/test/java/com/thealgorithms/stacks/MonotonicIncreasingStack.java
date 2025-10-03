@@ -1,3 +1,9 @@
+/*Contributor: Nayan Saraff
+
+This Monotonic Increasing Stack is a popular algorithm which helps
+in solving various problems including the Stock Span, Trapping Rain water*/
+
+
 import java.util.*;
 
 public class MonotonicStack {
