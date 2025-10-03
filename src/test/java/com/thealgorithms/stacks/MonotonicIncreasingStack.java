@@ -7,7 +7,7 @@
 import java.util.Arrays;
 import java.util.Stack;
 
-public class MonotonicIncreasingStack {
+public class final MonotonicIncreasingStack {
 
     private MonotonicIncreasingStack() {
         throw new AssertionError("Cannot instantiate utility class");
