@@ -16,11 +16,6 @@ import java.util.PriorityQueue;
  */
 public final class PrimAlgorithm {
 
-    public PrimAlgorithm(List<List<Edge>> adjacencyList, int vertexCount) {
-        this.adjacencyList = adjacencyList;
-        this.vertexCount = vertexCount;
-    }
-
     /**
      * Represents a weighted edge in the graph structure.
      * This inner class encapsulates edge information including destination
@@ -156,8 +151,7 @@ public final class PrimAlgorithm {
     private void validateVertex(final int vertex) {
         if (vertex < 0 || vertex >= vertexCount) {
             throw new IllegalArgumentException(
-                    "Vertex " + vertex + " is out of bounds [0, " + (vertexCount - 1) + "]"
-            );
+                    "Vertex " + vertex + " is out of bounds [0, " + (vertexCount - 1) + "]");
         }
     }
 
@@ -204,7 +198,7 @@ public final class PrimAlgorithm {
 
             // Find the source vertex for this edge
             int sourceVertex = findSourceVertex(currentVertex, visitedVertices);
-            mstEdges.add(new int[]{sourceVertex, currentVertex, currentEdge.getWeight()});
+            mstEdges.add(new int[] {sourceVertex, currentVertex, currentEdge.getWeight()});
 
             // Add all edges from newly visited vertex
             for (final Edge neighborEdge : adjacencyList.get(currentVertex)) {
