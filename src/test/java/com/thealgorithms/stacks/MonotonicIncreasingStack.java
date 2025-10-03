@@ -42,16 +42,6 @@ public final class MonotonicIncreasingStack {
         }
         return result;
     }
-
-    public static void main(String[] args) {
-        int[] arr = {4, 5, 2, 10, 8};
-
-        int[] nextGreater = nextGreaterElement(arr);
-        int[] nextSmaller = nextSmallerElement(arr);
-
-        System.out.println("Next Greater Element: " + Arrays.toString(nextGreater));
-        System.out.println("Next Smaller Element: " + Arrays.toString(nextSmaller));
-    }
 }
 
 /* Reference: https://www.geeksforgeeks.org/dsa/introduction-to-monotonic-stack-2/ */
