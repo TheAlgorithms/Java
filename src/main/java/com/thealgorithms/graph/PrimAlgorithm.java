@@ -1,6 +1,7 @@
 package com.thealgorithms.graph;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -26,26 +27,22 @@ public final class PrimAlgorithm {
      * Computes the total weight of the Minimum Spanning Tree (MST)
      * for a given undirected, weighted graph.
      *
-     * <p>The algorithm uses a PriorityQueue (min-heap) to always pick
-     * the edge with the smallest weight that connects a new vertex to
-     * the growing MST. It ensures that no cycles are formed.</p>
-     *
-     * @param V   number of vertices in the graph
-     * @param adj adjacency list representation of the graph
-     *            for each node, the adjacency list contains a list of
-     *            {adjacentNode, edgeWeight}
+     * @param vertices number of vertices in the graph
+     * @param adj      adjacency list representation of the graph
+     *                 for each node, the adjacency list contains a list of
+     *                 {adjacentNode, edgeWeight}
      * @return the sum of the edge weights in the MST
      *
      * <p>Time Complexity: O(E log V), where E is the number of edges
      * and V is the number of vertices.</p>
      * <p>Space Complexity: O(V + E) due to adjacency list and visited array.</p>
      */
-    public static int spanningTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) {
+    public static int spanningTree(int vertices, ArrayList<ArrayList<ArrayList<Integer>>> adj) {
         // Min-heap to pick edge with the smallest weight
-        PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
+        PriorityQueue<Pair> pq = new PriorityQueue<>(Comparator.comparingInt(Pair::weight));
 
         // Array to keep track of visited vertices
-        boolean[] visited = new boolean[V];
+        boolean[] visited = new boolean[vertices];
 
         // Start with node 0 (arbitrary choice), with edge weight = 0
         pq.add(new Pair(0, 0));
