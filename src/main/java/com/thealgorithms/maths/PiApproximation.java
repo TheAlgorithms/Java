@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author [Yash Rajput](https://github.com/the-yash-rajput)
  */
-public class PiApproximation {
+public final class PiApproximation {
 
     private PiApproximation() {
         throw new AssertionError("No instances.");
