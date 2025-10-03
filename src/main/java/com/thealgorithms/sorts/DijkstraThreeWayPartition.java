@@ -1,3 +1,5 @@
+//https://en.wikipedia.org/wiki/Dutch_national_flag_problem
+
 package com.thealgorithms.sorts;
 public class DijkstraThreeWayPartition {
 
