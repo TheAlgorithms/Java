@@ -19,7 +19,8 @@ public final class PrimAlgorithm {
      * @param node   the target node connected by the edge
      * @param weight the weight of the edge
      */
-    private record Pair(int node, int weight) {}
+    private record Pair(int node, int weight) {
+    }
 
     /**
      * Computes the total weight of the Minimum Spanning Tree (MST)
@@ -71,7 +72,6 @@ public final class PrimAlgorithm {
                 int adjNode = edge.get(0);
                 int edgeWeight = edge.get(1);
 
-                // Only consider unvisited nodes
                 if (!visited[adjNode]) {
                     pq.add(new Pair(adjNode, edgeWeight));
                 }
