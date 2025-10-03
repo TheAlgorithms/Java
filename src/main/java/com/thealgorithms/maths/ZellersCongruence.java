@@ -2,6 +2,7 @@ package com.thealgorithms.maths;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A utility class for calculating the day of the week for a given date using Zeller's Congruence.
@@ -49,7 +50,7 @@ public final class ZellersCongruence {
         int year = parsePart(input.substring(6, 10), 46, 8499, "Year must be between 46 and 8499.");
 
         try {
-            LocalDate.of(year, month, day);
+            Objects.requireNonNull(LocalDate.of(year, month, day));
         } catch (DateTimeException e) {
             throw new IllegalArgumentException("Invalid date.", e);
         }
