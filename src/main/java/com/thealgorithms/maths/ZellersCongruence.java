@@ -51,7 +51,7 @@ public final class ZellersCongruence {
         try {
             LocalDate.of(year, month, day);
         } catch (DateTimeException e) {
-            throw new IllegalArgumentException("Invalid date.");
+            throw new IllegalArgumentException("Invalid date.", e);
         }
         if (month <= 2) {
             year -= 1;
@@ -63,7 +63,7 @@ public final class ZellersCongruence {
         int t = (int) (2.6 * month - 5.39);
         int u = century / 4;
         int v = yearOfCentury / 4;
-        int f = Math.round((day + yearOfCentury + t + u + v - 2 * century) % 7);
+        int f = (int) Math.round((day + yearOfCentury + t + u + v - 2 * century) % 7.0);
 
         int correctedDay = (f + 7) % 7;
 
@@ -88,7 +88,7 @@ public final class ZellersCongruence {
             }
             return value;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid numeric part: " + part);
+            throw new IllegalArgumentException("Invalid numeric part: " + part, e);
         }
     }
 
