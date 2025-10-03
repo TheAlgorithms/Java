@@ -24,22 +24,22 @@ public final class CountBitsFlip {
     }
 
     /**
-     * Counts the number of bits that need to be flipped to convert A to B
+     * Counts the number of bits that need to be flipped to convert a to b
      *
      * Algorithm:
-     * 1. XOR A and B to get positions where bits differ
+     * 1. XOR a and b to get positions where bits differ
      * 2. Count the number of set bits in the XOR result
      * 3. Use Brian Kernighan's algorithm: n & (n-1) removes rightmost set bit
      *
-     * @param A the source number
-     * @param B the target number
+     * @param a the source number
+     * @param b the target number
      * @return the number of bits to flip to convert A to B
      */
-    public static long countBitsFlip(long A, long B) {
+    public static long countBitsFlip(long a, long b) {
         int count = 0;
 
         // XOR gives us positions where bits differ
-        long xorResult = A ^ B;
+        long xorResult = a ^ b;
 
         // Count set bits using Brian Kernighan's algorithm
         while (xorResult != 0) {
@@ -51,13 +51,13 @@ public final class CountBitsFlip {
     }
 
     /**
-     * Alternative implementation using Long.bitCount()
+     * Alternative implementation using Long.bitCount().
      *
-     * @param A the source number
-     * @param B the target number
-     * @return the number of bits to flip to convert A to B
+     * @param a the source number
+     * @param b the target number
+     * @return the number of bits to flip to convert a to b
      */
-    public static long countBitsFlipAlternative(long A, long B) {
-        return Long.bitCount(A ^ B);
+    public static long countBitsFlipAlternative(long a, long b) {
+        return Long.bitCount(a ^ b);
     }
 }
