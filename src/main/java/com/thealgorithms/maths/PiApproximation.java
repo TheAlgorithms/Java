@@ -38,7 +38,7 @@ public class PiApproximation {
      * @return An estimate of the number π
      */
     public static double approximatePi(List<Point> pts) {
-        double count = 0;  // Points in circle
+        double count = 0; // Points in circle
 
         for (Point p : pts) {
             if ((p.x * p.x) + (p.y * p.y) <= 1) {
@@ -60,8 +60,8 @@ public class PiApproximation {
         Random rand = new Random();
 
         for (int i = 0; i < numPoints; i++) {
-            double x = rand.nextDouble();  // Random value between 0 and 1
-            double y = rand.nextDouble();  // Random value between 0 and 1
+            double x = rand.nextDouble(); // Random value between 0 and 1
+            double y = rand.nextDouble(); // Random value between 0 and 1
             points.add(new Point(x, y));
         }
 

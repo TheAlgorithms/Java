@@ -1,18 +1,16 @@
 package com.thealgorithms.maths;
 
-
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
 class PiApproximationTest {
 
-    private static final double DELTA = 0.5;  // Tolerance for Pi approximation
-    private static final double TIGHT_DELTA = 0.1;  // Tighter tolerance for large samples
+    private static final double DELTA = 0.5; // Tolerance for Pi approximation
+    private static final double TIGHT_DELTA = 0.1; // Tighter tolerance for large samples
 
     /**
      * Test with known points that are all inside the quarter circle.
@@ -20,9 +18,9 @@ class PiApproximationTest {
     @Test
     public void testAllPointsInside() {
         List<PiApproximation.Point> points = new ArrayList<>();
-        points.add(new PiApproximation.Point(0.0, 0.0));  // Origin
-        points.add(new PiApproximation.Point(0.5, 0.5));  // Inside
-        points.add(new PiApproximation.Point(0.3, 0.3));  // Inside
+        points.add(new PiApproximation.Point(0.0, 0.0)); // Origin
+        points.add(new PiApproximation.Point(0.5, 0.5)); // Inside
+        points.add(new PiApproximation.Point(0.3, 0.3)); // Inside
 
         double result = PiApproximation.approximatePi(points);
         // All points inside, so result should be 4.0
@@ -35,8 +33,8 @@ class PiApproximationTest {
     @Test
     public void testAllPointsOutside() {
         List<PiApproximation.Point> points = new ArrayList<>();
-        points.add(new PiApproximation.Point(1.0, 1.0));  // Corner - outside
-        points.add(new PiApproximation.Point(0.9, 0.9));  // Outside
+        points.add(new PiApproximation.Point(1.0, 1.0)); // Corner - outside
+        points.add(new PiApproximation.Point(0.9, 0.9)); // Outside
 
         double result = PiApproximation.approximatePi(points);
         // No points inside, so result should be 0.0
@@ -67,8 +65,8 @@ class PiApproximationTest {
     @Test
     public void testBoundaryPoint() {
         List<PiApproximation.Point> points = new ArrayList<>();
-        points.add(new PiApproximation.Point(1.0, 0.0));  // On circle: x² + y² = 1
-        points.add(new PiApproximation.Point(0.0, 1.0));  // On circle
+        points.add(new PiApproximation.Point(1.0, 0.0)); // On circle: x² + y² = 1
+        points.add(new PiApproximation.Point(0.0, 1.0)); // On circle
 
         double result = PiApproximation.approximatePi(points);
         // Boundary points should be counted as inside (≤ 1)
@@ -118,8 +116,7 @@ class PiApproximationTest {
         List<PiApproximation.Point> points = PiApproximation.generateRandomPoints(1000);
         double result = PiApproximation.approximatePi(points);
 
-        assertTrue(result >= 0 && result <= 4,
-                "Pi approximation should be between 0 and 4");
+        assertTrue(result >= 0 && result <= 4, "Pi approximation should be between 0 and 4");
     }
 
     /**
@@ -154,10 +151,8 @@ class PiApproximationTest {
         List<PiApproximation.Point> points = PiApproximation.generateRandomPoints(100);
 
         for (PiApproximation.Point p : points) {
-            assertTrue(p.x >= 0 && p.x <= 1,
-                    "X coordinate should be between 0 and 1");
-            assertTrue(p.y >= 0 && p.y <= 1,
-                    "Y coordinate should be between 0 and 1");
+            assertTrue(p.x >= 0 && p.x <= 1, "X coordinate should be between 0 and 1");
+            assertTrue(p.y >= 0 && p.y <= 1, "Y coordinate should be between 0 and 1");
         }
     }
 
@@ -167,8 +162,7 @@ class PiApproximationTest {
     @Test
     public void testCorrectNumberOfPointsGenerated() {
         int expectedSize = 500;
-        List<PiApproximation.Point> points =
-                PiApproximation.generateRandomPoints(expectedSize);
+        List<PiApproximation.Point> points = PiApproximation.generateRandomPoints(expectedSize);
 
         assertEquals(expectedSize, points.size());
     }
