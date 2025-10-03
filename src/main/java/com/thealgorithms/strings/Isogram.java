@@ -43,25 +43,28 @@ public final class Isogram {
      * @throws IllegalArgumentException if the string contains non-alphabetic
      *                                  characters
      */
-    public static boolean isIsogramByArray(String str) {
+    public static boolean isAlphabeticIsogram(String str) {
         if (str == null || str.isEmpty()) {
             return true;
         }
 
-        String lowerStr = str.toLowerCase();
-        boolean[] seenChars = new boolean[26];
+        str = str.toLowerCase();
 
-        for (int i = 0; i < lowerStr.length(); i++) {
-            char ch = lowerStr.charAt(i);
-
-            // Check if character is a letter
-            if (ch >= 'a' && ch <= 'z') {
-                int index = ch - 'a';
-                if (seenChars[index]) {
-                    return false; // Letter already seen
-                }
-                seenChars[index] = true;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch < 'a' || ch > 'z') {
+                throw new IllegalArgumentException("Input contains non-alphabetic character: '" + ch + "'");
             }
+        }
+
+        boolean[] seenChars = new boolean[26];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            int index = ch - 'a';
+            if (seenChars[index]) {
+                return false;
+            }
+            seenChars[index] = true;
         }
         return true;
     }
@@ -74,7 +77,7 @@ public final class Isogram {
      * @param str the input string
      * @return true if the string is an isogram, false otherwise
      */
-    public static boolean isIsogramByLength(String str) {
+    public static boolean isFullIsogram(String str) {
         if (str == null || str.isEmpty()) {
             return true;
         }
