@@ -16,6 +16,10 @@ import java.util.Random;
  */
 public class PiApproximation {
 
+    private PiApproximation() {
+        throw new AssertionError("No instances.");
+    }
+
     /**
      * Structure representing a point with coordinates (x, y)
      * where 0 ≤ x ≤ 1 and 0 ≤ y ≤ 1.
