@@ -7,51 +7,43 @@
 import java.util.Arrays;
 import java.util.Stack;
 
-public class MonotonicIncreasingStack 
-{
+public class MonotonicIncreasingStack {
 
-    public static int[] nextGreaterElement(int[] arr) 
-    {
+    private MonotonicIncreasingStack() {
+        throw new AssertionError("Cannot instantiate utility class");
+    }
+
+    public static int[] nextGreaterElement(int[] arr) {
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
 
-        for (int i = n - 1; i >= 0; i--) 
-        {
-            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) 
-            {
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && arr[i] >= arr[stack.peek()]) {
                 stack.pop();
             }
-
             result[i] = stack.isEmpty() ? -1 : arr[stack.peek()];
             stack.push(i);
         }
-
         return result;
     }
 
-    public static int[] nextSmallerElement(int[] arr) 
-    {
+    public static int[] nextSmallerElement(int[] arr) {
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
 
-        for (int i = n - 1; i >= 0; i--) 
-        {
-            while (!stack.isEmpty() && arr[i] <= arr[stack.peek()]) 
-            {
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && arr[i] <= arr[stack.peek()]) {
                 stack.pop();
             }
-
             result[i] = stack.isEmpty() ? -1 : arr[stack.peek()];
             stack.push(i);
         }
-
         return result;
     }
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         int[] arr = {4, 5, 2, 10, 8};
 
         int[] nextGreater = nextGreaterElement(arr);
