@@ -4,7 +4,6 @@
  * in solving various problems including Stock Span, Trapping Rain Water
  */
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public final class MonotonicIncreasingStack {
