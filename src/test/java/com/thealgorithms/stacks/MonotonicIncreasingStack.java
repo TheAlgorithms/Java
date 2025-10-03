@@ -59,3 +59,5 @@ public class MonotonicStack {
         System.out.println("Next Smaller Element: " + Arrays.toString(nextSmaller));
     }
 }
+
+/* https://www.geeksforgeeks.org/dsa/introduction-to-monotonic-stack-2/ */
