@@ -22,6 +22,10 @@ import java.util.TreeSet;
  * @author Hardvan
  */
 public final class ConvexHull {
+    private ConvexHull() {
+        throw new AssertionError("Cannot instantiate utility class");
+    }
+
     private static boolean checkPointOrientation(Point i, Point j, Point k) {
         int detK = Point.orientation(i, j, k);
         if (detK > 0) {
