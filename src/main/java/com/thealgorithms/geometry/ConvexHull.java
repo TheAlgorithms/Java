@@ -85,6 +85,7 @@ public final class ConvexHull {
         }
         
         // Implementation of Graham's scan algorithm to ensure CCW order
+        // See: https://en.wikipedia.org/wiki/Graham_scan
         // Find the bottom-most, left-most point
         Point start = Collections.min(points);
         // Sort points by polar angle with respect to start
