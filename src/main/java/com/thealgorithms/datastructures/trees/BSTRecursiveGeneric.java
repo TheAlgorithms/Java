@@ -32,21 +32,21 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     /**
      * Displays the tree is a structed format
      */
-    public void prettyDisplay(){
+    public void prettyDisplay() {
         prettyDisplay(root, 0);
     }
 
-    private void prettyDisplay(Node<T> node, int level){
+    private void prettyDisplay(Node<T> node, int level) {
         if(node == null){
             return;
         }
         prettyDisplay(node.right, level + 1);
-        if(level != 0){
+        if(level != 0) {
             for(int i = 0; i < level - 1; i++){
                 System.out.print("|\t");
             }
             System.out.println("|---->" + node.data);
-        } else{
+        } else {
             System.out.println(node.data);
         }
         prettyDisplay(node.left, level + 1);
