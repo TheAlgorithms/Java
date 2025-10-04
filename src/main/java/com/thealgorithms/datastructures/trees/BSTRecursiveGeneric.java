@@ -37,12 +37,12 @@ public class BSTRecursiveGeneric<T extends Comparable<T>> {
     }
 
     private void prettyDisplay(Node<T> node, int level) {
-        if(node == null){
+        if(node == null) {
             return;
         }
         prettyDisplay(node.right, level + 1);
         if(level != 0) {
-            for(int i = 0; i < level - 1; i++){
+            for(int i = 0; i < level - 1; i++) {
                 System.out.print("|\t");
             }
             System.out.println("|---->" + node.data);
