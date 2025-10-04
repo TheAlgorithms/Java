@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * Unit tests for BSTRecursiveGeneric class.
  * Covers insertion, deletion, search, traversal, sorting, and display.
