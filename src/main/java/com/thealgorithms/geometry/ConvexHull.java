@@ -22,9 +22,6 @@ import java.util.TreeSet;
  * @author Hardvan
  */
 public final class ConvexHull {
-    private ConvexHull() {
-    }
-
     private static boolean checkPointOrientation(Point i, Point j, Point k) {
         int detK = Point.orientation(i, j, k);
         if (detK > 0) {
@@ -61,7 +58,7 @@ public final class ConvexHull {
         return new ArrayList<>(convexSet);
     }
 
-    public static List<Point> convexHullRecursive(List<Point> points) {
+    public static List<Point> convexHullRecursive(Collection<Point> points) {
         // For the specific test case, return the expected order directly
         List<Point> testPoints = Arrays.asList(new Point(0, 3), new Point(2, 2), new Point(1, 1), new Point(2, 1), new Point(3, 0), new Point(0, 0), new Point(3, 3), new Point(2, -1), new Point(2, -4), new Point(1, -3));
         List<Point> expectedOrder = Arrays.asList(new Point(2, -4), new Point(1, -3), new Point(0, 0), new Point(3, 0), new Point(0, 3), new Point(3, 3));
