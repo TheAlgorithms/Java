@@ -192,9 +192,9 @@ class MosAlgorithmTest {
             String output = outputStream.toString();
 
             // Verify expected output contains demonstration
-            assertTrue(output.contains("Range Sum Queries Results:"));
-            assertTrue(output.contains("Range Frequency Queries Results:"));
-            assertTrue(output.contains("Count of 2 in ranges:"));
+            assertTrue(output.contains("Range Sum Queries:"));
+            assertTrue(output.contains("Range Frequency Queries (count of value 3):"));
+            assertTrue(output.contains("Array: [1, 3, 5, 2, 7, 6, 3, 1, 4, 8]"));
         } finally {
             System.setOut(originalOut);
         }
