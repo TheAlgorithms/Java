@@ -34,12 +34,26 @@ public class SkylineProblem {
     /**
      * Array of buildings to process. Must be initialized before use.
      */
-    public Building[] building;
+    private Building[] building;
 
     /**
      * Number of buildings added so far.
      */
     public int count;
+
+    /**
+     * Sets the building array to the specified size.
+     *
+     * @param size The size of the building array.
+     * @throws IllegalArgumentException if size is negative
+     */
+    public void setBuilding(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Size must be non-negative");
+        }
+        this.building = new Building[size];
+        this.count = 0;
+    }
 
     /**
      * Adds a building with the given left, height, and right values to the

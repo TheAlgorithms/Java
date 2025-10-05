@@ -13,7 +13,7 @@ class SkylineProblemTest {
     @Test
     void testSingleBuildingSkyline() {
         SkylineProblem skylineProblem = new SkylineProblem();
-        skylineProblem.building = new SkylineProblem.Building[1];
+        skylineProblem.setBuilding(1);
         skylineProblem.add(2, 10, 9);
 
         List<SkylineProblem.Skyline> result = skylineProblem.findSkyline(0, 0);
@@ -24,7 +24,7 @@ class SkylineProblemTest {
     @Test
     void testTwoBuildingsSkyline() {
         SkylineProblem skylineProblem = new SkylineProblem();
-        skylineProblem.building = new SkylineProblem.Building[2];
+        skylineProblem.setBuilding(2);
         skylineProblem.add(1, 11, 5);
         skylineProblem.add(2, 6, 7);
 
@@ -48,7 +48,7 @@ class SkylineProblemTest {
     @Test
     void testMultipleBuildingsSkyline() {
         SkylineProblem skylineProblem = new SkylineProblem();
-        skylineProblem.building = new SkylineProblem.Building[3];
+        skylineProblem.setBuilding(3);
         skylineProblem.add(1, 10, 5);
         skylineProblem.add(2, 15, 7);
         skylineProblem.add(3, 12, 9);
@@ -65,7 +65,7 @@ class SkylineProblemTest {
         Exception ex = assertThrows(IllegalStateException.class, () -> skylineProblem.add(1, 2, 3));
         assertTrue(ex.getMessage().contains("not initialized"));
 
-        skylineProblem.building = new SkylineProblem.Building[1];
+        skylineProblem.setBuilding(1);
         skylineProblem.add(1, 2, 3);
         // Array full
         Exception ex2 = assertThrows(IllegalStateException.class, () -> skylineProblem.add(4, 5, 6));
@@ -73,7 +73,7 @@ class SkylineProblemTest {
 
         // Invalid left >= right
         SkylineProblem skylineProblem2 = new SkylineProblem();
-        skylineProblem2.building = new SkylineProblem.Building[1];
+        skylineProblem2.setBuilding(1);
         Exception ex3 = assertThrows(IllegalArgumentException.class, () -> skylineProblem2.add(5, 2, 2));
         assertTrue(ex3.getMessage().contains("Left coordinate"));
 
@@ -89,7 +89,7 @@ class SkylineProblemTest {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> skylineProblem.findSkyline(0, 0));
         assertTrue(ex.getMessage().contains("not initialized"));
 
-        skylineProblem.building = new SkylineProblem.Building[2];
+        skylineProblem.setBuilding(2);
         skylineProblem.count = 1;
         Exception ex2 = assertThrows(IllegalArgumentException.class, () -> skylineProblem.findSkyline(0, 1));
         assertTrue(ex2.getMessage().contains("Invalid start or end index"));
@@ -98,18 +98,8 @@ class SkylineProblemTest {
     @Test
     void testMergeSkylineNullCases() {
         SkylineProblem skylineProblem = new SkylineProblem();
-        Exception ex1 = assertThrows(NullPointerException.class, new org.junit.jupiter.api.function.Executable() {
-            @Override
-            public void execute() {
-                skylineProblem.mergeSkyline(null, List.of());
-            }
-        });
-        Exception ex2 = assertThrows(NullPointerException.class, new org.junit.jupiter.api.function.Executable() {
-            @Override
-            public void execute() {
-                skylineProblem.mergeSkyline(List.of(), null);
-            }
-        });
+        Exception ex1 = assertThrows(NullPointerException.class, () -> skylineProblem.mergeSkyline(null, List.of()));
+        Exception ex2 = assertThrows(NullPointerException.class, () -> skylineProblem.mergeSkyline(List.of(), null));
         assertTrue(ex1.getMessage().contains("sky1"));
         assertTrue(ex2.getMessage().contains("sky2"));
     }
