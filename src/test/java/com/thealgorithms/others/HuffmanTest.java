@@ -13,8 +13,8 @@ class HuffmanTest {
 
     @Test
     void testBuildHuffmanTreeWithBasicInput() {
-        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
-        int[] charFreq = { 5, 9, 12, 13, 16, 45 };
+        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f'};
+        int[] charFreq = {5, 9, 12, 13, 16, 45};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
 
@@ -24,8 +24,8 @@ class HuffmanTest {
 
     @Test
     void testGenerateCodesWithBasicInput() {
-        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
-        int[] charFreq = { 5, 9, 12, 13, 16, 45 };
+        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f'};
+        int[] charFreq = {5, 9, 12, 13, 16, 45};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -47,8 +47,8 @@ class HuffmanTest {
 
     @Test
     void testSingleCharacter() {
-        char[] charArray = { 'a' };
-        int[] charFreq = { 10 };
+        char[] charArray = {'a'};
+        int[] charFreq = {10};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -60,8 +60,8 @@ class HuffmanTest {
 
     @Test
     void testTwoCharacters() {
-        char[] charArray = { 'a', 'b' };
-        int[] charFreq = { 3, 7 };
+        char[] charArray = {'a', 'b'};
+        int[] charFreq = {3, 7};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -79,8 +79,8 @@ class HuffmanTest {
 
     @Test
     void testEqualFrequencies() {
-        char[] charArray = { 'a', 'b', 'c' };
-        int[] charFreq = { 5, 5, 5 };
+        char[] charArray = {'a', 'b', 'c'};
+        int[] charFreq = {5, 5, 5};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -96,8 +96,8 @@ class HuffmanTest {
 
     @Test
     void testLargeFrequencyDifference() {
-        char[] charArray = { 'a', 'b', 'c' };
-        int[] charFreq = { 1, 10, 100 };
+        char[] charArray = {'a', 'b', 'c'};
+        int[] charFreq = {1, 10, 100};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -112,20 +112,16 @@ class HuffmanTest {
 
     @Test
     void testNullCharacterArray() {
-        int[] charFreq = { 5, 9, 12 };
+        int[] charFreq = {5, 9, 12};
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Huffman.buildHuffmanTree(null, charFreq);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(null, charFreq); });
     }
 
     @Test
     void testNullFrequencyArray() {
-        char[] charArray = { 'a', 'b', 'c' };
+        char[] charArray = {'a', 'b', 'c'};
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Huffman.buildHuffmanTree(charArray, null);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, null); });
     }
 
     @Test
@@ -133,35 +129,29 @@ class HuffmanTest {
         char[] charArray = {};
         int[] charFreq = {};
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Huffman.buildHuffmanTree(charArray, charFreq);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
     }
 
     @Test
     void testMismatchedArrayLengths() {
-        char[] charArray = { 'a', 'b', 'c' };
-        int[] charFreq = { 5, 9 };
+        char[] charArray = {'a', 'b', 'c'};
+        int[] charFreq = {5, 9};
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Huffman.buildHuffmanTree(charArray, charFreq);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
     }
 
     @Test
     void testNegativeFrequency() {
-        char[] charArray = { 'a', 'b', 'c' };
-        int[] charFreq = { 5, -9, 12 };
+        char[] charArray = {'a', 'b', 'c'};
+        int[] charFreq = {5, -9, 12};
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Huffman.buildHuffmanTree(charArray, charFreq);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
     }
 
     @Test
     void testZeroFrequency() {
-        char[] charArray = { 'a', 'b', 'c' };
-        int[] charFreq = { 0, 5, 10 };
+        char[] charArray = {'a', 'b', 'c'};
+        int[] charFreq = {0, 5, 10};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -182,8 +172,8 @@ class HuffmanTest {
     @Test
     void testPrefixProperty() {
         // Verify that no code is a prefix of another (Huffman property)
-        char[] charArray = { 'a', 'b', 'c', 'd', 'e' };
-        int[] charFreq = { 5, 9, 12, 13, 16 };
+        char[] charArray = {'a', 'b', 'c', 'd', 'e'};
+        int[] charFreq = {5, 9, 12, 13, 16};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -194,8 +184,7 @@ class HuffmanTest {
                 if (!entry1.getKey().equals(entry2.getKey())) {
                     String code1 = entry1.getValue();
                     String code2 = entry2.getValue();
-                    Assertions.assertTrue(!code1.startsWith(code2) && !code2.startsWith(code1),
-                            "Code " + code1 + " is a prefix of " + code2);
+                    Assertions.assertTrue(!code1.startsWith(code2) && !code2.startsWith(code1), "Code " + code1 + " is a prefix of " + code2);
                 }
             }
         }
@@ -204,8 +193,8 @@ class HuffmanTest {
     @Test
     void testBinaryCodesOnly() {
         // Verify that all codes contain only '0' and '1'
-        char[] charArray = { 'a', 'b', 'c', 'd' };
-        int[] charFreq = { 1, 2, 3, 4 };
+        char[] charArray = {'a', 'b', 'c', 'd'};
+        int[] charFreq = {1, 2, 3, 4};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -217,8 +206,8 @@ class HuffmanTest {
 
     @Test
     void testMultipleCharactersWithLargeAlphabet() {
-        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
-        int[] charFreq = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+        int[] charFreq = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
