@@ -45,7 +45,7 @@ public class MiddleOfLinkedListTest {
         int[] values = {};
         MiddleOfLinkedList.ListNode head = MiddleOfLinkedList.createList(values);
 
-        ListNode middle = sol.middleNode(head);
+        MiddleOfLinkedList.ListNode middle = sol.middleNode(head);
 
         assertNull(middle);
     }
