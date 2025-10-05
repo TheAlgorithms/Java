@@ -110,8 +110,10 @@ public class SkylineProblem {
     public List<Skyline> mergeSkyline(List<Skyline> sky1, List<Skyline> sky2) {
         Objects.requireNonNull(sky1, "sky1 must not be null");
         Objects.requireNonNull(sky2, "sky2 must not be null");
-        int i = 0, j = 0;
-        int h1 = 0, h2 = 0;
+        int i = 0;
+        int j = 0;
+        int h1 = 0;
+        int h2 = 0;
         int prevHeight = 0;
         List<Skyline> result = new ArrayList<>();
         while (i < sky1.size() && j < sky2.size()) {
@@ -177,8 +179,12 @@ public class SkylineProblem {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Skyline skyline = (Skyline) o;
             return coordinates == skyline.coordinates && height == skyline.height;
         }

@@ -1,11 +1,14 @@
 package com.thealgorithms.others;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.*;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class SkylineProblemTest {
+class SkylineProblemTest {
 
     @Test
     void testSingleBuildingSkyline() {
@@ -95,8 +98,18 @@ public class SkylineProblemTest {
     @Test
     void testMergeSkylineNullCases() {
         SkylineProblem skylineProblem = new SkylineProblem();
-        Exception ex1 = assertThrows(NullPointerException.class, () -> skylineProblem.mergeSkyline(null, List.of()));
-        Exception ex2 = assertThrows(NullPointerException.class, () -> skylineProblem.mergeSkyline(List.of(), null));
+        Exception ex1 = assertThrows(NullPointerException.class, new org.junit.jupiter.api.function.Executable() {
+            @Override
+            public void execute() {
+                skylineProblem.mergeSkyline(null, List.of());
+            }
+        });
+        Exception ex2 = assertThrows(NullPointerException.class, new org.junit.jupiter.api.function.Executable() {
+            @Override
+            public void execute() {
+                skylineProblem.mergeSkyline(List.of(), null);
+            }
+        });
         assertTrue(ex1.getMessage().contains("sky1"));
         assertTrue(ex2.getMessage().contains("sky2"));
     }
