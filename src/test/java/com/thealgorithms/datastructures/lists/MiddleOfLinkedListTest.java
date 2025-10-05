@@ -1,3 +1,5 @@
+package com.thealgorithms.datastructures.lists;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -6,23 +8,23 @@ public class MiddleOfLinkedListTest {
     @Test
     void testMiddleNodeOddLength() {
         MiddleOfLinkedList sol = new MiddleOfLinkedList();
-        int[] values = {1, 2, 3, 4, 5}; // Odd-length list
+        int[] values = {1, 2, 3, 4, 5};
         ListNode head = MiddleOfLinkedList.createList(values);
 
         ListNode middle = sol.middleNode(head);
 
-        assertEquals(3, middle.val); // Expect middle to be 3
+        assertEquals(3, middle.val);
     }
 
     @Test
     void testMiddleNodeEvenLength() {
         MiddleOfLinkedList sol = new MiddleOfLinkedList();
-        int[] values = {1, 2, 3, 4, 5, 6}; // Even-length list
+        int[] values = {1, 2, 3, 4, 5, 6};
         ListNode head = MiddleOfLinkedList.createList(values);
 
         ListNode middle = sol.middleNode(head);
 
-        assertEquals(4, middle.val); // Expect middle to be 4 (second middle)
+        assertEquals(4, middle.val);
     }
 
     @Test
@@ -33,7 +35,7 @@ public class MiddleOfLinkedListTest {
 
         ListNode middle = sol.middleNode(head);
 
-        assertEquals(1, middle.val); // Expect middle to be 1
+        assertEquals(1, middle.val);
     }
 
     @Test
@@ -44,6 +46,6 @@ public class MiddleOfLinkedListTest {
 
         ListNode middle = sol.middleNode(head);
 
-        assertNull(middle); // Expect null for empty list
+        assertNull(middle);
     }
 }
