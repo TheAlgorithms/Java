@@ -3,10 +3,12 @@ package com.thealgorithms.others;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +28,11 @@ class MiniMaxAlgorithmTest {
         System.setOut(new PrintStream(outputStream));
     }
 
+    @AfterEach
+    void tearDown() {
+        System.setOut(originalOut);
+    }
+
     @Test
     void testConstructorCreatesValidScores() {
         // The default constructor should create scores array of length 8 (2^3)
@@ -36,6 +43,34 @@ class MiniMaxAlgorithmTest {
         for (int score : miniMax.getScores()) {
             assertTrue(score >= 1 && score <= 99);
         }
+    }
+
+    @Test
+    void testConstructorWithValidScores() {
+        int[] validScores = {10, 20, 30, 40};
+        MiniMaxAlgorithm customMiniMax = new MiniMaxAlgorithm(validScores);
+
+        assertArrayEquals(validScores, customMiniMax.getScores());
+        assertEquals(2, customMiniMax.getHeight()); // log2(4) = 2
+    }
+
+    @Test
+    void testConstructorWithInvalidScoresThrowsException() {
+        int[] invalidScores = {10, 20, 30}; // Length 3 is not a power of 2
+        assertThrows(IllegalArgumentException.class, () -> new MiniMaxAlgorithm(invalidScores));
+    }
+
+    @Test
+    void testConstructorDoesNotModifyOriginalArray() {
+        int[] originalScores = {10, 20, 30, 40};
+        int[] copyOfOriginal = {10, 20, 30, 40};
+        MiniMaxAlgorithm customMiniMax = new MiniMaxAlgorithm(originalScores);
+
+        // Modify the original array
+        originalScores[0] = 999;
+
+        // Constructor should have made a copy, so internal state should be unchanged
+        assertArrayEquals(copyOfOriginal, customMiniMax.getScores());
     }
 
     @Test
@@ -50,11 +85,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testSetScoresWithInvalidLength() {
         int[] invalidScores = {10, 20, 30}; // Length 3 is not a power of 2
-        miniMax.setScores(invalidScores);
-
-        // Should print error message and not change the scores
-        String output = outputStream.toString();
-        assertTrue(output.contains("The number of scores must be a power of 2."));
+        assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(invalidScores));
 
         // Scores should remain unchanged (original length 8)
         assertEquals(8, miniMax.getScores().length);
@@ -63,11 +94,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testSetScoresWithZeroLength() {
         int[] emptyScores = {}; // Length 0 is not a power of 2
-        miniMax.setScores(emptyScores);
-
-        // Should print error message and not change the scores
-        String output = outputStream.toString();
-        assertTrue(output.contains("The number of scores must be a power of 2."));
+        assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(emptyScores));
 
         // Scores should remain unchanged (original length 8)
         assertEquals(8, miniMax.getScores().length);
@@ -75,7 +102,8 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testSetScoresWithVariousInvalidLengths() {
-        // Test multiple invalid lengths to ensure isPowerOfTwo function is fully covered
+        // Test multiple invalid lengths to ensure isPowerOfTwo function is fully
+        // covered
         int[][] invalidScoreArrays = {
             {1, 2, 3, 4, 5}, // Length 5
             {1, 2, 3, 4, 5, 6}, // Length 6
@@ -86,13 +114,7 @@ class MiniMaxAlgorithmTest {
         };
 
         for (int[] invalidScores : invalidScoreArrays) {
-            // Clear the output stream for each test
-            outputStream.reset();
-            miniMax.setScores(invalidScores);
-
-            // Should print error message for each invalid length
-            String output = outputStream.toString();
-            assertTrue(output.contains("The number of scores must be a power of 2."), "Failed for array length: " + invalidScores.length);
+            assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(invalidScores), "Failed for array length: " + invalidScores.length);
         }
 
         // Scores should remain unchanged (original length 8)
@@ -139,7 +161,7 @@ class MiniMaxAlgorithmTest {
         // Maximizer starts
         int result = miniMax.miniMax(0, true, 0, false);
         // Expected: max(min(max(5,6), max(7,4)), min(max(5,3), max(6,2)))
-        //         = max(min(6, 7), min(5, 6)) = max(6, 5) = 6
+        // = max(min(6, 7), min(5, 6)) = max(6, 5) = 6
         assertEquals(6, result);
     }
 
@@ -221,10 +243,6 @@ class MiniMaxAlgorithmTest {
         assertEquals(-5, result);
     }
 
-    void tearDown() {
-        System.setOut(originalOut);
-    }
-
     @Test
     void testSetScoresWithNegativeLength() {
         // This test ensures the first condition of isPowerOfTwo (n > 0) is tested
@@ -233,11 +251,8 @@ class MiniMaxAlgorithmTest {
 
         // Test with array length 0 (edge case for n > 0 condition)
         int[] emptyArray = new int[0];
-        outputStream.reset();
-        miniMax.setScores(emptyArray);
+        assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(emptyArray));
 
-        String output = outputStream.toString();
-        assertTrue(output.contains("The number of scores must be a power of 2."));
         assertEquals(8, miniMax.getScores().length); // Should remain unchanged
     }
 
@@ -273,5 +288,62 @@ class MiniMaxAlgorithmTest {
             assertEquals(validPowersOf2[i].length, miniMax.getScores().length, "Failed for array length: " + validPowersOf2[i].length);
             assertEquals(expectedHeights[i], miniMax.getHeight(), "Height calculation failed for array length: " + validPowersOf2[i].length);
         }
+    }
+
+    @Test
+    void testGetScoresReturnsDefensiveCopy() {
+        int[] originalScores = {10, 20, 30, 40};
+        miniMax.setScores(originalScores);
+
+        // Get the scores and modify them
+        int[] retrievedScores = miniMax.getScores();
+        retrievedScores[0] = 999;
+
+        // Internal state should remain unchanged
+        assertEquals(10, miniMax.getScores()[0]);
+    }
+
+    @Test
+    void testSetScoresCreatesDefensiveCopy() {
+        int[] originalScores = {10, 20, 30, 40};
+        miniMax.setScores(originalScores);
+
+        // Modify the original array after setting
+        originalScores[0] = 999;
+
+        // Internal state should remain unchanged
+        assertEquals(10, miniMax.getScores()[0]);
+    }
+
+    @Test
+    void testMiniMaxWithAllSameScores() {
+        int[] sameScores = {5, 5, 5, 5};
+        miniMax.setScores(sameScores);
+
+        // When all scores are the same, result should be that score
+        int result = miniMax.miniMax(0, true, 0, false);
+        assertEquals(5, result);
+    }
+
+    @Test
+    void testMiniMaxAtDifferentDepths() {
+        int[] testScores = {3, 12, 8, 2, 14, 5, 2, 9};
+        miniMax.setScores(testScores);
+
+        // Test maximizer first
+        int result = miniMax.miniMax(0, true, 0, false);
+        // Expected: max(min(max(3,12), max(8,2)), min(max(14,5), max(2,9)))
+        // = max(min(12, 8), min(14, 9)) = max(8, 9) = 9
+        assertEquals(9, result);
+    }
+
+    @Test
+    void testMiniMaxWithMinIntAndMaxInt() {
+        int[] extremeScores = {Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1};
+        miniMax.setScores(extremeScores);
+
+        int result = miniMax.miniMax(0, true, 0, false);
+        // Expected: max(min(MIN, MAX), min(0, 1)) = max(MIN, 0) = 0
+        assertEquals(0, result);
     }
 }
