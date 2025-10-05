@@ -69,7 +69,8 @@ public class MiddleOfLinkedList {
     }
 
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        // Create an instance of this class to access non-static methods
+        MiddleOfLinkedList sol = new MiddleOfLinkedList();
 
         // Input array for the linked list
         int[] values = {1, 2, 3, 4, 5};  // Odd-length list
