@@ -48,8 +48,8 @@ class NearestElementTest {
 
     @Test
     void testPrivateConstructor() throws Exception {
-        Constructor<NearestElement> constructor =
-                NearestElement.class.getDeclaredConstructor();
+        Constructor<NearestElement> constructor
+                = NearestElement.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         try {
             constructor.newInstance();

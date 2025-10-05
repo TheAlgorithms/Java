@@ -3,15 +3,21 @@ package com.thealgorithms.datastructures.stacks;
 import java.util.Stack;
 
 /**
- * The {@code NearestElement} class provides static utility methods to find the nearest greater or smaller elements
- * to the left or right of each element in an integer array using stack-based algorithms.
+ * The {@code NearestElement} class provides static utility methods to find the
+ * nearest greater or smaller elements to the left or right of each element in
+ * an integer array using stack-based algorithms.
  *
- * <p>Each method runs in O(n) time complexity by maintaining a monotonic stack:
+ * <p>
+ * Each method runs in O(n) time complexity by maintaining a monotonic stack:
  * <ul>
- *   <li>{@code nearestGreaterToRight}: Finds the nearest greater element to the right of each element.</li>
- *   <li>{@code nearestGreaterToLeft}: Finds the nearest greater element to the left of each element.</li>
- *   <li>{@code nearestSmallerToRight}: Finds the nearest smaller element to the right of each element.</li>
- *   <li>{@code nearestSmallerToLeft}: Finds the nearest smaller element to the left of each element.</li>
+ * <li>{@code nearestGreaterToRight}: Finds the nearest greater element to the
+ * right of each element.</li>
+ * <li>{@code nearestGreaterToLeft}: Finds the nearest greater element to the
+ * left of each element.</li>
+ * <li>{@code nearestSmallerToRight}: Finds the nearest smaller element to the
+ * right of each element.</li>
+ * <li>{@code nearestSmallerToLeft}: Finds the nearest smaller element to the
+ * left of each element.</li>
  * </ul>
  */
 public final class NearestElement {
