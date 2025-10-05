@@ -188,9 +188,9 @@ class MosAlgorithmTest {
 
         try {
             // Test main method
-            MosAlgorithm.main(new String[]{});
+            MosAlgorithm.main(new String[] {});
             String output = outputStream.toString();
-            
+
             // Verify expected output contains demonstration
             assertTrue(output.contains("Range Sum Queries Results:"));
             assertTrue(output.contains("Range Frequency Queries Results:"));

@@ -138,13 +138,13 @@ class DiceThrowerTest {
             // Test printing combinations for target 3
             DiceThrower.printDiceCombinations(3);
             String output = outputStream.toString();
-            
+
             // Verify all expected combinations are printed
             assertTrue(output.contains("111"));
             assertTrue(output.contains("12"));
             assertTrue(output.contains("21"));
             assertTrue(output.contains("3"));
-            
+
             // Count number of lines (combinations)
             String[] lines = output.trim().split("\n");
             assertEquals(4, lines.length);
@@ -164,7 +164,7 @@ class DiceThrowerTest {
         try {
             DiceThrower.printDiceCombinations(0);
             String output = outputStream.toString();
-            
+
             // Should print empty string (one line)
             assertEquals("", output.trim());
         } finally {
@@ -181,9 +181,9 @@ class DiceThrowerTest {
 
         try {
             // Test main method
-            DiceThrower.main(new String[]{});
+            DiceThrower.main(new String[] {});
             String output = outputStream.toString();
-            
+
             // Verify expected output contains header and combinations
             assertTrue(output.contains("All dice combinations that sum to 4:"));
             assertTrue(output.contains("Total combinations: 8"));
@@ -199,7 +199,7 @@ class DiceThrowerTest {
     void testEdgeCaseTargetFive() {
         List<String> result = DiceThrower.getDiceCombinations(5);
         assertEquals(16, result.size());
-        
+
         // Test specific combinations exist
         assertTrue(result.contains("11111"));
         assertTrue(result.contains("1112"));
@@ -213,7 +213,7 @@ class DiceThrowerTest {
     void testTargetGreaterThanSix() {
         List<String> result = DiceThrower.getDiceCombinations(8);
         assertTrue(result.size() > 0);
-        
+
         // Verify some expected combinations
         assertTrue(result.contains("62"));
         assertTrue(result.contains("53"));
