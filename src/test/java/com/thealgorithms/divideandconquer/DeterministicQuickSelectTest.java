@@ -1,6 +1,6 @@
 package com.thealgorithms.divideandconquer;
 
-import org.junit.jupiter.api.Test; // Regular imports come first
+import org.junit.jupiter.api.Test; 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,4 +26,3 @@ public final class DeterministicQuickSelectTest {
         assertThrows(IllegalArgumentException.class, () -> QuickSelectMedianOfMedians.quickSelect(new int[] {}, 0));
     }
 }
-
