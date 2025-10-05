@@ -5,7 +5,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
-import datastructures.stacks.NearestElement;
+import com.thealgorithms.datastructures.stacks.NearestElement;
 
 class NearestElementTest {
 
