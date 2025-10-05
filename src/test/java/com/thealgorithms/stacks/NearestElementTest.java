@@ -1,5 +1,6 @@
 package com.thealgorithms.stacks;
 
+import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -43,5 +44,17 @@ class NearestElementTest {
         System.out.println("nearestSmallerToLeft: " + Arrays.toString(result));
         int[] expected = {-1, 4, -1, 2, 2};
         assertArrayEquals(expected, result);
+    }
+
+    @Test
+    void testPrivateConstructor() throws Exception {
+        Constructor<NearestElement> constructor
+                = NearestElement.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        try {
+            constructor.newInstance();
+        } catch (Exception ignored) {
+            // Expected exception: constructor throws UnsupportedOperationException
+        }
     }
 }
