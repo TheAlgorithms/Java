@@ -10,7 +10,7 @@ class ListNode {
     }
 }
 
-public class Solution {
+public class MiddleOfLinkedList {
 
     /**
      * Finds the middle node of a singly linked list.
