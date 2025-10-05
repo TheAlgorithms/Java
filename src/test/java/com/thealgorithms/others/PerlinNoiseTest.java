@@ -88,17 +88,11 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("Invalid inputs are rejected")
     void testInvalidInputs() {
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(0, 5, 1, 0.5f, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, -1, 1, 0.5f, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 0, 0.5f, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, 0f, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, Float.NaN, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, 1.1f, 1L))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(0, 5, 1, 0.5f, 1L)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, -1, 1, 0.5f, 1L)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 0, 0.5f, 1L)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, 0f, 1L)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, Float.NaN, 1L)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> PerlinNoise.generatePerlinNoise(5, 5, 1, 1.1f, 1L)).isInstanceOf(IllegalArgumentException.class);
     }
 }

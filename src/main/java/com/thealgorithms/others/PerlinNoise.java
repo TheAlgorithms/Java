@@ -7,42 +7,54 @@ import java.util.Scanner;
  * Utility for generating 2D value-noise blended across octaves (commonly known
  * as Perlin-like noise).
  *
- * <p>The implementation follows the classic approach of:
+ * <p>
+ * The implementation follows the classic approach of:
  * <ol>
- *   <li>Generate a base grid of random values in [0, 1).</li>
- *   <li>For each octave k, compute a layer by bilinear interpolation of the base grid
- *       at period 2^k.</li>
- *   <li>Blend all layers from coarse to fine using a geometric series of amplitudes
- *       controlled by {@code persistence}, then normalize to [0, 1].</li>
+ * <li>Generate a base grid of random values in [0, 1).</li>
+ * <li>For each octave k, compute a layer by bilinear interpolation of the base
+ * grid
+ * at period 2^k.</li>
+ * <li>Blend all layers from coarse to fine using a geometric series of
+ * amplitudes
+ * controlled by {@code persistence}, then normalize to [0, 1].</li>
  * </ol>
  *
- * <p>For background see: <a href="http://devmag.org.za/2009/04/25/perlin-noise/">Perlin Noise</a>.
+ * <p>
+ * For background see:
+ * <a href="http://devmag.org.za/2009/04/25/perlin-noise/">Perlin Noise</a>.
  *
- * <p>Constraints and notes:
+ * <p>
+ * Constraints and notes:
  * <ul>
- *   <li>{@code width} and {@code height} should be positive.</li>
- *   <li>{@code octaveCount} must be at least 1 (0 would lead to a division by zero).</li>
- *   <li>{@code persistence} should be in (0, 1], typical values around 0.5–0.8.</li>
- *   <li>Given the same seed and parameters, results are deterministic.</li>
+ * <li>{@code width} and {@code height} should be positive.</li>
+ * <li>{@code octaveCount} must be at least 1 (0 would lead to a division by
+ * zero).</li>
+ * <li>{@code persistence} should be in (0, 1], typical values around
+ * 0.5–0.8.</li>
+ * <li>Given the same seed and parameters, results are deterministic.</li>
  * </ul>
  */
+
 public final class PerlinNoise {
-    private PerlinNoise() {}
+    private PerlinNoise() {
+    }
 
     /**
      * Generate a 2D array of blended noise values normalized to [0, 1].
      *
-     * @param width width of the noise array (columns)
-     * @param height height of the noise array (rows)
+     * @param width       width of the noise array (columns)
+     * @param height      height of the noise array (rows)
      * @param octaveCount number of octaves (layers) to blend; must be >= 1
      * @param persistence per-octave amplitude multiplier in (0, 1]
-     * @param seed seed for the random base grid
-     * @return a {@code width x height} array containing blended noise values in [0, 1]
+     * @param seed        seed for the random base grid
+     * @return a {@code width x height} array containing blended noise values in [0,
+     *         1]
      */
     static float[][] generatePerlinNoise(int width, int height, int octaveCount, float persistence, long seed) {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("width and height must be > 0");
         }
+
         if (octaveCount < 1) {
             throw new IllegalArgumentException("octaveCount must be >= 1");
         }
@@ -110,8 +122,8 @@ public final class PerlinNoise {
      * Generate a single octave layer by bilinear interpolation of a base grid at a
      * given octave (period = 2^octave).
      *
-     * @param base base random float array of size {@code width x height}
-     * @param width width of noise array
+     * @param base   base random float array of size {@code width x height}
+     * @param width  width of noise array
      * @param height height of noise array
      * @param octave current octave (0 for period 1, 1 for period 2, ...)
      * @return float array containing the octave's interpolated values
@@ -152,8 +164,8 @@ public final class PerlinNoise {
     /**
      * Linear interpolation between two values.
      *
-     * @param a value at alpha = 0
-     * @param b value at alpha = 1
+     * @param a     value at alpha = 0
+     * @param b     value at alpha = 1
      * @param alpha interpolation factor in [0, 1]
      * @return interpolated value {@code (1 - alpha) * a + alpha * b}
      */
