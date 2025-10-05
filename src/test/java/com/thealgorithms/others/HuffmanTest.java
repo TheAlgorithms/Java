@@ -1,12 +1,7 @@
 package com.thealgorithms.others;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -18,115 +13,119 @@ class HuffmanTest {
 
     @Test
     void testBuildHuffmanTreeWithBasicInput() {
-        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f'};
-        int[] charFreq = {5, 9, 12, 13, 16, 45};
+        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
+        int[] charFreq = { 5, 9, 12, 13, 16, 45 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
 
-        assertNotNull(root);
-        assertEquals(100, root.data); // Total frequency
+        Assertions.assertNotNull(root);
+        Assertions.assertEquals(100, root.data); // Total frequency
     }
 
     @Test
     void testGenerateCodesWithBasicInput() {
-        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f'};
-        int[] charFreq = {5, 9, 12, 13, 16, 45};
+        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f' };
+        int[] charFreq = { 5, 9, 12, 13, 16, 45 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(6, codes.size());
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(6, codes.size());
 
         // Verify that all characters have codes
         for (char c : charArray) {
-            assertTrue(codes.containsKey(c), "Missing code for character: " + c);
-            assertNotNull(codes.get(c), "Null code for character: " + c);
+            Assertions.assertTrue(codes.containsKey(c), "Missing code for character: " + c);
+            Assertions.assertNotNull(codes.get(c), "Null code for character: " + c);
         }
 
         // Verify that higher frequency characters have shorter codes
         // 'f' has the highest frequency (45), so it should have one of the shortest
         // codes
-        assertTrue(codes.get('f').length() <= codes.get('a').length());
+        Assertions.assertTrue(codes.get('f').length() <= codes.get('a').length());
     }
 
     @Test
     void testSingleCharacter() {
-        char[] charArray = {'a'};
-        int[] charFreq = {10};
+        char[] charArray = { 'a' };
+        int[] charFreq = { 10 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(1, codes.size());
-        assertEquals("0", codes.get('a')); // Single character gets code "0"
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(1, codes.size());
+        Assertions.assertEquals("0", codes.get('a')); // Single character gets code "0"
     }
 
     @Test
     void testTwoCharacters() {
-        char[] charArray = {'a', 'b'};
-        int[] charFreq = {3, 7};
+        char[] charArray = { 'a', 'b' };
+        int[] charFreq = { 3, 7 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(2, codes.size());
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(2, codes.size());
 
         // Verify both characters have codes
-        assertTrue(codes.containsKey('a'));
-        assertTrue(codes.containsKey('b'));
+        Assertions.assertTrue(codes.containsKey('a'));
+        Assertions.assertTrue(codes.containsKey('b'));
 
         // Verify codes are different
-        assertNotEquals(codes.get('a'), codes.get('b'));
+        Assertions.assertNotEquals(codes.get('a'), codes.get('b'));
     }
 
     @Test
     void testEqualFrequencies() {
-        char[] charArray = {'a', 'b', 'c'};
-        int[] charFreq = {5, 5, 5};
+        char[] charArray = { 'a', 'b', 'c' };
+        int[] charFreq = { 5, 5, 5 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(3, codes.size());
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(3, codes.size());
 
         // Verify all characters have codes
         for (char c : charArray) {
-            assertTrue(codes.containsKey(c));
+            Assertions.assertTrue(codes.containsKey(c));
         }
     }
 
     @Test
     void testLargeFrequencyDifference() {
-        char[] charArray = {'a', 'b', 'c'};
-        int[] charFreq = {1, 10, 100};
+        char[] charArray = { 'a', 'b', 'c' };
+        int[] charFreq = { 1, 10, 100 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(3, codes.size());
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(3, codes.size());
 
         // Character 'c' with highest frequency should have shortest code
-        assertTrue(codes.get('c').length() <= codes.get('b').length());
-        assertTrue(codes.get('c').length() <= codes.get('a').length());
+        Assertions.assertTrue(codes.get('c').length() <= codes.get('b').length());
+        Assertions.assertTrue(codes.get('c').length() <= codes.get('a').length());
     }
 
     @Test
     void testNullCharacterArray() {
-        int[] charFreq = {5, 9, 12};
+        int[] charFreq = { 5, 9, 12 };
 
-        assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(null, charFreq); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Huffman.buildHuffmanTree(null, charFreq);
+        });
     }
 
     @Test
     void testNullFrequencyArray() {
-        char[] charArray = {'a', 'b', 'c'};
+        char[] charArray = { 'a', 'b', 'c' };
 
-        assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, null); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Huffman.buildHuffmanTree(charArray, null);
+        });
     }
 
     @Test
@@ -134,51 +133,57 @@ class HuffmanTest {
         char[] charArray = {};
         int[] charFreq = {};
 
-        assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Huffman.buildHuffmanTree(charArray, charFreq);
+        });
     }
 
     @Test
     void testMismatchedArrayLengths() {
-        char[] charArray = {'a', 'b', 'c'};
-        int[] charFreq = {5, 9};
+        char[] charArray = { 'a', 'b', 'c' };
+        int[] charFreq = { 5, 9 };
 
-        assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Huffman.buildHuffmanTree(charArray, charFreq);
+        });
     }
 
     @Test
     void testNegativeFrequency() {
-        char[] charArray = {'a', 'b', 'c'};
-        int[] charFreq = {5, -9, 12};
+        char[] charArray = { 'a', 'b', 'c' };
+        int[] charFreq = { 5, -9, 12 };
 
-        assertThrows(IllegalArgumentException.class, () -> { Huffman.buildHuffmanTree(charArray, charFreq); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Huffman.buildHuffmanTree(charArray, charFreq);
+        });
     }
 
     @Test
     void testZeroFrequency() {
-        char[] charArray = {'a', 'b', 'c'};
-        int[] charFreq = {0, 5, 10};
+        char[] charArray = { 'a', 'b', 'c' };
+        int[] charFreq = { 0, 5, 10 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(3, codes.size());
-        assertTrue(codes.containsKey('a')); // Even with 0 frequency, character should have a code
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(3, codes.size());
+        Assertions.assertTrue(codes.containsKey('a')); // Even with 0 frequency, character should have a code
     }
 
     @Test
     void testGenerateCodesWithNullRoot() {
         Map<Character, String> codes = Huffman.generateCodes(null);
 
-        assertNotNull(codes);
-        assertTrue(codes.isEmpty());
+        Assertions.assertNotNull(codes);
+        Assertions.assertTrue(codes.isEmpty());
     }
 
     @Test
     void testPrefixProperty() {
         // Verify that no code is a prefix of another (Huffman property)
-        char[] charArray = {'a', 'b', 'c', 'd', 'e'};
-        int[] charFreq = {5, 9, 12, 13, 16};
+        char[] charArray = { 'a', 'b', 'c', 'd', 'e' };
+        int[] charFreq = { 5, 9, 12, 13, 16 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
@@ -189,7 +194,8 @@ class HuffmanTest {
                 if (!entry1.getKey().equals(entry2.getKey())) {
                     String code1 = entry1.getValue();
                     String code2 = entry2.getValue();
-                    assertTrue(!code1.startsWith(code2) && !code2.startsWith(code1), "Code " + code1 + " is a prefix of " + code2);
+                    Assertions.assertTrue(!code1.startsWith(code2) && !code2.startsWith(code1),
+                            "Code " + code1 + " is a prefix of " + code2);
                 }
             }
         }
@@ -198,31 +204,31 @@ class HuffmanTest {
     @Test
     void testBinaryCodesOnly() {
         // Verify that all codes contain only '0' and '1'
-        char[] charArray = {'a', 'b', 'c', 'd'};
-        int[] charFreq = {1, 2, 3, 4};
+        char[] charArray = { 'a', 'b', 'c', 'd' };
+        int[] charFreq = { 1, 2, 3, 4 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
         for (String code : codes.values()) {
-            assertTrue(code.matches("[01]+"), "Code contains non-binary characters: " + code);
+            Assertions.assertTrue(code.matches("[01]+"), "Code contains non-binary characters: " + code);
         }
     }
 
     @Test
     void testMultipleCharactersWithLargeAlphabet() {
-        char[] charArray = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
-        int[] charFreq = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+        char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' };
+        int[] charFreq = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
 
         HuffmanNode root = Huffman.buildHuffmanTree(charArray, charFreq);
         Map<Character, String> codes = Huffman.generateCodes(root);
 
-        assertNotNull(codes);
-        assertEquals(10, codes.size());
+        Assertions.assertNotNull(codes);
+        Assertions.assertEquals(10, codes.size());
 
         // Verify all characters have codes
         for (char c : charArray) {
-            assertTrue(codes.containsKey(c));
+            Assertions.assertTrue(codes.containsKey(c));
         }
     }
 }
