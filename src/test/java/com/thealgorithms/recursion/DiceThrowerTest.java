@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -123,5 +125,99 @@ class DiceThrowerTest {
             }
             assertEquals(5, sum, "Combination " + combination + " does not sum to 5");
         }
+    }
+
+    @Test
+    void testPrintDiceCombinations() {
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            // Test printing combinations for target 3
+            DiceThrower.printDiceCombinations(3);
+            String output = outputStream.toString();
+            
+            // Verify all expected combinations are printed
+            assertTrue(output.contains("111"));
+            assertTrue(output.contains("12"));
+            assertTrue(output.contains("21"));
+            assertTrue(output.contains("3"));
+            
+            // Count number of lines (combinations)
+            String[] lines = output.trim().split("\n");
+            assertEquals(4, lines.length);
+        } finally {
+            // Restore System.out
+            System.setOut(originalOut);
+        }
+    }
+
+    @Test
+    void testPrintDiceCombinationsZero() {
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            DiceThrower.printDiceCombinations(0);
+            String output = outputStream.toString();
+            
+            // Should print empty string (one line)
+            assertEquals("", output.trim());
+        } finally {
+            System.setOut(originalOut);
+        }
+    }
+
+    @Test
+    void testMainMethod() {
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            // Test main method
+            DiceThrower.main(new String[]{});
+            String output = outputStream.toString();
+            
+            // Verify expected output contains header and combinations
+            assertTrue(output.contains("All dice combinations that sum to 4:"));
+            assertTrue(output.contains("Total combinations: 8"));
+            assertTrue(output.contains("1111"));
+            assertTrue(output.contains("22"));
+            assertTrue(output.contains("4"));
+        } finally {
+            System.setOut(originalOut);
+        }
+    }
+
+    @Test
+    void testEdgeCaseTargetFive() {
+        List<String> result = DiceThrower.getDiceCombinations(5);
+        assertEquals(16, result.size());
+        
+        // Test specific combinations exist
+        assertTrue(result.contains("11111"));
+        assertTrue(result.contains("1112"));
+        assertTrue(result.contains("122"));
+        assertTrue(result.contains("14"));
+        assertTrue(result.contains("23"));
+        assertTrue(result.contains("5"));
+    }
+
+    @Test
+    void testTargetGreaterThanSix() {
+        List<String> result = DiceThrower.getDiceCombinations(8);
+        assertTrue(result.size() > 0);
+        
+        // Verify some expected combinations
+        assertTrue(result.contains("62"));
+        assertTrue(result.contains("53"));
+        assertTrue(result.contains("44"));
+        assertTrue(result.contains("2222"));
     }
 }

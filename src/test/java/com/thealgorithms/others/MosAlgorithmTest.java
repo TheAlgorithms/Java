@@ -2,7 +2,10 @@ package com.thealgorithms.others;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -174,5 +177,26 @@ class MosAlgorithmTest {
         int[] results = MosAlgorithm.solveRangeFrequencyQueries(arr, queries, 1);
 
         assertArrayEquals(expected, results);
+    }
+
+    @Test
+    void testMainMethod() {
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            // Test main method
+            MosAlgorithm.main(new String[]{});
+            String output = outputStream.toString();
+            
+            // Verify expected output contains demonstration
+            assertTrue(output.contains("Range Sum Queries Results:"));
+            assertTrue(output.contains("Range Frequency Queries Results:"));
+            assertTrue(output.contains("Count of 2 in ranges:"));
+        } finally {
+            System.setOut(originalOut);
+        }
     }
 }
