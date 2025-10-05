@@ -5,8 +5,10 @@ import java.util.BitSet;
 /**
  * A generic BloomFilter implementation for probabilistic membership checking.
  * <p>
- * Bloom filters are space-efficient data structures that provide a fast way to test whether an
- * element is a member of a set. They may produce false positives, indicating an element is
+ * Bloom filters are space-efficient data structures that provide a fast way to
+ * test whether an
+ * element is a member of a set. They may produce false positives, indicating an
+ * element is
  * in the set when it is not, but they will never produce false negatives.
  * </p>
  *
@@ -20,11 +22,14 @@ public class BloomFilter<T> {
     private final Hash<T>[] hashFunctions;
 
     /**
-     * Constructs a BloomFilter with a specified number of hash functions and bit array size.
+     * Constructs a BloomFilter with a specified number of hash functions and bit
+     * array size.
      *
      * @param numberOfHashFunctions the number of hash functions to use
-     * @param bitArraySize          the size of the bit array, which determines the capacity of the filter
-     * @throws IllegalArgumentException if numberOfHashFunctions or bitArraySize is less than 1
+     * @param bitArraySize          the size of the bit array, which determines the
+     *                              capacity of the filter
+     * @throws IllegalArgumentException if numberOfHashFunctions or bitArraySize is
+     *                                  less than 1
      */
     @SuppressWarnings("unchecked")
     public BloomFilter(int numberOfHashFunctions, int bitArraySize) {
@@ -38,7 +43,8 @@ public class BloomFilter<T> {
     }
 
     /**
-     * Initializes the hash functions with unique indices to ensure different hashing.
+     * Initializes the hash functions with unique indices to ensure different
+     * hashing.
      */
     private void initializeHashFunctions() {
         for (int i = 0; i < numberOfHashFunctions; i++) {
@@ -49,7 +55,8 @@ public class BloomFilter<T> {
     /**
      * Inserts an element into the Bloom filter.
      * <p>
-     * This method hashes the element using all defined hash functions and sets the corresponding
+     * This method hashes the element using all defined hash functions and sets the
+     * corresponding
      * bits in the bit array.
      * </p>
      *
@@ -65,13 +72,16 @@ public class BloomFilter<T> {
     /**
      * Checks if an element might be in the Bloom filter.
      * <p>
-     * This method checks the bits at the positions computed by each hash function. If any of these
-     * bits are not set, the element is definitely not in the filter. If all bits are set, the element
+     * This method checks the bits at the positions computed by each hash function.
+     * If any of these
+     * bits are not set, the element is definitely not in the filter. If all bits
+     * are set, the element
      * might be in the filter.
      * </p>
      *
      * @param key the element to check for membership in the Bloom filter
-     * @return {@code true} if the element might be in the Bloom filter, {@code false} if it is definitely not
+     * @return {@code true} if the element might be in the Bloom filter,
+     *         {@code false} if it is definitely not
      */
     public boolean contains(T key) {
         for (Hash<T> hash : hashFunctions) {
@@ -86,7 +96,8 @@ public class BloomFilter<T> {
     /**
      * Inner class representing a hash function used by the Bloom filter.
      * <p>
-     * Each instance of this class represents a different hash function based on its index.
+     * Each instance of this class represents a different hash function based on its
+     * index.
      * </p>
      *
      * @param <T> The type of elements to be hashed.
@@ -115,7 +126,28 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            return index * asciiString(String.valueOf(key));
+            return index * asciiString(objectToString(key));
+        }
+
+        /**
+         * Converts the key to a string suitable for hashing. Handles arrays properly.
+         */
+        private String objectToString(Object key) {
+            if (key == null) return "null";
+            Class<?> clazz = key.getClass();
+            if (clazz.isArray()) {
+                if (clazz == byte[].class) return java.util.Arrays.toString((byte[]) key);
+                if (clazz == short[].class) return java.util.Arrays.toString((short[]) key);
+                if (clazz == int[].class) return java.util.Arrays.toString((int[]) key);
+                if (clazz == long[].class) return java.util.Arrays.toString((long[]) key);
+                if (clazz == char[].class) return java.util.Arrays.toString((char[]) key);
+                if (clazz == float[].class) return java.util.Arrays.toString((float[]) key);
+                if (clazz == double[].class) return java.util.Arrays.toString((double[]) key);
+                if (clazz == boolean[].class) return java.util.Arrays.toString((boolean[]) key);
+                // For object arrays or multi-dimensional arrays
+                return java.util.Arrays.deepToString((Object[]) key);
+            }
+            return String.valueOf(key);
         }
 
         /**
