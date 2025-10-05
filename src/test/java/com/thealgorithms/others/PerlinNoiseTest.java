@@ -11,7 +11,8 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("generatePerlinNoise returns array with correct dimensions")
     void testDimensions() {
-        int w = 8, h = 6;
+        int w = 8;
+        int h = 6;
         float[][] noise = PerlinNoise.generatePerlinNoise(w, h, 4, 0.6f, 123L);
         assertThat(noise).hasDimensions(w, h);
     }
@@ -19,7 +20,8 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("All values are within [0,1] after normalization")
     void testRange() {
-        int w = 16, h = 16;
+        int w = 16;
+        int h = 16;
         float[][] noise = PerlinNoise.generatePerlinNoise(w, h, 5, 0.7f, 42L);
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
@@ -31,7 +33,8 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("Deterministic for same parameters and seed")
     void testDeterminism() {
-        int w = 10, h = 10;
+        int w = 10;
+        int h = 10;
         long seed = 98765L;
         float[][] a = PerlinNoise.generatePerlinNoise(w, h, 3, 0.5f, seed);
         float[][] b = PerlinNoise.generatePerlinNoise(w, h, 3, 0.5f, seed);
@@ -45,7 +48,8 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("Different seeds produce different outputs (probabilistically)")
     void testDifferentSeeds() {
-        int w = 12, h = 12;
+        int w = 12;
+        int h = 12;
         float[][] a = PerlinNoise.generatePerlinNoise(w, h, 4, 0.8f, 1L);
         float[][] b = PerlinNoise.generatePerlinNoise(w, h, 4, 0.8f, 2L);
 
@@ -72,7 +76,8 @@ class PerlinNoiseTest {
     @Test
     @DisplayName("Single octave reduces to bilinear interpolation of base grid")
     void testSingleOctaveLayer() {
-        int w = 8, h = 8;
+        int w = 8;
+        int h = 8;
         long seed = 7L;
         float[][] base = PerlinNoise.createBaseGrid(w, h, seed);
         float[][] layer = PerlinNoise.generatePerlinNoiseLayer(base, w, h, 0); // period=1
