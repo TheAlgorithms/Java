@@ -1,8 +1,10 @@
 package com.thealgorithms.divideandconquer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals; // Explicitly importing assertEquals
+import static org.junit.jupiter.api.Assertions.assertThrows; // Explicitly importing assertThrows
 
 import org.junit.jupiter.api.Test;
+
 
 public final class DeterministicQuickSelectTest {
 
