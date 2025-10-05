@@ -133,17 +133,35 @@ public class BloomFilter<T> {
          * Converts the key to a string suitable for hashing. Handles arrays properly.
          */
         private String objectToString(Object key) {
-            if (key == null) return "null";
+            if (key == null) {
+                return "null";
+            }
             Class<?> clazz = key.getClass();
             if (clazz.isArray()) {
-                if (clazz == byte[].class) return java.util.Arrays.toString((byte[]) key);
-                if (clazz == short[].class) return java.util.Arrays.toString((short[]) key);
-                if (clazz == int[].class) return java.util.Arrays.toString((int[]) key);
-                if (clazz == long[].class) return java.util.Arrays.toString((long[]) key);
-                if (clazz == char[].class) return java.util.Arrays.toString((char[]) key);
-                if (clazz == float[].class) return java.util.Arrays.toString((float[]) key);
-                if (clazz == double[].class) return java.util.Arrays.toString((double[]) key);
-                if (clazz == boolean[].class) return java.util.Arrays.toString((boolean[]) key);
+                if (clazz == byte[].class) {
+                    return java.util.Arrays.toString((byte[]) key);
+                }
+                if (clazz == short[].class) {
+                    return java.util.Arrays.toString((short[]) key);
+                }
+                if (clazz == int[].class) {
+                    return java.util.Arrays.toString((int[]) key);
+                }
+                if (clazz == long[].class) {
+                    return java.util.Arrays.toString((long[]) key);
+                }
+                if (clazz == char[].class) {
+                    return java.util.Arrays.toString((char[]) key);
+                }
+                if (clazz == float[].class) {
+                    return java.util.Arrays.toString((float[]) key);
+                }
+                if (clazz == double[].class) {
+                    return java.util.Arrays.toString((double[]) key);
+                }
+                if (clazz == boolean[].class) {
+                    return java.util.Arrays.toString((boolean[]) key);
+                }
                 // For object arrays or multi-dimensional arrays
                 return java.util.Arrays.deepToString((Object[]) key);
             }
