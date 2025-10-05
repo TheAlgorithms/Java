@@ -48,13 +48,11 @@ class NearestElementTest {
 
     @Test
     void testPrivateConstructor() throws Exception {
-        Constructor<NearestElement> constructor
-                = NearestElement.class.getDeclaredConstructor();
+        Constructor<NearestElement> constructor = NearestElement.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         try {
             constructor.newInstance();
         } catch (Exception ignored) {
-            // Expected exception: constructor throws UnsupportedOperationException
         }
     }
 }
