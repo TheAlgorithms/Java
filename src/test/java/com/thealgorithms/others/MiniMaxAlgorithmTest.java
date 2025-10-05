@@ -42,7 +42,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testConstructorWithValidScores() {
-        int[] validScores = { 10, 20, 30, 40 };
+        int[] validScores = {10, 20, 30, 40};
         MiniMaxAlgorithm customMiniMax = new MiniMaxAlgorithm(validScores);
 
         Assertions.assertArrayEquals(validScores, customMiniMax.getScores());
@@ -51,14 +51,14 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testConstructorWithInvalidScoresThrowsException() {
-        int[] invalidScores = { 10, 20, 30 }; // Length 3 is not a power of 2
+        int[] invalidScores = {10, 20, 30}; // Length 3 is not a power of 2
         Assertions.assertThrows(IllegalArgumentException.class, () -> new MiniMaxAlgorithm(invalidScores));
     }
 
     @Test
     void testConstructorDoesNotModifyOriginalArray() {
-        int[] originalScores = { 10, 20, 30, 40 };
-        int[] copyOfOriginal = { 10, 20, 30, 40 };
+        int[] originalScores = {10, 20, 30, 40};
+        int[] copyOfOriginal = {10, 20, 30, 40};
         MiniMaxAlgorithm customMiniMax = new MiniMaxAlgorithm(originalScores);
 
         // Modify the original array
@@ -70,7 +70,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testSetScoresWithValidPowerOfTwo() {
-        int[] validScores = { 10, 20, 30, 40 };
+        int[] validScores = {10, 20, 30, 40};
         miniMax.setScores(validScores);
 
         Assertions.assertArrayEquals(validScores, miniMax.getScores());
@@ -79,7 +79,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testSetScoresWithInvalidLength() {
-        int[] invalidScores = { 10, 20, 30 }; // Length 3 is not a power of 2
+        int[] invalidScores = {10, 20, 30}; // Length 3 is not a power of 2
         Assertions.assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(invalidScores));
 
         // Scores should remain unchanged (original length 8)
@@ -100,17 +100,16 @@ class MiniMaxAlgorithmTest {
         // Test multiple invalid lengths to ensure isPowerOfTwo function is fully
         // covered
         int[][] invalidScoreArrays = {
-                { 1, 2, 3, 4, 5 }, // Length 5
-                { 1, 2, 3, 4, 5, 6 }, // Length 6
-                { 1, 2, 3, 4, 5, 6, 7 }, // Length 7
-                new int[9], // Length 9
-                new int[10], // Length 10
-                new int[15] // Length 15
+            {1, 2, 3, 4, 5}, // Length 5
+            {1, 2, 3, 4, 5, 6}, // Length 6
+            {1, 2, 3, 4, 5, 6, 7}, // Length 7
+            new int[9], // Length 9
+            new int[10], // Length 10
+            new int[15] // Length 15
         };
 
         for (int[] invalidScores : invalidScoreArrays) {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(invalidScores),
-                    "Failed for array length: " + invalidScores.length);
+            Assertions.assertThrows(IllegalArgumentException.class, () -> miniMax.setScores(invalidScores), "Failed for array length: " + invalidScores.length);
         }
 
         // Scores should remain unchanged (original length 8)
@@ -119,7 +118,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testSetScoresWithSingleElement() {
-        int[] singleScore = { 42 };
+        int[] singleScore = {42};
         miniMax.setScores(singleScore);
 
         Assertions.assertArrayEquals(singleScore, miniMax.getScores());
@@ -129,7 +128,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testMiniMaxWithKnownScores() {
         // Test with a known game tree: [3, 12, 8, 2]
-        int[] testScores = { 3, 12, 8, 2 };
+        int[] testScores = {3, 12, 8, 2};
         miniMax.setScores(testScores);
 
         // Maximizer starts: should choose max(min(3,12), min(8,2)) = max(3, 2) = 3
@@ -140,7 +139,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testMiniMaxWithMinimizerFirst() {
         // Test with minimizer starting first
-        int[] testScores = { 3, 12, 8, 2 };
+        int[] testScores = {3, 12, 8, 2};
         miniMax.setScores(testScores);
 
         // Minimizer starts: should choose min(max(3,12), max(8,2)) = min(12, 8) = 8
@@ -151,7 +150,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testMiniMaxWithLargerTree() {
         // Test with 8 elements: [5, 6, 7, 4, 5, 3, 6, 2]
-        int[] testScores = { 5, 6, 7, 4, 5, 3, 6, 2 };
+        int[] testScores = {5, 6, 7, 4, 5, 3, 6, 2};
         miniMax.setScores(testScores);
 
         // Maximizer starts
@@ -163,7 +162,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testMiniMaxVerboseOutput() {
-        int[] testScores = { 3, 12, 8, 2 };
+        int[] testScores = {3, 12, 8, 2};
         miniMax.setScores(testScores);
 
         miniMax.miniMax(0, true, 0, true);
@@ -209,7 +208,7 @@ class MiniMaxAlgorithmTest {
     @Test
     void testHeightCalculation() {
         // Test height calculation for different array sizes
-        int[] scores2 = { 1, 2 };
+        int[] scores2 = {1, 2};
         miniMax.setScores(scores2);
         Assertions.assertEquals(1, miniMax.getHeight()); // log2(2) = 1
 
@@ -220,7 +219,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testEdgeCaseWithZeroScores() {
-        int[] zeroScores = { 0, 0, 0, 0 };
+        int[] zeroScores = {0, 0, 0, 0};
         miniMax.setScores(zeroScores);
 
         int result = miniMax.miniMax(0, true, 0, false);
@@ -229,7 +228,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testEdgeCaseWithNegativeScores() {
-        int[] negativeScores = { -5, -2, -8, -1 };
+        int[] negativeScores = {-5, -2, -8, -1};
         miniMax.setScores(negativeScores);
 
         // Tree evaluation with maximizer first:
@@ -269,28 +268,26 @@ class MiniMaxAlgorithmTest {
     void testSetScoresValidEdgeCases() {
         // Test valid powers of 2 to ensure isPowerOfTwo returns true correctly
         int[][] validPowersOf2 = {
-                new int[1], // 1 = 2^0
-                new int[2], // 2 = 2^1
-                new int[4], // 4 = 2^2
-                new int[8], // 8 = 2^3
-                new int[16], // 16 = 2^4
-                new int[64] // 64 = 2^6
+            new int[1], // 1 = 2^0
+            new int[2], // 2 = 2^1
+            new int[4], // 4 = 2^2
+            new int[8], // 8 = 2^3
+            new int[16], // 16 = 2^4
+            new int[64] // 64 = 2^6
         };
 
-        int[] expectedHeights = { 0, 1, 2, 3, 4, 6 };
+        int[] expectedHeights = {0, 1, 2, 3, 4, 6};
 
         for (int i = 0; i < validPowersOf2.length; i++) {
             miniMax.setScores(validPowersOf2[i]);
-            Assertions.assertEquals(validPowersOf2[i].length, miniMax.getScores().length,
-                    "Failed for array length: " + validPowersOf2[i].length);
-            Assertions.assertEquals(expectedHeights[i], miniMax.getHeight(),
-                    "Height calculation failed for array length: " + validPowersOf2[i].length);
+            Assertions.assertEquals(validPowersOf2[i].length, miniMax.getScores().length, "Failed for array length: " + validPowersOf2[i].length);
+            Assertions.assertEquals(expectedHeights[i], miniMax.getHeight(), "Height calculation failed for array length: " + validPowersOf2[i].length);
         }
     }
 
     @Test
     void testGetScoresReturnsDefensiveCopy() {
-        int[] originalScores = { 10, 20, 30, 40 };
+        int[] originalScores = {10, 20, 30, 40};
         miniMax.setScores(originalScores);
 
         // Get the scores and modify them
@@ -303,7 +300,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testSetScoresCreatesDefensiveCopy() {
-        int[] originalScores = { 10, 20, 30, 40 };
+        int[] originalScores = {10, 20, 30, 40};
         miniMax.setScores(originalScores);
 
         // Modify the original array after setting
@@ -315,7 +312,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testMiniMaxWithAllSameScores() {
-        int[] sameScores = { 5, 5, 5, 5 };
+        int[] sameScores = {5, 5, 5, 5};
         miniMax.setScores(sameScores);
 
         // When all scores are the same, result should be that score
@@ -325,7 +322,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testMiniMaxAtDifferentDepths() {
-        int[] testScores = { 3, 12, 8, 2, 14, 5, 2, 9 };
+        int[] testScores = {3, 12, 8, 2, 14, 5, 2, 9};
         miniMax.setScores(testScores);
 
         // Test maximizer first
@@ -337,7 +334,7 @@ class MiniMaxAlgorithmTest {
 
     @Test
     void testMiniMaxWithMinIntAndMaxInt() {
-        int[] extremeScores = { Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1 };
+        int[] extremeScores = {Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1};
         miniMax.setScores(extremeScores);
 
         int result = miniMax.miniMax(0, true, 0, false);
