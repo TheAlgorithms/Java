@@ -38,7 +38,7 @@ public class BloomFilter<T> {
         }
         this.numberOfHashFunctions = numberOfHashFunctions;
         this.bitArray = new BitSet(bitArraySize);
-        this.hashFunctions = new Hash[numberOfHashFunctions];
+        this.hashFunctions = (Hash<T>[]) new Hash<?>[numberOfHashFunctions];
         initializeHashFunctions();
     }
 
