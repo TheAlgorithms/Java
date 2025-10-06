@@ -1,7 +1,5 @@
 package com.thealgorithms.dynamicprogramming;
-
 import java.util.Arrays;
-
 /**
  * @author Md Asif Joardar
  *
