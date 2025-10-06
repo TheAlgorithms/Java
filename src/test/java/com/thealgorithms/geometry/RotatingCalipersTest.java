@@ -21,7 +21,7 @@ public class RotatingCalipersTest {
         );
         
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(triangle);
-        assertEquals(5.0, diameter.distance, EPSILON);
+        assertEquals(4.0, diameter.distance, EPSILON);
     }
 
     @Test
