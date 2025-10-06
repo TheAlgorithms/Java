@@ -1,7 +1,5 @@
 package com.thealgorithms.sorts;
 
-import java.util.Arrays;
-
 /**
  * Postman Sort Algorithm Implementation
  *
