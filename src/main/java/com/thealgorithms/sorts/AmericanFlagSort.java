@@ -53,9 +53,9 @@ public class AmericanFlagSort implements SortAlgorithm {
         // Partition into buckets based on comparison with pivot
         T pivot = array[start + length / 2];
 
-        int lt = start;  // less than pivot
-        int gt = end;    // greater than pivot
-        int i = start;   // current element
+        int lt = start; // less than pivot
+        int gt = end; // greater than pivot
+        int i = start; // current element
 
         while (i <= gt) {
             int cmp = array[i].compareTo(pivot);
