@@ -40,15 +40,17 @@ public class DoubleHashingSort implements SortAlgorithm {
      * @param bucketCount number of buckets to use
      * @return sorted array
      */
-    @SuppressWarnings("unchecked")
     private <T extends Comparable<T>> T[] doubleHashingSort(T[] array, int bucketCount) {
         // Create buckets
+        @SuppressWarnings("unchecked")
         T[][] buckets = (T[][]) new Comparable[bucketCount][];
         int[] bucketSizes = new int[bucketCount];
 
         // Initialize buckets
         for (int i = 0; i < bucketCount; i++) {
-            buckets[i] = (T[]) new Comparable[array.length];
+            @SuppressWarnings("unchecked")
+            T[] bucket = (T[]) new Comparable[array.length];
+            buckets[i] = bucket;
             bucketSizes[i] = 0;
         }
 
@@ -63,6 +65,7 @@ public class DoubleHashingSort implements SortAlgorithm {
         for (int i = 0; i < bucketCount; i++) {
             if (bucketSizes[i] > 0) {
                 // Create actual sized array for this bucket
+                @SuppressWarnings("unchecked")
                 T[] bucket = (T[]) new Comparable[bucketSizes[i]];
                 System.arraycopy(buckets[i], 0, bucket, 0, bucketSizes[i]);
                 
