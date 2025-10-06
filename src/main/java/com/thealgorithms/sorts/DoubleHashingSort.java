@@ -39,7 +39,7 @@ public class DoubleHashingSort implements SortAlgorithm {
     /**
      * A robust comparator that handles edge cases for different data types
      */
-    private static class RobustComparator<T extends Comparable<T>> implements Comparator<T> {
+    private static final class RobustComparator<T extends Comparable<T>> implements Comparator<T> {
 
         @Override
         @SuppressWarnings("unchecked")
@@ -76,18 +76,18 @@ public class DoubleHashingSort implements SortAlgorithm {
 
         private int compareDoubles(Double a, Double b) {
             // Handle NaN: NaN should come last
-            if (Double.isNaN(a) && Double.isNaN(b)) return 0;
-            if (Double.isNaN(a)) return 1;
-            if (Double.isNaN(b)) return -1;
+            if (Double.isNaN(a) && Double.isNaN(b)) { return 0; }
+            if (Double.isNaN(a)) { return 1; }
+            if (Double.isNaN(b)) { return -1; }
 
             // Handle infinities
-            if (a.equals(Double.NEGATIVE_INFINITY) && b.equals(Double.NEGATIVE_INFINITY)) return 0;
-            if (a.equals(Double.NEGATIVE_INFINITY)) return -1;
-            if (b.equals(Double.NEGATIVE_INFINITY)) return 1;
+            if (a.equals(Double.NEGATIVE_INFINITY) && b.equals(Double.NEGATIVE_INFINITY)) { return 0; }
+            if (a.equals(Double.NEGATIVE_INFINITY)) { return -1; }
+            if (b.equals(Double.NEGATIVE_INFINITY)) { return 1; }
 
-            if (a.equals(Double.POSITIVE_INFINITY) && b.equals(Double.POSITIVE_INFINITY)) return 0;
-            if (a.equals(Double.POSITIVE_INFINITY)) return 1;
-            if (b.equals(Double.POSITIVE_INFINITY)) return -1;
+            if (a.equals(Double.POSITIVE_INFINITY) && b.equals(Double.POSITIVE_INFINITY)) { return 0; }
+            if (a.equals(Double.POSITIVE_INFINITY)) { return 1; }
+            if (b.equals(Double.POSITIVE_INFINITY)) { return -1; }
 
             // Normal comparison
             return Double.compare(a, b);
@@ -95,18 +95,18 @@ public class DoubleHashingSort implements SortAlgorithm {
 
         private int compareFloats(Float a, Float b) {
             // Handle NaN: NaN should come last
-            if (Float.isNaN(a) && Float.isNaN(b)) return 0;
-            if (Float.isNaN(a)) return 1;
-            if (Float.isNaN(b)) return -1;
+            if (Float.isNaN(a) && Float.isNaN(b)) { return 0; }
+            if (Float.isNaN(a)) { return 1; }
+            if (Float.isNaN(b)) { return -1; }
 
             // Handle infinities
-            if (a.equals(Float.NEGATIVE_INFINITY) && b.equals(Float.NEGATIVE_INFINITY)) return 0;
-            if (a.equals(Float.NEGATIVE_INFINITY)) return -1;
-            if (b.equals(Float.NEGATIVE_INFINITY)) return 1;
+            if (a.equals(Float.NEGATIVE_INFINITY) && b.equals(Float.NEGATIVE_INFINITY)) { return 0; }
+            if (a.equals(Float.NEGATIVE_INFINITY)) { return -1; }
+            if (b.equals(Float.NEGATIVE_INFINITY)) { return 1; }
 
-            if (a.equals(Float.POSITIVE_INFINITY) && b.equals(Float.POSITIVE_INFINITY)) return 0;
-            if (a.equals(Float.POSITIVE_INFINITY)) return 1;
-            if (b.equals(Float.POSITIVE_INFINITY)) return -1;
+            if (a.equals(Float.POSITIVE_INFINITY) && b.equals(Float.POSITIVE_INFINITY)) { return 0; }
+            if (a.equals(Float.POSITIVE_INFINITY)) { return 1; }
+            if (b.equals(Float.POSITIVE_INFINITY)) { return -1; }
 
             // Normal comparison
             return Float.compare(a, b);
@@ -121,9 +121,9 @@ public class DoubleHashingSort implements SortAlgorithm {
 
         private int compareStrings(String a, String b) {
             // Handle empty strings properly - they should come before non-empty strings
-            if (a.isEmpty() && b.isEmpty()) return 0;
-            if (a.isEmpty()) return -1;
-            if (b.isEmpty()) return 1;
+            if (a.isEmpty() && b.isEmpty()) { return 0; }
+            if (a.isEmpty()) { return -1; }
+            if (b.isEmpty()) { return 1; }
 
             // Normal string comparison
             return a.compareTo(b);
