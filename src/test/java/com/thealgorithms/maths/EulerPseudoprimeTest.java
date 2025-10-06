@@ -1,11 +1,10 @@
-package com.thealgorithms.maths.prime;
+package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
-import com.thealgorithms.maths.Prime.EulerPseudoprime;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
