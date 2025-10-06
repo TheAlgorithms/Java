@@ -2,7 +2,7 @@ package com.thealgorithms.sorts;
 
 /**
  * Smooth Sort Algorithm Implementation
- * Uses a heap-based approach similar to heap sort but with better cache performance
+ * Uses heap-based approach for reliable sorting performance
  *
  * @see <a href="https://en.wikipedia.org/wiki/Smoothsort">Smooth Sort Algorithm</a>
  */
@@ -21,12 +21,12 @@ public class SmoothSort implements SortAlgorithm {
     private <T extends Comparable<T>> void heapSort(T[] array) {
         int n = array.length;
         
-        // Build heap (rearrange array)
+        // Build max heap
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
         }
         
-        // Extract elements from heap one by one
+        // Extract elements from heap
         for (int i = n - 1; i > 0; i--) {
             SortUtils.swap(array, 0, i);
             heapify(array, i, 0);
