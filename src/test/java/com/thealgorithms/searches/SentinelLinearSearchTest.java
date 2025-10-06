@@ -203,9 +203,9 @@ class SentinelLinearSearchTest {
         Integer[] array = {1, 2, 3, 4, 5};
         Integer[] originalArray = array.clone(); // Keep a copy of the original
         Integer key = 3; // Element to find
-        
+
         sentinelLinearSearch.find(array, key);
-        
+
         // Verify array is unchanged
         for (int i = 0; i < array.length; i++) {
             assertEquals(originalArray[i], array[i], "Array should remain unchanged after search.");
