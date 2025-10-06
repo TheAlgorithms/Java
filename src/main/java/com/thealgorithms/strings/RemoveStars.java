@@ -24,16 +24,16 @@ public final class RemoveStars {
             return input;
         }
         int n = input.length();
-        StringBuilder ans = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            char t = input.charAt(i);
-            if (t != '*') {
-                ans.append(t);
+            char currentChar = input.charAt(i);
+            if (currentChar != '*') {
+                result.append(currentChar);
             }
             else {
-                ans.deleteCharAt(ans.length() - 1);
+                result.deleteCharAt(result.length() - 1);
             }
         }
-        return ans.toString();
+        return result.toString();
     }
 }
