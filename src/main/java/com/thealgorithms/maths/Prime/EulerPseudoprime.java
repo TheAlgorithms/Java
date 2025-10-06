@@ -1,7 +1,7 @@
 package com.thealgorithms.maths.Prime;
 
 import java.math.BigInteger;
-import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  * The {@code EulerPseudoprime} class implements the Euler primality test.
@@ -18,9 +18,10 @@ import java.security.SecureRandom;
 public class EulerPseudoprime {
 
     private EulerPseudoprime() {
+        // Private constructor to prevent instantiation.
     }
 
-    private static final SecureRandom random = new SecureRandom();
+    private static final Random random = new Random(1);
 
     /**
      * Performs the Euler primality test for a given number.
