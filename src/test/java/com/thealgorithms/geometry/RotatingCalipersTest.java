@@ -188,3 +188,4 @@ public class RotatingCalipersTest {
         assertEquals(0.0, rect.area, EPSILON);
     }
 }
+

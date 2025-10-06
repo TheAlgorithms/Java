@@ -69,7 +69,7 @@ public final class RotatingCalipers {
             return String.format("Rectangle{area=%.2f}", area);
         }
     }
-    
+
     /**
      * Computes the diameter of a convex polygon using rotating calipers.
      * The diameter is the maximum distance between any two vertices.
@@ -101,7 +101,7 @@ public final class RotatingCalipers {
 
         return maxPair;
     }
-    
+
     /**
      * Computes the width of a convex polygon using rotating calipers.
      * The width is the minimum distance between two parallel supporting lines.
@@ -139,7 +139,7 @@ public final class RotatingCalipers {
 
         return minWidth;
     }
-    
+
     /**
      * Computes the minimum-area bounding rectangle of a convex polygon.
      *
@@ -171,7 +171,7 @@ public final class RotatingCalipers {
 
         return minRect;
     }
-    
+
     /**
      * Creates a rectangle aligned with the given edge that encloses all points.
      */
