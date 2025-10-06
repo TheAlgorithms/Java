@@ -29,8 +29,7 @@ public final class RemoveStars {
             char currentChar = input.charAt(i);
             if (currentChar != '*') {
                 result.append(currentChar);
-            }
-            else {
+            } else {
                 result.deleteCharAt(result.length() - 1);
             }
         }

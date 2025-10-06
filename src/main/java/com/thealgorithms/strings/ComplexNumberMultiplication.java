@@ -4,7 +4,6 @@ package com.thealgorithms.strings;
  */
 public final class ComplexNumberMultiplication {
     private ComplexNumberMultiplication() {
-
     }
     /**
      * Multiplies two complex numbers given as strings.
