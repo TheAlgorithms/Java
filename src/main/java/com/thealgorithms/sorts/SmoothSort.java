@@ -13,19 +13,19 @@ public class SmoothSort implements SortAlgorithm {
         if (array == null || array.length <= 1) {
             return array;
         }
-        
+
         heapSort(array);
         return array;
     }
 
     private <T extends Comparable<T>> void heapSort(T[] array) {
         int n = array.length;
-        
+
         // Build max heap
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(array, n, i);
         }
-        
+
         // Extract elements from heap
         for (int i = n - 1; i > 0; i--) {
             SortUtils.swap(array, 0, i);
