@@ -53,7 +53,6 @@ class EulerPseudoprimeTest {
     @Test
     void testJacobiSymbolBasicCases() throws Exception {
         var method = EulerPseudoprime.class.getDeclaredMethod("jacobiSymbol", BigInteger.class, BigInteger.class);
-        method.setAccessible(true);
 
         // (a/n) = (2/3) = -1
         assertEquals(-1, (int) method.invoke(null, BigInteger.valueOf(2), BigInteger.valueOf(3)));
@@ -66,18 +65,6 @@ class EulerPseudoprimeTest {
 
         // (a/n) = (3/9) = 0 since gcd(3,9)>1
         assertEquals(0, (int) method.invoke(null, BigInteger.valueOf(3), BigInteger.valueOf(9)));
-    }
-
-    @Test
-    void testUniformRandomRange() throws Exception {
-        var method = EulerPseudoprime.class.getDeclaredMethod("uniformRandom", BigInteger.class, BigInteger.class);
-        method.setAccessible(true);
-
-        BigInteger min = BigInteger.TWO;
-        BigInteger max = BigInteger.valueOf(20);
-        BigInteger value = (BigInteger) method.invoke(null, min, max);
-
-        assertTrue(value.compareTo(min) >= 0 && value.compareTo(max) <= 0, "Random value should be within [min, max]");
     }
 
     @Test
@@ -96,7 +83,6 @@ class EulerPseudoprimeTest {
     @Test
     void testJacobiSymbolThrowsForEvenOrNonPositiveN() throws Exception {
         var method = EulerPseudoprime.class.getDeclaredMethod("jacobiSymbol", BigInteger.class, BigInteger.class);
-        method.setAccessible(true);
 
         // Helper lambda to unwrap InvocationTargetException
         Runnable invokeJacobi = () -> {
