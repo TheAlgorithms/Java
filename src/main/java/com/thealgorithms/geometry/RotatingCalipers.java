@@ -85,33 +85,15 @@ public final class RotatingCalipers {
             return new PointPair(convexHull.get(0), convexHull.get(1));
         }
         
-        int n = convexHull.size();
+        // Find maximum distance between all pairs of points
         PointPair maxPair = new PointPair(convexHull.get(0), convexHull.get(1));
         
-        int j = 1;
-        for (int i = 0; i < n; i++) {
-            Point p1 = convexHull.get(i);
-            Point p2 = convexHull.get((i + 1) % n);
-            
-            // Find the farthest point from edge p1-p2
-            while (true) {
-                int nextJ = (j + 1) % n;
-                if (distanceToLine(p1, p2, convexHull.get(nextJ)) > distanceToLine(p1, p2, convexHull.get(j))) {
-                    j = nextJ;
-                } else {
-                    break;
+        for (int i = 0; i < convexHull.size(); i++) {
+            for (int j = i + 1; j < convexHull.size(); j++) {
+                PointPair candidate = new PointPair(convexHull.get(i), convexHull.get(j));
+                if (candidate.distance > maxPair.distance) {
+                    maxPair = candidate;
                 }
-            }
-            
-            // Check distances from current edge endpoints to the farthest point
-            PointPair candidate1 = new PointPair(p1, convexHull.get(j));
-            PointPair candidate2 = new PointPair(p2, convexHull.get(j));
-            
-            if (candidate1.distance > maxPair.distance) {
-                maxPair = candidate1;
-            }
-            if (candidate2.distance > maxPair.distance) {
-                maxPair = candidate2;
             }
         }
         
