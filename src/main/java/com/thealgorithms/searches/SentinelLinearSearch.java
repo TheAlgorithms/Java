@@ -34,13 +34,12 @@ import com.thealgorithms.devutils.searches.SearchAlgorithm;
  * @see SearchAlgorithm
  */
 public class SentinelLinearSearch implements SearchAlgorithm {
-
     /**
      * Performs sentinel linear search on the given array.
      *
      * @param array the array to search in
-     * @param key   the element to search for
-     * @param <T>   the type of elements in the array, must be Comparable
+     * @param key the element to search for
+     * @param <T> the type of elements in the array, must be Comparable
      * @return the index of the first occurrence of the key, or -1 if not found
      * @throws IllegalArgumentException if the array is null
      */
@@ -49,44 +48,44 @@ public class SentinelLinearSearch implements SearchAlgorithm {
         if (array == null) {
             throw new IllegalArgumentException("Array cannot be null");
         }
-        
+
         if (array.length == 0) {
             return -1;
         }
-        
+
         if (key == null) {
             return findNull(array);
         }
-        
+
         // Store the last element
         T lastElement = array[array.length - 1];
-        
+
         // Place the sentinel (search key) at the end
         array[array.length - 1] = key;
-        
+
         int i = 0;
         // Search without bound checking since sentinel guarantees we'll find the key
         while (array[i].compareTo(key) != 0) {
             i++;
         }
-        
+
         // Restore the original last element
         array[array.length - 1] = lastElement;
-        
+
         // Check if we found the key before the sentinel position
         // or if the original last element was the key we were looking for
         if (i < array.length - 1 || (lastElement != null && lastElement.compareTo(key) == 0)) {
             return i;
         }
-        
+
         return -1; // Key not found
     }
-    
+
     /**
      * Helper method to find null values in the array.
      *
      * @param array the array to search in
-     * @param <T>   the type of elements in the array
+     * @param <T> the type of elements in the array
      * @return the index of the first null element, or -1 if not found
      */
     private <T extends Comparable<T>> int findNull(T[] array) {
