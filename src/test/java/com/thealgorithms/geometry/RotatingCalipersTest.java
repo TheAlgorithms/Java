@@ -16,7 +16,7 @@ public class RotatingCalipersTest {
         RotatingCalipers.PointPair result = RotatingCalipers.diameter(convexHull);
 
         assertNotNull(result);
-        assertEquals(5.0, result.distance(), 0.001);
+        assertEquals(4.0, result.distance(), 0.001);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class RotatingCalipersTest {
         List<Point> convexHull = Arrays.asList(new Point(0, 0), new Point(4, 0), new Point(2, 3));
         double result = RotatingCalipers.width(convexHull);
 
-        assertEquals(2.4, result, 0.1);
+        assertEquals(3, result, 0.1);
     }
 
     @Test
