@@ -15,10 +15,10 @@ public final class RotatingCalipers {
     }
 
     // -------------------- Inner Classes --------------------
-    public record PointPair(Point p1, Point p2, double distance) {
+    public static record PointPair(Point p1, Point p2, double distance) {
     }
 
-    public record Rectangle(Point[] corners, double width, double height, double area) {
+    public static record Rectangle(Point[] corners, double width, double height, double area) {
     }
 
     // -------------------- Diameter --------------------
@@ -86,19 +86,13 @@ public final class RotatingCalipers {
 
             double minProjV = Double.MAX_VALUE;
             double maxProjV = -Double.MAX_VALUE;
+
             for (Point p : hull) {
                 double projV = p.x() * vx + p.y() * vy;
-                if (projV < minProjV) {
-                    minProjV = projV;
-                }
-                if (projV > maxProjV) {
-                    maxProjV = projV;
-                }
+                minProjV = Math.min(minProjV, projV);
+                maxProjV = Math.max(maxProjV, projV);
             }
-            double width = maxProjV - minProjV;
-            if (width < minWidth) {
-                minWidth = width;
-            }
+            minWidth = Math.min(minWidth, maxProjV - minProjV);
         }
         return minWidth;
     }
@@ -138,18 +132,10 @@ public final class RotatingCalipers {
             for (Point p : hull) {
                 double projU = p.x() * ux + p.y() * uy;
                 double projV = p.x() * vx + p.y() * vy;
-                if (projU < minU) {
-                    minU = projU;
-                }
-                if (projU > maxU) {
-                    maxU = projU;
-                }
-                if (projV < minV) {
-                    minV = projV;
-                }
-                if (projV > maxV) {
-                    maxV = projV;
-                }
+                minU = Math.min(minU, projU);
+                maxU = Math.max(maxU, projU);
+                minV = Math.min(minV, projV);
+                maxV = Math.max(maxV, projV);
             }
 
             double width = maxU - minU;
@@ -160,8 +146,12 @@ public final class RotatingCalipers {
                 minArea = area;
                 bestWidth = width;
                 bestHeight = height;
-                bestCorners = new Point[] {new Point((int) (ux * minU + vx * minV), (int) (uy * minU + vy * minV)), new Point((int) (ux * maxU + vx * minV), (int) (uy * maxU + vy * minV)), new Point((int) (ux * maxU + vx * maxV), (int) (uy * maxU + vy * maxV)),
-                    new Point((int) (ux * minU + vx * maxV), (int) (uy * minU + vy * maxV))};
+                bestCorners = new Point[] {
+                    new Point((int)(ux * minU + vx * minV), (int)(uy * minU + vy * minV)),
+                    new Point((int)(ux * maxU + vx * minV), (int)(uy * maxU + vy * minV)),
+                    new Point((int)(ux * maxU + vx * maxV), (int)(uy * maxU + vy * maxV)),
+                    new Point((int)(ux * minU + vx * maxV), (int)(uy * minU + vy * maxV))
+                };
             }
         }
 
