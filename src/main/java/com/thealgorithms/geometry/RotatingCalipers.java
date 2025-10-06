@@ -15,10 +15,10 @@ public final class RotatingCalipers {
     }
 
     // -------------------- Inner Classes --------------------
-    public static record PointPair(Point p1, Point p2, double distance) {
+    public record PointPair(Point p1, Point p2, double distance) {
     }
 
-    public static record Rectangle(Point[] corners, double width, double height, double area) {
+    public record Rectangle(Point[] corners, double width, double height, double area) {
     }
 
     // -------------------- Diameter --------------------
