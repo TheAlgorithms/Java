@@ -146,12 +146,8 @@ public final class RotatingCalipers {
                 minArea = area;
                 bestWidth = width;
                 bestHeight = height;
-                bestCorners = new Point[] {
-                    new Point((int)(ux * minU + vx * minV), (int)(uy * minU + vy * minV)),
-                    new Point((int)(ux * maxU + vx * minV), (int)(uy * maxU + vy * minV)),
-                    new Point((int)(ux * maxU + vx * maxV), (int)(uy * maxU + vy * maxV)),
-                    new Point((int)(ux * minU + vx * maxV), (int)(uy * minU + vy * maxV))
-                };
+                bestCorners = new Point[] {new Point((int) (ux * minU + vx * minV), (int) (uy * minU + vy * minV)), new Point((int) (ux * maxU + vx * minV), (int) (uy * maxU + vy * minV)), new Point((int) (ux * maxU + vx * maxV), (int) (uy * maxU + vy * maxV)),
+                    new Point((int) (ux * minU + vx * maxV), (int) (uy * minU + vy * maxV))};
             }
         }
 
