@@ -6,14 +6,18 @@ public final class RemoveStars {
     private RemoveStars() {
     }
     /**
-     * Removes * characters from the given string. According to the follwing rules
-     * You are given a string s, which contains stars *.
-     * In one operation, you can:
-     * Choose a star in s.
-     * Remove the closest non-star character to its left, as well as remove the star itself.
-     * Return the string after all stars have been removed.
-     * @param input The input string from which duplicate characters need to be removed.
-     * @return A string containing no stars as per the given constraints.
+     * Removes stars ('*') from the given string according to the following rules:
+     * <ul>
+     *   <li>For each star in the string, remove the closest non-star character to its left
+     *       along with the star itself.</li>
+     *   <li>Return the final string after performing all removals.</li>
+     *   <li>Given that such operation is always possible for the input</li>
+     * </ul>
+     *
+     * Example: {@code "leet**cod*e" -> "lecoe"}
+     *
+     * @param input The input string possibly containing '*' characters.
+     * @return The resulting string after removing stars as per the rules.
      */
     public static String removeStars(String input) {
         if (input == null || input.isEmpty()) {
