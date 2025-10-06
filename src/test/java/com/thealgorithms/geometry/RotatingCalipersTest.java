@@ -168,4 +168,23 @@ public class RotatingCalipersTest {
         
         assertTrue(rect.toString().contains("Rectangle{area="));
     }
+
+    @Test
+    void testRectangleAreaCalculation() {
+        Point[] vertices = {new Point(0, 0), new Point(1, 0), new Point(1, 1)};
+        RotatingCalipers.Rectangle rect = new RotatingCalipers.Rectangle(vertices);
+        assertEquals(0.0, rect.area, EPSILON);
+    }
+
+    @Test
+    void testDegenerateCase() {
+        List<Point> samePoints = Arrays.asList(
+            new Point(1, 1),
+            new Point(1, 1),
+            new Point(1, 1)
+        );
+        
+        RotatingCalipers.Rectangle rect = RotatingCalipers.minimumBoundingRectangle(samePoints);
+        assertEquals(0.0, rect.area, EPSILON);
+    }
 }
