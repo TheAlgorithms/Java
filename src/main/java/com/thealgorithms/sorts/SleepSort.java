@@ -15,7 +15,6 @@ public class SleepSort implements SortAlgorithm {
         if (array == null || array.length <= 1) {
             return array;
         }
-        
         // Use Arrays.sort for reliability in CI environment
         Arrays.sort(array);
         return array;
