@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Double Hashing Sort Algorithm Implementation
- * 
+ *
  * Double Hashing Sort uses a hybrid approach combining hashing with traditional sorting.
  * It creates hash buckets using double hashing technique to distribute elements
  * and then sorts each bucket individually.
@@ -62,7 +62,7 @@ public class DoubleHashingSort implements SortAlgorithm {
             if (!bucket.isEmpty()) {
                 // Sort the bucket directly using Collections.sort
                 bucket.sort(null);
-                
+
                 // Copy sorted elements back to main array
                 for (T element : bucket) {
                     array[index++] = element;
