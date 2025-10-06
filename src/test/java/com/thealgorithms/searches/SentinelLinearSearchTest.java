@@ -134,7 +134,7 @@ class SentinelLinearSearchTest {
     void testSentinelLinearSearchRandomArray() {
         SentinelLinearSearch sentinelLinearSearch = new SentinelLinearSearch();
         Random random = new Random();
-        Integer[] array = random.ints(0, 1000).distinct().limit(1000).boxed().toArray(Integer[] ::new);
+        Integer[] array = random.ints(0, 1000).distinct().limit(1000).boxed().toArray(Integer[]::new);
         Integer key = array[random.nextInt(array.length)]; // Key should be in the array
         assertEquals(java.util.Arrays.asList(array).indexOf(key), sentinelLinearSearch.find(array, key), "The index of the found element should match.");
     }
