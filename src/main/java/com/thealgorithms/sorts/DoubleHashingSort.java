@@ -1,6 +1,8 @@
 package com.thealgorithms.sorts;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Double Hashing Sort Algorithm Implementation
@@ -41,40 +43,30 @@ public class DoubleHashingSort implements SortAlgorithm {
      * @return sorted array
      */
     private <T extends Comparable<T>> T[] doubleHashingSort(T[] array, int bucketCount) {
-        // Create buckets
-        @SuppressWarnings("unchecked")
-        T[][] buckets = (T[][]) new Comparable[bucketCount][];
-        int[] bucketSizes = new int[bucketCount];
-
-        // Initialize buckets
+        // Create buckets using ArrayList to avoid generic array issues
+        List<List<T>> buckets = new ArrayList<>(bucketCount);
         for (int i = 0; i < bucketCount; i++) {
-            @SuppressWarnings("unchecked")
-            T[] bucket = (T[]) new Comparable[array.length];
-            buckets[i] = bucket;
-            bucketSizes[i] = 0;
+            buckets.add(new ArrayList<>());
         }
 
         // Distribute elements into buckets using double hashing
         for (T element : array) {
             int bucketIndex = getBucketIndex(element, bucketCount);
-            buckets[bucketIndex][bucketSizes[bucketIndex]++] = element;
+            buckets.get(bucketIndex).add(element);
         }
 
         // Sort each bucket and collect results
         int index = 0;
         for (int i = 0; i < bucketCount; i++) {
-            if (bucketSizes[i] > 0) {
-                // Create actual sized array for this bucket
-                @SuppressWarnings("unchecked")
-                T[] bucket = (T[]) new Comparable[bucketSizes[i]];
-                System.arraycopy(buckets[i], 0, bucket, 0, bucketSizes[i]);
-
-                // Sort the bucket
-                Arrays.sort(bucket);
-
-                // Copy back to main array
-                System.arraycopy(bucket, 0, array, index, bucketSizes[i]);
-                index += bucketSizes[i];
+            List<T> bucket = buckets.get(i);
+            if (!bucket.isEmpty()) {
+                // Sort the bucket directly using Collections.sort
+                bucket.sort(null);
+                
+                // Copy sorted elements back to main array
+                for (T element : bucket) {
+                    array[index++] = element;
+                }
             }
         }
 
