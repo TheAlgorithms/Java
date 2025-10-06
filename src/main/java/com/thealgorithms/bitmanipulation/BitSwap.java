@@ -17,12 +17,15 @@ public final class BitSwap {
      * @return The modified value with swapped bits
      * @throws IllegalArgumentException if either position is negative or ≥ 32
      */
+
     public static int bitSwap(int data, final int posA, final int posB) {
         if (posA < 0 || posA >= Integer.SIZE || posB < 0 || posB >= Integer.SIZE) {
             throw new IllegalArgumentException("Bit positions must be between 0 and 31");
         }
 
-        if (SingleBitOperations.getBit(data, posA) != SingleBitOperations.getBit(data, posB)) {
+        boolean bitA = ((data >> posA) & 1) != 0;
+        boolean bitB = ((data >> posB) & 1) != 0;
+        if (bitA != bitB) {
             data ^= (1 << posA) ^ (1 << posB);
         }
         return data;
