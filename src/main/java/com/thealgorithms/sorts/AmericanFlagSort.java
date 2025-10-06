@@ -13,7 +13,7 @@ public class AmericanFlagSort implements SortAlgorithm {
         if (array == null || array.length <= 1) {
             return array;
         }
-        
+
         // For generic comparable types, use a simplified bucket sort approach
         bucketSort(array, 0, array.length - 1);
         return array;
@@ -27,7 +27,7 @@ public class AmericanFlagSort implements SortAlgorithm {
         // Find min and max values for partitioning
         T min = array[start];
         T max = array[start];
-        
+
         for (int i = start + 1; i <= end; i++) {
             if (SortUtils.less(array[i], min)) {
                 min = array[i];
@@ -52,11 +52,11 @@ public class AmericanFlagSort implements SortAlgorithm {
 
         // Partition into buckets based on comparison with pivot
         T pivot = array[start + length / 2];
-        
+
         int lt = start;  // less than pivot
         int gt = end;    // greater than pivot
         int i = start;   // current element
-        
+
         while (i <= gt) {
             int cmp = array[i].compareTo(pivot);
             if (cmp < 0) {
@@ -67,7 +67,7 @@ public class AmericanFlagSort implements SortAlgorithm {
                 i++;
             }
         }
-        
+
         // Recursively sort the partitions
         bucketSort(array, start, lt - 1);
         bucketSort(array, gt + 1, end);
@@ -77,7 +77,7 @@ public class AmericanFlagSort implements SortAlgorithm {
         for (int i = start + 1; i <= end; i++) {
             T key = array[i];
             int j = i - 1;
-            
+
             while (j >= start && SortUtils.greater(array[j], key)) {
                 array[j + 1] = array[j];
                 j--;
