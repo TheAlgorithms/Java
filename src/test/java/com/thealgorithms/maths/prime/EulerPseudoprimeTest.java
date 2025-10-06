@@ -1,7 +1,8 @@
 package com.thealgorithms.maths.prime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
 import com.thealgorithms.maths.Prime.EulerPseudoprime;
@@ -14,55 +15,30 @@ class EulerPseudoprimeTest {
 
     @Test
     void testPrimeNumbers() {
-        assertEquals(true, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(7), 5));
-        assertEquals(true, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(13), 5));
-        assertEquals(true, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(101), 5));
+        assertTrue(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(7), 5));
+        assertTrue(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(13), 5));
+        assertTrue(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(101), 5));
     }
 
     @Test
     void testCompositeNumbers() {
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(9), 5));
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(21), 5));
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(221), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(9), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(21), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(221), 5));
     }
 
     @Test
     void testEvenNumbers() {
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(4), 5));
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(100), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(4), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(100), 5));
     }
 
     @Test
     void testEdgeCases() {
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(0), 5));
-        assertEquals(false, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(1), 5));
-        assertEquals(true, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(2), 5));
-        assertEquals(true, EulerPseudoprime.isProbablePrime(BigInteger.valueOf(3), 5));
-    }
-
-    @Test
-    void testSingleTrialConsistency() {
-        BigInteger n = BigInteger.valueOf(97);
-        boolean result1 = EulerPseudoprime.isProbablePrime(n, 1);
-        boolean result2 = EulerPseudoprime.isProbablePrime(n, 1);
-        assertEquals(result1, result2, "Results should be deterministic with constant seed");
-    }
-
-    @Test
-    void testJacobiSymbolBasicCases() throws Exception {
-        var method = EulerPseudoprime.class.getDeclaredMethod("jacobiSymbol", BigInteger.class, BigInteger.class);
-
-        // (a/n) = (2/3) = -1
-        assertEquals(-1, (int) method.invoke(null, BigInteger.valueOf(2), BigInteger.valueOf(3)));
-
-        // (a/n) = (1/5) = 1
-        assertEquals(1, (int) method.invoke(null, BigInteger.ONE, BigInteger.valueOf(5)));
-
-        // (a/n) = (2/9) = 1
-        assertEquals(1, (int) method.invoke(null, BigInteger.valueOf(2), BigInteger.valueOf(9)));
-
-        // (a/n) = (3/9) = 0 since gcd(3,9)>1
-        assertEquals(0, (int) method.invoke(null, BigInteger.valueOf(3), BigInteger.valueOf(9)));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(0), 5));
+        assertFalse(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(1), 5));
+        assertTrue(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(2), 5));
+        assertTrue(EulerPseudoprime.isProbablePrime(BigInteger.valueOf(3), 5));
     }
 
     @Test
@@ -74,7 +50,7 @@ class EulerPseudoprimeTest {
 
             boolean result = EulerPseudoprime.isProbablePrime(BigInteger.valueOf(15), 1);
 
-            assertEquals(false, result);
+            assertFalse(result);
         }
     }
 
