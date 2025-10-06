@@ -15,13 +15,13 @@ import java.util.Random;
  * It may still incorrectly identify a composite as “probably prime” (Euler pseudoprime),
  * but such cases are rare.
  */
-public class EulerPseudoprime {
+public final class EulerPseudoprime {
 
     private EulerPseudoprime() {
         // Private constructor to prevent instantiation.
     }
 
-    private static final Random random = new Random(1);
+    private static final Random RANDOM = new Random(1);
 
     /**
      * Performs the Euler primality test for a given number.
@@ -101,7 +101,7 @@ public class EulerPseudoprime {
     private static BigInteger uniformRandom(BigInteger min, BigInteger max) {
         BigInteger result;
         do {
-            result = new BigInteger(max.bitLength(), random);
+            result = new BigInteger(max.bitLength(), RANDOM);
         } while (result.compareTo(min) < 0 || result.compareTo(max) > 0);
         return result;
     }
