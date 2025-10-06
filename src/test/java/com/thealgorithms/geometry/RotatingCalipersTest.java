@@ -19,7 +19,7 @@ public class RotatingCalipersTest {
             new Point(3, 4),
             new Point(0, 4)
         );
-        
+
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(triangle);
         assertEquals(5.0, diameter.distance, EPSILON);
     }
@@ -32,7 +32,7 @@ public class RotatingCalipersTest {
             new Point(2, 2),
             new Point(0, 2)
         );
-        
+
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(square);
         assertEquals(Math.sqrt(8), diameter.distance, EPSILON);
     }
@@ -43,7 +43,7 @@ public class RotatingCalipersTest {
             new Point(0, 0),
             new Point(3, 4)
         );
-        
+
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(twoPoints);
         assertEquals(5.0, diameter.distance, EPSILON);
     }
@@ -61,7 +61,7 @@ public class RotatingCalipersTest {
             new Point(4, 0),
             new Point(2, 3)
         );
-        
+
         double width = RotatingCalipers.width(triangle);
         assertTrue(width > 0);
         assertTrue(width <= 4.0); // Width should be less than or equal to base
@@ -75,7 +75,7 @@ public class RotatingCalipersTest {
             new Point(2, 2),
             new Point(0, 2)
         );
-        
+
         double width = RotatingCalipers.width(square);
         assertEquals(2.0, width, EPSILON);
     }
@@ -96,7 +96,7 @@ public class RotatingCalipersTest {
             new Point(4, 0),
             new Point(2, 3)
         );
-        
+
         RotatingCalipers.Rectangle rect = RotatingCalipers.minimumBoundingRectangle(triangle);
         assertTrue(rect.area > 0);
         assertTrue(rect.area <= 12.0); // Should be less than axis-aligned bounding box
@@ -110,7 +110,7 @@ public class RotatingCalipersTest {
             new Point(2, 2),
             new Point(0, 2)
         );
-        
+
         RotatingCalipers.Rectangle rect = RotatingCalipers.minimumBoundingRectangle(square);
         assertEquals(4.0, rect.area, EPSILON);
     }
@@ -135,13 +135,13 @@ public class RotatingCalipersTest {
             new Point(0, 3),
             new Point(0, 1)
         );
-        
+
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(hexagon);
         assertTrue(diameter.distance > 0);
-        
+
         double width = RotatingCalipers.width(hexagon);
         assertTrue(width > 0);
-        
+
         RotatingCalipers.Rectangle rect = RotatingCalipers.minimumBoundingRectangle(hexagon);
         assertTrue(rect.area > 0);
     }
@@ -151,7 +151,7 @@ public class RotatingCalipersTest {
         Point p1 = new Point(0, 0);
         Point p2 = new Point(3, 4);
         RotatingCalipers.PointPair pair = new RotatingCalipers.PointPair(p1, p2);
-        
+
         String expected = "PointPair{(0, 0), (3, 4), distance=5.00}";
         assertEquals(expected, pair.toString());
     }
@@ -165,7 +165,7 @@ public class RotatingCalipersTest {
             new Point(0, 2)
         };
         RotatingCalipers.Rectangle rect = new RotatingCalipers.Rectangle(vertices);
-        
+
         assertTrue(rect.toString().contains("Rectangle{area="));
     }
 
@@ -183,7 +183,7 @@ public class RotatingCalipersTest {
             new Point(1, 1),
             new Point(1, 1)
         );
-        
+
         RotatingCalipers.Rectangle rect = RotatingCalipers.minimumBoundingRectangle(samePoints);
         assertEquals(0.0, rect.area, EPSILON);
     }
