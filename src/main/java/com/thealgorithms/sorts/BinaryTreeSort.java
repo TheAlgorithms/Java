@@ -27,7 +27,7 @@ public class BinaryTreeSort implements SortAlgorithm {
         if (array == null || array.length <= 1) {
             return array;
         }
-        
+
         TreeNode<T> root = null;
         for (T value : array) {
             root = insert(root, value);
@@ -35,11 +35,11 @@ public class BinaryTreeSort implements SortAlgorithm {
 
         List<T> result = new ArrayList<>();
         inorder(root, result);
-        
+
         for (int i = 0; i < array.length; i++) {
             array[i] = result.get(i);
         }
-        
+
         return array;
     }
 
