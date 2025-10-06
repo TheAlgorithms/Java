@@ -45,7 +45,9 @@ public class EulerPseudoprime {
         for (int i = 0; i < trials; i++) {
             BigInteger a = uniformRandom(BigInteger.TWO, n.subtract(BigInteger.TWO));
             BigInteger jacobi = BigInteger.valueOf(jacobiSymbol(a, n));
-            if (jacobi.equals(BigInteger.ZERO)) return false;
+            if (jacobi.equals(BigInteger.ZERO)) {
+                return false;
+            }
 
             BigInteger exp = n.subtract(BigInteger.ONE).divide(BigInteger.TWO);
             BigInteger modExp = a.modPow(exp, n);
@@ -59,21 +61,10 @@ public class EulerPseudoprime {
     }
 
     /**
-     * Generates a random BigInteger between {@code min} and {@code max}, inclusive.
-     */
-    private static BigInteger uniformRandom(BigInteger min, BigInteger max) {
-        BigInteger result;
-        do {
-            result = new BigInteger(max.bitLength(), random);
-        } while (result.compareTo(min) < 0 || result.compareTo(max) > 0);
-        return result;
-    }
-
-    /**
      * Computes the Jacobi symbol (a/n).
      * Assumes n is positive and odd.
      */
-    private static int jacobiSymbol(BigInteger a, BigInteger n) {
+    public static int jacobiSymbol(BigInteger a, BigInteger n) {
         if (n.signum() <= 0 || n.mod(BigInteger.TWO).equals(BigInteger.ZERO)) {
             throw new IllegalArgumentException("n must be positive and odd.");
         }
@@ -102,5 +93,16 @@ public class EulerPseudoprime {
         }
 
         return n.equals(BigInteger.ONE) ? result : 0;
+    }
+
+    /**
+     * Generates a random BigInteger between {@code min} and {@code max}, inclusive.
+     */
+    private static BigInteger uniformRandom(BigInteger min, BigInteger max) {
+        BigInteger result;
+        do {
+            result = new BigInteger(max.bitLength(), random);
+        } while (result.compareTo(min) < 0 || result.compareTo(max) > 0);
+        return result;
     }
 }
