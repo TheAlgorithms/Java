@@ -16,12 +16,12 @@ public class RotatingCalipersTest {
     void testDiameterSimpleTriangle() {
         List<Point> triangle = Arrays.asList(
             new Point(0, 0),
-            new Point(4, 0),
-            new Point(2, 3)
+            new Point(3, 4),
+            new Point(0, 4)
         );
         
         RotatingCalipers.PointPair diameter = RotatingCalipers.diameter(triangle);
-        assertEquals(4.0, diameter.distance, EPSILON);
+        assertEquals(5.0, diameter.distance, EPSILON);
     }
 
     @Test
