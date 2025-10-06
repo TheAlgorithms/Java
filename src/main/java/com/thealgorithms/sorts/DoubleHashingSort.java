@@ -24,6 +24,13 @@ public class DoubleHashingSort implements SortAlgorithm {
             return array;
         }
 
+        // Check for null values in the array - tests expect NullPointerException
+        for (T element : array) {
+            if (element == null) {
+                throw new NullPointerException("Array contains null values");
+            }
+        }
+
         // Use a robust comparator that handles all edge cases
         Arrays.sort(array, new RobustComparator<>());
         return array;
@@ -33,14 +40,12 @@ public class DoubleHashingSort implements SortAlgorithm {
      * A robust comparator that handles edge cases for different data types
      */
     private static class RobustComparator<T extends Comparable<T>> implements Comparator<T> {
-        
+
         @Override
         @SuppressWarnings("unchecked")
         public int compare(T a, T b) {
-            // Handle null values
-            if (a == null && b == null) return 0;
-            if (a == null) return -1;
-            if (b == null) return 1;
+            // Note: nulls are already checked and rejected in sort() method
+            // so we don't need null handling here
 
             // Handle floating point numbers with special values
             if (a instanceof Double && b instanceof Double) {
