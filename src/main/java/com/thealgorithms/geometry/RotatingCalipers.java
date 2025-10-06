@@ -15,11 +15,9 @@ public final class RotatingCalipers {
     }
 
     // -------------------- Inner Classes --------------------
-    public record PointPair(Point p1, Point p2, double distance) {
-    }
+    public record PointPair(Point p1, Point p2, double distance) {}
 
-    public record Rectangle(Point[] corners, double width, double height, double area) {
-    }
+    public record Rectangle(Point[] corners, double width, double height, double area) {}
 
     // -------------------- Diameter --------------------
     public static PointPair diameter(List<Point> points) {
@@ -29,15 +27,14 @@ public final class RotatingCalipers {
 
         List<Point> hull = ConvexHull.convexHullRecursive(points);
         orderCounterClockwise(hull);
-        int n = hull.size();
 
         double maxDist = 0;
         Point bestA = hull.get(0);
         Point bestB = hull.get(0);
-
+        int n = hull.size();
         int j = 1;
-        for (int i = 0; i < n; i++) {
-            Point a = hull.get(i);
+
+        for (Point a : hull) {
             while (true) {
                 Point b1 = hull.get(j);
                 Point b2 = hull.get((j + 1) % n);
@@ -56,6 +53,7 @@ public final class RotatingCalipers {
                 bestB = hull.get(j);
             }
         }
+
         return new PointPair(bestA, bestB, Math.sqrt(maxDist));
     }
 
@@ -67,9 +65,9 @@ public final class RotatingCalipers {
 
         List<Point> hull = ConvexHull.convexHullRecursive(points);
         orderCounterClockwise(hull);
-        int n = hull.size();
 
         double minWidth = Double.MAX_VALUE;
+        int n = hull.size();
 
         for (int i = 0; i < n; i++) {
             Point a = hull.get(i);
@@ -86,7 +84,6 @@ public final class RotatingCalipers {
 
             double minProjV = Double.MAX_VALUE;
             double maxProjV = -Double.MAX_VALUE;
-
             for (Point p : hull) {
                 double projV = p.x() * vx + p.y() * vy;
                 minProjV = Math.min(minProjV, projV);
@@ -94,6 +91,7 @@ public final class RotatingCalipers {
             }
             minWidth = Math.min(minWidth, maxProjV - minProjV);
         }
+
         return minWidth;
     }
 
@@ -105,12 +103,12 @@ public final class RotatingCalipers {
 
         List<Point> hull = ConvexHull.convexHullRecursive(points);
         orderCounterClockwise(hull);
-        int n = hull.size();
 
         double minArea = Double.MAX_VALUE;
         Point[] bestCorners = null;
         double bestWidth = 0;
         double bestHeight = 0;
+        int n = hull.size();
 
         for (int i = 0; i < n; i++) {
             Point a = hull.get(i);
@@ -132,10 +130,18 @@ public final class RotatingCalipers {
             for (Point p : hull) {
                 double projU = p.x() * ux + p.y() * uy;
                 double projV = p.x() * vx + p.y() * vy;
-                minU = Math.min(minU, projU);
-                maxU = Math.max(maxU, projU);
-                minV = Math.min(minV, projV);
-                maxV = Math.max(maxV, projV);
+                if (projU < minU) {
+                    minU = projU;
+                }
+                if (projU > maxU) {
+                    maxU = projU;
+                }
+                if (projV < minV) {
+                    minV = projV;
+                }
+                if (projV > maxV) {
+                    maxV = projV;
+                }
             }
 
             double width = maxU - minU;
@@ -157,9 +163,10 @@ public final class RotatingCalipers {
     // -------------------- Helper Methods --------------------
     private static void orderCounterClockwise(List<Point> points) {
         double area = 0.0;
-        for (int i = 0; i < points.size(); i++) {
+        int n = points.size();
+        for (int i = 0; i < n; i++) {
             Point a = points.get(i);
-            Point b = points.get((i + 1) % points.size());
+            Point b = points.get((i + 1) % n);
             area += (a.x() * b.y()) - (b.x() * a.y());
         }
         if (area < 0) {
