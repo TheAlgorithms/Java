@@ -1,7 +1,8 @@
-package test.java.com.thealgorithms.backtracking;
+package com.thealgorithms.backtracking;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SudokuSolverTest {
 
