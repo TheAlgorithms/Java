@@ -1,4 +1,4 @@
-package com.thealgorithms.datastructures.stacks;
+package com.thealgorithms.stacks;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -38,21 +38,19 @@ public class NearestElementTest {
         int[] arr = {};
         assertArrayEquals(new int[]{}, NearestElement.nearestGreaterToRight(arr));
         assertArrayEquals(new int[]{}, NearestElement.nearestGreaterToLeft(arr));
-}
+    }
 
     @Test
     void testAllEqualElements() {
         int[] arr = {5, 5, 5, 5};
         assertArrayEquals(new int[]{-1, -1, -1, -1}, NearestElement.nearestGreaterToRight(arr));
         assertArrayEquals(new int[]{-1, -1, -1, -1}, NearestElement.nearestGreaterToLeft(arr));
-}
+    }
 
     @Test
     void testPrivateConstructor() throws Exception {
         var constructor = NearestElement.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         constructor.newInstance();
-}
-
-
+    }
 }
