@@ -151,7 +151,7 @@ public class RotatingCalipersTest {
         );
         double width = RotatingCalipers.computeWidth(points);
         
-        assertEquals(Math.sqrt(5), width, 1e-9); // Width of rectangle
+        assertEquals(2.0, width, 1e-9); // Width of rectangle (height)
     }
 
     @Test

@@ -135,23 +135,15 @@ public final class RotatingCalipers {
         int n = hull.size();
         double minWidth = Double.MAX_VALUE;
         
-        int j = 1;
+        // Use rotating calipers to find minimum width
         for (int i = 0; i < n; i++) {
             Point p1 = hull.get(i);
             Point p2 = hull.get((i + 1) % n);
             
-            while (true) {
-                Point next = hull.get((j + 1) % n);
-                double dist1 = distanceToLine(p1, p2, hull.get(j));
-                double dist2 = distanceToLine(p1, p2, next);
-                
-                if (dist2 > dist1) {
-                    j = (j + 1) % n;
-                } else {
-                    break;
-                }
-            }
+            // Find the antipodal point for this edge
+            int j = findAntipodalPoint(hull, i);
             
+            // Compute width as distance between parallel lines
             double width = distanceToLine(p1, p2, hull.get(j));
             minWidth = Math.min(minWidth, width);
         }
