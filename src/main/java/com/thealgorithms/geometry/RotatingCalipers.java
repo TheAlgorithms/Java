@@ -35,7 +35,7 @@ public final class RotatingCalipers {
     /**
      * Represents a pair of points with their distance.
      */
-    public static record PointPair(Point p1, Point p2, double distance) {
+    public record PointPair(Point p1, Point p2, double distance) {
         @Override
         public String toString() {
             return String.format("PointPair(%s, %s, distance=%.2f)", p1, p2, distance);
@@ -45,7 +45,7 @@ public final class RotatingCalipers {
     /**
      * Represents a rectangle with its area.
      */
-    public static record Rectangle(Point bottomLeft, Point topRight, double area) {
+    public record Rectangle(Point bottomLeft, Point topRight, double area) {
         @Override
         public String toString() {
             return String.format("Rectangle(%s, %s, area=%.2f)", bottomLeft, topRight, area);
