@@ -8,8 +8,23 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class AlphabeticalTest {
 
     @ParameterizedTest(name = "\"{0}\" → Expected: {1}")
-    @CsvSource({"'abcdefghijklmno', true", "'abcdxxxyzzzz', true", "'123a', false", "'abcABC', false", "'abcdefghikjlmno', false", "'aBC', true", "'abc', true", "'xyzabc', false", "'abcxyz', true", "'', false", "'1', false"})
+    @CsvSource({
+            "'abcdefghijklmno', true",
+            "'abcdxxxyzzzz', true",
+            "'123a', false",
+            "'abcABC', false",
+            "'abcdefghikjlmno', false",
+            "'aBC', true",
+            "'abc', true",
+            "'xyzabc', false",
+            "'abcxyz', true",
+            "'', false",
+            "'1', false",
+            "'abc!', false",    // <--- string ending with non-letter
+            "'ABc1', false"     // <--- another example
+    })
     void testIsAlphabetical(String input, boolean expected) {
         assertEquals(expected, Alphabetical.isAlphabetical(input));
     }
+
 }
