@@ -55,19 +55,28 @@ public final class WusLine {
     }
 
     /**
+     * Internal class to hold processed endpoint data.
+     */
+    private static class EndpointData {
+        final int xPixel;
+        final int yPixel;
+        final double yEnd;
+        final double xGap;
+
+        EndpointData(int xPixel, int yPixel, double yEnd, double xGap) {
+            this.xPixel = xPixel;
+            this.yPixel = yPixel;
+            this.yEnd = yEnd;
+            this.xGap = xGap;
+        }
+    }
+
+    /**
      * Draws an anti-aliased line using Wu's algorithm.
      *
      * The algorithm produces smooth lines by drawing pairs of pixels at each
      * x-coordinate (or y-coordinate for steep lines), with intensities based on
      * the line's distance from pixel centers.
-     *
-     * Example usage:
-     * {@code
-     * List<Pixel> linePixels = WusLine.drawLine(10, 20, 100, 80);
-     * for (Pixel p : linePixels) {
-     *     drawPixel(p.point.x, p.point.y, p.intensity);
-     * }
-     * }
      *
      * @param x0 the x-coordinate of the line's start point
      * @param y0 the y-coordinate of the line's start point
@@ -222,22 +231,5 @@ public final class WusLine {
      */
     private static double round(double x) {
         return Math.floor(x + 0.5);
-    }
-
-    /**
-     * Internal class to hold processed endpoint data.
-     */
-    private static class EndpointData {
-        final int xPixel;
-        final int yPixel;
-        final double yEnd;
-        final double xGap;
-
-        EndpointData(int xPixel, int yPixel, double yEnd, double xGap) {
-            this.xPixel = xPixel;
-            this.yPixel = yPixel;
-            this.yEnd = yEnd;
-            this.xGap = xGap;
-        }
     }
 }
