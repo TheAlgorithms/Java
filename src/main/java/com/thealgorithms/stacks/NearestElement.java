@@ -3,25 +3,23 @@ package com.thealgorithms.stacks;
 import java.util.Stack;
 
 /**
- * This class provides four algorithms to find the nearest greater or smaller elements
- * on either side of each element in an array using a stack.
+ * Implementation of classic stack-based algorithms:
+ * 1. Nearest Greater to Right
+ * 2. Nearest Greater to Left
+ * 3. Nearest Smaller to Right
+ * 4. Nearest Smaller to Left
  *
- * <p>These algorithms are fundamental examples of the monotonic stack approach, commonly
- * used in competitive programming and technical interviews. Each method runs in O(n)
- * time complexity and O(n) space complexity.
+ * These algorithms are fundamental for technical interviews and array-stack problems.
  */
 public final class NearestElement {
 
     // Private constructor to prevent instantiation
-    private NearestElement() {}
+    private NearestElement() {
+    }
 
-    /**
-     * Finds the nearest greater element to the right for each element in the array.
-     *
-     * @param arr the input array
-     * @return an array containing the nearest greater element to the right for each element
-     */
     public static int[] nearestGreaterToRight(int[] arr) {
+        if (arr == null) throw new IllegalArgumentException("Input array cannot be null");
+
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
@@ -36,13 +34,9 @@ public final class NearestElement {
         return result;
     }
 
-    /**
-     * Finds the nearest greater element to the left for each element in the array.
-     *
-     * @param arr the input array
-     * @return an array containing the nearest greater element to the left for each element
-     */
     public static int[] nearestGreaterToLeft(int[] arr) {
+        if (arr == null) throw new IllegalArgumentException("Input array cannot be null");
+
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
@@ -57,13 +51,9 @@ public final class NearestElement {
         return result;
     }
 
-    /**
-     * Finds the nearest smaller element to the right for each element in the array.
-     *
-     * @param arr the input array
-     * @return an array containing the nearest smaller element to the right for each element
-     */
     public static int[] nearestSmallerToRight(int[] arr) {
+        if (arr == null) throw new IllegalArgumentException("Input array cannot be null");
+
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
@@ -78,13 +68,9 @@ public final class NearestElement {
         return result;
     }
 
-    /**
-     * Finds the nearest smaller element to the left for each element in the array.
-     *
-     * @param arr the input array
-     * @return an array containing the nearest smaller element to the left for each element
-     */
     public static int[] nearestSmallerToLeft(int[] arr) {
+        if (arr == null) throw new IllegalArgumentException("Input array cannot be null");
+
         int n = arr.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();

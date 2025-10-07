@@ -19,9 +19,9 @@ class NearestElementTest {
 
     static Stream<Arguments> provideGreaterToRightTestCases() {
         return Stream.of(
-                Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {5, 10, 10, -1, -1}),
-                Arguments.of(new int[] {5}, new int[] {-1}),
-                Arguments.of(new int[] {}, new int[] {})
+            Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {5, 10, 10, -1, -1}),
+            Arguments.of(new int[] {5}, new int[] {-1}),
+            Arguments.of(new int[] {}, new int[] {})
         );
     }
 
@@ -33,9 +33,9 @@ class NearestElementTest {
 
     static Stream<Arguments> provideGreaterToLeftTestCases() {
         return Stream.of(
-                Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {-1, -1, 5, -1, 10}),
-                Arguments.of(new int[] {5}, new int[] {-1}),
-                Arguments.of(new int[] {}, new int[] {})
+            Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {-1, -1, 5, -1, 10}),
+            Arguments.of(new int[] {5}, new int[] {-1}),
+            Arguments.of(new int[] {}, new int[] {})
         );
     }
 
@@ -47,9 +47,9 @@ class NearestElementTest {
 
     static Stream<Arguments> provideSmallerToRightTestCases() {
         return Stream.of(
-                Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {2, 2, -1, 8, -1}),
-                Arguments.of(new int[] {5}, new int[] {-1}),
-                Arguments.of(new int[] {}, new int[] {})
+            Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {2, 2, -1, 8, -1}),
+            Arguments.of(new int[] {5}, new int[] {-1}),
+            Arguments.of(new int[] {}, new int[] {})
         );
     }
 
@@ -61,9 +61,9 @@ class NearestElementTest {
 
     static Stream<Arguments> provideSmallerToLeftTestCases() {
         return Stream.of(
-                Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {-1, 4, -1, 2, 2}),
-                Arguments.of(new int[] {5}, new int[] {-1}),
-                Arguments.of(new int[] {}, new int[] {})
+            Arguments.of(new int[] {4, 5, 2, 10, 8}, new int[] {-1, 4, -1, 2, 2}),
+            Arguments.of(new int[] {5}, new int[] {-1}),
+            Arguments.of(new int[] {}, new int[] {})
         );
     }
 
