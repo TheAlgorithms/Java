@@ -119,32 +119,23 @@ public class BloomFilter<T> {
             String keyString;
             if (key instanceof byte[]) {
                 keyString = Arrays.toString((byte[]) key);
-            }
-            else if (key instanceof short[]) {
+            } else if (key instanceof short[]) {
                 keyString = Arrays.toString((short[]) key);
-            }
-            else if (key instanceof int[]) {
+            } else if (key instanceof int[]) {
                 keyString = Arrays.toString((int[]) key);
-            }
-            else if (key instanceof long[]) {
+            } else if (key instanceof long[]) {
                 keyString = Arrays.toString((long[]) key);
-            }
-            else if (key instanceof char[]) {
+            } else if (key instanceof char[]) {
                 keyString = Arrays.toString((char[]) key);
-            }
-            else if (key instanceof float[]) {
+            } else if (key instanceof float[]) {
                 keyString = Arrays.toString((float[]) key);
-            }
-            else if (key instanceof double[]) {
+            } else if (key instanceof double[]) {
                 keyString = Arrays.toString((double[]) key);
-            }
-            else if (key instanceof boolean[]) {
+            } else if (key instanceof boolean[]) {
                 keyString = Arrays.toString((boolean[]) key);
-            }
-            else if (key instanceof Object[]) {
+            } else if (key instanceof Object[]) {
                 keyString = Arrays.deepToString((Object[]) key);
-            }
-            else {
+            } else {
                 keyString = String.valueOf(key);
             }
             return index * asciiString(String.valueOf(keyString));
