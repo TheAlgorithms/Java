@@ -32,4 +32,27 @@ public class NearestElementTest {
         int[] expected = {-1, 4, -1, 2, 2};
         assertArrayEquals(expected, NearestElement.nearestSmallerToLeft(arr));
     }
+
+    @Test
+    void testEmptyArray() {
+        int[] arr = {};
+        assertArrayEquals(new int[]{}, NearestElement.nearestGreaterToRight(arr));
+        assertArrayEquals(new int[]{}, NearestElement.nearestGreaterToLeft(arr));
+}
+
+    @Test
+    void testAllEqualElements() {
+        int[] arr = {5, 5, 5, 5};
+        assertArrayEquals(new int[]{-1, -1, -1, -1}, NearestElement.nearestGreaterToRight(arr));
+        assertArrayEquals(new int[]{-1, -1, -1, -1}, NearestElement.nearestGreaterToLeft(arr));
+}
+
+    @Test
+    void testPrivateConstructor() throws Exception {
+        var constructor = NearestElement.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance();
+}
+
+
 }
