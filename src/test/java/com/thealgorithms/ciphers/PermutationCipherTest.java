@@ -246,8 +246,7 @@ class PermutationCipherTest {
         // then
         // Block 1: "HEL" -> positions {3,1,2} -> "LHE"
         // Block 2: "LOX" -> positions {3,1,2} -> "XLO"
-        assertEquals("LHEXLO", encrypted);
-        
+    assertEquals("LHEXLO", encrypted);
         // Verify decryption
         String decrypted = cipher.decrypt(encrypted, key);
         assertEquals("HELLO", decrypted);
