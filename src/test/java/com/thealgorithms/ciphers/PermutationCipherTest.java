@@ -290,4 +290,35 @@ class PermutationCipherTest {
         assertEquals("IDENTITY", encrypted); // Should remain unchanged
         assertEquals("IDENTITY", decrypted);
     }
+
+    @Test
+    void testEmptyStringRemovePadding() {
+        // given - Test to cover line 178 (empty string case in removePadding)
+        String ciphertext = "";
+        int[] key = {2, 1, 3};
+
+        // when
+        String decrypted = cipher.decrypt(ciphertext, key);
+
+        // then
+        assertEquals("", decrypted); // Should return empty string directly
+    }
+
+    @Test
+    void testBlockShorterThanKey() {
+        // given - Test to cover line 139 (block length != key length case)
+        // This is a defensive case where permuteBlock might receive a block shorter than key
+        // We can test this by manually creating a scenario with malformed ciphertext
+        String malformedCiphertext = "AB"; // Length 2, but key length is 3
+        int[] key = {3, 1, 2}; // Key length is 3
+
+        // when - This should trigger the padding logic in permuteBlock during decryption
+        String decrypted = cipher.decrypt(malformedCiphertext, key);
+
+        // then - The method should handle the short block gracefully
+        // "AB" gets padded to "ABX", then permuted with inverse key {2,3,1}
+        // inverse key {2,3,1} means: pos 2→1st, pos 3→2nd, pos 1→3rd = "BXA"
+        // Padding removal only removes trailing X's, so "BXA" remains as is
+        assertEquals("BXA", decrypted);
+    }
 }
