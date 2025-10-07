@@ -1,0 +1,65 @@
+import java.util.Stack;
+
+public class InfixToPostfix {
+
+    // Function to define operator precedence
+    static int precedence(char op) {
+        if (op == '+' || op == '-') return 1;
+        if (op == '*' || op == '/') return 2;
+        if (op == '^') return 3;
+        return 0;
+    }
+
+    // Function to check if a character is an operator
+    static boolean isOperator(char c) {
+        return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
+    }
+
+    // Function to convert infix to postfix
+    static String infixToPostfix(String infix) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder postfix = new StringBuilder();
+
+        for (int i = 0; i < infix.length(); i++) {
+            char c = infix.charAt(i);
+
+            // If operand, add it to output
+            if (Character.isLetterOrDigit(c)) {
+                postfix.append(c);
+            }
+            // If '(', push to stack
+            else if (c == '(') {
+                stack.push(c);
+            }
+            // If ')', pop until '('
+            else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    postfix.append(stack.pop());
+                }
+                stack.pop(); // remove '('
+            }
+            // If operator
+            else if (isOperator(c)) {
+                while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(c)) {
+                    postfix.append(stack.pop());
+                }
+                stack.push(c);
+            }
+        }
+
+        // Pop remaining operators
+        while (!stack.isEmpty()) {
+            postfix.append(stack.pop());
+        }
+
+        return postfix.toString();
+    }
+
+    // Main function
+    public static void main(String[] args) {
+        String infix = "A+B*C-D";
+        System.out.println("Infix Expression: " + infix);
+        String postfix = infixToPostfix(infix);
+        System.out.println("Postfix Expression: " + postfix);
+    }
+}
