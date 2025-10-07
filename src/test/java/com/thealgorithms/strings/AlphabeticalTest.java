@@ -20,8 +20,8 @@ public class AlphabeticalTest {
             "'abcxyz', true",
             "'', false",
             "'1', false",
-            "'abc!', false",    // <--- string ending with non-letter
-            "'ABc1', false"     // <--- another example
+            "'abc!', false",   // <-- missing coverage
+            "'ABc1', false"    // <-- optional extra
     })
     void testIsAlphabetical(String input, boolean expected) {
         assertEquals(expected, Alphabetical.isAlphabetical(input));
