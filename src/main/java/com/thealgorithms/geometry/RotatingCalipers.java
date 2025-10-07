@@ -288,13 +288,13 @@ public final class RotatingCalipers {
         // Find bottommost point (lowest y, then leftmost x)
         Point bottomMost = hull.get(0);
         int bottomIndex = 0;
-        
+
         for (int i = 1; i < hull.size(); i++) {
             Point current = hull.get(i);
             // Check if current point is better than current best
-            boolean isBetter = current.y() < bottomMost.y() || 
+            boolean isBetter = current.y() < bottomMost.y() ||
                               (current.y() == bottomMost.y() && current.x() < bottomMost.x());
-            
+
             if (isBetter) {
                 bottomMost = current;
                 bottomIndex = i;
