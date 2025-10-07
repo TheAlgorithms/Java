@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
+import java.util.Arrays;
 import java.util.BitSet;
 
 /**
@@ -115,7 +116,38 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            return index * asciiString(String.valueOf(key));
+            String keyString;
+            if (key instanceof byte[]) {
+                keyString = Arrays.toString((byte[]) key);
+            }
+            else if (key instanceof short[]) {
+                keyString = Arrays.toString((short[]) key);
+            }
+            else if (key instanceof int[]) {
+                keyString = Arrays.toString((int[]) key);
+            }
+            else if (key instanceof long[]) {
+                keyString = Arrays.toString((long[]) key);
+            }
+            else if (key instanceof char[]) {
+                keyString = Arrays.toString((char[]) key);
+            }
+            else if (key instanceof float[]) {
+                keyString = Arrays.toString((float[]) key);
+            }
+            else if (key instanceof double[]) {
+                keyString = Arrays.toString((double[]) key);
+            }
+            else if (key instanceof boolean[]) {
+                keyString = Arrays.toString((boolean[]) key);
+            }
+            else if (key instanceof Object[]) {
+                keyString = Arrays.deepToString((Object[]) key);
+            }
+            else {
+                keyString = String.valueOf(key);
+            }
+            return index * asciiString(String.valueOf(keyString));
         }
 
         /**
