@@ -84,10 +84,11 @@ public final class RotatingCalipers {
         double maxDistance = 0.0;
 
         int j = 1;
-        // Indexed loop required for rotating calipers algorithm
+        // Rotating calipers algorithm requires indexed access for antipodal point tracking
         for (int i = 0; i < n; i++) {
             Point p1 = hull.get(i);
 
+            // Find antipodal point for current vertex
             while (true) {
                 Point next = hull.get((j + 1) % n);
                 double dist1 = distance(p1, hull.get(j));
@@ -284,13 +285,18 @@ public final class RotatingCalipers {
             return hull;
         }
 
+        // Find bottommost point (lowest y, then leftmost x)
         Point bottomMost = hull.get(0);
         int bottomIndex = 0;
-        // Must check all points to find the true bottommost point
+        
         for (int i = 1; i < hull.size(); i++) {
-            Point p = hull.get(i);
-            if (p.y() < bottomMost.y() || (p.y() == bottomMost.y() && p.x() < bottomMost.x())) {
-                bottomMost = p;
+            Point current = hull.get(i);
+            // Check if current point is better than current best
+            boolean isBetter = current.y() < bottomMost.y() || 
+                              (current.y() == bottomMost.y() && current.x() < bottomMost.x());
+            
+            if (isBetter) {
+                bottomMost = current;
                 bottomIndex = i;
             }
         }
