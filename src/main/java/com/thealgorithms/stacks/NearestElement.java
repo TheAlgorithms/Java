@@ -13,7 +13,8 @@ import java.util.Stack;
  */
 public final class NearestElement {
     // Private constructor to prevent instantiation
-    private NearestElement() {}
+    private NearestElement() {
+    }
 
     /** Finds the nearest greater element to the right for each element in the array. */
     public static int[] nearestGreaterToRight(int[] arr) {
