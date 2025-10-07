@@ -1,6 +1,7 @@
 package com.thealgorithms.geometry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public final class RotatingCalipers {
      * @return PointPair containing the two points with maximum distance and the distance
      * @throws IllegalArgumentException if points is null or has less than 2 points
      */
-    public static PointPair computeDiameter(List<Point> points) {
+    public static PointPair computeDiameter(Collection<Point> points) {
         if (points == null || points.size() < 2) {
             throw new IllegalArgumentException("Points list must contain at least 2 points");
         }
@@ -83,6 +84,7 @@ public final class RotatingCalipers {
         double maxDistance = 0.0;
 
         int j = 1;
+        // Indexed loop required for rotating calipers algorithm
         for (int i = 0; i < n; i++) {
             Point p1 = hull.get(i);
 
@@ -116,7 +118,7 @@ public final class RotatingCalipers {
      * @return The minimum width of the polygon
      * @throws IllegalArgumentException if points is null or has less than 2 points
      */
-    public static double computeWidth(List<Point> points) {
+    public static double computeWidth(Collection<Point> points) {
         if (points == null || points.size() < 2) {
             throw new IllegalArgumentException("Points list must contain at least 2 points");
         }
@@ -158,7 +160,7 @@ public final class RotatingCalipers {
      * @return Rectangle containing the minimum-area bounding rectangle
      * @throws IllegalArgumentException if points is null or has less than 2 points
      */
-    public static Rectangle computeMinimumAreaBoundingRectangle(List<Point> points) {
+    public static Rectangle computeMinimumAreaBoundingRectangle(Collection<Point> points) {
         if (points == null || points.size() < 2) {
             throw new IllegalArgumentException("Points list must contain at least 2 points");
         }
@@ -284,6 +286,7 @@ public final class RotatingCalipers {
 
         Point bottomMost = hull.get(0);
         int bottomIndex = 0;
+        // Must check all points to find the true bottommost point
         for (int i = 1; i < hull.size(); i++) {
             Point p = hull.get(i);
             if (p.y() < bottomMost.y() || (p.y() == bottomMost.y() && p.x() < bottomMost.x())) {
