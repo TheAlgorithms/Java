@@ -178,7 +178,7 @@ public final class DamerauLevenshteinDistance {
         int substitution = dp[i][j] + cost;
         int insertion = dp[i + 1][j] + 1;
         int deletion = dp[i][j + 1] + 1;
-        int transposition = dp[lastMatchRow][lastMatchCol] + (i - lastMatchRow - 1) + 1 + (j - lastMatchCol - 1);
+        int transposition = dp[lastMatchRow][lastMatchCol] + i - lastMatchRow - 1 + 1 + j - lastMatchCol - 1;
 
         return Math.min(Math.min(substitution, insertion), Math.min(deletion, transposition));
     }
