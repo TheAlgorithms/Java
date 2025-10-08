@@ -158,8 +158,7 @@ public final class PatriciaTrie {
 
         // 4. Find the first bit position where the new key and its best match differ
         int differingBit = 1;
-        // BUG FIX: The loop must check all bits (i <= MAX_BITS). The original
-        // code (i < MAX_BITS) failed to check the last bit.
+        // The loop must check all bits (i <= MAX_BITS).
         while (differingBit <= MAX_BITS && getBit(key, differingBit) == getBit(bestMatchNode.key, differingBit)) {
             differingBit++;
         }
@@ -196,34 +195,5 @@ public final class PatriciaTrie {
         } else {
             parent.leftChild = newNode;
         }
-    }
-
-    // --- Main Driver and Example Usage ---
-
-    public static void main(String[] args) {
-        PatriciaTrie trie = new PatriciaTrie();
-        System.out.println("--- Patricia Trie Demonstration ---");
-        System.out.println("Trie is empty: " + trie.isEmpty());
-
-        int[] keys = {10, 20, 15, 7, 5, 25};
-
-        System.out.println("\n--- Inserting Keys ---");
-        for (int key : keys) {
-            System.out.printf("Inserting: %3d (%s)%n", key, Integer.toBinaryString(key));
-            trie.insert(key);
-        }
-        System.out.println("\nTrie is empty: " + trie.isEmpty());
-
-        System.out.println("\n--- Verifying Existing Keys ---");
-        IntStream.of(keys).forEach(key -> System.out.printf("Search %3d: %s%n", key, trie.search(key) ? "Found" : "Not Found"));
-
-        System.out.println("\n--- Searching for Non-Existing Keys ---");
-        System.out.printf("Search %3d: %s%n", 100, trie.search(100) ? "Found" : "Not Found");
-        System.out.printf("Search %3d: %s%n", 0, trie.search(0) ? "Found" : "Not Found");
-
-        System.out.println("\n--- Attempting Duplicate Insertion ---");
-        System.out.println("Inserting 20 again...");
-        trie.insert(20); // Should do nothing
-        System.out.printf("Search %3d: %s%n", 20, trie.search(20) ? "Found" : "Not Found");
     }
 }
