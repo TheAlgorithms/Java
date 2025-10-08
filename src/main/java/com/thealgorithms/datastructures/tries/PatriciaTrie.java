@@ -2,15 +2,14 @@ package com.thealgorithms.datastructures.tries;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Patricia (radix) trie for String keys and generic values.
  *
- * <p>Edges are compressed: each child edge stores a non-empty String label.
- * Operations run in O(L) where L is the key length.</p>
+ * <p>Compressed edges: each child edge stores a non-empty String label.
+ * Operations are O(L) where L is the key length.</p>
  *
- * <p>Contract:
+ * <p>Contracts:
  * <ul>
  *   <li>Null keys are not allowed (IllegalArgumentException).</li>
  *   <li>Empty-string key ("") is allowed as a valid key.</li>
@@ -76,39 +75,28 @@ public final class PatriciaTrie<V> {
     }
 
     /**
-     * Removes the mapping for {@code key} if present.
+     * Removes {@code key} if present.
      *
-     * <p>Fixes for CI failures:
-     * - Properly removes leaf nodes and decrements size once.
-     * - Merges redundant pass-through nodes (no value, single child) by
-     *   concatenating edge labels.</p>
+     * <p>Also compacts pass-through nodes (no value + single child) by concatenating
+     * edge labels to keep the trie compressed.</p>
      *
      * @param key non-null key
-     * @return previous value or {@code null} if none
+     * @return true if the key existed and was removed
      */
-    public V remove(String key) {
+    public boolean remove(String key) {
         if (key == null) {
-            throw new IllegalArgumentException("key cannot be null");
+            throw new IllegalArgumentException("key must not be null");
         }
         if (key.isEmpty()) {
             if (!root.hasValue) {
-                return null;
+                return false;
             }
-            V old = root.value;
             root.hasValue = false;
             root.value = null;
             size--;
-            return old;
+            return true;
         }
-
-        // container to return "was removed" + old value up the recursion
-        Object[] removedHolder = new Object[1];
-        removeRecursive(root, key, removedHolder);
-
-        if (removedHolder[0] != null) {
-            size--;
-        }
-        return (V) removedHolder[0];
+        return removeRecursive(root, key);
     }
 
     /**
@@ -269,9 +257,10 @@ public final class PatriciaTrie<V> {
      * </ul>
      * </p>
      */
-    private void removeRecursive(Node<V> parent, String key, Object[] removedHolder) {
+    private boolean removeRecursive(Node<V> parent, String key) {
         // iterate on a snapshot of keys to allow modifications during loop
-        for (String edge : parent.children.keySet().toArray(new String[0])) {
+        String[] keys = parent.children.keySet().toArray(new String[0]);
+        for (String edge : keys) {
             int cpl = commonPrefixLen(edge, key);
             if (cpl == 0) {
                 continue;
@@ -281,20 +270,25 @@ public final class PatriciaTrie<V> {
 
             // partial overlap with edge => key doesn't exist in this branch
             if (cpl < edge.length()) {
-                return;
+                return false;
             }
 
             String rest = key.substring(cpl);
+            boolean removed;
             if (rest.isEmpty()) {
-                // we've reached the node that holds the key
-                if (child.hasValue) {
-                    removedHolder[0] = child.value;
-                    child.hasValue = false;
-                    child.value = null;
+                if (!child.hasValue) {
+                    return false;
                 }
+                child.hasValue = false;
+                child.value = null;
+                size--;
+                removed = true;
             } else {
-                // keep traversing
-                removeRecursive(child, rest, removedHolder);
+                removed = removeRecursive(child, rest);
+            }
+
+            if (!removed) {
+                return false;
             }
 
             // post-recursion cleanup of child
@@ -314,8 +308,9 @@ public final class PatriciaTrie<V> {
                     parent.children.put(edge + grandEdge, grand);
                 }
             }
-            return; // processed the matching path
+            return true; // processed the matching path
         }
+        return false;
     }
 
     /** Length of common prefix of a and b. */
@@ -326,15 +321,5 @@ public final class PatriciaTrie<V> {
             i++;
         }
         return i;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(size);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this == obj;
     }
 }
