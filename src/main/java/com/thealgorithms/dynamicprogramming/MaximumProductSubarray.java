@@ -53,33 +53,6 @@ public final class MaximumProductSubarray {
 }
 
     /**
-     * Finds the maximum product using a memoization approach with recursion.
-     * This method explores all possible subarrays and stores intermediate results.
-     *
-     * @param nums an array of integers which may contain positive, negative,
-     *             and zero values.
-     * @return the maximum product of a contiguous subarray. Returns 0 if the
-     *         array is empty.
-     */
-    public static int maxProductMemoized(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-
-        int n = nums.length;
-        Integer[][] memo = new Integer[n][n];
-        int maxProduct = Integer.MIN_VALUE;
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                maxProduct = Math.max(maxProduct, calculateProduct(nums, memo, i, j));
-            }
-        }
-
-        return maxProduct;
-    }
-
-    /**
      * A recursive helper method to calculate the product of elements from index
      * start to index end using memoization.
      *
