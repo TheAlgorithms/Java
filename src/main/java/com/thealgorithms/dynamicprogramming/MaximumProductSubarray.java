@@ -33,14 +33,14 @@ public final class MaximumProductSubarray {
             return 0;
         }
 
-        int maxProduct = nums[0];
-        int currentMax = nums[0];
-        int currentMin = nums[0];
+        long maxProduct = nums[0];
+        long currentMax = nums[0];
+        long currentMin = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
             // Swap currentMax and currentMin if current number is negative
             if (nums[i] < 0) {
-                int temp = currentMax;
+                long temp = currentMax;
                 currentMax = currentMin;
                 currentMin = temp;
             }
@@ -53,6 +53,6 @@ public final class MaximumProductSubarray {
             maxProduct = Math.max(maxProduct, currentMax);
         }
 
-        return maxProduct;
+        return (int) maxProduct;
     }
 }
