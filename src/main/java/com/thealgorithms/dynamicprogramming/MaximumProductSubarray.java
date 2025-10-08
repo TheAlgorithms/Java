@@ -15,7 +15,9 @@ package com.thealgorithms.dynamicprogramming;
  * large arrays.</p>
  */
 public final class MaximumProductSubarray {
+
     private MaximumProductSubarray() {
+        // Prevent instantiation
     }
 
     /**
@@ -24,7 +26,7 @@ public final class MaximumProductSubarray {
      * @param nums an array of integers which may contain positive, negative,
      *             and zero values.
      * @return the maximum product of a contiguous subarray. Returns 0 if the
-     *         array is empty.
+     *         array is null or empty.
      */
     public static int maxProduct(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -36,44 +38,21 @@ public final class MaximumProductSubarray {
         int currentMin = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
+            // Swap currentMax and currentMin if current number is negative
             if (nums[i] < 0) {
                 int temp = currentMax;
                 currentMax = currentMin;
                 currentMin = temp;
             }
 
+            // Update currentMax and currentMin
             currentMax = Math.max(nums[i], currentMax * nums[i]);
             currentMin = Math.min(nums[i], currentMin * nums[i]);
 
+            // Update global max product
             maxProduct = Math.max(maxProduct, currentMax);
         }
 
         return maxProduct;
-    }
-}
-
-    /**
-     * A recursive helper method to calculate the product of elements from index
-     * start to index end using memoization.
-     *
-     * @param nums the input array of integers.
-     * @param memo the memoization table storing the results of subproblems.
-     * @param start the starting index of the subarray.
-     * @param end the ending index of the subarray.
-     * @return the product of elements from start to end.
-     */
-    private static int calculateProduct(int[] nums, Integer[][] memo, int start, int end) {
-        if (memo[start][end] != null) {
-            return memo[start][end];
-        }
-
-        if (start == end) {
-            memo[start][end] = nums[start];
-            return nums[start];
-        }
-
-        int product = calculateProduct(nums, memo, start, end - 1) * nums[end];
-        memo[start][end] = product;
-        return product;
     }
 }
