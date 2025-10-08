@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Comprehensive unit tests for the full Damerau-Levenshtein distance algorithm.
+ * Unit tests for the {@code DamerauLevenshteinDistance} class.
  * Tests cover edge cases, basic operations, and complex transposition scenarios.
  */
 class DamerauLevenshteinDistanceTest {
