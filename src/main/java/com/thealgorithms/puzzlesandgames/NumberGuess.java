@@ -40,11 +40,9 @@ public final class NumberGuess {
 
             if (guess < number) {
                 System.out.println("Too low! 📉");
-            }
-            else if (guess > number) {
+            } else if (guess > number) {
                 System.out.println("Too high! 📈");
-            }
-            else {
+            } else {
                 System.out.println("🎉 Correct! The number was " + number + ".");
                 System.out.println("You took " + tries + " tries.");
                 break;
