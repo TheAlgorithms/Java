@@ -50,6 +50,7 @@ public final class MaximumProductSubarray {
 
         return maxProduct;
     }
+}
 
     /**
      * Finds the maximum product using a memoization approach with recursion.

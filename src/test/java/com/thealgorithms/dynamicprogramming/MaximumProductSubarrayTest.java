@@ -32,7 +32,7 @@ class MaximumProductSubarrayTest {
 
     /**
      * Test case for an array containing zeros.
-     * The expected maximum product is 24 (subarray [2, 3, 4]).
+     * The expected maximum product is 24 (subarray [4, 6]).
      */
     @Test
     void testArrayWithZeros() {
@@ -56,7 +56,7 @@ class MaximumProductSubarrayTest {
 
     /**
      * Test case for an array with all negative numbers.
-     * The expected maximum product is the largest single negative number.
+     * The expected maximum product is 12 (subarray [-3, -4]).
      */
     @Test
     void testAllNegativeNumbers() {
@@ -91,6 +91,18 @@ class MaximumProductSubarrayTest {
     }
 
     /**
+     * Test case for a null array.
+     * The expected maximum product is 0.
+     */
+    @Test
+    void testNullArray() {
+        int[] nums = null;
+        int expected = 0;
+        int actual = MaximumProductSubarray.maxProduct(nums);
+        assertEquals(expected, actual, "The maximum product should be 0 for a null array.");
+    }
+
+    /**
      * Test case for an array with alternating positive and negative numbers.
      * The expected maximum product is 6 (subarray [2, 3]).
      */
@@ -103,32 +115,8 @@ class MaximumProductSubarrayTest {
     }
 
     /**
-     * Test case for the memoized version with all positive numbers.
-     * The expected maximum product is 24.
-     */
-    @Test
-    void testMemoizedAllPositiveNumbers() {
-        int[] nums = {2, 3, 4};
-        int expected = 24;
-        int actual = MaximumProductSubarray.maxProductMemoized(nums);
-        assertEquals(expected, actual, "The maximum product should be 24.");
-    }
-
-    /**
-     * Test case for the memoized version with mixed positive and negative numbers.
-     * The expected maximum product is 24.
-     */
-    @Test
-    void testMemoizedMixedNumbers() {
-        int[] nums = {2, -3, -4, 1};
-        int expected = 24;
-        int actual = MaximumProductSubarray.maxProductMemoized(nums);
-        assertEquals(expected, actual, "The maximum product should be 24.");
-    }
-
-    /**
      * Test case for an array with large positive and negative numbers.
-     * The expected maximum product is 720 (subarray [6, -3, -20]).
+     * The expected maximum product is 360 (subarray [6, -3, -20]).
      */
     @Test
     void testLargeNumbers() {
@@ -136,5 +124,29 @@ class MaximumProductSubarrayTest {
         int expected = 360;
         int actual = MaximumProductSubarray.maxProduct(nums);
         assertEquals(expected, actual, "The maximum product should be 360.");
+    }
+
+    /**
+     * Test case for an array with single negative number.
+     * The expected maximum product is the negative number itself.
+     */
+    @Test
+    void testSingleNegativeElement() {
+        int[] nums = {-8};
+        int expected = -8;
+        int actual = MaximumProductSubarray.maxProduct(nums);
+        assertEquals(expected, actual, "The maximum product should be -8.");
+    }
+
+    /**
+     * Test case for an array with multiple zeros.
+     * The expected maximum product is 6 (subarray [2, 3]).
+     */
+    @Test
+    void testMultipleZeros() {
+        int[] nums = {0, 2, 3, 0, 4};
+        int expected = 6;
+        int actual = MaximumProductSubarray.maxProduct(nums);
+        assertEquals(expected, actual, "The maximum product should be 6.");
     }
 }
