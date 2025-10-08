@@ -3,39 +3,29 @@ package com.thealgorithms.others;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Implementation of the Flood Fill algorithm using an iterative BFS (Breadth-First Search) approach.
+ *
+ * <p>The Flood Fill algorithm is used to fill connected areas in an image with a new color, starting from a specified point.
+ * This implementation uses an iterative BFS approach with a queue
+ * instead of recursion to avoid stack overflow issues with large images.</p>
+ *
+ * <p><b>Implementation Features:</b></p>
+ * <ul>
+ *   <li>Supports 8-connected filling (horizontal, vertical, and diagonal directions)</li>
+ *   <li>Uses BFS traversal through {@link java.util.Queue}</li>
+ *   <li>Includes nested {@code Point} class to represent pixel coordinates</li>
+ *   <li>Iterative approach avoids stack overflow for large images</li>
+ * </ul>
+ *
+ * <p><b>Time Complexity:</b> O(M × N) where M and N are the dimensions of the image</p>
+ * <p><b>Space Complexity:</b> O(M × N) in the worst case the queue stores every pixel</p>
+ *
+ * @see <a href="https://www.geeksforgeeks.org/dsa/flood-fill-algorithm">Flood Fill Algorithm - GeeksforGeeks</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Flood_fill">Flood Fill Algorithm - Wikipedia</a>
+ */
 public final class IterativeFloodFill {
     private IterativeFloodFill() {
-    }
-
-    /**
-     * Represents a point in 2D space with integer coordinates.
-     */
-    private static class Point {
-        final int x;
-        final int y;
-
-        Point(final int x, final int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    /**
-     * Checks if a pixel should be skipped during flood fill operation.
-     *
-     * @param image    The image to get boundaries
-     * @param x        The x co-ordinate of pixel to check
-     * @param y        The y co-ordinate of pixel to check
-     * @param oldColor The old color which is to be replaced in the image
-     * @return {@code true} if pixel should be skipped, else {@code false}
-     */
-    private static boolean shouldSkipPixel(final int[][] image, final int x, final int y, final int oldColor) {
-
-        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor) {
-            return true;
-        }
-
-        return false;
     }
 
     /**
@@ -77,5 +67,36 @@ public final class IterativeFloodFill {
                 }
             }
         }
+    }
+
+    /**
+     * Represents a point in 2D space with integer coordinates.
+     */
+    private static class Point {
+        final int x;
+        final int y;
+
+        Point(final int x, final int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    /**
+     * Checks if a pixel should be skipped during flood fill operation.
+     *
+     * @param image    The image to get boundaries
+     * @param x        The x co-ordinate of pixel to check
+     * @param y        The y co-ordinate of pixel to check
+     * @param oldColor The old color which is to be replaced in the image
+     * @return {@code true} if pixel should be skipped, else {@code false}
+     */
+    private static boolean shouldSkipPixel(final int[][] image, final int x, final int y, final int oldColor) {
+
+        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor) {
+            return true;
+        }
+
+        return false;
     }
 }
