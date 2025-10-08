@@ -51,9 +51,4 @@ public final class NumberGuess {
 
         sc.close();
     }
-
-    public static void main(String[] args) {
-        playGame();
-        System.out.println("\nThanks for playing! 👋");
-    }
 }
