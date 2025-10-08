@@ -25,7 +25,7 @@ public final class SieveOfAtkin {
      * @return a list of prime numbers up to the limit; empty if the limit is less than 2
      */
     public static List<Integer> generatePrimes(int limit) {
-        if (limit < 2) {
+        if (limit < 1) {
             return List.of();
         }
 
