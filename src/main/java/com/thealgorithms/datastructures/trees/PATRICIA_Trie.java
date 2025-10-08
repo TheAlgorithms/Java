@@ -1,8 +1,5 @@
 package com.thealgorithms.datastructures.tries;
 
-import java.math.BigInteger;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -12,6 +9,8 @@ import java.util.stream.IntStream;
  * <p>This specific implementation uses the fixed-size 32-bit integer representation
  * as keys, common in many networking and IP lookup contexts, and relies on
  * bitwise operations for efficiency.
+ *
+ * <p>Reference: <a href="https://en.wikipedia.org/wiki/Radix_tree">Wikipedia: Radix Tree (Patricia Trie)</a>
  *
  * <p>Key characteristics:
  * <ul>
@@ -221,52 +220,6 @@ public final class PatriciaTrie {
         }
 
         return t;
-    }
-
-    /**
-     * Utility method to print all keys in the trie (in order of insertion discovery).
-     * @param t The root node.
-     */
-    private void printKeys(PatriciaTrieNode t) {
-        if (t == null) {
-            return;
-        }
-
-        PatriciaTrieNode startNode = t.leftChild; // Start at the first meaningful node
-
-        // Use a set to track visited nodes and prevent infinite loop due to back pointers
-        java.util.Set<PatriciaTrieNode> visitedNodes = new java.util.HashSet<>();
-        java.util.Queue<PatriciaTrieNode> queue = new java.util.LinkedList<>();
-
-        // Add the sentinel/root node's left child if it's not the root itself (0 bit)
-        if (startNode != t && startNode != null) {
-             queue.add(startNode);
-             visitedNodes.add(startNode);
-        }
-
-        // Handle the root key if it's the only one
-        if (t.leftChild == t && t.key != 0) {
-            System.out.print(t.key + " ");
-            return;
-        }
-
-        while (!queue.isEmpty()) {
-            PatriciaTrieNode current = queue.poll();
-
-            // The 'key' in a Patricia node is only the data stored at the time of creation.
-            // It is NOT a full traversal output. Traversal requires following the logic.
-            // This traversal is complex due to back pointers. A simpler in-order traversal
-            // that avoids infinite loops by checking bit numbers is typically used.
-
-            // Simplest key extraction for this structure: Recursively find external nodes
-            // by detecting back pointers.
-
-            // Skip if the node is a back pointer (i.e., its child is itself or points "back"
-            // to a node with a smaller or equal bit number).
-            // NOTE: A standard in-order traversal is difficult due to the compressed structure.
-            // We will stick to the basic functionality and provide a simple list of inserted keys
-            // for demonstration in the main method.
-        }
     }
 
     // --- Main Driver and Example Usage ---
