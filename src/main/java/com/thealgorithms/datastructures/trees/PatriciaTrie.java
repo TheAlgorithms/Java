@@ -1,65 +1,64 @@
-package com.thealgorithms.datastructures.tries;
+package com.thealgorithms.datastructures.trees;
 
 import java.util.stream.IntStream;
 
 /**
  * Implements a PATRICIA Trie (Practical Algorithm to Retrieve Information Coded
- * in Alphanumeric) using fixed-width integers (keys).
+ * in Alphanumeric).
  *
- * <p>This specific implementation uses the fixed-size 32-bit integer representation
- * as keys, common in many networking and IP lookup contexts, and relies on
- * bitwise operations for efficiency.
+ * <p>This implementation uses 32-bit integers as keys, which is common in
+ * applications like IP address routing. It relies on efficient bitwise
+ * operations to navigate the tree. PATRICIA Tries are a type of compressed
+ * binary trie (radix tree with radix 2), where nodes are only created at points
+ * of divergence between keys.
  *
- * <p>Reference: <a href="https://en.wikipedia.org/wiki/Radix_tree">Wikipedia: Radix Tree (Patricia Trie)</a>
+ * <p>Reference: <a href="https://en.wikipedia.org/wiki/Radix_tree">Wikipedia: Radix Tree</a>
  *
- * <p>Key characteristics:
+ * <p><b>Key Characteristics:</b>
  * <ul>
- * <li>**Radix-2 Trie:** Works on the binary representation of integer keys.</li>
- * <li>**Compacted:** Nodes only exist where branching occurs, compacting unary paths.</li>
- * <li>**External Nodes:** All nodes are internal; the key itself is stored in the
- * leaf/external node found by the search.</li>
+ * <li><b>Compressed:</b> Nodes with only one child are omitted, saving space.</li>
+ * <li><b>Binary (Radix-2):</b> Decisions at each node are based on a single bit from the key.</li>
+ * <li><b>Back-Pointers:</b> Traversal ends when a "back-pointer" is found—a link to an ancestor
+ * or to the node itself—indicating the location of the key for final comparison.</li>
  * </ul>
  */
 public final class PatriciaTrie {
 
     /**
-     * Represents a node in the Patricia Trie.
-     * All nodes are internal nodes that store the key data at the point of creation,
-     * and their {@code bitNumber} indicates the bit position to check when traversing.
+     * Represents a node in the Patricia Trie. Each node specifies which bit to
+     * check and stores a key for comparison.
      */
-    private static class PatriciaTrieNode {
+    private static class Node {
         /**
-         * The bit index (1-indexed from MSB, 1 to 32) to check for branching at this node.
-         * The index must be greater than that of the parent node. A value of 0 is used for the root.
+         * The bit index to check for branching at this node (1-indexed from MSB, 1 to 32).
+         * This index must be greater than that of the parent node. A value of 0 is
+         * reserved for the root/head node.
          */
         int bitNumber;
         /**
-         * The integer key stored at this node. This key is used for the final comparison
-         * after traversing the trie structure to determine if the key exists.
+         * The integer key associated with this node. This key is used for the final
+         * comparison after traversal to confirm an exact match.
          */
         int key;
-        /**
-         * Pointer to the next node if the current bit being examined is 0.
-         */
-        PatriciaTrieNode leftChild;
-        /**
-         * Pointer to the next node if the current bit being examined is 1.
-         */
-        PatriciaTrieNode rightChild;
+        /** Pointer to the next node if the bit being examined is 0. */
+        Node leftChild;
+        /** Pointer to the next node if the bit being examined is 1. */
+        Node rightChild;
 
         /**
-         * Constructs a new PatriciaTrieNode.
+         * Constructs a new Node.
+         *
          * @param bitNumber The bit index for comparison at this node.
          * @param key The integer key associated with this node.
          */
-        PatriciaTrieNode(int bitNumber, int key) {
+        Node(int bitNumber, int key) {
             this.bitNumber = bitNumber;
             this.key = key;
         }
     }
 
-    private PatriciaTrieNode root;
-    private static final int MAX_BITS = Integer.SIZE; // 32 bits for standard Java int
+    private Node root;
+    private static final int MAX_BITS = Integer.SIZE; // 32 bits for a standard Java int
 
     /**
      * Initializes an empty Patricia Trie.
@@ -69,192 +68,162 @@ public final class PatriciaTrie {
     }
 
     /**
-     * Checks if the trie is empty.
-     * @return true if the root is null, false otherwise.
+     * Checks if the trie contains any keys.
+     * @return {@code true} if the trie is empty, {@code false} otherwise.
      */
     public boolean isEmpty() {
         return root == null;
     }
 
     /**
-     * Resets the trie, setting the root to null.
+     * Removes all keys from the trie.
      */
     public void makeEmpty() {
         root = null;
     }
 
     /**
-     * Determines the value of the i-th bit (1-indexed from MSB) of a given key.
-     * Uses efficient bitwise operations.
+     * Determines the value of the i-th bit of a given key.
      *
      * @param key The integer key.
-     * @param i The 1-based index of the bit to check (1 is MSB, 32 is LSB).
-     * @return true if the bit is 1, false if the bit is 0.
+     * @param i The 1-based index of the bit to check (1=MSB, 32=LSB).
+     * @return {@code true} if the bit is 1, {@code false} if it is 0.
      */
     private boolean getBit(int key, int i) {
-        // Calculate the shift amount: MAX_BITS - i
-        // i=1 (MSB) -> shift 31
-        // i=32 (LSB) -> shift 0
-        int shift = MAX_BITS - i;
-        // Use unsigned right shift (>>>) for predictable results, then mask with 1.
-        return ((key >>> shift) & 1) == 1;
+        // A 1-based index `i` corresponds to a shift of (MAX_BITS - i).
+        // Example for 32 bits: i=1 (MSB) -> shift 31; i=32 (LSB) -> shift 0.
+        return ((key >>> (MAX_BITS - i)) & 1) == 1;
     }
 
     /**
-     * Searches for a key in the trie.
+     * Searches for an exact key in the trie.
      *
      * @param key The integer key to search for.
-     * @return true if the key is found, false otherwise.
+     * @return {@code true} if the key is found, {@code false} otherwise.
      */
     public boolean search(int key) {
         if (root == null) {
             return false;
         }
-
-        // Search down to the external node
-        PatriciaTrieNode foundNode = searchDown(root, key);
-
-        // Check if the key stored in the found node matches the search key
-        return foundNode.key == key;
+        // Find the node containing the best possible match for the key.
+        Node bestMatchNode = findBestMatchNode(root, key);
+        // Confirm if the best match is an exact match.
+        return bestMatchNode.key == key;
     }
 
     /**
-     * Traverses the trie to find the external node that is the predecessor
-     * of the key 'k'. This node contains the most similar key currently in the trie.
+     * Traverses the trie to find the node containing the key most similar to the search key.
      *
-     * @param t The starting node for the search (usually the root).
-     * @param k The key being searched for.
-     * @return The external node where the key comparison should happen.
+     * @param startNode The node to begin the search from (usually the root).
+     * @param key The key being searched for.
+     * @return The node containing the best matching key.
      */
-    private PatriciaTrieNode searchDown(PatriciaTrieNode t, int k) {
-        PatriciaTrieNode currentNode = t;
-        PatriciaTrieNode nextNode = t.leftChild; // Start by following the default (0) child
+    private Node findBestMatchNode(Node startNode, int key) {
+        Node currentNode = startNode;
+        Node nextNode = startNode.leftChild;
 
-        // The condition nextNode.bitNumber > currentNode.bitNumber is the core
-        // of the Patricia Trie structure. It means we are moving down a tree edge (forward reference).
+        // Traverse down the trie as long as we are following forward pointers.
+        // A forward pointer is indicated by a child's bitNumber being greater
+        // than its parent's bitNumber.
         while (nextNode.bitNumber > currentNode.bitNumber) {
             currentNode = nextNode;
-            // Determine the next child based on the bit at nextNode.bitNumber
-            nextNode = getBit(k, nextNode.bitNumber)
-                ? nextNode.rightChild
-                : nextNode.leftChild;
+            nextNode = getBit(key, nextNode.bitNumber) ? nextNode.rightChild : nextNode.leftChild;
         }
-        // When nextNode.bitNumber <= currentNode.bitNumber, we've found an external node
-        // (a back pointer) which holds the best match key.
+        // The loop terminates upon finding a back-pointer (nextNode.bitNumber <= currentNode.bitNumber),
+        // which points to the node containing the best match.
         return nextNode;
     }
 
     /**
-     * Inserts an integer key into the Patricia Trie.
+     * Inserts an integer key into the Patricia Trie. Does nothing if the key
+     * already exists.
      *
      * @param key The integer key to insert.
      */
     public void insert(int key) {
-        root = insert(root, key);
-    }
-
-    /**
-     * Recursive helper method for insertion.
-     *
-     * @param t The current subtree root.
-     * @param element The key to insert.
-     * @return The updated root of the subtree.
-     */
-    private PatriciaTrieNode insert(PatriciaTrieNode t, int element) {
-
-        // 1. Handle Empty Trie (Initial Insertion)
-        if (t == null) {
-            t = new PatriciaTrieNode(0, element); // Bit number 0 for the root/sentinel
-            t.leftChild = t; // Root node links back to itself (left pointer)
-            t.rightChild = null; // Right pointer unused or null
-            return t;
+        // 1. Handle Empty Trie (the very first insertion)
+        if (root == null) {
+            root = new Node(0, key); // bitNumber 0 is a sentinel for the head
+            root.leftChild = root; // The first node points back to itself
+            return;
         }
 
-        // 2. Search for the best match (predecessor)
-        PatriciaTrieNode lastNode = searchDown(t, element);
+        // 2. Find the best matching key already in the trie
+        Node bestMatchNode = findBestMatchNode(root, key);
 
         // 3. Check for Duplicates
-        if (element == lastNode.key) {
-            // Note: Printing to stdout within a core algorithm method is generally discouraged
-            // but is kept here for informational context during the insertion process.
-            System.out.println("Key " + element + " already present.");
-            return t;
+        if (key == bestMatchNode.key) {
+            return; // Key already exists, do nothing.
         }
 
-        // 4. Find the first differentiating bit (i)
-        int i = 1;
-        while (getBit(element, i) == getBit(lastNode.key, i) && i < MAX_BITS) {
-            i++;
-        }
-        // If i reached MAX_BITS + 1, the keys are identical (should have been caught above)
-        if (i > MAX_BITS) {
-             throw new IllegalStateException("Keys are identical but duplicate check failed.");
+        // 4. Find the first bit position where the new key and its best match differ
+        int differingBit = 1;
+        // BUG FIX: The loop must check all bits (i <= MAX_BITS). The original
+        // code (i < MAX_BITS) failed to check the last bit.
+        while (differingBit <= MAX_BITS && getBit(key, differingBit) == getBit(bestMatchNode.key, differingBit)) {
+            differingBit++;
         }
 
-        // 5. Find the insertion point (parent)
-        // Find the node 'parent' that points to a bit number greater than 'i' or points back
-        PatriciaTrieNode currentNode = t.leftChild;
-        PatriciaTrieNode parent = t;
-
-        while (currentNode.bitNumber > parent.bitNumber && currentNode.bitNumber < i) {
-            parent = currentNode;
-            currentNode = getBit(element, currentNode.bitNumber)
-                ? currentNode.rightChild
-                : currentNode.leftChild;
+        // This should not happen if the duplicate check is correct, but serves as a safeguard.
+        if (differingBit > MAX_BITS) {
+            throw new IllegalStateException("Keys are different but no differing bit was found.");
         }
 
-        // 6. Create the new internal node
-        PatriciaTrieNode newNode = new PatriciaTrieNode(i, element);
+        // 5. Find the correct insertion point by traversing again
+        Node parent = root;
+        Node child = root.leftChild;
+        while (child.bitNumber > parent.bitNumber && child.bitNumber < differingBit) {
+            parent = child;
+            child = getBit(key, child.bitNumber) ? child.rightChild : child.leftChild;
+        }
 
-        // Determine the children of the new node (newNode)
-        if (getBit(element, i)) {
-            // New key has 1 at bit i: left child points to the old subtree (currentNode), right child points to self
-            newNode.leftChild = currentNode;
+        // 6. Create the new node and link it into the trie
+        Node newNode = new Node(differingBit, key);
+
+        // Set the children of the new node. One child will be the existing subtree (`child`),
+        // and the other will be a back-pointer to the new node itself.
+        if (getBit(key, differingBit)) { // New key has a '1' at the differing bit
+            newNode.leftChild = child;
             newNode.rightChild = newNode;
-        } else {
-            // New key has 0 at bit i: left child points to self, right child points to the old subtree (currentNode)
+        } else { // New key has a '0' at the differing bit
             newNode.leftChild = newNode;
-            newNode.rightChild = currentNode;
+            newNode.rightChild = child;
         }
 
-        // 7. Link the parent to the new node
-        if (getBit(element, parent.bitNumber)) {
-            // Parent's splitting bit matches the new key's bit: link via right child
+        // 7. Link the parent to the new node, replacing its old link to `child`
+        if (getBit(key, parent.bitNumber)) {
             parent.rightChild = newNode;
         } else {
-            // Parent's splitting bit doesn't match: link via left child
             parent.leftChild = newNode;
         }
-
-        return t;
     }
 
     // --- Main Driver and Example Usage ---
 
     public static void main(String[] args) {
         PatriciaTrie trie = new PatriciaTrie();
-        System.out.println("Patricia Trie Demonstration (Max Bits: " + MAX_BITS + ")");
+        System.out.println("--- Patricia Trie Demonstration ---");
+        System.out.println("Trie is empty: " + trie.isEmpty());
 
-        // Example integer keys (representing, perhaps, IP addresses or other binary identifiers)
         int[] keys = {10, 20, 15, 7, 5, 25};
 
-        System.out.println("\n--- Insertion ---");
+        System.out.println("\n--- Inserting Keys ---");
         for (int key : keys) {
+            System.out.printf("Inserting: %3d (%s)%n", key, Integer.toBinaryString(key));
             trie.insert(key);
-            System.out.println("Inserted: " + key + " (" + Integer.toBinaryString(key) + ")");
         }
+        System.out.println("\nTrie is empty: " + trie.isEmpty());
 
-        System.out.println("\n--- Search ---");
-        // Test existing keys
-        IntStream.of(keys)
-                .forEach(key -> System.out.printf("Search %d: %b\n", key, trie.search(key)));
+        System.out.println("\n--- Verifying Existing Keys ---");
+        IntStream.of(keys).forEach(key -> System.out.printf("Search %3d: %s%n", key, trie.search(key) ? "Found" : "Not Found"));
 
-        // Test non-existing keys
-        System.out.printf("Search %d: %b\n", 100, trie.search(100)); // Non-existent
-        System.out.printf("Search %d: %b\n", 0, trie.search(0));     // Non-existent
+        System.out.println("\n--- Searching for Non-Existing Keys ---");
+        System.out.printf("Search %3d: %s%n", 100, trie.search(100) ? "Found" : "Not Found");
+        System.out.printf("Search %3d: %s%n", 0, trie.search(0) ? "Found" : "Not Found");
 
-        // Test duplicate insertion
-        System.out.println("\n--- Duplicate Insertion ---");
-        trie.insert(20);
+        System.out.println("\n--- Attempting Duplicate Insertion ---");
+        System.out.println("Inserting 20 again...");
+        trie.insert(20); // Should do nothing
+        System.out.printf("Search %3d: %s%n", 20, trie.search(20) ? "Found" : "Not Found");
     }
 }
