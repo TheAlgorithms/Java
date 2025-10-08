@@ -7,11 +7,16 @@
 package com.thealgorithms.puzzlesandgames;
 import java.util.Scanner;
 
-public class NumberGuess {
+public final class NumberGuess {
+    private NumberGuess() {
+        throw new AssertionError("Cannot instantiate NumberGuess");
+    }
+
     public static void playGame() {
         Scanner sc = new Scanner(System.in);
         int number = (int) (Math.random() * 100) + 1;
-        int guess = 0, tries = 0;
+        int guess = 0;
+        int tries = 0;
 
         System.out.println("🎯 Welcome to the Number Guessing Game!");
         System.out.println("I've picked a number between 1 and 100. Try to guess it!\n");
@@ -33,10 +38,12 @@ public class NumberGuess {
                 continue;
             }
 
-            if (guess < number)
+            if (guess < number) {
                 System.out.println("Too low! 📉");
-            else if (guess > number)
+            }
+            else if (guess > number) {
                 System.out.println("Too high! 📈");
+            }
             else {
                 System.out.println("🎉 Correct! The number was " + number + ".");
                 System.out.println("You took " + tries + " tries.");
