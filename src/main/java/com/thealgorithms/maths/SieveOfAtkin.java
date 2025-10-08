@@ -36,11 +36,17 @@ public final class SieveOfAtkin {
         eliminateMultiplesOfSquares(limit, sqrtLimit, sieve);
 
         List<Integer> primes = new ArrayList<>();
-        if (limit >= 2) primes.add(2);
-        if (limit >= 3) primes.add(3);
+        if (limit >= 2) {
+            primes.add(2);
+        }
+        if (limit >= 3) {
+            primes.add(3);
+        }
 
         for (int i = 5; i <= limit; i++) {
-            if (sieve[i]) primes.add(i);
+            if (sieve[i]) {
+                primes.add(i);
+            }
         }
 
         return primes;
@@ -125,7 +131,9 @@ public final class SieveOfAtkin {
      */
     private static void eliminateMultiplesOfSquares(int limit, int sqrtLimit, boolean[] sieve) {
         for (int i = 5; i <= sqrtLimit; i++) {
-            if (!sieve[i]) continue;
+            if (!sieve[i]) {
+                continue;
+            }
             int square = i * i;
             for (int j = square; j <= limit; j += square) {
                 sieve[j] = false;
