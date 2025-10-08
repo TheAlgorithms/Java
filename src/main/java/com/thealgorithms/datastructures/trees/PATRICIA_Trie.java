@@ -25,28 +25,33 @@ public final class PatriciaTrie {
     /**
      * Represents a node in the Patricia Trie.
      * All nodes are internal nodes that store the key data at the point of creation,
-     * and their `bitNumber` indicates the bit position to check when traversing.
+     * and their {@code bitNumber} indicates the bit position to check when traversing.
      */
     private static class PatriciaTrieNode {
         /**
-         * The bit index (1-indexed from MSB) to check for branching at this node.
-         * The index must be greater than that of the parent node.
+         * The bit index (1-indexed from MSB, 1 to 32) to check for branching at this node.
+         * The index must be greater than that of the parent node. A value of 0 is used for the root.
          */
         int bitNumber;
         /**
-         * The integer key stored at this node. This is the **data** that was inserted
-         * to create this node and acts as a placeholder or final result during search.
+         * The integer key stored at this node. This key is used for the final comparison
+         * after traversing the trie structure to determine if the key exists.
          */
         int key;
         /**
-         * Pointer to the next node if the current bit is 0.
+         * Pointer to the next node if the current bit being examined is 0.
          */
         PatriciaTrieNode leftChild;
         /**
-         * Pointer to the next node if the current bit is 1.
+         * Pointer to the next node if the current bit being examined is 1.
          */
         PatriciaTrieNode rightChild;
 
+        /**
+         * Constructs a new PatriciaTrieNode.
+         * @param bitNumber The bit index for comparison at this node.
+         * @param key The integer key associated with this node.
+         */
         PatriciaTrieNode(int bitNumber, int key) {
             this.bitNumber = bitNumber;
             this.key = key;
@@ -170,6 +175,8 @@ public final class PatriciaTrie {
 
         // 3. Check for Duplicates
         if (element == lastNode.key) {
+            // Note: Printing to stdout within a core algorithm method is generally discouraged
+            // but is kept here for informational context during the insertion process.
             System.out.println("Key " + element + " already present.");
             return t;
         }
