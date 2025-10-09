@@ -348,9 +348,11 @@
           - 📄 [Point](src/main/java/com/thealgorithms/geometry/Point.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPath](src/main/java/com/thealgorithms/graph/ConstrainedShortestPath.java)
+          - 📄 [DisjointSet](src/main/java/com/thealgorithms/graph/DisjointSet.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
           - 📄 [StronglyConnectedComponentOptimized](src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
+          - 📄 [TopologicalSort](src/main/java/com/thealgorithms/graph/TopologicalSort.java)
           - 📄 [TravelingSalesman](src/main/java/com/thealgorithms/graph/TravelingSalesman.java)
         - 📁 **greedyalgorithms**
           - 📄 [ActivitySelection](src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
