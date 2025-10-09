@@ -16,10 +16,7 @@ class TopologicalSortTest {
     @Test
     @DisplayName("Simple DAG returns correct ordering")
     void simpleDAG() {
-        List<int[]> edges = Arrays.asList(
-                new int[] { 0, 1 },
-                new int[] { 0, 2 },
-                new int[] { 1, 3 },
+        List<int[]> edges = Arrays.asList(new int[] { 0, 1 }, new int[] { 0, 2 }, new int[] { 1, 3 },
                 new int[] { 2, 3 });
         int[] result = TopologicalSort.sort(4, edges);
         assertArrayEquals(new int[] { 0, 1, 2, 3 }, result);
@@ -38,10 +35,7 @@ class TopologicalSortTest {
     @Test
     @DisplayName("Graph with cycle returns null")
     void graphWithCycle() {
-        List<int[]> edges = Arrays.asList(
-                new int[] { 0, 1 },
-                new int[] { 1, 2 },
-                new int[] { 2, 0 });
+        List<int[]> edges = Arrays.asList(new int[] { 0, 1 }, new int[] { 1, 2 }, new int[] { 2, 0 });
         assertNull(TopologicalSort.sort(3, edges));
     }
 
@@ -50,8 +44,7 @@ class TopologicalSortTest {
     void coursePrerequisites() {
         // Example: Course prerequisites where edge [a,b] means course a must be taken
         // before b
-        List<int[]> edges = Arrays.asList(
-                new int[] { 1, 0 }, // Calculus I -> Calculus II
+        List<int[]> edges = Arrays.asList(new int[] { 1, 0 }, // Calculus I -> Calculus II
                 new int[] { 2, 0 }, // Linear Algebra -> Calculus II
                 new int[] { 1, 3 }, // Calculus I -> Differential Equations
                 new int[] { 2, 3 } // Linear Algebra -> Differential Equations
@@ -69,8 +62,7 @@ class TopologicalSortTest {
     @Test
     @DisplayName("Invalid vertex throws exception")
     void invalidVertex() {
-        List<int[]> edges = Arrays.asList(
-                new int[] { 0, 5 } // Vertex 5 is invalid for a graph with 3 vertices
+        List<int[]> edges = Arrays.asList(new int[] { 0, 5 } // Vertex 5 is invalid for a graph with 3 vertices
         );
         assertThrows(IllegalArgumentException.class, () -> TopologicalSort.sort(3, edges));
     }
@@ -84,11 +76,7 @@ class TopologicalSortTest {
     @Test
     @DisplayName("sortAndDetectCycle throws exception for cyclic graph")
     void detectCycleThrowsException() {
-        List<int[]> edges = Arrays.asList(
-                new int[] { 0, 1 },
-                new int[] { 1, 2 },
-                new int[] { 2, 0 });
-        assertThrows(IllegalArgumentException.class,
-                () -> TopologicalSort.sortAndDetectCycle(3, edges));
+        List<int[]> edges = Arrays.asList(new int[] { 0, 1 }, new int[] { 1, 2 }, new int[] { 2, 0 });
+        assertThrows(IllegalArgumentException.class, () -> TopologicalSort.sortAndDetectCycle(3, edges));
     }
 }
