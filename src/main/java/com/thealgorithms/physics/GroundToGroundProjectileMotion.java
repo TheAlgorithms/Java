@@ -8,7 +8,7 @@ package com.thealgorithms.physics;
  *
  * @author [Yash Rajput](https://github.com/the-yash-rajput)
  */
-public class GroundToGroundProjectileMotion {
+public final class GroundToGroundProjectileMotion {
 
     private GroundToGroundProjectileMotion() {
         throw new AssertionError("No instances.");
