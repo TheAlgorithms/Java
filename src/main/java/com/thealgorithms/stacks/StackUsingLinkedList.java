@@ -104,22 +104,4 @@ public class StackUsingLinkedList<T> {
         }
         System.out.println();
     }
-
-    /**
-     * Example usage
-     */
-    public static void main(String[] args) {
-        StackUsingLinkedList<Integer> stack = new StackUsingLinkedList<>();
-
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
-
-        stack.printStack(); // Output: 30 20 10
-
-        System.out.println("Top element: " + stack.peek()); // 30
-        System.out.println("Popped: " + stack.pop()); // 30
-        stack.printStack(); // 20 10
-        System.out.println("Size: " + stack.size()); // 2
-    }
 }
