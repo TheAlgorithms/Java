@@ -52,7 +52,7 @@ public final class TopologicalSort {
      * @throws IllegalArgumentException if edges is null or contains invalid
      *                                  vertices
      */
-    public static int[] sort(int numVertices, List<int[]> edges) {
+    public static int[] sort(int numVertices, Iterable<int[]> edges) {
         if (edges == null) {
             throw new IllegalArgumentException("Edge list must not be null");
         }
