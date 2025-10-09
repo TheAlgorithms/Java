@@ -59,15 +59,13 @@ public class DisjointSet {
      * @throws IllegalArgumentException if size is negative
      */
     public DisjointSet(int size) {
-        if (size < 0) {
+        if (size < 0)
             throw new IllegalArgumentException("Size must be non-negative");
-        }
         this.size = size;
         this.numSets = size;
         parent = new int[size];
         rank = new int[size];
 
-        // Initialize each element as its own set
         for (int i = 0; i < size; i++) {
             parent[i] = i;
             rank[i] = 0;
