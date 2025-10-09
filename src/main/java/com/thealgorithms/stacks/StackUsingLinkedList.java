@@ -2,9 +2,9 @@ package com.thealgorithms.stacks;
 
 /**
  * Stack implementation using a singly linked list.
- * 
+ *
  * @param <T> the type of elements stored in the stack
- * 
+ *
  * Operations:
  *  - push(T data): Insert an element onto the stack (O(1))
  *  - pop(): Remove and return the top element (O(1))
@@ -25,8 +25,8 @@ public class StackUsingLinkedList<T> {
         }
     }
 
-    private Node top;   // top of the stack
-    private int size;   // number of elements in the stack
+    private Node top; // top of the stack
+    private int size; // number of elements in the stack
 
     /** Constructor: Initializes an empty stack */
     public StackUsingLinkedList() {
@@ -34,8 +34,8 @@ public class StackUsingLinkedList<T> {
         size = 0;
     }
 
-    /** 
-     * Pushes an element onto the top of the stack. 
+    /**
+     * Pushes an element onto the top of the stack.
      * @param data element to be pushed
      */
     public void push(T data) {
@@ -45,7 +45,7 @@ public class StackUsingLinkedList<T> {
         size++;
     }
 
-    /** 
+    /**
      * Removes and returns the top element of the stack.
      * @return the popped element
      * @throws IllegalStateException if the stack is empty
@@ -60,7 +60,7 @@ public class StackUsingLinkedList<T> {
         return data;
     }
 
-    /** 
+    /**
      * Returns the top element without removing it.
      * @return the top element
      * @throws IllegalStateException if the stack is empty
@@ -72,7 +72,7 @@ public class StackUsingLinkedList<T> {
         return top.data;
     }
 
-    /** 
+    /**
      * Checks whether the stack is empty.
      * @return true if empty, false otherwise
      */
@@ -80,7 +80,7 @@ public class StackUsingLinkedList<T> {
         return top == null;
     }
 
-    /** 
+    /**
      * Returns the number of elements in the stack.
      * @return the size of the stack
      */
@@ -88,7 +88,7 @@ public class StackUsingLinkedList<T> {
         return size;
     }
 
-    /** 
+    /**
      * Prints the stack elements from top to bottom.
      */
     public void printStack() {
@@ -105,8 +105,8 @@ public class StackUsingLinkedList<T> {
         System.out.println();
     }
 
-    /** 
-     * Example usage 
+    /**
+     * Example usage
      */
     public static void main(String[] args) {
         StackUsingLinkedList<Integer> stack = new StackUsingLinkedList<>();
@@ -115,11 +115,11 @@ public class StackUsingLinkedList<T> {
         stack.push(20);
         stack.push(30);
 
-        stack.printStack();  // Output: 30 20 10
+        stack.printStack(); // Output: 30 20 10
 
         System.out.println("Top element: " + stack.peek()); // 30
-        System.out.println("Popped: " + stack.pop());       // 30
-        stack.printStack();                                 // 20 10
-        System.out.println("Size: " + stack.size());        // 2
+        System.out.println("Popped: " + stack.pop()); // 30
+        stack.printStack(); // 20 10
+        System.out.println("Size: " + stack.size()); // 2
     }
 }
