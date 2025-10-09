@@ -1,6 +1,7 @@
 package com.thealgorithms.graph;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementation of the Disjoint Set (Union-Find) data structure with path
