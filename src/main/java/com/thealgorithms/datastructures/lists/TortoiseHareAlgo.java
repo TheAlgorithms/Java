@@ -31,7 +31,7 @@ public class TortoiseHareAlgo<E> {
     }
 
     public E getMiddle() {
-        if (head == null){
+        if (head == null) {
             return null;
         }
 
