@@ -1,6 +1,7 @@
 package com.thealgorithms.datastructures.lists;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 class TortoiseHareAlgoTest {
