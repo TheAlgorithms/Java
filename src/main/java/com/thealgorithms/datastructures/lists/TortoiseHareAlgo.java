@@ -31,7 +31,9 @@ public class TortoiseHareAlgo<E> {
     }
 
     public E getMiddle() {
-        if (head == null) return null;
+        if (head == null){
+            return null;
+        }
 
         Node<E> slow = head;
         Node<E> fast = head;
