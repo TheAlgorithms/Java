@@ -52,7 +52,9 @@ public class TortoiseHareAlgo<E> {
         Node<E> current = head;
         while (current != null) {
             sb.append(current.value);
-            if (current.next != null) sb.append(", ");
+            if (current.next != null) {
+                sb.append(", ");
+            }
             current = current.next;
         }
         sb.append("]");
