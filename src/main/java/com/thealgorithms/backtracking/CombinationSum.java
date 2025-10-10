@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /** Backtracking: pick/not-pick with reuse of candidates. */
-public class CombinationSum {
+public final class CombinationSum {
     private CombinationSum() {
         throw new UnsupportedOperationException("Utility class");
     }
