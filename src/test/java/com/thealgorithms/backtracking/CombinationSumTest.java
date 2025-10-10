@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CombinationSumTest {
-    
     private static List<List<Integer>> norm(Iterable<List<Integer>> x) {
         List<List<Integer>> y = new ArrayList<>();
         for (var p : x) {
