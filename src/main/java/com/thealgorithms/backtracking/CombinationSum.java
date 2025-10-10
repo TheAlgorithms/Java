@@ -7,10 +7,10 @@ import java.util.List;
 /** Backtracking: pick/not-pick with reuse of candidates. */
 public class CombinationSum {
     private CombinationSum() {
-    throw new UnsupportedOperationException("Utility class");
-}
+        throw new UnsupportedOperationException("Utility class");
+    }
 
-   public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> results = new ArrayList<>();
         if (candidates == null || candidates.length == 0) {
             return results;
@@ -22,8 +22,7 @@ public class CombinationSum {
         return results;
     }
 
-    private static void backtrack(int[] candidates, int remaining, int start,
-                                  List<Integer> combination, List<List<Integer>> results) {
+    private static void backtrack(int[] candidates, int remaining, int start, List<Integer> combination, List<List<Integer>> results) {
         if (remaining == 0) {
             // Found valid combination; add a copy
             results.add(new ArrayList<>(combination));
