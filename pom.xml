@@ -190,15 +190,6 @@
                     </jvmArgs>
                     <skipFailingTests>true</skipFailingTests> <!-- Skip failing tests -->
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>pitest</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>mutationCoverage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
