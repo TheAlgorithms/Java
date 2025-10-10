@@ -23,9 +23,9 @@ class CombinationSumTest {
 
     @Test
     void sample() {
-        int[] candidates = {2,3,6,7};
+        int[] candidates = {2, 3, 6, 7};
         int target = 7;
-        var expected = List.of(List.of(2,2,3), List.of(7));
+        var expected = List.of(List.of(2, 2, 3), List.of(7));
         assertEquals(norm(expected), norm(CombinationSum.combinationSum(candidates, target)));
     }
 }
