@@ -16,8 +16,7 @@ class CombinationSumTest {
             q.sort(Integer::compare);
             y.add(q);
         }
-        y.sort(Comparator.<List<Integer>, Integer>comparing(List::size)
-            .thenComparing(a -> a.toString()));
+        y.sort(Comparator.<List<Integer>, Integer>comparing(List::size).thenComparing(a -> a.toString()));
         return y;
     }
 
