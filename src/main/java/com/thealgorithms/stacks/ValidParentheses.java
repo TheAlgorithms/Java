@@ -1,9 +1,11 @@
 package com.thealgorithms.stacks;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Map;
 
 /**
- * Utility class to check for valid parentheses in a string.
+ * Utility class to check if a string has valid parentheses.
  */
 public final class ValidParentheses {
 
@@ -11,28 +13,27 @@ public final class ValidParentheses {
         throw new AssertionError("Cannot instantiate utility class");
     }
 
+    private static final Map<Character, Character> PAIRS = Map.of(
+            ')', '(', '}', '{', ']', '['
+    );
+
     /**
-     * Returns true if the input string has valid parentheses.
+     * Checks if the input string has valid parentheses.
      *
-     * @param s the string containing parentheses
+     * @param s the input string
      * @return true if valid, false otherwise
      */
     public static boolean isValid(final String s) {
-        final Stack<Character> stack = new Stack<>();
+        if (s == null) {
+            throw new NullPointerException("Input cannot be null");
+        }
 
-        for (final char ch : s.toCharArray()) {
-            if (ch == '(' || ch == '{' || ch == '[') {
+        Deque<Character> stack = new ArrayDeque<>();
+        for (char ch : s.toCharArray()) {
+            if (PAIRS.containsValue(ch)) { // opening bracket
                 stack.push(ch);
-            } else if (ch == ')' || ch == '}' || ch == ']') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                final char top = stack.peek();
-                if ((top == '(' && ch == ')')
-                        || (top == '{' && ch == '}')
-                        || (top == '[' && ch == ']')) {
-                    stack.pop();
-                } else {
+            } else if (PAIRS.containsKey(ch)) { // closing bracket
+                if (stack.isEmpty() || stack.pop() != PAIRS.get(ch)) {
                     return false;
                 }
             }

@@ -1,11 +1,10 @@
 package com.thealgorithms.stacks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  * Tests for {@link ValidParentheses}.
@@ -13,33 +12,33 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class ValidParenthesesTest {
 
     @ParameterizedTest
-    @MethodSource("provideValidTestCases")
-    void testIsValidValidCases(String input, Boolean expected) {
+    @CsvSource({
+            "'()', true",
+            "'()[]{}', true",
+            "'{[]}', true",
+            "'', true"
+    })
+    void testValidParentheses(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
-    }
-
-    static Stream<Arguments> provideValidTestCases() {
-        return Stream.of(
-                Arguments.of("()", Boolean.TRUE),
-                Arguments.of("()[]{}", Boolean.TRUE),
-                Arguments.of("{[]}", Boolean.TRUE),
-                Arguments.of("", Boolean.TRUE) // empty string is valid
-        );
     }
 
     @ParameterizedTest
-    @MethodSource("provideInvalidTestCases")
-    void testIsValidInvalidCases(String input, Boolean expected) {
+    @CsvSource({
+            "'(', false",
+            "')', false",
+            "'([)]', false",
+            "'{[}]', false",
+            "'((()', false"
+    })
+    void testInvalidParentheses(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
-    static Stream<Arguments> provideInvalidTestCases() {
-        return Stream.of(
-                Arguments.of("(", Boolean.FALSE),
-                Arguments.of(")", Boolean.FALSE),
-                Arguments.of("([)]", Boolean.FALSE),
-                Arguments.of("{[}]", Boolean.FALSE),
-                Arguments.of("((()", Boolean.FALSE)
-        );
+    @ParameterizedTest
+    @CsvSource({
+            "null"
+    })
+    void testNullInput(String input) {
+        assertThrows(NullPointerException.class, () -> ValidParentheses.isValid(null));
     }
 }
