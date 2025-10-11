@@ -12,32 +12,19 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class ValidParenthesesTest {
 
     @ParameterizedTest
-    @CsvSource({
-            "'()', true",
-            "'()[]{}', true",
-            "'{[]}', true",
-            "'', true"
-    })
+    @CsvSource({"'()', true", "'()[]{}', true", "'{[]}', true", "'', true"})
     void testValidParentheses(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "'(', false",
-            "')', false",
-            "'([)]', false",
-            "'{[}]', false",
-            "'((()', false"
-    })
+    @CsvSource({"'(', false", "')', false", "'([)]', false", "'{[}]', false", "'((()', false"})
     void testInvalidParentheses(String input, boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
     @ParameterizedTest
-    @CsvSource({
-            "null"
-    })
+    @CsvSource({"null"})
     void testNullInput(String input) {
         assertThrows(NullPointerException.class, () -> ValidParentheses.isValid(null));
     }
