@@ -2,6 +2,7 @@ package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.doubleThat;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,4 +50,19 @@ class MathBuilderTest {
         double area = new MathBuilder.Builder().pi().openParenthesis(4).multiply(4).closeParenthesisAndMultiply().build().get();
         assertEquals(Math.PI * 4 * 4, area);
     }
+    @Test
+    void floorTest(){
+        // floor(10.5 + (20+2.1))
+        double actual = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).closeParenthesisAndPlus().floor().build().get();
+        double expected = Math.floor(10.5+20+2.1);
+
+        // 10.5 + floor((20+2.1))
+        double actual2 = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).floor().closeParenthesisAndPlus().build().get();
+        double expected2 = 10.5+Math.floor(20+2.1);
+
+
+        assertEquals(expected,actual);
+        assertEquals(expected2,actual2);
+    }
+
 }
