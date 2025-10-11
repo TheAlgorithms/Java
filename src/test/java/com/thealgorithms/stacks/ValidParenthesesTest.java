@@ -1,42 +1,45 @@
 package com.thealgorithms.stacks;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+/**
+ * Tests for {@link ValidParentheses}.
+ */
 public class ValidParenthesesTest {
 
     @ParameterizedTest
     @MethodSource("provideValidTestCases")
-    void testIsValidValidCases(String input, boolean expected) {
+    void testIsValidValidCases(String input, Boolean expected) {
         assertEquals(expected, ValidParentheses.isValid(input));
     }
 
     static Stream<Arguments> provideValidTestCases() {
         return Stream.of(
-                Arguments.of("()", true),
-                Arguments.of("()[]{}", true),
-                Arguments.of("{[]}", true),
-                Arguments.of("", true)  // empty string is valid
+                Arguments.of("()", Boolean.TRUE),
+                Arguments.of("()[]{}", Boolean.TRUE),
+                Arguments.of("{[]}", Boolean.TRUE),
+                Arguments.of("", Boolean.TRUE) // empty string is valid
         );
     }
 
     @ParameterizedTest
     @MethodSource("provideInvalidTestCases")
-    void testIsValidInvalidCases(String input) {
-        assertEquals(false, ValidParentheses.isValid(input));
+    void testIsValidInvalidCases(String input, Boolean expected) {
+        assertEquals(expected, ValidParentheses.isValid(input));
     }
 
     static Stream<Arguments> provideInvalidTestCases() {
         return Stream.of(
-                Arguments.of("("),
-                Arguments.of(")"),
-                Arguments.of("([)]"),
-                Arguments.of("{[}]"),
-                Arguments.of("((()")
+                Arguments.of("(", Boolean.FALSE),
+                Arguments.of(")", Boolean.FALSE),
+                Arguments.of("([)]", Boolean.FALSE),
+                Arguments.of("{[}]", Boolean.FALSE),
+                Arguments.of("((()", Boolean.FALSE)
         );
     }
 }
