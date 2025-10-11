@@ -292,8 +292,8 @@ public final class RotatingCalipers {
         for (int i = 1; i < hull.size(); i++) {
             Point current = hull.get(i);
             // Check if current point is better than current best
-            boolean isBetter = current.y() < bottomMost.y() ||
-                              (current.y() == bottomMost.y() && current.x() < bottomMost.x());
+            boolean isBetter = current.y() < bottomMost.y()
+                || (current.y() == bottomMost.y() && current.x() < bottomMost.x());
 
             if (isBetter) {
                 bottomMost = current;
