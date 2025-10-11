@@ -7,6 +7,12 @@
     <artifactId>Java</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20240303</version>
+</dependency>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,6 +20,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <assertj.version>3.27.6</assertj.version>
     </properties>
+    
 
     <dependencyManagement>
         <dependencies>
