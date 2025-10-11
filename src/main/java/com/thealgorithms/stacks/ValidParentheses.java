@@ -19,10 +19,15 @@ public final class ValidParentheses {
 
         Deque<Character> stack = new ArrayDeque<>();
         for (char ch : s.toCharArray()) {
-            if (PAIRS.containsValue(ch)) {
+            if (PAIRS.containsValue(ch)) { // opening bracket
                 stack.push(ch);
-            } else if (PAIRS.containsKey(ch)) {
-                if (stack.isEmpty() || stack.pop() != PAIRS.get(ch)) {
+            } else if (PAIRS.containsKey(ch)) { // closing bracket
+                // Split logic to satisfy PMD
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                Character top = stack.pop();
+                if (top != PAIRS.get(ch)) {
                     return false;
                 }
             }
