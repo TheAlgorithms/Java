@@ -1,14 +1,26 @@
 package com.thealgorithms.others;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * References: https://en.wikipedia.org/wiki/Streaming_algorithm
+ * Algorithm to find the maximum sum of a subarray of size K with all distinct
+ * elements.
  *
- * This model involves computing the maximum sum of subarrays of a fixed size \( K \) from a stream of integers.
- * As the stream progresses, elements from the end of the window are removed, and new elements from the stream are added.
+ * This implementation uses a sliding window approach with a hash map to
+ * efficiently
+ * track element frequencies within the current window. The algorithm maintains
+ * a window
+ * of size K and slides it across the array, ensuring all elements in the window
+ * are distinct.
  *
+ * Time Complexity: O(n) where n is the length of the input array
+ * Space Complexity: O(k) for storing elements in the hash map
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">Streaming
+ *      Algorithm</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Sliding_window_protocol">Sliding
+ *      Window</a>
  * @author Swarga-codes (https://github.com/Swarga-codes)
  */
 public final class MaximumSumOfDistinctSubarraysWithLengthK {
@@ -16,54 +28,62 @@ public final class MaximumSumOfDistinctSubarraysWithLengthK {
     }
 
     /**
-     * Finds the maximum sum of a subarray of size K consisting of distinct elements.
+     * Finds the maximum sum of a subarray of size K consisting of distinct
+     * elements.
      *
-     * @param k The size of the subarray.
+     * The algorithm uses a sliding window technique with a frequency map to track
+     * the count of each element in the current window. A window is valid only if
+     * all K elements are distinct (frequency map size equals K).
+     *
+     * @param k    The size of the subarray. Must be non-negative.
      * @param nums The array from which subarrays will be considered.
-     *
-     * @return The maximum sum of any distinct-element subarray of size K. If no such subarray exists, returns 0.
+     * @return The maximum sum of any distinct-element subarray of size K.
+     *         Returns 0 if no such subarray exists or if k is 0 or negative.
+     * @throws IllegalArgumentException if k is negative
      */
     public static long maximumSubarraySum(int k, int... nums) {
-        if (nums.length < k) {
+        if (k <= 0 || nums == null || nums.length < k) {
             return 0;
         }
-        long masSum = 0; // Variable to store the maximum sum of distinct subarrays
-        long currentSum = 0; // Variable to store the sum of the current subarray
-        Set<Integer> currentSet = new HashSet<>(); // Set to track distinct elements in the current subarray
 
-        // Initialize the first window
+        long maxSum = 0;
+        long currentSum = 0;
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        // Initialize the first window of size k
         for (int i = 0; i < k; i++) {
             currentSum += nums[i];
-            currentSet.add(nums[i]);
+            frequencyMap.put(nums[i], frequencyMap.getOrDefault(nums[i], 0) + 1);
         }
-        // If the first window contains distinct elements, update maxSum
-        if (currentSet.size() == k) {
-            masSum = currentSum;
+
+        // Check if the first window has all distinct elements
+        if (frequencyMap.size() == k) {
+            maxSum = currentSum;
         }
+
         // Slide the window across the array
-        for (int i = 1; i < nums.length - k + 1; i++) {
-            // Update the sum by removing the element that is sliding out and adding the new element
-            currentSum = currentSum - nums[i - 1];
-            currentSum = currentSum + nums[i + k - 1];
-            int j = i;
-            boolean flag = false; // flag value which says that the subarray contains distinct elements
-            while (j < i + k && currentSet.size() < k) {
-                if (nums[i - 1] == nums[j]) {
-                    flag = true;
-                    break;
-                } else {
-                    j++;
-                }
+        for (int i = k; i < nums.length; i++) {
+            // Remove the leftmost element from the window
+            int leftElement = nums[i - k];
+            currentSum -= leftElement;
+            int leftFrequency = frequencyMap.get(leftElement);
+            if (leftFrequency == 1) {
+                frequencyMap.remove(leftElement);
+            } else {
+                frequencyMap.put(leftElement, leftFrequency - 1);
             }
-            if (!flag) {
-                currentSet.remove(nums[i - 1]);
-            }
-            currentSet.add(nums[i + k - 1]);
-            // If the current window has distinct elements, compare and possibly update maxSum
-            if (currentSet.size() == k && masSum < currentSum) {
-                masSum = currentSum;
+
+            // Add the new rightmost element to the window
+            int rightElement = nums[i];
+            currentSum += rightElement;
+            frequencyMap.put(rightElement, frequencyMap.getOrDefault(rightElement, 0) + 1);
+
+            // If all elements in the window are distinct, update maxSum if needed
+            if (frequencyMap.size() == k && currentSum > maxSum) {
+                maxSum = currentSum;
             }
         }
-        return masSum; // the final maximum sum
+
+        return maxSum;
     }
 }
