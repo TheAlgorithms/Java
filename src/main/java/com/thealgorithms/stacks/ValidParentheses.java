@@ -44,9 +44,9 @@ public final class ValidParentheses {
                     return false;
                 }
                 char top = stack.peek();
-                if ((top == '(' && ch == ')') ||
-                        (top == '{' && ch == '}') ||
-                        (top == '[' && ch == ']')) {
+                if ((top == '(' && ch == ')')
+                        || (top == '{' && ch == '}')
+                        || (top == '[' && ch == ']')) {
                     stack.pop();
                 } else {
                     return false;
