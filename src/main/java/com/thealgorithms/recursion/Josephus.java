@@ -15,6 +15,9 @@ package com.thealgorithms.recursion;
  */
 public final class Josephus {
 
+    private Josephus() {
+        // prevent instantiation
+    }
     /**
      * Returns the 1-based position of the survivor for given n and k.
      *
