@@ -64,5 +64,20 @@ class MathBuilderTest {
         assertEquals(expected,actual);
         assertEquals(expected2,actual2);
     }
+    @Test
+    void closeParenthesisAndOther(){
+        // 10.5 - (20+2.1)
+        double actual = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).closeParenthesisAndMinus().build().get();
+        double expected = 10.5-(20+2.1);
+        
+        
+        // 10.5 / (20+2.1)
+        double actual2 = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).closeParenthesisAndDivide().build().get();
+        double expected2 = 10.5/(20+2.1);
+
+
+        assertEquals(expected,actual);
+        assertEquals(expected2,actual2);
+    }
 
 }
