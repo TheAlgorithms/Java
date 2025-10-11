@@ -14,7 +14,7 @@ public final class ValidParentheses {
     /**
      * Returns true if the input string has valid parentheses.
      *
-     * @params the string containing parentheses
+     * @param s the string containing parentheses
      * @return true if valid, false otherwise
      */
     public static boolean isValid(final String s) {
@@ -38,12 +38,5 @@ public final class ValidParentheses {
             }
         }
         return stack.isEmpty();
-    }
-
-    public static void main(final String[] args) {
-        System.out.println(isValid("()[]{}")); // true
-        System.out.println(isValid("(]")); // false
-        System.out.println(isValid("([)]")); // false
-        System.out.println(isValid("{[]}")); // true
     }
 }
