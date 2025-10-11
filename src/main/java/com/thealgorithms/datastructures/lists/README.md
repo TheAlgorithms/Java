@@ -30,3 +30,4 @@ The `next` variable points to the next node in the data structure and value stor
 6. `MergeKSortedLinkedlist.java` : Merges K sorted linked list with mergesort (mergesort is also the most efficient sorting algorithm for linked list).
 7. `RandomNode.java` : Selects a random node from given linked list and diplays it.
 8. `SkipList.java` : Data Structure used for storing a sorted list of elements with help of a Linked list hierarchy that connects to subsequences of elements.
+9. `TortoiseHareAlgo.java` : Finds the middle element of a linked list using the fast and slow pointer (Tortoise-Hare) algorithm.
