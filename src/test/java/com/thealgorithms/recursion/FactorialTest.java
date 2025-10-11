@@ -33,3 +33,4 @@ public class FactorialTest {
     assertThrows(IllegalArgumentException.class, () -> Factorial.factorial(-1));
   }
 }
+
