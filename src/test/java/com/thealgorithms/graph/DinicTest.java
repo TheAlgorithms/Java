@@ -53,7 +53,8 @@ class DinicTest {
             }
           }
         }
-        int s = 0, t = n - 1;
+        int s = 0;
+        int t = n - 1;
         int f1 = Dinic.maxFlow(copyMatrix(cap), s, t);
         int f2 = EdmondsKarp.maxFlow(cap, s, t);
         assertEquals(f2, f1);

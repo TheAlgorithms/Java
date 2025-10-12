@@ -21,7 +21,7 @@ import java.util.Queue;
  * @see <a href="https://en.wikipedia.org/wiki/Dinic%27s_algorithm">Wikipedia: Dinic's algorithm</a>
  */
 public final class Dinic {
-  private Dinic() {}
+  private Dinic() { }
 
   /**
    * Computes the maximum flow from source to sink using Dinic's algorithm.
@@ -101,17 +101,19 @@ public final class Dinic {
     }
     final int n = residual.length;
     for (int v = next[u]; v < n; v++, next[u] = v) {
-      if (residual[u][v] <= 0)
-        continue;
-      if (level[v] != level[u] + 1)
-        continue;
-      int pushed = dfsBlocking(residual, level, next, v, sink, Math.min(f, residual[u][v]));
-      if (pushed > 0) {
-        residual[u][v] -= pushed;
-        residual[v][u] += pushed;
-        return pushed;
-      }
-    }
-    return 0;
+            if (residual[u][v] <= 0) {
+                continue;
+            }
+            if (level[v] != level[u] + 1) {
+                continue;
+            }
+            int pushed = dfsBlocking(residual, level, next, v, sink, Math.min(f, residual[u][v]));
+            if (pushed > 0) {
+                residual[u][v] -= pushed;
+                residual[v][u] += pushed;
+                return pushed;
+            }
+        }
+return 0;
   }
 }
