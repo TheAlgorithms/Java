@@ -21,86 +21,86 @@ import java.util.Queue;
  * @see <a href="https://en.wikipedia.org/wiki/Dinic%27s_algorithm">Wikipedia: Dinic's algorithm</a>
  */
 public final class Dinic {
-  private Dinic() { }
-
-  /**
-   * Computes the maximum flow from source to sink using Dinic's algorithm.
-   *
-   * @param capacity square capacity matrix (n x n); entries must be >= 0
-   * @param source source vertex index in [0, n)
-   * @param sink sink vertex index in [0, n)
-   * @return the maximum flow value
-   * @throws IllegalArgumentException if the input matrix is null/non-square/has negatives or
-   *     indices invalid
-   */
-  public static int maxFlow(int[][] capacity, int source, int sink) {
-    if (capacity == null || capacity.length == 0) {
-      throw new IllegalArgumentException("Capacity matrix must not be null or empty");
+    private Dinic() {
     }
-    final int n = capacity.length;
-    for (int i = 0; i < n; i++) {
-      if (capacity[i] == null || capacity[i].length != n) {
-        throw new IllegalArgumentException("Capacity matrix must be square");
-      }
-      for (int j = 0; j < n; j++) {
-        if (capacity[i][j] < 0) {
-          throw new IllegalArgumentException("Capacities must be non-negative");
+
+    /**
+     * Computes the maximum flow from source to sink using Dinic's algorithm.
+     *
+     * @param capacity square capacity matrix (n x n); entries must be >= 0
+     * @param source source vertex index in [0, n)
+     * @param sink sink vertex index in [0, n)
+     * @return the maximum flow value
+     * @throws IllegalArgumentException if the input matrix is null/non-square/has negatives or
+     *     indices invalid
+     */
+    public static int maxFlow(int[][] capacity, int source, int sink) {
+        if (capacity == null || capacity.length == 0) {
+            throw new IllegalArgumentException("Capacity matrix must not be null or empty");
         }
-      }
-    }
-    if (source < 0 || sink < 0 || source >= n || sink >= n) {
-      throw new IllegalArgumentException("Source and sink must be valid vertex indices");
-    }
-    if (source == sink) {
-      return 0;
-    }
-
-    // residual capacities
-    int[][] residual = new int[n][n];
-    for (int i = 0; i < n; i++) {
-      residual[i] = Arrays.copyOf(capacity[i], n);
-    }
-
-    int[] level = new int[n];
-    int flow = 0;
-    while (bfsBuildLevelGraph(residual, source, sink, level)) {
-      int[] next = new int[n]; // current-edge optimization
-      int pushed;
-      do {
-        pushed = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE);
-        flow += pushed;
-      } while (pushed > 0);
-    }
-    return flow;
-  }
-
-  private static boolean bfsBuildLevelGraph(int[][] residual, int source, int sink, int[] level) {
-    Arrays.fill(level, -1);
-    level[source] = 0;
-    Queue<Integer> q = new ArrayDeque<>();
-    q.add(source);
-    while (!q.isEmpty()) {
-      int u = q.poll();
-      for (int v = 0; v < residual.length; v++) {
-        if (residual[u][v] > 0 && level[v] == -1) {
-          level[v] = level[u] + 1;
-          if (v == sink) {
-            return true;
-          }
-          q.add(v);
+        final int n = capacity.length;
+        for (int i = 0; i < n; i++) {
+            if (capacity[i] == null || capacity[i].length != n) {
+                throw new IllegalArgumentException("Capacity matrix must be square");
+            }
+            for (int j = 0; j < n; j++) {
+                if (capacity[i][j] < 0) {
+                    throw new IllegalArgumentException("Capacities must be non-negative");
+                }
+            }
         }
-      }
-    }
-    return level[sink] != -1;
-  }
+        if (source < 0 || sink < 0 || source >= n || sink >= n) {
+            throw new IllegalArgumentException("Source and sink must be valid vertex indices");
+        }
+        if (source == sink) {
+            return 0;
+        }
 
-  private static int dfsBlocking(
-      int[][] residual, int[] level, int[] next, int u, int sink, int f) {
-    if (u == sink) {
-      return f;
+        // residual capacities
+        int[][] residual = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            residual[i] = Arrays.copyOf(capacity[i], n);
+        }
+
+        int[] level = new int[n];
+        int flow = 0;
+        while (bfsBuildLevelGraph(residual, source, sink, level)) {
+            int[] next = new int[n]; // current-edge optimization
+            int pushed;
+            do {
+                pushed = dfsBlocking(residual, level, next, source, sink, Integer.MAX_VALUE);
+                flow += pushed;
+            } while (pushed > 0);
+        }
+        return flow;
     }
-    final int n = residual.length;
-    for (int v = next[u]; v < n; v++, next[u] = v) {
+
+    private static boolean bfsBuildLevelGraph(int[][] residual, int source, int sink, int[] level) {
+        Arrays.fill(level, -1);
+        level[source] = 0;
+        Queue<Integer> q = new ArrayDeque<>();
+        q.add(source);
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v = 0; v < residual.length; v++) {
+                if (residual[u][v] > 0 && level[v] == -1) {
+                    level[v] = level[u] + 1;
+                    if (v == sink) {
+                        return true;
+                    }
+                    q.add(v);
+                }
+            }
+        }
+        return level[sink] != -1;
+    }
+
+    private static int dfsBlocking(int[][] residual, int[] level, int[] next, int u, int sink, int f) {
+        if (u == sink) {
+            return f;
+        }
+        final int n = residual.length;
+        for (int v = next[u]; v < n; v++, next[u] = v) {
             if (residual[u][v] <= 0) {
                 continue;
             }
@@ -114,6 +114,6 @@ public final class Dinic {
                 return pushed;
             }
         }
-return 0;
-  }
+        return 0;
+    }
 }
