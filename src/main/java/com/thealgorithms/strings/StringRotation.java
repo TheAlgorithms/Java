@@ -2,6 +2,10 @@ package com.thealgorithms.strings;
 
 public class StringRotation {
 
+    private StringRotation() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     /**
      * Checks if str2 is a rotation of str1
      * @param str1 Original string
