@@ -98,8 +98,7 @@ class MaximumSumOfDistinctSubarraysWithLengthKTest {
      */
     @Test
     void testNullArray() {
-        int[] nullArray = null;
-        long result = MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(3, nullArray);
+        long result = MaximumSumOfDistinctSubarraysWithLengthK.maximumSubarraySum(3, (int[]) null);
         assertEquals(0L, result);
     }
 
