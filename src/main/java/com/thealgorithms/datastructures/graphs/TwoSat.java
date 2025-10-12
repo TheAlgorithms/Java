@@ -98,8 +98,8 @@ class TwoSat {
         this.numberOfVariables = numberOfVariables;
         int n = 2 * numberOfVariables + 1;
 
-        graph = new ArrayList[n];
-        graphTranspose = new ArrayList[n];
+        graph = (ArrayList<Integer>[]) new ArrayList[n];
+        graphTranspose = (ArrayList<Integer>[]) new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
             graphTranspose[i] = new ArrayList<>();
