@@ -173,6 +173,7 @@
             - 📄 [TarjansAlgorithm](src/main/java/com/thealgorithms/datastructures/graphs/TarjansAlgorithm.java)
             - 📄 [UndirectedAdjacencyListGraph](src/main/java/com/thealgorithms/datastructures/graphs/UndirectedAdjacencyListGraph.java)
             - 📄 [WelshPowell](src/main/java/com/thealgorithms/datastructures/graphs/WelshPowell.java)
+            - 📄 [TwoSat](src/main/java/com/thealgorithms/datastructures/graphs/TwoSat.java)
           - 📁 **hashmap**
             - 📁 **hashing**
               - 📄 [GenericHashMapUsingArray](src/main/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArray.java)
