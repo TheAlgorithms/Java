@@ -1,13 +1,9 @@
 package com.thealgorithms.strings;
 
-/**
- * Checks if one string is a rotation of another string.
- */
 public class StringRotation {
 
     /**
-     * Checks if str2 is a rotation of str1.
-     *
+     * Checks if str2 is a rotation of str1
      * @param str1 Original string
      * @param str2 String to check for rotation
      * @return true if str2 is a rotation of str1, false otherwise
