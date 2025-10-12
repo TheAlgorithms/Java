@@ -128,28 +128,18 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            String keyString;
-            if (key instanceof Object[] objectArray) {
-                keyString = Arrays.deepToString(objectArray);
-            } else if (key instanceof int[] intArray) {
-                keyString = Arrays.toString(intArray);
-            } else if (key instanceof long[] longArray) {
-                keyString = Arrays.toString(longArray);
-            } else if (key instanceof double[] doubleArray) {
-                keyString = Arrays.toString(doubleArray);
-            } else if (key instanceof float[] floatArray) {
-                keyString = Arrays.toString(floatArray);
-            } else if (key instanceof boolean[] booleanArray) {
-                keyString = Arrays.toString(booleanArray);
-            } else if (key instanceof byte[] byteArray) {
-                keyString = Arrays.toString(byteArray);
-            } else if (key instanceof char[] charArray) {
-                keyString = Arrays.toString(charArray);
-            } else if (key instanceof short[] shortArray) {
-                keyString = Arrays.toString(shortArray);
-            } else {
-                keyString = String.valueOf(key);
-            }
+            String keyString = switch (key) {
+                case Object[] arr -> Arrays.deepToString(arr);
+                case int[] arr -> Arrays.toString(arr);
+                case long[] arr -> Arrays.toString(arr);
+                case double[] arr -> Arrays.toString(arr);
+                case float[] arr -> Arrays.toString(arr);
+                case boolean[] arr -> Arrays.toString(arr);
+                case byte[] arr -> Arrays.toString(arr);
+                case char[] arr -> Arrays.toString(arr);
+                case short[] arr -> Arrays.toString(arr);
+                case null, default -> String.valueOf(key);
+            };
             return index * asciiString(keyString);
         }
 
