@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class InfixToPostfix {
+public class InfixToPostfixevaluator {
     
     // Function to check operator precedence
     static int precedence(char ch) {
