@@ -1,6 +1,5 @@
 package com.thealgorithms.graph;
 
-import java.util.Arrays;
 
 /**
  * An implementation of the Stoer-Wagner algorithm to find the global minimum cut of an undirected, weighted graph.
