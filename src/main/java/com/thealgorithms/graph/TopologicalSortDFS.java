@@ -92,8 +92,6 @@ public class TopologicalSortDFS {
             }
         }
 
-        // Reverse post-order result to obtain topological order
-        Collections.reverse(output);
         return output.stream().mapToInt(Integer::intValue).toArray();
     }
 
