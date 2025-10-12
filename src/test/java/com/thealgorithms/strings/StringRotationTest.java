@@ -1,6 +1,7 @@
-package com.thealgorithms.strings;
+package com.thealgorithms;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class StringRotationTest {
