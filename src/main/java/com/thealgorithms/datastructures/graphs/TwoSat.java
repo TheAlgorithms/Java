@@ -90,7 +90,7 @@ class TwoSat {
      * @param numberOfVariables the number of boolean variables
      * @throws IllegalArgumentException if the number of variables is negative
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public TwoSat(int numberOfVariables) {
         if (numberOfVariables < 0) {
             throw new IllegalArgumentException("Number of variables cannot be negative.");
