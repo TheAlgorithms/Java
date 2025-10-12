@@ -21,7 +21,7 @@ package com.thealgorithms.maths;
  * <p>
  * <b>Example usage:</b>
  * </p>
- * 
+ *
  * <pre>
  * boolean isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(145);
  * System.out.println(isKrishnamurthy); // Output: true
@@ -36,7 +36,7 @@ package com.thealgorithms.maths;
 public final class KrishnamurthyNumber {
 
     // Pre-computed factorials for digits 0-9 to improve performance
-    private static final int[] FACTORIALS = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
+    private static final int[] FACTORIALS = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
 
     private KrishnamurthyNumber() {
     }
