@@ -1,15 +1,16 @@
 package com.thealgorithms.strings;
 
-public class StringRotation {
+public final class StringRotation {
 
     private StringRotation() {
         throw new UnsupportedOperationException("Utility class");
     }
 
     /**
-     * Checks if str2 is a rotation of str1
-     * @param str1 Original string
-     * @param str2 String to check for rotation
+     * Checks if str2 is a rotation of str1.
+     *
+     * @param str1 the original string
+     * @param str2 the string to check for rotation
      * @return true if str2 is a rotation of str1, false otherwise
      */
     public static boolean isRotation(String str1, String str2) {
