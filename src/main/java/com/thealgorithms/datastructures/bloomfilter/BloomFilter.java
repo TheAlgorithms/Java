@@ -156,9 +156,9 @@ public class BloomFilter<T> {
         private int asciiString(String word) {
             int sum = 0;
             for (char c : word.toCharArray()) {
-                sum += c;
-            }
-            return sum;
+                        sum += c;
+                    }
+                    return sum;
+                }
         }
     }
-}
