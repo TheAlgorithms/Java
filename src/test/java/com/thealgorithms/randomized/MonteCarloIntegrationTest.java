@@ -56,8 +56,9 @@ class MonteCarloIntegrationTest {
     void testNegativeInterval() {
         // Integral of f(x) = x from -1 to 1 is 0
         Function<Double, Double> linear = Function.identity();
-        double result = approximate(linear, -1, 1, 10000);
-        assertEquals(0.0, result, EPSILON);
+        // The integral of x from 2 to 1 is -1.5
+        double result = approximate(linear, 2, 1, 10000);
+        assertEquals(-1.5, result, EPSILON);
     }
 
     @Test
