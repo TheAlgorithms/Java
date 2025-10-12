@@ -91,7 +91,7 @@ class TwoSat {
      * @throws IllegalArgumentException if the number of variables is negative
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public TwoSat(int numberOfVariables) {
+    TwoSat(int numberOfVariables) {
         if (numberOfVariables < 0) {
             throw new IllegalArgumentException("Number of variables cannot be negative.");
         }
@@ -124,7 +124,7 @@ class TwoSat {
      * @param isNegateB {@code true} if variable {@code b} is negated
      * @throws IllegalArgumentException if {@code a} or {@code b} are out of range
      */
-    public void addClause(int a, boolean isNegateA, int b, boolean isNegateB) {
+    void addClause(int a, boolean isNegateA, int b, boolean isNegateB) {
         if (a <= 0 || a > numberOfVariables) {
             throw new IllegalArgumentException("Variable number must be between 1 and " + numberOfVariables);
         }
@@ -150,7 +150,7 @@ class TwoSat {
      * Solves the 2-SAT problem using Kosaraju's algorithm to find SCCs
      * and determines whether a satisfying assignment exists.
      */
-    public void solve() {
+    void solve() {
         isSolved = true;
         int n = 2 * numberOfVariables + 1;
 
@@ -195,7 +195,7 @@ class TwoSat {
      * @return {@code true} if a solution exists; {@code false} otherwise
      * @throws Error if called before {@link #solve()}
      */
-    public boolean isSolutionExists() {
+    boolean isSolutionExists() {
         if (!isSolved) {
             throw new Error("Please call solve() before checking for a solution.");
         }
@@ -209,7 +209,7 @@ class TwoSat {
      *         variable {@code xᵢ}
      * @throws Error if called before {@link #solve()} or if no solution exists
      */
-    public boolean[] getSolutions() {
+    boolean[] getSolutions() {
         if (!isSolved) {
             throw new Error("Please call solve() before fetching the solution.");
         }
