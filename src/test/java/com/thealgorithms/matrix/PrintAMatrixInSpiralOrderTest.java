@@ -1,4 +1,4 @@
-package com.thealgorithms.others;
+package com.thealgorithms.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -65,5 +65,19 @@ class PrintAMatrixInSpiralOrderTest {
         int[][] matrix = {{-1, -2}, {-3, -4}};
         List<Integer> expected = Arrays.asList(-1, -2, -4, -3);
         assertEquals(expected, spiralPrinter.print(matrix, 2, 2));
+    }
+
+    @Test
+    void testLargeSquareMatrix() {
+        int[][] matrix = {{3, 4, 5, 6, 7}, {8, 9, 10, 11, 12}, {14, 15, 16, 17, 18}, {23, 24, 25, 26, 27}, {30, 31, 32, 33, 34}};
+        List<Integer> expected = Arrays.asList(3, 4, 5, 6, 7, 12, 18, 27, 34, 33, 32, 31, 30, 23, 14, 8, 9, 10, 11, 17, 26, 25, 24, 15, 16);
+        assertEquals(expected, spiralPrinter.print(matrix, 5, 5));
+    }
+
+    @Test
+    void testSingleRowWithTwoElements() {
+        int[][] matrix = {{2, 2}};
+        List<Integer> expected = Arrays.asList(2, 2);
+        assertEquals(expected, spiralPrinter.print(matrix, 1, 2));
     }
 }
