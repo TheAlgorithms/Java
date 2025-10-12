@@ -33,7 +33,7 @@ class HeronsFormulaTest {
     @Test
     void testEquilateralTriangleLargeSides() {
         final double side = 10.0;
-        final double expectedArea = (Math.sqrt(3) / 4) * side * side;
+        final double expectedArea = Math.sqrt(3) / 4 * side * side;
         Assertions.assertEquals(expectedArea, HeronsFormula.herons(side, side, side), EPSILON);
     }
 
