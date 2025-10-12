@@ -57,7 +57,9 @@ import java.util.Stack;
  *     }
  * }
  * </pre>
- *
+ * <p><strong>Reference</strong></p>
+ * <a href="https://cp-algorithms.com/graph/2SAT.html">CP Algorithm</a> <br></br>
+ * <a href="https://en.wikipedia.org/wiki/2-satisfiability">Wikipedia - 2 SAT</a>
  * @author Shoyeb Ansari
  *
  * @see Kosaraju
