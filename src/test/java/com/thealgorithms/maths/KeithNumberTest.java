@@ -1,6 +1,5 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -148,7 +147,7 @@ class KeithNumberTest {
     void testAllKnownTwoDigitKeithNumbers() {
         int[] knownKeithNumbers = {14, 19, 28, 47, 61, 75};
         for (int number : knownKeithNumbers) {
-            assertEquals(true, KeithNumber.isKeith(number), "Expected " + number + " to be a Keith number");
+            assertTrue(KeithNumber.isKeith(number), "Expected " + number + " to be a Keith number");
         }
     }
 }
