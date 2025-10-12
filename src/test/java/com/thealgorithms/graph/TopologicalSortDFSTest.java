@@ -1,6 +1,11 @@
 package com.thealgorithms.graph;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -78,8 +83,20 @@ public class TopologicalSortDFSTest {
 
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
 
-        // Valid order: [5, 4, 2, 3, 1, 0]
-        int[] expected = { 5, 4, 2, 3, 1, 0 };
-        assertArrayEquals(expected, result, "Valid topological order expected such as [5, 4, 2, 3, 1, 0].");
+        // Validate topological order
+        assertEquals(numCourses, result.length, "Should include all courses.");
+
+        // Check that each prerequisite comes before its dependent
+        Map<Integer, Integer> position = new HashMap<>();
+        for (int i = 0; i < result.length; i++) {
+            position.put(result[i], i);
+        }
+
+        for (int[] edge : prerequisites) {
+            int course = edge[0];
+            int prereq = edge[1];
+            assertTrue(position.get(prereq) < position.get(course),
+                    String.format("Course %d should come after prerequisite %d", course, prereq));
+        }
     }
 }
