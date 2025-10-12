@@ -1,18 +1,20 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
+import java.util.Arrays;
 import java.util.BitSet;
 
 /**
  * A generic BloomFilter implementation for probabilistic membership checking.
  * <p>
- * Bloom filters are space-efficient data structures that provide a fast way to test whether an
- * element is a member of a set. They may produce false positives, indicating an element is
+ * Bloom filters are space-efficient data structures that provide a fast way to
+ * test whether an
+ * element is a member of a set. They may produce false positives, indicating an
+ * element is
  * in the set when it is not, but they will never produce false negatives.
  * </p>
  *
  * @param <T> The type of elements to be stored in the Bloom filter.
  */
-@SuppressWarnings("rawtypes")
 public class BloomFilter<T> {
 
     private final int numberOfHashFunctions;
@@ -20,11 +22,14 @@ public class BloomFilter<T> {
     private final Hash<T>[] hashFunctions;
 
     /**
-     * Constructs a BloomFilter with a specified number of hash functions and bit array size.
+     * Constructs a BloomFilter with a specified number of hash functions and bit
+     * array size.
      *
      * @param numberOfHashFunctions the number of hash functions to use
-     * @param bitArraySize          the size of the bit array, which determines the capacity of the filter
-     * @throws IllegalArgumentException if numberOfHashFunctions or bitArraySize is less than 1
+     * @param bitArraySize          the size of the bit array, which determines the
+     *                              capacity of the filter
+     * @throws IllegalArgumentException if numberOfHashFunctions or bitArraySize is
+     *                                  less than 1
      */
     @SuppressWarnings("unchecked")
     public BloomFilter(int numberOfHashFunctions, int bitArraySize) {
@@ -33,12 +38,13 @@ public class BloomFilter<T> {
         }
         this.numberOfHashFunctions = numberOfHashFunctions;
         this.bitArray = new BitSet(bitArraySize);
-        this.hashFunctions = new Hash[numberOfHashFunctions];
+        this.hashFunctions = (Hash<T>[]) new Hash<?>[numberOfHashFunctions];
         initializeHashFunctions();
     }
 
     /**
-     * Initializes the hash functions with unique indices to ensure different hashing.
+     * Initializes the hash functions with unique indices to ensure different
+     * hashing.
      */
     private void initializeHashFunctions() {
         for (int i = 0; i < numberOfHashFunctions; i++) {
@@ -49,7 +55,8 @@ public class BloomFilter<T> {
     /**
      * Inserts an element into the Bloom filter.
      * <p>
-     * This method hashes the element using all defined hash functions and sets the corresponding
+     * This method hashes the element using all defined hash functions and sets the
+     * corresponding
      * bits in the bit array.
      * </p>
      *
@@ -65,13 +72,16 @@ public class BloomFilter<T> {
     /**
      * Checks if an element might be in the Bloom filter.
      * <p>
-     * This method checks the bits at the positions computed by each hash function. If any of these
-     * bits are not set, the element is definitely not in the filter. If all bits are set, the element
+     * This method checks the bits at the positions computed by each hash function.
+     * If any of these
+     * bits are not set, the element is definitely not in the filter. If all bits
+     * are set, the element
      * might be in the filter.
      * </p>
      *
      * @param key the element to check for membership in the Bloom filter
-     * @return {@code true} if the element might be in the Bloom filter, {@code false} if it is definitely not
+     * @return {@code true} if the element might be in the Bloom filter,
+     *         {@code false} if it is definitely not
      */
     public boolean contains(T key) {
         for (Hash<T> hash : hashFunctions) {
@@ -86,7 +96,8 @@ public class BloomFilter<T> {
     /**
      * Inner class representing a hash function used by the Bloom filter.
      * <p>
-     * Each instance of this class represents a different hash function based on its index.
+     * Each instance of this class represents a different hash function based on its
+     * index.
      * </p>
      *
      * @param <T> The type of elements to be hashed.
@@ -109,13 +120,27 @@ public class BloomFilter<T> {
          * <p>
          * The hash value is calculated by multiplying the index of the hash function
          * with the ASCII sum of the string representation of the key.
+         * For array types, the content of the array is used instead of the default
+         * toString.
          * </p>
          *
          * @param key the element to hash
          * @return the computed hash value
          */
         public int compute(T key) {
-            return index * asciiString(String.valueOf(key));
+            String keyString = switch (key) {
+                case Object[] arr -> Arrays.deepToString(arr);
+                case int[] arr -> Arrays.toString(arr);
+                case long[] arr -> Arrays.toString(arr);
+                case double[] arr -> Arrays.toString(arr);
+                case float[] arr -> Arrays.toString(arr);
+                case boolean[] arr -> Arrays.toString(arr);
+                case byte[] arr -> Arrays.toString(arr);
+                case char[] arr -> Arrays.toString(arr);
+                case short[] arr -> Arrays.toString(arr);
+                case null, default -> String.valueOf(key);
+            };
+            return index * asciiString(keyString);
         }
 
         /**
@@ -131,9 +156,9 @@ public class BloomFilter<T> {
         private int asciiString(String word) {
             int sum = 0;
             for (char c : word.toCharArray()) {
-                sum += c;
-            }
-            return sum;
+                        sum += c;
+                    }
+                    return sum;
+                }
         }
     }
-}
