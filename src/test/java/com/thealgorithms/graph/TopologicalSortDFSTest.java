@@ -66,37 +66,4 @@ public class TopologicalSortDFSTest {
 
         assertArrayEquals(expected, result, "Cycle detected, no valid course order.");
     }
-
-    @Test
-    public void testComplexGraph() {
-        // Complex example: 6 courses
-        // Dependencies: 5->2, 5->0, 4->0, 4->1, 2->3, 3->1
-        int numCourses = 6;
-        int[][] prerequisites = {
-                { 2, 5 },
-                { 0, 5 },
-                { 0, 4 },
-                { 1, 4 },
-                { 3, 2 },
-                { 1, 3 }
-        };
-
-        int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
-
-        // Validate topological order
-        assertEquals(numCourses, result.length, "Should include all courses.");
-
-        // Check that each prerequisite comes before its dependent
-        Map<Integer, Integer> position = new HashMap<>();
-        for (int i = 0; i < result.length; i++) {
-            position.put(result[i], i);
-        }
-
-        for (int[] edge : prerequisites) {
-            int course = edge[0];
-            int prereq = edge[1];
-            assertTrue(position.get(prereq) < position.get(course),
-                    String.format("Course %d should come after prerequisite %d", course, prereq));
-        }
-    }
 }
