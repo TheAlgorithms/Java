@@ -108,9 +108,7 @@ public class TopologicalSortDFS {
      *         processed without cycles;
      *         {@code false} if a cycle is detected
      */
-    private boolean dfs(int crs, Map<Integer, List<Integer>> prereq,
-            Set<Integer> visited, Set<Integer> cycle,
-            List<Integer> output) {
+    private boolean dfs(int crs, Map<Integer, List<Integer>> prereq, Set<Integer> visited, Set<Integer> cycle, List<Integer> output) {
 
         if (cycle.contains(crs)) {
             return false; // Cycle detected

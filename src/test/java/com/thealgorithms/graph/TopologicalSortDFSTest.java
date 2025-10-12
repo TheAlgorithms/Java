@@ -17,8 +17,8 @@ public class TopologicalSortDFSTest {
     public void testSimpleCase() {
         // Example: Two courses where 1 depends on 0
         int numCourses = 2;
-        int[][] prerequisites = { { 1, 0 } };
-        int[] expected = { 0, 1 };
+        int[][] prerequisites = {{1, 0}};
+        int[] expected = {0, 1};
 
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
 
@@ -30,11 +30,11 @@ public class TopologicalSortDFSTest {
         // Example: 4 courses with dependencies
         // 1 -> 0, 2 -> 0, 3 -> 1, 3 -> 2
         int numCourses = 4;
-        int[][] prerequisites = { { 1, 0 }, { 2, 0 }, { 3, 1 }, { 3, 2 } };
+        int[][] prerequisites = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
 
         // Valid answers could be [0,1,2,3] or [0,2,1,3]
-        int[] expected = { 0, 1, 2, 3 };
+        int[] expected = {0, 1, 2, 3};
         assertArrayEquals(expected, result, "Valid topological order expected, e.g., [0,1,2,3] or [0,2,1,3].");
     }
 
@@ -43,7 +43,7 @@ public class TopologicalSortDFSTest {
         // Example: 3 courses with no dependencies
         int numCourses = 3;
         int[][] prerequisites = {};
-        int[] expected = { 0, 1, 2 };
+        int[] expected = {0, 1, 2};
 
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
 
@@ -54,7 +54,7 @@ public class TopologicalSortDFSTest {
     public void testCycleGraph() {
         // Example: A cycle exists (0 -> 1 -> 0)
         int numCourses = 2;
-        int[][] prerequisites = { { 0, 1 }, { 1, 0 } };
+        int[][] prerequisites = {{0, 1}, {1, 0}};
         int[] expected = {};
 
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
@@ -67,17 +67,10 @@ public class TopologicalSortDFSTest {
         // Complex example: 6 courses
         // Dependencies: 5->2, 5->0, 4->0, 4->1, 2->3, 3->1
         int numCourses = 6;
-        int[][] prerequisites = {
-                { 2, 5 },
-                { 0, 5 },
-                { 0, 4 },
-                { 1, 4 },
-                { 3, 2 },
-                { 1, 3 }
-        };
+        int[][] prerequisites = {{2, 5}, {0, 5}, {0, 4}, {1, 4}, {3, 2}, {1, 3}};
         int[] result = topologicalSortDFS.findOrder(numCourses, prerequisites);
         // Valid order: [5, 4, 2, 3, 1, 0]
-        int[] expected = { 5, 4, 0, 2, 3, 1 };
+        int[] expected = {5, 4, 0, 2, 3, 1};
         assertArrayEquals(expected, result, "Valid topological order expected such as [5, 4, 0, 2, 3, 1].");
     }
 }
