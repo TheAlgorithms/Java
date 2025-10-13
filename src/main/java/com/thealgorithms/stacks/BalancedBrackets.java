@@ -83,7 +83,7 @@ public final class BalancedBrackets {
 
     /**
      * Optional main method for quick manual testing
-     */
+     
     public static void main(String[] args) {
         String[] tests = {
                 "()",
@@ -104,4 +104,5 @@ public final class BalancedBrackets {
             }
         }
     }
+ **/
 }
