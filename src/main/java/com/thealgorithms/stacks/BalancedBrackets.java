@@ -12,7 +12,8 @@ import java.util.Deque;
  * - Returns false for any non-bracket character.
  * - Empty string is balanced.
  * - Null input throws IllegalArgumentException.
- *
+ * @author Basundhara
+ * @author <a href="https://github.com/coder-Basundhara">GitHub</a>
  * Time complexity: O(n)
  * Space complexity: O(n) in worst case (stack contains all opening brackets).
  */
