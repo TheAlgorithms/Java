@@ -23,6 +23,9 @@ public final class YensKShortestPaths {
     private YensKShortestPaths() {
     }
 
+    private static final int NO_EDGE = -1;
+    private static final long INF_COST = Long.MAX_VALUE / 4;
+
     /**
      * Compute up to k loopless shortest paths from src to dst using Yen's algorithm.
      *
@@ -66,7 +69,7 @@ public final class YensKShortestPaths {
                     if (startsWith(p.nodes, rootPath) && p.nodes.size() > i + 1) {
                         int u = p.nodes.get(i);
                         int v = p.nodes.get(i + 1);
-                        modifiedWeights[u][v] = -1; // remove edge
+                        modifiedWeights[u][v] = NO_EDGE; // remove edge
                     }
                 }
                 // Prevent revisiting nodes in rootPath (loopless constraint), except spurNode itself
@@ -117,7 +120,7 @@ public final class YensKShortestPaths {
             }
             for (int j = 0; j < n; j++) {
                 int val = weights[i][j];
-                if (val < -1) {
+                if (val < NO_EDGE) {
                     throw new IllegalArgumentException("Weights must be -1 (no edge) or >= 0");
                 }
             }
@@ -159,18 +162,18 @@ public final class YensKShortestPaths {
         for (int i = 0; i + 1 < nodes.size(); i++) {
             int u = nodes.get(i);
             int v = nodes.get(i + 1);
-            int c = weights[u][v];
-            if (c < 0) {
-                return Long.MAX_VALUE / 4; // invalid
+            int edgeCost = weights[u][v];
+            if (edgeCost < 0) {
+                return INF_COST; // invalid
             }
-            cost += c;
+            cost += edgeCost;
         }
         return cost;
     }
 
     private static Path dijkstra(int[][] weights, int src, int dst, boolean[] blocked) {
         int n = weights.length;
-        final long inf = Long.MAX_VALUE / 4;
+        final long inf = INF_COST;
         long[] dist = new long[n];
         int[] parent = new int[n];
         Arrays.fill(dist, inf);
@@ -244,13 +247,13 @@ public final class YensKShortestPaths {
         }
         @Override
         public int compareTo(Path o) {
-            int c = Long.compare(this.cost, o.cost);
-            if (c != 0) {
-                return c;
+            int costCmp = Long.compare(this.cost, o.cost);
+            if (costCmp != 0) {
+                return costCmp;
             }
             // tie-break lexicographically on nodes
-            int m = Math.min(this.nodes.size(), o.nodes.size());
-            for (int i = 0; i < m; i++) {
+            int minLength = Math.min(this.nodes.size(), o.nodes.size());
+            for (int i = 0; i < minLength; i++) {
                 int aNode = this.nodes.get(i);
                 int bNode = o.nodes.get(i);
                 if (aNode != bNode) {
