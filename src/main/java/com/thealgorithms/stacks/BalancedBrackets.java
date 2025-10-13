@@ -1,80 +1,73 @@
 package com.thealgorithms.stacks;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
- * The nested brackets problem is a problem that determines if a sequence of
- * brackets are properly nested. A sequence of brackets s is considered properly
- * nested if any of the following conditions are true: - s is empty - s has the
- * form (U) or [U] or {U} where U is a properly nested string - s has the form
- * VW where V and W are properly nested strings For example, the string
- * "()()[()]" is properly nested but "[(()]" is not. The function called
- * is_balanced takes as input a string S which is a sequence of brackets and
- * returns true if S is nested and false otherwise.
+ * Optimized and robust Balanced Parenthesis (Valid Brackets) checker.
  *
- * @author akshay sharma
- * @author <a href="https://github.com/khalil2535">khalil2535<a>
- * @author shellhub
+ * Supports: (), [], {}, <>
+ * Rules:
+ * - Returns true if brackets are properly nested and matched.
+ * - Returns false for any non-bracket character.
+ * - Empty string is balanced.
+ * - Null input throws IllegalArgumentException.
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n) in worst case (stack contains all opening brackets).
  */
-final class BalancedBrackets {
+public final class BalancedBrackets {
+
     private BalancedBrackets() {
+        // Utility class
     }
 
     /**
-     * Check if {@code leftBracket} and {@code rightBracket} is paired or not
-     *
-     * @param leftBracket left bracket
-     * @param rightBracket right bracket
-     * @return {@code true} if {@code leftBracket} and {@code rightBracket} is
-     * paired, otherwise {@code false}
+     * Returns true if {@code opening} and {@code closing} are matching bracket pair.
      */
-    public static boolean isPaired(char leftBracket, char rightBracket) {
-        char[][] pairedBrackets = {
-            {'(', ')'},
-            {'[', ']'},
-            {'{', '}'},
-            {'<', '>'},
-        };
-        for (char[] pairedBracket : pairedBrackets) {
-            if (pairedBracket[0] == leftBracket && pairedBracket[1] == rightBracket) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean isPaired(char opening, char closing) {
+        return (opening == '(' && closing == ')')
+                || (opening == '[' && closing == ']')
+                || (opening == '{' && closing == '}')
+                || (opening == '<' && closing == '>');
     }
 
     /**
-     * Check if {@code brackets} is balanced
+     * Checks if the input string has balanced brackets.
      *
-     * @param brackets the brackets
-     * @return {@code true} if {@code brackets} is balanced, otherwise
-     * {@code false}
+     * @throws IllegalArgumentException when input is null
      */
-    public static boolean isBalanced(String brackets) {
-        if (brackets == null) {
-            throw new IllegalArgumentException("brackets is null");
+    public static boolean isBalanced(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input cannot be null");
         }
-        Stack<Character> bracketsStack = new Stack<>();
-        for (char bracket : brackets.toCharArray()) {
-            switch (bracket) {
-            case '(':
-            case '[':
-            case '<':
-            case '{':
-                bracketsStack.push(bracket);
-                break;
-            case ')':
-            case ']':
-            case '>':
-            case '}':
-                if (bracketsStack.isEmpty() || !isPaired(bracketsStack.pop(), bracket)) {
-                    return false;
+
+        if (input.isEmpty()) {
+            return true;
+        }
+
+        // Odd-length strings cannot be fully balanced
+        if ((input.length() & 1) == 1) {
+            return false;
+        }
+
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            switch (c) {
+                case '(', '[', '{', '<' -> stack.push(c);
+ case ')',  ']', '}', '>' -> {
+     if (stack.isEmpty() || !isPaired(stack.pop(), c)) {
+         return false;
+     }
                 }
-                break;
-            default:
-                return false;
+ default -> {
+     // Any non-bracket character makes string invalid
+     return false;
+                }
             }
         }
-        return bracketsStack.isEmpty();
+
+        return stack.isEmpty();
     }
 }
