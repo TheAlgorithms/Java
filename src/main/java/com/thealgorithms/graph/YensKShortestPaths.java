@@ -131,10 +131,6 @@ public final class YensKShortestPaths {
         if (k < 1) {
             throw new IllegalArgumentException("k must be >= 1");
         }
-        if (src == dst) {
-            // allowed: path is [src] with cost 0 (handled by dijkstra)
-            return;
-        }
     }
 
     private static boolean startsWith(List<Integer> list, List<Integer> prefix) {
