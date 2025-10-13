@@ -89,27 +89,5 @@ public final class BalancedBrackets {
         return stack.isEmpty();
     }
 
-    /**
-     * Optional main method for quick manual testing
-     */
-    public static void main(String[] args) {
-        String[] tests = {
-                "()",
-                "[()]",
-                "{[<>]}",
-                "[(])",
-                "[a+b]",
-                "",
-                "<{[()]}>",
-                "[{<]}>"
-        };
-
-        for (String t : tests) {
-            try {
-                System.out.printf("%s -> %b%n", t, isBalanced(t));
-            } catch (Exception e) {
-                System.out.printf("%s -> Exception: %s%n", t, e.getMessage());
-            }
-        }
-    }
+    
 }
