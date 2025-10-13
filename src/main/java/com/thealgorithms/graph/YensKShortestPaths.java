@@ -37,36 +37,36 @@ public final class YensKShortestPaths {
         validate(weights, src, dst, k);
         final int n = weights.length;
         // Make a defensive copy to avoid mutating caller's matrix
-        int[][] w = new int[n][n];
+        int[][] weightsCopy = new int[n][n];
         for (int i = 0; i < n; i++) {
-            w[i] = Arrays.copyOf(weights[i], n);
+            weightsCopy[i] = Arrays.copyOf(weights[i], n);
         }
 
-        List<Path> a = new ArrayList<>();
-        PriorityQueue<Path> b = new PriorityQueue<>(); // min-heap by cost then lexicographic nodes
+        List<Path> shortestPaths = new ArrayList<>();
+        PriorityQueue<Path> candidates = new PriorityQueue<>(); // min-heap by cost then lexicographic nodes
         Set<String> seen = new HashSet<>(); // deduplicate candidate paths by node sequence key
 
-        Path first = dijkstra(w, src, dst, new boolean[n]);
+        Path first = dijkstra(weightsCopy, src, dst, new boolean[n]);
         if (first == null) {
             return List.of();
         }
-        a.add(first);
+        shortestPaths.add(first);
 
         for (int kIdx = 1; kIdx < k; kIdx++) {
-            Path lastPath = a.get(kIdx - 1);
+            Path lastPath = shortestPaths.get(kIdx - 1);
             List<Integer> lastNodes = lastPath.nodes;
             for (int i = 0; i < lastNodes.size() - 1; i++) {
                 int spurNode = lastNodes.get(i);
                 List<Integer> rootPath = lastNodes.subList(0, i + 1);
 
                 // Build modified graph: remove edges that would recreate same root + next edge as any A path
-                int[][] wMod = cloneMatrix(w);
+                int[][] modifiedWeights = cloneMatrix(weightsCopy);
 
-                for (Path p : a) {
+                for (Path p : shortestPaths) {
                     if (startsWith(p.nodes, rootPath) && p.nodes.size() > i + 1) {
                         int u = p.nodes.get(i);
                         int v = p.nodes.get(i + 1);
-                        wMod[u][v] = -1; // remove edge
+                        modifiedWeights[u][v] = -1; // remove edge
                     }
                 }
                 // Prevent revisiting nodes in rootPath (loopless constraint), except spurNode itself
@@ -75,7 +75,7 @@ public final class YensKShortestPaths {
                     blocked[rootPath.get(j)] = true;
                 }
 
-                Path spurPath = dijkstra(wMod, spurNode, dst, blocked);
+                Path spurPath = dijkstra(modifiedWeights, spurNode, dst, blocked);
                 if (spurPath != null) {
                     // concatenate rootPath (excluding spurNode at end) + spurPath
                     List<Integer> totalNodes = new ArrayList<>(rootPath);
@@ -83,24 +83,24 @@ public final class YensKShortestPaths {
                     for (int idx = 1; idx < spurPath.nodes.size(); idx++) {
                         totalNodes.add(spurPath.nodes.get(idx));
                     }
-                    long rootCost = pathCost(w, rootPath);
+                    long rootCost = pathCost(weightsCopy, rootPath);
                     long totalCost = rootCost + spurPath.cost; // spurPath.cost covers from spurNode to dst
                     Path candidate = new Path(totalNodes, totalCost);
                     String key = candidate.key();
                     if (seen.add(key)) {
-                        b.add(candidate);
+                        candidates.add(candidate);
                     }
                 }
             }
-            if (b.isEmpty()) {
+            if (candidates.isEmpty()) {
                 break;
             }
-            a.add(b.poll());
+            shortestPaths.add(candidates.poll());
         }
 
         // Map to list of node indices for output
-        List<List<Integer>> result = new ArrayList<>(a.size());
-        for (Path p : a) {
+        List<List<Integer>> result = new ArrayList<>(shortestPaths.size());
+        for (Path p : shortestPaths) {
             result.add(new ArrayList<>(p.nodes));
         }
         return result;
@@ -154,12 +154,12 @@ public final class YensKShortestPaths {
         return b;
     }
 
-    private static long pathCost(int[][] w, List<Integer> nodes) {
+    private static long pathCost(int[][] weights, List<Integer> nodes) {
         long cost = 0;
         for (int i = 0; i + 1 < nodes.size(); i++) {
             int u = nodes.get(i);
             int v = nodes.get(i + 1);
-            int c = w[u][v];
+            int c = weights[u][v];
             if (c < 0) {
                 return Long.MAX_VALUE / 4; // invalid
             }
@@ -168,35 +168,35 @@ public final class YensKShortestPaths {
         return cost;
     }
 
-    private static Path dijkstra(int[][] w, int src, int dst, boolean[] blocked) {
-        int n = w.length;
+    private static Path dijkstra(int[][] weights, int src, int dst, boolean[] blocked) {
+        int n = weights.length;
         final long inf = Long.MAX_VALUE / 4;
         long[] dist = new long[n];
         int[] parent = new int[n];
         Arrays.fill(dist, inf);
         Arrays.fill(parent, -1);
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+        PriorityQueue<Node> queue = new PriorityQueue<>();
         if (blocked[src]) {
             return null;
         }
         dist[src] = 0;
-        pq.add(new Node(src, 0));
-        while (!pq.isEmpty()) {
-            Node cur = pq.poll();
-            if (cur.dist != dist[cur.u]) {
+        queue.add(new Node(src, 0));
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            if (current.dist != dist[current.u]) {
                 continue;
             }
-            if (cur.u == dst) {
+            if (current.u == dst) {
                 break;
             }
             for (int v = 0; v < n; v++) {
-                int wuv = w[cur.u][v];
-                if (wuv >= 0 && !blocked[v]) {
-                    long nd = cur.dist + wuv;
-                    if (nd < dist[v]) {
-                        dist[v] = nd;
-                        parent[v] = cur.u;
-                        pq.add(new Node(v, nd));
+                int edgeWeight = weights[current.u][v];
+                if (edgeWeight >= 0 && !blocked[v]) {
+                    long newDist = current.dist + edgeWeight;
+                    if (newDist < dist[v]) {
+                        dist[v] = newDist;
+                        parent[v] = current.u;
+                        queue.add(new Node(v, newDist));
                     }
                 }
             }
