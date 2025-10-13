@@ -9,7 +9,28 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-public class HierholzerAlgorithm {
+/**
+ * Implementation of Hierholzer's algorithm to find an Eulerian Circuit in an undirected graph.
+ * <p>
+ * An Eulerian circuit is a trail in a graph that visits every edge exactly once,
+ * starting and ending at the same vertex. This algorithm finds such a circuit if one exists.
+ * </p>
+ * <p>
+ * This implementation is designed for an <strong>undirected graph</strong>. For a valid Eulerian
+ * circuit to exist, the graph must satisfy two conditions:
+ * <ol>
+ * <li>All vertices with a non-zero degree must be part of a single connected component.</li>
+ * <li>Every vertex must have an even degree (an even number of edges connected to it).</li>
+ * </ol>
+ * </p>
+ * <p>
+ * The algorithm runs in O(E + V) time, where E is the number of edges and V is the number of vertices.
+ * The graph is represented by a Map where keys are vertices and values are a LinkedList of adjacent vertices.
+ * </p>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Eulerian_path#Hierholzer's_algorithm">Wikipedia: Hierholzer's algorithm</a>
+ */
+public final class HierholzerAlgorithm {
 
     private final Map<Integer, LinkedList<Integer>> graph;
 
@@ -22,18 +43,13 @@ public class HierholzerAlgorithm {
             return true;
         }
 
-        // FINAL FIX: Loop over values directly for efficiency.
         for (List<Integer> neighbors : graph.values()) {
             if (neighbors.size() % 2 != 0) {
                 return false;
             }
         }
 
-        if (!isCoherentlyConnected()) {
-            return false;
-        }
-
-        return true;
+        return isCoherentlyConnected();
     }
 
     public List<Integer> findEulerianCircuit() {
@@ -47,10 +63,9 @@ public class HierholzerAlgorithm {
         }
 
         Stack<Integer> currentPath = new Stack<>();
-        List<Integer> circuit = new LinkedList<>();
+        LinkedList<Integer> circuit = new LinkedList<>();
 
         int startVertex = -1;
-        // FINAL FIX: Use entrySet for efficiency.
         for (Map.Entry<Integer, LinkedList<Integer>> entry : tempGraph.entrySet()) {
             if (!entry.getValue().isEmpty()) {
                 startVertex = entry.getKey();
@@ -75,7 +90,8 @@ public class HierholzerAlgorithm {
                 tempGraph.get(nextVertex).remove(Integer.valueOf(currentVertex));
                 currentPath.push(nextVertex);
             } else {
-                circuit.add(0, currentPath.pop());
+                circuit.addFirst(currentVertex);
+                currentPath.pop();
             }
         }
 
@@ -90,7 +106,6 @@ public class HierholzerAlgorithm {
         Set<Integer> visited = new HashSet<>();
         int startNode = -1;
 
-        // FINAL FIX: Use entrySet for efficiency.
         for (Map.Entry<Integer, LinkedList<Integer>> entry : graph.entrySet()) {
             if (!entry.getValue().isEmpty()) {
                 startNode = entry.getKey();
@@ -104,7 +119,6 @@ public class HierholzerAlgorithm {
 
         dfs(startNode, visited);
 
-        // FINAL FIX: Use entrySet for efficiency.
         for (Map.Entry<Integer, LinkedList<Integer>> entry : graph.entrySet()) {
             if (!entry.getValue().isEmpty() && !visited.contains(entry.getKey())) {
                 return false;
