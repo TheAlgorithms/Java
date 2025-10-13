@@ -133,6 +133,7 @@ public final class YensKShortestPaths {
         }
         if (src == dst) {
             // allowed: path is [src] with cost 0 (handled by dijkstra)
+            return;
         }
     }
 
