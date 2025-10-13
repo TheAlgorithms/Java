@@ -42,18 +42,18 @@ public final class YensKShortestPaths {
             w[i] = Arrays.copyOf(weights[i], n);
         }
 
-        List<Path> A = new ArrayList<>();
-        PriorityQueue<Path> B = new PriorityQueue<>(); // min-heap by cost then lexicographic nodes
+        List<Path> a = new ArrayList<>();
+        PriorityQueue<Path> b = new PriorityQueue<>(); // min-heap by cost then lexicographic nodes
         Set<String> seen = new HashSet<>(); // deduplicate candidate paths by node sequence key
 
         Path first = dijkstra(w, src, dst, new boolean[n]);
         if (first == null) {
             return List.of();
         }
-        A.add(first);
+        a.add(first);
 
         for (int kIdx = 1; kIdx < k; kIdx++) {
-            Path lastPath = A.get(kIdx - 1);
+            Path lastPath = a.get(kIdx - 1);
             List<Integer> lastNodes = lastPath.nodes;
             for (int i = 0; i < lastNodes.size() - 1; i++) {
                 int spurNode = lastNodes.get(i);
@@ -62,7 +62,7 @@ public final class YensKShortestPaths {
                 // Build modified graph: remove edges that would recreate same root + next edge as any A path
                 int[][] wMod = cloneMatrix(w);
 
-                for (Path p : A) {
+                for (Path p : a) {
                     if (startsWith(p.nodes, rootPath) && p.nodes.size() > i + 1) {
                         int u = p.nodes.get(i);
                         int v = p.nodes.get(i + 1);
@@ -88,20 +88,20 @@ public final class YensKShortestPaths {
                     Path candidate = new Path(totalNodes, totalCost);
                     String key = candidate.key();
                     if (!seen.contains(key)) {
-                        B.add(candidate);
+                        b.add(candidate);
                         seen.add(key);
                     }
                 }
             }
-            if (B.isEmpty()) {
+            if (b.isEmpty()) {
                 break;
             }
-            A.add(B.poll());
+            a.add(b.poll());
         }
 
         // Map to list of node indices for output
-        List<List<Integer>> result = new ArrayList<>(A.size());
-        for (Path p : A) {
+        List<List<Integer>> result = new ArrayList<>(a.size());
+        for (Path p : a) {
             result.add(new ArrayList<>(p.nodes));
         }
         return result;
@@ -135,9 +135,13 @@ public final class YensKShortestPaths {
     }
 
     private static boolean startsWith(List<Integer> list, List<Integer> prefix) {
-        if (prefix.size() > list.size()) return false;
+        if (prefix.size() > list.size()) {
+            return false;
+        }
         for (int i = 0; i < prefix.size(); i++) {
-            if (!Objects.equals(list.get(i), prefix.get(i))) return false;
+            if (!Objects.equals(list.get(i), prefix.get(i))) {
+                return false;
+            }
         }
         return true;
     }
@@ -145,16 +149,21 @@ public final class YensKShortestPaths {
     private static int[][] cloneMatrix(int[][] a) {
         int n = a.length;
         int[][] b = new int[n][n];
-        for (int i = 0; i < n; i++) b[i] = Arrays.copyOf(a[i], n);
+        for (int i = 0; i < n; i++) {
+            b[i] = Arrays.copyOf(a[i], n);
+        }
         return b;
     }
 
     private static long pathCost(int[][] w, List<Integer> nodes) {
         long cost = 0;
         for (int i = 0; i + 1 < nodes.size(); i++) {
-            int u = nodes.get(i), v = nodes.get(i + 1);
+            int u = nodes.get(i);
+            int v = nodes.get(i + 1);
             int c = w[u][v];
-            if (c < 0) return Long.MAX_VALUE / 4; // invalid
+            if (c < 0) {
+                return Long.MAX_VALUE / 4; // invalid
+            }
             cost += c;
         }
         return cost;
@@ -162,19 +171,25 @@ public final class YensKShortestPaths {
 
     private static Path dijkstra(int[][] w, int src, int dst, boolean[] blocked) {
         int n = w.length;
-        final long INF = Long.MAX_VALUE / 4;
+        final long inf = Long.MAX_VALUE / 4;
         long[] dist = new long[n];
         int[] parent = new int[n];
-        Arrays.fill(dist, INF);
+        Arrays.fill(dist, inf);
         Arrays.fill(parent, -1);
         PriorityQueue<Node> pq = new PriorityQueue<>();
-        if (blocked[src]) return null;
+        if (blocked[src]) {
+            return null;
+        }
         dist[src] = 0;
         pq.add(new Node(src, 0));
         while (!pq.isEmpty()) {
             Node cur = pq.poll();
-            if (cur.dist != dist[cur.u]) continue;
-            if (cur.u == dst) break;
+            if (cur.dist != dist[cur.u]) {
+                continue;
+            }
+            if (cur.u == dst) {
+                break;
+            }
             for (int v = 0; v < n; v++) {
                 int wuv = w[cur.u][v];
                 if (wuv >= 0 && !blocked[v]) {
@@ -187,7 +202,7 @@ public final class YensKShortestPaths {
                 }
             }
         }
-        if (dist[dst] >= INF) {
+        if (dist[dst] >= inf) {
             // If src==dst and not blocked, the path is trivial with cost 0
             if (src == dst) {
                 List<Integer> nodes = new ArrayList<>();
@@ -231,12 +246,17 @@ public final class YensKShortestPaths {
         @Override
         public int compareTo(Path o) {
             int c = Long.compare(this.cost, o.cost);
-            if (c != 0) return c;
+            if (c != 0) {
+                return c;
+            }
             // tie-break lexicographically on nodes
             int m = Math.min(this.nodes.size(), o.nodes.size());
             for (int i = 0; i < m; i++) {
-                int a = this.nodes.get(i), b = o.nodes.get(i);
-                if (a != b) return Integer.compare(a, b);
+                int aNode = this.nodes.get(i);
+                int bNode = o.nodes.get(i);
+                if (aNode != bNode) {
+                    return Integer.compare(aNode, bNode);
+                }
             }
             return Integer.compare(this.nodes.size(), o.nodes.size());
         }

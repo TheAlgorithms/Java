@@ -14,10 +14,10 @@ class YensKShortestPathsTest {
     void basicKPaths() {
         // Graph (directed) with non-negative weights, -1 = no edge
         // 0 -> 1 (1), 0 -> 2 (2), 1 -> 3 (1), 2 -> 3 (1), 0 -> 3 (5), 1 -> 2 (1)
-        int N = 4;
-        int[][] w = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
+        int n = 4;
+        int[][] w = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 w[i][j] = -1;
             }
         }
