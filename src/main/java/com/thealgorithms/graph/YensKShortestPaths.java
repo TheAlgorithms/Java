@@ -87,9 +87,8 @@ public final class YensKShortestPaths {
                     long totalCost = rootCost + spurPath.cost; // spurPath.cost covers from spurNode to dst
                     Path candidate = new Path(totalNodes, totalCost);
                     String key = candidate.key();
-                    if (!seen.contains(key)) {
+                    if (seen.add(key)) {
                         b.add(candidate);
-                        seen.add(key);
                     }
                 }
             }
