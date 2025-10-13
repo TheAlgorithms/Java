@@ -55,19 +55,52 @@ public final class BalancedBrackets {
 
         for (char c : input.toCharArray()) {
             switch (c) {
-                case '(', '[', '{', '<' -> stack.push(c);
- case ')',  ']', '}', '>' -> {
-     if (stack.isEmpty() || !isPaired(stack.pop(), c)) {
-         return false;
-     }
-                }
- default -> {
-     // Any non-bracket character makes string invalid
-     return false;
-                }
+                case '(':
+                case '[':
+                case '{':
+                case '<':
+                    stack.push(c);
+                    break;
+
+                case ')':
+                case ']':
+                case '}':
+                case '>':
+                    if (stack.isEmpty() || !isPaired(stack.pop(), c)) {
+                        return false;
+                    }
+                    break;
+
+                default:
+                    // Any non-bracket character makes string invalid
+                    return false;
             }
         }
 
         return stack.isEmpty();
+    }
+
+    /**
+     * Optional main method for quick manual testing
+     */
+    public static void main(String[] args) {
+        String[] tests = {
+                "()",
+                "[()]",
+                "{[<>]}",
+                "[(])",
+                "[a+b]",
+                "",
+                "<{[()]}>",
+                "[{<]}>"
+        };
+
+        for (String t : tests) {
+            try {
+                System.out.println(t + " -> " + isBalanced(t));
+            } catch (IllegalArgumentException e) {
+                System.out.println(t + " -> Error: " + e.getMessage());
+            }
+        }
     }
 }
