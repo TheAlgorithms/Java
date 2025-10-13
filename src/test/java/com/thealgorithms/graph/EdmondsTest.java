@@ -111,11 +111,62 @@ class EdmondsTest {
     void testInvalidInputThrowsException() {
         List<Edmonds.Edge> edges = new ArrayList<>();
 
-        assertThrows(IllegalArgumentException.class,
-                () -> Edmonds.findMinimumSpanningArborescence(0, edges, 0));
-        assertThrows(IllegalArgumentException.class,
-                () -> Edmonds.findMinimumSpanningArborescence(5, edges, -1));
-        assertThrows(IllegalArgumentException.class,
-                () -> Edmonds.findMinimumSpanningArborescence(5, edges, 5));
+        assertThrows(IllegalArgumentException.class, () -> Edmonds.findMinimumSpanningArborescence(0, edges, 0));
+        assertThrows(IllegalArgumentException.class, () -> Edmonds.findMinimumSpanningArborescence(5, edges, -1));
+        assertThrows(IllegalArgumentException.class, () -> Edmonds.findMinimumSpanningArborescence(5, edges, 5));
+    }
+
+    @Test
+    void testCoverageForEdgeSelectionLogic() {
+        int n = 3;
+        int root = 0;
+        List<Edmonds.Edge> edges = new ArrayList<>();
+
+        // This will cover the `edge.weight < minWeightEdge[edge.to]` being false.
+        edges.add(new Edmonds.Edge(0, 1, 10));
+        edges.add(new Edmonds.Edge(2, 1, 20));
+
+        // This will cover the `edge.to != root` being false.
+        edges.add(new Edmonds.Edge(1, 0, 100));
+
+        // A regular edge to make the graph complete
+        edges.add(new Edmonds.Edge(0, 2, 5));
+
+        // Expected MSA: (0,1, w=10) and (0,2, w=5). Total weight = 15.
+        long result = Edmonds.findMinimumSpanningArborescence(n, edges, root);
+        assertEquals(15, result);
+    }
+
+    @Test
+    void testCoverageForContractedSelfLoop() {
+        int n = 4;
+        int root = 0;
+        List<Edmonds.Edge> edges = new ArrayList<>();
+
+        // Connect root to the cycle components
+        edges.add(new Edmonds.Edge(0, 1, 20));
+
+        // Create a cycle 1 -> 2 -> 1
+        edges.add(new Edmonds.Edge(1, 2, 5));
+        edges.add(new Edmonds.Edge(2, 1, 5));
+
+        // This is the CRITICAL edge for coverage:
+        // It connects two nodes (1 and 2) that are part of the SAME cycle.
+        // After contracting cycle {1, 2} into a supernode C, this edge becomes (C, C),
+        // which means newU == newV. This will trigger the `false` branch of the `if`.
+        edges.add(new Edmonds.Edge(1, 1, 100)); // Also a self-loop on a cycle node.
+
+        // Add another edge to ensure node 3 is reachable
+        edges.add(new Edmonds.Edge(1, 3, 10));
+
+        // Cycle {1,2} has cost 5+5=10.
+        // Contract {1,2} to supernode C.
+        // Edge (0,1,20) becomes (0,C, w=20-5=15).
+        // Edge (1,3,10) becomes (C,3, w=10).
+        // Edge (1,1,100) is discarded because newU == newV.
+        // Cost of contracted graph = 15 + 10 = 25.
+        // Total cost = cycle cost + contracted cost = 10 + 25 = 35.
+        long result = Edmonds.findMinimumSpanningArborescence(n, edges, root);
+        assertEquals(35, result);
     }
 }

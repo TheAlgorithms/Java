@@ -68,7 +68,7 @@ public final class Edmonds {
      * @throws IllegalArgumentException if {@code numVertices <= 0} or {@code root} is out of range.
      */
     public static long findMinimumSpanningArborescence(int numVertices, List<Edge> edges, int root) {
-        if (numVertices <= 0 || root < 0 || root >= numVertices) {
+        if (root < 0 || root >= numVertices) {
             throw new IllegalArgumentException("Invalid number of vertices or root");
         }
         if (numVertices == 1) {
