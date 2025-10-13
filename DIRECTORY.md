@@ -354,6 +354,7 @@
           - 📄 [StronglyConnectedComponentOptimized](src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
           - 📄 [TravelingSalesman](src/main/java/com/thealgorithms/graph/TravelingSalesman.java)
           - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
+          - 📄 [YensKShortestPaths](src/main/java/com/thealgorithms/graph/YensKShortestPaths.java)
         - 📁 **greedyalgorithms**
           - 📄 [ActivitySelection](src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
           - 📄 [BandwidthAllocation](src/main/java/com/thealgorithms/greedyalgorithms/BandwidthAllocation.java)
