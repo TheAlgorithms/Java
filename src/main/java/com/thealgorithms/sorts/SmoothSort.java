@@ -91,75 +91,73 @@ public final class SmoothSort {
             if ((p & 3) == 3) {
                 // Combine the last two heaps
                 p >>>= 2;
-                q = LP[Long.numberOfTrailingZeros(p) + 2] - 1;
-            } else if ((p & 1) == 1) {
+                q += 2;
+            } else {
                 p >>>= 1;
                 q = 1;
             }
 
-            if (head + q < n) {
-                p = (p << 1) | 1;
-            } else {
-                int order = Long.numberOfTrailingZeros(p);
-                while (head + LP[order] >= n) {
-                    p &= ~(1L << order);
-                    order--;
-                }
+            p |= 1L << q;
+
+            while (head + LP[q] > n) {
+                p &= ~(1L << q);
+                q--;
             }
             head++;
-            trinkle(arr, head - 1, p);
+            trinkle(arr, head - 1, p, q);
         }
 
         // Phase 2: Deconstruct the forest to sort the array
-        while (head > 1) {
-            head--;
-            long orderMask = p & -p; // lowest set bit
-            int order = Long.numberOfTrailingZeros(orderMask);
-            if (order > 0) {
-                p &= ~orderMask;
-                sift(arr, head - LP[order] + 1, order - 1);
+        for (head = n - 1; head > 0; head--) {
+            if (q <= 1) {
+                p >>>= q;
+                q = Long.numberOfTrailingZeros(p) + 1;
+            } else {
+                p &= ~(1L << q);
+                q--;
+                int prevHeapOrder = Long.numberOfTrailingZeros(p) + 1;
+                sift(arr, head - LP[q], q);
+                p |= (1L << (prevHeapOrder - 1));
+                trinkle(arr, head - 1, p, prevHeapOrder);
             }
         }
     }
 
-    private static <T extends Comparable<T>> void sift(T[] arr, int start, int order) {
-        if (order < 2) {
-            return;
-        }
-        int root = start;
+    private static <T extends Comparable<T>> void sift(T[] arr, int head, int order) {
         while (order >= 2) {
-            int rightChild = root - 1;
-            int leftChild = root - LP[order] + LP[order - 1];
-            if (arr[root].compareTo(arr[leftChild]) >= 0 && arr[root].compareTo(arr[rightChild]) >= 0) {
+            int rightChild = head - 1;
+            int leftChild = head - LP[order] + LP[order - 1];
+
+            if (arr[head].compareTo(arr[leftChild]) >= 0 && arr[head].compareTo(arr[rightChild]) >= 0) {
                 break;
             }
             if (arr[leftChild].compareTo(arr[rightChild]) > 0) {
-                swap(arr, root, leftChild);
-                root = leftChild;
+                swap(arr, head, leftChild);
+                head = leftChild;
                 order -= 1;
             } else {
-                swap(arr, root, rightChild);
-                root = rightChild;
+                swap(arr, head, rightChild);
+                head = rightChild;
                 order -= 2;
             }
         }
     }
 
-    private static <T extends Comparable<T>> void trinkle(T[] arr, int head, long p) {
-        int root = head;
-        while (p > 1) {
-            int order = Long.numberOfTrailingZeros(p);
-            p &= ~(1L << order);
-            int parentOrder = Long.numberOfTrailingZeros(p);
-            int parent = root - LP[order];
-
-            if (arr[parent].compareTo(arr[root]) >= 0) {
-                break;
+    private static <T extends Comparable<T>> void trinkle(T[] arr, int head, long p, int q) {
+        while (q > 0) {
+            p &= ~(1L << q);
+            int prevHeapOrder = Long.numberOfTrailingZeros(p) + 1;
+            if (prevHeapOrder > 0) {
+                int parent = head - LP[q];
+                if (arr[parent].compareTo(arr[head]) >= 0) {
+                    break;
+                }
+                swap(arr, head, parent);
+                head = parent;
             }
-            swap(arr, root, parent);
-            root = parent;
+            q = prevHeapOrder;
         }
-        sift(arr, root, Long.numberOfTrailingZeros(p & -p));
+        sift(arr, head, q);
     }
 
     private static <T> void swap(T[] arr, int i, int j) {
