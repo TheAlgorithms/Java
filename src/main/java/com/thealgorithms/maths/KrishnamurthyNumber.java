@@ -3,10 +3,25 @@ package com.thealgorithms.maths;
 /**
  * Utility class for checking if a number is a Krishnamurthy number.
  *
- * A Krishnamurthy number (also known as a Strong number) is a number whose sum of the factorials of its digits is equal to the number itself.
+ * <p>
+ * A Krishnamurthy number (also known as a Strong number or Factorion) is a
+ * number
+ * whose sum of the factorials of its digits is equal to the number itself.
+ * </p>
  *
- * For example, 145 is a Krishnamurthy number because 1! + 4! + 5! = 1 + 24 + 120 = 145.
+ * <p>
+ * For example, 145 is a Krishnamurthy number because 1! + 4! + 5! = 1 + 24 +
+ * 120 = 145.
+ * </p>
+ *
+ * <p>
+ * The only Krishnamurthy numbers in base 10 are: 1, 2, 145, and 40585.
+ * </p>
+ *
+ * <p>
  * <b>Example usage:</b>
+ * </p>
+ *
  * <pre>
  * boolean isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(145);
  * System.out.println(isKrishnamurthy); // Output: true
@@ -14,8 +29,14 @@ package com.thealgorithms.maths;
  * isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(123);
  * System.out.println(isKrishnamurthy); // Output: false
  * </pre>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Factorion">Factorion
+ *      (Wikipedia)</a>
  */
 public final class KrishnamurthyNumber {
+
+    // Pre-computed factorials for digits 0-9 to improve performance
+    private static final int[] FACTORIALS = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
 
     private KrishnamurthyNumber() {
     }
@@ -23,31 +44,28 @@ public final class KrishnamurthyNumber {
     /**
      * Checks if a number is a Krishnamurthy number.
      *
-     * @param n The number to check
+     * <p>
+     * A number is a Krishnamurthy number if the sum of the factorials of its digits
+     * equals the number itself.
+     * </p>
+     *
+     * @param n the number to check
      * @return true if the number is a Krishnamurthy number, false otherwise
      */
     public static boolean isKrishnamurthy(int n) {
-        int tmp = n;
-        int s = 0;
-
         if (n <= 0) {
             return false;
-        } else {
-            while (n != 0) {
-                // initialising the variable fact that will store the factorials of the digits
-                int fact = 1;
-                // computing factorial of each digit
-                for (int i = 1; i <= n % 10; i++) {
-                    fact = fact * i;
-                }
-                // computing the sum of the factorials
-                s = s + fact;
-                // discarding the digit for which factorial has been calculated
-                n = n / 10;
-            }
-
-            // evaluating if sum of the factorials of the digits equals the number itself
-            return tmp == s;
         }
+
+        int original = n;
+        int sum = 0;
+
+        while (n != 0) {
+            int digit = n % 10;
+            sum = sum + FACTORIALS[digit];
+            n = n / 10;
+        }
+
+        return sum == original;
     }
 }
