@@ -27,7 +27,7 @@ public class PatriciaTrieTest {
         var t = new PatriciaTrie<String>();
         assertTrue(t.isEmpty());
 
-        t.put("", "root");                 // empty key
+        t.put("", "root"); // empty key
         t.put("a", "x");
         t.put("ab", "y");
         t.put("abc", "z");
