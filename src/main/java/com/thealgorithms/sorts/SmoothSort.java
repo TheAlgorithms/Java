@@ -21,54 +21,11 @@ public final class SmoothSort {
     /**
      * Private constructor to prevent instantiation of this utility class.
      */
-    private SmoothSort() {
-    }
+    private SmoothSort() {}
 
     // Leonardo numbers: L(0)=1, L(1)=1, L(k)=L(k-1)+L(k-2)+1
     private static final int[] LP = {
-        1,
-        1,
-        3,
-        5,
-        9,
-        15,
-        25,
-        41,
-        67,
-        109,
-        177,
-        287,
-        465,
-        753,
-        1219,
-        1973,
-        3193,
-        5167,
-        8361,
-        13529,
-        21891,
-        35421,
-        57313,
-        92735,
-        150049,
-        242785,
-        392835,
-        635621,
-        1028457,
-        1664079,
-        2692537,
-        4356617,
-        7049155,
-        11405773,
-        18454929,
-        29860703,
-        48315633,
-        78176337,
-        126491971,
-        204668309,
-        331160281,
-        535828591,
-        866988873,
+        1, 1, 3, 5, 9, 15, 25, 41, 67, 109, 177, 287, 465, 753, 1219, 1973, 3193, 5167, 8361, 13529, 21891, 35421, 57313, 92735, 150049, 242785, 392835, 635621, 1028457, 1664079, 2692537, 4356617, 7049155, 11405773, 18454929, 29860703, 48315633, 78176337, 126491971, 204668309, 331160281, 535828591, 866988873,
     };
 
     /**
@@ -82,81 +39,84 @@ public final class SmoothSort {
             return;
         }
         int n = arr.length;
-
         int head = 0; // The head of the list to be sorted
         long p = 1; // A bitmask representing the sizes of the heaps.
-        int q = 1; // Order of the rightmost heap
+        int q = 1; // Size of the rightmost heap
 
         // Phase 1: Build the forest of heaps
-        for (head = 0; head < n - 1; head++) {
-            if ((p & 7) == 3) {
-                // Heaps of order k and k-1 merge to form a heap of order k+1
+        while (head < n) {
+            if ((p & 3) == 3) {
+                // Combine the last two heaps
                 p >>>= 2;
-                q += 2;
-            } else {
+                q = LP[Long.numberOfTrailingZeros(p) + 2] - 1;
+            } else if ((p & 1) == 1) {
                 p >>>= 1;
-                q = (Long.numberOfTrailingZeros(p) + 1);
+                q = 1;
             }
-            p |= 1;
-            trinkle(arr, head, p, q);
+
+            if (head + q < n) {
+                p = (p << 1) | 1;
+            } else {
+                int order = Long.numberOfTrailingZeros(p);
+                while (head + LP[order] >= n) {
+                    p &= ~(1L << order);
+                    order--;
+                }
+            }
+            head++;
+            trinkle(arr, head - 1, p);
         }
-        trinkle(arr, n - 1, p, q);
 
         // Phase 2: Deconstruct the forest to sort the array
-        for (head = n - 1; head > 0; head--) {
-            if (q <= 1) {
-                p >>>= q;
-                q = (Long.numberOfTrailingZeros(p) + 1);
-            } else {
-                p >>>= 1;
-                q--;
-                sift(arr, head - LP[q], q);
-                p |= (1L << (q - 1));
-                trinkle(arr, head - 1, p, q);
+        while (head > 1) {
+            head--;
+            long orderMask = p & -p; // lowest set bit
+            int order = Long.numberOfTrailingZeros(orderMask);
+            if (order > 0) {
+                p &= ~orderMask;
+                sift(arr, head - LP[order] + 1, order - 1);
             }
         }
     }
 
-    /**
-     * Sifts the root of a heap down to restore the heap property.
-     */
-    private static <T extends Comparable<T>> void sift(T[] arr, int head, int order) {
+    private static <T extends Comparable<T>> void sift(T[] arr, int start, int order) {
+        if (order < 2) {
+            return;
+        }
+        int root = start;
         while (order >= 2) {
-            int rightChild = head - 1;
-            int leftChild = head - LP[order] + LP[order - 1];
-
-            if (arr[head].compareTo(arr[leftChild]) >= 0 && arr[head].compareTo(arr[rightChild]) >= 0) {
+            int rightChild = root - 1;
+            int leftChild = root - LP[order] + LP[order - 1];
+            if (arr[root].compareTo(arr[leftChild]) >= 0 && arr[root].compareTo(arr[rightChild]) >= 0) {
                 break;
             }
-
             if (arr[leftChild].compareTo(arr[rightChild]) > 0) {
-                swap(arr, head, leftChild);
-                head = leftChild;
+                swap(arr, root, leftChild);
+                root = leftChild;
                 order -= 1;
             } else {
-                swap(arr, head, rightChild);
-                head = rightChild;
+                swap(arr, root, rightChild);
+                root = rightChild;
                 order -= 2;
             }
         }
     }
 
-    /**
-     * Restores the heap property by "trinkling" an element up the chain of heaps.
-     */
-    private static <T extends Comparable<T>> void trinkle(T[] arr, int head, long p, int q) {
-        while (p > 1 && (p & 2) != 0) {
-            int parent = head - LP[q];
-            if (arr[parent].compareTo(arr[head]) >= 0) {
+    private static <T extends Comparable<T>> void trinkle(T[] arr, int head, long p) {
+        int root = head;
+        while (p > 1) {
+            int order = Long.numberOfTrailingZeros(p);
+            p &= ~(1L << order);
+            int parentOrder = Long.numberOfTrailingZeros(p);
+            int parent = root - LP[order];
+
+            if (arr[parent].compareTo(arr[root]) >= 0) {
                 break;
             }
-
-            swap(arr, head, parent);
-            head = parent;
-            p >>>= 1;
-            q--;
+            swap(arr, root, parent);
+            root = parent;
         }
-        sift(arr, head, q);
+        sift(arr, root, Long.numberOfTrailingZeros(p & -p));
     }
 
     private static <T> void swap(T[] arr, int i, int j) {
