@@ -3,53 +3,75 @@ package com.thealgorithms.dynamicprogramming;
 import java.util.Arrays;
 
 /**
- * A Dynamic Programming based solution for the 0-1 Knapsack problem.
- * This class provides a method, `knapSack`, that calculates the maximum value that can be
- * obtained from a given set of items with weights and values, while not exceeding a
- * given weight capacity.
+ * 0/1 Knapsack Problem - Dynamic Programming solution.
  *
- * @see <a href="https://en.wikipedia.org/?title=0-1_Knapsack_problem">0-1 Knapsack Problem </a>
+ * This algorithm solves the classic optimization problem where we have n items,
+ * each with a weight and a value. The goal is to maximize the total value
+ * without exceeding the knapsack's weight capacity.
+ *
+ * Time Complexity: O(n * W)
+ * Space Complexity: O(W)
+ *
+ * Example:
+ * values = {60, 100, 120}
+ * weights = {10, 20, 30}
+ * W = 50
+ * Output: 220
+ *
+ * @author Arpita
+ * @see <a href="https://en.wikipedia.org/wiki/Knapsack_problem">Knapsack Problem</a>
  */
 public final class Knapsack {
 
-    private Knapsack() {
-    }
+    private Knapsack() {}
 
+    /**
+     * Validates the input to ensure correct constraints.
+     */
     private static void throwIfInvalidInput(final int weightCapacity, final int[] weights, final int[] values) {
         if (weightCapacity < 0) {
             throw new IllegalArgumentException("Weight capacity should not be negative.");
         }
         if (weights == null || values == null || weights.length != values.length) {
-            throw new IllegalArgumentException("Input arrays must not be null and must have the same length.");
+            throw new IllegalArgumentException("Weights and values must be non-null and of the same length.");
         }
         if (Arrays.stream(weights).anyMatch(w -> w <= 0)) {
-            throw new IllegalArgumentException("Input array should not contain non-positive weight(s).");
+            throw new IllegalArgumentException("Weights must be positive.");
         }
     }
 
     /**
-     * Solves the 0-1 Knapsack problem using Dynamic Programming.
+     * Solves the 0/1 Knapsack problem using Dynamic Programming (bottom-up approach).
      *
      * @param weightCapacity The maximum weight capacity of the knapsack.
-     * @param weights        An array of item weights.
-     * @param values         An array of item values.
-     * @return The maximum value that can be obtained without exceeding the weight capacity.
-     * @throws IllegalArgumentException If the input arrays are null or have different lengths.
+     * @param weights        The array of item weights.
+     * @param values         The array of item values.
+     * @return The maximum total value achievable without exceeding capacity.
      */
-    public static int knapSack(final int weightCapacity, final int[] weights, final int[] values) throws IllegalArgumentException {
+    public static int knapSack(final int weightCapacity, final int[] weights, final int[] values) {
         throwIfInvalidInput(weightCapacity, weights, values);
 
-        // DP table to store the state of the maximum possible return for a given weight capacity.
         int[] dp = new int[weightCapacity + 1];
 
+        // Fill dp[] array iteratively
         for (int i = 0; i < values.length; i++) {
-            for (int w = weightCapacity; w > 0; w--) {
-                if (weights[i] <= w) {
-                    dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
-                }
+            for (int w = weightCapacity; w >= weights[i]; w--) {
+                dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
             }
         }
 
         return dp[weightCapacity];
+    }
+
+    /**
+     * Example main method for demonstration.
+     */
+    public static void main(String[] args) {
+        int[] values = {60, 100, 120};
+        int[] weights = {10, 20, 30};
+        int weightCapacity = 50;
+
+        int maxValue = knapSack(weightCapacity, weights, values);
+        System.out.println("Maximum value = " + maxValue); // Output: 220
     }
 }
