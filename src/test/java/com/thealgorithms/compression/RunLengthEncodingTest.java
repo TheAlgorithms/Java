@@ -7,6 +7,15 @@ import org.junit.jupiter.api.Test;
 class RunLengthEncodingTest {
 
     @Test
+    void testNullInputs() {
+        // Test that a null input to compress returns an empty string
+        assertEquals("", RunLengthEncoding.compress(null));
+
+        // Test that a null input to decompress returns an empty string
+        assertEquals("", RunLengthEncoding.decompress(null));
+    }
+
+    @Test
     void testCompressionSimple() {
         // Test a typical string with multiple runs
         String input = "AAAABBBCCDAA";

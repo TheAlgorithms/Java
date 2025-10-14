@@ -107,13 +107,10 @@ public final class ShannonFano {
      * @param prefix  The current prefix code being built for the symbols in this partition.
      */
     private static void buildCodeTree(List<Symbol> symbols, int start, int end, String prefix) {
-        if (start > end) {
-            return;
-        }
-
+        // The initial check in generateCodes ensures start <= end is always true here.
+        // The base case is when a partition has only one symbol.
         if (start == end) {
-            // Base case: single symbol gets the current prefix as its code.
-            symbols.get(start).code = prefix.isEmpty() ? "0" : prefix;
+            symbols.get(start).code = prefix;
             return;
         }
 

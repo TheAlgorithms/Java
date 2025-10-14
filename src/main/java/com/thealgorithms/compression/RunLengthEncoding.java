@@ -75,7 +75,7 @@ public final class RunLengthEncoding {
         for (char ch : compressedText.toCharArray()) {
             if (Character.isDigit(ch)) {
                 // Build the number for runs of 10 or more (e.g., "12A")
-                count = count * 10 + (ch - '0');
+                count = count * 10 + ch - '0';
             } else {
                 // Append the character 'count' times
                 decompressed.append(String.valueOf(ch).repeat(Math.max(0, count)));

@@ -4,10 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 
 class ShannonFanoTest {
+
+    @Test
+    void testNullInput() {
+        // Test with a null string, should return an empty map
+        assertTrue(ShannonFano.generateCodes(null).isEmpty());
+    }
 
     @Test
     void testSimpleString() {
@@ -20,7 +25,6 @@ class ShannonFanoTest {
         assertEquals("10", codes.get('B'));
         assertEquals("11", codes.get('C'));
     }
-
 
     @Test
     void testExampleFromStringIssue() {
