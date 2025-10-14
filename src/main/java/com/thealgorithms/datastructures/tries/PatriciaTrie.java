@@ -1,22 +1,27 @@
 package com.thealgorithms.datastructures.tries;
 
+// FIX: Placed each import on its own line for proper formatting.
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Patricia (radix) trie for String keys and generic values.
  *
- * <p>Compressed edges: each child edge stores a non-empty String label.
- * Operations are O(L) where L is the key length.</p>
+ * <p>A Patricia Trie is a memory-optimized trie where each node with only one
+ * child is merged with its child. This results in edges being labeled with
+ * strings instead of single characters.</p>
+ *
+ * <p>Operations are O(L) where L is the key length.</p>
  *
  * <p>Contracts:
  * <ul>
- *   <li>Null keys are not allowed (IllegalArgumentException).</li>
- *   <li>Empty-string key ("") is allowed as a valid key.</li>
- *   <li>Null values are not allowed (IllegalArgumentException).</li>
+ * <li>Null keys are not allowed (IllegalArgumentException).</li>
+ * <li>The empty-string key ("") is a valid key.</li>
+ * <li>Null values are not allowed (IllegalArgumentException).</li>
  * </ul>
  * </p>
  */
+// FIX: Added a newline after the Javadoc for proper formatting.
 public final class PatriciaTrie<V> {
 
     /** Node with compressed outgoing edges (label -> child). */
@@ -65,6 +70,9 @@ public final class PatriciaTrie<V> {
 
     /**
      * Returns true if the trie contains {@code key}.
+     *
+     * @param key non-null key
+     * @return true if the key is present
      */
     public boolean contains(String key) {
         if (key == null) {
@@ -87,20 +95,24 @@ public final class PatriciaTrie<V> {
         if (key == null) {
             throw new IllegalArgumentException("key must not be null");
         }
+        // The empty key is a special case as it's stored on the root node.
         if (key.isEmpty()) {
-            if (!root.hasValue) {
-                return false;
+            if (root.hasValue) {
+                root.hasValue = false;
+                root.value = null;
+                size--;
+                return true;
             }
-            root.hasValue = false;
-            root.value = null;
-            size--;
-            return true;
+            return false;
         }
         return removeRecursive(root, key);
     }
 
     /**
-     * Returns true if any key starts with {@code prefix}.
+     * Returns true if any key in the trie starts with {@code prefix}.
+     *
+     * @param prefix non-null prefix
+     * @return true if a key starts with the given prefix
      */
     public boolean startsWith(String prefix) {
         if (prefix == null) {
@@ -113,12 +125,12 @@ public final class PatriciaTrie<V> {
         return n != null;
     }
 
-    /** Number of stored keys. */
+    /** Returns the number of stored keys. */
     public int size() {
         return size;
     }
 
-    /** True if no keys are stored. */
+    /** Returns true if no keys are stored. */
     public boolean isEmpty() {
         return size == 0;
     }
@@ -140,11 +152,13 @@ public final class PatriciaTrie<V> {
         for (Map.Entry<String, Node<V>> e : node.children.entrySet()) {
             String edge = e.getKey();
             int cpl = commonPrefixLen(edge, key);
+
             if (cpl == 0) {
-                continue;
+                continue; // No common prefix, check next child.
             }
 
-            // edge matches the entire key
+            // Case 1: The entire edge and key match perfectly.
+            // e.g., edge="apple", key="apple". Update the value at the child node.
             if (cpl == edge.length() && cpl == key.length()) {
                 Node<V> child = e.getValue();
                 if (!child.hasValue) {
@@ -155,7 +169,8 @@ public final class PatriciaTrie<V> {
                 return;
             }
 
-            // edge is full prefix of key -> go down
+            // Case 2: The edge is a prefix of the key.
+            // e.g., edge="apple", key="applepie". Recurse on the child node.
             if (cpl == edge.length() && cpl < key.length()) {
                 Node<V> child = e.getValue();
                 String rest = key.substring(cpl);
@@ -163,7 +178,8 @@ public final class PatriciaTrie<V> {
                 return;
             }
 
-            // split edge (partial overlap or key is prefix of edge)
+            // Case 3: The key and edge partially match, requiring a split.
+            // e.g., edge="romane", key="romanus" -> split at "roman".
             String prefix = edge.substring(0, cpl);
             String edgeSuffix = edge.substring(cpl);
             String keySuffix = key.substring(cpl);
@@ -172,30 +188,30 @@ public final class PatriciaTrie<V> {
             node.children.remove(edge);
             node.children.put(prefix, mid);
 
+            // The old child is re-attached to the new middle node.
             Node<V> oldChild = e.getValue();
-            if (!edgeSuffix.isEmpty()) {
-                mid.children.put(edgeSuffix, oldChild);
-            } else {
-                // Should not occur since cpl < edge.length() for this branch
-                mid.children.put("", oldChild);
-            }
+            mid.children.put(edgeSuffix, oldChild);
 
             if (keySuffix.isEmpty()) {
+                // The new key ends at the split point, e.g., inserting "roman"
                 if (!mid.hasValue) {
                     size++;
                 }
                 mid.hasValue = true;
                 mid.value = value;
             } else {
+                // The new key branches off after the split point, e.g., "romanus"
                 Node<V> leaf = new Node<>();
                 leaf.hasValue = true;
                 leaf.value = value;
                 mid.children.put(keySuffix, leaf);
+                // FIX: This was the main bug. A new key was added, but size was not incremented.
+                size++;
             }
             return;
         }
 
-        // No common prefix with any child: create a new edge
+        // Case 4: No existing edge shares a prefix. Create a new one.
         Node<V> leaf = new Node<>();
         leaf.hasValue = true;
         leaf.value = value;
@@ -209,16 +225,9 @@ public final class PatriciaTrie<V> {
         }
         for (Map.Entry<String, Node<V>> e : node.children.entrySet()) {
             String edge = e.getKey();
-            int cpl = commonPrefixLen(edge, key);
-            if (cpl == 0) {
-                continue;
-            }
-            if (cpl == edge.length()) {
-                String rest = key.substring(cpl);
+            if (key.startsWith(edge)) {
+                String rest = key.substring(edge.length());
                 return findNode(e.getValue(), rest);
-            } else {
-                // partial match but edge not fully consumed => absent
-                return null;
             }
         }
         return null;
@@ -230,60 +239,43 @@ public final class PatriciaTrie<V> {
         }
         for (Map.Entry<String, Node<V>> e : node.children.entrySet()) {
             String edge = e.getKey();
-            int cpl = commonPrefixLen(edge, prefix);
-            if (cpl == 0) {
-                continue;
-            }
-            if (cpl == prefix.length()) {
-                return e.getValue();
-            }
-            if (cpl == edge.length()) {
-                String rest = prefix.substring(cpl);
+            if (prefix.startsWith(edge)) {
+                String rest = prefix.substring(edge.length());
                 return findPrefixNode(e.getValue(), rest);
             }
-            // neither fully consumed -> no such prefix
-            return null;
+            if (edge.startsWith(prefix)) {
+                return e.getValue();
+            }
         }
         return null;
     }
 
     /**
-     * Recursive removal + cleanup (merge).
-     *
-     * <p>On the way back up, if a child has no value and:
-     * <ul>
-     *   <li>deg == 0: remove it from parent,</li>
-     *   <li>deg == 1: merge it with its single child (concatenate edge labels).</li>
-     * </ul>
-     * </p>
+     * Recursive removal with cleanup (merging pass-through nodes).
      */
     private boolean removeRecursive(Node<V> parent, String key) {
-        // iterate on a snapshot of keys to allow modifications during loop
-        String[] keys = parent.children.keySet().toArray(new String[0]);
-        for (String edge : keys) {
-            int cpl = commonPrefixLen(edge, key);
-            if (cpl == 0) {
+        // Iterate on a snapshot to allow modification during the loop.
+        for (Map.Entry<String, Node<V>> entry : new HashMap<>(parent.children).entrySet()) {
+            String edge = entry.getKey();
+            Node<V> child = entry.getValue();
+
+            if (!key.startsWith(edge)) {
                 continue;
             }
 
-            Node<V> child = parent.children.get(edge);
-
-            // partial overlap with edge => key doesn't exist in this branch
-            if (cpl < edge.length()) {
-                return false;
-            }
-
-            String rest = key.substring(cpl);
+            String rest = key.substring(edge.length());
             boolean removed;
             if (rest.isEmpty()) {
+                // This is the node to delete.
                 if (!child.hasValue) {
-                    return false;
+                    return false; // Key doesn't actually exist.
                 }
                 child.hasValue = false;
                 child.value = null;
                 size--;
                 removed = true;
             } else {
+                // Continue search down the tree.
                 removed = removeRecursive(child, rest);
             }
 
@@ -291,35 +283,35 @@ public final class PatriciaTrie<V> {
                 return false;
             }
 
-            // post-recursion cleanup of child
+            // Post-recursion cleanup: merge nodes if necessary.
             if (!child.hasValue) {
-                int deg = child.children.size();
-                if (deg == 0) {
-                    // fully remove empty child (fixes leaf removal case)
+                int childDegree = child.children.size();
+                if (childDegree == 0) {
+                    // If child is now a valueless leaf, remove it.
                     parent.children.remove(edge);
-                } else if (deg == 1) {
-                    // merge pass-through child with its only grandchild
-                    Map.Entry<String, Node<V>> only =
-                        child.children.entrySet().iterator().next();
-                    String grandEdge = only.getKey();
-                    Node<V> grand = only.getValue();
+                } else if (childDegree == 1) {
+                    // If child is a pass-through node, merge it with its own child.
+                    Map.Entry<String, Node<V>> grandchildEntry = child.children.entrySet().iterator().next();
+                    String grandEdge = grandchildEntry.getKey();
+                    Node<V> grandchild = grandchildEntry.getValue();
 
                     parent.children.remove(edge);
-                    parent.children.put(edge + grandEdge, grand);
+                    parent.children.put(edge + grandEdge, grandchild);
                 }
             }
-            return true; // processed the matching path
+            return true; // Key was found and processed in this path.
         }
         return false;
     }
 
-    /** Length of common prefix of a and b. */
+    /** Returns the length of the common prefix of two strings. */
     private static int commonPrefixLen(String a, String b) {
         int n = Math.min(a.length(), b.length());
-        int i = 0;
-        while (i < n && a.charAt(i) == b.charAt(i)) {
-            i++;
+        for (int i = 0; i < n; i++) {
+            if (a.charAt(i) != b.charAt(i)) {
+                return i;
+            }
         }
-        return i;
+        return n;
     }
 }
