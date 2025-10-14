@@ -32,8 +32,8 @@ public final class PatriciaTrie<V> {
     private int size; // number of stored keys
 
     /** Creates an empty Patricia trie. */
-    public PatriciaTrie() {}
-
+    public PatriciaTrie() {
++    }
     /**
      * Inserts or updates the value associated with {@code key}.
      *
