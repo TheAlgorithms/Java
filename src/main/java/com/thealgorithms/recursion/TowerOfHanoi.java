@@ -1,5 +1,7 @@
 package com.thealgorithms.recursion;
 
+/*Tower of Hanoi Problem on Wikipedia - https://en.wikipedia.org/wiki/Tower_of_Hanoi */
+
 public class TowerOfHanoi {
 
     public void solveHanoi(int n,char src,char dest,char aux)
