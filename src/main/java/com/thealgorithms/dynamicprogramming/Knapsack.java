@@ -72,6 +72,6 @@ public final class Knapsack {
         int weightCapacity = 50;
 
         int maxValue = knapSack(weightCapacity, weights, values);
-        System.out.println("Maximum value = " + maxValue); // Output: 220
+        System.out.println("Maximum value = " + maxValue); // Output : 220
     }
 }
