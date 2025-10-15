@@ -67,9 +67,11 @@ public final class PushRelabel {
             }
         }
 
+        State state = new State(residual, height, excess, nextNeighbor, source, sink, active);
+
         while (!active.isEmpty()) {
             int u = active.poll();
-            discharge(u, residual, height, excess, nextNeighbor, source, sink, active);
+            discharge(u, state);
             if (excess[u] > 0) {
                 // still active after discharge; push to back
                 active.add(u);
@@ -80,32 +82,52 @@ public final class PushRelabel {
         return excess[sink];
     }
 
-    private static boolean discharge(int u, int[][] residual, int[] height, int[] excess, int[] nextNeighbor, int source, int sink, Queue<Integer> active) {
-        final int n = residual.length;
+    private static boolean discharge(int u, State s) {
+        final int n = s.residual.length;
         boolean pushedAny = false;
-        while (excess[u] > 0) {
-            if (nextNeighbor[u] >= n) {
-                relabel(u, residual, height);
-                nextNeighbor[u] = 0;
+        while (s.excess[u] > 0) {
+            if (s.nextNeighbor[u] >= n) {
+                relabel(u, s.residual, s.height);
+                s.nextNeighbor[u] = 0;
                 continue;
             }
-            int v = nextNeighbor[u];
-            if (residual[u][v] > 0 && height[u] == height[v] + 1) {
-                int delta = Math.min(excess[u], residual[u][v]);
-                residual[u][v] -= delta;
-                residual[v][u] += delta;
-                excess[u] -= delta;
-                int prevExcessV = excess[v];
-                excess[v] += delta;
-                if (v != source && v != sink && prevExcessV == 0) {
-                    active.add(v);
+            int v = s.nextNeighbor[u];
+            if (s.residual[u][v] > 0 && s.height[u] == s.height[v] + 1) {
+                int delta = Math.min(s.excess[u], s.residual[u][v]);
+                s.residual[u][v] -= delta;
+                s.residual[v][u] += delta;
+                s.excess[u] -= delta;
+                int prevExcessV = s.excess[v];
+                s.excess[v] += delta;
+                if (v != s.source && v != s.sink && prevExcessV == 0) {
+                    s.active.add(v);
                 }
                 pushedAny = true;
             } else {
-                nextNeighbor[u]++;
+                s.nextNeighbor[u]++;
             }
         }
         return pushedAny;
+    }
+
+    private static final class State {
+        final int[][] residual;
+        final int[] height;
+        final int[] excess;
+        final int[] nextNeighbor;
+        final int source;
+        final int sink;
+        final Queue<Integer> active;
+
+        State(int[][] residual, int[] height, int[] excess, int[] nextNeighbor, int source, int sink, Queue<Integer> active) {
+            this.residual = residual;
+            this.height = height;
+            this.excess = excess;
+            this.nextNeighbor = nextNeighbor;
+            this.source = source;
+            this.sink = sink;
+            this.active = active;
+        }
     }
 
     private static void relabel(int u, int[][] residual, int[] height) {
