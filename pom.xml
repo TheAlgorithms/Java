@@ -7,11 +7,7 @@
     <artifactId>Java</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20240303</version>
-</dependency>
+   
 
 
     <properties>
