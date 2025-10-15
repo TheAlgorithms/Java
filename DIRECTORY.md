@@ -173,6 +173,7 @@
             - 📄 [TarjansAlgorithm](src/main/java/com/thealgorithms/datastructures/graphs/TarjansAlgorithm.java)
             - 📄 [UndirectedAdjacencyListGraph](src/main/java/com/thealgorithms/datastructures/graphs/UndirectedAdjacencyListGraph.java)
             - 📄 [WelshPowell](src/main/java/com/thealgorithms/datastructures/graphs/WelshPowell.java)
+            - 📄 [TwoSat](src/main/java/com/thealgorithms/datastructures/graphs/TwoSat.java)
           - 📁 **hashmap**
             - 📁 **hashing**
               - 📄 [GenericHashMapUsingArray](src/main/java/com/thealgorithms/datastructures/hashmap/hashing/GenericHashMapUsingArray.java)
@@ -352,6 +353,8 @@
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
           - 📄 [StronglyConnectedComponentOptimized](src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
           - 📄 [TravelingSalesman](src/main/java/com/thealgorithms/graph/TravelingSalesman.java)
+          - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
+          - 📄 [YensKShortestPaths](src/main/java/com/thealgorithms/graph/YensKShortestPaths.java)
         - 📁 **greedyalgorithms**
           - 📄 [ActivitySelection](src/main/java/com/thealgorithms/greedyalgorithms/ActivitySelection.java)
           - 📄 [BandwidthAllocation](src/main/java/com/thealgorithms/greedyalgorithms/BandwidthAllocation.java)
