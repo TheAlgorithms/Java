@@ -82,9 +82,8 @@ public final class PushRelabel {
         return excess[sink];
     }
 
-    private static boolean discharge(int u, State s) {
+    private static void discharge(int u, State s) {
         final int n = s.residual.length;
-        boolean pushedAny = false;
         while (s.excess[u] > 0) {
             if (s.nextNeighbor[u] >= n) {
                 relabel(u, s.residual, s.height);
@@ -102,12 +101,10 @@ public final class PushRelabel {
                 if (v != s.source && v != s.sink && prevExcessV == 0) {
                     s.active.add(v);
                 }
-                pushedAny = true;
             } else {
                 s.nextNeighbor[u]++;
             }
         }
-        return pushedAny;
     }
 
     private static final class State {
@@ -140,8 +137,6 @@ public final class PushRelabel {
         }
         if (minHeight < Integer.MAX_VALUE) {
             height[u] = minHeight + 1;
-        } else {
-            // No outgoing residual edges; keep height unchanged
         }
     }
 
