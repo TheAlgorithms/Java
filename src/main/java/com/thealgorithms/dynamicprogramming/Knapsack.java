@@ -23,8 +23,8 @@ import java.util.Arrays;
  */
 public final class Knapsack {
 
-    private Knapsack() { }
-
+    private Knapsack() {
+    }
     /**
      * Validates the input to ensure correct constraints.
      */
