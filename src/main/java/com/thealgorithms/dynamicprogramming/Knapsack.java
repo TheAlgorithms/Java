@@ -23,7 +23,9 @@ import java.util.Arrays;
  */
 public final class Knapsack {
 
-    private Knapsack() {}
+    private Knapsack() {
+    }
+
     /**
      * Validates the input to ensure correct constraints.
      */
@@ -62,15 +64,15 @@ public final class Knapsack {
         return dp[weightCapacity];
     }
 
-    /**
-     * Example main method for demonstration.
-    
+    /*
+    // Example main method for local testing only.
     public static void main(String[] args) {
         int[] values = {60, 100, 120};
         int[] weights = {10, 20, 30};
         int weightCapacity = 50;
 
         int maxValue = knapSack(weightCapacity, weights, values);
-        System.out.println("Maximum value = " + maxValue); // Output : 220
-    } */
+        System.out.println("Maximum value = " + maxValue); // Output: 220
+    }
+    */
 }
