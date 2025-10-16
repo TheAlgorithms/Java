@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Implementation of complex number multiplication.
- * 
  * Given two strings representing complex numbers in the form "a+bi" and "c+di",
  * this class provides a method to multiply them and return the result
  * as a string in the same format.
@@ -12,7 +11,6 @@ import java.util.Scanner;
  * Example:
  * Input: "1+1i", "1+1i"
  * Output: "0+2i"
- * 
  *
  * Formula used:
  * (a + bi) × (c + di) = (ac - bd) + (ad + bc)i
