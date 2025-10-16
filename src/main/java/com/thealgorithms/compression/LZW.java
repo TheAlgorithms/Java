@@ -2,6 +2,11 @@ package com.thealgorithms.compression;
 
 import java.util.*;
 
+/**
+ * Implementation of LZW (Lempel–Ziv–Welch) compression algorithm.
+ * Reference: https://en.wikipedia.org/wiki/Lempel–Ziv–Welch
+ */
+
 public class LZW {
 
     public static List<Integer> compress(String input) {

@@ -2,6 +2,11 @@ package com.thealgorithms.compression;
 
 import java.util.Map;
 
+/**
+ * Implementation of Arithmetic Coding algorithm.
+ * Reference: https://en.wikipedia.org/wiki/Arithmetic_coding
+ */
+
 public class ArithmeticCoding {
 
     public static double encode(String input, Map<Character, Double> probabilities) {
