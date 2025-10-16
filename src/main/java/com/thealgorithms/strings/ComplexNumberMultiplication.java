@@ -1,7 +1,5 @@
 package com.thealgorithms.strings;
 
-import java.util.Scanner;
-
 /**
  * Implementation of complex number multiplication.
  * Given two strings representing complex numbers in the form "a+bi" and "c+di",
