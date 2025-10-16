@@ -117,7 +117,7 @@ public class DampedOscillatorTest {
     @Test
     @DisplayName("Getter methods return configured parameters")
     void gettersReturnConfiguration() {
-        double omega0 = 3.14;
+        double omega0 = Math.PI;
         double gamma = 0.01;
         DampedOscillator d = new DampedOscillator(omega0, gamma);
 
