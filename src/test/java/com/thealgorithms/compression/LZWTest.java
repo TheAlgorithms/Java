@@ -82,14 +82,11 @@ class LZWTest {
         // Test that decompressing with an invalid code throws IllegalArgumentException
         // Create a list with a code that doesn't exist in the dictionary
         List<Integer> invalidCompressed = new ArrayList<>();
-        invalidCompressed.add(65);  // 'A' - valid
+        invalidCompressed.add(65); // 'A' - valid
         invalidCompressed.add(999); // Invalid code (not in dictionary)
 
         // This should throw IllegalArgumentException with message "Bad compressed k: 999"
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> LZW.decompress(invalidCompressed)
-        );
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> LZW.decompress(invalidCompressed));
 
         assertTrue(exception.getMessage().contains("Bad compressed k: 999"));
     }
@@ -98,8 +95,8 @@ class LZWTest {
     void testDecompressionWithGapInDictionary() {
         // Test with codes that skip dictionary entries
         List<Integer> invalidCompressed = new ArrayList<>();
-        invalidCompressed.add(84);   // 'T' - valid
-        invalidCompressed.add(500);  // Way beyond current dictionary size
+        invalidCompressed.add(84); // 'T' - valid
+        invalidCompressed.add(500); // Way beyond current dictionary size
 
         // This should throw IllegalArgumentException
         assertThrows(IllegalArgumentException.class, () -> LZW.decompress(invalidCompressed));
