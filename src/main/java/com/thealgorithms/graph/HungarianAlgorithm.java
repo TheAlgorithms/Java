@@ -73,7 +73,9 @@ public final class HungarianAlgorithm {
             Arrays.fill(used, false);
             do {
                 used[j0] = true;
-                int i0 = p[j0], delta = Integer.MAX_VALUE, j1 = 0;
+                int i0 = p[j0];
+                int delta = Integer.MAX_VALUE;
+                int j1 = 0;
                 for (int j = 1; j <= n; j++) {
                     if (!used[j]) {
                         int cur = a[i0 - 1][j - 1] - u[i0] - v[j];
