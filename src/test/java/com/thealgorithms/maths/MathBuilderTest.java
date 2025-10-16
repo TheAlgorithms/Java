@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.doubleThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
 import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -138,21 +138,23 @@ class MathBuilderTest {
 		double minValue = 0.0;
 		double maxValue = 2.1;
 		double actual = new MathBuilder.Builder().rand(2L).build().get();
-		double actual2 = new MathBuilder.Builder().randomInRange(minValue,maxValue).build().get();
+		double actual2 = new MathBuilder.Builder().randomInRange(minValue, maxValue).build().get();
 
 		assertTrue(actual < maxValue);
 		assertTrue(actual2 >= minValue);
 		assertTrue(actual2 <= maxValue);
 
 	}
+
 	@Test
 	void toRadiansTest() {
- 
+
 		double expected = Math.toRadians(10);
-		double expected2 = 2+Math.toRadians(10);
+		double expected2 = 2 + Math.toRadians(10);
 
 		double actual = new MathBuilder.Builder(10).toRadians().build().get();
-		double actual2 = new MathBuilder.Builder(2).openParenthesis(10).toRadians().closeParenthesisAndPlus().build().get();
+		double actual2 = new MathBuilder.Builder(2).openParenthesis(10).toRadians().closeParenthesisAndPlus()
+				.build().get();
 
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
