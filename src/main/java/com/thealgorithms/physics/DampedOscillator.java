@@ -89,7 +89,7 @@ public final class DampedOscillator {
 
         double x = state[0];
         double v = state[1];
-        double acceleration = -2.0 * gamma * v - (omega0 * omega0) * x;
+        double acceleration = -2.0 * gamma * v - omega0 * omega0 * x;
 
         double xNext = x + dt * v;
         double vNext = v + dt * acceleration;
