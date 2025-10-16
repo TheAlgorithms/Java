@@ -10,7 +10,7 @@ import java.util.Map;
  * Reference: https://en.wikipedia.org/wiki/Lempel–Ziv–Welch
  */
 
-public class LZW {
+public final class LZW {
 
     private LZW() {
         throw new UnsupportedOperationException("Utility class");

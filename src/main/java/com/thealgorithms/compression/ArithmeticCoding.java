@@ -7,7 +7,7 @@ import java.util.Map;
  * Reference: https://en.wikipedia.org/wiki/Arithmetic_coding
  */
 
-public class ArithmeticCoding {
+public final class ArithmeticCoding {
 
     private ArithmeticCoding() {
         throw new UnsupportedOperationException("Utility class");
