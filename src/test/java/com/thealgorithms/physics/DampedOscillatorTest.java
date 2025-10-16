@@ -121,4 +121,21 @@ public class DampedOscillatorTest {
 
         assertAll("getters", () -> assertEquals(omega0, d.getOmega0(), 0.0, "getOmega0 should return configured omega0"), () -> assertEquals(gamma, d.getGamma(), 0.0, "getGamma should return configured gamma"));
     }
+
+    @Test
+    @DisplayName("Analytical displacement at t=0 returns initial amplitude * cos(phase)")
+    void analyticalAtZeroTime() {
+        double omega0 = 5.0;
+        double gamma = 0.2;
+        DampedOscillator d = new DampedOscillator(omega0, gamma);
+
+        double A = 2.0;
+        double phi = Math.PI / 3.0;
+        double t = 0.0;
+
+        double expected = A * Math.cos(phi);
+        double actual = d.displacementAnalytical(A, phi, t);
+
+        assertEquals(expected, actual, 1e-12, "Displacement at t=0 should be A * cos(phase)");
+    }
 }
