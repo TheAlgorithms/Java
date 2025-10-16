@@ -45,5 +45,4 @@ public final class ComplexNumberMultiplication {
 
         return real + "+" + imag + "i";
     }
-
 }
