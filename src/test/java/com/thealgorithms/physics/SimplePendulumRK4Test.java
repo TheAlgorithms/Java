@@ -4,9 +4,14 @@ package com.thealgorithms.physics;
  * Comprehensive test suite for SimplePendulumRK4.
  * Tests numerical accuracy, physical correctness, and edge cases.
  */
-public class SimplePendulumRK4Test {
+public final class SimplePendulumRK4Test {
 
     private static final double EPSILON = 1e-6;
+
+    // Private constructor to prevent instantiation
+    private SimplePendulumRK4Test() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     // ANSI color codes for terminal output
     private static final String GREEN = "\u001B[32m";
@@ -33,7 +38,7 @@ public class SimplePendulumRK4Test {
         runTest("Energy Conservation (Small Angle)", SimplePendulumRK4Test::testEnergySmallAngle);
         runTest("Energy Conservation (Large Angle)", SimplePendulumRK4Test::testEnergyLargeAngle);
 
-        // Method tests
+        // Method tests`
         runTest("Simulate Method", SimplePendulumRK4Test::testSimulate);
         runTest("Energy Calculation", SimplePendulumRK4Test::testEnergyCalculation);
 
@@ -177,48 +182,6 @@ public class SimplePendulumRK4Test {
         assertTrue(drift < maxDrift, String.format("Energy drift %.6f exceeds limit %.6f", drift, maxDrift));
     }
 
-    private static void testPeriodAccuracy(double angleDegrees) {
-        SimplePendulumRK4 p = new SimplePendulumRK4(1.0, 9.81);
-        double[] state = {Math.toRadians(angleDegrees), 0.0};
-        double dt = 0.001;
-
-        // Measure period by detecting zero crossings with positive velocity
-        double prevTheta = state[0];
-        int zeroCrossings = 0;
-        int periodSteps = 0;
-
-        for (int i = 0; i < 10000; i++) {
-            state = p.stepRK4(state, dt);
-
-            // Detect zero crossing with positive velocity (moving right)
-            if (prevTheta < 0 && state[0] >= 0 && state[1] > 0) {
-                zeroCrossings++;
-                if (zeroCrossings == 2) {
-                    // Two zero crossings = one complete period
-                    periodSteps = i + 1;
-                    break;
-                }
-            }
-
-            prevTheta = state[0];
-        }
-
-        assertTrue(periodSteps > 0, "Could not measure period");
-
-        double measuredPeriod = periodSteps * dt;
-        double theoreticalPeriod = 2 * Math.PI * Math.sqrt(1.0 / 9.81);
-
-        // For small angles, should match theoretical period closely
-        if (angleDegrees < 10) {
-            double error = Math.abs(measuredPeriod - theoreticalPeriod) / theoreticalPeriod;
-            assertTrue(error < 0.02, "Period error: " + error);
-        } else {
-            // For larger angles, just verify we got a reasonable period
-            assertTrue(measuredPeriod > theoreticalPeriod * 0.8, "Period too short");
-            assertTrue(measuredPeriod < theoreticalPeriod * 1.5, "Period too long");
-        }
-    }
-
     private static void testSimulate() {
         SimplePendulumRK4 p = new SimplePendulumRK4(1.0, 9.81);
         double[] initialState = {Math.toRadians(20.0), 0.0};
@@ -246,18 +209,18 @@ public class SimplePendulumRK4Test {
 
         // At equilibrium with no velocity: E = 0
         double[] state1 = {0.0, 0.0};
-        double E1 = p.calculateEnergy(state1);
-        assertEquals(0.0, E1, EPSILON, "Energy at equilibrium");
+        double energy1 = p.calculateEnergy(state1);
+        assertEquals(0.0, energy1, EPSILON, "Energy at equilibrium");
 
         // At rest at max angle: E = potential only
         double[] state2 = {Math.PI / 2, 0.0};
-        double E2 = p.calculateEnergy(state2);
-        assertTrue(E2 > 0, "Energy should be positive at max angle");
+        double energy2 = p.calculateEnergy(state2);
+        assertTrue(energy2 > 0, "Energy should be positive at max angle");
 
         // Energy with angular velocity
         double[] state3 = {0.0, 1.0};
-        double E3 = p.calculateEnergy(state3);
-        assertTrue(E3 > 0, "Energy should be positive with velocity");
+        double energy3 = p.calculateEnergy(state3);
+        assertTrue(energy3 > 0, "Energy should be positive with velocity");
     }
 
     private static void testInvalidConstructor() {
