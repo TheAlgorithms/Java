@@ -1,11 +1,6 @@
 package com.thealgorithms.physics;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,35 +16,35 @@ class SimplePendulumRK4Test {
     @DisplayName("Test constructor creates valid pendulum")
     void testConstructor() {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.5, 9.81);
-        assertNotNull(pendulum);
-        assertEquals(1.5, pendulum.getLength(), EPSILON);
-        assertEquals(9.81, pendulum.getGravity(), EPSILON);
+        Assertions.assertNotNull(pendulum);
+        Assertions.assertEquals(1.5, pendulum.getLength(), EPSILON);
+        Assertions.assertEquals(9.81, pendulum.getGravity(), EPSILON);
     }
 
     @Test
     @DisplayName("Test constructor rejects negative length")
     void testConstructorNegativeLength() {
-        assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(-1.0, 9.81); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(-1.0, 9.81); });
     }
 
     @Test
     @DisplayName("Test constructor rejects negative gravity")
     void testConstructorNegativeGravity() {
-        assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(1.0, -9.81); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(1.0, -9.81); });
     }
 
     @Test
     @DisplayName("Test constructor rejects zero length")
     void testConstructorZeroLength() {
-        assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(0.0, 9.81); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { new SimplePendulumRK4(0.0, 9.81); });
     }
 
     @Test
     @DisplayName("Test getters return correct values")
     void testGetters() {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(2.5, 10.0);
-        assertEquals(2.5, pendulum.getLength(), EPSILON);
-        assertEquals(10.0, pendulum.getGravity(), EPSILON);
+        Assertions.assertEquals(2.5, pendulum.getLength(), EPSILON);
+        Assertions.assertEquals(10.0, pendulum.getGravity(), EPSILON);
     }
 
     @Test
@@ -59,8 +54,8 @@ class SimplePendulumRK4Test {
         double[] state = {0.1, 0.0};
         double[] newState = pendulum.stepRK4(state, 0.01);
 
-        assertNotNull(newState);
-        assertEquals(2, newState.length);
+        Assertions.assertNotNull(newState);
+        Assertions.assertEquals(2, newState.length);
     }
 
     @Test
@@ -73,8 +68,8 @@ class SimplePendulumRK4Test {
             state = pendulum.stepRK4(state, 0.01);
         }
 
-        assertEquals(0.0, state[0], EPSILON, "Theta should remain at equilibrium");
-        assertEquals(0.0, state[1], EPSILON, "Omega should remain zero");
+        Assertions.assertEquals(0.0, state[0], EPSILON, "Theta should remain at equilibrium");
+        Assertions.assertEquals(0.0, state[1], EPSILON, "Omega should remain zero");
     }
 
     @Test
@@ -94,7 +89,7 @@ class SimplePendulumRK4Test {
 
         // After one period, should return close to initial position
         double error = Math.abs(finalTheta - initialAngle) / Math.abs(initialAngle);
-        assertTrue(error < 0.05, "Small angle approximation error should be < 5%");
+        Assertions.assertTrue(error < 0.05, "Small angle approximation error should be < 5%");
     }
 
     @Test
@@ -113,12 +108,12 @@ class SimplePendulumRK4Test {
             minTheta = Math.min(minTheta, s[0]);
         }
 
-        assertTrue(maxTheta > 0, "Should have positive excursions");
-        assertTrue(minTheta < 0, "Should have negative excursions");
+        Assertions.assertTrue(maxTheta > 0, "Should have positive excursions");
+        Assertions.assertTrue(minTheta < 0, "Should have negative excursions");
 
         // Check symmetry
         double asymmetry = Math.abs((maxTheta + minTheta) / maxTheta);
-        assertTrue(asymmetry < 0.1, "Oscillation should be symmetric");
+        Assertions.assertTrue(asymmetry < 0.1, "Oscillation should be symmetric");
     }
 
     @Test
@@ -136,7 +131,7 @@ class SimplePendulumRK4Test {
         double finalEnergy = pendulum.calculateEnergy(state);
         double drift = Math.abs(finalEnergy - initialEnergy) / initialEnergy;
 
-        assertTrue(drift < ENERGY_DRIFT_TOLERANCE, "Energy drift should be < 0.1%, got: " + (drift * 100) + "%");
+        Assertions.assertTrue(drift < ENERGY_DRIFT_TOLERANCE, "Energy drift should be < 0.1%, got: " + (drift * 100) + "%");
     }
 
     @Test
@@ -154,7 +149,7 @@ class SimplePendulumRK4Test {
         double finalEnergy = pendulum.calculateEnergy(state);
         double drift = Math.abs(finalEnergy - initialEnergy) / initialEnergy;
 
-        assertTrue(drift < ENERGY_DRIFT_TOLERANCE, "Energy drift should be < 0.1%, got: " + (drift * 100) + "%");
+        Assertions.assertTrue(drift < ENERGY_DRIFT_TOLERANCE, "Energy drift should be < 0.1%, got: " + (drift * 100) + "%");
     }
 
     @Test
@@ -166,8 +161,8 @@ class SimplePendulumRK4Test {
 
         double[][] trajectory = pendulum.simulate(initialState, 0.01, steps);
 
-        assertEquals(steps + 1, trajectory.length, "Trajectory should have steps + 1 entries");
-        assertArrayEquals(initialState, trajectory[0], EPSILON, "First entry should match initial state");
+        Assertions.assertEquals(steps + 1, trajectory.length, "Trajectory should have steps + 1 entries");
+        Assertions.assertArrayEquals(initialState, trajectory[0], EPSILON, "First entry should match initial state");
 
         // Verify state changes over time
         boolean changed = false;
@@ -177,7 +172,7 @@ class SimplePendulumRK4Test {
                 break;
             }
         }
-        assertTrue(changed, "Simulation should progress from initial state");
+        Assertions.assertTrue(changed, "Simulation should progress from initial state");
     }
 
     @Test
@@ -186,7 +181,7 @@ class SimplePendulumRK4Test {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
         double[] state = {0.0, 0.0};
         double energy = pendulum.calculateEnergy(state);
-        assertEquals(0.0, energy, EPSILON, "Energy at equilibrium should be zero");
+        Assertions.assertEquals(0.0, energy, EPSILON, "Energy at equilibrium should be zero");
     }
 
     @Test
@@ -195,7 +190,7 @@ class SimplePendulumRK4Test {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
         double[] state = {Math.PI / 2, 0.0};
         double energy = pendulum.calculateEnergy(state);
-        assertTrue(energy > 0, "Energy should be positive at max angle");
+        Assertions.assertTrue(energy > 0, "Energy should be positive at max angle");
     }
 
     @Test
@@ -204,28 +199,28 @@ class SimplePendulumRK4Test {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
         double[] state = {0.0, 1.0};
         double energy = pendulum.calculateEnergy(state);
-        assertTrue(energy > 0, "Energy should be positive with velocity");
+        Assertions.assertTrue(energy > 0, "Energy should be positive with velocity");
     }
 
     @Test
     @DisplayName("Test stepRK4 rejects null state")
     void testStepRejectsNullState() {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
-        assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(null, 0.01); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(null, 0.01); });
     }
 
     @Test
     @DisplayName("Test stepRK4 rejects invalid state length")
     void testStepRejectsInvalidStateLength() {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
-        assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(new double[] {0.1}, 0.01); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(new double[] {0.1}, 0.01); });
     }
 
     @Test
     @DisplayName("Test stepRK4 rejects negative time step")
     void testStepRejectsNegativeTimeStep() {
         SimplePendulumRK4 pendulum = new SimplePendulumRK4(1.0, 9.81);
-        assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(new double[] {0.1, 0.2}, -0.01); });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { pendulum.stepRK4(new double[] {0.1, 0.2}, -0.01); });
     }
 
     @Test
@@ -235,9 +230,9 @@ class SimplePendulumRK4Test {
         double[] state = {Math.toRadians(179.0), 0.0};
         double[] result = pendulum.stepRK4(state, 0.01);
 
-        assertNotNull(result);
-        assertTrue(Double.isFinite(result[0]), "Should handle large angles without NaN");
-        assertTrue(Double.isFinite(result[1]), "Should handle large angles without NaN");
+        Assertions.assertNotNull(result);
+        Assertions.assertTrue(Double.isFinite(result[0]), "Should handle large angles without NaN");
+        Assertions.assertTrue(Double.isFinite(result[1]), "Should handle large angles without NaN");
     }
 
     @Test
@@ -247,9 +242,9 @@ class SimplePendulumRK4Test {
         double[] state = {0.0, 10.0};
         double[] result = pendulum.stepRK4(state, 0.01);
 
-        assertNotNull(result);
-        assertTrue(Double.isFinite(result[0]), "Should handle high velocity without NaN");
-        assertTrue(Double.isFinite(result[1]), "Should handle high velocity without NaN");
+        Assertions.assertNotNull(result);
+        Assertions.assertTrue(Double.isFinite(result[0]), "Should handle high velocity without NaN");
+        Assertions.assertTrue(Double.isFinite(result[1]), "Should handle high velocity without NaN");
     }
 
     @Test
@@ -259,8 +254,8 @@ class SimplePendulumRK4Test {
         double[] state = {Math.toRadians(10.0), 0.0};
         double[] result = pendulum.stepRK4(state, 1e-6);
 
-        assertNotNull(result);
-        assertTrue(Double.isFinite(result[0]), "Should handle small time steps without NaN");
-        assertTrue(Double.isFinite(result[1]), "Should handle small time steps without NaN");
+        Assertions.assertNotNull(result);
+        Assertions.assertTrue(Double.isFinite(result[0]), "Should handle small time steps without NaN");
+        Assertions.assertTrue(Double.isFinite(result[1]), "Should handle small time steps without NaN");
     }
 }

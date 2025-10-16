@@ -3,6 +3,8 @@ package com.thealgorithms.physics;
 /**
  * Simulates a simple pendulum using the Runge-Kutta 4th order method.
  * The pendulum is modeled with the nonlinear differential equation.
+ *
+ * @author [Yash Rajput](https://github.com/the-yash-rajput)
  */
 public final class SimplePendulumRK4 {
 
@@ -71,8 +73,8 @@ public final class SimplePendulumRK4 {
 
         double[] k4 = derivatives(s4);
 
-        double thetaNext = state[0] + (dt / 6.0) * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]);
-        double omegaNext = state[1] + (dt / 6.0) * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]);
+        double thetaNext = state[0] + dt / 6.0 * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]);
+        double omegaNext = state[1] + dt / 6.0 * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]);
 
         return new double[] {thetaNext, omegaNext};
     }
