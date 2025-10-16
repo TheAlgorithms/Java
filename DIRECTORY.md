@@ -349,6 +349,7 @@
           - 📄 [Point](src/main/java/com/thealgorithms/geometry/Point.java)
         - 📁 **graph**
           - 📄 [ConstrainedShortestPath](src/main/java/com/thealgorithms/graph/ConstrainedShortestPath.java)
+          - 📄 [HungarianAlgorithm](src/main/java/com/thealgorithms/graph/HungarianAlgorithm.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
           - 📄 [PushRelabel](src/main/java/com/thealgorithms/graph/PushRelabel.java)
