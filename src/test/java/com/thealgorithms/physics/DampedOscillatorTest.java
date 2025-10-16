@@ -39,15 +39,15 @@ public class DampedOscillatorTest {
         double gamma = 0.5;
         DampedOscillator d = new DampedOscillator(omega0, gamma);
 
-        double A = 1.0;
+        double a = 1.0;
         double phi = 0.2;
         double t = 0.123;
 
-        // expected: A * exp(-gamma * t) * cos(omega_d * t + phi)
+        // expected: a * exp(-gamma * t) * cos(omega_d * t + phi)
         double omegaD = Math.sqrt(Math.max(0.0, omega0 * omega0 - gamma * gamma));
-        double expected = A * Math.exp(-gamma * t) * Math.cos(omegaD * t + phi);
+        double expected = a * Math.exp(-gamma * t) * Math.cos(omegaD * t + phi);
 
-        double actual = d.displacementAnalytical(A, phi, t);
+        double actual = d.displacementAnalytical(a, phi, t);
         assertEquals(expected, actual, 1e-12, "Analytical underdamped displacement should match closed-form value");
     }
 
@@ -58,13 +58,13 @@ public class DampedOscillatorTest {
         double gamma = 2.0; // gamma > omega0 => omega_d = 0 in our implementation (Math.max)
         DampedOscillator d = new DampedOscillator(omega0, gamma);
 
-        double A = 2.0;
+        double a = 2.0;
         double phi = Math.PI / 4.0;
         double t = 0.5;
 
         // With omegaD forced to 0 by implementation, expected simplifies to:
-        double expected = A * Math.exp(-gamma * t) * Math.cos(phi);
-        double actual = d.displacementAnalytical(A, phi, t);
+        double expected = a * Math.exp(-gamma * t) * Math.cos(phi);
+        double actual = d.displacementAnalytical(a, phi, t);
 
         assertEquals(expected, actual, 1e-12, "Overdamped handling should reduce to exponential * cos(phase)");
     }
@@ -76,14 +76,14 @@ public class DampedOscillatorTest {
         double gamma = 0.5;
         DampedOscillator d = new DampedOscillator(omega0, gamma);
 
-        double A = 1.0;
+        double a = 1.0;
         double phi = 0.0;
 
-        // initial conditions consistent with amplitude A and zero phase:
-        // x(0) = A, v(0) = -A * gamma * cos(phi) + A * omegaD * sin(phi)
+        // initial conditions consistent with amplitude a and zero phase:
+        // x(0) = a, v(0) = -a * gamma * cos(phi) + a * omegaD * sin(phi)
         double omegaD = Math.sqrt(Math.max(0.0, omega0 * omega0 - gamma * gamma));
-        double x0 = A * Math.cos(phi);
-        double v0 = -A * gamma * Math.cos(phi) - A * omegaD * Math.sin(phi); // small general form
+        double x0 = a * Math.cos(phi);
+        double v0 = -a * gamma * Math.cos(phi) - a * omegaD * Math.sin(phi); // small general form
 
         double dt = 1e-4;
         int steps = 1000; // simulate to t = 0.1s
@@ -94,7 +94,7 @@ public class DampedOscillatorTest {
             state = d.stepEuler(state, dt);
         }
 
-        double analyticAtT = d.displacementAnalytical(A, phi, tFinal);
+        double analyticAtT = d.displacementAnalytical(a, phi, tFinal);
         double numericAtT = state[0];
 
         // Euler is low-order — allow a small tolerance but assert it remains close for small dt + short time.
@@ -131,13 +131,13 @@ public class DampedOscillatorTest {
         double gamma = 0.2;
         DampedOscillator d = new DampedOscillator(omega0, gamma);
 
-        double A = 2.0;
+        double a = 2.0;
         double phi = Math.PI / 3.0;
         double t = 0.0;
 
-        double expected = A * Math.cos(phi);
-        double actual = d.displacementAnalytical(A, phi, t);
+        double expected = a * Math.cos(phi);
+        double actual = d.displacementAnalytical(a, phi, t);
 
-        assertEquals(expected, actual, 1e-12, "Displacement at t=0 should be A * cos(phase)");
+        assertEquals(expected, actual, 1e-12, "Displacement at t=0 should be a * cos(phase)");
     }
 }
