@@ -46,18 +46,4 @@ public final class ComplexNumberMultiplication {
         return real + "+" + imag + "i";
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter first complex number (a+bi): ");
-        String num1 = sc.nextLine();
-
-        System.out.print("Enter second complex number (c+di): ");
-        String num2 = sc.nextLine();
-
-        String result = complexNumberMultiply(num1, num2);
-        System.out.println("Result: " + result);
-
-        sc.close();
-    }
 }
