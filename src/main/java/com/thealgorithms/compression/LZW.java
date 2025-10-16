@@ -1,6 +1,9 @@
 package com.thealgorithms.compression;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of LZW (Lempel–Ziv–Welch) compression algorithm.
@@ -8,6 +11,10 @@ import java.util.*;
  */
 
 public class LZW {
+
+    private LZW() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     public static List<Integer> compress(String input) {
         int dictSize = 256;

@@ -9,6 +9,10 @@ import java.util.Map;
 
 public class ArithmeticCoding {
 
+    private ArithmeticCoding() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static double encode(String input, Map<Character, Double> probabilities) {
         double low = 0.0;
         double high = 1.0;
