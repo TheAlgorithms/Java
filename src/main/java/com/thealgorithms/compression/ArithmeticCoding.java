@@ -153,6 +153,5 @@ public final class ArithmeticCoding {
      * Helper class to store the probability range [low, high) for a symbol.
      */
     public record Symbol(BigDecimal low, BigDecimal high) {
-
     }
 }

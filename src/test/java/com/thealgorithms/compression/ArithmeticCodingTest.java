@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 
 class ArithmeticCodingTest {
@@ -115,5 +115,40 @@ class ArithmeticCodingTest {
             assertTrue(symbol.high().compareTo(BigDecimal.ONE) <= 0);
             assertTrue(symbol.low().compareTo(symbol.high()) < 0);
         }
+    }
+
+    @Test
+    void testDecompressionWithMismatchedProbabilityTable() {
+        // Test decompression with a probability table that doesn't match the original
+        String original = "ABCD";
+        BigDecimal compressed = ArithmeticCoding.compress(original);
+
+        // Create a different probability table (for "XYZ" instead of "ABCD")
+        Map<Character, ArithmeticCoding.Symbol> wrongProbTable = ArithmeticCoding.calculateProbabilities("XYZ");
+
+        // Decompression with wrong probability table should produce incorrect output
+        String decompressed = ArithmeticCoding.decompress(compressed, original.length(), wrongProbTable);
+
+        // The decompressed string will be different from original (likely all 'X', 'Y', or 'Z')
+        // This tests the edge case where the compressed value doesn't fall into expected ranges
+        assertNotNull(decompressed);
+        assertEquals(original.length(), decompressed.length());
+    }
+
+    @Test
+    void testDecompressionWithValueOutsideSymbolRanges() {
+        // Create a custom probability table
+        Map<Character, ArithmeticCoding.Symbol> probTable = new HashMap<>();
+        probTable.put('A', new ArithmeticCoding.Symbol(new BigDecimal("0.0"), new BigDecimal("0.5")));
+        probTable.put('B', new ArithmeticCoding.Symbol(new BigDecimal("0.5"), new BigDecimal("1.0")));
+
+        // Use a compressed value that should decode properly
+        BigDecimal compressed = new BigDecimal("0.25"); // Falls in 'A' range
+
+        String decompressed = ArithmeticCoding.decompress(compressed, 3, probTable);
+
+        // Verify decompression completes (even if result might not be meaningful)
+        assertNotNull(decompressed);
+        assertEquals(3, decompressed.length());
     }
 }

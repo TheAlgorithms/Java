@@ -1,11 +1,12 @@
 package com.thealgorithms.compression;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 class LZWTest {
@@ -74,5 +75,33 @@ class LZWTest {
         List<Integer> compressed2 = LZW.compress(original2);
         String decompressed2 = LZW.decompress(compressed2);
         assertEquals(original2, decompressed2);
+    }
+
+    @Test
+    void testInvalidCompressedData() {
+        // Test that decompressing with an invalid code throws IllegalArgumentException
+        // Create a list with a code that doesn't exist in the dictionary
+        List<Integer> invalidCompressed = new ArrayList<>();
+        invalidCompressed.add(65);  // 'A' - valid
+        invalidCompressed.add(999); // Invalid code (not in dictionary)
+
+        // This should throw IllegalArgumentException with message "Bad compressed k: 999"
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> LZW.decompress(invalidCompressed)
+        );
+
+        assertTrue(exception.getMessage().contains("Bad compressed k: 999"));
+    }
+
+    @Test
+    void testDecompressionWithGapInDictionary() {
+        // Test with codes that skip dictionary entries
+        List<Integer> invalidCompressed = new ArrayList<>();
+        invalidCompressed.add(84);   // 'T' - valid
+        invalidCompressed.add(500);  // Way beyond current dictionary size
+
+        // This should throw IllegalArgumentException
+        assertThrows(IllegalArgumentException.class, () -> LZW.decompress(invalidCompressed));
     }
 }
