@@ -2,7 +2,9 @@ package com.thealgorithms.graph;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 /**

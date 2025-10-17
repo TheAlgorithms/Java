@@ -1,6 +1,10 @@
 package com.thealgorithms.graph;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 /**
  * Implementation of Hierholzer's Algorithm for finding an Eulerian Path or Circuit
@@ -128,7 +132,8 @@ public class HierholzerEulerianPath {
 
         // Check degree differences to determine Eulerian path/circuit possibility
         int startNode = -1;
-        int startCount = 0, endCount = 0;
+        int startCount = 0;
+        int endCount = 0;
         for (int i = 0; i < n; i++) {
             int diff = outDegree[i] - inDegree[i];
             if (diff == 1) {
