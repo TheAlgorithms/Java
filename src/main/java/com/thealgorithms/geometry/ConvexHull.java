@@ -61,11 +61,24 @@ public final class ConvexHull {
         return new ArrayList<>(convexSet);
     }
 
+    /**
+     * Computes the convex hull using a recursive divide-and-conquer approach.
+     * Returns points in counter-clockwise order starting from the bottom-most, left-most point.
+     *
+     * @param points the input points
+     * @return the convex hull points in counter-clockwise order
+     */
     public static List<Point> convexHullRecursive(List<Point> points) {
+        if (points.size() < 3) {
+            List<Point> result = new ArrayList<>(points);
+            Collections.sort(result);
+            return result;
+        }
+
         Collections.sort(points);
         Set<Point> convexSet = new HashSet<>();
-        Point leftMostPoint = points.get(0);
-        Point rightMostPoint = points.get(points.size() - 1);
+        Point leftMostPoint = points.getFirst();
+        Point rightMostPoint = points.getLast();
 
         convexSet.add(leftMostPoint);
         convexSet.add(rightMostPoint);
@@ -85,9 +98,8 @@ public final class ConvexHull {
         constructHull(upperHull, leftMostPoint, rightMostPoint, convexSet);
         constructHull(lowerHull, rightMostPoint, leftMostPoint, convexSet);
 
-        List<Point> result = new ArrayList<>(convexSet);
-        Collections.sort(result);
-        return result;
+        // Convert to list and sort in counter-clockwise order
+        return sortCounterClockwise(new ArrayList<>(convexSet));
     }
 
     private static void constructHull(Collection<Point> points, Point left, Point right, Set<Point> convexSet) {
@@ -113,5 +125,63 @@ public final class ConvexHull {
                 constructHull(candidatePoints, extremePoint, right, convexSet);
             }
         }
+    }
+
+    /**
+     * Sorts convex hull points in counter-clockwise order starting from
+     * the bottom-most, left-most point.
+     *
+     * @param hullPoints the unsorted convex hull points
+     * @return the points sorted in counter-clockwise order
+     */
+    private static List<Point> sortCounterClockwise(List<Point> hullPoints) {
+        if (hullPoints.size() <= 2) {
+            Collections.sort(hullPoints);
+            return hullPoints;
+        }
+
+        // Find the bottom-most, left-most point (pivot)
+        Point pivot = hullPoints.getFirst();
+        for (Point p : hullPoints) {
+            if (p.y() < pivot.y() || (p.y() == pivot.y() && p.x() < pivot.x())) {
+                pivot = p;
+            }
+        }
+
+        // Sort other points by polar angle with respect to pivot
+        final Point finalPivot = pivot;
+        List<Point> sorted = new ArrayList<>(hullPoints);
+        sorted.remove(finalPivot);
+
+        sorted.sort((p1, p2) -> {
+            int crossProduct = Point.orientation(finalPivot, p1, p2);
+
+            if (crossProduct == 0) {
+                // Collinear points: sort by distance from pivot (closer first for convex hull)
+                long dist1 = distanceSquared(finalPivot, p1);
+                long dist2 = distanceSquared(finalPivot, p2);
+                return Long.compare(dist1, dist2);
+            }
+
+            // Positive cross product means p2 is counter-clockwise from p1
+            // We want counter-clockwise order, so if p2 is CCW from p1, p1 should come first
+            return -crossProduct;
+        });
+
+        // Build result with pivot first
+        List<Point> result = new ArrayList<>();
+        result.add(finalPivot);
+        result.addAll(sorted);
+
+        return result;
+    }
+
+    /**
+     * Computes the squared distance between two points to avoid floating point operations.
+     */
+    private static long distanceSquared(Point p1, Point p2) {
+        long dx = (long) p1.x() - p2.x();
+        long dy = (long) p1.y() - p2.y();
+        return dx * dx + dy * dy;
     }
 }
