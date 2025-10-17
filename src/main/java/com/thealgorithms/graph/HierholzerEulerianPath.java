@@ -227,7 +227,7 @@ public class HierholzerEulerianPath {
 
             if (preferredStart != -1 && path.get(0) != preferredStart) {
                 int idx = 0;
-                for (int node : path) {
+                for (Integer node : path) { // replaced indexed loop
                     if (node == preferredStart) {
                         break;
                     }
@@ -236,11 +236,19 @@ public class HierholzerEulerianPath {
 
                 if (idx > 0) {
                     List<Integer> rotated = new ArrayList<>();
-                    for (int i = idx; i < path.size(); i++) {
-                        rotated.add(path.get(i));
+                    int currentIndex = 0;
+                    for (Integer node : path) { // replaced indexed loop
+                        if (currentIndex >= idx) {
+                            rotated.add(node);
+                        }
+                        currentIndex++;
                     }
-                    for (int i = 0; i < idx; i++) {
-                        rotated.add(path.get(i));
+                    currentIndex = 0;
+                    for (Integer node : path) { // replaced indexed loop
+                        if (currentIndex < idx) {
+                            rotated.add(node);
+                        }
+                        currentIndex++;
                     }
                     path = rotated;
                 }
