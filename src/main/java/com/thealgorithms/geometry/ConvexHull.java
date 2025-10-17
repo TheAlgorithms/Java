@@ -168,10 +168,30 @@ public final class ConvexHull {
             return -crossProduct;
         });
 
-        // Build result with pivot first
+        // Build result with pivot first, filtering out intermediate collinear points
         List<Point> result = new ArrayList<>();
         result.add(finalPivot);
-        result.addAll(sorted);
+
+        if (!sorted.isEmpty()) {
+            // This loop iterates through the points sorted by angle.
+            // For points that are collinear with the pivot, we only want the one that is farthest away.
+            // The sort places closer points first.
+            for (int i = 0; i < sorted.size() - 1; i++) {
+                // Check the orientation of the pivot, the current point, and the next point.
+                int orientation = Point.orientation(finalPivot, sorted.get(i), sorted.get(i + 1));
+
+                // If the orientation is not 0, it means the next point (i+1) is at a new angle.
+                // Therefore, the current point (i) must be the farthest point at its angle. We keep it.
+                if (orientation != 0) {
+                    result.add(sorted.get(i));
+                }
+                // If the orientation is 0, the points are collinear. We discard the current point (i)
+                // because it is closer to the pivot than the next point (i+1).
+            }
+            // Always add the very last point from the sorted list. It is either the only point
+            // at its angle, or it's the farthest among a set of collinear points.
+            result.add(sorted.getLast());
+        }
 
         return result;
     }
