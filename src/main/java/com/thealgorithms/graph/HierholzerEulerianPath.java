@@ -1,10 +1,10 @@
 package com.thealgorithms.graph;
 
-import java.util.List;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.List;
 
 /**
  * Implementation of Hierholzer's Algorithm for finding an Eulerian Path or Circuit
