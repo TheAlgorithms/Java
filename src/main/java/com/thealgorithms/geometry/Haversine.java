@@ -13,7 +13,7 @@ package com.thealgorithms.geometry;
  */
 public final class Haversine {
 
-    // Average radius of Earth in kilometers
+    // Average radius of Earth in kilometers.
     private static final double EARTH_RADIUS_KM = 6371.0;
 
     /**
