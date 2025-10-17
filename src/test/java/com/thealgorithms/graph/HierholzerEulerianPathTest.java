@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for {@link HierholzerEulerianPath}.
- * 
+ *
  * This test suite validates Hierholzer's Algorithm implementation
  * for finding Eulerian Paths and Circuits in directed graphs.
- * 
+ *
  * <p>Coverage includes:
  * <ul>
  *   <li>Basic Eulerian Circuit</li>
@@ -65,7 +65,7 @@ class HierholzerEulerianPathTest {
         HierholzerEulerianPath solver = new HierholzerEulerianPath(graph);
         List<Integer> result = solver.findEulerianPath();
 
-        assertEquals(result.get(0), result.get(result.size()-1));
+        assertEquals(result, Arrays.asList(0, 1, 2));
     }
 
     @Test
@@ -151,7 +151,7 @@ class HierholzerEulerianPathTest {
         List<Integer> result = solver.findEulerianPath();
 
         // Hava a Eulerian Path but not a Eulerian Circuit
-        assertEquals(result, Arrays.asList(0,1,2,0,1));
+        assertEquals(result, Arrays.asList(0, 1, 2, 0, 1));
     }
 
     @Test

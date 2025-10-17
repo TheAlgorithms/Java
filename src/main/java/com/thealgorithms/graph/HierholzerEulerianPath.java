@@ -28,7 +28,7 @@ import java.util.*;
  * <b>Time Complexity:</b> O(E + V).<br>
  * <b>Space Complexity:</b> O(V + E).
  * </p>
- * 
+ *
  * @author <a href="https://en.wikipedia.org/wiki/Eulerian_path#Hierholzer's_algorithm">Wikipedia: Hierholzer algorithm</a>
  */
 public class HierholzerEulerianPath {
