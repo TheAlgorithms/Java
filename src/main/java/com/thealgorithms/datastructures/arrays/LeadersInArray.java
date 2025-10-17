@@ -1,10 +1,10 @@
 package com.thealgorithms.datastructures.arrays;
 
 /**
- * A program to find leaders in an array.
+ * A utility class to find leaders in an array.
  *
  * <p>
- * A leader is an element that is greater than all the elements to its right.
+ * A leader is an element greater than all elements to its right.
  * The rightmost element is always a leader.
  *
  * Time Complexity: O(n)
@@ -14,7 +14,7 @@ package com.thealgorithms.datastructures.arrays;
  */
 public final class LeadersInArray {
 
-    // Prevent instantiation of this utility class
+    // Private constructor to prevent instantiation
     private LeadersInArray() {
     }
 
@@ -42,6 +42,7 @@ public final class LeadersInArray {
      *
      * @param args command line arguments (not used)
      */
+    @SuppressWarnings("PMD.UselessMainMethod")
     public static void main(final String[] args) {
         int[] arr = {16, 17, 4, 3, 5, 2};
         findLeaders(arr);

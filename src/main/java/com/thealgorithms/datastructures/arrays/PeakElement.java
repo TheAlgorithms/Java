@@ -1,25 +1,24 @@
 package com.thealgorithms.datastructures.arrays;
 
 /**
- * A program to find a peak element in an array.
+ * A utility class to find a peak element in an array.
  *
  * <p>
- * A peak element is an element that is greater than or equal to its neighbors.
- * For corner elements, only one neighbor is considered.
+ * A peak element is an element greater than or equal to its neighbors.
  *
- * Time Complexity: O(n)
+ * Time Complexity: O(log n) using binary search
  * Space Complexity: O(1)
  *
  * Author: https://github.com/VeeruYadav45
  */
 public final class PeakElement {
 
-    // Prevent instantiation of this utility class
+    // Private constructor to prevent instantiation
     private PeakElement() {
     }
 
     /**
-     * Finds the index of any peak element in the array.
+     * Finds the index of a peak element using binary search.
      *
      * @param arr the input array
      * @return the index of a peak element
@@ -54,6 +53,7 @@ public final class PeakElement {
      *
      * @param args command line arguments (not used)
      */
+    @SuppressWarnings("PMD.UselessMainMethod")
     public static void main(final String[] args) {
         int[] arr = {1, 3, 20, 4, 1, 0};
         int peakIndex = findPeakElement(arr);
