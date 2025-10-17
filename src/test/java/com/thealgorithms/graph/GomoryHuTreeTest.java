@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
+import java.util.random.RandomGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +55,7 @@ class GomoryHuTreeTest {
         }
     }
 
-    private static int[][] randSymmetricMatrix(int n, int lo, int hi, Random rng) {
+    private static int[][] randSymmetricMatrix(int n, int lo, int hi, RandomGenerator rng) {
         int[][] a = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
