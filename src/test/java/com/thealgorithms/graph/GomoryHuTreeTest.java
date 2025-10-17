@@ -29,9 +29,12 @@ class GomoryHuTreeTest {
     void triangleGraph() {
         // 0-1:3, 1-2:2, 0-2:4
         int[][] cap = new int[3][3];
-        cap[0][1] = cap[1][0] = 3;
-        cap[1][2] = cap[2][1] = 2;
-        cap[0][2] = cap[2][0] = 4;
+        cap[0][1] = 3;
+        cap[1][0] = 3;
+        cap[1][2] = 2;
+        cap[2][1] = 2;
+        cap[0][2] = 4;
+        cap[2][0] = 4;
 
         int[][] tree = GomoryHuTree.buildTree(cap);
         // validate all pairs via path-min-edge equals maxflow
@@ -56,11 +59,14 @@ class GomoryHuTreeTest {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 int w = rng.nextInt(hi - lo + 1) + lo;
-                a[i][j] = a[j][i] = w;
+                a[i][j] = w;
+                a[j][i] = w;
             }
         }
         // zero diagonal
-        for (int i = 0; i < n; i++) a[i][i] = 0;
+        for (int i = 0; i < n; i++) {
+            a[i][i] = 0;
+        }
         return a;
     }
 
@@ -71,7 +77,9 @@ class GomoryHuTreeTest {
 
         // build adjacency list of tree without generic array creation
         List<List<int[]>> g = new ArrayList<>();
-        for (int i = 0; i < n; i++) g.add(new ArrayList<>());
+        for (int i = 0; i < n; i++) {
+            g.add(new ArrayList<>());
+        }
         for (int v = 1; v < n; v++) {
             int u = parent[v];
             int w = weight[v];
@@ -99,9 +107,12 @@ class GomoryHuTreeTest {
         parent[s] = s;
         while (!q.isEmpty()) {
             int u = q.poll();
-            if (u == t) break;
+            if (u == t) {
+                break;
+            }
             for (int[] e : g.get(u)) {
-                int v = e[0], w = e[1];
+                int v = e[0];
+                int w = e[1];
                 if (parent[v] == -1) {
                     parent[v] = u;
                     edgeW[v] = w;
