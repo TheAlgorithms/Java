@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.arrays;
 
 /**
  * A program to find leaders in an array.
+ * https://www.geeksforgeeks.org/dsa/find-a-peak-in-a-given-array/
  * 
  * A leader is an element that is greater than all the elements to its right.
  * The rightmost element is always a leader.

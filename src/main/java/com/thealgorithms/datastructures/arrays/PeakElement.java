@@ -2,6 +2,7 @@ package com.thealgorithms.datastructures.arrays;
 
 /**
  * A program to find a peak element in an array.
+ * https://www.geeksforgeeks.org/dsa/leaders-in-an-array/
  *
  * <p>
  * A peak element is an element that is greater than or equal to its neighbors.
