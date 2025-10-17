@@ -120,14 +120,18 @@ public class HierholzerEulerianPath {
         }
 
         int startNode = determineStartNode(inDegree, outDegree);
-        if (startNode == -1) return new ArrayList<>();
+        if (startNode == -1) {
+            return new ArrayList<>();
+        }
 
         if (!allNonZeroDegreeVerticesWeaklyConnected(startNode, n, outDegree, inDegree)) {
             return new ArrayList<>();
         }
 
         List<Integer> path = buildHierholzerPath(startNode, n);
-        if (path.size() != edgeCount + 1) return new ArrayList<>();
+        if (path.size() != edgeCount + 1) {
+            return new ArrayList<>();
+        }
 
         return rotateEulerianCircuitIfNeeded(path, outDegree, inDegree);
     }
@@ -205,10 +209,11 @@ public class HierholzerEulerianPath {
         int endCount = 0;
         for (int i = 0; i < outDegree.length; i++) {
             int diff = outDegree[i] - inDegree[i];
-            if (diff == 1)
+            if (diff == 1) {
                 startCount++;
-            else if (diff == -1)
+            } else if (diff == -1) {
                 endCount++;
+            }
         }
 
         if (startCount == 0 && endCount == 0 && !path.isEmpty()) {
@@ -223,14 +228,20 @@ public class HierholzerEulerianPath {
             if (preferredStart != -1 && path.get(0) != preferredStart) {
                 int idx = 0;
                 for (int node : path) {
-                    if (node == preferredStart) break;
+                    if (node == preferredStart) {
+                        break;
+                    }
                     idx++;
                 }
 
                 if (idx > 0) {
                     List<Integer> rotated = new ArrayList<>();
-                    for (int i = idx; i < path.size(); i++) rotated.add(path.get(i));
-                    for (int i = 0; i < idx; i++) rotated.add(path.get(i));
+                    for (int i = idx; i < path.size(); i++) {
+                        rotated.add(path.get(i));
+                    }
+                    for (int i = 0; i < idx; i++) {
+                        rotated.add(path.get(i));
+                    }
                     path = rotated;
                 }
             }
