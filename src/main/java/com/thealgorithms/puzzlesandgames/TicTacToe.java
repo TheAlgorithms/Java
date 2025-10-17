@@ -23,27 +23,15 @@ import java.util.Scanner;
  * Space Complexity: O(1) additional space besides the board
  * </p>
  */
-public final class TicTacToe {
-
-    private static final char[][] board = {{'1','2','3'}, {'4','5','6'}, {'7','8','9'}};
-
-    private TicTacToe() {
-        // Prevent instantiation
-    }
-
-    /**
-     * Main entry point to start the Tic-Tac-Toe game.
-     *
-     * @param args command-line arguments (not used)
-     */
+/**
+ * TicTacToe.java
+ * 
+ * A console-based 2-player Tic-Tac-Toe game.
+ */
+public class TicTacToe {
+    static char[][] board = {{'1','2','3'}, {'4','5','6'}, {'7','8','9'}};
+    
     public static void main(String[] args) {
-        play();
-    }
-
-    /**
-     * Runs the main game loop for two players.
-     */
-    public static void play() {
         Scanner scanner = new Scanner(System.in);
         char currentPlayer = 'X';
         int moves = 0;
@@ -55,35 +43,27 @@ public final class TicTacToe {
             printBoard();
             System.out.print("Player " + currentPlayer + ", enter a position (1-9): ");
             int pos = scanner.nextInt();
-            int row = (pos - 1) / 3;
-            int col = (pos - 1) % 3;
+            int row = (pos-1)/3;
+            int col = (pos-1)%3;
 
             if (board[row][col] != 'X' && board[row][col] != 'O') {
                 board[row][col] = currentPlayer;
                 moves++;
                 won = checkWin(currentPlayer);
-                if (!won) {
-                    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-                }
+                if (!won) currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
             } else {
                 System.out.println("Position already taken. Try again.");
             }
         }
 
         printBoard();
-        if (won) {
-            System.out.println("Player " + currentPlayer + " wins!");
-        } else {
-            System.out.println("It's a tie!");
-        }
+        if (won) System.out.println("Player " + currentPlayer + " wins!");
+        else System.out.println("It's a tie!");
 
         scanner.close();
     }
 
-    /**
-     * Prints the current state of the game board.
-     */
-    private static void printBoard() {
+    static void printBoard() {
         System.out.println();
         for (char[] row : board) {
             for (char c : row) System.out.print(c + " ");
@@ -92,21 +72,14 @@ public final class TicTacToe {
         System.out.println();
     }
 
-    /**
-     * Checks if the current player has won the game.
-     *
-     * @param player The player character ('X' or 'O')
-     * @return true if the player has won, false otherwise
-     */
-    private static boolean checkWin(char player) {
+    static boolean checkWin(char player) {
         // Rows, columns, diagonals
-        for (int i = 0; i < 3; i++) {
-            if ((board[i][0] == player && board[i][1] == player && board[i][2] == player) ||
-                (board[0][i] == player && board[1][i] == player && board[2][i] == player)) {
+        for (int i=0; i<3; i++)
+            if ((board[i][0]==player && board[i][1]==player && board[i][2]==player) ||
+                (board[0][i]==player && board[1][i]==player && board[2][i]==player))
                 return true;
-            }
-        }
-        return (board[0][0] == player && board[1][1] == player && board[2][2] == player) ||
-               (board[0][2] == player && board[1][1] == player && board[2][0] == player);
+
+        return (board[0][0]==player && board[1][1]==player && board[2][2]==player) ||
+               (board[0][2]==player && board[1][1]==player && board[2][0]==player);
     }
 }
