@@ -58,7 +58,7 @@ public final class MidpointCircle {
             // Add points for this (x, y)
             addSymmetricPoints(points, centerX, centerY, x, y);
         }
-
+        //retuns the list of points in the circle 
         return points;
     }
 
