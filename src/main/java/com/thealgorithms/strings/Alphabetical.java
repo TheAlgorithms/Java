@@ -21,12 +21,17 @@ public final class Alphabetical {
      * @return {@code true} if all characters are in alphabetical order (case-insensitive), otherwise {@code false}
      */
     public static boolean isAlphabetical(String s) {
+        if (s == null || s.isEmpty()) {
+            return false;
+        }
         s = s.toLowerCase();
-        for (int i = 0; i < s.length() - 1; ++i) {
-            if (!Character.isLetter(s.charAt(i)) || s.charAt(i) > s.charAt(i + 1)) {
+        for (int i = 0; i < s.length() - 1; i++) {
+            char current = s.charAt(i);
+            char next = s.charAt(i + 1);
+            if (!Character.isLetter(current) || current > next) {
                 return false;
             }
         }
-        return !s.isEmpty() && Character.isLetter(s.charAt(s.length() - 1));
+        return Character.isLetter(s.charAt(s.length() - 1));
     }
 }
