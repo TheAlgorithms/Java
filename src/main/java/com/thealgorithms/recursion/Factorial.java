@@ -1,14 +1,22 @@
 package com.thealgorithms.recursion;
 
 /**
- * This class provides a recursive implementation of the factorial function.
+ * Implementation of factorial using recursion.
+ * <p>
+ * The factorial of a non-negative integer n is defined as:
+ * n! = n × (n-1) × (n-2) × ... × 1, with 0! = 1.
  */
-public class Factorial {
+public final class Factorial {
+
+    // Private constructor to prevent instantiation
+    private Factorial() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     /**
-     * Recursive method to calculate factorial.
+     * Calculates factorial recursively.
      *
-     * @param n the number to find factorial of
+     * @param n non-negative integer
      * @return factorial of n
      * @throws IllegalArgumentException if n is negative
      */
