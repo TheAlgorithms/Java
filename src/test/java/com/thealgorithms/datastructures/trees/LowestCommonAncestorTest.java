@@ -36,12 +36,12 @@ public class LowestCommonAncestorTest {
 
 
     @BeforeEach
-    void setup(){
+    void setup() {
         for (int i = 0; i < arrayLength; i++) adj.add(new ArrayList<>());
 
         for (int i = 0; i < treeInput.length - 1; i += 2) {
             int to = treeInput[i];
-            int from = treeInput[i+1];
+            int from = treeInput[i + 1];
 
             adj.get(to).add(from);
             adj.get(from).add(to);
@@ -77,7 +77,7 @@ public class LowestCommonAncestorTest {
             throw new RuntimeException(e);
         }
 
-        assertArrayEquals(new int[]{0, 1, 1, 2, 2, 2, 3, 3, 4, 4}, depth);
+        assertArrayEquals(new int[] {0, 1, 1, 2, 2, 2, 3, 3, 4, 4}, depth);
     }
 
     @Test
@@ -91,6 +91,6 @@ public class LowestCommonAncestorTest {
             throw new RuntimeException(e);
         }
 
-        assertArrayEquals(new int[]{0, 0, 0, 2, 2, 1, 5, 3, 7, 7}, parent);
+        assertArrayEquals(new int[] {0, 0, 0, 2, 2, 1, 5, 3, 7, 7}, parent);
     }
 }
