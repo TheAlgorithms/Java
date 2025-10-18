@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -36,5 +37,14 @@ class RomanNumeralUtilTest{
 				assertThrows(IllegalArgumentException.class, ()->RomanNumeralUtil.generate(0));
 				assertThrows(IllegalArgumentException.class, ()->RomanNumeralUtil.generate(6000));
 				
+		}
+
+		@Test
+		void shouldNotThrowOnBounds() {
+			int min = 1;
+			int max = 5999;
+
+			assertDoesNotThrow(() -> RomanNumeralUtil.generate(min), "Should not throw exception on " + min);
+			assertDoesNotThrow(() -> RomanNumeralUtil.generate(max), "Should not throw exception on " + max);
 		}
 }
