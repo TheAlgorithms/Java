@@ -359,6 +359,7 @@
         - 📁 **geometry**
           - 📄 [BresenhamLine](src/main/java/com/thealgorithms/geometry/BresenhamLine.java)
           - 📄 [ConvexHull](src/main/java/com/thealgorithms/geometry/ConvexHull.java)
+          - 📄 [DDALine](src/main/java/com/thealgorithms/geometry/DDALine.java)
           - 📄 [GrahamScan](src/main/java/com/thealgorithms/geometry/GrahamScan.java)
           - 📄 [Haversine](src/main/java/com/thealgorithms/geometry/Haversine.java)
           - 📄 [MidpointCircle](src/main/java/com/thealgorithms/geometry/MidpointCircle.java)
@@ -371,6 +372,7 @@
           - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
           - 📄 [Edmonds](src/main/java/com/thealgorithms/graph/Edmonds.java)
           - 📄 [EdmondsKarp](src/main/java/com/thealgorithms/graph/EdmondsKarp.java)
+          - 📄 [HierholzerEulerianPath](src/main/java/com/thealgorithms/graph/HierholzerEulerianPath.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
           - 📄 [HungarianAlgorithm](src/main/java/com/thealgorithms/graph/HungarianAlgorithm.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
@@ -598,6 +600,7 @@
           - 📁 **cn**
             - 📄 [HammingDistance](src/main/java/com/thealgorithms/others/cn/HammingDistance.java)
         - 📁 **physics**
+          - 📄 [DampedOscillator](src/main/java/com/thealgorithms/physics/DampedOscillator.java)
           - 📄 [GroundToGroundProjectileMotion](src/main/java/com/thealgorithms/physics/GroundToGroundProjectileMotion.java)
         - 📁 **puzzlesandgames**
           - 📄 [Sudoku](src/main/java/com/thealgorithms/puzzlesandgames/Sudoku.java)
@@ -1115,6 +1118,7 @@
         - 📁 **geometry**
           - 📄 [BresenhamLineTest](src/test/java/com/thealgorithms/geometry/BresenhamLineTest.java)
           - 📄 [ConvexHullTest](src/test/java/com/thealgorithms/geometry/ConvexHullTest.java)
+          - 📄 [DDALineTest](src/test/java/com/thealgorithms/geometry/DDALineTest.java)
           - 📄 [GrahamScanTest](src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
           - 📄 [HaversineTest](src/test/java/com/thealgorithms/geometry/HaversineTest.java)
           - 📄 [MidpointCircleTest](src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
@@ -1127,7 +1131,9 @@
           - 📄 [DinicTest](src/test/java/com/thealgorithms/graph/DinicTest.java)
           - 📄 [EdmondsKarpTest](src/test/java/com/thealgorithms/graph/EdmondsKarpTest.java)
           - 📄 [EdmondsTest](src/test/java/com/thealgorithms/graph/EdmondsTest.java)
+          - 📄 [HierholzerEulerianPathTest](src/test/java/com/thealgorithms/graph/HierholzerEulerianPathTest.java)
           - 📄 [HopcroftKarpTest](src/test/java/com/thealgorithms/graph/HopcroftKarpTest.java)
+          - 📄 [HungarianAlgorithmTest](src/test/java/com/thealgorithms/graph/HungarianAlgorithmTest.java)
           - 📄 [PredecessorConstrainedDfsTest](src/test/java/com/thealgorithms/graph/PredecessorConstrainedDfsTest.java)
           - 📄 [PushRelabelTest](src/test/java/com/thealgorithms/graph/PushRelabelTest.java)
           - 📄 [StronglyConnectedComponentOptimizedTest](src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
@@ -1328,6 +1334,7 @@
           - 📁 **cn**
             - 📄 [HammingDistanceTest](src/test/java/com/thealgorithms/others/cn/HammingDistanceTest.java)
         - 📁 **physics**
+          - 📄 [DampedOscillatorTest](src/test/java/com/thealgorithms/physics/DampedOscillatorTest.java)
           - 📄 [GroundToGroundProjectileMotionTest](src/test/java/com/thealgorithms/physics/GroundToGroundProjectileMotionTest.java)
         - 📁 **puzzlesandgames**
           - 📄 [SudokuTest](src/test/java/com/thealgorithms/puzzlesandgames/SudokuTest.java)
