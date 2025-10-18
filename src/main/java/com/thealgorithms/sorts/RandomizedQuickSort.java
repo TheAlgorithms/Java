@@ -6,13 +6,12 @@ import java.util.Random;
  * This algorithm sorts an array by choosing a random pivot element,
  * which improves the average performance over traditional QuickSort.
  */
-public class RandomizedQuickSort {
+private class RandomizedQuickSort {
 
-    private static final Random rand = new Random();
+    private static final Random RAND = new Random();
 
     /**
      * Sorts the array in-place using Randomized QuickSort algorithm.
-     * 
      * @param arr the array to be sorted
      * @param low the starting index of the segment to sort
      * @param high the ending index of the segment to sort
@@ -28,7 +27,6 @@ public class RandomizedQuickSort {
     /**
      * Chooses a random pivot, swaps it with the last element,
      * then partitions the array around this pivot.
-     * 
      * @param arr the array to partition
      * @param low the starting index of the segment to partition
      * @param high the ending index of the segment to partition
@@ -36,14 +34,13 @@ public class RandomizedQuickSort {
      */
     private static int randomizedPartition(int[] arr, int low, int high) {
         int pivotIndex = low + rand.nextInt(high - low + 1);
-        swap(arr, pivotIndex, high);  // Move pivot to end
+        swap(arr, pivotIndex, high); // Move pivot to end
         return partition(arr, low, high);
     }
 
     /**
      * Partitions the array segment such that elements less than or equal
      * to the pivot are to the left, and greater are to the right.
-     * 
      * @param arr the array to partition
      * @param low the starting index of the segment to partition
      * @param high the ending index of the segment to partition
@@ -51,7 +48,7 @@ public class RandomizedQuickSort {
      */
     private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
-        int i = low - 1;  // index of smaller element
+        int i = low - 1; // index of smaller element
         for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
                 i++;
@@ -64,10 +61,9 @@ public class RandomizedQuickSort {
 
     /**
      * Swaps two elements in the array.
-     * 
      * @param arr the array containing elements to swap
      * @param i index of first element
-     * @param j index of second element
+     *  @param j index of second element
      */
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
@@ -78,7 +74,6 @@ public class RandomizedQuickSort {
     /**
      * Main method for basic demonstration.
      * Sorts a sample array and prints the sorted output.
-     * 
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
