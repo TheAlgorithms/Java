@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 import org.junit.jupiter.api.Test;
 
-public class AESTest {
+public class MyAESTest {
     @Test
     void testScheduleCore() {
         BigInteger input = new BigInteger("1a2b3c4d", 16);
