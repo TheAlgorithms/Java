@@ -81,6 +81,6 @@ public class IsGraphBipartite {
             {0, 2},
             {0, 1}
         };
-        System.out.println("Graph 2 is bipartite: " + sol.isBipartite(graph2)); // false
+        System.out.println("Graph 2 is bipartite: " + sol.isBipartite(graph2)); 
     }
 }
