@@ -60,7 +60,7 @@ public class AVLSimpleTest {
     ======================== */
 
     @Test
-    @DisplayName("A longer generic tree creation that should pass")
+    @DisplayName("A longer generic AVL tree creation that should pass")
     void testTreeCreation() {
         tree.insert(25);
         tree.insert(30);
@@ -86,9 +86,8 @@ public class AVLSimpleTest {
           END=>27<=END
           4""")
           .replace("\n", "");
-        String actualTree = getActualTree();
 
-        assertEquals(expectedTree, actualTree);
+        assertEquals(expectedTree, getActualTree());
     }
 
     @ParameterizedTest
@@ -101,10 +100,7 @@ public class AVLSimpleTest {
 
         tree.display();
 
-        String expectedTree = getExpectedTree();
-        String actualTree = getActualTree();
-
-        assertEquals(expectedTree, actualTree);
+        assertEquals(getExpectedTree(), getActualTree());
     }
 
     public static Stream<Arguments> getTreeNodesInput() {
@@ -115,6 +111,41 @@ public class AVLSimpleTest {
           Arguments.of(10, 30, 20)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("getTreeNodesInputForBFEqualsOneRotations")
+    @DisplayName("Rotation not triggered when balance factor equals threshold")
+    void testRotatesNotTriggeredWhenBFEqualsOne(int node, String expectedTree) {
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(node);
+
+        tree.display();
+
+        assertEquals(expectedTree, getActualTree());
+    }
+
+    public static Stream<Arguments> getTreeNodesInputForBFEqualsOneRotations() {
+        return Stream.of(
+          Arguments.of(5, ("""
+          10=>20<=30
+          5=>10<=END
+          END=>5<=END
+          END=>30<=END
+          3""")
+            .replace("\n", "")),
+          Arguments.of(35, ("""
+          10=>20<=30
+          END=>10<=END
+          END=>30<=35
+          END=>35<=END
+          3""")
+            .replace("\n", ""))
+        );
+    }
+
+    // TODO: Add rotation tests for RL and LR when bf = 1
 
     @Test
     @DisplayName("Should return true for a tree that don't account for duplicates")
@@ -129,50 +160,6 @@ public class AVLSimpleTest {
         tree.display();
 
         String expectedTree = getExpectedTree();
-        String actualTree = getActualTree();
-
-        assertEquals(expectedTree, actualTree);
-    }
-
-    @Test
-    @DisplayName("Should return true for a tree that don't account for duplicates")
-    void testRightRotateNotTriggeredWhenBFEqualsOne() {
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(10);
-        tree.insert(5);
-
-        tree.display();
-
-        String expectedTree = ("""
-          10=>20<=30
-          5=>10<=END
-          END=>5<=END
-          END=>30<=END
-          3""")
-          .replace("\n", "");
-        String actualTree = getActualTree();
-
-        assertEquals(expectedTree, actualTree);
-    }
-
-    @Test
-    @DisplayName("Should return true for a tree that don't account for duplicates")
-    void testLeftRotateNotTriggeredWhenBFEqualsOne() {
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(10);
-        tree.insert(35);
-
-        tree.display();
-
-        String expectedTree = ("""
-          10=>20<=30
-          END=>10<=END
-          END=>30<=35
-          END=>35<=END
-          3""")
-          .replace("\n", "");
         String actualTree = getActualTree();
 
         assertEquals(expectedTree, actualTree);

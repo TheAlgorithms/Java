@@ -223,8 +223,8 @@
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-maven</artifactId>
                         <configuration>
-                            <targetClasses>com.thealgorithms.datastructures.trees.AVLSimple</targetClasses>
-                            <targetTests>com.thealgorithms.datastructures.trees.AVLSimpleTest</targetTests>
+                            <targetClasses>com.thealgorithms.datastructures.trees.GenericTree</targetClasses>
+                            <targetTests>com.thealgorithms.datastructures.trees.GenericTreeTest</targetTests>
                         </configuration>
                         <executions>
                             <execution>
