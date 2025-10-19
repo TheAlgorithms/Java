@@ -85,19 +85,4 @@ public final class LUDecomposition {
             System.out.println("]");
         }
     }
-
-    /**
-     * Demonstration (doctest)
-     */
-    public static void main(String[] args) {
-        double[][] a = {{2, -1, -2}, {-4, 6, 3}, {-4, -2, 8}};
-
-        LU result = decompose(a);
-
-        System.out.println("l matrix:");
-        printMatrix(result.l);
-
-        System.out.println("\nu matrix:");
-        printMatrix(result.u);
-    }
 }
