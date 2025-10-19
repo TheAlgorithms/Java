@@ -1,6 +1,9 @@
-package com.thealgorithms.graphs;
+package com.thealgorithms.searches; // update to match path; change back if you intend 'com.thealgorithms.graphs'
 
-import java.util.*;
+import java.util.List;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Comparator;
 
 /**
  * Implementation of Dijkstra's Algorithm.
@@ -10,18 +13,23 @@ import java.util.*;
  * @date: 19 October 2025 (Sunday)
  * @wiki: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
  */
-public class Dijkstras {
+public final class Dijkstras {
+
+    // Hide utility-class constructor
+    private Dijkstras() {
+        throw new AssertionError("Cannot instantiate utility class");
+    }
 
     /**
      * Computes the shortest distance from a source vertex to all other vertices.
      *
      * @param graph adjacency list representing the graph, where graph[u] contains pairs (v, weight)
      * @param src   the source vertex
-     * @param V     total number of vertices
+     * @param v     total number of vertices
      * @return an array of shortest distances from src to every vertex
      */
-    public static int[] dijkstra(List<List<Node>> graph, int src, int V) {
-        int[] dist = new int[V];
+    public static int[] dijkstra(List<List<Node>> graph, int src, int v) {
+        int[] dist = new int[v];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src] = 0;
 
