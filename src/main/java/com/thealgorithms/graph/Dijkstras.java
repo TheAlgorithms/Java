@@ -1,9 +1,9 @@
-package com.thealgorithms.graphs;
+package com.thealgorithms.graph;
 
-import java.util.List;
 import java.util.Arrays;
-import java.util.PriorityQueue;
 import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Implementation of Dijkstra's Algorithm.
