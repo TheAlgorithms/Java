@@ -12,7 +12,7 @@ package com.thealgorithms.matrix;
  * Reference:
  * https://en.wikipedia.org/wiki/lu_decomposition
  */
-public class LUDecomposition {
+public final class LUDecomposition {
 
     private LUDecomposition() {
     }
