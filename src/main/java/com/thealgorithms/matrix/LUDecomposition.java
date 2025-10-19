@@ -104,7 +104,9 @@ public class LUDecomposition {
             System.out.print("[");
             for (int j = 0; j < row.length; j++) {
                 System.out.printf("%7.3f", row[j]);
-                if (j < row.length - 1) System.out.print(", ");
+                if (j < row.length - 1) {
+                    System.out.print(", ");
+                }
             }
             System.out.println("]");
         }
