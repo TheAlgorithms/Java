@@ -14,7 +14,8 @@ package com.thealgorithms.matrix;
  */
 public class LUDecomposition {
 
-    private LUDecomposition() {}
+    private LUDecomposition() {
+    }
 
     /**
      * A helper class to store both l and u matrices
