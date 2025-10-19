@@ -1,106 +1,79 @@
 package com.thealgorithms.matrix;
 
 /**
- * LU Decomposition Algorithm
+ * LU Decomposition algorithm
  * --------------------------
- * Decomposes a square matrix A into a product of two matrices:
- * A = L * U
+ * Decomposes a square matrix a into a product of two matrices:
+ * a = l * u
  * where:
- * - L is a lower triangular matrix with 1s on its diagonal
- * - U is an upper triangular matrix
- *
- * This algorithm is widely used in:
- * - Solving systems of linear equations (Ax = b)
- * - Finding matrix inverses
- * - Computing determinants efficiently
- *
- * Time Complexity: O(n³)
+ * - l is a lower triangular matrix with 1s on its diagonal
+ * - u is an upper triangular matrix
  *
  * Reference:
- * https://en.wikipedia.org/wiki/LU_decomposition
- *
- * Example:
- * >>> double[][] A = {
- * >>> {2, -1, -2},
- * >>> {-4, 6, 3},
- * >>> {-4, -2, 8}
- * >>> };
- * >>> LUDecomposition.LU result = LUDecomposition.decompose(A);
- * >>> LUDecomposition.printMatrix(result.L);
- * >>> LUDecomposition.printMatrix(result.U);
- *
- * Expected Output:
- * L =
- * [1.000, 0.000, 0.000]
- * [-2.000, 1.000, 0.000]
- * [-2.000, -1.000, 1.000]
- *
- * U =
- * [2.000, -1.000, -2.000]
- * [0.000, 4.000, -1.000]
- * [0.000, 0.000, 3.000]
+ * https://en.wikipedia.org/wiki/lu_decomposition
  */
-
 public class LUDecomposition {
 
+    private LUDecomposition() {}
+
     /**
-     * A helper class to store both L and U matrices
+     * A helper class to store both l and u matrices
      */
     public static class LU {
-        double[][] L;
-        double[][] U;
+        double[][] l;
+        double[][] u;
 
-        LU(double[][] L, double[][] U) {
-            this.L = L;
-            this.U = U;
+        LU(double[][] l, double[][] u) {
+            this.l = l;
+            this.u = u;
         }
     }
 
     /**
-     * Performs LU Decomposition on a square matrix A
+     * Performs LU Decomposition on a square matrix a
      *
-     * @param A input square matrix
-     * @return LU object containing L and U matrices
+     * @param a input square matrix
+     * @return LU object containing l and u matrices
      */
-    public static LU decompose(double[][] A) {
-        int n = A.length;
-        double[][] L = new double[n][n];
-        double[][] U = new double[n][n];
+    public static LU decompose(double[][] a) {
+        int n = a.length;
+        double[][] l = new double[n][n];
+        double[][] u = new double[n][n];
 
         for (int i = 0; i < n; i++) {
-            // Upper Triangular Matrix
+            // upper triangular matrix
             for (int k = i; k < n; k++) {
                 double sum = 0;
                 for (int j = 0; j < i; j++) {
-                    sum += L[i][j] * U[j][k];
+                    sum += l[i][j] * u[j][k];
                 }
-                U[i][k] = A[i][k] - sum;
+                u[i][k] = a[i][k] - sum;
             }
 
-            // Lower Triangular Matrix
+            // lower triangular matrix
             for (int k = i; k < n; k++) {
                 if (i == k) {
-                    L[i][i] = 1; // Diagonal as 1
+                    l[i][i] = 1; // diagonal as 1
                 } else {
                     double sum = 0;
                     for (int j = 0; j < i; j++) {
-                        sum += L[k][j] * U[j][i];
+                        sum += l[k][j] * u[j][i];
                     }
-                    L[k][i] = (A[k][i] - sum) / U[i][i];
+                    l[k][i] = (a[k][i] - sum) / u[i][i];
                 }
             }
         }
 
-        return new LU(L, U);
+        return new LU(l, u);
     }
 
     /**
      * Utility function to print a matrix
      *
-     * @param M matrix to print
+     * @param m matrix to print
      */
-    public static void printMatrix(double[][] M) {
-        for (double[] row : M) {
+    public static void printMatrix(double[][] m) {
+        for (double[] row : m) {
             System.out.print("[");
             for (int j = 0; j < row.length; j++) {
                 System.out.printf("%7.3f", row[j]);
@@ -116,14 +89,14 @@ public class LUDecomposition {
      * Demonstration (doctest)
      */
     public static void main(String[] args) {
-        double[][] A = {{2, -1, -2}, {-4, 6, 3}, {-4, -2, 8}};
+        double[][] a = {{2, -1, -2}, {-4, 6, 3}, {-4, -2, 8}};
 
-        LU result = decompose(A);
+        LU result = decompose(a);
 
-        System.out.println("L matrix:");
-        printMatrix(result.L);
+        System.out.println("l matrix:");
+        printMatrix(result.l);
 
-        System.out.println("\nU matrix:");
-        printMatrix(result.U);
+        System.out.println("\nu matrix:");
+        printMatrix(result.u);
     }
 }
