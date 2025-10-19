@@ -98,8 +98,8 @@ public class DisjointSet {
     }
 
     /**
-     * this is the code to merge email accounts
-     * if two accounts share at least one email, they belong to same person.
+     * This code merges email accounts.
+     * If two accounts share at least one email address, they are considered to belong to the same person and are merged.
      * @param accountList
      * @return
      */ 
@@ -155,3 +155,25 @@ public class DisjointSet {
     }
 
 }
+
+/** 
+ * 
+ * this the program for testing the above algorithm
+ * 
+public class DisjointSetMain {
+    public static void main(String[] args) {
+        List<List<String>> list = new ArrayList<>();
+        list.add(new ArrayList<>(List.of("abc", "abc@mail.com","abx@mail.com")));
+        list.add(new ArrayList<>(List.of("abc","abc@mail.com","aby@mail.com")));
+        list.add(new ArrayList<>(List.of("Mary","mary@mail.com")));
+        list.add(new ArrayList<>(List.of("John","johnnybravo@mail.com")));
+        list.add(new ArrayList<>(List.of("John", "johnnybravo@mail.com", "john@mail.com")));
+        DisjointSet ds = new DisjointSet(list.size());
+        List<List<String>> ans = ds.accountsMerge(list);
+        for(List<String> val : ans){
+            System.out.println(val);
+        }
+    }
+}
+
+*/
