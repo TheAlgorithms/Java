@@ -1,14 +1,21 @@
 package com.thealgorithms.datastructures.trees;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,7 +41,6 @@ public class LowestCommonAncestorTest {
     private final int[] depth = new int[arrayLength];
     private final ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
-
     @BeforeEach
     void setup() {
         for (int i = 0; i < arrayLength; i++) adj.add(new ArrayList<>());
@@ -46,6 +52,38 @@ public class LowestCommonAncestorTest {
             adj.get(to).add(from);
             adj.get(from).add(to);
         }
+    }
+
+    @Disabled("This would be the best way to test LCA but since the scanner is a\n" +
+      "static global variable it doesn't work, it should be moved into the main method.")
+    @ParameterizedTest
+    @MethodSource("getInput")
+    @DisplayName("Should return correct common ancestor for any two nodes in the tree")
+    void shouldReturnCorrectLCA2(String simulatedInput, String expectedParent) {
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
+
+        LCA.main(new String[0]);
+
+        System.setOut(originalOut);
+        System.setIn(System.in);
+
+        String output = outContent.toString().trim();
+        assertEquals(expectedParent, output);
+    }
+
+    public static Stream<Arguments> getInput() {
+        return Stream.of(
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n9\n4\n", "2"),
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n5\n6\n", "5"),
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n5\n4\n", "0"),
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n3\n8\n", "3"),
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n6\n3\n", "0"),
+          Arguments.of("10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n3\n3\n", "3")
+        );
     }
 
     @ParameterizedTest
