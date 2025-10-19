@@ -80,7 +80,7 @@ class MathBuilderTest {
 	}
 
 	@Test
-	@DisplayName("Close parntasis Test")
+	@DisplayName("Close parenthesis Test")
 	void closeParenthesisAndOtherTest() {
 		// 10.5 - (20+2.1)
 		double actual = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).closeParenthesisAndMinus()
@@ -96,6 +96,22 @@ class MathBuilderTest {
 		assertEquals(expected2, actual2);
 	}
 
+    @Test
+    @DisplayName("open parenthesis Test")
+    void openParenthesisAndOtherTest() {
+        // 10.5 - (20+2.1)
+        double actual = new MathBuilder.Builder(10.5).openParenthesis(20).minus(2.1).closeParenthesisAndMinus()
+                .build().get();
+        double expected = 10.5 - (20 - 2.1);
+
+        // 10.5 / (20+2.1)
+        double actual2 = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.2).abs().closeParenthesisAndPlus().abs()
+                .build().get();
+        double expected2 = 10.5 + (20 + 2.2);
+
+        assertEquals(expected, actual);
+        assertEquals(expected2, actual2);
+    }
 	@Test
 	@DisplayName("Runtime Errors Tests")
 	void runtimeErrorTest() {
@@ -124,9 +140,16 @@ class MathBuilderTest {
 	@Test
 	@DisplayName("This Should throw but does not")
 	void divideByZero() {
-		MathBuilder.Builder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
+
+
+
+        MathBuilder actual = new MathBuilder.Builder(10.5).openParenthesis(0)
+                .closeParenthesisAndDivide().divide(0).build();
+
+        MathBuilder.Builder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
 				.closeParenthesisAndDivide();
 
+        assertTrue(Double.isInfinite(actual.get()));
 		assertDoesNotThrow(() -> actual2.build().get());
 		assertDoesNotThrow(() -> actual2.divide(0).build().get());
 
@@ -159,4 +182,78 @@ class MathBuilderTest {
 		assertEquals(expected, actual);
 		assertEquals(expected2, actual2);
 	}
+
+    @Test
+    void roundCielABS() {
+
+        double actual = new MathBuilder.Builder(10).openParenthesis(10.5).round().closeParenthesisAndPlus().build().get();
+        double expected = 10+ (Math.round(10.5));
+
+        double expected2 = 10 + Math.ceil(10.5);
+        double actual2 = new MathBuilder.Builder(10).openParenthesis(10.5).ceil().closeParenthesisAndPlus().build().get();
+
+        double expected3 = 10 + Math.abs(10.5);
+        double actual3 = new MathBuilder.Builder(10).openParenthesis(10.5).abs().closeParenthesisAndPlus().build().get();
+
+        double expected4 = Math.abs(10 + 10.5);
+        double actual4 = new MathBuilder.Builder(10).openParenthesis(10.5).closeParenthesisAndPlus().abs().build().get();
+
+
+        assertEquals(expected, actual);
+        assertEquals(expected2, actual2);
+        assertEquals(expected3, actual3);
+        assertEquals(expected4, actual4);
+    }
+
+
+    @Test
+    void toLongTest() {
+
+
+        MathBuilder actual = new MathBuilder.Builder(10.5).openParenthesis(0)
+                .closeParenthesisAndDivide().divide(0).build();
+
+        MathBuilder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
+                .closeParenthesisAndDivide().divide(0).multiply(-1).build();
+
+        MathBuilder actual3 = new MathBuilder.Builder(1999999999).multiply(2139999999).multiply(3).build();
+        MathBuilder actual4 = new MathBuilder.Builder(1999999999).multiply(2139999999).multiply(-3).build();
+
+        assertEquals(Long.MAX_VALUE,actual.toLong());
+        assertEquals(Long.MIN_VALUE,actual2.toLong());
+        assertEquals(Long.MAX_VALUE,actual3.toLong());
+        assertEquals(Long.MIN_VALUE,actual4.toLong());
+
+    }
+
+    @Test
+    void maxTest() {
+        MathBuilder actual = new MathBuilder.Builder(10.5).max(20).build();
+        MathBuilder actual2 = new MathBuilder.Builder(13.5).max(10).build();
+
+        MathBuilder actual3 = new MathBuilder.Builder(10.5).openParenthesis(10).max(20).closeParenthesisAndPlus().build();
+        MathBuilder actual4 = new MathBuilder.Builder(12.5).openParenthesis(10).closeParenthesisAndPlus().max(20).build();
+
+        assertEquals(20,actual.get());
+        assertEquals(13.5,actual2.get());
+        assertEquals(30.5,actual3.get());
+        assertEquals(22.5,actual4.get());
+
+    }
+
+    @Test
+    void minTest() {
+        MathBuilder actual = new MathBuilder.Builder(10.5).min(20).build();
+        MathBuilder actual2 = new MathBuilder.Builder(8.5).min(10).build();
+
+        MathBuilder actual3 = new MathBuilder.Builder(10.5).openParenthesis(10).min(20).closeParenthesisAndPlus().build();
+        MathBuilder actual4 = new MathBuilder.Builder(12.5).openParenthesis(10).closeParenthesisAndPlus().min(20).build();
+
+        assertEquals(10.5,actual.get());
+        assertEquals(8.5,actual2.get());
+        assertEquals(20.5,actual3.get());
+        assertEquals(20,actual4.get());
+
+    }
+
 }
