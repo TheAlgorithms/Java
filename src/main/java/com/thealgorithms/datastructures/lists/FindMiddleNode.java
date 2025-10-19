@@ -1,6 +1,10 @@
 package com.thealgorithms.datastructures.lists;
 
-public class FindMiddleNode {
+public final class FindMiddleNode {
+
+    private FindMiddleNode() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     public static ListNode findMiddle(ListNode head) {
         ListNode slow = head;
@@ -24,4 +28,3 @@ public class FindMiddleNode {
         System.out.println("Middle node value: " + middle.value);
     }
 }
-// package com.thealgorithms.datastructures.lists;

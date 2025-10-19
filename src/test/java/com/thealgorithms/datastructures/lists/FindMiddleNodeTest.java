@@ -7,13 +7,13 @@ public class FindMiddleNodeTest {
 
     @Test
     public void testOddLengthList() {
-        ListNode head = createList(new int[]{1, 2, 3, 4, 5});
+        ListNode head = createList(new int[] { 1, 2, 3, 4, 5 });
         assertEquals(3, FindMiddleNode.findMiddle(head).value);
     }
 
     @Test
     public void testEvenLengthList() {
-        ListNode head = createList(new int[]{1, 2, 3, 4, 5, 6});
+        ListNode head = createList(new int[] { 1, 2, 3, 4, 5, 6 });
         assertEquals(4, FindMiddleNode.findMiddle(head).value);
     }
 
@@ -27,4 +27,3 @@ public class FindMiddleNodeTest {
         return head;
     }
 }
-
