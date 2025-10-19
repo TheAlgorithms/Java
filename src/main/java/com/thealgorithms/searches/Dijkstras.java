@@ -10,7 +10,7 @@ import java.util.*;
  * @date: 19 October 2025 (Sunday)
  * @wiki: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
  */
-public class DijkstrasAlgorithm {
+public class Dijkstras {
 
     /**
      * Computes the shortest distance from a source vertex to all other vertices.
