@@ -1,4 +1,4 @@
-package com.thealgorithms.searches; // update to match path; change back if you intend 'com.thealgorithms.graphs'
+package com.thealgorithms.graphs;
 
 import java.util.List;
 import java.util.Arrays;
@@ -15,7 +15,6 @@ import java.util.Comparator;
  */
 public final class Dijkstras {
 
-    // Hide utility-class constructor
     private Dijkstras() {
         throw new AssertionError("Cannot instantiate utility class");
     }
