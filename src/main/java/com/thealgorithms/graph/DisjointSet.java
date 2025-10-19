@@ -153,27 +153,4 @@ public class DisjointSet {
         
         return mergedAccounts;
     }
-
 }
-
-/** 
- * 
- * this the program for testing the above algorithm
- * 
-public class DisjointSetMain {
-    public static void main(String[] args) {
-        List<List<String>> list = new ArrayList<>();
-        list.add(new ArrayList<>(List.of("abc", "abc@mail.com","abx@mail.com")));
-        list.add(new ArrayList<>(List.of("abc","abc@mail.com","aby@mail.com")));
-        list.add(new ArrayList<>(List.of("Mary","mary@mail.com")));
-        list.add(new ArrayList<>(List.of("John","johnnybravo@mail.com")));
-        list.add(new ArrayList<>(List.of("John", "johnnybravo@mail.com", "john@mail.com")));
-        DisjointSet ds = new DisjointSet(list.size());
-        List<List<String>> ans = ds.accountsMerge(list);
-        for(List<String> val : ans){
-            System.out.println(val);
-        }
-    }
-}
-
-*/
