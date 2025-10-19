@@ -4,15 +4,15 @@ package com.thealgorithms.matrix;
  * LU Decomposition Algorithm
  * --------------------------
  * Decomposes a square matrix A into a product of two matrices:
- *      A = L * U
+ * A = L * U
  * where:
- *  - L is a lower triangular matrix with 1s on its diagonal
- *  - U is an upper triangular matrix
+ * - L is a lower triangular matrix with 1s on its diagonal
+ * - U is an upper triangular matrix
  *
  * This algorithm is widely used in:
- *  - Solving systems of linear equations (Ax = b)
- *  - Finding matrix inverses
- *  - Computing determinants efficiently
+ * - Solving systems of linear equations (Ax = b)
+ * - Finding matrix inverses
+ * - Computing determinants efficiently
  *
  * Time Complexity: O(n³)
  *
@@ -21,9 +21,9 @@ package com.thealgorithms.matrix;
  *
  * Example:
  * >>> double[][] A = {
- * >>>     {2, -1, -2},
- * >>>     {-4, 6, 3},
- * >>>     {-4, -2, 8}
+ * >>> {2, -1, -2},
+ * >>> {-4, 6, 3},
+ * >>> {-4, -2, 8}
  * >>> };
  * >>> LUDecomposition.LU result = LUDecomposition.decompose(A);
  * >>> LUDecomposition.printMatrix(result.L);
@@ -58,6 +58,7 @@ public class LUDecomposition {
 
     /**
      * Performs LU Decomposition on a square matrix A
+     *
      * @param A input square matrix
      * @return LU object containing L and U matrices
      */
@@ -95,6 +96,7 @@ public class LUDecomposition {
 
     /**
      * Utility function to print a matrix
+     *
      * @param M matrix to print
      */
     public static void printMatrix(double[][] M) {
@@ -102,8 +104,7 @@ public class LUDecomposition {
             System.out.print("[");
             for (int j = 0; j < row.length; j++) {
                 System.out.printf("%7.3f", row[j]);
-                if (j < row.length - 1)
-                    System.out.print(", ");
+                if (j < row.length - 1) System.out.print(", ");
             }
             System.out.println("]");
         }
@@ -113,11 +114,7 @@ public class LUDecomposition {
      * Demonstration (doctest)
      */
     public static void main(String[] args) {
-        double[][] A = {
-            {2, -1, -2},
-            {-4, 6, 3},
-            {-4, -2, 8}
-        };
+        double[][] A = {{2, -1, -2}, {-4, 6, 3}, {-4, -2, 8}};
 
         LU result = decompose(A);
 
