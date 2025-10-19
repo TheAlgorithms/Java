@@ -372,6 +372,7 @@
           - 📄 [Edmonds](src/main/java/com/thealgorithms/graph/Edmonds.java)
           - 📄 [EdmondsKarp](src/main/java/com/thealgorithms/graph/EdmondsKarp.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
+          - 📄 [HungarianAlgorithm](src/main/java/com/thealgorithms/graph/HungarianAlgorithm.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
           - 📄 [PushRelabel](src/main/java/com/thealgorithms/graph/PushRelabel.java)
           - 📄 [StronglyConnectedComponentOptimized](src/main/java/com/thealgorithms/graph/StronglyConnectedComponentOptimized.java)
