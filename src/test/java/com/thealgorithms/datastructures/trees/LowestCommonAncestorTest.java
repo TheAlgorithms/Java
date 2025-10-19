@@ -71,8 +71,8 @@ public class LowestCommonAncestorTest {
         System.setOut(originalOut);
         System.setIn(System.in);
 
-        String output = outContent.toString().trim();
-        assertEquals(expectedParent, output);
+        String actualParent = outContent.toString().trim();
+        assertEquals(expectedParent, actualParent);
     }
 
     public static Stream<Arguments> getInput() {
