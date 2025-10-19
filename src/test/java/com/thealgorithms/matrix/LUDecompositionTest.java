@@ -8,10 +8,7 @@ public class LUDecompositionTest {
 
     @Test
     public void testLUDecomposition() {
-        double[][] A = {
-            {4, 3},
-            {6, 3}
-        };
+        double[][] A = {{4, 3}, {6, 3}};
 
         // Perform LU decomposition
         LUDecomposition.LU lu = LUDecomposition.decompose(A);
