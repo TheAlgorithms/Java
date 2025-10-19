@@ -1,4 +1,4 @@
-package com.thealgorithms.graphs;
+package com.thealgorithms.graph;
 
 import java.util.*;
 
