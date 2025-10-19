@@ -29,9 +29,9 @@ import java.util.*;
  *
  * @author OpenAI
  */
-public final class PrimsAlgorithm {
+public final class Prims {
 
-    private PrimsAlgorithm() {
+    private Prims() {
     }
 
     /**
