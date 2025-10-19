@@ -48,9 +48,7 @@ public class NevilleTest {
         double[] x = {1, 2};
         double[] y = {1};
         double target = 1.5;
-        assertThrows(IllegalArgumentException.class, () -> {
-            Neville.interpolate(x, y, target);
-        });
+        assertThrows(IllegalArgumentException.class, () -> Neville.interpolate(x, y, target));
     }
 
     @Test
@@ -58,8 +56,6 @@ public class NevilleTest {
         double[] x = {};
         double[] y = {};
         double target = 1;
-        assertThrows(IllegalArgumentException.class, () -> {
-            Neville.interpolate(x, y, target);
-        });
+        assertThrows(IllegalArgumentException.class, () -> Neville.interpolate(x, y, target));
     }
 }
