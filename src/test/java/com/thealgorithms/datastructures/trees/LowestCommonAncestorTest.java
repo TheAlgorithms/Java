@@ -43,7 +43,9 @@ public class LowestCommonAncestorTest {
 
     @BeforeEach
     void setup() {
-        for (int i = 0; i < arrayLength; i++) adj.add(new ArrayList<>());
+        for (int i = 0; i < arrayLength; i++) {
+            adj.add(new ArrayList<>());
+        }
 
         for (int i = 0; i < treeInput.length - 1; i += 2) {
             int to = treeInput[i];
@@ -54,8 +56,8 @@ public class LowestCommonAncestorTest {
         }
     }
 
-    @Disabled("This would be the best way to test LCA but since the scanner is a\n" +
-      "static global variable it doesn't work, it should be moved into the main method.")
+    @Disabled("This would be the best way to test LCA but since the scanner is a\n"
+      + "static global variable it doesn't work, it should be moved into the main method.")
     @ParameterizedTest
     @MethodSource("getInput")
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
