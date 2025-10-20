@@ -32,8 +32,8 @@ public final class MidpointCircle {
             return points;
         }
 
-        // Start at (radius, 0)
-        int x = radius;
+        // Empieza (radius-1, 0)
+        int x = radius-1;
         int y = 0;
 
         // Decision parameter
