@@ -209,4 +209,4 @@ public static double surfaceAreaPyramid(final double sideLength, final double sl
     double lateralSurfaceArea = 2 * sideLength * slantHeight;
     return baseArea + lateralSurfaceArea;
 }
-
+}
