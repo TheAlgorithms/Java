@@ -16,7 +16,7 @@ public class MergeAccounts {
  */
 
     private static List<Integer> Unneeded = new ArrayList<Integer>();
-    
+
     private static List<List<String>> originalAccounts;
     public static List<List<String>> mergeAccounts(List<List<String>> inputAccounts){
         originalAccounts = inputAccounts;
@@ -29,8 +29,8 @@ public class MergeAccounts {
 
 
                 }
-            }
-
+           }
+ 
         }
     removeUnneeded();
     return originalAccounts;
