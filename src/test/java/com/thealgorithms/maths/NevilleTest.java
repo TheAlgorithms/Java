@@ -58,9 +58,9 @@ public class NevilleTest {
         double target = 1;
         assertThrows(IllegalArgumentException.class, () -> Neville.interpolate(x, y, target));
     }
-    
+
     @Test
-    public void testDuplicateXCoordinatesThrowsException() {
+    public void testDuplicateXCoordinates() {
         double[] x = {1, 2, 1};
         double[] y = {5, 8, 3};
         double target = 1.5;
