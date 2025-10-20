@@ -36,17 +36,17 @@ public final class Gravitation {
 
         // If bodies are at the same position, force is zero to avoid division by zero.
         if (distanceSq == 0) {
-            return new double[]{0, 0};
+            return new double[] {0, 0};
         }
 
         double distance = Math.sqrt(distanceSq);
-        double forceMagnitude = (GRAVITATIONAL_CONSTANT * m1 * m2) / distanceSq;
+        double forceMagnitude = GRAVITATIONAL_CONSTANT * m1 * m2 / distanceSq;
 
         // Calculate the components of the force vector
         double fx = forceMagnitude * (dx / distance);
         double fy = forceMagnitude * (dy / distance);
 
-        return new double[]{fx, fy};
+        return new double[] {fx, fy};
     }
 
     /**
@@ -61,6 +61,6 @@ public final class Gravitation {
         if (centralMass <= 0 || radius <= 0) {
             throw new IllegalArgumentException("Mass and radius must be positive.");
         }
-        return Math.sqrt((GRAVITATIONAL_CONSTANT * centralMass) / radius);
+        return Math.sqrt(GRAVITATIONAL_CONSTANT * centralMass / radius);
     }
 }
