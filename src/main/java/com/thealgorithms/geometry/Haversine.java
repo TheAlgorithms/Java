@@ -33,14 +33,14 @@ public final class Haversine {
      * @return The distance between the two points in kilometers.
      */
     public static double haversine(double lat1, double lon1, double lat2, double lon2) {
-        // Convert latitude and longitude from degrees to radians
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
+        //Convierte latitud y longitud de grados a radianes
+        double dLat = Math.toRadians(lat2 - lat1); //Conversion de la latitud 2 menos la latitud 1 a radianes
+        double dLon = Math.toRadians(lon2 - lon1); //Conversion de la longitud 2 menos la longitud 1 a radianes
 
-        double lat1Rad = Math.toRadians(lat1);
-        double lat2Rad = Math.toRadians(lat2);
+        double lat1Rad = Math.toRadians(lat1); //Conversion de latitud 1 a radianes
+        double lat2Rad = Math.toRadians(lat2); //Conversion de latitud 2 a radianes
 
-        // Apply the Haversine formula
+        //Aplica la formula de Haversine
         double a = Math.pow(Math.sin(dLat / 2), 2) + Math.pow(Math.sin(dLon / 2), 2) * Math.cos(lat1Rad) * Math.cos(lat2Rad);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
