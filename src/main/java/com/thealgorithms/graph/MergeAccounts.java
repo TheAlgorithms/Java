@@ -1,60 +1,25 @@
 package com.thealgorithms.graph;
-/**
- * for example
-Input:
-[["abc","abc@mail.com","abx@mail.com"],
-["abc","abc@mail.com","aby@mail.com"],
-["Mary","mary@mail.com"],
-["John","johnnybravo@mail.com"]]
-
-0, 1 Share Name
-
-0, 1 Share email
-
-
-
-Output:
-[["abc","abc@mail.com","abx@mail.com", "aby@gmail.com"],
-["Mary","mary@mail.com"],
-["John","johnnybravo@mail.com"]]
-
-Two accounts belong to the same person if they share at least one common email.
-Even if two accounts have the same name, they might belong to different people, so merging should only be based on shared emails. Each person can have multiple accounts, and all merged accounts should have the same name.
-
-
- * 
- * 
- */
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 public class MergeAccounts {
+/**
+ * Merges accounts that share at least one common email address.
+ * 
+ * <p>This method takes a list of accounts, where each account is represented as a list of strings:
+ * the first element is the account holder's name, followed by one or more email addresses.
+ * It merges accounts that share both the same name and at least one email address into a single list,
+ * removing duplicates and redundant entries.</p>
+ *
+ * @param inputList a list of accounts, each represented as [name, email1, email2, ...]
+ */
 
-
-    private static List<List<String>> originalAccounts = new ArrayList<>();
     private static List<Integer> Unneeded = new ArrayList<Integer>();
-//     {
-//     {"abc", "abc@mail.com", "abx@mail.com"},
-//     {"abc", "abc@mail.com", "aby@mail.com"},
-//     {"Mary", "mary@mail.com"},
-//     {"John", "johnnybravo@mail.com"}
-// };
-    public static void main(String[] args) {
-        originalAccounts.add(new ArrayList<>(Arrays.asList("abc", "abc@mail.com", "abx@mail.com")));
-        originalAccounts.add(new ArrayList<>(Arrays.asList("abc", "abc@mail.com", "aby@mail.com")));
-        originalAccounts.add(new ArrayList<>(Arrays.asList("Mary", "mary@mail.com", "many@mail.com")));
-        originalAccounts.add(new ArrayList<>(Arrays.asList("Mohammed", "meedo@mail.com")));
-        originalAccounts.add(new ArrayList<>(Arrays.asList("Mary", "johnnybravo@mail.com","mary@mail.com")));
-        originalAccounts.add(new ArrayList<>(Arrays.asList("Mohammed", "meedo@mail.com", "Mooda@mail.com")));
-
-
-        System.out.println(originalAccounts);
-        // originalAccounts = mergeAccounts();
-        mergeAccounts();
-        System.out.println(originalAccounts);
-    }
-    public static void mergeAccounts(){
+    
+    private static List<List<String>> originalAccounts;
+    public static List<List<String>> mergeAccounts(List<List<String>> inputAccounts){
+        originalAccounts = inputAccounts;
         for (int account = 0; account < originalAccounts.size(); account++) {
             for (int otherAccount = account+1; otherAccount < originalAccounts.size(); otherAccount++) {
                 if (account != otherAccount){
@@ -68,7 +33,7 @@ public class MergeAccounts {
 
         }
     removeUnneeded();
-    // return originalAccounts;
+    return originalAccounts;
 // 
     }
 
