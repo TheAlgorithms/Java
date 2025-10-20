@@ -74,7 +74,6 @@ public class MyCaesarTest {
 
         String encoded = caesar.encode(message, 10);
         String[] combinations = caesar.bruteforce(encoded);
-        System.out.println(encoded);
         String expected = "wocckqo";
 
         assertEquals(27, combinations.length, "Should contain 27 possible decoded combinations");
