@@ -138,8 +138,6 @@ public class AVLSimpleTest {
         );
     }
 
-    // TODO: Add rotation tests for RL and LR when bf = 1
-
     @Test
     @DisplayName("Should return true for a tree that don't account for duplicates")
     void testDuplicatesInTreeCreationDoNotStick() {
