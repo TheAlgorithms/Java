@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
+import com.thealgorithms.utils.ConsoleInterceptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -9,9 +10,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -19,7 +17,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LowestCommonAncestorTest {
+public class LCATest {
     /**
      * This input creates the following tree:
      * <pre>
@@ -61,18 +59,14 @@ public class LowestCommonAncestorTest {
     @MethodSource("getInput")
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
     void shouldReturnCorrectLCAThroughMain(String simulatedInput, String expectedParent) {
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
+        ConsoleInterceptor systemInOut = new ConsoleInterceptor();
+        systemInOut.mockInputAndCaptureOutput(simulatedInput);
 
         LCA.main(new String[0]);
 
-        System.setOut(originalOut);
-        System.setIn(System.in);
+        systemInOut.restoreInAndOutput();
 
-        String actualParent = outContent.toString().trim();
+        String actualParent = systemInOut.getConsoleOutput();
         assertEquals(expectedParent, actualParent);
     }
 

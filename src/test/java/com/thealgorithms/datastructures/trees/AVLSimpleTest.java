@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.trees;
 
+import com.thealgorithms.utils.ConsoleInterceptor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,16 +9,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AVLSimpleTest {
     AVLSimple tree = new AVLSimple();
-    ByteArrayOutputStream outContent;
-    PrintStream originalOut;
+    ConsoleInterceptor systemOut = new ConsoleInterceptor();
 
     /* ========================
         Setup/TearDown
@@ -25,14 +23,12 @@ public class AVLSimpleTest {
 
     @BeforeEach
     void setup() {
-        outContent = new ByteArrayOutputStream();
-        originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
+        systemOut.captureOutput();
     }
 
     @AfterEach
     void tearDown() {
-        System.setOut(originalOut);
+        systemOut.restoreOutput();
     }
 
     /* ========================
@@ -49,10 +45,7 @@ public class AVLSimpleTest {
     }
 
     String getActualTree() {
-        return outContent
-          .toString()
-          .trim()
-          .replace("\n", "");
+        return systemOut.getConsoleOutput();
     }
 
     /* ========================
@@ -92,7 +85,7 @@ public class AVLSimpleTest {
 
     @ParameterizedTest
     @MethodSource("getTreeNodesInput")
-    @DisplayName("Test  to ensure all rotation paths are covered")
+    @DisplayName("Test to ensure all rotation paths are covered")
     void testAllRotations(int node1, int node2, int node3) {
         tree.insert(node1);
         tree.insert(node2);
@@ -159,9 +152,6 @@ public class AVLSimpleTest {
 
         tree.display();
 
-        String expectedTree = getExpectedTree();
-        String actualTree = getActualTree();
-
-        assertEquals(expectedTree, actualTree);
+        assertEquals(getExpectedTree(), getActualTree());
     }
 }
