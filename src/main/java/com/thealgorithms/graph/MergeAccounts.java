@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collections;
 public class MergeAccounts {
 
+
     private static List<List<String>> originalAccounts = new ArrayList<>();
     private static List<Integer> Unneeded = new ArrayList<Integer>();
 //     {
@@ -73,10 +74,10 @@ public class MergeAccounts {
 
     public static void removeUnneeded() {
         Collections.sort(Unneeded);
-        System.out.println(Unneeded);
+        // System.out.println(Unneeded);
         for (int a = Unneeded.size()-1; a > -1 ; a--) {
             int i = Unneeded.get(a);
-            System.out.println(i);
+            // System.out.println(i);
             originalAccounts.remove(i);
         }
     }
