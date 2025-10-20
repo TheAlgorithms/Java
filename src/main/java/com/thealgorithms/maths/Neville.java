@@ -1,4 +1,8 @@
+// Neville.java
 package com.thealgorithms.maths;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * In numerical analysis, Neville's algorithm is an algorithm used for
@@ -23,7 +27,7 @@ public final class Neville {
      * @param target The x-coordinate at which to evaluate the polynomial.
      * @return The interpolated y-value at the target x-coordinate.
      * @throws IllegalArgumentException if the lengths of x and y arrays are different,
-     * or if the arrays are empty.
+     * if the arrays are empty, or if x-coordinates are not unique.
      */
     public static double interpolate(double[] x, double[] y, double target) {
         if (x.length != y.length) {
@@ -31,6 +35,13 @@ public final class Neville {
         }
         if (x.length == 0) {
             throw new IllegalArgumentException("Input arrays cannot be empty.");
+        }
+
+        Set<Double> seenX = new HashSet<>();
+        for (double val : x) {
+            if (!seenX.add(val)) {
+                throw new IllegalArgumentException("Input x-coordinates must be unique.");
+            }
         }
 
         int n = x.length;
