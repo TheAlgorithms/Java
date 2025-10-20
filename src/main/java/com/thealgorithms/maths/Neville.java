@@ -5,9 +5,9 @@ import java.util.Set;
 
 /**
  * In numerical analysis, Neville's algorithm is an algorithm used for
- * polynomial interpolation. Given n+1 points, there is a unique polynomial
- * of degree at most n that passes through all the points. Neville's
- * algorithm computes the value of this polynomial at a given point.
+ * polynomial interpolation. Given n+1 points, there is a unique polynomial of
+ * degree at most n that passes through all the points. Neville's algorithm
+ * computes the value of this polynomial at a given point.
  *
  * <p>
  * Wikipedia: https://en.wikipedia.org/wiki/Neville%27s_algorithm
@@ -15,18 +15,20 @@ import java.util.Set;
  * @author Mitrajit Ghorui(KeyKyrios)
  */
 public final class Neville {
+
     private Neville() {
     }
 
     /**
-     * Evaluates the polynomial that passes through the given points at a specific x-coordinate.
+     * Evaluates the polynomial that passes through the given points at a
+     * specific x-coordinate.
      *
      * @param x The x-coordinates of the points. Must be the same length as y.
      * @param y The y-coordinates of the points. Must be the same length as x.
      * @param target The x-coordinate at which to evaluate the polynomial.
      * @return The interpolated y-value at the target x-coordinate.
-     * @throws IllegalArgumentException if the lengths of x and y arrays are different,
-     * if the arrays are empty, or if x-coordinates are not unique.
+     * @throws IllegalArgumentException if the lengths of x and y arrays are
+     * different, if the arrays are empty, or if x-coordinates are not unique.
      */
     public static double interpolate(double[] x, double[] y, double target) {
         if (x.length != y.length) {
@@ -36,6 +38,7 @@ public final class Neville {
             throw new IllegalArgumentException("Input arrays cannot be empty.");
         }
 
+        // Check for duplicate x-coordinates to prevent division by zero
         Set<Double> seenX = new HashSet<>();
         for (double val : x) {
             if (!seenX.add(val)) {
