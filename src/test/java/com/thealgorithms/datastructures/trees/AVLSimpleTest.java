@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AVLSimpleTest {
     AVLSimple tree = new AVLSimple();
-    ConsoleInterceptor systemOut = new ConsoleInterceptor();
+    ConsoleInterceptor interceptor = new ConsoleInterceptor();
 
     /* ========================
         Setup/TearDown
@@ -23,12 +23,12 @@ public class AVLSimpleTest {
 
     @BeforeEach
     void setup() {
-        systemOut.captureOutput();
+        interceptor.captureOutput();
     }
 
     @AfterEach
     void tearDown() {
-        systemOut.restoreOutput();
+        interceptor.close();
     }
 
     /* ========================
@@ -45,7 +45,7 @@ public class AVLSimpleTest {
     }
 
     String getActualTree() {
-        return systemOut.getConsoleOutput();
+        return interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "");
     }
 
     /* ========================

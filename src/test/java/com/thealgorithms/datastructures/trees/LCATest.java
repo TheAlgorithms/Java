@@ -38,6 +38,10 @@ public class LCATest {
     private final int[] depth = new int[arrayLength];
     private final ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
+    /* ========================
+        Setup
+    ======================== */
+
     @BeforeEach
     void setup() {
         for (int i = 0; i < arrayLength; i++) {
@@ -53,21 +57,26 @@ public class LCATest {
         }
     }
 
+    /* ========================
+        Tests
+    ======================== */
+
     @Disabled("This would be the best way to test LCA but since the scanner is a\n"
       + "static global variable it doesn't work, it should be moved into the main method.")
     @ParameterizedTest
     @MethodSource("getInput")
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
     void shouldReturnCorrectLCAThroughMain(String simulatedInput, String expectedParent) {
-        ConsoleInterceptor systemInOut = new ConsoleInterceptor();
-        systemInOut.mockInputAndCaptureOutput(simulatedInput);
+        try (ConsoleInterceptor interceptor = new ConsoleInterceptor()) {
+            interceptor.mockInput(simulatedInput);
+            interceptor.captureOutput();
 
-        LCA.main(new String[0]);
+            LCA.main(new String[0]);
 
-        systemInOut.restoreInAndOutput();
+            String actualParent = interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "");
 
-        String actualParent = systemInOut.getConsoleOutput();
-        assertEquals(expectedParent, actualParent);
+            assertEquals(expectedParent, actualParent);
+        }
     }
 
     public static Stream<Arguments> getInput() {
