@@ -32,7 +32,7 @@ public final class MidpointCircle {
             return points;
         }
 
-        // Empieza (radius-1, 0)
+        // Empieza (radius -1, 0)
         int x = radius-1;
         int y = 0;
 
