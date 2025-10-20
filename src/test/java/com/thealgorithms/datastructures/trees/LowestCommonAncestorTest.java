@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -61,7 +60,7 @@ public class LowestCommonAncestorTest {
     @ParameterizedTest
     @MethodSource("getInput")
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
-    void shouldReturnCorrectLCA2(String simulatedInput, String expectedParent) {
+    void shouldReturnCorrectLCAThroughMain(String simulatedInput, String expectedParent) {
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -88,11 +87,11 @@ public class LowestCommonAncestorTest {
         );
     }
 
+    @SuppressWarnings("RFI_SET_ACCESSIBLE")
     @ParameterizedTest
     @CsvSource({"9,4,2", "5,6,5", "5,4,0", "3,8,3", "6,3,0", "3,3,3"})
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
-    void shouldReturnCorrectLCA(int v1, int v2, int expectedParent) {
-        try {
+    void shouldReturnCorrectLCA(int v1, int v2, int expectedParent) throws Exception {
             Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
             Method getLCA = LCA.class.getDeclaredMethod("getLCA", int.class, int.class, int[].class, int[].class);
             dfs.setAccessible(true);
@@ -101,35 +100,26 @@ public class LowestCommonAncestorTest {
             dfs.invoke(null, adj, 0, -1, parent, depth);
 
             assertEquals(expectedParent, getLCA.invoke(null, v1, v2, depth, parent));
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
     }
 
+    @SuppressWarnings("RFI_SET_ACCESSIBLE")
     @Test
-    void shouldReturnCorrectDepthsForArray() {
-        try {
-            Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
-            dfs.setAccessible(true);
+    void shouldReturnCorrectDepthsForArray() throws Exception {
+        Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
+        dfs.setAccessible(true);
 
-            dfs.invoke(null, adj, 0, -1, parent, depth);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        dfs.invoke(null, adj, 0, -1, parent, depth);
 
         assertArrayEquals(new int[] {0, 1, 1, 2, 2, 2, 3, 3, 4, 4}, depth);
     }
 
+    @SuppressWarnings("RFI_SET_ACCESSIBLE")
     @Test
-    void shouldReturnCorrectParentsForArray() {
-        try {
-            Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
-            dfs.setAccessible(true);
+    void shouldReturnCorrectParentsForArray() throws Exception {
+        Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
+        dfs.setAccessible(true);
 
-            dfs.invoke(null, adj, 0, -1, parent, depth);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        dfs.invoke(null, adj, 0, -1, parent, depth);
 
         assertArrayEquals(new int[] {0, 0, 0, 2, 2, 1, 5, 3, 7, 7}, parent);
     }
