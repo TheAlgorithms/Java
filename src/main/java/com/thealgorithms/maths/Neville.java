@@ -1,4 +1,3 @@
-// Neville.java
 package com.thealgorithms.maths;
 
 import java.util.HashSet;
