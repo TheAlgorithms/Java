@@ -210,6 +210,7 @@ public final class Area {
         double baseArea = sideLength * sideLength;
         double lateralSurfaceArea = 2 * sideLength * slantHeight;
         return baseArea + lateralSurfaceArea;
+        
 }
 
 }
