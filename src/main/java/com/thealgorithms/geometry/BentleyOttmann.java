@@ -127,7 +127,7 @@ public final class BentleyOttmann {
      * Comparator for segments in the status structure (sweep line).
      * Orders segments by their y-coordinate at the current sweep line position.
      */
-    private final static class StatusComparator implements Comparator<Segment> {
+    private static final class StatusComparator implements Comparator<Segment> {
         @Override
         public int compare(Segment s1, Segment s2) {
             if (s1.id == s2.id) {
