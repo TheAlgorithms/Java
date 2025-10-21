@@ -1,7 +1,6 @@
 package com.thealgorithms.strings;
 
 public final class Upper {
-
     private Upper() {
     }
 
@@ -16,7 +15,7 @@ public final class Upper {
     }
 
     /**
-     * Converts all the characters in this {@code String} to upper case.
+     * Converts all the characters in this {@code String} to upper case
      *
      * @param s the string to convert
      * @return the {@code String}, converted to uppercase.
@@ -29,29 +28,12 @@ public final class Upper {
         if (s.isEmpty()) {
             return s;
         }
-
-        // Check if any lowercase letter exists before creating a new String
-        boolean hasLower = false;
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isLowerCase(s.charAt(i))) {
-                hasLower = true;
-                break;
-            }
-        }
-
-        // If no lowercase characters, return the same string
-        if (!hasLower) {
-            return s;
-        }
-
-        // Convert lowercase letters to uppercase
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             if (Character.isLowerCase(chars[i])) {
                 chars[i] = Character.toUpperCase(chars[i]);
             }
         }
-
         return new String(chars);
     }
 }
