@@ -1,48 +1,118 @@
 package com.thealgorithms.audiofilters;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
- * Exponential Moving Average (EMA) Filter for smoothing audio signals.
+ * EMAFilter - Exponential Moving Average filter for smoothing audio signals.
  *
- * <p>This filter applies an exponential moving average to a sequence of audio
- * signal values, making it useful for smoothing out rapid fluctuations.
- * The smoothing factor (alpha) controls the degree of smoothing.
+ * Think of this as a "smart smoothing tool" for audio: it looks at each new sample
+ * and gently blends it with the previous smoothed value to reduce sudden spikes or noise.
  *
- * <p>Based on the definition from
- * <a href="https://en.wikipedia.org/wiki/Moving_average">Wikipedia link</a>.
+ * The smoothing factor (alpha) determines how responsive the filter is:
+ * - High alpha (close to 1) → reacts quickly to new samples (less smoothing)
+ * - Low alpha (close to 0) → reacts slowly (more smoothing)
+ *
+ * This class supports both:
+ * 1. Batch processing (arrays of samples)
+ * 2. Streaming / real-time processing (sample by sample)
  */
-public class EMAFilter {
+public final class EMAFilter {
+
+    /** How "responsive" the filter is to new data */
     private final double alpha;
-    private double emaValue;
+
+    /** Stores the last EMA value for continuous processing */
+    private double lastEma;
+
     /**
-     * Constructs an EMA filter with a given smoothing factor.
+     * Constructor: sets the smoothing factor (alpha) for the filter.
      *
-     * @param alpha Smoothing factor (0 < alpha <= 1)
-     * @throws IllegalArgumentException if alpha is not in (0, 1]
+     * @param alpha smoothing factor between 0 (exclusive) and 1 (inclusive)
+     * @throws IllegalArgumentException if alpha is invalid
      */
     public EMAFilter(double alpha) {
-        if (alpha <= 0 || alpha > 1) {
-            throw new IllegalArgumentException("Alpha must be between 0 and 1.");
+        if (alpha <= 0.0 || alpha > 1.0) {
+            throw new IllegalArgumentException("Alpha must be between 0 (exclusive) and 1 (inclusive). Got: " + alpha);
         }
         this.alpha = alpha;
-        this.emaValue = 0.0;
+        this.lastEma = Double.NaN; // Indicates that no sample has been processed yet
     }
+
     /**
-     * Applies the EMA filter to an audio signal array.
+     * Smooths a whole array of audio samples and returns a new array.
      *
-     * @param audioSignal Array of audio samples to process
-     * @return Array of processed (smoothed) samples
+     * Original samples remain unchanged.
+     *
+     * @param samples input audio samples
+     * @return new array with smoothed samples
      */
-    public double[] apply(double[] audioSignal) {
-        if (audioSignal.length == 0) {
-            return new double[0];
+    public double[] apply(double[] samples) {
+        Objects.requireNonNull(samples, "Input samples cannot be null.");
+        if (samples.length == 0) return new double[0];
+
+        double[] smoothed = new double[samples.length];
+        double ema = samples[0]; // Start with the first sample
+        smoothed[0] = ema;
+
+        for (int i = 1; i < samples.length; i++) {
+            // EMA formula: current = alpha * newSample + (1 - alpha) * previousEMA
+            ema = alpha * samples[i] + (1 - alpha) * ema;
+            smoothed[i] = ema;
         }
-        double[] emaSignal = new double[audioSignal.length];
-        emaValue = audioSignal[0];
-        emaSignal[0] = emaValue;
-        for (int i = 1; i < audioSignal.length; i++) {
-            emaValue = alpha * audioSignal[i] + (1 - alpha) * emaValue;
-            emaSignal[i] = emaValue;
+
+        lastEma = ema; // Save last EMA for streaming
+        return smoothed;
+    }
+
+    /**
+     * Smooths the array **in-place** to save memory.
+     *
+     * Useful for large audio arrays or memory-sensitive applications.
+     *
+     * @param samples array to be smoothed (will be overwritten)
+     */
+    public void applyInPlace(double[] samples) {
+        Objects.requireNonNull(samples, "Input samples cannot be null.");
+        if (samples.length == 0) return;
+
+        double ema = samples[0];
+        for (int i = 1; i < samples.length; i++) {
+            ema = alpha * samples[i] + (1 - alpha) * ema;
+            samples[i] = ema; // overwrite original array
         }
-        return emaSignal;
+
+        lastEma = ema;
+    }
+
+    /**
+     * Returns the last EMA value computed.
+     *
+     * Useful for streaming or continuous processing.
+     *
+     * @return last EMA value, or NaN if filter hasn't processed any data yet
+     */
+    public double getLastEma() {
+        return lastEma;
+    }
+
+    /**
+     * Updates the EMA with a single new sample (streaming / real-time processing).
+     *
+     * @param sample next input value
+     * @return updated EMA value
+     */
+    public double next(double sample) {
+        if (Double.isNaN(lastEma)) {
+            lastEma = sample; // Initialize with first sample
+        } else {
+            lastEma = alpha * sample + (1 - alpha) * lastEma;
+        }
+        return lastEma;
+    }
+
+    @Override
+    public String toString() {
+        return "EMAFilter{alpha=" + alpha + ", lastEma=" + lastEma + "}";
     }
 }
