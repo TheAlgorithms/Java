@@ -15,7 +15,8 @@ import java.util.*;
  */
 public final class BentleyOttmann {
 
-    private BentleyOttmann() {}
+    private BentleyOttmann() {
+    }
 
     private static final double EPS = 1e-9;
     private static double currentSweepX;
@@ -65,9 +66,7 @@ public final class BentleyOttmann {
     /**
      * Event types for the sweep line algorithm.
      */
-    private enum EventType {
-        START, END, INTERSECTION
-    }
+    private enum EventType { START, END, INTERSECTION }
 
     /**
      * Represents an event in the event queue.
@@ -186,8 +185,7 @@ public final class BentleyOttmann {
         return intersections;
     }
 
-    private static Event getOrCreateEvent(Map<Point2D.Double, Event> eventMap,
-                                          Point2D.Double point, EventType type) {
+    private static Event getOrCreateEvent(Map<Point2D.Double, Event> eventMap, Point2D.Double point, EventType type) {
         // Find existing event at this point
         for (Map.Entry<Point2D.Double, Event> entry : eventMap.entrySet()) {
             if (pointsEqual(entry.getKey(), point)) {
@@ -200,17 +198,13 @@ public final class BentleyOttmann {
         return event;
     }
 
-    private static void handleEvent(Event event, TreeSet<Segment> status,
-                                    PriorityQueue<Event> eventQueue,
-                                    Map<Point2D.Double, Event> eventMap,
-                                    Set<Point2D.Double> intersections) {
+    private static void handleEvent(Event event, TreeSet<Segment> status, PriorityQueue<Event> eventQueue, Map<Point2D.Double, Event> eventMap, Set<Point2D.Double> intersections) {
         Point2D.Double p = event.point;
         Set<Segment> segmentsAtPoint = new HashSet<>(event.segments);
 
         // Check segments in status structure (much smaller than allSegments)
         for (Segment s : status) {
-            if (pointsEqual(s.p1, p) || pointsEqual(s.p2, p) ||
-                    (onSegment(s, p) && !pointsEqual(s.p1, p) && !pointsEqual(s.p2, p))) {
+            if (pointsEqual(s.p1, p) || pointsEqual(s.p2, p) || (onSegment(s, p) && !pointsEqual(s.p1, p) && !pointsEqual(s.p2, p))) {
                 segmentsAtPoint.add(s);
             }
         }
@@ -302,14 +296,10 @@ public final class BentleyOttmann {
         return rightmost;
     }
 
-    private static void findNewEvent(Segment s1, Segment s2, Point2D.Double currentPoint,
-                                     PriorityQueue<Event> eventQueue,
-                                     Map<Point2D.Double, Event> eventMap) {
+    private static void findNewEvent(Segment s1, Segment s2, Point2D.Double currentPoint, PriorityQueue<Event> eventQueue, Map<Point2D.Double, Event> eventMap) {
         Point2D.Double intersection = getIntersection(s1, s2);
 
-        if (intersection != null &&
-                intersection.x > currentPoint.x - EPS &&
-                !pointsEqual(intersection, currentPoint)) {
+        if (intersection != null && intersection.x > currentPoint.x - EPS && !pointsEqual(intersection, currentPoint)) {
 
             // Check if event already exists
             boolean exists = false;
@@ -395,15 +385,10 @@ public final class BentleyOttmann {
     }
 
     private static boolean onSegment(Segment s, Point2D.Double p) {
-        return p.x >= Math.min(s.p1.x, s.p2.x) - EPS &&
-                p.x <= Math.max(s.p1.x, s.p2.x) + EPS &&
-                p.y >= Math.min(s.p1.y, s.p2.y) - EPS &&
-                p.y <= Math.max(s.p1.y, s.p2.y) + EPS &&
-                Math.abs(crossProduct(s.p1, s.p2, p)) < EPS;
+        return p.x >= Math.min(s.p1.x, s.p2.x) - EPS && p.x <= Math.max(s.p1.x, s.p2.x) + EPS && p.y >= Math.min(s.p1.y, s.p2.y) - EPS && p.y <= Math.max(s.p1.y, s.p2.y) + EPS && Math.abs(crossProduct(s.p1, s.p2, p)) < EPS;
     }
 
     private static boolean pointsEqual(Point2D.Double p1, Point2D.Double p2) {
         return Math.abs(p1.x - p2.x) < EPS && Math.abs(p1.y - p2.y) < EPS;
     }
-
 }
