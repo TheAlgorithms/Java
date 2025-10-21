@@ -1,15 +1,16 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.doubleThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import java.util.List;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class MathBuilderTest {
 
@@ -81,7 +82,7 @@ class MathBuilderTest {
 
 	@Test
 	@DisplayName("Close parenthesis Test")
-	void closeParenthesisAndOtherTest() {
+	void closeParenthesisTest() {
 		// 10.5 - (20+2.1)
 		double actual = new MathBuilder.Builder(10.5).openParenthesis(20).add(2.1).closeParenthesisAndMinus()
 				.build().get();
@@ -98,7 +99,7 @@ class MathBuilderTest {
 
     @Test
     @DisplayName("open parenthesis Test")
-    void openParenthesisAndOtherTest() {
+    void openParenthesisAndABSTest() {
         // 10.5 - (20+2.1)
         double actual = new MathBuilder.Builder(10.5).openParenthesis(20).minus(2.1).closeParenthesisAndMinus()
                 .build().get();
@@ -115,16 +116,16 @@ class MathBuilderTest {
 	@Test
 	@DisplayName("Runtime Errors Tests")
 	void runtimeErrorTest() {
-		// 10.5 - (20+2.1)
 		MathBuilder.Builder actual = new MathBuilder.Builder(10.5);
 
-		// 10.5 / (20+2.1)
 
-		assertThrows(RuntimeException.class, () -> actual.rand(1));
-		assertThrows(RuntimeException.class, () -> actual.randomInRange(1, 10));
-		assertThrows(RuntimeException.class, () -> actual.pi());
-		assertThrows(RuntimeException.class, () -> actual.e());
-		assertThrows(RuntimeException.class, () -> actual.set(1));
+     assertAll(
+	         () ->	assertThrows(RuntimeException.class, () -> actual.rand(1)),
+	         () ->	assertThrows(RuntimeException.class, () -> actual.randomInRange(1, 10)),
+	         () ->	assertThrows(RuntimeException.class, () -> actual.pi()),
+            () ->	assertThrows(RuntimeException.class, () -> actual.e()),
+            () ->	assertThrows(RuntimeException.class, () -> actual.set(1))
+             );
 	}
 
 	@Test
@@ -133,8 +134,10 @@ class MathBuilderTest {
 		double actual = new MathBuilder.Builder(10).divide(2).build().get();
 
 		double expected = 10 / 2;
+        double expected2 = 10 / 4;
 
 		assertEquals(expected, actual);
+        assertNotEquals(expected2,actual);
 	}
 
 	@Test
@@ -148,10 +151,12 @@ class MathBuilderTest {
 
         MathBuilder.Builder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
 				.closeParenthesisAndDivide();
+        assertAll(
+                () -> assertTrue(Double.isInfinite(actual.get())),
+                () -> assertDoesNotThrow(() -> actual2.build().get()),
+                () -> assertDoesNotThrow(() -> actual2.divide(0).build().get())
+        );
 
-        assertTrue(Double.isInfinite(actual.get()));
-		assertDoesNotThrow(() -> actual2.build().get());
-		assertDoesNotThrow(() -> actual2.divide(0).build().get());
 
 	}
 
@@ -162,29 +167,37 @@ class MathBuilderTest {
 		double maxValue = 2.1;
 		double actual = new MathBuilder.Builder().rand(2L).build().get();
 		double actual2 = new MathBuilder.Builder().randomInRange(minValue, maxValue).build().get();
+        assertAll(
+                ()   ->assertTrue(actual < maxValue),
+                ()   ->assertTrue(actual2 >= minValue),
+                ()   ->assertTrue(actual2 <= maxValue)
 
-		assertTrue(actual < maxValue);
-		assertTrue(actual2 >= minValue);
-		assertTrue(actual2 <= maxValue);
+        );
+
 
 	}
 
-	@Test
-	void toRadiansTest() {
+    @ParameterizedTest
+    @MethodSource("radiansHelper")
+    void toRadiansTests(double expectedAngle, double actualAngle) {
+        assertEquals(expectedAngle, actualAngle);
+    }
 
-		double expected = Math.toRadians(10);
-		double expected2 = 2 + Math.toRadians(10);
-
-		double actual = new MathBuilder.Builder(10).toRadians().build().get();
-		double actual2 = new MathBuilder.Builder(2).openParenthesis(10).toRadians().closeParenthesisAndPlus()
-				.build().get();
-
-		assertEquals(expected, actual);
-		assertEquals(expected2, actual2);
-	}
-
+    private static List<Arguments> radiansHelper() {
+        return List.of(
+                Arguments.of(
+                        Math.toRadians(10),
+                        new MathBuilder.Builder(10).toRadians().build().get()
+                ),
+                Arguments.of(
+                        2 + Math.toRadians(10),
+                        new MathBuilder.Builder(2).openParenthesis(10).toRadians().closeParenthesisAndPlus()
+                                .build().get()
+                )
+        );
+    }
     @Test
-    void roundCielABS() {
+    void roundCielABSTest() {
 
         double actual = new MathBuilder.Builder(10).openParenthesis(10.5).round().closeParenthesisAndPlus().build().get();
         double expected = 10+ (Math.round(10.5));
@@ -198,11 +211,14 @@ class MathBuilderTest {
         double expected4 = Math.abs(10 + 10.5);
         double actual4 = new MathBuilder.Builder(10).openParenthesis(10.5).closeParenthesisAndPlus().abs().build().get();
 
-
-        assertEquals(expected, actual);
-        assertEquals(expected2, actual2);
-        assertEquals(expected3, actual3);
-        assertEquals(expected4, actual4);
+        assertAll(
+                () -> assertNotEquals(0,actual),
+                () -> assertNotEquals(1,actual2),
+                () -> assertEquals(expected, actual),
+                () -> assertEquals(expected2, actual2),
+                () -> assertEquals(expected3, actual3),
+                () -> assertEquals(expected4, actual4)
+        );
     }
 
 
@@ -218,12 +234,14 @@ class MathBuilderTest {
 
         MathBuilder actual3 = new MathBuilder.Builder(1999999999).multiply(2139999999).multiply(3).build();
         MathBuilder actual4 = new MathBuilder.Builder(1999999999).multiply(2139999999).multiply(-3).build();
-
-        assertEquals(Long.MAX_VALUE,actual.toLong());
-        assertEquals(Long.MIN_VALUE,actual2.toLong());
-        assertEquals(Long.MAX_VALUE,actual3.toLong());
-        assertEquals(Long.MIN_VALUE,actual4.toLong());
-
+        assertAll(
+            () -> assertEquals(Long.MAX_VALUE,actual.toLong()),
+            () -> assertEquals(Long.MIN_VALUE,actual2.toLong()),
+            () -> assertEquals(Long.MAX_VALUE,actual3.toLong()),
+            () -> assertEquals(Long.MIN_VALUE,actual4.toLong()),
+            () -> assertNotEquals(0,actual.toLong()),
+            () ->  assertNotEquals(1,actual2.toLong())
+        );
     }
 
     @Test
@@ -233,14 +251,15 @@ class MathBuilderTest {
 
         MathBuilder actual3 = new MathBuilder.Builder(10.5).openParenthesis(10).max(20).closeParenthesisAndPlus().build();
         MathBuilder actual4 = new MathBuilder.Builder(12.5).openParenthesis(10).closeParenthesisAndPlus().max(20).build();
-
-        assertEquals(20,actual.get());
-        assertEquals(13.5,actual2.get());
-        assertEquals(30.5,actual3.get());
-        assertEquals(22.5,actual4.get());
-
+        assertAll(
+            () -> assertEquals(20,actual.get()),
+            () -> assertEquals(13.5,actual2.get()),
+            () -> assertEquals(30.5,actual3.get()),
+            () -> assertEquals(22.5,actual4.get()),
+            () -> assertNotEquals(30,actual4.get()),
+            () ->  assertNotEquals(5,actual4.get())
+        );
     }
-
     @Test
     void minTest() {
         MathBuilder actual = new MathBuilder.Builder(10.5).min(20).build();
@@ -248,12 +267,13 @@ class MathBuilderTest {
 
         MathBuilder actual3 = new MathBuilder.Builder(10.5).openParenthesis(10).min(20).closeParenthesisAndPlus().build();
         MathBuilder actual4 = new MathBuilder.Builder(12.5).openParenthesis(10).closeParenthesisAndPlus().min(20).build();
-
-        assertEquals(10.5,actual.get());
-        assertEquals(8.5,actual2.get());
-        assertEquals(20.5,actual3.get());
-        assertEquals(20,actual4.get());
-
+assertAll(
+    () -> assertEquals(10.5,actual.get()),
+    () -> assertEquals(8.5,actual2.get()),
+    () -> assertEquals(20.5,actual3.get()),
+    () -> assertEquals(20,actual4.get()),
+    () -> assertNotEquals(5, actual.get()),
+    () -> assertNotEquals(-1000, actual3.get())
+);
     }
-
 }
