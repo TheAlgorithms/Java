@@ -1,6 +1,10 @@
 package com.thealgorithms.geometry;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -49,10 +53,7 @@ public class BentleyOttmannTest {
 
     @Test
     void testCoincidentSegments() {
-        List<Object> segments = List.of(
-                newSegment(1, 1, 5, 5),
-                newSegment(1, 1, 5, 5)
-        );
+        List<Object> segments = List.of(newSegment(1, 1, 5, 5), newSegment(1, 1, 5, 5));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(cast(segments));
 
@@ -162,15 +163,15 @@ public class BentleyOttmannTest {
         // Verify all grid points are present
         for (int x = 0; x <= 2; x++) {
             for (int y = 0; y <= 2; y++) {
-                assertTrue(containsPoint(intersections, x, y), String.format("Grid point (%d, %d) should be present", x, y));            }
+                assertTrue(containsPoint(intersections, x, y), String.format("Grid point (%d, %d) should be present", x, y));
+            }
         }
     }
 
     @Test
     void testTriangleIntersections() {
         // Three segments forming a triangle
-        List<Object> segments = List.of(
-                newSegment(0, 0, 4, 0), // base
+        List<Object> segments = List.of(newSegment(0, 0, 4, 0), // base
                 newSegment(0, 0, 2, 3), // left side
                 newSegment(4, 0, 2, 3) // right side
         );
@@ -219,8 +220,7 @@ public class BentleyOttmannTest {
     @Test
     void testSegmentsAtAngles() {
         // Segments at 45, 90, 135 degrees
-        List<Object> segments = List.of(
-                newSegment(0, 2, 4, 2), // horizontal
+        List<Object> segments = List.of(newSegment(0, 2, 4, 2), // horizontal
                 newSegment(2, 0, 2, 4), // vertical
                 newSegment(0, 0, 4, 4), // 45 degrees
                 newSegment(0, 4, 4, 0) // 135 degrees
@@ -261,8 +261,7 @@ public class BentleyOttmannTest {
     @Test
     void testIssueExample() {
         // Example from the GitHub issue
-        List<Object> segments = List.of(
-                newSegment(1, 1, 5, 5), // Segment A
+        List<Object> segments = List.of(newSegment(1, 1, 5, 5), // Segment A
                 newSegment(1, 5, 5, 1), // Segment B
                 newSegment(3, 0, 3, 6) // Segment C
         );
@@ -274,13 +273,64 @@ public class BentleyOttmannTest {
         assertTrue(containsPoint(intersections, 3.0, 3.0), "Intersection should be at (3, 3)");
     }
 
+    @Test
+    void testEventTypeOrdering() {
+        // Multiple events at the same point with different types
+        List<Object> segments = List.of(
+                newSegment(2, 2, 6, 2), // ends at (2,2)
+                newSegment(0, 2, 2, 2), // ends at (2,2)
+                newSegment(2, 2, 2, 6), // starts at (2,2)
+                newSegment(2, 0, 2, 2) // ends at (2,2)
+        );
+
+        Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(cast(segments));
+        assertTrue(containsPoint(intersections, 2.0, 2.0));
+    }
+
+    @Test
+    void testCollinearOverlapWithInteriorPoint() {
+        // Test collinear segments where one segment's interior overlaps another
+        List<Object> segments = List.of(newSegment(0, 0, 6, 6), newSegment(2, 2, 4, 4));
+        Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(cast(segments));
+
+        // Should find at least one overlap point (where segments touch/overlap)
+        assertFalse(intersections.isEmpty(), "Should find overlap points for collinear segments");
+        assertTrue(containsPoint(intersections, 2.0, 2.0) || containsPoint(intersections, 4.0, 4.0), "Should contain overlap boundary point");
+    }
+
+    @Test
+    void testCollinearTouchingAtBothEndpoints() {
+        // Test collinear segments that touch at both endpoints
+        // This triggers the "endpoint of both" logic (line 354-355)
+        List<Object> segments = List.of(newSegment(0, 0, 4, 4), newSegment(4, 4, 8, 8));
+
+        Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(cast(segments));
+        assertEquals(1, intersections.size());
+        assertTrue(containsPoint(intersections, 4.0, 4.0), "Should find touching point");
+    }
+
+    @Test
+    void testCollinearOverlapPartialInterior() {
+        // Test case where segments overlap but one point is inside, one is endpoint
+        List<Object> segments = List.of(newSegment(0, 0, 5, 5), newSegment(3, 3, 7, 7));
+
+        Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(cast(segments));
+
+        // Should detect the overlap region
+        assertFalse(intersections.isEmpty());
+        // The algorithm should return at least one of the boundary points
+        assertTrue(containsPoint(intersections, 3.0, 3.0) || containsPoint(intersections, 5.0, 5.0));
+    }
+
     private static Object newSegment(double x1, double y1, double x2, double y2) {
         return new BentleyOttmann.Segment(new Point2D.Double(x1, y1), new Point2D.Double(x2, y2));
     }
 
     private static List<BentleyOttmann.Segment> cast(List<Object> objs) {
         List<BentleyOttmann.Segment> result = new ArrayList<>();
-        for (Object o : objs) result.add((BentleyOttmann.Segment) o);
+        for (Object o : objs) {
+            result.add((BentleyOttmann.Segment) o);
+        }
         return result;
     }
 

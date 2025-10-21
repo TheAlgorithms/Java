@@ -1,7 +1,16 @@
 package com.thealgorithms.geometry;
 
 import java.awt.geom.Point2D;
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.TreeSet;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Implementation of the Bentley–Ottmann algorithm for finding all intersection
@@ -102,7 +111,9 @@ public final class BentleyOttmann {
 
         @Override
         public boolean equals(Object o) {
-            if (!(o instanceof Event e)) return false;
+            if (!(o instanceof Event e)) {
+                return false;
+            }
             return pointsEqual(this.point, e.point);
         }
 
@@ -116,10 +127,12 @@ public final class BentleyOttmann {
      * Comparator for segments in the status structure (sweep line).
      * Orders segments by their y-coordinate at the current sweep line position.
      */
-    private static class StatusComparator implements Comparator<Segment> {
+    private final static class StatusComparator implements Comparator<Segment> {
         @Override
         public int compare(Segment s1, Segment s2) {
-            if (s1.id == s2.id) return 0;
+            if (s1.id == s2.id) {
+                return 0;
+            }
 
             double y1 = s1.getY(currentSweepX);
             double y2 = s2.getY(currentSweepX);
@@ -271,7 +284,9 @@ public final class BentleyOttmann {
     }
 
     private static Segment getNeighbor(TreeSet<Segment> status, Set<Segment> removed, boolean lower) {
-        if (removed.isEmpty()) return null;
+        if (removed.isEmpty()) {
+            return null;
+        }
         Segment ref = removed.iterator().next();
         return lower ? status.lower(ref) : status.higher(ref);
     }
@@ -324,10 +339,14 @@ public final class BentleyOttmann {
     }
 
     private static Point2D.Double getIntersection(Segment s1, Segment s2) {
-        double x1 = s1.p1.x, y1 = s1.p1.y;
-        double x2 = s1.p2.x, y2 = s1.p2.y;
-        double x3 = s2.p1.x, y3 = s2.p1.y;
-        double x4 = s2.p2.x, y4 = s2.p2.y;
+        double x1 = s1.p1.x;
+        double y1 = s1.p1.y;
+        double x2 = s1.p2.x;
+        double y2 = s1.p2.y;
+        double x3 = s2.p1.x;
+        double y3 = s2.p1.y;
+        double x4 = s2.p2.x;
+        double y4 = s2.p2.y;
 
         double denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
 
@@ -338,10 +357,18 @@ public final class BentleyOttmann {
                 // Return any overlapping point
                 List<Point2D.Double> overlapPoints = new ArrayList<>();
 
-                if (onSegment(s1, s2.p1)) overlapPoints.add(s2.p1);
-                if (onSegment(s1, s2.p2)) overlapPoints.add(s2.p2);
-                if (onSegment(s2, s1.p1)) overlapPoints.add(s1.p1);
-                if (onSegment(s2, s1.p2)) overlapPoints.add(s1.p2);
+                if (onSegment(s1, s2.p1)) {
+                    overlapPoints.add(s2.p1);
+                }
+                if (onSegment(s1, s2.p2)) {
+                    overlapPoints.add(s2.p2);
+                }
+                if (onSegment(s2, s1.p1)) {
+                    overlapPoints.add(s1.p1);
+                }
+                if (onSegment(s2, s1.p2)) {
+                    overlapPoints.add(s1.p2);
+                }
 
                 // Remove duplicates and return the first point
                 if (!overlapPoints.isEmpty()) {
