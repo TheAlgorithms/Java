@@ -12,12 +12,17 @@ import java.io.PrintStream;
  * Recommended usage:
  * <ul>
  *   <li>Inside test methods with try-with-resources for automatic restoration of streams</li>
- *   <li>Or as a global instance in the test class, in which case you must call {@link #close()} in a teardown method</li>
+ *   <li>
+ *       Or as a global instance in the test class, in which case you should call {@link #close()}
+ *       for good measures in a teardown method
+ *    </li>
  * </ul>
  */
 public class ConsoleInterceptor implements AutoCloseable {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    /** Saved reference to stdout */
     private final PrintStream originalOut = System.out;
+    /** Saved reference to stdin */
     private final InputStream originalIn = System.in;
     private boolean isCapturing;
 
@@ -25,7 +30,10 @@ public class ConsoleInterceptor implements AutoCloseable {
         Input
     =========================== */
 
-    /** Mock System.in with provided input */
+    /**
+     * Mock System.in with the provided input.
+     * Used in test, mainly for simulating input from the keyboard for scanners.
+     * */
     public void mockInput(String mockedInput) {
         System.setIn(new ByteArrayInputStream(mockedInput.getBytes()));
     }
@@ -34,7 +42,10 @@ public class ConsoleInterceptor implements AutoCloseable {
         Output
     =========================== */
 
-    /** Start capturing System.out */
+    /**
+     * Start capturing System.out by replacing stdout with a custom PrintStream.
+     * All printed data will be stored in outContent for later retrieval.
+     * */
     public void captureOutput() {
         if (!isCapturing) {
             System.setOut(new PrintStream(outContent));
@@ -43,8 +54,8 @@ public class ConsoleInterceptor implements AutoCloseable {
     }
 
     /**
-     * Get current captured output and clear the buffer
-     * @return the console output as a string
+     * Get current captured output and clears the buffer.
+     * @return the captured output as a string
      * @throws IllegalStateException if output hasn't been captured yet
      */
     public String getAndClearConsoleOutput() {
@@ -57,7 +68,7 @@ public class ConsoleInterceptor implements AutoCloseable {
         }
     }
 
-    /** Clears the output buffer */
+    /** Clears the output buffer. */
     public void clearConsoleOutput() {
         outContent.reset();
     }
@@ -65,7 +76,14 @@ public class ConsoleInterceptor implements AutoCloseable {
     /* ===========================
         Input And Output
     =========================== */
-
+    /**
+     * {@inheritDoc}
+     * <p>
+     * This override restores the original System.out and System.in streams,
+     * resets the captured output stored in the internal OutputStream,
+     * and sets the {@code isCapturing} flag to {@code false} to indicate
+     * that capturing has stopped and prevent further access to {@code outContent}.
+     */
     @Override
     public void close() {
         System.setOut(originalOut);

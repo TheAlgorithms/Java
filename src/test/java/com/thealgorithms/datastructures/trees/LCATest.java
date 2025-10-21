@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,8 +35,10 @@ public class LCATest {
      */
     private final int[] treeInput = new int[] {0, 1, 0, 2, 1, 5, 5, 6, 2, 4, 2, 3, 3, 7, 7, 9, 7, 8};
     private final int arrayLength = 10;
-    private final int[] parent = new int[arrayLength];
-    private final int[] depth = new int[arrayLength];
+    private int[] parent = new int[arrayLength];
+    private int[] depth = new int[arrayLength];
+    private final int startingSourceVertex = 0;
+    private final int startParentOfSource = -1;
     private final ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
     /* ========================
@@ -100,7 +103,7 @@ public class LCATest {
             dfs.setAccessible(true);
             getLCA.setAccessible(true);
 
-            dfs.invoke(null, adj, 0, -1, parent, depth);
+            dfs.invoke(null, adj, startingSourceVertex, startParentOfSource, parent, depth);
 
             assertEquals(expectedParent, getLCA.invoke(null, v1, v2, depth, parent));
     }
@@ -111,7 +114,7 @@ public class LCATest {
         Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
         dfs.setAccessible(true);
 
-        dfs.invoke(null, adj, 0, -1, parent, depth);
+        dfs.invoke(null, adj, startingSourceVertex, startParentOfSource, parent, depth);
 
         assertArrayEquals(new int[] {0, 1, 1, 2, 2, 2, 3, 3, 4, 4}, depth);
     }
@@ -122,8 +125,29 @@ public class LCATest {
         Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
         dfs.setAccessible(true);
 
-        dfs.invoke(null, adj, 0, -1, parent, depth);
+        dfs.invoke(null, adj, startingSourceVertex, startParentOfSource, parent, depth);
 
         assertArrayEquals(new int[] {0, 0, 0, 2, 2, 1, 5, 3, 7, 7}, parent);
+    }
+
+    @Test
+    void testMinimalTreeDepthAndParent() throws Exception {
+        int v = 1;
+        ArrayList<ArrayList<Integer>> minimalAdj = new ArrayList<>();
+        for (int i = 0; i < v; i++) {
+            minimalAdj.add(new ArrayList<>());
+        }
+        parent = new int[v];
+        depth = new int[v];
+
+        Method dfs = LCA.class.getDeclaredMethod("dfs", ArrayList.class, int.class, int.class, int[].class, int[].class);
+        dfs.setAccessible(true);
+
+        dfs.invoke(null, minimalAdj, startingSourceVertex, startParentOfSource, parent, depth);
+
+        assertAll(
+          () -> assertArrayEquals(new int[] {0}, depth),
+          () -> assertArrayEquals(new int[] {0}, parent)
+        );
     }
 }

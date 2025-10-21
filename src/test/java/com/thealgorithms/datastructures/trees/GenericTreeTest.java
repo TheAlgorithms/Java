@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.InputMismatchException;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -38,6 +39,10 @@ public class GenericTreeTest {
         interceptor.close();
     }
 
+    /* ========================
+        Helper methods
+    ======================== */
+
     /**
      * Creates a generic tree that looks something like this:
      *
@@ -55,6 +60,10 @@ public class GenericTreeTest {
         return "40=>34 1 32 342 12 .34=>.1=>.32=>123 .123=>.342=>98 35 .98=>.35=>.12=>.";
     }
 
+    String getConsoleOutput() {
+        return interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "");
+    }
+
     /* ========================
         Tests
     ======================== */
@@ -64,9 +73,14 @@ public class GenericTreeTest {
         tree.display();
 
         assertEquals(
-          getExpectedTree(),
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+          getExpectedTree(), getConsoleOutput());
+    }
+
+    @Test
+    void testCreateValidTreeIsNotEmpty() {
+        tree.display();
+
+        assertDoesNotThrow(interceptor::getAndClearConsoleOutput);
     }
 
     @Test
@@ -112,37 +126,25 @@ public class GenericTreeTest {
             tree.depthcaller(i);
         }
 
-        assertEquals(
-          "4034132342121239835",
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+        assertEquals("4034132342121239835", getConsoleOutput());
     }
 
     @Test
     void testPreOrderPrintsAsExpected() {
         tree.preordercall();
-        assertEquals(
-          "40 34 1 32 123 342 98 35 12 .",
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+        assertEquals("40 34 1 32 123 342 98 35 12 .", getConsoleOutput());
     }
 
     @Test
     void testPostOrderPrintsAsExpected() {
         tree.postordercall();
-        assertEquals(
-          "34 1 123 32 98 35 342 12 40 .",
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+        assertEquals("34 1 123 32 98 35 342 12 40 .", getConsoleOutput());
     }
 
     @Test
     void testLevelOrderPrintsAsExpected() {
         tree.levelorder();
-        assertEquals(
-          "40 34 1 32 342 12 123 98 35 .",
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+        assertEquals("40 34 1 32 342 12 123 98 35 .", getConsoleOutput());
     }
 
     @Test
@@ -150,9 +152,6 @@ public class GenericTreeTest {
         tree.removeleavescall();
         tree.display();
 
-        assertEquals(
-          "40=>32 342 .32=>.342=>.",
-          interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "")
-        );
+        assertEquals("40=>32 342 .32=>.342=>.", getConsoleOutput());
     }
 }

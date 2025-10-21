@@ -3,6 +3,7 @@ package com.thealgorithms.datastructures.trees;
 import com.thealgorithms.utils.ConsoleInterceptor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -82,6 +83,21 @@ public class AVLSimpleTest {
 
         assertEquals(expectedTree, getActualTree());
     }
+
+    @Disabled(
+        "This test should pass for empty trees to protect against crashes "
+          + "when trying to access the display method before inserting anything"
+    )
+    @Test
+    @DisplayName("A test where an empty tree should return the string \"Tree is empty\".")
+    void testEmptyTree() {
+        AVLSimple tree = new AVLSimple();
+
+        tree.display();
+
+        assertEquals("Tree is empty", getActualTree());
+    }
+
 
     @ParameterizedTest
     @MethodSource("getTreeNodesInput")
