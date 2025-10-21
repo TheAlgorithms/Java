@@ -1,16 +1,18 @@
 package com.thealgorithms.geometry;
 
 import java.awt.geom.Point2D;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeSet;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.NavigableSet;
+import java.util.Objects;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Implementation of the Bentley–Ottmann algorithm for finding all intersection
@@ -283,7 +285,7 @@ public final class BentleyOttmann {
         }
     }
 
-    private static Segment getNeighbor(TreeSet<Segment> status, Set<Segment> removed, boolean lower) {
+    private static Segment getNeighbor(NavigableSet<Segment> status, Set<Segment> removed, boolean lower) {
         if (removed.isEmpty()) {
             return null;
         }
@@ -291,7 +293,7 @@ public final class BentleyOttmann {
         return lower ? status.lower(ref) : status.higher(ref);
     }
 
-    private static Segment getLeftmost(Set<Segment> segments, TreeSet<Segment> status) {
+    private static Segment getLeftmost(Set<Segment> segments, SortedSet<Segment> status) {
         Segment leftmost = null;
         for (Segment s : segments) {
             if (leftmost == null || Objects.requireNonNull(status.comparator()).compare(s, leftmost) < 0) {
@@ -301,7 +303,7 @@ public final class BentleyOttmann {
         return leftmost;
     }
 
-    private static Segment getRightmost(Set<Segment> segments, TreeSet<Segment> status) {
+    private static Segment getRightmost(Set<Segment> segments, SortedSet<Segment> status) {
         Segment rightmost = null;
         for (Segment s : segments) {
             if (status.comparator() != null && (rightmost == null || status.comparator().compare(s, rightmost) > 0)) {
@@ -318,10 +320,10 @@ public final class BentleyOttmann {
 
             // Check if event already exists
             boolean exists = false;
-            for (Point2D.Double p : eventMap.keySet()) {
-                if (pointsEqual(p, intersection)) {
+            for (Map.Entry<Point2D.Double, Event> entry : eventMap.entrySet()) {
+                if (pointsEqual(entry.getKey(), intersection)) {
                     exists = true;
-                    Event existingEvent = eventMap.get(p);
+                    Event existingEvent = entry.getValue();
                     existingEvent.addSegment(s1);
                     existingEvent.addSegment(s2);
                     break;
