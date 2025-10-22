@@ -15,7 +15,6 @@ import java.util.BitSet;
  *
  * @param <T> The type of elements to be stored in the Bloom filter.
  */
-@SuppressWarnings("rawtypes")
 public class BloomFilter<T> {
 
     private final int numberOfHashFunctions;
@@ -39,7 +38,7 @@ public class BloomFilter<T> {
         }
         this.numberOfHashFunctions = numberOfHashFunctions;
         this.bitArray = new BitSet(bitArraySize);
-        this.hashFunctions = new Hash[numberOfHashFunctions];
+        this.hashFunctions = (Hash<T>[]) new Hash<?>[numberOfHashFunctions];
         initializeHashFunctions();
     }
 
@@ -121,6 +120,8 @@ public class BloomFilter<T> {
          * <p>
          * The hash value is calculated by multiplying the index of the hash function
          * with the ASCII sum of the string representation of the key.
+         * For array types, the content of the array is used instead of the default
+         * toString.
          * </p>
          *
          * @param key the element to hash
@@ -143,9 +144,10 @@ public class BloomFilter<T> {
         private int asciiString(String word) {
             int sum = 0;
             for (char c : word.toCharArray()) {
-                sum += c;
-            }
-            return sum;
+                        sum += c;
+                    }
+                    return sum;
+                }
         }
 
         /**
@@ -174,4 +176,3 @@ public class BloomFilter<T> {
             return asciiString(String.valueOf(key));
         }
     }
-}
