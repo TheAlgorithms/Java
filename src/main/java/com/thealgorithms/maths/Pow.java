@@ -8,6 +8,8 @@ package com.thealgorithms.maths;
  * </p>
  */
 public final class Pow {
+    // Constructor privado para evitar instanciación de esta clase utilitaria
+    
     private Pow() {
     }
 
@@ -24,13 +26,23 @@ public final class Pow {
      * @throws IllegalArgumentException if {@code b} is negative.
      */
     public static long pow(int a, int b) {
+         // Verificamos que el exponente no sea negativo
         if (b < 0) {
+            // Si es negativo, lanzamos una excepción porque no está soportado
+            
             throw new IllegalArgumentException("Exponent must be non-negative.");
         }
+         // Inicializamos el resultado en 1 (cualquier número elevado a 0 es 1)
+       
         long result = 1;
+        
+        // Iteramos desde 1 hasta el exponente b
         for (int i = 1; i <= b; i++) {
+             // Multiplicamos el resultado acumulado por la base a en cada paso
+            
             result *= a;
         }
+        // Devolvemos el resultado final: a elevado a la b
         return result;
     }
 }
