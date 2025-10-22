@@ -192,4 +192,31 @@ public final class Area {
         }
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
+   /**
+     * Calculates the surface area of a pyramid with a square base.
+     * This includes both the base and the four triangular faces.
+     *
+     * @param sideLength  the length of one side of the square base
+     * @param slantHeight the slant height of the pyramid
+     * @return the total surface area of the pyramid
+     * @throws IllegalArgumentException if any parameter is non-positive
+     */
+    public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
+        // Validation checks to ensure inputs are physically valid
+        if (sideLength <= 0) {
+            throw new IllegalArgumentException("Side length must be a positive number");
+        }
+        if (slantHeight <= 0) {
+            throw new IllegalArgumentException("Slant height must be a positive number");
+        }
+
+        // Base area (square) = side²
+        double baseArea = sideLength * sideLength;
+
+        // Lateral area = 2 × side × slant height
+        double lateralSurfaceArea = 2 * sideLength * slantHeight;
+
+        // Combine base and lateral areas for total surface area
+        return baseArea + lateralSurfaceArea;
+    }
 }
