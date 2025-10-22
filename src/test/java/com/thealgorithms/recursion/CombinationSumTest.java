@@ -1,52 +1,42 @@
 package com.thealgorithms.recursion;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-
 /**
  * Comprehensive test class for CombinationSum algorithm
  * Tests various scenarios including edge cases
  */
 class CombinationSumTest {
-
     @Test
     void testBasicCase() {
-        CombinationSum cs = new CombinationSum();
         int[] candidates = {2, 3, 6, 7};
         int target = 7;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertTrue(result.contains(Arrays.asList(2, 2, 3)));
         assertTrue(result.contains(Arrays.asList(7)));
         assertEquals(2, result.size());
     }
-
     @Test
     void testMultipleCombinations() {
-        CombinationSum cs = new CombinationSum();
         int[] candidates = {2, 3, 5};
         int target = 8;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertTrue(result.contains(Arrays.asList(2, 2, 2, 2)));
         assertTrue(result.contains(Arrays.asList(2, 3, 3)));
         assertTrue(result.contains(Arrays.asList(3, 5)));
         assertEquals(3, result.size());
     }
-
     @Test
     void testNoSolution() {
-        CombinationSum cs = new CombinationSum();
         int[] candidates = {2};
         int target = 1;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertTrue(result.isEmpty());
     }
-
     @Test
     void testSingleElement() {
         
@@ -57,7 +47,6 @@ class CombinationSumTest {
         assertEquals(1, result.size());
         assertTrue(result.contains(Arrays.asList(1)));
     }
-
     @Test
     void testSingleElementRepeated() {
         
@@ -68,7 +57,6 @@ class CombinationSumTest {
         assertEquals(1, result.size());
         assertTrue(result.contains(Arrays.asList(2, 2, 2, 2)));
     }
-
     @Test
     void testLargerNumbers() {
         
@@ -83,7 +71,6 @@ class CombinationSumTest {
             assertEquals(target, sum);
         }
     }
-
     @Test
     void testTargetZero() {
         
@@ -95,7 +82,6 @@ class CombinationSumTest {
         assertEquals(1, result.size());
         assertTrue(result.get(0).isEmpty());
     }
-
     @Test
     void testEmptyCandidates() {
         
@@ -105,7 +91,6 @@ class CombinationSumTest {
         
         assertTrue(result.isEmpty());
     }
-
     @Test
     void testLargeTarget() {
         int[] candidates = {3, 5, 8};
@@ -121,7 +106,6 @@ class CombinationSumTest {
             assertEquals(target, sum);
         }
     }
-
     @Test
     void testAllCombinationsValid() {
         int[] candidates = {2, 3, 6, 7};
