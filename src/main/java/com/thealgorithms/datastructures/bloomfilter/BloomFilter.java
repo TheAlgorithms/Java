@@ -128,19 +128,7 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            String keyString = switch (key) {
-                case Object[] arr -> Arrays.deepToString(arr);
-                case int[] arr -> Arrays.toString(arr);
-                case long[] arr -> Arrays.toString(arr);
-                case double[] arr -> Arrays.toString(arr);
-                case float[] arr -> Arrays.toString(arr);
-                case boolean[] arr -> Arrays.toString(arr);
-                case byte[] arr -> Arrays.toString(arr);
-                case char[] arr -> Arrays.toString(arr);
-                case short[] arr -> Arrays.toString(arr);
-                case null, default -> String.valueOf(key);
-            };
-            return index * asciiString(keyString);
+            return index * contentHash(key);
         }
 
         /**
@@ -160,5 +148,31 @@ public class BloomFilter<T> {
                     }
                     return sum;
                 }
+        }
+
+        /**
+         * Computes a content-based hash for arrays; falls back to ASCII-sum of String value otherwise.
+         */
+        private int contentHash(Object key) {
+            if (key instanceof int[]) {
+                return Arrays.hashCode((int[]) key);
+            } else if (key instanceof long[]) {
+                return Arrays.hashCode((long[]) key);
+            } else if (key instanceof byte[]) {
+                return Arrays.hashCode((byte[]) key);
+            } else if (key instanceof short[]) {
+                return Arrays.hashCode((short[]) key);
+            } else if (key instanceof char[]) {
+                return Arrays.hashCode((char[]) key);
+            } else if (key instanceof boolean[]) {
+                return Arrays.hashCode((boolean[]) key);
+            } else if (key instanceof float[]) {
+                return Arrays.hashCode((float[]) key);
+            } else if (key instanceof double[]) {
+                return Arrays.hashCode((double[]) key);
+            } else if (key instanceof Object[]) {
+                return Arrays.deepHashCode((Object[]) key);
+            }
+            return asciiString(String.valueOf(key));
         }
     }
