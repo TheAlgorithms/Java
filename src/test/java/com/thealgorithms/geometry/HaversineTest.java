@@ -53,7 +53,9 @@ final class HaversineTest {
     @MethodSource("haversineTestProvider")
     @DisplayName("Test Haversine distance calculation for various coordinates")
     void testHaversine(double lat1, double lon1, double lat2, double lon2, double expectedDistance) {
+         // Compute the distance using the Haversine formula implementation
         double actualDistance = Haversine.haversine(lat1, lon1, lat2, lon2);
+        // Verify that the computed distance is within the acceptable tolerance range
         assertEquals(expectedDistance, actualDistance, DELTA);
     }
 }
