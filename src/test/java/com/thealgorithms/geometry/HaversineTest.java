@@ -9,9 +9,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
- * Unit tests for the Haversine formula implementation.
- * This class uses parameterized tests to verify the distance calculation
- * between various geographical coordinates.
+ * Unit tests designed to assess the implementation of the Haversine formula.
+ * This class employs parameterized testing to ensure the accuracy of distance computations between diverse geographic coordinates.
  */
 final class HaversineTest {
 
