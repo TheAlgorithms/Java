@@ -192,7 +192,7 @@ public final class Area {
         }
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
-   /**
+    /**
      * Calculates the surface area of a pyramid with a square base.
      * This includes both the base and the four triangular faces.
      *
