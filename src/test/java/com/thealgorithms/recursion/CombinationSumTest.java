@@ -49,10 +49,10 @@ class CombinationSumTest {
 
     @Test
     void testSingleElement() {
-        CombinationSum cs = new CombinationSum();
+        
         int[] candidates = {1};
         int target = 1;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertEquals(1, result.size());
         assertTrue(result.contains(Arrays.asList(1)));
@@ -60,10 +60,10 @@ class CombinationSumTest {
 
     @Test
     void testSingleElementRepeated() {
-        CombinationSum cs = new CombinationSum();
+        
         int[] candidates = {2};
         int target = 8;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertEquals(1, result.size());
         assertTrue(result.contains(Arrays.asList(2, 2, 2, 2)));
@@ -71,10 +71,10 @@ class CombinationSumTest {
 
     @Test
     void testLargerNumbers() {
-        CombinationSum cs = new CombinationSum();
+        
         int[] candidates = {10, 1, 2, 7, 6, 1, 5};
         int target = 8;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertFalse(result.isEmpty());
         // Verify all combinations sum to target
@@ -86,10 +86,10 @@ class CombinationSumTest {
 
     @Test
     void testTargetZero() {
-        CombinationSum cs = new CombinationSum();
+        
         int[] candidates = {1, 2, 3};
         int target = 0;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         // Should return empty list in the combination
         assertEquals(1, result.size());
@@ -98,20 +98,19 @@ class CombinationSumTest {
 
     @Test
     void testEmptyCandidates() {
-        CombinationSum cs = new CombinationSum();
+        
         int[] candidates = {};
         int target = 5;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertTrue(result.isEmpty());
     }
 
     @Test
     void testLargeTarget() {
-        CombinationSum cs = new CombinationSum();
         int[] candidates = {3, 5, 8};
         int target = 11;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         assertTrue(result.contains(Arrays.asList(3, 3, 5)));
         assertTrue(result.contains(Arrays.asList(3, 8)));
@@ -125,10 +124,9 @@ class CombinationSumTest {
 
     @Test
     void testAllCombinationsValid() {
-        CombinationSum cs = new CombinationSum();
         int[] candidates = {2, 3, 6, 7};
         int target = 7;
-        List<List<Integer>> result = cs.combinationSum(candidates, target);
+        List<List<Integer>> result = CombinationSum.combinationSum(candidates, target);
         
         // Verify each combination sums to target
         for (List<Integer> combination : result) {
