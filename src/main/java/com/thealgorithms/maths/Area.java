@@ -193,23 +193,35 @@ public final class Area {
         return Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     }
 
-    /**
-     * Calculate the surface area of a pyramid with a square base.
+        /**
+     * Calculates the total surface area of a pyramid with a square base.
+     * Includes both the base area and the slanted triangular sides.
      *
-     * @param sideLength side length of the square base
-     * @param slantHeight slant height of the pyramid
-     * @return surface area of the given pyramid
+     * @param side  the length of one side of the square base
+     * @param slant the slant height of the pyramid
+     * @return the total surface area of the pyramid in square units
+     * @throws IllegalArgumentException if any dimension is zero or negative
      */
-    public static double surfaceAreaPyramid(final double sideLength, final double slantHeight) {
-        if (sideLength <= 0) {
-            throw new IllegalArgumentException("Must be a positive sideLength");
+    public static double surfaceAreaPyramid(final double side, final double slant) {
+        // Validation: both side and slant height must be positive
+        if (side <= 0) {
+            throw new IllegalArgumentException("Side length must be greater than zero");
         }
-        if (slantHeight <= 0) {
-            throw new IllegalArgumentException("Must be a positive slantHeight");
+        if (slant <= 0) {
+            throw new IllegalArgumentException("Slant height must be greater than zero");
         }
 
-        double baseArea = sideLength * sideLength;
-        double lateralSurfaceArea = 2 * sideLength * slantHeight;
-        return baseArea + lateralSurfaceArea;
+        // Base area (square) = side^2
+        double base = side * side;
+
+        // Each triangular face has area = (side * slant) / 2
+        // A square pyramid has 4 faces → multiply by 4 / 2 = 2
+        double lateral = 2 * side * slant;
+
+        // Total surface area = base + lateral area
+        double totalArea = base + lateral;
+
+        // Return the final computed surface area
+        return totalArea;
     }
 }
