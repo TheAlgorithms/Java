@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
+import java.util.Arrays;
 import java.util.BitSet;
 
 /**
@@ -126,46 +127,7 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
-            return index * asciiString(objectToString(key));
-        }
-
-        /**
-         * Converts the key to a string suitable for hashing. Handles arrays properly.
-         */
-        private String objectToString(Object key) {
-            if (key == null) {
-                return "null";
-            }
-            Class<?> clazz = key.getClass();
-            if (clazz.isArray()) {
-                if (clazz == byte[].class) {
-                    return java.util.Arrays.toString((byte[]) key);
-                }
-                if (clazz == short[].class) {
-                    return java.util.Arrays.toString((short[]) key);
-                }
-                if (clazz == int[].class) {
-                    return java.util.Arrays.toString((int[]) key);
-                }
-                if (clazz == long[].class) {
-                    return java.util.Arrays.toString((long[]) key);
-                }
-                if (clazz == char[].class) {
-                    return java.util.Arrays.toString((char[]) key);
-                }
-                if (clazz == float[].class) {
-                    return java.util.Arrays.toString((float[]) key);
-                }
-                if (clazz == double[].class) {
-                    return java.util.Arrays.toString((double[]) key);
-                }
-                if (clazz == boolean[].class) {
-                    return java.util.Arrays.toString((boolean[]) key);
-                }
-                // For object arrays or multi-dimensional arrays
-                return java.util.Arrays.deepToString((Object[]) key);
-            }
-            return String.valueOf(key);
+            return index * contentHash(key);
         }
 
         /**
@@ -184,6 +146,32 @@ public class BloomFilter<T> {
                 sum += c;
             }
             return sum;
+        }
+
+        /**
+         * Computes a content-based hash for arrays; falls back to ASCII-sum of String value otherwise.
+         */
+        private int contentHash(Object key) {
+            if (key instanceof int[]) {
+                return Arrays.hashCode((int[]) key);
+            } else if (key instanceof long[]) {
+                return Arrays.hashCode((long[]) key);
+            } else if (key instanceof byte[]) {
+                return Arrays.hashCode((byte[]) key);
+            } else if (key instanceof short[]) {
+                return Arrays.hashCode((short[]) key);
+            } else if (key instanceof char[]) {
+                return Arrays.hashCode((char[]) key);
+            } else if (key instanceof boolean[]) {
+                return Arrays.hashCode((boolean[]) key);
+            } else if (key instanceof float[]) {
+                return Arrays.hashCode((float[]) key);
+            } else if (key instanceof double[]) {
+                return Arrays.hashCode((double[]) key);
+            } else if (key instanceof Object[]) {
+                return Arrays.deepHashCode((Object[]) key);
+            }
+            return asciiString(String.valueOf(key));
         }
     }
 }
