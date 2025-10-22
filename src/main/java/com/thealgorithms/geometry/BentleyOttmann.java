@@ -61,11 +61,11 @@ public final class BentleyOttmann {
         }
 
         Point2D.Double leftPoint() {
-            return p1.x < p2.x ? p1 : (p1.x > p2.x ? p2 : (p1.y < p2.y ? p1 : p2));
+            return p1.x < p2.x ? p1 : p1.x > p2.x ? p2 : p1.y < p2.y ? p1 : p2;
         }
 
         Point2D.Double rightPoint() {
-            return p1.x > p2.x ? p1 : (p1.x < p2.x ? p2 : (p1.y > p2.y ? p1 : p2));
+            return p1.x > p2.x ? p1 : p1.x < p2.x ? p2 : p1.y > p2.y ? p1 : p2;
         }
 
         @Override

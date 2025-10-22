@@ -1,10 +1,6 @@
 package com.thealgorithms.geometry;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Assertions;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -30,8 +26,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(1, 1, 5, 5), newSegment(1, 5, 5, 1));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertEquals(1, intersections.size());
-        assertTrue(containsPoint(intersections, 3.0, 3.0));
+        Assertions.assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 3.0, 3.0));
     }
 
     @Test
@@ -39,8 +35,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(3, 0, 3, 6), newSegment(1, 1, 5, 5));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertEquals(1, intersections.size());
-        assertTrue(containsPoint(intersections, 3.0, 3.0));
+        Assertions.assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 3.0, 3.0));
     }
 
     @Test
@@ -48,7 +44,7 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 0, 1, 1), newSegment(2, 2, 3, 3));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(intersections.isEmpty());
+        Assertions.assertTrue(intersections.isEmpty());
     }
 
     @Test
@@ -57,9 +53,9 @@ public class BentleyOttmannTest {
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
 
-        assertEquals(2, intersections.size(), "Two identical segments should report 2 intersection points (both endpoints)");
-        assertTrue(containsPoint(intersections, 1.0, 1.0));
-        assertTrue(containsPoint(intersections, 5.0, 5.0));
+        Assertions.assertEquals(2, intersections.size(), "Two identical segments should report 2 intersection points (both endpoints)");
+        Assertions.assertTrue(containsPoint(intersections, 1.0, 1.0));
+        Assertions.assertTrue(containsPoint(intersections, 5.0, 5.0));
     }
 
     @Test
@@ -67,41 +63,41 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 2, 4, 2), newSegment(2, 0, 2, 4));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(containsPoint(intersections, 2.0, 2.0));
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0));
     }
 
     @Test
     void testEmptyList() {
         List<BentleyOttmann.Segment> segments = List.of();
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(intersections.isEmpty());
+        Assertions.assertTrue(intersections.isEmpty());
     }
 
     @Test
     void testSingleSegment() {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 0, 5, 5));
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(intersections.isEmpty());
+        Assertions.assertTrue(intersections.isEmpty());
     }
 
     @Test
     void testNullListThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> BentleyOttmann.findIntersections(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> BentleyOttmann.findIntersections(null));
     }
 
     @Test
     void testParallelSegments() {
         // Test 1: Parallel diagonal segments
         List<BentleyOttmann.Segment> diagonalSegments = List.of(newSegment(0, 0, 4, 4), newSegment(1, 0, 5, 4), newSegment(2, 0, 6, 4));
-        assertTrue(BentleyOttmann.findIntersections(diagonalSegments).isEmpty());
+        Assertions.assertTrue(BentleyOttmann.findIntersections(diagonalSegments).isEmpty());
 
         // Test 2: Parallel vertical segments
         List<BentleyOttmann.Segment> verticalSegments = List.of(newSegment(1, 0, 1, 5), newSegment(2, 0, 2, 5), newSegment(3, 0, 3, 5));
-        assertTrue(BentleyOttmann.findIntersections(verticalSegments).isEmpty());
+        Assertions.assertTrue(BentleyOttmann.findIntersections(verticalSegments).isEmpty());
 
         // Test 3: Parallel horizontal segments
         List<BentleyOttmann.Segment> horizontalSegments = List.of(newSegment(0, 1, 5, 1), newSegment(0, 2, 5, 2), newSegment(0, 3, 5, 3));
-        assertTrue(BentleyOttmann.findIntersections(horizontalSegments).isEmpty());
+        Assertions.assertTrue(BentleyOttmann.findIntersections(horizontalSegments).isEmpty());
     }
 
     @Test
@@ -109,8 +105,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 0, 2, 2), newSegment(2, 2, 4, 0));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertEquals(1, intersections.size());
-        assertTrue(containsPoint(intersections, 2.0, 2.0));
+        Assertions.assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0));
     }
 
     @Test
@@ -120,8 +116,8 @@ public class BentleyOttmannTest {
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
         // Overlapping collinear segments share the point (2,2) where second starts
         // and (4,4) where first ends - at least one should be detected
-        assertFalse(intersections.isEmpty(), "Should find at least one overlap point");
-        assertTrue(containsPoint(intersections, 2.0, 2.0) || containsPoint(intersections, 4.0, 4.0), "Should contain either (2,2) or (4,4)");
+        Assertions.assertFalse(intersections.isEmpty(), "Should find at least one overlap point");
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0) || containsPoint(intersections, 4.0, 4.0), "Should contain either (2,2) or (4,4)");
     }
 
     @Test
@@ -134,9 +130,9 @@ public class BentleyOttmannTest {
         );
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(containsPoint(intersections, 2.0, 2.0));
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0));
         // All segments meet at (2, 2), so should be reported once
-        assertEquals(1, intersections.size());
+        Assertions.assertEquals(1, intersections.size());
     }
 
     @Test
@@ -158,12 +154,12 @@ public class BentleyOttmannTest {
 
         // Each vertical line crosses each horizontal line
         // 3 vertical × 3 horizontal = 9 intersections
-        assertEquals(9, intersections.size(), "3x3 grid should have 9 intersections");
+        Assertions.assertEquals(9, intersections.size(), "3x3 grid should have 9 intersections");
 
         // Verify all grid points are present
         for (int x = 0; x <= 2; x++) {
             for (int y = 0; y <= 2; y++) {
-                assertTrue(containsPoint(intersections, x, y), String.format("Grid point (%d, %d) should be present", x, y));
+                Assertions.assertTrue(containsPoint(intersections, x, y), String.format("Grid point (%d, %d) should be present", x, y));
             }
         }
     }
@@ -178,10 +174,10 @@ public class BentleyOttmannTest {
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
         // Triangle vertices are intersections
-        assertTrue(containsPoint(intersections, 0.0, 0.0));
-        assertTrue(containsPoint(intersections, 4.0, 0.0));
-        assertTrue(containsPoint(intersections, 2.0, 3.0));
-        assertEquals(3, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 0.0, 0.0));
+        Assertions.assertTrue(containsPoint(intersections, 4.0, 0.0));
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 3.0));
+        Assertions.assertEquals(3, intersections.size());
     }
 
     @Test
@@ -190,8 +186,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 0, 10, 10), newSegment(0, 10, 10, 0), newSegment(5, 0, 5, 10), newSegment(0, 5, 10, 5));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(containsPoint(intersections, 5.0, 5.0), "Center point should be present");
-        assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 5.0, 5.0), "Center point should be present");
+        Assertions.assertEquals(1, intersections.size());
     }
 
     @Test
@@ -199,8 +195,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0.001, 0.001, 0.002, 0.002), newSegment(0.001, 0.002, 0.002, 0.001));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertEquals(1, intersections.size());
-        assertTrue(containsPoint(intersections, 0.0015, 0.0015));
+        Assertions.assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 0.0015, 0.0015));
     }
 
     @Test
@@ -208,11 +204,11 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segmentsSameStart = List.of(newSegment(0, 0, 4, 4), newSegment(0, 0, 4, -4), newSegment(0, 0, -4, 4));
 
         Set<Point2D.Double> intersectionsSameStart = BentleyOttmann.findIntersections(segmentsSameStart);
-        assertTrue(containsPoint(intersectionsSameStart, 0.0, 0.0));
+        Assertions.assertTrue(containsPoint(intersectionsSameStart, 0.0, 0.0));
         List<BentleyOttmann.Segment> segmentsSameEnd = List.of(newSegment(0, 0, 4, 4), newSegment(8, 4, 4, 4), newSegment(4, 8, 4, 4));
 
         Set<Point2D.Double> intersectionsSameEnd = BentleyOttmann.findIntersections(segmentsSameEnd);
-        assertTrue(containsPoint(intersectionsSameEnd, 4.0, 4.0));
+        Assertions.assertTrue(containsPoint(intersectionsSameEnd, 4.0, 4.0));
     }
 
     @Test
@@ -225,7 +221,7 @@ public class BentleyOttmannTest {
         );
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(containsPoint(intersections, 2.0, 2.0));
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0));
     }
 
     @Test
@@ -249,10 +245,10 @@ public class BentleyOttmannTest {
         long duration = endTime - startTime;
 
         // Should complete in reasonable time (< 1 second for 100 segments)
-        assertTrue(duration < 1000, "Algorithm should complete in less than 1 second for 100 segments. Took: " + duration + "ms");
+        Assertions.assertTrue(duration < 1000, "Algorithm should complete in less than 1 second for 100 segments. Took: " + duration + "ms");
 
         // Just verify it returns a valid result
-        assertNotNull(intersections);
+        Assertions.assertNotNull(intersections);
         System.out.println("Performance test: 100 segments processed in " + duration + "ms, found " + intersections.size() + " intersections");
     }
 
@@ -267,8 +263,8 @@ public class BentleyOttmannTest {
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
 
         // Expected output: [(3, 3)]
-        assertEquals(1, intersections.size(), "Should find exactly one intersection");
-        assertTrue(containsPoint(intersections, 3.0, 3.0), "Intersection should be at (3, 3)");
+        Assertions.assertEquals(1, intersections.size(), "Should find exactly one intersection");
+        Assertions.assertTrue(containsPoint(intersections, 3.0, 3.0), "Intersection should be at (3, 3)");
     }
 
     @Test
@@ -281,7 +277,7 @@ public class BentleyOttmannTest {
         );
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertTrue(containsPoint(intersections, 2.0, 2.0));
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0));
     }
 
     @Test
@@ -291,8 +287,8 @@ public class BentleyOttmannTest {
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
 
         // Should find at least one overlap point (where segments touch/overlap)
-        assertFalse(intersections.isEmpty(), "Should find overlap points for collinear segments");
-        assertTrue(containsPoint(intersections, 2.0, 2.0) || containsPoint(intersections, 4.0, 4.0), "Should contain overlap boundary point");
+        Assertions.assertFalse(intersections.isEmpty(), "Should find overlap points for collinear segments");
+        Assertions.assertTrue(containsPoint(intersections, 2.0, 2.0) || containsPoint(intersections, 4.0, 4.0), "Should contain overlap boundary point");
     }
 
     @Test
@@ -302,8 +298,8 @@ public class BentleyOttmannTest {
         List<BentleyOttmann.Segment> segments = List.of(newSegment(0, 0, 4, 4), newSegment(4, 4, 8, 8));
 
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
-        assertEquals(1, intersections.size());
-        assertTrue(containsPoint(intersections, 4.0, 4.0), "Should find touching point");
+        Assertions.assertEquals(1, intersections.size());
+        Assertions.assertTrue(containsPoint(intersections, 4.0, 4.0), "Should find touching point");
     }
 
     @Test
@@ -314,9 +310,9 @@ public class BentleyOttmannTest {
         Set<Point2D.Double> intersections = BentleyOttmann.findIntersections(segments);
 
         // Should detect the overlap region
-        assertFalse(intersections.isEmpty());
+        Assertions.assertFalse(intersections.isEmpty());
         // The algorithm should return at least one of the boundary points
-        assertTrue(containsPoint(intersections, 3.0, 3.0) || containsPoint(intersections, 5.0, 5.0));
+        Assertions.assertTrue(containsPoint(intersections, 3.0, 3.0) || containsPoint(intersections, 5.0, 5.0));
     }
 
     private static BentleyOttmann.Segment newSegment(double x1, double y1, double x2, double y2) {
