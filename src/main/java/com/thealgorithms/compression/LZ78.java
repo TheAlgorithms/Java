@@ -51,6 +51,15 @@ public final class LZ78 {
     }
 
     /**
+     * A node in the dictionary trie structure.
+     * Each node represents a phrase and can have child nodes for extended phrases.
+     */
+    private static class TrieNode {
+        Map<Character, TrieNode> children = new HashMap<>();
+        int index = -1; // -1 means not assigned yet
+    }
+
+    /**
      * Compresses the input text using the LZ78 algorithm.
      *
      * @param text The input string to compress. Must not be null.
@@ -62,38 +71,33 @@ public final class LZ78 {
         }
 
         List<Token> compressedOutput = new ArrayList<>();
-        // Dictionary maps string phrases to their assigned index
-        Map<String, Integer> dictionary = new HashMap<>();
-        // Start index from 1, index 0 implicitly represents the empty string prefix
+        TrieNode root = new TrieNode();
         int nextDictionaryIndex = 1;
 
-        StringBuilder currentPhrase = new StringBuilder();
+        TrieNode currentNode = root;
         int lastMatchedIndex = 0;
 
         for (int i = 0; i < text.length(); i++) {
             char currentChar = text.charAt(i);
-            currentPhrase.append(currentChar);
-            String phraseStr = currentPhrase.toString();
 
-            if (dictionary.containsKey(phraseStr)) {
-                // This phrase exists in dictionary, remember its index and continue
-                lastMatchedIndex = dictionary.get(phraseStr);
+            if (currentNode.children.containsKey(currentChar)) {
+                currentNode = currentNode.children.get(currentChar);
+                lastMatchedIndex = currentNode.index;
             } else {
-                // This phrase does NOT exist in dictionary
                 // Output: (index of longest matching prefix, current character)
                 compressedOutput.add(new Token(lastMatchedIndex, currentChar));
 
-                // Add this new phrase to the dictionary
-                dictionary.put(phraseStr, nextDictionaryIndex++);
+                TrieNode newNode = new TrieNode();
+                newNode.index = nextDictionaryIndex++;
+                currentNode.children.put(currentChar, newNode);
 
-                // Reset for next iteration
-                currentPhrase.setLength(0);
+                currentNode = root;
                 lastMatchedIndex = 0;
             }
         }
 
         // Handle remaining phrase at end of input
-        if (!currentPhrase.isEmpty()) {
+        if (currentNode != root) {
             compressedOutput.add(new Token(lastMatchedIndex, END_OF_STREAM));
         }
 
