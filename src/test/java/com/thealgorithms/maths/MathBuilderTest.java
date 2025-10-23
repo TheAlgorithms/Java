@@ -141,7 +141,7 @@ class MathBuilderTest {
 	}
 
 	@Test
-	@DisplayName("This Should throw but does not")
+	@DisplayName("follows IEEE 754")
 	void divideByZero() {
 
 
@@ -151,10 +151,16 @@ class MathBuilderTest {
 
         MathBuilder.Builder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
 				.closeParenthesisAndDivide();
+
+        MathBuilder actual3 = new MathBuilder.Builder(-10.5).openParenthesis(0)
+                .closeParenthesisAndDivide().divide(0).build();
+
         assertAll(
                 () -> assertTrue(Double.isInfinite(actual.get())),
                 () -> assertDoesNotThrow(() -> actual2.build().get()),
-                () -> assertDoesNotThrow(() -> actual2.divide(0).build().get())
+                () -> assertDoesNotThrow(() -> actual2.divide(0).build().get()),
+                () -> assertEquals(Double.POSITIVE_INFINITY, actual2.divide(0).build().get()),
+                () -> assertEquals(Double.NEGATIVE_INFINITY, actual3.get())
         );
 
 
