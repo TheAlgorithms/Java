@@ -30,7 +30,7 @@ public class IsPowerFourTest {
             Arguments.of(16, Boolean.TRUE), // 4^2
             Arguments.of(64, Boolean.TRUE), // 4^3
             Arguments.of(256, Boolean.TRUE), // 4^4
-            Arguments.of(1024, Boolean.FALSE), // 1024 = 2^10, not 4^n
+            Arguments.of(1024, Boolean.TRUE), // 4^5
             Arguments.of(0, Boolean.FALSE), // 0 is not a power of four
             Arguments.of(-4, Boolean.FALSE), // Negative number
             Arguments.of(-16, Boolean.FALSE), // Negative number
