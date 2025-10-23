@@ -54,7 +54,7 @@ public final class LZ78 {
      * A node in the dictionary trie structure.
      * Each node represents a phrase and can have child nodes for extended phrases.
      */
-    private static class TrieNode {
+    private static final class TrieNode {
         Map<Character, TrieNode> children = new HashMap<>();
         int index = -1; // -1 means not assigned yet
     }
