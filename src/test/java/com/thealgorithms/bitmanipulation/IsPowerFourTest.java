@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.MethodSource;
  * Test case for IsPowerFour class
  */
 
-public class IsPowerTwoTest {
+public class IsPowerFourTest {
 
     @ParameterizedTest
     @MethodSource("provideNumbersForPowerFour")
