@@ -20,7 +20,7 @@ public final class IsPowerFour {
      * @param number the integer to check
      * @return true if the number is a power of false, false otherwise
      */
-    public static boolean IsPowerFour(int number) {
+    public static boolean isPowerFour(int number) {
         if (number <= 0) {
             return false;
         }
