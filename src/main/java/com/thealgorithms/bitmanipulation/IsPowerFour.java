@@ -11,7 +11,7 @@ public final class IsPowerFour {
 
     /**
      * Checks if the given integer is a power of four.
-     *
+     * <p>
      * A number is considered a power of four if:
      * - It is greater than zero
      * - It is a power of two i.e. (n & (n - 1)) == 0
