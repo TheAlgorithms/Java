@@ -1,217 +1,197 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
 
-class SchedulingAlgorithms 
-{
+class SchedulingAlgorithms {
+    static class Process {
+        private int pid;
+        private int priority;
+        private int arrivalTime;
+        private int burstTime;
+        private int remainingTime;
+        private int completionTime;
+        private int waitingTime;
+        private int turnaroundTime;
+        private int responseTime;
 
-    static class Process 
-    {
-        int pid;
-        int priority;
-        int arrivalTime;
-        int burstTime;
-        int remainingTime;
-        int completionTime;
-        int waitingTime;
-        int turnaroundTime;
-        int responseTime;
-        boolean completed;
-
-        Process(int pid, int priority, int arrivalTime, int burstTime) 
-        {
+        Process(int pid, int priority, int arrivalTime, int burstTime) {
             this.pid = pid;
             this.priority = priority;
             this.arrivalTime = arrivalTime;
             this.burstTime = burstTime;
             this.remainingTime = burstTime;
-            this.completed = false;
+            this.responseTime = -1;
         }
+        public int getPid() { return pid; }
+        public int getPriority() { return priority; }
+        public int getArrivalTime() { return arrivalTime; }
+        public int getBurstTime() { return burstTime; }
+        public int getRemainingTime() { return remainingTime; }
+        public int getCompletionTime() { return completionTime; }
+        public int getWaitingTime() { return waitingTime; }
+        public int getTurnaroundTime() { return turnaroundTime; }
+        public int getResponseTime() { return responseTime; }
+
+        public void setRemainingTime(int remainingTime) { this.remainingTime = remainingTime; }
+        public void setCompletionTime(int completionTime) { this.completionTime = completionTime; }
+        public void setWaitingTime(int waitingTime) { this.waitingTime = waitingTime; }
+        public void setTurnaroundTime(int turnaroundTime) { this.turnaroundTime = turnaroundTime; }
+        public void setResponseTime(int responseTime) { this.responseTime = responseTime; }
     }
 
-    public static void main(String[] args) 
-    {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter number of processes: ");
+            int n = sc.nextInt();
 
-        System.out.print("Enter number of processes: ");
-        int n = sc.nextInt();
+            Process[] processes = new Process[n];
+            for (int i = 0; i < n; i++) {
+                System.out.println("Process " + (i + 1));
+                System.out.print("Enter arrival time: ");
+                int at = sc.nextInt();
+                System.out.print("Enter burst time: ");
+                int bt = sc.nextInt();
+                System.out.print("Enter priority (integer): ");
+                int priority = sc.nextInt();
+                processes[i] = new Process(i + 1, priority, at, bt);
+            }
 
-        Process[] processes = new Process[n];
-        for (int i = 0; i < n; i++) 
-        {
-            System.out.println("Process " + (i + 1));
-            System.out.print("Enter arrival time: ");
-            int at = sc.nextInt();
-            System.out.print("Enter burst time: ");
-            int bt = sc.nextInt();
-            System.out.print("Enter priority (integer): ");
-            int priority = sc.nextInt();
-            processes[i] = new Process(i + 1, priority, at, bt);
-        }
+            System.out.println("\nChoose the scheduling algorithm:");
+            System.out.println("1. Non-Preemptive (Shortest Job First with Priority)");
+            System.out.println("2. Preemptive (Shortest Remaining Time First)");
+            System.out.print("Enter your choice (1 or 2): ");
+            int choice = sc.nextInt();
 
-        System.out.println("Choose the scheduling algorithm:");
-        System.out.println("1. Non-Preemptive");
-        System.out.println("2. Preemptive");
-        System.out.print("Enter your choice (1 or 2): ");
-        int choice = sc.nextInt();
-
-        switch (choice) 
-        {
-            case 1:
-                nonPreemptive(processes);
-                break;
-            case 2:
-                preemptive(processes);
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                return;
+            switch (choice) {
+                case 1:
+                    nonPreemptive(processes);
+                    break;
+                case 2:
+                    preemptive(processes);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Exiting.");
+                    return;
+            }
         }
     }
-
-    private static void nonPreemptive(Process[] processes) 
-    {
+    
+    private static void nonPreemptive(Process[] processes) {
         int n = processes.length;
-        int completed = 0;
+        int completedProcesses = 0;
         int currentTime = 0;
         boolean[] isCompleted = new boolean[n];
 
-        while (completed != n) 
-        {
-            int idx = -1;
-            int minBurst = Integer.MAX_VALUE;
-            for (int i = 0; i < n; i++) 
-            {
-                if ((processes[i].arrivalTime <= currentTime) && !isCompleted[i]) 
-                {
-                    if (processes[i].burstTime < minBurst) 
-                    {
-                        minBurst = processes[i].burstTime;
-                        idx = i;
-                    }
-                    if (processes[i].burstTime == minBurst) 
-                    {
-                        if (processes[i].priority < processes[idx].priority) 
-                        {
-                            idx = i;
+        while (completedProcesses < n) {
+            int selectedProcessIndex = -1;
+            int minBurstTime = Integer.MAX_VALUE;
+            int highestPriority = Integer.MAX_VALUE;
+
+            for (int i = 0; i < n; i++) {
+                if (processes[i].getArrivalTime() <= currentTime && !isCompleted[i]) {
+                    if (processes[i].getBurstTime() < minBurstTime) {
+                        minBurstTime = processes[i].getBurstTime();
+                        highestPriority = processes[i].getPriority();
+                        selectedProcessIndex = i;
+                    } 
+                    else if (processes[i].getBurstTime() == minBurstTime) {
+                        if (processes[i].getPriority() < highestPriority) {
+                            highestPriority = processes[i].getPriority();
+                            selectedProcessIndex = i;
                         }
                     }
                 }
             }
 
-            if (idx != -1) 
-            {
-                processes[idx].waitingTime = currentTime - processes[idx].arrivalTime;
-                currentTime += processes[idx].burstTime;
-                processes[idx].completionTime = currentTime;
-                processes[idx].turnaroundTime = processes[idx].completionTime - processes[idx].arrivalTime;
-                processes[idx].responseTime = processes[idx].waitingTime;
-                isCompleted[idx] = true;
-                completed++;
-            } 
-            else 
-            {
+            if (selectedProcessIndex != -1) {
+                Process currentProcess = processes[selectedProcessIndex];
+                
+                if (currentProcess.getResponseTime() == -1) {
+                     currentProcess.setResponseTime(currentTime - currentProcess.getArrivalTime());
+                }
+
+                currentProcess.setWaitingTime(currentTime - currentProcess.getArrivalTime());
+                currentTime += currentProcess.getBurstTime();
+                currentProcess.setCompletionTime(currentTime);
+                currentProcess.setTurnaroundTime(currentProcess.getCompletionTime() - currentProcess.getArrivalTime());
+                
+                isCompleted[selectedProcessIndex] = true;
+                completedProcesses++;
+            } else {
                 currentTime++;
             }
         }
 
-        printResults(processes, "Non-Preemptive SJF (Shortest Job First) Scheduling");
+        printResults(processes, "Non-Preemptive SJF (with Priority) Scheduling");
     }
 
-    private static void preemptive(Process[] processes) 
-    {
+    private static void preemptive(Process[] processes) {
         int n = processes.length;
-        int completed = 0;
+        int completedProcesses = 0;
         int currentTime = 0;
-        int minRemainingTime;
-        int shortest = -1;
-        boolean check = false;
 
-        int[] waitingTime = new int[n];
-        int[] turnaroundTime = new int[n];
-        int[] completionTime = new int[n];
-        int[] responseTime = new int[n];
+        while (completedProcesses < n) {
+            int shortestJobIndex = -1;
+            int minRemainingTime = Integer.MAX_VALUE;
 
-        int[] remainingTime = new int[n];
-        for (int i = 0; i < n; i++) 
-        {
-            remainingTime[i] = processes[i].burstTime;
-        }
-
-        while (completed != n) 
-        {
-            minRemainingTime = Integer.MAX_VALUE;
-            shortest = -1;
-            check = false;
-
-            for (int i = 0; i < n; i++) 
-            {
-                if ((processes[i].arrivalTime <= currentTime) &&
-                    (remainingTime[i] < minRemainingTime) && ( remainingTime[i] > 0)) 
-                {
-                    minRemainingTime = remainingTime[i];
-                    shortest = i;
-                    check = true;
+            for (int i = 0; i < n; i++) {
+                if (processes[i].getArrivalTime() <= currentTime && processes[i].getRemainingTime() > 0) {
+                    if (processes[i].getRemainingTime() < minRemainingTime) {
+                        minRemainingTime = processes[i].getRemainingTime();
+                        shortestJobIndex = i;
+                    }
                 }
             }
 
-            if (!check) 
-            {
+            if (shortestJobIndex == -1) {
                 currentTime++;
                 continue;
             }
 
-            if (responseTime[shortest] == 0) 
-            {
-                responseTime[shortest] = currentTime - processes[shortest].arrivalTime;
+            Process currentProcess = processes[shortestJobIndex];
+
+            if (currentProcess.getResponseTime() == -1) {
+                currentProcess.setResponseTime(currentTime - currentProcess.getArrivalTime());
             }
 
-            remainingTime[shortest]--;
+            currentProcess.setRemainingTime(currentProcess.getRemainingTime() - 1);
             currentTime++;
 
-            if (remainingTime[shortest] == 0) 
-            {
-                completed++;
-                completionTime[shortest] = currentTime;
-                turnaroundTime[shortest] = completionTime[shortest] - processes[shortest].arrivalTime;
-                waitingTime[shortest] = turnaroundTime[shortest] - processes[shortest].burstTime;
-                if (waitingTime[shortest] < 0)
-                {
-                    waitingTime[shortest] = 0;
+            if (currentProcess.getRemainingTime() == 0) {
+                completedProcesses++;
+                currentProcess.setCompletionTime(currentTime);
+                currentProcess.setTurnaroundTime(currentProcess.getCompletionTime() - currentProcess.getArrivalTime());
+                currentProcess.setWaitingTime(currentProcess.getTurnaroundTime() - currentProcess.getBurstTime());
+                 
+                if (currentProcess.getWaitingTime() < 0) {
+                    currentProcess.setWaitingTime(0);
                 }
             }
         }
 
-        for (int i = 0; i < n; i++) 
-        {
-            processes[i].completionTime = completionTime[i];
-            processes[i].turnaroundTime = turnaroundTime[i];
-            processes[i].waitingTime = waitingTime[i];
-            processes[i].responseTime = responseTime[i];
-        }
-
-        printResults(processes, "Preemptive SRTF (Shortest Remaining Time First) Scheduling");
+        printResults(processes, "Preemptive SRTF Scheduling");
     }
 
-    private static void printResults(Process[] processes, String title) 
-    {
+    private static void printResults(Process[] processes, String title) {
         System.out.println("\n" + title);
         System.out.printf("%-10s%-10s%-15s%-15s%-17s%-15s%-17s%-15s\n",
-                          "Process", "Priority", "Arrival Time", "Burst Time",
-                          "Completion Time", "Waiting Time", "Turnaround Time", "Response Time\n");
+                "Process", "Priority", "Arrival Time", "Burst Time",
+                "Completion Time", "Waiting Time", "Turnaround Time", "Response Time");
 
         double totalWT = 0, totalTAT = 0;
 
-        Arrays.sort(processes, (a, b) -> a.pid - b.pid);
+        Comparator<Process> byPid = (p1, p2) -> Integer.compare(p1.getPid(), p2.getPid());
+        Arrays.sort(processes, byPid);
 
-        for (Process p : processes) 
-        {
-            totalWT += p.waitingTime;
-            totalTAT += p.turnaroundTime;
+        for (Process p : processes) {
+            totalWT += p.getWaitingTime();
+            totalTAT += p.getTurnaroundTime();
             System.out.printf("%-10d%-10d%-15d%-15d%-17d%-15d%-17d%-15d\n",
-                              p.pid, p.priority, p.arrivalTime, p.burstTime,
-                              p.completionTime, p.waitingTime, p.turnaroundTime, p.responseTime);
+                    p.getPid(), p.getPriority(), p.getArrivalTime(), p.getBurstTime(),
+                    p.getCompletionTime(), p.getWaitingTime(), p.getTurnaroundTime(), p.getResponseTime());
         }
 
-        System.out.printf("Average Waiting Time: %.2f\n", totalWT / processes.length);
+        System.out.printf("\nAverage Waiting Time: %.2f\n", totalWT / processes.length);
         System.out.printf("Average Turnaround Time: %.2f\n", totalTAT / processes.length);
     }
 }
