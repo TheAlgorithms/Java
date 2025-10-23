@@ -1,3 +1,7 @@
+/*
+Preemptive & Non-Preemptive Scheduling Algorithm reference: https://www.geeksforgeeks.org/operating-systems/preemptive-and-non-preemptive-scheduling/
+*/
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
