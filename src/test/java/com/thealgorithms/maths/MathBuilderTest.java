@@ -140,34 +140,29 @@ class MathBuilderTest {
         assertNotEquals(expected2,actual);
 	}
 
-	@Test
-	@DisplayName("follows IEEE 754")
-	void divideByZero() {
-
-
-
-        MathBuilder actual = new MathBuilder.Builder(10.5).openParenthesis(0)
-                .closeParenthesisAndDivide().divide(0).build();
-
-        MathBuilder.Builder actual2 = new MathBuilder.Builder(10.5).openParenthesis(0)
-				.closeParenthesisAndDivide();
-
-        MathBuilder actual3 = new MathBuilder.Builder(-10.5).openParenthesis(0)
-                .closeParenthesisAndDivide().divide(0).build();
-
+    @ParameterizedTest
+    @MethodSource("divideDoubleByZeroHelper")
+    @DisplayName("Test that ensures dividing a double by zero follows IEEE 754")
+    void divideDoubleByZero(double expected, MathBuilder.Builder actual, String error) {
         assertAll(
-                () -> assertTrue(Double.isInfinite(actual.get())),
-                () -> assertDoesNotThrow(() -> actual2.build().get()),
-                () -> assertDoesNotThrow(() -> actual2.divide(0).build().get()),
-                () -> assertEquals(Double.POSITIVE_INFINITY, actual2.divide(0).build().get()),
-                () -> assertEquals(Double.NEGATIVE_INFINITY, actual3.get())
+                () -> assertDoesNotThrow(() -> actual.build().get(), "Dividing a double with zero should not throw"),
+                () -> assertDoesNotThrow(() -> actual.divide(0).build().get(), "Dividing infinity with 0 should not throw"),
+                () -> assertTrue(Double.isInfinite(actual.build().get()), "Dividing a double by zero should result in infinity"),
+                () -> assertEquals(expected, actual.build().get(), error)
         );
+    }
 
-
-	}
+    static List<Arguments> divideDoubleByZeroHelper() {
+        return List.of(
+                Arguments.of(Double.POSITIVE_INFINITY, new MathBuilder.Builder(10.5).openParenthesis(0)
+                        .closeParenthesisAndDivide(), "10.5 / 0 should be +Infinity"),
+                Arguments.of(Double.NEGATIVE_INFINITY, new MathBuilder.Builder(-10.5).openParenthesis(0)
+                        .closeParenthesisAndDivide(), "-10.5 / 0 should be -Infinity")
+        );
+    }
 
 	@Test
-	void randomFunctions() {
+	void randomFunctionsTest() {
 
 		double minValue = 0.0;
 		double maxValue = 2.1;
