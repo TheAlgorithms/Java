@@ -1,53 +1,80 @@
 package com.thealgorithms.others;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+/**
+ * Comprehensive test suite for {@link LowestBasePalindrome}.
+ * Tests all public methods including edge cases and exception handling.
+ *
+ * @author TheAlgorithms Contributors
+ */
 public class LowestBasePalindromeTest {
 
     @ParameterizedTest
     @MethodSource("provideListsForIsPalindromicPositive")
     public void testIsPalindromicPositive(List<Integer> list) {
-        assertTrue(LowestBasePalindrome.isPalindromic(list));
+        Assertions.assertTrue(LowestBasePalindrome.isPalindromic(list));
     }
 
     @ParameterizedTest
     @MethodSource("provideListsForIsPalindromicNegative")
     public void testIsPalindromicNegative(List<Integer> list) {
-        assertFalse(LowestBasePalindrome.isPalindromic(list));
+        Assertions.assertFalse(LowestBasePalindrome.isPalindromic(list));
     }
 
     @ParameterizedTest
     @MethodSource("provideNumbersAndBasesForIsPalindromicInBasePositive")
     public void testIsPalindromicInBasePositive(int number, int base) {
-        assertTrue(LowestBasePalindrome.isPalindromicInBase(number, base));
+        Assertions.assertTrue(LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
     @ParameterizedTest
     @MethodSource("provideNumbersAndBasesForIsPalindromicInBaseNegative")
     public void testIsPalindromicInBaseNegative(int number, int base) {
-        assertFalse(LowestBasePalindrome.isPalindromicInBase(number, base));
+        Assertions.assertFalse(LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
     @ParameterizedTest
     @MethodSource("provideNumbersAndBasesForExceptions")
     public void testIsPalindromicInBaseThrowsException(int number, int base) {
-        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(number, base));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.isPalindromicInBase(number, base));
     }
 
     @ParameterizedTest
     @MethodSource("provideNumbersForLowestBasePalindrome")
     public void testLowestBasePalindrome(int number, int expectedBase) {
-        assertEquals(expectedBase, LowestBasePalindrome.lowestBasePalindrome(number));
+        Assertions.assertEquals(expectedBase, LowestBasePalindrome.lowestBasePalindrome(number));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNumbersForComputeDigitsInBase")
+    public void testComputeDigitsInBase(int number, int base, List<Integer> expectedDigits) {
+        Assertions.assertEquals(expectedDigits, LowestBasePalindrome.computeDigitsInBase(number, base));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideInvalidNumbersForComputeDigits")
+    public void testComputeDigitsInBaseThrowsExceptionForNegativeNumber(int number, int base) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.computeDigitsInBase(number, base));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideInvalidBasesForComputeDigits")
+    public void testComputeDigitsInBaseThrowsExceptionForInvalidBase(int number, int base) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.computeDigitsInBase(number, base));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNegativeNumbersForLowestBasePalindrome")
+    public void testLowestBasePalindromeThrowsExceptionForNegativeNumber(int number) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> LowestBasePalindrome.lowestBasePalindrome(number));
     }
 
     private static Stream<Arguments> provideListsForIsPalindromicPositive() {
@@ -73,5 +100,22 @@ public class LowestBasePalindromeTest {
     private static Stream<Arguments> provideNumbersForLowestBasePalindrome() {
         return Stream.of(Arguments.of(0, 2), Arguments.of(1, 2), Arguments.of(2, 3), Arguments.of(3, 2), Arguments.of(10, 3), Arguments.of(11, 10), Arguments.of(15, 2), Arguments.of(39, 12), Arguments.of(44, 10), Arguments.of(58, 28), Arguments.of(69, 22), Arguments.of(79, 78), Arguments.of(87, 28),
             Arguments.of(90, 14), Arguments.of(5591, 37), Arguments.of(5895, 130), Arguments.of(9950, 198), Arguments.of(9974, 4986));
+    }
+
+    private static Stream<Arguments> provideNumbersForComputeDigitsInBase() {
+        return Stream.of(Arguments.of(0, 2, new ArrayList<>()), Arguments.of(5, 2, Arrays.asList(1, 0, 1)), Arguments.of(13, 2, Arrays.asList(1, 0, 1, 1)), Arguments.of(10, 3, Arrays.asList(1, 0, 1)), Arguments.of(15, 2, Arrays.asList(1, 1, 1, 1)), Arguments.of(101, 10, Arrays.asList(1, 0, 1)),
+            Arguments.of(255, 16, Arrays.asList(15, 15)), Arguments.of(100, 10, Arrays.asList(0, 0, 1)));
+    }
+
+    private static Stream<Arguments> provideInvalidNumbersForComputeDigits() {
+        return Stream.of(Arguments.of(-1, 2), Arguments.of(-10, 10), Arguments.of(-100, 5));
+    }
+
+    private static Stream<Arguments> provideInvalidBasesForComputeDigits() {
+        return Stream.of(Arguments.of(10, 1), Arguments.of(5, 0), Arguments.of(100, -1));
+    }
+
+    private static Stream<Arguments> provideNegativeNumbersForLowestBasePalindrome() {
+        return Stream.of(Arguments.of(-1), Arguments.of(-10), Arguments.of(-100));
     }
 }
