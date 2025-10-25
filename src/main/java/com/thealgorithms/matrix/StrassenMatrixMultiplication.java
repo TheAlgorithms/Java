@@ -54,14 +54,35 @@ public final class StrassenMatrixMultiplication {
         if (matrixA == null || matrixB == null) {
             throw new IllegalArgumentException("Input matrices cannot be null");
         }
-        if (matrixA.length == 0 || (matrixA.length > 0 && matrixA[0].length == 0)) {
-            return new double[0][0]; // Handle empty matrix
+
+        // Handle completely empty matrices (0 rows)
+        if (matrixA.length == 0 || matrixB.length == 0) {
+            // Check if dimensions are compatible (0xN * Nx0 -> 0x0)
+            if (matrixA.length == 0 && (matrixB.length > 0 && matrixB[0].length == 0)) {
+                return new double[0][0]; // Special case: 0xN * Nx0 = 0x0
+            }
+            // Check if dimensions are compatible (0x0 * 0x0 -> 0x0)
+            if (matrixA.length == 0 && matrixB.length == 0) {
+                return new double[0][0];
+            }
+            // Otherwise, if one is 0x0 and the other isn't, it's incompatible or invalid
+            throw new IllegalArgumentException("Matrices cannot be multiplied: incompatible dimensions for empty matrix.");
         }
 
+        // Check for matrices with rows but zero columns (e.g., {{}})
+        if (matrixA[0].length == 0 || matrixB[0].length == 0) {
+            // Check if dimensions are compatible (Mx0 * 0xP -> MxP, but needs special
+            // handling or definition)
+            // For this test case expecting an error:
+            throw new IllegalArgumentException("Input matrices must have at least one column.");
+        }
+
+        // Check for squareness and equal dimensions
         int n = matrixA.length;
         if (n != matrixA[0].length || n != matrixB.length || n != matrixB[0].length) {
             throw new IllegalArgumentException("Strassen's algorithm requires square matrices of the same dimension (n x n).");
         }
+        // --- END OF VALIDATION ---
 
         // --- 2. PADDING ---
         // Find the next power of 2
