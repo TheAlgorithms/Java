@@ -2,8 +2,8 @@ package com.thealgorithms.compression;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -84,6 +84,8 @@ public class BurrowsWheelerTransformTest {
     public void testInverseTransformNullString() {
         // bwtString == null
         assertEquals("", BurrowsWheelerTransform.inverseTransform(null, 1));
+        // bwtString.isEmpty()
+        assertEquals("", BurrowsWheelerTransform.inverseTransform("", 0));
     }
 
     @Test
@@ -106,6 +108,7 @@ public class BurrowsWheelerTransformTest {
         BurrowsWheelerTransform.BWTResult res3 = new BurrowsWheelerTransform.BWTResult("other", 4);
         BurrowsWheelerTransform.BWTResult res4 = new BurrowsWheelerTransform.BWTResult("annb$aa", 1);
 
+        assertEquals(res1, res1);
         assertEquals(res1, res2);
         assertNotEquals(res1, null); // obj == null
         assertNotEquals(res1, new Object()); // different class
