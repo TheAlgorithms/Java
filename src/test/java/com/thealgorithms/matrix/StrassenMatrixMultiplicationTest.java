@@ -14,12 +14,9 @@ class StrassenMatrixMultiplicationTest {
     private static final double[][] MATRIX_2X2_B = {{5, 6}, {7, 8}};
     private static final double[][] EXPECTED_2X2_PRODUCT = {{19, 22}, {43, 50}};
 
-    private static final double[][] MATRIX_4X4_A = {
-        {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-    private static final double[][] MATRIX_4X4_B = {
-        {5, 8, 1, 2}, {6, 7, 3, 0}, {4, 5, 9, 1}, {2, 6, 10, 14}};
-    private static final double[][] EXPECTED_4X4_PRODUCT = {
-        {37, 61, 74, 61}, {105, 165, 166, 129}, {173, 269, 258, 197}, {241, 373, 350, 265}};
+    private static final double[][] MATRIX_4X4_A = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    private static final double[][] MATRIX_4X4_B = {{5, 8, 1, 2}, {6, 7, 3, 0}, {4, 5, 9, 1}, {2, 6, 10, 14}};
+    private static final double[][] EXPECTED_4X4_PRODUCT = {{37, 61, 74, 61}, {105, 165, 166, 129}, {173, 269, 258, 197}, {241, 373, 350, 265}};
 
     private static final double[][] MATRIX_3X3_A = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     private static final double[][] MATRIX_3X3_B = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
@@ -39,12 +36,7 @@ class StrassenMatrixMultiplicationTest {
     private void assertMatrixEquals(double[][] expected, double[][] actual) {
         assertEquals(expected.length, actual.length, "Number of rows differ");
         for (int i = 0; i < expected.length; i++) {
-            assertArrayEquals(
-                expected[i],
-                actual[i],
-                DELTA,
-                "Row " + i + " differs"
-            );
+            assertArrayEquals(expected[i], actual[i], DELTA, "Row " + i + " differs");
         }
     }
 
@@ -84,7 +76,8 @@ class StrassenMatrixMultiplicationTest {
         double[][] result2 = StrassenMatrixMultiplication.multiply(MATRIX_ZERO_2X2, MATRIX_2X2_A);
         assertMatrixEquals(MATRIX_ZERO_2X2, result2);
     }
-     @Test
+
+    @Test
     void testMultiply1x1() {
         double[][] a = {{5.0}};
         double[][] b = {{6.0}};
@@ -93,42 +86,21 @@ class StrassenMatrixMultiplicationTest {
         assertMatrixEquals(expected, result);
     }
 
-
     @Test
     void testNullInput() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> StrassenMatrixMultiplication.multiply(null, MATRIX_2X2_B),
-            "Multiplying with null matrix A should throw exception"
-        );
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, null),
-            "Multiplying with null matrix B should throw exception"
-        );
+        assertThrows(IllegalArgumentException.class, () -> StrassenMatrixMultiplication.multiply(null, MATRIX_2X2_B), "Multiplying with null matrix A should throw exception");
+        assertThrows(IllegalArgumentException.class, () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, null), "Multiplying with null matrix B should throw exception");
     }
 
     @Test
     void testNonSquareInput() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> StrassenMatrixMultiplication.multiply(MATRIX_NON_SQUARE, MATRIX_2X2_B),
-            "Multiplying non-square matrix A should throw exception"
-        );
-         assertThrows(
-            IllegalArgumentException.class,
-            () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, MATRIX_NON_SQUARE),
-            "Multiplying non-square matrix B should throw exception"
-        );
+        assertThrows(IllegalArgumentException.class, () -> StrassenMatrixMultiplication.multiply(MATRIX_NON_SQUARE, MATRIX_2X2_B), "Multiplying non-square matrix A should throw exception");
+        assertThrows(IllegalArgumentException.class, () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, MATRIX_NON_SQUARE), "Multiplying non-square matrix B should throw exception");
     }
 
     @Test
     void testDifferentSquareDimensions() {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, MATRIX_3X3_A),
-            "Multiplying matrices of different square dimensions should throw exception"
-        );
+        assertThrows(IllegalArgumentException.class, () -> StrassenMatrixMultiplication.multiply(MATRIX_2X2_A, MATRIX_3X3_A), "Multiplying matrices of different square dimensions should throw exception");
     }
 
     @Test
@@ -138,10 +110,7 @@ class StrassenMatrixMultiplicationTest {
         assertEquals(0, result.length, "Multiplying empty matrices should result in an empty matrix");
 
         double[][] emptyRows = {{}};
-         assertThrows(
-            IllegalArgumentException.class, // Or handle as empty depending on strictness
-            () -> StrassenMatrixMultiplication.multiply(emptyRows, emptyRows),
-            "Multiplying matrices with zero columns might throw or return empty"
-        );
+        assertThrows(IllegalArgumentException.class, // Or handle as empty depending on strictness
+            () -> StrassenMatrixMultiplication.multiply(emptyRows, emptyRows), "Multiplying matrices with zero columns might throw or return empty");
     }
 }

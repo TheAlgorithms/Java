@@ -47,7 +47,7 @@ public final class StrassenMatrixMultiplication {
      * @param matrixB the second matrix (must be square, n x n)
      * @return the product of the two matrices
      * @throws IllegalArgumentException if matrices are not square, not the
-     * same size, or cannot be multiplied.
+     *                                  same size, or cannot be multiplied.
      */
     public static double[][] multiply(double[][] matrixA, double[][] matrixB) {
         // --- 1. VALIDATION ---
@@ -60,9 +60,7 @@ public final class StrassenMatrixMultiplication {
 
         int n = matrixA.length;
         if (n != matrixA[0].length || n != matrixB.length || n != matrixB[0].length) {
-            throw new IllegalArgumentException(
-                "Strassen's algorithm requires square matrices of the same dimension (n x n)."
-            );
+            throw new IllegalArgumentException("Strassen's algorithm requires square matrices of the same dimension (n x n).");
         }
 
         // --- 2. PADDING ---
@@ -172,21 +170,10 @@ public final class StrassenMatrixMultiplication {
     /**
      * Splits a parent matrix into a new sub-matrix.
      */
-    private static double[][] split(
-        double[][] matrix,
-        int rowStart,
-        int colStart,
-        int size
-    ) {
+    private static double[][] split(double[][] matrix, int rowStart, int colStart, int size) {
         double[][] subMatrix = new double[size][size];
         for (int i = 0; i < size; i++) {
-            System.arraycopy(
-                matrix[i + rowStart],
-                colStart,
-                subMatrix[i],
-                0,
-                size
-            );
+            System.arraycopy(matrix[i + rowStart], colStart, subMatrix[i], 0, size);
         }
         return subMatrix;
     }
@@ -194,12 +181,7 @@ public final class StrassenMatrixMultiplication {
     /**
      * Joins four sub-matrices into one larger matrix.
      */
-    private static double[][] join(
-        double[][] c11,
-        double[][] c12,
-        double[][] c21,
-        double[][] c22
-    ) {
+    private static double[][] join(double[][] c11, double[][] c12, double[][] c21, double[][] c22) {
         int n = c11.length;
         int newSize = n * 2;
         double[][] result = new double[newSize][newSize];
