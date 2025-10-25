@@ -93,6 +93,12 @@
             - 📄 [LFSR](src/main/java/com/thealgorithms/ciphers/a5/LFSR.java)
             - 📄 [Utils](src/main/java/com/thealgorithms/ciphers/a5/Utils.java)
         - 📁 **compression**
+          - 📄 [ArithmeticCoding](src/main/java/com/thealgorithms/compression/ArithmeticCoding.java)
+          - 📄 [BurrowsWheelerTransform](src/main/java/com/thealgorithms/compression/BurrowsWheelerTransform.java)
+          - 📄 [LZ77](src/main/java/com/thealgorithms/compression/LZ77.java)
+          - 📄 [LZ78](src/main/java/com/thealgorithms/compression/LZ78.java)
+          - 📄 [LZW](src/main/java/com/thealgorithms/compression/LZW.java)
+          - 📄 [MoveToFront](src/main/java/com/thealgorithms/compression/MoveToFront.java)
           - 📄 [RunLengthEncoding](src/main/java/com/thealgorithms/compression/RunLengthEncoding.java)
           - 📄 [ShannonFano](src/main/java/com/thealgorithms/compression/ShannonFano.java)
         - 📁 **conversions**
@@ -359,6 +365,7 @@
         - 📁 **geometry**
           - 📄 [BresenhamLine](src/main/java/com/thealgorithms/geometry/BresenhamLine.java)
           - 📄 [ConvexHull](src/main/java/com/thealgorithms/geometry/ConvexHull.java)
+          - 📄 [DDALine](src/main/java/com/thealgorithms/geometry/DDALine.java)
           - 📄 [GrahamScan](src/main/java/com/thealgorithms/geometry/GrahamScan.java)
           - 📄 [Haversine](src/main/java/com/thealgorithms/geometry/Haversine.java)
           - 📄 [MidpointCircle](src/main/java/com/thealgorithms/geometry/MidpointCircle.java)
@@ -371,6 +378,7 @@
           - 📄 [Dinic](src/main/java/com/thealgorithms/graph/Dinic.java)
           - 📄 [Edmonds](src/main/java/com/thealgorithms/graph/Edmonds.java)
           - 📄 [EdmondsKarp](src/main/java/com/thealgorithms/graph/EdmondsKarp.java)
+          - 📄 [HierholzerEulerianPath](src/main/java/com/thealgorithms/graph/HierholzerEulerianPath.java)
           - 📄 [HopcroftKarp](src/main/java/com/thealgorithms/graph/HopcroftKarp.java)
           - 📄 [HungarianAlgorithm](src/main/java/com/thealgorithms/graph/HungarianAlgorithm.java)
           - 📄 [PredecessorConstrainedDfs](src/main/java/com/thealgorithms/graph/PredecessorConstrainedDfs.java)
@@ -590,7 +598,6 @@
           - 📄 [PageRank](src/main/java/com/thealgorithms/others/PageRank.java)
           - 📄 [PasswordGen](src/main/java/com/thealgorithms/others/PasswordGen.java)
           - 📄 [PerlinNoise](src/main/java/com/thealgorithms/others/PerlinNoise.java)
-          - 📄 [PrintAMatrixInSpiralOrder](src/main/java/com/thealgorithms/others/PrintAMatrixInSpiralOrder.java)
           - 📄 [QueueUsingTwoStacks](src/main/java/com/thealgorithms/others/QueueUsingTwoStacks.java)
           - 📄 [SkylineProblem](src/main/java/com/thealgorithms/others/SkylineProblem.java)
           - 📄 [TwoPointers](src/main/java/com/thealgorithms/others/TwoPointers.java)
@@ -598,7 +605,11 @@
           - 📁 **cn**
             - 📄 [HammingDistance](src/main/java/com/thealgorithms/others/cn/HammingDistance.java)
         - 📁 **physics**
+          - 📄 [DampedOscillator](src/main/java/com/thealgorithms/physics/DampedOscillator.java)
+          - 📄 [ElasticCollision2D](src/main/java/com/thealgorithms/physics/ElasticCollision2D.java)
+          - 📄 [Gravitation](src/main/java/com/thealgorithms/physics/Gravitation.java)
           - 📄 [GroundToGroundProjectileMotion](src/main/java/com/thealgorithms/physics/GroundToGroundProjectileMotion.java)
+          - 📄 [SimplePendulumRK4](src/main/java/com/thealgorithms/physics/SimplePendulumRK4.java)
         - 📁 **puzzlesandgames**
           - 📄 [Sudoku](src/main/java/com/thealgorithms/puzzlesandgames/Sudoku.java)
           - 📄 [TowerOfHanoi](src/main/java/com/thealgorithms/puzzlesandgames/TowerOfHanoi.java)
@@ -883,6 +894,12 @@
             - 📄 [A5KeyStreamGeneratorTest](src/test/java/com/thealgorithms/ciphers/a5/A5KeyStreamGeneratorTest.java)
             - 📄 [LFSRTest](src/test/java/com/thealgorithms/ciphers/a5/LFSRTest.java)
         - 📁 **compression**
+          - 📄 [ArithmeticCodingTest](src/test/java/com/thealgorithms/compression/ArithmeticCodingTest.java)
+          - 📄 [BurrowsWheelerTransformTest](src/test/java/com/thealgorithms/compression/BurrowsWheelerTransformTest.java)
+          - 📄 [LZ77Test](src/test/java/com/thealgorithms/compression/LZ77Test.java)
+          - 📄 [LZ78Test](src/test/java/com/thealgorithms/compression/LZ78Test.java)
+          - 📄 [LZWTest](src/test/java/com/thealgorithms/compression/LZWTest.java)
+          - 📄 [MoveToFrontTest](src/test/java/com/thealgorithms/compression/MoveToFrontTest.java)
           - 📄 [RunLengthEncodingTest](src/test/java/com/thealgorithms/compression/RunLengthEncodingTest.java)
           - 📄 [ShannonFanoTest](src/test/java/com/thealgorithms/compression/ShannonFanoTest.java)
         - 📁 **conversions**
@@ -1115,6 +1132,7 @@
         - 📁 **geometry**
           - 📄 [BresenhamLineTest](src/test/java/com/thealgorithms/geometry/BresenhamLineTest.java)
           - 📄 [ConvexHullTest](src/test/java/com/thealgorithms/geometry/ConvexHullTest.java)
+          - 📄 [DDALineTest](src/test/java/com/thealgorithms/geometry/DDALineTest.java)
           - 📄 [GrahamScanTest](src/test/java/com/thealgorithms/geometry/GrahamScanTest.java)
           - 📄 [HaversineTest](src/test/java/com/thealgorithms/geometry/HaversineTest.java)
           - 📄 [MidpointCircleTest](src/test/java/com/thealgorithms/geometry/MidpointCircleTest.java)
@@ -1127,7 +1145,9 @@
           - 📄 [DinicTest](src/test/java/com/thealgorithms/graph/DinicTest.java)
           - 📄 [EdmondsKarpTest](src/test/java/com/thealgorithms/graph/EdmondsKarpTest.java)
           - 📄 [EdmondsTest](src/test/java/com/thealgorithms/graph/EdmondsTest.java)
+          - 📄 [HierholzerEulerianPathTest](src/test/java/com/thealgorithms/graph/HierholzerEulerianPathTest.java)
           - 📄 [HopcroftKarpTest](src/test/java/com/thealgorithms/graph/HopcroftKarpTest.java)
+          - 📄 [HungarianAlgorithmTest](src/test/java/com/thealgorithms/graph/HungarianAlgorithmTest.java)
           - 📄 [PredecessorConstrainedDfsTest](src/test/java/com/thealgorithms/graph/PredecessorConstrainedDfsTest.java)
           - 📄 [PushRelabelTest](src/test/java/com/thealgorithms/graph/PushRelabelTest.java)
           - 📄 [StronglyConnectedComponentOptimizedTest](src/test/java/com/thealgorithms/graph/StronglyConnectedComponentOptimizedTest.java)
@@ -1280,8 +1300,8 @@
           - 📄 [MatrixUtilTest](src/test/java/com/thealgorithms/matrix/MatrixUtilTest.java)
           - 📄 [MedianOfMatrixTest](src/test/java/com/thealgorithms/matrix/MedianOfMatrixTest.java)
           - 📄 [MirrorOfMatrixTest](src/test/java/com/thealgorithms/matrix/MirrorOfMatrixTest.java)
+          - 📄 [PrintAMatrixInSpiralOrderTest](src/test/java/com/thealgorithms/matrix/PrintAMatrixInSpiralOrderTest.java)
           - 📄 [SolveSystemTest](src/test/java/com/thealgorithms/matrix/SolveSystemTest.java)
-          - 📄 [TestPrintMatrixInSpiralOrder](src/test/java/com/thealgorithms/matrix/TestPrintMatrixInSpiralOrder.java)
         - 📁 **misc**
           - 📄 [ColorContrastRatioTest](src/test/java/com/thealgorithms/misc/ColorContrastRatioTest.java)
           - 📄 [MapReduceTest](src/test/java/com/thealgorithms/misc/MapReduceTest.java)
@@ -1322,13 +1342,16 @@
           - 📄 [PerlinNoiseTest](src/test/java/com/thealgorithms/others/PerlinNoiseTest.java)
           - 📄 [QueueUsingTwoStacksTest](src/test/java/com/thealgorithms/others/QueueUsingTwoStacksTest.java)
           - 📄 [SkylineProblemTest](src/test/java/com/thealgorithms/others/SkylineProblemTest.java)
-          - 📄 [TestPrintMatrixInSpiralOrder](src/test/java/com/thealgorithms/others/TestPrintMatrixInSpiralOrder.java)
           - 📄 [TwoPointersTest](src/test/java/com/thealgorithms/others/TwoPointersTest.java)
           - 📄 [WorstFitCPUTest](src/test/java/com/thealgorithms/others/WorstFitCPUTest.java)
           - 📁 **cn**
             - 📄 [HammingDistanceTest](src/test/java/com/thealgorithms/others/cn/HammingDistanceTest.java)
         - 📁 **physics**
+          - 📄 [DampedOscillatorTest](src/test/java/com/thealgorithms/physics/DampedOscillatorTest.java)
+          - 📄 [ElasticCollision2DTest](src/test/java/com/thealgorithms/physics/ElasticCollision2DTest.java)
+          - 📄 [GravitationTest](src/test/java/com/thealgorithms/physics/GravitationTest.java)
           - 📄 [GroundToGroundProjectileMotionTest](src/test/java/com/thealgorithms/physics/GroundToGroundProjectileMotionTest.java)
+          - 📄 [SimplePendulumRK4Test](src/test/java/com/thealgorithms/physics/SimplePendulumRK4Test.java)
         - 📁 **puzzlesandgames**
           - 📄 [SudokuTest](src/test/java/com/thealgorithms/puzzlesandgames/SudokuTest.java)
           - 📄 [TowerOfHanoiTest](src/test/java/com/thealgorithms/puzzlesandgames/TowerOfHanoiTest.java)
