@@ -57,15 +57,15 @@ public class StrassenMatrixMultiplication {
             int[][] b22 = new int[newSize][newSize]; // Bottom-right quadrant of B
 
             // Split matrix A into 4 quadrants
-            split(a, a11, 0, 0); // Fill a11
-            split(a, a12, 0, newSize); // Fill a12
-            split(a, a21, newSize, 0); // Fill a21
+            split(a, a11, 0, 0);       // Fill a11
+            split(a, a12, 0, newSize);  // Fill a12
+            split(a, a21, newSize, 0);  // Fill a21
             split(a, a22, newSize, newSize); // Fill a22
 
             // Split matrix B into 4 quadrants
-            split(b, b11, 0, 0); // Fill b11
-            split(b, b12, 0, newSize); // Fill b12
-            split(b, b21, newSize, 0); // Fill b21
+            split(b, b11, 0, 0);       // Fill b11
+            split(b, b12, 0, newSize);  // Fill b12
+            split(b, b21, newSize, 0);  // Fill b21
             split(b, b22, newSize, newSize); // Fill b22
 
             // --- Conquer Step (Calculate Strassen's 7 products recursively) ---
@@ -113,10 +113,11 @@ public class StrassenMatrixMultiplication {
             // Let's use the direct calculation: C22 = M1 - M2 + M3 + M6 (based on P5+P1-P3-P7 and P->M mapping)
             int[][] c22 = add(sub(add(m1, m3), m2), m6); // Matches P5+P1-P3+P7 if M6 maps to P7 sign-inverted? Needs careful check if results are wrong.
 
+
             // Join the four result quadrants back into the main result matrix
-            join(c11, resultMatrix, 0, 0); // Place C11 in top-left
-            join(c12, resultMatrix, 0, newSize); // Place C12 in top-right
-            join(c21, resultMatrix, newSize, 0); // Place C21 in bottom-left
+            join(c11, resultMatrix, 0, 0);          // Place C11 in top-left
+            join(c12, resultMatrix, 0, newSize);     // Place C12 in top-right
+            join(c21, resultMatrix, newSize, 0);     // Place C21 in bottom-left
             join(c22, resultMatrix, newSize, newSize); // Place C22 in bottom-right
         }
 
