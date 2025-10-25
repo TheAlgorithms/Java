@@ -136,15 +136,10 @@ public final class BurrowsWheelerTransform {
 
         // Sort rotations lexicographically
         Arrays.sort(rotations);
-
-        // Extract the last column and find the original string's position
+        int originalIndex = Arrays.binarySearch(rotations, text);
         StringBuilder lastColumn = new StringBuilder(n);
-        int originalIndex = -1;
         for (int i = 0; i < n; i++) {
             lastColumn.append(rotations[i].charAt(n - 1));
-            if (rotations[i].equals(text)) {
-                originalIndex = i;
-            }
         }
 
         return new BWTResult(lastColumn.toString(), originalIndex);

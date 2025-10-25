@@ -1,6 +1,7 @@
 package com.thealgorithms.compression;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -128,15 +129,14 @@ public final class MoveToFront {
      * to the one used in the forward transform, including character order, or the
      * output will be incorrect.</p>
      *
-     * @param indices the list of integers from the forward transform; if empty or {@code null},
-     *                returns an empty string
+     * @param indices The list of integers from the forward transform.
      * @param initialAlphabet the exact same initial alphabet string used for the forward transform;
      *                        if {@code null} or empty, returns an empty string
      * @return the original, untransformed string
      * @throws IllegalArgumentException if any index in {@code indices} is negative or
      *                                  exceeds the current alphabet size
      */
-    public static String inverseTransform(List<Integer> indices, String initialAlphabet) {
+    public static String inverseTransform(Collection<Integer> indices, String initialAlphabet) {
         if (indices == null || indices.isEmpty() || initialAlphabet == null || initialAlphabet.isEmpty()) {
             return "";
         }
