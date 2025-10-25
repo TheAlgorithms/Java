@@ -12,7 +12,7 @@ import java.util.List;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class AllPathsFromSourceToTarget {
 
-    // No. of vertices in graph
+    // Number of vertices in graph
     private final int v;
 
     // To store the paths from source to destination
