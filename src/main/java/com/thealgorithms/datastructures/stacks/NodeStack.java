@@ -1,161 +1,98 @@
 package com.thealgorithms.datastructures.stacks;
 
 /**
- * Implementation of a stack using nodes. Unlimited size, no arraylist.
+ * A stack implementation using linked nodes, supporting unlimited size without an ArrayList.
  *
- * @author Kyler Smith, 2017
+ * <p>Each node in the stack contains data of generic type {@code Item}, along with references
+ * to the next and previous nodes, supporting typical stack operations.
+ *
+ * <p>The stack follows a Last-In-First-Out (LIFO) order where elements added last are
+ * removed first. Supported operations include push, pop, and peek.
+ *
+ * @param <Item> the type of elements held in this stack
  */
 public class NodeStack<Item> {
 
     /**
-     * Entry point for the program.
+     * Node class representing each element in the stack.
      */
-    public static void main(String[] args) {
-        NodeStack<Integer> stack = new NodeStack<Integer>();
+    private class Node {
+        Item data;
+        Node previous;
 
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-        System.out.println("Testing :");
-        stack.print(); // prints : 5 4 3
-
-        Integer x = stack.pop(); // x = 5
-        stack.push(1);
-        stack.push(8);
-        Integer y = stack.peek(); // y = 8
-        System.out.println("Testing :");
-        stack.print(); // prints : 8 1 4 3
-
-        System.out.println("Testing :");
-        System.out.println("x : " + x);
-        System.out.println("y : " + y);
+        Node(Item data) {
+            this.data = data;
+            this.previous = null;
+        }
     }
 
-    /**
-     * Information each node should contain.
-     *
-     * @value data : information of the value in the node
-     * @value head : the head of the stack
-     * @value next : the next value from this node
-     * @value previous : the last value from this node
-     * @value size : size of the stack
-     */
-    private Item data;
-
-    private static NodeStack<?> head;
-    private NodeStack<?> previous;
-    private static int size = 0;
+    private Node head; // Top node in the stack
+    private int size; // Number of elements in the stack
 
     /**
-     * Constructors for the NodeStack.
+     * Constructs an empty NodeStack.
      */
     public NodeStack() {
-    }
-
-    private NodeStack(Item item) {
-        this.data = item;
+        head = null;
+        size = 0;
     }
 
     /**
-     * Put a value onto the stack.
+     * Pushes an item onto the stack.
      *
-     * @param item : value to be put on the stack.
+     * @param item the item to be pushed onto the stack
      */
     public void push(Item item) {
-        NodeStack<Item> newNs = new NodeStack<Item>(item);
-
-        if (this.isEmpty()) {
-            NodeStack.setHead(new NodeStack<>(item));
-            newNs.setNext(null);
-            newNs.setPrevious(null);
-        } else {
-            newNs.setPrevious(NodeStack.head);
-            NodeStack.head.setNext(newNs);
-            NodeStack.setHead(newNs);
-        }
-
-        NodeStack.setSize(NodeStack.getSize() + 1);
+        Node newNode = new Node(item);
+        newNode.previous = head;
+        head = newNode;
+        size++;
     }
 
     /**
-     * Value to be taken off the stack.
+     * Removes and returns the item at the top of the stack.
      *
-     * @return item : value that is returned.
+     * @return the item at the top of the stack, or {@code null} if the stack is empty
+     * @throws IllegalStateException if the stack is empty
      */
     public Item pop() {
-        Item item = (Item) NodeStack.head.getData();
-
-        NodeStack.setHead(NodeStack.head.getPrevious());
-        NodeStack.head.setNext(null);
-
-        NodeStack.setSize(NodeStack.getSize() - 1);
-
-        return item;
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot pop from an empty stack.");
+        }
+        Item data = head.data;
+        head = head.previous;
+        size--;
+        return data;
     }
 
     /**
-     * Value that is next to be taken off the stack.
+     * Returns the item at the top of the stack without removing it.
      *
-     * @return item : the next value that would be popped off the stack.
+     * @return the item at the top of the stack, or {@code null} if the stack is empty
+     * @throws IllegalStateException if the stack is empty
      */
     public Item peek() {
-        return (Item) NodeStack.head.getData();
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot peek from an empty stack.");
+        }
+        return head.data;
     }
 
     /**
-     * If the stack is empty or there is a value in.
+     * Checks whether the stack is empty.
      *
-     * @return boolean : whether or not the stack has anything in it.
+     * @return {@code true} if the stack has no elements, {@code false} otherwise
      */
     public boolean isEmpty() {
-        return NodeStack.getSize() == 0;
+        return head == null;
     }
 
     /**
-     * Returns the size of the stack.
+     * Returns the number of elements currently in the stack.
      *
-     * @return int : number of values in the stack.
+     * @return the size of the stack
      */
     public int size() {
-        return NodeStack.getSize();
-    }
-
-    /**
-     * Print the contents of the stack in the following format.
-     *
-     * <p>
-     * x <- head (next out) y z <- tail (first in) . . .
-     */
-    public void print() {
-        for (NodeStack<?> n = NodeStack.head; n != null; n = n.previous) {
-            System.out.println(n.getData().toString());
-        }
-    }
-
-    private static void setHead(NodeStack<?> ns) {
-        NodeStack.head = ns;
-    }
-
-    private void setNext(NodeStack<?> next) {
-    }
-
-    private NodeStack<?> getPrevious() {
-        return previous;
-    }
-
-    private void setPrevious(NodeStack<?> previous) {
-        this.previous = previous;
-    }
-
-    private static int getSize() {
         return size;
-    }
-
-    private static void setSize(int size) {
-        NodeStack.size = size;
-    }
-
-    private Item getData() {
-        return this.data;
     }
 }

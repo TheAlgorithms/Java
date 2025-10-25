@@ -7,6 +7,7 @@ import static com.thealgorithms.sorts.SortUtils.less;
  * <p>
  * For more details @see <a href="https://en.wikipedia.org/wiki/Timsort">TimSort Algorithm</a>
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 class TimSort implements SortAlgorithm {
     private static final int SUB_ARRAY_SIZE = 32;
     private Comparable[] aux;

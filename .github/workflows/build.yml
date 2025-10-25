@@ -1,23 +1,26 @@
 name: Build
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 21
-          distribution: 'adopt'
+          distribution: 'temurin'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
       - name: Upload coverage to codecov (tokenless)
         if: >-
           github.event_name == 'pull_request' &&
           github.event.pull_request.head.repo.full_name != github.repository
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
       - name: Upload coverage to codecov (with token)
@@ -25,7 +28,7 @@ jobs:
           github.repository == 'TheAlgorithms/Java' &&
           (github.event_name != 'pull_request' ||
           github.event.pull_request.head.repo.full_name == github.repository)
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true

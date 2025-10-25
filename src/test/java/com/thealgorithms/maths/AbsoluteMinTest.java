@@ -15,7 +15,13 @@ public class AbsoluteMinTest {
 
     @Test
     void testGetMinValueWithNoArguments() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> AbsoluteMin.getMinValue());
+        Exception exception = assertThrows(IllegalArgumentException.class, AbsoluteMin::getMinValue);
         assertEquals("Numbers array cannot be empty", exception.getMessage());
+    }
+
+    @Test
+    void testGetMinValueWithSameAbsoluteValues() {
+        assertEquals(-5, AbsoluteMin.getMinValue(-5, 5));
+        assertEquals(-5, AbsoluteMin.getMinValue(5, -5));
     }
 }

@@ -29,6 +29,7 @@ import java.util.stream.IntStream;
  * @param <E> type of elements
  * @see <a href="https://en.wikipedia.org/wiki/Skip_list">Wiki. Skip list</a>
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class SkipList<E extends Comparable<E>> {
 
     /**

@@ -13,7 +13,7 @@ public class InfixToPrefixTest {
 
     @ParameterizedTest
     @MethodSource("provideValidExpressions")
-    void testValidExpressions(String infix, String expectedPrefix) throws Exception {
+    void testValidExpressions(String infix, String expectedPrefix) {
         assertEquals(expectedPrefix, InfixToPrefix.infix2Prefix(infix));
     }
 

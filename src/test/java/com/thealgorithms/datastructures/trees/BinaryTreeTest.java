@@ -1,76 +1,78 @@
 package com.thealgorithms.datastructures.trees;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for the BinaryTree class.
+ */
 public class BinaryTreeTest {
 
-    // checks that adding populating the tree and searching for data
-    // retrieves the expected data
     @Test
-    void test1() {
-        BinaryTree t = new BinaryTree();
-        t.put(3);
-        t.put(5);
-        t.put(7);
-        t.put(9);
-        t.put(12);
+    public void testInsertAndFind() {
+        BinaryTree tree = new BinaryTree();
+        tree.put(3);
+        tree.put(5);
+        tree.put(7);
+        tree.put(9);
+        tree.put(12);
 
-        assertEquals(t.find(5).data, 5);
-        assertEquals(t.find(7).data, 7);
+        Assertions.assertNotNull(tree.find(5), "Node with value 5 should exist");
+        Assertions.assertEquals(5, tree.find(5).data, "Value of the found node should be 5");
+        Assertions.assertEquals(7, tree.find(7).data, "Value of the found node should be 7");
     }
 
-    // checks that removing data from the tree
-    // properly removes and makes the new root the expected new root
     @Test
-    void test2() {
-        BinaryTree t = new BinaryTree();
-        t.put(3);
-        t.put(5);
-        t.put(7);
-        t.put(9);
-        t.put(12);
-        t.remove(3);
-        t.remove(5);
-        t.remove(7);
+    public void testRemove() {
+        BinaryTree tree = new BinaryTree();
+        tree.put(3);
+        tree.put(5);
+        tree.put(7);
+        tree.put(9);
+        tree.put(12);
+        tree.remove(3);
+        tree.remove(5);
+        tree.remove(7);
 
-        assertEquals(t.getRoot().data, 9);
+        Assertions.assertNotNull(tree.getRoot(), "Root should not be null after removals");
+        if (tree.getRoot() != null) {
+            Assertions.assertEquals(9, tree.getRoot().data, "Root value should be 9 after removals");
+        } else {
+            Assertions.fail("Root should not be null after removals, but it is.");
+        }
     }
 
-    // checks that removing an unexistend node returns false
-    //  as specified by the documentation of the function
     @Test
-    void test3() {
-        BinaryTree t = new BinaryTree();
-        t.put(3);
-        t.put(5);
-        t.put(7);
-        t.put(9);
-        t.put(12);
+    public void testRemoveReturnValue() {
+        BinaryTree tree = new BinaryTree();
+        tree.put(3);
+        tree.put(5);
+        tree.put(7);
+        tree.put(9);
+        tree.put(12);
 
-        assertEquals(t.remove(9), true);
-        assertEquals(t.remove(398745987), false);
+        Assertions.assertTrue(tree.remove(9), "Removing existing node 9 should return true");
+        Assertions.assertFalse(tree.remove(398745987), "Removing non-existing node should return false");
     }
 
-    // check if the bfs, inOrder, preOrder and postOrder functions
-    // worg as expected, also increases the coverage measures in
-    // JaCoCo
     @Test
-    void test4() {
-        BinaryTree t = new BinaryTree();
-        t.put(3);
-        t.put(5);
-        t.put(7);
-        t.put(9);
-        t.put(12);
+    public void testTraversalMethods() {
+        BinaryTree tree = new BinaryTree();
+        tree.put(3);
+        tree.put(5);
+        tree.put(7);
+        tree.put(9);
+        tree.put(12);
 
-        t.bfs(t.find(12));
-        t.inOrder(t.getRoot());
-        t.preOrder(t.getRoot());
-        t.postOrder(t.getRoot());
+        // Testing traversal methods
+        tree.bfs(tree.getRoot());
+        tree.inOrder(tree.getRoot());
+        tree.preOrder(tree.getRoot());
+        tree.postOrder(tree.getRoot());
 
-        assertEquals(t.remove(9), true);
-        assertEquals(t.remove(398745987), false);
+        Assertions.assertTrue(tree.remove(9), "Removing existing node 9 should return true");
+        Assertions.assertFalse(tree.remove(398745987), "Removing non-existing node should return false");
+
+        Assertions.assertNotNull(tree.getRoot(), "Root should not be null after operations");
     }
 }

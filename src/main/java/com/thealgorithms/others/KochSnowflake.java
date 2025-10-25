@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 
 /**
@@ -104,7 +105,7 @@ public final class KochSnowflake {
         double offsetX = imageWidth / 10.;
         double offsetY = imageWidth / 3.7;
         Vector2 vector1 = new Vector2(offsetX, offsetY);
-        Vector2 vector2 = new Vector2(imageWidth / 2, Math.sin(Math.PI / 3) * imageWidth * 0.8 + offsetY);
+        Vector2 vector2 = new Vector2(imageWidth / 2.0, Math.sin(Math.PI / 3.0) * imageWidth * 0.8 + offsetY);
         Vector2 vector3 = new Vector2(imageWidth - offsetX, offsetY);
         ArrayList<Vector2> initialVectors = new ArrayList<Vector2>();
         initialVectors.add(vector1);
@@ -125,7 +126,7 @@ public final class KochSnowflake {
      * applied.
      * @return The transformed vectors after the iteration-step.
      */
-    private static ArrayList<Vector2> iterationStep(ArrayList<Vector2> vectors) {
+    private static ArrayList<Vector2> iterationStep(List<Vector2> vectors) {
         ArrayList<Vector2> newVectors = new ArrayList<Vector2>();
         for (int i = 0; i < vectors.size() - 1; i++) {
             Vector2 startVector = vectors.get(i);

@@ -8,6 +8,7 @@ import java.util.List;
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
  */
+@SuppressWarnings("rawtypes")
 public interface SortAlgorithm {
     /**
      * Main method arrays sorting algorithms

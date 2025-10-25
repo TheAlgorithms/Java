@@ -9,6 +9,7 @@ import java.util.List;
  *
  * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class AllPathsFromSourceToTarget {
 
     // No. of vertices in graph

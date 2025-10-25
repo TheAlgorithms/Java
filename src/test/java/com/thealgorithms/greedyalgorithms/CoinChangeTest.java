@@ -1,9 +1,11 @@
 package com.thealgorithms.greedyalgorithms;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CoinChangeTest {
@@ -16,7 +18,7 @@ public class CoinChangeTest {
 
     @Test
     public void testCoinChangeProblemWithLargeAmount() {
-        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(2000));
+        List<Integer> expected = singletonList(2000);
         ArrayList<Integer> coins = CoinChange.coinChangeProblem(2000);
         assertEquals(expected, coins);
     }

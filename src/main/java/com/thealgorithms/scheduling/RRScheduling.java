@@ -1,7 +1,3 @@
-/**
- * @author Md Asif Joardar
- */
-
 package com.thealgorithms.scheduling;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
@@ -11,6 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
+ * @author Md Asif Joardar
  * The Round-robin scheduling algorithm is a kind of preemptive First come, First Serve CPU
  * Scheduling algorithm. This can be understood here -
  * https://www.scaler.com/topics/round-robin-scheduling-in-os/

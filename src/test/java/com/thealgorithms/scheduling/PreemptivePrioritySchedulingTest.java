@@ -3,6 +3,7 @@ package com.thealgorithms.scheduling;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.thealgorithms.devutils.entities.ProcessDetails;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +18,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class PreemptivePrioritySchedulingTest {
     @ParameterizedTest
     @MethodSource("provideProcessesAndExpectedSchedules")
-    void testPreemptivePriorityScheduling(List<ProcessDetails> processes, List<String> expectedSchedule) {
+    void testPreemptivePriorityScheduling(Collection<ProcessDetails> processes, List<String> expectedSchedule) {
         PreemptivePriorityScheduling scheduler = new PreemptivePriorityScheduling(processes);
         scheduler.scheduleProcesses();
         assertEquals(expectedSchedule, scheduler.ganttChart);

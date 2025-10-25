@@ -3,106 +3,96 @@ package com.thealgorithms.datastructures.crdt;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 
 class LWWElementSetTest {
 
-    private LWWElementSet set;
-    private final Bias bias = Bias.ADDS;
-
-    @BeforeEach
-    void setUp() {
-        set = new LWWElementSet();
+    @Test
+    void testAddElement() {
+        LWWElementSet<String> set = new LWWElementSet<>();
+        set.add("A");
+        assertTrue(set.lookup("A"));
     }
 
     @Test
-    void testAdd() {
-        Element element = new Element("key1", 1, bias);
-        set.add(element);
-
-        assertTrue(set.lookup(element));
+    void testRemoveElement() {
+        LWWElementSet<String> set = new LWWElementSet<>();
+        set.add("A");
+        set.remove("A");
+        assertFalse(set.lookup("A"));
     }
 
     @Test
-    void testRemove() {
-        Element element = new Element("key1", 1, bias);
-        set.add(element);
-        set.remove(element);
-
-        assertFalse(set.lookup(element));
+    void testLookupWithoutAdding() {
+        LWWElementSet<String> set = new LWWElementSet<>();
+        assertFalse(set.lookup("A"));
     }
 
     @Test
-    void testRemoveNonexistentElement() {
-        Element element = new Element("key1", 1, bias);
-        set.remove(element);
+    void testLookupLaterTimestampsFalse() {
+        LWWElementSet<String> set = new LWWElementSet<>();
 
-        assertFalse(set.lookup(element));
+        set.addSet.put("A", new Element<>("A", Instant.now()));
+        set.removeSet.put("A", new Element<>("A", Instant.now().plusSeconds(10)));
+
+        assertFalse(set.lookup("A"));
     }
 
     @Test
-    void testLookupNonexistentElement() {
-        Element element = new Element("key1", 1, bias);
+    void testLookupEarlierTimestampsTrue() {
+        LWWElementSet<String> set = new LWWElementSet<>();
 
-        assertFalse(set.lookup(element));
+        set.addSet.put("A", new Element<>("A", Instant.now()));
+        set.removeSet.put("A", new Element<>("A", Instant.now().minusSeconds(10)));
+
+        assertTrue(set.lookup("A"));
     }
 
     @Test
-    void testCompareEqualSets() {
-        LWWElementSet otherSet = new LWWElementSet();
-
-        Element element = new Element("key1", 1, bias);
-        set.add(element);
-        otherSet.add(element);
-
-        assertTrue(set.compare(otherSet));
-
-        otherSet.add(new Element("key2", 2, bias));
-        assertTrue(set.compare(otherSet));
+    void testLookupWithConcurrentTimestamps() {
+        LWWElementSet<String> set = new LWWElementSet<>();
+        Instant now = Instant.now();
+        set.addSet.put("A", new Element<>("A", now));
+        set.removeSet.put("A", new Element<>("A", now));
+        assertFalse(set.lookup("A"));
     }
 
     @Test
-    void testCompareDifferentSets() {
-        LWWElementSet otherSet = new LWWElementSet();
+    void testMergeTwoSets() {
+        LWWElementSet<String> set1 = new LWWElementSet<>();
+        LWWElementSet<String> set2 = new LWWElementSet<>();
 
-        Element element1 = new Element("key1", 1, bias);
-        Element element2 = new Element("key2", 2, bias);
+        set1.add("A");
+        set2.add("B");
+        set2.remove("A");
 
-        set.add(element1);
-        otherSet.add(element2);
+        set1.merge(set2);
 
-        assertFalse(set.compare(otherSet));
+        assertFalse(set1.lookup("A"));
+        assertTrue(set1.lookup("B"));
     }
 
     @Test
-    void testMerge() {
-        LWWElementSet otherSet = new LWWElementSet();
+    void testMergeWithConflictingTimestamps() {
+        LWWElementSet<String> set1 = new LWWElementSet<>();
+        LWWElementSet<String> set2 = new LWWElementSet<>();
 
-        Element element1 = new Element("key1", 1, bias);
-        Element element2 = new Element("key2", 2, bias);
+        Instant now = Instant.now();
+        set1.addSet.put("A", new Element<>("A", now.minusSeconds(10)));
+        set2.addSet.put("A", new Element<>("A", now));
 
-        set.add(element1);
-        otherSet.add(element2);
+        set1.merge(set2);
 
-        set.merge(otherSet);
-
-        assertTrue(set.lookup(element1));
-        assertTrue(set.lookup(element2));
+        assertTrue(set1.lookup("A"));
     }
 
     @Test
-    void testCompareTimestampsEqualTimestamps() {
-        LWWElementSet lwwElementSet = new LWWElementSet();
-
-        Element e1 = new Element("key1", 10, Bias.REMOVALS);
-        Element e2 = new Element("key1", 10, Bias.REMOVALS);
-
-        assertTrue(lwwElementSet.compareTimestamps(e1, e2));
-
-        e1 = new Element("key1", 10, Bias.ADDS);
-        e2 = new Element("key1", 10, Bias.ADDS);
-
-        assertFalse(lwwElementSet.compareTimestamps(e1, e2));
+    void testRemoveOlderThanAdd() {
+        LWWElementSet<String> set = new LWWElementSet<>();
+        Instant now = Instant.now();
+        set.addSet.put("A", new Element<>("A", now));
+        set.removeSet.put("A", new Element<>("A", now.minusSeconds(10)));
+        assertTrue(set.lookup("A"));
     }
 }

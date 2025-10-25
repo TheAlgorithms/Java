@@ -2418,8 +2418,6 @@ public final class AES {
             rBytes = new StringBuilder(rBytes.substring(0, i * 2) + currentByteBits + rBytes.substring((i + 1) * 2));
         }
 
-        // t = new BigInteger(rBytes, 16);
-        // return t;
         return new BigInteger(rBytes.toString(), 16);
     }
 

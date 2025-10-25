@@ -17,7 +17,7 @@ public final class AbsoluteMax {
         }
         int absMax = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
-            if (Math.abs(numbers[i]) > Math.abs(absMax)) {
+            if (Math.abs(numbers[i]) > Math.abs(absMax) || (Math.abs(numbers[i]) == Math.abs(absMax) && numbers[i] > absMax)) {
                 absMax = numbers[i];
             }
         }

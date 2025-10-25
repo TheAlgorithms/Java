@@ -1,0 +1,25 @@
+---
+name: ProjectStructure
+
+'on':
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check_structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Check project structure
+        run: python3 .github/workflows/scripts/check_structure.py
+...

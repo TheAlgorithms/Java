@@ -8,17 +8,20 @@ name: Infer
       - master
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   run_infer:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 21
-          distribution: 'adopt'
+          distribution: 'temurin'
 
       - name: Set up OCaml
         uses: ocaml/setup-ocaml@v3
@@ -41,6 +44,7 @@ jobs:
           cd ..
           git clone https://github.com/facebook/infer.git
           cd infer
+          git checkout 01aaa268f9d38723ba69c139e10f9e2a04b40b1c
           ./build-infer.sh java
           cp -r infer ../Java
 

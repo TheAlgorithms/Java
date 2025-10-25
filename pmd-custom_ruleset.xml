@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="TheAlgorithms/Java ruleset"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+  <description>
+  Custom PMD checks for TheAlgorithms/Java
+  </description>
+<rule name="UselessMainMethod"
+      language="java"
+      message="The main method is redundant in this context"
+      class="net.sourceforge.pmd.lang.rule.xpath.XPathRule">
+    <description>
+        Avoid using the main method.
+    </description>
+    <priority>3</priority>
+    <properties>
+        <property name="xpath">
+            <value>
+<![CDATA[
+//MethodDeclaration[@Name = "main"]
+]]>
+            </value>
+        </property>
+    </properties>
+</rule>
+</ruleset>

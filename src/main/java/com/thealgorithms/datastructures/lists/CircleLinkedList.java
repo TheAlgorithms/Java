@@ -1,8 +1,24 @@
 package com.thealgorithms.datastructures.lists;
 
+/**
+ * This class is a circular singly linked list implementation. In a circular linked list,
+ * the last node points back to the first node, creating a circular chain.
+ *
+ * <p>This implementation includes basic operations such as appending elements
+ * to the end, removing elements from a specified position, and converting
+ * the list to a string representation.
+ *
+ * @param <E> the type of elements held in this list
+ */
+@SuppressWarnings("rawtypes")
 public class CircleLinkedList<E> {
 
-    private static final class Node<E> {
+    /**
+     * A static nested class representing a node in the circular linked list.
+     *
+     * @param <E> the type of element stored in the node
+     */
+    static final class Node<E> {
 
         Node<E> next;
         E value;
@@ -13,44 +29,56 @@ public class CircleLinkedList<E> {
         }
     }
 
-    // For better O.O design this should be private allows for better black box design
     private int size;
-    // this will point to dummy node;
-    private Node<E> head = null;
-    private Node<E> tail = null; // keeping a tail pointer to keep track of the end of list
+    Node<E> head = null;
+    private Node<E> tail;
 
-    // constructor for class.. here we will make a dummy node for circly linked list implementation
-    // with reduced error catching as our list will never be empty;
+    /**
+     * Initializes a new circular linked list. A dummy head node is used for simplicity,
+     * pointing initially to itself to ensure the list is never empty.
+     */
     public CircleLinkedList() {
-        // creation of the dummy node
-        head = new Node<E>(null, head);
+        head = new Node<>(null, head);
         tail = head;
         size = 0;
     }
 
-    // getter for the size... needed because size is private.
+    /**
+     * Returns the current size of the list.
+     *
+     * @return the number of elements in the list
+     */
     public int getSize() {
         return size;
     }
 
-    // for the sake of simplistiy this class will only contain the append function or addLast other
-    // add functions can be implemented however this is the basses of them all really.
+    /**
+     * Appends a new element to the end of the list. Throws a NullPointerException if
+     * a null value is provided.
+     *
+     * @param value the value to append to the list
+     * @throws NullPointerException if the value is null
+     */
     public void append(E value) {
         if (value == null) {
-            // we do not want to add null elements to the list.
             throw new NullPointerException("Cannot add null element to the list");
         }
-        // head.next points to the last element;
         if (tail == null) {
-            tail = new Node<E>(value, head);
+            tail = new Node<>(value, head);
             head.next = tail;
         } else {
-            tail.next = new Node<E>(value, head);
+            tail.next = new Node<>(value, head);
             tail = tail.next;
         }
         size++;
     }
 
+    /**
+     * Returns a string representation of the list in the format "[ element1, element2, ... ]".
+     * An empty list is represented as "[]".
+     *
+     * @return the string representation of the list
+     */
     public String toString() {
         if (size == 0) {
             return "[]";
@@ -68,23 +96,27 @@ public class CircleLinkedList<E> {
         return sb.toString();
     }
 
+    /**
+     * Removes and returns the element at the specified position in the list.
+     * Throws an IndexOutOfBoundsException if the position is invalid.
+     *
+     * @param pos the position of the element to remove
+     * @return the value of the removed element
+     * @throws IndexOutOfBoundsException if the position is out of range
+     */
     public E remove(int pos) {
         if (pos >= size || pos < 0) {
-            // catching errors
-            throw new IndexOutOfBoundsException("position cannot be greater than size or negative");
+            throw new IndexOutOfBoundsException("Position out of bounds");
         }
-        // we need to keep track of the element before the element we want to remove we can see why
-        // bellow.
+
         Node<E> before = head;
         for (int i = 1; i <= pos; i++) {
             before = before.next;
         }
         Node<E> destroy = before.next;
         E saved = destroy.value;
-        // assigning the next reference to the element following the element we want to remove...
-        // the last element will be assigned to the head.
-        before.next = before.next.next;
-        // scrubbing
+        before.next = destroy.next;
+
         if (destroy == tail) {
             tail = before;
         }

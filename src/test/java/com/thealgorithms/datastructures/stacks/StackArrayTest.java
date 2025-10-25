@@ -21,11 +21,11 @@ class StackArrayTest {
         stack.push(4);
         stack.push(5);
 
-        Assertions.assertEquals(5, stack.pop()); // Stack follows LIFO, so 5 should be popped first
-        Assertions.assertEquals(4, stack.pop()); // Next, 4 should be popped
-        Assertions.assertEquals(3, stack.pop()); // Followed by 3
-        Assertions.assertEquals(2, stack.pop()); // Then 2
-        Assertions.assertEquals(1, stack.pop()); // Finally 1
+        Assertions.assertEquals(5, stack.pop());
+        Assertions.assertEquals(4, stack.pop());
+        Assertions.assertEquals(3, stack.pop());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertEquals(1, stack.pop());
     }
 
     @Test
@@ -34,34 +34,34 @@ class StackArrayTest {
         stack.push(20);
         stack.push(30);
 
-        Assertions.assertEquals(30, stack.peek()); // Peek should return 30, the top of the stack
-        Assertions.assertEquals(3, stack.size()); // Size should remain 3 after peek
+        Assertions.assertEquals(30, stack.peek());
+        Assertions.assertEquals(3, stack.size());
 
         stack.pop();
-        Assertions.assertEquals(20, stack.peek()); // After popping, peek should return 20
+        Assertions.assertEquals(20, stack.peek());
     }
 
     @Test
     void testIsEmpty() {
-        Assertions.assertTrue(stack.isEmpty()); // Initially, the stack should be empty
+        Assertions.assertTrue(stack.isEmpty());
         stack.push(42);
-        Assertions.assertFalse(stack.isEmpty()); // After pushing an element, the stack should not be empty
+        Assertions.assertFalse(stack.isEmpty());
         stack.pop();
-        Assertions.assertTrue(stack.isEmpty()); // After popping the only element, the stack should be empty again
+        Assertions.assertTrue(stack.isEmpty());
     }
 
     @Test
     void testResizeOnPush() {
-        StackArray<Integer> smallStack = new StackArray<>(2); // Start with a small stack size
+        StackArray<Integer> smallStack = new StackArray<>(2);
         smallStack.push(1);
         smallStack.push(2);
-        Assertions.assertTrue(smallStack.isFull()); // Initially, the stack should be full
+        Assertions.assertTrue(smallStack.isFull());
 
-        smallStack.push(3); // This push should trigger a resize
-        Assertions.assertFalse(smallStack.isFull()); // The stack should no longer be full after resize
-        Assertions.assertEquals(3, smallStack.size()); // Size should be 3 after pushing 3 elements
+        smallStack.push(3);
+        Assertions.assertFalse(smallStack.isFull());
+        Assertions.assertEquals(3, smallStack.size());
 
-        Assertions.assertEquals(3, smallStack.pop()); // LIFO behavior check
+        Assertions.assertEquals(3, smallStack.pop());
         Assertions.assertEquals(2, smallStack.pop());
         Assertions.assertEquals(1, smallStack.pop());
     }
@@ -74,13 +74,13 @@ class StackArrayTest {
         stack.push(3);
         stack.push(4);
 
-        stack.pop(); // Removing elements should trigger a resize when less than 1/4 of the stack is used
         stack.pop();
         stack.pop();
-        Assertions.assertEquals(1, stack.size()); // After popping, only one element should remain
+        stack.pop();
+        Assertions.assertEquals(1, stack.size());
 
         stack.pop();
-        Assertions.assertTrue(stack.isEmpty()); // The stack should be empty now
+        Assertions.assertTrue(stack.isEmpty());
     }
 
     @Test
@@ -90,32 +90,98 @@ class StackArrayTest {
         stack.push(3);
         stack.makeEmpty();
 
-        Assertions.assertTrue(stack.isEmpty()); // The stack should be empty after calling makeEmpty
-        Assertions.assertThrows(IllegalStateException.class, stack::pop); // Popping from empty stack should throw exception
+        Assertions.assertTrue(stack.isEmpty());
+        Assertions.assertThrows(IllegalStateException.class, stack::pop);
     }
 
     @Test
     void testPopEmptyStackThrowsException() {
-        Assertions.assertThrows(IllegalStateException.class, stack::pop); // Popping from an empty stack should throw an exception
+        Assertions.assertThrows(IllegalStateException.class, stack::pop);
     }
 
     @Test
     void testPeekEmptyStackThrowsException() {
-        Assertions.assertThrows(IllegalStateException.class, stack::peek); // Peeking into an empty stack should throw an exception
+        Assertions.assertThrows(IllegalStateException.class, stack::peek);
     }
 
     @Test
     void testConstructorWithInvalidSizeThrowsException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new StackArray<>(0)); // Size 0 is invalid
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new StackArray<>(-5)); // Negative size is invalid
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new StackArray<>(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new StackArray<>(-5));
     }
 
     @Test
     void testDefaultConstructor() {
-        StackArray<Integer> defaultStack = new StackArray<>(); // Using default constructor
-        Assertions.assertEquals(0, defaultStack.size()); // Initially, size should be 0
+        StackArray<Integer> defaultStack = new StackArray<>();
+        Assertions.assertEquals(0, defaultStack.size());
 
         defaultStack.push(1);
-        Assertions.assertEquals(1, defaultStack.size()); // After pushing, size should be 1
+        Assertions.assertEquals(1, defaultStack.size());
+    }
+
+    @Test
+    void testToString() {
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        Assertions.assertEquals("StackArray [1, 2, 3]", stack.toString());
+    }
+
+    @Test
+    void testSingleElementOperations() {
+        // Test operations with a single element
+        stack.push(2);
+        Assertions.assertEquals(1, stack.size());
+        Assertions.assertFalse(stack.isEmpty());
+        Assertions.assertEquals(2, stack.peek());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void testAlternatingPushPop() {
+        // Test alternating push and pop operations
+        stack.push(1);
+        Assertions.assertEquals(1, stack.pop());
+
+        stack.push(2);
+        stack.push(3);
+        Assertions.assertEquals(3, stack.pop());
+
+        stack.push(4);
+        Assertions.assertEquals(4, stack.pop());
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void testPushNullElements() {
+        // Test pushing null values
+        stack.push(null);
+        Assertions.assertEquals(1, stack.size());
+        Assertions.assertNull(stack.peek());
+        Assertions.assertNull(stack.pop());
+
+        // Mix null and non-null values
+        stack.push(1);
+        stack.push(null);
+        stack.push(2);
+
+        Assertions.assertEquals(2, stack.pop());
+        Assertions.assertNull(stack.pop());
+        Assertions.assertEquals(1, stack.pop());
+    }
+
+    @Test
+    void testWithDifferentDataTypes() {
+        // Test with String type
+        StackArray<String> stringStack = new StackArray<>(3);
+        stringStack.push("first");
+        stringStack.push("second");
+        stringStack.push("third");
+
+        Assertions.assertEquals("third", stringStack.pop());
+        Assertions.assertEquals("second", stringStack.peek());
+        Assertions.assertEquals(2, stringStack.size());
     }
 }

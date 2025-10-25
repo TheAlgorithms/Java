@@ -21,6 +21,9 @@ public final class PronicNumber {
      * @return true if input number is a pronic number, false otherwise
      */
     static boolean isPronic(int inputNumber) {
+        if (inputNumber == 0) {
+            return true;
+        }
         // Iterating from 0 to input_number
         for (int i = 0; i <= inputNumber; i++) {
             // Checking if product of i and (i+1) is equals input_number
@@ -33,5 +36,16 @@ public final class PronicNumber {
         // return false if product of i and (i+1) for all values from 0 to input_number is not
         // equals input_number
         return false;
+    }
+
+    /**
+     * This method checks if the given number is pronic number or non-pronic number using square root of number for finding divisors
+     *
+     * @param number Integer value which is to be checked if is a pronic number or not
+     * @return true if input number is a pronic number, false otherwise
+     */
+    public static boolean isPronicNumber(int number) {
+        int squareRoot = (int) Math.sqrt(number); // finding just smaller divisor of the number than its square root.
+        return squareRoot * (squareRoot + 1) == number;
     }
 }

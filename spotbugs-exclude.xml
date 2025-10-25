@@ -42,9 +42,6 @@
         <Bug pattern="INT_BAD_REM_BY_1" />
     </Match>
     <Match>
-        <Bug pattern="ICAST_IDIV_CAST_TO_DOUBLE" />
-    </Match>
-    <Match>
         <Bug pattern="FE_FLOATING_POINT_EQUALITY" />
     </Match>
     <Match>
@@ -84,12 +81,12 @@
         <Bug pattern="SA_FIELD_SELF_ASSIGNMENT" />
     </Match>
     <Match>
-        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" />
+        <Bug pattern="AT_STALE_THREAD_WRITE_OF_PRIMITIVE" />
+    </Match>
+    <Match>
+        <Bug pattern="SF_SWITCH_FALLTHROUGH" />
     </Match>
     <!-- fb-contrib -->
-    <Match>
-        <Bug pattern="OCP_OVERLY_CONCRETE_PARAMETER" />
-    </Match>
     <Match>
         <Bug pattern="LSC_LITERAL_STRING_COMPARISON" />
     </Match>
@@ -119,9 +116,6 @@
     </Match>
     <Match>
         <Bug pattern="BL_BURYING_LOGIC" />
-    </Match>
-    <Match>
-        <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS" />
     </Match>
     <Match>
         <Bug pattern="UTWR_USE_TRY_WITH_RESOURCES" />
@@ -202,10 +196,10 @@
         <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION" />
     </Match>
     <Match>
-        <Bug pattern="SLS_SUSPICIOUS_LOOP_SEARCH" />
+        <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
     </Match>
     <Match>
-        <Bug pattern="BAS_BLOATED_ASSIGNMENT_SCOPE" />
+        <Bug pattern="SPP_FIELD_COULD_BE_STATIC" />
     </Match>
     <!-- find-sec-bugs -->
     <Match>

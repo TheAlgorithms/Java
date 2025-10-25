@@ -1,57 +1,71 @@
 package com.thealgorithms.maths;
 
-/* This is a program to check if a number is a Krishnamurthy number or not.
-A number is a Krishnamurthy number if the sum of the factorials of the digits of the number is equal
-to the number itself. For example, 1, 2 and 145 are Krishnamurthy numbers. Krishnamurthy number is
-also referred to as a Strong number.
+/**
+ * Utility class for checking if a number is a Krishnamurthy number.
+ *
+ * <p>
+ * A Krishnamurthy number (also known as a Strong number or Factorion) is a
+ * number
+ * whose sum of the factorials of its digits is equal to the number itself.
+ * </p>
+ *
+ * <p>
+ * For example, 145 is a Krishnamurthy number because 1! + 4! + 5! = 1 + 24 +
+ * 120 = 145.
+ * </p>
+ *
+ * <p>
+ * The only Krishnamurthy numbers in base 10 are: 1, 2, 145, and 40585.
+ * </p>
+ *
+ * <p>
+ * <b>Example usage:</b>
+ * </p>
+ *
+ * <pre>
+ * boolean isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(145);
+ * System.out.println(isKrishnamurthy); // Output: true
+ *
+ * isKrishnamurthy = KrishnamurthyNumber.isKrishnamurthy(123);
+ * System.out.println(isKrishnamurthy); // Output: false
+ * </pre>
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Factorion">Factorion
+ *      (Wikipedia)</a>
  */
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public final class KrishnamurthyNumber {
+
+    // Pre-computed factorials for digits 0-9 to improve performance
+    private static final int[] FACTORIALS = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+
     private KrishnamurthyNumber() {
     }
 
-    // returns True if the number is a Krishnamurthy number and False if it is not.
-
-    public static boolean isKMurthy(int n) {
-        // initialising the variable s that will store the sum of the factorials of the digits to 0
-        int s = 0;
-        // storing the number n in a temporary variable tmp
-        int tmp = n;
-
-        // Krishnamurthy numbers are positive
+    /**
+     * Checks if a number is a Krishnamurthy number.
+     *
+     * <p>
+     * A number is a Krishnamurthy number if the sum of the factorials of its digits
+     * equals the number itself.
+     * </p>
+     *
+     * @param n the number to check
+     * @return true if the number is a Krishnamurthy number, false otherwise
+     */
+    public static boolean isKrishnamurthy(int n) {
         if (n <= 0) {
             return false;
-        } // checking if the number is a Krishnamurthy number
-        else {
-            while (n != 0) {
-                // initialising the variable fact that will store the factorials of the digits
-                int fact = 1;
-                // computing factorial of each digit
-                for (int i = 1; i <= n % 10; i++) {
-                    fact = fact * i;
-                }
-                // computing the sum of the factorials
-                s = s + fact;
-                // discarding the digit for which factorial has been calculated
-                n = n / 10;
-            }
-
-            // evaluating if sum of the factorials of the digits equals the number itself
-            return tmp == s;
         }
-    }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter a number to check if it is a Krishnamurthy number: ");
-        int n = Integer.parseInt(br.readLine());
-        if (isKMurthy(n)) {
-            System.out.println(n + " is a Krishnamurthy number.");
-        } else {
-            System.out.println(n + " is NOT a Krishnamurthy number.");
+        int original = n;
+        int sum = 0;
+
+        while (n != 0) {
+            int digit = n % 10;
+            sum = sum + FACTORIALS[digit];
+            n = n / 10;
         }
+
+        return sum == original;
     }
 }

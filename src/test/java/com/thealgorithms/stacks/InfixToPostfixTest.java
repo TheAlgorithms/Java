@@ -12,7 +12,7 @@ class InfixToPostfixTest {
 
     @ParameterizedTest
     @MethodSource("provideValidExpressions")
-    void testValidExpressions(String infix, String expectedPostfix) throws Exception {
+    void testValidExpressions(String infix, String expectedPostfix) {
         assertEquals(expectedPostfix, InfixToPostfix.infix2PostFix(infix));
     }
 
@@ -28,6 +28,6 @@ class InfixToPostfixTest {
     }
 
     private static Stream<Arguments> provideInvalidExpressions() {
-        return Stream.of(Arguments.of("((a+b)*c-d", "invalid expression"));
+        return Stream.of(Arguments.of("((a+b)*c-d", "Invalid expression: unbalanced brackets."));
     }
 }

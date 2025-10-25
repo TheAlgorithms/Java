@@ -8,6 +8,7 @@ package com.thealgorithms.datastructures.hashmap.hashing;
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
  */
+@SuppressWarnings("rawtypes")
 public class HashMap<K, V> {
     private final int hashSize;
     private final LinkedList<K, V>[] buckets;
@@ -83,6 +84,28 @@ public class HashMap<K, V> {
         for (int i = 0; i < hashSize; i++) {
             System.out.printf("Bucket %d: %s%n", i, buckets[i].display());
         }
+    }
+
+    /**
+     * Clears the contents of the hash map by reinitializing each bucket.
+     */
+    public void clear() {
+        for (int i = 0; i < hashSize; i++) {
+            buckets[i] = new LinkedList<>();
+        }
+    }
+
+    /**
+     * Gets the number of key-value pairs in the hash map.
+     *
+     * @return the number of key-value pairs in the hash map
+     */
+    public int size() {
+        int size = 0;
+        for (int i = 0; i < hashSize; i++) {
+            size += buckets[i].isEmpty() ? 0 : 1;
+        }
+        return size;
     }
 
     /**

@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * @author dimgrichr
  */
+@SuppressWarnings("unchecked")
 public class CRCAlgorithm {
 
     private int correctMess;
@@ -25,8 +26,6 @@ public class CRCAlgorithm {
 
     private ArrayList<Integer> message;
 
-    private ArrayList<Integer> dividedMessage;
-
     private ArrayList<Integer> p;
 
     private Random randomGenerator;
@@ -44,7 +43,6 @@ public class CRCAlgorithm {
         messageChanged = false;
         message = new ArrayList<>();
         messSize = size;
-        dividedMessage = new ArrayList<>();
         p = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
             p.add(Character.getNumericValue(str.charAt(i)));
@@ -103,7 +101,6 @@ public class CRCAlgorithm {
     public void refactor() {
         messageChanged = false;
         message = new ArrayList<>();
-        dividedMessage = new ArrayList<>();
     }
 
     /**
@@ -156,7 +153,7 @@ public class CRCAlgorithm {
                 }
             }
         }
-        dividedMessage = (ArrayList<Integer>) x.clone();
+        ArrayList<Integer> dividedMessage = (ArrayList<Integer>) x.clone();
         if (!check) {
             message.addAll(dividedMessage);
         } else {

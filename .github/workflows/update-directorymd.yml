@@ -1,0 +1,42 @@
+name: Generate Directory Markdown
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-directory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Run Directory Tree Generator
+        uses: DenizAltunkapan/directory-tree-generator@v2
+        with:
+          path: src
+          extensions: .java
+          show-extensions: false
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add DIRECTORY.md
+          git diff --cached --quiet || git commit -m "Update DIRECTORY.md"
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.REPO_SCOPED_TOKEN }}
+          branch: update-directory
+          base: master
+          title: "Update DIRECTORY.md"
+          body: "Automatically generated update of the directory tree."
+          commit-message: "Update DIRECTORY.md"
+          draft: false

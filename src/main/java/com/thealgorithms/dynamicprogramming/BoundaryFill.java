@@ -52,48 +52,4 @@ public final class BoundaryFill {
             boundaryFill(image, xCoordinate - 1, yCoordinate - 1, newColor, boundaryColor);
         }
     }
-
-    /**
-     * This method will print the 2D image matrix
-     *
-     * @param image The image to be printed on the console
-     */
-    public static void printImageArray(int[][] image) {
-        for (int i = 0; i < image.length; i++) {
-            for (int j = 0; j < image[0].length; j++) {
-                System.out.print(image[i][j] + "  ");
-            }
-
-            System.out.println();
-        }
-    }
-
-    // Driver Program
-    public static void main(String[] args) {
-        // Input 2D image matrix
-        int[][] image = {
-            {0, 0, 0, 0, 0, 0, 0},
-            {0, 3, 3, 3, 3, 0, 0},
-            {0, 3, 0, 0, 3, 0, 0},
-            {0, 3, 0, 0, 3, 3, 3},
-            {0, 3, 3, 3, 0, 0, 3},
-            {0, 0, 0, 3, 0, 0, 3},
-            {0, 0, 0, 3, 3, 3, 3},
-        };
-
-        boundaryFill(image, 2, 2, 5, 3);
-
-        /* Output ==>
-                 * 0  0  0  0  0  0  0
-                   0  3  3  3  3  0  0
-                   0  3  5  5  3  0  0
-           0  3  5  5  3  3  3
-           0  3  3  3  5  5  3
-           0  0  0  3  5  5  3
-           0  0  0  3  3  3  3
-                 * */
-
-        // print 2D image matrix
-        printImageArray(image);
-    }
 }

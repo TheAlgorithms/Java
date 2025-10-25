@@ -3,13 +3,16 @@ on:
   push: {}
   pull_request: {}
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: DoozyX/clang-format-lint-action@v0.18
+    - uses: actions/checkout@v5
+    - uses: DoozyX/clang-format-lint-action@v0.20
       with:
         source: './src'
         extensions: 'java'

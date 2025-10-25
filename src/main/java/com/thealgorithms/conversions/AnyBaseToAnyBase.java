@@ -136,7 +136,7 @@ public final class AnyBaseToAnyBase {
         int decimalValue = 0;
         int charB2;
         char charB1;
-        String output = "";
+        StringBuilder output = new StringBuilder();
         // Go through every character of n
         for (int i = 0; i < n.length(); i++) {
             // store the character in charB1
@@ -167,15 +167,15 @@ public final class AnyBaseToAnyBase {
             // If the remainder is a digit < 10, simply add it to
             // the left side of the new number.
             if (decimalValue % b2 < 10) {
-                output = decimalValue % b2 + output;
+                output.insert(0, decimalValue % b2);
             } // If the remainder is >= 10, add a character with the
             // corresponding value to the new number. (A = 10, B = 11, C = 12, ...)
             else {
-                output = (char) ((decimalValue % b2) + 55) + output;
+                output.insert(0, (char) ((decimalValue % b2) + 55));
             }
             // Divide by the new base again
             decimalValue /= b2;
         }
-        return output;
+        return output.toString();
     }
 }
