@@ -1,0 +1,80 @@
+name: Close stale PRs with failed workflows
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # runs daily at 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close stale PRs
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const mainBranches = ['main', 'master'];
+            const cutoffDays = 14;
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - cutoffDays);
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            for (const pr of prs) {
+              const updated = new Date(pr.updated_at);
+              if (updated > cutoff) continue;
+
+              const commits = await github.paginate(github.rest.pulls.listCommits, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                per_page: 100
+              });
+
+              const meaningfulCommits = commits.filter(c => {
+                const msg = c.commit.message.toLowerCase();
+                const isMergeFromMain = mainBranches.some(branch =>
+                  msg.startsWith(`merge branch '${branch}'`) ||
+                  msg.includes(`merge remote-tracking branch '${branch}'`)
+                );
+                return !isMergeFromMain;
+              });
+
+              const { data: checks } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: pr.head.sha
+              });
+
+              const hasFailed = checks.check_runs.some(c => c.conclusion === 'failure');
+              const allCompleted = checks.check_runs.every(c => c.status === 'completed');
+
+              if (meaningfulCommits.length === 0 && hasFailed && allCompleted) {
+                console.log(`Closing PR #${pr.number} (${pr.title})`);
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: `This pull request has been automatically closed because its workflows failed and it has been inactive for more than ${cutoffDays} days. Please fix the workflows and reopen if you'd like to continue. Merging from main/master alone does not count as activity.`
+                });
+
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: pr.number,
+                  state: 'closed'
+                });
+              }
+            }
