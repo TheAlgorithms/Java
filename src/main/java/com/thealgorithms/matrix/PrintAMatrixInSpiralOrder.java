@@ -3,17 +3,41 @@ package com.thealgorithms.matrix;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class to print a matrix in spiral order.
+ * <p>
+ * Given a 2D array (matrix), this class provides a method to return the
+ * elements
+ * of the matrix in spiral order, starting from the top-left corner and moving
+ * clockwise.
+ * </p>
+ *
+ * @author Sadiul Hakim (https://github.com/sadiul-hakim)
+ */
 public class PrintAMatrixInSpiralOrder {
+
     /**
-     * Search a key in row and column wise sorted matrix
+     * Returns the elements of the given matrix in spiral order.
      *
-     * @param matrix matrix to be searched
-     * @param row    number of rows matrix has
-     * @param col    number of columns matrix has
-     * @author Sadiul Hakim : https://github.com/sadiul-hakim
+     * @param matrix the 2D array to traverse in spiral order
+     * @param row    the number of rows in the matrix
+     * @param col    the number of columns in the matrix
+     * @return a list containing the elements of the matrix in spiral order
+     *
+     *         <p>
+     *         Example:
+     *
+     *         <pre>
+     * int[][] matrix = {
+     *   {1, 2, 3},
+     *   {4, 5, 6},
+     *   {7, 8, 9}
+     * };
+     * print(matrix, 3, 3) returns [1, 2, 3, 6, 9, 8, 7, 4, 5]
+     *         </pre>
+     *         </p>
      */
     public List<Integer> print(int[][] matrix, int row, int col) {
-
         // r traverses matrix row wise from first
         int r = 0;
         // c traverses matrix column wise from first
