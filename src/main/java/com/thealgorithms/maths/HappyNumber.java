@@ -1,5 +1,7 @@
 package com.thealgorithms.maths;
 
+import java.util.HashSet;
+
 /**
  * A Happy Number is defined as a number which eventually reaches 1 when replaced
  * by the sum of the squares of each digit.
@@ -53,5 +55,22 @@ public final class HappyNumber {
             num /= 10;
         }
         return sum;
+    }
+
+    /**
+     * Checks whether the given number is a Happy Number using HashSet to detect cycles.
+     *
+     * @param n The number to check
+     * @return true if n is a Happy Number, false otherwise
+     */
+    public static boolean isHappyNumber(int num) {
+        HashSet<Integer> seen = new HashSet<>();
+
+        while (num != 1 && !seen.contains(num)) {
+            seen.add(num);
+            num = sumOfSquares(num);
+        }
+
+        return num == 1;
     }
 }
