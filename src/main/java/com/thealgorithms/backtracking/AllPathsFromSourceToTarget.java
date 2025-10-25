@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Program description - To find all possible paths from source to destination 
+ * Program description - To find all possible paths from source to destination
  * <a href="https://en.wikipedia.org/wiki/Shortest_path_problem">Wikipedia</a>
  *
  * @author <a href="https://github.com/siddhant2002">Siddhant Swarup Mallick</a>
@@ -12,7 +12,7 @@ import java.util.List;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class AllPathsFromSourceToTarget {
 
-    // No. of vertices in graph
+    // Number of vertices in graph
     private final int v;
 
     // To store the paths from source to destination
