@@ -73,28 +73,21 @@ public final class ChebyshevIteration {
                 alpha = 1.0 / d;
                 p = Arrays.copyOf(r, n);
             } else {
-                
-                // 1. Save the previous alpha
+                // Fix for algorithmic bug (use alphaPrev)
                 double alphaPrev = alpha;
 
-                // 2. Calculate new beta and alpha using alphaPrev
                 beta = (c * alphaPrev / 2.0) * (c * alphaPrev / 2.0);
                 alpha = 1.0 / (d - beta / alphaPrev);
 
-                // 3. Use alphaPrev in the p update
                 double betaOverAlphaPrev = beta / alphaPrev;
                 double[] rScaled = vectorScale(p, betaOverAlphaPrev);
                 p = vectorAdd(r, rScaled);
-        
             }
 
             double[] pScaled = vectorScale(p, alpha);
             x = vectorAdd(x, pScaled);
 
             // Re-calculate residual to avoid accumulating floating-point errors
-            // Note: Some variants calculate r = r - alpha * A * p for
-            // efficiency,
-            // but this direct calculation is more stable against drift.
             r = vectorSubtract(b, matrixVectorMultiply(A, x));
 
             if (vectorNorm(r) < tolerance) {
