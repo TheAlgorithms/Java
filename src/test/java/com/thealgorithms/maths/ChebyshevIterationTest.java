@@ -34,7 +34,7 @@ class ChebyshevIterationTest {
     private static final double M2_B1 = 10.0;
     private static final double M2_B2 = -4.0;
     private static final double M2_B3 = 24.0;
-    private static final double[] M2_B = {M2_B1, M2_B2, M2_B3};
+    private static final double[] M2_B = {M1_B1, M2_B2, M2_B3};
     private static final double[] M2_X0 = {0.0, 0.0, 0.0};
     private static final double M2_E1 = 2.0;
     private static final double M2_E2 = -2.0;
@@ -82,16 +82,16 @@ class ChebyshevIterationTest {
 
     @Test
     void testAlreadyConverged() {
-        
+        // Test case where the initial guess is already the solution
         double[] solution = ChebyshevIteration.solve(M1_A, M1_B, M1_EXPECTED, M3_LAMBDA_MIN, M3_LAMBDA_MAX, MAX_ITERATIONS, TOLERANCE);
         assertArrayEquals(M1_EXPECTED, solution, ASSERT_TOLERANCE);
     }
 
     @Test
     void testInvalidEigenvalues() {
-     
+        // lambdaMin >= lambdaMax
         assertThrows(IllegalArgumentException.class, () -> { ChebyshevIteration.solve(M4_A, M4_B, M4_X0, VAL_2_0, VAL_1_0, TEST_ITERATIONS, TEST_TOLERANCE); });
-
+        // lambdaMin <= 0
         assertThrows(IllegalArgumentException.class, () -> { ChebyshevIteration.solve(M4_A, M4_B, M4_X0, VAL_0_0, VAL_2_0, TEST_ITERATIONS, TEST_TOLERANCE); });
     }
 
