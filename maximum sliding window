@@ -1,0 +1,29 @@
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        int maxIndex = -1;
+
+        for (int i = 0; i <= n - k; i++) {
+            // If maxIndex is outside current window, find new max
+            if (maxIndex < i) {
+                maxIndex = i;
+                for (int j = i; j < i + k; j++) {
+                    if (nums[j] >= nums[maxIndex]) {  // fix: include '=' for stability
+                        maxIndex = j;
+                    }
+                }
+            } else {
+                // Only compare the newly added element
+                int newElementIndex = i + k - 1;
+                if (nums[newElementIndex] >= nums[maxIndex]) { // fix: include '=' for stability
+                    maxIndex = newElementIndex;
+                }
+            }
+
+            result[i] = nums[maxIndex];
+        }
+
+        return result;
+    }
+}
