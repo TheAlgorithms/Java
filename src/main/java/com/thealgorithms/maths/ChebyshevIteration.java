@@ -43,15 +43,8 @@ public final class ChebyshevIteration {
      * match,
      * or if max/min eigenvalues are invalid.
      */
-    public static double[] solve(
-        double[][] A,
-        double[] b,
-        double[] x0,
-        double lambdaMin,
-        double lambdaMax,
-        int maxIterations,
-        double tolerance
-    ) {
+    // FIX: Method signature flattened to one line
+    public static double[] solve(double[][] A, double[] b, double[] x0, double lambdaMin, double lambdaMax, int maxIterations, double tolerance) {
         validateInputs(A, b, x0, lambdaMin, lambdaMax);
 
         int n = b.length;
@@ -98,13 +91,7 @@ public final class ChebyshevIteration {
     }
 
     // --- Helper Methods for Linear Algebra ---
-    private static void validateInputs(
-        double[][] A,
-        double[] b,
-        double[] x0,
-        double lambdaMin,
-        double lambdaMax
-    ) {
+    private static void validateInputs(double[][] A, double[] b, double[] x0, double lambdaMin, double lambdaMax) {
         int n = b.length;
         if (n == 0) {
             throw new IllegalArgumentException("Vectors cannot be empty.");
