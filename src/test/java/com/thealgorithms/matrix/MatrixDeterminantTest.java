@@ -1,39 +1,37 @@
-package matrix;
+package com.thealgorithms.matrix;
 
-public class MatrixDeterminant {
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public static double determinant(double[][] m) {
-        int n = m.length;
-        if (n == 1) return m[0][0];
-        if (n == 2) return m[0][0]*m[1][1] - m[0][1]*m[1][0];
+class MatrixDeterminantTest {
 
-        double det = 0;
-        for (int c = 0; c < n; c++) {
-            det += Math.pow(-1, c) * m[0][c] * determinant(minor(m, 0, c));
-        }
-        return det;
+    @Test
+    void test2x2Matrix() {
+        double[][] matrix = {{1, 2}, {3, 4}};
+        assertEquals(-2, MatrixDeterminant.determinant(matrix), 1e-9);
     }
 
-    private static double[][] minor(double[][] m, int row, int col) {
-        int n = m.length;
-        double[][] min = new double[n-1][n-1];
-        int r = 0;
-        for (int i = 0; i < n; i++) {
-            if (i == row) continue;
-            int c = 0;
-            for (int j = 0; j < n; j++) {
-                if (j == col) continue;
-                min[r][c++] = m[i][j];
-            }
-            r++;
-        }
-        return min;
+    @Test
+    void test3x3Matrix() {
+        double[][] matrix = {{2, 0, 1}, {3, 0, 0}, {5, 1, 1}};
+        assertEquals(3, MatrixDeterminant.determinant(matrix), 1e-9);
     }
 
-    public static void main(String[] args) {
-        double[][] a = {{1,2},{3,4}};
-        double[][] b = {{2,0,1},{3,0,0},{5,1,1}};
-        System.out.println(determinant(a)); // -2
-        System.out.println(determinant(b)); // 3
+    @Test
+    void test1x1Matrix() {
+        double[][] matrix = {{5}};
+        assertEquals(5, MatrixDeterminant.determinant(matrix), 1e-9);
+    }
+
+    @Test
+    void testSingularMatrix() {
+        double[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertEquals(0, MatrixDeterminant.determinant(matrix), 1e-9);
+    }
+
+    @Test
+    void testNonSquareMatrix() {
+        double[][] matrix = {{1, 2, 3}, {4, 5, 6}};
+        assertThrows(IllegalArgumentException.class, () -> MatrixDeterminant.determinant(matrix));
     }
 }

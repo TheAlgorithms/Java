@@ -18,12 +18,17 @@
 // - You can use recursion or any other suitable algorithm.
 // - Bonus: Optimize for larger matrices (optional).
 
-package matrix;
+package com.thealgorithms.matrix;
 
 public class MatrixDeterminant {
 
     public static double determinant(double[][] m) {
         int n = m.length;
+        for (double[] row : m) {
+            if (row.length != n) {
+                throw new IllegalArgumentException("Matrix must be square");
+            }
+        }
         if (n == 1) return m[0][0];
         if (n == 2) return m[0][0]*m[1][1] - m[0][1]*m[1][0];
 
@@ -48,12 +53,5 @@ public class MatrixDeterminant {
             r++;
         }
         return min;
-    }
-
-    public static void main(String[] args) {
-        double[][] a = {{1,2},{3,4}};
-        double[][] b = {{2,0,1},{3,0,0},{5,1,1}};
-        System.out.println(determinant(a)); // -2
-        System.out.println(determinant(b)); // 3
     }
 }
