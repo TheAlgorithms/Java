@@ -27,16 +27,46 @@ class ChebyshevIterationTest {
     private static final double[] M1_EXPECTED = { M1_EXPECTED_X1, M1_EXPECTED_X2 };
 
     // --- Constants for testSolve3x3System ---
-    private static final double[][] M2_A = { { 5.0, 0.0, 0.0 }, { 0.0, 2.0, 0.0 }, { 0.0, 0.0, 8.0 } };
-    private static final double[] M2_B = { 10.0, -4.0, 24.0 };
+    private static final double M2_A11 = 5.0;
+    private static final double M2_A22 = 2.0;
+    private static final double M2_A33 = 8.0;
+    private static final double[][] M2_A = {
+        { M2_A11, 0.0, 0.0 },
+        { 0.0, M2_A22, 0.0 },
+        { 0.0, 0.0, M2_A33 },
+    };
+    private static final double M2_B1 = 10.0;
+    private static final double M2_B2 = -4.0;
+    private static final double M2_B3 = 24.0;
+    private static final double[] M2_B = { M2_B1, M2_B2, M2_B3 };
     private static final double[] M2_X0 = { 0.0, 0.0, 0.0 };
-    private static final double[] M2_EXPECTED = { 2.0, -2.0, 3.0 };
+    private static final double M2_E1 = 2.0;
+    private static final double M2_E2 = -2.0;
+    private static final double M2_E3 = 3.0;
+    private static final double[] M2_EXPECTED = { M2_E1, M2_E2, M2_E3 };
     private static final double M2_LAMBDA_MIN = 2.0;
     private static final double M2_LAMBDA_MAX = 8.0;
 
     // --- Constants for testAlreadyConverged ---
     private static final double M3_LAMBDA_MIN = 2.38;
     private static final double M3_LAMBDA_MAX = 4.62;
+
+    // --- Constants for Invalid/Dimension Tests ---
+    private static final double VAL_0_0 = 0.0;
+    private static final double VAL_0_5 = 0.5;
+    private static final double VAL_1_0 = 1.0;
+    private static final double VAL_1_5 = 1.5;
+    private static final double VAL_2_0 = 2.0;
+    private static final double[][] M4_A = { { VAL_1_0, VAL_0_0 }, { VAL_0_0, VAL_1_0 } };
+    private static final double[] M4_B = { VAL_1_0, VAL_1_0 };
+    private static final double[] M4_X0 = { VAL_0_0, VAL_0_0 };
+    private static final double[] M5_B = { VAL_1_0, VAL_1_0, VAL_1_0 };
+    private static final double[][] M6_A = {
+        { VAL_1_0, VAL_0_0, VAL_0_0 },
+        { VAL_0_0, VAL_1_0, VAL_0_0 },
+    };
+    private static final double[] M6_B = { VAL_1_0, VAL_1_0 };
+    private static final double[] M6_X0 = { VAL_0_0, VAL_0_0 };
 
     // --- General Constants ---
     private static final int MAX_ITERATIONS = 100;
@@ -90,79 +120,71 @@ class ChebyshevIterationTest {
 
     @Test
     void testInvalidEigenvalues() {
-        double[][] A = { { 1.0, 0.0 }, { 0.0, 1.0 } };
-        double[] b = { 1.0, 1.0 };
-        double[] x0 = { 0.0, 0.0 };
-
         // lambdaMin >= lambdaMax
         assertThrows(
             IllegalArgumentException.class,
-            () ->
+            () -> {
                 ChebyshevIteration.solve(
-                    A,
-                    b,
-                    x0,
-                    2.0,
-                    1.0,
+                    M4_A,
+                    M4_B,
+                    M4_X0,
+                    VAL_2_0,
+                    VAL_1_0,
                     TEST_ITERATIONS,
                     TEST_TOLERANCE
-                )
+                );
+            }
         );
         // lambdaMin <= 0
         assertThrows(
             IllegalArgumentException.class,
-            () ->
+            () -> {
                 ChebyshevIteration.solve(
-                    A,
-                    b,
-                    x0,
-                    0.0,
-                    2.0,
+                    M4_A,
+                    M4_B,
+                    M4_X0,
+                    VAL_0_0,
+                    VAL_2_0,
                     TEST_ITERATIONS,
                     TEST_TOLERANCE
-                )
+                );
+            }
         );
     }
 
     @Test
     void testMismatchedDimensions() {
-        double[][] A = { { 1.0, 0.0 }, { 0.0, 1.0 } };
-        double[] b = { 1.0, 1.0, 1.0 }; // b.length = 3
-        double[] x0 = { 0.0, 0.0 }; // x0.length = 2
-
         assertThrows(
             IllegalArgumentException.class,
-            () ->
+            () -> {
                 ChebyshevIteration.solve(
-                    A,
-                    b,
-                    x0,
-                    0.5,
-                    1.5,
+                    M4_A,
+                    M5_B,
+                    M4_X0,
+                    VAL_0_5,
+                    VAL_1_5,
                     TEST_ITERATIONS,
                     TEST_TOLERANCE
-                )
+                );
+            }
         );
     }
 
     @Test
     void testNonSquareMatrix() {
-        double[][] A = { { 1.0, 0.0, 0.0 }, { 0.0, 1.0, 0.0 } }; // 2x3 matrix
-        double[] b = { 1.0, 1.0 };
-        double[] x0 = { 0.0, 0.0 };
-
         assertThrows(
             IllegalArgumentException.class,
-            () ->
+            () -> {
                 ChebyshevIteration.solve(
-                    A,
-                    b,
-                    x0,
-                    0.5,
-                    1.5,
+                    M6_A,
+                    M6_B,
+                    M6_X0,
+                    VAL_0_5,
+                    VAL_1_5,
                     TEST_ITERATIONS,
                     TEST_TOLERANCE
-                )
+                );
+            }
         );
     }
 }
