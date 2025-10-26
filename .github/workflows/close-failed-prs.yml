@@ -58,13 +58,13 @@ jobs:
                   });
 
                   const meaningfulCommits = commits.filter(c => {
-                  const msg = c.commit.message.toLowerCase();
-                  const date = new Date(c.commit.committer.date); // Commit-Datum
-                  const isMergeFromMain = mainBranches.some(branch =>
-                    msg.startsWith(`merge branch '${branch}'`) ||
-                    msg.includes(`merge remote-tracking branch '${branch}'`)
+                    const msg = c.commit.message.toLowerCase();
+                    const date = new Date(c.commit.committer.date);
+                    const isMergeFromMain = mainBranches.some(branch =>
+                      msg.startsWith(`merge branch '${branch}'`) ||
+                      msg.includes(`merge remote-tracking branch '${branch}'`)
                     );
-                    
+                      
                     return !isMergeFromMain && date > cutoff;
                   });
 
