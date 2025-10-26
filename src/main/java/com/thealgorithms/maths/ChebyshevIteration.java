@@ -31,7 +31,7 @@ public final class ChebyshevIteration {
     /**
      * Solves the linear system Ax = b using Chebyshev Iteration.
      *
-     * @param A A symmetric positive definite matrix.
+     * @param a A symmetric positive definite matrix.
      * @param b The vector 'b' in the equation Ax = b.
      * @param x0 An initial guess vector for 'x'.
      * @param lambdaMin The smallest eigenvalue of matrix A.
@@ -43,13 +43,12 @@ public final class ChebyshevIteration {
      * match,
      * or if max/min eigenvalues are invalid.
      */
-    // FIX: Method signature flattened to one line
-    public static double[] solve(double[][] A, double[] b, double[] x0, double lambdaMin, double lambdaMax, int maxIterations, double tolerance) {
-        validateInputs(A, b, x0, lambdaMin, lambdaMax);
+    public static double[] solve(double[][] a, double[] b, double[] x0, double lambdaMin, double lambdaMax, int maxIterations, double tolerance) {
+        validateInputs(a, b, x0, lambdaMin, lambdaMax);
 
         int n = b.length;
         double[] x = Arrays.copyOf(x0, n);
-        double[] r = vectorSubtract(b, matrixVectorMultiply(A, x));
+        double[] r = vectorSubtract(b, matrixVectorMultiply(a, x)); // Use `a`
         double[] p = new double[n];
         double alpha = 0.0;
         double beta = 0.0;
@@ -66,7 +65,6 @@ public final class ChebyshevIteration {
                 alpha = 1.0 / d;
                 p = Arrays.copyOf(r, n);
             } else {
-                // Fix for algorithmic bug (use alphaPrev)
                 double alphaPrev = alpha;
 
                 beta = (c * alphaPrev / 2.0) * (c * alphaPrev / 2.0);
@@ -81,7 +79,7 @@ public final class ChebyshevIteration {
             x = vectorAdd(x, pScaled);
 
             // Re-calculate residual to avoid accumulating floating-point errors
-            r = vectorSubtract(b, matrixVectorMultiply(A, x));
+            r = vectorSubtract(b, matrixVectorMultiply(a, x)); // Use `a`
 
             if (vectorNorm(r) < tolerance) {
                 break; // Converged
@@ -91,12 +89,12 @@ public final class ChebyshevIteration {
     }
 
     // --- Helper Methods for Linear Algebra ---
-    private static void validateInputs(double[][] A, double[] b, double[] x0, double lambdaMin, double lambdaMax) {
+    private static void validateInputs(double[][] a, double[] b, double[] x0, double lambdaMin, double lambdaMax) {
         int n = b.length;
         if (n == 0) {
             throw new IllegalArgumentException("Vectors cannot be empty.");
         }
-        if (A.length != n || A[0].length != n) {
+        if (a.length != n || a[0].length != n) { // Use `a`
             throw new IllegalArgumentException("Matrix A must be square with dimensions n x n.");
         }
         if (x0.length != n) {
@@ -110,13 +108,13 @@ public final class ChebyshevIteration {
     /**
      * Computes y = Ax
      */
-    private static double[] matrixVectorMultiply(double[][] A, double[] x) {
-        int n = A.length;
+    private static double[] matrixVectorMultiply(double[][] a, double[] x) {
+        int n = a.length; // Use `a`
         double[] y = new double[n];
         for (int i = 0; i < n; i++) {
             double sum = 0.0;
             for (int j = 0; j < n; j++) {
-                sum += A[i][j] * x[j];
+                sum += a[i][j] * x[j]; // Use `a`
             }
             y[i] = sum;
         }
