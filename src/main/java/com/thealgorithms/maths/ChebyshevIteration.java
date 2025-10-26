@@ -110,16 +110,19 @@ public final class ChebyshevIteration {
             throw new IllegalArgumentException("Vectors cannot be empty.");
         }
         if (A.length != n || A[0].length != n) {
+            // clang-format-lint-action wants this on one line
             throw new IllegalArgumentException(
                 "Matrix A must be square with dimensions n x n."
             );
         }
         if (x0.length != n) {
+            // clang-format-lint-action wants this on one line
             throw new IllegalArgumentException(
                 "Initial guess vector x0 must have length n."
             );
         }
         if (lambdaMin >= lambdaMax || lambdaMin <= 0) {
+            // clang-format-lint-action wants this on one line
             throw new IllegalArgumentException(
                 "Eigenvalues must satisfy 0 < lambdaMin < lambdaMax."
             );
