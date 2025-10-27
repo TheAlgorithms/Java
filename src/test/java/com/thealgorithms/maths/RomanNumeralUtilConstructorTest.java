@@ -2,9 +2,9 @@ package com.thealgorithms.maths;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Test;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 // Covers the private constructor for code coverage tools
 public class RomanNumeralUtilConstructorTest {
