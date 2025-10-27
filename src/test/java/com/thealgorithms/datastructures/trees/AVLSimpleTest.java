@@ -92,7 +92,6 @@ public class AVLSimpleTest {
         assertEquals("Tree is empty", getActualTree());
     }
 
-
     @ParameterizedTest
     @MethodSource("getTreeNodesInput")
     @DisplayName("Test to ensure all rotation paths are covered")
