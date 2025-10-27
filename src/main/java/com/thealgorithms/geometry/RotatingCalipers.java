@@ -138,17 +138,41 @@ public final class RotatingCalipers {
         int n = hull.size();
         double minWidth = Double.MAX_VALUE;
 
-        // Use rotating calipers to find minimum width
+        // Check all orientations defined by pairs of hull points
+        // This ensures we find the true minimum width
         for (int i = 0; i < n; i++) {
-            Point p1 = hull.get(i);
-            Point p2 = hull.get((i + 1) % n);
-
-            // Find the antipodal point for this edge
-            int j = findAntipodalPoint(hull, i);
-
-            // Compute width as distance between parallel lines
-            double width = distanceToLine(p1, p2, hull.get(j));
-            minWidth = Math.min(minWidth, width);
+            for (int j = i + 1; j < n; j++) {
+                Point p1 = hull.get(i);
+                Point p2 = hull.get(j);
+                
+                // Calculate direction vector
+                double dx = p2.x() - p1.x();
+                double dy = p2.y() - p1.y();
+                double len = Math.sqrt(dx * dx + dy * dy);
+                
+                if (len == 0) continue;
+                
+                // Unit direction vector
+                double unitX = dx / len;
+                double unitY = dy / len;
+                
+                // Perpendicular unit vector
+                double perpX = -unitY;
+                double perpY = unitX;
+                
+                // Project all points onto the perpendicular direction
+                double minProj = Double.MAX_VALUE;
+                double maxProj = Double.MIN_VALUE;
+                
+                for (Point p : hull) {
+                    double proj = p.x() * perpX + p.y() * perpY;
+                    minProj = Math.min(minProj, proj);
+                    maxProj = Math.max(maxProj, proj);
+                }
+                
+                double width = maxProj - minProj;
+                minWidth = Math.min(minWidth, width);
+            }
         }
 
         return minWidth;
@@ -292,8 +316,7 @@ public final class RotatingCalipers {
         for (int i = 1; i < hull.size(); i++) {
             Point current = hull.get(i);
             // Check if current point is better than current best
-            boolean isBetter = current.y() < bottomMost.y()
-                || (current.y() == bottomMost.y() && current.x() < bottomMost.x());
+            boolean isBetter = current.y() < bottomMost.y() || (current.y() == bottomMost.y() && current.x() < bottomMost.x());
 
             if (isBetter) {
                 bottomMost = current;
