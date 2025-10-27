@@ -117,6 +117,30 @@ public class BloomFilter<T> {
          * @return the computed hash value
          */
         public int compute(T key) {
+            return index*contentHash(key);
+        }
+
+        /**
+         * Computes the ASCII value sum of the characters in a string.
+         * <p>
+         * This method iterates through each character of the string and accumulates
+         * their ASCII values to produce a single integer value.
+         * </p>
+         *
+         * @param word the string to compute
+         * @return the sum of ASCII values of the characters in the string
+         */
+        private int asciiString(String word) {
+            int sum = 0;
+            for (char c : word.toCharArray()) {
+                sum += c;
+            }
+            return sum;
+        }
+        /**
+         * Computes a content-based hash for arrays; falls back to ASCII-sum of String value otherwise.
+         */
+        private int contentHash(Object key) {
             String keyString;
             if (key != null && key.getClass().isArray()) {
                 if (key instanceof Object[] objects) {
@@ -137,25 +161,7 @@ public class BloomFilter<T> {
             } else {
                 keyString = String.valueOf(key);
             }
-            return index * asciiString(String.valueOf(keyString));
-        }
-
-        /**
-         * Computes the ASCII value sum of the characters in a string.
-         * <p>
-         * This method iterates through each character of the string and accumulates
-         * their ASCII values to produce a single integer value.
-         * </p>
-         *
-         * @param word the string to compute
-         * @return the sum of ASCII values of the characters in the string
-         */
-        private int asciiString(String word) {
-            int sum = 0;
-            for (char c : word.toCharArray()) {
-                sum += c;
-            }
-            return sum;
+            return asciiString(String.valueOf(keyString));
         }
     }
 }
