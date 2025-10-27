@@ -6,7 +6,6 @@ import com.thealgorithms.devutils.ConsoleInterceptor;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -83,10 +82,6 @@ public class AVLSimpleTest {
         assertEquals(expectedTree, getActualTree());
     }
 
-    @Disabled(
-        "This test should pass for empty trees to protect against crashes "
-          + "when trying to access the display method before inserting anything"
-    )
     @Test
     @DisplayName("A test where an empty tree should return the string \"Tree is empty\".")
     void testEmptyTree() {
@@ -112,12 +107,7 @@ public class AVLSimpleTest {
     }
 
     public static Stream<Arguments> getTreeNodesInput() {
-        return Stream.of(
-          Arguments.of(30, 20, 10),
-          Arguments.of(30, 10, 20),
-          Arguments.of(10, 20, 30),
-          Arguments.of(10, 30, 20)
-        );
+        return Stream.of(Arguments.of(30, 20, 10), Arguments.of(30, 10, 20), Arguments.of(10, 20, 30), Arguments.of(10, 30, 20));
     }
 
     @ParameterizedTest

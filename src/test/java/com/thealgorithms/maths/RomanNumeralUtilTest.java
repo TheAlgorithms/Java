@@ -10,13 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class RomanNumeralUtilTest {
 		@ParameterizedTest()
-		@CsvSource({
-            "2000,MM",
-            "1,I",
-            "2,II",
-            "1003,MIII",
-            "1004,MIV"
-		})
+		@CsvSource({"2000,MM", "1,I", "2,II", "1003,MIII", "1004,MIV"})
 		void minimumMaximumTest(int testInt, String word) {
             System.out.println(word + ": " + testInt);
             assertEquals(RomanNumeralUtil.generate(testInt), word);

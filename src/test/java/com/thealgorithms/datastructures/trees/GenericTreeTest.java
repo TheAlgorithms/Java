@@ -71,8 +71,7 @@ public class GenericTreeTest {
     void testCreateValidTree() {
         tree.display();
 
-        assertEquals(
-          getExpectedTree(), getConsoleOutput());
+        assertEquals(getExpectedTree(), getConsoleOutput());
     }
 
     @Test

@@ -202,4 +202,62 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jolla-dev</id>
+            <build>
+                <plugins>
+                    <!-- Surefire -->
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>com/thealgorithms/datastructures/trees/**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                    <!-- Pitest -->
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <targetClasses>com.thealgorithms.datastructures.trees.LCA</targetClasses>
+                            <targetTests>com.thealgorithms.datastructures.trees.LCATest</targetTests>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>pitest</id>
+                                <phase>verify</phase> <!-- Runs only during verify -->
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- JaCoCo -->
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>generate-code-coverage-report</id>
+                                <phase>verify</phase> <!-- Runs only during verify -->
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

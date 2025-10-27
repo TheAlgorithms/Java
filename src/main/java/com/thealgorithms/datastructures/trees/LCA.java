@@ -7,9 +7,9 @@ public final class LCA {
     private LCA() {
     }
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static void main(String[] args) {
+        Scanner SCANNER = new Scanner(System.in);
+
         // The adjacency list representation of a tree:
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
@@ -18,7 +18,7 @@ public final class LCA {
         int e = v - 1;
 
         for (int i = 0; i < v; i++) {
-            adj.add(new ArrayList<Integer>());
+            adj.add(new ArrayList<>());
         }
 
         // Storing the given tree as an adjacency list

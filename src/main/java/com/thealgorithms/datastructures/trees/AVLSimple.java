@@ -28,7 +28,7 @@ AVLTree tree=new AVLTree();
 
 public class AVLSimple {
 
-    private class Node {
+    private static class Node {
 
         int data;
         int height;
@@ -82,6 +82,11 @@ public class AVLSimple {
     }
 
     public void display() {
+        if (root == null) {
+            System.out.println("Tree is empty");
+            return;
+        }
+
         this.display(this.root);
         System.out.println(this.root.height);
     }
