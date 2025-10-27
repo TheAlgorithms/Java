@@ -39,8 +39,7 @@ public class AVLSimpleTest {
           10=>20<=30
           END=>10<=END
           END=>30<=END
-          2"""
-          .replace("\n", "");
+          2""".replace("\n", "");
     }
 
     String getActualTree() {
@@ -76,8 +75,7 @@ public class AVLSimpleTest {
           END=>20<=END
           27=>30<=END
           END=>27<=END
-          4"""
-          .replace("\n", "");
+          4""".replace("\n", "");
 
         assertEquals(expectedTree, getActualTree());
     }
@@ -130,15 +128,13 @@ public class AVLSimpleTest {
           5=>10<=END
           END=>5<=END
           END=>30<=END
-          3"""
-            .replace("\n", "")),
+          3""".replace("\n", "")),
           Arguments.of(35, """
           10=>20<=30
           END=>10<=END
           END=>30<=35
           END=>35<=END
-          3"""
-            .replace("\n", ""))
+          3""".replace("\n", ""))
         );
     }
 
