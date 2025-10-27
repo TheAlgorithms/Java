@@ -58,14 +58,9 @@ public class RockPaperScissors {
     private static String getResult(String userChoice, String computerChoice) {
         if (userChoice.equals(computerChoice)) {
             return "It's a tie!";
-        } else if (
-                (userChoice.equals("rock") && computerChoice.equals("scissors")) ||
-                        (userChoice.equals("scissors") && computerChoice.equals("paper")) ||
-                        (userChoice.equals("paper") && computerChoice.equals("rock"))
-        ) {
+        } else if ((userChoice.equals("rock") && computerChoice.equals("scissors")) || (userChoice.equals("scissors") && computerChoice.equals("paper")) || (userChoice.equals("paper") && computerChoice.equals("rock"))) {
             return "You win! :D ";
-        } else {
+        } else
             return "You lose! :( ";
-        }
     }
 }
