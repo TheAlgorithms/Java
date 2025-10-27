@@ -17,7 +17,7 @@ import java.util.Scanner;
  * Result: You win!
  * Author: Lígia Alves (Hacktoberfest 2025)
  */
-public class RockPaperScissors {
+public final class RockPaperScissors {
 
     private RockPaperScissors() {
         throw new UnsupportedOperationException("Utility class");
