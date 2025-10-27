@@ -35,13 +35,7 @@ public class AVLSimpleTest {
     ======================== */
 
     String getExpectedTree() {
-        String tree = """
-          10=>20<=30
-          END=>10<=END
-          END=>30<=END
-          2""";
-
-        return tree.replace("\n", "");
+        return "10=>20<=30END=>10<=ENDEND=>30<=END2";
     }
 
     String getActualTree() {
@@ -67,17 +61,7 @@ public class AVLSimpleTest {
 
         tree.display();
 
-        String expectedTree = """
-          15=>25<=30
-          10=>15<=19
-          5=>10<=END
-          END=>5<=END
-          16=>19<=20
-          END=>16<=END
-          END=>20<=END
-          27=>30<=END
-          END=>27<=END
-          4""".replace("\n", "");
+        String expectedTree = "15=>25<=3010=>15<=195=>10<=ENDEND=>5<=END16=>19<=20END=>16<=ENDEND=>20<=END27=>30<=ENDEND=>27<=END4";
 
         assertEquals(expectedTree, getActualTree());
     }
@@ -125,18 +109,8 @@ public class AVLSimpleTest {
 
     public static Stream<Arguments> getTreeNodesInputForBFEqualsOneRotations() {
         return Stream.of(
-          Arguments.of(5, """
-          10=>20<=30
-          5=>10<=END
-          END=>5<=END
-          END=>30<=END
-          3""".replace("\n", "")),
-          Arguments.of(35, """
-          10=>20<=30
-          END=>10<=END
-          END=>30<=35
-          END=>35<=END
-          3""".replace("\n", ""))
+          Arguments.of(5, "10=>20<=305=>10<=ENDEND=>5<=ENDEND=>30<=END3"),
+          Arguments.of(35, "10=>20<=30END=>10<=ENDEND=>30<=35END=>35<=END3")
         );
     }
 
