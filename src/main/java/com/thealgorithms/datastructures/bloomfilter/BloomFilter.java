@@ -1,5 +1,6 @@
 package com.thealgorithms.datastructures.bloomfilter;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.BitSet;
 
@@ -117,24 +118,22 @@ public class BloomFilter<T> {
          */
         public int compute(T key) {
             String keyString;
-            if (key instanceof byte[]) {
-                keyString = Arrays.toString((byte[]) key);
-            } else if (key instanceof short[]) {
-                keyString = Arrays.toString((short[]) key);
-            } else if (key instanceof int[]) {
-                keyString = Arrays.toString((int[]) key);
-            } else if (key instanceof long[]) {
-                keyString = Arrays.toString((long[]) key);
-            } else if (key instanceof char[]) {
-                keyString = Arrays.toString((char[]) key);
-            } else if (key instanceof float[]) {
-                keyString = Arrays.toString((float[]) key);
-            } else if (key instanceof double[]) {
-                keyString = Arrays.toString((double[]) key);
-            } else if (key instanceof boolean[]) {
-                keyString = Arrays.toString((boolean[]) key);
-            } else if (key instanceof Object[]) {
-                keyString = Arrays.deepToString((Object[]) key);
+            if (key != null && key.getClass().isArray()) {
+                if (key instanceof Object[] objects) {
+                    keyString = Arrays.deepToString(objects);
+                }
+                else {
+                    int length = Array.getLength(key);
+                    StringBuilder sb = new StringBuilder("[");
+                    for (int i = 0; i < length; i++) {
+                        sb.append(Array.get(key, i));
+                        if (i < length - 1) {
+                            sb.append(", ");
+                        }
+                    }
+                    sb.append("]");
+                    keyString = sb.toString();
+                }
             } else {
                 keyString = String.valueOf(key);
             }

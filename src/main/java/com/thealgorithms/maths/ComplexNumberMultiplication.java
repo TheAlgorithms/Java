@@ -1,4 +1,4 @@
-package com.thealgorithms.strings;
+package com.thealgorithms.maths;
 /**
  * @author Swarit Srivastava (https://github.com/SwarritSrivastava)
  */
