@@ -24,7 +24,7 @@ public class LCATest {
      *        9   8
      * <pre>
      */
-    private final static String TREE = "10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n";
+    private static final String TREE = "10\n0\n1\n0\n2\n1\n5\n5\n6\n2\n4\n2\n3\n3\n7\n7\n9\n7\n8\n";
 
     /* ========================
         Tests

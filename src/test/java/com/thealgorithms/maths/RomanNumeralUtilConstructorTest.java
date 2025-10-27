@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import java.lang.reflect.Constructor;
 import org.junit.jupiter.api.Test;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 // Covers the private constructor for code coverage tools
 public class RomanNumeralUtilConstructorTest {
+    @SuppressFBWarnings("RFI_SET_ACCESSIBLE")
     @Test
     void shouldInvokePrivateConstructor() throws Exception {
         Constructor<RomanNumeralUtil> constructor = RomanNumeralUtil.class.getDeclaredConstructor();

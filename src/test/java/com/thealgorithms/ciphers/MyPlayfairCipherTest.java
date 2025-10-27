@@ -7,16 +7,16 @@ import org.junit.jupiter.api.Test;
 
 public class MyPlayfairCipherTest {
     private PlayfairCipher playfair;
-    private final String keyword = "KEYWORD";
+    private static final String KEYWORD = "KEYWORD";
 
     @BeforeEach
     public void setup() {
-        playfair = new PlayfairCipher(keyword);
+        playfair = new PlayfairCipher(KEYWORD);
     }
 
     @Test
     void shouldEncryptAndDecryptDuringSameRowDigraph() {
-        String plaintext = keyword.substring(0, 2);
+        String plaintext = KEYWORD.substring(0, 2);
 
         String encrypted = playfair.encrypt(plaintext);
         String decrypted = playfair.decrypt(encrypted);
