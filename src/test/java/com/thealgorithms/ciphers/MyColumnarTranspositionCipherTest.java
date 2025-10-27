@@ -22,7 +22,7 @@ public class MyColumnarTranspositionCipherTest {
     @Test
     void shouldNotProduceNullOrEmptyEncryptedText() {
         String encrypted = ColumnarTranspositionCipher.encrypt(plaintext, keyword);
-        
+
         assertNotNull(encrypted, "Encrypted text should not be null");
         assertFalse(encrypted.isEmpty(), "Encrypted text should not be empty");
     }
@@ -59,7 +59,7 @@ public class MyColumnarTranspositionCipherTest {
 
         String encrypted = ColumnarTranspositionCipher.encrypt(myPlaintext, myKeyword);
         String expected = "8≈7≈2≈4≈5≈3≈6≈19";
-        
+
         assertEquals(expected, encrypted, "Should match");
     }
 
@@ -67,7 +67,7 @@ public class MyColumnarTranspositionCipherTest {
     void shouldMatchEncryptionAndDecryptionWithNoSpacesOrPadding() {
         String myPlaintext = "NoSpacesOrPadding";
 
-        String encrypted = ColumnarTranspositionCipher.encrypt(myPlaintext, keyword);
+        ColumnarTranspositionCipher.encrypt(myPlaintext, keyword);
         String decrypted = ColumnarTranspositionCipher.decrypt();
 
         assertEquals(myPlaintext, decrypted, "Decrypted text should match original plaintext");
@@ -77,7 +77,7 @@ public class MyColumnarTranspositionCipherTest {
     void shouldNotContainPaddingInDecryption() {
         String myPlaintext = "text";
 
-        String encrypted = ColumnarTranspositionCipher.encrypt(myPlaintext, keyword);
+        ColumnarTranspositionCipher.encrypt(myPlaintext, keyword);
         String decrypted = ColumnarTranspositionCipher.decrypt();
 
         assertFalse(decrypted.contains("≈"), "Should not contain padding characters");

@@ -25,11 +25,11 @@ public class SimpsonIntegrationTest {
         int n = 4;
         double a = -1.0;
         double b = 1.0;
-        double h = (b - a)/n;
+        double h = (b - a) / n;
 
         double result = simpson.simpsonsMethod(n, h, a);
         double expected = 8.51454379418048;
-        
+
         assertEquals(expected, result, DELTA);
     }
 

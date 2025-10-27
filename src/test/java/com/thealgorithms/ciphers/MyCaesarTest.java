@@ -1,9 +1,8 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyCaesarTest {
     private final Caesar caesar = new Caesar();
@@ -14,7 +13,7 @@ public class MyCaesarTest {
 
         String encoded1 = caesar.encode(message, 0);
         String encoded2 = caesar.encode(message, 26);
-        
+
         assertEquals(message, encoded1, "Encoded should be same as original");
         assertEquals(message, encoded2, "Encoded should be same as original");
     }

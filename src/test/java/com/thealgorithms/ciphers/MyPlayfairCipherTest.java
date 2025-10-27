@@ -1,14 +1,9 @@
 package com.thealgorithms.ciphers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyPlayfairCipherTest {
     private PlayfairCipher playfair;
@@ -30,11 +25,11 @@ public class MyPlayfairCipherTest {
     }
 
     @Test
-    void shouldPadOddLengthplaintext() {
+    void shouldPadOddLengthPlaintext() {
         String plaintext = "cat";
 
         String encrypted = playfair.encrypt(plaintext);
 
-        assertTrue(encrypted.length() % 2 == 0, "Should be even length");
+        assertEquals(0, encrypted.length() % 2, "Should be even length");
     }
 }

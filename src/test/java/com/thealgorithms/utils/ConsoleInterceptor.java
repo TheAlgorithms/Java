@@ -32,8 +32,15 @@ public class ConsoleInterceptor implements AutoCloseable {
 
     /**
      * Mock System.in with the provided input.
-     * Used in test, mainly for simulating input from the keyboard for scanners.
-     * */
+     * Used in test, mainly for simulating user input from the keyboard for scanners.
+     * <p>
+     * Each line of user input must end with a newline character (<code>\n</code>),
+     * because {@link java.util.Scanner#nextLine()} and similar methods read input line by line.
+     * <p>
+     * Example input:
+     * <p>
+     * "This is input line one\nAnd this is the second line of input\nAnd so on...\n"
+     */
     public void mockInput(String mockedInput) {
         System.setIn(new ByteArrayInputStream(mockedInput.getBytes()));
     }
@@ -45,7 +52,7 @@ public class ConsoleInterceptor implements AutoCloseable {
     /**
      * Start capturing System.out by replacing stdout with a custom PrintStream.
      * All printed data will be stored in outContent for later retrieval.
-     * */
+     */
     public void captureOutput() {
         if (!isCapturing) {
             System.setOut(new PrintStream(outContent));

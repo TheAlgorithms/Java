@@ -1,15 +1,20 @@
 package com.thealgorithms.maths;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.doubleThat;
-
-import java.util.List;
-import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MathBuilderTest {
 
@@ -107,7 +112,7 @@ class MathBuilderTest {
 
         assertAll(()
                       -> assertThrows(RuntimeException.class, () -> actual.rand(1)),
-            () -> assertThrows(RuntimeException.class, () -> actual.randomInRange(1, 10)), () -> assertThrows(RuntimeException.class, () -> actual.pi()), () -> assertThrows(RuntimeException.class, () -> actual.e()), () -> assertThrows(RuntimeException.class, () -> actual.set(1)));
+            () -> assertThrows(RuntimeException.class, () -> actual.randomInRange(1, 10)), () -> assertThrows(RuntimeException.class, actual::pi), () -> assertThrows(RuntimeException.class, actual::e), () -> assertThrows(RuntimeException.class, () -> actual.set(1)));
     }
 
     @Test
@@ -115,8 +120,8 @@ class MathBuilderTest {
     void divideByNum() {
         double actual = new MathBuilder.Builder(10).divide(2).build().get();
 
-        double expected = 10 / 2;
-        double expected2 = 10 / 4;
+        double expected = 10.0 / 2.0;
+        double expected2 = 10.0 / 4.0;
 
         assertEquals(expected, actual);
         assertNotEquals(expected2, actual);
