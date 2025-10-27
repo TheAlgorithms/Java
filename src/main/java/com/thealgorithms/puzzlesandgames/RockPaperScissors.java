@@ -19,6 +19,10 @@ import java.util.Scanner;
  */
 public class RockPaperScissors {
 
+    private RockPaperScissors() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -60,8 +64,9 @@ public class RockPaperScissors {
             return "It's a tie!";
         } else if ((userChoice.equals("rock") && computerChoice.equals("scissors")) || (userChoice.equals("scissors") && computerChoice.equals("paper")) || (userChoice.equals("paper") && computerChoice.equals("rock"))) {
             return "You win! :D ";
-        } else
+        } else {
             return "You lose! :( ";
+        }
     }
     public static String getRandomChoice() {
         String[] options = {"rock", "paper", "scissors"};
