@@ -1,4 +1,4 @@
-package com.thealgorithms.utils;
+package com.thealgorithms.devutils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
