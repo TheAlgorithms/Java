@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * <a href="https://en.wikipedia.org/wiki/Rock_paper_scissors"></a>
  * RockPaperScissors (Jokenpô)
  * Simple terminal game where the user plays Rock, Paper, Scissors against the computer.
  * Rules:
