@@ -113,7 +113,6 @@ class MathBuilderTest {
         Assertions.assertAll(randCheck, rangeCheck, piCheck, eCheck, setCheck);
     }
 
-
     @Test
     @DisplayName("Should divide 10 by 2")
     void divideByNum() {
@@ -138,7 +137,6 @@ class MathBuilderTest {
         Assertions.assertAll(noThrowOnBuild, noThrowOnDivideZero, resultIsInfinite, equalsExpected);
     }
 
-
     static List<Arguments> divideDoubleByZeroHelper() {
         return List.of(Arguments.of(Double.POSITIVE_INFINITY, new MathBuilder.Builder(10.5).openParenthesis(0).closeParenthesisAndDivide(), "10.5 / 0 should be +Infinity"),
             Arguments.of(Double.NEGATIVE_INFINITY, new MathBuilder.Builder(-10.5).openParenthesis(0).closeParenthesisAndDivide(), "-10.5 / 0 should be -Infinity"));
@@ -158,7 +156,6 @@ class MathBuilderTest {
 
         Assertions.assertAll(isBelowMax, isAboveMin, isWithinRange);
     }
-
 
     @ParameterizedTest
     @MethodSource("radiansHelper")
@@ -244,5 +241,4 @@ class MathBuilderTest {
 
         Assertions.assertAll(minCheck1, minCheck2, minCheck3, minCheck4, notEqualsCheck1, notEqualsCheck2);
     }
-
 }

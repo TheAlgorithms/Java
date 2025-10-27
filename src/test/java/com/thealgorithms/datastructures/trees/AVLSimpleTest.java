@@ -35,11 +35,13 @@ public class AVLSimpleTest {
     ======================== */
 
     String getExpectedTree() {
-        return """
+        String tree = """
           10=>20<=30
           END=>10<=END
           END=>30<=END
-          2""".replace("\n", "");
+          2""";
+
+        return tree.replace("\n", "");
     }
 
     String getActualTree() {
