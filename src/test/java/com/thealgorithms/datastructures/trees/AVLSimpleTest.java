@@ -108,10 +108,7 @@ public class AVLSimpleTest {
     }
 
     public static Stream<Arguments> getTreeNodesInputForBFEqualsOneRotations() {
-        return Stream.of(
-          Arguments.of(5, "10=>20<=305=>10<=ENDEND=>5<=ENDEND=>30<=END3"),
-          Arguments.of(35, "10=>20<=30END=>10<=ENDEND=>30<=35END=>35<=END3")
-        );
+        return Stream.of(Arguments.of(5, "10=>20<=305=>10<=ENDEND=>5<=ENDEND=>30<=END3"), Arguments.of(35, "10=>20<=30END=>10<=ENDEND=>30<=35END=>35<=END3"));
     }
 
     @Test
