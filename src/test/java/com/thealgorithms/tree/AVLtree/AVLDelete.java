@@ -1,32 +1,27 @@
 package com.thealgorithms.tree.AVLtree;
 
-
-
 public class AVLDelete extends AVLInsert {
 
     Node minValueNode(Node node) {
         Node current = node;
-        while (current.left != null)
+        while (current.left != null) {
             current = current.left;
+        }
         return current;
     }
 
     Node deleteNode(Node root, int key) {
-        if (root == null)
+        if (root == null) {
             return root;
+        }
 
-        if (key < root.key)
+        if (key < root.key) {
             root.left = deleteNode(root.left, key);
-        else if (key > root.key)
+        } else if (key > root.key) {
             root.right = deleteNode(root.right, key);
-        else {
+        } else {
             if ((root.left == null) || (root.right == null)) {
-                Node temp = null;
-                if (root.left != null)
-                    temp = root.left;
-                else
-                    temp = root.right;
-
+                Node temp = (root.left != null) ? root.left : root.right;
                 if (temp == null) {
                     root = null;
                 } else {
@@ -39,23 +34,30 @@ public class AVLDelete extends AVLInsert {
             }
         }
 
-        if (root == null)
+        if (root == null) {
             return root;
+        }
 
         root.height = Math.max(height(root.left), height(root.right)) + 1;
         int balance = getBalance(root);
 
-        if (balance > 1 && getBalance(root.left) >= 0)
+        // Left Left Case
+        if (balance > 1 && getBalance(root.left) >= 0) {
             return rightRotate(root);
+        }
 
+        // Left Right Case
         if (balance > 1 && getBalance(root.left) < 0) {
             root.left = leftRotate(root.left);
             return rightRotate(root);
         }
 
-        if (balance < -1 && getBalance(root.right) <= 0)
+        // Right Right Case
+        if (balance < -1 && getBalance(root.right) <= 0) {
             return leftRotate(root);
+        }
 
+        // Right Left Case
         if (balance < -1 && getBalance(root.right) > 0) {
             root.right = rightRotate(root.right);
             return leftRotate(root);
@@ -76,13 +78,12 @@ public class AVLDelete extends AVLInsert {
         tree.root = tree.insert(tree.root, 1);
         tree.root = tree.insert(tree.root, 2);
 
-        System.out.println("Preorder before deletion:");
+        System.out.println("Preorder traversal before deletion:");
         tree.preOrder(tree.root);
 
         tree.root = tree.deleteNode(tree.root, 10);
 
-        System.out.println("\nPreorder after deletion:");
+        System.out.println("\nPreorder traversal after deletion:");
         tree.preOrder(tree.root);
     }
 }
-
