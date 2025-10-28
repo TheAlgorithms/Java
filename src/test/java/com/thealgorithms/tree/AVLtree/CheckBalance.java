@@ -1,9 +1,5 @@
 package com.thealgorithms.tree.AVLtree;
 
-
-
-;
-
 public class CheckBalance extends AVLInsert {
 
     boolean isBalanced(Node node) {
@@ -24,10 +20,13 @@ public class CheckBalance extends AVLInsert {
         tree.root = tree.insert(tree.root, 10);
         tree.root = tree.insert(tree.root, 20);
         tree.root = tree.insert(tree.root, 30);
+        tree.root = tree.insert(tree.root, 40);
+        tree.root = tree.insert(tree.root, 50);
+        tree.root = tree.insert(tree.root, 25);
 
         System.out.println("Is AVL Tree balanced? " + tree.isBalanced(tree.root));
 
-        // Manually unbalance the tree
+        // Manually unbalance it
         tree.root.left.left = new Node(5);
         System.out.println("Is AVL Tree balanced after modification? " + tree.isBalanced(tree.root));
     }
