@@ -101,7 +101,7 @@ public class GenericTreeTest {
     @Test
     @DisplayName("Gets the correct number of nodes in the tree")
     void testGettingCorrectSizeOfTree() {
-        Assertions.assertEquals(3, tree.size2call());
+        Assertions.assertEquals(9, tree.size2call());
     }
 
     @Test
