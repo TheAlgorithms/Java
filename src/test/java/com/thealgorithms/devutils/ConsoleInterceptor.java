@@ -51,7 +51,7 @@ public class ConsoleInterceptor implements AutoCloseable {
 
     /**
      * Start capturing System.out by replacing stdout with a custom PrintStream.
-     * All printed data will be stored in outContent for later retrieval.
+     * All printed data will be stored in outContent - available via {@link #getAndClearConsoleOutput}, for later retrieval.
      */
     public void captureOutput() {
         if (!isCapturing) {

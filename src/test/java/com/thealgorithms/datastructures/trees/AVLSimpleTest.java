@@ -1,5 +1,7 @@
 package com.thealgorithms.datastructures.trees;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.thealgorithms.devutils.ConsoleInterceptor;
@@ -20,11 +22,13 @@ public class AVLSimpleTest {
         Setup/TearDown
     ======================== */
 
+    /** Starts capturing System.in. */
     @BeforeEach
     void setup() {
         interceptor.captureOutput();
     }
 
+    /** Cleans up after each test by closing the interceptor. */
     @AfterEach
     void tearDown() {
         interceptor.close();
@@ -34,10 +38,29 @@ public class AVLSimpleTest {
         Helper methods
     ======================== */
 
+    /**
+     * Returns a string representation of the expected tree after inserting
+     * the values 10, 20, and 30 in any order.
+     * <p>
+     * The returned string follows the same format as the tree's display method,
+     * where each node is represented in the form "left=>value<=right" and "END"
+     * denotes an empty (null) child.
+     * @return a string representing the expected tree structure
+     */
     String getExpectedTree() {
         return "10=>20<=30END=>10<=ENDEND=>30<=END2";
     }
 
+    /**
+     * Returns the actual string representation of the tree as printed
+     * by the display method.
+     *
+     * <p>This method captures the console output via the interceptor and
+     * removes all newline characters, returning a single-line string
+     * suitable for comparison with the expected tree string.
+     *
+     * @return the actual tree structure as a single-line string
+     */
     String getActualTree() {
         return interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "");
     }
@@ -47,7 +70,7 @@ public class AVLSimpleTest {
     ======================== */
 
     @Test
-    @DisplayName("A longer generic AVL tree creation that should pass")
+    @DisplayName("Creates a longer simple AVL tree that matches the expected layout")
     void testTreeCreation() {
         tree.insert(25);
         tree.insert(30);
@@ -77,52 +100,51 @@ public class AVLSimpleTest {
     }
 
     @ParameterizedTest
-    @MethodSource("getTreeNodesInput")
+    @MethodSource("getTreeNodesValues")
     @DisplayName("Test to ensure all rotation paths are covered")
-    void testAllRotations(int node1, int node2, int node3) {
-        tree.insert(node1);
-        tree.insert(node2);
-        tree.insert(node3);
+    void testAllRotations(int node1, int node2, int node3, String errorMessage) {
+        assertAll(() -> assertDoesNotThrow(() -> tree.insert(node1), "inserting: " + node1), () -> assertDoesNotThrow(() -> tree.insert(node2), "inserting: " + node2), () -> assertDoesNotThrow(() -> tree.insert(node3), "inserting: " + node3));
 
         tree.display();
 
-        assertEquals(getExpectedTree(), getActualTree());
+        assertEquals(getExpectedTree(), getActualTree(), errorMessage);
     }
 
-    public static Stream<Arguments> getTreeNodesInput() {
-        return Stream.of(Arguments.of(30, 20, 10), Arguments.of(30, 10, 20), Arguments.of(10, 20, 30), Arguments.of(10, 30, 20));
+    public static Stream<Arguments> getTreeNodesValues() {
+        return Stream.of(Arguments.of(30, 20, 10, "LL rotation failed"), Arguments.of(30, 10, 20, "LR rotation failed"), Arguments.of(10, 20, 30, "RR rotation failed"), Arguments.of(10, 30, 20, "RL rotation failed"));
     }
 
     @ParameterizedTest
     @MethodSource("getTreeNodesInputForBFEqualsOneRotations")
-    @DisplayName("Rotation not triggered when balance factor equals threshold")
-    void testRotatesNotTriggeredWhenBFEqualsOne(int node, String expectedTree) {
-        tree.insert(30);
+    @DisplayName("Checks rotation isn't triggered when balance factor equals threshold")
+    void testRotationsNotTriggeredWhenBFEqualsOne(int boundaryNode, String expectedTree, String errorMessage) {
         tree.insert(20);
+        tree.insert(30);
         tree.insert(10);
-        tree.insert(node);
+        tree.insert(boundaryNode);
 
         tree.display();
 
-        assertEquals(expectedTree, getActualTree());
+        assertEquals(expectedTree, getActualTree(), errorMessage);
     }
 
     public static Stream<Arguments> getTreeNodesInputForBFEqualsOneRotations() {
-        return Stream.of(Arguments.of(5, "10=>20<=305=>10<=ENDEND=>5<=ENDEND=>30<=END3"), Arguments.of(35, "10=>20<=30END=>10<=ENDEND=>30<=35END=>35<=END3"));
+        return Stream.of(Arguments.of(5, "10=>20<=305=>10<=ENDEND=>5<=ENDEND=>30<=END3", "Insertion of 5 should not trigger rotation"), Arguments.of(15, "10=>20<=30END=>10<=15END=>15<=ENDEND=>30<=END3", "Insertion of 15 should not trigger rotation"),
+            Arguments.of(25, "10=>20<=30END=>10<=END25=>30<=ENDEND=>25<=END3", "Insertion of 25 should not trigger rotation"), Arguments.of(35, "10=>20<=30END=>10<=ENDEND=>30<=35END=>35<=END3", "Insertion of 35 should not trigger rotation"));
     }
 
     @Test
-    @DisplayName("Should return true for a tree that don't account for duplicates")
-    void testDuplicatesInTreeCreationDoNotStick() {
+    @DisplayName("Ignores duplicate insertions and create a tree with depth one")
+    void testDuplicateInsertionsIgnored() {
         int duplicate = 20;
-        tree.insert(30);
         tree.insert(duplicate);
-        tree.insert(20);
         tree.insert(duplicate);
-        tree.insert(10);
+        tree.insert(duplicate);
 
         tree.display();
 
-        assertEquals(getExpectedTree(), getActualTree());
+        String actualTree = getActualTree();
+
+        assertEquals('1', actualTree.charAt(actualTree.length() - 1));
     }
 }

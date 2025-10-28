@@ -31,7 +31,7 @@ public class LCATest {
     ======================== */
 
     @ParameterizedTest
-    @MethodSource("getInput")
+    @MethodSource("getSimulatedInputAndExpectedParent")
     @DisplayName("Should return correct common ancestor for any two nodes in the tree")
     void shouldReturnCorrectLCAThroughMain(String simulatedInput, String expectedParent) {
         try (ConsoleInterceptor interceptor = new ConsoleInterceptor()) {
@@ -42,11 +42,11 @@ public class LCATest {
 
             String actualParent = interceptor.getAndClearConsoleOutput().replaceAll("[\\r\\n]", "");
 
-            assertEquals(expectedParent, actualParent);
+            assertEquals(expectedParent, actualParent, "The two nodes Lowest Common Ancestor wasn't the expected one.");
         }
     }
 
-    public static Stream<Arguments> getInput() {
+    public static Stream<Arguments> getSimulatedInputAndExpectedParent() {
         return Stream.of(Arguments.of(TREE + "9\n4\n", "2"), Arguments.of(TREE + "5\n6\n", "5"), Arguments.of(TREE + "5\n4\n", "0"), Arguments.of(TREE + "3\n8\n", "3"), Arguments.of(TREE + "6\n3\n", "0"), Arguments.of(TREE + "3\n3\n", "3"));
     }
 }
