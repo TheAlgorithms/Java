@@ -1,137 +1,197 @@
 package com.thealgorithms.maths;
 
-import java.util.Arrays;
-
 /**
- * Implements the Chebyshev Iteration method for solving a system of linear
- * equations (Ax = b).
+ * In numerical analysis, Chebyshev iteration is an iterative method for solving
+ * systems of linear equations Ax = b. It is designed for systems where the
+ * matrix A is symmetric positive-definite (SPD).
  *
- * This iterative method requires:
- *  - Matrix a to be symmetric positive definite (SPD)
- *  - Knowledge of minimum (lambdaMin) and maximum (lambdaMax) eigenvalues
+ * <p>
+ * This method is a "polynomial acceleration" method, meaning it finds the
+ * optimal polynomial to apply to the residual to accelerate convergence.
  *
- * Reference: https://en.wikipedia.org/wiki/Chebyshev_iteration
+ * <p>
+ * It requires knowledge of the bounds of the eigenvalues of the matrix A:
+ * m(A) (smallest eigenvalue) and M(A) (largest eigenvalue).
  *
- * Author: Mitrajit Ghorui (github: keyKyrios)
+ * <p>
+ * Wikipedia: https://en.wikipedia.org/wiki/Chebyshev_iteration
+ *
+ * @author Mitrajit Ghorui(KeyKyrios)
  */
-public final class ChebyshevIteration {
+public final class Chebyshev {
 
-    private ChebyshevIteration() {
+    private Chebyshev() {
     }
 
     /**
-     * Solves ax = b using Chebyshev Iteration.
+     * Solves the linear system Ax = b using the Chebyshev iteration method.
      *
-     * @param a             SPD matrix
-     * @param b             vector b
-     * @param x0            initial guess
-     * @param lambdaMin     minimum eigenvalue
-     * @param lambdaMax     maximum eigenvalue
-     * @param maxIterations maximum iterations
-     * @param tolerance     convergence tolerance
-     * @return solution vector x
+     * <p>
+     * NOTE: The matrix A *must* be symmetric positive-definite (SPD) for this
+     * algorithm to converge.
+     *
+     * @param a The matrix A (must be square, SPD).
+     * @param b The vector b.
+     * @param x0 The initial guess vector.
+     * @param minEigenvalue The smallest eigenvalue of A (m(A)).
+     * @param maxEigenvalue The largest eigenvalue of A (M(A)).
+     * @param maxIterations The maximum number of iterations to perform.
+     * @param tolerance The desired tolerance for the residual norm.
+     * @return The solution vector x.
+     * @throws IllegalArgumentException if matrix/vector dimensions are
+     * incompatible,
+     * if maxIterations <= 0, or if eigenvalues are invalid (e.g., minEigenvalue
+     * <= 0, maxEigenvalue <= minEigenvalue).
      */
-    public static double[] solve(double[][] a, double[] b, double[] x0, double lambdaMin, double lambdaMax,
-                                 int maxIterations, double tolerance) {
-        validateInputs(a, b, x0, lambdaMin, lambdaMax);
+    public static double[] solve(
+        double[][] a,
+        double[] b,
+        double[] x0,
+        double minEigenvalue,
+        double maxEigenvalue,
+        int maxIterations,
+        double tolerance
+    ) {
+        validateInputs(a, b, x0, minEigenvalue, maxEigenvalue, maxIterations, tolerance);
 
         int n = b.length;
-        double[] x = Arrays.copyOf(x0, n);
+        double[] x = x0.clone();
         double[] r = vectorSubtract(b, matrixVectorMultiply(a, x));
         double[] p = new double[n];
+
+        double d = (maxEigenvalue + minEigenvalue) / 2.0;
+        double c = (maxEigenvalue - minEigenvalue) / 2.0;
+
         double alpha = 0.0;
-        double beta = 0.0;
-        double c = (lambdaMax - lambdaMin) / 2.0;
-        double d = (lambdaMax + lambdaMin) / 2.0;
+        double alphaPrev = 0.0;
 
-        double initialResidualNorm = vectorNorm(r);
-        if (initialResidualNorm < tolerance) {
-            return x; // Already converged
-        }
+        for (int k = 0; k < maxIterations; k++) {
+            double residualNorm = vectorNorm(r);
+            if (residualNorm < tolerance) {
+                return x; // Solution converged
+            }
 
-        for (int k = 1; k <= maxIterations; k++) {
-            if (k == 1) {
+            if (k == 0) {
                 alpha = 1.0 / d;
-                p = Arrays.copyOf(r, n);
+                System.arraycopy(r, 0, p, 0, n); // p = r
             } else {
-                double alphaPrev = alpha;
-                beta = Math.pow(c * alphaPrev / 2.0, 2);
+                double beta = (c * alphaPrev / 2.0) * (c * alphaPrev / 2.0);
                 alpha = 1.0 / (d - beta / alphaPrev);
-                p = vectorAdd(r, vectorScale(p, beta / alphaPrev));
+                double[] pUpdate = scalarMultiply(beta / alphaPrev, p);
+                p = vectorAdd(r, pUpdate); // p = r + (beta / alphaPrev) * p
             }
 
-            x = vectorAdd(x, vectorScale(p, alpha));
+            double[] xUpdate = scalarMultiply(alpha, p);
+            x = vectorAdd(x, xUpdate); // x = x + alpha * p
+
+            // Recompute residual for accuracy, though it can be updated iteratively
             r = vectorSubtract(b, matrixVectorMultiply(a, x));
-
-            if (vectorNorm(r) < tolerance) {
-                break;
-            }
+            alphaPrev = alpha;
         }
 
-        return x;
+        return x; // Return best guess after maxIterations
     }
 
-    private static void validateInputs(double[][] a, double[] b, double[] x0, double lambdaMin, double lambdaMax) {
-        int n = b.length;
+    /**
+     * Validates the inputs for the Chebyshev solver.
+     */
+    private static void validateInputs(
+        double[][] a,
+        double[] b,
+        double[] x0,
+        double minEigenvalue,
+        double maxEigenvalue,
+        int maxIterations,
+        double tolerance
+    ) {
+        int n = a.length;
         if (n == 0) {
-            throw new IllegalArgumentException("Vectors cannot be empty.");
+            throw new IllegalArgumentException("Matrix A cannot be empty.");
         }
-        if (a.length != n || a[0].length != n) {
-            throw new IllegalArgumentException("Matrix a must be square (n x n).");
+        if (n != a[0].length) {
+            throw new IllegalArgumentException("Matrix A must be square.");
         }
-        if (x0.length != n) {
-            throw new IllegalArgumentException("Initial guess vector x0 must have length n.");
+        if (n != b.length) {
+            throw new IllegalArgumentException("Matrix A and vector b dimensions do not match.");
         }
-        if (lambdaMin >= lambdaMax || lambdaMin <= 0) {
-            throw new IllegalArgumentException("Eigenvalues must satisfy 0 < lambdaMin < lambdaMax.");
+        if (n != x0.length) {
+            throw new IllegalArgumentException("Matrix A and vector x0 dimensions do not match.");
+        }
+        if (minEigenvalue <= 0) {
+            throw new IllegalArgumentException("Smallest eigenvalue must be positive (matrix must be positive-definite).");
+        }
+        if (maxEigenvalue <= minEigenvalue) {
+            throw new IllegalArgumentException("Max eigenvalue must be strictly greater than min eigenvalue.");
+        }
+        if (maxIterations <= 0) {
+            throw new IllegalArgumentException("Max iterations must be positive.");
+        }
+        if (tolerance <= 0) {
+            throw new IllegalArgumentException("Tolerance must be positive.");
         }
     }
 
-    private static double[] matrixVectorMultiply(double[][] a, double[] x) {
+    // --- Vector/Matrix Helper Methods ---
+    /**
+     * Computes the product of a matrix A and a vector v (Av).
+     */
+    private static double[] matrixVectorMultiply(double[][] a, double[] v) {
         int n = a.length;
-        double[] y = new double[n];
+        double[] result = new double[n];
         for (int i = 0; i < n; i++) {
-            double sum = 0.0;
+            double sum = 0;
             for (int j = 0; j < n; j++) {
-                sum += a[i][j] * x[j];
+                sum += a[i][j] * v[j];
             }
-            y[i] = sum;
+            result[i] = sum;
         }
-        return y;
+        return result;
     }
 
-    private static double[] vectorAdd(double[] a, double[] b) {
-        int n = a.length;
-        double[] c = new double[n];
+    /**
+     * Computes the subtraction of two vectors (v1 - v2).
+     */
+    private static double[] vectorSubtract(double[] v1, double[] v2) {
+        int n = v1.length;
+        double[] result = new double[n];
         for (int i = 0; i < n; i++) {
-            c[i] = a[i] + b[i];
+            result[i] = v1[i] - v2[i];
         }
-        return c;
+        return result;
     }
 
-    private static double[] vectorSubtract(double[] a, double[] b) {
-        int n = a.length;
-        double[] c = new double[n];
+    /**
+     * Computes the addition of two vectors (v1 + v2).
+     */
+    private static double[] vectorAdd(double[] v1, double[] v2) {
+        int n = v1.length;
+        double[] result = new double[n];
         for (int i = 0; i < n; i++) {
-            c[i] = a[i] - b[i];
+            result[i] = v1[i] + v2[i];
         }
-        return c;
+        return result;
     }
 
-    private static double[] vectorScale(double[] a, double scalar) {
-        int n = a.length;
-        double[] c = new double[n];
+    /**
+     * Computes the product of a scalar and a vector (s * v).
+     */
+    private static double[] scalarMultiply(double scalar, double[] v) {
+        int n = v.length;
+        double[] result = new double[n];
         for (int i = 0; i < n; i++) {
-            c[i] = a[i] * scalar;
+            result[i] = scalar * v[i];
         }
-        return c;
+        return result;
     }
 
-    private static double vectorNorm(double[] a) {
-        double sum = 0.0;
-        for (double val : a) {
-            sum += val * val;
+    /**
+     * Computes the L2 norm (Euclidean norm) of a vector.
+     */
+    private static double vectorNorm(double[] v) {
+        double sumOfSquares = 0;
+        for (double val : v) {
+            sumOfSquares += val * val;
         }
-        return Math.sqrt(sum);
+        return Math.sqrt(sumOfSquares);
     }
 }
