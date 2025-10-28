@@ -23,42 +23,6 @@ public final class RockPaperScissors {
         throw new UnsupportedOperationException("Utility class");
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
-        String[] options = {"rock", "paper", "scissors"};
-
-        System.out.println("=== Rock Paper Scissors Game ===");
-        System.out.println("Type 'rock', 'paper', or 'scissors'. Type 'exit' to quit.");
-
-        while (true) {
-            System.out.print("\nYour choice: ");
-            String userChoice = scanner.nextLine().trim().toLowerCase();
-
-            if (userChoice.equals("exit")) {
-                System.out.println("Thanks for playing! ");
-                break;
-            }
-
-            // Validate input
-            if (!userChoice.equals("rock") && !userChoice.equals("paper") && !userChoice.equals("scissors")) {
-                System.out.println("Invalid choice! Try again.");
-                continue;
-            }
-
-            // Computer chooses randomly
-            String computerChoice = options[random.nextInt(3)];
-            System.out.println("Computer chose: " + computerChoice);
-
-            // Determine result
-            String result = getResult(userChoice, computerChoice);
-            System.out.println(result);
-        }
-
-        scanner.close();
-    }
-
     public static String getResult(String userChoice, String computerChoice) {
         if (userChoice.equals(computerChoice)) {
             return "It's a tie!";
@@ -68,6 +32,7 @@ public final class RockPaperScissors {
             return "You lose! :( ";
         }
     }
+
     public static String getRandomChoice() {
         String[] options = {"rock", "paper", "scissors"};
         Random random = new Random();
