@@ -43,15 +43,7 @@ public final class ChebyshevIteration {
      * if maxIterations <= 0, or if eigenvalues are invalid (e.g., minEigenvalue
      * <= 0, maxEigenvalue <= minEigenvalue).
      */
-    public static double[] solve(
-        double[][] a,
-        double[] b,
-        double[] x0,
-        double minEigenvalue,
-        double maxEigenvalue,
-        int maxIterations,
-        double tolerance
-    ) {
+    public static double[] solve(double[][] a, double[] b, double[] x0, double minEigenvalue, double maxEigenvalue, int maxIterations, double tolerance) {
         validateInputs(a, b, x0, minEigenvalue, maxEigenvalue, maxIterations, tolerance);
 
         int n = b.length;
@@ -95,15 +87,7 @@ public final class ChebyshevIteration {
     /**
      * Validates the inputs for the Chebyshev solver.
      */
-    private static void validateInputs(
-        double[][] a,
-        double[] b,
-        double[] x0,
-        double minEigenvalue,
-        double maxEigenvalue,
-        int maxIterations,
-        double tolerance
-    ) {
+    private static void validateInputs(double[][] a, double[] b, double[] x0, double minEigenvalue, double maxEigenvalue, int maxIterations, double tolerance) {
         int n = a.length;
         if (n == 0) {
             throw new IllegalArgumentException("Matrix A cannot be empty.");
