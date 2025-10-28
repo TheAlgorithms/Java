@@ -132,6 +132,9 @@ public final class ChebyshevIteration {
     }
 
     // --- Vector/Matrix Helper Methods ---
+    /**
+     * Computes the product of a matrix A and a vector v (Av).
+     */
     private static double[] matrixVectorMultiply(double[][] a, double[] v) {
         int n = a.length;
         double[] result = new double[n];
@@ -145,6 +148,9 @@ public final class ChebyshevIteration {
         return result;
     }
 
+    /**
+     * Computes the subtraction of two vectors (v1 - v2).
+     */
     private static double[] vectorSubtract(double[] v1, double[] v2) {
         int n = v1.length;
         double[] result = new double[n];
@@ -152,3 +158,40 @@ public final class ChebyshevIteration {
             result[i] = v1[i] - v2[i];
         }
         return result;
+    }
+
+    /**
+     * Computes the addition of two vectors (v1 + v2).
+     */
+    private static double[] vectorAdd(double[] v1, double[] v2) {
+        int n = v1.length;
+        double[] result = new double[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = v1[i] + v2[i];
+        }
+        return result;
+    }
+
+    /**
+     * Computes the product of a scalar and a vector (s * v).
+     */
+    private static double[] scalarMultiply(double scalar, double[] v) {
+        int n = v.length;
+        double[] result = new double[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = scalar * v[i];
+        }
+        return result;
+    }
+
+    /**
+     * Computes the L2 norm (Euclidean norm) of a vector.
+     */
+    private static double vectorNorm(double[] v) {
+        double sumOfSquares = 0;
+        for (double val : v) {
+            sumOfSquares += val * val;
+        }
+        return Math.sqrt(sumOfSquares);
+    }
+}
