@@ -67,7 +67,7 @@ public final class ChebyshevIteration {
                 alpha = 1.0 / d;
                 System.arraycopy(r, 0, p, 0, n); // p = r
             } else {
-                double beta = (c * alphaPrev / 2.0) * (c * alphaPrev / 2.0);
+                double beta = c * alphaPrev / 2.0 * (c * alphaPrev / 2.0);
                 alpha = 1.0 / (d - beta / alphaPrev);
                 double[] pUpdate = scalarMultiply(beta / alphaPrev, p);
                 p = vectorAdd(r, pUpdate); // p = r + (beta / alphaPrev) * p
@@ -138,7 +138,7 @@ public final class ChebyshevIteration {
     private static double[] vectorSubtract(double[] v1, double[] v2) {
         int n = v1.length;
         double[] result = new double[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = or (int i = 0; i < n; i++) {
             result[i] = v1[i] - v2[i];
         }
         return result;
