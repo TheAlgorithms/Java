@@ -3,9 +3,7 @@ package com.thealgorithms.geometry;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A class implementing the Rotating Calipers algorithm for geometric computations on convex polygons.
@@ -137,28 +135,37 @@ public final class RotatingCalipers {
             return 0.0;
         }
 
-        int n = hull.size();
         double minWidth = Double.MAX_VALUE;
+        int n = hull.size();
 
-        // Generate all critical orientations for rotating calipers
-        Set<Double> angles = new HashSet<>();
-
-        // Add orientations perpendicular to each edge
+        // Method 1: Check orientations perpendicular to edges
         for (int i = 0; i < n; i++) {
             Point p1 = hull.get(i);
             Point p2 = hull.get((i + 1) % n);
 
             double dx = p2.x() - p1.x();
             double dy = p2.y() - p1.y();
+            double edgeLen = Math.sqrt(dx * dx + dy * dy);
 
-            if (dx != 0 || dy != 0) {
-                // Angle of the perpendicular to this edge
-                double angle = Math.atan2(-dx, dy); // perpendicular to (dx,dy) is (-dy,dx)
-                angles.add(angle);
+            if (edgeLen == 0) continue;
+
+            // Perpendicular to edge direction (measurement direction)
+            double perpX = -dy / edgeLen;
+            double perpY = dx / edgeLen;
+
+            double minProj = Double.MAX_VALUE;
+            double maxProj = Double.MIN_VALUE;
+
+            for (Point p : hull) {
+                double proj = p.x() * perpX + p.y() * perpY;
+                minProj = Math.min(minProj, proj);
+                maxProj = Math.max(maxProj, proj);
             }
+
+            minWidth = Math.min(minWidth, maxProj - minProj);
         }
 
-        // Add orientations defined by vertex pairs (for antipodal cases)
+        // Method 2: Check orientations defined by vertex pairs
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 Point p1 = hull.get(i);
@@ -166,33 +173,25 @@ public final class RotatingCalipers {
 
                 double dx = p2.x() - p1.x();
                 double dy = p2.y() - p1.y();
+                double len = Math.sqrt(dx * dx + dy * dy);
 
-                if (dx != 0 || dy != 0) {
-                    // Angle perpendicular to the line from p1 to p2
-                    double angle = Math.atan2(-dx, dy);
-                    angles.add(angle);
+                if (len == 0) continue;
+
+                // Direction perpendicular to the line p1-p2
+                double perpX = -dy / len;
+                double perpY = dx / len;
+
+                double minProj = Double.MAX_VALUE;
+                double maxProj = Double.MIN_VALUE;
+
+                for (Point p : hull) {
+                    double proj = p.x() * perpX + p.y() * perpY;
+                    minProj = Math.min(minProj, proj);
+                    maxProj = Math.max(maxProj, proj);
                 }
+
+                minWidth = Math.min(minWidth, maxProj - minProj);
             }
-        }
-
-        // Test each critical orientation
-        for (double angle : angles) {
-            // Unit vector in the measurement direction
-            double dirX = Math.sin(angle);
-            double dirY = Math.cos(angle);
-
-            // Project all points onto this direction
-            double minProj = Double.MAX_VALUE;
-            double maxProj = Double.MIN_VALUE;
-
-            for (Point p : hull) {
-                double proj = p.x() * dirX + p.y() * dirY;
-                minProj = Math.min(minProj, proj);
-                maxProj = Math.max(maxProj, proj);
-            }
-
-            double width = maxProj - minProj;
-            minWidth = Math.min(minWidth, width);
         }
 
         return minWidth;
