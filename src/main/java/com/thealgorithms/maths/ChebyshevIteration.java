@@ -138,7 +138,7 @@ public final class ChebyshevIteration {
     private static double[] vectorSubtract(double[] v1, double[] v2) {
         int n = v1.length;
         double[] result = new double[n];
-        for (int i = or (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             result[i] = v1[i] - v2[i];
         }
         return result;
