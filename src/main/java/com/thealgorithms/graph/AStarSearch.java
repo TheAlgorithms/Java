@@ -1,7 +1,5 @@
 package com.thealgorithms.graph;
 
-import java.util.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,13 +7,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
  * A* Search Algorithm for shortest pathfinding.
  *
  * <p>Commonly used in games, navigation, and robotics.
- * Combines Dijkstra's Algorithm and heuristic estimation.</p>
+ * Combines Dijkstra’s Algorithm and heuristic estimation.</p>
  *
  * <p>Reference: https://en.wikipedia.org/wiki/A*_search_algorithm</p>
  */
@@ -23,9 +22,9 @@ public class AStarSearch {
 
     static class Node implements Comparable<Node> {
         int id;
-        double g; // cost from start
-        double h; // heuristic to goal
-        double f; // total cost = g + h
+        double g; // Cost from start
+        double h; // Heuristic to goal
+        double f; // Total cost = g + h
         Node parent;
 
         Node(int id, double g, double h, Node parent) {
@@ -37,8 +36,8 @@ public class AStarSearch {
         }
 
         @Override
-        public int compareTo(Node other) {
-            return Double.compare(this.f, other.f);
+        public int compareTo(Node o) {
+            return Double.compare(this.f, o.f);
         }
     }
 
@@ -52,8 +51,8 @@ public class AStarSearch {
      * Adds an undirected edge between nodes u and v with the given weight.
      */
     public void addEdge(int u, int v, int weight) {
-        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[] {v, weight});
-        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[] {u, weight});
+        graph.computeIfAbsent(u, k -> new ArrayList<>()).add(new int[]{v, weight});
+        graph.computeIfAbsent(v, k -> new ArrayList<>()).add(new int[]{u, weight});
     }
 
     /**
@@ -67,7 +66,7 @@ public class AStarSearch {
      * Finds the shortest path from start to goal using A* algorithm.
      *
      * @param start starting node
-     * @param goal goal node
+     * @param goal  goal node
      * @return list of nodes representing the shortest path
      */
     public List<Integer> findPath(int start, int goal) {
@@ -116,5 +115,38 @@ public class AStarSearch {
         }
         Collections.reverse(path);
         return path;
+    }
+
+    /**
+     * Dynamic usage: reads graph and start/goal from input.
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        AStarSearch aStar = new AStarSearch();
+
+        System.out.print("Enter number of edges: ");
+        int edges = sc.nextInt();
+
+        System.out.println("Enter edges in format: u v weight");
+        for (int i = 0; i < edges; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            int w = sc.nextInt();
+            aStar.addEdge(u, v, w);
+        }
+
+        System.out.print("Enter start node: ");
+        int start = sc.nextInt();
+
+        System.out.print("Enter goal node: ");
+        int goal = sc.nextInt();
+
+        List<Integer> path = aStar.findPath(start, goal);
+        if (path.isEmpty()) {
+            System.out.println("No path found from " + start + " → " + goal);
+        } else {
+            System.out.println("Shortest path from " + start + " → " + goal + ": " + path);
+        }
+        sc.close();
     }
 }
