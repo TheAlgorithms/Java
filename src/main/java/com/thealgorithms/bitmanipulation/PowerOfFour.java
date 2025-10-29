@@ -1,16 +1,26 @@
-package bitmanipulation;
+package com.thealgorithms.bitmanipulation;
 
-public class PowerOfFour {
-    public static boolean isPowerOfFour(int n) {
-        // A power of 4 has only one bit set and that bit is at an even position
-        return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
+/**
+ * This class provides a method to check if a given number is a power of four.
+ */
+public final class PowerOfFour {
+
+    // Private constructor to prevent instantiation
+    private PowerOfFour() {
+        throw new AssertionError("Cannot instantiate utility class");
     }
 
-    public static void main(String[] args) {
-        int num = 64; // change to test other numbers
-        if (isPowerOfFour(num))
-            System.out.println(num + " is a power of 4.");
-        else
-            System.out.println(num + " is NOT a power of 4.");
+    /**
+     * Checks whether the given integer is a power of four.
+     *
+     * @param n the number to check
+     * @return true if n is a power of four, false otherwise
+     */
+    public static boolean isPowerOfFour(int n) {
+        if (n <= 0) {
+            return false;
+        } else {
+            return (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
+        }
     }
 }
