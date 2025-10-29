@@ -159,53 +159,73 @@
                     <excludeFromFailureFile>pmd-exclude.properties</excludeFromFailureFile>
                 </configuration>
             </plugin>
-
-            <plugin> <!-- PIT Mutation Testing Plugin -->
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>1.20.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.pitest</groupId>
-                        <artifactId>pitest-junit5-plugin</artifactId>
-                        <version>1.2.3</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <targetClasses> <!-- Classes to mutate -->
-                        <param>com.thealgorithms.*</param>
-                    </targetClasses>
-                    <excludedClasses>
-                        <param>com.thealgorithms.*Test</param>
-                    </excludedClasses>
-                    <targetTests> <!-- Test classes to run -->
-                        <param>com.thealgorithms.*Test</param>
-                    </targetTests>
-                    <mutators> <!-- Mutation operators to use -->
-                        <mutator>DEFAULTS</mutator>
-                    </mutators>
-                    <threads>4</threads> <!-- Number of threads -->
-                    <outputFormats>
-                        <param>HTML</param>
-                        <param>XML</param>
-                    </outputFormats>
-                    <verbose>true</verbose> <!-- Verbose reporting for education -->
-                    <timeoutConstant>4000</timeoutConstant> <!-- Timeout in milliseconds -->
-                    <jvmArgs> <!-- Memory in MB -->
-                        <jvmArg>-Xmx1024m</jvmArg>
-                    </jvmArgs>
-                    <skipFailingTests>true</skipFailingTests> <!-- Skip failing tests -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>pitest</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>mutationCoverage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile> <!-- Use with `mvn clean test -Pdev` to generate PIT coverage reports for your tests -->
+            <id>dev</id>
+
+            <properties> <!-- Change these to select target -->
+                <modulename>datastructures</modulename>
+                <packagename>trees</packagename>
+                <classname>AVLSimple</classname>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin> <!-- Surefire -->
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>com/thealgorithms/${modulename}/${packagename}/${classname}Test.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                    <plugin> <!-- PIT Mutation Testing Plugin -->
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>1.21.0</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.pitest</groupId>
+                                <artifactId>pitest-junit5-plugin</artifactId>
+                                <version>1.2.3</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <!-- Classes to mutate -->
+                            <targetClasses>com.thealgorithms.${modulename}.${packagename}.${classname}*</targetClasses>
+                            <!-- Test classes to run -->
+                            <targetTests>com.thealgorithms.${modulename}.${packagename}.${classname}Test</targetTests>
+                            <mutators> <!-- Mutation operators to use -->
+                                <mutator>DEFAULTS</mutator>
+                            </mutators>
+                            <threads>2</threads> <!-- Number of threads -->
+                            <outputFormats>
+                                <param>HTML</param>
+                                <param>XML</param>
+                            </outputFormats>
+                            <timeoutConstant>4000</timeoutConstant> <!-- Timeout in milliseconds -->
+                            <jvmArgs> <!-- RAM in MB per thread -->
+                                <jvmArg>-Xmx2048m</jvmArg>
+                            </jvmArgs>
+                            <!-- Skip failing tests so whole suite will run - good for development-->
+                            <skipFailingTests>true</skipFailingTests>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>run-pitest</id>
+                                <phase>test</phase> <!-- bind to test-phase -->
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
