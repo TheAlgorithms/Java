@@ -11,6 +11,8 @@ package com.thealgorithms.searches;
  * 
  * Time Complexity: O(n)
  * Space Complexity: O(1)
+ * 
+ * Reference: https://en.wikipedia.org/wiki/Trapping_rain_water
  */
 public class TrappingRainwater {
 
