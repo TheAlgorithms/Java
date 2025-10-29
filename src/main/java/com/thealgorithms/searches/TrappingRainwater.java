@@ -13,7 +13,7 @@ package com.thealgorithms.searches;
  *
  * Reference: https://en.wikipedia.org/wiki/Trapping_rain_water
  */
-public class TrappingRainwater {
+public final class TrappingRainwater {
 
     private TrappingRainwater() {
         throw new UnsupportedOperationException("Utility class");
